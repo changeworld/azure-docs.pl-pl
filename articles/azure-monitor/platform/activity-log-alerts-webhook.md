@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 3fb68370f9b26aacc33d0e2e6090fe819010f468
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0f72097ad9e8b8675d78654c07a62fb6baf90f4a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285011"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582307"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
 Jako część definicji grupy akcji można skonfigurować elementu webhook punktów końcowych, aby otrzymywać powiadomienia o alertach dziennika aktywności. Przy użyciu elementów webhook można kierować te powiadomienia do innych systemów w zakresie przetwarzania końcowego lub niestandardowej akcji. Ten artykuł pokazuje, jak wygląda ładunek HTTP POST do elementu webhook.
@@ -161,9 +161,9 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
 }
 ```
 
-Określonego schematu szczegółowe informacje na temat alertów dzienników aktywności usługi kondycji powiadomień, [usługi powiadomień dotyczących kondycji](../../monitoring-and-diagnostics/monitoring-service-notifications.md). Dowiedz się również, jak [Konfigurowanie powiadomień webhook o kondycji usługi przy użyciu istniejących rozwiązań zarządzania problem](../../service-health/service-health-alert-webhook-guide.md).
+Określonego schematu szczegółowe informacje na temat alertów dzienników aktywności usługi kondycji powiadomień, [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md). Dowiedz się również, jak [Konfigurowanie powiadomień webhook o kondycji usługi przy użyciu istniejących rozwiązań zarządzania problem](../../service-health/service-health-alert-webhook-guide.md).
 
-Określonego schematu szczegółowe informacje na temat wszystkich innych alertów dziennika aktywności, [Przegląd dziennika aktywności platformy Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Określonego schematu szczegółowe informacje na temat wszystkich innych alertów dziennika aktywności, [Przegląd dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md).
 
 | Nazwa elementu | Opis |
 | --- | --- |
@@ -196,7 +196,7 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 | subStatus |Zazwyczaj zawiera kod stanu HTTP odpowiedniego wywołania REST. Może to również obejmować inne ciągi, które opisują podstanu. Typowe wartości podstanu to OK (kod stanu HTTP: 200), utworzone (kod stanu HTTP: 201) zaakceptowane (kod stanu HTTP: 202), żadnej zawartości (kod stanu HTTP: 204), nieprawidłowe żądanie (kod stanu HTTP: 400), nie znaleziono (kod stanu HTTP: 404) konflikt (kod stanu HTTP: 409), wewnętrzny błąd serwera (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504). |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dowiedz się więcej o dzienniku aktywności](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+* [Dowiedz się więcej o dzienniku aktywności](../../azure-monitor/platform/activity-logs-overview.md).
 * [Wykonywanie skryptów usługi Azure automation (elementy Runbook) na temat alertów platformy Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Wysyłać wiadomość SMS za pośrednictwem usługi Twilio, z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.
 * [Korzystanie z aplikacji logiki, aby wysłać wiadomość Slack z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.

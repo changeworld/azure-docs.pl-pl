@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012763"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726633"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools for Visual Studio z Piaskownicą Hortonworks
 
@@ -60,13 +60,13 @@ Upewnij się, że działa Piaskownicą Hortonworks. Następnie postępuj zgodnie
 
     ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym przyciskiem aktualizacji](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Proces aktualizacji używa Ambari, aby zmodyfikować konfigurację Piaskownicą Hortonworks, do czego oczekuje się przy użyciu usługi Data Lake tools for Visual Studio.
 
 6. Po zakończeniu walidacji wybierz **Zakończ** aby zakończyć konfigurację.
     ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym przyciskiem Zakończ](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-     >[!NOTE]
+     >[!NOTE]  
      > W zależności od szybkości środowiska deweloperskiego i ilość pamięci przydzielonej do maszyny wirtualnej może potrwać kilka minut na konfigurowanie i weryfikowanie usługi.
 
 Po wykonaniu tych kroków, masz teraz **lokalny klaster HDInsight** wpis w oknie Eksploratora serwera w obszarze **HDInsight** sekcji.
@@ -99,7 +99,7 @@ Gałąź zawiera język zapytań przypominający SQL (HiveQL) do pracy z danymi 
 
     Po **stan zadania** zmieni się na **Zakończono**, przekierowanie acykliczne wykresu (DAG) jest wyświetlana. Ten diagram w tym artykule opisano ścieżki wykonywania, który został określony poprzez Tez, podczas przetwarzania zapytania programu Hive. Tez jest domyślny aparat wykonywania programu Hive w klastrze lokalnym.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Apache Tez jest również wartością domyślną, korzystając z klastrami HDInsight opartych na systemie Linux. Nie jest domyślny w HDInsight z systemem Windows. Aby go użyć, należy dodać wiersz `set hive.execution.engine = tez;` początek zapytania Hive.
 
     Użyj **dane wyjściowe zadania** link, aby wyświetlić dane wyjściowe. W tym przypadku jest to 823, liczba wierszy w tabeli sample_08. Informacje diagnostyczne o zadaniu można wyświetlić przy użyciu **dziennik zadań** i **Pobierz dziennik usługi YARN** łącza.
@@ -110,7 +110,7 @@ Gałąź zawiera język zapytań przypominający SQL (HiveQL) do pracy z danymi 
 
     Zapytanie interakcyjne strumieni dziennika danych wyjściowych wygenerowanych podczas przetwarzania w celu **wyjście usługi HiveServer2** okna.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Informacje są takie same, dostępny w **dziennik zadań** link po zakończeniu zadania.
 
     ![Zrzut ekranu przedstawiający dziennika danych wyjściowych](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)

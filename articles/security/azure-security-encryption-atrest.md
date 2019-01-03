@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420391"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994406"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Usługa Azure Data szyfrowanie w spoczynku
 
@@ -104,7 +104,7 @@ Dla celów szyfrowania po stronie klienta należy rozważyć następujące kwest
 - Klienci zarządzanie i przechowywania kluczy w środowisku lokalnym lub w innych secure magazynów. Klucze nie są dostępne dla usług platformy Azure
 - Funkcji w chmurze z ograniczoną
 
-Modele szyfrowania obsługiwanych na platformie Azure, podzielić na dwie główne grupy: "Szyfrowania klienta" i "po stronie serwera szyfrowania" jako wymienionych wcześniej. Niezależnie od szyfrowania w modelu rest używany, usług platformy Azure, zawsze zaleca się korzystanie z bezpiecznym transportem, takiego jak protokół TLS lub HTTPS. Dlatego szyfrowania podczas transportu powinny być kierowane przez protokół transportu i nie powinny być czynnikiem w określeniu, które szyfrowanie w modelu rest do użycia.
+Modele szyfrowania obsługiwanych na platformie Azure, podzielić na dwie główne grupy: "Klient szyfrowania" i "po stronie serwera szyfrowania" jako wymienionych wcześniej. Niezależnie od szyfrowania w modelu rest używany, usług platformy Azure, zawsze zaleca się korzystanie z bezpiecznym transportem, takiego jak protokół TLS lub HTTPS. Dlatego szyfrowania podczas transportu powinny być kierowane przez protokół transportu i nie powinny być czynnikiem w określeniu, które szyfrowanie w modelu rest do użycia.
 
 ### <a name="client-encryption-model"></a>Model szyfrowania klienta
 
@@ -244,7 +244,7 @@ Każdy klient przy użyciu infrastruktury platformy Azure jako usługa (IaaS) fu
 Wszystkie usługi Azure Storage (Blob storage, Queue storage, Table storage i Azure Files) obsługuje szyfrowanie po stronie serwera w spoczynku, w przypadku niektórych usług Obsługa kluczy zarządzanych przez klienta i szyfrowanie po stronie klienta.  
 
 - Po stronie serwera: Wszystkich usług Azure Storage włączyć szyfrowanie po stronie serwera, domyślnie przy użyciu kluczy zarządzanego przez usługę, która jest niewidoczna dla aplikacji. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption). Usługa Azure Blob storage i Azure Files obsługują także szyfrowania RSA 2048-bitowych kluczy zarządzanych przez klienta w usłudze Azure Key Vault. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
-- Po stronie klienta: Obiekty BLOB platformy Azure, tabel i kolejek obsługuje szyfrowanie po stronie klienta. Korzystając z szyfrowania po stronie klienta, klienci szyfrowania danych i przekazywanie danych jako obiekt blob zaszyfrowany. Zarządzanie kluczami jest wykonywane przez klienta. Aby uzyskać więcej informacji, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
+- Po stronie klienta: Usługa Azure blob, tabel i kolejek obsługuje szyfrowanie po stronie klienta. Korzystając z szyfrowania po stronie klienta, klienci szyfrowania danych i przekazywanie danych jako obiekt blob zaszyfrowany. Zarządzanie kluczami jest wykonywane przez klienta. Aby uzyskać więcej informacji, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
@@ -262,6 +262,7 @@ Szyfrowanie po stronie klienta, danych usługi Azure SQL Database jest świadczo
 | Dysk (IaaS)                      | -                  | Tak, RSA 2048-bitowe  | -                  |
 | Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowe  | Yes                |
 | Usługi Azure SQL (baza danych/Data Warehouse) | Yes                | Tak, RSA 2048-bitowe  | Yes                |
+| Usługi Azure SQL (wystąpienie zarządzane bazy danych) | Yes                | (Wersja zapoznawcza) i RSA 2048-bitowe  | Yes                |
 | Usługa Azure Storage (Blokuj/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowe  | Yes                |
 | Usługa Azure Storage (pliki)            | Yes                | Tak, RSA 2048-bitowe  | -                  |
 | Usługa Azure Storage (tabele, kolejki)   | Yes                | -                  | Yes                |

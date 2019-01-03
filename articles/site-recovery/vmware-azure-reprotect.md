@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: rajanaki
-ms.openlocfilehash: e965848b0c3c009444762dafdf42acc080b6915e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834968"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791884"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony i zakończyć się niepowodzeniem maszynami wstecz do lokacji lokalnej po włączeniu trybu failover na platformie Azure
 
@@ -61,8 +61,8 @@ Aby wdrożyć serwer przetwarzania na platformie Azure:
 
 Główny serwer docelowy odbiera dane podczas powrotu po awarii. Domyślnie główny serwer docelowy jest uruchamiany na lokalnym serwerze konfiguracji. W zależności od ilości ruchu do tyłu, może być konieczne do utworzenia osobny główny serwer docelowy do powrotu po awarii. Poniżej przedstawiono instrukcje tworzenia takiego:
 
-* [Tworzenie serwera głównego elementu docelowego Linux](vmware-azure-install-linux-master-target.md) powrotu po awarii maszyn wirtualnych systemu Linux. Jest to wymagane.
-* Opcjonalnie utwórz osobny główny serwer docelowy do powrotu po awarii maszyn wirtualnych Windows. Aby to zrobić, uruchom ponownie ujednoliconego Instalatora i wybierz, aby utworzyć główny serwer docelowy. [Dowiedz się więcej](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
+* [Tworzenie serwera głównego elementu docelowego Linux](vmware-azure-install-linux-master-target.md) powrotu po awarii maszyn wirtualnych systemu Linux. Jest to wymagane. Należy zauważyć, że główna serwera docelowego na LVM nie jest obsługiwana.
+* Opcjonalnie utwórz osobny główny serwer docelowy do powrotu po awarii maszyn wirtualnych Windows. Aby to zrobić, uruchom ponownie ujednoliconego Instalatora i wybierz, aby utworzyć główny serwer docelowy. [Dowiedz się więcej](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
 Po utworzeniu głównego serwera docelowego, wykonaj następujące czynności:
 

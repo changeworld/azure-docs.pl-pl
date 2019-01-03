@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 01/02/2019
 ms.author: yushwang
-ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a6390203ecc4ae672f968b19d83eafc8a552ec3a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037104"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994854"
 ---
 # <a name="vpn-gateway-faq"></a>Brama sieci VPN — często zadawane pytania
 
@@ -29,6 +29,10 @@ Tak.
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>Czy można łączyć się z wieloma lokalizacjami z jednej sieci wirtualnej?
 
 Można nawiązać połączenie z wieloma lokalizacjami za pomocą programu Windows PowerShell oraz interfejsów API REST Azure. Zobacz sekcję często zadawanych pytań dotyczących [połączeń obejmujących wiele lokacji i połączeń między sieciami wirtualnymi](#V2VMulti).
+
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Czy istnieje dodatkowy koszt konfigurowania bramy sieci VPN, jako aktywny aktywny?
+
+Nie. 
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>Jakie są dostępne możliwości połączeń obejmujących wiele lokalizacji?
 

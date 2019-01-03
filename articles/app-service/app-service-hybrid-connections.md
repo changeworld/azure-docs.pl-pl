@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258019"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653394"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Połączenia hybrydowe usługi Azure App Service #
 
@@ -177,7 +177,7 @@ Brak okresowe aktualizacje do Menedżera połączeń hybrydowych rozwiązywania 
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programowe Dodawanie połączenia hybrydowego do aplikacji ##
 
-Interfejsy API wskazanych poniżej może służyć bezpośrednio, aby zarządzać połączeń hybrydowych, nawiązanie połączenia aplikacji sieci web. 
+Interfejsy API wskazanych poniżej może służyć bezpośrednio, aby zarządzać połączeń hybrydowych, w połączonych aplikacjach. 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -198,7 +198,7 @@ Obiekt JSON skojarzony z połączenia hybrydowego wygląda następująco:
       }
     }
 
-Jest jednym ze sposobów dzięki tym informacjom armclient, którą można pobrać z [ARMClient] [ armclient] projektu GitHub. Poniżej przedstawiono przykład dołączenie istniejącego połączenia hybrydowego w aplikacji sieci web. Utwórz plik JSON na powyższym schematu, takich jak:
+Jest jednym ze sposobów dzięki tym informacjom armclient, którą można pobrać z [ARMClient] [ armclient] projektu GitHub. Oto przykład podczas dołączania istniejące połączenie hybrydowe z aplikacją. Utwórz plik JSON na powyższym schematu, takich jak:
 
     {
       "name": "relay-demo-hc",
@@ -230,7 +230,7 @@ W usłudze App Service narzędzie tcpping mogą być wywoływane z poziomu konso
 
 ## <a name="biztalk-hybrid-connections"></a>Połączenia hybrydowe BizTalk ##
 
-Wczesne formularza ta funkcja została wywołana połączenia hybrydowe BizTalk. Ta funkcja poszło zakończenia eksploatacji 31 maja 2018 r i zakończeniu operacji. Połączenia hybrydowe BizTalk zostały usunięte ze wszystkich aplikacji sieci web i nie są dostępne za pośrednictwem interfejsu API lub portalu. Jeśli nadal masz te starsze połączeń, skonfigurowanych Menedżera połączeń hybrydowych, będzie wyświetlany stan wycofany i wyświetlić instrukcji zakończenia eksploatacji u dołu.
+Wczesne formularza ta funkcja została wywołana połączenia hybrydowe BizTalk. Ta funkcja poszło zakończenia eksploatacji 31 maja 2018 r i zakończeniu operacji. Połączenia hybrydowe BizTalk zostały usunięte ze wszystkich aplikacji i nie są dostępne za pośrednictwem interfejsu API lub portalu. Jeśli nadal masz te starsze połączeń, skonfigurowanych Menedżera połączeń hybrydowych, będzie wyświetlany stan wycofany i wyświetlić instrukcji zakończenia eksploatacji u dołu.
 
 ![Połączenia hybrydowe BizTalk w HCM][12]
 

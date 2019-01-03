@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: fa7d89d749d50d62ce54ea71d604831e8919b454
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189850"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652068"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../../security/security-microsoft-trust-center.md).  
@@ -60,7 +60,7 @@ Po Twoje dane są pozyskiwane przez usługę Log Analytics, dane są logicznie o
 ## <a name="data-retention"></a>Przechowywanie danych
 Indeksowane dane wyszukiwania dziennika są przechowywane i przechowywane zgodnie z planem cennika. Aby uzyskać więcej informacji, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-Jako część Twojego [umowie subskrypcyjnej dotyczącej usług](https://azure.microsoft.com/support/legal/subscription-agreement/), firma Microsoft zachowuje dane zgodnie z postanowieniami Umowy.  Dane zostaną usunięte, możemy również usunąć konto magazynu platformy Azure, gdzie znajdują się dane.  Po usunięciu danych klienta nie dysków fizycznych są niszczone.  
+Jako część Twojego [umowie subskrypcyjnej dotyczącej usług](https://azure.microsoft.com/support/legal/subscription-agreement/), firma Microsoft zachowuje dane zgodnie z postanowieniami Umowy.  Po usunięciu danych klienta nie dysków fizycznych są niszczone.  
 
 W poniższej tabeli przedstawiono niektóre z dostępnych rozwiązań i zawiera przykłady typu danych, które pobierają.
 
@@ -150,7 +150,7 @@ Dla Twojej organizacji w celu wysyłania danych do usługi Log Analytics można 
 * [Identyfikator organizacji](../../active-directory/fundamentals/sign-up-organization.md)
 * [Konto Microsoft — program Outlook, usługi Office Live, MSN](https://account.microsoft.com/account)
 
-Obszar roboczy usługi Log Analytics to, gdzie dane są zbierane, agregowane, analizowane i przedstawiane. Obszar roboczy jest używany głównie jako środek do partycjonowania danych, a każdy obszar roboczy jest unikatowy. Na przykład możesz chcieć mieć danych produkcyjnych zarządzanych za pomocą jednego obszaru roboczego i dane zarządzanych za pomocą innego obszaru roboczego. Obszary robocze również pomóc administratora kontroli dostępu użytkownika do danych. Każdy obszar roboczy może mieć wiele kont użytkowników skojarzonych z nim, a wszystkie konta użytkowników mogą uzyskiwać dostęp do wielu obszarów roboczych usługi Log Analytics. Możesz utworzyć obszary robocze oparte na region centrum danych. Każdy obszar roboczy jest replikowany do innych centrach danych w regionie, przede wszystkim dla dostępności usługi Log Analytics.
+Obszar roboczy usługi Log Analytics to, gdzie dane są zbierane, agregowane, analizowane i przedstawiane. Obszar roboczy jest używany głównie jako środek do partycjonowania danych, a każdy obszar roboczy jest unikatowy. Na przykład możesz chcieć mieć danych produkcyjnych zarządzanych za pomocą jednego obszaru roboczego i dane zarządzanych za pomocą innego obszaru roboczego. Obszary robocze również pomóc administratora kontroli dostępu użytkownika do danych. Każdy obszar roboczy może mieć wiele kont użytkowników skojarzonych z nim, a wszystkie konta użytkowników mogą uzyskiwać dostęp do wielu obszarów roboczych usługi Log Analytics. Możesz utworzyć obszary robocze oparte na region centrum danych.
 
 Dla programu Operations Manager grupy zarządzania programu Operations Manager ustanawia połączenie z usługą Log Analytics. Następnie należy skonfigurować systemów zarządzanych przez agentów w grupie zarządzania mogą wysyłają i zbierają dane do usługi. W zależności od rozwiązania zostało włączone, dane z tych rozwiązań są albo wysyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi Log Analytics lub ze względu na ilość danych zebranych przez system zarządzany przez agenta są wysyłane bezpośrednio z agent z usługą. W systemach, które nie są monitorowane przez program Operations Manager każdy bezpiecznie łączy się z usługi Log Analytics bezpośrednio.
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/26/2018
 ms.author: juliako
-ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000253"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788212"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -34,7 +34,7 @@ W tym artykule szczegółowo omówiono, uzyskać wskazówki i zawiera diagramy g
 
 Aby dostarczać strumienie na żądanie lub na żywo za pomocą usługi Media Services, musisz mieć co najmniej jedną [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Po utworzeniu konta usługi Media Services **domyślne** StreamingEndpoint zostanie dodany do Twojego konta w **zatrzymane** stanu. Należy uruchomić StreamingEndpoint, z którego chcesz strumieniowo przesyłać zawartość do swojej przeglądarki. Można użyć domyślnie **StreamingEndpoint**, lub utworzyć inny dostosowane **StreamingEndpoint** z wymaganą konfiguracją i ustawień sieci CDN. Użytkownik może zdecydować umożliwić wielu punkty, z których każdy z nich przeznaczone dla różnych sieci CDN i podając unikatową nazwę hosta w dostarczaniu zawartości. 
 
-W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4).  
+W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. Aby uzyskać więcej informacji, zobacz [zalecane strumieniowo koderów na żywo](recommended-on-premises-live-encoders.md).
 
 Gdy **element LiveEvent** rozpoczyna odbieranie wkład źródła danych, można użyć punktu końcowego (wersja zapoznawcza) (w wersji zapoznawczej adres URL do wyświetlania podglądu i weryfikowania otrzymują przed opublikowaniem dalsze transmisji strumieniowej na żywo. Po sprawdzeniu, że Podgląd strumienia jest dobra, aby udostępnić transmisji strumieniowej na żywo do dostarczania za pomocą co najmniej jeden (wstępnie utworzone), można użyć element LiveEvent **punkty**. Aby to osiągnąć, należy utworzyć nową [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **element LiveEvent**. 
 
@@ -42,9 +42,9 @@ Gdy **element LiveEvent** rozpoczyna odbieranie wkład źródła danych, można 
 
 Usługa Media Services możesz korzystać z zalet **funkcję dynamicznego tworzenia pakietów**, co pozwala na przeglądanie i emisji strumieni na żywo w [formatów MPEG DASH, HLS i Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z udziału kanału informacyjnego Aby wysłać do usługi. Przeglądającym można odtwarzać transmisji strumieniowej na żywo za pomocą dowolnego odtwarzaczy zgodne HLS, DASH lub Smooth Streaming. Możesz użyć [usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) w sieci web lub aplikacji mobilnych, aby dostarczać strumień we wszystkich tych protokołów.
 
-Usługi Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany (**szyfrowania dynamicznego**) za pomocą Advanced Encryption Standard (AES-128) lub dowolnego systemu zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: Microsoft PlayReady Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM licencje do autoryzowanych klientów. Aby uzyskać więcej informacji na temat sposobu szyfrowanie zawartości przy użyciu usługi Media Services, zobacz [ochrony zawartości — omówienie](content-protection-overview.md)
+Usługa Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany (**szyfrowania dynamicznego**) za pomocą Advanced Encryption Standard (AES-128) lub z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM licencje do autoryzowanych klientów. Aby uzyskać więcej informacji na temat sposobu szyfrowanie zawartości przy użyciu usługi Media Services, zobacz [ochrony zawartości — omówienie](content-protection-overview.md)
 
-Jeśli to konieczne, można także zastosować filtrowanie dynamiczne, dzięki której może służyć do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. 
+Jeśli to konieczne, można także zastosować filtrowanie dynamiczne, dzięki której może służyć do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. Aby uzyskać więcej informacji, zobacz [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
 
 ### <a name="new-capabilities-for-live-streaming-in-v3"></a>Nowe możliwości transmisji strumieniowej na żywo w wersji 3
 
@@ -77,13 +77,13 @@ Zobacz przykład połączenia na żywo w [MediaV3LiveApp](https://github.com/Azu
 
 ![funkcji Live encoding](./media/live-streaming/live-encoding.png)
 
-Korzystając z kodowania na żywo za pomocą usługi Media Services, należy skonfigurować usługi na lokalny koder na żywo, aby wysłać pojedyncza szybkość transmisji bitów wideo jako udział Kanał informacyjny do element LiveEvent (przy użyciu protokołu RTMP lub podzielonej zawartości w formacie Mp4). Element LiveEvent koduje tej przychodzącej pojedyncza szybkość transmisji bitów do usługi stream [wielu strumienia wideo o szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia dostarczania odtworzyć urządzeń za pośrednictwem protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu element LiveEvent, określ typ kodowania jako **podstawowe** (LiveEventEncodingType.Basic).
+Korzystając z kodowania na żywo za pomocą usługi Media Services, należy skonfigurować usługi na lokalny koder na żywo, aby wysłać pojedyncza szybkość transmisji bitów wideo jako udział Kanał informacyjny do element LiveEvent (przy użyciu protokołu RTMP lub podzielonej zawartości w formacie Mp4). Element LiveEvent koduje tej przychodzącej pojedyncza szybkość transmisji bitów do usługi stream [wielu strumienia wideo o szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia dostarczania odtworzyć urządzeń za pośrednictwem protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu element LiveEvent, określ typ kodowania jako **standardowa** (LiveEventEncodingType.Standard).
 
 Możesz wysłać wkład kanału informacyjnego w maksymalnie 1080 p rozwiązania z prędkością 30 klatek, / sekundę, przy użyciu kodera-dekodera wideo koder H.264/AVC i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio. Zobacz [element LiveEvent typów porównania i ograniczenia](live-event-types-comparison.md) artykuł, aby uzyskać więcej informacji.
 
 ## <a name="liveevent-types-comparison"></a>Porównanie typów element LiveEvent
 
-Następujący artykuł zawiera tabelę, która zawiera porównanie funkcji dwa typy element LiveEvent: [porównania](live-event-types-comparison.md).
+Następujący artykuł zawiera tabelę, która zawiera porównanie funkcji dwa typy element LiveEvent: [Porównanie](live-event-types-comparison.md).
 
 ## <a name="liveoutput"></a>LiveOutput
 

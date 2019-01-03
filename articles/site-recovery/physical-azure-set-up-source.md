@@ -2,17 +2,18 @@
 title: Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformie Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania w środowisku lokalnym serwerem konfiguracji na potrzeby odzyskiwania po awarii lokalnych serwerów fizycznych na platformę Azure.
 services: site-recovery
-author: rayne-wiselman
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: raynew
-ms.openlocfilehash: 04d080d9acd74bea128c0e101165031119900dd1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: ramamill
+ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848412"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976804"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformę Azure
 
@@ -35,7 +36,7 @@ W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania
 ## <a name="choose-your-protection-goals"></a>Wybranie celów ochrony
 
 1. W witrynie Azure portal przejdź do **usługi Recovery Services** magazyny bloku i wybierz swój magazyn.
-2. W **zasobów** menu magazynu kliknij **wprowadzenie** > **Site Recovery** > **krok 1: Przygotowanie infrastruktury**   >  **Cel ochrony**.
+2. W **zasobów** menu magazynu kliknij **wprowadzenie** > **Site Recovery** > **krok 1: Przygotowanie infrastruktury** > **cel ochrony**.
 
     ![Wybieranie celów](./media/physical-azure-set-up-source/choose-goals.png)
 3. W **cel ochrony**, wybierz opcję **na platformę Azure** i **bez wirtualizacji/inne**, a następnie kliknij przycisk **OK**.

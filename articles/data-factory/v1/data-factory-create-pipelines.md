@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 09fd2f38c3746cf92d576325058dc36221ae50cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c31c57cc28b1e817cbb772154cfb2f04ff349640
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668031"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973710"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,7 +95,7 @@ Przyjrzyjmy się bliżej definicji potoku w formacie JSON. Ogólna struktura pot
 
 | Tag | Opis | Wymagane |
 | --- | --- | --- |
-| name |Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
+| name |Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description | Wprowadź tekst opisujący przeznaczenie potoku. |Yes |
 | activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Zobacz następną sekcję, aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Yes |  
 | rozpoczynanie | Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: `2016-10-14T16:32:41Z`. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00-05:00`", który jest szacowany AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzureRmDataFactoryPipelineActivePeriod. |
@@ -133,7 +133,7 @@ Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 
 | Tag | Opis | Wymagane |
 | --- | --- | --- |
-| name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
+| name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description | Tekst opisujący przeznaczenie działania |Yes |
 | type | Typ działania. Zobacz [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) sekcje dla różnych typów działań. |Yes |
 | dane wejściowe |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Yes |
@@ -154,7 +154,7 @@ Zasady wpływają na zachowania w czasie wykonywania działania, w szczególnoś
 | retry |Liczba całkowita<br/><br/>Maksymalna wartość może wynosić 10 |0 |Liczba ponownych prób zanim przetwarzania danych dla wycinka jest oznaczony jako niepowodzenie. Wykonania działania dla wycinka danych zostanie ponowiony do określonej liczby ponownych prób. Ponowienie próby jest wykonywane tak szybko, jak to możliwe po niepowodzeniu. |
 | timeout |Przedział czasu |00:00:00 |Limit czasu działania. Przykład: 00:10:00 (oznacza limit czasu 10 minut)<br/><br/>Jeśli wartość nie została określona lub ma wartość 0, limit czasu jest nieskończona.<br/><br/>Jeśli czas przetwarzania danych na wycinek przekracza wartość limitu czasu, zostanie anulowane, a system podejmuje próbę przetwarzania. Liczba ponownych prób, zależy od właściwości ponownych prób. W przypadku przekroczenia limitu czasu stan jest ustawiony na przekroczenie limitu czasu. |
 | Opóźnienie |Przedział czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych startów wycinka.<br/><br/>Wykonywanie działania dla wycinka danych została uruchomiona po oczekiwanym czasie wykonywania opóźnienie.<br/><br/>Przykład: 00:10:00 (implikuje użycie opóźnieniem 10 minut) |
-| longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba prób długa — ponowienie próby, zanim wycinek wykonanie nie powiodło się.<br/><br/>są rozciągane w prób longRetry, longRetryInterval. Więc jeśli potrzebujesz określić czas między ponownymi próbami, należy użyć longRetry. Jeśli określono zarówno longRetry, jak i ponów próbę kolejnymi próbami longRetry zawiera ponownymi próbami i maksymalną liczbę prób ponawiania * longRetry.<br/><br/>Na przykład, mamy następujące ustawienia zasad dotyczących działań:<br/>Ponów próbę wykonania: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Przyjęto założenie, istnieje tylko jeden wycinek do wykonania (oczekiwanie stanu) i wykonania działania każdym razem, gdy kończy się niepowodzeniem. Początkowo będzie można 3 próby wykonania kolejnych. Po każdej próbie stan wycinka byłoby ponownych prób. Po pierwsze 3 prób przez, stan wycinka byłoby LongRetry.<br/><br/>Po upływie godziny (czyli wartość longRetryInteval firmy) będzie inny zbiór 3 próby wykonania kolejnych. Po tym stan wycinka, czy nie, a wszystkie próby może nastąpić. Dlatego całkowity podejmowano próby 6.<br/><br/>Jeśli wykonanie dowolnego zakończy się powodzeniem, stan wycinka będzie gotowy, a wszystkie próby są próby.<br/><br/>longRetry mogą być używane w sytuacji, w którym dane zależne dociera niedeterministyczne razy lub niestabilnym całego środowiska, w ramach której przetwarzania danych. W takich przypadkach to ponownych prób po kolei może nie pozwalających i sposób po upływie czasu skutkuje żądaną produktu wyjściowego.<br/><br/>Word Przestroga: nie należy ustawiać wysokiej wartości longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają innych kwestii systemowych. |
+| longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba prób długa — ponowienie próby, zanim wycinek wykonanie nie powiodło się.<br/><br/>są rozciągane w prób longRetry, longRetryInterval. Więc jeśli potrzebujesz określić czas między ponownymi próbami, należy użyć longRetry. Jeśli określono zarówno longRetry, jak i ponów próbę kolejnymi próbami longRetry zawiera ponownymi próbami i maksymalną liczbę prób ponawiania * longRetry.<br/><br/>Na przykład, mamy następujące ustawienia zasad dotyczących działań:<br/>Ponów próbę: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Przyjęto założenie, istnieje tylko jeden wycinek do wykonania (oczekiwanie stanu) i wykonania działania każdym razem, gdy kończy się niepowodzeniem. Początkowo będzie można 3 próby wykonania kolejnych. Po każdej próbie stan wycinka byłoby ponownych prób. Po pierwsze 3 prób przez, stan wycinka byłoby LongRetry.<br/><br/>Po upływie godziny (czyli wartość longRetryInteval firmy) będzie inny zbiór 3 próby wykonania kolejnych. Po tym stan wycinka, czy nie, a wszystkie próby może nastąpić. Dlatego całkowity podejmowano próby 6.<br/><br/>Jeśli wykonanie dowolnego zakończy się powodzeniem, stan wycinka będzie gotowy, a wszystkie próby są próby.<br/><br/>longRetry mogą być używane w sytuacji, w którym dane zależne dociera niedeterministyczne razy lub niestabilnym całego środowiska, w ramach której przetwarzania danych. W takich przypadkach to ponownych prób po kolei może nie pozwalających i sposób po upływie czasu skutkuje żądaną produktu wyjściowego.<br/><br/>Word Przestroga: nie należy ustawiać wysokiej wartości longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają innych kwestii systemowych. |
 | longRetryInterval |Przedział czasu |00:00:00 |Opóźnienie między próbami długa — ponowienie próby |
 
 ## <a name="sample-copy-pipeline"></a>Przykładowy potok kopiowania
@@ -209,7 +209,7 @@ Pamiętaj o następujących kwestiach:
 * Dane wejściowe dla działania mają ustawienie **InputDataset**, a dane wyjściowe — **OutputDataset**. Definiowanie zestawów danych w formacie JSON opisano w artykule [Zestawy danych](data-factory-create-datasets.md). 
 * W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia. W [działania przenoszenia danych](#data-movement-activities) sekcji, kliknij magazyn danych, że chcesz użyć jako źródła lub ujścia, aby dowiedzieć się więcej na temat przenoszenia danych do i z tego magazynu danych. 
 
-Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczek: kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczka: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ## <a name="sample-transformation-pipeline"></a>Przykładowy potok przekształcania
 W poniższym przykładowym potoku występuje jedno działanie typu **HDInsightHive** w sekcji **activities**. W tym przykładzie [działanie HDInsight Hive](data-factory-hive-activity.md) przekształca dane z usługi Azure Blob Storage przez uruchomienie pliku skryptu Hive na klastrze usługi Azure HDInsight Hadoop. 
@@ -267,7 +267,7 @@ Pamiętaj o następujących kwestiach:
 
 Sekcja **typeProperties** jest inna dla każdego działania przekształcania. Aby dowiedzieć się więcej na temat właściwości typu obsługiwanych dla działania przekształcania, kliknij działanie przekształcania w [działania przekształcania danych](#data-transformation-activities) tabeli. 
 
-Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczek: Tworzenie pierwszego potoku do przetwarzania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md). 
+Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczka: Tworzenie pierwszego potoku do przetwarzania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md). 
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Wiele działań w potoku
 Poprzednie dwa przykładowe potoki zawierają tylko po jednym działaniu. Potok może obejmować więcej niż jedno działanie.  
@@ -278,7 +278,7 @@ Dwa działania można połączyć w łańcuch dzięki wyjściowy zestaw danych j
 
 ![Tworzenie łańcuchów działań w tym samym potoku](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-W tym przykładzie ten potok ma dwóch działań: działania Activity1 i Activity2. Działania Activity1 przyjmuje Dataset1 jako dane wejściowe i wyjściowe Dataset2. Działanie przyjmuje Dataset2 jako dane wejściowe i wyjściowe Dataset3. Ponieważ dane wyjściowe działania Activity1 (Dataset2) jest w danych wejściowych Activity2 i uruchamia Activity2 tylko wtedy, gdy działanie zakończy się pomyślnie i utworzenie wycinka Dataset2. Jeśli działania Activity1 nie powiedzie się z jakiegoś powodu, nie generuje wycinek Dataset2 2 działania nie działa dla tego wycinka (na przykład: 9: 00 do 10: 00). 
+W tym przykładzie ten potok ma dwa działania: Działania Activity1 i Activity2. Działania Activity1 przyjmuje Dataset1 jako dane wejściowe i wyjściowe Dataset2. Działanie przyjmuje Dataset2 jako dane wejściowe i wyjściowe Dataset3. Ponieważ dane wyjściowe działania Activity1 (Dataset2) jest w danych wejściowych Activity2 i uruchamia Activity2 tylko wtedy, gdy działanie zakończy się pomyślnie i utworzenie wycinka Dataset2. Jeśli działania Activity1 nie powiedzie się z jakiegoś powodu, nie generuje wycinek Dataset2 2 działania nie działa dla tego wycinka (na przykład: 9 AM celu 10 AM). 
 
 Ponadto można połączyć w łańcuch działań, które znajdują się w różnych potoków.
 

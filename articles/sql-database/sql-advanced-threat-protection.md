@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/16/2018
+ms.openlocfilehash: 40f6b6effa509fd2cfa40ecfc758ac37e0a66778
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997592"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538620"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Zaawansowana ochrona przed zagrożeniami dla bazy danych Azure SQL
 
@@ -30,7 +30,7 @@ SQL zaawansowane Threat Protection (ATP) zawiera zestaw zaawansowanych funkcji z
 - [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to łatwa do skonfigurowania usługa umożliwiająca odnajdywanie i śledzenie potencjalnych luk w zabezpieczeniach bazy danych oraz pomagająca w ich usuwaniu. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
 - [Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) wykrywa nietypowe działania wskazujące na nieprawidłowe i potencjalnie szkodliwe próby uzyskania dostępu do bazy danych lub wykorzystania jej. Stale monitoruje Twoją bazę danych pod kątem podejrzanych działań i zapewnia natychmiastowe alerty zabezpieczeń dotyczące potencjalnych luk w zabezpieczeniach, ataków polegających na wstrzyknięciu kodu SQL oraz anomalii we wzorcach dostępu do bazy danych. Alerty wykrywania zagrożeń zawierają szczegółowe informacje o podejrzanych działaniach i zalecane czynności dotyczące sposobu badania i ograniczenia zagrożenia.
 
-Włączyć usługę SQL ATP po włączyć wszystkie z nich uwzględnione funkcje. Jednym kliknięciem można włączyć usługę ATP na całym serwerze baz danych i zastosować ją do wszystkich baz danych na tym serwerze. 
+Włączyć usługę SQL ATP po włączyć wszystkie z nich uwzględnione funkcje. Jednym kliknięciem można włączyć usługę ATP na całym serwerze baz danych i zastosować ją do wszystkich baz danych na tym serwerze. Włączanie i zarządzanie ustawieniami zaawansowanej ochrony przed zagrożeniami wymaga należący do [Menedżer zabezpieczeń SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) roli, do roli administratora bazy danych SQL lub rola administratora programu SQL server. 
 
 Wyrównuje ceny zaawansowanej ochrony przed zagrożeniami za pomocą usługi Azure Security Center w warstwie standardowa czym każdy chroniony serwer usługi SQL Database będzie liczony jako jeden węzeł. Nowo chronionych zasobów kwalifikuje się do bezpłatnej wersji próbnej usługi Security Center w warstwie standardowa. Aby uzyskać więcej informacji, zobacz [usługi Azure Security Center, na stronie z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 

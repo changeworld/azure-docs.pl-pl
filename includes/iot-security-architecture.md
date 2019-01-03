@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: f2c7111373ac880d27298deb4fc919d797713f3e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264381"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995750"
 ---
-# <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internet of Things
+# <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
 
 Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń dla tego systemu i dodanie odpowiednich mechanizmów obronnych w związku z tym, ponieważ system został zaprojektowany i zaprojektowana. Należy zaprojektować produktu od samego początku z myślą o bezpieczeństwie, ponieważ zrozumienie, jak atakujący może być w stanie naruszyć bezpieczeństwo systemu, pomaga upewnić się, że odpowiednie środki zaradcze są stosowane od samego początku.
 
@@ -27,23 +27,23 @@ Celem modelowanie zagrożeń jest zrozumienie, jak osoba atakująca może być w
 
 Wiele zespołów programistycznych do doskonałą zadanie przechwytywania wymagań funkcjonalności dla systemu, które korzystną dla klientów. Jednak zidentyfikowanie-oczywisty sposób czy ktoś może wykorzystywać system jest trudniejsze. Modelowanie zagrożeń może pomóc zespołom programistycznym zrozumieć do czego służą osoba atakująca może i dlaczego. Modelowanie zagrożeń jest strukturą procesu, który tworzy decyzji projektowych dyskusji na temat zabezpieczeń w systemie, a także zmiany w projekcie zostaną wprowadzone po drodze wpływ na zabezpieczenia. Model zagrożeń jest po prostu dokumentu, niniejszy reprezentuje również idealny sposób, aby zapewnić ciągłość działalności biznesowej wiedzy, przechowywania lekcji pokazaliśmy i pomocy nowego zespołu dołączyć szybko. Na koniec wynikiem modelowanie zagrożeń jest umożliwienie innych aspektów zabezpieczeń, takich jak zobowiązań zabezpieczeń, jakie chcesz zapewnić klientom. Te zobowiązania w połączeniu z modelowanie zagrożeń informuje i dysku testowania rozwiązania Internetu rzeczy (IoT).
 
-### <a name="when-to-threat-model"></a>Kiedy model zagrożeń
+### <a name="when-to-do-threat-modeling"></a>Kiedy modelowanie wątkowości
 
 [Modelowanie zagrożeń](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) zapewnia największą wartość w przypadku, gdy dołączyć go w fazie projektowania. Podczas projektowania, masz największą elastyczność, aby wprowadzić zmiany w celu wyeliminowania zagrożenia. Eliminując zagrożenia zgodnie z projektem jest pożądanego rezultatu. Jest znacznie prostsze niż dodawanie środki zaradcze, ich testowania i zapewnienia są zawsze aktualne, a ponadto takie eliminacji nie zawsze jest możliwe. Trudniej można eliminować zagrożenia, ponieważ produkt staje się bardziej dojrzałych i z kolei ostatecznie wymaga więcej pracy i kompromisy znacznie trudniejsze niż zagrożeń na wczesnym etapie modelowania w trakcie opracowywania.
 
-### <a name="what-to-threat-model"></a>Co należy model zagrożeń
+### <a name="what-to-consider-for-threat-modeling"></a>Weź pod uwagę modelowanie wątkowości
 
-Należy zagrożeń modelu rozwiązania jako całości, a także skupić się w następujących obszarach:
+Należy rozważyć rozwiązanie jako całości, a także skoncentrować się na następujących obszarach:
 
 * Funkcje zabezpieczeń i prywatności
 * Funkcje, których błędy są istotne zabezpieczeń
 * Funkcje, które w ogóle granicy zaufania
 
-### <a name="who-threat-models"></a>Modele kto zagrożeń
+### <a name="who-performs-threat-modeling"></a>Kto wykonuje modelowanie zagrożeń
 
 Modelowanie zagrożeń jest procesem, jak każdy inny. To dobry pomysł, aby traktować dokument modelu zagrożeń, takich jak jakikolwiek inny składnik rozwiązania i zweryfikuje go. Wiele zespołów programistycznych do doskonałą zadanie przechwytywania wymagań funkcjonalności dla systemu, które korzystną dla klientów. Jednak zidentyfikowanie-oczywisty sposób czy ktoś może wykorzystywać system jest trudniejsze. Modelowanie zagrożeń może pomóc zespołom programistycznym zrozumieć do czego służą osoba atakująca może i dlaczego.
 
-### <a name="how-to-threat-model"></a>Jak model zagrożeń
+### <a name="how-to-perform-threat-modeling"></a>Jak wykonać modelowania zagrożeń
 
 Zagrożenia, modelowanie procesu składa się z czterech krokach; dostępne są następujące czynności:
 
@@ -57,16 +57,21 @@ Zagrożenia, modelowanie procesu składa się z czterech krokach; dostępne są 
 Trzy reguły akceptacji pamiętać podczas tworzenia modelu zagrożeń:
 
 1. Utwórz diagram poza architektury referencyjnej.
-1. Uruchom najpierw szeroki zakres. Zapoznaj się z omówieniem i zrozumieć system jako całość, przed rozpoczęciem pracy głębokiego. Takie podejście pomaga upewnić się, że zostanie rozszerzony w odpowiednich miejscach.
-1. Proces dysku, nie przegap proces dysku, możesz. Znajdowanie problemu w fazie modelowania, aby go eksplorować. Rozpocznij! Nie zatwierdzanych slavishly wykonaj następujące kroki.
+
+2. Uruchom najpierw szeroki zakres. Zapoznaj się z omówieniem i zrozumieć system jako całość, przed rozpoczęciem pracy głębokiego. Takie podejście pomaga upewnić się, że zostanie rozszerzony w odpowiednich miejscach.
+
+3. Proces dysku, nie przegap proces dysku, możesz. Znajdowanie problemu w fazie modelowania, aby go eksplorować. Rozpocznij! Nie zatwierdzanych slavishly wykonaj następujące kroki.
 
 #### <a name="threats"></a>Zagrożenia
 
 Cztery podstawowe elementy model zagrożeń są:
 
 * Procesy, takie jak usługi sieci web, usług systemu Win32, i * nix demonów. Niektóre jednostki złożone (na przykład bram działających w terenie i czujniki) może być usunięte, jako proces, gdy techniczne w Przechodzenie do szczegółów w tych obszarach nie jest możliwe.
+
 * Magazyny danych (wszędzie tam, gdzie dane są przechowywane, np. plik konfiguracji lub bazy danych)
+
 * Przepływ danych (gdzie dane są przenoszone między innymi elementami w aplikacji)
+
 * Podmioty zewnętrzne (wszystkie elementy, które wchodzi w interakcję z systemem, ale nie jest pod kontrolą aplikacji, przykłady obejmują użytkowników oraz urządzeń źródła danych)
 
 Wszystkie elementy na diagramie architektury podlegają zagrożenia; w tym artykule skrót klawiszowy krok. Odczyt [modelowania zagrożeń ponownie, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) Aby dowiedzieć się więcej o elementach krok.
@@ -135,7 +140,7 @@ Połączone urządzenia specjalnych dokonano znaczących potencjalnych obszarów
 
 Gdy eksplorujesz wzorce interakcji, Przyjrzyj się "control urządzenia" i "urządzenie danych" na tym samym poziomie uwagi podczas modelowania zagrożeń. "Urządzenie control" mogą być klasyfikowane jako wszelkie informacje, który został dostarczony do urządzenia przez każdą stronę w celu zmiany lub wywieranie wpływu na jego zachowanie w kierunku jej stan lub stan swojego środowiska. "Dane urządzenie" mogą być klasyfikowane jako wszystkie informacje, które urządzenia emituje do drugiej strony, o stanie i zaobserwowanego stanie jego środowiska.
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Architektura referencyjna IoT platformy Azure do modelowania zagrożeń
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Wykonywanie dla architektura referencyjna IoT platformy Azure do modelowania zagrożeń
 
 Firma Microsoft używa framework opisane wcześniej w celu dla usługi Azure IoT do modelowania zagrożeń. Poniższa sekcja używa konkretny przykład architektura referencyjna IoT platformy, aby zademonstrować, jak wziąć pod uwagę dla IoT do modelowania zagrożeń i jak rozwiązać zagrożeniami zidentyfikowanymi. W tym przykładzie identyfikuje cztery główne obszary koncentracji uwagi:
 
@@ -164,15 +169,15 @@ W tej sekcji przedstawiono architekturę opisanych zapewniający modelowanie zag
 
 W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładzie próbuje zmniejszyć liczbę różnych zagrożeń na różnych etapach/informacje o danych istnieje w: proces, komunikacji i magazynu. Poniżej przedstawiono omówienie najbardziej typowymi dla kategorii "procesu", następuje omówienie, jak te zagrożenia mogą najlepiej skorygowane:
 
-**Fałszowanie (S)**: osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, na poziomie oprogramowania lub sprzętu i następnie uzyskać dostęp do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
+**Fałszowanie (S)**: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
 
-**Odmowa usługi (D)**: urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
+**Odmowa usługi (D)**: Urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
 
-**Manipulowanie (T)**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub kryptograficznych urządzeń, przytrzymując klawisz materiały były dostępne do nielegalnego programu. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
+**Manipulowanie (T)**: Osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia materiału klucza lub funkcji kryptograficznych zawierający kluczy materiały były dostępne dla program nielegalnemu dostępowi. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
 
 **Ujawnienie informacji, (I)**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i bramy kontrolera lub pola lub brama chmury do Lewarek poza informacji.
 
-**Podniesienie poziomu uprawnień (E)**: urządzenia, która wykonuje określoną funkcję aktualizację można wymusić robić coś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
+**Podniesienie poziomu uprawnień (E)**: Urządzenia, która wykonuje określoną funkcję można wymusić czymś innym. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
 | **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
@@ -185,33 +190,33 @@ W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładz
 
 Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
-**Fałszowanie**: osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, na poziomie oprogramowania lub sprzętu, a następnie ma dostęp do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza została pobrana z.
+**Fałszowanie**: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z.
 
-**Odmowa usługi**: urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
+**Odmowa usługi**: Urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
 
-**Manipulowanie**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub kryptograficznych urządzeń, przytrzymując klawisz materiały były dostępne do nielegalnego programu.
+**Manipulowanie**: Osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia materiału klucza lub funkcji kryptograficznych zawierający kluczy materiały były dostępne dla program nielegalnemu dostępowi.
 
-**Manipulowanie**: kamera nadzoru, która jest wyświetlany obraz widoczne spektrum pusty korytarzowych może mieć na celu fotografii takich korytarzowych. Czujnik dymu lub ognia może zgłaszać ktoś zawierający jaśniejszego pod nim. W obu przypadkach urządzenie może być z technicznego punktu widzenia pełni godna zaufania do systemu, ale zgłasza manipulować informacji.
+**Manipulowanie**: Kamera nadzoru, która jest wyświetlany obraz widoczne spektrum pusty korytarzowych może mieć na celu fotografii takich korytarzowych. Czujnik dymu lub ognia może zgłaszać ktoś zawierający jaśniejszego pod nim. W obu przypadkach urządzenie może być z technicznego punktu widzenia pełni godna zaufania do systemu, ale zgłasza manipulować informacji.
 
-**Manipulowanie**: osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
+**Manipulowanie**: Osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
 
-**Manipulowanie**: osoba atakująca może całkowicie lub częściowo zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub funkcji kryptograficznych przytrzymanie klucza materiały były dostępne do nielegalnego programu.
+**Manipulowanie**: Osoba atakująca może całkowicie lub częściowo zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia materiału klucza lub funkcji kryptograficznych zawierający kluczy materiały były dostępne Aby program nielegalnemu dostępowi.
 
 **Ujawnienie informacji**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom.
 
-**Ujawnienie informacji**: osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między bramy urządzenia i kontrolera lub pola lub brama chmury do Lewarek poza informacji.
+**Ujawnienie informacji**: Osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i bramy kontrolera lub pola lub brama chmury do Lewarek poza informacji.
 
-**Odmowa usługi**: urządzenia można wyłączyć lub przekształcane w trybie, gdy komunikacja nie jest możliwe (jest to zamierzone, w wielu maszyn przemysłowych).
+**Odmowa usługi**: Urządzenie może wyłączone lub włączone w trybie, gdy komunikacja nie jest możliwe (jest to zamierzone, w wielu maszyn przemysłowych).
 
-**Manipulowanie**: urządzenie można tak skonfigurować, aby działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane
+**Manipulowanie**: Urządzenie można tak skonfigurować, aby działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane
 
-**Podniesienie uprawnień**: urządzenia, która wykonuje określoną funkcję aktualizację można wymusić robić coś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
+**Podniesienie uprawnień**: Urządzenia, która wykonuje określoną funkcję można wymusić czymś innym. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
-**Odmowa usługi**: urządzenia mogą być uwzględniane w stanie, gdy komunikacja nie jest możliwe.
+**Odmowa usługi**: Urządzenia mogą być uwzględniane w stanie, gdy komunikacja nie jest możliwe.
 
-**Manipulowanie**: urządzenie można tak skonfigurować, aby działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane.
+**Manipulowanie**: Urządzenia mogą być konfigurowane, działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane.
 
-**Fałszowanie/Tampering/odrzucenie**: Jeśli nie jest zabezpieczone (czyli rzadko w przypadku klienta zdalnego sterowania), osoba atakująca może anonimowo manipulowania stan urządzenia. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
+**Fałszowanie/naruszeniem/odrzucenie**: Jeśli nie jest zabezpieczone (czyli rzadko w przypadku klienta zdalnego sterowania), osoba atakująca może anonimowo manipulowania stan urządzenia. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
 
 #### <a name="communication"></a>Komunikacja
 
@@ -227,9 +232,9 @@ Zagrożenia wokół ścieżka komunikacji między urządzeniami, urządzeń i br
 
 Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
-**Odmowa usługi**: ograniczone urządzeń z systemem ogólnie DoS zagrożeń podczas ich aktywnie nasłuchuje połączeń przychodzących lub niechciane datagramów w sieci, ponieważ osoba atakująca może otwierać wiele połączeń w sposób równoległy i nie ich usługi lub usług ich powoli, lub urządzenie może zostać przeciążony niepożądanym ruchem sieciowym. W obu przypadkach urządzenia mogą skutecznie przestać działać w sieci.
+**Odmowa usługi**: Ograniczone urządzeń z systemem ogólnie DoS zagrożeń podczas ich aktywnie nasłuchuje połączeń przychodzących lub niechciane datagramów w sieci, ponieważ osoba atakująca może otwierać wiele połączeń w sposób równoległy i nie usługa je lub usługi ich powoli lub urządzenie może zostać nadmiernej ilości danych z niepożądanym ruchem sieciowym. W obu przypadkach urządzenia mogą skutecznie przestać działać w sieci.
 
-**Fałszowania, ujawnienia informacji**: ograniczone i urządzenia specjalnych często mają zabezpieczeń jeden dla wszystkich urządzeń, takich jak hasła lub numeru PIN ochrony lub całkowicie opierają się na ufanie sieci, co oznacza powodują udzielenie dostępu do informacje, gdy urządzenie jest w tej samej sieci, a tej sieci często tylko jest chroniony przy użyciu klucza wstępnego. Oznacza to, gdy nie są ujawniane wspólny klucz tajny na urządzeniu lub w sieci, istnieje możliwość kontrolę na urządzeniem lub obserwować dane emitowane przez urządzenie.  
+**Fałszowania, ujawnienia informacji**: Ograniczone i urządzenia specjalnych często mają zabezpieczeń jeden dla wszystkich urządzeń, takich jak hasła lub numeru PIN ochrony lub całkowicie polegać na ufanie sieci, co oznacza, że przyznać dostęp do informacji, gdy urządzenie znajduje się w tej samej sieci i sieci często tylko jest chroniony przy użyciu klucza wstępnego. Oznacza to, gdy nie są ujawniane wspólny klucz tajny na urządzeniu lub w sieci, istnieje możliwość kontrolę na urządzeniem lub obserwować dane emitowane przez urządzenie.  
 
 **Fałszowanie**: osoba atakująca może przechwycić lub częściowo zastąpić emisji i podszywały się pod inicjatorem (człowiek pośrodku)
 
@@ -258,9 +263,9 @@ Brama chmury jest przede wszystkim niestandardowych utworzonych oprogramowanie j
 
 System kontroli (lub kontroler) jest rozwiązanie programowe, z urządzenia, lub bramy w terenie lub brama chmury na potrzeby kontrolowania jednego lub wielu urządzeń i/lub do zbierania i/lub przechowywać i/lub analizować dane urządzenie, aby obejrzeć prezentację, interfejsem lub cele kolejne kontrolki. Systemy kontroli są tylko jednostki w zakresie tej dyskusji, która natychmiast może ułatwić interakcji z użytkownikami. Wyjątki są pośrednich fizycznych powierzchni na urządzeniach, takich jak przełącznik, który umożliwia użytkownikowi wyłączanie urządzenia lub zmieniać jej inne właściwości i dla których nie ma odpowiednika funkcjonalności, który jest możliwy cyfrowo.
 
-Pośredni powierzchnie kontroli fizycznej dotyczą w przypadku, gdy regulujące logiki ogranicza funkcji powierzchni fizyczny, taki sposób, że zdalne mogą być inicjowane equivalent — funkcja lub można uniknąć konfliktów danych wejściowych z danymi wejściowymi zdalnego — przykład intermediated Sterowanie pod względem koncepcyjnym są dołączone do systemu lokalnym systemie kontroli, który korzysta z taką samą funkcjonalność podstawowego, jak inne systemy zdalnego sterowania, które urządzenia mogą być dołączone do równolegle. Najważniejszych zagrożeń bezpieczeństwa chmury obliczeniowej, może być odczytany przy [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) strony.
+Pośredni powierzchnie kontroli fizycznej dotyczą w przypadku, gdy regulujące logiki ogranicza funkcji powierzchni fizyczny, taki sposób, że zdalne mogą być inicjowane equivalent — funkcja lub można uniknąć konfliktów danych wejściowych z danymi wejściowymi zdalnego — przykład intermediated Sterowanie pod względem koncepcyjnym są dołączone do systemu lokalnym systemie kontroli, który korzysta z taką samą funkcjonalność podstawowego, jak inne systemy zdalnego sterowania, które urządzenia mogą być dołączone do równolegle. Najważniejszych zagrożeń bezpieczeństwa chmury obliczeniowej, może być odczytany przy [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) strony.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0b8d408482f1f6e2bcd25182208a46d28f7b4f7a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 3cd34bf67b0d796af71036e7d14834a061803973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633042"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628087"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Uruchamiać zadania Apache Sqoop przy użyciu zestawu SDK platformy .NET dla usługi Apache Hadoop w HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -24,12 +24,11 @@ Dowiedz się, jak uruchamiać zadania Apache Sqoop w HDInsight w celu importowan
 
 > [!NOTE]
 > Chociaż procedury opisane w tym artykule można używać z oboma klastra HDInsight z systemem Windows lub opartych na systemie Linux, działają tylko z klienta Windows. Aby wybrać inne metody, selektor karty w górnej części tego artykułu.
-> 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem tego samouczka, konieczne jest posiadanie następujących elementów:
 
-* Klaster Hadoop w HDInsight. Aby uzyskać więcej informacji, zobacz [utworzenia klastra i bazy danych SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Klaster platformy Apache Hadoop w HDInsight. Aby uzyskać więcej informacji, zobacz [utworzenia klastra i bazy danych SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>W klastrach HDInsight przy użyciu zestawu SDK platformy .NET przy użyciu narzędzia Sqoop
 Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, tak, aby łatwiej pracować z klastrami HDInsight za pomocą platformy .NET. W tej sekcji utworzysz aplikację konsoli C# do wyeksportowania tabeli hivesampletable do tabeli usługi Azure SQL Database, który został utworzony we wcześniejszej części tego samouczka.
@@ -111,14 +110,14 @@ Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, tak, aby �
 ## <a name="limitations"></a>Ograniczenia
 HDInsight opartych na systemie Linux przedstawia następujące ograniczenia:
 
-* Zbiorczy Eksport: łącznik narzędzia Sqoop, który jest używany do eksportowania danych do programu Microsoft SQL Server lub usługi Azure SQL Database nie obsługuje obecnie zbiorcze operacje wstawiania.
+* Zbiorczy Eksport: Łącznik Sqoop, który jest używany do eksportowania danych do programu Microsoft SQL Server lub usługi Azure SQL Database nie obsługuje obecnie zbiorcze operacje wstawiania.
 
-* Przetwarzanie wsadowe: za pomocą `-batch` przełącznika, gdy wykonuje operacje wstawiania, Sqoop wykonuje wiele operacji wstawiania zamiast przetwarzanie wsadowe operacji wstawiania.
+* Przetwarzanie wsadowe: Za pomocą `-batch` przełącznika, Sqoop wykonuje wiele operacji wstawiania zamiast przetwarzanie wsadowe operacji wstawiania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz masz pokazaliśmy, jak przy użyciu narzędzia Sqoop. Aby dowiedzieć się więcej, zobacz:
 
-* [Używanie technologii Oozie z HDInsight](../hdinsight-use-oozie.md): Użyj narzędzia Sqoop akcji w przepływie pracy programu Oozie.
-* [Analizowanie danych dotyczących opóźnień lotów przy użyciu HDInsight](../hdinsight-analyze-flight-delay-data.md): Użyj programu Hive do analizowania lotu opóźnienie danych i do eksportowania danych do usługi Azure SQL database przy użyciu narzędzia Sqoop.
-* [Przekazywanie danych do HDInsight](../hdinsight-upload-data.md): znajdowanie innych metod do przekazywania danych do usługi HDInsight lub Azure Blob storage.
+* [Za pomocą usług Apache Oozie HDInsight](../hdinsight-use-oozie.md): Użyj narzędzia Sqoop akcji w przepływ pracy programu Oozie.
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu HDInsight](../hdinsight-analyze-flight-delay-data.md): Użyj Apache Hive do analizowania danych dotyczących opóźnień lotów, a następnie wyeksportować dane do usługi Azure SQL database przy użyciu narzędzia Sqoop.
+* [Przekazywanie danych do HDInsight](../hdinsight-upload-data.md): Znajdź innych metod do przekazywania danych do usługi HDInsight lub Azure Blob storage.
 

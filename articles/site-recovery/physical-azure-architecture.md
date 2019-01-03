@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 3f31fa8d26b0fb5f247a0b4c8c65abd50c5bc1e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5602e68e546c59e3ee43442fdf0cdf33b9cf6a29
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865305"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975036"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Serwer fizyczny do architektury odzyskiwania po awarii platformy Azure
 
@@ -63,11 +63,11 @@ Po skonfigurowaniu replikacji i po uruchomieniu próbnego odzyskiwania po awarii
 - Po wyzwoleniem początkowej trybu failover, należy zatwierdzić je, aby można było rozpocząć uzyskiwanie dostępu do obciążenia maszyny wirtualnej platformy Azure.
 - Po ponownym udostępnieniu głównej lokacji lokalnej można do niej powrócić po awarii.
 - Należy skonfigurować infrastrukturę powrotu po awarii, w tym:
-    - **Tymczasowy serwer przetwarzania na platformie Azure**: Aby zakończyć się niepowodzeniem, powrót po awarii z platformy Azure, należy skonfigurować Maszynę wirtualną platformy Azure do działania jako serwer przetwarzania do obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
-    - **Połączenie sieci VPN**: do powrotu po awarii, potrzebujesz połączenia sieci VPN (lub usługi Azure ExpressRoute) z sieci platformy Azure do lokacji lokalnej.
+    - **Tymczasowy serwer przetwarzania na platformie Azure**: Aby nie powiedzie się, powrót po awarii z platformy Azure, należy skonfigurować Maszynę wirtualną platformy Azure do działania jako serwer przetwarzania do obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
+    - **Połączenie sieci VPN**: Do powrotu po awarii, potrzebujesz połączenia sieci VPN (lub usługi Azure ExpressRoute) z sieci platformy Azure do lokacji lokalnej.
     - **Osobny główny serwer docelowy**: Domyślnie główny serwer docelowy, który został zainstalowany na serwerze konfiguracji w programie VMware lokalnych maszyn wirtualnych, obsługuje powrót po awarii. Jednakże jeśli musisz zakończyć się niepowodzeniem ponownie dużych ilości ruchu należy skonfigurować oddzielny lokalny główny serwer docelowy w tym celu.
-    - **Zasady powrotu po awarii**: aby móc przeprowadzić ponowną replikację do lokacji lokalnej, należy utworzyć zasady powrotu po awarii. Ten został utworzony automatycznie podczas tworzenia zasad replikacji ze środowiska lokalnego do platformy Azure.
-    - **Infrastruktura VMware**: infrastruktura VMware są potrzeby powrotu po awarii. Nie można powracać po awarii do serwera fizycznego.
+    - **Zasady powrotu po awarii**: Replikacja z lokacji lokalnej, potrzebne są zasady powrotu po awarii. Ten został utworzony automatycznie podczas tworzenia zasad replikacji ze środowiska lokalnego do platformy Azure.
+    - **Infrastruktura VMware**: Infrastruktura VMware potrzeby powrotu po awarii. Nie można powracać po awarii do serwera fizycznego.
 - Po składniki znajdują się w miejscu, powrót po awarii odbywa się w trzech etapach:
     - Etap 1: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure, dzięki czemu mają być replikowane na platformie Azure do lokalnych maszyn wirtualnych VMware.
     - Etap 2: Uruchamianie trybu failover do lokacji lokalnej.

@@ -1,5 +1,5 @@
 ---
-title: 'Usługi Azure AD Connect: Uwierzytelnianie przekazywane — często zadawane pytania | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Uwierzytelnianie przekazywane — często zadawane pytania | Dokumentacja firmy Microsoft'
 description: Odpowiedzi na często zadawane pytania dotyczące uwierzytelniania przekazywanego usługi Azure Active Directory
 services: active-directory
 keywords: Azure AD Connect uwierzytelniania przekazywanego, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619825"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789096"
 ---
-# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
+# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD). Zachowaj sprawdza, czy ponownie zaktualizowanej zawartości.
 
@@ -74,7 +74,7 @@ Jeśli nie skonfigurowano funkcję zapisywania zwrotnego haseł dla określonego
 - Agentów uwierzytelniania należy żądań HTTP za pośrednictwem portu 80 do pobierania list odwołania certyfikatów SSL (CRL).
 
      >[!NOTE]
-     >Najnowsze aktualizacje zredukowanie liczby portów wymaganych przez tę funkcję. W przypadku starszych wersji programu Azure AD Connect lub agenta uwierzytelniania, te porty były otwarte także: 5671, 8080, 9090, 9091, 9350, 9352 i 10100 10120.
+     >Najnowsze aktualizacje zredukowanie liczby portów wymaganych przez tę funkcję. W przypadku starszych wersji programu Azure AD Connect lub Agent uwierzytelniania nie zamykaj te porty także: 5671 i 8080, 9090, 9091, 9350, 9352 i 10100 10120.
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Można agentów uwierzytelniania przekazywanego komunikują się za pośrednictwem serwera proxy ruchu wychodzącego sieci web?
 
@@ -83,7 +83,7 @@ Tak. Funkcja autowykrywania serwera Proxy sieci Web (WPAD) jest włączone w śr
 Jeśli nie masz WPAD w danym środowisku, można dodać informacje o serwerze proxy (jak pokazano poniżej), umożliwia agenta uwierzytelniania przekazywanego, do komunikowania się z usługą Azure AD:
 - Skonfiguruj informacje dotyczące serwera proxy w programie Internet Explorer, przed zainstalowaniem agenta uwierzytelniania przekazywanego na serwerze. Pozwoli to ukończyć instalację agenta uwierzytelniania, ale będzie nadal wyświetlany jako **nieaktywny** w portalu administracyjnym.
 - Na serwerze przejdź do "C:\Program Files\Microsoft Azure AD Connect Agent uwierzytelniania".
-- Edytuj plik konfiguracji "AzureADConnectAuthenticationAgentService" i dodaj następujące wiersze (Zastąp "http://contosoproxy.com:8080" za pomocą adresu serwera proxy rzeczywiste):
+- Edytuj plik konfiguracji "AzureADConnectAuthenticationAgentService" i dodaj następujące wiersze (Zastąp "http\:/ / contosoproxy.com:8080" za pomocą adresu serwera proxy rzeczywiste):
 
 ```
    <system.net>
@@ -156,7 +156,7 @@ Po odinstalowaniu agenta uwierzytelniania przekazywanego z serwera powoduje serw
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Masz starszą dzierżawy, który został pierwotnie instalację za pomocą usług AD FS.  Firma Microsoft niedawno zmigrowana do PTA, ale teraz nie widać zmian nazwy UPN synchronizacji z usługą Azure AD.  Dlaczego są nasze UPN zmiany nie są synchronizowane?
 
-Odp.: w następujących okolicznościach zmiany nazwy UPN w środowisku lokalnym mogą nie synchronizuje się w przypadku:
+ODP.: W następujących okolicznościach zmiany nazwy UPN w środowisku lokalnym mogą nie synchronizuje się w przypadku:
 
 - Dzierżawy usługi Azure AD została utworzona przed 15 w czerwcu 2015 roku
 - Początkowo zostały możesz Sfederowane za pomocą dzierżawy usługi Azure AD za pomocą usług AD FS do uwierzytelniania
@@ -174,10 +174,10 @@ Dzierżaw utworzonych po 15 w czerwcu 2015 roku ma domyślne zachowanie synchron
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Szybki start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
 - [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
-- [Blokada Smart](../authentication/howto-password-smart-lockout.md): informacje dotyczące konfigurowania funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
-- [Rozbudowana technicznie](how-to-connect-pta-how-it-works.md): zrozumienie sposobu działania funkcji uwierzytelniania przekazywanego.
+- [Blokada Smart](../authentication/howto-password-smart-lockout.md): Dowiedz się, jak skonfigurować funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
+- [Rozbudowana technicznie](how-to-connect-pta-how-it-works.md): Dowiedz się, jak działa funkcja uwierzytelniania przekazywanego.
 - [Rozwiązywanie problemów z](tshoot-connect-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy przy użyciu funkcji uwierzytelniania przekazywanego.
 - [Szczegółowe omówienie zabezpieczeń](how-to-connect-pta-security-deep-dive.md): Uzyskaj informacje szczegółowe techniczne na temat funkcji uwierzytelniania przekazywanego.
-- [Usługa Azure bezproblemowe logowanie Jednokrotne AD](how-to-connect-sso.md): więcej informacji na temat tej dodatkowej funkcji.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Użyj Forum usługi Azure Active Directory do pliku sugestie dotyczące nowych funkcji.
+- [Bezproblemowe logowanie Jednokrotne usługi Azure AD](how-to-connect-sso.md): Dowiedz się więcej na temat tej dodatkowej funkcji.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Forum usługi Azure Active Directory umożliwia pliku sugestie dotyczące nowych funkcji.
 

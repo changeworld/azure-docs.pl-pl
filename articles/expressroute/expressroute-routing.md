@@ -1,5 +1,5 @@
 ---
-title: 'Routing wymagania — ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+title: 'Routing wymagania — ExpressRoute: Azure | Microsoft Docs'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania routingu oraz zarządzania nim na potrzeby obwodów usługi ExpressRoute.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 73dc4b14214c10966dca1a6cd7ebd41af019f640
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 5dde36bb8710190627a8780ed740957e62a57da0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406559"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994585"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -120,7 +120,7 @@ Wymiana routingu będzie odbywać się za pośrednictwem protokołu eBGP. Sesje 
 ## <a name="autonomous-system-numbers"></a>Numery systemu autonomicznego
 Firma Microsoft używa numeru AS 12076 do publicznej i prywatnej komunikacji równorzędnej Azure oraz komunikacji równorzędnej Microsoft. Zarezerwowaliśmy numery AS od 65515 do 65520 do użytku wewnętrznego. Obsługiwane są zarówno 16-, jak i 32-bitowe numery AS.
 
-Nie ma żadnych wymagań związanych z symetrią transferu danych. Ścieżki przekazywania dalej i ścieżki zwracania mogą przechodzić różne pary routerów. Trasy identyczne muszą być anonsowane ze wszystkich stron w wielu parach obwodów należących do użytkownika. Metryki tras nie muszą być identyczne.
+Nie ma żadnych wymagań związanych z symetrią transferu danych. Ścieżki przekazywania dalej i ścieżki zwracania mogą przechodzić różne pary routerów. Trasy identyczne muszą być anonsowane ze wszystkich stron w wielu parach obwodów należących do Ciebie. Metryki tras nie muszą być identyczne.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Agregacja tras i limity prefiksów
 Firma Microsoft obsługuje do 4000 prefiksów anonsowanych nam za pośrednictwem prywatnej komunikacji równorzędnej Azure. Tę liczbę można zwiększyć do 10 000 prefiksów, jeśli zostanie włączony dodatek Premium usługi ExpressRoute. Akceptujemy do 200 prefiksów na sesję protokołu BGP dla publicznej komunikacji równorzędnej Azure i komunikacji równorzędnej Microsoft. 
@@ -135,7 +135,7 @@ Trasy domyślne są dozwolone tylko w sesjach prywatnej komunikacji równorzędn
 
  Aby można było włączyć łączność z innymi usługami i usługami infrastruktury Azure, musi być spełniony jeden z poniższych warunków:
 
-* W publicznej komunikacji równorzędnej Azure jest włączone przekierowywanie ruchu do publicznych punktów końcowych.
+* Publicznej komunikacji równorzędnej Azure jest włączone przekierowywanie ruchu do publicznych punktów końcowych.
 * Używasz routingu zdefiniowanego przez użytkownika, aby zezwolić na połączenie z Internetem dla każdej podsieci wymagającej takiego połączenia.
 
 > [!NOTE]
@@ -215,7 +215,7 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Usługa Azure globalnego usług * | 12076:5050 |
 | Inne usługi online Office 365 | 12076:5100 |
 
-***Usługi globalne platformy Azure obejmuje DevOps platformy Azure**\**
+***Usługi globalne platformy Azure obejmuje DevOps platformy Azure**
 
 
 > [!NOTE]

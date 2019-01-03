@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e11c34b2587dcb7602161d36ba4deda1dca73c82
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9af2dd3a17eb150d44bf69cda86e480a083a3164
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720977"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971209"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Monitorowanie wydajności w aplikacjach internetowych
 
@@ -32,11 +32,11 @@ Po stronie klienta usługi Application Insights może potrwać dane telemetryczn
 ## <a name="setup"></a>Konfigurowanie monitorowania wydajności
 Jeśli nie zostały jeszcze dodane usługi Application Insights do projektu, (to znaczy, jeśli nie ma w pliku ApplicationInsights.config), wybierz jedną z następujących sposobów, aby rozpocząć pracę:
 
-* [Aplikacje sieci web ASP.NET](app-insights-asp-net.md)
-  * [Dodawanie monitorowania wyjątku bez agenta](app-insights-asp-net-exceptions.md)
-  * [Dodanie funkcji monitorowania zależności](app-insights-monitor-performance-live-website-now.md)
-* [Aplikacji sieci web w technologii J2EE](app-insights-java-get-started.md)
-  * [Dodanie funkcji monitorowania zależności](app-insights-java-agent.md)
+* [Aplikacje sieci web ASP.NET](../azure-monitor/app/asp-net.md)
+  * [Dodawanie monitorowania wyjątku bez agenta](../azure-monitor/app/asp-net-exceptions.md)
+  * [Dodanie funkcji monitorowania zależności](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Aplikacji sieci web w technologii J2EE](../azure-monitor/app/java-get-started.md)
+  * [Dodanie funkcji monitorowania zależności](../azure-monitor/app/java-agent.md)
 
 ## <a name="view"></a>Eksplorowanie metryk wydajności
 W [witryny Azure portal](https://portal.azure.com), przejdź do zasobu usługi Application Insights, skonfigurowanej dla swojej aplikacji. Blok przeglądu przedstawia dane wydajności podstawowych:
@@ -152,11 +152,11 @@ Czasami ten problem nie będzie w kodzie, ale raczej powstanie zależności kod 
 
 <!--Link references-->
 
-[availability]: app-insights-monitor-web-app-availability.md
-[diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-asp-net.md
+[availability]: ../azure-monitor/app/monitor-web-app-availability.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
+[greenbrown]: ../azure-monitor/app/asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
-[redfield]: app-insights-monitor-performance-live-website-now.md
+[redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 [livestream]: app-insights-live-stream.md

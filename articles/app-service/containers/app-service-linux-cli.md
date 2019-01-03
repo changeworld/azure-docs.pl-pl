@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 0b125903493712dca3b8c8c3a9ce663f9e1b408c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257645"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720392"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure
 
@@ -108,5 +108,5 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [Co to jest Azure App Service w systemie Linux?](app-service-linux-intro.md)
 * [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Usługi Azure Cloud Shell (wersja zapoznawcza)](../../cloud-shell/overview.md)
-* [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Ciągłe wdrażanie za pomocą aplikacji Web App for Containers](app-service-linux-ci-cd.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8a8b1e29a6504c725e244efa1ae8c37a9a0d8420
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0d673ee9d316f14f95f6924929ad319eae13efcc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726274"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973319"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w usłudze Application Insights
 Metryki w [usługi Application Insights] [ start] są mierzone wartości i liczby zdarzeń, które są wysyłane w danych telemetrycznych z Twojej aplikacji. Ułatwiają one wykryć problemy z wydajnością i obserwuj trendy w sposobu korzystania z aplikacji. Istnieje szereg standardowych metryk i można również utworzyć własne niestandardowe metryki i zdarzenia.
@@ -140,7 +140,7 @@ Można również filtrować według **źródło ruchu syntetycznego**.
 ### <a name="to-add-properties-to-the-filter-list"></a>Aby dodać właściwości do listy filtrów
 Czy chcesz filtrowanie danych telemetrycznych na kategorii w wybranej przez użytkownika? Na przykład może podzielić się użytkowników w różnych kategoriach, a chcesz się podzielić dane według tych kategorii.
 
-[Utwórz własną właściwość](app-insights-api-custom-events-metrics.md#properties). Ustaw go w [inicjatora Telemetrii](app-insights-api-custom-events-metrics.md#defaults) aby były wyświetlane wszystkie dane telemetryczne — w tym standardowe dane telemetryczne wysyłane przez różne moduły zestawu SDK.
+[Utwórz własną właściwość](../azure-monitor/app/api-custom-events-metrics.md#properties). Ustaw go w [inicjatora Telemetrii](../azure-monitor/app/api-custom-events-metrics.md#defaults) aby były wyświetlane wszystkie dane telemetryczne — w tym standardowe dane telemetryczne wysyłane przez różne moduły zestawu SDK.
 
 ## <a name="edit-the-chart-type"></a>Edytuj typ wykresu
 Zwróć uwagę, że można przełączać się między siatki i wykresy:
@@ -176,13 +176,13 @@ Aby otrzymywać powiadomienia pocztą e-mail wyjątkowe wartości dowolnej metry
 
 
 ## <a name="continuous-export"></a>Ciągły eksport
-Jeśli chcesz, aby dane wyeksportowane stale, dzięki czemu można przetwarzać go zewnętrznie, rozważ użycie [Eksport ciągły](app-insights-export-telemetry.md).
+Jeśli chcesz, aby dane wyeksportowane stale, dzięki czemu można przetwarzać go zewnętrznie, rozważ użycie [Eksport ciągły](../azure-monitor/app/export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
 Jeśli chcesz, aby jeszcze dokładniej widoków danych, możesz to zrobić [eksportowanie do usługi Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analiza
-[Analiza](app-insights-analytics.md) jest bardziej wszechstronna sposób analizować dane telemetryczne za pomocą zaawansowanego języka zapytań. Użyj go, jeśli chcesz połączyć i obliczenia wyników metryk spośród lub wykonywać szczegółowe eksploracji ostatnią wydajność Twojej aplikacji. 
+[Analiza](../azure-monitor/app/analytics.md) jest bardziej wszechstronna sposób analizować dane telemetryczne za pomocą zaawansowanego języka zapytań. Użyj go, jeśli chcesz połączyć i obliczenia wyników metryk spośród lub wykonywać szczegółowe eksploracji ostatnią wydajność Twojej aplikacji. 
 
 Z wykresu metryki możesz kliknąć ikonę analiza, aby przejść bezpośrednio do równoważne zapytania usługi Analytics.
 
@@ -193,7 +193,7 @@ Z wykresu metryki możesz kliknąć ikonę analiza, aby przejść bezpośrednio 
 
     Jeśli chcesz ustawić różne filtry na różnych wykresów, należy je utworzyć w różnych bloków, zapisać je jako osobne Ulubione. Jeśli chcesz, możesz przypiąć je do pulpitu nawigacyjnego tak, aby można je wyświetlić obok siebie.
 * Jeśli wykres jest Grupuj według właściwości, która nie jest zdefiniowana w metryki, będą nic na wykresie. Spróbuj wyczyścić "Grupuj według", lub wybierz właściwość grupowania.
-* Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla usług sieci web Java, aplikacjach klasycznych Windows [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](app-insights-monitor-performance-live-website-now.md), i [usług Azure Cloud Services](app-insights-overview.md). Nie jest dostępne dla usługi Azure websites.
+* Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla usług sieci web Java, aplikacjach klasycznych Windows [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](../azure-monitor/app/monitor-performance-live-website-now.md), i [usług Azure Cloud Services](app-insights-overview.md). Nie jest dostępne dla usługi Azure websites.
 
 ## <a name="video"></a>Połączenia wideo
 
@@ -201,10 +201,10 @@ Z wykresu metryki możesz kliknąć ikonę analiza, aby przejść bezpośrednio 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie użycia za pomocą usługi Application Insights](app-insights-usage-overview.md)
-* [Za pomocą wyszukiwanie diagnostyczne](app-insights-diagnostic-search.md)
+* [Za pomocą wyszukiwanie diagnostyczne](../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 
-[alerts]: app-insights-alerts.md
+[alerts]: ../azure-monitor/app/alerts.md
 [start]: app-insights-overview.md
-[track]: app-insights-api-custom-events-metrics.md
+[track]: ../azure-monitor/app/api-custom-events-metrics.md

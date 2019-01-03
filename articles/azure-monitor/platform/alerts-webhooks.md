@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b1bea9b1a2bdb04a60fa6a8fa1d92bfbaf80c6d6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2df24cfe217a9955a3abb08d042836821b083946
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320833"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580641"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook
 Elementy webhook umożliwia kierowanie powiadomień o alertach platformy Azure z innymi systemami przetwarzania końcowego lub niestandardowych akcji. Element webhook dla alertu dotyczącego służy do kierowania go do usługi, które wysyłanie wiadomości SMS, aby rejestrować błędy, aby powiadomić zespół za pośrednictwem czatu lub usług obsługi wiadomości lub różne inne akcje. 
@@ -27,7 +27,7 @@ Aby dodać lub zaktualizować elementu webhook identyfikatora URI w [witryny Azu
 
 ![Dodawanie okienek reguły alertu](./media/alerts-webhooks/Alertwebhook.png)
 
-Można również skonfigurować alertu do wysłania do elementu webhook identyfikatora URI za pomocą [poleceń cmdlet programu Azure PowerShell](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts), [międzyplatformowego interfejsu wiersza polecenia](../../azure-monitor/platform/cli-samples.md#work-with-alerts), lub [interfejsów API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Można również skonfigurować alertu do wysłania do elementu webhook identyfikatora URI za pomocą [poleceń cmdlet programu Azure PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), [międzyplatformowego interfejsu wiersza polecenia](../../azure-monitor/platform/cli-samples.md#work-with-alerts), lub [interfejsów API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="authenticate-the-webhook"></a>Uwierzytelnianie elementu webhook
 Element webhook można uwierzytelniać za pomocą opartego na tokenach autoryzacji. Identyfikator URI elementu webhook jest zapisywany z tokenu identyfikatora. Na przykład: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

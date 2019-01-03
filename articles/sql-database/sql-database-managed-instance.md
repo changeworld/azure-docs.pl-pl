@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337822"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994763"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 
@@ -30,7 +30,7 @@ Poniższy diagram przedstawia kluczowe funkcje wystąpienia zarządzanego:
 
 ![Najważniejsze funkcje](./media/sql-database-managed-instance/key-features.png)
 
-Wystąpienie usługi Azure SQL Database Managed zaprojektowano z myślą klienci, którzy chcą migracji dużej liczby aplikacji z lokalną lub IaaS, opracowany własny, lub niezależnego dostawcy oprogramowania wyposażone w środowisku, aby w pełni zarządzanym środowisku chmury PaaS jako niski migracji nakład pracy, jak to możliwe. Przy użyciu w pełni zautomatyzowane [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) na platformie Azure, klienci mogą lift- and shift ich na lokalnym serwerze SQL Server do wystąpienia zarządzanego, który zapewnia zgodność z programu SQL Server w środowisku lokalnym i pełną izolację pamięci wystąpienia klientów z natywną obsługą sieci wirtualnej.  Z pakietem Software Assurance mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na wystąpieniu zarządzanym bazy danych SQL przy użyciu [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Wystąpienie zarządzane usługi SQL Database to najlepsze miejsce docelowe migracji w chmurze dla wystąpień programu SQL Server, które wymagają wysokiego poziomu zabezpieczeń i powierzchni sformatowanego programowania.
+Wystąpienie usługi Azure SQL Database Managed zaprojektowano z myślą klienci, którzy chcą migracji dużej liczby aplikacji z lokalną lub IaaS, opracowany własny, lub niezależnego dostawcy oprogramowania wyposażone w środowisku, aby w pełni zarządzanym środowisku chmury PaaS jako niski migracji nakład pracy, jak to możliwe. Przy użyciu w pełni zautomatyzowane [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) na platformie Azure, klienci mogą lift- and shift ich na lokalnym serwerze SQL Server do wystąpienia zarządzanego, który zapewnia zgodność z programu SQL Server w środowisku lokalnym i pełną izolację pamięci wystąpienia klientów z natywną obsługą sieci wirtualnej.  Z pakietem Software Assurance mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na wystąpieniu zarządzanym bazy danych SQL przy użyciu [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  Wystąpienie zarządzane usługi SQL Database to najlepsze miejsce docelowe migracji w chmurze dla wystąpień programu SQL Server, które wymagają wysokiego poziomu zabezpieczeń i powierzchni sformatowanego programowania.
 
 Wg ogólnej dostępności wystąpienia zarządzanego ma na celu dostarczać blisko powierzchni 100% zgodności z najnowszą wersją programu SQL Server w środowisku lokalnym za pośrednictwem planu wersji etapowe.
 
@@ -70,7 +70,7 @@ Najważniejsze funkcje wystąpienie zarządzane są wyświetlane w poniższej ta
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 
-[Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) w wystąpieniu zarządzanym zapewnia elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia zmianę obliczeniowych, pamięci i magazynu, w zależności od potrzeb obciążenia. Model rdzenia wirtualnego jest również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+[Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) w wystąpieniu zarządzanym zapewnia elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia zmianę obliczeniowych, pamięci i magazynu, w zależności od potrzeb obciążenia. Model rdzenia wirtualnego jest również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Model rdzenia wirtualnego można wybrać generacji sprzętu.
 
@@ -146,7 +146,7 @@ Usługa Azure SQL Database udostępnia zestaw zaawansowanych funkcji zabezpiecze
 - [Zabezpieczenia](/sql/relational-databases/security/row-level-security) umożliwia kontrolę dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (takich jak przez grupy członkostwa lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza (RLS, Row-Level Security) upraszczają projektowanie i kodowanie zabezpieczeń w aplikacji. Zabezpieczenia na poziomie wiersza umożliwiają zaimplementowanie ograniczeń w dostępie do wiersza danych. Na przykład zapewnienie, że pracownicy mają dostęp tylko wiersze danych, które są odpowiednie do ich działu, lub ograniczenie dostępu do danych do odpowiednich danych.
 - [Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) szyfruje pliki danych wystąpienia zarządzanego Azure SQL Database, znana jako szyfrowanie danych magazynowanych. Funkcja TDE wykonuje w czasie rzeczywistym operacji We/Wy szyfrowania i odszyfrowywania plików danych i dziennika. Szyfrowanie używa klucza szyfrowania bazy danych (klucz szyfrowania danych), który jest przechowywany w rekordzie rozruchowym bazy danych dostępności podczas odzyskiwania. Umożliwia ochronę wszystkich baz danych w wystąpieniu zarządzanym za pomocą technologii transparent data encryption. Funkcja TDE jest program SQL Server, sprawdzonych technologii szyfrowania podczas spoczynku, która jest wymagana przez wiele standardów zgodności w celu ochrony przed kradzieżą nośników magazynowania.
 
-Migracja szyfrowanej bazy danych do wystąpienia zarządzanego SQL jest obsługiwana za pomocą usługi Azure Database Migration Service (DMS) lub native przywracania. Jeśli planujesz migrację szyfrowanej bazy danych przy użyciu funkcji przywracania natywnych migracji istniejącego certyfikatu TDE z programu SQL Server w środowisku lokalnym lub maszyny Wirtualnej programu SQL Server do wystąpienia zarządzanego jest to krok wymagany. Aby uzyskać więcej informacji na temat opcji migracji, zobacz [migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-migrate.md).
+Migracja szyfrowanej bazy danych do wystąpienia zarządzanego SQL jest obsługiwana za pomocą usługi Azure Database Migration Service (DMS) lub native przywracania. Jeśli planujesz migrację zaszyfrowanej przy użyciu natywnych przywracania bazy danych, migracja istniejącego certyfikatu TDE z programu SQL Server w środowisku lokalnym lub maszyny Wirtualnej programu SQL Server do wystąpienia zarządzanego jest to krok wymagany. Aby uzyskać więcej informacji na temat opcji migracji, zobacz [migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-migrate.md).
 
 ## <a name="azure-active-directory-integration"></a>Integracja z usługą Azure Active Directory
 

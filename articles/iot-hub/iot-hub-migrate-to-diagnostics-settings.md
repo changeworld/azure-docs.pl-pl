@@ -5,18 +5,18 @@ author: kgremban
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 11/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 3cb0f91f3143e6a4828548f3a15678b3814cba17
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4a1517c1d5bb0f34c0f1b0ec81d074f8ec39aff5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154865"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546586"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrowanie usługi IoT Hub z działania monitorowania to ustawień diagnostyki
 
-Klienci korzystający z [monitorowanie operacji](iot-hub-operations-monitoring.md) umożliwia śledzenie stanu operacji w usłudze IoT Hub można migrować na ten przepływ pracy do [ustawień diagnostyki Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md), funkcja usługi Azure Monitor. Ustawienia diagnostyczne podać poziom zasobów informacje diagnostyczne dotyczące wielu usług platformy Azure.
+Klienci korzystający z [monitorowanie operacji](iot-hub-operations-monitoring.md) umożliwia śledzenie stanu operacji w usłudze IoT Hub można migrować na ten przepływ pracy do [ustawień diagnostyki Azure](../azure-monitor/platform/diagnostic-logs-overview.md), funkcja usługi Azure Monitor. Ustawienia diagnostyczne podać poziom zasobów informacje diagnostyczne dotyczące wielu usług platformy Azure.
 
 Operacje monitorowania funkcji usługi IoT Hub jest przestarzały i zostanie usunięte w przyszłości. Ten artykuł zawiera kroki umożliwiające przeniesienie obciążeń od działań monitorowania to ustawień diagnostyki. Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
@@ -49,6 +49,10 @@ Ponadto diagnostyki ustawienia oferty śledzenia dla pięciu nowych kategorii. P
 * Metody bezpośrednie
 
 W strukturach określonego schematu, zobacz [zrozumieć schematu dla ustawień diagnostycznych](iot-hub-monitor-resource-health.md#understand-the-logs).
+
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Monitorowanie urządzenia połączyć i zdarzenia rozłączenia z małymi opóźnieniami
+
+Do monitorowania urządzeń nawiązywać połączenia i zdarzenia rozłączenia, firma Microsoft zaleca subskrybowanie [ **urządzenia odłączony** zdarzeń](iot-hub-event-grid.md#event-types) na usługi Event Grid, aby otrzymywać alerty i monitorowanie stanu połączenia urządzenia. Użyj tego [samouczek](iot-hub-how-to-order-connection-state-events.md) dowiesz się, jak zintegrować zdarzenia podłączone urządzenia i odłączone urządzenia z usługi IoT Hub w rozwiązaniu IoT.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

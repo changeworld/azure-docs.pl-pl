@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 702ebdc0966a72396ac644b154ba13d2321fd5d4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238730"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631349"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do sposobu zarządzania do lokalnej grupy administratorów w usłudze Azure AD
 
@@ -88,7 +88,7 @@ Domyślnie program Azure AD dodaje użytkownika wykonującego sprzężenia Azure
 
 Oprócz używania proces dołączania usługi Azure AD, możesz również ręcznie podnieść poziom konta zwykłego użytkownika, aby stać się administratorem lokalnym na jednego konkretnego urządzenia. Ten krok wymaga już być członkiem lokalnej grupy administratorów. 
 
-Począwszy od **systemu Windows 10 1709** wersji, można wykonać tego zadania od **Ustawienia -> konta -> innym użytkownikom** , wybierając **Dodaj użytkownika firmowego lub szkolnego**.
+Począwszy od **systemu Windows 10 1709** wersji, można wykonać tego zadania od **Ustawienia -> konta -> innym użytkownikom**. Wybierz **Dodaj użytkownika firmowego lub szkolnego**, wprowadź nazwę UPN użytkownika, w obszarze **konta użytkownika** i wybierz *administratora* w obszarze **typ konta**  
  
 Ponadto można również dodać użytkowników przy użyciu wiersza polecenia:
 

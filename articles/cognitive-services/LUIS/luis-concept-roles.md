@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105568"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547749"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
 Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).
@@ -45,6 +45,16 @@ Jednostki i rola są ujęte w nawiasach, `{}`. Jednostka i rola są rozdzielone 
 
 
 [!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+
+## <a name="example-role-for-entities"></a>Przykład roli dla jednostek
+
+Rola to kontekstowe nauczony położenie jednostki w ramach wypowiedź. Może to być najbardziej efektywne, gdy wypowiedź ma więcej niż jedną tego typu jednostki. Najprostszym przykład dla dowolnego typu jednostki jest rozróżnienie między do i z lokalizacji. Lokalizacja może być reprezentowany w partii jednostek różnych typów. 
+
+Przypadek użycia przykład transferuje pracownika z jednego działu do innego gdzie każdy dział jest element na liście. Na przykład: 
+
+`Move [PersonName] from [Department:from] to [Department:to]`. 
+
+Prognozowania zwracane zarówno jednostki działu zostaną zwrócone w odpowiedzi JSON, a każda będzie zawierać nazwę roli. 
 
 ## <a name="roles-with-prebuilt-entities"></a>Role z wstępnie utworzonych jednostek
 

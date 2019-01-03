@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 48f178b7a94e8989f8a0154bea6195834b1ec35f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d199275d6c17dff72c020bd3a9807f50af8af1e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438680"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544043"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Mana
 
 Metody włączania dzienników diagnostycznych przy użyciu szablonu usługi Resource Manager, zależy od typu zasobu.
 
-* **Non-Compute** używany przez zasoby (na przykład automatyzacji sieciowych grup zabezpieczeń, Logic Apps) [ustawień diagnostycznych opisanych w tym artykule](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+* **Non-Compute** używany przez zasoby (na przykład automatyzacji sieciowych grup zabezpieczeń, Logic Apps) [ustawień diagnostycznych opisanych w tym artykule](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
 * **Obliczenia** używany przez zasoby (WAD/LAD oparte) [WAD/LAD pliku konfiguracji opisanych w tym artykule](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 W tym artykule opisano sposób konfigurowania diagnostyki za pomocą jednej z metod.
@@ -266,6 +266,6 @@ Aby włączyć diagnostykę na zasób obliczeniowy, na przykład klaster maszyny
 Opisano cały proces, w tym przykłady, [w tym dokumencie](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [Stream dzienniki diagnostyczne platformy Azure do usługi Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Stream dzienniki diagnostyczne platformy Azure do usługi Event Hubs](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 

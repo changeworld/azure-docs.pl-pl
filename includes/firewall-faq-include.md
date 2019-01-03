@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 7e547f49ec14bdb69a85dd916ef435c3f30f6ef2
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: b1550fc07ee4edfe98482a2e880f201ceb66705f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413731"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995747"
 ---
 ### <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -54,7 +54,7 @@ Zaporę platformy Azure obsługuje filtrowanie przychodzącego i wychodzącego. 
 
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Jakie usługi rejestrowania i analizy są obsługiwane przez zaporę usługi Azure?
 
-Zaporę platformy Azure jest zintegrowana z usługą Azure Monitor do przeglądania i analizowania dzienników zapory. Dzienniki mogą być wysyłane do usługi Log Analytics, Azure Storage lub centrów zdarzeń. Mogą być analizowane w usłudze Log Analytics lub przez różnych narzędzi, takich jak program Excel i Power BI. Aby uzyskać więcej informacji, zobacz [samouczka: Monitoruj dzienniki zapory usługi Azure](../articles/firewall/tutorial-diagnostics.md).
+Zaporę platformy Azure jest zintegrowana z usługą Azure Monitor do przeglądania i analizowania dzienników zapory. Dzienniki mogą być wysyłane do usługi Log Analytics, Azure Storage lub centrów zdarzeń. Mogą być analizowane w usłudze Log Analytics lub przez różnych narzędzi, takich jak program Excel i Power BI. Aby uzyskać więcej informacji, zobacz [Samouczek: Monitoruj dzienniki zapory usługi Azure](../articles/firewall/tutorial-diagnostics.md).
 
 ### <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak zapory usługi Azure działa inaczej w istniejących usług, takich jak urządzenia WUS w portalu marketplace?
 
@@ -92,7 +92,7 @@ Na przykład:
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name” -ResourceGroupName "RG Name"
+$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
@@ -119,7 +119,7 @@ Tak, można użyć zapory usługi Azure, w centralnej sieci wirtualnej trasy i f
 
 ### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Do przodu może zapory usługi Azure i filtrowanie ruchu sieciowego między podsieciami w tej samej sieci wirtualnej lub równorzędnej sieci wirtualnych?
 
-Ruch między podsieciami w tej samej sieci wirtualnej lub w wirtualnej sieci równorzędnej bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje zapory platformy Azure jako brama domyślna. Zalecaną metodą segmentacji sieci wewnętrznej jest przy użyciu grup zabezpieczeń sieci. Aby wysyłać ruch podsieci do sieci do zapory, w tym scenariuszu, trasa zdefiniowana przez użytkownika musi zawierać prefiks docelowy podsieci sieci jawnie na obie podsieci.
+Ruch między podsieciami w tej samej sieci wirtualnej lub w wirtualnej sieci równorzędnej bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje zapory platformy Azure jako brama domyślna. Zalecaną metodą segmentacji sieci wewnętrznej jest przy użyciu grup zabezpieczeń sieci. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Czy istnieją wszystkie zapory ograniczenia grup zasobów?
 

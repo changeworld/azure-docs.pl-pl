@@ -1,19 +1,18 @@
 ---
-title: Azure Database for postgresql — partnerzy migracji | Dokumentacja firmy Microsoft
+title: Usługa Azure Database for postgresql — partnerzy migracji
 description: Wyświetla listę partnerów migracji innych firm z rozwiązaniami, które obsługują usługi Azure Database for PostgreSQL.
-services: mysql
 author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 11069e4e5ff9a6ad6b91fc554036955afa805443
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 63facf52531d1f58e4022085503da96a797f60df
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626458"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536240"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Usługa Azure Database for postgresql — partnerzy migracji
 Aby szeroko pomocy technicznej usługi Azure Database dla rozwiązania PostgreSQL, możesz wybrać z wielu różnych partnerów wiodące w branży i narzędzi. W tym artykule przedstawiono partnerów firmy Microsoft przy użyciu rozwiązania migracji, które obsługują usługi Azure Database for PostgreSQL.

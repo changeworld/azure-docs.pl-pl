@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409466"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794553"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -23,6 +23,8 @@ W tym artykule jest przeznaczona ułatwiające rozwiązywania oraz usuwania prob
 1. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [W usłudze pliki Azure UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 3. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie obsługi w witrynie Azure portal na **pomocy** zaznacz **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowe żądanie obsługi**.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mam problem z usługi Azure File Sync na serwerze (synchronizacja, chmura warstw itp.). Należy I usunięcie i ponowne utworzenie Mój punkt końcowy serwera?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -130,11 +132,11 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 Ten problem może wystąpić, jeśli proces Monitor synchronizacji magazynu nie działa lub serwer nie może komunikować się z usługą Azure File Sync z powodu serwera proxy lub zapory.
 
-Aby rozwiązać ten problem, wykonaj następujące czynności:
+Aby rozwiązać ten problem, wykonaj następujące kroki:
 
-1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli nie jest uruchomiony proces, najpierw spróbują ponowne uruchomienie serwera. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, uaktualnienie do najnowszej usługi Azure File Sync [wersja agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
+1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces programu Storage Sync Monitor (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli proces nie jest uruchomiony, najpierw spróbuj uruchomić ponownie serwer. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, uaktualnienie do najnowszej usługi Azure File Sync [wersja agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
 2. Sprawdź, czy ustawienia zapory i serwera Proxy zostały prawidłowo skonfigurowane:
-    - Jeśli serwer znajduje się za zaporą, sprawdź, czy jest dozwolony przez port 443 wychodzących. Jeśli zapora będzie ograniczała ruch do określonych domen, upewnij się, domen, na liście w zaporze [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) są dostępne.
+    - Jeśli serwer znajduje się za zaporą, sprawdź, czy ruch wychodzący na port 443 jest dozwolony. Jeśli zapora będzie ograniczała ruch do określonych domen, upewnij się, domen, na liście w zaporze [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) są dostępne.
     - Jeśli serwer znajduje się za serwerem proxy, skonfiguruj ustawienia serwera proxy dla komputera lub specyficzne dla aplikacji, wykonując kroki na serwerze proxy [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 <a id="endpoint-noactivity-sync"></a>**Punkt końcowy serwera ma stan kondycji, aktywności"No", i stanu serwera w bloku zarejestrowane serwery "Online"**  
@@ -468,15 +470,23 @@ Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje ka
 | **Ciąg błędu** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Wymagana korekta** | Yes |
 
-Ten błąd zazwyczaj występuje, ponieważ czas serwera jest nieprawidłowy lub wygasł certyfikat używany do uwierzytelniania. Jeśli czas serwera jest poprawna, wykonaj następujące kroki, aby odnowić wygasły certyfikat:
+Ten błąd może być spowodowany przez:
 
-1. Otwórz przystawkę MMC Certyfikaty, wybierz konto komputera i przejdź do \Personal\Certificates certyfikaty (komputer lokalny).
-2. Sprawdź, czy certyfikat uwierzytelniania klienta jest nadal ważne. Jeśli certyfikat wygasł, zamknij okno przystawki MMC certyfikatów i proceeed pozostałe kroki. 
-3. Sprawdź, agent usługi Azure File Sync wersja 4.0.1.0 lub nowszy jest zainstalowany.
-4. Uruchom następujące polecenia programu PowerShell na serwerze:
+- Czas serwera jest nieprawidłowa
+- Usuwanie punktu końcowego serwera nie powiodło się
+- Certyfikat używany do uwierzytelniania wygasł. 
+    Aby sprawdzić, jeśli certyfikat wygasł, należy wykonać następujące czynności:  
+    1. Otwórz przystawkę MMC Certyfikaty, wybierz konto komputera i przejdź do \Personal\Certificates certyfikaty (komputer lokalny).
+    2. Sprawdź, czy certyfikat uwierzytelniania klienta jest nadal ważne.
+
+Jeśli czas serwera jest poprawna, wykonaj następujące kroki, aby rozwiązać ten problem:
+
+1. Sprawdź, agent usługi Azure File Sync wersja 4.0.1.0 lub nowszy jest zainstalowany.
+2. Uruchom następujące polecenia programu PowerShell na serwerze:
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
 
@@ -562,14 +572,14 @@ Ten błąd występuje z powodu wewnętrznego problemu z bazy danych usługi sync
 
 ### <a name="common-troubleshooting-steps"></a>Typowe kroki rozwiązywania problemów
 <a id="troubleshoot-storage-account"></a>**Sprawdź, czy konto magazynu istnieje.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Przejdź do grupy synchronizacji, w ramach usługi synchronizacji magazynu.
 2. Wybierz punkt końcowy w chmurze w ramach grupy synchronizacji.
 3. Należy pamiętać, nazwa udziału plików platformy Azure, w okienku otwarte.
 4. Wybierz na połączonym koncie magazynu. Jeśli ten link nie powiedzie się, zostało usunięte konto magazynu do którego istnieje odwołanie.
     ![Zrzut ekranu przedstawiający okienko Szczegóły punktu końcowego chmury z linkiem do konta magazynu.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```PowerShell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -583,20 +593,20 @@ Import-Module "$agentPath\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 # Log into the Azure account and put the returned account information
 # in a reference variable.
-$acctInfo = Connect-AzureRmAccount
+$acctInfo = Connect-AzAccount
 
 # this variable stores your subscription ID 
 # get the subscription ID by logging onto the Azure portal
 $subID = $acctInfo.Context.Subscription.Id
 
 # this variable holds your Azure Active Directory tenant ID
-# use Login-AzureRMAccount to get the ID from that context
+# use Login-AzAccount to get the ID from that context
 $tenantID = $acctInfo.Context.Tenant.Id
 
 # Check to ensure Azure File Sync is available in the selected Azure
 # region.
 $regions = [System.String[]]@()
-Get-AzureRmLocation | ForEach-Object { 
+Get-AzLocation | ForEach-Object { 
     if ($_.Providers -contains "Microsoft.StorageSync") { 
         $regions += $_.Location 
     } 
@@ -609,7 +619,7 @@ if ($regions -notcontains $region) {
 
 # Check to ensure resource group exists and create it if doesn't
 $resourceGroups = [System.String[]]@()
-Get-AzureRmResourceGroup | ForEach-Object { 
+Get-AzResourceGroup | ForEach-Object { 
     $resourceGroups += $_.ResourceGroupName 
 }
 
@@ -656,7 +666,7 @@ $cloudEndpoint = Get-AzureRmStorageSyncCloudEndpoint `
     -SyncGroupName $syncGroup
 
 # Get reference to storage account
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
     $_.Id -eq $cloudEndpoint.StorageAccountResourceId
 }
 
@@ -667,12 +677,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**Sprawdź, upewnij się, że konto magazynu nie zawiera żadnych reguł sieciowych.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Raz na koncie magazynu, wybierz **zapory i sieci wirtualne** po lewej stronie konta magazynu.
 2. Konto magazynu — wewnątrz **zezwolić na dostęp ze wszystkich sieci** należy wybrać przycisk radiowy.
     ![Zrzut ekranu przedstawiający reguły zapory i sieci konta magazynu wyłączone.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```PowerShell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -683,12 +693,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Upewnij się, że istnieje udział plików platformy Azure.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Kliknij przycisk **Przegląd** w tabeli po lewej stronie spisu treści, aby wrócić do strony konto magazynu głównego.
 2. Wybierz **pliki** do wyświetlania listy udziałów plików.
 3. Sprawdź udział plików, które odwołuje się punkt końcowy w chmurze pojawia się na liście udziałów plików (powinien mieć zanotowaną to w kroku 1 powyżej).
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```PowerShell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -702,7 +712,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Upewnij się, że usługi Azure File Sync ma dostęp do konta magazynu.**  
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Kliknij przycisk **kontrola dostępu (IAM)** w spisie treści po lewej stronie.
 1. Kliknij przycisk **przypisań ról** kartę do listy użytkowników i aplikacji (*jednostki usług*), mają dostęp do swojego konta magazynu.
 1. Sprawdź **usługi hybrydowe File Sync** pojawia się na liście za pomocą **czytnik i dostęp do danych** roli. 
@@ -715,10 +725,10 @@ if ($fileShare -eq $null) {
     - W **roli** pól, zaznacz **czytnik i dostęp do danych**.
     - W **wybierz** wpisz **usługi hybrydowe File Sync**, wybierz rolę i kliknij przycisk **Zapisz**.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```PowerShell    
 $foundSyncPrincipal = $false
-Get-AzureRmRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
+Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
         $foundSyncPrincipal = $true
         if ($_.RoleDefinitionName -ne "Reader and Data Access") {
@@ -829,11 +839,11 @@ Jeśli pliki nie powiodły się przypomnieć:
 > 9006 Identyfikatora zdarzenia jest rejestrowane raz na godzinę w dzienniku zdarzeń Telemetrii, jeśli plik nie może odwołać (jedno zdarzenie jest rejestrowane na kod błędu). Operacyjne i dzienników zdarzeń diagnostycznych powinny być używane, jeśli potrzebne są dodatkowe informacje w celu zdiagnozowania problemu.
 
 <a id="files-unexpectedly-recalled"></a>**Rozwiązywanie problemów z nieoczekiwanym przypomnieć na serwerze plików**  
-Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które odczytują dużą liczbę plików spowodować niezamierzone odwołania, chyba że przestrzegają Pomiń atrybut offline i pomijają odczytywanie zawartości tych plików. Pomijanie pliki offline dla produktów obsługują ta opcja pomaga uniknąć niezamierzonym odwołania podczas wykonywania operacji, takich jak skanowanie antywirusowe lub zadania tworzenia kopii zapasowej.
+Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które odczytują dużą liczbę plików spowodować niezamierzone odwołania, chyba że przestrzegają Pomiń atrybut offline i pomijają odczytywanie zawartości tych plików. Pomijanie plików offline w przypadku produktów, które obsługują tę opcję, umożliwia uniknięcie niezamierzonych odwołań podczas operacji takich jak skanowanie antywirusowe lub zadania kopii zapasowej.
 
-Zapoznaj się z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie do pomijają odczytywanie plików trybu offline.
+Skonsultuj się z dostawcą oprogramowania, aby dowiedzieć się, w jaki sposób skonfigurować rozwiązanie tak, aby odczytywanie plików offline było pomijane.
 
-Niezamierzonym odwołania może również wystąpić w innych scenariuszach, takich jak podczas przeglądania plików w Eksploratorze plików. Otwieranie folderu, który ma pliki warstwowe w chmurze w Eksploratorze plików na serwerze może spowodować niezamierzone odwołań. Jest to bardziej prawdopodobne, jeśli rozwiązanie antywirusowe jest włączona na serwerze.
+Niezamierzonym odwołania może również wystąpić w innych scenariuszach, takich jak podczas przeglądania plików w Eksploratorze plików. Otwarcie folderu, w którym znajdują się pliki w warstwach chmury, w Eksploratorze plików na serwerze może spowodować niezamierzone odwołania. Prawdopodobieństwo wystąpienia takiej sytuacji jest wyższe, jeśli na serwerze włączono rozwiązanie antywirusowe.
 
 ## <a name="general-troubleshooting"></a>Rozwiązywanie ogólnych
 Jeśli wystąpią problemy z usługi Azure File Sync na serwerze, należy uruchomić, wykonując następujące czynności:

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: f8c296fddaafb8364cc5e0f07b54d850606322d9
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 3da6260faa87aecb7eb13f16386006e0c856d46b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581429"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653853"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Uruchamianie platformy Apache Spark z poziomu powłoki Spark
 
@@ -60,10 +60,10 @@ Aby uzyskać dostęp do wystąpienia SparkSession, wprowadź `spark`. Aby uzyska
 
 Polecenia powłoki usługi Spark (`spark-shell`, `pyspark`, lub `sparkR`) obsługuje wiele parametrów wiersza polecenia. Aby wyświetlić pełną listę parametrów, należy uruchomić powłoki Spark z przełącznikiem `--help`. Należy pamiętać, że niektóre z tych parametrów może dotyczą tylko `spark-submit`, który otacza powłoki Spark.
 
-| Przełącznik | description | Przykład |
+| — przełącznik | description | Przykład |
 | --- | --- | --- |
 | --opanować MASTER_URL | Określa główny adres URL. W HDInsight, ta wartość jest zawsze `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Rozdzielana przecinkami lista lokalnych plikach JAR do uwzględnienia na ścieżkami sterownik i przetwarzania. W HDInsight składa się lista ścieżek do domyślnego systemu plików w usłudze Azure Storage lub Data Lake Store. | `--jars /path/to/examples.jar` |
+| --jars JAR_LIST | Rozdzielana przecinkami lista lokalnych plikach JAR do uwzględnienia na ścieżkami sterownik i przetwarzania. W HDInsight składa się lista ścieżek do domyślnego systemu plików w usłudze Azure Storage lub magazynu usługi Data Lake. | `--jars /path/to/examples.jar` |
 | --pakietów MAVEN_COORDS | Rozdzielana przecinkami lista współrzędne maven plikach JAR do uwzględnienia na ścieżkami sterownik i przetwarzania. Wyszukuje maven w lokalnym repozytorium, a następnie maven central, a następnie wszelkie dodatkowe repozytoria zdalne określony za pomocą `--repositories`. Format współrzędnych *groupId*:*artifactId*:*wersji*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | LISTY py — pliki | Dla języka Python tylko pliki zip, .egg lub PY do umieszczenia na PYTHONPATH listę rozdzielonych przecinkami. | `--pyfiles "samples.py"` |
 
@@ -72,4 +72,3 @@ Polecenia powłoki usługi Spark (`spark-shell`, `pyspark`, lub `sparkR`) obsłu
 - Zobacz [wprowadzenie do platformy Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md) omówienie.
 - Zobacz [Tworzenie klastra Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md) do pracy z klastrami Spark oraz SparkSQL.
 - Zobacz [co to jest Apache Spark Structured Streaming?](apache-spark-streaming-overview.md) do pisania aplikacji, które przetwarzają dane przesyłane strumieniowo z platformą Spark.
-

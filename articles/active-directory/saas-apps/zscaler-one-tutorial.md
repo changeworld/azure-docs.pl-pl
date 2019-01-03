@@ -4,7 +4,8 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: f352e00d-68d3-4a77-bb92-717d055da56f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -12,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a6abe3a9af98574ffd0a00d21fd0247785f7a5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dfe9ad20844eeae30327cf1eb3e9289d094900b2
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438294"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą jednego rozwiązania Zscaler
 
@@ -27,17 +28,17 @@ W tym samouczku dowiesz się, jak zintegrować rozwiązania Zscaler jednego z us
 
 Integracja rozwiązania Zscaler jednego z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do jednego rozwiązania Zscaler
-- Użytkowników, aby automatycznie uzyskać zalogowanych do jednego rozwiązania Zscaler (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do jednego rozwiązania Zscaler.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do jednego rozwiązania Zscaler (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą jednego rozwiązania Zscaler, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Jednego rozwiązania Zscaler logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -46,54 +47,50 @@ Aby skonfigurować integrację usługi Azure AD za pomocą jednego rozwiązania 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięcznej wersji próbnej tutaj: [oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
+
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie rozwiązania Zscaler jednego z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-zscaler-one-from-the-gallery"></a>Dodawanie rozwiązania Zscaler jednego z galerii
+
 Aby skonfigurować integrację rozwiązania Zscaler co w usłudze Azure AD, należy dodać rozwiązania Zscaler jednego z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać jednego rozwiązania Zscaler z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Usługa Active Directory][1]
+    ![Przycisk usługi Azure Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![W bloku aplikacji przedsiębiorstwa][2]
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **jednego rozwiązania Zscaler**.
+    ![Przycisk Nowa aplikacja][3]
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/zscaler-one-tutorial/tutorial_zscalerone_search.png)
+4. W polu wyszukiwania wpisz **jednego rozwiązania Zscaler**, wybierz opcję **jednego rozwiązania Zscaler** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **jednego rozwiązania Zscaler**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Na liście wyników jednego rozwiązania Zscaler](./media/zscaler-one-tutorial/tutorial_zscalerone_addfromgallery.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/zscaler-one-tutorial/tutorial_zscalerone_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 W tej sekcji możesz skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą jednego rozwiązania Zscaler oparte na użytkownika testu o nazwie "Britta Simon".
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w jednym rozwiązania Zscaler do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w jednym rozwiązania Zscaler musi nawiązać.
 
-W pierwszej rozwiązania Zscaler przypisze się wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
-
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą jednego rozwiązania Zscaler, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Konfigurowanie ustawień serwera proxy](#configuring-proxy-settings)**  — Aby skonfigurować ustawienia serwera proxy w programie Internet Explorer
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego jednego rozwiązania Zscaler](#creating-a-zscaler-one-test-user)**  — aby odpowiednikiem Britta Simon w rozwiązania Zscaler jednego połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego jednego rozwiązania Zscaler](#creating-a-zscaler-one-test-user)**  — aby odpowiednikiem Britta Simon w rozwiązania Zscaler jednego połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -103,70 +100,101 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 1. W witrynie Azure portal na **jednego rozwiązania Zscaler** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_zscalerone_samlbase.png)
+2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-1. Na **adresy URL i jednej domenie rozwiązania Zscaler** sekcji, wykonaj następujące czynności:
+    ![Konfigurowanie logowania jednokrotnego](common/tutorial_general_301.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_zscalerone_url.png)
+3. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+
+    ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Adresy URL i jednej domenie rozwiązania Zscaler pojedynczego logowania jednokrotnego informacji](./media/zscaler-one-tutorial/tutorial_zscalerone_url.png)
 
     W polu tekstowym adres URL logowania wpisz adres URL używany przez użytkowników do logowania jednokrotnego do jednego rozwiązania Zscaler aplikacji.
 
     > [!NOTE] 
     > Musisz zaktualizować tę wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [rozwiązania Zscaler jeden klient z zespołem pomocy technicznej](https://www.zscaler.com/company/contact) do uzyskania tych wartości.
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+5. Rozwiązania Zscaler jedna aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty i oświadczenia użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty i oświadczenia użytkownika**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_zscalerone_certificate.png) 
+    ![Link do atrybutu](./media/zscaler-one-tutorial/tutorial_zscalerone_attribute.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_general_400.png)
+    | Nazwa  | Atrybut źródłowy  |
+    | ---------| ------------ |
+    | MemberOf     | user.assignedroles |
 
-1. Na **jedną konfigurację rozwiązania Zscaler** kliknij **konfigurowanie jednego rozwiązania Zscaler** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_zscalerone_configure.png) 
+    ![image](./common/new_save_attribute.png)
+    
+    ![image](./common/new_attribute_details.png)
 
-1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do jednego rozwiązania Zscaler witryny firmy.
+    b. Z listy **Atrybut źródłowy** wybierz wartość atrybutu.
 
-1. W menu u góry kliknij **administracji**.
+    c. Kliknij przycisk **OK**.
+
+    d. Kliknij pozycję **Zapisz**.
+
+    > [!NOTE]
+    > Kliknij [tutaj](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management), aby dowiedzieć się, jak skonfigurować rolę w usłudze Azure AD
+
+7. Na **certyfikat podpisywania SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
+
+    ![Link do pobierania certyfikatu](./media/zscaler-one-tutorial/tutorial_zscalerone_certificate.png) 
+
+8. Na **konfigurowanie jednego rozwiązania Zscaler** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+    ![Konfiguracja jednego rozwiązania Zscaler](common/configuresection.png)
+
+9. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do jednego rozwiązania Zscaler witryny firmy.
+
+10. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
    
-    ![Administracja](./media/zscaler-one-tutorial/ic800206.png "administracji")
+    ![Administracja](./media/zscaler-one-tutorial/ic800206.png "Administracja")
 
-1. W obszarze **Zarządzanie administratorami i ról**, kliknij przycisk **Zarządzanie użytkownikami i uwierzytelniania**.   
+    a. W obszarze Typ uwierzytelniania wybierz pozycję **SAML**.
+
+    b. Kliknij pozycję **Skonfiguruj język SAML**.
+
+11. Na **Edytuj SAML** okna, wykonaj następujące kroki: i kliknij przycisk Zapisz.  
             
-    ![Zarządzanie użytkownikami i uwierzytelniania](./media/zscaler-one-tutorial/ic800207.png "zarządzania użytkownikami i uwierzytelniania")
-
-1. W **wybierz opcje uwierzytelniania dla Twojej organizacji** sekcji, wykonaj następujące czynności:   
-                
-    ![Uwierzytelnianie](./media/zscaler-one-tutorial/ic800208.png "uwierzytelniania")
-   
-    a. Wybierz **uwierzytelnianie przy użyciu protokołu SAML logowania jednokrotnego**.
-
-    b. Kliknij przycisk **skonfigurować SAML pojedynczego logowania jednokrotnego parametry**.
-
-1. Na **konfigurować SAML pojedynczego logowania jednokrotnego parametry** strony okna dialogowego, wykonaj następujące czynności, a następnie kliknij **gotowe**
-
-    ![Logowanie jednokrotne](./media/zscaler-one-tutorial/ic800209.png "logowanie jednokrotne")
+    ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-one-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
     
-    a. Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości, które zostały skopiowane z witryny Azure portal do **adres URL portalu SAML, do którego użytkownicy są wysyłane do uwierzytelniania** pola tekstowego.
-    
-    b. W **atrybut zawierający nazwę logowania** polu tekstowym wpisz **NameID**.
-    
-    c. Aby przekazać certyfikat pobrany, kliknij przycisk **pem rozwiązania Zscaler**.
-    
-    d. Wybierz **Włącz SAML automatycznej aprowizacji**.
+    a. W polu tekstowym **Adres URL portalu języka SAML** wklej **adres URL logowania** skopiowany z witryny Azure Portal.
 
-1. Na **Konfigurowanie uwierzytelniania użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+    b. W polu tekstowym **Atrybut nazwy logowania** wprowadź identyfikator **NameID**.
 
-    ![Administracja](./media/zscaler-one-tutorial/ic800210.png "administracji")
-    
-    a. Kliknij pozycję **Zapisz**.
+    c. Kliknij pozycję **Przekaż**, aby przekazać certyfikat podpisywania języka SAML na platformie Azure, który został pobrany z witryny Azure Portal w obrębie **publicznego certyfikatu SSL**.
 
-    b. Kliknij przycisk **Aktywuj teraz**.
+    d. Przełącz element **Włącz automatyczne aprowizowanie języka SAML**.
+
+    e. W polu tekstowym **Atrybut nazwy wyświetlanej użytkownika** wprowadź ciąg **displayName**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu displayName.
+
+    f. W polu tekstowym **Atrybut nazwy grupy** wprowadź ciąg **memberOf**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu memberOf.
+
+    g. W polu **Atrybut nazwy działu** wprowadź ciąg **department**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu department.
+
+    i. Kliknij pozycję **Zapisz**.
+
+12. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
+
+    ![Administracja](./media/zscaler-one-tutorial/ic800207.png)
+
+    a. Umieść kursor nad menu **Aktywacja** w lewym dolnym rogu.
+
+    b. Kliknij pozycję **Aktywuj**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Aby skonfigurować ustawienia serwera proxy w programie Internet Explorer
@@ -189,7 +217,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     a. Wybierz **Użyj serwera proxy dla sieci LAN**.
 
-    b. W polu tekstowym adresu wpisz **gateway.zscalerone.net**.
+    b. W polu tekstowym adresu wpisz **bramy. Rozwiązania Zscaler One.net**.
 
     c. W polu tekstowym portu, wpisz **80**.
 
@@ -199,102 +227,69 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 1. Kliknij przycisk **OK** zamknąć **Opcje internetowe** okna dialogowego.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+    ![Utwórz użytkownika usługi Azure AD][100]
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/zscaler-one-tutorial/create_aaduser_01.png) 
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/zscaler-one-tutorial/create_aaduser_02.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_01.png) 
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/zscaler-one-tutorial/create_aaduser_03.png) 
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/zscaler-one-tutorial/create_aaduser_04.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Wybierz pozycję **Utwórz**.
 
-    d. Kliknij pozycję **Utwórz**.
- 
 ### <a name="creating-a-zscaler-one-test-user"></a>Tworzenie rozwiązania Zscaler jednego użytkownika testowego
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do jednego rozwiązania Zscaler, musi być przygotowana do jednego rozwiązania Zscaler. W przypadku jednego rozwiązania Zscaler aprowizacji to zadanie ręczne.
-
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:
-
-1. Zaloguj się do Twojej **jednego rozwiązania Zscaler** dzierżawy.
-
-1. Kliknij przycisk **administracji**.   
-   
-    ![Administracja](./media/zscaler-one-tutorial/ic781035.png "administracji")
-
-1. Kliknij przycisk **Zarządzanie użytkownikami**.   
-        
-     ![Dodaj](./media/zscaler-one-tutorial/ic781036.png "Dodaj")
-
-1. W **użytkowników** kliknij pozycję **Dodaj**.
-      
-    ![Dodaj](./media/zscaler-one-tutorial/ic781037.png "Dodaj")
-
-1. W sekcji Dodaj użytkownika wykonaj następujące czynności:
-        
-    ![Dodaj użytkownika](./media/zscaler-one-tutorial/ic781038.png "Dodaj użytkownika")
-   
-    a. Typ **UserID**, **Nazwa wyświetlana użytkownika**, **hasło**, **Potwierdź hasło**, a następnie wybierz pozycję **grup**i **działu** prawidłowe platformy Azure konto usługi AD do aprowizowania.
-
-    b. Kliknij pozycję **Zapisz**.
-
-> [!NOTE]
-> Aprowizuj konta użytkownika usługi Azure AD, można użyć innych narzędzi do tworzenia rozwiązania Zscaler jednego konta użytkownika lub interfejsów API dostarczonych przez rozwiązania Zscaler jeden.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w jednym rozwiązania Zscaler. Jednego rozwiązania Zscaler obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu jednego rozwiązania Zscaler, jeśli go jeszcze nie istnieje.
+>[!Note]
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [rozwiązania Zscaler jeden zespół pomocy technicznej](https://www.zscaler.com/company/contact).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do jednego rozwiązania Zscaler.
 
-![Przypisz użytkownika][200] 
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
 
-**Aby przypisać jednego rozwiązania Zscaler Britta Simon, wykonaj następujące czynności:**
+    ![Przypisz użytkownika][201]
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz **jednego rozwiązania Zscaler**.
 
-    ![Przypisz użytkownika][201] 
+    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_zscalerone_app.png)
 
-1. Na liście aplikacji wybierz **jednego rozwiązania Zscaler**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/zscaler-one-tutorial/tutorial_zscalerone_app.png) 
+    ![Przypisz użytkownika][202]
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisk, a następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. W **użytkowników i grup** okno dialogowe, wybierz użytkownika, takie jak **Britta Simon** z listy, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+6. Z **wybierz rolę** okno dialogowe Wybieranie odpowiedniej roli użytkownika na liście, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+
+    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
+
+7. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
+
+    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
+
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
@@ -309,15 +304,13 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 <!--Image references-->
 
-[1]: ./media/zscaler-one-tutorial/tutorial_general_01.png
-[2]: ./media/zscaler-one-tutorial/tutorial_general_02.png
-[3]: ./media/zscaler-one-tutorial/tutorial_general_03.png
-[4]: ./media/zscaler-one-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/zscaler-one-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/zscaler-one-tutorial/tutorial_general_200.png
-[201]: ./media/zscaler-one-tutorial/tutorial_general_201.png
-[202]: ./media/zscaler-one-tutorial/tutorial_general_202.png
-[203]: ./media/zscaler-one-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

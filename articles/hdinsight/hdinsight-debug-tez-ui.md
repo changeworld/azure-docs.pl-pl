@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 65e0fed29909ad5714b35659a7dd453e095a3eeb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012814"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713729"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Debugowanie zadań tez przy na podstawie Windows HDInsight przy użyciu interfejsu użytkownika Tez Apache
 [Apache TEZ](https://tez.apache.org/) interfejsu użytkownika może służyć do debugowania [Apache Hive](https://hive.apache.org/) zadania, które używają Tez jako aparatu wykonywania. Interfejsu użytkownika Tez wizualizuje zadania wykres połączonych elementów, można przejść do każdego elementu i pobierania statystyk i rejestrowania informacji.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight, który używa Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Klaster HDInsight z systemem Windows. Aby uzyskać instrukcje dotyczące tworzenia nowego klastra, zobacz [rozpoczęcie korzystania z systemem Windows HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md).
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Interfejsu użytkownika programu Apache Tez jest dostępna tylko w klastrach HDInsight oparte na Windows utworzonych po 8 lutego 2016 r.
-  >
-  >
+
 * Klient pulpitu zdalnego z systemem Windows.
 
 ## <a name="understanding-apache-tez"></a>Opis Apache Tez
@@ -65,10 +64,8 @@ Wykonaj następujące kroki, aby uruchomić zapytanie programu Hive, który uży
         en-GB   Nairobi Area    Kenya
 
 ## <a name="use-the-tez-ui"></a>Korzystanie z interfejsu użytkownika Tez
-> [!NOTE]
+> [!NOTE]  
 > Interfejsu użytkownika Tez jest dostępny na pulpicie głównymi węzłami klastra, tylko w przypadku, więc musisz połączyć się z węzłami głównymi, używając pulpitu zdalnego.
->
->
 
 1. Z [witryny Azure portal](https://portal.azure.com), wybierz klaster usługi HDInsight. W górnej części bloku HDInsight, wybierz **pulpitu zdalnego** ikony. Link ten będzie wyświetlać blok usług pulpitu zdalnego
 
@@ -77,10 +74,9 @@ Wykonaj następujące kroki, aby uruchomić zapytanie programu Hive, który uży
 
     ![Ikona połączenia pulpitu zdalnego](./media/hdinsight-debug-tez-ui/remotedesktopconnect.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jeśli nie włączono połączenia pulpitu zdalnego, podaj nazwę użytkownika, hasło i datę wygaśnięcia, a następnie wybierz **Włącz** można włączyć pulpitu zdalnego. Po jej włączeniu, skorzystaj z poprzednich kroków, aby połączyć.
-   >
-   >
+
 3. Po nawiązaniu połączenia, Otwórz program Internet Explorer na pulpicie zdalnym, wybierz ikonę koła zębatego w prawym górnym rogu przeglądarki, a następnie wybierz **ustawienia widoku zgodności**.
 4. W dolnej części **ustawienia widoku zgodności**, usuń zaznaczenie pola wyboru dla **wyświetlania witryny intranetowe w widoku zgodności** i **Microsoft użycie listy zgodności**, i następnie wybierz pozycję **Zamknij**.
 5. W programie Internet Explorer przejdź do http://headnodehost:8188/tezui/#/. Spowoduje to wyświetlenie interfejsu użytkownika Tez
@@ -101,10 +97,8 @@ Wykonaj następujące kroki, aby uruchomić zapytanie programu Hive, który uży
    * **Wszystkie zadania** Wyświetla listę zadań dla wszystkich wierzchołków w grafie DAG.
    * **Wszystkie TaskAttempts** przedstawia informacje na temat próby uruchomienia zadań dla tej grupy DAG.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Po przewinięciu wyświetlanie kolumny dla wierzchołków, zadania i TaskAttempts Zauważ, że są linków umożliwiających wyświetlenie **liczniki** i **wyświetlanie lub pobieranie dzienników** dla każdego wiersza.
-     >
-     >
 
      Jeśli wystąpił błąd przy użyciu zadań, szczegóły grupy DAG wyświetlenie stanu nie powiodło się wraz z łączami do informacji o zadaniu nie powiodło się. Informacje diagnostyczne są wyświetlane poniżej szczegóły grupy DAG.
 8. Wybierz **widok graficzny**. Spowoduje to wyświetlenie graficzną reprezentację grafu DAG. Można umieścić wskaźnik myszy nad każdego wierzchołka widok, aby wyświetlić informacje o nim.
@@ -115,20 +109,17 @@ Wykonaj następujące kroki, aby uruchomić zapytanie programu Hive, który uży
     ![Szczegóły wierzchołka](./media/hdinsight-debug-tez-ui/vertexdetails.png)
 10. Należy pamiętać, powstał łączy w górnej części strony, które są powiązane z wierzchołków i zadania.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Mogą również pojawić się na tej stronie, przechodząc do **szczegółów grupy DAG**, wybierając opcję **szczegóły wierzchołka**, a następnie wybierając **1 mapy** wierzchołka.
-    >
-    >
 
     * **Liczniki wierzchołka** Wyświetla informacje o liczniku dla tego wierzchołka.
     * **Zadania** Wyświetla zadania dla tego wierzchołka.
     * **Zadanie prób** Wyświetla informacje dotyczące prób uruchomienia zadania dla tego wierzchołka.
     * **Źródła & wychwytywanie** wyświetla źródła danych i sink dla tego wierzchołka.
 
-      > [!NOTE]
+      > [!NOTE]  
       > Jak z poprzednim menu, można przewijać Wyświetl kolumny do zadań, zadań prób źródeł i Sinks__ do wyświetlić linki do dodatkowych informacji dla każdego elementu.
-      >
-      >
+
 11. Wybierz **zadania**, a następnie wybierz element o nazwie **00_000000**. Link ten będzie wyświetlać **szczegóły zadania** dla tego zadania. Na tym ekranie można wyświetlić **liczniki zadań** i **zadań prób**.
 
     ![Szczegóły zadania](./media/hdinsight-debug-tez-ui/taskdetails.png)

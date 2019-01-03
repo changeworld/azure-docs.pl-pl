@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 547cc30bdf3dedff30c28165a7a76093a6512b83
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408868"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993096"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Odczytywanie i zapisywanie danych w bazie danych Apache HBase za pomocą platformy Apache Spark
 
@@ -126,7 +126,7 @@ W tym kroku możesz utworzyć i wypełnić prostej tabeli w bazie danych HBase A
 1. Łączenie z węzłem głównym klastra Spark przy użyciu protokołu SSH.
 2. Uruchom powłokę programu platformy spark, określając pakietu łącznika usługi Spark bazy danych HBase:
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
 
 3. Nie zamykaj tego wystąpienia powłoki usługi Spark, a następnie przejdź do następnego kroku.
 

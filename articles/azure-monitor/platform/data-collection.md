@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: fdf8d8977651c868c9f534dc61e3d1a77a43e672
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435960"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718966"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -86,7 +86,7 @@ Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor.
 **Metryki aplikacji** są tworzone przez usługę Application Insights dla aplikacji monitorowanych i pozwalają wykryć problemy z wydajnością i śledzenie trendów w sposobu korzystania z aplikacji. Obejmuje to wartości, takich jak _czas odpowiedzi serwera_ i _wyjątków przeglądarki_.
 
 **Metryki niestandardowe** metryki definiujące oprócz standardowych metryk, które są automatycznie dostępne. Metryki niestandardowe, należy utworzyć dla pojedynczego zasobu w tym samym regionie, co tego zasobu. Można utworzyć metryki niestandardowe przy użyciu następujących metod:
-    - [Zdefiniuj metryki niestandardowe w aplikacji](../../application-insights/app-insights-api-custom-events-metrics.md) który jest monitorowany przez usługę Application Insights. Te właściwości są oprócz standardowych ustawiane metryki aplikacji.
+    - [Zdefiniuj metryki niestandardowe w aplikacji](../../azure-monitor/app/api-custom-events-metrics.md) który jest monitorowany przez usługę Application Insights. Te właściwości są oprócz standardowych ustawiane metryki aplikacji.
     - Publikowanie metryki niestandardowe z maszyn wirtualnych Windows przy użyciu [Windows rozszerzenia diagnostyki (WAD)](../../azure-monitor/platform/diagnostics-extension-overview.md).
     - Publikowanie metryki niestandardowe z maszyn wirtualnych systemu Linux przy użyciu [agenta Telegraf InfluxData](https://www.influxdata.com/time-series-platform/telegraf/).
     - Zapis metryki niestandardowe z usługą platformy Azure za pomocą metryk niestandardowych interfejsów API.
@@ -100,8 +100,8 @@ Następujące zadania, które można wykonywać za pomocą metryk:
 - Konfigurowanie [regułę alertu metryki](alerts-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) gdy Metryka przekracza próg.
 - Użyj [skalowania automatycznego](../../azure-monitor/platform/autoscale-overview.md) lub zwiększ zasoby na podstawie metryki przekroczenia wartości progowej.
 - Metryki tras do usługi Log Analytics do analizowania danych metryk wraz z danymi dziennika oraz do przechowywania wartości metryk przez okres dłuższy niż 93 dni. 
-- Stream metryki, aby [Centrum zdarzeń](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) do kierowania ich do [usługi Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) lub systemów zewnętrznych.
-- [Archiwum](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md) historii wydajności i kondycji zasobu pod kątem zgodności, inspekcji lub w trybie offline do celów raportowania.
+- Stream metryki, aby [Centrum zdarzeń](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) do kierowania ich do [usługi Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) lub systemów zewnętrznych.
+- [Archiwum](../../azure-monitor/learn/tutorial-archive-data.md) historii wydajności i kondycji zasobu pod kątem zgodności, inspekcji lub w trybie offline do celów raportowania.
 - Dostęp do wartości metryk z wiersza polecenia lub niestandardowych aplikacji przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) lub [interfejsu API REST](../../azure-monitor/platform/rest-api-walkthrough.md).
 
 
@@ -129,7 +129,7 @@ Dzienniki są szczególnie przydatne dla łączenie danych z różnych źródeł
 ### <a name="sources-of-log-data"></a>Źródła danych dziennika
 Usługa Azure Monitor może zbierać dane dzienników z różnych źródeł, zarówno w obrębie platformy Azure i z zasobami lokalnymi. Następujące źródła danych dziennika:
 
-- [Dzienniki aktywności](collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) zapewniające wgląd w ich działania.
+- [Dzienniki aktywności](collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) zapewniające wgląd w ich działania.
 - Agenci na [Windows](agent-windows.md) i [Linux](../learn/quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Azure Monitor, zgodnie z opisem w [źródeł danych](data-sources.md) , należy skonfigurować.
 - Dane aplikacji są zbierane przez [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../insights/solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
@@ -156,7 +156,7 @@ Następujące zadania, które można wykonywać za pomocą dzienników:
 Wszystkie dane dzienników w usłudze Azure Monitor są pobierane przy użyciu [zapytanie dziennika](../log-query/log-query-overview.md) napisane przy użyciu [język zapytań w Eksploratorze danych](../log-query/get-started-queries.md), co pozwala na szybkie pobierania, konsolidacji i analizowania zebranych danych. Użyj [usługi Log Analytics](../log-query/portals.md) pisania i testowania zapytań w witrynie Azure portal. Można interaktywnej pracy z wynikami lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać dzienniki przy użyciu [platformy Azure, interfejsu API REST monitorowania](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
-> Dane z usługi Application Insights są przechowywane w oddzielnej partycji niż inne dane dzienników w usłudze Azure Monitor. W ten sposób realizowany taką samą funkcjonalność jak inne dane dziennika, ale muszą używać [konsoli Application Insights](/application-insights/app-insights-analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
+> Dane z usługi Application Insights są przechowywane w oddzielnej partycji niż inne dane dzienników w usłudze Azure Monitor. W ten sposób realizowany taką samą funkcjonalność jak inne dane dziennika, ale muszą używać [konsoli Application Insights](/azure-monitor/app/analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
 
 ![Dzienniki](media/data-collection/logs.png)
 
@@ -176,7 +176,7 @@ WYJAŚNIENIE Ta funkcja jest dostępna na [Tworzenie alertów metryk dla dzienni
 ## <a name="stream-data-to-external-systems"></a>Data Stream z systemami zewnętrznymi
 Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Przekazywanie ten jest zazwyczaj wykonywane bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 
 
-Możesz też uzyskać wskazówki dotyczące różnych rodzajów danych monitorowania na [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+Możesz też uzyskać wskazówki dotyczące różnych rodzajów danych monitorowania na [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

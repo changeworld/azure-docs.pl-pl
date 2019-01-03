@@ -1,25 +1,71 @@
 ---
 title: Ruch wychodzący i punktów końcowych w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące sposobu tworzenia punktów końcowych za pomocą Twins cyfrowych platformy Azure
+description: Wskazówki dotyczące sposobu tworzenia punktów końcowych za pomocą Twins cyfrowych platformy Azure.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 12/31/2018
 ms.author: alinast
-ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636309"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994833"
 ---
 # <a name="egress-and-endpoints"></a>Ruch wychodzący i punktów końcowych
 
-Twins cyfrowych platformy Azure obsługuje pojęcie **punktów końcowych**. Każdy punkt końcowy reprezentuje brokera komunikatów lub zdarzeń w subskrypcji platformy Azure użytkownika. Zdarzenia i komunikaty mogą być wysyłane do tematów usługi Azure Event Hubs, Azure Event Grid i Azure Service Bus.
+Azure Twins cyfrowego *punktów końcowych* reprezentują brokera komunikatów lub zdarzeń w ramach subskrypcji platformy Azure przez użytkownika. Zdarzenia i komunikaty mogą być wysyłane do tematów usługi Azure Event Hubs, Azure Event Grid i Azure Service Bus.
 
-Zdarzenia są wysyłane do punktów końcowych, zgodnie z preferencjami routingu wstępnie zdefiniowane. Użytkownik może określić, który punkt końcowy powinien zostać wyświetlony dowolne z następujących zdarzeń: 
+Zdarzenia są kierowane do punktów końcowych, zgodnie z preferencjami routingu wstępnie zdefiniowane. Określ użytkowników, które *typy zdarzeń* każdy punkt końcowy, może zostać wyświetlony.
+
+Aby dowiedzieć się więcej na temat zdarzenia, routing i typy zdarzeń dotyczą [Routing zdarzeń i komunikatów w reprezentacji urządzeń cyfrowych platformy Azure](./concepts-events-routing.md).
+
+## <a name="events"></a>Zdarzenia
+
+Zdarzenia są wysyłane przez IoT obiektów (takich jak urządzenia i czujniki) do przetworzenia przez Azure brokerów komunikat i zdarzeń. Zdarzenia są definiowane przez następujące [odwołanie do schematu zdarzeń usługi Azure Event Grid](../event-grid/event-schema.md).
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "subject": "ExtendedPropertyKey",
+  "data": {
+    "SpacesToNotify": [
+      "3a16d146-ca39-49ee-b803-17a18a12ba36"
+    ],
+    "Id": "00000000-0000-0000-0000-000000000000",
+      "Type": "ExtendedPropertyKey",
+    "AccessType": "Create"
+  },
+  "eventType": "TopologyOperation",
+  "eventTime": "2018-04-17T17:41:54.9400177Z",
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
+}
+```
+
+| Atrybut | Typ | Opis |
+| --- | --- | --- |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| dane | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+
+Aby uzyskać więcej informacji na temat schematów zdarzeń usługi Event Grid:
+
+- Przegląd [odwołanie do schematu zdarzeń usługi Azure Event Grid](../event-grid/event-schema.md).
+- Odczyt [odwołanie do usługi Azure EventGrid Node.js SDK EventGridEvent](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+
+## <a name="event-types"></a>Typy zdarzeń
+
+Typy zdarzeń klasyfikacji charakteru zdarzenia i są ustawiane w **Typzdarzenia** pola. Zdarzenie dostępne typy są określone przez następującej listy:
 
 - TopologyOperation
 - UdfCustom
@@ -27,15 +73,11 @@ Zdarzenia są wysyłane do punktów końcowych, zgodnie z preferencjami routingu
 - SpaceChange
 - DeviceMessage
 
-Aby uzyskać podstawową wiedzę na temat zdarzenia, routing i typy zdarzeń, zobacz [Routing zdarzeń i komunikatów](concepts-events-routing.md).
-
-## <a name="event-types-description"></a>Opis typów zdarzeń
-
-W poniższych sekcjach opisano formatu zdarzeń dla każdego z typów zdarzeń.
+Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podsekcjach.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** stosuje się do zmian grafu. **Podmiotu** właściwość określa typ obiektu, których to dotyczy. Następujące typy obiektów mogą wywołać zdarzenie to: 
+**TopologyOperation** stosuje się do zmian grafu. **Podmiotu** właściwość określa typ obiektu, których to dotyczy. Następujące typy obiektów mogą wywołać zdarzenie to:
 
 - Urządzenie
 - DeviceBlobMetadata
@@ -86,7 +128,7 @@ W poniższych sekcjach opisano formatu zdarzeń dla każdego z typów zdarzeń.
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** jest zdarzenia wysłanego przez funkcję zdefiniowaną przez użytkownika (UDF). 
+**UdfCustom** jest zdarzenia wysłanego przez funkcję zdefiniowaną przez użytkownika (UDF).
   
 > [!IMPORTANT]  
 > Tego zdarzenia muszą być jawnie wysyłane z systemu plików UDF, sam.
@@ -195,10 +237,19 @@ Za pomocą **DeviceMessage**, można określić **EventHub** połączenia, do kt
 
 ## <a name="configure-endpoints"></a>Konfigurowanie punktów końcowych
 
-Punkt końcowy zarządzania jest wykonywane za pośrednictwem punktów końcowych interfejsu API. W poniższych przykładach pokazano sposób konfigurowania różnych obsługiwanych punktów końcowych. Należy zwrócić szczególną uwagę na tablicy typów zdarzeń, ponieważ definiuje on routingu dla punktu końcowego:
+Punkt końcowy zarządzania jest wykonywane za pośrednictwem punktów końcowych interfejsu API.
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+Poniższe przykłady pokazują, jak skonfigurować punkty końcowe obsługiwane.
+
+>[!IMPORTANT]
+> Należy zwrócić uwagę dokładnej **eventTypes** atrybutu. Definiuje zdarzenia, które typy są obsługiwane przez punkt końcowy i określić routingu.
+
+Żądanie HTTP POST uwierzytelnionego względem
 
 ```plaintext
-POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
+YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
 - Trasa do typów zdarzeń usługi Service Bus **SensorChange**, **SpaceChange**, i **TopologyOperation**:
