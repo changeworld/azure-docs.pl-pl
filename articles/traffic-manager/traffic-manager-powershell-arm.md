@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93d52101569e911c90377f26a9773d61eeaaf229
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237931"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653683"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Zarządzanie usługą Traffic Manager przy użyciu programu PowerShell
 
@@ -111,7 +111,7 @@ We wszystkich trzech przypadkach punkty końcowe można dodać na dwa sposoby:
 
 Punkty końcowe platformy Azure odwoływać się do usług hostowanych na platformie Azure. Obsługiwane są dwa rodzaje punkty końcowe platformy Azure:
 
-1. Azure Web Apps
+1. Azure App Service
 2. Zasoby usługi platformy Azure publicznego adresu IP, (które mogą być dołączane do równoważenia obciążenia lub maszynie wirtualnej karty Sieciowej). Publiczny adres IP musi mieć nazwę DNS, przypisany do użycia w usłudze Traffic Manager.
 
 W każdym przypadku:
@@ -121,9 +121,9 @@ W każdym przypadku:
 * Określanie "waga" jest opcjonalna. Wagi są używane tylko w przypadku, jeśli profil, który jest skonfigurowany do używania metody routingu ruchu "Ważona". W przeciwnym razie są ignorowane. Jeśli zostanie określony, wartość musi być liczbą z przedziału od 1 do 1000. Wartość domyślna to "1".
 * Określanie "priorytet" jest opcjonalna. Priorytety są używane tylko w przypadku, jeśli profil, który jest skonfigurowany do używania metody routingu ruchu "Priority". W przeciwnym razie są ignorowane. Prawidłowe wartości to od 1 do 1000 o niższych wartościach, wskazując wyższy priorytet. Jeśli określona dla punktów końcowych, muszą one być określone dla wszystkich punktów końcowych. W przypadku pominięcia wartości domyślne, zaczynając od "1" są stosowane w kolejności, czy punkty końcowe są wyświetlane.
 
-### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Przykład 1: Dodawanie punktów końcowych aplikacji sieci Web przy użyciu `Add-AzureRmTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Przykład 1: Dodawanie punktów końcowych usługi App Service przy użyciu `Add-AzureRmTrafficManagerEndpointConfig`
 
-W tym przykładzie firma Microsoft Tworzenie profilu usługi Traffic Manager i dodaj dwa punktów końcowych aplikacji sieci Web przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` polecenia cmdlet.
+W tym przykładzie firma Microsoft Tworzenie profilu usługi Traffic Manager i dodaj dwa punkty końcowe usługi aplikacji przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` polecenia cmdlet.
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"

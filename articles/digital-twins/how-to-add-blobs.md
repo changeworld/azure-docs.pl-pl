@@ -1,19 +1,20 @@
 ---
-title: Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Opis sposobu dodawania obiektów blob do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
+title: Jak dodać obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
-ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725628"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974523"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -21,10 +22,7 @@ Obiekty BLOB są bez określonej struktury reprezentacje popularnych typów plik
 
 Platforma Azure obsługuje cyfrowego Twins dołączanie obiektów blob na urządzeniach, miejsca do magazynowania i użytkowników. Obiekty BLOB mogą reprezentować zdjęcie profilowe dla użytkownika, zdjęcia urządzenia, wideo, mapy lub dziennika.
 
-> [!NOTE]
-> W tym artykule założono:
-> * Czy wystąpienia jest poprawnie skonfigurowany do odbierania żądań interfejsu API zarządzania.
-> * Aby poprawnie uwierzytelniono za pomocą klienta REST wybranych przez użytkownika.
+[!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-an-overview"></a>Przekazywanie obiektów blob: omówienie
 
@@ -93,9 +91,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Wartość parametru | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
-| *USER_DEFINED_BOUNDARY* | Nazwa granice zawartości wieloczęściowej wiadomości |
+| USER_DEFINED_BOUNDARY | Nazwa granice zawartości wieloczęściowej wiadomości |
 
 Poniższy kod jest implementacją .NET tego samego przekazywania obiektów blob, za pomocą klasy [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
 
@@ -116,7 +114,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ## <a name="api-endpoints"></a>Punkty końcowe interfejsu API
 
-Poniższe sekcje przeprowadzą Cię przez podstawowe punkty końcowe i ich funkcje.
+W poniższych sekcjach opisano, punkty końcowe interfejsu API związanych z obiektami blob podstawowych i ich funkcje.
 
 ### <a name="devices"></a>Urządzenia
 
@@ -144,7 +142,7 @@ Liczba pomyślnych żądań zwracają **DeviceBlob** obiekt JSON w odpowiedzi. *
 > [!TIP]
 > Użyj tej tabeli do obsługi danych pomyślnie zwrócone żądanie.
 
-### <a name="spaces"></a>Miejsca do magazynowania
+### <a name="spaces"></a>Spacje
 
 Obiekty BLOB można także dołączyć do miejsca do magazynowania. Poniższa ilustracja zawiera listę wszystkich miejsca na punkty końcowe interfejsu API odpowiedzialny za obsługę obiektów blob. Wyświetla ona wszystkie parametry ścieżki do przekazania do tych punktów końcowych.
 
@@ -194,7 +192,7 @@ Zwrócone dane JSON (**UserBlob** obiektów) jest zgodny z następujących model
 
 ## <a name="common-errors"></a>Typowe błędy
 
-Typowym błędem nie jest wraz z informacjami nagłówka poprawny:
+Typowym błędem jest nie zawierać prawidłowy nagłówek informacje:
 
 ```JSON
 {

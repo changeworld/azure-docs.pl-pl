@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18a32f5e07470f71ba276fbe3a2633150b1bf188
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079215"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754668"
 ---
-# <a name="tutorial-6-group-and-extract-related-data"></a>Samouczek 6: Grupowanie i Wyodrębnij powiązanych danych
+# <a name="tutorial-group-and-extract-related-data"></a>Samouczek: Grupowanie i wyodrębnianie powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
 
 Złożone jednostki ma na celu grupowanie powiązanych jednostek w encji kategorii nadrzędnej. Taka informacja istnieje jako osobne jednostki, przed utworzeniem złożonego. Jest podobny do hierarchicznych jednostki, ale może zawierać różne typy jednostek. 
@@ -33,7 +33,8 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka
+> * Importuj przykładową aplikację
+> * Tworzenie intencji
 > * Dodawanie jednostki złożonej 
 > * Szkolenie
 > * Publikowanie
@@ -41,286 +42,139 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
+## <a name="import-example-app"></a>Importuj przykładową aplikację
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
-
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json).
+1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) z samouczka jednostki listy.
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 
 3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `composite`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
-
 ## <a name="composite-entity"></a>Złożone jednostki
-Tworzenie złożonego jednostki, gdy osobne jednostki mogą być grupowane logicznie to logiczne grupowanie przydaje się do aplikacji klienckiej. 
 
-W tej aplikacji, nazwa pracowników jest zdefiniowana w **pracowników** listy jednostek i obejmuje synonimy, nazwa, adres e-mail, firmy numer wewnętrzny, numer telefonu komórkowego i Stanach Zjednoczonych Identyfikator podatkowej. 
+W tej aplikacji, nazwa działu jest zdefiniowana w **działu** listy jednostek i obejmuje synonimy. 
 
-**MoveEmployee** celem ma wypowiedzi przykładowe żądanie, pracownik można przenieść z jednego budynku i pakietu office do innego. Tworzenie nazwy są alfabetyczne: "", "B", itp. natomiast urzędy są liczbowe: "1234", "13245". 
+**TransferEmployeeToDepartment** celem ma wypowiedzi przykładowe żądanie, pracownik można przenieść do nowego działu. 
 
-Przykład wypowiedzi w **MoveEmployee** intencji obejmują:
+Przykład wypowiedzi konwersji między innymi:
 
 |Przykładowe wypowiedzi|
 |--|
-|Przesuń W Jan. Nowak mógł a-2345|
-|shift x12345 to h-1234 tomorrow|
+|Przenieś Jan Kowalski W. do działu księgowości|
+|Transfer Jill Jones z języka R & D|
  
-Żądanie przeniesienia powinna zawierać pracowników (przy użyciu dowolnej synonim) i lokalizacji końcowej budynku i pakietu office. Żądanie może również obejmować źródłowy pakietu office, a także określonej dacie przeniesienie powinno mieć miejsce. 
+Żądanie przeniesienia powinien zawierać nazwę działu i nazwiska pracownika. 
 
-Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwrócić go w `RequestEmployeeMove` złożonego jednostki:
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Dodaj PersonName wstępnie utworzone jednostki ułatwiające wykonywanie typowych wyodrębniania typu danych
 
-```json
-"compositeEntities": [
-  {
-    "parentType": "RequestEmployeeMove",
-    "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-    "children": [
-      {
-        "type": "builtin.datetimeV2.datetime",
-        "value": "march 3 2 p.m"
-      },
-      {
-        "type": "Locations::Destination",
-        "value": "z - 2345"
-      },
-      {
-        "type": "Employee",
-        "value": "jill jones"
-      },
-      {
-        "type": "Locations::Origin",
-        "value": "a - 1234"
-      }
-    ]
-  }
-]
-```
+Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych działań związanych z wyodrębnianiem danych. 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Wybierz **kompilacji** w górnym menu nawigacyjnym i w wybierz **jednostek** menu nawigacji po lewej stronie.
 
-2. Na **intencji** wybierz opcję **MoveEmployee** intencji. 
+1. Naciśnij przycisk **Manage prebuilt entity** (Zarządzaj wstępnie utworzoną jednostką).
 
-3. Wybierz ikonę lupy, na pasku narzędzi, aby filtrować listę wypowiedzi. 
+1. Wybierz **[PersonName](luis-reference-prebuilt-person.md)** wybierz z listy wstępnie utworzonych jednostek następnie **gotowe**.
 
-    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" z wyróżnionym przyciskiem szkło powiększające i](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" z wyróżnionym przyciskiem szkło powiększające i")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-4. Wprowadź `tomorrow` w polu tekstowym filtru, aby znaleźć wypowiedź `shift x12345 to h-1234 tomorrow`.
+    Ta jednostka ułatwia dodawanie rozpoznawania nazwy do aplikacji klienta.
 
-    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" za pomocą filtru "jutro" wyróżnione](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "wyróżnione zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" za pomocą filtru \"jutro\"")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+## <a name="create-composite-entity-from-example-utterances"></a>Tworzenie złożonego jednostki na podstawie przykład wypowiedzi
 
-    Inną metodą jest filtrowanie jednostki według datetimeV2, wybierając **filtry jednostki** polecenie **datetimeV2** z listy. 
+1. Wybierz pozycję **Intents** (Intencje) w obszarze nawigacji po lewej stronie.
 
-5. Wybierz pierwszy obiekt `Employee`, a następnie wybierz **opakować w jednostce złożone** na liście menu podręcznego. 
+1. Wybierz **TransferEmployeeToDepartment** z listy opcji.
 
-    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając pierwszy obiekt złożony z wyróżnioną pozycją](media/luis-tutorial-composite-entity/hr-create-entity-1.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+1. W pierwszym wypowiedź, wybierz jednostki personName `John Jackson`, a następnie wybierz **Start zawijania złożonego jednostki** na liście menu podręczne dla następujących wypowiedź:
 
+    `place John Jackson in engineering`
 
-6. Następnie od razu wybierz ostatni obiekt `datetimeV2` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `RequestEmployeeMove` a następnie wybierz enter. 
+1. Następnie od razu wybierz ostatni obiekt `engineering` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `TransferEmployeeInfo` a następnie wybierz enter. 
 
-    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając ostatni obiekt złożony i tworzenia jednostki wyróżnione](media/luis-tutorial-composite-entity/hr-create-entity-2.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt złożony i tworzenia jednostki wyróżnione")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+1. W **jakiego typu jednostki, czy chcesz utworzyć?**, wszystkie pola wymagane znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). 
 
-7. W **jakiego typu jednostki, czy chcesz utworzyć?**, prawie wszystkie pola wymagane znajdują się na liście. Brak tylko lokalizacji źródłowej. Wybierz **Dodawanie jednostki podrzędne**, wybierz opcję **Locations::Origin** z listy istniejących jednostek, następnie wybierz pozycję **gotowe**. 
-
-    Należy zauważyć, że wstępnie utworzone jednostki, number, została dodana do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
-
-    ![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" dodanie innej jednostki, w oknie podręcznym](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
-
-8. Wybierz ikonę lupy na pasku narzędzi, aby usunąć filtr. 
-
-9. Usuń słowo `tomorrow` z filtru, aby ponownie wyświetlić wszystkie wyrażenia o przykład. 
+    Zwróć uwagę, czy wstępnie utworzone jednostki, personName, został dodany do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Wypowiedzi przykład etykiety ze złożonego jednostki
 
 
 1. W każdym wypowiedź przykład wybierz jednostki najdalej po lewej stronie, która powinna znajdować się w złożonego. Następnie wybierz pozycję **opakować w jednostce złożone**.
 
-    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając pierwszy obiekt złożony z wyróżnioną pozycją](media/luis-tutorial-composite-entity/hr-label-entity-1.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+1. Wybierz ostatni wyraz w jednostce złożone, a następnie wybierz **TransferEmployeeInfo** z menu podręcznego. 
 
-2. Wybierz ostatni wyraz w jednostce złożone, a następnie wybierz **RequestEmployeeMove** z menu podręcznego. 
+1. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
 
-    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając ostatni obiekt złożony z wyróżnioną pozycją](media/luis-tutorial-composite-entity/hr-label-entity-2.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt złożony wyróżniony")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
-
-3. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
-
-    [![Zrzut ekranu usługi LUIS na "MoveEmployee" przy użyciu wszystkich wypowiedzi etykietą](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "zrzut ekranu usługi LUIS na \"MoveEmployee\" przy użyciu wszystkich wypowiedzi etykietą")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
-
-## <a name="train"></a>Szkolenie
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uczenie aplikacji, dzięki czemu można przetestować zmiany do intencji 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikowanie aplikacji, więc uczony model jest odpytywalny z punktu końcowego
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Pobierz prognozowania intencji i jednostki z punktu końcowego 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. 
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Jill Jones to DevOps`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. 
 
     Ponieważ ten test jest upewnij się, że złożonego jest wyodrębniany poprawnie, test można dołączyć istniejącego wypowiedź próbki lub nowe wypowiedź. Dobry test umożliwiający jest uwzględnienie wszystkich obiektów podrzędnych w jednostce złożone.
 
     ```json
     {
-      "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
+      "query": "Move Jill Jones to DevOps",
       "topScoringIntent": {
-        "intent": "MoveEmployee",
-        "score": 0.9959525
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9882747
       },
       "intents": [
         {
-          "intent": "MoveEmployee",
-          "score": 0.9959525
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.009858314
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.00728598563
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.0058053555
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.005371796
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00266987388
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9882747
         },
         {
           "intent": "None",
-          "score": 0.00123299169
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00116407464
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00102653319
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.0006628214
+          "score": 0.00925369747
         }
       ],
       "entities": [
         {
-          "entity": "march 3 2 p.m",
-          "type": "builtin.datetimeV2.datetime",
-          "startIndex": 41,
-          "endIndex": 54,
-          "resolution": {
-            "values": [
-              {
-                "timex": "XXXX-03-03T14",
-                "type": "datetime",
-                "value": "2018-03-03 14:00:00"
-              },
-              {
-                "timex": "XXXX-03-03T14",
-                "type": "datetime",
-                "value": "2019-03-03 14:00:00"
-              }
-            ]
-          }
-        },
-        {
           "entity": "jill jones",
-          "type": "Employee",
+          "type": "builtin.personName",
           "startIndex": 5,
-          "endIndex": 14,
+          "endIndex": 14
+        },
+        {
+          "entity": "devops",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 24,
           "resolution": {
             "values": [
-              "Employee-45612"
+              "Development Operations"
             ]
           }
         },
         {
-          "entity": "z - 2345",
-          "type": "Locations::Destination",
-          "startIndex": 31,
-          "endIndex": 36,
-          "score": 0.9690751
-        },
-        {
-          "entity": "a - 1234",
-          "type": "Locations::Origin",
-          "startIndex": 21,
-          "endIndex": 26,
-          "score": 0.9713137
-        },
-        {
-          "entity": "-1234",
-          "type": "builtin.number",
-          "startIndex": 22,
-          "endIndex": 26,
-          "resolution": {
-            "value": "-1234"
-          }
-        },
-        {
-          "entity": "-2345",
-          "type": "builtin.number",
-          "startIndex": 32,
-          "endIndex": 36,
-          "resolution": {
-            "value": "-2345"
-          }
-        },
-        {
-          "entity": "3",
-          "type": "builtin.number",
-          "startIndex": 47,
-          "endIndex": 47,
-          "resolution": {
-            "value": "3"
-          }
-        },
-        {
-          "entity": "2",
-          "type": "builtin.number",
-          "startIndex": 50,
-          "endIndex": 50,
-          "resolution": {
-            "value": "2"
-          }
-        },
-        {
-          "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-          "type": "RequestEmployeeMove",
+          "entity": "jill jones to devops",
+          "type": "TransferEmployeeInfo",
           "startIndex": 5,
-          "endIndex": 54,
-          "score": 0.4027723
+          "endIndex": 24,
+          "score": 0.9607566
         }
       ],
       "compositeEntities": [
         {
-          "parentType": "RequestEmployeeMove",
-          "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+          "parentType": "TransferEmployeeInfo",
+          "value": "jill jones to devops",
           "children": [
             {
-              "type": "builtin.datetimeV2.datetime",
-              "value": "march 3 2 p.m"
-            },
-            {
-              "type": "Locations::Destination",
-              "value": "z - 2345"
-            },
-            {
-              "type": "Employee",
+              "type": "builtin.personName",
               "value": "jill jones"
             },
             {
-              "type": "Locations::Origin",
-              "value": "a - 1234"
+              "type": "Department",
+              "value": "devops"
             }
           ]
         }
@@ -334,9 +188,18 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróci
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Informacje pokrewne
+
+* [Samouczek jednostki](luis-quickstart-intents-only.md)
+* [Złożone jednostki](luis-concept-entity-types.md) informacje koncepcyjne
+* [Sposób trenowania](luis-how-to-train.md)
+* [Jak opublikować](luis-how-to-publish-app.md)
+* [Testowanie w portalu usługi LUIS](luis-interactive-test.md)
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku tworzony złożonego jednostki do hermetyzacji istniejących jednostek. Dzięki temu aplikacja kliencka można znaleźć grupy powiązanych danych w różnych typach danych, aby kontynuować rozmowę. Aplikacja kliencka dla tej aplikacji do zarządzania zasobami ludzkimi zapytać, jakie datę i godzinę przeniesienie musi rozpoczynać się i kończyć. Go również zadawać dotyczące innych Logistyka movesuch jako fizyczny telefon. 
+W tym samouczku tworzony złożonego jednostki do hermetyzacji istniejących jednostek. Dzięki temu aplikacja kliencka można znaleźć grupy powiązanych danych w różnych typach danych, aby kontynuować rozmowę. Aplikacja kliencka dla tej aplikacji do zarządzania zasobami ludzkimi zapytać, jakie datę i godzinę przeniesienie musi rozpoczynać się i kończyć. Można również zadać pytanie dotyczące innych Logistyka przenoszenia, takim jak telefon fizycznych. 
 
 > [!div class="nextstepaction"] 
 > [Dowiedz się, jak dodać jednostki prostej listy fraz](luis-quickstart-primary-and-secondary-data.md)  

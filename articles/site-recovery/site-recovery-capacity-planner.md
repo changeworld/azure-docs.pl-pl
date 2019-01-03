@@ -3,16 +3,17 @@ title: Planowanie pojemności na potrzeby odzyskiwania po awarii w funkcji Hyper
 description: W tym artykule umożliwiają oszacowanie zdolności produkcyjnych, podczas konfigurowania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: d8ba4fa1b5f5efd671c13ad2201b0cd34642d346
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844944"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976719"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planowanie pojemności na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V 
 
@@ -33,8 +34,8 @@ Planista wydajności usługi Site Recovery umożliwia analizowanie Twoje środow
 
 Narzędzie można uruchomić w dwóch trybach:
 
-* **Planowanie szybkie**: zapewnia projekcje sieci i serwera, na podstawie średniej liczby maszyn wirtualnych, dysków, magazynu i szybkość zmian.
-* **Szczegóły planowania**: zawiera szczegółowe informacje o poszczególnych obciążeń na poziomie maszyny Wirtualnej. Analizuj zgodność maszyny Wirtualnej i Uzyskaj projekcje sieci i serwera.
+* **Planowanie szybkie**: Udostępnia projekcje sieci i serwera, na podstawie średniej liczby maszyn wirtualnych, dysków, magazynu i szybkość zmian.
+* **Szczegóły planowania**: Zawiera szczegółowe informacje o poszczególnych obciążeń na poziomie maszyny Wirtualnej. Analizuj zgodność maszyny Wirtualnej i Uzyskaj projekcje sieci i serwera.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -65,14 +66,14 @@ Narzędzie można uruchomić w dwóch trybach:
 
 4. Po wprowadzeniu wartości dla środowiska źródłowego, wyświetlone dane wyjściowe obejmują:
 
-   * **Przepustowość wymagana na potrzeby replikacji różnicowej (w megabitach na sekundę)**: przepustowością sieci na potrzeby replikacji różnicowej jest obliczany średni dzienny współczynnik zmian danych.
-   * **Przepustowość wymagana na potrzeby replikacji początkowej (w megabitach na sekundę)**: przepustowością sieci na potrzeby replikacji początkowej jest obliczana na podstawie wartości początkowej replikacji, możesz wprowadzić.
-   * **Wymagane (w GB) magazynu**: łączna liczba usługi Azure storage, wymagane.
-   * **Łączna liczba operacji We/Wy w magazynie Standard Storage**: Ta liczba jest obliczana na podstawie rozmiaru jednostki operacje We/Wy 8 K na kontach magazynu w warstwie standardowa całkowitej. Dla szybkiego Planner liczba jest obliczany na podstawie wszystkich dysków maszyny Wirtualnej źródłowego i dzienny współczynnik zmian danych. Dla szczegółowe Planner liczba jest obliczany na podstawie łączna liczba maszyn wirtualnych, które są mapowane do standardowych maszyn wirtualnych platformy Azure i je zmienić częstotliwość na tych maszynach wirtualnych.
-   * **Liczba kont magazynu w warstwie standardowa wymagane**: łączna liczba kont magazynu w warstwie standardowa niezbędne do ochrony maszyn wirtualnych. Standardowe konto magazynu może zawierać maksymalnie 20 000 operacji We/Wy na wszystkich maszynach wirtualnych w magazynie standard storage. Maksymalnie 500 operacji We/Wy jest obsługiwana na dysk.
-   * **Liczba obiektów Blob dysków wymagana**: liczba dysków, które zostały utworzone w usłudze Azure storage.
-   * **Liczba kont usługi premium wymagane**: Całkowita liczba potrzebnych do ochrony maszyn wirtualnych kont usługi premium storage. Źródłowej maszyny Wirtualnej o wysokiej operacje We/Wy (większe niż 20 000) wymaga konta magazynu premium storage. Konto magazynu premium storage może zawierać maksymalnie 80 000 operacji We/Wy.
-   * **Łączna liczba operacji We/Wy w magazynie Premium Storage**: Ta liczba jest obliczana na podstawie rozmiaru jednostki operacje We/Wy 256 KB dla premium łączna liczba kont magazynu. Dla szybkiego Planner liczba jest obliczany na podstawie wszystkich dysków maszyny Wirtualnej źródłowego i dzienny współczynnik zmian danych. Dla szczegółowe Planner ta liczba jest obliczana na podstawie całkowitej liczby maszyn wirtualnych, które są mapowane na maszynach wirtualnych platformy Azure — wersja premium (seria DS i GS) i danych zmiany stawki na tych maszynach wirtualnych.
+   * **Przepustowość wymagana na potrzeby replikacji różnicowej (w megabitach na sekundę)**: Przepustowość sieci na potrzeby replikacji przyrostowej jest obliczany średni dzienny współczynnik zmian danych.
+   * **Przepustowość wymagana na potrzeby replikacji początkowej (w megabitach na sekundę)**: Przepustowość sieci na potrzeby replikacji początkowej jest obliczany na wartości początkowej replikacji, które należy wprowadzić.
+   * **Magazyn wymagany (w GB)**: Całkowita ilość miejsca Azure wymagana.
+   * **Łączna liczba operacji We/Wy w magazynie Standard Storage**: Liczba jest obliczany na podstawie rozmiar jednostki operacje We/Wy 8K na kontach magazynu w warstwie standardowa całkowitej. Dla szybkiego Planner liczba jest obliczany na podstawie wszystkich dysków maszyny Wirtualnej źródłowego i dzienny współczynnik zmian danych. Dla szczegółowe Planner liczba jest obliczany na podstawie łączna liczba maszyn wirtualnych, które są mapowane do standardowych maszyn wirtualnych platformy Azure i je zmienić częstotliwość na tych maszynach wirtualnych.
+   * **Liczba kont magazynu w warstwie standardowa wymagane**: Całkowita liczba kont magazynu w warstwie standardowa niezbędne do ochrony maszyn wirtualnych. Standardowe konto magazynu może zawierać maksymalnie 20 000 operacji We/Wy na wszystkich maszynach wirtualnych w magazynie standard storage. Maksymalnie 500 operacji We/Wy jest obsługiwana na dysk.
+   * **Liczba obiektów Blob dysków wymagana**: Liczba dysków, które zostały utworzone w usłudze Azure storage.
+   * **Liczba kont usługi premium wymagane**: Całkowita liczba kont usługi premium storage jest niezbędne do ochrony maszyn wirtualnych. Źródłowej maszyny Wirtualnej o wysokiej operacje We/Wy (większe niż 20 000) wymaga konta magazynu premium storage. Konto magazynu premium storage może zawierać maksymalnie 80 000 operacji We/Wy.
+   * **Łączna liczba operacji We/Wy w magazynie Premium Storage**: Liczba jest obliczany na podstawie rozmiar jednostki operacje We/Wy 256 KB dla premium łączna liczba kont magazynu. Dla szybkiego Planner liczba jest obliczany na podstawie wszystkich dysków maszyny Wirtualnej źródłowego i dzienny współczynnik zmian danych. Dla szczegółowe Planner ta liczba jest obliczana na podstawie całkowitej liczby maszyn wirtualnych, które są mapowane na maszynach wirtualnych platformy Azure — wersja premium (seria DS i GS) i danych zmiany stawki na tych maszynach wirtualnych.
    * **Liczba serwerów konfiguracji wymaganych**: Pokazuje, jak wiele serwerów konfiguracji są wymagane do wdrożenia.
    * **Liczba dodatkowych serwerów przetwarzania wymagane**: Pokazuje, czy dodatkowych serwerów przetwarzania są wymagane, oprócz serwera przetwarzania, który jest uruchomiony na serwerze konfiguracji domyślnie.
    * **100% dodatkowego magazynu w źródle**: Pokazuje, czy dodatkowy magazyn jest wymagany w lokalizacji źródłowej.

@@ -9,18 +9,40 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d5dd2e2943d78291fc9c4903c15fb4d3767edbea
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: b8f77f404a8e5d2d1625a327a1e50c0e169b6135
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442016"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744432"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
-W tym artykule wymieniono typowe problemy, które są powiązane z plików pakietu Microsoft Azure, po nawiązaniu połączenia z klientami z systemem Linux. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. 
+W tym artykule wymieniono typowe problemy, które są powiązane z usługą Azure Files, po nawiązaniu połączenia z klientami z systemem Linux. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. 
 
 Oprócz kroki rozwiązywania problemów, w tym artykule, można użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) aby upewnić się, że klient systemu Linux ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większości objawy wymienionych w tym artykule. Pomaga ono służą do konfigurowania środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Narzędzie do rozwiązywania problemów zawiera instrukcje do udzielenia odpowiedzi na problemy, łączenie, mapowanie i instalowanie udziałów plików platformy Azure.
+
+<a id="mounterror13"></a>
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Instalowanie error(13): Odmowa uprawnień"podczas instalowania udziału plików platformy Azure
+
+### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyny 1: Nieszyfrowana komunikacja kanału
+
+Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Również może zostać zablokowany nieszyfrowanego połączenia, w tym samym centrum danych, jeśli [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu. Kanału komunikacji szyfrowanej znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
+
+Aby dowiedzieć się więcej, zobacz [wymagania wstępne dotyczące instalowania pliku Azure Udostępnianie systemu Linux i pakiet cifs utils](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+
+### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
+
+1. Nawiązywanie połączenia z klienta, który obsługuje szyfrowanie protokołu SMB lub połączyć się z maszyną wirtualną, w tym samym centrum danych jako konta usługi Azure storage, które służy do udziału plików platformy Azure.
+2. Sprawdź [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu, jeśli klient nie obsługuje szyfrowania protokołu SMB.
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyny 2: Wirtualne reguły sieci lub zapory są włączone na koncie magazynu 
+
+Jeśli sieć wirtualną (VNET) i reguły zapory są skonfigurowane na koncie magazynu, ruch sieciowy nastąpi odmowa dostępu, chyba, że adres IP klienta lub sieci wirtualnej ma mieć dostęp.
+
+### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
+
+Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na koncie magazynu. Aby sprawdzić, czy wirtualny zasady sieci lub zapory jest przyczyną problemu, tymczasowo zmienić ustawienia na koncie magazynu **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"Przekroczono przydział dysku [odmowa uprawnień]" podczas próby otwarcia pliku
@@ -47,7 +69,7 @@ Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uc
     - Użyj [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) między udziałów plików na komputerze lokalnym.
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Instalowanie error(112): Host nie działa" z powodu upływu limitu czasu ponownego łączenia
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Instalowanie error(112): Host nie działa"z powodu upływu limitu czasu ponownego łączenia
 
 Błąd instalacji "112" występuje na komputerze klienckim systemu Linux po przez długi czas klienta. Po dłuższy czas bezczynności klient odłączy się i upłynie limit czasu połączenia.  
 
@@ -76,7 +98,7 @@ Ten problem można obejść, określając twarde instalacji. Twarde instalacji w
 Jeśli nie można uaktualnić do najnowszej wersji jądra, możesz obejść ten problem, przechowując plik w udziale plików platformy Azure, które piszesz co 30 sekund lub mniej. Musi to być operacji zapisu, takie jak ponowne napisanie Data utworzonego lub zmodyfikowanego pliku. W przeciwnym razie możesz otrzymać wyników z pamięci podręcznej, a operacja nie może wyzwalać ponownego łączenia.
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Instalowanie error(115): operacja w toku" podczas instalowania usługi Azure Files przy użyciu protokołu SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Instalowanie error(115): Operacja w toku"podczas instalowania usługi Azure Files przy użyciu protokołu SMB 3.0
 
 ### <a name="cause"></a>Przyczyna
 
@@ -87,6 +109,27 @@ Niektórych dystrybucjach systemu Linux nie obsługują funkcji szyfrowania w pr
 Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. W czasie publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. 
 
 Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure Files przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, która znajduje się w tym samym centrum danych jako udziału plików. Upewnij się, że [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu. 
+
+<a id="accessdeniedportal"></a>
+## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Odmowa dostępu" podczas przeglądania do udziału plików platformy Azure w portalu
+
+Po przejściu do udziału plików platformy Azure w portalu, może zostać wyświetlony następujący błąd:
+
+Odmowa dostępu  
+Nie masz dostępu  
+Prawdopodobnie nie masz dostępu do tej zawartości. Aby uzyskać dostęp, skontaktuj się z właścicielem.  
+
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Przyczyny 1: Twoje konto użytkownika nie ma dostępu do konta magazynu
+
+### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
+
+Przejdź do konta magazynu, w którym zlokalizowany jest udział plików platformy Azure, kliknij przycisk **kontrola dostępu (IAM)** i zweryfikować Twoje konto użytkownika ma dostęp do konta magazynu. Aby dowiedzieć się więcej, zobacz [sposób zabezpieczania konta magazynu przy użyciu kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyny 2: Wirtualne reguły sieci lub zapory są włączone na koncie magazynu
+
+### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
+
+Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na koncie magazynu. Aby sprawdzić, czy wirtualny zasady sieci lub zapory jest przyczyną problemu, tymczasowo zmienić ustawienia na koncie magazynu **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików platformy Azure zainstalowany na maszynie Wirtualnej systemu Linux
@@ -163,11 +206,11 @@ Aby rozwiązać ten problem, należy użyć [narzędzie do rozwiązywania proble
 * Zawiera wskazówki nad własnym rozwiązaniem problemu.
 * Służy do zbierania danych diagnostycznych śledzenia.
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": błąd wejścia/wyjścia
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia
 
 Podczas próby wyświetlanie listy plików w udziale plików platformy Azure za pomocą polecenia ls polecenie zawiesza się podczas wyświetlania listy plików. Zostanie wyświetlony następujący błąd:
 
-**ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": błąd wejścia/wyjścia**
+**ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia**
 
 
 ### <a name="solution"></a>Rozwiązanie
@@ -178,7 +221,7 @@ Uaktualnienie jądrze systemu Linux do następujących wersji, które mają popr
 - 4.12.11+
 - Wszystkie wersje, które są większe niż lub równa 4.13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nie można utworzyć łącza symbolicznego - ln: nie można utworzyć łącza symbolicznego, t ": operacja nie jest obsługiwana
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nie można utworzyć łącza symbolicznego - ln: nie można utworzyć łącza symbolicznego, t ": Operacja nie jest obsługiwana
 
 ### <a name="cause"></a>Przyczyna
 Domyślnie instalowanie udziałów plików platformy Azure w systemie Linux przy użyciu CIFS nie umożliwia obsługę łączy symbolicznych (linków symbolicznych). Zostanie wyświetlony błąd taki jak ten:

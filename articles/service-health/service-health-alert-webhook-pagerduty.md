@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: bd3bcd575e8e0f60d5d8f9640aa7b0ed4935249e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: eba81e0d0a5b178aec6f712abaae2b566bc54316
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273225"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583453"
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu usługi PagerDuty
 
@@ -98,5 +98,5 @@ W tym artykule pokazano, jak skonfigurować powiadomienia o kondycji usługi pla
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
 - Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../azure-monitor/platform/service-notifications.md).
 - Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).

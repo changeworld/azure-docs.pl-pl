@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: a5150d3f318fce2f66adfa4bdc43ae8aec651223
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 46065a742afd08585707f4f4fdf6ad2e32cd89b2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251151"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719459"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z botem wC#
 
@@ -39,7 +39,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny na [repozytorium GitHub usługi LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//LUIS Tutorial:`.
+Cały kod w tym samouczku jest dostępny na [repozytorium GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//LUIS Tutorial:`.
 
 ## <a name="review-luis-web-app-bot"></a>Przejrzyj bot aplikacji sieci web usługi LUIS
 
@@ -127,11 +127,11 @@ Instalowanie i konfigurowanie usługi Application Insights w programie Visual St
 
 2. W **Publikuj** wybierz **Utwórz nowy profil**.
 
-    ![Opublikuj projekt portalu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
+    ![W ramach publikowania Utwórz nowy profil.](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
 
 3. Wybierz **Importuj profil**i wybierz **OK**.
 
-    ![Opublikuj projekt portalu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
+    ![W ramach publikowania Importuj profil](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
 
 4. W **Importuj plik ustawień publikowania** systemu windows, przejdź do folderu projektu, przejdź do folderu `PostDeployScripts` folderu, wybierz plik, który kończy się `.PublishSettings`i wybierz `Open`. Skonfigurowano publikowania dla tego projektu.
 
@@ -204,7 +204,7 @@ Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS.
 
 1. W portalu, wybierz **wszystkie zasoby** następnie Filtruj według nazwy bot aplikacji sieci web. Kliknij zasób z typem **usługi Application Insights**. Ikona usługi Application Insights jest żarówki.
 
-    ![Wyszukiwanie usługi app insights](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
+    ![Wyszukiwanie usługi app insights w witrynie Azure Portal](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
 2. Po otwarciu zasobu kliknij **wyszukiwania** ikonę lupy w prawym panelu. Nowy panel do wyświetla odpowiednie. W zależności od ilości danych telemetrycznych zostanie znaleziony, zespół może potrwać chwilę, aby wyświetlić. Wyszukaj `LUIS`. Lista jest zawężony do właśnie takie wyniki zapytania usługi LUIS, dodane za pomocą tego samouczka.
 

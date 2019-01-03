@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434049"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741593"
 ---
 # <a name="os-patching-for-hdinsight"></a>Stosowanie poprawek dla HDInsight systemu operacyjnego 
 Jako zarządzana usługa Apache Hadoop HDInsight zajmuje się stosowanie poprawek systemu operacyjnego podstawowych maszyn wirtualnych, które korzystają z klastrów HDInsight. Począwszy od 1 sierpnia 2016 r. dokonaliśmy zmiany zasad stosowania poprawek systemu operacyjnego gościa w przypadku klastrów HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszą). Celem nowych zasad jest znacznie zmniejszyć liczbę ponownego uruchomienia ze względu na stosowanie poprawek. Nowe zasady będą w dalszym poprawki maszyn wirtualnych (VM) w klastrach systemu Linux w każdy poniedziałek lub czwartek, począwszy od 12: 00 UTC w sposób rozłożone między węzłami w dowolnym danym klastrze. Jednak wszelkie danej maszyny Wirtualnej będzie tylko ponowny rozruch co najwyżej raz na 30 dni z powodu stosowania poprawek systemu operacyjnego gościa. Ponadto to pierwszy ponowny rozruch dla nowo utworzonego klastra nie nastąpi szybciej niż 30 dni od daty utworzenia klastra. Poprawki będą obowiązywać po wykonywany jest ponowny rozruch maszyn wirtualnych.
@@ -33,7 +33,6 @@ Za pomocą akcji skryptu, opisane w tym artykule, można zmodyfikować systemu o
 
 > [!NOTE]  
 > Ta akcja skryptu będzie działać tylko z klastrami HDInsight opartych na systemie Linux, utworzonych po 1 sierpnia 2016 r. Poprawki będą obowiązywać tylko wtedy, gdy wykonywany jest ponowny rozruch maszyn wirtualnych. 
->
 
 ## <a name="how-to-use-the-script"></a>Jak użyć skryptu 
 

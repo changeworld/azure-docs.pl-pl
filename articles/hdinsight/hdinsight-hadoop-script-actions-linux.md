@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384205"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718932"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
 
@@ -134,7 +134,7 @@ Klastry HDInsight opartych na systemie Linux zapewniają dwa węzły główne, k
 
 ### <a name="bPS6"></a>Konfigurowanie niestandardowych składników, aby korzystać z magazynu obiektów Blob platformy Azure
 
-Składniki, które można zainstalować w klastrze może mieć konfigurację domyślną, która korzysta z magazynu Apache Hadoop Distributed pliku System (HDFS). HDInsight korzysta z usługi Azure Storage lub Data Lake Store jako magazynem domyślnym. Podaj zarówno systemu zgodnego systemem plików HDFS, która utrwala dane, nawet jeśli klaster jest usuwany. Może być konieczne skonfigurowanie składników, które można zainstalować, aby użyć WASB lub ADL zamiast systemu plików HDFS.
+Składniki, które można zainstalować w klastrze może mieć konfigurację domyślną, która korzysta z magazynu Apache Hadoop Distributed pliku System (HDFS). HDInsight korzysta z usługi Azure Storage lub usługi Data Lake Storage jako magazynu domyślnego. Podaj zarówno systemu zgodnego systemem plików HDFS, która utrwala dane, nawet jeśli klaster jest usuwany. Może być konieczne skonfigurowanie składników, które można zainstalować, aby użyć WASB lub ADL zamiast systemu plików HDFS.
 
 W przypadku większości operacji jest konieczne określanie systemu plików. Na przykład następujące kopiuje plik giraph-examples.jar z lokalnego systemu plików do magazynu klastra:
 
@@ -142,7 +142,7 @@ W przypadku większości operacji jest konieczne określanie systemu plików. Na
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używa domyślnego magazynu klastra. W przypadku niektórych operacji może być konieczne Określ identyfikator URI. Na przykład `adl:///example/jars` for Data Lake Store lub `wasb:///example/jars` dla usługi Azure Storage.
+W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używa domyślnego magazynu klastra. W przypadku niektórych operacji może być konieczne Określ identyfikator URI. Na przykład `adl:///example/jars` dla usługi Data Lake Storage lub `wasb:///example/jars` dla usługi Azure Storage.
 
 ### <a name="bPS7"></a>Zapisywanie informacji o STDOUT i STDERR
 
@@ -163,7 +163,7 @@ Domyślnie `echo` wysyła ciąg znaków do strumienia wyjściowego STDOUT. Aby s
 >&2 echo "An error occurred installing Foo"
 ```
 
-To przekierowuje informacje zapisywane do strumienia wyjściowego STDOUT, stderr (2) zamiast tego. Aby uzyskać więcej informacji na temat przekierowania we/wy, zobacz [ http://www.tldp.org/LDP/abs/html/io-redirection.html ](http://www.tldp.org/LDP/abs/html/io-redirection.html).
+To przekierowuje informacje zapisywane do strumienia wyjściowego STDOUT, stderr (2) zamiast tego. Aby uzyskać więcej informacji na temat przekierowania we/wy, zobacz [ https://www.tldp.org/LDP/abs/html/io-redirection.html ](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
 Aby uzyskać więcej informacji o wyświetlaniu informacji rejestrowanych przez akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -278,17 +278,17 @@ Skrypty służące do dostosowywania klastra musi być przechowywany w jednym z 
 
 * A __publicznie do odczytu URI__. Na przykład adres URL do danych przechowywanych w usłudze OneDrive, Dropbox lub inny plik innej usługi hostingu.
 
-* __Konta usługi Azure Data Lake Store__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Store z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Konta usługi Azure Data Lake Storage__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
-    > Nazwa główna usługi, których HDInsight używa do dostępu Data Lake Store musi mieć dostęp do odczytu do skryptu.
+    > Nazwa główna usługi HDInsight używane do dostępu do usługi Data Lake Storage przez musi mieć dostęp do odczytu do skryptu.
 
 Zasoby używane przez skrypt również muszą być dostępne publicznie.
 
-Przechowywanie plików w konto usługi Azure Storage lub Azure Data Lake Store zapewnia szybki dostęp, oba w ramach sieci platformy Azure.
+Przechowywanie plików w usłudze Azure Storage konta lub usługi Azure Data Lake Storage zapewnia szybki dostęp, oba w ramach sieci platformy Azure.
 
 > [!NOTE]  
-> Format identyfikatora URI używany w celu skrypt różni się w zależności od używanej usługi. W przypadku konta magazynu skojarzonego z klastrem HDInsight, użyj `wasb://` lub `wasbs://`. Identyfikatory URI publicznie do odczytu, użyj `http://` lub `https://`. Data Lake Store, użyj `adl://`.
+> Format identyfikatora URI używany w celu skrypt różni się w zależności od używanej usługi. W przypadku konta magazynu skojarzonego z klastrem HDInsight, użyj `wasb://` lub `wasbs://`. Identyfikatory URI publicznie do odczytu, użyj `http://` lub `https://`. W przypadku usługi Data Lake Storage, użyj `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Sprawdzanie wersji systemu operacyjnego
 

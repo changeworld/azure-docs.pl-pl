@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 097eae37f170a8036ee46652450788faf77c3960
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b44903244147f556e620e9726f6e9884b12ac8a8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967133"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976532"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Stream metryki: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
-Sonda serce interwałów pulsu aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą Live Stream metryk z [usługi Application Insights](app-insights-overview.md). Wybierania i filtrowania liczniki wydajności i metryki, aby obejrzeć w czasie rzeczywistym, bez żadnych zakłóceń w usłudze. Sprawdź, czy ślady stosu z przykładowych nie powiodło się żądań i wyjątków. Wraz z [Profiler](app-insights-profiler.md), [rozszerzenia Snapshot debugger](app-insights-snapshot-debugger.md), i [testowania wydajnościowego](app-insights-monitor-web-app-availability.md#performance-tests), Live Stream metryk udostępnia zaawansowane i nieinwazyjny narzędzie diagnostyczne dla sieci web na żywo witryna.
+Sonda serce interwałów pulsu aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą Live Stream metryk z [usługi Application Insights](app-insights-overview.md). Wybierania i filtrowania liczniki wydajności i metryki, aby obejrzeć w czasie rzeczywistym, bez żadnych zakłóceń w usłudze. Sprawdź, czy ślady stosu z przykładowych nie powiodło się żądań i wyjątków. Wraz z [Profiler](app-insights-profiler.md), [rozszerzenia Snapshot debugger](app-insights-snapshot-debugger.md), i [testowania wydajnościowego](../azure-monitor/app/monitor-web-app-availability.md#performance-tests), Live Stream metryk udostępnia zaawansowane i nieinwazyjny narzędzie diagnostyczne dla sieci web na żywo witryna.
 
 Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 
@@ -38,7 +38,7 @@ Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
-1. Jeśli nie zostały jeszcze [Zainstaluj usługę Application Insights](app-insights-asp-net.md) w aplikacji sieci web platformy ASP.NET lub [aplikacja serwera Windows](app-insights-windows-services.md), zrób to teraz. 
+1. Jeśli nie zostały jeszcze [Zainstaluj usługę Application Insights](../azure-monitor/app/asp-net.md) w aplikacji sieci web platformy ASP.NET lub [aplikacja serwera Windows](app-insights-windows-services.md), zrób to teraz. 
 2. **Aktualizacja do najnowszej wersji** pakietu usługi Application Insights. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami Nuget**. Otwórz **aktualizacje** karcie wyboru **Uwzględnij wersję wstępną**i wybrać wszystkie pakiety Microsoft.ApplicationInsights.*.
 
     Ponownie wdróż aplikację.
@@ -52,7 +52,7 @@ Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 
 ### <a name="no-data-check-your-server-firewall"></a>Brak danych? Sprawdź Zapora serwera
 
-Sprawdź [porty wychodzące dla Live Stream metryki](app-insights-ip-addresses.md#outgoing-ports) są otwarte w zaporze serwerów. 
+Sprawdź [porty wychodzące dla Live Stream metryki](../azure-monitor/app/ip-addresses.md#outgoing-ports) są otwarte w zaporze serwerów. 
 
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Czym różni się Live Stream metryk z Eksploratora metryk i analiza?
@@ -60,10 +60,10 @@ Sprawdź [porty wychodzące dla Live Stream metryki](app-insights-ip-addresses.m
 | |Transmisja strumieniowa na żywo | Eksplorator metryk i analiza |
 |---|---|---|
 |Opóźnienie|Dane wyświetlane w ciągu sekundy|Zagregowane w ciągu minut|
-|Nie przechowywania|Danych będzie nadal występować, gdy znajduje się na wykresie, a następnie zostaje odrzucone|[Dane przechowywane przez 90 dni](app-insights-data-retention-privacy.md#how-long-is-the-data-kept)|
+|Nie przechowywania|Danych będzie nadal występować, gdy znajduje się na wykresie, a następnie zostaje odrzucone|[Dane przechowywane przez 90 dni](../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Na żądanie|Dane są przesyłane strumieniowo, gdy otworzysz metryki na żywo|Dane są wysyłane zawsze, gdy zestaw SDK jest zainstalowane i włączone|
 |Bezpłatna|Nie ma opłat dla danych Live Stream.|Podlegają [ceny](app-insights-pricing.md)
-|Próbkowanie|Wszystkie wybrane metryk i liczników są przesyłane. Błędy i ślady stosu są próbkowane. TelemetryProcessors nie są stosowane.|Zdarzenia mogą być [próbkowania](app-insights-api-filtering-sampling.md)|
+|Próbkowanie|Wszystkie wybrane metryk i liczników są przesyłane. Błędy i ślady stosu są próbkowane. TelemetryProcessors nie są stosowane.|Zdarzenia mogą być [próbkowania](../azure-monitor/app/api-filtering-sampling.md)|
 |Kanał kontrolny|Sygnały formant filtru są wysyłane do zestawu SDK. Firma Microsoft zaleca [ten kanał](#secure-channel).|Komunikacja jest jednokierunkowe do portalu|
 
 
@@ -75,7 +75,7 @@ Stosowanie filtrów dowolnego na żadnych danych telemetrycznych usługi Applica
 
 ![Żądanie niestandardowego wskaźnika KPI](./media/app-insights-live-stream/live-stream-filteredMetric.png)
 
-Można monitorować wartość różni się od liczby. Opcje zależą od rodzaju strumienia, który może być żadnych danych telemetrycznych usługi Application Insights: żądań, zależności, wyjątki, ślady, zdarzenia i metryki. Może być własne [niestandardowej miary](app-insights-api-custom-events-metrics.md#properties):
+Można monitorować wartość różni się od liczby. Opcje zależą od rodzaju strumienia, który może być żadnych danych telemetrycznych usługi Application Insights: żądań, zależności, wyjątki, ślady, zdarzenia i metryki. Może być własne [niestandardowej miary](../azure-monitor/app/api-custom-events-metrics.md#properties):
 
 ![Opcje wartości](./media/app-insights-live-stream/live-stream-valueoptions.png)
 
@@ -83,7 +83,7 @@ Oprócz telemetrii usługi Application Insights można również monitorować ws
 
 Metryki na żywo są agregowane w dwóch miejscach: lokalnie na każdym serwerze, a następnie na wszystkich serwerach. Można zmienić domyślny na poziomie, wybierając inne opcje w odpowiednich listach rozwijanych.
 
-## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Przykładowe dane telemetryczne: Niestandardowe zdarzenia diagnostyczne na żywo
+## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Przykładowe dane telemetryczne: Diagnostyczne wydarzeń na żywo niestandardowe
 Domyślnie Kanał informacyjny na żywo zdarzeń zawiera przykłady żądań zakończonych niepowodzeniem i wywołań zależności, wyjątki, zdarzenia i dane śledzenia. Kliknij ikonę filtru, aby wyświetlić kryteria zastosowanych w dowolnym momencie w czasie. 
 
 ![Kanał informacyjny na żywo domyślne](./media/app-insights-live-stream/live-stream-eventsdefault.png)
@@ -92,7 +92,7 @@ Za pomocą metryk, możesz określić dowolnego kryterium dowolnego do dowolnego
 
 ![Niestandardowy Kanał informacyjny na żywo](./media/app-insights-live-stream/live-stream-events.png)
 
-Uwaga: Obecnie, dla wyjątku oparta na komunikatach kryteria, użyć komunikat o wyjątku najbardziej zewnętrznej. W poprzednim przykładzie, aby odfiltrować niegroźne wyjątek z komunikatem o wyjątku wewnętrznego (następuje "<--" ogranicznika) "klient rozłączył się." Użyj komunikatu nie zawiera kryteria "Błąd podczas odczytu treści żądania".
+Uwaga: Obecnie dla kryteriów opartych na komunikat o wyjątku, należy używać komunikat o wyjątku najbardziej zewnętrznej. W poprzednim przykładzie, aby odfiltrować niegroźne wyjątek z komunikatem o wyjątku wewnętrznego (następuje "<--" ogranicznika) "klient rozłączył się." Użyj komunikatu nie zawiera kryteria "Błąd podczas odczytu treści żądania".
 
 Zobacz szczegóły dotyczące elementu w źródle danych na żywo, klikając go. Źródło danych można wstrzymać, klikając przycisk **wstrzymać** lub po prostu przewijając w dół lub klikając element. Kanał informacyjny na żywo zostanie wznowiona po podczas przewijania do góry lub klikając licznik elementów zbierane, gdy została wstrzymana.
 
@@ -188,7 +188,7 @@ Jednak jeśli rozpoznaje i zaufania połączonych serwerów, możesz spróbować
 
 ## <a name="generating-a-performance-test-load"></a>Generowanie wydajności testu obciążenia
 
-Jeśli chcesz zobaczyć efekt zwiększenia obciążenia, należy użyć bloku Test wydajności. Symuluje ona żądania pochodzące z wielu równoczesnych użytkowników. Można uruchomić, albo "testy ręczne" (ping testy) z pojedynczego adresu URL lub można uruchomić [wieloetapowego testu sieci web wydajności](app-insights-monitor-web-app-availability.md#multi-step-web-tests) przekazane (w taki sam sposób jak test dostępności).
+Jeśli chcesz zobaczyć efekt zwiększenia obciążenia, należy użyć bloku Test wydajności. Symuluje ona żądania pochodzące z wielu równoczesnych użytkowników. Można uruchomić, albo "testy ręczne" (ping testy) z pojedynczego adresu URL lub można uruchomić [wieloetapowego testu sieci web wydajności](../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) przekazane (w taki sam sposób jak test dostępności).
 
 > [!TIP]
 > Po utworzeniu testu wydajności, otwórz test i bloku Stream na żywo w oddzielnych okien. Po uruchomieniu testu wydajności umieszczonych w kolejce i obejrzyj transmisji strumieniowej na żywo widoczne w tym samym czasie.
@@ -197,12 +197,12 @@ Jeśli chcesz zobaczyć efekt zwiększenia obciążenia, należy użyć bloku Te
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Brak danych? Jeśli aplikacja znajduje się w chronionej sieci: Live Stream metryki korzysta z różnymi adresami IP niż inne telemetria usługi Application Insights. Upewnij się, że [te adresy IP](app-insights-ip-addresses.md) są otwarte w zaporze.
+Brak danych? Jeśli aplikacja znajduje się w chronionej sieci: Live Stream metryki korzysta z różnymi adresami IP niż inne telemetria usługi Application Insights. Upewnij się, że [te adresy IP](../azure-monitor/app/ip-addresses.md) są otwarte w zaporze.
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie użycia za pomocą usługi Application Insights](app-insights-usage-overview.md)
-* [Za pomocą wyszukiwanie diagnostyczne](app-insights-diagnostic-search.md)
+* [Za pomocą wyszukiwanie diagnostyczne](../azure-monitor/app/diagnostic-search.md)
 * [Profiler](app-insights-profiler.md)
 * [Rozszerzenie Snapshot debugger](app-insights-snapshot-debugger.md)

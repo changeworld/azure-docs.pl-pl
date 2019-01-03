@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Konwertuj tekst na mowę, .NET Core — usługi mowy'
+title: 'Szybki start: Konwertuj tekst na mowę, .NET Core — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start dowiesz się, jak konwertować mowę przy użyciu interfejsu API REST zamiany tekstu na mowę. Przykładowy tekst uwzględnione w tym przewodniku mają strukturę jako język znaczników synteza mowy (SSML). Dzięki temu możliwe jest wybranie głos i język odpowiedzi mowy.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d463ca73fb533b8a44c2019a478f2df0162cb23
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089874"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791449"
 ---
-# <a name="quickstart-convert-text-to-speech-using-net-core"></a>Szybki Start: Konwertuj tekst na mowę, przy użyciu platformy .NET Core
+# <a name="quickstart-convert-text-to-speech-using-net-core"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu platformy .NET Core
 
 W tym przewodniku Szybki Start dowiesz się, jak konwertować zamiany tekstu na mowę przy użyciu platformy .NET Core i interfejsu API REST zamiany tekstu na mowę. Tekst przykładowy uwzględnione w tym przewodniku ma strukturę [mowy syntezy Markup Language (SSML)](speech-synthesis-markup.md), co pozwala wybrać głos i język w odpowiedzi.
 
@@ -27,7 +27,7 @@ Ten przewodnik Szybki Start wymaga [konta usług Azure Cognitive Services](https
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
 * Klucz subskrypcji platformy Azure dla usługi mowy
 
@@ -109,7 +109,7 @@ public class Authentication
 ```
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [sposób uzyskiwania tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token).
+> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [uwierzytelnienia przy użyciu tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
 ## <a name="get-an-access-token-and-set-the-host-url"></a>Uzyskaj token dostępu i Ustaw adres URL hosta
 
@@ -162,7 +162,7 @@ string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis'
 ```
 
 > [!NOTE]
-> W tym przykładzie użyto `ZiraRUS` czcionka głosowa. Aby uzyskać pełną listę Microsoft podany głosów/języków, zobacz [języki](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/language-support). Jeśli interesuje Cię tworzenie unikatowy, rozpoznawalny głos na marki, zobacz [tworzenia czcionki głosowe niestandardowe](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font).
+> W tym przykładzie użyto `ZiraRUS` czcionka głosowa. Aby uzyskać pełną listę Microsoft podany głosów/języków, zobacz [języki](language-support.md). Jeśli interesuje Cię tworzenie unikatowy, rozpoznawalny głos na marki, zobacz [tworzenia czcionki głosowe niestandardowe](how-to-customize-voice-font.md).
 
 ## <a name="instantiate-the-client-make-a-request-and-save-synthesized-audio-to-a-file"></a>Utwórz wystąpienie klienta, zgłosić wniosek i zapisać w pliku audio syntetyzowany
 

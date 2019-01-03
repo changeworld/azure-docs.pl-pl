@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 9af4f5223dfe269ace459c8a7de07fe6dd0c2427
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238528"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973965"
 ---
 # <a name="part-of-speech-tagging"></a>Tagowanie części mowy
 
 > [!IMPORTANT]
-> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
+> Wersja zapoznawcza analizy językowej została wycofana 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 ## <a name="background-and-motivation"></a>Tło i motywację
 
@@ -42,11 +42,11 @@ Należą do kategorii, takich jak *rzeczownik* (zazwyczaj reprezentujący osób,
 | . | terminator zdania | . ! ? |
 | : | dwukropek lub wielokropka | : ; ... |
 | DW | razem i koordynowania działań | a, ale lub jeszcze|
-| CIĄGŁE DOSTARCZANIE | cyfry kardynalną | dziewięć 1980 20 96 " |
+| CD | cyfry kardynalną | dziewięć 1980 20 96 " |
 | DT | determiner |wszystkie zarówno żadnego z tych celów|
 | NA PRZYKŁAD | egzystencjalna miejsca | istnieje |
 | ŚRODOWISKA .NET FRAMEWORK | obce słowa | enfant terrible hoi polloi je ne sais quoi |
-| INDIE | preposition lub nadrzędne połączeniu| wewnątrz w przypadku po czy |
+| IN | preposition lub nadrzędne połączeniu| wewnątrz w przypadku po czy |
 | JJ | przymiotnik lub liczb porządkowych | dziewiąty wielomodalnymi dość execrable |
 | JJR | przymiotnik porównawczych | lepiej, szybciej tańsze |
 | JJS | przymiotnik superlative | najlepsze najszybszych najtańszej |
@@ -80,4 +80,4 @@ Należą do kategorii, takich jak *rzeczownik* (zazwyczaj reprezentujący osób,
 
 ## <a name="specification"></a>Specyfikacja
 
-Jak w przypadku tokenizacji, możemy polegać na specyfikacji z [Treebank partnerów](https://catalog.ldc.upenn.edu/ldc99t42).
+Jak w przypadku tokenizacji, możemy polegać na specyfikacji z [Treebank partnerów](https://catalog.ldc.upenn.edu/LDC99T42).

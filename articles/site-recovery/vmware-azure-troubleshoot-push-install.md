@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 12/12/2018
-ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314401"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789911"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
@@ -135,9 +135,8 @@ Inne artykuły dotyczące rozwiązywania problemów WMI można znaleźć w nast�
 
 ## <a name="unsupported-operating-systems"></a>Nieobsługiwanych systemów operacyjnych
 
-Inny najbardziej typową przyczyną błędu może być spowodowany nieobsługiwany system operacyjny. Upewnij się, że używasz obsługiwanej wersji jądra systemu operacyjnego/pomyślną instalację usługi mobilności.
-
-Aby dowiedzieć się, o które systemy operacyjne są obsługiwane przez usługę Azure Site Recovery, zobacz nasze [dokumencie macierz obsługi](vmware-physical-azure-support-matrix.md#replicated-machines).
+Inny najbardziej typową przyczyną błędu może być spowodowany nieobsługiwany system operacyjny. Upewnij się, że używasz obsługiwanej wersji jądra systemu operacyjnego/pomyślną instalację usługi mobilności. Należy unikać użycia prywatnych poprawki.
+Aby wyświetlić listę systemów operacyjnych i wersji jądra obsługiwanych przez usługę Azure Site Recovery, zobacz nasze [dokumencie macierz obsługi](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Partycje rozruchowe i systemowe woluminy nie są tego samego dysku (identyfikator błędu: 95309)
 
@@ -146,6 +145,10 @@ Przed 9.20 partycje wersji, rozruchowy i systemowy / woluminy na dyskach inną w
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Partycja systemowa na wielu dyskach (identyfikator błędu: 95313)
 
 Przed wersją 9.20 główny partycji lub woluminie, na wielu dyskach był nieobsługiwaną konfigurację. Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
+
+## <a name="grub-uuid-failure-errorid-95320"></a>Błąd CHODNIKÓW UUID (identyfikator błędu: 95320)
+
+Jeśli program GRUB maszyny źródłowej używa nazwy urządzenia zamiast identyfikatora UUID, instalacji agenta mobilności kończy się niepowodzeniem. Skontaktuj się z administratorem systemu, aby wprowadź zmiany w pliku programu GRUB.
 
 ## <a name="lvm-support-from-920-version"></a>Obsługa LVM 9.20 wersji
 

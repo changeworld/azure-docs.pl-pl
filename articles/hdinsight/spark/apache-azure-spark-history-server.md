@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497271"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792785"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Serwer historii platformy Spark w usłudze rozszerzonej Apache umożliwia debugowanie i diagnozowanie aplikacji platformy Apache Spark
 
@@ -26,7 +26,7 @@ Serwer historii platformy Spark Apache jest interfejs użytkownika sieci web dla
 
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Otwórz interfejs użytkownika Apache Spark historii serwera sieci Web z witryny Azure portal
 
-1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **serwer historii platformy Spark**. Po wyświetleniu monitu wprowadź poświadczenia administratora klastra Spark. 
 
     ![Platforma Spark jest serwer historii](./media/apache-azure-spark-history-server/launch-history-server.png "Spark serwer historii")
@@ -106,11 +106,11 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
 
 + Odtwarzanie zadania, klikając **odtwarzania** przycisk i zatrzymać w dowolnym momencie, klikając przycisk Zatrzymaj. Wyświetlanie zadań są oznaczone kolorem do wyświetlania stanu różnych podczas odtwarzania:
 
-    + Zielony dla powiodło się: zadanie została pomyślnie zakończona.
-    + Pomarańczowy na potrzeby podjęta próba: wystąpienia zadania, które nie powiodło się, ale nie wpływają na ostateczny wynik zadania. Te zadania ma zduplikowany lub spróbuj ponownie wystąpienia, które może powieść się później.
-    + Niebieski do uruchomienia: zadanie jest uruchomione.
-    + Biały dla oczekiwania lub pominięte: zadanie oczekuje na uruchomienie lub etapu została pominięta.
-    + Czerwony, nie powiodło się: zadanie zakończyło się niepowodzeniem.
+    + Zielony dla zakończyło się pomyślnie: Zadanie zostało ukończone pomyślnie.
+    + Pomarańczowy na ponawiane: Wystąpienia zadania, które nie powiodło się, ale nie wpływają na ostateczny wynik zadania. Te zadania ma zduplikowany lub spróbuj ponownie wystąpienia, które może powieść się później.
+    + Niebieski do uruchomienia: Zadanie jest uruchomione.
+    + Biały dla oczekiwania lub pominięte: Zadanie oczekuje na uruchomienie lub etapu została pominięta.
+    + Kolor czerwony dla nie powiodło się: Zadanie nie powiodło się.
 
     ![przykład koloru wykresu, uruchomione](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -119,7 +119,7 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
 
     ![przykład koloru wykresu, nie powiodło się](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
-    > [!NOTE]
+    > [!NOTE]  
     > Odtwarzanie dla każdego zadania jest dozwolone. Odtwarzanie dla zadanie nieukończone, nie jest obsługiwane.
 
 
@@ -132,8 +132,8 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
     ![etykietki narzędzi wykresu](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Na karcie grafu zadania etapy będą miały etykietki narzędzi i mała ikona wyświetlana, jeśli mają zadania, które spełniają poniższe warunki:
-    + Niesymetryczność danych: rozmiar odczytu danych > ilość odczytanych danych średni rozmiar wszystkich zadań w tym etapie * 2 i dane odczytane rozmiar > 10 MB
-    + Niesymetryczność czasu: czasu wykonywania > Średni czas wykonywania wszystkich zadań w tym etapie * 2 i czasu wykonywania > 2 min
+    + Niesymetryczność danych: rozmiar odczytu danych > ilość odczytanych danych średni rozmiar wszystkich zadań w tym etapie * 2 i dane odczytane rozmiar > 10 MB.
+    + Niesymetryczność czasu: czasu wykonywania > Średni czas wykonywania wszystkich zadań w tym etapie * 2 i czasu wykonywania > 2 minut.
 
     ![niesymetryczność ikoną wykresu](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
@@ -147,10 +147,10 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
     + Liczba wierszy: Suma rekordów danych wejściowych, wyjściowych rekordów mieszania odczytu rekordów i mieszania rekordów zapisu.
     + Postęp.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Domyślnie węzłem grafu zadania spowoduje wyświetlenie informacji z ostatniej próby, każdy z etapów (z wyjątkiem czas wykonywania etapu), ale podczas odtwarzania wykresu węźle są wyświetlane informacje z kolejnymi próbami.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Rozmiar danych odczytu i zapisu, używamy 1 MB = 1000 KB = 1000 * 1000 bajtów.
 
 + Prześlij opinię z problemami, klikając **przesłanie nam opinii**.
@@ -168,7 +168,7 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **diagnostyki** w m
 ### <a name="data-skew"></a>Niesymetryczność danych
 Kliknij przycisk **Niesymetryczności danych** karcie odpowiednich niesymetryczne zadania są wyświetlane w oparciu o określonych parametrów. 
 
-+ **Określ parametry** — pierwsza sekcja wyświetla parametry, które są używane do wykrywania Niesymetryczności danych. To wbudowane reguły: Odczyt danych zadania jest większy niż 3 razy danych zadania średni odczyt i Odczyt danych zadania jest większy niż 10MB. Jeśli chcesz zdefiniować reguły niesymetryczne zadań, możesz wybrać parametry, **nierówne etapu**, i **pochylanie Char** sekcji zostaną odświeżone w związku z tym.
++ **Określ parametry** — pierwsza sekcja wyświetla parametry, które są używane do wykrywania Niesymetryczności danych. To wbudowane reguły: Odczyt danych zadania jest większy niż 3 razy odczytanych danych średniej zadań i Odczyt danych zadania jest większy niż 10MB. Jeśli chcesz zdefiniować reguły niesymetryczne zadań, możesz wybrać parametry, **nierówne etapu**, i **pochylanie Char** sekcji zostaną odświeżone w związku z tym.
 
 + **Nierówne etapu** — w drugiej sekcji wyświetlany etapów, które zawierać nierówne zadań spełniających kryteria określone powyżej. Jeśli istnieje więcej niż jednego zadania niesymetryczne w etapie, tabeli niesymetryczny etap są wyświetlane tylko najbardziej niesymetryczne zadania (np. największy danych dla danych pochylić).
 

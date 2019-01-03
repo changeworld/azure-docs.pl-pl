@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5d4c564ac797f40d7f6e9b169a6c864d3ef8147b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f95dec8a539a92a0397421fbde411f646eeca3ca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165167"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720088"
 ---
-# <a name="find-endpoint-region-with-c"></a>Znajdź region punktu końcowego w języku C# 
+# <a name="programmatically-find-endpoint-region-with-c"></a>Programowe Znajdowanie punktu końcowego regionC# 
 W przypadku usługi LUIS Identyfikatora aplikacji i identyfikator subskrypcji usługi LUIS można znaleźć który region należy używać dla punktu końcowego zapytań.
 
 > [!NOTE] 
-> Pełne C# rozwiązanie jest dostępne z [ **przykłady LUIS** repozytorium GitHub](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/csharp/).
+> Pełne C# rozwiązanie jest dostępne z [ **przykładów dla platformy Azure** repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/csharp/).
 
 ## <a name="luis-endpoint-query-strategy"></a>Strategia kwerendy punktu końcowego usługi LUIS
 Każda kwerenda punktu końcowego usługi LUIS wymaga:

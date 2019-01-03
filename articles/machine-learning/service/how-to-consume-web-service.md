@@ -1,7 +1,7 @@
 ---
 title: Tworzenie klienta do korzystania z wdrożonej usługi sieci web
 titleSuffix: Azure Machine Learning service
-description: Informacje o sposobie korzystania z usługi sieci web, który został wygenerowany, gdy model został wdrożony za pomocą modelu usługi Azure Machine Learning. Usługa sieci web, która uwidacznia interfejs API REST. Tworzenie klientów dla tego interfejsu API przy użyciu preferowanego języka programowania.
+description: Informacje o sposobie korzystania z usługi sieci web, który został wygenerowany, gdy model został wdrożony za pomocą modelu usługi Azure Machine Learning. Usługa sieci web udostępnia interfejs API REST. Tworzenie klientów dla tego interfejsu API przy użyciu preferowanego języka programowania.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251134"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753391"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
-Wdrażanie modelu usługi Azure Machine Learning w postaci usługi sieci web tworzy interfejs API REST. Można wysyłać dane do tego interfejsu API i odbierać prognozowania zwracane przez model. W tym dokumencie, Dowiedz się, jak utworzyć klientów przy użyciu usługi sieci web C#, Go, Java i Python.
+Wdrażanie modelu usługi Azure Machine Learning w postaci usługi sieci web tworzy interfejs API REST. Można wysyłać dane do tego interfejsu API i odbierać prognozowania zwracane przez model. W tym dokumencie, Dowiedz się, jak utworzyć klientów usługi sieci web przy użyciu C#, Go, Java i Python.
 
-Usługi sieci web jest tworzona podczas wdrażania obrazu do wystąpienia kontenera platformy Azure, usługi Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Obrazy są tworzone na podstawie zarejestrowane modele i plik oceniania. Identyfikator URI używany do uzyskiwania dostępu do usługi sieci web można pobrać przy użyciu [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
+Tworzenie usługi internetowej, podczas wdrażania obrazu do usługi Azure Container Instances, Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Należy utworzyć obrazy z zarejestrowane modele i plik oceniania. Pobierz identyfikator URI używany do uzyskania dostępu do usługi sieci web za pomocą [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
 
-Jest ogólny przepływ pracy podczas tworzenia klienta, który korzysta z uczenia Maszynowego usługi sieci web:
+Jest ogólny przepływ pracy tworzenia klienta, który używa usługi machine learning web service:
 
-1. Użyj zestawu SDK, aby uzyskać informacje o połączeniu
-1. Określ typ żądania danych używanego przez model
-1. Utwórz aplikację, która wywołuje usługę sieci web
+1. Użyj zestawu SDK, aby uzyskać informacje o połączeniu.
+1. Określ typ żądania danych używanego przez model.
+1. Utwórz aplikację, która wywołuje usługę sieci web.
 
-## <a name="connection-information"></a>informacje o połączeniu
+## <a name="connection-information"></a>Informacje o połączeniu
 
 > [!NOTE]
-> Zestaw SDK usługi Azure Machine Learning można uzyskać informacji usługi sieci web. To jest zestaw SDK języka Python. Gdy jest używany do pobierania informacji o usługach sieci web, można użyć dowolnego języka, można utworzyć klienta dla usługi.
+> Użyj zestawu SDK usługi Azure Machine Learning, aby uzyskać informacje o usłudze sieci web. To jest zestaw SDK języka Python. Można użyć dowolnego języka, można utworzyć klienta dla usługi.
 
-Informacje o połączeniu dla usługi sieci web mogą być pobierane przy użyciu zestawu SDK usługi Azure Machine Learning. [Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) klasa udostępnia informacje niezbędne do utworzenia klienta. Następujące `Webservice` właściwości, które są przydatne podczas tworzenia aplikacji klienckiej:
+[Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) klasy zawiera informacje potrzebne do utworzenia klienta. Następujące `Webservice` właściwości są przydatne do tworzenia aplikacji klienckiej:
 
 * `auth_enabled` — Jeśli włączono uwierzytelnianie `True`; w przeciwnym razie `False`.
 * `scoring_uri` Adres interfejsu API REST.
@@ -60,7 +60,7 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
     print(services[0].scoring_uri)
     ```
 
-* Jeśli znasz nazwę wdrożonej usługi, możesz utworzyć nowe wystąpienie klasy `Webservice` i podaj nazwę obszaru roboczego i usługi jako parametry. Nowy obiekt zawiera informacje o wdrożonej usługi.
+* Jeśli znasz nazwę wdrożonej usługi, możesz utworzyć nowe wystąpienie klasy `Webservice`, a następnie podaj nazwę obszaru roboczego i usługi jako parametry. Nowy obiekt zawiera informacje o wdrożonej usługi.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -69,10 +69,10 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
 
 ### <a name="authentication-key"></a>Klucz uwierzytelniania
 
-Klucze uwierzytelniania są tworzone automatycznie, gdy jest włączone uwierzytelnianie dla wdrożenia.
+Po włączeniu uwierzytelniania dla wdrożenia, możesz automatycznie tworzyć klucze uwierzytelniania.
 
-* Uwierzytelnianie jest __domyślnie__ podczas wdrażania __usługi Azure Kubernetes Service__.
-* Uwierzytelnianie jest __domyślnie wyłączone__ podczas wdrażania __usłudze Azure container Instances__.
+* Uwierzytelnianie jest włączone domyślnie w przypadku wdrażania usługi Azure Kubernetes Service.
+* Uwierzytelnianie jest domyślnie wyłączona w przypadku wdrażania usługi Azure Container Instances.
 
 Aby kontrolować uwierzytelniania, należy użyć `auth_enabled` parametru podczas tworzenia lub aktualizowania wdrożenia.
 
@@ -128,7 +128,7 @@ Usługa sieci web może akceptować wiele zestawów danych w jednym żądaniu. Z
 
 ### <a name="binary-data"></a>Dane binarne
 
-Jeśli model akceptuje dane binarne, takie jak obraz, należy zmodyfikować `score.py` plik używany dla danego wdrożenia do akceptowania żądań HTTP raw. Oto przykład `score.py` który akceptuje dane binarne i zwraca odwróconej bajtów dla żądania POST. Dla żądań GET wysyłanych zwraca pełny adres URL w treści odpowiedzi:
+Jeśli model akceptuje dane binarne, takie jak obraz, należy zmodyfikować `score.py` plik używany dla danego wdrożenia do akceptowania żądań HTTP raw. Oto przykład `score.py` akceptuje dane binarne i zwraca odwróconej bajtów dla żądania POST. Dla żądań GET wysyłanych zwraca pełny adres URL w treści odpowiedzi:
 
 ```python 
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -155,9 +155,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> Elementy w `azureml.contrib` przestrzeni nazw zmieniają się często jako dążymy do usprawnienia świadczonej usługi. W efekcie niczego w tej przestrzeni nazw powinien być traktowany jako wersji zapoznawczej i nie są w pełni obsługiwane przez firmę Microsoft.
+> `azureml.contrib` Przestrzeni nazw zmienia się często, gdy będziemy pracować nad usprawnienia świadczonej usługi. Jako takie wszystko w tej przestrzeni nazw powinny być uważane za wersję zapoznawczą i nie są w pełni obsługiwane przez firmę Microsoft.
 >
-> Jeśli zachodzi potrzeba testować jej względem swojego lokalnego środowiska deweloperskiego, można zainstalować składniki w przestrzeni nazw contrib, używając następującego polecenia:
+> Jeśli zachodzi potrzeba testować jej względem swojego lokalnego środowiska deweloperskiego, można zainstalować składników w `contrib` przestrzeni nazw za pomocą następującego polecenia:
 > 
 > ```shell
 > pip install azureml-contrib-services

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: barclayn
-ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 39ae2108c327f38dbf41981ec6aabe7722b77685
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302021"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717385"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie usługi Azure Key Vault o rotacji i inspekcji kluczy
 
@@ -414,7 +414,7 @@ I Dodaj plik o nazwie pliku project.json o następującej zawartości:
 
 Po **Zapisz**, usługi Azure Functions pobierze wymagane pliki binarne.
 
-Przełącz się do **integracja** kartę i podać parametr czasomierza znaczącą nazwę, aby użyć wewnątrz funkcji. W poprzednim kodzie oczekuje, że Czasomierz ma zostać wywołana *myTimer*. Określ [wyrażenie CRON](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) w następujący sposób: 0 \* \* \* \* \* dla czasomierza, który spowoduje, że funkcja do uruchamiania raz na minutę.
+Przełącz się do **integracja** kartę i podać parametr czasomierza znaczącą nazwę, aby użyć wewnątrz funkcji. W poprzednim kodzie oczekuje, że Czasomierz ma zostać wywołana *myTimer*. Określ [wyrażenie CRON](../app-service/webjobs-create.md#CreateScheduledCRON) w następujący sposób: 0 \* \* \* \* \* dla czasomierza, który spowoduje, że funkcja do uruchamiania raz na minutę.
 
 W tym samym **integracja** kartę, Dodaj wejście typ **usługi Azure Blob Storage**. Będzie to wskazywać plik sync.txt, który zawiera sygnatura czasowa ostatniego zdarzenia przyjrzano się przez funkcję. Będzie dostępna w ramach funkcji, nazwy parametru. W poprzednim kodzie danych wejściowych usługi Azure Blob Storage oczekuje, że nazwa parametru, który ma zostać *inputBlob*. Wybierz konto magazynu, w której będą znajdować się plik sync.txt (może być taka sama lub innego konta magazynu). W polu Ścieżka podaj ścieżkę lokalizacji pliku w formacie {container-name}/path/to/sync.txt.
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f87f93ebc739d75c796859c7091d4cf62a820a0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260588"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714988"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 W tym artykule opisano zawartość pakietu 1807 aktualizacji. Ta aktualizacja obejmuje ulepszeń, poprawek i znanych problemów dotyczących tej wersji programu Azure Stack i pobierania aktualizacji. Znane problemy są podzielone na problemy bezpośrednio związane z procesem aktualizacji i kompilacji (po instalacji).
 
@@ -162,9 +162,8 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Instalowanie usługi Azure Stack [aktualizacji 1805](azure-stack-update-1805.md) przed zastosowaniem aktualizacji usługi Azure Stack 1807.  Wystąpił brak 1806 aktualizacji.  
-
-- Zainstaluj najnowszy dostępny [aktualizacja lub poprawka dla wersji 1805](azure-stack-update-1805.md#post-update-steps).  
+- Instalowanie usługi Azure Stack [aktualizacji 1805](azure-stack-update-1805.md) przed zastosowaniem aktualizacji usługi Azure Stack 1807. Wystąpił brak 1806 aktualizacji.  
+ 
   > [!TIP]  
   > Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
   > - REKORDY ZASOBÓW: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
@@ -244,16 +243,16 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 
    Zgłoś alert, #1:
-   - Nazwa: Rola infrastruktury złej kondycji
-   - Ważność: ostrzeżenie
-   - SKŁADNIKÓW: Kontroler kondycji
-   - Opis: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
+   - NAZWA:  Rola infrastruktury złej kondycji
+   - WAŻNOŚĆ: Ostrzeżenie
+   - SKŁADNIK: Kondycji kontrolera
+   - OPIS: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
 
   Zgłoś alert, #2:
-   - Nazwa: Rola infrastruktury złej kondycji
-   - Ważność: ostrzeżenie
-   - SKŁADNIKÓW: Kontroler kondycji
-   - Opis: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
+   - NAZWA:  Rola infrastruktury złej kondycji
+   - WAŻNOŚĆ: Ostrzeżenie
+   - SKŁADNIK: Kondycji kontrolera
+   - OPIS: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
 
   Obydwa alerty można bezpiecznie zignorować i zostanie zamknięte automatycznie wraz z upływem czasu.  
 
@@ -261,10 +260,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 2812138 | IS --> 
 - Można napotkać alert w przypadku **magazynu** składnik, który ma następujące informacje:
 
-   - Nazwa: Magazyn usługi wewnętrzny błąd komunikacji  
-   - Waga: krytyczny  
-   - SKŁADNIK: magazynu  
-   - Opis: Wystąpił błąd wewnętrzny komunikacji z usługą magazynu podczas wysyłania żądań do następujących węzłów.  
+   - NAZWA: Błąd wewnętrzny komunikacji z usługą Storage  
+   - WAŻNOŚĆ: Krytyczny  
+   - SKŁADNIK: Magazyn  
+   - OPIS: Błąd wewnętrzny komunikacji z usługą Storage wystąpił podczas wysyłania żądań do następujących węzłów.  
 
     Alert można bezpiecznie zignorować, ale musisz ręcznie zamknąć alert.
 
@@ -278,10 +277,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem. Jeśli polecenie cmdlet nie powiedzie się przy pierwszym uruchomieniu, należy uruchomić polecenie cmdlet po raz drugi. Drugiego przebiegu ma być pomyślnie wykonane do ukończenia tej operacji. 
 
 <!-- 2494144 - IS, ASDK --> 
-- Wybierając rozmiar maszyny wirtualnej do wdrażania maszyn wirtualnych, niektóre rozmiary serii F maszyn wirtualnych nie są widoczne jako część selektor rozmiar podczas tworzenia maszyny Wirtualnej. Następujących rozmiarów maszyn wirtualnych nie są wyświetlane w selektorze: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  
+- Wybierając rozmiar maszyny wirtualnej do wdrażania maszyn wirtualnych, niektóre rozmiary serii F maszyn wirtualnych nie są widoczne jako część selektor rozmiar podczas tworzenia maszyny Wirtualnej. W selektorze nie ma następujących rozmiarów maszyn wirtualnych: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  
   Obejść ten problem należy użyć jednej z następujących metod do wdrożenia maszyny Wirtualnej. W każdej metodzie należy określić rozmiar maszyny Wirtualnej, którego chcesz użyć.
 
-  - **Szablon usługi Azure Resource Manager:** gdy używasz szablonu, ustaw *vmSize* w szablonie wartość rozmiaru maszyny Wirtualnej, w której chcesz użyć. Na przykład, następujący wpis jest używany do wdrażania maszyn wirtualnych, który używa *F32s_v2* rozmiar:  
+  - **Szablon usługi Azure Resource Manager:** Gdy używasz szablonu, ustaw *vmSize* w szablonie wartość rozmiaru maszyny Wirtualnej, w której chcesz użyć. Na przykład, następujący wpis jest używany do wdrażania maszyn wirtualnych, który używa *F32s_v2* rozmiar:  
 
     ```
         "properties": {
@@ -289,9 +288,9 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Interfejs wiersza polecenia platformy Azure:** można użyć [tworzenie az vm](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) polecenia i określić rozmiar maszyny Wirtualnej jako parametr, podobnie jak `--size "Standard_F32s_v2"`.
+  - **Interfejs wiersza polecenia platformy Azure:** Możesz użyć [tworzenie az vm](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) polecenia i określić rozmiar maszyny Wirtualnej jako parametr, podobnie jak `--size "Standard_F32s_v2"`.
 
-  - **Program PowerShell:** przy użyciu programu PowerShell, można użyć [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) z parametrem, który określa rozmiar maszyny Wirtualnej, podobnie jak `-VMSize "Standard_F32s_v2"`.
+  - **Program PowerShell:** Za pomocą programu PowerShell można użyć [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) z parametrem, który określa rozmiar maszyny Wirtualnej, podobnie jak `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 

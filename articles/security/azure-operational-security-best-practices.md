@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: ae6eeb2506eb82160c68e15e17eeb95c1e2ec046
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853621"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725324"
 ---
 # <a name="azure-operational-security-best-practices"></a>Najlepsze rozwiązania kwestii bezpieczeństwa platformy Azure
 Zabezpieczenia usługi Azure operational odnosi się do usługi, formanty i funkcje dostępne dla użytkowników na potrzeby ochrony danych, aplikacji i innych zasobów na platformie Azure. Bezpieczeństwa platformy Azure jest oparta na strukturę, która zawiera wiedzy uzyskanej dzięki możliwości, które są unikatowe dla firmy Microsoft, w tym [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl), [firmy Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) program oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
@@ -56,29 +56,29 @@ Klienci kompilacji sieci end-to-end na platformie Azure, łącząc zasobów siec
 Poniżej przedstawiono najlepsze rozwiązania dotyczące narzędzia do monitorowania i dostępnych sieci.
 
 **Najlepsze rozwiązanie**: Automatyzowanie zdalnego monitorowania sieci przez Przechwytywanie pakietów.  
-**Szczegóły**: monitorowanie i diagnozowanie problemów z siecią bez konieczności logowania się do maszyn wirtualnych przy użyciu usługi Network Watcher. Wyzwalacz [przechwytywania pakietów](../network-watcher/network-watcher-alert-triggered-packet-capture.md) przez ustawianie alertów i uzyskać dostęp do informacji o wydajności w czasie rzeczywistym na poziomie pakietów. Możesz szczegółowo analizować problemy w celu lepszego ich diagnozowania.
+**Szczegóły**: Monitorowanie i diagnozowanie problemów z siecią bez konieczności logowania się do maszyn wirtualnych przy użyciu usługi Network Watcher. Wyzwalacz [przechwytywania pakietów](../network-watcher/network-watcher-alert-triggered-packet-capture.md) przez ustawianie alertów i uzyskać dostęp do informacji o wydajności w czasie rzeczywistym na poziomie pakietów. Możesz szczegółowo analizować problemy w celu lepszego ich diagnozowania.
 
-**Najlepsze rozwiązanie**: Wgląd do ruchu sieciowego przy użyciu dzienników przepływu.  
-**Szczegóły**: pozwalają lepiej zrozumieć sieci wzorców ruchu przy użyciu [dzienników przepływu grupy zabezpieczeń sieci](../network-watcher/network-watcher-nsg-flow-logging-overview.md). Informacje w dziennikach przepływu ułatwiają gromadzenie danych pod kątem zgodności, inspekcji i monitorowania profilu zabezpieczeń sieci.
+**Najlepsze rozwiązanie**: Uzyskiwanie szczegółowych informacji za pomocą dzienników przepływu ruchu sieciowego.  
+**Szczegóły**: Tworzenie wzorców ruchu lepiej zrozumieć sieci za pomocą [dzienników przepływu grupy zabezpieczeń sieci](../network-watcher/network-watcher-nsg-flow-logging-overview.md). Informacje w dziennikach przepływu ułatwiają gromadzenie danych pod kątem zgodności, inspekcji i monitorowania profilu zabezpieczeń sieci.
 
-**Najlepsze rozwiązanie**: problemy z łącznością diagnozowania sieci VPN.  
-**Szczegóły**: Korzystanie z usługi Network Watcher na [diagnozowanie najczęściej spotykanych problemów bramy sieci VPN i połączenia](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Można nie tylko zidentyfikować problem, ale również użyć szczegółowych dzienników w celu dalszego zbadania problemu.
+**Najlepsze rozwiązanie**: Diagnozowanie problemów z połączeniem sieci VPN.  
+**Szczegóły**: Usługa Network Watcher na [diagnozowanie najczęściej spotykanych problemów bramy sieci VPN i połączenia](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Można nie tylko zidentyfikować problem, ale również użyć szczegółowych dzienników w celu dalszego zbadania problemu.
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>Zabezpieczanie wdrożenia przy użyciu sprawdzonych narzędzi DevOps
 Użyj następujące najlepsze rozwiązania metodyki DevOps, aby upewnić się, że przedsiębiorstwa i zespoły są wydajnych i efektywnych.
 
-**Najlepsze rozwiązanie**: Automatyzacja kompilacji i wdrażania usług.  
-**Szczegóły**: [infrastruktura jako kod](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) to zestaw metod i praktyk, które ułatwiają specjalistom IT Usuń obciążeń związanych z typowymi kompilacji i zarządzania infrastrukturą moduły. Umożliwia on informatykom do tworzenia i utrzymywania ich środowiska nowoczesnych serwera w sposób przypominający jak deweloperom oprogramowania tworzenie i zarządzanie nimi kodu aplikacji.
+**Najlepsze rozwiązanie**: Automatyzuj kompilowanie i wdrażanie usług.  
+**Szczegóły**: [Infrastruktura jako kod](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) to zestaw metod i praktyk, które ułatwiają specjalistom IT Usuń obciążeń związanych z typowymi kompilacji i zarządzania infrastrukturą moduły. Umożliwia on informatykom do tworzenia i utrzymywania ich środowiska nowoczesnych serwera w sposób przypominający jak deweloperom oprogramowania tworzenie i zarządzanie nimi kodu aplikacji.
 
 Możesz użyć [usługi Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) można inicjować obsługę aplikacji za pomocą szablonu deklaratywnego. Pojedynczy szablon umożliwia wdrożenie wielu usług wraz z ich zależnościami. Używasz tego samego szablonu można wdrażać aplikację na każdym etapie cyklu życia aplikacji.
 
-**Najlepsze rozwiązanie**: automatycznie tworzenie i wdrażanie aplikacji sieci web platformy Azure lub usługi w chmurze.  
-**Szczegóły**: możesz użyć potoki usługi Azure, aby [automatycznie twórz i wdrażaj](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) do aplikacji sieci web platformy Azure lub usług w chmurze. Potoki usługi Azure automatycznie wdraża pliki binarne po wykonaniu tej kompilacji na platformie Azure po każdym zaewidencjonowaniu kodu. Proces kompilacji pakietu jest odpowiednikiem polecenia pakietów w programie Visual Studio i kroki publikowania są równoważne polecenia Opublikuj w programie Visual Studio.
+**Najlepsze rozwiązanie**: Automatycznie Utwórz i wdróż do aplikacji sieci web platformy Azure lub usług w chmurze.  
+**Szczegóły**: Możesz użyć potoki usługi Azure, aby [automatycznie twórz i wdrażaj](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) do aplikacji sieci web platformy Azure lub usług w chmurze. Potoki usługi Azure automatycznie wdraża pliki binarne po wykonaniu tej kompilacji na platformie Azure po każdym zaewidencjonowaniu kodu. Proces kompilacji pakietu jest odpowiednikiem polecenia pakietów w programie Visual Studio i kroki publikowania są równoważne polecenia Opublikuj w programie Visual Studio.
 
-**Najlepsze rozwiązanie**: Zastosuj ciągłe wdrażanie.  
-**Szczegóły**: [potoki Azure](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) to rozwiązanie do automatyzacji wielu etap wdrażania i zarządzania nimi procesu tworzenia wersji. Twórz potoki zarządzanego ciągłe wdrażanie do wydania szybko, łatwo i często. W przypadku potoków usługi Azure można zautomatyzować proces tworzenia wydań i można wstępnie zdefiniowanych przepływów pracy zatwierdzania. Wdrażanie lokalnej do chmury, należy rozszerzyć i dostosować zgodnie z potrzebami.
+**Najlepsze rozwiązanie**: Użyj ciągłego wdrażania.  
+**Szczegóły**: [Potoki usługi Azure](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) to rozwiązanie do automatyzacji wielu etap wdrażania i zarządzania nimi procesu tworzenia wersji. Twórz potoki zarządzanego ciągłe wdrażanie do wydania szybko, łatwo i często. W przypadku potoków usługi Azure można zautomatyzować proces tworzenia wydań i można wstępnie zdefiniowanych przepływów pracy zatwierdzania. Wdrażanie lokalnej do chmury, należy rozszerzyć i dostosować zgodnie z potrzebami.
 
-**Najlepsze rozwiązanie**: sprawdzić wydajność Twojej aplikacji, zanim go uruchomić lub wdrożyć aktualizacje do środowiska produkcyjnego.  
+**Najlepsze rozwiązanie**: Sprawdź wydajność Twojej aplikacji przed jej uruchamiania lub wdrażania aktualizacji w środowisku produkcyjnym.  
 **Szczegóły**: Uruchom oparte na chmurze [testy obciążeniowe](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) przy użyciu platformy Azure do planów testów:
 
 - Znajdowanie problemów z wydajnością w aplikacji.
@@ -86,8 +86,8 @@ Możesz użyć [usługi Azure Resource Manager](https://azure.microsoft.com/docu
 - Upewnij się, że aplikacja jest zawsze dostępny.
 - Upewnij się, że aplikacja może obsługiwać ruch na potrzeby następnego uruchomienia lub marketing kampanię z użyciem.
 
-**Najlepsze rozwiązanie**: monitorowanie wydajności aplikacji.  
-**Szczegóły**: [usługi Azure Application Insights](../application-insights/app-insights-overview.md) to usługa zarządzania (APM) aplikacji rozszerzalnej wydajności dla deweloperów sieci web na wielu platformach. Usługa Application Insights umożliwia monitorowanie aplikacji sieci web na żywo. Funkcja automatycznie wykrywa anomalie wydajność. Obejmuje narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć, jak użytkownicy w rzeczywistości korzystają z aplikacją. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
+**Najlepsze rozwiązanie**: Monitorowanie wydajności aplikacji.  
+**Szczegóły**: [Usługa Azure Application Insights](../application-insights/app-insights-overview.md) to usługa zarządzania (APM) aplikacji rozszerzalnej wydajności dla deweloperów sieci web na wielu platformach. Usługa Application Insights umożliwia monitorowanie aplikacji sieci web na żywo. Funkcja automatycznie wykrywa anomalie wydajność. Obejmuje narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć, jak użytkownicy w rzeczywistości korzystają z aplikacją. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Eliminowanie i chronić przed atakami DDoS
 Rozproszona odmowa usługi (DDoS) jest typem ataku, który próbuje wyczerpaniu zasobów aplikacji. Celem jest wpływ na dostępność aplikacji i jego zdolność do obsługi żądań uzasadnione. Te ataki stają się coraz bardziej złożone i większy rozmiar i wpływu. Mogą one być celem dowolnego punktu końcowego, który jest publicznie dostępny za pośrednictwem Internetu.
@@ -97,19 +97,19 @@ Projektowanie i tworzenie aplikacji dla ochrony przed atakami DDoS wymaga planow
 Poniżej przedstawiono najlepsze rozwiązania dotyczące tworzenia odpornych przed atakami DDoS usług na platformie Azure.
 
 **Najlepsze rozwiązanie**: Upewnij się, że bezpieczeństwo to priorytet w całym cyklu życia aplikacji, od projektowania i implementacji, wdrażania i operacji. Aplikacje mogą mieć usterki, które umożliwiają stosunkowo małą liczbą żądań używa dużej ilości zasobów, co powoduje przerwa w działaniu usługi.  
-**Szczegóły**: Aby ułatwić ochronę usługi uruchomionej na Microsoft Azure, należy dysponować dobrą znajomością architektury aplikacji i skoncentrować się na [pięciu filarów jakości oprogramowania](https://docs.microsoft.com/azure/architecture/guide/pillars). Typowe ruchu woluminów, należy wiedzieć modelu łączności między aplikacją i innymi aplikacjami i punktów końcowych usługi, które są dostępne do publicznego Internetu.
+**Szczegóły**: Aby zabezpieczyć usługi uruchomionej na Microsoft Azure, należy dysponować dobrą znajomością architektury aplikacji i skoncentrować się na [pięciu filarów jakości oprogramowania](https://docs.microsoft.com/azure/architecture/guide/pillars). Typowe ruchu woluminów, należy wiedzieć modelu łączności między aplikacją i innymi aplikacjami i punktów końcowych usługi, które są dostępne do publicznego Internetu.
 
 Zapewnia, że aplikacja jest odporność obsługi typu "odmowa usługi, która jest przeznaczona dla aplikacji" jest dla Ciebie najważniejsza. Bezpieczeństwo i ochrona prywatności są wbudowane w platformy Azure, począwszy od [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/en-us/sdl). Proces SDL, zapewnia bezpieczeństwo na każdym etapie programowania i gwarantuje, że Azure jest stale aktualizowana się jeszcze bardziej bezpieczne.
 
 **Najlepsze rozwiązanie**: Projektowanie aplikacji [skalowanie w poziomie](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) do spełnienia określonych wymagań obciążenia namnożonego, szczególnie w przypadku ataków DDoS. Jeśli aplikacja jest zależna od pojedynczego wystąpienia usługi, tworzy pojedynczy punkt awarii. Inicjowanie obsługi administracyjnej wielu wystąpień sprawia, że system bardziej skalowalny i bardziej odporne na błędy.  
-**Szczegóły**: dla [usługi Azure App Service](../app-service/app-service-value-prop-what-is.md), wybierz opcję [planu usługi App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) oferująca wiele wystąpień.
+**Szczegóły**: Aby uzyskać [usługi Azure App Service](../app-service/app-service-value-prop-what-is.md), wybierz pozycję [planu usługi App Service](../app-service/overview-hosting-plans.md) oferująca wiele wystąpień.
 
 W przypadku usług Azure Cloud Services skonfigurować każdej z ról w taki sposób, aby użyć [wiele wystąpień](../cloud-services/cloud-services-choose-me.md).
 
 Aby uzyskać [maszyn wirtualnych platformy Azure](../virtual-machines/windows/overview.md), upewnij się, że architektury maszyny Wirtualnej zawiera więcej niż jednej maszyny Wirtualnej i że każda maszyna wirtualna znajduje się w [zestaw dostępności](../virtual-machines/virtual-machines-windows-manage-availability.md). Firma Microsoft zaleca zestawów za pomocą skalowania maszyn wirtualnych dla funkcji skalowania automatycznego.
 
 **Najlepsze rozwiązanie**: Układanie warstwowo poziom ochrony w aplikacji zmniejsza prawdopodobieństwo udanego ataku. Implementowanie bezpiecznej projekty dla aplikacji za pomocą wbudowanych możliwości platformy Azure.  
-**Szczegóły**: ryzyko ataku zwiększa się o rozmiarze (prawdopodobieństwo) aplikacji. Można zmniejszyć obszar powierzchni przy użyciu listy dozwolonych zamknięcia w narażonych przestrzeń adresów IP i nasłuchiwać portów, które nie są wymagane na usług równoważenia obciążenia ([usługi Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) i [usługi Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)).
+**Szczegóły**: Zwiększa ryzyko ataku o rozmiarze (prawdopodobieństwo) aplikacji. Można zmniejszyć obszar powierzchni przy użyciu listy dozwolonych zamknięcia w narażonych przestrzeń adresów IP i nasłuchiwać portów, które nie są wymagane na usług równoważenia obciążenia ([usługi Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) i [usługi Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)).
 
 [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) to inny sposób, aby zmniejszyć obszar narażony na ataki. Możesz użyć [tagów usług](../virtual-network/security-overview.md#service-tags) i [grupy zabezpieczeń aplikacji](../virtual-network/security-overview.md#application-security-groups) aby zminimalizować złożoność tworzenia reguły zabezpieczeń i konfigurowania zabezpieczeń sieci jako naturalnego rozszerzenia struktury aplikacji.
 

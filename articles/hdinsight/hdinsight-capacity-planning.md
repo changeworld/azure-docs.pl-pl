@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193862"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716144"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
@@ -38,17 +38,17 @@ HDInsight jest dostępna w wielu regionach platformy Azure. Aby znaleźć najbli
 
 ### <a name="location-of-default-storage"></a>Lokalizacja magazynu domyślnego
 
-Domyślny magazyn, konto usługi Azure Storage lub Azure Data Lake Store, musi być w tej samej lokalizacji co klaster. Usługa Azure Storage jest dostępna we wszystkich lokalizacjach. Gen1 Data Lake Store jest dostępna w niektórych regionach — Zobacz bieżącej dostępności Data Lake Store w ramach *magazynu* w [Azure produktów dostępnych według regionu](https://azure.microsoft.com/regions/services/).
+Domyślny magazyn, konto usługi Azure Storage lub usługi Azure Data Lake Storage, musi być w tej samej lokalizacji co klaster. Usługa Azure Storage jest dostępna we wszystkich lokalizacjach. Data Lake Storage Gen1 jest dostępna w niektórych regionach — Zobacz bieżącej dostępności usługi Data Lake Storage, w obszarze *magazynu* w [Azure produktów dostępnych według regionu](https://azure.microsoft.com/regions/services/).
 
 ### <a name="location-of-existing-data"></a>Lokalizacja istniejących danych
 
-Jeśli już masz konto magazynu lub Data Lake Store, zawierających dane użytkownika i chcesz używać tego magazynu jako magazynu domyślnego klastra, należy wdrożyć w klastrze w tej samej lokalizacji.
+Jeśli już masz konto magazynu lub zawierających dane użytkownika usługi Data Lake Storage i chcesz używać tego magazynu jako magazynu domyślnego klastra, należy wdrożyć w klastrze w tej samej lokalizacji.
 
 ### <a name="storage-size"></a>Rozmiar magazynu
 
-Po utworzeniu klastra usługi HDInsight, wdrożone, możesz dołączyć dodatkowe konta usługi Azure Storage lub dostęp do innych Data Lake Store. Wszystkie konta magazynu muszą znajdować się w tej samej lokalizacji co klaster. Data Lake Store może być w innej lokalizacji, chociaż może to powodować pewne opóźnienie odczytu i zapisu danych.
+Po utworzeniu klastra usługi HDInsight, wdrożone, możesz dołączyć dodatkowe konta usługi Azure Storage lub dostęp do innego magazynu usługi Data Lake. Wszystkie konta magazynu muszą znajdować się w tej samej lokalizacji co klaster. Usługi Data Lake Storage może być w innej lokalizacji, chociaż może to powodować pewne opóźnienie odczytu i zapisu danych.
 
-Usługa Azure Storage ma kilka [limitów pojemności](../azure-subscription-service-limits.md#storage-limits), podczas gdy Data Lake Store Gen1 jest praktycznie nieograniczona.
+Usługa Azure Storage ma kilka [limitów pojemności](../azure-subscription-service-limits.md#storage-limits), podczas gdy Data Lake Storage Gen1 jest praktycznie nieograniczona.
 
 Klaster mogą uzyskiwać dostęp z kombinacją różnych kont magazynu. Typowe przykłady:
 
@@ -75,7 +75,7 @@ Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora m
 
 * PAMIĘĆ RAM: Rozmiar maszyny Wirtualnej decyduje również o ilość pamięci RAM dostępnej na maszynie wirtualnej. W przypadku obciążeń, które przechowuje dane w pamięci do przetwarzania, a nie odczytu z dysku, upewnij się, węzłów procesu roboczego ma za mało pamięci, aby dopasować dane.
 
-* Sieć: Dla większości typów klastrów danych przetworzonych przez klaster jest nie na dysku lokalnym, ale raczej w usłudze magazynu zewnętrznego, takie jak Data Lake Store lub Azure Storage. Należy wziąć pod uwagę przepustowość sieci i przepustowość między węzłem maszyny Wirtualnej i usługi storage. Przepustowość sieci dostępną dla maszyny Wirtualnej zwykle zwiększa się o większych rozmiarach. Aby uzyskać więcej informacji, zobacz [maszyny Wirtualne o rozmiarach Przegląd](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Sieć: Dla większości typów klastrów danych przetworzonych przez klaster jest nie na dysku lokalnym, ale raczej w usłudze magazynu zewnętrznego, takie jak magazyn usługi Data Lake lub usługi Azure Storage. Należy wziąć pod uwagę przepustowość sieci i przepustowość między węzłem maszyny Wirtualnej i usługi storage. Przepustowość sieci dostępną dla maszyny Wirtualnej zwykle zwiększa się o większych rozmiarach. Aby uzyskać więcej informacji, zobacz [maszyny Wirtualne o rozmiarach Przegląd](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Wybór skali klastra
 
@@ -89,7 +89,7 @@ Można skalować w poziomie do klastra, aby obsłużenia szczytowego zapotrzebow
 
 Opłaty są naliczane za okres istnienia klastra. Jeśli są tylko określone godziny należy Twojego klastra i działa, możesz to zrobić [Tworzenie klastrów na żądanie przy użyciu usługi Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Można również utworzyć skrypty programu PowerShell aprowizować i usunięciu klastra, a następnie Zaplanuj te skrypty przy użyciu [usługi Azure Automation](https://azure.microsoft.com/services/automation/).
 
-> [!NOTE]
+> [!NOTE]  
 > Po usunięciu klastra jej domyślny magazyn metadanych Hive są także usuwane. Można utrwalić magazynu metadanych dla następnego ponownego utworzenia klastra, Użyj zewnętrznego magazynu metadanych takich jak bazy danych Azure lub [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
@@ -120,7 +120,7 @@ Po ustaleniu, klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ., sprawd
 1. Kliknij przycisk **dalej: Przeglądanie + tworzenie**.
 1. Na **przeglądu + Utwórz** kliknij pozycję **Utwórz**.
 
-> [!Note]
+> [!NOTE]  
 > Jeśli chcesz zwiększyć limit przydziału rdzeni HDInsight w regionie prywatnych, [wniosek o dozwolonych](https://aka.ms/canaryintwhitelist).
 
 Możesz [skontaktuj się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).

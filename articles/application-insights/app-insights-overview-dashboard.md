@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5d635ce63170cf9ec93f3996d608cfd5836de3b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956957"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726327"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -37,7 +37,7 @@ Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jed
 
 Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 
-![Awarie](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
+![Błędy](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
@@ -65,4 +65,4 @@ Aby przejść z powrotem do środowiska — omówienie, po prostu wybierz opcję
 - [Lejki](usage-funnels.md)
 - [Przechowywanie](app-insights-usage-retention.md)
 - [User Flows (Przepływy użytkowników)](app-insights-usage-flows.md)
-- [Pulpity nawigacyjne](app-insights-dashboards.md)
+- [Pulpity nawigacyjne](../azure-monitor/app/app-insights-dashboards.md)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632665"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634630"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight
 
@@ -28,15 +28,15 @@ Dowiedz się, jak uruchamiać zadania MapReduce w klastrach HDInsight. Skorzysta
 
 > [!IMPORTANT]
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
->
+
 
 ## <a id="whatis"></a>Co to jest MapReduce
 
 Apache Hadoop MapReduce to platforma oprogramowania do pisania zadań, które przetwarzają duże ilości danych. Dane wejściowe jest podzielony na niezależne fragmenty. Każdego fragmentu są przetwarzane równolegle na węzłach w klastrze. Zadania MapReduce składa się z dwóch funkcji:
 
-* **Mapowania**: zużywa dane wejściowe, analizuje je (zwykle przy użyciu filtrowania i sortowania operacji) i emituje krotek (pary klucz wartość)
+* **Mapowania**: Wykorzystuje dane wejściowe, analizuje je (zwykle przy użyciu filtrowania i sortowania operacji) i emituje krotek (pary klucz wartość)
 
-* **Reduktor**: wykorzystuje krotek emitowane przez funkcję mapowania, a następnie wykonuje operację podsumowania, która tworzy wynik mniejsze, połączone z danych mapowania
+* **Reduktor**: Wykorzystuje krotek emitowane przez funkcję mapowania, a następnie wykonuje operację podsumowania, która tworzy wynik mniejsze, połączone z danych mapowania
 
 Przykład zadania MapReduce liczba wyrazy zostało zilustrowane na poniższym diagramie:
 
@@ -57,7 +57,7 @@ Przesyłanie strumieniowe Hadoop komunikuje się z mapowania i reduktor STDIN i 
 
     [key]/t[value]
 
-Aby uzyskać więcej informacji, zobacz [przesyłania strumieniowego usługi Hadoop](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Aby uzyskać więcej informacji, zobacz [przesyłania strumieniowego usługi Hadoop](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
 Przykłady korzystania z usługi Hadoop, przesyłanie strumieniowe z HDInsight można znaleźć w następujących dokumentach:
 
@@ -163,7 +163,7 @@ HDInsight można uruchamiać zadania HiveQL, przy użyciu różnych metod. Skorz
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |Prześlij zadanie zdalnie przy użyciu **REST** |System Linux lub Windows |Linux, Unix, Mac OS X lub Windows |
 | [Program Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Prześlij zadanie zdalnie przy użyciu **programu Windows PowerShell** |System Linux lub Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a id="nextsteps"></a>Następne kroki
@@ -174,9 +174,9 @@ Aby dowiedzieć się więcej na temat pracy z danymi w HDInsight, zobacz następ
 
 * [Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python](apache-hadoop-streaming-python.md)
 
-* [Korzystanie z programu Hive z usługą HDInsight][hdinsight-use-hive]
+* [Korzystanie z programu Apache Hive z usługą HDInsight][hdinsight-use-hive]
 
-* [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
+* [Korzystanie z programu Apache Pig z usługą HDInsight][hdinsight-use-pig]
 
 
 [hdinsight-upload-data]: hdinsight-upload-data.md

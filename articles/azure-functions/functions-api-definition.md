@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 763e1d20f707a1db1f559661089b55093f93a632
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999921"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606218"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
 Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Functions jest funkcją w wersji zapoznawczej, która służy do pisania definicji interfejsu OpenAPI 2.0 w aplikacji funkcji. Ten plik może być następnie hostować przy użyciu aplikacji funkcji.
@@ -23,7 +23,7 @@ Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Func
 > [!IMPORTANT]
 > Funkcja interfejsu OpenAPI w wersji zapoznawczej jest obecnie dostępna tylko w środowisku uruchomieniowym w wersji 1.x. Informacje na temat tworzenia aplikacji funkcji w wersji 1.x [można znaleźć tutaj](./functions-versions.md#creating-1x-apps).
 
-[Metadanych interfejsu OpenAPI](https://swagger.io/) umożliwia funkcji, który jest hostem interfejsu API REST do użycia przez cały szereg innych programów. Oprogramowanie zawiera oferty firmy Microsoft, takich jak usługi PowerApps i [funkcji API Apps w usłudze Azure App Service](../app-service/app-service-web-overview.md), narzędzi deweloperskich innych firm, takich jak [Postman](https://www.getpostman.com/docs/importing_swagger), i [wiele innych pakietów](https://swagger.io/tools/).
+[Metadanych interfejsu OpenAPI](https://swagger.io/) umożliwia funkcji, który jest hostem interfejsu API REST do użycia przez cały szereg innych programów. Oprogramowanie zawiera oferty firmy Microsoft, takich jak usługi PowerApps i [funkcji API Apps w usłudze Azure App Service](../app-service/overview.md), narzędzi deweloperskich innych firm, takich jak [Postman](https://www.getpostman.com/docs/importing_swagger), i [wiele innych pakietów](https://swagger.io/tools/).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -56,8 +56,8 @@ Poniższa tabela reprezentuje ustawienia portalu Azure i odpowiadające im dane 
 |Swagger.json|Interfejsu użytkownika portalu|Function.json|
 |:----|:-----|:-----|
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**Ustawienia aplikacji funkcji** > **ustawień usługi App Service** > **Przegląd** > **adresu URL**|*Nie istnieje*
-|[Ścieżki](https://swagger.io/specification/#paths-object-29)|**Integracja** > **wybrane metody HTTP**|Powiązania: trasy
-|[Ścieżka elementu](https://swagger.io/specification/#path-item-object-32)|**Integracja** > **szablon trasy**|Powiązania: metody
+|[Ścieżki](https://swagger.io/specification/#paths-object-29)|**Integracja** > **wybrane metody HTTP**|Powiązania: Trasa
+|[Ścieżka elementu](https://swagger.io/specification/#path-item-object-32)|**Integracja** > **szablon trasy**|Powiązania: Metody
 |[Bezpieczeństwo](https://swagger.io/specification/#security-scheme-object-112)|**klucze**|*Nie istnieje*|
 |operationID *|**Trasy + dozwolone czasowniki**|Trasy i dozwolonych poleceń|
 

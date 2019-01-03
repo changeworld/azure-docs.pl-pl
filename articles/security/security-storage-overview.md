@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259143"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973132"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
@@ -67,11 +67,11 @@ Szyfrowanie podczas transferu jest mechanizm ochrony danych podczas ich przesył
 Dowiedz się więcej o funkcji Szyfrowanie po stronie klienta:
 
 * [Szyfrowanie po stronie klienta dla usługi Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Usługa cloud security kontroluje serii: szyfrowanie danych podczas przesyłania](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [Usługa cloud security kontrolki serii: Szyfrowanie danych podczas przesyłania](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
-W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) stanowi krok obowiązkowy kierunku niezależność danych ochrony prywatności, zgodności i danych. Trzy funkcje platformy Azure zapewniają szyfrowanie danych magazynowanych:
+W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) stanowi krok obowiązkowy kierunku niezależność danych ochrony prywatności, zgodności i danych. Trzy funkcje platformy Azure zapewniają szyfrowanie danych magazynowanych:
 
 * [Szyfrowanie usługi Storage](../storage/common/storage-security-guide.md#encryption-at-rest) pozwala na żądanie, czy usługi storage automatyczne szyfrowanie danych podczas zapisywania jej do usługi Azure Storage.
 * [Szyfrowanie po stronie klienta](../storage/common/storage-security-guide.md#client-side-encryption) udostępnia również funkcję szyfrowanie danych magazynowanych.

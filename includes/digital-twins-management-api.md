@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 983ecd9973e3c4c0a74b0986317dcae75a023c79
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 0601e629ee6129f5b697365fdbebd83673cd390f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51637023"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995749"
 ---
 W poniższych przykładach `YOUR_MANAGEMENT_API_URL` odwołuje się do identyfikatora URI cyfrowego Twins interfejsów API:
 
@@ -24,4 +24,4 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.
 | Name (Nazwa) | Zamień na |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
-| YOUR_LOCATION | Który region serwer wystąpienie usługi jest hostowana na |
+| YOUR_LOCATION | Region serwera, w którym jest hostowane używane wystąpienie |

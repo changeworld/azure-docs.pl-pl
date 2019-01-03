@@ -10,21 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 409647da146a2844384204cb03de5028d45e5763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240872"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792394"
 ---
 # <a name="demo-password-reset"></a>Pokaz: Resetowanie hasła
-Ten pokaz ilustruje bot proste pomocy technicznej, pomagające w operacji resetowania hasła. 
-
-Pokazuje, jak uczeń konwersacji można dowiedzieć się więcej przepływów nietrywialnymi okna dialogowego, Włącz wielu sekwencji znaków, łącznie z klasą poza domeną. Tej prezentacji nie używa żadnych kodu lub jednostki.
+W tym samouczku przedstawiono bot proste pomocy technicznej, pomagające w operacji resetowania hasła, obsługiwane przez uczeń konwersacji. Model bot znajdziesz przepływy nietrywialnymi okna dialogowego i Włącz wielu sekwencji, w tym klasy poza domeną. Zadanie można wykonać bez kodu lub jednostki.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Pokaz hasła w wersji zapoznawczej](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
+[![Pokaz hasła w wersji zapoznawczej](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>Wymagania
 Ten samouczek wymaga, że bot resetowania hasła jest uruchomiony
@@ -37,41 +35,48 @@ Na liście modelu interfejsu użytkownika sieci web kliknij resetowania hasła p
 
 ### <a name="actions"></a>Akcje
 
-Utworzyliśmy zestaw akcji, gdy użytkownik szuka pomocy przy użyciu swojego hasła, w tym rozwiązań.
+Model zawiera zestaw działania mające na celu pomóc użytkownikom w rozwiązywaniu typowych problemów związanych z hasłami.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>Szkolenie w oknach dialogowych
 
-Istnieje wiele okien dialogowych szkolenia. Dostępne są również pokazy poza klasą domeny — na przykład użytkownik żądania, takie jak "dojazdu" są spoza domeny. bot podano przykłady kilka poza żądania w domenie i mogą odpowiadać za pomocą "I nie będzie mogła pomóc korzystając z niego."
+Model zawiera także kilka Train okien dialogowych, łącznie z niektórych funkcji, które pokazują poza szkolenia klasy domeny. Na przykład użytkownicy, którzy mogą zażądać, takich jak dojazdu. Bot przykładowe wyszkoliła został na kilka dla celów demonstracyjnych i po prostu współpracuje poprzez podanie jego "nie może pomóc korzystając z niego." Lista istniejących okien dialogowych Train znajduje się w folderze "Okien dialogowych Train" w panelu po lewej stronie.
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-Na przykład Wypróbujmy sesji nauczania.
+1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
+2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "i utraty hasła".
+3. Kliknij przycisk "Wynik akcje".
+4. Wybierz odpowiedź "Jest to, że dla konta lokalnego lub konta Microsoft?"
+5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "lokalne konto."
+6. Kliknij przycisk "Wynik akcje".
+7. Wybierz odpowiedź "wersji systemu Windows masz?"
+8. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "windows xp"
+9. Kliknij przycisk "Wynik akcje".
+10. Kliknij przycisk "+ akcji" przycisk.
+11. W "Botów odpowiedzi...", wpisz "rozwiązania: Jak zresetować hasło w systemie Windows XP..."
+12. Kliknij przycisk "Utwórz".
 
-1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
-1. Wprowadź "Utratą hasła".
-2. Kliknij wynik akcji.
-3. Kliknij, aby wybrać "Jest to, że dla konta lokalnego lub konta Microsoft?"
-4. Wprowadź "Konto".
-5. Kliknij wynik akcji.
-3. Kliknij, aby wybrać "wersji systemu Windows masz?"
-4. Wprowadź "systemu Windows 8'.
-5. Kliknij wynik akcji.
-6. Wybierz pozycję "rozwiązania: jak zresetować hasło w systemie Windows 8."
-4. Kliknij przycisk Gotowe, nauczania.
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>Okna dialogowe szkolenia w scenariuszach poza domeną
 
-Poniżej przedstawiono, jak bot znajdziesz klasę poza domeną.
-
-1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
-1. Wprowadź "wyszukiwania w sieci web".
-    - Jest to przykład klasy poza domeną. 
-2. Kliknij wynik akcji.
-3. Kliknij, aby wybrać "Niestety, I nie będzie mogła pomóc, korzystając z niego".
-    - Należy zauważyć, że wynik dla tej opcji jest aktualnie niska. Ale po nieco więcej nauczania, wynik będzie wyższa.
-4. Kliknij przycisk Gotowe, nauczania.
-
-Teraz wiesz, jak utworzyć pokaz podstawowa pomoc techniczna i jak znajdziesz do rozwiązania, a także obsługiwać poza przykładowe zapytania.
+1. Na lewym panelu, kliknij przycisk "Okien dialogowych Train", a następnie istniejących "zabawkami magazynów" Train okna dialogowego.
+2. W panelu rozmowy kliknij wypowiedź "zabawki stores".
+3. W polu "Dodaj alternatywne dane wejściowe..." typu "Wyszukiwanie w sieci web" i naciśnij klawisz należy wprowadzić.
+4. W polu "Dodaj alternatywne dane wejściowe..." typu "rezerwacji lotów" i naciśnij klawisz należy wprowadzić.
+5. Kliknij przycisk "Zapisz zmiany".
+6. Kliknij przycisk "Edit Zapisz".
+7. W lewym panelu kliknij przycisk "Okien dialogowych dziennika", a następnie przycisk "Nowy dziennik Dialog".
+8. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "i nie można odnaleźć moje hasło"
+9. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Konto Microsoft"
+10. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Dziękujemy"
+11. Kliknij przycisk "Testowanie gotowe".
+12. Kliknij okno Dziennik "i nie można odnaleźć hasła" z widoku siatki.
+13. W panelu rozmowy kliknij niepoprawnie renderowany "rozwiązania: Jak zresetować hasło do konta Microsoft"odpowiedzi.
+14. Kliknij przycisk "+ akcji" przycisk.
+15. W "Botów odpowiedzi..." pola, wpisz "Zachęcamy"
+16. Kliknij przycisk "Utwórz".
+17. Kliknij przycisk "Zapisz jako Train Dialog".
 
 ## <a name="next-steps"></a>Kolejne kroki
 

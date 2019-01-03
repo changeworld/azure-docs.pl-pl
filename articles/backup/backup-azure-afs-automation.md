@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 90623981f67bbed15ade743192525676e58a0a83
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318694"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632639"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Użyj programu PowerShell do tworzenia kopii i przywracanie udziałów plików platformy Azure
 
@@ -34,11 +34,11 @@ Aby wyświetlić Dokumentacja poleceń cmdlet AzureRm.RecoveryServices.Backup pr
 ## <a name="setup-and-registration"></a>Konfiguracja i rejestracja
 
 > [!NOTE]
-> Jak wspomniano [tutaj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), obsługa nowych funkcji w kończy się z modułu AzureRM w listopada 2018 r. W związku z tym firma Microsoft świadczy pomoc techniczną dla kopii zapasowej udziałów plików platformy Azure przy użyciu nowego modułu "Az" PS. Planujemy także zostać dołączone do wersji ogólnie dostępnej wersji Az modułu.
+> Jak wspomniano [tutaj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), obsługa nowych funkcji w kończy się z modułu AzureRM w listopada 2018 r. W związku z tym firma Microsoft świadczy pomoc techniczną dla kopii zapasowej udziałów plików platformy Azure za pomocą nowego modułu "Az" PS teraz w zasadach dostępności ogólnej.
 
 Aby rozpocząć:
 
-1. [Pobierz najnowszą wersję programu PowerShell "Az"](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (minimalna wymagana wersja to: 0.7.0)
+1. [Pobierz najnowszą wersję programu PowerShell "Az"](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (minimalna wymagana wersja to: 1.0.0)
 
 2. Znajdowanie dostępnych poleceń cmdlet programu PowerShell kopia zapasowa Azure, wpisując następujące polecenie:
 
@@ -158,6 +158,8 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 ----                 ------------       -------------------- ----------                ----------
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
+
+NewAFSPolicy przyjmuje codzienne wykonywanie kopii zapasowych i przechowuje je przez 30 dni.
 
 ### <a name="enable-protection"></a>Włączanie ochrony
 

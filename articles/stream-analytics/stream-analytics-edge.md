@@ -9,26 +9,26 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf290343634f9f9f836a87ab15f13cc1dac6f86f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141955"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994984"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
  
-Usługa Azure Stream Analytics (ASA) na usługi IoT Edge umożliwia deweloperom wdrażanie niemal w czasie rzeczywistym bliżej analitycznych analizy na urządzeniach IoT, dzięki czemu mogą odblokować pełną wartość danych generowanych przez urządzenie. Usługa Azure Stream Analytics jest przeznaczona dla małych opóźnień, odporności, efektywne wykorzystanie przepustowości i zgodności. Przedsiębiorstwom teraz wdrożyć logiki formantu blisko operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
+Usługa Azure Stream Analytics (ASA) na usługi IoT Edge umożliwia deweloperom wdrażanie niemal w czasie rzeczywistym bliżej analitycznych analizy na urządzeniach IoT, dzięki czemu mogą odblokować pełną wartość danych generowanych przez urządzenie. Usługę Azure Stream Analytics zaprojektowano pod kątem małych opóźnień, odporności, wydajnego wykorzystywania przepustowości i zgodności. Przedsiębiorstwom teraz wdrożyć logiki formantu blisko operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
 
 Azure Stream Analytics w usłudze IoT Edge jest uruchamiany w ramach [usługi Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) framework. Po utworzeniu zadania w ASA można wdrażać i zarządzać nią za pomocą usługi IoT Hub.
 
 ## <a name="scenarios"></a>Scenariusze
 ![Diagram wysokiego poziomu usługi IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Małe opóźnienia poleceń i kontroli**: na przykład produkcyjny systemy bezpieczeństwa musi odpowiedzieć na dane operacyjne z bardzo niskimi opóźnieniami. Za pomocą ASA na urządzeniach brzegowych IoT można analizować czujnika danych w czasie zbliżonym do rzeczywistego i wydawać polecenia, gdy wykrywa anomalie, aby zatrzymać maszynę lub wyzwolenia alertów.
-*   **Ograniczone łączności z chmurą**: misji krytycznych systemów, takich jak urządzenia zdalnego wyszukiwania, statków połączonych lub platformy przechodzenia do szczegółów, potrzebne do analizowania i reagować na dane, nawet wtedy, gdy łączność z chmurą jest przerywana. Dzięki ASA logika przesyłania strumieniowego jest uruchamiana niezależnie od łączności sieciowej, i można wybrać, co możesz wysłać do chmury do dalszego przetwarzania lub magazynowania.
-* **Ograniczona przepustowość**: ilości danych wytworzonych przez aparaty jet lub podłączone samochody może być tak duża, że dane muszą być filtrowana lub wstępnie przetworzone przed wysłaniem ich do chmury. Za pomocą ASA, możesz filtrować lub agregacji danych, który ma być wysyłane do chmury.
-* **Zgodność**: zgodność z przepisami, mogą wymagać niektóre dane lokalnie anonimowe lub agregowane przed wysłaniem do chmury.
+* **Małe opóźnienia poleceń i kontroli**: Na przykład produkcyjny systemy bezpieczeństwa musi odpowiedzieć danych operacyjnych z bardzo niskimi opóźnieniami. Za pomocą ASA na urządzeniach brzegowych IoT można analizować czujnika danych w czasie zbliżonym do rzeczywistego i wydawać polecenia, gdy wykrywa anomalie, aby zatrzymać maszynę lub wyzwolenia alertów.
+*   **Ograniczone łączności z chmurą**: Misja krytycznych systemów, takich jak urządzenia zdalnego wyszukiwania, statków połączonych lub przechodzenie do platformy konieczne do analizowania i reagować na dane, nawet wtedy, gdy łączność z chmurą jest przerywana. Dzięki ASA logika przesyłania strumieniowego jest uruchamiana niezależnie od łączności sieciowej, i można wybrać, co możesz wysłać do chmury do dalszego przetwarzania lub magazynowania.
+* **Ograniczona przepustowość**: Ilości danych wytworzonych przez aparaty jet lub podłączone samochody może być tak duża, że dane muszą być filtrowana lub wstępnie przetworzone przed wysłaniem ich do chmury. Za pomocą ASA, możesz filtrować lub agregacji danych, który ma być wysyłane do chmury.
+* **Zgodność**: Zgodność z przepisami może wymagać niektóre dane lokalnie anonimowe lub agregowane przed wysłaniem do chmury.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Zadania Edge w usłudze Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Co to jest zadanie usługi "brzegu"?
@@ -144,7 +144,7 @@ W tym przykładzie definiuje następujące trasy:
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Bieżące ograniczenia dla zadań usługi IoT Edge w porównaniu do zadania w chmurze
 Celem jest zapewnienie równoważności między zadaniami usługi IoT Edge i zadania w chmurze. Większość funkcji języka zapytania SQL są już obsługiwane.
 Jednak następujące funkcje nie są jeszcze obsługiwane w przypadku zadań edge:
-* Funkcje zdefiniowane przez użytkownika (UDF) w języku JavaScript. Funkcji zdefiniowanej przez użytkownika są dostępne w [ C# dla zadań usługi IoT Edge](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge-csharp-udf) (wersja zapoznawcza).
+* Funkcje zdefiniowane przez użytkownika (UDF) w języku JavaScript. Funkcji zdefiniowanej przez użytkownika są dostępne w [ C# dla zadań usługi IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (wersja zapoznawcza).
 * Agregacje zdefiniowane przez użytkownika (UDA).
 * Funkcje usługi Azure ML
 * Przy użyciu więcej niż 14 agregatów w jednym kroku.
@@ -167,7 +167,7 @@ Aby uruchomić ASA na urządzeniach brzegowych IoT, potrzebujesz urządzeń z sy
 
 ASA i używać usługi Azure IoT Edge **Docker** kontenerów, przenośne rozwiązanie, który jest uruchamiany w wielu systemach operacyjnych hosta (Windows, Linux).
 
-Usługa ASA na usługi IoT Edge jest udostępniany jako obrazy Windows i Linux, systemem zarówno x86-64 lub architektury usługi Azure Resource Manager. 
+ASA na urządzeniach brzegowych IoT jest udostępniany jako obrazy Windows i Linux, systemem zarówno x86-64 lub architektur ARM (Advanced RISC maszyn). 
 
 
 ### <a name="input-and-output"></a>Dane wejściowe i wyjściowe

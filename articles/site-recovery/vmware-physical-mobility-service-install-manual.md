@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: d0180a32f2a4258cb728869e2cb9f2abd57cc545
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06430bf476c2e9f3af2102272fb54d201a3f1066
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845964"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790813"
 ---
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>Ręczne instalowanie usługi mobilności na maszynach wirtualnych VMware oraz serwerach fizycznych
 
@@ -91,7 +91,7 @@ Sposób użycia | UnifiedAgent.exe/role < MS|MT > /InstallLocation  <Install Loc
 Dzienniki Instalatora | W obszarze % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 / Roli | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
 /InstallLocation| Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności (dowolnego folderu).
-/ Platform | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych Mware; **Azure** dla maszyn wirtualnych platformy Azure. 
+/ Platform | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure. 
 / Silent| Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
@@ -129,7 +129,7 @@ Dzienniki konfiguracji agenta | W obszarze % ProgramData%\ASRSetupLogs\ASRUnifie
 Sposób użycia | . / install -d <Install Location> - r < MS|MT > - v, VmWare - q
 -r | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
 -d | Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności: /usr/local/ASR.
--v | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych Mware; **Azure** dla maszyn wirtualnych platformy Azure. 
+-v | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure. 
 -q | Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji

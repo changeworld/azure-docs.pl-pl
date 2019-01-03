@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: interfejsu użytkownika Synchronization Service Manager | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect: Interfejs użytkownika Menedżera usługi synchronizacji | Dokumentacja firmy Microsoft'
 description: Poznaj Synchronization Service Manager dla programu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 877f41fb1d47bc8faf4ea1275c94cd492884bfb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 439535975c6e1b996bf888a1df7b6f2ae6732a6d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313250"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717539"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Wprowadzenie do usługi Azure AD Connect interfejsu użytkownika Synchronization Service Manager
 
@@ -32,9 +32,10 @@ ms.locfileid: "46313250"
 Możesz uruchomić **Menedżera usługi synchronizacji** interfejsu użytkownika w menu start. Jest on nazwany **usługi synchronizacji** i można go znaleźć w **program Azure AD Connect** grupy.  
 ![Menedżera usługi synchronizacji](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
-Po kliknięciu łączy w górnej części tego tematu, aby dowiedzieć się więcej o różnych kartach w interfejsie użytkownika.
-
 ## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się więcej o Interfejsie użytkownika Menedżera usługi synchronizacji, w tym [operacji](how-to-connect-sync-service-manager-ui-operations.md), [łączników](how-to-connect-sync-service-manager-ui-connectors.md), [Projektant magazynu Metaverse](how-to-connect-sync-service-manager-ui-mvdesigner.md), i [wyszukiwanie magazynu Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md) karty.
+
 Dowiedz się więcej o [synchronizacji programu Azure AD Connect](how-to-connect-sync-whatis.md) konfiguracji.
 
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

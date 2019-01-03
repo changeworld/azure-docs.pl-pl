@@ -4,17 +4,17 @@ description: Wskazówki, aby rozpocząć pracę przy użyciu narzędzia programi
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/05/2018
+ms.date: 12/03/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a218cf9b3d89236128c83d8b879691940e432a55
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 56814cc44874fe0c169e5fb51dc6cbff5a225231
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341562"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727857"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Wprowadzenie do narzędzia programistyczne dotyczące magazynu usługi Azure Stack
 
@@ -29,9 +29,9 @@ Umożliwia tego artykułu jako przewodnika rozpoczęcie korzystania z narzędzia
 
 ## <a name="azure-client-libraries"></a>Biblioteki klienckie systemu Azure
 
-Obsługiwane wersje interfejsu API REST dla magazynu usługi Azure Stack to 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 aktualizacji 1802 lub nowsze wersje i 2015-04-05 dla wcześniejszych wersji. Punkty końcowe usługi Azure Stack nie mają pełnego parzystości do najnowszej wersji interfejsu API REST usługi Azure Storage. Biblioteki klienta magazynu należy wiedzieć o wersji, która jest zgodna z interfejsu API REST.
+Dla biblioteki klienta magazynu należy pamiętać o wersji, która jest zgodna z interfejsu API REST. Należy także określić punkt końcowy usługi Azure Stack w kodzie.
 
-### <a name="1802-update-or-newer-versions"></a>1802 aktualizacji lub nowsze wersje
+### <a name="1811-update-or-newer-versions"></a>1811 aktualizacji lub nowsze wersje
 
 | Biblioteka kliencka | Usługa Azure Stack obsługiwana wersja | Link | Specyfikacja punktu końcowego |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -45,22 +45,22 @@ Obsługiwane wersje interfejsu API REST dla magazynu usługi Azure Stack to 2017
 
 #### <a name="install-php-client-via-composer---current"></a>Zainstaluj klienta PHP za pośrednictwem Composer — bieżące
 
-Aby zainstalować za pośrednictwem Composer (kompozytor): (Wypełnij obiektów blob przykład).
+Aby zainstalować za pośrednictwem Composer (kompozytor): (potrwać obiektu blob jako przykład).
 
 1. Utwórz plik o nazwie **composer.json** w katalogu głównym projektu przy użyciu następującego kodu:
 
-  ```php
+    ```json
     {
       "require": {
-      "Microsoft/azure-storage-blob":"1.0.0"
+      "Microsoft/azure-storage-blob":"1.2.0"
       }
     }
-  ```
+    ```
 
 2. Pobierz [composer.phar](http://getcomposer.org/composer.phar) w katalogu głównym projektu.
 3. Uruchom: `php composer.phar install`.
 
-### <a name="previous-versions"></a>Poprzednie wersje
+### <a name="previous-versions-1802-to-1809-update"></a>Poprzednie wersje (1802 do 1809 aktualizacja)
 
 |Biblioteka kliencka|Usługa Azure Stack obsługiwana wersja|Link|Specyfikacja punktu końcowego|
 |---------|---------|---------|---------|
@@ -74,15 +74,15 @@ Aby zainstalować za pośrednictwem Composer (kompozytor): (Wypełnij obiektów 
 
 #### <a name="install-php-client-via-composer---previous"></a>Zainstaluj klienta PHP za pośrednictwem Composer — poprzednie
 
-Aby zainstalować, za pośrednictwem Composer (kompozytor):
+Aby zainstalować za pośrednictwem Composer (kompozytor): (Wypełnij obiektów blob przykład).
 
 1. Utwórz plik o nazwie **composer.json** w katalogu głównym projektu przy użyciu następującego kodu:
 
-  ```php
+  ```json
     {
-          "require":{
-          "Microsoft/azure-storage":"0.15.0"
-          }
+      "require": {
+      "Microsoft/azure-storage-blob":"1.0.0"
+      }
     }
   ```
 
@@ -101,7 +101,7 @@ Jeśli nie masz pewności o punkt końcowy usługi, skontaktuj się z administra
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określona w pliku app.config:
 
-```
+```xml
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -111,7 +111,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określony w ustawieniach parametry połączenia:
 
-```
+```java
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -123,7 +123,7 @@ public static final String storageConnectionString =
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określony w wystąpieniu deklaracji:
 
-```
+```nodejs
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -132,7 +132,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określony w ustawieniach parametry połączenia:
 
-```
+```cpp
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -143,7 +143,7 @@ EndpointSuffix=local.azurestack.external"));
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określony w ustawieniach parametry połączenia:
 
-```
+```php
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -154,7 +154,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określony w wystąpieniu deklaracji:
 
-```
+```python
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -164,7 +164,7 @@ endpoint_suffix='local.azurestack.external')
 
 Dla usługi Azure Stack sufiks punktu końcowego jest określony w ustawieniach parametry połączenia:
 
-```
+```ruby
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f382aab5a00030b922fb890e82110454e7f3839
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c0f4af863162d004b6a557f8c7a04e31ee66d9b7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384500"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713560"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Solr w klastrach HDInsight z systemem Windows
 
@@ -38,7 +38,7 @@ Przykładowy skrypt używaną w tym temacie tworzy klaster z systemem Windows z 
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
 
 ## <a name="what-is-solr"></a>Co to jest Solr?
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> to platforma wyszukiwania dla przedsiębiorstw, która umożliwia zaawansowane wyszukiwanie pełnotekstowe danych. Gdy Hadoop umożliwia przechowywanie i zarządzanie nimi ogromnych ilości danych, Apache Solr udostępnia możliwości wyszukiwania, aby szybko odzyskać dane.
+<a href="https://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> to platforma wyszukiwania dla przedsiębiorstw, która umożliwia zaawansowane wyszukiwanie pełnotekstowe danych. Gdy Hadoop umożliwia przechowywanie i zarządzanie nimi ogromnych ilości danych, Apache Solr udostępnia możliwości wyszukiwania, aby szybko odzyskać dane.
 
 ## <a name="install-solr-using-portal"></a>Zainstalować platformę Solr przy użyciu portalu
 1. Rozpocznij tworzenie klastra przy użyciu **tworzenie niestandardowe** opcji, zgodnie z opisem w [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-provision-clusters.md).
@@ -156,7 +156,7 @@ Należy rozpocząć od indeksowanie Solr z niektórych plików danych. Korzystan
           </response>
       ```
       
-   2. W sesji zdalnej, przejdź do {SOLR_HOME}\{kolekcji} \data. Dla klastra, utworzone za pomocą przykładowego skryptu, powinna to być `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. W tym miejscu powinien zostać wyświetlony folderu migawek utworzonych za pomocą nazwę podobną do **migawki.\*Sygnatura czasowa**\*.
+   2. W sesji zdalnej, przejdź do {SOLR_HOME}\{kolekcji} \data. Dla klastra, utworzone za pomocą przykładowego skryptu, powinna to być `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. W tym miejscu powinien zostać wyświetlony folderu migawek utworzonych za pomocą nazwę podobną do **migawki.* Sygnatura czasowa ***.
    
    3. Folder migawki zip i przekaż go do usługi Azure Blob storage. Z wiersza polecenia usługi Hadoop przejdź do lokalizacji folderu migawki za pomocą następującego polecenia:
 

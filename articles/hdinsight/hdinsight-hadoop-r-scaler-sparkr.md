@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386904"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974849"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Łączenie programu ScaleR i SparkR w HDInsight
 
@@ -21,7 +21,7 @@ Ten dokument przedstawia sposób przewidywania usterek opóźnienia przybyciu lo
 
 Mimo że oba pakiety są uruchamiane na aparat wykonywania platformy Spark dla usługi Apache Hadoop, jest zablokowany danych w pamięci do udostępniania, ponieważ wymagają one każdego własne odpowiednich sesji platformy Spark. Dopóki ten problem został rozwiązany w przyszłych wersjach ML Server, obejście polega obsługa nienakładający sesji platformy Spark i wymieniać dane za pomocą plików pośrednich. Podanych tutaj instrukcji pokazują, że te wymagania są proste do osiągnięcia.
 
-W tym przykładzie został początkowo udostępniony w dyskusji konferencji Strata 2016 Mario Inchiosa i Roni Burd. Można znaleźć tej dyskusji na [tworzenia skalowalnej platformy do analizy danych przy użyciu języka R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+W tym przykładzie został początkowo udostępniony w dyskusji konferencji Strata 2016 Mario Inchiosa i Roni Burd. Można znaleźć tej dyskusji na [tworzenia skalowalnej platformy do analizy danych przy użyciu języka R](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
 Kod został pierwotnie napisane dla ML Server działający na platformie Spark w klastrze usługi HDInsight na platformie Azure. Ale koncepcji mieszanie użytkowania SparkR i programu ScaleR w jednym skrypcie również jest nieprawidłowy w kontekście dla środowisk lokalnych.
 
@@ -29,9 +29,9 @@ Kroki opisane w tym dokumencie założono, że poziom pośredni znajomości jęz
 
 ## <a name="the-airline-and-weather-datasets"></a>Linie lotnicze i pogody zestawów danych
 
-Dane lotów są dostępne z [archiwa dla instytucji rządowych USA](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Jest również dostępny jako zip z [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+Dane lotów są dostępne z [archiwa dla instytucji rządowych USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Jest również dostępny jako zip z [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Dane o pogodzie, który można pobrać jako pliki zip w pierwotnej formie według: miesiąc, od [repozytorium National Oceanic i administrowania Atmospheric](http://www.ncdc.noaa.gov/orders/qclcd/). W tym przykładzie należy pobrać dane, maj 2007 — grudnia 2012. Używanie godzinowe plików danych i `YYYYMMMstation.txt` pliku w każdej aplikacji zips. 
+Dane o pogodzie, który można pobrać jako pliki zip w pierwotnej formie według: miesiąc, od [repozytorium National Oceanic i administrowania Atmospheric](https://www.ncdc.noaa.gov/orders/qclcd/). W tym przykładzie należy pobrać dane, maj 2007 — grudnia 2012. Używanie godzinowe plików danych i `YYYYMMMstation.txt` pliku w każdej aplikacji zips. 
 
 ## <a name="setting-up-the-spark-environment"></a>Konfigurowanie środowiska platformy Spark
 
@@ -41,7 +41,7 @@ Aby skonfigurować środowisko Spark, użyj następującego kodu:
 workDir        <- '~'  
 myNameNode     <- 'default' 
 myPort         <- 0
-inputDataDir   <- 'wasb://hdfs@myAzureAcccount.blob.core.windows.net'
+inputDataDir   <- 'wasb://hdfs@myAzureAccount.blob.core.windows.net'
 hdfsFS         <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
 # create a persistent Spark session to reduce startup times 
@@ -535,7 +535,7 @@ W tym artykule firma Microsoft została pokazuje, jak jest można połączyć u�
 
 ## <a name="next-steps-and-more-information"></a>Kolejne kroki i dodatkowe informacje
 
-- Aby uzyskać więcej informacji przy użyciu serwera usługi uczenie Maszynowe na platformie Apache Spark, zobacz [Przewodnik z wprowadzeniem](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Aby uzyskać więcej informacji przy użyciu serwera usługi uczenie Maszynowe na platformie Apache Spark, zobacz [Przewodnik z wprowadzeniem](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
 
 - Aby uzyskać ogólne informacje na temat ML Server, zobacz [wprowadzenie do języka R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) artykułu.
 
@@ -543,6 +543,6 @@ W tym artykule firma Microsoft została pokazuje, jak jest można połączyć u�
 
 Aby uzyskać więcej informacji przy użyciu SparkR zobacz:
 
-- [Dokument Apache SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html)
+- [Dokument Apache SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [Omówienie SparkR](https://docs.databricks.com/spark/latest/sparkr/overview.html) z usługi Databricks
+- [Omówienie SparkR](https://docs.databricks.com/spark/latest/sparkr/overview.html) z usługi Databricks.

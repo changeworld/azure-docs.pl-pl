@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 70bbade2877b62c3d211600f69e1825677f12040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282502"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721873"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Operator chmury można pobrać elementów w portalu Azure Marketplace i udostępnić je w usłudze Azure Stack. Elementy, które można wybrać pochodzą z nadzorowanej liście elementów portalu Azure Marketplace, które są wstępnie przetestowane i jest obsługiwane do pracy z usługą Azure Stack. Dodatkowe elementy często są dodawane do tej listy, więc w dalszym ciągu sprawdzaj nowej zawartości. 
 
@@ -75,8 +75,8 @@ W przypadku usługi Azure Stack w trybie rozłączonym i bez łączności z Inte
 Narzędzie syndykacji marketplace można również w przypadku połączonych. 
 
 Istnieją dwie części do tego scenariusza:
-- **Część 1:** pobrać z witryny Azure Marketplace. Na komputerze z dostępem do Internetu Konfigurowanie programu PowerShell, Pobierz narzędzie syndykacji i następnie pobrać formularz elementów w portalu Azure Marketplace.  
-- **Część 2:** przekazywać i publikować w portalu Azure Marketplace stosu. Przenieś pliki pobrane do środowiska usługi Azure Stack, zaimportuj je do usługi Azure Stack, a następnie publikować je w portalu Azure Marketplace stosu.  
+- **Część 1:** Pobierz z witryny Azure Marketplace. Na komputerze z dostępem do Internetu Konfigurowanie programu PowerShell, Pobierz narzędzie syndykacji i następnie pobrać formularz elementów w portalu Azure Marketplace.  
+- **Część 2:** Przekazywania i publikowania w portalu Azure Marketplace stosu. Przenieś pliki pobrane do środowiska usługi Azure Stack, zaimportuj je do usługi Azure Stack, a następnie publikować je w portalu Azure Marketplace stosu.  
 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
@@ -89,6 +89,8 @@ Istnieją dwie części do tego scenariusza:
 - Konieczne jest posiadanie [konta magazynu](azure-stack-manage-storage-accounts.md) w usłudze Azure Stack, który jest publicznie dostępny kontener (czyli magazynu obiektów blob). Korzystasz z kontenera jako tymczasowego magazynu plików galerii elementów portalu marketplace. Jeśli nie jesteś zaznajomiony z kontami magazynu i kontenerów, zobacz [Praca z obiektami blob — witryna Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) w dokumentacji platformy Azure.
 
 - Narzędzie syndykacji portalu marketplace jest pobierany podczas pierwszej procedurze. 
+
+- Możesz zainstalować [AzCopy](../storage/common/storage-use-azcopy.md) do pobrania optymalną wydajność, ale nie jest wymagane.
 
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>Pobieranie elementów portalu marketplace za pomocą narzędzia syndykacji witryny marketplace
 
@@ -126,10 +128,7 @@ Istnieją dwie części do tego scenariusza:
    ```PowerShell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
-   Sync-AzSOfflineMarketplaceItem 
-      -Destination "Destination folder path in quotes" `
-      -AzureTenantID $AzureContext.Tenant.TenantId ` 
-      -AzureSubscriptionId $AzureContext.Subscription.Id 
+   Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" 
    ```
 
 6. Po uruchomieniu narzędzia powinien zostać wyświetlony ekran podobny do poniższej ilustracji, z listą elementów portalu marketplace dostępne:
@@ -144,7 +143,35 @@ Istnieją dwie części do tego scenariusza:
 
 9. Czas pobierania zależy od rozmiaru elementu. Po zakończeniu pobierania element jest dostępny w folderze, który określiłeś w skrypcie. Pliki do pobrania zawiera plik wirtualnego dysku twardego (w przypadku maszyn wirtualnych) lub plik zip (dla rozszerzeń maszyny wirtualnej). Może to również obejmować pakietu galerii w *.azpkg* formatu, który jest po prostu plikiem zip.
 
-### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importowanie, pobieranie i publikowanie do usługi Azure Stack w portalu Marketplace
+10. Jeśli pobieranie nie powiedzie się, możesz spróbować ponownie, ponownie uruchamiając następujące polecenie cmdlet programu PowerShell:
+
+    ```powershell
+    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes”
+    ```
+
+    Przed ponowieniem próby wykonania, usuń folder produktu, w którym pobieranie nie powiodło się. Na przykład, jeśli skrypt pobierania kończy się niepowodzeniem, podczas pobierania na `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`, Usuń `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` folder, a następnie ponownie uruchom polecenie cmdlet.
+ 
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher"></a>Importowanie, pobieranie i publikowanie w portalu Marketplace dla usługi Azure Stack (1811 i nowsze)
+
+1. Musisz przenieść pliki, do których masz [wcześniej pobrano](#use-the-marketplace-syndication-tool-to-download-marketplace-items) lokalnie, aby były dostępne dla środowiska Azure Stack. Narzędzie syndykacji marketplace również musi być dostępne do środowiska usługi Azure Stack, ponieważ należy użyć narzędzia do wykonania tej operacji importowania.
+
+   Na poniższej ilustracji przedstawiono przykład struktury folderów. `D:\downloadfolder` zawiera wszystkie elementy portalu marketplace pobranych. Każdy podfolder jest elementu portalu marketplace (na przykład `microsoft.custom-script-linux-arm-2.0.3`) o nazwie według identyfikatora produktu. Wewnątrz każdego podfolder jest pobranej zawartości elementu portalu marketplace.
+
+   [ ![Struktura katalogów pobierania witryny Marketplace](media/azure-stack-download-azure-marketplace-item/mp1sm.png "strukturę katalogów pobierania witryny Marketplace") ](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
+
+2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-powershell-configure-admin.md) do skonfigurowania sesji usługi Azure Stack — Operator w programie PowerShell. 
+
+3. Zaimportuj moduł syndykacji, a następnie uruchom narzędzie syndykacji portalu marketplace, uruchamiając następujący skrypt:
+
+   ```PowerShell
+   $credential = Get-Credential -Message "Enter the azure stack operator credential:"
+   Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
+   ```
+   `-AzsCredential` Parametr jest opcjonalny. Służy do odnowienia tokenu dostępu, jeśli wygasł. Jeśli `-AzsCredential` nie określono parametru i token jest ważny, zostanie wyświetlony monit o podanie poświadczeń operatora.
+
+4. Po pomyślnym ukończeniu działania skryptu pole powinno być dostępne w witrynie Azure Marketplace stosu.
+
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1809-and-lower"></a>Importowanie, pobieranie i publikowanie w portalu Marketplace dla usługi Azure Stack (1809 i niższych)
 
 1. Pliki obrazów maszyn wirtualnych lub szablonów rozwiązań, które masz [wcześniej pobrano](#use-the-marketplace-syndication-tool-to-download-marketplace-items) muszą być dostępne lokalnie do środowiska usługi Azure Stack.  
 
@@ -159,7 +186,7 @@ Istnieją dwie części do tego scenariusza:
    3. Wybierz kontener, o których chcesz użyć, a następnie wybierz pozycję **przekazywanie** otworzyć **przekazywanie obiektu blob** okienka.  
       [ ![Kontener](media/azure-stack-download-azure-marketplace-item/container.png "kontenera") ](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
    
-   4. W okienku przekazywania obiektów blob, przejdź do plików pakietu lub dysku, aby załadować do pamięci masowej, a następnie wybierz pozycję **przekazywanie**: [ ![przekazywanie](media/azure-stack-download-azure-marketplace-item/uploadsm.png "przekazywania") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
+   4. W okienku przekazywania obiektów blob, przejdź do plików pakietu lub dysku, aby załadować do pamięci masowej, a następnie wybierz pozycję **przekazywanie**: [ ![Przekaż](media/azure-stack-download-azure-marketplace-item/uploadsm.png "przekazywania") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
    5. Pliki, które są przekazywane są wyświetlane w okienku kontenera. Wybierz plik, a następnie skopiuj adres URL z **właściwości obiektu Blob** okienka. Użyjesz tego adresu URL w następnym kroku podczas importowania elementu portalu marketplace do usługi Azure Stack.  Na poniższym obrazie kontenera jest *magazynu obiektów blob-test* i plik jest *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Plik, adres URL jest *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
       [ ![Właściwości obiektu blob](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "właściwości obiektu Blob") ](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
@@ -168,10 +195,10 @@ Istnieją dwie części do tego scenariusza:
 
    Możesz uzyskać *wydawcy*, *oferują*, i *jednostki sku* wartości obrazu z pliku tekstowego zawierającego pliki do pobrania przy użyciu pliku AZPKG. Plik tekstowy znajduje się w lokalizacji docelowej. *Wersji* wartość wersji, podczas pobierania elementu z platformy Azure w ramach poprzedniej procedury. 
  
-   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Wartość *- Osuri* jest przykładowa ścieżka do lokalizacji magazynu obiektów blob dla elementu. 
+   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Wartość *- Osuri* jest przykładowa ścieżka do lokalizacji magazynu obiektów blob dla elementu.
 
    Zamiast tego skryptu, można użyć [procedury opisanej w tym artykule](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) do zaimportowania. Obraz wirtualnego dysku twardego za pomocą witryny Azure portal.
- 
+
    ```PowerShell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
@@ -181,12 +208,12 @@ Istnieją dwie części do tego scenariusza:
     -Version "2016.127.20171215" `
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
-   
-   **Informacje o szablonach rozwiązania:** niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
+
+   **Informacje o szablonach rozwiązania:** Niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
 
    Przejrzyj opis szablonów i Pobierz, a następnie zaimportować dodatkowe wymagania, takie jak wirtualne dyski twarde, które są wymagane do pracy za pomocą szablonu rozwiązania.  
    
-   **O rozszerzeniach:** podczas pracy z rozszerzeniami obrazu maszyny wirtualnej, należy użyć następujących parametrów:
+   **O rozszerzeniach:** Podczas pracy z rozszerzeniami obrazu maszyny wirtualnej, należy użyć następujących parametrów:
    - *Wydawca*
    - *Typ*
    - *Wersja*  

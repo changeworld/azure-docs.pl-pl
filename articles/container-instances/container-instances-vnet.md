@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: danlep
-ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619847"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993298"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -47,6 +47,7 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następują
 * Europa Północna (northeurope)
 * Europa Zachodnia (westeurope)
 * Zachodnie stany USA (westus)
+* Wschodnie stany USA (eastus)
 
 **Nieobsługiwana** zasobów sieciowych:
 
@@ -184,10 +185,10 @@ Dane wyjściowe dziennika powinien pokazują, że `wget` był w stanie nawiąza�
 Grupy kontenerów można także wdrożyć do istniejącej sieci wirtualnej przy użyciu pliku YAML. Aby wdrożyć w podsieci w sieci wirtualnej, należy określić kilka dodatkowych właściwości w YAML:
 
 * `ipAddress`: Ustawienia adresu IP dla grupy kontenerów.
-  * `ports`Porty, aby otworzyć program, jeśli istnieje.
-  * `protocol`Protocol (TCP lub UDP) dla otwartego portu.
+  * `ports`: Porty, aby otworzyć program, jeśli istnieje.
+  * `protocol`: Protokół (TCP lub UDP) dla otwartego portu.
 * `networkProfile`: Określa ustawienia sieciowe, takie jak sieć wirtualną i podsieć dla zasobów platformy Azure.
-  * `id`Pełny identyfikator zasobu usługi Resource Manager z `networkProfile`.
+  * `id`: Pełny identyfikator zasobu usługi Resource Manager z `networkProfile`.
 
 Aby wdrożyć grupy kontenerów w sieci wirtualnej przy użyciu pliku YAML, należy najpierw uzyskać identyfikator profilu sieciowego. Wykonaj [Lista profilów sieciowych az] [ az-network-profile-list] polecenie, określając nazwę grupy zasobów, zawierającą sieć wirtualna i podsieć delegowanego.
 

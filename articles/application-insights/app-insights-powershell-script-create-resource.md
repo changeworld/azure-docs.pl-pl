@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: ccc3ced06a6b5ac36df9e7294a9b4cf17d0dedf3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6cb1bc8608aa106d56382264184c1c4eb017538a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723163"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790066"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Skrypt programu PowerShell do tworzenia zasobu usługi Application Insights
 
@@ -103,9 +103,9 @@ Każdy zasób jest identyfikowany za pomocą klucza Instrumentacji (klucz Instru
 
 Istnieją dwa sposoby, aby udostępnić klucz Instrumentacji do zestawu SDK:
 
-* W [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
+* W [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md): 
   * `<instrumentationkey>`*klucz Instrumentacji*`</instrumentationkey>`
-* Lub [kod inicjujący](app-insights-api-custom-events-metrics.md): 
+* Lub [kod inicjujący](../azure-monitor/app/api-custom-events-metrics.md): 
   * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*klucz Instrumentacji*`";`
 

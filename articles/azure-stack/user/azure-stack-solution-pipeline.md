@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12f9ed6d5b5d4c8dc7e5b0b68a0a394749cc72bd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967065"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714614"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
+# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Dowiedz się, jak wdrożyć aplikację na platformę Azure i usługi Azure Stack przy użyciu hybrydowego potoku ciągłej integracji/ciągłego dostarczania (CI/CD).
 
@@ -72,7 +72,7 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
 ### <a name="azure-requirements"></a>Wymagania systemu Azure
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/azure/app-service/app-service-web-overview) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, należy go używać w tym samouczku.
+* Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/azure/app-service/overview) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, należy go używać w tym samouczku.
 
 ### <a name="azure-stack-requirements"></a>Wymagania dotyczące usługi Azure Stack
 
@@ -166,7 +166,7 @@ W ramach konfiguracji punktu końcowego usługi, usługom DevOps platformy Azure
 
 ### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Przyznanie praw jednostki usługi do wdrażania zasobów w subskrypcji usługi Azure Stack
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje najlepsze uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Built in Roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje najlepsze uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli Czytelnik dla grupy zasobów oznacza, że może odczytywać, grupy zasobów i wszystkie jej zasoby.
 
@@ -180,9 +180,7 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
 3. W programie Visual Studio Enterprise, wybierz **kontrola dostępu (IAM)**.
 
-    ![Kontrola dostępu (Zarządzanie dostępem i tożsamościami)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
-
-4. Wybierz pozycję **Dodaj**.
+4. Wybierz **Dodaj przypisanie roli**.
 
     ![Add](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
@@ -350,7 +348,7 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Tworzenie wdrożenia aplikacji niezależne sieci web dla usług App Service w obu chmurach
 
-1. Edytuj **WebApplication.csproj** pliku: Wybierz **Runtimeidentifier** , a następnie dodaj `win10-x64.` Aby uzyskać więcej informacji, zobacz [niezależna wdrożenia](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacja.
+1. Edytuj **WebApplication.csproj** pliku: Wybierz **Runtimeidentifier** , a następnie dodaj `win10-x64.` Aby uzyskać więcej informacji, zobacz [niezależna wdrożenia](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacji.
 
     ![Konfigurowanie Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 

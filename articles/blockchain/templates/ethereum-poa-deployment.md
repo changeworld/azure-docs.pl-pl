@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243160"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974050"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
 
@@ -198,7 +198,7 @@ Ten proces wymaga subskrypcji platformy Azure, która może obsługiwać wdroże
 
 Gdy subskrypcja jest zabezpieczony, przejdź do witryny Azure portal. Wybierz pozycję "+", witryny Marketplace ("zobaczyć wszystkich") i poszukaj konsorcjum PoA Ethereum.
 
-Poniższa sekcja przeprowadzi Konfigurowanie zużycie pierwszego elementu członkowskiego w sieci. Przepływ wdrożenia jest podzielona na pięć kroków: podstawy, wdrożenia regiony, Network Activity block size i wydajności, ustawień Ethereum usługi Azure Monitor.
+Poniższa sekcja przeprowadzi Konfigurowanie zużycie pierwszego elementu członkowskiego w sieci. Przepływ wdrożenia jest podzielona na pięć kroków: Podstawy, wdrożenia regiony, Network Activity block size i wydajności, ustawień Ethereum usługi Azure Monitor.
 
 #### <a name="basics"></a>Podstawy
 
@@ -212,7 +212,7 @@ Utwórz nową sieć lub dołączanie do istniejącej sieci?|Utwórz nową sieć 
 Adres e-mail (opcjonalnie)|Otrzymasz wiadomość e-mail z powiadomieniem po zakończeniu wdrożenia, informacje o wdrożeniu.|Prawidłowy adres e-mail|Nie dotyczy
 Nazwa użytkownika maszyny Wirtualnej|Nazwa użytkownika administratora w każdej wdrożonej maszyny wirtualnej (tylko znaki alfanumeryczne)|1 – 64 znaków|Nie dotyczy
 Typ uwierzytelniania|Metoda uwierzytelniania do maszyny wirtualnej.|Klucz publiczny hasła lub protokołu SSH|Hasło
-Hasło (typ uwierzytelniania = hasło)|Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych.  Hasło musi zawierać 3 z następujących elementów: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 do 72 znaków|Nie dotyczy
+Hasło (typ uwierzytelniania = hasło)|Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych.  Hasło musi zawierać 3 z następujących czynności: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 do 72 znaków|Nie dotyczy
 Klucz SSH (typ uwierzytelniania = klucz publiczny)|Klucz protokołu secure shell, używany do logowania zdalnego.||Nie dotyczy
 Subskrypcja|Subskrypcja, dla której chcesz wdrożyć sieci konsorcjum||Nie dotyczy
 Grupa zasobów|Grupa zasobów, dla której chcesz wdrożyć sieci konsorcjum.||Nie dotyczy
@@ -259,7 +259,7 @@ Należy zauważyć, że maszyna wirtualna i warstwa magazynowania wpłynie na wy
   Numer SKU maszyny wirtualnej|Warstwy magazynowania|Cena|Przepływność|Opóźnienie
   ---|---|---|---|---
   F1|Standardowa, SSD|Niska|Niska|Wysoka
-  D2_v3|Standardowa, SSD|Średni|Średni|Średni
+  D2_v3|Standardowa, SSD|średnie|średnie|średnie
   F16s|Premium, SSD|Wysoka|Wysoka|Niska
 
 Poniżej przedstawiono przykładowe wdrożenie: ![rozmiaru i wydajności sieci](./media/ethereum-poa-deployment/network-size-and-performance.png)
@@ -744,7 +744,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>Debugowanie inteligentne kontrakt o Truffle
 
-Truffle ma sieci lokalne programowanie, która jest dostępna do debugowania inteligentne kontraktu. Możesz znaleźć pełnym samouczku dotyczącym [tutaj](http://truffleframework.com/tutorials/debugging-a-smart-contract).
+Truffle ma sieci lokalne programowanie, która jest dostępna do debugowania inteligentne kontraktu. Możesz znaleźć pełnym samouczku dotyczącym [tutaj](https://truffleframework.com/tutorials/debugging-a-smart-contract).
 
 ### <a name="webassembly-wasm-support"></a>Obsługa format WebAssembly (WASM)
 

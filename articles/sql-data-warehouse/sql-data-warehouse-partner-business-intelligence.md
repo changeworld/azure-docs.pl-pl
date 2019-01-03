@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 9880afb6c4fd2b7fe1e97b5390c4769c8cafb4ed
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e293c27faa69fe5c79b776a98bcae0f72e85c3ee
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634622"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811158"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Usługa SQL Data Warehouse business intelligence partnerów
 Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej gamy narzędzi wiodące w branży.  W tym artykule przedstawiono firm partnerskich Microsoft business intelligence (BI) rozwiązań Obsługa usługi Azure SQL Data Warehouse.
@@ -32,9 +32,9 @@ Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej
 | ![Looker][7] |**Looker Power BI**<br>Looker umożliwia wszystkim w Twojej firmie do eksplorowania i rozumienia danych, która napędza Twojej firmy. Looker oferuje również analityka danych warstwy modelowania elastyczne i wielokrotnego użytku, do kontroli i nadzorowanie tych danych.  Firmy mają zasadniczo transformacji jego kultury, używając Looker jako katalizatorem. |[Portal Marketplace][looker_marketplace]<br>[Witryny sieci Web][looker_website]<br>[Arkusz danych][looker_datasheet]<br>[Twitter][looker_twitter]<br>[YouTube][looker_youtube] |[![looker wideo](./media/sql-data-warehouse-partner-business-intelligence/looker_video.jpg)](https://www.youtube.com/watch?v=WwO4ADK8ZfA) |
 | ![Qlik][8] |**Qlik Sense Enterprise**<br>Odnajdowanie szczegółowe informacje o dysku za pomocą aplikacji wizualizacji danych, które każda osoba może użyć. Za pomocą usługa Qlik Sense wszystkim innym w Twojej firmie łatwe tworzenie elastycznych, interaktywne wizualizacje i podejmowanie trafnych decyzji. |[Witryny sieci Web][qlik_website]<br>[Twitter][qlik_twitter]<br>[YouTube][qlik_youtube] |[![qlikview wideo](./media/sql-data-warehouse-partner-business-intelligence/qlik_video2.jpg)](https://www.youtube.com/watch?v=VJEDFE-07Hg) |
 | ![SiSense][9] |**SiSense**<br>SiSense to oprogramowanie do analizy biznesowej pełnym stosie, które jest dostarczana z narzędziami, które firma musi Analizuj i wizualizuj dane: analitycznej bazy danych o wysokiej wydajności, możliwość Dołącz do wielu źródeł, wyodrębnianie proste danych (ETL) i danych opartych na sieci web wizualizacji. Rozpocznij analizowanie i wizualizowanie dużych zestawów danych przy użyciu analizy i analizy Biznesowej SiSense już dziś. |[Witryny sieci Web][sisense_website]<br>[Arkusz danych][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense wideo](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
-| ![Tableau][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Portal Marketplace][tableau_marketplace]<br>[Witryny sieci Web][tableau_website]<br>[Arkusz danych][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![TABLEAU wideo](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
+| ![TABLEAU][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Portal Marketplace][tableau_marketplace]<br>[Witryny sieci Web][tableau_website]<br>[Arkusz danych][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![TABLEAU wideo](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
 | ![Targit][11] |**Targit**<br>Pakiet decyzji Targit zapewnia analizy i analizy Biznesowej platformy, która zapewnia pulpity nawigacyjne czasu rzeczywistego, samoobsługowej analizy, raportowanie przyjazny dla użytkownika, atrakcyjnych funkcji mobilnych i technologii proste odnajdywanie danych w rozwiązaniu pojedyncze, spójne. Targit zapewnia firmom odwagę do działania. |[Portal Marketplace][targit_marketplace]<br>[Witryny sieci Web][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit wideo](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
-| ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc, raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Portal Marketplace][yellowfin_marketplace]<br>[Witryny sieci Web][yellowfin_website]<br>[Arkusz danych] [yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![Platforma yellowfin wideo](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
+| ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc, raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Portal Marketplace][yellowfin_marketplace]<br>[Witryny sieci Web][yellowfin_website]<br>[Arkusz danych][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![Platforma yellowfin wideo](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
@@ -95,12 +95,17 @@ Aby dowiedzieć się więcej o niektórych z innymi partnerami, zobacz [partner�
 
 [tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data
 
-<!--[targit_datasheet]:--> [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
+<!--[targit_datasheet]:-->
+
+[yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
+
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 
-<!--[clearstory_marketplace]:--> [dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
+<!--[clearstory_marketplace]:-->
+
+[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
 
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
 
@@ -118,15 +123,24 @@ Aby dowiedzieć się więcej o niektórych z innymi partnerami, zobacz [partner�
 
 <!--Press links-->
 
-<!--[birst_press]:--> [clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
+<!--[birst_press]:-->
 
-<!--[dell_statistica_press]:--> [dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+[clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
 
-<!--[jinfonet_press]:--> [logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/ [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
+<!--[dell_statistica_press]:-->
+
+[dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+
+<!--[jinfonet_press]:-->
+
+[logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/
+[looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
 
 <!--[qlik_press]:-->
 
-<!--[sisense_press]:--> [tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
+<!--[sisense_press]:-->
+
+[tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
 
 <!--[targit_press]:-->
 <!--[yellowfin_press]:-->

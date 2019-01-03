@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: dda4e26de74dbd5579f2dd45ea47f42c904f028f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 74776a658c7a0002df40b1b3ccb572e9b9262540
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271729"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972929"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights przy użyciu programu PowerShell
-Można zautomatyzować konfigurację [alerty](app-insights-alerts.md) w [usługi Application Insights](app-insights-overview.md).
+Można zautomatyzować konfigurację [alerty](../azure-monitor/app/alerts.md) w [usługi Application Insights](app-insights-overview.md).
 
 Ponadto mogą [Ustaw elementami webhook w celu automatyzowania odpowiedzi na alert](../azure-monitor/platform/alerts-webhooks.md).
 
@@ -81,7 +81,7 @@ Identyfikator GUID jest identyfikator subskrypcji (nie klucz instrumentacji apli
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>Przykład 2
-Mam aplikację, w którym mogę użyć [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) zgłosić Metryka o nazwie "salesPerHour." Wyślij wiadomość e-mail do moich współpracowników, jeśli "salesPerHour" spadnie poniżej 100, średniej ponad 24 godzin.
+Mam aplikację, w którym mogę użyć [TrackMetric()](../azure-monitor/app/api-custom-events-metrics.md#trackmetric) zgłosić Metryka o nazwie "salesPerHour." Wyślij wiadomość e-mail do moich współpracowników, jeśli "salesPerHour" spadnie poniżej 100, średniej ponad 24 godzin.
 
     Add-AzureRmMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -94,7 +94,7 @@ Mam aplikację, w którym mogę użyć [TrackMetric()](app-insights-api-custom-e
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](app-insights-api-custom-events-metrics.md#properties) wywołania śledzenia innego, takich jak funkcja TrackEvent lub wywołania trackPageView.
+Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](../azure-monitor/app/api-custom-events-metrics.md#properties) wywołania śledzenia innego, takich jak funkcja TrackEvent lub wywołania trackPageView.
 
 ## <a name="metric-names"></a>Nazwy metryk
 | Nazwa metryki | Nazwa ekranowa | Opis |
@@ -120,16 +120,16 @@ Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](app-
 | `request.rate` |Współczynnik żądań |Liczba wszystkich żądań do aplikacji na sekundę. |
 | `requestFailed.count` |Żądania zakończone niepowodzeniem |Żądania liczba HTTP, które spowodowało kod odpowiedzi > = 400 |
 | `view.count` |Wyświetlenia strony |Liczba żądań użytkowników klientów dla strony sieci web. Odfiltrowane ruchu syntetycznego. |
-| {niestandardowe metryki nazwę} |{Nazwa metryki} |Wartość metryki zgłoszone przez [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) lub [pomiarów parametr wywołania śledzenia](app-insights-api-custom-events-metrics.md#properties). |
+| {niestandardowe metryki nazwę} |{Nazwa metryki} |Wartość metryki zgłoszone przez [TrackMetric](../azure-monitor/app/api-custom-events-metrics.md#trackmetric) lub [pomiarów parametr wywołania śledzenia](../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
 Metryki są wysyłane przez moduły różnych danych telemetrycznych:
 
 | Metryki grupy | Moduł zbierający |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>wyświetl |[Kod JavaScript przeglądarki](app-insights-javascript.md) |
-| PerformanceCounter |[Wydajność](app-insights-configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Zależność](app-insights-configuration-with-applicationinsights-config.md) |
-| żądania,<br/>requestFailed |[Żądanie serwera](app-insights-configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>wyświetl |[Kod JavaScript przeglądarki](../azure-monitor/app/javascript.md) |
+| PerformanceCounter |[Wydajność](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Zależność](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| żądania,<br/>requestFailed |[Żądanie serwera](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Elementy webhook
 Możesz [automatyzowania odpowiedzi na alert](../azure-monitor/platform/alerts-webhooks.md). Azure będzie wywoływać wybrany adres w sieci web, gdy zostanie zgłoszony alert.

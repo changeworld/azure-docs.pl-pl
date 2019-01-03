@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: aeb0dec07ef9c8fb124089c785929f4e5ce69ffe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871435"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722363"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów HDInsight z systemem Windows za pomocą akcji skryptu
 **Akcja skryptu** może służyć do wywołania [niestandardowe skrypty](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.
 
 Informacje przedstawione w tym artykule dotyczy klastrów HDInsight z systemem Windows. W przypadku klastrów opartych na systemie Linux, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 Klastry HDInsight można dostosować wiele innych sposobów, np. w tym dodatkowe konta usługi Azure Storage, zmienianie [Apache Hadoop](https://hadoop.apache.org/) (core-site.xml, gałąź site.xml itp.) z plików konfiguracji lub dodawanie udostępnili dany dokument biblioteki (np. [Apache Hive](https://hive.apache.org/), [Apache Oozie](https://oozie.apache.org/)) do wspólnej lokalizacji w klastrze. Te dostosowania można wykonać za pomocą programu Azure PowerShell, zestawu .NET SDK usługi Azure HDInsight lub witryny Azure portal. Aby uzyskać więcej informacji, zobacz [klastrów utworzyć Apache Hadoop w HDInsight][hdinsight-provision-cluster].
@@ -35,7 +35,7 @@ Akcja skryptu jest używany tylko w sytuacji, gdy klaster jest właśnie tworzon
 
 Podczas wykonywania skryptu klaster przechodzi **ClusterCustomization** etapu. Na tym etapie skrypt jest uruchamiany na koncie administratora systemu, równolegle na określonych węzłów w klastrze i zapewnia uprawnienia Pełna Administracja w węzłach.
 
-> [!NOTE]
+> [!NOTE]  
 > Ponieważ masz uprawnienia administratora na węzłach klastra podczas **ClusterCustomization** etapu, można użyć skryptu do wykonania operacji, takich jak zatrzymywanie i uruchamianie usług, w tym usług związanych z usługi Hadoop. Tak, jako część skryptu upewnij się, że usługi Ambari i innych usług związanych z usługi Hadoop zostały włączone i uruchomione przed skrypt zakończy się uruchamianie. Te usługi są wymagane do pomyślnie stwierdzenia kondycję i stan klastra podczas jego tworzenia. Jeśli zmienisz żadnej konfiguracji w klastrze, który ma wpływ na te usługi, należy użyć funkcji pomocnika, które są dostarczane. Aby uzyskać więcej informacji na temat funkcji pomocnika, zobacz [skrypty opracowywanie akcji skryptu do HDInsight][hdinsight-write-script].
 >
 >
@@ -288,10 +288,10 @@ Istnieją dwa typy składników typu open source, które są dostępne w usłudz
 
 Wbudowane składniki są w pełni obsługiwane, a Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 
-> [!WARNING]
+> [!WARNING]  
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane i Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Projektów Apache mieć witryny projektu na [ https://apache.org ](https://apache.org), na przykład: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 >
 >
 

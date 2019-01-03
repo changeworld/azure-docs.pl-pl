@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie cenami i ilością danych dla usługi Azure Application Insights | Dokumentacja firmy Microsoft
+title: Zarządzanie użycia i kosztów dla usługi Azure Application Insights | Dokumentacja firmy Microsoft
 description: Zarządzanie woluminami danych telemetrycznych i monitorowanie kosztów w usłudze Application Insights.
 services: application-insights
 documentationcenter: ''
@@ -9,75 +9,57 @@ ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
+ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: Dale.Koetke
-ms.date: 08/11/2018
+ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8a0acbfa18053b6b50bd872d109b02d556a6f5f3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a65db0dd21c2a5f85b1818f02031f1fb08ac564b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436065"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969917"
 ---
-# <a name="manage-pricing-and-data-volume-in-application-insights"></a>Zarządzanie cenami i ilością danych w usłudze Application Insights
+# <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użycia i kosztów dla usługi Application Insights
 
 > [!NOTE]
 > W tym artykule opisano, jak analizować użycie danych usługi Application Insights.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
-> - [Monitorowanie użycia i szacowanych kosztów](../azure-monitor/platform/usage-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
-
-Cennik usługi [usługi Azure Application Insights] [ start] jest oparty na wolumenie danych na aplikację. Każdy zasób usługi Application Insights jest rozliczane jako osobną usługą i przyczynia się do rachunek dla subskrypcji platformy Azure.
-
-Usługa Application Insights ma dwa plany cenowe: Podstawowe, jak i Enterprise. Podstawowy plan taryfowy jest domyślny plan. Obejmuje wszystkie funkcje planu Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach planu podstawowego. 
-
-Enterprise plan ma opłaty za węzeł i każdy węzeł otrzyma dzienny przydział danych. W przedsiębiorstwie cennikiem, opłaty są naliczane za dane pozyskane powyżej uwzględnione dopuszczalnej wartości. Jeśli używasz pakietu Operations Management Suite, należy wybrać Enterprise plan. 
+> - [Monitorowanie użycia i szacowanych kosztów](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
 Jeśli masz pytania na temat cen usługi Application Insights, możesz zadać pytanie na naszym [forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights).
 
-## <a name="pricing-plans"></a>Plany cenowe
+## <a name="pricing-model"></a>Model cen
+
+Cennik usługi [usługi Azure Application Insights] [ start] jest oparty na wolumenie danych pozyskanych. Każdy zasób usługi Application Insights jest rozliczane jako osobną usługą i przyczynia się do rachunek dla subskrypcji platformy Azure.
+
+### <a name="data-volume-details"></a>Szczegóły wolumin danych
+
+* Ilość danych jest liczba bajtów odebranych przez usługę Application Insights dane telemetryczne. Ilość danych jest mierzony jako rozmiar nieskompresowanych pakietów danych JSON, które jest odebrane przez usługę Application Insights z aplikacji. Aby uzyskać [zaimportowane do analizy danych tabelarycznych](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), ilość danych jest mierzony jako rozmiar nieskompresowanych plików, które są wysyłane do usługi Application Insights.
+* Opłaty za objętość danych aplikacji są teraz zgłaszane na nowych liczników rozliczeń o nazwie **pozyskiwanie danych** od kwietnia 2018 r. To jest nowy licznik można współdzielić w ramach monitorowania technologii, takich jak aplikacje Insights i Log Analytics i jest obecnie dostępna w obszarze nazwy usługi **usługi Log Analytics**. 
+* [Live Stream metryki](app-insights-live-stream.md) danych nie jest liczony cennik celów.
 
 Dla bieżącego cen w regionie i waluty, zobacz [cen usługi Application Insights][pricing].
 
-> [!NOTE]
-> W kwietniu 2018 r. Firma Microsoft [wprowadzone](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania platformy Azure. Ten model przyjmuje prosty model "zgodnie z rzeczywistym użyciem" w pełnym portfolio monitorowanie usług. Dowiedz się więcej o [nowego modelu cen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na podstawie Twojej wzorców użycia i [sposób dołączenia do nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model).
-
-### <a name="basic-plan"></a>Podstawowy plan
-
-Podstawowy plan jest domyślny plan cenowy, gdy jest tworzony nowy zasób usługi Application Insights. Planem Basic jest optymalna dla wszystkich klientów z wyjątkiem tych, którzy mają subskrypcję pakietu Operations Management Suite.
-
-* W planie Basic opłata jest naliczana według ilości danych. Ilość danych jest liczba bajtów odebranych przez usługę Application Insights dane telemetryczne. Ilość danych jest mierzony jako rozmiar nieskompresowanych pakietów danych JSON, które jest odebrane przez usługę Application Insights z aplikacji. Aby uzyskać [zaimportowane do analizy danych tabelarycznych](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), ilość danych jest mierzony jako rozmiar nieskompresowanych plików, które są wysyłane do usługi Application Insights.
-* Opłaty za objętość danych aplikacji są teraz zgłaszane na nowych liczników rozliczeń o nazwie **pozyskiwanie danych** od kwietnia 2018 r. To nowego licznika można współdzielić w ramach monitorowania technologii, takich jak aplikacje Insights i Log Analytics i jest obecnie dostępna w obszarze nazwy usługi **App Services** (i szybko zmienić **usługi Log Analytics**). 
-* [Live Stream metryki](app-insights-live-stream.md) danych nie jest liczony cennik celów.
-* [Eksport ciągły](app-insights-export-telemetry.md) i [łącznika usługi Azure Log Analytics](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) są dostępne bez dodatkowych opłat w planie Basic, począwszy od kwietnia 2018 r.
-
-### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Enterprise plan i uprawnienia subskrypcji pakietu Operations Management Suite
-
-Klienci, którzy wykupią pakietu Operations Management Suite E1 i E2 można uzyskać usługi Application Insights Enterprise jako dodatkowych składników, bez ponoszenia dodatkowych kosztów jako [ogłoszonej wcześniej](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). W szczególności każda jednostka wersji pakietu Operations Management Suite E1 i E2 obejmuje uprawnienie do jednego węzła planu usługi Application Insights Enterprise. Każdy węzeł usługi Application Insights obejmuje maksymalnie 200 MB danych przetwarzanych dziennie (oddzielony od pozyskiwania danych usługi Log Analytics), z przechowywaniem danych 90 dni bez ponoszenia dodatkowych kosztów. Plan jest opisany bardziej szczegółowo w dalszej części tego artykułu. 
-
-Ponieważ ten plan dotyczy tylko klientów z subskrypcją pakietu Operations Management Suite, klienci, którzy nie masz subskrypcji pakietu Operations Management Suite nie ma możliwość wybrania tego planu.
-
-> [!NOTE]
-> Aby upewnić się, że uzyskać to uprawnienie, zasobów usługi Application Insights musi być w przedsiębiorstwie plan cenowy. To uprawnienie ma zastosowanie tylko jako węzły. Zasoby usługi Application Insights w planie Basic okaże się żadnych korzyści. To uprawnienie nie jest widoczny w szacowane koszty wyświetlane w **użycia i szacowanych kosztów** okienka. Po przeniesieniu subskrypcji do nowej platformy Azure, monitorowanie modelu cenowego z kwietnia 2018 r planem Basic jest także plan tylko dostępne. Przeniesienie subskrypcji do nowego modelu cenowego monitorowania platformy Azure nie jest zalecane, jeśli masz subskrypcję pakietu Operations Management Suite.
-
-Aby uzyskać więcej informacji o planie Enterprise, zobacz [przedsiębiorstwa, w szczegółach cennika](app-insights-pricing-enterprise-details.md).
-
 ### <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
 
-[Wieloetapowe testy sieci web](app-insights-monitor-web-app-availability.md#multi-step-web-tests) pociągnąć za sobą dodatkowych opłat. Wieloetapowe testy sieci web są testy sieci web, które wykonują sekwencję akcji.
+[Wieloetapowe testy sieci web](../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) pociągnąć za sobą dodatkowych opłat. Wieloetapowe testy sieci web są testy sieci web, które wykonują sekwencję akcji.
 
 Nie ma osobnych opłat dla *testów ping* z jednej strony. Dane telemetryczne z testów ping i wieloetapowe testy są naliczane opłaty taki sam jak inne dane telemetryczne z Twojej aplikacji.
 
-## <a name="review-pricing-plans-and-estimate-costs"></a>Przejrzyj plany cenowe i Szacowanie kosztów
+## <a name="review-usage-and-estimate-costs"></a>Sprawdź użycie i Szacowanie kosztów
 
-Usługa Application Insights ułatwia zrozumienie planów cenowych, które są dostępne, a jakie koszty mogą opierać się na bieżące wzorce użycia. Aby rozpocząć pracę w witrynie Azure portal dla zasobu usługi Application Insights, przejdź do **użycie i szacunkowe koszty** okienka:
+Usługa Application Insights ułatwia zrozumienie, jakie mogą opierać się na bieżące wzorce użycia są koszty. Aby rozpocząć pracę w witrynie Azure portal dla zasobu usługi Application Insights, przejdź do **użycie i szacunkowe koszty** strony:
 
 ![Wybierz cennik](./media/app-insights-pricing/pricing-001.png)
 
 A. Sprawdź ilość danych na miesiąc. Obejmuje to wszystkie dane, które otrzymał i przechowywane (po jednej [próbkowania](app-insights-sampling.md)) z serwera i aplikacje klienckie i testy dostępności.  
-B. Osobna opłata zostanie przeprowadzona dla [wieloetapowe testy sieci web](app-insights-monitor-web-app-availability.md#multi-step-web-tests). (Nie obejmuje to testy dostępności proste, które są zawarte w Twoich rękach woluminów danych.)  
+B. Osobna opłata zostanie przeprowadzona dla [wieloetapowe testy sieci web](../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests). (Nie obejmuje to testy dostępności proste, które są zawarte w Twoich rękach woluminów danych.)  
 C. Umożliwia wyświetlanie trendów wolumin danych dla ostatniego miesiąca.  
 D. Włącz pozyskiwanie danych [próbkowania](app-insights-sampling.md).   
 E. Ustaw limit dziennej ilości danych.  
+
+Głębsze zbadanie użycia usługi Application Insights, otwórz **metryki** strony, Dodaj metryki o nazwie "punkt ilość danych", a następnie wybierz *zastosować podział* opcję, aby podzielić dane według "Telemetrii Typ elementu". 
 
 Application Insights opłaty są dodawane na rachunku dotyczącym platformy Azure. Aby wyświetlić szczegóły platformy Azure są naliczane w **rozliczeń** sekcji w witrynie Azure Portal lub w [portalu rozliczeń systemu Azure](https://account.windowsazure.com/Subscriptions). 
 
@@ -110,8 +92,8 @@ Aby zobaczyć, jak dużo danych, Twoja aplikacja wysyła, można użyć jednej z
 Oto kilka rzeczy, które można wykonać, aby zmniejszyć ilość danych:
 
 * Użyj [próbkowania](app-insights-sampling.md). Ta technologia zmniejsza szybkość danych bez pochylanie metryk. Nie strać zdolności do przechodzenia między powiązane elementy w polu wyszukiwania. W aplikacjach server próbkowania działa automatycznie.
-* [Ogranicz liczbę wywołań Ajax, które mogą być zgłaszane](app-insights-javascript.md#detailed-configuration) każdego widoku strony lub switch Wyłącz raportowanie Ajax.
-* [Edytuj plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) wyłączyć moduły kolekcji, których nie potrzebujesz. Na przykład można zdecydować, czy liczników wydajności lub dane zależności są zbędne.
+* [Ogranicz liczbę wywołań Ajax, które mogą być zgłaszane](../azure-monitor/app/javascript.md#detailed-configuration) każdego widoku strony lub switch Wyłącz raportowanie Ajax.
+* [Edytuj plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) wyłączyć moduły kolekcji, których nie potrzebujesz. Na przykład można zdecydować, czy liczników wydajności lub dane zależności są zbędne.
 * Podziel telemetrii między kluczy Instrumentacji oddzielne. 
 * Wstępnej agregacji metryk. Wywołania TrackMetric umieszczenie w aplikacji, można zmniejszyć ruch za pomocą przeciążenia, które akceptuje obliczenia średniej i odchylenie standardowe w zadaniu wsadowym pomiarów. Alternatywnie można użyć [pakiet wstępnie agregacji](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
@@ -163,6 +145,55 @@ Można napisać skrypt, aby ustawić plan cenowy przy użyciu usługi Azure Reso
 
 Aby wyłączyć dzienny wolumin limit wiadomości e-mail, w obszarze **Konfiguruj** części zasobu usługi Application Insights w **użycie i szacunkowe koszty** okienku wybierz **dzienny limit** . Istnieją ustawienia, aby wysłać wiadomość e-mail, gdy limit zostanie osiągnięty, a także gdy zmienianych poziom ostrzeżeń został osiągnięty. Jeśli chcesz wyłączyć wszystkie codziennie woluminu limit związane z wiadomości e-mail obu polach, usuń zaznaczenie pola wyboru.
 
+## <a name="legacy-enterprise-pricing-plan"></a>Starszej wersji Enterprise, plan taryfowy
+
+Dla wcześnie wdrażających użytkowników usługi Azure Application Insights są nadal możliwe dwa plany cenowe: Podstawowe, jak i Enterprise. Podstawowy plan taryfowy jest taka sama, jak opisano powyżej i jest domyślny plan. Obejmuje wszystkie funkcje planu Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach planu podstawowego. 
+
+Enterprise plan ma opłaty za węzeł i każdy węzeł otrzyma dzienny przydział danych. W przedsiębiorstwie cennikiem, opłaty są naliczane za dane pozyskane powyżej uwzględnione dopuszczalnej wartości. Jeśli używasz pakietu Operations Management Suite, należy wybrać Enterprise plan. 
+
+Dla bieżącego cenach w regionie i waluty, zobacz [cen usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/).
+
+> [!NOTE]
+> W kwietniu 2018 r. Firma Microsoft [wprowadzone](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania platformy Azure. Ten model przyjmuje prosty model "zgodnie z rzeczywistym użyciem" w pełnym portfolio monitorowanie usług. Dowiedz się więcej o [nowego modelu cen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na podstawie Twojej wzorców użycia i [sposób dołączenia do nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+
+### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Enterprise plan i uprawnienia subskrypcji pakietu Operations Management Suite
+
+Klienci, którzy wykupią pakietu Operations Management Suite E1 i E2 można uzyskać usługi Application Insights Enterprise jako dodatkowych składników, bez ponoszenia dodatkowych kosztów jako [ogłoszonej wcześniej](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). W szczególności każda jednostka wersji pakietu Operations Management Suite E1 i E2 obejmuje uprawnienie do jednego węzła planu usługi Application Insights Enterprise. Każdy węzeł usługi Application Insights obejmuje maksymalnie 200 MB danych przetwarzanych dziennie (oddzielony od pozyskiwania danych usługi Log Analytics), z przechowywaniem danych 90 dni bez ponoszenia dodatkowych kosztów. Plan jest opisany bardziej szczegółowo w dalszej części tego artykułu. 
+
+Ponieważ ten plan dotyczy tylko klientów z subskrypcją pakietu Operations Management Suite, klienci, którzy nie masz subskrypcji pakietu Operations Management Suite nie ma możliwość wybrania tego planu.
+
+> [!NOTE]
+> Aby upewnić się, że uzyskać to uprawnienie, zasobów usługi Application Insights musi być w przedsiębiorstwie plan cenowy. To uprawnienie ma zastosowanie tylko jako węzły. Zasoby usługi Application Insights w planie Basic okaże się żadnych korzyści. To uprawnienie nie jest widoczny w szacowane koszty wyświetlane w **użycia i szacowanych kosztów** okienka. Po przeniesieniu subskrypcji do nowej platformy Azure, monitorowanie modelu cenowego z kwietnia 2018 r planem Basic jest także plan tylko dostępne. Przeniesienie subskrypcji do nowego modelu cenowego monitorowania platformy Azure nie jest zalecane, jeśli masz subskrypcję pakietu Operations Management Suite.
+
+### <a name="how-the-enterprise-plan-works"></a>Jak działa Enterprise plan
+
+* Płacisz za każdy węzeł, który wysyła dane telemetryczne dotyczące wszystkich aplikacji w planie Enterprise.
+ * A *węzła* jest komputer fizyczny lub wirtualny serwer lub wystąpienie roli platforma jako usługa, która jest hostem aplikacji.
+ * Komputerach deweloperskich, przeglądarek klientów i urządzeń przenośnych nie są traktowane jako węzły.
+ * Jeśli aplikacja ma kilka składników, które wysyłają dane telemetryczne, np. usługi sieci web i procesu roboczego zaplecza, składniki są zliczane osobno.
+ * [Live Stream metryki](app-insights-live-stream.md) danych nie jest liczony cennik celów. W ramach subskrypcji usługi opłaty są naliczane za węzeł, a nie aplikacji. Jeśli masz pięć węzłów, które wysyłają dane telemetryczne dla 12 aplikacji, Opłata dotyczy pięć węzłów.
+* Mimo, że opłaty są podane na miesiąc, opłaty są naliczane tylko za godziny, w których dany węzeł przesyła dane telemetryczne z aplikacji. Opłata za godziny jest cudzysłowie opłata miesięczna podzielona przez 744 (liczba godzin w miesiącu mającym 31 dni).
+* Dane woluminu alokacji wynoszącej 200 MB dziennie znajduje się w każdym węźle, który został wykryty (z dokładnością co godzinę). Niewykorzystane dane alokacji nie jest przenoszone od 1 dnia następnego.
+ * Jeśli wybierzesz Enterprise, plan taryfowy, każda subskrypcja otrzymuje dzienny przydział danych na podstawie liczby węzłów, które wysyłają dane telemetryczne do zasobów usługi Application Insights w tej subskrypcji. Dlatego jeśli masz pięć węzłów wysyłających dane, cały dzień, będziesz mieć dzienny przydział 1 GB, stosowany do wszystkich zasobów usługi Application Insights w tej subskrypcji. Nie ma znaczenia, jeśli niektóre węzły wysyła więcej danych niż inne węzły, ponieważ uwzględnione dane są dzielone między wszystkie węzły. Jeśli w danym dniu zasoby usługi Application Insights otrzymywać więcej danych niż przewiduje dzienny przydział danych dla tej subskrypcji, na GB nadwyżki danych opłaty. 
+ * Dzienny przydział danych jest obliczany jako liczba godzin w ciągu dnia (przy użyciu czasu UTC) czy każdy węzeł wysyła dane telemetryczne, podzielona przez 24 pomnożona przez 200 MB. Dlatego w przypadku czterech węzłów, które wysyłają dane telemetryczne przez 15 godzin z 24 godzin dnia uwzględnione dane na ten dzień będzie ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. W cenie za nadwyżkowe użycie danych 2.30 USD za GB opłata byłaby 1,15 USD węzły wysłać 1 GB danych tego samego dnia.
+ * Dzienny limit plan Enterprise nie zostały udostępnione aplikacji, dla których wybrano planu podstawowego. Nieużywane dopuszczalnej wartości nie jest przenoszone z typowymi. 
+
+### <a name="examples-of-how-to-determine-distinct-node-count"></a>Przykłady sposobu ustalania liczby unikatowych węzłów
+
+| Scenariusz                               | Łączna liczba węzeł dziennie |
+|:---------------------------------------|:----------------:|
+| 1 aplikacja, korzystająca z 3 wystąpień usługi Azure App Service i 1 serwer wirtualny | 4 |
+| 3 działających na maszynach wirtualnych 2; zasoby usługi Application Insights dla tych aplikacji są w tej samej subskrypcji i Enterprise plan | 2 | 
+| 4 aplikacji, którego zasoby aplikacji szczegółowe informacje znajdują się w tej samej subskrypcji; Każda aplikacja uruchomiona 2 wystąpienia 16 poza godzinami pracy, a 4 wystąpień w godzinach szczytu 8 | 13.33 | 
+| Cloud services za pomocą roli procesu roboczego 1 oraz roli sieci Web 1, każdy uruchomiony 2 wystąpienia | 4 | 
+| 5 węzłami klastra usługi Azure Service Fabric z systemem mikrousług 50; Każda mikrousługa uruchomionych wystąpień 3 | 5|
+
+* Zliczanie dokładne węzła zależy od tego, w których zestaw SDK usługi Application Insights używa aplikacja. 
+  * W wersji zestawu SDK 2,2 lub nowszą wersją, zarówno w usłudze Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) i [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zgłosić każdego hosta aplikacji jako węzeł. Przykłady to nazwa komputera dla serwera fizycznego i hostów maszyn wirtualnych lub nazwę wystąpienia dla usług w chmurze.  Jedynym wyjątkiem jest aplikacja, która używa tylko [platformy .NET Core](https://dotnet.github.io/) i podstawowego zestawu SDK usługi Application Insights. W takim przypadku tylko jeden węzeł jest zgłaszany na wszystkich hostach, ponieważ nazwa hosta nie jest dostępna. 
+  * We wcześniejszych wersjach zestawu SDK [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zachowuje się jak nowsze wersje zestawu SDK, ale [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) zgłasza tylko jeden węzeł, niezależnie od liczby hostów aplikacji. 
+  * Jeśli aplikacja używa zestawu SDK, aby ustawić **roleInstance** niestandardowej wartości domyślnie tej samej wartości służy do określania liczby węzłów. 
+  * Jeśli używasz nowej wersji zestawu SDK z aplikacji, która jest uruchamiana z urządzeń przenośnych i komputerów klienckich, liczba węzłów może zwrócić liczbę, która jest bardzo duża (z powodu dużej liczby urządzeń przenośnych i komputerów klienckich). 
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Próbkowanie](app-insights-sampling.md)
@@ -170,4 +201,4 @@ Aby wyłączyć dzienny wolumin limit wiadomości e-mail, w obszarze **Konfiguru
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
-[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: http://azure.microsoft.com/pricing/details/application-insights/

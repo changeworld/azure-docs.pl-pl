@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 3e71c4e31c6d57cb54a654e0e1c28dcb0fa82cda
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8ba188db87ffc0d428c7349c902cf60bec65d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875335"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788484"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure
 
@@ -55,7 +55,7 @@ Tak, zarówno szyfrowanie przesyłanych w i [szyfrowania na platformie Azure](ht
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Co można zrobić za pomocą funkcji Hyper-V do platformy Azure replikacji?
 
-- **Odzyskiwanie po awarii**: możesz skonfigurować odzyskiwanie po awarii w pełnej. W tym scenariuszu replikowania lokalnych maszyn wirtualnych z funkcją Hyper-V do usługi Azure storage:
+- **Odzyskiwanie po awarii**: Możesz skonfigurować odzyskiwanie po awarii w pełnej. W tym scenariuszu replikowania lokalnych maszyn wirtualnych z funkcją Hyper-V do usługi Azure storage:
     - Maszyny wirtualne można replikować na platformę Azure. Jeśli infrastruktury lokalnej jest niedostępny, trybu failover na platformie Azure.
     - Po przełączeniu w tryb failover maszyn wirtualnych platformy Azure są tworzone przy użyciu replikowanych danych. Dostępne aplikacje i obciążenia na maszynach wirtualnych platformy Azure.
     - Gdy ponownie będzie dostępna w lokalnym centrum danych, można powrotu po awarii z platformy Azure do lokacji lokalnej.
@@ -197,8 +197,8 @@ Gdy infrastruktury lokalnej będzie uruchomione ponownie, możesz można wykona�
 
 1. Należy rozpocząć planowanego trybu failover z platformy Azure do lokacji lokalnej przy użyciu kilku różnych opcji:
 
-    - Skrócić czas przestoju: w przypadku użycia tej opcji usługa Site Recovery synchronizuje dane przed włączeniem trybu failover. Sprawdza, czy dane zmienione bloki i pobiera je do lokacji lokalnej, podczas przechowuje maszyny Wirtualnej platformy Azure, działa, minimalizując przestoje. Ręczne określenie, czy tryb failover, należy wykonać, zamknięcie maszyny Wirtualnej platformy Azure, wszelkie zmiany różnicowe końcowe są kopiowane i uruchomieniem trybu failover.
-    - Pełne pobieranie: przy użyciu tej opcji dane są synchronizowane podczas pracy awaryjnej. Ta opcja spowoduje pobranie całego dysku. Jest szybsze, ponieważ nie sumy kontrolne są obliczane, ale ma więcej przestojów. Użyj tej opcji, jeśli działała repliki maszyn wirtualnych platformy Azure przez pewien czas lub lokalna maszyna wirtualna została usunięta.
+    - Skrócić czas przestoju: Jeśli używasz tej opcji usługa Site Recovery synchronizuje dane przed włączeniem trybu failover. Sprawdza, czy dane zmienione bloki i pobiera je do lokacji lokalnej, podczas przechowuje maszyny Wirtualnej platformy Azure, działa, minimalizując przestoje. Ręczne określenie, czy tryb failover, należy wykonać, zamknięcie maszyny Wirtualnej platformy Azure, wszelkie zmiany różnicowe końcowe są kopiowane i uruchomieniem trybu failover.
+    - Pełne pobieranie: Po wybraniu tej opcji dane są synchronizowane podczas pracy awaryjnej. Ta opcja spowoduje pobranie całego dysku. Jest szybsze, ponieważ nie sumy kontrolne są obliczane, ale ma więcej przestojów. Użyj tej opcji, jeśli działała repliki maszyn wirtualnych platformy Azure przez pewien czas lub lokalna maszyna wirtualna została usunięta.
 
 2. Możesz wybrać, czy niepowodzenie powrót do tej samej maszyny Wirtualnej lub do alternatywnej maszyny Wirtualnej. Można określić, Usługa Site Recovery należy utworzyć maszynę Wirtualną, jeśli jeszcze nie istnieje.
 3. Po zakończeniu początkowej synchronizacji, należy wybrać do przełączenia w tryb failover. Po zakończeniu instalacji możesz zalogować się na lokalną maszynę Wirtualną w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami. W witrynie Azure portal widać, że maszyny wirtualne platformy Azure zostały zatrzymane.

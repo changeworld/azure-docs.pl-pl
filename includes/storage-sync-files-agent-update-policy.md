@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
 ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53286217"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53636007"
 ---
 Agent usługi Azure File Sync jest aktualizowana w regularnych odstępach czasu, aby dodać nowe funkcje i rozwiązania problemów. Firma Microsoft zaleca się skonfigurowanie Microsoft Update, aby pobrać aktualizacje dla agenta usługi Azure File Sync, ponieważ są one dostępne.
 

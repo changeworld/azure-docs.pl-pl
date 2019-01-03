@@ -10,20 +10,20 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 40b9685c56dd494e82c05bff9ed75f425a3006ff
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 39468a4a143d184fcc964ae88f82ad7254e4f3b0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886631"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741746"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Przykłady użycia szczegółowych informacji w usłudze Bing
 
-Ta sekcja zawiera przykłady jak Bing może wyświetlić szczegółowe informacje w witrynie Bing.com.
+Ten artykuł zawiera przykłady jak Bing może używać i wyświetlić szczegółowe informacje o obrazach w witrynie Bing.com.
 
 ## <a name="pagesincluding-insight-example"></a>Przykład insight PagesIncluding
 
-Poniżej przedstawiono, jak Bing może wyświetlić strony sieci Web, który zawiera obraz. Przykład zawiera łącze do pierwszej strony sieci Web i umożliwia użytkownikowi rozwijać i zwijać listę innych stron sieci Web, który zawiera obraz.
+Następujące Wyświetla łącze do pierwszej strony sieci Web i umożliwia użytkownikowi rozwijać i zwijać listę innych stron sieci Web, który zawiera obraz.
 
 ![Rozwinięty stron łącznie](./media/pages-including.PNG)
 
@@ -83,9 +83,7 @@ Inne niż domyślne znaczniki zawierają obwiedni identyfikujący obszar zainter
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Do zapoznania się z kodu JSON za te przykłady, zobacz [insights domyślne](default-insights-tag.md) i [odpowiedź JSON](overview.md#the-response).
-
-Aby szybko rozpocząć pracę z pierwszego żądania, zobacz artykuł Szybki Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Języka Python](quickstarts/python.md)
+Aby szybko rozpocząć pracę z pierwszego żądania, zobacz artykuł Szybki Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [języka Python](quickstarts/python.md)
 
 
 

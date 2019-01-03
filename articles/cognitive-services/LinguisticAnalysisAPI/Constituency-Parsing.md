@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238628"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976600"
 ---
 # <a name="constituency-parsing"></a>Analiza grupowa
 
 > [!IMPORTANT]
-> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
+> Wersja zapoznawcza analizy językowej została wycofana 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 Celem grupowa (znany także jako "Struktura fazy analizowania") jest określenie wyrażenia w tekście.
 Może to być przydatne, gdy trwa wyodrębnianie informacji z pliku tekstowego.
@@ -61,7 +61,7 @@ Fizyczne reprezentacja tych wyrażeń jest drzewa, takie jak następujące:
 ![Drzewo](./Images/tree.png)
 
 W tego drzewa gałęzie oznaczone jako "Nazwane" są rzeczownik fraz.
-Istnieje kilka takich fraz: *I*, *nowy samochód hybrydowego*, *Bluetooth*, i *nowych modeli samochodów hybrydowych przy użyciu połączenia Bluetooth*.
+Istnieje kilka takich fraz: *Czy mogę*, *nowy samochód hybrydowego*, *Bluetooth*, i *nowych modeli samochodów hybrydowych przy użyciu połączenia Bluetooth*.
 
 ## <a name="phrase-types"></a>Typy frazy
 
@@ -74,7 +74,7 @@ Istnieje kilka takich fraz: *I*, *nowy samochód hybrydowego*, *Bluetooth*, i *n
 |INTJ   | interjection | "Hura" |
 |DZIEŁ    | Znacznik listy, w tym znaki interpunkcyjne | "#4)" |
 |KONTROLI DOSTĘPU DO SIECI    | Nie składowych, używany do wskazania zakresu frazy bez składnika |  "i uzyskać dobrą ofertę" w "możesz wszystko i towary postępowania" |
-|POTOKI | Rzeczownik frazy | "pancake tasty ziemniaczanej" |
+|NP | Rzeczownik frazy | "pancake tasty ziemniaczanej" |
 |NX | Używany w ramach niektórych złożonych serwera NPs do oznaczania nagłówek| |
 |STRONY | Fraza przyimkowych| "w puli" |
 |PRN    | Nawiasach| "(tzw.)" |
@@ -97,4 +97,4 @@ Istnieje kilka takich fraz: *I*, *nowy samochód hybrydowego*, *Bluetooth*, i *n
 
 ## <a name="specification"></a>Specyfikacja
 
-Drzewa w tym miejscu użyć wyrażeń S od [Treebank partnerów](https://catalog.ldc.upenn.edu/ldc99t42).
+Drzewa w tym miejscu użyć wyrażeń S od [Treebank partnerów](https://catalog.ldc.upenn.edu/LDC99T42).

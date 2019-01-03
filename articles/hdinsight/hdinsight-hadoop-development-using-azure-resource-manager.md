@@ -9,25 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7722076c3b0031da8580dd88efdc0b575fd5a3be
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 33bb3186493b2ea2a0d676f250282574b27f7988
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875573"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718527"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight
 
 HDInsight wycofano narzędzi opartych na usłudze Azure Service Manager ASM for HDInsight. Jeśli masz doświadczenie z programu Azure PowerShell, klasyczny interfejs wiersza polecenia platformy Azure lub zestawu .NET SDK HDInsight do pracy z klastrami HDInsight, zachęcamy do używania w wersjach usługi Azure Resource Manager programu PowerShell, interfejsu wiersza polecenia i zestawu SDK platformy .NET w przyszłości. Ten artykuł zawiera wskaźniki dotyczące sposobu przeprowadzenia migracji do nowego podejścia opartego na usłudze Resource Manager. Wszędzie tam, gdzie ma to zastosowanie, w tym dokumencie wyróżniono różnice między metodami ASM i usługą Resource Manager dla HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pomoc techniczna dotycząca usługi ASM na podstawie programu PowerShell, interfejsu wiersza polecenia, i zestawu .NET SDK zostanie wycofana **1 stycznia 2017**.
-> 
-> 
 
 ## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Migrowanie klasycznej wiersza polecenia platformy Azure do usługi Azure Resource Manager
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wiersza polecenia platformy Azure nie zapewnia pomocy technicznej do pracy z klastrami HDInsight. Nadal za pomocą klasyczny interfejs wiersza polecenia usługi Azure HDInsight, jednak klasyczny interfejs wiersza polecenia platformy Azure jest przestarzały.
 
 Poniżej przedstawiono podstawowe polecenia do pracy z HDInsight za pośrednictwem klasycznego wiersza polecenia platformy Azure:
@@ -51,11 +49,11 @@ Dostępne są następujące nowe polecenia dostępne w usłudze Azure Resource M
 ### <a name="deprecated-commands"></a>Przestarzałych poleceń
 Jeśli używasz `azure hdinsight job` polecenia, aby przesyłać zadania do klastra usługi HDInsight, te polecenia nie są dostępne za pomocą poleceń usługi Resource Manager. Jeśli zachodzi potrzeba programowo przesyłania zadań do HDInsight ze skryptów, należy w zamian użyć interfejsów API REST, dostarczonych przez HDInsight. Więcej informacji na temat przesyłanie zadań za pomocą interfejsów API REST na ten temat można znaleźć w następujących dokumentach.
 
-* [Uruchamianie zadań Apache Hadoop MapReduce z usługą Hadoop w HDInsight przy użyciu programu cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [Uruchamianie zadań MapReduce z usługą Hadoop w HDInsight przy użyciu programu cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [Uruchamianie zapytania usługi Apache Hive przy użyciu technologii Apache Hadoop w HDInsight przy użyciu programu cURL](hadoop/apache-hadoop-use-hive-curl.md)
 * [Wykonywanie zadań Apache Pig z usługą Apache Hadoop w HDInsight przy użyciu programu cURL](hadoop/apache-hadoop-use-pig-curl.md)
 
-Aby uzyskać informacji na temat innych sposobów uruchomić interaktywnie, Apache Hadoop MapReduce, Apache Hive i Apache Pig, zobacz [Użyj Apache Hadoop MapReduce z platformą Hadoop w HDInsight](hadoop/hdinsight-use-mapreduce.md), [używanie programu Apache Hive przy użyciu technologii Apache Hadoop w HDInsight](hadoop/hdinsight-use-hive.md), i [korzystanie z technologii Apache Pig z platformą Apache Hadoop w HDInsight](hadoop/hdinsight-use-pig.md).
+Aby uzyskać informacji na temat innych sposobów uruchomić interaktywnie, Apache Hadoop MapReduce, Apache Hive i Apache Pig, zobacz [używanie MapReduce z Hadoop w HDInsight](hadoop/hdinsight-use-mapreduce.md), [używanie programu Apache Hive przy użyciu technologii Apache Hadoop w HDInsight](hadoop/hdinsight-use-hive.md), i [korzystanie z technologii Apache Pig z platformą Apache Hadoop w HDInsight](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Przykłady
 **Tworzenie klastra**
@@ -73,10 +71,8 @@ Aby uzyskać informacji na temat innych sposobów uruchomić interaktywnie, Apac
 * Stare polecenie (ASM) — `azure hdinsight cluster list`
 * Nowe polecenie- `azure hdinsight cluster list`
 
-> [!NOTE]
+> [!NOTE]  
 > Dla polecenia listy określania grupy zasobów za pomocą `-g` zwróci tylko klastry w określonej grupie zasobów.
-> 
-> 
 
 **Pokaż informacje o klastrze**
 
@@ -135,17 +131,17 @@ Dostępne są następujące nowe polecenia cmdlet, które są dostępne tylko w 
 
 **Polecenia cmdlet związane z akcji skryptu:**
 
-* **Get-AzureRmHDInsightPersistedScriptAction**: pobiera akcje utrwalonego skryptu dla klastra i wyświetli je w kolejności chronologicznej lub pobiera szczegóły określonego utrwalonego skryptu akcji. 
-* **Get-AzureRmHDInsightScriptActionHistory**: pobiera Historia akcji skryptu dla klastra i wyświetla go w odwrotnej kolejności chronologicznej lub pobiera szczegóły akcji wykonanych wcześniej skryptu. 
-* **Usuń AzureRmHDInsightPersistedScriptAction**: usuwa Akcja utrwalonego skryptu z klastra usługi HDInsight.
-* **Zestaw AzureRmHDInsightPersistedScriptAction**: ustawia akcji skryptu poprzednio wykonanych akcji utrwalonego skryptu.
-* **Prześlij AzureRmHDInsightScriptAction**: przesyła nową akcję skryptu w klastrze Azure HDInsight. 
+* **Get-AzureRmHDInsightPersistedScriptAction**: Pobiera akcje utrwalonego skryptu dla klastra i wyświetli je w kolejności chronologicznej lub pobiera szczegóły określonego utrwalonego skryptu akcji. 
+* **Get-AzureRmHDInsightScriptActionHistory**: Pobiera Historia akcji skryptu dla klastra i wyświetla go w odwrotnej kolejności chronologicznej lub pobiera szczegóły akcji wykonanych wcześniej skryptu. 
+* **Usuń AzureRmHDInsightPersistedScriptAction**: Usuwa Akcja utrwalonego skryptu z klastra usługi HDInsight.
+* **Zestaw AzureRmHDInsightPersistedScriptAction**: Ustawia akcji skryptu poprzednio wykonanych akcji utrwalonego skryptu.
+* **Prześlij AzureRmHDInsightScriptAction**: Przesyła nową akcję skryptu w klastrze Azure HDInsight. 
 
 Użycie dodatkowych informacji, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Klastra polecenia cmdlet związane z tożsamościami:**
 
-* **Dodaj AzureRmHDInsightClusterIdentity**: dodaje tożsamość klastra do obiektu konfiguracji klastra, dzięki czemu klaster HDInsight mogą uzyskiwać dostęp do usługi Azure Data Lake Store. Zobacz [Tworzenie klastra HDInsight z usługą Data Lake Store przy użyciu programu Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Dodaj AzureRmHDInsightClusterIdentity**: Dodaje tożsamość klastra do obiektu konfiguracji klastra, co klaster HDInsight mogą uzyskiwać dostęp do usługi Azure Data Lake Storage. Zobacz [Tworzenie klastra usługi HDInsight przy użyciu usługi Data Lake Storage przy użyciu programu Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Przykłady
 **Tworzenie klastra**

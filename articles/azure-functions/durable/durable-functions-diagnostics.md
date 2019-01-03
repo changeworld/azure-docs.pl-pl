@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341410"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713235"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostyka funkcje trwałe (usługa Azure Functions)
 
@@ -25,7 +25,7 @@ Dostępnych jest kilka opcji dotyczących diagnozowania problemów z [funkcje tr
 
 [Usługa Application Insights](../../application-insights/app-insights-overview.md) jest zalecanym sposobem czy Diagnostyka i monitorowanie w usłudze Azure Functions. Funkcje trwałe to samo dotyczy. Aby uzyskać omówienie jak korzystać z usługi Application Insights w aplikacji funkcji, zobacz [monitora usługi Azure Functions](../functions-monitoring.md).
 
-Trwałe rozszerzenie funkcji platformy Azure również emituje *zdarzenia śledzenia* umożliwiającą Śledź wykonywanie end-to-end aranżacji. Te można znaleźć i wyświetlić przy użyciu [analizy usługi Application Insights](../../application-insights/app-insights-analytics.md) narzędzie w witrynie Azure portal.
+Trwałe rozszerzenie funkcji platformy Azure również emituje *zdarzenia śledzenia* umożliwiającą Śledź wykonywanie end-to-end aranżacji. Te można znaleźć i wyświetlić przy użyciu [analizy usługi Application Insights](../../azure-monitor/app/analytics.md) narzędzie w witrynie Azure portal.
 
 ### <a name="tracking-data"></a>Dane śledzenia
 
@@ -43,7 +43,7 @@ Każde zdarzenie cyklu życia wystąpienia aranżacji wygenerowanie zdarzenia ś
   * **Oczekiwane**: Koordynatora zaplanowano jakąś pracę i czeka na jego zakończenie.
   * **Nasłuchiwanie**: Koordynatora nasłuchuje powiadomień o zdarzeniach zewnętrznych.
   * **Ukończono**: Funkcja została pomyślnie ukończona.
-  * **Nie powiodło się**: Funkcja nie powiodło się z powodu błędu.
+  * **Niepowodzenie**: Funkcja nie powiodło się z powodu błędu.
 * **Przyczyna**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Na przykład jeśli wystąpienie jest oczekiwanie na powiadomienie o zdarzeniu zewnętrznych, to pole wskazuje nazwę zdarzenia, które oczekuje na. Jeśli funkcja zakończyło się niepowodzeniem, to będzie zawierać szczegóły błędu.
 * **isReplay**: Wartość logiczna wskazująca, czy zdarzenie śledzenia jest powtórzonym wykonywania.
 * **extensionVersion**: Wersja rozszerzenia zadań trwałe. Jest to szczególnie ważne dane, gdy raportowanie możliwych usterek w rozszerzeniu. Długo działających wystąpień mogą zgłaszać wiele wersji, jeśli nastąpi aktualizacja jest uruchomiona.

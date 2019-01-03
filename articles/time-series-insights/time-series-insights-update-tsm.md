@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Time Series Insights — Time Series modelu | Dokumentacja firmy Microsoft
+title: Model szeregów czasowych w usłudze Azure Time Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: Omówienie usługi Azure Time Series Insights czasu modelu szeregów.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278189"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716586"
 ---
 # <a name="time-series-model"></a>Model szeregów czasowych
 
@@ -136,17 +136,17 @@ Rozważmy następujący przykład, gdzie ma hierarchię H1 *tworzenia*, *floor*,
  H1 = [“building”, “floor”, “room”]
 ```
 
-W zależności od *wystąpienia pól*, hierarchii atrybutów i wartości są wyświetlane zgodnie z poniższą tabelą: 
+W zależności od *wystąpienia pól*, hierarchii atrybutów i wartości są wyświetlane zgodnie z poniższą tabelą:
 
-| Identyfikator serii czasu | Pola wystąpienia |
+| Identyfikator szeregu czasowego | Pola wystąpienia |
 | --- | --- |
 | ID1 | "Tworzenie" = "1000", "floor" = "10", "pomieszczenie" = "55"  |
 | IDENTYFIKATOR 2 | "Tworzenie" = "1000", "pomieszczenie" = "55" |
 | ID3 | "floor" = "10" |
 | ID4 | "Tworzenie" = "1000", "floor" = "10"  |
-| ID5 | |
+| ID5 | "Tworzenie", "floor" ani "pomieszczenie" jest ustawiona |
 
-W powyższym przykładzie ID1 jest wyświetlany jako część hierarchii H1 w interfejsie użytkownika/środowiska użytkownika, a pozostałe są klasyfikowane jako *wystąpień bez elementów nadrzędnych* , ponieważ nie jest zgodna z hierarchii określone dane.
+W powyższym przykładzie ID1 i ID4 pokazuje jako część hierarchii H1 w Eksploratorze usługi Azure Time Series Insights, a pozostałe są klasyfikowane jako *wystąpień bez elementów nadrzędnych* , ponieważ nie jest zgodna z hierarchii określone dane.
 
 ## <a name="time-series-model-instances"></a>Wystąpienia serii modelu godziny
 

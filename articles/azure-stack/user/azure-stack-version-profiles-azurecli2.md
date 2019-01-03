@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2018
+ms.date: 12/06/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dacc28c1cfe2ee896597aeaf92a22c7f6e13c306
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969961"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726616"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -128,7 +128,6 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-
    b. Aby zarejestrować *użytkownika* środowiska, użyj:
 
       ```azurecli
@@ -151,9 +150,22 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
+    d. Aby zarejestrować użytkownika w środowisku usług AD FS, należy użyć:
 
+      ```azurecli
+      az cloud register \
+        -n AzureStack  \
+        --endpoint-resource-manager "https://management.local.azurestack.external" \
+        --suffix-storage-endpoint "local.azurestack.external" \
+        --suffix-keyvault-dns ".vault.local.azurestack.external"\
+        --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" \
+        --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/"\
+        --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/"\
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --profile "2018-03-01-hybrid"
+      ```
 1. Ustawianie aktywnego środowiska za pomocą następujących poleceń.
-
+   
    a. Aby uzyskać *chmury administracyjne* środowiska, użyj:
 
       ```azurecli
@@ -180,8 +192,8 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
-    * Środowiska usługi AAD
-      * Zaloguj się jako *użytkownika*: można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Musisz wykonać jego, jeśli konto ma włączonego uwierzytelniania wieloskładnikowego.
+    * Środowiska usługi Azure AD
+      * Zaloguj się jako *użytkownika*: Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Musisz wykonać jego, jeśli konto ma włączonego uwierzytelniania wieloskładnikowego.
 
       ```azurecli
       az login \
@@ -192,9 +204,9 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       > [!NOTE]
       > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login command` bez podawania `-u` parametru. Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
    
-      * Zaloguj się jako *nazwy głównej usługi*: przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
+      * Zaloguj się jako *nazwy głównej usługi*: Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
 
-      ```azurecli
+      ```azurecli  
       az login \
         --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
         --service-principal \
@@ -203,20 +215,33 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       ```
     * Usługi AD FS środowisk
 
-        * Zaloguj się jako *nazwy głównej usługi*: 
-          1.    Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
-                * Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi jako plik pfx przy użyciu klucza prywatnego (znajdujący się w cert: \CurrentUser\My; nazwa certyfikatu ma taką samą nazwę jak podmiot zabezpieczeń).
+        * Zaloguj się jako użytkownik w przeglądarce sieci web:  
+              ```azurecli  
+              az login
+              ```
+        * Zaloguj się jako użytkownik w przeglądarce sieci web przy użyciu kodu urządzenia:  
+              ```azurecli  
+              az login --use-device-code
+              ```
+        > [!Note]  
+        >Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
 
-                *   Konwertuj plik pfx na pem (Użyj biblioteki OpenSSL narzędzie).
+        * Zaloguj się jako nazwy głównej usługi:
+        
+          1. Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
 
-          1.    Zaloguj się do interfejsu wiersza polecenia. :
-                ```azurecli
-                az login --service-principal \
-                 -u <Client ID from the Service Principal details> \
-                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
-                 --tenant <Tenant ID> \
-                 --debug 
-                ```
+            * Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi jako plik pfx przy użyciu klucza prywatnego (znajdujący się w `cert:\CurrentUser\My;` nazwa certyfikatu ma taką samą nazwę jak podmiot zabezpieczeń).
+        
+            * Konwertuj plik pfx na pem (Użyj biblioteki OpenSSL narzędzie).
+
+          2.  Zaloguj się do interfejsu wiersza polecenia:
+            ```azurecli  
+            az login --service-principal \
+              -u <Client ID from the Service Principal details> \
+              -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+              --tenant <Tenant ID> \
+              --debug 
+            ```
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 12/202018
 ms.author: jingwang
-ms.openlocfilehash: 1f3e9be3a0048c4bf2e87ac23cbdc76b1aaa649f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 61ac0eeeb177ffccbe10d4ab049d3541ac6aeb60
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166410"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810427"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu usługi Azure Data Factory
 
@@ -28,6 +28,12 @@ ms.locfileid: "49166410"
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z punktu końcowego HTTP. Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
 
+Różnica między ten łącznik protokołu HTTP [REST łącznika](connector-rest.md) i [łącznik Tabela sieci Web](connector-web-table.md) są:
+
+- **Łącznik REST** specjalnie do obsługi kopiowania danych z interfejsów API RESTful; 
+- **Łącznik protokołu HTTP** ogólnego do pobierania danych z dowolnego punktu końcowego HTTP, np. Aby pobrać plik. Zanim łącznik REST staje się dostępna, może się zdarzyć na potrzeby kopiowania danych z interfejsu API RESTful, co jest obsługiwane, ale mniej funkcjonalności, porównanie z łącznika REST łącznik protokołu HTTP.
+- **Łącznik Tabela sieci Web** wyodrębnia tabelę zawartości z sieci Web w formacie HTML.
+
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Można skopiować danych ze źródła HTTP, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę danych przechowywane na tym, że działanie kopiowania obsługuje jako źródła i ujścia, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -35,10 +41,8 @@ Można skopiować danych ze źródła HTTP, do dowolnego obsługiwanego magazynu
 Można użyć tego łącznika protokołu HTTP, aby:
 
 - Pobierania danych z punktu końcowego HTTP/Https przy użyciu protokołu HTTP **UZYSKAĆ** lub **WPIS** metody.
-- Pobieranie danych przy użyciu jednej z następujących uwierzytelnień: **anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, lub  **ClientCertificate**.
+- Pobieranie danych przy użyciu jednej z następujących uwierzytelnienia: **Anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, lub **ClientCertificate**.
 - Skopiuj odpowiedź HTTP jako — jest lub go przeanalizować przy użyciu [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
-
-Różnica między tego łącznika i [łącznik Tabela sieci Web](connector-web-table.md) jest, że łącznik Tabela sieci Web wyodrębnia zawartość, tabela z kodu HTML, strony sieci Web.
 
 > [!TIP]
 > Aby przetestować żądania HTTP do pobierania danych, aby skonfigurować łącznik protokołu HTTP w usłudze Data Factory, informacje na temat specyfikacji interfejsu API dla nagłówka i treści wymagania. Narzędzia, takie jak Postman lub przeglądarki sieci web służy do sprawdzania poprawności.
@@ -111,7 +115,7 @@ Jeśli używasz **certthumbprint, aby** dla uwierzytelniania i certyfikat zosta�
 3. Kliknij prawym przyciskiem myszy certyfikat w magazynie osobistym, a następnie wybierz **wszystkie zadania** > **Zarządzaj kluczami prywatnymi**.
 3. Na **zabezpieczeń** pozycję Dodaj konto użytkownika, pod którym działa usługa hosta Integration Runtime (DIAHostService), z dostępem do odczytu do certyfikatu.
 
-**Przykład 1: Używanie certthumbprint, aby**
+**Przykład 1: Za pomocą certthumbprint, aby**
 
 ```json
 {
@@ -131,7 +135,7 @@ Jeśli używasz **certthumbprint, aby** dla uwierzytelniania i certyfikat zosta�
 }
 ```
 
-**Przykład 2: Używanie embeddedCertData**
+**Przykład 2: Za pomocą embeddedCertData**
 
 ```json
 {
@@ -170,13 +174,13 @@ Aby skopiować dane z protokołu HTTP, należy ustawić **typu** właściwości 
 | requestMethod | Metoda HTTP. Dozwolone wartości to **uzyskać** (ustawienie domyślne) i **wpis**. | Nie |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
 | RequestBody | Treść żądania HTTP. | Nie |
-| Format | Jeśli chcesz pobrać dane z punktu końcowego HTTP jako — jest bez analizy, a następnie skopiuj je do sklepu oparte na plikach, Pomiń **format** sekcji w definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy plików w formacie: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. W obszarze **format**ustaw **typu** jedną z następujących wartości właściwości. Aby uzyskać więcej informacji, zobacz [formatu JSON](supported-file-formats-and-compression-codecs.md#json-format), [format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [Avro format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Obsługiwane poziomy: **optymalna** i **najszybciej**. |Nie |
+| format | Jeśli chcesz pobrać dane z punktu końcowego HTTP jako — jest bez analizy, a następnie skopiuj je do sklepu oparte na plikach, Pomiń **format** sekcji w definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów plików: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. W obszarze **format**ustaw **typu** jedną z następujących wartości właściwości. Aby uzyskać więcej informacji, zobacz [formatu JSON](supported-file-formats-and-compression-codecs.md#json-format), [format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [Avro format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Nie |
+| Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Obsługiwane poziomy:  **Optymalne** i **najszybszy**. |Nie |
 
 > [!NOTE]
 > Obsługiwany rozmiar ładunku żądania HTTP jest około 500 KB. Jeśli rozmiar ładunku, które mają być przekazane do punktu końcowego usługi sieci web jest większy niż 500 KB, należy wziąć pod uwagę dzielenia na partie ładunku na mniejsze fragmenty.
 
-**Przykład 1: Przy użyciu metody Get (ustawienie domyślne)**
+**Przykład 1: Za pomocą metody Get (ustawienie domyślne)**
 
 ```json
 {

@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1b4acea71633f79a5465d52c465b4c9f9884f927
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4ab86961f80ef19942203543ef76735029c9d5ec
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996281"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721635"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Zbierać ślady rozproszonego z rzeczywistym użyciem (wersja zapoznawcza)
 
@@ -224,5 +224,5 @@ Pokrótce informacje omówione tylko podstawowe informacje dotyczące integrowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Mapa aplikacji](./app-insights-app-map.md)
+* [Mapa aplikacji](./../azure-monitor/app/app-map.md)
 * [Monitorowanie wydajności end-to-end](./app-insights-tutorial-performance.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0425dad96cccb019392c8055b0d1127b583b70dd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7d67b2346e4db1e04f2c0611603acd3d6e920498
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726036"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972972"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorowanie witryny programu SharePoint za pomocą usługi Application Insights
 Usługa Azure Application Insights monitoruje dostępność, wydajność i użycie Twoich aplikacji. Tutaj dowiesz się, jak skonfigurować je dla witryny programu SharePoint.
@@ -144,7 +144,7 @@ function onRequestFail(sender, args) {
 
 
 ## <a name="next-steps"></a>Następne kroki
-* [Testy sieci Web](app-insights-monitor-web-app-availability.md) do monitorowania dostępności witryny.
+* [Testy sieci Web](../azure-monitor/app/monitor-web-app-availability.md) do monitorowania dostępności witryny.
 * [Usługa Application Insights](app-insights-overview.md) dla innych typów aplikacji.
 
 <!--Link references-->

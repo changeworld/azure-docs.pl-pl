@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: e8fafbe1c5fafd338009b1bdd8c5d838c3fac726
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 4b1ae3f3e256a87a78ac95b89b98d59c7924b7a7
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323290"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791000"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Konfigurowanie usługi Application Insights dla aplikacji internetowej platformy Azure przy użyciu programu PowerShell
 Platformę [Microsoft Azure](https://azure.com) można [skonfigurować do wysyłania danych usługi Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) do usługi [Azure Application Insights](app-insights-overview.md). Dane diagnostyczne są związane z usługami Azure Cloud Services i maszynami wirtualnymi platformy Azure. Uzupełniają one dane telemetryczne wysyłane z poziomu aplikacji za pomocą zestawu SDK usługi Application Insights. W ramach automatyzowania procesu tworzenia nowych zasobów platformy Azure można skonfigurować diagnostykę przy użyciu programu PowerShell.
@@ -134,7 +134,7 @@ Aby usunąć rozszerzenie diagnostyki z pojedynczej roli:
 
 
 ## <a name="see-also"></a>Zobacz także
-* [Monitorowanie aplikacji usług Azure Cloud Services za pomocą usługi Application Insights](app-insights-cloudservices.md)
+* [Monitorowanie aplikacji usług Azure Cloud Services za pomocą usługi Application Insights](../azure-monitor/app/cloudservices.md)
 * [Wysyłanie Diagnostyki Azure do usługi Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatyzowanie konfigurowania alertów](app-insights-powershell-alerts.md)
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3a0b92e2c2a588fa8ef7edcddaa8c692780814f0
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388919"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721567"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Wydajność aplikacji — często zadawane pytania dla aplikacji sieci Web na platformie Azure
 
@@ -163,7 +163,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie aplikacji sieci web w us
 
 Usługa Azure Load Balancer ma domyślne ustawienie limitu czasu bezczynności czterech minut. Zwykle jest to uzasadnione odpowiedzi limit czasu dla żądania sieci web. Jeśli Twoja aplikacja sieci web wymaga przetwarzania w tle, zaleca się przy użyciu usługi Azure WebJobs. Aplikacji internetowej platformy Azure można wywołać zadania Webjob i otrzymywać powiadomienia po zakończeniu przetwarzania w tle. Możesz wybrać wiele metod za pomocą zadań Webjob, w tym kolejek i wyzwalacze.
 
-Zadania Webjob jest przeznaczony do przetwarzania w tle. Możesz tworzyć, jak najwięcej przetwarzania w tle w zadanie WebJob. Aby uzyskać więcej informacji na temat zadań Webjob, zobacz [uruchamianie zadań w tle za pomocą zadań Webjob](web-sites-create-web-jobs.md).
+Zadania Webjob jest przeznaczony do przetwarzania w tle. Możesz tworzyć, jak najwięcej przetwarzania w tle w zadanie WebJob. Aby uzyskać więcej informacji na temat zadań Webjob, zobacz [uruchamianie zadań w tle za pomocą zadań Webjob](webjobs-create.md).
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>Aplikacje platformy ASP.NET Core, które są hostowane w usłudze App Service, czasami przestać odpowiadać. Jak rozwiązać ten problem?
 

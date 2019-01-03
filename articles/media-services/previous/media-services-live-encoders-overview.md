@@ -12,17 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 12/21/2018
 ms.author: juliako
-ms.openlocfilehash: b1166c34f1a0ce3f3e9be932eb6d7fb9d76389ec
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c0c7e2b8962cb757141b654c2956ed3ff5600c88
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665761"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787651"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Konfigurowanie koderów lokalnych podczas korzystania z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 Ten temat zawiera listę lokalnych koderów na żywo, które służą do przechwytywania zdarzeń na żywo i wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów w kanałach usługi AMS, (które są włączone kodowania na żywo) do dalszego przetwarzania. Temat zawiera także linki do samouczków, które pokazują, jak skonfigurować koderów uwzględnione na liście.
+
+> [!NOTE]
+> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwer proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
 Aby uzyskać informacje na temat konfigurowania [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) Zobacz encoder (FMLE) do wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów do kanału usługi AMS [Konfigurowanie FMLE](media-services-configure-fmle-live-encoder.md).
@@ -45,6 +48,7 @@ Aby uzyskać więcej informacji, zobacz [Elemental Live](http://www.elementaltec
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Kolejne kroki
+
 [Transmisja strumieniowa przy użyciu usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji na żywo](media-services-manage-live-encoder-enabled-channels.md).
 

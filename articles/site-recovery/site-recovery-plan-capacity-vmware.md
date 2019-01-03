@@ -4,15 +4,15 @@ description: Skorzystaj z tego artykułu. Planowanie wydajności i skalowania, p
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 12/11/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f644416a9e56009aadd0f8e1b217402d625af84
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258852"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788739"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -20,7 +20,7 @@ Użyj w tym artykule, aby ustalić planowania pojemności i skalowania podczas r
 
 ## <a name="how-do-i-start-capacity-planning"></a>Jak rozpocząć planowanie pojemności
 
-Zbieranie informacji o środowisku replikacji, uruchamiając [planista wdrażania usługi Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) potrzeby replikacji oprogramowania VMware. [Dowiedz się więcej](site-recovery-deployment-planner.md) na temat tego narzędzia. Będzie gromadzić informacje o zgodnych i niezgodnych maszyn wirtualnych, dysków na maszynę Wirtualną, a współczynnik zmian danych na dysku. Narzędzie uwzględnia również wymagania dotyczące przepustowości sieci i infrastruktury platformy Azure potrzebnej do pomyślnej replikacji i testowania trybu failover.
+Aby dowiedzieć się wymagania infrastruktura usługi Azure Site Recovery, zebranie informacji o środowisku replikacji, uruchamiając [planista wdrażania usługi Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) potrzeby replikacji oprogramowania VMware. [Dowiedz się więcej](site-recovery-deployment-planner.md) na temat tego narzędzia. To narzędzie udostępnia raportu przy użyciu pełnych informacji o zgodnych i niezgodnych maszyn wirtualnych, dysków na maszynę Wirtualną, a współczynnik zmian danych na dysku. Narzędzie jest także podsumowanie wymagania dotyczące przepustowości sieci w celu spełnienia docelowego cel punktu odzyskiwania i infrastruktury platformy Azure potrzebne do pomyślnej replikacji i testowania trybu failover.
 
 ## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
 
@@ -30,45 +30,59 @@ Zbieranie informacji o środowisku replikacji, uruchamiając [planista wdrażani
 **Serwer konfiguracji** | Serwer konfiguracji powinien być w stanie obsłużyć dzienną wydajność współczynnika zmian we wszystkich obciążeń uruchomionych na chronionych maszynach i wymaga wystarczającą przepustowość, aby stale replikować dane do usługi Azure Storage.<br/><br/> Najlepszym rozwiązaniem jest zlokalizować serwer konfiguracji na tej samej sieci oraz na segment sieci LAN jako maszyn, które mają być chronione. Mogą znajdować się w innej sieci, ale maszyn, które mają być chronione, powinny mieć widoczność sieci 3 warstwy do niego.<br/><br/> Zalecenia dotyczące rozmiaru serwera konfiguracji są podsumowane w tabeli w poniższej sekcji.
 **Serwer przetwarzania** | Pierwszy serwer przetwarzania jest instalowany domyślnie na serwerze konfiguracji. Można wdrażać dodatkowych serwerów przetwarzania do skalowania środowiska. <br/><br/> Serwer przetwarzania odbiera dane replikacji z chronionych maszyn i optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania. Następnie wysyła dane do platformy Azure. Maszyna serwera przetwarzania powinna mieć wystarczające zasoby do wykonywania tych zadań.<br/><br/> Serwer przetwarzania korzysta z pamięci podręcznej opartej na dyskach. Do obsługi zmian danych przechowywanych w przypadku awarii lub wąskich gardeł, należy użyć dysku oddzielne pamięci podręcznej 600 GB lub więcej.
 
-## <a name="size-recommendations-for-the-configuration-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji
+## <a name="size-recommendations-for-the-configuration-serverin-built-process-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji serwera/wbudowane procesu
+
+Każdy serwer configuration wdrażanych za pośrednictwem [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) z serwerem przetwarzania wbudowanych. Zasoby serwera konfiguracji, takich jak procesor CPU, pamięci, miejsca są wykorzystywane różne stawki, gdy serwer przetwarzania wbudowanych jest wykorzystywany do ochrony maszyn wirtualnych. Z tego powodu wymagania różnią się, gdy jest wykorzystywany przez serwer przetwarzania wbudowanych.
+Serwer konfiguracji, w którym serwer przetwarzania wbudowanych służy do ochrony obciążeń może obsługiwać maksymalnie 200 maszyn wirtualnych, w oparciu o następujące konfiguracje
 
 **CPU** | **Pamięć** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny**
 --- | --- | --- | --- | ---
 8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz [GHz]) | 16 GB | 300 GB | 500 GB lub mniej | Replikowanie maszyn mniej niż 100.
 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | Od 500 GB do 1 TB | Replikacja między maszynami 100 150.
 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni \@ 2,5 GHz) | 32 GB | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 – 200.
-Wdrażanie na inny serwer process server | | | > 2 TB | Wdrażanie dodatkowych serwerów przetwarzania, Jeśli replikujesz ponad 200 maszyn lub w przypadku zmiany danych dotyczących dziennego współczynnika przekracza 2 TB.
+Wdrażanie na inny serwer konfiguracji za pośrednictwem [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) | | | | Jeśli replikujesz ponad 200 maszyn, należy wdrożyć nowy serwer konfiguracji.
+Wdrażanie drugiego [serwera przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file) | | | &GT; 2 TB| Wdrażanie nowego serwera przetwarzania skalowalnego w poziomie, jeśli całkowity Dzienny współczynnik zmian danych przekracza 2 TB.
 
 Gdzie:
 
 * Każda maszyna źródłowa jest konfigurowana 3 dyskami 100 GB.
 * Użyliśmy porównawczych magazyn 8 dysków SAS o wielkości 10 tys. obr/min, za pomocą RAID 10 dla miar dysk pamięci podręcznej.
 
+## <a name="size-recommendations-for-the-configuration-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji
+
+Jeśli nie planujesz serwer konfiguracji jest używany jako serwer przetwarzania, postępuj zgodnie z poniżej danego konfigurację, aby obsłużyć maksymalnie 650 maszyn wirtualnych.
+
+**CPU** | **RAM** | **Rozmiar dysku systemu operacyjnego** | **Współczynnik zmian danych** | **Chronione maszyny**
+--- | --- | --- | --- | ---
+24 procesorów wirtualnych Vcpu (2 sockets * 12 rdzeni \@ 2,5 GHz [GHz])| 32GB | 80 GB | Nie dotyczy | Maksymalnie 650 maszyn wirtualnych
+
+W przypadku gdy każda maszyna źródłowa jest konfigurowana 3 dyskami 100 GB.
+
+Ponieważ funkcje serwera przetwarzania nie jest wykorzystywana, współczynnik zmian danych nie ma zastosowania. Aby zachować powyżej pojemność, możesz przełączyć obciążenie z serwera przetwarzania wbudowanych do innego procesu skalowania w poziomie postępując zgodnie z wytycznymi [tutaj](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
+
 ## <a name="size-recommendations-for-the-process-server"></a>Zalecenia dotyczące rozmiaru serwera przetwarzania
 
-Jeśli musisz chronić ponad 200 maszyn lub dziennych zmian jest większa niż 2 TB, można dodać serwerów przetwarzania do obsługi obciążenia replikacji. Aby skalować, możesz wykonywać następujące czynności:
+Serwer przetwarzania jest składnikiem, który obsługuje proces replikacji danych w usłudze Azure Site Recovery. Jeśli dziennych zmian jest większa niż 2 TB, należy dodać serwery proces skalowania w poziomie, do obsługi obciążenia replikacji. Aby skalować, możesz wykonywać następujące czynności:
 
-* Zwiększ liczbę serwerów konfiguracji. Na przykład można chronić maksymalnie 400 maszyn przy użyciu dwóch serwerów konfiguracji.
-* Dodawanie kolejnych serwerów procesu i służą do obsługi ruchu zamiast (lub oprócz) na serwerze konfiguracji.
+* Zwiększ liczbę serwerów konfiguracji, wdrażania za pośrednictwem [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). Na przykład można chronić maksymalnie 400 maszyn przy użyciu dwóch serwerów konfiguracji.
+* Dodaj [serwerów przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#download-installation-file)i służą do obsługi ruchu związanego z replikacją zamiast (lub oprócz) na serwerze konfiguracji.
 
 W poniższej tabeli opisano scenariusz, w którym:
 
-* Nie planuje się serwer konfiguracji jest używany jako serwer przetwarzania.
-* Po skonfigurowaniu dodatkowym serwerze przetwarzania.
-* Skonfigurowano chronionych maszyn wirtualnych do użycia na dodatkowym serwerze przetwarzania.
+* Po skonfigurowaniu serwera przetwarzania skalowalnego w poziomie.
+* Skonfigurowano chronionych maszyn wirtualnych używających serwera przetwarzania skalowalnego w poziomie.
 * Każda maszyna chronionego źródła jest skonfigurowany przy użyciu trzech dysków 100 GB.
 
-**Serwer konfiguracji** | **Dodatkowym serwerze przetwarzania** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny**
---- | --- | --- | --- | ---
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 16 GB pamięci RAM | 4 Vcpu (2 sockets * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci RAM | 300 GB | 250 GB lub mniej | Replikowanie maszyn 85 lub mniej.
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 16 GB pamięci RAM | 8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci RAM | 600 GB | 250 GB do 1 TB | Replikacja między maszynami 85 150.
-12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz), 18 GB pamięci RAM | 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 225.
+**Dodatkowym serwerze przetwarzania** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny**
+--- | --- | --- | ---
+4 Vcpu (2 sockets * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci RAM | 300 GB | 250 GB lub mniej | Replikowanie maszyn 85 lub mniej.
+8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci RAM | 600 GB | 250 GB do 1 TB | Replikacja między maszynami 85 150.
+12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 225.
 
-Sposób, w którym możesz skalować serwery w zależy od preferencjami dla modelu, skalowanie w pionie lub poziomie.  Skalowanie w górę, wdrażając kilka zaawansowanych konfiguracji i serwerów przetwarzania lub skalowania w poziomie poprzez wdrożenie kolejnych serwerów przy użyciu mniejszej ilości zasobów. Na przykład jeśli musisz chronić 220 maszyny, wykonaj jedną z następujących czynności:
+Sposób, w którym możesz skalować serwery w zależy od preferencjami dla modelu, skalowanie w pionie lub poziomie.  Skalowanie w górę, wdrażając kilka zaawansowanych konfiguracji i serwerów przetwarzania lub skalowania w poziomie poprzez wdrożenie kolejnych serwerów przy użyciu mniejszej ilości zasobów. Na przykład jeśli musisz chronić 200 maszyn z współczynnik zmian danych ogólną codziennie o rozmiarze 1,5 TB, wykonaj jedną z następujących czynności:
 
-* Konfigurowanie serwera konfiguracji z 12 procesorów wirtualnych, 18 GB pamięci i dodatkowym serwerze przetwarzania z 12 procesorów wirtualnych, 24 GB pamięci. Skonfiguruj chronione maszyny do korzystania z serwera dodatkowych procesów.
-* Należy skonfigurować dwa serwery konfiguracji (2 x 8 procesorów vCPU, 16 GB pamięci RAM) i dwóch dodatkowych serwerów przetwarzania (1 x 8 procesorów wirtualnych i 4 maszyn procesora wirtualnego vCPU x 1 obsługiwać 135 + 85 [220]). Skonfiguruj chronione maszyny, aby korzystać z serwerów dodatkowych procesów.
-
+* Skonfiguruj serwer pojedynczego procesu z procesora vCPU 16, 24 GB pamięci RAM.
+* Należy skonfigurować dwa serwery przetwarzania, (2 x 8 procesorów vCPU, 2 * 12 GB pamięci RAM).
 
 ## <a name="control-network-bandwidth"></a>Sterowania przepustowością sieci
 
@@ -104,6 +118,16 @@ Możesz też użyć polecenia cmdlet [Set-OBMachineSetting](https://technet.micr
    * Aby wpłynąć na przepustowość ruchu powrotu po awarii z platformy Azure, zmodyfikuj wartość **DownloadThreadsPerVM**.
 2. Wartość domyślna to 4. W sieci „o nadmiarowych zasobach” należy zmienić wartości domyślne tych kluczy rejestru. Wartość maksymalna to 32. Monitoruj ruch, aby zoptymalizować tę wartość.
 
+## <a name="setup-azure-site-recovery-infrastructure-to-protect-more-than-500-virtual-machines"></a>Konfigurowanie infrastruktury usługi Azure Site Recovery w celu ochrony więcej niż 500 maszyn wirtualnych
+
+Przed rozpoczęciem konfigurowania infrastruktury usługi Azure Site Recovery, musisz uzyskać dostęp do środowiska, aby zmierzyć od następujących czynników: zgodnych maszyn wirtualnych, danych dotyczących dziennego zmieniać szybkości, wymagana przepustowość sieci dla żądanego celu punktu odzyskiwania, liczba usługi Azure site recovery składniki wymagane, czas potrzebny do ukończenia replikacji początkowej itp.,
+
+1. W celu mierzenia tych parametrów, upewnij się, że uruchamianie planisty wdrożenia w środowisku za pomocą wytycznych udostępnione [tutaj](site-recovery-deployment-planner.md).
+2. Wdrażanie serwera konfiguracji z wymaganiami, o których wspomniano [tutaj](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server). Jeśli obciążenie produkcyjne przekracza 650 maszyn wirtualnych, należy wdrożyć innym serwerze konfiguracji.
+3. Oparte na mierzonego dziennych zmian danych, wdrażanie [serwerów przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#download-installation-file) za pomocą wytycznych rozmiar wyrażam [tutaj](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
+4. Jeśli oczekujesz, współczynnik zmian danych dla maszyny wirtualnej z dyskiem mogłaby spowodować przekroczenie 2 MB/s, upewnij się, że [Konfigurowanie konta usługi premium storage](tutorial-prepare-azure.md#create-a-storage-account). Ponieważ planista wdrożenia jest uruchamiana dla określonego przedziału czasu, szczytowe danych zmiany stawki innym czasie, gdy okresy nie mogą być przechwytywane w raporcie.
+5. Zgodnie z żądanym celem punktu odzyskiwania [Ustaw przepustowość sieci](site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+6. Po zakończeniu instalacji infrastruktury, postępuj zgodnie z zasadami, opublikowane w ramach [porad sekcji](vmware-azure-set-up-source.md) w celu umożliwienia działania funkcji odzyskiwania po awarii na obciążeniu.
 
 ## <a name="deploy-additional-process-servers"></a>Wdrażanie dodatkowych serwerów przetwarzania
 

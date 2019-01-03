@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435773"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726294"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -34,7 +34,7 @@ Omówmy szybko nagłówki uwierzytelniania dostępne w połączeniu z usług Azu
 
 | Nagłówek | Opis |
 |--------|-------------|
-| OCP-Apim-Subscription-Key | Użyj tego pliku nagłówkowego do uwierzytelniania za pomocą klucz subskrypcji dla określonej usługi lub klucz subskrypcji wielu usług. Jeśli używasz klucz subskrypcji z wieloma usługami, regionie dla Twojej subskrypcji musi zostać podana jako `Ocp-Apim-Subscription-Region` nagłówka. |
+| OCP-Apim-Subscription-Key | Użyj tego pliku nagłówkowego do uwierzytelniania za pomocą klucz subskrypcji dla określonej usługi lub klucz subskrypcji wielu usług. |
 | OCP-Apim subskrypcji — Region | Tego pliku nagłówkowego jest tylko wymagany w przypadku korzystania z kluczem subskrypcji wielu usług za pomocą [interfejsu API tłumaczenia tekstu](./Translator/reference/v3-0-reference.md). Użyj tego pliku nagłówkowego, aby określić region subskrypcji. |
 | Autoryzacja | Użyj tego pliku nagłówkowego, jeśli używasz tokenu uwierzytelniania. Czynności do wykonania wymiany tokenu są szczegółowo opisane w poniższych sekcjach. Podana wartość następujący format: `Bearer <TOKEN>`. |
 

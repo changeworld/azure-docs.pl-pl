@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 35813573be9b069cc920f5ede813503ab1b99b4a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0db6cc02be385ab82d41ecef214c5b158892c415
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227218"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628138"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
@@ -34,7 +34,9 @@ W tym artykule linki do kilka artykułów programu PowerShell dla magazynu, taki
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-To ćwiczenie wymaga programu Azure PowerShell module w wersji 4.4 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+To ćwiczenie wymaga modułu Azure PowerShell Az wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 Na potrzeby tego ćwiczenia można wpisywać polecenia do regularnego okna programu PowerShell, możesz też [Windows PowerShell zintegrowane Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) wpisz poleceń w edytorze, a następnie przetestować co najmniej jedno polecenie w czasie, co Możesz przejść za pomocą przykładów. Można wyróżnić wiersze, które chcesz wykonać i kliknij przycisk Uruchom wybrane tylko uruchamiania tych poleceń.
 
@@ -42,18 +44,18 @@ Aby uzyskać więcej informacji na temat kont magazynu, zobacz [wprowadzenie do 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>Wyświetlanie listy kont magazynu w ramach subskrypcji
 
-Uruchom [Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) polecenie cmdlet do pobierania listy kont magazynu w bieżącej subskrypcji. 
+Uruchom [Get AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) polecenie cmdlet do pobierania listy kont magazynu w bieżącej subskrypcji. 
 
 ```powershell
-Get-AzureRMStorageAccount | Select StorageAccountName, Location
+Get-AzStorageAccount | Select StorageAccountName, Location
 ```
 
 ## <a name="get-a-reference-to-a-storage-account"></a>Pobierz odwołanie do konta magazynu
@@ -62,13 +64,13 @@ Następnie należy odwołanie do konta magazynu. Możesz utworzyć nowe konto ma
 
 ### <a name="use-an-existing-storage-account"></a>Użyj istniejącego konta magazynu 
 
-Aby pobrać istniejące konto magazynu, należy nazwę grupy zasobów i nazwę konta magazynu. Ustaw zmienne dla tych dwóch pól, a następnie użyj [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) polecenia cmdlet. 
+Aby pobrać istniejące konto magazynu, należy nazwę grupy zasobów i nazwę konta magazynu. Ustaw zmienne dla tych dwóch pól, a następnie użyj [Get AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) polecenia cmdlet. 
 
 ```powershell
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
 
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
 ```
 
@@ -76,23 +78,23 @@ Masz teraz $storageAccount, która wskazuje na istniejące konto magazynu.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
 
-Poniższy skrypt pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia przy użyciu [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Po utworzeniu konta, pobrać jego kontekst, który może służyć w kolejnych poleceniach zamiast określania uwierzytelniania za pomocą każdego wywołania.
+Poniższy skrypt pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia przy użyciu [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Po utworzeniu konta, pobrać jego kontekst, który może służyć w kolejnych poleceniach zamiast określania uwierzytelniania za pomocą każdego wywołania.
 
 ```powershell
 # Get list of locations and select one.
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "eastus"
 
 # Create a new resource group.
 $resourceGroup = "teststoragerg"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
 
 # Set the name of the storage account and the SKU name. 
 $storageAccountName = "testpshstorage"
 $skuName = "Standard_LRS"
     
 # Create the storage account.
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
   -SkuName $skuName
@@ -103,11 +105,11 @@ $ctx = $storageAccount.Context
 
 Skrypt używa następujących poleceń cmdlet programu PowerShell: 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) — pobiera listę prawidłowych lokalizacji. W przykładzie użyto `eastus` dla lokalizacji.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) — pobiera listę prawidłowych lokalizacji. W przykładzie użyto `eastus` dla lokalizacji.
 
-*   [Nowy-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) — tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w której zasoby platformy Azure są wdrażania i zarządzania nimi. Nasza nosi nazwę `teststoragerg`. 
+*   [Nowe AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) — tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w której zasoby platformy Azure są wdrażania i zarządzania nimi. Nasza nosi nazwę `teststoragerg`. 
 
-*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) — tworzy konto magazynu. W przykładzie użyto `testpshstorage`.
+*   [Nowe AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) — tworzy konto magazynu. W przykładzie użyto `testpshstorage`.
 
 Nazwa jednostki SKU wskazuje typ replikacji dla konta magazynu, takich jak magazyn LRS (magazyn lokalnie nadmiarowy). Aby uzyskać więcej informacji na temat replikacji, zobacz [replikacja usługi Azure Storage](storage-redundancy.md).
 
@@ -123,7 +125,7 @@ Teraz, gdy odwołanie do nowego konta magazynu lub istniejące konto magazynu, w
 
 ### <a name="storage-account-properties"></a>Właściwości konta magazynu
 
-Aby zmienić ustawienia konta magazynu, użyj [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount). Chociaż nie można zmienić lokalizacji konta magazynu lub grupy zasobów, w którym się znajduje, możesz zmienić wiele innych właściwości. Poniższa lista zawiera niektóre właściwości, które można zmienić za pomocą programu PowerShell.
+Aby zmienić ustawienia konta magazynu, użyj [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount). Chociaż nie można zmienić lokalizacji konta magazynu lub grupy zasobów, w którym się znajduje, możesz zmienić wiele innych właściwości. Poniższa lista zawiera niektóre właściwości, które można zmienić za pomocą programu PowerShell.
 
 * **Domeny niestandardowej** przypisane do konta magazynu.
 
@@ -137,19 +139,19 @@ Aby zmienić ustawienia konta magazynu, użyj [Set-AzureRmStorageAccount](/power
 
 ### <a name="manage-the-access-keys"></a>Zarządzanie kluczami dostępu do
 
-Konto usługi Azure Storage jest dostarczany z dwóch kluczy konta. Aby pobrać klucze, użyj [Get AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey). W tym przykładzie pobiera pierwszy klucz. Aby pobrać, druga, użyj `Value[1]` zamiast `Value[0]`.
+Konto usługi Azure Storage jest dostarczany z dwóch kluczy konta. Aby pobrać klucze, użyj [Get AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). W tym przykładzie pobiera pierwszy klucz. Aby pobrać, druga, użyj `Value[1]` zamiast `Value[0]`.
 
 ```powershell
 $storageAccountKey = `
-    (Get-AzureRmStorageAccountKey `
+    (Get-AzStorageAccountKey `
     -ResourceGroupName $resourceGroup `
     -Name $storageAccountName).Value[0]
 ```
 
-Aby ponownie wygenerować klucz, należy użyć [New AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/New-AzureRmStorageAccountKey). 
+Aby ponownie wygenerować klucz, należy użyć [New AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey). 
 
 ```powershell
-New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
+New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -KeyName key1 
 ```
@@ -159,15 +161,15 @@ Aby ponownie wygenerować klucz innych, należy użyć `key2` jako nazwę klucza
 Ponowne generowanie jednego z kluczy, a następnie pobrać ją ponownie, aby zobaczyć nową wartość.
 
 > [!NOTE] 
-> Należy to wykonać starannego planowania przed Trwa ponowne generowanie klucza konta magazynu w środowisku produkcyjnym. Ponowne generowanie kluczy jeden lub oba spowoduje unieważnienie dostępu dla każdej aplikacji za pomocą klucza, który został ponownie wygenerowany. Aby uzyskać więcej informacji, zobacz [klucze dostępu](storage-account-manage.md#access-keys).
+> Należy to wykonać starannego planowania przed Trwa ponowne generowanie klucza konta magazynu w środowisku produkcyjnym. Ponowne generowanie kluczy jeden lub oba spowoduje unieważnienie dostępu dla każdej aplikacji za pomocą klucza, który został ponownie wygenerowany. Aby uzyskać więcej informacji, zobacz temat [Klucze dostępu](storage-account-manage.md#access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Usuwanie konta magazynu 
 
-Aby usunąć konto magazynu, użyj [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount).
+Aby usunąć konto magazynu, użyj [AzStorageAccount Usuń](/powershell/module/az.storage/Remove-azStorageAccount).
 
 ```powershell
-Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
+Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
 > [!IMPORTANT]
@@ -179,9 +181,9 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 Domyślnie wszystkie konta magazynu są dostępne dla każdej sieci, który ma dostęp do Internetu. Można jednak skonfigurować reguły sieci, aby zezwalać tylko na aplikacje z określonej sieci wirtualnych na dostęp do konta magazynu. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Storage zapory i sieci wirtualne](storage-network-security.md). 
 
 Artykuł pokazuje, jak zarządzać tymi ustawieniami za pomocą następujących poleceń cmdlet programu PowerShell:
-* [Add-AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
-* [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
-* [Remove-AzureRmStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.storage/remove-azurermstorageaccountnetworkrule?view=azurermps-6.8.1)
+* [Dodaj AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
+* [Aktualizacja AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Usuń AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>Korzystanie z analizy magazynu  
 
@@ -231,7 +233,7 @@ Aby uzyskać informacje o tym, jak uzyskać dostęp do tych chmur i ich magazynu
 Jeśli utworzono nową grupę zasobów i konto magazynu na potrzeby tego ćwiczenia yous można usunąć wszystkie zasoby utworzone przez usunięcie grupy zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W tym przypadku powoduje usunięcie konta magazynu i samej grupy zasobów.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -248,6 +250,6 @@ W tym artykule omówiono typowe operacje przy użyciu polecenia cmdlet płaszczy
 
 W tym artykule również podane odwołania do kilku innych artykułów, takich jak sposób zarządzania obiektów danych, jak włączyć Storage Analytics i sposób dostępu chmury niezależnie od platformy Azure albo chmura, chmura niemiecka i chmury dla instytucji rządowych. Poniżej przedstawiono niektóre więcej powiązanych artykuły i zasoby dla odwołania:
 
-* [Usługa Azure Storage kontroli płaszczyzny poleceń cmdlet programu PowerShell](/powershell/module/AzureRM.Storage/)
+* [Usługa Azure Storage kontroli płaszczyzny poleceń cmdlet programu PowerShell](/powershell/module/az.storage/)
 * [Polecenia cmdlet programu PowerShell na płaszczyźnie danych usługi Azure Storage](/powershell/module/azure.storage/)
 * [Dokumentacja programu Windows PowerShell](https://msdn.microsoft.com/library/ms714469.aspx)

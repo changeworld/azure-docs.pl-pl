@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163773"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995052"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Najlepsze rozwiązania dotyczące obciążeń wyceny i zmiany rozmiaru migracji na platformę Azure
 
@@ -117,7 +117,7 @@ System Azure oferuje różne rodzaje kont magazynu i warstwy wydajności.
 
 **Typ konta** | **Szczegóły** | **Użycie**
 --- | --- | ---
-**Ogólnego przeznaczenia v2 standardowa** | Obsługuje obiekty BLOB (Blokuj, strony, dołącz), plików, dysków, kolejek i tabel.<br/><br/> Obsługuje warstwy dostępu gorąca, chłodna i archiwum. Magazyn ZRS jest obsługiwane. | Użycie dla większości scenariuszy i większość typów danych. Konta magazynu w warstwie standardowa może być HHD lub opartego na dyskach SSD.
+**Ogólnego przeznaczenia v2 standardowa** | Obsługuje obiekty BLOB (Blokuj, strony, dołącz), plików, dysków, kolejek i tabel.<br/><br/> Obsługuje warstwy dostępu gorąca, chłodna i archiwum. Magazyn ZRS jest obsługiwane. | Użycie dla większości scenariuszy i większość typów danych. Konta magazynu w warstwie standardowa może być dysk twardy lub opartego na dyskach SSD.
 **Ogólnego przeznaczenia w wersji 2 — wersja Premium** | Obsługuje dane z magazynu obiektów Blob (stronicowych obiektów blob). Obsługuje warstwy dostępu gorąca, chłodna i archiwum. Magazyn ZRS jest obsługiwane.<br/><br/> Przechowywane na dyskach SSD. | Firma Microsoft zaleca używanie dla wszystkich maszyn wirtualnych.
 **Ogólnego przeznaczenia w wersji 1** | Obsługa warstw dostępu nie jest obsługiwane. Nie obsługuje magazynu ZRS | Użyj, jeśli aplikacje wymagają modelu klasycznym wdrożeniu platformy Azure.
 **Obiekt blob** | Specjalne konto magazynu do przechowywania obiektów bez struktury. Udostępnia blokowych obiektów blob i uzupełnialnych obiektów blob w tylko (nie plik, kolejka, tabela lub dysku magazynu usługi). Zawiera ten sam trwałość, dostępność, skalowalność i wydajność jako ogólnego przeznaczenia w wersji 2. | Nie można przechowywać stronicowych obiektów blob w ramach tych kont i dlatego nie można przechowywać pliki wirtualnego dysku twardego. Można ustawić warstwy dostępu gorąca lub chłodna.
@@ -248,7 +248,7 @@ Na platformie Azure płacisz za to, czego używasz, gdy zasoby są używane i ni
 **Dowiedz się więcej:**
 - Zapoznaj się z omówieniem programu [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) i [usługi Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview).
 - [Pobierz](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations) Advisor koszt zalecenia.
-- [Dowiedz się, jak [optymalizować koszty od zalecanych](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), i [uniknąć nieoczekiwanych opłat](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
+- [Dowiedz się, jak [optymalizować koszty od zalecanych](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), i [uniknąć nieoczekiwanych opłat](https://docs.microsoft.com/azure/billing/billing-getting-started).
 - [Dowiedz się więcej o](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) zestaw narzędzi do optymalizacji (ARO) zasobów platformy Azure
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>Najlepszym rozwiązaniem jest: Implementowanie budżetów grupy zasobów

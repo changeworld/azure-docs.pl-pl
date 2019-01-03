@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a152efb3979b4ffe3402ed668c0f683f5e9cc651
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 337d71c84ace7f44c2668cf2344d9083c4a85bee
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337159"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651066"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Ograniczenia statyczny adres IP w usłudze Azure App Service #
 
 Ograniczenia adresów IP umożliwiają definiowanie priorytetu, uporządkowane zezwalania/niezezwalania na listę adresów IP, które mogą uzyskiwać dostęp do aplikacji. Lista dozwolonych może zawierać adresów IPv4 i IPv6. W przypadku co najmniej jeden wpis istnieje, a następnie niejawna odmowa, wszystkie, znajdującą się na końcu listy. 
 
-Funkcja ograniczenia adresów IP działa w przypadku wszystkich obciążeń pracą, które obejmują; hostowana usługa aplikacji aplikacje sieci Web, aplikacje interfejsu api, aplikacje systemu linux, aplikacji kontenera systemu linux i funkcje. 
+Funkcja ograniczenia adresów IP działa w przypadku wszystkich obciążeń pracą, które obejmują; hostowana usługa aplikacji aplikacje sieci Web, aplikacje interfejsu API, aplikacje systemu Linux, aplikacji kontenera systemu Linux i funkcje. 
 
 Po wysłaniu żądania do aplikacji, adres IP z zostaną ocenione względem listy ograniczenia adresów IP. Jeśli adres nie jest dozwolony dostęp na podstawie reguł na liście, w odpowiedzi usługa [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) kod stanu.
 

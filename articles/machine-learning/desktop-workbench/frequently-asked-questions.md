@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f573cda9f06837bf44ee39a680b207af1ba0fe07
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313948"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973234"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Usługa Azure Machine Learning — często zadawane pytania
 
@@ -55,18 +55,17 @@ Pierwszych dwóch użytkowników skojarzonych z Twojej usługi eksperymentowanie
 
 **Zostanie naliczona zależnie od liczby przeprowadzonych eksperymentów?**
 
-Nie, usługa eksperymentowanie umożliwia wykonanie dowolnej liczby eksperymentów, jak potrzeby i opłaty tylko na podstawie liczby użytkowników. Opłaty za zasoby obliczeniowe usługi Eksperymentowanie są naliczane oddzielnie. Firma Microsoft zachęca do przeprowadzania licznych eksperymentów, dzięki czemu można znaleźć najbardziej odpowiednią modelu dla danego rozwiązania.   
+Nie, usługa eksperymentowanie umożliwia wykonanie dowolnej liczby eksperymentów, jak potrzeby i opłaty tylko na podstawie liczby użytkowników. Opłaty za zasoby obliczeniowe usługi Eksperymentowanie są naliczane oddzielnie. Firma Microsoft zachęca do przeprowadzania licznych eksperymentów, dzięki czemu można znaleźć najbardziej odpowiednią modelu dla danego rozwiązania.
 
 **Jakich konkretnych rodzajów zasobów obliczeniowych i magazynu można używać?**
 
-Usługa eksperymentowanie umożliwia przeprowadzanie eksperymentów na komputerach lokalnych (bezpośrednio lub na platformie docker), [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), i [HDInsight](https://azure.microsoft.com/services/hdinsight/). Usługa również uzyskuje dostęp do [usługi Azure Storage](https://azure.microsoft.com/services/storage/) konta do przechowywania wyników wykonywania i można korzystać z [Visual Studio Team Service](https://azure.microsoft.com/services/visual-studio-team-services/) konto do kontroli wersji oraz magazynu usługi Git. Należy pamiętać, że opłata zostanie naliczona niezależnie dla wszystkie użyte zasoby obliczeniowe i magazynowe, na podstawie odpowiednich cenników.  
-
+Usługa eksperymentowanie umożliwia przeprowadzanie eksperymentów na komputerach lokalnych (bezpośrednio lub na platformie docker), [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), i [HDInsight](https://azure.microsoft.com/services/hdinsight/). Usługa również uzyskuje dostęp do [usługi Azure Storage](https://azure.microsoft.com/services/storage/) konta do przechowywania wyników wykonywania i można korzystać z [DevOps platformy Azure](https://azure.microsoft.com/services/devops/) konto do kontroli wersji oraz magazynu usługi Git. Należy pamiętać, że opłata zostanie naliczona niezależnie dla wszystkie użyte zasoby obliczeniowe i magazynowe, na podstawie odpowiednich cenników.
 
 ## <a name="model-management"></a>Zarządzanie modelami
 
 **Co to jest zarządzanie modelami w usłudze Azure Machine Learning?**
 
-Zarządzanie modelami usługi Azure Machine Learning to zarządzana usługa platformy Azure, który umożliwia zespołom naukowców i deweloperów i operatorów danych niezawodne wdrażanie modeli predykcyjnych w bardzo różnych środowiskach. Repozytoria Git i kontenerów platformy Docker zapewniają możliwości śledzenia i powtarzalność. Modele można wdrożyć niezawodne w chmurze, lokalnie lub krawędzi. Jeden raz w środowisku produkcyjnym można Zarządzaj wydajnością modeli, a następnie aktywnie Ponowne szkolenie w przypadku spadku wydajności. Można wdrażać modele na komputerach lokalnych do [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), platformy Spark na [HDInsight](https://azure.microsoft.com/services/hdinsight/) lub Kubernetes, zorganizowanych [usługi Azure Container Service](https://azure.microsoft.com/services/container-service/) klastrów.  
+Zarządzanie modelami usługi Azure Machine Learning to zarządzana usługa platformy Azure, który umożliwia zespołom naukowców i deweloperów i operatorów danych niezawodne wdrażanie modeli predykcyjnych w bardzo różnych środowiskach. Repozytoria Git i kontenerów platformy Docker zapewniają możliwości śledzenia i powtarzalność. Modele można wdrożyć niezawodne w chmurze, lokalnie lub krawędzi. Jeden raz w środowisku produkcyjnym można Zarządzaj wydajnością modeli, a następnie aktywnie Ponowne szkolenie w przypadku spadku wydajności. Można wdrażać modele na komputerach lokalnych do [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), platformy Spark na [HDInsight](https://azure.microsoft.com/services/hdinsight/) lub Kubernetes, zorganizowanych [usługi Azure Container Service](https://azure.microsoft.com/services/container-service/) klastrów.
 
 **Co to jest "model"?**
 
@@ -78,11 +77,11 @@ Model to wynik procesu uczenia, który jest zastosowaniem algorytmu uczenia masz
  
 **Co to jest "wdrożenie?"**
 
-Zarządzanie modelami umożliwia wdrażać modele w formie spakowanych kontenerów usług internetowych na platformie Azure. Usługi sieci web może być wywoływany przy użyciu interfejsów API REST. Każda usługa internetowa jest liczona jako pojedyncze wdrożenie, a łączna liczba aktywnych wdrożeń liczy się do planu. Za pomocą przykładzie prognozowania sprzedaży, wdrażając najlepiej działający model, plan jest zwiększany przez jedno wdrożenie. Jeśli następnie wytrenujesz i wdrożyć innej wersji, możesz mieć dwa wdrożenia. Jeśli stwierdzisz, że nowy model jest lepszy i Usuń oryginał, liczba Twoich wdrożeń jest zmniejszana o jeden.  
+Zarządzanie modelami umożliwia wdrażać modele w formie spakowanych kontenerów usług internetowych na platformie Azure. Usługi sieci web może być wywoływany przy użyciu interfejsów API REST. Każda usługa internetowa jest liczona jako pojedyncze wdrożenie, a łączna liczba aktywnych wdrożeń liczy się do planu. Za pomocą przykładzie prognozowania sprzedaży, wdrażając najlepiej działający model, plan jest zwiększany przez jedno wdrożenie. Jeśli następnie wytrenujesz i wdrożyć innej wersji, możesz mieć dwa wdrożenia. Jeśli stwierdzisz, że nowy model jest lepszy i Usuń oryginał, liczba Twoich wdrożeń jest zmniejszana o jeden.
 
 **Jakie zasoby obliczeniowe określone są dostępne dla mojego wdrożenia?** 
 
-Zarządzanie modelami umożliwia uruchamianie wdrożeń, jako kontenery platformy Docker zarejestrowany [usługi Azure Container Service](https://azure.microsoft.com/services/container-service/), jako [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), lub na maszynach lokalnych. Cele wdrożenia dodatkowych zostaną dodane wkrótce. Należy pamiętać, że opłata zostanie naliczona niezależnie dla wszystkie użyte zasoby obliczeniowe, na podstawie odpowiednich cenników.     
+Zarządzanie modelami umożliwia uruchamianie wdrożeń, jako kontenery platformy Docker zarejestrowany [usługi Azure Container Service](https://azure.microsoft.com/services/container-service/), jako [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/), lub na maszynach lokalnych. Cele wdrożenia dodatkowych zostaną dodane wkrótce. Należy pamiętać, że opłata zostanie naliczona niezależnie dla wszystkie użyte zasoby obliczeniowe, na podstawie odpowiednich cenników.
 
 **Czy można użyć Zarządzanie modelami w usłudze Machine Learning, aby wdrażać modele utworzone przy użyciu narzędzi innych niż Usługa eksperymentowanie?**
 
@@ -108,15 +107,15 @@ Tak, można wdrożyć wiele wersji tego samego modelu. Zarządzanie modelami w u
 
 **Co to jest Azure Machine Learning Workbench?**
 
-Azure Machine Learning Workbench jest aplikacją pomocnika, stworzona z myślą o profesjonalnych analityków. Dostępne dla Windows i Mac, Machine Learning Workbench zawiera omówienie, zarządzania i sterowania dla rozwiązania uczenia maszynowego. Machine Learning Workbench obejmuje dostęp do stworzenia struktury sztucznej Inteligencji przez firmę Microsoft i społeczności "open source". Dołączyliśmy najbardziej popularnych narzędzi do analizy danych w tym TensorFlow, Microsoft Cognitive Toolkit, Spark ML i scikit-Dowiedz się i nie tylko. Umożliwiliśmy również integrację z popularnymi do nauki o danych środowiska IDE, takie jak notesów programu Jupyter, platformy PyCharm i programu Visual Studio Code. Machine Learning Workbench ma możliwości przygotowania danych wbudowane, szybko przykładowy, zrozumieć i przygotować dane ze strukturą lub bez. Nasze nowe narzędzia do przygotowywania danych, nazywane [PROSE](https://microsoft.github.io/prose/), jest oparta na najnowocześniejszych technologii przez firmę Microsoft Research.  
+Azure Machine Learning Workbench jest aplikacją pomocnika, stworzona z myślą o profesjonalnych analityków. Dostępne dla Windows i Mac, Machine Learning Workbench zawiera omówienie, zarządzania i sterowania dla rozwiązania uczenia maszynowego. Machine Learning Workbench obejmuje dostęp do stworzenia struktury sztucznej Inteligencji przez firmę Microsoft i społeczności "open source". Dołączyliśmy najbardziej popularnych narzędzi do analizy danych w tym TensorFlow, Microsoft Cognitive Toolkit, Spark ML i scikit-Dowiedz się i nie tylko. Umożliwiliśmy również integrację z popularnymi do nauki o danych środowiska IDE, takie jak notesów programu Jupyter, platformy PyCharm i programu Visual Studio Code. Machine Learning Workbench ma możliwości przygotowania danych wbudowane, szybko przykładowy, zrozumieć i przygotować dane ze strukturą lub bez. Nasze nowe narzędzia do przygotowywania danych, nazywane [PROSE](https://microsoft.github.io/prose/), jest oparta na najnowocześniejszych technologii przez firmę Microsoft Research.
 
 **To środowisko robocze środowisko IDE?**
 
-Nie. Machine Learning Workbench została zaprojektowana jako dodatek do popularnych środowisk IDE, takich jak notesów Jupyter i programu Visual Studio Code, platformy PyCharm, ale nie jest to w pełni funkcjonalne środowisko IDE. Machine Learning Workbench oferuje kilka tekst podstawowych funkcji edycji, ale debugowanie, funkcję intellisense i inne często używane funkcje środowiska IDE nie są obsługiwane. Zalecamy użycie ulubionego środowiska IDE do tworzenia kodu, edytowanie i debugowanie. Możesz również spróbować [narzędzia Visual Studio Code dla sztucznej Inteligencji](https://www.visualstudio.com/downloads/ai-tools-vscode).
+Nie. Machine Learning Workbench została zaprojektowana jako dodatek do popularnych środowisk IDE, takich jak notesów Jupyter i programu Visual Studio Code, platformy PyCharm, ale nie jest to w pełni funkcjonalne środowisko IDE. Machine Learning Workbench oferuje kilka tekst podstawowych funkcji edycji, ale debugowanie, funkcję intellisense i inne często używane funkcje środowiska IDE nie są obsługiwane. Zalecamy użycie ulubionego środowiska IDE do tworzenia kodu, edytowanie i debugowanie. Możesz również spróbować [narzędzia Visual Studio Code dla sztucznej Inteligencji](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
 **Czy jest opłata za pomocą usługi Azure Machine Learning Workbench?**
 
-Nie. Usługa Azure Machine Learning Workbench jest aplikacją bezpłatną. Możesz ją pobrać dla tylu komputerów i użytkowników, dla ilu potrzebujesz. Aby korzystać z aplikacji Azure Machine Learning Workbench, musisz mieć konto usługi Eksperymentowanie. .  
+Nie. Usługa Azure Machine Learning Workbench jest aplikacją bezpłatną. Możesz ją pobrać dla tylu komputerów i użytkowników, dla ilu potrzebujesz. Aby korzystać z aplikacji Azure Machine Learning Workbench, musisz mieć konto usługi Eksperymentowanie.
 
 **Funkcje wiersza polecenia są obsługiwane?**
 
@@ -138,7 +137,7 @@ Bieżąca wersja programu Jupyter, dołączone do aplikacji Workbench uruchamia 
 **Formaty plików, które są obecnie obsługiwane w celu pozyskiwania danych w aplikacji Workbench?**
 
 Narzędzia do przygotowywania danych w aplikacji Workbench obecnie obsługuje pozyskiwanie z następujących formatów: 
-- Pliki rozdzielane CSV, TSV, np.  
+- Pliki rozdzielane CSV, TSV, np.
 - Pliki o stałej szerokości
 - Pliki w postaci zwykłego tekstu
 - Excel (xls/xlsx)
@@ -157,7 +156,7 @@ W publicznej wersji zapoznawczej aplikacja Workbench obsługuje pozyskiwanie dan
 
 **Jakiego rodzaju inteligencji danych, przygotowywania i przekształcenia są dostępne?**
 
-W publicznej wersji zapoznawczej aplikacja Workbench obsługuje "Pochodzi kolumny według przykładu", "Podział kolumny według przykładu", "Klaster tekst", "Obsługi brakuje wartości" i wiele innych.  Środowisko robocze obsługuje również konwersja typu danych, agregacji danych (liczba, średnia, odchylenie itp.) i danych złożonych sprzężeń. Aby uzyskać pełną listę obsługiwanych możliwości odwiedź stronę naszej dokumentacji produktu. 
+W publicznej wersji zapoznawczej aplikacja Workbench obsługuje "Pochodzi kolumny według przykładu", "Podział kolumny według przykładu", "Klaster tekst", "Obsługi brakuje wartości" i wiele innych. Środowisko robocze obsługuje również konwersja typu danych, agregacji danych (liczba, średnia, odchylenie itp.) i danych złożonych sprzężeń. Aby uzyskać pełną listę obsługiwanych możliwości odwiedź stronę naszej dokumentacji produktu. 
 
 **Czy istnieją jakiekolwiek ograniczenia rozmiaru danych wymuszane przez aplikację Azure Machine Learning Workbench, eksperymentowanie w usłudze lub Zarządzanie modelami w usłudze?**
 

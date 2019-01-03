@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: d7c3134c36707fcfa079968d19d93b73d7a5f5cc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e9ba42e33fb763256cd31c255ea42593146dfb7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724081"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969322"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Monitorowanie wydajności aplikacji za pomocą usługi Application Insights dla oprogramowania SCOM
-Jeśli używasz programu System Center Operations Manager (SCOM) do zarządzania serwerami z można monitorować wydajność i diagnozować problemy z wydajnością za pomocą [usługi Azure Application Insights](app-insights-asp-net.md). Application Insights monitoruje aplikację sieci web przychodzące żądania wychodzące, REST i wywołania SQL, wyjątki i ślady dzienników. Usługa udostępnia pulpity nawigacyjne wykresy metryk i inteligentne alerty, a także zaawansowane wyszukiwanie diagnostyczne i zapytań analitycznych za pośrednictwem tych danych telemetrycznych. 
+Jeśli używasz programu System Center Operations Manager (SCOM) do zarządzania serwerami z można monitorować wydajność i diagnozować problemy z wydajnością za pomocą [usługi Azure Application Insights](../azure-monitor/app/asp-net.md). Application Insights monitoruje aplikację sieci web przychodzące żądania wychodzące, REST i wywołania SQL, wyjątki i ślady dzienników. Usługa udostępnia pulpity nawigacyjne wykresy metryk i inteligentne alerty, a także zaawansowane wyszukiwanie diagnostyczne i zapytań analitycznych za pośrednictwem tych danych telemetrycznych. 
 
 Możesz włączyć monitorowanie usługi Application Insights przy użyciu pakietu administracyjnego programu SCOM.
 
@@ -35,7 +35,7 @@ Przyjęto założenie, że:
 * Wersja platformy aplikacji jest .NET 4.5 lub nowszej.
 * Masz dostęp do subskrypcji w [Microsoft Azure](https://azure.com) i zalogować się do [witryny Azure portal](https://portal.azure.com). Twoja organizacja może mieć subskrypcji i do niego dodać konta Microsoft.
 
-(Zespół deweloperów może zbudować [zestawu SDK usługi Application Insights](app-insights-asp-net.md) do aplikacji sieci web. Ten czas kompilacji Instrumentacji daje im większą elastyczność w zapisywanie niestandardowych danych telemetrycznych. Jednak nie ma znaczenia: możesz wykonać kroki opisane w tym miejscu, bez wbudowany zestaw SDK.)
+(Zespół deweloperów może zbudować [zestawu SDK usługi Application Insights](../azure-monitor/app/asp-net.md) do aplikacji sieci web. Ten czas kompilacji Instrumentacji daje im większą elastyczność w zapisywanie niestandardowych danych telemetrycznych. Jednak nie ma znaczenia: możesz wykonać kroki opisane w tym miejscu, bez wbudowany zestaw SDK.)
 
 ## <a name="one-time-install-application-insights-management-pack"></a>(Jeden raz) Zainstaluj pakiet administracyjny usługi Application Insights
 Na komputerze, na którym uruchamiasz programu Operations Manager:
@@ -92,13 +92,13 @@ Aby sprawdzić, które wystąpienia aplikacji ma znaleźć:
 ![W obszarze monitorowanie, otwórz usługę Application Insights](./media/app-insights-scom/100.png)
 
 ## <a name="view-telemetry-in-application-insights"></a>Wyświetlanie telemetrii w usłudze Application Insights
-W [witryny Azure portal](https://portal.azure.com), przejdź do zasobu dla aplikacji. Możesz [zobaczyć wykresy pokazujące dane telemetryczne](app-insights-dashboards.md) ze swojej aplikacji. (Jeśli go nie nie pojawiają na stronie głównej jeszcze, kliknij pozycję Live Stream metryk).
+W [witryny Azure portal](https://portal.azure.com), przejdź do zasobu dla aplikacji. Możesz [zobaczyć wykresy pokazujące dane telemetryczne](../azure-monitor/app/app-insights-dashboards.md) ze swojej aplikacji. (Jeśli go nie nie pojawiają na stronie głównej jeszcze, kliknij pozycję Live Stream metryk).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Ustawianie pulpitu nawigacyjnego](app-insights-dashboards.md) ze sobą najważniejszych wykresów monitorowania to i inne aplikacje.
+* [Ustawianie pulpitu nawigacyjnego](../azure-monitor/app/app-insights-dashboards.md) ze sobą najważniejszych wykresów monitorowania to i inne aplikacje.
 * [Dowiedz się więcej o metrykach](app-insights-metrics-explorer.md)
-* [Konfigurowanie alertów](app-insights-alerts.md)
-* [Diagnozowanie problemów z wydajnością](app-insights-detect-triage-diagnose.md)
-* [Zaawansowane zapytania usługi Analytics](app-insights-analytics.md)
-* [Testy sieci web dostępności](app-insights-monitor-web-app-availability.md)
+* [Konfigurowanie alertów](../azure-monitor/app/alerts.md)
+* [Diagnozowanie problemów z wydajnością](../azure-monitor/app/detect-triage-diagnose.md)
+* [Zaawansowane zapytania usługi Analytics](../azure-monitor/app/analytics.md)
+* [Testy sieci web dostępności](../azure-monitor/app/monitor-web-app-availability.md)
 

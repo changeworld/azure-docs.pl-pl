@@ -1,21 +1,22 @@
 ---
-title: Opis sposobu użycia Azure cyfrowego Twins Swagger | Dokumentacja firmy Microsoft
-description: Użyj platformy Swagger Twins cyfrowych platformy Azure
+title: Opis sposobu użycia odwołania Twins cyfrowego Azure struktury Swagger | Dokumentacja firmy Microsoft
+description: Zrozumienia sposobu używania Azure cyfrowego Twins Swagger dokumentację referencyjną.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/31/2018
 ms.author: adgera
-ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624254"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975648"
 ---
-# <a name="use-azure-digital-twins-swagger"></a>Użyj platformy Swagger Twins cyfrowych platformy Azure
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja platformy Azure cyfrowego Twins struktury Swagger
 
 Każde elastycznie wystąpienie Twins cyfrowych platformy Azure zawiera swój własny automatycznie wygenerowaną dokumentację referencyjną struktury Swagger.
 
@@ -34,19 +35,19 @@ Struktury swagger zawiera podsumowanie interaktywnego interfejsu API, który zaw
 * Przykładowe informacje o odpowiedzi używany do sprawdzania poprawności i Potwierdź odpowiedzi HTTP.
 * Informacje o kodzie błędu.
 
-Struktury swagger jest wygodne narzędzie na potrzeby programowania i testowania wywołania interfejsu API zarządzania.
+Struktury swagger jest wygodne narzędzie na potrzeby programowania i testowania wywołań do cyfrowego Twins zarządzania interfejsów API usługi Azure.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Materiały referencyjne
 
-Materiały referencyjne automatycznie generowanych wyjaśnia krytyczne pojęć i modele obiektów.
+Automatycznie generowanych materiały referencyjne dla struktury Swagger zawiera krótkie podsumowanie dotyczące ważnych pojęć, dostępnych punktów końcowych interfejsu API zarządzania oraz opis każdego modelu obiektu ułatwiające projektowanie i testowanie.
 
 Krótkie podsumowanie Opisuje interfejs API.
 
 ![Top struktury swagger][1]
 
-Modele obiektów interfejsu API Core są także wyświetlane.
+Modele obiektów interfejsu API zarządzania są także wyświetlane.
 
 ![Modele struktury swagger][2]
 
@@ -58,7 +59,7 @@ Wygenerowany modele obiektów struktury Swagger są wygodne wyświetlić wszystk
 
 ## <a name="endpoint-summary"></a>Podsumowanie punktu końcowego
 
-Struktury swagger zawiera również szczegółowe omówienie wszystkich punktów końcowych, które tworzą interfejs API.
+Struktury swagger zawiera również szczegółowe omówienie wszystkich punktów końcowych, które tworzą interfejsy API Management.
 
 Każdy punkt końcowy, wymienionych obejmowały żądanie wymaganych informacji, takich jak:
 

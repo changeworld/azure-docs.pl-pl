@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 0f376d6b1108b784af37b5e50dab9edba63e5f76
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0b2e49bb0e269c91ed6a1bf7294565a729082db3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713099"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975138"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Klastrze skalowania automatycznego w systemie Azure Kubernetes Service (AKS) — wersja zapoznawcza
 
@@ -382,7 +382,7 @@ Events:  <none>
 Stan skalowania automatycznego klastra można sprawdzić stan skalowania automatycznego klastra w dwóch różnych poziomach: całego klastra i w każdej grupie węzła. Ponieważ AKS aktualnie obsługuje tylko jedną pulę węzłów, te metryki są takie same.
 
 * Kondycja wskazuje ogólną kondycję węzłów. Skalowanie klastra niezbyt dobrze radzi sobie utworzyć lub usuwa węzły w klastrze, ten stan zmieni się "W niedobrej kondycji". Dostępna jest również podział stanu różnych węzłów:
-    * "Gotowe" oznacza, że węzeł jest gotowe, aby zasobników zaplanowane na nim.
+    * "Gotowe" oznacza, że węzeł jest gotowy do zasobników zaplanowane na nim.
     * "Braku gotowości" oznacza, że węzeł, które spowodowało przerwanie w dół po jej uruchomieniu.
     * "NotStarted" oznacza, że węzeł nie jest jeszcze całkowicie uruchomiona.
     * "LongNotStarted" oznacza, że węzeł nie powiodło się w limicie uzasadnione.

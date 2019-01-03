@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098104"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754547"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 W tym artykule opisano zawartość pakietu 1808 aktualizacji. Pakiet aktualizacji zawiera ulepszenia, poprawki i znane problemy dotyczące tej wersji usługi Azure Stack. Ten artykuł zawiera również link, aby pobrać aktualizację. Znane problemy są podzielone na problemy bezpośrednio związane z procesem aktualizacji i kompilacji (po instalacji).
 
@@ -43,7 +43,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 - **Wszystkie środowiska Azure Stack teraz używać format strefy czasowej uniwersalnego czasu koordynowanego (UTC).**  Wszystkie dane dzienników i teraz powiązane informacje są wyświetlane w formacie UTC. Jeśli zaktualizujesz z poprzedniej wersji, który nie został zainstalowany przy użyciu czasu UTC, środowiska jest aktualizowany do używają czasu UTC. 
 
 <!-- 2437250  | IS  ASDK --> 
-- **Dyski zarządzane są obsługiwane.** Możesz teraz używać usługi Managed Disks w maszynach wirtualnych usługi Azure Stack i zestawy skalowania maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [stosu usługi Azure Managed Disks: różnice i zagadnienia](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
+- **Dyski zarządzane są obsługiwane.** Możesz teraz używać usługi Managed Disks w maszynach wirtualnych usługi Azure Stack i zestawy skalowania maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [stosu usługi Azure Managed Disks: Różnice i zagadnienia](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
 
 <!-- 2563799  | IS  ASDK --> 
 - **Usługa Azure Monitor**. Takich jak Azure Monitor na platformie Azure usługi Azure Monitor w usłudze Azure Stack zapewnia podstawowy poziom infrastrukturą metryk i dzienników dla większości usług. For more information, see [Azure Monitor on Azure Stack](/azure/azure-stack/user/azure-stack-metrics-azure-data).
@@ -226,16 +226,16 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 
    Zgłoś alert, #1:
-   - Nazwa: Rola infrastruktury złej kondycji
-   - Ważność: ostrzeżenie
-   - SKŁADNIKÓW: Kontroler kondycji
-   - Opis: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
+   - NAZWA:  Rola infrastruktury złej kondycji
+   - WAŻNOŚĆ: Ostrzeżenie
+   - SKŁADNIK: Kondycji kontrolera
+   - OPIS: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
 
   Zgłoś alert, #2:
-   - Nazwa: Rola infrastruktury złej kondycji
-   - Ważność: ostrzeżenie
-   - SKŁADNIKÓW: Kontroler kondycji
-   - Opis: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
+   - NAZWA:  Rola infrastruktury złej kondycji
+   - WAŻNOŚĆ: Ostrzeżenie
+   - SKŁADNIK: Kondycji kontrolera
+   - OPIS: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
 
   Obydwa alerty można bezpiecznie zignorować i zostanie zamknięte automatycznie wraz z upływem czasu.  
 
@@ -243,16 +243,15 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 2812138 | IS --> 
 - Można napotkać alert w przypadku **magazynu** składnika, który zawiera następujące informacje:
 
-   - Nazwa: Magazyn usługi wewnętrzny błąd komunikacji  
-   - Waga: krytyczny  
-   - SKŁADNIK: magazynu  
-   - Opis: Wystąpił błąd wewnętrzny komunikacji z usługą magazynu podczas wysyłania żądań do następujących węzłów.  
+   - NAZWA: Błąd wewnętrzny komunikacji z usługą Storage  
+   - WAŻNOŚĆ: Krytyczny  
+   - SKŁADNIK: Magazyn  
+   - OPIS: Błąd wewnętrzny komunikacji z usługą Storage wystąpił podczas wysyłania żądań do następujących węzłów.  
 
     Alert można bezpiecznie zignorować, ale musisz ręcznie zamknąć alert.
 
 <!-- 2368581 - IS. ASDK --> 
 - Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą **błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej**, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń.
-
 
 ### <a name="compute"></a>Wystąpienia obliczeniowe
 
@@ -283,17 +282,17 @@ Raporty użycia utworzone podczas korzystania z usługi Azure Stack interfejsów
    - Jeśli zaktualizujesz wartości limitu przydziału na 0 jest równoważna wartość domyślną 2048 GiB. Obejść ten problem należy ustawić wartość limitu przydziału na 1.
 
 <!-- 2869209 – IS, ASDK --> 
-- Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenia cmdlet zakończy się niepowodzeniem z następującym błędem: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie"*. 
+- Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenie cmdlet kończy się niepowodzeniem z następującym błędem: *Długie wykonywanie operacji nie powiodło się ze stanem "Niepowodzenie"*. 
 
 <!--  2966665 – IS, ASDK --> 
-- Dołączanie dysków SSD dyski danych do rozmiaru premium zarządzanych dysków maszyn wirtualnych (DS, DSv2, Fs i Fs_V2) kończy się niepowodzeniem z powodu błędu: *nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: żądanie nie można wykonać operacji, ponieważ typ konta magazynu " Premium_LRS nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*
+- Dołączanie dysków SSD dyski z danymi do rozmiaru premium zarządzanych dysków maszyn wirtualnych (DS, DSv2, Fs i Fs_V2) kończy się niepowodzeniem z powodu błędu:  *Nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: Żądanie, nie można wykonać operacji, ponieważ typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*
 
    Aby obejść ten problem, należy użyć *Standard_LRS* dyski danych zamiast *dysków Premium_LRS*. Korzystanie z *Standard_LRS* dysków z danymi nie zmienia się operacji We/Wy lub rozliczeń kosztów. 
 
 <!--  2795678 – IS, ASDK --> 
 - Korzystając z portalu do tworzenia maszyn wirtualnych (VM) rozmiarów maszyn wirtualnych — wersja premium (DS, Ds_v2, FS i FSv2), maszyna wirtualna jest tworzona na koncie magazynu w warstwie standardowa. Tworzenie konta magazynu w warstwie standardowa nie wpływa na funkcjonalnie, operacje We/Wy, lub rozliczeń. 
 
-   Możesz bezpiecznie zignorować ostrzeżenie, że jest wyświetlany komunikat: *przycisk OK, aby używać dysku standardowego na na rozmiar obsługujący dyski w warstwie premium. To może mieć wpływ na wydajność systemu operacyjnego i nie jest zalecane. Rozważ użycie magazynu w warstwie premium (SSD).*
+   Można bezpiecznie zignorować to ostrzeżenie, który jest wyświetlany komunikat: *Wybrano używać dysku standardowego na na rozmiar obsługujący dyski w warstwie premium. To może mieć wpływ na wydajność systemu operacyjnego i nie jest zalecane. Rozważ użycie magazynu w warstwie premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Zestaw skalowania maszyn wirtualnych (VMSS) utworzyć środowisko zawiera opartych na systemie CentOS 7.2 jako opcję wdrażania. Ponieważ ten obraz nie jest dostępna w usłudze Azure Stack, wybierz inny system operacyjny na potrzeby wdrożenia albo skorzystać z szablonu usługi Azure Resource Manager, określając innego obrazu systemu CentOS, który został pobrany przed ich wdrożeniem w portalu Marketplace przez operatora.  
@@ -315,7 +314,7 @@ Raporty użycia utworzone podczas korzystania z usługi Azure Stack interfejsów
 
    Aby znaleźć wykresu procent użycia procesora CPU dla maszyny Wirtualnej, przejdź do **metryki** bloku i wyświetlanie wszystkich obsługiwanych Windows maszyn wirtualnych gościa metryki.
 
-
+- Maszyny Wirtualnej systemu Ubuntu 18.04 utworzonej z autoryzacją SSH włączone uniemożliwi używanie kluczy SSH do logowania. Obejść ten problem użyj dostęp do maszyny Wirtualnej dla rozszerzenia systemu Linux do zaimplementowania kluczy SSH po zainicjowaniu obsługi administracyjnej, lub korzystać z uwierzytelniania opartego na hasłach.
 
 ### <a name="networking"></a>Networking  
 
@@ -361,8 +360,10 @@ Raporty użycia utworzone podczas korzystania z usługi Azure Stack interfejsów
 
 
 ## <a name="download-the-update"></a>Pobierz aktualizację
-Możesz pobrać pakiet aktualizacji usługi Azure Stack 1808 z [tutaj](https://aka.ms/azurestackupdatedownload).
-  
+
+Możesz pobrać pakiet aktualizacji usługi Azure Stack 1808 z [tutaj](https://aka.ms/azurestackupdatedownload). 
+
+W scenariuszach na połączonych wdrożenia usługi Azure Stack okresowo sprawdzać bezpiecznego punktu końcowego i automatycznie powiadomienie, jeśli aktualizacja jest dostępna dla chmury. Aby uzyskać więcej informacji, zobacz [zarządzanie aktualizacjami dla usługi Azure Stack](azure-stack-updates.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby przejrzeć zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym, zobacz [obsługi zasad w usłudze Azure Stack](azure-stack-servicing-policy.md).  

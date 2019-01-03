@@ -4,19 +4,19 @@ description: Więcej informacji na temat usług i narzędzi dostępnych do migra
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 12/13/2018
-ms.openlocfilehash: 2eb263c6776453c4cae217168af969221485bfa3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9887860470632c37a586cb3029e2ef7d455a3a9c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386795"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713289"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Usługi i narzędzia dostępne dla scenariuszy migracji danych
 
@@ -125,4 +125,4 @@ Poniższe tabele zidentyfikować usługi i narzędzia, które można użyć, aby
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Omówienie usługi Azure Database Migration Service, zobacz [co to jest podgląd usługi migracji bazy danych Azure](dms-overview.md).
+Omówienie usługi Azure Database Migration Service, zobacz artykuł [co to jest Azure Database Migration Service](dms-overview.md).

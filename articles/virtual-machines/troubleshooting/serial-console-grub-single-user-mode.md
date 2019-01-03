@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211387"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580148"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -28,10 +28,10 @@ Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcj
 
 Tryb jednego użytkownika jest również przydatne w sytuacjach, w której maszyna wirtualna tylko może być skonfigurowany do akceptowania kluczy SSH do logowania się w. W takim przypadku można utworzyć konto przy użyciu uwierzytelniania hasła w trybie jednego użytkownika.
 
-Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kiedy maszyna wirtualna jest uruchamiana i modyfikowanie konfiguracji rozruchu w CHODNIKÓW. Można to zrobić, za pomocą konsoli szeregowej maszyny Wirtualnej. 
+Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kiedy maszyna wirtualna jest uruchamiana i modyfikowanie konfiguracji rozruchu w CHODNIKÓW. Można to zrobić, za pomocą konsoli szeregowej maszyny Wirtualnej.
 
 ## <a name="general-grub-access"></a>Ogólny program GRUB dostępu
-Dostępu CHODNIKÓW, będzie konieczne ponowne uruchomienie maszyny Wirtualnej przy jednoczesnym zachowaniu Otwórz blok konsoli szeregowej. Niektóre dystrybucje wymaga danych wprowadzonych z klawiatury do wyświetlenia CHODNIKÓW, podczas gdy inne automatycznie Pokaż CHODNIKÓW na kilka sekund i Zezwalaj na klawiatury danych wprowadzonych przez użytkownika limit czasu anulowania. 
+Dostępu CHODNIKÓW, będzie konieczne ponowne uruchomienie maszyny Wirtualnej przy jednoczesnym zachowaniu Otwórz blok konsoli szeregowej. Niektóre dystrybucje wymaga danych wprowadzonych z klawiatury do wyświetlenia CHODNIKÓW, podczas gdy inne automatycznie Pokaż CHODNIKÓW na kilka sekund i Zezwalaj na klawiatury danych wprowadzonych przez użytkownika limit czasu anulowania.
 
 Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, aby można było w trybie jednego użytkownika dostępu. W zależności od Twojej dystrybucji może być jakąś pracę Instalatora, aby upewnić się, że włączono programu GRUB. Informacje specyficzne dla dystrybucji znajduje się poniżej oraz w [ten link](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
@@ -63,11 +63,11 @@ Tryb jednego użytkownika w RHEL wymaga zalogowany jako użytkownik root do wł�
 
 1. Zaloguj się w systemie Red Hat za pośrednictwem protokołu SSH
 1. Przejdź do katalogu głównego
-1. Włącz hasło dla użytkownika głównego 
+1. Włącz hasło dla użytkownika głównego
     * `passwd root` (Ustaw hasło główne silne)
 1. Upewnij się, że użytkownik root tylko zalogować się za pośrednictwem ttyS0
     * `edit /etc/ssh/sshd_config` i upewnij się, że PermitRootLogIn jest ustawiona na nie
-    * `edit /etc/securetty file` Aby zezwolić tylko na logowanie za pomocą ttyS0 
+    * `edit /etc/securetty file` Aby zezwolić tylko na logowanie za pomocą ttyS0
 
 Teraz, gdy system jest uruchamiany w trybie jednego użytkownika możesz zalogować się przy użyciu hasła użytkownika root.
 
@@ -83,7 +83,7 @@ Jeśli po skonfigurowaniu CHODNIKÓW i głównego dostępu przy użyciu powyższ
 1. Dodaj następujący element do końca wiersza: `systemd.unit=rescue.target`
     * Spowoduje to rozruch w trybie jednego użytkownika. Jeśli chcesz użyć trybu awaryjnego, należy dodać `systemd.unit=emergency.target` do końca wiersza, zamiast `systemd.unit=rescue.target`
 1. Naciśnij klawisze Ctrl + X, aby zakończyć proces i ponowne uruchomienie przy użyciu ustawień zastosowanych
-1. Zostanie wyświetlony monit o hasło administratora zanim będzie mógł przejść do trybu jednego użytkownika — jest to samo hasło utworzone w powyższych instrukcji    
+1. Zostanie wyświetlony monit o hasło administratora zanim będzie mógł przejść do trybu jednego użytkownika — jest to samo hasło utworzone w powyższych instrukcji
 
     ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
@@ -104,11 +104,11 @@ Jeśli użytkownik nie powiodło się powyższe kroki, aby włączyć jako użyt
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Uwaga: Uruchomiona przy użyciu powyższych instrukcji spowoduje porzucenie należy do awaryjnego shell, dzięki czemu można również wykonywać zadania, takie jak edytowanie `fstab`. Jednak powszechnie akceptowane sugestia jest do zresetowania hasła głównego i używać go do trybu jednego użytkownika. 
+> Uwaga: Uruchamianie przy użyciu powyższych instrukcji spowoduje porzucenie do awaryjnego shell można również wykonywać zadania, takie jak edytowanie `fstab`. Jednak powszechnie akceptowane sugestia jest do zresetowania hasła głównego i używać go do trybu jednego użytkownika.
 
 
 ## <a name="access-for-centos"></a>Dostęp do CentOS
-Znacznie takich jak Red Hat Enterprise Linux, tryb jednego użytkownika w CentOS wymaga CHODNIKÓW i jako użytkownik root włączyć. 
+Znacznie takich jak Red Hat Enterprise Linux, tryb jednego użytkownika w CentOS wymaga CHODNIKÓW i jako użytkownik root włączyć.
 
 ### <a name="grub-access-in-centos"></a>Program GRUB dostępu w CentOS
 CentOS jest powiązana z CHODNIKÓW włączone poza pole. Aby wprowadzić CHODNIKÓW, ponowne uruchomienie maszyny Wirtualnej za pomocą `sudo reboot` i naciśnij dowolny klawisz. Zostanie wyświetlony ekran CHODNIKÓW, wyświetlane.
@@ -116,8 +116,8 @@ CentOS jest powiązana z CHODNIKÓW włączone poza pole. Aby wprowadzić CHODNI
 ### <a name="single-user-mode-in-centos"></a>Tryb jednego użytkownika w CentOS
 Postępuj zgodnie z instrukcjami dotyczącymi RHEL powyżej, aby włączyć tryb jednego użytkownika w CentOS.
 
-## <a name="access-for-ubuntu"></a>Dostęp do systemu Ubuntu 
-Nie wymagają hasła głównego obrazów systemu Ubuntu. Jeśli system jest uruchamiany w trybie jednego użytkownika, możesz użyć go bez dodatkowych poświadczeń. 
+## <a name="access-for-ubuntu"></a>Dostęp do systemu Ubuntu
+Nie wymagają hasła głównego obrazów systemu Ubuntu. Jeśli system jest uruchamiany w trybie jednego użytkownika, możesz użyć go bez dodatkowych poświadczeń.
 
 ### <a name="grub-access-in-ubuntu"></a>Program GRUB dostępu w systemie Ubuntu
 Dostępu CHODNIKÓW, naciśnij i przytrzymaj "Esc" w przypadku, gdy maszyna wirtualna jest uruchamiana.
@@ -137,8 +137,17 @@ Ubuntu spowoduje porzucenie możesz w trybie jednego użytkownika automatycznie,
 1. Dodaj `single` po `ro`, zapewnianie występuje znak spacji przed i po nim `single`
 1. Naciśnij klawisze Ctrl + X ponowny rozruch przy użyciu tych ustawień, a następnie wprowadź w trybie jednego użytkownika
 
+### <a name="using-grub-to-invoke-bash-in-ubuntu"></a>Za pomocą programu GRUB do wywołania funkcji bash w systemie Ubuntu
+Może to być sytuacjach (np. głównym zapomniane hasła) mogą nadal być nie może uzyskać dostępu trybie jednego użytkownika na maszynie wirtualnej systemu Ubuntu po wykonaniu powyższych instrukcji. Możesz również poinformować jądra uruchamianie /bin/bash init zamiast init systemu, umożliwiają powłoki bash i umożliwić konserwacji systemu. Skorzystaj z poniższych instrukcji:
+
+1. Program GRUB naciśnij klawisze "e", aby edytować wpis rozruchu (wpis w systemie Ubuntu)
+1. Znajdź wiersz zaczynający się od `linux`, poszukaj `ro`
+1. Zastąp `ro` z `rw init=/bin/bash`
+    - Spowoduje to instalacji usługi systemu plików w trybie odczytu, zapisu i użyj /bin/bash jako proces inicjowania
+1. Naciśnij klawisze Ctrl + X, ponowne uruchomienie przy użyciu tych ustawień
+
 ## <a name="access-for-coreos"></a>Dostęp do systemu CoreOS
-Tryb jednego użytkownika w CoreOS wymaga CHODNIKÓW włączyć. 
+Tryb jednego użytkownika w CoreOS wymaga CHODNIKÓW włączyć.
 
 ### <a name="grub-access-in-coreos"></a>Program GRUB dostępu w CoreOS
 Aby uzyskać dostęp do programu GRUB, naciśnij dowolny klawisz, gdy maszyna wirtualna jest uruchamiana.
@@ -151,13 +160,13 @@ CoreOS spowoduje porzucenie możesz w trybie jednego użytkownika automatycznie,
 1. Naciśnij klawisze Ctrl + X ponowny rozruch przy użyciu tych ustawień, a następnie wprowadź w trybie jednego użytkownika
 
 ## <a name="access-for-suse-sles"></a>Dostęp dla systemu SLES SUSE
-Zezwalaj na dostęp za pośrednictwem konsoli szeregowej nowszej obrazy z systemem SLES 12 z dodatkiem SP3 +, w przypadku, gdy system jest uruchamiany w trybie awaryjnym. 
+Zezwalaj na dostęp za pośrednictwem konsoli szeregowej nowszej obrazy z systemem SLES 12 z dodatkiem SP3 +, w przypadku, gdy system jest uruchamiany w trybie awaryjnym.
 
 ### <a name="grub-access-in-suse-sles"></a>Program GRUB dostępu w systemie SLES SUSE
 Program GRUB dostępu w systemie SLES wymaga konfiguracji programu rozruchowego za pośrednictwem YaST. Aby to zrobić, wykonaj następujące instrukcje:
 
-1. SSH do maszyny Wirtualnej z systemem SLES i uruchom `sudo yast bootloader`. Użyj `tab` klucza `enter` klucz i klawiszy strzałek, aby poruszać się po menu. 
-1. Przejdź do `Kernel Parameters`i sprawdź `Use serial console`. 
+1. SSH do maszyny Wirtualnej z systemem SLES i uruchom `sudo yast bootloader`. Użyj `tab` klucza `enter` klucz i klawiszy strzałek, aby poruszać się po menu.
+1. Przejdź do `Kernel Parameters`i sprawdź `Use serial console`.
 1. Dodaj `serial --unit=0 --speed=9600 --parity=no` argumentów konsoli
 
 1. Naciśnij klawisz F10, aby zapisać ustawienia i zamknąć okno
@@ -176,7 +185,7 @@ Użytkownik zostanie automatycznie usunięty do awaryjnego shell Jeśli SLES nie
 > Należy pamiętać, że użytkownik zostanie porzucony w do awaryjnego shell przy użyciu _tylko do odczytu_ systemu plików. Jeśli chcesz wprowadzić zmiany do wszystkich plików, należy ponownie zainstalować system plików z uprawnieniami do odczytu i zapisu. Aby to zrobić, należy wprowadzić `mount -o remount,rw /` powłokę
 
 ## <a name="access-for-oracle-linux"></a>Dostęp do oprogramowania Oracle w systemie Linux
-Znacznie takich jak Red Hat Enterprise Linux, tryb jednego użytkownika w systemie Oracle Linux wymaga CHODNIKÓW i jako użytkownik root włączyć. 
+Znacznie takich jak Red Hat Enterprise Linux, tryb jednego użytkownika w systemie Oracle Linux wymaga CHODNIKÓW i jako użytkownik root włączyć.
 
 ### <a name="grub-access-in-oracle-linux"></a>Program GRUB dostępu w systemie Oracle Linux
 Oracle Linux jest powiązana z CHODNIKÓW włączone poza pole. Aby wprowadzić CHODNIKÓW, ponowne uruchomienie maszyny Wirtualnej za pomocą `sudo reboot` i naciśnij klawisz "Esc". Zostanie wyświetlony ekran CHODNIKÓW, wyświetlane.

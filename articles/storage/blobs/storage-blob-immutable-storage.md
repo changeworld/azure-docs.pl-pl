@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: d3d83e240fec692d5aa655923637910006c7a62f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261476"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634273"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
@@ -25,23 +25,23 @@ Niezmienne storage pomaga, instytucje finansowe i powiązanych branżach — szc
 
 Typowe zastosowania tej funkcji to:
 
-- **Zgodność z przepisami**: niezmienny magazyn dla usługi Azure Blob storage pomaga organizacjom adres s 17a-4(f) CFTC 1.31(d), FINRA i innych przepisów.
+- **Zgodność z przepisami**: Niezmienny magazyn dla usługi Azure Blob storage ułatwia organizacjom adres s 17a-4(f), CFTC 1.31(d), FINRA i innych przepisów.
 
-- **Zabezpieczanie przechowywania dokumentów**: usługi Blob storage zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, w tym użytkowników z uprawnieniami administracyjnymi konta.
+- **Zabezpieczanie przechowywania dokumentu**: Usługi blob storage zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, w tym użytkowników z uprawnieniami administracyjnymi konta.
 
-- **Prawnych**: niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub śledztw w stanie odporne na żądany czas trwania.
+- **Prawnych**: Niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub śledztw w stanie odporne na żądany czas trwania.
 
 Włącza niezmienne magazynu:
 
-- **Obsługa zasad przechowywania na podstawie czasu**: użytkownicy ustawienia zasad w celu przechowywania danych w określonym przedziale czasu.
+- **Obsługa zasad przechowywania na podstawie czasu**: Użytkownicy ustawienia zasad w celu przechowywania danych w określonym przedziale czasu.
 
-- **Obsługa zasad ze względów prawnych**: gdy okres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Po ustawieniu archiwizacji ze względów prawnych można tworzyć i odczytywać obiekty blob, ale nie można ich modyfikować ani usuwać. Każde archiwum prawne jest skojarzone ze zdefiniowanym przez użytkownika tagiem alfanumerycznym, używanym jako ciąg identyfikatora (może to być na przykład numer sprawy).
+- **Obsługa zasad ze względów prawnych**: Gdy zakres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Po ustawieniu archiwizacji ze względów prawnych można tworzyć i odczytywać obiekty blob, ale nie można ich modyfikować ani usuwać. Każde archiwum prawne jest skojarzone ze zdefiniowanym przez użytkownika tagiem alfanumerycznym, używanym jako ciąg identyfikatora (może to być na przykład numer sprawy).
 
 - **Pomoc techniczna dla wszystkich obiektów blob warstw**: ROBAK niezależnie od warstwy magazynu obiektów Blob platformy Azure i zasad dotyczą wszystkich warstwy: gorąca, chłodna i archiwum. Użytkownicy mogą przechodzą danych do warstwy większość optymalizacji kosztów dla swoich obciążeń przy zachowaniu danych niezmienności.
 
-- **Konfiguracji na poziomie kontenera**: użytkownicy mogą konfigurować zasady przechowywania na podstawie czasu i ze względów prawnych tagi na poziomie kontenera. Za pomocą prostych ustawień na poziomie kontenera, użytkownicy mogą tworzyć i blokowanie zasady przechowywania na podstawie czasu, Rozszerz interwały przechowywania, ustaw i wyczyść archiwizacją ze względów prawnych i wiele innych. Te zasady mają zastosowanie do wszystkich obiektów blob w kontenerze, nowych i istniejących.
+- **Konfiguracji na poziomie kontenera**: Użytkownicy mogą konfigurować zasady przechowywania na podstawie czasu i ze względów prawnych tagi na poziomie kontenera. Za pomocą prostych ustawień na poziomie kontenera, użytkownicy mogą tworzyć i blokowanie zasady przechowywania na podstawie czasu, Rozszerz interwały przechowywania, ustaw i wyczyść archiwizacją ze względów prawnych i wiele innych. Te zasady mają zastosowanie do wszystkich obiektów blob w kontenerze, nowych i istniejących.
 
-- **Obsługa rejestrowania inspekcji**: każdy kontener zawiera dziennik inspekcji. Pokazuje maksymalnie pięć polecenia na podstawie czasu przechowywania dla zasad zablokowany na podstawie czasu przechowywania, przy użyciu maksymalnie trzech dzienników dla rozszerzeń interwał przechowywania. Do przechowywania danych na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia tego kontenera, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) pokazuje bardziej kompleksowe dziennika wszystkie kontrolki działania płaszczyzny. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
+- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji. Pokazuje maksymalnie pięć polecenia na podstawie czasu przechowywania dla zasad zablokowany na podstawie czasu przechowywania, przy użyciu maksymalnie trzech dzienników dla rozszerzeń interwał przechowywania. Do przechowywania danych na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia tego kontenera, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) pokazuje bardziej kompleksowe dziennika wszystkie kontrolki działania płaszczyzny. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
 
 Niezmienny magazyn jest włączona we wszystkich publicznych regionach platformy Azure.
 
@@ -95,7 +95,7 @@ Nie ma żadnych dodatkowych opłat za używanie tej funkcji. Niezmienialnymi dan
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Najnowsze wersje [witryny Azure portal](http://portal.azure.com) i [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oraz wersję zapoznawczą [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) obsługiwać niezmienny magazyn dla usługi Azure Blob storage.
+Najnowsze wersje [witryny Azure portal](http://portal.azure.com) i [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oraz wersję zapoznawczą [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) obsługiwać niezmienny magazyn dla usługi Azure Blob storage.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -137,13 +137,12 @@ Funkcja jest dostępna w następujących grupach polecenia: `az storage containe
 
 ### <a name="powershell"></a>PowerShell
 
-[Program PowerShell w wersji 4.4.0-preview](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May20180) obsługuje magazyn niezmienne.
-Aby włączyć tę funkcję, wykonaj następujące kroki:
+Moduł Az.Storage (wersja zapoznawcza) obsługuje magazyn niezmienne.  Aby włączyć tę funkcję, wykonaj następujące kroki:
 
 1. Upewnij się, że masz najnowszą wersję zainstalowanego modułu PowerShellGet: `Install-Module PowerShellGet –Repository PSGallery –Force`.
 2. Usuń wszelkie poprzedniej instalacji programu Azure PowerShell.
-3. Instalacja usługi AzureRM: `Install-Module AzureRM –Repository PSGallery –AllowClobber`. Azure można zainstalować podobnie z tego repozytorium.
-4. Zainstaluj polecenia cmdlet płaszczyzny zarządzania magazynu w wersji zapoznawczej: `Install-Module -Name AzureRM.Storage -AllowPrerelease -Repository PSGallery -AllowClobber`.
+3. Instalowanie programu Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
+4. Zainstaluj wersję zapoznawczą modułu programu PowerShell dla usługi Azure Storage: `Install-Module Az.Storage -AllowPrerelease -Repository PSGallery -AllowClobber`
 
 [PowerShell przykładowy kod](#sample-powershell-code) sekcję w dalszej części tego artykułu przedstawiono użycie funkcji.
 
@@ -202,6 +201,8 @@ Niezmienne storage jest obecnie dostępna tylko w regionach świadczenia publicz
 
 ## <a name="sample-powershell-code"></a>Przykładowy kod programu PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Przykładowy skrypt programu PowerShell jest dla odwołania. Ten skrypt tworzy nowe konto magazynu i kontener. Go następnie pokazano, jak ustawić i wyczyść archiwizacją ze względów prawnych, Utwórz zablokować zasady przechowywania na podstawie czasu (znanego również jako zasady niezmienności) i wydłużyć okres przechowywania.
 
 Skonfiguruj i przetestuj konta usługi Azure Storage:
@@ -214,122 +215,122 @@ $container2 = "<Enter another container name>”
 $location = "<Enter the storage account location>"
 
 # Log in to the Azure Resource Manager account
-Login-AzureRMAccount
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Storage"
+Login-AzAccount
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 
 # Create your Azure resource group
-New-AzureRmResourceGroup -Name $ResourceGroup -Location $location
+New-AzResourceGroup -Name $ResourceGroup -Location $location
 
 # Create your Azure storage account
-New-AzureRmStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
+New-AzStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
     $StorageAccount -SkuName Standard_LRS -Location $location -Kind StorageV2
 
 # Create a new container
-New-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+New-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container
 
 # Create Container 2 with a storage account object
-$accountObject = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroup `
+$accountObject = Get-AzStorageAccount -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount
-New-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
+New-AzStorageContainer -StorageAccount $accountObject -Name $container2
 
 # Get a container
-Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container
 
 # Get a container with an account object
-$containerObject = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container
+$containerObject = Get-AzStorageContainer -StorageAccount $accountObject -Name $container
 
 # List containers
-Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount
 
 # Remove a container (add -Force to dismiss the prompt)
-Remove-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+Remove-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container2
 
 # Remove a container with an account object
-Remove-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
+Remove-AzStorageContainer -StorageAccount $accountObject -Name $container2
 
 # Remove a container with a container object
-$containerObject2 = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
-Remove-AzureRmStorageContainer -InputObject $containerObject2
+$containerObject2 = Get-AzStorageContainer -StorageAccount $accountObject -Name $container2
+Remove-AzStorageContainer -InputObject $containerObject2
 ```
 
 Ustawić lub wyczyścić archiwizacją ze względów prawnych:
 
 ```powershell
 # Set a legal hold
-Add-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
+Add-AzStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container -Tag <tag1>,<tag2>,...
 
 # with an account object
-Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
+Add-AzStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
 
 # with a container object
-Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
+Add-AzStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
 
 # Clear a legal hold
-Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
+Remove-AzStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container -Tag <tag2>
 
 # with an account object
-Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
+Remove-AzStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
 
 # with a container object
-Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>
+Remove-AzStorageContainerLegalHold -Container $containerObject -Tag <tag4>
 ```
 
 Utwórz lub zaktualizuj zasady niezmienności:
 ```powershell
 # with an account name or container name
-Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
+Set-AzStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container -ImmutabilityPeriod 10
 
 # with an account object
-Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+Set-AzStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -ImmutabilityPeriod 1 -Etag $policy.Etag
 
 # with a container object
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
+$policy = Set-AzStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 7
 
 # with an immutability policy object
-Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
+Set-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
 ```
 
 Pobierz zasady niezmienności:
 ```powershell
 # Get an immutability policy
-Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
+Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container
 
 # with an account object
-Get-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+Get-AzStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container
 
 # with a container object
-Get-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject
+Get-AzStorageContainerImmutabilityPolicy -Container $containerObject
 ```
 
 Zablokuj zasady niezmienności (Dodaj - Force, aby zamknąć wiersz):
 ```powershell
 # with an immutability policy object
-$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
+$policy = Lock-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
 
 # with an account name or container name
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Lock-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
 # with an account object
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
+$policy = Lock-AzStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -Etag $policy.Etag
 
 # with a container object
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -Container `
+$policy = Lock-AzStorageContainerImmutabilityPolicy -Container `
     $containerObject -Etag $policy.Etag -force
 ```
 
@@ -337,45 +338,45 @@ Rozszerz zasady niezmienności:
 ```powershell
 
 # with an immutability policy object
-$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
+$policy = Set-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 
 # with an account name or container name
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Set-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -ImmutabilityPeriod 11 -Etag $policy.Etag -ExtendPolicy
 
 # with an account object
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
+$policy = Set-AzStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -ImmutabilityPeriod 12 -Etag `
     $policy.Etag -ExtendPolicy
 
 # with a container object
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
+$policy = Set-AzStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
 Usuń zasady niezmienności (Dodaj - Force, aby zamknąć wiersz):
 ```powershell
 # with an immutability policy object
-$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 # with an account name or container name
-Remove-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+Remove-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
 # with an account object
-Remove-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+Remove-AzStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -Etag $policy.Etag
 
 # with a container object
-Remove-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject `
+Remove-AzStorageContainerImmutabilityPolicy -Container $containerObject `
     -Etag $policy.Etag
 
 ```

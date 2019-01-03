@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435552"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744344"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Oprogramowanie Apache Phoenix w usłudze HDInsight
 
-[Apache Phoenix](http://phoenix.apache.org/) typu open source, warstwy równoległe na wielką skalę relacyjna baza danych oparta na [bazy danych Apache HBase](hbase/apache-hbase-overview.md). Phoenix pozwala korzystać z zapytań przypominający SQL za pośrednictwem HBase. Phoenix używa sterowników JDBC poniżej, aby umożliwić użytkownikom tworzenie, usuwanie, alter SQL tabel, indeksów, widoków i sekwencje i upsert wierszy indywidualnie i zbiorczo. Phoenix używa noSQL natywnej kompilacji, zamiast używać MapReduce do kompilowania zapytań, umożliwiając tworzenie aplikacji o małych opóźnieniach w bazie danych HBase. Phoenix dodaje koprocesory umożliwiają uruchamianie kodu dostarczane przez klienta w przestrzeni adresowej serwera, wykonywanie kodu wspólnie przechowywane z danymi. To podejście minimalizuje transfer danych klienta/serwera.
+[Apache Phoenix](https://phoenix.apache.org/) typu open source, warstwy równoległe na wielką skalę relacyjna baza danych oparta na [bazy danych Apache HBase](hbase/apache-hbase-overview.md). Phoenix pozwala korzystać z zapytań przypominający SQL za pośrednictwem HBase. Phoenix używa sterowników JDBC poniżej, aby umożliwić użytkownikom tworzenie, usuwanie, alter SQL tabel, indeksów, widoków i sekwencje i upsert wierszy indywidualnie i zbiorczo. Phoenix używa noSQL natywnej kompilacji, zamiast używać MapReduce do kompilowania zapytań, umożliwiając tworzenie aplikacji o małych opóźnieniach w bazie danych HBase. Phoenix dodaje koprocesory umożliwiają uruchamianie kodu dostarczane przez klienta w przestrzeni adresowej serwera, wykonywanie kodu wspólnie przechowywane z danymi. To podejście minimalizuje transfer danych klienta/serwera.
 
-Apache Phoenix otwiera zapytania o dane big data do osoby niebędące deweloperami, którzy mogą używać składni podobnego do SQL zamiast programowania. Phoenix jest wysoce zoptymalizowane na potrzeby bazy danych HBase, w przeciwieństwie do innych narzędzi takich jak [Hive](hadoop/hdinsight-use-hive.md) i Apache Spark SQL. Korzyści dla deweloperów to zapisuje wysoce wydajnych zapytań przy użyciu znacznie mniejszej ilości kodu.
+Apache Phoenix otwiera zapytania o dane big data do osoby niebędące deweloperami, którzy mogą używać składni podobnego do SQL zamiast programowania. Phoenix jest wysoce zoptymalizowane na potrzeby bazy danych HBase, w przeciwieństwie do innych narzędzi takich jak [Apache Hive](hadoop/hdinsight-use-hive.md) i Apache Spark SQL. Korzyści dla deweloperów to zapisuje wysoce wydajnych zapytań przy użyciu znacznie mniejszej ilości kodu.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Po przesłaniu zapytania SQL Phoenix kompiluje zapytania w celu wywołania natywne bazy danych HBase i uruchamia skanowanie (lub planu) w sposób równoległy do optymalizacji. Ta warstwa abstrakcji zwalnia deweloperom pisać zadań MapReduce, zamiast tego Skoncentruj się na logice biznesowej i przepływ pracy aplikacji dotyczące magazynu danych big data firmy Phoenix.
@@ -70,17 +70,17 @@ Aby dodać później więcej kolumn, użyj `ALTER VIEW` instrukcji.
 
 ### <a name="skip-scan"></a>Pomiń skanowania
 
-Pomiń skanowania używa co najmniej jedną kolumnę indeksu złożonego w celu odnalezienia unikatowe wartości. W przeciwieństwie do zakresu skanowania, Pomiń skanowania implementuje wierszy wewnątrz skanowania, którego można [zwiększona wydajność](http://phoenix.apache.org/performance.html#Skip-Scan). Podczas skanowania, pierwsza wartość dopasowane wraz z indeks zostanie pominięty, aż do znalezienia następnej wartości.
+Pomiń skanowania używa co najmniej jedną kolumnę indeksu złożonego w celu odnalezienia unikatowe wartości. W przeciwieństwie do zakresu skanowania, Pomiń skanowania implementuje wierszy wewnątrz skanowania, którego można [zwiększona wydajność](https://phoenix.apache.org/performance.html#Skip-Scan). Podczas skanowania, pierwsza wartość dopasowane wraz z indeks zostanie pominięty, aż do znalezienia następnej wartości.
 
 Skanowanie Pomiń używa `SEEK_NEXT_USING_HINT` wyliczenie filtrów bazy danych HBase. Za pomocą `SEEK_NEXT_USING_HINT`, skanowania Pomiń śledzi informacje o który zestaw kluczy lub zakresy kluczy, są wyszukiwane w każdej kolumnie. Pomiń skanowania, a następnie pobiera klucz, który został przekazany do niego podczas obliczania wartości filtru i określa, czy jest jedną z kombinacji. W przeciwnym razie Pomiń skanowania ocenia kluczem najwyższego dalej, aby przejść do.
 
 ### <a name="transactions"></a>Transakcje
 
-Gdy baza danych HBase zapewnia transakcji na poziomie wiersza, Phoenix integruje się z [Tephra](http://tephra.io/) dodanie obsługi transakcji wielu wierszy i między tabelami przy użyciu pełnej [ACID](https://en.wikipedia.org/wiki/ACID) semantyki.
+Gdy baza danych HBase zapewnia transakcji na poziomie wiersza, Phoenix integruje się z [Tephra](https://tephra.io/) dodanie obsługi transakcji wielu wierszy i między tabelami przy użyciu pełnej [ACID](https://en.wikipedia.org/wiki/ACID) semantyki.
 
 Jako przy użyciu tradycyjnych transakcji SQL, transakcji przez Menedżera transakcji Phoenix umożliwiają upewnij się, że pojedynczej Atomowej jednostki danych jest pomyślnie upserted, wycofywanie transakcji w przypadku niepowodzenia operacji upsert w dowolnej tabeli włączone transakcji.
 
-Aby włączyć Phoenix transakcji, zobacz [dokumentacji transakcji Apache Phoenix](http://phoenix.apache.org/transactions.html).
+Aby włączyć Phoenix transakcji, zobacz [dokumentacji transakcji Apache Phoenix](https://phoenix.apache.org/transactions.html).
 
 Aby utworzyć nową tabelę z transakcjami włączona, ustaw `TRANSACTIONAL` właściwości `true` w `CREATE` instrukcji:
 
@@ -94,7 +94,7 @@ Aby zmodyfikować istniejącą tabelę transakcyjnej, należy użyć tej samej w
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Nie można przełączyć transakcyjna tabeli wstecz do są nietransakcyjnej.
 
 ### <a name="salted-tables"></a>Solone tabel

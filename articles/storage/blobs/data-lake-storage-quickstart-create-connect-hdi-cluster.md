@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: f1c42a3e091bc4b3804edfe835e521a99fcee880
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975067"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792893"
 ---
-# <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki Start: Konfigurowanie klastrów w HDInsight
+# <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki start: Konfigurowanie klastrów w HDInsight
 
 W tym przewodniku Szybki Start dowiesz się, jak instalowanie i konfigurowanie klastrów w HDInsight przy użyciu Hadoop, Spark, Kafka, Interactive Query, HBase, R Server i Storm. Dowiesz się też dostosowywać klastry, dołącz je do domeny i dołącz je do konta magazynu przy użyciu [wersji zapoznawczej usługi Azure Data Lake Storage Gen2](data-lake-storage-introduction.md) włączone.
 
@@ -30,7 +30,7 @@ Konto magazynu z możliwościami Data Lake Storage Gen2 służy jako warstwa dan
 
 W poniższej tabeli przedstawiono różne metody, których można użyć do skonfigurowania klastra usługi HDInsight.
 
-| Klastry utworzone za pomocą | Przeglądarki sieci Web | Wiersz polecenia | Interfejs API REST | SDK | 
+| Klastry utworzone za pomocą | Przeglądarka sieci Web | Wiersz polecenia | Interfejs API REST | SDK | 
 | --- |:---:|:---:|:---:|:---:|
 | [Azure Portal](../../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](../../hdinsight/hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
@@ -86,8 +86,8 @@ Aby uzyskać więcej informacji na temat tworzenia HDInsight przyłączone do do
 
 Przy użyciu klastrów HDInsight można skonfigurować dwa konta użytkownika podczas tworzenia klastra:
 
-* Użytkownika HTTP: domyślna nazwa użytkownika jest *administratora*. Używa konfiguracji podstawowej w witrynie Azure portal. Czasami jest to "Klaster użytkownika".
-* Użytkownika SSH (klastry systemu Linux): używane do łączenia z klastrem za pośrednictwem protokołu SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Użytkownik HTTP: Domyślna nazwa użytkownika jest *administratora*. Używa konfiguracji podstawowej w witrynie Azure portal. Czasami jest to "Klaster użytkownika".
+* Użytkownika SSH (klastry systemu Linux): Używane do łączenia z klastrem za pośrednictwem protokołu SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="location"></a>Lokalizacji (regionów) dla klastrów i magazynu
 
@@ -102,7 +102,7 @@ Mimo że instalacji lokalnej usługi Hadoop używa pliku System (HDFS, Hadoop Di
 
 Podczas konfigurowania dla domyślnego punktu końcowego magazynu należy określić usługi Data Lake Storage. Domyślny magazyn zawiera aplikacji i systemu dzienniki. Opcjonalnie można określić dodatkowe połączone konta magazynu mających Gen2 magazynu programu Data Lake włączone, czy dostęp do klastra. Klaster HDInsight i kont magazynu zależne muszą być w tej samej lokalizacji platformy Azure.
 
-![Ustawienia magazynu klastra: punktów końcowych magazynu zgodnego systemem plików HDFS](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
+![Ustawienia magazynu klastra: Punkty końcowe usługi storage zgodnego systemem plików HDFS](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > Pamiętaj, aby **wyłączyć dostęp Data Lake Store**. To ustawienie odnosi się do starych *Data Lake Store* funkcjonalność i ma być wyłączona, aby *usługi Data Lake Storage* funkcje, aby działać poprawnie.
@@ -172,8 +172,8 @@ Jeśli używasz witryny Azure portal, aby skonfigurować klaster, rozmiar węzł
 
 Podczas wdrażania klastrów, należy wybrać zasoby obliczeniowe, w oparciu o rozwiązania, które planujesz wdrożyć. Następujące maszyny wirtualne są używane w przypadku klastrów HDInsight:
 
-* A i maszyny wirtualne z serii D1 – 4: [rozmiarów maszyn wirtualnych systemu Linux General-purpose](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* Maszyny Wirtualnej serii D11 – 14: [rozmiarów zoptymalizowanych pod kątem pamięci maszyny Wirtualnej systemu Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A i maszyny wirtualne z serii D1 – 4: [Ogólnego przeznaczenia rozmiarów maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
+* Seria D11 – 14 maszyn wirtualnych: [Zoptymalizowane pod kątem pamięci rozmiarów maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 Aby dowiedzieć się, jaka wartość należy używać do określenia rozmiaru maszyny Wirtualnej podczas tworzenia klastra za pomocą różnych zestawów SDK lub podczas korzystania z programu Azure PowerShell, zobacz [rozmiarów maszyn wirtualnych do użycia w przypadku klastrów HDInsight](../../cloud-services/cloud-services-sizes-specs.md#size-tables). Z tego połączonego artykułu, użyj wartości w **rozmiar** kolumny tabel.
 
@@ -198,7 +198,7 @@ Aplikacja usługi HDInsight to aplikacja, którą użytkownicy mogą zainstalowa
 
 Większość aplikacji HDInsight są instalowane na pustego węzła krawędzi.  Pustego węzła krawędzi jest maszyny wirtualnej z systemem Linux przy użyciu tych samych narzędzi klienckich, które są zainstalowane i skonfigurowane tak jak węzła głównego. W węźle brzegowym służy do uzyskiwania dostępu do klastra, testowania aplikację kliencką i hosting aplikacji klienckich. Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w HDInsight](../../hdinsight/hdinsight-apps-use-edge-node.md).
 
-## <a name="advanced-settings-script-actions"></a>Ustawienia zaawansowane: akcji skryptu
+## <a name="advanced-settings-script-actions"></a>Ustawienia zaawansowane: Działania skryptu
 
 Można zainstalować dodatkowe składniki lub dostosowywanie konfiguracji klastra za pomocą skryptów tworzenia. Te skrypty są wywoływane za pośrednictwem **akcji skryptu**, czyli opcja konfiguracji, która może być stosowane w witrynie Azure portal, poleceń cmdlet programu PowerShell Windows HDInsight lub zestawu .NET SDK HDInsight. Aby uzyskać więcej informacji, zobacz [klastra HDInsight dostosować za pomocą akcji skryptu](../../hdinsight/hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -229,7 +229,7 @@ Czasami którą chcesz skonfigurować następujące pliki konfiguracji w trakcie
 
 Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą narzędzia Bootstrap](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Ustawienia zaawansowane: rozszerzanie klastrów z siecią wirtualną
+## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Ustawienia zaawansowane: Rozszerzanie klastrów z siecią wirtualną
 
 Jeśli rozwiązanie wymaga technologii, które są dystrybuowane między wieloma typy klastrów HDInsight, [sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network) można połączyć typy wymagane klastra. Ta konfiguracja umożliwia klastrów i wszelkie kod, który można wdrożyć do nich, może komunikować się bezpośrednio ze sobą.
 
@@ -239,12 +239,12 @@ Aby uzyskać przykład użycia dwa typy klastrów w ramach sieci wirtualnej plat
 
 ## <a name="troubleshoot-access-control-issues"></a>Rozwiązywanie problemów z kontrolą dostępu
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](../../hdinsight/hdinsight-administer-use-portal-linux.md#create-clusters).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](../../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Sterownik systemu plików Hadoop ABFS dla usługi Azure Data Lake Storage Gen2](data-lake-storage-abfs-driver.md)
-- [Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+- [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
 - [Co to są HDInsight i ekosystemu platformy Hadoop oraz klastrów Hadoop?](../../hdinsight/hadoop/apache-hadoop-introduction.md)
 - [Rozpoczęcie korzystania z usługi Hadoop w usłudze HDInsight](../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Pracowanie z platformą Hadoop w HDInsight z Windows PC](../../hdinsight/hdinsight-hadoop-windows-tools.md)

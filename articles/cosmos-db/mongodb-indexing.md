@@ -1,24 +1,24 @@
 ---
-title: Indeksowanie w usłudze Azure Cosmos DB bazy danych MongoDB API
-description: Zawiera omówienie możliwości indeksowania w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB.
+title: Indeksowanie w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB
+description: Zawiera omówienie możliwości indeksowania za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 services: cosmos-db
-author: orestis-ms
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: orkostak
-ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 4c6ba4b12625433f0b0218dc88decf2d7cb7ad77
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875301"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792286"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indeksowanie w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indeksowanie przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-Interfejs API bazy danych MongoDB w usłudze Azure Cosmos DB wykorzystuje możliwości automatycznego zarządzania indeksem usługi Azure Cosmos DB. W rezultacie użytkownicy mają dostęp do domyślnych zasad indeksowania usługi Azure Cosmos DB. Tak więc jeśli użytkownik nie zdefiniował żadnych indeksów lub żadne indeksy nie zostały usunięte, wszystkie pola będą domyślnie automatycznie indeksowane po wstawieniu do kolekcji. W większości przypadków zaleca się użycie domyślnych zasad indeksowania ustawionych dla konta.
+Interfejs API danych usługi Azure Cosmos DB, bazy danych mongodb wykorzystuje możliwości automatycznego zarządzania indeksem usługi Cosmos DB. W rezultacie użytkownicy mają dostęp do domyślnych zasad usługi Cosmos DB indeksowania. Tak Jeśli żadne indeksy zostały zdefiniowane przez użytkownika lub żadne indeksy nie zostały usunięte, następnie wszystkie pola będą się domyślnie automatycznie indeksowane po wstawieniu do kolekcji. W większości przypadków zaleca się użycie domyślnych zasad indeksowania ustawionych dla konta.
 
 ## <a name="dropping-the-default-indexes"></a>Usuwanie indeksów domyślnych
 
@@ -97,5 +97,5 @@ Poprzednie polecenie spowoduje usunięcie dowolnych dokumentów w kolekcji ```db
 Obecnie tworzenie indeksów unikatowych jest możliwe tylko wtedy, gdy kolekcja nie zawiera dokumentów. Popularne narzędzia migracji bazy danych MongoDB podejmują próby tworzenia indeksów unikatowych po zaimportowaniu danych. Aby obejść ten problem, zaleca się, aby użytkownicy ręcznie tworzyli odpowiednie kolekcje i indeksy unikatowe, zamiast pozwalać na to narzędziom do migracji (w przypadku narzędzia ```mongorestore``` to zachowanie jest osiągane poprzez użycie flagi --noIndexRestore w wierszu polecenia).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Jak usługa Azure Cosmos DB indeksuje dane?](../cosmos-db/index-policy.md)
-* [Automatyczne wygasanie danych w kolekcjach usługi Azure Cosmos DB przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)
+* [Indeksowanie w usłudze Azure Cosmos DB](../cosmos-db/index-policy.md)
+* [Wygasanie danych w usłudze Azure Cosmos DB automatycznie przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)

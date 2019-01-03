@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270114"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599812"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrolowanie ruchu w usłudze Azure App Service z usługą Azure Traffic Manager
 > [!NOTE]
@@ -52,7 +52,7 @@ Podczas przy użyciu usługi Azure Traffic Manager za pomocą platformy Azure, n
 * Można określić tylko jeden punkt końcowy usługi aplikacji, na region w profilu. Po wybraniu aplikacji jako punkt końcowy do jednego regionu, pozostałe aplikacje w danym regionie staną się niedostępne do wyboru dla tego profilu.
 * Punkty końcowe usługi App Service, które są określone w profilu usługi Azure Traffic Manager jest wyświetlany w obszarze **nazw domen** sekcji na stronie Konfiguracja aplikacji w profilu, ale nie ma można konfigurować.
 * Po dodaniu aplikacji do profilu, **adres URL witryny** na pulpicie nawigacyjnym portalu strony aplikacji Wyświetla adres URL domeny niestandardowej w aplikacji, jeśli skonfigurowano jedną. W przeciwnym razie wyświetla adres URL profilu usługi Traffic Manager (na przykład `contoso.trafficmanager.net`). Zarówno bezpośrednich nazwę domeny aplikacji i adres URL usługi Traffic Manager są widoczne na stronie konfigurowania aplikacji w ramach **nazw domen** sekcji.
-* Niestandardowa nazwa domeny działa zgodnie z oczekiwaniami, ale oprócz dodania ich do aplikacji, należy również skonfigurować na mapie DNS, aby wskazywały na adres URL usługi Traffic Manager. Aby uzyskać informacje na temat sposobu konfigurowania domeny niestandardowej na potrzeby aplikacji usługi App Service, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+* Niestandardowa nazwa domeny działa zgodnie z oczekiwaniami, ale oprócz dodania ich do aplikacji, należy również skonfigurować na mapie DNS, aby wskazywały na adres URL usługi Traffic Manager. Aby uzyskać informacje na temat sposobu konfigurowania domeny niestandardowej na potrzeby aplikacji usługi App Service, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure App Service](app-service-web-tutorial-custom-domain.md).
 * Można dodawać tylko te aplikacje, które są w trybie standardowa lub premium do profilu usługi Azure Traffic Manager.
 
 ## <a name="next-steps"></a>Następne kroki

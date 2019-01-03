@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ab9e4a3d129243ec069031c5e7233f341b545e4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255605"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713968"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights i Azure functions
 W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny na [repozytorium GitHub usługi LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//APPINSIGHT:`. 
+Cały kod w tym samouczku jest dostępny na [repozytorium GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//APPINSIGHT:`. 
 
 ## <a name="web-app-bot-with-luis"></a>Bot aplikacji sieci Web z użyciem usługi LUIS
 W tym samouczku założono, masz kod, który wygląda podobnie do następujących, lub że zostały wykonane [innym samouczku](luis-nodejs-tutorial-build-bot-framework-sample.md): 
@@ -51,11 +51,11 @@ Przechwytywanie LUIS żądania i odpowiedzi, bot aplikacji sieci web musi **[us�
 
 1. W witrynie Azure portal, usługę sieci web aplikacji bot wybierz **kompilacji** w obszarze **zarządzania Bot** sekcji. 
 
-    ![Wyszukiwanie usługi app insights](./media/luis-tutorial-appinsights/build.png)
+    ![W witrynie Azure portal usługi bot aplikacji sieci web wybierz pozycję "Kompilacja" w sekcji "Zarządzanie Bot". ](./media/luis-tutorial-appinsights/build.png)
 
 2. Nowa karta przeglądarki zostanie otwarty przy użyciu edytorze usługi App Service. Wybierz nazwę aplikacji na górnym pasku, a następnie wybierz **otwartej konsoli Kudu**. 
 
-    ![Wyszukiwanie usługi app insights](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Wybierz nazwę aplikacji na górnym pasku, a następnie wybierz pozycję "Otwórz Konsola Kudu". ](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. W konsoli wprowadź następujące polecenie, aby zainstalować usługi Application Insights i pakietów podkreślenia:
 
@@ -63,7 +63,7 @@ Przechwytywanie LUIS żądania i odpowiedzi, bot aplikacji sieci web musi **[us�
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![Wyszukiwanie usługi app insights](./media/luis-tutorial-appinsights/npm-install.png)
+    ![Użyj polecenia npm, aby zainstalować usługi Application Insights i pakietów podkreślenia](./media/luis-tutorial-appinsights/npm-install.png)
 
     Poczekaj, aż pakiety do zainstalowania:
 
@@ -112,9 +112,7 @@ Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS.
 
 1. W portalu, wybierz **wszystkie zasoby** następnie Filtruj według nazwy bot aplikacji sieci web. Kliknij zasób z typem **usługi Application Insights**. Ikona usługi Application Insights jest żarówki. 
 
-    ![Wyszukiwanie usługi app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ! [[Wyszukiwania dla usługi app insights w witrynie Azure Portal](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. Po otwarciu zasobu kliknij **wyszukiwania** ikonę lupy w prawym panelu. Nowy panel do wyświetla odpowiednie. W zależności od ilości danych telemetrycznych zostanie znaleziony, zespół może potrwać chwilę, aby wyświetlić. Wyszukaj `LUIS-results` i naciśnij klawisz na klawiaturze, należy wprowadzić. Lista jest zawężony do właśnie takie wyniki zapytania usługi LUIS, dodane za pomocą tego samouczka.
 

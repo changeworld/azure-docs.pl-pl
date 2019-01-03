@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/19/2018
 ms.author: victorh
-ms.openlocfilehash: 9c0ccb7c5ccb3eced32ea5bcd9f1961c5ccd2110
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173847"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727152"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Podaj ustawienia domeny niestandardowej dla usługi platformy Azure przy użyciu usługi Azure DNS
 
@@ -116,7 +116,7 @@ Po zakończeniu procesu będą uruchamiane **nslookup** Aby sprawdzić rozpoznaw
 
 Aby dowiedzieć się więcej na temat mapowanie domeny niestandardowej w usłudze App Service, odwiedź stronę [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure Web Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
 
-Jeśli musisz kupić domenę niestandardową, odwiedź stronę [kupowanie niestandardowej nazwy domeny dla usługi Azure Web Apps](../app-service/custom-dns-web-site-buydomains-web-app.md) Aby dowiedzieć się więcej na temat domen usługi App Service.
+Jeśli musisz kupić domenę niestandardową, odwiedź stronę [kupowanie niestandardowej nazwy domeny dla usługi Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md) Aby dowiedzieć się więcej na temat domen usługi App Service.
 
 ## <a name="blob-storage"></a>Blob Storage
 

@@ -1,46 +1,37 @@
 ---
-title: 'Samouczek: tworzenie jednostronicowej aplikacji internetowej — wyszukiwanie wizualne Bing'
+title: " Tworzenie aplikacji sieci Web jednej strony — wyszukiwania wizualnego Bing"
 titleSuffix: Azure Cognitive Services
-description: Pokazuje sposób użycia interfejsu API wyszukiwania wizualnego Bing w jednostronicowej aplikacji internetowej.
+description: Dowiedz się, jak zintegrować API wyszukiwania wizualnego Bing jednostronicowa aplikacja sieci Web.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: tutorial
+ms.topic: article
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: 8ff5e36e6189c522e00c7cdd126c26b1cef92912
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443902"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745146"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa wyszukiwania wizualnego
+# <a name="create-a-visual-search-single-page-web-app"></a>Tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego 
 
 Interfejs API wyszukiwania wizualnego Bing udostępnia środowisko podobne do szczegółów obrazu pokazanego w witrynie Bing.com/images. Za pomocą wyszukiwania wizualnego można określić obraz i uzyskać szczegółowe informacje dotyczące tego obrazu, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko. 
 
-Ten samouczek wymaga rozpoczęcia subskrypcji w warstwie cenowej S9, jak pokazano w temacie [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+W tym artykule wyjaśniono, jak rozszerzyć aplikacji jednej strony sieci web dla interfejsu API wyszukiwania obrazów Bing. Aby wyświetlić ten samouczek lub pobrać kodu źródłowego użytego w tym miejscu, zobacz [samouczka: Tworzenie aplikacji jednostronicowej dla interfejsu API wyszukiwania obrazów Bing](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md). 
 
-Aby rozpocząć subskrypcję w witrynie Azure Portal:
-1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
-2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
-3. Wprowadź wartość `Name` dla nowego zasobu.
-4. Wybierz subskrypcję `Pay-As-You-Go`.
-5. Wybierz warstwę cenową `S9`.
-6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
+Pełny kod źródłowy dla tej aplikacji (po rozszerzeniu go do korzystania z interfejsu API wyszukiwania wizualnego Bing), jest dostępna w [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
 
-W tym samouczku rozbudujemy jednostronicową aplikację internetową z samouczka wyszukiwania obrazów Bing (zobacz [Jednostronicowa aplikacja internetowa](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Aby uzyskać pełny kod źródłowy potrzebny do rozpoczęcia tego samouczka, zobacz [Jednostronicowa aplikacja internetowa (kod źródłowy)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Aby uzyskać końcowy kod źródłowy tego samouczka, zobacz [Jednostronicowa aplikacja internetowa wyszukiwania wizualnego](tutorial-bing-visual-search-single-page-app-source.md).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonane zadania:
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-> [!div class="checklist"]
-> * Wywołanie interfejsu API wyszukiwania wizualnego Bing za pomocą tokenu szczegółowych informacji obrazu
-> * Wyświetlenie podobnych obrazów
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Wywołaj interfejs API wyszukiwania wizualnego Bing i obsługiwać odpowiedzi
 
-## <a name="call-bing-visual-search"></a>Wywołanie wyszukiwania wizualnego Bing
-Edytuj samouczek wyszukiwania obrazów Bing i dodaj następujący kod na końcu elementu skryptu w wierszu 409. Ten kod wywołuje interfejs API wyszukiwania wizualnego Bing i wyświetla wyniki.
+Edytuj samouczek wyszukiwania obrazów Bing i Dodaj następujący kod na końcu `<script>` — element (i przed zamknięciem `</script>` tagu). Poniższy kod obsługuje odpowiedzi z interfejsu API wyszukiwania wizualnego, wykonuje iteracje przez wyniki i wyświetla je.
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -70,7 +61,12 @@ function handleVisualSearchResponse(){
         }
     }
 }
+```
 
+Poniższy kod wysyła żądanie wyszukiwania do interfejsu API przy użyciu odbiornik zdarzeń do wywołania `handleVisualSearchResponse()`.
+
+
+```javascript
 function bingVisualSearch(insightsToken){
     let visualSearchBaseURL = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch',
         boundary = 'boundary_ABC123DEF456',
@@ -105,13 +101,15 @@ function bingVisualSearch(insightsToken){
 ```
 
 ## <a name="capture-insights-token"></a>Przechwytywanie tokenu szczegółowych informacji
-Dodaj następujący kod do obiektu `searchItemsRenderer` w wierszu 151. Ten kod dodaje link **znajdź podobne**, który po kliknięciu wywołuje funkcję `bingVisualSearch`. Funkcja otrzymuje token imageInsightsToken jako argument.
+
+Dodaj następujący kod do `searchItemsRenderer` obiektu. Ten kod dodaje link **znajdź podobne**, który po kliknięciu wywołuje funkcję `bingVisualSearch`. Funkcja otrzymuje token imageInsightsToken jako argument.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
 ```
 
 ## <a name="display-similar-images"></a>Wyświetlenie podobnych obrazów
+
 Dodaj następujący kod HTML w wierszu 601. Ten kod narzutu dodaje element używany do wyświetlania wyników wywołania interfejsu API wyszukiwania wizualnego Bing.
 
 ``` html
@@ -123,8 +121,7 @@ Dodaj następujący kod HTML w wierszu 601. Ten kod narzutu dodaje element używ
 
 Po umieszczeniu na miejscu całego nowego kodu JavaScript i wszystkich elementów HTML wyniki wyszukiwania są wyświetlane z linkiem **znajdź podobne**. Kliknij ten link, aby wypełnić sekcję **Podobne** obrazami podobnymi do obrazu wybranego przez Ciebie. W celu wyświetlenia tych obrazów może być konieczne rozwinięcie sekcji **Podobne**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Źródło jednostronicowej aplikacji internetowej wyszukiwania wizualnego](tutorial-bing-visual-search-single-page-app-source.md)
-> [Dokumentacja interfejsu API wyszukiwania wizualnego Bing](https://aka.ms/bingvisualsearchreferencedoc)
+> [Przycinanie i przekazywanie obrazu](tutorial-visual-search-crop-area-results.md)

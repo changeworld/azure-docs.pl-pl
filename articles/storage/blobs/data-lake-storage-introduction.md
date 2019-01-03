@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0b3c4a4c21bc9b124a98b1f204f85e6e78ff233e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099566"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994338"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
-Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, w oparciu o [usługi Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 jest wynikiem zbieżności możliwości naszych dwa istniejące usługi storage, Azure Blob storage i Azure Data Lake Storage Gen1. Funkcje z [usługi Azure Data Lake Storage Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/index), takie jak semantyki systemu plików, katalogu i zabezpieczenia na poziomie pliku i skalowania, które są połączone z niskie koszty i warstwowego magazynu, wysokiej dostępności/zastosowanie funkcji z [Usługi azure Blob storage](storage-blobs-introduction.md).
+Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, w oparciu o [usługi Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 jest wynikiem zbieżności możliwości naszych dwa istniejące usługi storage, Azure Blob storage i Azure Data Lake Storage Gen1. Funkcje z [usługi Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), takie jak semantyki systemu plików, katalogu i zabezpieczenia na poziomie pliku i skalowania, które są połączone z niskie koszty i warstwowego magazynu, wysokiej dostępności/zastosowanie funkcji z [Usługi azure Blob storage](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Przeznaczona dla przedsiębiorstw analizy danych big data
 
@@ -39,11 +39,11 @@ W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w
 
 -   **Dostęp zgodny z usługi Hadoop**: Data Lake Storage Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](data-lake-storage-abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, w tym [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), i [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) dostępu do danych przechowywanych w Data Lake Storage Gen2.
 
--   **Nadzbiór uprawnień POSIX**: model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą Eksploratora usługi Storage lub środowisk, takich jak Hive, jak i platformy Spark.
+-   **Nadzbiór uprawnień POSIX**: Model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą Eksploratora usługi Storage lub środowisk, takich jak Hive, jak i platformy Spark.
 
 -   **Niskie koszty**: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełny cykl życia, stawki rozliczeniowe zmienia zachowanie kosztów do minimum, za pomocą wbudowanych funkcji takich jak [cykl życia magazynu obiektów Blob platformy Azure](storage-lifecycle-management-concepts.md).
 
--   **Sterownik zoptymalizowane**: sterownik abfs [specjalnie zoptymalizowane pod kątem](data-lake-storage-abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
+-   **Sterownik zoptymalizowane**: Sterownik abfs [specjalnie zoptymalizowane pod kątem](data-lake-storage-abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
 
 ### <a name="scalability"></a>Skalowalność
 

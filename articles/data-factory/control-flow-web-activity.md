@@ -1,6 +1,6 @@
 ---
-title: Działania w fabryce danych Azure w sieci Web | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak aktywności sieci Web, jeden z działaniami przepływu sterowania obsługiwane przez fabrykę danych umożliwia wywołanie punkt końcowy REST z potoku.
+title: Działania w usłudze Azure Data Factory w sieci Web | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak działanie internetowe, jednego z działań przepływu sterowania obsługiwanych przez usługę Data Factory umożliwia wywołanie punktu końcowego REST z potoku.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 71e89828645cadbbbf60527fca9968fd8ed568ff
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: adfb30b73bbc9929bbfe3b07bd830d3f278bcc27
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059098"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723692"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Działanie sieci Web w fabryce danych Azure
+# <a name="web-activity-in-azure-data-factory"></a>Działanie internetowe w usłudze Azure Data Factory
 Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie. 
 
 ## <a name="syntax"></a>Składnia
@@ -64,25 +64,25 @@ Działanie WebActivity może być używane do wywoływania niestandardowego punk
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania sieci web | Ciąg | Yes
-type | Należy wybrać opcję **WebActivity**. | Ciąg | Yes
-method | Metoda interfejsu API REST dla docelowego punktu końcowego. | Ciąg. <br/><br/>Obsługiwane typy: "GET", "POST", "PUT" | Yes
-url | Docelowy punkt końcowy i ścieżki | Ciąg (lub wyrażenie o wartości resultType ciągu). Działanie będzie limitu czasu na 1 minutę z powodu błędu, jeśli otrzymasz odpowiedź z punktu końcowego. | Yes
-nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ na żądanie: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Ciąg (lub wyrażenie o wartości resultType ciągu) | Tak, nagłówek Content-type jest wymagany. `"headers":{ "Content-Type":"application/json"}`
-treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego.  | Ciąg (lub wyrażenie o wartości resultType ciągu). <br/><br/>Zobacz Schemat ładunku żądania w [schematu ładunku żądania](#request-payload-schema) sekcji. | Wymagany w przypadku metody POST/PUT.
-uwierzytelnianie | Metoda uwierzytelniania używana do wywoływania punktu końcowego. Obsługiwane typy to "Basic lub ClientCertificate." Aby uzyskać więcej informacji, zobacz [uwierzytelniania](#authentication) sekcji. Jeśli uwierzytelnianie nie jest wymagane, należy wykluczyć tę właściwość. | Ciąg (lub wyrażenie o wartości resultType ciągu) | Nie
-Zbiory danych | Lista zestawów danych jest przekazywana do punktu końcowego. | Tablica odwołań do zestawu danych. Może być pustą tablicę. | Yes
-linkedServices | Lista usług połączonych przekazany do punktu końcowego. | Tablica odwołań do połączonej usługi. Może być pustą tablicę. | Yes
+name | Nazwa działania w sieci web | Ciąg | Yes
+type | Musi być równa **WebActivity**. | Ciąg | Yes
+method | Metoda interfejsu API REST dla docelowego punktu końcowego. | ciąg. <br/><br/>Obsługiwane typy: POBIERZ "PUBLIKUJ", "PUT" | Yes
+url | Docelowy punkt końcowy i ścieżki | Ciąg lub wyrażenie obiektu resultType ciągu. Działanie przekroczy limit czasu na 1 minutę z powodu błędu, jeśli nie otrzymasz odpowiedzi z punktu końcowego. | Yes
+Nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ żądania: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Tak, wymagany jest nagłówek Content-type. `"headers":{ "Content-Type":"application/json"}`
+treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego.  | Ciąg lub wyrażenie obiektu resultType ciągu. <br/><br/>Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](#request-payload-schema) sekcji. | Wymagane dla metod POST/PUT.
+uwierzytelnianie | Metoda uwierzytelniania do wywoływania punktu końcowego. Obsługiwane typy to "Basic lub ClientCertificate." Aby uzyskać więcej informacji, zobacz [uwierzytelniania](#authentication) sekcji. Jeśli uwierzytelnianie nie jest wymagane, należy wykluczyć tej właściwości. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Nie
+zestawy danych | Lista zestawów danych jest przekazywana do punktu końcowego. | Tablica odwołań do zestawu danych. Może być pustą tablicą. | Yes
+linkedServices | Lista usług połączonych jest przekazywana do punktu końcowego. | Tablica odwołań do połączonej usługi. Może być pustą tablicą. | Yes
 
 > [!NOTE]
-> Punkty końcowe REST, które wywołuje aktywności sieci web musi zwracać odpowiedzi typu JSON. Działanie będzie limitu czasu na 1 minutę z powodu błędu, jeśli otrzymasz odpowiedź z punktu końcowego.
+> Punkty końcowe REST, które wywołuje działanie internetowe musi zwracać odpowiedzi typu JSON. Działanie przekroczy limit czasu na 1 minutę z powodu błędu, jeśli nie otrzymasz odpowiedzi z punktu końcowego.
 
-W poniższej tabeli przedstawiono wymagania dotyczące zawartość JSON:
+W poniższej tabeli przedstawiono wymagania dotyczące zawartości JSON:
 
 | Typ wartości | Treść żądania | Treść odpowiedzi |
 |---|---|---|
 |Obiekt JSON | Obsługiwane | Obsługiwane |
-|Tablica JSON | Obsługiwane <br/>(Obecnie tablice notacji JSON nie działają w wyniku błędu Poprawka jest w toku.) | Nieobsługiwane |
+|Tablica JSON | Obsługiwane <br/>(Obecnie tablice notacji JSON nie działają, w wyniku błędu. Poprawka jest w toku). | Nieobsługiwane |
 | Wartość JSON | Obsługiwane | Nieobsługiwane |
 | Typ spoza JSON | Nieobsługiwane | Nieobsługiwane |
 ||||
@@ -90,21 +90,21 @@ W poniższej tabeli przedstawiono wymagania dotyczące zawartość JSON:
 ## <a name="authentication"></a>Authentication
 
 ### <a name="none"></a>Brak
-Jeśli uwierzytelnianie nie jest wymagane, nie ma właściwości "uwierzytelnianie".
+Jeśli nie jest wymagane uwierzytelnianie, nie ma właściwości "uwierzytelnianie".
 
 ### <a name="basic"></a>Podstawowa
-Określ nazwę użytkownika i hasło w celu korzystania z uwierzytelniania podstawowego. 
+Określ nazwę użytkownika i hasło do użycia z uwierzytelnianiem podstawowym. 
 
 ```json
 "authentication":{  
-   "type":"Basic,
+   "type":"Basic",
    "username":"****",
    "password":"****"
 }
 ```
 
 ### <a name="client-certificate"></a>Certyfikat klienta
-Określ algorytmem Base64 zawartość pliku PFX oraz hasło. 
+Określ zawartość algorytmem Base64 pliku PFX i hasło. 
 
 ```json
 "authentication":{  
@@ -113,8 +113,20 @@ Określ algorytmem Base64 zawartość pliku PFX oraz hasło.
    "password":"****"
 }
 ```
+
+### <a name="managed-identity"></a>Tożsamość zarządzana
+
+Określ identyfikator uri zasobu, dla którego zostanie żądana tokenu dostępu za pomocą tożsamości zarządzanej przez usługę data factory. Aby wywołać interfejs API usługi Azure Resource Management, należy użyć `https://management.azure.com/`.
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
+
 ## <a name="request-payload-schema"></a>Schemat ładunku żądania
-Korzystając z metody POST/PUT, właściwości body reprezentuje ładunek, które są wysyłane do punktu końcowego. Połączone usługi i zestawy danych można przekazać jako częścią ładunku. Oto schemat ładunku: 
+Korzystając z metody POST/PUT właściwości treści reprezentuje ładunek, które są wysyłane do punktu końcowego. Usługi połączone i zestawy danych można przekazać jako część ładunku. Poniżej przedstawiono schematu dla ładunku: 
 
 ```json
 {
@@ -137,9 +149,9 @@ Korzystając z metody POST/PUT, właściwości body reprezentuje ładunek, któr
 ```
 
 ## <a name="example"></a>Przykład
-W tym przykładzie działanie sieci web w potoku wywołuje punkt końcowy REST. Przekazuje ono Azure połączoną usługą SQL i zestawu danych Azure SQL do punktu końcowego. Punkt końcowy REST używa parametrów połączenia Azure SQL w celu połączenia z serwerem Azure SQL i zwraca nazwę wystąpienia programu SQL server. 
+W tym przykładzie działanie internetowe w potoku wywołuje punktu końcowego REST. Przekazuje on połączonej usługi Azure SQL i zestaw danych usługi Azure SQL do punktu końcowego. Punkt końcowy REST używa parametrów połączenia usługi Azure SQL do łączenia się z serwerem Azure SQL i zwraca nazwę wystąpienia programu SQL server. 
 
-### <a name="pipeline-definition"></a>Definicja potoku
+### <a name="pipeline-definition"></a>Definicji potoku
 
 ```json
 {
@@ -201,7 +213,7 @@ W tym przykładzie działanie sieci web w potoku wywołuje punkt końcowy REST. 
 
 ```
 
-### <a name="web-service-endpoint-code"></a>Kod punkt końcowy usługi sieci Web
+### <a name="web-service-endpoint-code"></a>Kod punktu końcowego usługi sieci Web
 
 ```csharp
 
@@ -231,7 +243,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych: 
+Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
 
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)

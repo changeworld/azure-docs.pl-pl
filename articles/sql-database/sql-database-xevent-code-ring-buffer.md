@@ -9,15 +9,15 @@ ms.devlang: PowerShell
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 522561d8afcf6fe1bdd2887f7fd5180b79565a61
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2aaab17f3ba9352e2ee9448acbbc2d2ca2b9d077
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874621"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607646"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu dla rozszerzonych zdarzeń w bazie danych SQL cyklicznego
 
@@ -348,7 +348,7 @@ Jest podstawowym tematu dla rozszerzonych zdarzeń w usłudze Azure SQL Database
 
 Inne tematy przykładowy kod dla rozszerzonych zdarzeń są dostępne poniższe linki. Jednak musi regularnie sprawdzać dowolnego przykładu, aby zobaczyć, czy plik jest przeznaczony dla programu Microsoft SQL Server i usługi Azure SQL Database. Następnie można zdecydować, czy drobne zmiany są potrzebne do uruchomienia przykładu.
 
-* Przykład kodu służącego do usługi Azure SQL Database: [kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL](sql-database-xevent-code-event-file.md)
+* Przykład kodu służącego do usługi Azure SQL Database: [Kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

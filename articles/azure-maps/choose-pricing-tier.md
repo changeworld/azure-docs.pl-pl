@@ -3,17 +3,17 @@ title: Wybrać właściwą warstwę cenową dla usługi Azure Maps | Dokumentacj
 description: Dowiedz się więcej o oferowanych przez usługi Azure Maps warstw cenowych
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 028a227eefb319d19c9274082626a007bd9161de
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998380"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993964"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>Wybieranie odpowiedniej warstwy cenowej w usługi Azure Maps
 
@@ -53,9 +53,8 @@ Zobacz tabelę z **warstwa cenowa docelowych klientów** aby lepiej poznać S0 i
 
 | Warstwa cenowa  |        Klientów docelowych                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>Warstwa cenowa S0 jest przeznaczona dla klientów, którzy przedsiębiorstwom małych i średnich. To prawo warstwy cenowej dla Ciebie, jeśli nie będzie dużej liczby równoczesnych użytkowników, a Twoje wymagania dotyczące usługi są spełnione przez geoprzestrzenne podstawowych interfejsów API, opisane w poniższej tabeli. Ta warstwa jest ogólnie dostępna i ma zastosowanie w przypadku aplikacji we wszystkich etapów cyklu produkcji od weryfikacji koncepcji programowania i wczesnym etapie testowania do produkcyjnych aplikacji i wdrożenia.<p>|
+| S0            |    <p>Warstwa cenowa S0 jest przeznaczona dla klientów, którzy przedsiębiorstwom małych i średnich. To prawo warstwy cenowej dla Ciebie, jeśli nie będzie dużej liczby równoczesnych użytkowników, a Twoje wymagania dotyczące usługi są spełnione przez geoprzestrzenne podstawowych interfejsów API, jak wskazano w powyższej tabeli. Ta warstwa jest ogólnie dostępna i ma zastosowanie w przypadku aplikacji we wszystkich etapów cyklu produkcji od weryfikacji koncepcji programowania i wczesnym etapie testowania do produkcyjnych aplikacji i wdrożenia.<p>|
 | S1            |    <p>Warstwę cenową S1 jest przeznaczona dla klientów wymagających pomocy technicznej dla przedsiębiorstw na dużą skalę, dla aplikacji o znaczeniu, dużej liczby równoczesnych użytkowników lub wymaga usług geoprzestrzennych zaawansowane.</p>|
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

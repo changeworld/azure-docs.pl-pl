@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259243"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727186"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy w celu zwiększenia wykrywania jednostki 
 W tym samouczku zademonstrowano użycie [listy jednostek](luis-concept-entity-types.md) zwiększenia wykrywania jednostki. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny na [repozytorium GitHub usługi LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity). 
+Cały kod w tym samouczku jest dostępny na [repozytorium GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
 
 ## <a name="use-homeautomation-app"></a>Użyj aplikacji HomeAutomation
 Daje aplikacji HomeAutomation kontroli urządzeń, takich jak światła, rozrywka systemów i środowisko kontroluje takich jak ogrzewania i chłodzenie. Te systemy mają kilka różnych nazw, które mogą obejmować nazwy, pseudonimy, akronimów i żargonu producenta. 

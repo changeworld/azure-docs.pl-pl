@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273351"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634613"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse za pomocą witryny Azure portal
 
@@ -46,13 +46,13 @@ Można skonfigurować i uzyskać informacje na temat przy użyciu reguł alertó
 1. W [portal](https://portal.azure.com/)Znajdź zasób interesuje Cię monitorowania i wybierz ją.
 2. Wybierz **alerty (klasyczne)** w sekcji monitorowanie. Tekst i ikona może się nieco różnić dla różnych zasobów.  
    
-     ![Monitorowanie](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
+     ![Monitorowanie](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **TYLKO USŁUGI SQL DW**: Kliknij przycisk **użycie jednostki DWU** wykresu. Wybierz **wyświetlanie alertów klasycznych**
 
 3. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)** przycisk, a następnie wypełnij pola.
    
-    ![Dodaj alert](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![Dodaj alert](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Nazwa** alert reguły, a następnie wybierz **opis**, który pokazuje także w wiadomości e-mail z powiadomieniem.
 5. Wybierz **metryki** chcesz monitorować, a następnie wybierz **warunek** i **próg** wartość metryki. Również wybrać **okres** czasu, przez jaki reguła metryki muszą być spełnione przed wyzwala alert. Na przykład jeśli używasz okres "PT5M", a alert szuka procesora CPU przekracza 80%, alert wyzwala kiedy **średni** został procesora CPU przekracza 80% przez 5 minut. Gdy wystąpi to pierwszy wyzwalacz, ponownie uaktywnia to, gdy średnie użycie procesora CPU wynosi poniżej 80% przez 5 minut. Pomiar procesora CPU występuje co minutę. Można znaleźć w poniższej tabeli opisano obsługiwane czas systemu windows, a następnie wpisz agregacji, że każdy alert nie używa wszystkich alertów należy użyć wartości średniej.   
 6. Sprawdź **wiadomości E-mail właścicielom...**  chcącym administratorów i współadministratorów, aby otrzymywać pocztą e-mail powiadomienia, gdy zostanie wyzwolony alert.
@@ -117,5 +117,5 @@ Po utworzeniu alertu możesz wybrać go oraz:
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zapoznaj się z omówieniem usługi Azure monitoring](../monitoring-and-diagnostics/monitoring-overview.md) w tym typy informacji, można zbierać i monitorowania.
 * Dowiedz się więcej o [konfigurowania elementów webhook w alertach](../azure-monitor/platform/alerts-webhooks.md).
-* Pobierz [Przegląd dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) i Zbieraj szczegółowe metryki o wysokiej częstotliwości w Twojej usłudze.
+* Pobierz [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md) i Zbieraj szczegółowe metryki o wysokiej częstotliwości w Twojej usłudze.
 * Pobierz [omówienie zbierania metryk](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) się upewnić, że usługa jest dostępna i działa prawidłowo.

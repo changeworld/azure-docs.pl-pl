@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679719"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713183"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -28,10 +28,10 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 > [!NOTE]
 > W wersji 2 została zakończona w dniu 30 kwietnia 2018 i zostanie zakończona w dniu 30 kwietnia 2019 r.
 
-* Tylko statystyczne: nie neuronowych system będzie dostępny dla tego języka.
-* Neuronowych dostępne: neuronowych system będzie dostępny. Użyj parametru `category=generalnn` dostęp do tego systemu neuronowych.
-* Domyślne neuronowej: neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
-* Tylko Neuronowej: tylko tłumaczenie neuronowe jest dostępne.
+* Statystyczne tylko: System neuronowej, nie jest dostępna dla tego języka.
+* Neuronowych dostępne: Neuronowych system jest niedostępny. Użyj parametru `category=generalnn` dostęp do tego systemu neuronowych.
+* Domyślnie neuronowej: Neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
+* Neuronowych tylko: Tylko tłumaczenie neuronowe jest dostępna.
 
 **Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych. 
 
@@ -39,14 +39,13 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Tylko statystyczne|  Neuronowych|
 |Arabski|    `ar`    |Neuronowych dostępne|  Neuronowych|
-|Arabski, Levantine| `apc`   |Neuronowych dostępne|  Neuronowych|
 |Bengalski|    `bn`    |Neuronowych dostępne|  Neuronowych|
-|Bośniacki (łaciński)|   `bs`    |Tylko statystyczne|  Statystyczne|
+|Bośniacki (łaciński)|   `bs`    |Neuronowych dostępne|  Neuronowych|
 |Bułgarski| `bg`    |Neuronowych dostępne|  Neuronowych|
 |Kantoński (tradycyjny)|   `yue`   |Tylko statystyczne|  Statystyczne|
 |Kataloński|   `ca`    |Tylko statystyczne|  Statystyczne|
-|Chiński uproszczony|    `zh-Hans`   |Domyślne neuronowych |Neuronowych|
-|Chiński tradycyjny|   `zh-Hant`   |Domyślne neuronowych |Neuronowych|
+|Chiński (uproszczony)|    `zh-Hans`   |Domyślne neuronowych |Neuronowych|
+|Chiński (tradycyjny)|   `zh-Hant`   |Domyślne neuronowych |Neuronowych|
 |Chorwacki|  `hr`    |Neuronowych dostępne|  Neuronowych|
 |Czeski| `cs`    |Neuronowych dostępne|  Neuronowych|
 |Duński|    `da`    |Neuronowych dostępne   |Neuronowych|
@@ -109,26 +108,26 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 
 | Język    | Kod języka | Skrypt | Do i z niej | Skrypt|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabski | ar | Arabski | <--> | Łaciński |
-|Bengalski  | bn | Bengalski | <--> | Łaciński |
-| Chiński (uproszczony) | nazwy zh-Hans | Chiński uproszczony | <--> | Łaciński |
-| Chiński (uproszczony) | nazwy zh-Hans | Chiński uproszczony | <--> | Chiński tradycyjny |
-| Chiński (tradycyjny) | nazwy zh-Hant | Chiński tradycyjny | <--> | Łaciński |
-| Chiński (tradycyjny) | nazwy zh-Hant | Chiński tradycyjny | <--> | Chiński uproszczony |
-| Gudżarati | gu  | Gudżarati | --> | Łaciński |
-| Hebrajski | ADAM | Hebrajski | <--> | Łaciński |
-| Hindi | hi | Dewanagari | <--> | Łaciński |
-| Japoński | ja | Japoński | <--> | Łaciński |
-| Kannada | kn | Kannada | --> | Łaciński |
-| Malajalam | ml | Malajalam | --> | Łaciński |
-| Marathi | mr | Dewanagari | --> | Łaciński |
-| Orija | lub | Orija | <--> | Łaciński |
-| Pendżabski | pa | Gurmukhi | <--> | Łaciński  |
-| Serbski (cyrylica) | Funkcja SR-Cyrl | Cyrylica  | --> | Łaciński |
-| Serbski (łaciński) | Funkcja SR-Latn | Łaciński | --> | Cyrylica |
-| Tamilski | ta | Tamilski | --> | Łaciński |
-| Telugu | Usuń | Telugu | --> | Łaciński |
-| Tajlandzki | . | Tajlandzki | <--> | Łaciński |
+| Arabski | `ar` | Arabski `Arab` | <--> | Łaciński `Latn` |
+|Bengalski  | `bn` | Bengalski `Beng` | <--> | Łaciński `Latn` |
+| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Łaciński `Latn` |
+| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
+| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Łaciński `Latn` |
+| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
+| Gudżarati | `gu`  | Gudżarati `Gujr` | --> | Łaciński `Latn` |
+| Hebrajski | `he` | Hebrajski `Hebr` | <--> | Łaciński `Latn` |
+| Hindi | `hi` | Dewanagari `Deva` | <--> | Łaciński `Latn` |
+| Japoński | `ja` | Japoński `Jpan` | <--> | Łaciński `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Łaciński `Latn` |
+| Malajalam | `ml` | Malayalam `Mlym` | --> | Łaciński `Latn` |
+| Marathi | `mr` | Dewanagari `Deva` | --> | Łaciński `Latn` |
+| Orija | `or` | Orija `Orya` | <--> | Łaciński `Latn` |
+| Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | Łaciński `Latn`  |
+| Serbski (cyrylica) | `sr-Cyrl` | Cyrylica `Cyrl`  | --> | Łaciński `Latn` |
+| Serbski (łaciński) | `sr-Latn` | Łaciński `Latn` | --> | Cyrylica `Cyrl`|
+| Tamilski | `ta` | Tamilski `Taml` | --> | Łaciński `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Łaciński `Latn` |
+| Tajlandzki | `th` | Tajski `Thai` | <--> | Łaciński `Latn` |
 
 ## <a name="dictionary"></a>Słownik
 
@@ -142,7 +141,7 @@ Słownik obsługuje następujące języki do lub z języka angielskiego, za pomo
 | Bośniacki (łaciński)      | `bs`          |
 | Bułgarski      | `bg`          |
 | Kataloński      | `ca`          |
-| Chiński uproszczony      | `zh-Hans`          |
+| Chiński (uproszczony)      | `zh-Hans`          |
 | Chorwacki      | `hr`          |
 | Czeski      | `cs`          |
 | Duński      | `da`          |
@@ -187,9 +186,9 @@ Słownik obsługuje następujące języki do lub z języka angielskiego, za pomo
 | Wietnamski      | `vi`          |
 | Walijski      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>Języków, wykrytych przez metodę wykrywania
+## <a name="detect"></a>Wykrywanie
 
-Następujące języki może zostać wykryte przez metodę wykrywania. Wykrywanie maja wykrywanie języków, których nie można przetłumaczyć Microsoft Translator.
+Za pomocą metody wykrywania są obsługiwane następujące języki. Wykrywanie może rozpoznać języków, które nie może tłumaczyć Microsoft Translator.
 
 | Język    |
 |:----------- |
@@ -234,7 +233,7 @@ Następujące języki może zostać wykryte przez metodę wykrywania. Wykrywanie
 | Malajski |
 | Maltański |
 | Norweski |
-| Norweski (nynorsk) |
+| Norweski (Nynorsk) |
 | Paszto |
 | Perski |
 | Polski |
@@ -261,11 +260,55 @@ Następujące języki może zostać wykryte przez metodę wykrywania. Wykrywanie
 | Walijski |
 | Jidysz |
 
-## <a name="access-the-list-programmatically"></a>Programowo uzyskać dostęp do listy
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programowy dostęp Lista języków interfejsu API tłumaczenia tekstu
 
-Można uzyskać dostęp do listy obsługiwanych języków, w sposób programowy za pomocą języków działania interfejsu API tłumaczenia tekstu w wersji 3.0. Możesz wyświetlić listę funkcji, kod języka, a także nazwę języka, w językach angielskim i innych obsługiwanych języków. Ta lista jest automatycznie aktualizowana przez usługę Microsoft Translator miarę udostępniania nowych języków.
+Możesz pobrać listę obsługiwanych języków dla interfejsu API tłumaczenia tekstu w wersji 3.0, przy użyciu metody języków. Możesz wyświetlić listę funkcji, kod języka, a także nazwę języka, w językach angielskim i innych obsługiwanych języków. Ta lista jest automatycznie aktualizowana przez usługę Microsoft Translator jako nowe języki są udostępniane.
 
 [Przejrzyj dokumentację referencyjną operacji języków](reference/v3-0-languages.md)
+
+## <a name="customization"></a>Dostosowywanie
+
+Następujące języki są dostępne do dostosowania przy użyciu [niestandardowe w usłudze Translator](http://aka.ms/CustomTranslator).
+
+| Język    | Kod języka |
+|:----------- |:-------------:|
+| Arabski       | `ar`          |
+| Bengalski      | `bn`          |
+| Bośniacki (łaciński)      | `bs`          |
+| Bułgarski      | `bg`          |
+| Chiński (uproszczony)      | `zh-Hans`          |
+| Chorwacki      | `hr`          |
+| Czeski      | `cs`          |
+| Duński      | `da`          |
+| Holenderski      | `nl`          |
+| Polski    | `en`     |
+| Estoński      | `et`          |
+| Fiński      | `fi`          |
+| Francuski      | `fr`          |
+| Niemiecki      | `de`          |
+| Grecki      | `el`          |
+| Hebrajski      | `he`          |
+| Hindi      | `hi`          |
+| Węgierski      | `hu`          |
+| Włoski      | `it`          |
+| Japoński      | `ja`          |
+| Koreański      | `ko`          |
+| Łotewski      | `lv`          |
+| Litewski      | `lt`          |
+| Norweski      | `nb`          |
+| Polski      | `pl`          |
+| Portugalski      | `pt`          |
+| Rumuński      | `ro`          |
+| Rosyjski      | `ru`          |
+| Serbski (łaciński)      | `sr-Latn`          |
+| Słowacki     | `sk`          |
+| Słoweński      | `sl`          |
+| Hiszpański      | `es`          |
+| Szwedzki      | `sv`          |
+| Tajlandzki      | `th`          |
+| Turecki      | `tr`          |
+| Ukraiński      | `uk`          |
+| Wietnamski      | `vi`          |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie internetowej Microsoft Translator
 

@@ -13,14 +13,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2bba11cd8b0e90f7835872e496c790aa56fcddc8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 47a89da808e2f53cf8dfc901c64eba3d78842d13
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277316"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652034"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Porady: Rozwiązywanie problemów z logowania w raportach usługi Azure Active Directory
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Instrukcje: Rozwiązywanie problemów z logowania w raportach usługi Azure Active Directory
 
 [Raporcie logowań](concept-sign-ins.md) w usłudze Azure Active Directory (Azure AD) umożliwia znalezienie odpowiedzi na pytania dotyczące zarządzania dostępem do aplikacji w organizacji, w tym:
 
@@ -35,7 +35,7 @@ Ponadto w raporcie logowań może również pomóc rozwiązać logowań dla uży
 
 Potrzebne elementy:
 
-* Dzierżawa usługi Azure AD z licencją premium (P1/P2). 
+* Dzierżawa usługi Azure AD z licencją premium (P1/P2). Zobacz [wprowadzenie do usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) uaktualnić swoją wersję usługi Azure Active Directory.
 * Użytkownik mający rolę **administratora globalnego**, **administratora zabezpieczeń**, **czytelnika zabezpieczeń** lub **czytelnika raportów** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Rozwiązywanie problemów z logowania za pomocą funkcji Zgłoś logowania

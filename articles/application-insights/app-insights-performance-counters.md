@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3131afb31fd08903bb349f86634d2b9e6449c59e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407936"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752660"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Liczniki wydajności systemu w usłudze Application Insights
 
@@ -42,7 +42,7 @@ Bieżące domyślne liczniki, które są zbierane dla aplikacji sieci web platfo
          - ASP.NET Applications\\Requests In Application Queue
          - Processor(_Total)\\% Processor Time
 
-Aby zobaczyć wszystkie wykresy najbardziej przydatne w jednym miejscu, Utwórz [pulpit nawigacyjny](app-insights-dashboards.md) nie i przypinania ich do niego.
+Aby zobaczyć wszystkie wykresy najbardziej przydatne w jednym miejscu, Utwórz [pulpit nawigacyjny](../azure-monitor/app/app-insights-dashboards.md) nie i przypinania ich do niego.
 
 ## <a name="add-counters"></a>Dodawanie liczników
 
@@ -99,7 +99,7 @@ Lub możesz zrobić to samo za pomocą metryk niestandardowych, który został u
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Liczniki wydajności w usłudze Analytics
-Można wyszukiwać i wyświetlać raporty dotyczące licznika wydajności w [analizy](app-insights-analytics.md).
+Można wyszukiwać i wyświetlać raporty dotyczące licznika wydajności w [analizy](../azure-monitor/app/analytics.md).
 
 **Liczniki wydajności** udostępnia schematu `category`, `counter` nazwy i `instance` nazwę każdego licznika wydajności.  W danych telemetrycznych dla każdej aplikacji zobaczysz tylko liczniki dla tej aplikacji. Na przykład aby zobaczyć, jakie liczniki są dostępne: 
 
@@ -120,15 +120,15 @@ Inne telemetrii, takie jak **liczniki wydajności** również zawiera kolumnę `
 
 * *Częstotliwość występowania wyjątków* jest licznik wydajności systemu. Środowisko CLR jest liczona wszystkich obsługiwanych i nieobsługiwanych wyjątków, które są zgłaszane i podzielenie sumy w interwale próbkowania przez długość interwału. Zestaw SDK usługi Application Insights zbiera ten wynik i wysyła je do portalu.
 
-* *Wyjątki* jest to liczba raportów metoda TrackException odebranych przez portal w interwale próbkowania wykresu. Obejmuje tylko wyjątki obsłużone gdzie zostały napisane metoda TrackException wywołania w kodzie, a nie zawiera wszystkich [nieobsługiwane wyjątki](app-insights-asp-net-exceptions.md). 
+* *Wyjątki* jest to liczba raportów metoda TrackException odebranych przez portal w interwale próbkowania wykresu. Obejmuje tylko wyjątki obsłużone gdzie zostały napisane metoda TrackException wywołania w kodzie, a nie zawiera wszystkich [nieobsługiwane wyjątki](../azure-monitor/app/asp-net-exceptions.md). 
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Liczniki wydajności w aplikacjach ASP.Net Core
 Liczniki wydajności są obsługiwane tylko wtedy, gdy aplikacja jest przeznaczony dla pełny program .NET Framework. Istnieje możliwość liczniki wydajności są zbierane dla.Net Core z aplikacji.
 
 ## <a name="alerts"></a>Alerty
-Podobnie jak inne metryki można [ustawić alert](app-insights-alerts.md) ostrzegania, jeśli licznik wydajności przekroczy limit, można określić. Otwórz w okienku alertów i kliknij przycisk Dodaj Alert.
+Podobnie jak inne metryki można [ustawić alert](../azure-monitor/app/alerts.md) ostrzegania, jeśli licznik wydajności przekroczy limit, można określić. Otwórz w okienku alertów i kliknij przycisk Dodaj Alert.
 
 ## <a name="next"></a>Następne kroki
-* [Śledzenie zależności](app-insights-asp-net-dependencies.md)
-* [Śledzenie wyjątków](app-insights-asp-net-exceptions.md)
+* [Śledzenie zależności](../azure-monitor/app/asp-net-dependencies.md)
+* [Śledzenie wyjątków](../azure-monitor/app/asp-net-exceptions.md)
 

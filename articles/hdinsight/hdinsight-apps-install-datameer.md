@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 947abea50685b04c3500a13a950375c32547efaf
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498764"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652969"
 ---
 # <a name="install-published-application---datameer"></a>Instalowanie opublikowanej aplikacji — Datameer
 
@@ -22,13 +22,13 @@ W tym artykule opisano sposób instalowania i uruchamiania [Datameer](https://ww
 
 ## <a name="about-datameer"></a>Temat Datameer
 
-Aplikacja Datameer jest natywnych aplikacji dla usługi Hadoop platformy, rozszerzanie istniejących możliwości usługi Azure HDInsight i udostępnia szybkie integrowanie, przygotowywania i analizy danych ze strukturą i bez struktury. Datameer mogą uzyskiwać dostęp do ponad 70 źródeł formaty: ze strukturą, częściową strukturą i bez struktury. Możesz bezpośrednio przekazać dane, lub użyć ich łącza unikatowe dane do pobierania danych na żądanie. Funkcje samoobsługowego firmy Datameer i dobrze znanych arkusza kalkulacyjnego interfejsu zmniejsza złożoność technologii danych Big Data i skrócenie czasu wprowadzania na wgląd. Interfejs arkusza kalkulacyjnego zapewnia prosty mechanizm wprowadzania deklaratywne formuł, które następnie są tłumaczone na zoptymalizowane pod kątem zadań usługi Hadoop. Z Datameer i analizy biznesowej (BI) i program Excel umiejętności używając usługi Hadoop w chmurze szybko. Aby uzyskać więcej informacji, zobacz [dokumentacji Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+Aplikacja Datameer jest natywnych aplikacji dla usługi Hadoop platformy, rozszerzanie istniejących możliwości usługi Azure HDInsight i udostępnia szybkie integrowanie, przygotowywania i analizy danych ze strukturą i bez struktury. Datameer mogą uzyskiwać dostęp do ponad 70 źródeł formaty: ze strukturą, częściową strukturą i bez struktury. Możesz bezpośrednio przekazać dane, lub użyć ich łącza unikatowe dane do pobierania danych na żądanie. Funkcje samoobsługowego firmy Datameer i dobrze znanych arkusza kalkulacyjnego interfejsu zmniejsza złożoność technologii danych Big Data i skrócenie czasu wprowadzania na wgląd. Interfejs arkusza kalkulacyjnego zapewnia prosty mechanizm wprowadzania deklaratywne formuł, które następnie są tłumaczone na zoptymalizowane pod kątem zadań usługi Hadoop. Z Datameer i analizy biznesowej (BI) i program Excel umiejętności używając usługi Hadoop w chmurze szybko. Aby uzyskać więcej informacji, zobacz [dokumentacji Datameer](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musisz mieć następującą konfigurację:
 
-* Warstwy klastrów: standardowa
+* Warstwa klastra: Standardowa (Standard)
 * Typ klastra: Hadoop
 * Wersja klastra: 3.4
 
@@ -106,9 +106,9 @@ Gratulacje! Utworzono wizualizację danych bez pisania żadnego kodu. Teraz moż
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dokumentacja Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
-* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
-* [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
-* [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
+* [Dokumentacja Datameer](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć cofnięto publikowanie aplikacji HDInsight HDInsight.
+* [Publikowanie aplikacji HDInsight](hdinsight-apps-publish-applications.md): Dowiedz się, jak opublikować niestandardowe aplikacje HDInsight w portalu Azure Marketplace.
+* [MSDN: Instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Dowiedz się, jak zdefiniować aplikacje HDInsight.
 * [Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
-* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak użyć pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.
+* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak używać pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.

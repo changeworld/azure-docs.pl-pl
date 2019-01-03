@@ -3,27 +3,26 @@ title: Tworzenie jednostki usługi dla usługi Azure Stack | Dokumentacja firmy 
 description: W tym artykule opisano sposób tworzenia jednostki usługi używanej przy użyciu kontroli dostępu opartej na rolach w usłudze Azure Resource Manager w celu zarządzania dostępem do zasobów.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: mattbriggs
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
-ms.author: sethm
+ms.date: 12/12/2018
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958318"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715835"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić aplikacji dostępu do zasobów usługi Azure Stack, tworząc jednostki usługi
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Możesz udzielić dostępu aplikacji do zasobów usługi Azure Stack przez tworzenie usługi podmiotu zabezpieczeń, który używa usługi Azure Resource Manager. Jednostki usługi umożliwia delegowanie uprawnień określonej za pomocą [kontroli dostępu opartej na rolach](azure-stack-manage-permissions.md).
 
@@ -52,7 +51,7 @@ Sposób, w usłudze Active Directory jest skonfigurowany dla usługi Azure Stack
 
 Kroki przypisywanie nazwy głównej usługi do roli takie same dla usługi Azure AD i AD FS. Po utworzeniu nazwy głównej usługi, możesz [delegować uprawnienia](azure-stack-create-service-principals.md#assign-role-to-service-principal) , przypisując go do roli.
 
-## <a name="create-a-service-principal-for-azure-ad"></a>Tworzenie jednostki usługi dla usługi Azure AD
+## <a name="create-service-principal-for-azure-ad"></a>Tworzenie jednostki usługi dla usługi Azure AD
 
 Jeśli usługi Azure Stack używa usługi Azure AD do przechowywania tożsamości, należy można utworzyć jednostkę usługi za pomocą te same czynności co platformy Azure, przy użyciu witryny Azure portal.
 
@@ -95,11 +94,11 @@ Jeśli wdrożono usługę Azure Stack przy użyciu usług AD FS jako magazynu to
 * Przypisywanie nazwy głównej usługi do roli.
 * Zaloguj się przy użyciu jednostki usługi tożsamości.
 
-Aby uzyskać więcej informacji na temat tworzenia jednostki usługi, zobacz [Tworzenie jednostki usługi dla usług AD FS](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
+Aby uzyskać więcej informacji na temat tworzenia jednostki usługi, zobacz [Tworzenie jednostki usługi dla usług AD FS](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Przypisywanie nazwy głównej usługi do roli
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Built in Roles](../../role-based-access-control/built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md).
 
 >[!NOTE]
 Zakres roli można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład aplikacji za pomocą roli Czytelnik dla grupy zasobów oznacza, że aplikacja może odczytywać zasoby w grupie zasobów.
@@ -114,9 +113,7 @@ W przypadku przypisywania roli do jednostki usługi, wykonaj następujące kroki
 
 3. Wybierz **kontrola dostępu (IAM)** dla subskrypcji.
 
-     ![Wybierz kontroli dostępu](./media/azure-stack-create-service-principal/image17.png)
-
-4. Wybierz pozycję **Dodaj**.
+4. Wybierz **Dodaj przypisanie roli**.
 
 5. Wybierz rolę, którą chcesz przypisać do aplikacji.
 

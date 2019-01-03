@@ -1,18 +1,18 @@
 ---
 title: Wyniki testu dla replikacji maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera informacje dotyczące testowania wydajnościowego na potrzeby replikacji maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM do lokacji dodatkowej przy użyciu usługi Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: raynew
-ms.openlocfilehash: d4540a00ed08f4c5a54108192868b4555eba3fa9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/27/2018
+ms.author: sutalasi
+ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850928"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793040"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
 
@@ -152,7 +152,7 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 | Serwer plików |50 |1 |2 |552 |22 |
 | VDI |149 |.5 |1 |80 |6 |
 | Serwer sieci Web |149 |.5 |1 |80 |6 |
-| ŁĄCZNIE |470 | | |96.83 TB |4108 |
+| SUMA |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Ustawień usługi Site Recovery
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: c239464a37637b21504227951d917977cfea6726
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8be453ae479e88d441a240ce472f3314b3f4de31
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343961"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809747"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: Pobieranie informacji 
 
@@ -77,7 +77,7 @@ ms.locfileid: "53343961"
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * Dodano obsługę operacji usuwania zbiorczego dla konta interfejsu API SQL usługi Azure Cosmos DB.
-* Dodano obsługę operacji elementów BulkImport dla kont z interfejsem API MongoDB usługi Azure Cosmos DB.
+* Dodano obsługę operacji elementów BulkImport dla kont z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB.
 * Zaktualizowany się zależności zestawu SDK .NET usługi DocumentDB w wersji 2.0.0. 
 
 ### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2

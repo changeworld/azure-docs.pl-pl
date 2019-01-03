@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 23003859b9a75fb986fe65f5528004f3dd150f9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312191"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633048"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search
 Jeśli używasz poprzedniej wersji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/), ten artykuł pomoże Ci uaktualnienia aplikacji w taki sposób, aby użyć najnowszej wersji ogólnie dostępnej wersji interfejsu API, 2017-11-11.
@@ -59,7 +59,7 @@ Jeśli Twój kod korzysta z tych funkcji, nie można uaktualnić do 2017-11-11 b
 ## <a name="conclusion"></a>Podsumowanie
 Jeśli potrzebujesz, aby uzyskać więcej informacji na temat korzystania z interfejsu API REST usługi Azure Search Service, zobacz ostatnio zaktualizowane [dokumentacja interfejsu API](https://docs.microsoft.com/rest/api/searchservice/) w witrynie MSDN.
 
-Chętnie poznamy Twoją opinię w usłudze Azure Search. Jeśli napotkasz problemy, możesz poprosić nas o pomoc na [forum usługi Azure Search w witrynie MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) lub [StackOverflow](http://stackoverflow.com/). Jeśli masz zadać pytanie o usłudze Azure Search w witrynie StackOverflow, upewnij się, że oznaczyć go za pomocą `azure-search`.
+Chętnie poznamy Twoją opinię w usłudze Azure Search. Jeśli napotkasz problemy, możesz poprosić nas o pomoc na [forum usługi Azure Search w witrynie MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) lub [StackOverflow](https://stackoverflow.com/). Jeśli masz zadać pytanie o usłudze Azure Search w witrynie StackOverflow, upewnij się, że oznaczyć go za pomocą `azure-search`.
 
 Dziękujemy za pomocą usługi Azure Search.
 

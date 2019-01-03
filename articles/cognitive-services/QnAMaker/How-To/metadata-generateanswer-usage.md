@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/18/2018
 ms.author: tulasim88
-ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 004f09eb77d1bc32e44e1940186e8a631c45846d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166595"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608481"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Przy użyciu metadanych i interfejsu API GenerateAnswer
 
-Narzędzie QnA Maker umożliwia dodanie metadanych, w postaci par klucz wartość do zestawów z pytań i odpowiedzi. Informacja ta może służyć do filtrowania wyników na zapytania użytkowników i do przechowywania dodatkowych informacji, które mogą być używane w kolejnych konwersacje. Aby uzyskać więcej informacji, zobacz [wiedzy](../Concepts/knowledge-base.md).
+Narzędzie QnA Maker umożliwia dodanie metadanych, w postaci par kluczy i wartości, do Twojego zestawów pytań i odpowiedzi. Informacja ta może służyć do filtrowania wyników na zapytania użytkowników i do przechowywania dodatkowych informacji, które mogą być używane w kolejnych konwersacje. Aby uzyskać więcej informacji, zobacz [wiedzy](../Concepts/knowledge-base.md).
 
 ## <a name="qna-entity"></a>Jednostki pytań i odpowiedzi
 
@@ -113,11 +113,11 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
 
 ## <a name="metadata-example"></a>Przykład metadanych
 
-Należy wziąć pod uwagę poniższe dane — często zadawane pytania dotyczące restauracje w Hyderabad. Dodaj metadane do bazy wiedzy, klikając ikonę koła zębatego.
+Należy wziąć pod uwagę poniższe często zadawane pytania dotyczące danych. Dodaj metadane do bazy wiedzy, klikając ikonę metadanych.
 
 ![Dodawanie metadanych](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters"></a>Filtrowanie wyników za pomocą strictFilters
+### <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtrowanie wyników za pomocą strictFilters tagów metadanych
 
 Należy wziąć pod uwagę pytanie użytkownika "Podczas odbywa się to hotelu Zamknij?" których celem jest implikowane dla restauracji "Paradise."
 

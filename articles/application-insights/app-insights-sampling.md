@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 103f4b10d5fbb7fbcf9c3721a82fe4075abe0dc4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 17725f830b347839ddc57eba61ef7c65d5253568
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877619"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970886"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -57,7 +57,7 @@ Ustaw częstotliwość próbkowania w użycie i szacowane koszty strony:
 
 Podobnie jak inne rodzaje próbkowania algorytm zachowuje elementy powiązane dane telemetryczne. Na przykład gdy masz sprawdzanie danych telemetrycznych w polu wyszukiwania, będziesz mieć możliwość odnaleźć żądania powiązaną z określonym wyjątkiem. Zlicza metryki, takie jak liczba żądań i częstotliwość występowania wyjątków poprawnie zostaną zachowane.
 
-Punktów danych, które są odrzucane przez pobieranie próbek nie są dostępne w dowolnej usługi Application Insights funkcji takich jak [eksportu ciągłego](app-insights-export-telemetry.md).
+Punktów danych, które są odrzucane przez pobieranie próbek nie są dostępne w dowolnej usługi Application Insights funkcji takich jak [eksportu ciągłego](../azure-monitor/app/export-telemetry.md).
 
 Próbkowanie fragmentaryczne nie działają podczas SDK próbkowanie adaptacyjne lub stałej stawki. Należy pamiętać, że próbkowanie adaptacyjne jest domyślnie włączona, zestawu SDK platformy ASP.NET jest włączona w programie Visual Studio lub za pomocą Monitora stanu, gdy próbkowanie fragmentaryczne jest wyłączona. Jeśli częstotliwość próbkowania w zestawie SDK jest mniejsza niż 100%, częstotliwość próbkowania pozyskiwania, który został ustawiony jest ignorowana.
 
@@ -83,7 +83,7 @@ Pakiety NuGet projektu aktualizacji do najnowszej wersji *wersji wstępnej* wers
 
 ### <a name="configuring-adaptive-sampling"></a>Konfigurowanie próbkowanie adaptacyjne ###
 
-W [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), możesz dostosować kilka parametrów w `AdaptiveSamplingTelemetryProcessor` węzła. Dane liczbowe, wyświetlane są wartości domyślne:
+W [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md), możesz dostosować kilka parametrów w `AdaptiveSamplingTelemetryProcessor` węzła. Dane liczbowe, wyświetlane są wartości domyślne:
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
@@ -112,11 +112,11 @@ W [plik ApplicationInsights.config](app-insights-configuration-with-applicationi
 
 * `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
   
-    Rozdzielana średnikami lista typów, które mają być pobrane. Rozpoznawane są typy: zależność, zdarzeń, wyjątków, wyświetlenia strony, żądania, śledzenia. Wszystkie wystąpienia określonych typów są przekazywane; typy, które nie zostały określone są próbkowane.
+    Rozdzielana średnikami lista typów, które mają być pobrane. Rozpoznane typy to: Śledzenie zdarzeń, wyjątków, widok strony, żądania, zależności. Wszystkie wystąpienia określonych typów są przekazywane; typy, które nie zostały określone są próbkowane.
 
 * `<IncludedTypes>Request;Dependency</IncludedTypes>`
   
-    Rozdzielana średnikami lista typów, które mają być pobrane. Rozpoznawane są typy: zależność, zdarzeń, wyjątków, wyświetlenia strony, żądania, śledzenia. Określonych typów są próbkowane; wszystkie wystąpienia innych typów są zawsze przesyłane.
+    Rozdzielana średnikami lista typów, które mają być pobrane. Rozpoznane typy to: Śledzenie zdarzeń, wyjątków, widok strony, żądania, zależności. Określonych typów są próbkowane; wszystkie wystąpienia innych typów są zawsze przesyłane.
 
 
 **Wyłączanie** adaptacyjnego próbkowania, Usuń węźle AdaptiveSamplingTelemetryProcessor z konfiguracji dotycząca usługi Application insights.
@@ -167,14 +167,14 @@ Usuń `AdaptiveSamplingTelemetryProcessor` węzeł z pliku Config.
 
 ```
 
-([Dowiedz się więcej o telemetrii procesorów](app-insights-api-filtering-sampling.md#filtering).)
+([Dowiedz się więcej o telemetrii procesorów](../azure-monitor/app/api-filtering-sampling.md#filtering).)
 
 <a name="other-web-pages"></a>
 
 ## <a name="sampling-for-web-pages-with-javascript"></a>Próbkowania dla stron sieci web za pomocą języka JavaScript
 Można skonfigurować stron sieci web do próbkowania szybkościami transmisji z dowolnego serwera. 
 
-Gdy użytkownik [Konfigurowanie stron sieci web usługi Application Insights](app-insights-javascript.md), zmodyfikować fragment kodu JavaScript, który można pobrać z portalu usługi Application Insights. (W aplikacjach ASP.NET, fragment kodu zwykle znajduje się w _Layout.cshtml.)  Wstaw wiersz, takie jak `samplingPercentage: 10,` przed klucz Instrumentacji:
+Gdy użytkownik [Konfigurowanie stron sieci web usługi Application Insights](../azure-monitor/app/javascript.md), zmodyfikować fragment kodu JavaScript, który można pobrać z portalu usługi Application Insights. (W aplikacjach ASP.NET, fragment kodu zwykle znajduje się w _Layout.cshtml.)  Wstaw wiersz, takie jak `samplingPercentage: 10,` przed klucz Instrumentacji:
 
     <script>
     var appInsights= ... 
@@ -206,7 +206,7 @@ W Eksploratorze metryk kursy, takie jak liczby żądań i wyjątków są pomnoż
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>Konfigurowanie próbkowania stałej stawki na platformie ASP.NET ###
 
 1. **Aktualizowanie pakietów NuGet projektu** do najnowszej wersji *wersji wstępnej* wersję usługi Application Insights. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, wybierz polecenie Zarządzaj pakietami NuGet Sprawdź **Uwzględnij wersję wstępną** i wyszukaj Microsoft.ApplicationInsights.Web. 
-2. **Wyłącz próbkowanie adaptacyjne**: W [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), usunąć lub skomentować `AdaptiveSamplingTelemetryProcessor` węzła.
+2. **Wyłącz próbkowanie adaptacyjne**: W [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md), usunąć lub skomentować `AdaptiveSamplingTelemetryProcessor` węzła.
    
     ```xml
    
@@ -220,7 +220,7 @@ W Eksploratorze metryk kursy, takie jak liczby żądań i wyjątków są pomnoż
 
     ```
 
-3. **Włącz moduł próbkowania szybkościami transmisji.** Dodaj następujący fragment do [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+3. **Włącz moduł próbkowania szybkościami transmisji.** Dodaj następujący fragment do [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md):
    
     ```XML
    
@@ -237,7 +237,7 @@ W Eksploratorze metryk kursy, takie jak liczby żądań i wyjątków są pomnoż
 
 ### <a name="configuring-fixed-rate-sampling-in-java"></a>Konfigurowanie stałej częstotliwość próbkowania w języku JAVA ###
 
-1. Pobieranie i konfigurowanie aplikacji sieci web za pomocą najnowszej [aplikacji insights java SDK](app-insights-java-get-started.md)
+1. Pobieranie i konfigurowanie aplikacji sieci web za pomocą najnowszej [aplikacji insights java SDK](../azure-monitor/app/java-get-started.md)
 
 2. **Włącz moduł próbkowania stałej stawki** , dodając poniższy fragment kodu do pliku ApplicationInsights.xml.
 
@@ -263,7 +263,7 @@ W Eksploratorze metryk kursy, takie jak liczby żądań i wyjątków są pomnoż
         <IncludedType>Exception</IncludedType>
     </IncludedTypes>
 ```
-Czy typy telemetrii, które mogą być dołączone lub wykluczone z próbkowania: zależność, zdarzeń, wyjątków, wyświetlenia strony, żądania i śledzenia.
+Dostępne są następujące typy telemetrii, które mogą być dołączone lub wykluczone z próbkowania: Zależności, zdarzeń, wyjątków, widok strony, żądania i śledzenia.
 
 > [!NOTE]
 > Dla wartości procentowej pobierania próbek wybierz wartość procentowa jest bliskie 100/N, gdzie N to liczba całkowita.  Próbkowanie aktualnie nie obsługuje inne wartości.
@@ -291,7 +291,7 @@ Zamiast ustawiać parametru próbkowania w pliku .config, można programowo usta
 
 ```
 
-([Dowiedz się więcej o telemetrii procesorów](app-insights-api-filtering-sampling.md#filtering).)
+([Dowiedz się więcej o telemetrii procesorów](../azure-monitor/app/api-filtering-sampling.md#filtering).)
 
 ## <a name="when-to-use-sampling"></a>Kiedy należy używać próbkowania?
 Jeśli używasz wersji 2.0.0-beta3 zestawu SDK platformy ASP.NET jest automatycznie włączone próbkowanie adaptacyjne lub nowszej. Niezależnie od tego, która wersja zestawu SDK, możesz użyć można włączyć próbkowanie fragmentaryczne umożliwia przykładowe zbierane dane usługi Application Insights.
@@ -316,7 +316,7 @@ Dostępne są następujące główne zalety próbkowania:
 **Użyj stałej stawki próbkowania, jeśli:**
 
 * Używasz zestawu SDK usługi Application Insights dla platformy ASP.NET sieci web services w wersji 2.0.0 lub nowszej lub zestawu SDK Java v2.0.1 lub nowszym, oraz
-* Chcesz próbkowanie zsynchronizowane między klientem i serwerem, tak, że jeśli analizujesz zdarzenia w [wyszukiwania](app-insights-diagnostic-search.md), można nawigować między powiązanymi zdarzeniami na kliencie i serwerze, na przykład wyświetlenia stron i żądań http.
+* Chcesz próbkowanie zsynchronizowane między klientem i serwerem, tak, że jeśli analizujesz zdarzenia w [wyszukiwania](../azure-monitor/app/diagnostic-search.md), można nawigować między powiązanymi zdarzeniami na kliencie i serwerze, na przykład wyświetlenia stron i żądań http.
 * Upewnieniu się, wartości procentowej próbkowania odpowiednie dla twojej aplikacji. Powinien być odpowiednio wysoka, aby uzyskać dokładne metryki, ale poniżej stawki przekraczający cen limitu przydziału i limity ograniczania. 
 
 **Użyj próbkowanie adaptacyjne:**
@@ -324,7 +324,7 @@ Dostępne są następujące główne zalety próbkowania:
 Jeśli warunki na użycie innych metod próbkowanie nie mają zastosowania, firma Microsoft zaleca próbkowanie adaptacyjne. Ta opcja jest włączona domyślnie w zestaw ASP.NET server SDK, wersji 2.0.0-beta3 lub nowszej. Go nie zmniejsza ruch aż do osiągnięcia niektóre minimalne wskaźnik, w związku z tym, niskie użycie witryny nie zostaną zmienione.
 
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>Jak sprawdzić, czy trwa próbkowanie?
-Aby odnaleźć rzeczywiste próbkowania niezależnie od tego, gdzie zostały zastosowane, należy użyć [zapytania usługi Analytics](app-insights-analytics.md) takich jak to:
+Aby odnaleźć rzeczywiste próbkowania niezależnie od tego, gdzie zostały zastosowane, należy użyć [zapytania usługi Analytics](../azure-monitor/app/analytics.md) takich jak to:
 
 ```
 union * 
@@ -396,5 +396,5 @@ Po stronie klienta (JavaScript) zestawu SDK uczestniczy w stałej stawki próbko
 * Zainicjuj osobne wystąpienie TelemetryClient za pomocą nowego TelemetryConfiguration (nie domyślnie aktywna). Używać, aby wysyłać zdarzenia rzadkie.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Filtrowanie](app-insights-api-filtering-sampling.md) może zapewnić więcej ścisłej kontroli wysyła zestawu SDK.
+* [Filtrowanie](../azure-monitor/app/api-filtering-sampling.md) może zapewnić więcej ścisłej kontroli wysyła zestawu SDK.
 

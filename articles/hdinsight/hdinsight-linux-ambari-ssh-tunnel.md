@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409527"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743871"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Korzystanie z tunelowania SSH do uzyskania dostępu do systemu Apache Ambari web UI, JobHistory, NameNode, Apache Oozie i innych web UI
 
@@ -47,7 +47,7 @@ W przypadku dostosowywania klastra przy użyciu akcji skryptu, żadnych usług a
 
 * Przeglądarka sieci web, które mogą być skonfigurowane do korzystania z serwera proxy SOCKS5.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Obsługa serwera proxy SOCKS wbudowanych ustawień internetowych Windows nie obsługuje SOCKS5, a nie działa z krokami w tym dokumencie. Następujące przeglądarki zależą od ustawień serwera proxy Windows i obecnie nie współpracujesz z krokami w tym dokumencie:
     >
     > * Microsoft Edge
@@ -78,7 +78,7 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
 
 ## <a name="useputty"></a>Tworzenia tunelu przy użyciu programu PuTTY
 
-[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) to graficzny klient SSH dla Windows. Jeśli nie znasz programu PuTTY, zobacz [programu PuTTY dokumentacji](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Umożliwia tworzenie tunelu SSH przy użyciu programu PuTTY następujące czynności:
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) to graficzny klient SSH dla Windows. Jeśli nie znasz programu PuTTY, zobacz [programu PuTTY dokumentacji](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Umożliwia tworzenie tunelu SSH przy użyciu programu PuTTY następujące czynności:
 
 ### <a name="create-or-load-a-session"></a>Utworzyć lub załadować sesji
 
@@ -120,7 +120,7 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
    > [!NOTE]  
    > Wybieranie **DNS zdalnego** rozpoznaje żądań systemu nazw domen (DNS, Domain Name System) przy użyciu klastra HDInsight. To ustawienie jest rozpoznawany jako DNS przy użyciu węzła głównego klastra.
 
-2. Sprawdź, czy tunelu działa, odwiedzając witrynę sieci, takich jak [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Adres IP zwrócony powinien być używany przez centrum danych Microsoft Azure.
+2. Sprawdź, czy tunelu działa, odwiedzając witrynę sieci, takich jak [ https://www.whatismyip.com/ ](https://www.whatismyip.com/). Adres IP zwrócony powinien być używany przez centrum danych Microsoft Azure.
 
 ## <a name="verify-with-ambari-web-ui"></a>Weryfikuj za pomocą interfejsu użytkownika sieci web systemu Ambari
 

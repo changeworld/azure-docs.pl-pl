@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 1c99b7a3eecdd7938b4813647afb9e48fb0173a0
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739281"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791051"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania dla zestawów skalowania
 W tym artykule omówiono zagadnienia dotyczące projektowania dla zestawów skalowania maszyn wirtualnych. Aby dowiedzieć się, jak co to są zestawy skalowania maszyn wirtualnych, zapoznaj się [omówienie zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-overview.md).
@@ -71,7 +71,7 @@ Zestaw skalowania, zbudowany na podstawie obrazu z witryny Marketplace (nazywane
 
 Zestaw skonfigurowany z użyciem kont magazynu zarządzanych przez użytkowników skalowania jest obecnie ograniczona do 100 maszyn wirtualnych (i 5 kont magazynu są zalecane w przypadku tej skali).
 
-Zestaw skalowania oparty na obraz niestandardowy (po jednym utworzone przez użytkownika) może zawierać maksymalnie 300 maszyn wirtualnych w przypadku skonfigurowania za pomocą usługi Azure Managed disks. Jeśli zestaw skalowania jest skonfigurowany z kontami magazynu zarządzanych przez użytkowników, musi utworzyć wszystkie dyski VHD dysku systemu operacyjnego w ramach jednego konta magazynu. W rezultacie zaleca się maksymalną liczbę maszyn wirtualnych w zestawie skalowania, oparta na obrazach niestandardowych i magazynu zarządzanych przez użytkowników wynosi 20. Jeśli wyłączysz celi, możesz przejść do 40.
+Zestaw skalowania oparty na obraz niestandardowy (po jednym utworzone przez użytkownika) może mieć pojemności do 600 maszyny wirtualne skonfigurowane przy użyciu usługi Azure Managed disks. Jeśli zestaw skalowania jest skonfigurowany z kontami magazynu zarządzanych przez użytkowników, musi utworzyć wszystkie dyski VHD dysku systemu operacyjnego w ramach jednego konta magazynu. W rezultacie zaleca się maksymalną liczbę maszyn wirtualnych w zestawie skalowania, oparta na obrazach niestandardowych i magazynu zarządzanych przez użytkowników wynosi 20. Jeśli wyłączysz celi, możesz przejść do 40.
 
 Aby uzyskać więcej maszyn wirtualnych nie zezwolić na te limity, należy wdrożyć wiele zestawów skalowania, jak pokazano w [ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 

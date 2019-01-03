@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a00f3d2ea4e191bb7860b88d39ff0ccaa338e0ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567166"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714240"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -53,7 +53,7 @@ W tym dokumencie opisano podejście firmy Microsoft do zabezpieczenia w chmurze 
 ## <a name="summary-azure-security-capabilities"></a>Możliwości Podsumowanie zabezpieczeń platformy Azure
 Poniższa tabela Podaj krótki opis funkcji zabezpieczeń implementowane przez firmę Microsoft w celu zabezpieczenia infrastruktury platformy Azure, danych klienta i bezpiecznych aplikacji.
 ### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Funkcje zabezpieczeń, wdrożone w celu zabezpieczenia platformy Azure:
-Funkcje wymienione w następstwie są funkcje, które można przeglądać w celu zapewnienia, że platforma Azure jest zarządzana w bezpieczny sposób. Linki zostały przewidziane w dalsze Przechodzenie do szczegółów w sposób Microsoft adresy pytania zaufanie klientów w czterech obszarów: zabezpieczenia platformy, ochrony prywatności & kontroli, zgodności i przejrzystości.
+Funkcje wymienione w następstwie są funkcje, które można przeglądać w celu zapewnienia, że platforma Azure jest zarządzana w bezpieczny sposób. Linki zostały przewidziane w dalsze Przechodzenie do szczegółów w sposób Microsoft adresy pytania zaufanie klientów w czterech obszarów: Zabezpieczenia platformy, ochrony prywatności & kontroli, zgodności i przezroczystości.
 
 
 | [Bezpieczna platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Prywatność i kontrolek](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Zgodność](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Przezroczystości](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
@@ -69,7 +69,7 @@ Funkcje wymienione w następstwie są funkcje, które można przeglądać w celu
 ### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>Funkcje zabezpieczeń oferowanych przez platformę Azure w celu zabezpieczenia danych i aplikacji
 W zależności od modelem usługi chmury ma zmiennych odpowiedzialność, kto jest odpowiedzialny za zarządzanie zabezpieczeniami aplikacji lub usługi. Możliwości są dostępne na platformie Azure, aby pomóc w osiągnięciu obowiązków, za pomocą wbudowanych funkcji, a także za pośrednictwem rozwiązania partnerskie, które mogą zostać wdrożone w subskrypcji platformy Azure.
 
-Wbudowane funkcje są zorganizowane w obszarach funkcjonalnych sześć (6): operacje, aplikacji, magazynu, sieci, obliczeń i tożsamości. Dodatkowe informacje szczegółowe na temat funkcji i możliwości dostępne w następujących obszarach sześć (6) na platformie Azure są realizowane za pośrednictwem informacje podsumowujące.
+Wbudowane funkcje są zorganizowane w obszarach funkcjonalnych sześć (6): Operacje, aplikacji, magazynu, sieci, obliczeń i tożsamości. Dodatkowe informacje szczegółowe na temat funkcji i możliwości dostępne w następujących obszarach sześć (6) na platformie Azure są realizowane za pośrednictwem informacje podsumowujące.
 
 ## <a name="operations"></a>Operacje
 Ta sekcja zawiera dodatkowe informacje na temat kluczowych funkcji zabezpieczeń i podsumowanie informacji o tych możliwości.
@@ -110,7 +110,7 @@ Ponadto usługa Azure Security Center pomaga w operacji zabezpieczeń podając p
 W sekcji przedstawiono dodatkowe informacje na temat kluczowe funkcje zabezpieczeń i podsumowanie informacji o aplikacji dotyczące tych możliwości.
 
 ### <a name="web-application-vulnerability-scanning"></a>Sieci Web aplikacji wyszukiwaniu luk w zabezpieczeniach
-Jednym z najprostszych sposobów, aby rozpocząć testowanie pod kątem luk w zabezpieczeniach na Twoje [aplikację usługi app Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) jest użycie [integracji przy użyciu usługi Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) przeprowadzić jednym kliknięciem wyszukiwaniu luk w zabezpieczeniach w aplikacji. Możesz wyświetlić wyniki testów w raporcie o łatwych do zrozumienia i Dowiedz się, jak naprawić każdą usterkę z instrukcjami krok po kroku.
+Jednym z najprostszych sposobów, aby rozpocząć testowanie pod kątem luk w zabezpieczeniach na Twoje [aplikację usługi app Service](https://docs.microsoft.com/azure/app-service/overview) jest użycie [integracji przy użyciu usługi Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) przeprowadzić jednym kliknięciem wyszukiwaniu luk w zabezpieczeniach w aplikacji. Możesz wyświetlić wyniki testów w raporcie o łatwych do zrozumienia i Dowiedz się, jak naprawić każdą usterkę z instrukcjami krok po kroku.
 
 ### <a name="penetration-testing"></a>Testy penetracyjne
 Jeśli wolisz do przeprowadzenia testów penetracyjnych lub chcesz użyć innego dostawcy lub skaner pakietu, należy wykonać [platformy Azure proces zatwierdzania testów penetracyjnych](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) i uzyskać wcześniejsze zatwierdzenia do przeprowadzenia testów penetracyjnych żądaną.
@@ -119,13 +119,13 @@ Jeśli wolisz do przeprowadzenia testów penetracyjnych lub chcesz użyć innego
 Zapora aplikacji sieci web (WAF) w [usługi Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomaga chronić aplikacje sieci web przed typowymi atakami opartego na sieci web, takimi jak iniekcja SQL, ataki z użyciem skryptów między witrynami i przejęcie kontroli sesji. Ma wstępnie skonfigurowany ochrony przed zagrożeniami zidentyfikowanymi przez [Otwórz sieci Web aplikacji Security Project (OWASP) jako pierwszych 10 najpopularniejszych luk w zabezpieczeniach](https://msdn.microsoft.com/library/).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
-[Uwierzytelnianie usługi App Service / autoryzacji](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) to funkcja, która umożliwia aplikacji do logowania użytkowników, tak aby nie trzeba zmieniać kodu zaplecza aplikacji. Zapewnia prosty sposób ochrona aplikacji i Praca z danymi użytkownika.
+[Uwierzytelnianie usługi App Service / autoryzacji](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) to funkcja, która umożliwia aplikacji do logowania użytkowników, tak aby nie trzeba zmieniać kodu zaplecza aplikacji. Zapewnia prosty sposób ochrona aplikacji i Praca z danymi użytkownika.
 
 ### <a name="layered-security-architecture"></a>Warstwowej architektury zabezpieczeń
 Ponieważ [środowisk usługi App Service](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) zapewniają odizolowanym środowisku uruchomieniowym wdrożone w [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview), deweloperzy mogą tworzyć warstwowej architektury zabezpieczeń podając różne poziomy dostęp do sieci dla każdej warstwy aplikacji. Wspólne dążenie jest ukryć interfejsu API zaplecza z ogólnego dostępu do Internetu i zezwolić tylko na interfejsy API ma zostać wywołana przez nadrzędne web apps. [Sieciowe grupy zabezpieczeń (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) może służyć w podsieciach sieci wirtualnej platformy Azure zawierającego środowisk usługi App Service do ograniczenia dostępu publicznego do aplikacji interfejsu API.
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Diagnostyka serwera sieci Web i diagnostyki aplikacji
-Aplikacje sieci web usługi App Service zapewnia funkcja diagnostyki dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Są one logicznie oddzielone w [diagnostyką serwerów w sieci web](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) i [programu application diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Serwer sieci Web obejmuje dwa główne postępu, diagnozowanie i rozwiązywanie problemów z witrynami i aplikacjami.
+Aplikacje sieci web usługi App Service zapewnia funkcja diagnostyki dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Są one logicznie oddzielone w [diagnostyką serwerów w sieci web](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) i [programu application diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Serwer sieci Web obejmuje dwa główne postępu, diagnozowanie i rozwiązywanie problemów z witrynami i aplikacjami.
 
 Pierwszy nową funkcją jest stanu w czasie rzeczywistym informacji na temat pul aplikacji, procesów, lokacje, domeny aplikacji i uruchomionych żądań. Drugie nowe korzyści są zdarzenia śledzenia szczegółowe, które śledzą żądania w całym procesie ukończone żądania i odpowiedzi.
 
@@ -141,7 +141,7 @@ Można włączyć lub wyłączyć następujące rodzaje dzienników:
 -   Rejestrowanie serwera — informacje o transakcji HTTP za pomocą rozszerzonym formacie W3C dziennika plików w sieci Web. Jest to przydatne podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
 #### <a name="application-diagnostics"></a>Diagnostyka aplikacji
-[Usługa Application diagnostics](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) umożliwia przechwytywanie informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. W diagnostyce aplikacji istnieją dwa główne typy zdarzeń, te związane z wydajnością aplikacji i te związane z awariami i błędami aplikacji. Awarie i błędy można podzielić na problemy dotyczące łączności, bezpieczeństwa i błędów. Problemy dotyczące awarii zazwyczaj są związane z problemem z kodu aplikacji.
+[Usługa Application diagnostics](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) umożliwia przechwytywanie informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. W diagnostyce aplikacji istnieją dwa główne typy zdarzeń, te związane z wydajnością aplikacji i te związane z awariami i błędami aplikacji. Awarie i błędy można podzielić na problemy dotyczące łączności, bezpieczeństwa i błędów. Problemy dotyczące awarii zazwyczaj są związane z problemem z kodu aplikacji.
 
 W diagnostyce aplikacji można wyświetlać zdarzenia pogrupowane w następujący sposób:
 
@@ -289,9 +289,9 @@ Można zarządzać listą serwerami DNS używanymi w sieci wirtualnej w portalu 
 [Systemu nazw domen](https://technet.microsoft.com/library/bb629410.aspx), lub w systemie DNS jest odpowiedzialny za tłumaczenia (lub rozpoznawanie) nazwę witryny sieci Web lub usługi na jej adres IP. [Usługa Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) to usługa hostingowa przeznaczona dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure. Usługa DNS obsługuje aspektów dostępności Triada zabezpieczeń "CIA".
 ### <a name="log-analytics-nsgs"></a>Sieciowe grupy zabezpieczeń log Analytics
 Należy włączyć następujące kategorie dzienniki diagnostyczne dla sieciowych grup zabezpieczeń:
--   Zdarzenie: Zawiera pozycje, dla których sieciowej grupy zabezpieczeń reguły są stosowane do maszyn wirtualnych i ról wystąpień na podstawie adresu MAC. Stan reguły te są gromadzone co 60 sekund.
+-   Zdarzenie: Zawiera wpisy, dla których sieciowej grupy zabezpieczeń reguły są stosowane do maszyn wirtualnych i ról wystąpień na podstawie adresu MAC. Stan reguły te są gromadzone co 60 sekund.
 
--   Licznik reguły: zawiera wpisy dla tyle razy, każda reguła sieciowej grupy zabezpieczeń są stosowane do odmowy lub zezwolić na ruch.
+-   Licznik reguły: Zawiera wpisy dla tyle razy, każda reguła sieciowej grupy zabezpieczeń są stosowane do odmowy lub zezwolić na ruch.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 Usługa Security Center pomaga zapobiegać zagrożeniom, wykrywanie i reagowanie na zagrożenia, zapewnia większą widoczność i kontrolę nad zabezpieczeń zasobów platformy Azure. Zapewnia zintegrowane zabezpieczenia monitorowanie i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających. Centrum zalecenia sieciowe dotyczące zapór, sieciowe grupy zabezpieczeń, konfigurowanie reguł ruchu przychodzącego i.

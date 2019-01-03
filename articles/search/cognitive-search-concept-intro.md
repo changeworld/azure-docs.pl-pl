@@ -1,5 +1,5 @@
 ---
-title: Usługa cognitive search do wyodrębnienia danych, przetwarzanie języka naturalnego sztucznej Inteligencji — usługa Azure Search
+title: Usługa cognitive search, wyodrębnianie danych i przetwarzania języka naturalnego sztucznej Inteligencji — usługi Azure Search
 description: Wyodrębnianie zawartości języka naturalnego (NLP) i przetwarzania do tworzenia zawartości można wyszukiwać w usłudze Azure Search indeksowanie przy użyciu algorytmów sztucznej Inteligencji i umiejętności poznawcze obrazu.
 manager: cgronlun
 author: HeidiSteen
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2bb32ccaeb5960fa69dcdc356523abc199fd5f4f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315613"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633797"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -32,9 +32,9 @@ Umiejętności poznawcze w usłudze Azure Search są oparte na tych samych algor
 Język naturalny i przetwarzanie obrazu jest stosowana w fazie wprowadzania danych z wynikami staje się częścią kompozycji dokument w indeksie wyszukiwania w usłudze Azure Search. Dane są źródło jako zestawu danych platformy Azure, a następnie przekazywane za pośrednictwem potoku indeksowania, przy użyciu zależności [wbudowanych umiejętności](cognitive-search-predefined-skills.md) potrzebujesz. Architektura jest rozszerzalny, więc jeśli wbudowane umiejętności nie są wystarczające, można tworzyć i dołączać [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md) niestandardowych integracji. Przykłady mogą być przeznaczone dla określonej domeny, takich jak finanse, publikacji naukowych lub medycyna klasyfikatora modułu lub dokumentu jednostkę niestandardową.
 
 > [!NOTE]
-> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+> Od 21 grudnia 2018 roku będziesz mieć możliwość skojarzenia swojego zasobu w usługach Cognitive Services z zestawem umiejętności usługi Azure Search. Rozpoczniemy wówczas naliczanie opłat za wykonywanie zestawu umiejętności. Od tego dnia zaczniemy też naliczać opłaty za wyodrębnianie obrazów w ramach etapu analizowania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
 >
-> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).
+> Opłaty za wykonywanie wbudowanych umiejętności będą naliczane na podstawie istniejącej [ceny przy płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/details/cognitive-services/) za usługi Cognitive Services. Opłaty za wyodrębnianie obrazów będą naliczane zgodnie z cenami w wersji zapoznawczej. Opisano to [na stronie z cennikiem usługi Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="components-of-cognitive-search"></a>Składniki wyszukiwania kognitywnego
 
@@ -91,7 +91,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-**Krok 1: Tworzenie usługi wyszukiwania w obszarze dostarczanie interfejsów API** 
+**Krok 1. Tworzenie usługi wyszukiwania w obszarze dostarczanie interfejsów API** 
 
 + Środkowo-zachodnie stany USA
 + Środkowo-południowe stany USA
@@ -107,13 +107,13 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 + Indie Środkowe
 + Australia Wschodnia
 
-**Krok 2: Praktyczne doświadczenie w pracy opanuj korzystanie z przepływu pracy**
+**Krok 2. Praktyczne doświadczenie w pracy opanuj korzystanie z przepływu pracy**
 
 + [Przewodnik Szybki Start (portal)](cognitive-search-quickstart-blob.md)
 + [Samouczek (żądania HTTP)](cognitive-search-tutorial-blob.md)
 + [Przykład umiejętności niestandardowe (C#)](cognitive-search-create-custom-skill-example.md)
 
-**Krok 3: Przegląd interfejsu API (REST tylko)**
+**Krok 3. Przegląd interfejsu API (REST tylko)**
 
 Obecnie tylko interfejsy API REST są dostarczane. Użyj `api-version=2017-11-11-Preview` we wszystkich żądaniach. Kompiluj rozwiązanie wyszukiwania kognitywnego przy użyciu następujących interfejsów API. Tylko dwa interfejsy API są dodawane lub rozszerzony na użytek usłudze wyszukiwania poznawczego. Inne interfejsy API mieć tej samej składni jako ogólnie dostępnej wersji.
 
@@ -149,5 +149,5 @@ Aby uzyskać więcej informacji na temat określonego pytania lub problemy, zoba
 ## <a name="next-steps"></a>Kolejne kroki
 
 + [Dokumentacja wyszukiwania kognitywnego](cognitive-search-resources-documentation.md)
-+ [Szybki Start: Wypróbuj wyszukiwanie kognitywne w Przewodnik po portalu](cognitive-search-quickstart-blob.md)
++ [Szybki start: Wypróbuj wyszukiwanie kognitywne w Przewodnik po portalu](cognitive-search-quickstart-blob.md)
 + [Samouczek: Dowiedz się, usługa cognitive search interfejsów API](cognitive-search-tutorial-blob.md)

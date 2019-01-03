@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386432"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792853"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -50,6 +50,9 @@ Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu op
 ## <a name="install-the-sdk-and-tools"></a>Instalowanie zestawu SDK i narzędzi
 Instalator platformy sieci Web (WebPI) jest zalecanym sposobem instalowania zestawu SDK i narzędzi. Jeśli otrzymujesz błędy w czasie wykonywania za pomocą Instalatora WebPI, można również znaleźć bezpośrednie linki do instalatory w informacjach o wersji dla określonej wersji usługi Service Fabric. Informacje o wersji można znaleźć w różnych anonse wersji na [blog zespołu usługi Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
+> [!NOTE]
+> Uaktualnianie klastra programowania w usłudze lokalnej usługi Service Fabric nie są obsługiwane.
+
 ### <a name="to-use-visual-studio-2017"></a>Używanie programu Visual Studio 2017
 Narzędzia Service Fabric Tools są częścią pakietu roboczego Programowanie na platformie Azure w programie Visual Studio 2017. Włącz to obciążenie w ramach instalacji programu Visual Studio.
 Ponadto należy zainstalować zestaw SDK i środowisko uruchomieniowe usługi Microsoft Azure Service Fabric przy użyciu Instalatora platformy sieci Web.
@@ -66,8 +69,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Service Fabric SDK i narzędzia 3.3.617
-* Środowisko uruchomieniowe usługi Service Fabric 6.4.617
+* Service Fabric SDK i narzędzia 3.3.622
+* Środowisko uruchomieniowe usługi Service Fabric 6.4.622
 * Narzędzia usługi Service Fabric dla programu Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio 2.4.11024.1 
 

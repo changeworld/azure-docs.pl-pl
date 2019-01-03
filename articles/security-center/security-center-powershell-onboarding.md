@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 69310e51495cbb91303c3e8837ad42f6a4ac3374
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340372"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972912"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzowanie dołączania do usługi Azure Security Center przy użyciu programu PowerShell
 
@@ -49,37 +49,31 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
 1.  Uruchom program PowerShell jako administrator.
 2.  W programie PowerShell, uruchom następujące polecenia:
       
-        Install-Module -Name PowerShellGet -Force
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Import-Module PowerShellGet
-6.  Ponowne uruchomienie programu PowerShell
-
-7. W programie PowerShell uruchom następujące polecenia:
-
-         Install-Module -Name AzureRM.Security -AllowPrerelease -Force
+        Install-Module -Name Az.Security -Force
 
 ## <a name="onboard-security-center-using-powershell"></a>Dołączanie Centrum zabezpieczeń przy użyciu programu PowerShell
 
 1.  Zarejestruj subskrypcje, aby dostawca zasobów Centrum zabezpieczeń:
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
+        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
 2.  Opcjonalnie: Ustaw poziom zapotrzebowania (warstwa cenowa) z subskrypcji (Jeśli nie zdefiniowano warstwa cenowa jest ustawiona na bezpłatna):
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
+        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 
 3.  Konfigurowanie obszaru roboczego usługi Log Analytics, do którego agenci będą zgłaszać. Konieczne jest posiadanie utworzonej już, że maszyny wirtualne w subskrypcji będą raportować usłudze obszar roboczy usługi Log Analytics. Można zdefiniować wiele subskrypcji w celu przekazywania informacji do tego samego obszaru roboczego. Jeśli nie zdefiniowano domyślnego obszaru roboczego będą używane.
 
-        Set-AzureRmSecurityWorkspaceSetting -Name "default" -Scope
+        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
 4.  Automatyczna obsługa instalacji programu Microsoft Monitoring Agent na maszynach wirtualnych platformy Azure:
     
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
-        Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
     > [!NOTE]
     > Zalecane jest, aby włączyć automatyczne Inicjowanie obsługi administracyjnej upewnić się, że usługi Azure virtual machines są automatycznie chronione przez usługę Azure Security Center.
@@ -87,13 +81,13 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
 
 5.  Opcjonalnie: Zdecydowanie zaleca się że zdefiniujesz szczegóły kontaktu zabezpieczeń dla subskrypcji, możesz dołączyć, który będzie używany jako adresaci powiadomień i alertów wygenerowanych przez usługę Security Center:
 
-        Set-AzureRmSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
+        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
 
 6.  Przypisz inicjatywę zasady Centrum zabezpieczeń domyślne:
 
-        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzureRmPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
+        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 Masz teraz pomyślnie dołączono Azure Security Center przy użyciu programu PowerShell!
 
@@ -107,7 +101,7 @@ Teraz można tych poleceń cmdlet programu PowerShell za pomocą skryptów autom
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat wykorzystania programu PowerShell do automatyzacji dołączania do usługi Security Center, zobacz następujący artykuł:
 
-* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.2.0-preview).
+* [Az.Security](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Security/Commands.Security/help/Az.Security.md).
 
 Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujący artykuł:
 

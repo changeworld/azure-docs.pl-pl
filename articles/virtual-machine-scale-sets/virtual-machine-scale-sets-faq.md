@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cd84704c7926bfa9ace0d801b2532d2c77296075
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139371"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810512"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -167,48 +167,16 @@ Kod obsługuje Windows i Linux.
 Aby uzyskać więcej informacji, zobacz [tworzenia lub aktualizacji zestawu skalowania maszyn wirtualnych](https://msdn.microsoft.com/library/mt589035.aspx).
 
 
-### <a name="example-of-self-signed-certificate"></a>Przykład certyfikatu z podpisem własnym
+### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Przykład certyfikaty z podpisem własnym zainicjowano obsługę administracyjną klastrów sieci szkieletowej usługi platformy Azure.
+Najnowsze przykład użycia następującą instrukcję interfejsu wiersza polecenia platformy azure w powłoce platformy azure zapoznaj się modułu interfejsu wiersza polecenia usługi sieci szkieletowe przykładowej dokumentacji, który ma być drukowany stdout:
 
-1.  Utwórz certyfikat z podpisem własnym w magazynie kluczy.
+```bash
+az sf cluster create -h
+```
 
-    Użyj następujących poleceń programu PowerShell:
+Przejrzyj dokumentację keyvaults dla najnowszych operacji certyfikatu interfejsu API obsługiwanego na platformie Azure.
 
-    ```powershell
-    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
-
-    Connect-AzureRmAccount
-
-    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-    ```
-
-    To polecenie zapewnia dane wejściowe dla szablonu usługi Azure Resource Manager.
-
-    Na przykład sposobu tworzenia certyfikatu z podpisem własnym w magazynie kluczy Zobacz [scenariusze zabezpieczeń klastra usługi Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
-
-2.  Zmień szablon usługi Resource Manager.
-
-    Dodaj tę właściwość, aby **virtualMachineProfile**, maszyny wirtualnej w ramach zasobu zestawu skalowania:
-
-    ```json 
-    "osProfile": {
-        "computerNamePrefix": "[variables('namingInfix')]",
-        "adminUsername": "[parameters('adminUsername')]",
-        "adminPassword": "[parameters('adminPassword')]",
-        "secrets": [
-            {
-                "sourceVault": {
-                    "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                },
-                "vaultCertificates": [
-                    {
-                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                        "certificateStore": "My"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+Certyfikaty z podpisem własnym nie można używać dla rozproszonego zaufania dostarczonych przez urząd certyfikacji i nie powinna być używana dla dowolnego klastra usługi Service Fabric, przeznaczony do hosta przedsiębiorstwa produkcyjne rozwiązań. Aby uzyskać dodatkowe wskazówki zabezpieczenia usługi Service Fabric Przejrzyj [Azure Service Fabric Security Best Practices](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices) i [scenariusze zabezpieczeń klastra usługi Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Można określić pary kluczy SSH do uwierzytelniania SSH przy użyciu systemu Linux maszyny wirtualnej zestawu skalowania na podstawie szablonu usługi Resource Manager?  
@@ -277,7 +245,7 @@ Aby uzyskać przykład, zobacz [szablon szybkiego startu usługi GitHub 101-vm-s
  
 ### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Po uruchomieniu `Update-AzureRmVmss` po dodaniu więcej niż jeden certyfikat z magazynu kluczy, w tym samym, I zostanie wyświetlony następujący komunikat:
  
->Update-AzureRmVmss: Wpis tajny lista zawiera powtórzone wystąpienia /subscriptions/ < my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, która jest niedozwolona.
+>Update-AzureRmVmss: Klucz tajny lista zawiera powtórzone wystąpienia /subscriptions/ < my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, która jest niedozwolona.
  
 Może to nastąpić, jeśli zostanie podjęta próba ponownego dodania w tym samym magazynie, a nie przy użyciu nowego certyfikatu w magazynie dla istniejącego magazynu źródłowego. `Add-AzureRmVmssSecret` Polecenie nie działa poprawnie, w przypadku dodawania dodatkowych wpisów tajnych.
  
@@ -510,7 +478,7 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -
 Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS 
 ```
 
-### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>Musisz wykonać niestandardowego skryptu, który znajduje się na koncie magazynu prywatnego. Skrypt zostanie uruchomiony pomyślnie, jeśli magazyn jest publiczny, ale podjęto próbę użycia sygnatury dostępu współdzielonego (SAS), zakończy się niepowodzeniem. Ten komunikat jest wyświetlany: "Brak obowiązkowe parametry dla prawidłowego podpisu dostępu współdzielonego". Link + sygnatury dostępu Współdzielonego działa poprawnie z mojej lokalnej przeglądarki.
+### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>Musisz wykonać niestandardowego skryptu, który znajduje się na koncie magazynu prywatnego. Skrypt zostanie uruchomiony pomyślnie, jeśli magazyn jest publiczny, ale podjęto próbę użycia sygnatury dostępu współdzielonego (SAS), zakończy się niepowodzeniem. Ten komunikat jest wyświetlany: "Brak parametrów obowiązkowych prawidłową sygnaturę dostępu współdzielonego". Link + sygnatury dostępu Współdzielonego działa poprawnie z mojej lokalnej przeglądarki.
 
 Do wykonywania niestandardowego skryptu, który znajduje się na koncie magazynu prywatnego, skonfigurować ustawienia chronionego, za pomocą klucza konta magazynu i nazwa. Aby uzyskać więcej informacji, zobacz [niestandardowe rozszerzenie skryptu dla Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
 
@@ -559,7 +527,7 @@ Tak. Bezpośrednio do odwoływania się do niego w sekcji Dnssettings profil sie
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Jak? wymiany wirtualnych adresów IP dla zestawów skalowania maszyn wirtualnych w tym samym regionie i tej samej subskrypcji
 
-Jeśli masz dwa zestawy skalowania maszyn wirtualnych za pomocą usługi Azure Load Balancer Frontony i znajdują się w tej samej subskrypcji i regionu, może deallocate publiczne adresy IP z każdej z nich i przypisać do innego. Zobacz [wymiany wirtualnych adresów IP: wdrożenie niebieski zielony w usłudze Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) na przykład. Pociąga to opóźnienia na poziomie jednak zasoby są z cofniętą alokacją/przydzielany w sieci. Opcja szybsza jest używać usługi Azure Application Gateway z dwóch pul zaplecza i reguły routingu. Alternatywnie można hostować swoją aplikację, za pomocą [usługi Azure App service](https://azure.microsoft.com/services/app-service/) który zapewnia obsługę szybkie przełączanie się między środowiskiem przejściowym i produkcyjnym miejscami.
+Jeśli masz dwa zestawy skalowania maszyn wirtualnych za pomocą usługi Azure Load Balancer Frontony i znajdują się w tej samej subskrypcji i regionu, może deallocate publiczne adresy IP z każdej z nich i przypisać do innego. Zobacz [wymiany wirtualnych adresów IP: Wdrożenie niebieski zielony w usłudze Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) na przykład. Pociąga to opóźnienia na poziomie jednak zasoby są z cofniętą alokacją/przydzielany w sieci. Opcja szybsza jest używać usługi Azure Application Gateway z dwóch pul zaplecza i reguły routingu. Alternatywnie można hostować swoją aplikację, za pomocą [usługi Azure App service](https://azure.microsoft.com/services/app-service/) który zapewnia obsługę szybkie przełączanie się między środowiskiem przejściowym i produkcyjnym miejscami.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Jak określić zakres prywatnych adresów IP do używania statycznych alokacji prywatnego adresu IP?
 
@@ -573,7 +541,7 @@ Aby wdrożyć maszynę wirtualną zestawie skalowania do istniejącej sieci wirt
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Jak dodać adres IP z pierwszej maszyny Wirtualnej w zestawie danych wyjściowych szablonu skalowania maszyny wirtualnej?
 
-Aby dodać adres IP z pierwszej maszyny Wirtualnej w zestawie danych wyjściowych szablonu skalowania maszyny wirtualnej, zobacz [usługi Azure Resource Manager: prywatne adresy IP zestawów skalowania maszyn wirtualnych Pobierz](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
+Aby dodać adres IP z pierwszej maszyny Wirtualnej w zestawie danych wyjściowych szablonu skalowania maszyny wirtualnej, zobacz [usługi Azure Resource Manager: Uruchom maszynę wirtualną z prywatnych adresów IP zestawów skalowania](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Dzięki przyspieszonej sieci można używać zestawów skalowania?
 

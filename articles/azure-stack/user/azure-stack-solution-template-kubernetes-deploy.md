@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5573c7f122360b3bd3adeb9dcca1c827a1933f70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959465"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722400"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
@@ -101,7 +101,7 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
 
 1. Wybierz subskrypcję, utworzone przez użytkownika operatora dla przy użyciu klastra Kubernetes.
 
-1. Wybierz **kontrola dostępu (IAM)** > Wybierz **+ Dodaj**.
+1. Wybierz **kontrola dostępu (IAM)** > Wybierz **Dodaj przypisanie roli**.
 
 1. Wybierz **Współautor** roli.
 

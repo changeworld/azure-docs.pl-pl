@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384987"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742392"
 ---
 # <a name="http-application-routing"></a>Routing aplikacji protokołu HTTP
 
@@ -28,10 +28,10 @@ Gdy dodatek jest włączona, tworzy strefę DNS w ramach subskrypcji. Aby uzyska
 
 Dodatek wdraża dwa składniki: [kontrolera danych przychodzących rozwiązania Kubernetes] [ ingress] i [DNS zewnętrznego] [ external-dns] kontrolera.
 
-- **Kontroler danych przychodzących**: kontroler danych przychodzących jest połączenie z Internetem przy użyciu usługi Kubernetes typu usługi równoważenia obciążenia. Kontroler danych przychodzących oczekuje i implementuje [zasobów transferu danych przychodzących rozwiązania Kubernetes][ingress-resource], co powoduje utworzenie tras do punktów końcowych aplikacji.
-- **Zewnętrzne DNS kontrolera**: obserwuje Kubernetes zasobów transferu danych przychodzących i tworzy rekordy A systemu DNS w strefie DNS specyficzne dla klastra.
+- **Kontroler danych przychodzących**: Kontroler danych przychodzących jest uwidaczniany w Internecie przy użyciu usługi Kubernetes typu usługi równoważenia obciążenia. Kontroler danych przychodzących oczekuje i implementuje [zasobów transferu danych przychodzących rozwiązania Kubernetes][ingress-resource], co powoduje utworzenie tras do punktów końcowych aplikacji.
+- **Zewnętrzne DNS kontrolera**: Oczekuje na zasoby platformy Kubernetes transferu danych przychodzących i tworzy rekordy A systemu DNS w strefie DNS specyficzne dla klastra.
 
-## <a name="deploy-http-routing-cli"></a>Wdrażanie routing protokołu HTTP: interfejs wiersza polecenia
+## <a name="deploy-http-routing-cli"></a>Wdrażanie, routing protokołu HTTP: Interfejs wiersza polecenia
 
 W przypadku wdrażania klastra usługi AKS, można włączyć dodatek routing aplikacji protokołu HTTP przy użyciu wiersza polecenia platformy Azure. Aby to zrobić, należy użyć [tworzenie az aks] [ az-aks-create] polecenia `--enable-addons` argumentu.
 
@@ -55,7 +55,7 @@ Result
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
 ```
 
-## <a name="deploy-http-routing-portal"></a>Wdrażanie routing protokołu HTTP: Portal
+## <a name="deploy-http-routing-portal"></a>Wdrażanie, routing protokołu HTTP: Portal
 
 Dodatek routing aplikacji protokołu HTTP można włączyć w witrynie Azure portal w przypadku wdrażania klastra usługi AKS.
 
@@ -174,6 +174,36 @@ Rozwiązanie routing protokołu HTTP można je usunąć za pomocą wiersza polec
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
+Po wyłączeniu dodatku routing aplikacji protokołu HTTP w klastrze mogą pozostać niektóre zasoby platformy Kubernetes. Te zasoby obejmują *configMaps* i *wpisów tajnych*i są tworzone w *systemu kubernetes* przestrzeni nazw. Aby zachować czyste klastra, możesz usunąć te zasoby.
+
+Wyszukaj *dodatek —-routing aplikacji protokołu http* zasobów za pomocą następujących [kubectl get-] [ kubectl-get] poleceń:
+
+```console
+kubectl get deployments --namespace kube-system
+kubectl get services --namespace kube-system
+kubectl get configmaps --namespace kube-system
+kubectl get secrets --namespace kube-system
+```
+
+Następujące przykładowe dane wyjściowe pokazuje configMaps, które powinny zostać usunięte:
+
+```
+$ kubectl get configmaps --namespace kube-system
+
+NAMESPACE     NAME                                                       DATA   AGE
+kube-system   addon-http-application-routing-nginx-configuration         0      9m7s
+kube-system   addon-http-application-routing-tcp-services                0      9m7s
+kube-system   addon-http-application-routing-udp-services                0      9m7s
+```
+
+Aby usunąć zasoby, należy użyć [Usuń kubectl] [ kubectl-delete] polecenia. Określ typ zasobu, nazwa zasobu i przestrzeni nazw. Poniższy przykład usuwa jeden z poprzednim configmaps:
+
+```console
+kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
+```
+
+Powtórz poprzedni `kubectl delete` krok dla wszystkich *dodatek —-routing aplikacji protokołu http* zasoby, które pozostały w klastrze.
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Użyj [Dzienniki narzędzia kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji dla aplikacji zewnętrznych DNS. Dzienniki należy potwierdzić, czy rekordu TXT DNS i A zostały pomyślnie utworzone.
@@ -256,6 +286,7 @@ Aby uzyskać informacje na temat sposobu instalowania kontrolera transferu danyc
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [ingress-resource]: https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource

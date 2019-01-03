@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc670a94958b123ac71b49cbf25661d567e4629
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083415"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650845"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Tworzenie filtrów za pomocą interfejsu API REST usługi Media Services
 
@@ -31,12 +31,13 @@ W tym temacie pokazano, jak zdefiniować filtr dla wideo na żądanie zasobów i
 Aby wykonać kroki opisane w tym temacie, musisz:
 
 - Przegląd [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
-- [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Upewnij się, że do zapamiętania nazwę grupy zasobów i nazwę konta usługi Media Services. 
 - [Konfigurowanie narzędzia Postman dla wywołania interfejsu API REST usługi Azure Media Services](media-rest-apis-with-postman.md).
+
+    Upewnij się, że należy wykonać ostatni krok w temacie [pobrać tokenu usługi Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
 ## <a name="define-a-filter"></a>Określa filtr  
 
-Poniżej przedstawiono **treść żądania** przykładu, który definiuje warunki wybór ścieżki, które są dodawane do manifestu. Ten filtr zawiera ścieżki audio, które są w języku angielskim z 3 WE i wideo ścieżek, które mają szybkości transmisji bitów w 0-1000000 zakresu.
+Poniżej przedstawiono **treść żądania** przykładu, który definiuje warunki wybór ścieżki, które są dodawane do manifestu. Ten filtr zawiera ścieżki audio, znajdujących się we 3 i wideo ścieżek, które mają szybkości transmisji bitów w 0-1000000 zakresu.
 
 ```json
 {
@@ -50,14 +51,9 @@ Poniżej przedstawiono **treść żądania** przykładu, który definiuje warunk
                         "operation": "Equal"
                     },
                     {
-                        "property": "Language",
-                        "value": "en",
-                        "operation": "Equal"
-                    },
-                    {
                         "property": "FourCC",
                         "value": "EC-3",
-                        "operation": "NotEqual"
+                        "operation": "Equal"
                     }
                 ]
             },
@@ -86,7 +82,9 @@ W kolekcji Postman, która został pobrany, wybierz **filtrów kont**->**tworzen
 
 **Umieścić** metoda żądania HTTP jest podobny do:
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
+```
 
 Wybierz **treści** kartę i wklej dane json kod [wcześniej zdefiniowaną](#define-a-filter).
 
@@ -98,11 +96,13 @@ Aby uzyskać więcej informacji, zobacz [tworzenia lub aktualizacji](https://doc
 
 ## <a name="create-asset-filters"></a>Tworzenie filtrów zasobów  
 
-W kolekcji Postman "Usługi Media Services v3", który został pobrany, wybierz **zasoby**-> ** tworzenia lub aktualizacji filtru zasobów.
+W kolekcji Postman "Usługi Media Services v3", który został pobrany, wybierz **zasoby**->**tworzenia lub aktualizacji filtru zasobów**.
 
 **Umieścić** metoda żądania HTTP jest podobny do:
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
+```
 
 Wybierz **treści** kartę i wklej dane json kod [wcześniej zdefiniowaną](#define-a-filter).
 

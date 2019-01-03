@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872857"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789215"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów usługi Apache Hadoop przy użyciu interfejsu API REST platformy Azure
 
@@ -24,10 +24,10 @@ Dowiedz się, jak utworzyć klaster usługi HDInsight przy użyciu szablonu usł
 
 Interfejs API REST platformy Azure umożliwia wykonywanie operacji zarządzania w usługach hostowanych na platformie Azure, w tym tworzenia nowych zasobów, takich jak klastry HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-> [!NOTE]
+> [!NOTE]  
 > Kroki opisane w tej dokumentów użyj [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) narzędzie w celu komunikowania się z interfejsu API REST platformy Azure.
 
 ## <a name="create-a-template"></a>Tworzenie szablonu
@@ -211,7 +211,7 @@ Następujący dokument JSON jest łączenie plików szablonu oraz parametrów z 
 
 W tym przykładzie jest używany w krokach w tym dokumencie. Zastąp przykład *wartości* w **parametry** sekcji z wartościami dla klastra.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Szablon używa domyślną liczbę węzłów procesu roboczego (4) dla klastra usługi HDInsight. Jeśli planowane jest na więcej niż 32 węzły procesu roboczego, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci ram.
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -222,7 +222,7 @@ Wykonaj kroki opisane w temacie [Rozpoczynanie pracy z interfejsem wiersza polec
 
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
-> [!NOTE]
+> [!NOTE]  
 > Te kroki są skrócone wersję *Tworzenie jednostki usługi przy użyciu hasła* części [interfejsu wiersza polecenia użyj Azure, aby utworzyć jednostkę usługi, aby uzyskiwać dostęp do zasobów](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dokumentu. Te kroki tworzenia jednostki usługi, który jest używany do uwierzytelniania interfejsu API REST platformy Azure.
 
 1. Z poziomu wiersza polecenia użyj następującego polecenia, aby wyświetlić listę subskrypcji platformy Azure.
@@ -241,7 +241,7 @@ Wykonaj kroki opisane w temacie [Rozpoczynanie pracy z interfejsem wiersza polec
 
     Zastąp wartości `--display-name`, `--homepage`, i `--identifier-uris` własnymi wartościami. Podaj hasło dla nowego wpisu w usłudze Active Directory.
 
-   > [!NOTE]
+   > [!NOTE]  
    > `--home-page` i `--identifier-uris` wartości nie muszą odwoływać się do rzeczywistej stronie sieci web hostowanych w Internecie. Klienci muszą mieć unikatowe identyfikatory URI.
 
    Wartość zwracana z tego polecenia jest __Identyfikatora aplikacji__ nowej aplikacji. Zapisz tę wartość.
@@ -323,14 +323,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -d "{set your body string to the template and parameters}"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Jeśli szablon został zapisany do pliku, można użyć następującego polecenia zamiast `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
 Jeśli to żądanie zakończy się pomyślnie, otrzymasz odpowiedź serię 200 i treść odpowiedzi zawiera dokument JSON zawierający informacje o operacji wdrażania.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wdrożenie zostało przesłane, ale nie została ukończona. Może potrwać kilka minut, zwykle około 15 na zakończenie wdrożenia.
 
 ## <a name="check-the-status-of-a-deployment"></a>Sprawdź stan wdrożenia
@@ -347,7 +347,7 @@ To polecenie zwraca dokument JSON zawierający informacje o operacji wdrażania.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-administer-use-portal-linux.md#create-clusters).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -357,7 +357,7 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 
 * [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
 * [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Za pomocą usług Apache Hadoop MapReduce HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
 

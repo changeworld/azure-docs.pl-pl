@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 74d6748a4d595e330103497dcc97ac57e01db250
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1cfecca7d7b8a3f554466d95c666e2cbddbffde
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158622"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975682"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Włączanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 
@@ -28,7 +28,7 @@ ms.locfileid: "50158622"
 Pełne [zadanie 2 — certyfikat secure LDAP do eksportowania. Plik PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
 
-## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>Zadanie 3: Włączanie protokołu secure LDAP dla domeny zarządzanej przy użyciu witryny Azure portal
+## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>Zadanie 3. Włączanie protokołu secure LDAP dla domeny zarządzanej przy użyciu witryny Azure portal
 Aby włączyć protokół secure LDAP, wykonaj następujące kroki konfiguracji:
 
 1. Przejdź do  **[witryny Azure portal](https://portal.azure.com)**.
@@ -51,7 +51,7 @@ Aby włączyć protokół secure LDAP, wykonaj następujące kroki konfiguracji:
 5. Domyślnie dostęp do Twojej domeny zarządzanej za pośrednictwem Internetu secure LDAP jest wyłączona. Przełącz **Zezwalaj na dostęp protokołu secure LDAP przez internet** do **Włącz**, jeśli potrzebujesz.
 
     > [!WARNING]
-    > Jeśli włączysz dostęp protokołu secure LDAP przez internet, Twoja domena to podatny na ataki siłowe hasła za pośrednictwem Internetu. Dlatego zaleca się skonfigurowanie sieciowej grupy zabezpieczeń do blokowania dostępu do zakresów adresów IP wymagana źródła. Zapoznaj się z instrukcjami, aby [blokowanie dostępu protokołu LDAPS do domeny zarządzanej za pośrednictwem Internetu](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
+    > Jeśli włączysz dostęp protokołu secure LDAP przez internet, Twoja domena to podatny na ataki siłowe hasła za pośrednictwem Internetu. Dlatego zaleca się skonfigurowanie sieciowej grupy zabezpieczeń do blokowania dostępu do zakresów adresów IP wymagana źródła. Zapoznaj się z instrukcjami, aby [blokowanie dostępu protokołu LDAPS do domeny zarządzanej za pośrednictwem Internetu](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
 6. Kliknij ikonę następujący folder **. Plik PFX z certyfikatem secure LDAP**. Określ ścieżkę do pliku PFX z certyfikatem, aby uzyskać dostęp do domeny zarządzanej secure LDAP.

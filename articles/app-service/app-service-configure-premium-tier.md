@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 991748c33eae607e97b3916a913b111af7b3b75a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258903"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714478"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service
 
@@ -29,7 +29,7 @@ Nowy **PremiumV2** warstwa cenowa zapewnia szybszymi procesorami, magazynem dysk
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aplikacji sieci web można skalować w górę **PremiumV2**, musisz mieć aplikację sieci Web w usłudze Azure App Service działa w warstwie cenowej niższa niż **PremiumV2**, i aplikacji sieci Web musi być uruchomiona w wdrożenie usługi App Service, która obsługuje PremiumV2.
+Aplikację, aby skalować w górę **PremiumV2**, musisz mieć aplikacja usługi Azure App Service, która działa w warstwie cenowej niższa niż **PremiumV2**, i aplikacja muszą działać w wdrożenie usługi App Service, która obsługuje PremiumV2.
 
 <a name="availability"></a>
 
@@ -47,7 +47,7 @@ az appservice list-locations --sku P1V2
 
 ## <a name="create-an-app-in-premiumv2-tier"></a>Tworzenie aplikacji na platformie warstwy PremiumV2
 
-Warstwa cenowa aplikację usługi App Service jest zdefiniowany w [planu usługi App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) uruchamianego na. Można utworzyć plan usługi App Service, samodzielnie lub w ramach tworzenia aplikacji sieci Web.
+Warstwa cenowa aplikację usługi App Service jest zdefiniowany w [planu usługi App Service](overview-hosting-plans.md) uruchamianego na. Można utworzyć plan usługi App Service, samodzielnie lub jako część tworzenia aplikacji.
 
 Podczas konfigurowania planu usługi App Service w <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, wybierz opcję **warstwa cenowa**. 
 
@@ -88,7 +88,7 @@ Niektóre plany usługi App Service nie można skalować w górę do warstwy Pre
 
 Jeśli aplikacja działa we wdrożeniu usługi App Service gdzie **PremiumV2** nie jest dostępny lub jeśli aplikacja działa w regionie, który aktualnie nie obsługuje **PremiumV2**, należy ponownie wdrożyć aplikację do wykonania Zaletą **PremiumV2**.  Dostępne są dwie opcje:
 
-- Tworzenie **nowe** zasobów grupy, a następnie utwórz **nowe** aplikacji sieci web i usługi app service plan w **nowe** grupy zasobów, wybierając odpowiedni region platformy Azure podczas tworzenia proces.  Możesz **musi** wybierz **PremiumV2** planu w momencie jest tworzony nowy plan usługi app service.  Dzięki temu kombinacji grupy zasobów, plan usługi App Service i regionu platformy Azure spowoduje planu usługi App Service, tworzonych w wdrożenie usługi App Service, która obsługuje **PremiumV2**.  Następnie należy ponownie wdrożyć kod aplikacji do nowo utworzoną aplikację i plan usługi app service. W razie potrzeby, plan usługi App Service można następnie Skaluj w dół, od **PremiumV2** Zapisz koszty i nadal będzie można pomyślnie skalowanie kopii ponownie w przyszłości za pomocą **PremiumV2**.
+- Tworzenie **nowe** zasobów grupy, a następnie utwórz **nowe** aplikacji i usługi App Service plan w **nowe** grupy zasobów, wybierając odpowiedni region platformy Azure w trakcie procesu tworzenia.  Możesz **musi** wybierz **PremiumV2** planu w momencie jest tworzony nowy plan usługi app service.  Dzięki temu kombinacji grupy zasobów, plan usługi App Service i regionu platformy Azure spowoduje planu usługi App Service, tworzonych w wdrożenie usługi App Service, która obsługuje **PremiumV2**.  Następnie należy ponownie wdrożyć kod aplikacji do nowo utworzoną aplikację i plan usługi app service. W razie potrzeby, plan usługi App Service można następnie Skaluj w dół, od **PremiumV2** Zapisz koszty i nadal będzie można pomyślnie skalowanie kopii ponownie w przyszłości za pomocą **PremiumV2**.
 - Jeśli aplikacja już działa w istniejącym **Premium** warstwy, a następnie aplikację można sklonować przy użyciu ustawień aplikacji, parametry połączenia i konfiguracji wdrażania w nowy plan usługi aplikacji, która używa **PremiumV2**.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)

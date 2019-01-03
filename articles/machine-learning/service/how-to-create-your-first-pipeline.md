@@ -1,7 +1,7 @@
 ---
 title: Tworzenie, uruchamianie i śledzić potokach uczenia Maszynowego
 titleSuffix: Azure Machine Learning service
-description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python.  Potoki są używane do tworzenia i zarządzania nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML), takich jak przygotowywanie danych, szkolenie modelu, wdrożenie modelu i wnioskowania.
+description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python. Potoki umożliwia tworzenie i zarządzanie nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML). Te etapy obejmują przygotowywania danych, szkolenie modelu, wdrożenie modelu i wnioskowania.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,23 +11,23 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8478b6760921f4641cd214b1ff19cae9757b6d7e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6c6472b824eefdd1954f3645c69090d1fb5455de
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269047"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754462"
 ---
-# <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego, przy użyciu zestawu SDK usługi Azure Machine Learning
+# <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
 W tym artykule dowiesz się, jak tworzenie, publikowanie, uruchom i Śledź [potoku uczenia maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk).  Te potoki pomagają tworzyć i zarządzać nimi przepływy pracy, które łączyć różnych machine learning faz. Każdej fazy potoku, takich jak przygotowywanie danych i szkoleń modelowych może zawierać jeden lub więcej kroków.
 
 Potoki tworzenia są widoczne dla członków usługi Azure Machine Learning [obszaru roboczego](how-to-manage-workspace.md). 
 
-Potoki Użyj zdalnego obliczeniowych elementów docelowych dla obliczeń i magazynu pośredniego i końcowego dane skojarzone z tego potoku.  Potoki można odczytu i zapisu danych do i z obsługiwanych [usługi Azure storage](https://docs.microsoft.com/azure/storage/) lokalizacji.
+Potoki Użyj zdalnego obliczeniowych elementów docelowych dla obliczeń i magazynu pośredniego i końcowego dane skojarzone z tego potoku. Potoki można odczytu i zapisu danych do i z obsługiwanych [usługi Azure Storage](https://docs.microsoft.com/azure/storage/) lokalizacji.
 
 >[!Note]
->Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+>Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -50,14 +50,14 @@ Utwórz zasoby wymagane do uruchomienia potoku:
 
 * Skonfiguruj Magazyn danych umożliwia dostęp do danych, potrzebne w etapach potoku.
 
-* Konfigurowanie `DataReference` obiektu, aby wskazywał dane są przechowywane jest dostępny w magazynie danych.
+* Konfigurowanie `DataReference` obiektów do punktów danych, który znajduje się w przeciwnym razie jest dostępny w magazynie danych.
 
 * Konfigurowanie [celów obliczeń](concept-azure-machine-learning-architecture.md#compute-target) uruchamiania etapów potoku.
 
 ### <a name="set-up-a-datastore"></a>Skonfiguruj Magazyn danych
-Magazyn danych przechowuje dane dla potoku w celu uzyskania dostępu do.  Każdy obszar roboczy ma domyślny magazyn danych. Możesz zarejestrować dodatkowe magazynów danych. 
+Magazyn danych przechowuje dane dla potoku w celu uzyskania dostępu do. Każdy obszar roboczy ma domyślny magazyn danych. Możesz zarejestrować dodatkowe magazynów danych. 
 
-Po utworzeniu obszaru roboczego, [usługi Azure file storage](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [magazynu obiektów blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego domyślnie.  Azure file storage is została "datastore domyślna" dla obszaru roboczego, ale można również użyć magazynu obiektów blob jako magazyn danych.  Dowiedz się więcej o [opcji usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
+Po utworzeniu obszaru roboczego, [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [usługi Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego domyślnie. Usługa Azure Files jest domyślny magazyn danych dla obszaru roboczego, ale można również użyć magazynu obiektów Blob jako magazyn danych. Aby dowiedzieć się więcej, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Files, obiektów blob platformy Azure lub usługi Azure Disks](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
 ```python
 # Default datastore (Azure file storage)
@@ -70,7 +70,7 @@ def_data_store = Datastore(ws, "workspacefilestore")
 def_blob_store = Datastore(ws, "workspaceblobstore")
 ```
 
-Przekaż dane plików lub katalogów do magazynu danych dla nich, które mają być dostępne z potokami.  W tym przykładzie korzysta z wersji magazynu obiektów blob magazynu danych:
+Przekaż dane plików lub katalogów do magazynu danych dla nich, które mają być dostępne z potokami. W tym przykładzie korzysta z wersji magazynu obiektów Blob magazynu danych:
 
 ```python
 def_blob_store.upload_files(
@@ -79,7 +79,7 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-Potok składa się z co najmniej jednego kroku.  Krok to jednostka systemem obliczeniowego elementu docelowego.  Kroki może być używanie źródeł danych i generować dane "pośredni". Krok można utworzyć, dane, takie jak model, katalog o modelu i pliki zależne lub dane tymczasowe.  Te dane są następnie dostępne dla innych kroków później w potoku.
+Potok składa się z co najmniej jednego kroku. Krok to jednostka systemem obliczeniowego elementu docelowego. Kroki może być używanie źródeł danych i generować dane "pośredni". Krok można utworzyć, dane, takie jak model, katalog o modelu i pliki zależne lub dane tymczasowe. Te dane są następnie dostępne dla innych kroków później w potoku.
 
 ### <a name="configure-data-reference"></a>Konfiguruj odwołanie do danych
 
@@ -92,7 +92,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Pośredni danych (lub danych wyjściowych kroku), jest reprezentowane przez [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) obiektu. `output_data1` jest generowany jako dane wyjściowe kroku i używane jako dane wejściowe z co najmniej jeden toku realizacji kolejnych kroków.  `PipelineData` wprowadza zależność danych między krokami i tworzy kolejność wykonywania niejawne w potoku.
+Pośredni danych (lub danych wyjściowych kroku), jest reprezentowane przez [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) obiektu. `output_data1` jest generowany jako dane wyjściowe w kroku, a także używane jako dane wejściowe z co najmniej jeden toku realizacji kolejnych kroków. `PipelineData` wprowadza zależność danych między krokami i tworzy kolejność wykonywania niejawne w potoku.
 
 ```python
 output_data1 = PipelineData(
@@ -103,7 +103,7 @@ output_data1 = PipelineData(
 
 ### <a name="set-up-compute"></a>Konfigurowanie obliczeń
 
-W usłudze Azure Machine Learning compute (lub obliczeniowego elementu docelowego) odwołuje się do maszyny i klastry, które wykona etapów obliczeniowych w potoku, machine learning. Można na przykład utworzyć Azure obliczeniowego usługi Machine Learning do uruchamiania etapami.
+W usłudze Azure Machine Learning termin *obliczenia* (lub *obliczeniowego elementu docelowego*) odwołuje się do maszyny i klastry, które wykonują etapów obliczeniowych w potoku, machine learning. Na przykład można utworzyć zasoby obliczeniowe usługi Azure Machine Learning na potrzeby uruchamiania etapów.
 
 ```python
 compute_name = "aml-compute"
@@ -129,7 +129,7 @@ else:
 
 ## <a name="construct-your-pipeline-steps"></a>Konstruowania etapów potoku
 
-Teraz można przystąpić do definiowania etap potoku. Wiele wbudowanych kroków są dostępne za pośrednictwem zestawu SDK usługi Azure Machine Learning. Jest najbardziej podstawowym te kroki `PythonScriptStep` , który jest wykonywany skrypt w języku Python w określonym obliczeniowego elementu docelowego.
+Teraz możesz przystąpić do definiowania etap potoku. Wiele wbudowanych kroków są dostępne za pośrednictwem zestawu SDK usługi Azure Machine Learning. Jest najbardziej podstawowym te kroki `PythonScriptStep`, które uruchamia skrypt w języku Python w określonym obliczeniowego elementu docelowego.
 
 ```python
 trainStep = PythonScriptStep(
@@ -157,27 +157,27 @@ pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
 
 ## <a name="submit-the-pipeline"></a>Przesyłanie potoku
 
-Gdy prześlesz planowanej sprzedaży, zależności są sprawdzane pod kątem każdy krok i migawkę folderu określonego jako katalog źródłowy jest przekazywany do usługi Azure Machine Learning.  Jeśli katalog źródłowy nie zostanie określony, bieżący katalog lokalny jest przekazywany.
+Po przesłaniu potoku usługi Azure Machine Learning sprawdza zależności dla każdego kroku i przesyła migawkę katalog źródłowy, wskazana. Jeśli katalog źródłowy nie zostanie określony, bieżący katalog lokalny jest przekazywany.
 
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
 ```
 
-Podczas pierwszego uruchomienia potoku:
+Przy pierwszym uruchomieniu potoku usługi Azure Machine Learning:
 
-* Migawka projektu zostanie pobrana do obliczeniowego elementu docelowego z magazynu obiektów blob, skojarzone z obszarem roboczym.
-* Obraz platformy docker jest wbudowany, odpowiadający każdego kroku w potoku.
-* Obraz platformy docker dla każdego kroku zostanie pobrana do obliczeniowego elementu docelowego z rejestru kontenerów.
-* Jeśli `DataReference` obiektu jest określona w kroku jest zainstalowany w magazynie danych. Jeśli instalacji nie jest obsługiwany, dane zamiast tego jest kopiowany do obliczeniowego elementu docelowego.
-* Ten krok działa w określonych w definicji kroku obliczeniowego elementu docelowego. 
-* Artefakty, takie jak dzienniki, stdout i stderr, metryki i dane wyjściowe, określone w kroku są tworzone. Te artefakty są następnie przekazywane i przechowywane w magazynie danych domyślne użytkownika.
+* Pobiera migawkę projektu do obliczeniowego elementu docelowego z magazynu obiektów Blob, skojarzone z obszarem roboczym.
+* Tworzy obraz platformy Docker, odpowiadający każdego kroku w potoku.
+* Pobiera obraz platformy docker dla każdego kroku do obliczeniowego elementu docelowego z rejestru kontenerów.
+* Jeśli na komputerze instalująca magazynu danych, `DataReference` obiektu określonego w kroku. Jeśli instalacji nie jest obsługiwany, dane zamiast tego jest kopiowany do obliczeniowego elementu docelowego.
+* Uruchamia krok w obliczeniowego elementu docelowego określonego w definicji kroku. 
+* Tworzy artefaktów, takich jak dzienniki, stdout i stderr, metryki i dane wyjściowe, określone w kroku. Te artefakty są następnie przekazywane i przechowywane w domyślnej użytkownika w magazynie danych.
 
-![Uruchamianie eksperymentu jako potok](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
+![Diagram przedstawiający uruchamianie eksperymentu jako potoku](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 ## <a name="publish-a-pipeline"></a>Publikowanie potoku
 
-Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych danych wejściowych. Dla punktu końcowego REST z już opublikowanych potoku, aby akceptować parametry muszą być sparametryzowane potoku, przed opublikowaniem. 
+Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych danych wejściowych. Już opublikowaną potoku, aby akceptować parametry punktu końcowego REST należy zdefiniować parametry potoku przed opublikowaniem. 
 
 1. Aby utworzyć parametr potoku, użyj [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) obiekt z wartością domyślną.
 
@@ -209,9 +209,9 @@ published_pipeline1 = pipeline1.publish(
 
 ## <a name="run-a-published-pipeline"></a>Uruchamianie potoku opublikowane
 
-Wszystkie opublikowane potoki zawierają punktu końcowego REST, aby wywołać przebieg potoku z systemów zewnętrznych, takich jak klienci-Python. Ten punkt końcowy, umożliwia "zarządzanych powtarzalności" w zadaniu wsadowym, oceniania i ponownego trenowania scenariuszy.
+Wszystkie opublikowane potoki zawierają punktu końcowego REST. Ten punkt końcowy wywołuje uruchomienia potoku z systemów zewnętrznych, takich jak klienci-Python. Ten punkt końcowy umożliwia "zarządzanych powtarzalności" w zadaniu wsadowym, oceniania i ponownego trenowania scenariuszy.
 
-Aby wywołać przebieg potoku poprzedniego, potrzebujesz tokenu nagłówka uwierzytelniania usługi Azure Active Directory zgodnie z opisem w [AzureCliAuthentication, klasa](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)
+Aby wywołać przebieg potoku poprzedniego, potrzebujesz nagłówka token uwierzytelniania usługi Azure Active Directory zgodnie z opisem w [klasy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
 
 ```python
 response = requests.post(published_pipeline1.endpoint, 

@@ -5,20 +5,21 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1c37b764b47856d3a369228d3f224f2a464029bb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846015"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790660"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 
 Otrzymasz komunikat o błędzie w przypadku ochrony sieci maszyn wirtualnych VMware lub serwerów fizycznych przy użyciu usługi Azure Site Recovery. W tym artykule opisano niektóre typowe problemy, które mogą wystąpić podczas replikowania lokalnych maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="initial-replication-issues"></a>Problemy dotyczące replikacji początkowej.
+
+## <a name="initial-replication-issues"></a>Problemy dotyczące replikacji początkowej
 
 W wielu przypadkach błędy replikacji początkowej, które można napotkać w witrynie pomocy technicznej są spowodowane przez problemy z łącznością między serwerem proces serwera źródłowego lub proces serwera na platformę Azure. W większości przypadków te problemy można rozwiązać, wykonując kroki wymienione poniżej.
 
@@ -33,7 +34,7 @@ Jeśli nie można połączyć, należy zezwolić na przychodzący port 9443 na s
 
 * Sprawdź stan usługi `InMage Scout VX Agent – Sentinel/OutpostStart` Jeśli nie jest uruchomiona i sprawdź, czy Jeśli problem nadal występuje.   
 
-## <a name="verify-the-process-server"></a>Sprawdź serwer przetwarzania
+### <a name="verify-the-process-server"></a>Sprawdź serwer przetwarzania
 
 * **Sprawdź, jeśli serwer przetwarzania jest aktywnie wypychanie danych do platformy Azure**
 
@@ -43,7 +44,7 @@ Z maszyny serwera przetwarzania Otwórz Menedżera zadań (naciśnij klawisze Ct
 
 W przeciwnym razie wykonaj poniższe kroki:
 
-* **Sprawdź, czy serwer przetwarzania jest możliwość łączenia z usługą Azure Blob**: Wybierz i sprawdź cbengine.exe przeglądania "Połączeń TCP", aby sprawdzić, czy jest łączność z serwerem przetwarzania adresu URL obiektu blob usługi Azure Storage.
+* **Sprawdź, czy serwer przetwarzania jest możliwość łączenia z usługą Azure Blob**: Wybierz, a następnie sprawdź cbengine.exe przeglądania "Połączeń TCP", aby sprawdzić, czy jest łączność z serwerem przetwarzania adresu URL obiektu blob usługi Azure Storage.
 
 ![Włączanie replikacji](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
@@ -69,9 +70,9 @@ Jeśli występują problemy, z serwera przetwarzania wiersza polecenia, użyj te
 Jeśli nie można się połączyć, sprawdź, czy problem dostępu z powodu zapory lub serwera Proxy, zgodnie z opisem w następnym kroku.
 
 
-* **Sprawdź, czy zapora oparta na adres IP na serwerze przetwarzania nie blokuje dostępu**: Jeśli używane są reguły zapory oparte na adresie IP na serwerze, Pobierz pełną listę Microsoft Azure zakresów IP centrum danych z [tutaj](https://www.microsoft.com/download/details.aspx?id=41653) i dodać je do konfiguracji zapory, aby zapewnić zezwalały na komunikację do systemu Azure (i portu 443 protokołu HTTPS).  Zezwól na użycie zakresów adresów IP dla regionu platformy Azure Twojej subskrypcji oraz regionu Zachodnie stany USA (służy do kontrolowania dostępu i zarządzania tożsamościami).
+* **Sprawdź, czy zapora oparta na adres IP na serwerze przetwarzania nie blokuje dostępu**: Jeśli używane są reguły zapory oparte na adresie IP na serwerze, Pobierz pełną listę Microsoft Azure zakresów IP centrum danych z [tutaj](https://www.microsoft.com/download/details.aspx?id=41653) i dodać je do konfiguracji zapory, aby zapewnić ich zezwalają na komunikację z Platforma Azure (i portu 443 protokołu HTTPS).  Zezwól na użycie zakresów adresów IP dla regionu platformy Azure Twojej subskrypcji oraz regionu Zachodnie stany USA (służy do kontrolowania dostępu i zarządzania tożsamościami).
 
-* **Sprawdź, czy opartego na adresach URL zapory na serwerze przetwarzania nie blokuje dostępu**: Jeśli używasz reguł zapory opartego na adresach URL na serwerze, upewnij się, następujące adresy URL są dodawane do konfiguracji zapory.
+* **Sprawdź, czy opartego na adresach URL zapory na serwerze przetwarzania nie blokuje dostępu**:  Jeśli używane są reguły zapory opartego na adresach URL na serwerze, upewnij się, że następujące adresy URL są dodawane do konfiguracji zapory.
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -86,7 +87,20 @@ Kopia zapasowa Microsoft Azure Search
 Otwórz go i kliknij akcję > Zmień właściwości. Na karcie Konfiguracja serwera Proxy powinien zostać wyświetlony adres serwera proxy, która powinna być taka sama, jak to przedstawiono ustawienia rejestru. W przeciwnym razie zmień ją na ten sam adres.
 
 
-* **Sprawdź, jeśli ograniczania przepustowości nie jest ograniczona na serwerze przetwarzania**: zwiększyć przepustowość i sprawdź, czy problem nadal istnieje.
+* **Sprawdź, jeśli ograniczania przepustowości nie jest ograniczona na serwerze przetwarzania**:  Zwiększyć przepustowość i sprawdź, czy problem nadal istnieje.
+
+## <a name="source-machine-to-be-protected-through-site-recovery-is-not-listed-on-azure-portal"></a>Maszyna źródłowa ma być chroniony przez usługi Site Recovery nie znajduje się w witrynie Azure portal
+
+Podczas próby wybrać maszyny źródłowej, aby włączyć replikację za pomocą usługi Azure Site Recovery, komputer może nie są dostępne dla Ciebie kontynuować z następujących powodów
+
+* Jeśli istnieją dwie maszyny wirtualne w ramach programu vCenter za pomocą tego samego wystąpienia identyfikatora UUID, następnie pierwszej maszyny wirtualnej, odnalezione przez serwer konfiguracji są wyświetlane w portalu. Aby rozwiązać problem, upewnij się, że nie dwie maszyny wirtualne mają tego samego wystąpienia identyfikatora UUID.
+* Upewnij się, że dodano poświadczenia poprawne vCenter podczas zestaw konfiguracji za pomocą szablonu pakietu OVF lub ujednoliconego zestawu. Aby zweryfikować dodanych poświadczeń, zapoznaj się z wytycznymi dotyczącymi udostępnione [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+* Jeśli uprawnienia podany dostępu vCenter do nie ma wystarczających uprawnień, może to prowadzić do awarii w odnajdywanie maszyn wirtualnych. Upewnij się, uprawnienia, pod warunkiem [tutaj](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) są dodawane do konta użytkownika vCenter.
+* Jeśli maszyna wirtualna jest już chroniony przez usługi Site Recovery, następnie nie będzie możliwa ochrona. Upewnij się, że maszynę wirtualną, którą próbujesz w portalu nie jest już chronione przez innych użytkowników lub w innych subskrypcjach.
+
+## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Chronione maszyny wirtualne są wyszarzone na zewnątrz w portalu
+
+Maszyny wirtualne, które są replikowane w ramach odzyskiwania lokacji są wyszarzone Jeśli istnieją zduplikowane wpisy w systemie. Zapoznaj się z wytycznymi podanymi [tutaj](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) usunąć nieaktualnych wpisów i rozwiązać problem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli potrzebujesz więcej pomocy, a następnie publikują zapytania [forum usługi Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Mamy aktywną społeczność i jeden z naszych inżynierów będzie mógł pomóc.

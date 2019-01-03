@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279821"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53736755"
 ---
 | Zasób | Bezpłatna | Udostępniona | Podstawowa | Standardowa (Standard) | Premium (wersja 2) | Izolowane </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Aplikacje internetowe, mobilne i interfejsu API](https://azure.microsoft.com/services/app-service/) na [planu usługi App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup>|
-| [Plan usługi App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 na region |10 dla grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów|
+| [Aplikacje internetowe, mobilne i interfejsu API](https://azure.microsoft.com/services/app-service/) na [planu usługi App Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup>|
+| [Plan usługi App Service](../articles/app-service/overview-hosting-plans.md) |1 na region |10 dla grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów|
 | Typ wystąpienia obliczeniowe |Udostępniona |Udostępniona |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup></p> |W wersji dedykowanej<sup>3</sup>|
 | [Skalowalny w poziomie](../articles/app-service/web-sites-scale.md) (maksymalna liczba wystąpień) |1 udostępnionego |1 udostępnionego |3 w wersji dedykowanej<sup>3</sup> |10 w wersji dedykowanej<sup>3</sup> |20 w wersji dedykowanej<sup>3</sup>|w wersji dedykowanej 100<sup>4</sup>|
 | Magazyn<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
@@ -24,18 +24,18 @@ ms.locfileid: "52279821"
 | Przepustowość |165 MB |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |
 | Architektura aplikacji |32-bitowa |32-bitowa |32-bitowy/64-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |
 | Za wystąpienie usługi sieci Web Sockets<sup>7</sup> |5 |35 |350 |Nieograniczona liczba |Nieograniczona liczba |Nieograniczona liczba |
-| Współbieżne [debugera połączeń](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) na aplikację |1 |1 |1 |5 |5 |5 |
+| Współbieżne [debugera połączeń](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikację |1 |1 |1 |5 |5 |5 |
 | Certyfikaty usługi App Service na subskrypcję<sup>10</sup>| Nieobsługiwane | Nieobsługiwane |10 |10 |10 |10 |
 | Domeny niestandardowe na aplikację</a> |0 (tylko w przypadku poddomena azurewebsites.net)|500 |500 |500 |500 |500 |
 | Domena niestandardowa [Obsługa protokołu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nieobsługiwane. Certyfikat wieloznaczny dla *. azurewebsites.net domyślnie dostępne.|Nieobsługiwane. Certyfikat wieloznaczny dla *. azurewebsites.net domyślnie dostępne.|Nieograniczone połączenia SNI SSL |Nieograniczone połączenia SNI SSL i 1 połączenie IP SSL połączeń |Nieograniczone połączenia SNI SSL i 1 połączenie IP SSL połączeń | Nieograniczone połączenia SNI SSL i 1 połączenie IP SSL połączeń|
 | Zintegrowana usługa równoważenia obciążenia | |X |X |X |X |X<sup>9</sup> |
 | [Zawsze włączone](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
-| [Zaplanowane kopie zapasowe](../articles/app-service/web-sites-backup.md) | | | | Zaplanowane kopie zapasowe co 2 godziny, maksymalnie 12 kopii zapasowych dziennie (Ręczne + zaplanowane) | Zaplanowane kopie zapasowe co godzinę, maksymalnie 50 kopii zapasowych dziennie (Ręczne + zaplanowane) | Zaplanowane kopie zapasowe co godzinę, maksymalnie 50 kopii zapasowych dziennie (Ręczne + zaplanowane) |
+| [Zaplanowane kopie zapasowe](../articles/app-service/manage-backup.md) | | | | Zaplanowane kopie zapasowe co 2 godziny, maksymalnie 12 kopii zapasowych dziennie (Ręczne + zaplanowane) | Zaplanowane kopie zapasowe co godzinę, maksymalnie 50 kopii zapasowych dziennie (Ręczne + zaplanowane) | Zaplanowane kopie zapasowe co godzinę, maksymalnie 50 kopii zapasowych dziennie (Ręczne + zaplanowane) |
 | [Automatyczne skalowanie](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
-| [Zadania Webjob](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |X |
+| [Zadania Webjob](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
 | [Usługa Azure Scheduler](https://azure.microsoft.com/services/scheduler/) pomocy technicznej | |X |X |X |X |X |
 | [Monitorowanie punktu końcowego](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Miejsca przejściowe](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
+| [Miejsca przejściowe](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | Umowa SLA | |  |99,9% |99.95%|99.95%|99.95%|  
 
 <sup>1</sup> aplikacji i limitami przydziału magazynów są na plan usługi App Service, chyba że zaznaczono inaczej.  

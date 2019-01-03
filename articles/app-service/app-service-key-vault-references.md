@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 8add470048d3ead3f75ff85dd6f489d798af5e29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253446"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723148"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Aby przeczytać wpisy tajne z magazynu Key Vault, musisz mieć utworzony magazyn
 
 1. Tworzenie magazynu kluczy, postępując zgodnie z [szybkiego startu usługi Key Vault](../key-vault/quick-create-cli.md).
 
-1. Tworzenie [przypisany systemowo tożsamości zarządzanej](app-service-managed-service-identity.md) dla aplikacji.
+1. Tworzenie [przypisany systemowo tożsamości zarządzanej](overview-managed-identity.md) dla aplikacji.
 
    > [!NOTE] 
    > Usługa Key Vault odwołuje się do aktualnie tylko przypisana przez system obsługi tożsamości zarządzanej. Nie można używać tożsamości przypisanych przez użytkownika.

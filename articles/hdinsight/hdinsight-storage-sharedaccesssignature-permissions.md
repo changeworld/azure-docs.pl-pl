@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409925"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743361"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Ograniczania dostępu do danych w HDInsight za pomocą sygnatur dostępu współdzielonego magazynu platformy Azure
 
@@ -180,10 +180,10 @@ Przykładem tworzenia klastra usługi HDInsight, który korzysta z sygnatury dos
    > [!IMPORTANT]  
    > Po wyświetleniu monitu o HTTP/HTTPS lub nazwa użytkownika SSH i hasło, należy podać hasło, które spełnia następujące kryteria:
    >
-   > * Musi być co najmniej 10 znaków
-   > * Musi zawierać co najmniej jedną cyfrę
-   > * Musi zawierać co najmniej jeden znak inny niż alfanumeryczny
-   > * Musi zawierać co najmniej jedną wielką lub małą literę
+   > * Musi być co najmniej 10 znaków.
+   > * Musi zawierać co najmniej jedną cyfrę.
+   > * Musi zawierać co najmniej jeden znak inny niż alfanumeryczny.
+   > * Musi zawierać co najmniej jedną wielką lub małą literę.
 
 Zajmuje trochę czasu ten skrypt, aby ukończyć, zwykle około 15 minut. Po zakończeniu działania skryptu bez żadnych błędów został utworzony klaster.
 
@@ -290,10 +290,10 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby zweryfi
 
 **Rozpoznawanie**: Użyj hasła spełniającego następujące kryteria:
 
-* Musi być co najmniej 10 znaków
-* Musi zawierać co najmniej jedną cyfrę
-* Musi zawierać co najmniej jeden znak inny niż alfanumeryczny
-* Musi zawierać co najmniej jedną wielką lub małą literę
+* Musi być co najmniej 10 znaków.
+* Musi zawierać co najmniej jedną cyfrę.
+* Musi zawierać co najmniej jeden znak inny niż alfanumeryczny.
+* Musi zawierać co najmniej jedną wielką lub małą literę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

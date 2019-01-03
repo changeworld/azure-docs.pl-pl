@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52bdeb5fe517430497c57a5c34b822df5933e3ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310440"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608889"
 ---
 # <a name="api-management-caching-policies"></a>Zasady buforowania usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -118,8 +118,8 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 | Preferencje pamięci podręcznej               | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | typ podrzędny dla pamięci podręcznej        | Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> -Brak — buforowanie podrzędnych nie jest dozwolone.<br />— prywatna — podrzędny prywatnej pamięci podręcznej jest dozwolone.<br />-publiczny — prywatny i udostępnianie podrzędnego buforowanie jest dozwolone.                                                                                                          | Nie       | brak              |
 | must-revalidate                | Gdy włączone jest buforowanie podrzędnych tego atrybutu Włącza lub wyłącza `must-revalidate` dyrektywa kontroli pamięci podręcznej w odpowiedziach bramy.                                                                                                                                                                                                                      | Nie       | true              |
-| różnią się przez deweloperów              | Ustaw `true` do pamięci podręcznej odpowiedzi na [klucz subskrypcji](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Yes      |                   |
-| różnią się przez developer-groups       | Ustaw `true` do pamięci podręcznej odpowiedzi na [grupy użytkowników](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Yes      |                   |  
+| różnią się przez deweloperów              | Ustaw `true` do pamięci podręcznej odpowiedzi na [klucz subskrypcji](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Yes      |         False          |
+| różnią się przez developer-groups       | Ustaw `true` do pamięci podręcznej odpowiedzi na [grupy użytkowników](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Yes      |       False            |  
 
 ### <a name="usage"></a>Sposób użycia  
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 54155346c7f417be8beb0ced8ef825ec22a08237
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721956"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971617"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analizowanie wzorców nawigacji użytkowników dzięki przepływom użytkowników w usłudze Application Insights
 
@@ -34,7 +34,7 @@ Narzędzie przepływy użytkownika wizualizuje, w jaki sposób użytkownicy prze
 Uruchamia narzędzie przepływy użytkownika widoku strony początkowej, zdarzenie niestandardowe lub wyjątek, który określisz. Biorąc pod uwagę to zdarzenie początkowe, przepływy użytkownika pokazuje zdarzenia, które wystąpiły przed i po tym dniu podczas sesji użytkownika. Wiersze o różnej grubości pokazują, ile razy każda ścieżka użytego przez użytkowników. Specjalne **rozpoczęcia sesji** węzłów pokazać, gdzie kolejnych węzłów rozpoczęcia sesji. **Zakończono sesji** węzłów pokazują, jak wielu użytkowników wysyłane nie wyświetleń stron lub zdarzeń niestandardowych po poprzednim węźle wyróżnianie, gdzie użytkownicy prawdopodobnie pozostałych lokacji.
 
 > [!NOTE]
-> Zasób usługi Application Insights musi zawierać wyświetleń stron lub zdarzeń niestandardowych, aby użyć narzędzia przepływy użytkownika. [Dowiedz się, jak skonfigurować aplikację do zbierania wyświetleń stron, które automatycznie za pomocą zestawu SDK języka JavaScript usługi Application Insights](app-insights-javascript.md).
+> Zasób usługi Application Insights musi zawierać wyświetleń stron lub zdarzeń niestandardowych, aby użyć narzędzia przepływy użytkownika. [Dowiedz się, jak skonfigurować aplikację do zbierania wyświetleń stron, które automatycznie za pomocą zestawu SDK języka JavaScript usługi Application Insights](../azure-monitor/app/javascript.md).
 >
 >
 
@@ -59,7 +59,7 @@ Jeśli wyświetleń stron lub zdarzeń niestandardowych brakuje który powinna s
 * Sprawdź **wykluczone zdarzenia** sekcji **Edytuj** menu.
 * Przyciski plus na **innych** węzłów do uwzględnienia rzadziej zdarzenia w wizualizacji.
 * Jeśli wyświetlenie strony lub zdarzeń niestandardowych oczekujesz, że jest rzadko przez użytkowników, spróbuj wysłać zwiększenie zakresu czasu dla wizualizacji w **Edytuj** menu.
-* Wyświetl stronę upewnij się, że, zdarzenie niestandardowe lub wyjątku, jakiego oczekujesz jest skonfigurować mają zostać zebrane przez zestaw SDK usługi Application Insights w kodzie źródłowym w lokacji. [Dowiedz się więcej na temat zbierania zdarzeń niestandardowych.](app-insights-api-custom-events-metrics.md)
+* Wyświetl stronę upewnij się, że, zdarzenie niestandardowe lub wyjątku, jakiego oczekujesz jest skonfigurować mają zostać zebrane przez zestaw SDK usługi Application Insights w kodzie źródłowym w lokacji. [Dowiedz się więcej na temat zbierania zdarzeń niestandardowych.](../azure-monitor/app/api-custom-events-metrics.md)
 
 Jeśli chcesz zobaczyć więcej czynności w wizualizacji, użyj **poprzednie kroki** i **następne kroki** list rozwijanych nad wizualizacją.
 
@@ -99,4 +99,4 @@ Użyj **podział według** opcji na liście **Edytuj** menu:
 * [Przegląd wykorzystania](app-insights-usage-overview.md)
 * [Użytkownicy, sesje i zdarzenia](app-insights-usage-segmentation.md)
 * [Przechowywanie](app-insights-usage-retention.md)
-* [Dodawanie zdarzeń niestandardowych do aplikacji](app-insights-api-custom-events-metrics.md)
+* [Dodawanie zdarzeń niestandardowych do aplikacji](../azure-monitor/app/api-custom-events-metrics.md)

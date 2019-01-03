@@ -4,22 +4,22 @@ description: Więcej informacji na temat licencjonowania programu Microsoft Smoo
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: femila
+manager: steveng
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136277"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753493"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu 
 
@@ -29,7 +29,7 @@ Projektowanie i tworzenie podsystem Digital Rights Management (DRM), dla Ott (OT
 
 Docelowe czytelnicy dla tego dokumentu są inżynierów, którzy pracują w podsystemu DRM OTT lub online rozwiązania przesyłania strumieniowego / (wiele ekranów) lub czytelników, którzy są zainteresowani podsystemu DRM. Zakłada się, czy czytelnicy są zapoznać się z co najmniej jedną z technologii DRM na rynku, takich jak PlayReady, Widevine, FairPlay lub Adobe Access.
 
-W tej dyskusji, multi-DRM dołączamy 3 protokołów DRM, obsługiwane przez usługę Azure Media Services: typowe szyfrowanie (CENC) dla technologii PlayReady i Widevine, FairPlay, a także AES-128 szyfrowania otwartym kluczem. Główne trend w przemyśle OTT i przesyłania strumieniowego online jest korzystać z natywnych protokołów DRM na różnych platformach klienckich. Tego trendu jest przesunięcia od poprzedniego używany pojedynczy DRM i jego zestawu SDK klienta dla różnych platform klienta. Gdy używasz CENC przy użyciu wielu natywnych DRM PlayReady i Widevine są szyfrowane na [szyfrowania Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specyfikacji.
+W tej dyskusji, multi-DRM dołączamy 3 protokołów DRM, obsługiwane przez usługę Azure Media Services: Common Encryption (CENC) dla technologii PlayReady i Widevine, FairPlay, a także AES-128 szyfrowania otwartym kluczem. Główne trend w przemyśle OTT i przesyłania strumieniowego online jest korzystać z natywnych protokołów DRM na różnych platformach klienckich. Tego trendu jest przesunięcia od poprzedniego używany pojedynczy DRM i jego zestawu SDK klienta dla różnych platform klienta. Gdy używasz CENC przy użyciu wielu natywnych DRM PlayReady i Widevine są szyfrowane na [szyfrowania Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specyfikacji.
 
 Zalety stosowania macierzystych multi-DRM content Protection to że:
 
@@ -119,11 +119,11 @@ Te zagadnienia są ważne
 
 Jeśli używasz chmury publicznej do dostarczania licencji, licencje trwałe i nietrwałe mają bezpośredni wpływ na koszt dostarczania licencji. Następujące dwa przypadki różnorodności służą do zilustrowania:
 
-* Subskrypcja miesięczna: trwałego licencji i mapowanie klucz do zasobu z zawartości 1-do wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
+* Subskrypcja miesięczna: Użyj trwałego licencji i mapowanie klucz do zasobu z zawartości 1-do wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = 1
 
-* Subskrypcja miesięczna: nonpersistent licencji i mapowania 1-do-1 między klucz zawartości i zasobów. W takim przypadku:
+* Subskrypcja miesięczna: Za pomocą nietrwałych licencji i mapowania 1-do-1 między klucz zawartości i zasobów. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = [liczba filmów, którzy oglądali transmisje stacji] x [liczba sesji]
 
@@ -327,7 +327,7 @@ Aby zarejestrować i skonfigurować aplikację wskaźnika w usłudze Azure AD, w
 
 2. Dodaj nowy klucz aplikacji zasobu.
 
-3. Aktualizowanie pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "All".
+3. Aktualizacja pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "Wszystkie".
 
 4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]**. Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
 
@@ -360,8 +360,8 @@ Jeśli używasz niestandardowej usługi STS, przeprowadza się dwie zmiany:
 
 Istnieją dwa typy kluczy zabezpieczeń:
 
-* Klucz symetryczny: ten sam klucz służy do generowania i sprawdź token JWT.
-* Klucz asymetryczny: pary kluczy publiczny prywatny w X509 certyfikat jest używany z kluczem prywatnym, aby zaszyfrować/wygenerować token JWT i przy użyciu klucza publicznego w celu zweryfikowania tokenu.
+* Klucz symetryczny: Ten sam klucz służy do generowania i sprawdź token JWT.
+* Klucz asymetryczny: Pary kluczy publiczny prywatny w X509 certyfikat jest używany z kluczem prywatnym, aby zaszyfrować/wygenerować token JWT i przy użyciu klucza publicznego w celu zweryfikowania tokenu.
 
 > [!NOTE]
 > Jeśli używasz środowiska .NET Framework / C# jako platformy projektowej, X509 certyfikat używany dla klucza asymetrycznego zabezpieczeń musi mieć klucz o długości co najmniej 2048. Jest to wymagane klasy System.IdentityModel.Tokens.X509AsymmetricSecurityKey w programie .NET Framework. W przeciwnym razie jest zgłaszany następujący wyjątek:
@@ -400,15 +400,15 @@ Możesz skontaktować się ze wszystkich autorów konta utworzone lub dodawane.
 
 Poniższych zrzutach ekranu przedstawiono różne stron logowania w usługach używany przez inną domenę konta:
 
-**Niestandardowy usługi Azure AD dzierżawy konta domeny**: dostosowanego strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
+**Konto domeny dzierżawy niestandardowy usługi Azure AD**: Niestandardowe strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
+**Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: Strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD dwóch](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Konto Microsoft**: strony logowania konta Microsoft dla konsumentów.
+**Konto Microsoft**: Strona logowania konta Microsoft dla konsumentów.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD trzy](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583217"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652085"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Przegląd platformy Apache Spark Streaming
 
@@ -203,7 +203,7 @@ Przewijania funkcje okna dostępny w interfejsie API przesyłania strumieniowego
 
 ## <a name="checkpointing"></a>Tworzenie punktów kontrolnych
 
-Aby zapewnić odporność i odporności na uszkodzenia, przesyłanie strumieniowe Spark opiera się na punkty kontrolne, aby upewnić się, że przetwarzanie strumienia można bezproblemowo kontynuują, nawet w przypadku awarii węzła. W HDInsight Spark tworzy punkty kontrolne do trwałego magazynu (Azure Storage lub Data Lake Store). Te punkty kontrolne są przechowywane metadane dotyczące przesyłania strumieniowego aplikacji, takie jak konfiguracja, operacje zdefiniowane przez aplikację i wszystkie instancje, które były umieszczane w kolejce, ale nie zostały jeszcze przetworzone. W niektórych przypadkach punkty kontrolne zawierają również zapisywać dane w danych, aby szybciej odbudować stanu danych z co znajduje się w danych zarządzanych przez rozwiązanie Spark.
+Aby zapewnić odporność i odporności na uszkodzenia, przesyłanie strumieniowe Spark opiera się na punkty kontrolne, aby upewnić się, że przetwarzanie strumienia można bezproblemowo kontynuują, nawet w przypadku awarii węzła. W HDInsight Spark tworzy punkty kontrolne do trwałego magazynu (Azure Storage lub usługi Data Lake Storage). Te punkty kontrolne są przechowywane metadane dotyczące przesyłania strumieniowego aplikacji, takie jak konfiguracja, operacje zdefiniowane przez aplikację i wszystkie instancje, które były umieszczane w kolejce, ale nie zostały jeszcze przetworzone. W niektórych przypadkach punkty kontrolne zawierają również zapisywać dane w danych, aby szybciej odbudować stanu danych z co znajduje się w danych zarządzanych przez rozwiązanie Spark.
 
 ## <a name="deploying-spark-streaming-applications"></a>Wdrażanie aplikacji do przesyłania strumieniowego platformy Spark
 
@@ -215,6 +215,6 @@ Można również sprawdzić stan wszystkich aplikacji, za pomocą żądanie GET 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie klastra Apache Spark w HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Tworzenie klastra platformy Apache Spark w usłudze HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Przewodnik programowania w przesyłania strumieniowego platformy Apache Spark](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
 * [Uruchamiać zadania Apache Spark zdalnie za pomocą usługi LIVY Apache](apache-spark-livy-rest-interface.md)

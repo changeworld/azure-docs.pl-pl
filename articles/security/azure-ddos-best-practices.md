@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4496a0fd3ec220d03c4cc279876234b503b0dbb6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231638"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720870"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Usługa Azure DDoS Protection: Najlepsze rozwiązania i architektury referencyjne
 
@@ -81,7 +81,7 @@ Zapewnia, że aplikacja jest odporność obsługi typu "odmowa usługi, która j
 
 Skalowalność to, jak system może obsłużyć zwiększonego obciążenia. Należy zaprojektować aplikacje do [skalowanie w poziomie](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) do spełnienia określonych wymagań obciążenia namnożonego, szczególnie w przypadku ataków DDoS. Jeśli aplikacja jest zależna od pojedynczego wystąpienia usługi, tworzy pojedynczy punkt awarii. Inicjowanie obsługi administracyjnej wielu wystąpień sprawia, że system bardziej skalowalny i bardziej odporne na błędy.
 
-Aby uzyskać [usługi Azure App Service](../app-service/app-service-value-prop-what-is.md), wybierz pozycję [planu usługi App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) oferująca wiele wystąpień. W przypadku usług Azure Cloud Services skonfigurować każdej z ról w taki sposób, aby użyć [wiele wystąpień](../cloud-services/cloud-services-choose-me.md). Aby uzyskać [maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), upewnij się, że architektury maszynę wirtualną (VM) zawiera więcej niż jednej maszyny Wirtualnej i że każda maszyna wirtualna znajduje się w [zestaw dostępności](../virtual-machines/virtual-machines-windows-manage-availability.md). Firma Microsoft zaleca używanie [zestawy skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) funkcji skalowania automatycznego.
+Aby uzyskać [usługi Azure App Service](../app-service/app-service-value-prop-what-is.md), wybierz pozycję [planu usługi App Service](../app-service/overview-hosting-plans.md) oferująca wiele wystąpień. W przypadku usług Azure Cloud Services skonfigurować każdej z ról w taki sposób, aby użyć [wiele wystąpień](../cloud-services/cloud-services-choose-me.md). Aby uzyskać [maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), upewnij się, że architektury maszynę wirtualną (VM) zawiera więcej niż jednej maszyny Wirtualnej i że każda maszyna wirtualna znajduje się w [zestaw dostępności](../virtual-machines/virtual-machines-windows-manage-availability.md). Firma Microsoft zaleca używanie [zestawy skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) funkcji skalowania automatycznego.
 
 ### <a name="defense-in-depth"></a>Ochrona w głębi systemu
 
@@ -96,7 +96,7 @@ Widzimy często klientów lokalnych zasobów wprowadzenie zaatakowane wraz z ich
 
 ## <a name="azure-offerings-for-ddos-protection"></a>Oferty platformy Azure do ochrony przed atakami DDoS
 
-Platforma Azure ma dwie oferty usług DDoS, które zapewniają ochronę przed atakami sieciowymi (warstwa 3 i 4): przed atakami DDoS Protection podstawowa i standardowa ochrona przed atakami DDoS. 
+Platforma Azure ma dwie oferty usług DDoS, które zapewniają ochronę przed atakami sieciowymi (warstwa 3 i 4): Przed atakami DDoS Protection w warstwach podstawowa i standardowa ochrony przed atakami DDoS. 
 
 ### <a name="ddos-protection-basic"></a>Podstawowa ochrona przed atakami DDoS
 

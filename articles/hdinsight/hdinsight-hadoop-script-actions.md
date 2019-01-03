@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0d6c22d54de0486ad679f93343f0e7b208f21f4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 5db4387c2fd610313aaac032c122366aa45dc7f9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384063"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720190"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Tworzenie akcji skryptu skryptów dla klastrów HDInsight Windows
 Dowiedz się, jak można tworzyć skrypty Akcja skryptu dla HDInsight. Aby uzyskać informacji na temat za pomocą skryptów akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów HDInsight opartych na systemie Linux, zobacz [skrypty opracowywanie akcji skryptu do HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -32,8 +32,6 @@ Akcja skryptu może służyć do instalowania dodatkowego oprogramowania, urucho
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termin "Save-HDIFile" nie został rozpoznany jako nazwa polecenia cmdlet, funkcji, pliku skryptu lub program wykonywalny. Sprawdź pisownię nazwy lub jeśli ścieżka został uwzględniony, sprawdź, czy ścieżka jest poprawna i spróbuj ponownie.
 > 
 > Jest on, ponieważ nie włączono metody pomocnika.  Zobacz [metody pomocnika do niestandardowych skryptów](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
->
->
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 W przypadku tworzenia klastrów HDInsight w systemie operacyjnym Windows, akcji skryptu jest skrypt programu Azure PowerShell. Poniższy skrypt to przykład konfigurowania plików konfiguracji lokacji:

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: ea509d3804053f060ad551b6eff945b70cec8796
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261062"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744993"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Przykłady usługi Azure Cache for Redis
 Ten temat zawiera listę przykładów pamięci podręcznej Redis, obejmujące scenariusze, takie jak łączenie z pamięci podręcznej, odczytywania i zapisywania danych do i z pamięci podręcznej i za pomocą usługi Azure Cache ASP.NET dla dostawców usługi Redis pamięć podręczna systemu Azure. Niektóre przykłady to projekty do pobrania, a niektóre zapewniają wskazówki krok po kroku i umieszczania fragmentów kodu, ale nie należy przeprowadzać konsolidacji z projektem do pobrania.
@@ -40,7 +40,7 @@ Ten przykład pokazuje, jak:
 * Implementowanie znakowanie przy użyciu zestawów pamięci podręcznej Redis
 * Praca z klastra pamięci podręcznej Redis
 
-Aby uzyskać więcej informacji, zobacz [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) zobacz dokumentację w witrynie GitHub i więcej scenariuszy użycia [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests) testów jednostkowych.
+Aby uzyskać więcej informacji, zobacz [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) zobacz dokumentację w witrynie GitHub i więcej scenariuszy użycia [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) testów jednostkowych.
 
 [Jak używać usługi Azure Cache dla pamięci podręcznej Redis przy użyciu języka Python](cache-python-get-started.md) pokazuje, jak rozpocząć pracę z usługą Azure Cache dla pamięci podręcznej Redis przy użyciu języka Python i [redis-py](https://github.com/andymccurdy/redis-py) klienta.
 

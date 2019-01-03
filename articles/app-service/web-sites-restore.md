@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 603a6bab75c4a5da4425bcc57d2cc5ccda728636
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274143"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721465"
 ---
 # <a name="restore-an-app-in-azure"></a>Przywracanie aplikacji na platformie Azure
-W tym artykule pokazano, jak przywrócić aplikację w [usługi Azure App Service](../app-service/app-service-web-overview.md) , wcześniej utworzono kopię zapasową (zobacz [tworzenie kopii zapasowej aplikacji na platformie Azure](web-sites-backup.md)). Na żądanie można przywrócić aplikację wraz z jej połączonymi bazami danych do poprzedniego stanu lub utworzyć nową aplikację na podstawie kopii zapasowej pierwotnej aplikacji. Usługa Azure App Service obsługuje następujące bazy danych i przywracania kopii zapasowych:
+W tym artykule pokazano, jak przywrócić aplikację w [usługi Azure App Service](../app-service/overview.md) , wcześniej utworzono kopię zapasową (zobacz [tworzenie kopii zapasowej aplikacji na platformie Azure](manage-backup.md)). Na żądanie można przywrócić aplikację wraz z jej połączonymi bazami danych do poprzedniego stanu lub utworzyć nową aplikację na podstawie kopii zapasowej pierwotnej aplikacji. Usługa Azure App Service obsługuje następujące bazy danych i przywracania kopii zapasowych:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
@@ -91,8 +91,8 @@ Można zautomatyzować zarządzania kopiami zapasowymi za pomocą skryptów, za 
 
 Aby uzyskać przykłady zobacz:
 
-- [Przykłady interfejsu wiersza polecenia platformy Azure](app-service-cli-samples.md)
-- [Przykłady dla programu Azure PowerShell](app-service-powershell-samples.md)
+- [Przykłady interfejsu wiersza polecenia platformy Azure](samples-cli.md)
+- [Przykłady dla programu Azure PowerShell](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

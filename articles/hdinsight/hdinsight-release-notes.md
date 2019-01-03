@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0555fa7de7ed85cf6d26f85b93f0010b2ab6fa53
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438867"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976974"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera informacje na temat **najnowszych** aktualizacji wydania us
 
 ## <a name="summary"></a>Podsumowanie
 
-Usługa Azure HDInsight jest jednym z najbardziej popularnych usług wśród klientów korporacyjnych analizy Apache Hadoop i Apache Spark typu open source na platformie Azure. Za pomocą [plus cena 50 procent Wytnij na HDInsight](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), klientów przenoszących do chmury są Owszem oszczędności więcej niż kiedykolwiek wcześniej.
+Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy w narzędziach typu open source Apache Hadoop i Apache Spark na platformie Azure. Za pomocą [plus cena 50 procent Wytnij na HDInsight](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), klientów przenoszących do chmury są Owszem oszczędności więcej niż kiedykolwiek wcześniej.
 
 ## <a name="new-features"></a>Nowe funkcje
 
@@ -35,7 +35,7 @@ Nowe aktualizacje i możliwości dzielą się następujących kategoriach:
 
     a.  [**Nowe funkcje programu Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Nowe funkcje w Apache Kafka w wersji 1.0**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Nowe funkcje w Apache Kafka w wersji 1.0**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***Aktualizacja oprogramowania R Server 9.1 do Machine Learning usług 9.3*** — w tej wersji, zapewniamy naukowcy i inżynierowie z najlepszymi typu open source, rozszerzony o konsolidatorze innowacje i łatwość operacjonalizacji wszystkie dostępne w ich Preferowany język z szybkością platformy Apache Spark. W tej wersji rozszerza możliwości dostępnych w programie R Server dodano obsługę języka Python, co prowadzi do zmiany nazwy klastra z oprogramowania R Server z usługami uczenia Maszynowego. 
 
@@ -1300,9 +1300,9 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 
 |**Składnik Apache**|**Apache programu JIRA**|**Podsumowanie**|**Szczegóły**|
 |--|--|--|--|
-|**2.3 platformy Spark** |**Nie dotyczy** |**Informacje o wersji dotyczące zmian zgodnie z opisem w Apache Spark** |-Brak dokument "Wycofywania" i podręcznik "Zmień zachowanie", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />— Dla części SQL istnieje innego przewodnika po szczegółowe "migracji" (z 2.2 do 2.3) http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**2.3 platformy Spark** |**Nie dotyczy** |**Informacje o wersji dotyczące zmian zgodnie z opisem w Apache Spark** |-Brak dokument "Wycofywania" i podręcznik "Zmień zachowanie", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />— Dla części SQL istnieje innego przewodnika po szczegółowe "migracji" (z 2.2 do 2.3) https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |platforma Spark |[**12505 GAŁĘZI**](https://issues.apache.org/jira/browse/HIVE-12505) |Zadanie platformy Apache Spark zakończy się pomyślnie, ale pełnego Błąd limitu przydziału dysku systemu plików HDFS |**Scenariusz:** Uruchamianie **zastąpić insert** gdy limit przydziału jest ustawiona w folderze Kosz użytkownika, który uruchamia polecenie.<br /><br />**Poprzednie zachowanie:** Zadanie zakończy się pomyślnie, nawet jeśli jej nie powiedzie się przenieść dane do Kosza. Wynik błędnie może zawierać dane, które wcześniej obecne w tabeli.<br /><br />**Nowe zachowanie:** Podczas przenoszenia do folderu Kosz zakończy się niepowodzeniem, pliki są trwale usunięte.|
-|**Platforma Kafka w wersji 1.0**|**Nie dotyczy**|**Informacje o wersji dotyczące zmian zgodnie z opisem w Apache Spark** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Platforma Kafka w wersji 1.0**|**Nie dotyczy**|**Informacje o wersji dotyczące zmian zgodnie z opisem w Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive / platformy Ranger** | |Wymagane do WSTAWIENIA zastąpić zasad usługi hive dodatkowe platformy ranger |**Scenariusz:** Wymagane dla zasad usługi hive dodatkowe platformy ranger **Wstaw ZASTĘPOWANIA**<br /><br />**Poprzednie zachowanie:** Hive **Wstaw zastąpić** zapytania powiedzie się w zwykły sposób.<br /><br />**Nowe zachowanie:** Hive **Wstaw zastąpić** zapytania nieoczekiwanie kończą się niepowodzeniem po uaktualnieniu do wersji HDP 2.6.x z powodu błędu:<br /><br />Błąd podczas kompilowania instrukcji: NIE POWIODŁO SIĘ: Odmowa uprawnień HiveAccessControlException: jdoe użytkownika nie ma uprawnień zapisu /tmp/\*(stan = 42000, kod = 40000)<br /><br />Począwszy od HDP 2.6.0, Hive **Wstaw zastąpić** zapytań wymagają zasadę URI platformy Ranger umożliwiające operacje zapisu, nawet wtedy, gdy użytkownik ma uprawnienia zapisu udzielone za pośrednictwem systemu plików HDFS zasad.<br /><br />**Obejście problemu lub oczekiwanym akcji klienta:**<br /><br />1. Utwórz nowe zasady w repozytorium programu Hive.<br />2. Na liście rozwijanej tam, gdzie zobaczysz bazy danych należy wybrać identyfikator URI.<br />3. Zaktualizuj ścieżkę (przykład: / tmp / *)<br />4. Dodaj użytkowników i grup, a następnie zapisz.<br />5. Ponów próbę wykonania kwerendy insert.|
 |**HDFS**|**Nie dotyczy** |System plików HDFS powinien obsługiwać dla wielu identyfikatorów URI usługi KMS |**Poprzednie zachowanie:** właściwość dfs.encryption.key.provider.uri użyty do skonfigurowania Ścieżka dostawcy usługi KMS.<br /><br />**Nowe zachowanie:** dfs.encryption.key.provider.uri jest już przestarzały na rzecz hadoop.security.key.provider.path umożliwia skonfigurowanie ścieżki dostawcy usługi KMS.|
 |**Rozwiązania Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Opcja wyłączenia harmonogramu |**Składnik, których to dotyczy:** Serwer rozwiązania Zeppelin<br /><br />**Poprzednie zachowanie:** W poprzednich wersjach Zeppelin nie było możliwości wyłączenia harmonogramu.<br /><br />**Nowe zachowanie:** Domyślnie użytkownicy nie będzie już widział harmonogramu, ponieważ jest domyślnie wyłączona.<br /><br />**Obejście problemu lub oczekiwanym akcji klienta:** Jeśli chcesz włączyć harmonogram, należy dodać azeppelin.notebook.cron.enable o wartości true w witrynie zeppelin niestandardowych w ustawieniach Zeppelin z systemu Ambari.|
@@ -1409,6 +1409,10 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
             Val = \_.escape(val);//Line nie: 460
             
             Po usunięciu powyższy wiersz, interfejs użytkownika platformy Ranger pozwoli na tworzenie zasad z warunkiem zasad, który może zawierać znaków specjalnych i zasady oceny zakończy się pomyślnie dla tych samych zasad.
+
+**HDInsight Integracja z usługą Azure Data Lake Store Gen 2: Problem katalogów i uprawnienia użytkownika przy użyciu klastrów ESP**
+    1.  Katalogi macierzyste dla użytkowników nie są tworzonych na 1 węzeł główny. Obejście polega na tych ręcznie utworzyć i zmienić własność na nazwę UPN odpowiedniego użytkownika.
+    2.  Uprawnienia dotyczące /hdp aktualnie nie jest równa 751. Musi to być równa.  chmod 751 /hdp b.  chmod – R 755/hdp/aplikacji
 
 ## <a name="deprecation"></a>Ogłoszone jako przestarzałe
 

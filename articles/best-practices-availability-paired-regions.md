@@ -1,36 +1,36 @@
 ---
-title: 'Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure | Dokumentacja firmy Microsoft'
+title: 'Business ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure | Dokumentacja firmy Microsoft'
 description: Dowiedz się więcej o usłudze Azure parowanie regionalne, aby upewnić się, że aplikacje są odporne na błędy podczas awarii centrum danych.
 author: rayne-wiselman
 ms.service: multiple
 ms.topic: article
-ms.date: 07/03/2018
+ms.date: 12/23/2018
 ms.author: raynew
-ms.openlocfilehash: 983a551da26e08797b2a65f609cff17954a52828
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954817"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792325"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure
+# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure
 
 ## <a name="what-are-paired-regions"></a>Co to są sparowane regiony?
 
 Platforma Azure działa w wielu lokalizacji geograficznych na całym świecie. Lokalizacja geograficzna platformy Azure jest zdefiniowany obszar świata, który zawiera co najmniej jednego regionu platformy Azure. Region platformy Azure jest obszar w lokalizacji geograficznej, zawierający co najmniej jedno centrum danych.
 
-Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej. Różnych par regionów, które będzie serializować Azure platformy aktualizacji (planowana konserwacja), tak że tylko jeden region sparowany zostanie zaktualizowany w danym momencie. Ponadto w przypadku awarii wpływających na wiele regionów co najmniej jeden region z każdej pary ma priorytet do odzyskania.
+Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej. Różnych par regionów Azure serializuje aktualizacje platformy (planowana konserwacja), tak, aby sparować tylko jeden region jest aktualizowana w danym momencie. W przypadku awarii wpływających na wielu regionów co najmniej jeden region z każdej pary ma priorytet do odzyskania.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
 Rysunek 1 — pary regionalne platformy Azure
 
-| Lokalizacja geograficzna | Sparowane regiony |  |
+| Współrzędne geograficzne | Sparowane regiony |  |
 |:--- |:--- |:--- |
 | Azja |Azja Wschodnia |Azja Południowo-Wschodnia |
 | Australia |Australia Wschodnia |Australia Południowo-Wschodnia |
 | Australia |Australia Środkowa |Australia Środkowa 2 |
-| Brazylia |Brazylia Południowa 2 |Środkowo-południowe stany USA |
+| Brazylia |Brazylia Południowa |Środkowo-południowe stany USA |
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
 | Chiny |Chiny Północne 2 |Chiny Wschodnie 2|
@@ -38,7 +38,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Francja |Francja Środkowa|Francja Południowa|
 | Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
 | Indie |Indie Środkowe |Indie Południowe |
-| Indie |Indie Zachodnie (1) |Indie Południowe |
+| Indie |Indie Zachodnie |Indie Południowe |
 | Japonia |Japonia Wschodnia |Japonia Zachodnia |
 | Korea |Korea Środkowa |Korea Południowa |
 | Ameryka Północna |Wschodnie stany USA |Zachodnie stany USA |
@@ -48,15 +48,15 @@ Rysunek 1 — pary regionalne platformy Azure
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
 | Departamentu Obrony USA |US DoD — wschodnie stany |US DoD — środkowe stany |
 | Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
-| Rząd USA |Administracja USA — Iowa (3) |Administracja USA — Wirginia |
-| Rząd USA |Administracja USA — Wirginia (4) |Administracja USA — Teksas |
+| Rząd USA |US Gov Iowa |Administracja USA — Wirginia |
+| Rząd USA |Administracja USA — Wirginia |Administracja USA — Teksas |
 
 Tabela 1 — mapowanie pary regionalne platformy Azure
 
-- (1) Indie Zachodnie jest inny, ponieważ jest powiązany z innym regionem tylko w jednym kierunku. Indie Zachodnie w regionie pomocniczym jest Indie Południowe, ale Indie Południowe w regionie pomocniczym jest Indie środkowe.
-- (2) Brazylia Południowa jest unikatowa, ponieważ jest powiązany z regionem poza jego własnej lokalizacji geograficznej. Region pomocniczy w regionie Brazylia Południowa jest południowo-środkowe stany USA, ale południowo-środkowe stany USA w regionie pomocniczym nie jest Brazylia Południowa.
-- (3) Administracja USA — Iowa w regionie pomocniczym jest Administracja USA — Wirginia, ale nie jest w regionie pomocniczym Administracja USA — Wirginia Administracja USA — Iowa.
-- (4) Administracja USA — Wirginia w regionie pomocniczym jest Administracja USA — Teksas, ale nie jest w regionie pomocniczym Administracja USA — Teksas Administracja USA — Wirginia.
+- Indie Zachodnie jest inny, ponieważ jest powiązany z innym regionem tylko w jednym kierunku. Indie Zachodnie w regionie pomocniczym jest Indie Południowe, ale Indie Południowe w regionie pomocniczym jest Indie środkowe.
+- Brazylia Południowa jest unikatowa, ponieważ jest powiązany z regionem poza jego własnej lokalizacji geograficznej. Region pomocniczy w regionie Brazylia Południowa jest południowo-środkowe stany USA, ale południowo-środkowe stany USA w regionie pomocniczym nie jest Brazylia Południowa.
+- Administracja USA — Iowa w regionie pomocniczym jest Administracja USA — Wirginia, ale nie jest w regionie pomocniczym Administracja USA — Wirginia Administracja USA — Iowa.
+- Administracja USA — Wirginia w regionie pomocniczym jest Administracja USA — Teksas, ale nie jest w regionie pomocniczym Administracja USA — Teksas Administracja USA — Wirginia.
 
 
 Zaleca się konfigurowania odzyskiwania po awarii ciągłość działania firmy (BCDR) w pary regionalne do korzystania z zasad izolacji i dostępności platformy Azure. Dla aplikacji, które obsługują wiele aktywnych regionów zaleca się przy użyciu obu regionów w parze regionów, jeśli jest to możliwe. Zapewni to optymalne dostępność dla aplikacji i odzyskiwania w trybie zminimalizowanym w wypadku awarii. 
@@ -77,7 +77,7 @@ Określone na rysunku 2.
 
 ![Usługi Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **usługi Azure SQL Database** — za pomocą usługi Azure SQL bazy danych replikacji geograficznej, można skonfigurować Replikacja asynchroniczna transakcje w dowolnym regionie na świecie; jednak zaleca się wdrażanie tych zasobów sparowanym regionie, w przypadku większości scenariuszy odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [replikacja geograficzna w usłudze Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 
-![Menedżer zasobów](./media/best-practices-availability-paired-regions/4Green.png) **usługi Azure Resource Manager** — usługa Resource Manager zapewnia natury izolacji logicznej składników zarządzania usługi między regionami. Oznacza to, że błędy logiczne w jednym regionie są mniej prawdopodobne wpłynąć na inny.
+![Menedżer zasobów](./media/best-practices-availability-paired-regions/4Green.png) **usługi Azure Resource Manager** — usługa Resource Manager zapewnia natury izolacji logicznej składników między regionami. Oznacza to, że błędy logiczne w jednym regionie są mniej prawdopodobne wpłynąć na inny.
 
 ## <a name="benefits-of-paired-regions"></a>Zalety sparowane regiony
 Określone na rysunku 2.  

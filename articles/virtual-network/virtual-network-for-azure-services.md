@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 5b21ec36215dfde964b845a1ee28c02b562e1dd7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4e136d4a0a60838af7d2b1a111982b0c16b06dd2
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340678"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975155"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integracja sieci wirtualnej dla usług platformy Azure
 
 Integrowanie usług platformy Azure z usługą Azure virtual network umożliwia prywatny dostęp do usługi z maszyn wirtualnych lub zasobów obliczeniowych w sieci wirtualnej.
-Integracja z usługami platformy Azure, w sieci wirtualnej przy użyciu następujących opcji: Bezpośrednie wdrażanie dedykowanych wystąpień usługi w sieci wirtualnej. Usługi mają prywatnie dostęp w sieci wirtualnej i z sieciami lokalnymi.
-Rozszerzając sieci wirtualnej do usługi za pośrednictwem punktów końcowych usługi. Punkty końcowe usługi umożliwiają zasobom konkretną usługę być chronione w sieci wirtualnej.
+Integracja z usługami platformy Azure, w sieci wirtualnej przy użyciu następujących opcji:
+- Wdrażanie dedykowanych wystąpień usługi w sieci wirtualnej. Usługi mają prywatnie dostęp w sieci wirtualnej i z sieciami lokalnymi.
+- Rozszerzanie sieci wirtualnej do usługi za pośrednictwem punktów końcowych usługi. Punkty końcowe usługi umożliwiają zasobom konkretną usługę być chronione w sieci wirtualnej.
 
 Aby zintegrować wiele usług platformy Azure z siecią wirtualną, możesz połączyć co najmniej jedną z powyższych wzorców. Na przykład można wdrożyć HDInsight w sieci wirtualnej i zabezpieczenia konta magazynu do podsieci HDInsight za pośrednictwem punktów końcowych usługi.
  

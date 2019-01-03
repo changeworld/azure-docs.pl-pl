@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 2ae11afe1ecbe500a4851aab6d56e612fbe79ee6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b7cde3a8990a51e95a8ce9ad85bca524d5669e0c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975130"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721125"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Za pomocą usług Azure Data Lake Storage Gen2 Apache Hadoop w usłudze Azure HDInsight
 
@@ -21,15 +21,15 @@ Usługa Azure Data Lake Storage (ADLS) Gen2 przyjmuje podstawowe funkcje z usłu
 
 ## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Podstawowe funkcje usługi Azure Data Lake Storage Gen2
 
-- Dostęp zgodny z usługi Hadoop: platformy Azure Data Lake Storage Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą pliku System (HDFS, Hadoop Distributed). Sterownik ABFS jest dostępny w ramach wszystkich środowisk technologii Apache Hadoop, w tym usługi Azure HDInsight i Azure Databricks dostępu do danych przechowywanych w Data Lake Storage Gen2.
+- Dostęp zgodny z usługi Hadoop: Azure Data Lake magazynu Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą pliku System (HDFS, Hadoop Distributed). Sterownik ABFS jest dostępny w ramach wszystkich środowisk technologii Apache Hadoop, w tym usługi Azure HDInsight i Azure Databricks dostępu do danych przechowywanych w Data Lake Storage Gen2.
 
-- Nadzbiór uprawnień POSIX: model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Apache Hive i Apache Spark.
+- Nadzbiór uprawnień POSIX: Model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Apache Hive i Apache Spark.
 
-- Niskie koszty: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Funkcje, takie jak cykl życia magazynu obiektów Blob platformy Azure pomagają obniżyć koszty, dostosowując stawki rozliczeniowe, ponieważ dane są przenoszone przy użyciu jej cyklu projektowania.
+- Ekonomiczne rozwiązanie: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Funkcje, takie jak cykl życia magazynu obiektów Blob platformy Azure pomagają obniżyć koszty, dostosowując stawki rozliczeniowe, ponieważ dane są przenoszone przy użyciu jej cyklu projektowania.
 
-- Współpracuje z narzędzia magazynu obiektów Blob, struktur i aplikacji: Data Lake Storage Gen2 w dalszym ciągu działają z szeroką gamą narzędzi, struktur i aplikacje, które istnieją już dzisiaj dla magazynu obiektów Blob.
+- Działa z narzędzia magazynu obiektów Blob, struktur i aplikacji: Data Lake Storage Gen2 nadal działają z szeroką gamą narzędzi, struktur i aplikacje, które istnieją już dzisiaj dla magazynu obiektów Blob.
 
-- Zoptymalizowane sterownika: ABFS sterownik jest zoptymalizowany specjalnie do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
+- Zoptymalizowane sterowników: Sterownik ABFS jest dostosowana specjalnie do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
 
 ## <a name="whats-new-about-azure-data-lake-storage-gen-2"></a>Nowe funkcje usługi Azure Data Lake Storage Gen 2
 
@@ -45,7 +45,7 @@ Aplikacje platformy Apache Hadoop natywnie oczekują na odczytywanie i zapisywan
 
 Poprzednio sterownik systemu plików Hadoop przekonwertować wszystkie operacje systemu plików do wywołań interfejsu API REST magazynu Azure po stronie klienta i następnie wywołania interfejsu API REST. Wywołuje to po stronie klienta konwersji, jednak spowodowało wiele interfejsu API REST dla operacji systemu plików w jednym, takie jak zmiana nazwy pliku. ABFS został przeniesiony część logiki system plików Hadoop po stronie klienta po stronie serwera oraz interfejsu API usługi ADLS Gen2 — teraz jest uruchamiany równolegle z interfejsem API obiektu Blob. Ta migracja zwiększa wydajność, ponieważ teraz można wykonywać typowe operacje systemu plików usługi Hadoop za pomocą jednego wywołania interfejsu API REST.
 
-Aby uzyskać więcej informacji, zobacz [sterownik systemu plików obiektów Blob platformy Azure (ABFS): dedykowanych sterownika usługi Azure Storage dla platformy Hadoop](../storage/data-lake-storage/abfs-driver.md).
+Aby uzyskać więcej informacji, zobacz [sterownik systemu plików obiektów Blob platformy Azure (ABFS): Dedykowany sterownika usługi Azure Storage dla platformy Apache Hadoop](../storage/data-lake-storage/abfs-driver.md).
 
 ### <a name="adls-gen-2-uri-scheme"></a>Schemat identyfikatora URI 2 generacji Azure Data Lake Store
 
@@ -68,7 +68,7 @@ abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapr
 abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
-> [!Note]
+> [!NOTE]  
 > Nazwa pliku jest `hadoop-examples.jar` w klastrach w wersji 2.1 i 1.6 HDInsight. Podczas pracy z plikami poza HDInsight, większość narzędzi nie rozpoznają ABFS sformatowanie i zamiast tego oczekuje podstawowego formatu ścieżki, takich jak `example/jars/hadoop-mapreduce-examples.jar`.
 
 Aby uzyskać więcej informacji, zobacz [Użyj identyfikator URI usługi Azure Data Lake magazynu Gen2](../storage/data-lake-storage/introduction-abfs-uri.md).

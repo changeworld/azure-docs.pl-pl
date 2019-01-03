@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: da105be19f7d546e530298f87974fe7f3f78989f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7326cf6a1153d5dc1f7e5f910a376a21b05db606
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012219"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725444"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Dzienniki aplikacji Apache Hadoop YARN dostępu na podstawie Windows HDInsight
 W tym dokumencie wyjaśniono, jak dzienniki Aby uzyskać dostęp do [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) aplikacje, które zakończą się na usłudze Apache Hadoop oparte na Windows klastra w systemie Azure HDInsight
 
-> [!IMPORTANT]
-> Informacje przedstawione w tym dokumencie mają zastosowanie tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacji na temat uzyskiwania dostępu do usługi YARN dzienników w klastrach HDInsight opartych na systemie Linux, zobacz [dostępu Apache Hadoop YARN application logowania opartej na systemie Linux platformą Apache Hadoop w HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
->
+> [!IMPORTANT]  
+> Informacje przedstawione w tym dokumencie mają zastosowanie tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacji na temat uzyskiwania dostępu do usługi YARN dzienników w klastrach HDInsight opartych na systemie Linux, zobacz [dostępu Apache Hadoop YARN application logowania opartej na systemie Linux platformą Apache Hadoop w HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 * Klaster HDInsight z systemem Windows.  Zobacz [Apache Hadoop oparte na Windows tworzenie klastrów w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
-<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> zawiera ogólne informacje dotyczące ukończonych aplikacji oraz jak framework informacje specyficzne dla aplikacji za pośrednictwem dwóch różnych interfejsów. W szczególności:
+<a href="https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> zawiera ogólne informacje dotyczące ukończonych aplikacji oraz jak framework informacje specyficzne dla aplikacji za pośrednictwem dwóch różnych interfejsów. W szczególności:
 
 * Przechowywanie i pobieranie informacji o aplikacji ogólnego w klastrach HDInsight została włączona przy użyciu wersji 3.1.1.374 lub nowszej.
 * Składnik informacji o aplikacjach dla określonej platformy Timeline Server nie jest obecnie dostępna w klastrach HDInsight.
@@ -75,7 +74,7 @@ Interfejsie użytkownika YARN ResourceManager działa na głównym węzłem klas
 3. W górnym menu, kliknij przycisk **pulpit nawigacyjny**. Zostanie wyświetlona strona, otwarty w nowym oknie przeglądarki kartę o nazwie **konsolę zapytań HDInsight**.
 4. Z **konsolę zapytań HDInsight**, kliknij przycisk **interfejsie użytkownika Yarn**.
 
-[YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
+[YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315

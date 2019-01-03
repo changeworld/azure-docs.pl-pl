@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317283"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608549"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla platformy Apache Kafka w HDInsight
 
@@ -30,7 +30,7 @@ Procedurę włączania usługi Log Analytics for HDInsight są takie same dla ws
 
 3. Konfigurowanie klastra platformy Kafka usługa Log Analytics. Aby uzyskać więcej informacji, zobacz [za pomocą usługi Log Analytics do monitorowania HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Możesz również skonfigurować używanie programu Log Analytics przy użyciu klastra `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
     >
     > * Nazwa klastra HDInsight.
@@ -38,7 +38,7 @@ Procedurę włączania usługi Log Analytics for HDInsight są takie same dla ws
     > * Klucz podstawowy połączenia usługi Log Analytics. Aby znaleźć podstawowego klucza, Otwórz obszar roboczy w witrynie Azure portal, wybierz __Zaawansowane ustawienia__ menu po lewej stronie. Wybierz z ustawień zaawansowanych __połączone źródła__>__serwerów z systemem Linux__.
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Może upłynąć około 20 minut, zanim dane są dostępne dla usługi Log Analytics.
 
 ## <a name="query-logs"></a>Dzienniki zapytań
@@ -57,7 +57,7 @@ Procedurę włączania usługi Log Analytics for HDInsight są takie same dla ws
 
     * Wychodzące bajty na sekundę: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Zastąp wartości zapytania konkretnych informacji klastra. Na przykład `ClusterName_s` należy ustawić na nazwę klastra. `HostName_s` należy określić nazwę domeny z węzłem procesu roboczego w klastrze.
 
     Możesz też wprowadzić `*` aby wyszukać wszystkie typy rejestrowanych. Obecnie dostępne dla zapytań są następujące dzienniki:

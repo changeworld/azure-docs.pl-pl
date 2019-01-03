@@ -3,15 +3,16 @@ title: Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platfo
 description: Ten artykuł zawiera omówienie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 22be5d7438fdb554d1550fd6675ee1884c638824
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0984f53c70baa50916e125d096a612ad8f061228
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851064"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972825"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure
 
@@ -88,16 +89,16 @@ Lokalne Oto co należy zrobić:
 Po utworzeniu infrastruktury platformy Azure i lokalnie w miejscu, możesz skonfigurować odzyskiwanie po awarii.
 
 1. Aby poznać składniki, które należy wdrożyć, zobacz [architektura VMware – Azure](vmware-azure-architecture.md)i [środowisko fizyczne do platformy Azure architektury](physical-azure-architecture.md). Istnieje wiele składników, więc jest ważne zrozumieć, jak one współdziałają ze sobą.
-2. **Środowisko źródłowe**: pierwszym krokiem we wdrożeniu, konfigurowanie środowiska źródłowego replikacji. Należy określić, co chcesz replikować, i gdzie ma zostać zreplikowana na.
-3. **Serwer konfiguracji**: musisz skonfigurować serwer konfiguracji w środowisku źródłowym w środowisku lokalnym:
+2. **Środowisko źródłowe**: Pierwszym krokiem we wdrożeniu należy skonfigurować środowiska źródłowego replikacji. Należy określić, co chcesz replikować, i gdzie ma zostać zreplikowana na.
+3. **Serwer konfiguracji**: Należy skonfigurować serwer konfiguracji w środowisku źródłowym w środowisku lokalnym:
     - Serwer konfiguracji jest pojedynczy na komputerze lokalnym. Do odzyskiwania po awarii programu VMware firma Microsoft zaleca, wdrożyć go jako maszyny Wirtualnej VMware, które mogą być wdrażane z szablonu pakietu OVF do pobrania.
     - Serwer konfiguracji służy do koordynowania komunikacji między lokalną i platformą Azure
     - Uruchom kilka innych składników na komputerze z serwerem konfiguracji.
         - Serwer przetwarzania odbiera optymalizuje i wysyła dane replikacji do magazynu platformy Azure. Obsługuje także automatycznej instalacji usługi mobilności na maszynach, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn wirtualnych na serwerach VMware.
         - Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
     - Konfiguracja obejmuje rejestrowania serwera konfiguracji w magazynie, pobieranie serwera MySQL i program VMware PowerCLI i określania kont utworzonych dla automatyczne odnajdywanie i instalacja usługi mobilności.
-4. **Środowisko docelowe**: skonfigurowaniu urządzenie docelowe środowisko platformy Azure, określając Twojej subskrypcji platformy Azure, Magazyn i ustawień sieci.
-5. **Zasady replikacji**: należy określić, jak powinna być wykonywana replikacja. Ustawienia obejmują, jak często punkty odzyskiwania są tworzone i przechowywane, i czy powinny być tworzone migawki spójne z aplikacji.
+4. **Środowisko docelowe**: Należy skonfigurować urządzenie docelowe środowisko platformy Azure, określając Twojej subskrypcji platformy Azure, Magazyn i ustawień sieci.
+5. **Zasady replikacji**: Należy określić, jak powinna być wykonywana replikacja. Ustawienia obejmują, jak często punkty odzyskiwania są tworzone i przechowywane, i czy powinny być tworzone migawki spójne z aplikacji.
 6. **Włącz replikację**. Należy włączyć replikację dla maszyn lokalnych. Jeśli utworzono konto, aby zainstalować usługę mobilności, następnie zostanie zainstalowana po włączeniu replikacji dla maszyny. 
 
 *Potrzebujesz dodatkowej pomocy?*

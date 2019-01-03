@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338162"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789760"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
 Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../../azure-monitor/overview.md).
@@ -42,7 +42,7 @@ Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danyc
 ## <a name="data-storage"></a>Magazyn danych
 Rozszerzenie zapisuje dane w [konta usługi Azure Storage](diagnostics-extension-to-storage.md) określonym przez użytkownika.
 
-Można również wysłać go do [usługi Application Insights](../../application-insights/app-insights-cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../../event-hubs/event-hubs-about.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure.
+Można również wysłać go do [usługi Application Insights](../../azure-monitor/app/cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../../event-hubs/event-hubs-about.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Istnieje również możliwość wysyłania danych do usługi Azure Monitor. W tej chwili zlew ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczniki wydajności zebrane na maszynie Wirtualnej, zestawu skalowania maszyn wirtualnych, lub w chmurze Usługa do usługi Azure Monitor jako metryki niestandardowe. Obsługuje ujścia usługi Azure Monitor:
@@ -66,7 +66,7 @@ Wybierz usługę, której chcesz się zbieranie danych diagnostycznych na i skor
 
 Aby uzyskać bardziej zaawansowanych tematów zobacz
 
-* [Narzędzie diagnostyczne systemu Azure za pomocą usługi Application Insights do usług w chmurze](../../application-insights/app-insights-cloudservices.md)
+* [Narzędzie diagnostyczne systemu Azure za pomocą usługi Application Insights do usług w chmurze](../../azure-monitor/app/cloudservices.md)
 * [Śledzenie przepływu aplikacji usługi w chmurze przy użyciu diagnostyki Azure](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [Konfigurowanie diagnostyki w usługach Cloud Services za pomocą programu PowerShell](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

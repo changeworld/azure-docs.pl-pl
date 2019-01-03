@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse — narzędzie sqlcmd | Microsoft Docs
-description: Użyj narzędzia wiersza polecenia [sqlcmd][sqlcmd], aby połączyć się z usługą Azure SQL Data Warehouse i utworzyć zapytanie.
+description: Użyj narzędzia wiersza polecenia sqlcmd, aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
 manager: craigg
@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 2534d668132db4c66b5e54c33849b76a8f93c348
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247717"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976413"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Nawiązywanie połączenia z usługą SQL Data Warehouse przy użyciu narzędzia sqlcmd
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ Użyj narzędzia wiersza polecenia [sqlcmd][sqlcmd], aby połączyć się z usł
 ## <a name="1-connect"></a>1. Połączenie
 Aby rozpocząć pracę z narzędziem [sqlcmd][sqlcmd], otwórz wiersz polecenia i wpisz **sqlcmd**, a następnie podaj parametry połączenia z bazą danych usługi SQL Data Warehouse. Wymagane parametry połączenia to:
 
-* **Serwer (-S):** serwer w postaci `<`nazwa_serwera`>`.database.windows.net
-* **Baza danych (-d):** nazwa bazy danych.
-* **Włącz cytowane identyfikatory (-I):** cytowane identyfikatory muszą być włączone w celu połączenia z wystąpieniem usługi SQL Data Warehouse.
+* **Serwer (-S):** Serwer w postaci `<`nazwy serwera`>`. database.windows.net
+* **Bazy danych (-d):** Nazwa bazy danych.
+* **Włącz cytowane identyfikatory (-I):** Identyfikatory w cudzysłowach musi być włączony, aby nawiązać połączenie z wystąpieniem programu SQL Data Warehouse.
 
 Aby użyć uwierzytelniania programu SQL Server, należy dodać parametry nazwy użytkownika/hasła:
 
-* **Użytkownik (-U):** użytkownik serwera w formie `<`Użytkownik`>`
-* **Hasło (-P):** hasło skojarzone z użytkownikiem.
+* **Użytkownik (-U):** Użytkownik serwera w formie `<`użytkownika`>`
+* **Hasło (-P):** Hasło skojarzone z użytkownikiem.
 
 Na przykład parametry połączenia mogą wyglądać następująco:
 

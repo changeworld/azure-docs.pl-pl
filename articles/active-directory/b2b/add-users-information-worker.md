@@ -5,25 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: e590500dd622988226c592352b0b86f16d54a9d4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 08fed2206d7d74d9ab6cb7f1462388486f999987
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983067"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718796"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak użytkownicy w organizacji mogą zapraszać gości do aplikacji
 
-Po Gość użytkownik został dodany do katalogu w usłudze Azure AD, właściciel aplikacji może wysłać użytkownik-Gość bezpośredni link do aplikacji, które chcą udostępniać. Administratorzy usługi Azure AD można też skonfigurować Samoobsługowe zarządzanie tak, aby aplikacja właściciele mogą zarządzać ich własnych użytkowników-gości, nawet jeśli użytkownicy-goście nie zostały jeszcze dodane do katalogu. Gdy aplikacja jest skonfigurowana do używania samoobsługowego, właściciel aplikacji używa panelu dostępu zaproszenie użytkownika-gościa do aplikacji lub dodać użytkownika-gościa do grupy, która ma dostęp do aplikacji. Zarządzanie aplikacjami samoobsługi wymaga pewnych początkowej konfiguracji przez administratora. Poniżej przedstawiono podsumowanie kroków instalacji (Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne](#prerequisites) dalej na tej stronie):
+Po Gość użytkownik został dodany do katalogu w usłudze Azure AD, właściciel aplikacji może wysłać użytkownik-Gość bezpośredni link do aplikacji, które chcą udostępniać. Administratorzy usługi AD systemu Azure można też skonfigurować Samoobsługowe zarządzanie galerii lub aplikacje oparte na protokole SAML, w ramach ich dzierżawy usługi Azure AD. W ten sposób właścicieli aplikacji można zarządzać ich własnych użytkowników-gości, nawet jeśli użytkownicy-goście nie zostały jeszcze dodane do katalogu. Gdy aplikacja jest skonfigurowana do używania samoobsługowego, właściciel aplikacji używa panelu dostępu zaproszenie użytkownika-gościa do aplikacji lub dodać użytkownika-gościa do grupy, która ma dostęp do aplikacji. Zarządzanie aplikacjami samoobsługi dla galerii i aplikacje oparte na protokole SAML wymaga pewnych początkowej konfiguracji przez administratora. Poniżej przedstawiono podsumowanie kroków instalacji (Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne](#prerequisites) dalej na tej stronie):
 
  - Włącz samoobsługowe zarządzanie grupami dla Twojej dzierżawy
  - Tworzenie grupy w celu przypisywania do aplikacji i ustawić użytkownika jako właściciela
  - Konfigurowanie aplikacji na potrzeby samoobsługi użytkowników i Przypisz grupę do aplikacji
+
+> [!NOTE]
+> W tym artykule opisano sposób konfigurowania samoobsługi zarządzanie za pomocą galerii i aplikacje oparte na protokole SAML, które zostały dodane do dzierżawy usługi Azure AD. Możesz również [Konfigurowanie grup samoobsługi usługi Office 365](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) , dzięki czemu użytkownicy mogą zarządzać dostępem do ich własnych grupach usługi Office 365. Aby uzyskać więcej sposobów użytkownicy mogą udostępniać pliki pakietu Office i aplikacji użytkowników-gości, zobacz [dostęp gościa w grupach usługi Office 365](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) i [SharePoint udostępniania plików lub folderów](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Zaproś użytkownika-gościa do aplikacji przy użyciu panelu dostępu
 
@@ -38,11 +41,11 @@ Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można uży
    
    ![Panel dostępu — Dodawanie użytkownika](media/add-users-iw/access-panel-manage-app-add-user.png)
    
-4. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie dodać komunikat powitalny.
+4. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie możesz dodać komunikat powitalny.
    
    ![Zaproszenie do panelu dostępu](media/add-users-iw/access-panel-invitation.png)
    
-5. Wybierz **Dodaj** można wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia, konto użytkownika jest automatycznie dodawane do katalogu jako Gość.
+5. Wybierz **Dodaj** można wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
 
 ## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Poproś kogoś dołączenia do grupy, które ma dostęp do aplikacji
 Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można zaprosić użytkowników-gości do grup, którymi zarządzają, które mają dostęp do aplikacji, które chcą udostępniać. Użytkownicy-goście nie trzeba już istnieje w katalogu. Właściciel aplikacji wykonaj poniższe kroki, aby zaprosić użytkownika gościa do grupy, dzięki czemu mogą uzyskiwać dostęp do aplikacji.
@@ -61,11 +64,11 @@ Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można zapr
    
    ![Panel dostępu — grupy dodać członka](media/add-users-iw/access-panel-groups-add-member.png)
    
-6. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie dodać komunikat powitalny.
+6. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie możesz dodać komunikat powitalny.
    
    ![Zaproszenie grupy panelu dostępu](media/add-users-iw/access-panel-invitation.png)
    
-7. Wybierz **Dodaj** można automatycznie wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia, konto użytkownika jest automatycznie dodawane do katalogu jako Gość.
+7. Wybierz **Dodaj** można automatycznie wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -102,6 +105,7 @@ Zarządzanie aplikacjami samoobsługi wymaga pewnych początkowej konfiguracji p
 4. Na liście aplikacji należy znaleźć i otworzyć aplikację.
 5. W obszarze **Zarządzaj**, wybierz opcję **logowanie jednokrotne**i skonfigurować wniosek o logowanie jednokrotne. (Aby uzyskać więcej informacji, zobacz [jak zarządzać logowania jednokrotnego dla aplikacji korporacyjnych](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
 6. W obszarze **Zarządzaj**, wybierz opcję **samoobsługi**i skonfiguruj dostęp do aplikacji Sklep internetowy. (Aby uzyskać więcej informacji, zobacz [sposób używania dostępu do aplikacji Sklep internetowy](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+
     > [!NOTE]
     > Ustawienia **grupę, do której należy dodać przypisanych użytkowników?** wybierz grupę utworzoną w poprzedniej sekcji.
 7. W obszarze **Zarządzaj**, wybierz opcję **użytkowników i grup**i sprawdź, czy utworzoną grupę samoobsługi pojawia się na liście.
@@ -114,4 +118,4 @@ Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 - [Jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B?](add-users-administrator.md)
 - [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
-- [Licencjonowanie współpracy platformy Azure w usłudze AD B2B](licensing-guidance.md)
+- [Licencjonowanie funkcji współpracy B2B w usłudze Azure AD](licensing-guidance.md)

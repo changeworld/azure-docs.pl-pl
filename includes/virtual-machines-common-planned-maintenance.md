@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: f5bd0923c1edac06f952ff93e087505a76407b05
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444293"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53805730"
 ---
 Azure okresowo aktualizuje platformy w celu poprawy niezawodności, wydajności i bezpieczeństwa infrastruktury hosta dla maszyn wirtualnych. Aktualizacje rozwiązania z zakresu od stosowania poprawek składnikami oprogramowania w środowisku hostingu uaktualniania składników sieciowych do likwidacji sprzętu. Większość tych aktualizacji nie mają wpływu na obsługiwanych maszynach wirtualnych. Jednak istnieją przypadki, w których aktualizacje mają wpływ i Azure wybiera najmniej udane metody aktualizacji:
 
@@ -27,7 +27,7 @@ W maszynie Wirtualnej powiadomienie o zbliżającej się konserwacji można uzys
 
 Aby uzyskać "porad" informacji o zarządzaniu planowanej konserwacji, zobacz "Obsługa Planned maintenance notifications zaplanowanej" dla [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="non-rebootful-maintenance"></a>Inne niż rebootful konserwacji
+## <a name="memory-preserving-maintenance"></a>Zachowywanie konserwacji pamięci
 
 Celem większości innych rebootful aktualizacji jest mniejsza niż 10 sekund wstrzymać maszyny wirtualnej. W niektórych przypadkach pamięci, zachowywanie konserwacji mechanizmów są używane, który wstrzymuje maszynę Wirtualną do 30 sekund i zachowuje pamięci RAM. Następnie wznawiać jej działanie maszyny wirtualnej i zegar maszyny wirtualnej jest automatycznie synchronizowany. Platforma Azure jest coraz większym stopniu przy użyciu technologii migracji na żywo i poprawianie pamięci zachowywanie mechanizm obsługi, aby zmniejszyć czas trwania pauzy.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824306"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976368"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -40,7 +40,7 @@ Podczas próby aktywowania maszyny Wirtualnej z systemem Windows Azure, otrzymas
 **Błąd: 0xC004F074, który LicensingService oprogramowania zgłosił, że nie można aktywować komputera. Można się skontaktować z nie ManagementService kluczami (KMS). Można znaleźć w dzienniku zdarzeń aplikacji, aby uzyskać dodatkowe informacje.**
 
 ## <a name="cause"></a>Przyczyna
-Ogólnie rzecz biorąc problemy dotyczące aktywacji maszyny Wirtualnej platformy Azure wystąpić, jeśli maszyna wirtualna Windows nie jest skonfigurowany przy użyciu odpowiedni klucz instalacji klienta usługi KMS lub maszyna wirtualna Windows ma problem z połączeniem z usługą Azure usługi zarządzania Kluczami (kms.core.windows.net, port 1668). 
+Ogólnie rzecz biorąc problemy dotyczące aktywacji maszyny Wirtualnej platformy Azure wystąpić, jeśli maszyna wirtualna Windows nie jest skonfigurowany przy użyciu odpowiedni klucz instalacji klienta usługi KMS lub maszyna wirtualna Windows ma problem z połączeniem z usługą Azure usługi zarządzania Kluczami (kms.core.windows.net, będzie używać portu 1688). 
 
 ## <a name="solution"></a>Rozwiązanie
 
@@ -86,7 +86,7 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    Polecenie powinna zwrócić: Nazwa maszyny usługi zarządzania kluczami pomyślnie ustawiono na kms.core.windows.net:1688.
+    Powinny zostać zwrócone polecenie: Pomyślnie ustawiono kms.core.windows.net:1688 nazwę maszyny usługi zarządzania kluczami.
 
 4. Sprawdź przy użyciu Psping, że masz połączenie z serwerem usługi zarządzania Kluczami. Przejdź do folderu, w którym została rozpakowana pobierania Pstools.zip, a następnie uruchom następujące czynności:
   
@@ -94,7 +94,7 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
     \psping.exe kms.core.windows.net:1688
     ```
   
-  Upewnij się, zostanie wyświetlony w danych wyjściowych w wierszu na sekundę do ostatniego: Wysłane = 4, odebrane = 4, utracone = 0 (0% straty).
+  W drugi do ostatniego wiersza danych wyjściowych upewnij się, zostanie wyświetlony: Wysłane = 4, odebrane = 4, utracone = 0 (0% straty).
 
   Utracono jest większa od 0 (zero), maszyna wirtualna ma połączenie z serwerem usługi zarządzania Kluczami. W takiej sytuacji Jeśli maszyna wirtualna znajduje się w sieci wirtualnej i jest niestandardowego serwera DNS określona, musisz upewnić się, że serwer DNS jest w stanie rozpoznać kms.core.windows.net. Lub zmienić serwer DNS, który jest rozpoznawany kms.core.windows.net.
 

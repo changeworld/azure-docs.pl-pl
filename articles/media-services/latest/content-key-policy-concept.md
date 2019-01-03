@@ -9,23 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/20/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 541713677184d93eb78856e3c3373ab432d5f0cf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f12632b20d516c81e21a50cfdda7e40d4163afc1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141533"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742222"
 ---
 # <a name="content-key-policies"></a>Zasady kluczy zawartości
 
-Usługa Azure Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services umożliwia dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub jeden z systemów zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
+Usługa Azure Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services można dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
 
-W usłudze Azure Media Services v3 zasady kluczy zawartości umożliwiają określenie, jak klucz zawartości jest dostarczany do klientów za pośrednictwem składnika klucz usługi dostarczanie końcowych. Aby uzyskać więcej informacji, zobacz [zawartości Omówienie ochrony](content-protection-overview.md).
+W usłudze Azure Media Services v3 [zasad klucza zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies) można określić sposób dostarczania klucza zawartości dla klientów za pośrednictwem składnika klucz usługi dostarczanie końcowych. Aby uzyskać więcej informacji, zobacz [zawartości Omówienie ochrony](content-protection-overview.md).
 
-## <a name="contentkeypolicies-definition"></a>Definicja ContentKeyPolicies
+Zalecane jest, ponowne użycie tego samego ContentKeyPolicy dla wszystkich Twoich zasobów. ContentKeyPolicies są nadaje się do aktualizacji, więc jeśli chcesz przeprowadzić rotację kluczy następnie można dodać nowe ContentKeyPolicyOption do istniejących ContentKeyPolicy z ograniczeniem tokenu za pomocą nowych kluczy. Lub można zaktualizować podstawowy klucz weryfikacji i listę kluczy weryfikacji alternatywne w istniejących zasad i opcji. Może upłynąć do 15 minut w przypadku pamięci podręcznych dostarczania klucza do aktualizacji i wybierze zaktualizowane zasady.
+
+## <a name="contentkeypolicy-definition"></a>Definicja ContentKeyPolicy
 
 W poniższej tabeli przedstawiono właściwości ContentKeyPolicy oraz zapewnia ich definicje.
 
@@ -37,8 +39,8 @@ W poniższej tabeli przedstawiono właściwości ContentKeyPolicy oraz zapewnia 
 |Properties.Description |Opis zasad.|
 |properties.lastModified|Data ostatniej modyfikacji zasad|
 |Properties.Options |Opcje zasad klucza.|
-|properties.policyId    |Starsze identyfikatora zasad.|
-|type   |Typ zasobu.|
+|properties.policyId|Starsze identyfikatora zasad.|
+|type|Typ zasobu.|
 
 Pełna definicja można zobaczyć [zasad dotyczących zawartości klucza](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 
@@ -62,7 +64,7 @@ Opis operatora:
 
 ### <a name="filteringordering"></a>Filtrowanie porządkowanie
 
-W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości StreamingPolicy: 
+W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości ContentKeyPolicies: 
 
 |Name (Nazwa)|Filtr|Zamówienie|
 |---|---|---|
@@ -70,10 +72,10 @@ W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwoś
 |name|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
 |Properties.created |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
 |Properties.Description |Eq, ne, ge, le, gt, lt||
-|properties.lastModified    |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|properties.lastModified|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
 |Properties.Options |||
-|properties.policyId    |Eq, ne||
-|type   |||
+|properties.policyId|Eq, ne||
+|type|||
 
 ### <a name="pagination"></a>Paginacja
 
@@ -84,7 +86,7 @@ Podział na strony jest obsługiwana dla każdego z czterech włączone sortowan
 
 Jeśli odpowiedzi na zapytanie zawiera wiele elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Nie można skonfigurować rozmiaru strony. 
 
-Jeśli StreamingPolicy są tworzone lub usuwane podczas stronicować kolekcji, zmiany zostaną odzwierciedlone w zwróconych wyników, (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
+Jeśli ContentKeyPolicies są tworzone lub usuwane podczas stronicować kolekcji, zmiany zostaną odzwierciedlone w zwróconych wyników, (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
 
 W poniższym przykładzie C# pokazano, jak wyliczyć za pośrednictwem wszystkich ContentKeyPolicies w ramach konta.
 

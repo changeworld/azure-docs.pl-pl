@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 87d13f8b0df4d9a357218b34035993663dfda8b3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583639"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634596"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii usługi Apache Storm na HDInsight przy użyciu języka Python
 
-Dowiedz się, jak utworzyć [Apache Storm](http://storm.apache.org/) topologię, która używa składników w języku Python. Apache Storm obsługuje wiele języków, nawet co pozwoli na łączenie składników w kilku językach, w jednym topologii. [Strumień](http://storm.apache.org/releases/current/flux.html) framework (wprowadzona w systemie Storm 0.10.0) pozwala na łatwe tworzenie rozwiązań korzystających z składników w języku Python.
+Dowiedz się, jak utworzyć [Apache Storm](https://storm.apache.org/) topologię, która używa składników w języku Python. Apache Storm obsługuje wiele języków, nawet co pozwoli na łączenie składników w kilku językach, w jednym topologii. [Strumień](https://storm.apache.org/releases/current/flux.html) framework (wprowadzona w systemie Storm 0.10.0) pozwala na łatwe tworzenie rozwiązań korzystających z składników w języku Python.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Informacje przedstawione w tym dokumencie został przetestowany przy użyciu technologii Storm w HDInsight 3.6. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 Kod dla tego projektu znajduje się w temacie [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
@@ -34,7 +34,7 @@ Kod dla tego projektu znajduje się w temacie [ https://github.com/Azure-Samples
 
 * [Narzędzia Apache Maven 3](https://maven.apache.org/download.cgi)
 
-* (Opcjonalnie) Lokalne Środowisko deweloperskie systemu Storm. W lokalnym środowisku Storm jest wymagane tylko w przypadku, jeśli chcesz uruchamiać lokalnie topologii. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
+* (Opcjonalnie) Lokalne Środowisko deweloperskie systemu Storm. W lokalnym środowisku Storm jest wymagane tylko w przypadku, jeśli chcesz uruchamiać lokalnie topologii. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](https://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
 ## <a name="storm-multi-language-support"></a>Obsługa wielu języków systemu STORM
 
@@ -92,8 +92,8 @@ Aby uruchomić lokalnie topologii, użyj następującego polecenia:
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
 ```
 
-> [!NOTE]
-> To polecenie wymaga lokalnego środowiska programistycznego platformy Storm. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](http://storm.apache.org/releases/current/Setting-up-development-environment.html)
+> [!NOTE]  
+> To polecenie wymaga lokalnego środowiska programistycznego platformy Storm. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](https://storm.apache.org/releases/current/Setting-up-development-environment.html)
 
 Po rozpoczęciu topologii emituje informacje do konsoli lokalnej, która jest podobny do następującego tekstu:
 
@@ -137,7 +137,7 @@ Aby zatrzymać topologię, użyj __klawisze Ctrl + C__.
 
 3. Interfejs użytkownika platformy Storm można użyć, aby wyświetlić topologię w klastrze. Interfejs użytkownika platformy Storm znajduje się w folderze https://mycluster.azurehdinsight.net/stormui. Zastąp `mycluster` nazwą klastra.
 
-> [!NOTE]
+> [!NOTE]  
 > Po rozpoczęciu topologii Storm uruchamia, aż do zatrzymania. Aby zatrzymać topologię, użyj jednej z następujących metod:
 >
 > * `storm kill TOPOLOGYNAME` Polecenia z wiersza polecenia
@@ -148,5 +148,5 @@ Aby zatrzymać topologię, użyj __klawisze Ctrl + C__.
 
 Zobacz następujące dokumenty, aby inne sposoby korzystania z języka Python za pomocą HDInsight:
 
-* [Jak używać języka Python dla zadań Apache Hadoop MapReduce przesyłania strumieniowego](../hadoop/apache-hadoop-streaming-python.md)
+* [Jak używać języka Python dla zadań MapReduce przesyłania strumieniowego](../hadoop/apache-hadoop-streaming-python.md)
 * [Jak używać języka Python określone funkcje użytkownika (UDF) w Apache Pig i Apache Hive](../hadoop/python-udf-hdinsight.md)

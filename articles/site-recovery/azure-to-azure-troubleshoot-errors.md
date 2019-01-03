@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313976"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973557"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -278,6 +278,14 @@ Aby włączyć replikację na maszynie Wirtualnej, powinna być w stanie inicjow
 
 Można otworzyć konsoli "Usługi" i upewnij się, "COM + System Application" i "Kopiowanie woluminów w tle" nie są ustawione na wartość "Wyłączony" dla "Typ uruchamiania".
   ![Błąd modelu COM](./media/azure-to-azure-troubleshoot-errors/com-error.png)
+
+## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nieobsługiwana zarządzane rozmiar dysku (kod błędu: 150172)
+
+
+**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
+--- | --- | ---
+150172<br></br>**Komunikat**: Nie można włączyć ochrony dla maszyny wirtualnej, ponieważ zawiera ona (DiskName) o rozmiarze (DiskSize), która jest mniejsza niż minimalna obsługiwana rozmiar 10 GB. | -Dysk jest mniejszy niż obsługiwany rozmiar wynoszący 1024 MB| Upewnij się, że rozmiary dysków są w zakresie obsługiwanych rozmiarów, a następnie spróbuj ponownie wykonać operację. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Replikowanie maszyn wirtualnych platformy Azure](site-recovery-replicate-azure-to-azure.md)

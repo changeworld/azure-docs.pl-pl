@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: fa2f16f1a7d99a825039e2191c69642a45ff728a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3b06335019cf15cc296c1814ee1fcf5ce50c3949
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845233"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971853"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych serwerów fizycznych
 
@@ -137,7 +137,7 @@ Reguły zapory oparte na adresie IP powinien zezwalać na komunikację do wszyst
 - **Adresy IP komercyjnych** — Zezwalaj na [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz portu HTTPS (443). Zezwalaj na zakresy adresów IP dla regionu platformy Azure Twojej subskrypcji, do obsługi usługi AAD, kopia zapasowa, replikacji i adresy URL magazynu.  
 - **Dla instytucji rządowych adresy IP** — Zezwalaj na [zakresów IP centrum danych platformy Azure dla instytucji rządowych](https://www.microsoft.com/en-us/download/details.aspx?id=57063)oraz portu HTTPS (443) we wszystkich regionach USGov (Wirginia, Teksasie, Arizona i Iowa) do obsługi usługi AAD, kopia zapasowa, replikacji i adresy URL magazynu.  
 
-#### <a name="run-setup"></a>Uruchom Instalatora
+#### <a name="run-setup"></a>Uruchamianie instalatora
 Uruchom ujednoliconego Instalatora jako administratora lokalnego, aby zainstalować serwer konfiguracji. Serwer przetwarzania i głównym serwerze docelowym są również instalowane domyślnie na serwerze konfiguracji.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 11/27/2018
-ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: de77dfc40306f014a10e1ab11f2581392d3c160b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437072"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993747"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 
@@ -33,9 +33,9 @@ model rdzenia wirtualnego pozwala również na używanie [korzyść użycia hybr
 
 ## <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 
-Model rdzenia wirtualnego zapewnia dwie warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych. Musisz oddzielnie skonfigurować wymagane okres przechowywania i przechowywania kopii zapasowych. W witrynie Azure portal przejdź do serwera (bez bazy danych) > zarządzanych kopii zapasowych > Konfiguruj zasady > w czasie przywracania konfiguracji punktu > 7 – 35 dni.
+Model rdzenia wirtualnego oferuje trzy warstwy usług ogólnego przeznaczenia, w Hiperskali i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych, projekt wysokiej dostępności, odporności izolacji, typy i rozmiar magazynu i zakres operacji We/Wy. Musisz oddzielnie skonfigurować wymagane okres przechowywania i przechowywania kopii zapasowych. W witrynie Azure portal przejdź do serwera (bez bazy danych) > zarządzanych kopii zapasowych > Konfiguruj zasady > w czasie przywracania konfiguracji punktu > 7 – 35 dni.
 
-Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
+Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 
 ||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|**Na dużą skalę (wersja zapoznawcza)**|
 |---|---|---|---|
@@ -63,7 +63,7 @@ Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) o
 
 ## <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
-Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
+Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
 

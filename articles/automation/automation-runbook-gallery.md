@@ -9,15 +9,18 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283299"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634324"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów usługi Azure Automation
 Zamiast tworzenia własnych elementów runbook i modułów w usłudze Azure Automation, możesz uzyskać dostęp do różnych scenariuszy, które zostały już utworzone przez firmę Microsoft i społeczność.  Możesz użyć tych scenariuszy, bez żadnych modyfikacji lub można ich używać jako punkt początkowy i edytować je do swoich specyficznych wymagań.
+
+> [!NOTE]
+> Nowy [modułu Azure PowerShell Az](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0) nie są obsługiwane w usłudze Azure Automation. Wszystkie skrypty, pobrany z galerii programu PowerShell, za pomocą tych poleceń cmdlet nie będzie działać w usłudze Azure Automation.
 
 Można uzyskać elementów runbook z [galerii elementów Runbook](#runbooks-in-runbook-gallery) i moduły z [galerii programu PowerShell](#modules-in-powerShell-gallery).  Można również przyczyniają się do społeczności, udostępniając scenariusze, które tworzysz, zobacz [Dodawanie elementu runbook do galerii](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 

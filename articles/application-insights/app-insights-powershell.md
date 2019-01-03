@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 79921a3adc043dd84317b7613286ec5cdc460bde
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5f6ce470399540f6d8cf00d404d658cb3da345ad
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993757"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974518"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
-W tym artykule pokazano, jak zautomatyzować tworzenie i aktualizowanie [usługi Application Insights](app-insights-overview.md) zasoby automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testy sieci web dostępności](app-insights-monitor-web-app-availability.md), skonfiguruj [alerty](app-insights-alerts.md)ustaw [ceny schemat](app-insights-pricing.md)i tworzenie innych zasobów platformy Azure .
+W tym artykule pokazano, jak zautomatyzować tworzenie i aktualizowanie [usługi Application Insights](app-insights-overview.md) zasoby automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testy sieci web dostępności](../azure-monitor/app/monitor-web-app-availability.md), skonfiguruj [alerty](../azure-monitor/app/alerts.md)ustaw [ceny schemat](app-insights-pricing.md)i tworzenie innych zasobów platformy Azure .
 
 Kluczem do tworzenia tych zasobów jest szablonów JSON dla [usługi Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md). Mówiąc, jest procedurą: pobieranie definicji JSON istniejących zasobów. parametryzacja określone wartości, takich jak nazwy; a następnie uruchom szablon zawsze wtedy, gdy chcesz utworzyć nowy zasób. Można spakować ze sobą kilka zasobów, do ich utworzenia w jednym go — na przykład monitorowanie aplikacji za pomocą testy dostępności, alerty i magazynu na potrzeby eksportu ciągłego. Istnieją pewne precyzyjnie do niektórych parameterizations, które wyjaśnimy, w tym miejscu.
 

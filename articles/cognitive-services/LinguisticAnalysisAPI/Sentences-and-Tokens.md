@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 96c2bd1c11554481e441662a6051620f4b2e2993
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237878"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972366"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Oddzielanie wyrazów i tokenów
 
 > [!IMPORTANT]
-> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
+> Wersja zapoznawcza analizy językowej została wycofana 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 ## <a name="background-and-motivation"></a>Tło i motywację
 
@@ -75,4 +75,4 @@ Ta tokenizacji umożliwia obsługę słowa *nie* i zwrot *nie* w bardziej spójn
 ## <a name="specification"></a>Specyfikacja
 
 Należy spójne decyzje dotyczące co składa się z zdania i token.
-Polegamy na specyfikacji z [Treebank partnerów](https://catalog.ldc.upenn.edu/ldc99t42) (niektóre dodatkowe szczegóły są dostępne pod adresem ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).
+Polegamy na specyfikacji z [Treebank partnerów](https://catalog.ldc.upenn.edu/LDC99T42) (niektóre dodatkowe szczegóły są dostępne pod adresem ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

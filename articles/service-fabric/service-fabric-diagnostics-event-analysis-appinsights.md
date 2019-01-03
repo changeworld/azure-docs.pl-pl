@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f51d132d3cdc2d8aed65919df5fa225711508c60
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322793"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753099"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights
 
@@ -39,7 +39,7 @@ Usługa Application Insights ma rozbudowane możliwości pole, korzystając z us
 
 ![Omówienie usługi Application Insights](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-Na prawym panelu na wcześniejszej ilustracji, istnieją dwa główne rodzaje wpisy na liście: żądania i zdarzenia. Żądania to wywołania interfejsu API aplikacji, za pomocą żądań HTTP w tym przypadku i zdarzenia są zdarzenia niestandardowe, które działają jako dane telemetryczne, które można dodać w dowolnym miejscu w kodzie. Możesz bliżej zapoznać się z aplikacji w Instrumentacji [interfejsu API usługi Application Insights dla niestandardowych zdarzeń i metryk](../application-insights/app-insights-api-custom-events-metrics.md). Kliknięcie na żądanie zostanie wyświetlony dalsze szczegółowe informacje jak pokazano na poniższej ilustracji, w tym dane specyficzne dla usługi Service Fabric, które są zbierane w pakiecie nuget Application Insights Service Fabric. Te informacje jest przydatne w rozwiązywaniu problemów i stan aplikacji jest, a wszystkie te informacje można wyszukiwać w usłudze Application Insights
+Na prawym panelu na wcześniejszej ilustracji, istnieją dwa główne rodzaje wpisy na liście: żądania i zdarzenia. Żądania to wywołania interfejsu API aplikacji, za pomocą żądań HTTP w tym przypadku i zdarzenia są zdarzenia niestandardowe, które działają jako dane telemetryczne, które można dodać w dowolnym miejscu w kodzie. Możesz bliżej zapoznać się z aplikacji w Instrumentacji [interfejsu API usługi Application Insights dla niestandardowych zdarzeń i metryk](../azure-monitor/app/api-custom-events-metrics.md). Kliknięcie na żądanie zostanie wyświetlony dalsze szczegółowe informacje jak pokazano na poniższej ilustracji, w tym dane specyficzne dla usługi Service Fabric, które są zbierane w pakiecie nuget Application Insights Service Fabric. Te informacje jest przydatne w rozwiązywaniu problemów i stan aplikacji jest, a wszystkie te informacje można wyszukiwać w usłudze Application Insights
 
 ![Szczegóły żądania szczegółowych informacji w aplikacji](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
@@ -47,7 +47,7 @@ Usługa Application Insights ma wyznaczony widok do wykonywania zapytań względ
 
 ![Szczegóły żądania szczegółowych informacji w aplikacji](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Aby dokładniej zbadać możliwości portalu usługi Application Insights, przejdź do [dokumentacja portalu usługi Application Insights](../application-insights/app-insights-dashboards.md).
+Aby dokładniej zbadać możliwości portalu usługi Application Insights, przejdź do [dokumentacja portalu usługi Application Insights](../azure-monitor/app/app-insights-dashboards.md).
 
 ### <a name="configuring-application-insights-with-wad"></a>Konfigurowanie usługi Application Insights za pomocą funkcji WAD
 
@@ -114,7 +114,7 @@ Zaleca się użyć użyciu struktury EventFlow i WAD rozwiązania agregacji, pon
 
 [Usługa Application Insights Obsługa Mikrousług i kontenerów](https://azure.microsoft.com/blog/app-insights-microservices/) przedstawia niektóre z nowych funkcji, które są opracowywane (nadal obecnie w wersji beta), które umożliwiają bardziej zaawansowane opcje monitorowania out-of--box z usługą Application Insights. Obejmują one śledzenia zależności (używane w budynku AppMap usług i aplikacji w klastrze i komunikację między nimi) i lepiej korelacji ślady przychodzące z usług (pomaga w lepszej precyzyjne określenie problemu w przepływie pracy programu Aplikacja lub usługa).
 
-Jeśli opracowujesz na platformie .NET i będą najprawdopodobniej używać niektórych modeli programowania usługi Service Fabric i chcesz używać usługi Application Insights jako platformy umożliwiające wizualizowanie i analizowanie danych zdarzeń i dzienników, zalecamy możesz przejść za pomocą usługi Application Insights Zestaw SDK trasa jako przepływ pracy monitorowania i diagnostyki. Odczyt [to](../application-insights/app-insights-asp-net-more.md) i [to](../application-insights/app-insights-asp-net-trace-logs.md) wprowadzenie przy użyciu usługi Application Insights umożliwiają zbieranie i wyświetlanie dzienników.
+Jeśli opracowujesz na platformie .NET i będą najprawdopodobniej używać niektórych modeli programowania usługi Service Fabric i chcesz używać usługi Application Insights jako platformy umożliwiające wizualizowanie i analizowanie danych zdarzeń i dzienników, zalecamy możesz przejść za pomocą usługi Application Insights Zestaw SDK trasa jako przepływ pracy monitorowania i diagnostyki. Odczyt [to](../azure-monitor/app/asp-net-more.md) i [to](../azure-monitor/app/asp-net-trace-logs.md) wprowadzenie przy użyciu usługi Application Insights umożliwiają zbieranie i wyświetlanie dzienników.
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Przejdź do zasobu usługi Application Insights w witrynie Azure portal
 
@@ -122,9 +122,9 @@ Po skonfigurowaniu usługi Application Insights jako dane wyjściowe dla zdarze�
 
 *Eksplorator metryk* jest użytecznym narzędziem do tworzenia niestandardowych pulpitów nawigacyjnych na podstawie metryk, że aplikacje, usługi i klastra może raportowanie. Zobacz [eksplorowania metryk w usłudze Application Insights](../application-insights/app-insights-metrics-explorer.md) skonfigurować kilka wykresów dla siebie na podstawie danych są zbierane.
 
-Klikając **Analytics** spowoduje przejście do portalu analiza usługi Application Insights, gdzie można tworzyć zapytania zdarzeniami i śladami większy zakres i opcjonalność. Dowiedz się więcej o [Analytics w usłudze Application Insights](../application-insights/app-insights-analytics.md).
+Klikając **Analytics** spowoduje przejście do portalu analiza usługi Application Insights, gdzie można tworzyć zapytania zdarzeniami i śladami większy zakres i opcjonalność. Dowiedz się więcej o [Analytics w usłudze Application Insights](../azure-monitor/app/analytics.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../application-insights/app-insights-alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
+* [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../azure-monitor/app/alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
 * [Inteligentne wykrywanie w usłudze Application Insights](../application-insights/app-insights-proactive-diagnostics.md) wykonuje aktywnego analizę danych telemetrycznych wysyłanych do usługi Application Insights, aby ostrzec o potencjalne problemy z wydajnością

@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086849"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742749"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
-Aby zapewnić klientom za pomocą adresu URL, który może służyć do odtwarzania zakodowanego filmu lub plików audio, musisz utworzyć [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) i tworzyć adresy URL przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [Stream pliku](stream-files-dotnet-quickstart.md).
+Konieczne jest zapewnienie klientom za pomocą adresu URL, który może służyć do odtwarzania zakodowane pliki audio lub wideo, musisz utworzyć [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i tworzyć adresy URL przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [Stream pliku](stream-files-dotnet-quickstart.md).
 
 ## <a name="streaminglocator-definition"></a>Definicja StreamingLocator
 
@@ -29,16 +29,16 @@ W poniższej tabeli przedstawiono właściwości StreamingLocator oraz zapewnia 
 |Name (Nazwa)|Opis|
 |---|---|
 |id |W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name   |Nazwa zasobu.|
+|name|Nazwa zasobu.|
 |properties.alternativeMediaId|Identyfikator innych formatów ten Lokalizator przesyłania strumieniowego.|
-|properties.assetName   |Nazwa elementu zawartości|
-|properties.contentKeys |Kluczy zawartości używana przez ten Lokalizator przesyłania strumieniowego.|
-|Properties.created |Czas utworzenia lokalizatora przesyłania strumieniowego.|
+|properties.assetName|Nazwa elementu zawartości|
+|properties.contentKeys|Kluczy zawartości używana przez ten Lokalizator przesyłania strumieniowego.|
+|Properties.created|Czas utworzenia lokalizatora przesyłania strumieniowego.|
 |properties.defaultContentKeyPolicyName|Nazwa domyślna ContentKeyPolicy używane przez ten Lokalizator przesyłania strumieniowego.|
-|properties.endTime |Godzina zakończenia lokalizatora przesyłania strumieniowego.|
+|properties.endTime|Godzina zakończenia lokalizatora przesyłania strumieniowego.|
 |properties.startTime|Godzina rozpoczęcia lokalizatora przesyłania strumieniowego.|
 |properties.streamingLocatorId|StreamingLocatorId lokalizatora przesyłania strumieniowego.|
-|properties.streamingPolicyName |Nazwa zasady przesyłania strumieniowego, używany przez ten Lokalizator przesyłania strumieniowego. Podaj nazwę zasad przesyłania strumieniowego, został utworzony lub użyj jednego z wstępnie zdefiniowane zasady przesyłania strumieniowego. Wstępnie zdefiniowane zasady przesyłania strumieniowego dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_ MultiDrmStreaming "|
+|properties.streamingPolicyName |Nazwa zasady przesyłania strumieniowego, używany przez ten Lokalizator przesyłania strumieniowego. Podaj nazwę zasad przesyłania strumieniowego, został utworzony lub użyj jednego z wstępnie zdefiniowane zasady przesyłania strumieniowego. Wstępnie zdefiniowane zasady przesyłania strumieniowego dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming"|
 |type|Typ zasobu.|
 
 Pełna definicja można zobaczyć [Lokalizatory przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators).

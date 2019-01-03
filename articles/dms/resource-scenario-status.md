@@ -4,22 +4,22 @@ description: Informacje dotyczące stanu scenariuszy migracji, obsługiwane prze
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 9eea3c28751ecaec0ffdb27e08f84cad1bf62acd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 12/19/2018
+ms.openlocfilehash: 81bd23f7e4b7065155b708703e52bc0a351696c1
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53267870"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722094"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Stan scenariuszy migracji obsługiwanych przez usługi Azure Database Migration Service
-Azure Database Migration Service jest przeznaczona do obsługi różnych scenariuszy migracji (źródło i cel pary) zarówno w trybie offline (jednorazowy) i migracji online (ciągłej synchronizacji). Pokrycie scenariusza dostarczane przez usługi Azure Database Migration Service jest rozszerzany wraz z upływem czasu. Udostępnione nowe scenariusze są dodawane na bieżąco. W tym artykule identyfikuje scenariusze migracji, są obecnie obsługiwane przez usługi Azure Database Migration Service i stan (prywatna wersja zapoznawcza, publicznej wersji zapoznawczej lub jest ogólnie dostępna) lub każdego scenariusza.
+Azure Database Migration Service jest przeznaczona do obsługi różnych scenariuszy migracji (źródło i cel pary) zarówno w trybie offline (jednorazowy) i migracji online (ciągłej synchronizacji). Pokrycie scenariusza dostarczane przez usługi Azure Database Migration Service jest rozszerzany wraz z upływem czasu. Udostępnione nowe scenariusze są dodawane na bieżąco. W tym artykule identyfikuje scenariusze migracji, są obecnie obsługiwane przez usługi Azure Database Migration Service i stan (prywatnej [lub ograniczone] (wersja zapoznawcza), publiczną wersję zapoznawczą lub jest ogólnie dostępna) lub każdego scenariusza.
 
 ## <a name="offline-versus-online-migrations"></a>W trybie offline i online migracji
 Przeprowadzając migrację baz danych na platformie Azure przy użyciu usługi Azure Database Migration Service, można wykonać migracji online lub offline. Za pomocą *offline* migracji, w tym samym czasie, który rozpoczyna się migracja rozpoczyna się przerwy w działaniu aplikacji. Aby uzyskać *online* migracji, okres przestoju jest ograniczony do czasu wymaganego do jednorazową do nowego środowiska po zakończeniu migracji. Zaleca się testowania migracji w trybie offline w celu ustalenia, czy przestój jest dopuszczalny; Jeśli nie, należy dokonać migracji online.

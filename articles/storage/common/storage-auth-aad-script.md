@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 345e7c6985f03081048019912d636bba8e9a2361
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b5a129c2a92c18b979a3b0c2eeea7fa19791551c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426485"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633769"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
 
@@ -56,10 +56,7 @@ Zmienna środowiskowa skojarzone z `--auth-mode` parametr `AZURE_STORAGE_AUTH_MO
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Wywołania poleceń programu PowerShell przy użyciu tożsamości usługi Azure AD
 
-Program Azure PowerShell obsługuje logowanie się przy użyciu tożsamości usługi Azure AD przy użyciu jednego z następujących modułów w wersji zapoznawczej tylko: 
-
-- 4.4.0-Preview 
-- 4.4.1-Preview 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Aby zalogować się przy użyciu tożsamości usługi Azure AD za pomocą programu Azure PowerShell:
 
@@ -78,23 +75,23 @@ Aby zalogować się przy użyciu tożsamości usługi Azure AD za pomocą progra
 1. Zainstaluj najnowszą wersję programu Azure PowerShell:
 
     ```powershell
-    Install-Module AzureRM –Repository PSGallery –AllowClobber
+    Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Zainstaluj jeden moduły z wersji zapoznawczej usługi Azure Storage, które obsługuje usługę Azure AD:
-
-    ```powershell
-    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
-    ```
+1. Instalowanie modułu w wersji zapoznawczej usługi Azure Storage, który obsługuje usługi Azure AD:
+   
+   ```powershell
+   Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+   ```
 1. Zamknij i Otwórz okno programu PowerShell.
-1. Wywołaj [poleceniem New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
+1. Wywołaj [New AzStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
 1. Aby wywoływać polecenia cmdlet przy użyciu tożsamości usługi Azure AD, należy przekazać nowo utworzony kontekst do polecenia cmdlet.
 
 Poniższy przykład przedstawia listę obiektów blob w kontenerze za pomocą programu Azure PowerShell za pomocą tożsamości usługi Azure AD. Koniecznie Zastąp symbol zastępczy nazwy konta i kontenera przy użyciu własnych wartości: 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
-Get-AzureStorageBlob -Container sample-container -Context $ctx 
+$ctx = New-AzStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

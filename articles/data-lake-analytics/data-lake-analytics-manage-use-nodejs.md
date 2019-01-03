@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 0603a60ea73d47dd6107ee80afc5c776ff8c83bc
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047115"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974679"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Zarządzanie usługą Azure Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "43047115"
 W tym artykule opisano, jak zarządzać kontami, źródłami danych, użytkownikami i zadaniami usługi Azure Data Lake Analytics za pomocą aplikacji napisanych przy użyciu zestawu Azure SDK dla środowiska Node.js. 
 
 Obsługiwane są następujące wersje:
-* **Środowisko Node.js w wersji 0.10.0 lub wyższej**
+* **Środowisko node.js w wersji: 0.10.0 lub wyższej**
 * **Wersja interfejsu API REST dla konta: 2015-10-01-preview**
 * **Wersja interfejsu API REST dla katalogu: 2015-10-01-preview**
 * **Wersja interfejsu API REST dla zadania: 2016-03-20-preview**
@@ -49,7 +49,7 @@ npm install azure-arm-datalake-analytics
 ## <a name="create-the-data-lake-analytics-client"></a>Tworzenie klienta Data Lake Analytics
 ```javascript
 var adlaManagement = require("azure-arm-datalake-analytics");
-var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
+var accountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
 var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azuredatalakeanalytics.net');
 var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
 ```

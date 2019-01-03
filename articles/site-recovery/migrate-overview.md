@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9a5c45b66e775ce83625e1f6d9507aaf456c7c7b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9ec502f63df23bab311a45972e31e6df13fa9281
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843992"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792979"
 ---
 # <a name="about-migration"></a>Informacje o migracji
 
@@ -22,8 +22,8 @@ Przeczytaj ten artykuł, aby uzyskać szybki przegląd sposób [usługi Azure Si
 Oto co można przeprowadzić migrację za pomocą Site Recovery:
 
 - **Migrowanie ze środowiska lokalnego na platformę Azure**: Migrowanie lokalnych maszyn wirtualnych z funkcją Hyper-V, maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Po zakończeniu migracji obciążenia uruchomione na maszynach lokalnych będą działać na maszynach wirtualnych platformy Azure. 
-- **Przeprowadzić migrację na platformie Azure**: przeprowadź migrację maszyn wirtualnych platformy Azure między regionami świadczenia usługi Azure. 
-- **Przeprowadzić migrację usługi AWS**: przeprowadź migrację wystąpień usługi AWS dla systemu Windows do maszyn wirtualnych IaaS platformy Azure. 
+- **Przeprowadzić migrację na platformie Azure**: Migrowanie maszyn wirtualnych platformy Azure między regionami platformy Azure. 
+- **Migrowanie usługi AWS**: Migrowanie wystąpień usługi AWS Windows na maszyny wirtualne IaaS platformy Azure. 
 
 
 ## <a name="what-do-we-mean-by-migration"></a>Co mamy na myśli przez migrację?

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 828f8e78f24380303f30260c39f837f0ba3524e6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832376"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788022"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Tryb failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowany do lokacji dodatkowej w środowisku lokalnym
 
@@ -30,8 +30,8 @@ W tym artykule opisano sposób awaryjnego przełączania maszyny Wirtualnej funk
 
 Tryb failover i powrotu po awarii ma trzy etapy:
 
-1. **Do lokacji dodatkowej pracy awaryjnej**: przełączyć maszyny w tryb failover z lokacji głównej do regionu pomocniczego.
-2. **Powrót po awarii z lokacji dodatkowej**: replikowanie maszyn wirtualnych na podstawie dodatkowej do głównej, a następnie uruchom planowany tryb failover do powrotu po awarii.
+1. **Do lokacji dodatkowej pracy awaryjnej**: Pracy awaryjnej maszyn z lokacji głównej do regionu pomocniczego.
+2. **Powrót po awarii z lokacji dodatkowej**: Replikowanie maszyn wirtualnych z dodatkowej do głównej, a następnie uruchomić planowanego trybu failover do powrotu po awarii.
 3. Po włączeniu planowanego trybu failover opcjonalnie Uruchom replikacji z lokacji podstawowej do pomocniczej ponownie.
 
 
@@ -58,7 +58,7 @@ Ta procedura opisuje sposób regularnego tryb failover.
 3. Po upewnieniu się maszyna wirtualna, **zatwierdzić** przełączenie w tryb failover. To działanie usuwa wszystkie dostępne punkty odzyskiwania.
 
 > [!WARNING]
-> **Nie anuluj trybu failover po rozpoczęciu przełączania**: przed uruchomieniem trybu failover replikacja maszyny wirtualnej zostanie zatrzymana. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  
+> **Nie Anuluj trybu failover w toku**: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>Replikacja odwrotna i trybu failover

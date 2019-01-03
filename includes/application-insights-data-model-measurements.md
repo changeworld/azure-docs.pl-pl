@@ -4,12 +4,12 @@ ms.service: application-insights
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3986b77cfad167134bf8ada1e3cbb73ad64dd3ca
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572501"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728986"
 ---
 Kolekcja niestandardowych miar. Użyj tej kolekcji do raportu o nazwie miary skojarzone z elementem telemetrii. Typowe przypadki użycia to:
 - Rozmiar ładunku Telemetrii zależności
@@ -25,6 +25,6 @@ customEvents
 ```
 
  > [!NOTE]
- > Pomiary niestandardowe są skojarzone z elementem telemetrii, które należą do. Podlegają próbkowania przy użyciu elementu telemetrii zawierający pomiarów. Aby śledzić miary, który ma wartość niezależnie od innych typów danych telemetrycznych, należy użyć [telemetrii metryk](../articles/application-insights/app-insights-api-custom-events-metrics.md).
+ > Pomiary niestandardowe są skojarzone z elementem telemetrii, które należą do. Podlegają próbkowania przy użyciu elementu telemetrii zawierający pomiarów. Aby śledzić miary, który ma wartość niezależnie od innych typów danych telemetrycznych, należy użyć [telemetrii metryk](../articles/azure-monitor/app/api-custom-events-metrics.md).
 
-Maksymalna długość: 150
+Maksymalna długość klucza: 150

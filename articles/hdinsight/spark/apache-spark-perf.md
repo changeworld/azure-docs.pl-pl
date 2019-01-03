@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499142"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653734"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
 
@@ -27,41 +27,41 @@ W poniższych sekcjach opisano typowe optymalizacje zadanie platformy Spark i za
 Spark 1.x używa danych abstrakcyjne danych, a następnie Spark 2.x wprowadzone elementy Dataframe i zestawów danych. Należy wziąć pod uwagę następujące względnych zalet:
 
 * **Elementy Dataframe**
-    * W większości przypadków najlepszy wybór
-    * Udostępnia optymalizacji zapytań za pomocą Catalyst
-    * Generowanie kodu w całości etapu
-    * Bezpośredni dostęp do pamięci
+    * W większości przypadków najlepszy wybór.
+    * Udostępnia optymalizacji zapytań za pomocą Catalyst.
+    * Generowanie kodu w całości etapu.
+    * Bezpośredni dostęp do pamięci.
     * Niski wyrzucania elementów bezużytecznych (GC)
-    * Nie jak przyjazny dla dewelopera jako zestawy danych, ponieważ nie ma żadnych sprawdzanie w czasie kompilacji lub programowanie obiektów domeny
+    * Nie jak przyjazny dla dewelopera jako zestawy danych, ponieważ nie ma żadnych sprawdzanie w czasie kompilacji lub programowania obiektu domeny.
 * **Zestawy danych**
-    * Dobre w złożone potoki przetwarzania ETL, w których wpływ na wydajność jest do zaakceptowania
-    * Nie są odpowiednie w agregacji, gdzie może być znaczny wpływ na wydajność
-    * Udostępnia optymalizacji zapytań za pomocą Catalyst
-    * Przyjazne dla deweloperów, zapewniając kontroli programowania i kompilacji obiektu domeny
-    * Dodaje serializacji/deserializacji obciążenie
-    * Wysokie obciążenie GC
-    * Przerywa generowanie kodu w całości etapu
+    * Dobre w złożone potoki przetwarzania ETL, w których wpływ na wydajność jest do zaakceptowania.
+    * Nie są odpowiednie w agregacji, gdzie może być znaczny wpływ na wydajność.
+    * Udostępnia optymalizacji zapytań za pomocą Catalyst.
+    * Przyjazne dla deweloperów, zapewniając kontroli programowania i kompilacji obiektu domeny.
+    * Dodaje obciążenie serializacji/deserializacji.
+    * Wysokie obciążenie GC.
+    * Przerywa generowanie kodu w całości etapu.
 * **Zestawów danych**
-    * Platformie Spark 2.x, nie trzeba używać zestawów danych, chyba że potrzebne do tworzenia nowych RDD niestandardowe
-    * Brak optymalizacji zapytań, za pośrednictwem Catalyst
-    * Generowanie kodu w całości etapu nie
-    * Wysokie obciążenie GC
-    * Należy użyć starszej wersji 1.x Spark interfejsów API
+    * Platformie Spark 2.x, nie trzeba używać zestawów danych, chyba że potrzebne do tworzenia nowych RDD niestandardowych.
+    * Brak optymalizacji zapytań za pomocą Catalyst.
+    * Etap całości generowanie kodu nie.
+    * Wysokie obciążenie GC.
+    * Należy użyć starszej wersji 1.x Spark interfejsów API.
 
 ## <a name="use-optimal-data-format"></a>Użyj formatu optymalne danych
 
-Platforma Spark obsługuje wiele formatów, takich jak csv, json, xml, parquet, orc i avro. Platforma Spark można rozszerzyć do obsługi wielu formatach więcej z zewnętrznymi źródłami danych — Aby uzyskać więcej informacji, zobacz [Spark pakietów](https://spark-packages.org).
+Platforma Spark obsługuje wiele formatów, takich jak csv, json, xml, parquet, orc i avro. Platforma Spark można rozszerzyć do obsługi wielu formatach więcej z zewnętrznymi źródłami danych — Aby uzyskać więcej informacji, zobacz [pakietów platformy Apache Spark](https://spark-packages.org).
 
 Najlepszy format dla wydajności jest parquet z *snappy kompresji*, co jest ustawieniem domyślnym platformie Spark 2.x. Parquet przechowuje dane w formacie kolumnowym i jest wysoce zoptymalizowane pod kątem platformie Spark.
 
 ## <a name="select-default-storage"></a>Wybierz magazyn domyślny
 
-Gdy tworzysz nowy klaster Spark, masz możliwość dokonania wyboru z usługi Azure Blob Storage lub Azure Data Lake Store jako magazynem domyślnym klastra. Obie opcje zapewniają korzyści długoterminowego przejściowy klastrów, więc dane nie automatycznie usuwane po usunięciu klastra. Można ponownie utworzyć klaster przejściowy i nadal uzyskiwać dostęp do danych.
+Gdy tworzysz nowy klaster Spark, masz możliwość dokonania wyboru z usługi Azure Blob Storage lub Azure Data Lake Storage jako magazynu domyślnego klastra. Obie opcje zapewniają korzyści długoterminowego przejściowy klastrów, więc dane nie automatycznie usuwane po usunięciu klastra. Można ponownie utworzyć klaster przejściowy i nadal uzyskiwać dostęp do danych.
 
 | Typ Store | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standardowa** | Yes | Przejściowy klastra |
-| Azure Data Lake Store | **ADL:**//url/ | **Szybciej** | Yes | Przejściowy klastra |
+| Azure Data Lake Storage | **ADL:**//url/ | **Szybciej** | Yes | Przejściowy klastra |
 | Lokalny system plików HDFS | **hdfs:**//url/ | **Najszybszy** | Nie | Interaktywne klastra 24/7 |
 
 ## <a name="use-the-cache"></a>Użycie pamięci podręcznej
@@ -73,7 +73,7 @@ Platforma Spark udostępnia swoje własne natywnej pamięci podręcznej mechaniz
     * Działa nie z podziałem na partycje, które mogą ulec zmianie w przyszłych wersjach platformy Spark.
 
 * Magazyn poziom buforowania (zalecane)
-    * Można zaimplementować przy użyciu [Alluxio](http://www.alluxio.org/).
+    * Można zaimplementować przy użyciu [Alluxio](https://www.alluxio.org/).
     * Używa w pamięci i buforowania dysku SSD.
 
 * Lokalnego systemu HDFS (zalecane)
@@ -119,9 +119,9 @@ Obsługą zasobników jest podobny do partycjonowanie danych, ale może zawiera�
 
 Niektóre zaawansowane funkcje podziału na zasobniki są:
 
-* Optymalizacji zapytań w oparciu o podziału na zasobniki meta informacje
-* Zoptymalizowane agregacji
-* Zoptymalizowane sprzężenia
+* Na podstawie podziału na zasobniki meta-informacji o optymalizacji zapytań.
+* Zoptymalizowane agregacji.
+* Zoptymalizowane sprzężenia.
 
 Można użyć partycjonowania i obsługą zasobników w tym samym czasie.
 
@@ -202,7 +202,7 @@ Monitorować wydajność zapytań, elementy odstające lub inne problemy z wydaj
 Monitorowanie zadań uruchomionych regularne wyszukiwanie problemów z wydajnością. Aby uzyskać lepszy wgląd w niektórych problemów, należy rozważyć użycie jednej z następujących wydajności narzędzi profilowania:
 
 * [Narzędzie PAL Intel](https://github.com/intel-hadoop/PAT) monitoruje procesora CPU, pamięci masowej i wykorzystanie przepustowości sieci.
-* [Oracle Java 8 centrum sterowania](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilów platformy Spark i kodu funkcji wykonawczej.
+* [Oracle Java 8 centrum sterowania](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilów platformy Spark i kodu funkcji wykonawczej.
 
 Kluczem do wydajności zapytań 2.x Spark jest aparat Wolfram, który jest zależna od generowania kodu całości etapu. W niektórych przypadkach mogą być wyłączone generowanie kodu w całości etapu. Na przykład, jeśli używasz typu niemodyfikowalnej (`string`) w wyrażeniu agregacji `SortAggregate` pojawia się zamiast `HashAggregate`. Na przykład lepszą wydajność, spróbuj wykonać następujące czynności, a następnie ponownie Włącz generowanie kodu:
 

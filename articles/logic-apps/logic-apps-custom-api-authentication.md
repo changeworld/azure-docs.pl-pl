@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087512"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719604"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Bezpieczne wywołania niestandardowych interfejsów API usługi Azure Logic Apps
 
@@ -24,12 +24,12 @@ Aby zabezpieczyć wywołania interfejsów API, należy skonfigurować uwierzytel
 
 Możesz zabezpieczyć wywołania do niestandardowego interfejsu API w następujący sposób:
 
-* [Bez zmian w kodzie](#no-code): ochrona interfejsu API za pomocą [usługi Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) za pośrednictwem witryny Azure portal, więc nie trzeba aktualizowania kodu ani jego ponownego wdrażania interfejsu API.
+* [Bez zmian w kodzie](#no-code): Ochrona interfejsu API za pomocą [usługi Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) za pośrednictwem witryny Azure portal, więc nie trzeba aktualizowania kodu ani jego ponownego wdrażania interfejsu API.
 
   > [!NOTE]
   > Domyślnie uwierzytelnianie usługi Azure AD, który można włączyć w witrynie Azure portal nie zawiera szczegółowych autoryzacji. Na przykład to uwierzytelnianie blokuje interfejsu API do określonej dzierżawy, a nie do określonego użytkownika lub aplikacji. 
 
-* [Aktualizowanie kodu interfejsu API](#update-code): ochrona interfejsu API przez wymuszenie stałego [uwierzytelnianie certyfikatu](#certificate), [uwierzytelnianie podstawowe](#basic), lub [uwierzytelniania usługi Azure AD](#azure-ad-code) za pośrednictwem Kod.
+* [Aktualizowanie kodu interfejsu API](#update-code): Ochrona interfejsu API przez wymuszenie stałego [uwierzytelnianie certyfikatu](#certificate), [uwierzytelnianie podstawowe](#basic), lub [uwierzytelniania usługi Azure AD](#azure-ad-code) za pomocą kodu.
 
 <a name="no-code"></a>
 
@@ -186,7 +186,7 @@ Otwieranie definicji aplikacji logiki w widoku kodu, przejdź do **HTTP** sekcji
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| Element | Wymagane | Opis | 
+| Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
 | dzierżawa | Yes | Identyfikator GUID dla dzierżawy usługi Azure AD | 
 | Grupy odbiorców | Yes | Identyfikator GUID zasobu docelowego, którą chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci web lub aplikacji interfejsu API | 
@@ -232,7 +232,7 @@ W **autoryzacji** sekcji, podając ten wiersz:
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| Element | Wymagane | Opis | 
+| Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
 | type | Yes | Typ uwierzytelniania. Dla certyfikatów klientów SSL, wartość musi być `ClientCertificate`. | 
 | hasło | Yes | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) | 
@@ -249,7 +249,7 @@ W **autoryzacji** sekcji, podając ten wiersz:
 
 `{"type": "basic", "username": "username", "password": "password"}`.
 
-| Element | Wymagane | Opis | 
+| Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
 | type | Yes | Typ uwierzytelniania, którego chcesz używać. Dla uwierzytelniania podstawowego, wartość musi być `Basic`. | 
 | nazwa użytkownika | Yes | Nazwa użytkownika, która ma być używany do uwierzytelniania | 
@@ -266,7 +266,7 @@ Aby ograniczyć dostęp do interfejsu API do aplikacji logiki za pomocą kodu, W
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
-[authenticate with on-premises Active Directory in your Azure app](../app-service/app-service-authentication-overview.md).
+[authenticate with on-premises Active Directory in your Azure app](../app-service/overview-authentication-authorization.md).
 
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->

@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 6572a9b72554691441cb258a87a5db4ba7845087
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a02be1ba29ad43b90c99a5d1e275b96b3b4023d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077124"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718728"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrowanie centrum obszaru roboczego i projekty do niestandardowych w usłudze Translator
 
@@ -85,9 +85,9 @@ Aby przeprowadzić migrację obszaru roboczego:
 
 4.  Na następnej stronie wybierz jedną z tych dwóch opcji:
 
-    a.  Tylko wdrożone szkoleniach: Wybranie tej opcji spowoduje zmigrowanie tylko wdrożone systemy i powiązanych dokumentów.
+    a.  Tylko wdrożone szkoleniach: Wybranie tej opcji, zostaną zmigrowane tylko wdrożone systemy i powiązanych dokumentów.
 
-    b.  Wszystkie pomyślne szkolenia: Wybranie tej opcji zostaną zmigrowane, pomyślne szkoleniach i powiązanych dokumentów.
+    b.  Wszystkie szkolenia pomyślnie: Wybranie tej opcji spowoduje migrację pomyślne szkoleniach i powiązanych dokumentów.
 
     c.  Wprowadź identyfikator obszaru roboczego lokalizacji docelowej w niestandardowych w usłudze Translator.
 
@@ -111,15 +111,15 @@ Aby wyświetlić historię migracji, wykonaj następujące kroki:
 
 Migracji historii stronie są wyświetlane następujące informacje, jak podsumowanie dla każdej migracji, której szukasz.
 
-1.  Migrowane przez: Nazwa i adres e-mail użytkownika na tej migracji żądanie przesłane
+1.  Migrowane przez: Nazwa i adres e-mail użytkownika przesłane żądanie migracji
 
-2.  Data migracji: Data i godzina sygnatury migracji
+2.  Data migracji: Sygnatura daty i godziny migracji
 
-3.  Projektów: Liczba zażądano ilości v/s migracji projektów pomyślnie przeprowadzono migrację projektów.
+3.  Projekty: Liczba projektów zażądano pomyślnie przeprowadzono migrację v/s migracji liczby projektów.
 
 4.  Szkolenia: Liczba szkoleniach zażądano v/s migracji na liczbę szkoleniach pomyślnie przeprowadzono migrację.
 
-5.  Dokumenty: Liczba dokumentów zażądano pomyślnie przeprowadzono migrację v/s migracji liczba dokumentów.
+5.  Dokumenty: Liczba dokumentów, wymaganego do migracji v/s Liczba dokumentów pomyślnie przeprowadzono migrację.
 
     ![Szczegóły historii migracji](media/how-to/how-to-migration-history-details.png)
 
@@ -130,7 +130,7 @@ Jeśli chcesz bardziej szczegółowych raport z migracji o szkoleniach, projekty
 * Tekst są dozwolone tylko po migracji na projekt.  Należy powtórzyć migracji w projekcie, skontaktuj się z nami.
 * Obecnie niestandardowe w usłudze Translator obsługuje 36 języków tłumaczenia z i do języka angielskiego i pracujemy nad można dodać dodatkowe języki.  Centrum nie wymaga modeli podstawowych i w związku z tym obsługuje kilka tysięcy języków.  Jednak firma Microsoft będzie tylko dokonać migracji dokumentów, a projekt definicji, można migrować parę nieobsługiwany język.  Firma Microsoft nie będzie to w opracowywaniu nowego modelu.  Ponadto te dokumenty i projekty pojawi się jako nieaktywny w celu wskazania, że nie można użyć w tej chwili. Jeśli zostanie dodana jego obsługa dla projektów i/lub dokumentów, staną się aktywne i trainable.
 * Niestandardowe w usłudze Translator nie obsługuje obecnie danych szkoleniowych jednojęzyczne.  Jak pary nieobsługiwany język można migrować jednojęzyczne dokumentów, ale wykazują jako nieaktywne do momentu jednojęzyczne danych jest obsługiwana.  
-* Niestandardowe w usłudze Translator wymaga 10 KB, równoległe zdań w celu nauczenia.  Microsoft Hub można uczenie na mniejszy zestaw danych.  Jeśli szkoleniowe jest migracja, który nie spełnia tego wymagania, zostanie być uczony.
+* Niestandardowe w usłudze Translator wymaga 10 KB, równoległe zdań w celu nauczenia.  Microsoft Hub można uczenie na mniejszy zestaw danych. Jeśli szkoleniowe jest migracja, który nie spełnia tego wymagania, nie być uczony.
 
 
 ## <a name="custom-translator-versus-hub"></a>Niestandardowe w usłudze Translator w stosunku do Centrum

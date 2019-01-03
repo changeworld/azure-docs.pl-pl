@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3e642e5954a8c1154ca5b07f06f9450e4e9ee39a
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996254"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807928"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu znajduje się w związku z tym [konfiguracji usługi Application Insights na potrzeby monitorowania nowej aplikacji][start]. W wielu przypadkach tworzenia zasobu może odbywać się automatycznie IDE. Ale w niektórych przypadkach możesz Utwórz ręcznie zasób — na przykład mieć osobne zasoby do rozwoju i produkcji kompilacji aplikacji.
@@ -69,15 +69,15 @@ Jeśli oczekujesz większej ilości danych, kliknij przycisk **Odśwież** po ki
 Można napisać [skrypt programu PowerShell](app-insights-powershell.md) automatycznego tworzenia zasobu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Tworzenie pulpitu nawigacyjnego](app-insights-dashboards.md)
-* [Wyszukiwanie diagnostyczne](app-insights-diagnostic-search.md)
+* [Tworzenie pulpitu nawigacyjnego](../azure-monitor/app/app-insights-dashboards.md)
+* [Wyszukiwanie diagnostyczne](../azure-monitor/app/diagnostic-search.md)
 * [Eksplorowanie metryk](app-insights-metrics-explorer.md)
-* [Pisanie zapytań analitycznych](app-insights-analytics.md)
+* [Pisanie zapytań analitycznych](../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
-[api]: app-insights-api-custom-events-metrics.md
-[diagnostic]: app-insights-diagnostic-search.md
+[api]: ../azure-monitor/app/api-custom-events-metrics.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
 [metrics]: app-insights-metrics-explorer.md
 [start]: app-insights-overview.md
 

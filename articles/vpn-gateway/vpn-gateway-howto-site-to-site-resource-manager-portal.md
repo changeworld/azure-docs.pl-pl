@@ -1,18 +1,18 @@
 ---
-title: 'Łączenie sieci lokalnej sieci z siecią wirtualną platformy Azure: sieci VPN typu lokacja-lokacja: portal | Microsoft Docs'
+title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Portal | Dokumentacja firmy Microsoft'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Kroki te są pomocne podczas tworzenia obejmującego wiele lokalizacji połączenia bramy sieci VPN typu lokacja-lokacja za pomocą portalu.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: dd29b4af85826e350e116b31fa53031aacaba067
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457123"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651643"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Tworzenie połączenia typu lokacja-lokacja w witrynie Azure Portal
 
@@ -35,7 +35,7 @@ Połączenie bramy sieci VPN typu lokacja-lokacja umożliwia łączenie sieci lo
 Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
 * Upewnij się, że masz zgodne urządzenie sieci VPN i dostępna jest osoba, która umie je skonfigurować. Aby uzyskać więcej informacji o zgodnych urządzeniach sieci VPN i konfiguracji urządzeń, zobacz artykuł [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md).
-* Sprawdź, czy masz dostępny zewnętrznie publiczny adres IPv4 urządzenia sieci VPN. Ten adres IP nie może się znajdować za translatorem adresów sieciowych.
+* Sprawdź, czy masz dostępny zewnętrznie publiczny adres IPv4 urządzenia sieci VPN.
 * Jeśli nie znasz zakresów adresów IP w konfiguracji swojej sieci lokalnej, skontaktuj się z osobą, która może podać Ci te dane. Tworząc tę konfigurację, musisz określić prefiksy zakresu adresów IP, które platforma Azure będzie kierować do Twojej lokalizacji lokalnej. Żadna z podsieci sieci lokalnej nie może się nakładać na podsieci sieci wirtualnej, z którymi chcesz nawiązać połączenie. 
 
 ### <a name="values"></a>Przykładowe wartości
@@ -44,21 +44,21 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 
 * **Nazwa sieci wirtualnej:** TestVNet1
 * **Przestrzeń adresowa:** 10.1.0.0/16
-* **Subskrypcja:** subskrypcja, której chcesz użyć
+* **Subskrypcja:** Subskrypcję, której chcesz użyć
 * **Grupa zasobów:** TestRG1
 * **Lokalizacja:** Wschodnie stany USA
-* **Podsieć:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie w tym ćwiczeniu)
-* **Nazwa podsieci bramy:** GatewaySubnet (zostanie automatycznie wypełniona w portalu)
+* **Podsieć:** Frontonu: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie na potrzeby tego ćwiczenia)
+* **Nazwa podsieci bramy:** GatewaySubnet (ta zostanie automatycznie wypełniona w portalu)
 * **Zakres adresów podsieci bramy:** 10.1.255.0/27
 * **Serwer DNS:** 8.8.8.8 — opcjonalnie. Adres IP serwera DNS.
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
 * **Publiczny adres IP:** VNet1GWIP
-* **Typ sieci VPN:** oparta na trasach
-* **Typ połączenia:** lokacja-lokacja (IPsec)
-* **Typ bramy:** VPN
+* **Typ sieci VPN:** Oparte na trasach
+* **Typ połączenia:** Lokacja lokacja (IPsec)
+* **Typ bramy:** Sieć VPN
 * **Nazwa bramy sieci lokalnej:** Site1
 * **Nazwa połączenia:** VNet1toSite1
-* **Klucz współużytkowany:** w tym przykładzie użyjemy klucza abc123. Jednak możesz użyć dowolnej wartości zgodnej ze sprzętem sieci VPN. Ważne, żeby wartości były zgodne po obu stronach połączenia.
+* **Klucz współużytkowany:** W tym przykładzie użyjemy klucza abc123. Jednak możesz użyć dowolnej wartości zgodnej ze sprzętem sieci VPN. Ważne, żeby wartości były zgodne po obu stronach połączenia.
 
 ## <a name="CreatVNet"></a>1. Tworzenie sieci wirtualnej
 

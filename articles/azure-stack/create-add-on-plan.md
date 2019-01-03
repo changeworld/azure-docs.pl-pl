@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 07/30/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e84e72157726311281994b0e287eda7dfc4b144a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076795"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716758"
 ---
 # <a name="azure-stack-add-on-plans"></a>Plany dodatkowe usługi Azure Stack
 
@@ -32,7 +32,7 @@ Istnieją terminy, gdy łączenie wszystko w jednym planie jest optymalna. Czasa
 Kolejny powód, aby użyć planów dodatków ma pomóc użytkownikom w trosce o ich użycia zasobów. Aby to zrobić, możesz rozpocząć podstawowy plan, który obejmuje przydziały stosunkowo mały (w zależności od usługi, wymagane). Następnie tylko użytkownicy osiągnąć wydajność, ich będą otrzymywać alerty, które są już używane alokacji zasobów na podstawie ich przypisanych planu. W tym miejscu użytkownicy mogą następnie wybierz planu dodatku, który zawiera dodatkowe zasoby.
 
 > [!NOTE]
-> Jeśli nie chcesz rozszerzyć limit przydziału przy użyciu planu w dodatku, istnieje również możliwość [Edytuj oryginalną konfigurację limitu przydziału](azure-stack-quota-types.md#to-edit-a-quota). 
+> Jeśli nie chcesz rozszerzyć limit przydziału przy użyciu planu w dodatku, istnieje również możliwość [Edytuj oryginalną konfigurację limitu przydziału](azure-stack-quota-types.md#edit-a-quota). 
 
 Gdy użytkownik doda planu dodatku do istniejącej subskrypcji oferty, dodatkowych zasobów może potrwać do godziny do są wyświetlane. 
 
