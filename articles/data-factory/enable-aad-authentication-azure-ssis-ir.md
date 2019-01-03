@@ -1,6 +1,6 @@
 ---
-title: Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS integration runtime | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania środowiska Azure-SSIS IR do połączeń, które korzystają z uwierzytelniania usługi Azure Active Directory.
+title: Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób włączania uwierzytelniania usługi Azure Active Directory za pomocą tożsamości zarządzanej usługi Azure Data Factory utworzyć środowisko Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,35 +10,35 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 12/25/2018
 ms.author: douglasl
-ms.openlocfilehash: d2000e626166304e92556e3c965df175a27046ad
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: be14eb59cb89676b0d69b94246f35ad6dfc7eed9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321071"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792651"
 ---
-# <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS integration runtime
+# <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
-W tym artykule pokazano, jak utworzyć środowisko IR Azure-SSIS przy użyciu tożsamości usługi Azure Data Factory. Służy uwierzytelniania usługi Azure Active Directory (Azure AD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory, zamiast uwierzytelniania SQL do tworzenia środowiska Azure-SSIS integration runtime.
+W tym artykule pokazano, jak włączyć uwierzytelnianie usługi Azure Active Directory (Azure AD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory (ADF) i użyj go zamiast uwierzytelniania SQL do tworzenia środowiska Azure-SSIS Integration Runtime (IR) to z kolei spowoduje utworzenie SSIS katalog bazy danych (SSISDB) w usłudze Azure SQL Database server/zarządzanego wystąpienia w Twoim imieniu.
 
-Aby uzyskać więcej informacji na temat tożsamości zarządzanej dla usługi data factory, zobacz [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+Aby uzyskać więcej informacji na temat tożsamości zarządzanej dla usługi ADF, zobacz [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
-> Jeśli utworzono już środowiska Azure-SSIS integration runtime przy użyciu uwierzytelniania SQL, nie można ponownie skonfigurować środowiska IR do użycia uwierzytelnianie usługi Azure AD przy użyciu programu PowerShell w tej chwili.
+> Jeśli utworzono już środowisko IR Azure-SSIS przy użyciu uwierzytelniania SQL nie można ponownie skonfigurować środowiska IR do użycia uwierzytelnianie usługi Azure AD przy użyciu programu PowerShell, w tym momencie, ale możesz to zrobić w aplikacji portal/ADF platformy Azure. 
 
 ## <a name="enable-azure-ad-on-azure-sql-database"></a>Włączanie usługi Azure AD w usłudze Azure SQL Database
 
-Usługa Azure SQL Database obsługuje tworzenie bazy danych za pomocą użytkownika usługi Azure AD. Co w efekcie można ustawić użytkownika usługi Azure AD jako administratora usługi Active Directory, a następnie zaloguj się do programu SQL Server Management Studio (SSMS) za pomocą użytkownika usługi Azure AD. Następnie można utworzyć użytkownika zawartej grupy usługi Azure AD, aby umożliwić środowiska IR do utworzenia wykazu usług SQL Server Integration Services (SSIS) na serwerze.
+Serwer usługi Azure SQL Database obsługuje tworzenie bazy danych za pomocą użytkownika usługi Azure AD. Najpierw należy utworzyć grupę usługi Azure AD za pomocą tożsamości zarządzanej dla usługi ADF jako członka. Następnie należy ustawić użytkownika usługi Azure AD jako administratora usługi Active Directory dla serwera usługi Azure SQL Database i następnie połączyć je w SQL Server Management Studio (SSMS) przy użyciu tego użytkownika. Na koniec należy utworzyć użytkownika zawartej reprezentująca grupę usługi Azure AD, aby tożsamości zarządzanej dla usługi ADF mogą zostać użyte przez Azure-SSIS IR do utworzenia bazy danych SSISDB w Twoim imieniu.
 
-### <a name="create-a-group-in-azure-ad-and-make-the-managed-identity-for-your-data-factory-a-member-of-the-group"></a>Utwórz grupę w usłudze Azure AD i dołącz je tożsamości zarządzanej dla usługi data factory grupy
+### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>Utwórz grupę usługi Azure AD za pomocą tożsamości zarządzanej dla usługi ADF jako członka
 
-Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę przy użyciu programu Azure AD PowerShell.
+Można użyć istniejącej grupy usługi Azure AD lub utworzyć nowe konto, przy użyciu programu Azure AD PowerShell.
 
 1.  Zainstaluj [usługi Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modułu.
 
-2.  Zaloguj się przy użyciu `Connect-AzureAD`, uruchom następujące polecenie, aby utworzyć grupę i zapisz go w zmiennej:
+2.  Zaloguj się przy użyciu `Connect-AzureAD`, uruchom następujące polecenie cmdlet, aby utworzyć grupę i zapisz go w zmiennej:
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -47,7 +47,7 @@ Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę pr
                               -MailNickName "NotSet"
     ```
 
-    Dane wyjściowe wyglądają jak w poniższym przykładzie, który również sprawdza, czy wartość zmiennej:
+    Wynik wygląda podobnie jak poniższy przykład wyświetla również wartość zmiennej:
 
     ```powershell
     $Group
@@ -57,25 +57,25 @@ Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę pr
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Dodaj tożsamość zarządzaną fabryki danych do grupy. Możesz wykonać [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) można pobrać identyfikator podmiotu zabezpieczeń tożsamości usługi (na przykład 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nie należy używać identyfikator aplikacji tożsamości usługi w tym celu).
+3.  Dodaj zarządzaną tożsamością dla usługi ADF do grupy. Można wykonać tego artykułu [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) można pobrać identyfikator podmiotu zabezpieczeń tożsamości usługi (np. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nie należy używać identyfikator aplikacji tożsamości usługi w tym celu).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
     ```
 
-    Ponadto można sprawdzić członkostwa w grupie później.
+    Możesz również sprawdzić członkostwa w grupie później.
 
     ```powershell
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
 
-### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>Włącz uwierzytelnianie usługi Azure AD dla usługi Azure SQL Database
+### <a name="configure-azure-ad-authentication-for-azure-sql-database-server"></a>Konfigurowanie uwierzytelniania usługi Azure AD dla serwera Azure SQL Database
 
-Możesz [Konfigurowanie uwierzytelniania usługi Azure AD dla usługi SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) wykonując następujące czynności:
+Możesz [Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure AD przy użyciu języka SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) wykonując następujące czynności:
 
 1.  W witrynie Azure portal wybierz **wszystkich usług** -> **serwerów SQL** nawigacji po lewej stronie.
 
-2.  Wybierz bazę danych SQL do włączenia uwierzytelniania usługi Azure AD.
+2.  Wybierz swój serwer usługi Azure SQL Database, należy skonfigurować przy użyciu uwierzytelniania usługi Azure AD.
 
 3.  W **ustawienia** części bloku wybierz **administratora usługi Active Directory**.
 
@@ -85,49 +85,49 @@ Możesz [Konfigurowanie uwierzytelniania usługi Azure AD dla usługi SQL Datab
 
 6.  Na pasku poleceń Wybierz **Zapisz.**
 
-### <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Tworzenie w bazie danych użytkownika zawartego, który będzie reprezentować grupę usługi Azure AD
+### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Utworzenia zawartego użytkownika w usłudze Azure SQL Database server reprezentującej grupę usługi Azure AD
 
 W tym następnego kroku należy [programu Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-1.  Uruchom program SQL Server Management Studio.
+1.  Należy uruchomić program SSMS.
 
-2.  W **Połącz z serwerem** okno dialogowe, wprowadź nazwę serwera SQL w **nazwy serwera** pola.
+2.  W **Połącz z serwerem** okno dialogowe, wprowadź nazwę serwera usługi Azure SQL Database w **nazwy serwera** pola.
 
-3.  W **uwierzytelniania** pól, zaznacz **usługi Active Directory — uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego**. (Możesz również użyć innych dwa typy uwierzytelniania usługi Active Directory. Zobacz [Konfigurowanie i zarządzanie uwierzytelnianiem usługi Azure Active Directory z usługą SQL Database, wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).)
+3.  W **uwierzytelniania** pól, zaznacz **usługi Active Directory — uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego** (można również użyć innych dwa typy uwierzytelniania usługi Active Directory, zobacz [ Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure AD przy użyciu języka SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
 
-4.  W **nazwa_użytkownika** wprowadź nazwę konta usługi Azure AD, który został ustawiony jako administrator serwera — na przykład testuser@xxxonline.com.
+4.  W **nazwa_użytkownika** wprowadź nazwę konta usługi Azure AD, który został ustawiony jako administrator serwera, np. testuser@xxxonline.com.
 
-5.  Wybierz **Connect**. Zakończ proces logowania.
+5.  Wybierz **Connect** i ukończyć procesu logowania.
 
-6.  W **Eksplorator obiektów**, rozwiń węzeł **baz danych** -> folderów systemowych baz danych.
+6.  W **Eksplorator obiektów**, rozwiń węzeł **baz danych** -> **systemowych baz danych** folderu.
 
-7.  Po prawej stronie wybierz pozycję na **wzorca** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
+7.  Kliknij prawym przyciskiem myszy **wzorca** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
 
-8.  W oknie kwerendy wpisz następujący wiersz, a następnie wybierz pozycję **Execute** na pasku narzędzi:
+8.  W oknie zapytania wprowadź następujące polecenie języka T-SQL, a następnie wybierz pozycję **Execute** na pasku narzędzi.
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
     ```
 
-    Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika grupy.
+    Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika do reprezentowania grupy.
 
-9.  Wyczyść okno zapytania, wprowadź następujące polecenie, a następnie wybierz **Execute** na pasku narzędzi:
+9.  Wyczyść okno zapytania, wprowadź następujące polecenie języka T-SQL, a następnie wybierz **Execute** na pasku narzędzi.
 
     ```sql
-    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
+    ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
     ```
 
     Polecenie powinno zakończyć się pomyślnie, udzielania zawartej użytkownikowi możliwość tworzenia bazy danych.
 
 ## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Włączanie usługi Azure AD na wystąpienie zarządzane usługi Azure SQL Database
 
-Wystąpienie usługi Azure SQL Database Managed obsługują bezpośrednio tworzenie bazy danych przy użyciu pliku MSI. Nie potrzebujesz przyłączyć usługi data factory tożsamości usługi Zarządzanej do grupy usługi AD lub utworzyć użytkownika zawartej w MI.
+Wystąpienie usługi Azure SQL Database Managed obsługuje tworzenie bazy danych za pomocą tożsamości zarządzanej dla usługi ADF bezpośrednio. Nie należy dołączyć tożsamości zarządzanej dla usługi ADF do grupy usługi Azure AD ani utworzenia zawartego użytkownika reprezentujące tej grupy w wystąpieniu zarządzanemu.
 
-### <a name="enable-azure-ad-authentication-for-the-azure-sql-database-managed-instance"></a>Włącz uwierzytelnianie usługi Azure AD dla Azure SQL Database Managed Instance
+### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Konfigurowanie uwierzytelniania usługi Azure AD dla wystąpienia zarządzanego Azure SQL Database
 
 1.   W witrynie Azure portal wybierz **wszystkich usług** -> **serwerów SQL** nawigacji po lewej stronie.
 
-1.   Wybierz program SQL server do włączenia uwierzytelniania usługi Azure AD.
+1.   Wybierz wystąpienie usługi zarządzane, należy skonfigurować przy użyciu uwierzytelniania usługi Azure AD.
 
 1.   W **ustawienia** części bloku wybierz **administratora usługi Active Directory**.
 
@@ -137,52 +137,54 @@ Wystąpienie usługi Azure SQL Database Managed obsługują bezpośrednio tworze
 
 1.   Na pasku poleceń Wybierz **Zapisz**.
 
-### <a name="add-data-factory-msi-as-a-user-to-the-azure-sql-database-managed-instance"></a>Dodawanie usługi data factory MSI jako użytkownika do Azure SQL Database Managed Instance
+### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Dodawanie tożsamości zarządzanej dla usługi ADF jako użytkownik w wystąpieniu zarządzanym usługi Azure SQL Database
 
-1.  Uruchom program SQL Server Management Studio.
+W tym następnego kroku należy [programu Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-2.  Zaloguj się przy użyciu konta administratora SQL lub konto administratora usługi Active Directory.
+1.  Należy uruchomić program SSMS.
 
-3.  W Eksploratorze obiektów rozwiń węzeł bazy danych -> folderów systemowych baz danych.
+2.  Połączyć się z wystąpieniem zarządzanym przy użyciu konta administratora SQL/Active Directory.
 
-4.  Kliknij prawym przyciskiem myszy w bazie danych master, a następnie wybierz pozycję **nowe zapytanie**.
+3.  W **Eksplorator obiektów**, rozwiń węzeł **baz danych** -> **systemowych baz danych** folderu.
 
-5.  Można wykonać tego artykułu [tożsamości usługi Azure Data Factory](data-factory-service-identity.md) można pobrać nazwy głównej usługi tożsamości identyfikator aplikacji. (Nie należy używać identyfikator tożsamości usługi w tym celu.)
+4.  Kliknij prawym przyciskiem myszy **wzorca** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
 
-6.  W oknie zapytania Uruchom następujący skrypt do konwertowania identyfikator aplikacji tożsamości usługi do typu binary:
+5.  Pobierz tożsamości zarządzanej dla usługi ADF. Można wykonać tego artykułu [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) Aby pobrać identyfikator podmiotu zabezpieczeń aplikacji tożsamości usługi (ale nie należy używać identyfikator tożsamości usługi w tym celu).
+
+6.  W oknie zapytania Uruchom następujący skrypt języka T-SQL można przekonwertować tożsamości zarządzanej dla usługi ADF do typu binary:
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = {your service identity application id}
+    DECLARE @applicationId uniqueidentifier = {your SERVICE IDENTITY APPLICATION ID}
     select CAST(@applicationId AS varbinary)
     ```
+    
+    Polecenie powinno zakończyć się pomyślnie, wyświetlanie tożsamości zarządzanej dla usługi ADF jako wartość binarną.
 
-7.  W oknie wyników można uzyskać wartość.
-
-8.  Wyczyść okno zapytania, a następnie uruchom następujący skrypt:
+7.  Wyczyść okno zapytania i uruchom następujący skrypt języka T-SQL, aby dodać tożsamość zarządzaną dla usługi ADF jako użytkownik
 
     ```sql
-    CREATE LOGIN [{MSI name}] FROM EXTERNAL PROVIDER with SID ={your service identity application id in binary type}, TYPE = E
-    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{MSI name}]
-    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{MSI name}]
+    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID ={your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
+    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
+    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
     ```
+    
+    Polecenie powinno zakończyć się pomyślnie, udzielanie tożsamości zarządzanej dla usługi ADF możliwość utworzenia bazy danych.
 
-9.  Polecenie zakończy się pomyślnie.
+## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Aprowizacja Azure-SSIS IR w aplikacji portal/ADF platformy Azure
 
-## <a name="provision-the-azure-ssis-ir-in-the-portal"></a>Aprowizowanie środowiska Azure-SSIS IR w portalu
+Podczas aprowizowania środowiska IR Azure-SSIS w aplikacji portal/ADF platformy Azure na **ustawienia programu SQL** wybierz opcję **uwierzytelnianie w usłudze AAD korzystanie z tożsamości zarządzanej dla usługi ADF** opcji. Poniższy zrzut ekranu przedstawia ustawienia dla środowiska IR za pomocą serwera usługi Azure SQL Database hostowania bazy SSISDB. Dla środowiska IR za pomocą wystąpienia zarządzanego hostowania bazy SSISDB **warstwy usługi bazy danych wykazu** i **Zezwalaj na usługi platformy Azure na dostęp** ustawienia nie dotyczą, podczas gdy inne ustawienia są takie same.
 
-Przypadku aprowizowania środowiska IR Azure-SSIS przy użyciu witryny Azure portal na **ustawień serwera SQL** strony wyboru "Użyj usługi AAD uwierzytelniania za pomocą tożsamości zarządzanej dla usługi ADF" opcji. (Poniższy zrzut ekranu przedstawia ustawienia dla środowiska IR za pomocą usługi Azure SQL Database. Środowisko IR za pomocą wystąpienia zarządzanego właściwość "Warstwie usługi bazy danych wykazu" nie jest dostępna; inne ustawienia są takie same).
-
-Aby uzyskać więcej informacji na temat tworzenia środowiska Azure-SSIS integration runtime, zobacz [tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Aby uzyskać więcej informacji na temat tworzenia środowiska Azure-SSIS IR, zobacz [tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 ![Ustawienia środowiska Azure-SSIS integration Runtime](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 
-## <a name="provision-the-azure-ssis-ir-with-powershell"></a>Aprowizowanie środowiska Azure-SSIS IR za pomocą programu PowerShell
+## <a name="provision-azure-ssis-ir-with-powershell"></a>Aprowizowanie środowiska Azure-SSIS IR przy użyciu programu PowerShell
 
 Aby zainicjować obsługę środowiska IR Azure-SSIS przy użyciu programu PowerShell, wykonaj następujące czynności:
 
 1.  Zainstaluj [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modułu.
 
-2.  W skrypcie, nie należy ustawiać *CatalogAdminCredential* parametru. Na przykład:
+2.  W skrypcie, nie należy ustawiać `CatalogAdminCredential` parametru. Na przykład:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262605"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602175"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -29,8 +29,8 @@ Firma Microsoft oferuje teraz metodę w celu ułatwiania partnerom lepiej śledz
 
 Jako partner firmy Microsoft można skojarzyć użycia platformy Azure z zasobami platformy Azure, które należy zarezerwować w imieniu klienta. Tworząc skojarzenie za pośrednictwem portalu Azure Marketplace, repozytorium Szybki Start, prywatne repozytoria GitHub i indywidualną zaangażowania użytkowników. Aby włączyć śledzenie, dostępne są dwie metody:
 
-- Szablony usługi Azure Resource Manager: szablonów usługi Resource Manager lub szablony rozwiązań do wdrożenia usług platformy Azure w celu uruchamiania oprogramowania partnera. Partnerzy, można utworzyć szablon usługi Resource Manager w celu zdefiniowania infrastruktury i konfiguracji swoje rozwiązanie na platformie Azure. Szablon usługi Resource Manager umożliwia Tobie i Twoim klientom wdrażać rozwiązania przez cały cykl życia. Można mieć pewność, że Twoje zasoby są wdrażane w spójnym stanie. 
-- Interfejsów API usługi Azure Resource Manager: Partnerów mogą wywoływać interfejsy API usługi Resource Manager bezpośrednio, aby wdrożyć szablon usługi Resource Manager lub do generowania wywołań interfejsu API, bezpośrednie Inicjowanie obsługi administracyjnej usług platformy Azure. 
+- Szablony usługi Azure Resource Manager: Szablony usługi Resource Manager lub szablony rozwiązań do wdrożenia usług platformy Azure w celu uruchamiania oprogramowania partnera. Partnerzy, można utworzyć szablon usługi Resource Manager w celu zdefiniowania infrastruktury i konfiguracji swoje rozwiązanie na platformie Azure. Szablon usługi Resource Manager umożliwia Tobie i Twoim klientom wdrażać rozwiązania przez cały cykl życia. Można mieć pewność, że Twoje zasoby są wdrażane w spójnym stanie. 
+- Interfejsy API Azure Resource Manager: Partnerzy mogą wywoływać interfejsy API usługi Resource Manager bezpośrednio, aby wdrożyć szablon usługi Resource Manager lub do generowania wywołań interfejsu API, bezpośrednie Inicjowanie obsługi administracyjnej usług platformy Azure. 
 
 Uznanie autorstwa użycia klienta jest wymagany we wszystkich [szablony rozwiązań](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) opublikowane w portalu Azure Marketplace. 
 
@@ -96,7 +96,7 @@ Podczas projektowania wywołania interfejsu API dla tej metody śledzenia obejmu
 > [!Note]
 > Format ciągu jest ważne. Jeśli **pid -** prefiks nie jest uwzględniona, ponieważ nie ma możliwość wykonywania zapytań o dane. Różne zestawy SDK śledzić inaczej. Aby zaimplementować tę metodę, należy przejrzeć pomocy technicznej i śledzenie podejście do preferowanego zestawu SDK usługi Azure. 
 
-#### <a name="example-the-python-sdk"></a>Przykład: Zestaw Python SDK
+#### <a name="example-the-python-sdk"></a>Przykład: Python SDK
 
 W przypadku języka Python, użyj **config** atrybutu. Ten atrybut można dodać tylko do agenta użytkownika. Oto przykład:
 
@@ -270,15 +270,11 @@ Firma Microsoft zapewnia partnerom widok wdrożeń klientów swoje szablony i sz
 
 **Identyfikator GUID, kto może dodawać do szablonu?**
 
-Zasób śledzenia jest przeznaczona do łączenia z rozwiązania partnerskiego do użycia platformy Azure przez klienta. Dane użycia jest powiązany tożsamość Microsoft Partner Network partnera (identyfikator MPN). Raportowanie jest dostępny dla partnerów w CPP.
+Zasób śledzenia jest przeznaczona do łączenia z rozwiązania partnerskiego do użycia platformy Azure przez klienta. Dane użycia jest powiązany tożsamość Microsoft Partner Network partnera (identyfikator MPN). 
 
 **Po dodaniu identyfikator GUID można go zmienić?**
  
 Tak, klienta lub implementacji partnera może dostosować szablon i zmienić lub usunąć identyfikator GUID. Zaleca się, że partnerzy aktywnie opisywania roli zasobów i identyfikator GUID dla ich klientów i partnerów, aby uniemożliwić usunięcie lub edycji do śledzenia identyfikator GUID. Zmiana identyfikatora GUID dotyczy tylko nowych, nie istniejących wdrożeń i zasobów.
-
-**Kiedy reporting będą dostępne?**
-
-Wersja beta, raportowania powinien być dostępny wkrótce. Zgłoszenie zostanie zintegrowana CPP.
 
 **Czy mogę śledzić szablony wdrażany z repozytorium firmy Microsoft, takich jak GitHub**
 

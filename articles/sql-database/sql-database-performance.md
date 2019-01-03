@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: dd3fe059bf2352fee7471fac7aeee23ad90c7cb0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3629215dc1f6dfcb28194c487358adb058af3e8e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274942"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602923"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorowania i poprawiania wydajności
 Usługa Azure SQL Database znajduje potencjalne problemy w bazie danych i zaleca akcje, które może poprawić wydajność przetwarzania obciążenia, zapewniając inteligentne akcje dostrajania i zalecenia.
@@ -70,7 +70,7 @@ Bazy danych SQL platformy Azure może automatycznie dostrajania wydajności bazy
 
 Więcej informacji o tej stronie można znaleźć w artykule  **[sposób używania Query Performance Insight](sql-database-query-performance.md)**.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Usługa Azure wskazówki dotyczące wydajności bazy danych SQL Database dla pojedynczych baz danych](sql-database-performance-guidance.md)
 * [Kiedy należy użyć puli elastycznej?](sql-database-elastic-pool-guidance.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Akceleratory rozwiązań IoT platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Akceleratory rozwiązań IoT — często zadawane pytania — Azure | Dokumentacja firmy Microsoft
 description: Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 294eae1dd5e591d12fdb82f62ea013ba54489686
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253348"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608753"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 
@@ -32,7 +32,7 @@ Kod źródłowy znajduje się w następujących repozytoriów GitHub:
 
 Można znaleźć linki do zestawów SDK urządzeń IoT innym języku (C, .NET, Java, Node.js, Python) w [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) repozytoriów GitHub.
 
-Jeśli używasz urządzenia Mxchip znajdziesz zasoby i próbek w [zestawu SDK usługi IoT DevKit](https://github.com/Microsoft/devkit-sdk) repozytorium GitHub.
+Jeśli używasz urządzenia Mxchip znajdziesz zasoby i przykłady w [zestawu SDK usługi IoT DevKit](https://github.com/Microsoft/devkit-sdk) repozytorium GitHub.
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Architektura mikrousług jest dostępna dla wszystkich trzech solution Accelerator?
 
@@ -40,7 +40,28 @@ Obecnie tylko rozwiązania do zdalnego monitorowania używa architektura mikrous
 
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jakie korzyści są dostępne nowe open source opartych na mikrousługach architektury w nowej aktualizacji?
 
-W ciągu ostatnich dwóch lat znacznie powstał architektury w chmurze. Mikrousługi mają uznana doskonałe wzorzec do osiągnięcia skali i elastyczności, bez obniżania oczekiwanego poziomu prędkość opracowywania. Ten wzorzec architektury jest używana w kilku usługach Microsoft wewnętrznie z doskonałą niezawodność i skalowalność wyników. Firma Microsoft korzystają z tych uczenia w praktyce, dzięki czemu nasze klienci mogli korzystać z nich.
+W ciągu ostatnich dwóch lat znacznie powstał architektury w chmurze. Mikrousługi mają uznana doskonałe wzorzec do osiągnięcia skali i elastyczności, bez obniżania oczekiwanego poziomu prędkość opracowywania. Ten wzorzec architektury jest używana w kilku usługach Microsoft wewnętrznie z doskonałą niezawodność i skalowalność wyników. Microsoft jest umieszczenie te informacje w praktyce w akceleratorów rozwiązań, tak aby klienci mogli korzystać z nich.
+
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Jestem administratorem usługi i chcę zmienić katalog mapowanie między moją subskrypcją i określony dzierżawy usługi Azure AD. Jak wykonać to zadanie?
+
+Zobacz [dodać istniejącą subskrypcję do katalogu usługi Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
+
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Chcę zmienić administratora usługi lub administratora współpracującego z poziomu konta
+
+Zobacz artykuł pomocy technicznej [Zmienianie administratora usługi i administratora współpracującego z poziomu konta](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
+
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Dlaczego widzę ten błąd? "Twoje konto nie ma odpowiednich uprawnień do utworzenia rozwiązania. Należy skontaktować się z administratorem konta lub spróbuj przy użyciu innego konta."
+
+Przyjrzyj się poniższym diagramie, aby uzyskać wskazówki:
+
+![Schemat blokowy uprawnień](media/iot-accelerators-faq/flowchart.png)
+
+> [!NOTE]
+> Jeśli nadal widzą błąd po upewnieniu się, jesteś administratorem globalnym dzierżawy usługi Azure AD i współadministratorem subskrypcji, poproś administratora konta, Usuń użytkownika i przypisać odpowiednie uprawnienia w tej kolejności. Najpierw dodaj użytkownika jako administrator globalny, a następnie dodać użytkowników jako współadministrator subskrypcji platformy Azure. Jeśli problemy będą się powtarzać, skontaktuj się z [Pomoc i obsługa techniczna](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Dlaczego widzę ten błąd, gdy mam subskrypcję platformy Azure? "Subskrypcja platformy Azure jest wymagana do utworzenia wstępnie skonfigurowanych rozwiązań. Możesz można utworzyć bezpłatne konto próbne w zaledwie kilka minut."
+
+Jeśli masz pewność, że masz subskrypcję platformy Azure, zweryfikuj mapowanie dla Twojej subskrypcji dzierżawy i sprawdź, czy na liście rozwijanej wybrano poprawny dzierżawy. Jeśli została zweryfikowana dzierżawy jest poprawna, postępuj zgodnie z powyższym diagramie i sprawdź poprawność mapowania subskrypcji i tej dzierżawy usługi Azure AD.
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Gdzie można znaleźć informacje o poprzednią wersję rozwiązania do zdalnego monitorowania?
 
@@ -52,7 +73,7 @@ Tak, nowe monitorowania zdalnego jest dostępna w tych samych regionach geografi
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Jaka jest różnica między usunięciem grupy zasobów w witrynie Azure portal a usunięciem akceleratora rozwiązań w witrynie azureiotsuite.com?
 
-* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsolutions.com/), możesz usunąć wszystkie zasoby, których przeprowadzono aprowizację podczas tworzenia akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
+* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsolutions.com/), możesz usunąć wszystkie zasoby, które zostały wdrożone, podczas tworzenia akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
 * W przypadku usunięcia grupy zasobów w [witryny Azure portal](https://portal.azure.com), możesz usunąć tylko zasoby w tej grupie zasobów. Należy również usunąć aplikację usługi Azure Active Directory skojarzone z akceleratora rozwiązań.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Czy mogę nadal korzystać z moich istniejących inwestycji w akceleratorów rozwiązań Azure IoT?
@@ -78,7 +99,7 @@ Dwa. Można utworzyć tylko dwa wewnętrzne transakcje poziom 1 map Bing za plan
 
 Obecnie nie można utworzyć za pomocą akceleratora rozwiązań [Microsoft Azure dla programu DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) konta. Jednakże, możesz utworzyć [konto bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut umożliwiająca tworzenie akcelerator rozwiązań.
 
-### <a name="how-do-i-delete-an-aad-tenant"></a>Jak usunąć dzierżawę usługi AAD?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Jak usunąć dzierżawę usługi Azure AD?
 
 Zobacz wpis w blogu Erica [Walkthrough of Deleting dzierżawy usługi Azure AD](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx).
 

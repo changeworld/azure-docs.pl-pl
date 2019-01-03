@@ -4,18 +4,17 @@ description: Dowiedz się, jak używać usługi kolejek platformy Azure za pomoc
 services: storage
 author: tamram
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 12/14/2018
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 827d3ceac267c78be9740adba6c890460ca3f2e9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0edb90ca7324d47beaa5133d423928e615ff33a9
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162991"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742817"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Jak używać Magazynu kolejek w języku Python
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -31,7 +30,7 @@ Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi A
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Pobierz i zainstaluj zestaw SDK usługi Azure Storage dla języka Python
 
-Zestaw SDK usługi Azure Storage dla języka Python wymaga Python 2.7 3.3, 3.4, 3.5 i 3.6 i jest oferowana w 4 różnych pakietach: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` i `azure-storage-queue`. W tym samouczku są użyjemy `azure-storage-queue` pakietu.
+[Zestawu SDK usługi Azure Storage dla języka Python](https://github.com/azure/azure-storage-python) wymaga Python 2.7 3.3, 3.4, 3.5 i 3.6.
  
 ### <a name="install-via-pypi"></a>Instalowanie za pomocą PyPi
 
@@ -41,15 +40,19 @@ Aby zainstalować, za pomocą indeksu pakietów języka Python (PyPI), wpisz:
 pip install azure-storage-queue
 ```
 
-
 > [!NOTE]
-> Jeśli uaktualniasz z zestawu SDK usługi Azure Storage dla języka Python w wersji 0.36 lub starszej, najpierw należy ją odinstalować przy użyciu `pip uninstall azure-storage` jako już nie udostępniamy zestaw SDK usługi Storage dla języka Python w jednym pakiecie.
-> 
-> 
+> Jeśli uaktualniasz z zestawu SDK usługi Azure Storage dla języka Python w wersji 0.36 lub starszej, należy odinstalować starsze przy użyciu zestawu SDK `pip uninstall azure-storage` przed zainstalowaniem najnowszy pakiet.
 
-Dla metod instalacji alternatywny, odwiedź stronę [zestawu SDK usługi Azure Storage dla języka Python w usłudze GitHub](https://github.com/Azure/azure-storage-python/).
+Metody instalacji alternatywny temacie [zestawu SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python/).
+
+## <a name="view-the-sample-application"></a>Wyświetl przykładowej aplikacji
+
+Do wyświetlania i uruchamiania aplikacji przykładowej, który pokazuje, jak używać języka Python za pomocą kolejek systemu Azure, zobacz [usługi Azure Storage: Wprowadzenie do kolejek platformy Azure w języku Python](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
+
+Aby uruchomić przykładową aplikację, upewnij się, zainstalowano zarówno `azure-storage-queue` i `azure-storage-common` pakietów.
 
 ## <a name="how-to-create-a-queue"></a>Jak: Tworzenie kolejki
+
 **QueueService** obiekt umożliwia pracę z kolejki. Poniższy kod tworzy **QueueService** obiektu. Dodaj następujący kod w górnej części każdego pliku Python, w której chcesz uzyskać programowy dostęp do usługi Azure Storage:
 
 ```python
@@ -129,8 +132,6 @@ Teraz, kiedy znasz już podstawy usługi Queue storage, skorzystaj z poniższych
 
 * [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355)
-* [Blog zespołu odpowiedzialnego za usługę Azure Storage]
-* [Microsoft Azure Storage SDK dla języka Python]
 
-[Blog zespołu odpowiedzialnego za usługę Azure Storage]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK dla języka Python]: https://github.com/Azure/azure-storage-python

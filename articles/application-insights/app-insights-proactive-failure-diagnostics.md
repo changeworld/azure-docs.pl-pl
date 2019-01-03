@@ -10,20 +10,20 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/09/2017
+ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 0895d31475de5d78c82f3bfedc0765e5a9549339
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b9d51cb4462f5f2fdf6126dfd7ecbcb6b255adc1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877602"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970733"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie w zakresie błędów
 [Usługa Application Insights](app-insights-overview.md) automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań aplikacji sieci web. Wykrywa nietypowy wzrost żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądań żądań zakończonych niepowodzeniem są zwykle te kody odpowiedź 400 lub nowszej. Ułatwiające klasyfikowanie i diagnozowanie problemu, analizy właściwości błędów i powiązane dane telemetryczne jest podawany jako powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi mieć nie konfiguracji ani konfiguracji, ponieważ używa ona algorytmów uczenia maszynowego do przewidywania zwykły współczynnik błędów.
 
-Ta funkcja działa w przypadku platformy ASP.NET oraz Java aplikacji sieci web hostowanych w chmurze lub na własnych serwerach. Działa także dla dowolnej aplikacji, która generuje dane telemetryczne żądania lub zależność — na przykład w przypadku roli procesu roboczego, który wywołuje [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) lub [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
+Ta funkcja działa w przypadku platformy ASP.NET oraz Java aplikacji sieci web hostowanych w chmurze lub na własnych serwerach. Działa także dla dowolnej aplikacji, która generuje dane telemetryczne żądania lub zależność — na przykład w przypadku roli procesu roboczego, który wywołuje [TrackRequest()](../azure-monitor/app/api-custom-events-metrics.md#trackrequest) lub [TrackDependency()](../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
 
 Po skonfigurowaniu [usługi Application Insights w projekcie](app-insights-overview.md), a podana aplikacja generuje określony minimalny telemetrii, Inteligentne wykrywanie anomalie trwa 24 godziny, aby dowiedzieć się więcej normalnego zachowania aplikacji, zanim zostanie włączone i wysyłanie alertów.
 
@@ -45,10 +45,10 @@ Zwróć uwagę, że informuje:
 * Łącza do odpowiednich wyszukiwania na telemetrii w usłudze Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Zalety wykrywania inteligentnego
-Zwykłe [alertów dotyczących metryk](app-insights-alerts.md) informujące o tym, być może wystąpił problem. Jednak wykrywanie inteligentne uruchamia diagnostykę dla Ciebie wykonywanie partii analizy, w przeciwnym razie byłoby trzeba zrobić samodzielnie. Uzyskanie wyników starannego zapakowane, pomaga szybko głównego problemu.
+Zwykłe [alertów dotyczących metryk](../azure-monitor/app/alerts.md) informujące o tym, być może wystąpił problem. Jednak wykrywanie inteligentne uruchamia diagnostykę dla Ciebie wykonywanie partii analizy, w przeciwnym razie byłoby trzeba zrobić samodzielnie. Uzyskanie wyników starannego zapakowane, pomaga szybko głównego problemu.
 
 ## <a name="how-it-works"></a>Jak to działa
-Wykrywanie inteligentne monitoruje telemetrii odebrane z aplikacji, a w szczególności współczynniki błędów. Ta reguła zlicza liczbę żądań, dla którego `Successful request` właściwość ma wartość false, a liczba zależności wywołań, dla którego `Successful call` właściwość ma wartość false. W przypadku żądań domyślnie `Successful request == (resultCode < 400)` (chyba że zostały napisane kod niestandardowy do [filtru](app-insights-api-filtering-sampling.md#filtering) lub wygenerowanie własnego [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) wywołania). 
+Wykrywanie inteligentne monitoruje telemetrii odebrane z aplikacji, a w szczególności współczynniki błędów. Ta reguła zlicza liczbę żądań, dla którego `Successful request` właściwość ma wartość false, a liczba zależności wywołań, dla którego `Successful call` właściwość ma wartość false. W przypadku żądań domyślnie `Successful request == (resultCode < 400)` (chyba że zostały napisane kod niestandardowy do [filtru](../azure-monitor/app/api-filtering-sampling.md#filtering) lub wygenerowanie własnego [TrackRequest](../azure-monitor/app/api-custom-events-metrics.md#trackrequest) wywołania). 
 
 Wydajność aplikacji jest typowy wzorzec zachowania. Niektóre żądania lub wywołania zależności będą bardziej podatne na niepowodzenia niż inne osoby; i ogólny współczynnik błędów może przejść w wraz ze wzrostem obciążenia. Wykrywanie inteligentne korzysta z uczenia maszynowego w celu znalezienia tych nieprawidłowości.
 
@@ -60,7 +60,15 @@ Gdy usługa jest wyposażone w tych wywołań telemetrii, analizator szuka wyją
 
 Wynikowe analizy do Ciebie wysłana jako alert, jeśli nie skonfigurowano jej nie.
 
-Podobnie jak [alerty, możesz ręcznie ustawić](app-insights-alerts.md), można sprawdzić stan alertu i skonfigurowanie go w bloku alertów zasobu usługi Application Insights. Jednak w przeciwieństwie do innych alertów, nie trzeba Konfigurowanie wykrywania inteligentnego. Jeśli chcesz, możesz go wyłączyć, lub zmienić jego docelowych adresów e-mail.
+Podobnie jak [alerty, możesz ręcznie ustawić](../azure-monitor/app/alerts.md), można sprawdzić stan alertu i skonfigurowanie go w bloku alertów zasobu usługi Application Insights. Jednak w przeciwieństwie do innych alertów, nie trzeba Konfigurowanie wykrywania inteligentnego. Jeśli chcesz, możesz go wyłączyć, lub zmienić jego docelowych adresów e-mail.
+
+### <a name="alert-logic-details"></a>Szczegóły alertu logiki
+
+Alerty są wyzwalane przez naszą maszynę własnościowego algorytmu uczenia, dzięki czemu firma Microsoft nie może udostępniać szczegóły dokładna implementację. Dzięki temu powiedział rozumiemy, że czasami musisz dowiedzieć się więcej na temat działania podstawowej logiki. Podstawowe czynniki, które są obliczane, aby określić, jeśli wywołany alert są: 
+
+* Analiza niepowodzenia odsetek żądań/zależności w stopniowe przedział czasu 20 minut.
+* Porównanie procent niepowodzenia ostatnich 20 minut do szybkości w ostatniej 40 minut i ostatnich siedmiu dni, a wyszukiwanie znaczących odchylenia, przekraczających X razy tego odchylenia standardowego.
+* Za pomocą adaptacyjne limit wartości procentowej minimalną niepowodzenie, który waha się oparte na wielkości żądań/zależności aplikacji.
 
 ## <a name="configure-alerts"></a>Konfigurowanie alertów
 Możesz wyłączyć wykrywanie inteligentne, zmieniać adresatów wiadomości e-mail, utworzyć element webhook lub zgadzaj się na bardziej szczegółowe komunikaty alertów.
@@ -89,9 +97,9 @@ W wielu przypadkach można zdiagnozować problem, szybko z wyjątek, Nazwa żąd
 
 Istnieje kilka innych wskazówek. Na przykład współczynnik błędów zależności, w tym przykładzie jest taka sama jak częstotliwość występowania wyjątków (89.3%). Sugeruje to, że wyjątek pojawia się bezpośrednio z błędów zależności — umożliwiając dalsze gdzie rozpocząć wyszukiwanie informacji zawartych w kodzie.
 
-Aby zbadać dokładnie należy łącza w każdej sekcji spowoduje przejście bezpośrednio do [strony wyszukiwania](app-insights-diagnostic-search.md) filtrowana w celu odpowiednich żądań, wyjątków, zależności lub śledzenia. Alternatywnie możesz otworzyć [witryny Azure portal](https://portal.azure.com), przejdź do zasobu usługi Application Insights dla aplikacji i otwórz blok błędów.
+Aby zbadać dokładnie należy łącza w każdej sekcji spowoduje przejście bezpośrednio do [strony wyszukiwania](../azure-monitor/app/diagnostic-search.md) filtrowana w celu odpowiednich żądań, wyjątków, zależności lub śledzenia. Alternatywnie możesz otworzyć [witryny Azure portal](https://portal.azure.com), przejdź do zasobu usługi Application Insights dla aplikacji i otwórz blok błędów.
 
-W tym przykładzie kliknięcie linku "Wyświetl szczegóły błędów zależności" spowoduje otwarcie bloku wyszukiwania usługi Application Insights. Pokazuje instrukcję SQL, która zawiera przykład głównej przyczyny: wartości null zostały podane w obowiązkowe i nie przeszedł pomyślnie weryfikacji podczas zapisywania operacji.
+W tym przykładzie kliknięcie linku "Wyświetl szczegóły błędów zależności" spowoduje otwarcie bloku wyszukiwania usługi Application Insights. Pokazuje instrukcję SQL, która zawiera przykład głównej przyczyny: Wartości null zostały podane w obowiązkowe i nie przeszedł pomyślnie weryfikacji podczas zapisywania operacji.
 
 ![Wyszukiwanie diagnostyczne](./media/app-insights-proactive-failure-diagnostics/051.png)
 
@@ -105,7 +113,7 @@ Kliknij przycisk **wykrywania inteligentnego** można uzyskać dostęp do najnow
 ## <a name="whats-the-difference-"></a>Jaka jest różnica...
 Inteligentne wykrywanie anomalie uzupełniają inne podobne ale różne funkcje usługi Application Insights.
 
-* [Alerty metryki](app-insights-alerts.md) są ustawiane przez Ciebie i monitorować szeroką gamę metryk, takich jak zajętość procesora CPU, żądań, czasy ładowania stron i tak dalej. Można je ostrzega użytkownika, na przykład, jeśli potrzebujesz dodać więcej zasobów. Z drugiej strony inteligentne wykrywanie anomalie obejmuje niewielki zakres krytyczne metryki (obecnie tylko żądań zakończonych), zaprojektowane, aby otrzymywać powiadomienia, możesz w czasie rzeczywistym w sposób po aplikacji sieci web nie powiodło się żądanie kurs zwiększa się znacznie w porównaniu do aplikacji sieci web normalne zachowanie.
+* [Alerty metryki](../azure-monitor/app/alerts.md) są ustawiane przez Ciebie i monitorować szeroką gamę metryk, takich jak zajętość procesora CPU, żądań, czasy ładowania stron i tak dalej. Można je ostrzega użytkownika, na przykład, jeśli potrzebujesz dodać więcej zasobów. Z drugiej strony inteligentne wykrywanie anomalie obejmuje niewielki zakres krytyczne metryki (obecnie tylko żądań zakończonych), zaprojektowane, aby otrzymywać powiadomienia, możesz w czasie rzeczywistym w sposób po aplikacji sieci web nie powiodło się żądanie kurs zwiększa się znacznie w porównaniu do aplikacji sieci web normalne zachowanie.
 
     Wykrywanie inteligentne automatycznie dostosowuje przekroczyła wartość progową w odpowiedzi na warunki panujące.
 
@@ -123,7 +131,7 @@ Inteligentne wykrywanie anomalie uzupełniają inne podobne ale różne funkcje 
 
 *Dlatego guys przyjrzymy się moje dane?*
 
-* Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomienia. Twoje dane są [prywatnej](app-insights-data-retention-privacy.md).
+* Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomienia. Twoje dane są [prywatnej](../azure-monitor/app/data-retention-privacy.md).
 
 *Trzeba subskrybować ten alert?*
 
@@ -145,10 +153,10 @@ Inteligentne wykrywanie anomalie uzupełniają inne podobne ale różne funkcje 
 Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Twojej aplikacji:
 
 * [Eksplorator metryk](app-insights-metrics-explorer.md)
-* [Eksplorator wyszukiwania](app-insights-diagnostic-search.md)
+* [Eksplorator wyszukiwania](../azure-monitor/app/diagnostic-search.md)
 * [Analiza — zaawansowany język zapytań](../azure-monitor/log-query/get-started-portal.md)
 
 Wykrywanie inteligentne są całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?
 
-* [Ręcznie skonfigurowane alertów dotyczących metryk](app-insights-alerts.md)
-* [Testy sieci web dostępności](app-insights-monitor-web-app-availability.md)
+* [Ręcznie skonfigurowane alertów dotyczących metryk](../azure-monitor/app/alerts.md)
+* [Testy sieci web dostępności](../azure-monitor/app/monitor-web-app-availability.md)

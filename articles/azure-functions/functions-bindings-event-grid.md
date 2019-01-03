@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995030"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810938"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -48,7 +48,7 @@ Zobacz przykład charakterystyczny dla wyzwalacza usługi Event Grid:
 
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
@@ -221,9 +221,14 @@ def main(event: func.EventGridEvent):
     logging.info("  Data: %s", event.get_json())
 ```
 
-### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
+### <a name="trigger---java-examples"></a>Wyzwalacz - przykładów w języku Java
 
-W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja Java](functions-reference-java.md) wykorzystuje powiązania i zdarzenia do drukowania.
+Ta sekcja zawiera następujące przykłady:
+
+* [Wyzwalacza usługi Event Grid, parametr ciągu](#event-grid-trigger-string-parameter-java)
+* [Wyzwalacza usługi Event Grid, parametr obiektu typu POJO](#event-grid-trigger-pojo-parameter-java)
+
+W poniższych przykładach pokazano powiązania wyzwalacza w *function.json* pliku i [funkcjach języka Java](functions-reference-java.md) , stosować powiązanie i wydrukuj zdarzenie, najpierw odbierającego zdarzenie jako ```String``` a drugi jako obiektu typu POJO.
 
 ```json
 {
@@ -237,16 +242,60 @@ W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* plik
 }
 ```
 
-Oto kodu Java:
+#### <a name="event-grid-trigger-string-parameter-java"></a>Wyzwalacza usługi Event Grid, parametr ciągu (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) {
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
+```
+
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>Wyzwalacza usługi Event Grid, parametr obiektu typu POJO (Java)
+
+W tym przykładzie użyto następujących obiektu typu POJO, reprezentujący najwyższego poziomu właściwości zdarzenia usługi Event Grid:
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+Po dostarczeniu, ładunek JSON zdarzenia jest zdeserializowany do ```EventSchema``` obiektu typu POJO do użytku przez funkcję. Dzięki temu funkcja dostępu do właściwości zdarzenia w sposób zorientowane obiektowo.
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
 ```
 
 W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `EventGridTrigger` adnotacji w parametrach, którego wartość może pochodzić z EventGrid. Parametry z tymi adnotacjami spowodować, że funkcja do uruchomienia po odebraniu zdarzenia.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`.

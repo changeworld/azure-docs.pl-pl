@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437133"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743650"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migracja z klastra HDInsight z systemem Windows do klastra opartego na systemie Linux
 
@@ -119,7 +119,7 @@ Ta sekcja zawiera informacje na temat różnic w procesie tworzenia klastra.
 
 ### <a name="ssh-user"></a>SSH użytkownika
 
-HDInsight opartych na systemie Linux klastrów użyj **Secure Shell (SSH)** protokołu zapewnienie dostępu zdalnego do węzłów klastra. W przeciwieństwie do klastrów z systemem Windows do usług pulpitu zdalnego większość klientów SSH nie zapewniają interfejs graficzny użytkownika. Zamiast tego klientów SSH Podaj wiersz polecenia, który umożliwia uruchamianie poleceń w klastrze. Niektórzy klienci (takie jak [MobaXterm](http://mobaxterm.mobatek.net/)) zapewniają przeglądarki systemu plików graficznych oprócz zdalne wiersza polecenia.
+HDInsight opartych na systemie Linux klastrów użyj **Secure Shell (SSH)** protokołu zapewnienie dostępu zdalnego do węzłów klastra. W przeciwieństwie do klastrów z systemem Windows do usług pulpitu zdalnego większość klientów SSH nie zapewniają interfejs graficzny użytkownika. Zamiast tego klientów SSH Podaj wiersz polecenia, który umożliwia uruchamianie poleceń w klastrze. Niektórzy klienci (takie jak [MobaXterm](https://mobaxterm.mobatek.net/)) zapewniają przeglądarki systemu plików graficznych oprócz zdalne wiersza polecenia.
 
 Podczas tworzenia klastra, należy podać użytkownika SSH, a następnie **hasło** lub **certyfikatu klucza publicznego** do uwierzytelniania.
 
@@ -199,7 +199,7 @@ Poniższej tabeli znajdują się wskazówki dotyczące migracji obciążenia Hiv
 | `set hive.execution.engine=tez;` Aby umożliwić aplikacji Tez |Apache Tez jest domyślny aparat wykonywania dla klastrów opartych na systemie Linux, więc instrukcji set nie są już potrzebne. |
 | C# funkcje zdefiniowane przez użytkownika | Aby uzyskać informacje na temat weryfikacji składników języka C# za pomocą HDInsight opartych na systemie Linux, zobacz [.NET Migrowanie rozwiązania HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | Pliki CMD lub skrypty na serwerze wywoływanych jako część zadania Hive |za pomocą skryptów powłoki Bash |
-| `hive` polecenie z pulpitu zdalnego |Użyj [z usługi Beeline](hadoop/apache-hadoop-use-hive-beeline.md) lub [Apache Hive w sesji SSH](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` polecenie z pulpitu zdalnego |Użyj [z usługi Beeline Apache Hive](hadoop/apache-hadoop-use-hive-beeline.md) lub [Apache Hive w sesji SSH](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -220,7 +220,7 @@ Poniższej tabeli znajdują się wskazówki dotyczące migracji obciążenia Hiv
 > [!IMPORTANT]  
 > Jeśli używasz zewnętrzny Magazyn metadanych programu Oozie, możesz należy wykonać kopię zapasową magazynu metadanych przed użyciem HDInsight opartych na systemie Linux. HDInsight opartych na systemie Linux jest dostępna z nowszymi wersjami programu Oozie, który może mieć niezgodności z magazyny metadanych utworzone we wcześniejszych wersjach.
 
-Przepływy pracy programu Oozie umożliwiają akcji powłoki. Powłoka akcje wykorzystują domyślnej powłoki systemu operacyjnego, aby uruchamiać polecenia wiersza polecenia. W przypadku przepływów pracy programu Oozie, które zależą od powłoki Windows należy przepisać przepływy pracy w celu zależą od środowiska powłoki systemu Linux (powłoki Bash). Aby uzyskać więcej informacji na temat korzystania z powłoki akcji przy użyciu programu Oozie, zobacz [rozszerzenie akcji powłoki programu Oozie](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
+Przepływy pracy programu Oozie umożliwiają akcji powłoki. Powłoka akcje wykorzystują domyślnej powłoki systemu operacyjnego, aby uruchamiać polecenia wiersza polecenia. W przypadku przepływów pracy programu Oozie, które zależą od powłoki Windows należy przepisać przepływy pracy w celu zależą od środowiska powłoki systemu Linux (powłoki Bash). Aby uzyskać więcej informacji na temat korzystania z powłoki akcji przy użyciu programu Oozie, zobacz [rozszerzenie akcji powłoki programu Oozie](https://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
 
 Jeśli przepływ pracy, który korzysta z aplikacji w języku C#, sprawdzanie poprawności tych aplikacji w środowisku systemu Linux. Aby uzyskać więcej informacji, zobacz [.NET Migrowanie rozwiązania HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 

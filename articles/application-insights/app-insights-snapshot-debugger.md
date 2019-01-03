@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: a92b54a80de645dda8ea0cc0259bd07f72330204
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a9e7cfdf9b63e511c3b59e840999024e849122aa
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136719"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808897"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
 
-Gdy wystąpi wyjątek, może automatycznie zbierać migawek debugowania z działającej aplikacji internetowej. Migawka przedstawia stan zmiennych i kod źródłowy w momencie utworzenia zgłoszenia wyjątku. Rozszerzenie Snapshot Debugger (wersja zapoznawcza) w [usługi Azure Application Insights](app-insights-overview.md) monitoruje dane telemetryczne dotyczące wyjątków z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie górnej dzięki temu uzyskasz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakiet NuGet modułu zbierającego migawki](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować kolekcję parametrów w [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](app-insights-asp-net-exceptions.md) w portalu Application Insights.
+Gdy wystąpi wyjątek, może automatycznie zbierać migawek debugowania z działającej aplikacji internetowej. Migawka przedstawia stan zmiennych i kod źródłowy w momencie utworzenia zgłoszenia wyjątku. Rozszerzenie Snapshot Debugger (wersja zapoznawcza) w [usługi Azure Application Insights](app-insights-overview.md) monitoruje dane telemetryczne dotyczące wyjątków z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie górnej dzięki temu uzyskasz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakiet NuGet modułu zbierającego migawki](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować kolekcję parametrów w [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](../azure-monitor/app/asp-net-exceptions.md) w portalu Application Insights.
 
 Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Aby uzyskać bardziej zaawansowane środowisko debugowania z kodem źródłowym, należy otworzyć migawki za pomocą programu Visual Studio 2017 Enterprise. W programie Visual Studio, możesz również [Ustaw punkty przyciągania do interaktywnego robienia migawek](https://aka.ms/snappoint) bez oczekiwania na wyjątek.
 
@@ -43,11 +43,11 @@ Są obsługiwane w następujących środowiskach:
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurowanie zbierania migawek dla aplikacji ASP.NET
 
-1. [Włącz usługę Application Insights w aplikacji sieci web](app-insights-asp-net.md), jeśli nie została ona jeszcze zrobione.
+1. [Włącz usługę Application Insights w aplikacji sieci web](../azure-monitor/app/asp-net.md), jeśli nie została ona jeszcze zrobione.
 
 2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
 
-3. Przejrzyj opcje domyślne, które pakiet dodane do [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+3. Przejrzyj opcje domyślne, które pakiet dodane do [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md):
 
     ```xml
     <TelemetryProcessors>
@@ -81,12 +81,12 @@ Są obsługiwane w następujących środowiskach:
     </TelemetryProcessors>
     ```
 
-4. Migawki są zbierane tylko na wyjątki, które są zgłaszane do usługi Application Insights. W niektórych przypadkach (na przykład starsze wersje platformy .NET), konieczne może być [Konfigurowanie zbierania wyjątków](app-insights-asp-net-exceptions.md#exceptions) aby zobaczyć wyjątki, przy użyciu migawek w portalu.
+4. Migawki są zbierane tylko na wyjątki, które są zgłaszane do usługi Application Insights. W niektórych przypadkach (na przykład starsze wersje platformy .NET), konieczne może być [Konfigurowanie zbierania wyjątków](../azure-monitor/app/asp-net-exceptions.md#exceptions) aby zobaczyć wyjątki, przy użyciu migawek w portalu.
 
 
 ### <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>Konfigurowanie zbierania migawek dla aplikacji ASP.NET Core 2.0
 
-1. [Włącz usługę Application Insights w aplikacji sieci web platformy ASP.NET Core](app-insights-asp-net-core.md), jeśli nie została ona jeszcze zrobione.
+1. [Włącz usługę Application Insights w aplikacji sieci web platformy ASP.NET Core](../azure-monitor/app/asp-net-core.md), jeśli nie została ona jeszcze zrobione.
 
     > [!NOTE]
     > Należy się upewnić, że aplikacja odwołuje się do wersji 2.1.1 lub nowszego, pakietu Microsoft.ApplicationInsights.AspNetCore.
@@ -212,7 +212,7 @@ Właściciele subskrypcji należy przypisać `Application Insights Snapshot Debu
 
 ## <a name="debug-snapshots-in-the-application-insights-portal"></a>Debugowanie migawki w portalu Application Insights
 
-Jeśli migawka jest niedostępna dla danego wyjątku lub identyfikator problemu **Otwórz migawkę debugowania** przycisk pojawia się na [wyjątek](app-insights-asp-net-exceptions.md) w portalu Application Insights.
+Jeśli migawka jest niedostępna dla danego wyjątku lub identyfikator problemu **Otwórz migawkę debugowania** przycisk pojawia się na [wyjątek](../azure-monitor/app/asp-net-exceptions.md) w portalu Application Insights.
 
 ![Przycisk Otwórz migawkę debugowania przy wyjątku](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 
@@ -235,8 +235,8 @@ Pobrany migawki zawiera wszystkie pliki symboli, które zostały odnalezione na 
 
 ## <a name="how-snapshots-work"></a>Jak działają migawek
 
-Modułu zbierającego migawki jest implementowany jako [Application Insights Telemetrii procesora](app-insights-configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po uruchomieniu aplikacji, procesor danych Telemetrycznych modułu zbierającego migawki jest dodawany do potoku telemetrii Twojej aplikacji.
-Każdym wywołaniami aplikacji [metoda TrackException](app-insights-asp-net-exceptions.md#exceptions), modułu zbierającego migawki oblicza identyfikator problemu z rodzaj zgłaszanego wyjątku i zgłaszanie metody.
+Modułu zbierającego migawki jest implementowany jako [Application Insights Telemetrii procesora](../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po uruchomieniu aplikacji, procesor danych Telemetrycznych modułu zbierającego migawki jest dodawany do potoku telemetrii Twojej aplikacji.
+Każdym wywołaniami aplikacji [metoda TrackException](../azure-monitor/app/asp-net-exceptions.md#exceptions), modułu zbierającego migawki oblicza identyfikator problemu z rodzaj zgłaszanego wyjątku i zgłaszanie metody.
 Za każdym razem, Twoja aplikacja wywołuje metoda TrackException, licznik jest zwiększany odpowiedni identyfikator problemu. Jeśli licznik osiągnie `ThresholdForSnapshotting` wartości, identyfikator problemu jest dodawany do planu zbierania.
 
 Jak są one generowane przez Subskrybowanie modułu zbierającego migawki również monitoruje wyjątki [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) zdarzeń. Gdy zostanie wyzwolony tego zdarzenia, identyfikator problemu wyjątku jest obliczana i porównywana z identyfikatorami Problem w planie kolekcji.
@@ -472,10 +472,10 @@ Jeśli nadal nie widzisz wyjątków o takim identyfikatorze migawki, dane teleme
 
 ### <a name="edit-network-proxy-or-firewall-rules"></a>Edytowanie reguł serwera proxy lub zapory sieciowej
 
-Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub zapora, może być konieczne edytowanie reguły, aby umożliwić aplikacji do komunikowania się z usługą rozszerzenia Snapshot Debugger. Oto [listę adresów IP i porty używane przez rozszerzenie Snapshot Debugger](app-insights-ip-addresses.md#snapshot-debugger).
+Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub zapora, może być konieczne edytowanie reguły, aby umożliwić aplikacji do komunikowania się z usługą rozszerzenia Snapshot Debugger. Oto [listę adresów IP i porty używane przez rozszerzenie Snapshot Debugger](../azure-monitor/app/ip-addresses.md#snapshot-debugger).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Ustaw punkty przyciągania w kodzie](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) można pobrać migawek bez oczekiwania na wyjątek.
-* [Diagnozowanie wyjątków w aplikacjach sieci web](app-insights-asp-net-exceptions.md) wyjaśnia, jak ustawienie widoczności więcej wyjątków usługi Application Insights.
+* [Diagnozowanie wyjątków w aplikacjach sieci web](../azure-monitor/app/asp-net-exceptions.md) wyjaśnia, jak ustawienie widoczności więcej wyjątków usługi Application Insights.
 * [Wykrywanie inteligentne](app-insights-proactive-diagnostics.md) automatycznie wykrywa anomalie wydajność.

@@ -1,6 +1,6 @@
 ---
 title: Indeksowanie zawartości z usługi Azure Table storage w celu wyszukiwania pełnotekstowego — usługa Azure Search
-description: Dowiedz się, jak i indeksowanie danych przechowywanych w usłudze Azure Table storage z usługą Azure Search.
+description: Dowiedz się, jak i indeksowanie danych przechowywanych w usłudze Azure Table storage za pomocą indeksatora usługi Azure Search.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 39455669dd739309ac0201de49b390c2390e0067
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9532f4331b4dbbc8d687778b29f63179cca6b4d4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317274"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632963"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indeks usługi Azure Table storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w usłudze Azure Table storage.
@@ -30,7 +30,7 @@ Indeksator usługi Azure Table storage można skonfigurować przy użyciu tych z
 
 Tutaj pokażemy przepływ przy użyciu interfejsu API REST. 
 
-### <a name="step-1-create-a-datasource"></a>Krok 1. Tworzenie źródła danych
+### <a name="step-1-create-a-datasource"></a>Krok 1: Tworzenie źródła danych
 
 Źródło danych określa danych do indeksu poświadczenia wymagane do dostępu do danych i zasady, które umożliwiają wydajne zidentyfikować zmiany danych w usłudze Azure Search.
 
@@ -76,7 +76,7 @@ Aby uzyskać więcej informacji na temat magazynu udostępnionego sygnatury dost
 > [!NOTE]
 > Jeśli używasz poświadczeń sygnatury dostępu współdzielonego, należy okresowo aktualizowany poświadczenia źródła danych za pomocą odnowione podpisów, aby zapobiec ich wygaśnięciem. Jeśli wygaśnięcie poświadczeń sygnatury dostępu współdzielonego, indeksator zakończy się niepowodzeniem z komunikatem o błędzie podobny do "Poświadczenia dostarczone w parametrach połączenia są nieprawidłowe lub wygasły."  
 
-### <a name="step-2-create-an-index"></a>Krok 2. Tworzenie indeksu
+### <a name="step-2-create-an-index"></a>Krok 2: Tworzenie indeksu
 Indeks określa pola w dokumencie, atrybuty, i innych konstrukcji, które kształt wyszukiwania środowiska.
 
 Aby utworzyć indeks:
@@ -95,7 +95,7 @@ Aby utworzyć indeks:
 
 Aby uzyskać więcej informacji na temat tworzenia indeksów, zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-### <a name="step-3-create-an-indexer"></a>Krok 3. Tworzenie indeksatora
+### <a name="step-3-create-an-indexer"></a>Krok 3: Tworzenie indeksatora
 Indeksator łączy źródło danych z docelowym indeksem wyszukiwania i zapewnia harmonogram w celu zautomatyzowania odświeżania danych. 
 
 Po utworzeniu indeksu i źródła danych, możesz przystąpić do tworzenia indeksatora:

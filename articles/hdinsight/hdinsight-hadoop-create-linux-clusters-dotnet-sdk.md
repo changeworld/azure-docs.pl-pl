@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 06135ff77cb9c2a5b8fa2ae674206406469ed293
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 52f67d21c3a130df4d85c220baca9c6af8eb06c1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870609"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793482"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu zestawu .NET SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "52870609"
 
 Dowiedz się, jak utworzyć [Apache Hadoop](https://hadoop.apache.org/) klastra w klastrze Azure HDInsight przy użyciu zestawu .NET SDK.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie utworzyć klaster z węzła jednego procesu roboczego. Jeśli planowane jest na więcej niż 32 węzły procesu roboczego podczas tworzenia klastra lub przy użyciu skalowania klastra po utworzeniu, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14GB pamięci ram.
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -367,7 +367,7 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-administer-use-portal-linux.md#create-clusters).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następującego polecenia na temat sposobu pracy z klastrem. 
@@ -375,7 +375,7 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 ### <a name="apache-hadoop-clusters"></a>Klastry platformy Apache Hadoop
 * [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
 * [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Za pomocą usług Apache Hadoop MapReduce HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
 * [Rozpoczynanie pracy z usługą Apache HBase na HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
@@ -389,7 +389,7 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 ### <a name="apache-spark-clusters"></a>Klastry platformy Apache Spark
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
 * [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>Uruchamianie zadań

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek
+ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
 ms.date: 02/05/2018
-ms.openlocfilehash: 290414ca07014d5f3bfbe160b0f571397fb13948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 96627d96acee76516c9dc3db1b58d6e4b7b6ff15
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467133"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601045"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias systemu DNS dla usługi Azure SQL Database
 
@@ -55,12 +55,12 @@ Odzyskiwanie po awarii może być shift serwera usługi SQL Database do innego r
 
 Następujące właściwości mają zastosowanie do każdego alias DNS serwera usługi SQL Database:
 
-- *Unikatowa nazwa:* nazwy aliasu, możesz utworzyć jest unikatowa na wszystkich serwerach usługi Azure SQL Database, podobnie jak serwera nazw.
+- *Unikatowa nazwa:* Każda nazwa aliasu, tworzonych jest unikatowa na wszystkich serwerach usługi Azure SQL Database, po prostu nazwy serwera.
 - *Wymagany jest serwer:* DNS alias nie można utworzyć chyba że odwołuje się do dokładnie jednego serwera, a serwer musi już istnieć. Zaktualizowano alias zawsze musi odwoływać się dokładnie jeden serwer.
   - Gdy upuścisz suszarkę serwera usługi SQL Database, Azure system również porzuca wszystkie aliasy DNS, które odwołują się do serwera.
-- *Nie jest powiązany z dowolnego regionu:* aliasów DNS nie są powiązane z obszarem. Aliasy DNS może zostać zaktualizowana do odwoływania się do serwera Azure SQL Database, która znajduje się w dowolnym regionie geograficznym.
+- *Nie jest powiązany z dowolnego regionu:* Aliasy DNS nie są powiązane z obszarem. Aliasy DNS może zostać zaktualizowana do odwoływania się do serwera Azure SQL Database, która znajduje się w dowolnym regionie geograficznym.
   - Jednak podczas aktualizowania alias do odwoływania się do innego serwera, oba serwery muszą być umieszczone w tym samym *subskrypcji*.
-- *Uprawnienia:* Zarządzanie alias systemu DNS, użytkownik musi mieć *Współautor serwera* uprawnienia, lub nowszej. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../role-based-access-control/overview.md).
+- *Uprawnienia:* Aby zarządzać alias systemu DNS, użytkownik musi mieć *Współautor serwera* uprawnienia, lub nowszej. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Zarządzanie aliasy DNS
 
@@ -95,9 +95,9 @@ Przykładowy kod poleceń cmdlet programu PowerShell jest używany do zarządzan
 
 Polecenia cmdlet używanych w przykładzie kodu są następujące:
 
-- [Nowy-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): tworzy nowy alias DNS w systemie usługi Azure SQL Database. Alias odwołuje się do serwera Azure SQL Database 1.
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): pobieranie i wyświetlanie wszystkie aliasy DNS, które są przypisane do serwera bazy danych SQL 1.
-- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): zmienia nazwę serwera, którą skonfigurowano aliasu dotyczą z serwera 1 serwer bazy danych SQL 2.
+- [Nowy AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Tworzy nowy alias DNS w systemie usługi Azure SQL Database. Alias odwołuje się do serwera Azure SQL Database 1.
+- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Pobieranie i wyświetlanie wszystkie aliasy DNS, które są przypisane do serwera bazy danych SQL 1.
+- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Zmienia nazwę serwera, którą skonfigurowano aliasu dotyczą z serwera 1 serwer bazy danych SQL 2.
 - [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Usuń DNS alias z serwera bazy danych SQL 2, przy użyciu nazwy aliasu.
 
 Powyższe polecenia cmdlet zostały dodane do **elementu AzureRM.Sql** począwszy od wersji modułu 5.1.1 modułu.
@@ -106,10 +106,10 @@ Powyższe polecenia cmdlet zostały dodane do **elementu AzureRM.Sql** począwsz
 
 Obecnie systemie DNS alias ma następujące ograniczenia:
 
-- *Opóźnienie do 2 minut:* może potrwać do 2 minut dla aliasu DNS, należy zaktualizować lub usunąć.
+- *Opóźnienie do 2 minut:* Trwa maksymalnie 2 minuty, alias DNS należy zaktualizować lub usunąć.
   - Niezależnie od wszelkich krótkie opóźnienie alias natychmiast zatrzymuje odwołujące się połączeń klientów do starszej wersji serwera.
-- *Wyszukiwanie DNS:* teraz tylko autorytatywne sposób, aby sprawdzić, jakiego serwera DNS danego alias odwołuje się do, wykonując [wyszukiwania DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- *[Inspekcja tabeli nie jest obsługiwana.](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* nie można użyć aliasu DNS na serwerze usługi Azure SQL Database, która ma *inspekcji tabel* włączona w bazie danych.
+- *Wyszukiwanie DNS:* Obecnie tylko autorytatywne sposób, aby sprawdzić, jakiego serwera DNS danego alias odwołuje się do, wykonując [wyszukiwania DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
+- *[Inspekcja tabeli nie jest obsługiwana.](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* Nie można użyć aliasu DNS na serwerze usługi Azure SQL Database, która ma *inspekcji tabel* włączona w bazie danych.
   - Inspekcja tabel jest przestarzała.
   - Firma Microsoft zaleca, aby przenieść się do [inspekcji obiektów Blob](sql-database-auditing.md).
 

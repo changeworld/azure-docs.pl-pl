@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437201"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743004"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Uczenia maszynowego w HDInsight
 
-HDInsight umożliwia uczenie maszynowe przy użyciu danych big data, umożliwiając uzyskanie wartościowy wgląd w informacje z dużych ilości (petabajtów, a nawet eksabajtów) strukturą i bez struktury i szybko zmieniających danych. Istnieje kilka usługi machine learning opcje w HDInsight:  SparkML oraz MLlib, R, Apache Hive i Microsoft Cognitive Toolkit.
+HDInsight umożliwia uczenie maszynowe przy użyciu danych big data, umożliwiając uzyskanie wartościowy wgląd w informacje z dużych ilości (petabajtów, a nawet eksabajtów) strukturą i bez struktury i szybko zmieniających danych. Istnieje kilka usługi machine learning opcje w HDInsight:  SparkML i Apache, MLlib platformy Spark, R, Apache Hive i Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>SparkML oraz MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) to oferta hostowanymi na platformie Azure z [platformy Apache Spark](http://spark.apache.org/), ujednolicone, typu open source, w ramach równoległego przetwarzania danych obsługuje przetwarzanie w pamięci, aby zwiększyć możliwości analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. Istnieją dwie biblioteki uczenia skalowalne maszyny, które ożywiają funkcje modelowania konsolidatorze do tego środowiska rozproszonych: Biblioteka MLlib i SparkML. Biblioteka MLlib zawiera oryginalny interfejs API, zbudowany na podstawie danych. SparkML jest nowszy pakiet, który udostępnia interfejs API wyższego poziomu utworzonych na szczycie elementy Dataframe tworzenia potoków uczenia Maszynowego. SparkML nie obsługuje jeszcze wszystkie funkcje MLlib, ale zastępuje jako standardowa platforma Spark usługi machine learning biblioteki MLlib.
+[HDInsight Spark](spark/apache-spark-overview.md) to oferta hostowanymi na platformie Azure z [platformy Apache Spark](https://spark.apache.org/), ujednolicone, typu open source, w ramach równoległego przetwarzania danych obsługuje przetwarzanie w pamięci, aby zwiększyć możliwości analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. Istnieją dwie biblioteki uczenia skalowalne maszyny, które ożywiają funkcje modelowania konsolidatorze do tego środowiska rozproszonych: Biblioteka MLlib i SparkML. Biblioteka MLlib zawiera oryginalny interfejs API, zbudowany na podstawie danych. SparkML jest nowszy pakiet, który udostępnia interfejs API wyższego poziomu utworzonych na szczycie elementy Dataframe tworzenia potoków uczenia Maszynowego. SparkML nie obsługuje jeszcze wszystkie funkcje MLlib, ale zastępuje jako standardowa platforma Spark usługi machine learning biblioteki MLlib.
 
 Biblioteka Microsoft Machine Learning dla platformy Apache Spark jest [MMLSpark](https://github.com/Azure/mmlspark). Ta biblioteka została zaprojektowana do być analitykom danych wydajniejsze na platformie Spark, zwiększenia szybkości eksperymentowania i korzystać z technik uczenia maszynowego najnowocześniejsze metody, w tym uczenia głębokiego, w bardzo dużych zestawów danych. MMLSpark zapewnia warstwę interfejsach niskiego poziomu SparkML firmy podczas tworzenia skalowalnych modeli uczenia Maszynowego, takich jak ciągi indeksowania coercing — dane w układzie oczekiwany przez maszynę algorytmów uczenia i złożenia wektorów funkcji. Biblioteka MMLSpark upraszcza tych i innych typowych zadań przeznaczone do budowania modeli w PySpark.
 

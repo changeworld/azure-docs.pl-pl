@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311817"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724870"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Łączenie usługi Cosmos DB przy użyciu usługi Azure Search przy użyciu indeksatorów
 
@@ -38,7 +38,7 @@ W poniższym klipie wideo Azure Menedżer programu usługi Cosmos DB Andrew Liu 
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>Obsługiwane typy interfejsów API
 
-Mimo że usługi Azure Cosmos DB obsługuje wiele modeli danych i interfejsów API, obsługa produkcji indeksator usługi Azure Search rozciąga się do interfejsu API SQL. Obsługa interfejsu API usługi MongoDB jest obecnie w publicznej wersji zapoznawczej.  
+Mimo że usługi Azure Cosmos DB obsługuje wiele modeli danych i interfejsów API, obsługa produkcji indeksator usługi Azure Search rozciąga się do interfejsu API SQL. Obsługa usługi Azure Cosmos DB dla interfejsu API usługi MongoDB jest obecnie w publicznej wersji zapoznawczej.  
 
 Nadchodzi obsługę dodatkowe interfejsy API. Aby pomóc nam określić priorytety te, które umożliwiają najpierw, można rzutować swój głos w witrynie User Voice:
 
@@ -74,7 +74,7 @@ W tym artykule pokazano, jak używać interfejsu API REST. Jeśli postanowisz dl
 > Obecnie nie można utworzyć lub edytować **bazy danych MongoDB** źródeł danych przy użyciu witryny Azure Portal lub zestawu .NET SDK. Jednak możesz **można** monitorować historię wykonywania bazy danych MongoDB indeksatorów w portalu.  
 
 <a name="CreateDataSource"></a>
-## <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
+## <a name="step-1-create-a-data-source"></a>Krok 1: Tworzenie źródła danych
 Aby utworzyć źródło danych, czy WPIS:
 
     POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
@@ -146,7 +146,7 @@ Zapytanie spłaszczania tablicy:
     SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 <a name="CreateIndex"></a>
-## <a name="step-2-create-an-index"></a>Krok 2. Tworzenie indeksu
+## <a name="step-2-create-an-index"></a>Krok 2: Tworzenie indeksu
 Tworzenie indeksu usługi Azure Search docelowego, jeśli nie masz jeszcze takiego. Można utworzyć indeksu przy użyciu [interfejsu użytkownika witryny Azure portal](search-create-index-portal.md), [utworzyć indeks interfejsu API REST](/rest/api/searchservice/create-index) lub [Index, klasa](/dotnet/api/microsoft.azure.search.models.index).
 
 Poniższy przykład tworzy indeks z polem Identyfikator i opis:
@@ -193,7 +193,7 @@ Upewnij się, że schemat indeksu docelowego jest zgodna z schemat źródła dok
 
 <a name="CreateIndexer"></a>
 
-## <a name="step-3-create-an-indexer"></a>Krok 3. Tworzenie indeksatora
+## <a name="step-3-create-an-indexer"></a>Krok 3: Tworzenie indeksatora
 
 Po utworzeniu indeks i źródło danych możesz przystąpić do tworzenia indeksatora:
 

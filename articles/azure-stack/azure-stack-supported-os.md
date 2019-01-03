@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 056c44de4f89b04149c275b1508c7ea8f397d6e6
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405601"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810783"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Systemy operacyjne gościa obsługiwane w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 ## <a name="windows"></a>Windows
 
@@ -71,11 +71,11 @@ Dystrybucje systemu Linux wyświetlane jako dostępne w portalu Marketplace zawi
 | Ubuntu 16.04-LTS | 64-bitowa | Canonical | Yes |
 | Ubuntu 18.04-LTS | 64-bitowa | Canonical | Yes |
 
-Aby uzyskać informacje dotyczące obsługi w systemie Red Hat Enterprise Linux, zapoznaj się [firmy Red Hat i usługi Azure Stack: często zadawane pytania](https://access.redhat.com/articles/3413531).
+Aby uzyskać informacje dotyczące obsługi w systemie Red Hat Enterprise Linux, zobacz [firmy Red Hat i usługi Azure Stack: Często zadawane pytania dotyczące](https://access.redhat.com/articles/3413531).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat portalu Marketplace usługi Azure Stack zobacz następujące artykuły:
 
-[Pobieranie elementów portalu Marketplace](azure-stack-download-azure-marketplace-item.md)  
-[Tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md)
+- [Pobieranie elementów portalu Marketplace](azure-stack-download-azure-marketplace-item.md)  
+- [Tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md)

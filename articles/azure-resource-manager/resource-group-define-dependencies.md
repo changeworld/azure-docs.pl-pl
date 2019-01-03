@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 308ab9d35e07c8376fb183c794fcad77a74a1df9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295567"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727806"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach usługi Resource Manager platformy Azure
 Dla danego zasobu może być inne zasoby, które muszą istnieć przed wdrożeniem tego zasobu. Na przykład programu SQL server musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Należy zdefiniować tę relację, oznaczając jeden zasób jako zależny od innego zasobu. Definiowanie zależności za pomocą **dependsOn** elementu, lub za pomocą **odwołania** funkcji. 
@@ -145,16 +145,7 @@ Można użyć tego elementu lub elementu dependsOn, aby określić zależności,
 
 Aby dowiedzieć się więcej, zobacz [odwoływać się do funkcji](resource-group-template-functions-resource.md#reference).
 
-## <a name="recommendations-for-setting-dependencies"></a>Zalecenia dotyczące ustawienie zależności
-
-Podczas podejmowania decyzji o jakie zależności, aby ustawić, skorzystaj z poniższych wskazówek:
-
-* Jak to możliwe, należy ustawić jako kilku zależności.
-* Ustawić zasobu podrzędnego jako zależny od jej zasobu nadrzędnego.
-* Użyj **odwołania** działać, a następnie przekaż nazwę zasobu, można ustawić niejawne zależności między zasobami, które muszą udostępniać właściwość. Nie dodawaj jawne zależności (**dependsOn**) podczas zdefiniowanych już niejawne zależności. Takie podejście zmniejsza ryzyko wystąpienia niepotrzebne zależności. 
-* Ustawiana jest zależność, gdy zasób nie może być **utworzone** bez funkcji z innego zasobu. Nie należy ustawiać zależność, jeśli zasoby komunikować się tylko po wdrożeniu.
-* Pozwalają zastosować kaskadowo bez konieczności ustawiania ich jawnie zależności. Na przykład maszyna wirtualna jest zależny od interfejsu sieci wirtualnej, a interfejs sieci wirtualnej zależy od sieci wirtualnej i publicznych adresów IP. W związku z tym maszyna wirtualna jest wdrożone zasoby po wszystkich trzech, ale nie jest jawnie ustawiana maszyny wirtualnej jako zależny od wszystkich trzech zasobów. To podejście wyjaśnia kolejność zależności oraz ułatwia później zmienić szablonu.
-* Przed wdrożeniem, można określić wartość, spróbuj wykonać wdrażanie zasobu bez zależności. Na przykład jeśli wartość konfiguracji wymaga innego zasobu, może być konieczne nie zależności. Te wskazówki nie zawsze działa, ponieważ niektóre zasoby sprawdzenia istnienia innego zasobu. Jeśli otrzymasz komunikat o błędzie, należy dodać zależność. 
+## <a name="circular-dependencies"></a>Zależności cykliczne
 
 Menedżer zasobów identyfikuje zależności cykliczne podczas weryfikowania szablonu. Jeśli zostanie wyświetlony komunikat o błędzie informujący, że istnieje zależność cykliczną, ocenić szablonu, czy jakieś zależności, nie są potrzebne i można je usunąć. Jeśli usuwanie zależności nie rozwiąże problemu, możesz uniknąć zależności cykliczne, przenosząc pewne operacje wdrażania w zasoby podrzędne, które są wdrażane po zasoby, które mają zależności cyklicznej. Na przykład załóżmy, że wdrożysz dwie maszyny wirtualne, ale należy ustawić właściwości na każdym z nich, które odwołują się do drugiego. Można je wdrożyć w następującej kolejności:
 
@@ -168,6 +159,7 @@ Aby uzyskać informacji o ocenie kolejność wdrażania i rozwiązywanie błęd�
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby wykonać kroki samouczka, zobacz [samouczek: Tworzenie szablonów usługi Azure Resource Manager przy użyciu zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+* Zalecenia dotyczące podczas ustawiania zależności w temacie [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
 * Aby uzyskać informacje dotyczące rozwiązywania problemów zależności podczas wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Azure Resource Manager, zobacz [Tworzenie szablonów](resource-group-authoring-templates.md). 
 * Aby uzyskać listę dostępnych funkcji w szablonie, zobacz [funkcje szablonu](resource-group-template-functions.md).

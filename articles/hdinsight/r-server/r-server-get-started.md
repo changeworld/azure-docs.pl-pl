@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496452"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968812"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Wprowadzenie do usług ML w usłudze Azure HDInsight
 
@@ -22,8 +22,8 @@ Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwa
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**: przed rozpoczęciem tego samouczka musisz mieć subskrypcję platformy Azure. Aby uzyskać więcej informacji, zobacz [Get Microsoft Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (Uzyskaj bezpłatną wersję próbną platformy Azure).
-* **Klient protokołu Secure Shell (SSH)**: klient SSH jest używany do zdalnego łączenia z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Subskrypcja platformy Azure**: Przed rozpoczęciem tego samouczka musisz dysponować subskrypcją platformy Azure. Aby uzyskać więcej informacji, zobacz [Get Microsoft Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (Uzyskaj bezpłatną wersję próbną platformy Azure).
+* **Klient protokołu Secure Shell (SSH)**: Klient SSH jest używany do zdalnego łączenia z klastrem HDInsight i uruchamianie poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -31,28 +31,28 @@ Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwa
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Kliknij kolejno pozycje **Utwórz zasób** > **Dane + analiza** > **HDInsight**.
+2. Przejdź do **+ Utwórz zasób** > **Analytics** > **HDInsight**.
 
 3. W bloku **Podstawowe** wprowadź następujące informacje:
 
-    * **Nazwa klastra**: nazwa klastra usługi HDInsight.
-    * **Subskrypcja**: wybierz subskrypcję, której chcesz użyć.
-    * **Nazwa użytkownika logowania klastra** i **Hasło logowania klastra**: dane logowania podczas uzyskiwania dostępu do klastra przy użyciu protokołu HTTPS. Te poświadczenia umożliwiają uzyskiwanie dostępu do usług, takich jak Apache Ambari Web UI lub interfejsu API REST.
-    * **Nazwa użytkownika SSH (Secure Shell)**: nazwa logowania używana podczas uzyskiwania dostępu do klastra za pośrednictwem protokołu SSH. Domyślnie hasło jest takie samo jak hasło logowania klastra.
-    * **Grupa zasobów**: grupa zasobów, w której ma zostać utworzony klaster.
-    * **Lokalizacja**: region platformy Azure, w którym ma zostać utworzony klaster.
+    * **Nazwa klastra**: Nazwa klastra HDInsight.
+    * **Subskrypcja**: Wybierz subskrypcję do użycia.
+    * **Nazwa użytkownika logowania klastra** i **hasło logowania klastra**: Zaloguj się przy uzyskiwaniu dostępu do klastra za pośrednictwem protokołu HTTPS. Te poświadczenia umożliwiają uzyskiwanie dostępu do usług, takich jak Apache Ambari Web UI lub interfejsu API REST.
+    * **Secure Shell (SSH), username**: Nazwa logowania używana podczas uzyskiwania dostępu do klastra za pośrednictwem protokołu SSH. Domyślnie hasło jest takie samo jak hasło logowania klastra.
+    * **Grupa zasobów**: Grupa zasobów, w której ma zostać utworzony klaster.
+    * **Lokalizacja**: Region świadczenia usługi Azure, w którym ma zostać utworzony klaster.
 
         ![Podstawowe szczegóły klastra](./media/r-server-get-started/clustername.png)
 
 4. Wybierz pozycję **Typ klastra**, a następnie ustaw następujące wartości w sekcji **Konfiguracja klastra**:
 
-    * **Typ klastra**: usługi ML
+    * **Typ klastra**: Usługi ML
 
     * **System operacyjny**: Linux
 
     * **Wersja**: ML Server 9.3 (HDI 3.6). Informacje o programie ML Server w wersji 9.3 są dostępne w witrynie [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server).
 
-    * **Program R Studio Community Edition for ML Server**: to środowisko IDE oparte na przeglądarce jest instalowane domyślnie na węźle brzegowym. Wyczyść pole wyboru, jeśli nie chcesz go instalować. Jeśli wybierzesz opcję instalacji, adres URL umożliwiający logowanie do programu RStudio Server będzie dostępny w bloku aplikacji portalu dla utworzonego klastra.
+    * **R Studio community edition dla systemów ML Server**: To środowisko IDE oparte na przeglądarce jest instalowany domyślnie w węźle brzegowym. Wyczyść pole wyboru, jeśli nie chcesz go instalować. Jeśli wybierzesz opcję instalacji, adres URL umożliwiający logowanie do programu RStudio Server będzie dostępny w bloku aplikacji portalu dla utworzonego klastra.
 
         ![Podstawowe szczegóły klastra](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -66,7 +66,7 @@ Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwa
 
     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/clustersummary.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tworzenie klastra może potrwać do 20 minut.
 
 <a name="connect-to-rstudio-server"></a>
@@ -78,15 +78,16 @@ Jeśli wybierzesz opcję instalacji programu RStudio Server Community Edition w 
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **Opcja 2** — otwórz klaster usług ML w witrynie Azure Portal w obszarze **Szybkie linki** i kliknij pozycję **Pulpity nawigacyjne usług ML**.
-
-     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/dashboard-quick-links.png)
-
-    W obszarze **Pulpity nawigacyjne klastra** kliknij pozycję **R Studio Server**.
+* **Opcja 2** — witryna Azure Portal.
+Z poziomu portalu:
+  1. Wybierz **wszystkich usług** menu po lewej stronie.
+  2. W obszarze **ANALYTICS**, wybierz opcję **klastry HDInsight**.
+  3. Wybierz nazwę klastra z **klastry HDInsight** strony.
+  4. Z **pulpity nawigacyjne usługi ML**, wybierz opcję **programu R Studio server**. 
 
     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Niezależnie od wybranej metody, pierwsze logowanie wymaga dwukrotnego uwierzytelnienia.  Po wyświetleniu pierwszego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika administratora klastra* i *hasło*. Po wyświetleniu drugiego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika protokołu SSH* i *hasło*. Podczas kolejnych logowań będą wymagane tylko poświadczenia protokołu SSH.
 
 Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekranu:
@@ -221,11 +222,11 @@ Aby zautomatyzować tworzenie klastra usług ML w usłudze HDInsight, możesz u�
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](../hdinsight-administer-use-portal-linux.md#create-clusters).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób tworzenia nowego klastra usług ML w usłudze Azure HDInsight oraz podstawy korzystania z konsoli języka R w sesji protokołu SSH. W poniższych artykułach opisano inne sposoby korzystania z usług ML w usłudze HDInsight oraz zarządzania nimi:
+W tym artykule przedstawiono sposób tworzenia nowego klastra usługi ML w usłudze Azure HDInsight i podstawy używania konsoli R w sesji SSH. W poniższych artykułach opisano inne sposoby korzystania z usług ML w usłudze HDInsight oraz zarządzania nimi:
 
 * [Submit jobs from R Tools for Visual Studio (Przesyłanie zadań z narzędzi R Tools for Visual Studio)](r-server-submit-jobs-r-tools-vs.md)
 * [Manage ML Services cluster on HDInsight (Zarządzanie klastrem usług ML w usłudze HDInsight)](r-server-hdinsight-manage.md)

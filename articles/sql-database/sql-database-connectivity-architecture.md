@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435722"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715906"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -26,7 +26,7 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 > [!IMPORTANT]
 > **[Nadchodzącą zmianą] Dla połączeń punkt końcowy usługi z serwerami usługi Azure SQL `Default` zachowanie łączności zmienia `Redirect`.**
 >
-> Zmiana obowiązuje już z 10 listopada 2019 dla regionu Brazylia Południowa i Europa Zachodnia. Wszystkie inne regiony zmiany będą obowiązywać od 2 stycznia 2019 r.
+> Zmiana obowiązuje już z 10 listopada 2018 dla regionu Brazylia Południowa i Europa Zachodnia. Wszystkie inne regiony zmiany będą obowiązywać od 2 stycznia 2019 r.
 >
 > Aby uniemożliwić łączność za pośrednictwem punktu końcowego usługi podziału w istniejących środowiskach, w wyniku tej zmiany, używamy telemetrii wykonaj następujące czynności:
 > - W przypadku serwerów, które zostanie wykryte, które były dostępne za pośrednictwem punktów końcowych usługi przed zmianą, firma Microsoft przełącznika typ połączenia na `Proxy`.

@@ -10,14 +10,14 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345360"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753082"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki Start: Używanie rozpoznawania mowy Bing interfejsu API REST
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API REST
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -66,7 +66,7 @@ Przykłady usługi identyfikatory URI są wymienione w poniższej tabeli.
 | Tryb rozpoznawania  | Język | Format danych wyjściowych | Identyfikator URI usługi |
 |---|---|---|---|
 | `interactive` | pt-BR | Domyślne | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | pl-PL | Szczegółowy |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `conversation` | en-US | Szczegółowy |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | fr-FR | Proste | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
@@ -76,8 +76,8 @@ Przykłady usługi identyfikatory URI są wymienione w poniższej tabeli.
 
 Następujące pola musi być ustawiona w nagłówku żądania:
 
-- `Ocp-Apim-Subscription-Key`: Za każdym razem, należy wywołać usługę, należy przekazać swój klucz subskrypcji w `Ocp-Apim-Subscription-Key` nagłówka. Usługa rozpoznawania mowy obsługuje również operacji związanych z autoryzacją tokeny zamiast kluczy subskrypcji. Aby uzyskać więcej informacji, zobacz [uwierzytelniania](../How-to/how-to-authentication.md).
-- `Content-type``Content-type` Opisuje format i kodera-dekodera audio strumienia. Obecnie tylko plik WAV i PCM Mono 16000 kodowanie jest obsługiwane. Wartość Content-type ten format jest `audio/wav; codec=audio/pcm; samplerate=16000`.
+- `Ocp-Apim-Subscription-Key`: Za każdym razem, należy wywołać usługę, należy przekazać swój klucz subskrypcji w `Ocp-Apim-Subscription-Key` nagłówka. Usługa rozpoznawania mowy obsługuje również operacji związanych z autoryzacją tokeny zamiast kluczy subskrypcji. Aby uzyskać więcej informacji, zobacz [Authentication](../How-to/how-to-authentication.md) (Uwierzytelnianie).
+- `Content-type`: `Content-type` Opisuje format i kodera-dekodera audio strumienia. Obecnie tylko plik WAV i PCM Mono 16000 kodowanie jest obsługiwane. Wartość Content-type ten format jest `audio/wav; codec=audio/pcm; samplerate=16000`.
 
 Pole `Transfer-Encoding` jest opcjonalne. Jeśli to pole jest ustawiona na `chunked`, audio mogą być skalowane na małe fragmenty. Aby uzyskać więcej informacji, zobacz [transferu pakietowego](../How-to/how-to-chunked-transfer.md).
 
@@ -100,7 +100,7 @@ Poniższy przykład pokazuje, jak wysyłać żądań rozpoznawania mowy punkty k
 > [!NOTE]
 > Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -135,7 +135,7 @@ W przykładzie użyto programu curl w systemie Linux przy użyciu programu bash.
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 HttpWebRequest request = null;
@@ -184,7 +184,7 @@ Po przetworzeniu żądania, usługa rozpoznawania mowy zwraca wyniki do odpowied
 
 Poniższy fragment kodu przedstawia przykład jak odpowiedzi może być odczytany ze strumienia.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```Powershell
 # show the response in JSON format
@@ -199,7 +199,7 @@ W tym przykładzie curl bezpośrednio zwraca komunikat odpowiedzi w ciągu. Jeś
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 /*
