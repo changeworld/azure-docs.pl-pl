@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034641"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789504"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -36,6 +36,7 @@ ms.locfileid: "47034641"
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -67,6 +68,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
 * Uwaga SAP [2243692] zawiera informacje o licencjonowaniu SAP, w systemie Linux na platformie Azure.
 * Uwaga SAP [1984787] zawiera ogólne informacje o systemie SUSE Linux Enterprise Server 12.
 * Uwaga SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów rozszerzenia platformy Azure Enhanced Monitoring dla rozwiązania SAP.
+* Uwaga SAP [401162] zawiera informacje na temat sposobu uniknięcia "adres już w użyciu" podczas konfigurowania replikacji systemu HANA.
 * [WIKI społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane informacje o SAP dla systemu Linux.
 * [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux] [ planning-guide] przewodnik.
@@ -84,8 +86,8 @@ Aby osiągnąć wysoką dostępność, SAP HANA jest zainstalowany na dwie maszy
 
 Używa ustawień replikacji systemu SAP HANA dedykowanej wirtualnej nazwy hosta i wirtualne adresy IP. Na platformie Azure modułu równoważenia obciążenia jest wymagany do użycia wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia:
 
-* Konfiguracja frontonu: adres IP 10.0.0.13 hn1-db
-* Konfiguracja zaplecza: podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią replikacji systemu HANA
+* Konfiguracja frontonu: Adres IP 10.0.0.13 hn1-db
+* Konfiguracja zaplecza: Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią replikacji systemu HANA
 * Port sondy: Port 62503
 * Reguły równoważenia obciążenia: 30313 TCP, 30315 TCP, 30317 TCP
 
@@ -103,13 +105,13 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
     Szablon bazy danych umożliwia utworzenie reguły równoważenia obciążenia dla tylko bazy danych. Osiągnięcia zbieżności szablon tworzy również reguł równoważenia obciążenia dla ASCS/SCS i wystąpienia Wywołujących (tylko system Linux). Jeśli planujesz zainstalowanie systemu SAP NetWeaver i chcesz zainstalować wystąpienie ASCS/SCS na tych samych komputerach, należy użyć [zbieżności szablonu][template-converged].
 
 1. Wprowadź następujące parametry:
-    - **Identyfikator systemu SAP**: Wprowadź identyfikator systemu SAP w systemie SAP, którą chcesz zainstalować. Ten identyfikator jest używany jako prefiks dla zasobów, które są wdrażane.
-    - **Stos typu**: (ten parametr dotyczy tylko wtedy, gdy używasz szablonu konwergentnej.) Wybierz typ stos oprogramowania SAP NetWeaver.
+    - **Identyfikator systemu SAP**: Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Ten identyfikator jest używany jako prefiks dla zasobów, które są wdrażane.
+    - **Stos typu**: (Ten parametr dotyczy tylko wtedy, gdy używasz szablonu konwergentnej.) Wybierz typ stos oprogramowania SAP NetWeaver.
     - **Typ systemu operacyjnego**: Wybierz jeden z dystrybucje systemu Linux. W tym przykładzie wybierz **systemu SLES 12**.
     - **Typ bazy danych**: Wybierz **HANA**.
-    - **Rozmiar systemu SAP**: Wprowadź numer punktu SAP, w których nowy system będzie zapewnienie. Jeśli nie masz pewności ile protokoły SAP wymaga systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
+    - **Rozmiar systemu SAP**: Wprowadź liczbę protokoły SAP, których zamierza zapewnić nowego systemu. Jeśli nie masz pewności ile protokoły SAP wymaga systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
     - **Dostępność systemu**: Wybierz **HA**.
-    - **Nazwa użytkownika administratora i hasło administratora**: tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
+    - **Nazwa użytkownika administratora i hasło administratora**: Tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
     - **Nowej lub istniejącej podsieci**: Określa, czy należy utworzyć nową sieć wirtualną i podsieć lub użyć istniejącej podsieci. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejące**.
     - **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >**.
 
@@ -269,7 +271,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]**  Konfigurowanie układ dysku: **zwykłych dysków**.
+1. **[A]**  Konfigurowanie układ dysku: **Zwykłe dyski**.
 
    Pokaz systemów można umieścić HANA plików danych i dziennika na jednym dysku. Tworzenie partycji na /dev/disk/azure/scsi1/lun0 i sformatuj go przy użyciu xfs:
 
@@ -314,31 +316,31 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 Aby zainstalować replikacji systemu SAP HANA, wykonaj rozdziału 4 [przewodnik scenariusz SAP HANA SR wydajności zoptymalizowane pod kątem](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/).
 
 1. **[A]**  Uruchom **hdblcm** program z dysku DVD platformy HANA. Wprowadź następujące wartości w wierszu:
-   * Wybierz opcję instalacji: wprowadź **1**.
-   * Wybierz dodatkowe składniki do instalacji: wprowadź **1**.
-   * Wprowadź ścieżkę instalacji [/ hana/udostępnione]: wybierz opcję Wprowadź.
-   * Wprowadź nazwę hosta lokalnego [.]: Wybierz należy wprowadzić.
-   * Czy chcesz dodać kolejne hosty systemu? (t/n) [n]: Wprowadź Select.
+   * Wybierz opcję instalacji: Wprowadź **1**.
+   * Wybierz dodatkowe składniki do instalacji: Wprowadź **1**.
+   * Wprowadź ścieżkę instalacji [/ hana/udostępnione]: Wybierz opcję Wprowadź.
+   * Wprowadź nazwę hosta lokalnego [.]: Wybierz opcję Wprowadź.
+   * Czy chcesz dodać kolejne hosty systemu? (t/n) [n]: Wybierz opcję Wprowadź.
    * Wprowadź identyfikator systemu HANA SAP: Wprowadź identyfikator SID HANA, na przykład: **HN1**.
    * Wprowadź numer wystąpienia [00]: Wprowadź numer wystąpienie oprogramowania HANA. Wprowadź **03** możesz użyć szablonu platformy Azure lub po wdrożeniu ręcznym części tego artykułu.
-   * Wybierz tryb bazy danych / wprowadź indeks [1]: Wprowadź Select.
-   * Użycie systemu wybierz / Wprowadź indeks [4]: Wybierz wartość użycia systemu.
-   * Wprowadź lokalizację woluminów danych [/ hana/data/HN1]: wybierz opcję Wprowadź.
-   * Wprowadź lokalizację woluminy dziennika [/ hana/log/HN1]: wybierz opcję Wprowadź.
-   * Ogranicza maksymalny przydział pamięci? [n]: Wprowadź Select.
-   * Wprowadź nazwę hosta certyfikat dla hosta "..." [...]: Wprowadź select.
+   * Wybierz tryb bazy danych / wprowadź indeks [1]: Wybierz opcję Wprowadź.
+   * Użycie systemu wybierz / Wprowadź indeks [4]: Wybierz wartość obciążenie systemu.
+   * Wprowadź lokalizację woluminów danych [/ hana/data/HN1]: Wybierz opcję Wprowadź.
+   * Wprowadź lokalizację woluminy dziennika [/ hana/log/HN1]: Wybierz opcję Wprowadź.
+   * Ogranicza maksymalny przydział pamięci? [n]: Wybierz opcję Wprowadź.
+   * Wprowadź nazwę hosta certyfikat dla hosta "..." [...]: Wybierz opcję Wprowadź.
    * Wprowadź użytkownika agenta hosta SAP (sapadm) hasło: Wprowadź hasło użytkownika agenta hosta.
    * Upewnij się, SAP hosta agenta użytkownika (sapadm) hasło: Wprowadź hasło użytkownika agenta hosta ponownie, aby potwierdzić.
    * Wprowadź administratora systemu (hdbadm) hasło: Wprowadź hasło administratora systemu.
    * Upewnij się, Administrator systemu (hdbadm) hasło: Wprowadź hasło administratora systemu, ponownie, aby potwierdzić.
-   * Administrator systemu ENTER główna katalogu [/ usr/sap/HN1/głównej]: wybierz opcję Wprowadź.
-   * Wprowadź powłoki logowania administratora systemu [/ bin/sh]: wybierz opcję Wprowadź.
-   * Wprowadź identyfikator użytkownika administratora systemu [1001]: Wybierz należy wprowadzić.
-   * Wprowadź identyfikator dla grupy użytkowników (sapsys) [79]: wybierz opcję Wprowadź.
-   * Wprowadź hasło użytkownika bazy danych (SYSTEM): Wprowadź hasło użytkownika bazy danych.
-   * Potwierdź hasło użytkownika bazy danych (SYSTEM): Wprowadź hasło użytkownika bazy danych ponownie, aby potwierdzić.
-   * Uruchom ponownie system po ponownym uruchomieniu komputera? [n]: Wprowadź Select.
-   * Chcesz kontynuować? (t/n): Sprawdzanie poprawności podsumowania. Wprowadź **y** aby kontynuować.
+   * Wprowadź katalog macierzysty Administrator systemu [/ usr/sap/HN1/głównej]: Wybierz opcję Wprowadź.
+   * Wprowadź powłoki logowania administratora systemu [/ bin/sh]: Wybierz opcję Wprowadź.
+   * Wprowadź identyfikator użytkownika administratora systemu [1001]: Wybierz opcję Wprowadź.
+   * Wprowadź identyfikator dla grupy użytkowników (sapsys) [79]: Wybierz opcję Wprowadź.
+   * Wprowadź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych.
+   * Potwierdź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych ponownie, aby potwierdzić.
+   * Uruchom ponownie system po ponownym uruchomieniu komputera? [n]: Wybierz opcję Wprowadź.
+   * Czy chcesz kontynuować? (t/n): Sprawdź poprawność podsumowania. Wprowadź **y** aby kontynuować.
 
 1. **[A]**  Uaktualnienia tego agenta hosta SAP.
 
@@ -688,7 +690,7 @@ Uruchom wszystkie przypadki testowe, które są wymienione w przewodniku zoptyma
 Następujące testy są kopię opisy testu SAP HANA SR wydajności zoptymalizowane pod kątem scenariusza SUSE Linux Enterprise Server przewodnik SAP aplikacji 12 z dodatkiem SP1. Dla zaktualizowanej wersji zawsze także zapoznaj się z przewodnikiem, sam. Zawsze upewnij się, HANA jest synchronizowany przed rozpoczęciem badania, a także upewnij się, że konfiguracja program Pacemaker jest prawidłowa.
 
 W następujących opisach testu przyjęto założenie, że PREFER_SITE_TAKEOVER = "true" i AUTOMATED_REGISTER = "false".
-Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i zależą od stanu zakończenia poprzednich testów.
+UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i zależą od stanu zakończenia poprzednich testów.
 
 1. TEST 1: ZATRZYMAJ PODSTAWOWEJ BAZY DANYCH W WĘŹLE 1
 
@@ -731,7 +733,7 @@ Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. TEST 2: ZATRZYMYWANIE PODSTAWOWEJ BAZY DANYCH W WĘŹLE 2
+1. TEST 2: ZATRZYMAJ PODSTAWOWEJ BAZY DANYCH W WĘŹLE 2
 
    Stan zasobu przed rozpoczęciem testu:
 
@@ -854,7 +856,7 @@ Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. TEST 5: AWARII LOKACJI GŁÓWNEJ WĘZEŁ (WĘZEŁ 1)
+1. TEST 5: LOKACJA GŁÓWNA AWARII WĘZŁA (WĘZEŁ 1)
 
    Stan zasobu przed rozpoczęciem testu:
 
@@ -905,7 +907,7 @@ Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. TESTOWANIE 6: AWARII LOKACJI DODATKOWEJ WĘZEŁ (WĘZEŁ 2)
+1. TESTOWANIE 6: LOKACJA DODATKOWA AWARII WĘZŁA (WĘZEŁ 2)
 
    Stan zasobu przed rozpoczęciem testu:
 
@@ -956,7 +958,7 @@ Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. TEST 7: ZATRZYMAJ POMOCNICZEJ BAZY DANYCH W WĘŹLE 2
+1. TESTOWANIE 7: ZATRZYMAJ POMOCNICZEJ BAZY DANYCH W WĘŹLE 2
 
    Stan zasobu przed rozpoczęciem testu:
 
@@ -1030,7 +1032,7 @@ Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. TESTOWANIE 9: BAZY DANYCH HANA DODATKOWEJ URUCHOMIONY WĘZEŁ (WĘZEŁ 2) AWARII LOKACJI DODATKOWEJ
+1. TESTOWANIE 9: AWARII BAZY DANYCH HANA DODATKOWEJ URUCHOMIONY WĘZEŁ (WĘZEŁ 2) LOKACJI DODATKOWEJ
 
    Stan zasobu przed rozpoczęciem testu:
 

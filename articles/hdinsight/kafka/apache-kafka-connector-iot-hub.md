@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315431"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608634"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Korzystanie z platformy Apache Kafka w HDInsight z usługą Azure IoT Hub
 
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji na temat interfejsu API połączenia, zobacz [ h
 
 2. Aby przekazać plik JAR z węzłem krawędzi Twojej platformy kafka w klastrze HDInsight, użyj następującego polecenia:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Zastąp `sshuser` przy użyciu konta użytkownika SSH dla klastra usługi HDInsight. Zastąp `new-edgenode` nazwą węzła krawędzi. Zastąp `clustername` nazwą klastra. Aby uzyskać więcej informacji na temat punktu końcowego SSH dla węzła krawędzi, zobacz [używane węzłów brzegowych za pomocą HDInsight](../hdinsight-apps-use-edge-node.md#access-an-edge-node) dokumentu.
 
     ```bash
@@ -69,10 +69,10 @@ Aby uzyskać więcej informacji na temat interfejsu API połączenia, zobacz [ h
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-> [!TIP]
+> [!TIP]  
 > Jeśli napotkasz problemy z pozostałą częścią kroki opisane w tym dokumencie podczas korzystania z pliku JAR wstępnie skompilowane, spróbuj tworzenia pakietu ze źródła.
 >
-> Aby utworzyć łącznik, musi mieć środowiska programowania Scala, za pomocą [narzędzie kompilacji Scala](http://www.scala-sbt.org/).
+> Aby utworzyć łącznik, musi mieć środowiska programowania Scala, za pomocą [narzędzie kompilacji Scala](https://www.scala-sbt.org/).
 >
 > 1. Pobierz źródło dla łącznika z [ https://github.com/Azure/toketi-kafka-connect-iothub/ ](https://github.com/Azure/toketi-kafka-connect-iothub/) do swojego środowiska projektowego.
 >
@@ -132,7 +132,7 @@ Z połączenia SSH z węzłem krawędzi wykonaj następujące kroki, aby skonfig
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Ta zmiana umożliwia testowanie za pomocą producenta konsoli dołączone do platformy Kafka. Mogą być potrzebne konwertery różnych innych producentów i konsumentów. Aby uzyskać informacje na temat korzystania z innych konwertera wartości, zobacz [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
     * Dodaj wiersz na końcu pliku który zawiera następujący tekst:
@@ -141,7 +141,7 @@ Z połączenia SSH z węzłem krawędzi wykonaj następujące kroki, aby skonfig
         consumer.max.poll.records=10
         ```
 
-        > [!TIP]
+        > [!TIP]  
         > Ta zmiana ma na celu uniknąć przekroczeń limitu czasu w łączniku ujścia poprzez ograniczenie do 10 rekordów, w czasie. Aby uzyskać więcej informacji, zobacz [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
 6. Aby zapisać plik, użyj __Ctrl + X__, __Y__, a następnie __Enter__.
@@ -178,7 +178,7 @@ Aby pobrać IoT hub informacje używane przez łącznik, użyj następujących k
             * __Punkt końcowy zgodny z Centrum zdarzeń__
             * __Partycje__
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Wartość punktu końcowego w portalu może zawierać dodatkowy tekst, który nie jest potrzebne w tym przykładzie. Wyodrębnij tekst, który pasuje do tego wzorca `sb://<randomnamespace>.servicebus.windows.net/`.
 
     * __Z [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, użyj następującego polecenia:
@@ -239,14 +239,14 @@ Aby skonfigurować źródła do pracy z Centrum IoT Hub, wykonaj następujące c
 
     W edytorze należy znaleźć i zmienić następujące wpisy:
 
-    * `Kafka.Topic=PLACEHOLDER`: Zastąp `PLACEHOLDER` z `iotin`. Komunikatów odebranych z usługi IoT hub są umieszczane w `iotin` tematu.
+    * `Kafka.Topic=PLACEHOLDER`: Zastąp element  pytaniem `iotin`. Komunikatów odebranych z usługi IoT hub są umieszczane w `iotin` tematu.
     * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Zastąp `PLACEHOLDER` o nazwie zgodnego z Centrum zdarzeń.
     * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Zastąp `PLACEHOLDER` przy użyciu punktu końcowego zgodnego z Centrum zdarzeń.
     * `IotHub.Partitions=PLACEHOLDER`: Zastąp `PLACEHOLDER` z liczbą partycji z poprzednich kroków.
-    * `IotHub.AccessKeyName=PLACEHOLDER`: Zastąp `PLACEHOLDER` z `service`.
+    * `IotHub.AccessKeyName=PLACEHOLDER`: Zastąp element  pytaniem `service`.
     * `IotHub.AccessKeyValue=PLACEHOLDER`: Zastąp `PLACEHOLDER` za pomocą klucza podstawowego `service` zasad.
     * `IotHub.StartType=PLACEHOLDER`: Zastąp `PLACEHOLDER` z datę w czasie UTC. Ta data jest, gdy łącznik, który rozpoczyna się sprawdzanie komunikatów. Format daty jest `yyyy-mm-ddThh:mm:ssZ`.
-    * `BatchSize=100`: Zastąp `100` z `5`. Ta zmiana powoduje, że łącznik Aby odczytać wiadomości platformy Kafka po pięciu nowych komunikatów w usłudze IoT hub.
+    * `BatchSize=100`: Zastąp element  pytaniem `5`. Ta zmiana powoduje, że łącznik Aby odczytać wiadomości platformy Kafka po pięciu nowych komunikatów w usłudze IoT hub.
 
     Aby uzyskać przykładową konfigurację, zobacz [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
@@ -272,7 +272,7 @@ Do skonfigurowania połączenia odbioru do pracy z Centrum IoT Hub, wykonaj nast
 
     W edytorze należy znaleźć i zmienić następujące wpisy:
 
-    * `topics=PLACEHOLDER`: Zastąp `PLACEHOLDER` z `iotout`. Komunikatów zapisywanych `iotout` tematu są przekazywane do usługi IoT hub.
+    * `topics=PLACEHOLDER`: Zastąp element  pytaniem `iotout`. Komunikatów zapisywanych `iotout` tematu są przekazywane do usługi IoT hub.
     * `IotHub.ConnectionString=PLACEHOLDER`: Zastąp `PLACEHOLDER` parametrami połączenia dla `service` zasad.
 
     Aby uzyskać przykładową konfigurację, zobacz [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
@@ -298,7 +298,7 @@ nnect.IotHubSourceTask:39)
 org.apache.kafka.connect.runtime.WorkerSourceTask:356)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Po uruchomieniu programu connector, może zostać wyświetlony kilka ostrzeżeń. Ostrzeżenia te nie powodują problemów z odbieranie komunikatów z usługi IoT hub.
 
 Aby zatrzymać łącznika, użyj __klawisze Ctrl + C__.
@@ -320,7 +320,7 @@ IotHubSinkTask:47)
 t.runtime.WorkerSinkTask:262)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Po uruchomieniu łącznika, możesz zauważyć kilka ostrzeżeń. Możesz je bezpiecznie zignorować.
 
 Aby wysyłać komunikaty za pośrednictwem łącznika, wykonaj następujące kroki:
@@ -332,7 +332,7 @@ Aby wysyłać komunikaty za pośrednictwem łącznika, wykonaj następujące kro
     ```
 2. Aby wysyłać komunikaty do `iotout` tematu, użyj następującego polecenia:
 
-    > [!WARNING]
+    > [!WARNING]  
     > Ponieważ jest to nowe połączenie SSH `$KAFKABROKERS` zmiennej nie zawiera żadnych informacji. Aby ustawić go, użyj jednej z następujących metod:
     >
     > * Użyj pierwszych trzech kroków w [Konfigurowanie platformy Apache Kafka](#configure-apache-kafka) sekcji.
@@ -346,7 +346,7 @@ Aby wysyłać komunikaty za pośrednictwem łącznika, wykonaj następujące kro
 
 3. Aby wysłać komunikat do Twojego urządzenia, Wklej dokument JSON sesji SSH dla `kafka-console-producer`.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Należy ustawić wartość z `"deviceId"` wpis, aby identyfikator urządzenia. W poniższym przykładzie nosi nazwę urządzenia `fakepi`:
 
     ```text
