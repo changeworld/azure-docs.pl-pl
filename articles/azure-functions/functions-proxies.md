@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 7c1d3adec6fd718df12abde1b56a89e662de284e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538994"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017110"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Praca z serwerów proxy usługi Azure Functions
 
@@ -47,13 +47,13 @@ Za pomocą usługi Azure Functions Proxies można modyfikować żądań i odpowi
 
 Domyślnie żądania zaplecza jest inicjowany jako kopię oryginalne żądanie. Oprócz skonfigurowania adresu URL zaplecza, można wprowadzić zmiany do metody HTTP, nagłówki i parametry ciągu zapytania. Zmodyfikowane wartości może odwoływać się [ustawienia aplikacji] i [Parametry z oryginalne żądanie klienta].
 
-Żądania zaplecza można modyfikować w portalu expading *przesłonięcie żądania* sekcji na stronie szczegółów serwera proxy. 
+Żądania zaplecza można modyfikować w portalu, rozwijając *przesłonięcie żądania* sekcji na stronie szczegółów serwera proxy. 
 
 ### <a name="modify-response"></a>Modyfikowanie odpowiedzi
 
 Domyślnie odpowiedź klienta jest inicjowany jako kopię odpowiedzi zaplecza. Można wprowadzić zmiany, aby kod stanu odpowiedzi, frazę przyczyny, nagłówki i treść. Zmodyfikowane wartości może odwoływać się [ustawienia aplikacji], [Parametry z oryginalne żądanie klienta], i [Parametry z odpowiedzi zaplecza].
 
-Żądania zaplecza można modyfikować w portalu expading *przesłonięcie odpowiedzi* sekcji na stronie szczegółów serwera proxy. 
+Żądania zaplecza można modyfikować w portalu, rozwijając *przesłonięcie odpowiedzi* sekcji na stronie szczegółów serwera proxy. 
 
 ## <a name="using-variables"></a>Używanie zmiennych
 
@@ -176,12 +176,13 @@ Zachowanie serwera proxy mogą być kontrolowane przez kilka ustawień aplikacji
 
 ### <a name="reservedChars"></a> Zastrzeżone znaki (formatowanie ciągu)
 
-Serwery proxy odczytywać wszystkie ciągi bez interpretacji, z wyjątkiem nawiasów klamrowych i ukośniki
+Serwery proxy odczytywać wszystkie ciągi poza JSON plików, przy użyciu \ jako symbol ucieczki. Serwery proxy również interpretowania nawiasów klamrowych. Zobacz pełny zestaw poniższych przykładach.
 
 |Znak|Znak ucieczki|Przykład|
 |-|-|-|
 |{lub}|{{lub}}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>Zdefiniuj obiekt requestOverrides
 

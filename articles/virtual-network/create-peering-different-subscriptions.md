@@ -1,13 +1,10 @@
 ---
-title: Tworzenie sieci wirtualnej platformy Azure komunikację równorzędną — Menedżer zasobów — różne subskrypcje | Dokumentacja firmy Microsoft
+title: Tworzenie sieci wirtualnej platformy Azure komunikację równorzędną — Menedżer zasobów — różne subskrypcje
+titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak utworzyć sieć wirtualną, komunikacja równorzędna między sieciami wirtualnymi utworzonymi za pomocą usługi Resource Manager, które istnieją w różnych subskrypcjach platformy Azure.
 services: virtual-network
 documentationcenter: ''
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 04ed8e0e99f0aba4ca067700f8a651b6d6c52423
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f06f0b5392ebb60cd852d3c2eb201478b31ae167
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727481"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014970"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Tworzenie, wirtualne sieci równorzędne — różne subskrypcje usługa Resource Manager
 
@@ -55,7 +52,7 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
     - **Zakres adresów podsieci**: *10.0.0.0/24*
     - **Subskrypcja**: Wybierz subskrypcję A.
     - **Grupa zasobów**: Wybierz **Utwórz nową** i wprowadź *myResourceGroupA*
-    - **Lokalizacja**: *wschodnie stany USA*
+    - **Lokalizacja**: *Wschodnie stany USA*
 4. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Wybierz **myVnetA** , gdy pojawia się w wynikach wyszukiwania. 
 5. Wybierz **kontrola dostępu (IAM)** z pionowy listy opcji po lewej stronie.
 6. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **+ Dodaj przypisanie roli**.
@@ -70,9 +67,9 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
     - **Przestrzeń adresowa**: *10.1.0.0/16*
     - **Nazwa podsieci**: *domyślne*
     - **Zakres adresów podsieci**: *10.1.0.0/24*
-    - **Subskrypcja**: Wybierz subskrypcję B.
+    - **Subskrypcja**: Wybieranie subskrypcji B.
     - **Grupa zasobów**: Wybierz **Utwórz nową** i wprowadź *myResourceGroupB*
-    - **Lokalizacja**: *wschodnie stany USA*
+    - **Lokalizacja**: *Wschodnie stany USA*
 
 13. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetB*. Wybierz **myVnetB** , gdy pojawia się w wynikach wyszukiwania.
 14. W obszarze **myVnetB**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
@@ -84,10 +81,10 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
 20. W obszarze **myVnetA — komunikacja równorzędna**, wybierz opcję **+ Dodaj**
 21. W obszarze **Dodaj komunikację równorzędną**, wprowadź lub wybierz poniższe opcje, a następnie wybierz **OK**:
      - **Nazwa**: *myVnetAToMyVnetB*
-     - **Model wdrożenia sieci wirtualnej**: Wybierz **usługi Resource Manager**.
-     - **Wiem, identyfikator zasobu**: Zaznacz to pole wyboru.
+     - **Model wdrożenia sieci wirtualnej**:  Wybierz opcję **Menedżer zasobów**.
+     - **Wiem, identyfikator zasobu**: zaznacz to pole wyboru.
      - **Identyfikator zasobu**: Podaj identyfikator zasobu z kroku 14.
-     - **Zezwalaj na dostęp do sieci wirtualnej:** upewnij się, że **włączone** jest zaznaczone.
+     - **Zezwalaj na dostęp do sieci wirtualnej:** Upewnij się, że **włączone** jest zaznaczone.
     Żadne inne ustawienia są używane w ramach tego samouczka. Aby dowiedzieć się więcej o wszystkich ustawieniach komunikacji równorzędnej, przeczytaj [Zarządzanie komunikacja równorzędna sieci wirtualnych](virtual-network-manage-peering.md#create-a-peering).
 22. Komunikacji równorzędnej, możesz utworzyć pojawia się z krótkim czasie oczekiwania, po wybraniu **OK** w poprzednim kroku. **Zainicjowano** znajduje się w **stan komunikacji RÓWNORZĘDNEJ** kolumny **myVnetAToMyVnetB** komunikacji równorzędnej zostanie utworzony. Została połączona myVnetA do myVnetB, ale teraz musi komunikacji równorzędnej myVnetB do myVnetA. Komunikacji równorzędnej muszą być tworzone w obu kierunkach, aby umożliwić zasobami w sieciach wirtualnych do komunikowania się ze sobą.
 23. Wyloguj się z portalu jako użytkownik a, a następnie zaloguj się jako Użytkownik_b.
@@ -285,7 +282,7 @@ Jeśli sieci wirtualne należą do różnych subskrypcji, a subskrypcje będą s
 
 3. Zaloguj się na platformie Azure jako Użytkownik_a i wdrażanie jej za pomocą szablonu [portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine), lub [wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Określ nazwę pliku, który przykładowego tekstu json został zapisany w kroku 2, aby.
 4. Skopiuj kod json przykładu w kroku 2 do pliku na komputerze i wprowadź zmiany do wierszy, które zaczynają się od:
-    - **Nazwa**: zmiana *myVnetA/myVnetAToMyVnetB* do *myVnetB/myVnetBToMyVnetA*.
+    - **Nazwa**: Zmiana *myVnetA/myVnetAToMyVnetB* do *myVnetB/myVnetBToMyVnetA*.
     - **Identyfikator**: Zastąp `<subscription ID>` przy użyciu Identyfikatora subskrypcji i zmiany jego Użytkownik_b *myVnetB* do *myVnetA*.
 5. Wykonaj krok 3 ponownie zalogować do platformy Azure jako Użytkownik_b.
 6. **Opcjonalnie**: Chociaż nie jest objęty tworzenia maszyn wirtualnych w ramach tego samouczka, można utworzyć maszynę wirtualną w każdej sieci wirtualnej i nawiązać połączenie z jednej maszyny wirtualnej do drugiej strony, aby zweryfikować połączenie.

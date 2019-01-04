@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f2d780900a0cd24f2d70499573a4055dc836ae0b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091053"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013574"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Jak Odczyt lub zapis partycjonowania danych w usłudze Azure Data Factory
 
@@ -180,5 +179,5 @@ Definicja potoku:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać szczegółowy przewodnik, jak utworzyć fabrykę danych, która zawiera potok, zobacz [Szybki Start: tworzenie fabryki danych](quickstart-create-data-factory-powershell.md). 
+Aby uzyskać szczegółowy przewodnik, jak utworzyć fabrykę danych, która zawiera potok, zobacz [Szybki Start: Tworzenie fabryki danych](quickstart-create-data-factory-powershell.md). 
 

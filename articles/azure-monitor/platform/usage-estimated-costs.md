@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 072201dd552f5d68a9b6621b2ca7c83acd76a1f5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440527"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001621"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
 
@@ -22,7 +22,7 @@ ms.locfileid: "53440527"
 > W tym artykule opisano sposób wyświetlania użycie i szacunkowe koszty między wiele funkcji monitorowania platformy Azure dla różnych modeli cen.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
 > - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](../../azure-monitor/platform/manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
 > - [Analizowanie użycia danych w usłudze Log Analytics](../../azure-monitor/platform/data-usage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
-> - [Zarządzanie cenami i ilością danych w usłudze Application Insights](../../application-insights/app-insights-pricing.md) opisano, jak i analizowanie użycia danych w usłudze Application Insights.
+> - [Zarządzanie cenami i ilością danych w usłudze Application Insights](../../azure-monitor/app/pricing.md) opisano, jak i analizowanie użycia danych w usłudze Application Insights.
 
 W Centrum monitora w witrynie Azure Portal **użycie i szacunkowe koszty** stronie wyjaśniamy użycia podstawowej platformy monitorowania funkcji, takich jak [, alertów metryk, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [usługi Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów na plany cenowe dostępne przed kwietnia 2018 r. obejmuje to także użycie usługi Log Analytics, które zostały zakupione w ramach wgląd w dane i Analytics oferuje.
 
