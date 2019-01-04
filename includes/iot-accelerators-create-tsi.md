@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8c114ed137089e70899e601ebdc1d4d39f562601
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ab3d4cbe8a200e91d02177e49446065cd9c228df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43383303"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609076"
 ---
 ## <a name="create-a-consumer-group"></a>Utwórz grupę odbiorców
 
@@ -41,7 +41,7 @@ Następujące kroki umożliwiają wiersza polecenia platformy Azure w usłudze A
 
 [Usługa Azure Time Series Insights](../articles/time-series-insights/time-series-insights-overview.md) jest w pełni zarządzana usługa analizy, magazynowania i wizualizacji związanych z zarządzaniem danymi szeregów czasowych w skali IoT w chmurze. Aby utworzyć nowego środowiska usługi Time Series Insights:
 
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wybierz **Utwórz zasób** > **Internet of Things** > **usługi Time Series Insights**:
 
@@ -55,7 +55,7 @@ Następujące kroki umożliwiają wiersza polecenia platformy Azure w usłudze A
     | Subskrypcja | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
     | Grupa zasobów | **Symulacja contoso**. Użyj nazwy Twój akcelerator rozwiązań. |
     | Lokalizacja | W tym przykładzie użyto **wschodnie stany USA**. Utwórz swoje środowisko, w tym samym regionie, co akceleratorze symulacji urządzenia. |
-    | Sku |**S1** |
+    | SKU |**S1** |
     | Pojemność | **1** |
 
     ![Tworzenie usługi Time Series Insights](./media/iot-accelerators-create-tsi/new-time-series-insights-create.png)
@@ -84,7 +84,7 @@ Utwórz nowe źródło zdarzeń, aby nawiązać połączenie z Centrum IoT hub. 
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Źródło zdarzenia nazwy | Poniższy zrzut ekranu używa nazwy **contoso-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
-    | Źródło | **IoT Hub** |
+    | Element źródłowy | **IoT Hub** |
     | Opcja importu | **Użyj usługi IoT Hub z dostępnych subskrypcji** |
     | Identyfikator subskrypcji | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
     | Nazwa centrum iot | **Contoso simulation7d894**. Użyj nazwy Centrum IoT hub z Twój akcelerator rozwiązań symulacji urządzenia. |

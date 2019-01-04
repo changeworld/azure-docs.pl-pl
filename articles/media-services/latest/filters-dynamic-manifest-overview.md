@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: 05c089c0e92672b3602bd9c7bfb3263c56db76ef
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633303"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728044"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -40,14 +40,14 @@ W tym temacie opisano [pojęcia](#concepts) i [pokazuje filtrów definicje](#def
 
 ### <a name="dynamic-manifests"></a>O nazwie manifesty dynamiczne
 
-Usługa Media Services oferuje **manifestów dynamicznych** oparte na wstępnie zdefiniowane [filtry](#filters). Po zdefiniowaniu filtrów, klientów można ich używać do strumienia określonej wersji lub podrzędnych klipów wideo. Filtry mogą określić w adresie URL przesyłania strumieniowego. Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: Apple HTTP Live Streaming (HLS), MPEG-DASH i Smooth Streaming. 
+Usługa Media Services oferuje **manifestów dynamicznych** oparte na wstępnie zdefiniowane [filtry](#filters). Po zdefiniowaniu filtrów, klientów można ich używać do strumienia określonej wersji lub podrzędnych klipów wideo. Filtry mogą określić w adresie URL przesyłania strumieniowego. Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: Apple HTTP Live przesyłania strumieniowego (HLS), między innymi MPEG-DASH i Smooth Streaming. 
 
 W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
 
 |Protokół|Przykład|
 |---|---|
-|HLS W WERSJI 4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=myAccountFilter)`|
-|HLS W WERSJI 3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=myAccountFilter)`|
+|HLS W WERSJI 4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|HLS W WERSJI 3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -129,7 +129,7 @@ Użyj tej właściwości, za pomocą **filtry zasobów**. Nie zaleca się ustawi
 |**startTimestamp**|Ma zastosowanie do strumieni wideo na żądanie lub na żywo. Wartość stanowi punkt początkowy bezwzględne strumienia. Wartość jest zaokrąglana do najbliższej następnym uruchomieniu GOP.<br/><br/>Użyj **startTimestamp** i **endTimestamp** można przycięcia listy odtwarzania (manifest). Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 wygeneruje listy odtwarzania, która zawiera multimediów między StartTimestamp i EndTimestamp. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.|
 |**Skala czasu**|Ma zastosowanie do strumieni wideo na żądanie lub na żywo. Skala czasu używany przez sygnatury czasowe i czasów trwania określonym powyżej. Skala czasu domyślny to 10000000. Służy alternatywne skali czasu. Wartość domyślna to 10000000 SNS (kilkuset nanosekund).|
 
-### <a name="tracks"></a>Ścieżki
+### <a name="tracks"></a>ścieżki
 
 Należy określić listę warunków właściwość śledzenie filtru (FilterTrackPropertyConditions) podstawie, na którym ścieżki strumienia (na żywo lub wideo na żądanie) powinny zostać uwzględnione w manifeście utworzony dynamicznie. Filtry są połączone przy użyciu logicznych **i** i **lub** operacji.
 
@@ -206,7 +206,7 @@ Manifestów dynamicznych, umożliwia tworzenie profilów urządzeń takich jak a
 
 ![Odwzorowanie filtrowanie przykład][renditions2]
 
-W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości można dynamicznie umieszczone w dowolnej z następujących protokołów przesyłania strumieniowego: Smooth, HLS i MPEG DASH.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
+W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości można dynamicznie spakowane do żadnego z następujących protokołów: HLS, MPEG DASH i Smooth.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
 
 ![Filtrowania wyświetlania][renditions1]
 
@@ -216,7 +216,7 @@ Twoje zasoby mogą obejmować wiele języków audio, takich jak angielski, hiszp
 ![Język ścieżki filtrowania][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Przycinanie początek elementu zawartości
-W większości wydarzeń transmisji strumieniowej na żywo Operatorzy uruchomić niektóre testy przed rzeczywistego zdarzenia. Na przykład może obejmować plansz następująco przed rozpoczęciem zdarzenia: "Program rozpocznie się chwilowo". Jeśli program jest archiwizacji, testów i planszy danych również są archiwizowane i w prezentacji. Jednak te informacje nie być wyświetlane na klientach. Za pomocą manifestów dynamicznych możesz utworzyć filtr godziny rozpoczęcia i usuwanie niepożądanych danych z manifestu.
+W większości wydarzeń transmisji strumieniowej na żywo Operatorzy uruchomić niektóre testy przed rzeczywistego zdarzenia. Na przykład może być obejmują one plansz następująco przed rozpoczęciem zdarzenia: "Program rozpocznie chwilowo". Jeśli program jest archiwizacji, testów i planszy danych również są archiwizowane i w prezentacji. Jednak te informacje nie być wyświetlane na klientach. Za pomocą manifestów dynamicznych możesz utworzyć filtr godziny rozpoczęcia i usuwanie niepożądanych danych z manifestu.
 
 ![Przycinanie start][trim_filter]
 

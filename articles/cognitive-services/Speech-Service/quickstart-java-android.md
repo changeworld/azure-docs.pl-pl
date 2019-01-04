@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu SDK usługi Mowa'
+title: 'Szybki start: rozpoznawanie mowy, Java (Android) — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku Java w systemie Android przy użyciu zestawu SDK usługi Mowa
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219430"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090112"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Przewodnik Szybki start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -42,7 +42,7 @@ Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskry
 
    ![Zrzut ekranu kreatora Create New Project (Tworzenie nowego projektu)](media/sdk/qs-java-android-02-create-android-project.png)
 
-1. W oknie **Target Android Devices** (Docelowe urządzenia Android) wybierz tylko pozycję **Phone and Tablet** (Telefon i tablet). Na liście rozwijanej poniżej wybierz pozycję **API 23: Android 6.0 (Marshmallow)** i naciśnij przycisk **Next** (Dalej).
+1. W oknie **Target Android Devices** (Docelowe urządzenia Android) wybierz tylko pozycję **Phone and Tablet** (Telefon i tablet). Z poniższej listy rozwijanej wybierz pozycję **API 23: Android 6.0 (Marshmallow)** i wybierz przycisk **Dalej**.
 
    ![Zrzut ekranu kreatora Create New Project (Tworzenie nowego projektu)](media/sdk/qs-java-android-03-target-android-devices.png)
 
@@ -63,7 +63,7 @@ Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.1.0`.
 Zestaw Speech SDK dla systemu Android znajduje się w pakiecie pod nazwą [AAR (biblioteka Android)](https://developer.android.com/studio/projects/android-library) i zawiera niezbędne biblioteki oraz uprawnienia systemu Android wymagane do ich używania.
 Jest hostowany w repozytorium Maven znajdującym się pod adresem https://csspeechstorage.blob.core.windows.net/maven/.
 
-Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno Project Structure (Struktura projektu), wybierając kolejno pozycje **File (Plik)** > **Project Structure (Struktura projektu)** z paska menu programu Android Studio. W oknie Project Structure (Struktura projektu), wprowadź następujące zmiany: 
+Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno Project Structure (Struktura projektu), wybierając kolejno pozycje **File (Plik)** > **Project Structure (Struktura projektu)** z paska menu programu Android Studio. W oknie Project Structure (Struktura projektu), wprowadź następujące zmiany:
 
 1. Na liście po lewej stronie okna wybierz pozycję **Project** (Project). Edytuj ustawienia **Default Library Repository** (Domyślne repozytorium biblioteki), dodając przecinek i adres URL repozytorium Maven ujęty w pojedynczy cudzysłów. 'https://csspeechstorage.blob.core.windows.net/maven/'
 
@@ -118,7 +118,7 @@ Tekst i graficzne przedstawienie interfejsu użytkownika powinno teraz wygląda�
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * Metoda `onCreate` zawiera kod, który żąda uprawnień do mikrofonu i Internetu oraz inicjuje powiązanie z platformą natywną. Konfigurowanie powiązań z platformą natywną jest wymagane tylko raz. Należy to zrobić na początku, podczas inicjowania aplikacji.
-   
+
    * Metoda `onSpeechButtonClicked` oznacza, jak wspomniano wcześniej, procedurę obsługi naciskania przycisku. Naciśnięcie przycisku wyzwala transkrypcję mowy na tekst.
 
 1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.

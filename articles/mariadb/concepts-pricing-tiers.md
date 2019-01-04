@@ -3,21 +3,19 @@ title: Warstwy cenowe dla usługi Azure Database dla serwera MariaDB
 description: W tym artykule opisano warstw cenowych dla usługi Azure Database dla serwera MariaDB.
 author: jan-eng
 ms.author: janeng
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 561244efd653294694cc16a1115962473e9a7cec
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249032"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544587"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database dla serwera MariaDB warstw cenowych
 
-Można utworzyć usługi Azure Database dla serwera MariaDB w jednym z trzech różnych warstw cenowych: podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera MariaDB. Serwer może zawierać jeden lub wiele baz danych.
+W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Database dla serwera MariaDB: Podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera MariaDB. Serwer może zawierać jeden lub wiele baz danych.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
@@ -60,9 +58,9 @@ Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za 
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 
-Serwer zostanie oznaczony jako tylko do odczytu, gdy osiągnie ilość wolnego miejsca w magazynie, mniejszy niż 5 GB lub 5% aprowizowanego magazynu, ta wartość jest mniejsza. Przykładowo po aprowizowaniu 100 GB miejsca do magazynowania i rzeczywiste użycie przechodzi przez 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie Jeśli aprowizowaniu 5 GB miejsca do magazynowania, serwer zostanie oznaczony jako tylko do odczytu po mniej niż 250 MB wolnego miejsca.  
+Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie spadnie poniżej 5 GB lub 5% zaaprowizowanej pojemności magazynu, w zależności od tego, która wartość będzie niższa. Przykładowo po aprowizowaniu 100 GB miejsca do magazynowania i rzeczywiste użycie przechodzi przez 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli zaaprowizowano 5 GB pojemności magazynu, serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca spanie poniżej 250 MB.  
 
-Gdy usługa próbuje serwer stał się tylko do odczytu, wszystkie nowe żądania transakcji zapisu są zablokowane i istniejących aktywnych transakcji będzie w dalszym ciągu wykonują. Gdy serwer jest wartość tylko do odczytu, wszystkie operacje zapisu w kolejnych i transakcji zatwierdza kończyć się niepowodzeniem. Odczyt zapytania będą w dalszym ciągu bez przeszkód pracować. Po zwiększysz aprowizowanego magazynu, serwer będzie gotowy do akceptowania transakcji zapisu ponownie.
+Podczas gdy usługa próbuje przełączyć serwer w tryb tylko do odczytu, wszystkie nowe żądania transakcji zapisu są blokowane, a istniejące aktywne transakcje nadal są wykonywane. Gdy serwer zostanie przełączony w tryb tylko do odczytu, wszystkie kolejne zatwierdzenia transakcji i operacji zapisu zakończą się niepowodzeniem. Zapytania odczytu będą działać bez żadnych przerw. Gdy zwiększysz zaaprowizowaną pojemność magazynu, serwer będzie ponownie gotowy do akceptowania transakcji zapisu.
 
 Zalecane jest skonfigurowanie alertu, aby otrzymywać powiadomienia, gdy magazyn serwera zbliża się do progu, dzięki czemu można uniknąć, jakim jest w stanie tylko do odczytu. 
 

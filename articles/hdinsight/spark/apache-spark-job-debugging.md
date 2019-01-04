@@ -9,33 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1601663266f59668918e6799b5c4a7ff606431c4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970687"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600016"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight
 
-W tym artykule dowiesz się, jak śledzenie i debugowanie [platformy Apache Spark](https://spark.apache.org/) przy użyciu klastrów HDInsight zadań uruchomionych na [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) interfejsu użytkownika, interfejs użytkownika platformy Spark i serwer historii platformy Spark. Uruchamianie zadania Spark za pomocą notesu dostępnych z klastrem Spark **usługi Machine learning: analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib**. Następujące kroki służą do śledzenia aplikacji, która zostanie przesłane za pomocą jakiejkolwiek innej metody, na przykład **skryptu spark-submit**.
+W tym artykule dowiesz się, jak śledzenie i debugowanie [platformy Apache Spark](https://spark.apache.org/) przy użyciu klastrów HDInsight zadań uruchomionych na [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) interfejsu użytkownika, interfejs użytkownika platformy Spark i serwer historii platformy Spark. Uruchamianie zadania Spark za pomocą notesu dostępnych z klastrem Spark **usługi Machine learning: Analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib**. Następujące kroki służą do śledzenia aplikacji, która zostanie przesłane za pomocą jakiejkolwiek innej metody, na przykład **skryptu spark-submit**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Należy dysponować następującymi elementami:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Należy rozpocząłeś uruchamiania notesu  **[usługi Machine learning: analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Aby uzyskać instrukcje na temat uruchamiania ten notes Użyj linku.  
+* Należy rozpocząłeś uruchamiania notesu  **[usługi Machine learning: Analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Aby uzyskać instrukcje na temat uruchamiania ten notes Użyj linku.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Śledzenie aplikacji w interfejsie użytkownika YARN
 1. Uruchom interfejs użytkownika usługi YARN. Kliknij przycisk **Yarn** w obszarze **pulpity nawigacyjne klastra**.
    
     ![Uruchom interfejs użytkownika usługi YARN](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
-   > [!TIP]
-   > Alternatywnie można również uruchomić Interfejsie użytkownika YARN z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, kliknij przycisk **Ambari macierzystego** w obszarze **pulpity nawigacyjne klastra**. W Interfejsie użytkownika Ambari, kliknij **YARN**, kliknij przycisk **szybkich łączy**, kliknij active usługi Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**.    
-   > 
-   > 
+   > [!TIP]  
+   > Alternatywnie można również uruchomić Interfejsie użytkownika YARN z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, kliknij przycisk **Ambari macierzystego** w obszarze **pulpity nawigacyjne klastra**. W Interfejsie użytkownika Ambari, kliknij **YARN**, kliknij przycisk **szybkich łączy**, kliknij active usługi Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**. 
+
 2. Ponieważ rozpoczęto zadanie Spark za pomocą notesów programu Jupyter, aplikacji o nazwie **remotesparkmagics** (jest to nazwa dla wszystkich aplikacji, które są uruchamiane z notesów). Kliknij przycisk Identyfikatora aplikacji i nazwa aplikacji, aby uzyskać więcej informacji o zadaniu. Spowoduje to uruchomienie widoku aplikacji.
    
     ![Znajdź identyfikator aplikacji Spark](./media/apache-spark-job-debugging/find-application-id.png)
@@ -72,10 +71,9 @@ W Interfejsie użytkownika platformy Spark można przejść do szczegółów do 
    
     Spowoduje to wyświetlenie zdarzenia platformy Spark w postaci osi czasu. Widok osi czasu jest dostępna na trzech poziomach różnych zadań, w ramach danego zadania, a także wewnątrz etapu. Na powyższej ilustracji przechwytuje widok osi czasu dla danego etapu.
    
-   > [!TIP]
+   > [!TIP]  
    > Jeśli wybierzesz **włączone powiększanie** pole wyboru można przewijać lewej i prawej w widoku osi czasu.
-   > 
-   > 
+
 6. Inne karty w Interfejsie użytkownika Spark zawierają przydatne informacje o tym wystąpieniu platformy Spark.
    
    * Karta magazynu — Jeśli aplikacja tworzy danych można znaleźć informacje o znajdującymi się na karcie pamięci masowej.
@@ -92,10 +90,9 @@ Po zakończeniu zadania, informacje o zadaniu są utrwalane w serwer historii pl
    
     ![Uruchom serwer historii platformy Spark](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
-   > [!TIP]
+   > [!TIP]  
    > Alternatywnie można również uruchomić interfejs użytkownika serwer historii platformy Spark z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, z poziomu bloku Przegląd kliknij **Ambari macierzystego** w obszarze **pulpity nawigacyjne klastra**. W Interfejsie użytkownika Ambari, kliknij **Spark**, kliknij przycisk **szybkich łączy**, a następnie kliknij przycisk **interfejsu użytkownika aplikacji serwer historii platformy Spark**.
-   > 
-   > 
+
 2. Zobaczysz wszystkie ukończone aplikacje na liście. Kliknij przycisk Identyfikator aplikacji, aby przejść do aplikacji, aby uzyskać więcej informacji.
    
     ![Uruchom serwer historii platformy Spark](./media/apache-spark-job-debugging/view-completed-applications.png)

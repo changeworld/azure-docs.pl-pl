@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak tworzyć, debugować i tworzenie zadań
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/13/2018
-ms.openlocfilehash: 5dc90a1334b525c02be3eae2985900ab07cf2e05
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 886cae572ee651efd217e9a87b935918eebe8b13
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696252"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558825"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Tworzenie zadań usługi Stream Analytics Edge przy użyciu narzędzi programu Visual Studio
 
@@ -24,7 +24,7 @@ W tym samouczku dowiesz się, jak używać usługi Stream Analytics tools for Vi
 
 Potrzebne są następujące wymagania wstępne do ukończenia tego samouczka:
 
-* Zainstaluj [programu Visual Studio 2017](https://www.visualstudio.com/downloads/), [programu Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/), lub [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326). Obsługiwane są wersje Enterprise (Ultimate/Premium), Professional i Community. Wersja Express nie jest obsługiwana.  
+* Zainstaluj [programu Visual Studio 2017](https://www.visualstudio.com/downloads/), [programu Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/), lub [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326). Obsługiwane są wersje Enterprise (Ultimate/Premium), Professional i Community. Wersja Express nie jest obsługiwane.  
 
 * Postępuj zgodnie z [instrukcje dotyczące instalacji](stream-analytics-tools-for-visual-studio-edge-jobs.md) do zainstalowania narzędzia Stream Analytics tools for Visual Studio.
  
@@ -32,11 +32,11 @@ Potrzebne są następujące wymagania wstępne do ukończenia tego samouczka:
 
 W programie Visual Studio, wybierz **pliku** > **New** > **projektu**. Przejdź do **szablony** liście po lewej stronie > Rozwiń **usługi Azure Stream Analytics** > **usługi Stream Analytics Edge**  >   **Usługa Azure Stream Analytics krawędzi aplikacji**. Podaj nazwę, lokalizację i rozwiązania nazwę projektu i wybierz **OK**.
 
-![Nowy projekt usługi Edge](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-edge-project.png)
+![Nowy projekt krawędzi w programie Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
 Po utworzeniu projektu pobiera przejdź do **Eksploratora rozwiązań** Aby wyświetlić hierarchię folderów.
 
-![Widok Eksploratora rozwiązań](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![Widok Eksploratora rozwiązania zadania usługi Stream Analytics Edge](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>Wybierz poprawną subskrypcję
@@ -49,8 +49,8 @@ Po utworzeniu projektu pobiera przejdź do **Eksploratora rozwiązań** Aby wyś
 
 1. Z **Eksploratora rozwiązań**, rozwiń węzeł **dane wejściowe** węzła powinny zostać wyświetlone dane wejściowe o nazwie **EdgeInput.json**. Kliknij dwukrotnie, aby wyświetlić jej ustawienia.  
 
-2. Upewnij się, że typ źródła jest ustawiony **Stream danych** > źródło jest ustawiona na **Centrum usługi Edge** > Format serializacji zdarzenia równa **Json** > i kodowanie jest ustawiona na **UTF8**. Opcjonalnie możesz zmienić nazwę **Alias danych wejściowych**, możemy pozostawić w tym przykładzie. W przypadku, gdy zmienisz alias danych wejściowych, użyj imienia lub pseudonimu określony podczas definiowania kwerendy. Wybierz pozycję **Zapisz**, aby zapisać ustawienia.  
-   ![Konfiguracja danych wejściowych](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
+2. Ustaw typ źródła **Stream danych**. Następnie ustaw źródło **Centrum usługi Edge**, Format serializacji zdarzeń **Json**i kodowanie **UTF8**. Opcjonalnie możesz zmienić nazwę **Alias danych wejściowych**, możemy pozostawić w tym przykładzie. W przypadku, gdy zmienisz alias danych wejściowych, użyj imienia lub pseudonimu określony podczas definiowania kwerendy. Wybierz pozycję **Zapisz**, aby zapisać ustawienia.  
+   ![Konfiguracja danych wejściowych zadania Stream Analytics](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
 
@@ -59,7 +59,7 @@ Po utworzeniu projektu pobiera przejdź do **Eksploratora rozwiązań** Aby wyś
 1. Z **Eksploratora rozwiązań**, rozwiń węzeł **dane wyjściowe** węzłów dane wyjściowe powinny być o nazwie **EdgeOutput.json**. Kliknij dwukrotnie, aby wyświetlić jej ustawienia.  
 
 2. Upewnij się, że ujścia jest ustawiona na wybierz **Centrum usługi Edge** > Format serializacji zdarzenia równa **Json** > i kodowanie jest ustawiona na **UTF8** > i Format jest ustawiona na  **Tablica**. Opcjonalnie możesz zmienić nazwę **Alias wyjściowy**, możemy pozostawić w tym przykładzie. W przypadku, gdy zmienisz nazwę aliasu danych wyjściowych, użyj imienia lub pseudonimu określony podczas definiowania kwerendy. Wybierz pozycję **Zapisz**, aby zapisać ustawienia. 
-   ![Konfiguracja danych wyjściowych](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
+   ![Stream Analytics zadanie danych wyjściowych konfiguracji](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>Definiowanie zapytania przekształcenia
 
@@ -84,20 +84,20 @@ FROM EdgeInput
 
 Lokalnie, aby przetestować zapytanie należy przekazać przykładowe dane. Przykładowe dane można uzyskać, pobierając dane rejestracji z [repozytorium GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) i zapisz go na komputerze lokalnym. 
 
-1. Aby przekazać przykładowe dane > kliknij prawym przyciskiem myszy **EdgeInput.json** Plik > Wybierz **dodawanie lokalnych danych wejściowych**  
+1. Aby przekazać przykładowe dane, kliknij prawym przyciskiem myszy **EdgeInput.json** pliku, a następnie wybierz **dodawanie lokalnych danych wejściowych**  
 
 2. W oknie podręcznym > **Przeglądaj** przykładowe dane z ścieżki lokalnej > Wybierz **Zapisz**.
-   ![Lokalne konfiguracja danych wejściowych](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
+   ![Lokalne konfiguracja danych wejściowych w programie Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. Plik o nazwie **local_EdgeInput.json** jest automatycznie dodawany do folderu danych wejściowych.  
 4. Możesz uruchomić go lokalnie lub przesłać na platformę Azure. Aby przetestować zapytanie > Wybierz **uruchom lokalnie**.  
-   ![Opcje uruchamiania](./media/stream-analytics-tools-for-visual-studio-edge-jobs/run-options.png)
+   ![Zadanie Stream Analytics, opcje uruchamiania w programie Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
 5. W oknie wiersza polecenia wyświetla stan zadania. Gdy zadanie zostanie wykonane pomyślnie, tworzy folder, który wygląda jak "2018-02-23-11-31-42" w ścieżce folderu projektu "2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42 programu Visual Studio". Przejdź do ścieżki folderu, aby wyświetlić wyniki w lokalnym folderze:
 
    Możesz również zalogować się do witryny Azure portal i sprawdź, czy zadanie jest tworzone. 
 
-   ![Wynik folderu](./media/stream-analytics-tools-for-visual-studio-edge-jobs/result-folder.png)
+   ![Stream Analytics zadania wynik folderu](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-job-result-folder.png)
 
 ## <a name="submit-the-job-to-azure"></a>Prześlij zadanie na platformie Azure
 
@@ -107,22 +107,22 @@ Lokalnie, aby przetestować zapytanie należy przekazać przykładowe dane. Przy
 
 3. Zostanie otwarte okno podręczne, w którym można zaktualizować istniejące zadanie Microsoft Edge lub Utwórz nową. Podczas aktualizacji istniejącego zadania spowoduje zastąpienie wszystkich konfiguracji zadania, w tym scenariuszu, spowoduje opublikowanie nowego zadania. Wybierz **Tworzenie nowego zadania usługi Azure Stream Analytics** > Wprowadź nazwę dla zadania coś w rodzaju **MyASAEdgeJob** > Wybierz wymagane **subskrypcji**, **Grupy zasobów**, i **lokalizacji** > Wybierz **przesłać**.
 
-   ![Przekaż do platformy Azure](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-to-azure.png)
+   ![Przesyłanie zadania usługi Stream Analytics na platformie Azure z programu Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
    Po utworzeniu zadania usługi Stream Analytics Edge mogą odwoływać się do [uruchamiaj zadania zgodnie z samouczkiem usługi IoT Edge](stream-analytics-edge.md) dowiesz się, jak można go wdrożyć na urządzeniach. 
 
 ## <a name="manage-the-job"></a>Zarządzanie nim 
 
-Można wyświetlić stan zadania i diagram zadania z poziomu Eksploratora serwera. Z **Eksploratora serwera** > **usługi Stream Analytics** > Rozwiń subskrypcję i grupę zasobów, w której została wdrożona zadanie Edge > można wyświetlić MyASAEdgejob ze stanem  **Utworzone**. Rozwiń węzeł zadania i kliknij dwukrotnie ją, aby otworzyć widok zadań.
+Można wyświetlić stan zadania i diagram zadania z poziomu Eksploratora serwera. Z **usługi Stream Analytics** w **Eksploratora serwera**, rozwiń subskrypcję i grupę zasobów, w której została wdrożona zadanie Edge. Możesz wyświetlić MyASAEdgejob ze stanem **utworzono**. Rozwiń węzeł zadania i kliknij dwukrotnie ją, aby otworzyć widok zadań.
 
-![Opcje Eksploratora serwera](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
+![Opcje zarządzania zadania Eksploratora serwera](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
-Okno widok zadania umożliwia operacje, takie jak odświeżyć zadanie trwa usuwanie zadania, Otwieranie zadania z platformy Azure portal itp.
+Okno widok zadania umożliwia operacje, takie jak zadanie odświeżania, usunięcie zadania i Otwieranie zadania za pomocą witryny Azure portal.
 
-![Diagram zadania i inne opcje](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
+![Diagram zadania i inne opcje w programie Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Więcej informacji na temat usługi Azure Iot Edge](../iot-edge/about-iot-edge.md)
+* [Więcej informacji na temat usługi Azure IoT Edge](../iot-edge/about-iot-edge.md)
 * [Usługa ASA na samouczek dotyczący usługi IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Wyślij opinię do zespołu za pomocą tej ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

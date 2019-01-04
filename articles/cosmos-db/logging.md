@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d91c1e99a04f6fdbc6422aa18504625471d0f0d1
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438510"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810495"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
 
@@ -81,7 +81,7 @@ Aby włączyć rejestrowanie diagnostyczne w witrynie Azure portal, wykonaj nast
     * **Stream do usługi event hub**: Aby użyć tej opcji, należy istniejącej usługi Event Hubs przestrzeni nazw i Centrum zdarzeń Aby nawiązać połączenie. Aby utworzyć obszar nazw usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń przy użyciu witryny Azure portal](../event-hubs/event-hubs-create.md). Następnie wróć do tej strony w portalu, aby wybrać nazwę przestrzeni nazw i zasad usługi Event Hubs.
     * **Wysyłanie do usługi Log Analytics**: Aby użyć tej opcji, użyj istniejącego obszaru roboczego albo utwórz nowy obszar roboczy usługi Log Analytics, wykonując następujące kroki, aby [Utwórz nowy obszar roboczy](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) w portalu. Aby uzyskać więcej informacji na temat wyświetlania dzienników w usłudze Log Analytics, zobacz [widoku dzienników w usłudze Log Analytics](#view-in-loganalytics).
     * **Zaloguj się DataPlaneRequests**: Wybierz tę opcję, aby rejestrować żądania zaplecza z podstawowej usługi Azure Cosmos DB platformy rozproszone dla kont usługi SQL, programu Graph, bazy danych MongoDB, Cassandra i interfejsu API tabel. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
-    * **Zaloguj się MongoRequests**: Wybierz tę opcję, aby rejestrować żądania zainicjowanego przez użytkownika z usługi Azure Cosmos DB frontonu dla obsługi konta interfejsu API usługi MongoDB. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
+    * **Zaloguj się MongoRequests**: Wybierz tę opcję, aby rejestrować żądania zainicjowanego przez użytkownika z usługi Azure Cosmos DB frontonu dla obsługi konta usługi Cosmos skonfigurowane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
     * **Metryka żądania**: Wybierz tę opcję, aby przechowywać pełne dane w [metryki platformy Azure](../azure-monitor/platform/metrics-supported.md). Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
 
 3. Wybierz pozycję **Zapisz**.
@@ -459,7 +459,7 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby zrozumieć, jak włączyć rejestrowanie i kategorie metryk i dzienników, które są obsługiwane przez różne usługi platformy Azure, przeczytaj zarówno [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) i [Omówienie programu Azure dzienników diagnostycznych ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) artykułów.
+- Aby zrozumieć, jak włączyć rejestrowanie i kategorie metryk i dzienników, które są obsługiwane przez różne usługi platformy Azure, przeczytaj zarówno [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) i [Omówienie programu Azure dzienników diagnostycznych ](../azure-monitor/platform/diagnostic-logs-overview.md) artykułów.
 - Przeczytaj następujące artykuły, aby dowiedzieć się więcej o usłudze event hubs:
    - [Co to jest usługa Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

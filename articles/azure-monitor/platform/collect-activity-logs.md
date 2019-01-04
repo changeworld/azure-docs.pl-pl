@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184954"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540263"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
 
 ![Symbol dzienników aktywności usługi Azure](./media/collect-activity-logs/activity-log-analytics.png)
 
-Rozwiązanie Activity Log Analytics ułatwiają analizowanie i wyszukaj [dziennika aktywności platformy Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) we wszystkich subskrypcjach platformy Azure. Dziennik aktywności platformy Azure jest dziennik, który zawiera szczegółowe informacje dotyczące operacji wykonywanych na zasobach w Twoich subskrypcjach. Dziennik aktywności była wcześniej znana jako *dzienników inspekcji* lub *operacyjne dzienniki* od momentu jego raporty zdarzeń dla subskrypcji.
+Rozwiązanie Activity Log Analytics ułatwiają analizowanie i wyszukaj [dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) we wszystkich subskrypcjach platformy Azure. Dziennik aktywności platformy Azure jest dziennik, który zawiera szczegółowe informacje dotyczące operacji wykonywanych na zasobach w Twoich subskrypcjach. Dziennik aktywności była wcześniej znana jako *dzienników inspekcji* lub *operacyjne dzienniki* od momentu jego raporty zdarzeń dla subskrypcji.
 
 Korzystając z dziennika aktywności można określić *co*, *kto*, i *podczas* dla dowolnego zapisu (PUT, POST, DELETE) dla zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stan działania i inne odpowiednie właściwości. Dziennik aktywności nie obejmują operacji odczytu (GET) ani operacji dotyczących zasobów, które używają klasycznego modelu wdrażania.
 

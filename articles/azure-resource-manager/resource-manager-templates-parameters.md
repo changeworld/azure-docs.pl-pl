@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417773"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722146"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Sekcji parametrów szablonów usługi Azure Resource Manager
 W sekcji parametrów szablonu należy określić wartości, które należy wprowadzić podczas wdrażania zasobów. Te wartości parametrów umożliwiają dostosowanie wdrożenia, podając wartości, które są dostosowane do określonego środowiska (na przykład deweloperskim, testowym i produkcyjnym). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
@@ -91,8 +91,8 @@ Poprzedni przykład wykazało, że tylko niektóre właściwości, które można
 | allowedValues |Nie |Tablica dozwolonych wartości dla parametru upewnić się, że podano odpowiednie wartości. |
 | wartość minValue |Nie |Wartość minimalna dla parametrów typu int, ta wartość jest włącznie. |
 | maxValue |Nie |Maksymalna wartość dla parametrów typu int, ta wartość jest włącznie. |
-| Element minLength |Nie |Minimalna długość ciągu securestring i parametry typu tablicy, ta wartość jest włącznie. |
-| Element maxLength |Nie |Maksymalna długość ciągu securestring i parametry typu tablicy, ta wartość jest włącznie. |
+| Element minLength |Nie |Minimalna długość ciągu, bezpieczny ciąg i Tablica parametrów typu, ta wartość jest włącznie. |
+| Element maxLength |Nie |Maksymalna długość ciągu, bezpieczny ciąg i Tablica parametrów typu, ta wartość jest włącznie. |
 | description |Nie |Opis parametru, który jest widoczny dla użytkowników za pośrednictwem portalu. |
 
 ## <a name="template-functions-with-parameters"></a>Funkcje szablonu z parametrami
@@ -188,74 +188,6 @@ Następnie odwoływać właściwości podrzędnych parametru za pomocą operator
 ]
 ```
 
-## <a name="recommendations"></a>Zalecenia
-Poniższe informacje, może być przydatne podczas pracy z parametrami:
-
-* Minimalizuj korzystanie z parametrów. Jeśli to możliwe, należy użyć zmiennej lub wartość literału. Użyj parametrów tylko dla tych scenariuszy:
-   
-   * Ustawienia, które chcesz użyć wariantów według środowiska (jednostki SKU, rozmiar, pojemności).
-   * Nazwy zasobów, które chcesz określić łatwą identyfikację.
-   * Wartości, które są często używane do innych zadań (na przykład nazwa użytkownika administratora).
-   * Klucze tajne (takie jak hasła).
-   * Liczba lub tablicę wartości, które można używać podczas tworzenia więcej niż jedno wystąpienie typu zasobu.
-* Użyj formatu camelcase dla nazw parametrów.
-* Podaj opis każdego parametru w metadanych:
-
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* Definiowanie wartości domyślnych dla parametrów (z wyjątkiem hasła i klucze SSH). Określając wartość domyślną, parametr staje się opcjonalny podczas wdrażania. Wartość domyślna może być ciągiem pustym. 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
-        }
-   }
-   ```
-
-* Użyj **securestring** dla wszystkich haseł i kluczy tajnych. Jeśli przekażesz poufnych danych w obiekcie JSON, użyj **secureObject** typu. Nie można odczytać parametrów szablonu z typami securestring lub secureObject po wdrażania zasobów. 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
-
-* Użyj parametru do określenia lokalizacji i udostępniaj tę wartość parametru możliwie wypełniane zasobami, które mogą być w tej samej lokalizacji. To podejście minimalizuje liczbę przypadków, gdy użytkownicy są proszeni o dostarczenie informacji o lokalizacji. Typ zasobu jest obsługiwana w ograniczonej liczbie lokalizacje, można określić prawidłowych lokalizacji bezpośrednio w szablonie, lub dodać inny parametr lokalizacji. Gdy organizacja ogranicza dozwolonych regionów dla swoich użytkowników **resourceGroup () .location** wyrażenie może uniemożliwić wdrażanie szablonu użytkownik. Na przykład jeden użytkownik tworzy grupę zasobów w regionie. Drugi użytkownik należy wdrożyć w tej grupie zasobów, ale nie ma dostępu do tego regionu. 
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
-         "location": "[parameters('location')]",
-         ...
-     }
-   ]
-   ```
-    
-* Należy unikać używania parametr lub zmienna w przypadku wersji interfejsu API dla typu zasobu. Właściwości zasobów i wartości mogą się różnić numer wersji. Funkcja IntelliSense w edytorze kodu nie można ustalić poprawnego schematu, gdy parametr lub zmienna ma wartość wersja interfejsu API. Zamiast tego należy trwale kodować interfejsu API w wersji w szablonie.
-* Unikaj określania nazwy parametru w szablonie odpowiadający parametr w poleceniu wdrożenia. Menedżer zasobów jest rozpoznawany jako ten konflikt nazw, dodając przyrostkowa **FromTemplate** z parametrem szablonu. Na przykład, jeśli zawierają parametr o nazwie **ResourceGroupName** w szablonie, powoduje on konflikt z **ResourceGroupName** parametru w [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) polecenia cmdlet. Podczas wdrażania, monit o podanie wartości **ResourceGroupNameFromTemplate**.
-
 ## <a name="example-templates"></a>Przykładowe szablony
 
 Te przykładowe szablony pokazują niektóre scenariusze użycia parametrów. Wdróż je, aby przetestować sposób obsługi parametrów w różnych scenariuszach.
@@ -269,5 +201,5 @@ Te przykładowe szablony pokazują niektóre scenariusze użycia parametrów. Wd
 
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
 * Jak wprowadzanie wartości parametrów podczas wdrażania, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md). 
-* Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
 * Aby dowiedzieć się, jak za pomocą obiektu parametrów, zobacz [używanie obiektu jako parametr w szablonie usługi Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).

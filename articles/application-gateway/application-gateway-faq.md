@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 0187ef3d3b6853c1d1225fc9f208f2508372978d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425731"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994862"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -49,7 +49,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Jakie zasoby są obecnie obsługiwane w ramach puli wewnętrznej bazy danych?
 
-Pule zaplecza może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure Web Apps. Składowych puli zaplecza bramy aplikacji nie są związane z zestawu dostępności. Elementami członkowskimi pul zaplecza może być w klastrach, centrów danych lub spoza platformy Azure, tak długo, jak długo mają łączność adresów IP.
+Pule zaplecza może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. Składowych puli zaplecza bramy aplikacji nie są związane z zestawu dostępności. Elementami członkowskimi pul zaplecza może być w klastrach, centrów danych lub spoza platformy Azure, tak długo, jak długo mają łączność adresów IP.
 
 ### <a name="what-regions-is-the-service-available-in"></a>Jakie regiony usługa jest dostępna w?
 
@@ -88,9 +88,11 @@ Tylko jeden publiczny adres IP jest obsługiwany w bramie aplikacji.
 Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia.
 Na przykład, jeśli bramy aplikacji jest ustawiona na trzy wystąpienia, a nie adresu IP frontonu prywatnych, następnie wartość/29 podsieć, rozmiar lub nowszej jest wymagana. W tym przypadku brama aplikacji używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla prywatnych konfiguracji adresu IP frontonu, następnie o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagany, ponieważ cztery adresy IP są wymagane.
 
-### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>PYTANIE: Czy mogę wdrożyć więcej niż jednego zasobu usługi Application Gateway do jednej podsieci? **
+### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>PYTANIE: Do jednej podsieci można wdrażać więcej niż jednego zasobu usługi Application Gateway?
 
 Tak, oprócz posiadanie wielu wystąpień danego wdrożenia bramy Application Gateway, można udostępnić innym unikatowy zasobu usługi Application Gateway do istniejącej podsieci, który zawiera różne zasobu usługi Application Gateway.
+
+Mieszanie Standard_v2 i standardowa usługa Application Gateway w tej samej podsieci nie jest obsługiwane. Ponadto jeśli włączono automatyczne skalowanie, podsieć może mieć tylko jedną bramę aplikacji.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Usługa Application Gateway obsługuje nagłówków x-forwarded dla?
 
@@ -103,6 +105,8 @@ Usługa Application Gateway są wstawiane nagłówek X-oryginalny-Host, zawieraj
 Nowych wdrożeń jednostek SKU v1 Application Gateway może potrwać do 20 minut do aprowizowania. Zmiany rozmiaru/liczba wystąpień nie są naturalnymi, a brama pozostaje aktywna, w tym czasie.
 
 Jednostki SKU v2 wdrożenia może potrwać około pięciu lub sześciu minut aprowizację.
+
+Usługa Application Gateway obsługuje nagłówków x-forwarded dla?
 
 ## <a name="configuration"></a>Konfigurowanie
 
@@ -210,7 +214,7 @@ Tak. Można skonfigurować połączenia opróżniania, aby zmienić członków w
 
 ### <a name="what-are-application-gateway-sizes"></a>Co to są rozmiarów bramy aplikacji?
 
-Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
+Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: **Małe**, **średni**, i **dużych**. Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
 
 Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -316,9 +320,9 @@ Zapora aplikacji sieci Web jest monitorowany za pośrednictwem rejestrowania dia
 
 Nie, Tryb wykrywania dzienniki ruchu, która wywołała regułę zapory aplikacji sieci Web.
 
-### <a name="how-do-i-customize-waf-rules"></a>Jak dostosować reguły zapory aplikacji sieci Web?
+### <a name="can-i-customize-waf-rules"></a>Czy można dostosować reguły zapory aplikacji sieci Web?
 
-Tak, reguły zapory aplikacji sieci Web są możliwe do dostosowania, aby uzyskać więcej informacji na temat sposobu ich dostosowywania, zobacz [zapory aplikacji sieci Web dostosowywanie grup reguł i reguł](application-gateway-customize-waf-rules-portal.md)
+Tak, reguły zapory aplikacji sieci Web są możliwe do dostosowania. Aby uzyskać więcej informacji, zobacz [zapory aplikacji sieci Web dostosowywanie grup reguł i reguł](application-gateway-customize-waf-rules-portal.md)
 
 ### <a name="what-rules-are-currently-available"></a>Jakie zasady są obecnie dostępne
 

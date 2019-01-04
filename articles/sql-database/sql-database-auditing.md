@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 892e4e776479d767326d4895dbf4bd4f30c418b0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971525"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973206"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -175,13 +175,15 @@ Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage
 
 Bazy danych replikowanej geograficznie po włączeniu inspekcji podstawowej bazy danych pomocniczej bazy danych mają identyczne zasady inspekcji. Istnieje również możliwość skonfigurowania inspekcji w pomocniczej bazie danych przez włączenie inspekcji na **serwer pomocniczy**, niezależnie od podstawowej bazy danych.
 
-- Poziom serwera (**zalecane**): Włącz inspekcję na obu **serwera podstawowego** , jak również **serwer pomocniczy** — podstawowych i pomocniczych baz danych będą każdego inspekcji niezależnie od siebie na podstawie ich odpowiednich zasad na poziomie serwera.
-- Poziom bazy danych: Inspekcji dla pomocniczych baz danych na poziomie bazy danych można skonfigurować tylko z podstawowej bazy danych, ustawienia inspekcji.
+- Poziom serwera (**zalecane**): Włącz inspekcję na obu **serwera podstawowego** , jak również **serwer pomocniczy** -podstawowych i pomocniczych baz danych będą każdego inspekcji niezależnie zależnie od ich odpowiednich zasad na poziomie serwera.
+- Poziom bazy danych: Poziom bazy danych inspekcji dla pomocniczych baz danych można skonfigurować tylko z podstawowej bazy danych, ustawienia inspekcji.
   - Inspekcja musi być włączona na *podstawowa baza danych sam*, nie na serwerze.
   - Po włączeniu inspekcji podstawowej bazy danych, będzie również stać się włączone w pomocniczej bazie danych.
 
     >[!IMPORTANT]
     >Za pomocą inspekcji poziomu bazy danych, ustawienia magazynu dla pomocniczej bazy danych będzie identyczne z podstawowej bazy danych, co spowoduje niepowodzenie ruch między regionami. Zaleca się włączania inspekcji tylko poziomu serwera i pozostaw inspekcji poziomu bazy danych wyłączone dla wszystkich baz danych.
+    > [!WARNING]
+    > Przy użyciu zdarzenia koncentratora lub log analytics jako elementy docelowe dla dzienników inspekcji na poziomie serwera nie jest obecnie obsługiwane dla pomocniczych baz danych, które są replikowane geograficznie.
 
 ### <a id="subheading-6">Ponowne generowanie klucza magazynu</a>
 
@@ -220,12 +222,12 @@ W środowisku produkcyjnym prawdopodobnie okresowo odświeżyć klucze magazynu.
 
 ## <a id="subheading-7"></a>Zarządzanie inspekcji usługi SQL database przy użyciu programu Azure PowerShell
 
-**Polecenia cmdlet programu PowerShell**:
+**Polecenia cmdlet programu PowerShell (w tym obsługa klauzuli WHERE filtrowania dodatkowych)**:
 
-- [Utwórz lub zaktualizuj Blob bazy danych inspekcji zasad (Set-AzureRMSqlDatabaseAuditing)][105]
-- [Utwórz lub zaktualizuj serwer Blob inspekcji zasad (Set-AzureRMSqlServerAuditing)][106]
-- [Pobierz zasady inspekcji bazy danych (Get-AzureRMSqlDatabaseAuditing)][101]
-- [Pobieranie obiektów Blob serwera zasady inspekcji (Get-AzureRMSqlServerAuditing)][102]
+- [Utwórz lub zaktualizuj Blob bazy danych inspekcji zasad (zestaw AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Utwórz lub zaktualizuj serwer Blob inspekcji zasad (zestaw AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing)
+- [Pobierz zasady inspekcji bazy danych (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Pobieranie obiektów Blob serwera zasady inspekcji (Get-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing)
 
 Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie zagrożeń za pomocą programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -245,6 +247,14 @@ Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dod
 - [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
+## <a id="subheading-10"></a>Zarządzanie inspekcji usługi SQL database przy użyciu szablonów ARM
+
+Można zarządzać za pomocą inspekcja bazy danych Azure SQL [usługi Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) szablonów, jak pokazano w tych przykładach:
+
+- [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji do konta magazynu obiektów blob platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1
 [Set up auditing for your database]: #subheading-2
@@ -254,6 +264,7 @@ Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dod
 [Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
 [Manage SQL database auditing using REST API]: #subheading-9
+[Manage SQL database auditing using ARM templates]: #subheading-10
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
@@ -266,10 +277,3 @@ Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dod
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
-
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing

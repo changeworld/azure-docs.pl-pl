@@ -13,12 +13,12 @@ ms.date: 01/25/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6bc18d73f66c1ede777d579b764127f034d9f0ca
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9b987ccd17f2060eea125a5d384446cec24fb68a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725730"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969169"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analiza wpływu za pomocą usługi Application Insights
 
@@ -35,7 +35,7 @@ Ale analizowanie wydajności określony podzbiór możliwości jego wpływu. Pon
 ![Zrzut ekranu konwersja przez przeglądarki](./media/app-insights-usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Zasób usługi Application Insights musi zawierać wyświetleń stron lub zdarzeń niestandardowych, aby użyć narzędzia wpływu. [Dowiedz się, jak skonfigurować aplikację do zbierania wyświetleń stron, które automatycznie za pomocą zestawu SDK języka JavaScript usługi Application Insights](app-insights-javascript.md). Należy pamiętać o tym, ponieważ analizujesz korelacji, spraw rozmiar próbki.
+> Zasób usługi Application Insights musi zawierać wyświetleń stron lub zdarzeń niestandardowych, aby użyć narzędzia wpływu. [Dowiedz się, jak skonfigurować aplikację do zbierania wyświetleń stron, które automatycznie za pomocą zestawu SDK języka JavaScript usługi Application Insights](../azure-monitor/app/javascript.md). Należy pamiętać o tym, ponieważ analizujesz korelacji, spraw rozmiar próbki.
 >
 >
 

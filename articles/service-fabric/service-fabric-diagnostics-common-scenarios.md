@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e91ca12c06a1582b9bb715031a9c379b1a47b04b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633099"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713463"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozowanie typowe scenariusze za pomocą usługi Service Fabric
 
-W tym artykule przedstawiono typowe scenariusze, które użytkownicy napotkali w zakresie monitorowania i diagnostyki za pomocą usługi Service Fabric. Scenariusze przedstawione obejmują wszystkie warstwy 3 usługi service fabric: aplikacji, klastra i infrastruktury. Każde rozwiązanie korzysta z usługi Application Insights i Log Analytics, narzędzia do monitorowania platformy Azure, do ukończenia każdego scenariusza. Kroki w poszczególnych rozwiązaniach użytkownikom wprowadzenie na temat korzystania z usługi Application Insights i Log Analytics w ramach usługi Service Fabric.
+W tym artykule przedstawiono typowe scenariusze, które użytkownicy napotkali w zakresie monitorowania i diagnostyki za pomocą usługi Service Fabric. Scenariusze przedstawione obejmują wszystkie warstwy 3 usługi service fabric: Aplikacja klastra i infrastruktury. Każde rozwiązanie korzysta z usługi Application Insights i Log Analytics, narzędzia do monitorowania platformy Azure, do ukończenia każdego scenariusza. Kroki w poszczególnych rozwiązaniach użytkownikom wprowadzenie na temat korzystania z usługi Application Insights i Log Analytics w ramach usługi Service Fabric.
 
 ## <a name="prerequisites-and-recommendations"></a>Wymagania wstępne i zalecenia
 
@@ -56,7 +56,7 @@ Rozwiązania, w tym artykule użyje następujących narzędzi. Zaleca się, że 
 
     ![Mapa aplikacji sztucznej Inteligencji bloku](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapy aplikacji sztucznej Inteligencji](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    Aby uzyskać więcej informacji na mapie aplikacji, odwiedź stronę [dokumentacji Mapa aplikacji](../application-insights/app-insights-app-map.md)
+    Aby uzyskać więcej informacji na mapie aplikacji, odwiedź stronę [dokumentacji Mapa aplikacji](../azure-monitor/app/app-map.md)
 
 ## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Jak utworzyć alert, jeśli węzeł ulegnie awarii
 
@@ -139,7 +139,7 @@ Sprawdź poniższe linki umożliwiają uzyskanie pełną listę liczników wydaj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../application-insights/app-insights-alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
+* [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../azure-monitor/app/alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
 * [Inteligentne wykrywanie w usłudze Application Insights](../application-insights/app-insights-proactive-diagnostics.md) wykonuje aktywnego analizy telemetrii są wysyłane do sztucznej Inteligencji w celu otrzymania potencjalnych problemów z wydajnością
 * Dowiedz się więcej o usłudze Log Analytics [alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
 * W przypadku klastrów w środowisku lokalnym usługa Log Analytics oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Log Analytics. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z usługi Log Analytics przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md)

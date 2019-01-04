@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: e9309f8cb46b31ded46b705308465ac6f6c89204
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c2827a4badd61aeb8de556795834dee39769e85e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585190"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554507"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Certyfikat główny urzędu certyfikacji można udostępnić użytkownikom usługi Azure Stack pozwala używać wiersza polecenia platformy Azure na swoich komputerach deweloperskich. Użytkownicy muszą certyfikatów do zarządzania zasobami za pomocą interfejsu wiersza polecenia.
 
@@ -38,7 +38,7 @@ W następujących sekcjach opisano sposób uzyskiwania tych wartości.
 Certyfikat główny urzędu certyfikacji usługi Azure Stack można znaleźć w zestawie deweloperskim i na maszynie wirtualnej dzierżawy, który jest uruchomiony w środowisku deweloperskim zestaw. Aby wyeksportować certyfikat główny usługi Azure Stack w formacie PEM, zaloguj się do zestawu SDK usługi lub maszyny wirtualnej dzierżawcy, a następnie uruchom następujący skrypt:
 
 ```powershell
-$label = "AzureStackSelfSignedRootCert"
+$label = "<Your Azure Stack CA root certificate name>"
 Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
 $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
 if (-not $root)

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 899792be583f3b2e2a16e42472fcdf87bf751893
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635496"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722910"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Wprowadzenie do usługi Azure Queue storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -182,7 +182,7 @@ public static void GracefulShutdownDemo(
 }
 ```
 
-**Uwaga:** pulpitu nawigacyjnego nie może poprawnie pokazuje stan i dane wyjściowe funkcji, które została zamknięta.
+**Uwaga:** Pulpit nawigacyjny nie może poprawnie wyświetlać stan i dane wyjściowe funkcji, które została zamknięta.
 
 Aby uzyskać więcej informacji, zobacz [łagodne zamykanie usługi WebJobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
@@ -477,7 +477,7 @@ static void Main(string[] args)
 }
 ```
 
-**Uwaga:** kolejek, tabel i nazw obiektów blob są rozwiązywane każdym wywołaniu funkcji, ale nazwy kontenera obiektów blob są rozpoznawane tylko podczas uruchamiania aplikacji. Nie można zmienić nazwy kontenera obiektów blob, gdy zadanie jest uruchomione.
+**Uwaga:** Nazwy obiektów blob, tabel i kolejki są rozwiązywane w każdym wywołaniu funkcji, ale nazwy kontenera obiektów blob są rozpoznawane tylko podczas uruchamiania aplikacji. Nie można zmienić nazwy kontenera obiektów blob, gdy zadanie jest uruchomione.
 
 ## <a name="how-to-trigger-a-function-manually"></a>Ręczne wyzwalanie funkcji
 Aby ręcznie wyzwolić funkcję, należy użyć **wywołania** lub **CallAsync** metody **JobHost** obiektu i **NoAutomaticTrigger** atrybut dla funkcji, jak pokazano w poniższym przykładzie.
@@ -514,7 +514,7 @@ Dane wyjściowe z konsoli metody wywołania funkcji lub w **Main()** metoda poja
 
 Nie można połączyć dane wyjściowe konsoli z wywołania określonej metody, ponieważ konsola jest jednowątkowym, gdy wiele funkcji zadania mogą być uruchomione w tym samym czasie. Dlatego zestaw SDK udostępnia każdego wywołania funkcji wraz z obiektem dziennika Unikatowy składnik zapisywania.
 
-Aby zapisać [dzienniki śledzenia aplikacji](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), użyj **Console.Out** (tworzy Dzienniki oznaczone jako INFO) i **Console.Error** (tworzy Dzienniki oznaczone jako błąd). Alternatywą jest użycie [ślad lub TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), który zawiera pełne informacje, ostrzeżenie, i krytyczne poziomy oprócz informacje i błąd. Dzienniki śledzenia aplikacji są wyświetlane w plikach dziennika aplikacji sieci web, tabele platformy Azure lub obiektów blob platformy Azure, w zależności od tego, jak skonfigurować aplikację internetową platformy Azure. Podobnie jak wszystkie dane wyjściowe konsoli, najnowsze Dzienniki aplikacji 100 również zostać wyświetlony na stronie pulpitu nawigacyjnego dla zadania WebJob nie strony dla wywołania funkcji.
+Aby zapisać [dzienniki śledzenia aplikacji](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview), użyj **Console.Out** (tworzy Dzienniki oznaczone jako INFO) i **Console.Error** (tworzy Dzienniki oznaczone jako błąd). Alternatywą jest użycie [ślad lub TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), który zawiera pełne informacje, ostrzeżenie, i krytyczne poziomy oprócz informacje i błąd. Dzienniki śledzenia aplikacji są wyświetlane w plikach dziennika aplikacji sieci web, tabele platformy Azure lub obiektów blob platformy Azure, w zależności od tego, jak skonfigurować aplikację internetową platformy Azure. Podobnie jak wszystkie dane wyjściowe konsoli, najnowsze Dzienniki aplikacji 100 również zostać wyświetlony na stronie pulpitu nawigacyjnego dla zadania WebJob nie strony dla wywołania funkcji.
 
 Dane wyjściowe konsoli zostanie wyświetlony pulpit nawigacyjny tylko wtedy, gdy program jest uruchomiony w zadaniu Azure WebJob, nie wtedy, gdy program działa lokalnie lub innego środowiska.
 
@@ -550,7 +550,7 @@ Ciągłe zadanie WebJob Dzienniki aplikacji widoczne w/data/zadania/ciągłe/*{w
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-Na platformie Azure blob wyglądał Dzienniki aplikacji, jak to: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write — Witaj świecie! maja 2014 r-09-contosoadsnew 26T21:01:13, błąd, 491e54, 635473620738373502,0,17404,19,Console.error — Witaj świecie!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out — Witaj świecie!,
+Na platformie Azure blob wygląd Dzienniki aplikacji następująco: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write — Witaj świecie!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error — Witaj świecie!, 2014-09-26T21 : 01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out — Witaj świecie!,
 
 W tabeli platformy Azure **Console.Out** i **Console.Error** dzienniki wyglądać następująco:
 

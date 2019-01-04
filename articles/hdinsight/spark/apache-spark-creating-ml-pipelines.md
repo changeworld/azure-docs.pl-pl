@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499400"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597481"
 ---
-# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Tworzenie potoku uczenia maszyny platformy Apache Spark
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Tworzenie potoku uczenia maszynowego platformy Apache Spark
 
-Biblioteka uczenia skalowalne maszyny platformy Apache Spark (Biblioteka MLlib) zapewnia funkcje modelowania w środowisku rozproszonym. Pakiet platformy Spark [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) to zbiór interfejsów API wysokiego poziomu, oparta na elementy Dataframe. Te interfejsy API ułatwiają tworzenie i dostosowywanie praktyczne potokach uczenia maszynowego.  *Platforma Spark jest uczenie maszynowe* odwołuje się do tego na podstawie MLlib ramkę danych interfejsu API, nie starsza na podstawie RDD potoku interfejsu API.
+Biblioteka uczenia skalowalne maszyny platformy Apache Spark (Biblioteka MLlib) zapewnia funkcje modelowania w środowisku rozproszonym. Pakiet platformy Spark [ `spark.ml` ](https://spark.apache.org/docs/latest/ml-pipeline.html) to zbiór interfejsów API wysokiego poziomu, oparta na elementy Dataframe. Te interfejsy API ułatwiają tworzenie i dostosowywanie praktyczne potokach uczenia maszynowego.  *Platforma Spark jest uczenie maszynowe* odwołuje się do tego na podstawie MLlib ramkę danych interfejsu API, nie starsza na podstawie RDD potoku interfejsu API.
 
 Usługi machine learning (ML) potoku jest kompletny przepływ pracy, łącząc wiele algorytmów były ze sobą uczenia maszynowego. Może istnieć wiele kroków wymaganych do przetwarzania i ucz się od danych, wymagających sekwencji algorytmów. Potoki definiować etapy i kolejność procesu uczenia maszynowego. W MLlib etapach potoku są reprezentowane przez określonej kolejności PipelineStages, gdzie transformatora, jak i narzędzie do szacowania wykonywać zadania.
 
@@ -30,7 +30,7 @@ Każde wystąpienie bezstanowe transformatora lub narzędzie do szacowania ma sw
 
 ## <a name="pipeline-example"></a>Przykładowy potok
 
-Aby zademonstrować praktyczne wykorzystanie potoku uczenia Maszynowego, w tym przykładzie użyto przykładu `HVAC.csv` pliku danych, który jest wstępnie załadowane na domyślny magazyn dla klastra HDInsight, Azure Storage lub Data Lake Store. Aby wyświetlić zawartość pliku, przejdź do `/HdiSamples/HdiSamples/SensorSampleData/hvac` katalogu. `HVAC.csv` zawiera zestaw uzyskane przy użyciu docelowej i rzeczywiste temperatury HVAC (*grzejników, wentylatorów i klimatyzacja*) systemów w różnych budynkach. Celem jest uczenie modelu danych i generuje prognozy temperatury dla danego kompilowania.
+Aby zademonstrować praktyczne wykorzystanie potoku uczenia Maszynowego, w tym przykładzie użyto przykładu `HVAC.csv` pliku danych, który jest wstępnie załadowane na domyślny magazyn dla klastra HDInsight, Azure Storage lub magazynu usługi Data Lake. Aby wyświetlić zawartość pliku, przejdź do `/HdiSamples/HdiSamples/SensorSampleData/hvac` katalogu. `HVAC.csv` zawiera zestaw uzyskane przy użyciu docelowej i rzeczywiste temperatury HVAC (*grzejników, wentylatorów i klimatyzacja*) systemów w różnych budynkach. Celem jest uczenie modelu danych i generuje prognozy temperatury dla danego kompilowania.
 
 Poniższy kod:
 

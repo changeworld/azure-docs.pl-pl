@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Time Series Insights Utwórz środowisko — tworzenie środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Tworzenie środowiska usługi Azure Time Series Insights | Microsoft Docs
 description: W tym artykule opisano sposób użycia witryny Azure portal do utworzenia nowego środowiska usługi Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: f50f0de4cff72f8eaf8304893d49ab14a68a3fc4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 74cd56f5a8bfe8717927c13e6bf30eb27b43fbc9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277305"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558536"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 W tym artykule opisano sposób tworzenia nowego środowiska usługi Time Series Insights przy użyciu witryny Azure portal.

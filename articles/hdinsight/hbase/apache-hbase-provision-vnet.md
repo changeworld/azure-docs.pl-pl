@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: cf037000a047b02f3874c3bccc9678f2ea18ecec
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011202"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653802"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów Apache HBase w HDInsight w usłudze Azure Virtual Network
 Dowiedz się, jak tworzyć klastry usługi Azure HDInsight Apache HBase w [Azure Virtual Network][1].
@@ -34,14 +34,14 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Tworzenie klastra Apache HBase w sieci wirtualnej
 W tej sekcji tworzysz klaster oparty na systemie Linux bazy danych Apache HBase przy użyciu zależne konto usługi Azure Storage w sieci wirtualnej platformy Azure przy użyciu [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md). Inne metody tworzenia klastrów i opis ustawień, zobacz [klastrów HDInsight tworzenie](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat przy użyciu szablonu, aby utworzyć klastry platformy Apache Hadoop w HDInsight, zobacz [klastrów utworzyć Apache Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-> [!NOTE]
+> [!NOTE]  
 > Niektóre właściwości są zakodowane do szablonu. Na przykład:
 >
-> * **Lokalizacja**: wschodnie stany USA 2
+> * **Lokalizacja**: Wschodnie stany USA 2
 > * **Wersja klastra**: 3.6
 > * **Liczba węzłów procesu roboczego klastra**: 2
 > * **Domyślne konto magazynu**: unikatowy ciąg
-> * **Nazwa sieci wirtualnej**: &lt;Nazwa_klastra >-Sieć wirtualna
+> * **Nazwa sieci wirtualnej**: &lt;Nazwa klastra >-Sieć wirtualna
 > * **Przestrzeń adresowa sieci wirtualnej**: 10.0.0.0/16
 > * **Nazwa podsieci**: subnet1
 > * **Zakres adresów podsieci**: 10.0.0.0/24
@@ -59,8 +59,8 @@ W tej sekcji tworzysz klaster oparty na systemie Linux bazy danych Apache HBase 
    * **Grupa zasobów**: Wybierz **Utwórz nową**, a następnie określ nazwę nowej grupy zasobów.
    * **Lokalizacja**: Wybierz lokalizację dla grupy zasobów.
    * **ClusterName**: Wprowadź nazwę klastra Hadoop, która ma zostać utworzony.
-   * **Nazwa logowania i hasło klastra**: domyślna nazwa logowania to **admin**.
-   * **Nazwa użytkownika i hasło SSH**: domyślna nazwa użytkownika to **sshuser**.  Tę nazwę można zmienić.
+   * **Nazwa logowania i hasło klastra**: Domyślna nazwa logowania to **admin**.
+   * **Nazwa użytkownika protokołu SSH i hasło**: Domyślna nazwa użytkownika to **sshuser**.  Tę nazwę można zmienić.
    * **Wyrażam zgodę na warunki i postanowienia, o których wspomniano**: (Wybierz)
 3. Kliknij pozycję **Kup**. Utworzenie klastra trwa około 20 minut. Po utworzeniu klastra możesz kliknąć bloku klastra w portalu, aby go otworzyć.
 
@@ -71,13 +71,11 @@ Aby rozpocząć pracę z nowego klastra HBase, można użyć procedurach dostęp
 ## <a name="connect-to-the-apache-hbase-cluster-using-apache-hbase-java-rpc-apis"></a>Nawiąż połączenie z klastrem bazy danych Apache HBase przy użyciu interfejsów API programu Apache HBase Java RPC
 1. Tworzenie infrastruktury jako usługi (IaaS) maszyny wirtualnej w tej samej sieci wirtualnej platformy Azure i tej samej podsieci. Aby uzyskać instrukcje dotyczące tworzenia nowej maszyny wirtualnej IaaS, zobacz [utworzyć serwer systemu Windows uruchomiona maszyna wirtualna](../../virtual-machines/windows/quick-create-portal.md). Gdy czynności opisane w niniejszym dokumencie, należy użyć następujących wartości dla konfiguracji sieci:
 
-   * **Sieć wirtualna**: &lt;nazwa_klastra >-Sieć wirtualna
+   * **Sieć wirtualna**: &lt;Nazwa klastra >-Sieć wirtualna
    * **Podsieci**: subnet1
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Zastąp &lt;nazwa_klastra > o nazwie, którego użyto podczas tworzenia klastra HDInsight w poprzednich krokach.
-   >
-   >
 
    Korzystając z tych wartości, maszyna wirtualna jest umieszczana w tej samej sieci wirtualnej i podsieci co klaster HDInsight. Ta konfiguracja pozwala im może komunikować się bezpośrednio ze sobą. Istnieje sposób, aby utworzyć klaster usługi HDInsight za pomocą pustego węzła krawędzi. W węźle brzegowym może służyć do zarządzania klastrem.  Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w HDInsight](../hdinsight-apps-use-edge-node.md).
 
@@ -232,10 +230,8 @@ Aby użyć tych informacji w aplikacji w języku Java, możesz wykonać kroki op
         <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
     </property>
 
-> [!NOTE]
+> [!NOTE]  
 > Aby uzyskać więcej informacji na temat rozpoznawania nazw w systemie Azure sieci wirtualnych, takich jak używać własnego serwera DNS, zobacz [rozpoznawania nazw (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
->
->
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób tworzenia klastra Apache HBase. Aby dowiedzieć się więcej, zobacz:

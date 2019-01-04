@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 378f52f0418c8c99e9ce6ca393ca10a77504698d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499580"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632029"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop oparte na Windows w HDInsight przy użyciu witryny Azure portal
 
@@ -55,12 +55,10 @@ HDInsight działa ze składnikami szerokiego zakresu technologii Apache Hadoop. 
 * Podczas tworzenia klastra, należy użyć parametrów dostosowania klastra HDInsight .NET SDK lub programu Azure PowerShell. Te zmiany w konfiguracji są następnie zachowywane czas życia klastra i nie dotyczy klastra węzeł odtwarza z obrazu, które platforma Azure przeprowadza okresowo konserwacji. Aby uzyskać więcej informacji na temat korzystania z parametrów dostosowywania klastra, zobacz [klastrów HDInsight tworzenie](hdinsight-hadoop-provision-linux-clusters.md).
 * Niektóre składnikami macierzystymi Java, takich jak [Apache Mahout](https://mahout.apache.org/) i [usuwania kaskadowego](https://www.cascading.org/), można uruchomić w klastrze jako pliki JAR. Te pliki JAR można przekazany do usługi Azure Blob storage i przesłane do klastrów HDInsight za pomocą mechanizmów przesyłanie zadań Hadoop. Aby uzyskać więcej informacji, zobacz [przesłać Apache Hadoop zadań programowo](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
-  > [!NOTE]
+  > [!NOTE]  
   > Jeśli masz problemy dotyczące wdrażania plików JAR, korzystając z klastrami HDInsight lub wywoływania pliki JAR w klastrach HDInsight, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
   >
   > Kaskadowe nie jest obsługiwana przez HDInsight, a nie kwalifikuje się do firmy Microsoft Support. Aby uzyskać listę obsługiwanych składników, zobacz [nowości w wersjach klastra, dostarczone przez HDInsight](hdinsight-component-versioning.md).
-  >
-  >
 
 Instalacja oprogramowania niestandardowego w klastrze za pomocą połączenia pulpitu zdalnego nie jest obsługiwana. Należy unikać przechowywanie wszystkich plików na dyskach węzła głównego, ponieważ zostaną one utracone jeśli trzeba będzie ponownie utworzyć klastry. Zalecane jest przechowywanie plików w usłudze Azure Blob storage. Magazyn obiektów blob jest trwały.
 
@@ -76,55 +74,51 @@ Instalacja oprogramowania niestandardowego w klastrze za pomocą połączenia pu
 
    * Aby dostosować menu, kliknij prawym przyciskiem myszy w dowolnym miejscu w menu, a następnie kliknij przycisk **Dostosuj**.
    * **Ustawienia** i **wszystkie ustawienia**: Wyświetla **ustawienia** blok dla klastra, który umożliwia dostęp do szczegółowych informacji dla klastra.
-   * **Pulpit nawigacyjny**, **pulpit nawigacyjny klastra** i **adresu URL**: są to wszystkie sposoby dostępu pulpit nawigacyjny klastra, który jest sieci Ambari Web w przypadku klastrów opartych na systemie Linux.
-   * **Bezpieczna powłoka**: zawiera instrukcje łączenia z klastrem przy użyciu połączenia protokołu Secure Shell (SSH).
-   * **Skalowanie klastra**: umożliwia zmianę liczby węzłów procesu roboczego dla tego klastra.
-   * **Usuń**: usuwa klaster.
-   * **Przewodnik Szybki Start**: Wyświetla informacje, które pomogą Ci rozpocząć korzystanie z HDInsight.
-   * **Użytkownicy**: można ustawić uprawnienia dla *portalu zarządzania* klastra dla innych użytkowników w Twojej subskrypcji platformy Azure.
+   * **Pulpit nawigacyjny**, **klastra pulpit nawigacyjny** i **adresu URL**: Są to wszystkie sposoby dostępu pulpit nawigacyjny klastra, który jest sieci Ambari Web w przypadku klastrów opartych na systemie Linux.
+   * **Bezpieczna powłoka**: Zawiera instrukcje łączenia z klastrem przy użyciu połączenia protokołu Secure Shell (SSH).
+   * **Skalowanie klastra**: Umożliwia zmianę liczby węzłów procesu roboczego dla tego klastra.
+   * **Usuń**: Usuwa klaster.
+   * **Przewodnik Szybki Start**: Wyświetla informacje, które pomogą Ci rozpocząć pracę, przy użyciu HDInsight.
+   * **Użytkownicy**: Można ustawić uprawnienia dla *portalu zarządzania* klastra dla innych użytkowników w Twojej subskrypcji platformy Azure.
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > To *tylko* dotyczy dostępu i uprawnień do tego klastra w witrynie Azure portal i nie ma wpływu na kto może nawiązać połączenia lub przesyłania zadań do klastra HDInsight.
-     >
-     >
-   * **Tagi**: tagi umożliwiają ustawianie pary klucz/wartość, aby zdefiniować taksonomię niestandardowych usług w chmurze. Na przykład, może utworzyć klucz o nazwie **projektu**, a następnie użyj wspólnej wartości dla wszystkich usług skojarzone z określonego projektu.
-   * **Widoki Ambari**: łącza do sieci Web Ambari.
 
-     > [!IMPORTANT]
+   * **Tagi**: Tagi umożliwiają ustawienie pary klucz/wartość, aby zdefiniować taksonomię niestandardowych usług w chmurze. Na przykład, może utworzyć klucz o nazwie **projektu**, a następnie użyj wspólnej wartości dla wszystkich usług skojarzone z określonego projektu.
+   * **Widoki Ambari**: Zawiera łącza do sieci Web Ambari.
+
+     > [!IMPORTANT]  
      > Aby zarządzać usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-     >
-     >
 
      **Użycie**:
 
      ![Użycie klastra HDInsight portalu platformy Azure](./media/hdinsight-administer-use-management-portal/hdinsight-portal-cluster-usage.png)
-5. Kliknij przycisk **ustawienia**.
+5. Kliknij pozycję **Ustawienia**.
 
     ![Użycie klastra HDInsight portalu platformy Azure](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * **Właściwości**: wyświetlanie właściwości klastra.
+   * **Właściwości**: Wyświetl właściwości klastra.
    * **Klaster tożsamości usługi AAD**:
-   * **Klucze Azure Storage**: wyświetlić domyślne konto magazynu i klucza. Konto magazynu jest konfiguracji podczas procesu tworzenia klastra.
-   * **Klaster logowania**: zmiana nazwy użytkownika protokołu HTTP klastra i hasło.
-   * **Zewnętrzne magazyny metadanych**: Wyświetl [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/) magazyny metadanych. Magazyny metadanych można skonfigurować tylko podczas procesu tworzenia klastra.
-   * **Skalowanie klastra**: zwiększyć i zmniejszyć liczbę węzłów procesu roboczego klastra.
-   * **Pulpit zdalny**: Włączanie i wyłączanie dostępu do usług pulpitu zdalnego (RDP) i konfigurowanie nazwy użytkownika protokołu RDP.  Nazwa użytkownika protokołu RDP musi być inna niż nazwa użytkownika protokołu HTTP.
+   * **Klucze usługi Azure Storage**: Wyświetl domyślne konto magazynu i klucza. Konto magazynu jest konfiguracji podczas procesu tworzenia klastra.
+   * **Klaster logowania**: Zmień nazwę użytkownika klastra HTTP i hasło.
+   * **Zewnętrzne magazyny metadanych**: Widok [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/) magazyny metadanych. Magazyny metadanych można skonfigurować tylko podczas procesu tworzenia klastra.
+   * **Skalowanie klastra**: Zwiększać i zmniejszać liczbę węzłów procesu roboczego klastra.
+   * **Pulpit zdalny**: Włączanie i wyłączanie dostępu zdalnego (RDP) pulpitu i konfigurowanie nazwy użytkownika protokołu RDP.  Nazwa użytkownika protokołu RDP musi być inna niż nazwa użytkownika protokołu HTTP.
    * **Partner of Record**:
 
-     > [!NOTE]
+     > [!NOTE]  
      > Jest to ogólny listą dostępnych ustawień; nie wszystkie z nich będzie stosowany w przypadku wszystkich typów klastra.
-     >
-     >
+
 6. Kliknij przycisk **właściwości**:
 
     Sekcja właściwości zawiera następujące elementy:
 
    * **Nazwa hosta**: Nazwa klastra.
    * **Adres URL klastra**.
-   * **Stan**: obejmują zostało przerwane, akceptowane, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, operacyjne, uruchomione, błąd, usuwanie, usunięte, przekroczenie limitu czasu, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, ClusterCustomization CertRolloverQueued, ResizeQueued,
+   * **Stan**: Obejmują zostało przerwane, akceptowane, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, operacyjne, uruchomione, błąd, usuwanie, usunięte, przekroczenie limitu czasu, DeleteQueued, DeleteTimedout, DeleteError PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization
    * **Region**: Lokalizacja platformy Azure. Aby uzyskać listę obsługiwanych lokalizacji platformy Azure, zobacz **Region** lista rozwijana na [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Dane utworzone**.
-   * **System operacyjny**: albo **Windows** lub **Linux**.
+   * **System operacyjny**: Albo **Windows** lub **Linux**.
    * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Wersja**. Zobacz [wersji HDInsight](hdinsight-component-versioning.md)
    * **Subskrypcja**: Nazwa subskrypcji.
@@ -145,10 +139,8 @@ Zobacz też [Pause/zamykania klastrów](#pauseshut-down-clusters).
 ## <a name="scale-clusters"></a>Skalowanie klastrów
 Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego używany przez klaster, który jest uruchamiany w usłudze Azure HDInsight bez konieczności ponownego tworzenia klastra.
 
-> [!NOTE]
+> [!NOTE]  
 > Tylko klastry HDInsight w wersji 3.1.3 lub nowszej są obsługiwane. Jeśli masz pewności, jaka wersja klastra, możesz sprawdzić na stronie właściwości.  Zobacz [listy i wyświetlaniu klastrów](#list-and-show-clusters).
->
->
 
 Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane przez HDInsight:
 
@@ -175,7 +167,7 @@ Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane pr
   * Interfejs użytkownika sieci web Apache Storm
   * Narzędzia interfejsu wiersza polecenia (CLI)
 
-    Zapoznaj się [dokumentacji platformy Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) Aby uzyskać więcej informacji.
+    Zapoznaj się [dokumentacji platformy Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) Aby uzyskać więcej informacji.
 
     Interfejs użytkownika sieci web systemu Storm jest dostępny w klastrze HDInsight:
 
@@ -234,10 +226,8 @@ Klastry HDInsight mają następujące usługi sieci web HTTP (wszystkie te usłu
 
 Domyślnie te usługi są przyznawane dostępu. Możesz można odwołać/Udziel dostępu w witrynie Azure portal.
 
-> [!NOTE]
+> [!NOTE]  
 > Przez przyznanie/odbieranie prawa dostępu, możesz zresetować klastra, nazwę użytkownika i hasło.
->
->
 
 **Do przydzielenia/odwołania dostępu do usług sieci web HTTP**
 
@@ -264,10 +254,10 @@ Zobacz [listy i wyświetlaniu klastrów](#list-and-show-clusters).
 ## <a name="open-hdinsight-query-console"></a>Otwórz konsolę zapytania HDInsight
 Z konsoli zapytań HDInsight obejmuje następujące funkcje:
 
-* **Edytor hive**: graficznego interfejsu użytkownika sieci web interfejs przesyłania zadań Hive.  Zobacz [uruchamianie Apache zapytań Hive przy użyciu konsoli zapytań](hadoop/apache-hadoop-use-hive-query-console.md).
+* **Edytor hive**: Graficzny interfejs użytkownika sieci web interfejs przesyłania zadań Hive.  Zobacz [uruchamianie Apache zapytań Hive przy użyciu konsoli zapytań](hadoop/apache-hadoop-use-hive-query-console.md).
 
     ![Edytor portalu hive HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
-* **Historia zadania**: zadań Hadoop monitora.  
+* **Historia zadania**: Monitorowanie zadań usługi Hadoop.  
 
     ![Historia zadań portalu HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
@@ -300,10 +290,8 @@ Można również użyć **Przeglądaj system plików** narzędzia z **interfejsu
 ## <a name="monitor-cluster-usage"></a>Monitorowanie użycia klastra
 **Użycia** części bloku klastra HDInsight Wyświetla informacje o liczba rdzeni dostępnych do Twojej subskrypcji do użycia z usługą HDInsight, a także liczby rdzeni przydzielonych do tego klastra i jak są przydzielane dla węzłów w klastrze. Zobacz [listy i wyświetlaniu klastrów](#list-and-show-clusters).
 
-> [!IMPORTANT]
-> Aby monitorować usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
->
->
+> [!IMPORTANT]  
+> Aby monitorować usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="open-hadoop-ui"></a>Otwórz interfejs użytkownika usługi Hadoop
 Do monitorowania klastra, Przeglądaj system plików i sprawdź dzienniki, kliknij przycisk **interfejsu użytkownika usługi Hadoop** w konsoli zapytań HDInsight. Zobacz [konsoli Otwórz zapytanie HDInsight](#open-hdinsight-query-console).
@@ -325,10 +313,8 @@ Poświadczenia podane podczas jego tworzenia klastra dają dostęp do usługi w 
 
     Wartości domyślne dla wygasa jest tygodnia.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Można również użyć zestawu .NET SDK HDInsight można włączyć pulpitu zdalnego w klastrze. Użyj **EnableRdp** metody na obiekt klienta HDInsight w następujący sposób: **klienta. EnableRdp (nazwa_klastra, lokalizację, "rdpuser", "rdppassword" DateTime.Now.AddDays(6))**. Podobnie, aby wyłączyć pulpitu zdalnego w klastrze, należy użyć **klienta. DisableRdp (clustername, lokalizacja)**. Aby uzyskać więcej informacji na temat tych metod, zobacz [dokumentacja zestawu SDK .NET usługi HDInsight](https://go.microsoft.com/fwlink/?LinkId=529017). Ma to zastosowanie tylko w przypadku klastrów HDInsight w systemie Windows.
-   >
-   >
 
 **Nawiązać połączenia z klastrem przy użyciu protokołu RDP**
 
@@ -347,7 +333,7 @@ Do łączenia z klastrem przy użyciu pulpitu zdalnego za pomocą wiersza polece
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
-    Aby uzyskać więcej informacji na temat poleceń platformy Hadoop, zobacz [Apache Hadoop polecenia odwołanie](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
+    Aby uzyskać więcej informacji na temat poleceń platformy Hadoop, zobacz [Apache Hadoop polecenia odwołanie](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
 Na poprzednim zrzucie ekranu Nazwa folderu ma numer wersji usługi Hadoop, które są osadzone. Numer wersji można zmienić w zależności od wersji składniki platformy Hadoop, zainstalowane w klastrze. Aby odwołać się do tych folderów, można użyć zmiennych środowiskowych platformy Hadoop. Na przykład:
 

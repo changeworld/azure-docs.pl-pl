@@ -8,20 +8,20 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581004"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651779"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Utwórz Apache Spark Streaming zadań z dokładnie — raz zdarzenia przetwarzania
 
 Aplikacji do przetwarzania Stream wykonać różne podejścia do sposobu obsługi ponownego przetwarzania wiadomości po niektórych awarii w systemie:
 
-* Co najmniej raz: każdy komunikat jest gwarantowane do przetworzenia, ale może są przetwarzane w więcej niż jeden raz.
-* Co najwyżej raz: każdy komunikat może lub nie mogą być przetwarzane. Jeśli komunikat jest przetwarzany, jego jest przetwarzany tylko raz.
-* Dokładnie jeden raz: każdy komunikat jest gwarantowane do przetworzenia jeden raz i tylko jeden raz.
+* Co najmniej raz: Każdy komunikat jest gwarantowane do przetworzenia, ale może są przetwarzane w więcej niż jeden raz.
+* Co najwyżej raz: Każdy komunikat może lub nie mogą być przetwarzane. Jeśli komunikat jest przetwarzany, jego jest przetwarzany tylko raz.
+* Dokładnie jeden raz: Każdy komunikat jest gwarantowane do przetworzenia jeden raz i tylko jeden raz.
 
 W tym artykule przedstawiono sposób konfigurowania, przesyłania strumieniowego platformy Spark w celu osiągnięcia dokładnie — po zakończeniu przetwarzania.
 
@@ -29,11 +29,11 @@ W tym artykule przedstawiono sposób konfigurowania, przesyłania strumieniowego
 
 Najpierw należy wziąć pod uwagę jak wszystkie punkty awarii systemu, uruchom ponownie po wystąpił problem i jak można uniknąć utraty danych. Aplikacja usługi przesyłania strumieniowego platformy Spark ma:
 
-* Źródło danych wejściowych
-* Jeden lub więcej procesów odbiorcy, które pobierają dane ze źródła danych wejściowych
-* Zadania, które przetwarzają dane
-* Ujścia danych wyjściowych
-* Proces sterownika, który zarządza długotrwałe zadania
+* Źródło danych wejściowych.
+* Jeden lub więcej procesów odbiorcy, które pobierają dane ze źródła danych wejściowych.
+* Zadania, które przetwarzają dane.
+* Ujścia danych wyjściowych.
+* Proces sterownika, który zarządza długotrwałe zadania.
 
 Dokładnie — po semantyki wymagają, że żadne dane nie są tracone w dowolnym momencie i przetworzenia komunikatu jest ponownego uruchamiania, niezależnie od tego, gdzie występuje błąd.
 
@@ -41,7 +41,7 @@ Dokładnie — po semantyki wymagają, że żadne dane nie są tracone w dowolny
 
 Źródłowy odczytuje zdarzenia z aplikacji Spark Streaming musi być *przechwytywaniem*. Oznacza to, że w przypadku, gdy komunikat został pobrany, ale następnie system nie powiodła się, zanim może być utrwalone lub przetwarzania wiadomości, źródła należy podać tę samą wiadomość ponownie.
 
-Na platformie Azure, obie usługi Azure Event Hubs i [platformy Apache Kafka](https://kafka.apache.org/) na HDInsight zapewniają przechwytywaniem źródeł. Innym przykładem przechwytywaniem źródła jest systemem odpornej na uszkodzenia plików, takich jak [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), obiektów blob usługi Azure Storage lub Azure Data Lake Store, gdzie wszystkie dane są przechowywane w nieskończoność i w dowolnym momencie możesz ponownie odczytu danych w całości.
+Na platformie Azure, obie usługi Azure Event Hubs i [platformy Apache Kafka](https://kafka.apache.org/) na HDInsight zapewniają przechwytywaniem źródeł. Innym przykładem przechwytywaniem źródła jest systemem odpornej na uszkodzenia plików, takich jak [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), obiektów blob usługi Azure Storage lub usługi Azure Data Lake Storage, gdzie wszystkie dane są przechowywane w nieskończoność i w dowolnym momencie możesz ponownie odczytu danych w całości.
 
 ### <a name="reliable-receivers"></a>Niezawodne odbiorcy
 
@@ -49,7 +49,7 @@ W przesyłanie strumieniowe Spark, źródeł, takich jak Event Hubs i Kafka maj�
 
 ### <a name="use-the-write-ahead-log"></a>Korzystanie z dziennika zapisu z wyprzedzeniem
 
-Przesyłanie strumieniowe Spark obsługuje dziennika zapisu z wyprzedzeniem, gdzie każdego odebranego zdarzenia jest najpierw zapisywane w katalogu punktu kontrolnego platforma Spark w odpornej na uszkodzenia pamięci masowej, a następnie zapisywane w odporne rozproszone zestawu danych (RDD). Na platformie Azure odpornej na uszkodzenia magazyn jest wspierana przez usługę Azure Storage lub Azure Data Lake Store w systemie HDFS. W aplikacji Spark Streaming zapisu z wyprzedzeniem dziennik jest włączony dla wszystkich odbiorców, ustawiając `spark.streaming.receiver.writeAheadLog.enable` ustawienia konfiguracji do `true`. Dziennik zapisu z wyprzedzeniem zapewnia odporność na uszkodzenia na wypadek awarii sterownik i executors.
+Przesyłanie strumieniowe Spark obsługuje dziennika zapisu z wyprzedzeniem, gdzie każdego odebranego zdarzenia jest najpierw zapisywane w katalogu punktu kontrolnego platforma Spark w odpornej na uszkodzenia pamięci masowej, a następnie zapisywane w odporne rozproszone zestawu danych (RDD). Na platformie Azure odpornej na uszkodzenia magazyn jest wspierana przez usługę Azure Storage lub Azure Data Lake Storage systemu plików HDFS. W aplikacji Spark Streaming zapisu z wyprzedzeniem dziennik jest włączony dla wszystkich odbiorców, ustawiając `spark.streaming.receiver.writeAheadLog.enable` ustawienia konfiguracji do `true`. Dziennik zapisu z wyprzedzeniem zapewnia odporność na uszkodzenia na wypadek awarii sterownik i executors.
 
 Dla procesów roboczych uruchomionych zadań przed dane zdarzenia każdy RDD jest zgodnie z definicją zarówno replikowane i rozproszone na wielu procesów roboczych. Jeśli zadanie nie powiedzie się, ponieważ proces roboczy, uruchamiając go wystąpiła awaria, zadanie zostanie ponownie uruchomiona w ramach innego procesu roboczego, z repliką dane zdarzenia, więc zdarzenia nie zostaną utracone.
 
@@ -66,7 +66,7 @@ Punkty kontrolne są włączone w przesyłania strumieniowego platformy Spark w 
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    HDInsight należy zapisać te punkty kontrolne do domyślnego magazynu dołączone do klastra, usługa Azure Storage lub Azure Data Lake Store.
+    HDInsight należy zapisać te punkty kontrolne do domyślnego magazynu dołączone do klastra, usługa Azure Storage lub magazynu usługi Azure Data Lake.
 
 2. Następnie określ interwał punktu kontrolnego (w sekundach) na DStream. Po każdym odstępie dane o stanie pochodną dane wejściowe zdarzenia są utrwalane w magazynie. Dane stanu utrwalonego może zmniejszyć obliczeń potrzebne podczas odbudowywania stanu ze źródła zdarzenia.
 
@@ -85,7 +85,7 @@ Implementowanie logiki, która najpierw sprawdza istnienie przychodzących wynik
 
 Na przykład można użyć procedury składowanej przy użyciu usługi Azure SQL Database, która wstawia zdarzenia do tabeli. Tę procedurę składowaną najpierw wyszukuje zdarzenia według pól kluczy i tylko wtedy, gdy nie pasującego zdarzenia można odnaleźć rekordu wstawione do tabeli.
 
-Innym przykładem jest używać partycjonowanych systemu plików, takich jak obiekty BLOB usługi Azure Storage lub Azure Data Lake store. W tym przypadku logikę ujścia nie trzeba sprawdzić, czy istnieje plik. Jeśli istnieje plik reprezentujący zdarzenia, po prostu jest zastępowany przy użyciu tych samych danych. W przeciwnym razie tworzony jest nowy plik w ścieżce obliczanej.
+Innym przykładem jest użyć systemu plików podzielonym na partycje, takich jak obiekty BLOB usługi Azure Storage lub usługi Azure Data Lake Storage. W tym przypadku logikę ujścia nie trzeba sprawdzić, czy istnieje plik. Jeśli istnieje plik reprezentujący zdarzenia, po prostu jest zastępowany przy użyciu tych samych danych. W przeciwnym razie tworzony jest nowy plik w ścieżce obliczanej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

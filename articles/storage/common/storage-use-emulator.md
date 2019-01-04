@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052547"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629632"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
 
@@ -88,21 +88,24 @@ Po zainstalowaniu i pracę z emulatora magazynu, możesz przetestować kod przed
 Aby uzyskać więcej informacji na temat parametrów połączenia, zobacz [Konfigurowanie usługi Azure Storage, parametry połączenia](../storage-configure-connection-string.md).
 
 ### <a name="authorize-with-a-shared-access-signature"></a>Autoryzuj przy użyciu sygnatury dostępu współdzielonego
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Niektóre biblioteki klienta usługi Azure storage, takich jak biblioteka Xamarin obsługują tylko uwierzytelnianie przy użyciu tokenu (SAS) sygnatury dostępu współdzielonego. Możesz utworzyć token sygnatury dostępu Współdzielonego, za pomocą narzędzia, takiego jak [Eksploratora usługi Storage](http://storageexplorer.com/) lub innej aplikacji, która obsługuje uwierzytelnianie klucza wspólnego.
 
 Można również wygenerować token sygnatury dostępu Współdzielonego, za pomocą programu Azure PowerShell. Poniższy przykład generuje token SAS z pełnymi uprawnieniami do kontenera obiektów blob:
 
-1. Instalacja programu Azure PowerShell, jeśli nie jest jeszcze (przy użyciu najnowszej wersji programu Azure PowerShell, poleceń cmdlet zaleca się). Aby uzyskać instrukcje dotyczące instalacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+1. Instalacja programu Azure PowerShell, jeśli nie jest jeszcze (przy użyciu najnowszej wersji programu Azure PowerShell, poleceń cmdlet zaleca się). Aby uzyskać instrukcje dotyczące instalacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 2. Otwórz program Azure PowerShell i uruchom następujące polecenia, zastępując `CONTAINER_NAME` o nazwie wybrane:
 
 ```powershell
-$context = New-AzureStorageContext -Local
+$context = New-AzStorageContext -Local
 
-New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+New-AzStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
 $now = Get-Date
 
-New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+New-AzStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 ```
 
 Wynikowy sygnatury dostępu współdzielonego identyfikator URI dla nowego kontenera powinny wyglądać podobnie do:
@@ -169,8 +172,8 @@ Aby wyświetlić listę opcji, wpisz ciąg `/help` w wierszu polecenia.
 | **Rozpocznij** |Uruchamiania emulatora magazynu. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Uruchom emulator w bieżącym procesie zamiast tworzenia nowego procesu. |
 | **Stop** |Zatrzymuje emulatora magazynu. |`AzureStorageEmulator.exe stop` | |
 | **Stan** |Wyświetla stan emulatora magazynu. |`AzureStorageEmulator.exe status` | |
-| **Usuń zaznaczenie** |Czyści dane w usługach wszystkie określone w wierszu polecenia. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*Obiekt blob*: Czyści dane obiektu blob. <br/>*kolejka*: usuwa dane w kolejce. <br/>*Tabela*: usuwa dane tabeli. <br/>*wszystkie*: usuwa wszystkie dane w przypadku wszystkich usług. |
-| **Init** |Przeprowadza jednorazowe inicjowanie, aby skonfigurować emulator. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Serwer serverName\instanceName*: Określa serwera hostującego wystąpienie programu SQL. <br/>*instanceName — sqlinstance*: Określa nazwę wystąpienia serwera SQL, który ma być używany w domyślnym wystąpieniu serwera. <br/>*-forcecreate*: wymusza utworzenie bazy danych SQL, nawet jeśli już istnieje. <br/>*-skipcreate*: pomija tworzenie bazy danych SQL. To ma pierwszeństwo przed - forcecreate.<br/>*-reserveports*: próbuje zarezerwować portach HTTP skojarzone z usługami.<br/>*-unreserveports*: próby usunięcia rezerwacji dla portów HTTP skojarzone z usługami. To ma pierwszeństwo przed - reserveports.<br/>*-inprocess*: wykonuje inicjowania w bieżącym procesie zamiast duplikowania nowego procesu. Bieżący proces musi zostać uruchomiona z podwyższonym poziomem uprawnień, jeśli zmiana portu rezerwacji. |
+| **Usuń zaznaczenie** |Czyści dane w usługach wszystkie określone w wierszu polecenia. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*Obiekt blob*: Czyści dane z obiektu blob. <br/>*kolejka*: Czyści dane w kolejce. <br/>*Tabela*: Czyści tabeli danych. <br/>*Wszystkie*: Czyści wszystkie dane w przypadku wszystkich usług. |
+| **Init** |Przeprowadza jednorazowe inicjowanie, aby skonfigurować emulator. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Serwer serverName\instanceName*: Określa serwera hostującego wystąpienie programu SQL. <br/>*instanceName — sqlinstance*: Określa nazwę wystąpienia serwera SQL, który ma być używany w domyślnym wystąpieniu serwera. <br/>*-forcecreate*: Wymusza utworzenie bazy danych SQL, nawet jeśli już istnieje. <br/>*-skipcreate*: Pomija tworzenie bazy danych SQL. To ma pierwszeństwo przed - forcecreate.<br/>*-reserveports*: Próby zarezerwowania portach HTTP skojarzone z usługami.<br/>*-unreserveports*: Podejmie próbę usunięcia rezerwacji dla portów HTTP skojarzone z usługami. To ma pierwszeństwo przed - reserveports.<br/>*-inprocess*: Wykonuje inicjowania w bieżącym procesie zamiast duplikowania nowego procesu. Bieżący proces musi zostać uruchomiona z podwyższonym poziomem uprawnień, jeśli zmiana portu rezerwacji. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Różnice między emulatora magazynu i usługi Azure Storage
 Ponieważ emulator magazynu jest emulowane środowiska uruchomiona w lokalnym wystąpieniu programu SQL, istnieją różnice w funkcjonalności między emulatora i konto magazynu platformy Azure w chmurze:

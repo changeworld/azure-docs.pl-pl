@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877188"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720720"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Transakcje rozproszone w bazach danych w chmurze
 Transakcje elastyczne bazy danych usługi Azure SQL Database (baza danych SQL) umożliwiają uruchamianie transakcje obejmujące wiele baz danych w bazie danych SQL. Transakcji elastycznych baz danych dla bazy danych SQL są dostępne dla aplikacji .NET za pomocą ADO .NET oraz integracji z dobrze znanych programowania środowisko przy użyciu [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) klasy. Aby uzyskać biblioteki, zobacz [platformy .NET Framework 4.6.1 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -92,7 +92,7 @@ Transakcji elastycznych baz danych dla bazy danych SQL obsługują także koordy
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Instalacja platformy .NET dla usług Azure Cloud Services
-Platforma Azure udostępnia kilka oferty do hostowania aplikacji .NET. Porównanie różnych ofert jest dostępna w [porównanie usługi Azure App Service, Cloud Services i Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md). Jeśli system operacyjny gościa oferty jest mniejszy niż .NET 4.6.1 wymaganych dla elastycznej transakcji, należy uaktualnić system operacyjny gościa do 4.6.1. 
+Platforma Azure udostępnia kilka oferty do hostowania aplikacji .NET. Porównanie różnych ofert jest dostępna w [porównanie usługi Azure App Service, Cloud Services i Virtual Machines](../app-service/overview-compare.md). Jeśli system operacyjny gościa oferty jest mniejszy niż .NET 4.6.1 wymaganych dla elastycznej transakcji, należy uaktualnić system operacyjny gościa do 4.6.1. 
 
 Dla usług Azure App Services uaktualnienia do systemu operacyjnego gościa nie są obecnie obsługiwane. Usługi Azure Virtual Machines po prostu Zaloguj się do maszyny Wirtualnej i uruchom Instalatora programu najnowszy program .NET framework. Usług Azure Cloud Services muszą obejmować instalację nowszej wersji platformy .NET do zadania uruchamiania wdrożenia. Koncepcje i kroki są udokumentowane w artykule [Instalowanie programu .NET w roli usługi w chmurze](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 
@@ -123,17 +123,17 @@ Transakcje elastyczne bazy danych są obsługiwane na różnych serwerach logicz
 Użyj następujących poleceń cmdlet programu PowerShell do zarządzania relacjami między serwerami komunikacji dla transakcji elastycznych baz danych:
 
 * **Nowe AzureRmSqlServerCommunicationLink**: Użyj tego polecenia cmdlet, aby utworzyć nową relację komunikacji między dwoma serwerami logicznymi w usłudze Azure SQL DB. Relacja jest symetryczne, co oznacza, że oba serwery mogą inicjować transakcji z innym serwerem.
-* **Get-AzureRmSqlServerCommunicationLink**: Użyj tego polecenia cmdlet do pobierania istniejące relacje komunikacyjne oraz ich właściwości.
+* **Get-AzureRmSqlServerCommunicationLink**: Użyj następującego polecenia cmdlet, aby pobrać istniejące relacje komunikacyjne i ich właściwości.
 * **Usuń AzureRmSqlServerCommunicationLink**: Użyj tego polecenia cmdlet, aby usunąć istniejącą relację, która komunikacji. 
 
 ## <a name="monitoring-transaction-status"></a>Monitorowanie stanu transakcji
-Użyj dynamicznych widoków zarządzania (DMV) w bazie danych SQL do Monitora stanu i postępu transakcji trwającej elastycznej bazy danych. Wszystkich dynamicznych widoków zarządzania, które są powiązane z transakcjami są odpowiednie dla transakcji rozproszonych w bazie danych SQL. Odpowiednie listę widoków DMV tutaj można znaleźć: [powiązane dynamicznych widoków zarządzania transakcji i funkcje (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Użyj dynamicznych widoków zarządzania (DMV) w bazie danych SQL do Monitora stanu i postępu transakcji trwającej elastycznej bazy danych. Wszystkich dynamicznych widoków zarządzania, które są powiązane z transakcjami są odpowiednie dla transakcji rozproszonych w bazie danych SQL. Można znaleźć odpowiedniego listy dynamicznych widoków zarządzania tutaj: [Transakcji związanych z dynamicznych widoków zarządzania i funkcje (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
 
 Tych widokach DMV są szczególnie przydatne:
 
 * **sys.DM\_tran\_active\_transakcji**: Wyświetla listę aktualnie aktywnych transakcji i ich stan. Kolumna UOW (jednostki pracy), można zidentyfikować transakcji inny podrzędny, które należą do tej samej transakcji rozproszonych. Wszystkie transakcje w ramach jednej transakcji rozproszonej wykonuje tę samą wartość jednostką pracy. Zobacz [dokumentacji DMV](https://msdn.microsoft.com/library/ms174302.aspx) Aby uzyskać więcej informacji.
-* **sys.DM\_tran\_bazy danych\_transakcji**: udostępnia dodatkowe informacje o transakcji, takich jak położenie transakcji w dzienniku. Zobacz [dokumentacji DMV](https://msdn.microsoft.com/library/ms186957.aspx) Aby uzyskać więcej informacji.
-* **sys.DM\_tran\_blokad**: informacje na temat blokad, które są obecnie nakładane przez trwające transakcje. Zobacz [dokumentacji DMV](https://msdn.microsoft.com/library/ms190345.aspx) Aby uzyskać więcej informacji.
+* **sys.DM\_tran\_bazy danych\_transakcji**: Zawiera dodatkowe informacje o transakcjach, takich jak położenie transakcji w dzienniku. Zobacz [dokumentacji DMV](https://msdn.microsoft.com/library/ms186957.aspx) Aby uzyskać więcej informacji.
+* **sys.DM\_tran\_blokad**: Zawiera informacje dotyczące blokad, które są obecnie nakładane przez trwające transakcje. Zobacz [dokumentacji DMV](https://msdn.microsoft.com/library/ms190345.aspx) Aby uzyskać więcej informacji.
 
 ## <a name="limitations"></a>Ograniczenia
 Poniższe ograniczenia mają zastosowanie obecnie do transakcji elastycznych baz danych w bazie danych SQL:

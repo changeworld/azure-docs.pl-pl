@@ -1,5 +1,5 @@
 ---
-title: Przykład zasad Azure Policy — zatwierdzone obrazy maszyny wirtualnych
+title: Przykład — zatwierdzone obrazy maszyn wirtualnych
 description: Te przykładowe zasady wymagają, aby w środowisku były wdrażane tylko zatwierdzone niestandardowe obrazy.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d4216c785155ac5462dbcb1b48bf58e7bc718601
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efec6c4e0a677681fd9f1132f4573d99b35236d4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965374"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312667"
 ---
 # <a name="approved-vm-images"></a>Zatwierdzone obrazy maszyn wirtualnych
 
@@ -220,7 +219,7 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
 
 | Usługa | Grupa | Operacja | Uwagi |
 |---|---|---|---|
-| Zarządzanie zasobami | Definicje zasad | [Tworzenie](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję zasad Azure Policy w ramach subskrypcji. Alternatywne rozwiązanie: [Tworzenie w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Zarządzanie zasobami | Definicje zasad | [Tworzenie](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję zasad Azure Policy w ramach subskrypcji. Alternatywne rozwiązanie: [](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Zarządzanie zasobami | Przypisania zasad | [Tworzenie](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
 | Zarządzanie zasobami | Przypisania zasad | [Usuwanie](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
 | Zarządzanie zasobami | Definicje zasad | [Usuwanie](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję zasad Azure Policy. Alternatywne rozwiązanie: [Usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |

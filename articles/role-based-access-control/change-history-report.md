@@ -15,16 +15,16 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f8c3c770cb7e30bda16b4857d5b337923d2417d2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967899"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541561"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Wyświetlanie dzienników aktywności dla zmian RBAC
 
-Czasami potrzebujesz informacji na temat zmian kontroli dostępu opartej na rolach, takich jak inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania ról lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Możesz wyświetlić dzienniki aktywności, aby wyświetlić wszystkie zmiany funkcji RBAC w ciągu ostatnich 90 dni.
+Czasami potrzebujesz informacji na temat zmian kontroli dostępu opartej na rolach, takich jak inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania ról lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md). Możesz wyświetlić dzienniki aktywności, aby wyświetlić wszystkie zmiany funkcji RBAC w ciągu ostatnich 90 dni.
 
 ## <a name="operations-that-are-logged"></a>Operacje, które są rejestrowane
 

@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Time Series Insights informacji o wydajności i ograniczania przepustowości — jak monitorować i zmniejszyć ograniczanie żądań w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Jak monitorować i zmniejszyć ograniczanie żądań w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak monitorowanie, diagnozowanie i rozwiązać problemy z wydajnością, które powodują opóźnienia i ograniczania przepustowości w usłudze Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 34f7128a6ab86a23d911f9bc92908102df4dee92
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278427"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556751"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i minimalizowanie ograniczania w celu zmniejszenia opóźnienia w usłudze Azure Time Series Insights
 Gdy ilość danych przychodzących przekroczy konfiguracji w danym środowisku, mogą wystąpić opóźnienia lub ograniczanie żądań w usłudze Azure Time Series Insights.

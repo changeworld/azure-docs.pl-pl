@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 957100e042da1d41fb7c8fa27a5663cf99a41c20
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093939"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794009"
 ---
 # <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
 
@@ -55,6 +55,9 @@ Poniżej przedstawiono listę typów magazynu obsługiwane urządzenia Data Box.
 | Wdrożenie klasyczne | Standardowa (Standard) |
 | Zastosowania ogólne  |Standardowe; obsługiwane są zarówno V1 i V2. |
 | Obiekt blob |Obsługiwane są zarówno gorąca i chłodna. |
+
+>[!NOTE]
+> Usługa Azure Data Lake Storage Gen 2 konta nie są obsługiwane.
 
 
 ### <a name="supported-storage-types"></a>Obsługiwane typy

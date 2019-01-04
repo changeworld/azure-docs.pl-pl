@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6ce51dc9bbcdc7b46593a4800c4fce07a42f3171
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346223"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972175"
 ---
 # <a name="offer-settings-tab"></a>Karta Ustawienia oferty
 
@@ -42,9 +42,6 @@ Ten identyfikator jest związane z Twoim kontem. Jeśli zalogowano się za pomoc
 *Nazwa*
 
 Ten ciąg jest o tym, co będzie wyświetlana jako nazwa oferty w usłudze AppSource lub witrynie Azure Marketplace. *Nazwa* pola jest ograniczona do 50 znaków.  Recenzent może być konieczne edytowanie tytułu umożliwiający dołączenie Nazwa oferty o czasie trwania i typ oferty.
-
->[!Note]
->Ważne: Wprowadź tylko nazwę nazwa rzeczywistej usługi. Nie dołączaj czas trwania i typ usługi.
 
 Poniższy przykład przez Edgewater Fullscope pokazuje, jak nazwa oferty jest składany. Nazwa oferty wygląda następująco:
 

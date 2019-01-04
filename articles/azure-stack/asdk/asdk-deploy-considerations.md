@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864982"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726546"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Zagadnienia dotyczące planowania wdrożenie usługi Azure Stack
 Przed wdrożeniem usługi Azure Stack Development Kit (ASDK), upewnij się, że komputer hosta zestaw deweloperski spełnia wymagania opisane w tym artykule.
@@ -29,17 +29,17 @@ Przed wdrożeniem usługi Azure Stack Development Kit (ASDK), upewnij się, że 
 ## <a name="hardware"></a>Sprzęt
 | Składnik | Minimalne | Zalecane |
 | --- | --- | --- |
-| Stacje dysków: system operacyjny |1 dysk systemu operacyjnego z co najmniej 200 GB miejsca dostępnego dla partycji systemowej (SSD lub HDD) |1 dysk systemu operacyjnego z co najmniej 200 GB miejsca dostępnego dla partycji systemowej (SSD lub HDD) |
-| Stacje dysków: Ogólne ustawienia projektowania zestawu danych<sup>*</sup>  |4 dyski. Każdy dysk udostępnia co najmniej 140 GB pojemności (SSD lub HDD). Używane są wszystkie dostępne dyski. |4 dyski. Każdy dysk udostępnia co najmniej 250 GB pojemności (SSD lub HDD). Używane są wszystkie dostępne dyski. |
-| Obliczenia: procesor CPU |Dwa gniazda: 12 rdzeni fizycznych (łącznie) |Dwa gniazda: 16 rdzeni fizycznych (łącznie) |
-| Obliczenia: pamięć |96 GB pamięci RAM |128 GB pamięci RAM (jest to co najmniej do obsługi dostawcy zasobów PaaS).|
-| Obliczenia: system BIOS |Włączona funkcja Hyper-V (z obsługą usługi SLAT) |Włączona funkcja Hyper-V (z obsługą usługi SLAT) |
-| Sieć: karta sieciowa |Wymagany certyfikat systemu Windows Server 2012 R2 dla karty sieciowej; żadne specjalne funkcje nie są wymagane |Wymagany certyfikat systemu Windows Server 2012 R2 dla karty sieciowej; żadne specjalne funkcje nie są wymagane |
+| Stacje dysków: System operacyjny |1 dysk systemu operacyjnego z co najmniej 200 GB miejsca dostępnego dla partycji systemowej (SSD lub HDD) |1 dysk systemu operacyjnego z co najmniej 200 GB miejsca dostępnego dla partycji systemowej (SSD lub HDD) |
+| Stacje dysków: Ogólne ustawienia projektowania zestawu danych<sup>*</sup>  |4 dyski. Każdy dysk udostępnia co najmniej 240 GB pojemności (SSD lub HDD). Używane są wszystkie dostępne dyski. |4 dyski. Każdy dysk udostępnia co najmniej 400 GB pojemności (SSD lub HDD). Używane są wszystkie dostępne dyski. |
+| Obliczenia: Procesor CPU |Dwa gniazda: 16 rdzeni fizycznych (łącznie) |Dwa gniazda: 20 rdzeni fizycznych (łącznie) |
+| Obliczenia: Memory (Pamięć) |192 GB PAMIĘCI RAM |256 GB PAMIĘCI RAM |
+| Obliczenia: BIOS |Włączona funkcja Hyper-V (z obsługą usługi SLAT) |Włączona funkcja Hyper-V (z obsługą usługi SLAT) |
+| Sieć: NIC |Windows Server 2012 R2 certyfikacji. Żadne specjalne funkcje wymagane |Windows Server 2012 R2 certyfikacji. Żadne specjalne funkcje wymagane |
 | Certyfikacja logo sprzętu |[Certyfikowane dla systemu Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certyfikowane dla systemu Windows Server 2016](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Potrzebujesz więcej niż pojemność to zalecane, jeśli planowane jest dodanie wielu [elementów portalu marketplace](asdk-marketplace-item.md) z platformy Azure.
 
-**Konfiguracja stacji dysków danych:** wszystkie dyski danych muszą być tego samego typu (wszystkie SAS wszystkie SATA i NVMe wszystkie) i pojemności. Jeśli używane są dyski SAS, stacje dysków muszą być dołączone za pomocą pojedynczej ścieżki (nie jest zapewniana obsługa funkcji MPIO, obsługa wielościeżkowa).
+**Konfiguracja stacji dysków danych:** Wszystkie dyski danych muszą być tego samego typu (wszystkie SAS wszystkie SATA i NVMe wszystkie) i pojemności. Jeśli używane są dyski SAS, stacje dysków muszą być dołączone za pomocą pojedynczej ścieżki (nie jest zapewniana obsługa funkcji MPIO, obsługa wielościeżkowa).
 
 **Opcje konfiguracji karty HBA**
 

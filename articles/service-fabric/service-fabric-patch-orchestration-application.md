@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285054"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754037"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -43,13 +43,13 @@ Aplikacja orchestration poprawki zapewnia następujące funkcje:
 
 Aplikacji patch orchestration składa się z następujących Podskładniki:
 
-- **Usługa koordynatora**: Usługa stanowa jest odpowiedzialny za:
+- **Usługa koordynatora**: Ta usługa stanowa jest odpowiedzialny za:
     - Koordynowanie zadania Windows Update dla całego klastra.
     - Przechowywanie wyniku zakończone operacje Windows Update.
-- **Usługa agenta węzła**: tę usługę bezstanową działa we wszystkich węzłach klastra usługi Service Fabric. Usługa jest odpowiedzialna za:
+- **Usługa agenta węzła**: Tę usługę bezstanową działa we wszystkich węzłach klastra usługi Service Fabric. Usługa jest odpowiedzialna za:
     - Uruchamianie NTService agenta węzła.
     - Monitorowanie NTService agenta węzła.
-- **Węzeł Agent NTService**: Usługa ta Windows NT jest uruchamiane na wyższym poziomie uprawnień (SYSTEM). Z kolei Usługa agenta węzła oraz usługi koordynatora będzie działać na niższym poziomie uprawnień (Usługa sieciowa). Usługa jest odpowiedzialny za wykonanie następujących zadań Windows aktualizacji we wszystkich węzłach klastra:
+- **Węzeł Agent NTService**: Ta usługa systemu Windows NT jest uruchamiane na wyższym poziomie uprawnień (SYSTEM). Z kolei Usługa agenta węzła oraz usługi koordynatora będzie działać na niższym poziomie uprawnień (Usługa sieciowa). Usługa jest odpowiedzialny za wykonanie następujących zadań Windows aktualizacji we wszystkich węzłach klastra:
     - Wyłączanie automatycznej aktualizacji Windows w węźle.
     - Pobieranie i instalowanie aktualizacji Windows zgodnie z zasadami użytkownik udostępnił.
     - Ponowne uruchamianie maszyny po instalacji aktualizacji Windows.
@@ -153,15 +153,15 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |TaskApprovalPolicy   |Wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | ciąg<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślna: True)                 | Ta flaga umożliwia instalację aktualizacji systemu operacyjnego Windows.            |
-| WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90).                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
-| WURescheduleCount     | Int <br> (Domyślne: 5).                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony Windows aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
-| WURescheduleTimeInMinutes | Int <br>(Domyślna: 30). | Interwał, w którym usługa zmieni ustalony aktualizacji Windows w przypadku, gdy błąd będzie nadal występować. |
-| WUFrequency           | Ciąg rozdzielony przecinkami (domyślnie: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji Windows. Format i możliwe wartości to: <br>—: Mm: ss co miesiąc, DD, na przykład co miesiąc, 5, 12: 22:32. <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -Brak wskazuje nie powinny odbywać Windows Update.  <br><br> Należy pamiętać, że godziny są w formacie UTC.|
+| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślne: Wartość to true)                 | Ta flaga umożliwia instalację aktualizacji systemu operacyjnego Windows.            |
+| WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90)                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
+| WURescheduleCount     | Int <br> (Domyślnie: 5)                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony Windows aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
+| WURescheduleTimeInMinutes | Int <br>(Domyślnie: 30) | Interwał, w którym usługa zmieni ustalony aktualizacji Windows w przypadku, gdy błąd będzie nadal występować. |
+| WUFrequency           | Ciąg rozdzielony przecinkami (domyślne: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji Windows. Format i możliwe wartości to: <br>—: Mm: ss co miesiąc, DD, na przykład co miesiąc, 5, 12: 22:32. <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -Brak wskazuje nie powinny odbywać Windows Update.  <br><br> Należy pamiętać, że godziny są w formacie UTC.|
 | AcceptWindowsUpdateEula | Wartość logiczna <br>(Domyślnie: true) | Przez ustawienie tej flagi, aplikacja przyjmuje umowy licencji użytkownika końcowego for Windows Update w imieniu właściciela maszyny.              |
 
 > [!TIP]
-> Windows Update, natychmiastowe, ustawić `WUFrequency` względem czasu wdrożenia aplikacji. Na przykład, załóżmy, że klaster testu z pięcioma węzłami, a następnie zaplanować wdrożenie aplikacji o około 5:00 czasu UTC. Jeśli przyjęto założenie, że uaktualnienie aplikacji lub wdrożenia trwa 30 minut na maksymalnym, ustaw WUFrequency jako "Codziennie, 17:30:00."
+> Windows Update, natychmiastowe, ustawić `WUFrequency` względem czasu wdrożenia aplikacji. Na przykład, załóżmy, że klaster testu z pięcioma węzłami, a następnie zaplanować wdrożenie aplikacji o około 5:00 czasu UTC. Jeśli przyjęto założenie, że uaktualnienie aplikacji lub wdrożenia trwa 30 minut na maksymalnym, ustaw WUFrequency jako "Codziennie, 17:30:00"
 
 ## <a name="deploy-the-app"></a>Wdrażanie aplikacji
 
@@ -316,7 +316,7 @@ Jeśli klaster może tolerować systemem n-1-Liczba domen uaktualnienia podczas 
 
 PYTANIE: **Ile czasu zajmuje take zastosowania poprawki względem węzła?**
 
-A. Stosowanie poprawek węzła może potrwać (na przykład: [aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/wdsi/definitions)) do godzin (na przykład: [aktualizacji zbiorczej Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do poprawiania węzła zależy przede wszystkim na 
+A. Stosowanie poprawek węzła może potrwać (na przykład: [Aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/wdsi/definitions)) do godzin (na przykład: [Aktualizacje zbiorcze Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do poprawiania węzła zależy przede wszystkim na 
  - Rozmiar aktualizacji
  - Liczba aktualizacji, które ma być stosowana w okno stosowania poprawek
  - Czas wymagany do zainstalowania aktualizacji, ponowny rozruch węzła (jeśli jest to wymagane) i Zakończ kroki instalacji po ponownym uruchomieniu.

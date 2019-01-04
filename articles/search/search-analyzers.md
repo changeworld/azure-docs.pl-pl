@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310542"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631946"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
@@ -76,7 +76,7 @@ Jeśli wyszukiwanie nie zwraca oczekiwanych rezultatów, najbardziej prawdopodob
 
 ### <a name="compare-english-analyzers"></a>Porównaj analizatory w języku angielskim
 
-[Wersja demonstracyjna analizatora wyszukiwania](http://alice.unearth.ai/) jest aplikacją firm pokaz przedstawiający porównania side-by-side standardowy analizator Lucene, Lucene w języku angielskim analizator i procesora angielskiej języka naturalnego firmy Microsoft. Indeks został rozwiązany; zawiera ona tekstu z popularnych wątku. Dla każdego dane wejściowe zostaną podane, wyniki z każdego analizatora są wyświetlane w sąsiadujących okienka, co daje poczucie przetwarzaniu tego samego ciągu w każdej analizatora. 
+[Wersja demonstracyjna analizatora wyszukiwania](https://alice.unearth.ai/) jest aplikacją firm pokaz przedstawiający porównania side-by-side standardowy analizator Lucene, Lucene w języku angielskim analizator i procesora angielskiej języka naturalnego firmy Microsoft. Indeks został rozwiązany; zawiera ona tekstu z popularnych wątku. Dla każdego dane wejściowe zostaną podane, wyniki z każdego analizatora są wyświetlane w sąsiadujących okienka, co daje poczucie przetwarzaniu tego samego ciągu w każdej analizatora. 
 
 ## <a name="examples"></a>Przykłady
 
@@ -244,13 +244,13 @@ Pola zawierające ciągi w różnych językach, można użyć analizatora język
 
 + Przejrzyj nasze wyczerpujący opis [jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search](search-lucene-query-architecture.md). W tym artykule używa przykładów, aby wyjaśnić, zachowania, które mogą wydawać się counter-intuitive na powierzchni.
 
-+ Spróbuj składnię zapytań dodatkowe [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) sekcji z przykładowym lub [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) w Eksploratorze wyszukiwania w portalu.
++ Spróbuj składnię zapytań dodatkowe [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) sekcji z przykładowym lub [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) w Eksploratorze wyszukiwania w portalu.
 
 + Dowiedz się, jak zastosować [analizatory leksykalne specyficzny dla języka](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Skonfiguruj niestandardowe analizatory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimalnego przetwarzania lub wyspecjalizowanych przetwarzania dla poszczególnych pól.
 
-+ [Porównaj analizatory standardowych i angielskim](http://alice.unearth.ai/) w okienkach sąsiadująco w tej wersji demonstracyjnej witryny sieci web. 
++ [Porównaj analizatory standardowych i angielskim](https://alice.unearth.ai/) w okienkach sąsiadująco w tej wersji demonstracyjnej witryny sieci web. 
 
 ## <a name="see-also"></a>Zobacz także
 

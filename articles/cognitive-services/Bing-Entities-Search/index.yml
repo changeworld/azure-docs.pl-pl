@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2338aa70d0075548bb0bd4e1e34fe34a024948d7
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e73dbdb5a12215dafba285b377de2e22a14b7a0e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456176"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787515"
 documentType: LandingData
 title: Dokumentacja funkcji wyszukiwania jednostek Bing
 metadata:
@@ -60,6 +60,14 @@ sections:
     text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API wyszukiwania jednostek Bing:'
   - type: paragraph
     text: <a href="tutorial-bing-entities-search-single-page-app">Jednostronicowa aplikacja internetowa</a> &#124; <a href="tutorial-bing-entities-search-single-page-app-source">Kod źródłowy</a>
+- title: Przykłady
+  items:
+  - type: paragraph
+    text: 'Znajdowanie przykładów dla interfejsu API wyszukiwania jednostek Bing:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="sdk.md">Przykłady kodu</a>
 - title: Dokumentacja
   items:
   - type: list
@@ -69,4 +77,8 @@ sections:
     - title: Interfejsy API
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference">Interfejs API wyszukiwania jednostek Bing v7</a></p>
     - title: Zestawy SDK
-      html: <p><a href="sdk.md">Zestaw SDK wyszukiwania Bing</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch">Go</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Interfejs wiersza polecenia
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Interfejs wiersza polecenia platformy Azure</a></p>

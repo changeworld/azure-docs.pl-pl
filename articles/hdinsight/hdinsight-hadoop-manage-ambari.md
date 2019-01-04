@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eee37f5a77331b78aa587ba2e3eb61132d7d6adc
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385571"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722026"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari
 
@@ -26,7 +26,7 @@ W tym dokumencie dowiesz się, jak używać interfejsu użytkownika sieci Web Am
 
 ## <a id="whatis"></a>Co to jest Apache Ambari?
 
-[Apache Ambari](http://ambari.apache.org) upraszcza zarządzanie usługi Hadoop, udostępniając łatwy w użyciu interfejsu użytkownika sieci web. Ambari służy do zarządzania i monitorowania klastrów platformy Hadoop. Deweloperzy mogą integrować możliwości swoich aplikacji za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie usługi Hadoop, udostępniając łatwy w użyciu interfejsu użytkownika sieci web. Ambari służy do zarządzania i monitorowania klastrów platformy Hadoop. Deweloperzy mogą integrować możliwości swoich aplikacji za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Interfejs użytkownika sieci Web Ambari znajduje się domyślnie z klastrami HDInsight, które używają systemu operacyjnego Linux.
 
@@ -181,12 +181,12 @@ Praca z użytkowników, grupy i uprawnienia są obsługiwane w przypadku korzyst
 
    * **Likwidowanie** -usuwa hosta z klastra.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Nie należy używać tej akcji w klastrach HDInsight.
 
    * **Recommission** — dodaje wcześniej zlikwidowana hosta do klastra.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Nie należy używać tej akcji w klastrach HDInsight.
 
 ### <a id="service"></a>Usługi

@@ -4,30 +4,29 @@ description: W tym artykule opisano jak skonfigurować ciągłą integrację i p
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: 567e2f850e2c51a6103dc24b91d139042d58acb3
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2f3cc3b386dec0010b179455372fb49bcec55ffc
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986836"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558400"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Wykonuj ciągłe integrowanie i tworzyć aplikacje za pomocą narzędzia Stream Analytics
 W tym artykule opisano sposób użycia Konfigurowanie procesu ciągłej integracji i ciągłego wdrażania przy użyciu narzędzia Azure Stream Analytics dla programu Visual Studio.
 
 Użyj wersji 2.3.0000.0 lub nowszy z [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) uzyskać pomoc techniczną dotyczącą programu MSBuild.
 
-Dostępny jest pakiet NuGet: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Zapewnia on program MSBuild, uruchamianie lokalne oraz narzędzia wdrażania, które obsługują proces ciągłej integracji i ciągłego wdrażania projektów programu Visual Studio dla usługi Stream Analytics. 
+Pakiet NuGet jest dostępna: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Zapewnia on program MSBuild, uruchamianie lokalne oraz narzędzia wdrażania, które obsługują proces ciągłej integracji i ciągłego wdrażania projektów programu Visual Studio dla usługi Stream Analytics. 
 > [!NOTE] 
 Pakiet NuGet może służyć tylko w przypadku 2.3.0000.0 lub nowszej wersji narzędzia Stream Analytics Tools for Visual Studio. W przypadku projektów utworzonych w poprzednich wersjach programu Visual Studio tools po prostu otwórz je za pomocą 2.3.0000.0 lub nowszej wersji, a następnie zapisz. Następnie nowe możliwości są włączone. 
 
 Aby uzyskać więcej informacji, zobacz [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
-## <a name="msbuild"></a>Program MSBuild
+## <a name="msbuild"></a>MSBuild
 Jak standardowe środowisko Visual Studio program MSBuild aby zbudować projekt masz dwie opcje. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz **kompilacji**. Możesz również użyć **MSBuild** pakietu NuGet w wierszu polecenia.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
@@ -80,11 +79,11 @@ localrun -Project [ProjectFullPath]
 
 *Ramię* polecenie przyjmuje szablonu zadania i pliki parametrów szablonu zadania wygenerowanych przez kompilację jako dane wejściowe. Następnie łączy je w plik JSON definicji zadania, który może służyć za pomocą interfejsu API z programu PowerShell Stream Analytics.
 
-```
+```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]
 ```
 Przykład:
-```
+```powershell
 ./tools/SA.exe arm -JobTemplate "ProjectA.JobTemplate.json" -JobParameterFile "ProjectA.JobTemplate.parameters.json" -OutputFile "JobDefinition.json" 
 ```
 

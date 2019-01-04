@@ -14,12 +14,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 375e1a0ba4be9483986c088195e380e856d32a67
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b295f7a2a454e3987e8639814f785b7457dd452b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093752"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973098"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z usługą Azure Managed wystąpienia inspekcji usługi SQL Database
 
@@ -68,7 +68,7 @@ W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzane
      ![Okienko nawigacji][6]
 
    - Skonfiguruj sygnatury dostępu Współdzielonego w następujący sposób:
-     - **Dozwolone usługi**: obiektów Blob
+     - **Dozwolone usługi**: Obiekt blob
      - **Data rozpoczęcia**: Aby uniknąć problemów związanych z strefy czasowej, zaleca się używać Data przeszła.
      - **Data zakończenia**: Wybierz datę, na którym wygaśnięcia tego tokenu sygnatury dostępu Współdzielonego. 
 
@@ -153,7 +153,7 @@ Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure blob s
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing).
+- Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 - Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/compliance/).
 
 

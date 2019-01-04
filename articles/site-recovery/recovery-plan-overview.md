@@ -3,16 +3,17 @@ title: Odzyskiwanie po awarii przy użyciu usługi Azure Site Recovery przy uży
 description: Więcej informacji na temat odzyskiwania po awarii przy użyciu usługi Azure Site Recovery przy użyciu planów odzyskiwania.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cb68b71eece998fa72fccc00de45f81e6d2d778c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848395"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975665"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
@@ -60,11 +61,11 @@ Za pomocą to dostosowanie w miejscu Oto, co się stanie po uruchomieniu trybu f
 
 Odzyskiwanie dużych aplikacji może być złożonym zadaniem. Wymagane ręczne wykonanie czynności dzięki czemu proces wprowadzania podatne na błędy i uruchamiających przełączenie w tryb failover może nie być świadome wszystkich niewymagającego aplikacji. Umożliwia nakłada zamówienie planu odzyskiwania i zautomatyzować wymagane przeprowadzenie kolejnych czynności na każdym etapie, za pomocą elementów runbook usługi Azure Automation do trybu failover na platformie Azure lub skryptów. Zadania, które nie mogą być zautomatyzowane można wstawić przerw na ręczne akcje wykonywane do planów odzyskiwania. Istnieje kilka typów zadań, które można skonfigurować:
 
-* **Zadania na maszynie Wirtualnej platformy Azure po włączeniu trybu failover**: po użytkownik przechodzenia w tryb failover na platformie Azure, zazwyczaj należy wykonywać akcje, dzięki czemu można połączyć się z maszyną wirtualną po włączeniu trybu failover. Na przykład: 
+* **Zadania na maszynie Wirtualnej platformy Azure po włączeniu trybu failover**: Po użytkownik przechodzenia w tryb failover na platformie Azure, zazwyczaj należy wykonywać akcje, dzięki czemu można połączyć się z maszyną wirtualną po włączeniu trybu failover. Na przykład: 
     * Utwórz publiczny adres IP maszyny wirtualnej platformy Azure.
     * Przypisywanie sieciowej grupy zabezpieczeń z kartą sieciową z maszyny Wirtualnej platformy Azure.
     * Dodaj moduł równoważenia obciążenia do zestawu dostępności.
-* **Zadania wewnątrz maszyny Wirtualnej po włączeniu trybu failover**: te zadania zazwyczaj ponownie skonfigurować aplikację uruchomioną na maszynie, dzięki czemu będzie on nadal działać prawidłowo w nowym środowisku. Na przykład:
+* **Zadania wewnątrz maszyny Wirtualnej po włączeniu trybu failover**: Te zadania zazwyczaj ponownie skonfigurować aplikację uruchomioną na maszynie, dzięki czemu będzie on nadal działać prawidłowo w nowym środowisku. Na przykład:
     * Zmodyfikuj parametry połączenia bazy danych na maszynie.
     * Zmiana konfiguracji serwera sieci web lub reguły.
 

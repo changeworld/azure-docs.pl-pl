@@ -3,21 +3,21 @@ title: Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego A
 description: Dowiedz się, jak przeprowadzić migrację wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: douglas, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 3808511e588ba4284dee16cf7ca88bfd5a382c3a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f68cb2d1c34ca351811050546c0eae818e84300a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337482"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651762"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 

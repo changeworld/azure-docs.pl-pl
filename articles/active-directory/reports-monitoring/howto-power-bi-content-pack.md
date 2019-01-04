@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d810b8be496bbfd1c5bd88d8221e77dd5b76c889
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622973"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651456"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak używać pakietu zawartości usługi Azure Active Directory usługi Power BI
 
@@ -32,7 +32,7 @@ Usługa Power BI zawartości, że pakiet usługi Azure Active Directory (Azure A
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy licencję usługi Azure AD premium (P1/P2) używać pakietu zawartości. 
+Należy licencję usługi Azure AD premium (P1/P2) używać pakietu zawartości. Zobacz [wprowadzenie do usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) uaktualnić swoją wersję usługi Azure Active Directory.
 
 ## <a name="install-the-content-pack"></a>Zainstalowanie pakietu zawartości
 
@@ -42,7 +42,7 @@ Zapoznaj się z [Szybki Start](quickstart-install-power-bi-content-pack.md) do z
 
 Następujące raporty znajdują się w pakiecie zawartości usługi Azure AD w usłudze Power BI. Raporty zawierają dane z **ostatnich 30 dni**.
 
-**Raport użycia aplikacji oraz trendów**: Ten raport zapewnia wgląd w aplikacje używane w Twojej organizacji. Pobierz listę najpopularniejszych aplikacji lub zrozumienie sposobu korzystania z aplikacji, której ostatnio etapowo wdrażana w Twojej organizacji. Dzięki temu można śledzić i zwiększyć użycie wraz z upływem czasu.
+**Raport użycia aplikacji oraz trendów**:  Ten raport zapewnia wgląd w aplikacje używane w Twojej organizacji. Pobierz listę najpopularniejszych aplikacji lub zrozumienie sposobu korzystania z aplikacji, której ostatnio etapowo wdrażana w Twojej organizacji. Dzięki temu można śledzić i zwiększyć użycie wraz z upływem czasu.
 
 **Logowania według lokalizacji i użytkowników**: Ten raport zawiera dane na wszystkich logowań wykonywane przy użyciu usługi Azure Identity. Dzięki temu raportowi można przechodzić do poszczególnych logowań i odpowiedzieć na pytania:
 
@@ -52,7 +52,7 @@ Następujące raporty znajdują się w pakiecie zawartości usługi Azure AD w u
  
 Wyniki można również filtrować, wybierając określoną datę lub lokalizację.
 
-**Liczba unikatowych użytkowników na aplikację**: Ten raport zawiera widok wszystkich unikatowych użytkowników korzystających z danej aplikacji. Zawierają one tylko użytkownicy, którzy mają "*pomyślnie*" zalogowali się do aplikacji.
+**Liczba unikatowych użytkowników na aplikację**:  Ten raport zawiera widok wszystkich unikatowych użytkowników korzystających z danej aplikacji. Zawierają one tylko użytkownicy, którzy mają "*pomyślnie*" zalogowali się do aplikacji.
 
 **Urządzenie logowania**: Ten raport pomaga zrozumieć z różnymi profilami urządzeń używanych w organizacji i określić zasady zarządzania urządzeniami na podstawie użycia. Zapewnia dane dotyczące typu systemu operacyjnego i przeglądarki używane do logowania do aplikacji, wraz ze szczegółowymi informacjami o użytkownikach, w tym:
 
@@ -65,21 +65,21 @@ Wyniki można również filtrować, wybierając określoną datę lub lokalizacj
 
 ## <a name="customize-azure-ad-activity-content-pack"></a>Dostosowywanie pakietu zawartości usługi Azure AD Activity
 
-**Zmień wizualizację**: możesz zmienić wizualizację raportu, klikając opcję **Edytuj raport** i wybierając wizualizację.
+**Zmień wizualizację**:  Zmień wizualizację raportu, klikając **Edytuj raport** i wybierz wizualizację.
  
 ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/howto-power-bi-content-pack/09.png) 
  
 ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/howto-power-bi-content-pack/10.png) 
 
-**Dołącz dodatkowe pola**: w raporcie można dodawać pola i je usuwać. W tym celu wystarczy wybrać element wizualny, którego ma dotyczyć zmiana. Na przykład można dodać pole "sign-in status" w widoku tabeli, jak pokazano poniżej. 
+**Dołącz dodatkowe pola**:  Można dodać pola do raportu lub usuń go, wybierając wizualizację, dla których chcesz dodawać i usuwać pola. Na przykład można dodać pole "sign-in status" w widoku tabeli, jak pokazano poniżej. 
  
 ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/howto-power-bi-content-pack/11.png) 
 
-**Przypinanie wizualizacji do pulpitu nawigacyjnego**: Możesz dostosować pulpit nawigacyjny, dołączając własne wizualizacje do raportu i przypinanie jej do pulpitu nawigacyjnego. 
+**Przypinanie wizualizacji do pulpitu nawigacyjnego**:  Możesz dostosować pulpit nawigacyjny, dołączając własne wizualizacje do raportu i przypinanie jej do pulpitu nawigacyjnego. 
 
 ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/howto-power-bi-content-pack/13.png) 
  
-**Udostępnianie pulpitu nawigacyjnego**: pulpitu nawigacyjnego można także udostępnić użytkownikom w organizacji. Po udostępnieniu raportu jego użytkownicy widzą pola, które wybrano w raporcie.
+**Udostępnianie pulpitu nawigacyjnego**: Można także udostępnić pulpit nawigacyjny z użytkownikami w Twojej organizacji. Po udostępnieniu raportu jego użytkownicy widzą pola, które wybrano w raporcie.
  
 ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/howto-power-bi-content-pack/14.png) 
 

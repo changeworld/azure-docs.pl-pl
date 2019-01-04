@@ -9,27 +9,27 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
+ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 2de57a4ade91293fb1164815f83e87517068544e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d8ddbb2590852ed80ce02f147886dc125815fc23
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277895"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605980"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
 
 ## <a name="overview"></a>Przegląd
 
-W usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy miejsce używane zwiększa i dane są usuwane. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
+W usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
 
-Monitorowanie użycia miejsca na plik lub zmniejszania rozmiaru plików danych może być konieczne w następujących scenariuszach:
-- Zezwalaj na wzrostu ilości danych w puli elastycznej, gdy obszar pliku przydzielonych do jego baz danych osiągnie maksymalny rozmiar puli.
-- Zezwalaj na zmniejszanie maksymalny rozmiar pojedynczej bazy danych lub elastycznej puli.
-- Zezwalaj na zmienianie pojedynczą bazę danych lub elastycznej puli do innej usługi warstwy lub warstwy wydajności z niższym maksymalny rozmiar.
+Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być konieczne w następujących scenariuszach:
+- Zezwalanie na wzrost ilości danych w elastycznej puli, gdy miejsce na pliki przydzielone dla jej baz danych osiągnie maksymalny rozmiar dla puli.
+- Zezwalanie na zmniejszenie maksymalnego rozmiaru pojedynczej bazy danych lub elastycznej puli.
+- Zezwalanie na zmianę warstwy usługi lub wydajności dla pojedynczej bazy danych lub elastycznej puli na warstwę obsługującą mniejszy rozmiar maksymalny.
 
 ### <a name="monitoring-file-space-usage"></a>Monitorowanie użycia miejsca na plik
 Większość metryk miejsce magazynowania wyświetlane w witrynie Azure portal oraz następujące interfejsy API pomiaru tylko rozmiar stron używanych danych:

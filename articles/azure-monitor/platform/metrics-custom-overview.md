@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326193"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605589"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Metryki niestandardowe w usłudze Azure Monitor
 
@@ -25,7 +25,7 @@ Metryki niestandardowe mogą być wysyłane do usługi Azure Monitor za pomocą 
 - Instrumentuj swoją aplikację przy użyciu zestawu SDK usługi Azure Application Insights, a następnie wyślij niestandardowych danych telemetrycznych do usługi Azure Monitor. 
 - Zainstaluj rozszerzenie Diagnostyka Azure Windows (WAD) na usługi [maszyny Wirtualnej platformy Azure](collect-custom-metrics-guestos-resource-manager-vm.md), [zestawu skalowania maszyn wirtualnych](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasyczna maszyna wirtualna](collect-custom-metrics-guestos-vm-classic.md), lub [klasycznej usługi w chmurze,](collect-custom-metrics-guestos-vm-cloud-service-classic.md) i wysłać liczników wydajności do usługi Azure Monitor. 
 - Zainstaluj [agenta InfluxData Telegraf](collect-custom-metrics-linux-telegraf.md) na maszynie Wirtualnej systemu Linux platformy Azure i wysyłanie metryk za pomocą usługi Azure Monitor danych wyjściowych wtyczki.
-- Wysyłanie metryk niestandardowych [bezpośrednio do interfejsu API REST usługi Azure Monitor](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Wysyłanie metryk niestandardowych [bezpośrednio do interfejsu API REST usługi Azure Monitor](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
 Podczas wysyłania metryki niestandardowe do usługi Azure Monitor, każdy punkt danych lub raportowana, musi zawierać następujące informacje.
 
@@ -193,6 +193,6 @@ Niestandardowe metryki z różnymi usługami:
  - [Zestaw skalowania maszyn wirtualnych](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Maszyny wirtualne platformy Azure (wersja klasyczna)](collect-custom-metrics-guestos-vm-classic.md)
  - [Maszyny wirtualnej systemu Linux przy użyciu agenta Telegraf](collect-custom-metrics-linux-telegraf.md)
- - [Interfejs API REST](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)
+ - [Interfejs API REST](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Usługi w chmurze klasycznego](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

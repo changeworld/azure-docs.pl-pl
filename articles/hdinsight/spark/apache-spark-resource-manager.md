@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3536fb21d50dd54ec71615eba25c2d60fc727f34
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583299"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787907"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight 
 
@@ -34,7 +34,7 @@ Serwer historii platformy Spark jest interfejs użytkownika sieci web dla aplika
 
 **Aby otworzyć Interfejs sieci Web uzyskiwania informacji na temat serwer historii platformy Spark**
 
-1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **serwer historii platformy Spark**
 
     ![Platforma Spark jest serwer historii](./media/apache-spark-resource-manager/launch-history-server.png "Spark serwer historii")
@@ -54,15 +54,13 @@ Serwer historii platformy Spark w sieci web UI wygląda następująco:
 ## <a name="open-the-yarn-ui"></a>Otwórz interfejs użytkownika usługi Yarn
 Interfejsie użytkownika YARN służy do monitorowania aplikacji, które są aktualnie uruchomione w klastrze Spark.
 
-1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **YARN**.
 
     ![Uruchom interfejs użytkownika usługi YARN](./media/apache-spark-resource-manager/launch-yarn-ui.png)
 
-   > [!TIP]
+   > [!TIP]  
    > Alternatywnie można również uruchomić Interfejsie użytkownika YARN z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra HDInsight**. W Interfejsie użytkownika Ambari, kliknij **YARN**, kliknij przycisk **szybkich łączy**, kliknij active usługi Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**.
-   >
-   >
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optymalizowanie klastrów dla aplikacji platformy Spark
 Są trzy kluczowe parametry, które mogą służyć do konfiguracji platformy Spark w zależności od wymagań aplikacji `spark.executor.instances`, `spark.executor.cores`, i `spark.executor.memory`. Program wykonujący to proces uruchamiany dla aplikacji platformy Spark. Ona działa w węźle procesu roboczego i odpowiada do wykonywania zadań w aplikacji. Domyślna liczba executors i rozmiary przetwarzania dla każdego klastra jest obliczany na podstawie liczby węzłów procesu roboczego i rozmiar węzła procesu roboczego. Te informacje są przechowywane w `spark-defaults.conf` na głównymi węzłami klastra.
@@ -167,7 +165,7 @@ Uruchom interfejs użytkownika usługi Yarn, jak pokazano na początku tego arty
 ### <a name="for-apache-spark-developers"></a>Dla deweloperów platformy Apache Spark
 
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
 * [Zdalne debugowanie aplikacji platformy Apache Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Korzystanie z notesów Apache Zeppelin na HDInsight klastra Apache Spark](apache-spark-zeppelin-notebook.md)

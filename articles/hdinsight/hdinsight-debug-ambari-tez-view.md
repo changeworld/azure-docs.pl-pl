@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012355"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719697"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debugowanie zadań tez przy Apache na HDInsight przy użyciu widoków Ambari Apache
 
 [Apache Ambari](https://ambari.apache.org/) zawiera interfejs użytkownika sieci Web dla HDInsight [Apache TEZ](https://tez.apache.org/) widoku, który może służyć do zrozumienia i debugowanie zadań, które używają aplikacji Tez. Widok aplikacji Tez umożliwia wizualizowanie zadania jako wykres połączonych elementów, przejść do każdego elementu i pobierania statystyk i rejestrowania informacji.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -90,9 +90,9 @@ Umożliwia uruchomienie zapytania programu Hive, który używa Tez następujące
 
 5. Karty na tej stronie umożliwiają wyświetlanie następujące informacje:
 
-    * **Szczegóły zapytań**: szczegóły dotyczące zapytania programu Hive.
-    * **Oś czasu**: informacje o czas trwania każdego etapu przetwarzania.
-    * **Konfiguracje**: Konfiguracja użyta dla tego zapytania.
+    * **Szczegóły zapytań**: Szczegółowe informacje o zapytania programu Hive.
+    * **Oś czasu**: Informacje o czas trwania każdego etapu przetwarzania.
+    * **Konfiguracje**: Konfiguracja używana dla tego zapytania.
 
     Z __szczegóły kwerendy__ łącza można użyć, aby uzyskać informacje na temat __aplikacji__ lub __DAG__ dla tego zapytania.
     

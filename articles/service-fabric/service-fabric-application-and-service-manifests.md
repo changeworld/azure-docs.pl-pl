@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2018
+ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230288"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653553"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty aplikacji usługi Service Fabric i usługi
 W tym artykule opisano, jak aplikacje usługi Service Fabric i usługi są zdefiniowane i kontrolą wersji, przy użyciu plików ApplicationManifest.xml i ServiceManifest.xml.  Aby uzyskać bardziej szczegółowe przykłady, zobacz [aplikacji i usługi manifestu przykłady](service-fabric-manifest-examples.md).  Schemat XML dla tych plików manifestu jest udokumentowany w [dokumentacja schematu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).
+
+> [!WARNING]
+> Schemat do pliku manifestu XML wymusza poprawne kolejność elementów podrzędnych.  Jako obejście częściowe należy otworzyć "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" w programie Visual Studio podczas tworzenia lub modyfikowania dowolnego manifestów usługi Service Fabric. To umożliwi Sprawdź uporządkowanie elementów podrzędnych i zapewnia sprzężeniami.
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>Opisz usługę w ServiceManifest.xml
 Manifest usługi definiuje sposób deklaratywny usługi typu i wersji. Określa metadane usługi, takie jak typ usługi, właściwości kondycji, równoważenie obciążenia metryki, pliki binarne usługi i plików konfiguracji.  Innymi słowy, opisano w nim pakiety kodu, konfiguracji i danych, wchodzących w skład pakietu usług do obsługi co najmniej jeden typ usługi. Manifest usługi może zawierać wiele kodu, konfiguracji i pakiety danych, które mogą być poddany kontroli wersji niezależnie. Oto manifest usługi dla usługi frontonu sieci web platformy ASP.NET Core z [przykładową aplikację głosowania](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (a Oto niektóre [bardziej szczegółowymi przykładami](service-fabric-manifest-examples.md)):

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268720"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714304"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -35,7 +35,7 @@ W tym samouczku pokazano, jak zabezpieczyć aplikację sieci web, tworząc (zaku
 Aby wykonać ten poradnik:
 
 - [Utwórz aplikację usługi App Service](/azure/app-service/)
-- [Mapowanie nazwy domeny do aplikacji sieci web](app-service-web-tutorial-custom-domain.md) lub [Kup i skonfiguruj go na platformie Azure](custom-dns-web-site-buydomains-web-app.md)
+- [Mapowanie nazwy domeny do aplikacji sieci web](app-service-web-tutorial-custom-domain.md) lub [Kup i skonfiguruj go na platformie Azure](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -91,7 +91,7 @@ Wybierz **Weryfikacja usługi App Service**. Ponieważ domena już zmapowany do 
 > Są obsługiwane cztery typy metod weryfikacji domeny: 
 > 
 > - **Usługa App Service** -najwygodniejsza opcja, jeśli domena jest już zamapowana na aplikację usługi App Service w tej samej subskrypcji. Wykorzystuje ona fakt, czy aplikacja usługi App Service ma już zweryfikowana własność domeny.
-> - **Domeny** — Sprawdź [domena usługi App Service, zakupionego na platformie Azure](custom-dns-web-site-buydomains-web-app.md). Platforma Azure automatycznie dodaje rekord weryfikacji TXT dla Ciebie i kończy proces.
+> - **Domeny** — Sprawdź [domena usługi App Service, zakupionego na platformie Azure](manage-custom-dns-buy-domain.md). Platforma Azure automatycznie dodaje rekord weryfikacji TXT dla Ciebie i kończy proces.
 > - **Poczta** — Sprawdź domenę, wysyłając wiadomość e-mail do administratora domeny. Instrukcje znajdują się po wybraniu opcji.
 > - **Ręczne** — weryfikowanie domeny za pomocą strony HTML (**standardowa** tylko certyfikatu) lub rekordu DNS TXT. Instrukcje znajdują się po wybraniu opcji.
 

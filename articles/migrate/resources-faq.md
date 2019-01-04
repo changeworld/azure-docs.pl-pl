@@ -4,14 +4,14 @@ description: Często zadawane pytania dotyczące usługi Azure Migrate adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: snehaa
-ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257798"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975478"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -48,12 +48,13 @@ Usługa Azure Migrate jest migracji za pomocą narzędzia do planowania i planis
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Które lokalizacje geograficzne platformy Azure są obsługiwane przez usługę Azure Migrate?
 
-Usługa Azure Migrate obsługuje obecnie Stanów Zjednoczonych i Azure dla instytucji rządowych jako lokalizacje geograficzne projektu. Mimo, że projekty migracji można tworzyć tylko w tych lokalizacjach geograficznych, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Geograficzne projektu jest używana wyłącznie do przechowywania metadanych wykrytych.
+Usługa Azure Migrate obsługuje obecnie Europa, USA i Azure dla instytucji rządowych jako lokalizacje geograficzne projektu. Mimo, że projekty migracji można tworzyć tylko w tych lokalizacjach geograficznych, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Geograficzne projektu jest używana wyłącznie do przechowywania metadanych wykrytych.
 
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
-Łączy w sobie stanów | Zachód środkowe stany USA lub wschodnie stany USA
 Azure Government | Administracja USA — Wirginia
+Europa | Europa Północna i Europa Zachodnia
+Stany Zjednoczone | Wschodnie stany USA z Zachodniego środkowe stany USA
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak lokacją lokalną łączyć się z usługi Azure Migrate?
 
@@ -147,7 +148,7 @@ Usługa Azure Migrate nie obsługuje obecnie Szacowanie kosztów dla [oferty z u
 ## <a name="dependency-visualization"></a>Wizualizacja zależności
 
 > [!NOTE]
-> Funkcji wizualizacji zależności nie jest dostępna na platformie Azure Government.
+> Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ### <a name="what-is-dependency-visualization"></a>Co to jest wizualizacji zależności?
 

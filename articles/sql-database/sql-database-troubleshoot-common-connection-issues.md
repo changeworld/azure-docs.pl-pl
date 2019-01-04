@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
 ms.author: daleche
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 53061cde5621be06df8f992278a6510d62e51934
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5610679756e91637ac4713059a510bebb882ca7a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872582"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600560"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Rozwiązywanie problemów z połączeniem do usługi Azure SQL Database
 Gdy połączenie usługi Azure SQL Database nie powiodło się, pojawi się [komunikaty o błędach](sql-database-develop-error-messages.md). Ten artykuł stanowi scentralizowane temat, który pomoże Ci rozwiązać problemy z połączeniem usługi Azure SQL Database. Wprowadza [najczęstszych przyczyn](#cause) z problemów z łącznością, zaleca się [narzędzia rozwiązywania problemów](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) ulec pomaga tożsamości problem, a także kroki rozwiązywania problemów, aby rozwiązać [przejściowe błędy](#troubleshoot-transient-errors) i [trwałego lub inne niż przejściowe błędy](#troubleshoot-persistent-errors). 
@@ -82,7 +82,7 @@ Jeśli aplikacja trwałe nie może nawiązać połączenia z bazą danych SQL Az
 * [Wyszukiwanie w dokumentacji w systemie Microsoft Azure](https://azure.microsoft.com/search/documentation/)
 * [Wyświetl najnowsze aktualizacje usługi Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Omówienie tworzenia bazy danych SQL](sql-database-develop-overview.md)
 * [Ogólne wskazówki obsługi błędów przejściowych](../best-practices-retry-general.md)
 * [Biblioteki połączeń dla usługi SQL Database i programu SQL Server](sql-database-libraries.md)

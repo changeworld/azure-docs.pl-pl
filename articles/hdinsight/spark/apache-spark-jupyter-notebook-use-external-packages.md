@@ -9,25 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: ddee05fed3112edc6cf1e1261ea06bc2fe864ed3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c0394025fef15b987f0777d157c465e83d860601
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583554"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652136"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach platformy Apache Spark w HDInsight
 > [!div class="op_single_selector"]
 > * [Przy użyciu funkcji cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Za pomocą akcji skryptu](apache-spark-python-package-installation.md)
->
->
 
 Dowiedz się, jak skonfigurować [notesu programu Jupyter](https://jupyter.org/) w klastrze Apache Spark w HDInsight służące zewnętrznego przez społeczność Apache **maven** pakiety, które nie są uwzględnione poza pole w klastrze. 
 
-Możesz wyszukiwać [repozytorium Maven](http://search.maven.org/) uzyskać pełną listę pakietów, które są dostępne. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełną listę pakietów przez społeczność jest dostępne pod adresem [pakietów platformy Spark](http://spark-packages.org/).
+Możesz wyszukiwać [repozytorium Maven](https://search.maven.org/) uzyskać pełną listę pakietów, które są dostępne. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełną listę pakietów przez społeczność jest dostępne pod adresem [pakietów platformy Spark](https://spark-packages.org/).
 
-W tym artykule nauczysz się używać [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakietu z notesem Jupyter.
+W tym artykule nauczysz się używać [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakietu z notesem Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Należy dysponować następującymi elementami:
@@ -39,11 +37,10 @@ Należy dysponować następującymi elementami:
 
 1. W bloku klastra Spark kliknij pozycję **Szybkie linki**, a następnie w bloku **Pulpit nawigacyjny klastra** kliknij pozycję **Jupyter Notebook**. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Można również przejść do aplikacji Jupyter Notebook dla klastra, otwierając następujący adres URL w przeglądarce. Zastąp ciąg **CLUSTERNAME** nazwą klastra:
     > 
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-    > 
 
 1. Utwórz nowy notes. Kliknij przycisk **New**, a następnie kliknij przycisk **Spark**.
    
@@ -55,7 +52,7 @@ Należy dysponować następującymi elementami:
 
 1. Użyjesz `%%configure` magic można skonfigurować do użycia pakietu zewnętrznego. W notesach korzystających z zewnętrznych pakietów, upewnij się, należy wywołać `%%configure` magic w pierwszej komórki kodu. Daje to gwarancję, że jądro jest skonfigurowany do używania pakietu, przed rozpoczęciem sesji.
 
-    >[!IMPORTANT] 
+    >[!IMPORTANT]  
     >Jeśli użytkownik zapomni skonfigurować jądra w pierwszej komórki, można użyć `%%configure` z `-f` parametru, ale spowoduje ponowne uruchomienie sesji i zostanie utracone.
 
     | HDInsight w wersji | Polecenie |
@@ -65,7 +62,7 @@ Należy dysponować następującymi elementami:
 
 1. Fragment kodu powyżej oczekuje współrzędne maven zewnętrznych pakietów w centralnym repozytorium Maven. W tym fragmencie kodu `com.databricks:spark-csv_2.10:1.4.0` jest Współrzędna maven dla **spark csv** pakietu. Oto, jak skonstruować współrzędnych dla pakietu.
    
-    a. Zlokalizuj pakiet w repozytorium narzędzia Maven. W tym samouczku używamy [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Zlokalizuj pakiet w repozytorium narzędzia Maven. W tym samouczku używamy [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Z repozytorium, Zbierz wartości **GroupId**, **ArtifactId**, i **wersji**. Upewnij się, że wartości, które zostały zebrane zgodne klastra. W tym przypadku używamy Scala 2.10 i aparatu Spark 1.4.0 pakietu, ale musisz wybrać różne wersje dla odpowiedniego języka Scala lub wersji platformy Spark w klastrze. Można sprawdzić wersji Scala w klastrze, uruchamiając `scala.util.Properties.versionString` na jądra programu Jupyter Spark lub Prześlij platformy Spark. Można sprawdzić wersji platformy Spark w klastrze, uruchamiając `sc.version` na notesów programu Jupyter.
    
@@ -96,17 +93,17 @@ Należy dysponować następującymi elementami:
         df.select("Time").count()
 
 ## <a name="seealso"></a>Zobacz też
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 

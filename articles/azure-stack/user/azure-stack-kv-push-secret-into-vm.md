@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: aef706d18d558f5fe321735c7f93361a5ef50606
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 0723d0e2a60c0f43633e5e5ca771ccfe88d2db68
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139423"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808064"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Utwórz maszynę wirtualną i instalowania certyfikatu pobrane z usługi key vault usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Dowiedz się, jak utworzyć maszynę wirtualną (VM) Azure Stack z certyfikatem usługi key vault, zainstalowane.
 
@@ -37,11 +37,11 @@ Certyfikaty są używane w wielu scenariuszach, takich jak uwierzytelnianie w us
 
 ### <a name="process-description"></a>Opis procesu
 
-W poniższych krokach opisano proces wymagany do wypychania certyfikat na maszynie wirtualnej:
+W poniższych krokach opisano proces wymagany do certyfikatu do maszyny wirtualnej:
 
 1. Utwórz magazyn kluczy tajnych.
 2. Aktualizowanie pliku azuredeploy.parameters.json.
-3. Wdrożenie szablonu
+3. Wdróż szablon.
 
 > [!NOTE]
 > Można użyć tych kroków z usługi Azure Stack Development Kit lub z klienta zewnętrznego, jeśli są połączone za pośrednictwem sieci VPN.
@@ -49,8 +49,8 @@ W poniższych krokach opisano proces wymagany do wypychania certyfikat na maszyn
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Należy subskrybować ofertę, która obejmuje usługę Key Vault.
-* [Zainstaluj program PowerShell dla usługi Azure Stack.](azure-stack-powershell-install.md)
-* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](azure-stack-powershell-configure-user.md)
+* [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
+* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](azure-stack-powershell-configure-user.md).
 
 ## <a name="create-a-key-vault-secret"></a>Tworzenie wpisu tajnego usługi Key Vault
 
@@ -60,7 +60,6 @@ Poniższy skrypt tworzy certyfikat w formacie pfx, utworzenie magazynu kluczy i 
 > Należy użyć `-EnabledForDeployment` parametru podczas tworzenia magazynu kluczy. Tego parametru gwarantuje, że usługi key vault można odwoływać się za pomocą szablonów usługi Azure Resource Manager.
 
 ```powershell
-
 # Create a certificate in the .pfx format
 New-SelfSignedCertificate `
   -certstorelocation cert:\LocalMachine\My `
@@ -117,16 +116,15 @@ Set-AzureKeyVaultSecret `
   -VaultName $vaultName `
   -Name $secretName `
    -SecretValue $secret
-
 ```
 
-Po uruchomieniu skryptu poprzedniej, dane wyjściowe obejmują identyfikator URI klucza tajnego. Zanotuj ten identyfikator URI. Należy odwoływać się do niego w [certyfikatu wypychania do szablonu usługi Resource Manager dla Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). Pobierz [szablonu maszyny wirtualnej push certyfikatu — windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) folderu na komputerze deweloperskim. Ten folder zawiera `azuredeploy.json` i `azuredeploy.parameters.json` pliki, które będą potrzebne w następnych krokach.
+Po uruchomieniu skryptu poprzedniej, dane wyjściowe obejmują identyfikator URI klucza tajnego. Zanotuj ten identyfikator URI. Należy odwoływać się do niego w [certyfikatu wypychania do szablonu usługi Resource Manager dla Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). Pobierz [maszyny wirtualnej push certyfikatu — windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) folderu szablonu na komputerze dewelopera. Ten folder zawiera `azuredeploy.json` i `azuredeploy.parameters.json` pliki, które będą potrzebne w następnych krokach.
 
-Modyfikowanie `azuredeploy.parameters.json` zgodnie z własnymi wartościami środowiska. Parametry interesujące są nazwę magazynu, grupa zasobów magazynu i klucz tajny identyfikatora URI (tak jak, w poprzednim skrypcie). Następujący plik jest przykładowy plik parametrów:
+Modyfikowanie `azuredeploy.parameters.json` zgodnie z własnymi wartościami środowiska. Parametry interesujące są nazwę magazynu, grupa zasobów magazynu i klucz tajny identyfikatora URI (tak jak, w poprzednim skrypcie). W poniższej sekcji pokazano przykładowy plik parametrów.
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>Aktualizowanie pliku azuredeploy.parameters.json
 
-Aktualizowanie pliku azuredeploy.parameters.json vaultName, identyfikator URI klucza tajnego, VmName i inne wartości dla każdego środowiska. Następujący plik JSON przykładowy plik parametrów szablonu:
+Aktualizacja `azuredeploy.parameters.json` plik z `vaultName`, identyfikator URI klucza tajnego, `VmName`i inne wartości dla każdego środowiska. Następujący plik JSON przykładowy plik parametrów szablonu:
 
 ```json
 {
@@ -178,16 +176,16 @@ Po pomyślnym wdrożeniu szablonu powoduje następujące dane wyjściowe:
 
 ![Wyniki wdrożenia szablonu](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
 
-Usługa Azure Stack wypycha certyfikat na maszynie wirtualnej, podczas wdrażania. Lokalizacja certyfikatu zależy od systemu operacyjnego maszyny Wirtualnej:
+Usługa Azure Stack wypycha certyfikatu do maszyny wirtualnej, podczas wdrażania. Lokalizacja certyfikatu zależy od systemu operacyjnego maszyny Wirtualnej:
 
-* W Windows certyfikat zostanie dodany do lokalizacji certyfikatu użytkownika na maszynie lokalnej, z magazynu certyfikatów, który użytkownik podał.
-* W systemie Linux, certyfikat zostanie umieszczony w katalogu /var/lib/waagent z nazwą pliku &lt;UppercaseThumbprint&gt;CRT dla X509 plik certyfikatu i &lt;UppercaseThumbprint&gt;.prv klucza prywatnego .
+* W Windows, certyfikat zostanie dodany do **LocalMachine** lokalizacją z magazynu certyfikatów, który użytkownik podał certyfikatu.
+* W systemie Linux, certyfikat zostanie umieszczony w obszarze `/var/lib/waagent directory`, z nazwą pliku &lt;UppercaseThumbprint&gt;CRT dla X509 plik certyfikatu i &lt;UppercaseThumbprint&gt;.prv klucza prywatnego.
 
 ## <a name="retire-certificates"></a>Wycofaj certyfikaty
 
 Wycofanie certyfikatów jest częścią proces zarządzania certyfikatami. Nie można usunąć starszą wersję certyfikatu, ale można ją wyłączyć za pomocą `Set-AzureKeyVaultSecretAttribute` polecenia cmdlet.
 
-Poniższy przykład pokazuje, jak można wyłączyć przez siebie. Użyj własnych wartości dla **VaultName**, **nazwa**, i **wersji** parametrów.
+Poniższy przykład pokazuje, jak wyłączyć certyfikatu. Użyj własnych wartości dla **VaultName**, **nazwa**, i **wersji** parametrów.
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0

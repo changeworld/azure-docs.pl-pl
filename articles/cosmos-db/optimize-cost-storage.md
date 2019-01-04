@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 78c840efebd2e451747e2490fc4d2f363afa9a09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 618be936ef0326a1b9f5db426d4c37bb2bd1c760
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263832"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535662"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optymalizuj koszt usługi storage w usłudze Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Usługa Azure Cosmos DB oczekuje, że rozmiar elementu 2 MB lub mniej, aby uzysk
 
 ## <a name="optimize-cost-with-indexing"></a>Optymalizowanie kosztów za pomocą indeksowania
 
-Domyślnie dane są automatycznie indeksowane, który może zwiększyć całkowitą ilość używanego miejsca. Jednak można zastosować zasady niestandardowe indeksu, aby zmniejszyć to obciążenie. Automatyczne indeksowanie, która nie została ona dostrojona za pomocą zasad jest około 10-20% rozmiaru elementu. Przez usunięcie lub dostosowywanie zasad indeksu, nie płacić za dodatkowych kosztów do zapisu i nie wymagają dodatkowej przepływności. Zobacz [indeksowanie w usłudze Cosmos DB](indexing-policies.md) skonfigurować niestandardowe zasady indeksowania. Użytkownicy mający doświadczenie z relacyjnych baz danych przed, użytkownik może uznać, "index wszystko" oznacza podwojenie magazynu lub nowszej. Jednak w usłudze Azure Cosmos DB, w przypadku mediany, jest znacznie niższy. W usłudze Azure Cosmos DB narzut na przechowywanie indeksu jest zazwyczaj niski (10-20%) nawet w przypadku automatycznego indeksowania, ponieważ jest ona przeznaczona dla rozmiaru magazynu niski. Zarządzając zasady indeksowania, można kontrolować kosztem indeksu zużycia i zwiększa wydajność zapytań, w sposób bardziej szczegółowo.
+Domyślnie dane są automatycznie indeksowane, który może zwiększyć całkowitą ilość używanego miejsca. Jednak można zastosować zasady niestandardowe indeksu, aby zmniejszyć to obciążenie. Automatyczne indeksowanie, która nie została ona dostrojona za pomocą zasad jest około 10-20% rozmiaru elementu. Przez usunięcie lub dostosowywanie zasad indeksu, nie płacić za dodatkowych kosztów do zapisu i nie wymagają dodatkowej przepływności. Zobacz [indeksowanie w usłudze Azure Cosmos DB](indexing-policies.md) skonfigurować niestandardowe zasady indeksowania. Użytkownicy mający doświadczenie z relacyjnych baz danych przed, użytkownik może uznać, "index wszystko" oznacza podwojenie magazynu lub nowszej. Jednak w usłudze Azure Cosmos DB, w przypadku mediany, jest znacznie niższy. W usłudze Azure Cosmos DB narzut na przechowywanie indeksu jest zazwyczaj niski (10-20%) nawet w przypadku automatycznego indeksowania, ponieważ jest ona przeznaczona dla rozmiaru magazynu niski. Zarządzając zasady indeksowania, można kontrolować kosztem indeksu zużycia i zwiększa wydajność zapytań, w sposób bardziej szczegółowo.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optymalizowanie kosztów przy użyciu czasu na żywo i zestawienia zmian
 

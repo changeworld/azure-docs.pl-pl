@@ -46,11 +46,15 @@ items:
     items:
     - name: Omówienie modułów usługi Azure IoT Edge
       href: iot-edge-modules.md
-    - name: Opracowywanie zawartości
-      href: module-development.md
     - name: Agent usługi Edge i właściwości centrum
       href: module-edgeagent-edgehub.md
-  - name: Wdrażanie modułu
+  - name: Opracowywanie zawartości
+    items:
+    - name: Programowanie modułów
+      href: module-development.md
+    - name: Środowisko deweloperskie
+      href: development-environment.md
+  - name: Wdrożenie
     items:
     - name: Manifest wdrożenia
       href: module-composition.md
@@ -206,9 +210,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 1f56b5e15759bc0c386ecf9649cbc78b611705ad
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a55b2a1ab6a814d97e750b8b17b20feb2a17e12f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558587"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790218"

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386447"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743667"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w HDInsight
 
@@ -47,7 +47,7 @@ Węzły nimbus są dostępne przy użyciu klastrów Apache Storm. Węzły Nimbus
 
 ### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper węzłów
 
-[Dozorcy](http://zookeeper.apache.org/) węzły są używane na potrzeby lidera głównego usług na węzły główne. Są one także używane do upewnij się, że usługi, węzły danych (proces roboczy) i bram wiedzą, w których węzłem głównym usługi jest aktywna na. Domyślnie HDInsight udostępnia trzy węzły dozorcy.
+[Dozorcy](https://zookeeper.apache.org/) węzły są używane na potrzeby lidera głównego usług na węzły główne. Są one także używane do upewnij się, że usługi, węzły danych (proces roboczy) i bram wiedzą, w których węzłem głównym usługi jest aktywna na. Domyślnie HDInsight udostępnia trzy węzły dozorcy.
 
 ### <a name="worker-nodes"></a>Węzły procesu roboczego
 
@@ -192,7 +192,7 @@ Po nawiązaniu połączenia zostanie wyświetlony `sftp>` wiersza. Z wiersza pol
 Aby uzyskać listę dostępnych poleceń, wpisz `help` na `sftp>` wiersza.
 
 > [!NOTE]  
-> Dostępne są także graficznych interfejsów, które umożliwiają wizualizację systemu plików w przypadku połączenia przy użyciu protokołu SFTP. Na przykład [MobaXTerm](http://mobaxterm.mobatek.net/) pozwala przeglądać systemu plików, przy użyciu interfejsem podobnym do Eksploratora Windows.
+> Dostępne są także graficznych interfejsów, które umożliwiają wizualizację systemu plików w przypadku połączenia przy użyciu protokołu SFTP. Na przykład [MobaXTerm](https://mobaxterm.mobatek.net/) pozwala przeglądać systemu plików, przy użyciu interfejsem podobnym do Eksploratora Windows.
 
 ### <a name="ambari"></a>Ambari
 

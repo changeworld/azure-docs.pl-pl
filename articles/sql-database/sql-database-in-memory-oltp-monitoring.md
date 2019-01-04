@@ -7,17 +7,17 @@ ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: juliemsft
+ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: ac7b568d95b9a2c382b1c167965942f0733012c4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874927"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606541"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Pojemność magazynu OLTP w pamięci monitora
 Korzystając z [OLTP w pamięci](sql-database-in-memory.md), znajdują się szczegółowe dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel w pojemność magazynu OLTP w pamięci. Każda warstwa usługi Premium i krytyczne dla działania firmy ma maksymalny rozmiar magazynu OLTP w pamięci. Zobacz [limity zasobów oparty na jednostkach DTU — Pojedyncza baza danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów oparty na jednostkach DTU - pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).

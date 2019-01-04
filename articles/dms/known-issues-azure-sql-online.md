@@ -4,19 +4,19 @@ description: Więcej informacji na temat znanych problemów/migracja ograniczeń
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a8d91c0410d2a59e4b22866aa48d36c026f3ee8e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 816b67488acc567d81bf1916735d13c0e480fe5d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956299"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719561"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Znane problemy dotyczące/migracja ograniczeń dotyczących migracji online do usługi Azure SQL DB
 
@@ -28,7 +28,7 @@ Poniżej opisano znane problemy i ograniczenia związane z usługą online migra
 
 Jeśli źródłowej bazy danych składa się z co najmniej jedna tabela danych czasowych, migracji bazy danych nie powiodło się podczas operacji "pełne ładowanie danych" i może zostać wyświetlony następujący komunikat:
 
-{"resourceId": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Błąd migracji bazy danych", "errorEvents": "[" funkcje przechwytywania nie można ustawić. RetCode: Wartość SQL_ERROR SqlState: 42000 NativeError: 13570 komunikatu: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] użycie replikacji nie jest obsługiwane w tabeli danych czasowych z systemową obsługą "[aplikacji. Miast] "wiersza: 1 kolumna: wartość -1"] "}
+{"resourceId": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Błąd migracji bazy danych", "errorEvents": "[" funkcje przechwytywania nie można ustawić. RetCode: Wartość SQL_ERROR SqlState: 42000 NativeError: Komunikat 13570: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] użycie replikacji nie jest obsługiwane w tabeli danych czasowych z systemową obsługą "[aplikacji. Miast] "wiersz: Kolumna 1: -1 "]"}
  
  ![Przykład błędów w tabeli danych czasowych](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 

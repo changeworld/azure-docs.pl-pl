@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 867fdd57df163f37d86572798aaae6d78d43f479
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105159"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973727"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -27,13 +27,13 @@ Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, je
 Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual Basic for Applications (VBA) funkcje.
 
 * Całe wyrażenie musi być zdefiniowany w zakresie funkcji, które składają się z nazwy argumentów w nawiasach: <br>
-  *FunctionName (<< argumentu 1 >> <<argument N>>)*
-* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Na przykład: <br> *FunctionOne(FunctionTwo(<<argument1>>))*
+  *FunctionName (`<<argument 1>>`,`<<argument N>>`)*
+* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Na przykład: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
 * Trzy różne rodzaje argumenty można przekazać do funkcji:
   
   1. Atrybuty, które muszą być ujęte w nawiasy kwadratowe. Na przykład: [attributeName]
   2. Stałe typu String, które muszą być ujęte w cudzysłów. Na przykład: "United States"
-  3. Inne funkcje. Na przykład: FunctionOne (<<argument1>>, FunctionTwo (<<argument2>>))
+  3. Inne funkcje. Na przykład: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
 * Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Na przykład: "Nazwa firmy: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Lista funkcji
@@ -242,8 +242,8 @@ Należy wygenerować użytkownika aliasu, wykonując pierwsze 3 litery imienia u
 **Przykładowe dane wejściowe/wyjściowe:** <br>
 
 * **Dane wejściowe** (givenName): "John"
-* **Dane wejściowe** (nazwisko): "Kowalski"
-* **Dane wyjściowe**: "JohDoe"
+* **Dane wejściowe** (nazwisko): "Doe"
+* **DANE WYJŚCIOWE**:  "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Usuń znaki diakrytyczne z ciągu
 Należy zastąpić znaki zawierające znaki akcentu równoważne znaki, które nie zawierają znaki akcentu.
@@ -254,7 +254,7 @@ NormalizeDiacritics([givenName])
 **Przykładowe dane wejściowe/wyjściowe:** <br>
 
 * **Dane wejściowe** (givenName): "Zoë"
-* **Dane wyjściowe**: "Zoe"
+* **DANE WYJŚCIOWE**:  "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Dane wyjściowe daty w postaci ciągu w określonym formacie
 
@@ -268,7 +268,7 @@ Na przykład chcesz formatować daty dla usługi ServiceNow.
 **Przykładowe dane wejściowe/wyjściowe:**
 
 * **Dane wejściowe** (extensionAttribute1): "20150123105347.1Z"
-* **DANE WYJŚCIOWE**: "2015-01-23"
+* **DANE WYJŚCIOWE**:  "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Zastąp wartość, na podstawie zestawu wstępnie zdefiniowanych opcji
 
@@ -282,7 +282,7 @@ Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należ
 **Przykładowe dane wejściowe/wyjściowe:**
 
 * **Dane wejściowe** (stan): "QLD"
-* **Dane wyjściowe**: "Australia/Brisbane"
+* **DANE WYJŚCIOWE**: "Australia/Brisbane"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generowanie unikatową wartość dla atrybutu userPrincipalName (UPN)
 

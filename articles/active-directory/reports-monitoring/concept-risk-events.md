@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625270"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652153"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 
@@ -31,7 +31,9 @@ Istnieją dwa miejsca, w którym przejrzeć zdarzenia ryzyka zgłaszanej:
  - **Raportowanie usługi Azure AD** -zdarzeń o podwyższonym ryzyku są częścią zabezpieczeń usługi Azure AD raportów. Aby uzyskać więcej informacji, zobacz [raport zabezpieczeń dotyczący narażonych użytkowników](concept-user-at-risk.md) i [raport zabezpieczeń dotyczący ryzykownych logowań](concept-risky-sign-ins.md).
 
  - **Usługa Azure AD Identity Protection** -zdarzeń o podwyższonym ryzyku są również częścią możliwości raportowania [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-    
+
+Ponadto można użyć [zdarzeń o podwyższonym ryzyku Identity Protection API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) uzyskać programowy dostęp do wykrywania zabezpieczeń przy użyciu programu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Active Directory Identity Protection i Microsoft Graph](../identity-protection/graph-get-started.md). 
+
 Obecnie usługa Azure Active Directory wykrywa sześć typów zdarzeń o podwyższonym ryzyku:
 
 - [Użytkownicy z ujawnionymi poświadczeniami](#leaked-credentials) 
@@ -125,11 +127,11 @@ Ważność zdarzenia o podwyższonym ryzyku reprezentuje siłę sygnału jako pr
 
 Na przykład: 
 
-* **Wysoka**: o dużej pewności i zdarzenia o podwyższonym ryzyku o wysokiej ważności. Te zdarzenia są silne wskaźników, które tożsamość użytkownika zostało naruszone, i kont użytkowników, wpływ na powinny zostać skorygowane natychmiast.
+* **Wysoka**: O dużej pewności i zdarzenia o podwyższonym ryzyku o wysokiej ważności. Te zdarzenia są silne wskaźników, które tożsamość użytkownika zostało naruszone, i kont użytkowników, wpływ na powinny zostać skorygowane natychmiast.
 
-* **Średnia**: o wysokiej ważności, ale niższe zdarzenie o podwyższonym ryzyku zaufania, lub na odwrót. Te zdarzenia są potencjalnie ryzykownymi i kont użytkowników, wpływ na należy skorygować.
+* **Średnia**: Wysoka ważność, ale niższe zdarzenie o podwyższonym ryzyku zaufania, lub na odwrót. Te zdarzenia są potencjalnie ryzykownymi i kont użytkowników, wpływ na należy skorygować.
 
-* **Niska**: Niski, niezawodne i zdarzenia o podwyższonym ryzyku o niskiej ważności. To zdarzenie może nie wymagać natychmiastowego działania, ale w połączeniu z innych zdarzeń o podwyższonym ryzyku może dostarczyć silne wskazanie, że tożsamość zostanie naruszony.
+* **Niska**: Niski zaufania i zdarzenia o podwyższonym ryzyku o niskiej ważności. To zdarzenie może nie wymagać natychmiastowego działania, ale w połączeniu z innych zdarzeń o podwyższonym ryzyku może dostarczyć silne wskazanie, że tożsamość zostanie naruszony.
 
 ![Poziom ryzyka](./media/concept-risk-events/01.png)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 2188451e987aad7e4edfaa2097a828ab9714d706
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138348"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793785"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorowania i debugowania aplikacji usługi Azure Batch dla środowiska .NET za pomocą usługi Application Insights
 
@@ -56,14 +56,14 @@ Odwoływać się do usługi Application Insights z aplikacji .NET za pomocą **M
 
 ## <a name="instrument-your-code"></a>Instrumentować swój kod
 
-Aby instrumentować swój kod, rozwiązanie musi utworzyć usługi Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). W tym przykładzie TelemetryClient ładuje konfigurację z [plik ApplicationInsights.config](../application-insights/app-insights-configuration-with-applicationinsights-config.md) pliku. Pamiętaj zaktualizować plik ApplicationInsights.config w następujących projektach przy użyciu klucza Instrumentacji usługi Application Insights: Microsoft.Azure.Batch.Samples.TelemetryStartTask i TopNWordsSample.
+Aby instrumentować swój kod, rozwiązanie musi utworzyć usługi Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). W tym przykładzie TelemetryClient ładuje konfigurację z [plik ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) pliku. Pamiętaj zaktualizować plik ApplicationInsights.config w następujących projektach przy użyciu klucza Instrumentacji usługi Application Insights: Microsoft.Azure.Batch.Samples.TelemetryStartTask i TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
 Ponadto plik TopNWords.cs dodać klucza instrumentacji.
 
-W przykładzie w TopNWords.cs użyto następujących [wywołania Instrumentacji](../application-insights/app-insights-api-custom-events-metrics.md) z interfejsu API usługi Application Insights:
+W przykładzie w TopNWords.cs użyto następujących [wywołania Instrumentacji](../azure-monitor/app/api-custom-events-metrics.md) z interfejsu API usługi Application Insights:
 * `TrackMetric()` -Śledzi, jak długo — średnio o węzła obliczeniowego Trwa pobieranie pliku wymaganego tekstu.
 * `TrackTrace()` -Dodaje debugowania wywołania w kodzie.
 * `TrackEvent()` -Interesujących zdarzeń do przechwytywania ścieżki.
@@ -125,7 +125,7 @@ public void CountWords(string blobName, int numTopN, string storageAccountName, 
 ```
 
 ### <a name="azure-batch-telemetry-initializer-helper"></a>Usługa Azure pomocnika inicjatora telemetrii usługi Batch
-Raportowania danych telemetrycznych dla danego serwera i wystąpienia, Application Insights używa nazwy roli maszyny Wirtualnej platformy Azure i maszyn wirtualnych dla wartości domyślnych. W kontekście usługi Azure Batch w przykładzie pokazano sposób użycia nazwy puli i zamiast tego obliczenia nazwy węzła. Użyj [inicjatora telemetrii](../application-insights/app-insights-api-filtering-sampling.md#add-properties) przesłonić wartości domyślne. 
+Raportowania danych telemetrycznych dla danego serwera i wystąpienia, Application Insights używa nazwy roli maszyny Wirtualnej platformy Azure i maszyn wirtualnych dla wartości domyślnych. W kontekście usługi Azure Batch w przykładzie pokazano sposób użycia nazwy puli i zamiast tego obliczenia nazwy węzła. Użyj [inicjatora telemetrii](../azure-monitor/app/api-filtering-sampling.md#add-properties) przesłonić wartości domyślne. 
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 75c021f7b2c2584580f2d9dbf30cbcdf11d3fdc5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7bf1a3af7705858432b9ff8caf5064b0794568df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875369"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602464"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Wykonywanie zapytań w bazach danych w chmurze z różnymi schematami (wersja zapoznawcza)
 ![Wykonywanie zapytań względem tabel w różnych bazach danych][1]
@@ -117,8 +117,8 @@ Poniższy przykład pokazuje, jak pobrać listę tabel zewnętrznych z bieżące
 ### <a name="remarks"></a>Uwagi
 Elastyczne zapytanie rozszerza istniejący składni tabeli zewnętrznej do definiowania tabel zewnętrznych używających zewnętrznych źródeł danych typu RDBMS. Partycjonowanie pionowe definicji tabeli zewnętrznej obejmuje następujące aspekty: 
 
-* **Schemat**: tabeli zewnętrznej DDL definiuje schemat, który można użyć zapytań. Podany w definicji tabeli zewnętrznej schemat musi być zgodna schematu tabel w zdalnej bazy danych, gdzie są przechowywane rzeczywistych danych. 
-* **Odwołanie do zdalnej bazy danych**: tabeli zewnętrznej DDL odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa nazwę serwera logicznego i zdalnej bazy danych, której są przechowywane dane tabeli rzeczywista nazwa bazy danych. 
+* **Schemat**: Tabela zewnętrzna DDL definiuje schemat, który można użyć zapytań. Podany w definicji tabeli zewnętrznej schemat musi być zgodna schematu tabel w zdalnej bazy danych, gdzie są przechowywane rzeczywistych danych. 
+* **Odwołanie do zdalnej bazy danych**: Tabela zewnętrzna DDL odnosi się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa nazwę serwera logicznego i zdalnej bazy danych, której są przechowywane dane tabeli rzeczywista nazwa bazy danych. 
 
 Składnia służąca do tworzenia tabel zewnętrznych za pomocą zewnętrznego źródła danych, zgodnie z opisem w poprzedniej sekcji, jest następujący: 
 
@@ -130,7 +130,7 @@ Poniższa instrukcja DDL odrzuca istniejącej definicji tabeli zewnętrznej z ka
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**Uprawnienia dla polecenia CREATE/DROP tabeli zewnętrznej**: uprawnieniami ALTER ANY zewnętrznego źródła danych są potrzebne w tabeli zewnętrznej DDL, który jest również wymagany do odwoływania się do bazowego źródła danych.  
+**Uprawnienia dla polecenia CREATE/DROP tabeli zewnętrznej**: Dla tabeli zewnętrznej DDL, który jest również wymagany do odwoływania się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.  
 
 ## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskać dostęp do podstawowych tabel zdalnych, w obszarze poświadczenia podane w definicji zewnętrznego źródła danych. Aby zapobiec niepożądanemu podniesienia uprawnień za pomocą poświadczeń z zewnętrznym źródłem danych, należy dokładnie zarządzać dostępem do tabeli zewnętrznej. Regularne uprawnienia SQL można udzielić lub ODWOŁAĆ dostęp do tabeli zewnętrznej po prostu tak, jakby była zwykłą tabelę.  
@@ -157,9 +157,9 @@ Następujące zapytanie wykonuje trzy kierunkową sprzężenie dwóch tabel loka
 Elastyczne zapytanie wprowadza również procedury przechowywanej, która zapewnia bezpośredni dostęp do zdalnej bazy danych. Jest wywoływana procedura składowana [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania procedur składowanych zdalnego lub kod T-SQL w zdalnej bazy danych. Jego przyjmuje następujące parametry: 
 
 * Nazwa źródła danych (nvarchar): Nazwa zewnętrznego źródła danych typu RDBMS. 
-* Zapytania (nvarchar): zapytanie T-SQL do wykonania na bazie zdalnego. 
-* Deklaracja parametru (nvarchar) — opcjonalne: ciąg znaków z definicji typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql). 
-* Lista wartości parametrów - opcjonalne: rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
+* Zapytanie (nvarchar): Zapytania T-SQL do wykonania na bazie zdalnego. 
+* Deklaracja parametru (nvarchar) — opcjonalne: Ciąg z danymi definicje typów dla parametrów używanych w parametrze zapytania (na przykład sp_executesql). 
+* Lista wartości parametrów - opcjonalne: Rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
 
 PS\_wykonania\_zdalnego używa zewnętrzne źródło danych podane parametrów wywołania do wykonania danej instrukcji języka T-SQL w zdalnej bazy danych. Nawiązać połączenia ze zdalną bazą danych używa poświadczeń do zewnętrznego źródła danych.  
 

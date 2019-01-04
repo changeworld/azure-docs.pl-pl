@@ -1,9 +1,9 @@
 ---
-title: Usługa limity przydziału i limity dla usługi Azure Batch | Dokumentacja firmy Microsoft
+title: Usługi, limity przydziału i limity — Azure Batch | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o domyślne usługi Azure Batch przydziały, limity i ograniczenia i zwiększa sposobu wysyłania żądania limitu przydziału
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0493783cb1253aab78ff39aa42eeabbec8ddb726
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263608"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753203"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -65,9 +65,9 @@ Jeśli zostało utworzone konto usługi Batch z trybem alokacji puli równa **su
 | [Współbieżnych zadań](batch-parallel-node-tasks.md) na węzeł obliczeniowy | 4 x liczba rdzeni węzła |
 | [Aplikacje](batch-application-packages.md) na konto usługi Batch | 20 |
 | Pakiety aplikacji na aplikację | 40 |
-| Okres istnienia zadania maksymalna | 7 dni<sup>1</sup> |
+| Okres istnienia zadania maksymalna | 180 dni<sup>1</sup> |
 
-<sup>1</sup> maksymalny okres istnienia zadania, od momentu dodania go do zadania do jego ukończenia wynosi 7 dni. Ukończone zadania podrzędne są utrwalone przez czas nieokreślony. Dane dla zadań podrzędnych nieukończonych w ciągu maksymalnego okresu istnienia nie są dostępne.
+<sup>1</sup> maksymalny okres istnienia zadania, od momentu dodania go do zadania do jego ukończenia wynosi 180 dni. Ukończone zadania trwały przez 7 dni; dane dla zadań nieukończonych w ciągu maksymalnego okresu istnienia nie jest dostępny.
 
 ## <a name="view-batch-quotas"></a>Wyświetl przydziały usługi Batch
 

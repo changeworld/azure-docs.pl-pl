@@ -1,20 +1,17 @@
 ---
 title: Replikuj dane do usługi Azure Database for MySQL.
 description: W tym artykule opisano danych replikacji dla usługi Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ca748dff67be2a37ca61f34602f207265cc77aaa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666080"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544230"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikuj dane do usługi Azure Database for MySQL
 
@@ -23,8 +20,8 @@ Replikacji danych umożliwia synchronizowanie danych z serwera MySQL, działają
 ## <a name="when-to-use-data-in-replication"></a>Kiedy należy używać replikacji danych
 Główne scenariusze, warto rozważyć użycie replikacji danych są następujące:
 
-- **Synchronizacja danych hybrydowych:** z replikacją danych, można zachować dane synchronizowane między serwerami lokalnymi i usługi Azure Database for MySQL. Wykonanie synchronizacji jest przydatne podczas tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy masz istniejącego serwera lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
-- **Synchronizacja wielu chmur:** złożonych rozwiązań w chmurze, użyj replikacji danych w celu synchronizacji danych między Azure Database for MySQL i różnych dostawców w chmurze, łącznie z maszynami wirtualnymi i usługami bazy danych hostowanej w tych chmurach.
+- **Synchronizacja danych hybrydowych:** Za pomocą replikacji danych możesz przechowywać dane synchronizowane między serwerami lokalnymi i usługi Azure Database for MySQL. Wykonanie synchronizacji jest przydatne podczas tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy masz istniejącego serwera lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
+- **Synchronizacja wielu chmur:** Złożonych rozwiązań w chmurze umożliwia synchronizowanie danych między Azure Database for MySQL i różnych dostawców w chmurze, łącznie z maszynami wirtualnymi i usługami bazy danych hostowanej w tych chmurach replikacji danych.
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 

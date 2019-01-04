@@ -8,17 +8,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: e87f8a0d168db02bf0e93216991767f5a9be584c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863520"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651984"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migracja bazy danych programu SQL Server do usługi Azure SQL Database
 
@@ -35,7 +35,7 @@ W obu przypadkach należy się upewnić, że źródłowa baza danych jest zgodny
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>Metoda 1. Migracja z przestojem podczas migracji
 
- Ta metoda umożliwia migrację jednej lub bazy danych w puli, jeśli użytkownik przestój jest dopuszczalny lub wykonywana jest testowa migracja produkcyjnej bazy danych celów późniejszej migracji. Aby zapoznać się z samouczkiem, zobacz [Migrowanie bazy danych programu SQL Server](sql-database-migrate-your-sql-server-database.md).
+ Ta metoda umożliwia migrację jednej lub bazy danych w puli, jeśli użytkownik przestój jest dopuszczalny lub wykonywana jest testowa migracja produkcyjnej bazy danych celów późniejszej migracji. Aby zapoznać się z samouczkiem, zobacz [Migrowanie bazy danych programu SQL Server](../dms/tutorial-sql-server-to-azure-sql.md).
 
 Poniższa lista zawiera ogólny przepływ pracy migracji bazy danych programu SQL Server w pojedynczej lub bazy danych w puli za pomocą tej metody. W przypadku migracji do wystąpienia zarządzanego zobacz [migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate.md).
 
@@ -65,7 +65,7 @@ Poniższa lista zawiera zalecenia pozwalające uzyskać najlepszą wydajność p
 
 [Zaktualizuj statystyki](https://msdn.microsoft.com/library/ms187348.aspx) poprzez pełne skanowanie po zakończeniu migracji.
 
-## <a name="method-2-use-transactional-replication"></a>Metoda 2. Użycie replikacji transakcyjnej
+## <a name="method-2-use-transactional-replication"></a>Metoda 2. Korzystanie z replikacji transakcyjnej
 
 Gdy nie możesz sobie pozwolić na usunięcie bazy danych programu SQL Server ze środowiska produkcyjnego na czas migracji, jako rozwiązania do migracji możesz wykorzystać replikację transakcyjną programu SQL Server. Aby użyć tej metody, źródłowa baza danych musi spełniać [wymagania dotyczące replikacji transakcyjnej](https://msdn.microsoft.com/library/mt589530.aspx) i być zgodna z usługą Azure SQL Database. Dla informacji o replikacji SQL przy użyciu zawsze włączonych [skonfigurować replikacji dla zawsze włączonych grup dostępności (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 

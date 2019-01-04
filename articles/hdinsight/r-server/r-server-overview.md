@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499462"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584534"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do usługi uczenie Maszynowe i możliwości języka R typu open source w HDInsight
 
-> [!NOTE]
+> [!NOTE]  
 > We wrześniu 2017 Microsoft R Server został wydany w obszarze nazwy nowego **serwer Microsoft Machine Learning** lub ML Server. W związku z tym, klastra R Server w HDInsight jest teraz nazywana **usługi Machine Learning** lub **usługi ML** klastra w systemie HDInsight. Aby uzyskać więcej informacji na temat zmiany nazwy oprogramowania R Server, zobacz [Microsoft R Server jest teraz serwer Microsoft Machine Learning](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).
 
 Serwer Microsoft Machine Learning jest dostępna jako opcja wdrażania podczas tworzenia klastrów HDInsight w systemie Azure. Typ klastra, który zawiera ta opcja jest wywoływana **usługi ML**. Ta funkcja zapewnia, że analityków danych, statystykom i programistom języka R dostęp na żądanie do skalowalnych, rozproszonych metod analizy w HDInsight.
@@ -29,7 +29,7 @@ Usługi uczenie Maszynowe na HDInsight udostępnia najnowsze możliwości analiz
 
 Węzeł krawędzi klastra zapewnia wygodne miejsce do łączenia z klastrem i do uruchamiania skryptów języka R. Z węzłem krawędzi istnieje możliwość uruchamiania równoległego rozproszonych funkcji programu ScaleR między rdzeniami serwera węzła krawędzi. Można również uruchomić je w węzłach klastra za pomocą usługi Hadoop Mapreduce lub konteksty obliczeniowe aparatu Apache Spark przez program ScaleR.
 
-Modele lub prognoz, wynikających z analizy można pobrać do użycia w środowisku lokalnym. One może również być przygotowany do działania innym miejscu na platformie Azure, w szczególności za pośrednictwem [Azure Machine Learning Studio](http://studio.azureml.net) [usługi sieci web](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+Modele lub prognoz, wynikających z analizy można pobrać do użycia w środowisku lokalnym. One może również być przygotowany do działania innym miejscu na platformie Azure, w szczególności za pośrednictwem [Azure Machine Learning Studio](https://studio.azureml.net) [usługi sieci web](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Rozpoczynanie pracy z usługami uczenia Maszynowego na HDInsight
 
@@ -72,7 +72,7 @@ Poniższe funkcje dostępne w usługi uczenie Maszynowe na HDInsight.
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Opcje magazynu danych usługi ML w HDInsight
 
-Domyślny magazyn dla systemu plików HDFS klastrów HDInsight może być skojarzony z kontem usługi Azure Storage lub Azure Data Lake Store. To skojarzenie gwarantuje, że dowolne dane są przekazywane do klastra magazynu podczas analizy jest trwałe i dane są dostępne, nawet w przypadku, po usunięciu klastra. Istnieją różne narzędzia do obsługi transferu danych do opcji magazynu, który wybierzesz, w tym funkcji przekazywania oparte na portalu konta usługi storage i [AzCopy](../../storage/common/storage-use-azcopy.md) narzędzia.
+Domyślny magazyn dla systemu plików HDFS klastrów HDInsight może być skojarzony z kontem usługi Azure Storage lub usługi Azure Data Lake Storage. To skojarzenie gwarantuje, że dowolne dane są przekazywane do klastra magazynu podczas analizy jest trwałe i dane są dostępne, nawet w przypadku, po usunięciu klastra. Istnieją różne narzędzia do obsługi transferu danych do opcji magazynu, który wybierzesz, w tym funkcji przekazywania oparte na portalu konta usługi storage i [AzCopy](../../storage/common/storage-use-azcopy.md) narzędzia.
 
 Istnieje możliwość włączenia dostępu do obiektu Blob dodatkowe i usługi Data lake przechowuje podczas procesu niezależnie od opcji magazynu podstawowego, używany do aprowizacji klastra. Zobacz [rozpoczęcie korzystania z usługi uczenie Maszynowe na HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) informacji na temat dodawania dostęp do dodatkowych kont. Zobacz [opcji usługi Azure Storage dla usługi ML w HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) artykuł, aby dowiedzieć się więcej o korzystaniu z wieloma kontami magazynu.
 

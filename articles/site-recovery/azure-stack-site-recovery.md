@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 8285632d8dea76763c65dd06e8be2d7494a47188
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838996"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976583"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
@@ -30,12 +30,12 @@ Usługa Site Recovery przyczynia się do Twojej ciągłość działalności bizn
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * **Krok 1: Przygotowanie maszyn wirtualnych usługi Azure stack dla replikacji**. Upewnij się, że maszyny wirtualne spełniają wymogi Site Recovery i przygotowanie do instalacji usługi Site Recovery Mobility. Ta usługa jest zainstalowana na każdej maszynie Wirtualnej, którą chcesz replikować.
-> * **Krok 2: Konfigurowanie magazynu usługi Recovery Services**. Konfigurowanie magazynu usługi Site Recovery i określ, co chcesz replikować. Składników usługi Site Recovery i działania są konfigurowane i zarządzane w magazynie.
-> * **Krok 3: Konfigurowanie środowiska źródłowego replikacji**. Konfigurowanie serwera konfiguracji usługi Site Recovery. Serwer konfiguracji jest jednej usługi Azure Stack maszynę Wirtualną, która uruchamia wszystkie składniki, które są wymagane przez usługę Site Recovery. Po skonfigurowaniu serwera konfiguracji należy zarejestrować go w magazynie.
-> * **Krok 4: Konfigurowanie środowiska docelowego replikacji**. Wybierz konto platformy Azure, a konto usługi Azure storage i sieci, w której chcesz użyć. Podczas replikacji danych maszyny Wirtualnej jest kopiowana do usługi Azure storage. Po przejściu w tryb failover maszyn wirtualnych platformy Azure dołączonych do określonej sieci.
-> * **Krok 5. Włączanie replikacji**. Konfigurowanie ustawień replikacji i włączanie replikacji maszyn wirtualnych. Usługa Mobility zostanie zainstalowana na maszynie Wirtualnej, po włączeniu replikacji. Usługa Site Recovery wykonuje replikacji początkowej maszyny wirtualnej, a następnie rozpoczyna trwającej replikacji.
-> * **Krok 6. uruchamianie próbnego odzyskiwania po awarii**: po skonfigurowaniu i uruchomieniu replikacji upewnieniu się, że trybu failover będzie działać zgodnie z oczekiwaniami, uruchamiając testowania odzyskiwania po awarii. Aby zainicjować testowania odzyskiwania po awarii, należy uruchomić test trybu failover w usłudze Site Recovery. Testowanie trybu failover nie ma wpływu na środowisko produkcyjne.
+> * **Krok 1. Przygotowywanie maszyn wirtualnych usługi Azure stack dla replikacji**. Upewnij się, że maszyny wirtualne spełniają wymogi Site Recovery i przygotowanie do instalacji usługi Site Recovery Mobility. Ta usługa jest zainstalowana na każdej maszynie Wirtualnej, którą chcesz replikować.
+> * **Krok 2. Konfigurowanie magazynu usługi Recovery Services**. Konfigurowanie magazynu usługi Site Recovery i określ, co chcesz replikować. Składników usługi Site Recovery i działania są konfigurowane i zarządzane w magazynie.
+> * **Krok 3. Konfigurowanie środowiska źródłowego replikacji**. Konfigurowanie serwera konfiguracji usługi Site Recovery. Serwer konfiguracji jest jednej usługi Azure Stack maszynę Wirtualną, która uruchamia wszystkie składniki, które są wymagane przez usługę Site Recovery. Po skonfigurowaniu serwera konfiguracji należy zarejestrować go w magazynie.
+> * **Krok 4. Konfigurowanie środowiska docelowego replikacji**. Wybierz konta platformy Azure i konto usługi Azure storage i sieci, w której chcesz użyć. Podczas replikacji danych maszyny Wirtualnej jest kopiowana do usługi Azure storage. Po przejściu w tryb failover maszyn wirtualnych platformy Azure dołączonych do określonej sieci.
+> * **Krok 5. Włącz replikację**. Konfigurowanie ustawień replikacji i włączanie replikacji maszyn wirtualnych. Usługa Mobility zostanie zainstalowana na maszynie Wirtualnej, po włączeniu replikacji. Usługa Site Recovery wykonuje replikacji początkowej maszyny wirtualnej, a następnie rozpoczyna trwającej replikacji.
+> * **Krok 6: Uruchamianie próbnego odzyskiwania po awarii**: Po replikacji jest uruchomiona, czy tryb failover będą działać zgodnie z oczekiwaniami, uruchamiając testowania odzyskiwania po awarii. Aby zainicjować testowania odzyskiwania po awarii, należy uruchomić test trybu failover w usłudze Site Recovery. Testowanie trybu failover nie ma wpływu na środowisko produkcyjne.
 
 Za pomocą tych kroków jest pełna następnie można uruchomić pełny przejścia w tryb failover na platformie Azure jako i konieczne.
 
@@ -45,7 +45,7 @@ Za pomocą tych kroków jest pełna następnie można uruchomić pełny przejśc
 
 **Lokalizacja** | **Składnik** |**Szczegóły**
 --- | --- | ---
-**Serwer konfiguracji** | Działa na jednej maszyny Wirtualnej usługi Azure Stack. | W ramach każdej subskrypcji można skonfigurować serwer konfiguracji maszyny Wirtualnej. Ta maszyna wirtualna uruchamia się następujące składniki usługi Site Recovery:<br/><br/> -Serwer konfiguracji: służy do koordynowania komunikacji między lokalną i platformą Azure oraz do zarządzania replikacją danych. -Serwer przetwarzania: działa jako brama replikacji. To odbiera dane replikacji, optymalizuje przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure storage.<br/><br/> Jeśli chcesz replikować maszyny wirtualne zostaną przekroczone podaną poniżej, możesz skonfigurować oddzielne autonomicznego serwera przetwarzania. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
+**Serwer konfiguracji** | Działa na jednej maszyny Wirtualnej usługi Azure Stack. | W ramach każdej subskrypcji można skonfigurować serwer konfiguracji maszyny Wirtualnej. Ta maszyna wirtualna uruchamia się następujące składniki usługi Site Recovery:<br/><br/> — Konfiguracja serwera: Służy do koordynowania komunikacji między lokalną i platformą Azure oraz do zarządzania replikacją danych. -Process server: Działa jako brama replikacji. To odbiera dane replikacji, optymalizuje przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure storage.<br/><br/> Jeśli chcesz replikować maszyny wirtualne zostaną przekroczone podaną poniżej, możesz skonfigurować oddzielne autonomicznego serwera przetwarzania. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
 **Usługa mobilności** | Zainstalowana na każdej maszynie Wirtualnej, którą chcesz replikować. | W krokach w tym artykule możemy przygotować konto tak, aby usługa mobilności jest zainstalowana automatycznie na maszynie Wirtualnej po włączeniu replikacji. Jeśli nie chcesz automatycznie zainstalować usługę, istnieje kilka innych metod, których można użyć. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
 **Azure** | Na platformie Azure konieczne jest magazyn usługi Recovery Services, konta magazynu i sieci wirtualnej. |  Replikowane dane są przechowywane na koncie magazynu. Maszyny wirtualne platformy Azure są dodawane do sieci platformy Azure, po przejściu do trybu failover. 
 
@@ -78,7 +78,7 @@ Oto, co jest potrzebne do skonfigurowania tego scenariusza.
 
 
  
-## <a name="step-1-prepare-azure-stack-vms"></a>Krok 1: Przygotowanie maszyn wirtualnych usługi Azure Stack
+## <a name="step-1-prepare-azure-stack-vms"></a>Krok 1: Przygotowywanie maszyn wirtualnych usługi Azure Stack
 
 ### <a name="verify-the-operating-system"></a>Sprawdź system operacyjny
 
@@ -104,7 +104,7 @@ Każda maszyna wirtualna, którą chcesz replikować musi mieć zainstalowaną u
     - Jeśli nie używasz konta domeny, należy wyłączyć kontrolę dostępu użytkowników zdalnych na maszynie Wirtualnej:
         - W rejestrze Utwórz wartość DWORD **LocalAccountTokenFilterPolicy** w obszarze HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System.
         - Ustaw wartość na 1.
-        - W tym celu należy w wierszu polecenia wpisz następujące polecenie: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj REG /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**.
+        - W tym celu należy w wierszu polecenia wpisz następujące polecenie: **Rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**.
 - W Zaporze Windows na maszynie Wirtualnej, którą chcesz replikować Zezwalaj na udostępnianie plików i drukarek oraz usługi WMI.
     - Aby to zrobić, uruchom **wf.msc** aby otworzyć konsolę Zapora Windows. Kliknij prawym przyciskiem myszy **reguły ruchu przychodzącego** > **nową regułę**. Wybierz **wstępnie zdefiniowane**i wybierz polecenie **plików i drukarek udostępnianie** z listy. Ukończ pracę kreatora, zaznacz, aby umożliwić połączenie > **Zakończ**.
     - W przypadku komputerów domeny można użyć obiektu zasad grupy, w tym celu.
@@ -140,7 +140,7 @@ Dla każdej maszyny, którą chcesz replikować, znaleźć adres IP:
     ![Prywatny adres IP](./media/azure-stack-site-recovery/private-ip.png)
 
 
-## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Krok 2. Tworzenie magazynu i Wybieranie celu replikacji
+## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Krok 2: Utwórz magazyn i Wybieranie celu replikacji
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Monitorowanie i zarządzanie** > **Backup i Site Recovery**.
 2. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. 
@@ -202,7 +202,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure. Jeśli ich nie zostanie znaleziona, należy utworzyć co najmniej jedno konto magazynu i sieć wirtualną, aby zakończyć pracę kreatora.
 
 
-## <a name="step-5-enable-replication"></a>Krok 5: Włączanie replikacji
+## <a name="step-5-enable-replication"></a>Krok 5. Włączanie replikacji
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
@@ -227,20 +227,20 @@ Teraz można pominąć ten krok. W **planowania wdrożenia** listy rozwijanej kl
 
 ### <a name="enable-replication"></a>Włączanie replikacji
 
-Upewnij się, że ukończono wszystkie zadania w [krok 1: przygotowanie maszyny](#step-1-prepare-azure-stack-vms). Następnie Włącz replikację w następujący sposób:
+Upewnij się, że ukończono wszystkie zadania w [krok 1: Przygotuj maszynę](#step-1-prepare-azure-stack-vms). Następnie Włącz replikację w następujący sposób:
 
 1. Wybierz pozycje **Replikowanie aplikacji** > **Źródło**.
 2. W obszarze **Źródło** wybierz serwer konfiguracji.
 3. W **typ maszyny**, wybierz opcję **maszyn fizycznych**.
 4. Wybierz serwer przetwarzania (serwer konfiguracji). Następnie kliknij przycisk **OK**.
 5. W **docelowej**, wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne po włączeniu trybu failover. Wybierz model wdrażania, który chcesz użyć dla maszyn wirtualnych w trybie failed-over.
-6. Wybierz konto Azure storage, w którym chcesz przechowywane replikowanych danych.
+6. Wybierz na koncie magazynu platformy Azure, w którym chcesz do przechowywania replikowanych danych.
 7. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne platformy Azure, gdy zostaną uruchomione po przejściu do trybu failover.
 8. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz **później skonfigurować** Jeśli chcesz wybrać sieć platformy Azure oddzielnie dla każdego komputera.
-9. W **maszyn fizycznych**, kliknij przycisk **+ maszyna fizyczna**. Określ nazwę adresu IP każdego komputera i systemu operacyjnego, które mają być replikowane.
+9. W **maszyn fizycznych**, kliknij przycisk **+ maszyna fizyczna**. Określ nazwę, adres IP i typ systemu operacyjnego w każdej maszynie, którą chcesz replikować.
 
     - Użyj wewnętrznego adresu IP maszyny.
-    - Jeśli określisz, że replikacji publiczny adres IP może nie działać zgodnie z oczekiwaniami.
+    - Jeśli określisz publiczny adres IP, replikacja może nie działać zgodnie z oczekiwaniami.
 
 10. W **właściwości** > **skonfigurować właściwości**, wybierz konto, którego serwer przetwarzania będzie używać do automatycznego instalowania usługi mobilności na maszynie.
 11. W **ustawień replikacji** > **Konfigurowanie ustawień replikacji**, sprawdź, czy wybrano właściwe zasady replikacji.
@@ -255,7 +255,7 @@ Upewnij się, że ukończono wszystkie zadania w [krok 1: przygotowanie maszyny]
 > Aby monitorować dodawane maszyny wirtualne, możesz sprawdzić czas ostatniego odnalezienia maszyn wirtualnych w obszarze **Serwery konfiguracji** > **Ostatni kontakt**. Aby dodać maszyny wirtualne, nie czekając na zaplanowane odnajdywanie, wyróżnij serwer konfiguracji (nie wybieraj go), a następnie wybierz pozycję **Odśwież**.
 
 
-## <a name="step-6-run-a-disaster-recovery-drill"></a>Krok 6. uruchamianie próbnego odzyskiwania po awarii
+## <a name="step-6-run-a-disaster-recovery-drill"></a>Krok 6: Uruchamianie próbnego odzyskiwania
 
 Możesz uruchomić testowy tryb failover na platformie Azure, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami. Ta praca awaryjna nie wpłyną na środowisko produkcyjne.
 
@@ -278,9 +278,9 @@ Po uruchomieniu próby przejścia w tryb failover wykonywane są następujące o
 
 1. Uruchamiane jest sprawdzanie wymagań wstępnych, aby upewnić się, że zostały spełnione wszystkie warunki przejścia w tryb failover.
 2. Tryb failover przetwarza dane przy użyciu określony punkt odzyskiwania:
-    - **Najnowszy przetworzony**: przejdzie maszyny w tryb failover do najnowszego punktu odzyskiwania są przetwarzane przez usługę Site Recovery. Wyświetlana jest sygnatura czasowa. Ta opcja zapewnia niską wartość celu czasu odzyskiwania (RTO, Recovery Time Objective), ponieważ nie trzeba poświęcać czasu na przetwarzanie danych.
-    - **Najnowszy spójny na poziomie aplikacji**. Maszyny wirtualnej za pośrednictwem do najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
-    - **Niestandardowe**. Wybierz punkt odzyskiwania do trybu failover.
+    - **Najnowszy przetworzony**: Maszyny wirtualnej za pośrednictwem do najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Wyświetlana jest sygnatura czasowa. Ta opcja zapewnia niską wartość celu czasu odzyskiwania (RTO, Recovery Time Objective), ponieważ nie trzeba poświęcać czasu na przetwarzanie danych.
+    - **Najnowszy spójny na poziomie aplikacji**: Maszyny wirtualnej za pośrednictwem do najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
+    - **Niestandardowe**: Wybierz punkt odzyskiwania do trybu failover.
 
 3. Maszynę wirtualną platformy Azure zostanie utworzona przetworzone dane.
 4. Testowanie trybu failover można wyczyścić automatycznie utworzone podczas testowania odzyskiwania po awarii maszyn wirtualnych platformy Azure.
@@ -314,12 +314,12 @@ Następnie uruchom tryb failover w następujący sposób:
 7. Po zweryfikowaniu maszyny Wirtualnej, kliknij przycisk **zatwierdzić** na zakończenie pracy w trybie failover. Spowoduje to usunięcie wszystkich dostępnych punktów odzyskiwania.
 
 > [!WARNING]
-> Nie Anuluj trybu failover w toku: przed uruchomieniem trybu failover replikacja maszyny Wirtualnej zostanie zatrzymana. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
+> Nie Anuluj trybu failover w toku: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
 
 
 ### <a name="fail-back-to-azure-stack"></a>Powrót po awarii do usługi Azure Stack
 
-Po lokacja główna zostanie ponownie uruchomiony, możesz można wykonać powrotu po awarii z platformy Azure do platformy Azure stosu. Aby to zrobić, należy pobrać wirtualnego dysku twardego dla maszyny Wirtualnej platformy Azure i przekaż go do usługi Azure Stack.
+Lokacja główna będzie ponownie uruchomiony, możesz może zakończyć się niepowodzeniem ponownie z platformy Azure do platformy Azure Stack. Aby to zrobić, należy pobrać wirtualnego dysku twardego dla maszyny Wirtualnej platformy Azure i przekaż go do usługi Azure Stack.
 
 1. Zamknij maszyny Wirtualnej platformy Azure, więc, że wirtualny dysk twardy, który można pobrać. 
 2. Aby rozpocząć pobieranie wirtualnego dysku twardego, należy zainstalować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).

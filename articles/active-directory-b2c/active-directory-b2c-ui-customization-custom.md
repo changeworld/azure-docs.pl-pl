@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833949"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633014"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 
 Za pomocą funkcji dostosowywania interfejsu użytkownika strony, można dostosować wygląd i działanie żadnych zasad niestandardowych. Można także zapewnić spójność wizerunku marki i wrażeń wizualnych między aplikacją i usługą Azure AD B2C.
 
-Oto jak to działa: usługi Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
+Poniżej przedstawiono, jak to działa: Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
 
 ## <a name="create-your-html5-content"></a>Utwórz swoje HTML5 zawartości
 
@@ -50,9 +50,6 @@ Utwórz HTML zawartość Nazwa marki produktu w tytule.
    </body>
    </html>
    ```
-
-   >[!NOTE]
-   >Ze względów bezpieczeństwa korzystanie z języka JavaScript jest obecnie zablokowana do dostosowania.
 
 2. Wklej skopiowany fragment kodu w edytorze tekstów, a następnie zapisz plik jako *dostosować ui.html*.
 
@@ -124,7 +121,7 @@ Aby skonfigurować dostosowywania interfejsu użytkownika, należy skopiować **
 3. Otwórz plik rozszerzenia. Na przykład *TrustFrameworkExtensions.xml*. Wyszukaj **BuildingBlocks** elementu. Jeśli element nie istnieje, należy go dodać.
 4. Wklej całą zawartość **ContentDefinitions** element, który został skopiowany jako element podrzędny elementu **BuildingBlocks** elementu. 
 5. Wyszukaj **ContentDefinition** element, który zawiera `Id="api.signuporsignin"` w formacie XML, który został skopiowany.
-6. Zmień wartość właściwości **parametr LoadUri** do adresu URL pliku HTML, który został przekazany do magazynu. Na przykład "https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+6. Zmień wartość właściwości **parametr LoadUri** do adresu URL pliku HTML, który został przekazany do magazynu. Na przykład https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html.
     
     Niestandardowe zasady powinny wyglądać następująco:
 

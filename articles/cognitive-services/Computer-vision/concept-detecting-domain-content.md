@@ -1,7 +1,7 @@
 ---
 title: Wykrywanie specyficznego dla domeny zawartości — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z opisem obrazów przy użyciu interfejsu API przetwarzania obrazów.
+description: Dowiedz się, jak określić domenę kategoryzacji obrazu do zwrócenia bardziej szczegółowe informacje o obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,23 +10,24 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: a9c71fa7e5d86cfeb4fe6fab44bbce241546ccb8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 50942634bd50974453c242d1980db9fc589bd47e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342563"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579213"
 ---
 # <a name="detecting-domain-specific-content"></a>Wykrywanie zawartości specyficznej dla domeny
 
-Ponadto do znakowania i najwyższego poziomu o kategoryzacji, przetwarzanie obrazów obsługuje również informacje specjalistyczne (lub specyficznego dla domeny). Informacje można zaimplementować jako metoda autonomiczna lub wysokiego poziomu o kategoryzacji. Działa ona jako sposób, aby dalej zawęzić Taksonomia kategorii 86 przez dodanie modeli specyficznych dla domeny.
+Ponadto do znakowania i najwyższego poziomu o kategoryzacji, przetwarzanie obrazów obsługuje również informacje specjalistyczne (lub specyficznego dla domeny). Informacje specjalistyczne można wdrażać jako metodę autonomiczną lub na wysokim poziomie kategoryzacji. Funkcjonują one jako sposób dalszego uściślenia taksonomii obejmującej 86 kategorii przez dodanie modeli specyficznych dla domeny.
 
 Istnieją dwie opcje używania modeli specyficznych dla domeny:
 
 * Analizy o określonym zakresie  
-  Analizuj wybrany model przez wywołanie metody POST protokołu HTTP. Jeśli znasz model, który chcesz użyć, należy określić nazwę modelu. Możesz pobrać wyłącznie informacje istotne dla modelu. Na przykład można używasz tej opcji do rozpoznawania osobistości są wyszukiwane tylko. Odpowiedź zawiera listę potencjalnych dopasowania osobistości, wraz z ich oceny zaufania.
+  Analizuj wybrany model przez wywołanie metody POST protokołu HTTP. Jeśli znasz model, który chcesz użyć, należy określić nazwę modelu. Możesz pobrać wyłącznie informacje istotne dla modelu. Możesz na przykład użyć tej opcji tylko do wyszukiwania rozpoznawania celebrytów. Odpowiedź zawiera listę potencjalnych pasujących celebrytów wraz ze współczynnikami ufności.
 * Rozszerzone analizy  
-  Analizuj, aby zapewnić dodatkowe szczegóły powiązane z kategorii Taksonomia kategorii 86. Ta opcja jest dostępna do użytku w aplikacjach, w którym użytkownicy chcą uzyskać ogólny obraz analizy oprócz szczegółów z jednego lub więcej modeli specyficznych dla domeny. Gdy ta metoda jest wywoływana, najpierw jest wywoływana klasyfikatora Taksonomia kategorii 86. Jeśli dowolnej kategorii pasuje do znanego lub zgodnych modeli, drugi — dostęp próbny wywołania klasyfikatora jest zgodna. Na przykład jeśli `details` parametru wywołanie metody POST protokołu HTTP albo jest ustawiona na "wszystkie" lub "osobistości" obejmuje, metody wywołania klasyfikatora osobistości, po klasyfikatora 86 kategorii jest wywoływana. Jeśli obraz zostanie sklasyfikowany jako `people_` lub podkategorii w kategorii, a następnie klasyfikatora osobistości jest wywoływana.
+  Analiza dostarczająca dodatkowe szczegóły związane z kategoriami z taksonomii zawierającej 86 kategorii. Ta opcja jest dostępna w aplikacjach, w których użytkownicy chcą uzyskać analizę ogólną obrazu oprócz szczegółów z co najmniej jednego modelu specyficznego dla domeny. Po wywołaniu tej metody klasyfikator taksonomii zawierający 86 kategorii zostanie wywołany jako pierwszy. Jeśli dowolnej kategorii pasuje do znanego lub zgodnych modeli, drugi — dostęp próbny wywołania klasyfikatora jest zgodna. Na przykład jeśli `details` parametru wywołanie metody POST protokołu HTTP albo jest ustawiona na "wszystkie" lub "osobistości" obejmuje, metody wywołania klasyfikatora osobistości, po klasyfikatora 86 kategorii jest wywoływana. Jeśli obraz zostanie sklasyfikowany jako `people_` lub podkategorii w kategorii, a następnie klasyfikatora osobistości jest wywoływana.
 
 ## <a name="listing-domain-specific-models"></a>Wyświetlanie listy modeli specyficznych dla domeny
 

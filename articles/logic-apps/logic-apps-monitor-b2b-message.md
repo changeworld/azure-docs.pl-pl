@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d7a32abe52e6f1109becc18c84b19d0ccd69719c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385469"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534880"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B w usłudze Azure Log Analytics w usłudze Azure Logic Apps
 
@@ -122,7 +122,7 @@ Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**
 Wraz z usługi Azure Log Analytics można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
 
 * [Archiwum, które dzienniki diagnostyczne platformy Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Dzienniki diagnostyczne platformy Azure Stream do usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [Dzienniki diagnostyczne platformy Azure Stream do usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
 Następnie monitorowanie przy użyciu danych telemetrycznych i analitycznych z innych usług, takich jak get w czasie rzeczywistym [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [usługi Power BI](../azure-monitor/platform/powerbi.md). Na przykład:
 

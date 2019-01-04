@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6969744ff52e9aff9d486d2eab6fffc2c3ac8b74
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278138"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608004"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Wydajność bazy danych Intelligent Insights za pomocą sztucznej Inteligencji do monitorowania i rozwiązywania problemów
 
@@ -57,7 +57,7 @@ Identyfikuje bazy danych SQL, spadku wydajności wydajności są rejestrowane w 
 | Wartość wpływu | Wartość metryki są mierzone. |
 | Kody błędów i zapytania objęte wpływem | Wyślij zapytanie do wyznaczania wartości skrótu lub kod błędu. Mogą one używane, aby łatwo odnoszą się do objęte zapytania. Metryki, które składają się z zwiększyć czas trwania zapytania, czas oczekiwania, liczby limitu czasu lub kody błędów są dostarczane. |
 | Wykrycia | Wykrywanie określonych w bazie danych w czasie zdarzenia. Brak 15 wykrywanie wzorców. Aby uzyskać więcej informacji, zobacz [bazy danych Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Analiza głównych przyczyn | Główna przyczyna analizy problemu zidentyfikowanego w formacie czytelnym dla człowieka. Niektóre szczegółowe dane mogą zawierać zalecenie poprawy wydajności, jeśli jest to możliwe. |
+| Analiza głównej przyczyny | Główna przyczyna analizy problemu zidentyfikowanego w formacie czytelnym dla człowieka. Niektóre szczegółowe dane mogą zawierać zalecenie poprawy wydajności, jeśli jest to możliwe. |
 |||
 
 Praktyczne omówienie przy użyciu Intelligent Insights z usługą Azure SQL Analytics i typowe scenariusze użycia Zobacz osadzone wideo:
@@ -97,7 +97,7 @@ Poniższy przykład pokazuje, że Intelligent Insights wyświetlane za pomocą u
 
 ### <a name="set-up-with-event-hubs"></a>Konfigurowanie przy użyciu usługi Event Hubs
 
-Aby Intelligent Insights za pomocą usługi Event Hubs, należy skonfigurować dane dzienników Intelligent Insights przesyłane strumieniowo do usługi Event Hubs, zobacz [dzienniki diagnostyczne usługi Azure Stream do usługi Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+Aby Intelligent Insights za pomocą usługi Event Hubs, należy skonfigurować dane dzienników Intelligent Insights przesyłane strumieniowo do usługi Event Hubs, zobacz [dzienniki diagnostyczne usługi Azure Stream do usługi Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
 
 Aby skonfigurować niestandardowe monitorowania i zgłaszania alertów za pomocą usługi Event Hubs, zobacz [co należy zrobić metryki i Diagnostyka dzienników w usłudze Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
@@ -180,4 +180,4 @@ Jeśli monitorowana wyjątki krytyczne cross bezwzględne wartości progowe, zar
 - Dowiedz się, jak [bazy danych SQL Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Użyj [dziennik diagnostyczny wydajności bazy danych SQL Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Dowiedz się, jak [monitorowanie bazy danych SQL przy użyciu SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Dowiedz się, jak [zbieranie i używanie dane dzienników z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Dowiedz się, jak [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md).

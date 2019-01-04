@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408684"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745061"
 ---
-# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchamianie przykładów technologii Apache Hadoop MapReduce w HDInsight z systemem Windows
+# <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchamianie przykładów technologii MapReduce w HDInsight z systemem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Aby ułatwić wprowadzenie uruchomionych zadań MapReduce w klastrach usługi Apache Hadoop przy użyciu usługi Azure HDInsight jest dostępny zestaw przykładów. Te przykłady są udostępniane na każdym z klastrów HDInsight zarządzane, które tworzysz. Uruchamianie tych przykładów zapoznanie się z przy użyciu poleceń cmdlet programu Azure PowerShell do uruchamiania zadań w klastrach usługi Hadoop.
@@ -167,7 +167,7 @@ Skryptu podane w tym przykładzie przesyła plik jar zadania usługi Hadoop i je
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>Graysort 10 GB
-Ta próbka używa skromną 10 GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy, który wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 wysokości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](http://sortbenchmark.org/) lokacji.
+Ta próbka używa skromną 10 GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy, który wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 wysokości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](https://sortbenchmark.org/) lokacji.
 
 W tym przykładzie użyto trzy rodzaje programów MapReduce:
 
@@ -383,7 +383,7 @@ Estymatora liczby pi kodu języka Java, który zawiera mapowania i reduktor funk
 * "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
 *
-* http://www.apache.org/licenses/LICENSE-2.0
+* https://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
@@ -722,7 +722,7 @@ Kod programu TeraSort MapReduce jest przedstawiane do kontroli w tej sekcji.
     * "License"); you may not use this file except in compliance
     * with the License.  You may obtain a copy of the License at
     *
-    *     http://www.apache.org/licenses/LICENSE-2.0
+    *     https://www.apache.org/licenses/LICENSE-2.0
     *
     * Unless required by applicable law or agreed to in writing, software
     * distributed under the License is distributed on an "AS IS" BASIS,

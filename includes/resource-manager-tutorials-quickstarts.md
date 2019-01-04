@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978761"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729343"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki start i samouczki
 
@@ -39,6 +39,7 @@ Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj 
     |------|-----|
     |[Korzystanie z dokumentacji szablonów](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|Opracowywanie szablonów przy użyciu dokumentacji szablonów. Ten samouczek obejmuje schemat konta magazynu i informacje dotyczące tworzenia zaszyfrowanego konta magazynu.|
     |[Tworzenie wielu wystąpień](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|Tworzenie wielu wystąpień zasobów platformy Azure. W tym samouczku utworzysz wiele wystąpień konta magazynu.|
+    |[Przenoszenie zasobów](../articles/azure-resource-manager/resource-manager-tutorial-move-resources.md)|Przenieś zasoby z jednej grupy zasobów do innej grupy zasobów. W tym samouczku uruchamianie istniejącego szablonu, aby utworzyć dwie grupy zasobów i jedno konto magazynu, a następnie uruchom polecenie cmdlet programu Azure PowerShell, można przenieść konta magazynu do grupy zasobów.|
     |[Ustawianie kolejności wdrażania zasobów](../articles/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources.md)|Definiowanie zależności zasobów. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zależne zasoby platformy Azure. Dowiedz się, jak definiować zależności.|
     |[Używanie warunków](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|Wdrażanie zasobów na podstawie wartości parametrów. W tym samouczku zdefiniujesz szablon umożliwiający utworzenie nowego konta magazynu lub użyjesz istniejącego konta magazynu na podstawie wartości parametru.|
     |[Integrowanie usługi Key Vault](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|Pobieranie wpisów tajnych/haseł z usługi Azure Key Vault. W tym samouczku utworzysz maszynę wirtualną.  Hasło administratora maszyny wirtualnej jest pobierane z usługi Key Vault.|

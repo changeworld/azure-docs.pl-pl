@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410282"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994372"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
 
@@ -22,15 +22,15 @@ Jeśli klaster usługi HDInsight jest działa wolno lub kończy się niepowodzen
 
 Aby zdiagnozować powolnego działania lub awarii klastra, Zbierz informacje dotyczące wszystkich aspektów środowiska, takie jak powiązane usługi platformy Azure, konfiguracji klastra i informacje o wykonaniu zadania. Diagnostyka pomocne jest spróbuj odtworzyć stan błędu w innym klastrze.
 
-* Krok 1. Zbieranie danych o problemie
-* Krok 2. Sprawdzania, czy środowisko klastra HDInsight 
-* Krok 3. Wyświetl stan sieci klastra
+* Krok 1: Zbieranie danych o problemie
+* Krok 2: Sprawdzania, czy środowisko klastra HDInsight 
+* Krok 3: Wyświetl stan sieci klastra
 * Krok 4: Przejrzyj stos środowiska i wersje
-* Krok 5: Przejrzyj pliki dziennika klastra
+* Krok 5. Przejrzyj pliki dziennika klastra
 * Krok 6: Sprawdź ustawienia konfiguracji
 * Krok 7: Odtwórz błąd w innym klastrze 
 
-## <a name="step-1-gather-data-about-the-issue"></a>Krok 1. Zbieranie danych o problemie
+## <a name="step-1-gather-data-about-the-issue"></a>Krok 1: Zbieranie danych o problemie
 
 HDInsight oferuje wiele narzędzi, które służą do identyfikowania i rozwiązywania problemów z klastrami. Poniższe kroki ułatwiają za pomocą tych narzędzi i sugestie dotyczące precyzyjne określenie problemu.
 
@@ -67,7 +67,7 @@ Można również użyć klasycznego wiersza polecenia platformy Azure:
 
 Innym rozwiązaniem jest przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [klastrów zarządzania Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Krok 2. Sprawdzania, czy środowisko klastra HDInsight
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Krok 2: Sprawdzania, czy środowisko klastra HDInsight
 
 Każdy klaster HDInsight opiera się na różne usługi platformy Azure i oprogramowania typu open source, takich jak Apache HBase i Apache Spark. Klastry HDInsight można również wywołać od innych usług platformy Azure, takich jak Azure Virtual Networks.  Niepowodzenie klastra może być spowodowany przez dowolną z usług uruchomionych w klastrze lub zewnętrznej usługi.  Zmiana konfiguracji klastra usługi również może spowodować awarii klastra.
 
@@ -88,7 +88,7 @@ Aby otworzyć listę widoków usługi, wybierz **widoków Ambari** na stronie po
 
 #### <a name="check-for-azure-service-outages"></a>Wyszukaj przerwy w działaniu usługi platformy Azure
 
-HDInsight opiera się na kilka usług platformy Azure. Działa serwerów wirtualnych na platformie Azure HDInsight, magazynów danych i skryptów w usłudze Azure Blob storage lub Azure DataLake Store, i indeksy pliki dziennika w usłudze Azure Table storage. Przerw w działaniu do tych usług, mimo że jest to rzadkie, mogą powodować problemy w HDInsight. W przypadku nieoczekiwanych opóźnień lub błędów w klastrze, sprawdź [pulpit nawigacyjny stanu platformy Azure](https://azure.microsoft.com/status/). Uporządkowane według regionów znajduje się stan każdej usługi. Sprawdź klastra region i również regiony dla wszystkich powiązanych usług.
+HDInsight opiera się na kilka usług platformy Azure. Działa serwerów wirtualnych na platformie Azure HDInsight, magazynów danych i skryptów w usłudze Azure Blob storage lub usługi Azure Data Lake Storage, i indeksy pliki dziennika w usłudze Azure Table storage. Przerw w działaniu do tych usług, mimo że jest to rzadkie, mogą powodować problemy w HDInsight. W przypadku nieoczekiwanych opóźnień lub błędów w klastrze, sprawdź [pulpit nawigacyjny stanu platformy Azure](https://azure.microsoft.com/status/). Uporządkowane według regionów znajduje się stan każdej usługi. Sprawdź klastra region i również regiony dla wszystkich powiązanych usług.
 
 #### <a name="check-azure-service-usage-limits"></a>Sprawdzanie limitów użycia usług platformy Azure
 
@@ -103,7 +103,7 @@ Porównaj z najnowszą wersją HDInsight w wersji klastra. Każda wersja HDInsig
 
 Jeśli spowolnienie występują w klastrze, należy rozważyć ponowne uruchamianie usługi za pośrednictwem interfejsu użytkownika Ambari lub klasycznego wiersza polecenia platformy Azure. Klaster mogą występować błędy przejściowe i ponowne uruchomienie jest najszybszym sposobem na stabilizowaniu środowiska i być może zwiększyć wydajność.
 
-## <a name="step-3-view-your-clusters-health"></a>Krok 3. Wyświetl stan sieci klastra
+## <a name="step-3-view-your-clusters-health"></a>Krok 3: Wyświetl stan sieci klastra
 
 Klastry HDInsight składają się z różnego rodzaju węzłami działającymi na wystąpieniach maszyn wirtualnych. Każdy węzeł można monitorować zablokowania zasobów, problemy z połączeniem sieciowym i innych problemów, które spowalniają działanie klastra. Każdy klaster zawiera dwa węzły główne, a większość typów klastrów zawierają kombinację procesu roboczego oraz węzłów krawędzi. 
 
@@ -212,7 +212,7 @@ Interfejsu użytkownika Ambari **stosu i wersji** strona zawiera informacje o kl
 
 ![Stos i wersje](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 
-## <a name="step-5-examine-the-log-files"></a>Krok 5: Przejrzyj pliki dziennika
+## <a name="step-5-examine-the-log-files"></a>Krok 5. Przejrzyj pliki dziennika
 
 Istnieje wiele typów dzienników, które są generowane na podstawie wielu usług i składników wchodzących w skład klastra usługi HDInsight. [Pliki dziennika usługi WebHCat](#check-your-webhcat-service) są opisane wcześniej. Istnieje kilka innych przydatne plików dziennika, które można zbadać Aby zawęzić problemy związane z klastrem, zgodnie z opisem w poniższych sekcjach.
 

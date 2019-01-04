@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722381"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794247"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Opis okresowe konfiguracji kopii zapasowej w usłudze Azure Service Fabric
 
@@ -27,7 +27,7 @@ Konfigurowanie okresowych kopii zapasowych niezawodne usługi stanowe lub elemen
 
 1. **Tworzenie zasad tworzenia kopii zapasowych**: W tym kroku co najmniej jedne zasady tworzenia kopii zapasowej są tworzone w zależności od wymagań.
 
-2. **Opcja włączania kopii zapasowych**: W tym kroku należy skojarzyć zasady tworzenia kopii zapasowych utworzonych w **kroku 1** do wymaganych jednostek _aplikacji_, _usługi_, lub  _Partycja_.
+2. **Opcja włączania kopii zapasowych**: W tym kroku należy skojarzyć zasady tworzenia kopii zapasowych utworzonych w **kroku 1** do wymaganych jednostek _aplikacji_, _usługi_, lub _partycji_.
 
 ## <a name="create-backup-policy"></a>Tworzenie zasad kopii zapasowych
 
@@ -43,9 +43,9 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
 
     3. Repliki są przekazywane MaxAccumulatedBackupLogSizeInMB limit.
 
-* **Harmonogram tworzenia kopii zapasowych**: momentu lub częstotliwości, w którym należy wykonać okresowe kopie zapasowe. Jeden można zaplanować tworzenie kopii zapasowych są cykliczne w określonych przedziałach czasowych lub w stały czas dziennie / co tydzień.
+* **Harmonogram tworzenia kopii zapasowych**: Czas lub częstotliwości, w którym należy wykonać okresowe kopie zapasowe. Jeden można zaplanować tworzenie kopii zapasowych są cykliczne w określonych przedziałach czasowych lub w stały czas dziennie / co tydzień.
 
-    1. **Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych**: można używać tego typu harmonogramu, jeśli jest do wykonania kopii zapasowej danych w ustalonych odstępach czasu. Żądany czas interwału dwóch kolejnych kopii zapasowych jest zdefiniowany w formacie ISO8601. Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych obsługuje interwał rozdzielczość maksymalnie minutę.
+    1. **Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych**: W przypadku konieczności do wykonania kopii zapasowej danych w ustalonych odstępach czasu, należy używać tego typu harmonogramu. Żądany czas interwału dwóch kolejnych kopii zapasowych jest zdefiniowany w formacie ISO8601. Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych obsługuje interwał rozdzielczość maksymalnie minutę.
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -53,8 +53,8 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
         }
         ```
 
-    2. **Harmonogram tworzenia kopii zapasowych oparte na czasie**: można używać tego typu harmonogramu, jeśli jest do wykonania kopii zapasowej danych o określonych godzinach dnia lub tygodnia. Typ częstotliwości harmonogramu może być codziennie lub co tydzień.
-        1. **_Codzienne_ harmonogram tworzenia kopii zapasowych oparte na czasie**: można używać tego typu harmonogramu, jeśli identyfikator potrzebę do wykonania kopii zapasowej danych o określonych godzinach dnia. Aby określić, to, ustaw `ScheduleFrequencyType` do _codzienne_; i ustaw `RunTimes` do listy żądany czas w danym dniu, w formacie ISO8601, zostaną zignorowane datę określony czas. Na przykład `0001-01-01T18:00:00` reprezentuje _6:00 PM_ codziennie, bez uwzględnienia data _0001-01-01_. Poniższym przykładzie przedstawiono konfigurację, aby wyzwalacz codzienne wykonywanie kopii zapasowych na _9:00 AM_ i _6:00 PM_ codziennie.
+    2. **Harmonogram tworzenia kopii zapasowych oparte na czasie**: W przypadku konieczności do wykonania kopii zapasowej danych o określonych godzinach dnia lub tygodnia, należy używać tego typu harmonogramu. Typ częstotliwości harmonogramu może być codziennie lub co tydzień.
+        1. **_Codzienne_ harmonogram tworzenia kopii zapasowych oparte na czasie**: Można używać tego typu harmonogramu, jeśli identyfikator potrzebę do wykonania kopii zapasowej danych o określonych godzinach dnia. Aby określić, to, ustaw `ScheduleFrequencyType` do _codzienne_; i ustaw `RunTimes` do listy żądany czas w danym dniu, w formacie ISO8601, zostaną zignorowane datę określony czas. Na przykład `0001-01-01T18:00:00` reprezentuje _6:00 PM_ codziennie, bez uwzględnienia data _0001-01-01_. Poniższym przykładzie przedstawiono konfigurację, aby wyzwalacz codzienne wykonywanie kopii zapasowych na _9:00 AM_ i _6:00 PM_ codziennie.
 
             ```json
             {
@@ -67,7 +67,7 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
             }
             ```
 
-        2. **_Co tydzień_ harmonogram tworzenia kopii zapasowych oparte na czasie**: można używać tego typu harmonogramu, jeśli identyfikator potrzebę do wykonania kopii zapasowej danych o określonych godzinach dnia. Aby określić, to, ustaw `ScheduleFrequencyType` do _tygodniowy_; set `RunDays` listę dni w tygodniu, gdy kopia zapasowa musi być wyzwalane oraz ustawić `RunTimes` do listy żądany czas w danym dniu, w formacie ISO8601, daty oraz godziny zostaną zignorowane. Lista dni tygodnia, kiedy wyzwolić okresowych kopii zapasowych. Poniższym przykładzie przedstawiono konfigurację, aby wyzwalacz codzienne wykonywanie kopii zapasowych na _9:00 AM_ i _6:00 PM_ podczas od poniedziałku do piątku.
+        2. **_Co tydzień_ harmonogram tworzenia kopii zapasowych oparte na czasie**: Można używać tego typu harmonogramu, jeśli identyfikator potrzebę do wykonania kopii zapasowej danych o określonych godzinach dnia. Aby określić, to, ustaw `ScheduleFrequencyType` do _tygodniowy_; set `RunDays` listę dni w tygodniu, gdy kopia zapasowa musi być wyzwalane oraz ustawić `RunTimes` do listy żądany czas w danym dniu, w formacie ISO8601, daty oraz godziny zostaną zignorowane. Lista dni tygodnia, kiedy wyzwolić okresowych kopii zapasowych. Poniższym przykładzie przedstawiono konfigurację, aby wyzwalacz codzienne wykonywanie kopii zapasowych na _9:00 AM_ i _6:00 PM_ podczas od poniedziałku do piątku.
 
             ```json
             {
@@ -88,7 +88,7 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
             ```
 
 * **Magazyn kopii zapasowych**: Określa lokalizację do przekazania kopii zapasowych. Magazyn może być albo magazynu obiektów blob platformy Azure lub udziału plików.
-    1. **Magazyn obiektów blob platformy Azure**: ten typ magazynu należy wybrać, gdy jest konieczność wygenerowane tworzenia kopii zapasowych na platformie Azure. Zarówno _autonomiczny_ i _opartych na platformie Azure_ klastry mogą używać tego typu magazynu. Opis tego typu magazynu wymaga parametrów połączenia i nazwę kontenera, w których konieczne jest przekazanie kopii zapasowych. Jeśli kontener o podanej nazwie nie jest dostępna, następnie powstaje podczas przekazywania kopii zapasowej.
+    1. **Magazyn obiektów blob platformy Azure**: Ten typ magazynu należy wybrać, gdy jest konieczność wygenerowane tworzenia kopii zapasowych na platformie Azure. Zarówno _autonomiczny_ i _opartych na platformie Azure_ klastry mogą używać tego typu magazynu. Opis tego typu magazynu wymaga parametrów połączenia i nazwę kontenera, w których konieczne jest przekazanie kopii zapasowych. Jeśli kontener o podanej nazwie nie jest dostępna, następnie powstaje podczas przekazywania kopii zapasowej.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -98,7 +98,7 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
         }
         ```
 
-    2. **Udział plików**: ten typ magazynu, należy wybrać _autonomiczny_ klastry, gdy jest do przechowywania danych kopii zapasowych w środowisku lokalnym. Opis tego typu magazynu wymaga, których kopie zapasowe, konieczne jest przekazanie ścieżki do udziału plików. Dostęp do udziału plików można skonfigurować przy użyciu jednej z następujących opcji
+    2. **Udział plików**: Ten typ magazynu, należy wybrać _autonomiczny_ klastry, gdy jest do przechowywania danych kopii zapasowych w środowisku lokalnym. Opis tego typu magazynu wymaga, których kopie zapasowe, konieczne jest przekazanie ścieżki do udziału plików. Dostęp do udziału plików można skonfigurować przy użyciu jednej z następujących opcji
         1. _Zintegrowane uwierzytelnianie Windows_, gdzie dostęp do udziału plików znajduje się na wszystkich komputerach należących do klastra usługi Service Fabric. W tym przypadku ustaw następujące pola do skonfigurowania _udziału plików_ na podstawie magazynu kopii zapasowych.
 
             ```json
@@ -128,7 +128,7 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
 >
 
 * **Zasady przechowywania**: Określa zasady przechowywania kopii zapasowych w skonfigurowanym magazynie. Tylko podstawowe zasady przechowywania są obsługiwane.
-    1. **Podstawowe zasady przechowywania**: te zasady przechowywania, umożliwia zapewnienie magazynu optymalne wykorzystanie, usuwając pliki kopii zapasowej, które są już wymagane. `RetentionDuration` można określić tak, aby ustawić okres, do którego mają wymagane będą przechowywane w magazynie kopii zapasowych. `MinimumNumberOfBackups` jest parametrem opcjonalnym, który może być określony, aby upewnić się, że określoną liczbę kopii zapasowych są zawsze zachowywane niezależnie od `RetentionDuration`. Poniższym przykładzie przedstawiono konfigurację do przechowywania kopii zapasowych dla _10_ dni i nie zezwala na liczbę kopii zapasowych do zejść poniżej _20_.
+    1. **Zasady przechowywania podstawowe**: Te zasady przechowywania umożliwia zapewnienie magazynu optymalne wykorzystanie, usuwając pliki kopii zapasowej, które są już wymagane. `RetentionDuration` można określić tak, aby ustawić okres, do którego mają wymagane będą przechowywane w magazynie kopii zapasowych. `MinimumNumberOfBackups` jest parametrem opcjonalnym, który może być określony, aby upewnić się, że określoną liczbę kopii zapasowych są zawsze zachowywane niezależnie od `RetentionDuration`. Poniższym przykładzie przedstawiono konfigurację do przechowywania kopii zapasowych dla _10_ dni i nie zezwala na liczbę kopii zapasowych do zejść poniżej _20_.
 
         ```json
         {
@@ -137,6 +137,9 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
             "MinimumNumberOfBackups": 20
         }
         ```
+
+> [!IMPORTANT]
+> Ze względu na problem w środowisku uruchomieniowym upewnij się, że czas przechowywania w zasadach przechowywania jest skonfigurowany do mniej niż 24 dni — w przeciwnym razie mogłyby spowodować przywracanie kopii zapasowej usługi, aby przejść do kworum utraty wpis replica w tryb failover.
 
 ## <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
 Po zdefiniowaniu zasad tworzenia kopii zapasowej do spełnienia wymagań w zakresie tworzenia kopii zapasowej danych, należy odpowiednio skojarzony albo zasad tworzenia kopii zapasowej _aplikacji_, lub _usługi_, lub _partycji_.
@@ -215,6 +218,11 @@ Po potrzebę zawieszenia dane kopii zapasowej można przywrócić przy użyciu o
 
 * Jeśli zawieszenia została zastosowana na _partycji_, a następnie wznowić, przy użyciu [partycji Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) interfejsu API.
 
+### <a name="difference-between-suspend-and-disable-backups"></a>Różnica między wstrzymaniem i Wyłącz kopii zapasowych
+Wyłącz kopię zapasową powinny być używane, gdy kopie zapasowe nie są wymagane dla określonej aplikacji, usługi lub partycji. Jeden infact może wywołać żądania utworzenia kopii zapasowej Wyłącz wraz z parametru z czystej kopii zapasowych jako wartość true oznacza, że wszystkie istniejące kopie zapasowe są także usuwane. Jednakże zawiesić ma być używany w scenariuszach, gdzie jeden chce wyłączyć tworzenie kopii zapasowych tymczasowo takich jak po zapełnieniu dysku lokalnego lub przekazywanie kopii zapasowej kończy się niepowodzeniem z powodu problemu z znanej sieci itp. 
+
+Gdy wyłączenie może być wywołana tylko na poziomie który został wcześniej włączone dla explicilty kopii zapasowej, jednak zawieszenia mogą być stosowane na dowolnym poziomie, który jest obecnie włączona dla kopii zapasowej albo bezpośrednio lub przez dziedziczenie / hierarchii. Na przykład, jeśli kopia zapasowa jest włączona na poziomie aplikacji, jednego wywołania wyłączyć tylko na poziomie aplikacji zawiesić jednak może być wywoływana na aplikacji, usług lub partycji w ramach tej aplikacji. 
+
 ## <a name="auto-restore-on-data-loss"></a>Automatycznego przywracania na utratę danych
 Service partition może spowodować utratę danych z powodu nieoczekiwanych awarii. Na przykład dysk dla dwóch spośród trzech replik partycji (łącznie z repliką podstawową) pobiera uszkodzony lub wyczyszczone.
 
@@ -237,11 +245,11 @@ Te interfejsy API obsługują również stronicowanie wyników, gdy _MaxResults_
 
 Poniżej przedstawiono krótki opis informacji o obsługiwanych wariantów.
 
-- [Pobieranie listy aplikacji narzędzia Kopia zapasowa](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): zwraca listę dostępnych dla każdej partycji należących do danej aplikacji usługi Service Fabric kopii zapasowych.
+- [Pobieranie listy kopii zapasowej aplikacji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Zwraca listę dostępnych dla każdej partycji należących do danej aplikacji usługi Service Fabric kopii zapasowych.
 
-- [Pobieranie listy kopii zapasowej usługi](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): zwraca listę dostępnych dla każdej partycji należących do danej usługi Service Fabric kopii zapasowych.
+- [Pobieranie listy kopii zapasowych usługi](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Zwraca listę dostępnych dla każdej partycji należących do danej usługi Service Fabric kopii zapasowych.
  
-- [Pobieranie listy kopii zapasowej partycji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): zwraca listę dostępnych dla określonej partycji kopii zapasowych.
+- [Pobieranie listy kopii zapasowej partycji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Zwraca listę dostępnych dla określonej partycji kopii zapasowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Dokumentacja interfejsu API REST przywracania kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

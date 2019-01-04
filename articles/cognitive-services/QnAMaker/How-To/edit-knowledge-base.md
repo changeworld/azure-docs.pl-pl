@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e055d1e10ddf8c18c84af5376cf4a284d48fde6b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086610"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603331"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Edytowanie wiedzy w usługi QnA Maker
 
@@ -71,7 +71,7 @@ Dodaj alternatywne pytania do istniejącej pary pytań i odpowiedzi, aby zwięks
 ## <a name="add-metadata"></a>Dodawanie metadanych
 
 
-Dodaj pary metadanych, wybierając ikonę filtru
+Dodaj pary metadanych, wybierając ikonę metadanych
 
 ![Dodawanie metadanych](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -80,11 +80,17 @@ Dodaj pary metadanych, wybierając ikonę filtru
 
 ## <a name="manage-large-knowledge-bases"></a>Zarządzanie bazami wiedzy duże
 
-1. Są znacznie **pogrupowane** przez źródło danych, w którym zostały wyodrębnione. Można rozwinąć lub zwinąć źródła danych.
-2. Możesz **wyszukiwania** bazy wiedzy knowledge base, wpisując w polu tekstowym w górnej części w tabeli w bazie wiedzy Knowledge Base. Naciśnij klawisz enter, wyszukiwanie zawartości zapytania, odpowiedzi lub metadanych. Kliknij ikonę X, aby usunąć filtr wyszukiwania.
-3. **Podział na strony** umożliwia zarządzanie duże bazy wiedzy
+* **Źródła danych grup**: Znacznie są pogrupowane według źródła danych, w którym zostały wyodrębnione. Można rozwinąć lub zwinąć źródła danych.
 
-    ![Wyszukiwanie, stronicowanie i grupy](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Za pomocą paska źródła danych usługi QnA Maker zwijać i rozwijać danych źródłowych pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **Wyszukiwanie w bazie wiedzy knowledge base**: Użytkownik może przeszukiwać bazę wiedzy, wpisując w polu tekstowym w górnej części w tabeli w bazie wiedzy Knowledge Base. Naciśnij klawisz enter, wyszukiwanie zawartości zapytania, odpowiedzi lub metadanych. Kliknij ikonę X, aby usunąć filtr wyszukiwania.
+
+    ![Użyj pola wyszukiwania usługi QnA Maker powyższe pytania i odpowiedzi, aby zmniejszyć widoku tylko elementów pasujących do filtru](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **Podział na strony**: Szybko przejść przez źródeł danych, aby zarządzać dużych baz wiedzy
+
+    ![Przechodzenie między stronami pytań i odpowiedzi za pomocą funkcji dzielenia na strony usługi QnA Maker powyższe pytania i odpowiedzi](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Usuń z bazy wiedzy
 

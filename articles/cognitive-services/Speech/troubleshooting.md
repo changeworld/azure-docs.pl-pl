@@ -10,12 +10,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 80e39e845ab631ad5cc3ae8af9e2e42f09b521bf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 2da6795e938f1a0c0ed0495fb169007126501eea
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342194"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753664"
 ---
 # <a name="troubleshooting-bing-speech"></a>Rozwiązywanie problemów z rozpoznawania mowy Bing
 
@@ -52,7 +52,7 @@ Można uruchomić następujące polecenie w celu weryfikacji. Należy pamiętać
 > [!NOTE]
 > Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -88,7 +88,7 @@ Ten krok jest wymagane tylko, jeśli token autoryzacji jest używany do uwierzyt
 > [!NOTE]
 > Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio i `YOUR_ACCESS_TOKEN` tokenem autoryzacji są zwracane w poprzednim kroku.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 

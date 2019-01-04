@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3aa3b2fa0dffb38970b80fe061f1fe09271e15b1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: bc3ee549a4219441b657b89bef56d35dfac6626a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438298"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547494"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
-W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST do archiwizacji swoje [dzienniki diagnostyczne platformy Azure](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dzienników diagnostycznych z zasadami przechowywania opcjonalne inspekcji, analizę statyczną lub kopii zapasowej. Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
+W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST do archiwizacji swoje [dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dzienników diagnostycznych z zasadami przechowywania opcjonalne inspekcji, analizę statyczną lub kopii zapasowej. Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
 
 > [!WARNING]
 > Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -33,12 +33,12 @@ Przed rozpoczęciem należy [Tworzenie konta magazynu](../../storage/common/stor
 
 ## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 
-Aby archiwizowanie dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne zasobu definiuje kategorie dzienników i metryk dane wysyłane do miejsca docelowego (konto magazynu, obszaru nazw usługi Event Hubs lub usługi Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń w każdej kategorii dzienników i metryk — dane przechowywane na koncie magazynu. Jeśli zasady przechowywania jest ustawiony na wartość zero, zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony (to znaczy powiedzieć nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni z zakresu od 1 do 2147483647. [Możesz dowiedzieć się więcej o konfiguracji ustawień diagnostyki tutaj](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings). Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
+Aby archiwizowanie dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne zasobu definiuje kategorie dzienników i metryk dane wysyłane do miejsca docelowego (konto magazynu, obszaru nazw usługi Event Hubs lub usługi Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń w każdej kategorii dzienników i metryk — dane przechowywane na koncie magazynu. Jeśli zasady przechowywania jest ustawiony na wartość zero, zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony (to znaczy powiedzieć nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni z zakresu od 1 do 2147483647. [Możesz dowiedzieć się więcej o konfiguracji ustawień diagnostyki tutaj](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: Metrykę "Komunikaty przychodzące" w Centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 >
 
@@ -162,6 +162,6 @@ W pliku PT1H.json każde zdarzenie jest przechowywane w tablicy "rekordy", zgodn
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Pobierz obiekty BLOB na potrzeby analizy](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-* [Stream dzienników diagnostycznych do przestrzeni nazw usługi Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Stream dzienników diagnostycznych do przestrzeni nazw usługi Event Hubs](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Archiwizuj dzienniki usługi Azure Active Directory z usługą Azure Monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [Więcej informacji na temat dzienników diagnostycznych](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Więcej informacji na temat dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 3e1bdcc9340cc6cf997bebcdf1567bf676521ea5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276132"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651439"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Service Bus
 
@@ -26,7 +26,7 @@ Po skonfigurowaniu, może być powiązane z co najmniej jeden punkt końcowy us�
 Wynik jest prywatne i izolowany relacji między obciążeniami usług związanych z podsieci i odpowiednich przestrzeni nazw usługi Service Bus, pomimo adres sieciowy dostrzegalnych obsługi komunikatów usługi punktu końcowego są w zakresie publicznych adresów IP.
 
 >[!WARNING]
-> Implementowanie integracji z sieciami wirtualnymi można zapobiec interakcji z usługą Service Bus innych usług platformy Azure.
+> Implementowanie integracji sieci wirtualnych może uniemożliwić innym usługom platformy Azure interakcję z usługą Service Bus.
 >
 > Zaufany Microsoft usługi nie są obsługiwane, gdy sieci wirtualne są wdrażane i zostanie udostępniona wkrótce.
 >
@@ -39,7 +39,7 @@ Wynik jest prywatne i izolowany relacji między obciążeniami usług związanyc
 > - Azure Data Explorer
 >
 > Poniżej Microsoft usług są wymagane w sieci wirtualnej
-> - Azure Web Apps
+> - Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]

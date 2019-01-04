@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 32a88d5446d1825b454f64fcca8548e1eb5ea434
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192621"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580947"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcjach
 
@@ -92,7 +92,7 @@ Możesz użyć przestrzeni nazw centrum zdarzeń, która nie znajduje się w tej
 
 11. Kliknij przycisk **OK**, a następnie przycisk **Zapisz**, aby zapisać te ustawienia. Ustawienia są natychmiastowo stosowane do subskrypcji.
 
-<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) to configure a log profile that writes activity logs to an event hub. -->
+<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) to configure a log profile that writes activity logs to an event hub. -->
 
 ## <a name="step-3---create-logic-app"></a>Krok 3. Tworzenie aplikacji logiki
 

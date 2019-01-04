@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0b42a51f255080905cb0104d06ed18f1d18f8e5d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5a2b38e5d627341b3684ee55d13ee06881fbae55
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015419"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728367"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja Zasoby szablonów usługi Azure Resource Manager
 
@@ -90,7 +90,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 | location |Różna |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |
 | tags |Nie |Tagi, które są skojarzone z zasobem. Stosowanie tagów w celu logicznego uporządkowania zasobów w ramach subskrypcji. |
 | Komentarze |Nie |Notatki do dokumentowania zasobów w szablonie |
-| kopiuj |Nie |Jeśli potrzebna jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial, gdy nie mają wszystkie lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md). |
+| kopiuj |Nie |Jeśli potrzebna jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial, gdy nie mają wszystkie lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [utworzyć kilka wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nie |Zasoby, które należy wdrożyć przed wdrożeniem tego zasobu. Menedżer zasobów ocenia zależności między zasobami i ich wdrażania w odpowiedniej kolejności. Gdy zasoby nie są zależne od siebie, są one wdrożone równolegle. Wartość może być zasobem listę rozdzielonych przecinkami nazw lub unikatowych identyfikatorów zasobów. Tylko Wyświetla listę zasobów, które są wdrażane w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie musi już istnieć. Należy unikać Dodawanie zależności niepotrzebne, jak długo będą powolne wdrożenie i utworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące Ustawianie zależności, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Nie |Ustawienia konfiguracji specyficznych dla zasobów. Wartości właściwości są takie same jak wartość podana w treści żądania dla operacji interfejsu API REST (metodę PUT) w celu utworzenia zasobu. Można również określić tablicy kopiowania, aby utworzyć kilka wystąpień z właściwością. |
 | jednostka SKU | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują jednostki SKU do wdrożenia. Na przykład można określić typu nadmiarowości konta magazynu. |
@@ -289,7 +289,7 @@ Format typu zasobu podrzędnego jest następujący: `{resource-provider-namespac
 
 Format nazwy zasobów podrzędnych jest następujący: `{parent-resource-name}/{child-resource-name}`
 
-Ale nie trzeba zdefiniować bazy danych na serwerze. Można zdefiniować zasób podrzędny na najwyższym poziomie. Może być użycie tej metody, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie, lub jeśli chcesz użyć `copy` do tworzenia zasobów wiele podrzędnych. W przypadku tej metody musisz podać typ zasobu pełnego i nazwy zasobów podrzędnych zawierają nazwę zasobu nadrzędnego.
+Ale nie trzeba zdefiniować bazy danych na serwerze. Można zdefiniować zasób podrzędny na najwyższym poziomie. Może być użycie tej metody, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie, lub jeśli chcesz użyć `copy` utworzyć więcej niż jednego zasobu podrzędnego. W przypadku tej metody musisz podać typ zasobu pełnego i nazwy zasobów podrzędnych zawierają nazwę zasobu nadrzędnego.
 
 ```json
 {
@@ -318,122 +318,11 @@ Na przykład:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest poprawna `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` jest nieprawidłowy
 
-## <a name="recommendations"></a>Zalecenia
-Następujące informacje mogą być przydatne podczas pracy z zasobami:
-
-* Aby ułatwić innymi współautorami zrozumienie przeznaczenia zasobu, określić **komentarze** dla każdego zasobu w szablonie:
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
-
-* Jeśli używasz *publicznym punktem końcowym* w szablonie (np. usługi Azure Blob storage publicznego punktu końcowego), *czy nie kodować sprzętowo* przestrzeni nazw. Użyj **odwołania** funkcję, aby dynamicznie pobrać przestrzeni nazw. Tej metody można użyć do wdrożenia szablonu w innej przestrzeni nazw publicznych środowiskach bez ręcznej zmiany punktu końcowego w szablonie. Ustaw wersję interfejsu API do tej samej wersji, którego używasz dla konta magazynu w szablonie:
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   Jeśli konto magazynu jest wdrażana w tym samym szablonie, który tworzysz, nie trzeba określić przestrzeń nazw dostawcy w przypadku, gdy odwoływać się do zasobu. Poniższy przykład przedstawia uproszczoną składnię:
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   Jeśli masz inne wartości w szablonie, które są skonfigurowane do korzystania z publicznej przestrzeni nazw, Zmień te wartości, aby odzwierciedlić takie same **odwołania** funkcji. Na przykład można ustawić **storageUri** właściwości profilu diagnostyki maszyny wirtualnej:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   Możesz też przywołać istniejące konto magazynu, który znajduje się w innej grupie zasobów:
-
-   ```json
-   "osDisk": {
-       "name": "osdisk", 
-       "vhd": {
-           "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-
-* Publiczne adresy IP można przypisywać do maszyny wirtualnej, tylko wtedy, gdy aplikacja wymaga go. Aby połączyć się z maszyną wirtualną (VM) podczas debugowania lub zarządzania lub do celów administracyjnych, użyj reguły NAT dla ruchu przychodzącego, bramy sieci wirtualnej lub serwera przesiadkowego.
-   
-     Aby uzyskać więcej informacji na temat nawiązywania połączenia z maszynami wirtualnymi zobacz:
-   
-   * [Uruchamianie maszyn wirtualnych dla architektury wielowarstwowej na platformie Azure](../guidance/guidance-compute-n-tier-vm.md)
-   * [Konfigurowanie dostępu WinRM dla maszyn wirtualnych w usłudze Azure Resource Manager](../virtual-machines/windows/winrm.md)
-   * [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej przy użyciu witryny Azure portal](../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej przy użyciu programu PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
-* **DomainNameLabel** właściwości publiczne adresy IP muszą być unikatowe. **DomainNameLabel** wartość musi mieć długość od 3 do 63 znaków i postępuj zgodnie z regułami określonymi przez tego wyrażenia regularnego: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Ponieważ **uniqueString** funkcja generuje ciąg, który jest 13 znaków **dnsPrefixString** parametru jest ograniczona do 50 znaków:
-
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
-
-* Po dodaniu hasła do rozszerzenia niestandardowego skryptu, użyj **commandToExecute** właściwość **protectedSettings** właściwości:
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
-   > [!NOTE]
-   > Aby upewnić się, że klucze tajne są szyfrowane, gdy są przekazywane jako parametry do maszyn wirtualnych i rozszerzeń, należy użyć **protectedSettings** właściwość odpowiednich rozszerzeń.
-   > 
-   > 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
 * Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby użyć więcej niż jednego szablonu podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
 * Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współużytkowane przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
 * Aby uzyskać informacji na temat ograniczeń nazw zasobów, zobacz [zalecane konwencje nazewnictwa dla zasobów platformy Azure](../guidance/guidance-naming-conventions.md).

@@ -15,12 +15,12 @@ ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
-ms.openlocfilehash: 3021b919a83d7d5822f2ed5758e7e39cc76663d5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9453ceb143201e2b66604c0833d6b35dd2d2ad49
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312876"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995188"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -39,6 +39,30 @@ Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie. Jeśli szuk
 ---
 ## <a name="novemberdecember-2018"></a>Listopad/grudnia 2018 r.
 
+### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Użytkownicy usunięci z zakresu synchronizacji nie dłużej przełącznika kontom tylko w chmurze
+
+**Typ:** Ustalone  
+**Kategoria usług:** Zarządzanie użytkownikami  
+**Możliwości produktu:** Katalog
+
+Naprawiono usterkę, w którym flagi DirSyncEnabled użytkownika będzie błędnie przełącza się na **False** po wykluczony z zakresu synchronizacji i następnie przeniesiona do Kosza w obiektu usługi Active Directory Domain Services (AD DS) Usługa Azure AD na następujący cykl synchronizacji. Skutek tej poprawki, jeśli użytkownik jest wykluczony z zakresu synchronizacji, a potem przywrócić z usługi Azure AD Kosza, konto użytkownika pozostają zsynchronizowane z lokalnej usługi AD, zgodnie z oczekiwaniami i nie mogą być zarządzane w chmurze, ponieważ jego źródło SOA (adres) pozostaje jako lokalnej usługi AD.
+
+Przed tej poprawki wystąpił problem podczas, gdy flaga DirSyncEnabled została przełączona na wartość False. Dała nieprawidłową wrażenie te konta były konwertowane na obiekty tylko w chmurze i kont mogą być zarządzane w chmurze. Jednak konta nadal przechowywane ich SoA w środowisku lokalnym oraz wszystkich zsynchronizowanych właściwości (atrybutów w tle) pochodzące z lokalnej usługi AD. Ten stan jest spowodowany wiele problemów w usłudze Azure AD i innych obciążeń w chmurze powinien traktować te konta synchronizowane z usługi Active Directory, które zostały teraz zachowuje się podobnie jak konta tylko w chmurze (np. Exchange Online).
+
+W tej chwili jedynym sposobem, aby naprawdę Konwertowanie konta synchronizowane z AD konto tylko do chmury jest po wyłączeniu narzędzia DirSync na poziomie dzierżawy, co powoduje wyzwolenie operacji wewnętrznej bazy danych, aby przenieść SoA. Tego rodzaju zmiany SoA wymaga (ale nie jest ograniczona do) czyszczenia wszystkie lokalne powiązanych atrybutów (takie jak LastDirSyncTime i atrybuty w tle) i wysyła sygnał do innych obciążeń w chmurze do jego odpowiedniego obiektu przekonwertowane na konto tylko na chmurze za .
+
+Ta poprawka w związku z tym uniemożliwia bezpośredni aktualizacji dla atrybutu wartość ImmutableID użytkownika synchronizowane z usługi AD, które w niektórych scenariuszach, w przeszłości były wymagane. Zgodnie z projektem wartość ImmutableID obiektu w usłudze Azure AD, jak wskazuje nazwa, jest przeznaczona do być niezmienialne. Zaimplementowane w kliencie usługi Azure AD Connect Health i synchronizacji usługi Azure AD Connect są dostępne nowe funkcje dla takich scenariuszy:
+
+- **Na dużą skalę aktualizacje ImmutableID dla wielu użytkowników w jednym działaniu**
+
+  Na przykład podczas wdrażania usługi Azure AD Connect popełnisz błąd, a teraz musisz zmienić atrybut SourceAnchor. Rozwiązanie: Wyłącz narzędzie DirSync na poziomie dzierżawy, a następnie wyczyść wszystkie nieprawidłowe wartości ImmutableID. Aby uzyskać więcej informacji, zobacz [wyłączyć funkcję synchronizacji katalogów w usłudze Office 365](/office365/enterprise/turn-off-directory-synchronization).
+
+- **Na dużą skalę aktualizacji ImmutableID dla wielu użytkowników w podejście etapowe**
+  
+  Na przykład należy długich migrację między lasami usługi AD DS. Rozwiązanie: Użyj usługi Azure AD Connect, aby **Konfiguruj zakotwiczenie źródła** i użytkownik jest migrowana, Kopiuj istniejące wartości ImmutableID z usługi Azure AD na lokalnego użytkownika usług AD DS atrybut ms-DS-spójności — identyfikator Guid nowego lasu. Aby uzyskać więcej informacji, zobacz [przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor).
+
+- **Rematch użytkownika lokalnego przy użyciu istniejącego użytkownika w usłudze Azure AD** na przykład użytkownik, który został utworzony ponownie w usługach AD DS generuje duplikat na koncie usługi Azure AD zamiast rematching go z istniejącym kontem usługi Azure AD (obiektu oddzielonego). Rozwiązanie: Umożliwia usłudze Azure AD Connect Health w witrynie Azure portal ponownie zamapuj zakotwiczenie źródła/ImmutableID. Aby uzyskać więcej informacji, zobacz [scenariusza obiektu Orphaned](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario).
+
 ### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>Zmiana powodująca niezgodność: Aktualizacje inspekcji i rejestrowania dzienników schematu za pomocą usługi Azure Monitor
 
 **Typ:** Zmieniona funkcja  
@@ -56,7 +80,7 @@ Następujące pola są zmiany w schemacie inspekcji:
 |Nazwa pola|Co się zmieniło|Stare wartości|Nowe wartości|
 |----------|------------|----------|----------|
 |Kategoria|To była **nazwa usługi** pola. Jest teraz **kategorie inspekcji** pola. **Nazwa usługi** została zmieniona na **loggedByService** pola.|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe Resetowanie hasła</li></ul>|<ul><li>Zarządzanie użytkownikami</li><li>Zarządzanie grupami</li><li>Zarządzanie aplikacjami</li></ul>|
-|targetResources|Obejmuje **TargetResourceType** na najwyższym poziomie.|&nbsp;|<ul><li>Zasady</li><li>Aplikacja</li><li>Użytkownik</li><li>Grupa</li></ul>|
+|targetResources|Obejmuje **TargetResourceType** na najwyższym poziomie.|&nbsp;|<ul><li>Zasady</li><li>aplikacja</li><li>Użytkownik</li><li>Grupa</li></ul>|
 |loggedByService|Zawiera nazwę usługi, która wygenerowała dziennika inspekcji.|Null|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe resetowanie haseł</li></ul>|
 |Wynik|Zwraca wynik funkcji dzienników inspekcji. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li></ul>|
 
@@ -103,7 +127,7 @@ Administratorzy usługi Azure AD, mogą teraz zresetować swoje hasła przy uży
 
 - Wiadomość SMS
 
-Aby uzyskać więcej informacji na temat korzystania z aplikacji Microsoft Authenticator resetowania haseł, zobacz [usługi Azure AD samoobsługowego resetowania haseł — aplikacji mobilnych i funkcji samoobsługowego resetowania HASEŁ (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr-preview)
+Aby uzyskać więcej informacji na temat korzystania z aplikacji Microsoft Authenticator resetowania haseł, zobacz [usługi Azure AD samoobsługowego resetowania haseł — aplikacji mobilnych i funkcji samoobsługowego resetowania HASEŁ (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr-preview)
 
 ---
 
@@ -218,7 +242,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ## <a name="october-2018"></a>Październik 2018 r.
 
-### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Dzienniki usługi Azure AD obecnie pracować z usługą Azure Log Analytics (publiczna wersja zapoznawcza)
+### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Dzienniki usługi Azure AD działają teraz w usłudze Azure Log Analytics (publiczna wersja zapoznawcza)
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Raportowanie  
@@ -228,7 +252,7 @@ Cieszymy się, mogąc mogą obecnie przekazywać dzienników usługi Azure AD do
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — października 2018 r.
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — październik 2018
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Aplikacje dla przedsiębiorstw  
@@ -242,7 +266,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
 
-### <a name="azure-ad-domain-services-email-notifications"></a>Powiadomienia E-mail usług domenowych Azure AD
+### <a name="azure-ad-domain-services-email-notifications"></a>Powiadomienia e-mail usługi Azure AD Domain Services
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Azure AD Domain Services  
@@ -256,7 +280,7 @@ Aby uzyskać więcej informacji, zobacz [ustawienia powiadomień w usługach dom
 
 ---
 
-### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Platforma Azure obsługuje portalu AD przy użyciu domeny ForceDelete interfejsu API, można usunąć domeny niestandardowej 
+### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Portal usługi Azure AD obsługuje usuwanie domen niestandardowych przy użyciu interfejsu API domeny ForceDelete 
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Zarządzanie katalogami  
@@ -274,7 +298,7 @@ Aby uzyskać więcej informacji, zobacz [usuwanie nazwy domeny niestandardowej](
  
 ### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Zaktualizowane uprawnienia roli administratora dla grup dynamicznych
 
-**Typ:** Stała  
+**Typ:** Ustalone  
 **Kategoria usług:** Zarządzanie grupami  
 **Możliwości produktu:** Współpraca
 
@@ -310,7 +334,7 @@ Aby rozpocząć korzystanie z tego środowiska jednym kliknięciem, przejdź do 
 
 ---
 
-### <a name="azure-active-directory---where-is-your-data-located-page"></a>Usługa Azure Active Directory — Twoje dane lokalizacji? Strona
+### <a name="azure-active-directory---where-is-your-data-located-page"></a>Azure Active Directory — strona Gdzie znajdują się dane?
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Inne  
@@ -449,7 +473,7 @@ W ramach naszego interfejsu użytkownika konfiguracji zaktualizowanej aplikacji 
 
 - Sposób, aby ustawić Format identyfikatora NameID dla aplikacji SAML i sposób można ustawić wartości identyfikatora NameID jako rozszerzenia katalogów.
 
-Aby włączyć ten zaktualizowany widok, kliknij przycisk **wypróbować nasze nowe środowisko** link u góry **logowania jednokrotnego** strony. Aby uzyskać więcej informacji, zobacz [samouczka: Konfigurowanie opartej na SAML logowania jednokrotnego dla aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).
+Aby włączyć ten zaktualizowany widok, kliknij przycisk **wypróbować nasze nowe środowisko** link u góry **logowania jednokrotnego** strony. Aby uzyskać więcej informacji, zobacz [Samouczek: Konfigurowanie opartej na SAML logowania jednokrotnego dla aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).
 
 ---
 
@@ -579,7 +603,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Aby 
 
 ## <a name="july-2018"></a>Lipiec 2018 r.
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Udoskonalenia powiadomień e-mail w usłudze Azure Active Directory
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Ulepszenia powiadomień e-mail w usłudze Azure Active Directory
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Inne  
@@ -603,7 +627,7 @@ Na przykład niektóre nowe projekty poczty e-mail i więcej informacji, zobacz 
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności usługi Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności w usłudze Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Raportowanie  
@@ -621,7 +645,7 @@ Aby uzyskać więcej informacji o tych nowych funkcjach, zobacz nasz blog [Dzien
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodane do raportu operacji logowania usługi Azure AD
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodany do raportów logowania usługi Azure AD
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Raportowanie  
@@ -631,7 +655,7 @@ Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik l
 
 ---
 
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Wyświetlanie starszych uwierzytelnień za pomocą dzienników aktywności logowań
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Widok starszych uwierzytelnienia za pomocą dzienników aktywności logowania
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Raportowanie  
@@ -641,7 +665,7 @@ Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logow
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipiec 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipca 2018 r.
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Aplikacje dla przedsiębiorstw  
@@ -655,7 +679,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Integracje aplikacji SaaS służące do aprowizacji nowych użytkowników — lipiec 2018
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nowy użytkownik inicjowania obsługi administracyjnej integracji aplikacji SaaS — lipca 2018 r.
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Aprowizowanie aplikacji  
@@ -673,7 +697,7 @@ Aby uzyskać listę wszystkich aplikacji, które obsługują aprowizowania użyt
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync — prostszy sposób naprawiania błędów synchronizacji związanych z osieroconymi lub zduplikowanymi atrybutami
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health do celów synchronizacji — łatwiejszy sposób naprawić błędy synchronizacji oddzielone i zduplikowanego atrybutu
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** AD Connect  
@@ -691,7 +715,7 @@ Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie błędó
 
 ---
 
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Aktualizacje wizualne w środowiskach logowania usługi Azure AD i MSA.
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Visual aktualizacji do usługi Azure AD i logowania konta Microsoft napotyka
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Azure AD  
@@ -701,7 +725,7 @@ Zaktualizowaliśmy interfejs użytkownika dla usług online firmy Microsoft śro
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipiec 2018
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipca 2018 r.
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Aprowizowanie aplikacji  
@@ -719,7 +743,7 @@ Aby uzyskać więcej informacji na temat tej aktualizacji, zobacz [program Azure
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje interfejsu użytkownika końcowego warunków użytkowania
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje do Interfejsu użytkownika końcowego warunków użytkowania (ToU)
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Warunki użytkowania  
@@ -753,7 +777,7 @@ Uwierzytelnianie przekazywane teraz obsługuje starszych protokołów i aplikacj
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zbieżnymi informacjami zabezpieczającymi na potrzeby samoobsługowego resetowania hasła i uwierzytelniania wieloskładnikowego
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zabezpieczeniami konwergentnej informacje samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** SSPR  
@@ -767,7 +791,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Admi
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator w celu weryfikowania swojej tożsamości podczas resetowania hasła
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator do zweryfikowania Twojej tożsamości podczas resetowania hasła
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** SSPR  

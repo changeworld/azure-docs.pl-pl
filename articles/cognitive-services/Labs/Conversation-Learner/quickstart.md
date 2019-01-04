@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166136"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791076"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Tworzenie modelu uczeń konwersacji za pomocą środowiska Node.js
 
@@ -112,14 +112,11 @@ Zgodnie z instrukcjami pracę ogólnego bot puste.  Uruchom samouczek lub pokaz 
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
-  npm run demo-vrapp
   ```
 
 4. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:5050/home. 
 
-5. Kliknij pozycję "Importuj samouczki" (tylko musi odbywać się jeden raz).  To potrwa około minuty i skopiuje modeli uczeń konwersacji dla wszystkich samouczków na koncie uczeń konwersacji.
-
-6. Polecenie modelu pokaz w interfejsie użytkownika uczeń konwersacji, odpowiadającą wersję demonstracyjną, który został uruchomiony.
+5. Kliknij pozycję "Importuj samouczki" i wybierz model pokaz w interfejsie użytkownika uczeń konwersacji, odpowiadającą wersję demonstracyjną, którego rozpoczęto.
 
 Pokazy pliki źródłowe znajdują się w `cl-bot-01/src/demos`
 
@@ -181,4 +178,4 @@ W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Cześć ludzie](./tutorials/1-hello-world.md)
+> [Cześć ludzie](./tutorials/01-hello-world.md)

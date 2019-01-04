@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53233edd17fa7097dde67bbce16b1ece668c721
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140034"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554864"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Dostęp do zestawów danych z językiem Python za pomocą biblioteki klienta Python usługi Azure Machine Learning
 Biblioteki klienta języka Python usługi Microsoft Azure Machine Learning w wersji zapoznawczej można włączyć bezpieczny dostęp do usługi Azure Machine Learning zestawów danych z lokalnego środowiska Python i umożliwia tworzenie i Zarządzanie zestawami danych w obszarze roboczym.
 
 Ten temat zawiera instrukcje dotyczące sposobu:
 
-* Zainstaluj biblioteki klienta języka Python Machine Learning 
+* Zainstaluj biblioteki klienta języka Python Machine Learning
 * dostęp i przekaż zestawów danych, w tym instrukcje dotyczące sposobu uzyskania autoryzacji dostępu do zestawów danych usługi Azure Machine Learning w lokalnym środowisku Python
 * dostęp do zestawów danych pośrednich z eksperymentów
 * Wyliczanie zestawów danych, dostęp do metadanych, czytać zawartość zestawu danych, tworzyć nowe zestawy danych i zaktualizować istniejące zestawy danych za pomocą biblioteki klienta języka Python
@@ -49,7 +49,7 @@ Należy także zainstalować biblioteki klienta języka Python usługi Azure Mac
 
     pip install azureml
 
-Alternatywnie możesz pobrać i zainstalować ze źródeł na [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
+Alternatywnie możesz pobrać i zainstalować ze źródeł na [GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
 
     python setup.py install
 
@@ -74,11 +74,11 @@ Jeśli Twoja rola nie jest ustawiony jako **właściciela**, możesz zażądać 
 
 Aby uzyskać token autoryzacji, wykonaj jedną z następujących:
 
-* Poproś o token od właściciela. Właściciele mogą uzyskiwać dostęp tokeny autoryzacji na stronie Ustawienia w ich obszarze roboczym w programie Studio. Wybierz **ustawienia** w okienku po lewej stronie, a następnie kliknij **TOKENACH autoryzacji** się tokeny podstawowego i pomocniczego.  Mimo że podstawowej lub tokenów pomocniczych autoryzacji można używać we fragmencie kodu, zaleca się, że właścicieli udostępniać tylko tokenów pomocniczych autoryzacji.
+* Poproś o token od właściciela. Właściciele mogą uzyskiwać dostęp tokeny autoryzacji na stronie Ustawienia w ich obszarze roboczym w programie Studio. Wybierz **ustawienia** w okienku po lewej stronie, a następnie kliknij **TOKENACH autoryzacji** się tokeny podstawowego i pomocniczego. Mimo że podstawowej lub tokenów pomocniczych autoryzacji można używać we fragmencie kodu, zaleca się, że właścicieli udostępniać tylko tokenów pomocniczych autoryzacji.
 
 ![Tokeny autoryzacji](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Poproś o podniesiony do roli właściciel.  Aby to zrobić, bieżący właściciel obszaru roboczego musi najpierw należy usunąć z obszaru roboczego, a następnie ponownie zaprosić do niego jako właściciela.
+* Poproś o podniesiony do roli właściciel. Aby to zrobić, bieżący właściciel obszaru roboczego musi najpierw należy usunąć z obszaru roboczego, a następnie ponownie zaprosić do niego jako właściciela.
 
 Gdy deweloperzy uzyskał autoryzację i identyfikator obszaru roboczego tokenu, ich mogą uzyskiwać dostęp do obszaru roboczego, przy użyciu fragmentu kodu, niezależnie od ich roli.
 

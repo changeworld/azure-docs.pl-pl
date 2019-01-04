@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: fa0adef58ae1eda8604cefc9c3d7e3a4c32d63d0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023830"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793543"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Przepustowość/testowania (NTTTCP)
 
@@ -29,13 +29,14 @@ Skopiuj narzędzie do dwóch maszyn wirtualnych platformy Azure w tej samej wiel
 
 #### <a name="deploying-vms-for-testing"></a>Wdrażanie maszyn wirtualnych do testowania
 Na potrzeby tego testu dwie maszyny wirtualne powinny być w tej samej usługi w chmurze lub w tym samym zestawie dostępności, można używać ich wewnętrznych adresów IP i wykluczyć modułów równoważenia obciążenia z testu. Istnieje możliwość testowania przy użyciu adresu VIP, ale tego rodzaju testy wykracza poza zakres tego dokumentu.
- 
+
 Zanotuj adres IP ODBIORNIKA. Nadajmy ten adres IP "a.b.c.r"
 
-Zanotuj liczbę rdzeni na maszynie Wirtualnej. Nazwiemy to "\#num\_rdzeni"  
+Zanotuj liczbę rdzeni na maszynie Wirtualnej. Nazwiemy to "\#num\_rdzeni"
+
 Uruchom NTTTCP test 300 sekund (lub 5 minut) na nadawcy maszyny Wirtualnej i odbiorcy maszyny Wirtualnej.
 
-Porada: Podczas konfigurowania tego testu po raz pierwszy, spróbuj krótszy okres test, aby szybciej uzyskać opinie. Gdy narzędzie działa zgodnie z oczekiwaniami, dotyczyć 300 sekund, aby uzyskać najbardziej dokładne wyniki testu.
+Porada: Podczas konfigurowania tego testu po raz pierwszy, możesz spróbować krótszy okres test, aby szybciej uzyskać opinie. Gdy narzędzie działa zgodnie z oczekiwaniami, dotyczyć 300 sekund, aby uzyskać najbardziej dokładne wyniki testu.
 
 > [!NOTE]
 > Nadawca **i** odbiornika należy określić **takie same** parametru czas trwania testu (-t).

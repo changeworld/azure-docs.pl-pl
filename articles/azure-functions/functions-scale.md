@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b42529df406febc617c778d18d5b420f9c38c59a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434668"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722079"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
@@ -66,7 +66,7 @@ Należy wziąć pod uwagę plan usługi App Service w następujących przypadkac
 * Wymagane funkcje, które są dostępne tylko na plan usługi App Service, takie jak obsługa środowiska App Service Environment, łączność w sieci Wirtualnej/sieci VPN i większych rozmiarów maszyn wirtualnych.
 * Aby uruchomić aplikację funkcji w systemie Linux lub chcesz udostępnić obraz niestandardowy, na którym chcesz uruchamiać swoje funkcje.
 
-Maszynę wirtualną oddziela kosztów od liczby wykonań, czas wykonywania i używanej pamięci. W rezultacie nie płacisz za więcej niż koszt wystąpienia maszyny Wirtualnej, który przydzielasz. Aby uzyskać szczegółowe informacje dotyczące sposobu działania planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Maszynę wirtualną oddziela kosztów od liczby wykonań, czas wykonywania i używanej pamięci. W rezultacie nie płacisz za więcej niż koszt wystąpienia maszyny Wirtualnej, który przydzielasz. Aby uzyskać szczegółowe informacje dotyczące sposobu działania planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/overview-hosting-plans.md). 
 
 Plan usługi App Service można ręcznie skalować w poziomie, dodając kolejne wystąpienia maszyn wirtualnych lub włączyć Skalowanie automatyczne. Aby uzyskać więcej informacji, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Możesz również skalować w górę, wybierając inny plan usługi App Service. Aby uzyskać więcej informacji, zobacz [skalowanie aplikacji na platformie Azure](../app-service/web-sites-scale.md). 
 

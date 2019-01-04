@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 1627e6bc5290277329633aa086d0fdbbbb12d971
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5175d768f4aa62365e4151b4c8fed372038f1d95
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821297"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548803"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metryki usługi Azure Service Bus w usłudze Azure Monitor (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Usługa Azure Monitor zapewnia interfejsy użytkownika ujednolicone monitorowani
 
 Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Możesz albo metryk dostęp za pośrednictwem [witryny Azure portal](https://portal.azure.com), lub użyj interfejsów API usługi Azure Monitor (REST i .NET) i rozwiązań analitycznych, takich jak usługi Log Analytics i centrów zdarzeń. Aby uzyskać więcej informacji, zobacz [dane monitorowania zbierane przez usługi Azure Monitor](../azure-monitor/platform/data-collection.md).
 
-Metryki są domyślnie włączone i możesz uzyskać dostęp z ostatnich 30 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. Ta wartość jest skonfigurowana w [ustawień diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) w usłudze Azure Monitor.
+Metryki są domyślnie włączone i możesz uzyskać dostęp z ostatnich 30 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. Ta wartość jest skonfigurowana w [ustawień diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) w usłudze Azure Monitor.
 
 ## <a name="access-metrics-in-the-portal"></a>Dostęp do metryk w portalu
 
@@ -60,11 +60,11 @@ Zlicza żądania operacji danych i zarządzania.
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| Przychodzące żądania (wersja zapoznawcza) | Liczba żądań kierowanych do usługi Service Bus w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Liczba pomyślnych żądań (wersja zapoznawcza)|Liczba żądań zakończonych powodzeniem kierowanych do usługi Service Bus w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Błędy serwera (wersja zapoznawcza)|Liczba żądań, które nie zostały przetworzone z powodu błędu w usłudze Service Bus w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Błędy użytkowników (wersja zapoznawcza — można znaleźć w poniższej podsekcji)|Liczba żądań, które nie zostały przetworzone z powodu błędów użytkowników w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Żądania ograniczone (wersja zapoznawcza)|Liczba żądań, które zostały ograniczone z powodu przekroczenia użycia.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+| Przychodzące żądania (wersja zapoznawcza) | Liczba żądań kierowanych do usługi Service Bus w określonym czasie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Liczba pomyślnych żądań (wersja zapoznawcza)|Liczba żądań zakończonych powodzeniem kierowanych do usługi Service Bus w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Błędy serwera (wersja zapoznawcza)|Liczba żądań, które nie zostały przetworzone z powodu błędu w usłudze Service Bus w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Błędy użytkowników (wersja zapoznawcza — można znaleźć w poniższej podsekcji)|Liczba żądań, które nie zostały przetworzone z powodu błędów użytkowników w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Żądania ograniczone (wersja zapoznawcza)|Liczba żądań, które zostały ograniczone z powodu przekroczenia użycia.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 
 ### <a name="user-errors"></a>Błędy użytkowników
 
@@ -78,18 +78,18 @@ Dwa rodzaje błędów sklasyfikowanych jako błędy użytkownika:
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Komunikaty przychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikaty wysyłane do usługi Service Bus w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Komunikaty wychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikatów odebranych z usługi Service Bus w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-| Komunikaty (wersja zapoznawcza) | Liczba komunikatów w kolejce/temacie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Dimension: EntityName |
-| ActiveMessages (wersja zapoznawcza) | Liczba aktywnych komunikatów w kolejce/temacie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Dimension: EntityName |
+|Komunikaty przychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikaty wysyłane do usługi Service Bus w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Komunikaty wychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikatów odebranych z usługi Service Bus w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+| Komunikaty (wersja zapoznawcza) | Liczba komunikatów w kolejce/temacie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Wymiar: EntityName |
+| ActiveMessages (wersja zapoznawcza) | Liczba aktywnych komunikatów w kolejce/temacie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Wymiar: EntityName |
 
 ## <a name="connection-metrics"></a>Metryki połączeń
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w przestrzeni nazw, a także w jednostce.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Otwartego połączenia (wersja zapoznawcza)|Liczba otwartych połączeń.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Połączenia zamknięte (wersja zapoznawcza)|Liczba zamkniętych połączeń.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName |
+|Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w przestrzeni nazw, a także w jednostce.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Otwartego połączenia (wersja zapoznawcza)|Liczba otwartych połączeń.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Połączenia zamknięte (wersja zapoznawcza)|Liczba zamkniętych połączeń.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName |
 
 ## <a name="resource-usage-metrics"></a>Metryki użycia zasobów
 
@@ -98,8 +98,8 @@ Dwa rodzaje błędów sklasyfikowanych jako błędy użytkownika:
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Użycie Procesora na przestrzeń nazw (wersja zapoznawcza)|Procent użycia Procesora przestrzeni nazw.<br/><br/> Jednostka: procent <br/> Typ agregacji: maksymalna <br/> Dimension: EntityName|
-|Użycie rozmiaru pamięci na przestrzeń nazw (wersja zapoznawcza)|Wartość procentowa użycia pamięci przestrzeni nazw.<br/><br/> Jednostka: procent <br/> Typ agregacji: maksymalna <br/> Dimension: EntityName|
+|Użycie Procesora na przestrzeń nazw (wersja zapoznawcza)|Procent użycia Procesora przestrzeni nazw.<br/><br/> Jednostka: Procent <br/> Typ agregacji: Maksimum <br/> Wymiar: EntityName|
+|Użycie rozmiaru pamięci na przestrzeń nazw (wersja zapoznawcza)|Wartość procentowa użycia pamięci przestrzeni nazw.<br/><br/> Jednostka: Procent <br/> Typ agregacji: Maksimum <br/> Wymiar: EntityName|
 
 ## <a name="metrics-dimensions"></a>Wymiary metryki
 
@@ -123,7 +123,7 @@ Usługa Azure Service Bus obsługuje następujące wymiary metryk w usłudze Azu
         ![Wybieranie przestrzeni nazw](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Wybierz **Dodaj kryteria**, i wykonaj następujące czynności na **konfigurowanie logiki sygnału** strony:
     1. Wybierz **metryki** dla **sygnał typu**. 
-    2. Wybierz sygnał. Na przykład: **usługi błędy (wersja zapoznawcza)**. 
+    2. Wybierz sygnał. Na przykład: **Usługa błędy (wersja zapoznawcza)**. 
 
         ![Zaznacz błędy serwera](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Wybierz **większa** dla **warunek**.

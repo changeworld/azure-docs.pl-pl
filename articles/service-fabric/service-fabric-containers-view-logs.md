@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: twhitney
-ms.openlocfilehash: 85623f5acfb33d73774e5898e3f8937b4e07a5a9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: c4add1034e4b149cbe9d3c76c03987d45ca587c4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299082"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993795"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Wyświetl dzienniki dla kontenera usługi Service Fabric
 Usługa Azure Service Fabric jest koordynatora kontenerów i obsługuje zarówno [kontenerów systemu Linux i Windows](service-fabric-containers-overview.md).  W tym artykule opisano sposób wyświetlania dzienników kontenera uruchomioną usługę kontenera lub martwy kontenera, aby zdiagnozować i rozwiązać problemy.
@@ -64,10 +64,10 @@ Treść odpowiedzi 200:
 ```
 
 ### <a name="service-fabric-sfctl"></a>Usługa Service Fabric (SFCTL)
-Użyj [sfctl get-container dzienniki usługi](service-fabric-sfctl-service.md) polecenie, aby pobrać dzienniki dla kontenera które uległy awarii.  Określ nazwę węzła, że kontener został uruchomiony na, nazwa aplikacji, nazwy manifestu usługi i nazwy pakietu kodu. Określ `-previous` flagi.  Odpowiedź będzie zawierać dzienniki kontenerów martwy kontenera wystąpienie pakietu kodu.
+Użyj [sfctl get-container dzienniki usługi](service-fabric-sfctl-service.md) polecenie, aby pobrać dzienniki dla kontenera które uległy awarii.  Określ nazwę węzła, że kontener został uruchomiony na, nazwa aplikacji, nazwy manifestu usługi i nazwy pakietu kodu. Określ `--previous` flagi.  Odpowiedź będzie zawierać dzienniki kontenerów martwy kontenera wystąpienie pakietu kodu.
 
 ```
-sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –previous
+sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous
 ```
 Odpowiedź:
 ```json

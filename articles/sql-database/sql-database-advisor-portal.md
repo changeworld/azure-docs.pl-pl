@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f445e7544891d85ab37f1f6e80e1855580b3b570
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6bf0310ae69d45858241a21c5207f557034126d5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272773"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608216"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdowanie i stosowanie zaleceń dotyczących wydajności
 
@@ -54,7 +54,7 @@ Można również wyświetlić stan historyczne operacje. Wybierz zalecenie lub s
 
 Oto przykład "Create index" zalecenia w witrynie Azure portal.
 
-![Utwórz indeks](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
+![tworzenie indeksu](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Stosowanie zalecenia
 Usługa Azure SQL Database zapewnia pełną kontrolę nad jak zalecenia są włączone, przy użyciu dowolnej z następujących trzech opcji: 
@@ -161,7 +161,7 @@ Monitoruj zalecenia i stosować je do uściślić wydajności w dalszym ciągu. 
 * Zobacz [zalecenia dotyczące wydajności](sql-database-advisor.md) omówienie zalecenia dotyczące wydajności usługi Azure SQL Database.
 * Zobacz [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) Aby dowiedzieć się więcej o wyświetlaniu wpływ na wydajność najczęściej używane zapytania.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 * [TWORZENIE INDEKSU](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262322"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634511"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -94,6 +94,8 @@ Aby skonfigurować rejestrowanie i metryki do obsługi magazynu konta przy użyc
 
 **Via PowerShell**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Aby rozpocząć pracę przy użyciu programu PowerShell dla platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
 1. Użyj [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) polecenia cmdlet, aby dodać konto użytkownika usługi Azure do okna programu PowerShell:
@@ -114,13 +116,13 @@ Aby rozpocząć pracę przy użyciu programu PowerShell dla platformy Azure, zob
 4. Włącz rejestrowanie danych magazynu dla usługi Blob:
    
     ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 5. Włączanie metryk usługi storage dla usługi Blob, upewniając się ustawić **- MetricsType** do `Minute`:
    
     ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurowanie rejestrowania po stronie klienta platformy .NET
@@ -198,11 +200,11 @@ Analizator komunikatów obejmuje zasoby dla usługi Azure Storage, które ułatw
 2. Uruchom analizator komunikatów.
 3. Z **narzędzia** menu, wybierz opcję **Menedżer zasobów**. W **Menedżer zasobów** okno dialogowe, wybierz opcję **pliki do pobrania**, następnie filtrowanie według **usługi Azure Storage**. Widoczne są zasoby magazynu platformy Azure, jak pokazano na poniższej ilustracji.
 4. Kliknij przycisk **wszystkie elementy wyświetlane synchronizacji** zainstalował zasoby magazynu platformy Azure. Dostępne zasoby obejmują:
-   * **Reguły kolorów w usłudze Azure Storage:** reguły koloru usługi Azure Storage umożliwiają definiowanie specjalne filtry, które umożliwia wyróżnianie komunikatów, które zawierają szczegółowe informacje w śladzie style kolorów, tekstu i czcionek.
-   * **Usługa Azure Storage wykresów:** wykresy usługi Azure Storage są wstępnie zdefiniowane wykresów, które wykresu danych dziennika serwera. Należy pamiętać, aby korzystać z usługi Azure Storage wykresy w tej chwili, może być tylko załadowanie dziennika serwera na siatkę analizy.
-   * **Usługa Azure Storage parsery:** parsery usługi Azure Storage przeanalizować klienta usługi Azure Storage, server i Dzienniki protokołu HTTP, aby można było je wyświetlić w siatce analizy.
-   * **Usługa Azure Storage filtry:** filtry usługi Azure Storage są wstępnie zdefiniowane kryteria, które umożliwia wyszukiwanie danych w siatce analizy.
-   * **Usługa Azure Storage układów widoku:** układów widoku usługi Azure Storage są układów wstępnie zdefiniowanych kolumn i grupowania w siatce analizy.
+   * **Usługa Azure Storage reguły koloru:** Reguły kolorów w usłudze Azure Storage umożliwiają definiowanie specjalne filtry, które umożliwia wyróżnianie komunikatów, które zawierają szczegółowe informacje w śladzie kolorów, tekst i style czcionek.
+   * **Wykresy usługi Azure Storage:** Usługa Azure wykresy magazynu są wstępnie zdefiniowane wykresów, które wykresu danych dziennika serwera. Należy pamiętać, aby korzystać z usługi Azure Storage wykresy w tej chwili, może być tylko załadowanie dziennika serwera na siatkę analizy.
+   * **Usługa Azure Storage analizatory składni:** Parsery usługi Azure Storage przeanalizować klienta usługi Azure Storage, server i dzienniki HTTP, aby można było je wyświetlić w siatce analizy.
+   * **Filtry usługi Azure Storage:** Usługa Azure filtry magazynu są wstępnie zdefiniowane kryteria, które umożliwia wyszukiwanie danych w siatce analizy.
+   * **Usługa Azure Storage układów widoku:** Układów widoku w usłudze Azure Storage są układów wstępnie zdefiniowanych kolumn i grupowania w siatce analizy.
 5. Po zainstalowaniu zasoby, należy ponownie uruchomić analizatora komunikatów.
 
 ![Menedżer zasobów analizatora komunikatów](./media/storage-e2e-troubleshooting/mma-start-page-1.png)

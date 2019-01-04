@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964121"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720819"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
 Ten artykuł pomaga Ci rozpocząć pracę, wykonując kilka akcji, które zmaksymalizować korzyści, jakie oferuje usługa Azure Security Center. Wykonanie tych akcji umożliwia wgląd na wszystkich subskrypcji platformy Azure, które są połączone z dzierżawą usługi Azure Active Directory i skutecznie zarządzać poziom bezpieczeństwa w organizacji na dużą skalę, stosując zasady zabezpieczeń w wielu Subskrypcje w sposób aggregative.
@@ -71,13 +71,13 @@ Administrator dzierżawy usługi Azure Active Directory nie ma bezpośredni dost
 
    ![Właściwości usługi AD platformy Azure — zrzut ekranu](./media/security-center-management-groups/aad-properties.png)
 
-3. W obszarze **Administrator globalny może zarządzać subskrypcjami platformy Azure i grup zarządzania**, ustaw przełącznik na **tak**.
+3. W obszarze **Access management dla zasobów platformy Azure**, ustaw przełącznik na **tak**.
 
    ![Administrator globalny może zarządzać subskrypcjami platformy Azure i zarządzania grupy — zrzut ekranu](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - Po ustawieniu przełącznika na **tak**, konta administratora globalnego (aktualnie zalogowany użytkownik) zostanie dodany do roli Administrator dostępu użytkowników w usłudze Azure RBAC w zakresie głównym (`/`), która przyznaje dostęp do widoku i raportowanie na wszystkie subskrypcje systemu Azure skojarzone z dzierżawą usługi Azure AD.
+   - Po ustawieniu przełącznika tak, są przypisywane rolę Administrator dostępu użytkowników w usłudze Azure RBAC w zakresie głównym (/). Przyznaje uprawnienia do przypisywania ról we wszystkich subskrypcjach platformy Azure i skojarzone z tego katalogu usługi Azure AD grupy zarządzania. Ta opcja jest dostępna tylko dla użytkowników, którzy mają przypisaną rolę administratora globalnego w usłudze Azure AD.
 
-   - Po ustawieniu przełącznika na **nie**, konta administratora globalnego (aktualnie zalogowany użytkownik) zostanie usunięty z roli Administrator dostępu użytkowników w RBAC platformy Azure. Nie można wyświetlić wszystkie subskrypcje systemu Azure, które są skojarzone z dzierżawą usługi Azure AD i można wyświetlać i zarządzać nimi tylko subskrypcji platformy Azure do których użytkownik ma dostęp.
+  - Gdy przełącznik jest ustawiona na nie, rolę Administrator dostępu użytkowników w RBAC platformy Azure zostanie usunięty z konta użytkownika. Nie można przypisać ról we wszystkich subskrypcjach platformy Azure i grup zarządzania, które są skojarzone z tego katalogu usługi Azure AD. Można wyświetlać i zarządzać tylko subskrypcji platformy Azure i grup zarządzania, do których użytkownik ma dostęp.
 
 4. Kliknij przycisk **Zapisz** można zapisać ustawień użytkownika.
 

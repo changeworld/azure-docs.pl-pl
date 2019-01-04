@@ -1,20 +1,17 @@
 ---
 title: Konfigurowanie replikacji danych w celu replikowania danych do usługi Azure Database for MySQL.
 description: W tym artykule opisano sposób konfigurowania danych replikacji dla usługi Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497930"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539623"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować bazę danych Azure do replikacji danych MySQL
 
@@ -156,7 +153,7 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
    - master_password: hasło dla tego serwera głównego
    - master_log_file: Nazwa pliku dziennika binarne uruchamiania `show master status`
    - master_log_pos: pozycja dziennik binarny uruchamianie `show master status`
-   - master_ssl_ca: kontekstu certyfikatu urzędu certyfikacji. Jeśli nie używasz protokołu SSL, należy przekazać pusty ciąg.
+   - master_ssl_ca: Kontekst certyfikatu urzędu certyfikacji. Jeśli nie używasz protokołu SSL, należy przekazać pusty ciąg.
        - Zalecane jest przekazanie tego parametru w jako zmienną. Poniżej przedstawiono przykłady, aby uzyskać więcej informacji.
 
 > [!NOTE]
@@ -207,7 +204,7 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
 
 ## <a name="other-stored-procedures"></a>Inne procedury składowane
 
-### <a name="stop-replication"></a>Zatrzymywanie replikacji
+### <a name="stop-replication"></a>Zatrzymaj replikację
 
 Aby zatrzymać replikację między serwera głównego i repliki, użyj następującej procedury składowanej:
 

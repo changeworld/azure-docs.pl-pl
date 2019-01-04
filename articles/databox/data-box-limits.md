@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 12/20/2018
 ms.author: alkohli
-ms.openlocfilehash: de47cae219aa457343df292bb91b6af06c4b1186
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5849611ad346fc5ef1f0efd1e262d2ace8097520
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091933"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723456"
 ---
 # <a name="azure-data-box-limits"></a>Limity usługi Azure Data Box
 
@@ -22,7 +22,6 @@ Te limity wziąć pod uwagę wdrażania i obsługi usługi Microsoft Azure Data 
 
 ## <a name="data-box-service-limits"></a>Limity usługi pole danych
 
- - Usługa Data Box jest dostępna tylko w Stanach Zjednoczonych w ogóle [regiony platformy Azure dla publicznej chmury Azure](https://azure.microsoft.com/regions/).
  - Jeśli przy użyciu wielu kont magazynu przy użyciu usługi Data Box, wszystkie konta magazynu musisz należą do tylko tym samym regionie platformy Azure.
  - Zaleca się, że używasz nie więcej niż trzy konta magazynu. Więcej kont usługi storage można mogłoby to wpłynąć na wydajność.
 
@@ -79,5 +78,5 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Nazwy kontenerów dla blokowych obiektów blob i stronicowych obiektów blob | Musi być prawidłową nazwą DNS, który składa się z 3 do 63 znaków. <br>  Musi zaczynać się literą lub cyfrą. <br> Może zawierać tylko małe litery, cyfry i znaki łącznika (-). <br> Bezpośrednio przed łącznikiem (-) i bezpośrednio po nim musi znajdować się cyfra lub litera. <br> Nazwy nie mogą zawierać sąsiadujących ze sobą łączników. |
 | Nazwy udziałów plików platformy Azure                  | Jak wyżej                                                                                                                                                                                                                                                                                                             |
-| Nazwy katalogów i plików dla usługi Azure files     |<li> Zachowywanie, bez uwzględniania wielkości liter i nie może przekraczać 255 znaków długości. </li><li> Nie może kończyć się ukośnikiem (/). </li><li>Jeśli nie dostarczono, zostaną automatycznie usunięte. </li><li> Następujące znaki nie są dozwolone: "" \ /: | < > *? "</li><li> Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki. </li><li> Niedozwolone znaki ścieżki adresu URL nie są dozwolone. Punkty kodowe, takich jak \uE000 nie są prawidłowymi znakami Unicode. Niektóre znaki ASCII lub Unicode, takie jak znaki kontrolne (\u0081 0x00 do 0x1F itp.), również nie są dozwolone. Zasady dotyczące Unicode ciągów w HTTP/1.1 temacie dokumencie RFC 2616 sekcji 2.2: podstawowe zasady i RFC 3987. </li><li> Następujący plik nazwy są niedozwolone: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, znak kropki (.) i kropka dwa znaki (.).</li>|
+| Nazwy katalogów i plików dla usługi Azure files     |<li> Zachowywanie, bez uwzględniania wielkości liter i nie może przekraczać 255 znaków długości. </li><li> Nie może kończyć się ukośnikiem (/). </li><li>Jeśli nie dostarczono, zostaną automatycznie usunięte. </li><li> Następujące znaki nie są dozwolone: "" \ /: | < > *? "</li><li> Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki. </li><li> Niedozwolone znaki ścieżki adresu URL nie są dozwolone. Punkty kodowe, takich jak \uE000 nie są prawidłowymi znakami Unicode. Niektóre znaki ASCII lub Unicode, takie jak znaki kontrolne (\u0081 0x00 do 0x1F itp.), również nie są dozwolone. Zasady dotyczące Unicode ciągów w HTTP/1.1 znajduje się dokumencie RFC 2616 2.2 sekcji: Podstawowe zasady i RFC 3987. </li><li> Następujące nazwy plików nie są dozwolone: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, znak kropki (.) i kropka dwa znaki (.).</li>|
 | Nazwy blokowych i stronicowych obiektów blob      | </li><li>W nazwach obiektów blob jest rozróżniana wielkość liter. Mogą zawierać dowolną kombinację znaków. </li><li>Nazwa obiektu blob musi zawierać od 1 do 1024 znaków. </li><li>Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki. </li><li>Liczba segmentów ścieżki w nazwie obiektu blob nie może przekraczać 254. Segment ścieżki to ciąg znajdujący się pomiędzy następującymi po sobie znakami ogranicznika (na przykład ukośnikami „/”), co odpowiada nazwie katalogu wirtualnego.</li> |

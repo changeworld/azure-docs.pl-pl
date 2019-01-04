@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315727"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632691"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure App Service Windows
 
-W tym artykule dowiesz się, najważniejsze wskazówki i procedury rozwiązywania problemów z [aplikacji node](app-service-web-get-started-nodejs.md) uruchomiona w usłudze Azure Web Apps (przy użyciu [iisnode](https://github.com/azure/iisnode)).
+W tym artykule dowiesz się, najważniejsze wskazówki i procedury rozwiązywania problemów z [aplikacji node](app-service-web-get-started-nodejs.md) uruchomiona w usłudze Azure App Service (przy użyciu [iisnode](https://github.com/azure/iisnode)).
 
 > [!WARNING]
 > Należy zachować ostrożność, korzystając z kroków rozwiązywania problemów na witrynę produkcyjną. Zaleca się Rozwiązywanie problemów z aplikacją na temat instalacji spoza środowiska produkcyjnego na przykład miejsce na tymczasową, a gdy problem zostanie rozwiązany, należy zamienić swoje miejsce przejściowe z z miejscem produkcyjnym.
@@ -44,18 +44,18 @@ To ustawienie określa ścieżkę do node.exe. Można ustawić tę wartość, ab
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-To ustawienie określa maksymalną liczbę równoczesnych żądań wysyłane przez program iisnode do każdego node.exe. W usłudze Azure Web Apps wartość domyślna to nieskończone. Gdy nie jest hostowany w usłudze Azure Web Apps, wartość domyślna to 1024. Możesz skonfigurować wartości w zależności od tego, ile żądań, że Twoja aplikacja otrzyma i jak szybko aplikacji przetwarzania każdego żądania.
+To ustawienie określa maksymalną liczbę równoczesnych żądań wysyłane przez program iisnode do każdego node.exe. W usłudze Azure App Service wartość domyślna to nieskończone. Możesz skonfigurować wartości w zależności od tego, ile żądań, że Twoja aplikacja otrzyma i jak szybko aplikacji przetwarzania każdego żądania.
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-To ustawienie określa maksymalną liczbę razy iisnode liczbę ponownych prób nawiązywania połączenia na nazwanym potoku do wysyłania żądań do node.exe. To ustawienie w połączeniu z namedPipeConnectionRetryDelay określa łącznego limitu czasu każdego żądania w ramach programu iisnode. Wartość domyślna to 200 w usłudze Azure Web Apps. Całkowity limit czasu w sekundach = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
+To ustawienie określa maksymalną liczbę razy iisnode liczbę ponownych prób nawiązywania połączenia na nazwanym potoku do wysyłania żądań do node.exe. To ustawienie w połączeniu z namedPipeConnectionRetryDelay określa łącznego limitu czasu każdego żądania w ramach programu iisnode. Wartość domyślna to 200 w usłudze Azure App Service. Całkowity limit czasu w sekundach = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
 To ustawienie steruje ilością czasu (w ms) program iisnode w tym czasie czeka między kolejnymi próbami wysyłać żądania do node.exe przez nazwany potok. Wartość domyślna to 250 ms.
 Całkowity limit czasu w sekundach = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
-Domyślnie łącznego limitu czasu w program iisnode w usłudze Azure Web Apps to 200 \* 250 ms = 50 sekund.
+Domyślnie łącznego limitu czasu w program iisnode w usłudze Azure App Service to 200 \* 250 ms = 50 sekund.
 
 ### <a name="logdirectory"></a>logDirectory
 
@@ -128,7 +128,7 @@ Odczyt [debugowanie aplikacji node.js na Windows](https://tomasz.janczuk.org/201
 
 Wiele aplikacji, będzie chciała nawiązywać połączenia wychodzące w ramach ich regularnych operacji. Na przykład gdy nadejdzie żądanie, aplikacja node, będzie chciała skontaktuj się z interfejsu API REST gdzie indziej i uzyskać pewne informacje, aby przetworzyć żądanie. Chcesz korzystać z agentem przy życiu Zachowaj podczas nawiązywania połączeń http lub https. Podczas tych wywołań ruchu wychodzącego, można skorzystać z modułu agentkeepalive jako przedstawiciela keep alive.
 
-Moduł agentkeepalive gwarantuje, że gniazda są ponownie na usługi platformy Azure webapp maszyny Wirtualnej. Tworzenie nowego gniazda na każde wychodzące żądanie obciążenie dodaje do aplikacji. Ponowne użycie gniazda dla wychodzących żądań aplikacji zapewnia, że aplikacja nie przekracza ustawienie maxSockets, które są przydzielane na podstawie maszyny Wirtualnej. W usłudze Azure Web Apps zaleca się ustawienie maxSockets wartości agentKeepAlive w sumie (4 wystąpień node.exe \* 40 ustawienie maxSockets/wystąpienie) 160 gniazda na maszynę Wirtualną.
+Moduł agentkeepalive gwarantuje, że gniazda są ponownie na usługi platformy Azure webapp maszyny Wirtualnej. Tworzenie nowego gniazda na każde wychodzące żądanie obciążenie dodaje do aplikacji. Ponowne użycie gniazda dla wychodzących żądań aplikacji zapewnia, że aplikacja nie przekracza ustawienie maxSockets, które są przydzielane na podstawie maszyny Wirtualnej. Zalecenie dotyczące usługi Azure App Service jest równa wartości ustawienie maxSockets agentKeepAlive daje w sumie (4 wystąpień node.exe \* 40 ustawienie maxSockets/wystąpienie) 160 gniazda na maszynę Wirtualną.
 
 Przykład [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) konfiguracji:
 
@@ -147,10 +147,10 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Moja aplikacja node zużywa zbyt dużo procesora CPU
 
-Zalecenia z usługi Azure Web Apps może pojawić się w portalu dotyczące wysokiego użycia procesora cpu. Można również ustawić się monitorów, aby obejrzeć w przypadku niektórych [metryki](web-sites-monitor.md). Podczas sprawdzania użycia procesora CPU na [pulpit nawigacyjny portalu Azure](../application-insights/app-insights-web-monitor-performance.md), sprawdź wartości MAX procesora CPU, więc nie przegap wartości szczytowe.
+Zalecenia z usługi Azure App Service może pojawić się w portalu dotyczące wysokiego użycia procesora cpu. Można również ustawić się monitorów, aby obejrzeć w przypadku niektórych [metryki](web-sites-monitor.md). Podczas sprawdzania użycia procesora CPU na [pulpit nawigacyjny portalu Azure](../application-insights/app-insights-web-monitor-performance.md), sprawdź wartości MAX procesora CPU, więc nie przegap wartości szczytowe.
 Jeśli uważasz, Twoja aplikacja zużywa zbyt dużo procesora CPU i nie może wyjaśnić, dlaczego, można profilować aplikację node, aby dowiedzieć się.
 
-#### <a name="profiling-your-node-application-on-azure-web-apps-with-v8-profiler"></a>Profilowanie węzła aplikacji w usłudze Azure Web Apps przy użyciu V8 Profiler
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilowanie węzła aplikacji w usłudze Azure App Service przy użyciu V8 Profiler
 
 Załóżmy na przykład, że aplikacja hello world, którego chcesz przeprowadzić profilowanie w następujący sposób:
 
@@ -220,7 +220,7 @@ Widać, że funkcja WriteConsoleLog zużyto 95% czasu. Dane wyjściowe pokazują
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Moja aplikacja node zużywa zbyt dużej ilości pamięci
 
-Jeśli Twoja aplikacja zużywa zbyt dużej ilości pamięci, zobaczysz powiadomienie z usługi Azure Web Apps w portalu o duże użycie pamięci. Można ustawić monitorów, aby obejrzeć w przypadku niektórych [metryki](web-sites-monitor.md). Podczas sprawdzania użycia pamięci na [pulpit nawigacyjny portalu Azure](../application-insights/app-insights-web-monitor-performance.md), należy koniecznie sprawdzić wartości Maksymalna pamięć, dzięki czemu nie przegap wartości szczytowe.
+Jeśli Twoja aplikacja zużywa zbyt dużej ilości pamięci, zobaczysz powiadomienie z usługi Azure App Service w portalu o duże użycie pamięci. Można ustawić monitorów, aby obejrzeć w przypadku niektórych [metryki](web-sites-monitor.md). Podczas sprawdzania użycia pamięci na [pulpit nawigacyjny portalu Azure](../application-insights/app-insights-web-monitor-performance.md), należy koniecznie sprawdzić wartości Maksymalna pamięć, dzięki czemu nie przegap wartości szczytowe.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Wykrywania przecieków i różnic sterty dla środowiska node.js
 
@@ -249,12 +249,12 @@ Aplikacji wywołującej nieobsłużone wyjątki — sprawdzanie `d:\\home\\LogFi
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>Moja aplikacja node zajmuje zbyt dużo czasu, aby rozpocząć (zimny Start)
 
-Typową przyczyną długi czas uruchamiania aplikacji jest dużą liczbę plików w węźle\_modułów. Aplikacja próbuje załadować większość tych plików, podczas uruchamiania. Domyślnie ponieważ pliki są przechowywane w udziale sieciowym, w usłudze Azure Web Apps, ładowania wielu plików może potrwać.
+Typową przyczyną długi czas uruchamiania aplikacji jest dużą liczbę plików w węźle\_modułów. Aplikacja próbuje załadować większość tych plików, podczas uruchamiania. Domyślnie ponieważ pliki są przechowywane w udziale sieciowym, w usłudze Azure App Service ładowania wielu plików może potrwać.
 Niektóre rozwiązania, aby przyspieszyć ten proces jest:
 
 1. Upewnij się, że masz struktury płaskiej zależności i nie zduplikowane zależności za pomocą npm3, aby zainstalować moduły.
 2. Próba powolne ładowanie Twój węzeł\_modułów i nie ładować wszystkie moduły przy uruchamianiu aplikacji. Powolne ładowanie modułów wywołanie require('module') ustanowić gdy rzeczywiście potrzebujesz modułu w obrębie funkcji przed pierwszym wykonywanie kodu modułu.
-3. Usługa Azure Web Apps oferuje funkcję o nazwie lokalnej pamięci podręcznej. Ta funkcja kopiuje zawartość z udziału sieciowego na dysk lokalny na maszynie Wirtualnej. Ponieważ pliki są lokalne, czas ładowania węzła\_modułów jest znacznie wyższa.
+3. Usługa Azure App Service oferuje funkcję o nazwie lokalnej pamięci podręcznej. Ta funkcja kopiuje zawartość z udziału sieciowego na dysk lokalny na maszynie Wirtualnej. Ponieważ pliki są lokalne, czas ładowania węzła\_modułów jest znacznie wyższa.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Stan http programu IISNODE i podstanu
 
@@ -274,13 +274,13 @@ Włącz FREB dla swojej aplikacji wyświetlić kod błędu win32 (należy włąc
 | 503 |1002 |Kod błędu win32 wyboru przyczyny rzeczywistego — żądanie nie mógł zostać wysłany do node.exe. |
 | 503 |1003 |Nazwany potok jest zbyt zajęty, — sprawdź, jeśli node.exe zużywa nadmiernego użycia Procesora |
 
-NODE.exe ma ustawienie o nazwie `NODE_PENDING_PIPE_INSTANCES`. Domyślnie gdy nie są wdrażane w usłudze Azure Web Apps, ta wartość to 4. Co oznacza, że node.exe w czasie na nazwanym potoku może akceptować tylko cztery żądania. W usłudze Azure Web Apps ta wartość jest równa 5000. Ta wartość powinna być wystarczające dla większości węzłów działających w usłudze Azure Web Apps. Nie powinny występować 503.1003 w usłudze Azure Web Apps ze względu na wysoką wartość `NODE_PENDING_PIPE_INSTANCES`
+NODE.exe ma ustawienie o nazwie `NODE_PENDING_PIPE_INSTANCES`. W usłudze Azure App Service ta wartość jest równa 5000. Co oznacza, że node.exe może akceptować 5000 żądań w czasie na nazwanym potoku. Ta wartość powinna być wystarczające dla większości węzłów działających w usłudze Azure App Service. Nie powinny występować 503.1003 w usłudze Azure App Service ze względu na wysoką wartość `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Więcej zasobów
 
 Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat aplikacji w technologii node.js w usłudze Azure App Service.
 
-* [Wprowadzenie do aplikacji sieci Web Node.js w usłudze Azure App Service](app-service-web-get-started-nodejs.md)
+* [Get started with Node.js web apps in Azure App Service (Rozpoczynanie pracy z aplikacjami internetowymi Node.js w usłudze Azure App Service)](app-service-web-get-started-nodejs.md)
 * [How to debug a Node.js web app in Azure App Service (Jak debugować aplikację internetową Node.js w usłudze Azure App Service)](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Using Node.js Modules with Azure applications (Używanie modułów Node.js z aplikacjami platformy Azure)](../nodejs-use-node-modules-azure-apps.md)
 * [Usługa Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

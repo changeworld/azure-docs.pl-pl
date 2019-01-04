@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie wzajemnego uwierzytelniania protokołu TLS — usługa Azure App Service
-description: Dowiedz się, jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta na TLS.
+description: Dowiedz się, jak skonfigurować aplikację do używania uwierzytelniania certyfikatu klienta na TLS.
 services: app-service
 documentationcenter: ''
 author: naziml
@@ -15,40 +15,38 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d441329bc3f279e95b2ee302db53d78f786c3470
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252885"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650401"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji internetowej
+# <a name="how-to-configure-tls-mutual-authentication-for-azure-app-service"></a>Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla usługi Azure App Service
 ## <a name="overview"></a>Przegląd
-Aby ograniczyć dostęp do aplikacji sieci web platformy Azure, włączenie różnego rodzaju uwierzytelniania dla niego. Jednym ze sposobów, w tym celu jest uwierzytelnianie przy użyciu certyfikatu klienta, gdy żądanie zostanie za pośrednictwem protokołu TLS/SSL. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania protokołu TLS lub certyfikat klienta, że uwierzytelnianie i w tym artykule zostanie szczegółowo opisują jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta.
+Możesz ograniczyć dostęp do aplikacji usługi Azure App Service, włączając różnego rodzaju uwierzytelniania dla niego. Jednym ze sposobów, w tym celu jest uwierzytelnianie przy użyciu certyfikatu klienta, gdy żądanie zostanie za pośrednictwem protokołu TLS/SSL. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania protokołu TLS lub certyfikat klienta, że uwierzytelnianie i w tym artykule zostanie szczegółowo opisują jak skonfigurować aplikację, aby użyć uwierzytelniania certyfikatu klienta.
 
 > **Uwaga:** Jeśli uzyskujesz dostęp do witryny za pośrednictwem protokołu HTTP, a nie HTTPS, nie otrzymasz żadnych certyfikatu klienta. Dlatego jeśli aplikacja wymaga certyfikatów klienta nie należy zezwalać żądania do aplikacji za pośrednictwem protokołu HTTP.
 > 
 > 
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurowanie aplikacji sieci Web do uwierzytelniania certyfikatu klienta
-Aby skonfigurować aplikację sieci web, aby wymagać certyfikaty klienta, należy dodać ustawienie elementu clientCertEnabled witryny dla aplikacji sieci web i ustaw ją na wartość true. To ustawienie jest również możliwe do skonfigurowania w witrynie Azure portal w obszarze blok certyfikaty SSL.
+## <a name="configure-app-service-for-client-certificate-authentication"></a>Konfigurowanie usługi App Service do uwierzytelniania certyfikatu klienta
+Aby skonfigurować aplikację, aby wymagać certyfikaty klienta, należy dodać ustawienie elementu clientCertEnabled witryny, aplikacji i ustaw ją na wartość true. To ustawienie jest również możliwe do skonfigurowania w witrynie Azure portal w obszarze blok certyfikaty SSL.
 
 Możesz użyć [narzędzie ARMClient](https://github.com/projectkudu/ARMClient) ułatwia sformułować wywołania interfejsu API REST. Po zalogowaniu się przy użyciu narzędzia, należy wydać następujące polecenie:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-zastąpienie wszystkich elementów w {} informacjami dla sieci web app i utworzenie pliku o nazwie enableclientcert.json następującym kodem JSON zawartości:
+zastąpienie wszystkich elementów w {} z informacjami o aplikacji i tworzenia pliku o nazwie zawartości enableclientcert.json następującym kodem JSON:
 
     {
-        "location": "My Web App Location",
+        "location": "My App Location",
         "properties": {
             "clientCertEnabled": true
         }
     }
 
-Upewnij się zmienić wartość "Lokalizacja" wszędzie tam, gdzie aplikacja sieci web znajduje się na przykład, północno-środkowe stany USA i zachodnie stany USA itp.
+Upewnij się zmienić wartość "Lokalizacja" wszędzie tam, gdzie aplikacja znajduje się na przykład, północno-środkowe stany USA i zachodnie stany USA itp.
 
 Można również użyć https://resources.azure.com przerzucić `clientCertEnabled` właściwość `true`.
 
@@ -56,11 +54,11 @@ Można również użyć https://resources.azure.com przerzucić `clientCertEnabl
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Uzyskiwanie dostępu do certyfikatu klienta z aplikacji sieci Web
+## <a name="accessing-the-client-certificate-from-app-service"></a>Uzyskiwanie dostępu do certyfikatu klienta z usługi App Service
 Jeśli używasz programu ASP.NET i skonfiguruj aplikację, aby użyć uwierzytelniania certyfikatu klienta, certyfikat będzie dostępna za pośrednictwem **HttpRequest.ClientCertificate** właściwości. Dla innych stosów aplikacji certyfikat klienta będzie dostępne w Twojej aplikacji za pomocą wartości zakodowane w formacie base64 w nagłówku żądania "X-ARR ClientCert". Aplikację można utworzyć certyfikat z tej wartości, a następnie użyć go do celów uwierzytelniania i autoryzacji w aplikacji.
 
 ## <a name="special-considerations-for-certificate-validation"></a>Specjalne uwagi dotyczące weryfikacji certyfikatów
-Certyfikat klienta, które są wysyłane do aplikacji nie przechodzi przez wszystkie weryfikacji przez platformę Azure Web Apps. Sprawdzanie poprawności tego certyfikatu jest odpowiedzialny za aplikacji sieci web. Poniżej przedstawiono przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
+Certyfikat klienta, które są wysyłane do aplikacji nie przechodzi przez wszystkie weryfikacji przez platformę Azure App Service. Sprawdzanie poprawności tego certyfikatu jest odpowiedzialny za aplikacji. Poniżej przedstawiono przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
 
     using System;
     using System.Collections.Specialized;

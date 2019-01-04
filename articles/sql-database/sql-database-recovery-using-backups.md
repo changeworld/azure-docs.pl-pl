@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 4d77f8aad07d2fd4b3e2c4ec42b5b0ec328f779d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 8785ef50cd7bd27e866b1fa546317021eed5da01
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269519"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599114"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -67,7 +67,7 @@ W przypadku pojedynczej subskrypcji istnieją pewne ograniczenia na liczbę żą
 Nie ma żadnych funkcji wbudowanych zbiorczo przywracania. [Usługi Azure SQL Database: Pełne odzyskiwanie serwera](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skrypt jest przykładem jednym ze sposobów wykonywania tego zadania.
 
 > [!IMPORTANT]
-> Aby odzyskać za pomocą automatycznych kopii zapasowych, musi być członkiem roli Współautor serwera SQL Server w ramach subskrypcji lub być właścicielem subskrypcji — zobacz [RBAC: Wbudowane role](../role-based-access-control/built-in-roles.md). Odzyskiwanie można przeprowadzić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu API REST. Nie można używać języka Transact-SQL.
+> Aby odzyskać za pomocą automatycznych kopii zapasowych, musi być członkiem roli Współautor serwera SQL Server w ramach subskrypcji lub być właścicielem subskrypcji — zobacz [RBAC: Built-in roles](../role-based-access-control/built-in-roles.md) (Kontrola dostępu oparta na rolach: role wbudowane). Odzyskiwanie można przeprowadzić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu API REST. Nie można używać języka Transact-SQL.
 
 ## <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 

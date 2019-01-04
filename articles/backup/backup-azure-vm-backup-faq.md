@@ -4,93 +4,120 @@ description: Odpowiedzi na często zadawane pytania dotyczące działania funkcj
 services: backup
 author: trinadhk
 manager: shreeshd
-keywords: azure vm backup, azure vm restore, backup policy
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ff97d164ee8b2059e1b46377067041d6c381052b
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 6ec178a8cb457973f39ea2dd929a3486a7696c55
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753971"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972196"
 ---
-# <a name="questions-about-the-azure-vm-backup-service"></a>Pytania dotyczące usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
-W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+# <a name="frequently-asked-questions-azure-backup"></a>Często zadawane pytania dotyczące usługi Azure Backup
 
-## <a name="configure-backup"></a>Konfigurowanie kopii zapasowych
-### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Czy magazyny usługi Recovery Services obsługują klasyczne maszyny wirtualne, czy maszyny wirtualne oparte na usłudze Resource Manager? <br/>
-Magazyny usługi Recovery Services obsługują oba modele.  Kopię zapasową można wykonywać klasycznej maszyny Wirtualnej lub maszyny Wirtualnej usługi Resource Manager do magazynu usługi Recovery Services.
+W tym artykule odpowiedzi na często zadawane pytania dotyczące [kopia zapasowa Azure](backup-introduction-to-azure-backup.md) usługi.
 
-### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Jakie konfiguracje nie są obsługiwane przez kopię zapasową maszyny Wirtualnej platformy Azure?
-Zapoznaj się z artykułem [obsługiwane systemy operacyjne](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup) i [kopii zapasowych ograniczenia maszyn wirtualnych](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
+## <a name="general-questions"></a>Pytania ogólne
 
-### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Dlaczego nie widzę swojej maszyny wirtualnej w kreatorze konfigurowania kopii zapasowych?
-W Kreatorze konfigurowania kopii zapasowych kopia zapasowa Azure znajduje się tylko maszyny wirtualne, które są:
-  * Nie jest już chroniony można sprawdzić stan kopii zapasowej maszyny wirtualnej, przechodząc do bloku maszyny Wirtualnej i sprawdzając stan kopia zapasowa w Menu ustawienia. Dowiedz się więcej na temat [sprawdzania stanu tworzenia kopii zapasowych maszyny wirtualnej](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu)
-  * Przynależność do tego samego regionu co maszyna wirtualna
 
-## <a name="backup"></a>Tworzenie kopii zapasowych
-### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>Czy dla zadań tworzenia kopii zapasowej na żądanie będzie stosowany ten sam harmonogram przechowywania co dla zaplanowanych zadań tworzenia kopii zapasowej?
+### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Jakie maszyny wirtualne platformy Azure można można tworzyć kopie zapasowe przy użyciu usługi Azure Backup?
+[Przegląd](backup-azure-arm-vms-prepare.md#before-you-start) obsługiwanych systemów operacyjnych i ograniczenia.
+
+
+
+## <a name="backup"></a>Backup
+
+### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Zadanie tworzenia kopii zapasowej na żądanie używa ten sam harmonogram przechowywania co zaplanowane kopie zapasowe?
 Nie. Należy określić zakres przechowywania dla zadania tworzenia kopii zapasowej na żądanie. Domyślnie jest przechowywane przez 30 dni po wyzwoleniu z portalu.
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Ostatnio na niektórych maszynach wirtualnych została włączona usługa Azure Disk Encryption. Czy operacje tworzenia kopii zapasowych będą nadal działać?
-Musisz nadać usłudze Azure Backup uprawnienia umożliwiające jej uzyskiwanie dostępu do usługi Key Vault. Te uprawnienia możesz podać w programie PowerShell przy użyciu czynności wymienionych w sekcji *Włączenie kopii zapasowej* dokumentacji programu [PowerShell](backup-azure-vms-automation.md).
+Musisz udostępnić uprawnienia dla usługi Azure Backup na dostęp do usługi Key Vault. Określ uprawnienia w programie PowerShell, zgodnie z opisem w **Włącz kopię zapasową** sekcji [kopii zapasowej programu Azure PowerShell](backup-azure-vms-automation.md) dokumentacji.
 
-### <a name="i-migrated-disks-of-a-vm-to-managed-disks-will-my-backups-continue-to-work"></a>Dyski maszyny wirtualnej zostały zmigrowane do dysków zarządzanych. Czy operacje tworzenia kopii zapasowych będą nadal działać?
-Tak, kopie zapasowe działają bezproblemowo oraz nie konieczności konfigurowania kopii zapasowej.
+### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Dyski maszyny Wirtualnej zostały zmigrowane do dysków zarządzanych. Czy operacje tworzenia kopii zapasowych będą nadal działać?
+Tak, kopie zapasowe działają bezproblemowo. Nie ma potrzeby ponowne skonfigurowanie niczego.
+
+### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Dlaczego nie widzę swojej maszyny Wirtualnej w Kreatorze konfigurowania kopii zapasowej?
+Kreator wyszczególnia tylko maszyny wirtualne w tym samym regionie co magazyn, a które nie są już trwa wykonywanie kopii zapasowej.
+
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Moja maszyna wirtualna jest zamknięta. Będą na żądanie lub zaplanowanych zadań tworzenia kopii zapasowej?
-Tak. Nawet w przypadku, gdy maszyna zostanie zamknięta kopie zapasowe działają, a punkt odzyskiwania jest oznaczony jako awarii spójne. Aby uzyskać więcej informacji, zobacz sekcję spójności danych w [w tym artykule](backup-azure-vms-introduction.md#how-does-azure-back-up-virtual-machines)
+Tak. Wykonywane kopie zapasowe, gdy maszyna zostanie zamknięta. Punkt odzyskiwania jest oznaczana awarii spójne.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Czy można anulować zadania tworzenia kopii zapasowej w toku?
-Tak. Możesz anulować zadanie tworzenia kopii zapasowej, jeśli jest w fazie "Utworzenia migawki". **Nie można anulować zadania, jeśli przesyłanie danych z migawki jest w toku**.
+Tak. Możesz anulować zadanie tworzenia kopii zapasowej w **Trwa tworzenie zrzutu ekranu** stanu. Nie można anulować zadania, jeśli przesyłanie danych z migawki jest w toku.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Zablokuj grupy zasobów I włączone na Moje kopie zapasowe maszyn wirtualnych dysku zarządzanego. Czy operacje tworzenia kopii zapasowych będą nadal działać?
-Użytkownik zablokuje grupy zasobów, usługi Kopia zapasowa nie jest można usunąć starsze punkty przywracania. Ze względu na to nowych kopii zapasowych będzie kończyć się niepowodzeniem, ponieważ istnieje limit maksymalnego 18 punktów przywracania narzucone z wewnętrznej bazy danych. Jeśli tworzenie kopii zapasowych zakończą się niepowodzeniem z powodu błędu wewnętrznego po blokady RG, postępuj zgodnie z tymi [kolekcję punktów kroki, aby usunąć przywracania](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal).
+Jeśli zablokujesz grupy zasobów, usługa Azure Backup nie można usunąć starsze punkty przywracania.
+- Nowe kopie zapasowe będą kończyć się niepowodzeniem, ponieważ maksymalny limit punktów przywracania 18.
+- Jeśli kończy się niepowodzeniem z powodu błędu wewnętrznego po lock, [wykonaj następujące kroki](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) usunąć kolekcję punktów przywracania.
 
-### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Zasady tworzenia kopii zapasowych podąża czasu letniego Time(DST) zapisywanie do konta?
-Nie. Należy pamiętać, że data i godzina na komputerze lokalnym jest wyświetlana w formacie czasu lokalnego, jak i z uwzględnieniem bieżącego czasu. Dlatego skonfigurowany czas zaplanowanego tworzenia kopii zapasowych może różnić się od czasu lokalnego z powodu czasu letniego.
+### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Zasad tworzenia kopii zapasowej należy wziąć pod uwagę czasu letniego (DST)?
+Nie. Data i godzina na komputerze lokalnym jest lokalny przy użyciu bieżącego letniego stosowane. Czas zaplanowanego tworzenia kopii zapasowych mogą się różnić od lokalnego czasu z powodu czasu letniego.
 
-### <a name="maximum-of-how-many-data-disks-can-i-attach-to-a-vm-to-be-backed-up-by-azure-backup"></a>Maksymalna liczba dysków z danymi można dołączać do maszyny Wirtualnej do wykonania kopii zapasowej przez usługę Azure Backup?
-Usługa Azure Backup obsługuje teraz kopie zapasowe maszyn wirtualnych z maksymalnie 16 dysków. Aby uzyskać obsługę 16 dysków, [uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2](backup-upgrade-to-vm-backup-stack-v2.md). Pobierz będzie objęta pomocą wszystkich maszyn wirtualnych włączania ochrony, począwszy od dnia 24 września 2018 r.
+### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Liczba dysków z danymi można dołączyć do maszyny Wirtualnej z kopii zapasowej przez usługę Azure Backup?
+Usługa Azure Backup można utworzyć kopii maszyn wirtualnych z maksymalnie 16 dysków. Obsługa 16 dysków znajduje się w [najnowszej wersji](backup-upgrade-to-vm-backup-stack-v2.md) kopii zapasowej maszyny Wirtualnej platformy Azure stack w wersji 2.
 
-### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Obsługa kopii zapasowych Azure SSD w warstwie standardowa dysk zarządzany?
-Usługa Azure Backup obsługuje [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/), nowy typ magazynu trwałego na maszynach wirtualnych platformy Azure firmy Microsoft. Jest on obsługiwany w przypadku dysków zarządzanych w [stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2](backup-upgrade-to-vm-backup-stack-v2.md).
+### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Czy obsługę kopii zapasowych platformy Azure SSD zarządzanego dysku w warstwie standardowa?
+Usługa Azure Backup obsługuje [SSD w warstwie standardowa usługi managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD managed disks zapewnia nowy typ trwałego magazynu maszyn wirtualnych platformy Azure. Obsługa dysków SSD zarządzane znajduje się w [najnowszej wersji](backup-upgrade-to-vm-backup-stack-v2.md) kopii zapasowej maszyny Wirtualnej platformy Azure stack w wersji 2.
+
+### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Możemy utworzyć kopię zapasową maszyny Wirtualnej z dyskiem z obsługą WA akcelerator zapisu?
+Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azure Backup można wykluczyć dysk z obsługą WA z kopii zapasowej. Wykluczenie dysku dla maszyn wirtualnych z dyskami z obsługą WA jest obsługiwana tylko dla subskrypcji, uaktualnić do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2. Aby przeprowadzić uaktualnienie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2, zobacz ten [artykułu](backup-upgrade-to-vm-backup-stack-v2.md). Ta funkcja jest obecnie dostępna w regionie Japonia Wschodnia, Europa Północna, Azja południowo-wschodnia, wschodnie stany USA, zachodnie stany USA 2, Europa Zachodnia i wschodnie stany USA 2.
+
+
+### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mam Maszynę wirtualną z dyskami akcelerator zapisu (Waszyngton) i zainstalować oprogramowanie SAP HANA. Jak wykonać kopię zapasową?
+Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z obsługą WA, ale można wykluczyć z kopii zapasowej. Jednak kopii zapasowej nie zawiera spójność bazy danych, ponieważ na dysku włączony (Waszyngton) nie ma kopii zapasowej. Jeśli dysk systemu operacyjnego kopii zapasowych i kopii zapasowych dysków, które nie są włączone w stanie Waszyngton, można wykonywanie kopii zapasowych dysków przy użyciu tej konfiguracji.
+
+Dysponujemy prywatną wersją zapoznawczą do tworzenia kopii zapasowych oprogramowania SAP HANA z RPO o wartości 15 minut. Jest wbudowana w sposób podobny do kopii zapasowej bazy danych SQL i korzysta z interfejsu backInt rozwiązań innych firm, certyfikowanych przez oprogramowanie SAP HANA. Jeśli interesuje Cię prywatnej wersji zapoznawczej, Wyślij wiadomość e-mail ` AskAzureBackupTeam@microsoft.com ` z tematem **Zarejestruj się w prywatnej wersji zapoznawczej do utworzenia kopii zapasowej danych SAP HANA na maszynach wirtualnych platformy Azure**.
+
 
 ## <a name="restore"></a>Przywracanie
-### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Jak wybrać między przywróceniem dysków a pełnym przywróceniem maszyny wirtualnej?
-Azure pełne przywracanie maszyny Wirtualnej można traktować jak opcję szybkiego tworzenia. Przywracanie maszyny Wirtualnej opcja zmiany nazw dysków, kontenerów używanych przez te dyski, publicznych adresów IP i nazw interfejsów sieciowych. Zmiana jest wymagane do obsługi zapewnić unikatowość zasobów utworzonych podczas tworzenia maszyny Wirtualnej. Ale nie spowoduje dodanie maszyny Wirtualnej do zestawu dostępności.
 
-Opcji przywracania dysków można używać w następujących celach:
-  * Dostosowywanie maszyny Wirtualnej, która zostanie utworzona od punktu w czasie konfiguracji takich jak zmiana rozmiaru
-  * Dodawanie konfiguracji, które nie są obecne w momencie tworzenia kopii zapasowej
-  * Kontrolowanie konwencji nazewnictwa tworzonych zasobów
-  * Dodawanie maszyny wirtualnej do zestawu dostępności
-  * Dla innych konfiguracji, którą można uzyskać tylko przy użyciu programu PowerShell/definicji deklaracyjnego szablonu
+### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Jak zdecydować, czy można przywrócić tylko dysków lub pełnej maszyny Wirtualnej?
+Pomyśl o przywracanie maszyny Wirtualnej, jak opcję szybkiego tworzenia maszyny wirtualnej platformy Azure. Opcja ta umożliwia zmianę nazw dysków, kontenerów używanych przez dyski, publicznych adresów IP i nazw interfejsów sieciowych. Zmiana zachowuje unikatowy zasobów po utworzeniu maszyny Wirtualnej. Maszyna wirtualna nie została dodana do zestawu dostępności.
 
-### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>Kopie zapasowe niezarządzanego dysku maszyny Wirtualnej mogą służyć do przywrócenia po uaktualnieniu do usługi managed disks Moje dyski?
-Tak, można użyć kopie zapasowe wykonane przed migrowaniem dysków z niezarządzane do zarządzanego. Domyślnie zadania maszyny Wirtualnej przywracania utworzy Maszynę wirtualną z dyskami niezarządzanymi. Przywróć dyski funkcji umożliwia przywracanie dysków i używanie ich do tworzenia maszyny Wirtualnej na dyskach zarządzanych.
+Opcja dysku przywracania, jeśli chcesz:
+  * Dostosowanie utworzonej maszyny Wirtualnej. Na przykład zmienić rozmiar.
+  * Dodaj ustawienia konfiguracji, które nie były dostępne w czasie wykonywania kopii zapasowej
+  * Kontrolowanie konwencji nazewnictwa dla zasobów, które są tworzone.
+  * Dodaj maszynę Wirtualną do zestawu dostępności.
+  * Dodaj wszystkie ustawienia, która musi być skonfigurowana przy użyciu programu PowerShell lub w szablonie.  w
 
-### <a name="what-is-the-procedure-to-restore-a-vm-to-a-restore-point-taken-before-the-conversion-from-unmanaged-to-managed-disks-was-done-for-a-vm"></a>Co to jest procedurą, aby przywrócić Maszynę wirtualną do punktu przywracania przed przeprowadzono konwersję z niezarządzanych do dysków zarządzanych dla maszyny Wirtualnej?
-W tym scenariuszu domyślnie przywracania maszyny Wirtualnej zadania spowoduje utworzenie maszyny Wirtualnej z dyskami niezarządzanymi. Aby utworzyć Maszynę wirtualną z dyskami zarządzanymi:
-1. [Przywracanie do dysków niezarządzanych](tutorial-restore-disk.md#restore-a-vm-disk)
-2. [Konwertuj przywróconych dysków do usługi managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
-3. [Tworzenie maszyny Wirtualnej z dyskami zarządzanymi](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
-W przypadku poleceń cmdlet programu PowerShell można znaleźć [tutaj](backup-azure-vms-automation.md#restore-an-azure-vm).
+### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>Tworzenie kopii zapasowych niezarządzanych dysków maszyn wirtualnych można przywrócić po uaktualnieniu do usługi managed disks?
+Tak, można użyć kopii zapasowych wykonanych przed dyski zostały zmigrowane z niezarządzanych do zarządzanych.
+- Domyślnie zadanie przywracania maszyny Wirtualnej powoduje utworzenie niezarządzanej maszyny Wirtualnej.
+- Można jednak Przywróć dyski i używać ich do tworzenia zarządzanych maszyn wirtualnych.
 
-### <a name="can-i-restore-the-vm-if-my-vm-is-deleted"></a>Czy można przywrócić maszynę Wirtualną, jeśli Moja maszyna wirtualna zostanie usunięta?
-Tak. Cykl życia maszyn wirtualnych i jego odpowiedniego elementu kopii zapasowej są różne. Dlatego nawet wtedy, gdy usuniesz maszynę Wirtualną, możesz wykorzystać odpowiadającego tworzenia kopii zapasowej elementu w magazynie usługi Recovery Services i wyzwalanie przywracania, przy użyciu jednego z punktów odzyskiwania.
+### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak przywrócić Maszynę wirtualną do punktu przywracania, zanim maszyna wirtualna została zmigrowana do usługi managed disks?
+Domyślnie zadanie przywracania maszyn wirtualnych tworzy Maszynę wirtualną z dyskami niezarządzanymi. Aby utworzyć Maszynę wirtualną z dyskami zarządzanymi:
+1. [Przywracanie do dysków niezarządzanych](tutorial-restore-disk.md#restore-a-vm-disk).
+2. [Konwertuj przywróconych dysków do usługi managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
+3. [Tworzenie maszyny Wirtualnej z dyskami zarządzanymi](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+
+[Dowiedz się więcej](backup-azure-vms-automation.md#restore-an-azure-vm) dotyczące tego w programie PowerShell.
+
+### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Czy można przywrócić maszynę Wirtualną, która jest usunięty?
+Tak. Nawet wtedy, gdy usuniesz maszynę Wirtualną, możesz przejść do odpowiedniej kopii zapasowej elementu w magazynie i Przywróć z punktu odzyskiwania.
+
+### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>Jak przywrócić Maszynę wirtualną do tego samego zbioru dostępności?
+Zarządzane dysku maszyny wirtualnej platformy Azure Przywracanie do zestawów dostępności jest włączona, podając opcję w szablonie podczas przywracania jako dysków zarządzanych. Ten szablon zawiera parametr wejściowy o nazwie **zestawy dostępności**.
+
+### <a name="how-do-we-get-faster-restore-performances"></a>Jak uzyskać szybsze wykonań przywracania?
+Aby zwiększyć wydajność przywracania, zalecamy przeniesienie do stosu kopii zapasowej maszyny Wirtualnej V2, a następnie użyć [funkcji błyskawiczne RP](backup-upgrade-to-vm-backup-stack-v2.md).
 
 ## <a name="manage-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych
-### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Co się stanie po zmianie zasad kopii zapasowych na maszynach wirtualnych?
-Po zastosowaniu nowych zasad na maszynach wirtualnych, harmonogram i okres przechowywania nowych zasad jest zakończony. Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami. W przypadku skrócenia okresu przechowywania zostaną one oznaczone do oczyszczenia w ramach następnego zadania oczyszczania, a następnie usunięte.
 
-### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Jak mogę przenieść Maszynę wirtualną zarejestrowane w usłudze Azure backup między grupami zasobów?
-Wykonaj poniższe kroki, aby pomyślnie przenieść maszynę Wirtualną z kopii zapasowej do docelowej grupy zasobów
-1. Tymczasowo Zatrzymaj kopię zapasową i Zachowaj dane kopii zapasowej
-2. Przenieś maszynę Wirtualną do docelowej grupy zasobów
-3. Włącz ponownie ochronę za pomocą tego samego/nowy magazyn
+### <a name="what-happens-if-i-modify-a-backup-policy"></a>Co się stanie, jeśli zmodyfikuję zasad tworzenia kopii zapasowej?
+Maszyna wirtualna jest wykonywana kopia zapasowa przy użyciu ustawień harmonogram i okres przechowywania w zmodyfikowany lub nowych zasad.
 
-Użytkownicy mogą przywracać z dostępnych punktów przywracania utworzonych przed operacji przenoszenia.
+- Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania są oznaczone i przechowywane zgodnie z nowych zasad.
+- W przypadku przechowywania punktów odzyskiwania są oznaczone do oczyszczenia w ramach następnego zadania oczyszczania i usuwane.
+
+### <a name="how-do-i-move-a-vm-backed-up-by-azure-backup-to-a-different-resource-group"></a>Jak przenieść kopii zapasowej przez usługę Azure Backup do innej grupy zasobów maszyny Wirtualnej?
+
+1. Tymczasowo Zatrzymaj tworzenie kopii zapasowej i Zachowaj dane kopii zapasowej.
+2. Przenieś maszynę Wirtualną do docelowej grupy zasobów.
+3. Wykonywanie kopii zapasowej reenabled w tej samej lub nowego magazynu.
+
+Możesz przywrócić maszynę Wirtualną z dostępnych punktów przywracania utworzonych przed wykonaniem operacji przenoszenia.

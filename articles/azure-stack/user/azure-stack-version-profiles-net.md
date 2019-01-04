@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: cfebbdb9b88a1de6a05f06e6ed72ebc9cddddcf6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 20e96ad7a99fdb8c90f3b7990965d7225aef8be0
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074455"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555017"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą platformy .NET w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Zestaw .NET SDK usługi Azure Stack Resource Manager oferuje narzędzia ułatwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci, magazynu, usługi aplikacji i [KeyVault](../../key-vault/key-vault-whatis.md). Zestaw SDK platformy .NET zawiera 14 pakiety NuGet można pobrać do swojego rozwiązania projekt każdorazowo zawierające informacje o profilu. Jednak specjalnie Pobierz dostawcę zasobów, które będzie używany dla 2018-03-01-hybrydowego lub 2017-03-09-profile, aby zoptymalizować pamięć dla swojej aplikacji. Każdy pakiet składa się z dostawcy zasobów, w odpowiedniej wersji interfejsu API i profil interfejsu API, do której należy. Profile interfejsu API w zestawie SDK .NET Włącz projektowania aplikacji w chmurze hybrydowej, która ułatwia przełączanie między zasobami w usłudze Azure Stack i globalnych zasobów platformy Azure.
+Zestaw .NET SDK usługi Azure Stack Resource Manager oferuje narzędzia ułatwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci, magazynu, usługi aplikacji i [KeyVault](../../key-vault/key-vault-whatis.md). Zestaw SDK platformy .NET zawiera 14 pakietów NuGet. Te pakiety musi zostać pobrany do swojego rozwiązania projekt za każdym razem, zawiera informacje o profilu. Jednak specjalnie Pobierz dostawcę zasobów, które będzie używany dla 2018-03-01-hybrydowego lub 2017-03-09-profile, aby zoptymalizować pamięć dla swojej aplikacji. Każdy pakiet składa się z dostawcy zasobów, w odpowiedniej wersji interfejsu API i profil interfejsu API, do której należy. Profile interfejsu API w zestawie SDK .NET Włącz projektowania aplikacji w chmurze hybrydowej, która ułatwia przełączanie między zasobami w usłudze Azure Stack i globalnych zasobów platformy Azure.
 
 ## <a name="net-and-api-version-profiles"></a>Profile wersji platformy .NET i interfejsu API
 
@@ -44,7 +44,7 @@ Profil interfejsu API jest kombinacją dostawcy zasobów i wersje interfejsów A
 
 -   Aby użyć określonej wersji interfejsu API dla typu zasobu w dostawcy określonego zasobu, należy użyć określonej wersji interfejsu API, zdefiniowane wewnątrz pakietu.
 
-Należy pamiętać, że możesz połączyć wszystkie opcje dostępne w tej samej aplikacji.
+Możesz połączyć wszystkie opcje dostępne w tej samej aplikacji.
 
 ## <a name="install-the-azure-net-sdk"></a>Zainstaluj zestaw Azure .NET SDK
 
@@ -52,7 +52,7 @@ Należy pamiętać, że możesz połączyć wszystkie opcje dostępne w tej same
 
 2.  Aby zainstalować poprawną pakietów NuGet, zobacz [Znajdowanie i instalowanie pakietu][].
 
-3.  Pakiety, które muszą być zainstalowane, zależy od wersji profilu, którego chcesz użyć. Nazwa pakietu dla wersji profilu są:
+3.  Pakiety, które muszą być zainstalowane, zależy od wersji profilu, którego chcesz użyć. Nazwy pakietu dla wersji profilu są:
 
     1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01. *ResourceProvider*. 0.9.0-preview.nupkg**
 
@@ -62,7 +62,7 @@ Należy pamiętać, że możesz połączyć wszystkie opcje dostępne w tej same
 
 5.  Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji ma być używany w dalszej części. Aby uzyskać instrukcje utworzyć subskrypcję, zobacz [Tworzenie subskrypcji ofert w usłudze Azure Stack][].
 
-6.  Tworzenie jednostki usługi i Zapisz identyfikator klienta oraz klucz tajny klienta. Aby uzyskać instrukcje dotyczące sposobu tworzenia jednostki usługi dla usługi Azure Stack, zobacz [Zapewnianie dostępu aplikacji do usługi Azure Stack][]. Należy pamiętać, że identyfikator klienta jest również nazywany identyfikator aplikacji podczas tworzenia nazwy głównej usługi.
+6.  Tworzenie jednostki usługi i Zapisz identyfikator klienta oraz klucz tajny klienta. Aby uzyskać instrukcje dotyczące sposobu tworzenia jednostki usługi dla usługi Azure Stack, zobacz [Zapewnianie dostępu aplikacji do usługi Azure Stack][]. Identyfikator klienta jest również znany jako identyfikator aplikacji, podczas tworzenia jednostki usługi.
 
 7.  Upewnij się, że jednostki usługi rola właściciel/Współautor subskrypcji. Aby uzyskać instrukcje dotyczące sposobu przypisywania roli do jednostki usługi, zobacz [Zapewnianie dostępu aplikacji do usługi Azure Stack][].
 
@@ -76,7 +76,8 @@ Za pomocą zestawu Azure .NET SDK usługi Azure Stack, należy podać następuj�
 | Identyfikator klienta                 | AZURE_CLIENT_ID       | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o jednostkę usługi został utworzony w poprzedniej sekcji tego artykułu. |
 | Identyfikator subskrypcji           | AZURE_SUBSCRIPTION_ID | [ *Identyfikator subskrypcji* ][] jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack.                                                      |
 | Wpis tajny klienta             | AZURE_CLIENT_SECRET   | Klucz tajny aplikacji jednostki usługi zapisane podczas tworzenia nazwy głównej usługi.                                      |
-| Punkt końcowy usługi Resource Manager | ARM_ENDPOINT           | Zobacz [ *punktu końcowego Menedżera zasobów usługi Azure Stack*][].                                                                    |
+| Punkt końcowy usługi Resource Manager | ARM_ENDPOINT           | Zobacz [ *punktu końcowego usługi Azure Stack Resource Manager*][].                                                                    |
+| Lokalizacja                  | RESOURCE_LOCATION     | Lokalizacja dla usługi Azure Stack.
 
 Aby znaleźć identyfikator dzierżawy usługi Azure Stack, postępuj zgodnie z instrukcjami przedstawionymi [tutaj](../azure-stack-csp-ref-operations.md). Aby ustawić zmienne środowiskowe, wykonaj następujące czynności:
 
@@ -96,7 +97,7 @@ W systemach Unix, na podstawie można użyć następującego polecenia:
 Export Azure_Tenant_ID=Your_Tenant_ID
 ```
 
-### <a name="the-azure-stack-resource-manager-endpoint"></a>Punktu końcowego Menedżera zasobów usługi Azure Stack
+### <a name="the-azure-stack-resource-manager-endpoint"></a>Punkt końcowy usługi Azure Stack Resource Manager
 
 Menedżer zasobów platformy Azure to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania jako grupę, a nie indywidualnie, w ramach jednej operacji.
 
@@ -106,7 +107,7 @@ Należy zwrócić uwagę następujące kwestie:
 
 - **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): https://management.local.azurestack.external/
 
-- **ResourceManagerUrl** w systemach zintegrowanych: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` do pobierania metadanych wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
 Przykładowy plik JSON:
 
@@ -125,158 +126,73 @@ Przykładowy plik JSON:
 
 ## <a name="existing-api-profiles"></a>Istniejące profile interfejsu API
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01. *ResourceProvider*. 0.9.0-preview.nupkg**: najnowsze profilu stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01. *ResourceProvider*. 0.9.0-preview.nupkg**: Profil najnowsze stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
 
-2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09. *ResourceProvider*. 0.9.0-preview.nupkg**: Jeśli użytkownik pracuje na sygnaturę niższa niż kompilacji 1808, za pomocą tego profilu.
+2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09. *ResourceProvider*. 0.9.0-preview.nupkg**: Jeśli używany jest niższa niż kompilacji 1808 sygnatury, za pomocą tego profilu.
 
-3.  **Najnowsze**: profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług. Ten profil jest częścią **Microsoft.Azure.Management** pakietu NuGet.
+3.  **Najnowsze**: Profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług. Ten profil jest częścią **Microsoft.Azure.Management** pakietu NuGet.
 
 Aby uzyskać więcej informacji na temat profilów Azure Stack i interfejsu API, zobacz [Podsumowanie profilami interfejsu API][].
 
 ## <a name="azure-net-sdk-api-profile-usage"></a>Użycie platformy Azure profilu interfejsu API zestawu SDK platformy .NET
 
-Poniższy kod powinien służyć do tworzenia wystąpienia klienta profilu. Ten parametr jest tylko wymagane dla usługi Azure Stack lub innych chmur prywatnych. Global Azure jest już te ustawienia domyślne.
-
-Poniższy kod jest potrzebne do uwierzytelnienia nazwy głównej usługi w usłudze Azure Stack. Identyfikator i base uwierzytelniania, który jest specyficzny dla usługi Azure Stack, tworzy token przez dzierżawcę.
+Poniższy kod powinien służyć do tworzenia wystąpienia klienta zarządzania zasobów. Podobny kod może służyć do tworzenia wystąpienia inni dostawcy zasobów (na przykład obliczeniowych, sieciowych i magazynowych) klientów. 
 
 ```csharp
-public class CustomLoginCredentials : ServiceClientCredentials
+var client = new ResourceManagementClient(armEndpoint, credentials)
 {
-    private string clientId;
-    private string clientSecret;
-    private string resourceId;
-    private string tenantId;
-
-    private const string authenticationBase = "https://login.windows.net/{0}";
-
-    public CustomLoginCredentials(string servicePrincipalId, string servicePrincipalSecret, string azureEnvironmentResourceId, string azureEnvironmentTenandId)
-    {
-        clientId = servicePrincipalId;
-        clientSecret = servicePrincipalSecret;
-        resourceId = azureEnvironmentResourceId;
-        tenantId = azureEnvironmentTenandId;
-    }
+    SubscriptionId = subscriptionId
+};
 ```
 
-Spowoduje to włączenie przy użyciu pakietów NuGet profilu interfejsu API, aby wdrożyć aplikację pomyślnym do usługi Azure Stack.
-
-## <a name="define-azure-stack-environment-setting-functions"></a>Zdefiniuj funkcje ustawienie środowiska Azure Stack
-
-Na potrzeby uwierzytelniania jednostki usługi do środowiska usługi Azure Stack, użyj następującego kodu:
+`credentials` Parametr w powyższym kodzie jest wymagany do utworzenia wystąpienia klienta. Poniższy kod generuje token uwierzytelniania według Identyfikatora dzierżawy i jednostki usługi.
 
 ```csharp
-private string AuthenticationToken { get; set; }
-public override void InitializeServiceClient<T>(ServiceClient<T> client)
+var azureStackSettings = getActiveDirectoryServiceSettings(armEndpoint);
+var credentials = ApplicationTokenProvider.LoginSilentAsync(tenantId, servicePrincipalId, servicePrincipalSecret, azureStackSettings).GetAwaiter().GetResult();
+```
+`getActiveDirectoryServiceSettings` Wywołania w kodzie pobiera punktów końcowych usługi Azure Stack z punktem końcowym metadanych. Stwierdza, zmienne środowiskowe z wykonanego wywołania: 
+
+```csharp
+public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(string armEndpoint)
 {
-    var authenticationContext = new AuthenticationContext(String.Format(authenticationBase, tenantId));
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = authenticationContext.AcquireTokenAsync(resource: resourceId,
-    clientCredential: credential).Result;
-    if (result == null)
+    var settings = new ActiveDirectoryServiceSettings();
+    try
     {
-        throw new InvalidOperationException("Failed to obtain the JWT token");
+        var request = (HttpWebRequest)HttpWebRequest.Create(string.Format("{0}/metadata/endpoints?api-version=1.0", armEndpoint));
+        request.Method = "GET";
+        request.UserAgent = ComponentName;
+        request.Accept = "application/xml";
+        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        {
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+                var rawResponse = sr.ReadToEnd();
+                var deserialized = JObject.Parse(rawResponse);
+                var authenticationObj = deserialized.GetValue("authentication").Value<JObject>();
+                var loginEndpoint = authenticationObj.GetValue("loginEndpoint").Value<string>();
+                var audiencesObj = authenticationObj.GetValue("audiences").Value<JArray>();
+                settings.AuthenticationEndpoint = new Uri(loginEndpoint);
+                settings.TokenAudience = new Uri(audiencesObj[0].Value<string>());
+                settings.ValidateAuthority = loginEndpoint.TrimEnd('/').EndsWith("/adfs", StringComparison.OrdinalIgnoreCase) ? false : true;
+            }
+        }
     }
-    AuthenticationToken = result.AccessToken;
+    catch (Exception ex)
+    {
+        Console.WriteLine(String.Format("Could not get AD service settings. Exception: {0}", ex.Message));
+    }
+    return settings;
 }
 ```
-
-Ustawienie to zastępuje zainicjować klienta usługi do uwierzytelniania w usłudze Azure Stack.
+Spowoduje to włączenie przy użyciu pakietów NuGet profilu interfejsu API, aby wdrożyć aplikację pomyślnym do usługi Azure Stack.
 
 ## <a name="samples-using-api-profiles"></a>Przykłady korzystania z profilów interfejsu API
 
-Można użyć poniższych przykładów, znaleziono w repozytoriach usługi GitHub jako odwołanie do tworzenia rozwiązań przy użyciu profilów platformy .NET i interfejsu API usługi Azure Stack.
-
--   [Projekt testu do maszyny wirtualnej, sieci wirtualnej, grupy zasobów i konta magazynu][]
--   Zarządzanie maszynami wirtualnymi przy użyciu platformy .NET
-
-### <a name="sample-unit-test-project"></a>Przykładowy projekt testu jednostki 
-
-1.  Sklonuj repozytorium przy użyciu następującego polecenia:
-
-    ```shell
-    git clone https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm.git
-    ```
-
-2.  Tworzenie jednostki usługi platformy Azure i przypisywanie roli dostęp do subskrypcji. Aby uzyskać instrukcje dotyczące tworzenia jednostki usługi, zobacz [Tworzenie jednostki usługi przy użyciu certyfikatu za pomocą programu Azure PowerShell][].
-
-3.  Pobrać wymagane następujące wartości:
-
-    1.  Identyfikator dzierżawy
-    2.  Identyfikator klienta
-    3.  Wpis tajny klienta
-    4.  Identyfikator subskrypcji
-    5.  Punkt końcowy usługi Resource Manager
-
-4.  Ustaw następujące zmienne środowiskowe, korzystając z informacji pobrane z usługi jednostki, zostały utworzone za pomocą wiersza polecenia:
-
-    1.  Eksportuj AZURE_TENANT_ID = {swój identyfikator dzierżawy}
-    2.  Eksportuj AZURE_CLIENT_ID = {identyfikatora klienta}
-    3.  Eksportuj AZURE_CLIENT_SECRET = {klucz tajny klienta}
-    4.  Eksportuj AZURE_SUBSCRIPTION_ID = {identyfikator subskrypcji}
-    5.  Eksportuj ARM_ENDPOINT = {adres URL Menedżer usłudze Azure Stack Resource}
-
-   W Windows, użyj **ustaw** zamiast **wyeksportować**.
-
-5.  Upewnij się, że ustawiono zmienną lokalizacji dla danej lokalizacji usługi Azure Stack. Na przykład lokalnego = "local".
-
-6.  Ustaw poświadczenia logowania niestandardowych, umożliwiające uwierzytelnianie w usłudze Azure Stack. Należy pamiętać, że ta część kodu znajduje się w tym przykładzie w folderze autoryzacji.
-
-   ```csharp
-   public class CustomLoginCredentials : ServiceClientCredentials
-   {
-       private string clientId;
-       private string clientSecret;
-       private string resourceId;
-       private string tenantId;
-       private const string authenticationBase = "https://login.windows.net/{0}";
-       public CustomLoginCredentials(string servicePrincipalId, string servicePrincipalSecret, string azureEnvironmentResourceId, string azureEnvironmentTenandId)
-       {
-           clientId = servicePrincipalId;
-           clientSecret = servicePrincipalSecret;
-           resourceId = azureEnvironmentResourceId;
-           tenantId = azureEnvironmentTenandId;
-       }
-   private string AuthenticationToken { get; set; }
-   ```
-
-7.  Dodaj następujący kod, korzystając z usługi Azure Stack do zastąpienia zainicjować klienta usługi do uwierzytelniania w usłudze Azure Stack. Należy pamiętać, że część kodu jest już zawarty w tym przykładzie, w folderze autoryzacji.
-
-   ```csharp
-   public override void InitializeServiceClient<T>(ServiceClient<T> client)
-   {
-      var authenticationContext = new AuthenticationContext(String.Format(authenticationBase, tenantId));
-      var credential = new ClientCredential(clientId, clientSecret);
-      var result = authenticationContext.AcquireTokenAsync(resource: resourceId,
-                clientCredential: credential).Result;
-      if (result == null)
-      {
-          throw new InvalidOperationException("Failed to obtain the JWT token");
-      }
-      AuthenticationToken = result.AccessToken;
-   }
-   ```
- 
-8.  Przy użyciu Menedżera pakietów NuGet, wyszukaj "2018-03-01-hybrydowe" i zainstaluj pakiety skojarzone z tym profilem dla dostawców zasobów obliczeniowych, sieci, magazynu, KeyVault i usług aplikacji.
-
-2.  Wewnątrz każdego zadania w pliku CS należy ustawić parametry, które są wymagane do pracy z usługą Azure Stack. Przykład znajduje się w następujący sposób zadania `CreateResourceGroupTest`:
-
-   ```csharp
-   var location = Environment.GetEnvironmentVariable("AZURE_LOCATION");
-   var baseUriString = Environment.GetEnvironmentVariable("AZURE_BASE_URL");
-   var resourceGroupName = Environment.GetEnvironmentVariable("AZURE_RESOURCEGROUP");
-   var servicePrincipalId = Environment.GetEnvironmentVariable("AZURE_CLIENT_ID");
-   var servicePrincipalSecret = Environment.GetEnvironmentVariable("AZURE_CLIENT_SECRET");
-   var azureResourceId = Environment.GetEnvironmentVariable("AZURE_RESOURCE_ID");
-   var tenantId = Environment.GetEnvironmentVariable("AZURE_TENANT_ID");
-   var subscriptionId = Environment.GetEnvironmentVariable("AZURE_SUBSCRIPTION_ID");
-   var credentials = new CustomLoginCredentials(servicePrincipalId, servicePrincipalSecret, azureResourceId, tenantId);
-   ```
-
-1.  Kliknij prawym przyciskiem myszy na poszczególnych zadań i wybierz **Uruchom test**.
-
-    1.  Zielone znaczniki wyboru na stronie okno okienka alert, że każde zadanie podrzędne został utworzony pomyślnie zależnie od parametrów podanych. Sprawdź, czy w Twojej subskrypcji usługi Azure Stack, aby upewnić się, że zasoby zostały pomyślnie utworzone.
-
-    2.  Aby uzyskać więcej informacji o sposobach uruchamiania testów jednostkowych, zobacz [Uruchamianie testów jednostkowych w Eksploratorze testów.][]
+Poniższe przykłady może służyć jako odwołanie do tworzenia rozwiązań przy użyciu profilów platformy .NET i interfejsu API usługi Azure Stack.
+- [Zarządzanie grupami zasobów](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
+- [Zarządzanie kontami magazynu](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
+- [Zarządzanie maszyną wirtualną](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -292,8 +208,8 @@ Aby uzyskać więcej informacji o profilach interfejsu API Zobacz:
   [Zapewnianie dostępu aplikacji do usługi Azure Stack]: ../azure-stack-create-service-principals.md
   [* dzierżawy identyfikator *]: ../azure-stack-identity-overview.md
   [* subskrypcji identyfikator *]: ../azure-stack-plan-offer-quota-overview.md#subscriptions
-  [* tekst usługa Azure Stack resource manager punktu końcowego *]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint
+  [* Usługa Azure Stack Resource Manager endpoint *]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint
   [Podsumowanie profilami interfejsu API]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
-  [Projekt testu do maszyny wirtualnej, sieci wirtualnej, grupy zasobów i konta magazynu]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
-  [Tworzenie jednostki usługi przy użyciu certyfikatu za pomocą programu Azure PowerShell]: ../azure-stack-create-service-principals.md
-  [Uruchamianie testów jednostkowych w Eksploratorze testów.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017
+  [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
+  [Use Azure PowerShell to create a service principal with a certificate]: ../azure-stack-create-service-principals.md
+  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017

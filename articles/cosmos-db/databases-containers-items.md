@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409545"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807690"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Praca z baz danych Azure Cosmos, kontenery i elementów
 
@@ -24,7 +24,7 @@ Po utworzeniu [konta usługi Azure Cosmos DB](account-overview.md) w ramach subs
 
 W ramach konta usługi można utworzyć jeden lub więcej baz danych Azure Cosmos. Baza danych jest analogiczne do przestrzeni nazw, jest to jednostka zarządzania zbiór kontenerów w usłudze Azure Cosmos. W poniższej tabeli przedstawiono, jak bazy danych Azure Cosmos jest mapowany na różnymi jednostkami specyficzne dla interfejsu API:
 
-| **Jednostki usługi Azure Cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Jednostki usługi Azure Cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
 |Bazy danych usługi Azure Cosmos | Database (Baza danych) | Przestrzeń kluczy | Database (Baza danych) | Database (Baza danych) | Nie dotyczy |
 
@@ -35,7 +35,7 @@ W ramach konta usługi można utworzyć jeden lub więcej baz danych Azure Cosmo
 
 Możesz porozmawiać z bazą danych Azure Cosmos przy użyciu następujących interfejsów API usługi Azure Cosmos:
 
-| **Operacja** | **Interfejs wiersza polecenia platformy Azure**|**INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Operacja** | **Interfejs wiersza polecenia platformy Azure**|**INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- |
 |Wyliczanie wszystkich baz danych| Yes | Yes | Tak (bazy danych jest zamapowana na przestrzeń kluczy) | Yes | Nie dotyczy | Nie dotyczy |
 |Baza danych odczytu| Yes | Yes | Tak (bazy danych jest zamapowana na przestrzeń kluczy) | Yes | Nie dotyczy | Nie dotyczy |
@@ -67,7 +67,7 @@ Można określić unikatowy klucz w kontenerze usługi Azure Cosmos. Tworząc za
 
 Kontener usługi Azure Cosmos jest przeznaczone do jednostek specyficzne dla interfejsu API:
 
-| **Jednostki usługi Azure Cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Jednostki usługi Azure Cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
 |Usługa Azure container Cosmos | Collection | Tabela | Collection | Graph | Tabela |
 
@@ -75,7 +75,7 @@ Kontener usługi Azure Cosmos jest przeznaczone do jednostek specyficzne dla int
 
 Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowane przez system. W zależności od wybranego interfejsu API niektóre z nich mogą nie być bezpośrednio widoczne. W poniższej tabeli opisano listy właściwości zdefiniowane przez system obsługiwane:
 
-| **Właściwości zdefiniowane przez system** | **System wygenerowany lub do ustawienia użytkownika** | **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Właściwości zdefiniowane przez system** | **System wygenerowany lub do ustawienia użytkownika** | **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__rid | Generowane przez system | Unikatowy identyfikator kontenera | Yes | Nie | Nie | Nie | Nie |
 |__etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
@@ -91,7 +91,7 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowane przez system
 
 Kontener usługi Azure Cosmos obsługuje następujące operacje przy użyciu dowolnej z interfejsów API usługi Azure Cosmos.
 
-| **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Wyliczanie kontenerów w bazie danych | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Przeczytaj kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
@@ -103,7 +103,7 @@ Kontener usługi Azure Cosmos obsługuje następujące operacje przy użyciu dow
 
 W zależności od wybranego interfejsu API element Azure Cosmos może reprezentować dokument w kolekcji, jeden wiersz w tabeli lub węzeł/przewagę na wykresie. W poniższej tabeli przedstawiono mapowania między jednostkami specyficzne dla interfejsu API dla elementu w usłudze Azure Cosmos:
 
-| **Jednostka cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Jednostka cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
 |Usługa Azure Cosmos elementu | Dokument | Wiersz | Dokument | Węzła lub krawędzi | Element |
 
@@ -111,7 +111,7 @@ W zależności od wybranego interfejsu API element Azure Cosmos może reprezento
 
 Każdy element w usłudze Azure Cosmos ma następujące właściwości zdefiniowane przez system. W zależności od wybranego interfejsu API niektóre z nich mogą nie być bezpośrednio widoczne.
 
-|**Właściwości zdefiniowane przez system** | **System wygenerowany lub do ustawienia użytkownika**| **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+|**Właściwości zdefiniowane przez system** | **System wygenerowany lub do ustawienia użytkownika**| **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__id | Generowane przez system | Unikatowy identyfikator elementu | Yes | Nie | Nie | Nie | Nie |
 |__etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
@@ -124,7 +124,7 @@ Każdy element w usłudze Azure Cosmos ma następujące właściwości zdefiniow
 
 Usługa Azure Cosmos elementu obsługuje następujące operacje, które mogą być wykonywane przy użyciu dowolnej z interfejsów API usługi Azure Cosmos.
 
-| **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
+| **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Wstaw, Zastąp i usuwanie, Upsert, przeczytaj | Nie | Yes | Yes | Yes | Yes | Yes |
 

@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 5657cfb40e9017918f5842c573895872940b307a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273711"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579332"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -96,7 +96,7 @@ Postępuj zgodnie z następującą procedurą:
     Możesz włączyć, wyłączyć, edytować lub usunąć regułę. [Dowiedz się więcej](#view-and-manage-activity-log-alert-rules-in-azure-portal) o zarządzaniu reguł dzienników aktywności.
 
 
-Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure portal](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisk; następnie wykonaj kroki 4 i nowszych wersjach opisany powyżej samouczka.
+Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisk; następnie wykonaj kroki 4 i nowszych wersjach opisany powyżej samouczka.
     
  ![ Dodaj alert dziennika aktywności](media/alerts-activity-log/add-activity-log.png)
     
@@ -223,4 +223,4 @@ az group deployment create --resource-group myRG --template-file sampleActivityL
 - [Schemat elementów Webhook o Dzienniki aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 - [Przegląd dzienników aktywności](../../azure-monitor/platform/activity-log-alerts.md) 
 - Dowiedz się więcej o [grup akcji](../../azure-monitor/platform/action-groups.md).  
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md).

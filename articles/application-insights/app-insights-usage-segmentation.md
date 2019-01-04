@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6a7f62d4018e5a8bd39cbf2bb2b1418137d93638
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 16795ce1fd53b9634dbc2ff7513d1c39752b8848
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720154"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974594"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Użytkownicy, sesje i zdarzenia analizy w usłudze Application Insights
 
@@ -34,18 +34,18 @@ Jeśli jeszcze nie widać danych użytkownicy, sesje lub zdarzenia bloków w por
 
 Trzy bloków użycia umożliwia tego samego narzędzia kątami danych telemetrycznych z aplikacji sieci web z trzema perspektyw. Filtrowania i dzielenia danych, można uzyskiwanie szczegółowych informacji dotyczących użycia względne różnych stron i funkcji.
 
-* **Narzędzie Użytkownicy**: ile osób używana aplikacja i jej funkcji.  Użytkownicy są zliczane przy użyciu identyfikatorów anonimowe, przechowywane w plikach cookie przeglądarki. Jedna osoba, za pomocą różnych przeglądarek lub maszyny, będzie traktowane jako więcej niż jednego użytkownika.
-* **Narzędzia sesje**: ile sesji aktywności użytkownika, mają ograniczenia niektórych stron i funkcji aplikacji. Sesja jest liczony po pół godziny braku aktywności użytkownika lub po 24 godziny ciągłego użycia.
-* **Narzędzie zdarzeń**: jak często są używane niektórych stron i funkcji aplikacji. Widok strony jest liczona przeglądarki załadowanie strony z aplikacji, pod warunkiem, że [instrumentowany jego](app-insights-javascript.md). 
+* **Narzędzie Użytkownicy**: Jak wiele osób używana aplikacja i jej funkcji.  Użytkownicy są zliczane przy użyciu identyfikatorów anonimowe, przechowywane w plikach cookie przeglądarki. Jedna osoba, za pomocą różnych przeglądarek lub maszyny, będzie traktowane jako więcej niż jednego użytkownika.
+* **Narzędzia sesje**: Ile sesji aktywności użytkownika wprowadzono niektórych stron i funkcji aplikacji. Sesja jest liczony po pół godziny braku aktywności użytkownika lub po 24 godziny ciągłego użycia.
+* **Narzędzie zdarzeń**: Jak często są używane niektórych stron i funkcji aplikacji. Widok strony jest liczona przeglądarki załadowanie strony z aplikacji, pod warunkiem, że [instrumentowany jego](../azure-monitor/app/javascript.md). 
 
-    Zdarzenie niestandardowe reprezentuje jedno wystąpienie określonego zdarzenia w swojej aplikacji, a często interakcji użytkownika, takie jak kliknięcie przycisku lub zakończenie niektóre zadania. Wstaw kod w aplikacji [generowanie zdarzeń niestandardowych](app-insights-api-custom-events-metrics.md#trackevent).
+    Zdarzenie niestandardowe reprezentuje jedno wystąpienie określonego zdarzenia w swojej aplikacji, a często interakcji użytkownika, takie jak kliknięcie przycisku lub zakończenie niektóre zadania. Wstaw kod w aplikacji [generowanie zdarzeń niestandardowych](../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Wykonywanie zapytań w przypadku niektórych użytkowników
 
 Zapoznaj się z różnych grup użytkowników przez dostosowanie opcji zapytania w górnej części narzędzie Użytkownicy:
 
 * Pokaż: Wybierz kohorta użytkowników w celu analizowania.
-* Kto korzystał: Wybierz zdarzenia niestandardowe i wyświetlenia stron.
+* Kto korzystał: Wybierz niestandardowe zdarzenia i wyświetlenia stron.
 * W trakcie: Wybierz zakres czasu.
 * Według: Wybierz sposób zasobnika danych przez pewien czas lub innej właściwości, takie jak przeglądarki lub Miasto.
 * Podziel według: Wybierz właściwości, za pomocą którego do podziału lub segmentu danych. 

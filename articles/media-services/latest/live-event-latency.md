@@ -11,20 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/16/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f4ded67ef964482a2acea0d731b1b154a95168d2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682099"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741355"
 ---
 # <a name="liveevent-latency-in-media-services"></a>Element LiveEvent opóźnienia w usłudze Media Services
 
-W tym artykule przedstawiono sposób ustawiania małe opóźnienia na **element LiveEvent**. Omawia także typowe wyniki, które podczas przy użyciu ustawień małe opóźnienia w różne odtwarzacze są wyświetlane. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN. 
+W tym artykule przedstawiono sposób ustawiania małe opóźnienia na [element LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents). Omawia także typowe wyniki, które podczas przy użyciu ustawień małe opóźnienia w różne odtwarzacze są wyświetlane. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN.
 
-Aby użyć nowego **LowLatency** funkcji, możesz ustawić **StreamOptionsFlag** do **LowLatency** na **element LiveEvent**. Gdy strumień jest uruchomiona, możesz użyć [usługi Azure Media Player](http://ampdemo.azureedge.net/) (AMP) Strona demonstracyjna i ustaw opcje odtwarzania, aby używać "Niskie opóźnienie Algorytm heurystyczny profil".
+Aby użyć nowego **LowLatency** funkcji, możesz ustawić **StreamOptionsFlag** do **LowLatency** na **element LiveEvent**. Podczas tworzenia [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) odtwarzania HLS, ustaw [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1. Gdy strumień jest uruchomiona, możesz użyć [usługi Azure Media Player](http://ampdemo.azureedge.net/) (AMP pokaz strony) i ustaw opcje odtwarzania, aby używać "Niskie opóźnienie Algorytm heurystyczny profil".
+
+> [!NOTE]
+> Obecnie LowLatency HeuristicProfile w usłudze Azure Media Player jest przeznaczona do odtwarzania strumieni protokół DASH lub HLS z CMAF. Jeśli są przeznaczone dla urządzeń z systemem MacOS lub z systemem iOS za pośrednictwem HLS za pomocą usług terminalowych (na przykład `format=m3u8-aapl` lub `format=m3u8-aapl-v3`), nie należy używać tego ustawienia, ponieważ AMP bezpośrednio używa natywnego odtwarzacz dostarczane przez system operacyjny, w tym przypadku.
 
 W poniższym przykładzie .NET pokazuje, jak ustawić **LowLatency** na **element LiveEvent**:
 
@@ -34,7 +37,7 @@ LiveEvent liveEvent = new LiveEvent(
             description: "Sample LiveEvent for testing",
             vanityUrl: false,
             encoding: new LiveEventEncoding(
-                        // Set this to Basic to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
+                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
                         encodingType:LiveEventEncodingType.None, 
                         presetName:null
                     ),

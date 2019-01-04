@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436334"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743797"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Monitorowanie klastrów Apache Hadoop w HDInsight przy użyciu interfejsu API Apache Ambari
 Dowiedz się, jak monitorowanie klastrów HDInsight za pomocą interfejsy API systemu Apache Ambari.
 
 > [!NOTE]  
 > Informacje przedstawione w tym artykule jest przede wszystkim dla klastrów HDInsight z systemem Windows, które zapewniają interfejs API REST Ambari w wersji tylko do odczytu. W przypadku klastrów opartych na systemie Linux, zobacz [Zarządzanie Apache Hadoop clusters, przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-> 
-> 
 
 ## <a name="what-is-ambari"></a>Co to jest Ambari?
 [Apache Ambari] [ ambari-home] służy do inicjowania obsługi, zarządzania i monitorowania klastrów Apache Hadoop. Obejmuje intuicyjny zestaw narzędzi operatora oraz niezawodny zestaw interfejsów API, które neutralizują złożoność platformy Hadoop, upraszczając działanie klastrów. Aby uzyskać więcej informacji na temat interfejsów API, zobacz [Ambari API Reference][ambari-api-reference]. 
@@ -38,8 +36,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
   
   > [!NOTE]  
   > Kiedy używać Windows, użyj w podwójny cudzysłów zamiast pojedynczego cudzysłowu do wartości opcji polecenia cURL.
-  > 
-  > 
+
 * **Klaster usługi Azure HDInsight**. Aby uzyskać instrukcje na temat inicjowania obsługi klastra, zobacz [rozpoczęcie korzystania z HDInsight] [ hdinsight-get-started] lub [Provision HDInsight clusters][hdinsight-provision]. Potrzebne są następujące dane, aby wykonać kroki samouczka:
   
   | Właściwości klastra | Nazwa zmiennej usługi Azure PowerShell | Wartość | Opis |
@@ -146,13 +143,13 @@ Teraz masz przedstawiono sposób korzystania z monitorowania wywołań interfejs
 * [Dokumentacja usługi HDInsight][hdinsight-documentation]
 * [Rozpoczynanie pracy z usługą HDInsight][hdinsight-get-started]
 
-[ambari-home]: http://ambari.apache.org/
+[ambari-home]: https://ambari.apache.org/
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
-[microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
+[microsoft-hadoop-SDK]: https://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx

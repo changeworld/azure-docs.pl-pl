@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496918"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579961"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operacjonalizowanie klastra usługi ML w usłudze Azure HDInsight
 
@@ -24,11 +24,11 @@ Po zastosowaniu klastra usługi ML w HDInsight przeprowadzenie modelowania danyc
 
 * **Klaster usługi ML w HDInsight**: Aby uzyskać instrukcje, zobacz [Rozpocznij pracę z usługami uczenia Maszynowego na HDInsight](r-server-get-started.md).
 
-* **Klient protokołu Secure Shell (SSH)**: klient SSH jest używany do zdalnego łączenia z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient protokołu Secure Shell (SSH)**: Klient SSH jest używany do zdalnego łączenia z klastrem HDInsight i uruchamianie poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operacjonalizowanie klastra usługi ML z jedną konfiguracją
 
-> [!NOTE]
+> [!NOTE]  
 > Poniższe kroki mają zastosowanie do oprogramowania R Server 9.0 i ML Server 9.1. ML 9.3 serwera, można znaleźć [Użyj narzędzia do administrowania, aby zarządzać konfiguracją operacjonalizacji](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Połącz się z węzłem krawędzi za pomocą protokołu SSH.
@@ -159,7 +159,7 @@ Wykonaj następujące kroki, aby zlikwidować węzły procesu roboczego:
 * Usuń zaznaczenie węzłów procesu roboczego i wybierz węzły główne.
 * Wybierz **akcje** > **wybrane hosty** > "**hosty** > **Uruchom ponownie wszystkie składniki**.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Krok 2: Konfigurowanie węzłów na każdym zlikwidowanych węzłach procesu roboczego obliczeniowych
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Krok 2: Konfigurowanie węzłów obliczeniowych na każdym zlikwidowanych węzłach procesu roboczego
 
 1. Za pomocą protokołu SSH połącz się z każdym zlikwidowanym węzłem procesu roboczego.
 
@@ -173,7 +173,7 @@ Wykonaj następujące kroki, aby zlikwidować węzły procesu roboczego:
 
 1. Zamknij narzędzie administracyjne.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3. Dodawanie obliczeń szczegółów węzłów na węźle sieci web
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Dodawanie szczegółów węzłów obliczeniowych na węźle sieci web
 
 Po skonfigurowaniu wszystkich zlikwidowanych węzłów procesu roboczego do uruchamiania węzła obliczeniowego wróć do węzła krawędzi i Dodaj adresy IP zlikwidowanych węzłów procesu roboczego w konfiguracji węzła internetowego oprogramowania Server ML:
 

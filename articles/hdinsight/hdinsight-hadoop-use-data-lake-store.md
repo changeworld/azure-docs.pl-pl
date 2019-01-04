@@ -1,6 +1,6 @@
 ---
-title: Użyj Data Lake Store z usługą Hadoop w usłudze Azure HDInsight
-description: Dowiedz się, jak wykonywać zapytania o dane z usługi Azure Data Lake Store i zapisywać wyniki analiz.
+title: Używanie usługi Data Lake Storage z usługą Hadoop w usłudze Azure HDInsight
+description: Dowiedz się, jak wykonywać zapytania o dane z usługi Azure Data Lake Storage i zapisywać wyniki analiz.
 services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,99 +9,132 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 69a2e189fc425369e357fd52685c2f48609e947b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: dfbce1afcefe7f03636d42ffa363fe29b47259e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386931"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742562"
 ---
-# <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Data Lake Store w połączeniu z klastrami usługi Azure HDInsight
+# <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Użyj usługi Data Lake Storage z klastrami usługi Azure HDInsight
 
-Aby analizować dane w klastrze usługi HDInsight, możesz je zapisać w usłudze [Microsoft Azure Storage](../storage/common/storage-introduction.md) lub [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) albo obu tych usługach. Obie opcje magazynowania pozwalają bezpiecznie usuwać klastry usługi HDInsight używane do obliczeń bez utraty danych użytkownika.
+Aby analizować dane w klastrze HDInsight, można przechowywać danych albo w [usługi Azure Storage](../storage/common/storage-introduction.md), [usługi Azure Data Lake Storage](../data-lake-store/data-lake-store-overview.md), lub obu. Obie opcje magazynowania pozwalają bezpiecznie usuwać klastry usługi HDInsight używane do obliczeń bez utraty danych użytkownika.
 
-W tym artykule omówiono współdziałanie usługi Data Lake Store z klastrami usługi HDInsight. Aby dowiedzieć się, jak usługa Microsoft Azure Storage współdziała z klastrami usługi HDInsight, zobacz [Use Azure Storage with Azure HDInsight clusters (Używanie usługi Microsoft Azure Storage z klastrami usługi Azure HDInsight)](hdinsight-hadoop-use-blob-storage.md). Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+W tym artykule dowiesz się, jak działa usługi Data Lake Storage z klastrami HDInsight. Aby dowiedzieć się, jak usługa Microsoft Azure Storage współdziała z klastrami usługi HDInsight, zobacz [Use Azure Storage with Azure HDInsight clusters (Używanie usługi Microsoft Azure Storage z klastrami usługi Azure HDInsight)](hdinsight-hadoop-use-blob-storage.md). Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!NOTE]  
-> Usługa Data Lake Store jest dostępna wyłącznie przez zabezpieczony kanał, dlatego nazwa schematu systemu plików `adls` nie jest używana. Zawsze używaj nazwy `adl`.
+> Usługi Data Lake Storage jest dostępna wyłącznie przez zabezpieczony kanał, więc ma nie `adls` Nazwa schematu systemu plików. Zawsze używaj nazwy `adl`.
 
 
 ## <a name="availability-for-hdinsight-clusters"></a>Dostępność klastrów HDInsight
 
-Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra usługi HDInsight jako domyślny system plików można wskazać kontener obiektów blob w usłudze Azure Storage. W przypadku wersji 3.5 lub nowszych wersji usługi HDInsight jako domyślny system plików można wybrać usługę Microsoft Azure Storage lub Azure Data Lake Store (z nielicznymi wyjątkami). 
+Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra HDInsight można wskazać kontener obiektów blob w usłudze Azure Storage jako domyślny system plików lub HDInsight 3.5 i nowsze wersje, możesz wybrać usługę Azure Storage lub magazynu usługi Azure Data Lake jako domyślny system plików za pomocą kilku Liczba wyjątków. 
 
-Klastry usługi HDInsight mogą używać usługi Data Lake Store na dwa sposoby:
+Klastry HDInsight mogą używać usługi Data Lake Storage, na dwa sposoby:
 
 * Jako magazyn domyślny
 * Jako magazyn dodatkowy z rozszerzeniem Azure Storage Blob jako magazynem domyślnym
 
-Aktualnie tylko niektóre typy/wersje klastra usługi HDInsight obsługują używanie kont usługi Data Lake Store jako magazynu domyślnego i magazynu dodatkowego:
+Aktualnie tylko niektóre HDInsight klastra typy/wersje pomocy technicznej za pomocą usługi Data Lake Storage jako magazynu domyślnego i dodatkowych kont magazynu:
 
-| Typ klastra usługi HDInsight | Usługa Data Lake Store jako magazyn domyślny | Usługa Data Lake Store jako magazyn dodatkowy| Uwagi |
+| Typ klastra usługi HDInsight | Usługi Data Lake Storage jako magazynu domyślnego | Usługi Data Lake Storage jako magazynu dodatkowego| Uwagi |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight w wersji 3.6 | Yes | Yes | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.5 | Yes | Yes | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.4 | Nie | Yes | |
 | HDInsight w wersji 3.3 | Nie | Nie | |
 | HDInsight w wersji 3.2 | Nie | Yes | |
-| Storm | | |Usługa Data Lake Store umożliwia zapisanie danych pochodzących z topologii Storm. Usługi Data Lake Store można również używać do obsługi danych referencyjnych, które następnie mogą być odczytywane przez topologię Storm.|
+| Storm | | |Usługi Data Lake Storage służy do zapisywania danych pochodzących z topologii Storm. Można również użyć usługi Data Lake Storage dla danych referencyjnych, które następnie mogą być odczytywane przez topologię Storm.|
 
 > [!WARNING]  
 > HDInsight HBase nie jest obsługiwana przy użyciu usługi Azure Data Lake Storage generacji 1
 
-Używanie usługi Data Lake Store jako konta magazynu dodatkowego nie ma wpływu na wydajność ani możliwość odczytywania danych z klastra lub zapisywania ich w usłudze Azure Storage.
-## <a name="use-data-lake-store-as-default-storage"></a>Używanie usługi Data Lake Store jako magazynu domyślnego
+Przy użyciu usługi Data Lake Storage jako dodatkowe konto magazynu nie wpływa na wydajność ani możliwość odczytu lub zapisu do usługi Azure storage z klastra.
+## <a name="use-data-lake-storage-as-default-storage"></a>Użyj usługi Data Lake Storage jako magazynu domyślnego
 
-Po wdrożeniu usługi HDInsight z usługą Data Lake Store jako magazynem domyślnym pliki klastra są zapisywane w usłudze Data Lake Store w następującej lokalizacji:
+Po wdrożeniu HDInsight przy użyciu usługi Data Lake Storage jako magazynem domyślnym pliki dotyczące klastra są przechowywane w usługi Data Lake Storage w następującej lokalizacji:
 
     adl://mydatalakestore/<cluster_root_path>/
 
-gdzie `<cluster_root_path>` to nazwa folderu utworzonego w usłudze Data Lake Store. Określając ścieżkę główną dla każdego klastra, możesz użyć tego samego konta usługi Data Lake Store dla wielu klastrów. Dlatego jest możliwa następująca konfiguracja:
+gdzie `<cluster_root_path>` to nazwa folderu utworzonego w usługi Data Lake Storage. Określając ścieżkę główną dla każdego klastra, można użyć tego samego konta usługi Data Lake Storage dla więcej niż jednego klastra. Dlatego jest możliwa następująca konfiguracja:
 
 * Klaster1 może używać ścieżki `adl://mydatalakestore/cluster1storage`
 * Klaster2 może używać ścieżki `adl://mydatalakestore/cluster2storage`
 
-Zwróć uwagę, że oba klastry używają tego samego konta usługi Data Lake Store — **mydatalakestore**. Każdy klaster ma dostęp do własnego głównego systemu plików w usłudze Data Lake Store. W środowisku wdrażania witryny Azure Portal zostanie wyświetlony monit o użycie nazwy folderu, takiej jak **/clusters/\<nazwa_klastra>**, dla ścieżki głównej.
+Zwróć uwagę, że oba klastry używają tego samego konta usługi Data Lake Storage **mydatalakestore**. Każdy klaster ma dostęp do własnego głównego systemu plików w usługi Data Lake Storage. W środowisku wdrażania witryny Azure Portal zostanie wyświetlony monit o użycie nazwy folderu, takiej jak **/clusters/\<nazwa_klastra>**, dla ścieżki głównej.
 
-Aby używanie usługi Data Lake Store jako magazynu domyślnego było możliwe, jednostka usługi musi mieć dostęp do następujących ścieżek:
+Aby można było używać usługi Data Lake Storage jako magazynu domyślnego, należy przyznać jednostce usługi dostęp do następujących ścieżek:
 
-- Katalog główny konta usługi Data Lake Store,  na przykład: adl://mydatalakestore/.
+- Katalog główny konta usługi Data Lake Storage.  na przykład: adl://mydatalakestore/.
 - Folder zawierający wszystkie foldery klastra,  na przykład: adl://mydatalakestore/clusters.
 - Folder klastra,  na przykład: adl://mydatalakestore/clusters/cluster1storage.
 
-Aby uzyskać więcej informacji na temat tworzenia jednostki usługi i przyznawania dostępu, zobacz [Konfigurowanie dostępu do usługi Data Lake Store](#configure-data-lake-store-access).
+Aby uzyskać więcej informacji do tworzenia usługi podmiot zabezpieczeń i Udziel dostępu, zobacz [dostępu Konfigurowanie usługi Data Lake Storage](#configure-data-lake-store-access).
 
+### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Wyodrębnianie certyfikatu z magazynu kluczy Azure do użycia w procesie tworzenia klastra
 
-## <a name="use-data-lake-store-as-additional-storage"></a>Używanie usługi Data Lake Store jako magazynu dodatkowego
+Jeśli chcesz instalacji Azure Data Lake Store jako magazynu domyślnego dla nowego klastra, a certyfikat dla jednostki usługi są przechowywane w usłudze Azure Key Vault, istnieje kilka dodatkowych kroków wymaganych do przekonwertowania certyfikatów poprawny format. Poniższe fragmenty kodu przedstawiają sposób wykonania konwersji.
 
-Jako dodatkowego magazynu dla klastra można również użyć usługi Data Lake Store. Domyślnym magazynem klastra może wtedy być konto usługi Azure Storage Blob lub Data Lake Store. Jeśli do obsługi danych przechowywanych w usłudze Data Lake Store jako magazynie dodatkowym używasz zadań usługi HDInsight, musisz podać w pełni kwalifikowaną ścieżkę do plików. Na przykład:
+Najpierw Pobierz certyfikat z magazynu Key Vault i Wyodrębnij `SecretValueText`.
+
+```powershell
+$certPassword = Read-Host "Enter Certificate Password"
+$cert = (Get-AzureKeyVaultSecret -VaultName 'MY-KEY-VAULT' -Name 'MY-SECRET-NAME')
+$certValue = [System.Convert]::FromBase64String($cert.SecretValueText)
+```
+
+Następnie przekonwertować `SecretValueText` z certyfikatem.
+
+```powershell
+$certObject = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certValue,$null,"Exportable, PersistKeySet"
+$certBytes = $certObject.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword.SecretValueText);
+$identityCertificate = [System.Convert]::ToBase64String($certBytes)
+```
+
+Następnie można użyć `$identityCertificate` do wdrożenia nowego klastra tak jak w poniższym fragmencie kodu:
+
+```powershell
+New-AzureRmResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $pathToArmTemplate `
+    -identityCertificate $identityCertificate `
+    -identityCertificatePassword $certPassword.SecretValueText `
+    -clusterName  $clusterName `
+    -clusterLoginPassword $SSHpassword `
+    -sshPassword $SSHpassword `
+    -servicePrincipalApplicationId $application.ApplicationId
+```
+
+## <a name="use-data-lake-storage-as-additional-storage"></a>Użyj usługi Data Lake Storage jako magazynu dodatkowego
+
+Dla klastra, a także, można użyć usługi Data Lake Storage jako magazynu dodatkowego. W takich przypadkach domyślnym magazynem klastra może być konto usługi Azure Blob Storage lub konta usługi Data Lake Storage. Jeśli używasz zadań HDInsight dane przechowywane w usługi Data Lake Storage jako magazynu dodatkowego, musi być w pełni kwalifikowanej ścieżki plików. Na przykład:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Zwróć uwagę, że teraz w adresie URL nie ma elementu **cluster_root_path**. Przyczyną jest to, że w tym przypadku usługa Data Lake Store nie jest magazynem domyślnym, więc należy tylko podać ścieżkę do plików.
+Zwróć uwagę, że teraz w adresie URL nie ma elementu **cluster_root_path**. To, ponieważ usługi Data Lake Storage nie jest magazynem domyślnym w tym przypadku więc wszystko, co należy zrobić to, podaj ścieżkę do plików.
 
-Aby używać usługi Data Lake Store jako magazynu dodatkowego, wystarczy przyznać jednostce usługi dostęp do ścieżek przechowywania plików.  Na przykład:
+Aby można było używać usługi Data Lake Storage jako magazynu dodatkowego, wystarczy przyznać jednostce usługi dostępu do ścieżki, w którym są przechowywane pliki.  Na przykład:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Aby uzyskać więcej informacji na temat tworzenia jednostki usługi i przyznawania dostępu, zobacz [Konfigurowanie dostępu do usługi Data Lake Store](#configure-data-lake-store-access).
+Aby uzyskać więcej informacji do tworzenia usługi podmiot zabezpieczeń i Udziel dostępu, zobacz [dostępu Konfigurowanie usługi Data Lake Storage](#configure-data-lake-store-access).
 
 
-## <a name="use-more-than-one-data-lake-store-accounts"></a>Używanie wielu kont usługi Data Lake Store
+## <a name="use-more-than-one-data-lake-storage-accounts"></a>Używanie wielu kont usługi Data Lake Storage
 
-Aby dodać kilka kont usługi Data Lake Store, należy przyznać klastrowi usługi HDInsight uprawnienia do danych na kontach usługi Data Lake Store. Zobacz [Konfigurowanie dostępu do usługi Data Lake Store](#configure-data-lake-store-access).
+Dodawania konta usługi Data Lake Storage jako dodatkowe i więcej niż jeden magazyn usługi Data Lake kont są realizowane przez nadanie uprawnień klastra HDInsight na danych w ramach jednej lub wielu kont usługi Data Lake Storage. Zobacz [dostępu Konfigurowanie usługi Data Lake Storage](#configure-data-lake-store-access).
 
-## <a name="configure-data-lake-store-access"></a>Konfigurowanie dostępu do usługi Data Lake Store
+## <a name="configure-data-lake-storage-access"></a>Konfigurowanie dostępu do usługi Data Lake Storage
 
-Aby skonfigurować dostęp do usługi Data Lake Store z klastra usługi HDInsight, musisz mieć jednostkę usługi Azure Active Directory (Azure AD). Tylko administrator usługi Azure AD może utworzyć jednostkę usługi. Jednostkę usługi należy utworzyć przy użyciu certyfikatu. Aby uzyskać więcej informacji, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md), i [Tworzenie jednostki usługi przy użyciu samoobsługowego Self-signed-certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
+Aby skonfigurować dostęp usługi Data Lake Storage z klastra usługi HDInsight, musi mieć usługi Azure Active directory (Azure AD) nazwy głównej usługi. Tylko administrator usługi Azure AD może utworzyć jednostkę usługi. Jednostkę usługi należy utworzyć przy użyciu certyfikatu. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md), i [Tworzenie jednostki usługi przy użyciu samoobsługowego Self-signed-certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]  
-> Jeśli zamierzasz używać usługi Azure Data Lake Store jako dodatkowego magazynu klastra usługi HDInsight, zdecydowanie zalecamy wykonanie tej czynności podczas tworzenia klastra zgodnie z opisem w tym artykule. Scenariusz obejmujący dodawanie usługi Azure Data Lake Store jako dodatkowego magazynu do istniejącego klastra usługi HDInsight nie jest obsługiwany.
+> Jeśli zamierzasz używać usługi Azure Data Lake Storage jako magazynu dodatkowego dla klastra HDInsight, zdecydowanie zaleca się to zrobić podczas tworzenia klastra zgodnie z opisem w tym artykule. Usługi dodawania usługi Azure Data Lake Storage jako magazynu dodatkowego do istniejącego klastra HDInsight nie jest obsługiwanym scenariuszem.
 >
 
 ## <a name="access-files-from-the-cluster"></a>Dostęp do plików z klastra
 
-Istnieją różne sposoby uzyskiwania dostępu do plików w usłudze Data Lake Store z klastra usługi HDInsight.
+Istnieje kilka sposobów, które są dostępne pliki z usługi Data Lake Storage klastra usługi HDInsight.
 
 * **Przy użyciu w pełni kwalifikowanej nazwy**. W przypadku tej metody należy podać pełną ścieżkę do pliku, do którego chcesz uzyskać dostęp.
 
@@ -119,44 +152,63 @@ Istnieją różne sposoby uzyskiwania dostępu do plików w usłudze Data Lake S
 
         /example/data/sample.log
 
-## <a name="create-hdinsight-clusters-with-access-to-data-lake-store"></a>Tworzenie klastrów usługi HDInsight z dostępem do usługi Data Lake Store
+## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage"></a>Tworzenie klastrów HDInsight z dostępem do usługi Data Lake Storage
 
-Poniższe linki pozwalają uzyskać szczegółowe instrukcje dotyczące tworzenia klastrów usługi HDInsight z dostępem do usługi Data Lake Store.
+Użyj poniższych linków, aby uzyskać szczegółowe instrukcje dotyczące sposobu tworzenia klastrów HDInsight z dostępem do usługi Data Lake Storage.
 
 * [Korzystanie z portalu](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [HDInsight with Data Lake Store as default storage - PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md) (Usługa HDInsight z usługą Data Lake Store jako magazynem domyślnym — PowerShell)
-* [Using PowerShell (with Data Lake Store as additional storage)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md) (Korzystanie z programu PowerShell z usługą Data Lake Store jako magazynem dodatkowym)
+* [Przy użyciu programu PowerShell (za pomocą usługi Data Lake Storage jako magazynu domyślnego)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [Przy użyciu programu PowerShell (za pomocą usługi Data Lake Storage jako magazynu dodatkowego)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Korzystanie z szablonów platformy Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
-## <a name="refresh-the-hdinsight-certificate-for-data-lake-store-access"></a>Odśwież certyfikatu HDInsight dostępu Data Lake Store
+## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-access"></a>Odśwież certyfikatu HDInsight uzyskać dostęp do usługi Data Lake Storage
 
-Poniższy przykład kodu programu PowerShell odczytuje lokalnego pliku certyfikatu i aktualizuje klastra usługi HDInsight przy użyciu nowego certyfikatu, aby dostęp do usługi Azure Data Lake Store. Podaj własną nazwę klastra HDInsight, nazwę grupy zasobów, identyfikator subskrypcji, identyfikator aplikacji, ścieżka lokalna do certyfikatu. Wpisz hasło po wyświetleniu monitu.
+Poniższy przykład kodu programu PowerShell odczytuje certyfikat z pliku lokalnego lub usługi Azure Key Vault i aktualizuje klastra usługi HDInsight przy użyciu nowego certyfikatu, aby dostęp do usługi Azure Data Lake Storage. Podaj własną nazwę klastra HDInsight, nazwę grupy zasobów, identyfikator subskrypcji, identyfikator aplikacji, ścieżka lokalna do certyfikatu. Wpisz hasło po wyświetleniu monitu.
 
 ```powershell-interactive
 $clusterName = '<clustername>'
 $resourceGroupName = '<resourcegroupname>'
 $subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
 $appId = '01234567-e100-4118-8ba6-c25834f4e938'
-$generateSelfSignedCert = $false
 $addNewCertKeyCredential = $true
 $certFilePath = 'C:\localfolder\adls.pfx'
+$KeyVaultName = "my-key-vault-name"
+$KeyVaultSecretName = "my-key-vault-secret-name"
 $certPassword = Read-Host "Enter Certificate Password"
+# certSource
+# 0 - create self signed cert
+# 1 - read cert from file path
+# 2 - read cert from key vault
+$certSource = 0
 
-if($generateSelfSignedCert)
+if($certSource -eq 0)
 {
     Write-Host "Generating new SelfSigned certificate"
-    
+
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=hdinsightAdlsCert" -KeySpec KeyExchange
     $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword);
     $certString = [System.Convert]::ToBase64String($certBytes)
 }
-else
+elseif($certSource -eq 1)
 {
 
     Write-Host "Reading the cert file from path $certFilePath"
 
     $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($certFilePath, $certPassword)
     $certString = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($certFilePath))
+}
+elseif($certSource -eq 2)
+{
+
+    Write-Host "Reading the cert file from Azure Key Vault $KeyVaultName"
+
+    $cert = (Get-AzureKeyVaultSecret -VaultName $KeyVaultName -Name $KeyVaultSecretName)
+    $certValue = [System.Convert]::FromBase64String($cert.SecretValueText)
+    $certObject = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certValue, $null,"Exportable, PersistKeySet"
+
+    $certBytes = $certObject.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword.SecretValueText);
+
+    $certString =[System.Convert]::ToBase64String($certBytes)
 }
 
 Login-AzureRmAccount
@@ -184,13 +236,13 @@ Invoke-AzureRmResourceAction `
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób korzystania z usługi Azure Data Lake Store zgodnej z systemem plików HDFS w połączeniu z usługą HDInsight. Podane tu informacje umożliwiają tworzenie skalowalnych, długoterminowych rozwiązań do pozyskiwania danych archiwalnych i używanie usługi HDInsight w celu efektywnego wykorzystywania informacji przechowywanych w postaci danych ze strukturą i bez niej.
+W tym artykule przedstawiono sposób użycia zgodnego systemem plików HDFS usługa Azure Data Lake Storage przy użyciu HDInsight. Podane tu informacje umożliwiają tworzenie skalowalnych, długoterminowych rozwiązań do pozyskiwania danych archiwalnych i używanie usługi HDInsight w celu efektywnego wykorzystywania informacji przechowywanych w postaci danych ze strukturą i bez niej.
 
 Aby uzyskać więcej informacji, zobacz:
 
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
-* [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Create an HDInsight cluster to use Data Lake Store using the Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md) (Tworzenie klastra usługi HDInsight z usługą Data Lake Store za pomocą programu Azure PowerShell)
+* [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* [Tworzenie klastra usługi HDInsight, aby użyć usługi Data Lake Storage przy użyciu programu Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
 * [Korzystanie z programu Apache Hive z usługą HDInsight][hdinsight-use-hive]
 * [Korzystanie z programu Apache Pig z usługą HDInsight][hdinsight-use-pig]

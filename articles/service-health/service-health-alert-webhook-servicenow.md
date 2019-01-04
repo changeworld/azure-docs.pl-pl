@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6dc66e551c1bce94b473a356cf4648e5c2353a2b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3f8e0e94cf3b63b3ea409b46cb9eec3d5d97eb6f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271304"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580335"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu usługi ServiceNow
 
@@ -202,5 +202,5 @@ W tym artykule pokazano, jak integrować alerty dotyczące kondycji usługi plat
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
 - Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../azure-monitor/platform/service-notifications.md).
 - Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).

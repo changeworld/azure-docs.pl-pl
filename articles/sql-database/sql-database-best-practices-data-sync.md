@@ -9,21 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: ''
+ms.reviewer: douglasl
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: a7289ba5ab1f4e94adc099978591d69cac6ff786
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686623"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721601"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
 W tym artykule opisano najlepsze rozwiązania dla usługi Azure SQL Data Sync.
 
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Usługa Azure SQL Data Sync jest **nie** obsługują wystąpienia zarządzanego Azure SQL Database w tej chwili.
 
 ## <a name="security-and-reliability"></a> Bezpieczeństwo i niezawodność
 
@@ -196,7 +199,7 @@ W niektórych sytuacjach wyrejestrowywania bazy danych przy użyciu agenta klien
 1. Grupy synchronizacji, A został utworzony przy użyciu wystąpienia bazy danych SQL i lokalnej bazy danych SQL Server, który jest skojarzony z agent lokalny jest 1.
 2. Tej samej lokalnej bazy danych jest zarejestrowany w agent lokalny 2 (tego agenta nie jest skojarzona z żadną inną grupą synchronizacji).
 3. Wyrejestrowywanie lokalnej bazy danych z lokalnego agenta 2 Usuwa śledzenia i tabel metadanych dla synchronizacji grupy A do lokalnej bazy danych.
-4. Synchronizacja grupy niepowodzenia operacji, z powodu następującego błędu: "bieżącej operacji nie można ukończyć ponieważ baza danych nie zostało aprowizowane do celów synchronizacji lub nie masz uprawnień do tabel, Konfiguracja synchronizacji."
+4. Operacje element grupy synchronizacji kończą się niepowodzeniem z powodu następującego błędu: "Bieżącej operacji nie można ukończyć ponieważ baza danych nie zostało aprowizowane do celów synchronizacji lub nie masz uprawnień do tabel, Konfiguracja synchronizacji."
 
 #### <a name="solution"></a>Rozwiązanie
 
@@ -219,18 +222,18 @@ Jeśli spróbujesz usunąć bazę danych, a następnie Edytuj grupę synchroniza
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat SQL Data Sync zobacz:
 
--   Przegląd — [synchronizowanie danych w wielu bazach danych w chmurze i lokalnych przy użyciu usługi Azure SQL Data Sync](sql-database-sync-data.md)
--   Konfiguruj synchronizację danych
-    - W portalu — [samouczek: Konfigurowanie SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym](sql-database-get-started-sql-data-sync.md)
+-   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
+-   Konfigurowanie synchronizacji danych
+    - W portalu — [samouczka: Skonfiguruj SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym](sql-database-get-started-sql-data-sync.md)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Dane synchronizacji Agent - [danych synchronizacji agenta dla usługi Azure SQL Data Sync](sql-database-data-sync-agent.md)
--   Monitor — [monitorowanie SQL Data Sync za pomocą usługi Log Analytics](sql-database-sync-monitor-oms.md)
--   Rozwiązywanie problemów — [Rozwiązywanie problemów z usługą Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md)
+-   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
+-   Monitorowanie — [Monitor SQL Data Sync with Log Analytics](sql-database-sync-monitor-oms.md) (Monitorowanie funkcji SQL Data Sync za pomocą usługi Log Analytics)
+-   Rozwiązywanie problemów — [Troubleshoot issues with Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md) (Rozwiązywanie problemów z usługą Azure SQL Data Sync)
 -   Aktualizowanie schematu synchronizacji
-    -   Za pomocą instrukcji języka Transact-SQL - [Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync](sql-database-update-sync-schema.md)
-    -   Za pomocą programu PowerShell — [Użyj programu PowerShell do aktualizacji schematu synchronizacji w istniejącej grupie synchronizacji](scripts/sql-database-sync-update-schema.md)
+    -   Za pomocą języka Transact-SQL — [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md) (Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync)
+    -   Używanie programu PowerShell — [Używanie programu PowerShell do zaktualizowania schematu synchronizacji w istniejącej grupie synchronizacji](scripts/sql-database-sync-update-schema.md)
 
 Aby uzyskać więcej informacji o usłudze SQL Database zobacz:
 

@@ -7,16 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 20d3d3d755a35927550064ddfdf3b983348f93d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109963"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605555"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zarządzania obrazami kontenera i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
-
-Podczas tworzenia i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS), zabezpieczenia kontenerów jest klucza. Kontenery, które zawierają obrazy podstawowe nieaktualne lub środowisko uruchomieniowe aplikacji wprowadza ryzyko związane z zabezpieczeniami i możliwości ataku. Aby ograniczyć te zagrożenia, należy zintegrować narzędzia skanowania w poszukiwaniu i Korygowanie problemów z kontenerów.
 
 Podczas tworzenia i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS), zabezpieczenia kontenerów i obrazy kontenera jest klucza. Kontenerów, między innymi nieaktualna oprzeć obrazów lub środowisk wykonawczych aplikacji bez wprowadzenia ryzyko związane z zabezpieczeniami i możliwości ataku. Aby ograniczyć te zagrożenia, należy zintegrować narzędzia skanowania w poszukiwaniu i Korygowanie problemów z kontenerów w czasie kompilacji, a także środowiska uruchomieniowego. Wcześniej w procesie, który zostanie przechwycony luk w zabezpieczeniach lub nieaktualne obrazu podstawowego czyli bardziej bezpiecznego klastra. W tym artykule *kontenery* oznacza, że oba obrazy kontenerów przechowywane w rejestrze kontenerów i uruchomione kontenery.
 

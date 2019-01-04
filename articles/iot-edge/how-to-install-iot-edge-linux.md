@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: beda9fa096dd8308822a5cd5a816b569712b8c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9945b0aad32fe9abc6a51132a287da10f1b28daa
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086091"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557754"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)
 
@@ -206,7 +206,39 @@ Na urządzeniach z zasobu ograniczone, zdecydowanie zaleca się ustawienie *Opti
 
 Jeśli sieci, na którym działa serwer proxy, wykonaj kroki opisane w [skonfigurować urządzenie usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
 
+## <a name="uninstall-iot-edge"></a>Odinstalowywanie usługi IoT Edge
+
+Jeśli chcesz usunąć instalację usługi IoT Edge na urządzeniu z systemem Linux, użyj następujących poleceń w wierszu polecenia. 
+
+Usuń środowisko uruchomieniowe usługi IoT Edge. 
+
+```bash
+sudo apt-get remove --purge iotedge
+```
+
+Po usunięciu środowiska uruchomieniowego usługi IoT Edge kontenera, do którego utworzona zostaną zatrzymane, ale nadal istnieje na urządzeniu. Wyświetl wszystkie kontenery, aby zobaczyć, które pozostają. 
+
+```bash
+sudo docker ps -a
+```
+
+Usuwanie kontenerów na urządzeniu, w tym dwóch kontenerów środowiska wykonawczego. 
+
+```bash
+sudo docker rm -f <container name>
+```
+
+Na koniec usunąć kontener środowiska uruchomieniowego na urządzeniu. 
+
+```bash 
+sudo apt-get remove --purge moby-cli
+sudo apt-get remove --purge moby-engine
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
+
+Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
 
 Jeśli występują problemy ze środowiska uruchomieniowego usługi Edge instalacji prawidłowo, zapoznaj się z [Rozwiązywanie problemów z](troubleshoot.md) strony.
 
+Aby zaktualizować istniejącą instalację do najnowszej wersji usługi IoT Edge, zobacz [aktualizacji demona zabezpieczeń usługi IoT Edge i środowisko uruchomieniowe](how-to-update-iot-edge.md).

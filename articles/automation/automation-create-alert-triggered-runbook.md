@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a099fe371198da7d3cda3146bbd9668c4d49285
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343653"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581650"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertów do wyzwalania elementu runbook usługi Azure Automation
 
@@ -33,7 +33,7 @@ Jeśli alert wywołuje element runbook, to rzeczywiste wywołanie jest wysłanie
 |---------|---------|---------|
 |[Klasycznego alertu metryki](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy dowolnej metryce poziom platformy spełnia określony warunek. Na przykład, gdy wartość **procent użycia procesora CPU** na maszynie Wirtualnej jest większa niż **90** ostatnich 5 minut.| [Schemat ładunku alertu metryki klasy](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
 |[Alert dziennika aktywności](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy wszystkie nowe zdarzenie w dzienniku aktywności platformy Azure jest zgodna z określonych warunków. Na przykład, gdy `Delete VM` operacja odbywa się w **myProductionResourceGroup** lub gdy nowe zdarzenie kondycji usługi platformy Azure za pomocą **Active** zostanie wyświetlony stan.| [Schemat ładunku alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Niemal w czasie rzeczywistym alertu metryki](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie szybciej niż alertów dotyczących metryk, gdy co najmniej jedną metrykę poziom platformy spełniają określone warunki. Na przykład, gdy wartość **procent użycia procesora CPU** na maszynie Wirtualnej jest większa niż **90**, a następnie jego wartość **sieci w** jest większa niż **500 MB** w ciągu ostatnich 5 minuty.| [Niemal w czasie rzeczywistym ładunku alertu metryki schematu](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Niemal w czasie rzeczywistym alertu metryki](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie szybciej niż alertów dotyczących metryk, gdy co najmniej jedną metrykę poziom platformy spełniają określone warunki. Na przykład, gdy wartość **procent użycia procesora CPU** na maszynie Wirtualnej jest większa niż **90**, a następnie jego wartość **sieci w** jest większa niż **500 MB** w ciągu ostatnich 5 minuty.| [Niemal w czasie rzeczywistym ładunku alertu metryki schematu](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 Ponieważ dane, które są dostarczane przez każdy typ alertu jest inny, każdego typu alertu odbywa się inaczej. W następnej sekcji dowiesz się, jak utworzyć element runbook w celu obsługi różnych typów alertów.
 

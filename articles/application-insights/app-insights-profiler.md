@@ -1,6 +1,6 @@
 ---
-title: Profil działających aplikacji sieci web platformy Azure za pomocą usługi Application Insights | Dokumentacja firmy Microsoft
-description: Profil aplikacji internetowych na żywo na platformie Azure za pomocą Application Insights Profiler.
+title: Profilowanie na żywo aplikacji usługi Azure App Service za pomocą usługi Application Insights | Dokumentacja firmy Microsoft
+description: Profil aplikacji na żywo w usłudze Azure App Service za pomocą Application Insights Profiler.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4d957c26bd4e4ae278c0909c9df1476b02954b86
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bc551d99528218f258acfd5d860795aae498d58f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138011"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653581"
 ---
-# <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil działających aplikacji sieci web platformy Azure za pomocą usługi Application Insights
+# <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilowanie na żywo aplikacji usługi Azure App Service za pomocą usługi Application Insights
 
-Profiler działa aktualnie w przypadku aplikacji sieci web ASP.NET i ASP.NET Core uruchomionych w aplikacji sieci Web. Podstawowa warstwę usługi lub nowszy jest wymagany, aby użyć Profiler. Włączanie Profiler w systemie Linux jest obecnie możliwe tylko za pośrednictwem [ta metoda](app-insights-profiler-aspnetcore-linux.md).
+Profiler działa aktualnie w przypadku aplikacji ASP.NET i ASP.NET Core, działające w usłudze Azure App Service. Podstawowa warstwę usługi lub nowszy jest wymagany, aby użyć Profiler. Włączanie Profiler w systemie Linux jest obecnie możliwe tylko za pośrednictwem [ta metoda](app-insights-profiler-aspnetcore-linux.md).
 
-## <a id="installation"></a> Włącz Profiler dla aplikacji sieci Web
-Aby włączyć Profiler dla aplikacji sieci web, postępuj zgodnie z poniższymi instrukcjami. Jeśli używasz innego typu usługi platformy Azure, poniżej przedstawiono instrukcje dotyczące włączania Profiler na innych obsługiwanych platformach:
+## <a id="installation"></a> Włącz Profiler do aplikacji
+Aby włączyć Profiler dla aplikacji, postępuj zgodnie z poniższymi instrukcjami. Jeśli używasz innego typu usługi platformy Azure, poniżej przedstawiono instrukcje dotyczące włączania Profiler na innych obsługiwanych platformach:
 * [Cloud Services](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikacje usługi Service Fabric](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler jest wstępnie zainstalowany jako część środowiska uruchomieniowego usług aplikacji, ale należy włączyć je w celu profile get dla aplikacji sieci Web platformy Azure. Po wdrożeniu aplikacji sieci Web, nawet wtedy, gdy zestaw SDK aplikacji usługi Insights wprowadzono w kodzie źródłowym, postępuj zgodnie z instrukcjami poniżej, aby włączyć program profilujący.
+Application Insights Profiler jest wstępnie zainstalowany jako część środowiska uruchomieniowego usług aplikacji, ale należy włączyć je w celu profile get dla aplikacji usługi app Service. Po wdrożeniu aplikacji, nawet wtedy, gdy zestaw SDK aplikacji usługi Insights wprowadzono w kodzie źródłowym, postępuj zgodnie z instrukcjami poniżej, aby włączyć program profilujący.
 
 1. Przejdź do **App Services** okienko w witrynie Azure portal.
-1. Przejdź do **Ustawienia > Application Insights** okienka.
+2. Przejdź do **Ustawienia > Application Insights** okienka.
 
    ![Włączanie usługi App Insights w portalu usługi App Services](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. Albo postępuj zgodnie z instrukcjami w okienku, aby utworzyć nowy zasób lub wybierz istniejący zasób usługi App Insights w celu monitorowania aplikacji sieci web. Upewnij się, Profiler jest również **na**.
+3. Albo postępuj zgodnie z instrukcjami w okienku, aby utworzyć nowy zasób lub wybierz istniejący zasób usługi App Insights w celu monitorowania aplikacji. Upewnij się, Profiler jest również **na**.
 
    ![Dodaj rozszerzenie witryny usługi App Insights][Enablement UI]
 
-1. Profiler jest teraz włączony, za pomocą ustawienia aplikacji usługi aplikacji.
+4. Profiler jest teraz włączony, za pomocą ustawienia aplikacji usługi aplikacji.
 
     ![Ustawienia aplikacji dla Profiler][profiler-app-setting]
 
 ## <a name="disable-profiler"></a>Wyłącz Profiler
 
-Aby zatrzymać lub ponownie uruchom program Profiler aplikację internetową poszczególne wystąpienia, w obszarze **zadania Web Job**, przejdź do zasobu aplikacji sieci Web. Aby usunąć Profiler, przejdź do **rozszerzenia**.
+Aby zatrzymać lub ponownie uruchomić Profiler dla wystąpienia poszczególnych aplikacji, w obszarze **zadania Web Job**, przejdź do zasobu aplikacji. Aby usunąć Profiler, przejdź do **rozszerzenia**.
 
 ![Wyłącz Profiler dla zadania w sieci web][disable-profiler-webjob]
 
-Zaleca się, że masz Profiler włączone na wszystkich Twoich aplikacji sieci web do wykrywania problemów z wydajnością tak szybko, jak to możliwe.
+Zaleca się, że masz Profiler włączone na wszystkich Twoich aplikacji do wykrywania problemów z wydajnością tak szybko, jak to możliwe.
 
 Jeśli używasz WebDeploy, aby wdrożyć zmiany dla aplikacji sieci web, upewnij się, że w folderze App_Data można wykluczyć z usuwana podczas wdrażania. W przeciwnym razie rozszerzenia Profiler pliki są usuwane przy następnym wdrożysz aplikację sieci web na platformie Azure.
 

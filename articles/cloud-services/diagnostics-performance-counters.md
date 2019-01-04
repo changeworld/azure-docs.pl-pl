@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: bae1e7de3c24ff6fbf943ef93ad449d784feb0c8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322947"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788700"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Liczniki wydajności są zbierane dla usługi w chmurze platformy Azure
 
@@ -84,7 +84,7 @@ Licznik wydajności można dodać do swojej usługi w chmurze dla usługi Azure 
 
 ### <a name="application-insights"></a>Application Insights
 
-Usługa Azure Application Insights dla usług w chmurze pozwala określić liczniki wydajności, które mają być zbierane. Po zakończeniu [Dodaj usługę Application Insights do projektu](../application-insights/app-insights-cloudservices.md#sdk), plik konfiguracji o nazwie **plik ApplicationInsights.config** zostanie dodany do projektu programu Visual Studio. Ten plik konfiguracji określa, jakiego rodzaju informacje Application Insights zbiera i wysyła do usługi Azure.
+Usługa Azure Application Insights dla usług w chmurze pozwala określić liczniki wydajności, które mają być zbierane. Po zakończeniu [Dodaj usługę Application Insights do projektu](../azure-monitor/app/cloudservices.md#sdk), plik konfiguracji o nazwie **plik ApplicationInsights.config** zostanie dodany do projektu programu Visual Studio. Ten plik konfiguracji określa, jakiego rodzaju informacje Application Insights zbiera i wysyła do usługi Azure.
 
 Otwórz **plik ApplicationInsights.config** plików i Znajdź **ApplicationInsights** > **TelemetryModules** elementu. Każdy `<Add>` element podrzędny określa typ telemetrii, aby zebrać, wraz z jego konfiguracji. Jest to typ modułu telemetrii licznika wydajności `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Jeśli ten element jest już zdefiniowany, nie należy dodawać go po raz drugi. Każdego licznika wydajności do zbierania jest zdefiniowany w węźle, nazwane `<Counters>`. Oto przykład, który zbiera dane liczników wydajności dysku:
 
@@ -116,7 +116,7 @@ Usługa Application Insights automatycznie zbiera następujące liczniki wydajno
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-Aby uzyskać więcej informacji, zobacz [liczników wydajności systemu w usłudze Application Insights](../application-insights/app-insights-performance-counters.md) i [usługi Application Insights dla usług Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters).
+Aby uzyskać więcej informacji, zobacz [liczników wydajności systemu w usłudze Application Insights](../application-insights/app-insights-performance-counters.md) i [usługi Application Insights dla usług Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
 
@@ -294,7 +294,7 @@ Jak podano wcześniej, liczniki wydajności, które mają być zbierane są zdef
 
 ## <a name="more-information"></a>Więcej informacji
 
-- [Usługa Application Insights dla usług Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters)
+- [Usługa Application Insights dla usług Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Liczniki wydajności systemu w usłudze Application Insights](../application-insights/app-insights-performance-counters.md)
 - [Określenie ścieżki licznika](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Schemat usługi Diagnostyka Azure - liczniki wydajności](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

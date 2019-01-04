@@ -4,15 +4,16 @@ description: Ten artykuł zawiera omówienie składników i architektury używan
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 64464772b82a64324a706d1e09e7d2a75b7eb66a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6ce1a20ddb5e99ca6da9531b6d23a8a54d14f588
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834319"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971737"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura replikacji serwera fizycznego/VMware do lokacji dodatkowej w środowisku lokalnym
 
@@ -37,7 +38,7 @@ W tym artykule opisano architekturę i procesem stosowanym podczas konfigurowani
 2. Po początkowej replikacji agent na każdej maszynie wysyła zmiany replikacji przyrostowej na serwer przetwarzania.
 3. Serwer przetwarzania optymalizuje dane i transferuje je na główny serwer docelowy w lokacji dodatkowej. Serwer konfiguracji zarządza procesem replikacji.
 
-**Rysunek 6: Replikacja z programu VMware do programu VMware**
+**Rysunek 6: Program VMware do replikacji oprogramowania VMware**
 
 ![Z programu VMware do programu VMware](./media/site-recovery-components/vmware-to-vmware.png)
 

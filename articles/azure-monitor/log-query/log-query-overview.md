@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: bc37b3b60a5ad7f4e2b4794e4fcb74c1a5004b75
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33f8547721f499ed7b9a81088681fc2ade2d030c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336887"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723539"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
@@ -95,7 +95,7 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="how-log-analytics-data-is-organized"></a>Sposób organizowania danych usługi Log Analytics
 Podczas tworzenia zapytania należy rozpocząć od określenia tabel, które znajdują się dane, którego szukasz. Różne rodzaje danych podzielono na dedykowane tabel w każdym [obszaru roboczego usługi Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).  Dokumentacja dla różnych źródeł danych zawiera nazwę typu danych, które tworzy i opis każdego z jego właściwości.  Wiele zapytań będzie wymagać tylko dane z pojedynczej tabeli, ale inne mogą używać różnorodne opcje, aby dołączyć dane z wielu tabel.
 
-Gdy [usługi Application Insights](../../application-insights/app-insights-overview.md) przechowuje dane aplikacji, takie jak żądania, wyjątki, ślady i użycia w usłudze Log Analytics, te dane są przechowywane w innej partycji niż dane dziennika. Umożliwia dostęp do tych danych na ten sam język zapytań, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API REST usługi Application Insights](https://dev.applicationinsights.io/) do niego dostęp. Możesz użyć [zasobów dla wielu kwerendach](../../azure-monitor/log-query/cross-workspace-query.md) połączenie danych usługi Application Insights z innymi danymi w usłudze Log Analytics.
+Gdy [usługi Application Insights](../../application-insights/app-insights-overview.md) przechowuje dane aplikacji, takie jak żądania, wyjątki, ślady i użycia w usłudze Log Analytics, te dane są przechowywane w innej partycji niż dane dziennika. Umożliwia dostęp do tych danych na ten sam język zapytań, ale muszą używać [konsoli Application Insights](../../azure-monitor/app/analytics.md) lub [interfejsu API REST usługi Application Insights](https://dev.applicationinsights.io/) do niego dostęp. Możesz użyć [zasobów dla wielu kwerendach](../../azure-monitor/log-query/cross-workspace-query.md) połączenie danych usługi Application Insights z innymi danymi w usłudze Log Analytics.
 
 
 ![Tabele](media/log-query-overview/queries-tables.png)

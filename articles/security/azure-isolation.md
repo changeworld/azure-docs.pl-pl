@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311001"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974713"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -121,7 +121,7 @@ Usługi biznesowe dzięki usłudze inspekcji certyfikaty, takich jak ISO/IEC 270
 
 Jeśli usuniesz, wszelkie dane, Microsoft Azure usuwa dane, w tym wszystkie buforowane lub kopii zapasowej kopii. W przypadku usług w zakresie, usunięcie zostanie przeprowadzona w ciągu 90 dni, po upływie okresu przechowywania. (Usługi w zakresie są zdefiniowane w sekcji warunków przetwarzania danych naszych [Online Services — warunki](https://aka.ms/Online-Services-Terms).)
 
-Jeśli na dysku używane do przechowywania wystąpi awaria sprzętowa, jest bezpiecznie [usunięte lub zniszczone](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) przed Microsoft zwraca go do producenta dla zastąpienia lub naprawy. Dane na dysku zostanie zastąpiony, aby upewnić się, że za pomocą jakichkolwiek środków nie można odzyskać dane.
+Jeśli na dysku używane do przechowywania wystąpi awaria sprzętowa, jest bezpiecznie [usunięte lub zniszczone](https://microsoft.com/trustcenter/privacy/you-own-your-data) przed Microsoft zwraca go do producenta dla zastąpienia lub naprawy. Dane na dysku zostanie zastąpiony, aby upewnić się, że za pomocą jakichkolwiek środków nie można odzyskać dane.
 
 ## <a name="compute-isolation"></a>Izolacja obliczeń
 Microsoft Azure oferuje różne oparte na chmurze obliczeniowej usługi, które obejmują szeroki wybór wystąpień obliczeniowych i usług, które można skalować w górę i w dół automatycznie do potrzeb aplikacji lub przedsiębiorstwa. Te wystąpienia obliczeniowego i usługi oferują izolacji na różnych poziomach w celu zabezpieczenia danych bez ograniczania elastyczności w konfiguracji zapotrzebowania klientów.
@@ -238,7 +238,7 @@ Szyfrowanie podczas transferu jest mechanizm ochrony danych podczas ich przesył
 -   [Szyfrowanie po stronie klienta](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), aby szyfrować dane, zanim zostanie przekazany do magazynu, jak i do odszyfrowania danych, gdy zostanie przeniesiona poza magazynu.
 
 #### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
-W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) stanowi krok obowiązkowy kierunku niezależność danych ochrony prywatności, zgodności i danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowania danych, które są "magazynowane":
+W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://docs.microsoft.com/azure/security/azure-isolation) stanowi krok obowiązkowy kierunku niezależność danych ochrony prywatności, zgodności i danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowania danych, które są "magazynowane":
 
 -   [Szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) umożliwia zażądanie, czy usługi storage automatyczne szyfrowanie danych podczas zapisywania jej do usługi Azure Storage.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 3f7cfbea414561a50152f88ac9061d7f62c89e2a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc8688e06b430522d2aeb1bcc67f72dae2e9ac6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192417"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728412"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Przeszukiwanie dzienników grup komputerów w usłudze Log Analytics
 
@@ -31,7 +31,7 @@ Można utworzyć grupę komputerów w usłudze Log Analytics przy użyciu dowoln
 |:--- |:--- |
 | Wyszukiwanie w dzienniku |Utwórz wyszukiwanie w dzienniku, które zwraca listę komputerów. |
 | Interfejs API wyszukiwania w dzienniku |Użyj interfejsu API wyszukiwania w dzienniku programowo utworzyć grupę komputerów, na podstawie wyników przeszukiwania dzienników. |
-| Usługa Active Directory |Automatyczne skanowanie członkostwa w grupie komputerów agenta, które są członkami domeny usługi Active Directory i utworzyć grupę w usłudze Log Analytics dla każdej grupy zabezpieczeń. |
+| Usługa Active Directory |Automatyczne skanowanie członkostwa w grupie komputerów agenta, które są członkami domeny usługi Active Directory i utworzyć grupę w usłudze Log Analytics dla każdej grupy zabezpieczeń. (Tylko w przypadku maszyn Windows)|
 | Configuration Manager | Importuj kolekcje w programie System Center Configuration Manager i Utwórz grupę w usłudze Log Analytics dla każdego. |
 | Windows Server Update Services |Wyszukaj przeznaczone dla grup serwerów WSUS lub klientów i automatycznie utworzyć grupę w usłudze Log Analytics dla każdego. |
 
@@ -60,7 +60,10 @@ Poniższa procedura umożliwia utworzenie grupy komputerów z przeszukiwania dzi
 
 
 ### <a name="active-directory"></a>Usługa Active Directory
-Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usługi Active Directory analizuje członkostwa w grupie komputerów przyłączonych do domeny za pomocą agenta usługi Log Analytics.  Grupa komputerów jest tworzony w usłudze Log Analytics dla każdej grupy zabezpieczeń w usłudze Active Directory, a każdy komputer został dodany do grupy komputerów, odpowiadający grup zabezpieczeń, do których należą.  To członkostwo jest stale aktualizowany co 4 godziny.  
+Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usługi Active Directory analizuje członkostwa w grupie komputerów przyłączonych do domeny Windows za pomocą agenta usługi Log Analytics.  Grupa komputerów jest tworzony w usłudze Log Analytics dla każdej grupy zabezpieczeń w usłudze Active Directory, a każdy komputer Windows został dodany do grupy komputerów, odpowiadający grup zabezpieczeń, do których należą.  To członkostwo jest stale aktualizowany co 4 godziny.  
+
+> [!NOTE]
+> Zaimportowane grupy usługi Active Directory zawierają tylko Windows maszyny.
 
 Konfigurowanie usługi Log Analytics można zaimportować grupy zabezpieczeń usługi Active Directory z usługą Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **usługi Active Directory**, a następnie **członkostwa w grupach usługi Active Directory importu z komputerów**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f3e590ec5dded03ce9c6ab2f7a21d51048020622
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012593"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651831"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Użyj Microsoft Cognitive Toolkit głębokie uczenie modelu przy użyciu klastra usługi HDInsight Spark
 
@@ -39,15 +39,15 @@ To rozwiązanie jest podzielony między w tym artykule i notesu programu Jupyter
 
 Następujące pozostałe kroki zostały uwzględnione w notesie Jupyter.
 
-- Załaduj przykładowe obrazy do platformy Spark Resiliant dystrybuowane w zestawie danych lub RDD
-   - Ładowanie modułów i zdefiniuj ustawienia wstępne
-   - Pobierz zestaw danych lokalnie w klastrze Spark
-   - Konwertowanie zestawu danych na RDD
-- Ocena obrazów za pomocą uczonego modelu zestawu narzędzi Cognitive Toolkit
-   - Pobierz uczonego modelu zestawu narzędzi Cognitive Toolkit do klastra Spark
-   - Zdefiniuj funkcji, który będzie używany przez węzły procesu roboczego
-   - Ocena obrazów na węzłach procesu roboczego
-   - Oceny dokładności modelu
+- Załaduj przykładowe obrazy do platformy Spark Resiliant dystrybuowane w zestawie danych lub RDD.
+   - Ładowanie modułów i zdefiniuj ustawienia wstępne.
+   - Pobierz zestaw danych lokalnie w klastrze Spark.
+   - Konwertuj RDD zestawu danych.
+- Wynik obrazów za pomocą uczonego modelu zestawu narzędzi Cognitive Toolkit.
+   - Pobierz uczonego modelu zestawu narzędzi Cognitive Toolkit do klastra Spark.
+   - Definiowanie funkcji, który będzie używany przez węzły procesu roboczego.
+   - Wynik obrazów na węzłach procesu roboczego.
+   - Oceny dokładności modelu.
 
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>Instalowanie zestawu narzędzi Microsoft Cognitive Toolkit
@@ -87,10 +87,10 @@ Microsoft Cognitive Toolkit za pomocą klastra Azure HDInsight Spark, należy za
 5. Po przekazaniu Notes kliknij nazwę notesu, a następnie postępuj zgodnie z instrukcjami w notesie na temat sposobu ładowania zestawu danych i wykonywania tego samouczka.
 
 ## <a name="see-also"></a>Zobacz także
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
@@ -98,7 +98,7 @@ Microsoft Cognitive Toolkit za pomocą klastra Azure HDInsight Spark, należy za
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)

@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: e68099609e5a4a27dfae7956fa43634d38311a22
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 01781725e3224e2cab49a5e7cc7dcc33030ce9fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015776"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971556"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi kontroli dostępu na platformie Azure
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
 
 Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r. Aplikacje i usługi, które obecnie korzystanie z kontroli dostępu muszą być w pełni migrowane na inny mechanizm uwierzytelniania, następnie. W tym artykule opisano zalecenia dotyczące obecni klienci, planując wycofana korzystanie z kontroli dostępu. Obecnie nie używasz kontroli dostępu, nie trzeba podejmować żadnych działań.
 
@@ -113,9 +113,9 @@ Od listopada 2017 r. wszystkie składniki kontroli dostępu są w pełni obsług
 
 Oto harmonogram wycofano składniki kontroli dostępu:
 
-- **Listopad 2017**: Administrator usługi Azure AD występują w klasycznej witrynie Azure portal [została wycofana](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie zarządzanie przestrzenią nazw kontroli dostępu jest dostępna na nowego, dedykowanego adresu URL: `https://manage.windowsazure.com?restoreClassic=true`. Użyj tego adresu URl, aby wyświetlić swoje istniejące obszary nazw, włączanie i wyłączanie przestrzenie nazw i można usunąć przestrzeni nazw, jeśli zdecydujesz się.
-- **2 kwietnia 2018 r.**: klasyczny portal Azure całkowicie został wycofany, co oznacza, zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
-- **7 listopada 2018**: kontrola dostępu do wszystkich składników stałe są zamykane. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania, usługi STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Użytkownik powinien zostały zmigrowane wszystkie istniejące aplikacje i usługi do innych technologii również przed upływem wskazanego terminu.
+- **Listopad 2017**:  Administrator usługi Azure AD występują w klasycznej witrynie Azure portal [została wycofana](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie zarządzanie przestrzenią nazw kontroli dostępu jest dostępna na nowego, dedykowanego adresu URL: `https://manage.windowsazure.com?restoreClassic=true`. Użyj tego adresu URl, aby wyświetlić swoje istniejące obszary nazw, włączanie i wyłączanie przestrzenie nazw i można usunąć przestrzeni nazw, jeśli zdecydujesz się.
+- **2 kwietnia 2018 r.**: Klasyczny portal Azure jest całkowicie wycofane, co oznacza, że zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
+- **7 listopada 2018**: Wszystkie składniki kontroli dostępu są trwale zamknąć. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania, usługi STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Użytkownik powinien zostały zmigrowane wszystkie istniejące aplikacje i usługi do innych technologii również przed upływem wskazanego terminu.
 
 > [!NOTE]
 > Zasada wyłącza przestrzenie nazw, które nie żądanego tokenu w okresie czasu. Począwszy od września 2018 r. ten okres jest obecnie w ciągu 14 dni braku aktywności, ale to zostanie skrócona do 7 dni nieaktywności w najbliższych tygodniach. Jeśli masz przestrzeni nazw kontroli dostępu, które są obecnie wyłączone, możesz to zrobić [pobrać i zainstalować program ACS PowerShell](#download-and-install-acs-powershell) ponowne włączenie namespace (s).
@@ -151,7 +151,7 @@ Program SharePoint 2013, 2016 i SharePoint Online klienci wykorzystali długo AC
 
 | Cecha | Wskazówki |
 | ------- | -------- |
-| Uwierzytelnianie użytkowników z usługi Azure AD | Wcześniej usługi Azure AD nie obsługuje tokeny SAML 1.1 wymaganych przez program SharePoint do uwierzytelniania i ACS został użyty jako format pośrednik zgłaszający tokenu compatibile programu SharePoint z usługą Azure AD. Teraz możesz [połączenia programu SharePoint bezpośrednio do usługi Azure AD przy użyciu programu SharePoint w galerii aplikacji usługi Azure AD dla aplikacji lokalnych](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
+| Uwierzytelnianie użytkowników z usługi Azure AD | Wcześniej usługa Azure AD nie obsługuje tokeny SAML 1.1 wymaganych przez program SharePoint do uwierzytelniania i ACS została użyta jako pośrednik, który zgłosił programu SharePoint jest zgodny z formatami tokenu usługi Azure AD. Teraz możesz [połączenia programu SharePoint bezpośrednio do usługi Azure AD przy użyciu programu SharePoint w galerii aplikacji usługi Azure AD dla aplikacji lokalnych](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Uwierzytelnianie aplikacji & uwierzytelniania serwera z serwerem w programie SharePoint w lokalnej](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nie dotyczy usług ACS wycofanie; Brak wymaganych zmian. | 
 | [Autoryzacja niski zaufania dla dodatków programu SharePoint (Dostawca obsługiwany i programu SharePoint hostowany)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nie dotyczy usług ACS wycofanie; Brak wymaganych zmian. |
 | [Wyszukiwanie programu SharePoint chmury hybrydowej](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nie dotyczy usług ACS wycofanie; Brak wymaganych zmian. |
@@ -162,8 +162,8 @@ Aplikacje sieci web korzystających z kontroli dostępu do uwierzytelniania uży
 
 - Głęboka integracja za pomocą programu Windows Identity Foundation (WIF).
 - Federacja z usługą Google, Facebook, Yahoo, usługi Azure Active Directory i AD FS i firmy Microsoft.
-- Obsługuje następujące protokoły uwierzytelniania: OAuth 2.0 projekt 13, WS-Trust i federacji usług sieci Web (WS-Federation).
-- Obsługa następujące formaty tokenów: tokenu Web JSON (JWT), język SAML 1.1, SAML 2.0 i Simple Web Token (SWT).
+- Obsługuje następujące protokoły uwierzytelniania: Projekt protokołu OAuth 2.0 13, WS-Trust i federacji usług sieci Web (WS-Federation).
+- Pomoc techniczna dla następujące formaty tokenów: Tokenu Web JSON (JWT), SAML 1.1, SAML 2.0 i Simple Web Token (SWT).
 - Obsługi odnajdowania obszaru macierzystego, zintegrowane z programu WIF, która umożliwia użytkownikom na wybranie typu konta używanego do logowania. To środowisko jest hostowana przez aplikację sieci web i jest w pełni dostosowywalny.
 - Token transformacji, która umożliwia zaawansowane dostosowywanie oświadczeń otrzymanych przez aplikację sieci web z kontroli dostępu, w tym:
     - Przekazuj oświadczeń od dostawców tożsamości.
@@ -307,7 +307,7 @@ W przypadku usług sieci web, które są zabezpieczone przy użyciu tokenów wys
     - Prostych haseł, które są tworzone dla tożsamości usługi
     - Element podpisane SWT przy użyciu klucza symetrycznego lub X509 certyfikatu
     - Token SAML, wystawiony przez zaufanego dostawcy tożsamości (zazwyczaj wystąpienia usług AD FS)
-- Obsługa następujące formaty tokenów: token JWT, język SAML 1.1, SAML 2.0 i SWT.
+- Pomoc techniczna dla następujące formaty tokenów: Token JWT, język SAML 1.1, SAML 2.0 i SWT.
 - Reguły prostą transformację tokenu.
 
 Tożsamości usługi kontroli dostępu są zazwyczaj używane do uwierzytelniania serwera do zaimplementowania. 

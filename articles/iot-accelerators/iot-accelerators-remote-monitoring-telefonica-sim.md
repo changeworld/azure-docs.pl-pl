@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: c453998eea2a747b2cb608482f0ef9c1ee197ee0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185435"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606796"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrowanie danych SIM w rozwiązaniu do zdalnego monitorowania
 
 Urządzenia IoT często łączą w chmurze za pomocą karty SIM, umożliwiającego wysyłanie strumieni danych z dowolnego miejsca. Rozwiązania do zdalnego monitorowania usługi Azure IoT umożliwia integrację danych IoT zarządzane łączności, tak aby operatorzy mogą również śledzić kondycji urządzenia za pomocą danych dostarczanych przez IoT SIM.
 
-Monitorowania zdalnego udostępnia poza integracji z usługą Telefónica IoT łączności, w którym klienci korzystający z platformy IoT łączności synchronizowanie ich urządzenia kart SIM połączenia danych do swoich rozwiązań. To rozwiązanie do obsługi innych dostawców łączności IoT za pośrednictwem witryny GitHub można rozszerzyć [repozytorium](http://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
+Monitorowania zdalnego udostępnia poza integracji z usługą Telefónica IoT łączności, w którym klienci korzystający z platformy IoT łączności synchronizowanie ich urządzenia kart SIM połączenia danych do swoich rozwiązań. To rozwiązanie do obsługi innych dostawców łączności IoT za pośrednictwem witryny GitHub można rozszerzyć [repozytorium](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

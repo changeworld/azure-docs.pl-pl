@@ -4,19 +4,19 @@ description: Więcej informacji na temat znanych problemów/migracja ograniczeni
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884514"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721652"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Ograniczenia znanych problemów/migracja online migracji do usługi Azure DB dla MySQL
 
@@ -25,7 +25,7 @@ W poniższych sekcjach opisano znane problemy i ograniczenia związane z usług�
 ## <a name="online-migration-configuration"></a>Konfiguracja migracji online
 - Źródłowy serwer MySQL Server musi być w wersji 5.6.35, 5.7.18 lub nowszej
 - Usługa Azure Database for MySQL obsługuje:
-    - MySQL Community Edition
+    - MySQL community edition
     - Aparat InnoDB
 - Migracja tej samej wersji. Migracja MySQL 5.6 do usługi Azure Database for MySQL 5.7 nie jest obsługiwane.
 - Włącz rejestrowanie binarne w pliku my.ini (Windows) lub My.cnf (system Unix)
@@ -53,34 +53,34 @@ W poniższych sekcjach opisano znane problemy i ograniczenia związane z usług�
       GROUP BY SchemaName;
     ```
 
-    Uruchom klucz obcy docelowej (czyli drugiej kolumny) w wyniku zapytania.
+    Uruchom docelowy klucz obcy (znajduje się w drugiej kolumnie) w wyniku zapytania.
 - Schemat w lokalizacji docelowej usługi Azure Database for MySQL nie może mieć żadnych wyzwalaczy. Aby porzucić wyzwalaczy w docelowej bazie danych:
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
     ```
 
 ## <a name="datatype-limitations"></a>Ograniczenia typu danych
-- **Ograniczenie**: w przypadku typu danych JSON w źródłowej bazy danych MySQL, migracja zakończą się niepowodzeniem podczas ciągłej synchronizacji.
+- **Ograniczenie**: W przypadku typu danych JSON w źródłowej bazy danych MySQL, migracja zakończy się niepowodzeniem podczas ciągłej synchronizacji.
 
-    **Obejście**: datatype zmodyfikować JSON do średnich tekstu lub longtext w bazie danych MySQL źródła.
+    **Obejście**: Modyfikowanie danych JSON do średnich tekstu lub longtext w bazie danych MySQL źródła.
 
-- **Ograniczenie**: Jeśli istnieje nie klucza podstawowego w tabelach, ciągła synchronizacja zakończy się niepowodzeniem.
+- **Ograniczenie**: Jeśli istnieje nie klucza podstawowego w tabelach, ciągłej synchronizacji nie powiedzie się.
  
-    **Obejście**: tymczasowo ustawić klucza podstawowego w tabeli migracji kontynuować. Po zakończeniu migracji danych, można usunąć klucza podstawowego.
+    **Obejście**: Tymczasowo ustawić klucza podstawowego w tabeli migracji kontynuować. Po zakończeniu migracji danych, można usunąć klucza podstawowego.
 
 ## <a name="lob-limitations"></a>Ograniczenia LOB
 Duże kolumny obiektu (LOB) to kolumn, które można powiększać dużych rozmiaru. Programu MySQL, średnie tekstu Longtext obiektów Blob, Mediumblob, Longblob, itp. przedstawiono niektóre typy danych obiektu LOB.
 
-- **Ograniczenie**: Jeśli LOB typy danych są używane jako klucze podstawowe, migracji zakończy się niepowodzeniem.
+- **Ograniczenie**: Typy danych obiektów LOB są używane jako klucze podstawowe, migracji zakończy się niepowodzeniem.
 
-    **Obejście**: Zastąp klucz podstawowy z innych typów danych lub kolumny, które nie są LOB.
+    **Obejście**: Zamień na klucz podstawowy inne typy danych lub kolumny, które nie są LOB.
 
 - **Ograniczenie**: Jeśli długość kolumny duży obiekt (LOB) jest większy niż 32 KB, danych może zostać obcięta do miejsca docelowego. Możesz sprawdzić długość kolumny obiektów LOB przy użyciu tego zapytania:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Obejście**: w przypadku obiektu LOB, który jest większy niż 32 KB skontaktuj się z zespołem inżynierów pod adresem [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com). 
+    **Obejście**: Jeśli obiekt LOB, który jest większy niż 32 KB, skontaktuj się z inżynierami w [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com). 
 
 ## <a name="other-limitations"></a>Pozostałe ograniczenia
 - Ciąg hasła, który ma otwierający i zamykający nawiasy klamrowe {} na początku i końca ciągu hasła nie jest obsługiwane. To ograniczenie dotyczy zarówno nawiązywania połączenia z źródłowy MySQL i docelową usługę Azure Database for MySQL.

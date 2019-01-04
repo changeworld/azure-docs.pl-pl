@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2018
+ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278682"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608447"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -36,6 +36,17 @@ Kroki, aby uaktualnić program Azure AD Connect | Różne metody [uaktualnianie 
 Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](reference-connect-accounts-permissions.md#upgrade).
 
 Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="12700"></a>1.2.70.0
+
+### <a name="release-status"></a>Stan zlecenia
+
+12/18/2018 r.: Ogólnie dostępnych do pobrania
+
+### <a name="fixed-issues"></a>Rozwiązane problemy
+
+Ta kompilacja aktualizacji niestandardowych łączników (na przykład ogólnego łącznika LDAP i ogólnego łącznika SQL), dostarczane z programem Azure AD Connect. Więcej informacji na temat łączników dotyczy, na ten temat można znaleźć w wersji 1.1.911.0 w [Historia wersji łącznika](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history).
+
 
 ## <a name="12690"></a>1.2.69.0
 

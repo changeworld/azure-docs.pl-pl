@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: b110a57526d6e23ba53afce0a91d735fad6d247c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215793"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604103"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie narzędzia Postman dla wywołań interfejsu API REST usługi Media Services
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak skonfigurować **Postman** , dzięki czemu moż
 - Uzyskaj informacje potrzebne do [dostęp do interfejsów API](access-api-cli-how-to.md)
 - Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
-    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Można również użyć: programu **Visual Studio Code** z wtyczką REST lub programu **Telerik Fiddler**. 
+    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Inne alternatywy są: **Visual Studio Code** za pomocą wtyczki REST lub **narzędzia Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Pobieranie plików Postman
 
@@ -75,7 +75,7 @@ W tej sekcji skonfigurowano program Postman.
 
 Przed rozpoczęciem manipulowanie AMS v3 zasobów należy do pobierania i ustawiania usługi Azure AD tokenu uwierzytelniania jednostki usługi.
 
-1. W lewym oknie programu Postman wybierz opcję „Krok 1: Pobierz token uwierzytelniania usługi AAD”.
+1. W lewym okienku okna narzędzia Postman, wybierz pozycję "krok 1: Pobierz uwierzytelniania usługi AAD token".
 2. Następnie wybierz pozycję „Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -85,7 +85,7 @@ Przed rozpoczęciem manipulowanie AMS v3 zasobów należy do pobierania i ustawi
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. Odpowiedź wróci z tokenem i ustawi zmienną środowiskową „AccessToken” na wartość tokenu. Aby wyświetlić kod, który ustawia zmienną „AccessToken”, kliknij kartę **Testy**. 
+4. Odpowiedź wróci z tokenem i ustawi zmienną środowiskową „AccessToken” na wartość tokenu.  
 
     ![Pobieranie tokenu usługi AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 

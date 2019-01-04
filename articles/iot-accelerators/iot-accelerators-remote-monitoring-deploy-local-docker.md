@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: cf3c30d33e618ae3fd9d4ad942c77d211a414e82
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288548"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601155"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie - platformy Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Nauczysz się wdrażanie mikrousług na lokalnym kontenerów platformy Docker. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Nauczysz się wdrażanie mikrousług na lokalnym kontenerów platformy Docker. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługi IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights w chmurze.
 
 Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego w środowisku IDE na komputerze lokalnym, zobacz [wdrażanie programu Visual Studio zdalne monitorowanie akceleratora rozwiązań lokalnie -](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -27,7 +27,7 @@ Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego w środ
 
 Aby wdrożyć usługi platformy Azure używane przez akcelerator rozwiązania monitorowania zdalnego, należy aktywną subskrypcją platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](http://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Ustawienia komputera
 
@@ -72,11 +72,11 @@ Podczas pierwszego uruchamiania tego polecenia Docker pobiera obrazy mikrousług
 > [!TIP]
 > Firma Microsoft publikuje często nowych obrazów platformy Docker za pomocą nowych funkcji. Następujący zestaw poleceń, aby oczyścić można użyć lokalnego kontenerów platformy Docker i odpowiednie obrazów przed pobierania najnowszych te:
 
-    ```cmd/sh
-    docker list
-    docker rm <list_of_containers>
-    docker rmi <list_of_images>
-    ```
+```cmd/sh
+docker list
+docker rm <list_of_containers>
+docker rmi <list_of_images>
+```
 
 Aby wyświetlić dzienniki z kontenera, można użyć oddzielnych powłoki. Najpierw Znajdź przy użyciu Identyfikatora kontenera `docker ps` polecenia. Następnie użyj `docker logs {container-id} --tail 1000` ostatnich 1000 zapisy określonego kontenera.
 

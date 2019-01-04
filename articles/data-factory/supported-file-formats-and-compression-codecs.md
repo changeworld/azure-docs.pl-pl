@@ -9,24 +9,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3498deb85b84c9c47544be1d8c3709c9fc78ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100261"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974368"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
-*Ten temat dotyczy następujące łączniki: [Amazon S3](connector-amazon-simple-storage-service.md), [obiektów Blob platformy Azure](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Usługi azure File Storage](connector-azure-file-storage.md), [System plików](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), i [SFTP](connector-sftp.md).*
+*W tym temacie mają zastosowanie następujące łączniki: [Amazon S3](connector-amazon-simple-storage-service.md), [obiektów Blob platformy Azure](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [usługi Azure File Storage](connector-azure-file-storage.md), [System plików](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), i [SFTP](connector-sftp.md).*
 
 Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. Jeśli chcesz **analizować lub generowanie plików w określonym formacie**, Azure Data Factory obsługuje następujące typy formatów plików:
 
 * [Format tekstu](#text-format)
 * [JSON format](#json-format)
-* [Avro format](#avro-format)
-* [ORC format](#orc-format)
 * [Parquet format](#parquet-format)
+* [ORC format](#orc-format)
+* [Avro format](#avro-format)
 
 > [!TIP]
 > Dowiedz się, jak działanie kopiowania mapuje dane źródła do ujścia z [mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md), w tym jak metadanych jest określone w oparciu o ustawienia formatu pliku i porady w tym, kiedy należy określić [dataset `structure` ](concepts-datasets-linked-services.md#dataset-structure) sekcji.
@@ -39,7 +39,7 @@ Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ust
 | --- | --- | --- | --- |
 | columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Aby wziąć pod uwagę do użycia rzadkich znak niedrukowalny, który nie istnieje w danych. Na przykład określić "\u0001", który reprezentuje Start z nagłówkiem (raportu o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)**. <br/><br/>Aby użyć znaku Unicode, zobacz [znaków Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) można uzyskać odpowiedni kod. |Nie |
 | rowDelimiter |Znak używany do rozdzielania wierszy w pliku. |Dozwolony jest tylko jeden znak. Wartością **domyślną** jest dowolna z następujących wartości przy odczycie: **[„\r\n”, „\r”, „\n”]** oraz wartość **„\r\n”** przy zapisie. |Nie |
-| escapeChar |Znak specjalny służący do zmiany interpretacji ogranicznika kolumny w zawartości pliku wejściowego. <br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Przykład: jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykładowo: „Witaj, świecie”), możesz zdefiniować znak „$” jako znak ucieczki i użyć ciągu „Witaj$, świecie” w źródle. |Nie |
+| escapeChar |Znak specjalny służący do zmiany interpretacji ogranicznika kolumny w zawartości pliku wejściowego. <br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Przykład: Jeśli masz przecinkiem (', '), jak ogranicznik kolumny, ale ma mieć znak przecinka występował w tekście (przykład: "Hello, world"), można zdefiniować "$" jako znak ucieczki i użyć ciągu "Witaj$, world" w źródle. |Nie |
 | quoteChar |Znak używany do umieszczania wartości ciągu w cudzysłowie. Ograniczniki kolumny i wiersza umieszczone w cudzysłowie są traktowane jako część wartości ciągu. Ta właściwość ma zastosowanie zarówno do wejściowych, jak i wyjściowych zestawów danych.<br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Na przykład jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykład: <Witaj, świecie>), możesz zdefiniować cudzysłów (") jako znak cudzysłowu i użyć ciągu "Witaj, świecie" w źródle. |Nie |
 | nullValue |Co najmniej jeden znak służący do reprezentowania wartości null. |Co najmniej jeden znak. Wartości **domyślne** to **„\N” i „NULL”** przy odczycie oraz **„\N”** przy zapisie. |Nie |
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
@@ -78,7 +78,7 @@ Aby użyć właściwości `escapeChar` zamiast `quoteChar`, zastąp wiersz z wł
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Scenariusze użycia właściwości firstRowAsHeader oraz skipLineCount
 
-* Kopiujesz dane ze źródła innego niż plik do pliku tekstowego i chcesz dodać wiersz nagłówka zawierający metadane schematu (na przykład: schemat SQL). Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wyjściowych dla tego scenariusza.
+* Kopiujesz dane ze źródła innego niż plik do pliku tekstowego i chcesz dodać wiersz nagłówka zawierający metadane schematu (na przykład: Schemat SQL). Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wyjściowych dla tego scenariusza.
 * Kopiujesz dane z pliku tekstowego zawierającego wiersz nagłówka do ujścia innego niż plik i chcesz pominąć ten wiersz. Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wejściowych.
 * Kopiujesz dane z pliku tekstowego i chcesz pominąć kilka początkowych wierszy, które nie zawierają żadnych danych bądź informacji nagłówka. Określ właściwość `skipLineCount`, aby wskazać liczbę wierszy do pominięcia. Jeśli pozostała część pliku zawiera wiersz nagłówka, możesz również określić właściwość `firstRowAsHeader`. Jeśli określono zarówno właściwość `skipLineCount`, jak i `firstRowAsHeader`, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego
 
@@ -91,9 +91,9 @@ Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | filePattern |Wskazuje wzorzec danych przechowywanych w każdym pliku JSON. Dozwolone wartości to: **setOfObjects** i **arrayOfObjects**. Wartością **domyślną** jest **setOfObjects**. Aby uzyskać szczegółowe informacje o tych wzorcach, zobacz sekcję [Wzorce plików JSON](#json-file-patterns). |Nie |
-| jsonNodeReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów wewnątrz pola tablicy o tym samym wzorcu, określ ścieżkę JSON tej tablicy. Ta właściwość jest obsługiwana tylko podczas kopiowania danych z plików JSON. | Nie |
-| jsonPathDefinition | Określa wyrażenie ścieżki JSON dla każdego mapowania kolumny z niestandardową nazwą kolumny (musi zaczynać się małą literą). Ta właściwość jest obsługiwana tylko podczas kopiowania danych z plików JSON; dane możesz wyodrębnić z obiektu lub tablicy. <br/><br/> W przypadku pól obiektu głównego na początku użyj elementu głównego $. W przypadku pól wewnątrz tablicy wybranej przez właściwość `jsonNodeReference` najpierw podaj element tablicy. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example). | Nie |
-| encodingName |Określa nazwę kodowania. Aby uzyskać listę prawidłowych nazw kodowania, zobacz właściwość [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Na przykład: windows-1250 lub shift_jis. Wartość **domyślna** to: **UTF-8**. |Nie |
+| jsonNodeReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów wewnątrz pola tablicy o tym samym wzorcu, określ ścieżkę JSON tej tablicy. Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** pliki w formacie JSON. | Nie |
+| jsonPathDefinition | Określa wyrażenie ścieżki JSON dla każdego mapowania kolumny z niestandardową nazwą kolumny (musi zaczynać się małą literą). Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** pliki w formacie JSON i wyodrębnianie danych z obiektu lub tablicy. <br/><br/> W przypadku pól obiektu głównego na początku użyj elementu głównego $. W przypadku pól wewnątrz tablicy wybranej przez właściwość `jsonNodeReference` najpierw podaj element tablicy. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example). | Nie |
+| encodingName |Określa nazwę kodowania. Aby uzyskać listę prawidłowych nazw kodowania zobacz: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) właściwości. Na przykład: windows-1250 lub shift_jis. **Domyślne** wartość to: **UTF-8**. |Nie |
 | nestingSeparator |Znak używany do rozdzielania poziomów zagnieżdżenia. Wartość domyślna to „.” (kropka). |Nie |
 
 ### <a name="json-file-patterns"></a>Wzorce plików JSON
@@ -189,9 +189,7 @@ Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
 
 ### <a name="jsonformat-example"></a>Przykład formatu JsonFormat
 
-**Przypadek 1. Kopiowanie danych z plików JSON**
-
-Podczas kopiowania danych z plików JSON, zobacz poniższe dwa przykłady. Ogólne kwestie należy pamiętać:
+**Przypadek 1: Kopiowanie danych z plików JSON**
 
 **Przykład 1. Wyodrębnianie danych z obiektu i tablicy**
 
@@ -351,7 +349,7 @@ Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: 
 * Jeśli na tym samym poziomie występują zduplikowane nazwy, działanie kopiowania wybierze ostatnią z nich.
 * W przypadku nazw właściwości wielkość liter ma znaczenie. Dwie właściwości o takiej samej nazwie, ale zapisanej przy użyciu różnej wielkości liter, są traktowane jako dwie osobne właściwości.
 
-**Przypadek 2. Zapisywanie danych do pliku JSON**
+**Przypadek 2: Zapisywanie danych w pliku JSON**
 
 Jeśli masz poniższej tabeli w bazie danych SQL:
 
@@ -405,22 +403,51 @@ Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: 
 }
 ```
 
-## <a name="avro-format"></a>AVRO format
+## <a name="parquet-format"></a>Parquet format
 
-Jeśli chcesz analizować pliki Avro lub zapisywać dane w formacie Avro, ustaw właściwość `format` `type` na wartość **AvroFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
+Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
 "format":
 {
-    "type": "AvroFormat",
+    "type": "ParquetFormat"
 }
 ```
 
-Aby użyć formatu Avro w tabeli programu Hive, możesz zapoznać się z [samouczkiem oprogramowania Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
+> [!IMPORTANT]
+> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
+>
 
 Pamiętaj o następujących kwestiach:
 
-* [Złożone typy danych](http://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rekordy, wyliczenia, tablice, mapy, unie i stała).
+* Złożone typy danych są nie są obsługiwane (mapa, lista).
+* Biały znak w nazwie kolumny nie jest obsługiwane.
+* Plik parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Odczytywanie danych z pliku Parquet w dowolnej z tych skompresowanych formatów, z wyjątkiem LZO — używa kodera-dekodera kompresji w metadanych do odczytywania danych obsługuje fabryki danych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
+
+### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie plików Parquet — typ danych
+
+| Typ danych tymczasowych fabryki danych | Typ pierwotny parquet | Parquet oryginalny typ (deserializacji) | Parquet oryginalny typ (serializować) |
+|:--- |:--- |:--- |:--- |
+| Wartość logiczna | Wartość logiczna | ND | ND |
+| Sbyte — | Int32 | Int8 | Int8 |
+| Bajtów | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/dane binarne | UInt64 | Dziesiętna |
+| Pojedyncze | float | ND | ND |
+| Podwójne | Podwójne | ND | ND |
+| Dziesiętna | Binarny | Dziesiętna | Dziesiętna |
+| Ciąg | Binarny | Utf8 | Utf8 |
+| DateTime | Int96 | ND | ND |
+| Przedział czasu | Int96 | ND | ND |
+| DateTimeOffset | Int96 | ND | ND |
+| ByteArray | Binarny | ND | ND |
+| Identyfikator GUID | Binarny | Utf8 | Utf8 |
+| Char | Binarny | Utf8 | Utf8 |
+| CharArray | Nieobsługiwane | ND | ND |
 
 ## <a name="orc-format"></a>ORC format
 
@@ -439,7 +466,8 @@ Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw w�
 
 Pamiętaj o następujących kwestiach:
 
-* Złożone typy danych nie są obsługiwane (struktura, mapa, lista, unia)
+* Złożone typy danych są nie są obsługiwane (struktura, mapa, lista, Unii).
+* Biały znak w nazwie kolumny nie jest obsługiwane.
 * Plik ORC ma trzy [opcje związane z kompresją](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku ORC usługa Data Factory wybiera natomiast opcję ZLIB, która jest domyślna dla formatu ORC. Obecnie nie ma możliwości zastąpienia tego zachowania.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Mapowanie plików ORC — typ danych
@@ -466,50 +494,22 @@ Pamiętaj o następujących kwestiach:
 | Identyfikator GUID | Ciąg |
 | Char | Char(1) |
 
-## <a name="parquet-format"></a>Parquet format
+## <a name="avro-format"></a>AVRO format
 
-Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
+Jeśli chcesz analizować pliki Avro lub zapisywać dane w formacie Avro, ustaw właściwość `format` `type` na wartość **AvroFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
 "format":
 {
-    "type": "ParquetFormat"
+    "type": "AvroFormat",
 }
 ```
 
-> [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
->
+Aby użyć formatu Avro w tabeli programu Hive, możesz zapoznać się z [samouczkiem oprogramowania Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
 
 Pamiętaj o następujących kwestiach:
 
-* Złożone typy danych nie są obsługiwane (mapa, lista)
-* Plik Parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Usługa Data Factory obsługuje Odczyt danych z pliku Parquet w dowolnej z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
-
-### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie plików Parquet — typ danych
-
-| Typ danych tymczasowych fabryki danych | Typ pierwotny parquet | Parquet oryginalny typ (deserializacji) | Parquet oryginalny typ (serializować) |
-|:--- |:--- |:--- |:--- |
-| Wartość logiczna | Wartość logiczna | ND | ND |
-| Sbyte — | Int32 | Int8 | Int8 |
-| Bajtów | Int32 | UInt8 | Int16 |
-| Int16 | Int32 | Int16 | Int16 |
-| UInt16 | Int32 | UInt16 | Int32 |
-| Int32 | Int32 | Int32 | Int32 |
-| UInt32 | Int64 | UInt32 | Int64 |
-| Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/dane binarne | UInt64 | Dziesiętna |
-| Pojedyncze | float | ND | ND |
-| Podwójne | Podwójne | ND | ND |
-| Dziesiętna | Binarny | Dziesiętna | Dziesiętna |
-| Ciąg | Binarny | Utf8 | Utf8 |
-| DateTime | Int96 | ND | ND |
-| Przedział czasu | Int96 | ND | ND |
-| DateTimeOffset | Int96 | ND | ND |
-| ByteArray | Binarny | ND | ND |
-| Identyfikator GUID | Binarny | Utf8 | Utf8 |
-| Char | Binarny | Utf8 | Utf8 |
-| CharArray | Nieobsługiwane | ND | ND |
+* [Złożone typy danych](http://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rekordy, wyliczenia, tablice, mapy, unie i stała).
 
 ## <a name="compression-support"></a>Obsługa kompresji
 
@@ -551,8 +551,8 @@ Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość 
 * **Typ:** kodera-dekodera kompresji, który może być **GZIP**, **Deflate**, **BZIP2**, lub **ZipDeflate**.
 * **Poziom:** kompresji, który może być **optymalna** lub **najszybciej**.
 
-  * **Najszybszy:** operacji kompresji powinno zakończyć się jak najszybciej, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany.
-  * **Optymalne**: operacja kompresji powinien być optymalnie skompresowany, nawet wtedy, gdy operacja trwa dłużej.
+  * **Najszybszy:** Kompresja operacja powinna być uznana tak szybko, jak to możliwe, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany.
+  * **Optymalne**: Operacja kompresji powinny zostać skompresowane optymalnie, nawet wtedy, gdy operacja trwa dłużej.
 
     Aby uzyskać więcej informacji, zobacz [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tematu.
 

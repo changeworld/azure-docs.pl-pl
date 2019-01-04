@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383905"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713832"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstaluj Apache Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
 
 Dowiedz się, jak zainstalować system Apache Giraph w klastrze usługi HDInsight. Funkcja akcji skryptu HDInsight umożliwia dostosowanie klastra, uruchamiając skrypt powłoki bash. Skrypty można dostosowywać klastry, podczas i po utworzeniu klastra.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="whatis"></a>Co to jest system Giraph
 
-[Apache Giraph](http://giraph.apache.org/) umożliwia wykonywanie wykres przetwarzania za pomocą usługi Hadoop i mogą być używane z usługi Azure HDInsight. Wykresy modelowania relacji między obiektami. Na przykład połączenia między routerami w dużej sieci, takich jak Internet lub relacji między osobami w sieciach społecznościowych. Przetwarzanie wykresów umożliwia przeglądanie informacji o relacji między obiektami w grafie, takich jak:
+[Apache Giraph](https://giraph.apache.org/) umożliwia wykonywanie wykres przetwarzania za pomocą usługi Hadoop i mogą być używane z usługi Azure HDInsight. Wykresy modelowania relacji między obiektami. Na przykład połączenia między routerami w dużej sieci, takich jak Internet lub relacji między osobami w sieciach społecznościowych. Przetwarzanie wykresów umożliwia przeglądanie informacji o relacji między obiektami w grafie, takich jak:
 
 * Identyfikowanie potencjalnych znajomych, na podstawie Twojej bieżącej relacji.
 
@@ -36,7 +36,7 @@ Dowiedz się, jak zainstalować system Apache Giraph w klastrze usługi HDInsigh
 > [!WARNING]  
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane — Microsoft Support pomaga wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Składniki niestandardowe, takie jak system Giraph otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Microsoft Support może mieć do rozwiązania problemu. W przeciwnym razie należy zapoznać się z społeczności "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe, takie jak system Giraph otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Microsoft Support może mieć do rozwiązania problemu. W przeciwnym razie należy zapoznać się z społeczności "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Projektów Apache mieć witryny projektu na [ https://apache.org ](https://apache.org), na przykład: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Działanie skryptu
@@ -55,7 +55,7 @@ Przykładowy skrypt, aby zainstalować system Giraph w klastrze usługi HDInsigh
 
 Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt podczas tworzenia klastra przy użyciu witryny Azure portal.
 
-> [!NOTE]
+> [!NOTE]  
 > Akcja skryptu można zastosować przy użyciu dowolnej z następujących metod:
 > * Azure PowerShell
 > * Klasyczny interfejs wiersza polecenia Azure
@@ -86,7 +86,7 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt po
 
 ## <a name="usegiraph"></a>Jak korzystać z systemu Giraph w HDInsight?
 
-Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład SimpleShortestPathsComputation dołączone do systemu Giraph. W tym przykładzie użyto podstawowa [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) wdrażania służące do znajdowania najkrótsze ścieżki między obiektami w grafie.
+Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład SimpleShortestPathsComputation dołączone do systemu Giraph. W tym przykładzie użyto podstawowa [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) wdrażania służące do znajdowania najkrótsze ścieżki między obiektami w grafie.
 
 1. Nawiąż połączenie z klastrem usługi HDInsight przy użyciu protokołu SSH:
 
@@ -146,7 +146,7 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
    | `-op` |Lokalizacja danych wyjściowych. |
    | `-w 2` |Liczba procesów roboczych do użycia. W tym przykładzie 2. |
 
-    Aby uzyskać więcej informacji na temat tych i innych parametrów używane z systemu Giraph przykładów, zobacz [Szybki Start Giraph](http://giraph.apache.org/quick_start.html).
+    Aby uzyskać więcej informacji na temat tych i innych parametrów używane z systemu Giraph przykładów, zobacz [Szybki Start Giraph](https://giraph.apache.org/quick_start.html).
 
 6. Po zakończeniu zadania, wyniki są przechowywane w **/example/out/shotestpaths** katalogu. Nazw plików wyjściowych zaczynają się od **część-m -** oraz kończyć się liczbę określającą pierwszy, drugi, plików itp. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
 

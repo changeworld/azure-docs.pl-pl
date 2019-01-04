@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 1df23a35e16d4ba3562ebbc9d89a7a8003afc784
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: ab80dd86e544127fc3f40f5459ef9a587c7cd511
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498939"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581508"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurowanie magazynu i skalowalności klastra Apache Kafka w usłudze HDInsight
 
@@ -26,18 +26,18 @@ Poniższy diagram przedstawia porównanie platformy Kafka w usłudze HDInsight p
 
 ![Diagram przedstawiający porównanie platformy Kafka w usłudze HDInsight z użyciem jednego wirtualnego dysku twardego na maszynę wirtualną oraz z użyciem wielu dysków zarządzanych na maszynę wirtualną](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## <a name="configure-managed-disks-azure-portal"></a>Konfigurowanie dysków zarządzanych: witryna Azure Portal
+## <a name="configure-managed-disks-azure-portal"></a>Konfigurowanie dysków zarządzanych: Azure Portal
 
 1. Aby zapoznać się z typowymi czynnościami tworzenia klastra przy użyciu witryny, wykonaj kroki opisane w temacie [Tworzenie klastra usługi HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md). Nie wykonuj procesu tworzenia w witrynie.
 
 2. W sekcji __Rozmiar klastra__ określ liczbę dysków w polu __Liczba dysków na węzeł procesu roboczego__.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Dyski w warstwie Premium są używane przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych.
 
     ![Obraz sekcji rozmiaru klastra z wyróżnionymi dyskami dla każdego węzła procesu roboczego](./media/apache-kafka-scalability/set-managed-disks-portal.png)
 
-## <a name="configure-managed-disks-resource-manager-template"></a>Konfigurowanie dysków zarządzanych: szablon usługi Resource Manager
+## <a name="configure-managed-disks-resource-manager-template"></a>Konfigurowanie dysków zarządzanych: Szablon usługi Resource Manager
 
 Aby kontrolować liczbę dysków używanych przez węzły procesu roboczego w klastrze Kafka, użyj następującej sekcji szablonu:
 

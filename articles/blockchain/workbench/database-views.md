@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 893e44b3298a03559b7dea4721e3bbbab0c65897
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4d5b98ab001bcb30091590880954c7075701e53b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615929"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607357"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Widoki bazy danych w aplikacji Azure Blockchain Workbench
 
@@ -27,7 +27,7 @@ Ta sekcja zawiera omówienie widoki bazy danych i danych, które zawierają.
 
 > [!NOTE]
 > Bezpośrednie użycie tabel bazy danych w bazie danych poza te widoki, ile jest to możliwe, nie jest obsługiwane.
-> 
+>
 
 ## <a name="vwapplication"></a>vwApplication
 
@@ -39,11 +39,11 @@ Ten widok zawiera szczegółowe informacje dotyczące **aplikacje** zostały prz
 | ApplicationName                  | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDescription           | nvarchar(255) | Yes         | Opis aplikacji |
 | ApplicationDisplayName           | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled               | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.</br> **Uwaga:** mimo, że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled               | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | UploadedDtTm                     | datetime2(7)  | Nie          | Data i godzina, który został przekazany kontraktu |
 | UploadedByUserId                 | int           | Nie          | Identyfikator użytkownika, który przekazywane aplikacji |
 | UploadedByUserExternalId         | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który przekazywane aplikacji. Domyślnie jest to identyfikator dla użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                                                |
-| UploadedByUserProvisioningStatus | int           | Nie          | Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: </br>0 – użytkownika została utworzona przez interfejs API<br>1 — klucz został skojarzony z użytkownikiem w bazie danych</br>2 — użytkownik jest w pełni zaaprowizowanym                         |
+| UploadedByUserProvisioningStatus | int           | Nie          | Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym                         |
 | UploadedByUserFirstName          | nvarchar(50)  | Yes         | Imię użytkownika, który kontrakt przekazany |
 | UploadedByUserLastName           | nvarchar(50)  | Yes         | Nazwisko użytkownika, który kontrakt przekazany |
 | UploadedByUserEmailAddress       | nvarchar(255) | Yes         | Adres e-mail użytkownika, który kontrakt przekazany |
@@ -81,7 +81,7 @@ W *transferu zawartości* aplikacji, na przykład *Jan Kowalski* mogą być skoj
 | ApplicationRoleDescription | nvarchar(255) | Yes         | Opis roli                                                                                                                                                                                                             |
 | UserId                     | int           | Nie          | Identyfikator użytkownika skojarzony z rolą |
 | UserExternalId             | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który jest skojarzony z rolą. Domyślnie jest to identyfikator dla użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                     |
-| UserProvisioningStatus     | int           | Nie          | Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: </br>0 – użytkownika została utworzona przez interfejs API</br>1 — klucz został skojarzony z użytkownikiem w bazie danych<br>2 — użytkownik jest w pełni zaaprowizowanym |
+| UserProvisioningStatus     | int           | Nie          | Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym |
 | UserFirstName              | nvarchar(50)  | Yes         | Imię użytkownika, który jest skojarzony z rolą |
 | UserLastName               | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest skojarzony z rolą |
 | UserEmailAddress           | nvarchar(255) | Yes         | Adres e-mail użytkownika, który jest skojarzony z rolą |
@@ -103,7 +103,7 @@ Ten widok zawiera szczegółowe informacje dotyczące połączenia zdefiniowane 
 | LedgerDisplayName        | nvarchar(255) | Nie          | Nazwa rejestru do wyświetlenia w interfejsie użytkownika |
 | UserId                   | int           | Nie          | Identyfikator użytkownika skojarzony z tym połączeniem |
 | UserExternalId           | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który jest skojarzony z tym połączeniem. Domyślnie jest to identyfikator dla użytkownika z usługi Azure Active Directory przez konsorcjum. |
-| UserProvisioningStatus   | int           | Nie          |Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: </br>0 – użytkownika została utworzona przez interfejs API</br>1 — klucz został skojarzony z użytkownikiem w bazie danych<br>2 — użytkownik jest w pełni zaaprowizowanym |
+| UserProvisioningStatus   | int           | Nie          |Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym |
 | UserFirstName            | nvarchar(50)  | Yes         | Imię użytkownika, który jest skojarzony z tym połączeniem |
 | UserLastName             | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest skojarzony z tym połączeniem |
 | UserEmailAddress         | nvarchar(255) | Yes         | Adres e-mail użytkownika, który jest skojarzony z tym połączeniem |
@@ -129,7 +129,7 @@ Ten widok udostępnia szczegółowe informacje o wdrożonych umów. Dla każdej 
 | ApplicationId                            | int            | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                          | nvarchar (50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName                   | nvarchar (255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                       | Bitowe            | Nie          | Określa, czy aplikacja jest obecnie włączona.</br> **Uwaga:** mimo, że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.  |
+| ApplicationEnabled                       | Bitowe            | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.  |
 | WorkflowId                               | int            | Nie          | Unikatowy identyfikator dla przepływu pracy skojarzonego z umową |
 | WorkflowName                             | nvarchar(50)   | Nie          | Nazwa przepływu pracy skojarzonego z umową |
 | WorkflowDisplayName                      | nvarchar(255)  | Nie          | Nazwa przepływu pracy skojarzonego z kontraktem wyświetlane w interfejsie użytkownika |
@@ -138,11 +138,11 @@ Ten widok udostępnia szczegółowe informacje o wdrożonych umów. Dla każdej 
 | ContractFileName                         | int            | Nie          | Nazwa pliku zawierającego kod inteligentne umowy, dla tego przepływu pracy. |
 | ContractUploadedDtTm                     | int            | Nie          | Data i godzina, który został przekazany kodu kontraktu |
 | ContractId                               | int            | Nie          | Unikatowy identyfikator zamówienia |
-| ContractProvisioningStatus               | int            | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: </br>0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych</br>1 — Umowa została wysłana do rejestru</br>2 — Umowa została pomyślnie wdrożona w księdze</br>3 lub 4 - kontrakt nie udało się wdrożyć w księdze</br>5 — Umowy został pomyślnie wdrożony w księdze </br></br>Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
+| ContractProvisioningStatus               | int            | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: <br />0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Umowa została wysłana do rejestru<br />2 — Umowa została pomyślnie wdrożona w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
 | ContractLedgerIdentifier                 | nvarchar (255) |             | Adres e-mail użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserId                 | int            | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika.                                                                                                          |
 | ContractDeployedByUserExternalId         | nvarchar(255)  | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika.                                                                                                         |
-| ContractDeployedByUserProvisioningStatus | int            | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla użytkownika. Możliwe wartości: </br>0 – użytkownika została utworzona przez interfejs API</br>1 — klucz został skojarzony z użytkownikiem w bazie danych </br>2 — użytkownik jest w pełni zaaprowizowanym                     |
+| ContractDeployedByUserProvisioningStatus | int            | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych <br />2 — użytkownik jest w pełni zaaprowizowanym                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | Yes         | Imię użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserLastName           | nvarchar(255)  | Yes         | Nazwisko użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserEmailAddress       | nvarchar(255)  | Yes         | Adres e-mail użytkownika, który jest wdrożony umowy |
@@ -170,7 +170,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | WorkflowDisplayName                      | nvarchar(255) | Nie          | Nazwa przepływu pracy do wyświetlenia w interfejsie użytkownika |
 | WorkflowDescription                      | nvarchar(255) | Yes         | Opis przepływu pracy |
 | ContractId                               | int           | Nie          | Unikatowy identyfikator zamówienia |
-| ContractProvisioningStatus               | int           | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: </br>0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych</br>1 — Umowa została wysłana do rejestru</br>2 — Umowa została pomyślnie wdrożona w księdze</br>3 lub 4 - kontrakt nie udało się wdrożyć w księdze</br>5 — Umowy został pomyślnie wdrożony w księdze </br></br>Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractActionV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
+| ContractProvisioningStatus               | int           | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: <br />0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Umowa została wysłana do rejestru<br />2 — Umowa została pomyślnie wdrożona w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractActionV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
 | ContractCodeId                           | int           | Nie          | Unikatowy identyfikator dla implementacji kodu kontraktu |
 | ContractLedgerIdentifier                 | nvarchar(255) | Yes         | Unikatowy identyfikator skojarzony z wdrożoną wersję inteligentne kontraktu dla określonego rejestru rozproszonego. Na przykład, Ethereum. |
 | ContractDeployedByUserId                 | int           | Nie          | Unikatowy identyfikator użytkownika, który kontrakt wdrożone |
@@ -183,12 +183,12 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | WorkflowFunctionDisplayName              | nvarchar(255) | Nie          | Nazwa funkcji ma być wyświetlana w interfejsie użytkownika |
 | WorkflowFunctionDescription              | nvarchar(255) | Nie          | Opis funkcji |
 | ContractActionId                         | int           | Nie          | Unikatowy identyfikator dla akcji kontraktu |
-| ContractActionProvisioningStatus         | int           | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla akcji kontraktu. Możliwe wartości: </br>0 – akcji kontraktu utworzonych przy użyciu interfejsu API w bazie danych</br>1 — Akcja umowy zostało wysłane do rejestru</br>2 — Akcja kontraktu został pomyślnie wdrożony w księdze</br>3 lub 4 - kontrakt nie udało się wdrożyć w księdze</br>5 — Umowy został pomyślnie wdrożony w księdze </br></br>Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractActionV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
+| ContractActionProvisioningStatus         | int           | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla akcji kontraktu. Możliwe wartości: <br />0 – akcji kontraktu utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Akcja umowy zostało wysłane do rejestru<br />2 — Akcja kontraktu został pomyślnie wdrożony w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractActionV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
 | ContractActionTimestamp                  | DATETIME(2,7) | Nie          | Sygnatura czasowa akcji kontraktu |
 | ContractActionExecutedByUserId           | int           | Nie          | Unikatowy identyfikator użytkownika, która wykonana akcja kontraktu |
 | ContractActionExecutedByUserFirstName    | int           | Yes         | Imię użytkownika, który wykonał akcję kontraktu |
 | ContractActionExecutedByUserLastName     | nvarchar(50)  | Yes         | Nazwisko użytkownika, który wykonał akcję kontraktu |
-| ContractActionExecutedByUserExternalId   | nvarchar(255) | Yes         | Zewnętrzny identyfikator użytkownika, który wykonał akcję kontraktu.  Domyślnie jest to identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory. |
+| ContractActionExecutedByUserExternalId   | nvarchar(255) | Yes         | Zewnętrzny identyfikator użytkownika, który wykonał akcję kontraktu. Domyślnie jest to identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory. |
 | ContractActionExecutedByUserEmailAddress | nvarchar(255) | Yes         | Adres e-mail użytkownika, który wykonał akcję kontraktu |
 | WorkflowFunctionParameterId              | int           | Nie          | Unikatowy identyfikator dla parametru funkcji |
 | WorkflowFunctionParameterName            | nvarchar(50)  | Nie          | Nazwa parametru funkcji |
@@ -204,7 +204,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | TransactionTo                            | nvarchar(255) | Yes         | Strona, która została dokonana transakcja z |
 | TransactionHash                          | nvarchar(255) | Yes         | Skrót transakcji |
 | TransactionIsWorkbenchTransaction        | Bitowe           | Yes         | Bit, który określa, czy transakcja jest transakcji aplikacji Azure Blockchain Workbench |
-| TransactionProvisioningStatus            | int           | Yes         | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla transakcji. Możliwe wartości: </br>0 – transakcja została utworzona przez interfejs API w bazie danych</br>1 — transakcja została wysłana do rejestru</br>2 — transakcja została pomyślnie wdrożona w księdze                 |
+| TransactionProvisioningStatus            | int           | Yes         | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla transakcji. Możliwe wartości: <br />0 – transakcja została utworzona przez interfejs API w bazie danych<br />1 — transakcja została wysłana do rejestru<br />2 — transakcja została pomyślnie wdrożona w księdze                 |
 | TransactionValue                         | decimal(32,2) | Yes         | Wartość transakcji |
 
 ## <a name="vwcontractproperty"></a>vwContractProperty
@@ -223,13 +223,13 @@ Ten widok zaspokajają większość informacje dotyczące właściwości skojarz
 | ApplicationId                      | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                    | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName             | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                 | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.</br>**Uwaga:** mimo, że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.                      |
+| ApplicationEnabled                 | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.                      |
 | WorkflowId                         | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                       | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName                | nvarchar(255) | Nie          | Nazwa przepływu pracy, wyświetlana w interfejsie użytkownika |
 | WorkflowDescription                | nvarchar(255) | Yes         | Opis przepływu pracy |
 | ContractId                         | int           | Nie          | Unikatowy identyfikator zamówienia |
-| ContractProvisioningStatus         | int           | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: </br>0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych</br>1 — Umowa została wysłana do rejestru</br>2 — Umowa została pomyślnie wdrożona w księdze</br>3 lub 4 - kontrakt nie udało się wdrożyć w księdze</br>5 — Umowy został pomyślnie wdrożony w księdze </br></br>Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractPropertyV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
+| ContractProvisioningStatus         | int           | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: <br />0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Umowa została wysłana do rejestru<br />2 — Umowa została pomyślnie wdrożona w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractPropertyV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
 | ContractCodeId                     | int           | Nie          | Unikatowy identyfikator dla implementacji kodu kontraktu |
 | ContractLedgerIdentifier           | nvarchar(255) | Yes         | Unikatowy identyfikator skojarzony z wdrożoną wersję inteligentne kontraktu dla określonego rejestru rozproszonego. Na przykład, Ethereum. |
 | ContractDeployedByUserId           | int           | Nie          | Unikatowy identyfikator użytkownika, który kontrakt wdrożone |
@@ -263,14 +263,14 @@ Ten widok zaspokajają większość informacji dotyczących stanu określonych z
 | ApplicationId                      | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                    | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName             | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                 | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.</br>**Uwaga:** mimo, że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled                 | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | WorkflowId                         | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                       | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName                | nvarchar(255) | Nie          | Nazwa wyświetlana w interfejsie użytkownika |
 | WorkflowDescription                | nvarchar(255) | Yes         | Opis przepływu pracy |
 | ContractLedgerImplementationId     | nvarchar(255) | Yes         | Unikatowy identyfikator skojarzony z wdrożoną wersję inteligentne kontraktu dla określonego rejestru rozproszonego. Na przykład, Ethereum. |
 | ContractId                         | int           | Nie          | Unikatowy identyfikator zamówienia |
-| ContractProvisioningStatus         | int           | Nie          |Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: </br>0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych</br>1 — Umowa została wysłana do rejestru</br>2 — Umowa została pomyślnie wdrożona w księdze</br>3 lub 4 - kontrakt nie udało się wdrożyć w księdze</br>5 — Umowy został pomyślnie wdrożony w księdze </br></br>Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractStateV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
+| ContractProvisioningStatus         | int           | Nie          |Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: <br />0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Umowa została wysłana do rejestru<br />2 — Umowa została pomyślnie wdrożona w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractStateV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
 | Identyfikator połączenia                       | int           | Nie          | Unikatowy identyfikator wystąpienia łańcucha bloków, które jest wdrażana przepływu pracy |
 | ContractCodeId                     | int           | Nie          | Unikatowy identyfikator dla implementacji kodu kontraktu |
 | ContractDeployedByUserId           | int           | Nie          | Unikatowy identyfikator użytkownika, który wdrożony umowy |
@@ -297,7 +297,7 @@ Ten widok udostępnia szczegółowe informacje na elementach członkowskich kons
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | Nie          | Unikatowy identyfikator dla użytkownika |
 | externalID         | nvarchar(255) | Nie          | Zewnętrznego identyfikatora użytkownika. Domyślnie jest to identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika. |
-| ProvisioningStatus | int           | Nie          |Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: </br>0 – użytkownika została utworzona przez interfejs API</br>1 — klucz został skojarzony z użytkownikiem w bazie danych<br>2 — użytkownik jest w pełni zaaprowizowanym |
+| ProvisioningStatus | int           | Nie          |Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym |
 | FirstName          | nvarchar(50)  | Yes         | Imię użytkownika |
 | LastName           | nvarchar(50)  | Yes         | Nazwisko użytkownika |
 | EmailAddress       | nvarchar(255) | Yes         | Adres e-mail użytkownika |
@@ -331,7 +331,7 @@ Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także funkcje i parametry przepływu pracy. Zaprojektowana pod kątem raportowania, również zawiera metadane dotyczące aplikacji skojarzonej z przepływem pracy. Ten widok zawiera dane z wielu tabel w celu ułatwienia tworzenia raportów w przepływach pracy.  Dla każdej funkcji przepływu pracy ten widok zawiera następujące dane:
+Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także funkcje i parametry przepływu pracy. Zaprojektowana pod kątem raportowania, również zawiera metadane dotyczące aplikacji skojarzonej z przepływem pracy. Ten widok zawiera dane z wielu tabel w celu ułatwienia tworzenia raportów w przepływach pracy. Dla każdej funkcji przepływu pracy ten widok zawiera następujące dane:
 
 -   Definicja skojarzonej aplikacji
 -   Definicja przepływu pracy skojarzonego
@@ -371,7 +371,7 @@ Ten widok przedstawia właściwości zdefiniowane dla przepływu pracy. Dla każ
 | ApplicationId                | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName              | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName       | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled           | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.</br>**Uwaga:** mimo, że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled           | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | WorkflowId                   | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                 | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName          | nvarchar(255) | Nie          | Nazwa wyświetlana przepływu pracy za pomocą interfejsu użytkownika |
@@ -398,7 +398,7 @@ Ten widok przedstawia właściwości skojarzone z przepływem pracy. Dla każdej
 | ApplicationId                | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName              | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName       | nvarchar(255) | Nie          | Opis aplikacji |
-| ApplicationEnabled           | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.</br>**Uwaga:** mimo, że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled           | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | WorkflowId                   | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                 | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName          | nvarchar(255) | Nie          | Nazwa wyświetlana w interfejsie użytkownika dla przepływu pracy |

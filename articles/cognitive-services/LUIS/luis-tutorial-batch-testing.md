@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106043"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754394"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>Samouczek 2: Zestawy danych testowych partii
+# <a name="tutorial-batch-test-data-sets"></a>Samouczek: Zestawy danych testowych usługi Batch
 
 Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.  
 
@@ -36,7 +36,7 @@ Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wyp
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka
+> * Importuj przykładową aplikację
 > * Utwórz plik wsadowy testu 
 > * Uruchom test usługi batch
 > * Przejrzyj wyniki testu
@@ -45,13 +45,13 @@ Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wyp
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+## <a name="import-example-app"></a>Importuj przykładową aplikację
 
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+Wykonaj następujące czynności:
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 
@@ -61,7 +61,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
 ## <a name="batch-file"></a>Plik wsadowy
 
-1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) go. 
+1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) go. 
 
 2. W pliku wsadowym w formacie JSON, dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście. 
 
@@ -177,7 +177,7 @@ Po pierwsze pisaniu i testowaniu plików wsadowych, zaleca się rozpoczynać kil
 
 Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jednego lub dwóch słów o kilka przykładów jest więcej słów. Jeśli _własne_ aplikacji kadrowej zwykle zawiera nazwy zadania wiele słów, z etykietą wypowiedzi przykład **zadania** jednostki w tej aplikacji nie będzie działać poprawnie.
 
-1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/) lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) go.
+1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/) lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) go.
 
 
 2. W pliku wsadowym w formacie JSON, Dodaj tablicę obiektów, które zawierają wypowiedzi z **intencji** mają dostęp do przewidywanych w test, a także lokalizacje wszystkie jednostki w wypowiedź. Ponieważ jednostka jest oparte na tokenie, upewnij się, uruchamianie i zatrzymywanie każdej jednostki na znak. Nie rozpoczyna się lub kończy wypowiedź w miejscu. Powoduje to błąd podczas importowania pliku wsadowego.  

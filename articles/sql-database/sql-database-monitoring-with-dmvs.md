@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 88e0ad847d8d779bd769ed73d4f0393ddfb65588
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876317"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604433"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie wydajności usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -574,7 +574,7 @@ W kolejnym przykładzie pokazano różne sposoby, w którym można **sys.resourc
     ORDER BY start_time DESC;
     ```
 
-2. Aby ocenić, jak dobrze pasuje do rozmiaru obliczeń obciążenia, musisz przejść do każdego aspektu metryk zasobów: procesora CPU, operacje odczytu, zapisu, liczba procesów roboczych i liczba sesji. Poniżej przedstawiono poprawioną wykonywać zapytania za pomocą **sys.resource_stats** zgłosić średnie i maksymalne wartości tych metryk zasobów:
+2. Aby ocenić, jak dobrze pasuje do rozmiaru obliczeń obciążenia, musisz przejść do każdego aspektu metryk zasobów: Procesora CPU, operacje odczytu, zapisu, liczba procesów roboczych i liczbę sesji. Poniżej przedstawiono poprawioną wykonywać zapytania za pomocą **sys.resource_stats** zgłosić średnie i maksymalne wartości tych metryk zasobów:
 
     ```sql
     SELECT

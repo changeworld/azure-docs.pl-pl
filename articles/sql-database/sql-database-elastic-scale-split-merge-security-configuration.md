@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964836"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599836"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
 Aby użyć usługi dzielenia i scalania, należy poprawnie skonfigurować zabezpieczenia. Usługa jest częścią funkcji elastyczne skalowanie systemu Microsoft Azure SQL Database. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scalić samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -43,7 +43,7 @@ Jeśli te opcje nie są dostępne, można wygenerować **certyfikaty z podpisem 
     Jeśli zainstalowano, przejdź do:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Pobierz WDK z [Windows 8.1: zestawy i narzędzia do pobrania](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Pobierz WDK z [Windows 8.1: Pobieranie zestawów i narzędzi](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Aby skonfigurować certyfikat SSL
 Certyfikat SSL jest wymagany do szyfrowania komunikacji i uwierzytelniania serwera. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy, a wykonywanie wszystkich jej kroków:

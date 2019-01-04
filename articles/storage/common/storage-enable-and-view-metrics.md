@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3e6a11a8c225afb220f290cee2db39c36750b401
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531529"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632148"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Włączanie metryk usługi Azure Storage i wyświetlanie danych metryk
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -37,7 +37,10 @@ Wykonaj następujące kroki, aby włączyć metryki w [witryny Azure portal](htt
 [Witryny Azure portal](https://portal.azure.com) nie obecnie umożliwiają skonfigurowanie metryki minut w ramach konta magazynu; należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
 
 ## <a name="how-to-enable-metrics-using-powershell"></a>Jak włączyć metryki za pomocą programu PowerShell
-PowerShell na komputerze lokalnym służy do konfigurowania metryk usługi Storage na koncie magazynu przy użyciu programu Azure PowerShell polecenia cmdlet Get-AzureStorageServiceMetricsProperty, aby pobrać bieżące ustawienia i polecenia cmdlet Set-AzureStorageServiceMetricsProperty do zmiany bieżących ustawień.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+PowerShell na komputerze lokalnym służy do konfigurowania metryk usługi Storage na koncie magazynu przy użyciu programu Azure PowerShell polecenia cmdlet Get-AzStorageServiceMetricsProperty, aby pobrać bieżące ustawienia i polecenia cmdlet Set-AzStorageServiceMetricsProperty Aby zmienić bieżących ustawień.
 
 Polecenia cmdlet, które kontrolują metryk usługi Storage, użyj następujących parametrów:
 
@@ -48,16 +51,16 @@ Polecenia cmdlet, które kontrolują metryk usługi Storage, użyj następujący
 Na przykład następujące polecenie zmienia się na metryki minut dla usługi Blob na koncie magazynu domyślnego przechowywania ustawionej pięć dni:
 
 ```powershell
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 ```
 
 Następujące polecenie pobiera bieżący godzinowe metryki poziomu i przechowywania dni na usługę blob service na koncie magazynu domyślnego:
 
 ```powershell
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Aby uzyskać informacje o sposobie konfigurowania poleceń cmdlet programu Azure PowerShell do pracy z subskrypcją platformy Azure i jak wybrać domyślne konto magazynu do użycia, zobacz: [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać informacje o sposobie konfigurowania poleceń cmdlet programu Azure PowerShell do pracy z subskrypcją platformy Azure i jak wybrać domyślne konto magazynu do użycia, zobacz: [Jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>Jak włączyć metryki magazynu, programowo
 Poniższy fragment kodu języka C# pokazano, jak włączyć metryki i rejestrowanie dla usługi Blob przy użyciu biblioteki klienta usługi storage dla platformy .NET:
@@ -131,7 +134,7 @@ Aby uzyskać dostęp do tabel analytics programowo, należy pamiętać, że tabe
 
 Możesz znaleźć szczegółowe informacje ze schematów dla tych tabel w [schemat tabeli metryk usługi Analytics magazynu](https://msdn.microsoft.com/library/azure/hh343264.aspx). Poniższe wiersze przykładowe pokazują tylko podzestaw kolumn, które są dostępne, ale zilustrowania niektórych ważnych funkcji sposób, w jaki metryk usługi Storage zapisuje te metryki:
 
-| PartitionKey | RowKey | Sygnatura czasowa | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostępność | Wartość AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | Znacznik czasu | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostępność | Wartość AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
 | 20140522T1100 |user;All |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
 | 20140522T1100 |Użytkownik; QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |

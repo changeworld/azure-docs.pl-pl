@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f7567d0c3bfdfc7bd44b918c9f2feda7499386e8
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984083"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554677"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalować zadania usługi Azure Stream Analytics, w celu zwiększenia przepływności
 W tym artykule pokazano, jak dostosowywanie zapytania usługi Stream Analytics w celu zwiększenia przepływności zadania usługi Stream Analytics. Następującymi wskazówkami umożliwia skalowanie zadania do obsługi wyższe obciążenie i korzystać z zalet więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).
@@ -34,7 +34,7 @@ Jeśli zapytanie jest natury pełni równoległego partycjach danych wejściowyc
 4.  Po określeniu limitów co 6 zadania SU może nawiązać połączenie, należy można ekstrapolację liniowo wydajnością przetwarzania zadania w miarę dodawania więcej SUs, przy założeniu, że nie masz żadnych wynikające z niesymetryczności danych, które sprawia, że niektóre partycji "gorącymi".
 
 > [!NOTE]
-> Wybierz odpowiednią liczbę jednostek przesyłania strumieniowego: ponieważ usługi Stream Analytics tworzy węzeł przetwarzania dla każdego 6 SU dodane, najlepiej wprowadzić liczbę węzłów dzielnikiem liczby partycji danych wejściowych, więc partycje mogą być równomiernie rozłożona na węzły.
+> Wybierz odpowiednią liczbę jednostek przesyłania strumieniowego: Ponieważ usługi Stream Analytics tworzy węzeł przetwarzania dla każdego 6 SU dodane, najlepiej jest zapewnienie liczbę węzłów dzielnikiem liczby partycji danych wejściowych, dzięki czemu partycje mogą być równomiernie rozłożona na węzły.
 > Na przykład mieć mierzona z 6 SU zadania można osiągnąć 4 MB/s, takich jak przetwarzanie częstotliwość i liczba Twoich partycję danych wejściowych wynosi 4. Można uruchomić zadanie z 12 polecenia SU to osiągnąć szybkość przetwarzania w usłudze około 8 MB/s lub 24 SU, aby osiągnąć 16 MB/s. Następnie można zdecydować, kiedy należy zwiększyć liczbę SU zadania jaka wartość jako funkcja częstotliwość danych wejściowych.
 
 
@@ -48,15 +48,16 @@ Jeśli zapytanie nie jest zaskakująco równoległymi, możesz wykonać następu
 
 Zapytanie:
 
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
+ ```SQL
+ WITH Step1 AS (
+ SELECT COUNT(*) AS Count, TollBoothId, PartitionId
+ FROM Input1 Partition By PartitionId
+ GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+ )
+ SELECT SUM(Count) AS Count, TollBoothId
+ FROM Step1
+ GROUP BY TumblingWindow(minute, 3), TollBoothId
+ ```
 W powyższym zapytaniu są zliczanie samochodów na stoisku płatny dla każdej partycji, a następnie dodanie liczby z wszystkie partycje ze sobą.
 
 Po podzielona na partycje, dla każdej partycji w tym kroku należy przydzielić maksymalnie 6 polecenia SU, każda partycja o 6 SU jest maksymalna, więc każda partycja można umieścić we własnej węzeł przetwarzania.

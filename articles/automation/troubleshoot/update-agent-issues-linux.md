@@ -9,16 +9,22 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438646"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578856"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Zrozumienie wyniki sprawdzania agenta systemu Linux w zarządzania aktualizacjami
 
 Może istnieć wiele przyczyn, na tym komputerze nie jest wyświetlany **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z witryny Azure portal i maszyny spoza platformy Azure w [scenariusza w trybie offline](#troubleshoot-offline).
+
+Poniżej przedstawiono stanów gotowości trzy, maszyna może być w:
+
+* **Gotowe** — usługi Windows update agent jest wdrażany i ostatnio zaobserwowano mniej niż 1 godzinę temu.
+* **Odłączony** — usługi Windows update agent jest wdrażany i ostatnio zaobserwowano ponad 1 godzinę temu.
+* **Nieskonfigurowane** — usługi Windows update agent nie zostanie odnaleziony lub nie zakończono dołączania.
 
 ## <a name="start-the-troubleshooter"></a>Uruchom narzędzie do rozwiązywania problemów
 
@@ -45,7 +51,7 @@ Sprawdzanie systemu operacyjnego, sprawdza, czy hybrydowego procesu roboczego Ru
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
-|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Oparte na klasyfikacji poprawek wymaga "yum", aby zwrócić dane zabezpieczeń, która CentOS nie ma gotowych.         |
+|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Oparte na klasyfikacji poprawek wymaga "yum", aby zwrócić dane zabezpieczeń, które CentOS nie ma gotowych.         |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Ubuntu 14.04 LTS, 16.04 LTS i 18.04 LTS — x86/x64 64      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5c7c9938b6a0b3d2e6050940154a8dc3f114341e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39485872"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53638831"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Kopia zapasowa i odzyskiwanie po awarii dla dysków IaaS platformy Azure
 
@@ -63,7 +63,7 @@ Aby chronić swoje obciążenia IaaS z awarii, należy planowanie w celu zapewni
 
 Zagadnienia dotyczące usługi odzyskiwania po awarii mogą obejmować następujące aspekty:
 
-- Wysoka dostępność: zdolność aplikacji do kontynuowania działania w dobrej kondycji bez znaczących przestojów. Przez *dobrej*, ten stan oznacza, że aplikacja reaguje i użytkownicy mogą połączyć się z aplikacją i wchodzić w interakcje z nią. Niektórych kluczowych aplikacji i baz danych może być konieczne będą zawsze dostępne, nawet wtedy, gdy występują błędy na platformie. W przypadku tych obciążeń może być konieczne planowanie nadmiarowość dla aplikacji, a także dane.
+- Wysoka dostępność: Zdolność aplikacji do kontynuowania działania w dobrej kondycji bez znaczących przestojów. Przez *dobrej*, ten stan oznacza, że aplikacja reaguje i użytkownicy mogą połączyć się z aplikacją i wchodzić w interakcje z nią. Niektórych kluczowych aplikacji i baz danych może być konieczne będą zawsze dostępne, nawet wtedy, gdy występują błędy na platformie. W przypadku tych obciążeń może być konieczne planowanie nadmiarowość dla aplikacji, a także dane.
 
 - Trwałość danych: W niektórych przypadkach głównego brany pod uwagę jest zapewnienie, że dane zostaną zachowane w przypadku awarii. W związku z tym może być konieczne kopię zapasową danych w innej lokacji. W przypadku takich obciążeń może potrzebujesz pełnej nadmiarowości aplikacji, ale tylko zwykłych kopii zapasowych dysków.
 
@@ -71,7 +71,7 @@ Zagadnienia dotyczące usługi odzyskiwania po awarii mogą obejmować następuj
 
 Spójrzmy na kilka przykładów typowych scenariuszy obciążenia aplikacji oraz zagadnienia dotyczące planowania odzyskiwania po awarii.
 
-### <a name="scenario-1-major-database-solutions"></a>Scenariusz 1: Głównej bazy danych rozwiązania
+### <a name="scenario-1-major-database-solutions"></a>Scenariusz 1: Rozwiązania głównej bazy danych
 
 Należy wziąć pod uwagę produkcji serwer bazy danych, takich jak SQL Server lub Oracle, który może obsługiwać wysoką dostępność. Aplikacje produkcyjne krytyczne i użytkowników są zależne od tej bazy danych. Plan odzyskiwania po awarii dla tego systemu, może zajść potrzeba obsługuje następujące wymagania:
 
@@ -92,11 +92,11 @@ Przyjrzyjmy się IaaS obciążenia aplikacji. Na przykład ta aplikacja może by
 
 Innym przykładem jest serwer raportowania, który pobiera dane z innych źródeł, a następnie generuje raporty zagregowane. Utrata tej maszyny Wirtualnej lub dysków może prowadzić do utraty raportów. Jednak może być możliwe ponowne uruchomienie procesu raportowania i ponownie je generować dane wyjściowe. W takim przypadku nie naprawdę masz utraty danych, nawet wtedy, gdy serwer raportowania tych limitów zostanie osiągnięty przy użyciu awarii. W rezultacie może mieć wyższy poziom tolerancji utraty części danych na serwerze raportowania. W takim przypadku mniej częste wykonywanie kopii zapasowych jest to możliwe, aby ograniczyć koszty.
 
-### <a name="scenario-4-iaas-application-data-issues"></a>Scenariusz 4: Problemom z danymi aplikacji IaaS
+### <a name="scenario-4-iaas-application-data-issues"></a>Scenariusz 4: Problemy z danych aplikacji IaaS
 
 Problemy z danych aplikacji IaaS są inną możliwością. Rozważmy aplikację, która oblicza, przechowuje i służy krytycznych danych komercyjnych, takich jak informacje o cenach. Nową wersję aplikacji ma błąd oprogramowania, który niepoprawnie obliczane, ceny i uszkodzone istniejące dane handlu obsługiwanej przez platformę. W tym miejscu najlepszy plan działania jest Przywróć starszą wersję aplikacji i danych. Aby włączyć tę opcję, należy wykonać okresowe kopie zapasowe systemu.
 
-## <a name="disaster-recovery-solution-azure-backup"></a>Rozwiązanie odzyskiwania po awarii: Usługa Azure Backup 
+## <a name="disaster-recovery-solution-azure-backup"></a>Rozwiązanie odzyskiwania po awarii: Azure Backup 
 
 [Usługa Azure Backup](https://azure.microsoft.com/services/backup/) służy do tworzenia kopii zapasowych i odzyskiwania po awarii i współdziałają z [usługi managed disks](../articles/virtual-machines/windows/managed-disks-overview.md) także [niezarządzane dyski](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks). Można utworzyć zadania tworzenia kopii zapasowej z kopii zapasowych opartych na czasie, łatwe przywracanie maszyny Wirtualnej i zasad przechowywania kopii zapasowych. 
 
@@ -152,7 +152,7 @@ Wykonaj następujące kroki, aby włączyć kopie zapasowe maszyn wirtualnych pr
 
 1.  Konfigurowanie zasad tworzenia kopii zapasowej, a następnie wybierz maszynę Wirtualną z tego samego interfejsu użytkownika.
 
-1.  Upewnij się, że zainstalowano agenta kopii zapasowej na maszynie Wirtualnej. Jeśli maszyna wirtualna jest tworzona przy użyciu obrazu z galerii platformy Azure, agenta kopii zapasowej już jest zainstalowane. W przeciwnym razie (jeśli jest używany obraz niestandardowy), postępuj zgodnie z instrukcjami na [Zainstaluj agenta maszyny Wirtualnej na maszynie wirtualnej](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
+1.  Upewnij się, że zainstalowano agenta kopii zapasowej na maszynie Wirtualnej. Jeśli maszyna wirtualna jest tworzona przy użyciu obrazu z galerii platformy Azure, agenta kopii zapasowej już jest zainstalowane. W przeciwnym razie (jeśli jest używany obraz niestandardowy), postępuj zgodnie z instrukcjami na [Zainstaluj agenta maszyny Wirtualnej na maszynie wirtualnej](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 
 1.  Upewnij się, że maszyna wirtualna umożliwia łącznością sieciową na potrzeby usługi kopii zapasowej do funkcji. Postępuj zgodnie z instrukcjami dotyczącymi [połączenia sieciowego](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
@@ -172,7 +172,7 @@ Aby uzyskać więcej informacji, zobacz instrukcje dotyczące [przywracanie masz
 
 Możesz również użyć programu PowerShell na potrzeby [przywracania maszyny Wirtualnej](../articles/backup/backup-azure-arm-restore-vms.md#restore-a-vm-during-an-azure-datacenter-disaster) lub [tworzenia nowej maszyny Wirtualnej z przywrócić dyski](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
-## <a name="alternative-solution-consistent-snapshots"></a>Alternatywnym rozwiązaniem: migawki spójne z aplikacjami
+## <a name="alternative-solution-consistent-snapshots"></a>Alternatywnym rozwiązaniem: Migawki spójne z aplikacjami
 
 Jeśli nie możesz używać usługi Azure Backup można wdrożyć własny mechanizm tworzenia kopii zapasowych, przy użyciu migawek. Tworzenie migawki spójne dla wszystkich dysków, które są używane przez Maszynę wirtualną, a następnie replikowanie tych migawek do innego regionu jest skomplikowane. Z tego powodu Azure uznaje za pomocą usługi Kopia zapasowa jako lepszym rozwiązaniem niż Tworzenie niestandardowego rozwiązania. 
 

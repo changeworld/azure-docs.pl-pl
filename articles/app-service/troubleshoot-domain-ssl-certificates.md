@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z domeny i certyfikaty SSL — usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure web apps
+description: Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 726bc78532cfe621eb3f3787aa05a7a54571a8c3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53389219"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653666"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure web apps
+# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
-W tym artykule wymieniono typowe problemy, które można napotkać podczas konfigurowania domeny lub certyfikatu protokołu SSL dla aplikacji sieci web platformy Azure. Opisano również możliwe przyczyny i potencjalne rozwiązania tych problemów.
+W tym artykule wymieniono typowe problemy, które można napotkać podczas konfigurowania domeny lub certyfikatu protokołu SSL dla aplikacji sieci web w usłudze Azure App Service. Opisano również możliwe przyczyny i potencjalne rozwiązania tych problemów.
 
 Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [na forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz **Uzyskaj pomoc techniczną**.
 
 ## <a name="certificate-problems"></a>Problemy z certyfikatem
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>Nie można dodać powiązanie certyfikatu SSL do aplikacji sieci web 
+### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Nie można dodać powiązanie certyfikatu SSL do aplikacji 
 
 #### <a name="symptom"></a>Objaw
 
@@ -40,13 +40,13 @@ Po dodaniu powiązanie SSL, pojawi się następujący komunikat o błędzie:
 
 #### <a name="cause"></a>Przyczyna
 
-Ten problem może wystąpić, jeśli masz wiele powiązań SSL opartych na protokole IP dla tego samego adresu IP przez wiele aplikacji sieci web. Na przykład aplikacja sieci web A ma opartego na protokole IP protokołu SSL przy użyciu starego certyfikatu. Aplikacja sieci Web B ma opartego na protokole IP protokołu SSL przy użyciu nowego certyfikatu dla tego samego adresu IP. Po zaktualizowaniu powiązania SSL aplikacji sieci web przy użyciu nowego certyfikatu go kończy się niepowodzeniem z powodu następującego błędu ten sam adres IP jest używany dla innej aplikacji. 
+Ten problem może wystąpić, jeśli masz wiele powiązań SSL opartych na protokole IP dla tego samego adresu IP przez wiele aplikacji. Na przykład aplikacja A ma opartego na protokole IP protokołu SSL przy użyciu starego certyfikatu. Aplikacja B ma opartego na protokole IP protokołu SSL przy użyciu nowego certyfikatu dla tego samego adresu IP. Po zaktualizowaniu powiązania SSL aplikacji przy użyciu nowego certyfikatu go kończy się niepowodzeniem z powodu następującego błędu ten sam adres IP jest używany dla innej aplikacji. 
 
 #### <a name="solution"></a>Rozwiązanie 
 
 Aby rozwiązać ten problem, należy użyć jednej z następujących metod:
 
-- Usuwanie powiązania SSL oparte na adresie IP w aplikacji sieci web, która używa starego certyfikatu. 
+- Usuwanie powiązania SSL opartego na protokole IP, na aplikację, która używa starego certyfikatu. 
 - Utwórz nowe powiązanie SSL oparte na protokole IP, który używa nowego certyfikatu.
 
 ### <a name="you-cant-delete-a-certificate"></a>Nie można usunąć certyfikatu 
@@ -59,11 +59,11 @@ Podczas usuwania certyfikatu, pojawi się następujący komunikat o błędzie:
 
 #### <a name="cause"></a>Przyczyna
 
-Ten problem może wystąpić, jeśli innej aplikacji sieci web używa certyfikatu.
+Ten problem może wystąpić, jeśli certyfikat korzysta z innej aplikacji.
 
 #### <a name="solution"></a>Rozwiązanie
 
-Usuń powiązanie SSL dla tego certyfikatu z aplikacji sieci web. Spróbuj usunąć certyfikat. Jeśli nadal nie można usunąć certyfikatu, wyczyść pamięć podręczną przeglądarki internetowej i ponownie otworzyć portalu Azure w nowym oknie przeglądarki. Spróbuj usunąć certyfikat.
+Usuń powiązanie SSL dla tego certyfikatu z aplikacji. Spróbuj usunąć certyfikat. Jeśli nadal nie można usunąć certyfikatu, wyczyść pamięć podręczną przeglądarki internetowej i ponownie otworzyć portalu Azure w nowym oknie przeglądarki. Spróbuj usunąć certyfikat.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Nie można kupić certyfikatu usługi App Service 
 
@@ -75,7 +75,7 @@ Ten problem może wystąpić z następujących powodów:
 
 - Plan usługi App Service jest bezpłatna i współdzielona. Te warstwy cenowe nie obsługują protokołu SSL. 
 
-    **Rozwiązanie**: Uaktualnij plan usługi App Service dla aplikacji internetowej do warstwy standardowa.
+    **Rozwiązanie**: Uaktualnij plan usługi App Service dla aplikacji do warstwy standardowa.
 
 - Subskrypcja nie ma ważnej karty kredytowej.
 
@@ -110,14 +110,14 @@ Usuń ten certyfikat, a następnie Kup nowy certyfikat.
 
 Jeśli bieżący certyfikat, który korzysta z niewłaściwej domeny jest w stanie "Wydany dla", możesz również będzie naliczana dla tego certyfikatu. Certyfikaty usługi App Service nie podlega zwrotowi, ale możesz skontaktować się ze [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) aby zobaczyć, czy istnieją inne opcje. 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>Odnowiono certyfikat usługi App Service, ale stary certyfikat wyświetlany przez aplikację sieci web 
+### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>Odnowiono certyfikat usługi App Service, ale aplikacja będzie wyświetlana starego certyfikatu 
 
 #### <a name="symptom"></a>Objaw
 
-Odnowiono certyfikat usługi App Service, ale aplikacji sieci web, która używa certyfikatu usługi App Service jest nadal przy użyciu starego certyfikatu. Ponadto otrzymasz ostrzeżenie, że protokół HTTPS jest wymagany.
+Odnowiono certyfikat usługi App Service, ale aplikację, która używa certyfikatu usługi App Service jest nadal przy użyciu starego certyfikatu. Ponadto otrzymasz ostrzeżenie, że protokół HTTPS jest wymagany.
 
 #### <a name="cause"></a>Przyczyna 
-Funkcja Web Apps w usłudze Azure App Service uruchamia zadania w tle co osiem godzin i synchronizuje zasobu certyfikatu, jeśli nie wprowadzono żadnych zmian. Gdy obrócić lub zaktualizuj certyfikat, czasami aplikacja nadal pobiera starego certyfikatu i certyfikat właśnie został zaktualizowany. Przyczyną jest to nie zostało jeszcze uruchomione zadanie, które można zsynchronizować zasobu certyfikatu. 
+Usługa Azure App Service uruchamia zadania w tle co osiem godzin i synchronizuje zasobu certyfikatu, jeśli nie wprowadzono żadnych zmian. Gdy obrócić lub zaktualizuj certyfikat, czasami aplikacja nadal pobiera starego certyfikatu i certyfikat właśnie został zaktualizowany. Przyczyną jest to nie zostało jeszcze uruchomione zadanie, które można zsynchronizować zasobu certyfikatu. 
  
 #### <a name="solution"></a>Rozwiązanie
 
@@ -156,7 +156,7 @@ Na przykład, jeśli kupujesz Standardowy certyfikat w witrynie azure.com za pom
 ### <a name="you-cant-purchase-a-domain"></a>Nie można kupić domenę
 
 #### <a name="symptom"></a>Objaw
-Nie można kupować domeny z domeny aplikacji sieci Web lub usługi App Service w witrynie Azure portal.
+Nie można kupić domenę usługi App Service w witrynie Azure portal.
 
 #### <a name="cause-and-solution"></a>Przyczyna i rozwiązanie
 
@@ -176,7 +176,7 @@ Ten problem występuje jeden z następujących powodów:
 
     **Rozwiązanie**: Uaktualnij swoją subskrypcję platformy Azure do innego typu subskrypcji, takie jak subskrypcja płatność za rzeczywiste użycie.
 
-### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Nie można dodać nazwę hosta aplikacji sieci web 
+### <a name="you-cant-add-a-host-name-to-an-app"></a>Nazwa hosta nie można dodać do aplikacji 
 
 #### <a name="symptom"></a>Objaw
 
@@ -191,11 +191,11 @@ Ten problem występuje jeden z następujących powodów:
     **Rozwiązanie**: Poproś administratora subskrypcji udzieliła Ci zgody, aby dodać nazwę hosta.
 - Nie można zweryfikować własność domeny.
 
-    **Rozwiązanie**: Sprawdź, czy Twoje CNAME lub rekord jest poprawnie skonfigurowana. Aby zamapować domenę niestandardową do aplikacji sieci web, należy utworzyć rekord CNAME lub rekord. Jeśli chcesz użyć domeny katalogu głównego, należy użyć rekordy A i TXT:
+    **Rozwiązanie**: Sprawdź, czy Twoje CNAME lub rekord jest poprawnie skonfigurowana. Aby mapować domenę niestandardową na aplikację, należy utworzyć rekord CNAME lub rekord. Jeśli chcesz użyć domeny katalogu głównego, należy użyć rekordy A i TXT:
 
     |Typ rekordu|Host|Wskaż|
     |------|------|-----|
-    |A|@|Adres IP dla aplikacji sieci web|
+    |A|@|Adres IP dla aplikacji|
     |TXT|@|< nazwa aplikacji >. azurewebsites.net|
     |CNAME|www|< nazwa aplikacji >. azurewebsites.net|
 
@@ -216,7 +216,7 @@ Ten problem występuje jeden z następujących powodów:
 #### <a name="solution"></a>Rozwiązanie
 - Poczekaj, aż ten problem rozwiąże się samoistnie w ciągu 48 godzin.
 - Jeśli ustawienie czasu wygaśnięcia można zmienić w konfiguracji DNS, zmień wartość na 5 minut, aby zobaczyć, czy ten problem zostanie rozwiązany.
-- Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adres IP aplikacji sieci web. Jeśli nie, należy skonfigurować rekord A poprawny adres IP w aplikacji sieci web.
+- Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adresu IP aplikacji. Jeśli nie, należy skonfigurować rekord A poprawny adres IP aplikacji.
 
 ### <a name="you-need-to-restore-a-deleted-domain"></a>Należy przywrócić usunięto domenę 
 
@@ -247,7 +247,7 @@ Brak rekordu CNAME i A domeny niestandardowej, który został skonfigurowany.
 **Rozwiązanie przyczyny 1**
 
 - Jeśli został dodany rekord A, upewnij się, również zostanie dodany rekord TXT. Aby uzyskać więcej informacji, zobacz [Utwórz rekord a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- Jeśli nie masz do korzystania z domeny katalogu głównego dla aplikacji sieci web, zaleca się używania rekordu CNAME zamiast rekordu.
+- Jeśli nie masz do korzystania z domeny katalogu głównego aplikacji, zaleca się używania rekordu CNAME zamiast rekordu.
 - Nie używaj zarówno rekord CNAME, jak i rekord A dla tej samej domenie. Może to powodować konflikt i uniemożliwić rozwiązywany w domenie. 
 
 **Przyczyny 2** 
@@ -256,18 +256,18 @@ Stary adres IP dla swojej domeny nadal może być buforowanie przeglądarki inte
 
 **Rozwiązanie przyczyny 2**
 
-Wyczyść przeglądarki. W przypadku urządzeń Windows, można uruchomić polecenie `ipconfig /flushdns`. Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adres IP aplikacji sieci web. 
+Wyczyść przeglądarki. W przypadku urządzeń Windows, można uruchomić polecenie `ipconfig /flushdns`. Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adresu IP aplikacji. 
 
 ### <a name="you-cant-add-a-subdomain"></a>Nie można dodać poddomeny 
 
 #### <a name="symptom"></a>Objaw
 
-Nie można dodać nową nazwę hosta aplikacji sieci web, aby przypisać poddomeny.
+Nie można dodać nową nazwę hosta, na aplikację, aby przypisać poddomeny.
 
 #### <a name="solution"></a>Rozwiązanie
 
-- Skontaktuj się z administratorem subskrypcji, aby upewnić się, że masz uprawnienia do dodawania nazwy hosta do aplikacji sieci web.
-- Jeśli potrzebujesz więcej poddomeny, zaleca się zmiany hosting domeny do usługi Azure DNS. Za pomocą usługi Azure DNS, można dodawać do aplikacji sieci web 500 nazwy hosta. Aby uzyskać więcej informacji, zobacz [Dodawanie poddomeny](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Skontaktuj się z administratorem subskrypcji, aby upewnić się, że masz uprawnienia do dodawania nazwy hosta do aplikacji.
+- Jeśli potrzebujesz więcej poddomeny, zaleca się zmiany hosting domeny do usługi Azure DNS. Za pomocą usługi Azure DNS, można dodać 500 nazw hostów do aplikacji. Aby uzyskać więcej informacji, zobacz [Dodawanie poddomeny](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
 
 
 

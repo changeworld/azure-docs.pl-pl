@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2237d523b8023c0a6551515f9a2740e92e7beb3f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244597"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548928"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -104,7 +104,7 @@ Na przykład Niewykluczone, że wirtualne urządzenie zabezpieczeń sieciowych w
 
 [Wymuszone tunelowanie](https://www.petri.com/azure-forced-tunneling) to mechanizm, można użyć, aby upewnić się, że usługi nie mogą inicjować połączenie w celu urządzeń w Internecie. Należy pamiętać, że to różni się od akceptuje połączenia przychodzące i następnie odpowiada do nich. Serwery frontonu sieci web muszą odpowiadać na żądania z hostami w Internecie, a więc źródło internet ruch jest dozwolony dla ruchu przychodzącego na tych serwerach sieci web i serwerów sieci web mogą odpowiadać.
 
-Czego nie chcesz zezwolić na to serwera frontonu sieci web, aby zainicjować żądanie ruchu wychodzącego. Takie żądania może reprezentować zagrożenie bezpieczeństwa, ponieważ te połączenia może służyć do pobierania złośliwego oprogramowania. Nawet jeśli użytkownik chce tych serwerów frontonu w celu zainicjowania żądania wychodzące z Internetem, możesz chcieć wymusić na nich za pośrednictwem usługi serwerów proxy sieci web w środowisku lokalnym. Dzięki temu można korzystać z adresu URL, filtrowanie i rejestrowania.
+Co chcesz zezwolić don t jest serwer frontonu sieci web, aby zainicjować żądanie ruchu wychodzącego. Takie żądania może reprezentować zagrożenie bezpieczeństwa, ponieważ te połączenia może służyć do pobierania złośliwego oprogramowania. Nawet jeśli użytkownik chce tych serwerów frontonu w celu zainicjowania żądania wychodzące z Internetem, możesz chcieć wymusić na nich za pośrednictwem usługi serwerów proxy sieci web w środowisku lokalnym. Dzięki temu można korzystać z adresu URL, filtrowanie i rejestrowania.
 
 Zamiast tego należy użyć wymuszonego tunelowania, aby zapobiec takiej sytuacji. Po włączeniu wymuszonym tunelowaniu muszą wszystkie połączenia z Internetem za pośrednictwem bramy sieci lokalnej. Można skonfigurować wymuszone tunelowanie, wykorzystując tras zdefiniowanych przez użytkownika.
 
@@ -127,7 +127,7 @@ Na przykład wymagań dotyczących zabezpieczeń mogą obejmować:
 * Kontrola dostępu do aplikacji
 * Dodatkowa ochrona przed atakami DDoS (powyżej ochrony przed atakami DDoS zapewnianej przez sieci szkieletowej platformy Azure, sam)
 
-Te funkcje zabezpieczeń sieci rozszerzone dostęp za pomocą rozwiązania partnerów platformy Azure. Można znaleźć najbardziej aktualne sieci partnerów platformy Azure rozwiązania w zakresie bezpieczeństwa, odwiedzając [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/)i wyszukując "zabezpieczenia" i "" zabezpieczenia sieciowe.
+Te funkcje zabezpieczeń sieci rozszerzone dostęp za pomocą rozwiązania partnerów platformy Azure. Można znaleźć najbardziej aktualne sieci partnerów platformy Azure rozwiązania w zakresie bezpieczeństwa, odwiedzając [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/)i wyszukując bezpieczeństwa i zabezpieczeń sieciowych.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -171,7 +171,7 @@ Więcej informacji:
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>Łączenie sieci lokalnej z siecią wirtualną przy użyciu sieci VPN
 
-Można nawiązać połączenia z całej sieci firmowej lub jego części, sieć wirtualną. To jest typowe w hybrydowym IT scenariuszy, których organizacje [rozszerzają swoje centra danych lokalnych na platformę Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). W wielu przypadkach organizacjom hostować części usługi na platformie Azure i części lokalnego. Na przykład może to zrobią, gdy rozwiązanie zawiera serwery frontonu sieci web na platformie Azure i lokalne bazy danych zaplecza. Tego rodzaju połączenia "obejmującego", upewnij się również zarządzania platformy Azure znajduje się zasoby bardziej bezpieczny i umożliwia realizację scenariuszy, takich jak rozszerzanie kontrolery domeny usługi Active Directory na platformę Azure.
+Można nawiązać połączenia z całej sieci firmowej lub jego części, sieć wirtualną. To jest typowe w hybrydowym IT scenariuszy, których organizacje [rozszerzają swoje centra danych lokalnych na platformę Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). W wielu przypadkach organizacjom hostować części usługi na platformie Azure i części lokalnego. Na przykład może to zrobią, gdy rozwiązanie zawiera serwery frontonu sieci web na platformie Azure i lokalne bazy danych zaplecza. Te typy połączeń między środowiskami lokalnymi, upewnij się również zarządzania platformy Azure znajduje się zasoby bardziej bezpieczny i umożliwia realizację scenariuszy, takich jak rozszerzanie kontrolery domeny usługi Active Directory na platformę Azure.
 
 Jednym ze sposobów, aby wykonać to jest użycie [sieci VPN typu lokacja lokacja](https://www.techopedia.com/definition/30747/site-to-site-vpn). Różnica między sieci VPN lokacja lokacja i punkt lokacja sieci VPN jest, że jego pojedyncze urządzenie łączy się z sieci wirtualnej. Sieć VPN lokacja lokacja łączy całej sieci (na przykład z siecią lokalną) do sieci wirtualnej. Site-to-site VPN do sieci wirtualnej Użyj zabezpieczonych trybu tunelowania IPsec VPN protokołu.
 
@@ -199,7 +199,7 @@ Więcej informacji:
 
 Istnieje możliwość wiele sieci wirtualnych na potrzeby wdrożenia. Istnieją różne powody, dlaczego można to zrobić. Można uproszczenie zarządzania lub może być większe bezpieczeństwo. Niezależnie od tego, motywy umieszczenie zasobów w różnych sieciach wirtualnych może być konieczny zasoby w każdej sieci, aby połączyć ze sobą.
 
-Jedną z opcji jest dla usług w jednej sieci wirtualnej na łączenie się z usługami w innej sieci wirtualnej, "ponownie pętli" za pośrednictwem Internetu. Połączenie jest uruchamiany w jednej sieci wirtualnej, przechodzi przez internet, a następnie wróci do docelowej sieci wirtualnej. Ta opcja udostępnia połączenie problemy z zabezpieczeniami, nieprzerwaną pracę w jakiejkolwiek korespondencji oparty na Internecie.
+Jedną z opcji jest dla usług w jednej sieci wirtualnej na łączenie się z usługami w innej sieci wirtualnej, pętli za pośrednictwem Internetu. Połączenie jest uruchamiany w jednej sieci wirtualnej, przechodzi przez internet, a następnie wróci do docelowej sieci wirtualnej. Ta opcja udostępnia połączenie problemy z zabezpieczeniami, nieprzerwaną pracę w jakiejkolwiek korespondencji oparty na Internecie.
 
 Lepszym rozwiązaniem może być tworzenie sieci VPN lokacja lokacja, który nawiązuje połączenie między dwiema sieciami wirtualnymi. Ta metoda używa tych samych [trybu tunelowania IPSec](https://technet.microsoft.com/library/cc786385.aspx) protokołu jako połączenie sieci VPN lokacja lokacja między środowiskami lokalnymi wymienionych powyżej.
 
@@ -213,7 +213,7 @@ Innym sposobem łączenia sieci wirtualnych jest [komunikacja równorzędna siec
 
 ## <a name="availability"></a>Dostępność
 
-Dostępność jest kluczowym składnikiem programu zabezpieczeń. Jeśli muszą uzyskiwać dostęp za pośrednictwem sieci nie dostępu użytkowników i systemów, usługa jest uznawana za naruszenia zabezpieczeń. Platforma Azure oferuje technologii sieciowych, które obsługują następujące mechanizmy wysokiej dostępności:
+Dostępność jest kluczowym składnikiem programu zabezpieczeń. Jeśli dostęp do użytkowników i systemów mogą t, muszą uzyskiwać dostęp za pośrednictwem sieci, usługa jest uznawana za naruszenia zabezpieczeń. Platforma Azure oferuje technologii sieciowych, które obsługują następujące mechanizmy wysokiej dostępności:
 
 * Równoważenie obciążenia oparte na protokole HTTP
 * Poziom Usługa równoważenia obciążenia sieci
@@ -222,7 +222,7 @@ Dostępność jest kluczowym składnikiem programu zabezpieczeń. Jeśli muszą 
 Równoważenie obciążenia jest mechanizm umożliwiający równe rozłożenie połączeń między wieloma urządzeniami. Dostępne są następujące cele równoważenia obciążenia:
 
 * Aby zwiększyć dostępność. Podczas ładowania równoważenia połączenia na wielu urządzeniach, co najmniej jedno z urządzeń może stać się niedostępne bez uszczerbku dla usługi. Usług działających na pozostałe urządzenia w trybie online, mogą nadal obsługiwać zawartość z usługi.
-* Aby zwiększyć wydajność. Gdy załadujesz saldo połączeń na wielu urządzeniach pojedynczego urządzenia nie ma do obsługi całego procesu przetwarzania. Zamiast tego żądania przetwarzania i pamięci do obsługi zawartości jest rozłożona się między wieloma urządzeniami.
+* Aby zwiększyć wydajność. Gdy załadujesz saldo połączeń na wielu urządzeniach jedno urządzenie ma do obsługi całego procesu przetwarzania. Zamiast tego żądania przetwarzania i pamięci do obsługi zawartości jest rozłożona się między wieloma urządzeniami.
 
 ### <a name="http-based-load-balancing"></a>Równoważenie obciążenia oparte na protokole HTTP
 
@@ -231,7 +231,7 @@ Organizacje, które uruchamiania usług opartych na sieci web, często pozwalaj�
 Usługa Azure Application Gateway zapewnia oparte na protokole HTTP równoważenia obciążenia dla usług sieci web. Usługa Application Gateway obsługuje:
 
 * Koligacja sesji na podstawie pliku cookie. Ta funkcja zwiększa się, że połączeń ustanowionych z jednym z serwerów za modułem równoważenia obciążenia, że pozostaje niezmienione między klientem i serwerem. Dzięki temu stabilności transakcji.
-* Odciążanie protokołu SSL. Gdy klient nawiąże połączenie z modułem równoważenia obciążenia, czy sesja jest szyfrowana przy użyciu protokołu HTTPS (SSL). Jednak aby zwiększyć wydajność, służy protokół HTTP (bez szyfrowania) do połączenia między równoważenia obciążenia i serwerem internetowym za modułem równoważenia obciążenia. To nazywa się "Odciążanie protokołu SSL", ponieważ serwery sieci web za modułem równoważenia obciążenia nie występuje obciążenie procesora związane z szyfrowaniem. Serwery sieci web w związku z tym można szybciej obsługi żądań.
+* Odciążanie protokołu SSL. Gdy klient nawiąże połączenie z modułem równoważenia obciążenia, czy sesja jest szyfrowana przy użyciu protokołu HTTPS (SSL). Jednak aby zwiększyć wydajność, służy protokół HTTP (bez szyfrowania) do połączenia między równoważenia obciążenia i serwerem internetowym za modułem równoważenia obciążenia. Jest to określane jako odciążanie protokołu SSL, ponieważ serwery sieci web za don modułu równoważenia obciążenia t środowisko obciążenie procesora związane z szyfrowaniem. Serwery sieci web w związku z tym można szybciej obsługi żądań.
 * Adres URL routingu opartego na zawartości. Ta funkcja umożliwia równoważenia obciążenia do podejmowania decyzji o, gdzie należy połączeń do przodu, w oparciu o docelowy adres URL. To zapewnia znacznie większą elastyczność niż rozwiązań, dzięki którym obciążenia równoważenia decyzje na podstawie adresów IP.
 
 Więcej informacji:
@@ -256,7 +256,7 @@ Więcej informacji:
 
 ### <a name="global-load-balancing"></a>Globalne równoważenia obciążenia
 
-Niektóre organizacje mają najwyższy poziom dostępności to możliwe. Jednym ze sposobów osiągnięcia tego celu jest do hostowania aplikacji w globalnie rozproszonych centrach danych. Gdy aplikacja jest hostowana w centrach danych znajdujących się na całym świecie, jest możliwe dla całego regionu geopolitycznego staną się niedostępne i nadal mieć aplikację i uruchomione.
+Niektóre organizacje mają najwyższy poziom dostępności to możliwe. Jednym ze sposobów osiągnięcia tego celu jest do hostowania aplikacji w globalnie rozproszonych centrach danych. Gdy aplikacja jest hostowana w centrach danych znajdujących się na całym świecie, go możliwe dla całego regionu geopolitycznego staną się niedostępne i nadal masz aplikacji działanie s.
 
 Ta strategia równoważenia obciążenia może również przynieść korzyści wydajności. Można kierować żądania do centrum danych, które jest najbardziej zbliżona do urządzenia, które żądanie zostało wysłane przez usługę.
 
@@ -268,11 +268,11 @@ Więcej informacji:
 
 ## <a name="name-resolution"></a>Rozpoznawanie nazw
 
-Rozpoznawanie nazw jest funkcją krytyczne dla wszystkich usług, które są hostowane na platformie Azure. Z punktu widzenia zabezpieczeń naruszenia funkcja rozpoznawania nazw może prowadzić do osoba atakująca Przekierowywanie żądań z witryny do witryny. Rozpoznawanie nazw bezpieczne jest wymagana dla wszystkich usług hostowane w chmurze.
+Rozpoznawanie nazw jest funkcją krytyczne dla wszystkich usług, które są hostowane na platformie Azure. Z punktu widzenia zabezpieczeń naruszenia funkcja rozpoznawania nazw może prowadzić do osoba atakująca Przekierowywanie żądań ze swojej lokacji do lokacji osoba atakująca s. Rozpoznawanie nazw bezpieczne jest wymagana dla wszystkich usług hostowane w chmurze.
 
 Istnieją dwa rodzaje rozpoznawania nazw, które należy spełnić:
 
-* Rozpoznawania nazw wewnętrznych. Jest on używany przez usługi w sieciach wirtualnych i/lub sieci lokalnej. Nazwy używane do rozpoznawania nazw wewnętrznych nie są dostępne za pośrednictwem Internetu. Zapewnienie optymalnego poziomu bezpieczeństwa ważne jest schemat rozpoznawania nazw wewnętrznych nie jest dostępny dla użytkowników zewnętrznych.
+* Rozpoznawania nazw wewnętrznych. Jest on używany przez usługi w sieciach wirtualnych i/lub sieci lokalnej. Nazwy używane do rozpoznawania nazw wewnętrznych nie są dostępne za pośrednictwem Internetu. Dla zapewnienia optymalnego poziomu bezpieczeństwa jego s pamiętać, że schemat rozpoznawania nazw wewnętrznych nie jest dostępna dla użytkowników zewnętrznych.
 * Rozpoznawanie zewnętrznych. Jest on używany przez osobom i urządzeniem poza z sieciami lokalnymi i sieciami wirtualnymi. Są to nazwy, które są widoczne w Internecie i umożliwia bezpośrednie połączenie do usług w chmurze.
 
 Rozpoznawanie nazw wewnętrznych masz dwie opcje:
@@ -292,7 +292,7 @@ Rozpoznawanie nazw zewnętrznych masz dwie opcje:
 
 W wielu dużych organizacjach hostować własne DNS serwerów w środowisku lokalnym. Mogą one to robić, ponieważ mają one sieci wiedzę i całym świecie, aby to zrobić.
 
-W większości przypadków zaleca się udostępnić swoje usługi rozpoznawania nazw DNS u dostawcy usług. Ci dostawcy usług mają doświadczenie sieci i całym świecie, aby zapewnić bardzo wysoką dostępność dla Twojej usługi rozpoznawania nazw. Dostępność jest niezbędne dla usługi DNS, ponieważ w przypadku awarii usługi rozpoznawania nazw, nie będą mogli nawiązać połączenie z Internetem usług.
+W większości przypadków go lepiej Hostuj swój rekord DNS s nazwa usługi rozpoznawania u dostawcy usług. Ci dostawcy usług mają doświadczenie sieci i całym świecie, aby zapewnić bardzo wysoką dostępność dla Twojej usługi rozpoznawania nazw. Dostępność jest niezbędne dla usługi DNS, ponieważ w przypadku awarii usługi rozpoznawania nazw, nie będą mogli nawiązać połączenie z Internetem usług.
 
 Platforma Azure zapewnia wysoce dostępnych i o wysokiej wydajności zewnętrznych DNS rozwiązanie w formie usługi Azure DNS. To rozwiązanie rozpoznawania nazw zewnętrznych korzysta z infrastruktury DNS platformy Azure na całym świecie. Umożliwia ona Hostuj swoją domenę na platformie Azure przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co inne usługi platformy Azure. W ramach platformy Azure również dziedziczy formantów silnych zabezpieczeń wbudowaną w platformę.
 
@@ -303,7 +303,7 @@ Więcej informacji:
 
 ## <a name="perimeter-network-architecture"></a>Architektura sieci obwodowej
 
-W wielu dużych organizacjach umożliwia segmentu ich sieci w sieci obwodowej, a następnie utworzyć strefę bufor między Internetem a swoich usług. Obwodowej część sieci jest uważany za strefę na niskim poziomie zabezpieczeń, a żadne zasoby o wysokiej wartości są umieszczane w tym segmencie sieci. Zazwyczaj zobaczysz urządzeń zabezpieczeń sieciowych, mających interfejs sieciowy w segmencie sieci obwodowej. Inny interfejs sieciowy jest podłączony do sieci maszyn wirtualnych i usług, które akceptują połączenia przychodzące z Internetu.
+W wielu dużych organizacjach umożliwia segmentu ich sieci w sieci obwodowej, a następnie utworzyć strefę bufor między Internetem a swoich usług. Obwodowej część sieci jest uważany za strefę na niskim poziomie zabezpieczeń, a żadne zasoby o wysokiej wartości są umieszczane w tym segmencie sieci. Możesz ll zazwyczaj widzi urządzeń zabezpieczeń sieciowych, mających interfejs sieciowy w segmencie sieci obwodowej. Inny interfejs sieciowy jest podłączony do sieci maszyn wirtualnych i usług, które akceptują połączenia przychodzące z Internetu.
 
 Można zaprojektować sieci obwodowych na wiele różnych sposobów. Decyzja o wdrożeniu sieci obwodowej, a następnie jakiego rodzaju obwód sieci do użycia, jeśli zdecydujesz się go użyć, zależy od wymagań dotyczących zabezpieczeń sieci.
 
@@ -313,19 +313,19 @@ Więcej informacji:
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-Ataki typu „rozproszona odmowa usługi” (Distributed Denial of Service, DDoS) należą do największych obaw związanych z dostępnością i zabezpieczeniami wśród klientów, którzy planują przeniesienie swoich aplikacji do chmury. Atak DDoS polega na próbie wyczerpania zasobów aplikacji, przez co aplikacja staje się niedostępna dla zwykłych użytkowników. Celem ataku DDoS może być dowolny punkt końcowy publicznie dostępny za pośrednictwem Internetu.
+Ataki typu „rozproszona odmowa usługi” (Distributed Denial of Service, DDoS) należą do największych obaw związanych z dostępnością i zabezpieczeniami wśród klientów, którzy planują przeniesienie swoich aplikacji do chmury. Próby ataków DDoS na wyczerpanie zasobów s aplikacji, że aplikacja staje się niedostępny dla uprawnionych użytkowników. Celem ataku DDoS może być dowolny punkt końcowy publicznie dostępny za pośrednictwem Internetu.
 Firma Microsoft zapewnia ochronę przed atakami DDoS, znane jako **podstawowe** w ramach platformy Azure. To jest dostępna bez dodatkowych opłat i zawsze obejmuje środki zaradcze monitorowania i w czasie rzeczywistym w typowych ataków w poziomie sieci. Oprócz zabezpieczenia dołączone do ochrony przed atakami DDoS **podstawowe** można włączyć **standardowa** opcji. Usługa DDoS Protection standardowe funkcje obejmują:
 
-* **Integracja platformy natywnej:** natywnie zintegrowane na platformie Azure. Obejmuje konfigurację za pomocą witryny Azure portal. Standard ochrony przed atakami DDoS uwzględnia zasoby i konfiguracji zasobów.
-* **Kompleksowa ochrona:** uproszczony Konfiguracja chroni wszystkie zasoby w sieci wirtualnej tak szybko, jak standardowy ochrony przed atakami DDoS jest włączona. Brak definicji interwencji lub użytkownika jest wymagana. Standard ochrony przed atakami DDoS natychmiast i automatycznie minimalizuje skuteczność ataku, po jego wykryciu.
-* **Zawsze włączone monitorowanie ruchu:** Twoich wzorców ruchu aplikacji mają być monitorowane 24 godzin dziennie, 7 dni w tygodniu, wyszukiwanie wskaźników ataki DDoS. Środki zaradcze odbywa się po przekroczeniu zasady ochrony.
+* **Integracja platformy natywnej:** Natywnie zintegrowana z platformą Azure. Obejmuje konfigurację za pomocą witryny Azure portal. Standard ochrony przed atakami DDoS uwzględnia zasoby i konfiguracji zasobów.
+* **Kompleksowa ochrona:** Uproszczona konfiguracja chroni wszystkie zasoby w sieci wirtualnej tak szybko, jak standardowy ochrony przed atakami DDoS jest włączona. Brak definicji interwencji lub użytkownika jest wymagana. Standard ochrony przed atakami DDoS natychmiast i automatycznie minimalizuje skuteczność ataku, po jego wykryciu.
+* **Zawsze włączone monitorowanie ruchu:** Wzorców ruchu dla twojej aplikacji są monitorowane 24 godzin dziennie, 7 dni w tygodniu, wyszukiwanie wskaźników ataki DDoS. Środki zaradcze odbywa się po przekroczeniu zasady ochrony.
 * **Raporty ograniczania ryzyka ataków** raporty ograniczania ryzyka ataków umożliwia uzyskanie szczegółowych informacji dotyczących ataków ukierunkowanych na Twoje zasoby sieci zagregowane dane przepływu.
 * **Dzienniki przepływu ograniczania ryzyka ataków** dzienników przepływu ograniczania ryzyka ataków umożliwiają przeglądanie porzuconych ruchu, przekazane ruchu i inne dane ataku w niemal w czasie rzeczywistym podczas aktywnego ataków DDoS.
-* **Dostrajanie adaptacyjne:** ruchu inteligentne profilowanie uzyskuje informacje o ruchu danej aplikacji wraz z upływem czasu i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil, który dostosowuje się zgodnie z ruchem zmienia się wraz z upływem czasu. Ochrona warstwy 7 warstwy 3: zapewnia ochronę przed atakami DDoS pełnego stosu, gdy jest używane z zapory aplikacji sieci web.
-* **Skaluj rozbudowane środki zaradcze:** 60 za pośrednictwem ataku różnych typów można zminimalizować globalnego pojemność, aby zapewnić ochronę przed największych znane ataki DDoS.
-* **Ataki metryki:** Summarized metryki z każdego ataku są dostępne za pośrednictwem usługi Azure Monitor.
-* **Alerty ataku:** alerty można skonfigurować na początku i Zatrzymaj atak i czasie trwania ataku przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak Microsoft Azure Log Analytics, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal.
-* **Gwarancja kosztów:** transferu danych i udokumentowane ataków DDoS, środki na usługi skalowania w poziomie aplikacji.
+* **Dostrajanie adaptacyjne:** Profilowanie ruchu inteligentne uzyskuje informacje o ruchu s aplikacji wraz z upływem czasu i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil, który dostosowuje się zgodnie z ruchem zmienia się wraz z upływem czasu. Warstwa 3 warstwy 7 ochrony: Zapewnia ochronę przed atakami DDoS pełnego stosu, gdy jest używane z zapory aplikacji sieci web.
+* **Skaluj rozbudowane środki zaradcze:** Ponad 60 ataku różnych typów można zminimalizować globalnego pojemność, aby zapewnić ochronę przed największych znane ataki DDoS.
+* **Metryki ataku:** Skrócona metryki z każdego ataku są dostępne za pośrednictwem usługi Azure Monitor.
+* **Alertowanie ataku:** Alerty można skonfigurować na początku i Zatrzymaj atak i w czasie trwania ataku s, przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak Microsoft Azure Log Analytics, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal.
+* **Gwarancja kosztów:**  Transfer danych i aplikacji skalowalnego w poziomie zniżki w ramach udokumentowane ataki DDoS.
 * **Dynamiczne Rapid przed atakami DDoS** klientom wersji Standard ochrony przed atakami DDoS mają teraz dostęp do zespołu Rapid Response podczas aktywnego ataku. DRR może ułatwić badanie ataku, niestandardowe środki zaradcze podczas ataku i analizy po ataku.
 
 
@@ -394,7 +394,7 @@ Więcej informacji:
 
 Rejestrowanie na poziomie sieci jest funkcją klucza dla dowolnych scenariuszy zabezpieczeń sieci. Na platformie Azure możesz rejestrować informacje uzyskane dla sieciowych grup zabezpieczeń, można pobrać na poziomie sieci, rejestrowanie informacji. Za pomocą funkcji rejestrowania sieciowej grupy zabezpieczeń, można uzyskać informacji o:
 
-* [Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Użyj tych dzienników, aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure. Te dzienniki są domyślnie włączone i mogą być używane w witrynie Azure portal. Zostały one wcześniej nazywane inspekcji lub dzienniki operacyjne.
+* [Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md). Użyj tych dzienników, aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure. Te dzienniki są domyślnie włączone i mogą być używane w witrynie Azure portal. Zostały one wcześniej nazywane inspekcji lub dzienniki operacyjne.
 * Dzienniki zdarzeń. Te dzienniki zawierają informacje dotyczące reguły sieciowej grupy zabezpieczeń, które zostały zastosowane.
 * Dzienniki liczników. Te dzienniki umożliwiają wiedzieć, ile razy każdą regułę sieciowej grupy zabezpieczeń została zastosowana do odmowy lub zezwolić na ruch.
 

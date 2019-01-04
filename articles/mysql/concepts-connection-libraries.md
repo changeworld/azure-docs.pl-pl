@@ -1,20 +1,17 @@
 ---
 title: Biblioteki połączeń dla usługi Azure Database for MySQL
 description: W tym artykule wymieniono każdej biblioteki lub sterownik programów klienckich można używać podczas nawiązywania połączenia z usługą Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 14515aefe9635160cf99a630b0742d23352532cf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6ce0f2c761ede7d326f52f4d93d7f1b0bfa98cb2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985968"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543075"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Biblioteki połączeń dla usługi Azure Database for MySQL
 W tym artykule wymieniono każdej biblioteki lub sterownik programów klienckich można używać podczas nawiązywania połączenia z usługą Azure Database for MySQL.

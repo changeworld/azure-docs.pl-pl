@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 5acabc8381422b9202b041cf849af3b35809a3c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110000"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717215"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,7 @@ Aby uzyskać większą kontrolę nad akcji kontenerów, umożliwia również wbu
 
 ### <a name="app-armor"></a>Moto aplikacji
 
-Aby ograniczyć akcje, które można wykonywać kontenerów, można użyć [AppAmour] [ k8s-apparmor] modułu zabezpieczeń jądra systemu Linux. AppArmor jest dostępny jako część podstawowego węzłów AKS system operacyjny i jest domyślnie włączona. Można tworzyć AppArmor profilów, które ograniczenie akcji takich jak odczytu, zapisu lub wykonania lub funkcji systemu, takich jak instalowanie systemów plików. Domyślne profile AppArmor ograniczyć dostęp do różnych `/proc` i `/sys` lokalizacji i umożliwiają izolowanie logicznie kontenerów z węzła podstawowego. AppArmor działa w przypadku dowolnej aplikacji uruchomionej w systemie Linux, a nie tylko zasobników.
+Aby ograniczyć akcje, które można wykonywać kontenerów, można użyć [AppArmor] [ k8s-apparmor] modułu zabezpieczeń jądra systemu Linux. AppArmor jest dostępny jako część podstawowego węzłów AKS system operacyjny i jest domyślnie włączona. Można tworzyć AppArmor profilów, które ograniczenie akcji takich jak odczytu, zapisu lub wykonania lub funkcji systemu, takich jak instalowanie systemów plików. Domyślne profile AppArmor ograniczyć dostęp do różnych `/proc` i `/sys` lokalizacji i umożliwiają izolowanie logicznie kontenerów z węzła podstawowego. AppArmor działa w przypadku dowolnej aplikacji uruchomionej w systemie Linux, a nie tylko zasobników.
 
 ![Profile AppArmor używany w klastrze AKS do ograniczenia akcji kontenerów](media/operator-best-practices-container-security/apparmor.png)
 

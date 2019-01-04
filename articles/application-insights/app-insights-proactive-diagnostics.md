@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 44b80a395ce29d67912f822c806246bdd97b59b6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868945"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972842"
 ---
 # <a name="smart-detection-in-application-insights"></a>Wykrywanie inteligentne w usłudze Application Insights
  Wykrywanie inteligentne automatycznie ostrzega o potencjalnych problemów z wydajnością w aplikacji sieci web. Wykonuje aktywnego analizy telemetrii, że aplikacja wysyła do [usługi Application Insights](app-insights-overview.md). Jeśli istnieje nagły wzrost częstotliwości awarii lub nietypowe wzorce wydajności klienta lub serwera, zostanie wyświetlony alert. Ta funkcja wymaga żadna konfiguracja. Działa on tak, jeśli aplikacja wysyła taką ilość telemetrii.
@@ -55,11 +55,11 @@ Istnieją trzy rodzaje wykrywania:
 Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Twojej aplikacji:
 
 * [Eksplorator metryk](app-insights-metrics-explorer.md)
-* [Eksplorator wyszukiwania](app-insights-diagnostic-search.md)
+* [Eksplorator wyszukiwania](../azure-monitor/app/diagnostic-search.md)
 * [Analiza — zaawansowany język zapytań](../azure-monitor/log-query/get-started-portal.md)
 
 Wykrywanie inteligentne jest całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?
 
-* [Ręcznie skonfigurowane alertów dotyczących metryk](app-insights-alerts.md)
-* [Testy sieci web dostępności](app-insights-monitor-web-app-availability.md) 
+* [Ręcznie skonfigurowane alertów dotyczących metryk](../azure-monitor/app/alerts.md)
+* [Testy sieci web dostępności](../azure-monitor/app/monitor-web-app-availability.md) 
 

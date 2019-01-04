@@ -3,15 +3,16 @@ title: Program VMware do architektury odzyskiwania po awarii platformy Azure w u
 description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 962ced808f97dd1fea3805fa8c953e6d7563cd17
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1c47f9d511cd6461ef5a31f308669eba751d1de4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871748"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976005"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Program VMware do architektury odzyskiwania po awarii platformy Azure
 
@@ -25,7 +26,7 @@ Poniższej tabeli i grafika przedstawia ogólny widok składniki używane do odz
 **Składnik** | **Wymaganie** | **Szczegóły**
 --- | --- | ---
 **Azure** | Subskrypcja platformy Azure, konta usługi Azure Storage i sieci platformy Azure. | Replikowane dane z lokalnych maszyn wirtualnych są przechowywane na koncie magazynu. Maszyny wirtualne platformy Azure są tworzone z replikowanych danych, po uruchomieniu trybu failover ze środowiska lokalnego do platformy Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
-**Konfiguracja komputera serwera** | Pojedynczy na komputerze lokalnym. Firma Microsoft zaleca, uruchom go jako maszyny Wirtualnej VMware, które mogą być wdrażane z pobranego szablonu OVF.<br/><br/> Komputer uruchamia wszystkie składniki usługi Site Recovery w środowisku lokalnym, które obejmują serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. | **Serwer konfiguracji**: służy do koordynowania komunikacji między lokalną i platformą Azure oraz do zarządzania replikacją danych.<br/><br/> **Serwer przetwarzania**: instalowany domyślnie na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Serwer przetwarzania instaluje także usługę mobilności usługi Azure Site Recovery na maszynach wirtualnych, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn lokalnych. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.<br/><br/> **Główny serwer docelowy**: instalowany domyślnie na serwerze konfiguracji. Obsługuje on replikację danych podczas powrotu po awarii z platformy Azure. W przypadku dużych wdrożeń możesz dodać dodatkowe, oddzielny główny serwer docelowy do powrotu po awarii.
+**Konfiguracja komputera serwera** | Pojedynczy na komputerze lokalnym. Firma Microsoft zaleca, uruchom go jako maszyny Wirtualnej VMware, które mogą być wdrażane z pobranego szablonu OVF.<br/><br/> Komputer uruchamia wszystkie składniki usługi Site Recovery w środowisku lokalnym, które obejmują serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. | **Serwer konfiguracji**: Służy do koordynowania komunikacji między lokalną i platformą Azure oraz do zarządzania replikacją danych.<br/><br/> **Serwer przetwarzania**: Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Serwer przetwarzania instaluje także usługę mobilności usługi Azure Site Recovery na maszynach wirtualnych, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn lokalnych. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.<br/><br/> **Główny serwer docelowy**: Domyślnie instalowany na serwerze konfiguracji. Obsługuje on replikację danych podczas powrotu po awarii z platformy Azure. W przypadku dużych wdrożeń możesz dodać dodatkowe, oddzielny główny serwer docelowy do powrotu po awarii.
 **Serwery VMware** | Maszyny wirtualne VMware są hostowane na serwerach lokalnych vSphere ESXi. Firma Microsoft zaleca serwera vCenter do zarządzania hostami. | Podczas wdrażania usługi Site Recovery serwery VMware są dodawane do magazynu usługi Recovery Services.
 **Zreplikowane maszyny** | Usługa mobilności jest zainstalowana na każdej maszynie Wirtualnej VMware są replikowane. | Zaleca się, że zezwalają na automatycznej instalacji z serwera przetwarzania. Można też ręcznie zainstalować usługę, lub użyć metody wdrażania automatycznego, takie jak System Center Configuration Manager.
 
@@ -70,10 +71,10 @@ Po skonfigurowaniu replikacji i uruchamianie próbnego odzyskiwania po awarii (T
 2. Po wyzwoleniem początkowej trybu failover, należy zatwierdzić je, aby można było rozpocząć uzyskiwanie dostępu do obciążenia maszyny wirtualnej platformy Azure.
 3. Gdy w lokacji głównej w środowisku lokalnym będzie znowu dostępna, można przygotować się do powrotu po awarii. Aby powrót po awarii, musisz skonfigurować infrastrukturę powrotu po awarii, w tym:
 
-    * **Tymczasowy serwer przetwarzania na platformie Azure**: Aby zakończyć się niepowodzeniem, powrót po awarii z platformy Azure, należy skonfigurować Maszynę wirtualną platformy Azure do działania jako serwer przetwarzania do obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
-    * **Połączenie sieci VPN**: do powrotu po awarii, potrzebujesz połączenia sieci VPN (lub usługi ExpressRoute) z sieci platformy Azure do lokacji lokalnej.
+    * **Tymczasowy serwer przetwarzania na platformie Azure**: Aby nie powiedzie się, powrót po awarii z platformy Azure, należy skonfigurować Maszynę wirtualną platformy Azure do działania jako serwer przetwarzania do obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
+    * **Połączenie sieci VPN**: Do powrotu po awarii, potrzebujesz połączenia sieci VPN (lub usługi ExpressRoute) z sieci platformy Azure do lokacji lokalnej.
     * **Osobny główny serwer docelowy**: Domyślnie główny serwer docelowy, który został zainstalowany na serwerze konfiguracji w lokalnych zasobów programu VMware maszyny Wirtualnej obsługuje powrót po awarii. Jeśli musisz zakończyć się niepowodzeniem ponownie dużych ilości ruchu należy skonfigurować oddzielny lokalny główny serwer docelowy do tego celu.
-    * **Zasady powrotu po awarii**: aby móc przeprowadzić ponowną replikację do lokacji lokalnej, należy utworzyć zasady powrotu po awarii. Te zasady są tworzone podczas tworzenia zasad replikacji ze środowiska lokalnego do platformy Azure.
+    * **Zasady powrotu po awarii**: Replikacja z lokacji lokalnej, potrzebne są zasady powrotu po awarii. Te zasady są tworzone podczas tworzenia zasad replikacji ze środowiska lokalnego do platformy Azure.
 4. Po składniki znajdują się w miejscu, powrót po awarii odbywa się w trzy czynności:
 
     - Etap 1: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure, dzięki czemu mają być replikowane na platformie Azure do lokalnych maszyn wirtualnych VMware.

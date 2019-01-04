@@ -1,56 +1,54 @@
 ---
-title: Włącz przezroczystego szyfrowania danych dla bazy danych Stretch - Azure | Dokumentacja firmy Microsoft
-description: Włącz przezroczystego szyfrowania danych (funkcji TDE) dla danych programu SQL Server Stretch na platformie Azure
+title: Włączanie technologii Transparent Data Encryption for Stretch Database — Azure | Dokumentacja firmy Microsoft
+description: Włącz przezroczyste szyfrowanie danych (TDE) dla programu SQL Server Stretch Database na platformie Azure
 services: sql-server-stretch-database
 documentationcenter: ''
 author: douglaslMS
-manager: barbkess
-editor: ''
+manager: craigg
 ms.assetid: a44ed8f5-b416-4c41-9b1e-b7271f10bdc3
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1e40e3d9eb1231666acda89c752ebc8f517e8fc6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23872925"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741542"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Włącz przezroczystego szyfrowania danych (funkcji TDE) dla baza danych Stretch na platformie Azure
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Włączanie technologii Transparent Data Encryption (TDE) for Stretch Database na platformie Azure
 > [!div class="op_single_selector"]
-> * [Azure portal](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Funkcji przezroczystego szyfrowania danych (TDE) pomaga w ochronie przed zagrożeniem złośliwych działań, wykonując w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian w aplikacji.
+Przezroczyste szyfrowanie danych (TDE) ułatwia ochronę przed złośliwymi działaniami, wykonując w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji.
 
-Funkcji TDE szyfruje magazyn całej bazy danych przy użyciu klucza symetrycznego o nazwie klucza szyfrowania bazy danych. Klucz szyfrowania bazy danych jest chroniony za pomocą certyfikatu wbudowanego serwera. Certyfikat serwera wbudowanych jest unikatowy dla każdego serwera usługi Azure. Microsoft automatycznie przełącza tych certyfikatów, co najmniej co 90 dni. Ogólny opis funkcji TDE, zobacz [funkcji przezroczystego szyfrowania danych (TDE)].
+Funkcja TDE szyfruje magazyn całą bazę danych przy użyciu klucza symetrycznego o nazwie klucza szyfrowania bazy danych. Klucz szyfrowania bazy danych jest chroniona za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera usługi Azure. Microsoft automatycznie przełącza tych certyfikatów, co 90 dni. Aby uzyskać ogólny opis funkcji TDE, zobacz [Transparent Data Encryption (TDE)].
 
-## <a name="enabling-encryption"></a>Włączenie szyfrowania
-Aby włączyć funkcji TDE platformy Azure bazy danych, które są przechowywane dane migracji z bazy danych programu SQL Server z obsługą odcinek, wykonaj następujące czynności:
+## <a name="enabling-encryption"></a>Włączanie szyfrowania
+Aby włączyć funkcję TDE dla platformy Azure bazy danych, która zapisuje dane zmigrowane z obsługą usługi Stretch program SQL Server, wykonaj następujące czynności:
 
-1. Otworzyć bazy danych w [portalu Azure](https://portal.azure.com)
-2. W bloku bazy danych, kliknij przycisk **ustawienia** przycisku
-3. Wybierz **przezroczystego szyfrowania danych** opcji![][1]
+1. Otwórz bazę danych w [witryny Azure portal](https://portal.azure.com)
+2. W bloku bazy danych kliknij **ustawienia** przycisku
+3. Wybierz **technologii Transparent data encryption** opcji ![][1]
 4. Wybierz **na** ustawienia, a następnie wybierz **Zapisz**
    ![][2]
 
 ## <a name="disabling-encryption"></a>Wyłączenie szyfrowania
-Wyłączenie funkcji TDE platformy Azure bazy danych, które są przechowywane dane migracji z bazy danych programu SQL Server z obsługą odcinek, wykonaj następujące czynności:
+Można wyłączyć funkcję TDE dla platformy Azure bazy danych, która zapisuje dane zmigrowane z obsługą usługi Stretch program SQL Server, wykonaj następujące czynności:
 
-1. Otworzyć bazy danych w [portalu Azure](https://portal.azure.com)
-2. W bloku bazy danych, kliknij przycisk **ustawienia** przycisku
-3. Wybierz **przezroczystego szyfrowania danych** opcji
+1. Otwórz bazę danych w [witryny Azure portal](https://portal.azure.com)
+2. W bloku bazy danych kliknij **ustawienia** przycisku
+3. Wybierz **technologii Transparent data encryption** opcji
 4. Wybierz **poza** ustawienia, a następnie wybierz **Zapisz**
 
 <!--Anchors-->
-[funkcji przezroczystego szyfrowania danych (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

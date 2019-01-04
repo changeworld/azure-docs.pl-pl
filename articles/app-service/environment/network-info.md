@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271015"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630465"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
@@ -30,7 +30,7 @@ ms.locfileid: "53271015"
 - **Zewnętrzne środowisko ASE**: Przedstawia aplikacje hostowane środowisko ASE na adres IP dostępne za pośrednictwem Internetu. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
 - **ŚRODOWISKO ASE Z WEWNĘTRZNYM MODUŁEM RÓWNOWAŻENIA OBCIĄŻENIA**: Przedstawia aplikacje hostowane środowisko ASE na adres IP wewnątrz sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrzny moduł równoważenia obciążenia (ILB), dlatego jest określana mianem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
 
-Istnieją dwie wersje środowiska App Service Environment: Środowiska ASEv1 i ASEv2. Aby uzyskać informacji na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment v1][ASEv1Intro]. Środowiska ASEv1 można wdrożyć w klasycznej lub sieci wirtualnej usługi Resource Manager. ASEv2 można wdrożyć tylko w sieci wirtualnej usługi Resource Manager.
+Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. Aby uzyskać informacji na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment v1][ASEv1Intro]. Środowiska ASEv1 można wdrożyć w klasycznej lub sieci wirtualnej usługi Resource Manager. ASEv2 można wdrożyć tylko w sieci wirtualnej usługi Resource Manager.
 
 Wywołania z ASE, które bardziej szczegółowo w Internecie należy pozostawić sieci wirtualnej przy użyciu adresu VIP przypisanych do środowiska ASE. Publiczny adres IP to adres VIP jest źródłowy adres IP dla wszystkich wywołań ze środowiska ASE, które bardziej szczegółowo w Internecie. Jeśli aplikacje w środowisku ASE wywołań do zasobów w sieci wirtualnej lub sieci VPN, źródłowy adres IP jest jeden z adresów IP w podsieci używana przez środowisko ASE. Ponieważ środowisko ASE znajduje się w sieci wirtualnej, można także przejść zasobów w ramach sieci wirtualnej bez przeprowadzania dodatkowej konfiguracji. Jeśli sieć wirtualna jest połączona z siecią lokalną, aplikacje w środowisku ASE również mieć dostęp do zasobów istnieje bez dodatkowej konfiguracji.
 
@@ -49,7 +49,7 @@ Jeśli masz środowisko ASE z wewnętrznym modułem równoważenia obciążenia,
 
 Dostępne są następujące porty dostępu zwykła aplikacja:
 
-| Użycie | Z | Do |
+| Użycie | Od | Do |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Użytkownika można konfigurować |  80, 443 |
 |  FTP/FTPS    | Użytkownika można konfigurować |  21, 990, 10001-10020 |
@@ -59,7 +59,7 @@ Ta zasada obowiązuje, jeśli jesteś na zewnętrznym środowiskiem ASE lub w ś
 
 ## <a name="ase-subnet-size"></a>Rozmiar podsieci środowiska ASE ##
 
-Nie można zmienić rozmiar podsieci używane do hostowania środowiska ASE, po wdrożeniu środowiska ASE.  Środowisko ASE używa adresu dla każdej infrastruktury roli oraz jak w przypadku każdego wystąpienia planu izolowanej usługi App Service.  Ponadto są 5 adresów używanych przez sieci platformy Azure dla każdej podsieci, który jest tworzony.  Środowisko ASE z żadnych planów usługi App Service w ogóle będzie używać 12 adresów przed przystąpieniem do tworzenia aplikacji.  Jeśli środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest następnie zostanie użyty 13 adresów przed przystąpieniem do tworzenia aplikacji w tym środowisku ASE. Podczas skalowania środowiska ASE rolami infrastruktury zostaną dodane co wielokrotnością 15 i 20 wystąpień planu usługi App Service.
+Nie można zmienić rozmiaru podsieci używanej do hostowania środowiska ASE po jego wdrożeniu.  Środowisko ASE używa adresu dla każdej infrastruktury roli oraz jak w przypadku każdego wystąpienia planu izolowanej usługi App Service.  Ponadto są 5 adresów używanych przez sieci platformy Azure dla każdej podsieci, który jest tworzony.  Środowisko ASE z żadnych planów usługi App Service w ogóle będzie używać 12 adresów przed przystąpieniem do tworzenia aplikacji.  Jeśli środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest następnie zostanie użyty 13 adresów przed przystąpieniem do tworzenia aplikacji w tym środowisku ASE. Podczas skalowania środowiska ASE rolami infrastruktury zostaną dodane co wielokrotnością 15 i 20 wystąpień planu usługi App Service.
 
    > [!NOTE]
    > W tej podsieci, ale środowisko ASE można nic innego. Pamiętaj wybrać przestrzeń adresów, który pozwala na przyszły rozwój. Nie można zmienić tego ustawienia później. Firma Microsoft zaleca rozmiar `/24` za pomocą 256 adresów.
@@ -72,7 +72,7 @@ Skalowanie w górę lub w dół, są dodawane nowe role odpowiedni rozmiar, a na
 
 Środowisko ASE przychodzące dostępu, które zależności są:
 
-| Użycie | Z | Do |
+| Użycie | Od | Do |
 |-----|------|----|
 | Zarządzanie | Adresy zarządzania usługi aplikacji | Podsieci środowiska ASE: 454, 455 |
 |  Środowisko ASE wewnętrznej komunikacji | Podsieci środowiska ASE: Wszystkie porty | Podsieci środowiska ASE: Wszystkie porty
@@ -151,7 +151,7 @@ Te adresy IP są łatwo widoczna w ASEv2 w witrynie Azure portal z poziomu inter
 
 ### <a name="app-assigned-ip-addresses"></a>Adresy IP przypisane do aplikacji ###
 
-Za pomocą zewnętrznego środowiska ASE adresów IP można przypisać do poszczególnych aplikacji. Nie możesz tego zrobić za pomocą środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji na temat konfigurowania aplikacji, aby mieć swój własny adres IP, zobacz [powiązania istniejącego niestandardowego certyfikatu SSL w usłudze Azure web apps](../app-service-web-tutorial-custom-ssl.md).
+Za pomocą zewnętrznego środowiska ASE adresów IP można przypisać do poszczególnych aplikacji. Nie możesz tego zrobić za pomocą środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji na temat konfigurowania aplikacji, aby mieć swój własny adres IP, zobacz [powiązania istniejącego niestandardowego certyfikatu SSL w usłudze Azure App Service](../app-service-web-tutorial-custom-ssl.md).
 
 Gdy aplikacja ma własny adres SSL opartego na protokole IP, środowisko ASE zastrzega sobie dwa porty do mapowania na ten adres IP. Jeden port jest dla ruchu HTTP i innych portów to dla protokołu HTTPS. Te porty są wyświetlane w interfejsie użytkownika środowiska ASE w sekcji adresów IP. Ruch musi być w stanie nawiązać połączenie z adresu VIP tych portów lub aplikacje są niedostępne. Ten wymóg jest pamiętać podczas konfigurowania sieciowych grup zabezpieczeń (NSG).
 

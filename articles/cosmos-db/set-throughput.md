@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 54b2ada0f269bca681305efc2e1eb7c2f9776ab7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075356"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543006"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Aprowizowanie przepływności na kontenerach Azure Cosmos i bazy danych
 
@@ -47,7 +47,7 @@ Zaleca się skonfigurować przepływność w bazie danych, podczas udostępniani
 
 * Udostępnianie aprowizowanej przepływności bazy danych przez zestaw kontenerów jest przydatne w przypadku, gdy w przypadku migracji z bazy danych NoSQL (np. bazy danych MongoDB, bazy danych Cassandra) hostowanego w klastrze składającym się z maszynami wirtualnymi lub z poziomu lokalnych serwerów fizycznych do usługi Azure Cosmos DB. Można potraktować aprowizowanej przepływności skonfigurowany w bazie danych Azure Cosmos jako odpowiednik logiczny (ale bardziej ekonomiczne i elastycznych), moc obliczeniową bazy danych MongoDB lub bazy danych Cassandra klastra.  
 
-W dowolnym czasie, przepływność przydzielanych do kontenera w bazie danych jest rozłożona na wszystkie partycje logiczne tego kontenera. W przypadku kontenerów udostępnianie aprowizowaną przepływność w bazie danych nie umożliwiają selektywne stosowanie przepływności do określonego kontenera lub partycji logicznej. Jeśli obciążenie na partycji logicznej zużywa więcej niż z przepływnością, którą jest przydzielany do określonej partycji logicznej, operacji będzie ograniczone szybkości. Sytuacji ograniczania szybkości, można zwiększyć przepływność dla całego kontenera lub spróbuj ponownie wykonać operację. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
+Wszystkie kontenery utworzone w bazie danych z aprowizowaną przepływnością musi zostać utworzona z kluczem partycji. W dowolnym czasie, przepływność przydzielanych do kontenera w bazie danych jest rozłożona na wszystkie partycje logiczne tego kontenera. W przypadku kontenerów udostępnianie aprowizowaną przepływność w bazie danych nie umożliwiają selektywne stosowanie przepływności do określonego kontenera lub partycji logicznej. Jeśli obciążenie na partycji logicznej zużywa więcej niż z przepływnością, którą jest przydzielany do określonej partycji logicznej, operacji będzie ograniczone szybkości. Sytuacji ograniczania szybkości, można zwiększyć przepływność dla całego kontenera lub spróbuj ponownie wykonać operację. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
 
 Wiele partycji logicznej udostępnianie przepływnością aprowizowaną do bazy danych może być hostowana na partycji pojedynczego zasobu. Podczas jednej partycji logicznej kontenera zawsze ma zakres partycji zasobów, partycjami logicznymi oznaczonym literą "L", "C" kontenery udostępnianie aprowizowanej przepływności bazy danych można mapowane i hostowane na partycje fizyczne "R". Na poniższej ilustracji przedstawiono, jak partycja zasobu może zawierać co najmniej jedną partycję logiczne, które należą do różnych kontenerów w bazie danych:
 

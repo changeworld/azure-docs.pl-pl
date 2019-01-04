@@ -4,15 +4,16 @@ description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i skład
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 12/12/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 7593183093a722f55b2bd638ef551fb1343433c4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5d457a6b7eb96486a24ca53d9093ffa4f573b774
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323477"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974424"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -48,12 +49,12 @@ Wolne miejsce na dysku | 600 GB miejsca na wymaganą do przechowywania dysków.
 System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 |
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
 Interfejs PowerCLI | [Interfejs PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") powinien być zainstalowany.
-Role systemu Windows Server | Nie włączaj: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
-Zasady grupy| Nie włączaj: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br> — Logika zaufania dla plików załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>
+Role systemu Windows Server | Nie włączaj: <br/> - Active Directory Domain Services <br/>- Internet Information Services <br/> - Hyper-V |
+Zasady grupy| Nie włączaj: <br/> -Zapobiegaj dostępowi do wiersza polecenia. <br/> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br/> — Logika zaufania dla plików załączników. <br/> -Włącz wykonywanie skryptu. <br/> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br/> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br/> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br/>
 Typ karty NIC | Innego VMXNET3 (jeśli jest wdrażane jako maszyny Wirtualnej VMware)
 Typ adresu IP | Statyczny
-Porty | port 443 jest używany do organizowanie kanału sterowania)<br>9443 umożliwiający transport danych
+Porty | port 443 jest używany do organizowanie kanału sterowania)<br/>9443 umożliwiający transport danych
 
 ## <a name="replicated-machines"></a>Replikowane maszyny
 
@@ -62,8 +63,8 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 **Składnik** | **Szczegóły**
 --- | ---
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
-System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1. </br></br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> Windows 2016 Nano Server nie jest obsługiwane.
-System operacyjny Linux | Red Hat Enterprise Linux: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>CentOS: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4 i systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) w wersji 7.5 <br/><br/></br>— Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.</br></br> - [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure. Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> -W dystrybucjach systemu Linux obsługiwane są tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> — Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> — Serwerach z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
+System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1. <br/><br/>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). <br/><br/> Windows 2016 Nano Server nie jest obsługiwane.
+System operacyjny Linux | Red Hat Enterprise Linux: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>CentOS: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * <br/><br/>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4 i systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) w wersji 7.5 <br/><br/><br/>— Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.<br/><br/> - [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure. Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> -W dystrybucjach systemu Linux obsługiwane są tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> — Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> — Serwerach z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
 
 
 
@@ -99,9 +100,9 @@ Debian 8 | [9.16](https://support.microsoft.com/en-in/help/4278275/update-rollup
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.156-94.64-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.96-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.85-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.96-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.85-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.156-94.64-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.96-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.85-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.96-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.85-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Magazyn gościa/systemów plików systemu Linux
 
@@ -112,9 +113,11 @@ Menedżer woluminów | Przed [9.20 wersji](https://support.microsoft.com/en-in/h
 Urządzenia magazynujące Parawirtualne | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Blokuj wielu kolejek operacji We/Wy urządzenia | Nieobsługiwane.
 Serwery fizyczne z kontrolera magazynu HP CCISS | Nieobsługiwane.
+
+Urządzenie/instalacji punktu konwencji nazewnictwa | Nazwa urządzenia lub nazwę punktu instalacji powinny być unikatowe. Upewnij się, że żadne dwa punkty urządzeń/instalacji z uwzględnieniem wielkości liter nazwy. </br> Przykład: Nazewnictwo dwóch urządzeń z tej samej maszyny wirtualnej jako *urządzenia 1* i *urządzenia 1* jest niedozwolone.
 Katalogi | Przed [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. Następujące katalogi (jeśli skonfigurowany jako oddzielne partycje /-systemów plików) wszystkie muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: / (root), / Boot/usr, /usr/local, /var, etc.</br>2. / boot powinny znajdować się na partycji dysku i nie LVM woluminu.<br/><br/> Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) lub nowszy, powyżej ograniczenia nie mają zastosowania.
-Wymagania dotyczące wolnego miejsca| 2 GB na partycję/root <br/><br/> 250 MB do folderu instalacji
-XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak metadane sumy kontrolnej, są obsługiwane z usługi mobilności wersji 9.10 wartości. Użyj narzędzia xfs_info, aby sprawdzić superblock XFS dla partycji. Jeśli ftype jest ustawiona na 1, XFSv5 funkcje są w użyciu.
+
+Wymagania dotyczące miejsca na wolne | 2 GB na partycję/root <br/><br/> 250 MB do folderu instalacji XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak metadane sumy kontrolnej, są obsługiwane z usługi mobilności wersji 9.10 wartości. Użyj narzędzia xfs_info, aby sprawdzić superblock XFS dla partycji. Jeśli ftype jest ustawiona na 1, XFSv5 funkcje są w użyciu.
 
 ## <a name="vmdisk-management"></a>Zarządzanie maszyna wirtualna/dysk
 
@@ -163,7 +166,7 @@ Host sieci vSAN | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizy
 Host wielościeżkowego (MPIO) | Tak, przetestowane za pomocą DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualnego hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Gość/serwera VMDK | Yes
-Gość/serwera interfejsem EFI/UEFI| Partial (migracji platformy Azure dla systemu Windows Server 2012 lub nowszy) </br></br> Patrz Uwaga na koniec tabeli
+Gość/serwera interfejsem EFI/UEFI| Partial (migracji platformy Azure dla systemu Windows Server 2012 lub nowszy) <br/><br/> Patrz Uwaga na koniec tabeli
 Dysku udostępnionego klastra gościa/serwera | Nie
 Gość/serwera zaszyfrowanego dysku | Nie
 Gość/serwer systemu plików NFS | Nie
@@ -172,7 +175,7 @@ Gość/serwera RDM | Yes<br/><br/> N/d dla serwerów fizycznych
 Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.
 Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Yes
 Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Yes
-Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br><br/>Zarządzanie woluminami logicznych (LVM)| Yes
+Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Yes
 Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
 Gość/server - wykluczyć dysk | Yes
@@ -218,8 +221,8 @@ Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure muszą s
 System operacyjny gościa | Sprawdź [obsługiwane systemy operacyjne](#replicated-machines) dla replikowane maszyny. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Architektura systemu operacyjnego gościa | 64-bitowych. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Rozmiar dysku systemu operacyjnego | Do 2048 GB. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
-Liczba dysków systemu operacyjnego | 1 | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.  
-Liczba dysków danych | 64 lub mniej. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.  
+Liczba dysków systemu operacyjnego | 1 | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+Liczba dysków danych | 64 lub mniej. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Rozmiar dysku danych | Do 4095 GB. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Karty sieciowe | Wiele kart sieciowych, są obsługiwane. |
 Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.

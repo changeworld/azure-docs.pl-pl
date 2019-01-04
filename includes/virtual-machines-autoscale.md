@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399950"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594327"
 ---
 Możesz z łatwością [automatyczne skalowanie](../articles/azure-monitor/platform/autoscale-best-practices.md) swoje [maszyn wirtualnych (VM)](../articles/virtual-machines/windows/overview.md) zastosowania [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) i [funkcja automatycznego skalowania platformy Azure Monitor](../articles/azure-monitor/platform/autoscale-overview.md). Maszyny wirtualne muszą należeć do zestawu skalowania automatycznego skalowania. Ten artykuł zawiera informacje, która pozwala na lepsze zrozumienie, jak skalowanie w pionie i w poziomie przy użyciu automatycznej i ręcznej metody maszyn wirtualnych.
 
@@ -29,7 +29,7 @@ Zestawy skalowania ułatwiają wdrażanie i zarządzanie identycznych maszyn wir
 
 Automatyczne skalowanie zapewnia odpowiednią liczbę maszyn wirtualnych do obsługi obciążenia w swojej aplikacji. Umożliwia ona Dodawanie maszyn wirtualnych do obsługi zwiększenia obciążenia i oszczędzać pieniądze, usuwając maszyn wirtualnych, które są obecne w stanie bezczynności. Możesz określić minimalną i maksymalną liczbę maszyn wirtualnych do zestawu reguł. O minimalnej sprawia, że się, że Twoja aplikacja zawsze działa nawet przy braku obciążenia. O maksymalnej wartości ogranicza możliwości całkowity koszt na godzinę.
 
-Można włączyć automatyczne skalowanie, podczas tworzenia zestawu skalowania przy użyciu [programu Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Możesz również je włączyć po utworzeniu zestawu skalowania. Tworzenie zestawu skalowania, należy zainstalować rozszerzenie i Konfigurowanie automatycznego skalowania przy użyciu [szablonu usługi Azure Resource Manager](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). W witrynie Azure portal włączyć automatyczne skalowanie z usługi Azure Monitor lub skalowania automatycznego z ustawień zestawu skalowania.
+Można włączyć automatyczne skalowanie, podczas tworzenia zestawu skalowania przy użyciu [programu Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Możesz również je włączyć po utworzeniu zestawu skalowania. Tworzenie zestawu skalowania, należy zainstalować rozszerzenie i Konfigurowanie automatycznego skalowania przy użyciu [szablonu usługi Azure Resource Manager](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). W witrynie Azure portal włączyć automatyczne skalowanie z usługi Azure Monitor lub skalowania automatycznego z ustawień zestawu skalowania.
 
 ![Włącz skalowanie automatyczne](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  

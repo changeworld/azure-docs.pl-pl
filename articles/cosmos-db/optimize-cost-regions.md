@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: d5e10e04ea9567e2656f592407855a53a70d7b0f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ec603df7005b9151f1cf760df80de9aaffc78b3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263902"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539708"
 ---
 # <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Optymalizowanie kosztów dla wdrożeń w wielu regionach w usłudze Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Można dodać i usunąć regiony z kontem usługi Azure Cosmos w dowolnym momenc
 
 1. `T x (N+1) RU/s` Jeśli Twoje konto usługi Azure Cosmos jest skonfigurowany we wszystkich regionach, która może przetwarzać zapisy. 
 
-Aprowizowana przepływność z regionu zapisu jednego kosztuje $0.008 za godzinę dla 100 jednostek RU/s i aprowizowaną przepływność z wieloma regionami zapisywalny koszty 0,016; $/ za godzinę za 100 jednostek RU/s. Aby dowiedzieć się więcej, zobacz usługi Cosmos DB [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Aprowizowana przepływność z regionu zapisu jednego kosztuje $0.008 za godzinę dla 100 jednostek RU/s i aprowizowaną przepływność z wieloma regionami zapisywalny koszty 0,016; $/ za godzinę za 100 jednostek RU/s. Aby dowiedzieć się więcej, zobacz temat usługi Azure Cosmos DB [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="costs-for-multiple-write-regions"></a>Koszty dla wielu regionów zapisu
 

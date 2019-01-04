@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326641"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553562"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -189,7 +189,7 @@ Nie, standardowe dyski SSD występuje pojedynczego wystąpienia maszyny Wirtualn
 
 ## <a name="migrate-to-managed-disks"></a>Migrowanie do usługi Managed Disks
 
-** Jest dowolnym wpływ migracji na wydajność dysków zarządzanych?
+**Czy istnieje dowolnego wpływ migracji na wydajność dysków zarządzanych?**
 
 Migracja dotyczy przenoszenia dysku z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, co może zająć kilka godzin, zazwyczaj mniej niż 24 godziny, w zależności od ilości danych na dyskach. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
 

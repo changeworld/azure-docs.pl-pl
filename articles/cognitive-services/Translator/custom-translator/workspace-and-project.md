@@ -10,12 +10,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6f88ff8ecd1aee588cb82c08ae2eda58fe2eb1e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f3d2276c92868bd2f9d98b119bc31aee4db13a81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627593"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717556"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co to jest obszar roboczy niestandardowe w usłudze Translator?
 
@@ -31,7 +31,7 @@ Projekt jest otoką elementu modelu, dokumentów i testów. Każdy projekt autom
 
 Kategoria identyfikuje domeny — obszar terminologii i stylu, którego chcesz użyć — dla Twojego projektu. Wybierz kategorię, która jest najbardziej odpowiednie do dokumentów. W niektórych przypadkach wybraną kategorię bezpośrednio wpływa na zachowanie niestandardowe w usłudze Translator.
 
-Nie mamy niestandardowe modele dla kategorii, ale z wyjątkiem systemu ogólnego planu bazowego. Jednak nadal zaleca się użytkownikom, wybierz kategorię, która jest najbardziej odpowiednie do ich domeny, dzięki czemu może służyć jako identyfikator w CategoryID. Dla projektów w domenie technologii wybierając "Technologia" zapewnia, że po udostępnieniu, że projekt będzie można go używać modelu odniesienia.
+Firma Microsoft ma dwa zestawy modeli podstawowych. Są one ogólne i technologii. Jeśli kategoria **technologii** jest zaznaczone, modeli podstawowych technologii będą używane. Do innych wybór kategorii modele ogólne odniesienia są używane. Modelu odniesienia technologii, jak również w domeny z technologii, ale pokazuje niższa jakość, jeśli zdania używane na potrzeby tłumaczenia nie należy do domeny z technologii. Zalecamy, aby klienci mogą wybrać kategorię technologii, tylko wtedy, gdy zdania ściśle mieszczą się w domenie technologii.
 
 W tym samym obszarze roboczym można tworzyć projekty dla tej samej pary języka w różnych kategoriach. Niestandardowe w usłudze Translator uniemożliwia tworzenie duplikatu projektu za pomocą tej samej pary języka i kategorii. Zastosowanie etykiety do projektu umożliwia uniknięcie tego ograniczenia. Nie należy używać etykiety, chyba że w przypadku tworzenia systemów translation dla wielu klientów, jak dodawanie, że unikatową etykietę do projektu, które zostaną odzwierciedlone w swoich projektach CategoryID.
 

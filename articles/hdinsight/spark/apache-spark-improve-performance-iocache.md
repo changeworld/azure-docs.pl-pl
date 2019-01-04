@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 204a3230c782279b0cad4194e97aa4014c940635
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581939"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608498"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Zwiększa wydajność obciążeń platformy Apache Spark przy użyciu usługi Azure HDInsight we/wy Cache (wersja zapoznawcza)
 
@@ -20,7 +20,7 @@ We/Wy pamięci podręcznej jest usługa buforowania danych dla usługi Azure HDI
 
 Większość dyski SSD zapewniają więcej niż 1 GB na sekundę przepustowości. Przepustowość, uzupełnione pamięć podręczna plików w pamięci systemu operacyjnego, zawiera wystarczającą przepustowość do ładowania danych big data aparatami przetwarzania obliczeniowych, takich jak Apache Spark. Operacyjne pamięć pozostanie dostępna dla platformy Apache Spark do przetwarzania zadań silnie zależne od pamięci, takich jak przesuwa. Wyłącznego użytku systemu operacyjnego pamięci posiadające umożliwia platformy Apache Spark w celu osiągnięcia optymalnego rozmieszczenia zasobów użycia.  
 
->[!Note]
+>[!Note]  
 >We/Wy pamięci podręcznej aktualnie używa RubiX jako składnik pamięci podręcznej, ale może to ulec zmianie w przyszłych wersjach usługi. Użyj interfejsów We/Wy pamięci podręcznej i nie wykona jakieś zależności, bezpośrednio od implementacji RubiX.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Zalety usługi Azure HDInsight we/wy w pamięci podręcznej
@@ -45,7 +45,7 @@ Usługa Azure HDInsight we/wy w pamięci podręcznej jest dezaktywowany domyśln
 
 1. Potwierdź ponowne uruchomienie wszystkich odpowiednich usług w klastrze.
 
->[!NOTE] 
+>[!NOTE]  
 > Mimo, że pasek postępu pokazuje aktywowane, we/wy pamięci podręcznej faktycznie nie jest włączone, dopiero po ponownym uruchomieniu dotyczy innych usług.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
@@ -78,4 +78,4 @@ Jeśli to nie zadziała, wyłącz We/Wy pamięci podręcznej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej na temat operacji We/Wy pamięci podręcznej, w tym testy wydajności, w tym wpisie w blogu: [zadań platformy Apache Spark uzyskanie do 9 x przyspieszenie z pamięcią podręczną we/wy HDInsight](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+- Przeczytaj więcej na temat operacji We/Wy pamięci podręcznej, w tym testy wydajności, w tym wpisie w blogu: [Platforma Apache Spark zadania uzyskanie do 9 x przyspieszenie z pamięcią podręczną we/wy HDInsight](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)

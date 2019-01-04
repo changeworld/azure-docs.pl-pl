@@ -14,37 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2018
+ms.date: 12/22/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 042be0b818ba448d64aa5e8631926420f00f4b5e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 367a9b2bd7b4a32d69974639a13f67340ea56518
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679668"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745010"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?
 
-Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak autoryzowanego dostępu użytkowników można kontrolować swoje aplikacje w chmurze. W zasadach dostępu warunkowego zdefiniujesz odpowiedzi ("to") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
+Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak autoryzowanego dostępu użytkowników można kontrolować swoje aplikacje w chmurze. W zasadach dostępu warunkowego zdefiniujesz odpowiedzi ("to") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku").
 
 ![Kontrola](./media/controls/10.png)
 
-
-W kontekście dostępu warunkowego 
+W kontekście dostępu warunkowego
 
 - "**w takim przypadku**" nosi nazwę **warunków**
 
 - "**To zrobić**" nosi nazwę **kontrole dostępu**
 
-
 Kombinacja instrukcja warunku, za pomocą formantów reprezentuje zasady dostępu warunkowego.
 
 ![Kontrola](./media/controls/61.png)
 
-Każdy formant jest wymaganie, które muszą zostać spełnione przez osobę lub logowania systemu lub ograniczenia na to, jak użytkownik można zrobić po zarejestrowaniu się. 
+Każdy formant jest wymaganie, które muszą zostać spełnione przez osobę lub logowania systemu lub ograniczenia na to, jak użytkownik można zrobić po zarejestrowaniu się.
 
-Istnieją dwa typy formantów: 
+Istnieją dwa typy formantów:
 
 - **Kontrolki udzielania** — dostęp do bramy
 
@@ -56,24 +54,20 @@ W tym temacie wyjaśniono różne formanty, które są dostępne w funkcji dost�
 
 Za pomocą Udziel kontroli możesz całkowicie blokowanie dostępu lub zezwolić na dostęp z dodatkowymi wymaganiami, wybierając odpowiednią kontrolki. W przypadku wielu kontrolek możesz wymagać od:
 
-- Wszystkie wybrane formanty, które należy spełnić (*i*) 
+- Wszystkie wybrane formanty, które należy spełnić (*i*)
 - Jeden zaznaczony formant do spełnienia (*lub*)
 
 ![Kontrola](./media/controls/17.png)
 
-
-
 ### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
-Możesz użyć tego formantu, aby wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do aplikacji określonej chmury. Ten formant obsługuje następujących dostawców usługi Multi-Factor Authentication: 
+Możesz użyć tego formantu, aby wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do aplikacji określonej chmury. Ten formant obsługuje następujących dostawców usługi Multi-Factor Authentication:
 
-- Azure Multi-Factor Authentication 
+- Azure Multi-Factor Authentication
 
 - Dostawcę usługi Multi-Factor authentication w środowisku lokalnym, łączyć się z usługi Active Directory Federation Services (AD FS).
- 
+
 Przy użyciu usługi uwierzytelnianie wieloskładnikowe pomaga chronić zasoby przed dostępem nieautoryzowany użytkownik, który może mieć uzyskał dostęp do podstawowych poświadczeń prawidłowego użytkownika.
-
-
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
@@ -87,25 +81,18 @@ Wymaganie hybrydowych dołączonym do urządzenia w usłudze Azure AD inną opcj
 
 Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](require-managed-devices.md).
 
-
-
-
-
 ### <a name="approved-client-app"></a>Zatwierdzonej aplikacji klienckiej
 
 Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, możesz chcieć mieć możliwość ochrony danych firmowych, uzyskiwać dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez użytkownika.
 Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
 
-
 Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji klienckiej, która próbuje uzyskać dostęp do obsługi aplikacji w chmurze [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich jest także znana jako [zasad dostępu warunkowego opartego na aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [zatwierdzone klienta aplikacji wymaganie](technical-reference.md#approved-client-app-requirement).
-
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
-Użytkownik może wymagać w dzierżawie, aby wyrazić zgodę na warunki użytkowania, zanim zostanie im przyznany dostęp do zasobu. Jako administrator można skonfigurować i dostosować warunki użytkowania, przekazywania dokumentów PDF. Jeśli użytkownik znajduje się w zakresie Ta kontrola dostępu do aplikacji, otrzymuje tylko jeśli uzgodniono warunki użytkowania. 
+Użytkownik może wymagać w dzierżawie, aby wyrazić zgodę na warunki użytkowania, zanim zostanie im przyznany dostęp do zasobu. Jako administrator można skonfigurować i dostosować warunki użytkowania, przekazywania dokumentów PDF. Jeśli użytkownik znajduje się w zakresie Ta kontrola dostępu do aplikacji, otrzymuje tylko jeśli uzgodniono warunki użytkowania.
 
-
-### <a name="custom-controls-preview"></a>Kontrolki niestandardowe (wersja zapoznawcza) 
+### <a name="custom-controls-preview"></a>Kontrolki niestandardowe (wersja zapoznawcza)
 
 Możesz utworzyć niestandardowe formanty dostępu warunkowego, które przekierować użytkowników do usługi zgodne w celu dalszego spełniają wymagania poza usługą Azure Active Directory. Dzięki temu można używać niektórych zewnętrznego uwierzytelniania wieloskładnikowego i dostawców weryfikacji do wymuszania zasad dostępu warunkowego lub tworzyć własne niestandardowe usługi. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie nadal w przepływ dostępu warunkowego. 
 
@@ -121,6 +108,7 @@ Obejmują obecnie oferującymi usługę zgodnych dostawców:
 - [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
+- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Symantec adresów VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
@@ -138,9 +126,7 @@ Trwa opcję, aby utworzyć formant niestandardowy **Zarządzaj** części **dost
 
 Klikając **nowego formantu niestandardowego**, zostanie otwarty blok zawierający pole tekstowe dla danych JSON kontrolki.  
 
-
 ![Kontrola](./media/controls/81.png)
-
 
 ### <a name="deleting-custom-controls"></a>Usuwanie kontrolek niestandardowych
 
@@ -156,9 +142,6 @@ Aby usunąć formant niestandardowy, należy się najpierw upewnić, nie jest on
 
 Aby edytować kontrolkę niestandardową, należy usunąć bieżącą kontroli i utworzyć nowy formant przy użyciu zaktualizowanych informacji.
 
-
-
-
 ## <a name="session-controls"></a>Kontrolki sesji
 
 Kontrolki sesji umożliwiają korzystanie z ograniczonego środowiska w ramach aplikacji w chmurze. Kontrolki sesji są wymuszane przez aplikacje w chmurze i opierają się na dodatkowe informacje podane przez usługę Azure AD do aplikacji o sesji.
@@ -171,15 +154,12 @@ Możesz użyć tego formantu, aby wymagają usługi Azure AD do przekazania info
 
 Aby dowiedzieć się więcej, zobacz:
 
-- [Włączanie ograniczony dostęp z usługą SharePoint Online](https://aka.ms/spolimitedaccessdocs) 
+- [Włączanie ograniczony dostęp z usługą SharePoint Online](https://aka.ms/spolimitedaccessdocs)
 
 - [Włączanie ograniczony dostęp z usługą Exchange Online](https://aka.ms/owalimitedaccess)
-
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
 
-- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 
+- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md).

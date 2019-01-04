@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24776e2d14824c6d7b028a2cb9e2ba1e1aaa5c96
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342718"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789130"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -56,8 +56,9 @@ Chiny | Chiny wschodnie, Chiny Północne, Chiny North2, 2 (Chiny)
 
 >[!NOTE]
 >
-> Dla regionu Brazylia Południowa można replikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA.</br>
-> Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Go nie może służyć jako region docelowy odzyskiwania po awarii dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.  
+> Dla regionu Brazylia Południowa można replikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA.
+>
+> Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Go nie może służyć jako region docelowy odzyskiwania po awarii dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.
 
 ## <a name="cache-storage"></a>Magazyn pamięci podręcznej
 
@@ -127,10 +128,10 @@ Debian 8 | 9.17, 9.18 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.88-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.126-94.22-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default<br/><br/> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.88-default<br/><br/> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default<br/><br/>Z dodatkiem SP3 4.4.73-5-default do 4.4.126-94.22-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux
 
@@ -145,7 +146,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem 
 --- | --- | ---
 Rozmiar | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Sprawdź [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md).
 Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie w oparciu o ustawienia regionu źródłowego. Te ustawienia można modyfikować.
-Strefy dostępności | Obsługiwane |  
+Strefy dostępności | Obsługiwane |
 Korzyści z używania hybrydowej (HUB) | Obsługiwane | Jeśli źródłowa maszyna wirtualna ma włączone, licencję Centrum testowania trybu failover lub przełączone w tryb failover maszyny Wirtualnej używa również licencji KONCENTRATORA.
 Zestawy skalowania maszyn wirtualnych | Nieobsługiwane |
 Obrazy z galerii platformy Azure — Microsoft opublikowane | Obsługiwane | Obsługiwane, jeśli maszyna wirtualna uruchamia się w obsługiwanym systemie operacyjnym.
@@ -177,23 +178,23 @@ Maksymalna liczba dysków danych | Maksymalnie 64 zgodnie z pomocy technicznej d
 Częstotliwość zmian dysku danych | Maksymalnie 10 MB/s na dysk usługi premium storage. Maksymalnie 2 MB/s na dysk dla magazynu w warstwie standardowa. | Jeśli średni współczynnik zmian na dysku jest stale wyższa niż wartość maksymalna, replikacji nie będzie zapoznać się z nimi.<br/><br/>  Jednak maksymalny po przekroczeniu sporadycznie, replikację można zapoznać się z nimi, ale może zostać wyświetlony punktów odzyskiwania nieco opóźnione.
 Dysk danych — konto magazynu w warstwie standardowa | Obsługiwane |
 Dysk danych — konto magazynu premium storage | Obsługiwane | Maszyna wirtualna ma dyski rozkładają się na konta magazynu w warstwie standardowa i premium, po wybraniu innego docelowego konta magazynu dla każdego dysku, aby upewnić się, że mają taką samą konfigurację magazynu w regionie docelowym.
-Dysk zarządzany — standardowa | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |  
+Dysk zarządzany — standardowa | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
 Dysk zarządzany — premium | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
 Standardowa, SSD | Nieobsługiwane |
 Nadmiarowość | Usługi LRS i GRS są obsługiwane.<br/><br/> Magazyn ZRS nie jest obsługiwane.
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny Wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
-Miejsca do magazynowania | Obsługiwane |         
+Miejsca do magazynowania | Obsługiwane |
 Szyfrowanie danych magazynowanych (SSE) | Obsługiwane | Funkcja SSE jest ustawieniem domyślnym dla kont magazynu.   
 Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane |
 Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
 Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
 Wykluczanie dysku | Nieobsługiwane|   Dysk tymczasowy jest domyślnie wykluczony.
-Bezpośrednie miejsca do magazynowania magazynu  | Nieobsługiwane|
+Bezpośrednie miejsca do magazynowania  | Nieobsługiwane|
 Serwer plików skalowalny w poziomie  | Nieobsługiwane|
 LRS | Obsługiwane |
 GRS | Obsługiwane |
 RA-GRS | Obsługiwane |
-ZRS | Nieobsługiwane |  
+ZRS | Nieobsługiwane |
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Usługa Azure Storage zapory sieci wirtualnej  | Obsługiwane | Jeśli do kont magazynu, jest ograniczenie dostępu sieci wirtualnej, upewnij się, że ["Zezwalaj na zaufane usługi firmy Microsoft"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna warstwa) | Nie | Wzrost kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia w wersji 1 konta magazynu
@@ -220,13 +221,13 @@ NIC | Maksymalna liczba obsługiwanych dla określonego rozmiaru maszyny Wirtual
 Internetowy moduł równoważenia obciążenia | Obsługiwane | Kojarzenie modułu równoważenia obciążenia wstępnie skonfigurowane, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Wewnętrzny moduł równoważenia obciążenia | Obsługiwane | Kojarzenie modułu równoważenia obciążenia wstępnie skonfigurowane, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Publiczny adres IP | Obsługiwane | Kojarzenie istniejącego publicznego adresu IP z karty sieciowej. Lub, tworzenie publicznego adresu IP i skojarz ją z kartą Sieciową za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
-Sieciowa grupa zabezpieczeń na karcie interfejsu Sieciowego | Obsługiwane | Kojarzenie sieciowej grupy zabezpieczeń z kartą Sieciową za pomocą skryptu usługi Azure Automation w planie odzyskiwania.  
+Sieciowa grupa zabezpieczeń na karcie interfejsu Sieciowego | Obsługiwane | Kojarzenie sieciowej grupy zabezpieczeń z kartą Sieciową za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Sieciowa grupa zabezpieczeń w podsieci | Obsługiwane | Kojarzenie sieciowej grupy zabezpieczeń z podsiecią, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Zastrzeżony adres IP (statyczne) | Obsługiwane | Jeśli karta sieciowa źródłowej maszyny Wirtualnej ma statyczny adres IP, a podsieć docelowa ma ten sam adres IP dostępne, jest przypisany do w trybie Failover maszyny Wirtualnej.<br/><br/> Jeśli podsieć docelowa nie ma ten sam adres IP dostępny, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla maszyny Wirtualnej.<br/><br/> Można również określić stały adres IP i podsieci w **zreplikowane elementy** > **ustawienia** > **obliczenia i sieć**  >  **Interfejsy sieciowe**.
 Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych adresów IP kart Sieciowych w trybie Failover maszyny Wirtualnej jest również dynamiczne domyślnie.<br/><br/> Możesz zmodyfikować to stały adres IP w razie potrzeby.
 Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
-Niestandardowe DNS  | Obsługiwane |    
+Niestandardowe DNS  | Obsługiwane |
 Nieuwierzytelnione serwera Proxy | Obsługiwane | Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)    
 Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna korzysta z uwierzytelnionego serwera proxy dla połączenia wychodzącego, nie może być replikowane za pomocą usługi Azure Site Recovery.    
 Sieć VPN między lokacjami, z lokalnych (z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch odzyskiwania lokacji nie jest kierowany do sieci lokalnej. Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  

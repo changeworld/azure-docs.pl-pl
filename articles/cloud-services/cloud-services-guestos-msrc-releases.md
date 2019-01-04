@@ -11,22 +11,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/15/2018
+ms.date: 12/14/2018
 ms.author: raiye
-ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 94cf90dbc41533b8f5d41a0bdb18e5cdcb7be474
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854275"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541034"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
 
-## <a name="november-2018-guest-os"></a>System operacyjny gościa listopada 2018 r.
+## <a name="december-2018-guest-os"></a>System operacyjny gościa grudnia 2018 r.
 
 >[!NOTE]
->System operacyjny gościa listopada jest obecnie wdrażana do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym gościa listopada. Ta lista może ulec zmianie.
+>System operacyjny gościa grudnia jest obecnie wdrażana do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym gościa grudnia. Ta lista może ulec zmianie.
+
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18-12 | [4471321] | Zabezpieczenia systemu Windows 10 | 5.26 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4471328] | Zabezpieczeń Windows   | 2.81 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4471326] | Zabezpieczeń Windows   | 3.68 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4471322] | Zabezpieczeń Windows   | 4.61 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470600] | Bezpieczeństwo 3.x .net  | 2.81 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470601] | Bezpieczeństwo 3.x .net  | 3.68 | 11 grudnia 2018 r.|
+| ReL 18-12 | [4470602] | Bezpieczeństwo 3.x .net  | 4.61 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470493] | .NET 4.x zabezpieczeń  | 2.81 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470492] | .NET 4.x zabezpieczeń  | 3.68 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470491] | .NET 4.x zabezpieczeń  | 4.61| 11 grudnia 2018 r. |
+| ReL 18-12 | [4471331] | Flash  | 3.68, 4.61, 5.26 | 5 grudnia 2018 r.  |
+| ReL 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11 grudnia 2018 r. |
+| ND | [4468323] | Strefa czasowa aktualizacji    | 2.81, 3.68, 4.61 | 13 grudnia 2018 r. |
+| ND | [4467107] | Pakiet zbiorczy listopada niezwiązane z zabezpieczeniami   | 2.81 | 13 listopada 2018 r. |
+| ND | [4467701] | Pakiet zbiorczy listopada niezwiązane z zabezpieczeniami     | 3.68 | 13 listopada 2018 r. |
+| ND | [4467697] | Pakiet zbiorczy listopada niezwiązane z zabezpieczeniami     | 4.61 | 13 listopada 2018 r. |
+
+[4471321]: http://support.microsoft.com/kb/4471321
+[4471328]: http://support.microsoft.com/kb/4471328
+[4471326]: http://support.microsoft.com/kb/4471326
+[4471322]: http://support.microsoft.com/kb/4471322
+[4470600]: http://support.microsoft.com/kb/4470600
+[4470601]: http://support.microsoft.com/kb/4470601
+[4470602]: http://support.microsoft.com/kb/4470602
+[4470493]: http://support.microsoft.com/kb/4470493
+[4470492]: http://support.microsoft.com/kb/4470492
+[4470491]: http://support.microsoft.com/kb/4470491
+[4471331]: http://support.microsoft.com/kb/4471331
+[4470199]: http://support.microsoft.com/kb/4470199
+[4468323]: http://support.microsoft.com/kb/4468323
+[4467107]: http://support.microsoft.com/kb/4467107
+[4467701]: http://support.microsoft.com/kb/4467701
+[4467697]: http://support.microsoft.com/kb/4467697
+
+## <a name="november-2018-guest-os"></a>System operacyjny gościa listopada 2018 r.
 
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
@@ -427,7 +465,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |  [3212646] |Stycznia 2017 miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.60 |14 marca 2017 r. |
 | ND |  [3205409] |Grudzień 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.47 |14 marca 2017 r. |
 | ND |  [3205401] |Grudzień 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.40 |14 marca 2017 r. |
-| ND |  [3211320] |Obsługa stosu aktualizacji dla systemu Windows 10 w wersji 1607 i systemu Windows Server 2016: 24 stycznia 2017 r. |5.5 |14 marca 2017 r. |
+| ND |  [3211320] |Aktualizację stosu obsługi dla systemu Windows 10 w wersji 1607 i Windows Server 2016: 24 stycznia 2017 r. |5.5 |14 marca 2017 r. |
 
 ## <a name="january-2017-guest-os"></a>System operacyjny gościa stycznia 2017 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -468,13 +506,13 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3192321] |Turcja kończy się przestrzeganie czasu letniego |5.3, 4.38, 3.45, 2.57 |8 listopada 2016 r. |
 | ND |[3185330] |Październik 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.57 |8 listopada 2016 r. |
 | ND |[3192403] |Października 2016 r. (wersja zapoznawcza) miesięczne zbiorczego jakości for Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.57 |8 listopada 2016 r. |
-| ND |[3177467] |Obsługa stosu aktualizacja dla programu Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1: 20 września 2016 r. |2.57 |8 listopada 2016 r. |
+| ND |[3177467] |Aktualizację stosu obsługi dla Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1: 20 września 2016 r. |2.57 |8 listopada 2016 r. |
 | ND |[3185332] |Październik 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.45 |8 listopada 2016 r. |
 | ND |[3192406] |Października 2016 r. (wersja zapoznawcza) miesięczne zbiorczego jakości dla systemu Windows Server 2012 |3.45 |8 listopada 2016 r. |
 | ND |[3185331] |Październik 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.38 |8 listopada 2016 r. |
 | ND |[3192404] |Października 2016 r. (wersja zapoznawcza) miesięczne zbiorczego jakości dla Windows 8.1 i Windows Server 2012 R2 |4.38 |8 listopada 2016 r. |
-| ND |[3199986] |Obsługa stosu aktualizacji dla systemu Windows 10 w wersji 1607: 27 października 2016 r. |5.3 |8 listopada 2016 r. |
-| ND |[3197954] |Aktualizacja zbiorcza dla systemu Windows 10 w wersji 1607 i Windows Server 2016: 27 października 2016 r. |5.3 |8 listopada 2016 r. |
+| ND |[3199986] |Aktualizację stosu obsługi dla systemu Windows 10 w wersji 1607: 27 października 2016 r. |5.3 |8 listopada 2016 r. |
+| ND |[3197954] |Pakiet zbiorczy aktualizacji dla systemu Windows 10 w wersji 1607 i Windows Server 2016: 27 października 2016 r. |5.3 |8 listopada 2016 r. |
 
 ## <a name="october-2016-guest-os"></a>System operacyjny gościa października 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -581,7 +619,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3133977] |Funkcja BitLocker nie można zaszyfrować dyski z powodu awarii usługi w procesie svchost.exe, Windows 7 lub Windows Server 2008 R2  |2.51 |10 maja 2016 r. |
 | ND |[3133681] |Maszyny wirtualne nie odpowiada na operację w programie SCVMM, w systemie Windows Server 2012 R2  |4.32 |10 maja 2016 r. |
 | ND |[3123245] |Aktualizacja zwiększa identyfikacji wyczerpanie portów w systemie Windows Server 2012 R2  |4.32 |10 maja 2016 r. |
-| ND |[Wyłącz RC4] | Biuletyn zabezpieczeń firmy Microsoft: Aktualizacja dla wyłączaniu technologii RC4  |4.32, 3.39, 2.51 |10 maja 2016 r. |
+| ND |[Wyłącz RC4] | Biuletyn zabezpieczeń firmy Microsoft: Aktualizacja wyłączaniu technologii RC4  |4.32, 3.39, 2.51 |10 maja 2016 r. |
 
 ## <a name="april-2016-guest-os"></a>System operacyjny gościa kwietnia 2016
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -630,7 +668,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS16-005 |[3124584] |Aktualizacja zabezpieczeń dla sterowników trybu jądra Windows umożliwiającą zdalne wykonywanie kodu |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
 | MS16-007 |[3124901] |Aktualizacja zabezpieczeń programu Microsoft Windows umożliwiającą zdalne wykonywanie kodu |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
 | MS16-008 |[3124605] |Aktualizacja zabezpieczeń dla jądra w celu podniesienia uprawnień |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
-| Microsoft Security Advisory poprawki |[2755801] |Aktualizacja dla luki w zabezpieczeniach w programie Adobe Flash Player w programie Internet Explorer (pakiet KB: TBD)-doradztwa technicznego dotyczącego symbolu zastępczego |4.28, 3.35 |12 stycznia 2016 roku. |
+| Microsoft Security Advisory poprawki |[2755801] |Aktualizacja dla luki w zabezpieczeniach w programie Adobe Flash Player w programie Internet Explorer (pakiet KB: TBD) - doradztwa technicznego dotyczącego symbolu zastępczego |4.28, 3.35 |12 stycznia 2016 roku. |
 | Poradnik zabezpieczeń firmy Microsoft |[3109853] |Update w celu poprawy współdziałania protokołu TLS |4.28, 3.35 |12 stycznia 2016 roku. |
 | Poradnik zabezpieczeń firmy Microsoft |[3123479] |Amortyzacja algorytmu wyznaczania wartości skrótu SHA-1 programu certyfikatów głównych firmy Microsoft. |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
 | Poradnik zabezpieczeń firmy Microsoft |[2736233] |Aktualizacje usługi Bits ActiveX Kill |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
@@ -778,7 +816,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-014 |[3004361] |Usterka w protokole SMB umożliwia pominięcie funkcji zabezpieczeń |4.17, 3.24, 2.36 |ND |
 | MS15-015 |[3031432] |Luki w zabezpieczeniach w programie Microsoft Windows umożliwia podniesienie uprawnień |4.17, 3.24, 2.36 |ND |
 | MS15-016 |[3029944] |Luki w zabezpieczeniach w składniku Microsoft grafiki może spowodować ujawnienie informacji |4.17, 3.24, 2.36 |ND |
-| ND |[3004375] |Inspekcja wiersza polecenia Update w celu poprawy Windows<p/>**Uwaga**: ten program jest zainstalowany, ale klucz rejestru, aby ją włączyć jest wyłączony |4.17, 3.24, 2.36 |ND |
+| ND |[3004375] |Inspekcja wiersza polecenia Update w celu poprawy Windows<p/>**Uwaga**: Ten program jest zainstalowany, ale klucz rejestru, aby ją włączyć jest wyłączony |4.17, 3.24, 2.36 |ND |
 
 ## <a name="january-2015-guest-os"></a>System operacyjny gościa stycznia 2015
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |

@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f55d3eb67bb9c494a3d055e39d970c9a440dfc67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271049"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603441"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności usługi SQL Database
 
 Usługa Azure SQL Database uczy się i dostosowuje się ze swoją aplikacją. Zapewnia dostosowane zalecenia, które pozwalają zmaksymalizować wydajność bazy danych SQL. SQL Database stale ocenia i analizuje historię użycia bazy danych SQL. Zalecenia, które są dostarczane są oparte na wzorcach obciążenia bazy danych jest unikatowa i zwiększyć wydajność.
 
 > [!TIP]
-> [Automatyczne dostrajanie](sql-database-automatic-tuning.md) jest to zalecana metoda dotyczące dostosowywania wydajności. [Intelligent Insights](sql-database-intelligent-insights.md) jest zalecaną metodą do monitorowania wydajności. 
+> [Automatyczne dostrajanie](sql-database-automatic-tuning.md) jest zalecaną metodą automatyczne dostosowywanie niektóre typowe problemy z wydajnością bazy danych. [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) jest zalecaną metodą podstawową wydajność usługi Azure SQL Database, na potrzeby w zakresie monitorowania. [Usługa Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) jest zalecaną metodą zaawansowane monitorowanie wydajności bazy danych na dużą skalę, dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością automatycznych.
 >
 
 ## <a name="create-index-recommendations"></a>Utwórz zalecenia dotyczące indeksu

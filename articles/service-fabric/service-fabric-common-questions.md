@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164651"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537634"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -64,9 +64,16 @@ Obecnie nie istnieją inne problemy z dużych zestawów skalowania, takich jak b
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Co to jest minimalny rozmiar klastra usługi Service Fabric? Dlaczego nie może być mniejsze?
 
-Minimalny rozmiar obsługiwany dla obciążeń produkcyjnych klastra usługi Service Fabric jest pięć węzłów. W przypadku scenariuszy tworzenia i testowania, firma Microsoft obsługuje trzy klastry węzłów.
+Minimalny rozmiar obsługiwany dla obciążeń produkcyjnych klastra usługi Service Fabric jest pięć węzłów. W przypadku scenariuszy deweloperskich obsługujemy jeden węzeł (zoptymalizowany pod kątem obsługi szybkie prace projektowe w programie Visual Studio) i klastry pięć węzłów.
 
-Te wymagania istnieje, ponieważ klaster usługi Service Fabric uruchamia zestaw usług stanowych systemu, w tym usługi nazewnictwa i Menedżer trybu failover. Te usługi, które śledzą usług, które zostały wdrożone w klastrze i gdzie są obecnie obsługiwane, możesz polegać na wysoki poziom spójności. Silnej spójności, z kolei jest zależny od możliwość uzyskania *kworum* wszelkich aktualizacji danego stanu, które z tych usług, gdzie kworum reprezentuje strict większość repliki (N/2 + 1) dla danej usługi.
+Firma Microsoft wymaga produkcyjnego klastra dla co najmniej 5 węzłów z trzech następujących powodów:
+1. Nawet wtedy, gdy nie użytkownika usługi są uruchomione, klaster usługi Service Fabric uruchamia zestaw usług stanowych systemu, w tym usługi nazewnictwa i Menedżer trybu failover. Te usługi systemu są niezbędne, aby klaster mógł działać.
+2. Firma Microsoft zawsze umieszczaj jednej repliki usługi na węzeł, dlatego rozmiar klastra jest górny limit liczby replik przez usługę (faktycznie partycji).
+3. Ponieważ uaktualnienie klastra zostanie wyświetlone co najmniej jeden węzeł w dół, chcemy mieć bufor o co najmniej jeden węzeł, w związku z tym, chcemy, aby mieć co najmniej dwa węzły klastra produkcyjnego *dodatkowo* do absolutnego minimum. Absolutnego minimum jest rozmiarem kworum dana usługa system, co zostało opisane poniżej.  
+
+Chcemy, aby klaster ma być dostępny w przypadku równoczesnej awarii dwóch węzłów. W przypadku klastra usługi Service Fabric mają być dostępne usługi systemowe muszą być dostępne. Usługi stanowe systemu, takie jak nazewnictwa i usługi Menedżer trybu failover, śledzenie, jakie usługi zostały wdrożone w klastrze i gdzie są obecnie obsługiwane, są zależne od wysoki poziom spójności. Silnej spójności, z kolei jest zależny od możliwość uzyskania *kworum* wszelkich aktualizacji danego stanu, które z tych usług, gdzie kworum reprezentuje strict większość repliki (N/2 + 1) dla danej usługi. Dlatego jeśli chcemy być odporny na jednoczesne utratę dwóch węzłów (tym samym jednoczesnych utraty dwie repliki usługi system), firma Microsoft musi mieć wartość ClusterSize - QuorumSize > = 2, co zmusza minimalny rozmiar do pięciu osób. Aby zobaczyć, które należy wziąć pod uwagę klaster ma węzły N wiąże się z replik N usługa systemowa — jeden w każdym węźle. Rozmiar kworum usługi system jest (N/2 + 1). Powyższe nierówności wygląda N - (N/2 + 1) > = 2. Istnieją dwa przypadki, które należy rozważyć: gdy N jest parzysta, a N jest nieparzysta. Jeśli N jest parzysta, załóżmy, że N = 2\*m gdzie m > = 1, nierówności wygląda 2\*m - (2\*m/2 + 1) > = 2 lub m > = 3. Co najmniej n to 6 i to osiągnąć, kiedy m = 3. Z drugiej strony, jeśli N jest nieparzysta, powiedz N = 2\*m + 1 gdzie m > = 1, nierówności wygląda 2\*m + 1 – ((2\*m + 1) / 2 + 1) > = 2 lub 2\*m + 1 – (m + 1) > = 2 lub m > = 2. Co najmniej n wynosi 5, a to osiągnąć, kiedy m = 2. W związku między wszystkie wartości N, które spełniają kryteria nierówności wartość ClusterSize - QuorumSize > = 2, wartość minimalna to 5.
+
+Uwaga: w argumencie powyżej, które firma Microsoft ma zakłada, że każdy węzeł repliki usługi systemu, dlatego rozmiar kworum jest obliczana na podstawie liczby węzłów w klastrze. Jednakże, zmieniając *TargetReplicaSetSize* firma Microsoft może spowodować, że rozmiar kworum mniej niż (N / 2 + 1) który może stworzyć wrażenie, że mogliśmy mają mniejszy niż 5 węzłów klastra i nadal masz 2 dodatkowe węzły rozmiar kworum. Na przykład 4 węzłami klastra, jeśli ustawimy TargetReplicaSetSize na 3, rozmiar kworum, w oparciu o TargetReplicaSetSize jest (3/2 + 1) lub 2, dlatego mamy CluserSize - QuorumSize 4-2 = > = 2. Jednak firma Microsoft nie gwarantuje, że usługa system będzie w lub powyżej kworum możemy utraty jakiejkolwiek parze węzłów jednocześnie, może to być dwa węzły stracimy zostały hostingu dwie repliki, dzięki czemu usługa systemowa zostaną umieszczone w utraciła kworum (o pojedynczą replikę w lewo) ND staną się niedostępne.
 
 W tle Przeanalizujmy niektóre konfiguracje klastra możliwe:
 
@@ -74,9 +81,13 @@ W tle Przeanalizujmy niektóre konfiguracje klastra możliwe:
 
 **Z uwzględnieniem dwóch węzłów**: kworum dla usług wdrożonych w dwóch węzłów (N = 2) 2 (2/2 + 1 = 2). Pojedynczą replikę zostanie utracony, jest niemożliwe utworzyć kworum. Wykonywanie uaktualnienia usługi AD. tymczasowego wyłączania repliki, nie jest przydatne w konfiguracji.
 
-**Trzy węzły**: z trzema węzłami (N = 3) wymagane do utworzenia kworum jest nadal z uwzględnieniem dwóch węzłów (3/2 + 1 = 2). Oznacza to, aby utracić oddzielnego węzła i nadal utrzymuje kworum.
+**Trzy węzły**: z trzema węzłami (N = 3) wymagane do utworzenia kworum jest nadal z uwzględnieniem dwóch węzłów (3/2 + 1 = 2). Oznacza to, że możesz utracić oddzielnego węzła i nadal utrzymania kworum, ale równoczesnej awarii dwóch węzłów będą miały usług systemowych do utraciła kworum i spowoduje, że klaster, aby stać się niedostępne.
 
-Konfiguracja klastra trzema węzłami jest obsługiwana dla tworzenia i testowania, ponieważ można bezpiecznie wykonywać uaktualnienia i przetrwać awarie pojedynczych węzłów tak długo, jak nie będą się zdarzać jednocześnie. W przypadku obciążeń produkcyjnych należy musi być odporny na takie równoczesnej awarii, więc pięć węzłów są wymagane.
+**Cztery węzły**: w przypadku czterech węzłów (N = 4) wymagane do utworzenia kworum jest trzy węzły (4/2 + 1 = 3). Oznacza to, że możesz utracić oddzielnego węzła i nadal utrzymania kworum, ale równoczesnej awarii dwóch węzłów będą miały usług systemowych do utraciła kworum i spowoduje, że klaster, aby stać się niedostępne.
+
+**Pięć węzłów**: z pięcioma węzłami (N = 5) wymagane do utworzenia kworum jest nadal trzy węzły (+ 1, 5/2 = 3). Oznacza to, można utracić z uwzględnieniem dwóch węzłów, w tym samym czasie i nadal utrzymuje kworum dla usług systemowych.
+
+Dla obciążeń produkcyjnych użytkownik musi być odporny na równoczesnej awarii co najmniej dwa węzły (na przykład jeden z powodu uaktualnienia klastra, jeden z innych powodów), więc pięć węzłów są wymagane.
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Można wyłączyć Mój klaster w nocy/weekendy w celu obniżenia kosztów?
 

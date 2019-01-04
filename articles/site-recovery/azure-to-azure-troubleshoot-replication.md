@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9a32ac1ae71cb7bd89c4252157c3a5cd395b2694
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842343"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993335"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Rozwiązywanie problemów trwającej replikacji maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -22,13 +22,13 @@ W tym artykule opisano, jakie są najczęstsze problemy w usłudze Azure Site Re
 
 ## <a name="recovery-points-not-getting-generated"></a>Punkty odzyskiwania nie generowanych
 
-Komunikat o błędzie: Brak awarii spójne dostępnego punktu odzyskiwania dla maszyny Wirtualnej w ciągu ostatnich 60 minut.</br>
+KOMUNIKAT O BŁĘDZIE: Brak awarii spójne dostępnego punktu odzyskiwania dla maszyny Wirtualnej w ciągu ostatnich 60 minut.</br>
 IDENTYFIKATOR BŁĘDU: 153007 </br>
 
 Usługa Azure Site Recovery stale replikuje dane w regionie źródłowym w regionie odzyskiwania po awarii i tworzy punktu spójnego na poziomie awarii, co 5 minut. Jeśli usługa Site Recovery nie może utworzyć punktów odzyskiwania na 60 minut, następnie powiadamia użytkownika. Poniżej przedstawiono przyczyny, które może spowodować błąd:
 
-**Przyczyny 1: [dużej ilości danych zmiany stawki na źródłowej maszynie wirtualnej](#high-data-change-rate-on-the-source-virtal-machine)**    
-**Przyczyny 2: [problem z połączeniem sieciowym ](#Network-connectivity-issue)**
+**Przyczyny 1: [Współczynnik zmian danych na źródłowej maszynie wirtualnej](#high-data-change-rate-on-the-source-virtal-machine)**    
+**Przyczyny 2: [Problem z łącznością sieciową ](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
 
@@ -68,18 +68,18 @@ Stawka dotyczy maszyny wirtualnej można znaleźć zmian danych. Przejdź do źr
 
 W takich przypadkach powyżej, jeśli jest serii danych sporadyczne i współczynnik zmian danych jest większa niż 10 MB/s (dla warstwy Premium) oraz 2 MB/s (dla warstwy standardowa) przez pewien czas i sprowadza się, Replikacja zostanie nadążyć. Jednak jeśli zmian jest również przekracza obsługiwany limit w większości przypadków, następnie należy rozważyć jedną z poniższych opcji, jeśli jest to możliwe:
 
-**Opcja 1:** wykluczyć dysk, co powoduje, że współczynnik zmian danych: </br>
+**Opcja 1:** Wykluczanie dysku, co powoduje, że współczynnik zmian danych: </br>
 Obecnie można wykluczyć dysk, przy użyciu [odzyskiwania lokacji w programie Powershell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine)
 
-**Opcja 2:** zmienić warstwę dysku magazynu odzyskiwania po awarii: </br>
+**Opcja 2:** Zmiana warstwy dysku magazynu odzyskiwania po awarii: </br>
 Ta opcja jest możliwe tylko wtedy, jeśli zmian danych na dysku jest mniejsza niż 10 MB/s. Pozwól, że maszyna wirtualna o P10 dysku ma wartość współczynnika zmian danych przekracza 8 MB/s, ale mniej niż 10 MB/s. Jeśli klienta można użyć P30 dysku dla magazynu docelowego podczas ochrony, ten problem można rozwiązać.
 
 ### <a name="Network-connectivity-issue"></a>Problem z łącznością sieciową
 
 #### <a name="network-latency-to-cache-storage-account-"></a>Opóźnienie sieci do konta magazynu pamięci podręcznej:
  Usługa Site Recovery wysyła replikowane dane na koncie magazynu pamięci podręcznej, a ten problem może się zdarzyć, jeśli przekazywanie danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej jest mniejsza tego 4 MB 3 sekund. Aby sprawdzić, czy występuje problem z dowolnego związane z opóźnieniem, użyj [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) do przekazania danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej.<br>
-Jeśli opóźnienie jest wysoka, sprawdź, jeśli używasz wirtualnych urządzeń sieciowych do kontrolowania wychodzącego ruchu sieciowego z maszynami wirtualnymi. Urządzenie może być ograniczona w przypadku wszystkich ruch związany z replikacją przechodzi przez urządzenia WUS. Zaleca się utworzenie punktu końcowego usługi sieci w sieci wirtualnej na "Magazyn", aby ruch związany z replikacją nie przechodzi do urządzenia WUS. Zapoznaj się [konfiguracji urządzenia wirtualnego sieci](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+Jeśli opóźnienie jest wysoka, sprawdź, jeśli używasz wirtualnych urządzeń sieciowych do kontrolowania wychodzącego ruchu sieciowego z maszynami wirtualnymi. Urządzenie może być ograniczona w przypadku wszystkich ruch związany z replikacją przechodzi przez urządzenia WUS. Zaleca się utworzenie punktu końcowego usługi sieci w sieci wirtualnej na "Magazyn", aby ruch związany z replikacją nie przechodzi do urządzenia WUS. Zapoznaj się [konfiguracji urządzenia wirtualnego sieci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
 
 #### <a name="network-connectivity"></a>Połączenie sieciowe
 W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca z określonych adresów URL lub IP zakresów jest wymagane z maszyny Wirtualnej. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł Sieciowej grupy zabezpieczeń sieci do sterowania ruchem wychodzącym, może być jedną z tych problemów twarzy.</br>
-Zapoznaj się [połączenia ruchu wychodzącego dla adresów URL Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) aby upewnić się, wszystkie adresy URL są połączone. 
+Zapoznaj się [połączenia ruchu wychodzącego dla adresów URL Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) aby upewnić się, wszystkie adresy URL są połączone. 

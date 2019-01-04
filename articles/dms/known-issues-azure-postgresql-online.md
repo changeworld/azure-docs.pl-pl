@@ -4,19 +4,19 @@ description: Więcej informacji na temat znanych problemów/migracja ograniczeni
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282880"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724147"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ograniczenia znanych problemów/migracja online migracja do bazy danych Azure database for PostgreSQL
 
@@ -76,20 +76,20 @@ W poniższych sekcjach opisano znane problemy i ograniczenia związane z usług�
 
 ## <a name="datatype-limitations"></a>Ograniczenia typu danych
 
-- **Ograniczenie**: w przypadku typu danych Wyliczenia do źródłowej bazy danych postgresql w warstwie, migracji zakończy się niepowodzeniem podczas ciągłej synchronizacji.
+- **Ograniczenie**: W przypadku typu danych Wyliczenia do źródłowej bazy danych postgresql w warstwie, migracji zakończy się niepowodzeniem podczas ciągłej synchronizacji.
 
-    **Obejście**: modyfikowanie typu Wyliczeniowego typu danych, znak zmieniającego się w usłudze Azure Database for PostgreSQL.
+    **Obejście**: Zmodyfikuj Wyliczenia typu danych, do znaku zmieniającego się w usłudze Azure Database for PostgreSQL.
 
-- **Ograniczenie**: Jeśli istnieje nie klucza podstawowego w tabelach, ciągła synchronizacja zakończy się niepowodzeniem.
+- **Ograniczenie**: Jeśli istnieje nie klucza podstawowego w tabelach, ciągłej synchronizacji nie powiedzie się.
 
-    **Obejście**: tymczasowo ustawić klucza podstawowego w tabeli migracji kontynuować. Po zakończeniu migracji danych, można usunąć klucza podstawowego.
+    **Obejście**: Tymczasowo ustawić klucza podstawowego w tabeli migracji kontynuować. Po zakończeniu migracji danych, można usunąć klucza podstawowego.
 
 ## <a name="lob-limitations"></a>Ograniczenia LOB
 Duże kolumny obiektu (LOB) to kolumn, które można powiększać dużych. Database for PostgreSQL typy danych obiektów LOB przykładami XML, JSON, obraz, tekst itd.
 
-- **Ograniczenie**: Jeśli LOB typy danych są używane jako klucze podstawowe, migracji zakończy się niepowodzeniem.
+- **Ograniczenie**: Typy danych obiektów LOB są używane jako klucze podstawowe, migracji zakończy się niepowodzeniem.
 
-    **Obejście**: Zastąp klucz podstawowy z innych typów danych lub kolumn, które nie są LOB.
+    **Obejście**: Zamień na klucz podstawowy inne typy danych lub kolumn, które nie są LOB.
 
 - **Ograniczenie**: Jeśli długość kolumny duży obiekt (LOB) jest większy niż 32 KB, danych może zostać obcięta do miejsca docelowego. Możesz sprawdzić długość kolumny obiektów LOB przy użyciu tego zapytania:
 
@@ -97,11 +97,11 @@ Duże kolumny obiektu (LOB) to kolumn, które można powiększać dużych. Datab
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Obejście**: w przypadku obiektu LOB, który jest większy niż 32 KB skontaktuj się z zespołem inżynierów pod adresem [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
+    **Obejście**: Jeśli obiekt LOB, który jest większy niż 32 KB, skontaktuj się z inżynierami w [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
 
-- **Ograniczenie**: Jeśli w tabeli znajdują się kolumny obiektów LOB, a nie jest podstawowego klucza dla tabeli, dla tej tabeli nie może być migrowane dane.
+- **Ograniczenie**: Jeśli w tabeli znajdują się kolumny obiektów LOB, a nie jest podstawowego klucza dla tabeli, danych nie może być migracji dla tej tabeli.
 
-    **Obejście**: tymczasowo ustawić klucza podstawowego w tabeli migracji kontynuować. Po zakończeniu migracji danych, można usunąć klucza podstawowego.
+    **Obejście**: Tymczasowo ustawić klucza podstawowego w tabeli migracji kontynuować. Po zakończeniu migracji danych, można usunąć klucza podstawowego.
 
 ## <a name="postgresql10-workaround"></a>Obejście PostgreSQL10
 PostgreSQL 10.x powoduje różne zmiany nazw folderów pg_xlog i dlatego powodują, że migracja nie działa zgodnie z oczekiwaniami. W przypadku migrowania z PostgreSQL 10.x do usługi Azure Database for postgresql w warstwie 10.3, uruchom następujący skrypt źródłowej bazy danych postgresql — Tworzenie funkcji otokę wokół pg_xlog funkcji.

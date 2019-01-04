@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 8d98e428d60c0981385b842bcb4dfc77bdbbcf22
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 4ee98c2d8170df5ef5878f5b534b545eb105667e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413051"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543923"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -33,8 +33,8 @@ Poniższy klip wideo pokazuje, za pomocą kontenera usług Cognitive Services.
 
 - **Kontrola nad danymi**: Pozwalając użytkownikom na wybór gdzie tych usług Cognitive Services przetwarzania ich danych. Jest to istotne w przypadku klientów, którzy nie mogą wysyłać dane do chmury, ale muszą mieć dostęp do technologii usług Cognitive Services. Obsługa spójności w środowiskach hybrydowych — wielu danych, zarządzania, tożsamości i zabezpieczeń.
 - **Kontrolę nad aktualizacjami modelu**: Umożliwiają klientom elastyczność przechowywanie wersji i aktualizowanie modeli wdrożone w swoich rozwiązaniach.
-- **Architektura przenośne**: Umożliwiają tworzenie przenośnych architektura, które można wdrożyć na platformie Azure, lokalnie i urządzenia brzegowe. Kontenery, które mogą być wdrażane bezpośrednio do [usługi Azure Kubernetes Service](/azure/aks/), [usługi Azure Container Instances](/azure/container-instances/), lub [Kubernetes](https://kubernetes.io/) wdrażany klaster do [platformy Azure Stos](/azure/azure-stack/). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Wysoka przepływność / małych opóźnieniach**: Zapewnia klientom możliwość skalowania dotyczące wysokiej przepływności i małego opóźnienia, włączając usług Cognitive Services uruchomić fizycznie blisko ich logiki aplikacji i danych. Kontenery nie limit transakcji na sekundę (TPS) i zyski, aby możliwe było skalowanie zarówno a obsłużyć żądanie, jeśli podasz zasoby sprzętowe niezbędne.
+- **Architektura przenośne**: Umożliwiają tworzenie przenośnych architektura, które można wdrożyć na platformie Azure, lokalnie i urządzenia brzegowe. Kontenery, które mogą być wdrażane bezpośrednio do [usługi Azure Kubernetes Service](../aks/index.yml), [usługi Azure Container Instances](../container-instances/index.yml), lub [Kubernetes](https://kubernetes.io/) wdrażany klaster do [platformy Azure Stos](../azure-stack/index.yml). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+- **Wysoka przepływność / małych opóźnieniach**: Zapewnia klientom możliwość skalowania dotyczące wysokiej przepływności i małego opóźnienia, włączając usług Cognitive Services uruchomić fizycznie blisko ich logiki aplikacji i danych. Kontenery nie limit transakcji na sekundę (TPS) i zyski, aby możliwe było skalowanie zarówno a obsłużyć żądanie, jeśli podasz zasoby sprzętowe niezbędne. 
 
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontenery w usługach Azure Cognitive Services
@@ -61,7 +61,7 @@ Kontenery usługi Azure Cognitive Services są publicznie dostępne w ramach sub
 
 Przed rozpoczęciem korzystania z kontenerów usług Azure Cognitive Services, muszą spełniać następujące wymagania wstępne:
 
-**Aparat platformy docker**: Konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker można także bezpośrednio do wdrożyć [usługi Azure Kubernetes Service](/azure/aks/) lub [usługi Azure Container Instances](/azure/container-instances/).
+**Aparat platformy docker**: Konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker można także bezpośrednio do wdrożyć [usługi Azure Kubernetes Service](../aks/index.yml) lub [usługi Azure Container Instances](../container-instances/index.yml).
 
 Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure.
 

@@ -7,27 +7,27 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 57832b59d8b43f5aa157b278e67c50b25084c86c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8b86f79cb5af34105a666613152acc0acfb08f56
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962839"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808931"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Usługa Qlik Sense nawiązać połączenie z usługi Azure Cosmos DB i wizualizuj dane bazy danych
 
 Usługa Qlik Sense jest narzędzie do wizualizacji danych, które łączy dane z różnych źródeł w jednym widoku. Usługa Qlik Sense indeksuje co możliwych relacji w danych, dzięki czemu możesz uzyskać natychmiastowy wgląd w dane. Możesz wizualizować dane usługi Azure Cosmos DB przy użyciu usługa Qlik Sense. W tym artykule opisano kroki wymagane do nawiązywania połączenia usługi Azure Cosmos DB, aby usługa Qlik Sense i wizualizuj dane bazy danych. 
 
 > [!NOTE]
-> Usługa Qlik Sense nawiązywania połączenia z usługi Azure Cosmos DB jest obecnie obsługiwane dla tylko konta interfejsu API SQL usługi Azure Cosmos DB i interfejsu API usługi MongoDB.
+> Usługa Qlik Sense nawiązywania połączenia z usługi Azure Cosmos DB jest obecnie obsługiwana dla interfejsu API SQL i Azure Cosmos DB interfejsu API usługi MongoDB tylko dla kont.
 
 Możesz połączyć usługa Qlik Sense do usługi Azure Cosmos DB przy użyciu:
 
 * Cosmos DB interfejsu API SQL za pomocą łącznika ODBC.
 
-* Cosmos DB interfejsu API usługi MongoDB przy użyciu łącznika Qlik Sense bazy danych MongoDB (obecnie w wersji zapoznawczej).
+* Interfejs API danych usługi Azure Cosmos DB dla bazy danych MongoDB przy użyciu łącznika Qlik Sense bazy danych MongoDB (obecnie w wersji zapoznawczej).
 
-* Interfejsu API MongoDB usługi cosmos DB i interfejsu API SQL przy użyciu łącznika interfejsu API REST w usługa Qlik Sense.
+* Interfejs API danych usługi Azure Cosmos DB dla bazy danych MongoDB i interfejsu API SQL przy użyciu łącznika interfejsu API REST w usługa Qlik Sense.
 
 * Mongo DB interfejsu API cosmos DB przy użyciu łącznika gRPC za rdzeń Qlik.
 W tym artykule opisano szczegóły dotyczące nawiązywania połączenia z interfejsem API SQL usługi Cosmos DB przy użyciu łącznika ODBC.

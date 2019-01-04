@@ -1,5 +1,5 @@
 ---
-title: Zdalne monitorowanie akcelerator rozwiązań — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Zdalne monitorowanie akcelerator rozwiązań — często zadawane pytania — Azure | Dokumentacja firmy Microsoft
 description: Często zadawane pytania dotyczące zdalnego monitorowania akceleratora rozwiązań
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 59b52163ba7f5abd53c60264f10f5352e3e4f6cd
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067792"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602634"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Często zadawane pytania dotyczące zdalnego monitorowania akceleratora rozwiązań
 

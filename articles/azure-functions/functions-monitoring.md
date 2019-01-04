@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 600bec9e4cfe356dcd28d489707d20ab47f5b013
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876523"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753646"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -119,9 +119,9 @@ W [Eksploratora metryk](../application-insights/app-insights-metrics-explorer.md
 
 ![Eksplorator metryk](media/functions-monitoring/metrics-explorer.png)
 
-Na [błędy](../application-insights/app-insights-asp-net-exceptions.md) karty, możesz tworzyć wykresy i alerty oparte na błędy funkcji i serwera, wyjątki. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że możesz wdrożyć [niestandardowych danych telemetrycznych](#custom-telemetry-in-c-functions) zależności.
+Na [błędy](../azure-monitor/app/asp-net-exceptions.md) karty, możesz tworzyć wykresy i alerty oparte na błędy funkcji i serwera, wyjątki. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że możesz wdrożyć [niestandardowych danych telemetrycznych](#custom-telemetry-in-c-functions) zależności.
 
-![Awarie](media/functions-monitoring/failures.png)
+![Błędy](media/functions-monitoring/failures.png)
 
 Na [wydajności](../application-insights/app-insights-performance-counters.md) karcie, można analizować problemy z wydajnością.
 
@@ -137,7 +137,7 @@ Na [wydajności](../application-insights/app-insights-performance-counters.md) k
 
 ## <a name="query-telemetry-data"></a>Wykonywanie zapytań dotyczących danych telemetrii
 
-[Analiza usługi Application Insights](../application-insights/app-insights-analytics.md) zapewnia dostęp do wszystkich danych telemetrycznych w formie tabel w bazie danych. Analytics oferuje język zapytań dla wyodrębniania, manipulowanie i wizualizację danych.
+[Analiza usługi Application Insights](../azure-monitor/app/analytics.md) zapewnia dostęp do wszystkich danych telemetrycznych w formie tabel w bazie danych. Analytics oferuje język zapytań dla wyodrębniania, manipulowanie i wizualizację danych.
 
 ![Wybierz usługi Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -158,7 +158,7 @@ Tabele, które są dostępne są wyświetlane w **schematu** kartę okienka po l
 * **żądania** — jeden dla każdego wywołania funkcji.
 * **Wyjątki** — wyjątki zgłaszane w czasie wykonywania.
 * **customMetrics** — Liczba pomyślnie i niepowodzeniem wywołania, Częstotliwość powodzeń, czas trwania.
-* **customEvents** -zdarzeń śledzenia w czasie wykonywania, na przykład: Funkcja wyzwalacza żądania HTTP.
+* **customEvents** -zdarzeń śledzenia w czasie wykonywania, na przykład:  Żądania HTTP, które mogą powodować funkcji.
 * **liczniki wydajności** — informacje na temat wydajności serwerów, które funkcje są uruchomione na.
 
 Inne tabele są przeznaczone dla testów dostępności i telemetria klienta/przeglądarki. Możesz zaimplementować niestandardowej telemetrii, aby dodać dane do nich.
@@ -439,7 +439,7 @@ Ten kod jest alternatywą do wywoływania `trackMetric` przy użyciu [zestawu SD
 
 ## <a name="custom-telemetry-in-c-functions"></a>Telemetria niestandardowa w funkcji języka C#
 
-Możesz użyć [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) pakietu NuGet w celu wysyłania danych niestandardowych danych telemetrycznych do usługi Application Insights. Następujące C# przykładzie użyto [niestandardowego interfejsu API telemetrii](../application-insights/app-insights-api-custom-events-metrics.md). W przykładzie występuje dla biblioteki klas platformy .NET, ale kod usługi Application Insights jest taki sam, aby uzyskać skrypt języka C#.
+Możesz użyć [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) pakietu NuGet w celu wysyłania danych niestandardowych danych telemetrycznych do usługi Application Insights. Następujące C# przykładzie użyto [niestandardowego interfejsu API telemetrii](../azure-monitor/app/api-custom-events-metrics.md). W przykładzie występuje dla biblioteki klas platformy .NET, ale kod usługi Application Insights jest taki sam, aby uzyskać skrypt języka C#.
 
 ### <a name="version-2x"></a>W wersji 2.x
 
@@ -671,7 +671,7 @@ PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-A
 PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-Aby uzyskać więcej informacji, zobacz [jak przesyłanie strumieniowe dzienników](../app-service/web-sites-enable-diagnostic-log.md#streamlogs).
+Aby uzyskać więcej informacji, zobacz [jak przesyłanie strumieniowe dzienników](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
 
 ### <a name="viewing-log-files-locally"></a>Wyświetlanie plików dziennika lokalnie
 

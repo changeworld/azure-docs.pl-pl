@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 298d4a7a003963e3466b595243c294679f581346
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625440"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582195"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Dzienniki aktywności usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 
@@ -38,8 +38,8 @@ Dzienniki aktywności usługi Azure Active Directory (Azure AD) mogą teraz kier
 
 Może kierować usługi Azure AD inspekcji dzienników i dzienników logowania do konta magazynu platformy Azure, Centrum zdarzeń, usługi Log Analytics lub niestandardowe rozwiązania przy użyciu tej funkcji. 
 
-* **Dzienniki inspekcji**: [raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań wykonanych w dzierżawie.
-* **Dzienniki logowania**: przy użyciu [raportu działań dotyczącego logowań](concept-sign-ins.md) można określić, kto wykonał zadania zgłoszone w dziennikach inspekcji.
+* **Dzienniki inspekcji**: [Raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań, która jest wykonywana w dzierżawie.
+* **Dzienniki logowania**: Za pomocą [raport aktywności logowania](concept-sign-ins.md), można określić, kto wykonał zadania, które są zgłaszane w dziennikach inspekcji.
 
 > [!NOTE]
 > Dzienniki aktywności inspekcji i logowania związane z funkcjami B2C nie są obecnie obsługiwane.
@@ -101,39 +101,39 @@ Aby przejrzeć koszty związane z zarządzaniem obszaru roboczego usługi Log An
 
 Ta sekcja zawiera odpowiedzi na często zadawane pytania i znane problemy z dziennikami usługi Azure AD w usłudze Azure Monitor.
 
-**Pytanie: Które dzienniki są uwzględnione?**
+**PYT.: Dzienniki, które są uwzględnione?**
 
-**Odpowiedź:** Za pomocą tej funkcji można przekierowywać dzienniki logowań i dzienniki inspekcji, chociaż zdarzenia inspekcji związane z usługąB2C nie są obecnie uwzględniane. Aby dowiedzieć się, jakie typy dzienników i które oparte na funkcjach dzienniki są obecnie obsługiwane, zapoznaj się ze [schematem dziennika inspekcji](reference-azure-monitor-audit-log-schema.md) i [schematem dziennika logowania](reference-azure-monitor-sign-ins-log-schema.md). 
-
----
-
-**P: jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawią się w mojej Centrum zdarzeń?**
-
-**Odpowiedź**: Dzienniki powinny być widoczne w centrum zdarzeń w ciągu dwóch do pięciu minut po wykonaniu akcji. Aby uzyskać więcej informacji na temat usługi Event Hubs, zobacz [Co to jest usługa Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
+**A**: Dzienniki aktywności logowania i dzienników inspekcji są dostępne dla routingu za pomocą tej funkcji, mimo że zdarzeń inspekcji związanych z B2C nie są obecnie uwzględniane. Aby dowiedzieć się, jakie typy dzienników i które oparte na funkcjach dzienniki są obecnie obsługiwane, zapoznaj się ze [schematem dziennika inspekcji](reference-azure-monitor-audit-log-schema.md) i [schematem dziennika logowania](reference-azure-monitor-sign-ins-log-schema.md). 
 
 ---
 
-**P: jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawi się na moim koncie usługi storage?**
+**PYT.: Jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawią się w mojej Centrum zdarzeń?**
 
-**Odpowiedź:** W przypadku kont usługi Azure Storage opóźnienie wynosi od 5 do 15 minut po wykonaniu akcji.
-
----
-
-**Pytanie: Ile będzie kosztować przechowywanie danych?**
-
-**Odpowiedź:** koszt przechowywania danych zależy od rozmiaru dzienników oraz wybranego okresu przechowywania. Aby uzyskać listę szacowanych kosztów dzierżaw, które zależą od woluminu wygenerowanych dzienników, przejdź do sekcji [Rozmiar magazynu dla dzienników aktywności](#storage-size-for-activity-logs).
+**A**: Dzienniki powinny być widoczne w Centrum zdarzeń w 2 do 5 minut po wykonaniu akcji. Aby uzyskać więcej informacji na temat usługi Event Hubs, zobacz [Co to jest usługa Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
 
 ---
 
-**Pytanie: Ile będzie kosztować przesyłanie strumieniowe danych do centrum zdarzeń?**
+**PYT.: Jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawi się na moim koncie usługi storage?**
 
-**Odpowiedź:** Koszty przesyłania strumieniowego zależą od liczby komunikatów odbieranych na minutę. W tym artykule omówiono sposób obliczania kosztów i przedstawiono listę szacowanych kosztów w oparciu o liczbę komunikatów. 
+**A**: Dla konta usługi Azure storage opóźnienie jest dowolnym z zakresu od 5 do 15 minut po wykonaniu akcji.
 
 ---
 
-**Pytanie: Jak mogę zintegrować dzienniki aktywności usługi Azure AD z moim systemem SIEM?**
+**PYT.: Ile będzie kosztować przechowywane Moje dane?**
 
-**Odpowiedź**: Możesz to zrobić na dwa sposoby:
+**A**: Koszty magazynowania zależą od rozmiaru dzienników i okres przechowywania, które wybierzesz. Aby uzyskać listę szacowanych kosztów dzierżaw, które zależą od woluminu wygenerowanych dzienników, przejdź do sekcji [Rozmiar magazynu dla dzienników aktywności](#storage-size-for-activity-logs).
+
+---
+
+**PYT.: Ile będzie kosztować przesyłanie strumieniowe danych do Centrum zdarzeń?**
+
+**A**: Przesyłania strumieniowego koszty zależą od liczby wiadomości, które otrzymujesz za minutę. W tym artykule omówiono sposób obliczania kosztów i przedstawiono listę szacowanych kosztów w oparciu o liczbę komunikatów. 
+
+---
+
+**PYT.: Jak zintegrować usługę Azure AD dzienników aktywności z moim systemem SIEM?**
+
+**A**: Można to zrobić na dwa sposoby:
 
 - Za pomocą usługi Azure Monitor i usługi Event Hubs prześlij strumieniowo dzienniki do systemu SIEM. Najpierw [prześlij strumieniowo dzienniki do centrum zdarzeń](tutorial-azure-monitor-stream-logs-to-event-hub.md), a następnie [skonfiguruj narzędzie SIEM](tutorial-azure-monitor-stream-logs-to-event-hub.md#access-data-from-your-event-hub) za pomocą skonfigurowanego centrum zdarzeń. 
 
@@ -141,27 +141,27 @@ Ta sekcja zawiera odpowiedzi na często zadawane pytania i znane problemy z dzie
 
 ---
 
-**Pytanie: Jakie narzędzia SIEM są obecnie obsługiwane?** 
+**PYT.: Jakie narzędzia SIEM są obecnie obsługiwane?** 
 
-**Odpowiedź:** Obecnie usługa Azure Monitor jest obsługiwana przez narzędzia [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar i [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Aby uzyskać więcej informacji na temat sposobu działania łączników, zobacz [Stream Azure monitoring data to an event hub for consumption by an external tool (Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń do użycia przez zewnętrzne narzędzie)](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
-
----
-
-**Pytanie: Jak mogę zintegrować dzienniki aktywności usługi Azure AD z moim wystąpieniem usługi Splunk?**
-
-**Odpowiedź**: Najpierw [przekieruj dzienniki aktywności usługi Azure AD do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md), a następnie postępuj zgodnie z podanymi instrukcjami, aby [zintegrować dzienniki aktywności z usługą Splunk](tutorial-integrate-activity-logs-with-splunk.md).
+**A**: Obecnie usługa Azure Monitor jest obsługiwana przez [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar, i [logiki Sumo](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Aby uzyskać więcej informacji na temat sposobu działania łączników, zobacz [Stream Azure monitoring data to an event hub for consumption by an external tool (Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń do użycia przez zewnętrzne narzędzie)](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
-**Pytanie: Jak mogę zintegrować dzienniki aktywności usługi Azure AD z moją logiką Sumo?** 
+**PYT.: Jak zintegrować usługę Azure AD dzienników aktywności z Moje wystąpienie Splunk?**
 
-**Odpowiedź**: Najpierw [przekieruj dzienniki aktywności usługi Azure AD do centrum zdarzeń](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), a następnie postępuj zgodnie z podanymi instrukcjami, aby [zainstalować aplikację usługi Azure AD i wyświetlić pulpity nawigacyjne w logice SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
+**A**: Po pierwsze, [trasy usługi Azure AD dzienników aktywności do Centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md), następnie postępuj zgodnie z instrukcjami, aby [zintegrować Dzienniki aktywności z Splunk](tutorial-integrate-activity-logs-with-splunk.md).
 
 ---
 
-**Pytanie: Czy można uzyskać dostęp do danych z centrum zdarzeń bez użycia zewnętrznego narzędzia SIEM?** 
+**PYT.: Jak zintegrować usługę Azure AD dzienników aktywności w logice Sumo?** 
 
-**Odpowiedź:** Tak. Aby uzyskać dostęp do dzienników z aplikacji niestandardowej, możesz użyć [interfejsu API usługi Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
+**A**: Po pierwsze, [trasy usługi Azure AD dzienników aktywności do Centrum zdarzeń](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), następnie postępuj zgodnie z instrukcjami, aby [instalowanie aplikacji usługi Azure AD i wyświetlać pulpity nawigacyjne w SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
+
+---
+
+**PYT.: Można uzyskać dostęp do danych z Centrum zdarzeń bez użycia zewnętrznego narzędzia SIEM?** 
+
+**A**: Tak. Aby uzyskać dostęp do dzienników z aplikacji niestandardowej, możesz użyć [interfejsu API usługi Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
 
 ---
 

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 98828589832d69ada11205e471314a153a566766
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080269"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975513"
 ---
-# <a name="configure-containers"></a>Konfigurowanie kontenerów
+# <a name="configure-language-understanding-docker-containers"></a>Konfigurowanie Language Understanding kontenerów platformy docker 
 
 Środowisko uruchomieniowe kontenera Language Understanding (LUIS) jest skonfigurowany przy użyciu `docker run` argumenty polecenia. Usługa LUIS ma wymagane ustawienia, wraz z kilku ustawień opcjonalnych. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia specyficzne dla kontenera są dane wejściowe [ustawienia instalacji](#mount-settings) i ustawienia rozliczeń. 
 
@@ -32,11 +32,11 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |--|--|--|
 |Yes|[ApiKey](#apikey-setting)|Używane do śledzenia informacji dotyczących rozliczeń.|
 |Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera.|
-|Yes|[Rozliczenia](#billing-setting)|Określa identyfikator URI punktu końcowego z _Language Understanding_ zasobów na platformie Azure.|
+|Yes|[Rozliczenia](#billing-setting)|Określa punkt końcowy identyfikator URI zasobu usługi na platformie Azure.|
 |Yes|[Umowa licencyjna](#eula-setting)| Wskazuje, zaakceptowane licencji dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
 |Nie|[Rejestrowanie](#logging-settings)|Udostępnia platformy ASP.NET Core rejestrowania pomocy technicznej dla usługi kontenera. |
-|Yes|[Instaluje](#mount-settings)|Odczytywanie i zapisywanie danych z [komputerze-hoście](luis-container-howto.md#the-host-computer) do kontenera i z kontenera do komputera-hosta.|
+|Yes|[Instaluje](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i kontener wróć do komputera-hosta.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), I [ `Eula` ](#eula-setting) ustawienia są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie Nie można uruchomić kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](luis-container-howto.md#billing).
@@ -45,32 +45,25 @@ Ten kontener ma następujące ustawienia konfiguracji:
 
 `ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _Language Understanding_ zasób określony dla [ `Billing` ](#billing-setting) ustawienia konfiguracji.
 
-To ustawienie można znaleźć w dwóch miejscach:
+To ustawienie można znaleźć w następujących miejscach:
 
-* Witryna Azure portal: **Language Understanding** zarządzanie zasobami w obszarze **kluczy**
-* Portal usługi LUIS: **kluczy i punktu końcowego ustawienia** strony. 
+* Azure Portal: **Language Understanding** zarządzanie zasobami w obszarze **kluczy**
+* Portal usługi LUIS: **Ustawienia punktu końcowego i klucze** strony. 
 
 Nie należy używać klucza starter lub tworzenia klucza. 
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
-`ApplicationInsights` Ustawienie pozwala na dodawanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera. Usługa Application Insights zapewnia szczegółowe monitorowanie kontenera. Możesz łatwo monitorować dostępność, wydajność i użycie kontenera. Możesz również szybko identyfikować i diagnozować błędy w kontenerze.
-
-W poniższej tabeli opisano ustawienia konfiguracji objęte `ApplicationInsights` sekcji.
-
-|Wymagane| Name (Nazwa) | Typ danych | Opis |
-|--|------|-----------|-------------|
-|Nie| `InstrumentationKey` | Ciąg | Klucz Instrumentacji wystąpienie usługi Application Insights do telemetrii, które są wysyłane dane w kontenerze. Aby uzyskać więcej informacji, zobacz [usługi Application Insights dla platformy ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Przykład:<br>`InstrumentationKey=123456789`|
-
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-setting"></a>Ustawienie rozliczeń
 
 `Billing` Ustawienie określa identyfikator URI punktu końcowego z _Language Understanding_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _Language Understanding_ zasobów na platformie Azure.
 
-To ustawienie można znaleźć w dwóch miejscach:
+To ustawienie można znaleźć w następujących miejscach:
 
-* Witryna Azure portal: **Language Understanding** Przegląd, etykietą `Endpoint`
-* Portal usługi LUIS: **kluczy i punktu końcowego ustawienia** stronie jako część identyfikatora URI punktu końcowego.
+* Azure Portal: **Language Understanding** Przegląd, etykietą `Endpoint`
+* Portal usługi LUIS: **Ustawienia punktu końcowego i klucze** stronie jako część identyfikatora URI punktu końcowego.
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
@@ -78,51 +71,17 @@ To ustawienie można znaleźć w dwóch miejscach:
 
 ## <a name="eula-setting"></a>Umowa licencyjna EULA ustawienie
 
-`Eula` Ustawienie wskazuje zaakceptowane licencji dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji i musi być równa wartości `accept`.
-
-|Wymagane| Name (Nazwa) | Typ danych | Opis |
-|--|------|-----------|-------------|
-|Yes| `Eula` | Ciąg | Akceptacja licencji<br><br>Przykład:<br>`Eula=accept` |
-
-Kontenery usługi cognitive Services są licencjonowane w ramach [umowy](https://go.microsoft.com/fwlink/?linkid=2018657) regulujących korzystanie z platformy Azure. Jeśli nie masz istniejącej umowy regulujących korzystanie z platformy Azure, potwierdzam, że umowy regulującej korzystanie z platformy Azure są [Microsoft Online Subscription — Umowa](https://go.microsoft.com/fwlink/?linkid=2018755), który obejmuje dokument [Online Services — warunki ](https://go.microsoft.com/fwlink/?linkid=2018760). Dla wersji zapoznawczych, wyrażasz zgodę na [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://go.microsoft.com/fwlink/?linkid=2018815). Przy użyciu kontenera jest równoznaczne z wyrażeniem zgody na te warunki.
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
 ## <a name="fluentd-settings"></a>Ustawienia Fluentd
 
-Fluentd jest moduł zbierający dane typu open source, ujednolicone rejestrowania. `Fluentd` Ustawienia zarządzania połączenie kontenera [Fluentd](https://www.fluentd.org) serwera. Kontener usługi LUIS obejmuje Fluentd dostawcy logowania, co pozwala na zapisywanie dzienników kontenera i, opcjonalnie, metryki danych na serwerze Fluentd.
 
-W poniższej tabeli opisano ustawienia konfiguracji objęte `Fluentd` sekcji.
-
-| Name (Nazwa) | Typ danych | Opis |
-|------|-----------|-------------|
-| `Host` | Ciąg | Adres IP lub nazwa hosta DNS serwera Fluentd. |
-| `Port` | Liczba całkowita | Port serwera Fluentd.<br/> Wartość domyślna to 24224. |
-| `HeartbeatMs` | Liczba całkowita | Interwał pulsu (w milisekundach). Jeśli żaden ruch nie jest zdarzenie zostało wysłane przed upływem tego interwału, pulsu są wysyłane do serwera Fluentd. Wartość domyślna to 60000 milisekund (1 minuta). |
-| `SendBufferSize` | Liczba całkowita | Sieć miejsca w buforze, w bajtach, przydzielany dla operacji wysyłania. Wartość domyślna to 32768 bajtów (32 kilobajtów). |
-| `TlsConnectionEstablishmentTimeoutMs` | Liczba całkowita | Limit czasu w milisekundach, można ustanowić połączenia SSL/TLS z serwerem Fluentd. Wartość domyślna to 10000 MS (10 sekund).<br/> Jeśli `UseTLS` jest ustawiona na wartość FAŁSZ, ta wartość jest ignorowana. |
-| `UseTLS` | Wartość logiczna | Wskazuje, czy do komunikacji z serwerem Fluentd kontenera należy używać protokołów SSL/TLS. Wartość domyślna to false. |
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
 ## <a name="logging-settings"></a>Ustawienia rejestrowania
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-`Logging` Ustawienia zarządzania obsługę rejestrowania platformy ASP.NET Core kontenera. Można użyć tych samych ustawień konfiguracji oraz wartości kontenera używaną dla aplikacji ASP.NET Core. 
-
-Następujących dostawców rejestrowania są obsługiwane przez kontener usługi LUIS:
-
-|Dostawca|Przeznaczenie|
-|--|--|
-|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|ASP.NET Core `Console` dostawcy logowania. Obsługiwane są wszystkie ustawienia konfiguracji platformy ASP.NET Core i wartości domyślne dla tego dostawcy logowania.|
-|[Debugowanie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` dostawcy logowania. Obsługiwane są wszystkie ustawienia konfiguracji platformy ASP.NET Core i wartości domyślne dla tego dostawcy logowania.|
-|[Dysk](#disk-logging)|Dostawca logowania JSON. Ten dostawca rejestrowania zapisuje dane dziennika instalacji danych wyjściowych.|
-
-### <a name="disk-logging"></a>Rejestrowanie dysku
-  
-`Disk` Rejestrowania dostawca obsługuje następujące ustawienia konfiguracji:  
-
-| Name (Nazwa) | Typ danych | Opis |
-|------|-----------|-------------|
-| `Format` | Ciąg | Format danych wyjściowych dla plików dziennika.<br/> **Uwaga:** ta wartość musi być równa `json` do włączenia rejestrowania dostawcy usług. Jeśli ta wartość jest określona bez jednoczesnego określenia dane wyjściowe instalacji podczas tworzenia wystąpienia kontenera, wystąpi błąd. |
-| `MaxFileSize` | Liczba całkowita | Maksymalny rozmiar w megabajtach (MB), plik dziennika. Gdy rozmiar bieżącego pliku dziennika, spełnia lub przekracza tę wartość, nowy plik dziennika został uruchomiony przez dostawcę rejestrowania. Jeśli określono wartość -1, rozmiar pliku dziennika jest ograniczona tylko przez maksymalny rozmiar pliku, ewentualne instalacji danych wyjściowych. Wartość domyślna to 1. |
-
-Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [ustawień pliku konfiguracji](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
 
 ## <a name="mount-settings"></a>Ustawienia instalacji
 
@@ -141,39 +100,16 @@ W poniższej tabeli opisano ustawienia obsługiwane.
 
 ## <a name="hierarchical-settings"></a>Ustawienia hierarchicznych
 
-Ustawienia dla kontenera usługi LUIS są hierarchiczne i wszystkich kontenerów na [komputerze-hoście](luis-container-howto.md#the-host-computer) używania udostępnionego hierarchii.
+[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
 
-Aby określić ustawienia, można użyć jednej z następujących pozycji:
-
-* [Zmienne środowiskowe](#environment-variable-settings)
-* [Argumenty wiersza polecenia](#command-line-argument-settings)
-
-Wartości zmiennych środowiskowych zastępują wartości argumentów wiersza polecenia, które z kolei przesłonić wartości domyślne dla obrazu kontenera. Jeśli określisz różne wartości w zmiennej środowiskowej i argument wiersza polecenia dla tego samego ustawienia konfiguracji, wartość w zmiennej środowiskowej jest używany przez kontener wystąpień.
-
-|Pierwszeństwo|Ustawianie lokalizacji|
-|--|--|
-|1|Zmienna środowiskowa| 
-|2|Wiersz polecenia|
-|3|Wartość domyślna obrazu kontenera|
-
-### <a name="environment-variable-settings"></a>Ustawień zmiennych środowiskowych
-
-Korzyści z używania zmiennych środowiskowych są:
-
-* Można skonfigurować wiele ustawień.
-* Wiele kontenerów, można użyć tych samych ustawień.
-
-### <a name="command-line-argument-settings"></a>Ustawienia argument wiersza polecenia
-
-Zaletą używania argumentów wiersza polecenia jest, że każdego kontenera za pomocą różnych ustawień.
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
 W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń.  Po uruchomieniu kontenera będzie działać do momentu [zatrzymać](luis-container-howto.md#stop-the-container) go.
 
 
-* **Znak kontynuacji wiersza**: poleceń docker w poniższych sekcjach użyć ukośnika, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
-* **Kolejność argumentów**: nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
+* **Znak kontynuacji wiersza**: Platformy docker w poniższych sekcjach użyto ukośnika, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
+* **Kolejność argumentów**: Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
 
 Zastąp {_argument_name_} własnymi wartościami:
 

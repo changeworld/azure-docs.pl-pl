@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336497"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584313"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dotyczących metryk
 
@@ -33,7 +33,7 @@ Poniższa procedura opisuje sposób tworzenia regułę alertu metryki w witrynie
 
 3. Kliknij przycisk **Wybieranie lokalizacji docelowej**, w okienku kontekstowym, który ładuje, zaznacz zasób docelowy, który chcesz zmodyfikować. Użyj **subskrypcji** i **typ zasobu** list rozwijanych można znaleźć zasobu, który chcesz monitorować. Umożliwia także na pasku wyszukiwania można znaleźć zasobu.
 
-4. Jeśli wybrany zasób ma metryk, można tworzyć alerty **dostępne sygnały** na dole po prawej stronie będzie zawierać metryki. Można wyświetlić pełną listę typów zasobów, obsługiwane w przypadku alertów dotyczących metryk w tym [artykułu](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)
+4. Jeśli wybrany zasób ma metryk, można tworzyć alerty **dostępne sygnały** na dole po prawej stronie będzie zawierać metryki. Można wyświetlić pełną listę typów zasobów, obsługiwane w przypadku alertów dotyczących metryk w tym [artykułu](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
 
 5. Po wybraniu zasobu docelowego kliknij **Dodaj kryteria**
 
@@ -130,4 +130,4 @@ Przedstawione w poprzednich sekcjach opisano, jak tworzyć, wyświetlać i zarz�
 
 - [Tworzenie alertów metryk, przy użyciu szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-enable-template.md).
 - [Zrozumienie, jak metryki, alerty pracy](alerts-metric-overview.md).
-- [Zrozumienie schematu punktu zaczepienia sieci web dla alertów dotyczących metryk](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)
+- [Zrozumienie schematu punktu zaczepienia sieci web dla alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

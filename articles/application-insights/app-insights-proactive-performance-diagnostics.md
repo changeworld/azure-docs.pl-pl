@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b9428e4451ebef921907809b1250238bf084706d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bd7b4bd2e1c3116f2a722b0a06d24ecc43e6ccb2
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864965"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974994"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
 [Usługa Application Insights](app-insights-overview.md) automatycznie analizuje wydajność aplikacji sieci web i może zostać wyświetlone ostrzeżenie o potencjalnych problemach. Użytkownik może być odczytywanie to ponieważ jeden z naszych wykrywanie inteligentne powiadomienia otrzymane.
 
-Ta funkcja wymaga nie specjalne ustawienia innego niż Konfigurowanie aplikacji dla usługi Application Insights (na [ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), lub [Node.js](app-insights-nodejs.md), a następnie w [strony sieci web Kod](app-insights-javascript.md)). Może to być aktywny, gdy aplikacja generuje wystarczającej ilości danych telemetrycznych.
+Ta funkcja wymaga nie specjalne ustawienia innego niż Konfigurowanie aplikacji dla usługi Application Insights (na [ASP.NET](../azure-monitor/app/asp-net.md), [Java](../azure-monitor/app/java-get-started.md), lub [Node.js](app-insights-nodejs.md), a następnie w [strony sieci web Kod](../azure-monitor/app/javascript.md)). Może to być aktywny, gdy aplikacja generuje wystarczającej ilości danych telemetrycznych.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Gdy otrzyma powiadomienie wykrywania inteligentnego
 
@@ -69,22 +69,22 @@ Wiadomości e-mail o anomaliach wydajności wykrywania inteligentnego mogą zawi
 ## <a name="faq"></a>Często zadawane pytania
 
 * *Tak pracownicy firmy Microsoft Przyjrzyj się moje dane?*
-  * Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomienia. Twoje dane są [prywatnej](app-insights-data-retention-privacy.md).
+  * Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomienia. Twoje dane są [prywatnej](../azure-monitor/app/data-retention-privacy.md).
 * *Czy można analizować wszystkie dane zebrane przez usługę Application Insights?*
   * Nie w chwili obecnej. Obecnie analizujemy żądania czas odpowiedzi oraz czas odpowiedzi zależności czas ładowania. Analiza dodatkowe metryki znajduje się na naszej liście prac wyszukiwania do przodu.
 
 * Jakie typy aplikacji to działa dla?
-  * Te spadku wydajności są wykrywane w dowolnej aplikacji, która generuje odpowiednie dane telemetryczne. Po zainstalowaniu usługi Application Insights w aplikacji sieci web, następnie żądania i zależności są automatycznie śledzone. Ale w usług zaplecza lub innych aplikacji, jeśli wstawiono wywołania [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) lub [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency), Inteligentne wykrywanie będzie działać w taki sam sposób.
+  * Te spadku wydajności są wykrywane w dowolnej aplikacji, która generuje odpowiednie dane telemetryczne. Po zainstalowaniu usługi Application Insights w aplikacji sieci web, następnie żądania i zależności są automatycznie śledzone. Ale w usług zaplecza lub innych aplikacji, jeśli wstawiono wywołania [TrackRequest()](../azure-monitor/app/api-custom-events-metrics.md#trackrequest) lub [TrackDependency](../azure-monitor/app/api-custom-events-metrics.md#trackdependency), Inteligentne wykrywanie będzie działać w taki sam sposób.
 
 * *Można utworzyć reguły wykrywania anomalii własnego lub dostosować istniejące zasady?*
 
   * Jeszcze nie ale możesz:
-    * [Konfigurowanie alertów](app-insights-alerts.md) , poinformować Cię, gdy Metryka przekracza próg.
-    * [Eksportowanie telemetrii](app-insights-export-telemetry.md) do [bazy danych](app-insights-code-sample-export-sql-stream-analytics.md) lub [do usługi Power BI](app-insights-export-power-bi.md), gdzie można analizować je samodzielnie.
+    * [Konfigurowanie alertów](../azure-monitor/app/alerts.md) , poinformować Cię, gdy Metryka przekracza próg.
+    * [Eksportowanie telemetrii](../azure-monitor/app/export-telemetry.md) do [bazy danych](../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi Power BI](app-insights-export-power-bi.md), gdzie można analizować je samodzielnie.
 * *Jak często jest wykonywana analiza*
 
   * Firma Microsoft analizy Codzienne uruchamianie WE dane telemetryczne z poprzedniego dnia (pełny dzień w strefie czasowej UTC).
-* *To samo dotyczy to Zastąp [alertów dotyczących metryk](app-insights-alerts.md)?*
+* *To samo dotyczy to Zastąp [alertów dotyczących metryk](../azure-monitor/app/alerts.md)?*
   * Nie.  Nie jesteśmy zaangażowani w zapewnienie wykrywania co warto rozważyć nietypowe zachowanie.
 
 
@@ -101,7 +101,7 @@ Najpierw czy ma to znaczenie? Jeśli strona jest zawsze ładować się wolno, al
 
 Jako ogólnej wskazówki należy użyć instrukcji wpływ (narażeni użytkownicy lub % ruchu), ale należy pamiętać, że nie jest cały artykuł. Zbierać inne dokumenty, aby potwierdzić.
 
-Należy wziąć pod uwagę parametry tego problemu. Jeśli jest to zależne od lokalizacji geograficznej, skonfiguruj [testy dostępności](app-insights-monitor-web-app-availability.md) łącznie z tego regionu: może po prostu być problemy z siecią w tym obszarze.
+Należy wziąć pod uwagę parametry tego problemu. Jeśli jest to zależne od lokalizacji geograficznej, skonfiguruj [testy dostępności](../azure-monitor/app/monitor-web-app-availability.md) łącznie z tego regionu: może po prostu być problemy z siecią w tym obszarze.
 
 ### <a name="diagnose-slow-page-loads"></a>Diagnozowanie powolne ładowanie stron
 Gdzie jest problem? Jest wolne odpowiedzi serwera, jest bardzo długi strony lub czy przeglądarka musi wykonać dużo pracy, aby go wyświetlić?
@@ -109,16 +109,16 @@ Gdzie jest problem? Jest wolne odpowiedzi serwera, jest bardzo długi strony lub
 Otwórz blok przeglądarki, metryki. Segmenty wyświetlania przeglądarki strony obciążenia czasu wskazuje, gdzie czas. 
 
 * Jeśli **czas wysyłania żądania** jest wysokie, albo serwer odpowiada powoli lub żądanie jest żądaniem post z dużą ilością danych. Przyjrzyj się [metryki wydajności](app-insights-web-monitor-performance.md#metrics) do badania czasy odpowiedzi.
-* Konfigurowanie [śledzenia zależności](app-insights-asp-net-dependencies.md) aby zobaczyć, czy powolność wynika z usługami zewnętrznymi lub bazy danych.
-* Jeśli **odbierania odpowiedzi** jest dominującym, strony i jego zależne elementy — JavaScript, CSS, obrazów i tak dalej (ale nie asynchronicznie załadowanych danych) są długie. Konfigurowanie [testu dostępności](app-insights-monitor-web-app-availability.md)i należy ustawić opcję, aby załadować zależne elementy. Po otrzymaniu niektórych wyników Otwórz szczegóły wyniku i rozwiń go, aby zobaczyć, czasy ładowania różnych plików.
+* Konfigurowanie [śledzenia zależności](../azure-monitor/app/asp-net-dependencies.md) aby zobaczyć, czy powolność wynika z usługami zewnętrznymi lub bazy danych.
+* Jeśli **odbierania odpowiedzi** jest dominującym, strony i jego zależne elementy — JavaScript, CSS, obrazów i tak dalej (ale nie asynchronicznie załadowanych danych) są długie. Konfigurowanie [testu dostępności](../azure-monitor/app/monitor-web-app-availability.md)i należy ustawić opcję, aby załadować zależne elementy. Po otrzymaniu niektórych wyników Otwórz szczegóły wyniku i rozwiń go, aby zobaczyć, czasy ładowania różnych plików.
 * Wysoka **czas przetwarzania klienta** sugeruje skrypty działają wolno. Jeśli przyczyną jest oczywiste, Rozważ dodanie kodu czasu i czasy wysyłania w wywołaniach trackMetric.
 
 ### <a name="improve-slow-pages"></a>Poprawa powolne strony
 Brak sieci web, pełna porad na temat zwiększania Twoje odpowiedzi serwera i czasy ładowania stron, dlatego firma Microsoft nie będzie podejmowana próba powtórzyć je wszystkie w tym miejscu. Poniżej przedstawiono kilka wskazówek, które prawdopodobnie już wiesz, po prostu pomagające w myśl:
 
-* Powolne ładowanie ze względu na duże pliki: asynchroniczne ładowanie skrypty i inne elementy. Za pomocą tworzenia pakietów skryptów. Strona główna przerwać działanie elementów widget, które ładują dane oddzielnie. Nie wysyłaj zwykłe stare kod HTML dla długich tabel: dane żądania JSON lub innych kompaktowego formatu za pomocą skryptu, a następnie wypełnij tabelę w miejscu. Brak wspaniałych środowisk pomoże Ci to wszystko. (One także pociąga za sobą skrypty big Data, oczywiście.)
-* Wolne zależności serwera: należy wziąć pod uwagę lokalizacji geograficznych poszczególnych składnikach. Na przykład jeśli używasz platformy Azure, upewnij się, że serwer sieci web i bazy danych znajdują się w tym samym regionie. Czy zapytania pobierają więcej informacji, niż jest to wymagane? Czy buforowanie lub adapterów przetwarzania wsadowego pomocy?
-* Problemy dotyczące pojemności: Spójrz na metryk serwera czasów odpowiedzi i liczby żądań. Jeśli czas reakcji osiągają szczytowe użycie nieproporcjonalnie z okresami liczby żądań, prawdopodobnie konfiguracji serwerów.
+* Powolne ładowanie ze względu na duże pliki: Załaduj asynchronicznie skrypty i inne elementy. Za pomocą tworzenia pakietów skryptów. Strona główna przerwać działanie elementów widget, które ładują dane oddzielnie. Nie wysyłaj zwykłe stare kod HTML dla długich tabel: dane żądania JSON lub innych kompaktowego formatu za pomocą skryptu, a następnie wypełnij tabelę w miejscu. Brak wspaniałych środowisk pomoże Ci to wszystko. (One także pociąga za sobą skrypty big Data, oczywiście.)
+* Zależności serwera wolne: Należy wziąć pod uwagę lokalizacji geograficznych poszczególnych składnikach. Na przykład jeśli używasz platformy Azure, upewnij się, że serwer sieci web i bazy danych znajdują się w tym samym regionie. Czy zapytania pobierają więcej informacji, niż jest to wymagane? Czy buforowanie lub adapterów przetwarzania wsadowego pomocy?
+* Pojemności problemy: Spójrz na metryk serwera czasów odpowiedzi i liczby żądań. Jeśli czas reakcji osiągają szczytowe użycie nieproporcjonalnie z okresami liczby żądań, prawdopodobnie konfiguracji serwerów.
 
 
 ## <a name="server-response-time-degradation"></a>Wydłużenie czasu odpowiedzi serwera
@@ -185,9 +185,9 @@ Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Two
 * [Profiler](app-insights-profiler.md) 
 * [Rozszerzenie Snapshot debugger](app-insights-snapshot-debugger.md)
 * [Analiza](../azure-monitor/log-query/get-started-portal.md)
-* [Analiza inteligentna Diagnostyka](app-insights-analytics.md)
+* [Analiza inteligentna Diagnostyka](../azure-monitor/app/analytics.md)
 
 Wykrywanie inteligentne są całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?
 
-* [Ręcznie skonfigurowane alertów dotyczących metryk](app-insights-alerts.md)
-* [Testy sieci web dostępności](app-insights-monitor-web-app-availability.md)
+* [Ręcznie skonfigurowane alertów dotyczących metryk](../azure-monitor/app/alerts.md)
+* [Testy sieci web dostępności](../azure-monitor/app/monitor-web-app-availability.md)

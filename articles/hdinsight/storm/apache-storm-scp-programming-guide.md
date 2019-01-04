@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496865"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631825"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
-Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](http://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](http://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
+Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](https://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](https://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
 
 Nie tylko projekt SCP przenoszone systemu Storm w Windows, ale projektu dodano także rozszerzenia i dostosowywanie na potrzeby ekosystemu Windows. Rozszerzenia .NET, środowisko programistyczne i bibliotek, dostosowanie zawiera wdrożenie oparte na Windows. 
 
@@ -309,7 +309,7 @@ Dla ISCPBatchBolt, możemy pobrać `StormTxAttempt` z `parms`i przy jego użyciu
 
 Ogólnie rzecz biorąc wtyczek SCP może działać w dwóch trybach tutaj:
 
-1. Trybu lokalnego testu: W tym trybie wtyczek punkt połączenia usługi (C\# kodu użytkownika) uruchamiane wewnątrz programu Visual Studio w fazie opracowywania. `LocalContext` można w ten tryb, który udostępnia metody do serializacji emitowany krotek do lokalnych plików i odczytania ich pamięci.
+1. Tryb lokalnego testu: W tym trybie wtyczek punkt połączenia usługi (C\# kodu użytkownika) uruchamiane wewnątrz programu Visual Studio w fazie opracowywania. `LocalContext` można w ten tryb, który udostępnia metody do serializacji emitowany krotek do lokalnych plików i odczytania ich pamięci.
    
         public interface ILocalContext
         {
@@ -346,7 +346,7 @@ Ogólnie rzecz biorąc wtyczek SCP może działać w dwóch trybach tutaj:
         }
 
 ## <a name="topology-specification-language"></a>Topologia specyfikacja języka
-Specyfikacja topologii połączenia usługi jest języka specyficznego dla domeny do opisu i Konfigurowanie topologii połączenia usługi. Jest on oparty na DSL Clojure firmy Storm (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) i zostanie rozszerzony przez punkt połączenia usługi.
+Specyfikacja topologii połączenia usługi jest języka specyficznego dla domeny do opisu i Konfigurowanie topologii połączenia usługi. Jest on oparty na DSL Clojure firmy Storm (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) i zostanie rozszerzony przez punkt połączenia usługi.
 
 Specyfikacje topologii można przesyłać bezpośrednio do klastra storm do wykonania za pomocą ***runspec*** polecenia.
 
@@ -594,7 +594,7 @@ W spout po włączeniu potwierdzenia słownika jest używany w pamięci podręcz
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** przykład pokazuje, jak wdrożyć topologię transakcyjnych. Ma on jeden spout o nazwie **generator**, bolt partii o nazwie **partial-count**, oraz nazywany bolt zatwierdzenia **Suma liczba**. Dostępne są także trzy pliki txt wstępnie utworzone: **DataSource0.txt**, **DataSource1.txt**, i **DataSource2.txt**.
+**HelloWorldTx** przykład pokazuje, jak wdrożyć topologię transakcyjnych. Ma on jeden spout o nazwie **generator**, bolt partii o nazwie **partial-count**, oraz nazywany bolt zatwierdzenia **Suma liczba**. Istnieją trzy pliki txt wstępnie utworzone: **DataSource0.txt**, **DataSource1.txt**, i **DataSource2.txt**.
 
 W każdej transakcji spout **generator** losowo wybiera dwa pliki z wstępnie utworzone trzy pliki i emitować nazw dwóch plików do **partial-count** bolt. Elementy bolt **partial-count** pobiera plik nazwę z odebranych spójnej kolekcji, a następnie otwórz plik i liczbę słów w tym pliku i na koniec emitować numer programu word do **suma liczby** bolt. **Suma liczby** bolt zawiera podsumowanie liczby całkowitej.
 

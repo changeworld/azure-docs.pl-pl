@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 362a8f6108ad035c66fe76dae09cf7711dafd070
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344350"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972043"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Wybierz wersję środowiska wykonawczego Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-bindings-cosmosdb.md)
 > * [Wersja 2](functions-bindings-cosmosdb-v2.md)
 
@@ -274,8 +274,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał można uruchamiać zadania obliczeniowe, jeśli partycje są dystrybuowane równomiernie między wystąpieniami znanych hostów. Wartość domyślna to 13000 (w sekundach 13).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla której dzierżawy jest pobierany podczas dzierżawy, reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślna to 60 000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
-|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po pomyślnym wywołania funkcji.
+|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po każdym wywołaniu funkcji.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
+|**startFromBeginning**| **StartFromBeginning**| (Opcjonalnie) Po ustawieniu informuje wyzwalacz, aby rozpocząć odczyt zmiany wprowadzone od początku historii kolekcja zamiast bieżącego czasu. Działa to tylko przy pierwszym uruchomieniu wyzwalacza, tak jak w kolejnych przebiegów, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true` w przypadku dzierżaw utworzone nie ma wpływu.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -384,6 +385,10 @@ namespace CosmosDBSamplesV2
 #### <a name="http-trigger-look-up-id-from-query-string-c"></a>Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania (C#)
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, która wykorzystuje ciąg kwerendy do określenia Identyfikatora do wyszukania. Identyfikator służy do pobierania `ToDoItem` dokument z określonej bazy danych i kolekcji.
+
+>[!NOTE]
+>Parametr ciągu zapytania HTTP jest uwzględniana wielkość liter.
+>
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1446,29 +1451,253 @@ Aby dodać `project.json` plików, zobacz [ F# Zarządzanie pakietami](functions
 
 ### <a name="input---java-examples"></a>Dane wejściowe - przykładów w języku Java
 
-Poniższy przykład przedstawia funkcję języka Java, która pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które wykorzystuje ciąg kwerendy do określenia Identyfikatora do wyszukania. Ten identyfikator służy do pobierania dokumentu ToDoItem z określonej bazy danych i kolekcji.
+Ta sekcja zawiera następujące przykłady:
 
-Oto kodu Java:
+* [Wyzwalacz HTTP, odnośnika identyfikator z ciągu zapytania — parametr ciągu](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania — parametr obiektu typu POJO](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy](#http-trigger-look-up-id-from-route-data-java)
+* [Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy, używając SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
+* [HTTP wyzwalacza, Uzyskaj dokumentację wielu z danych trasy, używając SqlQuery](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+
+Przykłady dotyczą prostego `ToDoItem` typu:
 
 ```java
-@FunctionName("getItem")
-public String cosmosDbQueryById(
-    @HttpTrigger(name = "req",
-                  methods = {HttpMethod.GET},
-                  authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> dummy,
-    @CosmosDBInput(name = "database",
-                      databaseName = "ToDoList",
-                      collectionName = "Items",
-                      leaseCollectionName = "",
-                      id = "{Query.id}"
-                      connectionStringSetting = "AzureCosmosDBConnection") Optional<String> item,
-    final ExecutionContext context
- ) {
-    return item.orElse("Not found");
- }
+public class ToDoItem {
+
+  private String id;
+  private String description;  
+
+  public String getId() {
+    return id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+  
+  @Override
+  public String toString() {
+    return "ToDoItem={id=" + id + ",description=" + description + "}";
+  }
+}
+```
+
+#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania — parametr ciągu (Java)
+
+Poniższy przykład przedstawia funkcję języka Java, która pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które wykorzystuje ciąg kwerendy do określenia Identyfikatora do wyszukania. Ten identyfikator służy do pobierania dokumentu z określonej bazy danych i kolekcji w postaci ciągu.
+
+```java
+public class DocByIdFromQueryString {
+
+    @FunctionName("DocByIdFromQueryString")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
  ```
 
 W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@CosmosDBInput` adnotacja dla parametrów funkcji, którego wartość może pochodzić z usługi Cosmos DB.  Ta adnotacja mogą być używane z natywnych typów języka Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu opcjonalnie<T>.
+
+#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania — parametr obiektu typu POJO (Java)
+
+Poniższy przykład przedstawia funkcję języka Java, która pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które wykorzystuje ciąg kwerendy do określenia Identyfikatora do wyszukania. Ten identyfikator służy do pobierania dokumentu z określonej bazy danych i kolekcji. Dokument jest następnie konwertowana do wystąpienia ```ToDoItem``` obiektu typu POJO wcześniej utworzony i przekazany jako argument do funkcji.
+
+```java
+public class DocByIdFromQueryStringPojo {
+
+    @FunctionName("DocByIdFromQueryStringPojo")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Item from the database is " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-java"></a>Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy (Java)
+
+Poniższy przykład przedstawia funkcję języka Java, która pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa parametru trasy w celu określenia Identyfikatora do wyszukania. Czy identyfikator jest używany do pobierania dokumentu z określonej bazy danych i kolekcji, zwracanie go jako ```Optional<String>```.
+
+```java
+public class DocByIdFromRoute {
+
+    @FunctionName("DocByIdFromRoute")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems/{id}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{id}",
+              partitionKey = "{id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy, używając SqlQuery (Java)
+
+Poniższy przykład przedstawia funkcję języka Java, która pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa parametru trasy w celu określenia Identyfikatora do wyszukania. Czy identyfikator jest używany do pobierania dokumentu z określonej bazy danych i kolekcji, wynik konwersji równa ```ToDoItem[]```, ponieważ wiele dokumentów mogą być zwracane w zależności od kryteriów zapytania.
+
+```java
+public class DocByIdFromRouteSqlQuery {
+
+    @FunctionName("DocByIdFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems2/{id}") 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where r.id = {id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Items from the database are " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP wyzwalacza, Uzyskaj dokumentację wielu z danych trasy, używając SqlQuery (Java)
+
+W poniższym przykładzie pokazano funkcję Java wiele dokumentów. Funkcja jest wyzwalana przez żądanie HTTP, który używa parametru trasy ```desc``` Aby określić ciąg do wyszukania w ```description``` pola. Termin wyszukiwania jest używana do pobierania kolekcji dokumentów z określonej bazy danych i kolekcji, zestaw wyników do konwertowania ```ToDoItem[]``` i przekazanie do niej jako argument do funkcji.
+
+```java
+public class DocsFromRouteSqlQuery {
+
+    @FunctionName("DocsFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems3/{desc}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where contains(r.description, {desc})",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] items,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Number of items from the database is " + (items == null ? 0 : items.length));
+
+        // Convert and display
+        if (items == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("No documents found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(items)
+                          .build();
+        }
+    }
+}
+ ```
 
 ## <a name="input---attributes"></a>Dane wejściowe — atrybuty
 
@@ -1511,7 +1740,7 @@ Zobacz przykłady specyficzny dla języka:
 * [C#](#output---c-examples)
 * [Skryptu C# (csx)](#output---c-script-examples)
 * [F#](#output---f-examples)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-examples)
 
 Zobacz też [wejściowych przykład](#input---c-examples) , który używa `DocumentClient`.
@@ -1884,20 +2113,163 @@ Aby dodać `project.json` plików, zobacz [ F# Zarządzanie pakietami](functions
 
 ### <a name="output---java-examples"></a>Dane wyjściowe — przykładów w języku Java
 
+* [Wyzwalacz kolejki, Zapisz komunikat do bazy danych za pomocą wartości zwracanej](#queue-trigger-save-message-to-database-via-return-value-java)
+* [Wyzwalacz HTTP, Zapisz jednego dokumentu do bazy danych za pomocą wartości zwracanej](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [Wyzwalacz HTTP, Zapisz jednego dokumentu do bazy danych za pośrednictwem OutputBinding](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [Wyzwalacz HTTP, Zapisz wiele dokumentów do bazy danych za pośrednictwem OutputBinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+
+
+#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Wyzwalacz kolejki, Zapisz komunikat do bazy danych za pomocą wartości zwracanej (Java)
+
 Funkcja języka Java, która dodaje dokumentu do bazy danych przy użyciu danych z wiadomości w usłudze Queue storage można znaleźć w poniższym przykładzie.
 
 ```java
 @FunctionName("getItem")
-@CosmosDBOutput(name = "database", databaseName = "ToDoList", collectionName = "Items", connectionStringSetting = "AzureCosmosDBConnection")
+@CosmosDBOutput(name = "database", 
+  databaseName = "ToDoList", 
+  collectionName = "Items", 
+  connectionStringSetting = "AzureCosmosDBConnection")
 public String cosmosDbQueryById(
-     @QueueTrigger(name = "msg", queueName = "myqueue-items", connection = "AzureWebJobsStorage") String message,
-     final ExecutionContext context
-)  {
-     return "{ id: " + System.currentTimeMillis() + ", Description: " + message + " }";
+    @QueueTrigger(name = "msg", 
+      queueName = "myqueue-items", 
+      connection = "AzureWebJobsStorage") 
+    String message,
+    final ExecutionContext context)  {
+     return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
    }
 ```
 
-W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@CosmosDBOutput` adnotacji w parametrach, które zostaną zapisane w bazie danych Cosmos DB.  Typ parametru adnotacji powinny być OutputBinding<T>, gdzie T jest typem natywnym Java lub obiektu typu POJO.
+#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>Wyzwalacz HTTP, Zapisz jednego dokumentu do bazy danych za pomocą wartości zwracanej (Java)
+
+W poniższym przykładzie pokazano funkcję języka Java, którego podpis jest oznaczony za pomocą ```@CosmosDBOutput``` i nie zwraca wartości typu ```String```. Dokument JSON zwróconą przez funkcję będą automatycznie zapisywane do odpowiedniej kolekcji bazy danych cosmos DB.
+
+```java
+    @FunctionName("WriteOneDoc")
+    @CosmosDBOutput(name = "database", 
+      databaseName = "ToDoList",
+      collectionName = "Items", 
+      connectionStringSetting = "Cosmos_DB_Connection_String")
+    public String run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Parse query parameter        
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        return jsonDocument;
+    }
+```
+
+#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>Wyzwalacz HTTP, Zapisz jednego dokumentu do bazy danych za pośrednictwem OutputBinding (Java)
+
+W poniższym przykładzie pokazano funkcję języka Java, która zapisuje dokumentu cosmos DB za pomocą ```OutputBinding<T>``` parametr wyjściowy. Należy pamiętać, że w tej konfiguracji jest ```outputItem``` parametr, który musi być oznaczona przy użyciu ```@CosmosDBOutput```, nie sygnatura funkcji. Za pomocą ```OutputBinding<T>``` umożliwia funkcji zalet powiązania, które można zapisać dokumentu do usługi CosmosDB zachowaniu zwraca inną wartość do obiektu wywołującego funkcji, takich jak JSON lub XML dokumentu.
+
+```java
+    @FunctionName("WriteOneDocOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<String> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        // Set outputItem's value to the JSON document to be saved
+        outputItem.setValue(jsonDocument);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Document created successfully.")
+                      .build();
+    }
+```
+
+#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>Wyzwalacz HTTP, aby zapisać wiele dokumentów do bazy danych za pośrednictwem OutputBinding (Java)
+
+W poniższym przykładzie pokazano funkcję języka Java, która zapisuje wiele dokumentów do bazy danych cosmos DB za pomocą ```OutputBinding<T>``` parametr wyjściowy. Należy pamiętać, że w tej konfiguracji jest ```outputItem``` parametr, który musi być oznaczona przy użyciu ```@CosmosDBOutput```, nie sygnatura funkcji. Parametr wyjściowy ```outputItem``` zawiera listę ```ToDoItem``` obiektów jako jego typu parametru szablonu. Za pomocą ```OutputBinding<T>``` umożliwia funkcji zalet powiązania, które można zapisać dokumenty do usługi CosmosDB zachowaniu zwraca inną wartość do obiektu wywołującego funkcji, takich jak JSON lub XML dokumentu.
+
+```java
+    @FunctionName("WriteMultipleDocsOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<List<ToDoItem>> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate documents
+        List<ToDoItem> items = new ArrayList<>();
+
+        for (int i = 0; i < 5; i ++) {
+          // Generate random ID
+          final int id = Math.abs(new Random().nextInt());
+
+          // Create ToDoItem
+          ToDoItem item = new ToDoItem(String.valueOf(id), name);
+          
+          items.add(item);
+        }
+
+        // Set outputItem's value to the list of POJOs to be saved
+        outputItem.setValue(items);
+        context.getLogger().info("Document to be saved: " + items);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Documents created successfully.")
+                      .build();
+    }
+```
+
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@CosmosDBOutput` adnotacji w parametrach, które zostaną zapisane w bazie danych Cosmos DB.  Typ parametru adnotacji powinny być ```OutputBinding<T>```, gdzie T jest typem natywnym Java lub obiektu typu POJO.
 
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty

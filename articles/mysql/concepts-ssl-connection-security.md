@@ -1,32 +1,29 @@
 ---
-title: Połączenie SSL w bazie danych Azure dla programu MySQL
-description: Informacje dotyczące konfiguracji bazy danych Azure MySQL i skojarzone aplikacje prawidłowe korzystanie z połączeń SSL
-services: mysql
+title: Połączenia SSL dla usługi Azure Database for MySQL
+description: Informacje dotyczące konfigurowania usługi Azure Database for MySQL i skojarzonych aplikacji, aby prawidłowo używać połączeń SSL
 author: JasonMAnderson
 ms.author: janders
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ee7e0ec8524d66ee89cf7b2c4d44b70efa784f8f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 129f90d495627edb25dfafdeb1b274aa2c4c71cb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265065"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539847"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Połączenie SSL w bazie danych Azure dla programu MySQL
-Bazy danych platformy Azure dla programu MySQL obsługuje łączenie serwer bazy danych dla aplikacji klienckich przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
+# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Łączności SSL w usłudze Azure Database for MySQL
+Usługa Azure Database for MySQL obsługuje łączenie z serwerem bazy danych dla aplikacji klienckich przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
 
 ## <a name="default-settings"></a>Ustawienia domyślne
-Domyślnie usługa bazy danych należy skonfigurować do Wymagaj połączeń SSL, podczas nawiązywania połączenia MySQL.  Firma Microsoft zaleca, aby uniknąć wyłączenie opcji SSL, jeśli to możliwe. 
+Domyślnie usługa bazy danych powinny być konfigurowane do Wymagaj połączeń SSL, podczas nawiązywania połączenia z bazą danych MySQL.  Firma Microsoft zaleca, aby uniknąć wyłączenia opcji SSL, jeśli to możliwe. 
 
-Podczas inicjowania obsługi administracyjnej nowej bazy danych Azure MySQL serwerem za pośrednictwem portalu Azure i interfejsu wiersza polecenia, wymuszanie połączeń SSL jest domyślnie włączona. 
+Podczas aprowizowania nowego serwera Azure Database for MySQL za pośrednictwem witryny Azure portal i interfejs wiersza polecenia, wymuszanie połączeń SSL jest domyślnie włączona. 
 
-Parametry połączenia dla różnych języków programowania są wyświetlane w portalu Azure. Te parametry połączenia zawierają parametry SSL wymagane do połączenia z bazą danych. W portalu Azure wybierz serwer. W obszarze **ustawienia** nagłówek, wybierz **parametry połączenia**. Parametr SSL w zależności od łącznika, na przykład "ssl = true" lub "sslmode = wymagają" lub "sslmode = wymagane" i innych zmian.
+Parametry połączenia dla różnych języków programowania są wyświetlane w witrynie Azure portal. Te parametry połączenia zawierają wymaganych parametrów protokołu SSL do łączenia z bazą danych. W witrynie Azure portal wybierz serwer. W obszarze **ustawienia** nagłówka, wybierz **parametry połączenia**. Parametr SSL zależy od łącznika, na przykład "ssl = true" lub "sslmode = wymagają" lub "sslmode = wymagane" i inne.
 
-Aby dowiedzieć się, jak włączyć lub wyłączyć połączenia SSL, podczas tworzenia aplikacji, zapoznaj się [Konfigurowanie SSL](howto-configure-ssl.md). 
+Aby dowiedzieć się, jak włączyć lub wyłączyć połączenia SSL, podczas tworzenia aplikacji, zapoznaj się [jak skonfigurować protokół SSL](howto-configure-ssl.md). 
 
-## <a name="next-steps"></a>Następne kroki
-[Biblioteki połączeń dla bazy danych Azure dla programu MySQL](concepts-connection-libraries.md)
+## <a name="next-steps"></a>Kolejne kroki
+[Biblioteki połączeń dla usługi Azure Database for MySQL](concepts-connection-libraries.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 412ec0a7d2cd8574aadf6e9f104407792ddb29ed
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a09dcfbffb6daa2ae2514c608e88c8dc475c9676
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341529"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581440"
 ---
 # <a name="alerts-on-activity-log"></a>Alerty dotyczące dzienników aktywności 
 
@@ -28,11 +28,11 @@ Zazwyczaj można Tworzenie alertów dziennika aktywności do odbierania powiadom
 * Określone operacje są wykonywane na zasoby w subskrypcji platformy Azure, często są ograniczone do określonego zasobu, grupy lub zasobów. Na przykład można otrzymywać powiadomienia, gdy każda maszyna wirtualna w myProductionResourceGroup zostanie usunięty. Możesz też otrzymywać powiadomienia, gdy wszystkie nowe role są przypisane do użytkownika w ramach subskrypcji.
 * Występuje zdarzenie kondycji usługi. Zdarzenia usługi Service health zawierają powiadomienie o zdarzeń i zdarzeń konserwacji, które są stosowane do zasobów w ramach subskrypcji.
 
-Prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure Portal](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisku.
+Prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure Portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisku.
 
 W obu przypadkach alertu dziennika aktywności monitoruje tylko w przypadku zdarzeń w ramach subskrypcji, w której jest tworzony alert.
 
-Można skonfigurować alertu dziennika aktywności, na podstawie dowolnej właściwości najwyższego poziomu w obiekcie JSON dla zdarzenia dziennika aktywności. Aby uzyskać więcej informacji, zobacz [Przegląd dziennika aktywności platformy Azure](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log). Aby dowiedzieć się więcej na temat zdarzenia usługi service health, zobacz [odbieranie alertów dziennika aktywności dla powiadomień dotyczących usług](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+Można skonfigurować alertu dziennika aktywności, na podstawie dowolnej właściwości najwyższego poziomu w obiekcie JSON dla zdarzenia dziennika aktywności. Aby uzyskać więcej informacji, zobacz [Przegląd dziennika aktywności platformy Azure](./../../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log). Aby dowiedzieć się więcej na temat zdarzenia usługi service health, zobacz [odbieranie alertów dziennika aktywności dla powiadomień dotyczących usług](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
 
 Alerty dziennika aktywności skorzystać z kilku typowych opcji:
 
@@ -64,5 +64,5 @@ Aby dowiedzieć się więcej o grupach akcji, zobacz [tworzenie grup akcji w wit
 - Pobierz [Przegląd alertów](../../azure-monitor/platform/alerts-overview.md).
 - Dowiedz się więcej o [tworzenie i modyfikowanie alertów dziennika aktywności](../../azure-monitor/platform/alerts-activity-log.md).
 - Przegląd [schemat elementów webhook alertu dziennika aktywności](activity-log-alerts-webhook.md).
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md).
 

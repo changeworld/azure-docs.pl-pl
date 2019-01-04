@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434022"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715430"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Uruchamianie zadań Apache Pig z platformą Apache Hadoop w HDInsight za pomocą interfejsu REST
 
@@ -101,7 +101,7 @@ Dowiedz się, jak uruchamiać zadania Apache Pig Latin, wprowadzając żądania 
 
 Gdy stan zadania został zmieniony na **Powodzenie**, możesz pobrać wyniki zadania. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w tym przypadku `/example/pigcurl`.
 
-HDInsight można użyć usługi Azure Storage lub Azure Data Lake Storage jako domyślnego magazynu danych. Istnieją różne sposoby, aby uzyskać dane, w zależności od tego, który z nich korzystać. Aby uzyskać więcej informacji, zobacz sekcję magazynu [informacji opartych na systemie Linux HDInsight](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
+HDInsight można użyć usługi Azure Storage lub Azure Data Lake Storage jako domyślnego magazynu danych. Istnieją różne sposoby, aby uzyskać dane, w zależności od tego, który z nich korzystać. Aby uzyskać więcej informacji, zobacz sekcję magazynu [informacji opartych na systemie Linux HDInsight](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-storage) dokumentu.
 
 ## <a id="summary"></a>Podsumowanie
 

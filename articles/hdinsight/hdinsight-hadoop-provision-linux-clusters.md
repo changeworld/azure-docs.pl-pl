@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: e760b67c1b971613de6b21102687c8ffeb556ed8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ce39b431adfd333db1e771913ed28881a193b327
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386880"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790845"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i więcej
 
@@ -107,12 +107,12 @@ Nie trzeba jawnie określić lokalizację klastra: Klaster znajduje się w tej s
 
 ## <a name="storage-endpoints-for-clusters"></a>Punkty końcowe usługi Storage dla klastrów
 
-Mimo że instalacji lokalnej usługi Hadoop używa pliku System (HDFS, Hadoop Distributed) do magazynu w klastrze, w chmurze można użyć punktów końcowych magazynu podłączone do klastra. Klastry HDInsight użyć [usługi Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) lub [obiektów blob w usłudze Azure Storage](hdinsight-hadoop-use-blob-storage.md). Za pomocą usługi Azure Storage lub Data Lake Store oznacza, że możesz bezpiecznie usunąć klastry HDInsight używane do obliczeń przy jednoczesnym zachowaniu danych. 
+Mimo że instalacji lokalnej usługi Hadoop używa pliku System (HDFS, Hadoop Distributed) do magazynu w klastrze, w chmurze można użyć punktów końcowych magazynu podłączone do klastra. Klastry HDInsight użyć [usługi Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) lub [obiektów blob w usłudze Azure Storage](hdinsight-hadoop-use-blob-storage.md). Za pomocą usługi Azure Storage lub magazynu usługi Data Lake oznacza, że możesz bezpiecznie usunąć klastry HDInsight używane do obliczeń przy jednoczesnym zachowaniu danych. 
 
 > [!WARNING]  
 > Używanie dodatkowe konto magazynu w innej lokalizacji z klastra HDInsight nie jest obsługiwane.
 
-Podczas konfigurowania dla domyślnego punktu końcowego magazynu należy określić kontener obiektów blob na koncie usługi Azure Storage lub Data Lake Store. Domyślny magazyn zawiera aplikacji i systemu dzienniki. Opcjonalnie można określić dodatkowe połączone konta usługi Azure Storage i kont Data Lake Store, które mogą uzyskiwać dostęp do klastra. Klaster HDInsight i kont magazynu zależne muszą być w tej samej lokalizacji platformy Azure.
+Podczas konfigurowania dla domyślnego punktu końcowego magazynu należy określić kontener obiektów blob z konta usługi Azure Storage lub magazynu usługi Data Lake. Domyślny magazyn zawiera aplikacji i systemu dzienniki. Opcjonalnie można określić dodatkowe połączone konta usługi Azure Storage i kont usługi Data Lake Storage, które mogą uzyskiwać dostęp do klastra. Klaster HDInsight i kont magazynu zależne muszą być w tej samej lokalizacji platformy Azure.
 
 ![Ustawienia magazynu klastra: Punkty końcowe usługi storage zgodnego systemem plików HDFS](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
@@ -247,7 +247,7 @@ Aby uzyskać przykład użycia dwa typy klastrów w ramach sieci wirtualnej plat
 
 ## <a name="troubleshoot-access-control-issues"></a>Rozwiązywanie problemów z kontrolą dostępu
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-administer-use-portal-linux.md#create-clusters).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

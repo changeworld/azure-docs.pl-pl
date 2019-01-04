@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d4a2daf10fd864f13982f4d327868ad62d1309b3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321464"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540290"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -68,7 +68,7 @@ Jeśli maszyna wirtualna działa najważniejsze aplikacje, które muszą mieć w
 
 Zestaw dostępności to logiczne grupowanie, które można użyć na platformie Azure, aby upewnić się, że zasoby maszyny Wirtualnej, które można umieścić w niej od siebie odizolowane, gdy zostały wdrożone w centrum danych platformy Azure. Platforma Azure zapewnia maszyn wirtualnych, umieść w dostępności zestawu wykonywania między wieloma serwerami fizycznymi, regałów obliczeniowych, jednostek magazynowych i przełączników sieciowych. Sytuacji sprzętu lub oprogramowania Azure awarii wpływają tylko na część maszyn wirtualnych, a cała aplikacja nadal będzie dostępna dla klientów. Zestawy dostępności stanowią niezbędną funkcję umożliwia tworzenie niezawodnych rozwiązań w chmurze.
 
-## <a name="protect-against-malware"></a>Ochrona przed złośliwym oprogramowaniem
+## <a name="protect-against-malware"></a>Chroń się przed złośliwym oprogramowaniem
 Należy zainstalować ochrony przed złośliwym kodem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. Możesz zainstalować [Microsoft Antimalware](azure-security-antimalware.md) lub rozwiązanie do ochrony punktu końcowego partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Usługi Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection), i [programu System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection)).
 
 Microsoft Antimalware zawiera funkcje, takie jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowaniem złośliwego oprogramowania, aktualizacji sygnatur, aktualizacje aparatu, przykłady raportowania i zbierania zdarzeń wykluczeń. W środowiskach, które znajdują się oddzielnie od środowiska produkcyjnego można użyć rozszerzenia ochrony przed złośliwym kodem można chronić maszyny wirtualne i usługi w chmurze.
@@ -137,7 +137,7 @@ W przypadku maszyny Wirtualnej procesy zużywać więcej zasobów niż powinni n
 
 Firma Microsoft zaleca użycie [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) uzyskać wgląd w kondycję zasobu. Funkcje monitorowania platformy Azure:
 
-- [Pliki dzienników diagnostycznych zasobów](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md): Monitorowanie zasobów maszyny Wirtualnej i identyfikuje potencjalnych problemów, które mogą negatywnie wpłynąć na wydajność i dostępność.
+- [Pliki dzienników diagnostycznych zasobów](../azure-monitor/platform/diagnostic-logs-overview.md): Monitorowanie zasobów maszyny Wirtualnej i identyfikuje potencjalnych problemów, które mogą negatywnie wpłynąć na wydajność i dostępność.
 - [Rozszerzenie diagnostyki platformy Azure](../azure-monitor/platform/diagnostics-extension-overview.md): Zapewnia możliwości monitorowania i diagnostyki na maszynach wirtualnych Windows. Możesz włączyć te możliwości, łącznie z rozszerzeniem jako część [szablonu usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md).
 
 Organizacje, które nie monitorować wydajność maszyny Wirtualnej nie może określić, czy pewne zmiany we wzorcach wydajności są prawidłowe lub nieprawidłowe. Maszynę Wirtualną, która zużywa więcej zasobów niż zwykle może wskazywać na atak z zewnętrznego zasobu lub ze złamanymi zabezpieczeniami procesu uruchomionego na maszynie wirtualnej.

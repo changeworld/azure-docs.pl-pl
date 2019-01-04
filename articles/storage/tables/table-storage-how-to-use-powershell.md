@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 219b5aa3c1f280ce02d2579f3fe2cc7ca7da490d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125789"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634477"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Wykonywanie operacji magazynu tabel Azure przy użyciu programu Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,9 @@ W tym artykule omówiono typowe operacje magazynu tabel Azure. Omawiane kwestie:
 
 W tym artykule pokazano, jak utworzyć nowe konto usługi Azure Storage w nowej grupie zasobów, dzięki czemu można łatwo go usuniesz po zakończeniu. Jeśli zostanie wykorzystany raczej istniejące konto magazynu, możesz zrobić to w zamian.
 
-Przykłady wymagają programu Azure PowerShell module wersję 4.4.0 lub nowszej. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable AzureRM` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Przykłady wymaga modułu Azure PowerShell `AzureRM` wersję 4.4.0 lub nowszej. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable AzureRM` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+
+[!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
 Po zainstalowaniu lub zaktualizowaniu programu Azure PowerShell, należy zainstalować moduł **AzureRmStorageTable**, która zawiera polecenia do zarządzania jednostkami. Aby zainstalować ten moduł, uruchom program PowerShell jako administrator i użyj **Install-Module** polecenia.
 

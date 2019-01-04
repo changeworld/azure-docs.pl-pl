@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438595"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728129"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure SQL
 
 *Reguły sieci wirtualnej* są jednym zapory funkcja zabezpieczeń, która określa, czy subskrypcji platformy Azure [bazy danych SQL](sql-database-technical-overview.md) lub [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) serwer zaakceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację do usługi Azure SQL Database i SQL Data Warehouse.
 
-> [!NOTE]
-> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> [!IMPORTANT]
+> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. W tym artykule jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database**.
 
 Aby utworzyć regułę sieci wirtualnej musi najpierw mieć [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] dla tej reguły odwołać.
 
@@ -64,9 +64,8 @@ Opcja IP można odzyskana, uzyskując *statyczne* adresu IP dla maszyny Wirtualn
 
 Jednak podejście statycznego adresu IP może być trudne do zarządzania i jest kosztowny w przypadku na dużą skalę. Reguły sieci wirtualnej są łatwiejsze ustalenie, jak i do zarządzania.
 
-### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. Jeszcze nie masz bazy danych SQL w podsieci
-
-Jeśli serwer usługi Azure SQL Database była węzła w podsieci w sieci wirtualnej, wszystkie węzły w sieci wirtualnej można nawiązać komunikacji z bazą danych SQL. W tym przypadku maszyn wirtualnych z systemem można nawiązać komunikacji z usługą SQL Database bez żadnych reguł sieci wirtualnej lub reguły IP.
+> [!NOTE]
+> Jeszcze nie może mieć bazy danych SQL, w podsieci. Jeśli serwer usługi Azure SQL Database była węzła w podsieci w sieci wirtualnej, wszystkie węzły w sieci wirtualnej można nawiązać komunikacji z bazą danych SQL. W tym przypadku maszyn wirtualnych z systemem można nawiązać komunikacji z usługą SQL Database bez żadnych reguł sieci wirtualnej lub reguły IP.
 
 Jednak począwszy od września 2017 r. Usługa Azure SQL Database nie jest jeszcze między usługami, które można przypisać do podsieci.
 
@@ -133,7 +132,7 @@ W przypadku używania punktów końcowych usługi dla usługi Azure SQL Database
 
 ### <a name="expressroute"></a>ExpressRoute
 
-Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w środowisku lokalnym na potrzeby publicznej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft, konieczne będzie określenie adresów IP translatora adresów Sieciowych, które są używane. W przypadku publicznej komunikacji równorzędnej każdy obwód usługi ExpressRoute domyślnie używa dwóch adresów IP translatora adresów sieciowych stosowanych do ruchu w ramach usługi platformy Azure, gdy ruch trafia do sieci szkieletowej platformy Microsoft Azure. W przypadku komunikacji równorzędnej firmy Microsoft używane adresy IP translatora adresów sieciowych są dostarczane przez klienta lub przez dostawcę usług. Aby umożliwić dostęp do zasobów usługi, musisz zezwolić na te publiczne adresy IP w ustawieniu zapory adresu IP zasobu. Aby znaleźć adresy IP obwodów usługi ExpressRoute publicznej komunikacji równorzędnej, [otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure Portal. Dowiedz się więcej o [translatorze adresów sieciowych publicznej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft dla usługi ExpressRoute.](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
+jeśli korzystasz z usługi [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w środowisku lokalnym na potrzeby publicznej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft, konieczne będzie określenie używanych adresów IP translatora adresów sieciowych. W przypadku publicznej komunikacji równorzędnej każdy obwód usługi ExpressRoute domyślnie używa dwóch adresów IP translatora adresów sieciowych stosowanych do ruchu w ramach usługi platformy Azure, gdy ruch trafia do sieci szkieletowej platformy Microsoft Azure. W przypadku komunikacji równorzędnej firmy Microsoft używane adresy IP translatora adresów sieciowych są dostarczane przez klienta lub przez dostawcę usług. Aby umożliwić dostęp do zasobów usługi, musisz zezwolić na te publiczne adresy IP w ustawieniu zapory adresu IP zasobu. Aby znaleźć adresy IP obwodów usługi ExpressRoute publicznej komunikacji równorzędnej, [otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure Portal. Dowiedz się więcej o [translatorze adresów sieciowych publicznej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft dla usługi ExpressRoute.](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
   
 Aby zezwalać na komunikację z obwodu do usługi Azure SQL Database, należy utworzyć reguł sieci IP dla publicznych adresów IP z translatorem adresów sieciowych.
 

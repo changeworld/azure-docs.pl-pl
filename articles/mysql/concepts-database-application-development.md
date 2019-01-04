@@ -1,51 +1,48 @@
 ---
-title: Omówienie tworzenia aplikacji bazy danych dla bazy danych Azure dla programu MySQL
-description: Wprowadza zagadnienia dotyczące projektowania, które dewelopera należy stosować podczas pisania kodu aplikacji do łączenia z bazą danych Azure dla programu MySQL
-services: mysql
+title: Omówienie tworzenia aplikacji bazy danych dla usługi Azure Database for MySQL
+description: Wprowadza zagadnienia dotyczące projektowania, które Deweloper należy wykonać podczas pisania kodu aplikacji do połączenia z usługą Azure Database for MySQL
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: b733468d41afacb616c95f0628e7bad6b0c837f0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 946f7011c51b7c6844e023d03e01e4c2043d2578
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264167"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544467"
 ---
-# <a name="application-development-overview-for-azure-database-for-mysql"></a>Omówienie tworzenia aplikacji dla bazy danych Azure dla programu MySQL 
-W tym artykule omówiono zagadnienia dotyczące projektowania, które dewelopera należy stosować podczas pisania kodu aplikacji do łączenia z bazą danych Azure dla programu MySQL. 
+# <a name="application-development-overview-for-azure-database-for-mysql"></a>Omówienie tworzenia aplikacji dla usługi Azure Database for MySQL 
+W tym artykule omówiono zagadnienia dotyczące projektowania, które Deweloper należy wykonać podczas pisania kodu aplikacji do połączenia z usługą Azure Database for MySQL. 
 
 > [!TIP]
-> Samouczek pokazuje, jak utworzyć serwer, utworzenie zapory na serwerze, wyświetlić właściwości serwera, Utwórz bazę danych i połączyć i zapytania przy użyciu narzędzia workbench i mysql.exe, zobacz [projektowania pierwszej bazy danych Azure, aby baza danych MySQL](tutorial-design-database-using-portal.md)
+> Aby uzyskać samouczek omawiający Tworzenie serwera, tworzenie zapory na serwerze, wyświetlanie właściwości serwera, Utwórz bazę danych i połączenie i wykonywać zapytania za pomocą aplikacji workbench i mysql.exe, zobacz [projektowanie pierwszej bazy danych Azure for MySQL database](tutorial-design-database-using-portal.md)
 
 ## <a name="language-and-platform"></a>Język i platforma
-Dostępne są przykłady kodu dla różnych języków programowania i platform programistycznych. Można znaleźć łącza do przykładów kodu w: [bibliotek łączności używane do łączenia z bazą danych Azure dla programu MySQL](concepts-connection-libraries.md)
+Dostępne są przykłady kodu dla różnych języków programowania i platform programistycznych. Linki do przykładów kodu można znaleźć tutaj: [Biblioteki łączności używane do połączenia z usługą Azure Database for MySQL](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Narzędzia
-Wersja ciągu identyfikacyjnego MySQL, zgodne z MySQL popularnych narzędzi do zarządzania takich jak narzędzia Workbench lub MySQL, takich jak mysql.exe, korzysta z bazy danych platformy Azure dla programu MySQL [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)i inne. Do interakcji z usługą baza danych, można użyć portalu Azure, interfejsu wiersza polecenia Azure i interfejsów API REST.
+Usługa Azure Database for MySQL korzysta z wersji community MySQL, zgodnej z programem MySQL popularnych narzędzi do zarządzania takich jak narzędzia Workbench i MySQL, takie jak mysql.exe, [narzędzia phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)i innym osobom. Można również użyć witryny Azure portal, interfejsu wiersza polecenia platformy Azure i interfejsów API REST do interakcji z usługą bazy danych.
 
 ## <a name="resource-limitations"></a>Ograniczenia zasobów
-Bazy danych platformy Azure dla programu MySQL zarządza zasoby dostępne na serwerze przy użyciu dwóch różnych mechanizmów: 
-- Zarządzanie zasobami.
-- Wymuszanie ograniczeń.
+Usługa Azure Database for MySQL — zarządza zasobami dostępnymi do serwera przy użyciu dwóch różnych mechanizmów: 
+- Nadzoru nad zasobami.
+- Wymuszanie limitów.
 
 ## <a name="security"></a>Bezpieczeństwo
-Bazy danych platformy Azure dla programu MySQL zawiera zasoby dotyczące dostępu ograniczające, ochrona danych Konfigurowanie użytkowników i ról i monitorowania działań na bazę danych MySQL.
+Usługa Azure Database for MySQL zapewnia zasoby ograniczanie dostępu, ochronę danych, ról i użytkowników konfigurowania i monitorowania działań w bazie danych MySQL.
 
 ## <a name="authentication"></a>Authentication
-Bazy danych platformy Azure dla programu MySQL obsługuje uwierzytelnianie serwera, użytkowników i nazwy logowania.
+Usługa Azure Database for MySQL obsługuje uwierzytelnianie serwera użytkownicy i logowania.
 
 ## <a name="resiliency"></a>Odporność
-Po wystąpieniu błędu przejściowego podczas nawiązywania połączenia z bazą danych MySQL, ponów wywołanie kodu. Zalecamy logiki ponawiania próby używania wycofania logiki tak, że nie przeciąży bazy danych SQL z wielu klientów jednocześnie ponowną próbą.
+Gdy wystąpi błąd przejściowy podczas nawiązywania połączenia z bazą danych MySQL, kod powinien ponowić wywołanie. Zalecamy Logika ponawiania używania wycofania logiki tak, że nie przeciąży bazy danych SQL za pomocą wielu klientów ponawiania korzystała.
 
-- Przykłady kodu: Logika ponawiania próby przykłady kodu, które ilustrują temacie Przykłady w języku wybranym w: [bibliotek łączności używane do łączenia z bazą danych Azure dla programu MySQL](concepts-connection-libraries.md)
+- Przykłady kodu: Aby uzyskać przykłady kodu ilustrujące logika ponowień, zobacz przykłady w języku wybranym na: [Biblioteki łączności używane do połączenia z usługą Azure Database for MySQL](concepts-connection-libraries.md)
 
 ## <a name="managing-connections"></a>Zarządzanie połączeniami
-Połączenia bazy danych są ograniczone zasobów, dlatego zalecamy użycie za pośrednictwem połączenia podczas uzyskiwania dostępu do bazy danych MySQL osiągnąć większą wydajność.
+Połączenia z bazą danych są ograniczone zasobu, tak więc zaleca się używania rozsądne połączeń podczas uzyskiwania dostępu do bazy danych MySQL osiągnąć większą wydajność.
 - Dostęp do bazy danych przy użyciu puli połączeń lub połączeń trwałych.
-- Dostęp do bazy danych przy użyciu krótkich połączenia życia. 
-- Logika ponawiania użycia w aplikacji w punkcie próba połączenia catch błędy wynikające z równoczesnych połączeń osiągnięto maksymalną dozwoloną. W Logika ponawiania ustawić krótkie opóźnienie i poczekaj losowy czas przed prób dodatkowego połączenia.
+- Dostęp do bazy danych przy użyciu żywotności krótki połączenia. 
+- Logiki ponawiania próby użycia aplikacji w momencie próby połączenia do przechwytywania błędów wynikających z połączeń współbieżnych osiągnięto maksymalną dozwoloną. W Logika ponawiania Ustaw krótkie opóźnienie i zaczekaj, aż do czasu losowego przed próbami dodatkowego połączenia.

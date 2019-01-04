@@ -3,17 +3,15 @@ title: Jak przywrócić serwer w usłudze Azure Database dla serwera MariaDB
 description: W tym artykule opisano sposób przywracania serwera w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 899f0bfa3075c92ac31e2b4f5fab9093a1dc6806
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999051"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548766"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal
 
@@ -66,10 +64,10 @@ Poniższa procedura opisuje przywrócenie przykładowego serwera do punktu w cza
 3. Wypełnij formularz Przywracanie wymaganymi informacjami:
 
    ![Azure Database dla serwera MariaDB — informacje o przywracania ](./media/howto-restore-server-portal/3-restore.png)
-  - **Punkt przywracania**: Wybierz punkt w czasie chcesz przywrócić.
+  - **Punkt przywracania**: Wybierz punkt w czasie, który chcesz przywrócić.
   - **Serwer docelowy**: Podaj nazwę dla nowego serwera.
-  - **Lokalizacja**: nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.
-  - **Warstwa cenowa**: nie można zmienić tych parametrów, podczas przywracania do punktu w czasie wykonywania. Jest taka sama jak w przypadku serwera źródłowego. 
+  - **Lokalizacja**: Nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.
+  - **Warstwa cenowa**: Nie można zmienić tych parametrów, podczas przywracania do punktu w czasie wykonywania. Jest taka sama jak w przypadku serwera źródłowego. 
 
 4. Kliknij przycisk **OK** Aby przywrócić serwer do przywracania do punktu w czasie. 
 
@@ -81,12 +79,12 @@ Poniższa procedura opisuje przywrócenie przykładowego serwera do punktu w cza
 ## <a name="geo-restore"></a>Przywracanie geograficzne
 Skonfigurowanie serwera na potrzeby geograficznie nadmiarowych kopii zapasowych można utworzyć nowy serwer z kopii zapasowej tego istniejącego serwera. Ten nowy serwer można utworzyć w dowolnym regionie, że usługi Azure Database dla serwera MariaDB jest dostępny.  
 
-1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu. Typ **— Azure Database dla serwera MariaDB** w polu wyszukiwania, aby znaleźć tę usługę.
+1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu. Wpisz frazę **Azure Database for MariaDB** w polu wyszukiwania, aby znaleźć tę usługę.
 
    ![Opcja "Azure bazy danych MariaDB"](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 
 2. W formularzu **wybierz źródło** listy rozwijanej wybierz **kopii zapasowej**. Ta akcja spowoduje załadowanie listę serwerów, które geograficznie nadmiarowy tworzenia kopii zapasowych jest włączone. Wybierz jeden z tych kopii zapasowych jako źródło dla nowego serwera.
-   ![Wybierz źródło: Kopia zapasowa i listy geograficznie nadmiarowych kopii zapasowych](./media/howto-restore-server-portal/2-georestore.png)
+   ![Wybierz źródło: Lista geograficznie nadmiarowych kopii zapasowych i kopii zapasowych](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
    > Gdy tworzona jest najpierw serwer nie może być natychmiast dostępne dla przywracania geograficznego. Może upłynąć kilka godzin metadane potrzebne do wypełnienia.

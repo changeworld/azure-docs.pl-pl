@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/05/2018
+ms.date: 12/24/2018
 ms.author: juliako
-ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011998"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789233"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Usługa Azure schematów usługi Event Grid na potrzeby zdarzeń usługi Media Services
 
@@ -28,7 +28,7 @@ Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zd
 
 ### <a name="job-related-event-types"></a>Zadania pokrewne typy zdarzeń
 
-Media Services emitowały **zadania** powiązane typy zdarzeń, które opisano poniżej. Istnieją dwie kategorie dla **zadania** zdarzenia związane z: "Monitorowanie zadania stanu zmiany" i "Monitorowania zadanie danych wyjściowych zmian". 
+Media Services emitowały **zadania** powiązane typy zdarzeń, które opisano poniżej. Istnieją dwie kategorie dla **zadania** zdarzenia dotyczące: "Zmienia się stan zadania monitorowania" i "Monitorowania stan dane wyjściowe zadania zmieni się". 
 
 Jeśli zasubskrybujesz zdarzenia JobStateChange można zarejestrować dla wszystkich zdarzeń. Lub może być subskrybowana tylko pod kątem określonych zdarzeń (na przykład końcowego stany JobErrored, JobFinished i JobCanceled). 
 
@@ -112,9 +112,9 @@ Obiekt danych ma następujące właściwości:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | previousState | ciąg | Stan zadania przed wystąpieniem zdarzenia. |
-| state | ciąg | Nowy stan zadania zgłoszonego w tym zdarzeniu. Na przykład "zaplanowane: zadanie jest gotowe do rozpoczęcia" lub "Zakończono: zadanie jest zakończone".|
+| state | ciąg | Nowy stan zadania zgłoszonego w tym zdarzeniu. Na przykład "zaplanowane: Zadanie jest gotowe do rozpoczęcia"lub" Zakończono: Zadanie jest zakończone".|
 
-Gdy stan zadania może być jedna z wartości: *kolejce*, *zaplanowane*, *przetwarzania*, *Zakończono*, *błąd*, *Anulowane*, *anulowanie*
+Gdy stan zadania może być jedna z wartości: *W kolejce*, *zaplanowane*, *przetwarzania*, *Zakończono*, *błąd*, *anulowane*, *Anulowanie*
 
 > [!NOTE]
 > *W kolejce* ma znajdować się w **previousState** właściwości, ale nie **stanu** właściwości.
@@ -134,7 +134,7 @@ Dla każdego-final zadania zmiany stanu (np. JobCanceling JobScheduled, JobProce
     "previousState": "Scheduled",
     "state": "Processing",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -168,7 +168,7 @@ Dla każdego końcowego zadania zmiany stanu (np. JobErrored JobFinished, JobCan
     "previousState": "Processing",
     "state": "Finished",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -205,7 +205,7 @@ W poniższym przykładzie przedstawiono schematu **JobOutputStateChange** zdarze
       "state": "Finished"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -236,7 +236,7 @@ Dla każdej zmiany stanu JobOutput schematu przykład wygląda podobnie do nast�
       "state": "Processing"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -258,13 +258,14 @@ W poniższym przykładzie przedstawiono schematu **LiveEventConnectionRejected**
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "b303db59-d5c1-47eb-927a-3650875fded1",
     "data": { 
-      "StreamId":"Mystream1",
-      "IngestUrl": "http://abc.ingest.isml",
-      "EncoderIp": "118.238.251.xxx",
-      "EncoderPort": 52859,
-      "ResultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
+      "streamId":"Mystream1",
+      "ingestUrl": "http://abc.ingest.isml",
+      "encoderIp": "118.238.251.xxx",
+      "encoderPort": 52859,
+      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -277,7 +278,7 @@ Obiekt danych ma następujące właściwości:
 | IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |  
 | EncoderIp | ciąg | Adres IP kodera. |
 | EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
-| ResultCode | ciąg | Przyczyna połączenie zostało odrzucone. Kody wyników są wymienione w poniższej tabeli. |
+| resultCode | ciąg | Przyczyna połączenie zostało odrzucone. Kody wyników są wymienione w poniższej tabeli. |
 
 Kody wyników są:
 
@@ -358,7 +359,7 @@ Obiekt danych ma następujące właściwości:
 | IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |  
 | EncoderIp | ciąg | Adres IP kodera. |
 | EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
-| ResultCode | ciąg | Przyczyna kodera odłączanie. Może to być łagodne rozłączenia lub z błędem. Kody wyników są wymienione w poniższej tabeli. |
+| resultCode | ciąg | Przyczyna kodera odłączanie. Może to być łagodne rozłączenia lub z błędem. Kody wyników są wymienione w poniższej tabeli. |
 
 Kody wyników błąd to:
 
@@ -394,14 +395,15 @@ W poniższym przykładzie przedstawiono schematu **LiveEventIncomingDataChunkDro
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "03da9c10-fde7-48e1-80d8-49936f2c3e7d",
     "data": { 
-      "TrackType": "Video",
-      "TrackName": "Video",
-      "Bitrate": 300000,
-      "Timestamp": 36656620000,
-      "Timescale": 10000000,
-      "ResultCode": "FragmentDrop_OverlapTimestamp"
+      "trackType": "Video",
+      "trackName": "Video",
+      "bitrate": 300000,
+      "timestamp": 36656620000,
+      "timescale": 10000000,
+      "resultCode": "FragmentDrop_OverlapTimestamp"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -413,9 +415,9 @@ Obiekt danych ma następujące właściwości:
 | TrackType | ciąg | Typ ścieżki (Audio / wideo). |
 | TrackName | ciąg | Nazwa ścieżki. |
 | Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
-| Znacznik czasu | ciąg | Sygnatura czasowa fragmentu danych porzucony. |
+| sygnatura czasowa | ciąg | Sygnatura czasowa fragmentu danych porzucony. |
 | Skala czasu | ciąg | Skala czasu znacznika czasu. |
-| ResultCode | ciąg | Powód listy fragmentów danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
+| resultCode | ciąg | Powód listy fragmentów danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -456,7 +458,7 @@ Obiekt danych ma następujące właściwości:
 | IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
 | EncoderIp | ciąg  | Adres IP kodera. |
 | EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
-| Znacznik czasu | ciąg | Pierwszy znacznik czasu fragmentu danych odebranych. |
+| sygnatura czasowa | ciąg | Pierwszy znacznik czasu fragmentu danych odebranych. |
 | Skala czasu | ciąg | Skala czasu, w którym jest reprezentowana sygnatury czasowej. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
@@ -509,13 +511,14 @@ W poniższym przykładzie przedstawiono schematu **LiveEventIncomingVideoStreams
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "6dd4d862-d442-40a0-b9f3-fc14bcf6d750",
     "data": {
-      "FirstTimestamp": "2162058216",
-      "FirstDuration": "2000",
-      "SecondTimestamp": "2162057216",
-      "SecondDuration": "2000",
+      "firstTimestamp": "2162058216",
+      "firstDuration": "2000",
+      "secondTimestamp": "2162057216",
+      "secondDuration": "2000",
       "timescale": "10000000"      
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -575,9 +578,9 @@ Obiekt danych ma następujące właściwości:
 | OverlapCount | liczba całkowita | Liczba fragmentów danych miały nakładających się sygnatur czasowych w ciągu ostatnich 20 sekund. |
 | DiscontinuityCount | liczba całkowita | Liczba przerw zaobserwowane w ciągu ostatnich 20 sekund. |
 | NonIncreasingCount | liczba całkowita | Liczba fragmentów danych z sygnaturami czasowymi w przeszłości zostały odebrane w ciągu ostatnich 20 sekund. |
-| UnexpectedBitrate | wartość logiczna | Jeśli szybkości transmisji z oczekiwanymi i rzeczywistymi różnią się przez więcej niż dozwolony limit w ciągu ostatnich 20 sekund. Wartość true, jeśli i tylko wtedy, gdy, IncomingBitrate jest > = 2 * szybkości transmisji bitów lub IncomingBitrate < = szybkości transmisji bitów/2 lub IncomingBitrate = 0. |
-| Stan | ciąg | Stan zdarzenia na żywo. |
-| W dobrej kondycji | wartość logiczna | Wskazuje, czy pozyskiwania jest w dobrej kondycji na podstawie liczby i flagi. Dobra kondycja ma wartość true Jeśli OverlapCount = 0 & & DiscontinuityCount = 0 & & NonIncreasingCount = 0 & & UnexpectedBitrate = false. |
+| UnexpectedBitrate | wartość logiczna | Jeśli szybkości transmisji z oczekiwanymi i rzeczywistymi różnią się przez więcej niż dozwolony limit w ciągu ostatnich 20 sekund. To wartość true, wtedy i tylko wtedy, gdy, incomingBitrate > = 2 * szybkości transmisji bitów lub incomingBitrate < = szybkości transmisji bitów/2 lub IncomingBitrate = 0. |
+| state | ciąg | Stan zdarzenia na żywo. |
+| w dobrej kondycji | wartość logiczna | Wskazuje, czy pozyskiwania jest w dobrej kondycji na podstawie liczby i flagi. Dobra kondycja ma wartość true Jeśli overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 

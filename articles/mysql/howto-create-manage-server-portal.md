@@ -1,116 +1,113 @@
 ---
-title: Tworzenie i zarządzanie Azure bazy danych dla serwera MySQL przy użyciu portalu Azure
-description: W tym artykule opisano, jak szybko utworzyć nową bazę danych Azure dla serwera MySQL i zarządzanie serwerem przy użyciu portalu Azure.
-services: mysql
+title: Tworzenie i zarządzanie nimi — Azure Database dla serwera MySQL przy użyciu witryny Azure portal
+description: W tym artykule opisano, jak możesz szybko utworzyć nowego serwera Azure Database for MySQL — do niego i zarządzać serwerem przy użyciu witryny Azure Portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265588"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537328"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Tworzenie i zarządzanie Azure bazy danych dla serwera MySQL przy użyciu portalu Azure
-W tym temacie opisano, jak szybko utworzyć nową bazę danych Azure dla serwera MySQL. Zawiera także informacje o sposobie zarządzania serwerem przy użyciu portalu Azure. Zarządzanie serwerem obejmuje, wyświetlanie szczegółów serwera i bazy danych, zresetuj hasło, skalowania zasobów i usuwanie serwera.
+# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla serwera MySQL przy użyciu witryny Azure portal
+W tym temacie opisano, jak szybko utworzyć nowego serwera Azure Database for MySQL. Zawiera także informacje o sposobie zarządzania serwerem za pomocą witryny Azure portal. Zarządzanie serwerem obejmuje wyświetlanie szczegółów dotyczących serwera i bazy danych, zresetowanie hasła, skalowanie zasobów i usunięcie serwera.
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Tworzenie serwera usługi Azure Database for MySQL
-Wykonaj następujące kroki, aby utworzyć bazę danych Azure MySQL serwera o nazwie "mydemoserver."
+Wykonaj następujące kroki, aby utworzyć serwer Azure Database for MySQL o nazwie "mydemoserver."
 
-1. Kliknij przycisk **Utwórz zasób** przycisk znajduje się w lewym górnym rogu portalu Azure.
+1. Kliknij przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure portal.
 
-2. Na nowej stronie, wybierz **baz danych**, a następnie na stronie baz danych, wybierz **bazy danych Azure dla programu MySQL**.
+2. Na nowej stronie wybierz **baz danych**, a następnie na stronie bazy danych, wybierz **— Azure Database for MySQL**.
 
-    > Baza danych Azure dla serwera MySQL jest tworzony z zdefiniowanego zestawu [obliczeniowej i pamięci masowej](./concepts-pricing-tiers.md) zasobów. Baza danych została utworzona w ramach grupy zasobów platformy Azure i w bazie danych Azure dla serwera MySQL.
+    > Serwer Azure Database for MySQL jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych i magazynowych](./concepts-pricing-tiers.md) zasobów. Baza danych jest tworzony w grupie zasobów platformy Azure i usługi Azure Database for MySQL server.
 
    ![create-new-server](./media/howto-create-manage-server-portal/create-new-server.png)
 
-3. Wypełnianie bazy danych Azure dla formularza MySQL, korzystając z następujących informacji:
+3. Wypełnij usługi Azure Database for MySQL formularza przy użyciu następujących informacji:
 
     | **Pole formularza** | **Opis pola** |
     |----------------|-----------------------|
     | *Nazwa serwera* | mydemoserver (nazwa serwera jest globalnie unikatowa) |
     | *Subskrypcja* | mysubscription (wybierz z menu rozwijanego) |
     | *Grupa zasobów* | myresourcegroup (Utwórz nową grupę zasobów lub użyć istniejącego) |
-    | *Wybierz źródło* | Puste (utworzyć pusty serwer MySQL) |
+    | *Wybierz źródło* | Puste (Utwórz pusty serwer MySQL) |
     | *Identyfikator logowania administratora serwera* | myadmin (skonfiguruj nazwę konta administratora) |
     | *Hasło* | Ustaw hasło konta administratora |
     | *Potwierdź hasło* | potwierdź hasło konta administratora |
-    | *Lokalizacja* | Południowo-Wschodnia, Azja (wybór między Europa Północna, Europa i zachodnie stany USA) |
-    | *Wersja* | 5.7 (Wybierz bazy danych Azure w wersji server MySQL) |
+    | *Lokalizacja* | Azja południowo-wschodnia (wybór między Europa Północna i zachodnie stany USA) |
+    | *Wersja* | (Wybierz — Azure Database dla MySQL server w wersji) w wersji 5.7 |
 
-4. Kliknij przycisk **warstwa cenowa** umożliwia określenie poziomu wydajności i warstwy usługi dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
+4. Kliknij przycisk **warstwa cenowa** do określenia usługi warstwy i poziomu wydajności dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
 
-   ![Utwórz server--warstwy cenowej](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+   ![Tworzenie — serwer warstwy cenowej](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
 5. Kliknij przycisk **Utwórz**, aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
 
-    > Wybierz **Przypnij do pulpitu nawigacyjnego** opcję, aby umożliwić łatwe monitorowanie wdrożeń.
+    > Wybierz **Przypnij do pulpitu nawigacyjnego** opcję, aby łatwo śledzić wdrożenia.
 
-## <a name="update-an-azure-database-for-mysql-server"></a>Aktualizacja bazy danych Azure dla serwera MySQL
-Po zainicjowano nowy serwer, użytkownik ma kilka sposobów konfigurowania istniejącego serwera, w tym zresetowanie hasła administratora i skalowanie w górę lub w dół serwera, zmieniając vCore lub pamięci masowej.
+## <a name="update-an-azure-database-for-mysql-server"></a>Aktualizacja usługi Azure Database dla serwera MySQL
+Po zainicjowaniu obsługi nowego serwera użytkownik ma kilka opcji dotyczących konfigurowania istniejącego serwera, w tym zresetowanie hasła administratora i skalowanie serwera w górę lub w dół, zmieniając (rdzeń wirtualny) lub magazyn.
 
-### <a name="change-the-administrator-user-password"></a>Zmień hasło użytkownika administratora
-1. Z serwera **omówienie**, kliknij przycisk **resetowania hasła** do wyświetlenia okna resetowania hasła.
+### <a name="change-the-administrator-user-password"></a>Zmiana hasła użytkownika administratora
+1. Z serwera **Przegląd**, kliknij przycisk **Resetuj hasło** do wyświetlenia okna resetowania hasła.
 
    ![overview](./media/howto-create-manage-server-portal/overview.png)
 
 2. Wprowadź nowe hasło i Potwierdź hasło w oknie, jak pokazano:
 
-   ![Zresetuj hasło](./media/howto-create-manage-server-portal/reset-password.png)
+   ![Resetowanie hasła](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kliknij przycisk **OK** można zapisać nowego hasła.
 
-### <a name="scale-vcores-updown"></a>VCores skalowania w górę lub w dół
+### <a name="scale-vcores-updown"></a>Rdzenie wirtualne skalowanie w górę/w dół
 
-1. Polecenie **warstwa cenowa**, który znajduje się w obszarze **ustawienia**.
+1. Kliknij pozycję **warstwa cenowa**, który znajduje się w obszarze **ustawienia**.
 
-2. Zmień **vCore** ustawienie za pomocą suwaka na żądaną wartość.
+2. Zmiana **vCore** ustawienie przesuwając suwak na żądaną wartość.
 
-    ![Skala obliczeń](./media/howto-create-manage-server-portal/scale-compute.png)
-
-3. Kliknij przycisk **OK**, aby zapisać zmiany.
-
-### <a name="scale-storage-up"></a>Magazynu skalowania w górę
-
-1. Polecenie **warstwa cenowa**, który znajduje się w obszarze **ustawienia**.
-
-2. Zmień **magazynu** ustawienie za pomocą suwaka na żądaną wartość.
-
-    ![magazynu w skali](./media/howto-create-manage-server-portal/scale-storage.png)
+    ![Skalowanie zasobów obliczeniowych](./media/howto-create-manage-server-portal/scale-compute.png)
 
 3. Kliknij przycisk **OK**, aby zapisać zmiany.
 
-## <a name="delete-an-azure-database-for-mysql-server"></a>Usuwanie bazy danych Azure dla serwera MySQL
+### <a name="scale-storage-up"></a>Skalowanie magazynu w górę
 
-1. Z serwera **omówienie**, kliknij przycisk **usunąć** przycisk, aby otworzyć monit o potwierdzenie usunięcia.
+1. Kliknij pozycję **warstwa cenowa**, który znajduje się w obszarze **ustawienia**.
 
-    ![usuwanie](./media/howto-create-manage-server-portal/delete.png)
+2. Zmiana **magazynu** ustawienie przesuwając suwak na żądaną wartość.
 
-2. Wpisz nazwę serwera w polu wejściowy o potwierdzenie dwa razy.
+    ![Skalowanie magazynu](./media/howto-create-manage-server-portal/scale-storage.png)
+
+3. Kliknij przycisk **OK**, aby zapisać zmiany.
+
+## <a name="delete-an-azure-database-for-mysql-server"></a>Usuwanie serwera Azure Database for MySQL
+
+1. Z serwera **Przegląd**, kliknij przycisk **Usuń** przycisk, aby otworzyć monit o potwierdzenie usunięcia.
+
+    ![delete](./media/howto-create-manage-server-portal/delete.png)
+
+2. Wpisz nazwę serwera w polu wejściowym o potwierdzenie double.
 
     ![confirm-delete](./media/howto-create-manage-server-portal/confirm.png)
 
-3. Kliknij przycisk **usunąć** przycisk, aby potwierdzić usunięcie serwera. Poczekaj do pop "pomyślnie usunięto server MySQL" są wyświetlane na pasku powiadomień.
+3. Kliknij przycisk **Usuń** przycisk, aby potwierdzić usunięcie serwera. Poczekaj do pop "pomyślnie usunięto serwer MySQL" są wyświetlane na pasku powiadomień.
 
-## <a name="list-the-azure-database-for-mysql-databases"></a>Lista Azure bazy danych dla baz danych MySQL
-Z serwera **omówienie**, przewiń w dół, aż zostanie wyświetlony Kafelek w dolnej części bazy danych. Wszystkie bazy danych na serwerze są wyświetlane w tabeli.
+## <a name="list-the-azure-database-for-mysql-databases"></a>Lista usługi Azure Database for MySQL — bazy danych
+Z serwera **Przegląd**, przewiń w dół, aż zobaczysz Kafelek w dolnej części bazy danych. Wszystkie bazy danych na serwerze są wyświetlane w tabeli.
 
-   ![Pokaż-baz danych](./media/howto-create-manage-server-portal/show-databases.png)
+   ![bazy danych show](./media/howto-create-manage-server-portal/show-databases.png)
 
-## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Pokaż szczegóły bazy danych MySQL serwera Azure
-Polecenie **właściwości**, który znajduje się w obszarze **ustawienia** Aby wyświetlić szczegółowe informacje o serwerze.
+## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Pokaż szczegóły serwera Azure Database for MySQL
+Kliknij pozycję **właściwości**, który znajduje się w obszarze **ustawienia** Aby wyświetlić szczegółowe informacje o serwerze.
 
 ![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Szybki Start: Tworzenie bazy danych platformy Azure dla serwera MySQL przy użyciu portalu Azure](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Szybki start: Tworzenie usługi Azure Database dla serwera MySQL przy użyciu witryny Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)

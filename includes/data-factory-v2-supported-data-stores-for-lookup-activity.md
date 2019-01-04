@@ -5,21 +5,24 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 11/28/2018
+ms.date: 12/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 50180a89633dc40fc1bf3850e0297b39cd41507d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 30f62a25388004a92026ab2ccae15c5941bfa222
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52643445"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53814488"
 ---
 | Kategoria | Magazyn danych |
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |
-| &nbsp; |[Azure Cosmos DB](../articles/data-factory/connector-azure-cosmos-db.md) |
+| &nbsp; |[Azure Cosmos DB (interfejs API SQL)](../articles/data-factory/connector-azure-cosmos-db.md) |
+| &nbsp; |[Azure Cosmos DB (interfejs API usługi MongoDB)](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |
 | &nbsp; |[Usługa Azure Data Lake Storage 1. generacji](../articles/data-factory/connector-azure-data-lake-store.md) |
+| &nbsp; |[Usługa Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
+| &nbsp; |[Azure Database dla serwera MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Usługa pliki Azure](../articles/data-factory/connector-azure-file-storage.md) |
@@ -57,11 +60,13 @@ ms.locfileid: "52643445"
 | **Plik** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[System plików](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
+| &nbsp; |[Usługa Google Cloud Storage](../articles/data-factory/connector-amazon-simple-storage-service.md#copy-from-google-cloud-storage) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |
 | **Protokół ogólny** |[Ogólne HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[Ogólne OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[Ogólne ODBC](../articles/data-factory/connector-odbc.md) |
+| &nbsp; |[Ogólny REST](../articles/data-factory/connector-rest.md) |
 | **Usługi i aplikacje** |[Amazon Marketplace Web Service (wersja zapoznawcza)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
 | &nbsp; |[Concur (wersja zapoznawcza)](../articles/data-factory/connector-concur.md) |

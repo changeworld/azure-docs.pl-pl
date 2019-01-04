@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408888"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971311"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -39,7 +39,7 @@ Odpowiedzi na często zadawane pytania dotyczące korzystania z niestandardowej 
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Jak kupić domenę niestandardową na aplikację sieci web?
 
-Aby dowiedzieć się, jak kupić i konfigurowanie domeny niestandardowej aplikacji sieci web usługi App Service, zobacz [kupowanie i konfigurowanie niestandardowej nazwy domeny w usłudze App Service](custom-dns-web-site-buydomains-web-app.md).
+Aby dowiedzieć się, jak kupić i konfigurowanie domeny niestandardowej aplikacji sieci web usługi App Service, zobacz [kupowanie i konfigurowanie niestandardowej nazwy domeny w usłudze App Service](manage-custom-dns-buy-domain.md).
 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Jak przekazać i skonfigurować istniejącego certyfikatu SSL dla aplikacji sieci web?
@@ -72,9 +72,11 @@ Aby ustawić strefa czasowa serwera dla aplikacji sieci web:
     * Wartość = *ma strefę czasową*
 3. Wybierz pozycję **Zapisz**.
 
+Zobacz **strefa czasowa** kolumny w [domyślne stref czasowych](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) artykuł, aby akceptowane wartości.
+
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Dlaczego moja ciągłych zadań Webjob czasami awarii?
 
-Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynne na pewien okres czasu. Dzięki temu system zaoszczędzenia zasobów. W planach Basic i Standard, możesz włączyć **Always On** ustawienie na utrzymanie aplikacji sieci web załadowana przez cały czas. Jeśli aplikacja sieci web działa ciągłych zadań Webjob, należy włączyć **Always On**, lub zadania Webjob może nie działać niezawodnie. Aby uzyskać więcej informacji, zobacz [tworzenie stale działające zadanie WebJob](web-sites-create-web-jobs.md#CreateContinuous).
+Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynne na pewien okres czasu. Dzięki temu system zaoszczędzenia zasobów. W planach Basic i Standard, możesz włączyć **Always On** ustawienie na utrzymanie aplikacji sieci web załadowana przez cały czas. Jeśli aplikacja sieci web działa ciągłych zadań Webjob, należy włączyć **Always On**, lub zadania Webjob może nie działać niezawodnie. Aby uzyskać więcej informacji, zobacz [tworzenie stale działające zadanie WebJob](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Jak uzyskać adres IP ruchu wychodzącego dla mojej aplikacji sieci web?
 
@@ -124,7 +126,7 @@ Aby uzyskać więcej informacji, zobacz [zgodności aplikacji sieci web Microsof
 
 W planach Standard i Premium usługi App Service podczas wdrażania aplikacji sieci web usługi App Service można wdrożyć na gniazdo wdrażane pojedynczo, zamiast do miejsca produkcji domyślne. Miejsca wdrożenia to aplikacji internetowych na żywo, które mają własne nazwy hosta. Elementy zawartości i konfiguracji aplikacji sieci Web można wymieniać między 2 miejscami wdrożenia, w tym także miejscem produkcyjnym.
 
-Aby uzyskać więcej informacji na temat używania miejsc wdrożenia, zobacz [skonfigurować środowisko przejściowe w usłudze App Service](web-sites-staged-publishing.md).
+Aby uzyskać więcej informacji na temat używania miejsc wdrożenia, zobacz [skonfigurować środowisko przejściowe w usłudze App Service](deploy-staging-slots.md).
 
 ## <a name="how-do-i-access-and-review-webjob-logs"></a>Jak uzyskać dostęp i przejrzyj dzienniki WebJob?
 
@@ -248,7 +250,7 @@ Zaplanowane zadania WebJob można utworzyć za pomocą wyrażeń Cron:
     {month} {day of the week}" }
     ```
 
-Aby uzyskać więcej informacji na temat zaplanowane zadania Webjob, zobacz [tworzenie zaplanowanego zadania WebJob przy użyciu wyrażenia Cron](web-sites-create-web-jobs.md#CreateScheduledCRON).
+Aby uzyskać więcej informacji na temat zaplanowane zadania Webjob, zobacz [tworzenie zaplanowanego zadania WebJob przy użyciu wyrażenia Cron](webjobs-create.md#CreateScheduledCRON).
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak wykonać testy penetracyjne dla mojej aplikacji usługi App Service?
 

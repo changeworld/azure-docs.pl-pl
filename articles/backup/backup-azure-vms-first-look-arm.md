@@ -1,24 +1,21 @@
 ---
-title: 'Pierwsze spojrzenie: ochrona maszyn wirtualnych platformy Azure przy użyciu magazynu usługi Recovery Services'
-description: Ochrona maszyn wirtualnych platformy Azure przy użyciu magazynu usługi Recovery Services. Tworzenie kopii zapasowych maszyn wirtualnych wdrożonych przez usługę Resource Manager, maszyn wirtualnych wdrożonych klasycznie i maszyn wirtualnych usługi Premium Storage, szyfrowanych maszyn wirtualnych oraz maszyn wirtualnych na dyskach zarządzanych pozwala na ochronę danych. Utwórz i zarejestruj magazyn usługi Recovery Services. Rejestruj maszyny wirtualne, twórz zasady i chroń maszyny wirtualne na platformie Azure.
+title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup
+description: Dowiedz się, jak utworzyć kopię zapasową maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/17/2018
 ms.author: raynew
-ms.custom: H1Hack27Feb2017
-keywords: kopie zapasowe Kopia zapasowa maszyny wirtualnej
-ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869932"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631587"
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
+# <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup
 
 W tym artykule opisano sposób konfigurowania ochrony dla maszyny wirtualnej z menu Operacje maszyn wirtualnych lub magazynu usługi Recovery Services. Magazyny Usług odzyskiwania chronią:
 
@@ -32,7 +29,7 @@ W tym artykule opisano sposób konfigurowania ochrony dla maszyny wirtualnej z m
 
 Dodatkowe informacje na temat ochrony maszyn wirtualnych usługi Premium Storage można znaleźć w artykule [Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych usługi Premium Storage](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Dodatkowe informacje na temat obsługi maszyn wirtualnych dysku zarządzanego można znaleźć w sekcji [Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych na dyskach zarządzanych](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). Aby uzyskać więcej informacji dotyczących platformy skryptów wykonywanych przed utworzeniem i po utworzeniu kopii zapasowej maszyny wirtualnej z systemem Linux, zobacz [Application consistent Linux VM backup using pre-script and post-script (Spójna na poziomie aplikacji kopia zapasowa maszyn wirtualnych z systemem Linux wykonywana przy użyciu skryptów uruchamianych przed utworzeniem i po utworzeniu kopii zapasowej)](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
-Aby dowiedzieć się więcej o tym, co można, a czego nie można utworzyć kopię zapasową, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
+Aby dowiedzieć się więcej o tym, co można, a czego nie można utworzyć kopię zapasową, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#before-you-start).
 
 > [!NOTE]
 > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów.
@@ -337,7 +334,9 @@ Usługa Backup instaluje rozszerzenie kopii zapasowej, nawet jeśli maszyna wirt
 W przypadku wystąpienia problemów z wykonaniem którychkolwiek zadań z tego artykułu zapoznaj się z tematem [Troubleshooting guidance](backup-azure-vms-troubleshoot.md) (Wskazówki dotyczące rozwiązywania problemów).
 
 ## <a name="pricing"></a>Cennik
-Koszt wykonywania kopii zapasowych maszyn wirtualnych platformy Azure jest określany na podstawie liczby chronionych wystąpień. Definicję chronionego wystąpienia można znaleźć w części [Co to jest chronione wystąpienie](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Przykład obliczania kosztu wykonania kopii zapasowej maszyny wirtualnej można znaleźć w części [How are protected instances calculated](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances) (Sposób przeprowadzania obliczeń dotyczących chronionych wystąpień). Informacje na temat [cennika usługi Backup](https://azure.microsoft.com/pricing/details/backup/) można znaleźć na stronie cennika usługi Azure Backup.
+Koszt wykonywania kopii zapasowych maszyn wirtualnych platformy Azure jest określany na podstawie liczby chronionych wystąpień. Definicję chronionego wystąpienia można znaleźć w części [Co to jest chronione wystąpienie](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Informacje na temat [cennika usługi Backup](https://azure.microsoft.com/pricing/details/backup/) można znaleźć na stronie cennika usługi Azure Backup.
 
-## <a name="questions"></a>Pytania?
-Jeśli masz pytania lub jeśli brakuje Ci jakiejś funkcji, [prześlij nam opinię](https://aka.ms/azurebackup_feedback).
+## <a name="next-steps"></a>Kolejne kroki
+
+[Zarządzanie](backup-azure-manage-vms.md) kopii zapasowych.
+

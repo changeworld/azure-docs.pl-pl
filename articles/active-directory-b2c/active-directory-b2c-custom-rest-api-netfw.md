@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e3d938c4464fc5141b97f85220bf096920e17d00
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339597"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557295"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika
 
@@ -26,19 +26,19 @@ Za pomocą platformy środowiska tożsamości, która podporządkowana narzędzi
 ## <a name="introduction"></a>Wprowadzenie
 Za pomocą usługi Azure AD B2C, możesz dodać własną logiką biznesową podróży użytkownika, wywołując usługi RESTful. Struktura środowiska tożsamości wysyła dane do usługi RESTful w *wejściowych roszczenia* kolekcji i odbiera dane z kopii zgodne ze specyfikacją REST w *danych wyjściowych oświadczeń* kolekcji. Dzięki integracji z usługą RESTful można wykonywać następujące czynności:
 
-* **Sprawdza poprawność danych wejściowych użytkownika**: Ta akcja uniemożliwia źle sformułowane danych do utrwalania w usłudze Azure AD. Jeśli wartość przez użytkownika nie jest prawidłowy, usługi RESTful zwraca komunikat o błędzie z monitem użytkownika o podanie wpis. Na przykład można sprawdzić, czy adres e-mail, dostarczone przez użytkownika istnieje w bazie danych klienta.
-* **Zastąp oświadczeń wejściowych**: na przykład, jeśli użytkownik wprowadzi imię tylko małe litery lub w całości wielkimi literami, możesz sformatować nazwy tylko pierwszą literą wielką literą.
-* **Wzbogacanie danych użytkownika dalsze integrowanie z aplikacji firmowych line-of-business**: usługi RESTful usługi może odbierać adres e-mail użytkownika, wykonywania zapytań klienta w bazie danych i zwracać numer lojalności użytkownika do usługi Azure AD B2C. Zwracany oświadczenia mogą być przechowywane w usłudze Azure AD konta, ocenione w ciągu następnych *kroki aranżacji*, lub zawartych w tokenie dostępu.
-* **Uruchom niestandardową logikę biznesową**: możesz można wysyłać powiadomienia wypychane, aktualizacji baz danych firmowych, uruchamiany jest proces migracji użytkowników, zarządzanie uprawnieniami, inspekcji bazy danych i wykonywania innych akcji.
+* **Sprawdza poprawność danych wejściowych użytkownika**: Ta akcja uniemożliwia źle sformułowane danych utrwalania w usłudze Azure AD. Jeśli wartość przez użytkownika nie jest prawidłowy, usługi RESTful zwraca komunikat o błędzie z monitem użytkownika o podanie wpis. Na przykład można sprawdzić, czy adres e-mail, dostarczone przez użytkownika istnieje w bazie danych klienta.
+* **Zastąp oświadczeń wejściowych**: Na przykład jeśli użytkownik wprowadzi nazwę pierwszego wszystkie małe lub wielkie litery, możesz sformatować nazwy tylko pierwszą literą wielką literą.
+* **Wzbogacanie danych użytkownika dalsze integrowanie z aplikacji firmowych line-of-business**: Usługi RESTful może odbierać adres e-mail użytkownika, wykonywania zapytań klienta w bazie danych i zwracać numer lojalności użytkownika do usługi Azure AD B2C. Zwracany oświadczenia mogą być przechowywane w usłudze Azure AD konta, ocenione w ciągu następnych *kroki aranżacji*, lub zawartych w tokenie dostępu.
+* **Uruchom niestandardową logikę biznesową**: Można wysyłać powiadomienia wypychane, aktualizacji baz danych firmowych, uruchamiany jest proces migracji użytkowników, zarządzanie uprawnieniami, inspekcji bazy danych i wykonywania innych akcji.
 
 Integracja z usług RESTful można zaprojektować w następujący sposób:
 
-* **Profil techniczny weryfikacji**: wywołanie usługi RESTful się dzieje w ramach profilu technicznego sprawdzania poprawności określonego profilu technicznego. Profil techniczny weryfikacji sprawdza poprawność danych wprowadzonych przez użytkownika przed podróży użytkownika przenosi do przodu. Z profilu technicznego weryfikacji możesz wykonywać następujące czynności:
+* **Profil techniczny weryfikacji**: Wywołanie usługi RESTful odbywa się w ramach profilu technicznego sprawdzania poprawności określonego profilu technicznego. Profil techniczny weryfikacji sprawdza poprawność danych wprowadzonych przez użytkownika przed podróży użytkownika przenosi do przodu. Z profilu technicznego weryfikacji możesz wykonywać następujące czynności:
    * Wysyłać oświadczenia wejściowego.
    * Sprawdzanie poprawności danych wejściowych oświadczeń i zgłosić niestandardowe komunikaty o błędach.
    * Wysyłać oświadczenia wstecz danych wyjściowych.
 
-* **Wymiana oświadczeń**: ten projekt jest podobny do profilu technicznego sprawdzania poprawności, ale się stanie, w ramach kroku aranżacji. Ta definicja jest ograniczone do:
+* **Wymiana oświadczeń**: Ten projekt jest podobny do profilu technicznego sprawdzania poprawności, ale się stanie, w ramach kroku aranżacji. Ta definicja jest ograniczone do:
    * Wysyłać oświadczenia wejściowego.
    * Wysyłać oświadczenia wstecz danych wyjściowych.
 
@@ -226,7 +226,7 @@ W interfejsie web API _kontrolera_ jest obiektem, który obsługuje żądania HT
 
 6. Skopiuj adres URL aplikacji sieci web.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Dodanie nowego `loyaltyNumber` oświadczenie do schematu pliku TrustFrameworkExtensions.xml
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Dodaj nowy `loyaltyNumber` oświadczenie do schematu pliku TrustFrameworkExtensions.xml
 `loyaltyNumber` Oświadczenia nie został jeszcze zdefiniowany w naszym schematu. Dodaj definicję w ramach `<BuildingBlocks>` element, który znajduje się na początku *TrustFrameworkExtensions.xml* pliku.
 
 ```xml
@@ -241,63 +241,63 @@ W interfejsie web API _kontrolera_ jest obiektem, który obsługuje żądania HT
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>Krok 5: Dodawanie dostawcy oświadczeń 
+## <a name="step-5-add-a-claims-provider"></a>Krok 5. Dodawanie dostawcy oświadczeń 
 Każdego dostawcy oświadczeń musi mieć co najmniej jeden profil technicznych, które określają punktów końcowych i protokoły wymagane do komunikowania się z dostawcą oświadczeń. 
 
 Dostawcy oświadczeń może mieć wiele profilów technicznych z różnych powodów. Na przykład wiele profilów Technical Preview może być zdefiniowana, ponieważ dostawcy oświadczeń obsługuje wiele protokołów, punkty końcowe mogą mieć różne możliwości lub wersji mogą zawierać oświadczenia, które mają różne poziomy gwarancji. Może być akceptowane oświadczenia poufnych w podróży jednego użytkownika, ale nie w innej wersji. 
 
 Poniższy fragment kodu XML zawiera węzeł dostawcy oświadczeń, dwa profile techniczne:
 
-* **Identyfikator profilu technicznego = "REST-API-SignUp"**: definiuje usługi RESTful. 
+* **Identyfikator profilu technicznego = "REST-API-SignUp"**: Definiuje usługi RESTful. 
    * `Proprietary` jest określana jako protokół dla dostawcy usług na podstawie zgodne ze specyfikacją REST. 
    * `InputClaims` Definiuje oświadczenia, które będą wysyłane z usługi Azure AD B2C do usługi REST. 
 
    W tym przykładzie zawartość oświadczenie `givenName` wysyła do usługi REST jako `firstName`, zawartość oświadczenie `surname` wysyła do usługi REST jako `lastName`, i `email` wysyła się. `OutputClaims` Element definiuje oświadczenia, które są pobierane z usługi RESTful, wróć do usługi Azure AD B2C.
 
-* **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"**: dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika. 
+* **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"**: Dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika. 
 
 Znajdź `<ClaimsProviders>` węzła, a następnie dodaj następujący fragment kodu XML w obszarze `<ClaimsProviders>` węzła:
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
     
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
-        <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
-        <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-        <Metadata>
+      <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
         <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
-        </Metadata>
-        <InputClaims>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" />
         <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
         <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
-        </InputClaims>
-        <OutputClaims>
+      </InputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
 
-<!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
+    <!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-        <OutputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <ValidationTechnicalProfiles>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
         <ValidationTechnicalProfile ReferenceId="REST-API-SignUp" />
-        </ValidationTechnicalProfiles>
+      </ValidationTechnicalProfiles>
     </TechnicalProfile>
-
-    </TechnicalProfiles>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6. Dodawanie `loyaltyNumber` oświadczenia do jednostki uzależnionej strona pliku zasad, więc oświadczenia są wysyłane do aplikacji
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6: Dodaj `loyaltyNumber` oświadczenia do jednostki uzależnionej strona pliku zasad, więc oświadczenia są wysyłane do aplikacji
 Edytuj swoje *SignUpOrSignIn.xml* jednostki zależnej (RP) plik, a następnie zmodyfikuj identyfikator profilu technicznego = elementu "PolicyProfile" Dodaj następujący kod: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
 Po dodaniu nowego oświadczenia, jednostki uzależnionej strona kod wygląda następująco:
@@ -323,7 +323,7 @@ Po dodaniu nowego oświadczenia, jednostki uzależnionej strona kod wygląda nas
 </TrustFrameworkPolicy>
 ```
 
-## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: Przekaż zasady dla Twojej dzierżawy
+## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: Przekazywanie zasad dla Twojej dzierżawy
 
 1. W [witryny Azure portal](https://portal.azure.com), przełącz się do [kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md), a następnie otwórz **usługi Azure AD B2C**.
 

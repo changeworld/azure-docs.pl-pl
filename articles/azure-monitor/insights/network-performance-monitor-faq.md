@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166612"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543992"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -70,6 +70,9 @@ Skrypt konfiguruje tylko Windows zapory lokalnie. Jeśli masz Zapora sieciowa lu
 
 ### <a name="how-many-agents-should-i-use"></a>Ile agentów należy używać?
 Dla każdej podsieci, które mają być monitorowane, należy użyć co najmniej jednego agenta.
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Co to jest maksymalna liczba agentów można używać, lub czy mogę zobaczyć błąd "... osiągnięto limit konfiguracji"?
+NPM ogranicza liczbę adresów IP adresy IP 5000 danego obszaru roboczego. Jeśli węzeł ma adresy IPv4 i IPv6, to będzie liczone jako 2 adresy IP, dla tego węzła. W związku z tym ten limit 5000 adresy IP zdecyduje, górny limit liczby agentów. Nieaktywnych agentów można usunąć z węzłów karcie NPM >> Konfiguruj. NPM udostępnia również historię wszystkie adresy IP, który nigdy nie zostały przypisane do maszyny Wirtualnej hostującym agenta oraz one również są liczone jako osobne adresy IP współtworzenie tego górny limit 5000 adresów IP. Do Zwolnij adresy IP dla Twojego obszaru roboczego służy strona węzły można usunąć adresy IP, które nie są używane.
 
 ## <a name="monitoring"></a>Monitorowanie
 

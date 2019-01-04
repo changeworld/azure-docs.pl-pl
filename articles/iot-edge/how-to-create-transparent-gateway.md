@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094359"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556224"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -41,7 +41,7 @@ W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Komputerze deweloperskim lub maszyna wirtualna służy jako urządzenia usługi IoT Edge wykonując kroki dla następujących systemów operacyjnych:
-* [Windows](./how-to-install-iot-edge-windows-with-windows.md)
+* [Windows](./how-to-install-iot-edge-windows.md)
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [ARM32 systemu Linux](./how-to-install-iot-edge-linux-arm.md)
 
@@ -62,7 +62,7 @@ Zainstaluj biblioteki OpenSSL dla Windows na komputerze, którego używasz w cel
 
 * **Łatwiejsze:** Pobierz i zainstaluj dowolne [plików binarnych biblioteki OpenSSL firm](https://wiki.openssl.org/index.php/Binaries), na przykład z [tego projektu na SourceForge](https://sourceforge.net/projects/openssl/). Dodanie pełnej ścieżki do openssl.exe do zmiennej środowiskowej PATH. 
    
-* **Zalecane:** pobrać kod źródłowy biblioteki OpenSSL i kompilowania plików binarnych na komputerze, samodzielnie lub za pośrednictwem [vcpkg](https://github.com/Microsoft/vcpkg). Zgodnie z instrukcjami podanymi poniżej umożliwia vcpkg pobierania kodu źródłowego, kompilacji i zainstaluj OpenSSL na komputerze Windows za pomocą prostych krokach.
+* **Zalecane:** Pobierz kod źródłowy biblioteki OpenSSL i kompilowania plików binarnych na komputerze, samodzielnie lub za pośrednictwem [vcpkg](https://github.com/Microsoft/vcpkg). Zgodnie z instrukcjami podanymi poniżej umożliwia vcpkg pobierania kodu źródłowego, kompilacji i zainstaluj OpenSSL na komputerze Windows za pomocą prostych krokach.
 
    1. Przejdź do katalogu, w którym chcesz zainstalować vcpkg. Będziemy odnosić się do tego katalogu jako  *\<VCPKGDIR >*. Postępuj zgodnie z instrukcjami, aby pobrać i zainstalować [vcpkg](https://github.com/Microsoft/vcpkg).
    

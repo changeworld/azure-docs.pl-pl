@@ -1,7 +1,7 @@
 ---
-title: 'Potoki: Optymalizacja uczenia Maszynowego szybkości, przenoszenia i ponowne użycie'
+title: 'Potoki: Optymalizowanie machine learning w przepływach pracy'
 titleSuffix: Azure Machine Learning service
-description: Ten artykuł zawiera informacje na temat potoków, które można tworzyć z zestawem Azure Machine Learning SDK dla języka Python i zalety korzystania z potoków uczenia maszynowego. Machine learning (ML) potoki są używane przez analityków danych kompilacji, optymalizowanie i zarządzanie ich usługi machine learning przepływów pracy.
+description: Ten artykuł zawiera informacje na temat potoków, które można tworzyć z zestawem Azure Machine Learning SDK dla języka Python i zalety korzystania z potoków uczenia maszynowego. Naukowcy pracujący z danymi używają potoków uczenia maszynowego, aby tworzyć i optymalizować przepływy pracy uczenia maszynowego oraz zarządzać nimi.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e2874c4a40a2347fd47e93c99fdec7ff5e81aec1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e8532e9821501c7b10fbb47c531228e439a8b289
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308213"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556887"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Tworzenie potoków uczenia maszynowego przy użyciu usługi Azure Machine Learning
 
@@ -54,7 +54,7 @@ Kluczowe zalety tworzenie potoków przepływów pracy uczenia maszynowego są na
 
 |Kluczową zaletą|Opis|
 |:-------:|-----------|
-|**Nienadzorowane&nbsp;działa**|Należy zaplanować kilka kroków, aby uruchomić równolegle lub w kolejności, w sposób niezawodny i instalacji nienadzorowanej. Ponieważ przygotowywanie danych i modelowanie ostatnich dni lub tygodni znajduje się po uruchomieniu potok teraz mogą skupić się na inne zadania. |
+|**Nienadzorowane&nbsp;działa**|Zaplanuj kilka kroków w celu uruchomiania równoległego lub sekwencyjnego w sposób niezawodny i nienadzorowany. Ponieważ przygotowywanie danych i modelowanie ostatnich dni lub tygodni znajduje się po uruchomieniu potok teraz mogą skupić się na inne zadania. |
 |**Mieszane i różnych obliczeń**|Użyj wielu potoki, które niezawodnie są koordynowane między heterogenicznych i skalowalnych obliczeń i magazynów. Potok poszczególne kroki można uruchamiać na różnych obliczeniowych elementów docelowych, takich jak HDInsight, maszyny wirtualne do nauki o danych procesora GPU i usługi Databricks. Umożliwia to efektywne wykorzystanie Opcje obliczeniowe dostępne.|
 |**Możliwość ponownego wykorzystania**|Można templatize potoki pod kątem konkretnych scenariuszy, takich jak ponownego szkolenia i oceniania partii. Wyzwalanie je z systemami zewnętrznymi za pomocą prostego wywołania REST.|
 |**Śledzenie i przechowywania wersji**|Zamiast ręcznie śledzenia danych i wynik ścieżek iteracji, użyć potoki SDK jawnie nazwę i wersję danych źródła danych wejściowych i danych wyjściowych. Można również zarządzać, skrypty i dane osobno w celu zwiększenia produktywności.|

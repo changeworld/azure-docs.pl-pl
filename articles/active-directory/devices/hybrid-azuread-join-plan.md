@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274568"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993293"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -146,9 +146,9 @@ Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia kreator umożl
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Alternatywny identyfikator logowania obsługi w dołączenie do hybrydowej usługi Azure AD
 
-Windows 10 hybrydowych w usłudze Azure AD join udostępnia ograniczoną obsługę [alternatywnych identyfikatorów logowania](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na podstawie typu identyfikatora logowania alternatywnej [metodę uwierzytelniania](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa typy alternatywnych identyfikatorów logowania, które może znajdować się w danym środowisku.
+Windows 10 hybrydowych w usłudze Azure AD join udostępnia ograniczoną obsługę [alternatywnych identyfikatorów logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na podstawie typu identyfikatora logowania alternatywnej [metodę uwierzytelniania](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa typy alternatywnych identyfikatorów logowania, które może znajdować się w danym środowisku.
 
- - Routing alternatywnego identyfikatora logowania: Routing alternatywny identyfikator logowania ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa, contoso.org i contoso.co.uk są prawidłowe domen, które są własnością firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)
+ - Routing alternatywnego identyfikatora logowania: Routing alternatywny identyfikator logowania ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa, contoso.org i contoso.co.uk są prawidłowe domen, które są własnością firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
  - Bez obsługi routingu alternatywnego identyfikatora logowania: Nierutowalny alternatywnego identyfikatora logowania nie ma zweryfikowanej domeny. Dotyczy tylko w ramach prywatnej sieci organizacji. Na przykład jeśli podstawowy domena jest domeną contoso.com, contoso.local nie jest możliwe do zweryfikowania domeny w Internecie, ale jest używany w ramach sieci firmy Contoso.
  

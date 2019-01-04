@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316975"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629905"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Wprowadzenie do usługi Azure Search w języku Java
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Do utworzenia i przetestowania przedstawionego przykładu użyto następującego
 * [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>Informacje o danych
-Ta przykładowa aplikacja korzysta z danych agencji [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) zawężonych do stanu Rhode Island w celu zmniejszenia rozmiaru zestawu danych. Użyjemy tych danych do utworzenia aplikacji wyszukiwania, która zwraca punkty orientacyjne, takie jak szpitale i szkoły, jak również formy geologiczne, takie jak strumienie, jeziora i szczyty.
+Ta przykładowa aplikacja korzysta z danych agencji [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm) zawężonych do stanu Rhode Island w celu zmniejszenia rozmiaru zestawu danych. Użyjemy tych danych do utworzenia aplikacji wyszukiwania, która zwraca punkty orientacyjne, takie jak szpitale i szkoły, jak również formy geologiczne, takie jak strumienie, jeziora i szczyty.
 
 W tej aplikacji program **SearchServlet.java** tworzy i ładuje indeks, używając konstrukcji [indeksatora](https://msdn.microsoft.com/library/azure/dn798918.aspx), a zawężony zestaw danych z agencji USGS jest pobierany z publicznej usługi Azure SQL Database. Wstępnie zdefiniowane poświadczenia oraz informacje o połączeniu ze źródłem danych w trybie online są zawarte w kodzie programu. W zakresie dostępu do danych nie jest konieczna dalsza konfiguracja.
 
@@ -87,7 +87,7 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
 ## <a name="configure-the-service-url-and-api-key"></a>Konfigurowanie adresu URL usługi i klucza api-key
 1. W obszarze **Eksplorator projektów** kliknij dwukrotnie pozycję **config.properties**, aby edytować ustawienia konfiguracji, które zawierają nazwę serwera i klucz api-key.
 2. Wróć do kroków opisanych wcześniej w tym artykule, aby odnaleźć adres URL usługi oraz klucz api-key w witrynie [Azure Portal](https://portal.azure.com). Uzyskane wartości należy wpisać w pliku **config.properties**.
-3. W pliku **config.properties** zastąp ciąg „Api Key” (Klucz interfejsu API) kluczem api-key dla Twojej usługi. Następnie, nazwa usługi (pierwszy składnik adresu URL http://servicename.search.windows.net) zastępuje "Nazwa usługi" w tym samym pliku.
+3. W pliku **config.properties** zastąp ciąg „Api Key” (Klucz interfejsu API) kluczem api-key dla Twojej usługi. Następnie, nazwa usługi (pierwszy składnik adresu URL https://servicename.search.windows.net) zastępuje "Nazwa usługi" w tym samym pliku.
    
     ![][5]
 

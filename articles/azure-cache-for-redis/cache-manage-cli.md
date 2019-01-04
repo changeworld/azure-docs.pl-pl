@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 54aa6f12afd83d4fb180b718ed420f62a8663ff6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b9ad2f4fd3b0ccf928dcec58b7c55778bcbdc95
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019595"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558706"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak utworzyć i zarządzać pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Aby utworzyć i zarządzać pamięć podręczna systemu Azure dla wystąpienia p
 * Połącz instalacji wiersza polecenia platformy Azure przy użyciu osobistego konta platformy Azure lub przy użyciu służbowego lub służbowe konto platformy Azure i zaloguj się z klasycznym przy użyciu interfejsu wiersza polecenia `azure login` polecenia.
 * Przed uruchomieniem dowolne z następujących poleceń, Przełącz klasyczny interfejs wiersza polecenia w trybie Menedżera zasobów, uruchamiając `azure config mode arm` polecenia. Aby uzyskać więcej informacji, zobacz [użycie platformy Azure klasyczny interfejs wiersza polecenia do zarządzania zasobami i grupami zasobów platformy Azure](../xplat-cli-azure-resource-manager.md).
 
-## <a name="azure-cache-for-redis-properties"></a>Pamięć podręczna systemu Azure dla właściwości pamięci podręcznej Redis
+## <a name="azure-cache-for-redis-properties"></a>Właściwości usługi Azure Cache for Redis
 Następujące właściwości są używane podczas tworzenia i aktualizowania pamięć podręczna systemu Azure dla wystąpienia usługi Redis.
 
 | Właściwość | Przełącznik | Opis |
@@ -74,7 +74,7 @@ Aby wyświetlić wszystkie Azure pamięci podręcznej Redis poleceń i ich param
     help:    Delete an existing Azure Cache for Redis
     help:      rediscache delete [--name <name> --resource-group <resource-group> ]
     help:
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:      rediscache list [options]
     help:
     help:    Show properties of an existing Azure Cache for Redis
@@ -94,7 +94,7 @@ Aby wyświetlić wszystkie Azure pamięci podręcznej Redis poleceń i ich param
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="create-an-azure-cache-for-redis"></a>Tworzenie pamięci podręcznej Azure dla usługi Redis
+## <a name="create-an-azure-cache-for-redis"></a>Tworzenie usługi Azure Cache for Redis
 Aby utworzyć pamięć podręczna systemu Azure dla usługi Redis, użyj następującego polecenia:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
@@ -150,15 +150,15 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-azure-cache-for-rediss-within-your-subscription-or-resource-group"></a>Lista wszystkich pamięć podręczna systemu Azure dla Rediss w ramach Twojej subskrypcji lub grupy zasobów
-Aby wyświetlić listę wszystkich pamięć podręczna systemu Azure dla Rediss w ramach Twojej subskrypcji lub grupy zasobów, użyj następującego polecenia:
+## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Lista wszystkich pamięć podręczna systemu Azure dla pamięci podręcznej Redis w ramach Twojej subskrypcji lub grupy zasobów
+Aby wyświetlić listę wszystkich pamięć podręczna systemu Azure dla usługi Redis w ramach Twojej subskrypcji lub grupy zasobów, użyj następującego polecenia:
 
     azure rediscache list [options]
 
 Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscache list -h` polecenia.
 
     C:\>azure rediscache list -h
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:
     help:    Usage: rediscache list [options]
     help:

@@ -3,24 +3,22 @@ title: Tworzenie użytkowników w usłudze Azure Database dla serwera MariaDB
 description: W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z usługą Azure Database dla serwera MariaDB.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50154a7fee63eb3ff9e08155123f9e5962bbfcf0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946120"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542131"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Tworzenie użytkowników w usłudze Azure Database dla serwera MariaDB 
 W tym artykule opisano, jak utworzyć użytkowników w usłudze Azure Database dla serwera MariaDB.
 
 Podczas pierwszego utworzenia usługi Azure Database dla serwera MariaDB, możesz podać nazwę użytkownika logowania administratora serwera i hasło. Aby uzyskać więcej informacji, możesz wykonać [Szybki Start](quickstart-create-mariadb-server-database-using-azure-portal.md). Umożliwia zlokalizowanie Twoja nazwa logowania administratora serwera użytkownika w witrynie Azure portal.
 
-Użytkownik Administrator serwera pobiera określone uprawnienia na serwerze, zgodnie z opisem: Wybierz dane oraz WSTAWIAĆ, AKTUALIZOWANIE, usuwanie, utworzyć, PORZUCIĆ, Załaduj ponownie, proces, odwołania, INDEKSU, ALTER, Pokaż baz danych, tworzenie tabel tymczasowych, blokady tabele, EXECUTE, PODRZĘDNY replikacji, replikacji KLIENTA, UTWORZYĆ WIDOK, POKAŻ WIDOK, TWORZENIE PROCEDURY, ALTER PROCEDURY, TWORZENIE UŻYTKOWNIKA, ZDARZENIA WYZWALACZA
+Użytkownik Administrator serwera pobiera określone uprawnienia dla serwera zgodnie z opisem: WYBIERZ, WSTAWIANIA, AKTUALIZACJI, USUŃ, TWORZYĆ, PORZUCIĆ, ZAŁADUJ PONOWNIE, PRZETWARZAĆ, ODWOŁANIA, INDEX, ALTER, WYŚWIETL BAZY DANYCH, TWORZENIE TABEL TYMCZASOWYCH, ZABLOKOWAĆ TABEL, WYKONANIE, W PRZYPADKU REPLIKACJI, KLIENT REPLIKACJI, TWORZENIE WYŚWIETLIĆ, POKAŻ WIDOK, TWORZENIE PROCEDURY, ALTER PROCEDURY, TWORZENIE UŻYTKOWNIKA , ZDARZENIA WYZWALACZA
 
 Po utworzeniu usługi Azure Database dla serwera MariaDB umożliwia pierwszego konta użytkownika administratora serwera tworzenie dodatkowych użytkowników i udzielanie dostępu administratora do nich. Ponadto konta administratora serwera można utworzyć mniej uprzywilejowanych użytkowników, którzy mają dostęp do poszczególnych baz danych, schematów.
 
@@ -85,6 +83,6 @@ Po utworzeniu usługi Azure Database dla serwera MariaDB umożliwia pierwszego k
 Aby uzyskać więcej informacji na temat zarządzania kontami użytkowników, zobacz dokumentację MariaDB [Zarządzanie kontami użytkowników](https://mariadb.com/kb/en/library/user-account-management/), [składni GRANT](https://mariadb.com/kb/en/library/grant/), i [uprawnienia](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Otwierająca zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im nawiązanie: [tworzenie i zarządzanie nimi — Azure Database dla MariaDB reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-portal.md)  
+Otwierająca zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im na połączenie: [Tworzenie i zarządzanie nimi — Azure Database dla MariaDB reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

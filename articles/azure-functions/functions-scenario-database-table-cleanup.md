@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740114"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608583"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Łączenie z bazą danych SQL Azure za pomocą usługi Azure Functions
 
@@ -70,7 +70,7 @@ Należy dodać pakiet NuGet, który zawiera biblioteki SqlClient. Ta biblioteka 
 
 1. Na karcie **Przeglądaj** wyszukaj pozycję ```System.Data.SqlClient``` i po znalezieniu wybierz ją.
 
-1. Na stronie **System.Data.SqlClient** kliknij przycisk **Instaluj**.
+1. W **System.Data.SqlClient** strony, wybierz wersję `4.5.1` a następnie kliknij przycisk **zainstalować**.
 
 1. Po zakończeniu instalacji przejrzyj zmiany, a następnie kliknij przycisk **OK**, aby zamknąć okno **Podgląd**.
 

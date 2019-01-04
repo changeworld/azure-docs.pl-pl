@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: asrastog
-ms.openlocfilehash: a5b8ce8cd753ee294a8d61ba8a3dfed872f0f31a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69c890cfc3db04fe625ed7ad008f545c01844834
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956333"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993488"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Avro zapytania o dane za pomocą usługi Azure Data Lake Analytics
 
@@ -21,7 +21,7 @@ W tym artykule omówiono sposób wykonywania zapytań o dane Avro do efektywne k
 
 Żądania zostało, gdy usługa Azure IoT Hub kieruje komunikaty do usługi Azure Blob storage, usługi IoT Hub zapisuje zawartość w formacie Avro, która ma zarówno właściwość treści wiadomości, jak i właściwość wiadomości. Centrum IoT Hub obsługuje zapisywania danych do magazynu obiektów Blob tylko format Avro danych, a ten format nie jest używane dla innych punktów końcowych. Aby uzyskać więcej informacji zobacz artykuł o przy użyciu kontenerów usługi Azure Storage. Avro format to idealne narzędzie do przechowywania danych i komunikatów, może się jednak żądania na potrzeby zapytania o dane. W odróżnieniu od formacie JSON lub CSV jest znacznie łatwiejsze do wykonywania zapytań na danych.
 
-<!-- https://review.docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
+<!-- https://review.docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
 
 Adres formatów i nierelacyjnych danych big data musi i stawić czoła temu wyzwaniu, można użyć wielu wzorców danych big data dla transformacji i skalowania danych. Jednym z wzorców, "płacić za zapytania", Azure Data Lake Analytics, czyli fokus w tym artykule. Mimo że można łatwo wykonywać zapytania w usłudze Hadoop ani innych rozwiązań, Data Lake Analytics często lepiej jest odpowiedni dla tego podejścia "płacić za zapytania". 
 
@@ -171,7 +171,7 @@ W tej sekcji, wykonywanie zapytań o dane Avro i wyeksportować je do pliku CSV 
 
 W tym samouczku przedstawiono sposób wykonywania zapytań o dane Avro do efektywne kierowanie komunikatów z usługi Azure IoT Hub do usług platformy Azure.
 
-Aby uzyskać przykłady kompletne rozwiązania end-to-end, które używają usługi IoT Hub, zobacz [dokumentacja akceleratorów rozwiązań IoT Azure](../iot-accelerators/index.yml).
+Aby uzyskać przykłady kompletne rozwiązania end-to-end, które używają usługi IoT Hub, zobacz [dokumentacja akceleratorów rozwiązań IoT Azure](/azure/iot-accelerators).
 
 Aby dowiedzieć się więcej na temat opracowywania rozwiązań usługi IoT Hub, zobacz [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide.md).
 

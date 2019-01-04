@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496881"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725273"
 ---
-# <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari Apache
+# <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
 
 [Pakiet zabezpieczeń przedsiębiorstwa (ESP) włączone klastry HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w [Apache Ambari](https://ambari.apache.org/) jest obsługiwana w przypadku klastrów HDInsight ESP i klastry HDInsight standard.
 
-Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Można też swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak [Hue](http://gethue.com/), widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
+Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Można też swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak [Hue](https://gethue.com/), widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
 
-> [!WARNING]
+> [!WARNING]  
 > Nie zmieniaj hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartych na systemie Linux. Zmienianie hasła przerywa możliwość użyj akcji skryptu, lub wykonywać operacje skalowania na potrzeby klastra.
 
 Jeśli jeszcze tego nie zrobiono, wykonaj [w instrukcjach](./domain-joined/apache-domain-joined-configure.md) do nowego klastra ESP aprowizacji.
@@ -100,7 +100,7 @@ Aby wyświetlić listę uprawnienia udzielone każdej roli, kliknij niebieski zn
 
 ![Łącze menu ról](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
 
-Na tej stronie są dwa widoki można użyć do zarządzania rolami użytkowników i grup: blok i listy.
+Na tej stronie istnieją dwa różne widoki, których można użyć do zarządzania rolami użytkowników i grup: Blok i listy.
 
 ### <a name="block-view"></a>Widok bloku
 
@@ -110,7 +110,7 @@ Widok bloku Wyświetla każdej roli w swoim własnym wierszu oraz **przypisać r
 
 ### <a name="list-view"></a>Widok listy
 
-Widok listy zawiera szybkie możliwości edycji w dwie kategorie: użytkowników i grup.
+Widok listy zawiera szybkie możliwości edycji w dwie kategorie: Użytkownicy i grupy.
 
 * Kategoria użytkowników w widoku listy wyświetla listę wszystkich użytkowników, dzięki czemu możesz wybrać rolę dla każdego użytkownika na liście rozwijanej.
 

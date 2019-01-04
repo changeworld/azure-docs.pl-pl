@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314163"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631903"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorowanie usługi Azure Search w witrynie Azure portal
 
@@ -70,7 +70,7 @@ Dzienniki operacji można wyeksportować do usługi i dane pierwotne dotyczące 
 
 
 ### <a name="enabling-monitoring"></a>Włączanie monitorowania
-Otwórz swoją usługę Azure Search w [witryny Azure portal](http://portal.azure.com) pod opcją Włącz monitorowanie.
+Otwórz swoją usługę Azure Search w [witryny Azure portal](https://portal.azure.com) pod opcją Włącz monitorowanie.
 
 Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do usługi Log Analytics.
 

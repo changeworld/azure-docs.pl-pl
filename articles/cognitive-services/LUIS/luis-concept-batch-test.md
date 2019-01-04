@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0b2c8d0e3484538ca5c988a7fad56fb82b97902
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133151"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993167"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie za pomocą 1000 wypowiedzi w portalu usługi LUIS usługi Batch
 
@@ -48,7 +48,7 @@ Wszystkie jednostki niestandardowe znajdą się w modelu są wyświetlane w filt
 
 Plik wsadowy składa się z wypowiedzi. Każdy wypowiedź musi mieć oczekiwanego prognozowania intencji, wraz z wszelkimi [maszyny do opanowania jednostek](luis-concept-entity-types.md#types-of-entities) oczekujesz, że zostało wykryte. 
 
-## <a name="batch-syntax-template"></a>Szablon składni partii
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Batch składni szablonu dla intencji z jednostkami
 
 Uruchom plik wsadowy za pomocą następującego szablonu:
 
@@ -75,6 +75,22 @@ Uruchom plik wsadowy za pomocą następującego szablonu:
 ```
 
 Plik wsadowy używa **startPos** i **endPos** właściwości należy zwrócić uwagę na początku i na końcu jednostki. Wartości są oparte na zerze i powinna nie rozpocząć lub kończy się spacją. To różni się od dzienników zapytań, korzystających z startIndex i endIndex właściwości. 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Batch składni szablonu dla intencji bez jednostek
+
+Uruchom plik wsadowy bez jednostek za pomocą następującego szablonu:
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+Jeśli nie chcesz przetestować jednostek, obejmują `entities` właściwości i ustaw wartość jako pusta tablica `[]`.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Typowe błędy importowania partii

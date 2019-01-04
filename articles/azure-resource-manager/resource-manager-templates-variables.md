@@ -1,6 +1,6 @@
 ---
-title: Zmiennych szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Opisuje sposób definiowania zmiennych w szablonach usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
+title: Zmienne szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób definiowania zmiennych w szablonach usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08728a3c0b4d4578939004e2d1b1ee2d30a682ab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359292"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53712750"
 ---
-# <a name="variables-section-of-azure-resource-manager-templates"></a>Zmienne sekcji szablonów usługi Azure Resource Manager
-W sekcji variables można skonstruować wartości, które mogą być używane w szablonie. Nie trzeba zdefiniować zmienne, ale one często uprościć szablonu zmniejszając złożonych wyrażeń.
+# <a name="variables-section-of-azure-resource-manager-templates"></a>Sekcję zmiennych szablonów usługi Azure Resource Manager
+W sekcji zmiennych konstruujesz wartości, których można użyć w szablonie. Nie trzeba zdefiniować zmienne, ale często upraszczają działania do szablonu, zmniejszając złożonych wyrażeń.
 
 ## <a name="define-and-use-a-variable"></a>Definiowanie i użyj zmiennej
 
-Poniższy przykład przedstawia definicji zmiennej. Tworzy wartość ciągu dla nazwy konta magazynu. Aby uzyskać wartość parametru i połączyć ją z unikatowym ciągiem używa kilka funkcji szablonu.
+Poniższy przykład przedstawia definicję zmiennej. Tworzy wartość ciągu dla nazwy konta magazynu. Aby uzyskać wartości parametru i połączyć ją z unikatowym ciągiem używa kilka funkcji szablonu.
 
 ```json
 "variables": {
@@ -33,7 +33,7 @@ Poniższy przykład przedstawia definicji zmiennej. Tworzy wartość ciągu dla 
 },
 ```
 
-Podczas definiowania zasobu należy użyć zmiennej.
+Podczas definiowania zasobu jest używana zmienna.
 
 ```json
 "resources": [
@@ -43,9 +43,9 @@ Podczas definiowania zasobu należy użyć zmiennej.
     ...
 ```
 
-## <a name="available-definitions"></a>Definicje dostępne
+## <a name="available-definitions"></a>Dostępne definicje
 
-Poprzednim przykładzie pokazano jedną z metod do zdefiniowania zmiennej. Można użyć dowolnej z poniższymi definicjami:
+Poprzedni przykład pokazano sposób definiowania zmiennej. Można użyć dowolnego z następujących definicji:
 
 ```json
 "variables": {
@@ -78,7 +78,7 @@ Poprzednim przykładzie pokazano jedną z metod do zdefiniowania zmiennej. Możn
 
 ## <a name="configuration-variables"></a>Zmienne konfiguracji
 
-Typy złożone JSON umożliwia definiowanie powiązanych wartości dla środowiska. 
+Typy złożone JSON służy do definiowania powiązanych wartości dla środowiska. 
 
 ```json
 "variables": {
@@ -95,7 +95,7 @@ Typy złożone JSON umożliwia definiowanie powiązanych wartości dla środowis
 },
 ```
 
-Parametry tworzenia wartości wskazującej, która Konfiguracja wartości do użycia.
+W parametrach utworzysz wartość, która wskazuje, która Konfiguracja wartości do użycia.
 
 ```json
 "parameters": {
@@ -109,15 +109,15 @@ Parametry tworzenia wartości wskazującej, która Konfiguracja wartości do uż
 },
 ```
 
-Możesz pobrać bieżące ustawienia z:
+Możesz pobrać bieżące ustawienia za pomocą:
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-## <a name="use-copy-element-in-variable-definition"></a>Użyj elementu kopiowania w definicji zmiennej
+## <a name="use-copy-element-in-variable-definition"></a>Użyj elementu kopii w definicji zmiennej
 
-Można użyć **kopiowania** składni, aby utworzyć zmienną z tablicą wiele elementów. Wynik jest podanie liczby elementów. Każdy element zawiera właściwości w **wejściowych** obiektu. Możesz użyć kopii w zmiennej lub można utworzyć zmiennej. Gdy Zdefiniuj zmienną i używać **kopiowania** w tej zmiennej, Utwórz obiekt, który ma właściwości tablicy. Jeśli używasz **kopiowania** na najwyższym poziomie i określić jedną lub więcej zmiennych w niej utworzyć co najmniej jeden tablice. W poniższym przykładzie przedstawiono obu podejść:
+Możesz użyć **kopiowania** składni, aby utworzyć zmienną z tablicą z kilku elementów. Wynik jest przewidzieć liczbę elementów. Każdy element zawiera właściwości w ramach **wejściowych** obiektu. Można użyć kopii w zmiennej, lub aby utworzyć zmienną. Podczas definiowania zmiennej i stosowania **kopiowania** w ramach tej zmiennej, należy utworzyć obiekt, który ma właściwości tablicy. Kiedy używasz **kopiowania** na najwyższym poziomie i zdefiniować jedną lub więcej zmiennych w nim, można utworzyć co najmniej jeden tablic. W poniższym przykładzie przedstawiono oba podejścia:
 
 ```json
 "variables": {
@@ -148,7 +148,7 @@ Można użyć **kopiowania** składni, aby utworzyć zmienną z tablicą wiele e
 },
 ```
 
-Zmienna **dysku tablicy na obiekt** zawiera następujący obiekt z tablicy o nazwie **dysków**:
+Zmienna **dysku tablicy na obiekcie** zawiera następujący obiekt z tablicy o nazwie **dysków**:
 
 ```json
 {
@@ -172,7 +172,7 @@ Zmienna **dysku tablicy na obiekt** zawiera następujący obiekt z tablicy o naz
 }
 ```
 
-Zmienna **dysków top poziom tablicy** zawiera tablicę następujące:
+Zmienna **dysków top poziom tablicy** zawiera następującą tablicę:
 
 ```json
 [
@@ -194,7 +194,7 @@ Zmienna **dysków top poziom tablicy** zawiera tablicę następujące:
 ]
 ```
 
-Można również określić więcej niż jeden obiekt, w przypadku używania kopii do tworzenia zmiennych. W poniższym przykładzie zdefiniowano dwie tablice jako zmienne. Jedną o nazwie **dysków top poziom tablicy** i ma pięć elementów. Druga o nazwie **a inną tablicy** i ma trzy elementy.
+W przypadku używania kopii do tworzenia zmiennych, można również określić więcej niż jeden obiekt. W poniższym przykładzie zdefiniowano dwie tablice jako zmienne. Jeden o nazwie **dysków top poziom tablicy** i zawiera pięć elementów. Druga o nazwie **w różnych tablicy** i ma trzy elementy.
 
 ```json
 "variables": {
@@ -221,7 +221,7 @@ Można również określić więcej niż jeden obiekt, w przypadku używania kop
 },
 ```
 
-Ta metoda działa również w przypadku, gdy trzeba podjąć wartości parametrów i upewnij się, że są one w poprawnym formacie dla wartości szablonu. Poniższy przykład formaty wartości parametrów do użycia podczas definiowania reguły zabezpieczeń:
+Ta metoda działa dobrze w przypadku, gdy trzeba pobrać wartości parametrów i upewnij się, że są one w poprawnym formacie dla wartości szablonu. Poniższy przykład formatuje wartości parametrów do użycia podczas definiowania reguły zabezpieczeń:
 
 ```json
 {
@@ -269,26 +269,19 @@ Ta metoda działa również w przypadku, gdy trzeba podjąć wartości parametr�
 }
 ```
 
-## <a name="recommendations"></a>Zalecenia
-Następujące informacje mogą być pomocne podczas pracy ze zmiennymi:
+## <a name="example-templates"></a>Przykładowe szablony
 
-* Użyj zmienne dla wartości, które trzeba użyć więcej niż raz w szablonie. Jeśli wartość jest używana tylko raz, wartość ustalony ułatwia szablonu do odczytu.
-* Nie można użyć [odwołania](resource-group-template-functions-resource.md#reference) działać w **zmienne** sekcji szablonu. **Odwołania** funkcja pochodzi wartość ze stanu środowiska uruchomieniowego zasobu. Zmienne są jednak rozpoznane podczas początkowej analizy szablonu. Konstrukcja wartości wymagających **odwołania** bezpośrednio w funkcji **zasobów** lub **generuje** sekcji szablonu.
-* Obejmują zmienne dla nazw zasobów, które muszą być unikatowe.
-
-## <a name="example-templates"></a>Przykład szablonów
-
-Te szablony przykładowe pokazują niektóre scenariusze dotyczące używania zmiennych. Ich do testowania obsługi zmiennych w różnych scenariuszy wdrażania. 
+Te przykładowe szablony pokazują niektóre scenariusze dotyczące używania zmiennych. Wdróż je do testowania, w jaki sposób zmienne są obsługiwane w różnych scenariuszach. 
 
 |Szablon  |Opis  |
 |---------|---------|
-| [definicje zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Przedstawia różne typy zmiennych. Szablon nie wdrażać żadnych zasobów. Konstruuje wartości zmiennej, a zwraca tych wartości. |
-| [zmiennej konfiguracyjnej](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Pokazuje użycie zmiennej, która definiuje wartości konfiguracji. Szablon nie wdrażać żadnych zasobów. Konstruuje wartości zmiennej, a zwraca tych wartości. |
-| [reguły zabezpieczeń sieci](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) i [pliku parametrów](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Tworzy tablicę w poprawnym formacie przypisywania zasad zabezpieczeń do grupy zabezpieczeń sieci. |
+| [definicje zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Demonstruje różne rodzaje zmiennych. Szablon nie wdroży żadnych zasobów. On tworzy wartości zmiennych i zwraca te wartości. |
+| [Zmienna konfiguracyjna](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Zademonstrowano użycie zmiennej, która definiuje wartości konfiguracji. Szablon nie wdroży żadnych zasobów. On tworzy wartości zmiennych i zwraca te wartości. |
+| [reguł zabezpieczeń sieciowych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) i [pliku parametrów](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Tworzy tablicę w poprawnym formacie przypisywania zabezpieczeń reguły do sieciowej grupy zabezpieczeń. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
-* Aby uzyskać więcej informacji o funkcje, których można użyć z w ramach szablonu, zobacz [funkcje szablonów usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby połączyć wiele szablonów podczas wdrażania, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współdzielone przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
+* Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
+* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współdzielone przez więcej niż jednej grupy zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).

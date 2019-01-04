@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271389"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993070"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Wyrażenie funkcji listy aplikacją usługi LUIS
 
@@ -29,6 +29,10 @@ Lista fraz obejmuje grupy wartości (słów i fraz), które należą do tej same
 
 Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygnał do usługi LUIS o tych słów.
 
+## <a name="phrase-lists-help-all-models"></a>Wyświetla frazy pomocy wszystkie modele
+
+Wyświetla frazy nie są powiązane z określonym celem lub jednostki, ale są dodawane do wszystkich modeli jako boost. Jego celem jest poprawa intencji klasyfikacji wykrywania i jednostki.
+
 ## <a name="how-to-use-phrase-lists"></a>Jak używać listy fraz
 W aplikacji zasobów ludzkich [podmiotu prostego samouczka](luis-quickstart-primary-and-secondary-data.md), ta aplikacja używa **zadania** frazy listę typów zadań, takich jak programista, roofer i Sekretarz. Jeśli etykieta jedną z następujących wartości jako jednostki przedstawiono maszyny usługi LUIS jest uczy się rozpoznawać, pozostałe. 
 
@@ -40,6 +44,7 @@ Lista wyrażenie może być zamienne lub -wymienne. *Wymienne* lista frazy to wa
 |-Wymienne|Słownictwa aplikacji specyficzne dla aplikacji, więcej, niż zazwyczaj innych wyrazów, w tym języku.|
 
 Wyrażenie zawiera nie tylko pomoc dotycząca wykrywania jednostki, ale również intencji klasyfikacji w przypadku, gdy nie są wymienne sens takich jak dodawanie poza słownictwa wyrazy, które nie są znane w języku angielskim.
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

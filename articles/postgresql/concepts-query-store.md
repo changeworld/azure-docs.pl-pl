@@ -1,18 +1,17 @@
 ---
 title: Query Store w usłudze Azure Database for PostgreSQL
 description: W tym artykule opisano funkcję Store zapytania w usłudze Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 5b760c9148e26421c0df1ffe936365aae4971543
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379165"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546916"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
@@ -114,30 +113,30 @@ Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej
 |runtime_stats_entry_id |bigint | | Identyfikator z tabeli runtime_stats_entries|
 |Definiując pole user_id    |Identyfikator OID    |pg_authid.OID  |Identyfikator OID użytkownika, który wykonał instrukcji|
 |db_id  |Identyfikator OID    |pg_database.OID    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
-|query_id   |bigint  || Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
-|query_sql_text |Varchar(10000)  || Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
+|query_id   |bigint  || Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
+|query_sql_text |Varchar(10000)  || Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu jeszcze odpowiadający to zapytanie nie jest dostępna|
 |godzina_rozpoczęcia |sygnatura czasowa  ||  Zapytania są agregowane według przedziałów czasu - okres przedziału wynosi 15 minut, domyślnie. Jest to czas rozpoczęcia odpowiadający przedział czasu dla tego wpisu.|
 |end_time   |sygnatura czasowa  ||  Godzina zakończenia odpowiadający przedział czasu dla tego wpisu.|
-|wywołania  |bigint  || Liczba przypadków, wykonać zapytania|
-|TOTAL_TIME |podwójnej precyzji   ||  Czas wykonywania kwerendy w milisekundach|
+|wywołania  |bigint  || Liczba przypadków, wykonać zapytania|
+|TOTAL_TIME |podwójnej precyzji   ||  Czas wykonywania kwerendy w milisekundach|
 |min_time   |podwójnej precyzji   ||  Czas wykonywania zapytania minimalne, w milisekundach|
 |max_time   |podwójnej precyzji   ||  Czas wykonywania zapytania maksymalna (w milisekundach)|
 |mean_time  |podwójnej precyzji   ||  Oznacza czas wykonywania zapytania, w milisekundach|
 |stddev_time|   podwójnej precyzji    ||  Odchylenie standardowe czasu wykonywania kwerendy w milisekundach |
-|wiersze   |bigint ||  Całkowita liczba wierszy, pobrać lub wpływ instrukcja|
-|shared_blks_hit|   bigint  ||  Łączna liczba trafień w pamięci podręcznej bloku udostępnionego przez instrukcję|
+|wiersze   |bigint ||  Całkowita liczba wierszy, pobrać lub wpływ instrukcja|
+|shared_blks_hit|   bigint  ||  Łączna liczba trafień w pamięci podręcznej bloku udostępnionego przez instrukcję|
 |shared_blks_read|  bigint  ||  Całkowita liczba bloków udostępnionego odczytywane przez instrukcję|
-|shared_blks_dirtied|   bigint   || Całkowita liczba bloków udostępnionego dirtied przez instrukcję |
-|shared_blks_written|   bigint  ||  Całkowita liczba bloków udostępnionego napisane przez instrukcję|
+|shared_blks_dirtied|   bigint   || Całkowita liczba bloków udostępnionego dirtied przez instrukcję |
+|shared_blks_written|   bigint  ||  Całkowita liczba bloków udostępnionego napisane przez instrukcję|
 |local_blks_hit|    bigint ||   Łączna liczba trafień w pamięci podręcznej bloku lokalnych przez instrukcję|
-|local_blks_read|   bigint   || Całkowita liczba bloków lokalnego odczytywane przez instrukcję|
-|local_blks_dirtied|    bigint  ||  Całkowita liczba bloków lokalnego dirtied przez instrukcję|
-|local_blks_written|    bigint  ||  Całkowita liczba bloków lokalne zapisane przez instrukcję|
-|temp_blks_read |bigint  || Całkowita liczba bloków temp odczytywane przez instrukcję|
-|temp_blks_written| bigint   || Całkowita liczba bloków temp napisane przez instrukcję|
-|blk_read_time  |podwójnej precyzji    || Łączny czas czytania bloki, w milisekundach w instrukcji (Jeśli włączono track_io_timing, w przeciwnym razie od zera)|
-|blk_write_time |podwójnej precyzji    || Łączny czas instrukcji pisania bloków, w milisekundach (Jeśli włączono track_io_timing, w przeciwnym razie od zera)|
+|local_blks_read|   bigint   || Całkowita liczba bloków lokalnego odczytywane przez instrukcję|
+|local_blks_dirtied|    bigint  ||  Całkowita liczba bloków lokalnego dirtied przez instrukcję|
+|local_blks_written|    bigint  ||  Całkowita liczba bloków lokalne zapisane przez instrukcję|
+|temp_blks_read |bigint  || Całkowita liczba bloków temp odczytywane przez instrukcję|
+|temp_blks_written| bigint   || Całkowita liczba bloków temp napisane przez instrukcję|
+|blk_read_time  |podwójnej precyzji    || Łączny czas czytania bloki, w milisekundach w instrukcji (Jeśli włączono track_io_timing, w przeciwnym razie od zera)|
+|blk_write_time |podwójnej precyzji    || Łączny czas instrukcji pisania bloków, w milisekundach (Jeśli włączono track_io_timing, w przeciwnym razie od zera)|
     
 ### <a name="querystorequerytextsview"></a>query_store.query_texts_view
 Ten widok zwraca tekst zapytania o dane w Query Store. Istnieje jeden wiersz dla każdego zapytanie_tekst distinct.
@@ -145,7 +144,7 @@ Ten widok zwraca tekst zapytania o dane w Query Store. Istnieje jeden wiersz dla
 |**Nazwa**|  **Typ**|   **Opis**|
 |---|---|---|
 |query_text_id  |bigint     |Identyfikator tabeli query_texts|
-|query_sql_text |Varchar(10000)     |Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
+|query_sql_text |Varchar(10000)     |Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
 
 ### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
 Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz dla każdego identyfikator różne bazy danych, identyfikator użytkownika, identyfikator zapytania i zdarzeń.
@@ -154,8 +153,8 @@ Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz d
 |---|---|---|---|
 |Definiując pole user_id    |Identyfikator OID    |pg_authid.OID  |Identyfikator OID użytkownika, który wykonał instrukcji|
 |db_id  |Identyfikator OID    |pg_database.OID    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
-|query_id   |bigint     ||Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
-|event_type |tekst       ||Typ zdarzenia, dla którego oczekuje wewnętrznej bazy danych|
+|query_id   |bigint     ||Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
+|event_type |tekst       ||Typ zdarzenia, dla którego oczekuje wewnętrznej bazy danych|
 |event  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli oczekiwaniem wewnętrznej bazy danych|
 |wywołania  |Liczba całkowita        ||Liczba te same zdarzenia, które są przechwytywane|
 
@@ -163,11 +162,11 @@ Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz d
 ### <a name="functions"></a>Funkcje
 Query_store.qs_reset() zwraca wartość void
 
-`qs_reset` odrzuca wszystkie dane statystyczne zebrane do tej pory przez Query Store. Tę funkcję można wykonać tylko przez rolę administratora serwera.
+`qs_reset` odrzuca wszystkie dane statystyczne zebrane do tej pory przez Query Store. Tę funkcję można wykonać tylko przez rolę administratora serwera.
 
 Query_store.staging_data_reset() zwraca wartość void
 
-`staging_data_reset` odrzuca wszystkie statystyki zebrane w pamięci przez Query Store (czyli dane w pamięci, który nie został opróżniony jeszcze do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
+`staging_data_reset` odrzuca wszystkie statystyki zebrane w pamięci przez Query Store (czyli dane w pamięci, który nie został opróżniony jeszcze do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 - Jeśli dany serwer PostgreSQL default_transaction_read_only parametru, Query Store nie mogą przechwytywać dane.

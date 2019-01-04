@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 3ac7ab0aac190ab53075a6a4ee24fca3ee7eeb84
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d6dfd88f9349312cc81d760a2c473f32ff932885
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227524"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543091"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -52,7 +52,7 @@ Istnieje limit liczby sieciowe grupy zabezpieczeń, utworzonej lokalizacji platf
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [tworzenie az sieciowej](/cli/azure/network/nsg#az-network-nsg-create)
-- Program PowerShell: [nowe AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+- Program PowerShell: [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
 ### <a name="view-all-network-security-groups"></a>Wyświetlanie wszystkich grup zabezpieczeń sieci
 
@@ -68,7 +68,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpi
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpieczeń*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz grupy zabezpieczeń sieci na liście, który chcesz wyświetlić szczegóły. W obszarze **ustawienia** można wyświetlić **reguły zabezpieczeń dla ruchu przychodzącego** i **reguły zabezpieczeń dla ruchu wychodzącego**, **interfejsy sieciowe** i  **Podsieci** sieciowa grupa zabezpieczeń jest skojarzona z. Można również włączyć lub wyłączyć **dzienniki diagnostyczne** i widok **obowiązujących reguł zabezpieczeń**. Aby dowiedzieć się więcej, zobacz [dzienniki diagnostyczne](virtual-network-nsg-manage-log.md) i [wyświetlanie obowiązujących reguł zabezpieczeń](diagnose-network-traffic-filter-problem.md).
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, na liście, zobacz następujące artykuły:
-    *   [Dziennik aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+    *   [Dziennik aktywności](../azure-monitor/platform/activity-logs-overview.md)
     *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -134,7 +134,7 @@ Istnieje limit liczby reguł na sieciową grupę zabezpieczeń można utworzyć 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
-- Program PowerShell: [nowy AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+- Program PowerShell: [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
 
 ### <a name="view-all-security-rules"></a>Wyświetlanie wszystkich reguł zabezpieczeń
 
@@ -149,7 +149,7 @@ Lista zawiera wszystkie reguły, które zostały utworzone i sieciowa grupa zabe
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [listę reguł sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
-- Program PowerShell: [polecenie Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+- Program PowerShell: [Polecenie GET-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
 
 ### <a name="view-details-of-a-security-rule"></a>Wyświetlanie szczegółów reguły zabezpieczeń
 
@@ -161,7 +161,7 @@ Lista zawiera wszystkie reguły, które zostały utworzone i sieciowa grupa zabe
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [Pokaż reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
-- Program PowerShell: [polecenie Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+- Program PowerShell: [Polecenie GET-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
 
 ### <a name="change-a-security-rule"></a>Zmień reguły zabezpieczeń
 
@@ -171,7 +171,7 @@ Lista zawiera wszystkie reguły, które zostały utworzone i sieciowa grupa zabe
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [aktualizacja reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
-- Program PowerShell: [polecenie Set-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
+- Program PowerShell: [Polecenie set-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
 
 ### <a name="delete-a-security-rule"></a>Usuwanie reguły zabezpieczeń
 
@@ -181,7 +181,7 @@ Lista zawiera wszystkie reguły, które zostały utworzone i sieciowa grupa zabe
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [usunięcia reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
-- Program PowerShell: [polecenie Remove-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
+- Program PowerShell: [Polecenie REMOVE-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
 
 ## <a name="work-with-application-security-groups"></a>Praca z grupami zabezpieczeń aplikacji
 
@@ -203,7 +203,7 @@ Grupy zabezpieczeń aplikacji zawiera zero lub więcej interfejsów sieciowych. 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [tworzenie asg sieci az](/cli/azure/network/asg#az-network-asg-create)
-- Program PowerShell: [polecenie New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
+- Program PowerShell: [Polecenie New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
 
 ### <a name="view-all-application-security-groups"></a>Wyświetlanie wszystkich grup zabezpieczeń aplikacji
 
@@ -213,7 +213,7 @@ Grupy zabezpieczeń aplikacji zawiera zero lub więcej interfejsów sieciowych. 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [listę asg sieci az](/cli/azure/network/asg#az-network-asg-list)
-- Program PowerShell: [polecenie Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+- Program PowerShell: [Polecenie GET-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>Wyświetl szczegóły grupy zabezpieczeń aplikacji
 
@@ -224,7 +224,7 @@ Grupy zabezpieczeń aplikacji zawiera zero lub więcej interfejsów sieciowych. 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci asg show](/cli/azure/network/asg#az-network-asg-show)
-- Program PowerShell: [polecenie Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+- Program PowerShell: [Polecenie GET-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="change-an-application-security-group"></a>Zmienianie grupy zabezpieczeń aplikacji
 
@@ -247,7 +247,7 @@ Nie można usunąć grupy zabezpieczeń aplikacji, jeśli ma żadnych interfejs�
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci w grupie asg Usuń](/cli/azure/network/asg#az-network-asg-delete)
-- Program PowerShell: [polecenie Remove-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
+- Program PowerShell: [Polecenie REMOVE-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
 
 ## <a name="permissions"></a>Uprawnienia
 

@@ -1,44 +1,37 @@
 ---
-title: Rozszerzenie systemu Windows migawki maszyny Wirtualnej dla usługi Kopia zapasowa Azure | Dokumentacja firmy Microsoft
-description: Pobranie aplikacji spójne tworzenie kopii zapasowych maszyny wirtualnej z kopii zapasowej Azure przy użyciu rozszerzenia migawki maszyny Wirtualnej
+title: Rozszerzenia Windows migawki maszyny Wirtualnej dla usługi Azure Backup | Dokumentacja firmy Microsoft
+description: Rozmiar kopii zapasowej spójnej aplikacji maszyny wirtualnej z usługi Azure Backup przy użyciu rozszerzenie migawki maszyny Wirtualnej
 services: backup, virtual-machines-windows
 documentationcenter: ''
 author: trinadhk
 manager: jeconnoc
-editor: ''
-ms.assetid: 57759670-0baa-44db-ae14-8cdc00d3a906
 ms.service: backup, virtual-machines-windows
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 3/26/2018
+ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8426a2472a28cf287dfe574cb80da56108394ae8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4d942e21afbf1d87ab67d79e90119a4122d889da
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942732"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632199"
 ---
-# <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Rozszerzenie systemu Windows migawki maszyny Wirtualnej dla usługi Kopia zapasowa Azure
+# <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Rozszerzenia Windows migawki maszyny Wirtualnej dla usługi Azure Backup
 
-## <a name="overview"></a>Przegląd
-
-Kopia zapasowa Azure zapewnia obsługę tworzenia kopii zapasowych obciążeń z lokalnymi do chmury i wykonywanie kopii zapasowych zasobów chmury w magazynie usług odzyskiwania. Kopia zapasowa Azure korzysta rozszerzenia migawki maszyny Wirtualnej umożliwiające aplikacji spójne tworzenie kopii zapasowych maszyny wirtualnej platformy Azure, bez potrzeby zamykania maszyny Wirtualnej. Rozszerzenie migawki maszyny Wirtualnej jest opublikowana i obsługiwane przez firmę Microsoft w ramach usługi Kopia zapasowa Azure. Kopia zapasowa Azure zainstaluje rozszerzenia w ramach pierwszej zaplanowanej kopii zapasowej wyzwalanych post włączenie kopii zapasowej. Ten dokument zawiera szczegóły dotyczące obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia migawki maszyny Wirtualnej.
+Usługa Azure Backup umożliwia wykonywanie kopii zapasowych obciążeń ze środowiska lokalnego do chmury i wykonywanie kopii zapasowych zasobów w chmurze w magazynie usługi Recovery Services. Usługa Azure Backup używa rozszerzenie migawki maszyny Wirtualnej umożliwiające aplikacji spójnych kopii zapasowych maszyn wirtualnych platformy Azure, bez konieczności zamykania maszyny Wirtualnej. Rozszerzenie migawki maszyny Wirtualnej jest opublikowany i obsługiwane przez firmę Microsoft jako część usługi Azure Backup. Usługa Azure Backup rozszerzenie zostanie zainstalowane jako część pierwszy zaplanowanych kopii zapasowych wyzwalane wpis opcja włączania kopii zapasowych. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania na potrzeby rozszerzenie migawki maszyny Wirtualnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
-Aby uzyskać listę obsługiwanych systemów operacyjnych, zapoznaj się [systemów operacyjnych obsługiwanych przez usługi Kopia zapasowa Azure](../../backup/backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup)
+Aby uzyskać listę obsługiwanych systemów operacyjnych, zobacz [systemów operacyjnych obsługiwanych przez usługę Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie migawki maszyny Wirtualnej wymaga, aby docelowej maszyny wirtualnej jest połączony z Internetem, gdy firma Microsoft wykonaj kopię zapasową maszyny wirtualnej.
+Rozszerzenie migawki maszyny Wirtualnej wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem, gdy podejmujemy kopii zapasowej maszyny wirtualnej.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujące JSON zawiera schemat rozszerzenia migawki maszyny Wirtualnej. Rozszerzenie wymaga Identyfikatora zadania — identyfikuje kopii zapasowej zadania, które uruchamiane migawki na Maszynie wirtualnej, identyfikator uri obiektu blob stan — w którym zapisywana jest stan operacji migawki zaplanowana godzina rozpoczęcia migawki, dzienniki obiektu blob identyfikatora uri - gdzie dzienniki odpowiadający migawki zadań są zapisywane, reprezentacja objstr dyski maszyny Wirtualnej i metadanych.  Ponieważ te ustawienia mają być traktowane jako poufne dane, powinny być przechowywane w chronionej konfiguracji. Dane Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest szyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że te ustawienia są zalecane do przekazania z usługi Kopia zapasowa Azure tylko w ramach zadania tworzenia kopii zapasowej.
+Następujący kod JSON zawiera schemat rozszerzenie migawki maszyny Wirtualnej. Rozszerzenie wymaga Identyfikatora zadania — identyfikuje zadanie kopii zapasowej co uruchomiło migawki na maszynie Wirtualnej, identyfikator uri obiektu blob stanu — w którym zapisywana jest stan operacji migawki zaplanowany czas rozpoczęcia migawki, dzienniki obiektów blob identyfikatora uri — gdzie dzienniki odpowiadający migawki zadania są zapisywane, reprezentacja objstr dysków maszyn wirtualnych i metadane.  Ponieważ te ustawienia powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że te ustawienia są zalecane do przekazania z usługi Kopia zapasowa Azure tylko jako część zadanie tworzenia kopii zapasowej.
 
 ```json
 {
@@ -70,11 +63,11 @@ Następujące JSON zawiera schemat rozszerzenia migawki maszyny Wirtualnej. Rozs
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
-| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | ciąg |
+| apiVersion | 2015-06-15 | date |
+| Identyfikator zadania: | e07354cf-041e-4370-929f-25a319ce8933_1 | ciąg |
 | commandStartTimeUTCTicks | 6.36458E + 17 | ciąg |
-| Ustawienia regionalne | en-us | ciąg |
-| objectStr | Kodowanie w tablicy identyfikatora uri sygnatury dostępu współdzielonego — "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/wirtualne dyski twarde\/vmwin1404ltsc201652903941.vhd? sv = 2014-02-14 & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017-11-09T14% 3A23% 3A28Z & żyj = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/\/sopattna8461.blob.core.windows.net\/dyskówVHD\/vmwin1404ltsc-20160629-122418.vhd? sv = 2014-02-14 & sr = b & sig = 2BS % 2FqMwzFMbamT5upwx05v8Q 5S0A6YDWvVwqPAkzWXVy % 3D & st = 2017-11-09T14% 3A23% 3A28Z & j = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/ \/ sopattna8461.blob.Core.Windows.NET\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd? sv = 2014-02-14 & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4% 3D & st = 2017-11-09T14% 3A23% 3A28Z & żyj = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/\/sopattna5365.blob.core.windows.net\/dyskówVHD\/vmwin1404ltsc-20160701-163922.vhd? sv = 2014-02-14 & sr = b & sig = 2BC % 2BNIAork oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 3D & st = 2017-11-09T14% 3A23% 3A28Z & j = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/ \/ sopattna5365.blob.Core.Windows.NET\/wirtualne dyski twarde\/vmwin1404ltsc-20170705-124311.vhd? sv = 2014-02-14 & sr = b & sig = 2FfrhJ71TFZh0Ni90m38bBs3zMl % 2FQ9rs0 ZUM9d28Mvvm % 3D & st = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & sp = rw "] | ciąg |
+| ustawienia regionalne | En-us | ciąg |
+| objectStr | Kodowanie tablicy identyfikatora uri sygnatury dostępu współdzielonego — "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/wirtualne dyski twarde\/vmwin1404ltsc201652903941.vhd? sv = 2014-02-14 & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/\/sopattna8461.blob.core.windows.net\/wirtualne dyski twarde\/vmwin1404ltsc-20160629-122418.vhd? sv = 2014-02-14 & sr = b & sig = 2BS % 2FqMwzFMbamT5upwx05v8Q 5S0A6YDWvVwqPAkzWXVy % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/ \/ sopattna8461.blob.Core.Windows.NET\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd? sv = 2014-02-14 & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4% 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/\/sopattna5365.blob.core.windows.net\/wirtualne dyski twarde\/vmwin1404ltsc-20160701-163922.vhd? sv = 2014-02-14 & sr = b & sig = 2BC % 2BNIAork oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/ \/ sopattna5365.blob.Core.Windows.NET\/wirtualne dyski twarde\/vmwin1404ltsc-20170705-124311.vhd? sv = 2014-02-14 & sr = b & sig = 2FfrhJ71TFZh0Ni90m38bBs3zMl % 2FQ9rs0 ZUM9d28Mvvm % 3D & st = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & sp = rw "] | ciąg |
 | logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | ciąg |
 | statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | ciąg |
 
@@ -82,12 +75,12 @@ Następujące JSON zawiera schemat rozszerzenia migawki maszyny Wirtualnej. Rozs
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Jednak zalecany sposób dodawania rozszerzenia migawki maszyny Wirtualnej na maszynie wirtualnej jest umożliwiając wykonanie kopii zapasowej na maszynie wirtualnej. Można to osiągnąć za pomocą szablonu usługi Resource Manager.  Przykładowy szablon Menedżera zasobów, który umożliwia wykonanie kopii zapasowej na maszynie wirtualnej można znaleźć w [Azure Szybki Start galerii](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Zalecanym sposobem dodawania rozszerzenie migawki maszyny Wirtualnej do maszyny wirtualnej jest jednak opcja włączania kopii zapasowych na maszynie wirtualnej. Można to osiągnąć przy użyciu szablonu usługi Resource Manager.  Przykładowy szablon usługi Resource Manager, który umożliwia tworzenie kopii zapasowych na maszynie wirtualnej można znaleźć na [w galerii platformy Azure Szybki Start](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
 
 
-## <a name="azure-cli-deployment"></a>Wdrożenia usługi Azure CLI
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure może służyć do włączenia kopii zapasowej na maszynie wirtualnej. Post włączenie wykonywania kopii zapasowych pierwszego zaplanowanego zadania tworzenia kopii zapasowej zainstaluje rozszerzenia migawki maszyny wirtualnej na maszynie Wirtualnej.
+Interfejs wiersza polecenia platformy Azure może służyć do włączenia kopii zapasowej na maszynie wirtualnej. Wpis Włącz kopię zapasową pierwszego zaplanowanego zadania tworzenia kopii zapasowej zainstaluje rozszerzenie migawki maszyny wirtualnej na maszynie Wirtualnej.
 
 ```azurecli
 az backup protection enable-for-vm \
@@ -97,17 +90,17 @@ az backup protection enable-for-vm \
     --policy-name DefaultPolicy
 ```
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i obsługa techniczna
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dane dotyczące stanu wdrożenia rozszerzenia może zostać pobrany z portalu Azure i przy użyciu wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu wiersza polecenia platformy Azure.
+Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając wiersza polecenia platformy Azure.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Dane wyjściowe wykonania rozszerzenie jest zarejestrowane w następującym pliku:
+Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym pliku:
 
 ```
 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
@@ -115,8 +108,8 @@ C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 
 ### <a name="error-codes-and-their-meanings"></a>Kody błędów i ich znaczenie
 
-Informacje dotyczące rozwiązywania problemów można znaleźć w [kopii zapasowej maszyny Wirtualnej Azure, przewodnik rozwiązywania problemów](../../backup/backup-azure-vms-troubleshoot.md).
+Informacje dotyczące rozwiązywania problemów można znaleźć na [kopii zapasowej maszyny Wirtualnej platformy Azure, przewodnik rozwiązywania problemów z](../../backup/backup-azure-vms-troubleshoot.md).
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ekspertów platformy Azure na [fora MSDN Azure i przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z platformy Azure obsługuje, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

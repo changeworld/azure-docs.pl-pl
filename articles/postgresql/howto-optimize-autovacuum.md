@@ -3,16 +3,15 @@ title: Optymalizowanie autovacuum w usłudze Azure Database dla serwera PostgreS
 description: W tym artykule opisano, jak można optymalizować autovacuum w usłudze Azure Database for postgresql w warstwie serwera.
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685994"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539793"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optymalizacja autovacuum w usłudze Azure Database dla serwera PostgreSQL 
 W tym artykule opisano, jak skutecznie zoptymalizować autovacuum w usłudze Azure Database for PostgreSQL.
@@ -34,7 +33,7 @@ Jeśli nie zostanie uruchomione odkurzający od czasu do czasu, może spowodowa�
 - Zwiększona we/wy.
 
 ## <a name="monitoring-bloat-with-autovacuum-queries"></a>Przeładowanie monitorowania za pomocą zapytań autovacuum
-Następujące przykładowe zapytanie służy do identyfikowania liczba krotek martwe i aktywne w tabeli o nazwie "XYZ": "Wybierz relname, n_dead_tup, n_live_tup, (n_dead_tup / n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_ tabele relname gdzie = "XYZ" order przez n_dead_tup DESC; "
+Następujące przykładowe zapytanie ma na celu określenie liczby martwe i aktywne krotek w tabeli o nazwie "XYZ": "Wybierz relname, n_dead_tup, n_live_tup, (n_dead_tup / n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables relname gdzie ="XYZ"order przez n_dead_tup DESC;"
 
 ## <a name="autovacuum-configurations"></a>Konfiguracje Autovacuum
 Parametry konfiguracji, które kontrolują autovacuum koncentrują się na dwa ważne pytania:

@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 973b5d3f40968790dc6153ae91d1638cb83202ee
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 77225c4d659755ec6de1a14bf67bd0a62659fb6a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384381"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753867"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Omówienie zdarzeń filtrowania dla subskrypcji usługi Event Grid
 
@@ -141,6 +141,7 @@ Zaawansowane filtrowanie ma następujące ograniczenia:
 * 512 znaków na wartość ciągu
 * Pięć wartości **w** i **nie** operatorów
 * Klucz może mieć tylko jeden poziom zagnieżdżenia (na przykład data.key1)
+* Schematy zdarzeń niestandardowych można filtrować tylko według pól najwyższego poziomu
 
 Ten sam klucz może służyć w więcej niż jeden filtr.
 

@@ -1,7 +1,7 @@
 ---
 title: Wykrywanie typy obrazów — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia dotyczące wykrywania typy obrazów przy użyciu interfejsu API przetwarzania obrazów.
+description: Pojęcia związane z funkcji wykrywania typu obrazu, interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: ecdbdd60af41ee14070f2f45dfe50875e38ac3b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 04062d5625126712c5f14c41d610d55caf4c28b5
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342011"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583106"
 ---
-# <a name="detecting-image-types"></a>Wykrywanie typów obrazów
+# <a name="detecting-image-types-with-computer-vision"></a>Wykrywanie typy obrazów za pomocą wizualizacji komputerowej
 
 Przetwarzanie obrazów można analizować typu zawartości obrazów, wskazując, czy obraz jest obrazem clipart, ocena prawdopodobieństwo skalowania lub rysowanie linii.
 
@@ -27,7 +28,7 @@ Przetwarzania obrazów analizuje obrazu i ocenia prawdopodobieństwo obrazu clip
 
 | Wartość | Znaczenie |
 |-------|---------|
-| 0 | Inne niż clipart |
+| 0 | Obiekt inny niż clipart |
 | 1 | niejednoznaczne |
 | 2 | Normalny clipart |
 | 3 | dobre clipart |
@@ -36,7 +37,7 @@ Przetwarzania obrazów analizuje obrazu i ocenia prawdopodobieństwo obrazu clip
 
 Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gdy klasyfikacja prawdopodobieństwo obrazów przykład trwa clipart.
 
-![Wizja analizowanie ser clipart](./Images/cheese_clipart.png)
+![Obraz wycinka ser](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -53,7 +54,7 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 }
 ```
 
-![Wizja analizowanie Yard DOM](./Images/house_yard.png)
+![Niebieski dom i yard frontonu](./Images/house_yard.png)
 
 ```json
 {
@@ -78,7 +79,7 @@ Przetwarzania obrazów analizuje obrazu i zwraca wartość logiczną wskazując�
 
 Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gdy wskazujące, czy obrazy przykład rysunki.
 
-![Wizja analizowanie Lion rysowania](./Images/lion_drawing.png)
+![Rysowanie linii obraz lion](./Images/lion_drawing.png)
 
 ```json
 {
@@ -95,7 +96,7 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 }
 ```
 
-![Wizja analizowanie Kwiatek](./Images/flower.png)
+![Białe Kwiatek zielonym tłem](./Images/flower.png)
 
 ```json
 {

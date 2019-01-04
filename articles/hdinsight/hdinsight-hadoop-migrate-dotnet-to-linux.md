@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384206"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714665"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrowanie rozwiązań .NET dla oparte na Windows HDInsight do HDInsight opartych na systemie Linux
 
@@ -24,7 +24,7 @@ HDInsight opartych na systemie Linux klastrów użyj [Mono (https://mono-project
 
 Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6. Aby uzyskać więcej informacji na wersję platformy Mono dołączone HDInsight, zobacz [wersje składników HDInsight](hdinsight-component-versioning.md). Aby zainstalować określoną wersję platformy Mono, zobacz [Instalowanie lub aktualizowanie środowiska Mono](hdinsight-hadoop-install-mono.md) dokumentu.
 
-Aby uzyskać więcej informacji na temat zgodności platformy Mono i .NET, zobacz [zgodności platformy Mono (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
+Aby uzyskać więcej informacji na temat zgodności platformy Mono i .NET, zobacz [zgodności platformy Mono (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
 
 > [!IMPORTANT]  
 > W ramach platformy SCP.NET jest zgodny z platformy Mono. Aby uzyskać więcej informacji na temat korzystania z platformy SCP.NET dotyczącą platformy Mono, zobacz [Użyj programu Visual Studio umożliwiające tworzenie topologii języka C# dla Storm Apache na HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -52,7 +52,7 @@ Aby uzyskać więcej informacji na temat zgodności platformy Mono i .NET, zobac
 
 ## <a name="manual-portability-analysis"></a>Przenośność ręcznej analizy
 
-Wykonaj ręczne audyt kodu przy użyciu informacji w [przenośność aplikacji (http://www.mono-project.com/docs/getting-started/application-portability/) ](http://www.mono-project.com/docs/getting-started/application-portability/) dokumentu.
+Wykonaj ręczne audyt kodu przy użyciu informacji w [przenośność aplikacji (https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) dokumentu.
 
 ## <a name="modify-and-build"></a>Modyfikowanie i tworzenie
 

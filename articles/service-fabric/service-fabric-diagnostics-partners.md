@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 43b7b2e7b4f4da4939e08a68bc2ac7ea0a2c2a6b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: f7bf5d521f4bcb5672ff1d710a08bed2e0872545
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49459029"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974407"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Usługa Azure Service Fabric monitorowania partnerów
 
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak jeden monitorować ich aplikacji usługi Service Fa
 
 ## <a name="dynatrace"></a>Rozwiązania Dynatrace
 
-Naszej integracji za pomocą rozwiązania Dynatrace zapewnia wiele poza pole funkcje do monitorowania klastrów usługi Service Fabric. Instalowanie Dynatrace OneAgent na wystąpieniach zestawu skalowania maszyn wirtualnych zapewnia liczniki wydajności i topologii wdrożenia usługi Service Fabric do poziomu aplikacji. Dynatrace również jest doskonałym wyborem dla monitorowania lokalnego. Zapoznaj się z jedną z wymienionych w funkcji [ogłoszenie](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) i [instrukcje](https://www.dynatrace.com/support/help/cloud-platforms/azure/how-do-i-monitor-azure-service-fabric-applications/) umożliwiające Dynatrace w klastrze. 
+Naszej integracji za pomocą rozwiązania Dynatrace zapewnia wiele poza pole funkcje do monitorowania klastrów usługi Service Fabric. Instalowanie Dynatrace OneAgent na wystąpieniach zestawu skalowania maszyn wirtualnych zapewnia liczniki wydajności i topologii wdrożenia usługi Service Fabric do poziomu aplikacji. Dynatrace również jest doskonałym wyborem dla monitorowania lokalnego. Zapoznaj się z jedną z wymienionych w funkcji [ogłoszenie](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) i [instrukcje](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) umożliwiające Dynatrace w klastrze. 
 
 ## <a name="datadog"></a>Pomocą usługi Datadog
 
@@ -43,7 +43,7 @@ New Relic to kolejne narzędzie zarządzania wydajnością aplikacji, które dob
 
 ## <a name="elk"></a>ELK 
 
-Stos ELK to zbiór technologie typu open source: Elasticsearch, Logstash i Kibana. Używając tych w połączeniu, można zbierać, przechowywać i analizować dane monitorowania i diagnostyki usługi Service Fabric. Mamy zapoznać się z samouczkiem jak to zrobić przy użyciu natywnych aplikacji Java usługi Service Fabric [tutaj](service-fabric-tutorial-java-elk.md). 
+Stos ELK to zbiór technologie typu open source: Usługa Elasticsearch, Logstash i Kibana. Używając tych w połączeniu, można zbierać, przechowywać i analizować dane monitorowania i diagnostyki usługi Service Fabric. Mamy zapoznać się z samouczkiem jak to zrobić przy użyciu natywnych aplikacji Java usługi Service Fabric [tutaj](service-fabric-tutorial-java-elk.md). 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

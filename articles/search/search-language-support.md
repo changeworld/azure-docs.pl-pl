@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 3f88965e0d48a9ed3e9a91b4df42a79b83d2a79b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313330"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631553"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Tworzenie indeksu dla dokumentów w wielu językach w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Poniżej przedstawiono zrzuty ekranu przedstawiające bloków w witrynie Azure P
 ![][2]
 *Wybierz jedną z obsługiwanych analizatory dla każdego pola*
 
-Domyślnie wszystkie pola z możliwością wyszukiwania używają [analizator Lucene standardowa](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) który jest niezależny od języka. Aby wyświetlić pełną listę obsługiwanych analizatorów, zobacz [Obsługa języków w usłudze Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Domyślnie wszystkie pola z możliwością wyszukiwania używają [analizator Lucene standardowa](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) który jest niezależny od języka. Aby wyświetlić pełną listę obsługiwanych analizatorów, zobacz [Obsługa języków w usłudze Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
 
 Po wybraniu analizatora języków dla pola będą używane przy każdym żądaniu indeksowanie i wyszukiwanie dla tego pola. Gdy zapytanie jest wystawiony na podstawie wielu pól za pomocą różnych analizatorów, zapytania będą przetwarzane niezależnie przez prawo analizatory dla każdego pola.
 
@@ -81,7 +81,7 @@ Czasami język agenta zapytania nie jest znany, w którym to przypadku zapytania
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
-Jeśli jesteś deweloperem platformy .NET, pamiętaj, że możesz skonfigurować użyciu przez analizatory języka [zestawu .NET SDK usługi Azure Search](http://www.nuget.org/packages/Microsoft.Azure.Search). Najnowsza wersja zapewnia obsługę również analizatory języka firmy Microsoft.
+Jeśli jesteś deweloperem platformy .NET, pamiętaj, że możesz skonfigurować użyciu przez analizatory języka [zestawu .NET SDK usługi Azure Search](https://www.nuget.org/packages/Microsoft.Azure.Search). Najnowsza wersja zapewnia obsługę również analizatory języka firmy Microsoft.
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

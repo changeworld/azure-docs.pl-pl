@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386829"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582919"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
@@ -32,7 +32,7 @@ W tym artykule dowiesz się jak:
 
 W tej sekcji utworzysz przykładowe usługi IoT Edge rozwiązania zawierającego testy jednostkowe, które można wykonać w ramach procesu kompilacji. Przed zgodnie ze wskazówkami w tej sekcji, wykonaj kroki opisane w [tworzenia rozwiązań usługi IoT Edge z wieloma modułami w programie Visual Studio Code](how-to-develop-multiple-modules-vscode.md).
 
-1. W palecie poleceń programu VS Code, typ, a następnie uruchom polecenie **usługi Azure IoT Edge: Nowe rozwiązanie IoT Edge**. Następnie wybierz folder obszaru roboczego, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Tworzenie modułu C# (**FilterModule**) jako pierwszego modułu, w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślne opiera się na lokalnych rejestru platformy Docker (`localhost:5000/filtermodule`). Zmień go na usługę Azure Container Registry (`<your container registry address>/filtermodule`) lub usługi Docker Hub dalsze ciągłej integracji.
+1. W palecie poleceń programu VS Code, typ, a następnie uruchom polecenie **usługi Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). Następnie wybierz folder obszaru roboczego, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Tworzenie modułu C# (**FilterModule**) jako pierwszego modułu, w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślne opiera się na lokalnych rejestru platformy Docker (`localhost:5000/filtermodule`). Zmień go na usługę Azure Container Registry (`<your container registry address>/filtermodule`) lub usługi Docker Hub dalsze ciągłej integracji.
 
     ![Konfigurowanie usługi Azure Container Registry](./media/how-to-ci-cd/acr.png)
 
@@ -40,7 +40,7 @@ W tej sekcji utworzysz przykładowe usługi IoT Edge rozwiązania zawierającego
 
 3. Przykład rozwiązania usługi IoT Edge jest teraz gotowy. Domyślnego języka C# modułu działa jako moduł potok komunikatów. W `deployment.template.json`, zostanie wyświetlony, to rozwiązanie zawiera dwa moduły. Komunikat zostanie wygenerowane z `tempSensor` moduł i zostanie bezpośrednio przekazać w potoku za pomocą `FilterModule`, następnie wysyłane do usługi IoT hub.
 
-4. Zapisz te projekty, a następnie zatwierdzić do repozytoriów platformy Azure.
+4. Zapisz te projekty, a następnie zatwierdzenia w repozytorium Azure repozytoriów.
     
 > [!NOTE]
 > Aby uzyskać więcej informacji o korzystaniu z repozytoriów platformy Azure, zobacz [udostępnić swój kod za pomocą programu Visual Studio i repozytoria, Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -69,11 +69,11 @@ W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do 
     
     * Jeśli chcesz tworzyć moduły w amd64 platformy dla kontenerów systemu Linux, wybierz opcję **hostowanych 1604 Ubuntu**
     * Jeśli chcesz tworzyć moduły w amd64 platformy dla kontenerów Windows, wybierz opcję **hostowany program VS2017** 
-    * Jeśli chcesz tworzyć moduły w arm32v7 platformy dla kontenerów systemu Linux, musisz Set agenta kompilacji, klikając **Zarządzaj** przycisku.
+    * Jeśli chcesz tworzyć moduły w arm32v7 platformy dla kontenerów systemu Linux, musisz Set agenta kompilacji, odwiedzając **Zarządzaj** przycisku.
     
     ![Konfigurowanie puli agentów kompilacji](./media/how-to-ci-cd/configure-env.png)
 
-1. Zadanie agenta, kliknij przycisk "+" można dodać trzy zadania w potoku kompilacji. Pierwsze dwa są z **usługi Azure IoT Edge**. I trzeci pochodzi z **publikowanie artefaktów kompilacji**
+1. Zadanie agenta, Otwórz "+", aby dodać trzech zadań w potoku kompilacji. Pierwsze dwa są z **usługi Azure IoT Edge**. I trzeci pochodzi z **publikowanie artefaktów kompilacji**
     
     ![Dodawanie podzadań do procesu kompilacji](./media/how-to-ci-cd/add-tasks.png)
 
@@ -93,13 +93,13 @@ W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do 
 
     ![Włącz wyzwalacz ciągłej integracji](./media/how-to-ci-cd/configure-trigger.png)
 
-    Zapisz nowy potok kompilacji. Kliknij przycisk **Zapisz**.
+    Zapisz nowy potok kompilacji za pomocą **Zapisz** przycisku.
 
 
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Konfigurowanie Azure potoków ciągłego wdrażania
 W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatycznego uruchamiania podczas potok kompilacji umieszcza artefaktów i ukazują dzienników wdrażania w potokach platformy Azure.
 
-1. W **wersji** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki wydań, wybierz opcję **+ nowy** przycisk, a następnie kliknij przycisk **+ nowy potoku wydania**.  
+1. W **wersji** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki wydań, wybierz opcję **+ nowy** i wybrać **+ nowy potoku wydania**.  
 
     ![Dodaj potoku tworzenia wersji](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -115,7 +115,7 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
 
     ![Dodaj artefakty](./media/how-to-ci-cd/add-artifacts.png)  
     
-    W **Dodawanie strony artefaktu**, wybierz typ źródła **kompilacji**. Następnie wybierz projekt i potoku kompilacji, który został utworzony. Następnie kliknij przycisk **Dodaj**.
+    W **Dodawanie strony artefaktu**, wybierz typ źródła **kompilacji**. Następnie wybierz projekt i potoku kompilacji, który został utworzony. Następnie wybierz pozycję **Dodaj**.
 
     ![Dodaj artefakt kompilacji](./media/how-to-ci-cd/add-an-artifact.png)
 
@@ -127,7 +127,7 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
 
     ![Skonfiguruj zadania pytań i odpowiedzi](./media/how-to-ci-cd/view-stage-tasks.png)
 
-   Zadania wdrażania jest rozróżniana jest wielkość liter, platformy, co oznacza, możesz wybrać dowolną **hostowany program VS2017** lub **hostowanych 1604 Ubuntu** w **puli agenta** (lub inne zarządzane z wykorzystaniem przez agentów samodzielnie). Kliknij przycisk "+" i Dodaj jedno zadanie.
+   Zadania wdrażania jest rozróżniana jest wielkość liter, platformy, co oznacza, możesz wybrać dowolną **hostowany program VS2017** lub **hostowanych 1604 Ubuntu** w **puli agenta** (lub inne zarządzane z wykorzystaniem przez agentów samodzielnie). Wybierz pozycję "+" i Dodaj jedno zadanie.
 
     ![Dodaj zadania dla pytań i odpowiedzi](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -135,13 +135,13 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
 
     ![Wdrażanie w odpowiedzi na pytania](./media/how-to-ci-cd/deploy-to-qa.png)
 
-    Zapisz nowy potok wersji. Kliknij przycisk **Zapisz**. A następnie kliknij przycisk **potoku** aby wrócić do potoku.
+    Zapisz nowy potok wersji za pomocą **Zapisz** przycisku. A następnie wybierz **potoku** aby wrócić do potoku.
 
 6. Drugi etap to w środowisku produkcyjnym. Aby dodać nowy etap "PROD", można sklonować etap "QA" i Zmień nazwę sklonowanego etap **PROD**,
 
     ![Klonowanie etapu](./media/how-to-ci-cd/clone-stage.png)
 
-7. Skonfiguruj zadania w środowisku produkcyjnym. Załóżmy, że masz kilka usługi IoT Edge urządzenia oznaczone jako "prod", w konfiguracji zadania aktualizacji warunek docelowy "prod" i Ustaw identyfikator wdrożenia jako "Wdróż prod" w ustawieniach zaawansowanych. Kliknij przycisk **Zapisz**. A następnie kliknij przycisk **potoku** aby wrócić do potoku.
+7. Skonfiguruj zadania w środowisku produkcyjnym. Załóżmy, że masz kilka usługi IoT Edge urządzenia oznaczone jako "prod", w konfiguracji zadania aktualizacji warunek docelowy "prod" i Ustaw identyfikator wdrożenia jako "Wdróż prod" w ustawieniach zaawansowanych. Zapisz go z **Zapisz** przycisku. A następnie wybierz **potoku** aby wrócić do potoku.
     
     ![Wdrażanie w środowisku produkcyjnym](./media/how-to-ci-cd/deploy-to-prod.png)
 
@@ -151,7 +151,7 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
 
         ![Otwórz warunki przed wdrożeniem](./media/how-to-ci-cd/pre-deploy-conditions.png)    
 
-    2. Ustaw **włączone** w **zatwierdzenia przed wdrożeniem**. A następnie wypełnij **osoby zatwierdzające** danych wejściowych. Następnie kliknij przycisk **Save** (Zapisz).
+    2. Ustaw **włączone** w **zatwierdzenia przed wdrożeniem**. A następnie wypełnij **osoby zatwierdzające** danych wejściowych. Następnie zapisz go z **Zapisz** przycisku.
     
         ![Zestaw warunków](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
@@ -165,7 +165,7 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
 
 W tej sekcji spowoduje wyzwolenie kompilacji zapewnienie potoku ciągłej integracji/ciągłego Dostarczania pracy. Następnie sprawdź, że wdrożenie zakończy się pomyślnie.
 
-1. Aby wyzwolić zadanie kompilacji, możesz wypchnięciu zatwierdzenia do repozytorium kodu źródłowego lub ręcznie wyzwolić ją. Możesz wyzwolić zadanie kompilacji w potoku kompilacji, klikając **kolejki** przycisku tak jak w poniższym zrzucie ekranu.
+1. Aby wyzwolić zadanie kompilacji, możesz wypchnięciu zatwierdzenia do repozytorium kodu źródłowego lub ręcznie wyzwolić ją. Możesz wyzwolić zadanie kompilacji w potoku kompilacji, wybierając **kolejki** przycisku tak jak w poniższym zrzucie ekranu.
 
     ![Ręczne wyzwalacza](./media/how-to-ci-cd/manual-trigger.png)
 

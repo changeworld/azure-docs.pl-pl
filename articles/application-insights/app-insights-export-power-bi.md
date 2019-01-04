@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8bb36111da04ad44f5c13ef3dce2b1684784094e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993358"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808388"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](https://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
@@ -25,7 +25,7 @@ ms.locfileid: "52993358"
 Istnieją trzy metody eksportowania danych usługi Application Insights do usługi Power BI:
 
 * [**Eksportuj zapytań analitycznych**](#export-analytics-queries). Jest to preferowana metoda. Pisać zapytania ma i eksportowania ich do usługi Power BI. Na pulpicie nawigacyjnym, wraz z wszelkimi innymi danymi, można umieścić tego zapytania.
-* [**Eksport ciągły i Azure Stream Analytics**](app-insights-export-stream-analytics.md). Ta metoda jest przydatna, jeśli chcesz przechowywać dane przez długi czas. Jeśli użytkownik nie ma to wymaganie dotyczące przechowywania danych rozszerzonych, użyj metody zapytania usługi analytics eksportu. Eksport ciągły i Stream Analytics obejmuje więcej pracy, aby skonfigurować i narzut na przechowywanie dodatkowych.
+* [**Eksport ciągły i Azure Stream Analytics**](../azure-monitor/app/export-stream-analytics.md). Ta metoda jest przydatna, jeśli chcesz przechowywać dane przez długi czas. Jeśli użytkownik nie ma to wymaganie dotyczące przechowywania danych rozszerzonych, użyj metody zapytania usługi analytics eksportu. Eksport ciągły i Stream Analytics obejmuje więcej pracy, aby skonfigurować i narzut na przechowywanie dodatkowych.
 * [**Usługa Power BI karty**](#power-pi-adapter). Wstępnie zdefiniowane zbiór wykresy, ale możesz dodawać własne zapytania z innych źródeł.
 
 > [!NOTE]
@@ -119,7 +119,7 @@ Jeśli zmniejszyć zestaw danych pochodzących z zapytania analizy nie spełnia 
  ```
 
 ## <a name="about-sampling"></a>Temat próbkowania
-Jeśli Twoja aplikacja przesyła dużą ilość danych, można korzystać z funkcji adaptacyjnego próbkowania, która wysyła tylko ułamka telemetrii. Jest taka sama wartość true, jeśli ręcznie ustawiono próbkowania w zestawie SDK lub podczas pozyskiwania danych. [Dowiedz się więcej na temat próbkowania](app-insights-sampling.md).
+W zależności od ilości danych wysyłanych przez aplikację możesz chcieć użyć funkcja adaptacyjnego próbkowania, który wysyła tylko ułamka telemetrii. Jest taka sama wartość true, jeśli ręcznie ustawiono próbkowania w zestawie SDK lub podczas pozyskiwania danych. [Dowiedz się więcej na temat próbkowania](app-insights-sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Usługa Power BI karty (przestarzałe)
 Ta metoda tworzy pełny pulpit nawigacyjny danych telemetrycznych. Początkowy zestaw danych jest wstępnie zdefiniowane, ale większej ilości danych można dodać do niego.

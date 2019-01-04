@@ -4,27 +4,23 @@ description: W tym artykule opisano, struktury i właściwości szablonów usłu
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8f1fc9eb5e7b19f25af2005cb3a99cb320cba640
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 96dcb584ac23a2298463524add1aeb971f29e24b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214549"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725885"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
-
-[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="template-format"></a>Format szablonu
 
@@ -44,7 +40,7 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| $schema |Yes |Lokalizacja pliku schematu JSON, który zawiera opis wersji języka szablonu. Użyj adresu URL w poprzednim przykładzie. |
+| $schema |Yes |Lokalizacja pliku schematu JSON, który zawiera opis wersji języka szablonu.<br><br> W przypadku wdrożenia grupy zasobów, użyj `http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>W przypadku wdrożeń subskrypcji i użycia `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentversion — |Yes |Wersja szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. Podczas wdrażania zasobów przy użyciu szablonu, ta wartość może służyć do upewnij się, że używany jest odpowiedni szablon. |
 | parameters |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
 | Zmienne |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
@@ -312,8 +308,11 @@ Możesz również są ograniczone do:
 
 Pewne ograniczenia szablonu może przekroczyć przy użyciu zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [podczas wdrażania zasobów platformy Azure, za pomocą połączonymi szablonami](resource-group-linked-templates.md). Aby zmniejszyć liczbę parametrów, zmienne ani danych wyjściowych, możesz połączyć kilka wartości do obiektu. Aby uzyskać więcej informacji, zobacz [obiektów jako parametrów](resource-manager-objects-as-parameters.md).
 
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
+
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
 * Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby połączyć wiele szablonów podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Aby połączyć kilka szablonów, podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
 * Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager do użycia globalnie na platformie Azure, w chmurach suwerennych platformy Azure i w usłudze Azure Stack, zobacz [Develop Azure Resource Manager templates for cloud consistency (Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze)](templates-cloud-consistency.md).

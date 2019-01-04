@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057105"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789471"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Wprowadzenie do monitorowania usługi w chmurze
 
-Możesz monitorować kluczowe metryki wydajności dla dowolnej usługi w chmurze. Każdy rola usługi w chmurze zbiera dane minimalne: użycie procesora CPU, użycia sieci i wykorzystanie dysku. Jeśli usługa w chmurze ma `Microsoft.Azure.Diagnostics` rozszerzenia stosowane do roli tej roli może zbierać dodatkowe punkty danych. Ten artykuł zawiera wprowadzenie do usługi Azure Diagnostics dla usług w chmurze.
+Możesz monitorować kluczowe metryki wydajności dla dowolnej usługi w chmurze. Rola usługi w chmurze co zbiera dane minimalne: Użycie procesora CPU, użycia sieci i wykorzystanie dysku. Jeśli usługa w chmurze ma `Microsoft.Azure.Diagnostics` rozszerzenia stosowane do roli tej roli może zbierać dodatkowe punkty danych. Ten artykuł zawiera wprowadzenie do usługi Azure Diagnostics dla usług w chmurze.
 
 Podstawowe monitorowanie danych licznika wydajności z wystąpień roli jest próbkowany i zebrane w odstępach 3-minutowy. Te podstawowe dane monitorowania nie są przechowywane na koncie magazynu i ma bez dodatkowych kosztów skojarzonych z nim.
 
@@ -93,13 +93,13 @@ Prawdopodobnie masz dwa **.cscfg** pliki jedną o nazwie **ServiceConfiguration.
 
 ## <a name="use-application-insights"></a>Korzystanie z usługi Application Insights
 
-Podczas publikowania usługi w chmurze w programie Visual Studio, możesz skorzystać z opcji do wysyłania danych diagnostycznych do usługi Application Insights. Można utworzyć Application Insights w usłudze Azure resource, w tym czasie, lub wysłać dane do istniejącego zasobu platformy Azure. Usługi w chmurze mogą być monitorowane przez usługę Application Insights dla dostępności, wydajności, błędów i użycia. Niestandardowe wykresy można dodać do usługi Application Insights tak, aby zobaczyć dane, mają największe znaczenie. Dane wystąpienia roli mogą być zbierane przy użyciu zestawu SDK usługi Application Insights w projekcie usługi w chmurze. Aby uzyskać więcej informacji na temat integracji usługi Application Insights, zobacz [usługi Application Insights z usługami w chmurze](../application-insights/app-insights-cloudservices.md).
+Podczas publikowania usługi w chmurze w programie Visual Studio, możesz skorzystać z opcji do wysyłania danych diagnostycznych do usługi Application Insights. Można utworzyć Application Insights w usłudze Azure resource, w tym czasie, lub wysłać dane do istniejącego zasobu platformy Azure. Usługi w chmurze mogą być monitorowane przez usługę Application Insights dla dostępności, wydajności, błędów i użycia. Niestandardowe wykresy można dodać do usługi Application Insights tak, aby zobaczyć dane, mają największe znaczenie. Dane wystąpienia roli mogą być zbierane przy użyciu zestawu SDK usługi Application Insights w projekcie usługi w chmurze. Aby uzyskać więcej informacji na temat integracji usługi Application Insights, zobacz [usługi Application Insights z usługami w chmurze](../azure-monitor/app/cloudservices.md).
 
 Należy pamiętać, że podczas korzystania z usługi Application Insights, aby wyświetlić liczniki wydajności (i inne ustawienia) został określony za pomocą rozszerzenia diagnostyki Azure Windows, możesz jedynie Uzyskaj więcej możliwości dzięki integracji zestawu SDK usługi Application Insights do usługi role sieci web i proces roboczy.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Dowiedz się więcej o usłudze Application Insights z usługami w chmurze](../application-insights/app-insights-cloudservices.md)
+- [Dowiedz się więcej o usłudze Application Insights z usługami w chmurze](../azure-monitor/app/cloudservices.md)
 - [Skonfiguruj liczniki wydajności](diagnostics-performance-counters.md)
 

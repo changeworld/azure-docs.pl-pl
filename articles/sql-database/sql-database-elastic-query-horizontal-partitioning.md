@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: de96de96d68164d021f8b823e69bc52322642aa7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 02942cafe6e1532a6829ad7a6761b825739a1e85
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865407"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597974"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie we wszystkich bazach danych w chmurze skalowanych w poziomie (wersja zapoznawcza)
 ![Zapytanie między fragmentami][1]
@@ -140,7 +140,7 @@ Klauzula dystrybucji określa dystrybucję danych używane dla tej tabeli. Proce
 2. **REPLIKOWANE** oznacza identyczne kopie tabeli w każdej bazie danych. Jest odpowiedzialny za zapewnienie, że repliki są identyczne w bazach danych.
 3. **ROUND\_OKRĘŻNE** oznacza, że tabela jest poziomo podzielona na partycje za pomocą metody dystrybucji zależnych od aplikacji. 
 
-**Warstwa danych odwołania**: tabeli zewnętrznej DDL odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapowania fragmentów, co zapewnia tabeli zewnętrznej informacje niezbędne do zlokalizowania wszystkich baz danych w warstwie danych. 
+**Warstwa danych odwołania**: Tabela zewnętrzna DDL odnosi się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapowania fragmentów, co zapewnia tabeli zewnętrznej informacje niezbędne do zlokalizowania wszystkich baz danych w warstwie danych. 
 
 ### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskać dostęp do podstawowych tabel zdalnych, w obszarze poświadczenia podane w definicji zewnętrznego źródła danych. Należy unikać niepożądane podniesienia uprawnień za pomocą poświadczeń z zewnętrznym źródłem danych. Na użytek GRANT lub REVOKE tabeli zewnętrznej po prostu tak, jakby była zwykłą tabelę.  
@@ -169,9 +169,9 @@ Następujące zapytanie wykonuje trzy kierunkową sprzężenie magazynów, zamó
 Elastyczne zapytanie wprowadza również procedury przechowywanej, która zapewnia bezpośredni dostęp do fragmenty. Jest wywoływana procedura składowana [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania procedur składowanych zdalnego lub kod T-SQL na zdalne bazy danych. Jego przyjmuje następujące parametry: 
 
 * Nazwa źródła danych (nvarchar): Nazwa zewnętrznego źródła danych typu RDBMS. 
-* Zapytania (nvarchar): zapytanie T-SQL do wykonania w poszczególnych fragmentach. 
-* Deklaracja parametru (nvarchar) — opcjonalne: ciąg znaków z definicji typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql). 
-* Lista wartości parametrów - opcjonalne: rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
+* Zapytanie (nvarchar): Zapytania T-SQL do wykonania w poszczególnych fragmentach. 
+* Deklaracja parametru (nvarchar) — opcjonalne: Ciąg z danymi definicje typów dla parametrów używanych w parametrze zapytania (na przykład sp_executesql). 
+* Lista wartości parametrów - opcjonalne: Rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
 
 PS\_wykonania\_zdalnego używa zewnętrzne źródło danych podane parametrów wywołania do wykonania danej instrukcji języka T-SQL na zdalnym baz danych. Łączenie się z bazy danych Menedżera shardmap i zdalnymi bazami danych używa poświadczeń do zewnętrznego źródła danych.  
 

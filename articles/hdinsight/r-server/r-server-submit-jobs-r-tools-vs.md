@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497121"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604535"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
 
@@ -35,7 +35,7 @@ RTVS zwiększa R przepływu pracy, udostępniając narzędzia, takie jak [okno i
 
 4. Zainstaluj [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na swojej maszynie. ML Server zapewnia [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) i `RxSpark` funkcji.
 
-5. Zainstaluj [PuTTY](http://www.putty.org/) zapewnienie kontekst obliczeniowy pozwala uruchomić `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight.
+5. Zainstaluj [PuTTY](https://www.putty.org/) zapewnienie kontekst obliczeniowy pozwala uruchomić `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight.
 
 6. Masz możliwość zastosowania ustawień do nauki o danych do środowiska programu Visual Studio, co zapewnia nowy układ obszaru roboczego dla narzędzia języka R.
     1. Aby zapisać bieżące ustawienia programu Visual Studio, należy użyć **Narzędzia > Import i eksport ustawień** polecenia, a następnie wybierz **Eksportuj wybrane ustawienia środowiska** i określ nazwę pliku. Aby przywrócić te ustawienia, użyj tego samego polecenia, a następnie wybierz pozycję **Importuj ustawienia wybranego środowiska**.
@@ -44,7 +44,7 @@ RTVS zwiększa R przepływu pracy, udostępniając narzędzia, takie jak [okno i
 
         ![Ustawienia do nauki o danych...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Przy użyciu metody w kroku 1, można także zapisać i przywrócić układ osób przetwarzających dane spersonalizowane, zamiast powtarzania **ustawienia do nauki o danych** polecenia.
 
 ## <a name="execute-local-r-methods"></a>Wykonanie metody R lokalne

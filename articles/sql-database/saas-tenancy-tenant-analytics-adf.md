@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: MightyPen
+ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606048"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Poznaj analizy SaaS przy użyciu usługi Azure SQL Database, SQL Data Warehouse, Data Factory i Power BI
 
@@ -142,7 +142,7 @@ W tej sekcji przedstawiono obiekty utworzone w usłudze data factory. Następuj�
 Na stronie przeglądu, przełącz się do **Autor** kartę w lewym panelu i sprawdź, czy dostępne są trzy [potoki](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) i trzema [zestawów danych](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) utworzone.
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-Są trzy zagnieżdżonych potoków: SQLDBToDW DBCopy i TableCopy.
+Trzy potoki zagnieżdżone są: SQLDBToDW DBCopy i TableCopy.
 
 **Potok 1 - SQLDBToDW** wyszukuje nazwy baz danych dzierżaw, przechowywane w bazie danych wykazów (nazwa tabeli: [__ShardManagement]. [ ShardsGlobal]) i dla każdej bazy danych dzierżawy, wykonuje **DBCopy** potoku. Po zakończeniu podane **sp_TransformExtractedData** schematu procedury składowanej jest wykonywany. Tę procedurę składowaną przekształca załadowanych danych w tabelach przemieszczania i wypełnia tabele schematu gwiazdy.
 
@@ -260,6 +260,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Gratulacje!
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - Dodatkowe [samouczki nawiązujące do aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 27fd02503881ef1f0587ccb0301f8490101d5bcb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841680"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720649"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -32,20 +32,24 @@ Wszystkie certyfikaty, hasła, bezpieczne ciągów i kluczy używanych przez inf
 
 - **Zewnętrzne wpisy tajne**  
 Certyfikaty usług infrastruktury usługi dołączonej do Internetu, które są dostarczane przez podmiot stosu usługi Azure. W tym certyfikaty dla następujących usług: 
-    - Portal administratora 
-    - Publiczny 
-    - Administrator usługi Azure Resource Manager 
-    - Globalny usługi Azure Resource Manager 
-    - Administrator usługi Keyvault 
-    - Keyvault 
-    - Usługi ACS (w tym obiektów blob, tabela i queue storage) 
-    - ADFS<sup>*</sup>
-    - Wykres<sup>*</sup>
+  - Portal administratora  
+  - Publiczny  
+  - Administrator usługi Azure Resource Manager  
+  - Globalny usługi Azure Resource Manager  
+  - Administrator usługi Keyvault  
+  - Keyvault  
+  - Host rozszerzenia administratora  
+  - Usługi ACS (w tym obiektów blob, tabela i queue storage)  
+  - USŁUGI AD FS *  
+  - Wykres *  
 
-   <sup>*</sup> Dotyczy tylko w przypadku dostawcy tożsamości środowiska Active Directory federacyjnego Services (AD FS).
+\* Dotyczy tylko w przypadku dostawcy tożsamości środowiska Active Directory federacyjnego Services (AD FS).
 
-> [!NOTE]  
+> [!Note]  
 > Wszystkie inne bezpieczeństwo kluczy i ciągów, w tym kontrolera zarządzania płytą GŁÓWNĄ i przełączać hasła, hasła do kont użytkowników i administratorów są nadal ręcznie aktualizowane przez administratora. 
+
+> [!Note]  
+> Począwszy od wersji 1811 usługi Azure Stack, klucza tajnego obrotu został rozdzielony certyfikatów wewnętrznych i zewnętrznych. 
 
 W celu zachowania integralności infrastruktury Azure Stack, Operatorzy będą potrzebowali możliwości okresowo Obróć klucze tajne swoją infrastrukturę, częstotliwości, które są zgodne z wymaganiami dotyczącymi zabezpieczeń w organizacji.
 
@@ -65,7 +69,7 @@ Usługa Azure Stack obsługuje obrotu wpisu tajnego za pomocą certyfikatów zew
 |Z publicznego<sup>*</sup>|Aby z podpisem własnym|Nieobsługiwane||
 |Z publicznego<sup>*</sup>|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
 
-<sup>*</sup> W tym miejscu publiczne urzędy certyfikacji są te, które są dostępne w ramach programu Windows zaufanych głównych. Pełną listę można znaleźć [programu zaufanych certyfikatów głównych firmy Microsoft: uczestników (począwszy od 27 czerwca 2017 r.)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+<sup>*</sup>Wskazuje, że publiczne urzędy certyfikacji są te, które są dostępne w ramach programu Windows zaufanych głównych. Pełną listę można znaleźć w artykule [programu zaufanych certyfikatów głównych firmy Microsoft: Uczestnicy (począwszy od 27 czerwca 2017 r.)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 
 ## <a name="alert-remediation"></a>Korygowanie alertu
 
@@ -77,26 +81,35 @@ W przypadku wpisów tajnych w ciągu 30 dni wygaśnięcia, następujące alerty 
 
 Obrót wpisu tajnego wykonując poniższe instrukcje uruchamiania będą skorygować te alerty.
 
+> [!Note]  
+> Środowiska platformy Azure Stack w wersji pre-1811 może zostać wyświetlony alerty oczekujące certyfikatu wewnętrznego lub wygaśnięcia klucza tajnego. Te alerty są niedokładne i należy ją ignorować bez konieczności uruchamiania wewnętrznego obrotu wpisu tajnego. Alerty niedokładne wygaśnięciu wpisu tajnego wewnętrzne są znany problem, który został rozwiązany w 1811 — wewnętrzne, że klucze tajne nie wygasają, chyba że środowiska był aktywny przez dwa lata. 
+
 ## <a name="pre-steps-for-secret-rotation"></a>Kroki przed operacją dla wpisu tajnego obrotu
 
    > [!IMPORTANT]  
-   > Upewnij się, że obrotu tajne nie zostało pomyślnie wykonany w swoim środowisku. Jeśli została już wykonana obrotu wpisu tajnego, należy zaktualizować usługi Azure Stack do wersji 1807 lub nowszej, przed wykonaniem wpisu tajnego obrotu. 
+   > Jeśli została już wykonana obrotu wpisu tajnego w środowisku usługi Azure Stack należy zaktualizować system do wersji 1811 lub nowszej, przed wykonaniem ponownie wpisu tajnego obrotu. Obrót wpisu tajnego musi zostać wykonana przez za pośrednictwem [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) i wymaga poświadczeń usługi Azure Stack operatora. Jeśli w środowisku usługi Azure Stack operatorem(-ami) nie wiadomo, czy uruchomiono obrotu wpisu tajnego w swoim środowisku, zaktualizuj 1811 przed wykonaniem ponownie wpisu tajnego obrotu.
 
-1.  Operatorzy mogą zauważyć alerty otwierających i zamykających automatycznie w trakcie rotacji kluczy tajnych w usłudze Azure Stack.  To zachowanie jest przewidywane i alerty można zignorować.  Operatory można sprawdzić poprawność te alerty, uruchamiając AzureStack testu.  Dla operatorów do monitorowania za pomocą programu SCOM systemy usługi Azure Stack, wprowadzenie do systemu w trybie konserwacji uniemożliwi ich systemami ITSM osiągnięcie tych alertów, ale będzie w dalszym ciągu alert, jeśli system usługi Azure Stack staje się niedostępny. 
-2. Powiadom użytkowników, wszelkich operacji konserwacji. Planowanie okna obsługi normalnych, jak to możliwe, podczas poza godzinami. Operacje konserwacji może mieć wpływ na użytkownika obciążeń i operacje w portalu.
-    > [!note]  
+1. Zdecydowanie zaleca się aktualizacji Twojego wystąpienia usługi Azure Stack do wersji 1811.
+
+    > [!Note] 
+    > W przypadku wersji pre-1811 nie trzeba wymienić wpisów tajnych, aby dodać rozszerzenie hosta certyfikaty. Należy wykonać instrukcje przedstawione w artykule [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md) Aby dodać rozszerzenie hosta certyfikaty.
+
+2.  Operatorzy mogą zauważyć alerty otwierających i zamykających automatycznie w trakcie rotacji kluczy tajnych w usłudze Azure Stack.  To zachowanie jest przewidywane i alerty można zignorować.  Operatory można sprawdzić poprawność te alerty, uruchamiając **AzureStack testu**.  Dla operatorów do monitorowania za pomocą programu SCOM systemy usługi Azure Stack, wprowadzenie do systemu w trybie konserwacji uniemożliwi ich systemami ITSM osiągnięcie tych alertów, ale będzie w dalszym ciągu alert, jeśli system usługi Azure Stack staje się niedostępny. 
+3. Powiadom użytkowników, wszelkich operacji konserwacji. Planowanie okna obsługi normalnych, jak to możliwe, podczas poza godzinami. Operacje konserwacji może mieć wpływ na użytkownika obciążeń i operacje w portalu.
+
+    > [!Note]  
     > Następne kroki stosowane tylko wtedy, gdy obracanie zewnętrzne wpisy tajne w usłudze Azure Stack.
 
-3. Uruchom **[AzureStack testu](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** i upewnij się, wszystkie dane wyjściowe testu są w dobrej kondycji przed rotacji kluczy tajnych.
-4. Przygotuj nowy zestaw zastępczy certyfikatów zewnętrznych. Nowy zestaw pasuje do specyfikacji certyfikatu, opisane w temacie [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
-5.  Store wykonywanie kopii zapasowej certyfikatów używanych dla obrotu w bezpiecznej lokalizacji kopii zapasowej. Jeśli Twoje obrotu uruchomiona, a następnie kończy się niepowodzeniem, Zamień certyfikaty w udziale plików kopii zapasowych przed ponownym uruchomieniem obrót. Należy pamiętać, wykonywania kopii zapasowych w bezpiecznej lokalizacji kopii zapasowej.
-6.  Utwórz udział plików, w której będziesz mieć dostęp z ERCS maszyn wirtualnych. Udział plików musi być czytelny i zapisywalny dla **CloudAdmin** tożsamości.
-7.  Otwórz konsolę programu PowerShell ISE z komputera, na których mają dostęp do udziału plików. Przejdź do Twojego udziału plików. 
-8.  Uruchom **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** utworzyć wymagane katalogi zewnętrzne certyfikaty.
+4. Uruchom **[AzureStack testu](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** i upewnij się, wszystkie dane wyjściowe testu są w dobrej kondycji przed rotacji kluczy tajnych.
+5. Przygotuj nowy zestaw zastępczy certyfikatów zewnętrznych. Nowy zestaw pasuje do specyfikacji certyfikatu, opisane w temacie [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs). Można wygenerować certyfikat podpisywania żądania (CSR) do zakupu lub tworzenia nowych certyfikatów wykonując kroki opisane w [generowanie certyfikatów PKI](https://docs.microsoft.com/azure/azure-stack/azure-stack-get-pki-certs) i przygotować je do użytku w środowisku usługi Azure Stack, korzystając z procedury [ Przygotowywanie certyfikatów PKI w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-prepare-pki-certs). Pamiętaj sprawdzić poprawność certyfikatów, należy przygotować wykonując kroki opisane w [sprawdzania poprawności certyfikatów PKI](https://docs.microsoft.com/azure/azure-stack/azure-stack-validate-pki-certs). 
+6.  Store wykonywanie kopii zapasowej certyfikatów używanych dla obrotu w bezpiecznej lokalizacji kopii zapasowej. Jeśli Twoje obrotu uruchomiona, a następnie kończy się niepowodzeniem, Zamień certyfikaty w udziale plików kopii zapasowych przed ponownym uruchomieniem obrót. Należy pamiętać, wykonywania kopii zapasowych w bezpiecznej lokalizacji kopii zapasowej.
+7.  Utwórz udział plików, w której będziesz mieć dostęp z ERCS maszyn wirtualnych. Udział plików musi być czytelny i zapisywalny dla **CloudAdmin** tożsamości.
+8.  Otwórz konsolę programu PowerShell ISE z komputera, na których mają dostęp do udziału plików. Przejdź do Twojego udziału plików. 
+9.  Uruchom **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** utworzyć wymagane katalogi zewnętrzne certyfikaty.
 
-## <a name="rotating-external-and-internal-secrets"></a>Obracanie wewnętrznych i zewnętrznych wpisów tajnych
+## <a name="rotating-external-secrets"></a>Obracanie zewnętrznych wpisów tajnych
 
-Aby obrócić zewnętrznych wewnętrzny klucz tajny:
+Aby obrócić zewnętrzne wpisy tajne:
 
 1. W nowo utworzonej **/certyfikaty** Katalog utworzony w krokach wstępne umieścić nowy zestaw zastępczy certyfikaty zewnętrzne w strukturze katalogów z formatem opisane w sekcji wymagane certyfikaty z [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
 2. Tworzenie sesji programu PowerShell przy użyciu [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) przy użyciu **CloudAdmin** konta, a także przechowywać sesji jako zmienną. Ta zmienna będzie używany jako parametr w następnym kroku.
@@ -112,10 +125,14 @@ Aby obrócić zewnętrznych wewnętrzny klucz tajny:
     Obiekt PSCredential poświadczeń do udziału. 
     - **CertificatePassword**  
     Bezpieczny ciąg hasła używane dla wszystkich utworzony plik certyfikatu pfx.
-4. Zaczekaj, aż Obróć klucze tajne.  
-Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola **ogólny stan akcji: Sukces**. 
-    > [!note]  
-    > Jeśli wpisu tajnego obrotu zakończy się niepowodzeniem, postępuj zgodnie z instrukcjami w komunikacie o błędzie i ponownie uruchom start-secretrotation z **-Uruchom ponownie** parametru. Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu. 
+4. Zaczekaj, aż Obróć klucze tajne. Obrót tajny zewnętrznego zwykle trwa około godzinę. Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola **ogólny stan akcji: Powodzenie**. 
+    > [!Note]  
+    > Jeśli wpisu tajnego obrotu zakończy się niepowodzeniem, postępuj zgodnie z instrukcjami w komunikacie o błędzie i uruchom ponownie **start secretrotation** z **-Uruchom ponownie** parametru. 
+
+    ```PowerShell  
+    Start-SecretRotation -Rerun
+    ```
+    Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu.
 5. Po pomyślnym zakończeniu obrotu wpisu tajnego usunąć certyfikaty z udziału utworzonego w kroku wstępnego i zapisanie ich w bezpiecznej lokalizacji kopii zapasowej. 
 
 ## <a name="walkthrough-of-secret-rotation"></a>Przewodnik dotyczący rotacji wpisu tajnego
@@ -129,23 +146,36 @@ $PEPCreds = Get-Credential
 $PEPsession = New-PSSession -computername <IPofERCSMachine> -Credential $PEPCreds -ConfigurationName PrivilegedEndpoint 
 
 #Run Secret Rotation
-$CertPassword = ConvertTo-SecureString "Certpasswordhere" -AsPlainText -Force
+$CertPassword = ConvertTo-SecureString "Certpasswordhere" -Force
 $CertShareCred = Get-Credential 
 $CertSharePath = "<NetworkPathofCertShare>"
 Invoke-Command -session $PEPsession -ScriptBlock { 
 Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }
 Remove-PSSession -Session $PEPSession
 ```
+
 ## <a name="rotating-only-internal-secrets"></a>Obracanie tylko wewnętrzne wpisów tajnych
+
+> [!Note]  
+> Wewnętrzny obrotu klucz tajny powinno mieć miejsce tylko, jeśli podejrzewasz, że wewnętrzny klucz tajny przejął zamierzających lub otrzymane alertu (kompilacja 1811 lub nowszej) wskazująca, że certyfikaty wewnętrzne wkrótce wygasną. Środowiska platformy Azure Stack w wersji pre-1811 może zostać wyświetlony alerty oczekujące certyfikatu wewnętrznego lub wygaśnięcia klucza tajnego. Te alerty są niedokładne i należy ją ignorować bez konieczności uruchamiania wewnętrznego obrotu wpisu tajnego. Alerty niedokładne wygaśnięciu wpisu tajnego wewnętrzne są znany problem, który został rozwiązany w 1811 — wewnętrzne, że klucze tajne nie wygasają, chyba że środowiska był aktywny przez dwa lata.
 
 Aby obrócić tylko usługi Azure Stack wewnętrznego wpisów tajnych:
 
 1. Tworzenie sesji programu PowerShell przy użyciu [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
-2. W sesji uprzywilejowanych punktu końcowego Uruchom **Start SecretRotation** bez argumentów.
+2. W sesji uprzywilejowanych punktu końcowego Uruchom **Start SecretRotation-wewnętrznego**.
+
+    > [!Note]  
+    > Nie wymaga środowiska platformy Azure Stack w wersji pre-1811 **— wewnętrzne** flagi. **Start-SecretRotation** dyżury tylko wewnętrzne wpisów tajnych.
+
 3. Zaczekaj, aż Obróć klucze tajne.  
-Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola **ogólny stan akcji: Sukces**. 
-    > [!note]  
-    > W przypadku niepowodzenia wpisu tajnego obrotu postępuj zgodnie z instrukcjami w komunikacie o błędzie i ponownie uruchom start-secretrotation z **-Uruchom ponownie** parametru. Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu. 
+Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola **ogólny stan akcji: Powodzenie**. 
+    > [!Note]  
+    > Jeśli wpisu tajnego obrotu zakończy się niepowodzeniem, postępuj zgodnie z instrukcjami w komunikacie o błędzie i ponownie uruchom **start secretrotation** z **— wewnętrzne** i **-Uruchom ponownie** parametrów.  
+
+    ```PowerShell  
+    Start-SecretRotation -Internal -Rerun
+    ```
+    Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu.
 
 ## <a name="start-secretrotation-reference"></a>Odwołanie do rozpoczęcia SecretRotation
 
@@ -153,15 +183,32 @@ Obraca się wpisy tajne w systemie usługi Azure Stack. Wykonać tylko względem
 
 ### <a name="syntax"></a>Składnia
 
-Ścieżka (ustawienie domyślne)
+#### <a name="for-external-secret-rotation"></a>Dla zewnętrznych obrotu wpisu tajnego
 
-```powershell
+```Powershell  
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredential> [-CertificatePassword <SecureString>]  
 ```
 
+#### <a name="for-internal-secret-rotation"></a>Dla wewnętrznej obrotu wpisu tajnego 
+
+```Powershell  
+Start-SecretRotation [-Internal]  
+```
+
+#### <a name="for-external-secret-rotation-rerun"></a>Dla zewnętrznych obrotu wpisu tajnego, uruchom ponownie 
+
+```Powershell  
+Start-SecretRotation [-Rerun]
+```
+
+#### <a name="for-internal-secret-rotation-rerun"></a>Dla wewnętrznej obrotu wpisu tajnego, uruchom ponownie 
+
+```Powershell  
+Start-SecretRotation [-Rerun] [-Internal]
+```
 ### <a name="description"></a>Opis
 
-Polecenie cmdlet Start-SecretRotation obraca się wpisy tajne infrastruktury systemu Azure Stack. Domyślnie obraca się wszystkich wpisów tajnych ujawnione w sieci wewnętrznej infrastruktury z danymi wejściowymi użytkownika także o certyfikaty wszystkie punkty końcowe infrastruktury sieci zewnętrznej. W przypadku rotacji punktów końcowych infrastruktury sieci zewnętrznej, Start SecretRotation mają zostać wykonane za pomocą bloku skryptu Invoke-Command za pomocą środowiska usługi Azure Stack punktu końcowego uprzywilejowanych sesji przekazany jako parametr sesji.
+**Start SecretRotation** polecenia cmdlet obraca się wpisy tajne infrastruktury systemu Azure Stack. Domyślnie obraca się tylko certyfikaty wszystkich punktów końcowych infrastruktury sieci zewnętrznej. Z flagi wewnętrznej wewnętrznej infrastruktury kluczy tajnych zostaną obrócone. W przypadku rotacji punktów końcowych infrastruktury sieci zewnętrznej, **Start SecretRotation** powinno być uruchamiane z **Invoke-Command** blok skryptu ze środowiskiem usługi Azure Stack użytkownika uprzywilejowanego sesji punktu końcowego przekazany jako parametr sesji.
  
 ### <a name="parameters"></a>Parametry
 
@@ -169,18 +216,33 @@ Polecenie cmdlet Start-SecretRotation obraca się wpisy tajne infrastruktury sys
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji kluczy tajnych zewnętrznych lub wszystkich wpisów tajnych. Katalog end musi być **\Certificates**. |
 | CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniany, gdy są obracane wewnętrznych i zewnętrznych wpisów tajnych. |
+| Wewnętrzny | Ciąg | False | o nazwie | Brak | Flagi wewnętrznej musi być używane w dowolnym momencie operatorów usługi Azure Stack chce wymienić wewnętrznej infrastruktury kluczy tajnych. |
 | PathAccessCredential | PSCredential | False  | o nazwie  | Brak  | Poświadczenie programu PowerShell dla udziału plików z **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji kluczy tajnych zewnętrznych lub wszystkich wpisów tajnych.  |
-| Uruchom ponownie | SwitchParameter | False  | o nazwie  | Brak  | Uruchom ponownie muszą być używane w dowolnym momencie po nieudanej próbie jest ponowne próby obrót wpisu tajnego. |
+| Uruchom ponownie | SwitchParameter | False  | o nazwie  | Brak  | Uruchom ponownie muszą być używane w dowolnym momencie obrotu wpisu tajnego jest ponowieniu po nieudanej próbie. |
 
 ### <a name="examples"></a>Przykłady
  
-**Obróć tylko wpisy tajne wewnętrznej infrastruktury**
+#### <a name="rotate-only-internal-infrastructure-secrets"></a>Obróć tylko wpisy tajne wewnętrznej infrastruktury
+
+Musi to być uruchamiane za pomocą usługi Azure Stack [środowiska użytkownika uprzywilejowanego punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
 ```powershell  
-PS C:\> Start-SecretRotation  
+PS C:\> Start-SecretRotation  -Internal
 ```
 
-To polecenie obraca wszystkich wpisów tajnych infrastruktury, połączenie z sieci wewnętrznej usługi Azure Stack. Start-SecretRotation obraca wszystkich wpisów tajnych, które są generowane przez stos, ale ponieważ nie ma żadnych certyfikatów podana, certyfikaty zewnętrzny punkt końcowy nie będzie obracana.  
+To polecenie obraca wszystkich wpisów tajnych infrastruktury, połączenie z sieci wewnętrznej usługi Azure Stack. 
+
+#### <a name="rotate-only-external-infrastructure-secrets"></a>Obróć tylko wpisy tajne zewnętrznych infrastruktury  
+
+```powershell  
+PS C:\> Invoke-Command -session $PEPSession -ScriptBlock {  
+
+Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }  
+
+Remove-PSSession -Session $PEPSession
+```
+
+To polecenie obraca certyfikaty protokołu TLS, używane dla punktów końcowych infrastruktury sieci zewnętrznej usługi Azure Stack.   
 
 **Obróć klucze tajne infrastruktury wewnętrznych i zewnętrznych**
   
@@ -193,24 +255,26 @@ Remove-PSSession -Session $PEPSession
 To polecenie obraca wszystkich wpisów tajnych infrastruktury, połączenie z sieci wewnętrznej usługi Azure Stack, a także certyfikaty protokołu TLS, używane dla punktów końcowych infrastruktury sieci zewnętrznej usługi Azure Stack. Start-SecretRotation obraca wszystkich wpisów tajnych, które są generowane przez stos, a ponieważ podano certyfikatów oraz certyfikatów jest zewnętrzny punkt końcowy również zostaną obrócone.  
 
 
-## <a name="update-the-baseboard-management-controller-bmc-password"></a>Zaktualizuj hasło kontrolera zarządzania płytą główną
+## <a name="update-the-baseboard-management-controller-bmc-credential"></a>Zaktualizuj poświadczenia kontrolera zarządzania płytą główną
 
-Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwerów. Instrukcje na temat aktualizowania hasła kontrolera bmc i specyfikacje różnią się zależnie od dostawcy sprzętu producenta sprzętu (OEM). Należy zaktualizować hasła dla składników usługi Azure Stack w regularnych cyklach.
+Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwerów. Instrukcje na temat aktualizowania nazwę konta użytkownika i hasło kontrolera BMC i specyfikacje różnią się zależnie od dostawcy sprzętu producenta sprzętu (OEM). Należy zaktualizować hasła dla składników usługi Azure Stack w regularnych odstępach czasu.
 
-1. Aktualizacja kontrolera zarządzania płytą GŁÓWNĄ na serwerach fizycznych z usługi Azure Stack, postępując zgodnie z instrukcjami podanymi przez producenta OEM. Hasło dla każdego kontrolera zarządzania płytą GŁÓWNĄ w środowisku musi być taka sama.
-2. Otwórz punkt końcowy uprzywilejowanych w usłudze Azure Stack sesji. Aby uzyskać instrukcje, zobacz [przy użyciu uprzywilejowanych punktu końcowego w usłudze Azure Stack](azure-stack-privileged-endpoint.md).
-3. Po PowerShell wiersz został zmieniony na **[adres IP lub maszyny Wirtualnej ERCS name]: PS >** lub **[azs-ercs01]: PS >**, w zależności od środowiska, uruchom `Set-BmcPassword` , uruchamiając `invoke-command`. Przekaż zmiennej sesji użytkownika uprzywilejowanego punktu końcowego, jako parametr. Na przykład:
+1. Aktualizacja kontrolera zarządzania płytą GŁÓWNĄ na serwerach fizycznych w usłudze Azure Stack, postępując zgodnie z instrukcjami podanymi przez producenta OEM. Nazwa konta użytkownika i hasło dla każdego kontrolera zarządzania płytą GŁÓWNĄ w środowisku musi być taka sama.
+2. Otwórz punkt końcowy uprzywilejowanego w sesji usługi Azure Stack. Aby uzyskać instrukcje, zobacz [przy użyciu uprzywilejowanych punktu końcowego w usłudze Azure Stack](azure-stack-privileged-endpoint.md).
+3. Po PowerShell wiersz został zmieniony na **[adres IP lub maszyny Wirtualnej ERCS name]: PS >** lub **[azs-ercs01]: PS >**, w zależności od środowiska, uruchom `Set-BmcCredemtial` , uruchamiając `invoke-command`. Przekaż zmiennej sesji użytkownika uprzywilejowanego punktu końcowego, jako parametr. Na przykład:
 
     ```powershell
     # Interactive Version
     $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PECred = Get-Credential "<Domain>\CloudAdmin" -Message "PE Credentials" 
-    $NewBMCpwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString 
+    $NewBMCpwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
+    $NewBMCuser = Read-Host -Prompt "Enter New BMC user name"
 
     $PEPSession = New-PSSession -ComputerName $PEip -Credential $PECred -ConfigurationName "PrivilegedEndpoint" 
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        Set-Bmcpassword -bmcpassword $using:NewBMCpwd
+        # Parameter BMCPassword is mandatory, while the BMCUser parameter is optional.
+        Set-Bmccredential -bmcpassword $using:NewBMCpwd -bmcuser $using:NewBMCuser
     }
     Remove-PSSession -Session $PEPSession
     ```
@@ -221,14 +285,15 @@ Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwer
     # Static Version
     $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
-    $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
+    $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -Force
     $PECred = New-Object System.Management.Automation.PSCredential ($PEUser, $PEpwd) 
-    $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force 
+    $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -Force
+    $NewBMCuser = "<New BMC User name>" 
 
     $PEPSession = New-PSSession -ComputerName $PEip -Credential $PECred -ConfigurationName "PrivilegedEndpoint" 
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        Set-Bmcpassword -bmcpassword $using:NewBMCpwd
+        Set-Bmccredential -bmcpassword $using:NewBMCpwd -bmcuser $using:NewBMCuser
     }
     Remove-PSSession -Session $PEPSession
     ```

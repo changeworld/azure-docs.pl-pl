@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343160"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713273"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak uruchamiać funkcje trwałe jako zadania Webjob
 
-[Usługa Azure Functions](../functions-overview.md) i [funkcje trwałe](durable-functions-overview.md) rozszerzenia są oparte na [zestawu SDK usługi WebJobs](../../app-service/web-sites-create-web-jobs.md). `JobHost` w zestawie SDK usługi WebJobs jest środowisko uruchomieniowe w usłudze Azure Functions. Jeśli potrzebujesz do kontroli `JobHost` zachowanie w sposób nie były możliwe w usłudze Azure Functions, mogą tworzyć i uruchamiać funkcje trwałe przy użyciu zestawu SDK usługi WebJobs, samodzielnie. Następnie możesz uruchomić swoje funkcje trwałe w zadaniu Azure WebJob lub gdziekolwiek uruchamia aplikację konsolową w języku.
+[Usługa Azure Functions](../functions-overview.md) i [funkcje trwałe](durable-functions-overview.md) rozszerzenia są oparte na [zestawu SDK usługi WebJobs](../../app-service/webjobs-create.md). `JobHost` w zestawie SDK usługi WebJobs jest środowisko uruchomieniowe w usłudze Azure Functions. Jeśli potrzebujesz do kontroli `JobHost` zachowanie w sposób nie były możliwe w usłudze Azure Functions, mogą tworzyć i uruchamiać funkcje trwałe przy użyciu zestawu SDK usługi WebJobs, samodzielnie. Następnie możesz uruchomić swoje funkcje trwałe w zadaniu Azure WebJob lub gdziekolwiek uruchamia aplikację konsolową w języku.
 
 Łańcucha Przykładowe funkcje trwałe jest dostępna w wersji zestawu SDK usługi WebJobs: Pobierz lub sklonuj [repozytorium funkcje trwałe](https://github.com/azure/azure-functions-durable-extension/) i przejdź do *przykłady\\webjobssdk\\łańcucha* folderu.
 

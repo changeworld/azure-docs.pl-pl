@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c203334b0ea1b47aa1884155f477e34bd8f2e1db
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878351"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724763"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpieczanie dostępu do danych usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie zabezpieczania dostępu do danych przechowywanych w [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -128,8 +128,8 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Zasób uprawnienia usługi Cosmos DB jest skojarzone z użytkownikami usługi Cosmos DB.  Każdy użytkownik może zawierać zero lub więcej uprawnień usługi Cosmos DB.  Zasób uprawnienia zapewnia dostęp do token zabezpieczający, który użytkownik musi podczas próby uzyskania dostępu do zasobu z określonej aplikacji.
 Istnieją dwa poziomy dostępu, które mogą być udostępniane przez zasób uprawnień:
 
-* Wszystko: Użytkownik ma pełne uprawnienia w zasobie.
-* Odczyt: Użytkownik może jedynie odczytywać zawartość zasobu, ale nie może wykonać zapisu, aktualizacji lub usuń operacje na zasobie.
+* Wszystkie: Użytkownik ma pełne uprawnienia w zasobie.
+* Odczyt: Użytkownik może jedynie odczytywać zawartość zasobu, ale nie można wykonać zapisu, aktualizacji lub usuń operacje na zasobie.
 
 > [!NOTE]
 > Aby można było uruchomić usługi Cosmos DB procedury składowane użytkownik musi mieć uprawnienie All w kontenerze, w którym będzie uruchamiany procedury składowanej.
@@ -188,10 +188,10 @@ Aby dodać dostęp czytelnika konta usługi Azure Cosmos DB z Twoim kontem użyt
 Jednostka może teraz odczytywać zasoby usługi Azure Cosmos DB.
 
 ## <a name="delete-or-export-user-data"></a>Usuń lub eksportowanie danych użytkownika
-Usługa Azure Cosmos DB umożliwia wyszukiwanie, wybierz, modyfikować i usuwać wszystkie dane osobowe znajdujące się w bazie danych lub kolekcji. Usługa Azure Cosmos DB udostępnia interfejsy API, aby znaleźć i usunąć dane osobowe, jednak, jest odpowiedzialny za przy użyciu interfejsów API i zdefiniuj logikę wymaganą do usunięcia danych osobowych. Każdy wielomodelowa interfejs API (interfejs API SQL, interfejsu API usługi MongoDB, interfejs API Gremlin, interfejsu API rozwiązania Cassandra, interfejs API tabel) zapewnia inny pakiet zestawów SDK, które zawierają metody, aby wyszukać i usunąć dane osobowe. Można również włączyć [czas wygaśnięcia (TTL)](time-to-live.md) funkcję, aby usunąć dane automatycznie po upływie określonego czasu, bez ponoszenia żadnych dodatkowych kosztów.
+Usługa Azure Cosmos DB umożliwia wyszukiwanie, wybierz, modyfikować i usuwać wszystkie dane osobowe znajdujące się w bazie danych lub kolekcji. Usługa Azure Cosmos DB udostępnia interfejsy API, aby znaleźć i usunąć dane osobowe, jednak, jest odpowiedzialny za przy użyciu interfejsów API i zdefiniuj logikę wymaganą do usunięcia danych osobowych. Każdego wielomodelowa interfejsu API (SQL, MongoDB, Gremlin, Cassandra, tabeli) zapewnia inny pakiet zestawów SDK, które zawierają metody, aby wyszukać i usunąć dane osobowe. Można również włączyć [czas wygaśnięcia (TTL)](time-to-live.md) funkcję, aby usunąć dane automatycznie po upływie określonego czasu, bez ponoszenia żadnych dodatkowych kosztów.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat zabezpieczeń bazy danych Cosmos DB, zobacz [Cosmos DB: bazy danych zabezpieczeń](database-security.md).
+* Aby dowiedzieć się więcej na temat zabezpieczeń bazy danych Cosmos DB, zobacz [Cosmos DB: Bazy danych zabezpieczeń](database-security.md).
 * Aby dowiedzieć się, jak skonstruować tokenach autoryzacji usługi Azure Cosmos DB, zobacz [kontrolę dostępu do zasobów usługi Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

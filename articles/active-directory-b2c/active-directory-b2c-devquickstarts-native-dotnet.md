@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2e515ee61144dfe56d2b5a4fac97da81b0fa8c84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834849"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606186"
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Usługa Azure AD B2C: Tworzenie aplikacji klasycznych Windows
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Usługa Azure AD B2C: Tworzenie aplikacji klasycznej dla systemu Windows
 Za pomocą usługi Azure Active Directory (Azure AD) B2C, można dodać zaawansowane Samoobsługowe funkcje obsługi tożsamości zarządzania do aplikacji komputerowej w kilku krótkich krokach. W tym artykule pokazano sposób tworzenia aplikacji "Lista zadań do wykonania".NET Windows Presentation Foundation (WPF), która obejmuje rejestracji i logowania użytkowników i zarządzania profilami. Aplikacja będzie zawierać obsługę rejestracji i logowania za pomocą nazwy użytkownika lub adres e-mail. Zawiera również obsługę rejestracji i logowania za pomocą kont społecznościowych, takich jak Facebook i Google.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Tworzenie katalogu usługi Azure AD B2C
-Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę.  Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i innych elementów. Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](active-directory-b2c-get-started.md), zanim przejdziesz dalej.
+Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę. Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i innych elementów. Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](active-directory-b2c-get-started.md), zanim przejdziesz dalej.
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
-Następnie musisz utworzyć aplikację w katalogu usługi B2C. Dzięki temu informacje wymagane do bezpiecznego komunikowania się z aplikacją będą przekazywane do usługi Azure AD. Aby utworzyć aplikację, postępuj zgodnie z [tymi instrukcjami](active-directory-b2c-app-registration.md).  Należy pamiętać o wykonaniu następujących czynności:
+Następnie musisz utworzyć aplikację w katalogu usługi B2C. Dzięki temu informacje wymagane do bezpiecznego komunikowania się z aplikacją będą przekazywane do usługi Azure AD. Aby utworzyć aplikację, postępuj zgodnie z [tymi instrukcjami](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
 
 * Obejmują **klienta natywnego** w aplikacji.
 * Kopiuj **identyfikator URI przekierowania** `urn:ietf:wg:oauth:2.0:oob`. Jest to domyślny adres URL dla tej próbki kodu.
@@ -36,7 +36,7 @@ W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy uż
 * W bloku dostawców tożsamości wybrać opcję **tworzenia konta przy użyciu identyfikatora użytkownika** lub **tworzenia konta przy użyciu adresu e-mail**.
 * Wybrać wartość **Nazwa wyświetlana** i inne atrybuty tworzenia konta w zasadach tworzenia konta.
 * Wybrać oświadczenia **Nazwa wyświetlana** i **Identyfikator obiektu** jako oświadczenia aplikacji dla wszystkich zasad. Można również wybrać inne oświadczenia.
-* Skopiować każdą utworzoną wartość **Nazwa** zasad. Powinny zawierać prefiks `b2c_1_`.  Te nazwy zasad będą potrzebne później.
+* Skopiować każdą utworzoną wartość **Nazwa** zasad. Powinny zawierać prefiks `b2c_1_`. Te nazwy zasad będą potrzebne później.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -51,7 +51,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 Ukończona aplikacja jest również [dostępna jako plik ZIP](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) lub w gałęzi `complete` tego samego repozytorium.
 
-Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. `TaskClient` Projekt jest, użytkownik wchodzi w interakcję z aplikacji klasycznej WPF. Do celów tego samouczka wywołuje zadań zaplecza internetowego interfejsu API, które są hostowane na platformie Azure, który przechowuje listy zadań do wykonania poszczególnych użytkowników.  Nie trzeba tworzyć internetowy interfejs API, mamy już będzie działać dla Ciebie.
+Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. `TaskClient` Projekt jest, użytkownik wchodzi w interakcję z aplikacji klasycznej WPF. Do celów tego samouczka wywołuje zadań zaplecza internetowego interfejsu API, które są hostowane na platformie Azure, który przechowuje listy zadań do wykonania poszczególnych użytkowników. Nie trzeba tworzyć internetowy interfejs API, mamy już będzie działać dla Ciebie.
 
 Aby dowiedzieć się, jak internetowy interfejs API bezpiecznie przeprowadza uwierzytelnianie żądań przy użyciu usługi Azure AD B2C, zapoznaj się z [wprowadzenie interfejsu API sieci web do artykułu](active-directory-b2c-devquickstarts-api-dotnet.md).
 
@@ -96,7 +96,7 @@ protected async override void OnInitialized(EventArgs e)
 
     pca = new PublicClientApplication(Globals.clientId)
     {
-        // MSAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app,
+        // MSAL implements an in-memory cache by default. Since we want tokens to persist when the user closes the app,
         // we've extended the MSAL TokenCache and created a simple FileCache in this app.
         UserTokenCache = new FileCache(),
     };
@@ -115,7 +115,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
     {
         // Use the app's clientId here as the scope parameter, indicating that
         // you want a token to the your app's backend web API (represented by
-        // the cloud hosted task API).  Use the UiOptions.ForceLogin flag to
+        // the cloud hosted task API). Use the UiOptions.ForceLogin flag to
         // indicate to MSAL that it should show a sign-up UI no matter what.
         result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                 string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
@@ -187,7 +187,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 We wszystkich tych przypadkach MSAL albo zwraca token w `AuthenticationResult` ani nie zgłasza wyjątku. Każdorazowo pobierał token z biblioteki MSAL, można użyć `AuthenticationResult.User` obiektu do zaktualizowania danych użytkownika w aplikacji, takich jak interfejs użytkownika. Biblioteka ADAL buforuje token do użytku w innych częściach aplikacji.
 
 ### <a name="check-for-tokens-on-app-start"></a>Sprawdź, czy tokeny w aplikacji w menu start
-Można również użycia biblioteki MSAL do śledzenia stanu logowania użytkownika.  W tej aplikacji chcemy użytkownika umożliwiającą pozostanie zalogowanym, nawet po zakończeniu zamknij aplikację i otwórz go ponownie.  Zwrotne wewnątrz `OnInitialized` zastąpienia, użycia biblioteki MSAL firmy `AcquireTokenSilent` metoda pod kątem pamięci podręcznej tokenów:
+Można również użycia biblioteki MSAL do śledzenia stanu logowania użytkownika. W tej aplikacji chcemy, aby użytkownik pozostaje zalogowany, nawet po zamknąć aplikację, a następnie otwórz go ponownie. Zwrotne wewnątrz `OnInitialized` zastąpienia, użycia biblioteki MSAL firmy `AcquireTokenSilent` metoda pod kątem pamięci podręcznej tokenów:
 
 ```csharp
 AuthenticationResult result = null;
@@ -209,7 +209,7 @@ catch (MsalException ex)
 {
     if (ex.ErrorCode == "failed_to_acquire_token_silently")
     {
-        // There are no tokens in the cache.  Proceed without calling the To Do list service.
+        // There are no tokens in the cache. Proceed without calling the To Do list service.
     }
     else
     {
@@ -226,7 +226,7 @@ catch (MsalException ex)
 ```
 
 ## <a name="call-the-task-api"></a>Wywołanie interfejsu API zadań
-Biblioteka MSAL mają teraz używane do wykonywania zasad i uzyskiwanie tokenów.  Jeśli chcesz użyć jednego tokeny te służą do wywołania interfejsu API zadań, należy ponownie użyć biblioteki MSAL firmy `AcquireTokenSilent` metoda pod kątem pamięci podręcznej tokenów:
+Biblioteka MSAL mają teraz używane do wykonywania zasad i uzyskiwanie tokenów. Jeśli chcesz użyć jednego tokeny te służą do wywołania interfejsu API zadań, należy ponownie użyć biblioteki MSAL firmy `AcquireTokenSilent` metoda pod kątem pamięci podręcznej tokenów:
 
 ```csharp
 private async void GetTodoList()
@@ -284,7 +284,7 @@ Po wywołaniu `AcquireTokenSilentAsync(...)` zakończy się pomyślnie i token z
 ```
 
 ## <a name="sign-the-user-out"></a>Wylogować użytkownika
-Na koniec użycia biblioteki MSAL, aby zakończyć sesji użytkownika z aplikacją, gdy użytkownik wybierze **Wyloguj**.  Korzystając z biblioteki MSAL, jest to realizowane przez wyczyszczenie wszystkich tokenów z pamięci podręcznej tokenu:
+Na koniec użycia biblioteki MSAL, aby zakończyć sesji użytkownika z aplikacją, gdy użytkownik wybierze **Wyloguj**. Korzystając z biblioteki MSAL, jest to realizowane przez wyczyszczenie wszystkich tokenów z pamięci podręcznej tokenu:
 
 ```csharp
 private void SignOut(object sender, RoutedEventArgs e)
@@ -306,7 +306,7 @@ private void SignOut(object sender, RoutedEventArgs e)
 ```
 
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
-Na koniec Skompiluj i uruchom aplikację przykładową.  Zarejestruj się w aplikacji przy użyciu nazwy użytkownika lub adres e-mail. Wyloguj się i zaloguj się ponownie jako tego samego użytkownika. Edytuj profil użytkownika. Wyloguj się i zaloguj przy użyciu innego użytkownika.
+Na koniec Skompiluj i uruchom aplikację przykładową. Zarejestruj się w aplikacji przy użyciu nazwy użytkownika lub adres e-mail. Wyloguj się i zaloguj się ponownie jako tego samego użytkownika. Edytuj profil użytkownika. Wyloguj się i zaloguj przy użyciu innego użytkownika.
 
 ## <a name="add-social-idps"></a>Dodaj dostawców tożsamości społecznościowych
 Obecnie aplikacja obsługuje tylko użytkownika rejestracji i logowania korzystające z **kont lokalnych**. Oto konta przechowywane w katalogu usługi B2C, używające nazwy użytkownika i hasła. Za pomocą usługi Azure AD B2C, można dodać obsługę innych dostawców tożsamości (IDPs) bez konieczności zmieniania żadnego kodu.

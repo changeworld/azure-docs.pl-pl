@@ -8,18 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 696bd6ec80f39e8a9f3418426a754ffc038171e2
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fe0a84d9d88f5287ca3a114225bde619f9312e69
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325086"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628361"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Łączenie urządzenia Raspberry Pi do akceleratora rozwiązań zdalnego monitorowania (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku dowiesz się, jak połączyć urządzenie fizyczne do akceleratora rozwiązania monitorowania zdalnego. W tym samouczku użyjesz środowiska Node.js, czyli dobra opcja w środowiskach z ograniczeniami minimalny zasobów.
+Ten samouczek pokazuje, jak połączyć prawdziwe urządzenie do akceleratora rozwiązania monitorowania zdalnego. W tym samouczku użyjesz środowiska Node.js, czyli dobra opcja w środowiskach z ograniczeniami minimalny zasobów.
+
+Jeśli wolisz symulowanie urządzenia, zobacz [tworzenie i testowanie nowych symulowanych urządzeń](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
@@ -36,7 +38,7 @@ Komputer stacjonarny, aby włączyć zdalne łączenie się z wiersza polecenia 
 
 Klient SSH jest niezbędne w komputera stacjonarnego, aby umożliwić dostęp zdalny do wiersza polecenia na urządzenia Raspberry Pi.
 
-- Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](http://www.putty.org/).
+- Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](https://www.putty.org/).
 - Większość dystrybucje systemu Linux i Mac OS obejmują narzędzia wiersza polecenia SSH. Aby uzyskać więcej informacji, zobacz [SSH przy użyciu systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
 ### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie urządzenia Raspberry Pi
@@ -126,7 +128,6 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
     var temperatureSchema = 'chiller-temperature;v1';
     var humiditySchema = 'chiller-humidity;v1';
     var pressureSchema = 'chiller-pressure;v1';
-    var interval = "00:00:05";
     var deviceType = "Chiller";
     var deviceFirmware = "1.0.0";
     var deviceFirmwareUpdateStatus = "";
@@ -144,8 +145,6 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
         "TemperatureSchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"temperature\":${temperature},\"temperature_unit\":\"${temperature_unit}\"}",
           "MessageSchema": {
             "Name": temperatureSchema,
             "Format": "JSON",
@@ -156,8 +155,6 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
           }
         },
         "HumiditySchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"humidity\":${humidity},\"humidity_unit\":\"${humidity_unit}\"}",
           "MessageSchema": {
             "Name": humiditySchema,
             "Format": "JSON",
@@ -168,8 +165,6 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
           }
         },
         "PressureSchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"pressure\":${pressure},\"pressure_unit\":\"${pressure_unit}\"}",
           "MessageSchema": {
             "Name": pressureSchema,
             "Format": "JSON",

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163977"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608906"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Film wideo indeksowane i adnotację dla wielodostępnych aplikacji SaaS wykorzystujących usługę Azure SQL Database
 

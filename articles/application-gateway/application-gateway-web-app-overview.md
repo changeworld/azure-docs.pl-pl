@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: c0084580a2e4860f24aecd37232f38da2e55ccc8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e5f48e42a2a677622dae0b733f9d5af484d1c51
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578436"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605810"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Obsługa wielodostępnych zapleczy w usłudze Application Gateway
 
-Usługa Azure Application Gateway obsługuje zestawy skalowania maszyn wirtualnych, interfejsami sieciowymi, publiczny/prywatny adres IP lub w pełni kwalifikowaną nazwę (FQDN) w ramach swoich pul zaplecza. Domyślnie usługa Application Gateway nie zmienia przychodzącego nagłówka hosta HTTP z klienta i wysyła niezmieniony nagłówek do zaplecza. Istnieje wiele usług, takich jak [Azure Web Apps](../app-service/app-service-web-overview.md), które są wielodostępne z natury i polegają na konkretnym nagłówku hosta lub rozszerzeniu SNI przy rozpoznawaniu właściwego punktu końcowego. Usługa Application Gateway obecnie umożliwia użytkownikom zastępowanie przychodzącego nagłówka hosta HTTP na podstawie ustawień HTTP zaplecza. Ta funkcja umożliwia obsługę wielodostępnych zapleczy usług Azure Web Apps i API Management. Ta możliwość jest dostępna dla standardowej jednostki SKU i jednostki SKU zapory aplikacji internetowych. Obsługa zaplecza wielu dzierżaw współpracuje również z kończenia żądań SSL i typu end to end SSL scenariuszy.
+Usługa Azure Application Gateway obsługuje zestawy skalowania maszyn wirtualnych, interfejsami sieciowymi, publiczny/prywatny adres IP lub w pełni kwalifikowaną nazwę (FQDN) w ramach swoich pul zaplecza. Domyślnie usługa Application Gateway nie zmienia przychodzącego nagłówka hosta HTTP z klienta i wysyła niezmieniony nagłówek do zaplecza. Istnieje wiele usług, takich jak [usługi Azure App Service](../app-service/overview.md) które są wielodostępne z natury i polegają na konkretnym nagłówku hosta lub rozszerzeniu SNI przy rozpoznawaniu właściwego punktu końcowego. Usługa Application Gateway obecnie umożliwia użytkownikom zastępowanie przychodzącego nagłówka hosta HTTP na podstawie ustawień HTTP zaplecza. Ta funkcja umożliwia obsługę wielodostępnych zapleczy usług Azure Web Apps i API Management. Ta możliwość jest dostępna dla standardowej jednostki SKU i jednostki SKU zapory aplikacji internetowych. Obsługa zaplecza wielu dzierżaw współpracuje również z kończenia żądań SSL i typu end to end SSL scenariuszy.
 
 > [!NOTE]
 > Konfiguracja certyfikatu uwierzytelniania nie jest wymagana dla zaufanych usług platformy Azure, takich jak Azure Web Apps.
@@ -36,4 +36,4 @@ Korzystając z tej funkcji, klienci mogą określić opcje w ustawieniach HTTP i
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak skonfigurować bramę aplikacji z aplikacją internetową jako składową puli zaplecza, odwiedzając stronę: [aplikacji sieci web Konfigurowanie usługi App Service z usługą Application Gateway](application-gateway-web-app-powershell.md)
+Dowiedz się, jak skonfigurować bramy aplikacji z aplikacją internetową jako składową puli zaplecza, odwiedzając: [Konfigurowanie aplikacji sieci web usługi App Service z usługą Application Gateway](application-gateway-web-app-powershell.md)

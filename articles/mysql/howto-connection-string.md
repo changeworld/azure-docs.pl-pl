@@ -1,20 +1,17 @@
 ---
 title: Łączenie aplikacji do usługi Azure Database for MySQL
 description: Ten dokument zawiera listę aktualnie obsługiwanych parametrów połączenia dla aplikacji, aby połączyć się z usługą Azure Database for MySQL, w tym ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python i Ruby.
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 06bd91adb0a86198f7709d0989624657ce00dfa9
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 721950160974ef21f88791e64a41cfe0dd2b23ba
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054274"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546763"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Jak połączyć aplikacje do usługi Azure Database for MySQL
 Ten temat zawiera listę typów ciągów połączeń, które są obsługiwane przez usługę Azure Database for MySQL, wraz z szablony i przykłady. W ciągu połączenia, może mieć różne parametry i ustawienia.
@@ -65,7 +62,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Pobierz szczegóły parametrów połączenia w witrynie Azure portal
-W [witryny Azure portal](https://portal.azure.com), przejdź do usługi Azure Database for MySQL server, a następnie kliknij **parametry połączenia** można pobrać listy parametrów dla swojego wystąpienia: ![okienka parametry połączenia na platformie Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+W [witryny Azure portal](https://portal.azure.com), przejdź do usługi Azure Database for MySQL server, a następnie kliknij **parametry połączenia** można pobrać listy parametrów dla swojego wystąpienia: ![W okienku parametry połączenia w witrynie Azure portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Ciąg zawiera szczegółowe informacje, takie jak sterownik, serwera i innej bazy danych parametry połączenia. Zmodyfikuj te przykłady, aby użyć własnych parametrów, takich jak nazwa bazy danych, hasło i tak dalej. Ten ciąg można następnie użyć nawiązać połączenie z serwerem z kodu oraz aplikacji.
 

@@ -1,20 +1,17 @@
 ---
 title: Warstwy cenowe dla usługi Azure Database for MySQL
 description: W tym artykule opisano warstw cenowych dla usługi Azure Database for MySQL.
-services: mysql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 644a3a2fe6bce6ccc99b0c1c99ea07b129676653
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 805f7844b144da1feb141a46080912790008f32e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320850"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538775"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 

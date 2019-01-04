@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5aa617edf13aee9c5899a59c46aeb729f202719f
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133863"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744211"
 ---
 # <a name="creating-filters-with-cli"></a>Tworzenie filtrów za pomocą interfejsu wiersza polecenia 
 
@@ -37,7 +37,7 @@ W tym temacie pokazano, jak skonfigurować filtr dla elementu zawartości wideo 
 
 ## <a name="define-a-filter"></a>Określa filtr 
 
-W poniższym przykładzie zdefiniowano warunki wybór ścieżki, które są dodawane do końcowego manifestu. Ten filtr zawiera ścieżki audio, które są w języku angielskim z 3 WE i wideo ścieżek, które mają szybkości transmisji bitów w 0-1000000 zakresu.
+W poniższym przykładzie zdefiniowano warunki wybór ścieżki, które są dodawane do końcowego manifestu. Ten filtr zawiera ścieżki audio, znajdujących się we 3 i wideo ścieżek, które mają szybkości transmisji bitów w 0-1000000 zakresu.
 
 Filtrami zdefiniowanymi w spoczynku, zawierać obiekt JSON otoki "Properties".  
 
@@ -48,11 +48,6 @@ Filtrami zdefiniowanymi w spoczynku, zawierać obiekt JSON otoki "Properties".
             {
                 "property": "Type",
                 "value": "Audio",
-                "operation": "Equal"
-            },
-            {
-                "property": "Language",
-                "value": "en",
                 "operation": "Equal"
             },
             {
@@ -83,8 +78,16 @@ Filtrami zdefiniowanymi w spoczynku, zawierać obiekt JSON otoki "Properties".
 
 Następujące [filtru konta usługi ams az](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) polecenie umożliwia utworzenie filtru konta za pomocą filtru śledzenie wybrane opcje, które były [wcześniej zdefiniowaną](#define-a-filter). 
 
+Następujące polecenie umożliwia opcję `--tracks` akceptujący pliku. Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, należy określić ścieżkę całego pliku:
+
 ```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @C:\tracks.json
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json
+```
+
+Jeśli używasz usługi Azure Cloud Shell przekazania pliku do usługi Cloud Shell (znaleźć przycisk pobierania/przekazywania plików w górnej części okna powłoki). Następnie możesz odwołać się go następująco:
+
+```azurecli
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
 Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter).
@@ -93,8 +96,11 @@ Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media
 
 Następujące [filtrowania zawartości usługi ams az](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) polecenie umożliwia utworzenie filtru zasobów za pomocą filtru śledzenie wybrane opcje, które były [wcześniej zdefiniowaną](#define-a-filter). 
 
+> [!TIP]
+> Zapoznaj się z informacjami o określaniu lokalizacji nazwy pliku w poprzedniej sekcji.
+
 ```azurecli
-az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @C:\tracks.json
+az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
 Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter).

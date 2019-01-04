@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315642"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584500"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -48,16 +48,20 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania** |
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych\* | 4. generacji: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | 4. generacji: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Pamięć) | 4. generacji: 56GB – 156GB<br/>5. generacji: 44GB – 440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | 4. generacji: 56GB – 156GB <br/> 5. generacji: 44GB – 440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
+| Memory (Pamięć) | 4. generacji: 56GB – 156GB<br/>5. generacji: 44GB – 440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | 4. generacji: 56GB – 156GB <br/> 5. generacji: 41GB – 408GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu | 8 TB | 4. generacji: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
-| Operacje We/Wy (w przybliżeniu) | 500-7500 na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-110 tys. obr (1375 na rdzeń wirtualny) |
+| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500-7500 na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-110 tys. obr (1375 na rdzeń wirtualny) |
+| Wystąpienie dziennika przepływności | 22MB/s na wystąpienie | 3MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48MB/s |
+| Przepływność danych (w przybliżeniu) | 100-250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s na rdzeniach wirtualnych |
 | We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
-| Maksymalny rozmiar bazy danych tempDB | 192 1920 GB (24 GB na rdzeń wirtualny) | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
+| Maksymalny rozmiar bazy danych tempDB | 192 1920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
 
-- Użytkownika i systemowe bazy danych znajdują się w rozmiarze wystąpienia magazynu, która jest porównywana z maksymalny limit rozmiaru magazynu. Użyj <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> widok systemowy ustalenie Suma używane miejsce w bazach danych. Dzienniki błędów są nie jest trwały i nie są uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględnione w rozmiaru magazynu.
+**Informacje o**:
+- Zarówno danych i dziennika rozmiar pliku w użytkownika i systemowe bazy danych znajdują się w rozmiarze wystąpienia magazynu, która jest porównywana z maksymalny limit rozmiaru magazynu. Użyj <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> widok systemowy ustalenie Suma używane miejsce w bazach danych. Dzienniki błędów są nie jest trwały i nie są uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględnione w rozmiaru magazynu.
+- Przepływność i operacje We/Wy także zależeć od rozmiaru strony, który nie jest jawnie ograniczone wystąpienia zarządzanego.
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 

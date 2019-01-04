@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d4d730fe6c72b55a01f7c5f1f95cbd94ff145fba
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f8045153482cdd8b9a13c0a6f2ebdb26627d44e4
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873754"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811413"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -45,7 +45,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     * TCP
     * HTTPS
 
-    Podczas korzystania z trybu bramy usługi Azure Cosmos DB używa portu 443 i portów 10250, 10255 i 10256 korzysta z interfejsu API usługi MongoDB. Mapowania portów 10250 domyślnym wystąpieniem bazy danych Mongodb, bez replikacji geograficznej i mapowania portów 10255/10256 do wystąpienia bazy danych Mongodb przy użyciu funkcji replikacji geograficznej. Korzystając z protokołu TCP w trybie bezpośrednim oprócz portów do bramy, należy upewnić się port zakresie 10000 i 20000 jest otwarty, ponieważ korzysta z usługi Azure Cosmos DB dynamiczne porty TCP. Jeśli te porty są otwarte, i próbuj używać protokołu TCP, błąd 503 Usługa niedostępna. W poniższej tabeli przedstawiono dostępne tryby łączności dla różnych interfejsów API i użytkownik portów usługi dla każdego interfejsu API:
+    Podczas korzystania z trybu bramy usługi Cosmos DB używa portu 443 i portów 10250, 10255 i 10256, korzystając z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Mapowania portów 10250 domyślnym wystąpieniem bazy danych MongoDB, bez replikacji geograficznej i mapowania portów 10255/10256 do wystąpienia bazy danych MongoDB przy użyciu funkcji replikacji geograficznej. Korzystając z protokołu TCP w trybie bezpośrednim oprócz portów do bramy, należy upewnić się port zakresie 10000 i 20000 jest otwarty, ponieważ korzysta z usługi Azure Cosmos DB dynamiczne porty TCP. Jeśli te porty są otwarte, i próbuj używać protokołu TCP, błąd 503 Usługa niedostępna. W poniższej tabeli przedstawiono dostępne tryby łączności dla różnych interfejsów API i użytkownik portów usługi dla każdego interfejsu API:
 
     |Tryb połączenia  |Obsługiwany protokół  |Obsługiwanych zestawów SDK  |Port usługi/interfejsu API  |
     |---------|---------|---------|---------|

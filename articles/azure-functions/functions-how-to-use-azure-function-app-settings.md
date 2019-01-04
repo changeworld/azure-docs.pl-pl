@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999910"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713630"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Jak zarządzać aplikacji funkcji w witrynie Azure portal 
 
@@ -126,7 +126,7 @@ Aby uzyskać więcej informacji na temat sposobu pracy z ustawieniami usługi Ap
 
 | | |
 |-|-|
-| ![Uwierzytelnianie aplikacji funkcji w witrynie Azure portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Korzystając z funkcji wyzwalacza HTTP, możesz wymagać wywołania najpierw uwierzytelnieni. Usługa App Service obsługuje uwierzytelnianie usługi Azure Active Directory i zaloguj się przy użyciu dostawców sieci społecznościowych, takich jak Facebook, Microsoft i Twitter. Aby uzyskać więcej informacji na temat konfigurowania uwierzytelniania określonych dostawców, zobacz [omówienie uwierzytelniania w usłudze Azure App Service](../app-service/app-service-authentication-overview.md). |
+| ![Uwierzytelnianie aplikacji funkcji w witrynie Azure portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Korzystając z funkcji wyzwalacza HTTP, możesz wymagać wywołania najpierw uwierzytelnieni. Usługa App Service obsługuje uwierzytelnianie usługi Azure Active Directory i zaloguj się przy użyciu dostawców sieci społecznościowych, takich jak Facebook, Microsoft i Twitter. Aby uzyskać więcej informacji na temat konfigurowania uwierzytelniania określonych dostawców, zobacz [omówienie uwierzytelniania w usłudze Azure App Service](../app-service/overview-authentication-authorization.md). |
 
 ![Konfigurowanie uwierzytelniania dla aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 82187a99fc8009096127cca624698e1329e5d13b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386540"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975530"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Monitorowanie ciągłe za pomocą usługi Azure Monitor
 
@@ -33,7 +33,7 @@ Aby uzyskać observability w całym środowisku, musisz włączyć monitorowania
 
 - [Funkcja Azure DevOps Projects](../devops-project/overview.md) umożliwiają uproszczone środowisko z istniejącego kodu i repozytorium Git lub wybrać jeden z przykładowych aplikacji, aby utworzyć potok ciągłej integracji (CI) i ciągłe dostarczanie (CD) na platformie Azure.
 - [Ciągłe monitorowanie w potoku metodyki DevOps w wersji](../application-insights/app-insights-vsts-continuous-monitoring.md) umożliwia bramy ani wycofać wdrożenie oparte na danych monitorowania.
-- [Monitor stanu](../application-insights/app-insights-monitor-performance-live-website-now.md) umożliwia instrumentowanie działającej aplikacji .NET na Windows za pomocą usługi Azure Application Insights, bez konieczności modyfikowania ani jego ponownego wdrażania kodu.
+- [Monitor stanu](../azure-monitor/app/monitor-performance-live-website-now.md) umożliwia instrumentowanie działającej aplikacji .NET na Windows za pomocą usługi Azure Application Insights, bez konieczności modyfikowania ani jego ponownego wdrażania kodu.
 - Jeśli masz dostęp do kodu aplikacji, Włącz pełne monitorowanie za pomocą [usługi Application Insights](../application-insights/app-insights-overview.md) przez zainstalowanie usługi Azure Monitor zestaw Application Insights SDK dla [.NET](../application-insights/quick-monitor-portal.md), [języka Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), lub [innych języków programowania](../application-insights/app-insights-platforms.md). Dzięki temu można określić niestandardowe zdarzenia, metryki lub wyświetleń stron, które są istotne dla Twojej firmy i aplikacji.
 
 
@@ -56,7 +56,7 @@ Aplikacje są tylko tak niezawodna jak ich podstawowej infrastruktury. Posiadani
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Łączenie zasobów w grupach zasobów platformy Azure
 Typowa aplikacja na platformie Azure już dziś obejmuje wiele zasobów, takich jak maszyny wirtualne i usługi App Service lub mikrousług w serwisie Cloud Services, usługi AKS klastrów lub usługi Service Fabric. Aplikacje te często wykorzystywać zależności, takich jak Event Hubs, Storage, SQL i usługi Service Bus.
 
-- Łączenie zasobów inAzure grup zasobów można pobrać pełny wgląd we wszystkie zasoby, które tworzą różnych aplikacji. [Usługa Azure Monitor dla grup zasobów](../monitoring-and-diagnostics/resource-group-insights.md) to prosty sposób, aby śledzić kondycję i wydajność całej aplikacji pełnych i umożliwia przechodzenie odpowiednie składniki dla wszelkich badań lub debugowania.
+- Łączenie zasobów inAzure grup zasobów można pobrać pełny wgląd we wszystkie zasoby, które tworzą różnych aplikacji. [Usługa Azure Monitor dla grup zasobów](../azure-monitor/insights/resource-group-insights.md) to prosty sposób, aby śledzić kondycję i wydajność całej aplikacji pełnych i umożliwia przechodzenie odpowiednie składniki dla wszelkich badań lub debugowania.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Zapewnić jakość dzięki ciągłemu wdrażaniu
 Ciągła integracja / ciągłe wdrażanie pozwala na integrowanie i wdrażanie zmiany kodu do aplikacji na podstawie wyników testów automatycznych automatycznie. On usprawnia proces wdrażania i zapewnia jakości o wszelkich zmianach przed ich przenieść do środowiska produkcyjnego.
@@ -74,7 +74,7 @@ Krytyczne aspekty monitorowania jest aktywnie powiadamiającą administratorów 
 - Definiuj akcje dotyczące alertów, aby użyć jest najbardziej skutecznym sposobem powiadamiania administratorów. Dostępne [akcje w przypadku powiadomień](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) są wiadomości SMS, wiadomości e-mail, powiadomienia wypychane lub połączeń głosowych.
 - Bardziej zaawansowane akcje [nawiązać połączenie z narzędziem ITSM](platform/itsmc-overview.md) lub inne systemy zarządzania alertami, za pośrednictwem [elementów webhook](platform/activity-log-alerts-webhook.md).
 - Korygowanie sytuacjach identyfikowane w alertach, jak również za pomocą [elementów runbook usługi Azure Automation](../automation/automation-webhooks.md) lub [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , można uruchamiać z poziomu alertu przy użyciu elementów webhook. 
-- Użyj [skalowania automatycznego](../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md) można dynamicznie zwiększać i zmniejszać zasoby obliczeniowe na podstawie zebranych metryk.
+- Użyj [skalowania automatycznego](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) można dynamicznie zwiększać i zmniejszać zasoby obliczeniowe na podstawie zebranych metryk.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Przygotowywanie pulpitów nawigacyjnych i skoroszyty
 Zapewnienia, że usługi deweloperów i operacyjne mają dostęp do narzędzi i te same dane telemetryczne pozwala na wyświetlanie wzorców w całym środowisku i zminimalizować swoje średniego czasu wykrywania (MTTD) i Średni czas przywracania (MTTR).

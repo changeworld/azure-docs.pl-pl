@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082241"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994134"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -25,9 +25,9 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 
 |Typ źródła|Typ zawartości| Przykłady|
 |--|--|--|
-|Adres URL|Często zadawane pytania (płaskie, sekcji lub z określonej strony głównej tematy)|[Zwykły — często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [— często zadawane pytania wraz z łączami](https://www.microsoft.com/software-download/faq), [— często zadawane pytania za pomocą strony głównej — tematy](https://support.microsoft.com/products/windows?os=windows-10)|
-|PLIK PDF / DOC|Przewodnik dotyczący — często zadawane pytania, obsługi produktu, broszury, dokument, ulotka zasad, pomoc techniczną, ze strukturą pytań i odpowiedzi, np.|[Strukturę QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [Manual.pdf produktu przykładowe](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf), [przykładowy o częściowej lub structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [przykładowy paper.pdf biały](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|Ze strukturą pliku pytań i odpowiedzi (łącznie z RTF, HTML pomocy technicznej)|[Przykładowy FAQ.xls pytań i odpowiedzi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|Adres URL|Często zadawane pytania<br> (Stosowana jest stała, sekcji lub z określonej strony głównej tematy)<br>Strony pomocy technicznej <br> (Jednostronicowej artykuły, rozwiązywanie problemów z artykułów itp.)|[Zwykły — często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Często zadawane pytania wraz z łączami](https://www.microsoft.com/software-download/faq),<br> [Często zadawane pytania dotyczące ze strony głównej — tematy](https://support.microsoft.com/products/windows?os=windows-10)<br>[Artykuł pomocy technicznej](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PLIK PDF / DOC|Często zadawane pytania,<br> Obsługi produktu<br> Broszury,<br> Dokument,<br> Ulotka zasad<br> Przewodnik obsługi<br> QnA ze strukturą<br> Itp.|[Struktura QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy Manual.pdf produktu](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Przykładowy structured.doc o częściowej lub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy paper.pdf biały](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Ze strukturą pliku pytań i odpowiedzi<br> (w tym formacie RTF, HTML pomocy technicznej)|[Przykładowy FAQ.xls pytań i odpowiedzi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Ze strukturą pliku pytań i odpowiedzi|[Przykładowe chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>Lokalizacje źródeł danych
@@ -36,7 +36,7 @@ Tylko publiczne adresy URL są prawidłowe dla wszystkich źródeł danych. Nie 
 
 ## <a name="faq-urls"></a>Adresy URL — często zadawane pytania
 
-Narzędzie QnA Maker obsługuje często zadawane pytania dotyczące stron sieci web w 3 różnych formularzach: zwykły często zadawane pytania dotyczące strony, strony — często zadawane pytania wraz z łączami, stron — często zadawane pytania przy użyciu określonej strony głównej tematy.
+Usługa QnA Maker może obsługiwać często zadawane pytania dotyczące stron sieci web w 3 różne formy: Zwykły stron — często zadawane pytania, stron — często zadawane pytania wraz z łączami, stron — często zadawane pytania przy użyciu określonej strony głównej tematów.
 
 ### <a name="plain-faq-pages"></a>Zwykły stron — często zadawane pytania
 
@@ -65,6 +65,16 @@ Poniżej przedstawiono przykład często Zadawanymi pytaniami, gdzie głównej t
  ![Przykładowa strona link bezpośredni — często zadawane pytania dla bazy wiedzy](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
+### <a name="support-urls"></a>Adresy URL pomocy technicznej
+
+Usługa QnA Maker może przetworzyć strony sieci web pomocy technicznej lub częściową strukturą, takich jak artykułów w sieci web, które będzie opisują sposób wykonywania danego zadania, jak zdiagnozować i rozwiązać dany problem i jakie są najlepsze rozwiązania dla danego procesu. Wyodrębnianie działa najlepiej na zawartości, który ma strukturę hierarchiczną nagłówki.
+
+> [!NOTE]
+> Wyodrębnianie dla artykułów pomocy technicznej jest nową funkcją i we wczesnych etapach. Jego jest najlepsza dla prostych stron, które również mają strukturę i nie zawierają nagłówki złożonych/stopki.
+
+![Usługa QnA Maker obsługuje wyodrębniania z częściową strukturą stron sieci web, gdzie zostanie wyświetlony strukturę hierarchiczną nagłówki](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+
+
 ## <a name="pdf-doc-files"></a>Plik PDF / pliki dokumentacji
 
 Narzędzie QnA Maker można przetwarzają zawartość częściową strukturą w pliku PDF lub dokumentu i przekonwertować go na znacznie. Dobre pliku, który można wyodrębnić dobrze jest jednym gdzie zawartość jest zorganizowana w pewnej postaci ze strukturą i jest reprezentowana w sekcjach dobrze zdefiniowane. Sekcje mogą dodatkowo podzielony na podsekcje lub podtematy. Wyodrębnianie sprawdza się najlepiej w dokumentach, które mają strukturę hierarchiczną nagłówki.
@@ -84,7 +94,7 @@ Poniżej znajduje się przykład ręcznie za pomocą strony indeksu i zawartośc
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Broszury, wskazówek, dokumenty i inne pliki
 
-Wiele typów dokumentów, mogą być przetwarzane do generowania pary pytań i odpowiedzi, pod warunkiem mają Wyczyść strukturę i układ. Obejmują one: broszury, wytyczne, raporty, biały papier, naukowych opracowań, zasady, książki, itp. Zobacz przykład [tutaj](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Wiele typów dokumentów, mogą być przetwarzane do generowania pary pytań i odpowiedzi, pod warunkiem mają Wyczyść strukturę i układ. Należą do nich: Broszury wytycznych, raporty, oficjalne dokumenty, naukowych opracowań, zasady, książki, itp. Zobacz przykład [tutaj](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Poniżej przedstawiono przykład doc lub częściową strukturą, bez indeksu:
 

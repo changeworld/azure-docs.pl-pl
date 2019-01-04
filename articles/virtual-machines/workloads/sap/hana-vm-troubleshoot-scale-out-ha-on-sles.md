@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f86107c5fcd4c0175d59689718dca15736aa3b17
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497358"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994719"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Sprawdź i rozwiązywanie problemów z instalacją w wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA w systemie SLES 12 z dodatkiem SP3 
 
@@ -173,7 +173,7 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 
 Zawartość **corosync.conf** z testu systemu jest przykładem.
 
-Pierwsza sekcja jest **totem**, zgodnie z opisem w [klastra instalacji](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), krok 11. Można zignorować wartość **mcastaddr**. Po prostu Zachowuj istniejący wpis. Wpisy dla **tokenu** i **consensus** należy ustawić zgodnie z opisem w [dokumentacji platformy Microsoft Azure SAP HANA][sles-pacemaker-ha-guide].
+Pierwsza sekcja jest **totem**, zgodnie z opisem w [klastra instalacji](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), krok 11. Można zignorować wartość **mcastaddr**. Po prostu Zachowuj istniejący wpis. Wpisy dla **tokenu** i **consensus** należy ustawić zgodnie z opisem w [dokumentacji platformy Microsoft Azure SAP HANA][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -280,7 +280,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>Interwencja urządzenia
 
-Jak skonfigurować urządzenie interwencja w Maszynie wirtualnej platformy Azure jest opisana w [preferowane interwencja](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
+Jak skonfigurować urządzenie interwencja w Maszynie wirtualnej platformy Azure jest opisana w [preferowane interwencja](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
 
 Najpierw czy na serwerze interwencja maszyny Wirtualnej znajdują się wpisy listy ACL dla każdego węzła w klastrze. Uruchom następujące polecenie na serwerze interwencja maszyny Wirtualnej:
 
@@ -423,7 +423,7 @@ Na stronie maszyny Wirtualnej, obiektu docelowego **hso-hana-vm-s2-2** w tym prz
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Sprawdź, czy wpisy w **/etc/sysconfig/sbd** odnoszą się do opisu w [konfigurowania program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Upewnij się, że ustawienie uruchamiania **/etc/iscsi/iscsid.conf** jest ustawiony na automatyczny.
+Sprawdź, czy wpisy w **/etc/sysconfig/sbd** odnoszą się do opisu w [konfigurowania program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Upewnij się, że ustawienie uruchamiania **/etc/iscsi/iscsid.conf** jest ustawiony na automatyczny.
 
 Następujące wpisy są ważne w **/etc/sysconfig/sbd**. Dostosowanie **identyfikator** wartość, jeśli to konieczne:
 

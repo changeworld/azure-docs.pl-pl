@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 24a9b014028bf99673881904e17ec0911d0b5063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 94a072d3c8bde9e4fb16342db1e0705bfc22cf77
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952056"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539589"
 ---
 # <a name="application-types-for-v20"></a>Typy aplikacji dla wersji 2.0
 
@@ -121,7 +121,7 @@ W tym przepływie aplikacja odbiera kod autoryzacji z punktem końcowym v2.0 po 
 
 ## <a name="daemons-and-server-side-apps"></a>Demony i aplikacji po stronie serwera
 
-Aplikacje, które mają procesy długotrwałe lub niewymagające interakcji z użytkownikiem również muszą mieć dostęp do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Te aplikacje mogą uwierzytelniać i uzyskiwać tokeny przy użyciu tożsamości aplikacji, a nie użytkownika delegowana tożsamość przy użyciu przepływu poświadczeń klienta OAuth 2.0.
+Aplikacje, które mają procesy długotrwałe lub niewymagające interakcji z użytkownikiem również muszą mieć dostęp do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Te aplikacje mogą uwierzytelniać i uzyskiwać tokeny przy użyciu tożsamości aplikacji, a nie użytkownika delegowana tożsamość przy użyciu przepływu poświadczeń klienta OAuth 2.0. Możesz udowodnić tożsamość aplikacji przy użyciu klucza tajnego klienta lub certyfikat. Aby uzyskać więcej informacji, zobacz [uwierzytelniania w usłudze Azure AD w narzędziu aplikacje demona z certyfikatami](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
 W tym przepływie aplikacja współpracuje bezpośrednio z `/token` punktu końcowego uzyskać punkty końcowe:
 

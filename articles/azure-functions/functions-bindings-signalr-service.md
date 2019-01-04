@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7a7063b9177774c5207746283dc7cd25e3dd5793
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001798"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721890"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -62,7 +62,7 @@ public static SignalRConnectionInfo GetSignalRInfo(
 
 #### <a name="authenticated-tokens"></a>Uwierzytelniony tokenów
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/App-Service-Authentication-overview.MD).
+Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
 
 Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `UserId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
 
@@ -108,7 +108,7 @@ module.exports = function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>Uwierzytelniony tokenów
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/App-Service-Authentication-overview.MD).
+Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
 
 Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `userId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
 

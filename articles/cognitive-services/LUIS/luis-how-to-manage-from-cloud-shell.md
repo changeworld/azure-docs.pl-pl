@@ -1,7 +1,7 @@
 ---
 title: Użycie danych — usługa Cloud Shell
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dowiedz się, jak uzyskać informacje dotyczące użycia w usłudze Azure Cloud Shell dla usługi LUIS.
+description: Dowiedz się, jak uzyskać punkt końcowy trafień liczba informacje o sposobie użycia usługi Azure Cloud Shell usługi LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,21 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 703332ece0208856bfbedb852b4b1e985d157dc9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133482"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605959"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Dane użycia usługi LUIS z usługi Azure Cloud Shell
+
+Dowiedz się, jak uzyskać punkt końcowy trafień liczba informacje o sposobie użycia usługi Azure Cloud Shell usługi LUIS.
+
 Portal systemu Azure pozwala na używanie poleceń cmdlet programu PowerShell do pracy z zasobami usługi LUIS. 
 
 Te polecenia cmdlet umożliwiają [tworzenie](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) LUIS subskrypcji, uzyskaj informacje o subskrypcji, w tym [użycia](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), i [Usuń](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) subskrypcji. 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Konta magazynu w chmurze powłoki i uwierzytelniania
+
 Aby można było używać programu PowerShell w witrynie Azure portal [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), musisz mieć konto usługi Azure storage. Jeśli nie masz [konta magazynu](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage), użytkownik jest monitowany o jego utworzenie. Konto magazynu pozwala zapisać skrypty programu PowerShell w usłudze cloud shell.  
 
 Należy również uwierzytelnianie na platformie Azure w usłudze cloud shell uzyskiwać dostępu do zasobów. 
@@ -31,6 +35,7 @@ Należy również uwierzytelnianie na platformie Azure w usłudze cloud shell uz
 Gdy nie masz konta magazynu i uwierzytelnieniu, można uruchomić polecenia cmdlet programu PowerShell.
 
 ## <a name="open-cloud-shell"></a>Otwieranie usługi Cloud Shell
+
 Gdy używasz usługi Azure portal cloud shell, Ty masz zawsze w najnowszej wersji programu PowerShell. 
 
 Użyj **Launch Cloud Shell** przycisk Otwórz usługę Cloud Shell lub Otwórz przeglądarkę z [ https://shell.azure.com ](https://shell.azure.com). Wybierz środowisko powłoki Power Shell. Jeśli nie masz konta usługi Azure Storage, należy ją utworzyć. 

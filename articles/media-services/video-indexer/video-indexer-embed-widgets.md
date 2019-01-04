@@ -7,18 +7,22 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/25/2018
 ms.author: juliako
-ms.openlocfilehash: a051f40cb5586cae58d8e4939f4fcee35438bf69
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292405"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791829"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
-W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplikacjach. Usługa Video Indexer obsługuje osadzanie w aplikacji dwóch typów widżetów: **Cognitive Insights** i **Player**. 
+W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplikacjach. Indeksator wideo obsługuje dwa typy osadzanie widżetów w aplikacji: **Cognitive Insights** i **Player**. 
+
+> [!NOTE]
+> Począwszy od 1 lutego 2018 r., wersja 1 **Cognitive Insights** widżet staną się przestarzałe. Domyślnie wersja adres URL osadzania `version=2`.
+
 ## <a name="widget-types"></a>Typy widżetów
 
 ### <a name="cognitive-insights-widget"></a>Widżet Cognitive Insights
@@ -27,8 +31,8 @@ Widżet **Cognitive Insights** (Szczegółowe informacje) zawiera wszystkie szcz
 
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
-|widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** parametr adresu URL **widgets** nie jest obsługiwany, jeśli użyto parametru **version=2**. |
-|version|Wersje widżetu **Cognitive Insights**|Aby uzyskać najnowsze aktualizacje widżetu szczegółowych informacji, dodaj parametr zapytania `?version=2` do adresu URL osadzania. Na przykład: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Aby uzyskać starszą wersję, wystarczy usunąć element `version=2` z adresu URL.
+|widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** **Elementy widget** param adres URL nie jest obsługiwana, jeśli **wersji = 2** jest używany. |
+|version|Wersje widżetu **Cognitive Insights**|Aby uzyskać najnowsze informacje aktualizacje widżetów, należy dodać `?version=2` zapytań wysyłanych na adres URL osadzania. Na przykład: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Aby uzyskać starszą wersję, wystarczy usunąć element `version=2` z adresu URL.
 
 ### <a name="player-widget"></a>Widżet Player
 
@@ -39,7 +43,7 @@ Widżet **Player** (Odtwarzacz) umożliwia przesyłanie strumieniowe wideo z ada
 |t|Sekundy od początku|Sprawia, że odtwarzanie rozpoczyna się od podanego punktu w czasie.<br/>Przykład: t=60|
 |captions|Kod języka|Pobiera napisy w danym języku podczas ładowania widżetu w celu udostępnienia ich w menu napisów.<br/>Przykład: captions=en-US|
 |showCaptions|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/>Przykład: showCaptions=true|
-|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: type=audio|
+|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: type=audio|"
 |autoplay|Wartość logiczna|Wskazuje, czy należy rozpocząć odtwarzanie po załadowaniu pliku wideo (wartość domyślna to true).<br/>Przykład: autoplay=false|
 |language|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: language=de-DE|
 

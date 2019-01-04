@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 371fa639b2edc300e44cc495393e89c9fce9c4bf
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966742"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580862"
 ---
-# <a name="generating-thumbnails"></a>Generowanie miniatur
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generowanie miniatur przycięte inteligentnej przy użyciu przetwarzania obrazów
 
 Reprezentacja zmniejszyć rozmiar obrazu jest miniatura. Miniatury są używane do reprezentowania obrazy i inne dane w sposób bardziej ekonomiczne, przyjazne dla układu. Interfejs API przetwarzania obrazów używa inteligentne przycinanie, wraz z zmiany rozmiaru obrazu, w celu utworzenia intuicyjne miniatury dla danego obrazu.
 
@@ -42,9 +43,9 @@ W poniższej tabeli przedstawiono typowe miniatury generowane przez przetwarzani
 
 | Image (Obraz) | Miniatura |
 |-------|-----------|
-|![Na zewnątrz w górach](./Images/mountain_vista.png) | ![Górski możliwością miniatury](./Images/mountain_vista_thumbnail.png) |
-|![Analiza obrazu — kwiat](./Images/flower.png) | ![Wizja analizowanie Kwiatek miniatury](./Images/flower_thumbnail.png) |
-|![Kobieta na dachu](./Images/woman_roof.png) | ![Kobieta dachu miniatury](./Images/woman_roof_thumbnail.png) |
+|![Osoba stojących na rock górski zachodzie słońca](./Images/mountain_vista.png) | ![Górski możliwością miniatury](./Images/mountain_vista_thumbnail.png) |
+|![Białe Kwiatek zielonym tłem](./Images/flower.png) | ![Wizja analizowanie Kwiatek miniatury](./Images/flower_thumbnail.png) |
+|![Kobieta na dachu budynku apartamentu](./Images/woman_roof.png) | ![Kobieta dachu miniatury](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

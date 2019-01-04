@@ -12,18 +12,29 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277940"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632793"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
+
 W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym. 
+
+## <a name="download-update-packages-for-integrated-systems"></a>Pobierz pakiety aktualizacji dla systemów zintegrowanych
+
+Firma Microsoft udostępni zarówno pełne miesięczne pakiety aktualizacji, jak i pakietów poprawek w celu rozwiązania określonych problemów z. 
+
+Miesięczne pakiety aktualizacji znajdują się w bezpieczny punkt końcowy platformy Azure. Możesz pobrać je ręcznie przy użyciu [narzędzia pobierania usługi Azure Stack aktualizacje](http://aka.ms/azurestackupdatedownload). Jeśli jednostki skalowania jest połączony, aktualizacja zostanie automatycznie wyświetlony w portalu administratora jako **dostępna aktualizacja**. Pełne co miesiąc pakiety aktualizacji są dobrze udokumentowane w każdej wersji. Aby uzyskać więcej informacji na temat poszczególnych wersji kliknąć dowolną wersją z [cykl wersji pakietu aktualizacji](#update-package-release-cadence) dalszej części tego artykułu.
+
+Pakiety aktualizacji poprawki znajdują się w tej samej bezpieczny punkt końcowy platformy Azure. Możesz pobrać je ręcznie przy użyciu łącza osadzonego we wszystkich artykułach bazy wiedzy odpowiednich poprawek; na przykład [usługi Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Podobnie jak pakiety aktualizacji pełną, miesięczną, Operatorzy usługi Azure Stack można pobrać plików XML, bin i .exe i zaimportować je za pomocą procedury w [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md). Operatorzy usługi Azure Stack przy użyciu jednostek skalowania połączonych zobaczą poprawki są automatycznie wyświetlane w portalu administratora z komunikatem **dostępna aktualizacja**.
+
+Jeśli chcesz otrzymywać powiadomienia o każdym wydaniu poprawek jednostki skalowania nie jest połączony, Subskrybuj [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) lub [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) kanał zauważyć w każdej wersji.  
 
 ## <a name="update-package-types"></a>Typy pakietów aktualizacji
 
@@ -51,7 +62,7 @@ Poprawki są pobierane i instalowane podobnie jak pakiety regularne pełną aktu
 
 
 ## <a name="keep-your-system-under-support"></a>Aktualizowanie systemu w ramach pomocy technicznej
-Aby kontynuować do otrzymania pomocy technicznej, należy pozostawić wdrożenia usługi Azure Stack bieżącego. Zasady odraczania dla aktualizacji: dla wdrożenia usługi Azure Stack pozostać w obsłudze, musisz niedawno wersja zaktualizowanej wersji, lub uruchomić jedno z dwóch poprzednich wersji aktualizacji. Poprawki nie są uwzględniane wersje główne aktualizacji. Jeśli chmurze usługi Azure Stack jest za zaporą *więcej niż dwie aktualizacje*, jest uznawane za niezgodne i należy zaktualizować co najmniej minimalnej obsługiwanej wersji do otrzymania pomocy technicznej. 
+Aby kontynuować do otrzymania pomocy technicznej, należy pozostawić wdrożenia usługi Azure Stack bieżącego. Zasada odroczenia dla aktualizacji jest: Dla wdrożenia usługi Azure Stack pozostać w obsłudze musisz niedawno wersja zaktualizowanej wersji, lub uruchomić jedno z dwóch poprzednich wersji aktualizacji. Poprawki nie są uwzględniane wersje główne aktualizacji. Jeśli chmurze usługi Azure Stack jest za zaporą *więcej niż dwie aktualizacje*, jest uznawane za niezgodne i należy zaktualizować co najmniej minimalnej obsługiwanej wersji do otrzymania pomocy technicznej. 
 
 Na przykład jeśli 1805 niedawno dostępny zaktualizowanej wersji, a poprzednie dwa pakiety aktualizacji były w wersji 1804 i 1803, zarówno w wersji 1803, jak i w wersji 1804 pozostają w pomocy technicznej. Jednak 1802 jest obsługiwany. Prawdziwe zasad, gdy istnieje bez zwalniania miesiąc lub dwóch. Na przykład jeśli nie było żadnych wersji 1804 bieżącej wersji jest 1805, poprzednie dwa pakiety aktualizacji 1803 i 1802 pozostają w pomocy technicznej.
 

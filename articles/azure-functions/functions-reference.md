@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42635852bb5c6e7b388d4dc58b9d5bfaa6212438
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980308"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725857"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów usługi Azure Functions
 W usłudze Azure Functions określonych funkcji udostępniania kilka podstawowych pojęć technicznych i składniki, niezależnie od języka lub powiązania, którego używasz. Zanim przejdziesz do nauki szczegóły specyficzne dla danego języka lub powiązania, koniecznie zapoznaj się z tego omówienia, która ma zastosowanie do wszystkich z nich.
@@ -76,7 +76,7 @@ Podczas tworzenia projektu wdrażania funkcji w aplikacji funkcji na platformie 
 ## <a id="fileupdate"></a> Jak zaktualizować pliki aplikacji — funkcja
 Edytor funkcji wbudowanych w witrynie Azure portal umożliwia uaktualnienie *function.json* plik oraz plik kodu dla funkcji. Przekazywanie lub inne pliki aktualizacji, takich jak *package.json* lub *project.json* lub zależności, trzeba użyć innych metod wdrażania.
 
-Aplikacje funkcji są tworzone w usłudze App Service, więc wszystkie [opcje wdrażania dostępne dla aplikacji sieci web standard](../app-service/app-service-deploy-local-git.md) są również dostępne dla aplikacji funkcji. Poniżej przedstawiono niektóre metody, które służy do przekazywania lub aktualizowanie plików aplikacji funkcji. 
+Aplikacje funkcji są tworzone w usłudze App Service, więc wszystkie [opcje wdrażania dostępne dla aplikacji sieci web standard](../app-service/deploy-local-git.md) są również dostępne dla aplikacji funkcji. Poniżej przedstawiono niektóre metody, które służy do przekazywania lub aktualizowanie plików aplikacji funkcji. 
 
 #### <a name="use-local-tools-and-publishing"></a>Korzystaj z narzędzi lokalnych i publikowania
 Aplikacje funkcji można tworzyć i publikować przy użyciu różnych narzędzi, takich jak [programu Visual Studio](./functions-develop-vs.md), [programu Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md)i [narzędzia Core usługi Azure Functions](./functions-develop-local.md). Aby uzyskać więcej informacji, zobacz [kodu i testowanie usługi Azure Functions lokalnie](./functions-develop-local.md).
@@ -87,7 +87,7 @@ Aplikacje funkcji można tworzyć i publikować przy użyciu różnych narzędzi
 Postępuj zgodnie z instrukcjami w temacie [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md).
 
 ## <a name="parallel-execution"></a>Wykonywanie równoległe
-Gdy wiele wyzwalająca zdarzenia występują szybciej niż jednowątkowe funkcji środowiska uruchomieniowego mogły je przetwarzać, środowisko uruchomieniowe może wywołania funkcji wiele razy w sposób równoległy.  Jeśli aplikacja funkcji używa [planu hostingu zużycie](functions-scale.md#how-the-consumption-plan-works), aplikacja funkcji może automatycznego skalowania w poziomie.  Każde wystąpienie aplikacji funkcji, czy aplikacja jest uruchamiana na zużycie hosting plan lub wyrażenie [usługi App Service plan hostingu](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), może przetwarzać wywołania funkcji współbieżnych równolegle przy użyciu wielu wątków.  Maksymalna liczba wywołań funkcji współbieżnych w każdym wystąpieniu aplikacji funkcji zależy od typu wyzwalacza są używane, a także zasoby używane przez inne funkcje w ramach aplikacji funkcji.
+Gdy wiele wyzwalająca zdarzenia występują szybciej niż jednowątkowe funkcji środowiska uruchomieniowego mogły je przetwarzać, środowisko uruchomieniowe może wywołania funkcji wiele razy w sposób równoległy.  Jeśli aplikacja funkcji używa [planu hostingu zużycie](functions-scale.md#how-the-consumption-plan-works), aplikacja funkcji może automatycznego skalowania w poziomie.  Każde wystąpienie aplikacji funkcji, czy aplikacja jest uruchamiana na zużycie hosting plan lub wyrażenie [usługi App Service plan hostingu](../app-service/overview-hosting-plans.md), może przetwarzać wywołania funkcji współbieżnych równolegle przy użyciu wielu wątków.  Maksymalna liczba wywołań funkcji współbieżnych w każdym wystąpieniu aplikacji funkcji zależy od typu wyzwalacza są używane, a także zasoby używane przez inne funkcje w ramach aplikacji funkcji.
 
 ## <a name="functions-runtime-versioning"></a>Przechowywanie wersji środowiska uruchomieniowego funkcji
 
@@ -117,8 +117,8 @@ Więcej informacji zawierają następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Usługa Azure Functions dla deweloperów odwołanie w C#](functions-reference-csharp.md)
-* [Dokumentacja usługi Azure Functions F # dla deweloperów](functions-reference-fsharp.md)
+* [Usługa Azure Functions F# dokumentacja dla deweloperów](functions-reference-fsharp.md)
 * [Dokumentacja dla deweloperów w usłudze Azure Functions NodeJS](functions-reference-node.md)
 * [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
-* [Usługa Azure Functions: Podróży](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) na blogu zespołu usługi Azure App Service. Historia jak został opracowany, usługi Azure Functions.
+* [Usługa Azure Functions: Podróż](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) na blogu zespołu usługi Azure App Service. Historia jak został opracowany, usługi Azure Functions.
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b8172ba50f7fec8f0aa1ba768c05d087ecabf8c8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 064aeaea47dd59a1dd75cf19ea4060d8f9c2c4bf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285417"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559063"
 ---
-# <a name="sfctl-mesh-secretvalue"></a>Interfejs sfctl siatki secretvalue
+# <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 Pobieranie i usuwanie zasobów secretvalue siatki.
 
 ## <a name="commands"></a>Polecenia
@@ -29,8 +29,8 @@ Pobieranie i usuwanie zasobów secretvalue siatki.
 |Polecenie|Opis|
 | --- | --- |
 | delete | Usuwa określoną wartość nazwany zasób wpisu tajnego. |
-| list | Listę nazw wszystkich wartości z określonego zasobu wpisu tajnego. |
-| Pokaż | Pobierz wartość określonej wersji klucza tajnego zasobów. |
+| list | Lista nazw dla wszystkich wartości z określonego zasobu wpisu tajnego. |
+| pokaż | Pobierz wartość określonej wersji klucza tajnego zasobów. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>Interfejs sfctl siatki secretvalue delete
 Usuwa określoną wartość nazwany zasób wpisu tajnego.

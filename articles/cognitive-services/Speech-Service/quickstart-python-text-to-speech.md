@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Konwertuj tekst na mowę, językiem Python — usługi mowy'
+title: 'Szybki start: Konwertuj tekst na mowę, językiem Python — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start dowiesz się, jak konwertować zamiany tekstu na mowę przy użyciu języka Python i interfejsu API REST zamiany tekstu na mowę. Przykładowy tekst uwzględnione w tym przewodniku mają strukturę jako język znaczników synteza mowy (SSML). Dzięki temu możliwe jest wybranie głos i język odpowiedzi mowy.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00f57ccc0e02c8805e9a41fc5bce8f0ca4a3303a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090061"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542530"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>Szybki Start: Konwertuj tekst na mowę, przy użyciu języka Python
+# <a name="quickstart-convert-text-to-speech-using-python"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu języka Python
 
 W tym przewodniku Szybki Start dowiesz się, jak konwertować zamiany tekstu na mowę przy użyciu języka Python i zamiany tekstu na mowę interfejsu API REST. Ma strukturę treści żądania, w tym przewodniku [mowy syntezy Markup Language (SSML)](speech-synthesis-markup.md), co pozwala wybrać głos i język w odpowiedzi.
 
@@ -86,7 +86,7 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [sposób uzyskiwania tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token).
+> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [uwierzytelnienia przy użyciu tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
 ## <a name="make-a-request-and-save-the-response"></a>Tworzenie żądania i zapisać odpowiedź
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 956482a30d383df558eee775b9d89c211bc53e61
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 94c1f255d7aae63d6faf44cc500c48c68bf6d3fc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101419"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608957"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
@@ -27,47 +27,52 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux.
 
-## <a name="version-150"></a>Wersja 1.5.0
-10 29 2018
+## <a name="version-161"></a>Wersja 1.6.1
+12/18/2018 r.
 
-### <a name="download-azure-storage-explorer-150"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.5.0
-- [Usługa Azure Storage Explorer 1.5.0 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Eksplorator usługi Azure Storage 1.5.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Eksplorator usługi Azure Storage 1.5.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-161"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.6.1
+- [Usługa Azure Storage Explorer 1.6.1 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Eksplorator usługi Azure Storage 1.6.1 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Eksplorator usługi Azure Storage 1.6.1 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
+### <a name="hotfixes"></a>Poprawki
+* Ze względu na ograniczenia interfejsu API zostały wyłączone całej walidacji identyfikatory obiektów w oknie dialogowym Zarządzanie dostępem. Sprawdzanie poprawności teraz miało miejsce tylko dla użytkownika nazwy UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* W oknie dialogowym Gen2 ADLS i zarządzanie dostępem nie można zmodyfikować uprawnień dla grupy. Ten problem został rozwiązany. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Dodano przeciągania i upuszczania Przekaż pomocy technicznej do edytora Gen2 usługi ADLS. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* Czasami brakuje właściwości adresu URL w oknie dialogowym właściwości ADLS Gen2 pliki i foldery "/". Ten problem został rozwiązany. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Jeśli pobieranie bieżących uprawnień dla kontenera usługi Azure Data Lake Store Gen2, plik lub folder nie powiedzie się, a następnie ten błąd jest teraz propertly wyświetlane w dzienniku aktywności. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Ścieżka tymczasowa utworzona przy otwieraniu plików została skrócona, aby zmniejszyć prawdopodobieństwo tworzenia ścieżki, która jest dłuższa niż MAX_PATH na Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Połącz teraz poprawnie zostanie wyświetlone okno dialogowe gdy żaden użytkownik nie zalogowany, a żadne zasoby nie zostały dołączone. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* W 1.6.0 zapisywanie właściwości dla innych SNS: obiektów blob i plików będzie zakodować wartości wszystkich właściwości. Pozwoliło to odnotować niepotrzebne kodowania wartości, które zawiera tylko znaki ASCII. Teraz z wartości będzie zapisywana tylko zawierają znaki spoza zestawu ASCII. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Przekazywanie folderu do kontenera obiektów Blob bez - SNS może zakończyć się niepowodzeniem, jeśli użyto sygnatury dostępu Współdzielonego i sygnatury dostępu Współdzielonego nie ma uprawnień do odczytu. Ten problem został rozwiązany. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Anulowanie transferu AzCopy zakończyło się niepowodzeniem. Ten problem został rozwiązany. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* Narzędzie AzCopy może zakończyć się niepowodzeniem podczas próby pobrania folderu z kontenera usługi Azure Data Lake Store Gen2 Blob, gdyby spacje w nazwie folderu. Ten problem został rozwiązany. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* Edytor bazy danych cosmos DB zostało uszkodzone w 1.6.0. Teraz jest to stała. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
 ### <a name="new"></a>Nowa
 
-* Teraz możesz używać [AzCopy v10 (wersja zapoznawcza)](https://github.com/Azure/azure-storage-azcopy) do przekazywania i pobierania obiektów blob. Aby włączyć tę funkcję przejdź do menu "Eksperymentalne", a następnie kliknij przycisk "Użyj narzędzia AzCopy dla ulepszone obiektu Blob przekazywania i pobierania". Po włączeniu narzędzia AzCopy można używać w następujących scenariuszach:
-   * Przekazywanie folderów i pliki do kontenerów obiektów blob za pomocą paska narzędzi lub przeciągnij i upuść.
-   * Pobieranie folderów i plików, za pośrednictwem menu paska narzędzi lub kontekstu.
-
-* Ponadto korzystając z narzędzia AzCopy:
-   * Możesz skopiować polecenia narzędzia AzCopy, używany w celu wykonania transferu do Schowka. W dzienniku aktywności, po prostu kliknij przycisk "Kopiuj AzCopy polecenia do Schowka".
-   * Należy ręcznie odświeżyć Edytor obiektów blob po przekazaniu.
-   * Przekazywanie plików do uzupełnialnych obiektów blob nie jest obsługiwana, .vhds zostaną przekazane jako stronicowe obiekty BLOB i wszystkie inne pliki zostaną przekazane jako blokowe obiekty BLOB.
-   * Błędy i konflikty, które występują podczas przekazywania lub pobierania nie zostaną wyświetlone dopiero po przekazywania lub pobierania zostało zakończone.
-
-Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie udostępniona w przyszłości.
-* Eksplorator usługi Storage jest teraz, używając elektronów wersji 2.0.11.
-* Przerwanie dzierżawy teraz można wykonać tylko na jeden obiekt blob w danym momencie. Ponadto należy wprowadzić nazwę obiektu blob dzierżawy, którego są istotne. Ta zmiana została wprowadzona w celu zmniejszenia prawdopodobieństwa przypadkowo Trwa przerywanie dzierżawy, szczególnie w przypadku .vhds dla maszyn wirtualnych. #394
-* Jeśli nigdy nie występują problemy dotyczące logowania, użytkownik może teraz spróbuj zresetować uwierzytelniania. Przejdź do menu "Pomoc", a następnie kliknij przycisk "Resetuj", aby dostęp do tej funkcji. #419
-
-### <a name="fix"></a>Napraw
-
-* Po opinii silne użytkownika domyślnego emulatora węzła została ponownie włączona. Nadal możesz dodać dodatkowe emulatora połączeń za pośrednictwem okna dialogowego Connect, ale jeśli emulator usługi jest skonfigurowany do korzystania z portów domyślnych umożliwia także "Emulator * domyślnych portów" węźle "Lokalne i dołączone/Storage konta". #669
-* Eksplorator usługi Storage będą już nie pozwalają na ustawienie wartości metadanych obiektu blob, które mają spacji wiodących i końcowych. #760
-* Przycisk "Zaloguj" był zawsze włączona w tej samej strony okna dialogowego Connect. Teraz jest ona wyłączona, gdy jest to konieczne. #761
-* Szybki dostęp nie jest już spowoduje wygenerowanie błędu w konsoli, gdy zostały dodane żadne elementy paska szybki dostęp.
+* Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
+* Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
+    * Tworzenie i usuwanie kontenerów
+    * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
+    * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
+    * Tworzenia nowych folderów
+    * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
+    * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
+    
+    Inne typowe funkcje obiektów Blob, takie jak usuwanie nietrwałe i migawki, nie są obecnie dostępne. Zarządzanie uprawnieniami jest również dostępna tylko po zalogowaniu. Ponadto podczas pracy na koncie usługi Azure Data Lake Store Gen2 Storage, Eksplorator usługi Storage będzie używać narzędzia AzCopy przekazywanie i pobieranie i domyślną przy użyciu nazwy i klucza poświadczeń dla wszystkich operacji, jeśli jest dostępny.
+* Po opinii silne użytkownika dzierżawy podziału ponownie można można przerwać dzierżawy dla wielu obiektów blob na raz.
 
 ### <a name="known-issues"></a>Znane problemy
 
-* Odłączania od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Zobacz 537 # Aby uzyskać więcej informacji.
-* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli wykonanie tej tak nie niedogodność, Skomentuj związane z tym problemem.
+* Podczas pobierania z konta usługi Azure Data Lake Store Gen2 magazynu, jeśli jeden z plików przesyłanych już istnieje, narzędzie AzCopy czasami ulegnie awarii. Ten problem zostanie rozwiązany w nadchodzącej poprawce.
+* Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Aby uzyskać więcej informacji zobacz #537.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, komentarz dotyczący tego problemu.
 * Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
-* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów. Aby obejść ten problem podczas przekazywania lub pobierania z kontenera obiektów blob, służy funkcja eksperymentalna narzędzia AzCopy.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów. W celu obejścia tego problemu podczas przekazywania lub pobierania z kontenera obiektów blob, służy funkcja eksperymentalna narzędzia AzCopy.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to spowodowane użyto rozwiązanie filtr anulowania, które są opisane w tym miejscu.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Usługa Azure Stack nie obsługuje następujących funkcji. Podjęto próbę użycia tych funkcji podczas pracy z usługą Azure Stack zasobów może spowodować nieoczekiwane błędy.
@@ -98,6 +103,8 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 ## <a name="previous-releases"></a>Poprzednie wersje
 
+* [W wersji 1.6.0](#version-160)
+* [Wersja 1.5.0](#version-150)
 * [Wersja 1.4.4](#version-144)
 * [Wersja 1.4.3](#version-143)
 * [W wersji 1.4.2](#version-142)
@@ -129,11 +136,131 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * [Wersja 0.7.20160105.0](#version-07201601050)
 * [Wersja 0.7.20151116.0](#version-07201511160)
 
+## <a name="version-160"></a>W wersji 1.6.0
+12/5/2018 r.
+
+### <a name="new"></a>Nowa
+
+* Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
+* Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
+    * Tworzenie i usuwanie kontenerów
+    * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
+    * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
+    * Tworzenia nowych folderów
+    * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
+    * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
+    
+    Inne typowe funkcje obiektów Blob, takie jak usuwanie nietrwałe i migawki, nie są obecnie dostępne. Zarządzanie uprawnieniami jest również dostępna tylko po zalogowaniu. Ponadto podczas pracy na koncie usługi Azure Data Lake Store Gen2 Storage, Eksplorator usługi Storage będzie używać narzędzia AzCopy przekazywanie i pobieranie i domyślną przy użyciu nazwy i klucza poświadczeń dla wszystkich operacji, jeśli jest dostępny.
+* Po opinii silne użytkownika dzierżawy podziału ponownie można można przerwać dzierżawy dla wielu obiektów blob na raz.
+
+### <a name="known-issues"></a>Znane problemy
+
+* Podczas pobierania z konta usługi Azure Data Lake Store Gen2 magazynu, jeśli jeden z plików przesyłanych już istnieje, narzędzie AzCopy czasami ulegnie awarii. Ten problem zostanie rozwiązany w nadchodzącej poprawce.
+* Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Aby uzyskać więcej informacji zobacz #537.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, komentarz dotyczący tego problemu.
+* Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
+* W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów. W celu obejścia tego problemu podczas przekazywania lub pobierania z kontenera obiektów blob, służy funkcja eksperymentalna narzędzia AzCopy.
+* Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
+* Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
+* Usługa Azure Stack nie obsługuje następujących funkcji. Podjęto próbę użycia tych funkcji podczas pracy z usługą Azure Stack zasobów może spowodować nieoczekiwane błędy.
+   * Udziały plików
+   * Poziomy dostępu
+   * Usuwanie nietrwałe
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszania sprzętowego procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksplorator usługi Storage wyświetla puste okno główne (pusty), możesz spróbować uruchomienie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Użytkownicy systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników w systemie Ubuntu 14.04, konieczne będzie upewnij się, GCC jest aktualne — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników w systemie Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-150"></a>Wersja 1.5.0
+10 29 2018
+
+### <a name="new"></a>Nowa
+
+* Teraz możesz używać [AzCopy v10 (wersja zapoznawcza)](https://github.com/Azure/azure-storage-azcopy) do przekazywania i pobierania obiektów blob. Aby włączyć tę funkcję przejdź do menu "Eksperymentalne", a następnie kliknij przycisk "Użyj narzędzia AzCopy dla ulepszone obiektu Blob przekazywania i pobierania". Po włączeniu narzędzia AzCopy można używać w następujących scenariuszach:
+   * Przekazywanie folderów i pliki do kontenerów obiektów blob za pomocą paska narzędzi lub przeciągnij i upuść.
+   * Pobieranie folderów i plików, za pośrednictwem menu paska narzędzi lub kontekstu.
+
+* Ponadto korzystając z narzędzia AzCopy:
+   * Możesz skopiować polecenia narzędzia AzCopy, używany w celu wykonania transferu do Schowka. W dzienniku aktywności, po prostu kliknij przycisk "Kopiuj AzCopy polecenia do Schowka".
+   * Należy ręcznie odświeżyć Edytor obiektów blob po przekazaniu.
+   * Przekazywanie plików do uzupełnialnych obiektów blob nie jest obsługiwana, pliki wirtualnego dysku twardego, które zostaną przekazane jako stronicowe obiekty BLOB i wszystkie inne pliki zostaną przekazane jako blokowe obiekty BLOB.
+   * Błędy i konflikty, które występują podczas przekazywania lub pobierania nie zostaną wyświetlone dopiero po przekazywania lub pobierania zostało zakończone.
+
+Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie udostępniona w przyszłości.
+* Eksplorator usługi Storage jest teraz, używając elektronów wersji 2.0.11.
+* Przerwanie dzierżawy teraz można wykonać tylko na jeden obiekt blob w danym momencie. Ponadto należy wprowadzić nazwę obiektu blob dzierżawy, którego są istotne. Ta zmiana została wprowadzona w celu zmniejszenia prawdopodobieństwa przypadkowo Trwa przerywanie dzierżawy, szczególnie w przypadku maszyn wirtualnych. #394
+* Jeśli nigdy nie występują problemy dotyczące logowania, użytkownik może teraz spróbuj zresetować uwierzytelniania. Przejdź do menu "Pomoc", a następnie kliknij przycisk "Resetuj", aby dostęp do tej funkcji. #419
+
+### <a name="fix"></a>Napraw
+
+* Po opinii silne użytkownika domyślnego emulatora węzła została ponownie włączona. Nadal możesz dodać dodatkowe emulatora połączeń za pośrednictwem okna dialogowego Connect, ale jeśli emulator usługi jest skonfigurowany do korzystania z portów domyślnych umożliwia także "Emulator * domyślnych portów" węźle "Lokalne i dołączone/Storage konta". #669
+* Eksplorator usługi Storage będą już nie pozwalają na ustawienie wartości metadanych obiektu blob, które mają spacji wiodących i końcowych. #760
+* Przycisk "Zaloguj" był zawsze włączona w tej samej strony okna dialogowego Connect. Teraz jest ona wyłączona, gdy jest to konieczne. #761
+* Szybki dostęp nie jest już spowoduje wygenerowanie błędu w konsoli, gdy zostały dodane żadne elementy paska szybki dostęp.
+
+### <a name="known-issues"></a>Znane problemy
+
+* Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Aby uzyskać więcej informacji zobacz #537.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, komentarz dotyczący tego problemu.
+* Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
+* W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów. W celu obejścia tego problemu podczas przekazywania lub pobierania z kontenera obiektów blob, służy funkcja eksperymentalna narzędzia AzCopy.
+* Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
+* Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
+* Usługa Azure Stack nie obsługuje następujących funkcji. Podjęto próbę użycia tych funkcji podczas pracy z usługą Azure Stack zasobów może spowodować nieoczekiwane błędy.
+   * Udziały plików
+   * Poziomy dostępu
+   * Usuwanie nietrwałe
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszania sprzętowego procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksplorator usługi Storage wyświetla puste okno główne (pusty), możesz spróbować uruchomienie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Użytkownicy systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników w systemie Ubuntu 14.04, konieczne będzie upewnij się, GCC jest aktualne — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników w systemie Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
 ## <a name="version-144"></a>Wersja 1.4.4
 10/15/2018 r.
 
 ### <a name="hotfixes"></a>Poprawki
-* Wersja interfejsu Api Azure Resource Management została wycofana odblokowania użytkowników dla administracji USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Wersja interfejsu API Azure Resource Management została wycofana odblokowania użytkowników dla administracji USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * Trwa ładowanie pokręteł teraz używają animacji CSS skrócenie GPU wykorzystywane przez Eksploratora magazynu. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Nowa
@@ -159,7 +286,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -189,7 +316,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 10/11/2018 r.
 
 ### <a name="hotfixes"></a>Poprawki
-* Wersja interfejsu Api Azure Resource Management została wycofana odblokowania użytkowników dla administracji USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Wersja interfejsu API Azure Resource Management została wycofana odblokowania użytkowników dla administracji USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * Trwa ładowanie pokręteł teraz używają animacji CSS skrócenie GPU wykorzystywane przez Eksploratora magazynu. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Nowa
@@ -215,7 +342,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -245,7 +372,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 09/24/2018 r.
 
 ### <a name="hotfixes"></a>Poprawki
-* Aktualizowanie wersji interfejsu Api zarządzania zasobów platformy Azure na 2018-07-01, aby dodać obsługę nowego rodzaju konta usługi Azure Storage. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+* Aktualizowanie wersji interfejsu API zarządzania zasobów platformy Azure na 2018-07-01, aby dodać obsługę nowego rodzaju konta usługi Azure Storage. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
 ### <a name="new"></a>Nowa
 * Załączniki zewnętrznego zasobu, takie jak w przypadku połączenia SAS i emulatorów, została znacznie ulepszona. Teraz możesz wykonywać następujące czynności:
@@ -270,7 +397,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -330,7 +457,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -363,7 +490,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Uzyskiwanie dostępu do kontenerów $web używane przez statycznej witryny sieci Web jest teraz obsługiwane. Dzięki temu można łatwo przekazywać i zarządzania plikami i folderami używane przez witryny sieci Web. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * Na pasku aplikacji w systemie macOS została zreorganizowana. Zmiany obejmują menu Plik, niektóre zmiany klucza skrótu i kilka nowych poleceń w menu aplikacji. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * Punkt końcowy urzędu do logowania się na platformie Azure instytucji rządowych USA została zmieniona na https://login.microsoftonline.us/
-* Ułatwienia dostępu: Włączeniu czytnika ekranu, nawigacji za pomocą klawiatury teraz współpracuje z tabel, służący do wyświetlania elementów po prawej stronie. Za pomocą klawiszy strzałek do nawigacji wierszy i kolumn, Enter, aby wywołać akcje domyślne klawisz menu kontekst, otwórz menu kontekstowe dla elementu i Shift lub kontrolować wybór wielokrotny. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Ułatwienia dostępu: Gdy czytnik zawartości ekranu jest aktywny, nawigacji za pomocą klawiatury teraz współpracuje z tabel, służący do wyświetlania elementów po prawej stronie. Za pomocą klawiszy strzałek do nawigacji wierszy i kolumn, Enter, aby wywołać akcje domyślne klawisz menu kontekst, otwórz menu kontekstowe dla elementu i Shift lub kontrolować wybór wielokrotny. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Poprawki
 *  Na niektórych komputerach procesy podrzędne zostały zajmuje dużo czasu do uruchomienia. Jeśli ta sytuacja może mieć miejsce, pojawią się błędem "proces podrzędny nie można uruchomić w odpowiednim czasie". Teraz został zwiększony czas przydzielony na wykonanie procesu podrzędnego, można uruchomić z 20 do 90 sekund. Jeśli są nadal objęte tym problemem, Skomentuj na połączonych problem w usłudze GitHub. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
@@ -375,16 +502,16 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Ułatwienia dostępu: Kolor tła przycisk Zwiń/Rozwiń okienko akcji i właściwości była niespójna przy użyciu podobnych kontrolek interfejsu użytkownika w kompozycji wysoki kontrast — kolor czarny. Kolor został zmieniony. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
 * Ułatwienia dostępu: Motyw wysoki kontrast — kolor czarny fokus, ustawianie stylów dla przycisku "X" w oknie dialogowym właściwości nie były widoczne. Ten problem został rozwiązany. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
 * Ułatwienia dostępu: Karty akce a Vlastnosti brakuje kilku wartości aria, które zakończyły się środowisko czytnika ekranu niepoprawne. Brak wartości aria został dodany. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Ułatwienia dostępu: Węzłów zwinięty drzewa po lewej stronie zostały nie zostało dostarczone rozwinięte aria musi mieć wartość false. Ten problem został rozwiązany. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Ułatwienia dostępu: Węzły zwinięty drzewa po lewej stronie zostały nie zostało dostarczone rozwinięte aria musi mieć wartość false. Ten problem został rozwiązany. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Znane problemy
-* Odłączania od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Zobacz [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/537) Aby uzyskać więcej informacji.
+* Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Zobacz [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/537) Aby uzyskać więcej informacji.
 * Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, należy dodać komentarz dotyczący [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
 * Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Usługa Azure Stack nie obsługuje następujące funkcje i próby ich wykorzystania podczas pracy z usługą Azure Stack może spowodować nieoczekiwane błędy:
@@ -444,7 +571,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -498,7 +625,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -564,7 +691,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 ### <a name="known-issues"></a>Znane problemy
 * W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to spowodowane użyto rozwiązanie filtr anulowania, które są opisane w tym miejscu.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
 * Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
@@ -600,7 +727,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 ### <a name="known-issues"></a>Znane problemy
 * Eksplorator usługi Storage nie obsługują kont usług AD FS.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Na panelu ustawień konta mogą być wyświetlane, należy ponownie wprowadzić poświadczenia, aby filtrowanie subskrypcji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
@@ -649,7 +776,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 ### <a name="known-issues"></a>Znane problemy
 * Eksplorator usługi Storage nie obsługują kont usług AD FS.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to spowodowane użyto rozwiązanie filtr anulowania, które są opisane w tym miejscu.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Na panelu ustawień konta mogą być wyświetlane, należy ponownie wprowadzić poświadczenia, aby filtrowanie subskrypcji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
@@ -696,7 +823,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Eksplorator usługi Storage nie obsługują kont usług AD FS.
 * Klawisze skrótów dla "Widoku Eksploratora" i "Widoku zarządzania kontami" powinien być Ctrl / Cmd + Shift + E i Ctrl / Cmd + Shift + A odpowiednio.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to spowodowane użyto rozwiązanie filtr anulowania, które są opisane w tym miejscu.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Na panelu ustawień konta mogą być wyświetlane, należy ponownie wprowadzić poświadczenia, aby filtrowanie subskrypcji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
@@ -760,7 +887,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Eksplorator usługi Storage nie obsługują kont usług AD FS.
 * Klawisze skrótów dla "Widoku Eksploratora" i "Widoku zarządzania kontami" powinien być Ctrl / Cmd + Shift + E i Ctrl / Cmd + Shift + A odpowiednio.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to spowodowane użyto rozwiązanie filtr anulowania, które są opisane w tym miejscu.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Na panelu ustawień konta mogą być wyświetlane, należy ponownie wprowadzić poświadczenia, aby filtrowanie subskrypcji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
@@ -816,7 +943,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Eksplorator usługi Storage nie obsługują kont usług AD FS.
 * Klawisze skrótów dla "Widoku Eksploratora" i "Widoku zarządzania kontami" powinien być Ctrl / Cmd + Shift + E i Ctrl / Cmd + Shift + A odpowiednio.
 * Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
-* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to spowodowane użyto rozwiązanie filtr anulowania, które są opisane w tym miejscu.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
 * Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
 * Na panelu ustawień konta mogą być wyświetlane, należy ponownie wprowadzić poświadczenia, aby filtrowanie subskrypcji.
 * Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
@@ -894,7 +1021,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 ### <a name="known-issues"></a>Znane problemy
 
-* Przycisków w oknie dialogowym potwierdzenia usunięcia folderu nie zarejestrujesz kliknięciami myszy w systemie Linux. Obejście polega na użyciu klawisza Enter
+* Przycisków w oknie dialogowym potwierdzenia usunięcia folderu nie zarejestrujesz kliknięciami myszy w systemie Linux. Praca ma około użyj klawisza Enter
 * Jeśli wybierzesz nieprawidłowego certyfikatu karty inteligentnej na numer PIN/następnie konieczne będzie ponowne uruchomienie, aby mogła mieć zapomnij decyzji Eksploratora usługi Storage
 * Posiadanie więcej niż 3 grup obiektów blob lub przekazywania w tym samym czasie plików może powodować błędy
 * Na panelu ustawień konta mogą być wyświetlane, należy ponownie wprowadzić poświadczenia w celu filtrowania subskrypcji
@@ -919,12 +1046,12 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 #### <a name="fixes"></a>Poprawki
 
-* Poprawiono: Przekazywanie pliku zadowoleni wysokiej powodować błąd braku pamięci
-* Rozwiązano problem: Użytkownik może teraz Zaloguj się przy użyciu kodu PIN/karty inteligentnej
-* Poprawiono: Otwarcie portalu teraz działa przy użyciu platformy Azure China, Azure (Niemcy), dla administracji USA i usługi Azure Stack
-* Poprawiono: Podczas przekazywania folderu do kontenera obiektów blob, "Niedozwolona operacja" mógłby wystąpić błąd, czasami
-* Rozwiązano: Zaznacz wszystko zostało wyłączone migawek i zarządzania nimi
-* Naprawiono: Metadane obiektu blob podstawowy może spowodować zastąpienie po obejrzeniu właściwości jego migawek
+* Poprawiono: Przekazywanie pliku ma wysokie prawdopodobieństwo powoduje błąd braku pamięci
+* Poprawiono: Użytkownik może teraz Zaloguj się przy użyciu kodu PIN/karty inteligentnej
+* Poprawiono: Otwórz w portalu teraz współpracuje z 21Vianet chińskiej wersji platformy Azure, Azure (Niemcy), dla administracji USA i Azure Stack
+* Poprawiono: Podczas przekazywania folderu do kontenera obiektów blob, czasami mógłby wystąpić błąd "Niedozwolona operacja"
+* Poprawiono: Zaznacz wszystko zostało wyłączone podczas zarządzania migawkami
+* Poprawiono: Metadane obiektu blob podstawowy może spowodować zastąpienie po obejrzeniu właściwości jego migawek
 
 #### <a name="known-issues"></a>Znane problemy
 
@@ -1000,7 +1127,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Eksplorator usługi Storage 0.8.9 automatycznie pobierze najnowszą wersję aktualizacji.
 * Poprawka: przy użyciu portalu wygenerowanego identyfikatora URI połączenia SAS, aby dołączyć konto magazynu spowoduje wystąpienie błędu.
 * Można teraz tworzyć, zarządzać i podwyższanie poziomu migawki obiektu blob.
-* Użytkownik może teraz Zaloguj się do konta platformy Azure China, Azure (Niemcy) i dla administracji USA.
+* Można teraz logowania do platformy Azure w Chinach — 21Vianet, Azure (Niemcy) i kont dla administracji USA.
 * Teraz można zmienić poziom powiększenia. Użyj opcji w menu Widok, aby powiększanie, zmniejszanie i zresetować powiększenie.
 * Znaki Unicode są teraz obsługiwane w metadanych użytkownika do plików i obiektów blob.
 * Ulepszenia ułatwień dostępu.
@@ -1033,13 +1160,13 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 #### <a name="fixes"></a>Poprawki
 
-* Naprawiono: Eksplorator usługi Storage jest teraz zaufanych aplikacji dla komputerów Mac
-* Naprawiono: Ubuntu 14.04 jest ponownie obsługiwane
-* Naprawiono: Czasami Dodaj konto interfejsu użytkownika miga podczas ładowania subskrypcji
-* Naprawiono: Czasami nie wszystkie zasoby magazynu zostały wymienione w okienku nawigacji po lewej stronie
-* Poprawiono: Okienko akcji czasami jest wyświetlany pusty akcji
-* Naprawiono: Rozmiar okna z ostatniej sesji zamknięte są teraz przechowywane
-* Naprawiono: Możesz otworzyć wiele kart dla tego samego zasobu za pomocą menu kontekstowego
+* Poprawiono: Eksplorator usługi Storage jest teraz zaufanych aplikacji dla komputerów Mac
+* Poprawiono: Ubuntu 14.04 ponownie jest obsługiwana.
+* Poprawiono: Czasami Dodaj konto interfejsu użytkownika pojawi się podczas ładowania subskrypcji
+* Poprawiono: Czasami nie wszystkie zasoby magazynu zostały wymienione w okienku nawigacji po lewej stronie
+* Poprawiono: W okienku akcji czasami wyświetlany pusty akcji
+* Poprawiono: Rozmiar okna z ostatniej sesji zamknięte teraz są zachowywane.
+* Poprawiono: Można otworzyć wiele kart dla tego samego zasobu za pomocą menu kontekstowego
 
 #### <a name="known-issues"></a>Znane problemy
 
@@ -1061,7 +1188,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 * Ponownie wprowadziliśmy zakresu wyszukiwania za pomocą naszego nowego wyszukiwania podciągu rozszerzone, dzięki czemu masz teraz dwie opcje wyszukiwania:
     * Globalne wyszukiwanie — po prostu wprowadź wyszukiwany termin w polu tekstowym wyszukiwania
     * Wyszukiwania zakresowego — kliknij na ikonę szkła powiększającego obok węzła, a następnie dodaj wyszukiwany termin do końca ścieżki, lub kliknij prawym przyciskiem myszy i wybierz "Wyszukiwania z tutaj"
-* Dodaliśmy różne kompozycje: światła (ustawienie domyślne), ciemny, wysoki kontrast — kolor czarny i wysoki kontrast — kolor biały. Przejdź do edycji -&gt; motywy, aby zmienić swoje preferencje motywów
+* Dodano różne kompozycje: Jasny (ustawienie domyślne), ciemny, wysoki kontrast — kolor czarny i wysoki kontrast — kolor biały. Przejdź do edycji -&gt; motywy, aby zmienić swoje preferencje motywów
 * Można zmodyfikować właściwości obiektów Blob i plików
 * Zapewniamy obecnie obsługę zakodowany (kodowanie base64) i komunikatów w kolejce niekodowany
 * W systemie Linux, 64-bitowych systemach operacyjnych jest teraz wymagany. W tej wersji obsługiwane jest ściąganie tylko 64-bitowego systemu Ubuntu 16.04.1 LTS
@@ -1069,14 +1196,14 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 #### <a name="fixes"></a>Poprawki
 
-* Poprawiono: Ekranu zamrożenia problemów
-* Naprawiono: Zwiększone zabezpieczenia
-* Poprawiono: Czasami zduplikowanego dołączonych kont może się pojawić
-* Naprawiono: Obiekt blob z Niezdefiniowany typ zawartości może wygenerować wyjątku
+* Poprawiono: Ekran zawiesza się problemów
+* Poprawiono: Ulepszone zabezpieczenia
+* Poprawiono: Może się pojawić, czasami zduplikowanego dołączonych kont
+* Poprawiono: Obiekt blob z Niezdefiniowany typ zawartości może wygenerować wyjątku
 * Poprawiono: Otwieranie panelu zapytania w pustej tabeli nie było możliwe
-* Naprawiono: Różni się w usłudze wyszukiwania
-* Naprawiono: Zwiększenie liczby zasobów ładowane z 50 do 100 po kliknięciu przycisku "Więcej obciążenia"
-* Rozwiązano problem: Przy pierwszym uruchomieniu, jeśli konto jest zalogowany, możemy teraz wszystkie subskrypcje dla tego konta domyślnie wybierane
+* Poprawiono: Różni się błędy w wyszukiwaniu
+* Poprawiono: Zwiększenie liczby zasobów, ładowane z 50 do 100, po kliknięciu przycisku "Więcej obciążenia"
+* Poprawiono: Przy pierwszym uruchomieniu Jeśli konto jest zalogowany, możemy teraz wszystkie subskrypcje dla tego konta, domyślnie wybierane
 
 #### <a name="known-issues"></a>Znane problemy
 
@@ -1097,8 +1224,8 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 #### <a name="fixes"></a>Poprawki
 
 * Poprawiono: sytuacja wyścigu podczas wyszukiwania czasami spowodowane węzłów innych niż rozwijania
-* Naprawiono: "Użyj protokołu HTTP" nie działa w przypadku nawiązywania połączenia z kontami magazynu przy użyciu nazwy i klucza konta
-* Naprawiono: Klucze sygnatur dostępu Współdzielonego (specjalnie wygenerowanych przez Portal tymi) zwracają błąd "ukośnikiem na końcu"
+* Poprawiono: "Przy użyciu protokołu HTTP" nie działa w przypadku nawiązywania połączenia z kontami magazynu przy użyciu nazwy i klucza konta
+* Poprawiono: Klucze sygnatur dostępu Współdzielonego (specjalnie wygenerowanych przez Portal tymi) zwracają błąd "ukośnikiem na końcu"
 * Naprawiono: Importowanie tabeli problemów
     * Czasami zostały cofnięte klucza partycji i klucz wiersza
     * Nie można odczytać "wartości null" kluczy partycji
@@ -1144,7 +1271,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 #### <a name="fixes"></a>Poprawki
 
-* Naprawiono: Accounts Microsoft wymagają ponowne uwierzytelnianie co 8 – 12 godzin
+* Poprawiono: Accounts Microsoft wymagają ponowne uwierzytelnianie co 8 – 12 godzin
 
 #### <a name="known-issues"></a>Znane problemy
 
@@ -1163,7 +1290,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 #### <a name="new"></a>Nowa
 
 * Konta magazynu są pogrupowane według subskrypcji; Tworzenie magazynu i zasoby dołączone za pomocą sygnatury dostępu Współdzielonego lub klucza są wyświetlane w węźle (lokalne i dołączone)
-* Wylogowanie z konta w panelu "Ustawienia konta platformy Azure"
+* Wyloguj się z konta w panelu "Ustawienia konta platformy Azure"
 * Skonfiguruj ustawienia serwera proxy, aby włączyć i zarządzać logowania
 * Tworzenie i przerwać dzierżawy obiektu blob
 * Kontenery Otwórz obiektów blob, kolejek, tabel i plików za pomocą jednego kliknięcia
@@ -1266,7 +1393,7 @@ Na koniec obsługi przy użyciu narzędzia AzCopy z udziałami plików zostanie 
 
 * Pomoc techniczna Linux support (równoważności funkcji OSX)
 * Dodaj kontenery obiektów blob za pomocą klucza sygnatury dostępu współdzielonego (SAS)
-* Dodawanie konta usługi Storage dla platformy Azure (Chiny)
+* Dodawanie konta usługi Storage dla platformy Azure w Chinach — 21Vianet
 * Dodawanie kont magazynu przy użyciu niestandardowych punktów końcowych
 * Otwieranie i wyświetlanie obiektów blob tekst i obraz zawartości
 * Wyświetlanie i edytowanie właściwości obiektu blob i metadanych

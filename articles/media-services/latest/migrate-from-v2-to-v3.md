@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/21/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310399"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716620"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -83,11 +83,11 @@ Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfej
     * Nakładki
     * Przycinanie
     * Miniatury ikony
-* LiveEvents z transkodowanie obecnie obsługuje strumienia środku wstawiania Plansz, niestandardowych ustawień wstępnych ani wstawiania znaczników reklamy, za pośrednictwem wywołania interfejsu API. 
+* LiveEvents z transkodowanie obecnie nie obsługują Plansz wstawiania środku strumienia i ad wstawianiem znaczników za pośrednictwem wywołania interfejsu API. 
 
 > [!NOTE]
 > Zakładki w tym artykule i zachować sprawdzania dostępności aktualizacji.
-
+ 
 ## <a name="code-differences"></a>Różnice w kodzie
 
 W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych scenariuszy.
@@ -108,7 +108,7 @@ W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych sc
     * Kanały i programy utworzone za pomocą wersji 2, (które są mapowane na LiveEvents i LiveOutputs w wersji 3) nie może kontynuować, zarządzane w wersji 3. Zalecane jest, aby przełączyć się do v3 LiveEvents i LiveOutputs na wygodne Zatrzymaj kanał.<br/>Obecnie nie można migrować, stale uruchomione kanały.  
 
 > [!NOTE]
-> Zakładki w tym artykule i zachować sprawdzania dostępności aktualizacji.
+> Ta strona zostanie zachowana, jak zespół usługi Media Services umożliwia dalsze ulepszenia do interfejsów API w wersji 3 i luki między wersjami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

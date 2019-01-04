@@ -4,19 +4,19 @@ description: Dowiedz się, często zadawane pytania dotyczące korzystania z us�
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 12/19/2018
+ms.openlocfilehash: b8001729c85c8447ab22bafffe24a32524a0662a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887108"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714699"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service
 Ten artykuł zawiera listę często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service wraz z powiązane odpowiedzi.
@@ -28,7 +28,7 @@ Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana 
 - Dalsze inwestycje w bezproblemowe migracje.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>PYTANIE: Jakie par źródło cel usługi Azure Database Migration Service obsługuje obecnie?
-Usługa obecnie obsługuje operacje migracji z programu SQL Server do usługi Azure SQL Database i możesz przejść do witryny Azure portal teraz aby rozpocząć korzystanie z usługi Azure Database Migration Service w tym scenariuszu. Inne par źródło cel, takich jak Oracle do usługi Azure SQL Database, są dostępne za pośrednictwem ograniczone prywatnej wersji zapoznawczej. Aby sprawdzić możliwość uczestniczenia w ograniczonej wersji zapoznawczej prywatnych z tych scenariuszy, zarejestruj się [tutaj](https://aka.ms/dms-preview/).
+Usługa obecnie obsługuje wiele różnych scenariuszy migracji. Aby uzyskać pełną listę stan poszczególnych scenariuszy migracji dostępne, zobacz artykuł [stan scenariusze migracji z obsługiwanych przez usługi Azure Database Migration Service](https://docs.microsoft.com/azure/dms/resource-scenario-status). Inne scenariusze migracji znajdują się w ograniczonej wersji zapoznawczej i wymaga przesyłanie nominacji za pośrednictwem witryny DMS (wersja zapoznawcza). Aby uzyskać pełną listę scenariuszy, w ograniczonej wersji zapoznawczej i utworzyć konta w celu particpate w jednym z tych ofert, zobacz [witryny w wersji zapoznawczej usługi DMS](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>PYTANIE: Jak wygląda porównanie usługi Azure Database Migration Service do innych narzędzi migracji bazy danych firmy Microsoft, takich jak bazy danych Migration Assistant (DMA) lub SQL Server Migration Assistant (SSMA)?
 Azure Database Migration Service jest preferowaną metodą migracji bazy danych w systemie Microsoft Azure na dużą skalę. Aby uzyskać więcej szczegółów na porównanie usługi Azure Database Migration Service do innych firmy Microsoft bazy danych narzędzi migracji, a następnie uzyskać zalecenia dotyczące używania usługi dla różnych scenariuszy, zobacz ogłaszania blogu [rozróżnianie baza danych firmy Microsoft Narzędzia i usługi migracji](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333585"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753136"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zasady przechowywania raportów w usłudze Azure Active Directory
 
@@ -53,17 +53,19 @@ Sygnały zabezpieczeń procesu zbierania rozpoczyna się po użytkownik zgody na
 
 **Raporty dotyczące działań**    
 
-| Raport                 | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Inspekcja katalogu        | 7 dni        | 30 dni             | 30 dni             |
-| Aktywność związana z logowaniem       | ND           | 30 dni             | 30 dni             |
-| Użycie usługi Azure MFA        | 30 dni       | 30 dni             | 30 dni             |
+| Raport                 | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Podstawowa | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
+| :--                    | :--           | :--            | :--                 | :--                 |
+| Inspekcja katalogu        | 7 dni        |  7 dni        | 30 dni             | 30 dni             |
+| Aktywność związana z logowaniem       | ND           |  ND           | 30 dni             | 30 dni             |
+| Użycie usługi Azure MFA        | 30 dni       |  30 dni       | 30 dni             | 30 dni             |
+
+Można zachować dane działanie inspekcji i logowania przez okres dłuższy niż domyślny okres przechowywania opisanych powyżej, kierując do konta usługi Azure storage przy użyciu usługi Azure Monitor. Aby uzyskać więcej informacji, zobacz [archiwum usługi Azure AD loguje się do konta usługi Azure storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 **Sygnały zabezpieczeń**
 
-| Raport         | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
-| :--            | :--           | :--                 | :--                 |
-| Narażeni użytkownicy  | 7 dni        | 30 dni             | 90 dni             |
-| Ryzykowne logowania | 7 dni        | 30 dni             | 90 dni             |
+| Raport         | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Podstawowa | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
+| :--            | :--           | :--            | :--                 | :--                 |
+| Narażeni użytkownicy  | 7 dni        | 7 dni         | 30 dni             | 90 dni             |
+| Ryzykowne logowania | 7 dni        | 7 dni         |  30 dni            | 90 dni             |
 
 ---

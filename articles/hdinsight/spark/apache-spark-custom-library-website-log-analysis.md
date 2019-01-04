@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 26ee51da0065b15191c6a02bcd10597c1190dd0a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497295"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608804"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analizowanie dzienników witryn sieci Web przy użyciu klastra Apache Spark w HDInsight przy użyciu niestandardową biblioteką języka Python
 
 Ten notes pokazuje, jak analizować dane dzienników z platformy Apache Spark w HDInsight przy użyciu niestandardową biblioteką. Niestandardową biblioteką używamy to biblioteka języka Python o nazwie **iislogparser.py**.
 
-> [!TIP]
+> [!TIP]  
 > W tym samouczku jest również dostępny jako notesu programu Jupyter w klastrze Spark (Linux), który zostanie utworzony w HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z samego notesu. Aby wykonać samouczek z poziomu Notes, utworzyć klaster platformy Spark, uruchamiania notesu programu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a następnie uruchomić Notes **analizowanie dzienników za pomocą platformy Spark za pomocą niestandardowych library.ipynb** w obszarze **PySpark**  folderu.
 >
 >
@@ -176,7 +176,7 @@ Po zapisaniu danych jako tabelę programu Apache Hive, w następnej sekcji może
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   `%%sql` Magic następuje `-o averagetime` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze programu Jupyter (zazwyczaj węzła głównego klastra). Dane wyjściowe są utrwalane jako [Pandas](http://pandas.pydata.org/) ramka danych o określonej nazwie **averagetime**.
+   `%%sql` Magic następuje `-o averagetime` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze programu Jupyter (zazwyczaj węzła głównego klastra). Dane wyjściowe są utrwalane jako [Pandas](https://pandas.pydata.org/) ramka danych o określonej nazwie **averagetime**.
 
    Powinny pojawić się dane wyjściowe podobne do następujących:
 
@@ -199,16 +199,16 @@ Po zapisaniu danych jako tabelę programu Apache Hive, w następnej sekcji może
 8. Po zakończeniu działania aplikacji należy ją zamknąć, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zakończenie pracy i zamknięcie notesu.
 
 ## <a name="seealso"></a>Zobacz też
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Tworzenie i przesyłanie aplikacji Apache Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)

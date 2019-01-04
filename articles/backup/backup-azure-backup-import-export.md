@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955137"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974441"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Usługa Azure Backup ma kilka wbudowanych korzyści, które zmniejsza koszty magazynu i sieci podczas początkowego pełne kopie zapasowe danych na platformę Azure. Początkowa pełne kopie zapasowe zazwyczaj przesyłanie dużych ilości danych, a także wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które przenieść tylko różnic/przyrostowa. Proces rozmieszczania w trybie offline usługa Azure Backup można użyć dysków do przekazania danych kopii zapasowej w trybie offline na platformę Azure.
@@ -75,11 +75,11 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
 
   Opis danych wejściowych jest następująca:
 
-    * **Lokalizacja tymczasowa**: lokalizacja magazynu tymczasowego, na którym jest zapisany początkowa kopia zapasowa. Lokalizacja tymczasowa mogą znajdować się na udziale sieciowym lub na komputerze lokalnym. Jeśli kopia komputera i komputera źródłowego są różne, zalecane jest, określ pełną ścieżkę sieciową lokalizacji przejściowej.
+    * **Lokalizacja tymczasowa**: Lokalizacja magazynu tymczasowego, na którym jest zapisany początkowa kopia zapasowa. Lokalizacja tymczasowa mogą znajdować się na udziale sieciowym lub na komputerze lokalnym. Jeśli kopia komputera i komputera źródłowego są różne, zalecane jest, określ pełną ścieżkę sieciową lokalizacji przejściowej.
     * **Konto magazynu w usłudze Azure Resource Manager**: Nazwa typu konta magazynu usługi Resource Manager w dowolnej subskrypcji platformy Azure.
-    * **Azure kontenera magazynu**: nazwę magazynu docelowego obiektu blob na koncie usługi Azure Storage, którego dane kopii zapasowej jest importowany są przenoszone do magazynu usługi Recovery Services.
-    * **Identyfikator subskrypcji platformy Azure**: identyfikator subskrypcji platformy Azure, w której tworzone jest konto usługi Azure Storage.
-    * **Nazwa zadania importowania platformy Azure**: unikatową nazwę, za które Azure Import service i Azure Backup śledzić transferu danych wysyłanych na dyskach na platformie Azure. 
+    * **Kontener usługi Azure Storage**: Nazwa magazynu docelowego obiektu blob na koncie usługi Azure Storage, którego dane kopii zapasowej jest importowany są przenoszone do magazynu usługi Recovery Services.
+    * **Identyfikator subskrypcji platformy Azure**: Identyfikator subskrypcji platformy Azure, w której tworzone jest konto usługi Azure Storage.
+    * **Nazwa zadania importowania platformy Azure**: Unikatowa nazwa importu platformy Azure, które usługi i usługi Azure Backup śledzić transferu danych na dyskach na platformie Azure. 
   
   Podaj dane wejściowe na ekranie, a następnie kliknij przycisk **dalej**. Zapisz podane *Lokalizacja tymczasowa* i *nazwę zadania importowania platformy Azure*, jak te informacje są wymagane, aby przygotować dyski.
 

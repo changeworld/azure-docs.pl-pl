@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582217"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633780"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)
 
-Dowiedz się, jak pracować z usługą Azure Event Hubs z [Apache Storm](http://storm.apache.org/) na HDInsight. Ten dokument używa topologii Storm języka C#, aby odczytywać i zapisywać dane z usługi Event Hubs
+Dowiedz się, jak pracować z usługą Azure Event Hubs z [Apache Storm](https://storm.apache.org/) na HDInsight. Ten dokument używa topologii Storm języka C#, aby odczytywać i zapisywać dane z usługi Event Hubs
 
-> [!NOTE]
+> [!NOTE]  
 > Wersja języka Java tego projektu, zobacz [przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
 
 ## <a name="scpnet"></a>SCP.NET
 
 W krokach w tym dokumencie używane platformy SCP.NET, pakiet NuGet, która ułatwia tworzenie topologii języka C# i składników do użytku z systemem Storm w HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Podczas procedury w tym dokumencie zależą od środowisku deweloperskim Windows z programem Visual Studio, skompilowany projekt można przesyłać do platformy Storm w klastrze HDInsight, który korzysta z systemu Linux. Opartą na systemie Linux klastrów utworzonych po 28 października 2016 roku, obsługują tylko topologii platformy SCP.NET.
 
-HDInsight 3.4 i większe wykorzystanie platformy Mono, aby uruchomić topologii języka C#. W przykładzie użyto w tym dokumencie współpracuje z HDInsight 3.6. Jeśli planujesz tworzenie własnych rozwiązań .NET dla HDInsight, sprawdź [zgodności platformy Mono](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu, aby przewidzieć potencjalne niezgodności.
+HDInsight 3.4 i większe wykorzystanie platformy Mono, aby uruchomić topologii języka C#. W przykładzie użyto w tym dokumencie współpracuje z HDInsight 3.6. Jeśli planujesz tworzenie własnych rozwiązań .NET dla HDInsight, sprawdź [zgodności platformy Mono](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentu, aby przewidzieć potencjalne niezgodności.
 
 ### <a name="cluster-versioning"></a>Przechowywanie wersji klastra
 
 Pakiet Microsoft.SCP.Net.SDK NuGet, których używasz dla projektu musi być zgodna wersja główna systemu STORM zainstalowanego w HDInsight. HDInsight w wersji 3.5 i 3.6 używać systemu Storm 1.x, więc używasz 1.0.x.x wersji platformy SCP.NET przy użyciu tych klastrów.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > W przykładzie w tym dokumencie oczekuje HDInsight 3.5 i 3.6 klastra.
 >
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -47,15 +47,15 @@ Topologie języka C# muszą również wskazywać .NET 4.5.
 
 Firma Microsoft udostępnia zestaw składników Java, które mogą służyć do komunikacji z usługą Event Hubs pochodzących z topologii Storm. Można znaleźć pliku archiwum (plik JAR) Java, który zawiera HDInsight 3.6 zgodnej wersji tych składników na [ https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A składniki są zapisywane w języku Java, możesz łatwo używać ich z topologii C#.
 
 W tym przykładzie używane są następujące składniki:
 
-* __Uzyskiwać za__: odczytuje dane z usługi Event Hubs.
-* __EventHubBolt__: zapisuje dane do usługi Event Hubs.
-* __EventHubSpoutConfig__: używane do konfigurowania uzyskiwać za.
-* __EventHubBoltConfig__: używane do konfigurowania EventHubBolt.
+* __Uzyskiwać za__: Odczytuje dane z usługi Event Hubs.
+* __EventHubBolt__: Zapisuje dane do usługi Event Hubs.
+* __EventHubSpoutConfig__: Umożliwia skonfigurowanie uzyskiwać za.
+* __EventHubBoltConfig__: Umożliwia skonfigurowanie EventHubBolt.
 
 ### <a name="example-spout-usage"></a>Przykład użycia spout
 
@@ -99,7 +99,7 @@ topologyBuilder.SetJavaBolt(
         .shuffleGrouping("Spout");
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > W tym przykładzie użyto wyrażenia Clojure przekazywany jako ciąg, zamiast **JavaComponentConstructor** utworzyć **EventHubBoltConfig**, tak jak w przykładzie spout. Każda metoda działa. Użyj metody, która działa najlepiej dla Ciebie.
 
 ## <a name="download-the-completed-project"></a>Pobieranie ukończone projektu
@@ -110,7 +110,7 @@ Możesz pobrać pełną wersję projektu utworzonego w ramach tego samouczka z [
 
 * [Systemu Apache Storm w wersji klastra HDInsight 3.5 i 3.6](apache-storm-tutorial-get-started-linux.md).
 
-    > [!WARNING]
+    > [!WARNING]  
     > W przykładzie użyto w tym dokumencie wymaga systemu Storm w HDInsight w wersji 3.5 i 3.6. To nie zadziała ze starszymi wersjami HDInsight, ze względu na istotne zmiany nazwy klasy. Wersja tego przykładu, który współdziała z starsze klastry dla [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
 
 * [Centrum zdarzeń platformy Azure](../../event-hubs/event-hubs-create.md).
@@ -138,8 +138,8 @@ Event Hubs to źródło danych, w tym przykładzie. Informacje przedstawione w s
 
    | Name (Nazwa) | Uprawnienia |
    | --- | --- |
-   | Składnik zapisywania |Wysyłanie |
-   | Czytnik |Nasłuchuj |
+   | autor |Wysyłanie |
+   | czytelnik |Nasłuchuj |
 
     ![Okno zasady dostępu zrzut ekranu udziału](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 874d2e7b5925bf299c3749948206401e00553736
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649418"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650451"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametryzacja połączone usługi w usłudze Azure Data Factory
 
@@ -34,15 +34,15 @@ Interfejs użytkownika usługi Data Factory w witrynie Azure Portal lub interfej
 
 ## <a name="supported-data-stores"></a>Magazyny danych obsługiwanych
 
-W tej chwili parametryzacji połączonej usługi jest obsługiwana w interfejs użytkownika usługi Data Factory w witrynie Azure portal, w którym są następujące magazyny danych. Dla wszystkich innych magazynów danych można parametryzacja połączonej usługi, wybierając **kodu** ikony na kartach potoku i za pomocą edytora JSON.
+W tej chwili parametryzacji połączonej usługi jest obsługiwana w interfejs użytkownika usługi Data Factory w witrynie Azure portal, w którym są następujące magazyny danych. Dla wszystkich innych magazynów danych można parametryzacja połączonej usługi, wybierając **kodu** ikonę na **połączeń** kartę i za pomocą edytora JSON.
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- SQL Server
+- Oprogramowanie SQL Server
 - Oracle
 - Cosmos DB
 - Amazon Redshift
 - MySQL
-- Usługa Azure Database for MySQL
+- Azure Database for MySQL
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
 

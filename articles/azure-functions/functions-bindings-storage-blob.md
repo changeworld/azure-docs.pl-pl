@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: efccea36dd94120934b1a9729f583e0596316bc7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a222e66b896886d724572982626fd0bc2c277a8
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338570"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809968"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -320,7 +320,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zaznaczone w [użycia](#trigger---usage) sekcji. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji. | 
 |**Ścieżka** | **BlobPath** |[Kontenera](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorzec nazwy obiektu blob](#trigger---blob-name-patterns). | 
-|**połączenia** | **połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**połączenia** | **Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -446,7 +446,7 @@ Obiekt blob wyzwalacza używa wewnętrznie, kolejki, dzięki czemu steruje maksy
 
 [Plan zużycie](functions-scale.md#how-the-consumption-plan-works) ogranicza aplikację funkcji na jednej maszynie wirtualnej (VM) do 1,5 GB pamięci. Pamięć jest używana przez każdego współbieżnie wykonywanego wystąpienia funkcji i samo środowisko uruchomieniowe funkcji. Jeśli funkcji wyzwalanej przez obiekt blob ładuje cały obiekt blob do pamięci, maksymalny rozmiar pamięci używane przez tę funkcję tylko dla obiektów BLOB to 24 * rozmiar maksymalny obiektu blob. Na przykład aplikacji funkcji przy użyciu trzech funkcji wyzwalanej przez obiekt blob i domyślne ustawienia miałby VM maksymalną wartość współbieżności to 3 * 24 = 72 wywołania funkcji.
 
-Funkcje języka JavaScript załadować cały obiekt blob do pamięci i funkcji języka C# to zrobić, jeśli powiązana z `string`, `Byte[]`, lub POCO.
+Funkcje języka JavaScript i Java załadować cały obiekt blob do pamięci, a C# funkcje to zrobić, jeśli powiązana z `string`, `Byte[]`, lub POCO.
 
 ## <a name="trigger---polling"></a>Wyzwalanie - sondowania
 
@@ -462,7 +462,7 @@ Zobacz przykład specyficzny dla języka:
 
 * [C#](#input---c-example)
 * [Skryptu C# (csx)](#input---c-script-example)
-* [Java](#input---java-example)
+* [Java](#input---java-examples)
 * [JavaScript](#input---javascript-example)
 * [Python](#input---python-example)
 
@@ -630,22 +630,61 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-example"></a>Dane wejściowe - przykładzie w języku Java
+### <a name="input---java-examples"></a>Dane wejściowe - przykładów w języku Java
 
-Poniższy przykład jest funkcją języka Java, która korzysta z wyzwalaczem kolejki i powiązania wejściowego obiektu blob. Komunikat w kolejce zawiera nazwy obiektu blob, a funkcja rejestruje rozmiar obiektu blob.
+Ta sekcja zawiera następujące przykłady:
+
+* [Wyzwalacz HTTP, nazwa obiektu blob z ciągu zapytania wyszukiwania](#http-trigger-look-up-blob-name-from-query-string-java)
+* [Wyzwalacz kolejki, odbierać nazwa obiektu blob z komunikatu w kolejce](#queue-trigger-receive-blob-name-from-queue-message-java)
+
+#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>Wyzwalacz HTTP, wyszukiwanie nazwy obiektu blob z ciągu zapytania (Java)
+
+ W poniższym przykładzie pokazano funkcję języka Java, która używa ```HttpTrigger``` adnotacji, aby otrzymać parametr zawierający nazwę pliku w kontenerze magazynu obiektów blob. ```BlobInput``` Adnotacji, a następnie odczytuje plik i przekazuje jego zawartość, aby działały jak ```byte[]```.
 
 ```java
-@FunctionName("getBlobSize")
-@StorageAccount("AzureWebJobsStorage")
-public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
-                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
-       final ExecutionContext context) {
+  @FunctionName("getBlobSizeHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage blobSize(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    final ExecutionContext context) {
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>Wyzwalacz kolejki, odbierać nazwa obiektu blob z komunikatu w kolejce (Java)
+
+ W poniższym przykładzie pokazano funkcję języka Java, która używa ```QueueTrigger``` adnotacji, aby otrzymać komunikat zawierający nazwę pliku w kontenerze magazynu obiektów blob. ```BlobInput``` Adnotacji, a następnie odczytuje plik i przekazuje jego zawartość, aby działały jak ```byte[]```.
+
+```java
+  @FunctionName("getBlobSize")
+  @StorageAccount("Storage_Account_Connection_String")
+  public void blobSize(
+    @QueueTrigger(
+      name = "filename", 
+      queueName = "myqueue-items-sample") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{queueTrigger}") 
+    byte[] content,
+    final ExecutionContext context) {
       context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
- }
- ```
+  }
+```
 
-  W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobInput` adnotacji w parametrach przybyły, którego wartość z obiektu blob.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`.
-
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobInput` adnotacji w parametrach przybyły, którego wartość z obiektu blob.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`.
 
 ## <a name="input---attributes"></a>Dane wejściowe — atrybuty
 
@@ -690,7 +729,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | Nie dotyczy | Musi być równa `in`. Wyjątki są zaznaczone w [użycia](#input---usage) sekcji. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.|
 |**Ścieżka** |**BlobPath** | Ścieżka do obiektu blob. |
-|**połączenia** |**połączenia**| Nazwa ustawienia aplikacji, która zawiera [parametry połączenia magazynu](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account) do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, która zawiera [parametry połączenia magazynu](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account) do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Nie dotyczy | **Dostęp** | Wskazuje, czy będzie można Odczyt lub zapis. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -728,7 +767,7 @@ Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
 * [Skryptu C# (csx)](#output---c-script-example)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
@@ -915,23 +954,72 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
+### <a name="output---java-examples"></a>Dane wyjściowe — przykładów w języku Java
 
-W poniższym przykładzie przedstawiono obiektu blob danych wejściowych i wyjściowych powiązania w funkcji języka Java. Funkcja tworzy kopię tekstu obiektu blob. Funkcja jest wyzwalana przez komunikatu w kolejce, który zawiera nazwę obiektu blob do skopiowania. Nowy obiekt blob o nazwie {originalblobname} — kopia
+Ta sekcja zawiera następujące przykłady:
+
+* [Wyzwalacz HTTP, za pomocą OutputBinding](#http-trigger-using-outputbinding-java)
+* [Wyzwalacz kolejki, przy użyciu wartości zwracanej funkcji](#queue-trigger-using-function-return-value-java)
+
+#### <a name="http-trigger-using-outputbinding-java"></a>Wyzwalacz HTTP, za pomocą OutputBinding (Java)
+
+ W poniższym przykładzie pokazano funkcję języka Java, która używa ```HttpTrigger``` adnotacji, aby otrzymać parametr zawierający nazwę pliku w kontenerze magazynu obiektów blob. ```BlobInput``` Adnotacji, a następnie odczytuje plik i przekazuje jego zawartość, aby działały jak ```byte[]```. ```BlobOutput``` Wiąże adnotacji ```OutputBinding outputItem```, który jest następnie używany przez funkcję do zapisywania zawartości wejściowego obiektu blob do kontenera magazynu skonfigurowanych.
 
 ```java
-@FunctionName("copyTextBlob")
-@StorageAccount("AzureWebJobsStorage")
-@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
-public String blobCopy(
-    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
-    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+  @FunctionName("copyBlobHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage copyBlobHttp(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    @BlobOutput(
+      name = "target", 
+      path = "myblob/{Query.file}-CopyViaHttp")
+    OutputBinding<String> outputItem,
+    final ExecutionContext context) {
+      // Save blob to outputItem
+      outputItem.setValue(new String(content, StandardCharsets.UTF_8));
+
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-using-function-return-value-java"></a>Wyzwalacz kolejki, przy użyciu wartości zwracanej funkcji (Java)
+
+ W poniższym przykładzie pokazano funkcję języka Java, która używa ```QueueTrigger``` adnotacji, aby otrzymać komunikat zawierający nazwę pliku w kontenerze magazynu obiektów blob. ```BlobInput``` Adnotacji, a następnie odczytuje plik i przekazuje jego zawartość, aby działały jak ```byte[]```. ```BlobOutput``` Adnotacji wiąże zwracanej wartości funkcji, która jest następnie używany przez środowisko uruchomieniowe można zapisać zawartości wejściowego obiektu blob do kontenera magazynu skonfigurowanych.
+
+```java
+  @FunctionName("copyBlobQueueTrigger")
+  @StorageAccount("Storage_Account_Connection_String")
+  @BlobOutput(
+    name = "target", 
+    path = "myblob/{queueTrigger}-Copy")
+  public String copyBlobQueue(
+    @QueueTrigger(
+      name = "filename", 
+      dataType = "string",
+      queueName = "myqueue-items") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      path = "samples-workitems/{queueTrigger}") 
+    String content,
+    final ExecutionContext context) {
+      context.getLogger().info("The content of \"" + filename + "\" is: " + content);
       return content;
- }
- ```
+  }
+```
 
- W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobOutput` adnotacja dla parametrów funkcji, której wartość będzie zapisany do obiektu w usłudze blob storage.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
-
+ W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobOutput` adnotacja dla parametrów funkcji, której wartość będzie zapisany do obiektu w usłudze blob storage.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego typu natywnego języka Java lub obiektu typu POJO.
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 
@@ -975,7 +1063,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | Nie dotyczy | Musi być równa `out` dla powiązania danych wyjściowych. Wyjątki są zaznaczone w [użycia](#output---usage) sekcji. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.  Ustaw `$return` odwoływać się do wartości zwracanej funkcji.|
 |**Ścieżka** |**BlobPath** | Ścieżka do blobco. |
-|**połączenia** |**połączenia**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Nie dotyczy | **Dostęp** | Wskazuje, czy będzie można Odczyt lub zapis. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

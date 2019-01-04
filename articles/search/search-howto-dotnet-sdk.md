@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: c2dd9d7c7567a7c57def093c4d611ab09c870d84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310689"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634545"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak używać usługi Azure Search z poziomu aplikacji .NET
 Ten artykuł stanowi wskazówki pomagające w pracy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk). Zestaw SDK platformy .NET umożliwia Implementowanie zaawansowanych funkcji wyszukiwania w aplikacji za pomocą usługi Azure Search.
@@ -48,7 +48,7 @@ Jeśli już używasz starszej wersji zestawu .NET SDK usługi Azure Search i chc
 ## <a name="requirements-for-the-sdk"></a>Wymagania dotyczące zestawu SDK
 1. Program Visual Studio 2017.
 2. Własnej usługi Azure Search. Aby można było używać zestawu SDK, należy nazwę usługi i co najmniej jeden klucz interfejsu API. [Tworzenie usługi w portalu](search-create-service-portal.md) pomoże Ci przez następujące kroki.
-3. Pobieranie zestawu .NET SDK usługi Azure Search [pakietu NuGet](http://www.nuget.org/packages/Microsoft.Azure.Search) za pomocą "Zarządzaj pakietami NuGet" w programie Visual Studio. Po prostu wyszukać nazwę pakietu `Microsoft.Azure.Search` w witrynie NuGet.org (lub jednego z innych pakietów nazwy powyżej, jeśli potrzebujesz tylko podzbiór funkcji).
+3. Pobieranie zestawu .NET SDK usługi Azure Search [pakietu NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search) za pomocą "Zarządzaj pakietami NuGet" w programie Visual Studio. Po prostu wyszukać nazwę pakietu `Microsoft.Azure.Search` w witrynie NuGet.org (lub jednego z innych pakietów nazwy powyżej, jeśli potrzebujesz tylko podzbiór funkcji).
 
 Zestaw .NET SDK usługi Azure Search obsługuje aplikacji przeznaczonych dla platformy .NET Framework 4.5.2 lub nowszej, a także platformy .NET Core.
 
@@ -243,7 +243,7 @@ Ta metoda tworzy nowy `Index` obiekt z listy `Field` obiektów, które definiuje
 >
 > 
 
-Oprócz pól można również dodać profile oceniania, sugestory lub opcje CORS do indeksu (są one pomijane z przykładu w celu skrócenia programu). Można znaleźć więcej informacji o obiekcie indeksu i jego elementów składowych w [odwołanie do zestawu SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index#microsoft_azure_search_models_index), oraz w [odwołanie do interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/).
+Oprócz pól można również dodać profile oceniania, sugestory lub opcje CORS do indeksu (są one pomijane z przykładu w celu skrócenia programu). Można znaleźć więcej informacji o obiekcie indeksu i jego elementów składowych w [odwołanie do zestawu SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index), oraz w [odwołanie do interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>Wypełnianie indeksu
 Następnym krokiem podczas `Main` jest wypełniania indeksu nowo utworzony. Można to zrobić w następującej metody:
@@ -324,7 +324,7 @@ Druga część tworzy `IndexBatch` zawierającego dokumenty przeznaczone. Okreś
 Trzecia część tej metody jest blok catch obsługuje ważny przypadek błędu indeksowania. Jeśli usługa Azure Search nie może zindeksować niektórych dokumentów w partii, metoda `Documents.Index` zgłasza wyjątek `IndexBatchException`. Może to nastąpić, jeśli indeksujesz dokumenty w czasie, gdy usługa jest mocno obciążona. **Zdecydowanie zalecamy jawną obsługę tego przypadku w kodzie.** Możesz opóźnić, a następnie ponowić indeksowanie dokumentów, których przetwarzanie zakończyło się niepowodzeniem, lub możesz zarejestrować błąd i kontynuować, tak jak w prezentowanym przykładzie. Możesz też wykonać inną akcję w zależności od wymagań spójności danych aplikacji.
 
 > [!NOTE]
-> Możesz użyć `FindFailedActionsToRetry` metodę, aby utworzyć nową partię zawierający tylko akcje, które nie udało się poprzednie wywołanie `Index`. Metoda jest udokumentowany [tutaj](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_) i dyskusję na temat jak prawidłowo używać go [na stronie StackOverflow](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> Możesz użyć [ `FindFailedActionsToRetry` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) metodę, aby utworzyć nową partię zawierający tylko akcje, które nie udało się poprzednie wywołanie `Index`. Brak dyskusji jak prawidłowo używać go [na stronie StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
@@ -387,29 +387,29 @@ public partial class Hotel
 }
 ```
 
-Pierwszą rzeczą, którą należy zwrócić uwagę jest każda właściwość publiczna klasy `Hotel` odnosi się do pola w definicji indeksu, ale z jedną istotną różnicą: Nazwa każdego pola rozpoczyna się małą literą ("camelcase"), podczas gdy nazwa każdej właściwości publicznej klasy `Hotel` zaczyna się wielką literą ("Pascal case"). Jest to częsty przypadek w aplikacjach platformy .NET, które tworzą powiązania danych, gdzie schemat docelowy jest poza kontrolą dewelopera aplikacji. Zamiast naruszać zasady nazewnictwa platformy .NET przez używanie notacji camelCase dla nazw właściwości, za pomocą atrybutu `[SerializePropertyNamesAsCamelCase]` można określić, że zestaw SDK ma mapować nazwy właściwości na notację camelCase automatycznie.
+Przede wszystkim należy zauważyć, że każda publiczna właściwość klasy `Hotel` odpowiada polu w definicji indeksu, ale z jedną zasadniczą różnicą: Nazwa każdego pola rozpoczyna się małą literą (format „camel case”), podczas gdy nazwa każdej właściwości publicznej klasy `Hotel` rozpoczyna się wielką literą (format „Pascal case”). Jest to częsty przypadek w aplikacjach platformy .NET, które tworzą powiązania danych, gdzie schemat docelowy jest poza kontrolą dewelopera aplikacji. Zamiast naruszać zasady nazewnictwa platformy .NET przez używanie notacji camelCase dla nazw właściwości, za pomocą atrybutu `[SerializePropertyNamesAsCamelCase]` można określić, że zestaw SDK ma mapować nazwy właściwości na notację camelCase automatycznie.
 
 > [!NOTE]
-> Zestaw .NET SDK usługi Azure Search korzysta z biblioteki [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) w celu serializacji i deserializacji niestandardowych obiektów modelu do i z formatu JSON. W razie potrzeby możesz dostosować serializację. Aby uzyskać więcej informacji, zobacz [serializacja niestandardowa przy użyciu struktury JSON.NET](#JsonDotNet).
+> Zestaw .NET SDK usługi Azure Search korzysta z biblioteki [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) w celu serializacji i deserializacji niestandardowych obiektów modelu do i z formatu JSON. W razie potrzeby możesz dostosować serializację. Aby uzyskać więcej informacji, zobacz [serializacja niestandardowa przy użyciu struktury JSON.NET](#JsonDotNet).
 > 
 > 
 
 Drugi wszystkim należy zauważyć są atrybuty, takie jak `IsFilterable`, `IsSearchable`, `Key`, i `Analyzer` dekoracji, każda właściwość publiczna. Te atrybuty mapowania bezpośrednio do [odpowiednie atrybuty indeksu usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/create-index#request). `FieldBuilder` Klasa używa ich do konstruowania definicje pól dla indeksu.
 
-Trzeci ważną kwestią dotyczącą `Hotel` klasy są typy danych właściwości publicznych. Typy .NET tych właściwości są mapowane na odpowiadające im typy pól w definicji indeksu. Na przykład właściwość ciągu `Category` jest mapowana na pole `category` mające typ `Edm.String`. Podobne mapowania typów występują między typami `bool?` i `Edm.Boolean`, `DateTimeOffset?` i `Edm.DateTimeOffset` itp. Dokładne zasady mapowania typów znajdują się w dokumentacji metody `Documents.Get` w [dokumentacji zestawu .NET SDK usługi Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_). `FieldBuilder` Klasy zajmie się to mapowanie dla Ciebie, ale nadal można zrozumieć, w przypadku, gdy trzeba rozwiązać wszelkie problemy z serializacją.
+Trzeci ważną kwestią dotyczącą `Hotel` klasy są typy danych właściwości publicznych. Typy .NET tych właściwości są mapowane na odpowiadające im typy pól w definicji indeksu. Na przykład właściwość ciągu `Category` jest mapowana na pole `category` mające typ `Edm.String`. Podobne mapowania typów występują między typami `bool?` i `Edm.Boolean`, `DateTimeOffset?` i `Edm.DateTimeOffset` itp. Dokładne zasady mapowania typów znajdują się w dokumentacji metody `Documents.Get` w [dokumentacji zestawu .NET SDK usługi Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder` Klasy zajmie się to mapowanie dla Ciebie, ale nadal można zrozumieć, w przypadku, gdy trzeba rozwiązać wszelkie problemy z serializacją.
 
 Ta możliwość używania własnych klas jako dokumentów działa w obu kierunkach; Można również pobrać wyniki wyszukiwania i mieć zestawu SDK dokonać ich do typu, co pozwala automatycznej deserializacji, jak firma Microsoft zostanie wyświetlony w następnej sekcji.
 
 > [!NOTE]
-> Zestaw .NET SDK usługi Azure Search obsługuje również dynamiczne typowanie dokumentów za pomocą klasy `Document`, która stanowi mapowanie klucz/wartość nazw pól na wartości pól. Jest to przydatne, jeśli nie znasz schematu indeksu w czasie projektowania lub jeśli powiązanie z określonymi klasami modelu jest niedogodne. Wszystkie metody w zestawie SDK, które obsługują dokumenty, mają przeciążenia działające z klasą `Document`, a także przeciążenia o silnych typach przyjmujące parametr typu ogólnego. Tylko te ostatnie są używane w przykładowym kodzie w ramach tego samouczka. `Document` Klasa dziedziczy `Dictionary<string, object>`. Można znaleźć inne szczegóły [tutaj](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document#microsoft_azure_search_models_document).
+> Zestaw .NET SDK usługi Azure Search obsługuje również dynamiczne typowanie dokumentów za pomocą klasy `Document`, która stanowi mapowanie klucz/wartość nazw pól na wartości pól. Jest to przydatne, jeśli nie znasz schematu indeksu w czasie projektowania lub jeśli powiązanie z określonymi klasami modelu jest niedogodne. Wszystkie metody w zestawie SDK, które obsługują dokumenty, mają przeciążenia działające z klasą `Document`, a także przeciążenia o silnych typach przyjmujące parametr typu ogólnego. Tylko te ostatnie są używane w przykładowym kodzie w ramach tego samouczka. [ `Document` Klasy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) dziedziczy `Dictionary<string, object>`.
 > 
-> 
+>
 
 **Dlaczego należy używać typów danych dopuszczających wartość null**
 
 Jeśli projektujesz własne klasy modeli na potrzeby mapowania na indeks usługi Azure Search, zalecamy deklarowanie właściwości typów wartości, takich jak `bool` i `int`, aby dopuszczały możliwość użycia wartości null (na przykład `bool?` zamiast `bool`). W przypadku użycia właściwości niedopuszczającej wartości null musisz **zagwarantować**, że żaden dokument w indeksie nie zawiera wartości null w odpowiednim polu. Ani zestaw SDK, ani usługa Azure Search nie pomoże Ci tego wymusić.
 
-Nie jest to czysto hipotetyczny problem: Wyobraź sobie scenariusz, w którym dodajesz nowe pole do istniejącego indeksu typu `Edm.Int32`. Po zaktualizowaniu definicji indeksu wszystkie dokumenty będą miały wartość null dla tego nowego pola (ponieważ wszystkie typy w usłudze Azure Search dopuszczają wartość null). Jeśli następnie dla tego pola użyjesz klasy modelu z właściwością `int` niedopuszczającą wartości null, podczas próby pobrania dokumentów otrzymasz wyjątek `JsonSerializationException` podobny do poniższego:
+Nie jest to czysto hipotetyczny problem. Wyobraź sobie scenariusz, w którym dodajesz nowe pole do istniejącego indeksu typu `Edm.Int32`. Po zaktualizowaniu definicji indeksu wszystkie dokumenty będą miały wartość null dla tego nowego pola (ponieważ wszystkie typy w usłudze Azure Search dopuszczają wartość null). Jeśli następnie dla tego pola użyjesz klasy modelu z właściwością `int` niedopuszczającą wartości null, podczas próby pobrania dokumentów otrzymasz wyjątek `JsonSerializationException` podobny do poniższego:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
@@ -418,7 +418,7 @@ Z tego powodu najlepszym i zalecanym rozwiązaniem jest używanie w klasach mode
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>Niestandardowej serializacji przy użyciu struktury JSON.NET
-Zestaw SDK używa struktury JSON.NET do serializacji i deserializacji dokumentów. Można dostosować serializacji i deserializacji, jeśli to konieczne, definiując własne `JsonConverter` lub `IContractResolver` (zobacz [dokumentacji na składnik JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) Aby uzyskać więcej informacji). Może to być przydatne, jeśli chcesz dostosować istniejącą klasę modelu z aplikacji do użycia z usługą Azure Search i innych bardziej zaawansowanych scenariuszy. Na przykład za pomocą niestandardowej serializacji możesz wykonywać następujące czynności:
+Zestaw SDK używa struktury JSON.NET do serializacji i deserializacji dokumentów. Można dostosować serializacji i deserializacji, jeśli to konieczne, definiując własne `JsonConverter` lub `IContractResolver` (zobacz [dokumentacji na składnik JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) Aby uzyskać więcej informacji). Może to być przydatne, jeśli chcesz dostosować istniejącą klasę modelu z aplikacji do użycia z usługą Azure Search i innych bardziej zaawansowanych scenariuszy. Na przykład za pomocą niestandardowej serializacji możesz wykonywać następujące czynności:
 
 * Dołącz lub Wyklucz określone właściwości klasy modelu z są przechowywane jako dokument pola.
 * Mapowania nazw właściwości w kodzie i nazwy pól w indeksie.

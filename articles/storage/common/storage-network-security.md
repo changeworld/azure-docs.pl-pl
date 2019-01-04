@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 8801954ec5ff0277614f65217b9abab6bfb67035
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e8e81ab81e33302b9a0da3e0230d1366cc90d208
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098618"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635514"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -25,6 +25,8 @@ Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga pr
 > Włączenie reguły zapory dla konta magazynu domyślnie blokuje żądań przychodzących danych, chyba, że żądania pochodzą z usługi, która działa w ramach usługi Azure Virtual Network (VNet). Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.
 >
 > Możesz udzielić dostępu do usług platformy Azure, które działają z w ramach sieci wirtualnej, umożliwiając podsieci wystąpienia usługi. Włącz ograniczonej liczbie scenariuszy za pomocą [wyjątki](#exceptions) mechanizm opisane w poniższej sekcji. Aby uzyskać dostęp do witryny Azure portal, należałoby znajdować się na komputerze w ramach zaufanej (IP lub sieci wirtualnej) ustawiony.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scenariusze
 
@@ -65,24 +67,24 @@ Możesz zarządzać domyślnej reguły dostępu do sieci dla kont magazynu w wit
 
 #### <a name="powershell"></a>PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
 
 1. Wyświetl stan reguły domyślne dla konta magazynu.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
     ```
 
 1. Ustaw domyślną regułę w celu blokowania dostępu do sieci domyślnie.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
 1. Ustaw domyślną regułę, aby zezwolić na dostęp do sieci domyślnie.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
     ```
 
 #### <a name="cliv2"></a>CLIv2
@@ -153,32 +155,32 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
 
 #### <a name="powershell"></a>PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
 
 1. Lista reguł sieci wirtualnej.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
     ```
 
 1. Włącz punkt końcowy usługi dla usługi Azure Storage w istniejącej sieci wirtualnej lub podsieci.
 
     ```PowerShell
-    Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzureRmVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
 1. Dodaj regułę sieciowej dla sieci wirtualnej i podsieci.
 
     ```PowerShell
-    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-    Add-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+    Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
 
 1. Usuń regułę sieciowej dla sieci wirtualnej i podsieci.
 
     ```PowerShell
-    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-    Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+    Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
 
 > [!IMPORTANT]
@@ -261,36 +263,36 @@ Możesz zarządzać reguł sieci IP dla konta magazynu za pośrednictwem witryny
 
 #### <a name="powershell"></a>PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
 
 1. Lista reguł sieci IP.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
     ```
 
 1. Dodaj regułę sieciowej dla indywidualnego adresu IP.
 
     ```PowerShell
-    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. Dodaj regułę sieciowej dla zakresu adresów IP.
 
     ```PowerShell
-    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
 1. Usuń regułę sieci dla indywidualnego adresu IP.
 
     ```PowerShell
-    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. Usuń regułę sieci dla zakresu adresów IP.
 
     ```PowerShell
-    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
 > [!IMPORTANT]
@@ -378,24 +380,24 @@ Możesz zarządzać wyjątki od reguły sieci za pośrednictwem witryny Azure po
 
 #### <a name="powershell"></a>PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
 
 1. Wyświetl wyjątków dla reguły sieci konta magazynu.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
     ```
 
 1. Skonfiguruj wyjątki od reguły sieci konta magazynu.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
     ```
 
 1. Usuń wyjątki reguły sieci konta magazynu.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
     ```
 
 > [!IMPORTANT]

@@ -9,25 +9,26 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2cdeea546e7153c63cb1edfbc53f3644facc4f2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877874"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743905"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych przy użyciu programu PowerShell
 
-W tym artykule pokazano, jak tworzyć kopie zapasowe i odzyskiwanie maszyn wirtualnych (VM) z magazynu usługi Recovery Services za pomocą poleceń cmdlet programu Azure PowerShell. Magazyn usługi Recovery Services jest zasobem usługi Azure Resource Manager, umożliwia ochronę danych i zasoby usługi Azure Backup i Azure Site Recovery. 
+W tym artykule pokazano, jak tworzyć kopie zapasowe i odzyskiwanie maszyn wirtualnych (VM) z magazynu usługi Recovery Services za pomocą poleceń cmdlet programu Azure PowerShell. Magazyn usługi Recovery Services jest zasobem usługi Azure Resource Manager, umożliwia ochronę danych i zasoby usługi Azure Backup i Azure Site Recovery.
 
 > [!NOTE]
-> Platforma Azure ma dwa modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł jest przeznaczony dla maszyn wirtualnych utworzonych za pomocą modelu usługi Resource Manager.
+> Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [Usługi Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł jest przeznaczony dla maszyn wirtualnych utworzonych za pomocą modelu usługi Resource Manager.
 >
 >
 
 Ten artykuł przeprowadzi przy użyciu programu PowerShell, aby chronić maszynę Wirtualną i przywrócić dane z punktu odzyskiwania.
 
 ## <a name="concepts"></a>Pojęcia
+
 Jeśli użytkownik nie jest zaznajomiony z usługą Azure Backup z omówieniem usługi, zapoznaj się z artykułem [co to jest usługa Azure Backup?](backup-introduction-to-azure-backup.md) Przed rozpoczęciem upewnij się, że obejmują wstępne w usłudze Azure Backup i ograniczenia dotyczące bieżącego rozwiązania tworzenia kopii zapasowych maszyn wirtualnych.
 
 Aby skutecznie za pomocą programu PowerShell, jest niezbędne do zrozumienia hierarchii obiektów i z których ma rozpoczynać się.
@@ -43,7 +44,7 @@ Aby rozpocząć:
 1. [Pobierz najnowszą wersję programu PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (minimalna wymagana wersja to: 1.4.0)
 
 2. Znajdowanie dostępnych poleceń cmdlet programu PowerShell kopia zapasowa Azure, wpisując następujące polecenie:
-   
+
     ```powershell
     Get-Command *azurermrecoveryservices*
     ```    
@@ -326,7 +327,7 @@ $rp[0]
 
 Dane wyjściowe są podobne do poniższego przykładu:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -350,6 +351,7 @@ Aby przywrócić dyski i informacje o konfiguracji:
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG"
 $restorejob
 ```
+
 #### <a name="restore-managed-disks"></a>Przywracanie dysków zarządzanych
 
 > [!NOTE]
@@ -359,16 +361,15 @@ $restorejob
 
 Zapewnia dodatkowy parametr **TargetResourceGroupName** do określenia grupą zasobów, do którego zostanie przywrócona dysków zarządzanych.
 
-
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"
 ```
 
 **VMConfig.JSON** plik zostanie przywrócony do konta magazynu i dyski zarządzane zostaną przywrócone z określoną docelową grupą zasobów.
 
-
 Dane wyjściowe są podobne do poniższego przykładu:
-```
+
+```powershell
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -397,6 +398,27 @@ Po przywróceniu dyski należy użyć następujące kroki, tworzenie i konfiguro
 > Aby utworzyć zaszyfrowanych maszyn wirtualnych z przywróconych dysków, rolę na platformie Azure musi mieć uprawnienia do wykonania akcji, **Microsoft.KeyVault/vaults/deploy/action**. Jeśli Twoja rola nie ma to uprawnienie, należy utworzyć rolę niestandardową, za pomocą tej akcji. Aby uzyskać więcej informacji, zobacz [niestandardowych ról RBAC platformy Azure](../role-based-access-control/custom-roles.md).
 >
 >
+
+> [!NOTE]
+> Po przywróceniu dysków, możesz teraz uzyskać Szablon wdrożenia, które bezpośrednio służy do tworzenia nowej maszyny Wirtualnej. Nie ma więcej różnych PS polecenia cmdlet służące do tworzenia zarządzanych/niezarządzanych maszyny wirtualne, które są szyfrowane niezaszyfrowane.
+
+Szczegóły zadania wynikowe zawiera identyfikator URI, który można tworzyć zapytania i wdrożyć szablon.
+
+```powershell
+   $properties = $details.properties
+   $templateBlobURI = $properties["Template Blob Uri"]
+```
+
+Wystarczy go wdrożyć szablon umożliwiający utworzenie nowej maszyny Wirtualnej, zgodnie z objaśnieniem [tutaj](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source).
+
+```powershell
+New-AzureRmResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
+```
+
+W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny Wirtualnej przy użyciu pliku "VMConfig".
+
+> [!NOTE]
+> Zdecydowanie zaleca się użycie szablonu wdrożenia szczegóły przedstawiono powyżej, aby utworzyć Maszynę wirtualną. Wkrótce zostaną wycofane w tej sekcji (punkty 1 – 6).
 
 1. Tworzenie zapytań o właściwości przywróconego dysku, aby uzyskać szczegóły zadania.
 
@@ -476,14 +498,14 @@ Po przywróceniu dyski należy użyć następujące kroki, tworzenie i konfiguro
    * **Maszyny wirtualne zarządzane i niezaszyfrowane** — zarządzane maszyny wirtualne nie są szyfrowane, dołączanie przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
    * **Zarządzana i zaszyfrowanych maszyn wirtualnych (tylko w przypadku klucza szyfrowania bloków)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane tylko przy użyciu klucza szyfrowania bloków), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
-   
-      Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
+
+     Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
 
        ```powershell
        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
        ```
 
-   * **Zarządzana i zaszyfrowanych maszyn wirtualnych (BEK i KEK)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane przy użyciu BEK i KEK), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). 
+   * **Zarządzana i zaszyfrowanych maszyn wirtualnych (BEK i KEK)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane przy użyciu BEK i KEK), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
       Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
 
@@ -520,7 +542,6 @@ Podstawowe kroki, aby przywrócić plik z kopii zapasowej maszyny Wirtualnej pla
 * Zainstaluj dyskach punktu odzyskiwania
 * Skopiuj wymagane pliki
 * Odinstaluj dysk
-
 
 ### <a name="select-the-vm"></a>Wybierz maszynę Wirtualną
 
@@ -575,7 +596,7 @@ Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 Dane wyjściowe są podobne do poniższego przykładu:
 
-```
+```powershell
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe

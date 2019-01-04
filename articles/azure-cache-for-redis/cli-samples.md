@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: wesmc
-ms.openlocfilehash: fabd21f9d7fe5ac1511f6b4cc07b8c17b055befe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 15166ae5eaab72849564ce8f03daf65eefae11f1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019643"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584041"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Przykłady wiersza polecenia platformy Azure dla usługi Azure Cache dla usługi Redis
 
@@ -33,7 +33,7 @@ Poniższa tabela zawiera linki do skryptów bash utworzonych za pomocą interfej
 | [Uzyskiwanie szczegółowych informacji z pamięci podręcznej](./scripts/show-cache.md) | Pobiera szczegóły pamięć podręczna systemu Azure dla wystąpienia pamięci podręcznej Redis, w tym stan aprowizacji. |
 | [Pobierz nazwę hosta, portów i kluczy](./scripts/cache-keys-ports.md) | Pobiera nazwę hosta, portów i kluczy dla usługi Azure Cache dla wystąpienia usługi Redis. |
 |**Aplikacja sieci Web oraz pamięć podręczną**||
-| [Łączenie aplikacji sieci web do usługi Azure Cache dla usługi Redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Tworzy aplikację internetową platformy Azure i pamięć podręczna systemu Azure dla usługi Redis, a następnie dodaje szczegóły połączenia redis do ustawień aplikacji. |
+| [Łączenie aplikacji internetowej z pamięcią podręczną Azure Cache for Redis](./../app-service/scripts/cli-connect-to-redis.md) | Tworzy aplikację internetową platformy Azure i pamięć podręczna systemu Azure dla usługi Redis, a następnie dodaje szczegóły połączenia redis do ustawień aplikacji. |
 |**Usuń pamięć podręczną**||
 | [Usuń pamięć podręczną](./scripts/delete-cache.md) | Usuwa Azure dla wystąpienia usługi Redis Cache  |
 | | |

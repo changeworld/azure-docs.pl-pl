@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163840"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653819"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
 
-Dowiedz się, jak skonfigurować [bazy danych Apache HBase](http://hbase.apache.org/) replikacji w sieci wirtualnej lub między dwiema sieciami wirtualnymi na platformie Azure.
+Dowiedz się, jak skonfigurować [bazy danych Apache HBase](https://hbase.apache.org/) replikacji w sieci wirtualnej lub między dwiema sieciami wirtualnymi na platformie Azure.
 
 Replikacja klastra używa metodologii wypychania źródła. Klaster bazy danych HBase może być źródła lub miejsca docelowego lub go wykonać obie te role jednocześnie. Replikacja jest asynchroniczne. Celem replikacji jest spójność ostateczną. Źródło odbiera zmianę do rodziny kolumn, po włączeniu replikacji, Edycja jest propagowany do wszystkich klastrów docelowych. Podczas replikacji danych z jednego klastra do innego klastra źródłowego i wszystkich klastrów, które już zostały wykorzystane danych są śledzone, aby zapobiec pętli replikacji.
 
-W tym samouczku konfigurowania replikacji źródłowego i docelowego. Dla innych topologiach klastra [podręczniku bazy danych Apache HBase](http://hbase.apache.org/book.html#_cluster_replication).
+W tym samouczku konfigurowania replikacji źródłowego i docelowego. Dla innych topologiach klastra [podręczniku bazy danych Apache HBase](https://hbase.apache.org/book.html#_cluster_replication).
 
 Przypadki użycia replikacji bazy danych HBase w jednej sieci wirtualnej są następujące:
 
@@ -121,7 +121,7 @@ Aby zainstalować Bind, użyj następującej procedury:
 
     Zastąp `sshuser` przy użyciu konta użytkownika SSH można określić podczas tworzenia maszyny wirtualnej DNS.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Istnieją różne sposoby uzyskania `ssh` narzędzia. W systemie Linux, Unix i z systemem macOS jest ona udostępniana jako część systemu operacyjnego. Jeśli używasz Windows należy rozważyć użycie jednej z następujących opcji:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
@@ -162,7 +162,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     };
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Zastąp wartości w `goodclients` części dwiema sieciami wirtualnymi przy użyciu zakresu adresów IP. Ta sekcja definiuje adresy, które ten serwer DNS odbiera z.
 
     Aby edytować ten plik, użyj następującego polecenia:
@@ -197,7 +197,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     };
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Należy zastąpić `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` z sufiksem DNS innej sieci wirtualnej. I adres IP usługi przesyłania dalej prywatny adres IP serwera DNS w sieci wirtualnej.
 
     Aby edytować ten plik, użyj następującego polecenia:
@@ -221,7 +221,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Zastąp `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` z w pełni kwalifikowana nazwa domeny (FQDN) DNS maszyny wirtualnej w innej sieci.
     >
     > Zastąp `10.2.0.4` z __wewnętrzny adres IP__ niestandardowego serwera DNS w sieci wirtualnej.
@@ -258,7 +258,7 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>Tworzenie klastrów Apache HBase
 
-Tworzenie [bazy danych Apache HBase](http://hbase.apache.org/) klastrowania w każdym z dwiema sieciami wirtualnymi przy użyciu następującej konfiguracji:
+Tworzenie [bazy danych Apache HBase](https://hbase.apache.org/) klastrowania w każdym z dwiema sieciami wirtualnymi przy użyciu następującej konfiguracji:
 
 - **Nazwa grupy zasobów**: Użyj tej samej nazwy grupy zasobów, podczas tworzenia sieci wirtualnych.
 - **Typ klastra**: HBase
@@ -266,7 +266,7 @@ Tworzenie [bazy danych Apache HBase](http://hbase.apache.org/) klastrowania w ka
 - **Lokalizacja**: Użyj tej samej lokalizacji co sieć wirtualna.  Domyślnie jest vnet1 *zachodnie stany USA*, a sieć vnet2 *wschodnie stany USA*.
 - **Magazyn**: Utwórz nowe konto magazynu dla klastra.
 - **Sieć wirtualna** (z ustawień zaawansowanych w portalu): Wybierz sieć vnet1, utworzony w poprzedniej procedurze.
-- **Podsieci**: Domyślna nazwa używana w szablonie jest **subnet1**.
+- **Podsieć**: Domyślna nazwa używana w szablonie jest **subnet1**.
 
 Aby upewnić się, że środowisko jest skonfigurowane prawidłowo, musi być odpytywać FQDN węzła głównego między dwoma klastrami.
 
@@ -295,8 +295,7 @@ Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure porta
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    >[!note]
-    >
+    > [!NOTE]
     > Użyj nazwy hosta zamiast nazwy FQDN dla nazwy DNS klastra źródłowego i docelowego.
 
 6. Wybierz pozycję **Utwórz**. Skrypt może wymagać trochę czasu, aby uruchomić, szczególnie w przypadku, gdy używasz **- copydata** argumentu.

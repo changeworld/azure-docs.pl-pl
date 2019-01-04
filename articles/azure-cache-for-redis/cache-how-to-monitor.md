@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ab2f1df72f04b6456f1083de6870fb86bad6616
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438299"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582715"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure do celów Redis [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) zapewnienie kilka opcji do monitorowania wystąpień pamięci podręcznej. Można wyświetlić metryki, przypinać wykresy metryk do tablicy startowej, dostosować zakres dat i godzin, wykresy monitorowania, Dodaj i Usuń metryki z wykresów i ustawić alerty, gdy są spełnione określone warunki. Te narzędzia umożliwiają monitorowanie kondycji pamięci podręcznej Azure dla wystąpienia usługi Redis i ułatwia zarządzanie aplikacjami buforowania.
@@ -79,7 +79,7 @@ Aby skonfigurować konto magazynu dla metryk pamięci podręcznej:
 >
 >
 
-Aby uzyskać dostęp do metryk, można je wyświetlić w witrynie Azure portal, jak opisano wcześniej w tym artykule, a użytkownik może także uzyskiwać do nich dostęp za pomocą [API REST usługi Azure Monitor metryki](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+Aby uzyskać dostęp do metryk, można je wyświetlić w witrynie Azure portal, jak opisano wcześniej w tym artykule, a użytkownik może także uzyskiwać do nich dostęp za pomocą [API REST usługi Azure Monitor metryki](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 > [!NOTE]
 > W przypadku zmiany konta magazynu danych na koncie magazynu skonfigurowanych wcześniej pozostanie dostępna do pobrania, ale nie jest wyświetlana w witrynie Azure portal.  
@@ -142,7 +142,7 @@ Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w 
 
 Aby wyświetlić dzienniki aktywności dla pamięci podręcznej, kliknij **dzienników aktywności** z **menu zasobów**.
 
-Aby uzyskać więcej informacji na temat dzienników aktywności, zobacz [Przegląd dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Aby uzyskać więcej informacji na temat dzienników aktywności, zobacz [Przegląd dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 
 

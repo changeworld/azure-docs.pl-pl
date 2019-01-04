@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313398"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633031"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
@@ -156,7 +156,7 @@ Można także porządkować indeksatora okresowe uruchamianie zgodnie z harmonog
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interwał** parametr jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch następujących po sobie indeksatora wykonań. Najmniejszy dozwolony interwał wynosi 5 minut; najdłuższej to jeden dzień. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Jest to wzorzec: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut `PT2H` co 2 godziny.
+**Interwał** parametr jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch następujących po sobie indeksatora wykonań. Najmniejszy dozwolony interwał wynosi 5 minut; najdłuższej to jeden dzień. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Jest to wzorzec: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut `PT2H` co 2 godziny.
 
 Opcjonalny **startTime** wskazuje, kiedy należy rozpocząć zaplanowanego wykonania. Jeśli zostanie pominięty, używany jest bieżący czas UTC. Teraz można w przeszłości — w którym przypadku pierwszego wykonania jest zaplanowane tak, jakby działał nieprzerwanie od startTime indeksatora.  
 

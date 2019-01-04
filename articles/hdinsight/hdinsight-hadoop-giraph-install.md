@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89d1859b521fff8ca8d3e8c7342bcb5a4b8d59fe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3ee1cfaa9e5eb08b2fe6ee7d210dcb84a8c39d78
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012984"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715328"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Giraph w klastrach HDInsight z systemem Windows
 
 Dowiedz się, jak dostosować Windows oparte na klastrze HDInsight z systemu Apache Giraph przy użyciu akcji skryptów i sposobu przetwarzanie dużych wykresów za pomocą systemu Giraph. Aby uzyskać informacji na temat użycia systemu Giraph w klastrze opartych na systemie Linux, zobacz [zainstalować Apache Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie działają tylko z klastrami HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacje o tym, jak zainstalować system Giraph w klastrze HDInsight opartych na systemie Linux, zobacz [zainstalować Apache Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
 
@@ -34,7 +34,7 @@ Można zainstalować system Giraph z każdym typem klastra (Hadoop, Storm, HBase
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
 
 ## <a name="what-is-giraph"></a>Co to jest system Giraph?
-<a href="http://giraph.apache.org/" target="_blank">Apache Giraph</a> umożliwia wykonywanie wykres przetwarzania za pomocą usługi Hadoop i mogą być używane z usługi Azure HDInsight. Wykresy modelu relacje między obiektami, takimi jak połączeń między routerami w dużej sieci, takich jak Internet lub relacji między osobami w sieciach społecznościowych (czasami określane jako wykres społecznościowych). Przetwarzanie wykresów umożliwia przeglądanie informacji o relacji między obiektami w grafie, takich jak:
+<a href="https://giraph.apache.org/" target="_blank">Apache Giraph</a> umożliwia wykonywanie wykres przetwarzania za pomocą usługi Hadoop i mogą być używane z usługi Azure HDInsight. Wykresy modelu relacje między obiektami, takimi jak połączeń między routerami w dużej sieci, takich jak Internet lub relacji między osobami w sieciach społecznościowych (czasami określane jako wykres społecznościowych). Przetwarzanie wykresów umożliwia przeglądanie informacji o relacji między obiektami w grafie, takich jak:
 
 * Identyfikowanie potencjalnych znajomych, na podstawie Twojej bieżącej relacji.
 * Identyfikowanie najkrótszej trasy między dwoma komputerami w sieci.
@@ -61,7 +61,7 @@ Można zainstalować system Giraph z każdym typem klastra (Hadoop, Storm, HBase
     Możesz dodać więcej niż jedna akcja skryptu do zainstalowania wiele składników w klastrze. Po dodaniu skryptów, kliknij znacznik wyboru, aby rozpocząć tworzenie klastra.
 
 ## <a name="use-giraph"></a>Korzystanie z systemu Giraph
-Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> wdrażania służące do znajdowania najkrótsze ścieżki między obiektami w grafie. Wykonaj następujące kroki, aby przekazywanie przykładowych danych i przykładowy plik jar, uruchomić zadanie przy użyciu przykładu SimpleShortestPathsComputation, a następnie przejrzyj wyniki.
+Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa <a href = "https://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> wdrażania służące do znajdowania najkrótsze ścieżki między obiektami w grafie. Wykonaj następujące kroki, aby przekazywanie przykładowych danych i przykładowy plik jar, uruchomić zadanie przy użyciu przykładu SimpleShortestPathsComputation, a następnie przejrzyj wyniki.
 
 1. Przekaż przykładowy plik danych do usługi Azure Blob storage. Na lokalnej stacji roboczej, Utwórz nowy plik o nazwie **tiny_graph.txt**. Musi on zawierać następujące wiersze:
 
@@ -80,7 +80,7 @@ Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa
     ![tiny_graph.txt rysowana w formie okręgów linie różnych odległość między](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
 2. Uruchom przykład SimpleShortestPathsComputation. Użyj następujących poleceń cmdlet programu Azure PowerShell, aby uruchomić przykład z użyciem tiny_graph.txt pliku jako dane wejściowe.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Obsługa programu Azure PowerShell do celów zarządzania zasobami usługi HDInsight przy użyciu usługi Azure Service Manager jest **przestarzała** i została usunięta z dniem 1 stycznia 2017 r. W czynnościach opisanych w niniejszym dokumencie są używane nowe polecenia cmdlet usługi HDInsight współpracujące z usługą Azure Resource Manager.
     >
     > Wykonaj kroki opisane w temacie [Instalowanie i konfigurowanie środowiska Azure PowerShell](/powershell/azureps-cmdlets-docs), aby zainstalować najnowszą wersję środowiska Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz temat [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md), aby uzyskać więcej informacji.
@@ -164,8 +164,8 @@ Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-h
 * [Tworzenie klastrów usługi Apache Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat dostosowywania klastrów HDInsight za pomocą akcji skryptu.
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
-* [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]: Akcja skryptu próbki o instalowaniu platformy Spark.
-* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md): Akcja skryptu próbki o instalowaniu Solr.
+* [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]: Przykład akcji skryptu o instalowaniu platformy Spark.
+* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md): Przykład akcji skryptu o instalowaniu Solr.
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/

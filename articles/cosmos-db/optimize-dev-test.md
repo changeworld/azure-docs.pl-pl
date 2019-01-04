@@ -1,17 +1,17 @@
 ---
 title: Optymalizacja do tworzenia i testowania w usłudze Azure Cosmos DB
-description: W tym artykule wyjaśniono, jak Cosmos DB oferuje wiele opcji tworzenia i testowania usługi bezpłatnie.
+description: W tym artykule wyjaśniono, jak usługa Azure Cosmos DB oferuje wiele opcji tworzenia i testowania usługi bezpłatnie.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: e6ccf70a085950ebd6b520fa4991220981e4f018
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d3ed5c2c13e5a35bcc6cd0e03a6b553691785cdb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53264105"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548667"
 ---
 # <a name="optimizing-for-development-and-testing-in-azure-cosmos-db"></a>Optymalizacja do tworzenia i testowania w usłudze Azure Cosmos DB
 
@@ -19,11 +19,11 @@ W tym artykule opisano różne opcje do użycia usługi Azure Cosmos DB do tworz
 
 ## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Emulator usługi Azure Cosmos DB (wersja lokalnie do pobrania)
 
-[Emulator usługi Azure Cosmos DB](local-emulator.md) jest lokalną wersję do pobrania, który naśladuje usługi Azure Cosmos DB w chmurze. Można napisać i testować kod, który używa interfejsów API usługi Azure Cosmos DB, nawet w przypadku braku połączenia sieciowego i bez ponoszenia żadnych kosztów. Emulator usługi Azure Cosmos DB zapewnia środowisko lokalne do celów programistycznych zapewniające wysoką wierność do usługi w chmurze. Można tworzyć i testować swoją aplikację lokalnie, bez tworzenia subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji w chmurze, zaktualizuj parametry połączenia do łączenia z punktem końcowym usługi Azure Cosmos DB w chmurze, są wymagane nie inne zmiany. Możesz również [Skonfiguruj potok ciągłej integracji/ciągłego wdrażania przy użyciu emulatora usługi Cosmos DB](tutorial-setup-ci-cd.md) zadania w DevOps platformy Azure do uruchamiania testów kompilacji. Możesz rozpocząć pracę, odwiedzając [emulatora usługi Cosmos DB](local-emulator.md) artykułu.
+[Emulator usługi Azure Cosmos DB](local-emulator.md) jest lokalną wersję do pobrania, który naśladuje usługi Azure Cosmos DB w chmurze. Można napisać i testować kod, który używa interfejsów API usługi Azure Cosmos DB, nawet w przypadku braku połączenia sieciowego i bez ponoszenia żadnych kosztów. Emulator usługi Azure Cosmos DB zapewnia środowisko lokalne do celów programistycznych zapewniające wysoką wierność do usługi w chmurze. Można tworzyć i testować swoją aplikację lokalnie, bez tworzenia subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji w chmurze, zaktualizuj parametry połączenia do łączenia z punktem końcowym usługi Azure Cosmos DB w chmurze, są wymagane nie inne zmiany. Możesz również [Skonfiguruj potok ciągłej integracji/ciągłego wdrażania przy użyciu emulatora usługi Azure Cosmos DB](tutorial-setup-ci-cd.md) zadania w DevOps platformy Azure do uruchamiania testów kompilacji. Możesz rozpocząć pracę, odwiedzając [emulatora usługi Azure Cosmos DB](local-emulator.md) artykułu.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Wypróbuj usługę Azure Cosmos DB bezpłatnie
 
-[Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) to bezpłatny środowiska opłata, która pozwala na tworzenie bazy danych i kolekcji i Poeksperymentuj z usługi Azure Cosmos DB w chmurze. Nie masz do rejestracji na platformie Azure lub naliczana jest opłata za wszystkie. Konta try Azure Cosmos DB są dostępne przez ograniczony czas obecnie 30 dni. Można je odnowić w dowolnym momencie. Wypróbuj usługę Azure Cosmos DB kont można łatwo ocenić usługę Azure Cosmos DB, tworzenia i testowania aplikacji, korzystając z przewodników Szybki Start lub samouczki. Można utworzyć pokaz lub wykonać testowanie bez ponoszenia żadnych kosztów jednostek. Za pomocą Wypróbuj usługę Cosmos DB w przypadku bezpłatnych kont, będziesz w stanie ocenić funkcje premium usługi Cosmos DB bezpłatnie, w tym gotowej do użycia modeli globalnej dystrybucji, umowy SLA i spójność. Bazę danych można utworzyć maksymalnie 25 kontenerów w usłudze Azure Cosmos i 10 000 jednostek RU/s przepływności. Przykładową aplikację można uruchomić bez subskrypcji na koncie platformy Azure lub przy użyciu karty kredytowej. Za pomocą Wypróbuj usługę Cosmos DB bezpłatnie, można utworzyć konto usługi Azure Cosmos wielu regionów i uruchamianie aplikacji na nim w ciągu kilku minut. Aby rozpocząć pracę, zobacz [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) strony.
+[Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) to bezpłatny środowiska opłata, która pozwala na tworzenie bazy danych i kolekcji i Poeksperymentuj z usługi Azure Cosmos DB w chmurze. Nie masz do rejestracji na platformie Azure lub naliczana jest opłata za wszystkie. Konta try Azure Cosmos DB są dostępne przez ograniczony czas obecnie 30 dni. Można je odnowić w dowolnym momencie. Wypróbuj usługę Azure Cosmos DB kont można łatwo ocenić usługę Azure Cosmos DB, tworzenia i testowania aplikacji, korzystając z przewodników Szybki Start lub samouczki. Można utworzyć pokaz lub wykonać testowanie bez ponoszenia żadnych kosztów jednostek. Za pomocą Wypróbuj usługę Azure Cosmos DB dla bezpłatnych kont, będziesz w stanie ocenić funkcje premium usługi Azure Cosmos DB bezpłatnie, w tym gotowej do użycia modeli globalnej dystrybucji, umowy SLA i spójność. Bazę danych można utworzyć maksymalnie 25 kontenerów w usłudze Azure Cosmos i 10 000 jednostek RU/s przepływności. Przykładową aplikację można uruchomić bez subskrypcji na koncie platformy Azure lub przy użyciu karty kredytowej. Za pomocą Wypróbuj usługę Azure Cosmos DB bezpłatnie, można utworzyć konto usługi Azure Cosmos wielu regionów i uruchamianie aplikacji na nim w ciągu kilku minut. Aby rozpocząć pracę, zobacz [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) strony.
 
 ## <a name="azure-free-account"></a>Bezpłatne konto platformy Azure
 

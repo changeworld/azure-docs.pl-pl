@@ -2,20 +2,17 @@
 title: Rozwiązywać problemy z połączeniem do usługi Azure Database for MySQL | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozwiązywać problemy z połączeniem do usługi Azure Database for MySQL.
 keywords: połączenia z serwerem MySQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
-services: mysql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 901c8f0c903a7e26e82d89209ea4b0ec69057d23
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6bc804c9cbf141f5b0e36a92e4f386a6540f583c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165416"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540932"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Rozwiązywać problemy z połączeniem do usługi Azure Database for MySQL
 

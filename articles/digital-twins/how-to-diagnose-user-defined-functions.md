@@ -1,23 +1,27 @@
 ---
 title: Jak można debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Wytyczne dotyczące debugowania funkcji UDF w reprezentacji urządzeń cyfrowych platformy Azure
+description: Wytyczne dotyczące debugowania funkcji UDF w reprezentacji urządzeń cyfrowych platformy Azure.
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/27/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: e373e7c3ca83a0200cd1b6b945c5e4cb43b77a51
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413017"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974866"
 ---
-# <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak debugować problemy związane z funkcjami zdefiniowanymi przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak można debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
-Ten artykuł zawiera podsumowanie sposób diagnozowania funkcje zdefiniowane przez użytkownika. Następnie identyfikuje niektóre z najbardziej typowych scenariuszy podczas pracy z nimi.
+Ten artykuł zawiera podsumowanie sposób diagnozowania funkcje zdefiniowane przez użytkownika. Następnie identyfikuje niektóre z najbardziej typowych scenariuszy, które mogą wystąpić podczas pracy z nimi.
+
+>[!TIP]
+> Odczyt [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md) Aby dowiedzieć się więcej o konfigurowaniu narzędzia debugowania w cyfrowych bliźniaczych reprezentacji platformy Azure przy użyciu dzienników aktywności, dzienniki diagnostyczne i usługi Azure Monitor.
 
 ## <a name="debug-issues"></a>Debugowanie błędów
 
@@ -28,9 +32,14 @@ Wiedza, jak diagnozować problemy, które powstają w ramach wystąpienia Twins 
 Dzienniki i metryki dla wystąpienia Twins cyfrowych platformy Azure są udostępniane za pośrednictwem usługi Azure Monitor. Poniższa dokumentacja przyjęto założenie, utworzono [usługi Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) obszar roboczy za pomocą [witryny Azure Portal](../azure-monitor/learn/quick-create-workspace.md)za pośrednictwem [wiersza polecenia platformy Azure](../azure-monitor/learn/quick-create-workspace-cli.md), lub za pomocą [ Program PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 > [!NOTE]
-> Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **usługi Log Analytics** po raz pierwszy.
+> Podczas wysyłania zdarzeń do usługi Azure Log Analytics po raz pierwszy, może występować opóźnienie 5 minut.
 
-Przeczytaj artykuł ["Zbieranie i używanie dane dzienników z zasobów platformy Azure"](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) na włączanie ustawień diagnostycznych dla swojego wystąpienia Twins cyfrowych platformy Azure za pośrednictwem portalu, wiersza polecenia platformy Azure lub programu PowerShell. Upewnij się, że wybrano wszystkie kategorie dzienników, metryk i obszaru roboczego usługi Azure Log Analytics.
+Aby skonfigurować monitorowanie i rejestrowanie dla zasobów Twins cyfrowych platformy Azure, przeczytaj [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
+
+Przeczytaj artykuł [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md) kompleksowe omówienie ustawienia dziennika diagnostycznego wystąpienia Twins cyfrowych platformy Azure za pośrednictwem witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
+
+>[!IMPORTANT]
+> Upewnij się, że wybrano wszystkie kategorie dzienników, metryk i obszaru roboczego usługi Azure Log Analytics.
 
 ### <a name="trace-sensor-telemetry"></a>Telemetria śledzenia usługi czujnika
 
@@ -56,11 +65,11 @@ AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wprowadzenie do zapytań](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
+Aby uzyskać więcej informacji na temat kwerend operacji odczytu [wprowadzenie do zapytań](../azure-monitor/log-query/get-started-queries.md).
 
 ## <a name="identify-common-issues"></a>Zidentyfikować typowe problemy
 
-Diagnozowanie i identyfikuje typowe problemy są ważne podczas rozwiązywania problemów z rozwiązania. Kilka typowych problemów napotykanych podczas opracowywania funkcje zdefiniowane przez użytkownika zestawiono poniżej.
+Diagnozowanie i identyfikuje typowe problemy są ważne podczas rozwiązywania problemów z rozwiązania. Kilka problemów najczęściej występujących podczas tworzenia funkcji zdefiniowanych przez użytkownika zestawiono poniżej.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -74,11 +83,11 @@ Sprawdź, czy przydział roli istnieje funkcji zdefiniowanych przez użytkownika
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Parametr | Zamień na |
+| Wartość parametru | Zamień na |
 | --- | --- |
-| *YOUR_USER_DEFINED_FUNCTION_ID* | Identyfikator funkcji zdefiniowanej przez użytkownika do pobrania przypisań ról|
+| YOUR_USER_DEFINED_FUNCTION_ID | Identyfikator funkcji zdefiniowanej przez użytkownika do pobrania przypisań ról|
 
-Jeśli nie przypisania roli są pobierane, postępuj zgodnie z tego artykułu na [jak można utworzyć przypisania roli, funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
+Dowiedz się, [jak można utworzyć przypisania roli, funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md), jeśli istnieje nie przypisań ról.
 
 ### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>Sprawdź, jeśli dopasowywania będzie działać w przypadku dane telemetryczne z czujników
 
@@ -159,7 +168,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-W tym scenariuszu pojawia się, ponieważ identyfikator używany odwołuje się do czujnika, gdy określony typ obiektu topologia jest "Obszar".
+W tym scenariuszu pojawia się ponieważ używanych identyfikator odwołuje się do czujnika, gdy określony typ obiektu topologii, jest `Space`.
 
 **Poprawne** przykładu:
 
@@ -200,4 +209,4 @@ Po włączeniu ustawienia diagnostyczne, mogą wystąpić następujące typowe w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak włączyć [monitorowania i dzienniki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) w reprezentacji urządzeń cyfrowych platformy Azure.
+Dowiedz się, jak włączyć [monitorowania i dzienniki](../azure-monitor/platform/activity-logs-overview.md) w reprezentacji urządzeń cyfrowych platformy Azure.

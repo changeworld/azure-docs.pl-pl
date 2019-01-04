@@ -11,27 +11,27 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a711b80471da0677c5e2d0dd0ee5e371e5a16f75
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7b0e3bc14c97c874b9d5936c025f4534665a461e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268653"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752626"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Uruchom prognoz usługi batch w dużych zestawach danych przy użyciu usługi Azure Machine Learning
 
-W tym artykule dowiesz się, jak szybko i skutecznie tworzyć prognozy dotyczące dużych ilości danych asynchronicznie przy użyciu usługi Azure Machine Learning.
+W tym artykule dowiesz się, jak tworzyć prognozy dotyczące dużych ilości danych asynchronicznie, za pomocą usługi Azure Machine Learning.
 
-Prognozy usługi Batch (lub wsadowe ocenianie) zapewnia ekonomiczne wnioskowania o niezrównaną przepływności aplikacji asynchronicznych. Potoki prognoz usługi Batch można skalować do wykonania wnioskowania pod kątem terabajtów danych produkcyjnych. Prognozy usługi Batch jest zoptymalizowany wokół wysokiej przepływności, pożarowego i zapominać prognoz dotyczących dużych zbierania danych.
+Prognozy usługi Batch (lub wsadowe ocenianie) zapewnia ekonomiczne wnioskowania o niezrównaną przepływności dla aplikacji asynchronicznych. Potoki prognoz usługi Batch można skalować do wykonania wnioskowania pod kątem terabajtów danych produkcyjnych. Prognozy usługi Batch jest zoptymalizowany pod kątem wysokiej przepływności, pożarowego i zapominać prognoz dotyczących dużych zbierania danych.
 
->[!NOTE]
-> Jeśli system wymaga przetwarzania małych opóźnieniach (proces pojedynczego dokumentu lub mały zestaw dokumentów szybko), użyj [oceniania w czasie rzeczywistym](how-to-consume-web-service.md) zamiast prognoz usługi batch.
+>[!TIP]
+> Jeśli system wymaga przetwarzania małych opóźnieniach (w celu przetworzenia pojedynczego dokumentu lub mały zestaw dokumentów szybko), użyj [oceniania w czasie rzeczywistym](how-to-consume-web-service.md) zamiast prognoz usługi batch.
 
-W poniższych krokach utworzysz [potoku uczenia maszynowego](concept-ml-pipelines.md) zarejestrować modelu przetwarzania obrazów wstępnie przetrenowane ([V3 powstania](https://arxiv.org/abs/1512.00567)), a następnie użyj pretrained modelu do przetwarzania wsadowego oceniania na obrazach dostępne w ramach konta usługi Azure blob. Tych obrazów, używane do oceniania są tagować obrazy z [sieci ImageNet](http://image-net.org/) zestawu danych.
+W poniższych krokach utworzysz [potoku uczenia maszynowego](concept-ml-pipelines.md) zarejestrować modelu przetwarzania obrazów wstępnie przetrenowane ([V3 powstania](https://arxiv.org/abs/1512.00567)). Następnie przy użyciu modelu pretrained wsadowe ocenianie na obrazów dostępnych w ramach konta magazynu obiektów Blob platformy Azure. Tych obrazów, używane do oceniania są tagować obrazy z [sieci ImageNet](http://image-net.org/) zestawu danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree).
 
 - Konfigurowanie środowiska deweloperskiego, aby zainstalować zestaw SDK usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning](how-to-configure-environment.md).
 
@@ -48,18 +48,18 @@ W poniższych krokach utworzysz [potoku uczenia maszynowego](concept-ml-pipeline
 
 ## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów w machine learning
 
-Poniższe kroki skonfigurują zasoby, których potrzebujesz do uruchomienia potoku:
+Poniższe kroki, skonfiguruj zasoby niezbędne do uruchomienia potoku:
 
 - Dostęp do magazynu danych, który ma już wstępnie przetrenowane modelu, etykiet danych wejściowych i obrazów, który będzie oceniać (to jest już skonfigurowany dla siebie).
 - Skonfiguruj Magazyn danych, aby przechowywać swoje dane wyjściowe.
-- Skonfiguruj element DataReference obiekty, aby wskazywał danych w poprzednim magazynów danych.
+- Konfigurowanie `DataReference` obiektów do punktów danych w poprzednim magazynów danych.
 - Skonfiguruj obliczeniowych maszyn lub klastry którym kroki potok będzie uruchamiany.
 
 ### <a name="access-the-datastores"></a>Dostęp do magazynów danych
 
 Najpierw uzyskać dostęp do magazynu danych, zawierający model, etykiety i obrazy.
 
-Użyjesz publicznego kontenera obiektów blob o nazwie *sampledata* w *pipelinedata* konta, które zawiera obrazy z zestawu sieci ImageNet w wersji ewaluacyjnej. Nazwa magazynu danych dla tego publicznego kontenera jest *images_datastore*. Zarejestruj ten magazyn danych przy użyciu obszaru roboczego:
+Użyjesz publicznego kontenera obiektów blob, o nazwie *sampledata*w *pipelinedata* konta, które zawiera obrazy z zestawu sieci ImageNet w wersji ewaluacyjnej. Nazwa magazynu danych dla tego publicznego kontenera jest *images_datastore*. Zarejestruj ten magazyn danych przy użyciu obszaru roboczego:
 
 ```python
 # Public blob container details
@@ -74,9 +74,9 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
                       overwrite=True)
 ```
 
-Następnie instalacja na potrzeby domyślnego magazynu danych na dane wyjściowe.
+Następnie skonfiguruj na potrzeby domyślnego magazynu danych na dane wyjściowe.
 
-Po utworzeniu obszaru roboczego, [Azure filestorage](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [magazynu obiektów blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego domyślnie. Azure file storage is została "datastore domyślna" dla obszaru roboczego, ale można również użyć magazynu obiektów blob jako magazyn danych. Dowiedz się więcej o [opcji usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Po utworzeniu obszaru roboczego, [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego domyślnie. Usługa Azure Files jest domyślny magazyn danych dla obszaru roboczego, ale można również użyć magazynu obiektów Blob jako magazyn danych. Aby uzyskać więcej informacji, zobacz [opcji usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
@@ -86,7 +86,7 @@ def_data_store = ws.get_default_datastore()
 
 Teraz odwołują się do danych w potoku jako dane wejściowe do kroków potoku.
 
-Źródło danych w potoku jest reprezentowany przez [element DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) obiektu. Obiekt element DataReference punktów danych, który znajduje się w lub jest dostępny z magazynu danych. Katalog służący do obrazy wejściowe, katalog, w którym przechowywany jest pretrained modelu, potrzebujesz element DataReference obiektów katalogu dla etykiet i katalog wyjściowy.
+Źródło danych w potoku jest reprezentowany przez [element DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) obiektu.  `DataReference` Obiektu punktów danych, który znajduje się w lub jest dostępny z magazynu danych. Potrzebujesz `DataReference`  obiektów katalogu, używany do wprowadzania obrazów, katalog, w którym przechowywany jest pretrained modelu, katalog dla etykiet i katalog wyjściowy.
 
 ```python
 input_images = DataReference(datastore=batchscore_blob, 
@@ -111,7 +111,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>Konfigurowanie obliczeniowego elementu docelowego
 
-W usłudze Azure Machine Learning compute (lub obliczeniowego elementu docelowego) odwołuje się do maszyny i klastry, które wykona etapów obliczeniowych w potoku, machine learning. Na przykład można utworzyć `Azure Machine Learning compute`.
+W usłudze Azure Machine Learning *obliczenia* (lub *obliczeniowego elementu docelowego*) odwołuje się do maszyny i klastry, które wykonują etapów obliczeniowych w potoku, machine learning. Na przykład można utworzyć `Azure Machine Learning compute`.
 
 ```python
 compute_name = "gpucluster"
@@ -148,7 +148,7 @@ Zanim użyjesz pretrained modelu, należy pobrać modelu i zarejestruj je przy u
 
 ### <a name="download-the-pretrained-model"></a>Pobierz pretrained modelu
 
-Pobierz modelu przetwarzania obrazów wstępnie przetrenowane (InceptionV3) z <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Po pobraniu, wyodrębnij ją `models` podfolderu.
+Pobierz modelu przetwarzania obrazów wstępnie przetrenowane (InceptionV3) z <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Następnie wyodrębnij ją `models` podfolderu.
 
 ```python
 import os
@@ -165,7 +165,9 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-### <a name="register-the-model"></a>Zarejestruj model
+### <a name="register-the-model"></a>Rejestrowanie modelu
+
+Poniżej przedstawiono sposób rejestrowania modelu:
 
 ```python
 import shutil
@@ -183,7 +185,7 @@ model = Model.register(
 ## <a name="write-your-scoring-script"></a>Napisz skrypt oceniania
 
 >[!Warning]
->Poniższy kod jest tylko przykładem zawarte w [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) posługują się [przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb) musisz utworzyć skrypt oceniania dla danego scenariusza.
+>Poniższy kod jest tylko przykładem zawarte w [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) posługują się [przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb). Należy utworzyć skrypt oceniania dla danego scenariusza.
 
 `batch_score.py` Skrypt pobiera obrazy wejściowe *dataset_path*, wstępnie przetrenowane modeli w *model_dir,* i generuje *label.txt wyniki* do *output_dir*.
 
@@ -241,7 +243,7 @@ Masz wszystko, czego potrzebujesz do tworzenia potoku, dlatego teraz zebranie ws
 
 ### <a name="prepare-the-run-environment"></a>Przygotuj środowisko uruchomieniowe
 
-Określenie zależności conda skryptu. Po utworzeniu etap potoku później, należy tego obiektu.
+Określenie zależności conda skryptu. Ten obiekt będą potrzebne później, po utworzeniu etap potoku.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -268,7 +270,7 @@ batch_size_param = PipelineParameter(
 
 ### <a name="create-the-pipeline-step"></a>Tworzenie etap potoku
 
-Tworzenie etap potoku, przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ obliczeniowego elementu docelowego już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) do tworzenie etap potoku.
+Utwórz etap potoku za pomocą skryptu, konfiguracji środowiska i parametry. Określ obliczeniowego elementu docelowego już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) do tworzenie etap potoku.
 
 ```python
 inception_model_name = "inception_v3.ckpt"
@@ -290,14 +292,14 @@ batch_score_step = PythonScriptStep(
 
 ### <a name="run-the-pipeline"></a>Uruchamianie potoku
 
-Teraz uruchomić potok i sprawdź dane wyjściowe, które zostały wygenerowane. Dane wyjściowe będą mieć wynik odpowiadający każdego obrazu wejściowego.
+Teraz uruchomić potok, a następnie sprawdź dane wyjściowe, które zostały wygenerowane. Dane wyjściowe ma wynik odpowiadający każdego obrazu wejściowego.
 
 ```python
 # Run the pipeline
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
 pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_params={"param_batch_size": 20})
 
-# Wait for the run to finish (this may take several minutes)
+# Wait for the run to finish (this might take several minutes)
 pipeline_run.wait_for_completion(show_output=True)
 
 # Download and review the output
@@ -312,7 +314,7 @@ df.head()
 
 ## <a name="publish-the-pipeline"></a>Publikowanie potoku
 
-Gdy jesteś zadowolony z wyników przebiegu, Opublikuj potoku, aby można było uruchomić go za pomocą różnych wartości wejściowych później. Podczas publikowania potoku pobieranie punktu końcowego REST, który akceptuje wywoływanie potoku z zestawem parametrów, które mają już wbudowaną przy użyciu [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py).
+Po zakończeniu wynik przebiegu publikowania potoku, aby można było uruchomić go za pomocą różnych wartości wejściowych później. Podczas publikowania potoku, otrzymasz punkt końcowy REST. Ten punkt końcowy akceptuje wywoływanie potoku z zestawem parametrów możesz już mieć włączone za pomocą [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py).
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -321,9 +323,9 @@ published_pipeline = pipeline_run.publish_pipeline(
     version="1.0")
 ```
 
-## <a name="rerun-the-pipeline-using-the-rest-endpoint"></a>Ponowne uruchamianie potoku przy użyciu punktu końcowego REST
+## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>Ponowne uruchamianie potoku przy użyciu punktu końcowego REST
 
-Aby ponownie uruchomić potok, należy tokenu nagłówka uwierzytelniania usługi Azure Active Directory zgodnie z opisem w [klasy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
+Aby ponownie uruchomić potok, należy nagłówka token uwierzytelniania usługi Azure Active Directory zgodnie z opisem w [klasy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -344,7 +346,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby wyświetlić ten pracy end-to-end, spróbuj wsadowego oceniania Notes w ([how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). 
+Aby wyświetlić ten pracy end-to-end, spróbuj wsadowego oceniania Notes w [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

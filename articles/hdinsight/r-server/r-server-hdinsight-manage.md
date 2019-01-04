@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497544"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584398"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
 
@@ -24,7 +24,7 @@ W tym artykule dowiesz się, jak zarządzać istniejącego klastra usługi ML w 
 
 * **Klaster usługi ML w HDInsight**: Aby uzyskać instrukcje, zobacz [Rozpocznij pracę z usługami uczenia Maszynowego na HDInsight](r-server-get-started.md).
 
-* **Klient protokołu Secure Shell (SSH)**: klient SSH jest używany do zdalnego łączenia z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient protokołu Secure Shell (SSH)**: Klient SSH jest używany do zdalnego łączenia z klastrem HDInsight i uruchamianie poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Włączanie obsługi równoczesnych użytkowników
@@ -50,11 +50,11 @@ Ponieważ program RStudio działa w węźle krawędzi klastra, wymagane jest kil
 2. Dodaj użytkowników systemu Linux w węźle krawędzi
 3. Przy pomocy utworzonego użytkownika możesz korzystać z programu RStudio Community
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Użyj poświadczeń utworzonego użytkownika SSH do logowania się na węźle krawędzi
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Zaloguj się do węzła krawędzi przy użyciu utworzonego użytkownika SSH
 
 Postępuj zgodnie z instrukcjami w artykule [nawiązywanie połączenia z HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) dostępu do węzła krawędzi. Adres węzła krawędzi klastra usługi ML w HDInsight jest `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
-### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2. Dodawanie użytkowników systemu Linux w węźle krawędzi
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2: Dodaj użytkowników systemu Linux w węźle krawędzi
 
 Aby dodać użytkownika do węzła krawędzi, uruchom te polecenia:
 
@@ -70,7 +70,7 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
 Po wyświetleniu monitu o "bieżącego hasła protokołu Kerberos:", po prostu naciśnij **Enter** można go zignorować. Podanie opcji `-m` w poleceniu `useradd` powoduje, że system utworzy folder macierzysty użytkownika, wymagany przez program RStudio Community.
 
-### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3. Korzystanie z programu RStudio Community przy pomocy utworzonego użytkownika
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3: Przy pomocy utworzonego użytkownika możesz korzystać z programu RStudio Community
 
 Dostęp do programu RStudio z https://CLUSTERNAME.azurehdinsight.net/rstudio/. Jeśli logujesz się po raz pierwszy po utworzeniu klastra, wprowadź poświadczenia administratora klastra następuje poświadczeń użytkownika SSH, który został utworzony. Jeśli nie jest to pierwsze logowanie tylko wprowadź poświadczenia dla użytkownika SSH, który został utworzony.
 
@@ -80,7 +80,7 @@ Pamiętaj, że nowo dodani użytkownicy nie mają uprawnień użytkownika root w
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Zdalne ustanawianie połączenia z usługami uczenia Maszynowego firmy Microsoft
 
-Możesz skonfigurować dostęp do kontekstu obliczeniowego aparatu HDInsight Spark ze zdalnego wystąpienia klienta ML uruchomiony na pulpicie. Aby to zrobić, należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania programu RxSpark kontekstu obliczeniowego na komputerze: na przykład:
+Możesz skonfigurować dostęp do kontekstu obliczeniowego aparatu HDInsight Spark ze zdalnego wystąpienia klienta ML uruchomiony na pulpicie. Aby to zrobić, należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania programu RxSpark kontekstu obliczeniowego na komputerze: Na przykład:
 
     myNameNode <- "default"
     myPort <- 0
@@ -299,10 +299,8 @@ Jeśli chcesz zainstalować dodatkowe pakiety R na węźle krawędzi, możesz u�
 
 Aby zainstalować pakiety R na węzłach procesu roboczego klastra, należy użyć akcji skryptu. Akcje skryptu to skrypty powłoki Bash używane do wprowadzania zmian w konfiguracji klastra usługi HDInsight lub instalowania dodatkowego oprogramowania, np. pakietów R. 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Dodatkowe pakiety R można zainstalować przy użyciu akcji skryptu dopiero po utworzeniu klastra. Nie należy używać tej procedury podczas tworzenia klastra, ponieważ skrypt zależy od usługi ML są w pełni skonfigurowany.
->
->
 
 1. Wykonaj kroki opisane w temacie [Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -312,11 +310,11 @@ Aby zainstalować pakiety R na węzłach procesu roboczego klastra, należy uży
 
    * Aby uzyskać **nazwa**, podaj nazwę dla akcji skryptu.
 
-    * Aby uzyskać **identyfikator URI skryptu powłoki systemowej**, wprowadź `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Jest to skrypt, który instaluje dodatkowe pakiety R na węźle procesu roboczego
+    * Aby uzyskać **identyfikator URI skryptu powłoki systemowej**, wprowadź `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Jest to skrypt, który instaluje dodatkowe pakiety R na węźle procesu roboczego
 
    * Zaznacz pole wyboru, tylko w przypadku **procesu roboczego**.
 
-   * **Parametry**: pakiety R do zainstalowania. Na przykład: `bitops stringr arules`
+   * **Parametry**: Pakiety języka R do zainstalowania. Na przykład: `bitops stringr arules`
 
    * Zaznacz pole wyboru, aby **Utrwal tę akcję skryptu**.  
 

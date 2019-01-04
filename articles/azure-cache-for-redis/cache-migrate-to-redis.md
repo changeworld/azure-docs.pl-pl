@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: c3c1aa9abc6a7ba97bf7c95aa1c670c7239df3ab
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5a1febb80b5d3aaf0e5da2620f1b0a35d5d1144b
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020225"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556802"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrowanie z usługi Managed Cache Service do usługi Azure Cache dla usługi Redis
 Migrowanie aplikacji korzystających z usługi Azure Managed Cache Service do usługi Azure Cache dla usługi Redis można osiągnąć przy minimalnych zmianach do aplikacji, w zależności od funkcji Managed Cache Service, używanych przez aplikację pamięci podręcznej. Gdy interfejsy API są dokładnie takie same, są one podobne, a większość swojej istniejący kod, który używa usługi Managed Cache Service do dostępu do pamięci podręcznej mogą być ponownie używane przy minimalnych zmianach. W tym artykule przedstawiono sposób wprowadzania niezbędną konfigurację i aplikacji zmieni się na migrację aplikacji Managed Cache Service na potrzeby pamięci podręcznej Azure redis Cache i pokazuje, jak niektóre funkcje pamięci podręcznej Redis Azure może służyć do implementowania funkcji pamięć podręczna usługi Managed Cache Service.
@@ -47,7 +47,7 @@ Usługa Azure Managed Cache Service i Azure pamięci podręcznej Redis są podob
 
 | Zarządzane funkcji usługi Cache Service | Zarządzanej pamięci podręcznej usługi pomocy technicznej. | Pamięć podręczna systemu Azure do obsługi pamięci podręcznej Redis |
 | --- | --- | --- |
-| Nazwanych pamięci podręcznych |Domyślny pamięci podręcznej jest skonfigurowany, a w pamięci podręcznej Standard i Premium można skonfigurować ofert maksymalnie dziewięć dodatkowych nazwane pamięci podręczne, w razie potrzeby. |Pamięć podręczna systemu Azure dla Rediss mają konfigurowalną liczbę baz danych (domyślnie 16), które mogą służyć do implementowania podobne funkcje do nazwanych pamięci podręcznych. Aby uzyskać więcej informacji, zobacz [What are Redis databases?](cache-faq.md#what-are-redis-databases) (Co to są bazy danych Redis?) i [Default Redis server configuration](cache-configure.md#default-redis-server-configuration) (Domyślna konfiguracja serwera Redis). |
+| Nazwanych pamięci podręcznych |Domyślny pamięci podręcznej jest skonfigurowany, a w pamięci podręcznej Standard i Premium można skonfigurować ofert maksymalnie dziewięć dodatkowych nazwane pamięci podręczne, w razie potrzeby. |Pamięć podręczna systemu Azure dla usługi Redis zawiera konfigurowalną liczbę baz danych (domyślnie 16), które mogą służyć do implementowania podobne funkcje do nazwanych pamięci podręcznych. Aby uzyskać więcej informacji, zobacz [What are Redis databases?](cache-faq.md#what-are-redis-databases) (Co to są bazy danych Redis?) i [Default Redis server configuration](cache-configure.md#default-redis-server-configuration) (Domyślna konfiguracja serwera Redis). |
 | Wysoka dostępność |Zapewnia wysoką dostępność dla elementów w pamięci podręcznej w pamięci podręcznej oferty Standard i Premium. Jeśli elementy zostaną utracone z powodu błędu, kopie zapasowe elementów w pamięci podręcznej są nadal dostępne. Operacje zapisu do pomocniczej pamięci podręcznej są wykonywane synchronicznie. |Wysoka dostępność jest dostępna w warstwach standardowa i Premium pamięci podręcznej ofert, które mają konfiguracji podstawowy i węzeł repliki dwoma węzłami (każdego fragmentu w pamięci podręcznej w warstwie Premium ma parę podstawowy i węzeł repliki). Operacje zapisu do repliki są wykonywane asynchronicznie. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure Redis cennik](https://azure.microsoft.com/pricing/details/cache/). |
 | Powiadomienia |Zezwala klientom na odbieranie powiadomień asynchronicznych, gdy różne operacje pamięci podręcznej występują na nazwaną pamięć podręczną. |Aplikacje klienckie mogą używać pamięci podręcznej Redis pub/sub lub [powiadomienia przestrzeni kluczy](cache-configure.md#keyspace-notifications-advanced-settings) do osiągnięcia podobne funkcje powiadomień. |
 | Lokalna pamięć podręczna |Przechowuje kopię obiektów w pamięci podręcznej lokalnie na kliencie bardzo szybkiego dostępu. |Aplikacje klienckie należy zaimplementować tę funkcję za pomocą słownika lub podobną strukturę danych. |
@@ -130,7 +130,7 @@ Dodaj następujące za pomocą instrukcji u góry każdego pliku, z którego maj
 using StackExchange.Redis
 ```
 
-Jeśli ta przestrzeń nazw nie jest rozpoznawane, pamiętaj, że dodano pakiet StackExchange.Redis NuGet zgodnie z opisem w [Szybki Start: Użyj usługi Azure Cache dla pamięci podręcznej Redis przy użyciu aplikacji .NET](cache-dotnet-how-to-use-azure-redis-cache.md).
+Jeśli ta przestrzeń nazw nie jest rozpoznawane, pamiętaj, że dodano pakiet StackExchange.Redis NuGet zgodnie z opisem w [Szybki Start: Na użytek pamięć podręczna systemu Azure redis Cache z poziomu aplikacji .NET](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
 > Należy pamiętać, że klient StackExchange.Redis wymaga programu .NET Framework 4 lub nowszy.

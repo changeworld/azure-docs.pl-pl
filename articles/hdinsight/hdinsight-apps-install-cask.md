@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: ef61ee9f15253c6a270cd4089625776a458df2ee
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 715e536d7356a4e37f512027a23236b1fd37cbac
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499339"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651303"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>Instalowanie opublikowanej aplikacji — Cask Data Application Platform (CDAP)
 
-W tym artykule opisano sposób instalowania i uruchamiania [CDAP](http://cask.co/products/cdap/) opublikowane [Apache Hadoop](https://hadoop.apache.org/) aplikacji w usłudze Azure HDInsight. Omówienie platformy aplikacji HDInsight i listę z dostępnych niezależnym dostawcą oprogramowania (ISV) opublikowanych aplikacji, zobacz [instalowanie aplikacji usługi Apache Hadoop innych firm](hdinsight-apps-install-applications.md). Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
+W tym artykule opisano sposób instalowania i uruchamiania [CDAP](https://cask.co/products/cdap/) opublikowane [Apache Hadoop](https://hadoop.apache.org/) aplikacji w usłudze Azure HDInsight. Omówienie platformy aplikacji HDInsight i listę z dostępnych niezależnym dostawcą oprogramowania (ISV) opublikowanych aplikacji, zobacz [instalowanie aplikacji usługi Apache Hadoop innych firm](hdinsight-apps-install-applications.md). Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
 
 ## <a name="about-cdap"></a>Temat CDAP
 
@@ -30,7 +30,7 @@ Cask Data Application Platform (CDAP) to platforma integracji dla danych Big Dat
 
 CDAP używa szczegółowo pojęcia i abstrakcje, które są znane deweloperom. Te elementy abstrakcji ukryć komplikacje związane z wewnętrznych systemów oraz zachęcić możliwość ponownego wykorzystania rozwiązań.
 
-Wywołuje to rozszerzenie CDAP [Cask Hydrator](http://cask.co/products/hydrator/) udostępnia interfejs użytkownika do tworzenia potoków danych oraz zarządzanie. Potok danych składa się z różnymi * wtyczek, które wykonują zadania, takie jak pozyskiwanie danych, przekształcania, analizy i używane po tej operacji wykonywania operacji.
+Wywołuje to rozszerzenie CDAP [Cask Hydrator](https://cask.co/products/hydrator/) udostępnia interfejs użytkownika do tworzenia potoków danych oraz zarządzanie. Potok danych składa się z różnymi * wtyczek, które wykonują zadania, takie jak pozyskiwanie danych, przekształcania, analizy i używane po tej operacji wykonywania operacji.
 
 Wtyczki CDAP ma interfejs dobrze zdefiniowanych, więc ocena różnych technologii jest to kwestia zastępowania jedną wtyczkę przez siebie, bez konieczności touch pozostałe części aplikacji.
 
@@ -42,7 +42,7 @@ Poniższy przykład potoku danych pozwalają pozyskać dane z usługi twitter w 
 
 Ten potok end-to-end został skompilowany przy użyciu **Cask Hydrator UI**, za pomocą wtyczki interfejsu i przeciągnij i upuść działanie formularza połączeń między każdym etapie. Można wyizolować i modyfikowanie funkcjonalności każdej wtyczki niezależnie. Za pomocą CDAP, podobne potoków można skompilować i zweryfikowane w godzinach. W typowym Hadoop world konstruowanie takich rozwiązań może potrwać kilka dni.
 
-CDAP oferuje również rozszerzenia o nazwie [Cask Tracker](http://cask.co/products/tracker/) wizualnie śledzenia dane ponieważ przechodzą przez aplikację. Dodaje cask Tracker *nadzór nad danymi* do systemu, aby zasoby danych odbywa się formalnie w całej aplikacji. Można śledzić pochodzenie każdego punktu danych, zbieranie metryk istotnych i dziennik danych w całym procesie inspekcji.
+CDAP oferuje również rozszerzenia o nazwie [Cask Tracker](https://cask.co/products/tracker/) wizualnie śledzenia dane ponieważ przechodzą przez aplikację. Dodaje cask Tracker *nadzór nad danymi* do systemu, aby zasoby danych odbywa się formalnie w całej aplikacji. Można śledzić pochodzenie każdego punktu danych, zbieranie metryk istotnych i dziennik danych w całym procesie inspekcji.
 
 Poniżej przedstawiono sposób dane będą przepływać w potoku powyżej ilustrację:
 
@@ -52,8 +52,8 @@ Poniżej przedstawiono sposób dane będą przepływać w potoku powyżej ilustr
 
 Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musisz mieć następującą konfigurację:
 
-* Warstwy klastrów: standardowa
-* Typ klastra: baza danych HBase
+* Warstwa klastra: Standardowa (Standard)
+* Typ klastra: HBase
 * Wersja klastra: 3.4, 3.5
 
 ## <a name="install-the-cdap-published-application"></a>Instalowanie CDAP opublikowanej aplikacji
@@ -126,9 +126,9 @@ Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych dost
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dokumentacja cask](http://cask.co/resources/documentation/).
-* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
-* [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
-* [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
+* [Dokumentacja cask](https://cask.co/resources/documentation/).
+* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć cofnięto publikowanie aplikacji HDInsight HDInsight.
+* [Publikowanie aplikacji HDInsight](hdinsight-apps-publish-applications.md): Dowiedz się, jak opublikować niestandardowe aplikacje HDInsight w portalu Azure Marketplace.
+* [MSDN: Instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Dowiedz się, jak zdefiniować aplikacje HDInsight.
 * [Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
-* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak użyć pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.
+* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak używać pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.

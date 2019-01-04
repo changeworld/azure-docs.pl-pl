@@ -1,7 +1,7 @@
 ---
-title: Przepływ sterowania uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Przepływ sterowania uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Więcej informacji na temat przepływu sterowania uczeń konwersacji.
+description: Dowiedz się więcej na temat formantów flow uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,35 +10,35 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 592ca82db7e0ab3ff89d25b61f38f8b226f3bc86
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8007e9e9fe2f404b4d702471610ff76047f7ed86
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348573"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790932"
 ---
 ## <a name="control-flow"></a>Przepływ sterowania
 
-W tym dokumencie opisano przepływ sterowania uczeń konwersacji (CL) wyświetlaną w poniżej diagramu.
+W tym dokumencie opisano przepływ sterowania uczeń konwersacji (CL) w postaci wyświetlanej w poniższym diagramie.
 
 ![](media/controlflow.PNG)
 
 1. Użytkownik wprowadza termin lub frazę w bot, na przykład "co to jest pogody w Seattle?"
-1. CL przekazuje dane wejściowe użytkownika modelu uczenia maszynowego, która wyodrębnia jednostek
-    - Ten model jest kompilowane przez uczeń konwersacji i obsługiwanych przez www.luis.ai
-2. Wszelkie wyodrębnione jednostek, a użytkownik wejściowych tekstu, są przekazywane do metody wywołania zwrotnego wykrywania jednostki w kodzie bot.
-    - Ten kod może wartości zestawu/clear/manipulowania jednostki
-1. Dane wyjściowe wyodrębniania jednostki i dane wejściowe użytkownika oraz wyniki wszystkich akcji określonych w bot bierze sieci neuronowej CL
-    - W tym przykładzie najwyższy akcji prawdopodobieństwo jest zapewnienie prognozie pogody:
+1. CL przekazuje dane wejściowe użytkownika do modelu uczenia maszynowego, która wyodrębnia jednostek
+    - Ten model jest kompilowane przez uczeń konwersacji i hostowanych przez www.luis.ai
+1. Wyodrębnione dowolnej jednostki, a jego dane wprowadzane przez użytkownika tekst, są przekazywane do metody wywołania zwrotnego wykrywania jednostki w kodzie botów.
+    - Ten kod może wartości jednostki manipulowania nimi/set/clear
+1. Sieć neuronowa CL następnie pobiera dane wyjściowe działania funkcji wydobywania podmiotów danych wejściowych użytkownika, i wyniki wszystkich akcji określonych w robota
+    - W tym przykładzie najwyższy akcji prawdopodobieństwo jest zapewnienie prognozę pogody:
 
-![](media/controlflow_forecast.PNG)
+    ![](media/controlflow_forecast.PNG)
 
-5. Wybranej akcji, w tym przypadku wymaga wywołania interfejsu API można pobrać prognozie pogody. 
-6. Ten interfejs API, który został zarejestrowany przy użyciu CL. Następnie wywoływana jest metoda AddAPICallback.  Wynik tego interfejsu API jest następnie zwracany do użytkownika jako wiadomość — na przykład Sunny z wysokim 67.
-7. Następnie jest wykonywane wywołanie do sieci neuronowej ustalenie następnej akcji w poprzednim kroku.
-8. Sieci neuronowej następnie prognozuje dalej zestaw możliwych działań, a wybranej akcji jest udostępniana do użytkownika, w tym przypadku "Inaczej?"
+1. Wybranej akcji, w tym przypadku wymaga wywołania interfejsu API, aby pobrać prognozę pogody. 
+1. Ten interfejs API, który został zarejestrowany przy użyciu CL. Następnie wywoływana jest metoda AddCallback.  Wynik tego interfejsu API jest zwracany do użytkownika jako wiadomość — na przykład Sunny z wysokim 67.
+1. Następnie wykonano wywołanie dotyczące sieci neuronowych Aby określić następne działanie w poprzednim kroku.
+1. Sieć neuronowa następnie przewiduje następny zestaw możliwych działań i wybranej akcji są prezentowane użytkownikowi, w tym przypadku "Czymkolwiek?"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Jak uczy z uczeń konwersacji ](./how-to-teach-cl.md)
+> [Jak do nauki o uczeń konwersacji ](./how-to-teach-cl.md)

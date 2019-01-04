@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 48432b4a415c0c544c4a64444c89cf818fa00e1f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955433"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972432"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
@@ -28,17 +28,28 @@ Które funkcje aplikacji mobilnej lub sieci web, na których są najbardziej pop
 
 Aby uzyskiwać najlepsze wyniki są uzyskiwane przez zainstalowanie usługi Application Insights, zarówno w kodzie serwera aplikacji, jak i na stronach sieci web. Składniki klienta i serwera aplikacji wysyłają dane telemetryczne do portalu Azure w celu analizy.
 
-1. **Kod serwera:** zainstalować moduł odpowiednie dla Twojego [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-overview.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), lub [innych](app-insights-platforms.md) aplikacji.
+1. **Kod serwera:** Zainstaluj moduł odpowiednie dla Twojego [ASP.NET](../azure-monitor/app/asp-net.md), [Azure](app-insights-overview.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](app-insights-nodejs.md), lub [innych](app-insights-platforms.md) aplikacja.
 
     * *Nie chcesz zainstalować kod serwera? Po prostu [Utwórz zasób usługi Azure Application Insights](app-insights-create-new-resource.md).*
 
-2. **Kodu strony sieci Web:** Otwórz [witryny Azure portal](https://portal.azure.com)otwórz zasób usługi Application Insights dla aplikacji, a następnie otwórz **wprowadzenie > Monitorowanie i diagnozowanie po stronie klienta**. 
+2. **Kodu strony sieci Web:** Dodaj następujący skrypt do strony sieci web przed tagiem zamykającym ``</head>``. Zastąp klucz Instrumentacji wartość odpowiednią dla zasobu usługi Application Insights:
 
-    ![Skopiuj skrypt do głowy wzorcowej strony sieci web.](./media/app-insights-usage-overview/02-monitor-web-page.png)
+   ```javascript
+      <script type="text/javascript">
+        var appInsights=window.appInsights||function(a){
+            function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+        }({
+            instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+        });
+        
+        window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+    </script>
+    ```
+    Aby zapoznać się z bardziej zaawansowanymi konfiguracjami do monitorowania witryn internetowych, zobacz [dokumentacja interfejsu API zestawu SDK języka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 
 3. **Kod aplikacji mobilnej:** Użyj zestawu SDK Centrum aplikacji, aby zbierać zdarzenia z aplikacji, a następnie wysłać kopii tych zdarzeń do usługi Application Insights do analizy przez [wykonaj czynności przedstawione w tym przewodniku](app-insights-mobile-center-quickstart.md).
 
-4. **Pobierz dane telemetryczne:** uruchamianie projektu w trybie debugowania przez kilka minut, a następnie sprawdź wyniki w bloku przeglądu w usłudze Application Insights.
+4. **Pobierz dane telemetryczne:** Uruchamianie projektu w trybie debugowania przez kilka minut, a następnie poszukaj wyników w bloku przeglądu w usłudze Application Insights.
 
     Opublikuj aplikację w celu monitorowania wydajności aplikacji i dowiedzieć się, co użytkownicy robią z aplikacją.
 
@@ -103,7 +114,7 @@ Lub po stronie serwera:
 
 Wartości właściwości może dołączać do tych zdarzeń, tak, aby filtrować lub podzielić zdarzenia inspekcji w portalu. Ponadto program standardowy zestaw właściwości jest dołączany do każdego zdarzenia, takie jak identyfikator użytkownika anonimowego, co pozwala na śledzenie sekwencji działań użytkownika.
 
-Dowiedz się więcej o [zdarzenia niestandardowe](app-insights-api-custom-events-metrics.md#trackevent) i [właściwości](app-insights-api-custom-events-metrics.md#properties).
+Dowiedz się więcej o [zdarzenia niestandardowe](../azure-monitor/app/api-custom-events-metrics.md#trackevent) i [właściwości](../azure-monitor/app/api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Zdarzenia metod selekcji i projekcji
 
@@ -121,7 +132,7 @@ Tej techniki wartości różnych właściwości dołączyć się do wszystkich d
 
 W portalu Application Insights filtrować i podzielić dane według wartości właściwości, tak aby porównywać różne wersje.
 
-Aby to zrobić, [skonfigurować inicjator telemetrii](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer):
+Aby to zrobić, [skonfigurować inicjator telemetrii](../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer):
 
 ```csharp
 

@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847528"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651507"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące korzystania z maszyn wirtualnych w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Maszyny wirtualne w usłudze Azure Stack zapewnia zasoby obliczeniowe na żądanie, skalowalnych. Przed przystąpieniem do wdrażania maszyn wirtualnych (VM), musisz poznać różnice między funkcjami maszyny wirtualnej dostępne w usłudze Azure Stack i platformą Microsoft Azure. W tym artykule opisano te różnice i identyfikuje Najważniejsze kwestie dotyczące planowania wdrożenia maszyn wirtualnych. Aby dowiedzieć się więcej o różnicach wysokiego poziomu usługi Azure Stack i platformą Azure, zobacz [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>Ściągawka: różnice maszyny wirtualnej
+## <a name="cheat-sheet-virtual-machine-differences"></a>Ściągawka: Różnice maszyny wirtualnej
 
 | Cecha | Azure (globalna) | Azure Stack |
 | --- | --- | --- |
@@ -39,6 +39,7 @@ Maszyny wirtualne w usłudze Azure Stack zapewnia zasoby obliczeniowe na żądan
 | Magazyn maszyny wirtualnej | Obsługuje [dysków zarządzanych.](../../virtual-machines/windows/managed-disks-overview.md) | Dyski zarządzane są obsługiwane w usłudze Azure Stack w wersji 1808 lub nowszy. |
 | Wydajność dysków maszyny wirtualnej | Zależy od typu dysku oraz jego rozmiaru. | Zależy od rozmiaru maszyny Wirtualnej maszyny wirtualnej, które dyski są dołączone do odwoływania się do [rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](azure-stack-vm-sizes.md) artykułu.
 | Wersje interfejsu API | Platforma Azure ma zawsze najnowsze wersje interfejsu API dla wszystkich funkcji maszyny wirtualnej. | Usługa Azure Stack obsługuje określonych usług platformy Azure i określonych wersji interfejsu API w przypadku tych usług. Aby wyświetlić listę obsługiwanych wersji interfejsu API, zapoznaj się [wersji interfejsu API](#api-versions) dalszej części tego artykułu. |
+| Usługa Azure Instance Metadata service | Azure Instance Metadata Service dostarcza informacji o uruchomionych wystąpień maszyn wirtualnych, które może służyć do zarządzania i konfigurowania maszyn wirtualnych.  | Wystąpienia usługi metadanych nie jest obsługiwana w usłudze Azure Stack. |
 |Zestawy dostępności maszyny wirtualnej|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji<br>Obsługa dysku zarządzanego|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji (maksymalnie 20)<br>Brak obsługi dysku zarządzanego|
 |Zestawy skalowania maszyn wirtualnych|Automatyczne skalowanie jest obsługiwane|Automatyczne skalowanie nie jest obsługiwane.<br>Dodaj więcej wystąpień zestawu skalowania przy użyciu witryny portal, szablonów usługi Resource Manager lub programu PowerShell.
 

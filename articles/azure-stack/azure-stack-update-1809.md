@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088055"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754054"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 W tym artykule opisano zawartość pakietu 1809 aktualizacji. Pakiet aktualizacji zawiera ulepszenia, poprawki i znane problemy dotyczące tej wersji usługi Azure Stack. Ten artykuł zawiera również link, aby pobrać aktualizację. Znane problemy są podzielone na problemy bezpośrednio związane z procesem aktualizacji i kompilacji (po instalacji).
 
@@ -60,9 +60,9 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 - Następujące problemy z dysków zarządzanych zostały usunięte w 1809 i również zostały usunięte w 1808 [usługi Azure Stack poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
-   - Rozwiązano problem w które dołączanie dysków danych SSD premium rozmiar maszyn wirtualnych dysku zarządzanego (DS, DSv2, Fs i Fs_V2) nie powiodło się z powodu błędu: *nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: żądanie nie można wykonać operacji, ponieważ Typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*. 
+   - Rozwiązany problem, w których dołączający SSD dysków z danymi premium rozmiar maszyn wirtualnych dysku zarządzanego (DS, DSv2, Fs i Fs_V2) nie powiodło się z powodu błędu:  *Nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: Żądanie, nie można wykonać operacji, ponieważ typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*. 
    
-   - Tworzenie dysku zarządzanego maszyny Wirtualnej przy użyciu **createOption**: **Attach** kończy się niepowodzeniem z powodu następującego błędu: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie". Dodatkowe informacje: "Wystąpił błąd wewnętrzny wykonania."*
+   - Tworzenie dysku zarządzanego maszyny Wirtualnej przy użyciu **createOption**: **Dołącz** kończy się niepowodzeniem z powodu następującego błędu: *Długie wykonywanie operacji nie powiodło się ze stanem "Niepowodzenie". Dodatkowe informacje: "Wystąpił błąd wewnętrzny wykonania."*
    Kod błędu: InternalExecutionError komunikat o błędzie: Wystąpił błąd wewnętrzny wykonania.
    
    Ten problem został rozwiązany.
@@ -221,16 +221,16 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 
    Zgłoś alert, #1:
-   - Nazwa: Rola infrastruktury złej kondycji
-   - Ważność: ostrzeżenie
-   - SKŁADNIKÓW: Kontroler kondycji
-   - Opis: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
+   - NAZWA:  Rola infrastruktury złej kondycji
+   - WAŻNOŚĆ: Ostrzeżenie
+   - SKŁADNIK: Kondycji kontrolera
+   - OPIS: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
 
   Zgłoś alert, #2:
-   - Nazwa: Rola infrastruktury złej kondycji
-   - Ważność: ostrzeżenie
-   - SKŁADNIKÓW: Kontroler kondycji
-   - Opis: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
+   - NAZWA:  Rola infrastruktury złej kondycji
+   - WAŻNOŚĆ: Ostrzeżenie
+   - SKŁADNIK: Kondycji kontrolera
+   - OPIS: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
 
   Obydwa alerty można bezpiecznie zignorować i zostanie zamknięte automatycznie wraz z upływem czasu.  
 
@@ -238,10 +238,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 2812138 | IS --> 
 - Można napotkać alert w przypadku **magazynu** składnik, który zawiera następujące informacje:
 
-   - Nazwa: Magazyn usługi wewnętrzny błąd komunikacji  
-   - Waga: krytyczny  
-   - SKŁADNIK: magazynu  
-   - Opis: Wystąpił błąd wewnętrzny komunikacji z usługą magazynu podczas wysyłania żądań do następujących węzłów.  
+   - NAZWA: Błąd wewnętrzny komunikacji z usługą Storage  
+   - WAŻNOŚĆ: Krytyczny  
+   - SKŁADNIK: Magazyn  
+   - OPIS: Błąd wewnętrzny komunikacji z usługą Storage wystąpił podczas wysyłania żądań do następujących węzłów.  
 
     Alert można bezpiecznie zignorować, ale musisz ręcznie zamknąć alert.
 
@@ -257,12 +257,12 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Jeśli podczas tworzenia nowej maszyny wirtualnej (VM) przy użyciu portalu Azure Stack, wybierz rozmiar maszyny Wirtualnej, w kolumnie USD/miesiąc jest wyświetlany z **Unavailable** wiadomości. Ta kolumna nie powinien pojawić się; Wyświetlanie maszyny Wirtualnej cen kolumna nie jest obsługiwana w usłudze Azure Stack.
 
 <!-- 2869209 – IS, ASDK --> 
-- Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenia cmdlet zakończy się niepowodzeniem z następującym błędem: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie"*. 
+- Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenie cmdlet kończy się niepowodzeniem z następującym błędem: *Długie wykonywanie operacji nie powiodło się ze stanem "Niepowodzenie"*. 
 
 <!--  2795678 – IS, ASDK --> 
 - Korzystając z portalu do tworzenia maszyn wirtualnych (VM) rozmiarów maszyn wirtualnych — wersja premium (DS, Ds_v2, FS i FSv2), maszyna wirtualna jest tworzona na koncie magazynu w warstwie standardowa. Tworzenie konta magazynu w warstwie standardowa nie wpływa na funkcjonalnie, operacje We/Wy, lub rozliczeń. 
 
-   Możesz bezpiecznie zignorować ostrzeżenie, że jest wyświetlany komunikat: *przycisk OK, aby używać dysku standardowego na na rozmiar obsługujący dyski w warstwie premium. To może mieć wpływ na wydajność systemu operacyjnego i nie jest zalecane. Rozważ użycie magazynu w warstwie premium (SSD).*
+   Można bezpiecznie zignorować to ostrzeżenie, który jest wyświetlany komunikat: *Wybrano używać dysku standardowego na na rozmiar obsługujący dyski w warstwie premium. To może mieć wpływ na wydajność systemu operacyjnego i nie jest zalecane. Rozważ użycie magazynu w warstwie premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Środowisko tworzenia maszyny wirtualnej scale set (VMSS) zapewnia opartych na systemie CentOS 7.2 jako opcję wdrażania. Ponieważ ten obraz nie jest dostępna w usłudze Azure Stack, wybierz inny system operacyjny na potrzeby wdrożenia albo skorzystać z szablonu usługi Azure Resource Manager, określając innego obrazu systemu CentOS, który został pobrany przed ich wdrożeniem w portalu Marketplace przez operatora.  
@@ -287,12 +287,15 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    - Aby przydziały utworzone przed aktualizacją 1808 przydziału dysków Managed Disks wyświetli wartości 0 w portalu administratora, mimo że jest przydzielany 2048 GiB. Można zwiększyć lub zmniejszyć wartość na podstawie Twoich potrzeb rzeczywiste i nowo ustawiony wartości przydziału na zastępuje domyślne GiB 2048.
    - Jeśli zaktualizujesz wartości limitu przydziału na 0 jest równoważna wartość domyślną 2048 GiB. Obejść ten problem należy ustawić wartość limitu przydziału na 1.
 
-<!-- TBD - IS ASDK --> Po zastosowaniu 1809 aktualizacji, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
+<!-- TBD - IS ASDK --> 
+- Po zastosowaniu 1809 aktualizacji, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
 
    - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
       1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
       2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
    2. Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
+
+- Maszyny Wirtualnej systemu Ubuntu 18.04 utworzonej z autoryzacją SSH włączone uniemożliwi używanie kluczy SSH do logowania. Obejść ten problem użyj dostęp do maszyny Wirtualnej dla rozszerzenia systemu Linux do zaimplementowania kluczy SSH po zainicjowaniu obsługi administracyjnej, lub korzystać z uwierzytelniania opartego na hasłach.
 
 ### <a name="networking"></a>Networking  
 

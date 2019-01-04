@@ -4,16 +4,16 @@ description: W tym artykule został opisany sposób ochrony serwera plików przy
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: dde38f1c27ed808d730699e3c1d68a1c78cf3af5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: c6db0b9dda9f383ddc062c41bae0be0b56f7e69d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850486"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794094"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrona serwera plików za pomocą usługi Azure Site Recovery 
 
@@ -37,15 +37,15 @@ Na poprzednim diagramie wiele serwerów plików, nazywanych członkami, aktywnie
 
 ## <a name="disaster-recovery-recommendations-for-file-servers"></a>Zalecenia dotyczące odzyskiwania po awarii dla serwerów plików
 
-* **Replikowanie serwera plików przy użyciu usługi Site Recovery**: serwery plików mogą być replikowane na platformie Azure przy użyciu usługi Site Recovery. Gdy co najmniej jeden lokalny serwer plików jest niedostępny, odzyskiwanie maszyn wirtualnych można przeprowadzić na platformie Azure. Maszyny wirtualne mogą następnie lokalnie obsługiwać żądania od klientów pod warunkiem, że istnieje połączenie sieci VPN typu lokacja-lokacja i usługa Active Directory jest skonfigurowana na platformie Azure. Tej metody możesz użyć w przypadku środowiska skonfigurowanego dla replikacji DFSR lub prostego środowiska serwera plików bez replikacji DFSR. 
+* **Replikowanie serwera plików przy użyciu usługi Site Recovery**: Serwery plików mogą być replikowane na platformie Azure przy użyciu usługi Site Recovery. Gdy co najmniej jeden lokalny serwer plików jest niedostępny, odzyskiwanie maszyn wirtualnych można przeprowadzić na platformie Azure. Maszyny wirtualne mogą następnie lokalnie obsługiwać żądania od klientów pod warunkiem, że istnieje połączenie sieci VPN typu lokacja-lokacja i usługa Active Directory jest skonfigurowana na platformie Azure. Tej metody możesz użyć w przypadku środowiska skonfigurowanego dla replikacji DFSR lub prostego środowiska serwera plików bez replikacji DFSR. 
 
-* **Rozszerzanie replikacji DFSR na maszynę wirtualną usługi IaaS platformy Azure**: w klastrowanym środowisku serwera plików z wdrożoną replikacją DFSR możesz rozszerzyć lokalną replikację DFSR na platformę Azure. Maszyna wirtualna platformy Azure jest następnie konfigurowana do wykonywania roli serwera plików. 
+* **Rozszerzanie DFSR na maszynie Wirtualnej IaaS platformy Azure**: W środowisku serwera plików za pomocą DFSR zaimplementowane można rozszerzyć DFSR lokalnych na platformę Azure. Maszyna wirtualna platformy Azure jest następnie konfigurowana do wykonywania roli serwera plików. 
 
     * Po obsłużeniu zależności połączenia sieci VPN typu lokacja-lokacja i usługi Active Directory oraz gdy replikacja DFSR jest uruchomiona i co najmniej jeden lokalny serwer plików jest niedostępny, klienci mogą łączyć się z maszyną wirtualną platformy Azure, która obsłuży żądania.
 
     * Możesz użyć tego podejścia, jeśli Twoje maszyny wirtualne mają konfiguracje, które nie są obsługiwane przez usługę Site Recovery. Przykładem jest udostępniony dysk klastra, który jest czasem powszechnie używany w środowiskach serwerów plików. Replikacja DFSR działa również dobrze w środowiskach o niskiej przepustowości ze średnim współczynnikiem rezygnacji. Musisz wziąć pod uwagę dodatkowy koszt posiadania maszyny wirtualnej platformy Azure działającej przez cały czas. 
 
-* **Używanie usługi Azure File Sync do replikacji plików**: jeśli zamierzasz skorzystać z chmury lub już korzystasz z maszyny wirtualnej platformy Azure, możesz użyć usługi Azure File Sync. Usługa Azure File Sync oferuje synchronizację w pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem protokołu [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) będącego standardem branżowym. Udziały plików platformy Azure można następnie instalować współbieżnie za pośrednictwem chmurowych lub lokalnych wdrożeń systemów Windows, Linux i macOS. 
+* **Użyj usługi Azure File Sync, aby replikować plików**: Jeśli planujesz korzystać z chmury lub korzysta już z Maszyną wirtualną platformy Azure, można użyć usługi Azure File Sync. Usługa Azure File Sync oferuje synchronizację w pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem protokołu [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) będącego standardem branżowym. Udziały plików platformy Azure można następnie instalować współbieżnie za pośrednictwem chmurowych lub lokalnych wdrożeń systemów Windows, Linux i macOS. 
 
 Poniższy diagram ułatwia określenie, jakiej strategii użyć w swoim środowisku serwera plików.
 
@@ -74,9 +74,9 @@ Ponieważ replikacja usługi Site Recovery jest niezależna od aplikacji, te rek
 > [!IMPORTANT]
 > Przed skorzystaniem z dowolnego z następujących trzech podejść upewnij się, że te zależności zostały uwzględnione.
 
-**Połączenie lokacja-lokacja**: należy ustanowić bezpośrednie połączenie między lokacją lokalną i siecią platformy Azure w celu umożliwienia komunikacji między serwerami. Użyj bezpiecznego połączenia sieci VPN typu lokacja-lokacja z siecią wirtualną platformy Azure, która jest używana jako lokacja odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [Establish a site-to-site VPN connection between an on-premises site and an Azure virtual network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) (Nawiązywanie połączenia VPN typu lokacja-lokacja między lokacją lokalną i siecią wirtualną platformy Azure).
+**Połączenie lokacja lokacja**: Bezpośrednie połączenie między lokacją lokalną i siecią platformy Azure należy ustanowić, aby umożliwić komunikację między serwerami. Użyj bezpiecznego połączenia sieci VPN typu lokacja-lokacja z siecią wirtualną platformy Azure, która jest używana jako lokacja odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [Establish a site-to-site VPN connection between an on-premises site and an Azure virtual network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) (Nawiązywanie połączenia VPN typu lokacja-lokacja między lokacją lokalną i siecią wirtualną platformy Azure).
 
-**Usługa Active Directory**: replikacja DFSR jest zależna od usługi Active Directory. Oznacza to, że las usługi Active Directory z lokalnymi kontrolerami domeny jest rozszerzony do lokacji odzyskiwania po awarii na platformie Azure. Nawet jeśli nie używasz replikacji DFSR, jeśli odpowiednim użytkownikom należy przyznać dostęp lub sprawdzić pod kątem dostępu, musisz wykonać następujące kroki. Aby uzyskać więcej informacji, zobacz [Extend on-premises Active Directory to Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory) (Rozszerzenie lokalnej usługi Active Directory na platformę Azure).
+**Usługi Active Directory**: DFSR zależy od usługi Active Directory. Oznacza to, że las usługi Active Directory z lokalnymi kontrolerami domeny jest rozszerzony do lokacji odzyskiwania po awarii na platformie Azure. Nawet jeśli nie używasz replikacji DFSR, jeśli odpowiednim użytkownikom należy przyznać dostęp lub sprawdzić pod kątem dostępu, musisz wykonać następujące kroki. Aby uzyskać więcej informacji, zobacz [Extend on-premises Active Directory to Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory) (Rozszerzenie lokalnej usługi Active Directory na platformę Azure).
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Zalecenie odzyskiwania po awarii dla maszyn wirtualnych usługi IaaS platformy Azure
 

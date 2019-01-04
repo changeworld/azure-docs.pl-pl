@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 8acb1c70dc21efc87e13e0e5e94d9a61acfe01e9
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292410"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554660"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
@@ -78,8 +78,8 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |Atrybut | Opis|
 |---|---|
 |name|Nazwa filmu wideo. Na przykład usługa Azure Monitor.|
-|shortId|Identyfikator filmu wideo. Na przykład 63c6d532ff.|
-|privacyMode|Podział usługi może mieć jedną z następujących trybów: **prywatnej**, **publicznych**. **Publiczne** — film wideo jest widoczny dla wszystkich użytkowników w swoje konto i każda osoba, która zawiera link do filmu wideo. **Prywatne** — film wideo jest widoczny dla wszystkich użytkowników na Twoim koncie.|
+|id|Identyfikator filmu wideo. Na przykład 63c6d532ff.|
+|privacyMode|Podział usługi może mieć jedną z następujących trybów: **Prywatne**, **publicznych**. **Publiczne** — film wideo jest widoczny dla wszystkich użytkowników w swoje konto i każda osoba, która zawiera link do filmu wideo. **Prywatne** — film wideo jest widoczny dla wszystkich użytkowników na Twoim koncie.|
 |czas trwania|Zawiera jeden czas trwania, opisujący godzina wystąpienia w szczegółowe informacje. Czas trwania to w ciągu kilku sekund.|
 |thumbnailVideoId|Identyfikator wideo, z których pochodzi się miniaturę.
 |thumbnailId|Miniatura wideo identyfikatora. Aby uzyskać rzeczywiste miniatury, wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go thumbnailVideoId i thumbnailId.|
@@ -149,7 +149,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 
 Szczegółowe informacje są zestawem wymiarów (na przykład linii transkrypcji, twarzy, marek itp.), gdzie każdy wymiar jest listę unikatowych elementów (na przykład face1, pierwszy plan 2, pierwszy plan 3), a każdy element ma swój własny metadanych i listę jego wystąpienia (które są zakresy czasu z dodatkowe opcjonalne metadane).
 
-Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoich wystąpień danych czasowych (na przykład: 00:00:05 — 00:00:10: 00:01:00 - 00:02:30 i 00:41:21 – 00:41:49.) Każde wystąpienie danych czasowych może mieć dodatkowe metadane. Na przykład obrys twarzy współrzędne (20,230,60,60).
+Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoich wystąpień danych czasowych (na przykład: 00: 00:05 — 00:00:10, 00:01:00-00:02:30 i 00:41:21 – 00:41:49.) Każde wystąpienie danych czasowych może mieć dodatkowe metadane. Na przykład obrys twarzy współrzędne (20,230,60,60).
 
 |Wersja|Wersja kodu|
 |---|---|
@@ -553,7 +553,7 @@ Firmy i produkt nazw marek wykryte w zamiana mowy na tekst transkrypcji i/lub op
 |Name (Nazwa)|Opis|
 |---|---|
 |CorrespondenceCount|Liczba korelacji w trakcie filmu wideo.|
-|WordCount|Liczba słów na osoby mówiącej.|
+|SpeakerWordCount|Liczba słów na osoby mówiącej.|
 |SpeakerNumberOfFragments|Ilość fragmenty osoby mówiącej ma w filmie wideo.|
 |SpeakerLongestMonolog|Najdłuższy produktu monolog osoby mówiącej. Jeśli osoby mówiącej silences wewnątrz produktu monolog jest dołączony. Wyciszenia na początku i końcu produktu monolog zostaną usunięte.| 
 |SpeakerTalkToListenRatio|Obliczanie opiera się na czas spędzony na produktu monolog osoby mówiącej (bez wyciszenia pomiędzy) podzielony przez łącznego czasu filmu wideo. Czas jest zaokrąglana do trzeciego punktu dziesiętnego.|
@@ -768,7 +768,7 @@ Usługa Video Indexer sprawia, że wnioskowania główne tematy z transkrypcji. 
 |---|---|
 |id|Identyfikator tematu.|
 |name|Nazwa tematu, na przykład: "Stacjonarnym".|
-|Identyfikator odwołania|Linki do stron nadrzędnych odzwierciedlający hierarchii tematów. Na przykład: "kondycji i dobro / medycyna i opiece zdrowotnej / stacjonarnym".|
+|Identyfikator odwołania|Linki do stron nadrzędnych odzwierciedlający hierarchii tematów. Na przykład: "Kondycji i dobro / medycyna i opiece zdrowotnej / stacjonarnym".|
 |zaufania|Współczynnik ufności z zakresu [0,1]. Nowszy jest większa pewność.|
 |language|Język używany w tym temacie.|
 |iptcName|Nośnik IPTC kodu nazwy, w przypadku wykrycia.|

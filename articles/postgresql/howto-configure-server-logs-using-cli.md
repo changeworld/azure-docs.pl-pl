@@ -1,21 +1,18 @@
 ---
 title: Konfigurowanie i dostęp do dzienników serwera PostgreSQL za pomocą wiersza polecenia platformy Azure
 description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: af5a0843acced4611b219088b7662f9ea4b32beb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969586"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545026"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
 Możesz pobrać dzienniki błędów serwera PostgreSQL za pomocą interfejsu wiersza polecenia (CLI platformy Azure). Jednak dostęp do dzienników transakcji nie jest obsługiwane. 
@@ -28,7 +25,7 @@ Do wykonania kroków w tym przewodniku, potrzebne są:
 ## <a name="configure-logging-for-azure-database-for-postgresql"></a>Konfigurowanie rejestrowania dla usługi Azure Database for PostgreSQL
 Można skonfigurować serwera dostępu do dzienników zapytań i dzienniki błędów. Dzienniki błędów może zawierać informacje odkurzający auto, połączenia i punktu kontrolnego.
 1. Włącz rejestrowanie.
-2. Aby włączyć rejestrowanie zapytań, zaktualizuj **dziennika\_instrukcji** i **dziennika\_min\_czas trwania\_instrukcji**.
+2. Aby włączyć rejestrowanie zapytań, zaktualizuj **dziennika\_instrukcji** i **dziennika\_min\_czas trwania\_instrukcji**.
 3. Zaktualizuj okres przechowywania.
 
 Aby uzyskać więcej informacji, zobacz [Dostosowywanie parametrów konfiguracji serwera](howto-configure-server-parameters-using-cli.md).

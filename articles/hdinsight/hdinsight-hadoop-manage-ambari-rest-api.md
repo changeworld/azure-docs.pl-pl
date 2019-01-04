@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384235"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715113"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API Apache Ambari REST
 
@@ -26,7 +26,7 @@ Apache Ambari upraszcza zarządzanie i monitorowanie klastra usługi Hadoop, zap
 
 ## <a id="whatis"></a>Co to jest Apache Ambari
 
-[Apache Ambari](http://ambari.apache.org) zawiera internetowy interfejs użytkownika, który może służyć do zarządzania i monitorowania klastrów platformy Hadoop. Deweloperzy mogą integrować możliwości swoich aplikacji za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](https://ambari.apache.org) zawiera internetowy interfejs użytkownika, który może służyć do zarządzania i monitorowania klastrów platformy Hadoop. Deweloperzy mogą integrować możliwości swoich aplikacji za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Ambari znajduje się domyślnie z klastrami HDInsight opartych na systemie Linux.
 
@@ -232,7 +232,7 @@ foreach($item in $respObj.items) {
 
 ## <a name="example-get-the-default-storage"></a>Przykład: Pobierz magazyn domyślny
 
-Podczas tworzenia klastra usługi HDInsight, możesz korzystać z konta usługi Azure Storage lub Data Lake Store jako magazynem domyślnym dla klastra. Pobranie tych informacji, po utworzeniu klastra można używać narzędzia Ambari. Na przykład, jeśli chcesz odczytu/zapisu danych do kontenera poza HDInsight.
+Podczas tworzenia klastra usługi HDInsight, możesz korzystać konta usługi Azure Storage lub usługi Data Lake Storage jako magazynu domyślnego dla klastra. Pobranie tych informacji, po utworzeniu klastra można używać narzędzia Ambari. Na przykład, jeśli chcesz odczytu/zapisu danych do kontenera poza HDInsight.
 
 Poniższe przykłady pobrać domyślnej konfiguracji magazynu z klastra:
 
@@ -255,9 +255,9 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — Ta wartość wskazuje, że klaster używa konta usługi Azure Storage do magazynu domyślnego. `ACCOUNTNAME` Wartością jest nazwa konta magazynu. `CONTAINER` Fragment to nazwa kontenera obiektów blob na koncie magazynu. Kontener jest katalog główny systemu plików HDFS zgodną z magazynem klastra.
 
-* `adl://home` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Store do magazynu domyślnego.
+* `adl://home` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage do magazynu domyślnego.
 
-    Aby znaleźć nazwę konta Data Lake Store, użyj poniższych przykładach:
+    Aby znaleźć nazwę konta usługi Data Lake Storage, należy użyć poniższych przykładach:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -271,9 +271,9 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    Wartość zwracana jest podobne do `ACCOUNTNAME.azuredatalakestore.net`, gdzie `ACCOUNTNAME` jest nazwą konta Data Lake Store.
+    Wartość zwracana jest podobne do `ACCOUNTNAME.azuredatalakestore.net`, gdzie `ACCOUNTNAME` jest nazwą konta usługi Data Lake Storage.
 
-    Aby znaleźć katalogu w ramach Data Lake Store, który zawiera magazyn dla klastra, należy użyć poniższych przykładach:
+    Aby znaleźć katalogu, w ramach usługi Data Lake Storage, który zawiera magazyn dla klastra, należy użyć poniższych przykładach:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -287,7 +287,7 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    Wartość zwracana jest podobne do `/clusters/CLUSTERNAME/`. Ta wartość jest ścieżką, w ramach konta Data Lake Store. Ta ścieżka jest katalogiem głównym systemu zgodnych plików HDFS dla klastra. 
+    Wartość zwracana jest podobne do `/clusters/CLUSTERNAME/`. Ta wartość jest ścieżką, w ramach konta usługi Data Lake Storage. Ta ścieżka jest katalogiem głównym systemu zgodnych plików HDFS dla klastra. 
 
 > [!NOTE]  
 > `Get-AzureRmHDInsightCluster` Udostępniane przez polecenia cmdlet [programu Azure PowerShell](/powershell/azure/overview) zwraca też wartość informacji magazynu dla klastra.

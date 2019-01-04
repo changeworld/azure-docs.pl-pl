@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342102"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632622"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -176,22 +176,7 @@ Dostosowanie głos jest dostępny język angielski (en US), kontynent, chiński 
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
-**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Może być tłumaczenie mowy przychodzących do więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór tych języków są dostępne dla [synteza mowy](language-support.md#text-languages).
-
-### <a name="speech-languages"></a>Języki mowy
-
-| Język mowy   | Kod języka |
-|:----------- |-|
-| Arabski (nowoczesnych standardowy)      | `ar` |
-| Chiński (mandaryński)      | `zh` |
-| Polski      | `en` |
-| Francuski      | `fr` |
-| Niemiecki      | `de` |
-| Włoski      | `it` |
-| Japoński      | `jp` |
-| Portugalski (Brazylia)     | `pt` |
-| Rosyjski      | `ru` |
-| Hiszpański      |  `es` |
+**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z tabeli języka mowy na tekst. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Może być tłumaczenie mowy przychodzących do więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór tych języków są dostępne dla [synteza mowy](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Tekstu/wszystkie języki
 

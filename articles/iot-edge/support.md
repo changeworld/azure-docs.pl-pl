@@ -4,17 +4,17 @@ description: Dowiedz się, które systemy operacyjne można uruchomić demona us
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c75f50e40f83a4dc6765ae422fbb2458f40d770
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6443260de0a8bd8531edb303fa581d281034fef3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100189"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555612"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Usługa Azure IoT Edge obsługiwanych systemów
 
@@ -44,9 +44,11 @@ Ogólnie dostępna
 Publiczna wersja zapoznawcza
 | System operacyjny | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core (aktualizacja z kwietnia 2018 r.) | Yes | Nie |
-| Windows 10 IoT Enterprise (aktualizacja z kwietnia 2018 r.) | Yes | Nie |
-| Serwer systemu Windows 10 1803 | Yes | Nie |
+| Kompilacja systemu Windows 10 IoT Core 17763 | Yes | Nie |
+| 17763 dla kontenerów Windows kompilacji systemu Windows 10<br><br>System Windows 10 kompilacji 14393 lub nowszej dla kontenerów systemu Linux\* | Yes | Nie |
+| Windows Server 2019 dla kontenerów Windows<br><br>Windows Server 2016 lub nowszy dla kontenerów systemu Linux\* | Yes | Nie |
+
+\* Firma Microsoft udostępnia pakiety instalacyjne dla kontenerów systemu Linux na urządzeniach Windows na potrzeby tworzenia i testowania tylko. Nie jest obsługiwaną konfiguracją do użycia w produkcji. 
 
 ### <a name="tier-2"></a>Warstwa 2
 Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i może służyć stosunkowo łatwe. Oznacza to, że:

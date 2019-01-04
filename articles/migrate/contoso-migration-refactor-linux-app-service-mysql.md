@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 588bd5b3edeadb841de54691cf30916dd18c0982
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6dd063f8d6520e3ee18dcb3899c1cca16d732707
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093005"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608719"
 ---
-# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Migracja Contoso: Refaktoryzacja Contoso Linux usługi app Service desk do wielu regionów za pomocą usługi Azure App Service, Traffic Manager i usługi Azure MySQL
+# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Migracja Contoso: Refaktoryzuj Contoso Linux usługi app Service desk do wielu regionów za pomocą usługi Azure App Service, Traffic Manager i usługi Azure MySQL
 
 W tym artykule pokazano, jak Contoso refactors ich w środowisku lokalnym dwuwarstwowej Linux technicznej aplikacji service (osTicket) przy użyciu funkcji migracji jego Integracja z usługą GitHub usługi Azure App Service i Azure MySQL.
 
@@ -22,7 +22,7 @@ W tym dokumencie jest jednym z serii artykułów, które pokazują, jak fikcyjne
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
+[Artykuł 1: Przegląd](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
 [Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | Contoso przygotowuje swoją infrastrukturę lokalną i jej infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używany dla wszystkich artykułów migracji w serii. | Dostępne
 [Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure](contoso-migration-assessment.md)  | Contoso uruchamia oceny aplikacji rozwiązania SmartHotel360 jej w środowisku lokalnym, działające w programie VMware. Contoso ocenia aplikacji maszyn wirtualnych przy użyciu usługi Azure Migrate bazy danych oraz aplikacji programu SQL Server przy użyciu Data Migration Assistant. | Dostępne
 [Artykuł 4: Ponowne hostowanie aplikacji na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database](contoso-migration-rehost-vm-sql-managed-instance.md) | Firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla swoich aplikacji rozwiązania SmartHotel360 w środowisku lokalnym. Firma Contoso jest migrowana aplikację frontonu maszyn wirtualnych za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso bazy danych aplikacji jest migrowana do wystąpienia zarządzanego Azure SQL Database przy użyciu [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Dostępne   
@@ -30,11 +30,11 @@ W tym dokumencie jest jednym z serii artykułów, które pokazują, jak fikcyjne
 [Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w grupie dostępności AlwaysOn programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje aplikacji rozwiązania SmartHotel360. Firma Contoso używa Usługa Site Recovery do migrowania aplikacji maszyn wirtualnych. Usługa migracji bazy danych używa migrować bazę danych aplikacji do klastra programu SQL Server, który jest chroniony przez grupy dostępności AlwaysOn. | Dostępne 
 [Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Contoso zakończeniu migracji lift-and-shift aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure, za pomocą usługi Azure Site Recovery | Dostępne
 [Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i usługi Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso aplikacji osTicket systemu Linux jest migrowana do maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery i bazy danych aplikacji jest migrowana do wystąpienia serwera usługi Azure MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
-[Artykuł 9: Refaktoryzacja aplikację w usłudze Azure Web Apps i Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso aplikacji rozwiązania SmartHotel360 jest migrowana do aplikacji sieci Web platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych | Dostępne
-Artykuł 10: Refaktoryzacja aplikacji systemu Linux w usłudze Azure Web Apps i usługi Azure MySQL | Contoso migruje swoją aplikację osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu regionach platformy Azure przy użyciu usługi Azure Traffic Manager, zintegrowana z usługą GitHub ciągłego dostarczania. Contoso migruje bazy danych aplikacji do usługi Azure Database for MySQL — wystąpienia. | W tym artykule
-[Artykuł 11: Refaktoryzacja TFS na usługom DevOps platformy Azure](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
-[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazę danych za pomocą usługi Azure SQL Database. | Dostępne
-[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji rozwiązania SmartHotel360, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
+[Artykuł 9: Refaktoryzuj aplikację w usłudze Azure Web Apps i Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso aplikacji rozwiązania SmartHotel360 jest migrowana do aplikacji sieci Web platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych | Dostępne
+Artykuł 10: Refaktoryzuj aplikacji systemu Linux w usłudze Azure Web Apps i usługi Azure MySQL | Contoso migruje swoją aplikację osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu regionach platformy Azure przy użyciu usługi Azure Traffic Manager, zintegrowana z usługą GitHub ciągłego dostarczania. Contoso migruje bazy danych aplikacji do usługi Azure Database for MySQL — wystąpienia. | W tym artykule
+[Artykuł 11: Refaktoryzuj TFS na usługom DevOps platformy Azure](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
+[Artykuł 12: Ponowne Ustalanie architektury aplikacji na kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazę danych za pomocą usługi Azure SQL Database. | Dostępne
+[Artykuł 13: Ponownie skompiluj aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji rozwiązania SmartHotel360, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
 [Artykuł 14: Skalowanie migracji na platformę Azure](contoso-migration-scale.md) | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | Dostępne
 
 W tym artykule Contoso migruje dwuwarstwowej Linux Apache MySQL PHP (LAMP) aplikacji usługi, która działu (osTicket) na platformie Azure. Jeśli chcesz korzystać z tej aplikacji typu open source, możesz ją pobrać z [GitHub](https://github.com/osTicket/osTicket).
@@ -44,9 +44,9 @@ W tym artykule Contoso migruje dwuwarstwowej Linux Apache MySQL PHP (LAMP) aplik
 
 Zespół kierowniczy IT ściśle podjęła współpracę z partnerami biznesowymi, aby zrozumieć, czego chcą osiągnąć:
 
-- **Adres rozwój**: Contoso jest stałym wzbogacaniu i przeniesienie na nowe rynki. Musi ona agenci usługi dodatkowych klientów. 
-- **Skala**: rozwiązanie powinny zostać skompilowane tak, aby Contoso można dodać więcej agentów usługi klienta jako skale biznesowych.
-- **Zwiększyć odporność**: WE ostatnie problemy w systemie dotyczą tylko w przypadku użytkowników wewnętrznych. Przy użyciu nowego modelu biznesowego będzie mieć wpływ na użytkowników zewnętrznych, a potrzeby firmy Contoso app działanie przez cały czas.
+- **Adres rozwój**: Firma Contoso jest stałym wzbogacaniu i przeniesienie na nowe rynki. Musi ona agenci usługi dodatkowych klientów. 
+- **Skala**: Rozwiązanie powinny zostać skompilowane tak, aby Contoso można dodać więcej agentów usługi klienta jako skale biznesowych.
+- **Zwiększyć odporność**:  W przeszłości problemy w systemie wpływ tylko w przypadku użytkowników wewnętrznych. Przy użyciu nowego modelu biznesowego będzie mieć wpływ na użytkowników zewnętrznych, a potrzeby firmy Contoso app działanie przez cały czas.
 
 ## <a name="migration-goals"></a>Cele migracji
 
@@ -129,17 +129,17 @@ Oto, czego firma Contoso potrzebuje do uruchomienia tego scenariusza.
 Poniżej przedstawiono, jak przeprowadzić migrację przez firmy Contoso:
 
 > [!div class="checklist"]
-> * **Krok 1: Świadczenia usługi Azure App Services**: Contoso Administratorzy, przydzieli aplikacji sieci Web w region podstawowy i pomocniczy.
-> * **Krok 2: Skonfigurować Traffic Manager**: ustawiają się usługi Traffic Manager przed aplikacji sieci Web, routingu i równoważenia obciążenia ruchu.
-> * **Krok 3: Aprowizowanie MySQL**: W przypadku platformy Azure, aprowizowania wystąpienia bazy danych Azure MySQL.
-> * **Krok 4: Migrację bazy danych**: migrowania bazy danych, przy użyciu aplikacji MySQL Workbench. 
-> * **Krok 5: Skonfiguruj usługę GitHub**: one Konfigurowanie lokalnego repozytorium GitHub na potrzeby witryn sieci web/kodu aplikacji.
-> * **Krok 6. wdrażanie aplikacji sieci web**: ich wdrażanie aplikacji sieci web z witryny GitHub.
+> * **Krok 1. Aprowizowanie usługi Azure App Services**: Contoso Administratorzy, przydzieli aplikacji sieci Web w region podstawowy i pomocniczy.
+> * **Krok 2. Skonfiguruj program Traffic Manager**: Ustawiają się usługi Traffic Manager przed aplikacji sieci Web dla routingu i równoważenia obciążenia ruchu.
+> * **Krok 3. Aprowizowanie MySQL**: Na platformie Azure udostępnia wystąpienie bazy danych Azure MySQL.
+> * **Krok 4. Migrowanie bazy danych**: Oni migrować bazy danych, przy użyciu aplikacji MySQL Workbench. 
+> * **Krok 5. Skonfiguruj usługę GitHub**: Konfigurowania lokalnego repozytorium GitHub na potrzeby witryn sieci web/kodu aplikacji.
+> * **Krok 6: Wdrażanie aplikacji sieci web**: Ich wdrażanie aplikacji sieci web, z usługi GitHub.
 
 
 
 
-## <a name="step-1-provision-azure-app-services"></a>Krok 1: Aprowizowanie z usług Azure App Services
+## <a name="step-1-provision-azure-app-services"></a>Krok 1: Aprowizowanie usługi Azure App Services
 
 Administratorzy firmy Contoso aprowizować dwie aplikacje internetowe (po jednym w każdym regionie) przy użyciu usługi Azure App Services.
 
@@ -163,11 +163,11 @@ Administratorzy firmy Contoso aprowizować dwie aplikacje internetowe (po jednym
 
 **Potrzebujesz dodatkowej pomocy?**
 
-- Dowiedz się więcej o [aplikacji sieci Web w usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview).
+- Dowiedz się więcej o [aplikacji sieci Web w usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/overview).
 - Dowiedz się więcej o [usługa Azure App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro).
 
 
-## <a name="step-2-set-up-traffic-manager"></a>Krok 2: Skonfigurować Traffic Manager
+## <a name="step-2-set-up-traffic-manager"></a>Krok 2: Skonfiguruj program Traffic Manager
 
 Administratorzy firmy Contoso Ustaw Konfigurowanie Menedżera ruchu przychodzącego ruchu internetowego żądania kierowane do aplikacji sieci Web uruchomionych na osTicket warstwa sieci web.
 
@@ -212,7 +212,7 @@ Administratorzy firmy Contoso aprowizować wystąpienie bazy danych MySQL w regi
 
 
 
-## <a name="step-4-migrate-the-database"></a>Krok 4: Migrację bazy danych
+## <a name="step-4-migrate-the-database"></a>Krok 4: Migrowanie bazy danych
 
 Administratorzy firmy Contoso migracji bazy danych przy użyciu kopii zapasowej i przywracania, przy użyciu narzędzia MySQL. Ich instalacja aplikacji MySQL Workbench, wykonaj kopię zapasową bazy danych z OSTICKETMYSQL, a następnie przywrócić do usługi Azure Database dla serwera MySQL.
 
@@ -259,7 +259,7 @@ Administratorzy firmy Contoso migracji bazy danych przy użyciu kopii zapasowej 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench10.png)
 
 
-## <a name="step-5-set-up-github"></a>Krok 5: Skonfiguruj usługę GitHub
+## <a name="step-5-set-up-github"></a>Krok 5. Skonfiguruj usługę GitHub
 
 Administratorzy firmy Contoso tworzyć nowe prywatnym repozytorium GitHub i skonfigurowanie połączenia z bazą danych osTicket w bazie danych MySQL w usłudze Azure. Następnie należy załadować aplikacji sieci Web platformy Azure przy użyciu aplikacji.  
 
@@ -292,7 +292,7 @@ Administratorzy firmy Contoso tworzyć nowe prywatnym repozytorium GitHub i skon
 
     ![GitHub](./media/contoso-migration-refactor-linux-app-service-mysql/github7.png)
 
-## <a name="step-6-configure-the-web-apps"></a>Krok 6. Konfigurowanie aplikacji sieci Web
+## <a name="step-6-configure-the-web-apps"></a>Krok 6: Konfigurowanie aplikacji sieci Web
 
 Ostatni krok w procesie migracji Administratorzy firmy Contoso, należy skonfigurować aplikacje sieci web przy użyciu osTicket witryn sieci web.
 

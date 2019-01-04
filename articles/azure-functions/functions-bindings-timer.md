@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 10cfaab44343a494dd654d0e930e12fa268ea2e3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992885"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558978"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -42,11 +42,11 @@ Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](https
 
 Zobacz przykład specyficzny dla języka:
 
-* [C#](#trigger---c-example)
-* [Skryptu C# (csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
+* [C#](#c-example)
+* [Skryptu C# (csx)](#c-script-example)
+* [F#](#f-example)
+* [JavaScript](#javascript-example)
+* [Java](#java-example)
 
 ### <a name="c-example"></a>Przykład w języku C#
 

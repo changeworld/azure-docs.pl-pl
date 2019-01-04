@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: eb177852be273f1c9af06b1f9d85fbba4cc98567
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ae71fb9f509c39e871f4d1dfb29626be47bea4b9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845490"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790983"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Funkcji Hyper-V do architektury odzyskiwania po awarii platformy Azure
 
@@ -131,9 +131,9 @@ Jeśli wystąpi błąd replikacji, może zostać użyty wbudowany mechanizm pona
 Gdy infrastruktury lokalnej będzie uruchomione ponownie, możesz można wykonać powrotu po awarii. Powrót po awarii odbywa się w trzech etapach:
 
 1. Czy uruchamiał planowanego trybu failover z platformy Azure do lokacji lokalnej:
-    - **Skrócić czas przestoju**: w przypadku użycia tej opcji usługa Site Recovery synchronizuje dane przed włączeniem trybu failover. Sprawdza, czy dane zmienione bloki i pobiera je do lokacji lokalnej, podczas przechowuje maszyny Wirtualnej platformy Azure, działa, minimalizując przestoje. Ręczne określenie, czy tryb failover, należy wykonać, zamknięcie maszyny Wirtualnej platformy Azure, wszelkie zmiany różnicowe końcowe są kopiowane i uruchomieniem trybu failover.
-    - **Pełne pobieranie**: przy użyciu tej opcji dane są synchronizowane podczas pracy awaryjnej. Ta opcja spowoduje pobranie całego dysku. Jest szybsze, ponieważ nie sumy kontrolne są obliczane, ale ma więcej przestojów. Użyj tej opcji, jeśli działała repliki maszyn wirtualnych platformy Azure przez pewien czas lub lokalna maszyna wirtualna została usunięta.
-    - **Tworzenie maszyny Wirtualnej**: można określić, aby zakończyć się niepowodzeniem do tej samej maszyny Wirtualnej lub do alternatywnej maszyny Wirtualnej. Można określić, Usługa Site Recovery należy utworzyć maszynę Wirtualną, jeśli jeszcze nie istnieje.
+    - **Skrócić czas przestoju**: Jeśli używasz tej opcji usługa Site Recovery synchronizuje dane przed włączeniem trybu failover. Sprawdza, czy dane zmienione bloki i pobiera je do lokacji lokalnej, podczas przechowuje maszyny Wirtualnej platformy Azure, działa, minimalizując przestoje. Ręczne określenie, czy tryb failover, należy wykonać, zamknięcie maszyny Wirtualnej platformy Azure, wszelkie zmiany różnicowe końcowe są kopiowane i uruchomieniem trybu failover.
+    - **Pełne pobieranie**: Po wybraniu tej opcji dane są synchronizowane podczas pracy awaryjnej. Ta opcja spowoduje pobranie całego dysku. Jest szybsze, ponieważ nie sumy kontrolne są obliczane, ale ma więcej przestojów. Użyj tej opcji, jeśli działała repliki maszyn wirtualnych platformy Azure przez pewien czas lub lokalna maszyna wirtualna została usunięta.
+    - **Tworzenie maszyny Wirtualnej**: Możesz wybrać, czy niepowodzenie powrót do tej samej maszyny Wirtualnej lub do alternatywnej maszyny Wirtualnej. Można określić, Usługa Site Recovery należy utworzyć maszynę Wirtualną, jeśli jeszcze nie istnieje.
 
 2. Po zakończeniu początkowej synchronizacji, należy wybrać do przełączenia w tryb failover. Po zakończeniu instalacji możesz zalogować się na lokalną maszynę Wirtualną w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami. W witrynie Azure portal widać, że maszyny wirtualne platformy Azure zostały zatrzymane.
 3.  Następnie należy zatwierdzić tryb failover, aby zakończyć i rozpocząć uzyskiwanie dostępu do obciążenia z lokalnej maszyny Wirtualnej ponownie.

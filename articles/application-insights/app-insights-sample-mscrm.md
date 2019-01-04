@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 3106e523e3f8edd17cc27991181267acfab4308b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f3746fc340b382c58f7a9501cb0828a6b6befe8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002136"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976039"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Przewodnik: Włączanie Telemetrii dla usługi Microsoft Dynamics CRM Online przy użyciu usługi Application Insights
 W tym artykule pokazano, jak można pobrać danych telemetrycznych z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) przy użyciu [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Omówimy kompletnego procesu dodawania skrypt usługi Application Insights do aplikacji, przechwytywania danych i wizualizacja danych.
@@ -38,7 +38,7 @@ Aby monitorować aplikację, należy dodać zestaw SDK usługi Application Insig
     ![Kliknij pozycję +, usługi dla deweloperów, Application Insights.](./media/app-insights-sample-mscrm/01.png)
 
     Wybierz ASP.NET jako typ aplikacji.
-3. Postępuj zgodnie z instrukcjami, aby [Pobierz skrypt zestaw SDK języka JavaScript dla aplikacji](app-insights-javascript.md#set-up-application-insights-for-your-web-page), skopiuj fragment kodu JavaScript i upewnij się, że Zastąp klucz Instrumentacji poprawnej wartości zasobu usługi Application Insights.
+3. Postępuj zgodnie z instrukcjami, aby [Pobierz skrypt zestaw SDK języka JavaScript dla aplikacji](../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page), skopiuj fragment kodu JavaScript i upewnij się, że Zastąp klucz Instrumentacji poprawnej wartości zasobu usługi Application Insights.
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Tworzenie zasobu internetowego języka JavaScript w programie Microsoft Dynamics CRM
 1. Otwórz swoje wystąpienie usługi CRM Online i logowania z uprawnieniami administratora.
@@ -134,5 +134,5 @@ Możesz wykonać nawet dokładniejszej analizy, gdy użytkownik [dane są ekspor
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 * [Co to jest Application Insights?](app-insights-overview.md)
-* [Usługa Application Insights dla stron sieci web](app-insights-javascript.md)
+* [Usługa Application Insights dla stron sieci web](../azure-monitor/app/javascript.md)
 * [Więcej przykładów i przewodniki](app-insights-overview.md)

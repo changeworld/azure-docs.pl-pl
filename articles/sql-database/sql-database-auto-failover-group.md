@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 3da4d6ffe8660c490d39f223dff105ed126fa10b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284941"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994644"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
-Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover grupy baz danych na serwerze logicznym lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie (obecnie dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego). Używa tych samych podstawowych technologii jako [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Należy ręcznie zainicjować trybu failover, lub możesz go delegować do usługi SQL Database, na podstawie zasad zdefiniowanych przez użytkownika za pomocą zasad zdefiniowanych przez użytkownika. Tę druga opcję umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
+Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover grupy baz danych na serwerze logicznym lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie (obecnie dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego). Używa tych samych podstawowych technologii jako [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Należy ręcznie zainicjować trybu failover, lub możesz go delegować do usługi SQL Database, na podstawie zasad zdefiniowanych przez użytkownika. Tę druga opcję umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
 
 > [!NOTE]
 > Korzystanie z jednego lub pulami baz danych na serwer logiczny, wiele pomocniczych baz danych w tej samej lub różnych regionach, należy zastosować [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
@@ -81,7 +81,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Odbiornik grupy trybu failover tylko do odczytu**
 
-  Rekordu CNAME systemu DNS sformułowany, który wskazuje do odbiornika tylko do odczytu, wskazujący na adres URL pomocniczej. Umożliwia aplikacji SQL tylko do odczytu do jawnego połączenia do regionu pomocniczego, za pomocą określonych reguł równoważenia obciążenia.
+  Rekord CNAME w systemie DNS sformułowany wskazujący odbiornika tylko do odczytu, wskazujący na adres URL pomocniczej. Umożliwia aplikacji SQL tylko do odczytu do jawnego połączenia do regionu pomocniczego, za pomocą określonych reguł równoważenia obciążenia.
 
   - **Serwer logiczny rekordu CNAME systemu DNS dla odbiornika tylko do odczytu**
 
@@ -203,7 +203,7 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
 
 - **Przygotowanie do obniżenia wydajności**
 
-  Decyzja trybu failover programu SQL jest niezależna od pozostałej części lub innych usług używanych aplikacji. Aplikacja może być wartość "mixed" za pomocą niektóre składniki na jednym regionie, a niektóre w innym. Aby uniknąć obniżenia wydajności, upewnij się, wdrożenie aplikacji nadmiarowy w regionie odzyskiwania po awarii, a następnie postępuj zgodnie z tymi [wytyczne z zakresu bezpieczeństwa sieci](#Failover groups-and-network-security).
+  Decyzja trybu failover programu SQL jest niezależna od pozostałej części lub innych usług używanych aplikacji. Aplikacja może być wartość "mixed" za pomocą niektóre składniki na jednym regionie, a niektóre w innym. Aby uniknąć obniżenia wydajności, upewnij się, wdrożenie aplikacji nadmiarowy w regionie odzyskiwania po awarii, a następnie postępuj zgodnie z tymi [wytyczne z zakresu bezpieczeństwa sieci](#failover-groups-and-network-security).
 
 - **Przygotowanie do utraty danych**
 
@@ -262,7 +262,7 @@ Po skonfigurowaniu grupy trybu failover, od podstawowych i pomocniczych wystąpi
     > [!IMPORTANT]
     > Nieprawidłowo skonfigurowany potencjalnych klientów reguły zabezpieczeń sieciowej grupy zabezpieczeń do operacji kopiowania zablokowane bazy danych.
 
-7. Należy skonfigurować partnera strefy DNS w wystąpieniu dodatkowej. Strefa DNS jest właściwością wystąpienia zarządzanego. Reprezentuje ona częścią nazwy hosta, która następuje nazwa wystąpienia zarządzanego i poprzedza `.database.windows.net` prefiks. Jako losowy ciąg jest generowany podczas tworzenia pierwszego wystąpienia zarządzanego w każdej sieci wirtualnej. Strefa DNS nie można zmodyfikować po utworzeniu wystąpienia zarządzanego, a wszystkie wystąpienia zarządzane w ramach tej samej podsieci mają taką samą wartość strefy DNS. Dla zarządzanych wystąpienia ustawienia grupy trybu failover wystąpienia zarządzanego usługi podstawowej oraz dodatkowej wystąpienia zarządzanego musi mieć taką samą wartość strefy DNS. Można to zrobić, określając parametr DnsZonePartner podczas tworzenia dodatkowych wystąpienia zarządzanego. Właściwość partnera strefy DNS definiuje udostępniania wystąpienia grupy trybu failover z wystąpieniem zarządzanym. Przekazując do innego wystąpienia zarządzanego identyfikatora zasobu jako dane wejściowe DnsZonePartner aktualnie jest tworzone wystąpienie zarządzane dziedziczy taką samą wartość strefy DNS partnera wystąpienia zarządzanego.
+7. Należy skonfigurować partnera strefy DNS w wystąpieniu dodatkowej. Strefa DNS jest właściwością wystąpienia zarządzanego. Reprezentuje ona częścią nazwy hosta, która następuje nazwa wystąpienia zarządzanego i poprzedza `.database.windows.net` prefiks. Jako losowy ciąg jest generowany podczas tworzenia pierwszego wystąpienia zarządzanego w każdej sieci wirtualnej. Strefa DNS nie można zmodyfikować po utworzeniu wystąpienia zarządzanego, a wszystkie wystąpienia zarządzane w ramach tej samej podsieci mają taką samą wartość strefy DNS. Dla wystąpienia zarządzanego. Konfiguracja grupy trybu failover wystąpienia zarządzanego usługi podstawowej oraz dodatkowej wystąpienia zarządzanego musi mieć taką samą wartość strefy DNS. Można to zrobić, określając parametr DnsZonePartner podczas tworzenia dodatkowych wystąpienia zarządzanego. Właściwość partnera strefy DNS definiuje udostępniania wystąpienia grupy trybu failover z wystąpieniem zarządzanym. Przekazując do innego wystąpienia zarządzanego identyfikatora zasobu jako dane wejściowe DnsZonePartner aktualnie jest tworzone wystąpienie zarządzane dziedziczy taką samą wartość strefy DNS partnera wystąpienia zarządzanego.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawową bazą danych
 
@@ -306,17 +306,17 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 
 #### <a name="install-the-newest-pre-release-version-of-powershell"></a>Zainstaluj najnowszą wersję wstępną programu Powershell
 
-1. Zaktualizuj moduł powershellget 1.6.5 (lub najnowszej wersji zapoznawczej). Zobacz [witryny programu PowerShell w wersji zapoznawczej](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
+1. Zaktualizuj moduł PowerShellGet 1.6.5 (lub najnowszej wersji zapoznawczej). Zobacz [witryny programu PowerShell w wersji zapoznawczej](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
 
    ```Powershell
-      install-module powershellget -MinimumVersion 1.6.5 -force
+      install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. W nowym oknie programu PowerShell wykonaj następujące polecenia:
 
    ```Powershell
-      import-module powershellget
-      get-module powershellget #verify version is 1.6.5 (or newer)
+      import-module PowerShellGet
+      get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```

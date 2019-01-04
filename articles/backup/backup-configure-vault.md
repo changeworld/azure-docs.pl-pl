@@ -4,17 +4,16 @@ description: Użyj agenta usługi Microsoft Azure Backup, aby utworzyć kopię z
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: Magazyn kopii zapasowych; Tworzenie kopii zapasowej serwera Windows; Tworzenie kopii zapasowych;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874009"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788399"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Tworzenie kopii zapasowych systemu Windows Server lub Client na platformie Azure przy użyciu modelu wdrażania używającego usługi Resource Manager
 W tym artykule opisano sposób tworzenia kopii zapasowej systemu Windows Server (lub klienta Windows) plików i folderów na platformie Azure przy użyciu usługi Azure Backup przy użyciu modelu wdrażania usługi Resource Manager.
@@ -183,6 +182,8 @@ Jeśli komputer/serwer proxy ma ograniczony dostęp do Internetu, upewnij się, 
 Zasady kopii zapasowych jest harmonogram punktów odzyskiwania są pobierane i czas, w których punkty odzyskiwania są zachowywane. Agent Microsoft Azure Backup umożliwia tworzenie zasad kopii zapasowych plików i folderów.
 
 ### <a name="to-create-a-backup-schedule"></a>Aby utworzyć harmonogram tworzenia kopii zapasowych
+
+Ustaw harmonogram tworzenia kopii zapasowych na komputerze, który chcesz utworzyć kopię zapasową. Należy pamiętać, że czasu przeznaczonego na kopie zapasowe mogą się różnić od czas na komputerze lokalnym, ponieważ usługa Azure Backup nie przyjmuje czasu letniego (DST) do konta. 
 1. Otwórz agenta usługi Microsoft Azure Backup. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
 
     ![Uruchamianie agenta usługi Azure Backup](./media/backup-configure-vault/snap-in-search.png)

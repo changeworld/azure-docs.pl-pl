@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 74d6acb03f9ba984d35caf1f5c7963f686cda5a7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 47ce2b39f1733c99ef8c15926d42aa62e1fcd44c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219260"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634562"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage
 
@@ -176,12 +176,14 @@ Aby usunąć rejestracji domeny niestandardowej, należy użyć [aktualizacja ko
 
 ### <a name="powershell"></a>PowerShell
 
-Aby usunąć rejestracji domeny niestandardowej, należy użyć [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) polecenia cmdlet programu PowerShell, a następnie określ pusty ciąg (`""`) dla `-CustomDomainName` wartość argumentu.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Aby usunąć rejestracji domeny niestandardowej, należy użyć [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount) polecenia cmdlet programu PowerShell, a następnie określ pusty ciąg (`""`) dla `-CustomDomainName` wartość argumentu.
 
 * Format polecenia:
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
       -AccountName "<storage-account-name>" `
       -CustomDomainName ""
@@ -190,7 +192,7 @@ Aby usunąć rejestracji domeny niestandardowej, należy użyć [Set-AzureRmStor
 * Przykład polecenia:
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "myresourcegroup" `
       -AccountName "mystorageaccount" `
       -CustomDomainName ""

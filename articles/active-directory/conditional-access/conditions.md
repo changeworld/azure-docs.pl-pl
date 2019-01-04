@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 5f3857480bfe6c4d5c4efe759b11761123fa4441
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410078"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973064"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
 
@@ -74,7 +74,7 @@ Wybierz pozycję:
 
 - **Wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Zaznacz to pole wyboru dla zasad, które wymagają uwierzytelniania wieloskładnikowego po wykryciu ryzyka logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do **wszystkie aplikacje w chmurze** dotyczy dostępu do wszystkich witryn sieci Web i usług. To ustawienie nie ogranicza się do aplikacji w chmurze, które pojawiają się na **Wybierz aplikacje** listy. 
 
-- **Wybierz SPP** do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
+- **Wybierz aplikacje** do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
 
 Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp. 
 

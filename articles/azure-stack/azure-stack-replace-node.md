@@ -6,32 +6,34 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: f9434689-ee66-493c-a237-5c81e528e5de
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 1b37b150dad4951a4ade81f226b515ce9cae9053
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9d53aa879c39eb68597a402133a7ff16737f4f65
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377058"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716314"
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Zastąp węzeł jednostki skalowania w zintegrowanym systemie Azure Stack
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
-W tym artykule opisano ogólny proces w celu zastąpienia komputera fizycznego (nazywane także *węzła jednostki skalowania*) w usłudze Azure Stack zintegrowany system. Rzeczywiste skalowanie jednostek węzeł zastępczy, który kroki będą się różnić na podstawie z dostawcą sprzętu producenta sprzętu (OEM). W dokumentacji dostawcy pola jednostkę (FRU) replaceable unit szczegółowy opis kroków, które są specyficzne dla systemu.
+W tym artykule opisano ogólny proces w celu zastąpienia komputera fizycznego (nazywane również węzeł jednostki skalowania) w zintegrowanym systemie Azure Stack. Rzeczywiste skalowanie jednostek węzeł zastępczy, który kroki będą się różnić na podstawie z dostawcą sprzętu producenta sprzętu (OEM). W dokumentacji dostawcy pola jednostkę (FRU) replaceable unit szczegółowy opis kroków, które są specyficzne dla systemu.
 
 Poniższy diagram przepływu przedstawia ogólny proces FRU, Zastąp węzeł jednostki skali całego.
 
 ![Schemat blokowy Zastąp węzła procesu](media/azure-stack-replace-node/replacenodeflow.png)
 
 * Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
+
+> [!Note]  
+> Operacja zamykania nie powiedzie się, zalecane jest za pomocą operacji opróżniania następuje operacji zatrzymania. Więcej informacji na ten temat można znaleźć w węźle dostępne operacje  
 
 ## <a name="review-alert-information"></a>Przejrzyj informacje o alertach
 
@@ -51,22 +53,24 @@ Jeśli otworzysz **węzła jednostki skalowania jest w trybie offline** alertu, 
 
 Poniższe kroki są dostarczane jako ogólne omówienie procesu wymiany węzła jednostki skalowania. W dokumentacji dostawcy sprzętu OEM FRU szczegółowy opis kroków, które są specyficzne dla systemu. Nie wykonuj następujące czynności bez odwołujące się do dokumentacji dostarczonego przez producenta OEM.
 
-1. Użyj [opróżnić](azure-stack-node-actions.md#scale-unit-node-actions) akcji, aby przełączyć węzeł jednostki skalowania w trybie konserwacji. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
+1. Użyj **zamknięcia** działania w celu poprawnego działania zamknięcia węzła jednostki skalowania. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu. 
 
-   > [!NOTE]
-   > W każdym przypadku, tylko jeden węzeł można opróżniane i wyłączona w tym samym czasie, bez przerywania S2D (bezpośrednimi miejscami do magazynowania).
+2. W mało prawdopodobne, zamierzone, Zapisz zamykania kończy się niepowodzeniem, należy użyć [opróżnić](azure-stack-node-actions.md#drain) akcji, aby przełączyć węzeł jednostki skalowania w trybie konserwacji. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
 
-2. Jeśli węzeł jest nadal włączony, należy użyć [Wyłącz zasilanie](azure-stack-node-actions.md#scale-unit-node-actions) akcji. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
- 
-   > [!NOTE]
+   > [!NOTE]  
+   > W każdym przypadku, tylko jeden węzeł można wyłączyć i wyłączona w tym samym czasie, bez przerywania S2D (bezpośrednimi miejscami do magazynowania).
+
+3. Po węźle jednostka skalowania jest w trybie konserwacji, użyj [zatrzymać](azure-stack-node-actions.md#stop) akcji. Ta akcja może nie być wymagane na podstawie fizycznej warunku sprzętu.
+
+   > [!NOTE]  
    > W rzadkich przypadkach wyłączanie akcji nie rozwiąże problemu należy zamiast tego użyj interfejsu sieci web uzyskiwania informacji na temat kontrolera zarządzania płytą główną.
 
-1. Zastąp komputera fizycznego. Zazwyczaj jest to realizowane przez dostawcę sprzętu OEM.
-2. Użyj [naprawy](azure-stack-node-actions.md#scale-unit-node-actions) akcji, aby dodać nowy komputer fizyczny do jednostki skalowania.
-3. Użyj uprzywilejowanych punktu końcowego do [sprawdzić stan naprawy dysku wirtualnego](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Za pomocą nowych dysków z danymi zadanie naprawy pełną magazynu może potrwać kilka godzin w zależności od obciążenia systemu i używane miejsce.
-4. Akcja naprawy zakończy działanie, aby zweryfikować, że wszystkie aktywne alerty zostało automatycznie zamknięte.
+4. Zastąp komputera fizycznego. Zazwyczaj jest to realizowane przez dostawcę sprzętu OEM.
+5. Użyj [naprawy](azure-stack-node-actions.md#repair) akcji, aby dodać nowy komputer fizyczny do jednostki skalowania.
+6. Użyj uprzywilejowanych punktu końcowego do [sprawdzić stan naprawy dysku wirtualnego](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Za pomocą nowych dysków z danymi zadanie naprawy pełną magazynu może potrwać kilka godzin w zależności od obciążenia systemu i używane miejsce.
+7. Akcja naprawy zakończy działanie, aby zweryfikować, że wszystkie aktywne alerty zostało automatycznie zamknięte.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak zastąpienie wyłączania dysku fizycznego, zobacz [wymienić dysk](azure-stack-replace-disk.md). 
-- Aby dowiedzieć się, jak zastąpienie składnik sprzętowy bez wyłączania, zobacz [wymienić składnik sprzętowy](azure-stack-replace-component.md).
+- Aby dowiedzieć się, jak zastąpienie dysku fizycznego, gdy system jest włączony, zobacz [wymienić dysk](azure-stack-replace-disk.md). 
+- Aby dowiedzieć się, jak zastąpienie składnik sprzętowy, który wymaga systemu, wyłączanie, zobacz [wymienić składnik sprzętowy](azure-stack-replace-component.md).

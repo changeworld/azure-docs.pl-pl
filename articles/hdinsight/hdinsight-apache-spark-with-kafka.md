@@ -10,24 +10,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5f4b7994ad5061c64021f3625f42ac028cbee859
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165808"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653411"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Platforma Apache Spark streaming (DStream) przykład z platformy Apache Kafka w HDInsight
 
 Dowiedz się, jak używać [platformy Apache Spark](https://spark.apache.org/) przesyłanie strumieniowe danych do lub z [platformy Apache Kafka](https://kafka.apache.org/) na HDInsight przy użyciu [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html). W tym przykładzie użyto [notesu programu Jupyter](https://jupyter.org/) , które jest uruchamiane w klastrze Spark.
 
-> [!NOTE]
+> [!NOTE]  
 > Kroki przedstawione w tym dokumencie obejmują tworzenie grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
 >
 > Po zakończeniu pracy z tym dokumentem pamiętaj o usunięciu tych klastrów, aby uniknąć naliczania opłat.
 
-> [!IMPORTANT]
-> W tym przykładzie użyto DStreams, czyli starszej technologii przesyłania strumieniowego platformy Spark. Dla przykładu, który używa nowszej Spark streaming funkcji, zobacz [Spark Structured Streaming z platformą Kafka](hdinsight-apache-kafka-spark-structured-streaming.md) dokumentu.
+> [!IMPORTANT]  
+> W tym przykładzie użyto DStreams, czyli starszej technologii przesyłania strumieniowego platformy Spark. Dla przykładu, który używa nowszej Spark streaming funkcji, zobacz [Spark Structured Streaming dzięki platformie Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md) dokumentu.
 
 ## <a name="create-the-clusters"></a>Tworzenie klastrów
 
@@ -35,7 +35,7 @@ Platforma Apache Kafka w usłudze HDInsight nie zapewnia dostępu do brokerów K
 
 ![Diagram przedstawiający klastry Spark i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Chociaż platformy Kafka, sama jest ograniczony do komunikacji w obrębie sieci wirtualnej, dostęp do innych usług w klastrze, takich jak SSH i Ambari są dostępne za pośrednictwem Internetu. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
 Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Spark clusters ręcznie, jest łatwiejszy w użyciu szablonu usługi Azure Resource Manager. Wykonaj następujące kroki wdrażania siecią wirtualną platformy Azure, platformy Kafka i Spark klastrów do subskrypcji platformy Azure.
@@ -46,7 +46,7 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
     
     Szablon usługi Azure Resource Manager znajduje się tutaj: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia utworzenie klastra Kafka zawierającego trzy węzły procesu roboczego.
 
     Ten szablon umożliwia utworzenie klastra usługi HDInsight 3.6 zarówno dla platformy Kafka i Spark.
@@ -77,7 +77,7 @@ Po utworzeniu zasobów zostanie wyświetlona strona podsumowania.
 
 ![Grupa zasobów podsumowania dla sieci wirtualnej i klastrów](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Należy zauważyć, że nazwy klastrów HDInsight są **spark BASENAME** i **kafka BASENAME**, gdzie BASENAME jest nazwa podana w szablonie. W kolejnych krokach będą używać tych nazw, łącząc się z klastrami.
 
 ## <a name="use-the-notebooks"></a>Korzystanie z notesów

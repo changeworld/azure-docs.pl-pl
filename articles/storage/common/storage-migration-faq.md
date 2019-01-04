@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a15c983291d35063884178f7b84e21fe4908b49a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416396"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632318"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -56,8 +56,8 @@ Nie ma opcji do utworzenia kopii zapasowej całe konto magazynu bezpośrednio. J
 
     - `/Source`: Podaj identyfikator URI dla źródłowego konta magazynu (maksymalnie kontenera).  
     - `/Dest`: Podaj identyfikator URI dla docelowego konta magazynu (maksymalnie kontenera).  
-    - `/SourceKey`: Zawiera klucz podstawowy dla źródłowego konta magazynu. Możesz skopiować ten klucz w witrynie Azure portal, wybierając konto magazynu.  
-    - `/DestKey`: Zawiera klucz podstawowy dla docelowego konta magazynu. Możesz skopiować ten klucz z portalu, wybierając konto magazynu.
+    - `/SourceKey`: Podaj klucz podstawowy dla źródłowego konta magazynu. Możesz skopiować ten klucz w witrynie Azure portal, wybierając konto magazynu.  
+    - `/DestKey`: Podaj klucz podstawowy dla docelowego konta magazynu. Możesz skopiować ten klucz z portalu, wybierając konto magazynu.
 
 Po uruchomieniu tego polecenia, pliki kontenera zostaną przeniesione na docelowym koncie magazynu.
 
@@ -118,6 +118,8 @@ Aby uzyskać więcej informacji, zobacz [transferowanie danych za pomocą narzę
 
 **Jak przenieść dysków zarządzanych do innego konta magazynu?**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Wykonaj następujące kroki:
 
 1.  Zatrzymaj maszynę wirtualną, dołączonego do dysków zarządzanych.
@@ -125,15 +127,15 @@ Wykonaj następujące kroki:
 2.  Skopiuj dysk zarządzany wirtualnego dysku twardego z jednego obszaru do innego, uruchamiając następujący skrypt programu Azure PowerShell:
 
     ```
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionId <ID>
+    Select-AzSubscription -SubscriptionId <ID>
 
-    $sas = Grant-AzureRmDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
+    $sas = Grant-AzDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
 
-    $destContext = New-AzureStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
+    $destContext = New-AzStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
 
-    Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
+    Start-AzStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
 3.  Tworzenie dysku zarządzanego przy użyciu pliku wirtualnego dysku twardego w innym regionie, do którego została skopiowana wirtualnego dysku twardego. Aby to zrobić, uruchom następujący skrypt programu Azure PowerShell:  
@@ -151,9 +153,9 @@ Wykonaj następujące kroki:
 
     $storageType = 'StandardLRS'
 
-    $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
+    $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
-    $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+    $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
 Aby uzyskać więcej informacji na temat sposobu wdrażania maszyny wirtualnej na podstawie dysku zarządzanego, zobacz [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
@@ -164,7 +166,7 @@ Narzędzia AzCopy można użyć, aby pobrać dane. Aby uzyskać więcej informac
 
 **Jak zmienić lokalizacji pomocniczej w regionie Europa dla konta magazynu?**
 
-Podczas tworzenia konta magazynu, możesz wybrać region podstawowy dla konta. Wybór w regionie pomocniczym zależy od regionu podstawowego, a nie można jej zmienić. Aby uzyskać więcej informacji, zobacz [magazyn geograficznie nadmiarowy (GRS): replikacji między regionami dla usługi Azure Storage](storage-redundancy.md).
+Podczas tworzenia konta magazynu, możesz wybrać region podstawowy dla konta. Wybór w regionie pomocniczym zależy od regionu podstawowego, a nie można jej zmienić. Aby uzyskać więcej informacji, zobacz [magazyn geograficznie nadmiarowy (GRS): Replikacji między regionami dla usługi Azure Storage](storage-redundancy.md).
 
 **Gdzie można uzyskać więcej informacji na temat szyfrowania usługi Storage (SSE) Azure?**  
   
@@ -234,7 +236,7 @@ Jeśli masz maszyny wirtualne, należy wykonać dodatkowe kroki przed migracją 
 
 **Jak przenieść z klasycznego konta magazynu na konto magazynu usługi Azure Resource Manager?**
 
-Możesz użyć **Move-AzureStorageAccount** polecenia cmdlet. To polecenie cmdlet ma wiele kroków (Sprawdzanie poprawności, przygotowywanie, Zatwierdź). Można sprawdzić przeniesienie, przed jej wprowadzeniem.
+Możesz użyć **AzStorageAccount przenoszenia** polecenia cmdlet. To polecenie cmdlet ma wiele kroków (Sprawdzanie poprawności, przygotowywanie, Zatwierdź). Można sprawdzić przeniesienie, przed jej wprowadzeniem.
 
 Jeśli masz maszyny wirtualne, należy wykonać dodatkowe kroki przed migracją danych konta magazynu. Aby uzyskać więcej informacji, zobacz [migrację zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager przy użyciu programu Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
@@ -278,7 +280,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **Token sygnatury dostępu Współdzielonego**: token sygnatury dostępu Współdzielonego umożliwia dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [używanie sygnatury dostępu współdzielonego](storage-dotnet-shared-access-signature-part-1.md).
+    - **Token sygnatury dostępu Współdzielonego**: Użyj tokenu sygnatury dostępu Współdzielonego na dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [używanie sygnatury dostępu współdzielonego](storage-dotnet-shared-access-signature-part-1.md).
 
 **Jak używać protokołu HTTPS domeny niestandardowej z moim kontem magazynu? Na przykład, jak zrobić "https://mystorageaccountname.blob.core.windows.net/images/image.gif"są wyświetlane jako"https://www.contoso.com/images/image.gif"?**
 

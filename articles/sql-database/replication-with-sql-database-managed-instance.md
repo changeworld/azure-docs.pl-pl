@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a272b028e1e3ef2778227f259c0b1b980af885d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240396"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547599"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Wystąpienie zarządzane w replikacji z bazy danych SQL
 
@@ -63,6 +63,8 @@ Wymaga wydawcą i dystrybutorem w usłudze Azure SQL Database:
 - Połączenie korzysta z uwierzytelniania programu SQL między uczestnikami replikacji.
 
 - Udział konta usługi Azure Storage dla replikacji katalogu roboczego.
+
+- Port 445 (ruch wychodzący protokołu TCP) musi być otwarty w regułach zabezpieczeń w podsieci wystąpienia zarządzanego dostępu do udziału plików platformy Azure
 
 ## <a name="features"></a>Funkcje
 

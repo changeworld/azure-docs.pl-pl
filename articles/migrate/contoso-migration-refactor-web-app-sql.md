@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 923a1ab9020925c17b3b19d24c7524ab2f8f3356
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092766"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608021"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migracja Contoso: Refaktoryzacja lokalnych aplikacji z bazą danych Azure SQL i aplikacji sieci Web platformy Azure
 
@@ -23,19 +23,19 @@ W tym dokumencie jest jednym z serii artykułów, które pokazują, jak fikcyjne
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Zawiera omówienie strategii migracji firmy Contoso, serię artykułów i przykładowe aplikacje, używanych przez firmę Microsoft. | Dostępne
+[Artykuł 1: Przegląd](contoso-migration-overview.md) | Zawiera omówienie strategii migracji firmy Contoso, serię artykułów i przykładowe aplikacje, używanych przez firmę Microsoft. | Dostępne
 [Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | W tym artykule opisano, jak Contoso przygotowuje jej w środowisku lokalnym i infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używany dla wszystkich artykułów migracji. | Dostępne
 [Artykuł 3: Ocena zasobów lokalnych](contoso-migration-assessment.md)  | Pokazuje, jak firmy Contoso jest wykonywany oceny aplikacji SmartHotel dwuwarstwowej lokalnych działających w oprogramowaniu firmy VMware. Contoso ocenia maszynach wirtualnych usługi app przy użyciu [usługi Azure Migrate](migrate-overview.md) usługi bazy danych oraz aplikacji programu SQL Server za pomocą [Asystenta migracji bazy danych](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
 [Artykuł 4: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i wystąpienie zarządzane SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje, jak firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla aplikacji SmartHotel. Firma Contoso jest migrowana aplikację frontonu maszyn wirtualnych za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i bazy danych aplikacji do wystąpienia zarządzanego SQL, przy użyciu [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Dostępne
 [Artykuł 5: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Pokazuje, jak Contoso migrację aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu Site Recovery. | Dostępne
-[Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i SQL Server zawsze włączona grupa dostępności](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Firma Contoso używa Usługa Site Recovery do migrowania aplikacji, maszyny wirtualne i usługi migracji bazy danych do migracji bazy danych aplikacji do klastra programu SQL Server chronione przez grupy dostępności AlwaysOn. | Dostępne
+[Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i programu SQL Server zawsze włączona grupa dostępności](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Firma Contoso używa Usługa Site Recovery do migrowania aplikacji, maszyny wirtualne i usługi migracji bazy danych do migracji bazy danych aplikacji do klastra programu SQL Server chronione przez grupy dostępności AlwaysOn. | Dostępne
 [Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak firmy Contoso jest lift-and-shift migracji aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure, przy użyciu Site Recovery | Dostępne
 [Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i serwer Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso migruje aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu funkcji odzyskiwania lokacji i bazy danych aplikacji jest migrowana do wystąpienia serwera usługi Azure MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
-Artykuł 9: Refaktoryzacja aplikację z bazą danych Azure SQL i aplikacji sieci Web platformy Azure | Pokazano, jak Contoso SmartHotel app jest migrowana do aplikacji sieci Web platformy Azure i bazy danych aplikacji jest migrowana do wystąpienia serwera SQL Azure | W tym artykule
-[Artykuł 10: Refaktoryzacja aplikacji systemu Linux do aplikacji sieci Web platformy Azure i usługi Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Pokazuje, jak firmy Contoso jest migrowana aplikacji osTicket systemu Linux do usługi Azure Web Apps w wielu lokacjach, zintegrowana z usługą GitHub ciągłego dostarczania. Bazy danych aplikacji ich migrację do wystąpienia usługi Azure MySQL. | Dostępne
-[Artykuł 11: Refaktoryzacja TFS na usługom DevOps platformy Azure](contoso-migration-tfs-vsts.md) | Pokazuje, jak Contoso migruje ich lokalnego wdrożenia Team Foundation Server (TFS) przy użyciu funkcji migracji do usługi Azure DevOps usług na platformie Azure. | Dostępne
-[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Pokazuje, jak Contoso migruje i rearchitects SmartHotel aplikacji na platformie Azure. Przekształcanie ich warstwy sieci web aplikacji jako kontenerów Windows bazy danych oraz aplikacji w usłudze Azure SQL Database. | Dostępne
-[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Pokazuje, jak Contoso przebudować ich aplikacji SmartHotel, przy użyciu różnych funkcji platformy Azure i usług, w tym usług App Services, Azure Kubernetes, usługi Azure Functions, Cognitive services i usługi Cosmos DB. | Dostępne
+Artykuł 9: Refaktoryzowanie aplikacji w usługach Azure Web App i Azure SQL Database | Pokazano, jak Contoso SmartHotel app jest migrowana do aplikacji sieci Web platformy Azure i bazy danych aplikacji jest migrowana do wystąpienia serwera SQL Azure | W tym artykule
+[Artykuł 10: Refaktoryzuj aplikacji systemu Linux do aplikacji sieci Web platformy Azure i usługi Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Pokazuje, jak firmy Contoso jest migrowana aplikacji osTicket systemu Linux do usługi Azure Web Apps w wielu lokacjach, zintegrowana z usługą GitHub ciągłego dostarczania. Bazy danych aplikacji ich migrację do wystąpienia usługi Azure MySQL. | Dostępne
+[Artykuł 11: Refaktoryzuj TFS na usługom DevOps platformy Azure](contoso-migration-tfs-vsts.md) | Pokazuje, jak Contoso migruje ich lokalnego wdrożenia Team Foundation Server (TFS) przy użyciu funkcji migracji do usługi Azure DevOps usług na platformie Azure. | Dostępne
+[Artykuł 12: Ponowne Ustalanie architektury aplikacji na kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Pokazuje, jak Contoso migruje i rearchitects SmartHotel aplikacji na platformie Azure. Przekształcanie ich warstwy sieci web aplikacji jako kontenerów Windows bazy danych oraz aplikacji w usłudze Azure SQL Database. | Dostępne
+[Artykuł 13: Ponownie skompiluj aplikację na platformie Azure](contoso-migration-rebuild.md) | Pokazuje, jak Contoso przebudować ich aplikacji SmartHotel, przy użyciu różnych funkcji platformy Azure i usług, w tym usług App Services, Azure Kubernetes, usługi Azure Functions, Cognitive services i usługi Cosmos DB. | Dostępne
 [Artykuł 14: Skalowanie migracji na platformę Azure](contoso-migration-scale.md) | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | Dostępne
 
 W tym artykule Contoso migruje Windows dwuwarstwowy. Aplikacja rozwiązania SmartHotel360 NET działających na maszynach wirtualnych VMware na platformę Azure. Jeśli chcesz korzystać z tej aplikacji, znajduje się jako "open source" i można go pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360).
@@ -44,11 +44,11 @@ W tym artykule Contoso migruje Windows dwuwarstwowy. Aplikacja rozwiązania Smar
 
 Zespół kierowniczy IT ściśle podjęła współpracę z partnerami biznesowymi, aby zrozumieć, czego chcą osiągnąć za pomocą tej migracji:
 
-- **Adres rozwój**: Contoso rośnie i istnieje nacisk na systemach lokalnych i infrastruktury.
-- **Zwiększenie wydajności**: Contoso musi usunąć niepotrzebne procedur i usprawniać procesy dla deweloperów i użytkowników.  Potrzeby biznesowe IT szybkie i nie odpadów czasu lub pieniądze, w związku z tym dostarczania szybciej na wymagania klientów.
-- **Zwiększenie elastyczności**: Contoso IT musi być w reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany w witrynie marketplace, aby umożliwić sukces w globalnej gospodarki reagować.  Nie może pobrać w taki sposób, lub stają się blocker biznesowych.
-- **Skala**: w miarę rozwoju firmy pomyślnie, IT firmy Contoso, musisz podać systemów, które można rozwijać w tym samym tempie.
-- **Koszty**: Contoso chce zminimalizować koszty licencjonowania.
+- **Adres rozwój**: Rozwija się firmy Contoso, i istnieje nacisk na systemach lokalnych i infrastruktury.
+- **Zwiększenie wydajności**: Firmy Contoso musi usunąć niepotrzebne procedur i usprawniać procesy dla deweloperów i użytkowników.  Potrzeby biznesowe IT szybkie i nie odpadów czasu lub pieniądze, w związku z tym dostarczania szybciej na wymagania klientów.
+- **Zwiększenie elastyczności**:  Contoso IT trzeba zwiększyć szybkość reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany w witrynie marketplace, aby umożliwić sukces w globalnej gospodarki reagować.  Nie może pobrać w taki sposób, lub stają się blocker biznesowych.
+- **Skala**: W miarę rozwoju firmy pomyślnie, IT firmy Contoso, musisz podać systemów, które można rozwijać w tym samym tempie.
+- **Koszty**: Firma Contoso chce, aby zminimalizować koszty licencjonowania.
 
 ## <a name="migration-goals"></a>Cele migracji
 
@@ -110,7 +110,7 @@ Contoso ocenia swoich konstrukcjach proponowanych przez zestawiania listę zalet
 --- | --- | ---
 [Database Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso użyje DMA do oceny i wykrycia problemów ze zgodnością, które mogą mieć wpływ na ich funkcje bazy danych na platformie Azure. Program DMA ocenia równoważność funkcji między źródłami SQL i elementy docelowe i zaleca wydajności i niezawodności. | Narzędzie to można pobrać bezpłatnie.
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | Inteligentna, w pełni zarządzana usługa relacyjnej w chmurze bazy danych. | Koszt na podstawie funkcji, przepływności i rozmiaru. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/sql-database/managed/).
-[Usługa Azure App Services — aplikacje sieci Web](https://docs.microsoft.com/azure/app-service/app-service-web-overview) | Tworzenie zaawansowanych aplikacji chmurowych przy użyciu w pełni zarządzana platforma | Koszt oparte na czas trwania rozmiar, lokalizację i użycia. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/app-service/windows/).
+[Usługa Azure App Services — aplikacje sieci Web](https://docs.microsoft.com/azure/app-service/overview) | Tworzenie zaawansowanych aplikacji chmurowych przy użyciu w pełni zarządzana platforma | Koszt oparte na czas trwania rozmiar, lokalizację i użycia. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/app-service/windows/).
 [Usługa Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | Zapewnia ciągłą integrację i potok ciągłego wdrażania (CI/CD) do tworzenia aplikacji. Potok rozpoczyna się od repozytorium Git na potrzeby zarządzania kodu aplikacji, system kompilacji na potrzeby tworzenia pakietów i innych artefaktów kompilacji i system zarządzania wydaniami, aby wdrożyć zmiany w deweloperów, testerów i środowisk produkcyjnych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -128,12 +128,12 @@ Poniżej przedstawiono wymagania firmy Contoso do uruchomienia tego scenariusza:
 Poniżej przedstawiono, jak Uruchom migrację w Contoso:
 
 > [!div class="checklist"]
-> * **Krok 1: Aprowizowanie wystąpienia bazy danych SQL na platformie Azure**: Contoso Inicjuje obsługę wystąpienie serwera SQL na platformie Azure. Po aplikacji witryny sieci Web jest Migrowanie na platformę Azure, aplikacji sieci web WCF service będzie wskazywać tego wystąpienia.
-> * **Krok 2: Migrację bazy danych za pomocą programu DMA**: Contoso przeprowadza migrację bazy danych aplikacji przy użyciu Asystenta migracji bazy danych.
-> * **Krok 3: Aprowizowanie Web Apps**: Contoso przepisy dwóch aplikacji sieci web.
-> * **Krok 4: Konfigurowanie usługi Azure DevOps**: Contoso tworzy nowy projekt DevOps platformy Azure i importuje repozytorium Git.
-> * **Krok 5: Konfiguracja parametrów połączenia**: Contoso konfiguruje parametry połączenia tak, aby aplikacji sieci web warstwy sieci web, aplikacji sieci web usługi WCF i wystąpieniem serwera SQL może komunikować się.
-> * **Krok 6: Konfigurowanie kompilacji i wydawania potoki**: W ostatnim kroku Contoso konfiguruje kompilacji i wydania potoków do utworzenia aplikacji i wdraża je do dwóch oddzielnych aplikacji sieci Web platformy Azure.
+> * **Krok 1. Aprowizowanie wystąpienia bazy danych SQL na platformie Azure**: Firmy Contoso inicjuje wystąpienie serwera SQL na platformie Azure. Po aplikacji witryny sieci Web jest Migrowanie na platformę Azure, aplikacji sieci web WCF service będzie wskazywać tego wystąpienia.
+> * **Krok 2. Migracja bazy danych za pomocą programu DMA**: Contoso przeprowadza migrację bazy danych aplikacji przy użyciu Asystenta migracji bazy danych.
+> * **Krok 3. Aprowizowanie aplikacji sieci Web**: Firmy Contoso Inicjuje obsługę dwóch aplikacji sieci web.
+> * **Krok 4. Konfigurowanie usługi Azure DevOps**: Contoso tworzy nowy projekt DevOps platformy Azure, a następnie importuje repozytorium Git.
+> * **Krok 5. Konfigurowanie parametrów połączenia**: Contoso konfiguruje parametry połączenia, aby aplikacji sieci web warstwy sieci web, aplikacji sieci web usługi WCF i wystąpieniem serwera SQL może komunikować się.
+> * **Krok 6: Skonfiguruj kompilację i potoki wersji**: W ostatnim kroku Contoso ustawia kompilacji i wydania potoków do utworzenia aplikacji i wdraża je do dwóch oddzielnych aplikacji sieci Web platformy Azure.
 
 
 ## <a name="step-1-provision-an-azure-sql-database"></a>Krok 1: Aprowizowanie bazy danych Azure SQL
@@ -170,7 +170,7 @@ Poniżej przedstawiono, jak Uruchom migrację w Contoso:
 - [Dowiedz się więcej o](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools) v-Core limity zasobów.
 
 
-## <a name="step-2-migrate-the-database-with-dma"></a>Krok 2: Migrację bazy danych za pomocą programu DMA
+## <a name="step-2-migrate-the-database-with-dma"></a>Krok 2: Migracja bazy danych za pomocą programu DMA
 
 Administratorzy firmy Contoso, zostaną zmigrowane bazy rozwiązanie SmartHotel360 przy użyciu narzędzia DMA.
 
@@ -220,7 +220,7 @@ Administratorzy firmy Contoso, zostaną zmigrowane bazy rozwiązanie SmartHotel3
     ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-9.png)
 
 
-## <a name="step-3-provision-web-apps"></a>Krok 3: Aprowizowanie Web Apps
+## <a name="step-3-provision-web-apps"></a>Krok 3: Aprowizowanie aplikacji sieci Web
 
 Z bazą danych migracji Administratorzy Contoso obecnie uaktywnienie dwóch aplikacji sieci web.
 
@@ -239,7 +239,7 @@ Z bazą danych migracji Administratorzy Contoso obecnie uaktywnienie dwóch apli
 4. Po tych czynności przejdź na adres aplikacji w celu sprawdzenia, czy zostały one pomyślnie utworzony.
 
 
-## <a name="step-4-set-up-azure-devops"></a>Krok 4: Konfigurowanie DevOps platformy Azure
+## <a name="step-4-set-up-azure-devops"></a>Krok 4: Konfigurowanie usług Azure DevOps
 
 
 Firma Contoso potrzebuje do tworzenia infrastruktury DevOps i potoki pod kątem aplikacji.  Aby to zrobić, Administratorzy Contoso Utwórz nowy projekt DevOps, zaimportuj kod, ustaw kompilację i potoki wersji.
@@ -260,7 +260,7 @@ Firma Contoso potrzebuje do tworzenia infrastruktury DevOps i potoki pod kątem 
     ![Plik rozwiązania](./media/contoso-migration-refactor-web-app-sql/vsts4.png)
     
 
-## <a name="step-5-configure-connection-strings"></a>Krok 5: Konfiguracja parametrów połączenia
+## <a name="step-5-configure-connection-strings"></a>Krok 5. Konfigurowanie parametrów połączenia
 
 Administratorzy firmy Contoso, musisz upewnić się, aplikacje sieci web i bazy danych mogą wszystkie komunikować się. Aby to zrobić, mogą konfigurować parametry połączenia w kodzie, jak i w aplikacjach sieci web.
 

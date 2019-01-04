@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie zasobami konta usługi Batch za pomocą biblioteki klienta dla platformy .NET — Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie zasobami konta za pomocą biblioteki klienta dla platformy .NET — Azure Batch | Dokumentacja firmy Microsoft
 description: Tworzenie, usuwanie i modyfikowanie zasobów konta usługi Azure Batch przy użyciu biblioteki zarządzania partiami platformy .NET.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd511a8a9d17bf79f1237bbfe2dc2ddbc5ec1b2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: c65a71d9e64a1ea3f60abbe2e420652c12ba030e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867430"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549555"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Zarządzanie kontami usługi Batch i przydziałów za pomocą biblioteki klienta Batch Management dla platformy .NET
 
@@ -181,9 +181,9 @@ Pomyślnie uruchomić przykładową aplikację, najpierw musisz zarejestrować j
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Scenariusze uwierzytelniania dla usługi Azure AD"
 [aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Integrowanie aplikacji z usługą Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx
-[azure_portal]: http://portal.azure.com
+[azure_portal]: https://portal.azure.com
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [azure_tokencreds]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.tokencloudcredentials.aspx
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260756"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971532"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
@@ -82,8 +82,8 @@ Często zadawane pytania w tej sekcji obejmują typowe monitorowania i pytania d
 ## <a name="prior-cache-offering-faqs"></a>Wcześniejsze oferta pamięci podręcznej — często zadawane pytania
 * [Która oferta pamięci podręcznej Azure jest dla mnie odpowiednia?](#which-azure-cache-offering-is-right-for-me)
 
-### <a name="what-is-azure-cache-for-redis"></a>Co to jest Azure pamięci podręcznej redis Cache?
-Pamięć podręczna systemu Azure dla usługi Redis opiera się na popularnych typu open-source [pamięci podręcznej Redis Azure](http://redis.io). Daje ona dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft i dostępny z poziomu dowolnej aplikacji na platformie Azure. Aby uzyskać bardziej szczegółowym omówieniem, zobacz [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.
+### <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis?
+Pamięć podręczna systemu Azure dla usługi Redis opiera się na popularnych oprogramowania typu open-source [Redis](https://redis.io/). Daje ona dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft i dostępny z poziomu dowolnej aplikacji na platformie Azure. Aby uzyskać bardziej szczegółowym omówieniem, zobacz [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?
 Istnieje kilka sposobów, które możesz rozpocząć pracę z usługą Azure Cache dla usługi Redis.
@@ -174,7 +174,7 @@ Tak, pamięci podręcznej Azure redis Cache jest dostępna w chmurze Azure Gover
 Aby uzyskać więcej informacji na temat uwagi dotyczące korzystania z usługi Azure Cache dla pamięci podręcznej Redis przy użyciu innych chmur zobacz poniższe linki.
 
 - [Bazy danych platformy Azure dla instytucji rządowych — pamięć podręczna systemu Azure dla usługi Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Chmura platformy Azure (Chiny) — pamięć podręczna systemu Azure dla usługi Redis](https://www.azure.cn/documentation/services/azure-cache-for-redis/)
+- [Chmura platformy Azure (Chiny) — pamięć podręczna systemu Azure dla usługi Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)
 
 Aby uzyskać informacje na temat korzystania z usługi Azure Cache dla pamięci podręcznej Redis przy użyciu programu PowerShell w chmurze Azure Government, w chmurze platformy Azure (Chiny) i Microsoft Azure (Niemcy), zobacz [jak połączyć się z innych chmur - pamięci podręcznej Azure redis Cache środowiska PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).

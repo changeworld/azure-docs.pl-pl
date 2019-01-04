@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: d72faa99c15fdbebb299e416fd902bae261f31f9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1c39100007d3b993031aa06cd106dfa2bf8419a2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221183"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538093"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
@@ -41,7 +41,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 1. Wybierz **+ Utwórz zasób** > **sieć** > **sieć wirtualna**.
 2. Wprowadź lub wybierz wartości dla następujących ustawień, a następnie wybierz **Utwórz**:
     - **Nazwa**: Nazwa musi być unikatowa w [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) umożliwia tworzenie sieci wirtualnej w. Nie można zmienić nazwę, po utworzeniu sieci wirtualnej. Wraz z upływem czasu, można utworzyć wiele sieci wirtualnych. Nazewnictwa sugestii, zobacz [konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Następujących konwencji nazewnictwa można łatwiej zarządzać wieloma sieciami wirtualnymi.
-    - **Przestrzeń adresowa**: przestrzeni adresowej dla sieci wirtualnej składa się z co najmniej jeden bez nakładających się zakresów adresów, które są określone w notacji CIDR. Zakres adresów, jaką zdefiniujesz może być publiczny lub prywatny (RFC 1918). Czy można zdefiniować zakres adresów jako publicznych lub prywatnych, zakres adresów jest dostępny tylko z w ramach sieci wirtualnej z połączonymi sieciami wirtualnymi i sieciami lokalnymi, żadnych podłączonych do sieci wirtualnej. Nie można dodać poniższe zakresy adresów:
+    - **Przestrzeń adresowa**: Przestrzeń adresowa sieci wirtualnej składa się z co najmniej jeden bez nakładających się zakresów adresów, które są określone w notacji CIDR. Zakres adresów, jaką zdefiniujesz może być publiczny lub prywatny (RFC 1918). Czy można zdefiniować zakres adresów jako publicznych lub prywatnych, zakres adresów jest dostępny tylko z w ramach sieci wirtualnej z połączonymi sieciami wirtualnymi i sieciami lokalnymi, żadnych podłączonych do sieci wirtualnej. Nie można dodać poniższe zakresy adresów:
         - 224.0.0.0/4 multiemisji)
         - 255.255.255.255/32 (emisji)
         - 127.0.0.0/8 (Loopback)
@@ -61,35 +61,35 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
       >Czasami Administratorzy tworzą w różnych podsieciach, aby filtrować lub kontrolowanie kierowania ruchu między podsieciami. Przed zdefiniowaniem podsieci należy wziąć pod uwagę sposób można filtrować i kierować ruchem między podsieciami sieci. Aby uzyskać więcej informacji na temat filtrowania ruchu między podsieciami, zobacz [sieciowe grupy zabezpieczeń](security-overview.md). Usługa Azure automatycznie kieruje ruch pomiędzy podsieciami, ale można zastąpić trasy domyślne systemu Azure. Aby dowiedzieć się więcej na temat routingu ruchu w podsieci Azures domyślnego, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
       >
 
-    - **Zakres adresów podsieci**: zakres musi być w przestrzeni adresowej dla sieci wirtualnej. Najmniejsza zakres, który można określić jest rozmiarze/29, zapewniającą osiem adresów IP w podsieci. Platforma Azure rezerwuje pierwszy i ostatni adres w każdej podsieci na potrzeby zgodności protokołów. Trzy dodatkowe adresy są zarezerwowane do użycia usług platformy Azure. W rezultacie sieci wirtualnej o zakres adresów podsieci/29 zawiera tylko dla trzech można używać adresów IP. Jeśli planujesz połączyć sieć wirtualną z bramą sieci VPN, należy utworzyć podsieć bramy. Dowiedz się więcej o [zakresu określonego adresu informacje dotyczące podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Zakres adresów można zmienić po utworzeniu podsieci w określonych warunkach. Aby dowiedzieć się, jak zmienić zakres adresów podsieci, zobacz [Zarządzanie podsieciami](virtual-network-manage-subnet.md).
+    - **Zakres adresów podsieci**: Zakres musi być w przestrzeni adresowej, wprowadzone w ramach sieci wirtualnej. Najmniejsza zakres, który można określić jest rozmiarze/29, zapewniającą osiem adresów IP w podsieci. Platforma Azure rezerwuje pierwszy i ostatni adres w każdej podsieci na potrzeby zgodności protokołów. Trzy dodatkowe adresy są zarezerwowane do użycia usług platformy Azure. W rezultacie sieci wirtualnej o zakres adresów podsieci/29 zawiera tylko dla trzech można używać adresów IP. Jeśli planujesz połączyć sieć wirtualną z bramą sieci VPN, należy utworzyć podsieć bramy. Dowiedz się więcej o [zakresu określonego adresu informacje dotyczące podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Zakres adresów można zmienić po utworzeniu podsieci w określonych warunkach. Aby dowiedzieć się, jak zmienić zakres adresów podsieci, zobacz [Zarządzanie podsieciami](virtual-network-manage-subnet.md).
     - **Subskrypcja**: Wybierz [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Nie można użyć tej samej sieci wirtualnej w więcej niż jedną subskrypcję platformy Azure. Jednak można połączyć sieci wirtualnej w jednej subskrypcji z sieciami wirtualnymi w innych subskrypcjach, o [wirtualne sieci równorzędne](virtual-network-peering-overview.md). Dowolnych zasobów platformy Azure, w którym jest nawiązywane połączenie sieć wirtualna musi być w tej samej subskrypcji co sieć wirtualna.
     - **Grupa zasobów**: Wybierz istniejącą [grupy zasobów](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) lub utworzyć nowy. Zasób platformy Azure, w którym jest nawiązywane połączenie sieci wirtualnej może być w tej samej grupie zasobów co sieć wirtualna lub w innej grupie zasobów.
-    - **Lokalizacja**: wybierz pozycję Azure [lokalizacji](https://azure.microsoft.com/regions/), znanego również jako regionu. Sieć wirtualna może być w tylko jednej lokalizacji platformy Azure. Jednak można połączyć sieci wirtualnej w jednej lokalizacji do sieci wirtualnej w innej lokalizacji za pomocą bramy sieci VPN. Dowolnych zasobów platformy Azure, w którym jest nawiązywane połączenie sieć wirtualna musi być w tej samej lokalizacji co sieć wirtualna.
+    - **Lokalizacja**: Wybierz platformę Azure [lokalizacji](https://azure.microsoft.com/regions/), znanego również jako regionu. Sieć wirtualna może być w tylko jednej lokalizacji platformy Azure. Jednak można połączyć sieci wirtualnej w jednej lokalizacji do sieci wirtualnej w innej lokalizacji za pomocą bramy sieci VPN. Dowolnych zasobów platformy Azure, w którym jest nawiązywane połączenie sieć wirtualna musi być w tej samej lokalizacji co sieć wirtualna.
 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet)
-- PowerShell: [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)
+- Program PowerShell: [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)
 
 ## <a name="view-virtual-networks-and-settings"></a>Widok sieci wirtualnych i ustawienia
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Z listy sieci wirtualnych wybierz sieć wirtualną, którą chcesz wyświetlić ustawienia.
 3. Następujące ustawienia są wyświetlane w ramach sieci wirtualnej, wybrane:
-    - **Omówienie**: zawiera informacje dotyczące sieci wirtualnej, w tym przestrzeń adresową i serwery DNS. Poniższy zrzut ekranu przedstawia Przegląd ustawień sieci wirtualnej o nazwie **MyVNet**:
+    - **Omówienie**: Zawiera informacje dotyczące sieci wirtualnej, w tym przestrzeń adresową i serwery DNS. Poniższy zrzut ekranu przedstawia Przegląd ustawień sieci wirtualnej o nazwie **MyVNet**:
 
         ![Omówienie interfejsu sieciowego](./media/manage-virtual-network/vnet-overview.png)
 
       Sieć wirtualną można przenieść do innej subskrypcji lub grupy zasobów, wybierając **zmiany** obok **grupy zasobów** lub **Nazwa subskrypcji**. Aby dowiedzieć się, jak przenieść sieci wirtualnej, zobacz [przenoszenie zasobów do innej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Artykuł zawiera listę wymagań wstępnych i sposobu przenoszenia zasobów przy użyciu witryny Azure portal, programu PowerShell i wiersza polecenia platformy Azure. Wszystkie zasoby, które są podłączone do sieci wirtualnej należy przenieść z siecią wirtualną.
-    - **Przestrzeń adresowa**: przestrzeni adresów, które są przypisane do sieci wirtualnej są wyświetlane. Aby dowiedzieć się, jak dodawanie i usuwanie zakresu adresów do przestrzeni adresowej, wykonaj kroki opisane w [Dodawanie lub usuwanie zakresu adresów](#add-or-remove-an-address-range).
-    - **Połączone urządzenia**: wyświetlane są wszystkie zasoby, które są podłączone do sieci wirtualnej. Na poprzednim zrzucie ekranu trzy interfejsy sieciowe i jeden moduł równoważenia obciążenia są podłączone do sieci wirtualnej. Są wyświetlane wszystkie nowe zasoby, które umożliwiają tworzenie i łączenie się z siecią wirtualną. Jeśli usuniesz zasób, który był połączony z siecią wirtualną, nie są już wyświetlane na liście.
-    - **Podsieci**: jest wyświetlana lista podsieci, które istnieją w ramach sieci wirtualnej. Aby dowiedzieć się, jak dodawanie i usuwanie podsieci, zobacz [Zarządzanie podsieciami](virtual-network-manage-subnet.md).
-    - **Serwery DNS**: można określić, czy Azure wewnętrznego serwera DNS lub niestandardowy serwer DNS udostępnia rozpoznawanie nazw dla urządzeń, które są podłączone do sieci wirtualnej. Po utworzeniu sieci wirtualnej przy użyciu witryny Azure portal, serwery DNS platformy Azure są używane do rozpoznawania nazw w obrębie sieci wirtualnej, domyślnie. Aby zmodyfikować serwery DNS, wykonaj kroki opisane w [serwerów DNS zmiany](#change-dns-servers) w tym artykule.
-    - **Komunikacja równorzędna**: w przypadku istniejącego komunikacji równorzędnej w ramach subskrypcji, ich występowania na liście. Możesz wyświetlić ustawienia dla istniejącego komunikacji równorzędnej, lub utworzyć, zmienić lub usunąć komunikacji równorzędnej. Aby dowiedzieć się więcej na temat komunikacji równorzędnej, zobacz [komunikacja równorzędna sieci wirtualnych](virtual-network-peering-overview.md).
-    - **Właściwości**: Wyświetla ustawienia dotyczące sieci wirtualnej, w tym identyfikator zasobu sieci wirtualnej i znajduje się w subskrypcji platformy Azure.
-    - **Diagram**: na diagramie przedstawiono wizualna reprezentacja dla wszystkich urządzeń, które są podłączone do sieci wirtualnej. Diagram ma kilka kluczowych informacji o urządzeniach. Zarządzanie urządzeniem, w tym widoku na diagramie wybierz urządzenie.
+    - **Przestrzeń adresowa**: Przestrzenie adresów, które są przypisane do sieci wirtualnej są wyświetlane. Aby dowiedzieć się, jak dodawanie i usuwanie zakresu adresów do przestrzeni adresowej, wykonaj kroki opisane w [Dodawanie lub usuwanie zakresu adresów](#add-or-remove-an-address-range).
+    - **Połączone urządzenia**: Wyświetlane są wszystkie zasoby, które są podłączone do sieci wirtualnej. Na poprzednim zrzucie ekranu trzy interfejsy sieciowe i jeden moduł równoważenia obciążenia są podłączone do sieci wirtualnej. Są wyświetlane wszystkie nowe zasoby, które umożliwiają tworzenie i łączenie się z siecią wirtualną. Jeśli usuniesz zasób, który był połączony z siecią wirtualną, nie są już wyświetlane na liście.
+    - **Podsieci**: Wyświetlana jest lista podsieci, które istnieją w ramach sieci wirtualnej. Aby dowiedzieć się, jak dodawanie i usuwanie podsieci, zobacz [Zarządzanie podsieciami](virtual-network-manage-subnet.md).
+    - **Serwery DNS**: Można określić, czy Azure wewnętrznego serwera DNS lub niestandardowy serwer DNS udostępnia rozpoznawanie nazw dla urządzeń, które są podłączone do sieci wirtualnej. Po utworzeniu sieci wirtualnej przy użyciu witryny Azure portal, serwery DNS platformy Azure są używane do rozpoznawania nazw w obrębie sieci wirtualnej, domyślnie. Aby zmodyfikować serwery DNS, wykonaj kroki opisane w [serwerów DNS zmiany](#change-dns-servers) w tym artykule.
+    - **Komunikacja równorzędna**: W przypadku istniejącego komunikacji równorzędnej w ramach subskrypcji, są one wymienione w tym miejscu. Możesz wyświetlić ustawienia dla istniejącego komunikacji równorzędnej, lub utworzyć, zmienić lub usunąć komunikacji równorzędnej. Aby dowiedzieć się więcej na temat komunikacji równorzędnej, zobacz [komunikacja równorzędna sieci wirtualnych](virtual-network-peering-overview.md).
+    - **Właściwości**: Wyświetla ustawienia dotyczące sieci wirtualnej, w tym identyfikator zasobu sieci wirtualnej i subskrypcji platformy Azure, w którym się.
+    - **Diagram**: Na diagramie przedstawiono wizualna reprezentacja dla wszystkich urządzeń, które są podłączone do sieci wirtualnej. Diagram ma kilka kluczowych informacji o urządzeniach. Zarządzanie urządzeniem, w tym widoku na diagramie wybierz urządzenie.
     - **Typowe ustawienia Azure**: Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, zobacz następujące informacje:
-        *   [Dziennik aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+        *   [Dziennik aktywności](../azure-monitor/platform/activity-logs-overview.md)
         *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
         *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -98,7 +98,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci vnet show](/cli/azure/network/vnet#az_network_vnet_show)
-- PowerShell: [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork)
+- Program PowerShell: [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork)
 
 ## <a name="add-or-remove-an-address-range"></a>Dodawanie lub usuwanie zakresu adresów
 
@@ -117,13 +117,13 @@ Aby dodać lub usunąć zakres adresów:
 3. Wybierz **przestrzeń adresowa**w obszarze **ustawienia**.
 4. Wykonaj jedną z następujących opcji:
     - **Dodaj zakres adresów**: Wprowadź nowy zakres adresów. Zakres adresów nie może nakładać się z zakresem adresów, która jest zdefiniowana dla sieci wirtualnej.
-    - **Usuń zakres adresów**: po prawej stronie zakres adresów, które chcesz usunąć, wybierz **...** , a następnie wybierz **Usuń**. Jeśli w zakresie adresów podsieci, nie można usunąć zakresu adresów. Aby usunąć zakres adresów, należy najpierw usunąć wszelkie podsieci (i wszystkie zasoby w podsieciach) znajdujące się w zakresie adresów.
+    - **Usuń zakres adresów**: Po prawej stronie zakres adresów, które chcesz usunąć, wybierz **...** , a następnie wybierz **Usuń**. Jeśli w zakresie adresów podsieci, nie można usunąć zakresu adresów. Aby usunąć zakres adresów, należy najpierw usunąć wszelkie podsieci (i wszystkie zasoby w podsieciach) znajdujące się w zakresie adresów.
 5. Wybierz pozycję **Zapisz**.
 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci vnet update](/cli/azure/network/vnet#az_network_vnet_update)
-- PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
+- Program PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
 ## <a name="change-dns-servers"></a>Zmień serwerów DNS
 
@@ -133,19 +133,19 @@ Wszystkie maszyny wirtualne, które są podłączone do sieci wirtualnej, zareje
 2. Z listy sieci wirtualnych wybierz sieci wirtualnej, dla którego chcesz zmienić serwerów DNS.
 3.  Wybierz **serwerów DNS**w obszarze **ustawienia**.
 4. Wybierz jedną z następujących opcji:
-    - **Domyślne (dostarczone do platformy Azure)**: wszystkie nazwy zasobów i prywatne adresy IP są automatycznie rejestrowane na serwerach DNS platformy Azure. Można rozwiązać nazwy między wszystkie zasoby, które są podłączone do tej samej sieci wirtualnej. Tej opcji nie można używać do rozpoznawania nazw w sieciach wirtualnych. Aby rozpoznawanie nazw w sieciach wirtualnych, należy użyć niestandardowego serwera DNS.
-    - **Niestandardowe**: można dodać jeden lub więcej serwerów w granicach platformy Azure dla sieci wirtualnej. Aby dowiedzieć się więcej na temat limity serwera DNS, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Istnieją następujące opcje:
-        - **Dodaj adres**: dodaje serwer do listy serwerów DNS sieci wirtualnej. Ta opcja również rejestruje serwer DNS z platformą Azure. Jeśli użytkownik jest już zarejestrowany serwer DNS z platformą Azure, możesz wybrać tego serwera DNS, na liście.
-        - **Usuń adres**: obok serwera, który chcesz usunąć, wybierz **...** , następnie **Usuń**. Usunięcie serwera usuwa serwer tylko z tej listy sieci wirtualnej. Serwer DNS nadal zarejestrowany na platformie Azure, aby użyć innych sieci wirtualnych.
-        - **Zmień kolejność adresów serwerów DNS**: ważne jest, aby sprawdzić, wyświetlić listę serwerów DNS w odpowiedniej kolejności dla danego środowiska. Listy serwerów DNS są używane w kolejności, w jakiej zostały określone. Nie działają jako ustawienia działania okrężnego. Jeśli pierwszy serwer DNS na liście jest osiągalna, klient korzysta z tego serwera DNS, niezależnie od tego, czy serwer DNS działa prawidłowo. Usuń wszystkie serwery DNS, które są wyświetlane, a następnie dodaj je ponownie w kolejności, w którym chcesz.
-        - **Zmień adres**: zaznacz serwer DNS, na liście, a następnie wprowadź nowy adres.
+    - **Domyślne (dostarczone do platformy Azure)**: Wszystkie nazwy zasobów i prywatne adresy IP są automatycznie rejestrowane na serwerach DNS platformy Azure. Można rozwiązać nazwy między wszystkie zasoby, które są podłączone do tej samej sieci wirtualnej. Tej opcji nie można używać do rozpoznawania nazw w sieciach wirtualnych. Aby rozpoznawanie nazw w sieciach wirtualnych, należy użyć niestandardowego serwera DNS.
+    - **Niestandardowe**: Możesz dodać jeden lub więcej serwerów w granicach platformy Azure dla sieci wirtualnej. Aby dowiedzieć się więcej na temat limity serwera DNS, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Istnieją następujące opcje:
+        - **Dodaj adres**: Dodaje serwer do listy serwerów DNS sieci wirtualnej. Ta opcja również rejestruje serwer DNS z platformą Azure. Jeśli użytkownik jest już zarejestrowany serwer DNS z platformą Azure, możesz wybrać tego serwera DNS, na liście.
+        - **Usuń adres**: Obok serwera, który chcesz usunąć, wybierz **...** , następnie **Usuń**. Usunięcie serwera usuwa serwer tylko z tej listy sieci wirtualnej. Serwer DNS nadal zarejestrowany na platformie Azure, aby użyć innych sieci wirtualnych.
+        - **Zmień kolejność adresów serwerów DNS**: Jest to ważne, aby sprawdzić, czy listy serwerów DNS w odpowiedniej kolejności dla danego środowiska. Listy serwerów DNS są używane w kolejności, w jakiej zostały określone. Nie działają jako ustawienia działania okrężnego. Jeśli pierwszy serwer DNS na liście jest osiągalna, klient korzysta z tego serwera DNS, niezależnie od tego, czy serwer DNS działa prawidłowo. Usuń wszystkie serwery DNS, które są wyświetlane, a następnie dodaj je ponownie w kolejności, w którym chcesz.
+        - **Zmień adres**: Wyróżnij serwer DNS, na liście, a następnie wprowadź nowy adres.
 5. Wybierz pozycję **Zapisz**.
 6. Ponowne uruchamianie maszyn wirtualnych, które są podłączone do sieci wirtualnej, dzięki czemu przypisaniu nowych ustawień serwera DNS. Maszyny wirtualne w dalszym ciągu używać ich bieżących ustawień DNS, dopóki nie zostaną ponownie uruchomione.
 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci vnet update](/cli/azure/network/vnet#az_network_vnet_update)
-- PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
+- Program PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
 ## <a name="delete-a-virtual-network"></a>Usuwanie sieci wirtualnej
 
@@ -160,7 +160,7 @@ Tylko wtedy, gdy nie ma żadnych zasobów dołączone do niego, można usunąć 
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [usunąć sieci wirtualnej sieci platformy azure](/cli/azure/network/vnet#az_network_vnet_delete)
-- PowerShell: [Remove-AzureRmVirtualNetwork](/powershell/module/azurerm.network/remove-azurermvirtualnetwork)
+- Program PowerShell: [Remove-AzureRmVirtualNetwork](/powershell/module/azurerm.network/remove-azurermvirtualnetwork)
 
 ## <a name="permissions"></a>Uprawnienia
 

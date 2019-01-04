@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Tworzenie obrazów, przetwarzania aplikacji — C#'
+title: 'Samouczek: Tworzenie aplikacji przetwarzania obrazów —C#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Zapoznaj się z podstawowej aplikacji Windows, który używa interfejsu API przetwarzania obrazów w usługach Microsoft Cognitive Services. Wykonaj optyczne rozpoznawanie znaków, tworzenia miniatur i korzystania z funkcji visual w obrazie.
+description: Zapoznaj się z podstawowej aplikacji Windows, który używa interfejsu API przetwarzania obrazów w usługach Microsoft Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342657"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584449"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>Samouczek: Tworzenie obrazów, przetwarzania aplikacji - C&#35;
+# <a name="tutorial-build-an-image-processing-app---c35"></a>Samouczek: Zbuduj obraz przetwarzania aplikacji - C&#35;
 
-Poznaj podstawowe aplikacji Windows, która używa przetwarzania obrazów, aby wykonywać optyczne rozpoznawanie znaków (OCR), tworzenie przycięte inteligentne miniatury oraz wykrywanie, klasyfikowanie tagu i opisano funkcje wizualne, twarzy, w tym obrazie. Poniżej umożliwia na przykład przesyłasz adres URL obrazu lub lokalnie przechowywanego pliku. W tym przykładzie "open source" jako szablon służy do tworzenia własnych aplikacji dla Windows przy użyciu interfejsu API przetwarzania obrazów i Windows Presentation Foundation (WPF), część .NET Framework.
+Poznaj podstawowe aplikacji Windows, która używa przetwarzania obrazów, aby wykonywać optyczne rozpoznawanie znaków (OCR), tworzenie przycięte inteligentne miniatury oraz wykrywanie, klasyfikowanie tagu i opisano funkcje wizualne, twarzy, w tym obrazie. Poniższy przykład umożliwia przesłanie adresu URL obrazu lub lokalnego pliku. W tym przykładzie "open source" jako szablon służy do tworzenia własnych aplikacji dla Windows przy użyciu interfejsu API przetwarzania obrazów i Windows Presentation Foundation (WPF), część .NET Framework.
 
 > [!div class="checklist"]
 > * Pobierz przykładową aplikację z usługi GitHub
@@ -31,7 +32,7 @@ Poznaj podstawowe aplikacji Windows, która używa przetwarzania obrazów, aby w
 
 Przed rozpoczęciem pracy z przykładowej aplikacji, upewnij się, że zostały spełnione następujące wymagania wstępne:
 
-* Konieczne jest posiadanie [programu Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszej.
+* Musisz mieć program [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszy.
 * Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
 ## <a name="get-the-sample-app"></a>Pobieranie przykładowej aplikacji
@@ -98,10 +99,10 @@ Możesz uruchomić przykładową aplikację, aby zobaczyć sposób jej interakcj
    |Pobierz miniaturę | Używa [Pobierz miniaturę](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) operację, aby wygenerować miniatury obrazów lokalnych lub zdalnych. |
 
    > [!IMPORTANT]
-   > Firma Microsoft odbierze obrazów, przekazywanie i może używać ich w celu ulepszenia interfejsu API przetwarzania obrazów i powiązanych usług. Po przesłaniu obrazu, potwierdzasz, że zostały wykonane naszych [Developer Kodeks postępowania](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
+   > Firma Microsoft odbierze obrazów, przekazywanie i może używać ich w celu ulepszenia interfejsu API przetwarzania obrazów i powiązanych usług. Przesłanie obrazu jest równoznaczne z potwierdzeniem, że stosowano się do zasad naszego [Kodeksu postępowania dewelopera](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
 
    Poniższy zrzut ekranu przedstawia stronę przewidzianych w scenariuszu analizowanie obrazów, po przeanalizowaniu przykładowy obraz.
-   ![Analizowanie stronie scenariusz obrazu](../Images/Analyze_Image_Example.PNG)
+   ![Zrzut ekranu przedstawiający stronę obraz analizy](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>Zapoznaj się z przykładową aplikację
 

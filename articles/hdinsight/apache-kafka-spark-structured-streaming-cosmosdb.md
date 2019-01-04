@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c35082d7aa1e9d669bc9c5b89948f190d3edd2f3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014535"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630164"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Use Apache Spark Structured Streaming przy użyciu platformy Apache Kafka i Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Dowiedz się, jak używać [platformy Apache Spark](https://spark.apache.org/) [
 
 Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. Aby uzyskać więcej informacji na temat przesyłanie strumieniowe ze strukturą, zobacz [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) w serwisie Apache.org.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > W tym przykładzie użyto platformy Spark 2.2 w HDInsight 3.6.
 >
 > Kroki przedstawione w tym dokumencie obejmują tworzenie grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
@@ -37,7 +37,7 @@ Platforma Apache Kafka w usłudze HDInsight nie zapewnia dostępu do brokerów K
 
 ![Diagram przedstawiający klastry Spark i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Komunikacja usługi Kafka jest ograniczona do sieci wirtualnej. Inne usługi w klastrze, takie jak SSH i Ambari, są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
 Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Spark clusters ręcznie, jest łatwiejszy w użyciu szablonu usługi Azure Resource Manager. Wykonaj następujące kroki wdrażania siecią wirtualną platformy Azure, platformy Kafka i Spark klastrów do subskrypcji platformy Azure.
@@ -58,19 +58,19 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
     * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
 
-        > [!NOTE]
+        > [!NOTE]  
         > Przestrzeń adresów 10.0.0.0/16 korzysta z sieci wirtualnej utworzonej przez szablon.
 
     * Baza danych interfejsu API SQL usługi Azure Cosmos DB.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Używany w tym przykładzie notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
 
 2. Użyj poniższych informacji, aby wypełnić wpisy na **wdrożenie niestandardowe** sekcji:
    
     ![HDInsight wdrożenia niestandardowego](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
 
-    * **Subskrypcja**: wybierz subskrypcję platformy Azure.
+    * **Subskrypcja**: Wybierz swoją subskrypcję platformy Azure.
    
     * **Grupa zasobów**: Utwórz grupę lub wybierz istniejącą. Ta grupa zawiera klastra HDInsight.
 
@@ -78,26 +78,26 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
     * **Nazwa konta usługi cosmos DB**: Ta wartość jest używana jako nazwa konta usługi Cosmos DB.
 
-    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa dla aparatu Spark i klastry platformy Kafka. Na przykład wprowadzenie **myhdi** tworzony klaster Spark, o nazwie __spark myhdi__ i klastra platformy Kafka o nazwie **kafka myhdi**.
+    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa w przypadku klastrów Spark i Kafka. Na przykład wprowadzenie **myhdi** tworzony klaster Spark, o nazwie __spark myhdi__ i klastra platformy Kafka o nazwie **kafka myhdi**.
 
-    * **Wersja klastra**: wersji klastra HDInsight.
+    * **Wersja klastra**: Wersja klastra HDInsight.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > W tym przykładzie jest testowana HDInsight 3.6 i może nie działać z innych typów klastra.
 
-    * **Nazwa użytkownika logowania klastra**: nazwa użytkownika będącego administratorem klastrów Spark i Kafka.
+    * **Nazwa użytkownika logowania klastra**: Nazwa użytkownika administratora dla klastrów Spark i Kafka.
 
-    * **Hasło logowania klastra**: hasło użytkownika będącego administratorem klastrów Spark i Kafka.
+    * **Hasło logowania klastra**: Hasło użytkownika będącego administratorem klastrów Spark i Kafka.
 
-    * **Nazwa użytkownika SSH**: użytkownik SSH do tworzenia klastrów Spark i Kafka.
+    * **Nazwa użytkownika SSH**: Użytkownika SSH do tworzenia klastrów Spark i Kafka.
 
-    * **Hasło SSH**: hasło użytkownika SSH w przypadku klastrów Spark i Kafka.
+    * **SSH hasła**: Hasło użytkownika SSH w przypadku klastrów Spark i Kafka.
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
 4. Na koniec wybierz pozycję **zakupu**. Tworzenie klastrów trwa około 20 minut.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Może potrwać do 45 minut do tworzenia klastrów, sieci wirtualnej i konta usługi Cosmos DB.
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>Tworzenie bazy danych Cosmos DB i kolekcję
@@ -140,7 +140,7 @@ Dokument punktu końcowego oraz informacje o kluczu podstawowym jest podobny do 
 "YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Zapisywanie punktu końcowego i wartości klucza, odpowiednio w notesach Jupyter.
 
 ## <a name="get-the-apache-kafka-brokers"></a>Pobierz brokerów platformy Apache Kafka
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Przykład Bash oczekuje `$CLUSTERNAME` aby zawierały nazwę klastra Kafka.
 >
 > W tym przykładzie użyto [jq](https://stedolan.github.io/jq/) narzędzia do analizy danych z dokumentu JSON.

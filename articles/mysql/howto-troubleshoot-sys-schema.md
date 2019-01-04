@@ -1,20 +1,17 @@
 ---
 title: Sposób użycia sys_schema dostrajania wydajności i konserwacji bazy danych w usłudze Azure Database for MySQL
 description: W tym artykule opisano, jak za pomocą sys_schema znajdowanie problemów z wydajnością i obsługa bazy danych w usłudze Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
-ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446911"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542853"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema dla wydajności dostosowywania oraz konserwacji bazy danych w usłudze Azure Database for MySQL
 
@@ -24,15 +21,15 @@ MySQL performance_schema, pierwsza dostępna w wersji 5.5 MySQL, zawiera Instrum
 
 W sys_schema są widoki 52, a każdy widok zawiera jedną z następujących prefiksów:
 
-- Host_summary lub operacji We/Wy: operacje We/Wy związane z opóźnieniami poniżej.
+- Host_summary lub operacji We/Wy: Operacje We/Wy związane z opóźnieniami poniżej.
 - Aparatu InnoDB: Stan buforu aparatu InnoDB i blokad.
 - Pamięć: Użycie pamięci przez hosta i użytkowników.
-- Schemat: Powiązane schematu informacje, takie jak automatyczne zwiększanie, indeksy itp.
+- Schemat: Schematu, powiązane informacje, takie jak automatyczne zwiększanie, indeksy itp.
 - Instrukcja: Informacji na temat instrukcji języka SQL; może to być instrukcja, która spowodowała pełne skanowanie tabeli lub długi czas wykonywania zapytania.
-- Użytkownik: Zasoby wykorzystane i pogrupowanych według użytkowników. Przykłady to plik operacji We/Wy, połączeń i pamięci.
+- Użytkownik: Zasoby używane i pogrupowanych według użytkowników. Przykłady to plik operacji We/Wy, połączeń i pamięci.
 - Oczekiwania: Poczekaj zdarzeń pogrupowanych wg hosta lub użytkownika.
 
-Teraz Spójrzmy na niektóre typowe wzorce użycia sys_schema. Najpierw zostanie pogrupujemy wzorców użycia na dwie kategorie: **dostrajanie wydajności** i **baza danych konserwacji**.
+Teraz Spójrzmy na niektóre typowe wzorce użycia sys_schema. Najpierw zostanie pogrupujemy wzorców użycia na dwie kategorie: **Dostrajanie wydajności** i **baza danych konserwacji**.
 
 ## <a name="performance-tuning"></a>Dostosowywanie wydajności
 
@@ -48,7 +45,7 @@ Ponieważ — Azure Database for MySQL umożliwia skalowanie operacji We/Wy w od
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 
-Pomimo starannego planowania wiele zapytań nadal może spowodować skanowania pełną tabelę. Aby uzyskać dodatkowe informacje o typach indeksy i sposobu ich optymalizacji, mogą odwoływać się do tego artykułu: [jak rozwiązywać problemy z wydajnością zapytań](./howto-troubleshoot-query-performance.md). Tabela pełnego skanowania są dużej ilości zasobów i obniżyć wydajność bazy danych. Najszybszym sposobem znalezienia tabele zawierające pełne skanowanie tabeli jest do kwerendy *sys.schema_tables_with_full_table_scans* widoku.
+Pomimo starannego planowania wiele zapytań nadal może spowodować skanowania pełną tabelę. Aby uzyskać dodatkowe informacje o typach indeksy i sposobu ich optymalizacji mogą odwoływać się do tego artykułu: [Jak rozwiązywać problemy z wydajnością zapytań](./howto-troubleshoot-query-performance.md). Tabela pełnego skanowania są dużej ilości zasobów i obniżyć wydajność bazy danych. Najszybszym sposobem znalezienia tabele zawierające pełne skanowanie tabeli jest do kwerendy *sys.schema_tables_with_full_table_scans* widoku.
 
 ![Tabela pełnego skanowania](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 

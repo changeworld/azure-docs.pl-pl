@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o usłudze Azure Cosmos DB
+  - name: Azure Cosmos DB — Zapraszamy!
     href: introduction.md
 - name: Przewodniki Szybki start
   items:
@@ -192,7 +192,7 @@ items:
       href: compliance.md
 - name: Interfejsy API wielomodelowe
   items:
-  - name: Dokumentacja interfejsu API środowiska SQL
+  - name: Interfejs API SQL
     items:
     - name: Modelowanie danych dokumentów
       href: modeling-data.md
@@ -296,11 +296,11 @@ items:
         href: /rest/api/cosmos-db/
       - name: Dostawca zasobów REST
         href: /rest/api/cosmos-db-resource-provider/
-  - name: Dokumentacja interfejsu API usługi MongoDB
+  - name: Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
     items:
     - name: Wprowadzenie
       href: mongodb-introduction.md
-    - name: Pomoc techniczna dotycząca usługi MongoDB
+    - name: Obsługa protokołu przewodowego
       href: mongodb-feature-support.md
     - name: Samouczki
       items:
@@ -346,11 +346,11 @@ items:
         href: mongodb-time-to-live.md
       - name: Zarządzanie indeksowaniem danych
         href: mongodb-indexing.md
-  - name: Dokumentacja Interfejsu Gremlin API
+  - name: Interfejs API języka Gremlin
     items:
     - name: Wprowadzenie
       href: graph-introduction.md
-    - name: Obsługa języka Gremlin
+    - name: Obsługa protokołu przewodowego
       href: gremlin-support.md
     - name: Samouczki
       items:
@@ -362,11 +362,11 @@ items:
         href: bulk-executor-graph-dotnet.md
       - name: Partycjonowanie danych grafu
         href: graph-partitioning.md
-  - name: Dokumentacja interfejsu API rozwiązania Cassandra
+  - name: Interfejs API rozwiązania Cassandra
     items:
     - name: Wprowadzenie
       href: cassandra-introduction.md
-    - name: Obsługa rozwiązania Cassandra
+    - name: Obsługa protokołu przewodowego
       href: cassandra-support.md
     - name: Samouczki
       items:
@@ -615,9 +615,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3d3236461a02504c74cef07e11615a82c03ae0d5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410112"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807673"

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d013f2cdd9f33f55d579638386355e5cbaccb7e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878336"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714954"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Bezserwerowa baza danych obliczeń z użyciem usługi Azure Cosmos DB i Azure Functions
 
@@ -29,7 +29,7 @@ Usługa Azure Cosmos DB i Azure Functions umożliwiają integrowanie baz danych 
 * Powiązywanie kontenera usługi Azure Cosmos DB przy użyciu funkcji **powiązania danych wyjściowych**. Powiązania danych wyjściowych zapisu danych do kontenera, po zakończeniu funkcji.
 
 > [!NOTE]
-> Obecnie są obsługiwane do użytku z interfejsu API SQL wyzwalacza usługi Azure Cosmos DB, powiązania danych wejściowych i powiązania danych wyjściowych. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, łącznie z interfejsu API usługi MongoDB, interfejs API rozwiązania Cassandra, interfejs API Gremlin i interfejsu API tabel.
+> Obecnie są obsługiwane do użytku z interfejsu API SQL wyzwalacza usługi Azure Cosmos DB, powiązania danych wejściowych i powiązania danych wyjściowych. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API.
 
 
 Poniższy diagram ilustruje każdą z tych trzech integracji: 
@@ -49,7 +49,7 @@ Następujące przypadki użycia pokazują na kilka sposobów, które można wyko
 
 W implementacji IoT można wywołać funkcji podczas wyboru światła aparat są wyświetlane w samochód połączony.
 
-**Implementacja:** wyzwalacza usługi Azure Cosmos DB i powiązania danych wyjściowych
+**Implementacja:** Użyj wyzwalacza usługi Azure Cosmos DB i powiązania danych wyjściowych
 
 1. **Wyzwalacza usługi Azure Cosmos DB** służy do wyzwalania zdarzenia związane z alertami samochód, takie jak światło aparatu wyboru mieszczących się w samochód połączony.
 2. Po przejściu do trybu wyboru aparatu światła, dane czujników są wysyłane do usługi Azure Cosmos DB.
@@ -67,7 +67,7 @@ Na poniższej ilustracji przedstawiono kod napisany w witrynie Azure portal dla 
 
 W implementacji finansowych można wywoływać funkcji, gdy saldo konta bankowego znajduje się w pewnym.
 
-**Implementacja:** powiązania danych wejściowych wyzwalacza czasomierza, za pomocą usługi Azure Cosmos DB
+**Implementacja:** Powiązania danych wejściowych wyzwalacza czasomierza, za pomocą usługi Azure Cosmos DB
 
 1. Za pomocą [wyzwalacza czasomierza](../azure-functions/functions-bindings-timer.md), możesz pobrać informacje saldo konta bankowego, które są przechowywane w kontenerze usługi Azure Cosmos DB w określonych interwałach przy użyciu **powiązania danych wejściowych**.
 2. Jeśli saldo jest poniżej wartości progowej niskim saldzie ustawiony przez użytkownika, następnie monitowanie akcję z funkcji platformy Azure.
@@ -83,7 +83,7 @@ Na poniższych ilustracjach przedstawiono kod w witrynie Azure portal, w tym sce
 
 W gry, po utworzeniu nowego użytkownika można wyszukiwać innych użytkowników, którzy mogą znać je za pomocą [interfejsu API usługi Azure Cosmos DB Gremlin](graph-introduction.md). Następnie możesz zapisywać wyniki [SQL usługi Azure Cosmos DB database] ułatwia ich odnalezienie.
 
-**Implementacja:** wyzwalacza usługi Azure Cosmos DB i powiązania danych wyjściowych
+**Implementacja:** Użyj wyzwalacza usługi Azure Cosmos DB i powiązania danych wyjściowych
 
 1. Za pomocą usługi Azure Cosmos DB [bazy danych grafów](graph-introduction.md) do przechowywania wszystkich użytkowników, można utworzyć nową funkcję przy użyciu wyzwalacza usługi Azure Cosmos DB. 
 2. Zawsze, gdy nowy użytkownik zostanie wstawiony, funkcja jest wywoływana i następnie wynik jest przechowywany przy użyciu **powiązania danych wyjściowych**.
@@ -94,7 +94,7 @@ W gry, po utworzeniu nowego użytkownika można wyszukiwać innych użytkownikó
 
 W implementacji sprzedaży detalicznej gdy użytkownik dodaje element do koszyka masz teraz elastyczność tworzenia i wywoływać funkcje dla firm opcjonalne składniki potoku.
 
-**Implementacja:** wyzwalaczy wielu usługi Azure Cosmos DB nasłuchiwanie jeden kontener
+**Implementacja:** Wiele wyzwalaczy usługi Azure Cosmos DB nasłuchiwanie jeden kontener
 
 1. Wiele funkcji platformy Azure można utworzyć przez dodanie Wyzwalacze usługi Azure Cosmos DB do każdego — które nasłuchują do tej samej zmienić źródło danych koszyka zakupów. Należy pamiętać, że gdy wiele funkcji słuchać takie same zestawienia zmian Nowa kolekcja dzierżawy jest wymagana dla każdej funkcji. Aby uzyskać więcej informacji o kolekcjach dzierżawy, zobacz [informacje o bibliotece procesora zestawienia zmian](change-feed-processor.md).
 2. Zawsze, gdy nowy element zostanie dodany do użytkowników, koszyk, każda funkcja niezależnie zostanie wywołany przez źródło z kontenera koszyka zakupów zmian.
@@ -122,7 +122,7 @@ Usługa Azure Functions zapewnia możliwość tworzenia skalowalnej jednostki pr
 
 Usługa Azure Cosmos DB jest zalecane bazy danych dla bezserwerowej architektury przetwarzania z następujących powodów:
 
-* **Natychmiastowy dostęp do wszystkich danych**: masz szczegółową dostęp do każdej wartości, które zostały zapisane, ponieważ usługi Azure Cosmos DB [automatycznie indeksuje](index-policy.md) wszystkich danych domyślnie i sprawia, że te indeksy jest natychmiast dostępna. Oznacza to, że jesteś w stanie stale zapytania, zaktualizować i dodawania nowych elementów do bazy danych i natychmiast uzyskać dostęp za pośrednictwem usługi Azure Functions.
+* **Natychmiastowy dostęp do wszystkich danych**: Masz szczegółowe dostęp do każdej wartości, które zostały zapisane, ponieważ usługi Azure Cosmos DB [automatycznie indeksuje](index-policy.md) wszystkich danych domyślnie i sprawia, że te indeksy jest natychmiast dostępna. Oznacza to, że jesteś w stanie stale zapytania, zaktualizować i dodawania nowych elementów do bazy danych i natychmiast uzyskać dostęp za pośrednictwem usługi Azure Functions.
 
 * **Ze schematów**. Usługa Azure Cosmos DB nie korzysta ze schematów -, więc jest jednoznacznie może obsługiwać żadnych danymi wyjściowymi funkcji platformy Azure. To podejście "obsługujące" sprawia, że bardzo proste tworzyć różne funkcje, które wszystkie dane wyjściowe do usługi Azure Cosmos DB.
 

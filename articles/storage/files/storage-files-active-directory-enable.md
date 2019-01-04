@@ -7,17 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: c898a206322bbc6acb73d582fcb08c8bbba274d0
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 03344cf989e1381f97b108e82b8d63e9c4653404
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291444"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809810"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Aby uzyskać omówienie uwierzytelniania usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files, zobacz [uwierzytelniania Omówienie programu Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-overview.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>Omówienie przepływu pracy
 Przed włączeniem usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files, upewnij się, że usługi Azure AD i środowisk Azure Storage są poprawnie skonfigurowane. Zalecane jest, zapoznaj się z za pośrednictwem [wymagania wstępne](#prerequisites) aby upewnić się, że zostało wykonane wszystkie wymagane kroki. 
@@ -60,7 +62,7 @@ Przed włączeniem usługi Azure AD przy użyciu protokołu SMB dla usługi Azur
 
     Wybierz udział plików nowej lub istniejącej, która jest skojarzona z tej samej subskrypcji co dzierżawy usługi Azure AD. Aby uzyskać informacje dotyczące tworzenia nowego udziału plików, zobacz [Utwórz udział plików w usłudze Azure Files](storage-how-to-create-file-share.md). 
 
-    Dzierżawy usługi Azure AD musi zostać wdrożony do regionu, obsługiwany dla usługi Azure AD w wersji zapoznawczej za pośrednictwem protokołu SMB. Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: zachodnie stany USA, zachodnie stany USA 2, południowo-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, północno-środkowe stany USA, Australia Wschodnia, Europa Zachodnia, Europa Północna.
+    Dzierżawy usługi Azure AD musi zostać wdrożony do regionu, obsługiwany dla usługi Azure AD w wersji zapoznawczej za pośrednictwem protokołu SMB. Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: Zachodnie stany USA, zachodnie stany USA 2, południowo-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, środkowe stany USA Północna, Australia Wschodnia, Europa Zachodnia, Europa Północna.
 
     Aby uzyskać optymalną wydajność firma Microsoft zaleca, że udział plików znajduje się w tym samym regionie co maszyna wirtualna, z którego planujesz uzyskiwać dostęp do udziału.
 
@@ -88,17 +90,17 @@ Na poniższej ilustracji przedstawiono sposób włączania uwierzytelniania usł
   
 ### <a name="powershell"></a>PowerShell  
 
-Aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB za pomocą programu Azure PowerShell, należy najpierw zainstalować `AzureRM.Storage` modułu, wersja `6.0.0-preview`, wykonując następujące czynności. Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps):
+Aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB za pomocą programu Azure PowerShell, należy najpierw zainstalować wersję zapoznawczą programu `Az.Storage` modułu z obsługą usługi Azure AD. Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps):
 
 ```powershell
-Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
 ```
 
-Następnie utwórz nowy magazyn konta, a następnie wywołaj [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) i ustaw **EnableAzureFilesAadIntegrationForSMB** parametr **true**. W poniższym przykładzie Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami.
+Następnie utwórz nowy magazyn konta, a następnie wywołaj [AzStorageAccount zestaw](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) i ustaw **EnableAzureFilesAadIntegrationForSMB** parametr **true**. W poniższym przykładzie Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami.
 
 ```powershell
 # Create a new storage account
-New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
+New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -Location "<azure-region>" `
     -SkuName Standard_LRS `
@@ -107,7 +109,7 @@ New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 # Update an existing storage account
 # Supported for storage accounts created after September 24, 2018 only
-Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
+Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true```
 ```
@@ -152,17 +154,16 @@ Następujący szablon roli niestandardowej zapewnia uprawnienia do wprowadzania 
   "Name": "<Custom-Role-Name>",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read, write and delete access to Azure File Share",
+  "Description": "Allows for read, write and delete access to Azure File Share over SMB",
   "Actions": [
-    "*"
-  ],
-  "NotActions": [
-      "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshare/*"
   ],
   "DataActions": [
-    "*"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/*"
+  ],
+  "NotDataActions": [
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermission",
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actasadmin"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -178,12 +179,12 @@ Następujący szablon roli niestandardowej zapewnia uprawnienia odczytu na pozio
   "Name": "<Custom-Role-Name>",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read access to Azure File Share",
+  "Description": "Allows for read access to Azure File Share over SMB",
   "Actions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshare/read"
   ],
   "DataActions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -201,7 +202,7 @@ Następujące polecenie programu PowerShell tworzy rolę niestandardową, na pod
 
 ```powershell
 #Create a custom role based on the sample template above
-New-AzureRmRoleDefinition -InputFile "<custom-role-def-json-path>"
+New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
 ```
 
 #### <a name="cli"></a>Interfejs wiersza polecenia 
@@ -225,11 +226,11 @@ Podczas uruchamiania następującego skryptu przykładowego, pamiętaj, aby zast
 
 ```powershell
 #Get the name of the custom role
-$FileShareContributorRole = Get-AzureRmRoleDefinition "<role-name>"
+$FileShareContributorRole = Get-AzRoleDefinition "<role-name>"
 #Constrain the scope to the target file share
 $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 #Assign the custom role to the target identity with the specified scope.
-New-AzureRmRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
+New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
 #### <a name="cli"></a>Interfejs wiersza polecenia

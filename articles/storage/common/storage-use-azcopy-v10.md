@@ -1,6 +1,6 @@
 ---
 title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy v10 (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Użyj AzCopy v10 (wersja zapoznawcza) narzędzia do przeniesienia lub skopiowania danych do lub z obiektu blob, tabeli i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
+description: Użyj AzCopy v10 (wersja zapoznawcza) narzędzia do przeniesienia lub skopiowania danych do lub z obiektu blob, usługa data lake i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958426"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808121"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Transferowanie danych za pomocą AzCopy v10 (wersja zapoznawcza)
 
@@ -54,18 +54,24 @@ Narzędzie AzCopy v10 nie wymaga instalacji. Otwórz preferowaną aplikacji wier
 ## <a name="authentication-options"></a>Opcje uwierzytelniania
 
 V10 narzędzia AzCopy można użyć następujących opcji uwierzytelniania w usłudze Azure Storage:
-- Usługa Azure Active Directory. Użyj ```.\azcopy login``` logować się za pomocą usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory.
-- Token sygnatury dostępu Współdzielonego, który ma zostać dołączona do ścieżka obiektu Blob. Można wygenerować tokenu sygnatury dostępu Współdzielonego przy użyciu witryny Azure Portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestorageblobsastoken?view=azurermps-6.9.0), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Usługa Azure Active Directory [obsługiwane na obiekt Blob i Azure Data Lake Store Gen2]**. Użyj ```.\azcopy login``` logować się za pomocą usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory.
+- **Sygnatury dostępu Współdzielonego tokeny [obsługiwane w usłudze obiektów Blob i plików]**. Dołącz token sygnatury dostępu Współdzielonego do ścieżka obiektu blob w wierszu polecenia z niego korzystać. Można wygenerować tokenu sygnatury dostępu Współdzielonego przy użyciu witryny Azure Portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Narzędzie AzCopy v10 ma prostą składnię własnym udokumentowane. Ogólna składnia wygląda następująco:
+Narzędzie AzCopy v10 ma prostą składnię własnym udokumentowane. Ogólna składnia wygląda następująco, po zalogowaniu się do usługi Azure Active Directory:
 
 ```azcopy
 .\azcopy <command> <arguments> --<flag-name>=<flag-value>
-# Example:
+# Examples if you have logged into the Azure Active Directory:
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/containersastoken" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
+
+# Examples if you are using SAS tokens to authenticate:
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
 ```
 
 Poniżej przedstawiono, jak można uzyskać listę dostępnych poleceń:
@@ -84,15 +90,27 @@ Aby wyświetlić stronę pomocy i przykłady dla określonego polecenia uruchom 
 .\azcopy cp -h
 ```
 
-## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Tworzenie systemu plików (usługi Azure Data Lake Storage Gen2 — tylko)
+## <a name="create-a-blob-container-or-file-share"></a>Utwórz kontener obiektów Blob lub udziału plików 
 
-Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, można użyć następującego polecenia, aby utworzyć nowy system plików, plików do pobrania można przekazać do niego.
+**Utwórz kontener obiektów Blob**
 
 ```azcopy
-.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+.\azcopy make "https://account.blob.core.windows.net/container-name"
 ```
 
-``account`` Fragment tego ciągu jest nazwa konta magazynu. ``top-level-resource-name`` Część ten ciąg jest nazwą system plików, który chcesz utworzyć.
+**Utwórz udział plików**
+
+```azcopy
+.\azcopy make "https://account.file.core.windows.net/share-name"
+```
+
+**Utwórz kontener obiektów Blob za pomocą Gen2 Azure Data Lake Store**
+
+Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, można użyć następującego polecenia, aby utworzyć nowy system plików (kontener obiektów Blob), dzięki czemu możesz przekazać pliki do niego.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name"
+```
 
 ## <a name="copy-data-to-azure-storage"></a>Kopiowanie danych do usługi Azure Storage
 
@@ -102,37 +120,22 @@ Polecenie kopiowania do przenoszenia danych ze źródła do miejsca docelowego. 
 - Usługa Azure identyfikator URI udziału plików/katalogów/plików
 - Usługa Azure Data Lake Storage Gen2 systemu plików/katalogów/plików z identyfikatora URI
 
-> [!NOTE]
-> W tej chwili AzCopy v10 obsługuje kopiowanie tylko blokowych obiektów blob między kontami magazynu dwa.
-
 ```azcopy
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
 # Using alias instead
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-Następujące polecenie przekazuje wszystkie pliki w folderze rekursywnie C:\local\path do kontenera "mycontainer1":
+Następujące polecenie przekazuje wszystkie pliki w folderze `C:\local\path` rekursywnie do kontenera `mycontainer1` tworzenia `path` katalogu w kontenerze:
 
 ```azcopy
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
-Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, służy następujące polecenie do przekazywania plików do systemu plików:
-
-```azcopy
-.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
-```
-
-Następujące polecenie przekazuje wszystkie pliki w folderze C:\local\path (bez recursing do podkatalogów) do kontenera "mycontainer1":
+Następujące polecenie przekazuje wszystkie pliki w folderze `C:\local\path` (bez recursing do podkatalogów) do kontenera `mycontainer1`:
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
-```
-
-Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, można użyć następującego polecenia:
-
-```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 Aby uzyskać więcej przykładów, użyj następującego polecenia:
@@ -143,23 +146,21 @@ Aby uzyskać więcej przykładów, użyj następującego polecenia:
 
 ## <a name="copy-data-between-two-storage-accounts"></a>Kopiowanie danych między dwa konta magazynu
 
-Kopiowanie danych między dwoma kontami magazynu używa [umieścić blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsu API i wykorzystanie przepustowości sieci maszyny klienta. Dane są kopiowane między dwoma serwerami usługi Azure Storage bezpośrednio, gdy narzędzie AzCopy jest po prostu organizuje operacji kopiowania. 
+Kopiowanie danych między dwoma kontami magazynu używa [umieścić blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsu API i wykorzystanie przepustowości sieci maszyny klienta. Dane są kopiowane między dwoma serwerami usługi Azure Storage bezpośrednio, gdy narzędzie AzCopy jest po prostu organizuje operacji kopiowania. Ta opcja obecnie jest dostępna tylko dla magazynu obiektów Blob.
 
 Aby skopiować dane między dwa konta magazynu, użyj następującego polecenia:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
-Aby pracować z kont usługi blob storage, które mają włączonych hierarchicznej przestrzeni nazw, Zastąp ciąg ``blob.core.windows.net`` z ``dfs.core.windows.net`` w tych przykładach.
-
 > [!NOTE]
 > Polecenie spowoduje wyliczyć wszystkie kontenery obiektów blob i skopiuj je do konta docelowego. W tej chwili AzCopy v10 obsługuje kopiowanie tylko blokowych obiektów blob między kontami magazynu dwa. Wszystkie inne obiekty kont magazynu (uzupełnialnych obiektów blob, stronicowe obiekty BLOB, pliki, tabele i kolejki) zostaną pominięte.
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Kopiowanie obrazu dysku VHD do konta magazynu
 
-Narzędzie AzCopy v10 domyślnie przekazuje dane do blokowych obiektów blob. Jednak jeśli plik źródłowy ma rozszerzenie wirtualnego dysku twardego, narzędzia AzCopy v10 domyślnie przekazać go do stronicowych obiektów blob. To zachowanie nie jest konfigurowalne.
+Narzędzie AzCopy v10 domyślnie przekazuje dane do blokowych obiektów blob. Jednak jeśli plik źródłowy ma rozszerzenie wirtualnego dysku twardego, narzędzia AzCopy v10 domyślnie przekazać go do stronicowych obiektów blob. To zachowanie jest obecnie można konfigurować.
 
-## <a name="sync-incremental-copy-and-delete"></a>Synchronizacja: przyrostowe Kopiuj i usuwaj
+## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Synchronizacja: przyrostowa kopia i delete (tylko w przypadku magazynu obiektów Blob)
 
 > [!NOTE]
 > Polecenie synchronizacji synchronizuje zawartość ze źródła do miejsca docelowego i obejmuje usunięcie pliki docelowe, te nie istnieją w źródle. Upewnij się, że używasz miejsce docelowe, które zamierzasz synchronizować.
@@ -177,9 +178,7 @@ W ten sam sposób można synchronizować kontener obiektów Blob do lokalnego sy
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-To polecenie umożliwia przyrostowo synchronizacji źródła do miejsca docelowego, na podstawie ostatniej modyfikacji sygnatur czasowych. Jeśli dodawanie lub usuwanie pliku w źródle, narzędzia AzCopy v10 będzie się tak samo w miejscu docelowym.
-
-[!NOTE] Aby pracować z kont usługi blob storage, które mają włączonych hierarchicznej przestrzeni nazw, Zastąp ciąg ``blob.core.windows.net`` z ``dfs.core.windows.net`` w tych przykładach.
+To polecenie umożliwia przyrostowo synchronizacji źródła do miejsca docelowego, na podstawie ostatniej modyfikacji sygnatur czasowych. Jeśli dodawanie lub usuwanie pliku w źródle, narzędzia AzCopy v10 będzie się tak samo w miejscu docelowym. Przed usunięciem narzędzia AzCopy wyświetli monit o potwierdzenie usunięcia plików.
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
 
@@ -246,6 +245,10 @@ Można wznowić zadania nie powiodło się/anulowane za pomocą jego identyfikat
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
+
+### <a name="change-the-default-log-level"></a>Zmień domyślny poziom rejestrowania
+
+Domyślnie poziom dziennika narzędzia AzCopy jest ustawiony na INFO. Jeśli chcesz zmniejszyć poziom szczegółowości dziennika, aby zaoszczędzić miejsce na dysku, należy zastąpić ustawienie przy użyciu ``--log-level`` opcji. Poziomy dziennika dostępne są następujące: DEBUGOWANIA, informacje, ostrzeżenie, błąd, PANIKĘ i błąd krytyczny
 
 ## <a name="next-steps"></a>Kolejne kroki
 

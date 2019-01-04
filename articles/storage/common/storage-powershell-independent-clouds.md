@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057657"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628344"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Zarządzanie magazynem w niezależnych chmury platformy Azure przy użyciu programu PowerShell
 
@@ -23,6 +23,8 @@ Większość osób na użytek chmurze publicznej platformy Azure ich globalnego 
 * [Obsługiwana przez firmę 21Vianet w Chinach chmury platformy Azure (Chiny)](http://www.windowsazure.cn/)
 * [Usługa Azure niemieckiej wersji chmury](../../germany/germany-welcome.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="using-an-independent-cloud"></a>Przy użyciu chmury niezależne 
 
 Używać usługi Azure Storage w jednym z chmury niezależne, połączenie z tą chmurą zamiast publicznej Azure. Aby użyć jednego z chmury niezależne zamiast publicznej platformy Azure:
@@ -31,28 +33,28 @@ Używać usługi Azure Storage w jednym z chmury niezależne, połączenie z tą
 * Możesz określić i używać dostępnych regionów.
 * Możesz użyć sufiksu właściwego punktu końcowego, który jest inny niż publicznej Azure.
 
-Przykłady wymagają programu Azure PowerShell module wersję 4.4.0 lub nowszej. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable AzureRM` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Przykłady wymagają programu Azure PowerShell w wersji Az modułu 0,7 lub nowszej. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable Az` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Uruchom [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) polecenia cmdlet, aby wyświetlić dostępne środowiska platformy Azure:
+Uruchom [Get AzEnvironment](/powershell/module/az.profile/get-Azenvironment) polecenia cmdlet, aby wyświetlić dostępne środowiska platformy Azure:
    
 ```powershell
-Get-AzureRmEnvironment
+Get-AzEnvironment
 ```
 
 Zaloguj się do swojego konta, które ma dostęp do chmury, do którego chcesz połączyć, a następnie ustaw środowisko. Ten przykład pokazuje, jak zalogować się do konta, które korzysta z chmury dla instytucji rządowych platformy Azure.   
 
 ```powershell
-Connect-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzAccount –Environment AzureUSGovernment
 ```
 
 Aby uzyskać dostęp do chmury w Chinach, należy użyć środowiska **AzureChinaCloud**. Aby uzyskać dostęp do chmury niemiecki, należy użyć **AzureGermanCloud**.
 
-W tym momencie listę lokalizacji, aby utworzyć konto magazynu lub innego zasobu, należy można tworzyć zapytania lokalizacje dostępne dla wybranej chmury za pomocą [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation).
+W tym momencie listę lokalizacji, aby utworzyć konto magazynu lub innego zasobu, należy można tworzyć zapytania lokalizacje dostępne dla wybranej chmury za pomocą [Get AzLocation](/powershell/module/az.resources/get-azlocation).
 
 ```powershell
-Get-AzureRmLocation | select Location, DisplayName
+Get-AzLocation | select Location, DisplayName
 ```
 
 W poniższej tabeli przedstawiono lokalizacje zwrócony dla niemieckiej wersji chmury.
@@ -67,14 +69,14 @@ W poniższej tabeli przedstawiono lokalizacje zwrócony dla niemieckiej wersji c
 
 Sufiks punktu końcowego dla każdego z tych środowisk różni się od punktu końcowego publicznego platformy Azure. Na przykład sufiks punktu końcowego obiektu blob dla publicznej platformy Azure jest **blob.core.windows.net**. W przypadku chmury dla instytucji rządowych jest sufiks punktu końcowego obiektu blob **blob.core.usgovcloudapi.net**. 
 
-### <a name="get-endpoint-using-get-azurermenvironment"></a>Pobieranie punktu końcowego przy użyciu Get-AzureRMEnvironment 
+### <a name="get-endpoint-using-get-azenvironment"></a>Pobieranie punktu końcowego za pomocą Get AzEnvironment 
 
-Pobrać za pomocą sufiksu punktu końcowego [Get-AzureRMEnvironment](/powershell/module/azurerm.profile/get-azurermenvironment). Punkt końcowy jest *StorageEndpointSuffix* właściwości środowiska. Poniższe fragmenty kodu pokazują, jak to zrobić. Wszystkie te polecenia zwrócić coś takich jak "core.cloudapp.net" lub "core.cloudapi.de" itp. Dołącz podany kod do usługi storage, dostęp do tej usługi. Na przykład "queue.core.cloudapi.de" uzyskają dostęp do usługi kolejki, w chmurze niemiecki.
+Pobrać za pomocą sufiksu punktu końcowego [Get AzEnvironment](/powershell/module/az.profile/get-azenvironment). Punkt końcowy jest *StorageEndpointSuffix* właściwości środowiska. Poniższe fragmenty kodu pokazują, jak to zrobić. Wszystkie te polecenia zwrócić coś takich jak "core.cloudapp.net" lub "core.cloudapi.de" itp. Dołącz podany kod do usługi storage, dostęp do tej usługi. Na przykład "queue.core.cloudapi.de" uzyskają dostęp do usługi kolejki, w chmurze niemiecki.
 
 Ten fragment kodu pobiera wszystkie środowiska i sufiks punktu końcowego dla każdej z nich.
 
 ```powershell
-Get-AzureRmEnvironment | select Name, StorageEndpointSuffix 
+Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
 To polecenie zwraca następujące wyniki.
@@ -86,10 +88,10 @@ To polecenie zwraca następujące wyniki.
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | Core.usgovcloudapi.NET |
 
-Aby pobrać wszystkie właściwości dla określonego środowiska, należy wywołać **Get-AzureRmEnvironment** i określ nazwę chmury. Ten fragment kodu zwraca listę właściwości; Wyszukaj **StorageEndpointSuffix** na liście. Poniższy przykład jest w chmurze niemiecki.
+Aby pobrać wszystkie właściwości dla określonego środowiska, należy wywołać **Get AzEnvironment** i określ nazwę chmury. Ten fragment kodu zwraca listę właściwości; Wyszukaj **StorageEndpointSuffix** na liście. Poniższy przykład jest w chmurze niemiecki.
 
 ```powershell
-Get-AzureRmEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud 
 ```
 
 Wyniki są podobne do następujących:
@@ -111,7 +113,7 @@ Wyniki są podobne do następujących:
 Aby pobrać tylko właściwości sufiks punktu końcowego magazynu, pobrać określonej chmury i poproś o tylko jednej właściwości.
 
 ```powershell
-$environment = Get-AzureRmEnvironment -Name AzureGermanCloud
+$environment = Get-AzEnvironment -Name AzureGermanCloud
 Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
 ```
 
@@ -129,7 +131,7 @@ Można także sprawdzić właściwości konta magazynu można pobrać z punktami
 # Get a reference to the storage account.
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
-$storageAccount = Get-AzureRmStorageAccount `
+$storageAccount = Get-AzStorageAccount `
   -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
   # Output the endpoints.
@@ -157,7 +159,7 @@ W tym miejscu przyszłości, można użyć tego samego programu PowerShell, uży
 Jeśli utworzono nową grupę zasobów i konto magazynu na potrzeby tego ćwiczenia, można usunąć wszystkie zasoby, usuwając grupę zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W tym przypadku powoduje usunięcie konta magazynu i samej grupy zasobów.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

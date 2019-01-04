@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db24cb1e1b303fbd3f0981390940732685c98baf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075884"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558808"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Raporty dostępne w portalu Cloudyn
 
@@ -29,7 +29,7 @@ Istnieją trzy typy raportów Cloudyn:
 
 - Raporty nadmiernego czasu. Na przykład raport kosztu w czasie. Pokazywanie danych szeregów czasowych przedziałach zaznaczonego rozwiązanie problemu dotyczącego wstępnie zdefiniowanych i raportów w czasie nadmiernego, w którym zostanie wyświetlane rozdzielczość co tydzień ostatnich dwóch miesięcy. Grupowanie i filtrowanie można użyć, aby powiększyć do różnych punktów danych.
   - Czas nadmiernego Raporty ułatwiają wyświetlanie trendów i wykrywanie wzrostów lub anomalii.
-- Raporty analizy. Na przykład repot analizy kosztów. Te raporty pokazują dane zagregowane w okresie zdefiniować i umożliwia grupowanie i filtrowanie danych.
+- Raporty analizy. Na przykład raport analizy kosztów. Te raporty pokazują dane zagregowane w okresie zdefiniować i umożliwia grupowanie i filtrowanie danych.
   - Raporty mogą ułatwić wyświetlanie wzrostów i ustalaniu przyczyn anomalii analizy i wyświetlane są szczegółowe podziału danych.
 - Raporty tabelarycznym. Możesz wyświetlić dowolny raport w postaci tabeli, ale niektóre raporty są wyświetlane tylko w postaci tabeli. Te raporty zawierają szczegółowe listy elementów.
   - Zalecenia są tabelaryczne raportów — nie ma żadnych wizualizacji zaleceń. Jednak można wizualizować wyniki zalecenia. Na przykład oszczędności, wraz z upływem czasu.
@@ -63,7 +63,7 @@ Wiele raportów Cloudyn Pokaż budżetu informacji po został ręcznie utworzony
 
 ## <a name="reports-and-reporting-features"></a>Raporty i funkcji raportowania
 
-Clouydn zawiera następujące raporty i funkcji raportowania.
+Usługa Cloudyn oferuje następujące raporty i funkcji raportowania.
 
 ### <a name="cost-navigator-report"></a>Koszt Nawigator raportu
 
@@ -208,7 +208,7 @@ Opłaty niestandardowe są wyświetlane w raportach kosztów. Na przykład otwor
 
 Cost Allocation 360 umożliwia tworzenie modeli alokacji kosztów niestandardowe można przypisać kosztów do wykorzystywanych zasobów w chmurze. Wiele raportów zawierają informacje z modeli kosztów niestandardowych, utworzonych przy użyciu modeli kosztów niestandardowych. Ponadto niektóre raporty zawierają tylko informacje o po jej utworzeniu niestandardowy model kosztów przy użyciu alokacji kosztów.
 
-Aby uzyskać więcej informacji na temat tworzenia modeli kosztów niestandardowych, zobacz [samouczek: Zarządzanie kosztami przy użyciu platformy Cloudyn](tutorial-manage-costs.md).
+Aby uzyskać więcej informacji na temat tworzenia modeli kosztów niestandardowych zobacz [samouczka: Zarządzanie kosztami przy użyciu platformy Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>Usługa Cost vs. Raport budżetu względem czasu
 
@@ -448,7 +448,7 @@ Aby wyświetlić szczegóły zalecenia dla konkretnego wystąpienia, kliknij **+
 
 Kliknij wykres, aby przejść do szczegółów, a następnie otwórz wystąpienie procesora CPU przez czas raportu, aby zobaczyć podział wystąpień.
 
-- Użyj **Pokaż/Ukryj pola** do dodawania lub usuwania pól: sygnatura czasowa, CPU (średnio), Min procesora CPU, maks.
+- Użyj **Pokaż/Ukryj pola** do dodawania lub usuwania pól: Sygnatura czasowa, CPU (średnio) Min procesora CPU, maksymalna liczba procesora CPU.
 - Użyj **zakres dat** wprowadź datę lub zakres dat i przejść do określonych identyfikator wystąpienia.
 - Użyj **rozszerzone filtry** Pokaż wszystkie lub określone identyfikator wystąpienia
 - Kliknij przycisk **powiększyć** aby otworzyć raport o wykorzystaniu Procesora

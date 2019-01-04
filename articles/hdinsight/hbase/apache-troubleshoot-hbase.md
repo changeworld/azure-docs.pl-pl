@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: b39c01e76ba3ec21f0cd2d16b86da5664e1d5002
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014678"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651609"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych Apache HBase przy użyciu usługi Azure HDInsight
 
@@ -288,7 +288,7 @@ Brak adresu serwera znajduje się w *hbase: metadane* dla regionu xxx.
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-Może pojawić się komunikat w klastrze systemu Linux, oznacza to, że *hbase: metadane* tabeli nie jest w trybie online. Uruchamianie `hbck` może zgłaszać, że "bazy danych hbase: metadanych tabeli replicaId 0 nie znajduje się w dowolnym regionie." Może to oznaczać serwera HMaster nie można zainicjować po ponownym bazy danych HBase. W dzienniki serwera HMaster zostanie wyświetlony komunikat: "Brak adresu serwera na liście w bazie danych hbase: metadane dla regionu hbase: kopii zapasowej \<nazwa regionu\>".  
+Może pojawić się komunikat w klastrze systemu Linux, oznacza to, że *hbase: metadane* tabeli nie jest w trybie online. Uruchamianie `hbck` może zgłaszać, że "bazy danych hbase: metadanych tabeli replicaId 0 nie znajduje się w dowolnym regionie." Może to oznaczać serwera HMaster nie można zainicjować po ponownym bazy danych HBase. W dzienniki serwera HMaster może zostać wyświetlony komunikat: "Brak adresu serwera na liście w bazie danych hbase: metadane dla regionu hbase: kopii zapasowej \<nazwa regionu\>".  
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
@@ -314,12 +314,12 @@ Może pojawić się komunikat w klastrze systemu Linux, oznacza to, że *hbase: 
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Nie można przetworzyć w tabeli bazy danych HBase](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nie można przetworzyć w tabeli bazy danych HBase](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Błąd
 
-Limit czasu serwera HMaster z wyjątku krytycznego podobny do "java.io.IOException: Upłynął limit czasu 300000ms oczekiwanie na przestrzeń nazw tabeli, aby przypisać."
+Limit czasu serwera HMaster z wyjątku krytycznego podobny do "java.io.IOException: Przekroczono limit czasu 300000ms oczekiwanie na przestrzeń nazw tabeli do przypisania."
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
@@ -344,7 +344,7 @@ Jest to znany problem z usługą serwera HMaster. Zadania uruchamiania ogólnego
 
 ### <a name="issue"></a>Problem
 
-Błąd ponownego uruchamiania serwera regionalnego może być niemożliwe, poniższe najlepsze rozwiązania. Firma Microsoft zaleca wstrzymać działanie duże obciążenia, podczas planowania ponownie uruchomić serwery regionów HBase. Jeśli aplikacja nadal łączyć się z serwery regionów, gdy trwa zamykanie, operacji ponownego uruchamiania serwera region będzie przebiegać wolniej przez kilka minut. Ponadto jest dobry pomysł, aby najpierw opróżnienia wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżniania tabel, zobacz [HDInsight HBase: jak poprawić czas ponownego uruchamiania klastra Apache HBase, opróżniania tabel](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Błąd ponownego uruchamiania serwera regionalnego może być niemożliwe, poniższe najlepsze rozwiązania. Firma Microsoft zaleca wstrzymać działanie duże obciążenia, podczas planowania ponownie uruchomić serwery regionów HBase. Jeśli aplikacja nadal łączyć się z serwery regionów, gdy trwa zamykanie, operacji ponownego uruchamiania serwera region będzie przebiegać wolniej przez kilka minut. Ponadto jest dobry pomysł, aby najpierw opróżnienia wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżniania tabel, zobacz [HDInsight HBase: Jak poprawić czas ponownego uruchamiania klastra Apache HBase, opróżniania tabel](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
 Jeśli zainicjujesz operacji ponownego uruchamiania serwery regionów HBase z poziomu interfejsu użytkownika Ambari Apache, możesz natychmiast zobaczyć, że serwery regionów zakończył działanie, ale nie ich ponownego natychmiast. 
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie topologii połączonej fabryki | Dokumentacja firmy Microsoft
+title: Konfigurowanie topologii połączonej fabryki — Azure | Dokumentacja firmy Microsoft
 description: Jak skonfigurować topologię akcelerator rozwiązania połączonej fabryki.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746983"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602277"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurowanie akcelerator rozwiązania połączonej fabryki
 
@@ -85,7 +85,7 @@ Poniższy fragment kodu przedstawia zarys `ContosoTopologyDescription.json` plik
 }
 ```
 
-Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, i `<station_configuration>` są:
+Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, i `<station_configuration>` są:
 
 * **Nazwa** (typ string)
 
@@ -282,7 +282,7 @@ Dane ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności symu
 * Wartości węzła OPC UA do uwzględnienia w obliczeniach.
 * Jak rysunek jest obliczany na podstawie wartości telemetryczne.
 
-Połączona fabryka używa formuł ogólnej wydajności sprzętu, jako opublikowane przez http://www.oeefoundation.org.
+Połączona fabryka używa formuł ogólnej wydajności sprzętu, jako opublikowane przez https://www.oeefoundation.org.
 
 Obiekty węzła OPC UA stacji Włącz znakowanie do użycia podczas obliczania wartości ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności. **Istotności** właściwość wskazuje, dla których rysunek ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności powinna zostać użyta wartość węzła OPC UA. **OpCode** właściwość definiuje, jak wartość znajduje się w obliczeń.
 
@@ -309,7 +309,7 @@ W przypadku niektórych operacji, takich jak wizualizacja ostatnią wartość lu
 
 Sprawdź [to](https://github.com/Azure/iot-edge-opc-publisher) strony GitHub, aby uzyskać więcej informacji na temat sposobu dane telemetryczne są pozyskiwane do połączonej fabryki, korzystanie z wydawcy OPC.
 
-## <a name="example-how-kpi1-is-calculated"></a>Przykład: w jaki sposób jest obliczana KPI1
+## <a name="example-how-kpi1-is-calculated"></a>Przykład: Jak obliczana jest KPI1
 
 Konfiguracja opisana w `ContosoTopologyDescription.json` pliku Określa, jak są obliczane wartości ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności. Poniższy przykład pokazuje, jak kontrolować obliczeń KPI1 przez właściwości, w tym pliku.
 

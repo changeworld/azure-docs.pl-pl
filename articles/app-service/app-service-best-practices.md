@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3d1821ccc3f3bc16bffd8a19d3014b5ea4876768
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261827"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715609"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dotyczące usługi Azure App Service
 Ten artykuł zawiera podsumowanie najlepsze rozwiązania dotyczące używania [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -39,7 +39,7 @@ Jeśli zauważysz, że aplikacja zużywa więcej pamięci niż oczekiwano jako w
 ## <a name="CPUresources"></a>Gdy aplikacje używać większej mocy Procesora niż oczekiwano
 Jeśli zauważysz, że aplikacja zużywa większej mocy Procesora niż oczekiwano lub środowiska powtarzanych wzrostów użycia Procesora wskazywane przez zalecenia dotyczące monitorowania lub usługi, należy wziąć pod uwagę skalowanie w górę lub skalowania w poziomie plan usługi App Service. Jeśli aplikacja jest stanowa, skalowanie w górę jest jedyną opcją, jeśli Twoja aplikacja znajduje się poza bezstanowych, skalowania daje większą elastyczność i wyższych możliwości skalowania. 
 
-Aby uzyskać więcej informacji o aplikacjach "bezstanowe" "stanowych" vs możesz obejrzeć ten film wideo: [Planowanie skalowalnej aplikacji wielowarstwowych End-to-End w aplikacji sieci Web platformy Microsoft Azure](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Aby uzyskać więcej informacji na temat opcji skalowania i automatycznym skalowaniem usługi App Service, zobacz [skalowanie aplikacji sieci Web w usłudze Azure App Service](web-sites-scale.md).  
+Aby uzyskać więcej informacji o aplikacjach "bezstanowe" "stanowych" vs możesz obejrzeć ten film wideo: [Planowanie skalowalnej aplikacji wielowarstwowych End-to-End w usłudze Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Aby uzyskać więcej informacji na temat opcji skalowania i automatycznym skalowaniem usługi App Service, zobacz [skalowanie aplikacji sieci Web w usłudze Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Po wyczerpaniu zasobów gniazda
 Typową przyczyną wyczerpuje połączenia wychodzące TCP jest korzystanie z bibliotek klienckich, które nie są implementowane na ponowne użycie połączenia protokołu TCP lub gdy nie jest używany protokół wyższego poziomu, takich jak HTTP - Keep-Alive. Przejrzyj dokumentację dla każdej biblioteki przywoływane przez aplikacje na Plan usługi App Service do upewnij się, są one skonfigurowane lub dostępne w kodzie w poszukiwaniu wydajne ponownemu połączeń wychodzących. Również zgodnie z wytycznymi dokumentacji biblioteki dla utworzenia prawidłowego i wersji lub czyszczenia wyciekiem połączeń. Podczas takich dochodzeń biblioteki klienta jest w toku, wpływ może zminimalizować, skalując w poziomie do wielu wystąpień.
@@ -68,7 +68,7 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ## <a name="appbackup"></a>Gdy aplikacja kopii zapasowej rozpoczyna się kończy się niepowodzeniem
 Dwie najbardziej typowe przyczyny, dlaczego są niepowodzenia tworzenia kopii zapasowej aplikacji: nieprawidłowych ustawień magazynu i nieprawidłowa konfiguracja bazy danych. Te błędy najczęściej występuje, gdy istnieją zmiany w zasobach magazynu lub bazy danych lub zmiany dotyczące dostępu do tych zasobów (na przykład poświadczenia zaktualizowane dla wybranej w ustawieniach kopii zapasowej bazy danych). Kopie zapasowe zazwyczaj uruchamiane zgodnie z harmonogramem i wymagają dostępu do magazynu (w przypadku podawania pliki kopii zapasowej) i bazy danych (kopiowanie i odczytu zawartości, które mają zostać uwzględnione w kopii zapasowej). Wynikiem niepowodzenie dostęp do jednej z tych zasobów będzie spójny niepowodzenia wykonywania kopii zapasowej. 
 
-Gdy wystąpi niepowodzeniami tworzenia kopii zapasowych, należy przejrzeć najnowsze wyniki, aby zrozumieć, jakiego typu błędu jest wykonywane. Dla błędów dostępu do magazynu Przejrzyj i zaktualizuj ustawienia magazynu, używane w konfiguracji kopii zapasowej. Dla błędów dostępu do bazy danych Przejrzyj i zaktualizuj swoje ciągi połączenia w ustawieniach aplikacji; następnie można zaktualizować konfiguracji kopii zapasowej, aby prawidłowo obejmują wymagane bazy danych. Aby uzyskać więcej informacji na temat kopii zapasowych aplikacji, zobacz [tworzenie kopii zapasowej aplikacji sieci web w usłudze Azure App Service](web-sites-backup.md).
+Gdy wystąpi niepowodzeniami tworzenia kopii zapasowych, należy przejrzeć najnowsze wyniki, aby zrozumieć, jakiego typu błędu jest wykonywane. Dla błędów dostępu do magazynu Przejrzyj i zaktualizuj ustawienia magazynu, używane w konfiguracji kopii zapasowej. Dla błędów dostępu do bazy danych Przejrzyj i zaktualizuj swoje ciągi połączenia w ustawieniach aplikacji; następnie można zaktualizować konfiguracji kopii zapasowej, aby prawidłowo obejmują wymagane bazy danych. Aby uzyskać więcej informacji na temat kopii zapasowych aplikacji, zobacz [tworzenie kopii zapasowej aplikacji sieci web w usłudze Azure App Service](manage-backup.md).
 
 ## <a name="nodejs"></a>Gdy nowe aplikacje Node.js są wdrażane w usłudze Azure App Service
 Usługa Azure App Service domyślną konfigurację aplikacji Node.js jest przeznaczona do najlepiej spełniały potrzeby najbardziej typowych aplikacji. Jeśli Konfiguracja aplikacji Node.js używającym spersonalizowane dostrajania zwiększyć wydajność lub zoptymalizować użycie zasobów dla zasobów procesora CPU i pamięci/sieci, zobacz [najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji Node w usłudze Azure App Usługa](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). W tym artykule opisano ustawienia programu iisnode, może być konieczne skonfigurowanie aplikacji Node.js, w tym artykule opisano różne scenariusze lub problemy mogą miała dostęp do aplikacji i pokazuje, jak rozwiązać te problemy.

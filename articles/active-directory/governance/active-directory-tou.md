@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/12/2018
+ms.date: 12/20/2018
 ms.author: rolyon
-ms.openlocfilehash: 6ec3ca7c1323b342612293c5ea3ca1443370c9b4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0a5d58d0403471d591ce2aa2ed9de9092127ea15
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386389"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744109"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -87,7 +87,9 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
 
 1. Aby wymagać od użytkowników końcowych wyświetlić warunków użytkowania przed ich akceptacją, należy ustawić **Wymagaj od użytkowników rozwinięcia warunków użytkowania** do **na**.
 
-1. Aby wymagać od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z, należy ustawić **wymagać od użytkowników akceptacji na każdym urządzeniu** do **na**. Aby uzyskać więcej informacji, zobacz [na urządzenie z warunkami użytkowania](#per-device-terms-of-use).
+1. Aby wymagać od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z, należy ustawić **wymagać od użytkowników akceptacji na każdym urządzeniu** do **na**.
+
+    Jeśli nie widzisz **wymagać od użytkowników akceptacji na każdym urządzeniu** ustawień, oznacza to, że ta funkcja ma nie jeszcze zostało wdrożone w Twoim regionie. Ta funkcja oczekuje się, można w pełni wdrożony przez wcześniejsze stycznia 2019 r. Aby uzyskać więcej informacji, zobacz [na urządzenie z warunkami użytkowania](#per-device-terms-of-use).
 
 1. Jeśli chcesz wygasić zgadza się z warunkami użytkowania zgodnie z harmonogramem, ustaw **wygaśnie zgody** do **na**. Jeśli włączona, są wyświetlane dwa ustawienia dodatkowe harmonogramu.
 
@@ -128,9 +130,9 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
     | **Tworzenie zasad dostępu warunkowego później** | Te warunki użytkowania zostaną wyświetlone na liście przyznawania kontroli podczas tworzenia zasad dostępu warunkowego. |
 
     >[!IMPORTANT]
-    >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi.  Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
+    >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi. Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
 
-     Niestandardowe zasady dostępu warunkowego pozwalają zwiększyć szczegółowość warunków użytkowania, które mogą dotyczyć pojedynczej aplikacji w chmurze lub grupy użytkowników.  Aby uzyskać więcej informacji, zobacz [Szybki Start: Warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze wymagają](../conditional-access/require-tou.md).
+     Niestandardowe zasady dostępu warunkowego pozwalają zwiększyć szczegółowość warunków użytkowania, które mogą dotyczyć pojedynczej aplikacji w chmurze lub grupy użytkowników. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze wymagają](../conditional-access/require-tou.md).
 
 1. Kliknij pozycję **Utwórz**.
 
@@ -208,7 +210,7 @@ Użytkownicy mogą wyświetlać i przeglądać warunki użytkowania, które zaak
 
     ![Profilu — zapoznaj się z warunkami użytkowania](./media/active-directory-tou/tou13a.png)
 
-1. Następnie możesz przejrzeć zaakceptowane warunki użytkowania. 
+1. Następnie możesz przejrzeć zaakceptowane warunki użytkowania.
 
 ## <a name="edit-terms-of-use-details"></a>Edytuj szczegóły warunków użytkowania
 Możesz edytować niektóre szczegóły warunków użytkowania, ale nie można zmodyfikować istniejący dokument. Poniższa procedura opisuje sposób edytowania szczegółów.
@@ -251,6 +253,9 @@ Poniższa procedura opisuje sposób dodawania warunków użycia języka.
 ## <a name="per-device-terms-of-use"></a>Warunki użytkowania na urządzenie
 
 **Wymagać od użytkowników akceptacji na każdym urządzeniu** ustawienia umożliwia wymaganie od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z. Użytkownicy będą musieli proces dołączania urządzenia w usłudze Azure AD. Po dołączeniu urządzenia identyfikator urządzenia jest używana do wymuszania warunki użytkowania na każdym urządzeniu.
+
+> [!NOTE]
+> Jeśli nie widzisz **wymagać od użytkowników akceptacji na każdym urządzeniu** ustawienie podczas tworzenia nowe warunki użytkowania, oznacza to, że ta funkcja ma nie jeszcze zostało wdrożone w Twoim regionie. Ta funkcja oczekuje się, można w pełni wdrożony przez wcześniejsze stycznia 2019 r.
 
 Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 
@@ -300,7 +305,7 @@ Stare warunki użytkowania można usunąć, korzystając z poniższej procedury.
     Warunki użytkowania nie powinny już być widoczne.
 
 ## <a name="deleted-users-and-active-terms-of-use"></a>Usunięci użytkownicy i aktywne warunki użytkowania
-Domyślnie usunięty użytkownik jest w stanie usunięcia w usłudze Azure AD przez 30 dni i w tym okresie administrator może przywrócić go w razie potrzeby.  Po 30 dniach użytkownik jest trwale usuwany.  Ponadto przy użyciu portalu usługi Azure Active Directory administrator globalny może jawnie [trwale usunąć niedawno usuniętego użytkownika](../fundamentals/active-directory-users-restore.md) przed upłynięciem tego okresu.  Gdy użytkownik zostanie trwale usunięty, nowe dane dotyczące tego użytkownika będą usuwane z aktywnych warunków użytkowania.  Informacje inspekcji dotyczące usuniętych użytkowników pozostają w dzienniku inspekcji.
+Domyślnie usunięty użytkownik jest w stanie usunięcia w usłudze Azure AD przez 30 dni i w tym okresie administrator może przywrócić go w razie potrzeby. Po 30 dniach użytkownik jest trwale usuwany. Ponadto przy użyciu portalu usługi Azure Active Directory administrator globalny może jawnie [trwale usunąć niedawno usuniętego użytkownika](../fundamentals/active-directory-users-restore.md) przed upłynięciem tego okresu. Gdy użytkownik zostanie trwale usunięty, nowe dane dotyczące tego użytkownika będą usuwane z aktywnych warunków użytkowania. Informacje inspekcji dotyczące usuniętych użytkowników pozostają w dzienniku inspekcji.
 
 ## <a name="policy-changes"></a>Zmiany zasad
 Zasady dostępu warunkowego zaczynają obowiązywać natychmiast. W takim przypadku administrator będzie wyświetlane "smutne chmury" lub "Problemy z tokenem usługi Azure AD". Administrator musi się wylogować i zaloguj się ponownie, aby spełnić wymagania nowych zasad.
@@ -336,46 +341,46 @@ Można skonfigurować zasady dostępu warunkowego dla aplikacji rejestracja w us
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**PYT.: Jak sprawdzić, gdy /, jeśli użytkownik zaakceptował warunki użytkowania?**</br>
+**PYT.: Jak sprawdzić, gdy /, jeśli użytkownik zaakceptował warunki użytkowania?**<br />
 ODP.: Na warunkach Użyj bloku kliknij liczbę w obszarze **zaakceptowano**. Można również wyświetlić lub zaakceptuj działań związanych z wyszukiwaniem w usłudze Azure AD dzienniki inspekcji. Aby uzyskać więcej informacji, zobacz [wyświetlić raport, który ma zaakceptowali i odrzucili](#view-who-has-accepted-and-declined) i [usługi Azure AD Wyświetl dzienniki inspekcji](#view-azure-ad-audit-logs).
 
-**PYT.: Jak długo jest informacje przechowywane?**</br>
+**PYT.: Jak długo jest informacje przechowywane?**<br />
 ODP.: Użytkownik jest liczona w warunkach w raporcie użycia i który zaakceptowane odrzucone są przechowywane przez cały okres istnienia warunki użytkowania. Inspekcja usługi Azure AD, dzienniki są przechowywane przez 30 dni.
 
-**PYT.: Dlaczego widzę różne liczby zgody w warunkach użytkowania raporcie użycia a usługą Azure AD dzienników inspekcji?**</br>
+**PYT.: Dlaczego widzę różne liczby zgody w warunkach użytkowania raporcie użycia a usługą Azure AD dzienników inspekcji?**<br />
 ODP.: Warunki użycia raportu są przechowywane przez okres istnienia tego warunki użytkowania, podczas inspekcji usługi Azure AD, które dzienniki są przechowywane przez 30 dni. Ponadto warunki raporcie użycia są wyświetlane tylko bieżącego stanu zgody użytkowników. Na przykład jeśli użytkownik odmówi, a następnie akceptuje, warunki raporcie użycia zostaną wyświetlone tylko ten użytkownik akceptuje. Jeśli zachodzi potrzeba wyświetlenia historii, możesz użyć usługi Azure AD dzienniki inspekcji.
 
-**PYT.: Jeśli edytować szczegóły warunków użytkowania wymaga ich użytkowników o zaakceptowanie ponownie?**</br>
+**PYT.: Jeśli edytować szczegóły warunków użytkowania wymaga ich użytkowników o zaakceptowanie ponownie?**<br />
 ODP.: Nie, jeśli administrator podda edycji szczegóły warunków użytkowania (nazwa, nazwa wyświetlana, Wymagaj od użytkowników rozwinięcia lub Dodaj język), użytkownicy wymagają ponownej akceptacji nowych warunków nie jest wymagane.
 
-**PYT.: Czy mogę zaktualizować istniejący dokument z warunkami użytkowania?**</br>
+**PYT.: Czy mogę zaktualizować istniejący dokument z warunkami użytkowania?**<br />
 ODP.: Obecnie nie można zaktualizować istniejący dokument z warunkami użytkowania. Aby zmienić dokument z warunkami użytkowania, należy utworzyć nowe warunki wystąpienia użycia.
 
-**PYT.: Jeśli dokument z warunkami użytkowania PDF hiperłącza, czy użytkownicy końcowi będą mogli klikać?**</br>
+**PYT.: Jeśli dokument z warunkami użytkowania PDF hiperłącza, czy użytkownicy końcowi będą mogli klikać?**<br />
 ODP.: Plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
 
-**PYT.: Warunki użytkowania, może obsługiwać wiele języków?**</br>
+**PYT.: Warunki użytkowania, może obsługiwać wiele języków?**<br />
 ODP.: Tak. Aktualnie nie istnieją 108 różnych języków, administrator może skonfigurować dla pojedynczego warunki użytkowania. Administrator może przekazać wiele dokumentów PDF i oznaczać te dokumenty przy użyciu odpowiedniego języka (maksymalnie 108). Po zalogowaniu się użytkownicy końcowi możemy przyjrzeć się ich preferencji językowych przeglądarki i wyświetlić pasujących dokumentów. W przypadku braku dopasowania wyświetlamy dokument domyślny, który jest pierwszy dokument, który zostanie przekazany.
 
-**PYT.: Kiedy jest wyzwalane warunki użytkowania?**</br>
+**PYT.: Kiedy jest wyzwalane warunki użytkowania?**<br />
 ODP.: Warunki użytkowania są wyzwalane podczas logowania.
 
-**PYT.: Jakie aplikacje mogą kierować warunki użytkowania?**</br>
-ODP.: Można utworzyć zasady dostępu warunkowego dla aplikacji przedsiębiorstwa, korzystających z nowoczesnego uwierzytelniania.  Aby uzyskać więcej informacji, zobacz [aplikacje przedsiębiorstwa](./../manage-apps/view-applications-portal.md).
+**PYT.: Jakie aplikacje mogą kierować warunki użytkowania?**<br />
+ODP.: Można utworzyć zasady dostępu warunkowego dla aplikacji przedsiębiorstwa, korzystających z nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [aplikacje przedsiębiorstwa](./../manage-apps/view-applications-portal.md).
 
-**PYT.: Do danego użytkownika lub aplikacji można dodać wiele wersji warunków użytkowania?**</br>
+**PYT.: Do danego użytkownika lub aplikacji można dodać wiele wersji warunków użytkowania?**<br />
 ODP.: Tak, tworząc wiele zasad dostępu warunkowego obejmujących grupy lub aplikacji. Jeśli użytkownik mieści się w zakresie wiele wersji warunków użytkowania, akceptują jeden z warunkami użytkowania w danym momencie.
- 
-**PYT.: Co się stanie, jeśli użytkownik odrzuci warunki użytkowania?**</br>
+
+**PYT.: Co się stanie, jeśli użytkownik odrzuci warunki użytkowania?**<br />
 ODP.: Użytkownik zostanie zablokowany dostęp do aplikacji. Użytkownik będzie musiał zalogować się ponownie i zaakceptuj warunki w celu uzyskania dostępu.
- 
-**PYT.: Czy jest możliwe unaccept warunki użytkowania, które wcześniej zostały zaakceptowane**</br>
+
+**PYT.: Czy jest możliwe unaccept warunki użytkowania, które wcześniej zostały zaakceptowane**<br />
 ODP.: Możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-users-can-review-their-terms-of-use), ale obecnie nie istnieje sposób unaccept.
 
-**PYT.: Co się stanie, jeśli również używam warunków i postanowień usługi Intune?**</br>
+**PYT.: Co się stanie, jeśli również używam warunków i postanowień usługi Intune?**<br />
 ODP.: Jeśli skonfigurowano zarówno usługi Azure AD z warunkami użytkowania i [Intune warunki i postanowienia](/intune/terms-and-conditions-create), użytkownik będzie musiał zaakceptować oba te elementy. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego warunki rozwiązanie dla Twojej organizacji wpis w blogu](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Szybki Start: Wymagane warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze](../conditional-access/require-tou.md)
+- [Szybki start: Wymagane warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze](../conditional-access/require-tou.md)
 - [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](../conditional-access/best-practices.md)

@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409755"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722655"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
 
-W tym artykule przedstawiono sposób dostosowania wbudowanego [uwierzytelnianie i autoryzacja w usłudze App Service](app-service-authentication-overview.md)oraz do zarządzania tożsamościami z poziomu aplikacji. 
+W tym artykule przedstawiono sposób dostosowania wbudowanego [uwierzytelnianie i autoryzacja w usłudze App Service](overview-authentication-authorization.md)oraz do zarządzania tożsamościami z poziomu aplikacji. 
 
 Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 
@@ -37,13 +37,13 @@ Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 
 ## <a name="use-multiple-sign-in-providers"></a>Korzystanie z wielu dostawców logowania
 
-Konfiguracja portalu nie oferują sposób setką kompleksowych istnieje wielu dostawców logowania dla użytkowników (takich jak Facebook i Twitter). Jednak nie jest trudne dodać funkcje do aplikacji sieci web. Kroki przedstawione poniżej:
+Konfiguracja portalu nie oferują sposób setką kompleksowych istnieje wielu dostawców logowania dla użytkowników (takich jak Facebook i Twitter). Jednak nie jest trudne dodać funkcje do aplikacji. Kroki przedstawione poniżej:
 
 Pierwszy w **uwierzytelniania / autoryzacji** stronie w witrynie Azure portal, skonfiguruj każdy z dostawcy tożsamości, aby włączyć.
 
 W **akcji do wykonania w przypadku nieuwierzytelnionego żądania**, wybierz opcję **Zezwalaj na anonimowe żądania (Brak działania)**.
 
-Strony logowania na pasku nawigacyjnym lub dowolnej innej lokalizacji w aplikacji sieci web, należy dodać Link umożliwiający zalogowanie się do każdego z dostawców włączono (`/.auth/login/<provider>`). Na przykład:
+Strony logowania na pasku nawigacyjnym lub dowolnej innej lokalizacji w aplikacji, Dodaj Link umożliwiający zalogowanie się do każdego z dostawców włączono (`/.auth/login/<provider>`). Na przykład:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -63,7 +63,7 @@ Aby przekierować użytkownika po-konta logowania do niestandardowego adresu URL
 
 ## <a name="validate-tokens-from-providers"></a>Sprawdzanie poprawności tokenów z dostawców
 
-W skierowane do klienta logowania, ręcznie loguje użytkownika z dostawcą aplikacji, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności (zobacz [przepływ uwierzytelniania](app-service-authentication-overview.md#authentication-flow)). Weryfikacji, ten sam faktycznie nie przyznać dostęp do zasobów żądaną aplikację, ale pomyślnej weryfikacji zapewni tokenu sesji, który umożliwia dostęp do zasobów aplikacji. 
+W skierowane do klienta logowania, ręcznie loguje użytkownika z dostawcą aplikacji, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności (zobacz [przepływ uwierzytelniania](overview-authentication-authorization.md#authentication-flow)). Weryfikacji, ten sam faktycznie nie przyznać dostęp do zasobów żądaną aplikację, ale pomyślnej weryfikacji zapewni tokenu sesji, który umożliwia dostęp do zasobów aplikacji. 
 
 Aby zweryfikować token dostawcy, aplikację usługi app Service należy najpierw skonfigurować przy użyciu wybranego dostawcy. W czasie wykonywania, po pobraniu tokenu uwierzytelniania za pośrednictwem swojego usługodawcy, Opublikuj token do `/.auth/login/<provider>` do sprawdzania poprawności. Na przykład: 
 
@@ -184,17 +184,17 @@ Po wygaśnięciu token dostępu z dostawcą, musisz ponownego uwierzytelnienia u
 - **Facebook**: Nie zapewnia tokenów odświeżania. Długotrwałe tokenów wygaśnie po upływie 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenie tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **W usłudze Twitter**: Tokeny dostępu nie wygasa (zobacz [często zadawane pytania dotyczące protokołu OAuth w usłudze Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
 - **Konto Microsoft**: Gdy [ustawienia uwierzytelniania konta Microsoft](configure-authentication-provider-microsoft.md), wybierz opcję `wl.offline_access` zakresu.
-- **Usługa Azure Active Directory**: W [ https://resources.azure.com ](https://resources.azure.com), wykonaj następujące czynności:
+- **Azure Active Directory**: W [ https://resources.azure.com ](https://resources.azure.com), wykonaj następujące czynności:
     1. W górnej części strony wybierz **odczytu/zapisu**.
-    1. W przeglądarce po lewej stronie przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn** > _**\<aplikacji \_name >**_ > **config** > **authsettings**. 
-    1. Kliknij pozycję **Edytuj**.
-    1. Zmodyfikować następujące właściwości. Zastąp  _\<aplikacji\_id >_ identyfikator aplikacji usługi Azure Active Directory, usługi, którego chcesz uzyskać dostęp.
+    2. W przeglądarce po lewej stronie przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn** > _**\<aplikacji \_name >**_ > **config** > **authsettings**. 
+    3. Kliknij pozycję **Edytuj**.
+    4. Zmodyfikować następujące właściwości. Zastąp  _\<aplikacji\_id >_ identyfikator aplikacji usługi Azure Active Directory, usługi, którego chcesz uzyskać dostęp.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. Kliknij przycisk **umieścić**. 
+    5. Kliknij przycisk **umieścić**. 
 
 Po skonfigurowaniu dostawcy mogą [token odświeżania i czas wygaśnięcia tokenu dostępu](#retrieve-tokens-in-app-code) w magazynie tokenów. 
 

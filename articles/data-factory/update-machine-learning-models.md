@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: caf3ecb64d0bdb5771b2fde705fdcbffdffccacb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957467"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969305"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizowanie modeli usługi Azure Machine Learning za pomocą działania aktualizacja zasobów
-Ten artykuł stanowi uzupełnienie głównej fabryki danych platformy Azure — artykuł integracji usługi Azure Machine Learning: [tworzyć potoki predykcyjne przy użyciu usługi Azure Machine Learning i Azure Data Factory](transform-data-using-machine-learning.md). Jeśli nie zostało to jeszcze zrobione, zapoznaj się z artykułem głównego przed odczytaniem za pośrednictwem tego artykułu. 
+Ten artykuł stanowi uzupełnienie głównej fabryki danych platformy Azure — artykuł integracji usługi Azure Machine Learning: [Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory](transform-data-using-machine-learning.md). Jeśli nie zostało to jeszcze zrobione, zapoznaj się z artykułem głównego przed odczytaniem za pośrednictwem tego artykułu. 
 
 ## <a name="overview"></a>Przegląd
 W ramach procesu operacjonalizacji modeli usługi Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne.
@@ -93,7 +93,7 @@ Dla usługi Azure Machine Learning połączone druga Konfiguracja różni się p
 Jeśli usługa sieci web jest nowy typ usługi sieci web, który uwidacznia punkt końcowy usługi Azure Resource Manager, nie trzeba dodać drugi **innych niż domyślne** punktu końcowego. **UpdateResourceEndpoint** w połączonej usłudze ma format: 
 
 ```
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
 Można uzyskać wartości dla posiadaczy miejsce w adresie URL podczas wykonywania zapytań względem usługi sieci web na [Azure maszyny Learning sieci Web Services Portal](https://services.azureml.net/). 
@@ -118,7 +118,7 @@ Poniżej przedstawiono przykładowe połączonej definicji usługi:
             "type": "SecureString",
             "value": "APIKeyOfEndpoint1"
             },
-            "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. ",
+            "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview",
             "servicePrincipalId": "000000000-0000-0000-0000-0000000000000",
             "servicePrincipalKey": {
             "type": "SecureString",
@@ -133,7 +133,7 @@ Poniżej przedstawiono przykładowe połączonej definicji usługi:
 Poniższy scenariusz zawiera więcej szczegółowych informacji. Ma przykład do ponownego trenowania i aktualizowanie modeli usługi uczenie Maszynowe Azure z potoku usługi Azure Data Factory.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Przykład: Ponownego trenowania i aktualizowanie modelu usługi Azure Machine Learning
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Przykład: Ponowne szkolenie i aktualizowanie modelu usługi Azure Machine Learning
 
 Ta sekcja zawiera przykładowy potok, który używa **Azure ML Batch Execution, działanie** doskonalenie modelu. Potok używa również **działanie usługi Azure ML aktualizacji zasobu** do aktualizacji modelu oceniania usługi sieci web. Ta sekcja zawiera również fragmentów kodu JSON dla wszystkich połączonych usług, zestawów danych i potoku w przykładzie.
 

@@ -1,55 +1,81 @@
 ---
-title: Skalowanie w poziomie indeksowanie za pomocą wbudowanych indeksatory — usługa Azure Search
-description: Dodawanie nowych elementów, a następnie zaktualizować istniejące elementy lub dokumentów lub usuwanie przestarzałych dokumentów w ponownej pełnej kompilacji lub częściowe Indeksowanie przyrostowe, w celu odświeżenia indeksu usługi Azure Search.
+title: Indeks dużych zestawów danych przy użyciu indeksatorów wbudowanych — usługa Azure Search
+description: Poznaj strategie opracowywania dużych ilości danych indeksowania lub wymaga dużej mocy obliczeniowej indeksowania w trybie wsadowym, zasoby i techniki zaplanowane, równoległych i rozproszonych, indeksowanie.
 services: search
 author: HeidiSteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f268de43f4f860458c062cb80e5bea0134b4407
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2f3d08a32384cea815f096f51b24eea596d0d118
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316690"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742239"
 ---
-# <a name="how-to-scale-out-indexing-in-azure-search"></a>Jak skalowalnego w poziomie indeksowanie w usłudze Azure Search
+# <a name="how-to-index-large-data-sets-in-azure-search"></a>Jak indeksować dużych zestawów danych w usłudze Azure Search
 
-Wzrostu ilości danych lub przetwarzania zmienią się potrzeby, może się okazać, że prosty [ponowne kompilowanie i indeksowanie zadań](search-howto-reindex.md) nie są wystarczające. 
+Wzrostu ilości danych lub przetwarzania zmienią się potrzeby, może się okazać, że domyślny strategie indeksowania nie są już praktyczne. Usługi Azure Search jest kilka metod spełnić większych zestawów danych — od strukturą żądania przekazania danych, za pomocą indeksatora specyficznymi dla źródła dla zaplanowanych, jak i rozproszonych obciążeń.
 
-Jako pierwszy krok w kierunku spotkania zwiększone zapotrzebowanie, zaleca się zwiększenie [skalowalność i wydajność](search-capacity-planning.md) w granicach istniejącej usługi. 
+Te same techniki dla dużych ilości danych dotyczą również długotrwałe procesy. W szczególności kroki opisane w [równoległe indeksowania](#parallel-indexing) są przydatne podczas indeksowania wymaga dużej mocy obliczeniowej, takich jak analiza obrazu lub języka naturalnego, w [potoków wyszukiwania kognitywnego](cognitive-search-concept-intro.md).
 
-Drugi etap, jeśli użyjesz [indeksatory](search-indexer-overview.md), dodaje mechanizmy skalowalne indeksowania. Indeksatory pochodzą z wbudowanych harmonogram, który pozwala na działka limit indeksowania w regularnych odstępach czasu lub rozszerzyć przetwarzanie ponad 24-godzinnego przedziału czasu. Ponadto w połączeniu z definicji źródła danych, indeksatorów pomóc Ci osiągnąć formularza równoległości, partycjonowanie danych i używając harmonogramów można wykonać równolegle.
+## <a name="batch-indexing"></a>Indeksowanie usługi Batch
 
-### <a name="scheduled-indexing-for-large-data-sets"></a>Zaplanowane indeksowania dla dużych zestawów danych
+Jednym z najprostszym mechanizmy indeksowania większy zestaw danych jest można przesłać wielu dokumentów lub rekordy w ramach pojedynczego żądania. Tak długo, jak ładunek całego jest w obszarze 16 MB, żądanie może obsługiwać maksymalnie 1000 dokumentów w operacji przekazywania zbiorczej. Zakładając, że [apletu Dodaj lub interfejsu API REST dokumentów aktualizacji](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents), czy pakiet 1000 dokumentów w treści żądania.
 
-Planowanie jest ważnym mechanizmem do przetwarzania dużych zestawów danych i analiz wolno działające, takich jak analiza obrazu w usłudze wyszukiwania poznawczego potoku. Indeksator przetwarzania działa w okresie 24-godzinnym. Jeśli przetwarzanie zakończy się, aby zakończyć w ciągu 24 godzin, wykorzystaj pracować zachowania planowania indeksatora. 
+Indeksowanie usługi Batch jest implementowana dla poszczególnych żądań przy użyciu REST lub platformy .NET lub przy użyciu indeksatorów. Indeksatory kilka działają różne limity. W szczególności indeksowanie obiektów Blob platformy Azure ustawia rozmiar partii w 10 dokumentów za większy rozmiar średni dokumentu. Dla indeksatorów, na podstawie [tworzenie indeksatora interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer ), można ustawić `BatchSize` argumentu, aby dostosować to ustawienie, aby lepiej dopasować je do właściwości danych. 
+
+> [!NOTE]
+> Aby zachować rozmiaru dokumentu,, pamiętaj, aby wykluczyć nie umożliwia zadawania zapytań dane z żądania. Obrazy i inne dane binarne nie są bezpośrednio można wyszukiwać i nie powinny być zapisane w indeksie. Do integracji danych nie umożliwia zadawania zapytań w wynikach wyszukiwania, należy zdefiniować niemożliwych pola, które przechowuje odwołanie adresu URL do zasobu.
+
+## <a name="add-resources"></a>Dodaj zasoby
+
+Usługi, które są udostępniane w jednym z [ceny warstwy standardowej](search-sku-tier.md) często mają niewykorzystane pojemność magazynu i obciążeń (zapytania lub indeksowania), co sprawia, że [zwiększenie liczby partycji i replik ](search-capacity-planning.md) to oczywiste rozwiązanie spełnić większych zestawów danych. Aby uzyskać najlepsze wyniki, należy oba zasoby: partycji dla magazynu i repliki dla pracy pozyskiwania danych.
+
+Zwiększa replik i partycji są płatnych zdarzeń, które zwiększają kosztów, ale chyba że są stale indeksowania, w obszarze maksymalnego obciążenia, można dodawać skalę na czas trwania procesu indeksowania, a następnie Dostosuj poziomów zasobów w dół, po indeksowania zostało zakończone.
+
+## <a name="use-indexers"></a>Korzystać z indeksatorów
+
+[Indeksatory](search-indexer-overview.md) służą do przeszukuje zewnętrzne źródła danych dla zawartość do przeszukiwania. Mimo, że nie jest specjalnie przeznaczony do indeksowania na dużą skalę, kilka możliwości indeksatora są szczególnie przydatne w przypadku uwzględniania większych zestawów danych:
+
++ Transfery danych umożliwiają działka limit indeksowania w regularnych odstępach czasu, aby rozłożyć wraz z upływem czasu.
++ Zaplanowane indeksowania może wznowić w momencie ostatni znany zatrzymywania. Jeśli źródło danych nie są w pełni przeszukiwane w okresie 24-godzinnym, indeksator zostanie wznowiona indeksowania w dniu, dwa w wszędzie tam, gdzie zostało przerwane.
++ Partycjonowanie danych w mniejszej poszczególnych źródeł danych umożliwia przetwarzanie równoległe. Możesz przerwać dużych zestawów danych mniejszych zestawów danych, a następnie utwórz wiele definicji źródła danych, które mogą być indeksowane równolegle.
+
+> [!NOTE]
+> Indeksatory są źródła dotyczące danych, dzięki czemu przy użyciu podejścia indeksatora jest tylko do wybranych źródeł danych na platformie Azure: [Baza danych SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [magazynu obiektów Blob](search-howto-indexing-azure-blob-storage.md), [Table storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+## <a name="scheduled-indexing"></a>Zaplanowane indeksowania
+
+Planowanie indeksatora jest ważnym mechanizmem do przetwarzania dużych zestawów danych, a także wolno działające procesy, takich jak analiza obrazu w usłudze wyszukiwania poznawczego potoku. Indeksator przetwarzania działa w okresie 24-godzinnym. Jeśli przetwarzanie zakończy się, aby zakończyć w ciągu 24 godzin, wykorzystaj pracować zachowania planowania indeksatora. 
 
 Zgodnie z projektem należy zaplanować indeksowanie rozpoczyna się w określonych odstępach czasu, za pomocą zadania zazwyczaj ukończenie przed wznowieniem w następnym zaplanowanym interwale. Jednak jeśli przetwarzanie zakończy się w przedziale czasu, indeksator przestaje (ponieważ zabrakło czasu). W następnym interwale czasowym wznawia przetwarzania tam, gdzie ją ostatnia przerwaliśmy, za pomocą zachowania systemu prowadnicy gdzie występuje. 
 
-W praktyce, w przypadku obciążeń indeksu obejmujące kilka dni można umieścić indeksator zgodnie z harmonogramem 24-godzinnym. Podczas indeksowania wznawia dla następnego firmą 24-godzinnego, uruchamia ponownie w ostatnich znanych dokumentu dobre. W ten sposób indeksatora pracować jego sposób za pomocą zaległości dokumentu przez szereg dni, po których przetwarzane są wszystkie nieprzetworzone dokumenty. Aby uzyskać więcej informacji na temat tego podejścia, zobacz [indeksowania dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
+W praktyce, w przypadku obciążeń indeksu obejmujące kilka dni można umieścić indeksator zgodnie z harmonogramem 24-godzinnym. Podczas indeksowania wznawia na następny cykl 24-godzinnym, uruchamia ponownie w ostatnich znanych dokumentu dobre. W ten sposób indeksatora pracować jego sposób za pomocą zaległości dokumentu przez szereg dni, po których przetwarzane są wszystkie nieprzetworzone dokumenty. Aby uzyskać więcej informacji na temat tego podejścia, zobacz [indeksowania dużych zestawów danych w usłudze Azure Blob storage](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Aby uzyskać więcej informacji na temat ustawiania harmonogramy ogólnie rzecz biorąc, zobacz [tworzenie indeksatora interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax).
 
 <a name="parallel-indexing"></a>
 
 ## <a name="parallel-indexing"></a>Indeksowanie równoległe
 
-Drugi to skonfigurować równoległego indeksowania strategii. Nietypowy wymaga dużej mocy obliczeniowej, indeksowanie wymaganiach, takich jak optyczne rozpoznawanie znaków w zeskanowane dokumenty w usłudze wyszukiwania poznawczego potoku indeksowania strategii równoległego może być właściwe podejście do określonego celu. W usłudze wyszukiwania poznawczego wzbogacony potok obrazów, analizy i przetwarzania języka naturalnego są długo działające. Równoległe Indeksowanie to usługa, która jednocześnie nie obsługuje żądań zapytań może być rentowną opcją pracy nad dużą porcję wolne przetwarzania zawartości. 
+Równoległa indeksowania strategii opiera się na indeksowanie wiele źródeł danych spójnie, gdzie każda definicja źródła danych określa podzbiór danych. 
 
-Strategia do przetwarzania równoległego ma następujące elementy:
+Nietypowy, wymaga dużej mocy obliczeniowej indeksowania wymagania — takich jak optyczne rozpoznawanie znaków w zeskanowane dokumenty w usłudze wyszukiwania poznawczego potoku, analizy obrazów lub przetwarzania języka naturalnego - równoległego indeksowania strategia jest często właściwe podejście do ukończenia proces długo działających w możliwie najkrótszym czasie. Jeśli można wyeliminować, lub Zmniejsz żądań zapytań, równoległe Indeksowanie to usługa, która jednocześnie nie obsługuje zapytań jest najlepszym rozwiązaniem strategii do pracy nad dużą porcję wolne przetwarzania zawartości. 
 
-+ Podziel dane źródłowe między wiele kontenerów lub wielu wirtualnych folderów, w tym samym kontenerze. 
-+ Mapowanie każdego mini zestawu danych, aby [źródło daty](https://docs.microsoft.com/rest/api/searchservice/create-data-source)parowania na własnej [indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Przetwarzanie równoległe ma następujące elementy:
+
++ Należy podzielić dane źródłowe między wiele kontenerów lub wielu wirtualnych folderów, w tym samym kontenerze. 
++ Mapowanie mini zestawów danych do jego własnej [źródło daty](https://docs.microsoft.com/rest/api/searchservice/create-data-source)parowania na własnej [indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 + Usługa cognitive search odwołania takie same [zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/create-skillset) w Każda definicja indeksatora.
 + Zapisywanie w tym samym docelowym indeksem wyszukiwania. 
 + Planowanie wszystkich indeksatorów, aby go uruchomić w tym samym czasie.
 
-> [!Note]
+> [!NOTE]
 > Usługa Azure Search nie obsługuje przypisywanie repliki lub partycje do konkretnych obciążeń. Ryzyko związane z dużymi indeksowania współbieżnych jest nadmiernego obciążania systemu na szkodę wydajności zapytań. W przypadku środowiska testowego wdrożenia równoległego indeksowania najpierw zrozumieć skutków ubocznych.
 
-## <a name="configure-parallel-indexing"></a>Konfigurowanie indeksowania równoległe
+### <a name="how-to-configure-parallel-indexing"></a>Jak skonfigurować indeksowania równoległe
 
 Dla indeksatorów wydajności przetwarzania luźno opiera się na jednym podsystemie indeksatora dla każdej jednostki usługi (SU) używane przez usługi wyszukiwania. Wiele współbieżnych indeksatorów są możliwe w przypadku usług Azure Search aprowizowanych w warstwach Basic lub Standard, o co najmniej dwie repliki. 
 

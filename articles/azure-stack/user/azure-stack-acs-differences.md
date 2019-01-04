@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 1d1811549978d78a8dddad8e89895fdf605ed02b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1393dd32aea8cb6d348092ea1fc56752f659beab
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341902"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717878"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Usługa Azure storage stosu: Różnice i zagadnienia
 
@@ -34,8 +34,8 @@ Ten artykuł zawiera podsumowanie znane różnice usługi Azure Stack Storage z 
 | Cecha | Azure (globalna) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Oparte na chmurze udziałów plików SMB obsługiwane|Nie jest jeszcze obsługiwany
-|Szyfrowanie usługi Azure storage dla danych magazynowanych|256-bitowego szyfrowania AES|Funkcja BitLocker 128-bitowego szyfrowania AES
-|Typ konta magazynu|Konta magazynu ogólnego przeznaczenia i platforma Azure obiektów blob|Ogólnego przeznaczenia tylko.
+|Szyfrowanie usługi Azure storage dla danych magazynowanych|256-bitowego szyfrowania AES. Obsługuje szyfrowanie przy użyciu kluczy zarządzanych przez klienta w usłudze Key Vault.|Funkcja BitLocker 128-bitowego szyfrowania AES. Szyfrowanie przy użyciu kluczy zarządzanych przez klienta nie jest obsługiwane.
+|Typ konta magazynu|Kont magazynu ogólnego zastosowania V1, V2 i obiektów Blob|Ogólnego przeznaczenia w wersji 1 tylko.
 |Opcje replikacji|Magazyn lokalnie nadmiarowy, Magazyn geograficznie nadmiarowy, Magazyn geograficznie nadmiarowy geograficznie nadmiarowy i Magazyn strefowo nadmiarowy|Magazyn lokalnie nadmiarowy.
 |Premium Storage|W pełni obsługiwane|Mogą być udostępniane, ale bez ograniczeń wydajności lub gwarancji.
 |Dyski zarządzane|Premium i standardowa obsługiwane|Obsługiwane w przypadku używania wersji 1808 lub nowszej.
@@ -44,11 +44,14 @@ Ten artykuł zawiera podsumowanie znane różnice usługi Azure Stack Storage z 
 |Kopiowanie migawki obiektu blob strony|Kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych dołączony do uruchomionej maszyny Wirtualnej obsługiwane|Nie jest jeszcze obsługiwany.
 |Kopiowanie przyrostowe migawki obiektu blob strony|W warstwie Premium i standardowa usługi Azure BLOB typu Page obsługiwane|Nie jest jeszcze obsługiwany.
 |Warstwy magazynowania dla magazynu obiektów blob|Gorąca chłodna i archiwalna magazynu.|Nie jest jeszcze obsługiwany.
-Usuwania nietrwałego dla magazynu obiektów blob|Wersja zapoznawcza|Nie jest jeszcze obsługiwany.
+|Usuwania nietrwałego dla magazynu obiektów blob|Ogólnie dostępna|Nie jest jeszcze obsługiwany.
 |Rozmiar maksymalny stronicowego obiektu blob|8 TB|1 TB
 |Rozmiar strony stronicowego obiektu blob|512 bajtów|4 KB
 |Rozmiar klucza w tabeli klucza partycji i wiersza|1024 znaków (2048 bajtów)|400 znaków (800 w bajtach)
-|Migawki obiektu blob|Maksymalna liczba migawek jeden obiekt blob nie jest ograniczona.|Maksymalna liczba migawek jeden obiekt blob wynosi 1000.|
+|Migawki obiektu blob|Maksymalna liczba migawek jeden obiekt blob nie jest ograniczona.|Maksymalna liczba migawek jeden obiekt blob wynosi 1000.
+|Uwierzytelnianie usługi Azure AD dla magazynu|W wersji zapoznawczej|Nie jest jeszcze obsługiwany.
+|Niezmienne obiektów blob|Ogólnie dostępna|Nie jest jeszcze obsługiwany.
+|Zapory i reguł sieci wirtualnej dla magazynu|Ogólnie dostępna|Nie jest jeszcze obsługiwany.|
 
 Istnieją różnice za pomocą metryk usługi storage:
 
@@ -61,7 +64,17 @@ Następujące wersje są obsługiwane z usługą Azure Storage stosu:
 
 Interfejsy API usługi Azure Storage:
 
-aktualizacji 1802 lub nowszej:
+1811 aktualizacji lub nowszych wersji:
+
+ - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+ - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
+ - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+
+Aktualizacja wersji 1802 1809 aktualizacji:
 
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
@@ -79,6 +92,12 @@ Interfejsy API zarządzania usługi Azure Storage:
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
+Poprzednie wersje:
+
+ - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ 
 ## <a name="sdk-versions"></a>Wersje zestawu SDK
 
 Magazyn usługi Azure Stack obsługuje podanych niżej bibliotek klienta:

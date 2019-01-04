@@ -1,7 +1,7 @@
 ---
 title: Obsługa wersji
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dowiedz się, jak używać wersji do zarządzania zmianami w Language Understanding (LUIS)
+description: Wersje w LUIS są podobne do wersji w tradycyjnego programowania. Każda wersja jest migawką w czasie aplikacji. Przed wprowadzeniem zmian w aplikacji, należy utworzyć nową wersję. Łatwiej można wrócić do dokładnie aplikacji jest następnie próbuje unpeel i przeznaczenie aplikacji i wypowiedzi do poprzedniego stanu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,16 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 3dae1256e93bb15777225ada742539c5a0ebdccc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 522f1cff2d735081daecc8be6384badcd378fd75
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015572"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599590"
 ---
-# <a name="versions"></a>Wersje
+# <a name="understand-how-and-when-to-use-a-luis-version"></a>Zrozumienie, jak i kiedy używać wersji usługi LUIS
+
+Wersje w LUIS są podobne do wersji w tradycyjnego programowania. Każda wersja jest migawką w czasie aplikacji. Przed wprowadzeniem zmian w aplikacji, należy utworzyć nową wersję. Łatwiej można wrócić do dokładnie aplikacji jest następnie próbuje unpeel i przeznaczenie aplikacji i wypowiedzi do poprzedniego stanu. 
+
 Utwórz różne modele taką samą aplikację na [wersji](luis-how-to-manage-versions.md). 
 
 ## <a name="version-id"></a>Identyfikator wersji

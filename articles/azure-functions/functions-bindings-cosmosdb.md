@@ -10,16 +10,16 @@ ms.service: azure-functions; cosmos-db
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 2a501129720447462d1e6e961597b51fa683dc1e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 4c5d7c1ebf50103786aaf07f298b5b4d971ad955
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136209"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971958"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB powiązania usługi Azure Functions 1.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Wybierz wersję środowiska wykonawczego Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-bindings-cosmosdb.md)
 > * [Wersja 2](functions-bindings-cosmosdb-v2.md)
 
@@ -33,7 +33,7 @@ W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](../cosmos-
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API, należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, w tym [interfejsu API usługi MongoDB](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [interfejsu API rozwiązania Cassandra](../cosmos-db/cassandra-introduction.md), [interfejs API języka Gremlin](../cosmos-db/graph-introduction.md), i [interfejs API tabel](../cosmos-db/table-introduction.md).
+> Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API, należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, w tym [usługi Azure Cosmos DB dla interfejsu API usługi MongoDB](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [interfejsu API rozwiązania Cassandra](../cosmos-db/cassandra-introduction.md), [interfejs API języka Gremlin](../cosmos-db/graph-introduction.md), i [interfejs API tabel](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
@@ -198,8 +198,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał można uruchamiać zadania obliczeniowe, jeśli partycje są dystrybuowane równomiernie między wystąpieniami znanych hostów. Wartość domyślna to 13000 (w sekundach 13).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla której dzierżawy jest pobierany podczas dzierżawy, reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślna to 60 000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
-|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po pomyślnym wywołania funkcji.
+|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po każdym wywołaniu funkcji.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
+|**startFromBeginning**| **StartFromBeginning**| (Opcjonalnie) Po ustawieniu informuje wyzwalacz, aby rozpocząć odczyt zmiany wprowadzone od początku historii kolekcja zamiast bieżącego czasu. Działa to tylko przy pierwszym uruchomieniu wyzwalacza, tak jak w kolejnych przebiegów, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true` w przypadku dzierżaw utworzone nie ma wpływu.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

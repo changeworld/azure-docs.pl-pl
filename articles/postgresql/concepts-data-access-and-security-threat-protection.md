@@ -1,19 +1,17 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami — Azure Database for PostgreSQL | Dokumentacja firmy Microsoft
+title: Zaawansowana ochrona przed zagrożeniami — Azure Database for PostgreSQL
 description: Zaawansowana ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych.
-services: postgresql
 author: bolzmj
-manager: kfile
-ms.service: postgresql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: 392947919813753dc57422957029e961a037a616
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 09/20/2018
+ms.openlocfilehash: 68027526fb98db4cb5b7eaf75f117692222c6039
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066942"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549024"
 ---
 # <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for postgresql — Zaawansowana ochrona przed zagrożeniami
 
@@ -22,7 +20,7 @@ Usługa Advanced Threat Protection dla usługi Azure Database for PostgreSQL wyk
 Ochrona przed zagrożeniami jest częścią oferty zaawansowanej ochrony przed zagrożeniami (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń. Zaawansowana ochrona przed zagrożeniami mogą być dostępne i zarządzane za pośrednictwem [witryny Azure portal](https://portal.azure.com) i jest obecnie w wersji zapoznawczej.
 
 > [!NOTE]
-> Funkcja zaawansowanej ochrony przed zagrożeniami jest **nie** dostępne w regionach należących do suwerennej chmury oraz następujące platformy Azure dla instytucji rządowych: US Gov Teksas stany USA, administracja USA — Arizona stany USA, administracja — Iowa, administracja — Wirginia, US dod — wschodnie stany, US dod — środkowe, Niemcy środkowe, Niemcy Północne, Chiny wschodnie, Chiny wschodnie stany USA 2. Odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) dostępności głównej produktu.
+> Funkcja zaawansowanej ochrony przed zagrożeniami jest **nie** dostępne w następujących platformy Azure dla instytucji rządowych i regiony należących do suwerennej chmury: Wschodnie DoD programu Microsoft Gov Teksas stany USA, administracja USA — Arizona Iowa Gov, US, — Wirginia, US Gov, US dod — środkowe, Niemcy środkowe, Niemcy Północne, Chiny wschodnie, Chiny wschodnie stany USA 2. Odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) dostępności głównej produktu.
 >
 
 ## <a name="what-is-advanced-threat-protection"></a>Co to jest Zaawansowana ochrona przed zagrożeniami?
@@ -33,11 +31,11 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Database for PostgreS
 
 ## <a name="advanced-threat-protection-alerts"></a>Zaawansowana ochrona przed zagrożeniami alertów 
 Zaawansowana ochrona przed zagrożeniami dla usługi Azure Database for PostgreSQL wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych i może wywołać następujące alerty:
-- **Dostęp z nietypowej lokalizacji**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do usługi Azure Database dla serwera PostgreSQL, gdy ktoś zalogował się do usługi Azure Database dla serwera PostgreSQL z nietypowej geograficznych Lokalizacja. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
-- **Dostęp z centrum danych platformy Azure nietypowe**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do usługi Azure Database for postgresql w warstwie serwera, gdy ktoś zalogował się do serwera z centrum danych platformy Azure, co zostało zaobserwowane na tym serwer w ostatnim czasie. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (Nowa aplikacja w Azure, usługa Power BI — Azure Database for postgresql — Edytor zapytań). W innych przypadkach ten alert wykrywa złośliwe działanie z zasobu/usługi platformy Azure (były pracownik, zewnętrzna osoba atakująca).
-- **Dostęp z nieznanego podmiotu zabezpieczeń**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do usługi Azure Database for postgresql w warstwie serwera, gdy ktoś zalogował się na serwerze przy użyciu nietypowego podmiotu zabezpieczeń (Azure Database for PostgreSQL Użytkownik). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja, konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
-- **Dostęp z potencjalnie szkodliwej aplikacji**: Ten alert jest wyzwalany, gdy potencjalnie szkodliwa aplikacja jest używana w celu uzyskania dostępu do bazy danych. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak przy użyciu typowych narzędzi ataku.
-- **Siłowe — Azure Database for postgresql — poświadczeń**: ten alert jest wyzwalany, gdy ma nietypowo dużej liczby nieudanych prób logowania przy użyciu różnych poświadczeń. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak siłowy.
+- **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do usługi Azure Database for postgresql w warstwie serwera, gdy ktoś zalogował się do usługi Azure Database for postgresql w warstwie serwera z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
+- **Dostęp z centrum danych platformy Azure nietypowe**: Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do usługi Azure Database for postgresql w warstwie serwera, gdy ktoś zalogował się do serwera z centrum danych platformy Azure, co zostało zaobserwowane na tym serwerze w ostatnim czasie. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (Nowa aplikacja w Azure, usługa Power BI — Azure Database for postgresql — Edytor zapytań). W innych przypadkach ten alert wykrywa złośliwe działanie z zasobu/usługi platformy Azure (były pracownik, zewnętrzna osoba atakująca).
+- **Dostęp z nieznanego podmiotu zabezpieczeń**: Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do usługi Azure Database for postgresql w warstwie serwera, gdy ktoś zalogował się na serwerze przy użyciu nietypowego podmiotu zabezpieczeń (— Azure Database for postgresql w warstwie użytkownika). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja, konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
+- **Dostęp z potencjalnie szkodliwej aplikacji**: Ten alert jest wyzwalany, gdy potencjalnie szkodliwa aplikacja jest używana do dostępu do bazy danych. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak przy użyciu typowych narzędzi ataku.
+- **Siłowe — Azure Database for postgresql — poświadczeń**: Ten alert jest wyzwalany, gdy ma nietypowo dużej liczby nieudanych prób logowania przy użyciu różnych poświadczeń. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak siłowy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

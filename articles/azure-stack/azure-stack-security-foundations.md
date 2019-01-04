@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2018
 ms.author: patricka
-ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901485"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727093"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Poziom zabezpieczeń infrastruktury w usłudze Azure Stack
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Zagadnienia dotyczące zabezpieczeń i przepisy dotyczące zgodności są głównym sterowniki przy użyciu chmury hybrydowej. Usługa Azure Stack jest przeznaczona dla tych scenariuszy. W tym artykule opisano kontroli bezpieczeństwa na potrzeby usługi Azure Stack.
 
@@ -40,7 +40,7 @@ Ponieważ infrastruktura działa dobrze zdefiniowane sprzęt i oprogramowanie, u
 Ponieważ usługi Azure Stack jest dostarczana jako system zintegrowany, poziom zabezpieczeń infrastruktury Azure Stack jest zdefiniowana przez firmę Microsoft. Podobnie jak na platformie Azure, dzierżawców są odpowiedzialne za definiowanie stan zabezpieczeń obciążeń dzierżawcy. Ten dokument zawiera wiedzy fundamentalnych na poziom zabezpieczeń infrastruktury Azure Stack.
 
 ## <a name="data-at-rest-encryption"></a>Dane szyfrowanie rest
-Wszystkie usługi Azure Stack infrastruktury i dzierżawcy dane są szyfrowane w stanie spoczynku przy użyciu funkcji Bitlocker. To szyfrowanie zapewnia ochronę względem fizycznej utraty lub kradzieży składników magazynu usługi Azure Stack. 
+Wszystkie usługi Azure Stack infrastruktury i dzierżawcy dane są szyfrowane w stanie spoczynku przy użyciu funkcji Bitlocker. To szyfrowanie zapewnia ochronę względem fizycznej utraty lub kradzieży składników magazynu usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [danych rest szyfrowanie w usłudze Azure Stack](azure-stack-security-bitlocker.md).
 
 ## <a name="data-in-transit-encryption"></a>Dane przesyłane szyfrowania
 Składniki infrastruktury usługi Azure Stack komunikacji za pomocą kanałów zaszyfrowany przy użyciu protokołu TLS 1.2. Certyfikaty szyfrowania własnym są zarządzane przez infrastrukturę. 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054408"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606031"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z Wingtip Tickets przykładowe aplikacje SaaS
 
@@ -57,7 +57,7 @@ Ustawienia te wartości w tym miejscu po prostu wymaga znajomości zaktualizowa�
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Wykonywanie skryptów poprzez naciśnięcie klawisza F5
 
-Szereg skryptów używa *$PSScriptRoot* do przeglądania folderów, a *$PSScriptRoot* jest oceniane tylko, gdy skryptów są wykonywane przez naciśnięcie klawisza **F5**.  Wyróżnianie i uruchomienie go (**F8**) może spowodować błędy, więc naciśnij **F5** podczas uruchamiania skryptów.
+Szereg skryptów używa *$PSScriptRoot* do przeglądania folderów, a *$PSScriptRoot* jest oceniane tylko, gdy skryptów są wykonywane przez naciśnięcie klawisza **F5**.  Wyróżnianie i uruchomienie go (**F8**) może spowodować błędy, więc naciśnij **F5** podczas uruchamiania skryptów.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Przechodzenie przez skrypty w celu zapoznania się z implementacją
 
@@ -94,7 +94,7 @@ W celu zapewnienia połączenia pokaz pomyślne, wszystkie serwery mają [reguł
 
    ![serwer wykazu](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. W wersji demonstracyjnej są używane następujące poświadczenia: Nazwa logowania = *developer*, hasło =*P@ssword1*
+3. Pokaz poświadczenia są: Identyfikator logowania = *developer*, hasło = *P@ssword1*
 
     Na poniższej ilustracji przedstawiono nazwy logowania dla *bazy danych dla każdego dzierżawcy* wzorca. 
     ![połączenia](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

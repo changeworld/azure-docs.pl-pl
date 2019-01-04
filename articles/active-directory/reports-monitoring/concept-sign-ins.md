@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275337"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653360"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -44,7 +44,7 @@ Ten temat zawiera omówienie raportów logowania.
 * Ponadto każdy użytkownik (niebędący administratorem) będą mogli ich własnych logowań 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
-* Dzierżawca musi mieć skojarzoną licencję usługi Azure AD w wersji Premium, aby wyświetlić pełny raport o wszystkich operacjach logowania
+* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Zobacz [wprowadzenie do usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) uaktualnić swoją wersję usługi Azure Active Directory.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 

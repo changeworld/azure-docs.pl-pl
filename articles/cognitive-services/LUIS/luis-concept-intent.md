@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f9f0c52c187b36416dbc77f280a8f6148cf1cbbc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138691"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971056"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Pojęcia dotyczące intencje w aplikacją usługi LUIS
 
@@ -58,7 +58,7 @@ Podobnie tych [wypowiedzi](luis-concept-utterance.md) odpowiadają jednej intenc
 [Ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) mają intencji z wypowiedzi.  
 
 ## <a name="none-intent-is-fallback-for-app"></a>Żadna funkcja nie jest rezerwowe dla aplikacji
-**Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). **Brak** intencji powinny mieć od 10 do 20 procent całkowitej wypowiedzi w aplikacji. Nie zostawiaj jej pustej. 
+**Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). **Brak** intencji powinny mieć od 10 do 20 procent całkowitej wypowiedzi w aplikacji. Nie pozostawiaj brak puste. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Brak elementu intent pomaga kierunek konwersacji
 Gdy wypowiedź przewiduje się, jak brak intencji i zwrócone do chatbot za pomocą tego prognozowania bot można zadawać pytań lub Zapewnij menu do kierowania użytkownikowi prawidłowe opcje w chatbot. 

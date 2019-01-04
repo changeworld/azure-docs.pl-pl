@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3b51f4a4a4d00bcfaa1baf1c46ad7f6eb638ad2b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4971d680994c9d81e86a4070ea79365ac8ec4dd
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867872"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606490"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozszerzone zdarzenia w bazie danych SQL
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,7 +32,7 @@ W tym temacie wyjaśniono, jak implementacja rozszerzone zdarzenia w usłudze Az
 
 Dodatkowe informacje na temat zdarzenia rozszerzone dla usługi Azure SQL Database i programu Microsoft SQL Server jest dostępne pod adresem:
 
-- [Szybki Start: Rozszerzonych zdarzeń w programie SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Szybki Start: Rozszerzone zdarzenia w programie SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Zdarzenia rozszerzone](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Wymagania wstępne

@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: 268e679bb052bce4c972c940333147edc5c7d721
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242589"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632878"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapse Media pliki z usługi Azure Media Hyperlapse
+
+> [!NOTE]
+> Tę funkcję wersji zapoznawczej usługi Azure Media Services zostanie wkrótce wycofany. Od 19 grudnia 2018 r. usługi Media Services nie jest już wprowadzi zmiany i udoskonalenia Media Hyperlapse. Na 29 marca 2019 r będzie wycofane i nie będą już dostępne.
+
 Usługa Azure Media Hyperlapse jest nośnik procesora (MP) który tworzy smooth czasu uzyskanie płynnych wideo poklatkowych na podstawie zawartości pierwszą osobą, która lub kamery akcji.  Element równorzędny oparte na chmurze, aby [pulpitu Hyperlapse Pro Microsoft Research i telefoniczną Hyperlapse Mobile](https://aka.ms/hyperlapse), Microsoft Hyperlapse dla usługi Azure Media Services korzysta z ogromnej skali przetwarzania multimediów usługi multimediów Azure platform na poziomie skalowanie i wykonywanie równoległe zbiorczo Hyperlapse przetwarzania.
 
 > [!IMPORTANT]

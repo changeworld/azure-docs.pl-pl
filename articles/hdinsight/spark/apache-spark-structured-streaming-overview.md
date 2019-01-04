@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 23702c12f5ec538da4b980ed42fe2282dea69409
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0c2fd29990e180283eb25949b806c4ceac58e2f7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582228"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653632"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Przegląd platformy Apache Spark Structured Streaming
 
 [Platforma Apache Spark](https://spark.apache.org/) przesyłanie strumieniowe ze strukturą, umożliwia wdrożenie skalowalne o wysokiej przepływności, odpornej na uszkodzenia aplikacji do przetwarzania strumieni danych. Przesyłanie strumieniowe ze strukturą oparto na aparatu Spark SQL i zwiększa się po konstrukcji z ramek danych SQL platformy Spark i zestawy danych, dzięki czemu można napisać, przesyłanie strumieniowe zapytania w taki sam sposób napisać wsadowe.  
 
-Aplikacje do przesyłania strumieniowego Structured działały w klastrach HDInsight Spark i połącz się dane przesyłane strumieniowo z [platformy Apache Kafka](https://kafka.apache.org/), TCP gniazda (na potrzeby debugowania), usługi Azure Storage lub Azure Data Lake Store. Ostatnie dwie opcje, które zależą od usługi zewnętrznej usługi storage umożliwiają wyszukiwać nowe pliki dodane do magazynu i przetwarzanie ich zawartość, tak, jakby były przesyłane strumieniowo. 
+Aplikacje do przesyłania strumieniowego Structured działały w klastrach HDInsight Spark i połącz się dane przesyłane strumieniowo z [platformy Apache Kafka](https://kafka.apache.org/), TCP gniazda (na potrzeby debugowania), usługi Azure Storage lub usługi Azure Data Lake Storage. Ostatnie dwie opcje, które zależą od usługi zewnętrznej usługi storage umożliwiają wyszukiwać nowe pliki dodane do magazynu i przetwarzanie ich zawartość, tak, jakby były przesyłane strumieniowo. 
 
-Przesyłanie strumieniowe ze strukturą tworzy zapytanie długotrwałych, podczas którego operacje stosowane do danych wejściowych, takich jak zaznaczenia, projekcji, agregacji, obsługi okien i dołączenie do przesyłania strumieniowego ramkę danych za pomocą odwołania elementy Dataframe. Następnie wyjściowe wyniki do file storage (Azure Storage blob lub Data Lake Store) lub dowolnym magazynem danych za pomocą kodu niestandardowego (np. bazy danych SQL lub usługi Power BI). Przesyłanie strumieniowe ze strukturą także dane wyjściowe do konsoli debugowania lokalnie, a także do tabeli w pamięci, dzięki czemu możesz zobaczyć dane wygenerowane na potrzeby debugowania w HDInsight. 
+Przesyłanie strumieniowe ze strukturą tworzy zapytanie długotrwałych, podczas którego operacje stosowane do danych wejściowych, takich jak zaznaczenia, projekcji, agregacji, obsługi okien i dołączenie do przesyłania strumieniowego ramkę danych za pomocą odwołania elementy Dataframe. Następnie wyjściowe wyniki do file storage (Azure Storage blob lub magazynu usługi Data Lake) lub dowolnym magazynem danych za pomocą kodu niestandardowego (np. bazy danych SQL lub usługi Power BI). Przesyłanie strumieniowe ze strukturą także dane wyjściowe do konsoli debugowania lokalnie, a także do tabeli w pamięci, dzięki czemu możesz zobaczyć dane wygenerowane na potrzeby debugowania w HDInsight. 
 
 ![Przesyłanie strumieniowe ze strukturą Stream przetwarzania za pomocą HDInsight i platformy Spark ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Przesyłanie strumieniowe ze strukturą platformy Spark zastępuje Spark Streaming (DStreams). Idąc dalej, przesyłanie strumieniowe ze strukturą otrzyma ulepszeń i konserwacji, podczas gdy DStreams będą w trybie konserwacji tylko. Przesyłanie strumieniowe ze strukturą nie jest obecnie jako funkcja uzupełniania jako DStreams dla źródeł i wychwytywanie, że obsługuje ona gotowych, więc ocena wymagań, aby wybrać odpowiednie Spark opcji przetwarzania strumienia. 
 
 ## <a name="streams-as-tables"></a>Strumienie jako tabele
@@ -53,7 +53,7 @@ Podczas przy użyciu trybie append, zapytania będzie się stosowanie projekcji 
 
 Rozważmy scenariusz, w tym samym, tym razem stosując w trybie. W trybie wszystkie dane wyjściowe tabela zostanie odświeżona w każdym wyzwalacza, więc tabela zawiera dane, nie tylko z ostatnich uruchomienie wyzwalacza, ale ze wszystkich przebiegów. Można użyć w trybie do kopiowania danych niezmieniony z tabeli wejściowej tabeli wyników. W każdym przebiegu wyzwalane nowe wiersze wynikowe są wyświetlane wraz z poprzednich wierszy. Dane wyjściowe tabeli wyników zakończy się przechowywanie wszystkich danych zebranych od czasu rozpoczęcia zapytania i po pewnym czasie należy uruchomić za mało pamięci. W trybie jest przeznaczona do użytku z zapytania zagregowane, które podsumowują dane przychodzące w jakiś sposób, a itd. każdy wyzwalacz tabeli wyników jest aktualizowana o nowe podsumowanie. 
 
-Założono do tej pory, istnieje pięć sekund, przez które już przetworzone dane, nadszedł czas na przetwarzanie danych dla szóstego drugiego. Tabela wejściowa ma zdarzenia 00:01 czasu i godziny 00:03. Celem tego przykładowe zapytanie jest zapewnienie średnia temperatura urządzenie co pięć sekund. Wykonanie tego zapytania dotyczy agregacją, która pobiera wszystkie wartości, które mieszczą się w każdym przedziale 5-sekundowego, oblicza średnią temperaturę i tworzy wiersz średnia temperatura w tym okresie. Na końcu pierwsze okno 5-sekundowego, istnieją dwie spójne kolekcje: (00:01, 1, 95) i (00:03, 1, 98). Dla okna 00:00-00:05 agregacji tworzy spójną kolekcję z średnia temperatura 96.5 stopni. W następnym oknie 5-sekundowego istnieje tylko jeden punkt danych w czasie 00:06, dzięki czemu wynikowy średnia temperatura jest 98 stopni. Godziny 00:10, przy użyciu trybu pełną tabeli wyników ma wiersze dla obu windows 00:00-00:05 i 00:05-00:10, ponieważ zapytanie Wyświetla wszystkie wiersze zagregowane, nie tylko nowe licencje. W związku z tym tabeli wyników nadal rosnąć w miarę dodawania nowych oknach.    
+Założono do tej pory, istnieje pięć sekund, przez które już przetworzone dane, nadszedł czas na przetwarzanie danych dla szóstego drugiego. Tabela wejściowa ma zdarzenia 00:01 czasu i godziny 00:03. Celem tego przykładowe zapytanie jest zapewnienie średnia temperatura urządzenie co pięć sekund. Wykonanie tego zapytania dotyczy agregacją, która pobiera wszystkie wartości, które mieszczą się w każdym przedziale 5-sekundowego, oblicza średnią temperaturę i tworzy wiersz średnia temperatura w tym okresie. Na końcu pierwsze okno 5-sekundowego istnieją dwie spójne kolekcje: (00:01, 1, 95) i (00:03, 1, 98). Dla okna 00:00-00:05 agregacji tworzy spójną kolekcję z średnia temperatura 96.5 stopni. W następnym oknie 5-sekundowego istnieje tylko jeden punkt danych w czasie 00:06, dzięki czemu wynikowy średnia temperatura jest 98 stopni. Godziny 00:10, przy użyciu trybu pełną tabeli wyników ma wiersze dla obu windows 00:00-00:05 i 00:05-00:10, ponieważ zapytanie Wyświetla wszystkie wiersze zagregowane, nie tylko nowe licencje. W związku z tym tabeli wyników nadal rosnąć w miarę dodawania nowych oknach.    
 
 ![Przesyłanie strumieniowe w trybie ze strukturą](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
@@ -124,11 +124,11 @@ To zapytanie daje wyniki podobne do następujących:
 |{u'start ": u" 2016-07-26T07:00:00.000Z ", u'end"...  |95 |   96.980971 | 99 |
 |{u'start ": u" 2016-07-26T08:00:00.000Z ", u'end"...  |95 |   96.965997 | 99 |  
 
-Szczegółowe informacje dotyczące interfejsu API platformy Spark ze strukturą Stream, wraz z danych wejściowych źródeł, operacji i dane wyjściowe wychwytywanie ją obsługuje, zobacz [Apache Spark Structured Streaming Programming Guide](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+Szczegółowe informacje dotyczące interfejsu API platformy Spark ze strukturą Stream, wraz z danych wejściowych źródeł, operacji i dane wyjściowe wychwytywanie ją obsługuje, zobacz [Apache Spark Structured Streaming Programming Guide](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>Tworzenie punktów kontrolnych i zapisu z wyprzedzeniem dzienników
 
-Aby zapewnić odporność i odporności na uszkodzenia, przesyłanie strumieniowe ze strukturą opiera się na *tworzenie punktów kontrolnych* aby upewnić się, że strumień przetwarzania można bezproblemowo kontynuują, nawet w przypadku awarii węzła. W HDInsight Spark tworzy punkty kontrolne do trwałego magazynu usługi Azure Storage lub Data Lake Store. Te punkty kontrolne są przechowywane informacje o postępie dotyczące transmisji strumieniowej zapytania. Ponadto, przesyłanie strumieniowe ze strukturą używa *dziennik zapisu z wyprzedzeniem* (WAL). WAL przechwytuje pozyskiwanych danych, które zostały odebrane, ale nie zostały jeszcze przetworzone przez zapytanie. Jeśli wystąpi błąd, przetwarzanie jest ponownie z WAL otrzymanych z źródła zdarzeń nie zostaną utracone.
+Aby zapewnić odporność i odporności na uszkodzenia, przesyłanie strumieniowe ze strukturą opiera się na *tworzenie punktów kontrolnych* aby upewnić się, że strumień przetwarzania można bezproblemowo kontynuują, nawet w przypadku awarii węzła. W HDInsight Spark tworzy punkty kontrolne do trwałego magazynu usługi Azure Storage lub magazynu usługi Data Lake. Te punkty kontrolne są przechowywane informacje o postępie dotyczące transmisji strumieniowej zapytania. Ponadto, przesyłanie strumieniowe ze strukturą używa *dziennik zapisu z wyprzedzeniem* (WAL). WAL przechwytuje pozyskiwanych danych, które zostały odebrane, ale nie zostały jeszcze przetworzone przez zapytanie. Jeśli wystąpi błąd, przetwarzanie jest ponownie z WAL otrzymanych z źródła zdarzeń nie zostaną utracone.
 
 ## <a name="deploying-spark-streaming-applications"></a>Wdrażanie aplikacji do przesyłania strumieniowego platformy Spark
 
@@ -140,6 +140,6 @@ Można również sprawdzić stan wszystkich aplikacji, za pomocą żądanie GET 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie klastra Apache Spark w HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Przewodnik programowania w przesyłania strumieniowego ze strukturą platformy Apache Spark](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Tworzenie klastra platformy Apache Spark w usłudze HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Przewodnik programowania w przesyłania strumieniowego ze strukturą platformy Apache Spark](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
 * [Uruchamiać zadania Apache Spark zdalnie za pomocą usługi LIVY Apache](apache-spark-livy-rest-interface.md)

@@ -56,6 +56,12 @@ items:
   items:
   - name: Rozwiązywanie problemów z protokołem SSH
     href: troubleshoot-ssh-connection.md
+  - name: Rozwiązywanie problemów z błędami systemu plików
+    href: https://support.microsoft.com/help/3213321
+  - name: Rozwiązywanie problemów z rozruchem związanych z jądrem
+    href: https://support.microsoft.com/help/4091524
+  - name: Rozwiązywanie problemów z błędami tabeli fstab
+    href: https://support.microsoft.com/help/3206699
   - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
     href: detailed-troubleshoot-ssh-connection.md
 - name: Typowe komunikaty o błędach
@@ -105,6 +111,8 @@ items:
   href: unexpected-reboots-attached-vhds.md
 - name: Problemy z aktywacją systemu Windows
   href: troubleshoot-activation-problems.md
+- name: Problem z aktywacją przy wymuszonym tunelowaniu
+  href: custom-routes-enable-kms-activation.md
 - name: Problemy z dostępem do aplikacji
   href: troubleshoot-app-connection.md
 - name: Nowe wdrożenia maszyn wirtualnych
@@ -162,9 +170,9 @@ items:
   href: understand-vm-reboot.md
 - name: Narzędzia do zdalnego rozwiązywania problemów
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: af1f284108a326b3ce099ee49cb15a8f51cc61af
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434862"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976328"

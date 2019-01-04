@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 73c68e6946b3715bfa67561141e6c18e32e20c18
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0fa487e1ecd419780243b04a273110f3cf43761c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011763"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633967"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
@@ -25,13 +25,13 @@ Gałąź pozwala na strukturę projektu w dużej mierze pozbawionych struktury d
 
 HDInsight zawiera kilka typów klastra, są one dostrojone dla konkretnych obciążeń. Następujące typy klastrów są najczęściej używane dla zapytań programu Hive:
 
-* __Zapytanie interakcyjne__: klaster usługi Hadoop, która zapewnia [niskim opóźnieniu analitycznego przetwarzania (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcji, aby skrócić czas odpowiedzi dla zapytań interakcyjnych. Aby uzyskać więcej informacji, zobacz [Start z zapytaniem interakcyjnym w HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
+* __Zapytanie interakcyjne__: Klaster Hadoop, która zapewnia [niskim opóźnieniu analitycznego przetwarzania (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcji, aby skrócić czas odpowiedzi dla zapytań interakcyjnych. Aby uzyskać więcej informacji, zobacz [Start z zapytaniem interakcyjnym w HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
 
-* __Hadoop__: klaster usługi Hadoop, która jest ona dostrojona dla obciążeń przetwarzania wsadowego. Aby uzyskać więcej informacji, zobacz [Start z usługą Hadoop w HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentu.
+* __Hadoop__: Klaster Hadoop jest ona dostrojona dla obciążeń przetwarzania wsadowego. Aby uzyskać więcej informacji, zobacz [Start z usługą Apache Hadoop w HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentu.
 
-* __Platforma Spark__: platforma Apache Spark ma wbudowaną funkcję do pracy z programu Hive. Aby uzyskać więcej informacji, zobacz [rozpoczynać Spark on HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
+* __Spark__: Platforma Apache Spark ma wbudowaną funkcję do pracy z programu Hive. Aby uzyskać więcej informacji, zobacz [rozpoczynać platformy Apache Spark w HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
 
-* __Baza danych HBase__: HiveQL może służyć do zapytania o dane przechowywane w bazie danych HBase. Aby uzyskać więcej informacji, zobacz [Start z bazą danych HBase na HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
+* __Baza danych HBase__: HiveQL może służyć do zapytania o dane przechowywane w bazy danych Apache HBase. Aby uzyskać więcej informacji, zobacz [rozpoczynać bazy danych Apache HBase na HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
 
 ## <a name="how-to-use-hive"></a>Jak wykorzystać technologię Hive
 
@@ -78,14 +78,14 @@ Aby uzyskać więcej informacji na temat formatów plików obsługiwanych przez 
 
 Istnieją dwa rodzaje tabel, które można utworzyć przy użyciu technologii Hive:
 
-* __Wewnętrzny__: dane są przechowywane w magazynie danych programu Hive. Magazyn danych znajduje się w `/hive/warehouse/` na domyślny magazyn dla klastra.
+* __Wewnętrzny__: Dane są przechowywane w magazynie danych programu Hive. Magazyn danych znajduje się w `/hive/warehouse/` na domyślny magazyn dla klastra.
 
     Korzystanie z tabel wewnętrznych, gdy występuje jeden z następujących warunków:
 
     * Dane są tymczasowe.
     * Chcesz, aby gałąź do zarządzania cyklem życia tabeli i danych.
 
-* __Zewnętrzne__: dane są przechowywane poza w magazynie danych. Dane mogą być przechowywane na jeden z magazynów dostępnych przez klaster.
+* __Zewnętrzne__: Dane są przechowywane poza w magazynie danych. Dane mogą być przechowywane na jeden z magazynów dostępnych przez klaster.
 
     Użyj tabel zewnętrznych, gdy występuje jeden z następujących warunków:
 
@@ -100,15 +100,15 @@ Aby uzyskać więcej informacji, zobacz [Hive wewnętrznych i zewnętrznych wpro
 
 Można również rozszerzać hive za pośrednictwem **funkcje zdefiniowane przez użytkownika (UDF)**. Funkcji zdefiniowanej przez użytkownika, można zaimplementować funkcje lub logikę, która nie jest łatwo modelowane w HiveQL. Przykład użycia funkcji zdefiniowanych przez użytkownika za pomocą technologii Hive na ten temat można znaleźć w następujących dokumentach:
 
-* [Użyj funkcji zdefiniowanych przez użytkownika języka Java przy użyciu technologii Hive](../hadoop/apache-hadoop-hive-java-udf.md)
+* [Apache Hive za pomocą funkcji zdefiniowanej przez użytkownika języka Java](../hadoop/apache-hadoop-hive-java-udf.md)
 
-* [Użyj funkcji zdefiniowanych przez użytkownika języka Python za pomocą technologii Hive](../hadoop/python-udf-hdinsight.md)
+* [Apache Hive za pomocą funkcji zdefiniowanej przez użytkownika języka Python](../hadoop/python-udf-hdinsight.md)
 
-* [Funkcja języka C# zdefiniowanych przez użytkownika za pomocą technologii Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Użyj C# funkcji zdefiniowanej przez użytkownika za pomocą technologii Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Jak dodać niestandardowe funkcji zdefiniowanej przez użytkownika programu Hive do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Jak dodać niestandardowe Apache Hive funkcji zdefiniowanej przez użytkownika do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-* [Przykład Hive funkcji zdefiniowanej przez użytkownika, aby przekonwertować formaty daty/godziny na gałąź znacznik czasu:](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
+* [Przykład Apache Hive funkcji zdefiniowanej przez użytkownika, aby przekonwertować formaty daty/godziny na gałąź znacznik czasu:](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a id="data"></a>Przykładowe dane
 
@@ -138,24 +138,24 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 W poprzednim przykładzie instrukcje HiveQL, wykonaj następujące czynności:
 
-* `set hive.execution.engine=tez;`: Ustawia aparat wykonywania Tez używać. Za pomocą aplikacji Tez może zapewnić wzrost wydajności zapytań. Aby uzyskać więcej informacji na temat aplikacji Tez, zobacz [Użyj Apache Tez w celu zwiększenia wydajności](#usetez) sekcji.
+* `set hive.execution.engine=tez;`: Ustawia aparat wykonywania, aby użyć Apache Tez. Za pomocą aplikacji Tez może zapewnić wzrost wydajności zapytań. Aby uzyskać więcej informacji na temat aplikacji Tez, zobacz [Użyj Apache Tez w celu zwiększenia wydajności](#usetez) sekcji.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ta instrukcja jest tylko wymagany w przypadku korzystania z klastra HDInsight z systemem Windows. Tez jest domyślny aparat wykonywania dla HDInsight opartych na systemie Linux.
 
 * `DROP TABLE`: Jeśli tabela już istnieje, należy go usunąć.
 
-* `CREATE EXTERNAL TABLE`: Tworzy nowy **zewnętrznych** tabeli programu Hive. Tabele zewnętrzne przechowywać wyłącznie w definicji tabeli programu Hive. Danych pozostanie w oryginalnej lokalizacji i w oryginalnym formacie.
+* `CREATE EXTERNAL TABLE`: Tworzy nową **zewnętrznych** tabeli programu Hive. Tabele zewnętrzne przechowywać wyłącznie w definicji tabeli programu Hive. Danych pozostanie w oryginalnej lokalizacji i w oryginalnym formacie.
 
-* `ROW FORMAT`: Nakazuje Hive, w jaki sposób dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
+* `ROW FORMAT`: Informuje, Hive, w jaki sposób dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
 
-* `STORED AS TEXTFILE LOCATION`: Nakazuje Hive, w którym przechowywane są dane ( `example/data` katalogu) i które są przechowywane jako tekst. Dane mogą być w jednym pliku lub rozkładają się na wiele plików w katalogu.
+* `STORED AS TEXTFILE LOCATION`: Informuje, Hive, w którym przechowywane są dane ( `example/data` katalogu) i które są przechowywane jako tekst. Dane mogą być w jednym pliku lub rozkładają się na wiele plików w katalogu.
 
 * `SELECT`: Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. Ta instrukcja zwraca wartość **3** ponieważ istnieją trzy wiersze, które zawierają tę wartość.
 
 * `INPUT__FILE__NAME LIKE '%.log'` -Hive podejmie próbę zastosowania schematu do wszystkich plików w katalogu. W tym przypadku katalog zawiera pliki, które nie pasuje do schematu. Aby zapobiec odzyskiwanie danych w wynikach, ta instrukcja każe Hive, firma Microsoft z plików kończy się rozszerzeniem tylko powinna zwrócić dane. log.
 
-> [!NOTE]
+> [!NOTE]  
 > Jeśli potrzebujesz danych bazowych do zaktualizowania za pomocą zewnętrznego źródła, należy używać tabel zewnętrznych. Na przykład proces przekazywania danych lub operacji MapReduce.
 >
 > Usunięcie tabeli zewnętrznej jest **nie** usuwania danych, usuwa tylko w definicji tabeli.
@@ -186,7 +186,7 @@ Te instrukcje, wykonaj następujące czynności:
 
 * `INSERT OVERWRITE ... SELECT`: Wybiera wiersze z **log4jLogs** tabelę, która zawiera **[Błąd]**, a następnie wstawia dane do **przesłano** tabeli.
 
-> [!NOTE]
+> [!NOTE]  
 > W przeciwieństwie do tabel zewnętrznych porzucenie wewnętrznej tabeli spowoduje również usunięcie danych bazowych.
 
 ## <a name="improve-hive-query-performance"></a>Poprawić wydajność zapytań technologii Hive
@@ -195,20 +195,20 @@ Te instrukcje, wykonaj następujące czynności:
 
 [Apache Tez](https://tez.apache.org) to struktura, która umożliwia aplikacji intensywnie korzystających z danych, takich jak Hive, umożliwia bardziej wydajne uruchamianie na dużą skalę. Tez jest włączona domyślnie w przypadku klastrów HDInsight opartych na systemie Linux.
 
-> [!NOTE]
+> [!NOTE]  
 > Tez jest obecnie domyślnie wyłączona w przypadku klastrów HDInsight z systemem Windows i musi być włączona. Aby móc korzystać z aplikacji Tez, następującą wartość musi być ustawiona dla zapytania programu Hive:
 >
 > `set hive.execution.engine=tez;`
 >
 > Tez jest domyślny aparat klastrów HDInsight opartych na systemie Linux.
 
-[Hive w aplikacji Tez dokumentów projektowych](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje na temat opcji wdrażania i dostrajania konfiguracji.
+[Apache Hive w aplikacji Tez dokumentów projektowych](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje na temat opcji wdrażania i dostrajania konfiguracji.
 
 Aby ułatwić debugowanie zadań została uruchomiona przy użyciu aplikacji Tez, HDInsight oferuje następujące web UI, które umożliwiają wyświetlanie szczegółów zadań tez przy:
 
-* [Użyj widoku Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
+* [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
 
-* [Użyj interfejsu użytkownika Tez w HDInsight z systemem Windows](../hdinsight-debug-tez-ui.md)
+* [Użyj interfejsu użytkownika Tez Apache na HDInsight z systemem Windows](../hdinsight-debug-tez-ui.md)
 
 ### <a name="low-latency-analytical-processing-llap"></a>Małe opóźnienia przetwarzania analitycznego (LLAP)
 
@@ -236,14 +236,14 @@ Aby uzyskać więcej informacji, zobacz [pakiety Azure Feature Pack] [ ssispack]
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na platformie Hadoop. Aby uzyskać więcej informacji na temat korzystania z technologii Oozie z technologią Hive, zobacz [Oozie Użyj, aby zdefiniować i uruchomić przepływ pracy](../hdinsight-use-oozie-linux-mac.md) dokumentu.
+Apache Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na platformie Hadoop. Aby uzyskać więcej informacji na temat korzystania z technologii Oozie z technologią Hive, zobacz [Użyj Apache Oozie, aby zdefiniować i uruchomić przepływ pracy](../hdinsight-use-oozie-linux-mac.md) dokumentu.
 
 ## <a id="nextsteps"></a>Następne kroki
 
 Teraz, kiedy znasz już gałąź jest i jak z niej korzystać z usługą Hadoop w HDInsight, użyj następujących linków, aby poznać inne sposoby pracy z usługi Azure HDInsight.
 
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
-* [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
+* [Korzystanie z programu Apache Pig z usługą HDInsight][hdinsight-use-pig]
 * [Korzystanie z zadań MapReduce z HDInsight][hdinsight-use-mapreduce]
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/

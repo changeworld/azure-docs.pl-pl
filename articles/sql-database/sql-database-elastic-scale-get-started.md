@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 13e9bb045bcce553ba9fdc344baa86ba96260387
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b3bdcc81776067f279c1f95458a0a79a8824f51c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870235"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603053"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Wprowadzenie do narzędzi elastycznej bazy danych
 Ten dokument stanowi wprowadzenie do środowiska dewelopera w systemie [Biblioteka kliencka elastic database](sql-database-elastic-database-client-library.md) , ułatwiając uruchamianie przykładowej aplikacji. Przykładowa aplikacja tworzy prostą podzieloną aplikację i analizuje kluczowe możliwości funkcji elastyczne narzędzia graficzne bazy danych Azure SQL Database. Koncentruje się ona na przypadki użycia [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md), [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md), i [zapytań z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md). Biblioteka klienta jest dostępna dla platformy .NET, a także języka Java. 
@@ -95,18 +95,18 @@ Gratulacje! Pomyślnie skompilowane i uruchamianie pierwszej aplikacji podzielon
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kluczowych przykładowy kod
-* **Zarządzanie fragmentami i fragmentów mapowania**: kod ilustruje sposób pracy z fragmentów, zakresy i mapowania w *ShardManagementUtils.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).  
+* **Zarządzanie fragmentami i fragmentów mapowania**: Kod ilustruje sposób pracy z fragmentów, zakresy i mapowania w *ShardManagementUtils.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).  
 
 * **Routing zależny od danych**: Routing transakcji do prawego fragmentu jest wyświetlany w *DataDependentRoutingSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [routingu zależnego od danych](https://go.microsoft.com/?linkid=9862596). 
 
-* **Wykonywanie zapytań za pośrednictwem wielu fragmentów**: wykonywanie zapytań między fragmentami zilustrowano *MultiShardQuerySample.cs* pliku. Aby uzyskać więcej informacji, zobacz [zapytań z wieloma fragmentami](https://go.microsoft.com/?linkid=9862597).
+* **Wykonywanie zapytań za pośrednictwem wielu fragmentów**: Wykonywanie zapytań między fragmentami zilustrowano *MultiShardQuerySample.cs* pliku. Aby uzyskać więcej informacji, zobacz [zapytań z wieloma fragmentami](https://go.microsoft.com/?linkid=9862597).
 
-* **Dodawanie pustego fragmentów**: iteracyjne Dodawanie nowych fragmentów pusty odbywa się przez kod w *CreateShardSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).
+* **Dodawanie pustego fragmentów**: Iteracyjne Dodawanie nowych fragmentów pusty odbywa się przez kod w *CreateShardSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Inne operacje elastycznego skalowania
-* **Podział istniejących fragmentu**: możliwość podziału fragmentów są dostarczane przez narzędzie do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).
+* **Podział istniejących fragmentu**: Możliwość podziału fragmentów są udostępniane przez narzędzie do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).
 
-* **Scalanie istniejącego fragmentów**: scalenia fragmentów są również wykonywane przy użyciu narzędzia do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).   
+* **Scalanie istniejącego fragmentów**: Scalenia fragmentów są również wykonywane przy użyciu narzędzia do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).   
 
 ## <a name="cost"></a>Koszty
 Biblioteka narzędzi elastycznej bazy danych jest bezpłatna. Korzystając z narzędzi elastycznych baz danych, ponosisz żadnych dodatkowych opłat za poza koszty użycia platformy Azure. 
@@ -122,10 +122,10 @@ Aby uzyskać więcej informacji na temat narzędzia elastycznych baz danych zoba
   * Narzędzia elastycznych baz danych ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Narzędzia elastycznych baz danych dla usług SQL Azure - Entity Framework integracji](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Skrypty dotyczące elastyczności w Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [ogłoszenie elastycznego skalowania](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
-* Witryna Channel 9: [klip wideo z omówieniem elastycznego skalowania](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Forum dyskusyjne: [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
-* Aby zmierzyć wydajność: [liczniki wydajności dla menedżera map fragmentów](sql-database-elastic-database-client-library.md)
+* Blog: [Elastyczne skalowanie anonsu](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
+* Witryna Channel 9: [Elastyczne skalowanie — omówienie wideo](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Forum dyskusyjne: [Forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Aby zmierzyć wydajność: [Liczniki wydajności dla menedżera map fragmentów](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
 [The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application

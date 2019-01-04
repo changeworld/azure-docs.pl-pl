@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e32e62a050b54334a37b09f001798b9a62e2e6b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a40ded3ff6af1c519400c755d1ee6d9bd73ba9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642375"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602294"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C
 
 > [!NOTE]
 > Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
+
+> [!Important]
+> Ta funkcja publicznej wersji zapoznawczej jest tymczasowo niedostępna.
 
 A [zasad niestandardowych](active-directory-b2c-get-started-custom.md) w usłudze Azure Active Directory (Azure AD) B2C umożliwia użytkownikom aplikacji Zarejestruj się lub zaloguj się przy użyciu dostawcy tożsamości. W takiej sytuacji usługa Azure AD B2C odbiera [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Usługa Azure AD B2C używa tego tokenu, można pobrać informacji o użytkowniku. Możesz dodać typ oświadczenia i dane wyjściowe oświadczenia do niestandardowych zasad do przekazania tokenu za pośrednictwem aplikacji, które należy zarejestrować w usłudze Azure AD B2C. 
 

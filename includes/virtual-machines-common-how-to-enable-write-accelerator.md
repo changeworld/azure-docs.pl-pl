@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b2733bed4418fdfcaefb20c04683cb6a229134e9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400335"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594187"
 ---
 # <a name="enable-write-accelerator"></a>Włączyć akcelerator zapisu
 
@@ -41,7 +41,7 @@ Włączanie akceleratorem zapisu dla dysków systemu operacyjnego nie powinien b
 Korzystając z akceleratorem zapisu na dysku platformy Azure/VHD, są stosowane następujące ograniczenia:
 
 - Buforowanie dysku Premium musi być równa "None" lub "Tylko do odczytu". Wszystkie tryby buforowania nie są obsługiwane.
-- Migawek na dysku z włączonym akceleratorem zapisu nie jest jeszcze obsługiwany. To ograniczenie blokuje możliwość usłudze Azure Backup wykonywania migawki spójnej z aplikacją wszystkich dysków maszyny wirtualnej.
+- Migawka nie są obecnie obsługiwane dla dysków z włączonym akceleratorem zapisu. Podczas tworzenia kopii zapasowej usługa Azure Backup automatycznie wyłącza z włączonym akceleratorem zapisu dysków dołączonych do maszyny Wirtualnej.
 - Tylko mniejsze rozmiary operacji We/Wy (< = 32 KiB) trwa jej jako przyspieszonej ścieżki. W obciążeniu sytuacji, w którym danych otrzymuje zbiorczego załadowane lub w przypadku, gdy buforów dziennika transakcji w różnych systemów DBMS są wypełnione w większym stopniu przed wprowadzenie utrwalone w magazynie, jest szansa, że zapisane we/wy dysku nie trwa jej jako przyspieszonej ścieżki.
 
 Istnieją limity usługi Azure Premium Storage wirtualne dyski twarde dla maszyny Wirtualnej, które mogą być obsługiwane przez akcelerator zapisu. Bieżące limity są:

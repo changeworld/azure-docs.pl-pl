@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie środowiska uruchomieniowego języka PHP — usłudze Azure App Service
-description: Dowiedz się, jak skonfigurować domyślnej instalacji PHP lub dodać do instalacji niestandardowej PHP dla usługi Web Apps w usłudze Azure App Service.
+description: Dowiedz się, jak skonfigurować domyślnej instalacji PHP lub Dodawanie niestandardowego instalacji PHP dla usługi Azure App Service.
 services: app-service
 documentationcenter: php
 author: msangapu
@@ -14,36 +14,34 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d5ad7b392029ae33ee7666b80edfe5b4b7555b41
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ef8c7ca13d59c29160ff33f82d50976d2eedf4a6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273202"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651701"
 ---
-# <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service Web Apps
+# <a name="configure-php-in-azure-app-service"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Ten przewodnik pokazuje, jak skonfigurować wbudowanych środowiska uruchomieniowego języka PHP dla usługi Web Apps w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), podaj niestandardowego środowiska uruchomieniowego języka PHP oraz włączania rozszerzeń. Aby korzystać z usługi App Service, należy zasubskrybować [bezpłatna wersja próbna]. Aby uzyskać najbardziej z tego przewodnika, należy najpierw utworzyć aplikacji sieci web w języku PHP w usłudze App Service.
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Ten przewodnik pokazuje, jak skonfigurować wbudowanych środowiska uruchomieniowego języka PHP dla aplikacji sieci web, mobilnych zaplecza i aplikacji API apps w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), podaj niestandardowego środowiska uruchomieniowego języka PHP oraz włączania rozszerzeń. Aby korzystać z usługi App Service, należy zasubskrybować [bezpłatna wersja próbna]. Aby uzyskać najbardziej z tego przewodnika, należy najpierw utworzyć aplikacji w języku PHP w usłudze App Service.
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Instrukcje: Zmienianie wbudowanych wersji języka PHP
 
-PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia podczas tworzenia aplikacji sieci web usługi App Service. Najlepszym sposobem, aby wyświetlić poprawkę dostępną wersją konfiguracji domyślnej i włączono rozszerzenia jest wdrożenie skryptu, który wywołuje [phpinfo()] funkcji.
+PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia podczas tworzenia aplikacji usługi App Service. Najlepszym sposobem, aby wyświetlić poprawkę dostępną wersją konfiguracji domyślnej i włączono rozszerzenia jest wdrożenie skryptu, który wywołuje [phpinfo()] funkcji.
 
 Środowisko PHP 7.0 i języka PHP 7.2 wersje są również dostępne, ale nie jest włączony domyślnie. Aby zaktualizować wersję języka PHP, wykonaj jedną z następujących metod:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Przejdź do aplikacji sieci web w [witryny Azure portal](https://portal.azure.com) i kliknij pozycję **ustawienia** przycisku.
+1. Przejdź do aplikacji w [witryny Azure portal](https://portal.azure.com) i kliknij pozycję **ustawienia** przycisku.
 
-    ![Ustawienia aplikacji sieci Web][settings-button]
+    ![Ustawienia aplikacji][settings-button]
 2. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i wybierz nową wersję PHP.
 
     ![Ustawienia aplikacji][application-settings]
-3. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji sieci Web** bloku.
+3. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji** bloku.
 
     ![Zapisanie ustawień konfiguracji][save-button]
 
@@ -52,10 +50,10 @@ PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia p
 1. Otwieranie programu Azure PowerShell i zaloguj się do swojego konta:
 
         PS C:\> Connect-AzureRmAccount
-1. Ustawianie wersji języka PHP, dla aplikacji sieci web.
+2. Ustawianie wersji języka PHP, dla aplikacji.
 
         PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
-1. Wersja języka PHP są teraz skonfigurowane. Możesz sprawdzić te ustawienia:
+3. Wersja języka PHP są teraz skonfigurowane. Możesz sprawdzić te ustawienia:
 
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
@@ -71,11 +69,11 @@ Aby użyć interfejsu wiersza polecenia platformy Azure, musisz mieć [zainstalo
 
         az webapp list-runtimes | grep php
 
-1. Ustawianie wersji języka PHP, dla aplikacji sieci web.
+2. Ustawianie wersji języka PHP, dla aplikacji.
 
         az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
 
-1. Wersja języka PHP są teraz skonfigurowane. Możesz sprawdzić te ustawienia:
+3. Wersja języka PHP są teraz skonfigurowane. Możesz sprawdzić te ustawienia:
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
@@ -94,21 +92,21 @@ Do wszelkich wbudowanych środowiska uruchomieniowego języka PHP możesz zmieni
 
         ; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
         ; log_errors=On
-1. Wdrażanie aplikacji sieci web.
-1. Uruchom ponownie aplikację internetową. (Ponowne uruchomienie jest konieczne, ponieważ odczytuje częstotliwość, z których PHP `.user.ini` plików jest regulowane przez `user_ini.cache_ttl` ustawienie, to ustawienie poziomie systemu, która domyślnie jest 300 sekund (5 minut). Trwa ponowne uruchamianie aplikacji sieci web wymusza PHP można odczytać nowe ustawienia w `.user.ini` pliku.)
+2. Wdrażanie aplikacji.
+3. Uruchom ponownie aplikację. (Ponowne uruchomienie jest konieczne, ponieważ odczytuje częstotliwość, z których PHP `.user.ini` plików jest regulowane przez `user_ini.cache_ttl` ustawienie, to ustawienie poziomie systemu, która domyślnie jest 300 sekund (5 minut). Ponowne uruchamianie aplikacji wymusza PHP można odczytać nowe ustawienia w `.user.ini` pliku.)
 
 Jako alternatywa dla użycia `.user.ini` pliku, można użyć [ini_set()] funkcji w skryptach, aby ustawić opcje konfiguracji, które nie są dyrektywami poziom systemu.
 
 ### <a name="changing-phpinisystem-configuration-settings"></a>Zmiana języka PHP\_INI\_ustawienia konfiguracji systemu
 
-1. Dodaj ustawienie aplikacji do aplikacji sieci Web przy użyciu klucza `PHP_INI_SCAN_DIR` i wartości `d:\home\site\ini`
+1. Dodawanie ustawienia aplikacji do aplikacji przy użyciu klucza `PHP_INI_SCAN_DIR` i wartości `d:\home\site\ini`
 1. Tworzenie `settings.ini` plików przy użyciu konsoli Kudu (http://&lt;Nazwa lokacji&gt;. scm.azurewebsite.net) w `d:\home\site\ini` katalogu.
 1. Dodaj ustawienia konfiguracji w celu `settings.ini` plików przy użyciu tej samej składni, należy użyć w `php.ini` pliku. Na przykład, jeśli chce się punktu `curl.cainfo` ustawienie `*.crt` plik, a dla ustawienia "wincache.maxfilesize" 512 KB, Twoje `settings.ini` plik będzie zawierać ten tekst:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
         wincache.maxfilesize=512
-1. Aby załadować ponownie zmiany, uruchom ponownie swoją aplikację sieci Web.
+1. Aby załadować ponownie zmiany, uruchom ponownie swoją aplikację.
 
 ## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Instrukcje: Włącz rozszerzenia w domyślnego środowiska uruchomieniowego PHP
 
@@ -118,28 +116,28 @@ Jak wspomniano w poprzedniej sekcji, najlepszym sposobem, aby wyświetlić domy�
 
 1. Dodaj `ext` do katalogu `d:\home\site` katalogu.
 1. Umieść `.dll` rozszerzenia plików `ext` katalog (na przykład `php_xdebug.dll`). Upewnij się, że rozszerzenia są zgodne z domyślną wersją języka PHP i czy VC9 i zgodnego z innego niż wątkowo (nts).
-1. Dodaj ustawienie aplikacji do aplikacji sieci Web przy użyciu klucza `PHP_INI_SCAN_DIR` i wartości `d:\home\site\ini`
+1. Dodawanie ustawienia aplikacji do aplikacji przy użyciu klucza `PHP_INI_SCAN_DIR` i wartości `d:\home\site\ini`
 1. Tworzenie `ini` w pliku `d:\home\site\ini` o nazwie `extensions.ini`.
 1. Dodaj ustawienia konfiguracji w celu `extensions.ini` plików przy użyciu tej samej składni, należy użyć w `php.ini` pliku. Na przykład, jeśli chcesz włączyć rozszerzenia bazy danych MongoDB i narzędzia XDebug swoje `extensions.ini` plik będzie zawierać ten tekst:
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
         zend_extension=d:\home\site\ext\php_xdebug.dll
-1. Uruchom ponownie swoją aplikację sieci Web do zmiany obciążenia.
+1. Uruchom ponownie swoją aplikację do zmiany obciążenia.
 
 ### <a name="configure-via-app-setting"></a>Konfigurowanie poprzez ustawienie aplikacji
 
 1. Dodaj `bin` katalog do katalogu głównego.
 1. Umieść `.dll` rozszerzenia plików `bin` katalog (na przykład `php_xdebug.dll`). Upewnij się, że rozszerzenia są zgodne z domyślną wersją języka PHP i czy VC9 i zgodnego z innego niż wątkowo (nts).
-1. Wdrażanie aplikacji sieci web.
-1. Przejdź do aplikacji sieci web w witrynie Azure portal, a następnie kliknij pozycję **ustawienia** przycisku.
+2. Wdrażanie aplikacji.
+3. Przejdź do aplikacji w witrynie Azure portal, a następnie kliknij pozycję **ustawienia** przycisku.
 
-    ![Ustawienia aplikacji sieci Web][settings-button]
-1. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i przewiń do **ustawienia aplikacji** sekcji.
-1. W **ustawienia aplikacji** sekcji, Utwórz **PHP_EXTENSIONS** klucza. Wartość tego klucza będzie ścieżka względem katalogu głównego witryny sieci Web: **bin\your ext, rozszerzenie pliku**.
+    ![Ustawienia aplikacji][settings-button]
+4. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i przewiń do **ustawienia aplikacji** sekcji.
+5. W **ustawienia aplikacji** sekcji, Utwórz **PHP_EXTENSIONS** klucza. Wartość tego klucza będzie ścieżka względem katalogu głównego witryny sieci Web: **bin\your ext, rozszerzenie pliku**.
 
     ![Włączanie rozszerzenia w ustawieniach aplikacji][php-extensions]
-1. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji sieci Web** bloku.
+6. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji** bloku.
 
     ![Zapisanie ustawień konfiguracji][save-button]
 
@@ -147,20 +145,20 @@ Rozwiązanie Zend rozszerzenia również są obsługiwane przy użyciu **PHP_ZEN
 
 ## <a name="how-to-use-a-custom-php-runtime"></a>Instrukcje: Użyj niestandardowego środowiska uruchomieniowego języka PHP
 
-Zamiast domyślnego środowiska uruchomieniowego PHP App Service Web Apps można użyć środowiska uruchomieniowego języka PHP, który udostępnić wykonywanie skryptów w języku PHP. Środowisko uruchomieniowe, które należy podać mogą być konfigurowane przez `php.ini` plików, które zapewniają również. Aby użyć niestandardowego środowiska uruchomieniowego języka PHP z usługą Web Apps, wykonaj następujące kroki.
+Zamiast domyślnego środowiska uruchomieniowego PHP usługa App Service można użyć środowiska uruchomieniowego języka PHP, który udostępnić wykonywanie skryptów w języku PHP. Środowisko uruchomieniowe, które należy podać mogą być konfigurowane przez `php.ini` plików, które zapewniają również. Aby użyć niestandardowego środowiska uruchomieniowego języka PHP z usługą App Service, wykonaj następujące kroki.
 
 1. Uzyskaj bez wątkowo, VC9 lub VC11 zgodnej wersji programu PHP dla Windows. Najnowsze wersje systemu Windows dla PHP można znaleźć tutaj: [ https://windows.php.net/download/ ]. Starsze wersje można znaleźć w archiwum, w tym miejscu: [ https://windows.php.net/downloads/releases/archives/ ].
-1. Modyfikowanie `php.ini` pliku dla Twojego środowiska uruchomieniowego. Ustawienia konfiguracji, które są dyrektywami system poziom — tylko są ignorowane przez aplikacje sieci Web. (Uzyskać informacji dotyczących systemu poziom — tylko do dyrektyw, zobacz [Lista dyrektywy w pliku php.ini]).
-1. Opcjonalnie dodaj rozszerzenia do Twojego środowiska uruchomieniowego języka PHP i włączyć je w `php.ini` pliku.
-1. Dodaj `bin` katalog do katalogu głównego i put katalogu, który zawiera Twoje środowiska uruchomieniowego języka PHP w nim (na przykład `bin\php`).
-1. Wdrażanie aplikacji sieci web.
-1. Przejdź do aplikacji sieci web w witrynie Azure portal, a następnie kliknij pozycję **ustawienia** przycisku.
+2. Modyfikowanie `php.ini` pliku dla Twojego środowiska uruchomieniowego. Ustawienia konfiguracji, które są dyrektywami system poziom — tylko są ignorowane przez usługę App Service. (Uzyskać informacji dotyczących systemu poziom — tylko do dyrektyw, zobacz [Lista dyrektywy w pliku php.ini]).
+3. Opcjonalnie dodaj rozszerzenia do Twojego środowiska uruchomieniowego języka PHP i włączyć je w `php.ini` pliku.
+4. Dodaj `bin` katalog do katalogu głównego i put katalogu, który zawiera Twoje środowiska uruchomieniowego języka PHP w nim (na przykład `bin\php`).
+5. Wdrażanie aplikacji.
+6. Przejdź do aplikacji w witrynie Azure portal, a następnie kliknij pozycję **ustawienia** przycisku.
 
-    ![Ustawienia aplikacji sieci Web][settings-button]
-1. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i przewiń do **mapowania obsługi** sekcji. Dodaj `*.php` z rozszerzeniem pola, a następnie dodaj ścieżkę do `php-cgi.exe` pliku wykonywalnego. Jeśli przeniesiesz swoje środowiska uruchomieniowego języka PHP `bin` katalogu w folderze głównym aplikacji, ścieżka jest `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+    ![Ustawienia aplikacji][settings-button]
+7. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i przewiń do **mapowania obsługi** sekcji. Dodaj `*.php` z rozszerzeniem pola, a następnie dodaj ścieżkę do `php-cgi.exe` pliku wykonywalnego. Jeśli przeniesiesz swoje środowiska uruchomieniowego języka PHP `bin` katalogu w folderze głównym aplikacji, ścieżka jest `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
 
     ![Określ program obsługi mapowania obsługi][handler-mappings]
-1. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji sieci Web** bloku.
+8. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji** bloku.
 
     ![Zapisanie ustawień konfiguracji][save-button]
 
@@ -168,13 +166,13 @@ Zamiast domyślnego środowiska uruchomieniowego PHP App Service Web Apps można
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>Instrukcje: Włączanie automatyzacji narzędzia Composer na platformie Azure
 
-Domyślnie usługa App Service nie wprowadza żadnych zmian przy użyciu pliku composer.json, jeśli nie masz w swoim projekcie w języku PHP. Jeśli używasz [wdrożenie Git](app-service-deploy-local-git.md), można włączyć composer.json przetwarzania podczas `git push` , należy włączyć rozszerzenie Composer (kompozytor).
+Domyślnie usługa App Service nie wprowadza żadnych zmian przy użyciu pliku composer.json, jeśli nie masz w swoim projekcie w języku PHP. Jeśli używasz [wdrożenie Git](deploy-local-git.md), można włączyć composer.json przetwarzania podczas `git push` , należy włączyć rozszerzenie Composer (kompozytor).
 
 > [!NOTE]
 > Możesz [głos obsługi najwyższej jakości Composer (kompozytor) w usłudze App Service w tym miejscu](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)!
 >
 
-1. W swojej PHP sieci web bloku aplikacji w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **narzędzia** > **rozszerzenia**.
+1. W bloku aplikacji PHP w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **narzędzia** > **rozszerzenia**.
 
     ![Blok ustawienia portalu Azure, aby Włączanie automatyzacji narzędzia Composer na platformie Azure](./media/web-sites-php-configure/composer-extension-settings.png)
 2. Kliknij przycisk **Dodaj**, następnie kliknij przycisk **Composer**.
@@ -184,17 +182,13 @@ Domyślnie usługa App Service nie wprowadza żadnych zmian przy użyciu pliku c
 
     **Zainstalowanych rozszerzeń** blok rozszerzenie Composer (kompozytor).
     ![Zaakceptuj postanowienia prawne na włączanie automatyzacji narzędzia Composer na platformie Azure](./media/web-sites-php-configure/composer-extension-view.png)
-4. Teraz, w oknie terminala na komputerze lokalnym, należy wykonać `git add`, `git commit`, i `git push` do aplikacji sieci Web. Należy zauważyć, że Composer (kompozytor) jest instalowany zdefiniowanych w pliku composer.json zależności.
+4. Teraz, w oknie terminala na komputerze lokalnym, należy wykonać `git add`, `git commit`, i `git push` do swojej aplikacji. Należy zauważyć, że Composer (kompozytor) jest instalowany zdefiniowanych w pliku composer.json zależności.
 
     ![Wdrażanie usługi Git za pomocą automatyzacji narzędzia Composer na platformie Azure](./media/web-sites-php-configure/composer-extension-success.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https://azure.microsoft.com/develop/php/).
-
-> [!NOTE]
-> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://azure.microsoft.com/try/app-service/) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
->
 
 [bezpłatna wersja próbna]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php

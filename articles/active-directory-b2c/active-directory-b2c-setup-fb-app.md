@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b1fbf77bfb771bd94ed9acdecb3c54e4c6894687
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 183afaeb40b90de078a44f4677dd0218b8d86ba8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182114"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968991"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Facebook, za pomocą usługi Azure Active Directory B2C
 
@@ -38,11 +38,11 @@ Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w usłudze Azure
 13. Wybierz **produktów**, a następnie wybierz pozycję **Konfigurowanie** w obszarze **logowania do usługi Facebook**.
 14. Wybierz **ustawienia** w obszarze **logowania do usługi Facebook**.
 15. W **identyfikatory URI przekierowania OAuth prawidłowe**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Zastąp `your-tenant-name` nazwą Twojej dzierżawy. Kliknij przycisk **Zapisz zmiany** w dolnej części strony.
-16. Aby udostępnić aplikację usługi Facebook do usługi Azure AD B2C wybierz **przeglądu aplikacji**ustaw **publicznego wprowadzić Moja aplikacja?** do **tak**, a następnie kliknij przycisk **Potwierdź** .
+16. Aby udostępnić aplikację usługi Facebook do usługi Azure AD B2C, kliknij selektor stanu w prawym górnym rogu strony i przekształcać je **na** upublicznić aplikacji, a następnie kliknij przycisk **Potwierdź**.  W tym momencie stan powinien zmienić z **rozwoju** do **Live**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurowanie konta usługi Facebook jako dostawcy tożsamości
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy. 
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.

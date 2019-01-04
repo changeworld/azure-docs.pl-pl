@@ -1,5 +1,5 @@
 ---
-title: 'Zestaw narzędzi platformy Azure dla środowiska Eclipse: Scala tworzenie aplikacji dla usługi HDInsight Spark '
+title: 'Zestaw narzędzi platformy Azure dla środowiska Eclipse: Tworzenie aplikacji Scala dla usługi HDInsight Spark '
 description: Narzędzia HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra usługi HDInsight Spark bezpośrednio w środowisku IDE programu Eclipse.
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: a875e7517870e4a782d3169fd5eb0796c9b0f16a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4370cc5e39b7d1b9a50e8fc8af9f7bfc58f6356a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496588"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602753"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
 Przy użyciu narzędzi HDInsight w Azure Toolkit for [Eclipse](https://www.eclipse.org/) do opracowywania [platformy Apache Spark](https://spark.apache.org/) aplikacje napisane w [Scala](https://www.scala-lang.org/) i przesyłanie ich do klastra usługi Azure HDInsight Spark bezpośrednio z poziomu środowiska Eclipse IDE. Można użyć narzędzia HDInsight wtyczki na kilka różnych sposobów:
 
-* Twórz i przesyłaj aplikację Scala Spark w klastrze usługi HDInsight Spark
-* Dostęp do zasobów klastra usługi HDInsight Spark
-* Twórz i uruchamiaj lokalnie aplikację Scala Spark
+* Twórz i przesyłaj aplikację Scala Spark w klastrze usługi HDInsight Spark.
+* Aby uzyskać dostęp do zasobów klastra usługi HDInsight Spark.
+* Twórz i uruchamiaj lokalnie aplikację Scala Spark.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > To narzędzie umożliwia tworzenie i przesyłanie aplikacji tylko w przypadku klastra HDInsight Spark, w systemie Linux.
 > 
 > 
@@ -78,7 +78,7 @@ Możesz połączyć normalny klaster przy użyciu nazwy użytkownika systemu Amb
    
    ![okno dialogowe klastra łącza](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Używamy klucz połączonego magazynu, nazwę użytkownika i hasło, jeśli klaster w subskrypcji platformy Azure i połączone w klaster.
    > ![Eksplorator usługi Storage w środowisku Eclipse](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
@@ -207,7 +207,7 @@ Do uruchomienia aplikacji Spark scala przy lokalnie na swojej stacji roboczej, m
 ### <a name="prerequisite"></a>Wymagania wstępne
 Gdy korzystasz z aplikacji Spark Scala lokalnej na komputerze Windows, możesz otrzymać wyjątek zgodnie z objaśnieniem w [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356). Ten wyjątek występuje, ponieważ **WinUtils.exe** brakuje w Windows. 
 
-Aby rozwiązać ten problem, musisz mieć [Pobierz plik wykonywalny](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji, takiej jak **C:\WinUtils\bin**, a następnie dodaj zmienną środowiskową **HADOOP_HOME** i ustaw wartość Zmienna **C\WinUtils**.
+Aby rozwiązać ten problem, musisz mieć [Pobierz plik wykonywalny](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji, takiej jak **C:\WinUtils\bin**, a następnie dodaj zmienną środowiskową **HADOOP_HOME** i ustaw wartość Zmienna **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Uruchamianie lokalnych aplikacji Spark Scala
 1. Uruchom środowisko Eclipse i Utwórz projekt. W **nowy projekt** okno dialogowe, wybierz następujące opcje, a następnie wybierz pozycję **dalej**.
@@ -242,17 +242,17 @@ Istnieją dwa tryby można przesłać zadania. Jeśli nie podano poświadczeń m
 Jeśli masz opinię lub występują inne problemy, korzystając z tego narzędzia, Wyślij do nas wiadomość e-mail na hdivstool@microsoft.com.
 
 ## <a name="seealso"></a>Zobacz też
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](apache-spark-intellij-tool-plugin.md)

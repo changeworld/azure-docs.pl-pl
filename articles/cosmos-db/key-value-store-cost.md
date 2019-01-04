@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3ab066cc3d2b06dc12c2399d718aeec6aac03b25
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8e04439d63646a8aebe224adbf629491cc2dfbc6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134186"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547222"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
 
-Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych do tworzenia aplikacji o wysokiej dostępności, na dużą skalę w prosty sposób. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie dane, które pozyskuje wydajnie. Umożliwia to szybkie i spójne [SQL](how-to-sql-query.md) (i [JavaScript](programming.md)) kwerendy dla każdego typu danych. 
+Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych do tworzenia aplikacji o wysokiej dostępności, na dużą skalę w prosty sposób. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie dane, które pozyskuje wydajnie. Umożliwia to szybkie i spójne [SQL](how-to-sql-query.md) (i [JavaScript](stored-procedures-triggers-udfs.md)) kwerendy dla każdego typu danych. 
 
 W tym artykule opisano koszt usługi Azure Cosmos DB proste zapisu oraz operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość. Operacje obejmują operacje wstawiania, zastępuje, usuwa i wykonuje operację UPSERT dokumentów zapisu. Oprócz gwarantujące dostępność przez 99,99% umowa SLA dotycząca dostępności dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach za pomocą rozluźnionej spójności, a przez 99,999% dostępność do odczytu na wszystkich multiregionalne konta baz danych, gwarantowana oferty usługi Azure Cosmos DB < opóźnieniem 10 ms odczytuje i < 15 ms opóźnienia (indeksowanych) zapisuje odpowiednio na poziomie 99 percentyla. 
 

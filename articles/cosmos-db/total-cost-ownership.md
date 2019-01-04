@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: a15a704cfba9260daac0cd5edfdf8b4566348628
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 419ad6681af39aee468a23319b773de23619984d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263965"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555459"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Łączny koszt Ownership(TCO) przy użyciu usługi Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Bez użycia serwera modelu aprowizacji usługi Azure Cosmos DB eliminuje potrzeb
 
 * **Cenną funkcję w cenie:** Analitycy na rynku, klientów i partnerów potwierdzenia większą wartość ze wszystkich funkcji oferowanych przez usługę Azure Cosmos DB dla znacznie niższa cena w porównaniu do czego klienci mogą uzyskać podczas implementowania tych rozwiązań, własnych lub za pośrednictwem innych dostawców. Funkcje bazy danych, takie dystrybucji globalnej, modele spójności wielu wzorców, dobrze zdefiniowany i intuicyjne, automatycznego indeksowania znacznie są uproszczone dzięki usłudze Azure Cosmos DB bez złożoności, obciążenie, lub przestojów.
 
-* **Wymagane jest nie administracji devops NoSQL:** Usługa Azure Cosmos DB jeden nie trzeba stosować metodyki devops, aby zarządzać wdrożeniami, przeprowadzenia konserwacji, skalowania lub poprawki. Istnieje możliwość wykonania wszystkich obciążeń, które należy wykonać przy użyciu OSS NoSQL klastra hostowanych lokalnie lub w infrastrukturze chmury.
+* **Wymagane jest nie administracji NoSQL DevOps:** Usługa Azure Cosmos DB jeden nie trzeba stosować metodyki DevOps, aby zarządzać wdrożeniami, przeprowadzenia konserwacji, skalowania lub poprawki. Istnieje możliwość wykonania wszystkich obciążeń, które należy wykonać przy użyciu OSS NoSQL klastra hostowanych lokalnie lub w infrastrukturze chmury.
 
 ![Koszt posiadania w usłudze Azure Cosmos DB](./media/total-cost-ownership/tco.png)
 
@@ -37,7 +37,7 @@ Bez użycia serwera modelu aprowizacji usługi Azure Cosmos DB eliminuje potrzeb
 
 * **Optymalizacja na potrzeby chmury:** Usługa Azure Cosmos DB została zaprojektowana od podstaw przy użyciu szczegółowych izolacji wielu dzierżawców i wydajności. Umożliwia to umieszczenie optymalnie, wykonywaniu i równoważenie tysiące dzierżawcy i ich obciążeń klastrów i centrów danych. Z kolei bieżącej generacji bazy danych OSS NoSQL działają w środowisku lokalnym za pomocą całą maszynę wirtualną, przyjmuje się, że uruchamianie obciążenia pojedynczej dzierżawy. Te bazy danych także nie są przeznaczone na wykorzystanie infrastruktury i sprzętu w pełnym zakresie dostawcy chmury. Na przykład uaktualnić rutynowych obraz NoSQL OSS aparatu bazy danych nie jest świadomy różnic między maszyny wirtualnej trwa szczegółów programu Vs lub fakt ten dysk w warstwie premium jest już trzy kierunkową replikowane. Nie mogą korzystać z zalet tych korzyści i przekazać korzyści i oszczędności dla klientów.
 
-* **Opłaty są naliczane za godzinę:** Dla dużych obciążeń, które muszą skalować w dowolnym momencie są naliczane tylko za godzinę. Obciążenia aplikacji różni się zwykle w razy w roku i danych, to jest wykonywane zapytanie. Za pomocą usługi Azure Cosmos DB można skalować w górę lub w dół zgodnie z potrzebami i płać tylko za potrzebne. Ze środowiska lokalnego lub hostowanego w modelu IaaS systemów nie może dopasować ten model, ponieważ nie istnieje sposób do likwidacji sprzętu co godzinę. W takich przypadkach można potencjalnie zapisać od 10 do 14 razy średnio w usłudze Azure Cosmos DB.
+* **Opłaty są naliczane za godzinę:** W przypadku na dużą skalę obciążeń wymagających skalowania w dowolnym momencie w czasie, opłaty są naliczane tylko za godzinę. Obciążenia aplikacji różni się zwykle w razy w roku i na podstawie danych, którego dotyczy kwerenda. Za pomocą usługi Azure Cosmos DB można skalować w górę lub w dół zgodnie z potrzebami i płać tylko za potrzebne. Ze środowiska lokalnego lub hostowanego w modelu IaaS systemów nie może dopasować ten model, ponieważ nie istnieje sposób do likwidacji sprzętu co godzinę. W takich przypadkach można potencjalnie zapisać od 10 do 14 razy średnio w usłudze Azure Cosmos DB.
 
 * **Bezpłatnie Uzyskaj wiele funkcji:** W usłudze Azure Cosmos DB zapisać obciążenia są znacznie tańsze w porównaniu do alternatywnej bazy danych usług. Ponadto usługi Azure Cosmos DB oferuje funkcje, takie jak takich jak [automatycznego indeksowania](indexing-policies.md), [czas wygaśnięcia (TTL)](time-to-live.md), [kanału informacyjnego zmian](change-feed.md) i innym osobom bez żadnych dodatkowych kosztów coś, co inne usługi bazy danych zazwyczaj pobierają opłaty.
 

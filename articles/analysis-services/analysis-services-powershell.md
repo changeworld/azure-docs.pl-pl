@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: reference
-ms.date: 06/25/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6c648a9cb6b8d8dbfb60f1a5a6ebc386c57460b0
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b4aec7ff560b0695175a18c9c7e429a8ab733345
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887250"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633712"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell
 
 W tym artykule opisano poleceń cmdlet programu PowerShell, używane do wykonywania serwer usług Azure Analysis Services i zadań zarządzania bazą danych. 
 
-Zadania zarządzania serwerem, takie jak tworzenie lub usuwanie serwera, zawieszanie lub wznawianie operacji serwerowych lub zmiana poziomu usług (warstwa) za pomocą poleceń cmdlet usługi Azure Resource Manager (zasób) i poleceń cmdlet usług Analysis Services (serwer). Inne zadania do zarządzania bazami danych, takie jak dodawanie lub usuwanie członków ról, przetwarzanie lub podziału na partycje za pomocą poleceń cmdlet zawartych w tym samym modułem programu SQL Server Analysis Services.
+Zadania zarządzania serwerem, takich jak tworzenie lub usuwanie serwera, zawieszanie lub wznawianie operacji serwerowych lub zmiana poziomu usług (warstwa) za pomocą poleceń cmdlet usługi Azure Resource Manager (zasób) i poleceń cmdlet usług Analysis Services (serwer). Inne zadania do zarządzania bazami danych, takich jak dodawanie lub usuwanie członków ról, przetwarzanie lub partycjonowanie użyj poleceń cmdlet zawartych w tym samym modułem programu SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Uprawnienia
 Większość zadań programu PowerShell wymaga, że masz uprawnienia administratora na serwerze usług Analysis Services, którymi zarządzasz. Zaplanowane zadania w programie PowerShell to operacje instalacji nienadzorowanej. Zasada usługą lub kontem obsługujących Harmonogram musi mieć uprawnienia administratora na serwerze usług Analysis Services. 
@@ -50,7 +50,7 @@ Moduł — [Azure.AnalysisServices](https://www.powershellgallery.com/packages/A
 |[Add-AzureAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-azureanalysisservicesaccount)|Dodaje uwierzytelnione konto do użycia dla żądań polecenia cmdlet serwera usług Azure Analysis Services.| 
 |[AzureAnalysisServicesInstance eksportu](/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog)|Eksportuje dziennika z wystąpienia serwera usług Analysis Services w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzureAnalysisServicesAccount|  
 |[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Powoduje ponowne uruchomienie wystąpienia serwera usług Analysis Services w środowisku aktualnie zalogowany. określony w poleceniu Add-AzureAnalysisServicesAccount.|  
-|[AzureAnalysisServicesInstance synchronizacji](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Synchronizuje określonej bazy danych w podanym wystąpieniu serwera usług Analysis Services do wszystkich wystąpień skalowania zapytań w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzureAnalysisServicesAccount|  
+|[AzureAnalysisServicesInstance synchronizacji](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Synchronizuje określonej bazy danych w podanym wystąpieniu serwera usług Analysis Services do wszystkich wystąpień skalowalnego w poziomie zapytania w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzureAnalysisServicesAccount|  
 
 ## <a name="database-operations"></a>Operacje bazy danych
 

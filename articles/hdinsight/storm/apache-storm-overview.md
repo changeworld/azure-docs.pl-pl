@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3ea1048b1bd47a5cb4f8f4f7725f5ac4d3bbed8a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 3bae6d93ffe7ea028d3329dcc69c2f33bdf7aa2a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582850"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635463"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
-[Apache Storm](http://storm.apache.org/) to rozproszony, odporny na uszkodzenia system obliczeniowy typu open source. Można używać systemu Storm można przetwarzać strumienie danych w czasie rzeczywistym za pomocą [Apache Hadoop](https://hadoop.apache.org/). Rozwiązanie Storm oferuje również gwarantowane przetwarzanie danych z możliwością powtarzania danych, które nie zostały pomyślnie przetworzone po raz pierwszy.
+[Apache Storm](https://storm.apache.org/) to rozproszony, odporny na uszkodzenia system obliczeniowy typu open source. Można używać systemu Storm można przetwarzać strumienie danych w czasie rzeczywistym za pomocą [Apache Hadoop](https://hadoop.apache.org/). Rozwiązanie Storm oferuje również gwarantowane przetwarzanie danych z możliwością powtarzania danych, które nie zostały pomyślnie przetworzone po raz pierwszy.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "52582850"
 
 System Storm w usłudze HDInsight oferuje następujące funkcje:
 
-* __Umowa dotycząca poziomu usług (SLA) gwarantująca czas pracy systemu Storm na poziomie 99%__: Aby uzyskać więcej informacji, zobacz dokument [HDInsight — umowa SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* __99% umowy poziomu usług (SLA) gwarantująca czas pracy systemu Storm na__: Aby uzyskać więcej informacji, zobacz dokument [HDInsight — umowa SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
 * Umożliwia łatwe dostosowywanie klastrów Storm dzięki uruchamianiu w nich skryptów podczas procesu tworzenia klastra lub po jego ukończeniu. Aby uzyskać więcej informacji, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -39,10 +39,10 @@ System Storm w usłudze HDInsight oferuje następujące funkcje:
 
 * **Dynamiczne skalowanie**: Można dodawać lub usuwać węzły procesu roboczego bez wpływu na działające topologie Storm.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Aby skorzystać z nowych węzłów dodanych za pośrednictwem operacji skalowania, musisz dezaktywować i ponownie aktywować działające topologie.
 
-* **Tworzenie potoków przesyłania strumieniowego przy użyciu wielu usług platformy Azure**: System Storm w usłudze HDInsight integruje się z innymi usługami platformy Azure, takimi jak Event Hubs, SQL Database, Azure Storage i Azure Data Lake Store.
+* **Tworzenie potoków przesyłania strumieniowego przy użyciu wielu usług platformy Azure**: System STORM w HDInsight integruje się z innymi usługami platformy Azure, takich jak Event Hubs, SQL Database, usługi Azure Storage i usługi Azure Data Lake Storage.
 
     Z przykładowym rozwiązaniem, która integruje się z usługami platformy Azure, zobacz [przetwarzania zdarzeń pochodzących z usługi Event Hubs przy użyciu platformy Apache Storm w HDInsight](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
 
@@ -76,31 +76,31 @@ Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. A
 
 ## <a name="ease-of-use"></a>Łatwość obsługi
 
-* __Łączność z protokołem Secure Shell (SSH)__: dostęp do węzłów głównych klastra Storm w Internecie przy użyciu protokołu SSH. Polecenia można uruchamiać bezpośrednio w klastrze przy użyciu protokołu SSH.
+* __Secure Shell (SSH) łączności__: Można uzyskać dostęp do węzłów głównych klastra Storm za pośrednictwem Internetu, przy użyciu protokołu SSH. Polecenia można uruchamiać bezpośrednio w klastrze przy użyciu protokołu SSH.
 
   Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* __Łączność w sieci Web__: wszystkie klastry HDInsight udostępniają interfejs webowy Ambari. Pozwala on łatwo monitorować i konfigurować usługi oraz zarządzać nimi w klastrze. Klastry Storm udostępniają też interfejs Storm. Interfejs ten pozwala na monitorowanie działających topologii systemu Storm oraz zarządzanie nimi z poziomu przeglądarki przy użyciu interfejsu użytkownika Storm.
+* __Łączność w sieci Web__: Wszystkie klastry HDInsight udostępniają interfejs webowy Ambari. Pozwala on łatwo monitorować i konfigurować usługi oraz zarządzać nimi w klastrze. Klastry Storm udostępniają też interfejs Storm. Interfejs ten pozwala na monitorowanie działających topologii systemu Storm oraz zarządzanie nimi z poziomu przeglądarki przy użyciu interfejsu użytkownika Storm.
 
   Aby uzyskać więcej informacji, zobacz [Zarządzanie HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](../hdinsight-hadoop-manage-ambari.md) i [monitorowanie i zarządzanie przy użyciu interfejsu użytkownika platformy Storm Apache](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui) dokumentów.
 
-* __Klasyczny interfejs wiersza polecenia platformy Azure i programu PowerShell Azure__: programu PowerShell i klasyczny interfejs wiersza polecenia, które są zarówno udostępniają narzędzia wiersza polecenia, których można w systemie klienta do pracy z HDInsight i innymi usługami platformy Azure.
+* __Program Azure PowerShell i na platformie Azure klasyczny interfejs wiersza polecenia__: Program PowerShell i klasyczny interfejs wiersza polecenia, które są zarówno udostępniają narzędzia wiersza polecenia, których można w systemie klienta do pracy z HDInsight i innymi usługami platformy Azure.
 
-* __Integracja z programem Visual Studio__: narzędzia Azure Data Lake Tools for Visual Studio obejmują szablony projektów umożliwiające tworzenie topologii Storm języka C# przy użyciu platformy SCP.Net. Narzędzia Data Lake Tools oferują również umożliwiające wdrażanie i monitorowanie rozwiązań systemu Storm w usłudze HDInsight oraz zarządzanie nimi.
+* __Integracja z programem Visual Studio__: Usługa Azure Data Lake Tools for Visual Studio obejmują szablony projektów umożliwiające tworzenie C# Storm topologies przy użyciu platformy SCP.NET. Narzędzia Data Lake Tools oferują również umożliwiające wdrażanie i monitorowanie rozwiązań systemu Storm w usłudze HDInsight oraz zarządzanie nimi.
 
   Aby uzyskać więcej informacji, zobacz [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md) (Tworzenie topologii języka C# przy użyciu narzędzi HDInsight Tools dla programu Visual Studio).
 
 ## <a name="integration-with-other-azure-services"></a>Integracja z innymi usługami platformy Azure
 
-* __Azure Data Lake Store__: przykład użycia usługi Data Lake Store w klastrze Storm można znaleźć w artykule [Use Azure Data Lake Store with Apache Storm on HDInsight](apache-storm-write-data-lake-store.md) (Korzystanie z usługi Azure Data Lake Store razem z systemem Apache Storm w usłudze HDInsight).
+* __Usługi Azure Data Lake Storage__: Na przykład korzystania z usługi Data Lake Storage w połączeniu z klastrem Storm zobacz [użycia Azure magazyn usługi Data Lake za pomocą Storm Apache na HDInsight](apache-storm-write-data-lake-store.md).
 
-* __Event Hubs__: przykład użycia usługi Event Hubs w klastrze Storm można znaleźć w następujących artykułach:
+* __Usługa Event Hubs__: Przykład użycia usługi Event Hubs w klastrze Storm zobacz następujące przykłady:
 
     * [Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
 
     * [Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL Database__, __Cosmos DB__, __Event Hubs__ i __HBase__: przykłady szablonów są dostępne w narzędziach Data Lake Tools for Visual Studio. Aby uzyskać więcej informacji, zobacz [programowanie C# topologii STORM Apache na HDInsight](apache-storm-develop-csharp-visual-studio-topology.md).
+* __Baza danych SQL__, __usługi Cosmos DB__, __usługi Event Hubs__, i __HBase__: Przykłady szablonów są dostępne w narzędziach Data Lake Tools for Visual Studio. Aby uzyskać więcej informacji, zobacz [programowanie C# topologii STORM Apache na HDInsight](apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="support"></a>Pomoc techniczna
 
@@ -136,17 +136,17 @@ Składniki systemu Storm można również opracowywać w języku Python. Aby uzy
 
 ### <a name="guaranteed-message-processing"></a>Gwarantowane przetwarzanie komunikatów
 
-System Apache Storm zapewnia różne poziomy gwarantowanego przetwarzania komunikatów. Na przykład podstawowa aplikacja Storm może zagwarantować przetwarzanie co najmniej jednokrotne, a [Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html) może zagwarantować przetwarzanie dokładnie jednokrotne.
+System Apache Storm zapewnia różne poziomy gwarantowanego przetwarzania komunikatów. Na przykład podstawowa aplikacja Storm może zagwarantować przetwarzanie co najmniej jednokrotne, a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) może zagwarantować przetwarzanie dokładnie jednokrotne.
 
 Aby uzyskać więcej informacji, zobacz [Guarantees on data processing](https://storm.apache.org/about/guarantees-data-processing.html) (Gwarancje przetwarzania danych) w serwisie apache.org.
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-Wzorzec obejmujący odczytywanie krotki wejściowej, emitującej zero lub więcej krotek, a następnie potwierdzanie krotki wejściowej natychmiast po zakończeniu przetwarzania jest typowy. System Storm udostępnia interfejs [IBasicBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) w celu automatyzacji tego wzorca.
+Wzorzec obejmujący odczytywanie krotki wejściowej, emitującej zero lub więcej krotek, a następnie potwierdzanie krotki wejściowej natychmiast po zakończeniu przetwarzania jest typowy. System Storm udostępnia interfejs [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) w celu automatyzacji tego wzorca.
 
 ### <a name="joins"></a>Sprzężenia
 
-Sposób łączenia strumieni danych różni się między aplikacjami. Na przykład można łączyć poszczególne krotki z wielu strumieni w jeden nowy strumień lub łączyć tylko partie krotek w określonym oknie. W obu przypadkach łączenie można przeprowadzić za pomocą metody [fieldsGrouping](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-). Grupowanie pól polega na określeniu, jak krotki są kierowane do składników bolt.
+Sposób łączenia strumieni danych różni się między aplikacjami. Na przykład można łączyć poszczególne krotki z wielu strumieni w jeden nowy strumień lub łączyć tylko partie krotek w określonym oknie. W obu przypadkach łączenie można przeprowadzić za pomocą metody [fieldsGrouping](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-). Grupowanie pól polega na określeniu, jak krotki są kierowane do składników bolt.
 
 W poniższym przykładzie w języku Java metoda fieldsGrouping służy do kierowana krotek pochodzących ze składników „1”, „2” i „3” do elementu bolt o nazwie MyJoiner:
 
@@ -160,11 +160,11 @@ Aby zapoznać się z przykładem korzystania z krotki znacznikowej z poziomu sk�
 
 ### <a name="caches"></a>Pamięci podręczne
 
-Buforowanie w pamięci jest często używane jako mechanizm przyspieszania przetwarzania, ponieważ utrzymuje często używane zasoby w pamięci. Ponieważ topologia jest rozpowszechniana na wiele węzłów i wiele procesów w każdym węźle, należy rozważyć użycie metody [fieldsGrouping](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-). Użyj metody `fieldsGrouping`, aby zagwarantować, że krotki z polami używanymi do przeszukiwania pamięci podręcznej są zawsze kierowane do tego samego procesu. Funkcja grupowania pozwala uniknąć duplikowania wpisów pamięci podręcznej między procesami.
+Buforowanie w pamięci jest często używane jako mechanizm przyspieszania przetwarzania, ponieważ utrzymuje często używane zasoby w pamięci. Ponieważ topologia jest rozpowszechniana na wiele węzłów i wiele procesów w każdym węźle, należy rozważyć użycie metody [fieldsGrouping](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-). Użyj metody `fieldsGrouping`, aby zagwarantować, że krotki z polami używanymi do przeszukiwania pamięci podręcznej są zawsze kierowane do tego samego procesu. Funkcja grupowania pozwala uniknąć duplikowania wpisów pamięci podręcznej między procesami.
 
 ### <a name="stream-top-n"></a>Strumień „pierwszych N”
 
-Jeśli topologia zależy od obliczenia wartości „pierwszych N”, oblicz wartość pierwszych N równolegle. Następnie należy scalić dane wyjściowe z tych obliczeń w obrębie wartości globalnej. Tę operację można wykonać przy użyciu metody [fieldsGrouping](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-), aby przeprowadzić kierowanie według pola na potrzeby przetwarzania równoległego. Następnie można kierować do składnika bolt, który określa globalnie największą wartość N.
+Jeśli topologia zależy od obliczenia wartości „pierwszych N”, oblicz wartość pierwszych N równolegle. Następnie należy scalić dane wyjściowe z tych obliczeń w obrębie wartości globalnej. Tę operację można wykonać przy użyciu metody [fieldsGrouping](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-), aby przeprowadzić kierowanie według pola na potrzeby przetwarzania równoległego. Następnie można kierować do składnika bolt, który określa globalnie największą wartość N.
 
 Aby zapoznać się z przykładem obliczania wartości pierwszych N, zobacz przykład [RollingTopWords](https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/org/apache/storm/starter/RollingTopWords.java).
 
@@ -182,6 +182,6 @@ Dowiedz się więcej na temat rozwiązań analitycznych w czasie rzeczywistym pr
 * [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](apache-storm-example-topology.md)
 
 [stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
-[samoa]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
+[samoa]: https://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
 [apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: apache-storm-tutorial-get-started-linux.md

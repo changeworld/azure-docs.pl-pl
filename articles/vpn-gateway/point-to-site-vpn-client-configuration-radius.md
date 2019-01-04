@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie i instalowanie plików konfiguracji klienta sieci VPN dla połączeń P2S RADIUS: programu PowerShell: Azure | Dokumentacja firmy Microsoft'
+title: 'Tworzenie i instalowanie plików konfiguracji klienta sieci VPN dla połączeń P2S RADIUS: Program PowerShell: Azure | Microsoft Docs'
 description: Tworzenie klienta Windows, Mac OS X i Linux w sieci VPN pliki konfiguracji dla połączenia, które korzystają z uwierzytelniania usługi RADIUS.
 services: vpn-gateway
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51252012"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN, uwierzytelnianie usługi RADIUS P2S
@@ -62,9 +62,9 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
  
 Uruchamiając polecenie zwraca link. Skopiuj i Wklej link do przeglądarki sieci web, aby pobrać **VpnClientConfiguration.zip**. Rozpakuj plik, aby wyświetlić następujące foldery: 
  
-* **WindowsAmd64** i **WindowsX86**: te foldery zawierają pakietów Instalatora Windows 64-bitowe i 32-bitowych, odpowiednio. 
-* **Ogólny**: ten folder zawiera ogólne informacje, które umożliwia tworzenie własnych konfiguracji klienta sieci VPN. Ten folder nie jest wymagany dla konfiguracji uwierzytelniania nazwy użytkownika i hasła.
-* **Mac**: Jeśli skonfigurowano protokół IKEv2, podczas tworzenia bramy sieci wirtualnej, zobacz folder o nazwie **Mac** zawierający **mobileconfig** pliku. Skonfiguruj klientów na komputery Mac przy użyciu tego pliku.
+* **WindowsAmd64** i **WindowsX86**: Te foldery zawierają pakietów Instalatora Windows 64-bitowe i 32-bitowych, odpowiednio. 
+* **Ogólny**: Ten folder zawiera ogólne informacje, które umożliwia tworzenie własnych konfiguracji klienta sieci VPN. Ten folder nie jest wymagany dla konfiguracji uwierzytelniania nazwy użytkownika i hasła.
+* **Mac**: Jeśli podczas tworzenia bramy sieci wirtualnej skonfigurowano protokół IKEv2, zostanie wyświetlony folder o nazwie **Mac** zawierający **mobileconfig** pliku. Skonfiguruj klientów na komputery Mac przy użyciu tego pliku.
 
 Jeśli już utworzono klienta pliki konfiguracji, można je pobrać za pomocą `Get-AzureRmVpnClientConfiguration` polecenia cmdlet. Ale jeśli wprowadzisz zmiany w konfiguracji sieci VPN P2S, takie jak typ protokołu sieci VPN lub typ uwierzytelniania, konfiguracja nie jest aktualizowane automatycznie. Należy uruchomić `New-AzureRmVpnClientConfiguration` polecenia cmdlet, aby utworzyć nowy plik do pobrania konfiguracji.
 
@@ -193,8 +193,8 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 
 Uruchamiając polecenie zwraca link. Skopiuj i Wklej link do przeglądarki sieci web, aby pobrać VpnClientConfiguration.zip. Rozpakuj plik, aby wyświetlić następujące foldery:
 
-* **WindowsAmd64** i **WindowsX86**: te foldery zawierają pakietów Instalatora Windows 64-bitowe i 32-bitowych, odpowiednio. 
-* **GenericDevice**: ten folder zawiera ogólne informacje, które są używane do tworzenia własnych konfiguracji klienta sieci VPN.
+* **WindowsAmd64** i **WindowsX86**: Te foldery zawierają pakietów Instalatora Windows 64-bitowe i 32-bitowych, odpowiednio. 
+* **GenericDevice**: Ten folder zawiera ogólne informacje, które są używane do tworzenia własnych konfiguracji klienta sieci VPN.
 
 Jeśli już utworzono klienta pliki konfiguracji, można je pobrać za pomocą `Get-AzureRmVpnClientConfiguration` polecenia cmdlet. Ale jeśli wprowadzisz zmiany w konfiguracji sieci VPN P2S, takie jak typ protokołu sieci VPN lub typ uwierzytelniania, konfiguracja nie jest aktualizowane automatycznie. Należy uruchomić `New-AzureRmVpnClientConfiguration` polecenia cmdlet, aby utworzyć nowy plik do pobrania konfiguracji.
 
@@ -266,9 +266,9 @@ Aby użyć innego typu uwierzytelniania (na przykład OTP) lub użyć innego pro
  
 3. **GenenericDevice** folder zawiera plik XML o nazwie **VpnSettings**. Ten plik zawiera wszystkie wymagane informacje:
 
-   * **VpnServer**: nazwa FQDN bramy sieci VPN platformy Azure. Jest to adres, który łączy się z klienta.
-   * **Typ VpnType**: typ używanego do łączenia z tunelowania.
-   * **Trasy**: tras, które należy skonfigurować w profilu, tak aby tylko ruch, który jest powiązany dla sieci wirtualnej platformy Azure są wysyłane za pośrednictwem tunelu P2S.
+   * **VpnServer**: Nazwa FQDN bramy sieci VPN platformy Azure. Jest to adres, który łączy się z klienta.
+   * **Typ VpnType**: Typ tunelu, który umożliwia łączenie.
+   * **Trasy**: Trasy, które należy skonfigurować w profilu, tak aby tylko ruch, który jest powiązany dla sieci wirtualnej platformy Azure są wysyłane za pośrednictwem tunelu P2S.
    
    **GenenericDevice** folder zawiera także plik cer o nazwie **VpnServerRoot**. Ten plik zawiera certyfikat główny, który jest wymagany do sprawdzania poprawności bramy sieci VPN platformy Azure podczas konfigurowania połączenia P2S. Zainstaluj certyfikat na wszystkich urządzeniach, które będą łączyć z siecią wirtualną platformy Azure.
 

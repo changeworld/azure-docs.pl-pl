@@ -1,20 +1,17 @@
 ---
 title: Jak rozwiązywać problemy z wydajnością zapytań w usłudze Azure Database dla serwera MariaDB
 description: W tym artykule opisano, jak rozwiązywać problemy z wydajnością zapytań w usłudze Azure Database dla serwera MariaDB za pomocą wyjaśnienia.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bbaffeccbca77f1cab3058152f8c001f721332e
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347701"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53541085"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak za pomocą wyjaśnienia profil wydajności zapytań w usłudze Azure Database dla serwera MariaDB
 **WYJAŚNIONO** jest przydatnym narzędziem do optymalizacji zapytań. WYJAŚNIĆ, że instrukcja może być używana w celu uzyskania informacji o jak instrukcje SQL są wykonywane. Następujące dane wyjściowe zawierają przykład wykonywania instrukcji wyjaśnienia.

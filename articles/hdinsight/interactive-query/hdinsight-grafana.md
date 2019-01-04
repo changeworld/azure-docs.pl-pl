@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322298"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599880"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana dostępu w usłudze Azure HDInsight
 
@@ -34,7 +34,7 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
 
 2. Wprowadź lub wybierz wartości widoczne na poniższym zrzucie ekranu:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Te wartości muszą być unikatowe i zgodne z wytycznymi dotyczącymi nazewnictwa. Szablon nie wykonuje testów walidacyjnych. Jeśli okaże się, że podane wartości są już używane lub nie są zgodne z wytycznymi, po przesłaniu szablonu wystąpi błąd.       
     > 
     >
@@ -53,7 +53,7 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
     |**Nazwa użytkownika i hasło logowania do klastra**     | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków ' " ` \). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
     |**Nazwa użytkownika i hasło protokołu SSH**     | Domyślna nazwa użytkownika to **sshuser**.  Nazwę użytkownika SSH można zmienić.  Hasło użytkownika SSH ma te same wymagania co hasło logowania klastra.|
        
-    Niektóre właściwości zostały umieszczone w kodzie w szablonie.  Te wartości można skonfigurować z szablonu. Aby uzyskać więcej informacji o tych właściwościach, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+    Niektóre właściwości zostały umieszczone w kodzie w szablonie.  Te wartości można skonfigurować z szablonu. Aby uzyskać więcej informacji o tych właściwościach, zobacz artykuł [Create Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów platformy Hadoop w usłudze HDInsight).
 
 3. Wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia** i pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz przycisk **Kup**. Na pulpicie nawigacyjnym portalu powinien zostać wyświetlony nowy kafelek zatytułowany **Przekazywanie wdrożenia**. Utworzenie klastra trwa około 20 minut.
 
@@ -66,10 +66,8 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
 5. Kafelek zawiera także nazwę magazynu domyślnego, skojarzonego z klastrem. Każdy klaster zależy od [konta usługi Azure Storage](../hdinsight-hadoop-use-blob-storage.md) lub od [konta usługi Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Jest ono określane jako domyślne konto magazynu. Klaster HDInsight i jego domyślne konto magazynu muszą wspólnie przechowywane w tym samym regionie platformy Azure. Usunięcie klastrów nie powoduje usunięcia konta magazynu.
     
 
-> [!NOTE]
-> Inne metody tworzenia klastrów i opis właściwości używanych w tym samouczku znajdziesz w artykule [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).       
-> 
->
+> [!NOTE]  
+> Inne metody tworzenia klastrów i opis właściwości używanych w tym samouczku znajdziesz w artykule [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). 
 
 ## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego z narzędzia Grafana
 
@@ -94,10 +92,8 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. 
 
-> [!NOTE]
+> [!NOTE]  
 > Jeśli chcesz *natychmiast* przejść do następnego samouczka, aby dowiedzieć się, jak uruchomić operacje ETL przy użyciu usługi Hadoop w usłudze HDInsight, warto zachować działający klaster. Jest to spowodowane tym, że w samouczku trzeba ponownie utworzyć klaster usługi Hadoop. Jeśli jednak nie chcesz od razu przechodzić do następnego samouczka, musisz teraz usunąć klaster.
-> 
-> 
 
 **Usuwanie klastra i/lub domyślnego konta magazynu**
 
@@ -122,9 +118,9 @@ Jeśli chcesz już zacząć korzystać z własnych danych i dowiedzieć się wi�
 
 Aby dowiedzieć się więcej na temat analizowania danych za pomocą usługi HDInsight, zobacz następujące artykuły:
 
-* Aby dowiedzieć się więcej o korzystaniu z programu Hive z HDInsight, w tym poznać sposoby wykonywania zapytań Hive z programu Visual Studio, zobacz [używanie programu Apache Hive z HDInsight](../hdinsight-use-hive.md).
-* Aby dowiedzieć się więcej na temat Pig, języka używanego do przekształcania danych, zobacz [Use Apache Pig z HDInsight](../hdinsight-use-pig.md).
-* Aby dowiedzieć się więcej na temat Apache Hadoop MapReduce, sposobie pisania programów przetwarzających dane na platformie Hadoop, zobacz [używanie Apache Hadoop MapReduce z HDInsight](../hdinsight-use-mapreduce.md).
+* Aby dowiedzieć się więcej o korzystaniu z programu Hive z usługą HDInsight, w tym poznać sposoby wykonywania zapytań Hive z programu Visual Studio, zobacz artykuł [Korzystanie z programu Apache Hive z usługą HDInsight](../hdinsight-use-hive.md).
+* Aby dowiedzieć się więcej na temat języka Pig używanego do przekształcania danych, zobacz artykuł [Korzystanie z języka Pig z usługą HDInsight](../hdinsight-use-pig.md).
+* Aby dowiedzieć się więcej o MapReduce, czyli sposobie pisania programów przetwarzających dane w usłudze Hadoop, zobacz [Używanie MapReduce z usługą HDInsight](../hdinsight-use-mapreduce.md).
 * Aby dowiedzieć się więcej o używaniu narzędzi HDInsight Tools for Visual Studio do analizowania danych w usłudze HDInsight, zobacz [Wprowadzenie do używania narzędzi Visual Studio Hadoop dla usługi HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 

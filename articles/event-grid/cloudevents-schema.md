@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ff40ac0e5ab6176bcf192289c0506f57ebf04a11
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287204"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755091"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
 
@@ -21,11 +21,11 @@ W uzupełnieniu do jego [domyślny schemat zdarzeń](event-schema.md), Azure Eve
 
 CloudEvents ułatwia współdziałanie, zapewniając wspólny schemat zdarzeń do publikowania i korzystających z chmury na podstawie zdarzeń. Ten schemat umożliwia jednolitego narzędzi, sposób standardowy routing i obsługa zdarzeń i uniwersalnej sposoby deserializacji schematu zdarzeń zewnętrzne. Za pomocą wspólnego schematu można łatwiej zintegrować pracy między platformami.
 
-CloudEvents są kompilowane przez kilka [współpracowników](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, w tym za pośrednictwem [Cloud natywnych obliczenia Foundation](https://www.cncf.io/). Jest obecnie dostępna w wersji 0,1.
+CloudEvents jest konstruowany przez kilka [współpracowników](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, w tym za pośrednictwem [Cloud natywnych obliczenia Foundation](https://www.cncf.io/). Jest obecnie dostępna w wersji 0,1.
 
 W tym artykule opisano używanie schematu CloudEvents za pomocą usługi Event Grid.
 
-## <a name="install-preview-feature"></a>Zainstaluj funkcję w wersji zapoznawczej
+## <a name="install-preview-feature"></a>Instalowanie funkcji w wersji zapoznawczej
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -65,10 +65,10 @@ CloudEvents v0.1 ma następujące właściwości dostępne:
 | Typ zdarzenia          | Ciąg   | "com.example.someevent"          | Typ wystąpienia, które wystąpiły w                                   | Typ zdarzenia
 | eventTypeVersion   | Ciąg   | "1.0"                            | Wersja typu zdarzenia (opcjonalnie)                            | dataVersion
 | cloudEventsVersion | Ciąg   | "0.1"                            | Wersja specyfikacji CloudEvents, który używa zdarzenia        | *przekazany przez*
-| source             | Identyfikator URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
+| source             | URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
 | Identyfikator zdarzenia            | Ciąg   | "1234-1234-1234"                 | Identyfikator zdarzenia                                                    | id
 | eventTime          | Znacznik czasu| "2018-04-05T17:31:00Z"           | Sygnatura czasowa gdy zdarzenie wystąpiło (opcjonalnie)                    | eventTime
-| schemaURL          | Identyfikator URI      | „https://myschema.com”           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
+| schemaURL          | URI      | „https://myschema.com”           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
 | contentType        | Ciąg   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
 | Rozszerzenia         | Mapa      | {"efekt": "oceny luk w zabezpieczeniach", "extB", "vB"}  | Wszelkie dodatkowe metadane (opcjonalnie)                                 | *nie jest używany*
 | dane               | Obiekt   | {"objA": "oceny luk w zabezpieczeniach", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | dane

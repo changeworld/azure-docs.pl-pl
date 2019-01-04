@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163382"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598825"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalacja notesu programu Jupyter na komputerze i nawiązywanie z platformy Apache Spark w HDInsight
 
@@ -22,9 +22,9 @@ W tym artykule dowiesz się, jak zainstalować notesu programu Jupyter przy uży
 
 Istnieją trzy kluczowe kroki związane z instalacją programu Jupyter i magię platformy Spark na komputerze.
 
-* Zainstaluj notesu programu Jupyter
-* Instalowanie jądra PySpark i Spark za pomocą magic platformy Spark
-* Konfigurowanie magic platformy Spark, klaster Spark w HDInsight dostęp do
+* Zainstaluj notesu programu Jupyter.
+* Zainstaluj jądra PySpark i platformy Spark z magic platformy Spark.
+* Skonfiguruj magic Spark do dostępu do klastra Spark w HDInsight.
 
 Aby uzyskać więcej informacji o niestandardowych jądra i dostępne dla notesu Jupyter w klastrze HDInsight klastrze magic platformy Spark, zobacz [jądra, które są dostępne dla notesów programu Jupyter przy użyciu Apache Spark w systemie Linux klastrów HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
@@ -43,7 +43,7 @@ Przed zainstalowaniem notesów programu Jupyter, należy zainstalować języka P
 
         conda install jupyter
 
-    Aby uzyskać więcej informacji na temat instalowania programu Jupyter, zobacz [instalowanie Jupyter przy użyciu pakietu Anaconda](http://jupyter.readthedocs.io/en/latest/install.html).
+    Aby uzyskać więcej informacji na temat instalowania programu Jupyter, zobacz [instalowanie Jupyter przy użyciu pakietu Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
 ## <a name="install-the-kernels-and-spark-magic"></a>Zainstaluj jądra i magię platformy Spark
 
@@ -100,7 +100,7 @@ W tej sekcji skonfigurujesz magic platformy Spark, zainstalowany wcześniej poł
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >Puls są wysyłane do upewnij się, że nie przedostają sesji. Gdy komputer przechodzi w stan uśpienia lub jest wyłączony, pulsu nie są wysyłane, wynikiem jest sesja wyczyszczone. W przypadku klastrów wersji 3.4, jeśli chcesz wyłączyć to zachowanie można ustawić konfiguracji usługi Livy `livy.server.interactive.heartbeat.timeout` do `0` z poziomu interfejsu użytkownika Ambari. Dla klastrów 3.5 Jeśli nie ustawisz 3,5 konfiguracji powyżej, sesja nie zostaną usunięte.
 
 1. Rozpocznij Jupyter. Użyj następującego polecenia w wierszu polecenia.
@@ -120,7 +120,7 @@ W tej sekcji skonfigurujesz magic platformy Spark, zainstalowany wcześniej poł
 
     Jeśli można pomyślnie pobrać dane wyjściowe, bada się połączenie z klastrem HDInsight.
 
-    >[!TIP]
+    >[!TIP]  
     >Można zaktualizować konfiguracji Notes, aby nawiązać połączenie z innym klastrem, należy zaktualizować config.json za pomocą nowego zestawu wartości, w jak pokazano w kroku 3 powyżej.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Dlaczego Instalacja oprogramowania Jupyter na moim komputerze?
@@ -132,7 +132,7 @@ Może to być z kilku powodów dlaczego warto Instalacja oprogramowania Jupyter 
 * Możesz pracować z notesami lokalnie nawet bez klastra. Dzięki temu wystarczy klastra, aby przetestować notesów programu przed nimi nie do ręcznego zarządzania Notesy użytkownika lub środowiska deweloperskiego.
 * Może być łatwiejsze do skonfigurowania środowiska deweloperskiego lokalnego nie można skonfigurować instalację programu Jupyter w klastrze.  Możesz korzystać z zalet całe oprogramowanie zainstalowane lokalnie bez konfigurowania zdalnego klastrami.
 
-> [!WARNING]
+> [!WARNING]  
 > Jupyter zainstalowane na komputerze lokalnym wielu użytkowników umożliwia uruchamianie tego samego notesu na tym samym klastrze Spark w tym samym czasie. W takiej sytuacji wiele sesji usługi Livy są tworzone. Jeśli napotkania problemu, a chcesz debugować, który będzie że złożonym zadaniem w celu śledzenia sesji usługi Livy, które należy do użytkownika, który.
 >
 >

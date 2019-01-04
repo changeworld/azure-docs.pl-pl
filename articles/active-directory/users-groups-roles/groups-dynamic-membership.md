@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 0c14055209c6094585e0d1df892fea24a3f3ea55
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a64f92df7592b4df419e5f70a32f631ca0504c6c
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721072"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994219"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -362,7 +362,7 @@ Następujące atrybuty urządzenia może służyć.
  systemLabels | dowolny ciąg dopasowania właściwości urządzenia usługi Intune do znakowania nowoczesnym miejscu pracy urządzenia | (device.systemLabels — zawiera "M365Managed")
 
 > [!Note]  
-> Dla deviceOwnership podczas tworzenia grup dynamicznych w przypadku urządzeń, należy ustawić wartość równa "Firma". W usłudze Intune własność urządzenia jest zamiast tego reprezentowana jako należące do firmy. Zapoznaj się [OwnerTypes](https://docs.microsoft.com/en-us/intune/reports-ref-devices#ownertypes) Aby uzyskać więcej informacji. 
+> Dla deviceOwnership podczas tworzenia grup dynamicznych w przypadku urządzeń, należy ustawić wartość równa "Firma". W usłudze Intune własność urządzenia jest zamiast tego reprezentowana jako należące do firmy. Zapoznaj się [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) Aby uzyskać więcej informacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,21 +10,19 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f9ee5946d9748388cc1f606d89d4edeacb0b9c02
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498085"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653717"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Biblioteka MLlib platformy Spark Apache umożliwia tworzenie aplikacji uczenia maszynowego i analizować zestaw danych
 
 Dowiedz się, jak używać platformy Apache Spark [MLlib](https://spark.apache.org/mllib/) do tworzenia aplikacji w celu proste analizy predykcyjnej na zestaw open uczenia maszynowego. Z platforma Spark wbudowanych dotyczącym uczenia maszynowego bibliotek w tym przykładzie użyto *klasyfikacji* za pomocą regresji logistycznej. 
 
-> [!TIP]
+> [!TIP]  
 > W tym przykładzie jest również dostępny jako [notesu programu Jupyter](https://jupyter.org/) w klastrze Spark (Linux), który zostanie utworzony w HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z samego notesu. Aby wykonać kroki samouczka z w ramach Notes, utworzyć klaster platformy Spark i uruchamiania notesu programu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Następnie należy uruchomić Notes **Spark Machine Learning — analizy predykcyjnej na danych inspekcji żywności za pomocą MLlib.ipynb** w obszarze **Python** folderu.
->
->
 
 Biblioteka MLlib jest podstawowej biblioteki platformy Spark, który udostępnia wiele narzędzi przydatne dla zadania uczenia maszynowego, w tym narzędzia, które są odpowiednie na potrzeby:
 
@@ -178,7 +176,7 @@ Zacznijmy od wolumenu zawiera zestaw danych.
     SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
     ```
 
-    `%%sql` Magic następuje `-o countResultsdf` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze programu Jupyter (zazwyczaj węzła głównego klastra). Dane wyjściowe są utrwalane jako [Pandas](http://pandas.pydata.org/) ramka danych o określonej nazwie **countResultsdf**. Aby uzyskać więcej informacji na temat `%%sql` magic i innych poleceń magicznych dostępnych za pośrednictwem jądra PySpark, zobacz [jądra dostępne dla notesu Jupyter w klastrze z klastrami Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    `%%sql` Magic następuje `-o countResultsdf` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze programu Jupyter (zazwyczaj węzła głównego klastra). Dane wyjściowe są utrwalane jako [Pandas](https://pandas.pydata.org/) ramka danych o określonej nazwie **countResultsdf**. Aby uzyskać więcej informacji na temat `%%sql` magic i innych poleceń magicznych dostępnych za pośrednictwem jądra PySpark, zobacz [jądra dostępne dla notesu Jupyter w klastrze z klastrami Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     Dane wyjściowe to:
 
@@ -211,7 +209,7 @@ Zacznijmy od wolumenu zawiera zestaw danych.
     - Przekaż z warunkami
     - Działalność
 
-    Przewidywanie wyników inspekcji żywności, konieczne jest opracowanie modelu, w oparciu o naruszenia. Ponieważ regresji logistycznej jest metoda klasyfikacji binarnej, warto grupować dane wynikowe w dwie kategorie: **się nie powieść** i **przekazać**:
+    Przewidywanie wyników inspekcji żywności, konieczne jest opracowanie modelu, w oparciu o naruszenia. Ponieważ regresji logistycznej jest metoda klasyfikacji binarnej, warto grupować dane wynikowe w dwie kategorie: **Niepowodzenie** i **przekazać**:
 
     - Powodzenie
         - Powodzenie
@@ -382,16 +380,16 @@ Teraz można utworzyć wizualizację końcowego ułatwiające przyczyny o wyniki
 Po zakończeniu działania aplikacji, należy zamknąć notes, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zamknięcie i zamknięcie notesu.
 
 ## <a name="seealso"></a>Zobacz też
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)

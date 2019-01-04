@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963598"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600309"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik programu Microsoft Azure: słownik terminologii chmury na platformie Azure
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik programu Microsoft Azure: Słownik terminologii chmury na platformie Azure
 
 Słownik programu Microsoft Azure to krótki słownik terminologii chmury na platformie Azure. Zobacz też:
 
@@ -37,7 +37,7 @@ Zobacz [Zamów subskrypcję platformy Azure przy użyciu konta usługi Office 36
 Inną nazwę dla [aplikację usługi app Service](#app-service-app).
 
 ## <a name="app-service-app"></a>Aplikacja usługi App Service
-Zasoby obliczeniowe, [usługi Azure App Service](app-service/app-service-web-overview.md) udostępnia do hostowania witryny sieci Web lub aplikacji sieci web, w przypadku interfejsu API sieci web lub [zaplecza aplikacji mobilnej](app-service-mobile/app-service-mobile-value-prop.md). Aplikacje usługi App Service są również nazywane *App Services*, *aplikacje sieci web*, *aplikacje API apps*, i *aplikacje mobilne*.
+Zasoby obliczeniowe, [usługi Azure App Service](app-service/overview.md) udostępnia do hostowania witryny sieci Web lub aplikacji sieci web, w przypadku interfejsu API sieci web lub [zaplecza aplikacji mobilnej](app-service-mobile/app-service-mobile-value-prop.md). Aplikacje usługi App Service są również nazywane *App Services*, *aplikacje sieci web*, *aplikacje API apps*, i *aplikacje mobilne*.
 
 ## <a name="availability-set"></a>Zestaw dostępności
 Kolekcja maszyn wirtualnych, które są ze sobą zarządzane w celu zapewnienia nadmiarowości aplikacji i niezawodności. Korzystanie z zestawu dostępności temu podczas zdarzenia planowaną lub nieplanowaną konserwacją co najmniej jednej maszyny wirtualnej są dostępne.  
@@ -70,7 +70,7 @@ Zobacz [aktywnej replikacji geograficznej dla usługi Azure SQL Database](sql-da
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
-Plik, który zawiera system operacyjny i konfiguracji aplikacji, które można utworzyć dowolną liczbę maszyn wirtualnych. Na platformie Azure są dwa typy obrazów: maszyna wirtualna obrazu i obrazu systemu operacyjnego. Obraz maszyny Wirtualnej zawiera system operacyjny i wszystkie dyski dołączone do maszyny wirtualnej, po utworzeniu obrazu. Obraz systemu operacyjnego zawiera tylko uogólnionego systemu operacyjnego z konfiguracjami dysków nie danych.  
+Plik, który zawiera system operacyjny i konfiguracji aplikacji, które można utworzyć dowolną liczbę maszyn wirtualnych. Istnieją dwa typy obrazów, na platformie Azure: Obraz maszyny Wirtualnej i obrazu systemu operacyjnego. Obraz maszyny Wirtualnej zawiera system operacyjny i wszystkie dyski dołączone do maszyny wirtualnej, po utworzeniu obrazu. Obraz systemu operacyjnego zawiera tylko uogólnionego systemu operacyjnego z konfiguracjami dysków nie danych.  
 Zobacz [Navigate i wybierz pozycję Windows obrazów maszyn wirtualnych na platformie Azure przy użyciu programu PowerShell lub interfejsu wiersza polecenia](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="limits"></a>limity
@@ -83,7 +83,7 @@ Zasób, który dystrybuuje ruch przychodzący między komputerami w sieci. Na pl
 ## <a name="mobile-app"></a>aplikacja mobilna
 Inną nazwę dla [aplikację usługi App Service](#app-service-app).
 
-## <a name="offer"></a>oferta
+## <a name="offer"></a>oferty
 Ceny, środki i powiązane z nią postanowienia mające zastosowanie do subskrypcji platformy Azure.  
 Zobacz [strony szczegółów oferty Azure](https://azure.microsoft.com/support/legal/offer-details/)
 
@@ -106,13 +106,13 @@ Zobacz [Omówienie usługi Azure Resource Manager](azure-resource-manager/resour
 Plik JSON definiujący deklaratywne co najmniej jednego zasobu platformy Azure i definiuje zależności między wdrożonymi zasobami. Szablon może służyć do spójnego i wielokrotnego wdrażania zasobów.  
 Zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md)
 
-## <a name="resource-provider"></a>dostawca zasobów
+## <a name="resource-provider"></a>Dostawca zasobów
 Usługa dostarczająca zasoby, które można wdrażać i zarządzać nimi za pomocą usługi Resource Manager. Każdy dostawca zasobów udostępnia operacje do pracy z wdrażanymi zasobami. Dostawcy zasobów jest możliwy za pośrednictwem witryny Azure portal, programu Azure PowerShell i zestawów SDK programowania.  
 Zobacz [Omówienie usługi Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="role"></a>rola
 Sposób kontrolowania dostępu, który można przypisać do użytkowników, grup i usług. Role są możliwe do wykonania akcji, takie jak tworzenie, zarządzanie i Odczyt dla zasobów platformy Azure.  
-Zobacz [RBAC: wbudowane role](role-based-access-control/built-in-roles.md)
+Zobacz [RBAC: Wbudowane role](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>Umowa dotycząca poziomu usług (SLA)
 Umowa, która opisuje zobowiązania firmy Microsoft dotyczące czasu dostępności i łączności. Każda usługa ma określonego progu umowy SLA.  

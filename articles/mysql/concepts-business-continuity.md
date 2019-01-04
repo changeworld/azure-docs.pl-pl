@@ -1,20 +1,17 @@
 ---
 title: Omówienie ciągłości biznesowej z usługą Azure Database for MySQL
 description: Omówienie ciągłości działania usługi Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714348"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554541"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Omówienie ciągłości biznesowej z usługą Azure Database for MySQL
 
@@ -49,7 +46,7 @@ Jedną z opcji jest oczekiwania serwera do trybu online po zakończeniu awarii c
 Inną opcją jest korzystanie z bazy danych Azure MySQL funkcji przywracania geograficznego, która przywraca serwer za pomocą geograficznie nadmiarowych kopii zapasowych. Te kopie zapasowe są dostępne, nawet wtedy, gdy w regionie, w którym serwer znajduje się w jest w trybie offline. Można przywrócić z tych kopii zapasowych do dowolnego innego regionu i przełączyć serwer w tryb online.
 
 > [!IMPORTANT]
-> Funkcja przywracania geograficznego jest możliwe tylko wtedy, jeśli zainicjowano obsługę administracyjną serwera z magazynu geograficznie nadmiarowego magazynu kopii zapasowych. Jeśli chcesz przełączyć się z lokalnie nadmiarowy geograficznie nadmiarowych kopii zapasowych dla istniejącego serwera, należy wykonać zrzut przy użyciu pg_dump istniejącego serwera i przywracania go w nowo utworzonym serwerem skonfigurowane za pomocą geograficznie nadmiarowych kopii zapasowych.
+> Funkcja przywracania geograficznego jest możliwe tylko wtedy, jeśli zainicjowano obsługę administracyjną serwera z magazynu geograficznie nadmiarowego magazynu kopii zapasowych. Jeśli chcesz przełączyć się z lokalnie nadmiarowy geograficznie nadmiarowych kopii zapasowych dla istniejącego serwera, należy wykonać zrzut przy użyciu polecenia mysqldump istniejącego serwera i przywracania go w nowo utworzonym serwerem skonfigurowane za pomocą geograficznie nadmiarowych kopii zapasowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

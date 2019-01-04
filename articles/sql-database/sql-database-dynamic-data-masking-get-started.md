@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 872e700842ce69ca955035120d4e09ec9facf7ec
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/16/2018
+ms.openlocfilehash: 3e807033b109b8281057f6881a315f5c1c783a22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165555"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536376"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Baza danych SQL dynamiczne maskowanie danych
 
@@ -31,7 +31,7 @@ Na przykład z przedstawicielem w Centrum połączenia może identyfikować obie
 Dane dynamiczne maskowanie zasady w witrynie Azure portal, wybierając dane dynamiczne maskowanie operacji w bloku konfiguracji bazy danych SQL lub w bloku ustawienia należy skonfigurować.
 
 ### <a name="dynamic-data-masking-permissions"></a>Dane dynamiczne maskowanie uprawnień
-Dynamiczne maskowanie danych można skonfigurować przez administratora bazy danych Azure, administrator serwera lub ról ds. zabezpieczeń.
+Dynamiczne maskowanie danych mogą być konfigurowane przez administratora bazy danych Azure, administrator serwera lub [Menedżer zabezpieczeń SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) ról.
 
 ### <a name="dynamic-data-masking-policy"></a>Dane dynamiczne maskowanie zasad
 * **Użytkownicy SQL wykluczeni z maskowania** — A zbiór użytkowników SQL lub tożsamości usługi AAD, które pobierają dane pozbawiony maskowania w SQL wyniki zapytania. Użytkownicy z uprawnieniami administratora są zawsze wykluczeni z maskowania i zobaczyć oryginalne dane bez żadnych maski.

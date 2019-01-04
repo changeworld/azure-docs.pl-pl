@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a012798f71b0e3c14ab9982fd41bce6f0fa098e5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5aa52805afcd50ebf7a9ac0ddcae95f21dd329f1
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257611"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554762"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>Ponowne szkolenie klasycznej usługi Azure Machine Learning Studio usługi sieci web
-Predykcyjne wdrożonej usługi sieci Web jest domyślnego punktu końcowego oceniania. Domyślne punkty końcowe są synchronizowane z oryginalnego szkolenia i oceniania eksperymentów, a w związku z tym nie można zastąpić uczonego modelu dla domyślnego punktu końcowego. Doskonalenie usługi sieci web, należy dodać nowy punkt końcowy usługi sieci web. 
+Predykcyjne wdrożonej usługi sieci Web jest domyślnego punktu końcowego oceniania. Domyślne punkty końcowe są synchronizowane z oryginalnego szkolenia i oceniania eksperymentów, a w związku z tym nie można zastąpić uczonego modelu dla domyślnego punktu końcowego. Doskonalenie usługi sieci web, należy dodać nowy punkt końcowy usługi sieci web.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Musi mieć skonfigurowaniu eksperymentu szkolenia i eksperyment predykcyjny pokazany na [Retrain Machine Learning models programowo](retrain-models-programmatically.md). 
+Musi mieć skonfigurowaniu eksperymentu szkolenia i eksperyment predykcyjny pokazany na [Retrain Machine Learning models programowo](retrain-models-programmatically.md).
 
 > [!IMPORTANT]
-> Eksperyment predykcyjny musi zostać wdrożony jako klasyczna usługi machine learning web service. 
-> 
-> 
+> Eksperyment predykcyjny musi zostać wdrożony jako klasyczna usługi machine learning web service.
+>
+>
 
 Aby uzyskać dodatkowe informacje na temat usługi sieci web wdrażanie, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Dodaj nowy punkt końcowy
-Predykcyjne usługi sieci Web, która została wdrożona zawiera domyślne oceniania punkt końcowy, który jest synchronizowana z oryginalnego szkolenie i ocenianie uczonego modelu eksperymentów. Aby zaktualizować usługę sieci web w taki sposób, aby nowe uczonego modelu, należy utworzyć nowy punkt końcowy oceniania. 
+Predykcyjne usługi sieci Web, która została wdrożona zawiera domyślne oceniania punkt końcowy, który jest synchronizowana z oryginalnego szkolenie i ocenianie uczonego modelu eksperymentów. Aby zaktualizować usługę sieci web w taki sposób, aby nowe uczonego modelu, należy utworzyć nowy punkt końcowy oceniania.
 
 Aby utworzyć nowy punkt końcowy oceniania, na predykcyjne usługi sieci Web, które mogą być aktualizowane za pomocą uczonego modelu:
 
 > [!NOTE]
 > Upewnij się, że chcesz dodać punkt końcowy do predykcyjnej usługi sieci Web nie szkolenia usługi sieci Web. Jeśli zostały poprawnie wdrożone szkoleniowe i predykcyjne usługi sieci Web, powinny pojawić się dwie usługi sieci web w osobnych na liście. Predykcyjne usługi sieci Web powinien kończyć się znakiem "[exp predykcyjne.]".
-> 
-> 
+>
+>
 
 Istnieją dwa sposoby, w których można dodać nowy punkt końcowy usługi sieci web:
 
@@ -51,7 +51,7 @@ Istnieją dwa sposoby, w których można dodać nowy punkt końcowy usługi siec
 2. Korzystanie z portalu usług sieci Web systemu Microsoft Azure
 
 ### <a name="programmatically-add-an-endpoint"></a>Programowe Dodawanie punktu końcowego
-Możesz dodać punktami końcowymi oceniania, korzystającą z przykładowego kodu, podany w tej [repozytorium github](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
+Możesz dodać punktami końcowymi oceniania, korzystającą z przykładowego kodu, podany w tej [repozytorium GitHub](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Dodawanie punktu końcowego przy użyciu portalu usług sieci Web systemu Microsoft Azure
 1. W usłudze Machine Learning Studio w kolumnie nawigacji po lewej stronie kliknij usług sieci Web.

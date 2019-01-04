@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 5df494904dd756ca7ef3a36a48da2224ab2bca81
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386013"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714631"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 
@@ -37,13 +37,13 @@ HUE to zestaw aplikacji sieci Web umożliwiający interakcję z klastrem usługi
 > [!WARNING]  
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane i Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Projektów Apache mieć witryny projektu na [ https://apache.org ](https://apache.org), na przykład: [Hadoop](https://hadoop.apache.org/).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>Instalowanie aplikacji Hue, za pomocą akcji skryptu
 
-Skrypt instalowanie aplikacji Hue w klastrze HDInsight opartych na systemie Linux jest dostępna na https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Ten skrypt umożliwia instalowanie aplikacji Hue w klastrach za pomocą usługi Azure blob Storage (WASB) lub Azure Data Lake Store jako magazynem domyślnym.
+Skrypt instalowanie aplikacji Hue w klastrze HDInsight opartych na systemie Linux jest dostępna na https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Ten skrypt umożliwia instalowanie aplikacji Hue w klastrach za pomocą usługi Azure blob Storage (WASB) lub usługi Azure Data Lake Storage jako magazynu domyślnego.
 
 Ta sekcja zawiera instrukcje dotyczące używania skryptu podczas aprowizowania klastra przy użyciu witryny Azure portal.
 

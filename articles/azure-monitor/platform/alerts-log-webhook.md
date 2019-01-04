@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4502f7232d2bcfaf4a32a384d24556cd668dc50b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285123"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720309"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
 Gdy [alertu dziennika jest tworzony na platformie Azure](alerts-log.md), masz możliwość [konfigurowanie przy użyciu grup akcji](action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -73,13 +73,13 @@ Ten przykładowy ładunek może prowadzić do podobną do następującej po wys�
 ```
 Wszystkie zmienne w niestandardowych elementu webhook zawiera określone w obudowie JSON, takich jak "#searchinterval", wynikowy element webhook będzie miał danych zmiennej wewnątrz obudowy, takich jak "00: 05:00".
 
-Aby dołączyć wyniki wyszukiwania niestandardowy ładunek, upewnij się, że **IncudeSearchResults** jest ustawiony jako właściwości najwyższego poziomu w ładunku json. 
+Aby dołączyć wyniki wyszukiwania niestandardowy ładunek, upewnij się, że **IncludeSearchResults** jest ustawiony jako właściwości najwyższego poziomu w ładunku json. 
 
 ## <a name="sample-payloads"></a>Przykładowych ładunków
 W tej sekcji przedstawiono przykładowy ładunek elementu webhook dla dziennika alertów, w tym przypadku ładunek jest standardowa oraz datę jego niestandardowe.
 
 > [!NOTE]
-> Aby zapewnić zgodność z poprzednimi wersjami, ładunek standardowego elementu webhook dla alertów za pomocą usługi Azure Log Analytics jest taka sama jak [alert usługi Log Analytics, zarządzanie](alerts-metric.md). Ale w przypadku alertów dzienników przy użyciu [usługi Application Insights](../../application-insights/app-insights-analytics.md), ładunek elementu webhook standardowa opiera się na schemat grupy akcji.
+> Aby zapewnić zgodność z poprzednimi wersjami, ładunek standardowego elementu webhook dla alertów za pomocą usługi Azure Log Analytics jest taka sama jak [alert usługi Log Analytics, zarządzanie](alerts-metric.md). Ale w przypadku alertów dzienników przy użyciu [usługi Application Insights](../../azure-monitor/app/analytics.md), ładunek elementu webhook standardowa opiera się na schemat grupy akcji.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardowa elementu Webhook dla dziennika alertów 
 Obu tych przykładów ma podać fikcyjny ładunku z jedynymi kolumnami i wierszami dwa.
@@ -200,5 +200,5 @@ Poniżej przedstawiono przykładowy ładunek dla akcji niestandardowej elementu 
 - Dowiedz się więcej o [alerty dzienników w alertów platformy Azure ](alerts-unified-log.md)
 - Zrozumienie [managaing alertów dzienników na platformie Azure](alerts-log.md)
 - Tworzenie i zarządzanie nimi [grup akcji na platformie Azure](action-groups.md)
-- Dowiedz się więcej o [usługi Application Insights](../../application-insights/app-insights-analytics.md)
+- Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md)
 - Dowiedz się więcej o [usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 

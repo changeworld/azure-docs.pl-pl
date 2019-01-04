@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 0e7487525dc23482cbd3029b626e7bb30dd51b50
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398564"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633389"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Nietrwałe usuwanie obiektów blob usługi Azure Storage
 Usługa Azure Storage oferuje teraz usuwania nietrwałego dla obiektów blob, tak, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika do konta magazynu.
@@ -170,26 +170,29 @@ Po można cofnąć usunięcia migawek obiektu blob, możesz kliknąć **Podwyżs
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 ### <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Aby włączyć usuwanie nietrwałe, zaktualizuj właściwości usługi klienta obiektu blob. Poniższy przykład umożliwia usuwania nietrwałego dla podzbioru kont w ramach subskrypcji:
 
 ```powershell
-Set-AzureRmContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzureRMStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 7
+Set-AzContext -Subscription "<subscription-name>"
+$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
+$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
 Możesz sprawdzić, czy tego usuwania nietrwałego została włączona przy użyciu następującego polecenia:
 
 ```powershell
-$MatchingAccounts | Get-AzureStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 Aby odzyskać przypadkowo usunięte obiekty BLOB, należy wywołać Cofnij usunięcie tych obiektów blob. Należy pamiętać, że wywołanie **cofanie usunięcia obiektu Blob**, zarówno dla aktywnych i nietrwałe usuniętych obiektów blob, spowoduje przywrócenie wszystkich powiązanych z nim nietrwale usunięte migawki jako aktywny. Poniższy przykład wywołuje Cofnij usunięcie wszystkich nietrwale usunięte i aktywnych obiektów blob w kontenerze:
 ```powershell
 # Create a context by specifying storage account name and key
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Get the blobs in a given container and show their properties
-$Blobs = Get-AzureStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
+$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
 $Blobs.ICloudBlob.Properties
 
 # Undelete the blobs
@@ -198,8 +201,8 @@ $Blobs.ICloudBlob.Undelete()
 Aby znaleźć zasady przechowywania currrent usuwania nietrwałego, użyj następującego polecenia:
 
 ```azurepowershell-interactive
-   $account = Get-AzureRmStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzureStorageServiceProperty -ServiceType Blob -Context $account.Context
+   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure 

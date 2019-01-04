@@ -1,6 +1,6 @@
 ---
-title: Menedżer zasobów klastra usługi sieć szkieletowa — koligacji | Dokumentacja firmy Microsoft
-description: Omówienie konfigurowania koligacji dla usługi sieci szkieletowej usług
+title: Menedżer zasobów klastra usługi Service Fabric — koligacja | Dokumentacja firmy Microsoft
+description: Omówienie konfigurowania koligacji dla usługi Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bda70a6854dc6d94d3d4b37e6f587e4dcd045126
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204859"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543843"
 ---
-# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurowanie i używanie koligację usługi w sieci szkieletowej usług
-Koligacja jest formant, który znajduje się głównie do pomóc w usprawnieniu przejścia większych wbudowanymi aplikacji w chmurze i mikrousług świecie. Jest również używany jako optymalizacji dla poprawy wydajności usług, mimo że ten sposób może mieć efekty uboczne.
+# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurowanie i używanie koligacji usługi w usłudze Service Fabric
+Koligacja jest formant, który znajduje się przede wszystkim ułatwiają przejście większej aplikacji monolitycznych w świecie chmury i mikrousług. Jest również używany jako optymalizacji dla poprawy wydajności usługi, mimo że ten sposób można mieć skutki uboczne.
 
-Załóżmy, że w przypadku wprowadzenia większych aplikacji lub taki, który właśnie nie został zaprojektowany z mikrousług pamiętać sieci szkieletowej usług (lub dowolnym środowisku rozproszonym). Ten typ przejścia jest wspólnej. Rozpoczyna się od podnoszenia całą aplikację do środowiska, pakowanie i czy działa bez problemów. Następnie możesz uruchomić podzielenie go na różnych usług mniejszych, że wszystkie komunikować się ze sobą.
+Załóżmy, że korzystamy większej aplikacji lub taką, która po prostu nie została zaprojektowana pod kątem mikrousług należy pamiętać, aby Usługa Service Fabric (lub dowolnym środowisku rozproszonym). Ten typ przejścia jest wspólne. Uruchom, przenosząc całej aplikacji do środowiska, pakowanie i czy działa bez problemów. Następnie możesz uruchomić podzielenie go na różnych usługach mniejszych wszystkie komunikować się ze sobą.
 
-Po pewnym czasie może się okazać czy aplikacji występują problemy. Problemy zwykle należą do jednej z tych kategorii:
+Po pewnym czasie może się okazać, że aplikacji występują pewne problemy. Problemy zazwyczaj dzielą się na jednej z tych kategorii:
 
-1. Inny składnik X wbudowanymi aplikacji ma zależność nieudokumentowanej składnika Y, i tylko włączone tych składników do poszczególnych usług. Ponieważ te usługi są uruchomione w różnych węzłach w klastrze, są one uszkodzone.
-2. Te składniki komunikują się za pośrednictwem (lokalnej nazwane potoki | współużytkowana pamięć | pliki na dysku) i naprawdę muszą mieć możliwość zapisywania w tej chwili do udostępnionego zasobu lokalnego ze względu na wydajność. Zależność twardych ta zostanie usunięta później, może być.
-3. Wszystko działa poprawnie, ale włącza się, że te dwa składniki są faktycznie chatty wydajności poufnych. Gdy są przenoszone do poszczególnych usług ogólne tanked wydajność aplikacji lub opóźnienia zwiększyć. W związku z tym ogólną aplikacji nie spełniających oczekiwań.
+1. Niektóre składnik X monolityczną aplikację miał nieudokumentowane zależność na składnik Y, a tylko włączone tych składników na osobne usługi. Ponieważ te usługi są uruchomione na różnych węzłach w klastrze, są one uszkodzone.
+2. Te składniki komunikują się za pośrednictwem (lokalnej nazwane potoki | pamięć współużytkowaną | pliki na dysku) i naprawdę potrzebne można było zapisać do udostępnionego zasobu lokalnego ze względu na wydajność teraz. Tej zależności twardych usuwana później, być może.
+3. Wszystko, co jest dobrym rozwiązaniem, ale okazuje się, że te dwa składniki są faktycznie duża liczba/wydajność poufnych. Kiedy je przenieść na osobne usługi ogólną wydajność aplikacji tanked lub opóźnienia zwiększyć. W rezultacie cała aplikacja nie spełniają oczekiwań.
 
-W takich przypadkach firma Microsoft nie chcesz stracić refaktoryzacji pracę i nie chcesz przejść z powrotem do monolityczna. Ostatni warunek nawet może być pożądane zwykły optymalizacji. Jednak do momentu możemy zmodyfikowanie składników do pracy w naturalny sposób jako usługi (lub firma Microsoft może rozwiązać oczekiwania dotyczące wydajności w inny sposób) zamierzamy muszą pewnym sensie lokalizacji.
+W takich przypadkach firma Microsoft nie chcesz stracić współpracując refaktoryzacji, a nie chcesz wrócić do monolitu. Ostatni warunek może być pożądane jako zwykły optymalizacji. Jednak do czasu firma Microsoft możesz ponownie zaprojektować składników do pracy w naturalny sposób jako usługi (lub do czasu firma Microsoft może rozwiązać oczekiwania dotyczące wydajności w inny sposób) zamierzamy muszą pewnym sensie miejscowości.
 
-Co można zrobić w takiej sytuacji? Można również spróbuj Włączenie koligacji.
+Co można zrobić w takiej sytuacji? Możesz również spróbować Włączenie koligacji.
 
-## <a name="how-to-configure-affinity"></a>Konfigurowanie koligacji
-Aby skonfigurować koligację, należy zdefiniować relację koligację między dwóch różnych usług. Można potraktować koligacji jako "wskazuje" jedną usługę w innej i informacją "tej usługi można uruchamiać tylko gdy czy usługa jest uruchomiona." Czasami nazywamy koligacji relacji nadrzędny/podrzędny (gdzie wskażesz dziecka na element nadrzędny). Koligacja zapewnia repliki lub wystąpień jednej usługi są umieszczane na tych samych węzłów, które innej usługi.
+## <a name="how-to-configure-affinity"></a>Jak skonfigurować koligację
+Aby skonfigurować koligację, należy zdefiniować relacja koligacji między dwoma różnymi usługami. Można potraktować koligacji "wskazującego" w jednej usłudze innej oraz informujący o tym, "tej usługi można uruchamiać tylko gdy czy usługa jest uruchomiona." Czasami nazywamy koligacji relacji nadrzędny/podrzędny (gdzie wskazaniu elementu podrzędnego w element nadrzędny). Koligacji gwarantuje, że replik lub wystąpień jednej usługi są umieszczane w tej samej węzłów jako udostępnianych przez inną usługę.
 
 ```csharp
 ServiceCorrelationDescription affinityDescription = new ServiceCorrelationDescription();
@@ -48,39 +48,39 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
 > [!NOTE]
-> Usługa podrzędne tylko mogą uczestniczyć w relacji jeden koligacji. Jeśli potrzebujesz dziecka, które ma być koligowane z dwóch usług nadrzędnego jednocześnie masz kilka opcji:
-> - Wycofaj relacje (mają parentService1 i parentService2 punkt w aktualnie usługi podrzędnego), lub
-> - Wyznaczanie jeden z elementów nadrzędnych koncentratora przez Konwencję i mieć wszystkich usług punkt w tej usłudze. 
+> Usługa podrzędnych tylko mogą uczestniczyć w relacji koligacji pojedyncze. Jeżeli chcesz, aby dziecko skoligaconym się dwie usługi nadrzędnej jednocześnie masz kilka opcji:
+> - Odwróć relacje (ma parentService1 i parentService2 punkt u bieżącej usługi podrzędne), lub
+> - Wyznaczanie jednego z elementów nadrzędnych koncentrator zgodnie z Konwencją i mieć wszystkie usługi, które wskazują na tę usługę. 
 >
-> Efekty umieszczenia w klastrze powinna być taka sama.
+> Wynikowe zachowania umieszczenia w klastrze powinna być taka sama.
 >
 
 ## <a name="different-affinity-options"></a>Koligacja różnych opcji
-Koligacja jest reprezentowany przez jeden z kilku systemów korelacji i ma dwa różne tryby. Najbardziej typowe tryb koligacji jest określane mianem NonAlignedAffinity. W NonAlignedAffinity repliki lub wystąpienia różnych usług są umieszczane na tych samych węzłów. Inne tryb jest AlignedAffinity. Wyrównane koligacji przydaje się tylko z usług stanowych. Konfigurowanie dwóch usług stanowych ma wyrównane koligacji zapewnia umieszczanie kolory podstawowe tych usług na tych samych węzłów poszczególnych. Powoduje także każda para pomocnicze bazy danych dla tych usług na tych samych węzłów. Istnieje również możliwość (chociaż są mniej typowe) do konfigurowania NonAlignedAffinity dla stanowych usług. Dla NonAlignedAffinity innej repliki dwie usługi stanowej są uruchamiane na tych samych węzłów, ale może to spowodować ich kolory podstawowe w różnych węzłach.
+Koligacja jest przedstawiana za pomocą jednego z kilku systemów korelacji i ma dwa różne tryby. Najbardziej typowe rodzaj koligacji to tak zwany NonAlignedAffinity. W NonAlignedAffinity replik lub wystąpień różnych usług są umieszczane w tej samej węzłów. Inny tryb jest AlignedAffinity. Koligacja wyrównany przydaje się tylko w przypadku usług stanowych. Konfigurowanie dwóch usług stanowych do wyrównany w koligacji gwarantuje, że kolory podstawowe te usługi są umieszczane w tej samej węzłów poszczególnych. On również powoduje, że każda para pomocnicze bazy danych dla tych usług, które mają być umieszczane w tej samej węzłów. Użytkownik może również (chociaż są mniej typowe) można skonfigurować NonAlignedAffinity dla usług stanowych. NonAlignedAffinity różnych replik z dwóch usług stanowych są uruchamiane na tym samym węzłów, ale ich kolory podstawowe można znajdą się w różnych węzłach.
 
 <center>
-![Tryby koligacji i ich wpływ][Image1]
+![Tryby koligacji i ich skutków][Image1]
 </center>
 
-### <a name="best-effort-desired-state"></a>Najlepszy stan potrzeby nakładu pracy
-Relacja koligacji to optymalne rozwiązanie. Nie zapewnia te same gwarancje kolokacji lub niezawodności, która działa w taki sam proces wykonywalny nie. Usługi w relacja koligacji są zasadniczo różne jednostki, które może zakończyć się niepowodzeniem i można przenosić niezależnie. Relacja koligacji może również spowodować przerwanie, chociaż te podziały są tymczasowe. Na przykład ograniczenia dotyczące pojemności może oznaczać tylko niektóre obiekty usługi relacja koligacji można zmieścić w danym węźle. W takich przypadkach, mimo że istnieje relacja koligacji w miejscu, go nie można wymusić ze względu na inne ograniczenia. Jeśli jest to możliwe to zrobić, naruszenie jest automatycznie rozwiązany później.
+### <a name="best-effort-desired-state"></a>Najlepszy nakład pracy żądany stan
+Relacja koligacji jest najlepszy nakład pracy. Nie zapewnia te same gwarancje kolokacji lub niezawodność wykonującej uruchomione w tym samym pliku wykonywalnego procesu. Usługi w relacji koligacji są całkowicie różnych obiektów, może zakończyć się niepowodzeniem, które można przenosić niezależnie. Relacja koligacji może również spowodować przerwanie, chociaż te podziały są tymczasowe. Na przykład ograniczenia wydajności może oznaczać, że niektóre obiekty usługi relacja koligacji może zaspokajać w danym węźle. W takich przypadkach, mimo że istnieje relacja koligacji w miejscu, go nie można wymusić ze względu na inne ograniczenia. Jeśli jest to możliwe to zrobić, naruszenia jest automatycznie rozwiązany później.
 
 ### <a name="chains-vs-stars"></a>Łańcuchy a gwiazdek
-Dzisiaj Menedżera zasobów klastra nie jest możliwość łańcuchów modelu relacji koligacji. Co to oznacza, że jest to, że usługa, która jest elementem podrzędnym w jednej relacji koligacji nie może być elementem nadrzędnym w innej relacji koligacji. Jeśli chcesz modelu tego typu relacji należy skutecznie go model gwiazdy, jako łańcuch. Aby przenieść z łańcucha gwiazdy, znajdujących się najniżej podrzędnych może być elementem nadrzędnym do pierwszy element podrzędny elementu nadrzędnego zamiast tego. W zależności od rozmieszczenie usługi może być konieczne są wielokrotnie. Jeśli nie ma rodzica usługi, należy utworzyć jedną, która służy jako symbol zastępczy. W zależności od wymagań, możesz zapoznać się [grup aplikacji](service-fabric-cluster-resource-manager-application-groups.md).
+Już dziś Menedżer zasobów klastra nie jest w stanie modelu łańcucha koligacji relacji. Oznacza to, że to usługa, która jest elementem podrzędnym w jednej relacji koligacji nie może być elementem nadrzędnym w innej relacji koligacji. Jeśli chcesz modelu tego typu relacji masz skutecznie modelować gwiazdkę zamiast łańcuch. Aby przenieść z łańcucha gwiazdkę, znajdujących się najniżej podrzędnych może być elementem nadrzędnym do pierwszy element podrzędny elementu nadrzędnego zamiast tego. W zależności od rozmieszczenie usług może trzeba wielokrotnie. Nie ma żadnej usługi rodzica, należy utworzyć jedną, która służy jako symbol zastępczy. W zależności od wymagań możesz zbadać [grup aplikacji](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
-![Łańcuchy vs. Gwiazdki w kontekście relacje koligacji][Image2]
+![Łańcuchy programu vs. Gwiazdek w kontekście relacje koligacji][Image2]
 </center>
 
-Innym czynnikiem, który należy pamiętać o relacjach koligacji dzisiaj te są dwukierunkowego. Oznacza to, że reguła koligacji wymusza tylko umieszczanie z nadrzędnego elementu podrzędnego. Zapewnia to, że element nadrzędny znajduje się z elementem podrzędnym. Jest również należy pamiętać, że relacja koligacji nie jest doskonała lub natychmiast wymuszana od różnych usług z różnych cykle i może zakończyć się niepowodzeniem, a przenosić niezależnie. Załóżmy na przykład, że element nadrzędny nagła awaria za pośrednictwem do innego węzła, ponieważ wystąpiła awaria. Menedżer zasobów klastra i menedżera trybu Failover obsługują tryb failover najpierw od zatrzymując usług, spójne, a dostępna jest priorytet. Po zakończeniu trybu failover, relacja koligacji zostało przerwane, ale Menedżera zasobów klastra sądzi, że wszystko jest poprawnie, dopóki nie wykryje, że obiekt podrzędny nie znajduje się z nadrzędnym. Tego rodzaju testy są wykonywane okresowo. Więcej informacji na temat jak Menedżer zasobów klastra ocenia ograniczenia jest dostępna w [w tym artykule](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), i [tego](service-fabric-cluster-resource-manager-balancing.md) zawiera więcej informacji na temat sposobu konfigurowania okresach, na którym są tych warunków ograniczających obliczone.   
+Innym czynnikiem, który należy zwrócić uwagę na relacje koligacji już dziś jest, czy kierunkowe domyślnie. Oznacza to, że reguła koligacji wymusza tylko że podrzędne są umieszczane z elementem nadrzędnym. Nie zapewnia to, że element nadrzędny znajduje się za pomocą elementu podrzędnego. W związku z tym jeśli istnieje naruszenie koligacji, a aby naprawić naruszenie jakiegoś powodu nie jest możliwe, następnie przenieść element podrzędny węzła nadrzędnego, — nawet w razie przenoszenia obiektu nadrzędnego do węzła podrzędnego będzie mieć naruszenia — element nadrzędny nie zostaną przeniesione do kwietnia węzeł podrzędny e. Ustawienie konfiguracji [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) do wartości true spowoduje usunięcie kierunkowość. Jest również pamiętać, że relacja koligacji nie jest doskonała lub natychmiast wymuszana ponieważ różne usługi z różnych cykle życia może zakończyć się niepowodzeniem i przenosić niezależnie. Załóżmy na przykład, że element nadrzędny nagle awaryjnie do innego węzła, ponieważ wystąpiła awaria. Menedżer zasobów klastra i Menedżer trybu Failover obsługi trybu failover najpierw od Nadążanie usług, spójne i dostępna jest priorytetem. Po zakończeniu trybu failover relacja koligacji jest uszkodzona. Jednak Menedżer zasobów klastra sądzą, że wszystko jest poprawnie, dopóki zauważa, że podrzędne nie znajduje się z obiektem nadrzędnym. Tego rodzaju testy są wykonywane okresowo. Więcej informacji na temat sposobu Menedżer zasobów klastra ocenia ograniczenia jest dostępna w [w tym artykule](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), i [tego jednego](service-fabric-cluster-resource-manager-balancing.md) rozmawia więcej informacji na temat sposobu konfigurowania tempo, w którym te ograniczenia są ocenione.   
 
 
 ### <a name="partitioning-support"></a>Partycjonowanie pomocy technicznej
-Końcowy jest, aby uwagi dotyczące koligacji jest koligacji, że relacje nie są obsługiwane, gdy element nadrzędny jest podzielona na partycje. Usługi nadrzędnej podzielonym na partycje, które mogą być obsługiwane po pewnym czasie, ale obecnie nie jest dozwolone.
+Końcowe rzeczą, którą należy zwrócić uwagę o koligacji jest koligacji, że relacje nie są obsługiwane, gdy element nadrzędny jest podzielona na partycje. Usługi nadrzędnej podzielonym na partycje, które mogą być obsługiwane po pewnym czasie, ale obecnie nie jest dozwolone.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać więcej informacji na temat konfigurowania usługi [Dowiedz się więcej o konfigurowaniu usługi](service-fabric-cluster-resource-manager-configure-services.md)
-- Do ograniczenia usług niewielki zestaw komputerów lub agregowanie obciążenie usługi, użyj [grup aplikacji](service-fabric-cluster-resource-manager-application-groups.md)
+- Aby uzyskać więcej informacji na temat konfigurowania usług [Dowiedz się więcej na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)
+- Sposób ograniczania usługi wśród małej grupy maszyn i agregowanie obciążenia usługi, użyj [grupy aplikacji](service-fabric-cluster-resource-manager-application-groups.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png

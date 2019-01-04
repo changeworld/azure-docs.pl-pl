@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240413"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972383"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach
 
@@ -84,6 +84,7 @@ Aby utworzyć replikę w centrum danych zdalnego, wykonaj następujące czynnoś
    - Obejmują puli zaplecza, składający się z tylko maszyny wirtualne w tym samym regionie co moduł równoważenia obciążenia.
    - Użyj określonego adresu IP sondy portu TCP.
    - Mają reguły specyficzne dla programu SQL Server, w tym samym regionie równoważenia obciążenia.  
+   - Jeśli maszyny wirtualne w puli zaplecza nie są częścią pojedynczym zestawie dostępności lub zestawie skalowania maszyn wirtualnych, należy być standardowego modułu równoważenia obciążenia. Aby uzyskać dodatkowe informacje, przejrzyj [Omówienie usługi Azure Load Balancer w warstwie standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 1. [Dodaj funkcję Klaster trybu Failover na nowy serwer SQL](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 

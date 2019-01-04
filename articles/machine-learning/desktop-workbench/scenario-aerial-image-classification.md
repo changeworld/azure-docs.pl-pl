@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9dd4ca4b4f156823aff3b8a475e06ea63f98be6c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260554"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975305"
 ---
 # <a name="aerial-image-classification"></a>Klasyfikacja obrazów z powietrza
 
@@ -174,7 +174,7 @@ Nasze zalecaną metodą tworzenia klastra usługi HDInsight używa szablonu Mene
 
 1. Szablon klastra platformy HDInsight Spark jest plik "template.json" w podfolderze "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" ten projekt. Domyślnie szablon tworzy klaster Spark z 40 węzłami procesu roboczego. Jeśli musisz dostosować tę liczbę, otworzyć szablon w swoim ulubionym edytorze tekstów i Zamień wszystkie wystąpienia "40" numer węzła procesu roboczego wybranych przez użytkownika.
     - Mogą wystąpić błędy braku pamięci później, jeśli liczba węzłów procesu roboczego, który wybierzesz jest mniejsza. Aby walczyć błędów pamięci, może uruchamiać skrypty szkolenia i operacjonalizacji dla podzbioru dostępnych danych, zgodnie z opisem w dalszej części tego dokumentu.
-2. Wybierz unikatową nazwę i hasło dla HDInsight klastra i zapisanie ich w przypadku, gdy wskazane w następującym poleceniu: następnie utworzyć klaster, wysyłając polecenia:
+2. Wybierz unikatową nazwę i hasło dla HDInsight klastra i zapisanie ich w przypadku, gdy wskazane w następującym poleceniu: Następnie Utwórz klaster przez wydanie polecenia:
 
     ```
     set HDINSIGHT_CLUSTER_NAME=[HDInsight cluster name]
@@ -332,7 +332,7 @@ pip install matplotlib azure-storage==0.36.0 pillow scikit-learn azure-mgmt-batc
 
 ## <a name="data-acquisition-and-understanding"></a>Pozyskiwanie danych i ich analiza
 
-W tym scenariuszu zdjęcia lotnicze publicznie dostępnych danych z [National rolnictwa obrazach programu](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) rozdzielczością 1 miernika. Firma Microsoft ma wygenerowanych zestawów 224 pikseli x 224 pikseli pliki PNG przycięte z oryginalnych danych NAIP i posortowane zgodnie z ziemi Użyj etykiet z [National ziemi obejmują Database](https://www.mrlc.gov/nlcd2011.php). Przykładowy obraz z etykietą "Developed" jest wyświetlana w pełnym rozmiarze:
+W tym scenariuszu zdjęcia lotnicze publicznie dostępnych danych z [National rolnictwa obrazach programu](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) rozdzielczością 1 miernika. Firma Microsoft ma wygenerowanych zestawów 224 pikseli x 224 pikseli pliki PNG przycięte z oryginalnych danych NAIP i posortowane zgodnie z ziemi Użyj etykiet z [National ziemi obejmują Database](https://www.mrlc.gov/data/references/national-land-cover-database-2011-nlcd2011). Przykładowy obraz z etykietą "Developed" jest wyświetlana w pełnym rozmiarze:
 
 ![Kafelek przykładowe opracowanych ziemi](media/scenario-aerial-image-classification/sample-tile-developed.png)
 

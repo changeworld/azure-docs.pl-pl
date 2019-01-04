@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 2f4bc578b567462c2591c28b270f863ba5756815
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193913"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976022"
 ---
 # <a name="storsimple-security-and-data-protection"></a>Usługa StorSimple zabezpieczeń i ochrony danych
 
@@ -121,7 +121,7 @@ Aby uzyskać więcej informacji na temat programu StorSimple Snapshot Manager, p
 Firma Microsoft zaleca, skorzystaj z poniższych wskazówek w celu zapewnienia, że haseł usługi StorSimple silnych i dobrze chronione:
 
 * Zmień hasła co trzy miesiące. Zmiana hasła jest wymuszana rocznie.
-* Należy używać silnych haseł. Aby uzyskać więcej informacji, przejdź do [tworzyć silniejsze hasła i chronić je](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Należy używać silnych haseł. Aby uzyskać więcej informacji, przejdź do [tworzyć silniejsze hasła i chronić je](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
 * Zawsze używaj różnych haseł dla dostępu z różnych mechanizmów; Każdy z haseł, które określisz powinny być unikatowe.
 * Nie należy udostępniać hasła każdemu użytkownikowi, który nie ma uprawnień do uzyskania dostępu do urządzenia StorSimple.
 * Nie mówić o hasło przed innymi ani nie podpowiedzi na format hasła.

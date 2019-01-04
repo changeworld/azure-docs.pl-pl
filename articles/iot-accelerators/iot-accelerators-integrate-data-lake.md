@@ -1,5 +1,5 @@
 ---
-title: Integracja rozwiązania do zdalnego monitorowania za pomocą usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+title: Zintegrować rozwiązanie monitorowania zdalnego z usługą Data Lake Store — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zintegrować rozwiązanie monitorowania zdalnego z usługą Azure Data Lake Store, za pomocą zadania usługi Azure Stream Analytics.
 author: philmea
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: a918866ff5e206ea4d2dedde2711424924a478fe
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188074"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603933"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integracja rozwiązania do zdalnego monitorowania za pomocą usługi Azure Data Lake Store
 
@@ -67,7 +67,7 @@ Utwórz zadanie usługi Azure Stream Analytics, przesłać strumień danych z us
 
 1. Upewnij się, aby pozostawić środowiska hostingu jako domyślny **chmury**.
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
     ![Utwórz zadanie usługi Stream Analytics](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -154,7 +154,7 @@ Usługa Azure Stream Analytics używa język zapytań przypominający SQL, aby o
 
 1. Ustaw niestandardowy czas Wróć za kilka godzin do pobrania danych z urządzenia ma rozpoczęcia przesyłania strumieniowego.
 
-1. Kliknij przycisk **Start**.
+1. Kliknij przycisk **Uruchom**.
 
     ![Wybierz niestandardowe daty](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 

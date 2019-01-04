@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186314"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631672"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z poprzednich wersji i znane problemy.
@@ -44,6 +44,10 @@ Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z po
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
 Aby uzyskać informacji o historii wersji interfejsu API REST usługi Media Services, zobacz [Dokumentacja usługi Azure Media Services — interfejs API REST].
+
+## <a name="december-2018"></a>Grudzień 2018 r.
+
+[Media Hyperlapse w wersji zapoznawczej](media-services-hyperlapse-content.md) funkcji usługi Azure Media Services zostanie wkrótce wycofany. Od 19 grudnia 2018 r. usługi Media Services nie jest już wprowadzi zmiany i udoskonalenia Media Hyperlapse. Na 29 marca 2019 r będzie wycofane i nie będą już dostępne.
 
 ## <a name="october-2018"></a>Październik 2018 r.
 

@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498666"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722927"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Korzystanie z systemu Apache Ambari w celu optymalizacji konfiguracje klastrów HDInsight
 
-HDInsight zapewnia [Apache Hadoop](https://hadoop.apache.org/) klastry dla aplikacji przetwarzających dane na dużą skalę. Zarządzanie, monitorowanie i optymalizowanie tych złożonych klastrami z wieloma węzłami może być trudne. [Apache Ambari](http://ambari.apache.org/) jest interfejsem sieci web do zarządzania i monitorowania klastrów HDInsight w systemie Linux.  W przypadku klastrów Windows użyj [interfejsu API REST Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight zapewnia [Apache Hadoop](https://hadoop.apache.org/) klastry dla aplikacji przetwarzających dane na dużą skalę. Zarządzanie, monitorowanie i optymalizowanie tych złożonych klastrami z wieloma węzłami może być trudne. [Apache Ambari](https://ambari.apache.org/) jest interfejsem sieci web do zarządzania i monitorowania klastrów HDInsight w systemie Linux.  W przypadku klastrów Windows użyj [interfejsu API REST Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 Wprowadzenie do korzystania z interfejsu użytkownika sieci Web Ambari, zobacz [HDInsight Zarządzanie klastrami za pomocą Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
@@ -189,7 +189,7 @@ Zgodnie z ogólną zasadą ważne jest posiadanie podzielne metoda kompresji, w 
 
     ![Kompresuj exec hive pośrednich](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Aby skompresować pośrednie pliki, należy wybrać kodera-dekodera kompresji z Procesora niższym kosztom, kodera-dekodera nie zainstalowano wysoką kompresję danych wyjściowych.
 
 1. Aby ustawić kodera-dekodera kompresji pośredniego, dodawanie właściwości niestandardowych `mapred.map.output.compression.codec` do `hive-site.xml` lub `mapred-site.xml` pliku.
@@ -210,7 +210,7 @@ Zgodnie z ogólną zasadą ważne jest posiadanie podzielne metoda kompresji, w 
 
     Umożliwia kompresję pliku pośredniego, przy użyciu kompresji Snappy. Po dodaniu właściwość pojawia się w okienku niestandardowe witryny programu hive.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ta procedura modyfikuje `$HADOOP_HOME/conf/hive-site.xml` pliku.
 
 ### <a name="compress-final-output"></a>Kompresowanie pliku wyjściowego
@@ -299,12 +299,12 @@ Dodatkowe zalecenia dotyczące optymalizowania aparat Hive wykonywania:
 
     ![Zaawansowane właściwości pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
-> [!NOTE]
+> [!NOTE]  
 > Wszystkie ustawienia na poziomie sesji przesłonią wartości właściwości w `pig.properties` pliku.
 
 ### <a name="tune-execution-engine"></a>Dostosowywanie aparatu wykonywania
 
-Dwoma silnikami wykonywania są dostępne do wykonywania skryptów usługi Pig: MapReduce i Tez. Tez to aparat zoptymalizowane i jest znacznie wyższa niż MapReduce.
+Dostępne do wykonywania skryptów usługi Pig są dwoma silnikami wykonywania: MapReduce i Tez. Tez to aparat zoptymalizowane i jest znacznie wyższa niż MapReduce.
 
 1. Aby zmodyfikować aparatu wykonywania w **zaawansowane właściwości pig** okienku znaleźć właściwości `exectype`.
 
@@ -333,9 +333,9 @@ Pig kopiuje pliki JAR, wymagane przez funkcje zdefiniowane przez użytkownika do
 
 Następujące ustawienia pamięci może pomóc w optymalizacji wydajności skryptu Pig.
 
-* `pig.cachedbag.memusage`: Ilość pamięci przydzielona do zbioru. Zbiór to kolekcja krotek. Spójna kolekcja jest uporządkowany zestaw pól, a pole to fragment danych. W przypadku danych, w torebce poza ilość przydzielonej pamięci, są rozrzucone na dysku. Wartość domyślna to 0,2, który reprezentuje 20 procent dostępnej pamięci. Ta pamięć jest współużytkowana przez wszystkie zbiory w aplikacji.
+* `pig.cachedbag.memusage`: Ilość pamięci przydzielonej do zbioru. Zbiór to kolekcja krotek. Spójna kolekcja jest uporządkowany zestaw pól, a pole to fragment danych. W przypadku danych, w torebce poza ilość przydzielonej pamięci, są rozrzucone na dysku. Wartość domyślna to 0,2, który reprezentuje 20 procent dostępnej pamięci. Ta pamięć jest współużytkowana przez wszystkie zbiory w aplikacji.
 
-* `pig.spill.size.threshold`: Są rozrzucone zbiory większy niż ten próg rozmiaru rozlania (w bajtach) na dysku. Wartość domyślna to 5 MB.
+* `pig.spill.size.threshold`: Zbiory większy niż ten próg rozmiaru rozlania (w bajtach) są rozrzucone na dysku. Wartość domyślna to 5 MB.
 
 
 ### <a name="compress-temporary-files"></a>Kompresuj pliki tymczasowe
@@ -344,7 +344,7 @@ Pig generuje pliki tymczasowe podczas wykonywania zadania. Kompresowanie plików
 
 * `pig.tmpfilecompression`: W przypadku wartości true umożliwia kompresję pliku tymczasowego. Wartość domyślna to false.
 
-* `pig.tmpfilecompression.codec`Kodera-dekodera kompresji na potrzeby kompresowanie plików tymczasowych. Kompresja zalecane kodery-dekodery są [LZO](https://www.oberhumer.com/opensource/lzo/) i Snappy niższe wykorzystania procesora CPU.
+* `pig.tmpfilecompression.codec`: Koder-dekoder kompresji na potrzeby kompresowanie plików tymczasowych. Kompresja zalecane kodery-dekodery są [LZO](https://www.oberhumer.com/opensource/lzo/) i Snappy niższe wykorzystania procesora CPU.
 
 ### <a name="enable-split-combining"></a>Włącz łączenie podziału
 
@@ -395,9 +395,9 @@ Pamięć podręczna bloku jest pamięci podręcznej odczytu. Jego rozmiar jest k
 
 Wszystkie modyfikacje są przechowywane w buforze pamięci o nazwie *magazynu pamięci*. Zwiększa to łączna ilość danych, które mogą być zapisywane na dysku w ramach jednej operacji i zwiększa kolejny dostęp do najnowszych zmian. Rozmiar magazynu pamięci jest definiowany przez następujące dwa parametry:
 
-* `hbase.regionserver.global.memstore.UpperLimit`: Definiuje maksymalną wartość procentową, można użyć w połączeniu magazynu pamięci serwera regionu.
+* `hbase.regionserver.global.memstore.UpperLimit`: Określa maksymalną wartość procentową, można użyć w połączeniu magazynu pamięci serwera regionu.
 
-* `hbase.regionserver.global.memstore.LowerLimit`: Definiuje minimalny procent, można użyć w połączeniu magazynu pamięci serwera regionu.
+* `hbase.regionserver.global.memstore.LowerLimit`: Określa minimalny procent, można użyć w połączeniu magazynu pamięci serwera regionu.
 
 Zoptymalizowane pod kątem losowych operacji odczytu, można zmniejszyć górny i dolny limit magazynu pamięci.
 
@@ -408,7 +408,7 @@ Zoptymalizowane pod kątem losowych operacji odczytu, można zmniejszyć górny 
 
 ![Baza danych HBase liczba pobranych wierszy](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Nie należy ustawiać wartości w taki sposób, że czas od wywołania metody dalej na skanerze jest większy niż limit czasu skanera. Skaner limitu czasu jest definiowany przez `hbase.regionserver.lease.period` właściwości.
 
 

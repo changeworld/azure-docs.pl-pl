@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 298fb7350ad8bb5029414b63797f62ef292a315e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 522db1ae01569626bd863f7b072b3e1dfcf800ba
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721633"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755108"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio
 Metody w kodzie aplikacji internetowej mogą być adnotowane przy użyciu telemetrii dotyczącej wyjątków czasu wykonywania i czasu odpowiedzi na żądanie. W przypadku instalowania usługi [Azure Application Insights](app-insights-overview.md) w aplikacji dane telemetryczne pojawią się w funkcji [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) programu Visual Studio — w uwagach na górze każdej funkcji, w których są wyświetlane użyteczne informacje, takie jak liczba miejsc, w których odwoływano się do funkcji i nazwisko ostatniej osoby, która ją edytowała.
@@ -79,6 +79,6 @@ Aby uzyskać szczegółowe informacje, kliknij wskaźnik CodeLens żądań:
 |  |  |
 | --- | --- |
 | **[Praca z usługą Application Insights w programie Visual Studio](app-insights-visual-studio.md)**<br/>Wyszukiwanie danych telemetrycznych, wyświetlanie danych CodeLens i konfigurowanie usługi Application Insights. Wszystko to w programie Visual Studio. |![Kliknij prawym przyciskiem myszy projekt i wybierz kolejno opcje Application Insights, Wyszukiwanie](./media/app-insights-visual-studio-codelens/34.png) |
-| **[Dodawanie większej ilości danych](app-insights-asp-net-more.md)**<br/>Monitorowanie użycia, dostępności, zależności i wyjątków. Integrowanie śladów ze struktur rejestrowania. Zapisywanie niestandardowych danych telemetrycznych. |![Visual Studio](./media/app-insights-visual-studio-codelens/64.png) |
-| **[Praca z portalem usługi Application Insights](app-insights-dashboards.md)**<br/>Pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności aplikacji na żywo oraz eksportowanie telemetrii. |![Visual Studio](./media/app-insights-visual-studio-codelens/62.png) |
+| **[Dodawanie większej ilości danych](../azure-monitor/app/asp-net-more.md)**<br/>Monitorowanie użycia, dostępności, zależności i wyjątków. Integrowanie śladów ze struktur rejestrowania. Zapisywanie niestandardowych danych telemetrycznych. |![Visual Studio](./media/app-insights-visual-studio-codelens/64.png) |
+| **[Praca z portalem usługi Application Insights](../azure-monitor/app/app-insights-dashboards.md)**<br/>Pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności aplikacji na żywo oraz eksportowanie telemetrii. |![Visual Studio](./media/app-insights-visual-studio-codelens/62.png) |
 

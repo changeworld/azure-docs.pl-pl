@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb17748968d0875cae132730a02f490eab966690
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388980"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653513"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego w usłudze Azure App Service
 W tym artykule opisano typowych funkcji systemu operacyjnego linii bazowej, która jest dostępna dla wszystkich aplikacji Windows działających na [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje plików, sieci i dostępu do rejestru i dzienniki diagnostyczne i zdarzenia. 
@@ -131,11 +131,5 @@ Dostęp do zapisu w rejestrze jest zablokowany, łącznie z dostępem do żadnyc
 
 ## <a name="more-information"></a>Więcej informacji
 
-[Azure Web App piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) — najbardziej aktualne informacje o środowisku wykonawczym usługi App Service. Na tej stronie są obsługiwane bezpośrednio przez zespół programistyczny usługi App Service.
-
-> [!NOTE]
-> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://azure.microsoft.com/try/app-service/) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
-> 
-> 
-
+[Usługa Azure App Service piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) — najbardziej aktualne informacje o środowisku wykonawczym usługi App Service. Na tej stronie są obsługiwane bezpośrednio przez zespół programistyczny usługi App Service.
 

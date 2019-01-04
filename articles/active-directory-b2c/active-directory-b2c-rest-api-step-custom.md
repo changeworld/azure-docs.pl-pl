@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dddb42f53d4bb59113df937799bd4de10d31491c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5102f2b43819c279d0087754b29a616812e5a5f2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338783"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556564"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Wskazówki: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C w kroku aranżacji
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Przewodnik: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C w kroku aranżacji
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -33,7 +33,7 @@ IEF wysyła dane jako oświadczenia i odbiera dane z powrotem w oświadczeniach.
 
 Oświadczenia odebrane można użyć później, aby zmienić przepływem wykonania.
 
-Istnieje również możliwość projektowania interakcji jako profil sprawdzania poprawności. Aby uzyskać więcej informacji, zobacz [Instruktaż: integracja interfejsu API REST oświadczeń wymianą swoją podróż po użytkownik usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika](active-directory-b2c-rest-api-validation-custom.md).
+Istnieje również możliwość projektowania interakcji jako profil sprawdzania poprawności. Aby uzyskać więcej informacji, zobacz [instruktażu: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika](active-directory-b2c-rest-api-validation-custom.md).
 
 Scenariusz polega na tym, że po użytkownik wykona edytowania profilu, chcemy, aby:
 
@@ -45,9 +45,9 @@ Scenariusz polega na tym, że po użytkownik wykona edytowania profilu, chcemy, 
 
 - Dzierżawy usługi Azure AD B2C skonfigurowany tak, aby ukończyć konta lokalnego konta-dokonywania/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
 - Punkt końcowy interfejsu API REST do interakcji z. W tym instruktażu wykorzystano element webhook aplikacji prostej funkcji platformy Azure jako przykład.
-- *Zaleca się*: wykonaj [interfejsu API REST oświadczeń Przewodnik programu exchange jako kroku weryfikacji](active-directory-b2c-rest-api-validation-custom.md).
+- *Zaleca się*: Wykonaj [interfejsu API REST oświadczeń Przewodnik programu exchange jako kroku weryfikacji](active-directory-b2c-rest-api-validation-custom.md).
 
-## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Przygotowanie funkcji interfejsu API REST
+## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Przygotowywanie funkcji interfejsu API REST
 
 > [!NOTE]
 > Ustawienia funkcji interfejsu API REST znajduje się poza zakres tego artykułu. [Usługa Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) zapewnia doskonałą zestaw narzędzi do tworzenia RESTful usług w chmurze.
@@ -97,6 +97,7 @@ Profil techniczny jest pełną konfigurację programu exchange żądanego przy u
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
@@ -133,7 +134,7 @@ Oświadczenie `city` nie jest jeszcze zdefiniowana dowolne miejsce w naszym sche
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Krok 4: Uwzględniają wymiana oświadczeń usługi REST, ponieważ krok aranżacji w podróży użytkownika Edycja profilu w TrustFrameworkExtensions.xml
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Krok 4: Krok aranżacji w podróży użytkownika Edycja profilu w TrustFrameworkExtensions.xml one obejmować wymiana oświadczeń usługi REST
 
 Dodaj krok do profilu edycji podróży użytkownika, po użytkownik został uwierzytelniony (aranżacji: kroki 1 – 4 następujący kod XML) i użytkownik udostępnił informacje zaktualizowany profil (krok 5).
 
@@ -211,7 +212,7 @@ Końcowe XML dla podróży użytkownika powinien wyglądać następująco:
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 5: Dodawanie oświadczenie `city` do swoje jednostki uzależnionej zasad pliku, dzięki czemu oświadczenia są wysyłane do aplikacji
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 5. Dodaj oświadczenie `city` do swoje jednostki uzależnionej zasad pliku, dzięki czemu oświadczenia są wysyłane do aplikacji
 
 Edytuj plik ProfileEdit.xml jednostki uzależnionej strona (RP) i modyfikować `<TechnicalProfile Id="PolicyProfile">` element dodać następujący kod: `<OutputClaim ClaimTypeReferenceId="city" />`.
 

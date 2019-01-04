@@ -1,5 +1,5 @@
 ---
-title: 'Rozwiązywanie problemów z awarii usługi Azure Backup: niedostępny stan agenta gościa'
+title: Rozwiązywanie problemów z awarii usługi Azure Backup Stan agenta gościa jest niedostępny
 description: Objawy, przyczyny i rozwiązania usługi Azure Backup błędy związane z agenta, rozszerzeń i dysków.
 services: backup
 author: genlin
@@ -9,14 +9,14 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833877"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789861"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup: problemy z agentem lub rozszerzenia
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
 Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc Ci rozwiązać błędy usługi Kopia zapasowa Azure dotyczące komunikacji z agentem maszyny Wirtualnej i rozszerzenia.
 
@@ -25,93 +25,92 @@ Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc Ci roz
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable — nie można nawiązać komunikacji z usługą Azure Backup agent maszyny Wirtualnej
 
 **Kod błędu:**: UserErrorGuestAgentStatusUnavailable <br>
-**Komunikat o błędzie**: nie można nawiązać komunikacji z usługą Azure Backup Agent maszyny Wirtualnej<br>
+**Komunikat o błędzie**: Nie można nawiązać komunikacji z usługą Azure Backup Agent maszyny Wirtualnej<br>
 
 Po zarejestrowaniu się i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa, Backup Inicjuje zadania, komunikując się z agentem maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Migawka nie zostanie wyzwolony, tworzenie kopii zapasowej może zakończyć się niepowodzeniem. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:<br>
-**Przyczyny 1: [agent jest zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyny 3: [nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
-**Przyczyna 4: [rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
-**Przyczyna 5: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
+**Przyczyny 1: [Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Przyczyny 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 3: [Nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**Przyczyna 4: [Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
+**Przyczyna 5: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można nawiązać komunikacji z agentem maszyny Wirtualnej w celu uzyskania stanu migawki
 
 **Kod błędu:**: GuestAgentSnapshotTaskStatusError<br>
-**Komunikat o błędzie**: nie można nawiązać komunikacji z agentem maszyny Wirtualnej w celu uzyskania stanu migawki <br>
+**Komunikat o błędzie**: Nie można nawiązać komunikacji z agentem maszyny wirtualnej w celu uzyskania stanu migawki <br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
-**Przyczyny 1: [agent jest zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyny 3: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
+**Przyczyny 1: [Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Przyczyny 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 3: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - osiągnęła maksymalny limit kolekcji punktów przywracania
 
 **Kod błędu:**: UserErrorRpCollectionLimitReached <br>
-**Komunikat o błędzie**: osiągnęła maksymalny limit kolekcji punktów przywracania. <br>
+**Komunikat o błędzie**: Osiągnięto maksymalny limit kolekcji punktów przywracania. <br>
 * Ten problem może wystąpić, jeśli jest zablokowana w grupie zasobów punktu odzyskiwania, zapobiegając automatycznego czyszczenia punktu odzyskiwania.
 * Ten problem może również się zdarzyć, jeśli wiele kopii zapasowych są wyzwalane na dzień. Obecnie firma Microsoft zaleca, aby tylko jedna kopia zapasowa dziennie jako natychmiastowe RPs są przechowywane przez 7 dni, a tylko 18 błyskawiczny RPs może być skojarzony z maszyną Wirtualną, w dowolnym momencie. <br>
 
 Zalecana akcja:<br>
-Aby rozwiązać ten problem, Usuń blokadę dla grupy zasobów i spróbuj ponownie wykonać operację w celu wyzwolenia oczyszczania.
-
+Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, a następnie spróbuj ponownie wykonać operację w celu wyzwolenia oczyszczania. 
 > [!NOTE]
-    > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
+    > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` np: AzureBackupRG_northeurope_1
 
-**Krok 1: [usunięcie blokady z grupy zasobów punkt przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
-**Krok 2: [wyczyścić kolekcję punktów przywracania](#clean_up_restore_point_collection)**<br>
+**Krok 1. [Usuń blokadę z grupy zasobów punkt przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**Krok 2. [Wyczyścić kolekcję punktów przywracania](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured — kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych.
 
 **Kod błędu:**: UserErrorKeyvaultPermissionsNotConfigured <br>
-**Komunikat o błędzie**: kopia zapasowa nie ma wystarczających uprawnień do magazynu kluczy dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. <br>
+**Komunikat o błędzie**: Kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. <br>
 
 Dla operacji tworzenia kopii zapasowej zakończyło się sukcesem w zaszyfrowanych maszyn wirtualnych musi mieć uprawnienia do dostępu do magazynu kluczy. Można to zrobić za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup) lub za pomocą [programu PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork — operacja migawki nie powiodło się z powodu braku łączności z siecią na maszynie wirtualnej
 
 **Kod błędu:**: ExtensionSnapshotFailedNoNetwork<br>
-**Komunikat o błędzie**: operacja nie powiodła się z powodu braku łączności z siecią na maszynie wirtualnej. Tworzenie migawki<br>
+**Komunikat o błędzie**: Nie można wykonać operacji migawki z powodu braku łączności z siecią na maszynie wirtualnej<br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:    
-**Przyczyny 1: [nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Przyczyny 2: [rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
-**Przyczyny 3: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
+**Przyczyny 1: [Nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**Przyczyny 2: [Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
+**Przyczyny 3: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - operacji rozszerzenia VMSnapshot nie powiodła się.
 
 **Kod błędu:**: ExtentionOperationFailedForManagedDisks <br>
-**Komunikat o błędzie**: operacja rozszerzenia VMSnapshot nie powiodła się.<br>
+**Komunikat o błędzie**: Operacja rozszerzenia VMSnapshot nie powiodła się<br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
-**Przyczyny 1: [nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Przyczyny 2: [rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
-**Przyczyny 3: [agent jest zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Przyczyna 4: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Przyczyny 1: [Nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**Przyczyny 2: [Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
+**Przyczyny 3: [Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Przyczyna 4: [Agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed / BackUpOperationFailedV2 - kopii zapasowej nie powiedzie się, z powodu błędu wewnętrznego
 
 **Kod błędu:**: BackUpOperationFailed / BackUpOperationFailedV2 <br>
-**Komunikat o błędzie**: kopii zapasowej nie powiodło się z powodu błędu wewnętrznego — ponów próbę operacji za kilka minut <br>
+**Komunikat o błędzie**: Niepowodzenie wykonywania kopii zapasowej z powodu błędu wewnętrznego — ponów próbę operacji za kilka minut <br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
-**Przyczyny 1: [agent został zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyny 3: [nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Przyczyna 4: [rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
-**Przyczyna 5: [usługi Backup nie ma uprawnień do usunięcia starych punktów przywracania z powodu blokady grupy zasobów](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
-**Przyczyna 6: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
+**Przyczyny 1: [Agent został zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Przyczyny 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 3: [Nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**Przyczyna 4: [Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
+**Przyczyna 5: [Usługa Kopia zapasowa nie ma uprawnień do usunięcia starych punktów przywracania z powodu blokady grupy zasobów](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
+**Przyczyna 6: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize — obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 1023GB
 
 **Kod błędu:**: UserErrorUnsupportedDiskSize <br>
-**Komunikat o błędzie**: obecnie usługi Azure Backup nie obsługuje dysków o rozmiarach większych niż 1023 GB <br>
+**Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarze większym niż 1023 GB <br>
 
 Operację tworzenia kopii zapasowej może zakończyć się niepowodzeniem, podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do stosu kopii zapasowej maszyny Wirtualnej platformy Azure w wersji 2. Uaktualnienie do kopii zapasowych maszyn wirtualnych platformy Azure stack, podane w wersji 2 obsługuje do 4 TB. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported — obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa
 
 **Kod błędu:**: UserErrorStandardSSDNotSupported <br>
-**Komunikat o błędzie**: obecnie usługi Azure Backup nie obsługuje dysków SSD w warstwie standardowa <br>
+**Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa <br>
 
 Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383939"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742477"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorowanie wydajności klastra
 
@@ -77,11 +77,11 @@ Klaster wąskim gardłem może się zdarzyć na poziomie magazynu. Tego rodzaju 
 
 Jeśli używasz usługi Azure Storage, aby uzyskać informacje na temat monitorowania problemów związanych z magazynu, w tym ograniczanie przepustowości, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Jeśli magazyn zapasowy Twojego klastra usługi Azure Data Lake Store (ADLS), Twoja ograniczanie przepływności jest najprawdopodobniej z powodu ograniczeń przepustowości. Ograniczanie w takiej sytuacji może być identyfikowany przez monitorowanie błędów ograniczania dostępności w dziennikach zadania. Azure Data Lake Store sekcja ograniczania przepustowości usługi odpowiednie w następujących artykułach:
+Jeśli magazyn zapasowy Twojego klastra usługi Azure Data Lake Storage (ADLS), Twoja ograniczanie przepływności jest najprawdopodobniej z powodu ograniczeń przepustowości. Ograniczanie w takiej sytuacji może być identyfikowany przez monitorowanie błędów ograniczania dostępności w dziennikach zadania. Azure Data Lake Store sekcja ograniczania przepustowości usługi odpowiednie w następujących artykułach:
 
-* [Wskazówki dotyczące Apache Hive HDInsight i Azure Data Lake Store dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Wskazówki dotyczące platformy Apache Storm w HDInsight i Azure Data Lake Store dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Wskazówki dotyczące Apache Hive HDInsight i usługi Azure Data Lake Storage dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Wskazówki dotyczące technologii MapReduce, HDInsight i usługi Azure Data Lake Storage dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [Wskazówki dotyczące platformy Apache Storm w HDInsight i usługi Azure Data Lake Storage dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

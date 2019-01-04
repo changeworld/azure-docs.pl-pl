@@ -14,16 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223076"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753969"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace i AppSource Podręcznik publikowania
 
 Podręcznik publikowania w portalu Marketplace ułatwia nowych i istniejących wydawców Dowiedz się, jak używać sklepów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [Microsoft AppSource](https://appsource.microsoft.com) rozwijania działalności w ramach partnerstwa z firmą Microsoft, wyświetlając listę aplikacji i usług.
+
+>[!Note]
+>Marketplace, w której odnosi się do portalu Azure Marketplace i AppSource.  Zobacz [Marketplace jednego, dwóch witryn sklepów](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace) Aby uzyskać więcej informacji.
 
 Ten przewodnik obejmuje następujące tematy: 
 *   Co to jest Portal Marketplace i jak to działa 
@@ -60,9 +63,9 @@ Uzyskuj szczegółowe informacje dotyczące wydajności swojej oferty za pośred
 
 Dla nowych ofert w portalu Marketplace kwalifikują się do zestaw bezpłatnych korzyści, w celu ułatwiania partnerom Rozwijaj swoją działalność w portalu Marketplace. Te korzyści można podzielić na następujące kategorie: 
 
-*   Pomoc: Wszystko, czego potrzebujesz do przygotowania aplikacji do uruchomienia. Pomoc techniczna, projekt aplikacji i projektowania architektury, aby kredytów systemu Azure na potrzeby opracowywania i testowania. 
+*   Technical Preview: Wszystko, czego potrzebujesz do przygotowania aplikacji do uruchomienia. Pomoc techniczna, projekt aplikacji i projektowania architektury, aby kredytów systemu Azure na potrzeby opracowywania i testowania. 
 
-*   Współpracą marketingową: Wszystko, czego potrzebujesz do uruchomienia oferty. Dostęp do bezpłatnych Microsoft Go-To-Market Uruchom Fundamentals ułatwiające Uruchom i wypromuj swoje rozwiązanie. Można również możliwość skorzystania z dodatkowych włączenia kampanii marketingowych firmy Microsoft i możliwości, aby była polecana w portalu Marketplace.
+*   W zakresie współpracy marketingowej: Wszystko, czego potrzebujesz do uruchomienia oferty. Dostęp do bezpłatnych Microsoft Go-To-Market Uruchom Fundamentals ułatwiające Uruchom i wypromuj swoje rozwiązanie. Można również możliwość skorzystania z dodatkowych włączenia kampanii marketingowych firmy Microsoft i możliwości, aby była polecana w portalu Marketplace.
 
 *   Prowadzenie sprzedaży: Rozpoczyna się lub Skróć swoją drogę do sprzedaży w firmie Microsoft za pośrednictwem portalu Marketplace. Dostęp do programów i obsługę dysków połączonych zasobów sprzedaży z usługą Microsoft teams.
 

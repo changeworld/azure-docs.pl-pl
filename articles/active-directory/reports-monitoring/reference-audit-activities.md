@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622878"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971379"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -29,7 +29,7 @@ W przypadku raportów z usługi Azure Active Directory (Azure AD) możesz uzyska
 
 Architektura raportowania w usłudze Azure AD obejmuje następujące składniki:
 
-- **Raporty aktywności** 
+- **Raporty dotyczące działań** 
     - [Operacje logowania](concept-sign-ins.md) — zawiera informacje na temat użycia zarządzanych aplikacji i użytkownika działań logowania
     - [Dzienniki inspekcji](concept-audit-logs.md) — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. 
     
@@ -227,11 +227,11 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Autoryzacja|Aktualizowanie zasad|
 |Autoryzacja|Aktualizowanie atrybutu użytkownika|
 |Autoryzacja|Przekazywanie zaszyfrowanego klucza CPIM|
-|Autoryzacja|Autoryzacja użytkownika: interfejs API jest wyłączony dla zestawu funkcji dzierżawy|
-|Autoryzacja|Autoryzacja użytkownika: użytkownik udzielił dostępu jako „Administrator dzierżawy”|
-|Autoryzacja|Autoryzacja użytkownika: użytkownikowi udzielono praw dostępu „Uwierzytelnieni użytkownicy”|
+|Autoryzacja|Autoryzacja użytkownika: Interfejs API jest wyłączone dla dzierżawy|
+|Autoryzacja|Autoryzacja użytkownika: Użytkownik udzielił dostępu jako "Administrator dzierżawy"|
+|Autoryzacja|Autoryzacja użytkownika: Użytkownik uzyskał 'Użytkownicy uwierzytelnieni' prawa dostępu|
 |Autoryzacja|Weryfikowanie, czy funkcja B2C jest włączona|
-|Autoryzacja|Weryfikowanie, czy funkcja jest włączona|
+|Autoryzacja|Sprawdź, czy włączono funkcję|
 |Autoryzacja|Tworzenie programu|
 |Autoryzacja|Usuwanie programu|
 |Autoryzacja|Połączenie kontroli programu|
@@ -255,7 +255,7 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie katalogami|Pobieranie domen dzierżaw|
 |Klucz|Pobiera typ dzierżawy|
 |Klucz|Weryfikowanie, czy funkcja B2C jest włączona|
-|Klucz|Weryfikowanie, czy funkcja jest włączona|
+|Klucz|Sprawdź, czy włączono funkcję|
 |Klucz|Dodawanie partnera do firmy|
 |Klucz|Dodawanie niezweryfikowanej domeny|
 |Klucz|Dodawanie zweryfikowanej domeny|
@@ -515,10 +515,10 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie grupami|Przeglądanie żądania zatwierdzenia żądania|
 |Zarządzanie grupami|Aktualizowanie przeglądu dostępu|
 |Zarządzanie grupami|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
-|Zarządzanie grupami|Aktualizowanie ustawienia licznika cyklu przeglądu dostępu|
-|Zarządzanie grupami|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu (w dniach)|
-|Zarządzanie użytkownikami|Aktualizowanie ustawienia typu zakończenia cyklu przeglądu dostępu|
-|Zarządzanie użytkownikami|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
+|Zarządzanie grupami|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
+|Zarządzanie grupami|Aktualizuj ustawienie czasu trwania (w dniach) cyklu przeglądu dostępu|
+|Zarządzanie użytkownikami|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
+|Zarządzanie użytkownikami|Aktualizuj ustawienie typu cyklu przeglądu dostępu|
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Przygotuj certyfikaty infrastruktury klucza publicznego usługi Azure Stack dla usługi Azure Stack zintegrowane systemy wdrażania | Dokumentacja firmy Microsoft
+title: Przygotować certyfikaty infrastruktury klucza publicznego usługi Azure Stack dla usługi Azure Stack zintegrowane systemy wdrażania lub klucza tajnego obrotu | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak przygotować certyfikaty infrastruktury kluczy publicznych do usługi Azure Stack w systemach zintegrowanych w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972037"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631485"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack do wdrożenia
+# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack do użycia w wdrożenia lub obrotu
 Pliki certyfikatów [uzyskany z urzędu certyfikacji wybór](azure-stack-get-pki-certs.md) musi być importowane i wyeksportowane z właściwościami dopasowania wymagania dotyczące certyfikatu usługi Azure Stack.
 
 
 ## <a name="prepare-certificates-for-deployment"></a>Przygotowywanie certyfikatów do wdrożenia
-Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack: 
+Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack, które będą używane do wdrożenia nowego środowiska usługi Azure Stack lub związany z rotacją kluczy tajnych w istniejącym środowisku usługi Azure Stack: 
 
 ### <a name="import-the-certificate"></a>Zaimportuj certyfikat
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272239"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631129"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
@@ -388,7 +388,7 @@ W przykładzie pokazano niektóre podstawowe polecenia w następujący sposób:
 
 + Pierwszy wiersz definiuje warstwę danych wejściowych (o nazwie `Data`). Kiedy używasz `auto` — słowo kluczowe, sieć neuronowa automatycznie uwzględnia wszystkich kolumn funkcji w danych wejściowych przykładach. 
 + Drugi wiersz tworzy ukrytej warstwie. Nazwa `H` jest przypisany do warstwy ukryte, która zawiera węzły 200. Ta warstwa podłączona do warstwy danych wejściowych.
-+ Trzeci wiersz definiuje warstwę danych wyjściowych (o nazwie `O`), który zawiera 10 węzłów danych wyjściowych. Sieć neuronowa służy do klasyfikowania, czy jeden węzeł danych wyjściowych klasy. Słowo kluczowe **sigmoid** wskazuje, że funkcja danych wyjściowych jest stosowana do warstwy danych wyjściowych.
++ Trzeci wiersz definiuje warstwę danych wyjściowych (o nazwie `Out`), który zawiera 10 węzłów danych wyjściowych. Sieć neuronowa służy do klasyfikowania, czy jeden węzeł danych wyjściowych klasy. Słowo kluczowe **sigmoid** wskazuje, że funkcja danych wyjściowych jest stosowana do warstwy danych wyjściowych.
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Zdefiniuj wiele warstw ukryte: przykład vision komputera
 

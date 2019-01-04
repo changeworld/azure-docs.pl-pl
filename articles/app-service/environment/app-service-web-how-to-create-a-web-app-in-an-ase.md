@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 84a8a0687a1da0eaf7842a9bf6115c1d0f5d3fd1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338145"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718099"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Tworzenie aplikacji internetowej w środowisku App Service Environment w wersji 1
 
@@ -51,7 +51,7 @@ W tym samouczku przyjęto założenie, że utworzono środowiska usługi App Ser
     *Grupy zasobów* umożliwiają zarządzanie powiązanych zasobów platformy Azure jako jednostki i są przydatne podczas ustanawiania *kontroli dostępu opartej na rolach* reguł (RBAC) dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ResourceGroups]. 
 4. Wybierz lub utwórz plan usługi App Service.
    
-    *Plany usługi App Service* to zarządzane zestawy aplikacji sieci web.  Zwykle po wybraniu przycisku ceny naliczana cena jest stosowany do planu usługi App Service, a nie do poszczególnych aplikacji. W środowisku ASE płacisz za wystąpienia obliczeniowe przydzielone do środowiska ASE zamiast został zgłoszony przez z strona ASP.  Skalowanie w górę liczbę wystąpień aplikacji sieci web, którą można skalować w górę wystąpienia usługi App Service plan i ma wpływ na wszystkie aplikacje sieci web w tym planie.  Niektóre funkcje, takie jak gniazd witryny lub Integracja z siecią Wirtualną obowiązują również ograniczenia ilość w ramach planu.  Aby uzyskać więcej informacji, zobacz [omówienie planów usługi Azure App Service](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
+    *Plany usługi App Service* to zarządzane zestawy aplikacji sieci web.  Zwykle po wybraniu przycisku ceny naliczana cena jest stosowany do planu usługi App Service, a nie do poszczególnych aplikacji. W środowisku ASE płacisz za wystąpienia obliczeniowe przydzielone do środowiska ASE zamiast został zgłoszony przez z strona ASP.  Skalowanie w górę liczbę wystąpień aplikacji sieci web, którą można skalować w górę wystąpienia usługi App Service plan i ma wpływ na wszystkie aplikacje sieci web w tym planie.  Niektóre funkcje, takie jak gniazd witryny lub Integracja z siecią Wirtualną obowiązują również ograniczenia ilość w ramach planu.  Aby uzyskać więcej informacji, zobacz [omówienie planów usługi Azure App Service](../overview-hosting-plans.md)
    
     Plany usługi App Service w środowisku ASE można zidentyfikować przez wyszukiwanie w lokalizacji, która została przedstawiona w obszarze nazwy planu.  
    
@@ -108,7 +108,7 @@ Po utworzeniu aplikacji internetowej i planu usługi App Service jest dobrym pom
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[Appserviceplans]: ../overview-hosting-plans.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md

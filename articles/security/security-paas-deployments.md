@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: ee62e81b8c75200f26dfb5f7303083190f83eb8e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016848"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728486"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -84,19 +84,19 @@ Zasady i wzorców dla sieci obwodowej były dostępne od dziesięcioleci. Natomi
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące zarządzania obwodowej tożsamości.
 
-**Najlepsze rozwiązanie**: zabezpieczanie kluczy oraz poświadczenia, aby zabezpieczyć wdrożenie PaaS.   
-**Szczegóły**: utraty kluczy i poświadczeń jest to powszechny problem. Umożliwia to scentralizowane rozwiązanie, których klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń. Platforma Azure udostępnia w chmurze za pomocą modułu HSM [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
+**Najlepsze rozwiązanie**: Zabezpiecz swoje klucze i poświadczenia, aby zabezpieczyć wdrożenie PaaS.   
+**Szczegóły**: Utraty kluczy i poświadczeń jest to powszechny problem. Umożliwia to scentralizowane rozwiązanie, których klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń. Platforma Azure udostępnia w chmurze za pomocą modułu HSM [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
 
-**Najlepsze rozwiązanie**: nie umieszczaj poświadczeń i innych wpisów tajnych w kodzie źródłowym lub GitHub.   
-**Szczegóły**: jedynym elementem co gorsza, nie tracąc kluczy i poświadczeń jest nieautoryzowana osoba uzyskać do nich dostęp. Osoby atakujące mogą korzystać z bota technologie, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj klucza i wpisów tajnych w tych repozytoriów publicznych.
+**Najlepsze rozwiązanie**: Nie umieszczaj poświadczeń i innych wpisów tajnych w kodzie źródłowym lub GitHub.   
+**Szczegóły**: Jedyną czynnością co gorsza, nie tracąc kluczy i poświadczeń jest nieautoryzowana osoba uzyskać do nich dostęp. Osoby atakujące mogą korzystać z bota technologie, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj klucza i wpisów tajnych w tych repozytoriów publicznych.
 
-**Najlepsze rozwiązanie**: ochrona interfejsów zarządzania sieci maszyny Wirtualnej na hybrydowego PaaS i usługi IaaS, za pomocą interfejsu zarządzania, która pozwala na zdalne zarządzanie te maszyny wirtualne bezpośrednio.   
-**Szczegóły**: zdalne zarządzanie protokoły, takie jak [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607), i [komunikacji zdalnej programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) mogą być używane. Ogólnie rzecz biorąc zaleca się, że nie zostanie włączone bezpośredniego dostępu zdalnego do maszyn wirtualnych z Internetu.
+**Najlepsze rozwiązanie**: Ochrona interfejsów zarządzania sieci maszyny Wirtualnej na hybrydowego PaaS i usługi IaaS, za pomocą interfejsu zarządzania, która pozwala na zdalne zarządzanie te maszyny wirtualne bezpośrednio.   
+**Szczegóły**: Zdalne zarządzanie protokoły, takie jak [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607), i [komunikacji zdalnej programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) mogą być używane. Ogólnie rzecz biorąc zaleca się, że nie zostanie włączone bezpośredniego dostępu zdalnego do maszyn wirtualnych z Internetu.
 
 Jeśli to możliwe używaj alternatywne podejścia, takie jak korzystanie z wirtualnych sieci prywatnych w usłudze Azure virtual network. Jeśli alternatywnych metod nie są dostępne, upewnij się, że używasz złożonych haseł oraz korzystania z uwierzytelniania dwuskładnikowego (takie jak [usługi Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
 
-**Najlepsze rozwiązanie**: korzystać z silnego uwierzytelniania i autoryzacji platform.   
-**Szczegóły**: Użyj tożsamości federacyjne w usłudze Azure AD zamiast niestandardowych magazynów użytkownika. Korzystając z tożsamości federacyjnej, możesz korzystać z podejścia opartego na platformie i delegować Zarządzanie tożsamościami autoryzowanych do partnerów. To podejście tożsamości federacyjnej jest szczególnie ważne, gdy pracownicy są kończone, a informacje muszą być uwzględniane w wielu systemów tożsamości i autoryzacji.
+**Najlepsze rozwiązanie**: Użyj silnego uwierzytelniania i autoryzacji platformy.   
+**Szczegóły**: W usłudze Azure AD zamiast niestandardowych magazynów użytkownika, należy używać tożsamości federacyjnej. Korzystając z tożsamości federacyjnej, możesz korzystać z podejścia opartego na platformie i delegować Zarządzanie tożsamościami autoryzowanych do partnerów. To podejście tożsamości federacyjnej jest szczególnie ważne, gdy pracownicy są kończone, a informacje muszą być uwzględniane w wielu systemów tożsamości i autoryzacji.
 
 Użyj dostarczone przez platformę mechanizmy uwierzytelniania i autoryzacji, zamiast kodu niestandardowego. Przyczyną jest to, że opracowanie kodu, uwierzytelnianie niestandardowe może prowadzić do występowania błędów. Większość deweloperów nie są ekspertami w dziedzinie zabezpieczeń i prawdopodobnie nie trzeba pamiętać precyzyjnie i Poznaj najnowsze osiągnięcia w sekcji uwierzytelnianie i autoryzację. Komercyjne kodu (na przykład od firmy Microsoft) jest często często przeglądowi zabezpieczeń.
 
@@ -119,23 +119,23 @@ Poniższa lista zagrożeń STRIDE i zapewnia niektóre przykład środki zaradcz
 | Podniesienie uprawnień | Autoryzacja | Użyj [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md). |
 
 ## <a name="develop-on-azure-app-service"></a>Programuj w usłudze Azure App Service
-[Usługa Azure App Service](../app-service/app-service-web-overview.md) jest PaaS, oferty, która umożliwia tworzenie aplikacji internetowych i mobilnych dla dowolnej platformy lub urządzenia i nawiązać połączenie z danymi przechowywanymi w chmurze lub lokalnie. Usługa App Service obejmuje sieci web i mobilnych możliwości, które były wcześniej dostępne oddzielnie jako usługi Azure Websites i Azure Mobile Services. Obejmuje ona także nowe funkcje automatyzacji procesów biznesowych i hostowania interfejsów API w chmurze. Jako pojedyncza zintegrowana usługa App Service oferuje bogaty zestaw funkcji do sieci web, mobilnych i scenariuszy integracji.
+[Usługa Azure App Service](../app-service/overview.md) jest PaaS, oferty, która umożliwia tworzenie aplikacji internetowych i mobilnych dla dowolnej platformy lub urządzenia i nawiązać połączenie z danymi przechowywanymi w chmurze lub lokalnie. Usługa App Service obejmuje sieci web i mobilnych możliwości, które były wcześniej dostępne oddzielnie jako usługi Azure Websites i Azure Mobile Services. Obejmuje ona także nowe funkcje automatyzacji procesów biznesowych i hostowania interfejsów API w chmurze. Jako pojedyncza zintegrowana usługa App Service oferuje bogaty zestaw funkcji do sieci web, mobilnych i scenariuszy integracji.
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z usługi App Service.
 
-**Najlepsze rozwiązanie**: [uwierzytelnianie w usłudze Azure Active Directory](../app-service/app-service-authentication-overview.md).   
+**Najlepsze rozwiązanie**: [Uwierzytelnianie za pomocą usługi Azure Active Directory](../app-service/overview-authentication-authorization.md).   
 **Szczegóły**: Usługa App Service udostępnia usługę OAuth 2.0 dla dostawcy tożsamości. OAuth 2.0 koncentruje się na prostotę dewelopera klienta przy jednoczesnym zapewnieniu przepływów określonych autoryzacji dla aplikacji sieci web, aplikacji klasycznych i telefony komórkowe. Usługa Azure AD używa protokołu OAuth 2.0 umożliwia autoryzowanie dostępu dla urządzeń przenośnych i aplikacji sieci web.
 
-**Najlepsze rozwiązanie**: ograniczanie dostępu na podstawie musi znać i zasad zabezpieczeń w usłudze najniższych uprawnień.   
-**Szczegóły**: ograniczanie dostępu jest konieczne dla organizacji, które chcesz wymuszać zasady zabezpieczeń dostępu do danych. RBAC umożliwia przypisywanie uprawnień do użytkowników, grup i aplikacji w określonym zakresie. Aby dowiedzieć się więcej o udzielenie użytkownikom dostępu do aplikacji, zobacz [wprowadzenie do zarządzania dostępem](../role-based-access-control/overview.md).
+**Najlepsze rozwiązanie**: Ograniczanie dostępu na podstawie musi znać i zasad zabezpieczeń w usłudze najniższych uprawnień.   
+**Szczegóły**: Ograniczanie dostępu jest dla organizacji, które chcesz wymuszać zasady zabezpieczeń dostępu do danych. RBAC umożliwia przypisywanie uprawnień do użytkowników, grup i aplikacji w określonym zakresie. Aby dowiedzieć się więcej o udzielenie użytkownikom dostępu do aplikacji, zobacz [wprowadzenie do zarządzania dostępem](../role-based-access-control/overview.md).
 
-**Najlepsze rozwiązanie**: ochrony kluczy.   
-**Szczegóły**: usługi Azure Key Vault pomaga chronić klucze kryptograficzne i używanie wpisów tajnych, które aplikacje i usługi w chmurze. Usługa Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych. Pliki PFX oraz hasła) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (HSM). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Zobacz [usługi Azure Key Vault](../key-vault/key-vault-whatis.md) Aby dowiedzieć się więcej. Usługi Key Vault umożliwia także zarządzanie certyfikaty protokołu TLS z automatycznego odnawiania.
+**Najlepsze rozwiązanie**: Chroń klucze.   
+**Szczegóły**: Usługa Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne, które aplikacje i usługi w chmurze Użyj. Usługa Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych. Pliki PFX oraz hasła) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (HSM). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Zobacz [usługi Azure Key Vault](../key-vault/key-vault-whatis.md) Aby dowiedzieć się więcej. Usługi Key Vault umożliwia także zarządzanie certyfikaty protokołu TLS z automatycznego odnawiania.
 
 **Najlepsze rozwiązanie**: Ogranicz przychodzące źródłowych adresów IP.   
-**Szczegóły**: [środowiska App Service Environment](../app-service/environment/intro.md) ma funkcji integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowych adresów IP za pomocą sieciowych grup zabezpieczeń. Sieci wirtualnych umożliwia umieszczenie zasobów platformy Azure w sieci-internet, podlegającego routingowi, która umożliwia kontrolę dostępu do. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](../app-service/web-sites-integrate-with-vnet.md).
+**Szczegóły**: [Środowisko App Service Environment](../app-service/environment/intro.md) ma funkcji integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowych adresów IP za pomocą sieciowych grup zabezpieczeń. Sieci wirtualnych umożliwia umieszczenie zasobów platformy Azure w sieci-internet, podlegającego routingowi, która umożliwia kontrolę dostępu do. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](../app-service/web-sites-integrate-with-vnet.md).
 
-**Najlepsze rozwiązanie**: monitorować stan zabezpieczeń środowiska usługi App Service.   
+**Najlepsze rozwiązanie**: Monitoruj stan zabezpieczeń środowiska usługi App Service.   
 **Szczegóły**: Usługa Azure Security Center do monitorowania środowiska usługi App Service. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy [zalecenia](../security-center/security-center-virtual-machine-recommendations.md) który prowadzi przez proces konfigurowania wymaganych kontrolek.
 
 > [!NOTE]

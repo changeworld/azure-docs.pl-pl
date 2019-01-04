@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: ede900e135960141ed65b54dc876b1c0c2b90aaa
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410401"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809271"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Jeśli masz konto interfejsu API usługi DocumentDB przed, masz teraz konto inte
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Co się stało z usługi Azure DocumentDB jako usługi?
 
-Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Ponadto usługa Azure Cosmos DB obsługuje interfejs API Gremlin, interfejs API tabel, interfejsu API usługi MongoDB i interfejsu API rozwiązania Cassandra (wersja zapoznawcza).
+Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Usługa cosmos DB implementuje również [Cassandra](cassandra-introduction.md), [bazy danych MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) i [Azure Table Storage](table-introduction.md) połączenie protokołów bezpośrednio w usłudze. Umożliwia to punkt sterowników (i narzędzi klienta) dla często używanych interfejsów API NoSQL, bezpośrednio z bazą danych Cosmos.
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Jakie są typowe przypadki użycia usługi Azure Cosmos DB?
 
@@ -36,11 +36,11 @@ Usługa Azure Cosmos DB jest dobrym wyborem dla nowych sieci web, mobilnych, gie
 
 A [jednostki żądań](request-units.md) służy do mierzenia przepływności w usłudze Azure Cosmos DB. Przepływność 1-RU odpowiada przepływności pobierania dokumentu o rozmiarze 1 KB. Każda operacja w usłudze Azure Cosmos DB, w tym odczyty, zapisy, zapytań SQL i wykonania procedury składowanej ma deterministyczną wartość RU, który jest oparty na przepływności wymaganej do ukończenia tej operacji. Zamiast myśleć o procesora CPU, we/wy i pamięci oraz ich wpływ na przepływność aplikacji, można traktować pod względem pojedynczej mierze jednostek RU.
 
-Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do kolekcji interfejs API SQL, interfejs API Gremlin wykresu, kolekcji interfejs API bazy danych MongoDB i tabelę interfejsu API tabel.
+Możesz skonfigurować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner).
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak usługa Azure Cosmos DB obsługuje różne modele danych, takie jak klucz/wartość, kolumnowy, dokument i wykres?
 
-Klucz/wartość (tabela), kolumnowy, dokumentów i danych wykresu, który modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania, że usługi Azure Cosmos DB zaprojektowano. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzbioru modeli są dostępne po prawej stronie teraz (SQL, bazy danych MongoDB, Table i interfejsów API rozwiązania Gremlin) i inne, które są specyficzne dla dodatkowe modele danych będą dostępne w przyszłości.
+Klucz/wartość (tabela), kolumnowy, dokumentów i danych wykresu, który modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania, że usługi Azure Cosmos DB zaprojektowano. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzbioru modeli są dostępne po prawej stronie teraz (SQL, bazy danych MongoDB, Table i Gremlin) i inne, które są specyficzne dla dodatkowe modele danych będą dostępne w przyszłości.
 
 Usługa Azure Cosmos DB ma schemat niezależny od aparatu indeksowania która może automatycznie indeksować wszystkie dane, które które pozyska, bez wymagania żadnych schematów ani indeksów pomocniczych od dewelopera. Aparat opiera się na zestaw układów logicznych indeksu (odwrócona, kolumnowy, drzewo), które rozdzielenie układ magazynu z indeksem i podsystemy przetwarzania zapytań. Usługa cosmos DB ma również możliwość obsługi zestawu o komunikacji sieciowej protokołów i interfejsów API w sposób rozszerzalny i wydajnie tłumaczyć je do modelu danych podstawowych (1) i układów logicznych indeksu, (2) co jednoznacznie może obsługiwać więcej niż jeden model danych natywnie.
 
@@ -62,7 +62,7 @@ Tak, oba tryby są zawsze w pełni zaszyfrowane.
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Ile kosztuje usługa Azure Cosmos DB
 
-Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Opłaty za użycie usługi Azure Cosmos DB są określane przez liczbę kontenerów elastycznie, liczby godzin kontenery zostały online, i aprowizowanej przepływności dla każdego kontenera. Pojęcie kontener tutaj odnosi się do kolekcji interfejs API SQL, interfejs API Gremlin (Graf), kolekcji interfejs API bazy danych MongoDB i tabel na interfejs API tabel.
+Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Opłaty za użycie usługi Azure Cosmos DB są określane przez liczbę kontenerów elastycznie, liczby godzin kontenery zostały online, i aprowizowanej przepływności dla każdego kontenera.
 
 ### <a name="is-a-free-account-available"></a>Bezpłatne konto jest dostępny?
 
@@ -105,7 +105,7 @@ Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następują
 
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Jak utworzyć konto usługi Azure Cosmos DB?
 
-Usługa Azure Cosmos DB jest dostępna w witrynie Azure portal. Najpierw należy utworzyć konto subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure można dodać interfejs API SQL, interfejs API Gremlin, interfejs API tabel, interfejsu API usługi MongoDB lub konto interfejsu API rozwiązania Cassandra.
+Usługa Azure Cosmos DB jest dostępna w witrynie Azure portal. Najpierw należy utworzyć konto subskrypcji platformy Azure. Po zalogowaniu można dodać konto usługi Azure Cosmos DB do subskrypcji platformy Azure.
 
 ### <a name="what-is-a-master-key"></a>Co to jest klucz główny?
 
@@ -153,7 +153,7 @@ Tak, interfejs API SQL obsługuje transakcje dla wielu dokumentów wyrażone jak
 
 Kontener jest grupą dokumentów i ich skojarzonej logiki aplikacji JavaScript. Kontener jest płatna jednostka, której [koszt](performance-levels.md) zależy od informacji o przepływności i magazynu używane. Kontenery mogą znajdować się na partycji lub serwerów i skalowalność niezbędną do obsługi praktycznie nieograniczonej ilości magazynu lub przepływności.
 
-* W przypadku kont SQL i interfejsu API usługi MongoDB kontener mapuje do kolekcji.
+* Dla interfejsu API SQL i interfejsu API Cosmos DB dla kont bazy danych MongoDB kontener mapuje do kolekcji.
 * W przypadku kont bazy danych Cassandra i interfejsu API tabel kontener mapuje do tabeli.
 * Interfejs API Gremlin kont kontener mapuje do wykresu.
 
@@ -183,7 +183,7 @@ Aby użyć optymistycznej współbieżności na platformie .NET, należy użyć 
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Jak wykonywać transakcje w interfejsie API SQL?
 
-Interfejs API SQL obsługuje transakcje zintegrowane z językiem za pomocą procedur składowanych JavaScript i wyzwalacze. Wszystkie operacje bazy danych wewnątrz skryptów są wykonywane w ramach izolacji migawki. Jeśli jest to kolekcja jednej partycji, obejmuje wykonanie do kolekcji. Jeśli kolekcja jest partycjonowana, obejmuje wykonanie dokumenty z taką samą wartość klucza partycji w kolekcji. Migawka wersji dokumentów (elementy ETag) jest wykonywana na początku transakcji i zatwierdzana tylko wtedy, gdy działanie skryptu zakończy się pomyślnie. Jeśli kod JavaScript zwraca błąd, transakcja zostaje wycofana. Aby uzyskać więcej informacji, zobacz [programowania języka JavaScript po stronie serwera dla usługi Azure Cosmos DB](programming.md).
+Interfejs API SQL obsługuje transakcje zintegrowane z językiem za pomocą procedur składowanych JavaScript i wyzwalacze. Wszystkie operacje bazy danych wewnątrz skryptów są wykonywane w ramach izolacji migawki. Jeśli jest to kolekcja jednej partycji, obejmuje wykonanie do kolekcji. Jeśli kolekcja jest partycjonowana, obejmuje wykonanie dokumenty z taką samą wartość klucza partycji w kolekcji. Migawka wersji dokumentów (elementy ETag) jest wykonywana na początku transakcji i zatwierdzana tylko wtedy, gdy działanie skryptu zakończy się pomyślnie. Jeśli kod JavaScript zwraca błąd, transakcja zostaje wycofana. Aby uzyskać więcej informacji, zobacz [programowania języka JavaScript po stronie serwera dla usługi Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak można I wstawiania zbiorczego dokumenty do usługi Cosmos DB?
 
@@ -191,7 +191,7 @@ Użytkownik może wstawiania zbiorczego dokumenty do usługi Azure Cosmos DB w j
 
 * Narzędzia funkcji wykonawczej zbiorcze, zgodnie z opisem w [biblioteki .NET wykonawca zbiorcze Using](bulk-executor-dot-net.md) i [biblioteka języka Java wykonawca zbiorcze Using](bulk-executor-java.md)
 * Narzędzie migracji danych, zgodnie z opisem w [narzędzia migracji bazy danych usługi Azure Cosmos DB](import-data.md).
-* Procedury składowane, zgodnie z opisem w [programowania języka JavaScript po stronie serwera dla usługi Azure Cosmos DB](programming.md).
+* Procedury składowane, zgodnie z opisem w [programowania języka JavaScript po stronie serwera dla usługi Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
 ### <a name="ive-set-up-my-container-to-use-lazy-indexing-i-see-that-my-queries-dont-return-expected-results"></a>Kontener został skonfigurowany do użycia z opóźnieniem indeksowania, czy mogę zobaczyć, że moje zapytania nie zwraca oczekiwanych wyników.
 
@@ -213,32 +213,32 @@ To ograniczenie języka JavaScript. JavaScript wykorzystuje liczb podwójnej pre
 
 Tworzenie uprawnień za pomocą ResourceTokens jest dozwolone na poziomie kontenera i jego obiektów podrzędnych (takich jak dokumenty, załączniki). Oznacza to, które można utworzyć uprawnienia w bazie danych lub na poziomie konta aktualnie nie jest dozwolone.
 
-## <a name="mongodb-api"></a>Interfejs API usługi MongoDB
+## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB, bazy danych mongodb
 
-### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Co to jest Azure Cosmos DB interfejs API systemu MongoDB?
+### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Co to jest interfejs API usługi Azure Cosmos DB, bazy danych mongodb?
 
-Azure Cosmos DB interfejs API systemu MongoDB jest warstwy zgodności, która umożliwia łatwe i w sposób niewidoczny dla użytkownika komunikację między aplikacjami za pomocą natywnego aparatu bazy danych Azure Cosmos DB przy użyciu istniejących, społeczności, obsługiwane interfejsy API systemu Apache bazy danych MongoDB, jak i sterowniki. Deweloperzy mogą teraz używać istniejących łańcuchy narzędzi bazy danych MongoDB i umiejętności do tworzenia aplikacji, które korzystają z usługi Azure Cosmos DB. Deweloperzy mogli korzystać z unikatowych możliwości usługi Azure Cosmos DB, które obejmują obsługi automatycznego indeksowania, wykonywania kopii zapasowych, umowy dotyczące poziomu finansowo usług (SLA) i tak dalej.
+Interfejs API usługi Azure Cosmos DB, bazy danych mongodb jest protokół przewodowy warstwy zgodności, która umożliwia łatwe i w sposób niewidoczny dla użytkownika komunikację między aplikacjami za pomocą natywnego aparatu bazy danych Azure Cosmos DB przy użyciu istniejących, społeczności, obsługiwane zestawy SDK i sterowniki MongoDB.Developers mogą teraz używać istniejącymi łańcuchami narzędzi bazy danych MongoDB i umiejętności do tworzenia aplikacji, które korzystają z usługi Azure Cosmos DB. Deweloperzy korzyści z unikatowych możliwości usługi Azure Cosmos DB, które obejmują dystrybucji globalnej przy użyciu replikacji wielu wzorców, obsługi automatycznego indeksowania, wykonywania kopii zapasowych, finansowo umowy dotyczące poziomu usług (SLA) itd.
 
-### <a name="how-do-i-connect-to-my-api-for-mongodb-database"></a>Jak nawiązać wybór interfejsu API dla bazy danych MongoDB?
+### <a name="how-do-i-connect-to-my-database"></a>Jak połączyć do bazy danych?
 
-Najszybszy sposób połączyć się z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB jest porównanie ciągu [witryny Azure portal](https://portal.azure.com). Przejdź do swojego konta, a następnie w menu nawigacji po lewej stronie kliknij **— Szybki Start**. Przewodnik Szybki Start jest najlepszy sposób pozyskania fragmenty kodu do połączenia z bazą danych.
+Najszybszy sposób na połączenie z bazą danych Cosmos, za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB jest porównanie ciągu [witryny Azure portal](https://portal.azure.com). Przejdź do swojego konta, a następnie w menu nawigacji po lewej stronie kliknij **— Szybki Start**. Przewodnik Szybki Start jest najlepszy sposób pozyskania fragmenty kodu do połączenia z bazą danych.
 
 Usługa Azure Cosmos DB wymusza ścisłymi zasadami kontrolnymi zabezpieczeń wymagania i standardy. Konta usługi Azure Cosmos DB wymaga uwierzytelniania i bezpiecznej komunikacji za pośrednictwem protokołu SSL, dlatego należy użyć zabezpieczeń TLSv1.2.
 
-Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z interfejsu API dla bazy danych MongoDB](connect-mongodb-account.md).
+Aby uzyskać więcej informacji, zobacz [Połącz z bazą danych Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](connect-mongodb-account.md).
 
-### <a name="are-there-additional-error-codes-for-an-api-for-mongodb-database"></a>Dostępne są kody błędów dodatkowe dla interfejsu API dla bazy danych MongoDB?
+Czy istnieją dodatkowe kody, wymagających radzenia sobie z podczas korzystania z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB?
 
-Wraz z typowe kody błędów bazy danych MongoDB interfejsu API usługi MongoDB ma swój własny konkretnych kodach błędów:
+Wraz z typowe kody błędów bazy danych MongoDB API usługi Azure Cosmos DB dla bazy danych MongoDB ma swój własny konkretnych kodach błędów:
 
 | Błąd               | Kod  | Opis  | Rozwiązanie  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Całkowita liczba jednostek żądań, używane jest większa niż współczynnik aprowizowane jednostki żądań dla kolekcji i zostały ograniczone. | Należy rozważyć skalowanie przepływności przypisanych do kontenera lub zestaw kontenerów na platformie Azure portal lub Trwa ponawianie próby ponownie. |
 | ExceededMemoryLimit | 16501 | Jako usługa dla wielu dzierżawców operacji stała się za pośrednictwem przydziału pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteria zapytania lub skontaktuj się z działem pomocy technicznej firmy [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {Nazwa: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wiek: -1}}<br> &nbsp; &nbsp; &nbsp;&nbsp;])*) |
 
-### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>Czy sterownik firmą Simba dla bazy danych MongoDB obsługiwane do użytku z interfejsu API MongoDB usługi Azure cosmos DB?
+### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>Czy sterownik firmą Simba dla bazy danych MongoDB obsługiwane do użytku z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB?
 
-Tak, za pomocą sterownika Mongo ODBC firmy firmą Simba interfejsu API MongoDB usługi Azure cosmos DB
+Tak, za pomocą sterownika Mongo ODBC firmy firmą Simba interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 ## <a id="table"></a>Interfejs API tabel
 

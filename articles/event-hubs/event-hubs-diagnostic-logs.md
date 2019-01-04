@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c0c8740648ad845b58ff0578607f4b5e9c235166
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105482"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540320"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Skonfiguruj dzienniki diagnostyczne na potrzeby Centrum zdarzeń platformy Azure
 
 Możesz wyświetlić dwa typy dzienników dla usługi Azure Event Hubs:
 
-* **[Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: te dzienniki ma informacji o operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: można skonfigurować dzienniki diagnostyczne na potrzeby bardziej rozbudowane widok wszystko, czego zachodzącej z zadaniem. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
+* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)**: Te dzienniki mają informacji na temat operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
+* **[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md)**: Dzienniki diagnostyczne na potrzeby bardziej rozbudowane widok wszystko, czego zachodzącej można skonfigurować za pomocą zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
 
 ## <a name="enable-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
@@ -54,7 +54,7 @@ Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki dia
 
 Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Po tym dzienników pojawia się w skonfigurowanym archiwizacji lokalizacji docelowej w **dzienniki diagnostyczne** okienka.
 
-Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Kategorie dzienników diagnostycznych
 

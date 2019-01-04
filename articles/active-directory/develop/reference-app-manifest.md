@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a971806b453d34aa8459cb30090024bfca96d342
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086781"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631192"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 
@@ -40,7 +40,7 @@ Aby skonfigurować manifest aplikacji:
 1. Zaloguj się [witryny Azure portal](https://portal.azure.com).
 1. Wybierz **usługi Azure Active Directory** usługi, a następnie wybierz **rejestracje aplikacji** lub **rejestracje aplikacji (wersja zapoznawcza)**.
 1. Wybierz aplikację, którą chcesz skonfigurować.
-1. Z poziomu aplikacji **Przegląd** wybierz opcję **manifestu** sekcji. Zostanie otwarty Edytor manifestu z opartej na sieci web, umożliwiając Edytuj manifest w portalu. Opcjonalnie można wybrać **Pobierz** Edytuj manifest lokalnie, a następnie użyć **przekazywanie** Aby ponownie zastosować go do aplikacji.
+1. Na stronie **Przegląd** aplikacji wybierz sekcję **Manifest**. Zostanie otwarty Edytor manifestu z opartej na sieci web, umożliwiając Edytuj manifest w portalu. Opcjonalnie można wybrać **Pobierz** Edytuj manifest lokalnie, a następnie użyć **przekazywanie** Aby ponownie zastosować go do aplikacji.
 
 ## <a name="manifest-reference"></a>Odwołanie do manifestu
 
@@ -56,11 +56,11 @@ Aby skonfigurować manifest aplikacji:
 | `allowPublicClient` | wartość logiczna | Określa typ bazowy aplikacji. Usługa Azure AD wnioskuje typ aplikacji z replyUrlsWithType domyślnie. Brak niektórych scenariuszy, w którym usługi Azure AD nie może określić typ aplikacji klienckich (np. [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) przepływ, gdy żądanie HTTP jest możliwe bez Przekierowywanie adresu URL). W takich przypadkach usługi Azure AD będzie interpretować typ aplikacji, w oparciu o wartość tej właściwości. Jeśli ta wartość jest równa true typ bazowy aplikacji jest ustawiony jako publicznych klienta, takich jak zainstalowanych aplikacji uruchomionej na urządzeniu przenośnym. Wartość domyślna to false, co oznacza, że typ bazowy aplikacji jest poufne klienta, takie jak aplikacja sieci web. | `false` |
 | `appId` | Ciąg identyfikatora | Określa unikatowy identyfikator aplikacji, który jest przypisany do aplikacji przez usługę Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | Typ tablicy | Określa kolekcję ról, które aplikacja może deklarować. Te role można przypisać do użytkowników, grup lub jednostki usługi. Aby uzyskać więcej przykładów i informacje, zobacz [Dodaj role aplikacji w aplikacji i odbierać je w tokenie](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
-| `groupMembershipClaims` | ciąg | Maska bitów, który konfiguruje `groups` oświadczenia wydane w użytkownika lub token dostępu OAuth 2.0, który oczekuje, że aplikacja. Wartości maski bitów to:<br>0: Brak<br>1: grupy zabezpieczeń i role usługi Azure AD<br>2: zarezerwowane<br>4: zarezerwowane<br>Ustawienie maski bitów na 7 otrzyma wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, które zalogowany użytkownik jest członkiem. | `1` |
+| `groupMembershipClaims` | ciąg | Konfiguruje `groups` oświadczenia wydane w użytkownika lub token dostępu OAuth 2.0, który oczekuje, że aplikacja. Aby ustawić tego atrybutu, użyj jednej z następujących wartości prawidłowy ciąg:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (dla grup zabezpieczeń i role usługi Azure AD)<br/>- `"All"` (obejmuje programy wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, które zalogowany użytkownik jest członkiem. | `"SecurityGroup"` |
 | `optionalClaims` | ciąg | Opcjonalne oświadczenia zwrócone w tokenie przez usługę tokenu zabezpieczającego dla tej konkretnej aplikacji.<br>W tej chwili aplikacji obsługujących konta osobiste i usługi Azure AD (zarejestrowane za pośrednictwem portalu rejestracji aplikacji) nie można użyć oświadczeń opcjonalne. Jednak aplikacje zarejestrowane dla właśnie Azure AD przy użyciu punktu końcowego v2.0 można uzyskać opcjonalnych oświadczenia, które są wymagane w manifeście. Aby uzyskać więcej informacji, zobacz [opcjonalnych oświadczeń](active-directory-optional-claims.md). | `null` |
 | `id` | Ciąg identyfikatora | Unikatowy identyfikator dla aplikacji w katalogu. Ten identyfikator nie jest to identyfikator używany do identyfikowania aplikacji w każdej transakcji protokołu. Służy do odwoływania się do obiektu w katalogu zapytania. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `identifierUris` | Tablica ciągów | URI(s) zdefiniowanych przez użytkownika, który jednoznacznie zidentyfikować aplikacji sieci Web w swojej dzierżawie usługi Azure AD, lub w zweryfikowanej domenie niestandardowej, jeśli aplikacja jest wielodostępne. | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
-| `informationalUrls` | ciąg | Określa łącza do aplikacji warunków usługi i zasady zachowania poufności. Warunki usługi i zasady zachowania poufności są udostępniane użytkownikom za pośrednictwem środowiska zgody użytkownika. Aby uzyskać więcej informacji, zobacz [porady: Dodawanie warunków usługi i zasady zachowania poufności dla zarejestrowane aplikacje usługi Azure AD](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
+| `identifierUris` | Tablica ciągów | URI(s) zdefiniowanych przez użytkownika, który jednoznacznie zidentyfikować aplikacji sieci Web w swojej dzierżawie usługi Azure AD, lub w zweryfikowanej domenie niestandardowej, jeśli aplikacja jest wielodostępne. | <code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> |
+| `informationalUrls` | ciąg | Określa łącza do aplikacji warunków usługi i zasady zachowania poufności. Warunki usługi i zasady zachowania poufności są udostępniane użytkownikom za pośrednictwem środowiska zgody użytkownika. Aby uzyskać więcej informacji, zobacz [jak: Dodawanie warunków usługi i zasady zachowania poufności dla zarejestrowane aplikacje usługi Azure AD](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
 | `keyCredentials` | Typ tablicy | Zawiera odwołania do przypisanych aplikacji poświadczeń, oparte na ciągach wspólne klucze tajne i certyfikaty X.509. Te poświadczenia są używane podczas żądania tokenów dostępu (gdy aplikacja działa jako klient zamiast, jako zasób). | <code>[<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
 | `knownClientApplications` | Typ tablicy | Używany do tworzenia pakietów zgody, jeśli masz rozwiązanie, które zawiera dwie części: aplikacji klienckiej i aplikacji sieci web niestandardowego interfejsu API. Jeśli wprowadzasz identyfikator aplikacji klienckiej na tę wartość, użytkownik będzie miał tylko do zgody raz do aplikacji klienckich. Usługa Azure AD będzie wiedzieć, że wyrażanie zgody dla klienta oznacza, że niejawnie wyrażanie zgody na interfejs API sieci web i automatycznie przydzieli nazwy główne usług dla klienta i interfejsu API sieci web w tym samym czasie. Zarówno klient, jak i aplikacji interfejsu API sieci web musi być zarejestrowany w ramach tej samej dzierżawy. | `[GUID]` |
 | `logoUrl` | ciąg | Odczytać wartości, który wskazuje na adres URL usługi CDN, logo, który został przekazany w portalu. | `https://MyRegisteredAppLogo` |

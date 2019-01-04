@@ -1,6 +1,6 @@
 ---
-title: Kompleksowe uwierzytelnianie i autoryzacja użytkowników w usłudze Azure App Service w systemie Linux | Microsoft Docs
-description: Dowiedz się, jak używać uwierzytelniania i autoryzacji usługi App Service w celu zabezpieczenia aplikacji usługi App Service, w tym dostępu do zdalnych interfejsów API.
+title: Kompleksowe uwierzytelnianie i autoryzacja użytkowników w systemie Linux — usługa Azure App Service | Microsoft Docs
+description: Dowiedz się, jak używać uwierzytelniania i autoryzacji usługi App Service w celu zabezpieczenia aplikacji usługi App Service działających w systemie Linux, w tym dostępu do zdalnych interfejsów API.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 services: app-service\web
 documentationcenter: dotnet
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
-ms.openlocfilehash: a468c5d0f73cc182927f26ea9b7a85e2c5afb7c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec18
+ms.openlocfilehash: 65c503c96305cf23b97511dd06a56b5eb6fcc1be
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766363"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409418"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Samouczek: kompleksowe uwierzytelnianie i autoryzacja użytkowników w usłudze Azure App Service w systemie Linux
 
@@ -237,11 +238,11 @@ Przejdź na adres `http://<back_end_app_name>.azurewebsites.net`, aby zobaczyć 
 
 W tym kroku włączysz uwierzytelnianie i autoryzację dla dwóch aplikacji. Skonfigurujesz również aplikację frontonu tak, aby generowała token dostępu, którego można używać do uwierzytelnionego wywoływania aplikacji zaplecza.
 
-Jako dostawcy tożsamości użyjesz usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Konfigurowanie uwierzytelniania usługi Azure Active Directory dla aplikacji usługi App Services](../app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Jako dostawcy tożsamości użyjesz usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Konfigurowanie uwierzytelniania usługi Azure Active Directory dla aplikacji usługi App Services](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Włączanie uwierzytelniania i autoryzacji w aplikacji zaplecza
 
-W witrynie [Azure Portal](https://portal.azure.com) otwórz stronę zarządzania aplikacją zaplecza, klikając następujące pozycje w menu po lewej stronie: **Grupy zasobów** > **myAuthResourceGroup** > _\<back\_end\_app\_name>_.
+W witrynie [Azure Portal](https://portal.azure.com) otwórz stronę zarządzania aplikacją zaplecza, klikając następujące pozycje w menu po lewej stronie: **Grupy zasobów** > **myAuthResourceGroup** > _\<nazwa\_aplikacji\_zaplecza>_.
 
 ![Interfejs API platformy ASP.NET Core uruchomiony w usłudze Azure App Service](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 

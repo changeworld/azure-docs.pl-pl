@@ -1,18 +1,18 @@
 ---
-title: Uwierzytelnianie systemu Azure Container Registry za pomocą jednostki usługi
-description: Dowiedz się, jak zapewnić dostęp do obrazów w prywatnego rejestru kontenera za pomocą jednostki usługi Azure Active Directory.
+title: Uwierzytelnianie systemu Azure Container Registry przy użyciu jednostki usługi
+description: Zapewniają dostęp do obrazów w prywatnego rejestru kontenera za pomocą jednostki usługi Azure Active Directory.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854491"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754207"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Uwierzytelnianie systemu Azure Container Registry za pomocą jednostki usługi
 
@@ -20,9 +20,9 @@ Jednostki usługi Azure Active Directory (Azure AD) umożliwia udostępnianie ob
 
 ## <a name="what-is-a-service-principal"></a>Co to jest jednostki usługi?
 
-Usługa Azure AD *jednostki usług* zapewniają dostęp do zasobów platformy Azure w ramach Twojej subskrypcji. Można traktować usługę podmiotu zabezpieczeń jako tożsamość użytkownika dla usługi "Usługa" w przypadku dowolnej aplikacji, usługi lub platformy, która wymaga dostępu do zasobów. Nazwy głównej usługi można skonfigurować przy użyciu praw dostępu ograniczone tylko do tych zasobów, które określisz. Następnie można skonfigurować aplikacji lub usługi, aby użyć poświadczeń jednostki usługi dostęp do tych zasobów.
+Usługa Azure AD *jednostki usług* zapewniają dostęp do zasobów platformy Azure w ramach Twojej subskrypcji. Można traktować usługę podmiotu zabezpieczeń jako tożsamość użytkownika dla usługi "Usługa" w przypadku dowolnej aplikacji, usługi lub platformy, która wymaga dostępu do zasobów. Nazwy głównej usługi można skonfigurować przy użyciu praw dostępu ograniczone tylko do tych zasobów, które określisz. Następnie należy skonfigurować poświadczenia nazwy głównej usługi umożliwia dostęp do tych zasobów, Twoja aplikacja lub usługa.
 
-W kontekście usługi Azure Container Registry można utworzyć usługi Azure AD jednostki usługi przy użyciu uprawnień do ściągania, wypychania i ściągania lub właściciel do rejestru prywatnego platformy Docker na platformie Azure.
+W kontekście usługi Azure Container Registry można utworzyć usługi Azure AD nazwę główną usługi za pomocą ściągania, wypychania i ściągania lub inne uprawnienia do rejestru prywatnego platformy Azure. Aby uzyskać pełną listę, zobacz [uprawnienia i role usługi Azure Container Registry](container-registry-roles.md).
 
 ## <a name="why-use-a-service-principal"></a>Dlaczego warto używać nazwy głównej usługi?
 

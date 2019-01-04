@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 35493d9a7f47bda3344dbc8b0ea415d4492c5741
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340061"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720464"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service przy użyciu usługi Traffic Manager
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-Ten artykuł zawiera ogólne instrukcje dotyczące korzystania z niestandardowej nazwy domeny za pomocą [usługi App Service](app-service-web-overview.md) aplikację, która jest zintegrowana z usługą [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md) Równoważenie obciążenia sieciowego.
+Ten artykuł zawiera ogólne instrukcje dotyczące korzystania z niestandardowej nazwy domeny za pomocą [usługi App Service](overview.md) aplikację, która jest zintegrowana z usługą [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md) Równoważenie obciążenia sieciowego.
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -47,7 +47,7 @@ Ten artykuł zawiera ogólne instrukcje dotyczące korzystania z niestandardowej
 
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>Dodaj rekord DNS dla domeny niestandardowej
 > [!NOTE]
-> Jeśli zostały nabyte domeny przy użyciu usługi Azure App Service Web Apps, a następnie pominąć, wykonując kroki i odwoływać się do ostatniego kroku [kupić domenę dla aplikacji sieci Web](custom-dns-web-site-buydomains-web-app.md) artykułu.
+> Jeśli zostały nabyte domeny przy użyciu usługi Azure App Service Web Apps, a następnie pominąć, wykonując kroki i odwoływać się do ostatniego kroku [kupić domenę dla aplikacji sieci Web](manage-custom-dns-buy-domain.md) artykułu.
 > 
 > 
 

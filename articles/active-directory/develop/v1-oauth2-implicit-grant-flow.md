@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 818801a7f36e82d0065f85b5cf9e36288ccbff32
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422035"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970394"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Opis przepływu przyznawanie niejawne protokołu OAuth2 w usłudze Azure Active Directory (AD)
 
@@ -57,11 +57,11 @@ Przyznawanie niejawne przepływ nie wystawia tokeny odświeżania, przede wszyst
 
 Jednak aplikacji w języku JavaScript ma inny mechanizm dyspozycji odnowienia tokenów dostępu bez wielokrotnie monitowania użytkownika o poświadczenia. Aplikacja może użyć ukryty element iframe do wykonania nowego żądania tokenu względem punktu końcowego autoryzacji usługi Azure AD: tak długo, jak przeglądarka nadal ma aktywnej sesji (odczytu: ma plik cookie sesji) względem domeny usługi Azure AD można żądanie uwierzytelnienia pomyślnie wystąpić, bez konieczności interakcji z użytkownikiem.
 
-Ten model umożliwia aplikacji JavaScript niezależnie odnowić tokenów dostępu, a nawet uzyskać nowe dla nowego interfejsu API (pod warunkiem, że użytkownik wyraził zgodę wcześniej dla nich. Umożliwia to uniknięcie dodano obciążeń, pobieranie, utrzymywania i chronienia artefaktu o wysokiej wartości, takich jak token odświeżania. Artefakt, który sprawia, że dyskretnej odnowienie jest możliwe, pliku cookie sesji usługi Azure AD jest zarządzany poza aplikacją. Inną zaletą tego podejścia jest użytkownikiem można wylogować się z usługi Azure AD przy użyciu dowolnej aplikacji zalogowali się do usługi Azure AD, uruchamiania we wszystkich kartach przeglądarki. Powoduje to usunięcie tego pliku cookie sesji usługi Azure AD i aplikacji JavaScript automatycznie spowoduje utratę możliwości odnowienia tokenów dla podpisanych się użytkownika.
+Ten model umożliwia aplikacji JavaScript niezależnie odnowić tokenów dostępu, a nawet uzyskać nowe dla nowego interfejsu API (pod warunkiem, że użytkownik wyraził zgodę wcześniej dla nich). Umożliwia to uniknięcie dodano obciążeń, pobieranie, utrzymywania i chronienia artefaktu o wysokiej wartości, takich jak token odświeżania. Artefakt, który sprawia, że dyskretnej odnowienie jest możliwe, pliku cookie sesji usługi Azure AD jest zarządzany poza aplikacją. Inną zaletą tego podejścia jest użytkownikiem można wylogować się z usługi Azure AD przy użyciu dowolnej aplikacji zalogowali się do usługi Azure AD, uruchamiania we wszystkich kartach przeglądarki. Powoduje to usunięcie tego pliku cookie sesji usługi Azure AD i aplikacji JavaScript automatycznie spowoduje utratę możliwości odnowienia tokenów dla podpisanych się użytkownika.
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Przyznawanie niejawne nadaje się do mojej aplikacji?
 
-Przyznawanie niejawne przedstawia zagrożenia więcej niż inne przyznaje i obszarów, należy zwrócić uwagę na to dobrze udokumentowane. Na przykład [niewłaściwe korzystanie z tokenu dostępu do personifikacji właściciela zasobu w niejawny przepływ] [ OAuth2-Spec-Implicit-Misuse] i [zagadnienia dotyczące zabezpieczeń i OAuth 2.0 zagrożeń modelu] [ OAuth2-Threat-Model-And-Security-Implications]). Jednak wyższy profil ryzyka jest głównie fakt, że jest przeznaczona do umożliwiają aplikacjom, które są wykonywane active kodu, obsługiwane przez zasób zdalny do przeglądarki. Jeśli planowane jest architektura SPA ma żadnych składników wewnętrznej bazy danych lub zamierzane było wywołanie interfejsu API sieci Web, przy użyciu języka JavaScript, zalecane jest użycie niejawny przepływ dla tokenu.
+Przyznawanie niejawne przedstawia zagrożenia więcej niż inne przyznaje i obszarów, należy zwrócić uwagę na to dobrze udokumentowane (na przykład [niewłaściwe korzystanie z tokenu dostępu do personifikacji właściciela zasobu w niejawny przepływ] [ OAuth2-Spec-Implicit-Misuse]i [Model zagrożeń protokołu OAuth 2.0 i zagadnienia dotyczące zabezpieczeń][OAuth2-Threat-Model-And-Security-Implications]). Jednak wyższy profil ryzyka jest głównie fakt, że jest przeznaczona do umożliwiają aplikacjom, które są wykonywane active kodu, obsługiwane przez zasób zdalny do przeglądarki. Jeśli planowane jest architektura SPA ma żadnych składników wewnętrznej bazy danych lub zamierzane było wywołanie interfejsu API sieci Web, przy użyciu języka JavaScript, zalecane jest użycie niejawny przepływ dla tokenu.
 
 Jeśli aplikacja jest klient natywny, niejawny przepływ jest doskonałym rozwiązaniem. Brak pliku cookie sesji usługi Azure AD w kontekście klient natywny pozbawia aplikacji oznacza, że obsługi długotrwałych sesji. Oznacza to aplikacja wielokrotnie będzie monitował użytkownika podczas uzyskiwania tokenów dostępu dla nowych zasobów.
 

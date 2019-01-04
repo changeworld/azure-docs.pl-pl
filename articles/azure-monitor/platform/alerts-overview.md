@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: cf01ddd53741a77df61e3dc1946eb836640034d0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346302"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976957"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów na platformie Microsoft Azure 
 
@@ -56,7 +56,7 @@ Dostępne są następujące atrybuty klucza regułę alertu:
 
 ## <a name="what-you-can-alert-on"></a>Co można alert dla
 
-Alerty dotyczące metryk i dzienników zgodnie z opisem w [monitorowanie źródła danych](../../monitoring-and-diagnostics/monitoring-data-sources.md). Obejmują one nie są ograniczone do:
+Alerty dotyczące metryk i dzienników zgodnie z opisem w [monitorowanie źródła danych](../../azure-monitor/platform/data-sources-reference.md). Obejmują one nie są ograniczone do:
 - Wartości metryk
 - Zapytania wyszukiwania w Dzienniku
 - Zdarzenia dziennika aktywności
@@ -131,7 +131,7 @@ Usługi Azure Monitor, Application Insights, Log Analytics i kondycji usług mia
 | **Źródło monitora** | **Typ sygnału**  | **Opis** | 
 |-------------|----------------|-------------|
 | Kondycja usługi | Dziennik aktywności  | Nieobsługiwane. Zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostępności sieci Web | Nieobsługiwane. Zobacz [alerty testu internetowego](../../application-insights/app-insights-monitor-web-app-availability.md). Dostępne w dowolnej witrynie sieci Web, który został zinstrumentowany na wysyłanie danych do usługi Application Insights. Otrzymuj powiadomienie, gdy dostępności i czasu odpowiedzi witryny sieci Web znajduje się poniżej oczekiwania. |
+| Application Insights | Testy dostępności sieci Web | Nieobsługiwane. Zobacz [alerty testu internetowego](../../azure-monitor/app/monitor-web-app-availability.md). Dostępne w dowolnej witrynie sieci Web, który został zinstrumentowany na wysyłanie danych do usługi Application Insights. Otrzymuj powiadomienie, gdy dostępności i czasu odpowiedzi witryny sieci Web znajduje się poniżej oczekiwania. |
 
 
 ## <a name="all-alerts-page"></a>Wszystkie strony alerty 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: e78f0d2012cf4f6152e69fff1bab04f827c0eef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310892"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606898"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Jak skonfigurować platformy Apache Kafka w HDInsight w celu automatycznego tworzenia tematów
 
@@ -55,7 +55,7 @@ Aby włączyć Tworzenie automatycznego tematu w istniejącym klastrze przy uży
 
     ![Obraz przedstawiający wybór ponownego uruchomienia](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Można również ustawić wartości Ambari za pomocą interfejsu API REST Ambari. Jest to zwykle trudniejsze, należy podjąć wiele wywołań REST, aby pobrać bieżącą konfigurację, zmodyfikować go, itp. Aby uzyskać więcej informacji, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu API Apache Ambari REST](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
 
 ## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
@@ -81,5 +81,5 @@ Podczas tworzenia klastra platformy Kafka, przy użyciu szablonu usługi Azure R
 
 W tym dokumencie przedstawiono sposób włączyć automatyczne tematu Tworzenie klastra Apache kafka w HDInsight. Aby dowiedzieć się więcej na temat pracy z platformą Kafka, zobacz następujące linki:
 
-* [Analizowanie dzienników platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikuj dane między klastrami platformy Apache Kafka](apache-kafka-mirroring.md)
+* [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)
+* [Replikowanie danych między klastrami Apache Kafka](apache-kafka-mirroring.md)

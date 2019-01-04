@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fb72de7e9a61c874d4449a5b9c0422c787a7bdc0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410537"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728452"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -540,8 +540,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.AzureActiveDirectory/b2cDirectories/delete | Usuń zasób katalogu B2C |
-> | Akcja | Microsoft.AzureActiveDirectory/b2cDirectories/read | Wyświetl zasób katalogu B2C |
+> | Akcja | Microsoft.AzureActiveDirectory/b2cDirectories/delete | Usuń zasób katalogu usługi B2C |
+> | Akcja | Microsoft.AzureActiveDirectory/b2cDirectories/read | Wyświetl zasób katalogu usługi B2C |
 > | Akcja | Microsoft.AzureActiveDirectory/b2cDirectories/write | Utwórz lub zaktualizuj zasób katalogu B2C |
 > | Akcja | Microsoft.AzureActiveDirectory/operations/read | Odczytuj wszystkie operacje interfejsu API dostępne dla dostawcy zasobów Microsoft.AzureActiveDirectory |
 > | Akcja | Microsoft.AzureActiveDirectory/register/action | Rejestruj subskrypcję dostawcy zasobów Microsoft.AzureActiveDirectory |
@@ -1867,12 +1867,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Devices/provisioningServices/certificates/verify/Action | Sprawdź certyfikat zasobu |
 > | Akcja | Microsoft.Devices/provisioningServices/certificates/Write | Tworzenie lub aktualizowanie certyfikatów |
 > | Akcja | Microsoft.Devices/provisioningServices/Delete | Usuń zasób IotDps |
-> | Akcja | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla zasobu |
+> | Akcja | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Pobiera ustawienia diagnostyczne dla zasobu. Uwaga: może być konieczne `Microsoft.Insights/diagnosticSettings/read` także  |
 > | Akcja | Microsoft.Devices/provisioningServices/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.Devices/provisioningServices/keys/listkeys/Action | Pobierz klucze IotDps dla nazwy klucza |
 > | Akcja | Microsoft.Devices/provisioningServices/listkeys/Action | Pobierz wszystkie klucze IotDps |
-> | Akcja | Microsoft.Devices/provisioningServices/logDefinitions/read | Pobiera definicje dzienników dostępne dla usługi aprowizacji |
-> | Akcja | Microsoft.Devices/provisioningServices/metricDefinitions/read | Pobiera dostępne metryki dla usługi aprowizacji |
+> | Akcja | Microsoft.Devices/provisioningServices/logDefinitions/read | Pobiera definicje dzienników dostępne dla usługi aprowizacji. Uwaga: może być konieczne `Microsoft.Insights/logDefinitions/read` także |
+> | Akcja | Microsoft.Devices/provisioningServices/metricDefinitions/read | Pobiera dostępne metryki dla usługi aprowizacji. Uwaga: może być konieczne `Microsoft.Insights/metricDefinitions/read` także |
 > | Akcja | Microsoft.Devices/provisioningServices/operationresults/Read | Pobierz wynik operacji usługi DPS |
 > | Akcja | Microsoft.Devices/provisioningServices/Read | Pobierz zasób IotDps |
 > | Akcja | Microsoft.Devices/provisioningServices/skus/Read | Pobierz prawidłowe IotDps jednostki SKU. |

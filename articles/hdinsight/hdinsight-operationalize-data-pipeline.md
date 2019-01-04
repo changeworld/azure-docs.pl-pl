@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436164"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744449"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizacja potoku analizy danych
 
@@ -426,7 +426,7 @@ Poniższa tabela zawiera podsumowanie każdej właściwości i wskazuje, gdzie m
 | hiveDataFolder | Ścieżka w usłudze Azure Storage do danych zawarty w tabeli przemieszczania. |
 | sqlDatabaseConnectionString | Składnia parametry połączenia sterownika JDBC usługi Azure SQL Database. |
 | sqlDatabaseTableName | Nazwa tabeli w usłudze Azure SQL Database, do którego zostaną wstawione wiersze podsumowania. Pozostaw `dailyflights`. |
-| rok | Składnik roku, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
+| rocznie | Składnik roku, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
 | miesiąc | Składnik miesiąca, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
 | dzień | Dzień składnik miesiąca, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
 
@@ -551,7 +551,7 @@ Jak widać, większość koordynatora po prostu przekazuje informacje o konfigur
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Koordynator jest odpowiedzialna za planowanie akcji w ramach `start` i `end` zakres, dat, zgodnie z interwałem określonym przez `frequency` atrybutu. Każda akcja zaplanowane z kolei uruchamia przepływ pracy, zgodnie z konfiguracją. W powyższej definicji koordynator Koordynator jest skonfigurowany do uruchamiania działań od 1 stycznia 2017 r. do 5 stycznia 2017 r. Częstotliwość jest ustawiona na 1 dzień, [język wyrażeń Oozie](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) wyrażenie częstotliwość `${coord:days(1)}`. Skutkuje to koordynator planowania akcję (a tym samym przepływu pracy) raz dziennie. Dla zakresów dat, które znajdują się w przeszłości, jak w poniższym przykładzie akcja zostanie zaplanowane do uruchomienia bez opóźnień. Początek daty, w którym akcja jest zaplanowane do uruchomienia jest nazywany *nominalna czasu*. Na przykład do przetwarzania danych dla 1 stycznia 2017 r. koordynator będą planować akcji z nominalna czasem 2017-01-01T00:00:00 GMT.
+    Koordynator jest odpowiedzialna za planowanie akcji w ramach `start` i `end` zakres, dat, zgodnie z interwałem określonym przez `frequency` atrybutu. Każda akcja zaplanowane z kolei uruchamia przepływ pracy, zgodnie z konfiguracją. W powyższej definicji koordynator Koordynator jest skonfigurowany do uruchamiania działań od 1 stycznia 2017 r. do 5 stycznia 2017 r. Częstotliwość jest ustawiona na 1 dzień, [język wyrażeń Oozie](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) wyrażenie częstotliwość `${coord:days(1)}`. Skutkuje to koordynator planowania akcję (a tym samym przepływu pracy) raz dziennie. Dla zakresów dat, które znajdują się w przeszłości, jak w poniższym przykładzie akcja zostanie zaplanowane do uruchomienia bez opóźnień. Początek daty, w którym akcja jest zaplanowane do uruchomienia jest nazywany *nominalna czasu*. Na przykład do przetwarzania danych dla 1 stycznia 2017 r. koordynator będą planować akcji z nominalna czasem 2017-01-01T00:00:00 GMT.
 
 * Punkt 2: W zakresie przepływu pracy `dataset` element określa, gdzie szukać w systemie plików HDFS dane dla zakresu określonej daty i konfiguruje się, jak Oozie Określa, czy dane są dostępne jeszcze do przetworzenia.
 
@@ -651,6 +651,6 @@ Aby uruchomić potok przy użyciu koordynatora, przejdź w podobny sposób jak w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Apache Oozie dokumentacji](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie dokumentacji](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

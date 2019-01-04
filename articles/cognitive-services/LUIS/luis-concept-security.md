@@ -1,5 +1,5 @@
 ---
-title: Współpracuj z innymi
+title: Zabezpieczenia podczas współpracy
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 533854b723dc5fc9e2406b492a60692f25c33257
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3de58f244012ee0460812fba1ceb5ab12f60aa51
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132605"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602583"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
@@ -39,6 +39,7 @@ Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikac
 |Szkolenie|
 
 ## <a name="access-to-endpoint"></a>Dostęp do punktu końcowego
+
 Dostęp do kwerendy punktu końcowego jest kontrolowany przez ustawienie na **informacje o aplikacji** strony w **Zarządzaj** sekcji. 
 
 ![Zestaw aplikacji na publiczną](./media/luis-concept-security/set-application-as-public.png)
@@ -48,6 +49,7 @@ Dostęp do kwerendy punktu końcowego jest kontrolowany przez ustawienie na **in
 |Dostępne do właściciela i współpracowników|Dostępne dla właściciela, współpracowników i każdy else który wie, identyfikator aplikacji|
 
 ### <a name="private-app-endpoint-security"></a>Zabezpieczenia punktu końcowego aplikacji prywatnych
+
 Punkt końcowy aplikacji prywatnych jest dostępna tylko dla następujących czynności:
 
 |Klucz i użytkownika|Wyjaśnienie|
@@ -57,11 +59,13 @@ Punkt końcowy aplikacji prywatnych jest dostępna tylko dla następujących czy
 |Dowolny klawisz, przypisany do usługi LUIS przez autor lub Współautor|Na podstawie warstwy użycia klucza|
 
 #### <a name="microsoft-user-accounts"></a>Konta użytkowników firmy Microsoft
+
 Autorzy i współpracowników można przypisać klucze prywatne aplikacją usługi LUIS. Konto Microsoft, które tworzy klucz usługi LUIS w witrynie Azure portal musi być właścicielem aplikacji lub Współautor aplikacji. Nie można przypisać klucza prywatnego aplikacji z innego konta platformy Azure.
 
 Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
 
 ### <a name="public-app-endpoint-access"></a>Dostęp do punktu końcowego publicznego aplikacji
+
 Po skonfigurowaniu aplikacji jako publiczne, _wszelkie_ prawidłowe LUIS tworzenia klucza lub klucza punktu końcowego usługi LUIS mogą wysyłać zapytania swojej aplikacji, tak długo, jak klucz nie został użyty przydział całego punktu końcowego.
 
 Użytkownik, który nie jest właścicielem lub współpracownika, dostęp tylko do aplikacji publicznej Jeśli podany identyfikator aplikacji. Usługa LUIS nie ma publicznej _rynku_ lub w inny sposób wyszukiwania dla aplikacji w sieci publicznej.  
@@ -69,19 +73,13 @@ Użytkownik, który nie jest właścicielem lub współpracownika, dostęp tylko
 Opublikowaniu publicznych aplikacji we wszystkich regionach, aby użytkownik z kluczem zależności od regionu zasobu usługi LUIS dostęp do aplikacji w niezależnie od regionu jest skojarzony z kluczem zasobów.
 
 ## <a name="microsoft-user-accounts"></a>Konta użytkowników firmy Microsoft
+
 Autorzy i współpracowników dodać klucze do usługi LUIS na stronie publikowania. Konto Microsoft, które tworzy klucz usługi LUIS w witrynie Azure portal musi być właścicielem aplikacji lub Współautor aplikacji. 
 
 Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
 
-<!--
-### Individual consent
-If the Microsoft user account is part of an Azure Active Directory (AAD), and the active directory doesn't allow users to give consent, then you can provide individual consent as part of the login process. 
-
-### Administrator consent
-If the Microsoft user account is part of an Azure Active Directory (AAD), and the active directory doesn't allow users to give consent, then the administrator can give individual consent via the method discussed in this [blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/). 
--->
-
 ## <a name="securing-the-endpoint"></a>Zabezpieczanie punktu końcowego 
+
 Można kontrolować, kto może wyświetlać klucza punktu końcowego usługi LUIS, wywołując ją w środowisku serwer serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. Bezpośrednie wywoływanie punktu końcowego usługi LUIS należy utworzyć interfejs API po stronie serwera (takich jak Azure [funkcja](https://azure.microsoft.com/services/functions/)) przy użyciu kontrolowanego dostępu (takich jak [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy wywoływany jest interfejs API po stronie serwera i uwierzytelnianie i autoryzacja są weryfikowane, Przekaż wywołań do usługi LUIS. Chociaż ta strategia nie zapobiegać atakom typu man-in--middle, zaciemnia punktu końcowego od swoich użytkowników, pozwala na śledzenie dostępu i umożliwia dodawanie rejestrowania odpowiedzi punktu końcowego (takie jak [usługi Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
 ## <a name="security-compliance"></a>Zgodności zabezpieczeń

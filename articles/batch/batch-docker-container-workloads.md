@@ -1,5 +1,5 @@
 ---
-title: Obciążeń kontenerów w usłudze Azure Batch | Dokumentacja firmy Microsoft
+title: Obciążenia kontenera — Azure Batch | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak uruchamiać aplikacje z obrazów kontenerów w usłudze Azure Batch.
 services: batch
 author: dlepow
@@ -10,12 +10,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec18
+ms.openlocfilehash: 4d4dc5d01959406e71859fcbde6de1e36b5871aa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262435"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541000"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Uruchamianie aplikacji kontenera w usłudze Azure Batch
 
@@ -29,16 +30,16 @@ Używanie kontenerów zapewnia łatwy sposób uruchamiania zadań wsadowych bez 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Wersje zestawu SDK**: obrazów kontenerów obsługę zestawów SDK usługi Batch, począwszy od następujących wersji:
+* **Wersje zestawu SDK**: Zestawów SDK usługi Batch obsługują obrazów kontenerów, począwszy od następujących wersji:
     * Interfejs API REST usługi Batch w wersji 2017-09-01.6.0
     * Zestawu SDK .NET usługi Batch w wersji 8.0.0
     * Zestaw SDK języka Python usługi Batch w wersji 4.0
     * Zestaw SDK Java usługi Batch w wersji 3.0
     * Zestaw SDK środowiska Node.js usługi Batch w wersji 3.0
 
-* **Konta**: W subskrypcji platformy Azure, musisz utworzyć konto usługi Batch i opcjonalnie konta usługi Azure Storage.
+* **Konta**: W ramach subskrypcji platformy Azure musisz utworzyć konto usługi Batch i opcjonalnie konta usługi Azure Storage.
 
-* **Obsługiwane obrazu maszyny Wirtualnej**: kontenery są obsługiwane tylko w przypadku pul utworzonych za pomocą konfiguracji maszyny wirtualnej z obrazów szczegółowo opisane w poniższej sekcji "obsługiwane obrazy maszyn wirtualnych". Jeśli podasz niestandardowego obrazu, zobacz uwagi w poniższej sekcji i wymagania [zarządzany obraz niestandardowy umożliwia tworzenie puli maszyn wirtualnych](batch-custom-images.md). 
+* **Obsługiwane obrazu maszyny Wirtualnej**: Kontenery są obsługiwane tylko w przypadku pul utworzonych za pomocą konfiguracji maszyny wirtualnej z obrazów szczegółowo opisane w poniższej sekcji "obsługiwane obrazy maszyn wirtualnych". Jeśli podasz niestandardowego obrazu, zobacz uwagi w poniższej sekcji i wymagania [zarządzany obraz niestandardowy umożliwia tworzenie puli maszyn wirtualnych](batch-custom-images.md). 
 
 ### <a name="limitations"></a>Ograniczenia
 

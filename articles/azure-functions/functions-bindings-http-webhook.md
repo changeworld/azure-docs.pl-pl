@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: acd2d5a3448d805b8b3c741139fc5f9a79c40ed2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d2bd74609447463b7ff857aa1037eaf5b6e3abb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317444"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727007"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
@@ -491,7 +491,7 @@ Domyślnie wszystkie trasy funkcji mają prefiks *api*. Można również dostoso
 
 ### <a name="working-with-client-identities"></a>Praca z tożsamości klienta
 
-Jeśli aplikacja funkcji używa [uwierzytelnianie usługi App Service / autoryzacji](../app-service/app-service-authentication-overview.md), informacji o uwierzytelnionych klientów można wyświetlić w kodzie. Te informacje są dostępne jako [wprowadzony przez platformę nagłówki żądań](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+Jeśli aplikacja funkcji używa [uwierzytelnianie usługi App Service / autoryzacji](../app-service/overview-authentication-authorization.md), informacji o uwierzytelnionych klientów można wyświetlić w kodzie. Te informacje są dostępne jako [wprowadzony przez platformę nagłówki żądań](../app-service/app-service-authentication-how-to.md#access-user-claims). 
 
 Te informacje można również odczytywać powiązanie danych. Ta funkcja jest dostępna tylko na środowisko uruchomieniowe 2.x funkcji. Jest również obecnie tylko dostępne dla języków .NET.
 
@@ -577,7 +577,7 @@ Możesz zezwolić na anonimowe żądania, które nie wymagają kluczy. Może ró
 
 Aby zabezpieczyć pełni funkcję punktów końcowych w środowisku produkcyjnym, należy rozważyć zaimplementowanie jednego z następujących opcji funkcji zabezpieczenia na poziomie aplikacji:
 
-* Włącz uwierzytelnianie usługi App Service / autoryzacji dla aplikacji funkcji. Platforma usługi App Service pozwala używać do uwierzytelniania klientów usługi Azure Active Directory (AAD) i wielu dostawców tożsamości innych firm. Służy to do zaimplementowania reguł autoryzacji niestandardowej dla funkcji, a informacje o użytkownikach można pracować z kodu funkcji. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/app-service-authentication-overview.md) i [Praca z tożsamościami klientów](#working-with-client-identities).
+* Włącz uwierzytelnianie usługi App Service / autoryzacji dla aplikacji funkcji. Platforma usługi App Service pozwala używać do uwierzytelniania klientów usługi Azure Active Directory (AAD) i wielu dostawców tożsamości innych firm. Służy to do zaimplementowania reguł autoryzacji niestandardowej dla funkcji, a informacje o użytkownikach można pracować z kodu funkcji. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/overview-authentication-authorization.md) i [Praca z tożsamościami klientów](#working-with-client-identities).
 
 * Użyj usługi Azure API Management (APIM), aby uwierzytelnić żądania. APIM oferuje różnorodne opcje zabezpieczeń interfejsu API dla żądań przychodzących. Aby dowiedzieć się więcej, zobacz [zasady uwierzytelniania usługi API Management](../api-management/api-management-authentication-policies.md). Za pomocą usługi APIM w miejscu można skonfigurować aplikację funkcji w celu umożliwienia akceptowania żądań tylko adres IP swojego wystąpienia usługi APIM. Aby dowiedzieć się więcej, zobacz [ograniczenia adresów IP](ip-addresses.md#ip-address-restrictions).
 

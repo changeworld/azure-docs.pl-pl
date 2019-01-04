@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2c5a584bd5c235eb143c8e1911006aa6e142ff0d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498136"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605640"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Rozwiązania magazynu platformy Azure dla usługi ML w usłudze Azure HDInsight
 
@@ -26,16 +26,16 @@ Usługi uczenie Maszynowe na HDInsight można użyć różnych systemów pamięc
 
 Istnieje również możliwość uzyskiwania dostępu do wielu kont usługi Azure storage lub kontenerów przy użyciu klastra usługi HDInsight. Usługa Azure File storage to opcja magazynowania danych wygodne do użytku w węźle krawędzi umożliwiające instalowanie udziału plików usługi Azure Storage, na przykład system plików w systemie Linux. Ale udziałów plików platformy Azure może być zainstalowany i używane przez system z obsługiwanym systemem operacyjnym, takich jak Windows lub Linux. 
 
-Podczas tworzenia klastra Apache Hadoop w HDInsight, możesz określić **usługi Azure storage** konta lub **usługa Data Lake store**. Z tego konta kontener określonego magazynu przechowuje systemu plików dla klastra, którą tworzysz (na przykład, rozproszony System plików Hadoop). Aby uzyskać więcej informacji i wskazówek zobacz:
+Podczas tworzenia klastra Apache Hadoop w HDInsight, możesz określić **usługi Azure storage** konta lub **usługi Data Lake Storage**. Z tego konta kontener określonego magazynu przechowuje systemu plików dla klastra, którą tworzysz (na przykład, rozproszony System plików Hadoop). Aby uzyskać więcej informacji i wskazówek zobacz:
 
 - [Usługa Azure storage za pomocą HDInsight](../hdinsight-hadoop-use-blob-storage.md)
-- [Użyj Data Lake Store z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
+- [Użyj usługi Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Korzystanie z kont magazynu obiektów Blob platformy Azure z klastrem usługi ML
 
 Jeśli określono więcej niż jedno konto magazynu podczas tworzenia klastra usługi uczenie Maszynowe, zgodnie z poniższymi instrukcjami wyjaśniono, jak używać pomocniczego konta dla dostępu do danych i operacje w klastrze usługi ML. Przyjęto założenie, że następujących kont magazynu i kontener: **storage1** oraz powoduje używanie domyślnego kontenera o nazwie **container1**, i **storage2** z **container2**.
 
-> [!WARNING]
+> [!WARNING]  
 > Ze względów wydajnościowych klaster HDInsight jest tworzony w tym samym centrum danych, co konto magazynu podstawowego, który określisz. Za pomocą konta magazynu w innej lokalizacji niż klaster HDInsight nie jest obsługiwana.
 
 ### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Użyj domyślnej pamięci masowej z usługami uczenia Maszynowego na HDInsight
@@ -102,29 +102,29 @@ Należy skonfigurować/User/RevoShare/<SSH username> katalogu **storage2** w nas
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>Użyj usługi Azure Data Lake Store z klastrem usługi ML 
+## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>Użyj usługi Azure Data Lake Storage z klastrem usługi ML 
 
-Data Lake Store za pomocą klastra usługi HDInsight, musisz podać klastrowi dostęp do każdego Azure Store Lake danych, którego chcesz używać. Aby uzyskać instrukcje dotyczące sposobu używania witryny Azure portal do utworzenia klastra HDInsight z kontem usługi Azure Data Lake Store jako magazynem domyślnym lub jako dodatkowego magazynu, zobacz [Tworzenie klastra HDInsight z usługą Data Lake Store przy użyciu witryny Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Aby użyć usługi Data Lake Storage z klastrem usługi HDInsight, należy nadać klastrowi dostęp do każdej usługi Azure usługi Data Lake Storage, którego chcesz użyć. Aby uzyskać instrukcje dotyczące sposobu używania witryny Azure portal do utworzenia klastra HDInsight przy użyciu konta usługi Azure Data Lake Storage jako magazynu domyślnego lub dodatkowego miejsca do magazynowania, zobacz [Tworzenie klastra usługi HDInsight przy użyciu usługi Data Lake Storage przy użyciu witryny Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 Następnie należy użyć magazynu w skrypcie języka R podobnie jak konto magazynu pomocniczego platformy Azure zgodnie z opisem w poprzedniej procedurze.
 
-### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Dodaj klastrowi dostęp do usługi Azure Data Lake Store
-Usługa Data Lake store jest dostęp za pomocą jednostki usługi Azure Active Directory (Azure AD), skojarzonym z klastrem usługi HDInsight.
+### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Dodaj klastrowi dostęp do usługi Azure Data Lake Storage
+Możesz uzyskać dostęp usługi Data Lake Storage, korzystania z jednostki usługi Azure Active Directory (Azure AD), który jest skojarzony z klastrem usługi HDInsight.
 
 1. Podczas tworzenia klastra usługi HDInsight, wybrać **tożsamości usługi AAD klastra** z **źródła danych** kartę.
 
 2. W **tożsamości usługi AAD klastra** dialogowego **wybierz jednostkę usługi AD**, wybierz opcję **Utwórz nową**.
 
-Po nadaj nazwę jednostki usługi i Utwórz hasło dla niego, kliknij przycisk **zarządzanie dostępem do usługi ADLS** skojarzyć nazwę główną usługi za pomocą usługi Data Lake Store.
+Po nadaj nazwę jednostki usługi i Utwórz hasło dla niego, kliknij przycisk **zarządzanie dostępem do usługi ADLS** skojarzyć nazwę główną usługi za pomocą usługi Data Lake Storage.
 
-Istnieje również możliwość dodawania klastrowi dostęp do co najmniej jednego konta Data Lake Store, po utworzeniu klastra. Otwórz pozycji Azure portal for Data Lake Store i przejdź do **Eksplorator danych > dostępu > Dodaj**. 
+Istnieje również możliwość dodawania klastrowi dostęp do co najmniej jedno konto usługi Data Lake Storage, po utworzeniu klastra. Otwórz pozycji Azure portal dla usługi Data Lake Storage, przejdź do **Eksplorator danych > dostępu > Dodaj**. 
 
-### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do usługa Data Lake store z usługi uczenie Maszynowe na HDInsight
+### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do usługi Data Lake Storage z usługi uczenie Maszynowe na HDInsight
 
-Po został przez Ciebie udzielony dostęp do Data Lake Store, służy do magazynu w klastrze usługi ML w HDInsight sposób, w jaki na koncie magazynu pomocniczego platformy Azure. Jedyną różnicą jest to, że prefiks **wasb: / /** zmieni się na **adl: / /** w następujący sposób:
+Po którym został przyznany dostęp do usługi Data Lake Storage, używając magazynu w klastrze usługi ML w HDInsight sposób, w jaki na koncie magazynu pomocniczego platformy Azure. Jedyną różnicą jest to, że prefiks **wasb: / /** zmieni się na **adl: / /** w następujący sposób:
 
 
-    # Point to the ADL store (e.g. ADLtest)
+    # Point to the ADL Storage (e.g. ADLtest)
     myNameNode <- "adl://rkadl1.azuredatalakestore.net"
     myPort <- 0
 
@@ -143,7 +143,7 @@ Po został przez Ciebie udzielony dostęp do Data Lake Store, służy do magazyn
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-Następujące polecenia służą do konfigurowania konta Data Lake Store z katalogiem RevoShare i Dodaj przykładowy plik CSV z poprzedniego przykładu:
+Następujące polecenia służą do konfigurowania konta usługi Data Lake Storage z katalogiem RevoShare i Dodaj przykładowy plik CSV z poprzedniego przykładu:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

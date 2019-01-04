@@ -1,20 +1,17 @@
 ---
 title: Użyj rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL
 description: W tym artykule opisano możliwości rozszerzania funkcji bazy danych przy użyciu rozszerzenia w usłudze Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 195a54ab65573a24911169b7dc42de7637ad60f9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d6d5a8500435a540f091a082e7dc0e0d6d455716
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823813"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540847"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL
 PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
