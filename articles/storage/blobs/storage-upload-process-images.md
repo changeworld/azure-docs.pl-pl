@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097951"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753340"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Samouczek: Przekazywanie danych obrazu do chmury za pomocą usługi Azure Storage
 
 Niniejszy samouczek jest pierwszą częścią serii. W tym samouczku dowiesz się, jak wdrożyć aplikację internetową, która przekazuje obrazy do konta magazynu przy użyciu biblioteki klienta usługi Azure Storage. Po zakończeniu tego samouczka będziesz mieć aplikację internetową zapisującą obrazy w usłudze Azure Storage i wyświetlającą obrazy z tej usługi.
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Widok kontenera obrazów](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -99,7 +99,7 @@ Zanotuj nazwę konta usługi Blob Storage i klucz. Przykładowa aplikacja korzys
 
 ## <a name="create-an-app-service-plan"></a>Tworzenie planu usługi App Service
 
-[Plan usługi App Service](../../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) określa lokalizację, rozmiar i funkcje farmy serwerów sieci Web, która jest hostem aplikacji.
+[Plan usługi App Service](../../app-service/overview-hosting-plans.md) określa lokalizację, rozmiar i funkcje farmy serwerów sieci Web, która jest hostem aplikacji.
 
 Utwórz plan usługi App Service za pomocą polecenia [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create).
 
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-Aplikacja internetowa zapewnia obszar hostingu dla kodu aplikacji przykładowej, który jest wdrażany z przykładowego repozytorium usługi GitHub. Utwórz [aplikację internetową](../../app-service/app-service-web-overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp#az_webapp_create).  
+Aplikacja internetowa zapewnia obszar hostingu dla kodu aplikacji przykładowej, który jest wdrażany z przykładowego repozytorium usługi GitHub. Utwórz [aplikację internetową](../../app-service/overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp#az_webapp_create).  
 
 W poniższym poleceniu zastąp ciąg `<web_app>` unikatową nazwą. Prawidłowe znaki to `a-z`, `0-9` i `-`. Jeśli wartość `<web_app>` nie jest unikatowa, wyświetli się następujący komunikat o błędzie: _Witryna internetowa o podanej nazwie `<web_app>` już istnieje._ Domyślnym adresem URL aplikacji internetowej jest `https://<web_app>.azurewebsites.net`.  
 
@@ -121,7 +121,7 @@ az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppS
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Wdrażanie aplikacji przykładowej z repozytorium usługi GitHub
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 Usługa App Service obsługuje kilka metod wdrażania zawartości w aplikacji internetowej. W tym samouczku wdrażasz aplikację internetową z [publicznego repozytorium przykładów usługi GitHub](https://github.com/Azure-Samples/storage-blob-upload-from-webapp). Skonfiguruj wdrożenie usługi GitHub do aplikacji internetowej za pomocą polecenia [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config). Zastąp ciąg `<web_app>` nazwą aplikacji internetowej utworzonej w poprzednim kroku.
 
@@ -159,7 +159,7 @@ Po wdrożeniu i skonfigurowaniu aplikacji internetowej możesz przetestować fun
 Aby przetestować aplikację internetową, przejdź pod adres URL Twojej opublikowanej aplikacji. Domyślnym adresem URL aplikacji internetowej jest `https://<web_app>.azurewebsites.net`.
 Wybierz region **Upload photos** (Przekazywanie zdjęć), aby wybrać i przekazać plik, lub przeciągnij plik na region. Obraz zniknie, jeśli zostanie pomyślnie przekazany.
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 ![Aplikacja ImageResizer](media/storage-upload-process-images/figure1.png)
 
@@ -281,7 +281,7 @@ Wybierz plik za pomocą selektora plików i wybierz pozycję **Przekaż**.
 
 Przejdź z powrotem do aplikacji, aby sprawdzić, czy obraz przekazany do kontenera **thumbnails** jest widoczny.
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Widok kontenera obrazów](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

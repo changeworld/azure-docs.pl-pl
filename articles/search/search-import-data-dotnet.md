@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
 ms.custom: seodec2018
-ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313296"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634902"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Przekazywanie danych do usługi Azure Search przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -208,11 +208,11 @@ public partial class Hotel
 Przede wszystkim należy zauważyć, że każda publiczna właściwość klasy `Hotel` odpowiada polu w definicji indeksu, ale z jedną zasadniczą różnicą: Nazwa każdego pola rozpoczyna się małą literą (format „camel case”), podczas gdy nazwa każdej właściwości publicznej klasy `Hotel` rozpoczyna się wielką literą (format „Pascal case”). Jest to częsty przypadek w aplikacjach platformy .NET, które tworzą powiązania danych, gdzie schemat docelowy jest poza kontrolą dewelopera aplikacji. Zamiast naruszać zasady nazewnictwa platformy .NET przez używanie notacji camelCase dla nazw właściwości, za pomocą atrybutu `[SerializePropertyNamesAsCamelCase]` można określić, że zestaw SDK ma mapować nazwy właściwości na notację camelCase automatycznie.
 
 > [!NOTE]
-> Zestaw .NET SDK usługi Azure Search korzysta z biblioteki [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) w celu serializacji i deserializacji niestandardowych obiektów modelu do i z formatu JSON. W razie potrzeby możesz dostosować serializację. Więcej szczegółowych informacji znajdziesz w sekcji [Custom Serialization with JSON.NET](search-howto-dotnet-sdk.md#JsonDotNet) (Serializacja niestandardowa przy użyciu programu JSON.NET). Jako przykład może posłużyć użycie atrybutu `[JsonProperty]` dla właściwości `DescriptionFr` w powyższym kodzie przykładowym.
+> Zestaw .NET SDK usługi Azure Search korzysta z biblioteki [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) w celu serializacji i deserializacji niestandardowych obiektów modelu do i z formatu JSON. W razie potrzeby możesz dostosować serializację. Więcej szczegółowych informacji znajdziesz w sekcji [Custom Serialization with JSON.NET](search-howto-dotnet-sdk.md#JsonDotNet) (Serializacja niestandardowa przy użyciu programu JSON.NET). Jako przykład może posłużyć użycie atrybutu `[JsonProperty]` dla właściwości `DescriptionFr` w powyższym kodzie przykładowym.
 > 
 > 
 
-Drugą ważną kwestią dotyczącą klasy `Hotel` są typy danych właściwości publicznych. Typy .NET tych właściwości są mapowane na odpowiadające im typy pól w definicji indeksu. Na przykład właściwość ciągu `Category` jest mapowana na pole `category` mające typ `DataType.String`. Podobne mapowania typów występują między typami `bool?` i `DataType.Boolean`, `DateTimeOffset?` i `DataType.DateTimeOffset` itd. Dokładne zasady mapowania typów znajdują się w dokumentacji metody `Documents.Get` w [dokumentacji zestawu .NET SDK usługi Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_).
+Drugą ważną kwestią dotyczącą klasy `Hotel` są typy danych właściwości publicznych. Typy .NET tych właściwości są mapowane na odpowiadające im typy pól w definicji indeksu. Na przykład właściwość ciągu `Category` jest mapowana na pole `category` mające typ `DataType.String`. Podobne mapowania typów występują między typami `bool?` i `DataType.Boolean`, `DateTimeOffset?` i `DataType.DateTimeOffset` itd. Dokładne zasady mapowania typów znajdują się w dokumentacji metody `Documents.Get` w [dokumentacji zestawu .NET SDK usługi Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get).
 
 Ta możliwość używania własnych klas jako dokumentów działa w obu kierunkach. Możesz również pobrać wyniki wyszukiwania i za pomocą zestawu SDK dokonać ich automatycznej deserializacji do wybranego przez Ciebie typu, jak pokazano w [kolejnym artykule](search-query-dotnet.md).
 

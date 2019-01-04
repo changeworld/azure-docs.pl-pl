@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e65fa21eefcc103f553f8e1bc47792ac372c59e3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093471"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975444"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Samouczek: Tworzenie niestandardowego modelu językowego
 
@@ -100,9 +100,7 @@ Przed podjęciem jakiegokolwiek działania należy wybrać odpowiednie ustawieni
 
 Na stronie Create Language Model (Tworzenie modelu językowego) wprowadź nazwę i opis modelu w polach **Name** (Nazwa) i **Description** (Opis), aby łatwiej śledzić ważne informacje dotyczące tego modelu, na przykład używany zestaw danych. Następnie z menu rozwijanego wybierz pozycję **Base Language Model** (Podstawowy model językowy). Ten model stanowi punkt wyjścia dla Twojego dostosowania.
 
-Dostępne są dwa podstawowe modele językowe do wyboru. Model Search and Dictation (Model językowy do wyszukiwania i dyktowania) jest odpowiedni dla mowy kierowanej do aplikacji, na przykład poleceń, zapytań wyszukiwania lub dyktowania. Model Conversational (Model językowy do konwersacji) jest przeznaczony do rozpoznawania mowy w stylu konwersacyjnym. Ten typ mowy jest zazwyczaj kierowany do innej osoby i występuje w centrach telefonicznej obsługi klienta lub na konferencjach.
-
-Model Search and Dictation (Model językowy do wyszukiwania i dyktowania) jest odpowiedni dla mowy kierowanej do aplikacji, na przykład poleceń, zapytań wyszukiwania lub dyktowania. Model Conversational (Model językowy do konwersacji) jest przeznaczony do rozpoznawania mowy w stylu konwersacyjnym. Ten typ mowy jest zazwyczaj kierowany do innej osoby i występuje w centrach telefonicznej obsługi klienta lub na konferencjach. Ponadto publicznie dostępny jest również nowy model o nazwie Universal (Uniwersalny). Modelu uniwersalnego można użyć do obsługi wszystkich scenariuszy oraz do zastąpienia modeli do wyszukiwania i dyktowania oraz do konwersacji.
+Dostępne są dwa podstawowe modele językowe do wyboru. Model Search and Dictation (Model językowy do wyszukiwania i dyktowania) jest odpowiedni dla mowy kierowanej do aplikacji, na przykład poleceń, zapytań wyszukiwania lub dyktowania. Model Conversational (Model językowy do konwersacji) jest przeznaczony do rozpoznawania mowy w stylu konwersacyjnym. Ten typ mowy jest zazwyczaj kierowany do innej osoby i występuje w centrach telefonicznej obsługi klienta lub na konferencjach. Ponadto publicznie dostępny jest również nowy model o nazwie Universal (Uniwersalny). Modelu uniwersalnego można użyć do obsługi wszystkich scenariuszy oraz do zastąpienia modeli do wyszukiwania i dyktowania oraz do konwersacji.
 
 Jak przedstawiono w poniższym przykładzie, po określeniu podstawowego modelu językowego użyj menu rozwijanego **Language Data** (Dane językowe), aby wybrać zestaw danych języka, którego chcesz użyć na potrzeby dostosowania.
 

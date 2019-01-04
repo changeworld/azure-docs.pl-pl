@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2dc12c7250e6747359c8f3813a84537f98bc69d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257883"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993881"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
-[Web App](../app-service-web-overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji. W poniższych sekcjach wymieniono stosy aplikacji, które są obecnie obsługiwane.
+[Web App](../overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji. W poniższych sekcjach wymieniono stosy aplikacji, które są obecnie obsługiwane.
 
 ## <a name="languages"></a>Języki
 
@@ -63,7 +63,7 @@ Więcej szczegółów można znaleźć w temacie [Tworzenie aplikacji internetow
 
 ## <a name="scaling"></a>Skalowanie
 
-* Klienci mogą skalować aplikacje internetowe w górę i w dół, zmieniając warstwę w swoim [planie usługi App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)
+* Klienci mogą skalować aplikacje internetowe w górę i w dół, zmieniając warstwę w swoim [planie usługi App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json)
 
 ## <a name="locations"></a>Lokalizacje
 
@@ -93,7 +93,7 @@ Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowan
 Następujące artykuły ułatwią rozpoczęcie pracy z usługą App Service w systemie Linux w przypadku aplikacji internetowych napisanych w różnych językach:
 
 * [.NET Core](quickstart-dotnetcore.md)
-* [PHP](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-php)
+* [PHP](https://docs.microsoft.com/azure/app-service/containers/quickstart-php)
 * [Node.js](quickstart-nodejs.md)
 * [Java](quickstart-java.md)
 * [Python](quickstart-python.md)
@@ -105,7 +105,7 @@ Zobacz też następujące artykuły, aby uzyskać więcej informacji o usłudze 
 
 * [Usługa App Service dla systemu Linux — często zadawane pytania](app-service-linux-faq.md)
 * [Obsługa protokołu SSH dla usługi App Service w systemie Linux](app-service-linux-ssh-support.md)
-* [Konfigurowanie środowisk przejściowych w usłudze App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Konfigurowanie środowisk przejściowych w usłudze App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Ciągłe wdrażanie w usłudze Docker Hub](app-service-linux-ci-cd.md)
 
 Pytania i uwagi można zamieszczać na [naszym forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).

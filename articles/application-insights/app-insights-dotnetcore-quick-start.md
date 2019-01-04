@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 17c1cce5c20570f36505ce67a472280b03ef8f0e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991692"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744538"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -33,7 +33,7 @@ Aby ukończyć ten przewodnik Szybki start:
 - [Instalowanie zestawu SDK programu .NET Core 2.0](https://www.microsoft.com/net/core)
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa .NET Core.
 
-Jeśli nie masz aplikacji internetowej ASP.NET Core, możesz skorzystać z naszego szczegółowego przewodnika, aby [utworzyć aplikację ASP.NET Core i dodać usługę Application Insights.](app-insights-asp-net-core.md)
+Jeśli nie masz aplikacji internetowej ASP.NET Core, możesz skorzystać z naszego szczegółowego przewodnika, aby [utworzyć aplikację ASP.NET Core i dodać usługę Application Insights.](../azure-monitor/app/asp-net-core.md)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -58,7 +58,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
    | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-2. Kliknij przycisk **Utwórz**.
+2. Kliknij pozycję **Utwórz**.
 
 ## <a name="configure-app-insights-sdk"></a>Konfigurowanie zestawu SDK usługi App Insights
 

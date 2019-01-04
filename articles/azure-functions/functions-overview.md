@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: b8d57a2bbaa53a0291dc9c05ab234c3238322a71
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515407"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605448"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Wprowadzenie do usługi Azure Functions  
 Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Dzięki usłudze Functions programowanie może być jeszcze wydajniejsze i można korzystać z wybranego języka programowania, takiego jak C#, F#, Node.js, Java lub PHP. Płać tylko za czas działania kodu — platforma Azure jest skalowana zgodnie z potrzebami. Usługa Azure Functions pozwala tworzyć na platformie Microsoft Azure aplikacje [bezserwerowe](https://azure.microsoft.com/solutions/serverless/).
@@ -33,7 +33,7 @@ Oto główne funkcje usługi Functions:
 * **Korzystaj z własnych zależności** — środowisko Functions obsługuje rozwiązania NuGet i NPM, dzięki czemu można używać ulubionych bibliotek.  
 * **Zintegrowane zabezpieczenia** — ochrona funkcji wyzwalanych przez protokół HTTP za pośrednictwem dostawców uwierzytelniania OAuth, takich jak Azure Active Directory, Facebook, Google, Twitter i konto Microsoft.  
 * **Uproszczona integracja** — łatwe korzystanie z usług platformy Azure i ofert oprogramowania jako usługi (SaaS). Kilka przykładów można znaleźć w [sekcji dotyczącej integracji](#integrations).  
-* **Elastyczne programowanie** — kodowanie funkcji bezpośrednio w portalu lub konfigurowanie ciągłej integracji i wdrażanie kodu za pomocą usług [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), [Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) i innych [obsługiwanych narzędzi deweloperskich](../app-service/app-service-deploy-local-git.md).  
+* **Elastyczne programowanie** — kodowanie funkcji bezpośrednio w portalu lub konfigurowanie ciągłej integracji i wdrażanie kodu za pomocą usług [GitHub](../app-service/scripts/cli-continuous-deployment-github.md), [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md) i innych [obsługiwanych narzędzi deweloperskich](../app-service/deploy-local-git.md).  
 * **Open source** — środowisko uruchomieniowe Functions typu open source jest [dostępne w serwisie GitHub](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Co można zrobić w środowisku Functions?
@@ -82,6 +82,6 @@ Aby uzyskać więcej informacji o planach hostingu, zobacz [Porównanie planów 
   Opis różnych narzędzi i technik testowania funkcji.
 * [Jak skalować usługę Azure Functions](functions-scale.md)  
   Omówienie planów usług dostępnych w środowisku Azure Functions, w tym planu hostingowego zużycia, oraz sposobu wybierania właściwego planu. 
-* [Dowiedz się więcej o usłudze Azure App Service](../app-service/app-service-web-overview.md)  
+* [Dowiedz się więcej o usłudze Azure App Service](../app-service/overview.md)  
   Środowisko Azure Functions korzysta z platformy Azure App Service na potrzeby funkcji podstawowych, takich jak wdrożenia, zmienne środowiskowe i diagnostyka. 
 

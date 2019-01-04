@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: e44eb52323a93bddd629f3591cdbfbf021768629
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 645c57c9bfeaefcfd2fc50b2dd431713fffaa42b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344099"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578788"
 ---
-# <a name="quickstart-summary"></a>Szybki start: omówienie
+# <a name="quickstart-summary"></a>Szybki start: Podsumowanie
 
 Te przewodniki Szybki start zawierają informacje oraz przykładowe kody, które umożliwią Ci szybkie rozpoczęcie pracy z usługą przetwarzania obrazów.
 

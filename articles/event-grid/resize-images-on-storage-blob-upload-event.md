@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f08de2398174363604576874627026dcc6199ac5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104666"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753952"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Samouczek: Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid
 
@@ -110,7 +110,7 @@ Teraz możesz wdrożyć projekt kodu funkcji do tej aplikacji funkcji.
 
 ## <a name="deploy-the-function-code"></a>Wdrażanie kodu funkcji 
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 Przykładowy skrypt w języku C# (csx) funkcji zmiany rozmiaru jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/function-image-upload-resize). Wdróż ten projekt kodu funkcji do aplikacji funkcji, używając polecenia [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config). 
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7e63fa75f473d5da911fbf845f0662d8eec5c70
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249638"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717402"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
 
@@ -132,4 +132,4 @@ Jeśli usługa App Service nie znajdzie polecenia niestandardowego, aplikacji Dj
 - **W przeglądarce jest wyświetlany komunikat „Usługa niedostępna”.** W przeglądarce upłynął limit czasu oczekiwania na odpowiedź usługi App Service, co wskazuje, że usługa App Service uruchomiła serwer Gunicorn, ale argumenty określające kod aplikacji są niepoprawne.
   - Odśwież okno przeglądarki, zwłaszcza jeśli korzystasz z niższych warstw cenowych w planie usługi App Service. Na przykład podczas korzystania z warstw bezpłatnych aplikacja może być uruchamiana dłużej i zacznie odpowiadać po odświeżeniu okna przeglądarki.
   - Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#custom-startup-command).
-  - Połącz się z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź dzienniki diagnostyczne przechowywane w folderze *LogFiles*. Aby uzyskać więcej informacji o rejestrowaniu, zobacz [Enable diagnostics logging for web apps in Azure App Service](../web-sites-enable-diagnostic-log.md) (Włączanie rejestrowania diagnostycznego dla aplikacji internetowych w usłudze Azure App Service).
+  - Połącz się z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź dzienniki diagnostyczne przechowywane w folderze *LogFiles*. Aby uzyskać więcej informacji o rejestrowaniu, zobacz [Enable diagnostics logging for web apps in Azure App Service](../troubleshoot-diagnostic-logs.md) (Włączanie rejestrowania diagnostycznego dla aplikacji internetowych w usłudze Azure App Service).
