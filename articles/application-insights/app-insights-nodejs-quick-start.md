@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 8bc725a5d9e3e9cdf82a01693aed83bff1f16c04
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: c2202a194c3912bd9a8b8f534df792e6f1a3543b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991693"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998697"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Node.js
 
@@ -54,7 +54,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
    | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-2. Kliknij przycisk **Utwórz**.
+2. Kliknij pozycję **Utwórz**.
 
 ## <a name="configure-app-insights-sdk"></a>Konfigurowanie zestawu SDK usługi App Insights
 
@@ -124,7 +124,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
    ![Wykres metryk serwera](./media/app-insights-nodejs-quick-start/009-Black.png)
 
-Więcej informacji na temat monitorowania środowiska Node.js można znaleźć w [dodatkowej dokumentacji środowiska Node.js w usłudze App Insights](app-insights-nodejs.md).
+Więcej informacji na temat monitorowania środowiska Node.js można znaleźć w [dodatkowej dokumentacji środowiska Node.js w usłudze App Insights](../azure-monitor/app/nodejs.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

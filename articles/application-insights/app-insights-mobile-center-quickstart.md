@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77fafb3f3a4c834c5a7f185d129a1c651db58089
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950526"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719850"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 
@@ -126,7 +126,7 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
    1. Wybierz zapytanie, klikając w dowolnym miejscu zapytania w edytorze tekstów.
    2. Następnie kliknij pozycję **Przejdź**, aby wykonać zapytanie. 
 
-   Dowiedz się więcej o [portalu Analiza usługi Application Insights](app-insights-analytics.md) i [języku zapytań Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
+   Dowiedz się więcej o [portalu Analiza usługi Application Insights](../azure-monitor/app/analytics.md) i [języku zapytań Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
 
 
 2. **Przeprowadź segmentację i filtrowanie danych telemetrycznych zdarzeń niestandardowych.** Na stronie **Przegląd** usługi Application Insights wybierz w spisie treści pozycję **Użytkownicy**.

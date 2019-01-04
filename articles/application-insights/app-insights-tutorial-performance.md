@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 669d5995b66322a2a6ad346643444d5a46c4b6f8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42812875"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744415"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -35,7 +35,7 @@ W celu ukończenia tego samouczka:
 - Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
     - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
     - Tworzenie aplikacji na platformie Azure
-- Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](app-insights-asp-net.md).
+- Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../azure-monitor/app/asp-net.md).
 - [Włącz profiler usługi Application Insights](app-insights-profiler.md#installation) dla swojej aplikacji.
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
@@ -55,7 +55,7 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 
 3. Wykres przedstawia obecnie średni czas trwania wybranych operacji w czasie. Możesz przełączyć się na 95. percentyl, aby znaleźć problemy z wydajnością. Dodaj operacje, które Cię interesują, przypinając je do wykresu.  To pokazuje, że istnieją wzrosty wartości warte zbadania.  Wyizoluj je jeszcze bardziej, zmniejszając przedział czasu wykresu.
 
-    ![Przypinanie operacji](media/app-insights-tutorial-performance/pin-operations.png)
+    ![Przypinanie wartości](media/app-insights-tutorial-performance/pin-operations.png)
 
 4.  Panel wydajności po prawej stronie pokazuje rozkład czasów trwania różnych żądań dla wybranej operacji.  Zmniejsz okno, aby rozpocząć w okolicy 95. percentyla. Z karty ze szczegółowymi informacjami „3 najważniejsze zależności” można szybko odczytać, że zależności zewnętrzne najprawdopodobniej wpływają na spowolnienie transakcji.  Kliknij przycisk z liczbą próbek, aby wyświetlić listę próbek. Następnie możesz wybrać dowolną próbkę, aby wyświetlić szczegóły transakcji.
 

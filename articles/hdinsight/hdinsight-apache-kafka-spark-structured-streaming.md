@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4ac341d780a3c348f9ba9f8fd0241c351bd5fdc5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162437"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652868"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
 W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) do odczytywania i zapisywania danych przy użyciu platformy [Apache Kafka](https://kafka.apache.org/) w usłudze Azure HDInsight.
 
-Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. 
+Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych.  
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -41,7 +41,7 @@ Po zakończeniu pracy z tym dokumentem pamiętaj o usunięciu tych klastrów, ab
 
 * Znajomość zagadnień dotyczących tworzenia tematów platformy Kafka. Aby uzyskać więcej informacji, zobacz dokument [Przewodnik Szybki start dla platformy Apache Kafka w usłudze HDInsight](kafka/apache-kafka-get-started.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki przedstawione w tym dokumencie wymagają grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
 > 
 > Dla Twojej wygody w tym dokumencie umieszczono link do szablonu, który umożliwia utworzenie wszystkich wymaganych zasobów platformy Azure. 
@@ -118,7 +118,7 @@ Na poniższym diagramie przedstawiono przepływ komunikacji między platformami 
 
 ![Diagram przedstawiający klastry Spark i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Komunikacja usługi Kafka jest ograniczona do sieci wirtualnej. Inne usługi w klastrze, takie jak SSH i Ambari, są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
 Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klastry Kafka i Spark, wykonaj następujące kroki:
@@ -135,7 +135,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
     * Klaster Spark 2.2.0 w usłudze HDInsight 3.6.
     * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Używany w tym samouczku notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark 2.2.0 w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
 
 2. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
@@ -158,7 +158,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
 4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. 
 
-> [!NOTE]
+> [!NOTE]  
 > Tworzenie klastrów może potrwać do 20 minut.
 
 ## <a name="upload-the-notebook"></a>Przekazywanie notesu
@@ -198,7 +198,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
 3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
-> [!WARNING]
+> [!WARNING]  
 > Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć.
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.

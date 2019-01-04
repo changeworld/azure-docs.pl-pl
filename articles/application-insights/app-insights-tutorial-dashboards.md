@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: a67f8c0f6be1c388c4138ee0269d7ad8b76d8c4c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29178200"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744339"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Tworzenie niestandardowych pulpitów nawigacyjnych wskaźników KPI przy użyciu usługi Azure Application Insights
 
@@ -34,10 +34,10 @@ W witrynie Azure Portal można utworzyć wiele pulpitów nawigacyjnych. Każdy z
 
 W celu ukończenia tego samouczka:
 
-- Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](app-insights-asp-net.md). 
+- Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../azure-monitor/app/asp-net.md). 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-new-dashboard"></a>Tworzenie nowego pulpitu nawigacyjnego
 Pojedynczy pulpit nawigacyjny może zawierać zasoby z wielu aplikacji, subskrypcji i grup zasobów.  Aby rozpocząć wykonywanie kroków tego samouczka, utwórz nowy pulpit nawigacyjny aplikacji.  

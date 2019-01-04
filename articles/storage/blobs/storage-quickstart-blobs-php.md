@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 6ecb87af9cc75898aa8734b329dce01f70511a27
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 58d1d47b548569f7542e24bd09a41299f12e496e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712912"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787889"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Transferowanie obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
 Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą języka PHP przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. 
@@ -43,14 +43,14 @@ To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć przyk�
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 W aplikacji należy podać nazwę konta magazynu i klucz konta, aby utworzyć wystąpienie obiektu **BlobRestProxy** na potrzeby aplikacji. Zaleca się do przechowywanie tych identyfikatorów w zmiennej środowiskowej na maszynie lokalnej, na której uruchomiona jest aplikacja. Użyj jednego z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową. Zastąp wartości **youraccountname** i **youraccountkey** własną nazwą konta i własnym kluczem.
 
-# <a name="linux-tablinux"></a>[Linux] (#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windows-tabwindows"></a>[Windows] (#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>

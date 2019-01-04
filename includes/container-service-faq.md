@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b385c3e3e5f39e812545143df4a3adcc08ebfce5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002205"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53615223"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(PRZESTARZAŁE) Często zadawane pytania dotyczące usługi Container Service
 
@@ -32,7 +32,7 @@ Obecnie kontenery systemu Linux są obsługiwane przy użyciu wszystkich koordyn
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Czy zalecane jest korzystanie z określonego koordynatora w usłudze Azure Container Service? 
 Ogólnie nie zalecamy korzystania z określonego koordynatora. Jeśli masz doświadczenie w pracy z jednym z obsługiwanych koordynatorów, możesz zastosować go w usłudze Azure Container Service. Trendy danych sugerują jednak, że platforma DC/OS została sprawdzona podczas produkcji w przypadku obciążeń danych Big Data i IoT, usługa Kubernetes jest dobrym rozwiązaniem w przypadku natywnych obciążeń w chmurze, a usługa Docker Swarm jest znana z możliwości integrowania z narzędziami Docker oraz prostego procesu uczenia się.
 
-W zależności od swojego scenariusza możesz również kompilować niestandardowe rozwiązania kontenerów i zarządzać nimi przy użyciu innych usług Azure. Usługi te to: [Virtual Machines](../articles/virtual-machines/linux/overview.md), [Service Fabric](../articles/service-fabric/service-fabric-overview.md), [Web Apps](../articles/app-service/app-service-web-overview.md) i [Batch](../articles/batch/batch-technical-overview.md).  
+W zależności od swojego scenariusza możesz również kompilować niestandardowe rozwiązania kontenerów i zarządzać nimi przy użyciu innych usług Azure. Usługi te to: [Virtual Machines](../articles/virtual-machines/linux/overview.md), [Service Fabric](../articles/service-fabric/service-fabric-overview.md), [Web Apps](../articles/app-service/overview.md) i [Batch](../articles/batch/batch-technical-overview.md).  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Jaka jest różnica między usługą Azure Container Service i aparatem usługi ACS? 
 Azure Container Service to usługa platformy Azure z umową SLA, która oferuje funkcje działające w witrynie Azure Portal, narzędziach wiersza polecenia platformy Azure oraz interfejsach API platformy Azure. Usługa ta umożliwia szybkie implementowanie klastrów z uruchomionymi standardowymi narzędziami koordynowania kontenerów i stosunkowo niewielką liczbą opcji konfiguracji do wyboru oraz zarządzanie nimi. 

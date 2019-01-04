@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261759"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726735"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Tworzenie aplikacji internetowych w ramach usługi Azure App Service za pomocą rozwiązania Ansible
-[Funkcja Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (lub po prostu Web Apps) hostuje aplikacje internetowe, interfejsy API REST i zaplecza aplikacji mobilnych. Możesz programować w ulubionym języku &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python.
+[Funkcja Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (lub po prostu Web Apps) hostuje aplikacje internetowe, interfejsy API REST i zaplecza aplikacji mobilnych. Możesz programować w ulubionym języku &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python.
 
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Ten artykuł przedstawia, jak można utworzyć aplikację internetową za pomocą rozwiązania Ansible i środowiska uruchomieniowego języka Java. 
 
@@ -93,7 +93,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>Tworzenie usługi aplikacji przy użyciu usługi Traffic Manager
 Usługi [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) możesz użyć do kontrolowania dystrybucji żądań klientów internetowych kierowanych do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi App Service zostaną dodane do profilu usługi Azure Traffic Manager, usługa Traffic Manager śledzi stan aplikacji usługi App Service. Obejmuje to następujące stany: uruchomiono, zatrzymano i usunięto. Usługa Traffic Manager może następnie zdecydować, które z tych punktów końcowych powinny odbierać ruch.
 
-W usłudze App Service aplikacje są uruchamiane w ramach [planu usługi App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
+W usłudze App Service aplikacje są uruchamiane w ramach [planu usługi App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
 ). Plan usługi App Service definiuje zestaw zasobów obliczeniowych dla aplikacji internetowej używanych podczas jej uruchamiania. Planem usługi App Service i aplikacją internetową można zarządzać w różnych grupach.
 
 W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który definiuje następujące zasoby:

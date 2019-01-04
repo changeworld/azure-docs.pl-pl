@@ -8,12 +8,12 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 833b9e7ce65a566757c739feebdfc8e0f1d268e9
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077453"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976345"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Wprowadzenie do usługi Azure Cosmos DB: Interfejs API języka Gremlin
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera omówienie interfejsu API języka Gremlin usługi Azure Cos
 ## <a name="what-is-a-graph-database"></a>Co to jest baza danych grafów
 W świecie rzeczywistym dane w sposób naturalny łączą się ze sobą. Tradycyjne modelowanie danych skupia się na obiektach. W przypadku wielu aplikacji również występuje potrzeba naturalnego modelowania lub modelowania zarówno obiektów, jak i relacji.
 
-[Graf](https://mathworld.wolfram.com/Graph.html) jest strukturą składającą się z [wierzchołków](http://mathworld.wolfram.com/GraphVertex.html) i [krawędzi](http://mathworld.wolfram.com/GraphEdge.html). Zarówno wierzchołki, jak i krawędzie mogą mieć dowolną liczbę właściwości. 
+[Graf](http://mathworld.wolfram.com/Graph.html) jest strukturą składającą się z [wierzchołków](http://mathworld.wolfram.com/GraphVertex.html) i [krawędzi](http://mathworld.wolfram.com/GraphEdge.html). Zarówno wierzchołki, jak i krawędzie mogą mieć dowolną liczbę właściwości. 
 
 * **Wierzchołki** — wierzchołki określają odrębne obiekty, takie jak osoby, miejsca lub zdarzenia. 
 

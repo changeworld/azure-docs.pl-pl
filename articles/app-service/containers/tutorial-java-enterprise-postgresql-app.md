@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344231"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539727"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: Tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
 
@@ -170,7 +170,7 @@ Zdecydowanie zalecamy zapoznanie się z zawartością tych plików, zwłaszcza p
 
 ### <a name="ftp-the-configuration-files"></a>Przesyłanie plików konfiguracji za pośrednictwem połączenia FTP
 
-Za pośrednictwem połączenia FTP musimy przesłać zawartość katalogu `wildfly_config/` do wystąpienia usługi App Service. Aby uzyskać poświadczenia protokołu FTP, kliknij przycisk **Pobierz profil publikowania** widoczny w bloku usługi App Service w witrynie Azure Portal. Nazwa użytkownika i hasło protokołu FTP znajdują się w pobranym dokumencie XML. Więcej informacji na temat profilu publikowania można znaleźć w [tym dokumencie](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+Za pośrednictwem połączenia FTP musimy przesłać zawartość katalogu `wildfly_config/` do wystąpienia usługi App Service. Aby uzyskać poświadczenia protokołu FTP, kliknij przycisk **Pobierz profil publikowania** widoczny w bloku usługi App Service w witrynie Azure Portal. Nazwa użytkownika i hasło protokołu FTP znajdują się w pobranym dokumencie XML. Więcej informacji na temat profilu publikowania można znaleźć w [tym dokumencie](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 Za pomocą dowolnego narzędzia FTP prześlij cztery pliki z katalogu `wildfly_config/` do lokalizacji `/home/site/deployments/tools/`. Pamiętaj o tym, że należy przesłać same pliki, a nie katalog.
 

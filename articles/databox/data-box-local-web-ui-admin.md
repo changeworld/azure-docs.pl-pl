@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/11/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c0793cd4adc5359aaa2282eb2505c257315c056f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093888"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793397"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Administrowanie urządzeniem Data Box za pomocą lokalnego internetowego interfejsu użytkownika
 
@@ -25,8 +25,7 @@ W tym artykule zawarto następujące samouczki:
 
 - Generowanie pakietu dla pomocy technicznej
 - Zamykanie lub ponowne uruchamianie urządzenia
-- Bezpieczne wymazywanie danych z urządzenia
-- Monitorowanie dostępnej pojemności urządzenia
+- Wyświetlanie dostępnej pojemności urządzenia
 - Pomijanie weryfikacji sumy kontrolnej 
 
 ## <a name="generate-support-package"></a>Generowanie pakietu dla pomocy technicznej
