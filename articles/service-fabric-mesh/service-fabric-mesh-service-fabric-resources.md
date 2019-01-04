@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3eeabd4c3bf099d7a0c7007bdf0c8c7e85f3381e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 702e1ef9c8593c2106be256e6fd7de602bf41aa7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889671"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020000"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Wprowadzenie do usługi Service Fabric zasobów modelu
 
@@ -84,12 +84,12 @@ Kod aplikacji pozostaje przenośnych nawet poza usługi Service Fabric siatki i 
 
 ## <a name="packaging-and-deployment"></a>Pakowanie i wdrażanie
 
-Aplikacje usługi Service Fabric siatki, w zależności od modelu zasobu, są dostarczane jako kontenery platformy Docker.  Usługi Service Fabric siatki to środowisko wielodostępne, współdzielonych i kontenery zapewniają wysoki poziom izolacji.  Aplikacje te są opisane za pomocą formatu JSON lub w formacie YAML, (która jest następnie konwertowana na format JSON). Podczas wdrażania aplikacji siatki, do usługi Azure Service Fabric siatki, za pomocą pliku JSON do opisania dostępu jest szablonem usługi Azure Resource Manager. Zasoby są mapowane do zasobów platformy Azure.  W przypadku wdrażania aplikacji siatki w klastrze usługi Service Fabric (autonomiczny lub hostowanej na platformie Azure), za pomocą pliku JSON do opisu aplikacji to format podobny do szablonu usługi Azure Resource Manager.  Po wdrożeniu aplikacji siatki mogą być zarządzane za pośrednictwem protokołu HTTP interfejsy lub wiersza polecenia platformy Azure. 
+Aplikacje usługi Service Fabric siatki, w zależności od modelu zasobu, są dostarczane jako kontenery platformy Docker.  Usługi Service Fabric siatki to środowisko wielodostępne, współdzielonych i kontenery zapewniają wysoki poziom izolacji.  Aplikacje te są opisane za pomocą formatu JSON lub w formacie YAML, (która jest następnie konwertowana na format JSON). Podczas wdrażania aplikacji siatki, do usługi Azure Service Fabric siatki, za pomocą pliku JSON do opisu aplikacji jest szablonem usługi Azure Resource Manager. Zasoby są mapowane do zasobów platformy Azure.  W przypadku wdrażania aplikacji siatki w klastrze usługi Service Fabric (autonomiczny lub hostowanej na platformie Azure), za pomocą pliku JSON do opisu aplikacji to format podobny do szablonu usługi Azure Resource Manager.  Po wdrożeniu aplikacji siatki mogą być zarządzane za pośrednictwem protokołu HTTP interfejsy lub wiersza polecenia platformy Azure. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki 
-Aby dowiedzieć się więcej na temat usługi Service Fabric siatki, zapoznaj się z omówieniem:
-- [Omówienie usługi Service Fabric siatki](service-fabric-mesh-overview.md)
+Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, zapoznaj się z omówieniem:
+- [Omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-service-fabric-resources/AppsAndServices.png
 [Image2]: media/service-fabric-mesh-service-fabric-resources/NetworkAndGateway.png

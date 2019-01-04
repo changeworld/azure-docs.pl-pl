@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: a3af54b01de1966240484c7266e7906490d7db4e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1b2e1300c200619f5d1177e9761ad948c62c1239
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981054"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013812"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
 Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]? Poniżej przedstawiono kilka wskazówek.
@@ -48,7 +48,7 @@ Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]
 * Sprawdzasz zasobu usługi AI poprawne? Można dopasować klucz instrumentacji aplikacji do zasobu, w którym są oczekiwane dane telemetryczne. Powinny one być takie same.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nie widzę wszystkich danych, których oczekiwano
-* Otwórz użycie i szacowane kosztu strony i sprawdź, czy [próbkowania](../../application-insights/app-insights-sampling.md) jest używany w operacji. (transmisji 100% oznacza, że pobieranie próbek nie jest w operacji). Usługa Application Insights można ustawić do akceptowania tylko ułamka telemetrii, że nadejściu ze swojej aplikacji. Dzięki temu można zachować w ramach miesięcznego limitu przydziału telemetrii.
+* Otwórz użycie i szacowane kosztu strony i sprawdź, czy [próbkowania](../../azure-monitor/app/sampling.md) jest używany w operacji. (transmisji 100% oznacza, że pobieranie próbek nie jest w operacji). Usługa Application Insights można ustawić do akceptowania tylko ułamka telemetrii, że nadejściu ze swojej aplikacji. Dzięki temu można zachować w ramach miesięcznego limitu przydziału telemetrii.
 * Czy masz próbkowania SDK włączone? Jeśli tak, dane będą próbkowane tak, zgodnie ze stawką określoną dla wszystkich odpowiednich typów.
 * Czy używasz starszej wersji zestawu SDK języka Java Począwszy od wersji 2.0.1 wprowadziliśmy odporności na uszkodzenia mechanizm obsługi sieciowych okresowymi i błędy w wewnętrznej bazie danych, a także stan trwały danych na dyskach lokalnych.
 * To wprowadzenie ograniczona z powodu nadmiernego telemetrię? Jeśli włączysz rejestrowanie informacji dziennika zostanie wyświetlony komunikat "Aplikacja jest ograniczona". Nasze aktualne ograniczenie wynosi 32 KB danych telemetrycznych elementów na sekundę.
@@ -165,7 +165,7 @@ Usługa Application Insights używa `org.apache.http`. To jest przenoszony w pli
 [data]: ../../azure-monitor/app/data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../application-insights/app-insights-platforms.md
+[platforms]: ../../azure-monitor/app/platforms.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md
 [usage]: javascript.md
 

@@ -1,5 +1,5 @@
 ---
-title: Funkcja rejestrowania usługi Azure Key Vault | Microsoft Docs
+title: Rejestrowanie usługi Azure Key Vault — usługa Azure Key Vault | Dokumentacja firmy Microsoft
 description: Użyj tego samouczka, aby rozpocząć pracę z funkcją rejestrowania usługi Azure Key Vault.
 services: key-vault
 documentationcenter: ''
@@ -12,19 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 9790cd7c79efa1b64220f9e128de9a3b8eb902c0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8e3076f2176739f5b9df5776f27d7483c9fd2692
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426948"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000414"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
+
 Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Wprowadzenie
+
 Po utworzeniu co najmniej jednego magazynu kluczy można monitorować kto, w jaki sposób i kiedy uzyskiwał do niego dostęp. W tym celu możesz włączyć funkcję rejestrowania dla usługi Key Vault, która zapisuje informacje na podanym przez Ciebie koncie magazynu platformy Azure. Nowy kontener o nazwie **insights-logs-auditevent** jest tworzony automatycznie dla określonego konta magazynu. Tego samego konta magazynu możesz używać do zbierania dzienników dla wielu magazynów kluczy.
 
 Dostęp do informacji rejestrowania będzie możliwy maksymalnie po 10 minutach od wykonanej operacji magazynu kluczy. W większości przypadków czas będzie krótszy.  To Ty zarządzasz dziennikami na swoim koncie magazynu:
@@ -44,6 +46,7 @@ Ten samouczek ułatwi rozpoczęcie pracy z funkcją rejestrowania usługi Azure 
 Aby uzyskać ogólne informacje na temat usługi Azure Key Vault, zobacz [Co to jest usługa Azure Key Vault?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Istniejący magazyn kluczy, który był przez Ciebie używany.  
@@ -51,19 +54,26 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * Wystarczająca ilość miejsca w magazynie platformy Azure dla dzienników usługi Key Vault.
 
 ## <a id="connect"></a>Nawiązywanie połączenia z subskrypcjami
+
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
-    Connect-AzureRmAccount
+```PowerShell
+Connect-AzureRmAccount
+```
 
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem, i domyślnie użyje pierwszej.
 
 Jeśli masz wiele subskrypcji, określ konkretne konto, które zostało użyte do utworzenia usługi Azure Key Vault. Wpisz następujące polecenie, aby zobaczyć subskrypcje dla swojego konta:
 
+```PowerShell
     Get-AzureRmSubscription
+```
 
 Następnie, aby określić subskrypcję skojarzoną z Twoim magazynem kluczy, który będziesz rejestrować, wpisz polecenie:
 
-    Set-AzureRmContext -SubscriptionId <subscription ID>
+```PowerShell
+Set-AzureRmContext -SubscriptionId <subscription ID>
+```
 
 > [!NOTE]
 > To jest ważny krok, szczególnie przydatny, jeśli masz wiele subskrypcji skojarzonych z Twoim kontem. Może wystąpić błąd rejestrowania usługi Microsoft.Insights, jeśli ten krok zostanie pominięty.
@@ -73,12 +83,14 @@ Następnie, aby określić subskrypcję skojarzoną z Twoim magazynem kluczy, kt
 Aby uzyskać więcej informacji na temat konfigurowania programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="storage"></a>Tworzenie nowego konta magazynu dla dzienników
+
 Chociaż można użyć istniejącego konta magazynu dla dzienników, utworzymy nowe konto magazynu, które będzie przeznaczone dla dzienników usługi Key Vault. Aby później można było wygodnie określić wszystkie szczegóły, będą one przechowywane w zmiennej o nazwie **sa**.
 
 W celu ułatwienia zarządzania użyjemy tej grupy zasobów, która zawiera nasz magazyn kluczy. Tak samo jak w [samouczku wprowadzającym](key-vault-get-started.md) ta grupa zasobów ma nazwę **ContosoResourceGroup**. W dalszym ciągu będziemy też używać lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, w razie potrzeby:
 
-    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
-
+```PowerShell
+ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
+```
 
 > [!NOTE]
 > Jeśli zdecydujesz się używać istniejącego konta magazynu, należy użyć tej samej subskrypcji, której użyto dla magazynu kluczy. Musi ona korzystać z modelu wdrażania przy użyciu usługi Resource Manager, a nie klasycznego modelu wdrażania.
@@ -86,15 +98,20 @@ W celu ułatwienia zarządzania użyjemy tej grupy zasobów, która zawiera nasz
 >
 
 ## <a id="identify"></a>Identyfikowanie magazynu kluczy dla dzienników
+
 W naszym samouczku wprowadzającym magazyn kluczy został nazwany **ContosoKeyVault**, dlatego dalej będziemy używać tej nazwy, a szczegóły będziemy przechowywać w zmiennej o nazwie **kv**:
 
-    $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
-
+```PowerShell
+$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+```
 
 ## <a id="enable"></a>Włączanie rejestrowania
-Aby włączyć rejestrowanie dla usługi Key Vault użyjemy polecenia cmdlet Set-AzureRmDiagnosticSetting wraz ze zmiennymi utworzonymi dla naszego nowego konta magazynu i magazynu kluczy. Ustawimy też flagę **-Enabled** na wartość **$true**, a kategorię na AuditEvent (jedyna kategoria rejestrowania usługi Key Vault):
 
-    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+Aby włączyć rejestrowanie dla usługi Key Vault użyjemy polecenia cmdlet Set-AzureRmDiagnosticSetting wraz ze zmiennymi utworzonymi dla naszego nowego konta magazynu i magazynu kluczy. Ustawimy też **— włączone** flaga **$true** i Ustaw kategorię na AuditEvent (jedyna kategoria rejestrowania usługi Key Vault):
+
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+```
 
 Dane wyjściowe obejmują:
 
@@ -108,12 +125,13 @@ Dane wyjściowe obejmują:
         Enabled : False
         Days    : 0
 
-
 Stanowi to potwierdzenie, że włączono rejestrowanie dla magazynu kluczy i informacje są zapisywane na koncie magazynu.
 
 Opcjonalnie można także ustawić zasady przechowywania dla dzienników tak, aby starsze dzienniki były automatycznie usuwane. Na przykład ustaw zasady przechowywania, ustawiając wartość flagi **-RetentionEnable** na **$true** i wartość parametru **-RetentionInDays** na **90**, aby dzienniki starsze niż 90 dni były automatycznie usuwane.
 
-    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+```
 
 Co jest rejestrowane:
 
@@ -123,15 +141,21 @@ Co jest rejestrowane:
 * Nieuwierzytelnione żądania, które powodują uzyskanie odpowiedzi 401. Na przykład żądania, które nie mają tokenu elementu nośnego, są nieprawidłowo sformułowane, wygasły lub mają nieprawidłowy token.  
 
 ## <a id="access"></a>Uzyskiwanie dostępu do dzienników
+
 Dzienniki magazynu kluczy są przechowywane w kontenerze **insights-logs-auditevent** na podanym przez Ciebie koncie magazynu. Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz polecenie:
 
-Najpierw utwórz zmienną dla nazwy kontenera. Będzie ona używana w pozostałej części przewodnika.
+Najpierw utwórz zmienną dla nazwy kontenera. To posłuży w pozostałej części przewodnika.
 
-    $container = 'insights-logs-auditevent'
+```PowerShell
+$container = 'insights-logs-auditevent'
+```
 
 Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz polecenie:
 
-    Get-AzureStorageBlob -Container $container -Context $sa.Context
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context
+```
+
 Dane wyjściowe będą wyglądać podobnie do poniższych:
 
 **Identyfikator URI kontenera: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
@@ -149,19 +173,25 @@ Jak widać w przedstawionych danych wyjściowych, obiekty blob są zgodne z nast
 
 Wartości daty i godziny używają czasu UTC.
 
-Ponieważ to samo konto magazynu może służyć do zbierania dzienników dla wielu zasobów, pełny identyfikator zasobu w nazwie obiektu blob jest bardzo przydatny, ponieważ umożliwia uzyskanie dostępu i pobranie tylko tych obiektów blob, które są potrzebne. Jednak zanim do tego przejdziemy, najpierw zostanie omówiony sposób pobierania wszystkich obiektów blob.
+Ponieważ tego samego konta magazynu może służyć do zbierania dzienników dla wielu zasobów, pełny identyfikator zasobu w nazwie obiektu blob jest uzyskanie dostępu i pobranie tylko tych obiektów blob, które są potrzebne. Jednak zanim do tego przejdziemy, najpierw zostanie omówiony sposób pobierania wszystkich obiektów blob.
 
 Najpierw utwórz folder w celu pobrania obiektów blob. Na przykład:
 
-    New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
+```PowerShell 
+New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
+```
 
 Następnie uzyskaj listę wszystkich obiektów blob:  
 
-    $blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+```PowerShell
+$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+```
 
 Prześlij tę listę potokiem do polecenia „Get-AzureStorageBlobContent”, aby pobrać obiekty blob do folderu docelowego:
 
-    $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
+```PowerShell
+$blobs | Get-AzureStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
+```
 
 Po uruchomieniu tego drugiego polecenia ogranicznik **/** w nazwach obiektów blob utworzy pełną strukturę folderów w folderze docelowym, a ta struktura będzie służyć do pobierania i przechowywania obiektów blob jako plików.
 
@@ -169,13 +199,21 @@ Aby selektywnie pobierać obiekty blob, użyj symboli wieloznacznych. Na przykł
 
 * Jeśli masz wiele magazynów kluczy i chcesz pobrać dzienniki dla tylko jednego magazynu kluczy o nazwie CONTOSOKEYVAULT3:
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+```
+
 * Jeśli masz wiele grup zasobów i chcesz pobrać dzienniki dla tylko jednej grupy zasobów, użyj parametru `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+```
+
 * Jeśli chcesz pobrać wszystkie dzienniki ze stycznia 2016 roku, użyj parametru `-Blob '*/year=2016/m=01/*'`:
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+```PowerShell
+Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+```
 
 Teraz możesz rozpocząć wyszukiwanie informacji zawartych w dziennikach. Jednak zanim do tego przystąpimy, warto zapoznać się jeszcze z dwoma parametrami polecenia Get-AzureRmDiagnosticSetting:
 
@@ -183,7 +221,14 @@ Teraz możesz rozpocząć wyszukiwanie informacji zawartych w dziennikach. Jedna
 * Aby wyłączyć rejestrowanie dla zasobu magazynu kluczy: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 ## <a id="interpret"></a>Interpretowanie dzienników usługi Key Vault
-Poszczególne obiekty blob są przechowywane jako tekst w formacie obiektu blob JSON. To jest przykładowy wpis dziennika po uruchomieniu polecenia `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
+
+Poszczególne obiekty blob są przechowywane jako tekst w formacie obiektu blob JSON. Działanie
+
+```PowerShell
+Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
+```
+
+zwróci wpis dziennika podobny do przedstawionego poniżej:
 
     {
         "records":
@@ -205,7 +250,6 @@ Poszczególne obiekty blob są przechowywane jako tekst w formacie obiektu blob 
             }
         ]
     }
-
 
 W poniższej tabeli wymieniono nazwy pól i ich opisy.
 
@@ -268,6 +312,7 @@ W poniższej tabeli wymieniono nazwy operacji operationName i odpowiadające im 
 Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent. Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../azure-monitor/insights/azure-key-vault.md). Artykuł ten zawiera również instrukcje w razie potrzeby migracji ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, w której najpierw należało skierować dzienniki do konta usługi Azure Storage, a następnie skonfigurować usługę Log Analytics do odczytu z tego konta.
 
 ## <a id="next"></a>Następne kroki
+
 Aby zapoznać się z samouczkiem, w którym użyto usługi Azure Key Vault w aplikacji internetowej, zobacz [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Używanie usługi Azure Key Vault za pośrednictwem aplikacji internetowej).
 
 Odwołania dotyczące programowania znajdują się w [przewodniku dewelopera usługi Azure Key Vault](key-vault-developers-guide.md).

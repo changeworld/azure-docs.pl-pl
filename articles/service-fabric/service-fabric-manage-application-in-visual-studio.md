@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442173"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001706"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Upraszczanie pisania i zarządzania nimi aplikacje usługi Service Fabric przy użyciu programu Visual Studio
 Możesz zarządzać aplikacje usługi Azure Service Fabric i usługi za pomocą programu Visual Studio. Po [Konfigurowanie środowiska projektowego](service-fabric-get-started.md), można użyć programu Visual Studio do tworzenia aplikacji usługi Service Fabric, dodawanie usług lub pakietu, zarejestruj się i wdrażanie aplikacji w lokalnego klastra projektowego.
@@ -47,7 +47,7 @@ Program Visual Studio zapewniają właściwość o nazwie **tryb debugowania apl
 
 #### <a name="application-debug-modes"></a>Tryb debugowania aplikacji
 
-1. **Aktualizovat aplikaci** ten tryb pozwala szybko zmienić, i debugowania kodu oraz obsługuje edycję plików statyczną sieci web podczas debugowania. W tym trybie tylko wtedy, gdy lokalnego klastra projektowego jest w trybie [węzła 1]. Jest to domyślny tryb debugowania aplikacji. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Aktualizovat aplikaci** ten tryb pozwala szybko zmienić, i debugowania kodu oraz obsługuje edycję plików statyczną sieci web podczas debugowania. W tym trybie tylko wtedy, gdy trwa lokalnego klastra projektowego [trybu 1 węzła](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Jest to domyślny tryb debugowania aplikacji.
 2. **Usuń aplikację** powoduje, że aplikacja ma zostać usunięty podczas kończenia sesji debugowania.
 3. **Automatyczne uaktualnienie** aplikacji będzie kontynuował działanie podczas kończenia sesji debugowania. Następnej sesji debugowania traktują wdrożenia jako uaktualnienie. Proces uaktualniania zachowuje wszelkie dane, które zostały wprowadzone w poprzedniej sesji debugowania.
 4. **Aplikacja** aplikacji utrzymuje uruchomionych w klastrze podczas kończenia sesji debugowania. Po rozpoczęciu następnej sesji debugowania aplikacji zostaną usunięte.

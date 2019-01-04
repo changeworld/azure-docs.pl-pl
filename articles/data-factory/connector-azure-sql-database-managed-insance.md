@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706725"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025083"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopiowanie danych do i z bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Data Factory
 
@@ -80,7 +79,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 }
 ```
 
-**Przykład 2: Uwierzytelnianie Windows**
+**Przykład 2: Przy użyciu uwierzytelniania Windows**
 
 ```json
 {
@@ -156,7 +155,7 @@ Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, należy ust
 - Jeśli **sqlReaderQuery** określono SqlSource uruchomieniu działania kopiowania to zapytanie względem źródła wystąpienia zarządzanego, aby uzyskać dane. Alternatywnie, można określić procedury składowanej, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** (jeśli jest to procedura składowana pobiera parametry).
 - Jeśli właściwość "sqlReaderQuery" lub "sqlReaderStoredProcedureName" nie jest określona, kolumny zdefiniowane w sekcji "strukturę" zestaw danych JSON służą do utworzenia kwerendy (`select column1, column2 from mytable`) w celu uruchomienia wystąpienia zarządzanego. Definicja zestawu danych nie ma "strukturę", wszystkie kolumny są wybierane z tabeli.
 
-**Przykład: Użycie zapytania SQL**
+**Przykład: Przy użyciu zapytania SQL**
 
 ```json
 "activities":[
@@ -188,7 +187,7 @@ Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, należy ust
 ]
 ```
 
-**Przykład: Użycie procedury składowanej**
+**Przykład: Za pomocą procedury składowanej**
 
 ```json
 "activities":[
@@ -250,7 +249,7 @@ Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy us
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type ujścia działania kopiowania: **SqlSink** | Yes |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10000) |
+| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10 000) |
 | writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania.<br/>Dozwolone wartości to: przedziału czasu. Przykład: "00: 30:00" (30 minut). |Nie |
 | preCopyScript |Określ zapytanie SQL, działanie kopiowania w celu wykonania przed zapisanie danych w wystąpieniu zarządzanym. Jej będzie można wywołać tylko raz na kopiowania Uruchom. Ta właściwość umożliwia czyszczenie wstępnie załadowanych danych. |Nie |
 | sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób dotyczą źródła danych do tabeli docelowej, np. czy wykonuje operację UPSERT lub przekształcenie za pomocą z własną logiką biznesową. <br/><br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |
@@ -406,7 +405,7 @@ Podczas kopiowania danych do bazy danych wystąpienia zarządzanego Azure SQL, o
 
 Procedura składowana służy podczas kopiowania wbudowane mechanizmy nie służą do celów. Jest ona zwykle używana, gdy upsert (insert i update) lub dodatkowego przetwarzania (Scalanie kolumn wyszukiwania dodatkowe wartości, wstawiania do wielu tabel, itp.) musi odbywać się przed ostatnim wstawiania danych źródłowych w tabeli docelowej.
 
-Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarządzanym za pomocą procedury składowanej. Zakładając, że dane wejściowe, jak i w tabeli "Marketing" sink zawiera trzy kolumny: identyfikator profilu, stan i kategorii. Przeprowadź upsert, w oparciu o kolumnę "ProfileID" i mają zastosowanie tylko do określonej kategorii.
+Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarządzanym za pomocą procedury składowanej. Zakładając, że dane wejściowe, jak i w tabeli "Marketing" sink ma trzy kolumny: Identyfikator profilu, stan i kategorii. Przeprowadź upsert, w oparciu o kolumnę "ProfileID" i mają zastosowanie tylko do określonej kategorii.
 
 **Wyjściowy zestaw danych**
 

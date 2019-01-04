@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/02/2019
 ms.author: tamram
-ms.openlocfilehash: 03344cf989e1381f97b108e82b8d63e9c4653404
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: fd635682d1b5dc7c3ab784208ac485872d5c7099
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809810"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999003"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -61,9 +61,6 @@ Przed włączeniem usługi Azure AD przy użyciu protokołu SMB dla usługi Azur
 4.  **Wybierz lub Utwórz udział plików platformy Azure.**
 
     Wybierz udział plików nowej lub istniejącej, która jest skojarzona z tej samej subskrypcji co dzierżawy usługi Azure AD. Aby uzyskać informacje dotyczące tworzenia nowego udziału plików, zobacz [Utwórz udział plików w usłudze Azure Files](storage-how-to-create-file-share.md). 
-
-    Dzierżawy usługi Azure AD musi zostać wdrożony do regionu, obsługiwany dla usługi Azure AD w wersji zapoznawczej za pośrednictwem protokołu SMB. Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: Zachodnie stany USA, zachodnie stany USA 2, południowo-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, środkowe stany USA Północna, Australia Wschodnia, Europa Zachodnia, Europa Północna.
-
     Aby uzyskać optymalną wydajność firma Microsoft zaleca, że udział plików znajduje się w tym samym regionie co maszyna wirtualna, z którego planujesz uzyskiwać dostęp do udziału.
 
 5.  **Sprawdź łączność z usługą Azure Files przy instalowanie udziałów plików platformy Azure przy użyciu klucza konta magazynu.**

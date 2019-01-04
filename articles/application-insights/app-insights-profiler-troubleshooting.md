@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7b7aad2cb8aa9b4faeada795f20c818995f62fb6
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fc30dc928afbee0de2cd0d11a147c08b9f47cef1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720443"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024624"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -94,7 +94,7 @@ Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji
 
 Obecnie można włączyć Profiler na maksymalnie cztery Azure web apps i miejsc wdrożenia, które działają w ramach jednego planu usług. Jeśli masz więcej aplikacji sieci web niż w jednym planie usługi app service, może zostać wyświetlony Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException, generowane przez program profilujący. Program profilujący jest uruchamiane oddzielnie dla każdej aplikacji sieci web i próbuje uruchomić sesji funkcji ETW dla każdej aplikacji. Ale istnieje ograniczona liczba sesji ETW, które mogą być aktywne w tym samym czasie. Jeśli zadanie sieci web Profiler zgłoszenie zbyt wiele aktywnych sesji profilowania, przenieść niektórych aplikacji sieci web do planu w innej usługi.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Błąd wdrożenia: katalog nie jest pusty "D:\\macierzystego\\witryny\\wwwroot\\App_Data\\zadania
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Błąd wdrażania: Katalog nie jest pusty "D:\\macierzystego\\witryny\\wwwroot\\App_Data\\zadania
 
 W przypadku ponownego wdrażania aplikacji sieci web do zasobu aplikacji sieci Web za pomocą Profiler włączone, może zostać wyświetlony następujący komunikat:
 
@@ -128,12 +128,12 @@ D:\ProgramData\ApplicationInsightsProfiler\config.json
 ```
 Sprawdź, czy klucz Instrumentacji w wierszu polecenia profiler jest poprawna. 
 
-Po trzecie przy użyciu ścieżki znajdującą się w pliku config.json powyżej, sprawdź plik dziennika profilera. Informacje o debugowaniu, wskazujący stan i komunikaty o błędach od profilera i ustawień, których używa program profilujący będzie wyświetlany. Jeśli program profilujący jest uruchomiona, gdy aplikacja odbiera żądania, zostanie wyświetlony ten komunikat: działanie wykryte z klucza iKey. Po przekazaniu śledzenia zobaczysz tego komunikatu: Rozpocznij przekazywanie śledzenia. 
+Po trzecie przy użyciu ścieżki znajdującą się w pliku config.json powyżej, sprawdź plik dziennika profilera. Informacje o debugowaniu, wskazujący stan i komunikaty o błędach od profilera i ustawień, których używa program profilujący będzie wyświetlany. Jeśli program profilujący jest uruchomiona, gdy aplikacja odbiera żądania, zostanie wyświetlony ten komunikat: Działanie wykryte z poziomu klucz instrumentacji. Gdy śledzenie jest przekazywany, zostanie wyświetlony ten komunikat: Rozpocznij przekazywanie śledzenia. 
 
 
-[profiler-search-telemetry]:./media/app-insights-profiler/Profiler-Search-Telemetry.png
-[zadania webjob profilera]:./media/app-insights-profiler/Profiler-webjob.png
-[Program profilujący zadania webjob dziennika]:./media/app-insights-profiler/Profiler-webjob-log.png
+[profiler-search-telemetry]:./media/app-insights-profiler-troubleshooting/Profiler-Search-Telemetry.png
+[zadania webjob profilera]:./media/app-insights-profiler-troubleshooting/Profiler-webjob.png
+[Program profilujący zadania webjob dziennika]:./media/app-insights-profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

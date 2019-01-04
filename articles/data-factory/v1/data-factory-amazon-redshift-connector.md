@@ -9,17 +9,16 @@ ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee0cd90b8d1b901f9e8a506674b3f04167b48899
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1fde06f483821b0e9958c25bf5ce37aae4c8f61d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968787"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022023"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon Redshift przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +42,7 @@ Usługa Data Factory obsługuje obecnie tylko przenosi dane z usługi Amazon Red
 ## <a name="getting-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, aby przenieść dane ze źródła usługi Amazon Redshift przy użyciu różnych narzędzi i interfejsów API.
 
-Najprostszym sposobem utworzenia potoku jest używanie kreatora kopiowania usługi Azure Data Factory. Szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
+Najprostszym sposobem utworzenia potoku jest używanie kreatora kopiowania usługi Azure Data Factory. Szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
 Można również utworzyć potok za pomocą witryny Azure portal, programu Visual Studio, programu Azure PowerShell lub innych narzędzi. Szablony usługi Azure Resource Manager, interfejsu API platformy .NET lub interfejsu API REST można również utworzyć potok. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
@@ -53,7 +52,7 @@ Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, a
 2. Utwórz zestawy danych reprezentujące dane wejściowe i wyjściowe operacji kopiowania. 
 3. Tworzenie potoku za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z Kreatora kopiowania, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. [Przykład kodu JSON: kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) pokazuje definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z magazynu danych usługi Amazon Redshift.
+Korzystając z Kreatora kopiowania, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. [Przykład kodu JSON: Kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) pokazuje definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z magazynu danych usługi Amazon Redshift.
 
 W poniższych sekcjach opisano właściwości kodu JSON, które są używane do definiowania jednostek usługi Data Factory dla usługi Amazon Redshift.
 
@@ -139,7 +138,7 @@ Dla tego przypadku użycia przykładowe działanie kopiowania najpierw zwalnia d
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>Przykład kodu JSON: kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>Przykład kodu JSON: Kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage
 Ten przykład pokazuje, jak skopiować dane z bazą danych Amazon Redshift do usługi Azure Blob Storage. Możesz skopiować dane bezpośrednio do dowolnej [obsługiwane ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania.  
 
 Przykład obejmuje następujących jednostek fabryki danych:
@@ -334,7 +333,7 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | SMALLINT |Int16 |
 | LICZBA CAŁKOWITA |Int32 |
 | BIGINT |Int64 |
-| DECIMAL |Dziesiętna |
+| DECIMAL |Dziesiętny |
 | RZECZYWISTE |Pojedyncze |
 | PODWÓJNEJ PRECYZJI |Podwójne |
 | ATRYBUT TYPU WARTOŚĆ LOGICZNA |Ciąg |

@@ -2,19 +2,19 @@
 title: Informacje o wersji dla usługi Azure HDInsight
 description: Najnowsze informacje o wersji dla usługi Azure HDInsight. Pobierz porad programistycznych i szczegóły dla usługi Hadoop, Spark, R Server, Hive i więcej.
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0555fa7de7ed85cf6d26f85b93f0010b2ab6fa53
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976974"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000086"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
 
@@ -1308,6 +1308,16 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 |**Rozwiązania Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Opcja wyłączenia harmonogramu |**Składnik, których to dotyczy:** Serwer rozwiązania Zeppelin<br /><br />**Poprzednie zachowanie:** W poprzednich wersjach Zeppelin nie było możliwości wyłączenia harmonogramu.<br /><br />**Nowe zachowanie:** Domyślnie użytkownicy nie będzie już widział harmonogramu, ponieważ jest domyślnie wyłączona.<br /><br />**Obejście problemu lub oczekiwanym akcji klienta:** Jeśli chcesz włączyć harmonogram, należy dodać azeppelin.notebook.cron.enable o wartości true w witrynie zeppelin niestandardowych w ustawieniach Zeppelin z systemu Ambari.|
 
 ## <a name="known-issues"></a>Znane problemy
+
+-   **HDInsight integracji z usługą Azure Data Lake Store Gen 2** istnieją dwa problemy w klastrach HDInsight ESP katalogów użytkowników i uprawnień przy użyciu usługi Azure Data Lake Storage Gen 2:
+   
+   1. Katalogi macierzyste dla użytkowników nie są tworzonych na 1 węzeł główny. Jako obejście ręczne tworzenie katalogów i zmień własność UPN odpowiedniego użytkownika.
+   
+   2. Uprawnienia do katalogu /hdp aktualnie nie jest równa 751. Musi to być ustawione na 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **2.3 platformy Spark**
 

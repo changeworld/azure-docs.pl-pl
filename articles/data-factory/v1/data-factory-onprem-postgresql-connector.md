@@ -9,17 +9,16 @@ ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7357b609909c3db0bc42d58cb2cd32436c864f66
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2f964ac77ade69f14692a337f17011e93f85f68c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235874"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025712"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenie danych z PostgreSQL za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,7 +48,7 @@ Brama zarządzania danymi nawiązać połączenie z bazą danych PostgreSQL, mo�
 ## <a name="getting-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych PostgreSQL za pomocą różnych narzędzi/interfejsów API. 
 
-- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
+- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
 - Aby utworzyć potok umożliwia także następujących narzędzi: 
     - Azure Portal
     - Visual Studio
@@ -66,7 +65,7 @@ Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, a
 2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
 3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z lokalnego magazynu danych postgresql w warstwie, możesz znaleźć [przykład kodu JSON: kopiowanie danych z PostgreSQL do usługi Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) dalszej części tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z lokalnego magazynu danych postgresql w warstwie, możesz znaleźć [przykład kodu JSON: Kopiowanie danych z PostgreSQL do usługi Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) dalszej części tego artykułu. 
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonego w magazynie danych PostgreSQL:
 
@@ -79,7 +78,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi PostgreSQL, połączone el
 | serwer |Nazwa serwera PostgreSQL. |Yes |
 | baza danych |Nazwa bazy danych PostgreSQL. |Yes |
 | Schemat |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości to: anonimowe, podstawowe i Windows. |Yes |
+| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych postgresql w warstwie lokalnej. |Yes |
@@ -111,7 +110,7 @@ Jeśli źródło jest typu **RelationalSource** (w tym PostgreSQL), w sekcji typ
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>Przykład kodu JSON: kopiowanie danych z PostgreSQL do obiektów Blob platformy Azure
+## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z PostgreSQL do obiektów Blob platformy Azure
 W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z bazy danych PostgreSQL w usłudze Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.   
 
 > [!IMPORTANT]
@@ -192,7 +191,7 @@ Ustawienie `"external": true` usługi Data Factory informuje, że zestaw danych 
 
 **Usługa Azure Blob wyjściowy zestaw danych:**
 
-Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godziny, interval: 1). Folder ścieżkę i nazwę dla obiektu blob są dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i części godzin od zaplanowanej godziny rozpoczęcia.
+Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, interwał: 1). Folder ścieżkę i nazwę dla obiektu blob są dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i części godzin od zaplanowanej godziny rozpoczęcia.
 
 ```json
 {
@@ -334,8 +333,8 @@ Podczas przenoszenia danych postgresql w warstwie, następujące mapowania są u
 | Wiersz | |Byte [] ciąg |&nbsp;
 | lseg | |Byte [] ciąg |&nbsp;
 | macaddr | |Byte [] ciąg |&nbsp;
-| pieniędzy | |Dziesiętna |&nbsp;
-| numeryczne [(p, s)] |decimal [(p, s)] |Dziesiętna |
+| pieniędzy | |Dziesiętny |&nbsp;
+| numeryczne [(p, s)] |decimal [(p, s)] |Dziesiętny |
 | numrange | |Ciąg |&nbsp;
 | Identyfikator OID | |Int32 |&nbsp;
 | ścieżka | |Byte [] ciąg |&nbsp;

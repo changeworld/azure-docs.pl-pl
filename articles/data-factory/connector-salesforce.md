@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409581"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015087"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -168,7 +167,7 @@ Aby skopiować dane z i do usługi Salesforce, należy ustawić właściwość t
 ```
 
 >[!NOTE]
->Dla zgodności z poprzednimi wersjami: podczas kopiowania danych z usług Salesforce, jeśli korzystasz z poprzednim zestawem danych typu "RelationalTable", nadal działa w podczas zobaczysz sugestię, aby przełączyć się do nowego typu "SalesforceObject".
+>Dla zgodności z poprzednimi wersjami: Podczas kopiowania danych z usług Salesforce, jeśli korzystasz z poprzednim zestawem danych typu "RelationalTable", nadal działa, gdy zostanie wyświetlony sugestii, aby przełączyć się do nowego typu "SalesforceObject".
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -227,7 +226,7 @@ Aby skopiować dane z usług Salesforce, należy ustawić typ źródła w dział
 ```
 
 >[!NOTE]
->Dla zgodności z poprzednimi wersjami: podczas kopiowania danych z usług Salesforce, jeśli używasz poprzedniej kopii typu "RelationalSource", źródło nadal działa, a zobaczysz sugestię, aby przełączyć się do nowego typu "SalesforceSource".
+>Dla zgodności z poprzednimi wersjami: Podczas kopiowania danych z usług Salesforce, jeśli używasz poprzedniej kopii typu "RelationalSource", źródło nadal działa, a zobaczysz sugestię, aby przełączyć się do nowego typu "SalesforceSource".
 
 ### <a name="salesforce-as-a-sink-type"></a>SalesForce jako typ ujścia
 
@@ -239,9 +238,9 @@ Aby skopiować dane do usługi Salesforce, należy ustawić typ ujścia w dział
 | writeBehavior | Zachowanie zapisu dla tej operacji.<br/>Dozwolone wartości to **Wstaw** i **Upsert**. | Nie (wartość domyślna to wstawiania) |
 | externalIdFieldName | Nazwa pola Identyfikatora zewnętrznego dla operacji upsert. Określone pole musi być zdefiniowany jako "Pole identyfikatora zewnętrznego" w obiekcie usługi Salesforce. Go nie może mieć wartości NULL w odpowiednich danych wejściowych. | Tak, aby "Upsert" |
 | writeBatchSize | Liczba wierszy danych zapisanych w każdej z partii usługi Salesforce. | Nie (wartość domyślna to 5000) |
-| ignoreNullValues | Wskazuje, czy ignorować wartości NULL w danych wejściowych podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostaw bez zmian danych w obiekcie docelowym, po wykonaniu operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: aktualizowanie danych w obiektu docelowego na wartość NULL, podczas wykonywania operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
+| ignoreNullValues | Wskazuje, czy ignorować wartości NULL w danych wejściowych podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
 
-**Przykład: Salesforce ujścia w działaniu kopiowania**
+**Przykład: SalesForce ujścia w działaniu kopiowania**
 
 ```json
 "activities":[
@@ -314,15 +313,15 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 |:--- |:--- |
 | Liczba automatycznie |Ciąg |
 | Zaznacz pole wyboru |Wartość logiczna |
-| Waluta |Dziesiętna |
+| Waluta |Dziesiętny |
 | Date |DateTime |
 | Data/godzina |DateTime |
 | Email |Ciąg |
 | Identyfikator |Ciąg |
 | Relacje odnośników |Ciąg |
 | Lista wyboru wielokrotnego |Ciąg |
-| Liczba |Dziesiętna |
-| Procent |Dziesiętna |
+| Liczba |Dziesiętny |
+| Procent |Dziesiętny |
 | Numer telefonu |Ciąg |
 | Listy wyboru |Ciąg |
 | Tekst |Ciąg |

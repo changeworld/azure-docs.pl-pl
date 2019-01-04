@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/03/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dacc28c1cfe2ee896597aeaf92a22c7f6e13c306
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2ab696436a8cf139eff92edc3b8ff2c27b40a7aa
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726616"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018388"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -26,7 +26,7 @@ Możesz wykonać kroki opisane w tym artykule, aby ustawić się interfejsu wier
 
 ## <a name="install-cli"></a>Instalowanie interfejsu wiersza polecenia
 
-Zaloguj się do deweloperskiej stacji roboczej i zainstalować interfejs wiersza polecenia. Usługa Azure Stack wymaga wersji 2.0 lub nowszej z wiersza polecenia platformy Azure. Można to zrobić, korzystając z procedury opisanej w [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja się powiodła, otwórz terminal lub okno wiersza polecenia i uruchom następujące polecenie:
+Zaloguj się do deweloperskiej stacji roboczej i zainstalować interfejs wiersza polecenia. Usługa Azure Stack wymaga wersji 2.0 lub nowszej z wiersza polecenia platformy Azure. Tej wersji można zainstalować za pomocą procedury opisanej w [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja zakończyła się pomyślnie, otwórz terminal lub okno wiersza polecenia i uruchom następujące polecenie:
 
 ```azurecli
 az --version
@@ -40,11 +40,11 @@ Powinien zostać wyświetlony wersji wiersza polecenia platformy Azure i inne za
 
 1. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Musisz mieć [pip](https://pip.pypa.io) i [certifi](https://pypi.org/project/certifi/) zainstalowany moduł. Służy następujące polecenie języka Python w wierszu polecenia powłoki bash:
 
-  ```bash  
+    ```bash  
     python -c "import certifi; print(certifi.where())"
-  ```
+    ```
 
-  Zanotuj lokalizację certyfikatu. Na przykład `~/lib/python3.5/site-packages/certifi/cacert.pem`. Konkretnej ścieżki zależy od Twojego systemu operacyjnego i wersji języka Python, który został zainstalowany.
+    Zanotuj lokalizację certyfikatu; na przykład `~/lib/python3.5/site-packages/certifi/cacert.pem`. Twoje konkretnej ścieżki zależy od tego, systemu operacyjnego i wersji języka Python, który został zainstalowany.
 
 ### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>Ustaw ścieżkę dla komputera deweloperskiego z systemem w chmurze
 
@@ -56,13 +56,11 @@ sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 
 ### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>Ustaw ścieżkę na komputerze deweloperskim poza chmury
 
-Jeśli używasz interfejsu wiersza polecenia na komputerze **poza** środowiska usługi Azure Stack:  
+Jeśli używasz interfejsu wiersza polecenia na komputerze poza środowiskiem usługi Azure Stack:  
 
-1. Należy zdefiniować [połączenia sieci VPN w usłudze Azure Stack](azure-stack-connect-azure-stack.md).
-
+1. Konfigurowanie [połączenia sieci VPN w usłudze Azure Stack](azure-stack-connect-azure-stack.md).
 1. Skopiuj certyfikatu PEM z operatora infrastruktury Azure Stack, a następnie zanotuj lokalizację pliku (PATH_TO_PEM_FILE).
-
-1. Uruchom następujące polecenia, w zależności końcową na stacji roboczej programowania systemu operacyjnego.
+1. Uruchom polecenia w poniższych sekcjach, w zależności od systemu operacyjnego na deweloperskiej stacji roboczej.
 
 #### <a name="linux"></a>Linux
 
@@ -84,7 +82,7 @@ $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Down
 $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 $root.Import($pemFile)
 
-Write-Host "Extracting needed information from the cert file"
+Write-Host "Extracting required information from the cert file"
 $md5Hash    = (Get-FileHash -Path $pemFile -Algorithm MD5).Hash.ToLower()
 $sha1Hash   = (Get-FileHash -Path $pemFile -Algorithm SHA1).Hash.ToLower()
 $sha256Hash = (Get-FileHash -Path $pemFile -Algorithm SHA256).Hash.ToLower()
@@ -104,21 +102,20 @@ $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n"
 Write-Host "Adding the certificate content to Python Cert store"
 Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-Write-Host "Python Cert store was updated for allowing the azure stack CA root certificate"
+Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
 ```
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>Pobieranie punktu końcowego aliasy maszyny wirtualnej
 
-Zanim użytkownicy mogą tworzyć maszyny wirtualne przy użyciu interfejsu wiersza polecenia, muszą skontaktować się z operatora infrastruktury Azure Stack i Uzyskaj identyfikator URI punktu końcowego aliasy maszyny wirtualnej. Na przykład platforma Azure używa następujący identyfikator URI: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json. Administrator chmury należy skonfigurować podobne punktu końcowego usługi Azure Stack przy użyciu obrazów, które są dostępne w witrynie marketplace usługi Azure Stack. Użytkownicy muszą przekazać identyfikator URI punktu końcowego do `endpoint-vm-image-alias-doc` parametr `az cloud register` polecenia, jak pokazano w następnej sekcji. 
-   
-
+Przed utworzeniem maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, należy skontaktować się z operatora infrastruktury Azure Stack i Uzyskaj identyfikator URI punktu końcowego aliasy maszyny wirtualnej. Na przykład platforma Azure używa następujący identyfikator URI: `https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json`. Administrator chmury należy skonfigurować podobne punktu końcowego usługi Azure Stack przy użyciu obrazów, które są dostępne w witrynie marketplace usługi Azure Stack. Musisz przekazać identyfikator URI punktu końcowego z `endpoint-vm-image-alias-doc` parametr `az cloud register` polecenia, jak pokazano w następnej sekcji. 
+  
 ## <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
 Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 1. Zarejestruj środowiskiem usługi Azure Stack, uruchamiając `az cloud register` polecenia.
    
-   a. Aby zarejestrować *chmury administracyjne* środowiska, użyj:
+    a. Aby zarejestrować *chmury administracyjne* środowiska, użyj:
 
       ```azurecli
       az cloud register \ 
@@ -128,7 +125,7 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-   b. Aby zarejestrować *użytkownika* środowiska, użyj:
+    b. Aby zarejestrować *użytkownika* środowiska, użyj:
 
       ```azurecli
       az cloud register \ 
@@ -166,14 +163,14 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       ```
 1. Ustawianie aktywnego środowiska za pomocą następujących poleceń.
    
-   a. Aby uzyskać *chmury administracyjne* środowiska, użyj:
+    a. Aby uzyskać *chmury administracyjne* środowiska, użyj:
 
       ```azurecli
       az cloud set \
         -n AzureStackAdmin
       ```
 
-   b. Aby uzyskać *użytkownika* środowiska, użyj:
+    b. Aby uzyskać *użytkownika* środowiska, użyj:
 
       ```azurecli
       az cloud set \
@@ -182,18 +179,18 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 1. Aktualizowanie konfiguracji środowiska do korzystania z określonego profilu wersji interfejsu API usługi Azure Stack. Aby zaktualizować konfigurację, uruchom następujące polecenie:
 
-   ```azurecli
-   az cloud update \
-     --profile 2018-03-01-hybrid
+    ```azurecli
+    az cloud update \
+      --profile 2018-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Jeśli używasz wersji usługi Azure Stack przed kompilacją 1808 będą musieli używać profilu wersji interfejsu API **2017-03-09-profile** zamiast profilu wersji interfejsu API **2018-03-01-hybrydowego**.
+    >Jeśli używasz wersji usługi Azure Stack przed kompilacją 1808, należy użyć profilu wersji interfejsu API **2017-03-09-profile** zamiast profilu wersji interfejsu API **2018-03-01-hybrydowego**.
 
-1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
+1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](../../active-directory/develop/app-objects-and-service-principals.md). 
 
     * Środowiska usługi Azure AD
-      * Zaloguj się jako *użytkownika*: Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Musisz wykonać jego, jeśli konto ma włączonego uwierzytelniania wieloskładnikowego.
+      * Zaloguj się jako *użytkownika*: Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
 
       ```azurecli
       az login \
@@ -202,7 +199,7 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       ```
 
       > [!NOTE]
-      > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login command` bez podawania `-u` parametru. Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
+      > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login command` bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
    
       * Zaloguj się jako *nazwy głównej usługi*: Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
 
@@ -230,9 +227,9 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         
           1. Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
 
-            * Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi jako plik pfx przy użyciu klucza prywatnego (znajdujący się w `cert:\CurrentUser\My;` nazwa certyfikatu ma taką samą nazwę jak podmiot zabezpieczeń).
+            * Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi, ponieważ pfx z kluczem prywatnym, który znajduje się w `cert:\CurrentUser\My`; certyfikatu, nazwa ma taką samą nazwę jak podmiot zabezpieczeń.
         
-            * Konwertuj plik pfx na pem (Użyj biblioteki OpenSSL narzędzie).
+            * Konwertuj plik pfx na pem (Użyj narzędzia biblioteki OpenSSL).
 
           2.  Zaloguj się do interfejsu wiersza polecenia:
             ```azurecli  
@@ -245,7 +242,7 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 
-Teraz, gdy mamy już wszystkie elementy konfiguracji, użyjemy interfejsu wiersza polecenia do tworzenia zasobów w ramach usługi Azure Stack. Na przykład można utworzyć grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Aby utworzyć grupę zasobów o nazwie "MyResourceGroup", użyj następującego polecenia:
+Wszystko, konfigurowanie i korzystanie z interfejsu wiersza polecenia do tworzenia zasobów w ramach usługi Azure Stack. Na przykład można utworzyć grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Aby utworzyć grupę zasobów o nazwie "MyResourceGroup", użyj następującego polecenia:
 
 ```azurecli
 az group create \
@@ -257,16 +254,15 @@ Jeśli grupa zasobów została utworzona pomyślnie, poprzednie polecenie wyświ
 ![Tworzenie grupy zasobów danych wyjściowych](media/azure-stack-connect-cli/image1.png)
 
 ## <a name="known-issues"></a>Znane problemy
-Istnieją znane problemy, które należy wiedzieć przy użyciu interfejsu wiersza polecenia w usłudze Azure Stack:
 
- - Tj tryb interaktywny interfejsu wiersza polecenia `az interactive` polecenie nie jest jeszcze obsługiwane w usłudze Azure Stack.
- - Aby uzyskać listę obrazów maszyn wirtualnych są dostępne w usłudze Azure Stack, użyj `az vm image list --all` polecenia zamiast `az vm image list` polecenia. Określanie `--all` option zapewnia, że odpowiedzi zwraca tylko obrazy, które są dostępne w danym środowisku usługi Azure Stack.
+Istnieją znane problemy przy użyciu interfejsu wiersza polecenia w usłudze Azure Stack:
+
+ - Tryb interaktywny interfejsu wiersza polecenia; na przykład `az interactive` polecenia, nie jest jeszcze obsługiwane w usłudze Azure Stack.
+ - Aby uzyskać listę obrazów maszyn wirtualnych są dostępne w usłudze Azure Stack, użyj `az vm image list --all` polecenia zamiast `az vm image list` polecenia. Określanie `--all` opcja gwarantuje, że odpowiedzi zwraca tylko obrazy, które są dostępne w danym środowisku usługi Azure Stack.
  - Aliasy obrazu maszyny wirtualnej, które są dostępne na platformie Azure nie może być stosowane do usługi Azure Stack. Korzystając z obrazów maszyn wirtualnych, należy użyć całego parametru URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) zamiast alias obrazu. Ta URN musi odpowiadać specyfikacji obrazu wyprowadzana z `az vm images list` polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie szablonów za pomocą wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
-
-[Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack (Operator)](../azure-stack-cli-admin.md)
-
-[Zarządzanie uprawnieniami użytkowników](azure-stack-manage-permissions.md)
+- [Wdrażanie szablonów za pomocą wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
+- [Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack (Operator)](../azure-stack-cli-admin.md)
+- [Zarządzanie uprawnieniami użytkowników](azure-stack-manage-permissions.md) 

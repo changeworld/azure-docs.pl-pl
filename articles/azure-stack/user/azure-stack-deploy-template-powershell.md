@@ -12,60 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: cf39ba6b1754a5e809e7295f2783846e95636ce8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 34ced37213ddb585b382965cf73c454d4c9f93e9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241740"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014050"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Wdrażanie szablonu do usługi Azure Stack przy użyciu programu PowerShell
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Program PowerShell służy do wdrażania szablonów usługi Azure Resource Manager do usługi Azure Stack. W tym artykule opisano, jak wdrożyć szablon przy użyciu programu PowerShell.
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>Uruchom polecenia cmdlet usługi AzureRM PowerShell
 
-W tym przykładzie użyto polecenia cmdlet usługi AzureRM PowerShell i szablonu przechowywanego w witrynie GitHub. Ten szablon tworzy maszynę wirtualną systemu Windows Server 2012 R2 Datacenter.
+W tym przykładzie użyto **AzureRM** poleceń cmdlet programu PowerShell i szablonu przechowywanego w witrynie GitHub. Ten szablon tworzy maszynę wirtualną systemu Windows Server 2012 R2 Datacenter.
 
 >[!NOTE]
 >Przed podjęciem próby w tym przykładzie, upewnij się, że masz [skonfigurowaniu programu PowerShell](azure-stack-powershell-configure-user.md) dla użytkownika usługi Azure Stack.
 
-1. Przejdź do [ http://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) i Znajdź **101-simple-windows-vm** szablonu. Zapisz szablon do tej lokalizacji: C:\\szablony\\azuredeploy-101-simple-windows-vm.json.
+1. Przejdź do [ http://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) i Znajdź **101-simple-windows-vm** szablonu. Zapisz szablon do tej lokalizacji: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Otwórz wiersz polecenia programu PowerShell.
-3. Zastąp *username* i *hasło* w poniższym skrypcie za pomocą nazwy użytkownika i hasło, a następnie uruchom skrypt.
+3. Zastąp `username` i `password` w poniższym skrypcie za pomocą nazwy użytkownika i hasło, a następnie uruchom skrypt:
 
-   ```PowerShell
-   # Set deployment variables
-   $myNum = "001" #Modify this per deployment
-   $RGName = "myRG$myNum"
-   $myLocation = "local"
+    ```PowerShell
+    # Set deployment variables
+    $myNum = "001" # Modify this per deployment
+    $RGName = "myRG$myNum"
+    $myLocation = "local"
    
-   # Create resource group for template deployment
-   New-AzureRmResourceGroup -Name $RGName -Location $myLocation
+    # Create resource group for template deployment
+    New-AzureRmResourceGroup -Name $RGName -Location $myLocation
    
-   # Deploy simple IaaS template
-   New-AzureRmResourceGroupDeployment `
-       -Name myDeployment$myNum `
-       -ResourceGroupName $RGName `
-       -TemplateFile c:\templates\azuredeploy-101-simple-windows-vm.json `
-       -NewStorageAccountName mystorage$myNum `
-       -DnsNameForPublicIP mydns$myNum `
-       -AdminUsername <username> `
-       -AdminPassword ("<password>" | ConvertTo-SecureString -AsPlainText -Force) `
-       -VmName myVM$myNum `
-       -WindowsOSVersion 2012-R2-Datacenter
-   ```
+    # Deploy simple IaaS template
+    New-AzureRmResourceGroupDeployment `
+        -Name myDeployment$myNum `
+        -ResourceGroupName $RGName `
+        -TemplateFile c:\templates\azuredeploy-101-simple-windows-vm.json `
+        -NewStorageAccountName mystorage$myNum `
+        -DnsNameForPublicIP mydns$myNum `
+        -AdminUsername <username> `
+        -AdminPassword ("<password>" | ConvertTo-SecureString -AsPlainText -Force) `
+        -VmName myVM$myNum `
+        -WindowsOSVersion 2012-R2-Datacenter
+    ```
 
-   >[!IMPORTANT]
-   >Za każdym razem, gdy ten skrypt można uruchomić, należy zwiększyć wartość `$myNum` parametru, aby zapobiec zastąpieniu wdrożenia.
+    >[!IMPORTANT]
+    >Za każdym razem, gdy ten skrypt można uruchomić, należy zwiększyć wartość `$myNum` parametru, aby zapobiec zastąpieniu wdrożenia.
 
 4. Otwórz portal, wybierz pozycję Azure Stack **Przeglądaj**, a następnie wybierz pozycję **maszyn wirtualnych** można znaleźć swoją nową maszyną wirtualną (**myDeployment001**).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie szablonów za pomocą programu Visual Studio](azure-stack-deploy-template-visual-studio.md)
+- [Wdrażanie szablonów za pomocą programu Visual Studio](azure-stack-deploy-template-visual-studio.md)

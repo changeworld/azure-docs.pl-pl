@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: fc2b5a5badcf38f7bc94a876f9f0a21af4f558b7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812222"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015478"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontekst danych telemetrycznych: Model danych usługi Application Insights
 
@@ -84,7 +84,7 @@ Maksymalna długość: 64
 
 Identyfikator użytkownika anonimowego. Reprezentuje użytkownika końcowego aplikacji. Gdy dane telemetryczne są wysyłane z usługi, kontekstu użytkownika dotyczy użytkownika, który zainicjował operację usługi.
 
-[Próbkowanie](../../application-insights/app-insights-sampling.md) to jedna z technik, aby zminimalizować ilość zebranych danych telemetrycznych. Algorytm próbkowania podejmuje próbę albo przykładowe wewnątrz lub na zewnątrz skorelowana telemetria. Identyfikator użytkownika anonimowego jest używany do pobierania próbek generowania oceny. Dlatego użytkownik anonimowy identyfikator powinien być wystarczająco losową wartość. 
+[Próbkowanie](../../azure-monitor/app/sampling.md) to jedna z technik, aby zminimalizować ilość zebranych danych telemetrycznych. Algorytm próbkowania podejmuje próbę albo przykładowe wewnątrz lub na zewnątrz skorelowana telemetria. Identyfikator użytkownika anonimowego jest używany do pobierania próbek generowania oceny. Dlatego użytkownik anonimowy identyfikator powinien być wystarczająco losową wartość. 
 
 Przy użyciu identyfikatora użytkownika anonimowego do przechowywania nazwy użytkownika jest nadużycie pola. Użyj uwierzytelniony identyfikator użytkownika.
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 15c86d1d5af3ba4d373f8dfb199d9ea56edb60b4
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811022"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002488"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -309,6 +309,11 @@ Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestrac
     [ ![Kafelek Zarządzanie region](media/azure-stack-registration/admin1sm.png "Kafelek Zarządzanie regionu") ](media/azure-stack-registration/admin1.png#lightbox)
 
 3. Wybierz **właściwości**. Ten blok, stan i szczegółowe cechy danego środowiska. Możliwe stany **zarejestrowanej** lub **niezarejestrowany**. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack, wraz z rejestracji grupy zasobów i nazwę.
+
+Alternatywnie można sprawdzić, czy rejestracja powiodła się przy użyciu funkcji zarządzania w portalu Marketplace. Jeśli zobaczysz listę elementów portalu marketplace w bloku zarządzania portalu Marketplace, proces rejestracji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie będzie można zobaczyć elementy portalu marketplace w portalu Marketplace zarządzania. Jednak można użyć narzędzia w trybie offline, aby zweryfikować rejestrację.
+
+> [!NOTE]
+> Po zakończeniu rejestracji pojawi się nie jest już aktywne ostrzeżenie nie rejestrowania. W scenariuszach bez połączenia zostanie wyświetlony komunikat w portalu Marketplace management prośbą do rejestrowania i aktywowania usługi Azure Stack, nawet wtedy, gdy został pomyślnie zarejestrowany.
 
 ## <a name="renew-or-change-registration"></a>Odnów lub zmienić rejestracji
 

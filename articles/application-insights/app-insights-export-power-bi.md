@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bb36111da04ad44f5c13ef3dce2b1684784094e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b4d87ab62503bee1ff54ba9713f7c49d09a2e547
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808388"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015070"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](https://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
@@ -119,7 +119,7 @@ Jeśli zmniejszyć zestaw danych pochodzących z zapytania analizy nie spełnia 
  ```
 
 ## <a name="about-sampling"></a>Temat próbkowania
-W zależności od ilości danych wysyłanych przez aplikację możesz chcieć użyć funkcja adaptacyjnego próbkowania, który wysyła tylko ułamka telemetrii. Jest taka sama wartość true, jeśli ręcznie ustawiono próbkowania w zestawie SDK lub podczas pozyskiwania danych. [Dowiedz się więcej na temat próbkowania](app-insights-sampling.md).
+W zależności od ilości danych wysyłanych przez aplikację możesz chcieć użyć funkcja adaptacyjnego próbkowania, który wysyła tylko ułamka telemetrii. Jest taka sama wartość true, jeśli ręcznie ustawiono próbkowania w zestawie SDK lub podczas pozyskiwania danych. [Dowiedz się więcej na temat próbkowania](../azure-monitor/app/sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Usługa Power BI karty (przestarzałe)
 Ta metoda tworzy pełny pulpit nawigacyjny danych telemetrycznych. Początkowy zestaw danych jest wstępnie zdefiniowane, ale większej ilości danych można dodać do niego.

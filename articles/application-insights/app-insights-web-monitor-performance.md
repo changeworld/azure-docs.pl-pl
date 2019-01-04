@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 9af2dd3a17eb150d44bf69cda86e480a083a3164
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6731b19984c0b2e0a663e93b2a6ef00c530a4d48
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971209"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014645"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Monitorowanie wydajności w aplikacjach internetowych
 
@@ -116,7 +116,7 @@ Poniżej przedstawiono kilka porad dotyczących Znajdowanie i diagnozowanie prob
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Znajdowanie i eliminowanie wąskich gardeł wydajności przy użyciu środowisko badania wydajności
 
-Środowisko badania wydajności umożliwia przeglądanie wolno przeprowadzanie operacji w aplikacji sieci Web. Możesz szybko wybierz określoną operację powolne i używać [Profiler](app-insights-profiler.md) głównym spowodować wolnych operacji do kodu. Przy użyciu dystrybucji nowy czas trwania przedstawić dla wybranej operacji możesz szybko rzut oka ocenić jak poważny jest środowisko dla swoich klientów. Aby zobaczyć, ile interakcji użytkownika został zmieniony. dla każdej operacji powolne. W poniższym przykładzie zostały zdecydowaliśmy się przyjrzeć bliżej środowisko dla operacji GET Customers/Details. W Rozkład czasów trwania widać, że istnieją trzy skoki. Skrajnie po lewej stronie kolekcji jest około 400 ms i stanowi doskonałą interaktywnych doświadczenia. Środkowy kolekcji jest wokół 1,2 s i reprezentuje daje środowisko. Na koniec na 3.6 s mamy innej kolekcji małe, reprezentujący 99 doświadczenia percentyl, może spowodować naszych klientów pozostawić niesatysfakcjonujące. Środowisko to dziesięć razy wolniej niż doskonałe środowisko dla tej samej operacji. 
+Środowisko badania wydajności umożliwia przeglądanie wolno przeprowadzanie operacji w aplikacji sieci Web. Możesz szybko wybierz określoną operację powolne i używać [Profiler](../azure-monitor/app/profiler.md) głównym spowodować wolnych operacji do kodu. Przy użyciu dystrybucji nowy czas trwania przedstawić dla wybranej operacji możesz szybko rzut oka ocenić jak poważny jest środowisko dla swoich klientów. Aby zobaczyć, ile interakcji użytkownika został zmieniony. dla każdej operacji powolne. W poniższym przykładzie zostały zdecydowaliśmy się przyjrzeć bliżej środowisko dla operacji GET Customers/Details. W Rozkład czasów trwania widać, że istnieją trzy skoki. Skrajnie po lewej stronie kolekcji jest około 400 ms i stanowi doskonałą interaktywnych doświadczenia. Środkowy kolekcji jest wokół 1,2 s i reprezentuje daje środowisko. Na koniec na 3.6 s mamy innej kolekcji małe, reprezentujący 99 doświadczenia percentyl, może spowodować naszych klientów pozostawić niesatysfakcjonujące. Środowisko to dziesięć razy wolniej niż doskonałe środowisko dla tej samej operacji. 
 
 ![Wartości graniczne czas trwania trzy GET Customers/Details](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -159,8 +159,8 @@ Czasami ten problem nie będzie w kodzie, ale raczej powstanie zależności kod 
 [redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
-[livestream]: app-insights-live-stream.md
-[snapshot]: app-insights-snapshot-debugger.md
+[livestream]: ../azure-monitor/app/live-stream.md
+[snapshot]: ../azure-monitor/app/snapshot-debugger.md
 
 
 

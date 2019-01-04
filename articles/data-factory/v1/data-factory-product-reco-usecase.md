@@ -9,17 +9,16 @@ ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a940b1d2184961d907f72ad072270dad3571e844
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229257"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017382"
 ---
 # <a name="use-case---product-recommendations"></a>Przypadek użycia — rekomendacje produktów
 Usługa Azure Data Factory jest jednym z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence z akceleratorami rozwiązań.  Zobacz [pakietu Cortana Intelligence](https://www.microsoft.com/cortanaanalytics) strony, aby uzyskać szczegółowe informacje na temat tego pakietu. W tym dokumencie opisano typowy przypadek użycia, w których użytkownicy platformy Azure już rozwiązanie zaimplementowane przy użyciu usługi Azure Data Factory i innych usług składników pakietu Cortana Intelligence.

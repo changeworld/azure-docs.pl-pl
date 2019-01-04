@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055411"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016771"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brama zarządzania danymi — wysokiej dostępności i skalowalności (wersja zapoznawcza)
 > [!NOTE]
@@ -171,7 +170,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
 - Certyfikat przy użyciu CNG klucze nie są obsługiwane.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Często zadawane pytania: Kiedy mogę nie umożliwia szyfrowania?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ: Jeśli będzie nie włączenie szyfrowania?
 Włączanie szyfrowania można dodać pewnych kosztów do infrastruktury (będącej właścicielem certyfikatu publicznego) dlatego możesz pominąć włączania szyfrowania w poniższych przypadków:
 - Gdy środowisko integration runtime jest uruchomiona na zaufanej sieci lub sieci o przezroczyste szyfrowanie, takich jak IP/s. Ponieważ ta komunikacja kanał jest tylko ograniczony w zaufanej sieci, mogą nie być potrzebne dodatkowe szyfrowanie.
 - Gdy środowisko integration runtime nie jest uruchomiony w środowisku produkcyjnym. Może to pomóc w zmniejszeniu kosztów certyfikatu TLS/SSL.

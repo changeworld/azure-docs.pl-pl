@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 790aab75b311b116e6ca03af016e181c11019e27
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 25b8b66e67450cb96cd988efd6dd5ffd03377fde
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726650"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016549"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Aplikacja wolno Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
 Ten artykuł pomoże Ci rozwiązywania problemów z wydajnością aplikacji powolne [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -114,7 +114,7 @@ Można włączyć Application Insights Profiler rozpocząć, przechwytywanie śl
 
 Application Insights Profiler zawiera dane statystyczne dotyczące czas odpowiedzi dla każdego wywołania sieci web i ślady, wskazujący, który wiersz kodu spowodowane powolnych odpowiedziach. Czasami aplikacja usługi App Service jest powolne, ponieważ niektórych kodu nie jest zapisywana w wydajny sposób. Przykłady obejmują sekwencyjnego kodu, który mogą być uruchamiane w rywalizacji o blokadę równoległe niepożądane i nieoczekiwane bazy danych. Usunięcie tych wąskich gardeł w kodzie zwiększa wydajność aplikacji, ale są trudne do wykrycia bez konfigurowania rozbudowane ślady i dzienniki. Ślady zebrane przez program Application Insights Profiler ułatwia identyfikowanie wierszy kodu, który spowalnia aplikacji i stawić czoła temu wyzwaniu dla aplikacji usługi App Service.
 
- Aby uzyskać więcej informacji, zobacz [profilowanie aplikacji na żywo w usłudze Azure App Service z usługą Application Insights](../application-insights/app-insights-profiler.md).
+ Aby uzyskać więcej informacji, zobacz [profilowanie aplikacji na żywo w usłudze Azure App Service z usługą Application Insights](../azure-monitor/app/profiler.md).
 
 ##### <a name="use-remote-profiling"></a>Użyj zdalnego profilowania
 W usłudze Azure App Service, aplikacje sieci web, aplikacje interfejsu API zaplecza aplikacji mobilnych i zadania Webjob można zdalnie profilować. Wybierz tę opcję, jeśli masz dostęp do zasobów aplikacji i wiesz, jak prowadzące do odtworzenia problemu lub osobom znającym dokładny czas interwału się dzieje problemów z wydajnością.

@@ -1,19 +1,19 @@
 ---
 title: Limity usługi Azure Twins cyfrowego publicznych w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Świadomość, że Azure cyfrowego bliźniaczych reprezentacji publicznej wersji zapoznawczej limity usługi
+description: Dowiedz się, że Azure cyfrowego bliźniaczych reprezentacji publicznej wersji zapoznawczej limity usług.
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7d9686b9bcc6cb89fabf4fdaa79bf5b8c6c45ddc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961759"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020629"
 ---
 # <a name="public-preview-service-limits"></a>Limity usługi w publicznej wersji zapoznawczej
 
@@ -35,21 +35,25 @@ W publicznej wersji zapoznawczej Każda subskrypcja platformy Azure można utwor
 
 Z kolei może mieć każde wystąpienie Twins cyfrowych platformy Azure:
 
-- Jeden **IoTHub** zasobów.
-- Jeden **EventHub** punktu końcowego dla typu zdarzenia **DeviceMessage**.
+- Dokładnie jeden **IoTHub** zasobów.
+- Dokładnie jeden **EventHub** punktu końcowego dla typu zdarzenia **DeviceMessage**.
 - Maksymalnie trzy **EventHub**, **ServiceBus**, lub **EventGrid** punktów końcowych typu zdarzenia **SensorChange**, **SpaceChange** , **TopologyOperation**, lub **UdfCustom**.
 
-## <a name="management-api-limits"></a>Limity interfejsu API zarządzania
+> [!NOTE]
+> Niektóre parametry, które zwykle są zdefiniowane w tworzenie powyżej jednostek usługi Azure IoT nie są wymagane w publicznej wersji zapoznawczej.
+> - Zapoznaj się z [dokumentację referencyjną programu Swagger](./how-to-use-swagger.md) na najnowszej specyfikacji interfejsu API.
 
-Limity szybkości żądania interfejsu API zarządzania są:
+## <a name="azure-digital-twins-management-api-limits"></a>Limity cyfrowego Twins interfejsu API zarządzania platformy Azure
 
-- 100 żądań na sekundę do interfejsu API zarządzania.
-- Maksymalnie 1000 obiektów zwróconych przez kwerendę pojedynczy interfejs API zarządzania. 
+Limity szybkości żądania, dla usługi Azure cyfrowego Twins interfejsu API zarządzania są:
+
+- 100 żądań na sekundę do cyfrowego Twins zarządzania interfejsu API usługi Azure.
+- Maksymalnie 1000 obiektów zwróconych przez jedno zapytanie cyfrowego Twins interfejsu API zarządzania Azure.
 
 > [!IMPORTANT]
 > Jeśli przekroczysz limit 1000 obiekt, komunikat o błędzie i uprościć zapytanie.
 
-## <a name="udf-rate-limits"></a>Limity szybkości funkcji zdefiniowanej przez użytkownika
+## <a name="user-defined-functions-rate-limits"></a>Limity szybkości funkcje zdefiniowane przez użytkownika
 
 Następujące limity Ustaw sumę wszystkich wywołań funkcji zdefiniowanej przez użytkownika do wystąpienia Twins cyfrowych platformy Azure:
 

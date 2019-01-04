@@ -1,60 +1,76 @@
 ---
 title: Włączanie aplikacji wielodostępnych za pomocą Twins cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Opis sposobu rejestrowania dzierżaw usługi Azure Active Directory Twoich klientów za pomocą Twins cyfrowych platformy Azure
+description: Jak skonfigurować wielodostępne aplikacje usługi Azure Active Directory bliźniaki cyfrowych platformy Azure.
 author: mavoge
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: a2d9ece119003c341f49ee03d735d5636b179a32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 443a697a576aa26fe352d8ad47d9e61214c3fcf3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259891"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024114"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Włączanie aplikacji wielodostępnych za pomocą Twins cyfrowych platformy Azure
 
-Deweloperzy, którzy używają bliźniaczych reprezentacji cyfrowych platformy Azure zazwyczaj chcesz tworzyć aplikacje wielodostępne. A *aplikacji wielodostępnej* jest pojedynczym wystąpieniem elastycznie, który obsługuje wielu klientów. Każdy klient ma swoje własne niezależnie od danych i uprawnień.
+Deweloperzy rozwiązań, którzy tworzą na Twins cyfrowych platformy Azure może się okazać, że chce obsługiwać wielu klientów przy użyciu jednej usługi lub rozwiązania. W rzeczywistości *wielodostępnej* aplikacji znajdują się wśród najbardziej typowe konfiguracje Twins cyfrowych platformy Azure.
 
-W tym dokumencie opisano, jak utworzyć aplikację wielodostępną Twins cyfrowych platformy Azure, która obsługuje kilka dzierżaw usługi Azure Active Directory (Azure AD), jak i klientów.
+W tym dokumencie opisano sposób konfigurowania aplikacji Twins cyfrowych platformy Azure do obsługi wielu dzierżaw usługi Azure Active Directory i klientów.
 
-## <a name="scenario-summary"></a>Podsumowanie scenariuszy
+## <a name="multitenancy"></a>Wielodostępności
 
-W tym scenariuszu należy wziąć pod uwagę D dla deweloperów i klientów C:
+A *wielodostępnej* zasobów jest pojedynczym wystąpieniem elastycznie, który obsługuje wielu klientów. Każdy klient ma swoje własne niezależnie od danych i uprawnień. Środowisko każdego klienta jest odizolowane od siebie nawzajem, tak aby ich "view" aplikacji różni się.
 
-- Deweloper D ma subskrypcję platformy Azure z dzierżawą usługi Azure AD.
-- Deweloper D wdroży wystąpienie Twins cyfrowych platformy Azure w ramach subskrypcji platformy Azure.
-- Użytkowników w ramach dzierżawy usługi Azure AD dla deweloperów D mogą uzyskiwać tokeny korzystająca z usługi Azure cyfrowego bliźniaczych reprezentacji, ponieważ usługa Azure AD utworzono nazwę główną w dzierżawie usługi Azure AD D dla deweloperów usługi.
-- Deweloper D utworzy teraz aplikację mobilną, która bezpośrednio integruje się z cyfrowego Twins zarządzania interfejsu API usługi Azure.
-- Deweloper D umożliwia C klienta aplikacji mobilnej.
-- Musi być autoryzowana klienta C do użycia cyfrowego Twins zarządzania interfejsu API usługi Azure w ramach D dla deweloperów aplikacji.
+Aby dowiedzieć się więcej na temat wielodostępności, przeczytaj [wielodostępnej aplikacji na platformie Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
-  > [!IMPORTANT]
-  > - Po zalogowaniu klientów języka C do D dla deweloperów aplikacji, aplikacja nie może uzyskać tokeny dla użytkowników klienta C na komunikowanie się z interfejsu API zarządzania.
-  > - Usługa Azure AD zgłasza błąd, co oznacza, że Twins cyfrowych platformy Azure nie został rozpoznany w katalogu c. klienta.
+## <a name="problem-scenario"></a>Scenariusz problemu
 
-## <a name="solution"></a>Rozwiązanie
+W tym scenariuszu należy wziąć pod uwagę deweloperów, tworzenie rozwiązania Azure cyfrowego bliźniaczych reprezentacji (**DEVELOPER**) i klienta, które korzystają z tego rozwiązania (**klienta**):
 
-Aby rozwiązać w poprzednim scenariuszu, następujące akcje są wymagane do utworzenia Twins cyfrowych platformy Azure nazwy głównej usługi w ramach dzierżawy usługi Azure AD klienta C:
+- **DEWELOPER** ma subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory.
+- **DEWELOPER** wdroży wystąpienie Twins cyfrowych platformy Azure w ramach subskrypcji platformy Azure. Usługa Azure Active Directory automatycznie utworzono nazwę główną usługi w **DEVELOPER**przez dzierżawę usługi Azure Active Directory.
+- Użytkowników w ramach **DEVELOPER**przez dzierżawę usługi Azure Active Directory można następnie [uzyskiwanie tokenów protokołu OAuth 2.0](./security-authenticating-apis.md) z usługi Azure cyfrowego bliźniaczych reprezentacji.
+- **DEWELOPER** utworzy teraz aplikację mobilną, która bezpośrednio integruje się z cyfrowego Twins zarządzania interfejsów API usługi Azure.
+- **DEWELOPER** umożliwia **klienta** korzystanie z aplikacji mobilnej.
+- **Klient** muszą być autoryzowane do używania cyfrowego Twins zarządzania interfejsu API usługi Azure w ramach **DEVELOPER**w aplikacji.
 
-- Jeśli C klienta nie ma jeszcze subskrypcji platformy Azure z dzierżawą usługi Azure AD:
+Problem:
 
-  - Administrator dzierżawy usługi Azure AD klienta języka C należy uzyskać [płatność za rzeczywiste użycie subskrypcji platformy Azure](https://azure.microsoft.com/offers/ms-azr-0003p/).
-  - Administrator dzierżawy usługi Azure AD klienta języka C następnie należy [połączyć ich dzierżawy przy użyciu nowej subskrypcji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+- Podczas **klienta** loguje się do **DEVELOPER**w aplikacji, aplikacja nie może uzyskać tokenów dla **klienta**firmy użytkownikom na uwierzytelnianie za pomocą cyfrowych Twins zarządzania interfejsów API usługi Azure.
+- Wyjątek pojawi się w usłudze Azure Active Directory wskazujący, że Twins cyfrowych platformy Azure nie został rozpoznany w ramach **klienta**w katalogu.
 
-- Na [witryny Azure portal](https://portal.azure.com), administrator dzierżawy usługi Azure AD C klientów wykonuje następujące czynności:
+## <a name="problem-solution"></a>Rozwiązanie problemu
+
+Aby rozwiązać w poprzednim scenariuszu problem, następujące akcje są wymagane do utworzenia Twins cyfrowych platformy Azure nazwy głównej usługi w ramach **klienta**firmy dzierżawy usługi Azure Active Directory:
+
+- Jeśli **klienta** nie ma jeszcze subskrypcji platformy Azure z dzierżawą usługi Azure Active Directory:
+
+  - **Klient**przez administratora dzierżawy usługi Azure Active Directory muszą uzyskać [płatność za rzeczywiste użycie subskrypcji platformy Azure](https://azure.microsoft.com/offers/ms-azr-0003p/).
+  - **Klient**użytkownika administratora dzierżawy usługi Azure Active Directory, a następnie musi [połączyć ich dzierżawy przy użyciu nowej subskrypcji](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
+
+- Na [witryny Azure portal](https://portal.azure.com), **klienta**przez administratora dzierżawy usługi Azure Active Directory wykonuje następujące czynności:
 
   1. Otwórz **subskrypcje**.
-  1. Wybierz subskrypcję, która ma dzierżawy usługi Azure AD, który ma być używany w D dla deweloperów aplikacji.
+  1. Wybierz subskrypcję z dzierżawą usługi Azure Active Directory do użycia w **DEVELOPER**w aplikacji.
+
+     ![Subskrypcje usługi Azure Active Directory][1]
+
   1. Wybierz **dostawców zasobów**.
   1. Wyszukaj **Microsoft.IoTSpaces**.
   1. Wybierz pozycję **Zarejestruj**.
+
+     ![Dostawcy zasobów usługi Azure Active Directory][2]
   
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o tym, jak używać funkcji zdefiniowanych przez użytkownika za pomocą Twins cyfrowych platformy Azure, przeczytaj [Azure cyfrowego Twins UDF](how-to-user-defined-functions.md).
+- Aby dowiedzieć się więcej o tym, jak używać funkcji zdefiniowanych przez użytkownika za pomocą Twins cyfrowych platformy Azure, przeczytaj [jak tworzyć funkcje zdefiniowane przez użytkownika Twins cyfrowego Azure](./how-to-user-defined-functions.md).
 
-Aby dowiedzieć się, jak można dodatkowo zabezpieczyć aplikację za pomocą przypisań ról za pomocą kontroli dostępu opartej na rolach, przeczytaj [kontrola dostępu oparta na rolach reprezentacje urządzeń cyfrowych platformy Azure](security-create-manage-role-assignments.md).
+- Aby dowiedzieć się, jak można dodatkowo zabezpieczyć aplikację za pomocą przypisań ról za pomocą kontroli dostępu opartej na rolach, przeczytaj [sposób tworzenia i zarządzania kontroli dostępu opartej na rolach Twins cyfrowego Azure](./security-create-manage-role-assignments.md).
+
+<!-- Images -->
+[1]: media/multitenant/ad-subscriptions.png
+[2]: media/multitenant/ad-resource-providers.png

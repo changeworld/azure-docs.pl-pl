@@ -9,17 +9,16 @@ ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b2d9bdd8a7faee81794beef7cf6a764aeea666ae
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276010"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020119"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +80,7 @@ Poniżej przedstawiono dwa ogólne kroki, które wykonujesz w ramach tego przewo
 2. Tworzenie usługi Azure data factory z potokiem, który wykorzystuje działania niestandardowe.
 
 ### <a name="create-a-custom-activity"></a>Tworzenie niestandardowego działania
-Aby utworzyć niestandardowe działanie platformy .NET, Utwórz **Biblioteka klas programu .NET** projektu za pomocą klasy, która implementuje, **IDotNetActivity** interfejsu. Ten interfejs ma tylko jedną metodę: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) i podpisie:
+Aby utworzyć niestandardowe działanie platformy .NET, Utwórz **Biblioteka klas programu .NET** projektu za pomocą klasy, która implementuje, **IDotNetActivity** interfejsu. Ten interfejs ma tylko jedną metodę: [Wykonaj](https://msdn.microsoft.com/library/azure/mt603945.aspx) i podpisie:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -426,7 +425,7 @@ Poniżej przedstawiono kroki, które należy wykonać w tej sekcji:
    3. Kliknij przycisk **Fabryka danych** w bloku **Analiza danych**.
    
     ![Nowe menu usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. W **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "CustomActivityFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład **yournameCustomActivityFactory**), a następnie spróbuj utworzyć ją ponownie.
+2. W **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **Nazwa fabryki danych "CustomActivityFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład **yournameCustomActivityFactory**), a następnie spróbuj utworzyć ją ponownie.
 
     ![Nowy blok usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Kliknij przycisk **nazwy grupy zasobów**i wybierz istniejącą grupę zasobów lub Utwórz grupę zasobów.
@@ -511,7 +510,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
     }
     ```
 
-   Tworzenie potoku w dalszej części tego przewodnika, czas rozpoczęcia: 2016-11-16T00:00:00Z i godzinę zakończenia: 2016-11-16T05:00:00Z. Zostaje zaplanowane do wygenerowania danych co godzinę, co pięć wycinki wejścia/wyjścia (między **00**: -> 00:00 **05**: 00:00).
+   Utworzysz potok w dalszej części tego przewodnika, czas rozpoczęcia: 2016-11-16T00:00:00Z i godzinę zakończenia: 2016-11-16T05:00:00Z. Zostaje zaplanowane do wygenerowania danych co godzinę, co pięć wycinki wejścia/wyjścia (między **00**: -> 00:00 **05**: 00:00).
 
    **Częstotliwość** i **interwał** dla wejściowego zestawu danych jest ustawiony na **godzinę** i **1**, co oznacza, że wycinek danych wejściowych jest dostępny co godzinę. W tym przykładzie jest tego samego pliku (plik.txt) w intputfolder.
 
@@ -617,7 +616,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
     Pamiętaj o następujących kwestiach:
 
    * **Współbieżność** ustawiono **2** tak, że dwa wycinki są przetwarzane równolegle przez 2 maszyny wirtualne w puli Azure Batch.
-   * W sekcji działań jest jedno działanie i jest typu: **DotNetActivity**.
+   * W sekcji działań jest jedno działanie i jest on typu: **DotNetActivity**.
    * **AssemblyName** jest ustawiona na nazwę biblioteki DLL: **MyDotnetActivity.dll**.
    * **Punkt wejścia** ustawiono **MyDotNetActivityNS.MyDotNetActivity**.
    * **PackageLinkedService** ustawiono **AzureStorageLinkedService** wskazującego na magazynu obiektów blob, który zawiera plik zip działania niestandardowego. Jeśli używasz różnych kont usługi Azure Storage dla plików wejściowych/wyjściowych i plik zip działania niestandardowego, utworzysz inną połączoną usługę Azure Storage. W tym artykule założono, że używasz tego samego konta usługi Azure Storage.
@@ -687,7 +686,7 @@ Rozwiązywanie problemów z obejmuje kilka podstawowych technik:
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ``` 
-2. Jeśli zostanie wyświetlony następujący błąd, upewnij się, że nazwa klasy w pliku CS odpowiada nazwa określona dla **punktu wejścia** właściwości w kodzie JSON potoku. W instruktażu, nazwa klasy to: MyDotNetActivity i punktu wejścia w formacie JSON: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Jeśli zostanie wyświetlony następujący błąd, upewnij się, że nazwa klasy w pliku CS odpowiada nazwa określona dla **punktu wejścia** właściwości w kodzie JSON potoku. W instruktażu Nazwa klasy jest: MyDotNetActivity i punktu wejścia w kodzie JSON to: MyDotNetActivityNS. **MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
@@ -729,7 +728,7 @@ Rozwiązywanie problemów z obejmuje kilka podstawowych technik:
 Po zaktualizowaniu kodu niestandardowego działania, skompiluj go, a następnie przekaż plik zip, który zawiera nowe pliki binarne do magazynu obiektów blob.
 
 ## <a name="appdomain-isolation"></a>Izolacja domeny aplikacji
-Zobacz [obejmujące wiele przykładowych AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , dowiesz się, jak utworzyć niestandardowe działanie, które nie jest ograniczony do wersji zestawu, używanych przez uruchamianie usługi Data Factory (przykład: 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, itp.).
+Zobacz [obejmujące wiele przykładowych AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , dowiesz się, jak utworzyć niestandardowe działanie, które nie jest ograniczony do wersji zestawu, używanych przez uruchamianie usługi Data Factory (przykład: Verze 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, itp.).
 
 ## <a name="access-extended-properties"></a>Dostęp do właściwości rozszerzone
 Można zadeklarować właściwości rozszerzone w działaniu, w formacie JSON, jak pokazano w następującym przykładzie:
@@ -769,7 +768,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Automatyczne skalowanie usługi Azure Batch
 Możesz również utworzyć puli usługi Azure Batch przy użyciu **skalowania automatycznego** funkcji. Na przykład można utworzyć puli usługi azure batch przy użyciu 0 dedykowanych maszyn wirtualnych i formułę skalowania automatycznego na podstawie liczby oczekujących zadań. 
 
-Na formułę przykładowe realizuje następujące zachowanie: podczas tworzenia puli, rozpoczyna się od maszyny Wirtualnej 1. Metryki $PendingTasks definiuje liczbę zadań uruchamiania + aktywny (kolejki) stanu.  Formuła wyszukuje średnią liczbę zadań oczekujących w ostatnich 180 sekund i ustawia odpowiednio TargetDedicated. Zapewnia, że TargetDedicated nigdy nie trafiają ponad 25 maszyn wirtualnych. Tak, ponieważ nowe zadania są przesyłane, puli automatycznie rozszerza się w i jako zadania, maszyn wirtualnych stają się bezpłatne pojedynczo, i automatyczne skalowanie zmniejsza tych maszyn wirtualnych. startingNumberOfVMs i maxNumberofVMs mogą być dostosowane do potrzeb.
+W tym miejscu wartość przykładowa formuła realizuje następujące zachowanie: Podczas tworzenia puli, rozpoczynają się one od 1 maszyna wirtualna. Metryki $PendingTasks definiuje liczbę zadań uruchamiania + aktywny (kolejki) stanu.  Formuła wyszukuje średnią liczbę zadań oczekujących w ostatnich 180 sekund i ustawia odpowiednio TargetDedicated. Zapewnia, że TargetDedicated nigdy nie trafiają ponad 25 maszyn wirtualnych. Tak, ponieważ nowe zadania są przesyłane, puli automatycznie rozszerza się w i jako zadania, maszyn wirtualnych stają się bezpłatne pojedynczo, i automatyczne skalowanie zmniejsza tych maszyn wirtualnych. startingNumberOfVMs i maxNumberofVMs mogą być dostosowane do potrzeb.
 
 Formułę skalowania automatycznego:
 

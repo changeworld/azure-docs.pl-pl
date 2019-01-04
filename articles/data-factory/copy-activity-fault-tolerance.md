@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f207cdb3af3f7e328cd5843053240bbbe15980e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f1a40c09c2d08eddedd3b6b51d2a138ec403f6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418347"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014917"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odporność na uszkodzenia działania kopiowania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,15 +34,15 @@ Działanie kopiowania obsługuje trzy scenariusze wykrywanie, pomijanie i rejest
 
 - **Niezgodności między typ danych źródła i ujścia typ macierzysty**. 
 
-    Na przykład: kopiowanie danych z pliku CSV w usłudze Blob storage do bazy danych SQL z definicją schematu, która zawiera trzy kolumny typu INT. Wierszy pliku CSV, które zawierają dane liczbowe, takie jak 123,456,789 są została pomyślnie skopiowana do magazynu ujścia. Jednak wiersze, które zawierają wartości nieliczbowe, takich jak 123,456, abc, są wykrywane jako niezgodne i zostaną pominięte.
+    Na przykład: Kopiowanie danych z pliku CSV w usłudze Blob storage do bazy danych SQL z definicją schematu, która zawiera trzy kolumny typu INT. Wierszy pliku CSV, które zawierają dane liczbowe, takie jak 123,456,789 są została pomyślnie skopiowana do magazynu ujścia. Jednak wiersze, które zawierają wartości nieliczbowe, takich jak 123,456, abc, są wykrywane jako niezgodne i zostaną pominięte.
 
 - **Niezgodność liczby kolumn między źródła i ujścia**.
 
-    Na przykład: kopiowanie danych z pliku CSV w usłudze Blob storage do bazy danych SQL z definicją schematu, która zawiera sześć kolumn. Wierszy pliku CSV, które zawiera sześć kolumn są została pomyślnie skopiowana do magazynu ujścia. Wierszy pliku CSV, które zawierają więcej lub mniej niż sześć kolumn są wykrywane jako niezgodna i są pomijane.
+    Na przykład: Kopiowanie danych z pliku CSV w usłudze Blob storage do bazy danych SQL z definicją schematu, która zawiera sześć kolumn. Wierszy pliku CSV, które zawiera sześć kolumn są została pomyślnie skopiowana do magazynu ujścia. Wierszy pliku CSV, które zawierają więcej lub mniej niż sześć kolumn są wykrywane jako niezgodna i są pomijane.
 
 - **Naruszenie klucza podstawowego podczas zapisywania do usługi SQL Server i Azure SQL Database/Azure Cosmos DB**.
 
-    Na przykład: kopiowanie danych z programu SQL server do usługi SQL database. W bazie danych SQL ujścia jest zdefiniowany klucz podstawowy, ale bez klucza podstawowego jest zdefiniowany w programie SQL server źródła. Zduplikowane wiersze, które istnieją w pliku źródłowym, nie można skopiować do ujścia. Działanie kopiowania kopiuje tylko pierwszy wiersz źródła danych do ujścia. Wiersze kolejne źródła, które zawierają zduplikowane wartości klucza podstawowego, są wykrywane jako niezgodne i zostaną pominięte.
+    Na przykład: Kopiowanie danych z programu SQL server do usługi SQL database. W bazie danych SQL ujścia jest zdefiniowany klucz podstawowy, ale bez klucza podstawowego jest zdefiniowany w programie SQL server źródła. Zduplikowane wiersze, które istnieją w pliku źródłowym, nie można skopiować do ujścia. Działanie kopiowania kopiuje tylko pierwszy wiersz źródła danych do ujścia. Wiersze kolejne źródła, które zawierają zduplikowane wartości klucza podstawowego, są wykrywane jako niezgodne i zostaną pominięte.
 
 >[!NOTE]
 >- Ładowanie danych do usługi SQL Data Warehouse przy użyciu technologii PolyBase, skonfiguruj ustawienia tolerancji błędów natywnego programu PolyBase w, określając Odrzuć zasad za pomocą "[usługi](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" w działaniu kopiowania. Można włączyć przekierowującego niezgodnych wierszy programu PolyBase do obiektu Blob lub Azure Data Lake Store w zwykły sposób, jak pokazano poniżej.

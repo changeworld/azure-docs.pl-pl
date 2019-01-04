@@ -7,12 +7,12 @@ author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.openlocfilehash: 8461797e0c3b8d92466c37c5564df895e494ce74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: afc3b9dbb1965ea28995d67f8f5e174721d73197
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957593"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999445"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitoruj i Debuguj za pomocą metryk w usłudze Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Rozkład normalny przepływności może spowodować, że *gorąca* partycji, co 
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Określić dystrybucji magazynu na partycje
 
-Dobre Kardynalność partycji jest istotne dla skalowalnej aplikacji. Aby określić rozkład przepływność dowolnego kontener podzielony na partycje z podziałem na partycje, przejdź do bloku metryk w [witryny Azure portal](https://portal.azure.com). Na karcie przepływności Podział magazynu jest wyświetlana w maks. zużycie RU/s według poszczególnych wykresów fizyczną partycję. Poniższa ilustracja przedstawia niską rozkład danych pokazany niesymetryczne partycji na końcu z lewej strony.
+Dobre Kardynalność partycji jest istotne dla skalowalnej aplikacji. Aby określić rozkład magazynu wszelkie kontener podzielony na partycje z podziałem na partycje, przejdź do bloku metryk w [witryny Azure portal](https://portal.azure.com). Na karcie magazynu Podział magazynu jest wyświetlany w danych + indeksu zajmowanego w magazynie przez wykres klucze partycji najwyższego poziomu. Poniższa ilustracja przedstawia niską dystrybucji magazynu danych pokazany niesymetryczne partycji na końcu z lewej strony.
 
 ![Przykład dystrybucji niską danych](media/use-metrics/metrics-07.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 76ce5f0c44dd1985fbf47d493b4566634f4894d0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6f534858194719a0d3059808073ae057f150b599
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976685"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021020"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights
 Wyjątki w aplikacji internetowej na żywo są zgłaszane przez [usługi Application Insights](../../application-insights/app-insights-overview.md). Żądania zakończone niepowodzeniem można skorelować wyjątki i inne zdarzenia, u klienta i serwera, dzięki czemu można szybko diagnozować ich przyczyny.
@@ -90,7 +90,7 @@ Aby wyświetlić te zdarzenia, otwórz [wyszukiwania](../../azure-monitor/app/di
 ![Drążenie wskroś](./media/asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Jeśli aplikacja generuje wiele danych telemetrycznych, moduł próbkowania adaptacyjnego będzie automatycznie redukować ilość danych wysyłanych do portalu, wysyłając tylko ich reprezentatywną część. Zdarzenia, które są częścią tej samej operacji, zostaną wybrane lub pominięte jako grupa, dzięki czemu można nawigować między powiązanymi zdarzeniami. [Dowiedz się więcej na temat próbkowania.](../../application-insights/app-insights-sampling.md)
+> Jeśli aplikacja generuje wiele danych telemetrycznych, moduł próbkowania adaptacyjnego będzie automatycznie redukować ilość danych wysyłanych do portalu, wysyłając tylko ich reprezentatywną część. Zdarzenia, które są częścią tej samej operacji, zostaną wybrane lub pominięte jako grupa, dzięki czemu można nawigować między powiązanymi zdarzeniami. [Dowiedz się więcej na temat próbkowania.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -489,4 +489,4 @@ To różni się od liczby "Wyjątków" obliczana na podstawie portalu Applicatio
 ## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie REST, SQL i inne wywołania zależności](../../azure-monitor/app/asp-net-dependencies.md)
 * [Monitorowania czasów ładowania stron, wyjątków przeglądarki i wywołania AJAX](../../azure-monitor/app/javascript.md)
-* [Monitorowanie liczników wydajności](../../application-insights/app-insights-performance-counters.md)
+* [Monitorowanie liczników wydajności](../../azure-monitor/app/performance-counters.md)

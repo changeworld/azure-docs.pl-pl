@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866070"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024794"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Tryby sieci kontenera usługi Service Fabric
 
@@ -35,7 +35,7 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
 
 ## <a name="set-up-open-networking-mode"></a>Konfigurowanie Otwórz tryb sieci
 
-1. Konfigurowanie szablonu usługi Azure Resource Manager. W **element fabricSettings** sekcji, należy włączyć usługę DNS i adresów IP dostawcy: 
+1. Konfigurowanie szablonu usługi Azure Resource Manager. W **element fabricSettings** sekcji zasobów klastra, Włącz usługi DNS i adresów IP dostawcy: 
 
     ```json
     "fabricSettings": [
@@ -77,8 +77,10 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
                 }
             ],
     ```
+    
+2. Skonfiguruj profil sieci części zasobu zestawu skalowania maszyn wirtualnych. Dzięki temu wiele adresów IP, należy skonfigurować na każdym węźle klastra. Poniższy przykład ustawia pięciu adresów IP w każdym węźle klastra systemu Windows/Linux usługi Service Fabric. Masz pięć wystąpień usługi nasłuchuje na porcie w każdym węźle. Aby pięć adresów IP, być dostępny z usługi Azure Load Balancer, należy zarejestrować pięć adresów IP w puli adresów zaplecza modułu równoważenia obciążenia platformy Azure, jak pokazano poniżej.  Możesz również będą potrzebne, aby dodać zmienne na początku w sekcji zmiennych szablonu.
 
-2. Skonfiguruj sekcji profilu sieci, aby zezwolić na wiele adresów IP, należy skonfigurować na każdym węźle klastra. Poniższy przykład ustawia pięciu adresów IP w każdym węźle klastra systemu Windows/Linux usługi Service Fabric. Masz pięć wystąpień usługi nasłuchuje na porcie w każdym węźle. Aby pięć adresów IP, być dostępny z usługi Azure Load Balancer, należy zarejestrować pięć adresów IP w puli adresów zaplecza modułu równoważenia obciążenia platformy Azure, jak pokazano poniżej.
+    Tę sekcję należy dodać do zmiennych:
 
     ```json
     "variables": {
@@ -97,6 +99,11 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]"
     }
+    ```
+    
+    Tę sekcję należy dodać do zasobu zestawu skalowania maszyn wirtualnych:
+
+    ```json   
     "networkProfile": {
                 "networkInterfaceConfigurations": [
                   {

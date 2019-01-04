@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: ec6fbcc7de9a5fe15231373a23f7c8491ac8c122
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9ab256526ccba3fa84d4979ba536f6b681a7df89
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975971"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001672"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -39,7 +39,7 @@ Najszybszym i najłatwiejszym sposobem monitorowania usługi w chmurze za pomoc�
 
 Ta opcja umożliwia instrumentację aplikacji w czasie wykonywania dzięki udostępnieniu całej telemetrii potrzebnej do monitorowania żądań, wyjątków i zależności w roli sieci Web oraz liczników wydajności z ról procesu roboczego. Wszelkie ślady diagnostyczne wygenerowane przez aplikację również są wysyłane do usługi Application Insights.
 
-Jeśli to wszystko, czego potrzebujesz, to koniec! Następne kroki to [wyświetlanie metryk z poziomu aplikacji](../../application-insights/app-insights-metrics-explorer.md), [wykonywanie zapytań do danych za pomocą funkcji analizy](../../azure-monitor/app/analytics.md) i, być może, konfigurowanie [pulpitu nawigacyjnego](../../azure-monitor/app/app-insights-dashboards.md). Możesz chcieć skonfigurować [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) i [dodać kod do stron sieci Web](../../azure-monitor/app/javascript.md) w celu monitorowania wydajności w przeglądarce.
+Jeśli to wszystko, czego potrzebujesz, to koniec! Następne kroki to [wyświetlanie metryk z poziomu aplikacji](../../azure-monitor/app/metrics-explorer.md), [wykonywanie zapytań do danych za pomocą funkcji analizy](../../azure-monitor/app/analytics.md) i, być może, konfigurowanie [pulpitu nawigacyjnego](../../azure-monitor/app/app-insights-dashboards.md). Możesz chcieć skonfigurować [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) i [dodać kod do stron sieci Web](../../azure-monitor/app/javascript.md) w celu monitorowania wydajności w przeglądarce.
 
 Ale możesz również korzystać z dodatkowych opcji:
 
@@ -75,7 +75,7 @@ Aby uniknąć tej sytuacji, należy utworzyć osobne zasoby dla każdej konfigur
 Aby wysłać dane telemetryczne do odpowiednich zasobów, możesz skonfigurować zestaw SDK usługi Application Insights tak, aby pobierał inny klucz instrumentacji w zależności od konfiguracji kompilacji. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Tworzenie zasobu usługi Application Insights dla każdej roli
-Jeśli postanowisz utworzyć osobny zasób dla każdej roli — oraz, być może, oddzielny zestaw dla każdej konfiguracji kompilacji — wówczas najłatwiej utworzyć je wszystkie w portalu usługi Application Insights. (Jeśli tworzysz wiele zasobów, możesz [zautomatyzować ten proces](../../application-insights/app-insights-powershell.md)).
+Jeśli postanowisz utworzyć osobny zasób dla każdej roli — oraz, być może, oddzielny zestaw dla każdej konfiguracji kompilacji — wówczas najłatwiej utworzyć je wszystkie w portalu usługi Application Insights. (Jeśli tworzysz wiele zasobów, możesz [zautomatyzować ten proces](../../azure-monitor/app/powershell.md)).
 
 1. W witrynie [Azure Portal][portal] utwórz nowy zasób usługi Application Insights. Jako typ aplikacji wybierz ASP.NET. 
 
@@ -129,7 +129,7 @@ W programie Visual Studio skonfiguruj zestaw SDK usługi Application Insights dl
     (W pliku config zostaną wyświetlone komunikaty z prośbą o umieszczenie tam klucza instrumentacji. Jednak dla aplikacji w chmurze jest lepiej ustawić to z ``.cscfg file``. Zapewni to, że rola jest prawidłowo identyfikowana w portalu).
 
 #### <a name="run-and-publish-the-app"></a>Uruchom i opublikuj aplikację
-Uruchom aplikację, a następnie zaloguj się na platformie Azure. Otwórz utworzone zasoby usługi Application Insights, a zobaczysz poszczególne punkty danych znajdujące się w obszarze [wyszukiwania](../../azure-monitor/app/diagnostic-search.md) i zagregowane dane w [Eksploratorze metryk](../../application-insights/app-insights-metrics-explorer.md). 
+Uruchom aplikację, a następnie zaloguj się na platformie Azure. Otwórz utworzone zasoby usługi Application Insights, a zobaczysz poszczególne punkty danych znajdujące się w obszarze [wyszukiwania](../../azure-monitor/app/diagnostic-search.md) i zagregowane dane w [Eksploratorze metryk](../../azure-monitor/app/metrics-explorer.md). 
 
 Dodaj więcej funkcji telemetrii — zobacz sekcje poniżej — a następnie opublikuj aplikację, aby uzyskać rzeczywiste opinie o diagnostyce i użyciu. 
 
@@ -146,7 +146,7 @@ Informacje o usłudze [Azure Diagnostics](https://docs.microsoft.com/azure/monit
 * Dzienniki zdarzeń systemu Windows są wyświetlane jako ślady i zdarzenia niestandardowe.
 * Dzienniki aplikacji, dzienniki śledzenia zdarzeń systemu Windows i wszelkie dzienniki infrastruktury diagnostycznej są wyświetlane jako ślady.
 
-Aby wyświetlić liczniki wydajności i liczby zdarzeń, otwórz pozycję [Eksplorator metryk](../../application-insights/app-insights-metrics-explorer.md) i dodaj nowy wykres:
+Aby wyświetlić liczniki wydajności i liczby zdarzeń, otwórz pozycję [Eksplorator metryk](../../azure-monitor/app/metrics-explorer.md) i dodaj nowy wykres:
 
 ![Dane diagnostyczne platformy Azure](./media/cloudservices/23-wad.png)
 
@@ -231,8 +231,8 @@ Czy to kompilacja dla .NET 4.6? Wersja 4.6 nie jest automatycznie obsługiwana w
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Konfigurowanie wysyłania usługi Diagnostyka Azure do usługi Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Automatyczne tworzenie zasobów usługi Application Insights](../../application-insights/app-insights-powershell.md)
-* [Automatyzacja usługi Diagnostyka Azure](../../application-insights/app-insights-powershell-azure-diagnostics.md)
+* [Automatyczne tworzenie zasobów usługi Application Insights](../../azure-monitor/app/powershell.md)
+* [Automatyzacja usługi Diagnostyka Azure](../../azure-monitor/app/powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md

@@ -1,6 +1,6 @@
 ---
-title: Wywołaj Program MapReduce z fabryki danych Azure
-description: Informacje o sposobie przetwarzania danych, uruchamiając programy MapReduce na klaster Azure HDInsight z fabryki danych Azure.
+title: Wywoływanie programów MapReduce z usługi Azure Data Factory
+description: Dowiedz się, jak przetwarzać dane, uruchamiając programów MapReduce w klastrze usługi HDInsight platformy Azure z usługi Azure data factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,53 +9,52 @@ ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: edbef08eaa100248368d7f0b23171f15b52ec56a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 309ddcf68d03f34ca3309d76d15cc3928037c667
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050951"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017450"
 ---
-# <a name="invoke-mapreduce-programs-from-data-factory"></a>Wywoływanie programów MapReduce z fabryki danych
+# <a name="invoke-mapreduce-programs-from-data-factory"></a>Wywoływanie programów MapReduce z usługi Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
-> * [Działanie gałęzi](data-factory-hive-activity.md) 
-> * [Działanie pig](data-factory-pig-activity.md)
-> * [Działania MapReduce](data-factory-map-reduce.md)
-> * [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Działanie Spark](data-factory-spark.md)
+> * [Działanie technologii hive](data-factory-hive-activity.md) 
+> * [Działania technologii pig](data-factory-pig-activity.md)
+> * [Działania technologii MapReduce](data-factory-map-reduce.md)
+> * [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Działania platformy Spark](data-factory-spark.md)
 > * [Działanie wykonywania wsadowego w usłudze Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Działania aktualizowania zasobów w usłudze Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Działania procedur składowanych](data-factory-stored-proc-activity.md)
 > * [Działania języka U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md)
-> * [Działania niestandardowe .NET](data-factory-use-custom-activities.md)
+> * [Niestandardowe działanie platformy .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania MapReduce w fabryce danych](../transform-data-using-hadoop-map-reduce.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [Przekształcanie danych przy użyciu działania technologii MapReduce w usłudze Data Factory](../transform-data-using-hadoop-map-reduce.md).
 
 
-Działania HDInsight MapReduce w fabryce danych [potoku](data-factory-create-pipelines.md) wykonuje programy MapReduce na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastrów HDInsight opartych na systemie Windows/Linux. W tym artykule opiera się na [działań przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
+Działanie HDInsight MapReduce w usłudze Data Factory [potoku](data-factory-create-pipelines.md) wykonuje programów MapReduce na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight z systemem Windows/Linux. W tym artykule opiera się na [działania przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych.
 
 > [!NOTE] 
-> Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](data-factory-introduction.md) i wykonaj samouczka: [kompilacji swój pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu.  
+> Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) i wykonać instrukcje z samouczka: [Tworzenie pierwszego potoku danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu.  
 
 ## <a name="introduction"></a>Wprowadzenie
-Potok w fabryce danych Azure przetwarza dane w usługach magazynu połączone, przy użyciu obliczeniowego połączonej usługi. Zawiera sekwencję działań, gdzie każde działanie wykonuje operację przetwarzania specyficznego dla. W tym artykule opisano, za pomocą usługi HDInsight działania MapReduce.
+Potok w fabryce danych Azure przetwarza danych w usługach połączonego magazynu za pomocą usług obliczeniowych połączone. Zawiera ona sekwencja działań, w którym każde działanie wykonuje operację przetwarzania specyficznego. W tym artykule opisano, przy użyciu działania technologii MapReduce w HDInsight.
 
-Zobacz [Pig](data-factory-pig-activity.md) i [Hive](data-factory-hive-activity.md) szczegółowe informacje o uruchamianiu Pig/Hive skryptów w usłudze HDInsight opartych na systemie Windows/Linux klastra z potokiem przy użyciu działań HDInsight Pig i Hive. 
+Zobacz [Pig](data-factory-pig-activity.md) i [Hive](data-factory-hive-activity.md) Aby uzyskać szczegółowe informacje o uruchamianiu programów Pig/Hive skrypty na Windows/Linux-based HDInsight klastra z potoku przy użyciu działań HDInsight Pig i Hive. 
 
-## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON dla działania HDInsight MapReduce
-W definicji JSON dla działania usługi HDInsight: 
+## <a name="json-for-hdinsight-mapreduce-activity"></a>Kod JSON działanie HDInsight MapReduce
+W definicji JSON działania HDInsight: 
 
 1. Ustaw **typu** z **działania** do **HDInsight**.
 2. Określ nazwę klasy dla **className** właściwości.
 3. Określ ścieżkę do pliku JAR, łącznie z nazwą pliku dla **jarFilePath** właściwości.
-4. Określ połączonej usługi, która odwołuje się do magazynu obiektów Blob Azure, który zawiera plik JAR dla **jarLinkedService** właściwości.   
-5. Określ wszelkie argumenty dla programu MapReduce w **argumenty** sekcji. W czasie wykonywania, zobacz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Rozróżnianie argumentów z argumentami MapReduce, należy rozważyć użycie zarówno opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe,--itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości).
+4. Określanie połączonej usługi, która odwołuje się do usługi Azure Blob Storage, który zawiera plik JAR dla **jarLinkedService** właściwości.   
+5. Określ wszelkie argumenty dla programu MapReduce w **argumenty** sekcji. W czasie wykonywania, widzisz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Aby odróżnić argumenty z argumentami MapReduce, należy wziąć pod uwagę przy użyciu opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe, — itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości).
 
     ```JSON   
     {
@@ -111,16 +110,16 @@ W definicji JSON dla działania usługi HDInsight:
         }
     }
     ```
-Działania MapReduce HDInsight służy do uruchomienia dowolnego pliku jar MapReduce w klastrze usługi HDInsight. W następujących definicji JSON próbki potoku działanie usługi HDInsight jest skonfigurowany do uruchomienia pliku Mahout JAR.
+Działania technologii MapReduce w HDInsight służy do uruchamiania dowolnego pliku jar MapReduce w klastrze usługi HDInsight. W poniższej definicji JSON przykładowe potoku działanie HDInsight jest skonfigurowany do uruchomienia pliku Mahout JAR.
 
-## <a name="sample-on-github"></a>Przykładem w witrynie GitHub
-Możesz pobrać przykład dotyczące używania działania MapReduce HDInsight z: [próbek fabryki danych w serwisie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+## <a name="sample-on-github"></a>Przykład w witrynie GitHub
+Możesz pobrać przykład przy użyciu działania technologii MapReduce HDInsight: [Przykłady fabryki danych w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
 
-## <a name="running-the-word-count-program"></a>Uruchomienie programu wyrazów
-Potok, w tym przykładzie uruchamia program wyrazów mapy/Zmniejsz w klastrze usługi Azure HDInsight.   
+## <a name="running-the-word-count-program"></a>Uruchamianie programu wyrazów
+Potok w tym przykładzie uruchamia program wyrazów Map/Reduce w klastrze Azure HDInsight.   
 
 ### <a name="linked-services"></a>Połączone usługi
-Najpierw należy utworzyć połączonej usługi, aby połączyć magazyn Azure, który jest używany przez klaster Azure HDInsight z fabryką danych Azure. Jeśli użytkownik skopiuj/Wklej następujący kod, pamiętaj zastąpić **nazwa konta** i **klucz konta** z nazwy i klucza magazynu Azure. 
+Najpierw utworzysz połączoną usługę służącą do połączenia magazynu platformy Azure, w którym jest używany przez klaster usługi Azure HDInsight w usłudze Azure data factory. Jeśli kopiujesz/wklejasz następujący kod, nie zapomnij zastąpić **nazwa konta** i **klucz konta** przy użyciu nazwy i klucza usługi Azure Storage. 
 
 #### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
 
@@ -137,7 +136,7 @@ Najpierw należy utworzyć połączonej usługi, aby połączyć magazyn Azure, 
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Usługa Azure HDInsight połączone
-Następnie można utworzyć połączonej usługi do połączenia z klastrem usługi HDInsight Azure z fabryką danych Azure. Jeśli użytkownik skopiuj/Wklej następujący kod, Zastąp **nazwy klastra usługi HDInsight** z nazwą klastra usługi HDInsight, a zmiany wartości nazwy i hasła użytkownika.   
+Następnie utworzysz połączoną usługę służącą do łączenie klastra usługi Azure HDInsight w usłudze Azure data factory. Jeśli kopiujesz/wklejasz następujący kod, Zastąp **nazwy klastra HDInsight** nazwą klastra HDInsight i zmień wartości nazwy i hasła użytkownika.   
 
 ```JSON
 {
@@ -156,7 +155,7 @@ Następnie można utworzyć połączonej usługi do połączenia z klastrem usł
 
 ### <a name="datasets"></a>Zestawy danych
 #### <a name="output-dataset"></a>Wyjściowy zestaw danych
-Potok, w tym przykładzie nie przyjmuje żadnych danych wejściowych. Wyjściowy zestaw danych można określić dla działania MapReduce HDInsight. Ten zestaw danych jest tylko fikcyjny zestawu danych, który jest wymagany do kierowania harmonogram potoku.  
+Potok w tym przykładzie nie przyjmuje żadnych danych wejściowych. Wyjściowy zestaw danych należy określić dla działania MapReduce HDInsight. Ten zestaw danych jest po prostu fikcyjnego zestawu danych, który jest wymagany do harmonogramu potoku.  
 
 ```JSON
 {
@@ -181,17 +180,17 @@ Potok, w tym przykładzie nie przyjmuje żadnych danych wejściowych. Wyjściowy
 ```
 
 ### <a name="pipeline"></a>Potok
-Potok, w tym przykładzie jest tylko jedno działanie, które jest typu: HDInsightMapReduce. Ważne właściwości w formacie JSON, należą: 
+Potok w tym przykładzie ma tylko jedno działanie, którego typ jest: HDInsightMapReduce. Ważne właściwości w kodzie JSON, należą: 
 
 | Właściwość | Uwagi |
 |:--- |:--- |
-| type |Typ musi mieć ustawioną **HDInsightMapReduce**. |
+| type |Typ musi być równa **HDInsightMapReduce**. |
 | className |Nazwa klasy jest: **wordcount** |
-| jarFilePath |Ścieżka do pliku jar zawierający klasę. Jeśli użytkownik skopiuj/Wklej następujący kod, nie zapomnij zmienić nazwę klastra. |
-| jarLinkedService |Usługa Azure Storage połączone usługi, który zawiera plik jar. Tej połączonej usługi odwołuje się do magazynu, który jest skojarzony z klastrem usługi HDInsight. |
+| jarFilePath |Ścieżka do pliku jar z klasą. Jeśli kopiujesz/wklejasz następujący kod, nie zapomnij zmienić nazwę klastra. |
+| jarLinkedService |Połączona usługa Azure Storage, który zawiera plik jar. Ta połączona usługa odnosi się do magazynu, który jest skojarzony z klastrem HDInsight. |
 | argumenty |Wordcount program przyjmuje dwa argumenty wejściowe i wyjściowe. Wejściowy plik jest plikiem davinci.txt. |
-| frequency/interval |Wartości tych właściwości zgodne wyjściowego zestawu danych. |
-| linkedServiceName |odnosi się do usługi HDInsight połączone, którą ma zostać utworzony wcześniej. |
+| frequency/interval |Wartości tych właściwości są zgodne wyjściowy zestaw danych. |
+| linkedServiceName |odnosi się do usługi połączonej HDInsight, z którą została wcześniej utworzona. |
 
 ```JSON
 {
@@ -234,7 +233,7 @@ Potok, w tym przykładzie jest tylko jedno działanie, które jest typu: HDInsig
 }
 ```
 
-## <a name="run-spark-programs"></a>Uruchamianie programów Spark
+## <a name="run-spark-programs"></a>Uruchamianie programów platformy Spark
 Możesz użyć działania MapReduce, aby uruchomić programy platformy Spark w klastrze usługi HDInsight Spark. Zobacz [Wywoływanie programów platformy Spark z usługi Azure Data Factory](data-factory-spark.md).  
 
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
@@ -248,9 +247,9 @@ Możesz użyć działania MapReduce, aby uruchomić programy platformy Spark w k
 [Azure Portal]: http://portal.azure.com
 
 ## <a name="see-also"></a>Zobacz też
-* [Działanie gałęzi](data-factory-hive-activity.md)
-* [Działanie pig](data-factory-pig-activity.md)
-* [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+* [Działanie technologii hive](data-factory-hive-activity.md)
+* [Działania technologii pig](data-factory-pig-activity.md)
+* [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
 * [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 

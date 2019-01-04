@@ -1,53 +1,52 @@
 ---
-title: Zapewnij Enterprise Edition dla środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcje Enterprise Edition dla środowiska uruchomieniowego integracji usług SSIS Azure i jej udostępnianie
+title: Aprowizowanie wersji Enterprise Edition dla środowiska Azure-SSIS Integration Runtime | Dokumentacja firmy Microsoft
+description: W tym artykule opisano funkcje Enterprise Edition dla środowiska Azure-SSIS Integration Runtime i jak aprowizować go
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 73997345895bc54f54db1d66c0c6c24c24153dd2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c475a9c820e577a321491b87d806ed08ddff8693
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268108"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013881"
 ---
-# <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Zainicjuj obsługę Enterprise Edition dla środowiska uruchomieniowego integracji usług SSIS Azure
+# <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Aprowizowanie środowiska Azure-SSIS Integration Runtime w wersji Enterprise Edition
 
-Enterprise Edition środowiska uruchomieniowego integracji usług SSIS Azure umożliwia, wykonaj następujące zaawansowane i funkcji premium:
--   Zmień składniki przechwytywania danych (CDC)
--   Łączniki programu SAP BW, Oracle i Teradata
+Azure-SSIS Integration Runtime w wersji Enterprise pozwala użyć następujące zaawansowane i funkcje w warstwie premium:
+-   Zmień dane funkcji Przechwytywania składników
+-   Łączniki bazy danych Oracle, Teradata i system SAP BW
 -   Łączniki programu SQL Server Analysis Services (SSAS) i Azure Analysis Services (AAS) i przekształcenia
--   Rozmytego grupowania i wyszukiwania rozmytego przekształcenia
--   Przekształcenia wyodrębniania terminów i terminu wyszukiwania
+-   Rozmyte przekształcenia grupowania i wyszukiwania rozmytego
+-   Przekształcenia określenie wyodrębnianie i termin wyszukiwania
 
-Niektóre z tych funkcji wymagają zainstalowania dodatkowych składników, aby dostosować podczerwieni Azure SSIS. Aby uzyskać więcej informacji o sposobie instalowania dodatkowych składników, zobacz [Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure](how-to-configure-azure-ssis-ir-custom-setup.md).
+Niektóre z tych funkcji wymaga zainstalowania dodatkowych składników, aby dostosować Azure-SSIS IR. Aby uzyskać więcej informacji na temat sposobu instalowania dodatkowych składników, zobacz [niestandardowa konfiguracja środowiska Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-## <a name="enterprise-features"></a>Funkcje organizacji
+## <a name="enterprise-features"></a>Funkcje wersji Enterprise
 
-| **Funkcje organizacji** | **Opisy** |
+| **Funkcje wersji Enterprise** | **Opisy** |
 |---|---|
-| Składniki CDC | Źródło CDC, zadanie kontroli i przekształcenie podziału są preinstalowany w Podczerwieni Azure SSIS w wersji Enterprise. Aby połączyć się z programem Oracle, również należy zainstalować CDC projektanta i usługi na innym komputerze. |
-| Łączniki programu Oracle | Oracle Menedżera połączeń, źródłowy i docelowy są preinstalowany w Podczerwieni Azure SSIS w wersji Enterprise. Należy również zainstalować sterownik Oracle Call Interface (OCI), a w razie potrzeby skonfiguruj Oracle transportu sieciowego podłoża (nazwę) w podczerwieni Azure SSIS. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Łączniki programu Teradata | Musisz zainstalować Teradata Menedżera połączeń, źródła i docelowy, a także sterownik interfejsu API programu Teradata sam, jak równoległe (TPT) i Teradata ODBC w wersji Enterprise IR Azure SSIS. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Łączniki programu SAP BW | Menedżer połączeń programu SAP BW, źródłowym i docelowym są preinstalowany w Podczerwieni Azure SSIS w wersji Enterprise. Należy również zainstalować sterownik programu SAP BW w podczerwieni Azure SSIS. Te łączniki obsługuje SAP BW 7.0 i jego wcześniejsze wersje. Aby połączyć się nowsze wersje programu SAP BW lub innych produktów SAP, można zakupu i zainstaluj łączniki SAP z niezależnym dostawcom oprogramowania innych firm w podczerwieni Azure SSIS. Aby uzyskać więcej informacji o sposobie instalowania dodatkowych składników, zobacz [Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Składniki usługi analizy               | Docelowy uczenia modelu wyszukiwania danych, docelowego przetwarzania wymiaru i docelowego przetwarzania partycji, a także transformacji zapytań wyszukiwania danych są preinstalowany w Podczerwieni Azure SSIS w wersji Enterprise. Wszystkie te składniki obsługi programu SQL Server Analysis Services (SSAS), ale tylko partycji przetwarzania docelowy obsługuje Azure Analysis Services (AAS). Aby nawiązać połączenie SSAS, trzeba również [skonfigurować poświadczenia uwierzytelniania systemu Windows w SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Oprócz tych składników usług analizy wykonania zadań DDL, zadanie przetwarzania Analysis Services i zadanie zapytania wyszukiwania danych są również preinstalowany na Azure SSIS IR Standard/Enterprise Edition. |
-| Rozmytego grupowania i wyszukiwania rozmytego przekształcenia  | Przekształcenia rozmytego grupowania i wyszukiwania rozmytego jest preinstalowany na IR Azure SSIS w wersji Enterprise. Te składniki obsługują program SQL Server i bazy danych SQL Azure do przechowywania danych referencyjnych. |
-| Przekształcenia wyodrębniania terminów i terminu wyszukiwania | Przekształcenia wyodrębniania terminów i terminu wyszukiwania są preinstalowany w Podczerwieni Azure SSIS w wersji Enterprise. Te składniki obsługują program SQL Server i bazy danych SQL Azure do przechowywania danych referencyjnych. |
+| Przechwytywanie zmian danych — składniki | Źródło przechwytywania zmian danych, zadania kontroli i przekształcania rozdzielacza są preinstalowane na Azure-SSIS IR Enterprise Edition. Połączyć się z oprogramowania Oracle, należy również zainstalować na innym komputerze przez projektanta przechwytywania zmian danych i usługi. |
+| Łączniki bazy danych Oracle | Menedżer połączeń bazy danych Oracle, źródłowym i docelowym są preinstalowane na Azure-SSIS IR Enterprise Edition. Należy również zainstalować sterownik Oracle wywołania interfejsu (OCI) i w razie potrzeby skonfiguruj Oracle transportu sieciowego podłoża (TNS) Azure-SSIS IR. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Łączniki programu Teradata | Musisz zainstalować Menedżera połączeń Teradata, źródła i docelowy, a także sterownik Teradata równoległe przewoźnika (TPT) interfejsu API i Teradata ODBC w wersji Enterprise środowiska IR Azure-SSIS. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Łączniki systemu SAP BW | Menedżera połączeń systemu SAP BW, źródłowym i docelowym jest preinstalowany na Azure-SSIS IR Enterprise Edition. Należy również zainstalować sterownik systemu SAP BW na platformie Azure-SSIS IR. Te łączniki pomocy technicznej SAP BW w wersji 7.0 lub starszych wersji. Połączyć się z nowszymi wersjami systemu SAP BW lub innych produktów SAP, można kupić i zainstalować łączniki systemu SAP z innych producentów niezależnych dostawców oprogramowania na platformie Azure-SSIS IR. Aby uzyskać więcej informacji na temat sposobu instalowania dodatkowych składników, zobacz [niestandardowa konfiguracja środowiska Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Składników usług Analysis Services               | Docelowy szkolenie modelu wyszukiwania danych, docelowy przetwarzania wymiaru i docelowy przetwarzanie partycji, a także transformacji zapytań wyszukiwania danych jest preinstalowany na środowiska Azure-SSIS IR Enterprise Edition. Wszystkie te składniki obsługi programu SQL Server Analysis Services (SSAS), ale tylko partycji przetwarzania docelowy obsługuje usługi Azure Analysis Services (AAS). Aby nawiązać połączenie SSAS, trzeba będzie również [skonfigurować poświadczenia uwierzytelniania Windows w SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Oprócz tych składników usług analizy wykonaj zadania języka DDL, zadanie przetwarzania Analysis Services i zadanie zapytań wyszukiwania danych są również wstępnie zainstalowane w wersji Standard/Enterprise środowiska IR Azure-SSIS. |
+| Rozmyte przekształcenia grupowania i wyszukiwania rozmytego  | Przekształcenia grupowania rozmyte i Wyszukiwanie rozmyte jest preinstalowany w Azure-SSIS IR Enterprise Edition. Te składniki pomocy technicznej usługi Azure SQL Database i programu SQL Server do przechowywania danych referencyjnych. |
+| Przekształcenia określenie wyodrębnianie i termin wyszukiwania | Przekształcenia określenie wyodrębnianie i termin wyszukiwania jest preinstalowany na Azure-SSIS IR Enterprise Edition. Te składniki pomocy technicznej usługi Azure SQL Database i programu SQL Server do przechowywania danych referencyjnych. |
 
 ## <a name="instructions"></a>Instrukcje
 
 1.  Pobierz i zainstaluj [programu Azure PowerShell (w wersji 5.4 lub nowszej)](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018).
 
-2.  Podczas obsługi administracyjnej lub ponownie skonfigurować IR Azure SSIS przy użyciu programu PowerShell, uruchom `Set-AzureRmDataFactoryV2IntegrationRuntime` z **Enterprise** jako wartość **wersji** parametru przed rozpoczęciem podczerwieni Azure SSIS. Poniżej przedstawiono przykładowy skrypt:
+2.  Podczas aprowizowania lub ponownie skonfigurować środowisko IR Azure-SSIS przy użyciu programu PowerShell, uruchom `Set-AzureRmDataFactoryV2IntegrationRuntime` z **Enterprise** jako wartość pozycji **wersji** parametru przed rozpoczęciem korzystania z usługi Azure-SSIS IR. Poniżej przedstawiono przykładowy skrypt:
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"
@@ -64,6 +63,6 @@ Niektóre z tych funkcji wymagają zainstalowania dodatkowych składników, aby 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
--   [Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Niestandardowa konfiguracja środowiska Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
 
--   [Jak wdrażać płatnej lub licencji niestandardowych składników środowiska uruchomieniowego integracji usług SSIS Azure](how-to-develop-azure-ssis-ir-licensed-components.md)
+-   [Jak tworzyć aplikacje płatne lub licencjonowane niestandardowych składników dla środowiska Azure-SSIS integration runtime](how-to-develop-azure-ssis-ir-licensed-components.md)

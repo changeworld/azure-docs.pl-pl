@@ -1,13 +1,10 @@
 ---
-title: Tworzenie komunikacji równorzędnej sieci wirtualnej platformy Azure — modele różnych wdrażania — różne subskrypcje | Dokumentacja firmy Microsoft
+title: Tworzenie komunikacji równorzędnej sieci wirtualnej platformy Azure — modele różnych wdrażania — różne subskrypcje
+titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak utworzyć sieć wirtualną, komunikacja równorzędna między sieciami wirtualnymi utworzonymi za pomocą różnych Azure modeli wdrażania istnieje w innej subskrypcji platformy Azure.
 services: virtual-network
 documentationcenter: ''
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 666e4c434d05bb953950893f32c262183055becd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 45dd31ecca4f09a595fbf1dae5fe61623fb2be3c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728178"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025865"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Utworzyć komunikację równorzędną sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -53,7 +50,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
     - **Zakres adresów podsieci**: *10.0.0.0/24*
     - **Subskrypcja**: Wybierz subskrypcję A.
     - **Grupa zasobów**: Wybierz **Utwórz nową** i wprowadź *myResourceGroupA*
-    - **Lokalizacja**: *wschodnie stany USA*
+    - **Lokalizacja**: *Wschodnie stany USA*
 4. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Kliknij przycisk **myVnetA** , gdy pojawia się w wynikach wyszukiwania. Zostanie wyświetlony blok **myVnetA** sieci wirtualnej.
 5. W **myVnetA** bloku, które zostanie wyświetlone, kliknij przycisk **kontrola dostępu (IAM)** z pionowy listy opcji po lewej stronie bloku.
 6. W **myVnetA — kontrola dostępu (IAM)** bloku, które zostanie wyświetlone, kliknij przycisk **+ Dodaj przypisanie roli**.
@@ -69,9 +66,9 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
     - **Przestrzeń adresowa**: *10.1.0.0/16*
     - **Nazwa podsieci**: *domyślne*
     - **Zakres adresów podsieci**: *10.1.0.0/24*
-    - **Subskrypcja**: Wybierz subskrypcję B.
+    - **Subskrypcja**: Wybieranie subskrypcji B.
     - **Grupa zasobów**: Wybierz **Utwórz nową** i wprowadź *myResourceGroupB*
-    - **Lokalizacja**: *wschodnie stany USA*
+    - **Lokalizacja**: *Wschodnie stany USA*
 
 14. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetB*. Kliknij przycisk **myVnetB** , gdy pojawia się w wynikach wyszukiwania. Zostanie wyświetlony blok **myVnetB** sieci wirtualnej.
 15. W **myVnetB** bloku, które zostanie wyświetlone, kliknij przycisk **właściwości** z pionowy listy opcji po lewej stronie bloku. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
@@ -83,10 +80,10 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
 21. W **myVnetA — komunikacja równorzędna** bloku, które wystąpiły, kliknij przycisk **+ Dodaj**
 22. W **Dodaj komunikację równorzędną** bloku, który pojawia się, wprowadź lub wybierz poniższe opcje, a następnie kliknij przycisk **OK**:
      - **Nazwa**: *myVnetAToMyVnetB*
-     - **Model wdrożenia sieci wirtualnej**: Wybierz **klasycznego**.
-     - **Wiem, identyfikator zasobu**: Zaznacz to pole wyboru.
-     - **Identyfikator zasobu**: Podaj identyfikator zasobu myVnetB z kroku 15.
-     - **Zezwalaj na dostęp do sieci wirtualnej:** upewnij się, że **włączone** jest zaznaczone.
+     - **Model wdrożenia sieci wirtualnej**:  Wybierz **klasycznego**.
+     - **Wiem, identyfikator zasobu**: zaznacz to pole wyboru.
+     - **Identyfikator zasobu**: Wprowadź identyfikator zasobu myVnetB z kroku 15.
+     - **Zezwalaj na dostęp do sieci wirtualnej:** Upewnij się, że **włączone** jest zaznaczone.
     Żadne inne ustawienia są używane w ramach tego samouczka. Aby dowiedzieć się więcej o wszystkich ustawieniach komunikacji równorzędnej, przeczytaj [Zarządzanie komunikacja równorzędna sieci wirtualnych](virtual-network-manage-peering.md#create-a-peering).
 23. Po kliknięciu przycisku **OK** w poprzednim kroku **Dodaj komunikację równorzędną** blok zostanie zamknięty i zostanie wyświetlony **myVnetA — komunikacja równorzędna** ponownie blok. Po kilku sekundach komunikacji równorzędnej, utworzony zostanie wyświetlony w bloku. **Połączone** znajduje się w **stan komunikacji RÓWNORZĘDNEJ** kolumny **myVnetAToMyVnetB** komunikacji równorzędnej zostanie utworzony. Teraz nawiązano komunikacji równorzędnej. Nie ma potrzeby nawiązać komunikację równorzędną sieci wirtualnej (klasycznej) do sieci wirtualnej (Resource Manager).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 188c6148e169da62dec342e1695bf20ca57e3256
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974883"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999685"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mogę (...) w usłudze Application Insights?
 ## <a name="get-an-email-when-"></a>Otrzymaj wiadomość e-mail po...
@@ -54,7 +54,7 @@ Ponieważ alerty mają dwa stany, konieczne będzie wysyłać niską wartość, 
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Tworzenie wykresu w [Eksplorator metryk](../../application-insights/app-insights-metrics-explorer.md) Aby wyświetlić swoje alarmu:
+Tworzenie wykresu w [Eksplorator metryk](../../azure-monitor/app/metrics-explorer.md) Aby wyświetlić swoje alarmu:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -77,7 +77,7 @@ Oto niektóre ważne kwestie:
 [Tworzenie nowych alertów za pomocą programu PowerShell](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Za pomocą programu PowerShell do zarządzania usługi Application Insights
-* [Tworzenie nowych zasobów](../../application-insights/app-insights-powershell-script-create-resource.md)
+* [Tworzenie nowych zasobów](../../azure-monitor/app/powershell-script-create-resource.md)
 * [Tworzenie nowych alertów](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Osobne dane telemetryczne z różnych wersji
@@ -91,7 +91,7 @@ Oto niektóre ważne kwestie:
 
 ## <a name="visualize-data"></a>Wizualizowanie danych
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Pulpit nawigacyjny z metrykami z wieloma aplikacjami
-* W [Eksploratora metryk](../../application-insights/app-insights-metrics-explorer.md), dostosować wykres i zapisz go jako ulubione. Przypnij go do pulpitu nawigacyjnego platformy Azure.
+* W [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md), dostosować wykres i zapisz go jako ulubione. Przypnij go do pulpitu nawigacyjnego platformy Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Pulpit nawigacyjny z danymi z innych źródeł i usługi Application Insights
 * [Eksportowanie telemetrii do usługi Power BI](../../application-insights/app-insights-export-power-bi.md).
@@ -132,7 +132,7 @@ Jeśli chcesz, aby listę użytkowników z danych, takich jak strony przeglądan
 * Na stronach sieci web należy ograniczyć liczbę tych wywołań Ajax dla każdego widoku strony. Fragment kodu skryptu po `instrumentationKey:...` , Wstaw: `,maxAjaxCallsPerView:3` (lub odpowiednia ilość).
 * Jeśli używasz [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), obliczenia agregacji partie wartości metryk przed wysłaniem wynik. Przeciążenia funkcji TrackMetric(), która oferuje funkcje, nie istnieje.
 
-Dowiedz się więcej o [cenami i limitami przydziału](../../application-insights/app-insights-pricing.md).
+Dowiedz się więcej o [cenami i limitami przydziału](../../azure-monitor/app/pricing.md).
 
 ## <a name="disable-telemetry"></a>Wyłączanie telemetrii
 Aby **dynamicznie zatrzymywania i uruchamiania** zbierania i przekazywania danych telemetrycznych z serwera:
@@ -159,5 +159,5 @@ Wśród metryk, które można wyświetlić w Eksploratorze metryk to zbiór syst
 * **Serwer UNIX** - [zainstalować zebrane](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Aby wyświetlić więcej liczników wydajności
-* Po pierwsze, [Dodaj nowy wykres](../../application-insights/app-insights-metrics-explorer.md) i sprawdzić, czy licznik jest do zestawu, firma Microsoft oferuje.
-* W przeciwnym razie [dodać licznika do zestawu, który został zebrany przez moduł licznika wydajności](../../application-insights/app-insights-performance-counters.md).
+* Po pierwsze, [Dodaj nowy wykres](../../azure-monitor/app/metrics-explorer.md) i sprawdzić, czy licznik jest do zestawu, firma Microsoft oferuje.
+* W przeciwnym razie [dodać licznika do zestawu, który został zebrany przez moduł licznika wydajności](../../azure-monitor/app/performance-counters.md).

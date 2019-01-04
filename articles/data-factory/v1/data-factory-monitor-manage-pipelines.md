@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618873"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015496"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie potoków i zarządzanie nimi usługi Azure Data Factory przy użyciu witryny Azure portal i programu PowerShell
 > [!div class="op_single_selector"]
@@ -136,7 +135,7 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 <td>Gotowe</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
 </tr>
 <tr>
-<td>Pominięto</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
+<td>Pominięte</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
 </tr>
 <tr>
 <td>Brak</td><td>-</td><td>Wycinek miał poprzednio inny stan, ale zostało zresetowane.</td>
@@ -162,7 +161,7 @@ Po wdrażanie fabryki danych, potoki prawidłowe okresu aktywności, zestaw dany
 
 ![Diagram stanu](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Przepływ przejścia stanu zestawu danych w usłudze data factory jest następująca: oczekiwania -> w toku/w toku (weryfikowanie) -> gotowe/nie powiodło się.
+Przepływ przejścia stanu zestawu danych w usłudze data factory jest następująca: Oczekiwania -> w toku/w toku (Sprawdzanie poprawności) -> gotowe lub nie powiodła się.
 
 Wycinek jest uruchamiany w **oczekiwania** stanu oczekiwania na warunki wstępne, które muszą być spełnione przed rozpoczęciem wykonywania. Następnie działanie rozpoczyna wykonywanie i wycinek przechodzi w stan **w toku** stanu. Wykonania działania może powodzenie lub niepowodzenie. Wycinek jest oznaczony jako **gotowe** lub, na podstawie wyniku wykonania.
 

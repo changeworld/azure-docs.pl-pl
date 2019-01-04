@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: b777928295d37b0824287d2b9e08526eae29e0f9
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: a80c96891f3d91a920519db2915932742bd84d72
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976498"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002301"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Telemetria śledzenia usługi: Model danych usługi Application Insights
 
@@ -43,4 +43,4 @@ Maksymalna długość: wynosić 32 768 znaków
 - [Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Application Insights](../../azure-monitor/app/java-trace-logs.md).
 - Zobacz [modelu danych](data-model.md) dla usługi Application Insights typów i danych modelu.
 - [Zapisywanie śledzenia niestandardowych danych telemetrycznych](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Zapoznaj się z [platform](../../application-insights/app-insights-platforms.md) obsługiwane przez usługę Application Insights.
+- Zapoznaj się z [platform](../../azure-monitor/app/platforms.md) obsługiwane przez usługę Application Insights.

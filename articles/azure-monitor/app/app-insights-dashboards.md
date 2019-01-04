@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c0f68304a73f8489668fafb98c51bd1e78b7588f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 653a636ca2d71c573ffde2e9e70a06cf3fcc95fb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972655"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021887"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Nawigacja i pulpity nawigacyjne w portalu Application Insights
 Po utworzeniu [Konfigurowanie usługi Application Insights w projekcie](../../application-insights/app-insights-overview.md), dane telemetryczne dotyczące użycia i wydajności aplikacji będą wyświetlane w zasobie usługi Application Insights projektu w [witryny Azure portal](https://portal.azure.com).
@@ -96,7 +96,7 @@ Po utworzeniu pulpitu nawigacyjnego, możesz go udostępnić innym użytkownikom
 
 ![W nagłówku pulpitu nawigacyjnego kliknij udział](./media/app-insights-dashboards/41.png)
 
-Dowiedz się więcej o [role i kontrola dostępu](../../application-insights/app-insights-resources-roles-access-control.md).
+Dowiedz się więcej o [role i kontrola dostępu](../../azure-monitor/app/resources-roles-access-control.md).
 
 ## <a name="create-dashboards-programmatically"></a>Programowe tworzenie pulpitów nawigacyjnych
 Można zautomatyzować tworzenie pulpitu nawigacyjnego za pomocą [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) i prostego edytora JSON.
@@ -109,7 +109,7 @@ Blok przeglądu jest bramy Aby dowiedzieć się więcej o aplikacji.
 ### <a name="overview-blade-buttons"></a>Przyciski bloku przeglądu
 ![Omówienie bloku górnym pasku nawigacyjnym](./media/app-insights-dashboards/app-overview-top-nav.png)
 
-* [**Eksplorator metryk** ](../../application-insights/app-insights-metrics-explorer.md) — Utwórz wykresy wydajności i użycia.
+* [**Eksplorator metryk** ](../../azure-monitor/app/metrics-explorer.md) — Utwórz wykresy wydajności i użycia.
 * [**Wyszukiwanie** ](../../azure-monitor/app/diagnostic-search.md) — zbadać konkretne wystąpienia zdarzenia, takie jak żądania, wyjątki, lub ślady dzienników.
 * [**Analiza** ](../../azure-monitor/app/analytics.md) -zaawansowanych zapytań w ramach telemetrii.
 * **Zakres czasu** — Dostosuj zakres wyświetlanych przez wszystkich wykresach w bloku.
@@ -123,14 +123,14 @@ Blok przeglądu jest bramy Aby dowiedzieć się więcej o aplikacji.
 
 * **Omówienie** -powrócić do bloku przeglądu aplikacji.
 * **Dziennik aktywności** — alerty i zdarzenia administracyjne platformy Azure.
-* [**Kontrola dostępu** ](../../application-insights/app-insights-resources-roles-access-control.md) — zapewniają dostęp do członków zespołu i innym osobom.
+* [**Kontrola dostępu** ](../../azure-monitor/app/resources-roles-access-control.md) — zapewniają dostęp do członków zespołu i innym osobom.
 * [**Tagi** ](../../azure-resource-manager/resource-group-using-tags.md) -grupa aplikacji z innymi osobami za pomocą tagów.
 
 ZBADAJ
 
 * [**Mapa aplikacji** ](app-map.md) -Active mapie składniki aplikacji, pochodzące z informacji o zależnościach.
 * [**Wykrywanie inteligentne** ](../../application-insights/app-insights-proactive-diagnostics.md) — ostatnie alerty wydajności można przeglądać.
-* [**Live Stream** ](../../application-insights/app-insights-live-stream.md) — A ustalony zestaw metryk niemal natychmiastowe przydatne podczas wdrażania nowej kompilacji lub debugowania.
+* [**Live Stream** ](../../azure-monitor/app/live-stream.md) — A ustalony zestaw metryk niemal natychmiastowe przydatne podczas wdrażania nowej kompilacji lub debugowania.
 * [**Dostępność / testy sieci Web** ](../../azure-monitor/app/monitor-web-app-availability.md) -wysyłania żądań regularne do aplikacji sieci web z całym world.*
 * [**Błędów, wydajności** ](../../application-insights/app-insights-web-monitor-performance.md) — wyjątki, częstotliwości awarii i czasów odpowiedzi dla żądań kierowanych do aplikacji i dla żądań z aplikacji, aby [zależności](../../azure-monitor/app/asp-net-dependencies.md).
 * [**Wydajność** ](../../application-insights/app-insights-web-monitor-performance.md) — czas reakcji, czasy reakcji zależności.
@@ -145,14 +145,14 @@ KONFIGURUJ
 * [Alerty](../../azure-monitor/app/alerts.md) — Konfigurowanie alertu metryki.
 * [Eksport ciągły](../../azure-monitor/app/export-telemetry.md) — skonfiguruj Eksport danych telemetrycznych do usługi Azure storage.
 * [Testowanie wydajności](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) — Konfigurowanie syntetycznego obciążenia w witrynie sieci Web.
-* [Przydział i cennik](../../application-insights/app-insights-pricing.md) i [próbkowanie fragmentaryczne](../../application-insights/app-insights-sampling.md).
+* [Przydział i cennik](../../azure-monitor/app/pricing.md) i [próbkowanie fragmentaryczne](../../azure-monitor/app/sampling.md).
 * **Dostęp do interfejsu API** — tworzenie [adnotacje dotyczące wersji](annotations.md) i interfejsu API usługi Data Access.
 * [**Elementy robocze** ](../../azure-monitor/app/diagnostic-search.md#create-work-item) -nawiązać połączenie z pracy, w systemie śledzenia, dzięki czemu można utworzyć błędy podczas sprawdzania danych telemetrycznych.
 
 USTAWIENIA
 
 * [**Blokuje** ](../../azure-resource-manager/resource-group-lock-resources.md) — blokowanie zasobów platformy Azure
-* [**Skrypt automatyzacji** ](../../application-insights/app-insights-powershell.md) — Eksportuj definicję zasobu platformy Azure, dzięki czemu można użyć jako szablon do tworzenia nowych zasobów.
+* [**Skrypt automatyzacji** ](../../azure-monitor/app/powershell.md) — Eksportuj definicję zasobu platformy Azure, dzięki czemu można użyć jako szablon do tworzenia nowych zasobów.
 
 
 ## <a name="video"></a>Połączenia wideo
@@ -163,6 +163,6 @@ USTAWIENIA
 
 |  |  |
 | --- | --- |
-| [Eksplorator metryk](../../application-insights/app-insights-metrics-explorer.md)<br/>Metryki filtrowania i dzielenia |![Przykład wyszukiwania](./media/app-insights-dashboards/64.png) |
+| [Eksplorator metryk](../../azure-monitor/app/metrics-explorer.md)<br/>Metryki filtrowania i dzielenia |![Przykład wyszukiwania](./media/app-insights-dashboards/64.png) |
 | [Wyszukiwanie diagnostyczne](../../azure-monitor/app/diagnostic-search.md)<br/>Znajdowanie i zbadaj zdarzenia, zdarzenia powiązane oraz tworzyć usterki |![Przykład wyszukiwania](./media/app-insights-dashboards/61.png) |
 | [Analiza](../../azure-monitor/app/analytics.md)<br/>Zaawansowany język zapytań |![Przykład wyszukiwania](./media/app-insights-dashboards/63.png) |

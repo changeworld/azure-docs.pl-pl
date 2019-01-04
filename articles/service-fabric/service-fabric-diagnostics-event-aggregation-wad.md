@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232499"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002403"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Teraz, gdy masz agregowania zdarzeń w usłudze Azure Storage [Konfigurowanie us
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Wdrażanie rozszerzenie diagnostyki za pomocą usługi Azure Resource Manager
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Tworzenie klastra przy użyciu rozszerzenia diagnostyki
-Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać plik JSON z konfiguracją diagnostyki pełny szablon usługi Resource Manager, przed utworzeniem klastra. Firma Microsoft udostępnia przykładowy szablon usługi Resource Manager klastra maszyny Wirtualnej na pięciu o konfiguracji diagnostyki dodawanych do niego jako część nasze przykłady szablonów usługi Resource Manager. Zostanie wyświetlony w tej lokalizacji, w galerii przykładów dla platformy Azure: [klastra o pięciu węzłach przy użyciu przykładowych szablonów Menedżera zasobów diagnostycznych](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać plik JSON z konfiguracją diagnostyki pełny szablon usługi Resource Manager. Firma Microsoft udostępnia przykładowy szablon usługi Resource Manager klastra maszyny Wirtualnej na pięciu o konfiguracji diagnostyki dodawanych do niego jako część nasze przykłady szablonów usługi Resource Manager. Można go było wyświetlić w tym miejscu w galerii przykładów dla platformy Azure: [Klaster z pięcioma węzłami przy użyciu przykładowych szablonów Menedżera zasobów diagnostycznych](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Aby wyświetlić ustawienia diagnostyki w szablonie usługi Resource Manager, otwórz plik azuredeploy.json, a następnie wyszukaj **IaaSDiagnostics**. Aby utworzyć klaster za pomocą tego szablonu, wybierz **Wdróż na platformie Azure** przycisk jest dostępny w poprzedniej konsolidacji.
 
@@ -196,24 +196,24 @@ Od tabel wypełnione przez rozszerzenie powiększa się dopóki nie zostanie osi
 ## <a name="log-collection-configurations"></a>Konfiguracje kolekcji dzienników
 Dzienniki z dodatkowych kanałów są również dostępne dla kolekcji, poniżej przedstawiono niektóre najbardziej typowe konfiguracje wprowadzone w szablonie dla klastrów działających na platformie Azure.
 
-* Operational Channel - Base: Włączona domyślnie wysokiego poziomu operacji wykonywanych przez usługi Service Fabric i klastra, w tym zdarzenia dla węzła pojawi się, Nowa aplikacja wdrożona, oraz wycofywania uaktualnienia itd. Aby uzyskać listę zdarzeń, zobacz [zdarzenia operacyjne kanału](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Kanał operacyjny - Base: Domyślnie włączone, wysokiego poziomu operacji wykonywanych przez usługi Service Fabric i klastra, w tym zdarzenia dla węzła pojawi się, wdrażania nowej aplikacji lub uaktualnienia wycofywania itd. Aby uzyskać listę zdarzeń, zobacz [zdarzenia operacyjne kanału](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Operational Channel — szczegółowe: W tym raportów o kondycji i równoważenie decyzje, a także wszystkich elementów w podstawowej kanał operacyjny obciążenia. Te zdarzenia są generowane przez system lub kodu przy użyciu kondycji lub załadować interfejsy API raportowania, takie jak [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) lub [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych w programie Visual Studio Dodaj "Microsoft-ServiceFabric:4:0x4000000000000008" do listy dostawców ETW.
+* Kanał operacyjny — szczegółowe: W tym raportów o kondycji i równoważenie decyzje, a także wszystkich elementów w podstawowej kanał operacyjny obciążenia. Te zdarzenia są generowane przez system lub kodu przy użyciu kondycji lub załadować interfejsy API raportowania, takie jak [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) lub [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych w programie Visual Studio Dodaj "Microsoft-ServiceFabric:4:0x4000000000000008" do listy dostawców ETW.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Dane i kanał obsługi komunikatów - Base: krytyczne dzienników i zdarzeń generowanych komunikatów (obecnie tylko elementu ReverseProxy) i ścieżkę danych oprócz kanał operacyjny szczegółowe dzienniki. Te zdarzenia są przetwarzania błędów i innych krytycznych problemów z elementu ReverseProxy żądania, a także przetwarzania żądań. **To jest nasza Rekomendacja, kompleksowe rejestrowania**. Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych w programie Visual Studio, należy dodać "Microsoft-ServiceFabric:4:0x4000000000000010" do listy dostawców ETW.
+* Dane i kanału wiadomości - Base: Dzienniki krytyczne i zdarzenia generowane w wiadomości (obecnie tylko elementu ReverseProxy) i ścieżki danych oprócz kanał operacyjny szczegółowe dzienniki. Te zdarzenia są przetwarzania błędów i innych krytycznych problemów z elementu ReverseProxy żądania, a także przetwarzania żądań. **To jest nasza Rekomendacja, kompleksowe rejestrowania**. Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych w programie Visual Studio, należy dodać "Microsoft-ServiceFabric:4:0x4000000000000010" do listy dostawców ETW.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* Kanał obsługi komunikatów — szczegółowe & danych: pełne kanał, który zawiera wszystkie niekrytyczne dzienniki danych i komunikatów w klastrze i szczegółowe kanał operacyjny. Aby uzyskać szczegółowe procedury rozwiązywania problemów z wszystkich zdarzeń zwrotny serwer proxy, zobacz [przewodnik Diagnostyka zwrotnego serwera proxy](service-fabric-reverse-proxy-diagnostics.md).  Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych programu Visual Studio, należy dodać "Microsoft-ServiceFabric:4:0x4000000000000020" do listy dostawców ETW.
+* Kanał obsługi komunikatów — szczegółowe & danych: Pełne kanał, który zawiera wszystkie niekrytyczne dzienniki danych i komunikatów w klastrze i szczegółowe kanał operacyjny. Aby uzyskać szczegółowe procedury rozwiązywania problemów z wszystkich zdarzeń zwrotny serwer proxy, zobacz [przewodnik Diagnostyka zwrotnego serwera proxy](service-fabric-reverse-proxy-diagnostics.md).  Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych programu Visual Studio, należy dodać "Microsoft-ServiceFabric:4:0x4000000000000020" do listy dostawców ETW.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"

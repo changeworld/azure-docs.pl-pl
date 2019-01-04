@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b7f49571aa78a262a464f9626b7b98a85f8187f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2a7b5a1f90ddc6ccfdbc568113a5c265dd9ac84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973336"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022958"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
 Wyszukiwanie jest funkcją [usługi Application Insights](../../application-insights/app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
@@ -129,7 +129,7 @@ Poniżej przedstawiono wyrażeniach wyszukiwania, których można użyć:
 ## <a name="sampling"></a>Próbkowanie
 Jeśli aplikacja generuje wiele danych telemetrycznych (i używasz zestawu SDK platformy ASP.NET wersji 2.0.0-beta3 lub nowszej), moduł próbkowania adaptacyjnego automatycznie ogranicza ilość danych wysyłanych do portalu, wysyłając tylko reprezentatywny ułamek zdarzeń. Jednak zdarzenia, które są powiązane z tym samym żądaniem wybrane lub pominięte jako grupa, dzięki czemu można nawigować między powiązanymi zdarzeniami. 
 
-[Więcej informacji na temat próbkowania](../../application-insights/app-insights-sampling.md).
+[Więcej informacji na temat próbkowania](../../azure-monitor/app/sampling.md).
 
 ## <a name="create-work-item"></a>Utwórz element roboczy
 Można utworzyć usterkę w usłudze GitHub lub DevOps platformy Azure przy użyciu informacji z dowolnego elementu danych telemetrycznych. 
@@ -153,7 +153,7 @@ Oprócz poza pole dane telemetryczne wysyłane przez zestaw SDK usługi Applicat
 ## <a name="questions"></a>PYTANIA I ODPOWIEDZI
 ### <a name="limits"></a>Jak dużo danych jest zachowywana?
 
-Zobacz [podsumowanie ograniczeń](../../application-insights/app-insights-pricing.md#limits-summary).
+Zobacz [podsumowanie ograniczeń](../../azure-monitor/app/pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak sprawdzić danych POST w Moje żądania serwera
 Firma Microsoft nie rejestruj danych POST automatycznie, ale można użyć [TrackTrace lub dziennik wywołań](../../azure-monitor/app/asp-net-trace-logs.md). Umieść dane POST w parametrze wiadomości. Nie można filtrować wiadomości w taki sam sposób, który można filtrować według właściwości, ale limit rozmiaru jest dłuższy.

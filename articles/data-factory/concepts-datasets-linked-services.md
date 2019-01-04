@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c9c9f07eab395df716a4575338f881f07d573b74
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38581270"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019133"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Zestawy danych i połączone usługi w usłudze Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +35,7 @@ Teraz **dataset** jest nazwany widok danych, które po prostu wskazuje lub odwo�
 
 Przed utworzeniem zestawu danych, należy utworzyć **połączoną usługę** połączyć usługi magazynu danych w usłudze data factory. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Mechanizm działa w ten sposób; zestaw danych reprezentuje strukturę danych w połączonych magazynach danych, a połączona usługa zawiera definicję połączenia ze źródłem danych. Na przykład Azure Storage połączona usługa łączy konto usługi storage z fabryką danych. Zestaw danych obiektów Blob platformy Azure reprezentuje kontener obiektów blob oraz folder, w ramach tego konta magazynu platformy Azure, który zawiera wejściowe obiekty BLOB mają być przetwarzane.
 
-Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, tworzenie dwóch połączonych usług: Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: zestaw danych obiektów Blob platformy Azure, (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
+Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, utworzysz dwie połączone usługi: Usługa Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: Azure zestaw danych obiektów Blob (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
 
 Na poniższym diagramie przedstawiono relacje między potoku, działania, zestaw danych i połączonej usługi w usłudze Data Factory:
 
@@ -61,12 +60,12 @@ W formacie JSON połączonej usługi w usłudze Data Factory jest zdefiniowana w
 }
 ```
 
-Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00).
+W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
-name | Czas opóźnienia wyboru na dostępność danych zewnętrznych dla danego wycinka. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
-type | Ma zastosowanie tylko do chwili obecnej. Na przykład: AzureStorage (magazynu danych) lub AzureBatch (składnik obliczeniowy). Zobacz opis typeProperties. | Yes |
+name | Nazwa połączonej usługi. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
+type | Typ połączonej usługi. Na przykład: AzureStorage (magazynu danych) lub AzureBatch (składnik obliczeniowy). Zobacz opis typeProperties. | Yes |
 typeProperties | Właściwości typu są różne dla każdego magazynu danych lub obliczeń. <br/><br/> Obsługiwane dane można przechowywać w typów i ich właściwości typu, zobacz [typ zestawu danych](#dataset-type) tabeli, w tym artykule. Przejdź do artykułu łącznika magazynu danych, aby dowiedzieć się więcej o właściwościach typu specyficznych dla magazynu danych. <br/><br/> Typy obsługiwane obliczeniowych i ich właściwości typu, zobacz [usługi połączone usługi Compute](compute-linked-services.md). | Yes |
 connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie
 
@@ -118,14 +117,14 @@ Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
 }
 
 ```
-Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00).
+W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
-name | W przypadku 1 dzień i 4 godziny należy określić 1:04:00:00. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
-type | W przypadku niepowodzenia try następnej próbie jest po retryInterval. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Yes |
-Struktura | Wycinki w przeszłości nie ma żadnego opóźnienia. Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#dataset-structure). | Nie |
-typeProperties | Właściwości typu są różne dla każdego typu (na przykład: usługi Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#dataset-type). | Yes |
+name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
+type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: Obiektu blob platformy Azure, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Yes |
+Struktura | Schemat zestawu danych. Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#dataset-structure). | Nie |
+typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#dataset-type). | Yes |
 
 ## <a name="dataset-example"></a>Przykładowy zestaw danych
 W poniższym przykładzie zestaw danych reprezentuje tabelę o nazwie MyTable w usłudze SQL database.
@@ -188,10 +187,10 @@ Każda kolumna w strukturze zawiera następujące właściwości:
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-name | Wartość maksymalna dozwolona wynosi 10. | Yes
-type | MAGAZYNY DANYCH Usługa Data Factory obsługuje następujące typy danych tymczasowych jako dozwolone wartości: **Int16, Int32, Int64, jednego, Double, Decimal, bajt [], atrybut typu wartość logiczna, ciąg, identyfikator Guid, daty/godziny, Datetimeoffset i przedziału czasu** | Nie
-Połączoną usługę sekcji określone opisy elementów JSON, które są wspólne dla wszystkich typów połączonych usług. | . Kulturę opartą na sieci ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
-Format | Format ciągu ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Zapoznaj się [Custom Date and Time Format Strings](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty/godziny. | Nie
+name | Nazwa kolumny. | Yes
+type | Typ danych kolumny. Usługa Data Factory obsługuje następujące typy danych tymczasowych jako dozwolone wartości: **Int16, Int32, Int64, pojedynczego, Double, Decimal, bajt [], atrybut typu wartość logiczna, ciąg, identyfikator Guid, daty/godziny, Datetimeoffset i przedziału czasu** | Nie
+Kultury | . Kulturę opartą na sieci ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
+format | Format ciągu ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Zapoznaj się [Custom Date and Time Format Strings](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty/godziny. | Nie
 
 ### <a name="example"></a>Przykład
 W poniższym przykładzie załóżmy, że źródło danych obiektu Blob jest w formacie CSV i zawiera trzy kolumny: nazwa użytkownika, nazwę i lastlogindate. Są one typu Int64, ciągów i typu Datetime w formacie niestandardowe daty/godziny przy użyciu skrócone nazwy francuska dzień tygodnia.

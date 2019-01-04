@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269597"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013149"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Rozpoczynanie pracy z usługą Azure Machine Learning dla programu Visual Studio Code
 
@@ -26,7 +26,7 @@ Użyj rozszerzenia usługi Azure Machine Learning w programie Visual Studio code
 ## <a name="prerequisite"></a>Wymagania wstępne
 
 
-+ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
++ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 + Musi być zainstalowany program Visual Studio Code. Program VS Code jest źródło lekki, ale Zaawansowany edytor kodu, działającą na pulpicie. Pochodzi z wbudowaną obsługą języka Python i innych.  [Dowiedz się, jak zainstalować program VS Code](https://code.visualstudio.com/docs/setup/setup-overview).
 
@@ -80,7 +80,8 @@ Przed rozpoczęciem szkolenia i wdrażania modeli uczenia maszynowego przy użyc
 
 1. Kliknij ikonę platformy Azure, w pasku działań programu Visual Studio Code. Zostanie wyświetlona na pasku bocznym usługi Azure Machine Learning.
 
-   [![pasek boczny](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![Zainstaluj](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+
 
 1. Kliknij prawym przyciskiem myszy subskrypcji platformy Azure, a następnie wybierz pozycję **Utwórz obszar roboczy**. Zostanie wyświetlona lista. W animowany obraz bezpłatna wersja próbna jest nazwa subskrypcji i obszar roboczy jest "TeamWorkspace". 
 
@@ -96,11 +97,11 @@ Przed rozpoczęciem szkolenia i wdrażania modeli uczenia maszynowego przy użyc
  
 1. Naciśnij klawisz enter i zostanie utworzony nowy eksperyment. Wygląda na to w drzewie poniżej nazwę obszaru roboczego.
 
-1. Kliknij prawym przyciskiem myszy nazwę eksperymentu, a następnie wybierz **dołączyć Folder do eksperymentu**. Ten folder powinien zawierać lokalnych skryptów w języku Python. Folder jest następnie łączony z eksperymentu w chmurze. 
+1. Można kliknij prawym przyciskiem myszy na eksperyment w obszarze roboczym i wybierz pozycję "Ustaw jako aktywny eksperymentu". **"Aktywny"** eksperymentu jest eksperyment aktualnie używasz, i folderu Otwórz w programie VS Code zostanie połączony z tego eksperymentu w chmurze. Ten folder powinien zawierać lokalnych skryptów w języku Python.
 
-   Teraz każdy eksperymentu działa z eksperymentu więc wszystkie kluczowe metryki będą zapisywane w historii eksperymentu i modeli, które możesz później uzyskać automatycznie przekazany do usługi Azure Machine Learning i przechowywane w usłudze Dzienniki i metryki eksperymentu.
+   Teraz każdy eksperymentu działa z eksperymentu, więc wszystkie kluczowe metryki będą zapisywane w historii eksperymentu i modeli, które możesz później uzyskać automatycznie przekazany do usługi Azure Machine Learning i przechowywane w usłudze Dzienniki i metryki eksperymentu.
 
-   [![Dołącz folderu w programie VS Code](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
+   [![Dołącz folderu w programie VS Code](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>Używanie skrótów klawiaturowych
 

@@ -9,17 +9,16 @@ ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698761"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022312"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -51,7 +50,7 @@ Brama zarządzania danymi zapewnia następujące możliwości:
 ### <a name="command-flow-and-data-flow"></a>Polecenie przepływu i przepływu danych
 Gdy używasz działania kopiowania do skopiowania danych między systemem lokalnym i w chmurze, działanie korzysta z bramy na przesyłanie danych z lokalnego źródła danych do chmury i na odwrót.
 
-Poniżej przedstawiono przepływ danych wysokiego poziomu i streszczenie kroków związanym z kopiowaniem za pomocą bramy danych: ![przepływu danych przy użyciu bramy](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Poniżej przedstawiono przepływ danych wysokiego poziomu dla i podsumowanie kroków związanym z kopiowaniem za pomocą bramy danych: ![Przepływ danych przy użyciu bramy](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
 1. Dane i deweloperów tworzy bramę dla usługi Azure Data Factory przy użyciu [witryny Azure portal](https://portal.azure.com) lub [polecenia Cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datafactories/).
 2. Dane i deweloperów tworzy połączonej usługi magazynu danych w środowisku lokalnym za pośrednictwem bramy. W ramach konfigurowania połączoną usługę dane i deweloperów używa aplikacji Ustawianie poświadczeń w celu określenia typów uwierzytelniania i poświadczeń.  Okno dialogowe Ustawianie poświadczeń w aplikacji komunikuje się z magazynem danych, aby przetestować połączenie i bramy w celu zapisania poświadczeń.
@@ -152,7 +151,7 @@ Na poziomie zapory Windows te porty wychodzące zwykle są włączone. Nie możn
 
 > [!NOTE]
 > 1. Na podstawie Twojego źródła / ujścia, może zajść potrzeba dodatkowe domeny listy dozwolonych adresów i portów wychodzących w zaporze firmowej/Windows.
-> 2. Dla niektórych baz danych w chmurze (na przykład: [usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [usługi Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access), itp.), może być konieczne do listy dozwolonych adresu IP maszyny bramy na ich konfigurację zapory.
+> 2. Dla niektórych baz danych w chmurze (na przykład: [Usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [usługi Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access), itp.), może być konieczne do listy dozwolonych adresu IP maszyny bramy na ich konfigurację zapory.
 >
 >
 
@@ -182,9 +181,9 @@ Brama używa serwera proxy, aby nawiązać połączenie z usługą w chmurze. Kl
 
 Dostępne są trzy opcje konfiguracji:
 
-* **Nie używaj serwera proxy**: bramy nie jawnie za pomocą dowolnego serwera proxy do łączenia się z usługami w chmurze.
-* **Użyj serwera proxy systemu**: Brama używa ustawienia oznacza to, skonfigurowanym w diahost.exe.config i diawp.exe.config serwera proxy.  Jeśli żaden serwer proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, brama łączy się z usługą w chmurze bezpośrednio bez konieczności zwracania się za pośrednictwem serwera proxy.
-* **Użyj niestandardowego serwera proxy**: skonfigurowanie ustawienia do użycia dla bramy, zamiast korzystać z konfiguracji w diahost.exe.config i diawp.exe.config proxy HTTP.  Wymagane są adres i Port.  Nazwa użytkownika i hasło są opcjonalne, w zależności od ustawienia uwierzytelniania na serwerze proxy.  Wszystkie ustawienia są szyfrowane za pomocą certyfikatu poświadczeń bramy i przechowywane lokalnie na komputerze hosta bramy.
+* **Nie używaj serwera proxy**: Bramy nie jawnie za pomocą dowolnego serwera proxy połączyć z usług w chmurze.
+* **Użyj serwera proxy systemu**: Brama używa ustawienia serwera proxy skonfigurowanego w diahost.exe.config i diawp.exe.config.  Jeśli żaden serwer proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, brama łączy się z usługą w chmurze bezpośrednio bez konieczności zwracania się za pośrednictwem serwera proxy.
+* **Użyj niestandardowego serwera proxy**: Konfiguruj ustawienia do użycia dla bramy, zamiast korzystać z konfiguracji w diahost.exe.config i diawp.exe.config proxy HTTP.  Wymagane są adres i Port.  Nazwa użytkownika i hasło są opcjonalne, w zależności od ustawienia uwierzytelniania na serwerze proxy.  Wszystkie ustawienia są szyfrowane za pomocą certyfikatu poświadczeń bramy i przechowywane lokalnie na komputerze hosta bramy.
 
 Brama zarządzania danymi usługi hosta powoduje automatyczne ponowne uruchomienie po zapisaniu zaktualizowanych ustawień serwera proxy.
 
@@ -236,7 +235,7 @@ Oprócz tych punktów, należy również upewnić, że Microsoft Azure znajduje 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Możliwe objawy zapory i serwera proxy problemów związanych z serwerem
 Jeśli wystąpią błędy podobne do poniższych, prawdopodobnie z powodu nieprawidłowej konfiguracji zapory lub serwera proxy, który blokuje bramy połączenie z usługą Data Factory do samodzielnego uwierzytelnienia. Można znaleźć w poprzedniej sekcji, aby upewnić się, zapory i serwera proxy są prawidłowo skonfigurowane.
 
-1. Po użytkownik próbuje zarejestrować bramę, pojawi się następujący błąd: "nie można zarejestrować klucz bramy. Zanim spróbujesz ponownie zarejestrować klucz bramy, upewnij się, że brama zarządzania danymi jest w stanie połączono i uruchomiono usługę hosta bramy zarządzania danymi."
+1. Gdy użytkownik próbuje zarejestrować bramę, pojawi się następujący błąd: "Nie można zarejestrować klucz bramy. Zanim spróbujesz ponownie zarejestrować klucz bramy, upewnij się, że brama zarządzania danymi jest w stanie połączono i uruchomiono usługę hosta bramy zarządzania danymi."
 2. Po otwarciu programu Configuration Manager, zostanie wyświetlony stan jako "Rozłączono" lub "Łączenie". Podczas przeglądania dzienników zdarzeń Windows, w obszarze "Podgląd zdarzeń" > "Aplikacji i usług dzienniki" > "Brama zarządzania danymi", zostanie wyświetlony błąd komunikaty, takie jak następujący błąd: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 

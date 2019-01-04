@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 61b331c330da5e2083a7a029e3f3137e6d4a1aab
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8a2e8b3cb841c18d337a610284bfb31862b0c63f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077838"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015869"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopiowanie danych z programu Jira przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -45,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku programu Jira połącz
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **programu Jira** | Yes |
+| type | Właściwość type musi być równa: **Jira** | Yes |
 | host | Adres IP lub hosta nazwę usługi programu Jira. (na przykład jira.example.com)  | Yes |
 | port | Port TCP używany przez serwer programu Jira do nasłuchiwania połączeń klientów. Wartością domyślną jest 443, jeśli połączenie za pośrednictwem protokołu HTTPS lub 8080, jeśli połączenie nawiązywane za pośrednictwem protokołu HTTP.  | Nie |
 | nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do usługi Jira.  | Yes |

@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 0907739bc0e67228f9f7f12594df7b9067e32578
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984982"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002658"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
-Przesyłanie strumieniowe jednostki (SUs) reprezentuje zasoby obliczeniowe, które są przydzielane do wykonania zadania. Większej liczby usług SUS, więcej zasobów Procesora i pamięci są przydzielane dla zadania. Pojemność pozwala skupić się na logice zapytania i streszczenia konieczność zarządzania sprzętowe do uruchomienia usługi Stream Analytics, zadania w odpowiednim czasie.
+Przesyłanie strumieniowe jednostki (SUs) reprezentuje zasoby obliczeniowe, które są przydzielane do wykonania zadania. Im większa liczba jednostek przesyłania strumieniowego, tym większa ilość zasobów procesora i pamięci jest przydzielana do zadania. Pojemność pozwala skupić się na logice zapytania i streszczenia konieczność zarządzania sprzętowe do uruchomienia usługi Stream Analytics, zadania w odpowiednim czasie.
 
-Uzyskanie małych opóźnień przetwarzania strumienia, zadania usługi Azure Stream Analytics, należy wykonać całego procesu przetwarzania w pamięci. Gdy używany jest za mało pamięci, zadanie przesyłania strumieniowego nie powiedzie się. W wyniku dla zadania produkcji, ważne jest monitorowanie użycia zasobów zadania przesyłania strumieniowego i upewnij się, Brak wystarczających zasobów przydzielonych do zachowania zadania uruchamiania 24/7.
+W celu uzyskania małych opóźnień przetwarzania strumieni całe przetwarzanie dla zadań usługi Azure Stream Analytics jest wykonywane w pamięci. Gdy używany jest za mało pamięci, zadanie przesyłania strumieniowego nie powiedzie się. W wyniku dla zadania produkcji, ważne jest monitorowanie użycia zasobów zadania przesyłania strumieniowego i upewnij się, Brak wystarczających zasobów przydzielonych do zachowania zadania uruchamiania 24/7.
 
-Metryki wykorzystania SU %, której zakres od 0% do 100%, w tym artykule opisano obciążenia zużycie pamięci. Zadanie przesyłania strumieniowego przy użyciu minimalnego rozmiaru ta metryka jest zwykle od 10 do 20%. Jeśli brakuje % wykorzystania SU i Uzyskaj zaległe zdarzenia wejściowe, prawdopodobnie obciążenie wymaga większej ilości zasobów obliczeniowych, co wymaga zwiększenia liczby usług SUs. Najlepiej przechowywać metryki SU poniżej 80%, aby uwzględnić okazjonalne skoki. Firma Microsoft zaleca ustawienie alertu na 80% wykorzystania SU metrykę, aby zapobiec wyczerpanie zasobów. Aby uzyskać więcej informacji, zobacz [samouczek: Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics](stream-analytics-set-up-alerts.md).
+Metryki wykorzystania SU %, której zakres od 0% do 100%, w tym artykule opisano obciążenia zużycie pamięci. Zadanie przesyłania strumieniowego przy użyciu minimalnego rozmiaru ta metryka jest zwykle od 10 do 20%. Jeśli brakuje % wykorzystania SU i Uzyskaj zaległe zdarzenia wejściowe, prawdopodobnie obciążenie wymaga większej ilości zasobów obliczeniowych, co wymaga zwiększenia liczby usług SUs. Najlepiej przechowywać metryki SU poniżej 80%, aby uwzględnić okazjonalne skoki. Firma Microsoft zaleca ustawienie alertu na 80% wykorzystania SU metrykę, aby zapobiec wyczerpanie zasobów. Aby uzyskać więcej informacji, zobacz [Samouczek: Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurowanie usługi Stream Analytics (SUs) jednostki przesyłania strumieniowego
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/)
@@ -48,7 +48,7 @@ Wybór liczby SUs wymagane dla określonego zadania zależy od konfiguracji part
 
 Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest rozpoczęcie od 6 SUs dla zapytań, które nie używają **PARTITION BY**. Następnie określ miejsce sweet przy użyciu metody prób i błędów, w którym możesz zmodyfikować liczbę SUs po przekazać reprezentatywnej ilości danych i sprawdzić metryki użycia % SU. Maksymalna liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie usługi Stream Analytics zależy od liczby kroków w zapytaniu, określony dla zadania i liczby partycji w każdym kroku. Dowiedz się więcej na temat limitów [tutaj](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs, zobacz tę stronę: [zadań skalowania usługi Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
+Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs zobacz tę stronę: [Skalowanie zadań usługi Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
 
 > [!Note]
 > Wybieranie ilości jednostek przesyłania strumieniowego są wymagane dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania zdefiniowanego dla tego zadania. Możesz wybrać do limitu przydziału w SUs do danego zadania. Domyślnie każda subskrypcja platformy Azure ma limit przydziału o rozmiarze do 200 SUs dla wszystkich zadań analizy w określonym regionie. Aby zwiększyć SUs dla Twojej subskrypcji po przekroczeniu tego limitu przydziału, skontaktuj się z pomocą [Microsoft Support](https://support.microsoft.com). Prawidłowe wartości dla SUs poszczególne zadania są 1, 3, 6 i w przyrostach co 6.
@@ -57,13 +57,15 @@ Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs, zob
 
 Elementy danych czasowych zapytania (zorientowane na czas) to podstawowy zestaw operatorów stanowych dostarczane przez usługę Stream Analytics. Stream Analytics zarządza stanem tych operacji wewnętrznie w imieniu użytkownika, zarządzając zużycie pamięci, punkty kontrolne dla odporności i odzyskiwania stanu podczas uaktualnienia usługi. Mimo że usługi Stream Analytics w pełni zarządza każdym stany, istnieje kilka zalecenia dotyczące najlepszych rozwiązań, które należy wziąć pod uwagę użytkowników.
 
+Należy zauważyć, że zadanie z logiką złożonego zapytania można wysokiej % wykorzystania SU nawet wtedy, gdy nie jest stale odbierania zdarzeń wejściowych. Może to nastąpić po nagłym skokiem w zdarzeniach wejściowych i wyjściowych. Zadanie może w dalszym ciągu zachować stan pamięci, jeśli zapytanie jest złożone.
+
 ## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
 Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każda z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
 
 Koncepcja okno danych czasowych pojawia się w kilku elementów zapytań usługi Stream Analytics:
-1. Okresowymi: grupy przez z wirowania, przeskokiem i przesuwanie systemu windows
+1. Agregacje okna: GRUPY według z wirowania, przeskokiem i przesuwanie systemu windows
 
-2. Sprzężenia danych czasowych: Dołącz za pomocą funkcji DATEDIFF
+2. Sprzężenia danych czasowych: Dołącz do przy użyciu funkcji DATEDIFF
 
 3. Funkcje analityczne danych czasowych: ISFIRST, LAST i OPÓŹNIENIEM przy użyciu limitu czasu trwania
 

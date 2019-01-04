@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 600bec9e4cfe356dcd28d489707d20ab47f5b013
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 62ee1c880987d0f9ad358f1a0d31af4a73263725
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753646"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017977"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -28,7 +28,7 @@ Ma również funkcji [wbudowane funkcje monitorowania, która nie korzysta z us�
 
 ## <a name="application-insights-pricing-and-limits"></a>Limity i ceny usługi Application Insights
 
-Możesz wypróbować integracji usługi Application Insights z aplikacji funkcji za darmo. Jednak istnieje dzienny limit ilości danych, które mogą być przetwarzane za darmo i może napotkać tego limitu podczas testowania. Platforma Azure zapewnia portal i powiadomień e-mail, gdy zbliża się dziennego limitu.  Ale jeśli pominąć te alerty i osiągnięty limit, nowe dzienniki nie będą wyświetlane w zapytania usługi Application Insights. Dlatego należy pamiętać o limit, aby uniknąć niepotrzebnych czas rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Zarządzanie cenami i ilością danych w usłudze Application Insights](../application-insights/app-insights-pricing.md).
+Możesz wypróbować integracji usługi Application Insights z aplikacji funkcji za darmo. Jednak istnieje dzienny limit ilości danych, które mogą być przetwarzane za darmo i może napotkać tego limitu podczas testowania. Platforma Azure zapewnia portal i powiadomień e-mail, gdy zbliża się dziennego limitu.  Ale jeśli pominąć te alerty i osiągnięty limit, nowe dzienniki nie będą wyświetlane w zapytania usługi Application Insights. Dlatego należy pamiętać o limit, aby uniknąć niepotrzebnych czas rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Zarządzanie cenami i ilością danych w usłudze Application Insights](../azure-monitor/app/pricing.md).
 
 ## <a name="enable-app-insights-integration"></a>Włączanie integracji usługi App Insights
 
@@ -85,7 +85,7 @@ Po skonfigurowaniu integracji usługi Application Insights jak pokazano w poprze
 
 1. Wybierz **Odśwież** okresowo, dopóki nie zostanie wyświetlona lista wywołania funkcji.
 
-   Może upłynąć do 5 minut na liście, aby wyświetlane ze względu na sposób dane telemetryczne klienta partie w celu przesłania go do serwera. (Nie dotyczy to opóźnienie [Live Stream metryki](../application-insights/app-insights-live-stream.md). Czy usługa łączy się z hosta funkcji podczas ładowania strony, aby dzienniki są przesyłane strumieniowo bezpośrednio do strony.)
+   Może upłynąć do 5 minut na liście, aby wyświetlane ze względu na sposób dane telemetryczne klienta partie w celu przesłania go do serwera. (Nie dotyczy to opóźnienie [Live Stream metryki](../azure-monitor/app/live-stream.md). Czy usługa łączy się z hosta funkcji podczas ładowania strony, aby dzienniki są przesyłane strumieniowo bezpośrednio do strony.)
 
    ![Lista wywołań](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -115,7 +115,7 @@ Aby otworzyć usługę Application Insights z aplikacji funkcji w witrynie Azure
 
 Aby uzyskać informacje o tym, jak używać usługi Application Insights, zobacz [dokumentacja usługi Application Insights](https://docs.microsoft.com/azure/application-insights/). W tej sekcji przedstawiono kilka przykładów sposobu wyświetlania danych w usłudze Application Insights. Jeśli już znasz z usługą Application Insights, możesz też przejść bezpośrednio do [sekcje dotyczące konfigurowania i dostosowywania dane telemetryczne](#configure-categories-and-log-levels).
 
-W [Eksploratora metryk](../application-insights/app-insights-metrics-explorer.md), możesz tworzyć wykresy i alerty oparte na metryki, takie jak liczba wywołań funkcji, czas wykonywania i Częstotliwość powodzeń.
+W [Eksploratora metryk](../azure-monitor/app/metrics-explorer.md), możesz tworzyć wykresy i alerty oparte na metryki, takie jak liczba wywołań funkcji, czas wykonywania i Częstotliwość powodzeń.
 
 ![Eksplorator metryk](media/functions-monitoring/metrics-explorer.png)
 
@@ -123,7 +123,7 @@ Na [błędy](../azure-monitor/app/asp-net-exceptions.md) karty, możesz tworzyć
 
 ![Błędy](media/functions-monitoring/failures.png)
 
-Na [wydajności](../application-insights/app-insights-performance-counters.md) karcie, można analizować problemy z wydajnością.
+Na [wydajności](../azure-monitor/app/performance-counters.md) karcie, można analizować problemy z wydajnością.
 
 ![Wydajność](media/functions-monitoring/performance.png)
 
@@ -131,7 +131,7 @@ Na [wydajności](../application-insights/app-insights-performance-counters.md) k
 
 ![Serwery](media/functions-monitoring/servers.png)
 
-[Live Stream metryki](../application-insights/app-insights-live-stream.md) karta przedstawia dane metryk, ponieważ jest on tworzony w czasie rzeczywistym.
+[Live Stream metryki](../azure-monitor/app/live-stream.md) karta przedstawia dane metryk, ponieważ jest on tworzony w czasie rzeczywistym.
 
 ![Transmisja strumieniowa na żywo](media/functions-monitoring/live-stream.png)
 
@@ -329,7 +329,7 @@ Jak wspomniano w poprzedniej sekcji, środowisko uruchomieniowe agreguje dane do
 
 ## <a name="configure-sampling"></a>Konfigurowanie próbkowania
 
-Usługa Application Insights ma [próbkowania](../application-insights/app-insights-sampling.md) funkcji, które można chronić klientów przed tworzenie zbyt dużej ilości danych telemetrycznych dane w czasie szczytowego obciążenia. Liczba przychodzących danych telemetrycznych przekracza określoną wartość progową, Application Insights uruchamia losowo ignorowanie niektórych elementów przychodzących. Domyślne ustawienie maksymalnej liczby elementów na sekundę wynosi 5. Można skonfigurować pobieranie próbek w [host.json](functions-host-json.md).  Oto przykład:
+Usługa Application Insights ma [próbkowania](../azure-monitor/app/sampling.md) funkcji, które można chronić klientów przed tworzenie zbyt dużej ilości danych telemetrycznych dane w czasie szczytowego obciążenia. Liczba przychodzących danych telemetrycznych przekracza określoną wartość progową, Application Insights uruchamia losowo ignorowanie niektórych elementów przychodzących. Domyślne ustawienie maksymalnej liczby elementów na sekundę wynosi 5. Można skonfigurować pobieranie próbek w [host.json](functions-host-json.md).  Oto przykład:
 
 ### <a name="version-2x"></a>W wersji 2.x 
 
@@ -360,7 +360,7 @@ Usługa Application Insights ma [próbkowania](../application-insights/app-insig
 ```
 
 > [!NOTE]
-> [Próbkowanie](../application-insights/app-insights-sampling.md) jest domyślnie włączona. Jeśli prawdopodobnie brakuje danych, po prostu może być konieczne dostosowanie ustawień próbkowania odpowiednio do danego scenariusza monitorowania.
+> [Próbkowanie](../azure-monitor/app/sampling.md) jest domyślnie włączona. Jeśli prawdopodobnie brakuje danych, po prostu może być konieczne dostosowanie ustawień próbkowania odpowiednio do danego scenariusza monitorowania.
 
 ## <a name="write-logs-in-c-functions"></a>Zapisują dzienniki w funkcji języka C#
 

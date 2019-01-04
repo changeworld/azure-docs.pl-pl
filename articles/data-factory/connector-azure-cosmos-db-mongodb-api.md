@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 2cffc99eade88d50e3de212b5680b640c14fa7a7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 3f60ffcde43bd1ee43b5dd7d1e86da3a8bf2c521
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812375"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002114"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-mongodb-api-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Cosmos DB (interfejs API usługi MongoDB) lub za pomocą usługi Azure Data Factory
 
@@ -172,7 +172,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia*
 |:--- |:--- |:--- |
 | type | **Typu** właściwość ujścia działania kopiowania musi być równa **CosmosDbMongoDbApiSink**. |Yes |
 | writeBehavior |Opisuje sposób zapisywania danych do usługi Azure Cosmos DB. Dozwolone wartości: **Wstaw** i **upsert**.<br/><br/>Zachowanie **upsert** zastąpi dokumentu, jeśli dokument o tym samym identyfikatorze już istnieje; w przeciwnym razie Wstaw dokumentu.<br /><br />**Uwaga**: Fabryka danych automatycznie generuje identyfikator dla dokumentu, jeśli identyfikator nie jest określona w oryginalnym dokumencie lub mapowania kolumn. Oznacza to, że użytkownik musi zapewnić, że dla **upsert** działała zgodnie z oczekiwaniami, dokument ma identyfikator. |Nie<br />(wartość domyślna to **Wstaw**) |
-| writeBatchSize | **WriteBatchSize** właściwość steruje rozmiarem pamięci dokumenty, aby zapisać w każdej partii. Można spróbować zwiększyć wartość **writeBatchSize** Aby zwiększyć wydajność i zmniejszyć wartość, jeśli rozmiar dokumentu jest duży. |Nie<br />(wartość domyślna to **5**) |
+| writeBatchSize | **WriteBatchSize** właściwość steruje rozmiarem pamięci dokumenty, aby zapisać w każdej partii. Można spróbować zwiększyć wartość **writeBatchSize** Aby zwiększyć wydajność i zmniejszyć wartość, jeśli rozmiar dokumentu jest duży. |Nie<br />(wartość domyślna to **10 000**) |
 | writeBatchTimeout | Czas oczekiwania dla partii wstawić na zakończenie przed upływem limitu czasu operacji. Dozwolone wartości to przedziału czasu. | Nie<br/>(wartość domyślna to **00:30:00** — 30 minut) |
 
 **Przykład**

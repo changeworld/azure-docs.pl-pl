@@ -6,15 +6,15 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744243"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023105"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -261,6 +261,15 @@ Aby rozwiązać ten problem, dostosowując **DirectoryCacheEntrySizeMax** warto�
  
 Można na przykład, ustaw ją na 0x100000 i sprawdzić, czy wydajność stają się lepsze.
 
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Błąd AadDsTenantNotFound włączania uwierzytelniania usługi Azure Active Directory dla usługi Azure Files "Nie można zlokalizować aktywnych dzierżaw z dzierżawą identyfikator aad-tenant-id"
+
+### <a name="cause"></a>Przyczyna
+
+Błąd AadDsTenantNotFound się dzieje, gdy użytkownik próbuje [Włącz uwierzytelnianie usługi Azure Active Directory (AAD) dla usługi Azure Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) na koncie magazynu gdzie [AAD Domain Service(AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) nie jest tworzony w usłudze AAD dzierżawy skojarzonej subskrypcji.  
+
+### <a name="solution"></a>Rozwiązanie
+
+Włącz DS usługi AAD w dzierżawie usługi AAD, subskrypcji, wdrożoną konta magazynu. Niezbędne są uprawnienia administratora dzierżawy usługi AAD, aby utworzyć domeny zarządzanej. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie z szczegółowymi wskazówkami dotyczącymi [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.

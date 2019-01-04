@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: mbullwin
-ms.openlocfilehash: a3cab6af86a18e23199437c91b6d07102e783cd1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c906f313ae367fcc660d1ce1df0b3d667c7f04a3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971277"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016123"
 ---
 # <a name="application-insights-export-data-model"></a>Model danych eksportu Insights aplikacji
 Poniższa tabela zawiera listę właściwości telemetrii wysyłanych z [usługi Application Insights](../../application-insights/app-insights-overview.md) zestawów SDK do portalu.
 Zobaczysz tych właściwości w danymi wyjściowymi [eksportu ciągłego](export-telemetry.md).
-Widoczne są także w filtry właściwości w [Eksploratora metryk](../../application-insights/app-insights-metrics-explorer.md) i [wyszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md).
+Widoczne są także w filtry właściwości w [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) i [wyszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md).
 
 Informacje, które należy zwrócić uwagę:
 
@@ -158,7 +158,7 @@ Niestandardowe zdarzenia generowane przez [poleceń TrackEvent()](../../azure-mo
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| Liczba zdarzeń [0] |liczba całkowita |100 / ([próbkowania](../../application-insights/app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| Liczba zdarzeń [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | Nazwa zdarzenia [0] |ciąg |Nazwa zdarzenia.  Maksymalna długość 250. |
 | adres url zdarzenia [0] |ciąg | |
 | urlData.base zdarzeń [0] |ciąg | |
@@ -170,7 +170,7 @@ Raporty [wyjątki](../../azure-monitor/app/asp-net-exceptions.md) na serwerze i 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | zestaw basicException [0] |ciąg | |
-| Liczba basicException [0] |liczba całkowita |100 / ([próbkowania](../../application-insights/app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| Liczba basicException [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | exceptionGroup basicException [0] |ciąg | |
 | Typ basicException [0] |ciąg | |
 | failedUserCodeMethod basicException [0] |ciąg | |
@@ -211,7 +211,7 @@ Wysyłany przez TrackDependency. Używany do raportu wydajności i użycia [wywo
 | asynchroniczne remoteDependency [0] |wartość logiczna | |
 | baseName remoteDependency [0] |ciąg | |
 | commandName remoteDependency [0] |ciąg |Na przykład "home/index" |
-| Liczba remoteDependency [0] |liczba całkowita |100 / ([próbkowania](../../application-insights/app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| Liczba remoteDependency [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | dependencyTypeName remoteDependency [0] |ciąg |PROTOKÓŁ HTTP SQL... |
 | durationMetric.value remoteDependency [0] |numer |Czas od wywołania uzupełniania odpowiedzi przez zależność |
 | Identyfikator remoteDependency [0] |ciąg | |
@@ -229,7 +229,7 @@ Wysyłany przez [TrackRequest](../../azure-monitor/app/api-custom-events-metrics
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| Liczba żądań [0] |liczba całkowita |100 / ([próbkowania](../../application-insights/app-insights-sampling.md) współczynnik). Na przykład: 4 =&gt; 25%. |
+| Liczba żądań [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład: 4 =&gt; 25%. |
 | durationMetric.value żądania [0] |numer |Czas od żądania przychodzące do odpowiedzi. 1e7 == 1s |
 | Identyfikator żądania [0] |ciąg |Identyfikator operacji |
 | Nazwa żądania [0] |ciąg |GET/POST + baza adresów url.  Maksymalna długość 250 |
@@ -264,7 +264,7 @@ Wysyłany przez trackPageView() lub [stopTrackPage](../../azure-monitor/app/api-
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| Liczba wyświetleń [0] |liczba całkowita |100 / ([próbkowania](../../application-insights/app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| Liczba wyświetleń [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | Wyświetl durationMetric.value [0] |liczba całkowita |Wartość Opcjonalnie trackPageView() lub startTrackPage() - stopTrackPage(). Nie taka sama jak clientPerformance wartości. |
 | Nazwa widoku [0] |ciąg |Tytuł strony.  Maksymalna długość 250 |
 | adres url widoku [0] |ciąg | |
@@ -279,7 +279,7 @@ Raporty [testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-
 | --- | --- | --- |
 | availabilityMetric.name dostępności [0] |ciąg |availability |
 | availabilityMetric.value dostępności [0] |numer |w wersji 1.0 lub 0.0 |
-| Liczba dostępności [0] |liczba całkowita |100 / ([próbkowania](../../application-insights/app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| Liczba dostępności [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | dataSizeMetric.name dostępności [0] |ciąg | |
 | dataSizeMetric.value dostępności [0] |liczba całkowita | |
 | durationMetric.name dostępności [0] |ciąg | |
@@ -341,7 +341,7 @@ Celem innych pól jest umożliwiające metryki agregowania w zestawie SDK w celu
 
 W powyższej tabeli pominięto rzadko używane pola liczą, min, max, stdDev i sampledValue.
 
-Zamiast wstępnie agregacji metryk, możesz użyć [próbkowania](../../application-insights/app-insights-sampling.md) Jeśli musisz ograniczyć ilość danych telemetrii.
+Zamiast wstępnie agregacji metryk, możesz użyć [próbkowania](../../azure-monitor/app/sampling.md) Jeśli musisz ograniczyć ilość danych telemetrii.
 
 ### <a name="durations"></a>Czas trwania
 Z wyjątkiem sytuacji, gdy inaczej czasu trwania są reprezentowane w liczba dziesiątych części mikrosekund tak, aby 10000000.0 oznacza, że 1 sekundę.

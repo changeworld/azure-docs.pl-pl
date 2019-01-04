@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 09b5f387b0c7f765ea0835dcef79932203d68338
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390140"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014356"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Data Factory
 > [!div class="op_single_selector"]
@@ -62,7 +61,7 @@ Wraz z upływem czasu modele predykcyjne w usłudze Machine Learning do oceny ek
 Zobacz [działań usługi Machine Learning użyj](transform-data-using-machine-learning.md) szczegółowe informacje na temat tych działań usługi Machine Learning. 
 
 ## <a name="stored-procedure-activity"></a>Działanie procedury przechowywanej
-Aby wywołać procedurę składowaną w jednym z następujących magazynów danych służy działanie procedury składowanej programu SQL Server w potoku usługi Data Factory: Azure SQL Database, Azure SQL Data Warehouse, bazy danych SQL Server w przedsiębiorstwie lub Maszynie wirtualnej platformy Azure. Zobacz [działania procedura składowana](transform-data-using-stored-procedure.md) artykuł, aby uzyskać szczegółowe informacje.  
+Działanie procedury składowanej programu SQL Server w potoku usługi fabryka danych umożliwia wywoływanie procedury składowanej w jednym z następujących magazynów danych: Azure SQL Database, Azure SQL Data Warehouse, bazy danych SQL Server w przedsiębiorstwie lub Maszynie wirtualnej platformy Azure. Zobacz [działania procedura składowana](transform-data-using-stored-procedure.md) artykuł, aby uzyskać szczegółowe informacje.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Działanie U-SQL usługi Data Lake Analytics
 Działania usługi Data Lake Analytics U-SQL uruchamia skrypt U-SQL w klastrze usługi Azure Data Lake Analytics. Zobacz [działanie analiz danych U-SQL](transform-data-using-data-lake-analytics.md) artykuł, aby uzyskać szczegółowe informacje. 
@@ -87,10 +86,10 @@ Możesz utworzyć niestandardowe działanie, aby uruchamiać skrypty w klastrze 
 ## <a name="compute-environments"></a>Środowiska obliczeniowego
 Tworzenie połączonej usługi dla środowiska obliczeniowego i następnie użyć połączonej usługi, podczas definiowania działanie przekształcania. Istnieją dwa rodzaje środowisk obliczeniowych obsługiwanych przez usługę Data Factory. 
 
-- **Na żądanie**: W tym przypadku środowiskiem obliczeniowym jest w pełni zarządzana przez usługę Data Factory. Zostanie automatycznie utworzony przez usługę Data Factory przed zadanie jest przesyłane do przetwarzania danych i usuwane, gdy zadanie jest ukończone. Można skonfigurować i kontrolować ustawienia szczegółowe środowisko obliczeniowe na żądanie na potrzeby wykonywania zadań zarządzania klastrem i uruchamianie akcji. 
-- **Bring Your Own**: W tym przypadku należy zarejestrować własne środowisko przetwarzania danych (na przykład klaster HDInsight) jako połączonej usługi w usłudze Data Factory. Środowiskiem obliczeniowym jest zarządzany przez użytkownika, a usługa Data Factory używa go do wykonywania działań. 
+- **Na żądanie**:  W takim środowisku komputerowym jest w pełni zarządzana przez usługę Data Factory. Zostanie automatycznie utworzony przez usługę Data Factory przed zadanie jest przesyłane do przetwarzania danych i usuwane, gdy zadanie jest ukończone. Można skonfigurować i kontrolować ustawienia szczegółowe środowisko obliczeniowe na żądanie na potrzeby wykonywania zadań zarządzania klastrem i uruchamianie akcji. 
+- **Skorzystaj z własnych**: W takim przypadku można zarejestrować własne środowisko przetwarzania danych (na przykład klaster HDInsight) jako połączonej usługi w usłudze Data Factory. Środowiskiem obliczeniowym jest zarządzany przez użytkownika, a usługa Data Factory używa go do wykonywania działań. 
 
 Zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykuł, aby dowiedzieć się więcej na temat usług obliczeniowych obsługiwanych przez usługę Data Factory. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące samouczki, na przykład za pomocą działania przekształcenia: [samouczek: Przekształcanie danych przy użyciu platformy Spark](tutorial-transform-data-spark-powershell.md)
+Zobacz następujące samouczki, na przykład za pomocą działania przekształcenia: [Samouczek: Przekształcanie danych przy użyciu platformy Spark](tutorial-transform-data-spark-powershell.md)

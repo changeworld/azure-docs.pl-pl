@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7f4c03c4335f9936d78890ad2e3903d0986f86d8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807690"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025678"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Praca z baz danych Azure Cosmos, kontenery i elementów
 
@@ -77,10 +77,10 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowane przez system
 
 | **Właściwości zdefiniowane przez system** | **System wygenerowany lub do ustawienia użytkownika** | **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__rid | Generowane przez system | Unikatowy identyfikator kontenera | Yes | Nie | Nie | Nie | Nie |
-|__etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
-|__ts | Generowane przez system | Znacznik czasu ostatniej aktualizacji kontenera | Yes | Nie | Nie | Nie | Nie |
-|__self | Generowane przez system | Mogą być adresowane identyfikator URI kontenera | Yes | Nie | Nie | Nie | Nie |
+|_rid | Generowane przez system | Unikatowy identyfikator kontenera | Yes | Nie | Nie | Nie | Nie |
+|_etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
+|_ts | Generowane przez system | Znacznik czasu ostatniej aktualizacji kontenera | Yes | Nie | Nie | Nie | Nie |
+|_self | Generowane przez system | Mogą być adresowane identyfikator URI kontenera | Yes | Nie | Nie | Nie | Nie |
 |id | Użytkownika można konfigurować | Zdefiniowane przez użytkownika unikatową nazwę kontenera | Yes | Yes | Yes | Yes | Yes |
 |indexingPolicy | Użytkownika można konfigurować | Pozwala zmienić ścieżkę indeksu, ich dokładności i modelu spójności. | Yes | Nie | Nie | Nie | Yes |
 |TimeToLive | Użytkownika można konfigurować | Umożliwia automatyczne usuwanie elementów z kontenera po określonym okresie czasu. Aby uzyskać więcej informacji, zobacz [Time To Live](time-to-live.md) artykułu. | Yes | Nie | Nie | Nie | Yes |
@@ -113,10 +113,10 @@ Każdy element w usłudze Azure Cosmos ma następujące właściwości zdefiniow
 
 |**Właściwości zdefiniowane przez system** | **System wygenerowany lub do ustawienia użytkownika**| **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__id | Generowane przez system | Unikatowy identyfikator elementu | Yes | Nie | Nie | Nie | Nie |
-|__etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
-|__ts | Generowane przez system | Znacznik czasu ostatniej aktualizacji elementu | Yes | Nie | Nie | Nie | Nie |
-|__self | Generowane przez system | Mogą być adresowane identyfikator URI elementu | Yes | Nie | Nie | Nie | Nie |
+|_identyfikator | Generowane przez system | Unikatowy identyfikator elementu | Yes | Nie | Nie | Nie | Nie |
+|_etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
+|_ts | Generowane przez system | Znacznik czasu ostatniej aktualizacji elementu | Yes | Nie | Nie | Nie | Nie |
+|_self | Generowane przez system | Mogą być adresowane identyfikator URI elementu | Yes | Nie | Nie | Nie | Nie |
 |id | Albo | Zdefiniowane przez użytkownika unikatową nazwę w ramach partycji logicznej. Jeśli użytkownik nie określono identyfikatora, system wygeneruje ją automatycznie. | Yes | Yes | Yes | Yes | Yes |
 |Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Zdefiniowane przez użytkownika właściwości, które są reprezentowane w reprezentacji natywnego interfejsu API (JSON, BSON, języka CQL itp.) | Yes | Yes | Yes | Yes | Yes |
 

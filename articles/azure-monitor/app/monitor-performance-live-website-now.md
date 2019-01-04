@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: a993e35282c0c49ae4e3f2ff9f2314f12d779438
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8de7ed00114a11b4c765bfa9f9ae42529ef53f7f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981059"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024029"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentowanie aplikacji internetowych w czasie wykonywania za pomocą usługi Application Insights
 
@@ -38,7 +38,7 @@ Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z dan
 | Żądania i wyjątki |Yes |Yes |
 | [Bardziej szczegółowe wyjątki](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Diagnostyka zależności](../../azure-monitor/app/asp-net-dependencies.md) |Na platformie .NET 4.6 +, ale mniej szczegółów |Tak, kompletne szczegóły: kody wyników, tekst polecenia SQL, czasownik HTTP|
-| [Liczniki wydajności sytemu](../../application-insights/app-insights-performance-counters.md) |Yes |Yes |
+| [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
 | [Interfejs API dla telemetrii niestandardowej][api] |Yes |Nie |
 | [Integracja dziennika śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Nie |
 | [Widok strony i dane użytkownika](../../azure-monitor/app/javascript.md) |Yes |Nie |
@@ -256,7 +256,7 @@ W przypadku aplikacji już instrumentowanych w czasie kompilacji:
 
 Wyświetlanie telemetrii:
 
-* [Eksplorowanie metryk](../../application-insights/app-insights-metrics-explorer.md) w celu monitorowania wydajności i użycia
+* [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
 * [Wyszukiwanie zdarzeń i dzienników][diagnostic] w celu diagnozowania problemów
 * [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
 * [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md)
@@ -275,5 +275,5 @@ Dodawanie kolejnych funkcji telemetrii:
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
 [qna]: ../../application-insights/app-insights-troubleshoot-faq.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

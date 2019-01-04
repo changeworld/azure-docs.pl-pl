@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 5f21f33678b8cf09d9dbd8966d42b1a5ebac9ffb
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 8ab6dad36bf47430a925d21ca2464286e7e70002
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224656"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022074"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Przekształcanie danych przez uruchamianie notesu usługi Databricks
 
-Działania notesu usługi Databricks platformy Azure w [potoku usługi Data Factory](concepts-pipelines-activities.md) uruchamia notesu usługi Databricks w obszarze roboczym usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
+Działania notesu usługi Databricks platformy Azure w [potoku usługi Data Factory](concepts-pipelines-activities.md) uruchamia notesu usługi Databricks w obszarze roboczym usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definicji działania notesu usługi Databricks
 
@@ -63,7 +62,7 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
 |name|Nazwa działania w potoku.|Yes|
 |description|Tekst opisujący, co działanie robi.|Nie|
 |type|W przypadku działania notesu usługi Databricks typ działania jest DatabricksNotebook.|Yes|
-|linkedServiceName|Nazwa połączonej usługi, na którym działa notesu usługi Databricks usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
+|linkedServiceName|Nazwa połączonej usługi, na którym działa notesu usługi Databricks usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
 |notebookPath|Ścieżka bezwzględna Notes do uruchomienia w obszarze roboczym usługi Databricks. Ta ścieżka musi zaczynać się od ukośnika.|Yes|
 |baseParameters|Tablica par klucz-wartość. Podstawowe parametry może służyć do uruchamiania każdego działania. Jeśli notes przyjmuje parametr, który nie jest określona, zostanie użyta wartość domyślna, z notesu. Znajdź więcej informacji na temat parametrów w [elementów Databricks notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nie|
 |Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica \<string, object >.|Nie|

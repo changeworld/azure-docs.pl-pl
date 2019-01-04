@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3c4bd08d2ba3aa4aeceb38a0ae498786f681d800
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960689"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015750"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Usługa Azure Data Factory — zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych
 
@@ -181,14 +180,14 @@ Następujące magazynami danych w chmurze wymagają umieszczania na białej liś
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Pytanie:** bramy można współdzielić w ramach fabryki danych?
-**Odpowiedź:** nie obsługujemy tej funkcji jeszcze. Aktywnie pracujemy nad jej.
+**Pytanie:** Bramy można współdzielić w ramach fabryki danych?
+**Odpowiedź:** Firma Microsoft nie obsługuje tej funkcji jeszcze. Aktywnie pracujemy nad jej.
 
-**Pytanie:** jakie są wymagania dotyczące portów, aby brama mogła działać?
-**Odpowiedź:** bramy umożliwia nawiązanie połączenia oparte na protokole HTTP do otwartej sieci internet. **Wychodzącego porty 443 i 80** muszą być otwarte dla bramy to połączenie. Otwórz **8050 portu dla ruchu przychodzącego** tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli usługa Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło / docelowym, a następnie możesz trzeba otworzyć **1433** również port. Aby uzyskać więcej informacji, zobacz [zapory, konfiguracje i listy dozwolonych adresów IP](#firewall-configurations-and-whitelisting-ip-address-of gateway) sekcji. 
+**Pytanie:** Jakie są wymagania dotyczące portów, aby brama mogła działać?
+**Odpowiedź:** Brama umożliwia nawiązanie połączenia oparte na protokole HTTP do otwartej sieci internet. **Wychodzącego porty 443 i 80** muszą być otwarte dla bramy to połączenie. Otwórz **8050 portu dla ruchu przychodzącego** tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli usługa Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło / docelowym, a następnie możesz trzeba otworzyć **1433** również port. Aby uzyskać więcej informacji, zobacz [zapory, konfiguracje i listy dozwolonych adresów IP](#firewall-configurations-and-whitelisting-ip-address-of gateway) sekcji. 
 
-**Pytanie:** jakie są wymagania dotyczące certyfikatów dla bramy?
-**Odpowiedź:** bieżąca brama wymaga certyfikatu, który jest używany przez aplikację Menedżer poświadczeń do bezpiecznego ustawiania poświadczeń magazynu danych. Ten certyfikat jest certyfikat z podpisem własnym utworzony i skonfigurowany przez Instalatora bramy. Można użyć własnego protokołu TLS / SSL certyfikatu zamiast tego. Aby uzyskać więcej informacji, zobacz [kliknij — raz poświadczeń aplikacji Menedżera](#click-once-credentials-manager-app) sekcji. 
+**Pytanie:** Jakie są wymagania dotyczące certyfikatów dla bramy?
+**Odpowiedź:** Bieżąca brama wymaga certyfikatu, który jest używany przez aplikację Menedżer poświadczeń do bezpiecznego ustawiania poświadczeń magazynu danych. Ten certyfikat jest certyfikat z podpisem własnym utworzony i skonfigurowany przez Instalatora bramy. Można użyć własnego protokołu TLS / SSL certyfikatu zamiast tego. Aby uzyskać więcej informacji, zobacz [kliknij — raz poświadczeń aplikacji Menedżera](#click-once-credentials-manager-app) sekcji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać informacje dotyczące wydajności działania kopiowania, zobacz [skopiuj dostrajania przewodnik dotyczący wydajności działania i](data-factory-copy-activity-performance.md).

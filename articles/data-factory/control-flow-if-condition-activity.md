@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 799348c14bba80909d6e443f09d232e5a4783f25
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857382"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015155"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w usłudze Azure Data Factory
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
@@ -69,7 +68,7 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania warunku if. | Ciąg | Yes
 type | Musi być równa **IfCondition** | Ciąg | Yes
-wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Yes
+Wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Yes
 ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Tablica | Yes
 ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Tablica | Yes
 

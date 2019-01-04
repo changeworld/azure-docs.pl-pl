@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091047"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000550"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics
 W tym artykule pokazano, jak korzystać z zalet przetwarzania równoległego w usłudze Azure Stream Analytics. Dowiesz się, jak skalować zadania usługi Stream Analytics, konfigurując partycji danych wejściowych, a następnie dostosowując definicję zapytania usługi analytics.
@@ -41,12 +41,13 @@ Podczas pracy z usługą Stream Analytics, możesz korzystać z zalet partycjono
 -   Azure Functions
 -   Tabela platformy Azure
 -   Magazyn obiektów blob (można ustawić klucza partycji jawnie)
--   CosmosDB (trzeba jawnie ustawić klucz partycji)
--   Centrum zdarzeń (trzeba jawnie ustawić klucz partycji)
+-   Usługa cosmos DB (trzeba jawnie ustawić klucz partycji)
+-   Usługa Event Hubs (trzeba jawnie ustawić klucz partycji)
 -   Usługa IoT Hub (trzeba jawnie ustawić klucz partycji)
 -   Service Bus
+- SQL i SQL Data Warehouse z podziałem na partycje opcjonalne: zobaczyć więcej informacji o [danych wyjściowych do usługi Azure SQL Database strony](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
-Dane wyjściowe usługi Power BI, SQL i magazynu danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić dane wejściowe zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
+Usługa Power BI nie obsługuje partycjonowanie. Jednak można nadal podzielić dane wejściowe zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
 
 Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
@@ -91,7 +92,7 @@ To zapytanie jest proste filtru. W związku z tym nie musimy martwić się o par
 ### <a name="query-with-a-grouping-key"></a>Zapytania przy użyciu klucza grupowania
 
 * Dane wejściowe: Centrum zdarzeń z 8 partycji
-* Dane wyjściowe: Blob storage
+* Dane wyjściowe: Blob Storage
 
 Zapytanie:
 
@@ -115,9 +116,9 @@ W takim przypadku nie ma znaczenia, co to jest zapytanie. Jeśli liczba partycji
 
 ### <a name="query-using-non-partitioned-output"></a>Wykonywanie zapytań przy użyciu niepartycjonowana danych wyjściowych
 * Dane wejściowe: Centrum zdarzeń z 8 partycji
-* Dane wyjściowe: usługi Power BI
+* Dane wyjściowe: Power BI
 
-Dane wyjściowe usługi Power BI nie obsługuje obecnie partycjonowania. W związku z tym w tym scenariuszu nie jest zaskakująco równoległymi.
+Wyjście usługi Power BI nie obsługuje obecnie partycjonowania. W związku z tym w tym scenariuszu nie jest zaskakująco równoległymi.
 
 ### <a name="multi-step-query-with-different-partition-by-values"></a>Wieloetapowy zapytania z różnymi wartościami PARTITION BY
 * Dane wejściowe: Centrum zdarzeń z 8 partycji

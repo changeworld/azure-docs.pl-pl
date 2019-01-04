@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 686b602828856e75300152c41bfe4c35cd6a8219
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970165"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024369"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon Redshift, za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -126,7 +125,7 @@ Aby skopiować dane z usługi Amazon Redshift, należy ustawić typ źródłoweg
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **obiektu AmazonRedshiftSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **Obiektu AmazonRedshiftSource** | Yes |
 | query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | elemencie redshiftUnloadSettings | Grupa właściwości przy użyciu zwolnienie usługi Redshift Amazon. | Nie |
 | s3LinkedServiceName | Odnosi się do Amazon S3 to-być używane jako przejściowy magazyn, określając nazwę połączonej usługi typu "AmazonS3". | Tak, jeśli za pomocą zwolnienia |
@@ -214,7 +213,7 @@ Podczas kopiowania danych z usługi Amazon Redshift, następujące mapowania są
 | ATRYBUT TYPU WARTOŚĆ LOGICZNA |Ciąg |
 | CHAR |Ciąg |
 | DATE |DateTime |
-| DECIMAL |Dziesiętna |
+| DECIMAL |Dziesiętny |
 | PODWÓJNEJ PRECYZJI |Podwójne |
 | LICZBA CAŁKOWITA |Int32 |
 | RZECZYWISTE |Pojedyncze |

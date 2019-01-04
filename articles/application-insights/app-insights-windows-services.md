@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: b760780912642dac664f68c1f2b9d8d4ebf8cbde
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c23ff8a22284416a9c87750e4ca0448e0690de0e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809900"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017518"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ręczne konfigurowanie aplikacji Application Insights dla aplikacji platformy .NET
 
@@ -138,7 +138,7 @@ Zobacz [ten punkt rozwiązywania problemów](../azure-monitor/app/asp-net-troubl
 
 > [!NOTE]
 > Jeśli aplikacja generuje wiele danych telemetrycznych, moduł próbkowania adaptacyjnego będzie automatycznie redukować ilość danych wysyłanych do portalu, wysyłając tylko ich reprezentatywną część. Jednak zdarzenia związane z tym samym żądaniem zostaną wybrane lub pominięte jako grupa, dzięki czemu możesz nawigować między powiązanymi zdarzeniami. 
-> [Więcej informacji na temat próbkowania](app-insights-sampling.md).
+> [Więcej informacji na temat próbkowania](../azure-monitor/app/sampling.md).
 > 
 > 
 

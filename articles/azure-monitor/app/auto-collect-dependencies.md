@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: 4c06436961c45268cc7ae8ff2b7a5a4f06b24858
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 68a504f43463a25a0aba8d7d72881cddbcfba816
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973115"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999343"
 ---
 # <a name="dependency-auto-collection"></a>Automatyczne zbieranie zależności
 
@@ -98,4 +98,4 @@ Poniżej przedstawiono listę obsługiwanych obecnie wywołania zależności, kt
 - Konfigurowanie zależności niestandardowej śledzenie [Java](../../azure-monitor/app/java-agent.md).
 - [Zapisywanie danych telemetrycznych zależność niestandardową](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - Zobacz [modelu danych](../../azure-monitor/app/data-model.md) dla usługi Application Insights typów i danych modelu.
-- Zapoznaj się z [platform](../../application-insights/app-insights-platforms.md) obsługiwane przez usługę Application Insights.
+- Zapoznaj się z [platform](../../azure-monitor/app/platforms.md) obsługiwane przez usługę Application Insights.

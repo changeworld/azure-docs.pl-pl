@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f51d132d3cdc2d8aed65919df5fa225711508c60
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753099"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001774"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights
 
@@ -120,7 +120,7 @@ Jeśli opracowujesz na platformie .NET i będą najprawdopodobniej używać niek
 
 Po skonfigurowaniu usługi Application Insights jako dane wyjściowe dla zdarzeń i dzienniki na początek informacje do wyświetlenia na zasób usługi Application Insights w ciągu kilku minut. Przejdź do zasobu usługi Application Insights, co spowoduje przejście do pulpitu nawigacyjnego zasobu usługi Application Insights. Kliknij przycisk **wyszukiwania** na pasku usługi Application Insights, aby zobaczyć najnowsze dane śledzenia, które otrzymała i aby można było filtrować je.
 
-*Eksplorator metryk* jest użytecznym narzędziem do tworzenia niestandardowych pulpitów nawigacyjnych na podstawie metryk, że aplikacje, usługi i klastra może raportowanie. Zobacz [eksplorowania metryk w usłudze Application Insights](../application-insights/app-insights-metrics-explorer.md) skonfigurować kilka wykresów dla siebie na podstawie danych są zbierane.
+*Eksplorator metryk* jest użytecznym narzędziem do tworzenia niestandardowych pulpitów nawigacyjnych na podstawie metryk, że aplikacje, usługi i klastra może raportowanie. Zobacz [eksplorowania metryk w usłudze Application Insights](../azure-monitor/app/metrics-explorer.md) skonfigurować kilka wykresów dla siebie na podstawie danych są zbierane.
 
 Klikając **Analytics** spowoduje przejście do portalu analiza usługi Application Insights, gdzie można tworzyć zapytania zdarzeniami i śladami większy zakres i opcjonalność. Dowiedz się więcej o [Analytics w usłudze Application Insights](../azure-monitor/app/analytics.md).
 

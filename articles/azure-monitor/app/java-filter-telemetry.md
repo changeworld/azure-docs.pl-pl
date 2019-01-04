@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 81bfd5e0354fefea4690e6871dd5e846f41dc6d8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981015"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015526"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrowanie danych telemetrycznych w aplikacji sieci web Java
 
@@ -31,7 +31,7 @@ Dostępne są następujące filtry out-of--box:
 
 > [!NOTE]
 > Filtry pochylanie metryki aplikacji. Na przykład można zdecydować, że, aby zdiagnozować powolne odpowiedzi, ustawisz filtr, aby odrzucić krótszych czasów reakcji. Jednak należy pamiętać, że średniego czasu odpowiedzi zgłoszony przez usługę Application Insights będzie mniejsza niż szybkość wartość true, a liczba żądań będzie mniejsza niż liczba rzeczywistych.
-> Jeśli jest to niepożądane, użyj [próbkowania](../../application-insights/app-insights-sampling.md) zamiast tego.
+> Jeśli jest to niepożądane, użyj [próbkowania](../../azure-monitor/app/sampling.md) zamiast tego.
 
 ## <a name="setting-filters"></a>Filtry
 
@@ -262,4 +262,4 @@ W ApplicationInsights.xml:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Próbkowanie](../../application-insights/app-insights-sampling.md) — należy wziąć pod uwagę próbkowania jako alternatywę, który nie pochylanie metryk.
+* [Próbkowanie](../../azure-monitor/app/sampling.md) — należy wziąć pod uwagę próbkowania jako alternatywę, który nie pochylanie metryk.

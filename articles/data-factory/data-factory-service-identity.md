@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 67fc3d733062867086cb4c208f2997d3490452bb
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681929"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017688"
 ---
 # <a name="azure-data-factory-service-identity"></a>Tożsamości usługi w usłudze Azure Data Factory
 
@@ -77,7 +76,7 @@ Wywołanie poniżej interfejsu API z sekcją "tożsamość" w treści żądania:
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
 ```
 
-**Treść żądania**: Dodaj "tożsamość": {"type": "wartość SystemAssigned"}.
+**Treść żądania**: Dodaj "tożsamość": {"type": Wartość "SystemAssigned"}.
 
 ```json
 {
@@ -115,7 +114,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>Generowanie tożsamości usługi za pomocą szablonu usługi Azure Resource Manager
 
-**Szablon**: Dodaj "tożsamość": {"type": "wartość SystemAssigned"}.
+**Szablon**: Dodaj "tożsamość": {"type": Wartość "SystemAssigned"}.
 
 ```json
 {

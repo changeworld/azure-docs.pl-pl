@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 67658d75f7ad4a6db1af5db97a525774b0ab6e61
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e91bcdf3980b0f03967c09b0b7a75aa3d3a520a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095282"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014628"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
 
@@ -42,9 +41,9 @@ Następujące właściwości są obsługiwane dla usługi ServiceNow, połączon
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **usługi ServiceNow** | Yes |
+| type | Właściwość type musi być równa: **ServiceNow** | Yes |
 | endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Yes |
-| Element authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **podstawowe**, **OAuth2** | Yes |
+| Element authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Podstawowe**, **OAuth2** | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow dla uwierzytelniania Basic i protokołu OAuth2.  | Yes |
 | hasło | Hasło odpowiadający nazwie użytkownika dla uwierzytelniania Basic i protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | clientId | Identyfikator klienta do uwierzytelniania protokołu OAuth2.  | Nie |
@@ -118,8 +117,8 @@ Należy pamiętać, że podczas określania schematu i kolumn dla usługi Servic
 - **Schemat:** Określ schemat, jak `Actual` lub `Display` kwerendę usługi ServiceNow, które można przyjrzeć się go jako parametr `sysparm_display_value` PRAWDA lub FAŁSZ, gdy wywołanie [interfejsów API restful usługi ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
 - **Kolumna:** nazwa kolumny do rzeczywistej wartości w obszarze `Actual` schemat jest `[columne name]_value`, natomiast w przypadku wartości wyświetlanej w obszarze `Display` schemat jest `[columne name]_display_value`. Uwaga nazwa kolumny musi mapowania do schematu, używany w zapytaniu.
 
-**Przykładowe zapytanie:** 
- `SELECT col_value FROM Actual.alm_asset` lub 
+**Przykładowe zapytanie:**
+`SELECT col_value FROM Actual.alm_asset` OR 
 `SELECT col_display_value FROM Display.alm_asset`
 
 **Przykład:**

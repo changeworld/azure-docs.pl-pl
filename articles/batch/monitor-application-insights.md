@@ -11,18 +11,18 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 2188451e987aad7e4edfaa2097a828ab9714d706
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4a77f73f4d87f7def7c8a841c7a59aed04b9bee2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793785"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020051"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorowania i debugowania aplikacji usługi Azure Batch dla środowiska .NET za pomocą usługi Application Insights
 
 [Usługa Application Insights](../application-insights/app-insights-overview.md) zapewnia elegancki i zaawansowany sposób dla deweloperów do monitorowania i debugowania aplikacji wdrożonej w usłudze Azure services. Usługa Application Insights umożliwia monitorowanie liczników wydajności i wyjątków, a także Instrumentacji kodu za pomocą metryk niestandardowych i śledzenie. Integracja usługi Application Insights z aplikacji usługi Azure Batch pozwala uzyskać głęboki wgląd w zachowania i badania problemów w czasie niemal rzeczywistym.
 
-Ten artykuł pokazuje, jak dodać i skonfigurować Biblioteka usługi Application Insights do rozwiązania usługi Azure Batch dla środowiska .NET i instrumentacji w kodzie aplikacji. Pokazuje także sposób monitorować aplikację za pośrednictwem witryny Azure portal i tworzyć niestandardowe pulpity nawigacyjne. Usługa Application Insights dotyczących pomocy technicznej w innych językach, Przyjrzyj się [dokumentacji języki, platformy i integracje](../application-insights/app-insights-platforms.md).
+Ten artykuł pokazuje, jak dodać i skonfigurować Biblioteka usługi Application Insights do rozwiązania usługi Azure Batch dla środowiska .NET i instrumentacji w kodzie aplikacji. Pokazuje także sposób monitorować aplikację za pośrednictwem witryny Azure portal i tworzyć niestandardowe pulpity nawigacyjne. Usługa Application Insights dotyczących pomocy technicznej w innych językach, Przyjrzyj się [dokumentacji języki, platformy i integracje](../azure-monitor/app/platforms.md).
 
 Przykładowe języka C# rozwiązanie z kodem, która ma towarzyszyć w tym artykule jest dostępny na [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights). Ten przykład dodaje kod Instrumentacji usługi Application Insights do [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) przykład. Jeśli nie znasz tego przykładu, spróbuj kompilowanie i uruchamianie TopNWords najpierw. W ten sposób pomoże Ci zrozumieć podstawowy przepływ pracy usługi Batch przetwarzania zestawu danych wejściowych obiektów blob równolegle na wielu węzłach obliczeniowych. 
 
@@ -338,12 +338,12 @@ pool.StartTask = new StartTask()
 
 ## <a name="throttle-and-sample-data"></a>Ograniczenie przepustowości i przykładowe dane 
 
-Ze względu na charakter na dużą skalę aplikacji usługi Azure Batch, które działają w środowisku produkcyjnym możesz chcieć ograniczyć ilość danych zebranych przez usługę Application Insights, aby zarządzać kosztami. Zobacz [próbkowanie w usłudze Application Insights](../application-insights/app-insights-sampling.md) niektórych mechanizmów można to osiągnąć.
+Ze względu na charakter na dużą skalę aplikacji usługi Azure Batch, które działają w środowisku produkcyjnym możesz chcieć ograniczyć ilość danych zebranych przez usługę Application Insights, aby zarządzać kosztami. Zobacz [próbkowanie w usłudze Application Insights](../azure-monitor/app/sampling.md) niektórych mechanizmów można to osiągnąć.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-overview.md).
 
-* Usługa Application Insights dotyczących pomocy technicznej w innych językach, Przyjrzyj się [dokumentacji języki, platformy i integracje](../application-insights/app-insights-platforms.md).
+* Usługa Application Insights dotyczących pomocy technicznej w innych językach, Przyjrzyj się [dokumentacji języki, platformy i integracje](../azure-monitor/app/platforms.md).
 
 

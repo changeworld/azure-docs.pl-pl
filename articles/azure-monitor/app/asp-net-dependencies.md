@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7cde9fa0849729ba9db9b604dd0ad26cf362a484
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: de260560f141691fc1a7c0dd3bfad262d2d79598
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969866"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025576"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](../../application-insights/app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
@@ -121,7 +121,7 @@ Prawdopodobnie duży odstęp po pierwszą zależnością wywołać, więc należ
 
 ### <a name="profile-your-live-site"></a>Profil witryny na żywo
 
-Nie wiadomo, gdzie przejdzie czasu? [Profiler usługi Application Insights](../../application-insights/app-insights-profiler.md) ślady protokołu HTTP wywołania witryny na żywo i dowiesz się, jakie funkcje w kodzie trwało najdłużej.
+Nie wiadomo, gdzie przejdzie czasu? [Profiler usługi Application Insights](../../azure-monitor/app/profiler.md) ślady protokołu HTTP wywołania witryny na żywo i dowiesz się, jakie funkcje w kodzie trwało najdłużej.
 
 ## <a name="failed-requests"></a>Żądania zakończone niepowodzeniem
 Żądania zakończone niepowodzeniem, może być również skojarzona z zakończonymi niepowodzeniem wywołaniami do zależności. Ponownie firma Microsoft może kliknij, aby śledzić problem.

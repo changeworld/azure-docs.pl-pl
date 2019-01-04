@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 06eb11132d7e3968850aadb4bfdaa53261f14ada
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167481"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017263"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Przenoszenie danych ze źródła HTTP przy użyciu usługi Azure Data Factory
 
@@ -36,7 +35,7 @@ Data Factory obsługuje obecnie tylko przenosi dane ze źródła HTTP do innych 
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Obsługiwane scenariusze i typy uwierzytelniania
 
-Można użyć tego łącznika protokołu HTTP do pobierania danych z *zarówno w chmurze, jak i punktu końcowego HTTP/Https w środowisku lokalnym* przy użyciu protokołu HTTP **UZYSKAĆ** lub **WPIS** metody. Obsługiwane są następujące typy uwierzytelniania: **anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, i  **ClientCertificate**. Należy zanotować różnicę między tego łącznika i [łącznik Tabela sieci Web](data-factory-web-table-connector.md). Łącznik Tabela sieci Web wyodrębnia zawartość tabeli z kodu HTML, strony sieci Web.
+Można użyć tego łącznika protokołu HTTP do pobierania danych z *zarówno w chmurze, jak i punktu końcowego HTTP/Https w środowisku lokalnym* przy użyciu protokołu HTTP **UZYSKAĆ** lub **WPIS** metody. Obsługiwane są następujące typy uwierzytelniania: **Anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, i **ClientCertificate**. Należy zanotować różnicę między tego łącznika i [łącznik Tabela sieci Web](data-factory-web-table-connector.md). Łącznik Tabela sieci Web wyodrębnia zawartość tabeli z kodu HTML, strony sieci Web.
 
 Podczas kopiowania danych z punktu końcowego HTTP w środowisku lokalnym, należy zainstalować bramę zarządzania danymi w środowisku lokalnym lub Maszynie wirtualnej platformy Azure. Aby dowiedzieć się o bramy zarządzania danymi i instrukcje krok po kroku dotyczące sposobu konfigurowania bramy, zobacz [przenoszenie danych między lokalizacjami lokalnymi i w chmurze](data-factory-move-data-between-onprem-and-cloud.md).
 
@@ -44,7 +43,7 @@ Podczas kopiowania danych z punktu końcowego HTTP w środowisku lokalnym, nale�
 
 Można utworzyć potoku, który ma działanie kopiowania może służyć do przenoszenia danych ze źródła HTTP przy użyciu różnych narzędzi lub interfejsów API:
 
-- Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania danych. Aby uzyskać szybki Przewodnik tworzenia potoku za pomocą Kreatora kopiowania danych, zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
+- Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania danych. Aby uzyskać szybki Przewodnik tworzenia potoku za pomocą Kreatora kopiowania danych, zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
 - Można również użyć następujących narzędzi do utworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **usługi Azure Resource Manager Szablon**, **interfejsu API platformy .NET**, lub **interfejsu API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku, który zawiera działania kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Aby JSON przykłady kopiowania danych ze źródła HTTP do usługi Azure Blob storage, zobacz [JSON przykłady](#json-examples).
 
@@ -72,7 +71,7 @@ Ustaw **authenticationType** do **podstawowe**, **szyfrowanego**, lub **Windows*
 | nazwa użytkownika | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
 | hasło | Hasło dla użytkownika (**username**). | Yes |
 
-**Przykład: Użycie uwierzytelniania podstawowe, szyfrowane lub Windows**
+**Przykład: Uwierzytelnianie podstawowe, szyfrowane lub Windows**
 
 ```json
 {
@@ -108,7 +107,7 @@ Jeśli używasz **certthumbprint, aby** dla uwierzytelniania i certyfikat zosta�
 3. Kliknij prawym przyciskiem myszy certyfikat w magazynie osobistym, a następnie wybierz **wszystkie zadania** >**Zarządzaj kluczami prywatnymi**.
 3. Na **zabezpieczeń** pozycję Dodaj konto użytkownika w ramach której działa Usługa Host bramy zarządzania danymi, z dostępem do odczytu do certyfikatu.  
 
-**Przykład: Użycie certyfikatu klienta**
+**Przykład: Za pomocą certyfikatu klienta**
 
 Ta połączona usługa łączy fabryki danych na lokalnym serwerze sieci web HTTP. Używa certyfikatu klienta, który jest zainstalowany na komputerze, na którym zainstalowano bramę zarządzania danymi.
 
@@ -130,7 +129,7 @@ Ta połączona usługa łączy fabryki danych na lokalnym serwerze sieci web HTT
 }
 ```
 
-**Przykład: Użycie certyfikatu klienta w pliku**
+**Przykład: W pliku przy użyciu certyfikatu klienta**
 
 Ta połączona usługa łączy fabryki danych na lokalnym serwerze sieci web HTTP. Używa pliku certyfikatu klienta na komputerze, na którym zainstalowano bramę zarządzania danymi.
 
@@ -166,10 +165,10 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 | requestMethod | Metoda HTTP. Dozwolone wartości to **UZYSKAĆ** i **WPIS**. | Nie <br />(wartość domyślna to **UZYSKAĆ**) |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
 | RequestBody | Treść żądania HTTP. | Nie |
-| Format | Jeśli chcesz *pobierają dane z punktu końcowego HTTP jako — jest* bez podczas analizowania, Pomiń **format** ustawienie. <br><br> Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania są obsługiwane następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| format | Jeśli chcesz *pobierają dane z punktu końcowego HTTP jako — jest* bez podczas analizowania, Pomiń **format** ustawienie. <br><br> Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
+| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
-**Przykład: Użycie metody GET (ustawienie domyślne)**
+**Przykład: Metoda GET (ustawienie domyślne)**
 
 ```json
 {
@@ -190,7 +189,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 }
 ```
 
-**Przykład: Użycie metody POST**
+**Przykład: Za pomocą metody POST**
 
 ```json
 {
@@ -224,7 +223,7 @@ Obecnie, gdy źródło w działaniu kopiowania jest **HttpSource** wpisz następ
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Limit czasu ( **TimeSpan** wartość) dla żądania HTTP można uzyskać odpowiedzi. Limit czasu jest sposobem uzyskania odpowiedzi, a nie limitu czasu można odczytać danych odpowiedzi. | Nie<br />(wartość domyślna: **00:01:40**) |
+| httpRequestTimeout | Limit czasu ( **TimeSpan** wartość) dla żądania HTTP można uzyskać odpowiedzi. Limit czasu jest sposobem uzyskania odpowiedzi, a nie limitu czasu można odczytać danych odpowiedzi. | Nie<br />(wartość domyślna: **00: 01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Obsługiwane formaty plików i kompresji
 

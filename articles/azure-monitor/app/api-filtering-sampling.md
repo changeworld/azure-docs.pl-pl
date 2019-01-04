@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f733a321470321b5b0f8bce48b4ac7978027fab7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 193e024b4691b76b08bcbe15ace35ccafd45c394
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973472"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023451"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrowanie i wstępne przetwarzanie danych telemetrycznych w zestaw SDK usługi Application Insights
 
 
 Można napisać i konfigurować wtyczki zestaw Application Insights SDK dostosować dane telemetryczne jest przechwytywane i przetworzone przed wysłaniem ich do usługi Application Insights.
 
-* [Próbkowanie](../../application-insights/app-insights-sampling.md) powoduje zmniejszenie ilości danych telemetrycznych, bez wywierania wpływu na statystyk. Przechowuje się ze sobą powiązane, punktów danych, dzięki czemu możesz przechodzić między ich podczas diagnozowania problemu. W portalu całkowitej liczby są mnożone celu kompensacji dla pobierania próbek.
+* [Próbkowanie](../../azure-monitor/app/sampling.md) powoduje zmniejszenie ilości danych telemetrycznych, bez wywierania wpływu na statystyk. Przechowuje się ze sobą powiązane, punktów danych, dzięki czemu możesz przechodzić między ich podczas diagnozowania problemu. W portalu całkowitej liczby są mnożone celu kompensacji dla pobierania próbek.
 * Filtrowanie danych Telemetrycznych procesorów [dla platformy ASP.NET](#filtering) lub [Java](../../azure-monitor/app/java-filter-telemetry.md) umożliwia wybranie lub modyfikowanie danych telemetrycznych w zestawie SDK przed wysłaniem ich do serwera. Na przykład można zmniejszyć ilość danych telemetrycznych przesyłanych przez wykluczenie żądań z robotów. Jednak filtrowanie jest bardziej podstawowe podejście do zmniejszenia ruchu niż próbkowanie. Umożliwia większą kontrolę nad czym są przesyłane, ale trzeba należy pamiętać, że zmiany będą dotyczyć statystyk — na przykład, jeśli odfiltrować wszystkie żądania zakończone powodzeniem.
 * [Inicjatory dane telemetryczne, dodawać właściwości](#add-properties) do żadnych danych telemetrycznych wysyłanych z aplikacji, w tym dane telemetryczne z modułów standardowych. Na przykład można dodać obliczone wartości; lub numery wersji do filtrowania danych w portalu.
 * [Interfejs API zestawu SDK](../../azure-monitor/app/api-custom-events-metrics.md) służy do wysyłania niestandardowych zdarzeń i metryk.
@@ -43,7 +43,7 @@ Aby filtrować dane telemetryczne, zapis podmiot przetwarzający dane telemetryc
 > [!WARNING]
 > Filtrowanie danych telemetrycznych wysyłanych z zestawu SDK przy użyciu procesorów można pochylanie statystyk, które pojawi się w portalu i utrudnia postępuj zgodnie z powiązanych elementów.
 >
-> Zamiast tego Rozważ użycie [próbkowania](../../application-insights/app-insights-sampling.md).
+> Zamiast tego Rozważ użycie [próbkowania](../../azure-monitor/app/sampling.md).
 >
 >
 
@@ -371,5 +371,5 @@ Jaka jest różnica między procesorami telemetrii i danych telemetrycznych inic
 
 ## <a name="next"></a>Następne kroki
 * [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md)
-* [Próbkowanie](../../application-insights/app-insights-sampling.md)
+* [Próbkowanie](../../azure-monitor/app/sampling.md)
 * [Rozwiązywanie problemów](../../application-insights/app-insights-troubleshoot-faq.md)

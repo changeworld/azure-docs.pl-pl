@@ -1,5 +1,5 @@
 ---
-title: 'Usługa Azure Data Factory: Często zadawane pytania | Dokumentacja firmy Microsoft'
+title: 'Usługi Azure Data Factory: Często zadawane pytania | Dokumentacja firmy Microsoft'
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,16 +9,15 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249591"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024097"
 ---
 # <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.  
@@ -50,7 +49,7 @@ Data Factory oferuje utworzyć dowolny styl przepływu, który jest wymagany prz
 - Przepływy delta:
     - Korzystanie z parametrów i zdefiniować swoje górnego dla kopii delta podczas przenoszenia tabel wymiarów i referencyjnych z magazynu relacyjnego, lokalnie lub w chmurze, aby załadować dane do usługi Data lake. 
 
-Aby uzyskać więcej informacji, zobacz [samouczek: kontrole przepływu](tutorial-control-flow.md).
+Aby uzyskać więcej informacji, zobacz [Samouczek: Kontrole przepływu](tutorial-control-flow.md).
 
 ### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>Przekształcanie danych w dużej skali z potokami bezpłatne kodu
 Nowe środowisko oparte na przeglądarce narzędzi zapewnia niekorzystające z kodu potoku tworzenia i wdrażania za pomocą nowoczesnych, interaktywnych środowiska opartego na sieci web.
@@ -92,9 +91,9 @@ Od czasu początkowej wersji publicznej wersji zapoznawczej w 2017 usługi Data 
 ## <a name="what-is-integration-runtime"></a>Co to jest środowisko integration runtime?
 Środowisko IR to infrastruktura obliczeniowa, która jest używany przez usługi Azure Data Factory w celu zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
 
-- **Przenoszenie danych**: w przypadku przenoszenia danych środowisko IR przenosi dane między magazynami danych źródłowych i docelowych, oferuje obsługę wbudowanych łączników, konwersji formatów, mapowania kolumn oraz wydajnego i skalowalnego transferu danych.
-- **Wysyłanie działania**: w przypadku przekształcania IR umożliwia natywne wykonywanie pakietów usług SSIS.
-- **Wykonywanie pakietów usług SSIS**: natywnie uruchamia pakiety usług SSIS w środowisku zarządzanym obliczeniowych platformy Azure. Ponadto środowisko IR obsługuje wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i nie tylko.
+- **Przenoszenie danych**: W przypadku przenoszenia danych środowisko IR przenosi dane ze źródłowego do docelowego magazynu danych i oferuje obsługę wbudowanych łączników, konwersji formatów, mapowania kolumn oraz wydajnego i skalowalnego transferu danych.
+- **Wysyłanie działania**: W przypadku przekształcania środowisko IR umożliwia natywne wykonywanie pakietów usług SSIS.
+- **Wykonywanie pakietów usług SSIS**: Natywnie uruchamia pakiety usług SSIS w środowisku zarządzanym obliczeniowych platformy Azure. Ponadto środowisko IR obsługuje wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i nie tylko.
 
 Można wdrożyć co najmniej jedno wystąpienie środowiska IR na potrzeby przenoszenia i przekształcania danych. Środowisko Integration runtime można uruchomić w sieci publicznej platformy Azure lub w sieci prywatnej (lokalnej, sieci wirtualnej platformy Azure lub usług Amazon Web Services wirtualnej chmury prywatnej [VPC]). 
 
@@ -179,5 +178,5 @@ Możesz użyć `@coalesce` konstruowania w wyrażeniach, które można bezpieczn
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać instrukcje krok po kroku utworzysz fabrykę danych zobacz następujące samouczki:
 
-- [Szybki Start: Tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md)
+- [Szybki start: Tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md)
 - [Samouczek: Kopiowanie danych w chmurze](tutorial-copy-data-dot-net.md)

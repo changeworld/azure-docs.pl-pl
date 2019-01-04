@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: f6b7764bf994079f7f3ef9e6243720da0d2f4a28
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868229"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016634"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Utwórz wyzwalacz, który uruchamia potok zgodnie z harmonogramem
 Ten artykuł zawiera informacje dotyczące wyzwalacza harmonogramu oraz instrukcje umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu. Dla innych typów wyzwalaczy, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
@@ -67,7 +66,7 @@ Możesz utworzyć **wyzwalacz harmonogramu** Aby zaplanować okresowe uruchamian
     ![Monitorowanie uruchomień wyzwalacza](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu za pomocą programu Azure PowerShell. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
+W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu za pomocą programu Azure PowerShell. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
 
 1. Utwórz plik JSON o nazwie **MyTrigger.json** w folderze C:\ADFv2QuickStartPSH\ o następującej zawartości:
 
@@ -143,7 +142,7 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
 
 
 ## <a name="net-sdk"></a>Zestaw SDK .NET
-W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą zestawu .NET SDK. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: tworzenie fabryki danych przy użyciu zestawu .NET SDK](quickstart-create-data-factory-dot-net.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
+W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą zestawu .NET SDK. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu zestawu .NET SDK](quickstart-create-data-factory-dot-net.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
 
 Aby utworzyć i uruchomić wyzwalacz harmonogramu, który jest uruchamiany co 15 minut, Dodaj następujący kod do metody głównej:
 
@@ -223,7 +222,7 @@ Aby monitorować wyzwalacz jest uruchamiany i uruchomienia potoków w witrynie A
 
 
 ## <a name="python-sdk"></a>Zestaw SDK dla języka Python
-W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą zestawu SDK języka Python. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: tworzenie fabryki danych przy użyciu zestawu SDK języka Python](quickstart-create-data-factory-python.md). Następnie dodaj następujący blok kodu po bloku kodu "Monitorowanie uruchomienia potoku" w skrypcie języka Python. Ten kod tworzy wyzwalacz harmonogramu, który jest uruchamiany co 15 minut od określonego czasu rozpoczęcia i zakończenia. Aktualizacja **godzina_rozpoczęcia** zmienną bieżący czas UTC i **end_time** zmienną na jedną godzinę w przeszłości bieżący czas UTC.
+W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą zestawu SDK języka Python. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu zestawu SDK języka Python](quickstart-create-data-factory-python.md). Następnie dodaj następujący blok kodu po bloku kodu "Monitorowanie uruchomienia potoku" w skrypcie języka Python. Ten kod tworzy wyzwalacz harmonogramu, który jest uruchamiany co 15 minut od określonego czasu rozpoczęcia i zakończenia. Aktualizacja **godzina_rozpoczęcia** zmienną bieżący czas UTC i **end_time** zmienną na jedną godzinę w przeszłości bieżący czas UTC.
 
 ```python
     # Create a trigger
@@ -246,7 +245,7 @@ Aby monitorować wyzwalacz jest uruchamiany i uruchomienia potoków w witrynie A
 Aby utworzyć wyzwalacz, można użyć szablonu usługi Azure Resource Manager. Aby uzyskać instrukcje krok po kroku, zobacz [Tworzenie usługi Azure data factory przy użyciu szablonu usługi Resource Manager](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Przekaż godzina rozpoczęcia dla wyzwalacza do potoku
-Usługa Azure Data Factory w wersji 1 obsługuje Odczyt lub zapis danych podzielonych na partycje za pomocą zmiennych systemowych: **SliceStart**, **SliceEnd**, **WindowStart**i **WindowEnd**. W bieżącej wersji usługi Azure Data Factory to zachowanie można osiągnąć za pomocą parametru potoku. Czas rozpoczęcia i czas zaplanowanego wyzwalacza są ustawiane jako wartość parametru potoku. W poniższym przykładzie zaplanowanym terminie wyzwalacza jest przekazywany jako wartość do potoku **scheduledRunTime** parametru:
+Usługa Azure Data Factory w wersji 1 obsługuje Odczyt lub zapis danych podzielonych na partycje za pomocą zmiennych systemowych: **SliceStart**, **SliceEnd**, **WindowStart**, i **WindowEnd**. W bieżącej wersji usługi Azure Data Factory to zachowanie można osiągnąć za pomocą parametru potoku. Czas rozpoczęcia i czas zaplanowanego wyzwalacza są ustawiane jako wartość parametru potoku. W poniższym przykładzie zaplanowanym terminie wyzwalacza jest przekazywany jako wartość do potoku **scheduledRunTime** parametru:
 
 ```json
 "parameters": {

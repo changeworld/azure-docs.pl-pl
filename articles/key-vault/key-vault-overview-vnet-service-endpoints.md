@@ -1,21 +1,21 @@
 ---
 ms.assetid: ''
-title: Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault | Dokumentacja firmy Microsoft
+title: Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: Omówienie punktów końcowych usługi sieci wirtualnej dla usługi Key Vault
 services: key-vault
 author: amitbapat
 ms.author: ambapat
 manager: mbaldwin
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 656007268dcf57910e4a655d85285da4fbd37425
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681521"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002431"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault
 
@@ -31,6 +31,7 @@ Można skonfigurować [usługi Key Vault zapory i sieci wirtualne](key-vault-net
 > Usługa Key Vault zapory i reguł sieci wirtualnej mają zastosowanie tylko do [płaszczyzny danych](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) usługi Key Vault. Operacje warstwy kontroli usługi Key Vault (takie jak tworzenie, usuwanie i modyfikowanie operacje, ustawianie zasad dostępu, ustawienia zapory i reguł sieci wirtualnej) nie ma wpływu zapory i reguł sieci wirtualnej.
 
 Poniżej przedstawiono kilka przykładów zastosowania punktów końcowych usługi:
+
 * Korzystania z usługi Key Vault do przechowywania kluczy szyfrowania, wpisów tajnych aplikacji i certyfikaty, a chcesz zablokować dostęp do magazynu kluczy z publicznego Internetu.
 * Chcesz zablokować dostęp do magazynu kluczy, aby tylko aplikacji lub krótką listę wyznaczone hosty mogą się łączyć do magazynu kluczy.
 * Masz aplikację działającą w usłudze Azure virtual network, a ta sieć wirtualna jest zablokowana dla całego ruchu przychodzącego i wychodzącego. Aplikacja nadal musi połączyć się z usługi Key Vault, aby pobrać klucze tajne i certyfikaty, lub użyj kluczy kryptograficznych.
@@ -38,6 +39,7 @@ Poniżej przedstawiono kilka przykładów zastosowania punktów końcowych usłu
 ## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Konfigurowanie usługi Key Vault zapory i sieci wirtualne
 
 Poniżej przedstawiono kroki wymagane do skonfigurowania zapory i sieci wirtualne. Te kroki mają zastosowanie, czy używasz programu PowerShell, interfejsu wiersza polecenia platformy Azure lub witryny Azure portal.
+
 1. Włącz [rejestrowania usługi Key Vault](key-vault-logging.md) aby zobaczyć szczegółowe uzyskiwanie dostępu do dzienników. Pomaga to w diagnostyce podczas zapory i reguł sieci wirtualnej uniemożliwić dostęp do magazynu kluczy. (Ten krok jest opcjonalny, ale zdecydowanie zalecany).
 2. Włącz **punkty końcowe dla magazynu kluczy usługi** dla docelowych, sieciami wirtualnymi i podsieciami.
 3. Ustawienie zapory i reguł sieci wirtualnej dla usługi key vault w celu ograniczenia dostępu do tego magazynu kluczy z określonej sieci wirtualnej, podsieci i zakresy adresów IPv4.
@@ -57,6 +59,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Key Vault 
 > * W tej chwili obsługiwane są tylko adresy IPv4.
 
 ## <a name="trusted-services"></a>Zaufanych usług
+
 Oto lista zaufanych usług, które mogą uzyskać dostęp do magazynu kluczy, jeśli **Zezwalaj usługom zaufanych** opcja jest włączona.
 
 |Zaufaną usługę|Scenariusze użycia|

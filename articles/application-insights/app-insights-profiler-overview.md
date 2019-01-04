@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7780c10233a0ce256ee6e9015f40ea789516c25b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c7266d840a8d60275a40cf31291d3a8f524131f9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726903"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016751"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil aplikacji produkcyjnych na platformie Azure za pomocą usługi Application Insights
 ## <a name="enable-profiler-for-your-application"></a>Włącz Profiler do aplikacji
@@ -26,7 +26,7 @@ Application Insights Profiler zawiera ślady wydajności dla aplikacji działaj�
 
 Program profilujący w programach .net wdrożonych na następujących usług platformy Azure. Szczegółowe instrukcje dotyczące włączania profiler dla każdego typu usług są poniższe linki.
 
-* [App Services](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [App Services](../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Cloud Services](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikacje usługi Service Fabric](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Maszyny wirtualne i Scalesets maszyny Wirtualnej](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -49,10 +49,10 @@ Wybierz próbkę, aby wyświetlić podział na poziomie kodu czas wykonywania ż
 
 W Eksploratorze śledzenia zawiera następujące informacje:
 
-* **Pokaż ścieżkę aktywną**: Otwiera największą liść węzła lub co najmniej coś zamknąć. W większości przypadków ten węzeł zbliża się wąskim gardłem wydajności.
+* **Pokaż ścieżkę aktywną**: Zostanie otwarta największą liść węzła lub co najmniej coś zamknąć. W większości przypadków ten węzeł zbliża się wąskim gardłem wydajności.
 * **Etykieta**: Nazwa funkcji lub zdarzeń. W drzewie wyświetlany kombinacji kodu i zdarzenia, które wystąpiły (takich jak SQL i HTTP zdarzenia). Najważniejsze zdarzenia reprezentuje całkowity czas trwania żądania.
-* **Upłynęło**: interwał czasu między rozpoczęciem operacji i koniec operacji.
-* **Gdy**: czas po funkcji lub zdarzeń była uruchomiona w odniesieniu do innych funkcji.
+* **Upłynęło**: Interwał czasu między rozpoczęciem operacji i koniec operacji.
+* **Gdy**: Czas, po funkcji lub zdarzeń była uruchomiona w odniesieniu do innych funkcji.
 
 ## <a name="how-to-read-performance-data"></a>Jak odczytać dane dotyczące wydajności
 
@@ -124,11 +124,11 @@ Profiler uruchamia losowo dwie minuty, co godzinę na każdej maszynie wirtualne
 
 ## <a name="next-steps"></a>Następne kroki
 Włącz Application Insights Profiler dla aplikacji platformy Azure
-* [App Services](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [App Services](../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Cloud Services](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikacje usługi Service Fabric](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Maszyny wirtualne i Scalesets maszyny Wirtualnej](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
-[performance-blade]: ./media/app-insights-profiler/performance-blade-v2-examples.png
-[trace-explorer]: ./media/app-insights-profiler/trace-explorer.png
+[performance-blade]: ./media/app-insights-profiler-overview/performance-blade-v2-examples.png
+[trace-explorer]: ./media/app-insights-profiler-overview/trace-explorer.png

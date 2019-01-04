@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0d6a370884e6648aaf131892759ee45b29ed3693
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265138"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001655"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Tworzenie kopii zapasowej online i danych na żądanie przywrócenia w usłudze Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Za pomocą usługi Azure Cosmos DB nie tylko dane, ale również kopie zapasowe 
 Kopie zapasowe są wykonywane bez wywierania wpływu na wydajność i dostępność aplikacji. Usługa Azure Cosmos DB wykonuje kopii zapasowej danych w tle bez używania żadnych dodatkowych aprowizowana przepływność (ru) lub mające wpływ na wydajność i dostępność bazy danych.
 
 Usługa Azure Cosmos DB przechowuje automatycznych kopii zapasowych w usłudze Azure Blob Storage, podczas gdy rzeczywisty znajdują się dane lokalnie w usłudze Azure Cosmos DB. Aby zagwarantować małych opóźnień, migawki kopii zapasowej są przechowywane w usłudze Azure Blob storage, w tym samym regionie jako bieżącego regionu zapisu (lub jeden z regionów zapisu, jeśli używana jest Konfiguracja wielu wzorców) usługi Cosmos DB konto bazy danych. Aby zachować odporność względem regionalnej awarii każdej migawki kopii zapasowej danych w usłudze Azure Blob storage ponownie są replikowane do innego regionu za pośrednictwem magazyn geograficznie nadmiarowy (GRS). Region, na którym kopii zapasowej są replikowane zależy od regionu źródłowego i pary regionalnej skojarzony w regionie źródłowym. Aby dowiedzieć się więcej, zobacz [lista magazynu geograficznie nadmiarowego par regionów świadczenia usługi Azure](../best-practices-availability-paired-regions.md) artykułu. Nie masz dostępu do tej kopii zapasowej bezpośrednio. Usługa Azure Cosmos DB będzie używać tej kopii zapasowej, tylko wtedy, gdy jest inicjowana przywracania kopii zapasowej.
-Na poniższej ilustracji przedstawiono sposób tworzenia kopii zapasowej w zdalnym konta usługi Azure Blob Storage w regionie zachodnie stany USA i następnie replikowane w regionie wschodnie stany USA kontenera usługi Azure Cosmos przy użyciu wszystkich trzech partycji podstawowej zasobów w regionie zachodnie stany USA:
+Na poniższej ilustracji przedstawiono sposób tworzenia kopii zapasowej w zdalnym konta usługi Azure Blob Storage w regionie zachodnie stany USA i następnie replikowane w regionie wschodnie stany USA kontenera usługi Azure Cosmos za pomocą wszystkie trzy podstawowe fizyczne partycje w regionie zachodnie stany USA:
 
 ![Okresowe pełne kopie zapasowe wszystkich jednostek usługi Cosmos DB w magazynie geograficznie Nadmiarowym usługi Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 

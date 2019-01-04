@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 17a8e6f6d6d374c6f8620ecb525727e6fee8c4b9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: de730004b55f72cb645c6a31c02fd1fe28a52ecd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501881"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013183"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania języka Python w usłudze Azure Databricks
 
-Działania języka Python usługi Azure Databricks w [potoku usługi Data Factory](concepts-pipelines-activities.md) jest uruchamiany plik w języku Python w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
+Działania języka Python usługi Azure Databricks w [potoku usługi Data Factory](concepts-pipelines-activities.md) jest uruchamiany plik w języku Python w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
@@ -68,7 +67,7 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
 |name|Nazwa działania w potoku.|Yes|
 |description|Tekst opisujący, co działanie robi.|Nie|
 |type|W przypadku działania języka Python usługi Databricks typ działania jest DatabricksSparkPython.|Yes|
-|linkedServiceName|Nazwa połączonej usługi, na którym działa działania języka Python usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
+|linkedServiceName|Nazwa połączonej usługi, na którym działa działania języka Python usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
 |pythonFile|Identyfikator URI pliku Python, do wykonania. Obsługiwane są tylko DBFS ścieżki.|Yes|
 |parameters|Parametry wiersza polecenia, które zostaną przekazane do pliku języka Python. Jest to tablica ciągów.|Nie|
 |Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica < string, object >|Nie|

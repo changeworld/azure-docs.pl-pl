@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: da5064c7a064498378b37972fd76dc1c9a8d16e0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 52c07ee66e37f6bc14c5c9d6414bc47a1225af65
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807894"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000367"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 
@@ -79,6 +79,6 @@ Wszystkie aplikacje hostowane lokalnie, na platformie Azure i w innych chmurach 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie pulpitu nawigacyjnego](../azure-monitor/app/app-insights-dashboards.md)
 * [Wyszukiwanie diagnostyczne](../azure-monitor/app/diagnostic-search.md)
-* [Eksplorowanie metryk](app-insights-metrics-explorer.md)
+* [Eksplorowanie metryk](../azure-monitor/app/metrics-explorer.md)
 * [Pisanie zapytań analitycznych](../azure-monitor/app/analytics.md)
 

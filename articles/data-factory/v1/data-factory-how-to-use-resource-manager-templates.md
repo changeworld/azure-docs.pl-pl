@@ -1,6 +1,6 @@
 ---
-title: Użyj Menedżera zasobów szablonów w fabryce danych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć i szablony usługi Azure Resource Manager umożliwia tworzenie jednostek fabryki danych.
+title: Użyj usługi Resource Manager szablonów w usłudze Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i tworzenie jednostek usługi Data Factory za pomocą szablonów usługi Azure Resource Manager.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -10,54 +10,53 @@ ms.assetid: 37724021-f55f-4e85-9206-6d4a48bda3d8
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3419f8718396bfb4ec894310e545f6a8a5b8f718
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e9a99fcbe161e0b6cdabf1363ab3121a77869df7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049268"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024862"
 ---
-# <a name="use-templates-to-create-azure-data-factory-entities"></a>Szablony umożliwiają utworzenie jednostek fabryki danych Azure
+# <a name="use-templates-to-create-azure-data-factory-entities"></a>Szablony umożliwiają tworzenie jednostki usługi Azure Data Factory
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. 
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. 
 
 ## <a name="overview"></a>Przegląd
-Podczas używania fabryki danych Azure potrzeby integracji danych może okazać się ponowne użycie tego samego wzorca w różnych środowiskach lub wykonania tego samego zadania kilkukrotnie w tym samym rozwiązaniu. Szablony ułatwiają wdrożenia i zarządzania tych scenariuszy w łatwy sposób. Szablony w fabryce danych Azure idealnie nadają się do scenariusze, które obejmują możliwość ponownego wykorzystania i powtórzenia.
+Podczas używania usługi Azure Data Factory na potrzeby integracji danych, może się okazać samodzielnie ponowne użycie tego samego wzorca co w różnych środowiskach lub wdrażanie tego samego zadania kilkukrotnie w obrębie tego samego rozwiązania. Szablony ułatwiają implementować oraz zarządzać nimi tych scenariuszy w łatwy sposób. Szablony usługi Azure Data Factory jest idealny dla scenariuszy, które obejmują możliwość ponownego wykorzystania i powtórzenie.
 
-Rozważmy sytuację, w którym organizacja ma 10 zakładu produkcyjnego całym świecie. Dzienniki z każdego zakładu są przechowywane w bazie danych programu SQL Server oddzielny lokalny. Firma chce utworzyć magazynu danych w chmurze na potrzeby analizy ad hoc. Również chce mieć tej samej logiki, ale różne konfiguracje dla środowiska deweloperskie, badanie i produkcji.
+Rozważmy sytuację, w którym organizacja ma 10 zakładów produkcyjnych na całym świecie. Dzienniki z każdego zakładu są przechowywane w oddzielnych lokalnej bazy danych programu SQL Server. Firma chce utworzyć pojedynczego magazynu danych w chmurze na potrzeby analizy ad-hoc. Również chce mieć tę samą logikę, ale różnych konfiguracji dla środowisk programowania, testowania i produkcji.
 
-W takim przypadku zadania konieczne jest powtórzenie w tym samym środowisku, ale o różnych wartościach między fabryk danych 10 dla każdego zakładu produkcyjnego. W efekcie **powtarzania** jest obecny. Tworzenia szablonów umożliwia pozyskiwania to ogólny przepływ (to znaczy potoki o tych samych czynności z każdej fabryki danych), ale używa pliku osobny parametr dla każdego zakładu produkcyjnego.
+W tym przypadku zadania konieczne należy powtórzyć w tym samym środowisku, ale z różnymi wartościami dla fabryki danych 10 dla każdego zakładu produkcyjnego. W efekcie **powtórzenia** jest obecny. Tworzenie szablonów pozwala pozyskiwania ten ogólny przepływ (czyli potoki o tych samych czynności w każda fabryka danych), ale korzysta z pliku parametrów osobne dla każdego zakładu produkcyjnego.
 
-Ponadto, ponieważ organizacja chce wdrożyć te fabryki danych 10 wielokrotnie różnych środowiskach, szablony, mogą używać tego **możliwość ponownego wykorzystania** przy użyciu plików osobny parametr do tworzenia, testowania, i środowisk produkcyjnych.
+Ponadto organizacja chce wdrożyć te fabryk danych 10 wielokrotnie w różnych środowiskach, szablony może użyć tego **możliwość ponownego wykorzystania** wykorzystując oddzielne pliki parametrów do programowania, testowania, i środowisk produkcyjnych.
 
-## <a name="templating-with-azure-resource-manager"></a>Tworzenia szablonów z usługą Azure Resource Manager
-[Szablony usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md#template-deployment) to doskonały sposób, aby osiągnąć tworzenia szablonów w fabryce danych Azure. Szablony Menedżera zasobów zdefiniuj infrastrukturze i konfiguracji rozwiązania Azure za pomocą pliku JSON. Ponieważ szablonów usługi Azure Resource Manager działa z usługami Azure all/większość, może być powszechnie używane w prosty sposób zarządzać wszystkie zasoby zasobów platformy Azure. Zobacz [szablonów Authoring Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) Aby dowiedzieć się więcej o szablonach usługi Resource Manager ogólnie.
+## <a name="templating-with-azure-resource-manager"></a>Tworzenie szablonów przy użyciu usługi Azure Resource Manager
+[Szablony usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md#template-deployment) to doskonały sposób, aby osiągnąć szablonów usługi Azure Data Factory. Szablony usługi Resource Manager służy do definiowania infrastruktury i konfiguracji rozwiązania platformy Azure za pomocą pliku JSON. Ponieważ szablony usługi Azure Resource Manager współdziała z usługami platformy Azure, które są wszystkie/nabardziej, może być powszechnie używane w prosty sposób zarządzać wszystkie zasoby Twoich zasobów platformy Azure. Zobacz [tworzenia usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) Aby dowiedzieć się więcej na temat szablonów usługi Resource Manager ogólnie rzecz biorąc.
 
 ## <a name="tutorials"></a>Samouczki
-Zobacz następujące samouczki krok po kroku instrukcje dotyczące tworzenia jednostek fabryki danych przy użyciu szablonów usługi Resource Manager:
+Zobacz następujące samouczki krok po kroku dotyczące tworzenia jednostki usługi Data Factory przy użyciu szablonów usługi Resource Manager:
 
-* [Samouczek: Tworzenie potoku, aby skopiować dane przy użyciu szablonu usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [Samouczek: Tworzenie potoku do przetwarzania danych przy użyciu szablonu usługi Azure Resource Manager](data-factory-build-your-first-pipeline.md)
+* [Samouczek: Tworzenie potoku w celu kopiowania danych przy użyciu szablonu usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Samouczek: Tworzenie potoku w celu przetwarzania danych przy użyciu szablonu usługi Azure Resource Manager](data-factory-build-your-first-pipeline.md)
 
-## <a name="data-factory-templates-on-github"></a>Szablony fabryki danych w witrynie GitHub
-Wyewidencjonuj następujących szablonów szybki start Azure w serwisie GitHub:
+## <a name="data-factory-templates-on-github"></a>Szablony fabryki danych w usłudze GitHub
+Zapoznaj się z następujących szablonów Azure: Szybki start w witrynie GitHub:
 
-* [Tworzenie fabryki danych, aby skopiować dane z magazynu obiektów Blob Azure do bazy danych SQL Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
-* [Tworzenie fabryki danych działania Hive w usłudze Azure HDInsight klastra](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
-* [Tworzenie fabryki danych można skopiować danych z usług Salesforce do obiektów blob Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
-* [Tworzenie fabryki danych, w którym jest powiązany działań: kopiuje dane z serwera FTP do obiektów blob Azure, wywołuje skrypt hive w klastrze usługi HDInsight na żądanie do przekształcania danych i kopiuje wynik do bazy danych SQL Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
+* [Tworzenie fabryki danych, aby skopiować dane z usługi Azure Blob Storage do usługi Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
+* [Tworzenie fabryki danych za pomocą działania Hive w klastrze Azure HDInsight](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
+* [Tworzenie fabryki danych w celu skopiowania danych z usług Salesforce do obiektów blob platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
+* [Tworzenie fabryki danych, który tworzy powiązanie działań: kopiuje dane z serwera FTP do obiektów blob platformy Azure, wywołuje skrypt hive w klastrze HDInsight na żądanie do przekształcania danych i kopiuje wynik do usługi Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-Możesz także udostępnić szablony fabryki danych Azure na [Azure szybki start](https://azure.microsoft.com/documentation/templates/). Zapoznaj się [przewodnik wkład](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) podczas tworzenia szablonów, które mogą być współużytkowane przez to repozytorium.
+Możesz także udostępniać swoje szablony usługi Azure Data Factory w [Azure szybki start](https://azure.microsoft.com/documentation/templates/). Zapoznaj się [przewodniku po współtworzeniu](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) podczas tworzenia szablonów, które mogą być udostępniane za pośrednictwem tego repozytorium.
 
-Poniższe sekcje zawierają szczegółowe informacje na temat definiowania zasoby fabryki danych w szablonie usługi Resource Manager.
+Poniższe sekcje zawierają szczegółowe informacje na temat definiowania zasoby usługi Data Factory w szablonie usługi Resource Manager.
 
-## <a name="defining-data-factory-resources-in-templates"></a>Definiowanie zasoby fabryki danych w szablonach
-Szablon najwyższego poziomu do definiowania fabryki danych jest:
+## <a name="defining-data-factory-resources-in-templates"></a>Definiowanie zasobów usługi Data Factory w szablonach
+Szablon najwyższego poziomu dla zdefiniowanie fabryki danych jest:
 
 ```JSON
 "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -97,7 +96,7 @@ Fabrykę danych definiuje się w szablonie usługi Resource Manager jak pokazano
     "location": "East US"
 }
 ```
-DataFactoryName jest zdefiniowana w "zmiennych" jako:
+Parametr dataFactoryName jest zdefiniowany w "zmienne" jako:
 
 ```JSON
 "dataFactoryName": "[concat('<myDataFactoryName>', uniqueString(resourceGroup().id))]",
@@ -115,9 +114,9 @@ DataFactoryName jest zdefiniowana w "zmiennych" jako:
 }
 ```
 
-Zobacz [połączonej usługi magazynu](data-factory-azure-blob-connector.md#azure-storage-linked-service) lub [obliczeniowe połączonych usług](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) szczegółowe informacje o właściwościach JSON dla określonej usługi połączonej chcesz wdrożyć. Parametr "dependsOn" Określa nazwę odpowiedniego fabryki danych. Przykład Definiowanie połączonej usługi magazynu Azure znajduje się w następującej definicji JSON:
+Zobacz [połączona usługa Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) lub [usługi połączone usługi Compute](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) szczegółowe informacje na temat właściwości kodu JSON dla określonego połączonej usługi, chcesz wdrożyć. Parametr "dependsOn" Określa nazwę odpowiedniej usługi data Factory. W poniższej definicji JSON przedstawiono przykładowy definiowania połączonej usługi dla usługi Azure Storage:
 
-### <a name="define-datasets"></a>Zdefiniuj zbiory danych
+### <a name="define-datasets"></a>Definiowanie zestawów danych
 
 ```JSON
 "type": "datasets",
@@ -131,7 +130,7 @@ Zobacz [połączonej usługi magazynu](data-factory-azure-blob-connector.md#azur
     ...
 }
 ```
-Zapoznaj się [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szczegółowe informacje o właściwościach JSON dla określonego zestawu danych typu chcesz wdrożyć. Należy pamiętać, że parametr "dependsOn" Określa nazwę odpowiedniego fabryki danych i magazynu połączonej usługi. Przykład definiujący typ zestawu danych z magazynu obiektów blob Azure znajduje się w następującej definicji JSON:
+Zapoznaj się [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szczegółowe informacje na temat właściwości kodu JSON dla typu określonego zestawu danych chcesz wdrożyć. Należy pamiętać, że parametr "dependsOn" Określa nazwę odpowiedniej usługi fabryka danych i magazynu połączoną usługę. W poniższej definicji JSON przedstawiono przykładowy zdefiniowania typu zestawu danych usługi Azure blob storage:
 
 ```JSON
 "type": "datasets",
@@ -157,7 +156,7 @@ Zapoznaj się [obsługiwane magazyny danych](data-factory-data-movement-activiti
 }
 ```
 
-### <a name="define-pipelines"></a>Zdefiniuj potoki
+### <a name="define-pipelines"></a>Zdefiniuj potoków
 
 ```JSON
 "type": "dataPipelines",
@@ -177,7 +176,7 @@ Zapoznaj się [obsługiwane magazyny danych](data-factory-data-movement-activiti
 }
 ```
 
-Zapoznaj się [Definiowanie potoki](data-factory-create-pipelines.md#pipeline-json) szczegółowe informacje na temat właściwości JSON definiujący określone potoku i działań, które chcesz wdrożyć. Należy pamiętać, parametr "dependsOn" Nazwa fabryki danych i wszystkie odpowiednie połączonych usług lub zestawów danych. Przykład potok, który kopiuje dane z magazynu obiektów Blob Azure do bazy danych SQL Azure znajduje się w następujący fragment kodu JSON:
+Zapoznaj się [Definiowanie potoki](data-factory-create-pipelines.md#pipeline-json) szczegółowe informacje na temat właściwości kodu JSON do definiowania określonego potoku i działania, które chcesz wdrożyć. Należy pamiętać, parametr "dependsOn" Określa nazwę fabryki danych i wszelkie powiązane połączone usługi lub zestawów danych. W poniższym fragmencie kodu JSON przedstawiono przykładowy potok, który kopiuje dane z usługi Azure Blob Storage do usługi Azure SQL Database:
 
 ```JSON
 "type": "datapipelines",
@@ -231,13 +230,13 @@ Zapoznaj się [Definiowanie potoki](data-factory-create-pipelines.md#pipeline-js
     "end": "2016-10-04T00:00:00Z"
 }
 ```
-## <a name="parameterizing-data-factory-template"></a>Ustawianie szablonu usługi fabryka danych
-Najlepsze rozwiązania na ustawianie, zobacz [najlepszych rozwiązań dotyczących tworzenia szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-template-best-practices.md). Ogólnie rzecz biorąc użycia parametru można zmniejszyć do minimum, zwłaszcza jeśli zmienne, które mogą być używane zamiast tego. Tylko podać parametry w następujących scenariuszach:
+## <a name="parameterizing-data-factory-template"></a>Ustawianie szablonu usługi Data Factory
+Aby uzyskać najlepsze rozwiązania dotyczące parametryzacja, zobacz [najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-template-best-practices.md). Ogólnie rzecz biorąc użycia parametru można zmniejszyć do minimum, zwłaszcza, jeśli zmienne, które mogą być używane zamiast tego. Podaj tylko parametrów w następujących scenariuszach:
 
-* Ustawienia zależą od środowiska (przykład: Programowanie, testowe i produkcyjne)
+* Ustawienia zależą od środowiska (przykład: rozwoju, testowania i produkcji)
 * Klucze tajne (takie jak hasła)
 
-Jeśli chcesz ściągnąć kluczy tajnych ze [usługi Azure Key Vault](../../key-vault/key-vault-get-started.md) wdrażając jednostek fabryki danych Azure za pomocą szablonów, należy określić **magazynu kluczy** i **nazwa klucza tajnego** opisane w Poniższy przykład:
+Jeśli chcesz ściągnąć wpisy tajne z [usługi Azure Key Vault](../../key-vault/key-vault-get-started.md) podczas wdrażania jednostek usługi fabryka danych Azure przy użyciu szablonów, określ **usługi key vault** i **Nazwa wpisu tajnego** pokazany na Poniższy przykład:
 
 ```JSON
 "parameters": {
@@ -254,6 +253,6 @@ Jeśli chcesz ściągnąć kluczy tajnych ze [usługi Azure Key Vault](../../key
 ```
 
 > [!NOTE]
-> Podczas eksportowania szablonów dla fabryki danych istniejących obecnie nie jest jeszcze obsługiwana, jest działa.
+> Podczas eksportowania szablonów dla istniejącej fabryki danych obecnie nie jest jeszcze obsługiwana, jest w działa.
 >
 >

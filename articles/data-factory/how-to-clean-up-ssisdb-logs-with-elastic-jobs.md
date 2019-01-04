@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5bd300a318008b34415f8bc9625cad3c38dec873
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 0fa9503e4536090e56e2f2709ceca5338bb593de
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40107262"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018062"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Czyszczenie dzienników bazy danych SSISDB za pomocą zadania Elastic Database usługi Azure
 
@@ -265,6 +264,6 @@ ORDER BY start_time DESC
 
 Do zarządzania i monitorowania zadań związanych z Azure-SSIS Integration Runtime zobacz następujące artykuły. Azure-SSIS IR to aparat środowiska uruchomieniowego dla pakietów usług SSIS przechowywane w SSISDB w usłudze Azure SQL Database.
 
--   [Ponownie skonfigurować środowisko Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md)
+-   [Ponowne konfigurowanie środowiska Azure SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)
 
 -   [Monitorowanie środowiska Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).

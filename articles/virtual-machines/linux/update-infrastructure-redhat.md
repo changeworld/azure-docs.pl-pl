@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: borisb
-ms.openlocfilehash: 0755d472ef6b2566d7faa51019da7d49266fa199
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 79d9ab603b8548269647b7922c6eb01dcc228c4c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993216"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019592"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
@@ -48,22 +48,23 @@ Niektórzy klienci mogą chcieć zablokować RHEL maszyn wirtualnych do niektór
 > Dotyczy to tylko systemu RHEL 7.2 7.5
 
 1. Wyłącz EUS innych repozytoriów:
-    ```
+    ```bash
     sudo yum --disablerepo=* remove rhui-azure-rhel7
     ```
 
 1. Dodaj EUS repozytoriów:
-    ```
+    ```bash
     yum --config=https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config install rhui-azure-rhel7-eus
     ```
 
 1. Blokada zmiennej releasever:
-    ```
+    ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
 
     >[!NOTE]
     > Spowoduje to zablokowanie wersję pomocniczą systemu RHEL do bieżącej wersji pomocniczej powyższych instrukcji. Wprowadź określonych wersji pomocniczej, jeśli chcesz przeprowadzić uaktualnienie i Zablokuj do nowszej wersji pomocniczej, która nie jest najpóźniejsza. Na przykład `echo 7.5 > /etc/yum/vars/releasever` spowoduje zablokowanie używanej wersji systemu RHEL na RHEL w wersji 7.5
+
 1. Aktualizowanie maszyny Wirtualnej systemu RHEL
     ```bash
     sudo yum update

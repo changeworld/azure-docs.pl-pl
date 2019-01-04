@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 69427336cbc616affdbf11a55c9f410aeec596fc
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975172"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999581"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -168,7 +168,7 @@ telemetryClient.getContext().getCloud().setRole("My Component Name");
 
 - [Zapisywanie niestandardowych danych telemetrycznych](../../azure-monitor/app/api-custom-events-metrics.md)
 - [Dowiedz się więcej o](../../azure-monitor/app/app-map.md#set-cloudrolename) ustawienie cloud_RoleName dla innych zestawów SDK.
-- Dołączanie wszystkich składników wczesnych usługi w usłudze Application Insights. Zapoznaj się z [obsługiwanych platform](../../application-insights/app-insights-platforms.md).
+- Dołączanie wszystkich składników wczesnych usługi w usłudze Application Insights. Zapoznaj się z [obsługiwanych platform](../../azure-monitor/app/platforms.md).
 - Zobacz [modelu danych](../../azure-monitor/app/data-model.md) dla usługi Application Insights typów i danych modelu.
 - Dowiedz się, jak [rozszerzyć i filtrowanie danych telemetrycznych](../../azure-monitor/app/api-filtering-sampling.md).
 - [Dokumentacja konfiguracji usługi Application Insights](configuration-with-applicationinsights-config.md)

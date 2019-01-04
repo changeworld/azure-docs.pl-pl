@@ -1,12 +1,11 @@
 ---
-title: Azure przykładowej aplikacji do użycia z sieci obwodowej | Dokumentacja firmy Microsoft
+title: Usługa Azure przykładowej aplikacji do użytku z programem stref DMZ
+titlesuffix: Azure Virtual Network
 description: Wdrażanie to prostą aplikację sieci web po utworzeniu sieci obwodowej do testowania scenariuszy przepływu ruchu
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 1ccdb8254551d0009a71cc047b8399a539edb8e2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f299665168e1dfca223c5cab7ba0e0f2767a50ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866854"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021428"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Przykładowa aplikacja do użycia z sieci obwodowej
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -156,7 +155,7 @@ Ten skrypt konfiguruje zaplecza dla tej prostej aplikacji. Ten skrypt wykonują 
 5. Wyłącz zwiększone zabezpieczenia programu Internet Explorer umożliwia łatwiejsze przeglądania z tego serwera 
 
 > [!IMPORTANT]
-> **Najlepsze rozwiązanie**: nigdy nie zostanie wyłączone zwiększonych zabezpieczeń programu Internet Explorer na serwerze produkcyjnym, a także zazwyczaj jest to zły pomysł przeglądania stron internetowych z serwera produkcyjnego. Ponadto otwierania udziałów plików dla dostępu anonimowego jest to zły pomysł, ale gotowe w tym miejscu dla uproszczenia.
+> **Najlepsze rozwiązanie**: Nigdy nie zostanie wyłączone zwiększonych zabezpieczeń programu Internet Explorer na serwerze produkcyjnym, a także zazwyczaj jest to zły pomysł przeglądania stron internetowych z serwera produkcyjnego. Ponadto otwierania udziałów plików dla dostępu anonimowego jest to zły pomysł, ale gotowe w tym miejscu dla uproszczenia.
 > 
 > 
 

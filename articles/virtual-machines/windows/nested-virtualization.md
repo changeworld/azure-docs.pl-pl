@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1caf8455816bd86411a75821ee33516e8aad5de3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435110"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002267"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak włączyć wirtualizacji zagnieżdżonej na Maszynie wirtualnej platformy Azure
 
@@ -180,3 +180,7 @@ W tym przykładzie będzie używać adresu w zakresie 192.168.0.0/24.
 
 Na maszynie wirtualnej gościa Otwórz przeglądarkę i przejdź do strony sieci web.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>Konfigurowanie połączenia intranetowego dla maszyny wirtualnej gościa
+
+Aby uzyskać instrukcje dotyczące włączania przezroczyste łączność maszyn wirtualnych gościa oraz maszyny wirtualne platformy Azure, odwołać [w tym dokumencie](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network).

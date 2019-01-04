@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958362"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999173"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizowanie starszych aplikacji Java usługi Service Fabric w celu pobierania bibliotek z narzędzia Maven
 Ostatnio przenieśliśmy biblioteki Java usługi Service Fabric z zestawu SDK Java usługi Service Fabric do hostingu Maven. Teraz możesz używać repozytorium **mavencentral** do pobierania najnowszych zależności Java usługi Service Fabric. Ten artykuł Szybki start pomaga zaktualizować istniejące aplikacje Java, wcześniej utworzone do użycia z zestawem SDK Java usługi Service Fabric (przy użyciu szablonu Yeoman lub środowiska Eclipse), aby były zgodne z kompilacją bazującą na narzędziu Maven.
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-Aby zyskać ogólne pojęcie o tym, jak będzie wyglądać skrypt kompilacji dla usługi bezstanowej Java usługi Service Fabric, możesz odwołać się do dowolnego przykładu w naszych przykładach ułatwiających rozpoczęcie pracy. Tutaj znajdziesz plik [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) dla przykładu serwera EchoServer.
+Aby zyskać ogólne pojęcie o tym, jak będzie wyglądać skrypt kompilacji dla usługi bezstanowej Java usługi Service Fabric, możesz odwołać się do dowolnego przykładu w naszych przykładach ułatwiających rozpoczęcie pracy. Tutaj znajdziesz plik [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle) dla przykładu serwera EchoServer.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migrowanie usługi aktora usługi Service Fabric
 

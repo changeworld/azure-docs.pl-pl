@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089705"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000567"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Tworzenie szablonów usługi Azure Resource Manager do wdrażania aplikacji logiki
 
@@ -27,11 +27,11 @@ Aby uzyskać więcej informacji o szablonach usługi Resource Manager, zobacz [T
 
 Aplikacja logiki ma trzy podstawowe składniki:
 
-* **Zasobu aplikacji logiki**: zawiera informacje dotyczące np. ceny planu, lokalizację i definicji przepływu pracy.
-* **Definicja przepływu pracy**: w tym artykule opisano kroki dotyczące przepływu pracy aplikacji logiki i jak aparat usługi Logic Apps powinien zostać wykonany przepływ pracy.
+* **Zasobu aplikacji logiki**: Zawiera informacje dotyczące np. ceny planu, lokalizację i definicji przepływu pracy.
+* **Definicja przepływu pracy**: W tym artykule opisano kroki dotyczące przepływu pracy aplikacji logiki i jak aparat usługi Logic Apps powinien zostać wykonany przepływ pracy.
 Ta definicja można wyświetlić w aplikacji logiki **widok kodu** okna.
 W zasobie aplikacji logiki możesz znaleźć tę definicję w `definition` właściwości.
-* **Połączenia**: odwołuje się do rozdzielenia zasobów, które są bezpiecznie przechowywane metadane dotyczące wszystkie połączenia łącznika, takie jak parametry połączenia i token dostępu.
+* **Połączenia**: Odnosi się do rozdzielenia zasobów, które są bezpiecznie przechowywane metadane dotyczące wszystkie połączenia łącznika, takie jak parametry połączenia i token dostępu.
 W zasobie aplikacji logiki, aplikację logiki odwołuje się do tych zasobów `parameters` sekcji.
 
 Wszystkie te fragmenty istniejących aplikacji logiki można wyświetlić za pomocą narzędzia, takiego jak [Eksploratora zasobów Azure](http://resources.azure.com).
@@ -187,7 +187,7 @@ Brak przykładowy skrypt w usłudze GitHub w ramach [LogicAppConnectionAuth](htt
 <a name="team-services"></a>
 ## <a name="azure-devops-azure-pipelines"></a>Potoki usługi Azure DevOps platformy Azure
 
-Typowy scenariusz wdrażania i zarządzania nimi w środowisku jest za pomocą narzędzia, takiego jak Azure potoków w DevOps platformy Azure, Szablon wdrożenia aplikacji logiki. Obejmuje usługi Azure DevOps [wdrażanie grupy zasobów platformy Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) zadań, można dodać do dowolnej kompilacji lub potoku wydania. Musisz mieć [nazwy głównej usługi](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) dla autoryzacji do wdrożenia, a następnie można wygenerować potoku tworzenia wersji.
+Typowy scenariusz wdrażania i zarządzania nimi w środowisku jest za pomocą narzędzia, takiego jak Azure potoków w DevOps platformy Azure, Szablon wdrożenia aplikacji logiki. Obejmuje usługi Azure DevOps [wdrażanie grupy zasobów platformy Azure](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) zadań, można dodać do dowolnej kompilacji lub potoku wydania. Musisz mieć [nazwy głównej usługi](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) dla autoryzacji do wdrożenia, a następnie można wygenerować potoku tworzenia wersji.
 
 1. W potokach Azure wybierz **pusty** tak, aby utworzyć pustym potoku.
 

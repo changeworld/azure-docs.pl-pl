@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8ab6782a63c019bea11d047af8588c4489d8b580
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812309"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002216"
 ---
 # <a name="what-is-distributed-tracing"></a>Co to jest rozproszonego śledzenia?
 
@@ -51,7 +51,7 @@ Przy użyciu prawidłowego zestawu SDK Application Insights zainstalowany i skon
 
 Oprócz zestawy Application Insights SDK usługi Application Insights obsługuje również rozproszonego śledzenia za pośrednictwem [OpenCensus](https://opencensus.io/). OpenCensus jest typu open source, niezwiązane z żadnym dostawcą, jednym dystrybucję biblioteki umożliwia zbieranie metryk i rozproszonego śledzenia dla usług. Umożliwia ona także społeczności "open source", aby włączyć śledzenie rozproszonego przy użyciu popularnych technologii, takich jak Redis Memcached lub bazy danych MongoDB. [Microsoft współpracuje w OpenCensus z kilku innych monitorowania i chmurze partnerów](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Aby dodać do aplikacji za pomocą OpenCensus, możliwości rozproszonego śledzenia najpierw [zainstalować i skonfigurować usługę przesyłania lokalnego dalej w programie Application Insights](./../../application-insights/opencensus-local-forwarder.md). W tym miejscu należy skonfigurować OpenCensus do kierowania danych rozproszonego śledzenia za pomocą lokalnej usługi przesyłania dalej. Zarówno [Python](./../../application-insights/opencensus-python.md) i [Przejdź](./../../application-insights/opencensus-go.md) są obsługiwane.
+Aby dodać do aplikacji za pomocą OpenCensus, możliwości rozproszonego śledzenia najpierw [zainstalować i skonfigurować usługę przesyłania lokalnego dalej w programie Application Insights](./../../azure-monitor/app/opencensus-local-forwarder.md). W tym miejscu należy skonfigurować OpenCensus do kierowania danych rozproszonego śledzenia za pomocą lokalnej usługi przesyłania dalej. Zarówno [Python](./../../azure-monitor/app/opencensus-python.md) i [Przejdź](./../../azure-monitor/app/opencensus-go.md) są obsługiwane.
 
 Witryna OpenCensus zachowuje Dokumentacja referencyjna interfejsu API [Python](https://opencensus.io/api/python/trace/usage.html) i [Przejdź](https://godoc.org/go.opencensus.io), jak również jako różne różne przewodniki dotyczące korzystania z OpenCensus. 
 

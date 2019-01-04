@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z/do chmury SAP dla klienta przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z chmury SAP dla klienta do zbiornika obsługiwanych magazynów danych (lub) z obsługiwanych źródłowych baz danych do chmury SAP dla klienta przy użyciu fabryki danych.
+title: Kopiowanie danych/z rozwiązaniem SAP Cloud klienta przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kopiować dane z rozwiązaniem SAP Cloud klienta do ujścia obsługiwanych magazynów danych (lub) z obsługiwanego źródła danych magazynów w chmurze SAP dla klientów przy użyciu usługi fabryka danych.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,47 +9,46 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: df45613105c8fb005fc8ba0c796ef768e293c57e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 360cf92686682e65cf5348ee717bbb80cdc85cb4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052436"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016175"
 ---
-# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopiowanie danych z chmury SAP dla klienta (C4C) przy użyciu fabryki danych Azure
+# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopiowanie danych z rozwiązaniem SAP Cloud klienta (C4C) przy użyciu usługi Azure Data Factory
 
-W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z/do chmury SAP dla klienta (C4C). Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do chmury dla oprogramowania SAP dla klientów (C4C). Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Kopiowanie danych z chmury SAP dla klienta do żadnych obsługiwanych ujścia magazynu danych lub kopiowania danych z dowolnego źródła obsługiwanych magazynu danych do chmury SAP dla klienta. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Kopiowanie danych z rozwiązaniem SAP Cloud klienta do dowolnego obsługiwanego magazynu danych ujścia lub kopiowanie danych z dowolnego obsługiwanego źródłowego magazynu danych w chmurze SAP dla klienta. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik umożliwia fabryki danych Azure skopiować dane z/do chmury SAP dla klienta, w tym chmury SAP do sprzedaży, chmurę SAP dla usługi i Cloud SAP rozwiązań społecznościowych zaangażowania.
+W szczególności ten łącznik umożliwia usłudze Azure Data Factory skopiować dane z i do chmury dla oprogramowania SAP dla klientów, w tym w chmurze SAP dla sprzedaży, chmura SAP, usługi i chmura SAP, rozwiązania społecznościowe zaangażowania.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonego w chmurze SAP dla łącznika klienta.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonego w chmurze SAP dla klientów łącznika.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Chmury SAP obsługi klientów połączonych obsługiwane są następujące właściwości:
+Następujące właściwości są obsługiwane w chmurze SAP dla klientów, połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **SapCloudForCustomer**. | Yes |
+| type | Właściwość type musi być równa: **SapCloudForCustomer**. | Yes |
 | url | Adres URL usługi SAP C4C OData. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie SAP C4C. | Yes |
-| hasło | Podaj hasło dla konta użytkownika, określone nazwy użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Brak źródła tak dla obiekt sink |
+| hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Brak źródła tak dla ujścia |
 
 >[!IMPORTANT]
->Aby skopiować dane do chmury SAP dla odbiorcy, jawnie [utworzyć IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją w pobliżu chmury SAP dla klienta i skojarz w połączonej usłudze jak w poniższym przykładzie:
+>Aby skopiować dane do chmury dla oprogramowania SAP dla klientów, jawnie [tworzenie środowiska Azure IR](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją w chmurze SAP dla klientów i kojarzenia w połączonej usłudze, w poniższym przykładzie:
 
 **Przykład:**
 
@@ -76,14 +75,14 @@ Chmury SAP obsługi klientów połączonych obsługiwane są następujące wła�
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez SAP chmury dla zestawu danych klienta.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości, obsługiwany przez chmurę SAP dla zestawu danych klienta.
 
-Aby skopiować dane z programu SAP chmury dla klienta, ustaw właściwość Typ zestawu danych do **SapCloudForCustomerResource**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z rozwiązaniem SAP Cloud klienta, należy ustawić właściwość typu zestawu danych na **SapCloudForCustomerResource**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type zestawu danych: **SapCloudForCustomerResource** |Yes |
-| ścieżka | Określ ścieżkę SAP C4C OData jednostki. |Yes |
+| type | Właściwość typu elementu dataset musi być równa: **SapCloudForCustomerResource** |Yes |
+| ścieżka | Określ ścieżkę jednostką SAP C4C OData. |Yes |
 
 **Przykład:**
 
@@ -105,16 +104,16 @@ Aby skopiować dane z programu SAP chmury dla klienta, ustaw właściwość Typ 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę obsługiwanych w chmurze programu SAP klienta źródła właściwości.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez oprogramowanie SAP Cloud klienta źródła.
 
 ### <a name="sap-c4c-as-source"></a>C4C SAP jako źródło
 
-Aby skopiować dane z programu SAP chmury dla klienta, należy ustawić typ źródła w przypadku działania kopiowania do **SapCloudForCustomerSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z rozwiązaniem SAP Cloud klienta, należy ustawić typ źródłowego w działaniu kopiowania, aby **SapCloudForCustomerSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **SapCloudForCustomerSource**  | Yes |
-| query | Określ niestandardowe zapytania OData do odczytu danych. | Nie |
+| type | Właściwość type musi być równa: **SapCloudForCustomerSource**  | Yes |
+| query | Określ niestandardowe zapytanie OData do odczytu danych. | Nie |
 
 Przykładowe zapytanie można pobrać danych dla określonego dnia: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -150,15 +149,15 @@ Przykładowe zapytanie można pobrać danych dla określonego dnia: `"query": "$
 ]
 ```
 
-### <a name="sap-c4c-as-sink"></a>C4C SAP jako odbioru
+### <a name="sap-c4c-as-sink"></a>C4C SAP jako ujście
 
-Kopiowania danych do chmury SAP dla klienta, należy ustawić typ ujścia w działaniu kopiowania do **SapCloudForCustomerSink**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **zbiornika** sekcji:
+Aby skopiować dane do chmury SAP dla klienta, należy ustawić typ ujścia w działaniu kopiowania, aby **SapCloudForCustomerSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **SapCloudForCustomerSink**  | Yes |
-| writeBehavior | Zachowanie zapisu operacji. Może to być "Insert", "Update". | Nie. Domyślna "Insert". |
-| writeBatchSize | Rozmiar partii operacji zapisu. Rozmiar partii, aby uzyskać najlepszą wydajność może się różnić dla innej tabeli lub tego serwera. | Nie. Domyślnie 10. |
+| type | Właściwość type musi być równa: **SapCloudForCustomerSink**  | Yes |
+| writeBehavior | Zachowanie zapisu operacji. Może to być "Insert", "Aktualizuj". | Nie. Domyślna "Insert". |
+| writeBatchSize | Rozmiar partii operacji zapisu. Rozmiar partii, aby uzyskać najlepszą wydajność może się różnić dla serwera lub innej tabeli. | Nie. Domyślnie 10. |
 
 **Przykład:**
 
@@ -199,28 +198,28 @@ Kopiowania danych do chmury SAP dla klienta, należy ustawić typ ujścia w dzia
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Mapowanie typu danych dla chmury programu SAP dla klienta
+## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Mapowanie typu danych w chmurze SAP dla klientów
 
-Podczas kopiowania danych z chmury SAP dla odbiorcy, następujące mapowania są używane z chmury SAP dla typów danych klienta do typów danych tymczasowych fabryki danych Azure. Zobacz [schemat i dane typu mapowania](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typu źródłowego: schemat i dane sink.
+Podczas kopiowania danych z rozwiązaniem SAP Cloud klienta, następujące mapowania są używane z rozwiązaniem SAP Cloud dla typów danych klienta do typów danych tymczasowych usługi Azure Data Factory. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
 
 | Typ danych OData C4C SAP | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| Edm.Binary | Byte[] |
+| Edm.Binary | Byte[] |
 | Edm.Boolean | wartość logiczna |
-| Edm.Byte | Byte[] |
+| Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
-| Edm.Double | podwójne |
+| Edm.Decimal | Dziesiętny |
+| Edm.Double | Podwójne |
 | Edm.Single | Pojedyncze |
-| Edm.Guid | Identyfikator GUID |
+| Edm.Guid | Identyfikator GUID |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Ciąg |
-| Edm.Time | Zakres czasu |
+| Edm.Time | Przedział czasu |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

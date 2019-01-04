@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0f16f61e99e059c8cf21ec4ffa85eef0a04702bc
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 63045ce1ac06bfb87595675395a411978a17f95a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972996"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017059"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -41,7 +41,7 @@ Otwórz blok reguł alertów, a następnie użyj przycisku Dodaj.
 * Ustaw zasób przed innymi właściwościami. **Wybierz zasób "(składniki)"** Jeśli chcesz ustawić alerty dotyczące metryk wydajności lub użycia.
 * Nazwa która oferowanie alertu musi być unikatowa w obrębie grupy zasobów (nie tylko aplikację).
 * Należy zachować ostrożność, należy pamiętać, jednostki, w których pojawi się prośba o podanie wartości progowej.
-* Jeśli zaznaczysz pole "Adres E-mail właścicieli...", alerty są wysyłane za pośrednictwem poczty e-mail dla każdego, kto ma dostęp do tej grupy zasobów. Aby rozszerzyć ten zestaw osób, dodaj je do [grupy zasobów lub subskrypcji](../../application-insights/app-insights-resources-roles-access-control.md) (nie zasobu).
+* Jeśli zaznaczysz pole "Adres E-mail właścicieli...", alerty są wysyłane za pośrednictwem poczty e-mail dla każdego, kto ma dostęp do tej grupy zasobów. Aby rozszerzyć ten zestaw osób, dodaj je do [grupy zasobów lub subskrypcji](../../azure-monitor/app/resources-roles-access-control.md) (nie zasobu).
 * Jeśli określisz "Dodatkowe adresy e-mail", alerty są wysyłane do tych konkretnych osób lub grup (określa, czy zaznaczono pole "email właścicieli..."). 
 * Ustaw [adres elementu webhook](../../azure-monitor/platform/alerts-webhooks.md) Jeśli skonfigurujesz aplikację internetową, która odpowiada na alerty. Jest on nazywany zarówno po aktywowaniu alertu, jak i kiedy zostanie on rozwiązany. (Ale należy pamiętać, że obecnie parametry zapytania nie są przekazywane jako właściwości elementu webhook).
 * Możesz wyłączyć lub włączyć alert: wyświetlanie przycisków w górnej części bloku.
@@ -51,7 +51,7 @@ Otwórz blok reguł alertów, a następnie użyj przycisku Dodaj.
 * Czy używasz konta organizacyjnego Możesz ustawić alerty, jeśli masz dostęp do tego zasobu aplikacji współautora lub właściciela. Zapoznaj się z bloku kontroli dostępu. [Dowiedz się więcej na temat kontroli dostępu][roles].
 
 > [!NOTE]
-> W bloku alertów zostanie wyświetlony, że istnieje już zestaw alertu: [Diagnostyka proaktywna](../../application-insights/app-insights-proactive-failure-diagnostics.md). Alert automatycznego monitoruje jednego częstość niepowodzeń żądań metryki, określonej. Chyba że zdecydujesz się wyłączanie alertu aktywnego, nie trzeba ustawiać własne alert częstość niepowodzeń żądań. 
+> W bloku alertów zostanie wyświetlony, że istnieje już zestaw alertu: [Diagnostyka proaktywna](../../azure-monitor/app/proactive-failure-diagnostics.md). Alert automatycznego monitoruje jednego częstość niepowodzeń żądań metryki, określonej. Chyba że zdecydujesz się wyłączanie alertu aktywnego, nie trzeba ustawiać własne alert częstość niepowodzeń żądań. 
 > 
 > 
 
@@ -89,10 +89,10 @@ Popularne alerty zawierają:
 * **Czas odpowiedzi serwera** po stronie serwera aplikacji sieci web. A także Konfigurowanie alertów, Zwracaj uwagę na tę metrykę, aby zobaczyć, jeśli zależy to nieproporcjonalnie z kursów żądania wysokiej: odmiany może wskazywać, że Twoja aplikacja działa brakuje zasobów. 
 * **Wyjątki serwera** — aby je zobaczy, należy wykonać niektóre [dodatkowe ustawienia](../../azure-monitor/app/asp-net-exceptions.md).
 
-Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../../application-insights/app-insights-proactive-failure-diagnostics.md) automatycznie monitorować współczynnik, w którym aplikacja ma odpowiadać na żądania z kodami błędów. 
+Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../../azure-monitor/app/proactive-failure-diagnostics.md) automatycznie monitorować współczynnik, w którym aplikacja ma odpowiadać na żądania z kodami błędów. 
 
 ## <a name="automation"></a>Automatyzacja
-* [Automatyzowanie konfigurowania alertów za pomocą programu PowerShell](../../application-insights/app-insights-powershell-alerts.md)
+* [Automatyzowanie konfigurowania alertów za pomocą programu PowerShell](../../azure-monitor/app/powershell-alerts.md)
 * [Używanie elementów webhook w celu zautomatyzowania reagowanie na alerty](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Połączenia wideo
@@ -101,14 +101,14 @@ Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../..
 
 ## <a name="see-also"></a>Zobacz także
 * [Testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Automatyzowanie konfigurowania alertów](../../application-insights/app-insights-powershell-alerts.md)
+* [Automatyzowanie konfigurowania alertów](../../azure-monitor/app/powershell-alerts.md)
 * [Diagnostyka proaktywna](../../application-insights/app-insights-proactive-diagnostics.md) 
 
 <!--Link references-->
 
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [client]: ../../azure-monitor/app/javascript.md
-[platforms]: ../../application-insights/app-insights-platforms.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[platforms]: ../../azure-monitor/app/platforms.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [start]: ../../application-insights/app-insights-overview.md
 

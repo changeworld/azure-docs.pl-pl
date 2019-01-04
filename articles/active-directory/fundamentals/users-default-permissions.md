@@ -12,18 +12,18 @@ ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58354bf95b11e497f05fdf08ba4740b3f55c6d6e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096605"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022788"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?
-W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Na dostęp użytkownika mają wpływ typ użytkownika, [członkostwa w ramach roli](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) i prawa własności do poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa.
+W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Dostęp użytkownika, który składa się z typ użytkownika, ich [członkostwa w roli](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)i ich własność poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa.
 
 ## <a name="member-and-guest-users"></a>Użytkownicy będący członkami i gośćmi
-Zestaw otrzymanych domyślnych uprawnień zależy od tego, czy użytkownik jest natywnym członkiem dzierżawy (użytkownikiem będącym członkiem), czy gościem współpracy B2B (użytkownikiem gościem). Aby uzyskać więcej informacji na temat współpracy B2B i użytkowników gości, zobacz [Czym jest współpraca B2B w usłudze Azure AD?](../b2b/what-is-b2b.md). 
+Zestaw otrzymanych domyślnych uprawnień zależy od tego, czy użytkownik jest natywnym członkiem dzierżawy (użytkownikiem będącym członkiem), czy gościem współpracy B2B (użytkownikiem gościem). Aby uzyskać więcej informacji na temat współpracy B2B, zobacz [czym jest współpraca B2B w usłudze Azure AD?](../b2b/what-is-b2b.md) uzyskać więcej informacji dotyczących użytkowników-gości. 
 * Użytkownicy będący członkami mogą rejestrować aplikacje, zmieniać swoje zdjęcie profilowe, numer telefonu komórkowego oraz hasło. Mogą też zapraszać gości B2B. Dodatkowo użytkownicy mogą odczytywać wszystkie informacje o katalogach (z kilkoma wyjątkami). 
 * Użytkownicy goście B2B usługi Azure AD mają ograniczone uprawnienia do katalogu. Goście nie mogą na przykład przeglądać informacji o dzierżawie wykraczających poza informacje z własnego profilu. Jednak użytkownik gość może pobierać informacje o innym użytkowniku po podaniu głównej nazwy użytkownika lub identyfikatora objectId. Gość nie może wyświetlać informacji o innych obiektach dzierżawy, takich jak grupy i aplikacje.
 

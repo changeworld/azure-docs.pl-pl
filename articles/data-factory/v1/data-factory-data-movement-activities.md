@@ -9,17 +9,16 @@ ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299864"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014685"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Przenoszenie danych za pomocą działania kopiowania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +78,7 @@ Działanie kopiowania w usłudze Data Factory kopiuje dane z magazynu danych źr
 ### <a name="supported-file-formats"></a>Obsługiwane formaty plików
 Można użyć działania kopiowania do **skopiuj pliki — jest** między magazynami danych opartych na plikach dwóch, możesz pominąć [format sekcji](data-factory-create-datasets.md) w definicji zestawu danych wejściowych i wyjściowych. Dane są kopiowane efektywnie bez żadnych serializacji/deserializacji.
 
-Działanie kopiowania również odczytuje i zapisuje w plikach w wskazanych formatów: **tekstu, JSON, Avro, ORC i Parquet**i kodera-dekodera kompresji **GZip, Deflate, BZip2 i ZipDeflate** są obsługiwane. Zobacz [obsługiwane formaty plików i kompresji](data-factory-supported-file-and-compression-formats.md) ze szczegółowymi informacjami.
+Działanie kopiowania również odczytuje i zapisuje w plikach w wskazanych formatów: **Tekst, JSON, Avro, ORC i Parquet**i kodera-dekodera kompresji **GZip, Deflate, BZip2 i ZipDeflate** są obsługiwane. Zobacz [obsługiwane formaty plików i kompresji](data-factory-supported-file-and-compression-formats.md) ze szczegółowymi informacjami.
 
 Na przykład należy wykonać następujące działania kopiowania:
 
@@ -139,7 +138,7 @@ Utworzysz potok za pomocą działania kopiowania na kilka sposobów:
 Kreator kopiowania usługi Data Factory pomaga utworzyć potok za pomocą działania kopiowania. Ten potok umożliwia kopiowanie danych z obsługiwanych źródeł do miejsc docelowych *bez konieczności pisania JSON* definicje usługi połączone, zestawy danych i potoki. Zobacz [kreatora kopiowania usługi Data Factory](data-factory-copy-wizard.md) szczegółowe informacje na temat kreatora.  
 
 ### <a name="by-using-json-scripts"></a>Za pomocą skryptów JSON
-Edytor usługi Data Factory w witrynie Azure portal, programu Visual Studio lub programu Azure PowerShell służy do tworzenia definicji JSON potok (za pomocą działania kopiowania). Można następnie wdrożyć go, aby utworzyć potok w fabryce danych. Zobacz [samouczek: Użyj działania kopiowania w potoku usługi Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) samouczek z instrukcjami krok po kroku.    
+Edytor usługi Data Factory w witrynie Azure portal, programu Visual Studio lub programu Azure PowerShell służy do tworzenia definicji JSON potok (za pomocą działania kopiowania). Można następnie wdrożyć go, aby utworzyć potok w fabryce danych. Zobacz [samouczka: Użyj działania kopiowania w potoku usługi Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) samouczek z instrukcjami krok po kroku.    
 
 Właściwości kodu JSON (takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasad) są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w `typeProperties` różnią się w sekcji działania za pomocą poszczególnych typów działań.
 

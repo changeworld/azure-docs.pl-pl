@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590334"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022295"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +65,7 @@ Następujące właściwości są obsługiwane przez oprogramowanie SAP Business 
 | systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes |
 | clientId | Identyfikator klienta klienta w SAP W systemie.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| hasło | Hasło dla użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| hasło | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -170,18 +169,18 @@ Podczas kopiowania danych z systemu SAP BW, następujące mapowania są używane
 | ACCP | Int |
 | CHAR | Ciąg |
 | CLNT | Ciąg |
-| CURR | Dziesiętna |
+| CURR | Dziesiętny |
 | CUKY | Ciąg |
-| GRU | Dziesiętna |
+| GRU | Dziesiętny |
 | FLTP | Podwójne |
-| INT1 | Bajt |
+| INT1 | Bajtów |
 | INT2 | Int16 |
 | INT4 | Int |
 | JĘZYK | Ciąg |
 | LCHR | Ciąg |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Dziesiętna |
+| QUAN | Dziesiętny |
 | NIEPRZETWORZONE | Byte[] |
 | RAWSTRING | Byte[] |
 | CIĄG | Ciąg |

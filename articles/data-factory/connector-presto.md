@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 905431c73488ddc6ebf2d13823e4bb705d16304c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102014"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019269"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopiowanie danych z Presto przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -50,7 +49,7 @@ Następujące właściwości są obsługiwane w przypadku Presto połączonej us
 | serverVersion | Wersja serwera Presto. (czyli 0.148-t)  | Yes |
 | wykaz | Kontekst katalogu dla wszystkich żądań względem serwera.  | Yes |
 | port | Port TCP używany Presto serwer do nasłuchiwania połączeń klientów. Wartość domyślna to 8080.  | Nie |
-| Element authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Presto. <br/>Dozwolone wartości to: **anonimowe**, **LDAP** | Yes |
+| Element authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Presto. <br/>Dozwolone wartości to: **Anonimowe**, **LDAP** | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem Presto.  | Nie |
 | hasło | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |

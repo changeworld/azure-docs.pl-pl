@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 7e69fb74226aaaad13b0a5410e0a46a152d73533
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 0f294b25bda39b44ea577f70bf63c61a4ce43093
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812339"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002148"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Dane telemetryczne zdarzeń: Model danych usługi Application Insights
 
@@ -43,4 +43,4 @@ Maksymalna długość: 512 znaków
 
 - Zobacz [modelu danych](data-model.md) dla usługi Application Insights typów i danych modelu.
 - [Zapisywanie danych telemetrycznych zdarzeń niestandardowych](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Zapoznaj się z [platform](../../application-insights/app-insights-platforms.md) obsługiwane przez usługę Application Insights.
+- Zapoznaj się z [platform](../../azure-monitor/app/platforms.md) obsługiwane przez usługę Application Insights.

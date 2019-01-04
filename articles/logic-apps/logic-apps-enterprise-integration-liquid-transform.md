@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 27686cf036f69a9a4597c499e9b8b7d66d77e1e9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054605"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019677"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywać zaawansowane przekształceń JSON i łącznika Liquid szablonów w usłudze Azure Logic Apps
 
@@ -34,7 +34,7 @@ Tak zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie płynnych szablon lub mapy dla konta integracji
 
 1. W tym przykładzie należy utworzyć przykładowy szablon Liquid opisane w tym kroku.
-Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że filtry te zaczynać się wielką. Dowiedz się więcej o [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters). 
+Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że filtry te zaczynać się wielką. Dowiedz się więcej o [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters), wykorzystującymi [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -80,7 +80,7 @@ Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że f
 
 2. W Projektancie aplikacji logiki Dodaj [wyzwalacza żądania](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikacji logiki.
 
-3. W obszarze wyzwalacza wybierz **nowy krok**. W polu wyszukiwania wpisz "cieczy" jako filtr i wybierz następującą akcję: **Przekształć JSON do formatu JSON — cieczy**
+3. W obszarze wyzwalacza wybierz **nowy krok**. W polu wyszukiwania wprowadź "cieczy" jako filtr i wybierz następującą akcję: **Przekształć JSON do formatu JSON — cieczy**
 
    ![Znajdowanie i wybieranie akcji Liquid](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

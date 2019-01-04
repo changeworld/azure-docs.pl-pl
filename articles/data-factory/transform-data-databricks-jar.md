@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: a47d0130cd06a936da456ec6d78bde99907072f2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a271359f09ca63e1a0c3a143994739ee7db8aab
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526304"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014186"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania Jar w usłudze Azure Databricks
 
-Azure Databricks Jar aktywność [potoku usługi Data Factory](concepts-pipelines-activities.md) uruchamia Jar platformy Spark w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
+Azure Databricks Jar aktywność [potoku usługi Data Factory](concepts-pipelines-activities.md) uruchamia Jar platformy Spark w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
@@ -62,7 +61,7 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
 |name|Nazwa działania w potoku.|Yes|
 |description|Tekst opisujący, co działanie robi.|Nie|
 |type|Typ działania jest DatabricksSparkJar Jar działania usługi Databricks.|Yes|
-|linkedServiceName|Nazwa połączonej usługi, w którym uruchamiany jest plik Jar działania usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
+|linkedServiceName|Nazwa połączonej usługi, w którym uruchamiany jest plik Jar działania usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
 |mainClassName|Pełna nazwa klasy zawierającej metodę głównego, do wykonania. Ta klasa musi być zawarty w pliku JAR w bibliotece.|Yes|
 |parameters|Parametry, które zostaną przekazane do metody głównej.  Jest to tablica ciągów.|Nie|
 |Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica < string, object >|Tak (co najmniej jeden zawierający metody mainClassName)|

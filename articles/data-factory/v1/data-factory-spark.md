@@ -10,17 +10,16 @@ ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2c00e42284783439b0a01f6ba6bab31be053b1c9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736414"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015818"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów platformy Spark z potoków usługi Azure Data Factory
 
@@ -46,7 +45,7 @@ Działanie platformy Spark jest jednym z [działania przekształcania danych](da
 > - Działanie platformy Spark nie obsługuje klastry HDInsight Spark, korzystających z usługi Azure Data Lake Store jako magazynu głównego.
 > - Działanie platformy Spark obsługuje tylko istniejący (własne) klastry HDInsight Spark. Program nie obsługuje usługi połączonej HDInsight na żądanie.
 
-## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Wskazówki: Tworzenie potoku za pomocą działania platformy Spark
+## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Przewodnik: Tworzenie potoku przy użyciu działania Spark.
 Poniżej przedstawiono typowe czynności, aby utworzyć potok usługi data factory za pomocą działania platformy Spark: 
 
 * Tworzenie fabryki danych.
@@ -74,7 +73,7 @@ Aby utworzyć fabrykę danych, wykonaj następujące kroki:
 1. Na **nowa fabryka danych** bloku, w obszarze **nazwa**, wprowadź **SparkDF**.
 
    > [!IMPORTANT]
-   > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych SparkDF jest niedostępna", Zmień nazwę fabryki danych. Na przykład użyć yournameSparkDFdate i ponownie utworzyć fabrykę danych. Aby uzyskać więcej informacji na temat reguł nazewnictwa, zobacz [Data Factory: Naming rules (Fabryka danych: reguły nazewnictwa)](data-factory-naming-rules.md).
+   > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych SparkDF jest niedostępna", Zmień nazwę fabryki danych. Na przykład użyć yournameSparkDFdate i ponownie utworzyć fabrykę danych. Aby uzyskać więcej informacji na temat reguł nazewnictwa, zobacz [usługi Data Factory: Reguły nazewnictwa](data-factory-naming-rules.md).
 
 1. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w ramach której chcesz utworzyć fabrykę danych.
 
@@ -338,7 +337,7 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON.
 | className | Główna klasa platformy Java lub Spark aplikacji. | Nie |
 | argumenty | Lista argumentów wiersza polecenia do programu platformy Spark. | Nie |
 | proxyUser | Konto użytkownika do personifikacji, aby wykonać program platformy Spark. | Nie |
-| sparkConfig | Określ wartości dla właściwości konfiguracji aparatu Spark na liście [konfiguracji aparatu Spark: właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie |
+| sparkConfig | Określ wartości dla właściwości konfiguracji aparatu Spark na liście [Spark konfiguracji: Właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie |
 | getDebugInfo | Określa, kiedy Spark pliki dziennika są kopiowane do miejsca używanego przez klaster HDInsight (lub) określony przez sparkJobLinkedService. Dozwolone wartości to None, zawsze lub błąd. Wartość domyślna to Brak. | Nie |
 | sparkJobLinkedService | Magazyn połączone usługi, która ma platformy Spark, zależności, dzienniki i plik zadania. Jeśli nie określisz wartości dla tej właściwości jest używany Magazyn skojarzony z klastrem HDInsight. | Nie |
 

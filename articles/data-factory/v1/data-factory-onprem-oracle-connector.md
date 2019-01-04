@@ -9,17 +9,16 @@ ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 848616bb69aa0eae384b9c4e7ea1c2ac3da3c04e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1ccf66da14bbbd4993f29da2e40d996cb564864e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167124"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024913"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -56,7 +55,7 @@ Brama jest wymagana, nawet wtedy, gdy programu Oracle znajduje się w infrastruk
 
 Ten łącznik Oracle obsługuje dwie wersje sterowników:
 
-- **Sterownik firmy Microsoft dla bazy danych Oracle (zalecane)**: od bramy zarządzania danymi w wersji 2.7, sterownik firmy Microsoft dla oprogramowania Oracle jest automatycznie instalowany z bramą. Nie potrzebujesz zainstalować lub zaktualizować sterownik do ustanowienia połączenia Oracle. Mogą także występować podniesienia wydajności kopiowania przy użyciu tego sterownika. Obsługiwane są następujące wersje baz danych Oracle:
+- **Sterownik firmy Microsoft dla bazy danych Oracle (zalecane)**: Począwszy od bramą zarządzania danymi w wersji 2.7 sterownik firmy Microsoft dla oprogramowania Oracle jest automatycznie instalowany z bramą. Nie potrzebujesz zainstalować lub zaktualizować sterownik do ustanowienia połączenia Oracle. Mogą także występować podniesienia wydajności kopiowania przy użyciu tego sterownika. Obsługiwane są następujące wersje baz danych Oracle:
     - R1 Oracle 12c (12.1)
     - Oracle 11g R1, R2 (11.1, 11.2)
     - Oracle 10g R1, R2 (10.1, 10.2)
@@ -82,7 +81,7 @@ Jeśli używasz kreatora kopiowania do utworzenia potoku kopiowania typ sterowni
 
 Można utworzyć potok, który zawiera działania kopiowania. Potok przenosi dane z lokalnej bazy danych Oracle lub przy użyciu różnych narzędzi lub interfejsów API.
 
-Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania. Zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
 Umożliwia także jedną z następujących narzędzi do tworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **usługi Azure Resource Manager Szablon**, **interfejsu API platformy .NET**, lub **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku dotyczące sposobu tworzenia potoku, który zawiera działania kopiowania.
 
@@ -111,7 +110,7 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla usługi po
 **Przykład: Za pomocą sterownika Microsoft**
 
 > [!TIP]
-> Jeśli zostanie wyświetlony błąd, który mówi "ORA 01025: parametr zaległej płatności za przedmiot poza zakresem" i z oprogramowania Oracle jest w wersji 8i, Dodaj `WireProtocolMode=1` parametry połączenia i spróbuj ponownie:
+> Jeśli zostanie wyświetlony błąd, który mówi "ORA 01025: Parametr zaległej płatności za przedmiot poza zakresem"i usługi Oracle jest w wersji 8i, Dodaj `WireProtocolMode=1` parametry połączenia i spróbuj ponownie:
 
 ```json
 {
@@ -575,7 +574,7 @@ Potoku zawierającego działanie kopiowania, który został skonfigurowany do ko
 * Skopiuj ten wpis do pliku machine.config w następującym folderze .NET 4.0: < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Następnie należy zmienić wersję na 4.xxx.x.x.
 * Zainstaluj < ścieżka zainstalowane ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll w globalnej pamięci podręcznej zestawów (GAC), uruchamiając **gacutil /i [ścieżka dostawcy]**.
 
-### <a name="problem-2-datetime-formatting"></a>Problem 2: Daty i godziny
+### <a name="problem-2-datetime-formatting"></a>Problem 2: Formatowanie daty/godziny
 
 **komunikat o błędzie**
 

@@ -1,13 +1,10 @@
 ---
-title: Typy adresów IP na platformie Azure (model klasyczny) | Dokumentacja firmy Microsoft
+title: Typy adresów IP na platformie Azure (wersja klasyczna)
+titlesuffix: Azure Virtual Network
 description: Więcej informacji na temat publicznych i prywatnych adresów IP (klasyczny) na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 2f8664ab-2daf-43fa-bbeb-be9773efc978
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011702"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024573"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metody alokacji (model klasyczny) na platformie Azure
 Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP, można użyć na platformie Azure: prywatnych i publicznych.
@@ -30,7 +27,7 @@ Publiczne adresy IP są używane do komunikacji z Internetem łącznie z usługa
 Prywatne adresy IP są używane do komunikacji w obrębie sieci wirtualnej platformy Azure (VNet), usługi w chmurze i sieci lokalnej, gdy używasz bramy sieci VPN lub obwodu usługi ExpressRoute w celu rozszerzenia swojej sieci na platformie Azure.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać usługi Resource Manager. Dowiedz się więcej o adresach IP w usłudze Resource Manager, zapoznając się [adresów IP](virtual-network-ip-addresses-overview-arm.md) artykułu.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami:  [Usługi Resource Manager i Model Klasyczny](../resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać usługi Resource Manager. Dowiedz się więcej o adresach IP w usłudze Resource Manager, zapoznając się [adresów IP](virtual-network-ip-addresses-overview-arm.md) artykułu.
 
 ## <a name="public-ip-addresses"></a>Publiczne adresy IP
 Publiczne adresy IP umożliwiają zasobom platformy Azure do komunikowania się z Internetem a platformą Azure publicznymi usługami, takie jak [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/), [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [baz danych SQL](../sql-database/sql-database-technical-overview.md), i [usługi Azure storage](../storage/common/storage-introduction.md).
@@ -44,7 +41,7 @@ Publiczny adres IP jest skojarzona z następujących zasobów:
 * Bramy aplikacji
 
 ### <a name="allocation-method"></a>Metoda alokacji
-Publiczny adres IP musi być przypisany do zasobu platformy Azure, jest *dynamicznie* przydzielany z puli dostępnych w ramach lokalizacji zasób jest tworzony publiczny adres IP. Ten adres IP jest zwalniany, gdy zasób jest zatrzymana. W przypadku, gdy usługi w chmurze tak się stanie, gdy zostaną zatrzymane wszystkie wystąpienia roli, który można uniknąć za pomocą *statyczne* (zastrzeżony) adres IP (zobacz [usług w chmurze](#Cloud-services)).
+Publiczny adres IP musi być przypisany do zasobu platformy Azure, jest *dynamicznie* przydzielany z puli dostępnych w ramach lokalizacji zasób jest tworzony publiczny adres IP. Ten adres IP jest zwalniany, gdy zasób jest zatrzymana. Z usługą w chmurze tak się stanie po zatrzymaniu wszystkich wystąpień roli, które można uniknąć za pomocą *statyczne* (zastrzeżony) adres IP (zobacz [usług w chmurze](#Cloud-services)).
 
 > [!NOTE]
 > Lista zakresów adresów IP, z której publiczne adresy IP są przydzielane do zasobów platformy Azure, jest opublikowana w [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653).
@@ -52,7 +49,7 @@ Publiczny adres IP musi być przypisany do zasobu platformy Azure, jest *dynamic
 > 
 
 ### <a name="dns-hostname-resolution"></a>Rozpoznawanie nazw hostów DNS
-Podczas tworzenia usługi w chmurze lub Maszynie wirtualnej IaaS, musisz podać nazwę DNS usługi w chmurze, która jest unikatowa w obrębie wszystkich zasobów na platformie Azure. To tworzy mapowanie na serwerach DNS zarządzanych platformy Azure dla *dnsname*. cloudapp.net publiczny adres IP zasobu. Na przykład po utworzeniu usługi w chmurze za pomocą nazwa DNS usługi w chmurze z **contoso**, w pełni kwalifikowana nazwa domeny (FQDN) **contoso.cloudapp.net** rozwiąże się do publicznego adresu IP (VIP) Usługa w chmurze. Tej nazwy FQDN możesz użyć do utworzenia rekordu CNAME domeny niestandardowej wskazującego na publiczny adres IP na platformie Azure.
+Podczas tworzenia usługi w chmurze lub Maszynie wirtualnej IaaS, musisz podać nazwę DNS usługi chmury, która jest unikatowa dla wszystkich zasobów na platformie Azure. To tworzy mapowanie na serwerach DNS zarządzanych platformy Azure dla *dnsname*. cloudapp.net publiczny adres IP zasobu. Na przykład po utworzeniu usługi w chmurze za pomocą nazwa DNS usługi w chmurze z **contoso**, w pełni kwalifikowana nazwa domeny (FQDN) **contoso.cloudapp.net** rozwiąże publiczny adres IP (VIP) chmury Usługa. Tej nazwy FQDN możesz użyć do utworzenia rekordu CNAME domeny niestandardowej wskazującego na publiczny adres IP na platformie Azure.
 
 ### <a name="cloud-services"></a>Usługi w chmurze
 Usługa w chmurze ma zawsze na publiczny adres IP, które są określone jako wirtualny adres IP (VIP). Możesz utworzyć punkty końcowe w usłudze w chmurze do skojarzenia z różnymi portami w adresów VIP do wewnętrznych portów na maszynach wirtualnych i wystąpień roli w ramach usługi w chmurze. 
@@ -63,9 +60,9 @@ Upewnij się publiczny adres IP usługi w chmurze pozostają takie same, nawet w
 
 Statyczny (zastrzeżony) publiczne adresy IP najczęściej są używane w scenariuszach, gdzie usługa w chmurze:
 
-* wymaga reguły zapory należy skonfigurować przez użytkowników końcowych.
+* wymaga reguł zapory, które można skonfigurować przez użytkowników końcowych.
 * zależy od zewnętrznego rozpoznawania nazw DNS i dynamicznego adresu IP wymaga aktualizacji rekordów.
-* korzysta z usługi zewnętrznej sieci web, które używają modelu zabezpieczeń opartych na adresie IP.
+* wykorzystuje zewnętrznych usług internetowych korzystających z modelu zabezpieczeń opartych na adresie IP.
 * korzysta z certyfikatów SSL połączonych z adresem IP.
 
 > [!NOTE]
@@ -107,7 +104,7 @@ W modelu klasycznym wdrożeniu platformy Azure prywatny adres IP można przypisa
 * Brama aplikacji
 
 ### <a name="iaas-vms-and-paas-role-instances"></a>Maszyny wirtualne IaaS i PaaS wystąpień roli
-Maszyny wirtualne (VM) utworzone za pomocą klasycznego modelu wdrażania są zawsze umieszczane w usłudze w chmurze, podobne do wystąpień roli PaaS. Zachowanie prywatnych adresów IP, dlatego są podobne do tych zasobów.
+Maszyny wirtualne (VM) utworzone za pomocą klasycznego modelu wdrażania są zawsze umieszczane w usłudze w chmurze, podobne do wystąpień roli PaaS. Ten sposób przypomina zachowanie prywatnych adresów IP dla tych zasobów.
 
 Należy zauważyć, że usługa w chmurze można wdrożyć na dwa sposoby:
 
@@ -130,7 +127,7 @@ Statyczne prywatne adresy IP są powszechnie używane do:
 #### <a name="internal-dns-hostname-resolution"></a>Wewnętrzne rozpoznawanie nazwy hosta DNS
 Wszystkie maszyny wirtualne platformy Azure i wystąpień roli PaaS są skonfigurowane przy użyciu [serwerami DNS zarządzanymi przez Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) domyślnie, chyba że jawnie skonfigurujesz niestandardowe serwery DNS. Te serwery DNS zapewniają rozpoznawanie nazw wewnętrznych dla maszyn wirtualnych i wystąpień roli, które znajdują się w tej samej sieci wirtualnej lub usługi w chmurze.
 
-Podczas tworzenia maszyny wirtualnej mapowanie nazwy hosta na jego prywatny adres IP jest dodawane do serwerów DNS zarządzanych przez platformę Azure. W przypadku maszyny Wirtualnej multi-NIC nazwa hosta jest mapowana na prywatny adres IP podstawowej karty sieciowej. Informacje o mapowaniu jest jednak ograniczone do zasobów w ramach jednej usługi w chmurze lub sieci wirtualnej.
+Podczas tworzenia maszyny wirtualnej mapowanie nazwy hosta na jego prywatny adres IP jest dodawane do serwerów DNS zarządzanych przez platformę Azure. Z maszyną Wirtualną z wieloma kartami nazwa hosta jest mapowana na prywatny adres IP podstawowej karty sieciowej. Informacje o mapowaniu jest jednak ograniczone do zasobów w ramach jednej usługi w chmurze lub sieci wirtualnej.
 
 W przypadku programu *autonomiczny* usługą w chmurze, będą mieć możliwość rozpoznania nazwy hostów wszystkich wystąpień maszyn wirtualnych/ról w ramach jednej usługi w chmurze tylko. W przypadku usługi w chmurze w ramach sieci wirtualnej można rozwiązać nazwy hostów wszystkich wystąpień maszyn wirtualnych/ról w ramach sieci wirtualnej.
 

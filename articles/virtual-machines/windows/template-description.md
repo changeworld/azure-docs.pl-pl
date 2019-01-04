@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987700"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023842"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
@@ -260,7 +260,7 @@ Większość zasobów są zależne od innych zasobów, aby działać poprawnie. 
 ],
 ```
 
-Resource Manager wdrożyła równolegle je wszystkie zasoby, które nie są zależne od innego zasobu wdrożenia. Należy zachować ostrożność podczas ustawiania zależności, ponieważ może przypadkowo spowalniać wdrożenia, określając niepotrzebne zależności. Zależności można połączyć w łańcuch za pomocą wielu zasobów. Na przykład interfejs sieciowy jest zależny od publicznego adresu IP i zasoby sieci wirtualnej.
+Resource Manager wdrożyła je w sposób równoległy wszystkie zasoby, które nie są zależne od innego zasobu wdrożenia. Należy zachować ostrożność podczas ustawiania zależności, ponieważ może przypadkowo spowalniać wdrożenia, określając niepotrzebne zależności. Zależności można połączyć w łańcuch za pomocą wielu zasobów. Na przykład interfejs sieciowy jest zależny od publicznego adresu IP i zasoby sieci wirtualnej.
 
 Skąd wiadomo, czy zależność jest wymagana? Przyjrzyj się wartości, które są zdefiniowane w szablonie. Jeśli element w punktach definicji zasobu maszyny wirtualnej do innego zasobu, który jest wdrożony w tym samym szablonie, konieczne będzie zależności. Na przykład maszyny wirtualnej przykład definiuje profilu sieciowego:
 
@@ -436,7 +436,7 @@ Istnieje wiele rozszerzeń, które można zainstalować na maszynie Wirtualnej, 
 }
 ```
 
-Skrypt start.ps1 można wykonywać wiele zadań konfiguracyjnych. Na przykład dysków z danymi, które są dodawane do maszyn wirtualnych w tym przykładzie nie są inicjowane; można użyć niestandardowego skryptu do ich inicjowania. Jeśli masz wiele zadań uruchamiania, aby zrobić, można użyć pliku start.ps1 do wywoływania innych skryptów programu PowerShell w usłudze Azure storage. W przykładzie użyto programu PowerShell, ale można użyć dowolnej metody skryptów, które są dostępne w systemie operacyjnym, którego używasz.
+Skrypt start.ps1 można wykonywać wiele zadań konfiguracyjnych. Na przykład dysków z danymi, które są dodawane do maszyn wirtualnych w tym przykładzie nie są inicjowane; można użyć niestandardowego skryptu do ich inicjowania. Jeśli masz wiele zadań uruchamiania, aby zrobić, można użyć pliku start.ps1 do wywoływania innych skryptów programu PowerShell w usłudze Azure storage. W przykładzie użyto programu PowerShell, ale można użyć dowolnej metody obsługi skryptów, która jest dostępna w systemie operacyjnym, którego używasz.
 
 Można wyświetlić stan zainstalowanych rozszerzeń z ustawień rozszerzenia w portalu:
 
@@ -448,14 +448,15 @@ Można również uzyskać informacji o rozszerzeniu za pomocą **Get-AzureRmVMEx
 
 Podczas wdrażania szablonu usługi Azure śledzi zasoby wdrożone w grupie, a następnie automatycznie przypisuje nazwę do wdrożonej grupy. Nazwa wdrożenia jest taka sama jak nazwa szablonu.
 
-Jeśli zastanawiasz się, stan zasobów w ramach wdrożenia, można użyć w bloku grupy zasobów w witrynie Azure portal:
+Jeśli zastanawiasz się, stan zasobów w ramach wdrożenia, należy wyświetlić grupę zasobów w witrynie Azure portal:
 
 ![Uzyskaj informacje na temat wdrażania](./media/template-description/virtual-machines-deployment-info.png)
     
-Nie jest problemem, aby użyć tego samego szablonu do tworzenia zasobów lub zaktualizować istniejące zasoby. Korzystając z poleceń wdrażania szablonów, masz możliwość powiedzieć, który [tryb](../../resource-group-template-deploy.md) chcesz użyć. Tryb może być ustawiony na **Complete** lub **przyrostowe**. Wartość domyślna to w celu aktualizacji przyrostowych. Należy zachować ostrożność przy użyciu **Complete** tryb ponieważ przypadkowo usuniesz zasobów. Po ustawieniu trybu na **Complete**, Menedżer zasobów usuwa wszystkie zasoby w grupie zasobów, które nie znajdują się w szablonie.
+Nie jest problemem, aby użyć tego samego szablonu do tworzenia zasobów lub zaktualizować istniejące zasoby. Korzystając z poleceń wdrażania szablonów, masz możliwość powiedzieć, który [tryb](../../resource-group-template-deploy.md) chcesz użyć. Tryb może być ustawiony na **Complete** lub **przyrostowe**. Wartość domyślna to w celu aktualizacji przyrostowych. Należy zachować ostrożność przy użyciu **Complete** tryb ponieważ przypadkowo usuniesz zasobów. Po ustawieniu trybu na **Complete**, Menedżer zasobów usuwa wszystkie zasoby w grupie zasobów, które nie są w szablonie.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Utwórz własny szablon przy użyciu [tworzenia usługi Azure Resource Manager](../../resource-group-authoring-templates.md).
 - Wdrażanie szablonu, które zostały utworzone za pomocą [Utwórz maszynę wirtualną Windows przy użyciu szablonu usługi Resource Manager](ps-template.md).
 - Dowiedz się, jak zarządzanie maszynami wirtualnymi, które zostały utworzone, przeglądając [Utwórz Windows maszyn wirtualnych i zarządzanie przy użyciu modułu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Właściwości typów zasobów w szablonach i składnię JSON, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).

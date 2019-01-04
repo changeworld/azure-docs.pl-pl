@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 115a78993929b900b835450ea52d590e00ff7461
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604977"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000023"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy z "środowisko uruchomieniowe usługi functions jest nieosiągalny"
 
@@ -37,6 +37,7 @@ Omówimy cztery najbardziej typowe przypadki błędów, jak identyfikować i jak
 1. Usunięto ustawienia aplikacji dla konta magazynu
 1. Nieprawidłowe poświadczenia konta magazynu
 1. Konto magazynu jest niedostępne
+1. Dzienny limit przydziału wykonywania pełnej
 
 ## <a name="storage-account-deleted"></a>Usunięto konto magazynu
 
@@ -79,6 +80,13 @@ Aplikacja funkcji musi mieć możliwość uzyskania dostępu do konta magazynu. 
 * Funkcja wdrożonych aplikacji do środowiska usługi App Service bez reguł odpowiedniej sieci zezwalającą na ruch do i z konta magazynu
 * Zapora konto magazynu jest włączona i nie są skonfigurowane i umożliwiają ruch do i z funkcji. [Dowiedz się więcej o konfigurowaniu zapory konta magazynu w tym miejscu](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+## <a name="daily-execution-quota-full"></a>Dzienny limit przydziału wykonywania pełnej
+
+W przypadku dzienny limit przydziału wykonywania skonfigurowana aplikacja funkcji zostanie tymczasowo wyłączona i wiele formantów portalu staną się niedostępne. 
+
+* Aby sprawdzić, sprawdź Otwórz funkcje platformy > Ustawienia aplikacji funkcji w portalu. Zostanie wyświetlony następujący komunikat, jeśli Przekroczono limit przydziału
+    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+* Usuń limit przydziału, a następnie uruchom ponownie swoją aplikację, aby rozwiązać ten problem.
 
 ## <a name="next-steps"></a>Następne kroki
 

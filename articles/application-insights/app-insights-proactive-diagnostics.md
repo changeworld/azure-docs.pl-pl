@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 44b80a395ce29d67912f822c806246bdd97b59b6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ce259c2091fc2aec81cd85d4b1e3bd85ee92c806
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972842"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024352"
 ---
 # <a name="smart-detection-in-application-insights"></a>Wykrywanie inteligentne w usłudze Application Insights
  Wykrywanie inteligentne automatycznie ostrzega o potencjalnych problemów z wydajnością w aplikacji sieci web. Wykonuje aktywnego analizy telemetrii, że aplikacja wysyła do [usługi Application Insights](app-insights-overview.md). Jeśli istnieje nagły wzrost częstotliwości awarii lub nietypowe wzorce wydajności klienta lub serwera, zostanie wyświetlony alert. Ta funkcja wymaga żadna konfiguracja. Działa on tak, jeśli aplikacja wysyła taką ilość telemetrii.
@@ -41,8 +41,8 @@ Wybierz alert, aby wyświetlić jego szczegóły.
 ## <a name="what-problems-are-detected"></a>Jakie problemy są wykrywane?
 Istnieją trzy rodzaje wykrywania:
 
-* [Wykrywanie inteligentne — anomalie](app-insights-proactive-failure-diagnostics.md). Firma Microsoft korzysta z uczenia maszynowego można ustawić oczekiwana liczba nieudanych żądań dla aplikacji, korelacji z obciążeniem i innych czynników. Współczynnik błędów przekroczy oczekiwanego koperty, wysyłamy alertu.
-* [Inteligentne wykrywanie - anomalie wydajność](app-insights-proactive-performance-diagnostics.md). Otrzymuj powiadomienia, jeśli czas reakcji operacji lub zależności czasu trwania spowalnia w porównaniu do historycznych linii bazowych lub nazywamy nietypowego wzorca w czasie odpowiedzi lub czas ładowania strony.   
+* [Wykrywanie inteligentne — anomalie](../azure-monitor/app/proactive-failure-diagnostics.md). Firma Microsoft korzysta z uczenia maszynowego można ustawić oczekiwana liczba nieudanych żądań dla aplikacji, korelacji z obciążeniem i innych czynników. Współczynnik błędów przekroczy oczekiwanego koperty, wysyłamy alertu.
+* [Inteligentne wykrywanie - anomalie wydajność](../azure-monitor/app/proactive-performance-diagnostics.md). Otrzymuj powiadomienia, jeśli czas reakcji operacji lub zależności czasu trwania spowalnia w porównaniu do historycznych linii bazowych lub nazywamy nietypowego wzorca w czasie odpowiedzi lub czas ładowania strony.   
 * [Inteligentne wykrywanie — problemy z usługą w chmurze Azure](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Możesz otrzymywać alerty, jeśli aplikacja jest hostowana w usłudze Azure Cloud Services i wystąpienia roli wystąpiły błędy podczas uruchamiania, częste odtwarzanie lub awarie środowiska uruchomieniowego.
 
 (Każde powiadomienie łącza pomocy prowadzą do odpowiednich artykułów.)
@@ -54,7 +54,7 @@ Istnieją trzy rodzaje wykrywania:
 ## <a name="next-steps"></a>Kolejne kroki
 Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Twojej aplikacji:
 
-* [Eksplorator metryk](app-insights-metrics-explorer.md)
+* [Eksplorator metryk](../azure-monitor/app/metrics-explorer.md)
 * [Eksplorator wyszukiwania](../azure-monitor/app/diagnostic-search.md)
 * [Analiza — zaawansowany język zapytań](../azure-monitor/log-query/get-started-portal.md)
 

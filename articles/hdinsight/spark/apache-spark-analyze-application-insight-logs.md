@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: fb3826a2c93ee19e1bb84028a6621d637ce27077
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 161158157e3af92b1ac4fe81a664d95aa6816490
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810717"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001570"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analizowanie dzienników telemetrii usługi Application Insights przy użyciu platformy Apache Spark w HDInsight
 
@@ -35,7 +35,7 @@ Dowiedz się, jak używać [platformy Apache Spark](https://spark.apache.org/) n
 
 Następujące zasoby zostały użyte w zakresie opracowywania i testowania w tym dokumencie:
 
-* Dane telemetryczne Insights aplikacji został wygenerowany za pomocą [aplikacji sieci web Node.js skonfigurowane do korzystania z usługi Application Insights](../../application-insights/app-insights-nodejs.md).
+* Dane telemetryczne Insights aplikacji został wygenerowany za pomocą [aplikacji sieci web Node.js skonfigurowane do korzystania z usługi Application Insights](../../azure-monitor/app/nodejs.md).
 
 * Platforma Spark opartych na systemie Linux w klastrze HDInsight w wersji 3.5 był używany do analizowania danych.
 

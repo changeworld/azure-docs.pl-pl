@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: e78f456a7c69e308257b450a7572f6317dfa6eec
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715447"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001927"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -106,7 +106,7 @@ Korzystając z HDInsight, pliki danych są przechowywane w sposób skalowalnośc
 * Ułatwienia dostępu z usług zewnętrznych, takich jak witryny sieci Web, narzędzia do pobierania/przekazywania pliku, różnych zestawów SDK języka i przeglądarki sieci web.
 * Pojemność dużych plików i dużych skalowalności magazynu.
 
-Aby uzyskać więcej informacji, zobacz [obiektów blob opis](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) i [usługi Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/).
+Aby uzyskać więcej informacji, zobacz [obiektów blob opis](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) i [usługi Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
 Korzystając z usługi Azure Storage lub usługi Data Lake Storage, nie trzeba wykonywać żadnych specjalnych czynności z HDInsight dostępu do danych. Na przykład następujące polecenie wyświetla listę plików w `/example/data` folderu niezależnie od tego, czy są przechowywane w usłudze Azure Storage lub magazynu usługi Data Lake:
 
@@ -177,7 +177,7 @@ Istnieją różne sposoby dostępu do danych poza klastrem HDInsight. Poniżej p
 Jeśli przy użyciu __usługi Azure Storage__, zobacz poniższe linki, aby sposób, że mogą uzyskiwać dostęp do danych:
 
 * [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-az-cli2): Polecenia interfejsu wiersza polecenia do pracy z platformą Azure. Po zainstalowaniu należy użyć `az storage` polecenie, aby uzyskać pomoc na temat korzystania z magazynu lub `az storage blob` poleceń specyficznych dla obiektów blob.
-* [blobxfer.PY](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Skrypt języka python do pracy z obiektami BLOB w usłudze Azure Storage.
+* [blobxfer.PY](https://github.com/Azure/blobxfer): Skrypt języka python do pracy z obiektami BLOB w usłudze Azure Storage.
 * Różnych zestawów SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)

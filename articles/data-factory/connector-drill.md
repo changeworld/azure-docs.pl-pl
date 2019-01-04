@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 180489aecc5eb5e937b4c163bc40937f3f6d2d80
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2dd02e50ecde19b3affd26a024c4734e99fc4978
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077668"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017331"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Kopiowanie danych z testowania odzyskiwania po awarii przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -45,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku testowania odzyskiwani
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **testowania odzyskiwania po awarii** | Yes |
+| type | Właściwość type musi być równa: **Przechodzenie do szczegółów** | Yes |
 | Parametry połączenia | Ciąg połączenia ODBC, aby nawiązać połączenie testowania odzyskiwania po awarii. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 

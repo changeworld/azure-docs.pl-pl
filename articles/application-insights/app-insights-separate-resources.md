@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: fe9c33f5a872c60ad30faf7cc5074004f5d6fc50
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 58ccfefa0a0d76334734c67688ef50230881e945
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973804"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018808"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddzielanie danych telemetrycznych z programowania, testowania i produkcji
 
@@ -78,15 +78,15 @@ W [portal.azure.com](https://portal.azure.com), Dodaj zasób usługi Application
 
 ![Kliknij kolejno polecenia Nowy, Application Insights](./media/app-insights-separate-resources/01-new.png)
 
-* **Typ aplikacji** dotyczy, zostanie wyświetlony w bloku przeglądu i właściwości, które są dostępne w [Eksplorator metryk](app-insights-metrics-explorer.md). Jeśli nie widać danego typu aplikacji, wybierz jeden z typów sieci web dla stron sieci web.
-* **Grupa zasobów** jest wygoda dla właściwości, takie jak zarządzanie [kontroli dostępu](app-insights-resources-roles-access-control.md). Można użyć oddzielnych grupach zasobów dla rozwoju, testowania i produkcji.
+* **Typ aplikacji** dotyczy, zostanie wyświetlony w bloku przeglądu i właściwości, które są dostępne w [Eksplorator metryk](../azure-monitor/app/metrics-explorer.md). Jeśli nie widać danego typu aplikacji, wybierz jeden z typów sieci web dla stron sieci web.
+* **Grupa zasobów** jest wygoda dla właściwości, takie jak zarządzanie [kontroli dostępu](../azure-monitor/app/resources-roles-access-control.md). Można użyć oddzielnych grupach zasobów dla rozwoju, testowania i produkcji.
 * **Subskrypcja** jest Twoje konto płatności na platformie Azure.
 * **Lokalizacja** jest, w którym przechowujemy Twoje dane. Obecnie nie można zmienić. 
 * **Dodaj do pulpitu nawigacyjnego** umieszcza kafelka szybkiego dostępu do zasobu na stronie głównej usługi Azure. 
 
 Tworzenie zasobu zajmuje kilka sekund. Gdy wszystko będzie gotowe, zostanie wyświetlony alert.
 
-(Możesz napisać [skrypt programu PowerShell](app-insights-powershell-script-create-resource.md) automatycznego tworzenia zasobu.)
+(Możesz napisać [skrypt programu PowerShell](../azure-monitor/app/powershell-script-create-resource.md) automatycznego tworzenia zasobu.)
 
 ### <a name="getting-the-instrumentation-key"></a>Uzyskiwanie klucza Instrumentacji
 Klucz Instrumentacji identyfikuje zasób, który został utworzony. 
@@ -98,7 +98,7 @@ Wymagane są klucze instrumentacji, zasobów, do którego Twoja aplikacja będzi
 ## <a name="filter-on-build-number"></a>Filtrowanie według numeru kompilacji
 Po opublikowaniu nowej wersji aplikacji, chcesz mieć możliwość oddzielenia dane telemetryczne z różnych kompilacji.
 
-Można ustawić właściwości wersja aplikacji, dzięki czemu można filtrować [wyszukiwania](../azure-monitor/app/diagnostic-search.md) i [Eksplorator metryk](app-insights-metrics-explorer.md) wyników.
+Można ustawić właściwości wersja aplikacji, dzięki czemu można filtrować [wyszukiwania](../azure-monitor/app/diagnostic-search.md) i [Eksplorator metryk](../azure-monitor/app/metrics-explorer.md) wyników.
 
 ![Filtrowanie według właściwości](./media/app-insights-separate-resources/050-filter.png)
 
@@ -148,7 +148,7 @@ Aby śledzić wersje aplikacji, upewnij się, że plik `buildinfo.config` jest g
     </PropertyGroup>
 ```
 
-Jeśli plik zawiera informację o kompilacji, moduł sieci Web usługi Application Insights automatycznie dodaje **wersję aplikacji** jako właściwość do każdego elementu telemetrii. Pozwala to na filtrowanie według wersji podczas przeprowadzania [wyszukiwania diagnostycznego](../azure-monitor/app/diagnostic-search.md) lub [eksplorowania metryk](app-insights-metrics-explorer.md).
+Jeśli plik zawiera informację o kompilacji, moduł sieci Web usługi Application Insights automatycznie dodaje **wersję aplikacji** jako właściwość do każdego elementu telemetrii. Pozwala to na filtrowanie według wersji podczas przeprowadzania [wyszukiwania diagnostycznego](../azure-monitor/app/diagnostic-search.md) lub [eksplorowania metryk](../azure-monitor/app/metrics-explorer.md).
 
 Numer wersji kompilacji jest jednak generowany tylko przez aparat Microsoft Build Engine, a nie podczas kompilowania przez deweloperów w programie Visual Studio.
 

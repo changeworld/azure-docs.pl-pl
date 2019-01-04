@@ -1,5 +1,5 @@
 ---
-title: Temat usługi Azure Key Vault kluczy, wpisów tajnych i certyfikatów
+title: Informacje o kluczach usługi Azure Key Vault, klucze tajne i certyfikaty — usługi Azure Key Vault
 description: Omówienie usługi Azure Key Vault REST interfejs i deweloperów szczegółowe informacje o kluczy, wpisów tajnych i certyfikatów.
 services: key-vault
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 464574716971388f3785879ba40ad3e8a624fc7f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384789"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002624"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -36,7 +36,7 @@ Aby uzyskać więcej ogólnych informacji na temat usługi Key Vault, zobacz [co
 
 Poniższe sekcje zapewniają ogólne informacje dotyczące różnych implementacji usługi Key Vault.
 
-###  <a name="supporting-standards"></a>Obsługa standardów
+### <a name="supporting-standards"></a>Obsługa standardów
 
 JavaScript Object Notation (JSON) i specyfikacje JavaScript obiektu podpisywania i szyfrowania (blog JOSE) są ważne informacje.  
 
@@ -60,7 +60,7 @@ Zapoznaj się ze specyfikacją JOSE dla typów danych odpowiednich dla kluczy sz
 -   **Tożsamość** — tożsamości z usługi Azure Active Directory (AAD).  
 -   **IntDate** — wartość dziesiętną JSON reprezentujący liczbę sekund od 1970-01-01T0:0:0Z UTC do daty/godziny określonej UTC. Zobacz, w szczególności RFC3339, aby uzyskać szczegółowe informacje dotyczące date/times ogólnie rzecz biorąc i czasem UTC.  
 
-###  <a name="objects-identifiers-and-versioning"></a>Obiekty, identyfikatory i przechowywania wersji
+### <a name="objects-identifiers-and-versioning"></a>Obiekty, identyfikatory i przechowywania wersji
 
 Obiekty przechowywane w usłudze Key Vault są wersjonowane zawsze wtedy, gdy tworzone jest nowe wystąpienie obiektu. Każda wersja jest przypisany unikatowy identyfikator i adres URL. W chwili utworzenia obiektu ma podany identyfikator unikatowy wersji i oznaczona jako bieżąca wersja obiektu. Tworzenie nowego wystąpienia o takiej samej nazwie obiektu zapewnia nowy obiekt identyfikator unikatowy wersji powoduje przekształcenie go w bieżącej wersji.  
 
@@ -85,7 +85,7 @@ Gdzie:
 
 ## <a name="key-vault-keys"></a>Klucze usługi Key Vault
 
-###  <a name="keys-and-key-types"></a>Klucze i typy kluczy
+### <a name="keys-and-key-types"></a>Klucze i typy kluczy
 
 Klucze szyfrowania w usłudze Key Vault jest reprezentowane przez obiekty klucza internetowego JSON [JWK]. Podstawowej specyfikacji JWK/JWA również zostały rozszerzone umożliwiające typy kluczy, które są unikatowe dla implementacji usługi Key Vault. Umożliwia importowanie kluczy przy użyciu pakietu specyficzne dla dostawcy sprzętowego modułu zabezpieczeń, na przykład bezpiecznego transportu kluczy, które mogą być używane tylko w sprzętowych modułach zabezpieczeń klucza magazynu.  
 
@@ -213,7 +213,7 @@ Następujące uprawnienia mogą być udzielone na na użytkownika / usługi gł�
   - *Importuj*: Importuj klucz do magazynu kluczy
   - *Usuń*: Usuń klucz obiektu
   - *Odzyskaj*: Odzyskiwanie usuniętego klucza
-  - *kopii zapasowej*: Utwórz kopię zapasową klucza w magazynie kluczy
+  - *Kopia zapasowa*: Utwórz kopię zapasową klucza w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza do magazynu kluczy
 
 - Uprawnienia dla operacji kryptograficznych
@@ -270,7 +270,7 @@ Następujące uprawnienia mogą być używane, na podstawie na jednostkę w wpis
   - *Ustaw*: Utwórz klucz tajny  
   - *Usuń*: Usuń klucz tajny  
   - *Odzyskaj*: Odzyskiwanie usuniętego wpisu tajnego
-  - *kopii zapasowej*: Tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
+  - *Kopia zapasowa*: Tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza tajnego do magazynu kluczy
 
 - Uprawnienia dla uprzywilejowanych operacji korzystających z
@@ -429,7 +429,7 @@ Jeśli ustawiono zasady dotyczące certyfikatów automatycznego odnawiania, powi
   - *Importuj*: Zaimportuj certyfikat materiały do certyfikatem usługi Key Vault
   - *Usuń*: Usuń certyfikat, jego zasad i wszystkich jego wersji  
   - *Odzyskaj*: Usunięto certyfikat odzyskiwania
-  - *kopii zapasowej*: Tworzenie kopii zapasowej certyfikatu w magazynie kluczy
+  - *Kopia zapasowa*: Tworzenie kopii zapasowej certyfikatu w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej certyfikatu do magazynu kluczy
   - *managecontacts*: Zarządzaj kontaktami certyfikatu usługi Key Vault  
   - *manageissuers*: Zarządzanie wystawców urzędów certyfikatów usługi Key Vault
@@ -464,7 +464,7 @@ Następujące uprawnienia mogą służyć podczas autoryzowania użytkownika lub
   - *Aktualizacja*: Aktualizacja konta magazynu
   - *Usuń*: Usuwanie konta magazynu  
   - *Odzyskaj*: Odzyskać usunięte konto magazynu
-  - *kopii zapasowej*: Tworzenie kopii zapasowej konta magazynu
+  - *Kopia zapasowa*: Tworzenie kopii zapasowej konta magazynu
   - *Przywróć*: Przywróć na koncie magazynu kopii zapasowych do usługi Key Vault
   - *Ustaw*: Utwórz lub zaktualizuj konto magazynu
   - *regeneratekey*: Wygeneruj ponownie określoną wartością klucza konta magazynu

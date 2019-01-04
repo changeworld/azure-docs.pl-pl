@@ -9,17 +9,16 @@ ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a20ba54226e5cdcec242e29344110840615a0c95
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317529"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021581"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -523,7 +522,7 @@ Zadanie jest tworzone dla każdego uruchomienia działania. W tym przykładzie j
 
 Następujące instruktaż zawiera dodatkowe szczegóły.
 
-#### <a name="step-1-create-the-data-factory"></a>Krok 1. Tworzenie fabryki danych
+#### <a name="step-1-create-the-data-factory"></a>Krok 1: Tworzenie fabryki danych
 1. Po zalogowaniu się do [witryny Azure portal](https://portal.azure.com/), wykonaj następujące czynności:
 
    a. Wybierz **NEW** w menu po lewej stronie.
@@ -546,7 +545,7 @@ Następujące instruktaż zawiera dodatkowe szczegóły.
 
    ![Strona fabryki danych](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>Krok 2. Tworzenie połączonych usług
+#### <a name="step-2-create-linked-services"></a>Krok 2: Tworzenie połączonych usług
 Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką danych. W tym kroku połączysz swoje konto magazynu i konto usługi Batch z fabryką danych.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
@@ -595,7 +594,7 @@ W tym kroku utworzysz połączoną usługę służącą do konta usługi Batch, 
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
-#### <a name="step-3-create-datasets"></a>Krok 3. Tworzenie zestawów danych
+#### <a name="step-3-create-datasets"></a>Krok 3: Tworzenie zestawów danych
 W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wyjściowych.
 
 #### <a name="create-the-input-dataset"></a>Tworzenie wejściowego zestawu danych
@@ -805,7 +804,7 @@ W tym kroku utworzysz potok z jednym działaniem, niestandardowe działanie, kt�
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć potok.
 
-#### <a name="step-5-test-the-pipeline"></a>Krok 5: Testowanie potoku
+#### <a name="step-5-test-the-pipeline"></a>Krok 5. Testowanie potoku
 W tym kroku należy przetestować potoku przez umieszczenie plików w folderach wejściowych. Uruchom testowanie potoku za pomocą jednego pliku dla każdego folderu danych wejściowych.
 
 1. Na **usługi Data factory** bloku w witrynie Azure portal, wybierz opcję **Diagram**.

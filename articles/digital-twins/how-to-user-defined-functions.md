@@ -1,20 +1,20 @@
 ---
 title: Jak utworzyć funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Wytyczne dotyczące sposobu tworzenia funkcje zdefiniowane przez użytkownika, dopasowujące jednostki i przypisań ról za pomocą Twins cyfrowych platformy Azure.
+description: Jak tworzyć funkcje zdefiniowane przez użytkownika, dopasowujące jednostki i przypisań ról w reprezentacji urządzeń cyfrowych platformy Azure.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 06c6d2935358650eb9f7ef1cda55d5292e203daf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993409"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019932"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -73,19 +73,13 @@ Za pomocą treść kodu JSON:
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
 
-Po utworzeniu dopasowujące jednostki przekazywanie fragmentu kodu funkcji z następującymi uwierzytelniony HTTP **WPIS** żądania:
+Po utworzeniu dopasowujące jednostki, Przekaż fragment kodu funkcji z następujących uwierzytelnionego wieloczęściowego żądania HTTP POST:
+
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
-
-> [!IMPORTANT]
-> - Sprawdź, czy nagłówki obejmują: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-> - Podana treść jest wieloczęściowej wiadomości:
->   - Pierwsza część zawiera wymagane metadane funkcji zdefiniowanej przez użytkownika.
->   - Druga część zawiera logikę obliczeń języka JavaScript.
-> - W **USER_DEFINED_BOUNDARY** sekcji i Zastąp **spaceId** (`YOUR_SPACE_IDENTIFIER`) i **dopasowujące jednostki**(`YOUR_MATCHER_IDENTIFIER`) wartości.
-> - Uwaga UDF języka JavaScript, podana jako `Content-Type: text/javascript`.
 
 Użyj następujących treść kodu JSON:
 
@@ -116,6 +110,15 @@ function process(telemetry, executionContext) {
 | USER_DEFINED_BOUNDARY | Nazwa granice zawartości wieloczęściowej wiadomości |
 | YOUR_SPACE_IDENTIFIER | Identyfikator miejsca  |
 | YOUR_MATCHER_IDENTIFIER | Identyfikator dopasowywania, którego chcesz użyć |
+
+1. Sprawdź, czy nagłówki obejmują: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Sprawdź, czy treści wieloczęściowej wiadomości:
+
+   - Pierwsza część zawiera metadane wymagane funkcji zdefiniowanej przez użytkownika.
+   - Druga część zawiera logikę obliczeń języka JavaScript.
+
+1. W **USER_DEFINED_BOUNDARY** sekcji i Zastąp **spaceId** (`YOUR_SPACE_IDENTIFIER`) i **dopasowujące jednostki** (`YOUR_MATCHER_IDENTIFIER`) wartości.
+1. Sprawdź, czy funkcja zdefiniowana przez użytkownika języka JavaScript jest dostarczany jako `Content-Type: text/javascript`.
 
 ### <a name="example-functions"></a>Przykład funkcji
 
@@ -192,7 +195,7 @@ Dla bardziej złożonego przykładu kodu funkcji zdefiniowanej przez użytkownik
 
 Utwórz przypisanie roli, funkcji zdefiniowanych przez użytkownika, uruchamiany w kontekście. Jeśli nie przypisania roli istnieje funkcja zdefiniowana przez użytkownika, nie będzie mieć odpowiednie uprawnienia do interakcji z interfejsem API zarządzania, albo mieć dostęp do wykonywania akcji względem obiektów grafu. Akcje, które może wykonywać funkcji zdefiniowanej przez użytkownika są określone i zdefiniowanych za pomocą kontroli dostępu opartej na rolach w ramach cyfrowej Twins zarządzania interfejsów API usługi Azure. Na przykład funkcje zdefiniowane przez użytkownika można ograniczyć, w zakresie, określając określone role lub niektóre ścieżki kontroli dostępu. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) dokumentacji.
 
-1. [Zapytanie interfejsu API systemu](./security-create-manage-role-assignments.md#all) dla wszystkich ról uzyskać identyfikator roli, którą chcesz przypisać do Twojej funkcji zdefiniowanej przez użytkownika. To zrobić, wprowadzając uwierzytelnionego żądania HTTP GET do:
+1. [Zapytanie interfejsu API systemu](./security-create-manage-role-assignments.md#all) dla wszystkich ról uzyskać identyfikator roli, którą chcesz przypisać do funkcji zdefiniowanych przez użytkownika. To zrobić, wprowadzając uwierzytelnionego żądania HTTP GET do:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
@@ -235,7 +238,7 @@ Utwórz przypisanie roli, funkcji zdefiniowanych przez użytkownika, uruchamiany
     | YOUR_ACCESS_CONTROL_PATH | Ścieżka kontroli dostępu |
 
 >[!TIP]
-> Przeczytaj artykuł [jak tworzyć i zarządzać przypisaniami ról](./security-create-manage-role-assignments.md) Aby uzyskać więcej informacji na temat operacji związanych z systemu plików UDF interfejsu API zarządzania i punktów końcowych.
+> Przeczytaj artykuł [jak tworzyć i zarządzać przypisaniami ról](./security-create-manage-role-assignments.md) Aby uzyskać więcej informacji na temat funkcji zdefiniowanej przez użytkownika operacji interfejsu API usługi zarządzania i punktów końcowych.
 
 ## <a name="send-telemetry-to-be-processed"></a>Wysyłanie danych telemetrycznych do przetworzenia
 

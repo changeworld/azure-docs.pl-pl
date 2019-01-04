@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c93b23e3b06afe754ea1ca2472806d26c70f4c92
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c6323a4b8243791cc7a9f847c7d08e5bd5946e96
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973268"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025270"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -71,14 +71,14 @@ Aby zatrzymać trwale eksportu, usuń go. Ten sposób nie powoduje usunięcia da
 ## <a name="analyze"></a> Jakie zdarzenia uzyskać?
 Wyeksportowane dane są nieprzetworzone dane telemetryczne, które są uzyskiwane z aplikacji, z tą różnicą, że możemy dodać danych lokalizacji, w którym możemy obliczyć z adresu IP klienta.
 
-Dane, które zostały odrzucone przez [próbkowania](../../application-insights/app-insights-sampling.md) nie są objęte wyeksportowane dane.
+Dane, które zostały odrzucone przez [próbkowania](../../azure-monitor/app/sampling.md) nie są objęte wyeksportowane dane.
 
 Inne metryki obliczeniowe nie są uwzględniane. Na przykład firma Microsoft nie należy eksportować średnie wykorzystanie procesora CPU, ale wyeksportować nieprzetworzone dane telemetryczne, z którego jest obliczana średnia.
 
 Dane obejmują także wyniki dowolnego [testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md) , które zostały skonfigurowane.
 
 > [!NOTE]
-> **Pobieranie próbek.** Jeśli Twoja aplikacja przesyła dużą ilość danych, funkcja próbkowanie może działać i wysyłanie tylko ułamka telemetrii wygenerowanej. [Dowiedz się więcej na temat próbkowania.](../../application-insights/app-insights-sampling.md)
+> **Pobieranie próbek.** Jeśli Twoja aplikacja przesyła dużą ilość danych, funkcja próbkowanie może działać i wysyłanie tylko ułamka telemetrii wygenerowanej. [Dowiedz się więcej na temat próbkowania.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,4 +194,4 @@ W przypadku wyższych skal oferowanych, należy wziąć pod uwagę [HDInsight](h
 <!--Link references-->
 
 [exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md

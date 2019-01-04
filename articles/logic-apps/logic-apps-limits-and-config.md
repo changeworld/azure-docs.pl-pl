@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c7eaecf74f56035c39267407e6a965c57897b1ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853833"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015444"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -88,7 +88,7 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 | Współbieżności wyzwalacza | 50 | Domyślny limit wynosi 20. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub w sposób równoległy. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [współbieżności wyzwalacza zmiany](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
 | Maksymalna przebiegów oczekiwania | 100 | Domyślny limit wynosi 10. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które mogą poczekać do uruchamiania, gdy aplikacja logiki jest już uruchomiona maksymalna liczba współbieżnych wystąpień. <p><p>Aby zmienić domyślny limit wartość z zakresu od 0 do 100 włącznie, zobacz [ograniczać przebiegi oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
 | Elementy foreach | 100 000 | Limit ten opisuje maksymalną liczbę elementów tablicy, które mogą przetwarzać pętlę "for each". <p><p>Do filtrowania większych tablic, można użyć [Akcja zapytania](../connectors/connectors-native-query.md). | 
-| Liczba iteracji foreach | 50 | Domyślny limit wynosi 20. Ten limit w tym artykule opisano "for each" Maksymalna liczba iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić "for each" współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Współbieżność foreach | 50 | Domyślny limit wynosi 20. Ten limit w tym artykule opisano "for each" Maksymalna liczba iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić "for each" współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | Elementy SplitOn | 100 000 | | 
 | Iteracje UNTIL | 5000 | | 
 |||| 
@@ -101,11 +101,11 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Akcji: Wykonania na 5 minut | 300,000 | Domyślny limit wynosi 100 000. Aby zmienić domyślny limit, zobacz [uruchomić swoją aplikację logiki w trybie "wysokiej przepływności"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), która jest dostępna w wersji zapoznawczej. Alternatywnie można rozkłada obciążenie na więcej niż jednej aplikacji logiki zgodnie z potrzebami. | 
+| Akcja: Liczba wykonań na 5 minut | 300,000 | Domyślny limit wynosi 100 000. Aby zmienić domyślny limit, zobacz [uruchomić swoją aplikację logiki w trybie "wysokiej przepływności"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), która jest dostępna w wersji zapoznawczej. Alternatywnie można rozkłada obciążenie na więcej niż jednej aplikacji logiki zgodnie z potrzebami. | 
 | Akcja: Równoczesne połączenia wychodzące | ~2,500 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: współbieżnych wywołań przychodzących | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: Współbieżnych wywołań przychodzących | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
 | Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut  | 60,000 | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut | 45,000 | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
+| Punkt końcowy środowiska uruchomieniowego: Wywołania na 5 minut | 45,000 | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
 | Przepływność zawartości na 5 minut | 600 MB | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
 |||| 
 
@@ -239,9 +239,9 @@ Korzystać z bezpłatnej warstwy tylko na potrzeby scenariuszy eksploracyjnego, 
 | Schemat | 8 MB | Aby przekazać pliki, które są większe niż 2 MB, należy użyć [identyfikator URI obiektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Mapy (plik XSLT) | 2 MB | | 
 | Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut | 60,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: śledzenie wywołań na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: blokowanie współbieżnych wywołań | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: Wywołania na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: Wywołania śledzenia na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: Zablokowanie współbieżnych wywołań | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>
@@ -259,7 +259,7 @@ Limity, które są stosowane do protokoły B2B są następujące:
 
 <a name="configuration"></a>
 
-## <a name="configuration-ip-addresses"></a>Konfiguracji: Adresy IP
+## <a name="configuration-ip-addresses"></a>Konfiguracja: Adresy IP
 
 ### <a name="azure-logic-apps-service"></a>Usługa Azure Logic Apps
 

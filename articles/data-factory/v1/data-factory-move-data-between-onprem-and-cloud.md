@@ -9,17 +9,16 @@ ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242844"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015835"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -63,13 +62,13 @@ W tym kroku użyjesz witryny Azure portal, aby utworzyć wystąpienie usługi Az
     ![Dodaj do tablicy startowej](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "ADFTutorialOnPremDF" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład yournameADFTutorialOnPremDF) i spróbuj utworzyć ją ponownie. Użyj tej nazwy zamiast ADFTutorialOnPremDF podczas wykonywania pozostałych kroków w ramach tego samouczka.
+   > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **Nazwa fabryki danych "ADFTutorialOnPremDF" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład yournameADFTutorialOnPremDF) i spróbuj utworzyć ją ponownie. Użyj tej nazwy zamiast ADFTutorialOnPremDF podczas wykonywania pozostałych kroków w ramach tego samouczka.
    >
    > Nazwa fabryki danych może zostać zarejestrowana jako **DNS** nazwy w przyszłości, a wówczas stanie się widoczna publicznie.
    >
    >
 4. Wybierz **subskrypcję Azure**, w ramach której chcesz utworzyć fabrykę danych.
-5. Wybierz istniejącą **grupę zasobów** lub utwórz grupę zasobów. Samouczek, należy utworzyć grupę zasobów o nazwie: **ADFTutorialResourceGroup**.
+5. Wybierz istniejącą **grupę zasobów** lub utwórz grupę zasobów. Samouczek należy utworzyć grupę zasobów o nazwie: **ADFTutorialResourceGroup**.
 6. Kliknij przycisk **Utwórz** na **nowa fabryka danych** strony.
 
    > [!IMPORTANT]
@@ -281,7 +280,7 @@ W tym kroku utworzysz zestawy danych wejściowych i wyjściowych, które repreze
    * **folderPath** ustawiono **adftutorial/outfromonpremdf** gdzie outfromonpremdf to folder w kontenerze adftutorial. Tworzenie **adftutorial** kontener, jeśli jeszcze nie istnieje.
    * Parametr **availability** (dostępność) został ustawiony na wartość **hourly** (co godzinę) (parametr **frequency** [częstotliwość] został ustawiony na **hour** [godzinę], a **interval** [interwał] został ustawiony na wartość **1**).  Usługa Data Factory generuje wycinek danych wyjściowych, co godzinę w **emp** tabeli w bazie danych SQL Azure.
 
-   Jeśli nie określisz **fileName** dla **tabeli wyjściowej**, wygenerowane pliki w **folderPath** są nazwane w następującym formacie: Data.<Guid>. txt (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Jeśli nie określisz **fileName** dla **tabeli wyjściowej**, wygenerowane pliki w **folderPath** są nazwane w następującym formacie: Dane. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt.).
 
    Aby ustawić **folderPath** i **fileName** dynamicznie na podstawie **SliceStart** czasu, należy użyć właściwości partitionedBy. W poniższym przykładzie parametr folderPath używa elementów Year, Month i Day z parametru SliceStart (czas rozpoczęcia przetwarzania wycinka), a parametr fileName używa elementu Hour z parametru SliceStart. Na przykład jeśli wycinek jest generowany dla czasu 2014-10-20T08:00:00, parametr folderName zostaje ustawiony na wikidatagateway/wikisampledataout/2014/10/20, a parametr fileName zostaje ustawiony na wartość 08.csv.
 

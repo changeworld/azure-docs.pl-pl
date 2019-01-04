@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 90c36e728a8ec91606f93c080258eeca9c3825e6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423732"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020782"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Działanie ForEach w usłudze Azure Data Factory
 Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
@@ -86,7 +85,7 @@ Jeśli **isSequential** jest ustawiona na wartość false, działanie iteruje r�
 Działanie ForEach zawiera tablicę, należy powtórzyć za pośrednictwem właściwości **elementy**. " Użyj `@item()` Iterowanie pojedynczego wyliczenia w działaniu ForEach. Na przykład jeśli **elementów** jest tablicą: [1, 2, 3], `@item()` zwraca wartość 1 w pierwszej iteracji 2 w drugim i 3 w trzecim iteracji.
 
 ## <a name="iterating-over-a-single-activity"></a>Iterowanie po pojedyncze działanie
-**Scenariusz:** kopiowanie danych z tym samym pliku źródłowym w usłudze Azure Blob do wielu plików docelowych w usłudze Azure Blob.
+**Scenariusz:** Skopiuj z tym samym pliku źródłowym w usłudze Azure Blob do wielu plików docelowych w usłudze Azure Blob.
 
 ### <a name="pipeline-definition"></a>Definicji potoku
 
@@ -237,7 +236,7 @@ Istnieje możliwość przejść przez wiele działań (na przykład: działania 
 
 ```
 ### <a name="example"></a>Przykład
-**Scenariusz:** Iterate za pośrednictwem InnerPipeline wewnątrz działania ForEach, za pomocą działania Execute Pipeline. Wewnętrzny potok kopiuje przy użyciu definicji schematów sparametryzowanych.
+**Scenariusz:** Iteracja InnerPipeline wewnątrz działania ForEach, za pomocą działania Execute Pipeline. Wewnętrzny potok kopiuje przy użyciu definicji schematów sparametryzowanych.
 
 #### <a name="master-pipeline-definition"></a>Definicję wzorca potoku
 

@@ -4,15 +4,15 @@ description: Znajdź odpowiedzi na często zadawane pytania na temat usługi Azu
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 10/04/2018
+ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972086"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001536"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -182,7 +182,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="ad-support-regions"></a>
 **Jest wersja zapoznawcza usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files dostępne we wszystkich regionach platformy Azure?**
 
-    Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: Europa Północna.
+    Podgląd jest dostępny we wszystkich publicznych regionach.
 
 * <a id="ad-support-on-premises"></a>
 **Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files (wersja zapoznawcza) obsługuje uwierzytelnianie przy użyciu usługi Azure AD z maszyn w środowisku lokalnym?**
@@ -262,7 +262,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 ## <a name="share-snapshots"></a>Migawki udziału
 
-### <a name="share-snapshots-general"></a>Udostępnianie migawki: Ogólne
+### <a name="share-snapshots-general"></a>Migawki udziału: Ogólne
 * <a id="what-are-snaphots"></a>
 **Co to są migawki udziału plików?**  
     Migawki udziału plików platformy Azure służy do tworzenia udziałów plików w wersji tylko do odczytu. Możesz również użyć usługi Azure Files można skopiować starszą wersję kopii zawartości do tego samego udziału w alternatywnej lokalizacji na platformie Azure lub w środowisku lokalnym więcej zmian. Aby dowiedzieć się więcej na temat migawek udziałów, zobacz [udostępniać migawki — omówienie](storage-snapshots-files.md).

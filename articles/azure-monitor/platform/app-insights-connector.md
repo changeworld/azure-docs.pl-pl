@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e6d750d62ccd31a85cbf47e13c12be078bcb2c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726232"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023128"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
@@ -142,7 +142,7 @@ Aby przestawić, kliknij przycisk z wielokropkiem (**...** ) pojawia się na ko�
 
 ### <a name="sample-corrected-data"></a>Poprawione próbki danych
 
-Usługa Application Insights zapewnia *[próbkowanie korekcji](../../application-insights/app-insights-sampling.md)* do zmniejszenia ruchu telemetrycznego. Po włączeniu pobierania próbek na aplikacji usługi Application Insights uzyskasz zmniejszenie liczby wpisów przechowywane zarówno w usłudze Application Insights, jak i w usłudze Log Analytics. Gdy wyjaśnienie pojęcia spójności danych jest zachowywana w **łącznik usługi Application Insights** strony i perspektyw, należy ręcznie rozwiązać próbki danych niestandardowych zapytań.
+Usługa Application Insights zapewnia *[próbkowanie korekcji](../../azure-monitor/app/sampling.md)* do zmniejszenia ruchu telemetrycznego. Po włączeniu pobierania próbek na aplikacji usługi Application Insights uzyskasz zmniejszenie liczby wpisów przechowywane zarówno w usłudze Application Insights, jak i w usłudze Log Analytics. Gdy wyjaśnienie pojęcia spójności danych jest zachowywana w **łącznik usługi Application Insights** strony i perspektyw, należy ręcznie rozwiązać próbki danych niestandardowych zapytań.
 
 Oto przykład korekty próbkowania w zapytanie wyszukiwania w dzienniku:
 

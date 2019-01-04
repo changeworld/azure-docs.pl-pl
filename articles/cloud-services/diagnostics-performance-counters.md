@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: bae1e7de3c24ff6fbf943ef93ad449d784feb0c8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d332a792f693b099ce925e9b5705f09e52507522
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788700"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000244"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Liczniki wydajności są zbierane dla usługi w chmurze platformy Azure
 
@@ -116,7 +116,7 @@ Usługa Application Insights automatycznie zbiera następujące liczniki wydajno
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-Aby uzyskać więcej informacji, zobacz [liczników wydajności systemu w usłudze Application Insights](../application-insights/app-insights-performance-counters.md) i [usługi Application Insights dla usług Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
+Aby uzyskać więcej informacji, zobacz [liczników wydajności systemu w usłudze Application Insights](../azure-monitor/app/performance-counters.md) i [usługi Application Insights dla usług Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
 
@@ -295,6 +295,6 @@ Jak podano wcześniej, liczniki wydajności, które mają być zbierane są zdef
 ## <a name="more-information"></a>Więcej informacji
 
 - [Usługa Application Insights dla usług Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
-- [Liczniki wydajności systemu w usłudze Application Insights](../application-insights/app-insights-performance-counters.md)
+- [Liczniki wydajności systemu w usłudze Application Insights](../azure-monitor/app/performance-counters.md)
 - [Określenie ścieżki licznika](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Schemat usługi Diagnostyka Azure - liczniki wydajności](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

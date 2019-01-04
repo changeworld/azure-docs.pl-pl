@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 39edcb97f062693d11fd5c0ce332c206ebd4b54a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 12219e2df875d317aece73cabebdfb55115f7b41
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343557"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021088"
 ---
 # <a name="border-connectivity"></a>Łączność obramowania 
 Planowanie integracji sieci jest ważnego wymagania wstępnego pomyślne wdrożenie systemów zintegrowanych w usłudze Azure Stack, operacji i zarządzania. Planowanie łączności obramowania rozpoczyna się przez wybranie, czy nie używają routingu dynamicznego przy użyciu protokołu border gateway protocol (BGP). Wymaga to przypisanie 16-bitowy numer systemu autonomicznego BGP (publicznym lub prywatnym) lub przy użyciu routingu statycznego, gdy domyślnej trasy statycznej jest przypisany do urządzeń obramowania.
@@ -29,9 +29,9 @@ Planowanie integracji sieci jest ważnego wymagania wstępnego pomyślne wdroże
 > Górnej przełączników rack (TOR) wymagają pasm warstwy 3 z adresów IP Point-to-Point (/ 30 sieci) skonfigurowany na interfejsy fizyczne. Za pomocą usług warstwy 2 pasm przełączniki TOR obsługują operacje usługi Azure Stack nie jest obsługiwana. 
 
 ## <a name="bgp-routing"></a>Routing protokołu BGP
-Przy użyciu protokołu routingu dynamicznego takich jak Protokół BGP gwarantuje, że system jest zawsze pamiętać o zmiany w sieci i ułatwia administrowanie. 
+Przy użyciu protokołu routingu dynamicznego takich jak Protokół BGP gwarantuje, że system jest zawsze pamiętać o zmiany w sieci i ułatwia administrowanie. Zabezpieczeń WE4 wprowadziła zaawansowany hasła mogą zostać ustawione dla protokołu BGP komunikacja równorzędna między TOR i obramowanie. 
 
-Jak pokazano na poniższym diagramie, anonsowanie z prywatnym adresem IP miejsca na przełączniku TOR jest ograniczony przy użyciu listę prefiksów. Listę prefiksów definiuje prywatne podsieci IP i zastosowanie go jako mapę trasy dla połączenia między TOR i obramowanie.
+Jak pokazano na poniższym diagramie, anonsowanie z prywatnym adresem IP miejsca na przełączniku TOR jest blokowana przy użyciu listę prefiksów. Anons sieć prywatna nie zezwala na listę prefiksów i jest stosowane jako mapę trasy dla połączenia między TOR i obramowanie.
 
 Oprogramowanie modułu równoważenia obciążenia (SLB) uruchomionych elementów równorzędnych rozwiązania usługi Azure Stack na urządzeniach z sieci TOR tak dynamicznie można ogłaszać dłuższe adresów VIP.
 

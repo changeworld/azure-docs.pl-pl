@@ -7,16 +7,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: fae74d3912bb608afec93b7aa587885f66af4e53
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ec5ebfa29af13b5a34617be7f423fd7bc220636b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115063"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017756"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o przykładach ceny usługi Data Factory
 
@@ -44,7 +43,7 @@ Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
 | Pobierz potoku | 1 jednostka odczytu/zapisu |
 | Uruchamianie potoku | 2 uruchomień działań (1 dla wyzwalacza Uruchom 1 w przypadku uruchomienia działania) |
 | Czas wykonywania kopii danych założeń: = 10 min | 10 \* 4 azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji na temat jednostek integracji danych i optymalizowanie wydajności kopii, zobacz [w tym artykule](copy-activity-performance.md) |
-| Monitorowanie potoku założeń: Uruchom wystąpił tylko 1 | 2 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 1 w przypadku uruchomienia działania) |
+| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 2 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 1 w przypadku uruchomienia działania) |
 
 **Łączna liczba scenariusz kalkulacji cen: $0.16811**
 
@@ -75,7 +74,7 @@ Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
 | Pobierz potoku | 1 jednostka odczytu/zapisu |
 | Uruchamianie potoku | Uruchomienia działania 3 (1 dla wyzwalacza, uruchom 2 w przypadku uruchomienia działania) |
 | Czas wykonywania kopii danych założeń: = 10 min | 10 \* 4 azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji na temat jednostek integracji danych i optymalizowanie wydajności kopii, zobacz [w tym artykule](copy-activity-performance.md) |
-| Monitorowanie potoku założeń: Uruchom wystąpił tylko 1 | 3 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 2 w przypadku uruchomienia działania) |
+| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 3 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 2 w przypadku uruchomienia działania) |
 | Wykonaj działania usługi Databricks założeń: czas wykonywania 10 min | Wykonania działania w potoku zewnętrzne 10 min |
 
 **Łączna liczba scenariusz kalkulacji cen: $0.16916**
@@ -109,7 +108,7 @@ Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
 | Pobierz potoku | 1 jednostka odczytu/zapisu |
 | Uruchamianie potoku | Uruchomienia działania 4 (1 dla wyzwalacza uruchomiony, 3 dla uruchomienia działania) |
 | Czas wykonywania kopii danych założeń: = 10 min | 10 \* 4 azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji na temat jednostek integracji danych i optymalizowanie wydajności kopii, zobacz [w tym artykule](copy-activity-performance.md) |
-| Monitorowanie potoku założeń: Uruchom wystąpił tylko 1 | 4 rekordów monitorowanie Uruchom ponowione (1-uruchomienie potoku, 3 dla uruchomienia działania) |
+| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 4 rekordów monitorowanie Uruchom ponowione (1-uruchomienie potoku, 3 dla uruchomienia działania) |
 | Wykonaj działania Lookup założeń: czas wykonania = 1 min | 1 min wykonania działania potoku |
 | Wykonaj działania usługi Databricks założeń: czas wykonywania 10 min | 10-minutowy materiał wykonania zewnętrznego działania potoku |
 

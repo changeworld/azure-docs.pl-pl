@@ -1,6 +1,6 @@
 ---
-title: Do działania w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Działania Until wykonuje zestaw działań w pętli do momentu zwraca wartość true, warunek skojarzone z działaniem lub upłynie limit czasu.
+title: Do działania w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Działanie Until wykonuje zestaw działań w pętli, dopóki warunek skojarzony z działaniem zwraca wartość true lub upłynie limit czasu.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: cd4b58dea43e497a2d7a5b977379d95f7004af45
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9a1623cca1c185ff3dba07ad5fbe354d8662dc68
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052311"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020969"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>Do działania w fabryce danych Azure
-Działanie Until zapewnia te same funkcje czy-dopóki zapętlenia struktury udostępnia w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until. 
+# <a name="until-activity-in-azure-data-factory"></a>Do działania w usłudze Azure Data Factory
+Działanie Until zapewnia taką samą funkcjonalność wykonuj — aż strukturę pętli zawiera w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until. 
 
 ## <a name="syntax"></a>Składnia
 
@@ -56,18 +55,18 @@ Działanie Until zapewnia te same funkcje czy-dopóki zapętlenia struktury udos
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa `Until` działania. | Ciąg | Yes
-type | Należy wybrać opcję **do momentu**. | Ciąg | Yes
+type | Musi być równa **aż**. | Ciąg | Yes
 Wyrażenie | Wyrażenie musi zwrócić wartość true lub false | wyrażenie.  | Yes
-timeout | Czy — do pętli razy się po upływie określonego czasu. | Ciąg. `d.hh:mm:ss` (lub) `hh:mm:ss`. Wartość domyślna to 7 dni. Maksymalna wartość to: 90 dni. | Nie
-Działania | Zbiór działań, które są wykonywane, dopóki wyrażenie daje w wyniku `true`. | Tablica działań. |  Yes
+timeout | Nie — aż do limit czasu pętli po określonym czasie. | ciąg. `d.hh:mm:ss` (lub) `hh:mm:ss`. Wartość domyślna to 7 dni. Wartość maksymalna to: 90 dni. | Nie
+Działania | Zestaw działań, które są wykonywane, dopóki wyrażenie daje w wyniku `true`. | Tablica działań. |  Yes
 
 ## <a name="example-1"></a>Przykład 1
 
 > [!NOTE]
-> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell do uruchamiania potoku. Przewodnik krok po kroku instrukcje, aby utworzyć potok fabryki danych przy użyciu programu Azure PowerShell i JSON definicji, zobacz [samouczek: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell, aby uruchomić potok. Aby uzyskać wskazówki krok po kroku instrukcje tworzenia potoku usługi Data Factory przy użyciu definicji JSON i programu Azure PowerShell, zobacz [samouczek: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-until-activity"></a>Do działania w potoku z
-W tym przykładzie potoku ma dwa działania: **do momentu** i **oczekiwania**. Działanie oczekiwania czeka na określonym przedziale czasu przed uruchomieniem działania sieci Web w pętli. Aby dowiedzieć się więcej na temat wyrażeń i funkcji w fabryce danych, zobacz [język wyrażeń i funkcji](control-flow-expression-language-functions.md). 
+### <a name="pipeline-with-until-activity"></a>Potok z działanie Until
+W tym przykładzie potok zawiera dwa działania: **Do momentu** i **oczekiwania**. Działanie Wait czeka przez określony okres czasu przed uruchomieniem działania internetowego w pętli. Aby dowiedzieć się więcej na temat wyrażeń i funkcji w usłudze Data Factory, zobacz [język wyrażeń i funkcji](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -118,9 +117,9 @@ W tym przykładzie potoku ma dwa działania: **do momentu** i **oczekiwania**. D
 ```
 
 ## <a name="example-2"></a>Przykład 2 
-Potok, w tym przykładzie kopiuje dane z wejściowych folderu do folderu wyjściowego w pętli. Pętla kończy działanie, gdy wartość parametru powtórzeń jest ustawiony na wartość false lub wygaśnie po minucie.   
+Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego w pętli. Pętla kończy działanie, gdy wartość parametru powtórzeń jest ustawiona na wartość false lub upłynie limit czasu po jednej minucie.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>W potoku z do działania (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Potok z aż do działania (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -193,7 +192,7 @@ Potok, w tym przykładzie kopiuje dane z wejściowych folderu do folderu wyjści
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure połączoną usługą magazynu (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Połączona usługa Azure Storage (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -210,8 +209,8 @@ Potok, w tym przykładzie kopiuje dane z wejściowych folderu do folderu wyjści
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowane zestawu danych obiektów Blob Azure (BlobDataset.json)
-Ustawia potoku **folderPath** wartość albo **outputPath1** lub **outputPath2** parametru potoku. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowany zestaw danych obiektów Blob platformy Azure (BlobDataset.json)
+Ustawia potoku **folderPath** wartości albo **outputPath1** lub **outputPath2** parametr w potoku. 
 
 ```json
 {
@@ -248,7 +247,7 @@ Ustawia potoku **folderPath** wartość albo **outputPath1** lub **outputPath2**
 ```
 
 ### <a name="powershell-commands"></a>Polecenia programu PowerShell
-Tych poleceniach założono, zapisane pliki w formacie JSON do folderu: C:\ADF. 
+Tych poleceniach założono, zapisane pliki w formacie JSON w folderze: C:\ADF. 
 
 ```powershell
 Connect-AzureRmAccount
@@ -288,11 +287,11 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych: 
+Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
 
 - [Działanie If Condition](control-flow-if-condition-activity.md)
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działania w sieci Web](control-flow-web-activity.md)
+- [Działanie internetowe](control-flow-web-activity.md)

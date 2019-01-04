@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054189"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019626"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiowanie danych z bazy danych DB2 przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,10 +61,10 @@ Następujące właściwości są obsługiwane dla bazy danych DB2 połączone us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **bazy danych Db2** | Yes |
+| type | Właściwość type musi być równa: **Bazy danych Db2** | Yes |
 | serwer |Nazwa serwera bazy danych DB2. Możesz określić numer portu, zgodnie z nazwą serwera, rozdzielone średnikami, np. `server:port`. |Yes |
 | baza danych |Nazwa bazy danych DB2. |Yes |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych DB2.<br/>Dozwolone wartości to: **podstawowe**. |Yes |
+| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych DB2.<br/>Dozwolone wartości to: **Podstawowe**. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika do łączenia z bazą danych DB2. |Yes |
 | hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
@@ -182,8 +181,8 @@ Podczas kopiowania danych z bazy danych DB2, następujące mapowania są używan
 | Date |Data/godzina |
 | DB2DynArray |Ciąg |
 | DbClob |Ciąg |
-| Dziesiętna |Dziesiętna |
-| DecimalFloat |Dziesiętna |
+| Dziesiętny |Dziesiętny |
+| DecimalFloat |Dziesiętny |
 | Podwójne |Podwójne |
 | Liczba zmiennoprzecinkowa |Podwójne |
 | Grafika |Ciąg |
@@ -191,7 +190,7 @@ Podczas kopiowania danych z bazy danych DB2, następujące mapowania są używan
 | LongVarBinary |Byte[] |
 | LongVarChar |Ciąg |
 | LongVarGraphic |Ciąg |
-| Liczbowy |Dziesiętna |
+| Liczbowy |Dziesiętny |
 | Real |Pojedyncze |
 | SmallInt |Int16 |
 | Time |Przedział czasu |

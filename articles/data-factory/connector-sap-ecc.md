@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z programu SAP ECC przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z programu SAP ECC do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
+title: Kopiowanie danych z SAP ECC przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skopiować dane z SAP ECC do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,56 +9,55 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: f9f6d2e43fff9a3e57145f39863f66eed64869b2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ab9d28212e471a9fe3d59ff30a8225b7440655d7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048587"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022499"
 ---
-# <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopiowanie danych z programu SAP ECC przy użyciu fabryki danych Azure
+# <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopiowanie danych z SAP ECC przy użyciu usługi Azure Data Factory
 
-Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych Azure można skopiować danych z programu SAP ECC (SAP składnikiem przedsiębiorstwa). Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z SAP ECC (składnik centralne SAP Enterprise). Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z programu SAP ECC żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Możesz skopiować dane z SAP ECC do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W szczególności ten łącznik SAP ECC obsługuje:
 
-- Kopiowanie danych z programu SAP ECC na SAP NetWeaver w wersji 7.0 lub nowszym. 
-- Kopiowanie danych z wszystkich obiektów udostępnianych przez usługi SAP ECC OData (np. widoków tabel SAP, BAPI, ekstraktory danych itp.) lub wysyłane do PI SAP, otrzymania jako OData przy użyciu kart względną danych/Idoc.
+- Kopiowanie danych z SAP ECC na oprogramowanie SAP NetWeaver w wersji 7.0 lub nowszym. 
+- Kopiowanie danych z obiektów udostępnianych przez usługi SAP ECC OData (np. widoki tabel SAP, BAPI, ekstraktory danych itp.), ani danych/dokumentów Idoc wysłana do SAP PI, odebrania jako obiekt OData za pomocą karty względną.
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ogólnie rzecz biorąc SAP ECC przedstawia jednostek za pośrednictwem usługi OData za pośrednictwem bramy SAP. Aby użyć tego łącznika SAP ECC, musisz:
+Ogólnie rzecz biorąc SAP ECC udostępnia jednostki za pośrednictwem usługi OData za pośrednictwem bramy SAP. Aby użyć tego łącznika SAP ECC, należy:
 
-- **Skonfiguruj bramę SAP**. W przypadku serwerów z programem SAP NetWeaver wyższą wersję niż 7.4 bramą SAP jest już zainstalowana. W przeciwnym razie należy zainstalować poniższe bramy lub bramy Centrum przed ujawnieniem danych SAP ECC za pośrednictwem usług OData. Dowiedz się, jak skonfigurować bramę SAP [Przewodnik instalacji](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **Konfigurowanie bramy SAP**. W przypadku serwerów z wersją oprogramowania SAP NetWeaver wyższej wersji 7.4 bramy SAP jest już zainstalowana. W przeciwnym razie należy zainstalować poniższe bramy lub bramy hub udostępnianie danych SAP ECC za pośrednictwem usługi OData. Dowiedz się, jak skonfigurować bramę SAP z [Przewodnik instalacji](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **Aktywowanie i konfigurowanie usługi SAP OData**. Można aktywować usługi OData za pomocą TCODE SICF w sekundach. Można również skonfigurować, które obiekty musi być widoczne. Poniżej przedstawiono przykładowe [wskazówki krok po kroku](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **Aktywować i skonfigurować usługę SAP OData**. Usługi OData za pomocą TCODE SICF można aktywować w ciągu kilku sekund. Można również skonfigurować, które obiekty musi być udostępniane. Poniżej znajduje się przykładowy [wskazówki krok po kroku](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Można utworzyć potoku o aktywności kopiowania przy użyciu zestawu .NET SDK, zestaw SDK Python, programu Azure PowerShell, interfejsu API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczek działania kopiowania](quickstart-create-data-factory-dot-net.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Utworzysz potok za pomocą działania kopiowania przy użyciu zestawu .NET SDK, zestaw SDK języka Python, programu Azure PowerShell, interfejsu API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczka działania kopiowania](quickstart-create-data-factory-dot-net.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do łącznika SAP ECC.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika SAP ECC.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Obsługiwane są następujące właściwości dla programu SAP ECC połączone usługi:
+Następujące właściwości są obsługiwane w przypadku SAP ECC połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **SapEcc** | Yes |
+| type | Właściwość type musi być równa: **SapEcc** | Yes |
 | url | Adres url usługi SAP ECC OData. | Yes |
-| nazwa użytkownika | Nazwa użytkownika używana do łączenia się SAP ECC. | Nie |
-| hasło | Hasło w postaci zwykłego tekstu używany do łączenia z SAP ECC. | Nie |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+| nazwa użytkownika | Nazwa użytkownika, używany do łączenia z SAP ECC. | Nie |
+| hasło | Hasło zwykłego tekstu, używany do łączenia z SAP ECC. | Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -85,13 +84,13 @@ Obsługiwane są następujące właściwości dla programu SAP ECC połączone u
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP ECC.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP ECC.
 
-Aby skopiować dane z programu SAP ECC, ustaw właściwość Typ zestawu danych do **SapEccResource**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z SAP ECC, należy ustawić właściwość typu zestawu danych na **SapEccResource**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| ścieżka | Ścieżka obiektu SAP ECC OData. | Yes |
+| ścieżka | Ścieżka jednostki SAP ECC OData. | Yes |
 
 **Przykład**
 
@@ -113,16 +112,16 @@ Aby skopiować dane z programu SAP ECC, ustaw właściwość Typ zestawu danych 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez źródło SAP ECC.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło SAP ECC.
 
 ### <a name="sap-ecc-as-source"></a>SAP ECC jako źródło
 
-Aby skopiować dane z programu SAP ECC, należy ustawić typ źródła w przypadku działania kopiowania do **SapEccSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z SAP ECC, należy ustawić typ źródła w działaniu kopiowania, aby **SapEccSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **SapEccSource** | Yes |
-| query | Opcje zapytania OData do filtrowania danych. Przykład: "$select = nazwa, opis i $top = 10".<br/><br/>Łącznik SAP ECC kopiuje dane z połączonego adresu URL: (adres url określony w połączonej usłudze) / (określona ścieżka w zestawie danych)? (zapytanie określone w źródle działania kopiowania). Zapoznaj się [składniki adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SapEccSource** | Yes |
+| query | Opcje zapytania OData do filtrowania danych. Przykład: "$select = nazwa, opis i $top = 10".<br/><br/>Łącznik SAP ECC kopiuje dane z połączonych adresu URL: (adres url określony w połączonej usłudze) / (ścieżka określona w zestawie danych)? (zapytanie określone w źródle działanie kopiowania). Zapoznaj się [części adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
 **Przykład:**
 
@@ -156,9 +155,9 @@ Aby skopiować dane z programu SAP ECC, należy ustawić typ źródła w przypad
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-ecc"></a>Mapowanie typu danych dla programu SAP ECC
+## <a name="data-type-mapping-for-sap-ecc"></a>Mapowanie typu danych dla SAP ECC
 
-Podczas kopiowania danych z programu SAP ECC, następujące mapowania są używane z typów danych OData dla danych SAP ECC do typów danych tymczasowych fabryki danych Azure. Zobacz [schemat i dane typu mapowania](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typu źródłowego: schemat i dane sink.
+Podczas kopiowania danych z SAP ECC, następujące mapowania są używane z typów danych OData dla danych SAP ECC do typów danych tymczasowych usługi Azure Data Factory. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
 
 | Typ danych OData | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |:--- |
@@ -166,8 +165,8 @@ Podczas kopiowania danych z programu SAP ECC, następujące mapowania są używa
 | Edm.Boolean | wartość logiczna |
 | Edm.Byte | Ciąg |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
-| Edm.Double | podwójne |
+| Edm.Decimal | Dziesiętny |
+| Edm.Double | Podwójne |
 | Edm.Single | Pojedyncze |
 | Edm.Guid | Ciąg |
 | Edm.Int16 | Int16 |
@@ -175,11 +174,11 @@ Podczas kopiowania danych z programu SAP ECC, następujące mapowania są używa
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Ciąg |
-| Edm.Time | Zakres czasu |
+| Edm.Time | Przedział czasu |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
 > Złożone typy danych nie są obecnie obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

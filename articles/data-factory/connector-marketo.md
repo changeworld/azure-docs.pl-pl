@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8c3210a560c079f66cd21dbb30be4a4b823a6502
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 332687d14593024bb4354e2cd59ff0d50ae0aaef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078212"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017314"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Marketo za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -34,7 +33,7 @@ Możesz skopiować dane z usługi Marketo, do dowolnego obsługiwanego magazynu 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 >[!NOTE]
->Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](http://developers.marketo.com/rest-api/) po stronie usługi. Jeśli napotkasz błędy informujący o tym, "Wystąpił błąd podczas próby użycia interfejsu API REST: maksymalna szybkość Przekroczono za pomocą w"20"limit"100"sekund (606)" lub "Wystąpił błąd podczas próby użycia interfejsu API REST: równoczesny dostęp"10"osiągnięto (615)", należy wziąć pod uwagę, aby zmniejszyć uruchomienia działania kopiowania współbieżnych do Zmniejsz liczbę żądań do usługi.
+>Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](http://developers.marketo.com/rest-api/) po stronie usługi. Jeśli napotkasz błędy informujący o tym, "Wystąpił błąd podczas próby użycia interfejsu API REST: Maksymalny limit "100" w "20" Przekroczono z częstotliwość w sekundach (606) "lub" Wystąpił błąd podczas próby użycia interfejsu API REST: Równoczesny dostęp ograniczenie "10" osiągnięto (615) ", należy wziąć pod uwagę, aby zmniejszyć uruchomienia działania współbieżnych kopii, aby zmniejszyć liczbę żądań do usługi.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -48,7 +47,7 @@ Następujące właściwości są obsługiwane w przypadku programu Marketo, poł
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **programu Marketo** | Yes |
+| type | Właściwość type musi być równa: **Marketo** | Yes |
 | endpoint | Punkt końcowy serwera programu Marketo. (i.e. 123-ABC-321.mktorest.com)  | Yes |
 | clientId | Identyfikator klienta programu usługi Marketo.  | Yes |
 | clientSecret | Klucz tajny klienta usługi Marketo. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |

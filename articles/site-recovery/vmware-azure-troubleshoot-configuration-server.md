@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 6c8f4fa1fdfdb18d57f001308a6b2105acf9a08d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f5c8241907459a06f0a6206ae6865cdf3fe9ab89
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788858"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998969"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
 
@@ -33,13 +33,13 @@ Maszyna źródłowa rejestruje się za pomocą serwera konfiguracji podczas inst
     - Po rozwiązaniu problemów, postępuj zgodnie z wytycznymi podanymi [tutaj](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) ręcznie próbę rejestracji.
 4. Jeśli powyższy ciąg nie zostanie znaleziony, przejdź do maszyny źródłowej, a w dzienniku C:\ProgramData\ASRSetupLogs\UploadedLogs\* ASRUnifiedAgentInstaller.log ProgramData może być folderem ukrytym. Jeśli nie można zlokalizować, spróbuj anulować Ukryj folder. Awarii może być wiele problemów. Wyszukaj ciąg "żądania post: (7) — nie można połączyć z serwerem". Jeśli znaleziono,
     - Rozwiązywanie problemów z siecią między maszyny i konfiguracji serwera źródłowego. Sprawdź, czy ten serwer konfiguracji jest dostępny z maszyny źródłowej, za pomocą narzędzi sieci, takie jak ping, polecenie traceroute przeglądarki sieci web itp., upewnij się, że maszyna źródłowa jest dostęp do serwera konfiguracji za pośrednictwem portu 443.
-    - Sprawdź, czy istnieją odpowiednie reguły zapory na maszynie źródłowej blokują połączenie między maszyny i konfiguracji serwera źródłowego. Praca z administratorów sieci można odblokować problemy z połączeniem.
+    - Sprawdź, czy istnieją odpowiednie reguły zapory na maszynie źródłowej blokują połączenie między maszyny i konfiguracji serwera źródłowego. Praca z administratorem sieci, aby odblokować problemy z połączeniem.
     - Upewnij się, folderów, o których wspomniano [tutaj](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) są wykluczane z oprogramowania antywirusowego.
     - Po rozwiązaniu problemów z siecią, i spróbuj ponownie rejestracji poniższe wskazówki podane [tutaj](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 5. Jeśli nie zostanie znaleziony, w tym samym dziennika wyszukaj ciąg "żądania: (60) — certyfikat elementu równorzędnego nie można uwierzytelnić przy użyciu podanych certyfikatów urzędu certyfikacji. ". Jeśli znaleziono, 
     - Ten błąd może to być spowodowane konfiguracji certyfikat serwera wygasł lub maszyna źródłowa nie obsługuje protokołu TLS 1.0 i powyżej SSL protokoły znajduje się zapora, która blokuje komunikację SSL między maszyny i konfiguracji serwera źródłowego.
     - Aby rozwiązać problem, połączyć się z adresu IP serwera konfiguracji za pomocą przeglądarki sieci web na maszynie źródłowej za pomocą identyfikatora URI https://<CSIPADDRESS>: 443 /. Należy upewnić się, że maszyna źródłowa jest dostęp do serwera konfiguracji za pośrednictwem portu 443.
-    - Sprawdź, czy istnieją odpowiednie reguły zapory na maszynie źródłowej być dodana/usunięta dla maszyny źródłowej komunikował się CS. Ponieważ może to być wiele inne oprogramowanie zapory, nie jest możliwe wyświetlić listę w dół konfiguracje wymagane, skontaktuj się z Administratorzy sieci klienta.
+    - Sprawdź, czy istnieją odpowiednie reguły zapory na maszynie źródłowej blokują połączenie między maszyny i konfiguracji serwera źródłowego. Praca z administratorem sieci, aby odblokować problemy z połączeniem.
     - Upewnij się, folderów, o których wspomniano [tutaj](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) są wykluczane z oprogramowania antywirusowego.  
     - Po rozwiązaniu problemów, i spróbuj ponownie rejestracji poniższe wskazówki podane [tutaj](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 6. W systemie Linux Jeśli wartość platforma /etc/drscout.conf < INSTALLATION_DIR > jest uszkodzona, następnie rejestracja zakończy się niepowodzeniem. Aby zidentyfikować, przejdź do /var/log/ua_install.log dziennika. Zawiera ciąg "Trwa przerywanie konfiguracji, ponieważ VM_PLATFORM wartość null lub go nie jest VmWare/platformy Azure." Platforma powinna być równa "VmWare" lub "Azure". Ponieważ plik drscout.conf jest uszkodzony, zaleca się [odinstalować](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) agentem mobility agent i zainstaluj ponownie. W przypadku niepowodzenia dezinstalacji, należy wykonać następujące czynności:

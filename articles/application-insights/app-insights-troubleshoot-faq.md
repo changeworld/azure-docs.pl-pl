@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1c0167fd7f6ef8a66968e70df26d1e7a6ed845b1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5cd720225144a34163f8d4802b63aca6a439e2c7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975257"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017671"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -39,20 +39,20 @@ ms.locfileid: "53975257"
 
 * [Aplikacje sieci Web na serwerze usług IIS — lokalnie lub na maszynie wirtualnej](../azure-monitor/app/asp-net.md)
 * [Aplikacje sieci web w języku Java](../azure-monitor/app/java-get-started.md)
-* [Aplikacje Node.js](app-insights-nodejs.md)
+* [Aplikacje Node.js](../azure-monitor/app/nodejs.md)
 * [Aplikacje sieci Web na platformie Azure](../azure-monitor/app/azure-web-apps.md)
 * [Usługi w chmurze na platformie Azure](../azure-monitor/app/cloudservices.md)
 * [Serwery aplikacji działające w platformy Docker](../azure-monitor/app/docker.md)
 * [Aplikacje jednej strony sieci web](../azure-monitor/app/javascript.md)
 * [Program SharePoint](app-insights-sharepoint.md)
 * [Aplikacja klasyczna Windows](app-insights-windows-desktop.md)
-* [Inne platformy](app-insights-platforms.md)
+* [Inne platformy](../azure-monitor/app/platforms.md)
 
 ## <a name="is-it-free"></a>Jest to bezpłatne?
 
 Tak — Użyj eksperymentalne. W podstawowego planu cenowego aplikację można wysyłać pewne przydział danych każdego miesiąca bezpłatnie. Bezpłatny przydział jest wystarczająco duży, aby cover tworzenia i publikowania aplikacji dla małej liczby użytkowników. Możesz ustawić limit, aby uniemożliwić więcej niż określoną ilość danych przetwarzanych.
 
-Większe ilości danych telemetrycznych są naliczane za Gb. Firma Microsoft zapewnia kilka porad na temat sposobu [ograniczenie opłat](app-insights-pricing.md).
+Większe ilości danych telemetrycznych są naliczane za Gb. Firma Microsoft zapewnia kilka porad na temat sposobu [ograniczenie opłat](../azure-monitor/app/pricing.md).
 
 Enterprise plan jest naliczana opłata za każdy dzień, w którym każdego węzła serwera sieci web wysyła dane telemetryczne. Jest on odpowiedni, jeśli chcesz użyć funkcji eksportu ciągłego na dużą skalę.
 
@@ -86,7 +86,7 @@ Szczegółowe informacje są zależne od typu projektu. Dla aplikacji sieci web:
 * (Nowe wyłącznie dla projektów — Jeśli użytkownik [Dodaj usługę Application Insights do istniejącego projektu][start], trzeba to zrobić ręcznie.) Wstawia fragmentów kodu do kodu klienta i serwera, do ich inicjowania identyfikatorem zasobu usługi Application Insights Na przykład w aplikacji MVC kod jest wstawiany do strony wzorcowej Views/Shared/_Layout.cshtml
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Jak uaktualnić ze starszych wersji zestawu SDK
-Zobacz [informacje o wersji](app-insights-release-notes.md) dla zestawu SDK, które są odpowiednie dla danego typu aplikacji.
+Zobacz [informacje o wersji](../azure-monitor/app/release-notes.md) dla zestawu SDK, które są odpowiednie dla danego typu aplikacji.
 
 ## <a name="update"></a>Jak zmienić mój projekt wysyła dane do zasobów platformy Azure?
 W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy `ApplicationInsights.config` i wybierz polecenie **aktualizacji Application Insights**. Możesz wysłać dane do istniejącego lub nowego zasobu na platformie Azure. Kreator aktualizacji zmienia klucz Instrumentacji w pliku ApplicationInsights.config, który określa, gdzie zestaw SDK wysyła dane. O ile nie wyłączysz "Aktualizuj wszystkie", spowoduje również zmianę klucza, gdzie pojawia się on na stronach sieci web.
@@ -104,7 +104,7 @@ Z aplikacji sieci web server:
 * Żądania HTTP
 * [Zależności](../azure-monitor/app/asp-net-dependencies.md). Wywołania: Bazy danych SQL; Połączeń HTTP z usług zewnętrznych. Azure Cosmos DB, tabeli, magazynu obiektów blob i kolejki. 
 * [Wyjątki](../azure-monitor/app/asp-net-exceptions.md) i stos danych śledzenia.
-* [Liczniki wydajności](app-insights-performance-counters.md) — Jeśli używasz [Monitora stanu](../azure-monitor/app/monitor-performance-live-website-now.md), [monitorowania platformy Azure](../azure-monitor/app/azure-web-apps.md), lub [składnika usługi Application Insights zebrane zapisywania](../azure-monitor/app/java-collectd.md).
+* [Liczniki wydajności](../azure-monitor/app/performance-counters.md) — Jeśli używasz [Monitora stanu](../azure-monitor/app/monitor-performance-live-website-now.md), [monitorowania platformy Azure](../azure-monitor/app/azure-web-apps.md), lub [składnika usługi Application Insights zebrane zapisywania](../azure-monitor/app/java-collectd.md).
 * [Niestandardowe zdarzenia i metryki](../azure-monitor/app/api-custom-events-metrics.md) czy kodu.
 * [Dzienniki śledzenia](../azure-monitor/app/asp-net-trace-logs.md) w przypadku skonfigurowania odpowiedniego modułu zbierającego.
 
@@ -201,7 +201,7 @@ Użyj pojedynczego zasobu dla wszystkich składników lub ról w systemie biznes
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Liczników na wykresach wyszukiwania i metryki są nierówne
 
-[Próbkowanie](app-insights-sampling.md) zmniejsza liczbę elementów danych telemetrycznych (żądań, niestandardowe zdarzenia i tak dalej), które faktycznie są wysyłane z aplikacji do portalu. W polu wyszukiwania zobaczysz liczbę elementów w rzeczywistości odebrane. Wykresy metryk, które wyświetla liczbę zdarzeń zobaczysz liczbę oryginalnego zdarzenia, które wystąpiły. 
+[Próbkowanie](../azure-monitor/app/sampling.md) zmniejsza liczbę elementów danych telemetrycznych (żądań, niestandardowe zdarzenia i tak dalej), które faktycznie są wysyłane z aplikacji do portalu. W polu wyszukiwania zobaczysz liczbę elementów w rzeczywistości odebrane. Wykresy metryk, które wyświetla liczbę zdarzeń zobaczysz liczbę oryginalnego zdarzenia, które wystąpiły. 
 
 Każdy element, który jest przesyłane wykonuje `itemCount` reprezentuje właściwość, która zawiera liczbę zdarzeń oryginalnego tego elementu. Aby obserwować próbkowania w operacji, można uruchomić tego zapytania w usłudze Analytics:
 
@@ -214,7 +214,7 @@ Każdy element, który jest przesyłane wykonuje `itemCount` reprezentuje właś
 
 ### <a name="configuring-application-insights"></a>Konfigurowanie usługi Application Insights
 
-Możesz [pisanie skryptów programu PowerShell](app-insights-powershell.md) przy użyciu usługi Azure Monitor zasobów do:
+Możesz [pisanie skryptów programu PowerShell](../azure-monitor/app/powershell.md) przy użyciu usługi Azure Monitor zasobów do:
 
 * Tworzenie i aktualizowanie zasobów usługi Application Insights.
 * Ustaw plan cenowy.
@@ -241,7 +241,7 @@ To nie są zależne od hostujące zasobu usługi Application Insights. Zależy t
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Czy mogę wysyłać dane telemetryczne do portalu usługi Application Insights?
 
-Firma Microsoft zaleca korzystanie z naszych zestawów SDK i użyj [interfejs API zestawu SDK](../azure-monitor/app/api-custom-events-metrics.md). Istnieje wariantów zestawu SDK dla różnych [platform](app-insights-platforms.md). Te zestawy SDK obsługują buforowania, kompresji, ograniczanie przepustowości, ponownych prób i tak dalej. Jednak [schematu pozyskiwania](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) i [punktu końcowego protokołu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) były publiczne.
+Firma Microsoft zaleca korzystanie z naszych zestawów SDK i użyj [interfejs API zestawu SDK](../azure-monitor/app/api-custom-events-metrics.md). Istnieje wariantów zestawu SDK dla różnych [platform](../azure-monitor/app/platforms.md). Te zestawy SDK obsługują buforowania, kompresji, ograniczanie przepustowości, ponownych prób i tak dalej. Jednak [schematu pozyskiwania](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) i [punktu końcowego protokołu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) były publiczne.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Czy mogę monitorować serwer sieci web do sieci intranet
 
@@ -299,6 +299,6 @@ Większość danych usługi Application Insights ma opóźnienie mniej niż 5 mi
 <!--Link references-->
 
 [data]: ../azure-monitor/app/data-retention-privacy.md
-[platforms]: app-insights-platforms.md
+[platforms]: ../azure-monitor/app/platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md

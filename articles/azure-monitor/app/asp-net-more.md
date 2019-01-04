@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8b66949c759d8a45d6142d9e29f4a7baa0964c79
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7580089782eb9330d5b533588265d156213f397f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968931"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000584"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Więcej funkcji telemetrii z usługi Application Insights
 Po utworzeniu [dodawane usługi Application Insights do kodu ASP.NET](../../azure-monitor/app/asp-net.md), istnieje kilka kwestii, które można zrobić, aby uzyskać jeszcze więcej funkcji telemetrii. 
 
 | Akcja | Efekty|
 |---|---|
-|(Na serwerach usług IIS) [Instalowanie Monitora stanu](https://go.microsoft.com/fwlink/?LinkId=506648) na każdym komputerze serwera.<br/>(Aplikacje sieci web platformy azure) W Panelu sterowania platformy Azure dla aplikacji sieci web Otwórz blok usługi Application Insights.| [**Liczniki wydajności**](../../application-insights/app-insights-performance-counters.md)<br/>[**Wyjątki** ](asp-net-exceptions.md) — szczegółowe ślady stosu<br/>[**Zależności**](../../azure-monitor/app/asp-net-dependencies.md)|
+|(Na serwerach usług IIS) [Instalowanie Monitora stanu](https://go.microsoft.com/fwlink/?LinkId=506648) na każdym komputerze serwera.<br/>(Aplikacje sieci web platformy azure) W Panelu sterowania platformy Azure dla aplikacji sieci web Otwórz blok usługi Application Insights.| [**Liczniki wydajności**](../../azure-monitor/app/performance-counters.md)<br/>[**Wyjątki** ](asp-net-exceptions.md) — szczegółowe ślady stosu<br/>[**Zależności**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[Dodaj fragment kodu JavaScript do stron sieci web](../../azure-monitor/app/javascript.md)|[Wydajność strony](../../application-insights/app-insights-usage-overview.md), wyjątków przeglądarki, wydajności AJAX. Niestandardowej telemetrii po stronie klienta.|
 |[Tworzenie testów sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)|Otrzymuj alerty, jeśli witryna staje się niedostępny|
 |[Upewnij się, buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) jest generowany przez program MSBuild|[Twórz adnotacje w wykresy metryk](https://blogs.msdn.microsoft.com/visualstudioalm/2013/11/14/implementing-deployment-markers-in-application-insights/)

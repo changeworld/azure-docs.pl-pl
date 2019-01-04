@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą działania Hive - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używasz działania Hive w fabryce danych Azure do uruchamiania zapytań Hive w klastrze usługi HDInsight na — żądanie/swój własny.
+title: Przekształcanie danych przy użyciu działania programu Hive — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć działania programu Hive w usłudze Azure data factory w celu uruchomienia zapytania programu Hive na na — żądanie/swój własny klaster HDInsight.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,38 +9,37 @@ ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e8d3b83c8508ae5913975edcbf89f4e70a8b08be
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3dda16450f5454b4fae6d18235b05b7bb29a8b91
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050852"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018862"
 ---
-# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania Hive w fabryce danych Azure 
+# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania programu Hive w usłudze Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformation Activities"]
-> * [Działanie gałęzi](data-factory-hive-activity.md) 
-> * [Działanie pig](data-factory-pig-activity.md)
-> * [Działania MapReduce](data-factory-map-reduce.md)
-> * [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Działanie Spark](data-factory-spark.md)
+> * [Działanie technologii hive](data-factory-hive-activity.md) 
+> * [Działania technologii pig](data-factory-pig-activity.md)
+> * [Działania technologii MapReduce](data-factory-map-reduce.md)
+> * [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Działania platformy Spark](data-factory-spark.md)
 > * [Działanie wykonywania wsadowego w usłudze Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Działania aktualizowania zasobów w usłudze Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Działania procedur składowanych](data-factory-stored-proc-activity.md)
 > * [Działania języka U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md)
-> * [Działania niestandardowe .NET](data-factory-use-custom-activities.md)
+> * [Niestandardowe działanie platformy .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania gałęzi w fabryce danych](../transform-data-using-hadoop-hive.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [przekształcania danych za pomocą działania programu Hive w usłudze Data Factory](../transform-data-using-hadoop-hive.md).
 
-Działanie HDInsight Hive w fabryce danych [potoku](data-factory-create-pipelines.md) wykonuje zapytania Hive na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastrów HDInsight opartych na systemie Windows/Linux. W tym artykule opiera się na [działań przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
+Działanie HDInsight Hive w usłudze Data Factory [potoku](data-factory-create-pipelines.md) wykonuje zapytania programu Hive na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight z systemem Windows/Linux. W tym artykule opiera się na [działania przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych.
 
 > [!NOTE] 
-> Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](data-factory-introduction.md) i wykonaj samouczka: [kompilacji swój pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
+> Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) i wykonać instrukcje z samouczka: [Tworzenie pierwszego potoku danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
 
 ## <a name="syntax"></a>Składnia
 
@@ -77,19 +76,19 @@ Działanie HDInsight Hive w fabryce danych [potoku](data-factory-create-pipeline
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa działania |Yes |
-| description |Tekst opisujący działanie służy do |Nie |
+| description |Tekst opisujący przeznaczenie działania |Nie |
 | type |HDinsightHive |Yes |
-| dane wejściowe |Dane wejściowe używane na potrzeby działania gałęzi |Nie |
-| wyjścia |Dane wyjściowe, generowane przez działanie gałęzi |Yes |
-| linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowany jako połączonej usługi z fabryki danych |Yes |
-| skrypt |Określ wbudowanego skryptu Hive |Nie |
-| Ścieżka skryptu |Przechowywanie skryptu Hive w magazynie obiektów blob platformy Azure i podaj ścieżkę do pliku. Użyj właściwości 'script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
-| Definiuje |Określ parametry jako pary klucz wartość dla odwołania do skryptu Hive za pomocą "hiveconf" |Nie |
+| dane wejściowe |Dane wejściowe, używane przez działanie programu Hive |Nie |
+| wyjścia |Dane wyjściowe generowane przez działanie programu Hive |Yes |
+| linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
+| skrypt |Określ wbudowany skrypt programu Hive |Nie |
+| Ścieżka skryptu |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| Definiuje |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive przy użyciu "hiveconf" |Nie |
 
 ## <a name="example"></a>Przykład
-Zastanówmy się przykładem gier dzienniki analizy, w której chcesz zidentyfikować czasu poświęconego przez użytkowników granie w gry uruchomiony przez firmę. 
+Rozważmy przykład dzienników gier, analizy, w której chcesz zidentyfikować czas spędzony przez użytkowników granie w gry uruchomiony przez Twoją firmę. 
 
-Następujące dziennik jest przykładowy dziennik gier, czyli przecinkami (`,`) oddzielone i zawiera następujące pola — ProfileID, SessionStart, czas trwania, SrcIPAddress i GameType.
+Następujący dziennik jest przykładowy dziennik gier, który jest przecinek (`,`) z wartościami rozdzielanymi i zawiera następujące pola — Identyfikator profilu, SessionStart, czas trwania, SrcIPAddress i GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -99,7 +98,7 @@ Następujące dziennik jest przykładowy dziennik gier, czyli przecinkami (`,`) 
 .....
 ```
 
-**Wykonanie skryptu technologii Hive** przetwarzania tych danych:
+**Wykonanie skryptu technologii Hive** przetworzyć te dane:
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -126,18 +125,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-Do wykonania tego skryptu Hive w potoku fabryki danych, należy wykonać następujące czynności
+Aby wykonać ten skrypt programu Hive w potoku usługi Data Factory, musisz wykonać następujące czynności
 
-1. Tworzenie połączonej usługi, aby zarejestrować [klaster obliczeniowy własne HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub skonfiguruj [klastra obliczeniowego HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Umożliwia wywołanie tej połączonej usługi "HDInsightLinkedService".
-2. Utwórz [połączona usługa](data-factory-azure-blob-connector.md) Aby skonfigurować połączenie z magazynu obiektów Blob Azure, w którym znajdują się dane. Umożliwia wywołanie tej połączonej usługi "StorageLinkedService"
-3. Utwórz [zestawów danych](data-factory-create-datasets.md) wskazujący dane wejściowe i danych wyjściowych. Umożliwia wywołanie "HiveSampleIn" w zestawie danych wejściowych i wyjściowy zestaw danych "HiveSampleOut"
-4. Kopiuj zapytanie Hive jako plik do magazynu obiektów Blob Azure skonfigurowane w kroku #2. Jeśli magazynu do obsługi danych jest inna niż wersja tego pliku zapytania hosting, Utwórz oddzielne połączoną usługą magazynu Azure i odwołuje się do niego w działaniu. Użyj **scriptPath** do określenia ścieżki do pliku zapytania hive i **scriptLinkedService** do określenia magazynu Azure, który zawiera plik skryptu. 
+1. Tworzenie połączonej usługi, aby zarejestrować [HDInsight własny klaster obliczeniowy](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub skonfigurować [klastra obliczeniowego HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Nadajmy tej połączonej usługi "HDInsightLinkedService".
+2. Tworzenie [połączoną usługę](data-factory-azure-blob-connector.md) skonfigurować połączenie usługi Azure Blob storage, w którym znajdują się dane. Nadajmy tej połączonej usługi "StorageLinkedService"
+3. Tworzenie [zestawów danych](data-factory-create-datasets.md) wskazującej dane wejściowe i dane wyjściowe. Nazwiemy "HiveSampleIn" zestaw wejściowy i wyjściowy zestaw danych "HiveSampleOut"
+4. Kopiuj zapytanie Hive jako plik w usłudze Azure Blob Storage skonfigurowane w kroku #2. Jeśli magazyn do obsługi danych różni się od hostuje tego pliku zapytania, Utwórz oddzielne połączoną usługę Azure Storage i się do niego odwoływać w działaniu. Użyj **scriptPath** można określić ścieżkę do pliku zapytania hive i **element scriptLinkedService** do określania magazynu platformy Azure, który zawiera plik skryptu. 
    
    > [!NOTE]
-   > Można też podać przy użyciu wbudowanego skryptu Hive w definicji działania **skryptu** właściwości. Nie zaleca tego podejścia jako wszystkie znaki specjalne w skrypcie w potrzeb dokumentu JSON można użyć znaków ucieczki i może powodować problemy debugowania. Najlepszym rozwiązaniem jest wykonaj krok #4.
+   > Możesz też podać wbudowany skrypt programu Hive w definicji działania, za pomocą **skryptu** właściwości. Firma Microsoft nie zaleca się tej metody jako wszystkie znaki specjalne w skrypcie w obrębie dokumentu JSON musi być poprzedzone znakiem zmiany znaczenia i może spowodować problemy debugowania. Najlepszym rozwiązaniem jest przejdź do kroku #4.
    > 
    > 
-5. Utworzyć potok z działaniem HDInsightHive. Działanie procesów/przekształcenia danych.
+5. Tworzenie potoku za pomocą działania HDInsightHive. Działania procesów/przekształcenia danych.
 
     ```JSON   
     {   
@@ -171,15 +170,15 @@ Do wykonania tego skryptu Hive w potoku fabryki danych, należy wykonać następ
         }
     }
     ```
-6. Wdróż potok. Zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu, aby uzyskać szczegółowe informacje. 
-7. Monitorowanie potoku korzystanie z widoków monitorowania i zarządzania fabryki danych. Zobacz [monitorowanie i zarządzanie nimi potoki fabryki danych](data-factory-monitor-manage-pipelines.md) artykułu, aby uzyskać szczegółowe informacje. 
+6. Wdróż potok. Zobacz [tworzenia potoków](data-factory-create-pipelines.md) artykuł, aby uzyskać szczegółowe informacje. 
+7. Monitorowanie potoku przy użyciu widoków zarządzania i monitorowania fabryki danych. Zobacz [monitorowanie potoków usługi Data Factory oraz zarządzanie nimi](data-factory-monitor-manage-pipelines.md) artykuł, aby uzyskać szczegółowe informacje. 
 
-## <a name="specifying-parameters-for-a-hive-script"></a>Określanie parametrów dla skryptu Hive
-W tym przykładzie gier dzienniki są codziennie pozyskanych w magazynie obiektów Blob Azure i są przechowywane w folderze na partycje za pomocą daty i godziny. Chcesz parametryzacja skryptu Hive i przekazać do lokalizacji folderu wejściowych dynamicznie w czasie wykonywania i również utworzyć różne dane wyjściowe z datę i godzinę.
+## <a name="specifying-parameters-for-a-hive-script"></a>Określanie parametrów skryptu programu Hive
+W tym przykładzie dzienników gier są codziennie pozyskane do usługi Azure Blob Storage i są przechowywane w folderze, na partycje za pomocą daty i godziny. Chcesz zdefiniować parametry skryptu programu Hive i dynamicznie przekazywania lokalizacji folderu danych wejściowych podczas wykonywania, a także generuje danych wyjściowych, podzielone na partycje z datą i godziną.
 
-Aby użyć skryptu Hive sparametryzowane, wykonaj następujące czynności
+Aby użyć sparametryzowanych skryptu programu Hive, wykonaj następujące czynności
 
-* Zdefiniuj parametry w **definiuje**.
+* Określ parametry w **definiuje**.
 
     ```JSON  
     {
@@ -217,7 +216,7 @@ Aby użyć skryptu Hive sparametryzowane, wykonaj następujące czynności
       }
     }
     ```
-* Skryptu Hive odwoływać się do parametru przy użyciu **${hiveconf:parameterName}**. 
+* W skrypcie programu Hive można znaleźć za pomocą parametru **${hiveconf:parameterName}**. 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 
@@ -244,9 +243,9 @@ Aby użyć skryptu Hive sparametryzowane, wykonaj następujące czynności
     FROM HiveSampleIn Group by ProfileID
     ```
 ## <a name="see-also"></a>Zobacz też
-* [Działanie pig](data-factory-pig-activity.md)
-* [Działania MapReduce](data-factory-map-reduce.md)
-* [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+* [Działania technologii pig](data-factory-pig-activity.md)
+* [Działania technologii MapReduce](data-factory-map-reduce.md)
+* [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
 * [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 

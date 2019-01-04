@@ -1,5 +1,5 @@
 ---
-title: Rozpoczęcie pracy z usługą Azure Key Vault | Microsoft Docs
+title: Rozpoczynanie pracy z usługą Azure Key Vault — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: Ten samouczek ułatwi Ci rozpoczęcie pracy usługą Azure Key Vault w celu utworzenia wzmocnionego kontenera na platformie Azure do przechowywania kluczy kryptograficznych i kluczy tajnych na platformie Azure oraz zarządzania nimi.
 services: key-vault
 documentationcenter: ''
@@ -12,17 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 72e17d5628be307d6c73cd2bba7576d0e734af15
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864907"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999071"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Rozpoczynanie pracy z usługą Azure Key Vault
+
 Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu programu PowerShell i zawiera omówienie następujących działań:
+
 - Dowiedz się, jak utworzyć kontener ze wzmocnionymi zabezpieczeniami (magazyn) na platformie Azure.
 - Dowiedz się, jak przechowywać klucze kryptograficzne i wpisy tajne oraz zarządzać nimi na platformie Azure za pomocą usługi KeyVault.
 - Dowiedz się, jak aplikacja może użyć tego klucza lub hasła.
@@ -32,6 +34,7 @@ Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać wi
 Instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia znajdują się w [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
 
 ## <a name="requirements"></a>Wymagania
+
 Przed kontynuowaniem upewnij się, że masz:
 
 - **Subskrypcja platformy Azure**. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/free/).
@@ -59,6 +62,7 @@ Aby zapoznać się z modelem wdrażania usługi Azure Resource Manager w program
 * [Używanie programu Azure PowerShell z usługą Resource Manager](../powershell-azure-resource-manager.md)
 
 ## <a id="connect"></a>Nawiązywanie połączenia z subskrypcjami
+
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
 ```PowerShell
@@ -88,6 +92,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 Aby uzyskać więcej informacji na temat konfigurowania programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="resource"></a>Tworzenie nowej grupy zasobów
+
 Podczas korzystania z usługi Azure Resource Manager wszystkie powiązane zasoby są tworzone wewnątrz grupy zasobów. W tym samouczku utworzysz nową grupę zasobów o nazwie **ContosoResourceGroup**:
 
 ```powershell
@@ -95,6 +100,7 @@ New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'East US'
 ```
 
 ## <a id="vault"></a>Tworzenie magazynu kluczy
+
 Użyj polecenia cmdlet [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault), aby utworzyć magazyn kluczy. To polecenie cmdlet ma trzy obowiązkowe parametry: **nazwa grupy zasobów**, **nazwa magazynu kluczy** oraz **lokalizacja geograficzna**.
 
 Używane przykładowe wartości:
@@ -122,6 +128,7 @@ Twoje konto platformy Azure ma teraz uprawnienia do wykonywania dowolnych operac
 >
 
 ## <a id="add"></a>Dodawanie klucza lub klucza tajnego do magazynu kluczy
+
 Istnieje kilka różnych sposobów interakcji z magazynem kluczy i kluczami lub wpisami tajnymi.
 
 ### <a name="azure-key-vault-generates-a-software-protected-key"></a>Usługa Azure Key Vault generuje klucz chroniony oprogramowaniem
@@ -193,7 +200,7 @@ Aby wyświetlić identyfikator URI dla tego klucza tajnego, wpisz polecenie:
 ```powershell
 $secret.Id
 ```
-Aby wyświetlić wpis tajny, wpisz polecenie `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`. Możesz też wyświetlić wpis tajny w portalu.
+Aby wyświetlić klucz tajny, wpisz polecenie: `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'` Lub możesz też wyświetlić wpis tajny w portalu.
 
 ![wpis tajny](./media/key-vault-get-started/secret-value.png)
 
@@ -204,6 +211,7 @@ Aby wyświetlić wartość zawartą we wpisie tajnym jako zwykły tekst:
 Teraz, usługi magazynu kluczy oraz klucza lub klucza tajnego są gotowe do użycia przez aplikacje. Teraz możesz zezwolić aplikacjom z nich korzystać.  
 
 ## <a id="register"></a>Rejestrowanie aplikacji w usłudze Azure Active Directory
+
 Ten krok będzie zazwyczaj wykonywany przez programistę na innym komputerze. Nie dotyczy on tylko usługi Azure Key Vault. Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji w usłudze Azure Active Directory, zapoznaj się z artykułem pod tytułem [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) lub [użycie portalu w celu utworzenia usługi Azure Active Directory aplikacji i jednostki usługi, które mogą uzyskiwać dostęp do zasobów](../active-directory/develop/howto-create-service-principal-portal.md)
 
 > [!IMPORTANT]
@@ -222,8 +230,10 @@ Aby zarejestrować aplikację w usłudze Azure Active Directory:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie kliknij pozycję **Rejestracje aplikacji**. Jeśli nie widzisz rejestracji aplikacji, kliknij polecenie **więcej usług**.  
-    > [!NOTE]
-    > Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure użytą do utworzenia magazynu kluczy. 
+
+> [!NOTE]
+> Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure użytą do utworzenia magazynu kluczy.
+
 3. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
 4. W bloku **Tworzenie** podaj nazwę swojej aplikacji, a następnie wybierz pozycję **APLIKACJA SIECI WEB I/LUB INTERFEJS API SIECI WEB** (ustawienie domyślne) i określ **ADRES URL LOGOWANIA** dla aplikacji internetowej. Jeśli nie masz teraz tych informacji, możesz użyć fikcyjnych danych na potrzeby tego kroku (na przykład możesz określić adres http://test1.contoso.com). Nie ma znaczenia, czy takie witryny istnieją. 
 
@@ -240,9 +250,11 @@ Aby zarejestrować aplikację w usłudze Azure Active Directory:
 10. Informacje dotyczące **identyfikatora aplikacji** i **klucza** zostaną użyte w następnym kroku w celu ustawienia uprawnień dotyczących magazynu.
 
 ## <a id="authorize"></a>Zezwalanie aplikacji na używanie klucza lub klucza tajnego
+
 Istnieją dwa sposoby autoryzowania aplikacji na potrzeby uzyskiwania dostępu do klucza lub wpisu tajnego w magazynie.
 
 ### <a name="using-powershell"></a>Korzystanie z programu PowerShell
+
 Aby użyć programu PowerShell, wpisz polecenie cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
 Na przykład, jeśli nazwa Twojego magazynu to **ContosoKeyVault** aplikacji, którą chcesz autoryzować ma identyfikator klienta 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed i chcesz zezwolić aplikacji na odszyfrowywanie oraz logowanie przy użyciu kluczy z usługi Magazyn, uruchom następujące polecenie cmdlet:
@@ -256,7 +268,9 @@ Jeśli chcesz zezwolić tej samej aplikacji na odczyt kluczy tajnych w magazynie
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 ```
+
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
+
 Aby zmienić autoryzację aplikacji do używania kluczy lub wpisów tajnych:
 1. Wybierz opcję **Zasady dostępu** z bloku zasobów usługi Key Vault
 2. Kliknij przycisk [+ Dodaj nowy] u góry bloku
@@ -265,6 +279,7 @@ Aby zmienić autoryzację aplikacji do używania kluczy lub wpisów tajnych:
 5. Z listy rozwijanej **Uprawnienia wpisu tajnego** wybierz opcję „Pobierz”, aby zezwolić aplikacji na odczytywanie wpisów tajnych w magazynie
 
 ## <a id="HSM"></a>Praca ze sprzętowym modułem zabezpieczeń (HSM, hardware security module)
+
 W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają granicy modułów HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeżeli te wymagania nie odnoszą się do Ciebie, pomiń tę sekcję i przejdź do sekcji [Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych](#delete).
 
 Aby utworzyć te klucze chronione modułem HSM, należy użyć [usługi Azure Key Vault w warstwie Premium do obsługi kluczy chronionych modułem HSM](https://azure.microsoft.com/pricing/details/key-vault/). Ponadto warto zauważyć, że funkcja ta nie jest dostępna dla chińskiej wersji platformy Azure.
@@ -274,7 +289,6 @@ Po utworzeniu magazynu kluczy dodaj parametr **- SKU**:
 ```powershell
 New-AzureRmKeyVault -Name 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US' -SKU 'Premium'
 ```
-
 
 Do tego magazynu kluczy możesz dodać klucze chronione oprogramowaniem (jak pokazano wcześniej) oraz klucze chronione modułem HSM. Aby utworzyć klucz chroniony modułem HSM, ustaw parametr **-Destination** w opcji „HSM”:
 
@@ -297,6 +311,7 @@ $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstH
 Aby uzyskać szczegółowe instrukcje na temat generowania pakietu BYOK, zobacz artykuł [Generowanie i przenoszenie kluczy chronionych modułem HSM dla usługi Azure Key Vault](key-vault-hsm-protected-keys.md).
 
 ## <a id="delete"></a>Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych
+
 Jeśli magazyn kluczy oraz zawarte w nim klucze i klucze tajne nie są już potrzebne, możesz je usunąć przy pomocy polecenia cmdlet [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault):
 
 ```powershell
@@ -310,9 +325,10 @@ Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 ```
 
 ## <a id="other"></a>Inne polecenia cmdlet programu Azure PowerShell
+
 Inne polecenia, które mogą być przydatne do zarządzania usługą Azure Key Vault:
 
-- `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: To polecenie wyświetla tabelaryczny widok wszystkich kluczy i wybranych właściwości.
+- `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: To polecenie pobiera tabelaryczny widok wszystkich kluczy i wybranych właściwości.
 - `$Keys[0]`: To polecenie wyświetla pełną listę właściwości dla określonego klucza
 - `Get-AzureKeyVaultSecret`: To polecenie wyświetla tabelaryczny widok wszystkich nazw kluczy tajnych i wybranych właściwości.
 - `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Przykładowy sposób usunięcia określonego klucza.

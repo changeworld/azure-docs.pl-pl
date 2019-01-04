@@ -9,23 +9,22 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 7f8eacf11f2333abc348efaa82c92ecbe05136ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 29105f97385b11e59ccd3af9d13521ea803bfdb0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966181"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024233"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
 
-- **Przenoszenie danych**: przenoszenie danych między magazynami danych w sieci publicznej i magazynami danych w sieci prywatnej (lokalnej lub prywatnej sieci wirtualnej). Zapewnia obsługę wbudowanych łączników, konwersji formatów i mapowania kolumn oraz wydajne i skalowalne przenoszenie danych.
-- **Wysyłanie działań**: wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i nie tylko.
-- **Wykonanie pakietów SSIS**: natywne wykonywanie pakietów SQL Server Integration Services (SSIS) w zarządzanym środowisku obliczeniowym platformy Azure.
+- **Przenoszenie danych**: Przenoszenie danych między magazynami danych w publicznej sieci i magazynów danych w sieci prywatnej (lokalnej lub wirtualnej sieci prywatnej). Zapewnia obsługę wbudowanych łączników, konwersji formatów i mapowania kolumn oraz wydajne i skalowalne przenoszenie danych.
+- **Wysyłanie działania**:  Wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database i programu SQL Server.
+- **Wykonanie pakietów SSIS**: Natywne wykonywanie pakietów usług SQL Server Integration Services (SSIS) w środowisku zarządzanym obliczeniowych platformy Azure.
 
 W usłudze Data Factory działanie definiuje akcję do wykonania. Połączona usługa definiuje docelowy magazyn danych lub usługę obliczeniową. Infrastruktura Integration Runtime zapewnia połączenie między działaniem i połączonymi usługami.  Odwołuje się do niej połączona usługa i zapewnia środowisko obliczeniowe, w którym działanie jest uruchamiane lub z którego jest wysyłane.  Dzięki temu działanie można wykonać w regionie najbliższym docelowemu magazynowi danych lub usłudze obliczeniowej, w sposób najbardziej wydajny, jednocześnie spełniając wymagania dotyczące zabezpieczeń i zgodności.
 
@@ -52,7 +51,7 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze
-- Wysyłanie następujących działań przekształcania w sieci publicznej: działanie HDInsight Hive, działanie HDInsight Pig, działanie HDInsight MapReduce, działanie HDInsight Spark, działanie HDInsight Streaming, działanie Machine Learning Batch Execution, działanie Machine Learning Update Resource, działanie Stored Procedure, działanie Data Lake Analytics U-SQL, działanie niestandardowe platformy .Net, działanie internetowe, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w sieci publicznej: Działanie HDInsight Hive, działanie HDInsight Pig, działanie HDInsight MapReduce, działanie HDInsight Spark, działanie HDInsight Streaming, Machine Learning Batch Execution, działanie, działania Machine Learning Update Resource, działanie Stored Procedure Działania usługi Data Lake Analytics U-SQL, działanie niestandardowe platformy .net, działanie internetowe, działanie Lookup i działanie Get Metadata.
 
 ### <a name="azure-ir-network-environment"></a>Środowisko sieciowe IR Azure
 Infrastruktura Azure Integration Runtime obsługuje łączenie z magazynami danych i usługami obliczeniowymi w sieci publicznej przy użyciu dostępnych publicznie punktów końcowych. Zastosowanie infrastruktury Integration Runtime (Self-hosted) w środowisku sieci wirtualnej Azure.
@@ -70,7 +69,7 @@ Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można zn
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze i magazynem danych w sieci prywatnej.
-- Wysyłanie następujących działań przekształcania dla zasobów obliczeniowych w sieci lokalnej lub sieci wirtualnej platformy Azure: działanie HDInsight Hive (BYOC), działanie HDInsight Pig (BYOC), działanie HDInsight MapReduce (BYOC), działanie HDInsight Spark (BYOC), działanie HDInsight Streaming (BYOC), działanie Machine Learning Batch Execution, działanie Machine Learning Update Resource, działanie Stored Procedure, działanie Data Lake Analytics U-SQL, działanie niestandardowe platformy .Net, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w odniesieniu do zasobów obliczeniowych w lokalnych lub w usłudze Azure Virtual Network: Działanie HDInsight Hive (BYOC), działanie HDInsight Pig (BYOC), działanie HDInsight MapReduce (BYOC), działanie HDInsight Spark (BYOC), HDInsight działania przesyłania strumieniowego (BYOC), działanie Machine Learning Batch Execution, Machine Learning Update Resource działania, działanie Stored Procedure, działanie U-SQL usługi Data Lake Analytics, niestandardowe działanie platformy .net, działanie Lookup i działanie Get Metadata.
 
 > [!NOTE] 
 > Infrastruktura Integration Runtime (Self-hosted) umożliwia obsługę magazynów danych wymagających własnych sterowników, takich jak SAP Hana, MySQL itp.  Więcej informacji można znaleźć w sekcji dotyczącej [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -97,7 +96,7 @@ Więcej informacji można znaleźć w artykule przewodnika How to create and con
 Aby uzyskać więcej informacji o środowisku uruchomieniowym Azure-SSIS, zobacz następujące artykuły: 
 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
-- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 
+- [Jak: Tworzenie środowiska Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 
 - [Monitor an Azure-SSIS IR (Monitorowanie środowiska Azure-SSIS IR)](monitor-integration-runtime.md#azure-ssis-integration-runtime). W tym artykule przedstawiono sposób pobierania informacji o środowisku Azure-SSIS IR i opisów stanów w pobranych informacjach. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
 - [Join an Azure-SSIS IR to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md) (Dołączanie środowiska IR Azure SSIS do sieci wirtualnej). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska IR Azure-SSIS do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej za pomocą witryny Azure Portal tak, aby umożliwić dołączanie środowiska IR Azure-SSIS do sieci wirtualnej. 

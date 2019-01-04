@@ -9,17 +9,16 @@ ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b4485344f0bb85cb5dd2a2d621833d0fed15a8e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125674"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022482"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenoszenie danych z usług Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +34,7 @@ W tym artykule przedstawiono, jak użyć działania kopiowania w usłudze Azure 
 Usługa Azure Data Factory obsługuje obecnie tylko przenosi dane z usług Salesforce do [obsługiwanych magazynów danych ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats), ale nie obsługuje przenoszenia danych z innych danych są przechowywane do usługi Salesforce.
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
-Ten łącznik obsługuje następujące wersje systemu Salesforce: Developer Edition, w wersji Professional, Enterprise Edition lub wersji bez ograniczeń. I obsługuje kopiowania z produkcji i piaskownicy usługi Salesforce, a także domeny niestandardowej.
+Ten łącznik obsługuje następujące wersje systemu Salesforce: Developer Edition w wersji Professional, Enterprise Edition lub wersji bez ograniczeń. I obsługuje kopiowania z produkcji i piaskownicy usługi Salesforce, a także domeny niestandardowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Musi być włączone uprawnienia do interfejsu API. Zobacz [jak włączyć dostęp do interfejsu API w usłudze Salesforce przez zestaw uprawnień?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
@@ -52,9 +51,9 @@ Błąd "REQUEST_LIMIT_EXCEEDED" może również występować w obu scenariuszach
 ## <a name="getting-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Salesforce za pomocą różnych narzędzi/interfejsów API.
 
-Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Można również użyć następujących narzędzi do utworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia: 
 
@@ -62,7 +61,7 @@ Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, a
 2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
 3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z usług Salesforce, możesz znaleźć [przykład kodu JSON: kopiowanie danych z usług Salesforce do usługi Azure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) dalszej części tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z usług Salesforce, możesz znaleźć [przykład kodu JSON: Kopiowanie danych z usług Salesforce do usługi Azure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) dalszej części tego artykułu. 
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do usługi Salesforce: 
 
@@ -71,7 +70,7 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **Salesforce**. |Yes |
+| type |Właściwość type musi być równa: **SalesForce**. |Yes |
 | environmentUrl | Określ wystąpienie adres URL usługi Salesforce. <br><br> -Wartością domyślną jest "https://login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, należy określić "https://test.salesforce.com". <br> — Aby skopiować dane z domeny niestandardowej, określić, na przykład "https://[domain].my.salesforce.com". |Nie |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Yes |
 | hasło |Określ hasło dla konta użytkownika. |Yes |
@@ -125,7 +124,7 @@ Aby wysłać zapytanie nietrwale usunięte rekordy z Kosza usługi Salesforce, m
 * Aby wysłać zapytanie usuniętych rekordów, należy określić "Wybierz * z MyTable__c **gdzie IsDeleted = 1**"
 * Aby zbadać wszystkie rekordy, w tym istniejące i usunięte, należy określić "Wybierz * z MyTable__c **gdzie IsDeleted = 0 lub IsDeleted = 1**"
 
-## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Przykład kodu JSON: kopiowanie danych z usług Salesforce do obiektów Blob platformy Azure
+## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z usług Salesforce do obiektów Blob platformy Azure
 W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z usług Salesforce do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.   
 
 Poniżej przedstawiono artefaktów usługi Data Factory, które należy utworzyć w celu zaimplementowania scenariusza. Sekcje listy zawierają szczegółowe informacje na temat tych kroków.
@@ -204,7 +203,7 @@ Ustawienie **zewnętrznych** do **true** usługi Data Factory informuje, że zes
 
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godziny, interval: 1).
+Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, interwał: 1).
 
 ```json
 {
@@ -285,19 +284,19 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listę 
 
 
 ### <a name="type-mapping-for-salesforce"></a>Mapowanie typu usługi Salesforce
-| Typ Salesforce | . Typ opartej na sieci |
+| Typ SalesForce | . Typ opartej na sieci |
 | --- | --- |
 | Liczba automatycznie |Ciąg |
 | Zaznacz pole wyboru |Wartość logiczna |
-| Waluta |Dziesiętna |
+| Waluta |Dziesiętny |
 | Date |DateTime |
-| Data/godzina |DateTime |
+| Data/Godzina |DateTime |
 | Email |Ciąg |
-| Id |Ciąg |
+| Identyfikator |Ciąg |
 | Relacje odnośników |Ciąg |
 | Lista wyboru wielokrotnego |Ciąg |
-| Liczba |Dziesiętna |
-| Procent |Dziesiętna |
+| Liczba |Dziesiętny |
+| Procent |Dziesiętny |
 | Numer telefonu |Ciąg |
 | Listy wyboru |Ciąg |
 | Tekst |Ciąg |

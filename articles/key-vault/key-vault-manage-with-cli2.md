@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie przy użyciu interfejsu wiersza polecenia usługi Azure Key Vault | Dokumentacja firmy Microsoft
+title: Zarządzanie usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: Skorzystaj z tego artykułu w celu automatyzacji typowych zadań w usłudze Key Vault przy użyciu wiersza polecenia platformy Azure
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 632620bf8140ba855198a9354fbd7e50604e18c3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256459"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000312"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure 
 
@@ -228,18 +228,18 @@ az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) można włączyć zaawansowane zasady dla usługi key vault. 
 
- Włączanie usługi Key Vault dla wdrożenia: umożliwia maszyn wirtualnych, aby pobrać certyfikaty zapisane jako wpisy tajne z magazynu.
+ Włącz usługi Key Vault dla wdrożenia: Umożliwia maszyn wirtualnych, aby pobrać certyfikaty zapisane jako wpisy tajne z magazynu.
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
  ``` 
 
-Włączanie usługi Key Vault do szyfrowania dysku: wymagane w przypadku używania magazynu dla usługi Azure Disk encryption.
+Włącz magazyn kluczy do szyfrowania dysku: Wymagane w przypadku używania magazynu dla usługi Azure Disk encryption.
 
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
  ```  
 
-Włączanie usługi Key Vault dla wdrożenia szablonu: umożliwia Menedżer zasobów do pobierania wpisów tajnych w magazynie.
+Włącz usługi Key Vault dla wdrożenia szablonu: Pozwala pobrać Wpisy tajne z magazynu usługi Resource Manager.
  ```azurecli 
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```

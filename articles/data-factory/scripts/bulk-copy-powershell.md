@@ -1,5 +1,5 @@
 ---
-title: 'Skrypt programu PowerShell: zbiorcze kopiowanie danych przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft'
+title: 'Skrypt programu PowerShell: Zbiorcze kopiowanie danych przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft'
 description: Ten skrypt programu PowerShell pokazuje, jak skopiować dane z magazynu danych źródłowych do docelowego magazynu danych w trybie zbiorczym za pomocą usługi Azure Data Factory.
 services: data-factory
 author: linda33wj
@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: dc1bf394a34c097caa68c029e11c141dbae32aab
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2fc34afc2121eec88a0640b6dea22699243195b7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125143"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021598"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell script — zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 

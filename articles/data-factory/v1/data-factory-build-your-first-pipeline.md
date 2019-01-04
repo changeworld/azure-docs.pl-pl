@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek fabryki danych: pierwszy potok danych | Dokumentacja firmy Microsoft'
+title: 'Samouczek fabryki danych: Pierwszy potok danych | Dokumentacja firmy Microsoft'
 description: Ten samouczek usługi Azure Data Factory dowiesz się, jak utworzyć i zaplanować fabryki danych, która przetwarza dane przy użyciu skryptu programu Hive w klastrze platformy Hadoop.
 services: data-factory
 documentationcenter: ''
@@ -10,17 +10,16 @@ ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734256"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015954"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Samouczek: Tworzenie pierwszego potoku do przekształcania danych przy użyciu klastra Hadoop
 > [!div class="op_single_selector"]
@@ -33,11 +32,11 @@ ms.locfileid: "45734256"
 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych przy użyciu usługi Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [Szybki Start: Tworzenie fabryki danych przy użyciu usługi Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 W tym samouczku utworzysz pierwszej fabryki danych platformy Azure przy użyciu potoku danych. Potok przekształca dane wejściowe, uruchamiając skrypt Hive w klastrze usługi Azure HDInsight (Hadoop) w celu wygenerowania danych wyjściowych.  
 
-Ten artykuł zawiera przegląd i wymagania wstępne dla samouczka. Po wykonaniu wymagań wstępnych, można wykonać tego samouczka przy użyciu jednej z następujących narzędzi/zestawów SDK: witrynę Azure portal, programu Visual Studio, PowerShell i szablonu usługi Resource Manager i interfejsu API REST. Wybierz jedną z opcji na liście rozwijanej na początku (lub) linki na końcu tego artykułu, aby wykonać instrukcje z samouczka przy użyciu jednej z tych opcji.    
+Ten artykuł zawiera przegląd i wymagania wstępne dla samouczka. Po wykonaniu wymagań wstępnych, można wykonać tego samouczka przy użyciu jednej z następujących narzędzi/zestawów SDK: Witrynę Azure portal, programu Visual Studio, PowerShell i szablonu usługi Resource Manager i interfejsu API REST. Wybierz jedną z opcji na liście rozwijanej na początku (lub) linki na końcu tego artykułu, aby wykonać instrukcje z samouczka przy użyciu jednej z tych opcji.    
 
 ## <a name="tutorial-overview"></a>Omówienie samouczka
 Ten samouczek obejmuje wykonanie następujących kroków:
@@ -45,12 +44,12 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 1. Tworzenie **usługi data factory**. Fabryka danych może zawierać jeden lub wiele potoków danych służące do przenoszenia i przekształcania danych. 
 
     W tym samouczku utworzysz jeden potok w fabryce danych. 
-2. Tworzenie **potoku**. Potok może obejmować jedno lub więcej działań (przykłady: działanie kopiowania, działania programu Hive HDInsight). Ta próbka używa działanie HDInsight Hive, które uruchamia skrypt Hive w klastrze usługi HDInsight Hadoop. Skrypt najpierw tworzy tabelę, która odwołuje się do danych dziennika raw sieci web, przechowywane w usłudze Azure blob storage, a następnie partycji danych pierwotnych według roku i miesiąca.
+2. Tworzenie **potoku**. Potok może obejmować jedno lub więcej działań (przykłady: Działanie kopiowania, działanie HDInsight Hive). Ta próbka używa działanie HDInsight Hive, które uruchamia skrypt Hive w klastrze usługi HDInsight Hadoop. Skrypt najpierw tworzy tabelę, która odwołuje się do danych dziennika raw sieci web, przechowywane w usłudze Azure blob storage, a następnie partycji danych pierwotnych według roku i miesiąca.
 
     W tym samouczku potok używa działania programu Hive do przekształcania danych, uruchamiając zapytanie programu Hive w klastrze usługi Azure HDInsight Hadoop. 
 3. Tworzenie **połączonych usług**. Utworzysz połączoną usługę służącą do połączyć magazyn danych lub usługi obliczeniowe z fabryką danych. Magazyn danych, takich jak Azure Storage przechowuje dane wejściowe i wyjściowe działań w potoku. Usługi obliczeniowe, takie jak klaster usługi HDInsight Hadoop procesów/przekształcenia danych.
 
-    W tym samouczku utworzysz dwie połączone usługi: **usługi Azure Storage** i **Azure HDInsight**. Usługi Azure Storage połączona usługa łączy konto usługi Azure Storage przechowujący dane wejściowe/wyjściowe, z fabryką danych. Usługa Azure HDInsight połączona usługa łączy klastra usługi Azure HDInsight, która jest używana do przekształcania danych w usłudze data factory. 
+    W tym samouczku utworzysz dwie połączone usługi: **Usługa Azure Storage** i **Azure HDInsight**. Usługi Azure Storage połączona usługa łączy konto usługi Azure Storage przechowujący dane wejściowe/wyjściowe, z fabryką danych. Usługa Azure HDInsight połączona usługa łączy klastra usługi Azure HDInsight, która jest używana do przekształcania danych w usłudze data factory. 
 3. Utworzenie wejściowych i wyjściowych **zestawów danych**. Zestaw danych wejściowych reprezentuje dane wejściowe dla działania w potoku, a zestaw danych wyjściowych reprezentuje dane wyjściowe dla działania.
 
     W tym samouczku danych wejściowych i wyjściowych zestawów danych, określ lokalizacje, danych wejściowych i wyjściowych w usłudze Azure Blob Storage. Połączona usługa Azure Storage Określa, co to jest konto usługi Azure Storage używany. Wejściowy zestaw danych określa, gdzie znajdują się pliki wejściowe i wyjściowy zestaw danych określa rozmieszczenie plików wyjściowych. 
@@ -63,7 +62,7 @@ Oto **widok diagramu** fabryki danych przykładowych kompilacji w ramach tego sa
 ![Widok diagramu w samouczku usługi Data Factory](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-W tym samouczku **inputdata** folderu **adfgetstarted** kontener obiektów blob platformy Azure zawiera jeden plik o nazwie input.log. Ten plik dziennika zawiera wpisy z trzech miesięcy: stycznia, lutego i marca 2016 r. Poniżej przedstawiono przykładowe wiersze w każdym miesiącu, w pliku wejściowym. 
+W tym samouczku **inputdata** folderu **adfgetstarted** kontener obiektów blob platformy Azure zawiera jeden plik o nazwie input.log. Ten plik dziennika zawiera wpisy z trzech miesięcy: Stycznia, lutego i marca 2016 r. Poniżej przedstawiono przykładowe wiersze w każdym miesiącu, w pliku wejściowym. 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 
@@ -103,7 +102,7 @@ Po wykonaniu wymagania wstępne, wybierz jedną z następujących narzędzi/zest
 Witryna Azure portal i programu Visual Studio umożliwiają graficznego interfejsu użytkownika tworzenia fabryk danych. Natomiast opcji programu PowerShell, szablon usługi Resource Manager i interfejsu API REST umożliwia wykonywanie skryptów programowania tworzenia fabryk danych.
 
 > [!NOTE]
-> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Nie kopiuje on danych ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: Kopiowanie danych z usługi Blob Storage do usługi SQL Database).
+> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Nie kopiuje on danych ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [samouczka: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory). 
 

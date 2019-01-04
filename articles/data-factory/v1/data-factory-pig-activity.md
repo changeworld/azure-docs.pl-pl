@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą działania Pig w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używasz działania Pig w fabryce danych Azure do wykonywania skryptów usługi Pig w klastrze usługi HDInsight na — żądanie/swój własny.
+title: Przekształcanie danych przy użyciu działania technologii Pig w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć działania technologii Pig w usłudze Azure data factory w celu uruchomienia skryptów usługi Pig na na — żądanie/swój własny klaster HDInsight.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,39 +9,38 @@ ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5abd0b07037559b14158a3c314b6ca6ce30ab655
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 48cbd33d4cbaff5d362731d67bbd3d4041e26f89
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045120"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025650"
 ---
-# <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania Pig w fabryce danych Azure
+# <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania technologii Pig w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
-> * [Działanie gałęzi](data-factory-hive-activity.md) 
-> * [Działanie pig](data-factory-pig-activity.md)
-> * [Działania MapReduce](data-factory-map-reduce.md)
-> * [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Działanie Spark](data-factory-spark.md)
+> * [Działanie technologii hive](data-factory-hive-activity.md) 
+> * [Działania technologii pig](data-factory-pig-activity.md)
+> * [Działania technologii MapReduce](data-factory-map-reduce.md)
+> * [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Działania platformy Spark](data-factory-spark.md)
 > * [Działanie wykonywania wsadowego w usłudze Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Działania aktualizowania zasobów w usłudze Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Działania procedur składowanych](data-factory-stored-proc-activity.md)
 > * [Działania języka U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md)
-> * [Działania niestandardowe .NET](data-factory-use-custom-activities.md)
+> * [Niestandardowe działanie platformy .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania Pig w fabryce danych](../transform-data-using-hadoop-pig.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [Przekształcanie danych przy użyciu działania technologii Pig w usłudze Data Factory](../transform-data-using-hadoop-pig.md).
 
 
-Działanie HDInsight Pig w fabryce danych [potoku](data-factory-create-pipelines.md) wykonuje zapytania Pig na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastrów HDInsight opartych na systemie Windows/Linux. W tym artykule opiera się na [działań przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
+Działanie HDInsight Pig w usłudze Data Factory [potoku](data-factory-create-pipelines.md) wykonuje zapytania Pig na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight z systemem Windows/Linux. W tym artykule opiera się na [działania przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych.
 
 > [!NOTE] 
-> Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](data-factory-introduction.md) i wykonaj samouczka: [kompilacji swój pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
+> Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) i wykonać instrukcje z samouczka: [Tworzenie pierwszego potoku danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
 
 ## <a name="syntax"></a>Składnia
 
@@ -85,19 +84,19 @@ Działanie HDInsight Pig w fabryce danych [potoku](data-factory-create-pipelines
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa działania |Yes |
-| description |Tekst opisujący działanie służy do |Nie |
+| description |Tekst opisujący przeznaczenie działania |Nie |
 | type |HDinsightPig |Yes |
-| dane wejściowe |Co najmniej jeden dane wejściowe, używane na potrzeby działania Pig |Nie |
-| wyjścia |Co najmniej jeden dane wyjściowe, generowane przez działanie Pig |Yes |
-| linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowany jako połączonej usługi z fabryki danych |Yes |
-| skrypt |Określ wbudowanego skryptu Pig |Nie |
-| Ścieżka skryptu |Umieść skrypt programu Pig w magazynie obiektów blob platformy Azure, a następnie podaj ścieżkę do pliku. Użyj właściwości 'script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
-| Definiuje |Określ parametry jako pary klucz wartość dla odwołania do skryptu Pig |Nie |
+| dane wejściowe |Co najmniej jeden dane wejściowe, używane przez działania technologii Pig |Nie |
+| wyjścia |Co najmniej jeden dane wyjściowe, generowane przez działanie technologii Pig |Yes |
+| linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
+| skrypt |Określ wbudowany skrypt Pig |Nie |
+| Ścieżka skryptu |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| Definiuje |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
 
 ## <a name="example"></a>Przykład
-Zastanówmy się przykładem gier dzienniki analizy, w której chcesz zidentyfikować czasu poświęconego przez graczy granie w gry uruchomiony przez firmę.
+Rozważmy przykład dzienników gier, analizy, w której chcesz zidentyfikować czas spędzony przez graczy granie w gry uruchomiony przez Twoją firmę.
 
-Następujący przykładowy dziennik gier jest plików rozdzielanych przecinkami (,). Zawiera ona następujące pola — ProfileID, SessionStart, czas trwania, SrcIPAddress i GameType.
+Poniższy przykładowy dziennik gier jest plikiem rozdzielonych przecinkami (,). Zawiera ona następujące pola — Identyfikator profilu, SessionStart, czas trwania, SrcIPAddress i GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -107,7 +106,7 @@ Następujący przykładowy dziennik gier jest plików rozdzielanych przecinkami 
 .....
 ```
 
-**Wieprzowa skryptu** przetwarzania tych danych:
+**Pig skryptu** przetworzyć te dane:
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -119,18 +118,18 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-Aby wykonać ten skrypt programu Pig w potoku fabryki danych, wykonaj następujące czynności:
+Aby wykonać ten skrypt programu Pig w potoku usługi fabryka danych, wykonaj następujące czynności:
 
-1. Tworzenie połączonej usługi, aby zarejestrować [klaster obliczeniowy własne HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub skonfiguruj [klastra obliczeniowego HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Umożliwia wywołanie tej połączonej usługi **HDInsightLinkedService**.
-2. Utwórz [połączona usługa](data-factory-azure-blob-connector.md) Aby skonfigurować połączenie z magazynu obiektów Blob Azure, w którym znajdują się dane. Umożliwia wywołanie tej połączonej usługi **StorageLinkedService**.
-3. Utwórz [zestawów danych](data-factory-create-datasets.md) wskazujący dane wejściowe i danych wyjściowych. Teraz wywołać zestawu danych wejściowych **PigSampleIn** i zestawie danych wyjściowych **PigSampleOut**.
-4. Skopiuj zapytanie Pig w pliku magazynu obiektów Blob Azure, które są skonfigurowane w kroku #2. Jeśli magazynu Azure, który jest hostem danych jest inny niż ten, który znajduje się plik zapytania, Utwórz oddzielne połączoną usługą magazynu Azure. Odwoływać się do połączonej usługi w konfiguracji działania. Użyj ** scriptPath ** należy określić ścieżkę do pliku skryptu pig i **scriptLinkedService**. 
+1. Tworzenie połączonej usługi, aby zarejestrować [HDInsight własny klaster obliczeniowy](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub skonfigurować [klastra obliczeniowego HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Nadajmy tej połączonej usługi **HDInsightLinkedService**.
+2. Tworzenie [połączoną usługę](data-factory-azure-blob-connector.md) skonfigurować połączenie usługi Azure Blob storage, w którym znajdują się dane. Nadajmy tej połączonej usługi **StorageLinkedService**.
+3. Tworzenie [zestawów danych](data-factory-create-datasets.md) wskazującej dane wejściowe i dane wyjściowe. Nadajmy wejściowego zestawu danych **PigSampleIn** i wyjściowy zestaw danych **PigSampleOut**.
+4. Kopiuj zapytanie Pig, w pliku magazynu obiektów Blob platformy Azure, które są skonfigurowane w kroku #2. Jeśli usługa Azure storage, które hostuje dane jest inny niż ten, który znajduje się plik zapytania, należy utworzyć oddzielne połączoną usługę Azure Storage. Odnoszą się do połączonej usługi w konfiguracji działania. Użyj ** scriptPath ** Aby określić ścieżkę do pliku skryptu języka pig i **element scriptLinkedService**. 
    
    > [!NOTE]
-   > Można też podać przy użyciu wbudowanego skryptu Pig w definicji działania **skryptu** właściwości. Jednak nie zaleca tego podejścia jako wszystkie znaki specjalne w wymaga skryptu, aby użyć znaków ucieczki i może powodować problemy debugowania. Najlepszym rozwiązaniem jest wykonaj krok #4.
+   > Możesz też podać wbudowany skrypt Pig w definicji działania, za pomocą **skryptu** właściwości. Jednak firma Microsoft nie zaleca się tej metody jako wszystkie znaki specjalne w skryptu musi być poprzedzone znakiem zmiany znaczenia i może spowodować problemy debugowania. Najlepszym rozwiązaniem jest przejdź do kroku #4.
    > 
    > 
-5. Tworzenie potoku z działaniem HDInsightPig. To działanie przetwarza dane wejściowe, uruchamiając skrypt programu Pig w klastrze usługi HDInsight.
+5. Tworzenie potoku z działaniem HDInsightPig. To działanie przetwarza dane wejściowe, uruchamiając skrypt programu Pig w klastrze HDInsight.
 
     ```JSON   
     {
@@ -164,15 +163,15 @@ Aby wykonać ten skrypt programu Pig w potoku fabryki danych, wykonaj następuj�
       }
     } 
     ```
-6. Wdróż potok. Zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu, aby uzyskać szczegółowe informacje. 
-7. Monitorowanie potoku korzystanie z widoków monitorowania i zarządzania fabryki danych. Zobacz [monitorowanie i zarządzanie nimi potoki fabryki danych](data-factory-monitor-manage-pipelines.md) artykułu, aby uzyskać szczegółowe informacje.
+6. Wdróż potok. Zobacz [tworzenia potoków](data-factory-create-pipelines.md) artykuł, aby uzyskać szczegółowe informacje. 
+7. Monitorowanie potoku przy użyciu widoków zarządzania i monitorowania fabryki danych. Zobacz [monitorowanie potoków usługi Data Factory oraz zarządzanie nimi](data-factory-monitor-manage-pipelines.md) artykuł, aby uzyskać szczegółowe informacje.
 
-## <a name="specifying-parameters-for-a-pig-script"></a>Określanie parametrów dla skryptu Pig
-Rozważmy następujący przykład: gier dzienniki są codziennie pozyskanych w magazynie obiektów Blob Azure i przechowywane w folderze partycjonowanej na podstawie daty i godziny. Chcesz parametryzacja skrypt programu Pig i przekazać do lokalizacji folderu wejściowych dynamicznie w czasie wykonywania i również utworzyć różne dane wyjściowe z datę i godzinę.
+## <a name="specifying-parameters-for-a-pig-script"></a>Określanie parametrów skryptu Pig
+Rozważmy następujący przykład: dzienników gier są przetwarzanych dziennie do usługi Azure Blob Storage i przechowywane w folderze partycjonowane na podstawie daty i godziny. Chcesz zdefiniować parametry skrypt programu Pig i dynamicznie przekazywania lokalizacji folderu danych wejściowych podczas wykonywania, a także generuje danych wyjściowych, podzielone na partycje z datą i godziną.
 
 Aby użyć sparametryzowany skrypt programu Pig, wykonaj następujące czynności:
 
-* Zdefiniuj parametry w **definiuje**.
+* Określ parametry w **definiuje**.
 
     ```JSON  
     {
@@ -210,7 +209,7 @@ Aby użyć sparametryzowany skrypt programu Pig, wykonaj następujące czynnośc
       }
     }
     ```  
-* Skrypt programu Pig, dotyczą parametry, używając "**$parameterName**" jak pokazano w poniższym przykładzie:
+* Skrypt programu Pig, dotyczą parametrów przy użyciu "**$parameterName**" jak pokazano w poniższym przykładzie:
 
     ```  
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);    
@@ -219,9 +218,9 @@ Aby użyć sparametryzowany skrypt programu Pig, wykonaj następujące czynnośc
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
 ## <a name="see-also"></a>Zobacz też
-* [Działanie gałęzi](data-factory-hive-activity.md)
-* [Działania MapReduce](data-factory-map-reduce.md)
-* [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+* [Działanie technologii hive](data-factory-hive-activity.md)
+* [Działania technologii MapReduce](data-factory-map-reduce.md)
+* [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
 * [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 

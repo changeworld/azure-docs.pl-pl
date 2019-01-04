@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 37e7281af87a8cfc57aae95411eb2d4cce9eef65
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228066"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018997"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,7 +56,7 @@ Następujące właściwości są obsługiwane dla programu Teradata połączone 
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Teradata** | Yes |
 | serwer | Nazwa serwera programu Teradata. | Yes |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **podstawowe**, i **Windows**. | Yes |
+| Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows**. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika do łączenia z bazą danych programu Teradata. | Yes |
 | hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
@@ -166,12 +165,12 @@ Podczas kopiowania danych z programu Teradata, następujące mapowania są używ
 |:--- |:--- |
 | BigInt |Int64 |
 | Obiekt blob |Byte[] |
-| Bajt |Byte[] |
+| Bajtów |Byte[] |
 | ByteInt |Int16 |
 | Char |Ciąg |
 | CLOB |Ciąg |
 | Date |DateTime |
-| Dziesiętna |Dziesiętna |
+| Dziesiętny |Dziesiętny |
 | Podwójne |Podwójne |
 | Grafika |Ciąg |
 | Liczba całkowita |Int32 |

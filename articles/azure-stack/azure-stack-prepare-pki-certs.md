@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f31d995ba4390eb5a893c3ebde49ee4e96e8023
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631485"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021139"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack do użycia w wdrożenia lub obrotu
 Pliki certyfikatów [uzyskany z urzędu certyfikacji wybór](azure-stack-get-pki-certs.md) musi być importowane i wyeksportowane z właściwościami dopasowania wymagania dotyczące certyfikatu usługi Azure Stack.
@@ -73,7 +73,14 @@ Otwórz konsolę menedżera certyfikatów konsoli MMC i nawiązać połączenie 
 
 1. Wybierz **tak, Eksportuj klucz prywatny**, a następnie kliknij przycisk **dalej**.
 
-1. W sekcji Format pliku eksportu wybierz **Eksportuj wszystkie właściwości rozszerzone** a następnie kliknij przycisk **dalej**.
+1. W sekcji Format pliku eksportu:
+    
+    - Wybierz **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty w certyfikacie**.  
+    - Wybierz **Eksportuj wszystkie właściwości rozszerzone**.  
+    - Wybierz **Włącz prywatność certyfikatu**.  
+    - Kliknij przycisk **Dalej**.  
+    
+    ![Kreator eksportu certyfikatów przy użyciu wybrane opcje](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
 1. Wybierz **hasło** i podaj hasło dla certyfikatów. Zapamiętaj to hasło, ponieważ jest używany jako parametr wdrożenia. Wybierz opcję **Dalej**.
 
@@ -82,4 +89,5 @@ Otwórz konsolę menedżera certyfikatów konsoli MMC i nawiązać połączenie 
 1. Wybierz pozycję **Finish** (Zakończ).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Sprawdzanie poprawności certyfikatów PKI](azure-stack-validate-pki-certs.md)

@@ -10,16 +10,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 08/02/2017
+ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 5a224d7a78e35776b36b162228f6ba4c72677069
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 29e76338b8d19ce70dedea971d26a49544e9f152
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636207"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018147"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij kontekstu użytkownika identyfikatorów, aby zapewnić użycie w usłudze Azure Application Insights
 
@@ -34,10 +34,11 @@ Usługa Application Insights umożliwia monitorowanie i śledzenie użytkownikó
 
 Aby móc śledzić zmiany w czasie działania użytkownika, usługi Application Insights wymaga Identyfikatora dla każdego użytkownika lub sesję. Uwzględnij następujące identyfikatory w każdej niestandardowe zdarzenie lub wyświetlenie strony.
 
-- Użytkownicy, Lejki, przechowywania i kohorty: obejmują identyfikator użytkownika.
-- Sesje: Obejmują identyfikator sesji.
+- Użytkownicy, Lejki, przechowywania i kohorty: Zawiera identyfikatora użytkownika.
+- Sesje: Zawiera identyfikatora sesji.
 
-Jeśli aplikacja jest zintegrowana z usługą [zestaw JavaScript SDK](https://docs.microsoft.com/azure/application-insights/app-insights-javascript#set-up-application-insights-for-your-web-page), są automatycznie śledzone Identyfikatora użytkownika.
+> [!NOTE]
+> Jest to zaawansowane artykułu konspekt ręczne wykonanie czynności dla śledzenia działań użytkownika za pomocą usługi Application Insights. Z wieloma aplikacjami sieci web **te kroki nie mogą być wymagane**, jako domyślne serwerowe zestawy SDK w połączeniu z [/przeglądarki klienta kodu JavaScript SDK](app-insights-website-monitoring.md), często są wystarczające do automatycznego śledzenia działanie użytkownika. Jeśli nie skonfigurowano [monitorowania po stronie klienta](app-insights-website-monitoring.md) oprócz SDK po stronie serwera, należy to najpierw zrobić i sprawdzić, jeśli narzędzia do analizy zachowania użytkownika działają w oczekiwany sposób.
 
 ## <a name="choosing-user-ids"></a>Wybieranie nazw użytkowników
 

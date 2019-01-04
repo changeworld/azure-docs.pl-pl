@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: d306629e552686e180a3927108fca276bcad2aa5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e91f6ecb4ff510b1ba93b56d0bfb0bda0a156cf1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971703"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019830"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK .NET usługi Application Insights składa się kilka pakietów NuGet. [Pakiet podstawowego](https://www.nuget.org/packages/Microsoft.ApplicationInsights) zapewnia interfejs API do wysyłania danych telemetrycznych do usługi Application Insights. [Dodatkowe pakiety](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) Podaj dane telemetryczne *modułów* i *inicjatory* dla automatycznego śledzenia danych telemetrycznych z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączyć lub wyłączyć inicjatory i moduły danych telemetrycznych i ustawić parametry dla niektórych z nich.
@@ -46,7 +46,7 @@ Można także napisać swoje własne zależności śledzenia kodu za pomocą [Tr
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet package.
 
 ### <a name="performance-collector"></a>Wydajność modułu zbierającego
-[Zbiera dane liczników wydajności systemu](../../application-insights/app-insights-performance-counters.md) takie jak procesor CPU, pamięci i sieci obciążenia z instalacji usług IIS. Możesz określić, które liczniki, aby zebrać, łącznie z liczników wydajności, które zostały skonfigurowane samodzielnie.
+[Zbiera dane liczników wydajności systemu](../../azure-monitor/app/performance-counters.md) takie jak procesor CPU, pamięci i sieci obciążenia z instalacji usług IIS. Możesz określić, które liczniki, aby zebrać, łącznie z liczników wydajności, które zostały skonfigurowane samodzielnie.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet package.
@@ -125,7 +125,7 @@ Standardowa inicjatory jest ustawiony przez pakiety Web lub WindowsServer NuGet:
 * `OperationNameTelemetryInitializer` aktualizacje `Name` właściwość `RequestTelemetry` i `Name` właściwość `Operation` kontekstu wszystkie elementy dane telemetryczne oparte na metodę HTTP, a także nazwy programu ASP.NET MVC kontroler i akcję wywoływaną, aby przetworzyć żądanie.
 * `OperationIdTelemetryInitializer` lub `OperationCorrelationTelemetryInitializer` aktualizacje `Operation.Id` właściwości kontekstu wszystkich elementów danych telemetrycznych śledzone podczas obsługi żądania z automatycznie wygenerowanego `RequestTelemetry.Id`.
 * `SessionTelemetryInitializer` aktualizacje `Id` właściwość `Session` kontekst dla wszystkich elementów danych telemetrycznych z wartością wyodrębnione z `ai_session` wygenerowane przez kod Instrumentacji ApplicationInsights JavaScript w przeglądarce użytkownika w pliku cookie.
-* `SyntheticTelemetryInitializer` lub `SyntheticUserAgentTelemetryInitializer` aktualizacje `User`, `Session`, i `Operation` kontekstów właściwości wszystkich elementów danych telemetrycznych śledzone podczas obsługi żądania z syntetycznego źródła, takich jak dostępności testu lub wyszukiwanie bot aparatu. Domyślnie [Eksploratora metryk](../../application-insights/app-insights-metrics-explorer.md) syntetyczne dane telemetryczne nie są wyświetlane.
+* `SyntheticTelemetryInitializer` lub `SyntheticUserAgentTelemetryInitializer` aktualizacje `User`, `Session`, i `Operation` kontekstów właściwości wszystkich elementów danych telemetrycznych śledzone podczas obsługi żądania z syntetycznego źródła, takich jak dostępności testu lub wyszukiwanie bot aparatu. Domyślnie [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) syntetyczne dane telemetryczne nie są wyświetlane.
 
     `<Filters>` Ustaw identyfikujące właściwości żądania.
 * `UserTelemetryInitializer` aktualizacje `Id` i `AcquisitionDate` właściwości `User` kontekst dla wszystkich elementów danych telemetrycznych z wartościami wyodrębnione z `ai_user` wygenerowane przez kod Instrumentacji Application Insights JavaScript, które są uruchomione w użytkownika w pliku cookie Przeglądarka.
@@ -154,7 +154,7 @@ Ta opcja jest domyślnie włączona. Jeśli Twoja aplikacja wysyła dużo danych
 
 Parametr zawiera element docelowy, który algorytm próbuje osiągnąć. Każde wystąpienie zestawu SDK działa niezależnie, więc jeśli serwer jest w klastrze składającym się z kilku komputerach, rzeczywistą ilość danych telemetrycznych będzie mnożona odpowiednio.
 
-[Dowiedz się więcej na temat próbkowania](../../application-insights/app-insights-sampling.md).
+[Dowiedz się więcej na temat próbkowania](../../azure-monitor/app/sampling.md).
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Stałej częstotliwość próbkowania danych telemetrycznych procesor (2.0.0-beta1)
 Również jest standardem [próbkowania procesora telemetrii](../../azure-monitor/app/api-filtering-sampling.md) (z 2.0.1):
@@ -233,7 +233,7 @@ Określa maksymalny rozmiar w Megabajtach, która jest przydzielona do magazynu 
 
 #### <a name="local-forwarder"></a>Lokalna usługa przesyłania dalej
 
-[Lokalne usługi przesyłania dalej](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) Agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i struktur i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux. W połączeniu z zestawu SDK Java usługi Application Insights lokalnej usługi przesyłania dalej zapewnia pełną obsługę [metryki na żywo](../../application-insights/app-insights-live-stream.md) i próbkowanie adaptacyjne.
+[Lokalne usługi przesyłania dalej](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) Agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i struktur i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux. W połączeniu z zestawu SDK Java usługi Application Insights lokalnej usługi przesyłania dalej zapewnia pełną obsługę [metryki na żywo](../../azure-monitor/app/live-stream.md) i próbkowanie adaptacyjne.
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">

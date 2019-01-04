@@ -13,12 +13,12 @@ ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 47d04f6e73d95a7cb1ba63c437b97468041af57f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0450feb82e539ebd73c3013e066104b29916238d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189867"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018776"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?
 
@@ -36,7 +36,7 @@ Musi mieć jedną z następujących licencji na korzystanie z licencjonowania op
 - Wersja płatną lub próbną wersję i Office 365 Enterprise E3 lub Office 365 A3
 
 ### <a name="required-number-of-licenses"></a>Wymagana liczba licencji
-Dla każdej grupy jest przypisana licencja musi mieć licencję dla każdego członka unikatowy. Chociaż nie trzeba przypisać każdego członka grupy licencji, musi mieć co najmniej wystarczającą liczbę licencji, aby uwzględnić wszystkie elementy członkowskie. Na przykładzie Jeśli masz 1000 unikatowych elementów członkowskich, którzy należą do grup licencji w ramach dzierżawy musi mieć co najmniej 1000 licencje, aby spełnić umowy licencyjnej.
+Dla każdej grupy jest przypisana licencja musi mieć licencję dla każdego członka unikatowy. Chociaż nie trzeba przypisać każdego członka grupy licencji, musi mieć co najmniej wystarczającą liczbę licencji, aby uwzględnić wszystkie elementy członkowskie. Na przykład jeśli masz 1000 unikatowych elementów członkowskich, którzy należą do grup licencji w ramach dzierżawy, musi mieć co najmniej 1000 licencje, aby spełnić umowy licencjonowania.
 
 ## <a name="features"></a>Funkcje
 

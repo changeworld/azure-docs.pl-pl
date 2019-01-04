@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9c3f9018965908ae065cedb63149190080d7f07
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1a160cd6d81ab7cb760a85ee7cbdbedf55c17167
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970240"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998237"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
@@ -156,7 +156,7 @@ Gdy zostanie zgłoszony alert, Application Insights może automatycznie tworzyć
 ## <a name="but-what-about"></a>Ale co...?
 * [Prywatność i przechowywanie](../azure-monitor/app/data-retention-privacy.md) -telemetrii jest przechowywana na serwerach bezpiecznej platformy Azure.
 * Wydajność — wpływ jest bardzo niskie. Telemetria jest partii.
-* [Cennik](app-insights-pricing.md) — pracę można rozpocząć bezpłatnie i że nadal podczas pracy w małą liczbą.
+* [Cennik](../azure-monitor/app/pricing.md) — pracę można rozpocząć bezpłatnie i że nadal podczas pracy w małą liczbą.
 
 
 ## <a name="video"></a>Połączenia wideo
@@ -167,6 +167,6 @@ Gdy zostanie zgłoszony alert, Application Insights może automatycznie tworzyć
 Rozpoczynanie pracy z usługą Application Insights jest łatwe. Dostępne są następujące główne opcje:
 
 * Instrumentacja aplikacji sieci web już działa. Dzięki temu wszystkie dane telemetryczne wbudowane wydajności. Jest ona dostępna dla [Java](../azure-monitor/app/java-live.md) i [serwery IIS](../azure-monitor/app/monitor-performance-live-website-now.md), a także [usługi Azure App Service](app-insights-overview.md).
-* Instrumentacja projektu podczas programowania. Można to zrobić [ASP.NET](../azure-monitor/app/asp-net.md) lub [Java](../azure-monitor/app/java-get-started.md) aplikacji, jak również [Node.js](app-insights-nodejs.md) i hostem [innych typów](app-insights-platforms.md). 
+* Instrumentacja projektu podczas programowania. Można to zrobić [ASP.NET](../azure-monitor/app/asp-net.md) lub [Java](../azure-monitor/app/java-get-started.md) aplikacji, jak również [Node.js](../azure-monitor/app/nodejs.md) i hostem [innych typów](../azure-monitor/app/platforms.md). 
 * Instrument [dowolnej strony sieci web](../azure-monitor/app/javascript.md) , dodając krótki wstawki.
 

@@ -9,17 +9,16 @@ ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5fb4034d49982d600fe5b0de17d0b198e3ee653e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056232"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020153"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Ładowanie 1 TB w usłudze Azure SQL Data Warehouse w niecałe 15 minut przy użyciu usługi fabryka danych
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "42056232"
 
 Wprowadzenie do usługi Azure SQL Data Warehouse jest teraz łatwiejsze niż kiedykolwiek wcześniej przy użyciu **usługi Azure Data Factory**.  Azure Data Factory to w pełni zarządzane dane oparte na chmurze Usługa integracji, która może służyć do wypełniania usłudze SQL Data Warehouse przy użyciu danych z istniejącego systemu i zapisywanie cenny czas podczas oceny usługa SQL Data Warehouse i tworzenia analizy rozwiązania. Poniżej przedstawiono główne zalety ładowania danych do usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory:
 
-* **Łatwe do skonfigurowania**: intuicyjny Kreator krok 5 z bez skryptu wymagane.
+* **Łatwe do skonfigurowania**: krok 5 intuicyjny Kreator z bez skryptu wymagane.
 * **Obsługa magazynu danych sformatowanego**: wbudowaną obsługę bogaty zestaw w środowisku lokalnym i magazynami danych w chmurze.
 * **Bezpieczeństwo i zgodność**: dane są przesyłane za pośrednictwem protokołu HTTPS lub usługi ExpressRoute i obecności usługi global service zapewnia dane nigdy nie opuszcza granicy geograficznej
 * **Zapewnia niezrównaną wydajność przy użyciu programu PolyBase** — przy użyciu technologii Polybase jest najbardziej skutecznym sposobem przenoszenia danych do usługi Azure SQL Data Warehouse. Funkcja przejściowego obiektu blob, można osiągnąć szybkość dużym obciążeniem z wszystkich typów magazynów danych oprócz usługi Azure Blob storage, która domyślnie obsługuje programu Polybase.
@@ -42,7 +41,7 @@ Ten artykuł zawiera szczegółowe instrukcje dotyczące przenoszenia danych do 
 > [!NOTE]
 >  Aby uzyskać ogólne informacje dotyczące możliwości usługi Data Factory podczas przenoszenia danych do i z usługi Azure SQL Data Warehouse, zobacz [przenoszenie danych do i z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) artykułu.
 >
-> Możesz także tworzyć potoki przy użyciu witryny Azure portal, programu Visual Studio, PowerShell, itp. Zobacz [samouczek: kopiowanie danych z obiektów Blob platformy Azure do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) szybki Przewodnik z instrukcjami krok po kroku, za pomocą działania kopiowania w usłudze Azure Data Factory.  
+> Możesz także tworzyć potoki przy użyciu witryny Azure portal, programu Visual Studio, PowerShell, itp. Zobacz [samouczka: Kopiowanie danych z obiektów Blob platformy Azure do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) szybki Przewodnik z instrukcjami krok po kroku, za pomocą działania kopiowania w usłudze Azure Data Factory.  
 >
 >
 
@@ -118,7 +117,7 @@ Dzięki usłudze kroki wymagań wstępnych zakończone możemy teraz wszystko go
 3. W **nowa fabryka danych** okienka:
 
    1. Wprowadź **LoadIntoSQLDWDataFactory** dla **nazwa**.
-       Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "LoadIntoSQLDWDataFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład yournameLoadIntoSQLDWDataFactory) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules](data-factory-naming-rules.md) (Fabryka danych — zasady nazewnictwa) zawiera zasady nazewnictwa artefaktów usługi Fabryka danych.  
+       Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **Nazwa fabryki danych "LoadIntoSQLDWDataFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład yournameLoadIntoSQLDWDataFactory) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules](data-factory-naming-rules.md) (Fabryka danych — zasady nazewnictwa) zawiera zasady nazewnictwa artefaktów usługi Fabryka danych.  
    2. Wybierz swoją **subskrypcję** platformy Azure.
    3. Wykonaj jedną z następujących czynności dotyczącą grupy zasobów:
       1. Wybierz pozycję **Użyj istniejącej**, aby wybrać istniejącą grupę zasobów.
@@ -136,7 +135,7 @@ Dzięki usłudze kroki wymagań wstępnych zakończone możemy teraz wszystko go
    >
    >
 
-## <a name="step-1-configure-data-loading-schedule"></a>Krok 1: Konfigurowanie harmonogramu ładowania danych
+## <a name="step-1-configure-data-loading-schedule"></a>Krok 1: Skonfiguruj harmonogram ładowania danych
 Pierwszym krokiem jest skonfigurować harmonogram ładowania danych.  
 
 Na stronie **Właściwości**:
@@ -148,7 +147,7 @@ Na stronie **Właściwości**:
     ![Kreator kopiowania — strona właściwości](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Krok 2: Konfigurowanie źródła
-W tej sekcji opisano kroki, aby skonfigurować źródło: obiektów Blob platformy Azure zawierającego TPC 1 TB pojemności-H pozycji pliki.
+W tej sekcji przedstawiono kroki, aby skonfigurować źródła: Obiekt Blob platformy Azure, zawierający TPC 1 TB pojemności-H pozycji pliki.
 
 1. Wybierz **usługi Azure Blob Storage** przechowywania danych, a następnie kliknij przycisk **dalej**.
 
@@ -189,7 +188,7 @@ W tej sekcji dowiesz się, jak skonfigurować miejsce docelowe: `lineitem` tabel
 
 ![Skopiuj Kreator — strona mapowanie schematu](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>Krok 5: Wdrażanie i monitorowanie wyników obciążenia
+## <a name="step-5-deploy-and-monitor-load-results"></a>Krok 5. Wdrażanie i monitorowanie wyników obciążenia
 1. Kliknij przycisk **Zakończ** przycisk, aby wdrożyć.
 
     ![Kreator kopiowania — strona podsumowania](media/data-factory-load-sql-data-warehouse/summary-page.png)

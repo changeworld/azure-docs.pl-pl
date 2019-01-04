@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f155ee7dbea697c72bbd53b933a7410faa828b6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 012057c7d01924ab1998a010b6ea0c7d83651a4d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089925"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017807"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopiowanie danych z oprogramowania Phoenix za pomocą usługi Azure Data Factory 
 
@@ -46,7 +45,7 @@ Następujące właściwości są obsługiwane w przypadku Phoenix połączone us
 | host | Adres IP lub hosta nazwę serwera Phoenix. (czyli 192.168.222.160)  | Yes |
 | port | Port TCP używany serwer Phoenix do nasłuchiwania połączeń klientów. Wartość domyślna to 8765. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Nie |
 | httpPath | Częściowe adres URL serwera Phoenix. (czyli /gateway/sandbox/phoenix/version). Określ `/hbasephoenix0` Jeśli używany klaster HDInsights.  | Nie |
-| Element authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Phoenix. <br/>Dozwolone wartości to: **anonimowe**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| Element authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Phoenix. <br/>Dozwolone wartości to: **Anonimowe**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem Phoenix.  | Nie |
 | hasło | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |

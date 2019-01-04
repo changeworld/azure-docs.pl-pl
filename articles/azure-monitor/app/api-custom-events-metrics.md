@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0a31f5450ad5847951393e18e8af648060eb2e1f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2fa7c4c7dc3af28dcc49371a086c2e7555278b99
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971362"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015223"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -51,7 +51,7 @@ Jeśli nie masz jeszcze odwołanie na zestaw SDK usługi Application Insights:
 
   * [Projekt platformy ASP.NET](../../azure-monitor/app/asp-net.md)
   * [Projektu w języku Java](../../azure-monitor/app/java-get-started.md)
-  * [Projekt node.js](../../application-insights/app-insights-nodejs.md)
+  * [Projekt node.js](../../azure-monitor/app/nodejs.md)
   * [Język JavaScript na każdej stronie sieci Web](../../azure-monitor/app/javascript.md) 
 * Na Twoim urządzeniu lub w kodzie serwera sieci Web dołącz:
 
@@ -113,7 +113,7 @@ W projektach środowiska Node.js, możesz użyć `new applicationInsights.Teleme
 
 ## <a name="trackevent"></a>Funkcja TrackEvent
 
-W usłudze Application Insights *zdarzenie niestandardowe* jest punkt danych, który można wyświetlić w [Eksploratora metryk](../../application-insights/app-insights-metrics-explorer.md) jako zagregowanej liczby, a następnie w [wyszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md) indywidualnych wystąpienia. (Nie jest on dotyczących MVC lub innych framework "miara events".)
+W usłudze Application Insights *zdarzenie niestandardowe* jest punkt danych, który można wyświetlić w [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) jako zagregowanej liczby, a następnie w [wyszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md) indywidualnych wystąpienia. (Nie jest on dotyczących MVC lub innych framework "miara events".)
 
 Wstaw `TrackEvent` wywołuje kod w celu liczba różnych zdarzeń. Jak często użytkownicy wybrać poszczególnych funkcji, jak często osiągną określonego cele lub może być częstotliwość dokonają określonych rodzajów błędów.
 
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 Dane telemetryczne są dostępne w `customEvents` tabelę [analizy usługi Application Insights](analytics.md). Każdy wiersz reprezentuje wywołanie `trackEvent(..)` w swojej aplikacji.
 
-Jeśli [próbkowania](../../application-insights/app-insights-sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że liczby wywołań do 10 do poleceń trackEvent(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba zdarzeń niestandardowych, należy użyć w związku z tym użycia kodu, takie jak `customEvents | summarize sum(itemCount)`.
+Jeśli [próbkowania](../../azure-monitor/app/sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że liczby wywołań do 10 do poleceń trackEvent(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba zdarzeń niestandardowych, należy użyć w związku z tym użycia kodu, takie jak `customEvents | summarize sum(itemCount)`.
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -440,7 +440,7 @@ Zobacz [śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi
 
 W [analizy usługi Application Insights](analytics.md), żądań show w górę w `requests` tabeli.
 
-Jeśli [próbkowania](../../application-insights/app-insights-sampling.md) jest w operacji właściwości: itemCount wyświetli wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań trackRequest(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać prawidłowe liczby żądań i średniego czasu trwania posegmentowana według nazwy żądania, należy użyć kodu takiego jak:
+Jeśli [próbkowania](../../azure-monitor/app/sampling.md) jest w operacji właściwości: itemCount wyświetli wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań trackRequest(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać prawidłowe liczby żądań i średniego czasu trwania posegmentowana według nazwy żądania, należy użyć kodu takiego jak:
 
 ```kusto
 requests
@@ -451,7 +451,7 @@ requests
 
 Wyślij wyjątków do usługi Application Insights:
 
-* Aby [policzyć](../../application-insights/app-insights-metrics-explorer.md), w celu wskazania, częstotliwości problem.
+* Aby [policzyć](../../azure-monitor/app/metrics-explorer.md), w celu wskazania, częstotliwości problem.
 * Aby [Sprawdź indywidualne wystąpienia](../../azure-monitor/app/diagnostic-search.md).
 
 Raporty zawierają śladów stosu.
@@ -522,7 +522,7 @@ Zestawy SDK automatycznie, efektywnej wiele wyjątków, dzięki czemu zawsze nie
 
 W [analizy usługi Application Insights](analytics.md), wyjątki pojawiają się w `exceptions` tabeli.
 
-Jeśli [próbkowania](../../application-insights/app-insights-sampling.md) operacji, `itemCount` właściwość wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań metody trackexception() procesu pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba wyjątków posegmentowana według typu wyjątku, należy użyć kodu takiego jak:
+Jeśli [próbkowania](../../azure-monitor/app/sampling.md) operacji, `itemCount` właściwość wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań metody trackexception() procesu pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba wyjątków posegmentowana według typu wyjątku, należy użyć kodu takiego jak:
 
 ```kusto
 exceptions
@@ -603,7 +603,7 @@ W [wyszukiwania](../../azure-monitor/app/diagnostic-search.md), można następni
 
 W [analizy usługi Application Insights](analytics.md), wywołania TrackTrace pojawiają się w `traces` tabeli.
 
-Jeśli [próbkowania](../../application-insights/app-insights-sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań `trackTrace()`, proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba wywołań śledzenia, należy użyć w związku z tym kod taki jak `traces | summarize sum(itemCount)`.
+Jeśli [próbkowania](../../azure-monitor/app/sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań `trackTrace()`, proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba wywołań śledzenia, należy użyć w związku z tym kod taki jak `traces | summarize sum(itemCount)`.
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -678,7 +678,7 @@ Aby wyłączyć standardowego modułu śledzenia zależności w języku C#, nale
 
 W [analizy usługi Application Insights](analytics.md), trackDependency wywołuje Pokaż w `dependencies` tabeli.
 
-Jeśli [próbkowania](../../application-insights/app-insights-sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań trackDependency(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba zależności segmentowanych przez składnik docelowy, należy użyć kodu takiego jak:
+Jeśli [próbkowania](../../azure-monitor/app/sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że 10 wywołań trackDependency(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba zależności segmentowanych przez składnik docelowy, należy użyć kodu takiego jak:
 
 ```kusto
 dependencies
@@ -764,7 +764,7 @@ Jeśli aplikacja grup użytkowników do kont, można również przekazać identy
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-W [Eksploratora metryk](../../application-insights/app-insights-metrics-explorer.md), można utworzyć wykres, który zlicza **uwierzytelniania użytkowników,**, i **kont użytkowników**.
+W [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md), można utworzyć wykres, który zlicza **uwierzytelniania użytkowników,**, i **kont użytkowników**.
 
 Możesz również [wyszukiwania](../../azure-monitor/app/diagnostic-search.md) punktów danych klienta przy użyciu nazwy użytkownika i kont.
 
@@ -897,7 +897,7 @@ requests
 Należy zauważyć, że:
 
 * Po wyodrębnieniu wartość z tabeli customDimensions lub customMeasurements JSON ma typu dynamicznego, i dlatego należy rzutować go `tostring` lub `todouble`.
-* Biorąc pod uwagę możliwość [próbkowania](../../application-insights/app-insights-sampling.md), należy użyć `sum(itemCount)`, a nie `count()`.
+* Biorąc pod uwagę możliwość [próbkowania](../../azure-monitor/app/sampling.md), należy użyć `sum(itemCount)`, a nie `count()`.
 
 ## <a name="timed"></a> Zdarzenia chronometrażu
 
@@ -1141,7 +1141,7 @@ Jeśli ustawisz dowolne z tych wartości samodzielnie, rozważ usunięcie odpowi
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Aby uniknąć osiągnięcia limitu szybkości danych, użyj [próbkowania](../../application-insights/app-insights-sampling.md).
+Aby uniknąć osiągnięcia limitu szybkości danych, użyj [próbkowania](../../azure-monitor/app/sampling.md).
 
 Aby określić, jak długo dane są przechowywane, zobacz [retencji danych i prywatności](../../azure-monitor/app/data-retention-privacy.md).
 

@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bb1709d10a406d88378189cd68b9a36abed2c8d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974523"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017570"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -28,23 +28,7 @@ Platforma Azure obsługuje cyfrowego Twins dołączanie obiektów blob na urząd
 
 Wieloczęściowy żądań służy do przekazywania obiektów blob do określonych punktów końcowych i ich odpowiednie funkcje.
 
-> [!IMPORTANT]
-> Wieloczęściowy żądania wymagają trzy informacje:
-> * A **Content-Type** nagłówka:
->   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **Content-Disposition**: `form-data; name="metadata"`
-> * Zawartość pliku do przekazania
->
-> **Content-Type** i **Content-Disposition** informacje mogą się różnić w zależności od scenariusza użycia.
-
-Wieloczęściowy żądań cyfrowego Twins zarządzania interfejsów API usługi Azure ma dwie części:
-
-* Obiekt blob metadane, takie jak skojarzony typ MIME, jak pokazano na **Content-Type** i **Content-Disposition** informacji
-
-* Zawartość obiektu blob (bez określonej struktury zawartość pliku)  
-
-Żadna z dwóch części nie jest wymagana dla **PATCH** żądań. Oba są wymagane dla **WPIS** lub operacji tworzenia.
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ### <a name="blob-metadata"></a>Metadane obiektu blob
 
@@ -158,7 +142,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | Identyfikator żądanego obiektu blob |
 
-Tworzenie **PATCH** żądania do tego samego punktu końcowego umożliwia opis metadanych aktualizacji i Utwórz nową wersję obiektu blob. Żądanie HTTP jest wysyłane za pośrednictwem **PATCH** metody, oraz wszelkie wymagane metadane i wieloczęściowych danych formularza.
+Tworzenie **PATCH** żądania do tego samego punktu końcowego umożliwia opis metadanych aktualizacji i Utwórz nową wersję obiektu blob. Żądanie HTTP jest wysyłane za pośrednictwem **PATCH** metody, oraz wszelkie niezbędne meta i wieloczęściowych danych formularza.
 
 Operacje zakończone powodzeniem zwracają **SpaceBlob** obiekt, który jest zgodny ze schematem następujące. Służy do pracy z danymi zwrócone.
 

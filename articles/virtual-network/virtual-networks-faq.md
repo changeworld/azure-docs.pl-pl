@@ -1,5 +1,6 @@
 ---
-title: Sieć wirtualna platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Sieć wirtualna platformy Azure — często zadawane pytania
+titlesuffix: Azure Virtual Network
 description: Odpowiedzi na najczęściej zadawane pytania na temat sieci wirtualnych Microsoft Azure.
 services: virtual-network
 documentationcenter: na
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277526"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021037"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -323,7 +324,7 @@ Domyślnie nie można uzyskać dostępu do zasobów usługi platformy Azure zabe
 Aby zabezpieczyć usługi platformy Azure w wielu podsieciach sieci wirtualnej lub przez wiele sieci wirtualnych, niezależnie włączyć punkty końcowe usługi na stronie sieci w każdym z tych podsieci i zabezpieczyć zasoby usługi platformy Azure do wszystkich tych podsieciach, konfigurując odpowiednie listy ACL sieci wirtualnej po stronie usługi platformy Azure.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Jak filtrować ruch wychodzący z sieci wirtualnej do usług platformy Azure i nadal korzystać z punktów końcowych usługi?
-Jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć sieciowe urządzenie wirtualne w sieci wirtualnej. Punkty końcowe usługi mogą następnie zastosować do podsieci, gdzie wirtualne urządzenie sieciowe to zasoby wdrożone i bezpieczne usługi platformy Azure tylko do tej podsieci za pośrednictwem list ACL sieci wirtualnej. W tym scenariuszu może być również przydatne, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania sieciowych urządzeń wirtualnych. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć urządzenie sieci wirtualnej w ramach tej sieci wirtualnej. Punkty końcowe usługi mogą następnie zastosować do podsieci, gdzie wirtualne urządzenie sieciowe to zasoby wdrożone i bezpieczne usługi platformy Azure tylko do tej podsieci za pośrednictwem list ACL sieci wirtualnej. W tym scenariuszu może być również przydatne, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania sieciowych urządzeń wirtualnych. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co się stanie, gdy uzyskujesz dostęp do konta usługi platformy Azure z sieci wirtualnej listy kontroli dostępu (ACL) można włączyć spoza sieci wirtualnej?
 Zwracany jest błąd 403 protokołu HTTP lub HTTP 404.

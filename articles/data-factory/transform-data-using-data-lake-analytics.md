@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: cbe4d3931a5e7b279218a1f56a3842efbc238780
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053571"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016498"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL w usłudze Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -127,10 +126,10 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. Nazwa pliku jest uwzględniana wielkość liter. | Yes      |
 | scriptLinkedService | Połączona usługa, która łączy **usługi Azure Data Lake Store** lub **usługi Azure Storage** zawierający skrypt w usłudze data factory | Yes      |
 | degreeOfParallelism | Maksymalna liczba węzłów równocześnie używane do uruchamiania zadania. | Nie       |
-| priorytet            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie       |
+| priority            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie       |
 | parameters          | Parametry do przekazania do skryptu U-SQL.    | Nie       |
 | runtimeVersion      | Wersja środowiska uruchomieniowego aparat języka U-SQL do użycia. | Nie       |
-| CompilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości: **semantycznej:** wykonywać tylko semantycznego testy i wykonuje niezbędne testów, **pełna:** wykonywania pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp., **SingleBox:** wykonywania pełnej kompilacji, za pomocą ustawienia TargetType SingleBox. Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. | Nie |
+| CompilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości: **Semantyczne:** Wykonywać tylko semantycznego testy i wykonuje niezbędne testów, **pełna:** Wykonania pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp., **SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox. Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. | Nie |
 
 Data Factory przesyła zobacz [definicji skryptu SearchLogProcessing.txt](#sample-u-sql-script) definicji skryptu. 
 

@@ -1,6 +1,6 @@
 ---
-title: Działanie procedury przechowywane programu SQL Server
-description: Dowiedz się, jak SQL Server działania dotyczącego procedury składowanej umożliwia wywołanie procedury przechowywanej w bazie danych SQL Azure lub usługi Azure SQL Data Warehouse z potoku fabryki danych.
+title: Działanie procedury składowanej programu SQL Server
+description: Dowiedz się, jak działania dotyczącego procedury składowanej systemu SQL Server umożliwia wywoływanie procedury przechowywanej w usłudze Azure SQL Database lub Azure SQL Data Warehouse z potoku usługi fabryka danych.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,54 +9,53 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047392"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017705"
 ---
-# <a name="sql-server-stored-procedure-activity"></a>Działanie procedury przechowywane programu SQL Server
+# <a name="sql-server-stored-procedure-activity"></a>Działanie procedury składowanej programu SQL Server
 > [!div class="op_single_selector" title1="Transformation Activities"]
-> * [Działanie gałęzi](data-factory-hive-activity.md) 
-> * [Działanie pig](data-factory-pig-activity.md)
-> * [Działania MapReduce](data-factory-map-reduce.md)
-> * [Działaniu przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Działanie Spark](data-factory-spark.md)
+> * [Działanie technologii hive](data-factory-hive-activity.md) 
+> * [Działania technologii pig](data-factory-pig-activity.md)
+> * [Działania technologii MapReduce](data-factory-map-reduce.md)
+> * [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Działania platformy Spark](data-factory-spark.md)
 > * [Działanie wykonywania wsadowego w usłudze Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Działania aktualizowania zasobów w usłudze Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Działania procedur składowanych](data-factory-stored-proc-activity.md)
 > * [Działania języka U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md)
-> * [Działania niestandardowe .NET](data-factory-use-custom-activities.md)
+> * [Niestandardowe działanie platformy .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi fabryka danych Azure. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania procedury składowanej w fabryce danych](../transform-data-using-stored-procedure.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [przekształcania danych za pomocą działania procedury składowanej w usłudze Data Factory](../transform-data-using-stored-procedure.md).
 
 ## <a name="overview"></a>Przegląd
-Użyj działania przekształcania danych w fabryce danych [potoku](data-factory-create-pipelines.md) do transformacji i przetwarzać dane pierwotne służące do przewidywania i szczegółowych informacji. Działania dotyczącego procedury składowanej jest jednym z działania przekształcania, które obsługuje fabryki danych. W tym artykule opiera się na [działań przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań przekształcania obsługiwanych w fabryce danych.
+Użyj działania przekształcania danych w usłudze Data Factory [potoku](data-factory-create-pipelines.md) do przekształcania i Przetwarzaj danych pierwotnych w prognozy i szczegółowych informacji. Działania dotyczącego procedury składowanej jest jednym z działania przekształcania, które obsługuje usługi Data Factory. W tym artykule opiera się na [działania przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych w usłudze Data Factory i przekształcania danych.
 
-Działania dotyczącego procedury składowanej umożliwia wywołanie procedury składowanej w jednym z następujących magazynów danych w przedsiębiorstwie lub na maszynie wirtualnej platformy Azure (VM): 
+Działania dotyczącego procedury składowanej umożliwia wywoływanie procedury składowanej w jednym z następujących magazynów danych w przedsiębiorstwie lub na maszynie wirtualnej platformy Azure (VM): 
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Baza danych programu SQL Server.  Jeśli używasz programu SQL Server, należy zainstalować bramę zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, który ma dostęp do bazy danych. Brama zarządzania danymi jest składnik, który nawiązuje połączenie danych źródeł na lokalnym/na maszynie Wirtualnej platformy Azure z usługami w chmurze w sposób bezpieczny i zarządzanie nimi. Zobacz [brama zarządzania danymi](data-factory-data-management-gateway.md) artykułu, aby uzyskać szczegółowe informacje.
+- Baza danych programu SQL Server.  Jeśli używasz programu SQL Server, należy zainstalować bramę zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, który ma dostęp do bazy danych. Brama zarządzania danymi jest składnikiem, który nawiązuje połączenie danych źródła w lokalnych/na maszynie Wirtualnej platformy Azure z usługami w chmurze w sposób bezpieczny i zarządzane. Zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md) artykuł, aby uzyskać szczegółowe informacje.
 
 > [!IMPORTANT]
-> Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w przypadku działania kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z działania kopiowania](data-factory-invoke-stored-procedure-from-copy-activity.md). Aby uzyskać więcej informacji dotyczących właściwości, zobacz następujące artykuły łącznika: [bazy danych SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Wywoływanie procedury składowanej podczas kopiowania danych do usługi Azure SQL Data Warehouse przy użyciu aktywność kopiowania nie jest obsługiwane. Jednak działania procedury składowanej służy do wywołania procedury przechowywanej w usłudze SQL Data Warehouse. 
+> Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w działaniu kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z działaniem kopiowania](data-factory-invoke-stored-procedure-from-copy-activity.md). Aby uzyskać szczegółowe informacje o właściwości zobacz następujące artykuły łącznika: [Usługa Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Wywoływanie procedury składowanej podczas kopiowania danych do usługi Azure SQL Data Warehouse za pomocą działania kopiowania nie jest obsługiwane. Jednak działanie procedury składowanej umożliwia wywoływanie procedury przechowywanej w usłudze SQL Data Warehouse. 
 >  
-> Podczas kopiowania danych z bazy danych SQL Azure lub programu SQL Server lub magazyn danych SQL Azure, możesz skonfigurować **SqlSource** w przypadku działania kopiowania, aby wywołać procedurę składowaną można odczytać danych ze źródłowej bazy danych przy użyciu  **sqlReaderStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz następujące artykuły łącznika: [bazy danych SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [magazyn danych SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> Podczas kopiowania danych z usługi Azure SQL Database lub SQL Server lub usługi Azure SQL Data Warehouse, możesz skonfigurować **SqlSource** w działaniu kopiowania, aby wywołać procedurę przechowywaną, aby odczytać danych ze źródłowej bazy danych za pomocą  **sqlReaderStoredProcedureName** właściwości. Aby uzyskać więcej informacji zobacz następujące artykuły łącznika: [Usługa Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 
-Poniższe wskazówki używa działania dotyczącego procedury składowanej w potoku do wywołania procedury przechowywanej w bazie danych Azure SQL. 
+Następujące Instruktaż używa działania dotyczącego procedury składowanej w potoku, aby wywołać procedurę składowaną w bazie danych Azure SQL. 
 
 ## <a name="walkthrough"></a>Przewodnik
 ### <a name="sample-table-and-stored-procedure"></a>Przykładowa tabela i procedury składowanej
-1. Utwórz następującą **tabeli** w bazie danych SQL Azure przy użyciu programu SQL Server Management Studio lub innych narzędzi potrafisz. Kolumna datetimestamp jest data i godzina wygenerowania odpowiedni identyfikator.
+1. Utwórz następującą **tabeli** w usłudze Azure SQL Database przy użyciu programu SQL Server Management Studio lub innego narzędzia potrafisz. Kolumna znacznikdatygodziny jest data i godzina wygenerowania odpowiedni identyfikator.
 
     ```SQL
     CREATE TABLE dbo.sampletable
@@ -69,12 +68,12 @@ Poniższe wskazówki używa działania dotyczącego procedury składowanej w pot
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    Identyfikator jest unikatowy zidentyfikować i kolumna datetimestamp jest data i godzina wygenerowania odpowiedni identyfikator.
+    Identyfikator jest unikatowy zidentyfikować, a kolumna znacznikdatygodziny jest data i godzina wygenerowania odpowiedni identyfikator.
     
     ![Dane przykładowe](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    W tym przykładzie procedura składowana jest w bazie danych SQL Azure. Jeśli procedura składowana jest magazyn danych SQL Azure i bazy danych programu SQL Server, to rozwiązanie jest podobne. Dla bazy danych programu SQL Server, należy zainstalować [brama zarządzania danymi](data-factory-data-management-gateway.md).
-2. Utwórz następującą **procedury składowanej** która wstawia dane w celu **sampletable**.
+    W tym przykładzie procedura składowana jest usługi Azure SQL Database. W przypadku procedury składowanej w usłudze Azure SQL Data Warehouse i bazy danych SQL Server, to podejście jest podobny. W przypadku bazy danych programu SQL Server należy zainstalować [bramy zarządzania danymi](data-factory-data-management-gateway.md).
+2. Utwórz następującą **procedury składowanej** który wstawia dane w celu **sampletable**.
 
     ```SQL
     CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
@@ -87,53 +86,53 @@ Poniższe wskazówki używa działania dotyczącego procedury składowanej w pot
     ```
 
    > [!IMPORTANT]
-   > **Nazwa** i **wielkości liter** parametru (DateTime w tym przykładzie) musi być zgodna z parametr określony w potoku/aktywność JSON. W definicji procedury składowanej, upewnij się, że **@** służy jako prefiksu w parametrze.
+   > **Nazwa** i **wielkość liter w wyrazie** parametru (Data/Godzina w tym przykładzie) musi być zgodna z parametrów określonych w kodzie JSON potoku/działania. W definicji procedury składowanej, upewnij się, że **@** służy jako prefiks dla parametru.
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-2. Kliknij przycisk **nowy** w menu po lewej stronie kliknij **analizy i analiza**i kliknij przycisk **fabryki danych**.
+2. Kliknij przycisk **NEW** w menu po lewej stronie, kliknij polecenie **rozwiązania inteligentne + analiza**i kliknij przycisk **usługi Data Factory**.
 
     ![Nowa fabryka danych](media/data-factory-stored-proc-activity/new-data-factory.png)    
-3. W **nowa fabryka danych** bloku, wprowadź **SProcDF** dla nazwy. Nazwy fabryki danych Azure są **unikatowych**. Musisz prefiksu nazwy fabryki danych z nazwą, aby umożliwić pomyślne utworzenie fabryki.
+3. W **nowa fabryka danych** bloku wprowadź **SProcDF** dla nazwy. Usługa Azure Data Factory nazwy są **globalnie unikatowa**. Musisz poprzedź nazwę fabryki danych z Twoją nazwą, aby umożliwić pomyślne utworzenie fabryki.
 
    ![Nowa fabryka danych](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
-4. Wybierz użytkownika **subskrypcji platformy Azure**.
+4. Wybierz swoją **subskrypcję** platformy Azure.
 5. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
-   1. Kliknij przycisk **Utwórz nowy** , a następnie wprowadź nazwę grupy zasobów.
-   2. Kliknij przycisk **Użyj istniejącego** i wybierz istniejącą grupę zasobów.  
+   1. Kliknij przycisk **Utwórz nową** i wprowadź nazwę grupy zasobów.
+   2. Kliknij przycisk **Użyj istniejącej** i wybierz istniejącą grupę zasobów.  
 6. Na liście **lokalizacja** wybierz lokalizację fabryki danych.
-7. Wybierz **Przypnij do pulpitu nawigacyjnego** , dzięki czemu można wyświetlić fabryki danych na pulpicie nawigacyjnym następnym zalogowaniu.
+7. Wybierz **Przypnij do pulpitu nawigacyjnego** tak, aby widoczne fabryki danych na pulpicie nawigacyjnym przy następnym zalogowaniu.
 8. Kliknij przycisk **Utwórz** w bloku **Nowa fabryka danych**.
-9. Zobacz tworzony w fabryce danych **pulpitu nawigacyjnego** portalu Azure. Po pomyślnym utworzeniu fabryki danych zostanie wyświetlona strona fabryki danych z zawartością fabryki danych.
+9. Zostanie wyświetlony w fabryce danych tworzony w **pulpit nawigacyjny** w witrynie Azure Portal. Po pomyślnym utworzeniu fabryki danych zostanie wyświetlona strona fabryki danych z zawartością fabryki danych.
 
    ![Strona główna fabryki danych](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
-### <a name="create-an-azure-sql-linked-service"></a>Tworzenie usługi SQL Azure połączone
-Po utworzeniu fabryki danych, możesz utworzyć Azure SQL połączonej usługi, która łączy bazy danych Azure SQL, który zawiera tabelę sampletable i sp_sample przechowywane procedury z fabryką danych.
+### <a name="create-an-azure-sql-linked-service"></a>Tworzenie połączonej usługi Azure SQL
+Po utworzeniu fabryki danych, tworzenie SQL platformy Azure połączonej usługi, która łączy usługi Azure SQL database, który zawiera tabelę sampletable i sp_sample procedurą składowaną, z fabryką danych.
 
-1. Kliknij przycisk **tworzenie i wdrażanie** na **fabryki danych** bloku **SProcDF** można uruchomić Edytor fabryki danych.
-2. Kliknij przycisk **nowy magazyn danych** polecenie Pasek i wybierz polecenie **bazy danych SQL Azure**. Powinna zostać wyświetlona skryptu JSON do tworzenia usług SQL Azure połączone w edytorze.
+1. Kliknij przycisk **autora i wdrażanie** na **usługi Data Factory** bloku **SProcDF** można uruchomić edytora fabryki danych.
+2. Kliknij przycisk **nowy magazyn danych** na polecenia paska, a następnie wybierz **usługi Azure SQL Database**. Powinien zostać wyświetlony skrypt JSON do tworzenia połączonej usługi Azure SQL w edytorze.
 
    ![Nowy magazyn danych](media/data-factory-stored-proc-activity/new-data-store.png)
-3. W skrypcie JSON wprowadź następujące zmiany:
+3. W skrypcie JSON należy wprowadzić następujące zmiany:
 
-   1. Zastąp `<servername>` z nazwy serwera bazy danych SQL Azure.
+   1. Zastąp `<servername>` nazwą serwera usługi Azure SQL Database.
    2. Zastąp `<databasename>` z bazą danych, w którym został utworzony w tabeli i procedury składowanej.
    3. Zastąp `<username@servername>` przy użyciu konta użytkownika, który ma dostęp do bazy danych.
-   4. Zastąp `<password>` hasłem do konta użytkownika.
+   4. Zastąp `<password>` przy użyciu hasła dla konta użytkownika.
 
       ![Nowy magazyn danych](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. Aby wdrożyć połączonej usługi, kliknij przycisk **Wdróż** na pasku poleceń. Upewnij się, że widoczny AzureSqlLinkedService w widoku drzewa po lewej stronie.
+4. Aby wdrożyć połączoną usługę, kliknij przycisk **Wdróż** na pasku poleceń. Upewnij się, że widzisz AzureSqlLinkedService w widoku drzewa po lewej stronie.
 
-    ![Widok drzewa połączonej usługi](media/data-factory-stored-proc-activity/tree-view.png)
+    ![Widok drzewa z połączonej usługi](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>Tworzenie wyjściowego zestawu danych
-Należy określić wyjściowy zestaw danych działania procedura składowana nawet wtedy, gdy procedura składowana nie zwraca żadnych danych. To, ponieważ jest on wyjściowy zestaw danych, które dyski harmonogram działania (częstotliwość działanie jest uruchamiane — co godzinę, codziennie, itp.). Wyjściowy zestaw danych musi używać **połączona usługa** odwołujący się do bazy danych SQL Azure lub usługi Azure SQL Data Warehouse lub bazy danych programu SQL Server w której ma zostać procedurę składowaną, aby uruchomić. Wyjściowy zestaw danych może stanowić sposób przekazać wyników procedury składowanej dla kolejnych przetwarzania przez inne działanie ([łańcucha działania](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) w potoku. Jednak fabryki danych nie automatycznie zapisuje dane wyjściowe procedury składowanej do tego elementu dataset. Jest procedury przechowywanej, która zapisuje do tabeli SQL, która wskazuje wyjściowego zestawu danych. W niektórych przypadkach może być wyjściowy zestaw danych **fikcyjny dataset** (zestawu danych, który wskazuje tabelę, która naprawdę nie przechowuje dane wyjściowe procedury składowanej). Tego fikcyjny zestawu danych jest używany tylko w celu określenia harmonogram uruchamiania działania procedury składowanej. 
+Należy określić wyjściowy zestaw danych działania procedura składowana, nawet jeśli procedura składowana nie generuje żadnych danych. To, ponieważ jest wyjściowy zestaw danych, która napędza harmonogramu działania (częstotliwość działanie jest uruchamiane — co godzinę, codziennie itp.). Wyjściowy zestaw danych należy użyć **połączoną usługę** odwołujący się do usługi Azure SQL Database, Azure SQL Data Warehouse lub bazy danych programu SQL Server ma procedurę przechowywaną, aby uruchomić. Wyjściowy zestaw danych może służyć jako sposób przekazać wyników procedury składowanej do późniejszego przetwarzania przez innego działania ([tworzenie łańcuchów działań](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) w potoku. Jednak fabryka danych nie automatycznie zapisuje dane wyjściowe procedury składowanej do tego zestawu danych. Jest procedury przechowywanej, która zapisuje do tabeli SQL, która wskazuje wyjściowy zestaw danych. W niektórych przypadkach może być wyjściowy zestaw danych **fikcyjnego dataset** (zestaw danych wskazujący tabelę, która naprawdę nie przechowuje danych wyjściowych procedury składowanej). Ten zastępczy zestaw danych jest używana tylko po to, aby określić harmonogram uruchamiania działania procedury składowanej. 
 
 1. Kliknij przycisk **... Więcej** na pasku narzędzi kliknij **nowy zestaw danych**i kliknij przycisk **Azure SQL**. **Nowy zestaw danych** na pasku poleceń i wybierz **Azure SQL**.
 
-    ![Widok drzewa połączonej usługi](media/data-factory-stored-proc-activity/new-dataset.png)
-2. Skopiuj/Wklej poniższy skrypt JSON w celu edytora JSON.
+    ![Widok drzewa z połączonej usługi](media/data-factory-stored-proc-activity/new-dataset.png)
+2. Kopiuj/wklej poniższy skrypt JSON w celu edytora JSON.
 
     ```JSON
     {                
@@ -151,21 +150,21 @@ Należy określić wyjściowy zestaw danych działania procedura składowana naw
         }
     }
     ```
-3. Aby wdrożyć zestawu danych, kliknij przycisk **Wdróż** na pasku poleceń. Upewnij się, że jest wyświetlany element dataset w widoku drzewa.
+3. Aby wdrożyć zestaw danych, kliknij przycisk **Wdróż** na pasku poleceń. Upewnij się, że zostanie wyświetlony zestaw danych w widoku drzewa.
 
-    ![Widok drzewa z połączonych usług](media/data-factory-stored-proc-activity/tree-view-2.png)
+    ![Widok drzewa z połączonymi usługami](media/data-factory-stored-proc-activity/tree-view-2.png)
 
-### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Utworzyć potok z działaniem SqlServerStoredProcedure
-Teraz Utwórzmy potoku z działania procedury składowanej. 
+### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Tworzenie potoku z działaniem SqlServerStoredProcedure
+Teraz Utwórzmy potoku za pomocą działania procedury składowanej. 
 
-Zwróć uwagę następujące właściwości: 
+Zwróć uwagę, następujące właściwości: 
 
 - **Typu** właściwość jest ustawiona na **SqlServerStoredProcedure**. 
-- **StoredProcedureName** w typ właściwości jest równa **sp_sample** (Nazwa procedury składowanej).
-- **StoredProcedureParameters** sekcja zawiera jeden parametr o nazwie **DateTime**. Nazwa i wielkość liter w wyrazie parametru w formacie JSON muszą być zgodne, nazwa i wielkość liter w wyrazie parametru w definicji procedury składowanej. Jeśli należy przekazać wartość null dla parametru, należy użyć składni: `"param1": null` (tylko małe litery).
+- **StoredProcedureName** w typie właściwości jest równa **sp_sample** (Nazwa procedury składowanej).
+- **StoredProcedureParameters** sekcja zawiera jeden parametr o nazwie **daty/godziny**. Nazwa i wielkość liter w wyrazie parametru w formacie JSON muszą być zgodne, nazwa i wielkość liter w wyrazie parametr w definicji procedury składowanej. Jeśli potrzebujesz przekazać wartości null dla parametru, należy użyć składni: `"param1": null` (tylko małe litery).
  
-1. Kliknij przycisk **... Więcej** na pasku poleceń i kliknij przycisk **nowy potok**.
-2. Skopiuj/Wklej poniższy fragment kodu JSON:   
+1. Kliknij przycisk **... Więcej** paska poleceń i kliknij przycisk **nowy potok**.
+2. Kopiuj/wklej poniższy fragment kodu JSON:   
 
     ```JSON
     {
@@ -203,29 +202,29 @@ Zwróć uwagę następujące właściwości:
 ### <a name="monitor-the-pipeline"></a>Monitorowanie potoku
 1. Kliknij przycisk **X**, aby zamknąć bloki Edytora fabryki danych i przejść z powrotem do bloku Fabryka danych, a następnie kliknij przycisk **Diagram**.
 
-    ![Diagram kafelka](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    ![Kafelek diagram](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. Na stronie **Widok diagramu** zostanie wyświetlony przegląd potoków i zestawów danych używanych w tym samouczku.
 
-    ![Diagram kafelka](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. W widoku diagramu, kliknij dwukrotnie element dataset `sprocsampleout`. Zostanie wyświetlony wycinków w stanie gotowe. Powinien istnieć pięć wycinków, ponieważ wycinek jest tworzone dla każdej godziny od czasu rozpoczęcia i godzina zakończenia w formacie JSON.
+    ![Kafelek diagram](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+3. W widoku diagramu kliknij dwukrotnie zestaw danych `sprocsampleout`. Możesz wyświetlić wycinki w stanie gotowe. Powinna istnieć pięć wycinki, ponieważ wycinek jest generowany dla każdej godziny między czasem rozpoczęcia i godzina zakończenia w formacie JSON.
 
-    ![Diagram kafelka](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Gdy wycinek jest **gotowe** stanu, uruchom `select * from sampletable` zapytanie w bazie danych Azure SQL, aby sprawdzić, czy dane dodano do tabeli przez procedurę składowaną.
+    ![Kafelek diagram](media/data-factory-stored-proc-activity/data-factory-slices.png)
+4. Gdy wycinek jest w **gotowe** stanu, uruchom `select * from sampletable` zapytania względem bazy danych Azure SQL, aby sprawdzić, czy dane został wstawione do tabeli przez procedurę składowaną.
 
    ![Dane wyjściowe](./media/data-factory-stored-proc-activity/output.png)
 
-   Zobacz [monitorować potoku](data-factory-monitor-manage-pipelines.md) szczegółowe informacje o monitorowaniu potoki fabryki danych Azure.  
+   Zobacz [monitorowanie potoku](data-factory-monitor-manage-pipelines.md) szczegółowe informacje o monitorowaniu potoków usługi Azure Data Factory.  
 
 
-## <a name="specify-an-input-dataset"></a>Określ zestaw danych wejściowych
-W tym przewodnikiem działania procedury składowanej nie ma żadnych wejściowe zestawy danych. Jeśli określisz zestaw danych wejściowych działania procedury składowanej nie działa do momentu wycinka wejściowy zestaw danych jest dostępna (w stanie innym niż Ready). Zestaw danych może być zewnętrzny zestaw danych, (tj. nie jest generowany przez innego działania w tym samym potoku) lub wewnętrzny zestawu danych, który jest generowany przez działanie w strumieniu przychodzącym (działania wykonywane przed tego działania). Można określić wiele zestawów wejściowych danych działania procedury składowanej. Jeśli tak zrobisz, działania procedury składowanej działa tylko wtedy, gdy wszystkie fragmenty wejściowy zestaw danych są dostępne (w stanie gotowe). Wejściowy zestaw danych nie mogą być używane w procedurze składowanej jako parametr. Tylko służy do sprawdzania zależności przed rozpoczęciem działania procedury składowanej.
+## <a name="specify-an-input-dataset"></a>Określ wejściowego zestawu danych
+W instruktażu działania procedury składowanej nie ma żadnych danych wejściowych zestawów danych. Jeśli określisz wejściowego zestawu danych, działania procedury składowanej nie działa do momentu wycinek wejściowego zestawu danych jest dostępna (w stanie gotowe). Zestaw danych może być zewnętrzny zestaw danych (który nie jest realizowane przez innego działania w potoku w tym samym) lub wewnętrzny zestaw danych, który jest wytwarzany przez nadrzędne działanie (działanie, który jest uruchamiany zanim to działanie). Można określić wiele danych wejściowych zestawów danych dla działania procedury składowanej. Jeśli tak zrobisz, działania procedury składowanej działa tylko wtedy, gdy wszystkie wycinki danych wejściowych zestawu danych są dostępne (w stanie gotowe). Wejściowy zestaw danych nie mogą być używane w procedurze składowanej jako parametr. Tylko służy do sprawdzania zależności przed rozpoczęciem działania procedury składowanej.
 
-## <a name="chaining-with-other-activities"></a>Łańcuch serwerów z innymi działaniami
-Jeśli chcesz tworzyć łańcuchy działania nadrzędnego tego działania, określ dane wyjściowe działania nadrzędnego jako dane wejściowe tego działania. Po wykonaniu tego działania procedury składowanej nie działa, dopiero po ukończeniu działania nadrzędnego i wyjściowy zestaw danych działania nadrzędnego jest dostępna (w stanie gotowe). Wyjściowe zestawy danych z wielu działań nadrzędnego może służyć jako wejściowe zestawy danych działania procedury składowanej. Po wykonaniu tego działania procedury składowanej działa tylko wtedy, gdy są dostępne wszystkie fragmenty wejściowy zestaw danych.  
+## <a name="chaining-with-other-activities"></a>Tworzenie łańcucha z innymi działaniami
+Jeśli chcesz połączyć w łańcuch działanie w strumieniu przychodzącym za pomocą tego działania, należy określić dane wyjściowe działania nadrzędnego jako dane wejściowe tego działania. Jeśli tak zrobisz, działania procedury składowanej nie działa, dopóki nie zakończy działanie w strumieniu przychodzącym i wyjściowy zestaw danych działanie w strumieniu przychodzącym jest dostępny (w stanie gotowe). Wyjściowe zestawy danych z wielu czynności nadrzędnych można określić jako danych wejściowych zestawów danych działania procedura składowana. Jeśli tak zrobisz, działania procedury składowanej działa tylko wtedy, gdy wszystkie wycinki danych wejściowych zestawu danych są dostępne.  
 
-W poniższym przykładzie jest dane wyjściowe działania kopiowania: OutputDataset, która jest wartością wejściową działania procedury składowanej. W związku z tym działania procedury składowanej nie działa, dopiero po ukończeniu działania kopiowania i wycinek OutputDataset jest dostępna (w stanie gotowe). Jeśli określisz wiele zestawów danych wejściowych działania procedury składowanej nie działa, dopóki wszystkie fragmenty wejściowy zestaw danych są dostępne (w stanie gotowe). Wejściowe zestawy danych nie można użyć bezpośrednio jako parametry działania procedury składowanej. 
+W poniższym przykładzie danych wyjściowych działania kopiowania jest: OutputDataset, która jest wartością wejściową działania procedury składowanej. W związku z tym działania procedury składowanej nie działa, dopóki nie kończy działanie kopiowania i wycinek OutputDataset jest dostępne (w stanie gotowe). Jeśli określisz wiele danych wejściowych zestawów danych, działania procedury składowanej nie działa, dopóki wszystkie wycinki danych wejściowych zestawu danych są dostępne (w stanie gotowe). Wejściowe zestawy danych nie można bezpośrednio jako parametry do działania procedury składowanej. 
 
-Aby uzyskać więcej informacji na tworzenie łańcucha działań, zobacz [wielu działań w potoku](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)
+Aby uzyskać więcej informacji na temat Tworzenie łańcuchów działań, zobacz [wiele działań w potoku](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)
 
 ```json
 {
@@ -278,15 +277,15 @@ Aby uzyskać więcej informacji na tworzenie łańcucha działań, zobacz [wielu
 }
 ```
 
-Podobnie Aby połączyć działania procedury magazynu o **działania podrzędne** (działań uruchamianych po ukończeniu działania procedury składowanej), określ wyjściowy zestaw danych działania procedura składowana jako danych wejściowych działanie podrzędne w potoku.
+Podobnie połączyć działanie procedury magazynu za pomocą **działania podrzędne** (działań, które uruchamiane po ukończeniu działania procedury składowanej), określ wyjściowy zestaw danych działania procedura składowana jako dane wejściowe podrzędne działania w potoku.
 
 > [!IMPORTANT]
-> Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w przypadku działania kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z działania kopiowania](data-factory-invoke-stored-procedure-from-copy-activity.md). Aby uzyskać więcej informacji dotyczących właściwości, zobacz następujące artykuły łącznika: [bazy danych SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
+> Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w działaniu kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z działaniem kopiowania](data-factory-invoke-stored-procedure-from-copy-activity.md). Aby uzyskać szczegółowe informacje o właściwości zobacz następujące artykuły łącznika: [Usługa Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 >  
-> Podczas kopiowania danych z bazy danych SQL Azure lub programu SQL Server lub magazyn danych SQL Azure, możesz skonfigurować **SqlSource** w przypadku działania kopiowania, aby wywołać procedurę składowaną można odczytać danych ze źródłowej bazy danych przy użyciu  **sqlReaderStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz następujące artykuły łącznika: [bazy danych SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [magazyn danych SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> Podczas kopiowania danych z usługi Azure SQL Database lub SQL Server lub usługi Azure SQL Data Warehouse, możesz skonfigurować **SqlSource** w działaniu kopiowania, aby wywołać procedurę przechowywaną, aby odczytać danych ze źródłowej bazy danych za pomocą  **sqlReaderStoredProcedureName** właściwości. Aby uzyskać więcej informacji zobacz następujące artykuły łącznika: [Usługa Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 ## <a name="json-format"></a>JSON format
-Oto formatu JSON określających działania dotyczącego procedury składowanej:
+Oto formatu JSON do definiowania działania dotyczącego procedury składowanej:
 
 ```JSON
 {
@@ -307,20 +306,20 @@ Oto formatu JSON określających działania dotyczącego procedury składowanej:
 }
 ```
 
-W poniższej tabeli opisano te właściwości JSON:
+W poniższej tabeli opisano te właściwości kodu JSON:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name | Nazwa działania |Yes |
-| description |Tekst opisujący działanie służy do |Nie |
-| type | Musi mieć wartość: **SqlServerStoredProcedure** | Yes |
-| dane wejściowe | Opcjonalny. Jeśli określisz wejściowy zestaw danych, musi być dostępny (w stanie "Gotowe") dla działania procedury składowanej do uruchomienia. Wejściowy zestaw danych nie mogą być używane w procedurze składowanej jako parametr. Tylko służy do sprawdzania zależności przed rozpoczęciem działania procedury składowanej. |Nie |
-| wyjścia | Należy określić zestaw danych wyjściowych dla działania procedury składowanej. Określa wyjściowy zestaw danych **harmonogram** działania procedury składowanej (co godzinę, co tydzień, co miesiąc, itp.). <br/><br/>Wyjściowy zestaw danych musi używać **połączona usługa** odwołujący się do bazy danych SQL Azure lub usługi Azure SQL Data Warehouse lub bazy danych programu SQL Server w której ma zostać procedurę składowaną, aby uruchomić. <br/><br/>Wyjściowy zestaw danych może stanowić sposób przekazać wyników procedury składowanej dla kolejnych przetwarzania przez inne działanie ([łańcucha działania](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) w potoku. Jednak fabryki danych nie automatycznie zapisuje dane wyjściowe procedury składowanej do tego elementu dataset. Jest procedury przechowywanej, która zapisuje do tabeli SQL, która wskazuje wyjściowego zestawu danych. <br/><br/>W niektórych przypadkach może być wyjściowy zestaw danych **fikcyjny zestawu danych**, które służą tylko do określ harmonogram uruchamiania działania procedury składowanej. |Yes |
-| storedProcedureName |Określ nazwę procedury składowanej bazy danych Azure SQL lub w bazie danych magazynu danych SQL Azure lub programu SQL Server, reprezentowanego przez połączonej usługi, która używa tabeli wyników. |Yes |
-| storedProcedureParameters |Określ wartości dla parametrów procedury składowanej. Jeśli chcesz przekazać wartości null dla parametru należy użyć składni: "param1": wartość null (małe litery). Zobacz poniższy przykład, aby dowiedzieć się więcej o korzystaniu z tej właściwości. |Nie |
+| description |Tekst opisujący przeznaczenie działania |Nie |
+| type | Musi być ustawione na: **SqlServerStoredProcedure** | Yes |
+| dane wejściowe | Opcjonalny. Jeśli określisz wejściowy zestaw danych musi być dostępny (w stanie "Gotowy") dla działania procedury składowanej do uruchomienia. Wejściowy zestaw danych nie mogą być używane w procedurze składowanej jako parametr. Tylko służy do sprawdzania zależności przed rozpoczęciem działania procedury składowanej. |Nie |
+| wyjścia | Należy określić wyjściowy zestaw danych działania procedura składowana. Wyjściowy zestaw danych określa **harmonogram** działania procedury składowanej (co godzinę, co tydzień, co miesiąc, itp.). <br/><br/>Wyjściowy zestaw danych należy użyć **połączoną usługę** odwołujący się do usługi Azure SQL Database, Azure SQL Data Warehouse lub bazy danych programu SQL Server ma procedurę przechowywaną, aby uruchomić. <br/><br/>Wyjściowy zestaw danych może służyć jako sposób przekazać wyników procedury składowanej do późniejszego przetwarzania przez innego działania ([tworzenie łańcuchów działań](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) w potoku. Jednak fabryka danych nie automatycznie zapisuje dane wyjściowe procedury składowanej do tego zestawu danych. Jest procedury przechowywanej, która zapisuje do tabeli SQL, która wskazuje wyjściowy zestaw danych. <br/><br/>W niektórych przypadkach może być wyjściowy zestaw danych **fikcyjnego dataset**, która jest używana tylko po to, aby określić harmonogram uruchamiania działania procedury składowanej. |Yes |
+| storedProcedureName |Określ nazwę procedury przechowywanej w bazie danych Azure SQL lub bazy danych Azure SQL Data Warehouse lub SQL Server, który jest reprezentowany przez połączoną usługę, która używa tabeli wyjściowej. |Yes |
+| storedProcedureParameters |Określ wartości dla parametrów procedury składowanej. Jeśli musisz przekazać wartości null dla parametru należy użyć składni: "param1": wartość null (wszystkie małe litery). Zobacz poniższy przykład, aby dowiedzieć się więcej o korzystaniu z tej właściwości. |Nie |
 
-## <a name="passing-a-static-value"></a>Przekazywanie wartości statycznej
-Teraz załóżmy należy rozważyć dodanie inną kolumnę o nazwie "Scenariusza" w tabeli zawierającej wartości statycznej o nazwie "Próbki dokumentu".
+## <a name="passing-a-static-value"></a>Przekazując wartość statyczną
+Teraz rozważmy dodanie innej kolumny o nazwie "Scenariusza" w tabeli zawierającej wartość statyczną o nazwie "Dokumentu przykładowy".
 
 ![Przykładowe dane 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
@@ -351,7 +350,7 @@ BEGIN
 END
 ```
 
-Teraz, Przekaż **scenariusza** parametr i wartość z działania procedury składowanej. **TypeProperties** sekcji w poprzednim przykładzie wygląda następująco: następujący fragment kodu:
+Teraz Przekaż **scenariusza** parametru i wartości z działania procedury składowanej. **TypeProperties** sekcji w poprzednim przykładzie wygląda jak poniższy fragment kodu:
 
 ```JSON
 "typeProperties":
@@ -365,7 +364,7 @@ Teraz, Przekaż **scenariusza** parametr i wartość z działania procedury skł
 }
 ```
 
-**Zestaw danych z fabryki danych:**
+**Zestaw danych fabryki danych:**
 
 ```JSON
 {
@@ -385,7 +384,7 @@ Teraz, Przekaż **scenariusza** parametr i wartość z działania procedury skł
 }
 ```
 
-**Potok fabryki danych**
+**Potok usługi Data Factory**
 
 ```JSON
 {

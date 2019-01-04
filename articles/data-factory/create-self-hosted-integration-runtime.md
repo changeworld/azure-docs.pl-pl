@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969485"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021122"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -155,8 +154,8 @@ Wprowadzenie 12 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film 
 
 ### <a name="terminology"></a>Terminologia
 
-- **Udostępnione środowisko IR**: oryginalny może być samodzielnie hostowane środowisko IR, który działa na infrastruktury fizycznej.  
-- **Połączone środowisko IR**: środowisko IR, który odwołuje się do innego udostępnionego podczerwieni. Jest logiczną IR, używana jest infrastruktura innego własne środowisko IR (udostępniana).
+- **Udostępnione środowisko IR**: Oryginalny może być samodzielnie hostowane środowisko IR, który działa na infrastruktury fizycznej.  
+- **Połączone środowisko IR**: Środowisko IR, który odwołuje się do innego udostępnionego podczerwieni. Jest logiczną IR, używana jest infrastruktura innego własne środowisko IR (udostępniana).
 
 ### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Ogólne kroki do tworzenia połączonej własnego środowiska IR
 
@@ -257,9 +256,9 @@ Własne środowisko integration runtime używa serwera proxy, aby nawiązać po�
 
 Dostępne są trzy opcje konfiguracji:
 
-- **Nie używaj serwera proxy**: własnego środowiska integration runtime nie jawnie za pomocą dowolnego serwera proxy do łączenia się z usługami w chmurze.
-- **Użyj serwera proxy systemu**: oznacza to ustawienie, skonfigurowanym w diahost.exe.config i diawp.exe.config serwera proxy korzysta z własnego środowiska integration runtime. Jeśli żaden serwer proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, własne środowisko integration runtime łączy się z usługą w chmurze bezpośrednio, bez przechodzenia przez serwer proxy.
-- **Użyj niestandardowego serwera proxy**: skonfigurowanie ustawienia do użycia dla własnego środowiska integration runtime, zamiast korzystać z konfiguracji w diahost.exe.config i diawp.exe.config proxy HTTP. **Adres** i **portu** są wymagane. **Nazwa użytkownika** i **hasło** są opcjonalne, w zależności od ustawienia uwierzytelniania na serwerze proxy. Wszystkie ustawienia są szyfrowane przy użyciu interfejsu DPAPI Windows na własne środowisko integration runtime i przechowywane lokalnie na komputerze.
+- **Nie używaj serwera proxy**: Własne środowisko integration runtime nie jawnie za pomocą dowolnego serwera proxy połączyć z usług w chmurze.
+- **Użyj serwera proxy systemu**: Ustawienia serwera proxy skonfigurowanego w diahost.exe.config i diawp.exe.config korzysta z własnego środowiska integration runtime. Jeśli żaden serwer proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, własne środowisko integration runtime łączy się z usługą w chmurze bezpośrednio, bez przechodzenia przez serwer proxy.
+- **Użyj niestandardowego serwera proxy**: Konfiguruj ustawienia do użycia dla własnego środowiska integration runtime, zamiast korzystać z konfiguracji w diahost.exe.config i diawp.exe.config proxy HTTP. **Adres** i **portu** są wymagane. **Nazwa użytkownika** i **hasło** są opcjonalne, w zależności od ustawienia uwierzytelniania na serwerze proxy. Wszystkie ustawienia są szyfrowane przy użyciu interfejsu DPAPI Windows na własne środowisko integration runtime i przechowywane lokalnie na komputerze.
 
 Usługa hosta integration runtime powoduje automatyczne ponowne uruchomienie po zapisaniu zaktualizowanych ustawień serwera proxy.
 
@@ -318,7 +317,7 @@ Należy również upewnić się, że Microsoft Azure znajduje się w dozwolonych
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Możliwe objawy zapory i serwera proxy problemów związanych z serwerem
 Jeśli wystąpią błędy podobne do poniższych, prawdopodobnie z powodu nieprawidłowej konfiguracji zapory lub serwera proxy serwera, który blokuje własnego środowiska integration runtime połączenie z usługą Data Factory do samodzielnego uwierzytelnienia. Aby upewnić się, czy serwer zapory i serwera proxy są prawidłowo skonfigurowane, zapoznaj się z poprzedniej sekcji.
 
-* Podczas próby zarejestrowania własnego środowiska integration runtime, zostanie wyświetlony następujący błąd: "nie można zarejestrować ten węzeł Integration Runtime. Upewnij się, że klucz uwierzytelniania jest prawidłowy, a usługa integracji usługi hosta jest uruchomiona na tym komputerze."
+* Podczas próby zarejestrowania własnego środowiska integration runtime, pojawi się następujący błąd: "Nie można zarejestrować ten węzeł Integration Runtime. Upewnij się, że klucz uwierzytelniania jest prawidłowy, a usługa integracji usługi hosta jest uruchomiona na tym komputerze."
 * Po otwarciu Menedżera konfiguracji produktu Integration Runtime, zostanie wyświetlony stan **Disconnected** lub **łączenie**. Podczas przeglądania dzienników zdarzeń Windows, w obszarze **Podgląd zdarzeń** > **Dzienniki aplikacji i usług** > **produktu Microsoft Integration Runtime**, zostaną wyświetlone komunikaty o błędach podobny do tego:
 
     ```
@@ -345,4 +344,4 @@ Jeśli wybierzesz nie otworzyć port 8060 maszynie Self-Hosted integration runti
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące samouczki krok po kroku dotyczące: [samouczek: kopiowanie danych do chmury lokalnych](tutorial-hybrid-copy-powershell.md).
+Zobacz następujące samouczki krok po kroku dotyczące: [Samouczek: Kopiowanie danych do chmury lokalnych](tutorial-hybrid-copy-powershell.md).

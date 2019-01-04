@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426795"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019320"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działanie LOOKUP w usłudze Azure Data Factory
 
@@ -106,7 +105,7 @@ W tym przykładzie działanie kopiowania kopiuje dane z tabeli SQL w wystąpieni
 W tym przykładzie pokazano wyszukiwania dla pierwszego wiersza. Wyszukiwanie we wszystkich wierszach, a aby połączyć w łańcuch wyniki za pomocą działania ForEach, zobacz przykłady w [zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Potok
-Ten potok zawiera dwa działania: wyszukiwania i kopiowania. 
+Ten potok zawiera dwa działania: Wyszukiwanie i kopiowania. 
 
 - Działanie Lookup jest skonfigurowany do używania **LookupDataset**, która odnosi się do lokalizacji w usłudze Azure Blob storage. Działanie Lookup odczytuje Nazwa tabeli SQL z pliku JSON w tej lokalizacji. 
 - Działanie kopiowania używa danych wyjściowych działania Lookup, jest to nazwa tabeli SQL. **TableName** właściwość **SourceDataset** jest skonfigurowany do korzystania z danych wyjściowych działania Lookup. Skopiuj działanie kopiuje dane z tabeli SQL w lokalizacji w usłudze Azure Blob storage. Lokalizacja jest określona przez **SinkDataset** właściwości. 

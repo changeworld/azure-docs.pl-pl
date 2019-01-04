@@ -1,13 +1,10 @@
 ---
-title: Tworzenie, zmienianie lub usuwanie sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+title: Tworzenie, zmienianie lub usuwanie sieci wirtualnej platformy Azure
+titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak tworzenie, zmienianie lub usuwanie sieci wirtualnej na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 1c39100007d3b993031aa06cd106dfa2bf8419a2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538093"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016034"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 

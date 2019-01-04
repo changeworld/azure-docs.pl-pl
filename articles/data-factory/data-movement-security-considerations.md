@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: ad6fe023c4e93328331140dc3552ae1afd7c83ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0113fc3112fa0fa911d6609684357d01cd9adf30
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970647"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015716"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +42,7 @@ Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własn
 
 W tym artykule omówimy zagadnienia dotyczące zabezpieczeń w następujących scenariuszach przenoszenia danych w dwóch: 
 
-- **Scenariusz chmury**: W tym scenariuszu, zarówno w źródle, jak i w lokalizacji docelowej są publicznie dostępne za pośrednictwem Internetu. Obejmują one zarządzana usługa w chmurze usługi magazynu, np. usługi Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, usług SaaS, takich jak Salesforce i protokołów sieci web, takich jak FTP i OData. Znajdź pełną listę obsługiwanych źródeł danych w [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Scenariusz chmury**: W tym scenariuszu zarówno w źródle, jak i w lokalizacji docelowej są publicznie dostępne za pośrednictwem Internetu. Obejmują one zarządzana usługa w chmurze usługi magazynu, np. usługi Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, usług SaaS, takich jak Salesforce i protokołów sieci web, takich jak FTP i OData. Znajdź pełną listę obsługiwanych źródeł danych w [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Scenariusza hybrydowego**: W tym scenariuszu źródła lub lokalizacji docelowej jest za zaporą lub wewnątrz sieci firmowej w środowisku lokalnym. Lub magazynie danych jest w prywatnej sieci lub sieci wirtualnej (w większości przypadków źródła) i nie jest dostępny publicznie. Serwery bazy danych hostowanych na maszynach wirtualnych również wchodzą w zakres tego scenariusza.
 
 ## <a name="cloud-scenarios"></a>Scenariusze chmury

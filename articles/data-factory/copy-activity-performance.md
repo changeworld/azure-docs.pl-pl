@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7602524675edbf0e3ca96c74a2aba2eac48c417b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084077"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020893"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -263,9 +262,9 @@ Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Dat
 
 Jeśli Twoje działania kopiowania jest wykonywane na środowiskiem Integration Runtime, pamiętaj o następujących kwestiach:
 
-**Instalator**: zalecane jest użycie dedykowanych maszyn do hosta Integration Runtime. Zobacz [zagadnienia dotyczące korzystania z produktem Integration Runtime](concepts-integration-runtime.md).
+**Instalator**: Firma Microsoft zaleca używanie dedykowanej maszynie hosta Integration Runtime. Zobacz [zagadnienia dotyczące korzystania z produktem Integration Runtime](concepts-integration-runtime.md).
 
-**Skalowanie w poziomie**: jednej logicznej środowiskiem Integration Runtime z co najmniej jeden węzeł może obsługiwać wielu uruchomień działania kopiowania w tym samym czasie jednocześnie. Jeśli masz duże potrzebę na hybrydowe przenoszenie danych z dużą liczbą jednoczesnych kopii uruchomienia działania lub z dużej ilości danych do skopiowania, należy wziąć pod uwagę do [skalowania w poziomie własne środowisko IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability) tak, aby aprowizować więcej zasobów do Zapewnij kopiowania.
+**Skalowanie w poziomie**: Jednej logicznej środowiskiem Integration Runtime z co najmniej jeden węzeł może obsługiwać wielu uruchomień działania kopiowania, w tym samym czasie jednocześnie. Jeśli masz duże potrzebę na hybrydowe przenoszenie danych z dużą liczbą jednoczesnych kopii uruchomienia działania lub z dużej ilości danych do skopiowania, należy wziąć pod uwagę do [skalowania w poziomie własne środowisko IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability) tak, aby aprowizować więcej zasobów do Zapewnij kopiowania.
 
 ## <a name="considerations-for-the-source"></a>Zagadnienia dotyczące źródła
 
@@ -281,13 +280,13 @@ Dla magazynów danych firmy Microsoft, zobacz [monitorowania i dostrajania temat
 
 ### <a name="file-based-data-stores"></a>Magazyny danych opartych na plikach
 
-* **Średni rozmiar pliku i liczba plików**: działanie kopiowania przekazuje jeden plik danych w danym momencie. Przy użyciu tej samej ilości danych do przeniesienia ogólną przepustowość jest mniejszy, jeśli dane składa się z wielu małych plików, a nie kilka dużych plików z powodu fazie uruchamiania dla każdego pliku. W związku z tym jeśli to możliwe, łączenia małych plików do większych plikach w celu uzyskania większej przepływności.
+* **Średni rozmiar pliku i liczba plików**: Działanie kopiowania przekazuje jeden plik danych w danym momencie. Przy użyciu tej samej ilości danych do przeniesienia ogólną przepustowość jest mniejszy, jeśli dane składa się z wielu małych plików, a nie kilka dużych plików z powodu fazie uruchamiania dla każdego pliku. W związku z tym jeśli to możliwe, łączenia małych plików do większych plikach w celu uzyskania większej przepływności.
 * **Plik formatowania i kompresji**: Aby uzyskać więcej sposobów na zwiększenie wydajności, zobacz [zagadnienia dotyczące serializacji i deserializacji](#considerations-for-serialization-and-deserialization) i [zagadnienia dotyczące kompresji](#considerations-for-compression) sekcje.
 
 ### <a name="relational-data-stores"></a>Magazyny danych relacyjnych
 
-* **Wzorzec danych**: schematu tabeli ma wpływ na przepływność kopiowania. Rozmiar wiersza dużych zapewnia lepszą wydajność niż rozmiar wiersza mały, aby skopiować podobną ilość danych. Przyczyną jest to, że baza danych wydajniej można pobrać mniejszej liczby partii danych, które zawierają mniej wierszy.
-* **Zapytanie lub procedura składowana**: Optymalizowanie logiki kwerendy lub procedury składowanej, określ źródła działania kopiowania można pobrać danych bardziej efektywnie.
+* **Wzorzec danych**: Schemat tabeli ma wpływ na przepływność kopiowania. Rozmiar wiersza dużych zapewnia lepszą wydajność niż rozmiar wiersza mały, aby skopiować podobną ilość danych. Przyczyną jest to, że baza danych wydajniej można pobrać mniejszej liczby partii danych, które zawierają mniej wierszy.
+* **Zapytanie lub procedura składowana**: Optymalizuj logiki kwerendy lub procedury składowanej, określonego w źródle działania kopiowania można pobrać danych bardziej efektywnie.
 
 ## <a name="considerations-for-the-sink"></a>Zagadnienia dotyczące ujścia
 
@@ -303,12 +302,12 @@ Magazyny danych firmy Microsoft, można znaleźć [monitorowania i dostrajania t
 
 ### <a name="file-based-data-stores"></a>Magazyny danych opartych na plikach
 
-* **Skopiuj zachowanie**: w przypadku kopiowania danych z magazynu danych oparte na plikach, działanie kopiowania ma trzy opcje za pośrednictwem **copyBehavior** właściwości. Ją zachowuje hierarchię, spłaszcza hierarchii lub scala plików. Zachowywanie albo spłaszczanie hierarchii ma niewielki lub zmniejszenie wydajności, ale scalanie plików powoduje zmniejszenie wydajności zwiększyć.
-* **Plik formatowania i kompresji**: zobacz [zagadnienia dotyczące serializacji i deserializacji](#considerations-for-serialization-and-deserialization) i [zagadnienia dotyczące kompresji](#considerations-for-compression) sekcje, aby uzyskać więcej sposobów na zwiększenie wydajności.
+* **Skopiuj zachowanie**: Jeśli kopiujesz dane z magazynu danych oparte na plikach, działanie kopiowania ma trzy opcje za pośrednictwem **copyBehavior** właściwości. Ją zachowuje hierarchię, spłaszcza hierarchii lub scala plików. Zachowywanie albo spłaszczanie hierarchii ma niewielki lub zmniejszenie wydajności, ale scalanie plików powoduje zmniejszenie wydajności zwiększyć.
+* **Plik formatowania i kompresji**: Zobacz [zagadnienia dotyczące serializacji i deserializacji](#considerations-for-serialization-and-deserialization) i [zagadnienia dotyczące kompresji](#considerations-for-compression) sekcje, aby uzyskać więcej sposobów na zwiększenie wydajności.
 
 ### <a name="relational-data-stores"></a>Magazyny danych relacyjnych
 
-* **Skopiuj zachowanie**: w zależności od właściwości zostały ustawione dla **sqlSink**, działanie kopiowania zapisuje dane do docelowej bazy danych na różne sposoby.
+* **Skopiuj zachowanie**: W zależności od właściwości ustawiono dla **sqlSink**, działanie kopiowania zapisuje dane do docelowej bazy danych na różne sposoby.
   * Domyślnie używa usługi przenoszenia danych interfejsu API kopiowania zbiorczego wstawiania danych w Dołącz trybu, który zapewnia najlepszą wydajność.
   * Jeśli skonfigurujesz procedury składowanej w ujściu bazy danych stosuje się jeden wiersz danych w czasie zamiast jako ładowania zbiorczego. Wydajności znacznie spada. Jeśli zestaw danych jest duży, jeśli ma to zastosowanie, rozważ przejście na **preCopyScript** właściwości.
   * Jeśli skonfigurujesz **preCopyScript** uruchomić właściwości dla każdego działania kopiowania, usługa wyzwala skrypt i następnie wstawić dane za pomocą interfejsu API kopiowania zbiorczego. Na przykład aby zastąpić całą tabelę przy użyciu najnowszych danych, można określić skrypt, aby usunąć wszystkie rekordy przed ładowania zbiorczego nowe dane ze źródła.
@@ -319,7 +318,7 @@ Magazyny danych firmy Microsoft, można znaleźć [monitorowania i dostrajania t
 ### <a name="nosql-stores"></a>Magazynów NoSQL
 
 * Aby uzyskać **Table storage**:
-  * **Partycja**: zapisywanie danych z partycjami przeplotem znacznie obniża wydajność. Sortowanie danych źródła według klucza partycji, dzięki czemu dane są wstawiane wydajnie w jednej partycji po drugim lub dostosować logiki można zapisać danych do jednej partycji.
+  * **Partycja**: Zapisywanie danych z partycjami przeplotem znacznie obniża wydajność. Sortowanie danych źródła według klucza partycji, dzięki czemu dane są wstawiane wydajnie w jednej partycji po drugim lub dostosować logiki można zapisać danych do jednej partycji.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Zagadnienia dotyczące serializacji i deserializacji
 
@@ -333,15 +332,15 @@ Serializacja i deserializacja może wystąpić, gdy Twoje wejściowego zestawu d
   * Jeśli wejściowe i wyjściowe zestawy danych zarówno mają różne formaty plików lub różne konfiguracje, takie jak ograniczników, usługi data movement service deserializuje dane źródłowe do strumienia, przekształcania i serializować go do formatu wyjściowego, wskazane przez Ciebie. Ta operacja powoduje znacznie bardziej znaczące wydajności, obciążenie w porównaniu do innych scenariuszy.
 * Podczas kopiowania plików do/z magazynu danych, który nie jest oparte na plikach (na przykład z magazynu oparte na plikach do relacyjnego magazynu) krok serializacji lub deserializacji jest wymagany. Ten krok powoduje znaczne obciążenie.
 
-**Format pliku**: format pliku, możesz wybrać mogą mieć wpływ na wydajności kopiowania. Na przykład Avro jest kompaktowego formatu binarnego, który przechowuje metadane z danymi. Posiada obsługi szerokiej gamy w ekosystemie usługi Hadoop do przetwarzania i wykonywania zapytań. Jednak Avro jest droższe do serializacji i deserializacji, co skutkuje niższe przepływności kopiowania w porównaniu do formatu tekstowego. Wybierz ustawienia formatu pliku w całym przepływie przetwarzania całościowo. Rozpoczyna się od co tworzą dane są przechowywane w magazynach danych źródłowych lub ma zostać wyodrębniony z systemów zewnętrznych; najlepszy format dla magazynu, przetwarzanie analityczne i wykonywania zapytań; i w jakim formacie dane powinny być eksportowane do składnic danych programów dla narzędzia do raportowania i wizualizacji. Czasami formatu pliku nieoptymalne do odczytu i zapisu wydajność może być dobrym rozwiązaniem, gdy należy wziąć pod uwagę całkowity analitycznych procesu.
+**Format pliku**: Format pliku, który wybierzesz mogą mieć wpływ na wydajności kopiowania. Na przykład Avro jest kompaktowego formatu binarnego, który przechowuje metadane z danymi. Posiada obsługi szerokiej gamy w ekosystemie usługi Hadoop do przetwarzania i wykonywania zapytań. Jednak Avro jest droższe do serializacji i deserializacji, co skutkuje niższe przepływności kopiowania w porównaniu do formatu tekstowego. Wybierz ustawienia formatu pliku w całym przepływie przetwarzania całościowo. Rozpoczyna się od co tworzą dane są przechowywane w magazynach danych źródłowych lub ma zostać wyodrębniony z systemów zewnętrznych; najlepszy format dla magazynu, przetwarzanie analityczne i wykonywania zapytań; i w jakim formacie dane powinny być eksportowane do składnic danych programów dla narzędzia do raportowania i wizualizacji. Czasami formatu pliku nieoptymalne do odczytu i zapisu wydajność może być dobrym rozwiązaniem, gdy należy wziąć pod uwagę całkowity analitycznych procesu.
 
 ## <a name="considerations-for-compression"></a>Zagadnienia dotyczące kompresji
 
 Gdy zestaw danych wejściowych lub wyjściowych jest plik, można ustawić działania kopiowania, które można wykonać kompresji lub dekompresji, ponieważ zapisuje dane do lokalizacji docelowej. Po wybraniu kompresji, upewnij się zależność między wejścia/wyjścia (We/Wy) i procesora CPU. Kompresowanie danych koszty dodatkowe zasoby obliczeniowe. Ale w zamian zmniejsza we/wy sieci i magazynu. W zależności od danych może zostać wyświetlony boost w ogólną przepływność kopiowania.
 
-**Koder-dekoder**: każdy kodera-dekodera kompresji ma zalety. Na przykład bzip2 ma najniższą przepływności kopiowania, ale uzyskać najlepszą wydajność zapytań Hive przy użyciu bzip2, ponieważ podzielić ją do przetworzenia. Gzip jest to opcja najbardziej o zrównoważonym obciążeniu, a jest najczęściej używany. Wybierz koder-dekoder, który najlepiej odpowiada Twojemu scenariuszowi end-to-end.
+**Koder-dekoder**: Każdy kodera-dekodera kompresji zapewnia korzyści. Na przykład bzip2 ma najniższą przepływności kopiowania, ale uzyskać najlepszą wydajność zapytań Hive przy użyciu bzip2, ponieważ podzielić ją do przetworzenia. Gzip jest to opcja najbardziej o zrównoważonym obciążeniu, a jest najczęściej używany. Wybierz koder-dekoder, który najlepiej odpowiada Twojemu scenariuszowi end-to-end.
 
-**Poziom**: możesz korzystać z dwóch opcji dla każdego kodera-dekodera kompresji: najszybszych skompresowane i optymalnie skompresowany. Najszybciej skompresowany opcji kompresuje dane tak szybko, jak to możliwe, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany. Opcja optymalnie skompresowany zużywa więcej czasu na kompresji i daje minimalnej ilości danych. Możesz przetestować obie opcje, aby zobaczyć, który zapewnia lepszą wydajność ogólną w Twoim przypadku.
+**Poziom**: Możesz korzystać z dwóch opcji dla każdego kodera-dekodera kompresji: najszybszych skompresowane i optymalnie skompresowany. Najszybciej skompresowany opcji kompresuje dane tak szybko, jak to możliwe, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany. Opcja optymalnie skompresowany zużywa więcej czasu na kompresji i daje minimalnej ilości danych. Możesz przetestować obie opcje, aby zobaczyć, który zapewnia lepszą wydajność ogólną w Twoim przypadku.
 
 **Jest brany pod uwagę**: Aby skopiować dużej ilości danych między lokalnym magazynie i w chmurze, należy rozważyć użycie [kopiowania etapowego](#staged-copy) z włączoną kompresją. Przy użyciu magazynu tymczasowego jest przydatne, gdy przepustowość sieci firmowej i usług platformy Azure jest czynnikiem ograniczającym i chcesz wejściowy zestaw danych i zestawie danych wyjściowych zarówno w postaci bez kompresji.
 
@@ -359,32 +358,32 @@ Jeśli rozmiar danych, które mają zostać skopiowane jest duża, można dostos
 
 Należy zachować ostrożność liczby zestawów danych i działania kopiowania wymaganie usługi Data Factory nawiązać połączenia z tym samym magazynie danych w tym samym czasie. Wiele zadań jednoczesnych kopii może ograniczać do przechowywania danych i spowodować pogorszenie wydajności, kopii zadania wewnętrzne ponownych prób, a w niektórych przypadkach niepowodzenia wykonywania.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Przykładowy scenariusz: kopiowanie danych z lokalnego serwera SQL do magazynu obiektów Blob
+## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Przykładowy scenariusz: Kopiowanie z lokalnego programu SQL Server do usługi Blob storage
 
-**Scenariusz**: potok został opracowany pod kątem kopiowanie danych z lokalnego programu SQL Server do usługi Blob storage w formacie CSV. Aby przyspieszyć zadanie kopiowania, pliki CSV należy skompresowane do formatu bzip2.
+**Scenariusz**: Potok został opracowany pod kątem kopiowanie danych z lokalnego programu SQL Server do usługi Blob storage w formacie CSV. Aby przyspieszyć zadanie kopiowania, pliki CSV należy skompresowane do formatu bzip2.
 
-**Test i analiza**: przepływności działania kopiowania jest mniej niż 2 MB/s, który jest znacznie wolniejsze niż testów porównawczych wydajności.
+**Test i analiza**: Przepływność działania kopiowania jest mniejsza niż 2 MB/s, który jest znacznie wolniejsze niż testów porównawczych wydajności.
 
 **Analiza wydajności i dostosowywania**: Aby rozwiązać problem z wydajnością, Przyjrzyjmy się jak dane są przetwarzane i przenoszone.
 
-1. **Odczytywanie danych**: produkt Integration runtime otwiera połączenie z SQL Server i wysyła to zapytanie. Program SQL Server odpowiada, wysyłając strumień danych do środowiska integration runtime za pośrednictwem sieci intranet.
-2. **Serializowanie i kompresować dane**: produkt Integration runtime serializuje strumień danych do formatu CSV i kompresuje dane do usługi bzip2 stream.
-3. **Zapisywanie danych**: produkt Integration runtime przekazuje strumienia bzip2 do magazynu obiektów Blob za pośrednictwem Internetu.
+1. **Odczytywanie danych**: Środowisko Integration runtime otwiera połączenie z SQL Server i wysyła to zapytanie. Program SQL Server odpowiada, wysyłając strumień danych do środowiska integration runtime za pośrednictwem sieci intranet.
+2. **Serializowanie i kompresować dane**: Środowisko Integration runtime serializuje strumień danych do formatu CSV i kompresuje dane do usługi bzip2 stream.
+3. **Zapisywanie danych**: Środowisko Integration runtime przekazuje strumienia bzip2 do magazynu obiektów Blob za pośrednictwem Internetu.
 
-Jak widać, dane są przetwarzane i przenoszone w sposób sekwencyjny przesyłania strumieniowego: SQL Server > LAN > środowiska Integration runtime > sieci WAN > Blob storage. **Ogólna wydajność jest kontrolowany za przepustowość minimalna w potoku**.
+Jak widać, dane są przetwarzane i przenoszone w sposób sekwencyjny przesyłania strumieniowego: SQL Server > LAN > środowiska Integration runtime > sieć WAN > Blob storage. **Ogólna wydajność jest kontrolowany za przepustowość minimalna w potoku**.
 
 ![Przepływ danych](./media/copy-activity-performance/case-study-pic-1.png)
 
 Co najmniej jeden z następujących czynników może spowodować wąskie gardło:
 
-* **Źródło**: sam program SQL Server ma niskiej przepustowości, ze względu na duże obciążenia.
+* **Źródło**: Sam program SQL Server ma niskiej przepustowości, ze względu na duże obciążenia.
 * **Może być samodzielnie hostowane środowisko IR**:
-  * **LAN**: produkt Integration runtime znajduje się oni daleko od komputera serwera SQL i ma połączenie o niskiej przepustowości.
-  * **Środowisko Integration runtime**: produkt Integration runtime został osiągnięty jej ograniczenia obciążenia, aby wykonywać następujące operacje:
-    * **Serializacja**: serializacja strumień danych do formatu CSV ma powolne przepływności.
-    * **Kompresja**: wybrano powolne kodera-dekodera kompresji (na przykład, bzip2, czyli 2,8 MB/s z Core i7).
-  * **Sieci WAN**: brakuje przepustowości między siecią firmową i usług platformy Azure (na przykład T1 = 1,544 KB/s; T2 = 6,312 KB/s).
-* **Obiekt sink**: magazyn obiektów Blob jest niska przepływność. (W tym scenariuszu jest mało prawdopodobne, ponieważ jej umowa SLA gwarantuje co najmniej 60 MB/s).
+  * **LAN**: Środowisko Integration runtime znajduje się oni daleko od komputera serwera SQL i ma połączenie o niskiej przepustowości.
+  * **Środowisko Integration runtime**: Środowisko Integration runtime została osiągnięta jej ograniczenia obciążenia, aby wykonywać następujące operacje:
+    * **Serializacja**: Serializacja strumień danych do formatu CSV ma powolne przepływności.
+    * **Kompresja**: Wybrano powolne kodera-dekodera kompresji (na przykład, bzip2, czyli 2,8 MB/s z Core i7).
+  * **SIECI WAN**: Brakuje przepustowości między siecią firmową i usług platformy Azure (na przykład T1 = 1,544 KB/s; T2 = 6,312 KB/s).
+* **Obiekt sink**: Magazyn obiektów blob ma niskiej przepustowości. (W tym scenariuszu jest mało prawdopodobne, ponieważ jej umowa SLA gwarantuje co najmniej 60 MB/s).
 
 W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Przełączanie do kodera-dekodera kompresji gzip może jej obsługi ułatwiają realizację tego wąskiego gardła.
 
@@ -392,12 +391,12 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 
 Poniżej przedstawiono monitorowanie wydajności i dostosowywania odwołania dla niektórych obsługiwanych magazynów danych:
 
-* Usługa Azure Storage (w tym magazyn obiektów Blob i Table storage): [cele skalowalności usługi Azure Storage](../storage/common/storage-scalability-targets.md) i [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../storage/common/storage-performance-checklist.md)
+* Usługa Azure Storage (w tym magazyn obiektów Blob i Table storage): [Cele skalowalności usługi Azure Storage](../storage/common/storage-scalability-targets.md) i [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../storage/common/storage-performance-checklist.md)
 * Usługa Azure SQL Database: Możesz [monitorować wydajność](../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
-* Usługa Azure SQL Data Warehouse: Jej możliwości jest mierzony w liczbę jednostek magazynu danych (dwu); zobacz [Zarządzaj obliczeniowa w usłudze Azure SQL Data Warehouse (omówienie)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Azure Cosmos DB: [poziomy wydajności w usłudze Azure Cosmos DB](../cosmos-db/performance-levels.md)
-* Na lokalnym serwerze SQL Server: [monitorowanie i dostrajanie wydajności](https://msdn.microsoft.com/library/ms189081.aspx)
-* Serwer plików w środowisku lokalnym: [dostrajanie wydajności dla serwerów plików](https://msdn.microsoft.com/library/dn567661.aspx)
+* Azure SQL Data Warehouse: Jej możliwości jest mierzony w liczbę jednostek magazynu danych (dwu); zobacz [Zarządzaj obliczeniowa w usłudze Azure SQL Data Warehouse (omówienie)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Usługa Azure Cosmos DB [Poziomy wydajności w usłudze Azure Cosmos DB](../cosmos-db/performance-levels.md)
+* Na lokalnym serwerze SQL Server: [Monitorowanie i dostrajanie wydajności](https://msdn.microsoft.com/library/ms189081.aspx)
+* Lokalny serwer plików: [Dostosowywanie na serwerach plików wydajności](https://msdn.microsoft.com/library/dn567661.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne artykuły dotyczące działania kopiowania:

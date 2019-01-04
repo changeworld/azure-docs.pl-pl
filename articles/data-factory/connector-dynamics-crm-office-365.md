@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: d58e72c4487a3ab6d7b562fd328098d98761da5e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620340"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017161"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -278,7 +277,7 @@ Aby skopiować dane do usługi Dynamics, należy ustawić typ ujścia w działan
 | type | Właściwość type ujścia działania kopiowania musi być równa **DynamicsSink**. | Yes |
 | writeBehavior | Zachowanie zapisu operacji.<br/>Dozwolona wartość to **"Upsert"**. | Yes |
 | writeBatchSize | Liczba wierszy danych zapisanych w każdej z partii Dynamics. | Nie (wartość domyślna to 10) |
-| ignoreNullValues | Wskazuje, czy ignorować wartości null w danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostaw bez zmian danych w obiekcie docelowym, po wykonaniu operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: aktualizowanie danych w obiektu docelowego na wartość NULL, podczas wykonywania operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
+| ignoreNullValues | Wskazuje, czy ignorować wartości null w danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
 
 >[!NOTE]
 >Wartość domyślna obiektu sink "**writeBatchSize**"i działanie kopiowania"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" ujścia Dynamics są oba 10. W związku z tym 100 rekordów są przesyłane do usługi Dynamics jednocześnie.
@@ -333,14 +332,14 @@ Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na p
 | AttributeTypeCode.Boolean | Wartość logiczna | ✓ | ✓ |
 | AttributeType.Customer | Identyfikator GUID | ✓ | | 
 | AttributeType.DateTime | Data/godzina | ✓ | ✓ |
-| AttributeType.Decimal | Dziesiętna | ✓ | ✓ |
+| AttributeType.Decimal | Dziesiętny | ✓ | ✓ |
 | AttributeType.Double | Podwójne | ✓ | ✓ |
 | AttributeType.EntityName | Ciąg | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Identyfikator GUID | ✓ | ✓ (ze skojarzonego pojedynczy element docelowy) |
 | AttributeType.ManagedProperty | Wartość logiczna | ✓ | |
 | AttributeType.Memo | Ciąg | ✓ | ✓ |
-| AttributeType.Money | Dziesiętna | ✓ | ✓ |
+| AttributeType.Money | Dziesiętny | ✓ | ✓ |
 | AttributeType.Owner | Identyfikator GUID | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Identyfikator GUID | ✓ | ✓ |
