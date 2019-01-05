@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 94ff3aca84eb27df5171df2a7a3b2b0f708a1d24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624232"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043791"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Tworzenie klastra usługi Service Fabric przy użyciu usługi Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ Aby utworzyć klaster, użyj następującego polecenia, jeśli masz certyfikat, 
 Jeśli jest to podpisany certyfikat urzędu certyfikacji i ostatecznie przy użyciu również do innych celów, następnie zalecane jest zapewniają oddzielnej grupie zasobów specjalnie dla własnego magazynu kluczy. Zaleca się umieścić usługi key vault w jego własnej grupie zasobów. Ta akcja umożliwia usunięcie grupy zasobów obliczeniowych i magazynu, w tym grupę zasobów, która zawiera Twój klaster usługi Service Fabric, bez utraty kluczy i wpisów tajnych. **Grupy zasobów, która zawiera Twój magazyn kluczy *musi znajdować się w tym samym regionie* jako klaster, który jest używany.**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Użyj domyślnego pięcioma węzłami, szablon typu jeden węzeł, który jest dostarczany w module
-Szablon, który jest używany jest dostępna w [przykładów dla platformy Azure: szablon Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [szablonu Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+Szablon, który jest używany jest dostępna w [przykładów dla platformy Azure: Szablon Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [szablonu Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 Wdrażanie klastra przy użyciu programu PowerShell:
 
@@ -288,6 +288,8 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym momencie masz działające na platformie Azure zabezpieczonego klastra. Następnie [połączenia z klastrem](service-fabric-connect-to-secure-cluster.md) i Dowiedz się, jak [Zarządzanie wpisami tajnymi aplikacji](service-fabric-application-secret-management.md).
+
+Składnię JSON i właściwości, aby użyć szablonu, zobacz [odwołanie do szablonu Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps

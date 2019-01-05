@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 066ae6ffba64c7dd71c982172f7cd15a881809b4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713235"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036804"
 ---
-# <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostyka funkcje trwałe (usługa Azure Functions)
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka funkcje trwałe na platformie Azure
 
 Dostępnych jest kilka opcji dotyczących diagnozowania problemów z [funkcje trwałe](durable-functions-overview.md). Niektóre opcje są takie same w przypadku funkcji regularnych, a niektóre z nich są unikatowe dla funkcje trwałe.
 

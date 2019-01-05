@@ -1,19 +1,18 @@
 ---
 title: Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 description: Zrozumienie poziomów spójności między interfejsami API w usłudze Azure Cosmos DB.
-keywords: spójność, usługi azure cosmos db, modeli, tabeli, bazy danych mongodb, programu graph, azure, bazy danych cassandra, platformy Microsoft azure
-services: cosmos-db
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 2fde29111ae1a95aec0cfef93762d3ae4f0e0dd0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: sngun
+ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809390"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034339"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 

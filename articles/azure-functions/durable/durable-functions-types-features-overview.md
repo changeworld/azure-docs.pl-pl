@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336531"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037280"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Omówienie typy funkcji i funkcji dla funkcje trwałe (usługi Azure Functions)
 
@@ -37,7 +37,7 @@ Więcej informacji i przykładów można znaleźć w [funkcje trwałe powiązani
 
 ### <a name="orchestrator-functions"></a>Funkcje programu orchestrator
 
-Funkcje programu orchestrator są niezwykle niezawodne funkcji.  Funkcje programu orchestrator opisują sposób i kolejności, w jakiej są wykonywane akcje.  Funkcje programu orchestrator aranżacji w kodzie (C# lub JavaScript) opisano, jak pokazano na [Przegląd funkcje trwałe](durable-functions-overview.md).  Organizacja może mieć wiele różnych rodzajów działań, takie jak [działania funkcji](#activity-functions), [podrzędnych aranżacji](#sub-orchestrations), [oczekiwanie na zdarzenia zewnętrzne](#external-events), i [ czasomierze](#durable-timers).  
+Funkcje programu orchestrator są niezwykle niezawodne funkcji.  Funkcje programu orchestrator opisują sposób i kolejności, w jakiej są wykonywane akcje.  Funkcje programu orchestrator opisują aranżacji w kodzie (C# czy języka JavaScript) jak pokazano na [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md).  Organizacja może mieć wiele różnych rodzajów działań, takie jak [działania funkcji](#activity-functions), [podrzędnych aranżacji](#sub-orchestrations), [oczekiwanie na zdarzenia zewnętrzne](#external-events), i [ czasomierze](#durable-timers).  
 
 Funkcja orkiestratora musi zostać wyzwolone przez [wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-triggers).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63045ce1ac06bfb87595675395a411978a17f95a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d3d2aa78ef853903263b4b497f0e399241ac8ce9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017059"
+ms.locfileid: "54050833"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -29,7 +29,7 @@ Istnieją trzy typy alertów:
 
 * **Alerty metryki** informujące o tym, gdy Metryka przekracza wartość progową przez pewien — na przykład czasy odpowiedzi, liczby wyjątków, użycie procesora CPU lub wyświetlenia stron. 
 * [**Testy sieci Web** ] [ availability] informujące o tym, gdy witryny jest niedostępna w Internecie lub odpowiada powoli. [Dowiedz się więcej][availability].
-* [**Diagnostyka proaktywna** ](../../application-insights/app-insights-proactive-diagnostics.md) są konfigurowane automatycznie Powiadomimy Cię o wydajności nietypowe wzorce.
+* [**Diagnostyka proaktywna** ](../../azure-monitor/app/proactive-diagnostics.md) są konfigurowane automatycznie Powiadomimy Cię o wydajności nietypowe wzorce.
 
 Skupimy się na alertów metryk, w tym artykule.
 
@@ -102,7 +102,7 @@ Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../..
 ## <a name="see-also"></a>Zobacz także
 * [Testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatyzowanie konfigurowania alertów](../../azure-monitor/app/powershell-alerts.md)
-* [Diagnostyka proaktywna](../../application-insights/app-insights-proactive-diagnostics.md) 
+* [Diagnostyka proaktywna](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

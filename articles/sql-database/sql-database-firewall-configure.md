@@ -11,21 +11,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/03/2019
+ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945471"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035274"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse
 
 Microsoft Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) to usługa relacyjnej bazy danych dla platformy Azure i innych aplikacji internetowych. Aby chronić dane, zapora uniemożliwia wszelki dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
 
 > [!NOTE]
-> Ten artykuł dotyczy serwera Azure SQL i bazy danych SQL Database i SQL Data Warehouse baz danych, które są tworzone na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. 
-
+> Ten artykuł dotyczy serwera Azure SQL i bazy danych SQL Database i SQL Data Warehouse baz danych, które są tworzone na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 > [!IMPORTANT]
 > W tym artykule jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database**. Zobacz następujący artykuł w [połączenie do wystąpienia zarządzanego](sql-database-managed-instance-connect-app.md) uzyskać więcej informacji o konfiguracji sieci niezbędnej.
 
@@ -58,9 +57,9 @@ Próby połączenia z Internetu i platformy Azure muszą najpierw przejść prze
 
 Firma Microsoft zaleca używanie reguły zapory na poziomie bazy danych w miarę możliwości, aby zwiększyć poziom bezpieczeństwa i uczynić bazę danych bardziej przenośny. Reguły zapory na poziomie serwera powinny być używane dla administratorów i w przypadku, gdy wiele baz danych ma takie same wymagania dotyczące dostępu, a użytkownik nie chce poświęcać czasu na oddzielne konfigurowanie każdej bazy danych.
 
-> [!Important]
+> [!IMPORTANT]
 > Windows Azure SQL Database obsługuje maksymalnie 128 reguł zapory.
-> [!Note]
+> [!NOTE]
 > Aby uzyskać informacje o przenośnych bazach danych w kontekście ciągłości działalności biznesowej, zobacz [Wymagania dotyczące uwierzytelniania dla odzyskiwania po awarii](sql-database-geo-replication-security-config.md).
 
 ### <a name="connecting-from-the-internet"></a>Łączenie się z Internetu
@@ -102,7 +101,7 @@ Aby ustawić regułę zapory na poziomie serwera w witrynie Azure portal, możes
 
 ### <a name="from-database-overview-page"></a>Na stronie Przegląd bazy danych
 
-1. Aby ustawić regułę zapory na poziomie serwera, na stronie Przegląd bazy danych, kliknij **Ustaw zaporę serwera** na pasku narzędzi, jak pokazano na poniższej ilustracji: **ustawienia zapory** strony dla serwera bazy danych SQL zostanie otwarty.
+1. Aby ustawić regułę zapory na poziomie serwera, na stronie Przegląd bazy danych, kliknij **Ustaw zaporę serwera** na pasku narzędzi, jak pokazano na poniższej ilustracji: Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database.
 
       ![reguła zapory serwera](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
@@ -223,7 +222,7 @@ Jeśli dostęp do usługi Microsoft Azure SQL Database nie działa zgodnie z ocz
 
 - **Konfiguracja lokalnej zapory:**
 
-  Zanim komputer może uzyskać dostęp do usługi Azure SQL Database, może być konieczne utworzenie wyjątku zapory na komputerze dla portu TCP 1433. W przypadku nawiązywania połączeń wewnątrz granic chmury Azure może być konieczne otwarcie dodatkowych portów. Aby uzyskać więcej informacji, zobacz **bazy danych SQL Database: poza vs wewnątrz** części [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+  Zanim komputer może uzyskać dostęp do usługi Azure SQL Database, może być konieczne utworzenie wyjątku zapory na komputerze dla portu TCP 1433. W przypadku nawiązywania połączeń wewnątrz granic chmury Azure może być konieczne otwarcie dodatkowych portów. Aby uzyskać więcej informacji, zobacz **bazy danych SQL: Poza programem vs wewnątrz** części [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 - **Translator adresów sieciowych (NAT):**
 
@@ -248,7 +247,7 @@ Jeśli dostęp do usługi Microsoft Azure SQL Database nie działa zgodnie z ocz
 
 - W przewodniku Szybki start dotyczące tworzenia bazy danych i regułę zapory na poziomie serwera, zobacz [utworzyć bazę danych Azure SQL](sql-database-get-started-portal.md).
 - Aby uzyskać pomoc podczas łączenia się z bazą danych Azure SQL z aplikacji innych firm lub aplikacji typu open source, zobacz [Client quick-start code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx) (Przykłady kodu umożliwiające szybki start dla klienta usługi SQL Database).
-- Aby uzyskać informacji na temat dodatkowych portów, które może być konieczne otwarcie, zobacz **bazy danych SQL: poza vs wewnątrz** części [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Aby uzyskać informacji na temat dodatkowych portów, które może być konieczne otwarcie, zobacz **bazy danych SQL: Poza programem vs wewnątrz** części [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 - Aby uzyskać omówienie zabezpieczeń usługi Azure SQL Database, zobacz [Zabezpieczanie bazy danych](sql-database-security-overview.md)
 
 <!--Image references-->

@@ -1,20 +1,17 @@
 ---
 title: Poziomy spójności w usłudze Azure Cosmos DB
 description: Usługa Azure Cosmos DB ma pięć poziomów spójności, aby ułatwić równoważenie ostatecznej spójnością, dostępnością i opóźnieniem wad i zalet.
-keywords: eventual consistency, azure cosmos db, azure, Microsoft azure
-services: cosmos-db
-author: aliuy
-ms.author: andrl
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089738"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034968"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
@@ -42,20 +39,20 @@ Kompleksowe umowy SLA, udostępniane przez usługi Azure Cosmos DB gwarancji, ż
 
 Semantyka poziomów spójności pięć są opisane poniżej:
 
-- **Silne**: zapewnia wysoki poziom spójności [atomowych](https://aphyr.com/posts/313-strong-consistency-models) gwarantuje. Operacje odczytu mają gwarancję do zwrócenia zatwierdzone najbardziej aktualną wersję elementu. Klient nigdy nie widzi zapisu niezatwierdzone lub jego część. Użytkownicy są zawsze gwarantowane odczyt najnowsza wersja zatwierdzone/zapis.
+- **Silne**: Zapewnia wysoki poziom spójności [atomowych](https://aphyr.com/posts/313-strong-consistency-models) gwarantuje. Operacje odczytu mają gwarancję do zwrócenia zatwierdzone najbardziej aktualną wersję elementu. Klient nigdy nie widzi zapisu niezatwierdzone lub jego część. Użytkownicy są zawsze gwarantowane odczyt najnowsza wersja zatwierdzone/zapis.
 
-- **Powiązana nieaktualność**: operacje odczytu mają gwarancję respektować gwarancja spójnego prefiksu. Odczyty mogą być opóźnione stosunku do zapisów przez co najwyżej wersje "K" (to znaczy "aktualizacji") elementu lub przedziału czasu "t". Po wybraniu powiązana nieaktualność, "nieaktualność", można skonfigurować na dwa sposoby: 
+- **Powiązana nieaktualność**: Operacje odczytu mają gwarancję respektować gwarancja spójnego prefiksu. Odczyty mogą być opóźnione stosunku do zapisów przez co najwyżej wersje "K" (to znaczy "aktualizacji") elementu lub przedziału czasu "t". Po wybraniu powiązana nieaktualność, "nieaktualność", można skonfigurować na dwa sposoby: 
 
   * Liczba wersji (KB) elementu
   * Za pomocą którego odczyty mogą być opóźnione w stosunku do zapisów przedział czasu (t) 
 
   Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Istnieje monotoniczny gwarancje odczytu w regionie wewnątrz lub na zewnątrz okna nieaktualność. Wysoki poziom spójności ma tą samą semantyką jako te oferowane przez powiązana nieaktualność. Okno nieaktualność jest równa zero. Powiązana nieaktualność jest również określany jako atomowych opóźnione czasu. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancji spójności powiązana nieaktualność są identyczne te gwarancje silnej spójności.
 
-- **Sesja**: operacje odczytu mają gwarancję respektować spójny prefiks (przy założeniu sesji jednego elementu "zapisującego"), monotoniczne odczyty, gwarantuje monotoniczny zapisu, odczytu swoich zapisów i write poniżej — operacje odczytu. Spójność sesji jest ograniczony do sesji klienta.
+- **Sesja**: Operacje odczytu mają gwarancję respektować spójny prefiks (przy założeniu sesji jednego elementu "zapisującego"), monotoniczne odczyty, zapisy monotoniczny, gwarancje odczytu swoich zapisów i write poniżej — operacje odczytu. Spójność sesji jest ograniczony do sesji klienta.
 
-- **Spójny prefiks**: aktualizacje, które są zwracane zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
+- **Spójny prefiks**: Aktualizacje, które są zwracane zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
 
-- **Ostateczna**: nie ma żadnej gwarancji szeregowania dla odczytów. W przypadku braku dalszy zapis replik ostatecznie zbiegają się.
+- **Ostateczna**: Nie ma szeregowania gwarancji dla odczytów. W przypadku braku dalszy zapis replik ostatecznie zbiegają się.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Poziomy spójności baseballu
 
@@ -72,7 +69,7 @@ Kontener usługi Azure Cosmos DB zawiera odwiedzających i domowej zespołu Uruc
 | - | - |
 | **Silne** | 2 – 5 |
 | **Powiązana nieaktualność** | Wyniki są co najwyżej jeden inning nieaktualna: 2-3, 2 – 4, 2 – 5 |
-| **Sesji** | <ul><li>Dla modułu zapisującego: 2 – 5</li><li> dla każdego z wyjątkiem moduł zapisujący: 0-0, 0-1, 0-2, 0 – 3, 0 4, 0-5, 1-0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2 i 3, 2 – 4, 2 – 5</li><li>Po przeczytaniu 1-3: 1-3, 1 – 4, 1 – 5, 2 i 3, 2 – 4, 2 – 5</li> |
+| **Sesji** | <ul><li>Dla modułu zapisującego: 2 – 5</li><li> Dla każdego z wyjątkiem składnika zapisywania programu: 0-0, 0-1, 0-2, 0 – 3, 0 4, 0-5, 1-0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2 i 3, 2 – 4, 2 – 5</li><li>Po przeczytaniu 1-3: 1-3, 1 – 4, 1 – 5, 2 i 3, 2 – 4, 2 – 5</li> |
 | **Spójny prefiks** | 0-0, 0 – 1, 1-1, 1 – 2, 1 – 3, 2 i 3, 2 – 4, 2 – 5 |
 | **Ostateczna** | 0-0, 0-1, 0-2, 0 – 3, 0 4, 0-5, 1-0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2 i 3, 2 – 4, 2 – 5 |
 
@@ -84,7 +81,7 @@ Aby dowiedzieć się więcej na temat pojęć spójności, przeczytaj następuj�
 - [Replikowane dane spójności wyjaśniono za pośrednictwem mecz (wideo) przez Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [Replikowane dane spójności wyjaśniono za pośrednictwem mecz (dokument oficjalny) przez Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Sesja gwarancje słabo spójności replikowanych danych](https://dl.acm.org/citation.cfm?id=383631)
-- [Wady i zalety spójności w nowoczesny wygląd systemy bazy danych dystrybucji: limit to tylko część wątku](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [Wady i zalety spójności w nowoczesnym rozproszonej bazy danych, projektowanie systemów: LIMIT to tylko część wątku](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 - [Powiązana nieaktualność probabilistyczny (PBS) dla praktyczne kworum częściowe](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Ostatecznie spójny — poprawiony](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 

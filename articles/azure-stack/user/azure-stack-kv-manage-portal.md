@@ -12,18 +12,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/04/201
 ms.author: sethm
-ms.openlocfilehash: 51c04a567ff953c4e84930e3feae448f78627683
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 89a9a5418e0eab210c1132570beda20a39635677
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713939"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034666"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>Zarządzanie usługi Key Vault w usłudze Azure Stack przy użyciu portalu
 
-Key Vault w usłudze Azure Stack można zarządzać za pomocą portalu usługi Azure Stack. Ten artykuł zawiera wprowadzenie do tworzenia i obsługi magazynu kluczy w usłudze Azure Stack.
+Key Vault w usłudze Azure Stack można zarządzać za pomocą portalu usługi Azure Stack. W tym artykule opisano, jak tworzyć i zarządzać nimi magazynu kluczy w usłudze Azure Stack.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,19 +33,17 @@ Należy subskrybować ofertę, która obejmuje usługę Azure Key Vault.
 
 1. Zaloguj się do [portal użytkowników](https://portal.local.azurestack.external).
 
-2. Na pulpicie nawigacyjnym wybierz **+ Utwórz zasób** > **bezpieczeństwo i Obsługa tożsamości** > **usługi Key Vault**.
+2. Na pulpicie nawigacyjnym wybierz **+ Utwórz zasób**, następnie **bezpieczeństwo i Obsługa tożsamości**, następnie **usługi Key Vault**.
 
     ![Ekranu usługi Key Vault](media/azure-stack-kv-manage-portal/image1.png)
 
-3. W **Tworzenie magazynu Key Vault** okienku przypisać **nazwa** dla magazynu. Nazwy magazynu może zawierać wyłącznie znaki alfanumeryczne i znak specjalny łącznika (-). Nie mogą zaczynać się cyfrą.
+3. W **Tworzenie magazynu Key Vault** okienku przypisać **nazwa** dla magazynu. Nazwy magazynu może zawierać tylko znaki alfanumeryczne i znak łącznika (-). Nie należy ich zaczynać się cyfrą.
 
 4. Wybierz **subskrypcji** z listy dostępnych subskrypcji. Wszystkie subskrypcje, które udostępniają usługi Key Vault są wyświetlane na liście rozwijanej.
 
-5. Wybierz istniejącą **grupę zasobów** lub utwórz nową.
+5. Wybierz istniejącą **grupy zasobów**, lub utworzyć nowy.
 
-6. Wybierz **warstwa cenowa**.
-    >[!NOTE]
-    > Klucz magazynów w obsłudze usługi Azure Stack Development Kit **standardowa** tylko jednostki SKU.
+6. Wybierz **warstwa cenowa**. Magazyny kluczy w usłudze Azure Stack Development Kit (ASDK), obsługa **standardowa** tylko jednostki SKU.
 
 7. Wybierz jedną z istniejących **zasady dostępu** lub utworzyć nowy. Zasady dostępu umożliwia przyznawanie uprawnień dla użytkownika, aplikacji lub grupy zabezpieczeń wykonywać operacje, w tym magazynie.
 
@@ -55,7 +53,7 @@ Należy subskrybować ofertę, która obejmuje usługę Azure Key Vault.
 
 ## <a name="manage-keys-and-secrets"></a>Zarządzanie kluczami i wpisami tajnymi
 
-Po utworzeniu magazynu, należy użyć następujące kroki, tworzenie i zarządzanie kluczami i wpisami tajnymi w ramach magazynu.
+Po utworzeniu magazynu, należy użyć poniższej procedury do tworzenia i obsługi kluczy i wpisów tajnych w magazynie.
 
 ### <a name="create-a-key"></a>Utwórz klucz
 
@@ -67,7 +65,7 @@ Po utworzeniu magazynu, należy użyć następujące kroki, tworzenie i zarządz
 
 4. W **Utwórz klucz** okienko z listy **opcje**, wybierz metodę, która ma zostać użyte do utworzenia klucza. Możesz **Generuj** nowy klucz **przekazywanie** istniejącego klucza, lub użyj **przywracanie kopii zapasowej** do wybierz kopię zapasową klucza.
 
-5. Wprowadź **nazwa** związane z kluczem. Nazwa klucza może zawierać tylko znaki alfanumeryczne i znaki specjalne łącznika (-).
+5. Wprowadź **nazwa** związane z kluczem. Nazwa klucza może zawierać tylko znaki alfanumeryczne i znak łącznika (-).
 
 6. Opcjonalnie skonfiguruj **czy ustawić datę aktywacji** i **Ustaw datę wygaśnięcia** wartości dla klucza.
 
@@ -80,13 +78,14 @@ Po pomyślnym utworzeniu klucza, możesz wybrać go w obszarze **klucze** i wyś
 ### <a name="create-a-secret"></a>Utwórz klucz tajny
 
 1. Zaloguj się do [portal użytkowników](https://portal.local.azurestack.external).
+
 2. Na pulpicie nawigacyjnym wybierz **wszystkie zasoby**, wybierz magazyn kluczy, który został utworzony wcześniej, a następnie wybierz **wpisów tajnych** kafelka.
 
 3. W obszarze **wpisów tajnych**, wybierz opcję **Dodaj**.
 
-4. W obszarze **Utwórz klucz tajny**, z listy **opcje przekazywania**, wybierz jedną z opcji za pomocą którego chcesz utworzyć klucz tajny. Można utworzyć wpisu tajnego **ręcznie** po wprowadzeniu wartości dla klucza tajnego lub przesłać **certyfikatu** z komputera lokalnego.
+4. W obszarze **Utwórz klucz tajny**, z listy **opcje przekazywania**, wybierz jedną z opcji, z którym chcesz utworzyć klucz tajny. Można utworzyć wpisu tajnego **ręcznie** po wprowadzeniu wartości dla klucza tajnego lub przesłać **certyfikatu** z komputera lokalnego.
 
-5. Wprowadź **nazwa** dla klucza tajnego. Nazwa wpisu tajnego może zawierać tylko znaki alfanumeryczne i znaki specjalne łącznika (-).
+5. Wprowadź **nazwa** dla klucza tajnego. Nazwa wpisu tajnego może zawierać tylko znaki alfanumeryczne i znak łącznika (-).
 
 6. Opcjonalnie można określić **typ zawartości**i skonfigurować wartości **czy ustawić datę aktywacji** i **Ustaw datę wygaśnięcia** dla klucza tajnego.
 

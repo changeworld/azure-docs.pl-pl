@@ -1,20 +1,19 @@
 ---
 title: Praca z usługi Azure Cosmos DB Cassandra API z platformy Spark
 description: Ten artykuł jest strona główna Cosmos DB Cassandra API integracji z platformy Spark.
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: cb58ad60501be43ff4da2db29ab3ad3dfee9aad1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847137"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037230"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Łączenie do usługi Azure Cosmos DB Cassandra API z platformy Spark
 
@@ -26,16 +25,16 @@ Ten artykuł stanowi jednej serii artykułów dotyczących integracji interfejsu
 * Aprowizowanie preferowanego środowiska Spark [[usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [usługi Azure HDInsight — Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Inne].
 
 ## <a name="dependencies-for-connectivity"></a>Zależności dotyczące łączności
-* **Łącznik Spark dla bazy danych Cassandra:** służy łącznik Spark nawiązać połączenia z interfejsem API usługi Azure Cosmos DB Cassandra.  Identyfikowanie i używana wersja łącznika na terenie [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) zgodny z platformami Spark i Scala wersje środowiska platformy Spark.
+* **Łącznik platformy Spark dla bazy danych Cassandra:** Łącznik platformy Spark jest używany, połączyć się z interfejsem API usługi Azure Cosmos DB Cassandra.  Identyfikowanie i używana wersja łącznika na terenie [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) zgodny z platformami Spark i Scala wersje środowiska platformy Spark.
 
-* **Biblioteka Pomocy usługi Azure Cosmos DB dla interfejsu API rozwiązania Cassandra:** oprócz łącznik platformy Spark, potrzebujesz innej biblioteki o nazwie [azure-cosmos-cassandra-spark Pomocnika]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z usługi Azure Cosmos DB. Ta biblioteka zawiera klasy zasad niestandardowych połączenia fabryki, a następnie spróbuj ponownie.
+* **Biblioteka pomocnika usługi Azure Cosmos DB dla interfejsu API rozwiązania Cassandra:** Oprócz łącznik platformy Spark, potrzebujesz innej biblioteki o nazwie [azure-cosmos-cassandra-spark Pomocnika]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z usługi Azure Cosmos DB. Ta biblioteka zawiera klasy zasad niestandardowych połączenia fabryki, a następnie spróbuj ponownie.
 
   Zasady ponawiania prób w usłudze Azure Cosmos DB jest skonfigurowany do obsługi HTTP status kodu 429 "("żądania dużej szybkości) wyjątki. Interfejs API usługi Azure Cosmos DB Cassandra tłumaczy tych wyjątków w błędy przeciążona natywnego protokołu bazy danych Cassandra i będzie można ponowić próbę z powrotem kompromisu. Ponieważ usługi Azure Cosmos DB używa modelu aprowizowanej przepływności, wyjątki ograniczanie szybkości żądania wystąpić, gdy ruchem przychodzącym/wychodzącym ocenia wzrost. Zasady ponawiania chroni względem wartości graniczne danych, które chwilowo przekroczenie przepływności przydzielonych do kolekcji zadań platformy spark.
 
   > [!NOTE] 
   > Zasady ponawiania może chronić zadań platformy spark względem tylko przechwytują skoki. Jeśli nie skonfigurowano wystarczającej liczby jednostek RU, wymagane do uruchomienia obciążenia, zasady ponawiania nie ma zastosowania i klasy zasad ponawiania prób ponownie zgłasza wyjątek.
 
-* **Szczegóły połączenia konta w usłudze Azure Cosmos DB:** nazwę konta, punkt końcowy konta i klucz interfejsu API rozwiązania Cassandra usługi Azure.
+* **Szczegóły połączenia konta usługi Azure Cosmos DB:** Usługi interfejsu API rozwiązania Cassandra usługi Azure nazwę konta, punkt końcowy konta i klucz.
     
 ## <a name="spark-connector-throughput-configuration-parameters"></a>Parametry konfiguracji przepływności łącznika Spark
 

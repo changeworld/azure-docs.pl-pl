@@ -1,20 +1,19 @@
 ---
 title: 'Azure Cosmos DB: Interfejs API programu .NET zmiany źródła danych procesora, zestawu SDK i zasoby'
 description: Dowiedz się wszystkiego o interfejsu API procesora kanału informacyjnego zmian i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zmiany źródła danych procesora zestawu SDK programu .NET.
-services: cosmos-db
 author: ealsur
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f7c8313e6216f10dccdfbb298bbf02036e21c138
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407868"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043009"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zmiana .NET kanału informacyjnego procesora zestawu SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]

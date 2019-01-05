@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 77b278d939b7d2676ade03af75e48c1e2df184f9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de28bce852d00900bee19b2fa4d7e4e39d050b4d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028603"
+ms.locfileid: "54054524"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -108,7 +108,7 @@ Gdzie jest problem? Jest wolne odpowiedzi serwera, jest bardzo długi strony lub
 
 Otwórz blok przeglądarki, metryki. Segmenty wyświetlania przeglądarki strony obciążenia czasu wskazuje, gdzie czas. 
 
-* Jeśli **czas wysyłania żądania** jest wysokie, albo serwer odpowiada powoli lub żądanie jest żądaniem post z dużą ilością danych. Przyjrzyj się [metryki wydajności](../../application-insights/app-insights-web-monitor-performance.md#metrics) do badania czasy odpowiedzi.
+* Jeśli **czas wysyłania żądania** jest wysokie, albo serwer odpowiada powoli lub żądanie jest żądaniem post z dużą ilością danych. Przyjrzyj się [metryki wydajności](../../azure-monitor/app/web-monitor-performance.md#metrics) do badania czasy odpowiedzi.
 * Konfigurowanie [śledzenia zależności](../../azure-monitor/app/asp-net-dependencies.md) aby zobaczyć, czy powolność wynika z usługami zewnętrznymi lub bazy danych.
 * Jeśli **odbierania odpowiedzi** jest dominującym, strony i jego zależne elementy — JavaScript, CSS, obrazów i tak dalej (ale nie asynchronicznie załadowanych danych) są długie. Konfigurowanie [testu dostępności](../../azure-monitor/app/monitor-web-app-availability.md)i należy ustawić opcję, aby załadować zależne elementy. Po otrzymaniu niektórych wyników Otwórz szczegóły wyniku i rozwiń go, aby zobaczyć, czasy ładowania różnych plików.
 * Wysoka **czas przetwarzania klienta** sugeruje skrypty działają wolno. Jeśli przyczyną jest oczywiste, Rozważ dodanie kodu czasu i czasy wysyłania w wywołaniach trackMetric.

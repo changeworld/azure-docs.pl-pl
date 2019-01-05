@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 7f66c87322aadafaa7167dff4190de6d08e5d18d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 606a7c64cc60fa81a71bf40a8087875e08e7c984
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338417"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053027"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używają bliźniaczych reprezentacji urządzeń w usłudze IoT Hub
 
@@ -382,4 +382,4 @@ Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki
 
 * [Jak używać bliźniaczej reprezentacji urządzenia](iot-hub-node-node-twin-getstarted.md)
 * [Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń](tutorial-device-twins.md)
-* [Zarządzanie urządzeniami za pomocą usługi Azure IoT Hub Toolkit dla programu VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Zarządzanie urządzeniami za pomocą narzędzia IoT platformy Azure dla programu VS Code](iot-hub-device-management-iot-toolkit.md)

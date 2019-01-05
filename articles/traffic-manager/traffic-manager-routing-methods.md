@@ -1,8 +1,7 @@
 ---
-title: Metody routingu ruchu w usłudze Azure Traffic Manager — | Dokumentacja firmy Microsoft
+title: Usługa Azure Traffic Manager — metody routingu ruchu
 description: Ten artykuł ułatwia zrozumienie metod routingu ruchu innego, używane przez usługę Traffic Manager
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 57ae9f3a747ef3fde1a21de8a56ec4059becf392
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139347"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054728"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
@@ -24,12 +23,12 @@ Usługa Azure Traffic Manager obsługuje sześć metody routingu ruchu, aby okre
 
 Dostępne w usłudze Traffic Manager są następujące metody routingu ruchu:
 
-* **[Priorytet](#priority):** wybierz **priorytet** Jeśli chcesz używać punktu końcowego usługi podstawowej dla całego ruchu i wykonywanie kopii zapasowych w przypadku podstawowej lub kopii zapasowej punkty końcowe są niedostępne.
-* **[Ważona](#weighted):** wybierz **ważona** Jeśli chcesz rozproszyć ruch między zestawem punktów końcowych, albo równomiernie lub według wagi, które można zdefiniować.
-* **[Wydajność](#performance):** wybierz **wydajności** gdy mają punkty końcowe w różnych lokalizacjach geograficznych i chcesz, aby używać punktu końcowego "najbliższy" pod kątem najniższych opóźnieniem sieci użytkowników końcowych.
-* **[Geograficzne](#geographic):** wybierz **geograficzne** tak, aby użytkownicy są kierowane do określonych punktów końcowych (Azure zewnętrzne i zagnieżdżone) oparte na lokalizacji geograficznej, do której pochodzi swoje zapytanie DNS. Umożliwia to klientom usługi Traffic Manager umożliwia realizację scenariuszy, w których jest ważna, wiedząc, regionu geograficznego użytkownika i routing, ich oparta na. Przykłady obejmują zgodnych z zleceń niezależność danych, lokalizacja środowiska użytkownika & zawartości i pomiaru ruchu z różnych regionów.
-* **[Atrybut wielowartościowy elementu](#multivalue):** wybierz **atrybut wielowartościowy elementu** dla profilów usługi Traffic Manager, które może mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po otrzymaniu kwerendy dla tego profilu, zwracane są wszystkie punkty końcowe w dobrej kondycji.
-* **[Podsieci](#subnet):** wybierz **podsieci** metody routingu ruchu do mapowania zestawów zakresów adresów IP dla użytkowników końcowych do określonego punktu końcowego w profilu usługi Traffic Manager. Po odebraniu żądania punktu końcowego zwracane będą jeden mapowane dla tego żądania źródłowego adresu IP. 
+* **[Priorytet](#priority):** Wybierz **priorytet** Jeśli chcesz używać punktu końcowego usługi podstawowej dla całego ruchu i wykonywanie kopii zapasowych w przypadku podstawowej lub kopii zapasowej punkty końcowe są niedostępne.
+* **[Ważona średnia](#weighted):** Wybierz **ważona** Jeśli chcesz rozproszyć ruch między zestawem punktów końcowych, albo równomiernie lub według wagi, które można zdefiniować.
+* **[Wydajność](#performance):** Wybierz **wydajności** gdy mają punkty końcowe w różnych lokalizacjach geograficznych i chcesz, aby używać punktu końcowego "najbliższy" pod kątem najniższych opóźnieniem sieci użytkowników końcowych.
+* **[Geograficzne](#geographic):** Wybierz **Geographic** tak, aby użytkownicy są kierowane do określonych punktów końcowych (Azure zewnętrzne i zagnieżdżone) oparte na lokalizacji geograficznej, do której pochodzi swoje zapytanie DNS. Umożliwia to klientom usługi Traffic Manager umożliwia realizację scenariuszy, w których jest ważna, wiedząc, regionu geograficznego użytkownika i routing, ich oparta na. Przykłady obejmują zgodnych z zleceń niezależność danych, lokalizacja środowiska użytkownika & zawartości i pomiaru ruchu z różnych regionów.
+* **[Atrybut wielowartościowy elementu](#multivalue):** Wybierz **atrybut wielowartościowy elementu** dla profilów usługi Traffic Manager, które może mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po otrzymaniu kwerendy dla tego profilu, zwracane są wszystkie punkty końcowe w dobrej kondycji.
+* **[Podsieci](#subnet):** Wybierz **podsieci** metody routingu ruchu do mapowania zestawów zakresów adresów IP dla użytkowników końcowych do określonego punktu końcowego w profilu usługi Traffic Manager. Po odebraniu żądania punktu końcowego zwracane będą jeden mapowane dla tego żądania źródłowego adresu IP. 
 
 
 Wszystkie profile usługi Traffic Manager obejmują monitorowanie kondycji punktu końcowego i punktu końcowego automatycznego trybu failover. Aby uzyskać więcej informacji, zobacz [monitorowanie punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md). Jeden profil usługi Traffic Manager można użyć tylko jedna metoda routingu ruchu. Metody routingu ruchu innego można wybrać dla swojego profilu w dowolnym momencie. Zmiany są stosowane w ciągu jednej minuty, a jest naliczany bez przestojów. Metody routingu ruchu mogą być połączone za pomocą zagnieżdżone profile usługi Traffic Manager. Zagnieżdżanie umożliwia zaawansowane i elastyczne konfiguracje routing ruchu procesów, które spełnienia wymagań większych i złożonych aplikacji. Aby uzyskać więcej informacji, zobacz [zagnieżdżone profile usługi Traffic Manager](traffic-manager-nested-profiles.md).
@@ -57,9 +56,9 @@ Dla każdego odebrane zapytania DNS Traffic Manager losowo wybiera dostępnego p
 
 Metoda ważona zapewnia pewne przydatne w scenariuszach:
 
-* Uaktualnienie stopniowe aplikacji: przydzielić procent ruchu sieciowego, aby kierować do nowego punktu końcowego, a następnie stopniowo zwiększać ruchu, wraz z upływem czasu do 100%.
-* Migracja aplikacji na platformie Azure: Tworzenie profilu za pomocą zarówno dla platformy Azure, jak i zewnętrznych punktów końcowych. Dostosuj wagę punktów końcowych preferowanie nowe punkty końcowe.
-* Rozszerzanie możliwości chmury za dodatkową pojemność: szybko rozbudować wdrożenia lokalnego do chmury, ustawiając dla niego za profilu usługi Traffic Manager. Jeśli potrzebujesz dodatkowej pojemności w chmurze, należy dodać lub włączyć dodatkowe punkty końcowe i określić, jaka część ruchu jest przesyłany do każdego punktu końcowego.
+* Uaktualnienie stopniowe aplikacji: Przydziel procent ruchu sieciowego, aby kierować do nowego punktu końcowego, a następnie stopniowo zwiększać ruchu, wraz z upływem czasu do 100%.
+* Migracja aplikacji na platformie Azure: Utwórz profil przy użyciu zarówno dla platformy Azure, jak i zewnętrznych punktów końcowych. Dostosuj wagę punktów końcowych preferowanie nowe punkty końcowe.
+* Dużego ruchu w chmurze za dodatkową pojemność: Szybko rozbudować wdrożenia lokalnego do chmury, ustawiając dla niego za profilu usługi Traffic Manager. Jeśli potrzebujesz dodatkowej pojemności w chmurze, należy dodać lub włączyć dodatkowe punkty końcowe i określić, jaka część ruchu jest przesyłany do każdego punktu końcowego.
 
 Oprócz przy użyciu witryny Azure portal, można skonfigurować przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia i interfejsów API REST wagi.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 653a636ca2d71c573ffde2e9e70a06cf3fcc95fb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d3dca1d7247a822720d32e32fe959053fb80ddd1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021887"
+ms.locfileid: "54052483"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Nawigacja i pulpity nawigacyjne w portalu Application Insights
 Po utworzeniu [Konfigurowanie usługi Application Insights w projekcie](../../application-insights/app-insights-overview.md), dane telemetryczne dotyczące użycia i wydajności aplikacji będą wyświetlane w zasobie usługi Application Insights projektu w [witryny Azure portal](https://portal.azure.com).
@@ -129,12 +129,12 @@ Blok przeglądu jest bramy Aby dowiedzieć się więcej o aplikacji.
 ZBADAJ
 
 * [**Mapa aplikacji** ](app-map.md) -Active mapie składniki aplikacji, pochodzące z informacji o zależnościach.
-* [**Wykrywanie inteligentne** ](../../application-insights/app-insights-proactive-diagnostics.md) — ostatnie alerty wydajności można przeglądać.
+* [**Wykrywanie inteligentne** ](../../azure-monitor/app/proactive-diagnostics.md) — ostatnie alerty wydajności można przeglądać.
 * [**Live Stream** ](../../azure-monitor/app/live-stream.md) — A ustalony zestaw metryk niemal natychmiastowe przydatne podczas wdrażania nowej kompilacji lub debugowania.
 * [**Dostępność / testy sieci Web** ](../../azure-monitor/app/monitor-web-app-availability.md) -wysyłania żądań regularne do aplikacji sieci web z całym world.*
-* [**Błędów, wydajności** ](../../application-insights/app-insights-web-monitor-performance.md) — wyjątki, częstotliwości awarii i czasów odpowiedzi dla żądań kierowanych do aplikacji i dla żądań z aplikacji, aby [zależności](../../azure-monitor/app/asp-net-dependencies.md).
-* [**Wydajność** ](../../application-insights/app-insights-web-monitor-performance.md) — czas reakcji, czasy reakcji zależności.
-* [Serwery](../../application-insights/app-insights-web-monitor-performance.md) -liczniki wydajności. Jeśli dostępne możesz [Zainstaluj Monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md).
+* [**Błędów, wydajności** ](../../azure-monitor/app/web-monitor-performance.md) — wyjątki, częstotliwości awarii i czasów odpowiedzi dla żądań kierowanych do aplikacji i dla żądań z aplikacji, aby [zależności](../../azure-monitor/app/asp-net-dependencies.md).
+* [**Wydajność** ](../../azure-monitor/app/web-monitor-performance.md) — czas reakcji, czasy reakcji zależności.
+* [Serwery](../../azure-monitor/app/web-monitor-performance.md) -liczniki wydajności. Jeśli dostępne możesz [Zainstaluj Monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Przeglądarka** — strony widoku i wydajności AJAX. Jeśli dostępne możesz [Instrumentacja stron sieci web](../../azure-monitor/app/javascript.md).
 * **Użycie** -stronie liczby widoku, użytkowników i sesji. Jeśli dostępne możesz [Instrumentacja stron sieci web](../../azure-monitor/app/javascript.md).
 

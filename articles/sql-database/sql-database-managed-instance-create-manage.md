@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 7fb6917e129c015536143a707fd2a89fc5423a99
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 01/03/2019
+ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323084"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040204"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja interfejsu API zarządzanego w wystąpieniach zarządzanych bazy danych SQL Azure
 
 Można tworzyć i zarządzać usługi Azure SQL wystąpieniach zarządzanych bazy danych przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST i języka Transact-SQL. W tym artykule można znaleźć Przegląd funkcji i interfejsu API, który umożliwia tworzenie i konfigurowanie wystąpienia zarządzanego.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Witryna Azure portal: Tworzenie wystąpienia zarządzanego
+## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: Tworzenie wystąpienia zarządzanego
 
 Aby uzyskać szybki start omawiający Tworzenie wystąpienia zarządzanego bazy danych SQL Azure, zobacz [Szybki Start: Tworzenie wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-get-started.md).
 
@@ -37,9 +37,13 @@ Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomoc
 | Polecenie cmdlet | Opis |
 | --- | --- |
 |[Nowe AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Tworzy wystąpienie zarządzane usługi Azure SQL Database |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlInstance)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL|
-|[Zestaw AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Set-AzureRmSqlInstance)|Ustawia właściwości dla wystąpienia zarządzanego bazy danych SQL Azure|
-|[Usuń AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Remove-AzureRmSqlInstance)|Usuwa wystąpienie zarządzane bazy danych Azure SQL|
+|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL|
+|[Zestaw AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Ustawia właściwości dla wystąpienia zarządzanego bazy danych SQL Azure|
+|[Usuń AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Usuwa wystąpienie zarządzane bazy danych Azure SQL|
+|[Nowe AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Tworzy bazę danych Azure SQL Database Managed Instance|
+|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL database|
+|[Usuń AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Usuwa bazę danych Azure SQL Managed Instance bazy danych|
+|[Przywracanie AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Przywraca bazę danych Azure SQL Managed Instance bazy danych|
 
 ## <a name="azure-cli-manage-logical-servers-and-databases"></a>Interfejs wiersza polecenia platformy Azure: Zarządzanie serwerów logicznych i baz danych
 
@@ -47,15 +51,19 @@ Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą 
 
 > [!TIP]
 > W przewodniku Szybki Start wiersza polecenia platformy Azure, zobacz [Praca z wystąpienia zarządzanego SQL przy użyciu wiersza polecenia platformy Azure](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
->
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-|[Tworzenie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-create) |Tworzy wystąpienie zarządzane|
-|[AZ sql mi listy](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-list)|Wyświetla dostępne wystąpienia zarządzane|
-|[Pokaż mi sql az](/cli/azure/sql/db#az-sql-mi-show)|Uzyskaj szczegółowe informacje dla wystąpienia zarządzanego|
-|[Aktualizacja wystąpienia zarządzanego sql az](/cli/azure/sql/db#az-sql-mi-update)|Aktualizuje wystąpienia zarządzanego|
-|[Usuwanie wystąpienia zarządzanego sql az](/cli/azure/sql/db#az-sql-mi-delete)|Usuwa wystąpienia zarządzanego|
+|[Tworzenie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Tworzy wystąpienie zarządzane|
+|[AZ sql mi listy](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Wyświetla dostępne wystąpienia zarządzane|
+|[Pokaż mi sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Uzyskaj szczegółowe informacje dla wystąpienia zarządzanego|
+|[Aktualizacja wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Aktualizuje wystąpienia zarządzanego|
+|[Usuwanie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Usuwa wystąpienia zarządzanego|
+|[Utwórz fragment sql az](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Utworzenie zarządzanej bazy danych|
+|[AZ sql fragment listy](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Dostępne listy zarządzane bazy danych|
+|[AZ sql fragment przywracania](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Przywracanie zarządzanej bazy danych|
+|[Aktualizacja fragment sql az](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|Aktualizuje zarządzanej bazy danych|
+|[AZ sql fragment delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Usuwa zarządzanej bazy danych|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Języka Transact-SQL: Zarządzanie serwerów logicznych i baz danych
 

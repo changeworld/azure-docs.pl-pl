@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339590"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043961"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkcja łańcucha w funkcje trwałe — przykładowy sekwencja Hello
 
-Funkcja łańcucha odnosi się do wzorca wykonywanie sekwencji funkcji w określonej kolejności. Często dane wyjściowe jedna funkcja musi zostać zastosowana na dane wejściowe innej funkcji. W tym artykule opisano łańcucha sekwencji, utworzony po ukończeniu tego przewodnika Szybki Start funkcje trwałe ([ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md)). Aby uzyskać więcej informacji na temat funkcje trwałe, zobacz [Przegląd funkcje trwałe](durable-functions-overview.md).
+Funkcja łańcucha odnosi się do wzorca wykonywanie sekwencji funkcji w określonej kolejności. Często dane wyjściowe jedna funkcja musi zostać zastosowana na dane wejściowe innej funkcji. W tym artykule opisano łańcucha sekwencji, utworzony po ukończeniu tego przewodnika Szybki Start funkcje trwałe ([ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md)). Aby uzyskać więcej informacji na temat funkcje trwałe, zobacz [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -142,7 +142,7 @@ Jak widać, `runtimeStatus` wystąpienia jest *Ukończono* i `output` zawiera wy
 > [!NOTE]
 > Punkt końcowy HTTP POST, który uruchomiona funkcja orkiestratora jest zaimplementowana w przykładowej aplikacji jako HTTP wyzwalanie funkcji o nazwie "HttpStart". Jak zaimplementować podobnej logiki początkowy dla innych typów wyzwalaczy `queueTrigger`, `eventHubTrigger`, lub `timerTrigger`.
 
-Sprawdź dzienniki wykonywania funkcji. `E1_HelloSequence` Funkcji i kończy się wiele razy ze względu na zachowanie powtarzania opisane w [Przegląd](durable-functions-overview.md). Z drugiej strony, było tylko dla trzech wykonaniami `E1_SayHello` od czasu wykonania tych funkcji nie uzyskać odtwarzany.
+Sprawdź dzienniki wykonywania funkcji. `E1_HelloSequence` Funkcji i kończy się wiele razy ze względu na zachowanie powtarzania opisane w [Przegląd](durable-functions-concepts.md). Z drugiej strony, było tylko dla trzech wykonaniami `E1_SayHello` od czasu wykonania tych funkcji nie uzyskać odtwarzany.
 
 ## <a name="visual-studio-sample-code"></a>Kod przykładowy w usłudze Visual Studio
 

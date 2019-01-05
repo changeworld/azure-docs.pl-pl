@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: 892e4e776479d767326d4895dbf4bd4f30c418b0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973206"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034033"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -224,10 +224,10 @@ W środowisku produkcyjnym prawdopodobnie okresowo odświeżyć klucze magazynu.
 
 **Polecenia cmdlet programu PowerShell (w tym obsługa klauzuli WHERE filtrowania dodatkowych)**:
 
-- [Utwórz lub zaktualizuj Blob bazy danych inspekcji zasad (zestaw AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Utwórz lub zaktualizuj serwer Blob inspekcji zasad (zestaw AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing)
-- [Pobierz zasady inspekcji bazy danych (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Pobieranie obiektów Blob serwera zasady inspekcji (Get-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing)
+- [Utwórz lub zaktualizuj Blob bazy danych inspekcji zasad (zestaw AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Utwórz lub zaktualizuj serwer Blob inspekcji zasad (zestaw AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Pobierz zasady inspekcji bazy danych (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Pobieranie obiektów Blob serwera zasady inspekcji (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie zagrożeń za pomocą programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -249,7 +249,7 @@ Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dod
 
 ## <a id="subheading-10"></a>Zarządzanie inspekcji usługi SQL database przy użyciu szablonów ARM
 
-Można zarządzać za pomocą inspekcja bazy danych Azure SQL [usługi Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) szablonów, jak pokazano w tych przykładach:
+Można zarządzać za pomocą inspekcja bazy danych Azure SQL [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) szablonów, jak pokazano w tych przykładach:
 
 - [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji do konta magazynu obiektów blob platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
 - [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)

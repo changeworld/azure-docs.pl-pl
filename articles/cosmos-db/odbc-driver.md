@@ -1,19 +1,17 @@
 ---
 title: Połączyć z usługą Azure Cosmos DB za pomocą narzędzi analitycznych do analizy Biznesowej
 description: Dowiedz się, jak tworzyć tabele i widoki, tak aby znormalizowane dane mogą być wyświetlane w oprogramowaniu do analizy danych i analizy Biznesowej za pomocą sterownika ODBC programu usługi Azure Cosmos DB.
-keywords: ODBC i sterowników odbc
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: d1ea0a51d9637c1ca1dba214e969e6835dfb241c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136362"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034476"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Połączyć z usługą Azure Cosmos DB za pomocą narzędzi analitycznych do analizy Biznesowej ze sterownikiem ODBC
 
@@ -31,7 +29,7 @@ Jest to, gdzie sterownik ODBC jest oferowana w. Za pomocą sterownika ODBC, moż
 
 Zacznijmy od sterownika ODBC.
 
-## <a id="install"></a>Krok 1: Instalowanie sterownika ODBC programu usługi Azure Cosmos DB
+## <a id="install"></a>Krok 1. Zainstaluj sterownik ODBC programu usługi Azure Cosmos DB
 
 1. Pobieranie sterowników, które w danym środowisku:
 
@@ -50,7 +48,7 @@ Zacznijmy od sterownika ODBC.
 
     ![Administrator źródła danych ODBC usługi Azure Cosmos DB](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>Krok 2: Łączenie z bazą danych Azure Cosmos DB
+## <a id="connect"></a>Krok 2. Łączenie z bazą danych Azure Cosmos DB
 
 1. Po [instalowania sterownika ODBC programu usługi Azure Cosmos DB](#install)w **Administrator źródła danych ODBC** okna, kliknij przycisk **Dodaj**. Można utworzyć użytkownika lub System DSN. W tym przykładzie jest tworzona DSN użytkownika.
 
@@ -59,19 +57,19 @@ Zacznijmy od sterownika ODBC.
 1. W **ustawienia sieci SDN sterownika ODBC usługi Azure Cosmos DB** okna, wprowadź następujące informacje: 
 
     ![Usługa Azure Cosmos DB ODBC Driver DSN Instalatora okna](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Nazwa źródła danych**: przyjazną nazwę dla nazwy DSN ODBC. Ta nazwa jest unikatowa dla konta usługi Azure Cosmos DB, więc nazwij ją odpowiednio w przypadku wielu kont.
+    - **Nazwa źródła danych**: Własne przyjazną nazwę ODBC DSN. Ta nazwa jest unikatowa dla konta usługi Azure Cosmos DB, więc nazwij ją odpowiednio w przypadku wielu kont.
     - **Opis**: Krótki opis źródła danych.
-    - **Host**: identyfikator URI dla konta usługi Azure Cosmos DB. Możesz pobrać ten ze strony usługi Azure Cosmos DB klucze w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu. 
-    - **Klucz dostępu**: klucz podstawowy lub pomocniczy, odczytu i zapisu lub tylko do odczytu z usługi Azure Cosmos DB kluczy stronie w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu. Zaleca się, że używasz klucza tylko do odczytu, jeśli nazwy DSN jest używana do przetwarzania danych tylko do odczytu i raportowania.
+    - **Host**: Identyfikator URI dla konta usługi Azure Cosmos DB. Możesz pobrać ten ze strony usługi Azure Cosmos DB klucze w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu. 
+    - **Klucz dostępu**: Klucz podstawowy lub pomocniczy, odczytu i zapisu lub tylko do odczytu ze strony usługi Azure Cosmos DB klucze w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu. Zaleca się, że używasz klucza tylko do odczytu, jeśli nazwy DSN jest używana do przetwarzania danych tylko do odczytu i raportowania.
     ![Strona usługi Azure Cosmos DB kluczy](./media/odbc-driver/odbc-driver-keys.png)
-    - **Szyfrowanie klucza dostępu dla**: Wybierz najlepszym wyborem na podstawie użytkowników tego komputera. 
+    - **Szyfrowanie klucza dostępu dla**: Wybierz najlepszy wybór na podstawie użytkowników tego komputera. 
     
 1. Kliknij przycisk **testu** przycisk, aby upewnić się, czy można połączyć z kontem usługi Azure Cosmos DB. 
 
 1. Kliknij przycisk **zaawansowane opcje** i ustaw następujące wartości:
     - **Zapytanie spójności**: Wybierz [poziomu spójności](consistency-levels.md) operacji. Wartość domyślna to sesji.
     - **Liczba ponownych prób**: Wprowadź liczbę ponownych prób operacji, jeśli żądania wstępnego nie została zakończona z powodu ograniczania szybkości usług.
-    - **Plik schematu**: w tym miejscu masz kilka opcji.
+    - **Plik schematu**: W tym miejscu masz kilka opcji.
         - Domyślnie ten wpis jest (pusty), pozostawiając sterownik skanuje pierwszej strony danych dla wszystkich kolekcji ustalić schemat każdej kolekcji. Jest to nazywane mapowanie kolekcji. Nie zdefiniowano pliku schematu sterownik ma skanowania dla każdej sesji sterowników i może spowodować wyższe czas uruchamiania aplikacji przy użyciu nazwy DSN. Firma Microsoft zaleca, zawsze skojarzenie pliku schematu dla nazwy DSN.
         - Jeśli masz już plik schematu (prawdopodobnie takie, które zostały utworzone za pomocą [Edytor schematów](#schema-editor)), możesz kliknąć pozycję **Przeglądaj**, przejdź do pliku, kliknij przycisk **Zapisz**, a następnie kliknij przycisk **OK**.
         - Jeśli chcesz utworzyć nowy schemat, kliknij przycisk **OK**, a następnie kliknij przycisk **Edytor schematów** w głównym oknie. Następnie przejdź do [Edytor schematów](#schema-editor) informacji. Po utworzeniu nowego pliku schematu, pamiętaj, aby przejść z powrotem do **zaawansowane opcje** okna, aby dołączyć plik schematu nowo utworzony.
@@ -80,7 +78,7 @@ Zacznijmy od sterownika ODBC.
 
     ![Nowe usługi Azure Cosmos DB nazwy DSN ODBC na karcie DSN użytkownika](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>Krok 3: Tworzenie definicji schematu przy użyciu metody mapowania zbioru
+## <a id="#collection-mapping"></a>Krok 3. Utwórz definicję schematu przy użyciu metody mapowania zbioru
 
 Istnieją dwa typy metod próbkowanie, których mogą używać: **mapowanie kolekcji** lub **ograniczniki tabeli**. Sesji próbkowania, mogą korzystać z obu metod próbkowanie, ale każdej kolekcji można używać tylko metody pobierania próbek określone. Poniższe kroki Utwórz schemat dla danych w jednej lub kilku kolekcji przy użyciu metody mapowania kolekcji. Ta metoda pobierania próbek pobiera dane na stronie kolekcję, aby określić strukturę danych. Podstawianie go kolekcji do tabeli na stronie ODBC. Ta metoda pobierania próbek jest wydajny i szybkie po jednorodnych dane w kolekcji. Jeśli kolekcja zawiera heterogenicznych typów danych, zalecamy użycie [ograniczniki tabeli mapowania metoda](#table-mapping) ponieważ oferuje bardziej niezawodna metoda pobierania próbek ustalenie struktury danych w kolekcji. 
 
@@ -101,7 +99,7 @@ Istnieją dwa typy metod próbkowanie, których mogą używać: **mapowanie kole
 
     W przyszłości należy do tego schematu za pomocą nazwy DSN Otwórz okno Ustawienia DSN sterownika ODBC usługi Azure Cosmos DB (za pośrednictwem administratora źródła danych ODBC), kliknij przycisk Opcje zaawansowane i w polu pliku schematu, przejdź do zapisanego schematu. Zapisywanie pliku schematu istniejącej nazwy DSN modyfikuje połączenia DSN do zakresu do danych i struktury definiowana przez schemat.
 
-## <a id="table-mapping"></a>Krok 4: Tworzenie definicji schematu przy użyciu ograniczniki tabeli mapowania — metoda
+## <a id="table-mapping"></a>Krok 4. Utwórz definicję schematu za pomocą ograniczniki tabeli mapowania — metoda
 
 Istnieją dwa typy metod próbkowanie, których mogą używać: **mapowanie kolekcji** lub **ograniczniki tabeli**. Sesji próbkowania, mogą korzystać z obu metod próbkowanie, ale każdej kolekcji można używać tylko metody pobierania próbek określone. 
 
@@ -201,7 +199,7 @@ Następnie w **definicji widoku** okna, wykonaj następujące czynności:
 
 Można utworzyć wiele widoków, jak chcesz. Po zakończeniu definiowania widoków, możesz następnie próbkowanie danych. 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Krok 5: Wyświetlanie danych w narzędziach, takich jak Power BI Desktop
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Krok 5. Wyświetlanie danych w narzędziach, takich jak Power BI Desktop
 
 Twoje nowe źródło danych umożliwia łączenie z usługi Azure Cosmos DB przy użyciu dowolnych narzędzi standardem ODBC — w tym kroku po prostu dowiesz się, jak nawiązać połączenie z programu Power BI Desktop i tworzenie wizualizacji usługi Power BI.
 

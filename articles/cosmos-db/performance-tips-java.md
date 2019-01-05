@@ -1,20 +1,18 @@
 ---
 title: Usługa Azure porady dotyczące wydajności usługi Cosmos DB dla języka Java
 description: Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure Cosmos DB
-keywords: jak poprawić wydajność bazy danych
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: afbeb8211baea6da363a5e0162e92a0588581346
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 62b561d35d4cacd27555163ce666e98c12d792d8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872989"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044131"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i Java
 
@@ -31,7 +29,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 ## <a name="networking"></a>Networking
 <a id="direct-connection"></a>
 
-1. **Tryb połączenia: DirectHttps użycia**
+1. **Tryb połączenia: Użyj DirectHttps**
 
     Jak klient nawiąże połączenie do usługi Azure Cosmos DB ma istotny wpływ na wydajność, szczególnie w zakresie odczytaną opóźnienie po stronie klienta. Istnieje jedna konfiguracja klucza ustawienie dostępne do konfigurowania klienta [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) — [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode).  Dwa ConnectionModes dostępne są następujące:
 

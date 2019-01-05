@@ -1,20 +1,18 @@
 ---
 title: Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi Azure Cosmos DB, to usługa globalnie dystrybuowanej, wielomodelowej bazy danych. Więcej informacji na temat pojemności, poziomów wydajności i skalowania.
-keywords: Pytania dotyczące bazy danych, często zadawane pytania, documentdb, azure, Microsoft azure
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: ede900e135960141ed65b54dc876b1c0c2b90aaa
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e8467912ad2b9b5199e3c8d66c80d8e238db1f57
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809271"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043213"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -213,7 +211,7 @@ To ograniczenie języka JavaScript. JavaScript wykorzystuje liczb podwójnej pre
 
 Tworzenie uprawnień za pomocą ResourceTokens jest dozwolone na poziomie kontenera i jego obiektów podrzędnych (takich jak dokumenty, załączniki). Oznacza to, które można utworzyć uprawnienia w bazie danych lub na poziomie konta aktualnie nie jest dozwolone.
 
-## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB, bazy danych mongodb
+## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Co to jest interfejs API usługi Azure Cosmos DB, bazy danych mongodb?
 

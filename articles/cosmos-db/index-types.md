@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: f3c5d7bc1907e94ff2e590fe77cc531ac4b01f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629081"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034091"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indeksu w usłudze Azure Cosmos DB
 
 Istnieje wiele opcji gdzie konfigurowania zasad indeksowania dla ścieżki. Można określić jedną lub więcej definicji indeksowania dla każdej ścieżki:
 
-- **Typ danych:** ciąg, liczba, punkt, wielokąta lub LineString (może zawierać tylko jeden wpis dla typu danych na każdej ścieżce).
+- **Typ danych:** Ciąg, liczba, punkt, wielokąta lub LineString (może zawierać tylko jeden wpis dla typu danych na każdej ścieżce).
 
-- **Indeks rodzaj:** wyznaczania wartości skrótu (zapytań o równość), zakresu (równości, zakresu lub zapytania w klauzuli ORDER BY) lub przestrzenne (zapytań przestrzennych).
+- **Typ indeksu:** Skrót (zapytań o równość), zakresu (równości, zakresu lub zapytania w klauzuli ORDER BY) lub przestrzenne (zapytań przestrzennych).
 
-- **Dokładność:** dla indeksu skrótu to różni się od 1 do 8 na ciągi i liczby, a wartość domyślna to 3. Wartość maksymalna dozwolona dokładność: indeks zakresu jest wartość -1. Może się różnić od 1 do 100 (maksymalna dozwolona dokładność) dla parametrów lub wartości liczbowe.
+- **Dokładność:** Dla indeksu skrótu różni się to od 1 do 8 na ciągi i liczby, a wartość domyślna to 3. Wartość maksymalna dozwolona dokładność: indeks zakresu jest wartość -1. Może się różnić od 1 do 100 (maksymalna dozwolona dokładność) dla parametrów lub wartości liczbowe.
 
 ## <a name="index-kind"></a>Typ indeksu
 
@@ -39,7 +39,7 @@ Poniżej przedstawiono przykłady kwerend, które wyznaczania wartości skrótu,
 | ---------- | ---------------- |
 | Skrót  | Wyznaczania wartości skrótu, za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Skrót/właściwości / [] /? (i / lub/właściwości /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz tag z kolekcji c sprzężenia tagu w c.props, gdzie tag = 5  |
 | Zakres  | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop   |
-| Przestrzenne     | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c<br><br>GDZIE ST_DISTANCE (c.prop, {"type": "Punkt", "coordinates": [0.0, 10.0]}) < 40<br><br>Wybierz z kolekcji c gdzie ST_WITHIN(c.prop, {"type": "Polygon",...}) — za pomocą indeksowania w punktach włączone<br><br>Wybierz z kolekcji c gdzie ST_WITHIN({"type": "Point",...}, c.prop) — za pomocą wielokątów włączone indeksowanie.     |
+| Przestrzenne     | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c<br><br>GDZIE ST_DISTANCE (c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>Wybierz z kolekcji języka c gdzie ST_WITHIN(c.prop, {"type": "Polygon",...}) — za pomocą indeksowania w punktach włączone<br><br>Wybierz z kolekcji języka c gdzie ST_WITHIN({"type": "Point",...}, c.prop) — przy użyciu wielokątów włączone indeksowanie.     |
 
 ## <a name="default-behavior-of-index-kinds"></a>Domyślne zachowanie rodzaju indeksu
 
@@ -65,5 +65,5 @@ Aby dowiedzieć się więcej na temat indeksowanie w usłudze Azure Cosmos DB, z
 
 - [Omówienie indeksowania](index-overview.md)
 - [Zasady indeksowania](indexing-policies.md)
-- [Indeks ścieżki](index-paths.md)
+- [Ścieżki indeksów](index-paths.md)
 

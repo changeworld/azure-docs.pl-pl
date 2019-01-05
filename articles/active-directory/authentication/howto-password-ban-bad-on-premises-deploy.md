@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5774af4e0550ceb7a51e399fcab203a503a7f23f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011497"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033608"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrona za pomocą hasła usługi Azure AD
+# <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrony haseł w usłudze Azure AD
 
 |     |
 | --- |
@@ -85,6 +85,9 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
 
 2. Zainstaluj oprogramowanie usługa serwera Proxy zasady haseł za pomocą pakietu AzureADPasswordProtectionProxy.msi MSI.
    * Instalacja oprogramowania nie jest wymagane ponowne uruchomienie komputera. Instalacja oprogramowania mogą zostać zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`
+
+      > [!NOTE]
+      > Musi być uruchomiona usługa Zapora Windows przed zainstalowaniem pakietu AzureADPasswordProtectionProxy.msi MSI — w przeciwnym razie wystąpi błąd instalacji. Jeśli Zapora Windows jest skonfigurowany do uruchamiania nie, obejście jest tymczasowo włączyć i uruchom usługę Windows zapory podczas procesu instalacji. Oprogramowanie serwera proxy nie jest określone zależny na oprogramowanie zapory Windows po instalacji. Jeśli używasz zapory innych firm, nadal musi być skonfigurowany do spełnienia wymagań związanych z wdrażaniem (zezwala dostępu przychodzącego do portu 135 protokołów i serwer proxy RPC port serwera czy dynamiczny lub statyczny). [Zobacz wymagania dotyczące wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
 
 3. Otwórz okno programu PowerShell jako Administrator.
    * Ochrona haseł usługi Azure AD oprogramowanie serwera Proxy obejmuje nowy moduł programu PowerShell o nazwie AzureADPasswordProtection. Poniższe kroki opierają się na uruchamianie różnych poleceń cmdlet z tego modułu programu PowerShell i założono, że otwarto nowe okno programu PowerShell i zaimportowano nowy moduł w następujący sposób:

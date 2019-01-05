@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 7b40496d22ffed8096ac40efcb96ec55a8ba63ca
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652799"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052721"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -108,7 +108,7 @@ Istnieje kilka technik do dyspozycji, którego można użyć do osiągnięcia or
 
 Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając tylko określonych jednostek dostęp do serwera logicznego. Domyślnie wszystkie połączenia i baz danych w ramach serwera logicznego jest niedozwolone, z wyjątkiem połączeń z innymi usługami platformy Azure. Za pomocą reguły zapory można otworzyć dostępu do serwera tylko dla jednostek (na przykład maszyny dewelopera), które należy zatwierdzić, zezwalając na adres IP tego komputera przez zaporę. Umożliwia on również określić zakres adresów IP, który chcesz zezwolić na dostęp do serwera logicznego. Na przykład adresy IP maszyn dla deweloperów w Twojej organizacji można dodać tylko raz, określając zakres na stronie ustawień zapory.
 
-Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Albo można utworzyć reguły zapory na poziomie serwera przy użyciu usługi Azure portal lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu konfigurowania serwera oraz reguły zapory na poziomie bazy danych, zobacz: [Tworzenie reguł zapory w bazie danych SQL](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
+Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Albo można utworzyć reguły zapory na poziomie serwera przy użyciu usługi Azure portal lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu konfigurowania serwera oraz reguły zapory na poziomie bazy danych, zobacz: [Tworzenie reguł zapory w bazie danych SQL](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
 
@@ -130,11 +130,11 @@ Port 1433. Baza danych SQL komunikuje się za pośrednictwem tego portu. Aby naw
 
 #### <a name="sql-database-auditing"></a>Inspekcja bazy danych SQL
 
-W usłudze SQL Database można włączać inspekcji śledzić zdarzenia bazy danych. [SQL Database Auditing](sql-database-auditing.md) zapisuje zdarzenia bazy danych i zapisuje je w pliku dziennika inspekcji na koncie magazynu platformy Azure. Inspekcja jest szczególnie przydatne, jeśli użytkownik zamierza uzyskać wgląd w potencjalne naruszenia zabezpieczeń i zasad, zachować zgodność z przepisami itp. Umożliwia definiowanie i konfigurowanie niektórych rodzajów zdarzeń, które Twoim zdaniem należy inspekcji i na podstawie uzyskasz wstępnie skonfigurowane raporty i pulpit nawigacyjny, aby uzyskać przegląd zdarzeń występujących w bazie danych. Można zastosować te zasady inspekcji na poziomie bazy danych lub na poziomie serwera. Zobacz Przewodnik po jak włączyć funkcję inspekcji serwera/bazy danych: [Włączanie bazy danych SQL inspekcji](sql-database-security-tutorial.md#enable-sql-database-auditing-if-necessary).
+W usłudze SQL Database można włączać inspekcji śledzić zdarzenia bazy danych. [SQL Database Auditing](sql-database-auditing.md) zapisuje zdarzenia bazy danych i zapisuje je w pliku dziennika inspekcji na koncie magazynu platformy Azure. Inspekcja jest szczególnie przydatne, jeśli użytkownik zamierza uzyskać wgląd w potencjalne naruszenia zabezpieczeń i zasad, zachować zgodność z przepisami itp. Umożliwia definiowanie i konfigurowanie niektórych rodzajów zdarzeń, które Twoim zdaniem należy inspekcji i na podstawie uzyskasz wstępnie skonfigurowane raporty i pulpit nawigacyjny, aby uzyskać przegląd zdarzeń występujących w bazie danych. Można zastosować te zasady inspekcji na poziomie bazy danych lub na poziomie serwera. Zobacz Przewodnik po jak włączyć funkcję inspekcji serwera/bazy danych: [Włączanie bazy danych SQL inspekcji](sql-database-security-tutorial.md#enable-security-features).
 
 #### <a name="threat-detection"></a>Wykrywanie zagrożeń
 
-Za pomocą [wykrywanie zagrożeń](sql-database-threat-detection.md), otrzymasz możliwość działania na naruszenia zabezpieczeń lub zasad odnalezione przez bardzo łatwo inspekcji. Nie musisz być ekspertem w celu rozwiązania potencjalnych zagrożeń i naruszeń w systemie zabezpieczeń. Wykrywanie zagrożeń ma również niektóre wbudowane funkcje, takie jak wykrywanie wstrzyknięcie kodu SQL. Iniekcja SQL to próba zmiany lub naruszyć bezpieczeństwo danych i dość często sposób ogólnie rzecz biorąc atakiem aplikacji bazy danych. Wykrywanie zagrożeń SQL Database działa wiele zestawów algorytmów potrafiących Wykrywanie potencjalnych luk w zabezpieczeniach oraz atakami polegającymi na iniekcji SQL, a także wzorce dostępu i nietypowych bazy danych (takich jak dostęp z nietypowej lokalizacji lub nieznanego podmiotu zabezpieczeń). Specjaliści ds. bezpieczeństwa lub innymi wyznaczeni administratorzy będą otrzymywać powiadomienia e-mail w przypadku wykrycia zagrożeń w bazie danych. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalszego zbadania i wyeliminowania zagrożenia. Aby dowiedzieć się, jak włączyć funkcję wykrywania zagrożeń, zobacz: [Włącz wykrywanie zagrożeń bazy danych SQL](sql-database-security-tutorial.md#enable-sql-database-threat-detection).
+Za pomocą [wykrywanie zagrożeń](sql-database-threat-detection.md), otrzymasz możliwość działania na naruszenia zabezpieczeń lub zasad odnalezione przez bardzo łatwo inspekcji. Nie musisz być ekspertem w celu rozwiązania potencjalnych zagrożeń i naruszeń w systemie zabezpieczeń. Wykrywanie zagrożeń ma również niektóre wbudowane funkcje, takie jak wykrywanie wstrzyknięcie kodu SQL. Iniekcja SQL to próba zmiany lub naruszyć bezpieczeństwo danych i dość często sposób ogólnie rzecz biorąc atakiem aplikacji bazy danych. Wykrywanie zagrożeń SQL Database działa wiele zestawów algorytmów potrafiących Wykrywanie potencjalnych luk w zabezpieczeniach oraz atakami polegającymi na iniekcji SQL, a także wzorce dostępu i nietypowych bazy danych (takich jak dostęp z nietypowej lokalizacji lub nieznanego podmiotu zabezpieczeń). Specjaliści ds. bezpieczeństwa lub innymi wyznaczeni administratorzy będą otrzymywać powiadomienia e-mail w przypadku wykrycia zagrożeń w bazie danych. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalszego zbadania i wyeliminowania zagrożenia. Aby dowiedzieć się, jak włączyć funkcję wykrywania zagrożeń, zobacz: [Włącz wykrywanie zagrożeń bazy danych SQL](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Jak chronić dane na ogół w bazie danych SQL
 

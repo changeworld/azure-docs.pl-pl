@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9ab256526ccba3fa84d4979ba536f6b681a7df89
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 710b584777abc312388c3857ced06ce196416a31
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001672"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042941"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -242,6 +242,6 @@ Czy to kompilacja dla .NET 4.6? Wersja 4.6 nie jest automatycznie obsługiwana w
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../application-insights/app-insights-troubleshoot-faq.md
+[qna]: ../../azure-monitor/app/troubleshoot-faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../application-insights/app-insights-overview.md 

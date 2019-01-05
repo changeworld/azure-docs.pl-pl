@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2fa7c4c7dc3af28dcc49371a086c2e7555278b99
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7422e7145acfece9c9da3277c8d92c949220dbab
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015223"
+ms.locfileid: "54039320"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -1175,4 +1175,4 @@ Aby określić, jak długo dane są przechowywane, zobacz [retencji danych i pry
 ## <a name="next"></a>Następne kroki
 
 * [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md)
-* [Rozwiązywanie problemów](../../application-insights/app-insights-troubleshoot-faq.md)
+* [Rozwiązywanie problemów](../../azure-monitor/app/troubleshoot-faq.md)

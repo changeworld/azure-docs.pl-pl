@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4bc1d72cd08d47e9699acf8c20b03307dbda97af
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003604"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035257"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -62,7 +62,7 @@ Aby przejść z powrotem do środowiska — omówienie, po prostu wybierz opcję
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Lejki](../../application-insights/usage-funnels.md)
-- [Przechowywanie](../../application-insights/app-insights-usage-retention.md)
-- [User Flows (Przepływy użytkowników)](../../application-insights/app-insights-usage-flows.md)
+- [Lejki](../../azure-monitor/app/usage-funnels.md)
+- [Przechowywanie](../../azure-monitor/app/usage-retention.md)
+- [User Flows (Przepływy użytkowników)](../../azure-monitor/app/usage-flows.md)
 - [Pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md)

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994644"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033812"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -175,7 +175,7 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
 
   Gdy tworzone jest nowe wystąpienie, unikatowy identyfikator jest automatycznie generowane jako strefy DNS i zawarty w nazwę DNS wystąpienia. Wielu domen (SAN) certyfikatu dla tego wystąpienia jest aprowizowana za pomocą pola SAN w formie `zone_id.database.windows.net`. Ten certyfikat może służyć do uwierzytelniania połączeń klientów z wystąpienia usługi w tej samej strefie DNS. Aby zapewnić — przerwana łączność z podstawowego wystąpienia po włączeniu trybu failover w podstawowym i pomocniczym wystąpień musi być w tej samej strefie DNS. Gdy aplikacja jest gotowa do wdrożenia w środowisku produkcyjnym, Utwórz wystąpienie dodatkowej w innym regionie i upewnij się, że współużytkuje strefy DNS przy użyciu podstawowego wystąpienia. Jest to realizowane przez określenie `DNS Zone Partner` opcjonalny parametr przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST.
 
-  Aby uzyskać więcej informacji na temat tworzenia dodatkowych wystąpienia w tej samej strefie DNS jako podstawowe wystąpienie zobacz [Zarządzanie grupy trybu failover za pomocą wystąpienia zarządzanego (wersja zapoznawcza)](#managing-failover-groups-with-managed-instances-preview).
+  Aby uzyskać więcej informacji na temat tworzenia dodatkowych wystąpienia w tej samej strefie DNS jako podstawowe wystąpienie zobacz [Zarządzanie grupy trybu failover za pomocą wystąpienia zarządzanego (wersja zapoznawcza)](#powershell-managing-failover-groups-with-managed-instances-preview).
 
 - **Włącz ruch związany z replikacją między dwoma wystąpieniami**
 
@@ -349,7 +349,7 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 | Interfejs API | Opis |
 | --- | --- |
 | [Utwórz lub zaktualizuj grupę trybu Failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Tworzy lub aktualizuje grupę trybu failover |
-| [Usuwanie grupy trybu Failover](https://docs.microsoft.com/rest/api/instancefailovergroups/delete) | Usuwa grupę trybu failover z serwera |
+| [Usuwanie grupy trybu Failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Usuwa grupę trybu failover z serwera |
 | [Praca awaryjna (planowana)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Nie powiedzie się za pośrednictwem z bieżącego serwera podstawowego do tego serwera. |
 | [Zezwalaj na utratę danych wymuszenie trybu Failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails za pośrednictwem z bieżącego serwera podstawowego do tego serwera. Ta operacja może spowodować utratę danych. |
 | [Pobierz grupę trybu Failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Pobiera grupy trybu failover. |

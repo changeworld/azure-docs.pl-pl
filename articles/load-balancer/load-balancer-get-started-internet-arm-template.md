@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: c77cdf23e73a174ca68744ea543a41ce0a1de9f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5f6a0ce0c9d863b5ab4922e7228a873ed5398600
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095707"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033285"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Tworzenie publicznego modułu równoważenia obciążenia przy użyciu szablonu
 
@@ -80,3 +80,5 @@ Aby wdrożyć szablon przy użyciu interfejsu wiersza polecenia platformy Azure,
 [Configure a load balancer distribution mode](load-balancer-distribution-mode.md) (Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia)
 
 [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)
+
+Składnię JSON i właściwości modułu równoważenia obciążenia w szablonie, zobacz [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

@@ -1,23 +1,21 @@
 ---
 title: Interfejs API tabel usługi Azure Cosmos DB dla środowiska Node.js
 description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
-services: cosmos-db
-author: yarong
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
 ms.date: 11/20/2017
-ms.author: yaronyg
-ms.custom: ''
-ms.openlocfilehash: 04e4337581337a467fc49927f0f353d42c7b801a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 1cf72069d545fc1f4c337a1b67f5fd4aa2ef143c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089671"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043723"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Usługa Azure Cosmos DB interfejsu API tabel dla środowiska Node.js: informacje o wersji i zasoby
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Usługi Azure Cosmos DB Table API dla środowiska Node.js: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)

@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/03/2019
+ms.openlocfilehash: 38b7c478e3b90347086c2dd005630d239db7fd89
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715906"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038215"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -26,18 +26,17 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 > [!IMPORTANT]
 > **[Nadchodzącą zmianą] Dla połączeń punkt końcowy usługi z serwerami usługi Azure SQL `Default` zachowanie łączności zmienia `Redirect`.**
 >
-> Zmiana obowiązuje już z 10 listopada 2018 dla regionu Brazylia Południowa i Europa Zachodnia. Wszystkie inne regiony zmiany będą obowiązywać od 2 stycznia 2019 r.
+> Zmiana obowiązuje we wszystkich regionach w lub przed 2 stycznia 2019 r.
 >
 > Aby uniemożliwić łączność za pośrednictwem punktu końcowego usługi podziału w istniejących środowiskach, w wyniku tej zmiany, używamy telemetrii wykonaj następujące czynności:
 > - W przypadku serwerów, które zostanie wykryte, które były dostępne za pośrednictwem punktów końcowych usługi przed zmianą, firma Microsoft przełącznika typ połączenia na `Proxy`.
 > - Dla innych serwerów, możemy przełączyć połączenia typu zostaną przełączeni na `Redirect`.
 >
-> Nadal może mieć wpływ na użytkowników punktu końcowego usługi w następujących scenariuszach: 
-> - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach 
-> - Logika automatycznego wdrażania tworzy serwer logiczny przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy` 
+> Nadal może mieć wpływ na użytkowników punktu końcowego usługi w następujących scenariuszach:
+> - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach
+> - Logika automatycznego wdrażania tworzy serwer logiczny przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy`
 >
 > Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 12000. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
-
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 
@@ -131,7 +130,6 @@ Aby zmienić zasady połączenia usługi Azure SQL Database dla serwera usługi 
 
 > [!IMPORTANT]
 > Ten skrypt wymaga [modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
->
 
 Poniższy skrypt programu PowerShell pokazuje, jak zmienić zasady połączenia.
 

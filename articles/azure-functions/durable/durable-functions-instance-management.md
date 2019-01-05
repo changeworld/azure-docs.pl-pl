@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab2e35c916c6bd6f2d73a328f71710378fac890
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8dbf7b6f6741998972070234d90e87baca1154a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343942"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042465"
 ---
-# <a name="manage-instances-in-durable-functions-azure-functions"></a>Zarządzanie wystąpieniami w funkcje trwałe (usługi Azure Functions)
+# <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w funkcje trwałe na platformie Azure
 
 [Trwałe funkcje](durable-functions-overview.md) aranżacji wystąpień może być pracę, zakończone, zapytań i wysyłane zdarzenia powiadomień. Wszystkie wystąpienia Zarządzanie odbywa się przy użyciu [klient orkiestracji powiązanie](durable-functions-bindings.md). W tym artykule przechodzi do szczegółów każdej operacji zarządzania wystąpienia.
 
@@ -119,7 +119,7 @@ Metoda ta zwraca obiekt JSON z następującymi właściwościami:
   * **Uruchamianie**: Wystąpienie rozpoczęło działanie.
   * **Ukończono**: Wystąpienie zostało zakończone normalnie.
   * **ContinuedAsNew**: Wystąpienie uruchomieniu się o nowych historii. Jest to stan przejściowy.
-  * **Nie powiodło się**: Wystąpienie nie powiodło się z powodu błędu.
+  * **Niepowodzenie**: Wystąpienie nie powiodło się z powodu błędu.
   * **Zakończony**: Wystąpienie zostało nagle zatrzymane.
 * **Historia**: Historia wykonywania aranżacji. To pole jest wypełniane tylko, jeśli `showHistory` ustawiono `true`.
 
@@ -520,7 +520,7 @@ Wystąpienie aranżacji zakończonych niepowodzeniem może być *przewinięta* w
 > [!NOTE]
 > Ten interfejs API nie jest przeznaczony do zastąpienia obsługi błędów właściwe i zasad ponawiania. Przeciwnie jest przeznaczona do użycia tylko w przypadkach, gdzie wystąpień aranżacji się nie powieść nieoczekiwany powodów. Aby uzyskać szczegółowe informacje na temat zasad ponawiania prób i obsługi błędów, zobacz [obsługi błędów](durable-functions-error-handling.md) tematu.
 
-Przykładem użycia w przypadku *rewind* jest przepływ pracy obejmujące serię [ludzi zatwierdzenia](durable-functions-overview.md#pattern-5-human-interaction). Załóżmy, że istnieje szereg funkcji działań, które powiadamiają o kogoś, że zatwierdzenie jest wymagane i zaczekaj na poziomie odpowiedzi w czasie rzeczywistym. Gdy wszystkie zatwierdzenia działań otrzymane odpowiedzi lub przekroczyło limit czasu, innego działania zakończy się niepowodzeniem z powodu błędnej konfiguracji aplikacji, takich jak nieprawidłowe parametry połączenia. Wynikiem jest błąd aranżacji szczegółowo przepływ pracy. Za pomocą `RewindAsync` (.NET) lub `rewindAsync` (JavaScript) interfejsu API, administrator aplikacji może naprawić ten błąd konfiguracji i *rewind* orchestration nie powiodło się z powrotem do stanu bezpośrednio przed awarią. Żaden z kroków interakcji człowieka muszą zostać ponownie uznany i organizowania może teraz zostać pomyślnie ukończony.
+Przykładem użycia w przypadku *rewind* jest przepływ pracy obejmujące serię [ludzi zatwierdzenia](durable-functions-concepts.md#human). Załóżmy, że istnieje szereg funkcji działań, które powiadamiają o kogoś, że zatwierdzenie jest wymagane i zaczekaj na poziomie odpowiedzi w czasie rzeczywistym. Gdy wszystkie zatwierdzenia działań otrzymane odpowiedzi lub przekroczyło limit czasu, innego działania zakończy się niepowodzeniem z powodu błędnej konfiguracji aplikacji, takich jak nieprawidłowe parametry połączenia. Wynikiem jest błąd aranżacji szczegółowo przepływ pracy. Za pomocą `RewindAsync` (.NET) lub `rewindAsync` (JavaScript) interfejsu API, administrator aplikacji może naprawić ten błąd konfiguracji i *rewind* orchestration nie powiodło się z powrotem do stanu bezpośrednio przed awarią. Żaden z kroków interakcji człowieka muszą zostać ponownie uznany i organizowania może teraz zostać pomyślnie ukończony.
 
 > [!NOTE]
 > *Rewind* funkcja nie obsługuje przetwarzania aranżacji wystąpieniom używaj czasomierzy trwałe.

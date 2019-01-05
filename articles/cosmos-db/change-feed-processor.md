@@ -7,12 +7,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: eee80563a838e6d453278735abf96fa5a6996f19
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 35577f103979bf5f767e3b9d42548ed488e365c8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835511"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041904"
 ---
 # <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Za pomocą zmian usługi Azure Cosmos DB źródła danych z biblioteką procesora
 
@@ -32,17 +33,17 @@ Jeśli masz dwie funkcje platformy Azure bez serwera monitorowania tego samego k
 
 Istnieją cztery główne składniki wdrażania zestawienia bibliotece procesora zmian: 
 
-1. **Monitorowane kontenera:** monitorowanych kontener ma danych, z którego jest generowany zestawienia zmian. Wszystkie operacje wstawiania i zmiany do monitorowanych kontenera są odzwierciedlane w zestawienia zmian w kontenerze.
+1. **Monitorowane kontener:** Monitorowane kontener ma danych, z którego jest generowany zestawienia zmian. Wszystkie operacje wstawiania i zmiany do monitorowanych kontenera są odzwierciedlane w zestawienia zmian w kontenerze.
 
-1. **Kontener dzierżawy:** współrzędnych kontenera dzierżawy przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielny kontener jest używany do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji. Jest lepiej jest przechowywać ten kontener dzierżawy na innym koncie z regionem zapisu bliżej na którym działa zestawienia procesora zmian. Obiekt dzierżawy zawiera następujące atrybuty:
+1. **Kontener dzierżawy:** Współrzędne kontenera dzierżawy przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielny kontener jest używany do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji. Jest lepiej jest przechowywać ten kontener dzierżawy na innym koncie z regionem zapisu bliżej na którym działa zestawienia procesora zmian. Obiekt dzierżawy zawiera następujące atrybuty:
 
-   * Właściciel: Określa hosta, który jest właścicielem dzierżawy.
+   * Właściciel: Określa host, który jest właścicielem dzierżawy.
 
    * Kontynuacja: Określa położenie (token kontynuacji) Zmień źródło danych dla określonej partycji.
 
    * Sygnatura czasowa: Czas ostatniego dzierżawy została zaktualizowana; Sygnatura czasowa może służyć do sprawdzania, czy dzierżawa jest uznawany za wygasły.
 
-1. **Host procesora:** każdy host Określa, ile partycje do przetworzenia na podstawie liczby wystąpień hostów mają aktywne dzierżawy.
+1. **Host procesora:** Każdy host Określa, ile partycje do przetworzenia na podstawie liczby wystąpień hostów mają aktywne dzierżawy.
 
    * Podczas uruchamiania hosta, uzyskuje dzierżawę, aby zrównoważyć obciążenie na wszystkich hostach. Host okresowo odnowieniu dzierżawy, więc dzierżawy pozostają aktywne.
 
@@ -52,7 +53,7 @@ Istnieją cztery główne składniki wdrażania zestawienia bibliotece procesora
 
    Obecnie liczby hostów nie może być większa niż liczba partycji (dzierżawy).
 
-1. **Konsumenci:** użytkowników lub pracowników, są wątki, które wykonują przetwarzania zestawienia zmian inicjowane przez każdego hosta. Każdy host procesor może mieć wielu odbiorców. Każdy odbiorca odczytuje zmiany źródła danych z partycji, który jest przypisany do powiadamia o jego hosta zmiany i Wygasłe dzierżawy.
+1. **Odbiorcy:** Użytkowników lub pracowników, są wątki, które wykonują przetwarzania zestawienia zmian inicjowane przez każdego hosta. Każdy host procesor może mieć wielu odbiorców. Każdy odbiorca odczytuje zmiany źródła danych z partycji, który jest przypisany do powiadamia o jego hosta zmiany i Wygasłe dzierżawy.
 
 Aby jeszcze lepiej zrozumieć sposób tych czterech elementów kanału informacyjnego zmian pracy procesora ze sobą, Spójrzmy na przykład na poniższym diagramie. Monitorowane kolekcja przechowuje dokumenty i używa "Miejscowość" jako klucza partycji. Widzimy, że niebieski partycja zawiera dokumenty z polem "Miejscowość" od "A-E" i tak dalej. Istnieją dwa hosty, każdy z dwóch odbiorców podczas odczytywania z cztery partycje równolegle. Strzałki oznaczają odbiorców podczas odczytywania z określonego miejsca w zestawienia zmian. W pierwszej partycji niebieskim ciemniejsze reprezentuje nieprzeczytane zmiany, gdy jasnoniebieski reprezentuje zmiany już odczytu na kanał informacyjny zmian. Hosty używają kolekcję dzierżaw, do przechowywania wartości "kontynuacja", aby śledzić bieżącą pozycję odczytu dla każdego użytkownika.
 
@@ -62,7 +63,7 @@ Aby jeszcze lepiej zrozumieć sposób tych czterech elementów kanału informacy
 
 Opłaty są naliczane za RU, gdyż przenoszenie danych do i z kontenerów Cosmos zawsze wykorzystuje jednostki zarezerwowane. Opłaty są naliczane za ru zużywanych przez kontener dzierżawy.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Biblioteką procesora zestawienia zmian w usłudze Azure Cosmos DB](sql-api-sdk-dotnet-changefeed.md)
 * [Pakiet nugGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)

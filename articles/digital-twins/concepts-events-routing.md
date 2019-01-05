@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e16d27314a159b124e35560ffb8cd9685fc5c7a0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438017"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035699"
 ---
 # <a name="routing-events-and-messages"></a>Routing zdarzeń i komunikatów
 
@@ -65,6 +65,7 @@ Twins cyfrowych platformy Azure obsługuje obecnie następujące **EventTypes** 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Informacje na temat Twins cyfrowych platformy Azure w wersji zapoznawczej limity, zobacz [limity usługi publicznej wersji zapoznawczej](concepts-service-limits.md).
+
 - Aby wypróbować przykładowe Twins cyfrowych platformy Azure, zobacz [szybkiego startu, aby znaleźć dostępne pokoje](quickstart-view-occupancy-dotnet.md).
 
 <!-- Images -->

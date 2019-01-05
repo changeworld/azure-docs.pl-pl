@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 99ea7e7db9d0cc80bfd37a256fc1be388feaa530
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317351"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043893"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Szybki Start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji JavaScript
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Szybki start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji JavaScript
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -31,9 +31,20 @@ W tym przewodniku Szybki Start dowiesz się, jak użyć przykładowego kodu, kt�
 ![Jak działa przykładowa aplikacja wygenerowana w tym przewodniku Szybki start](media/quickstart-v2-javascript/javascriptspa-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Rejestrowanie aplikacji i pobieranie aplikacji Szybki start
+> ## <a name="register-and-download-your-quickstart-application"></a>Rejestrowanie i Pobierz aplikację Szybki Start
+> Istnieją dwie opcje uruchamiania aplikacji Szybki start:
+> * [Ekspresowo] [Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ręcznie] [Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
+>
+> 1. Przejdź do witryny [Azure Portal — Rejestracja aplikacji (wersja zapoznawcza)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
+> 1. Wprowadź nazwę aplikacji i kliknij pozycję **Zarejestruj**.
+> 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
+>
+> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
 >
 > 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) zarejestrować aplikację.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
@@ -47,19 +58,19 @@ W tym przewodniku Szybki Start dowiesz się, jak użyć przykładowego kodu, kt�
 > 1. Wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w witrynie Azure Portal
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure Portal
 > Dla przykładu kodu dla tego przewodnika Szybki Start do pracy, należy dodać przekierowania URI jako `http://localhost:30662/` i włączyć **przyznawanie niejawne**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadzenie tych zmian]()
+> > [Wprowadź zmiany automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Już skonfigurowano](media/quickstart-v2-javascript/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
-#### <a name="step-2-download-the-project"></a>Krok 2. Pobieranie projektu
+#### <a name="step-2-download-the-project"></a>Krok 2: Pobieranie projektu
 
 Można jedna z tych opcji, które są odpowiednie do swojego środowiska projektowego.
 * [Pobierz pliki projektów core - dla serwera sieci web, takich jak Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
-* [Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+* [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 Wyodrębnij plik zip do folderu lokalnego, na przykład **C:\Azure-Samples**.
 
@@ -95,7 +106,7 @@ var applicationConfig = {
 > Serwer jest skonfigurowany do nasłuchiwania na porcie 30662 w *server.js* w pliku [Node.js](https://nodejs.org/en/download/) projektu i *.csproj* w pliku [programu Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)projektu.
 >
 
-#### <a name="step-4-run-the-project"></a>Krok 4: Uruchom projekt
+#### <a name="step-4-run-the-project"></a>Krok 4: Uruchamianie projektu
 
 * Jeśli używasz środowiska Node.js:
 

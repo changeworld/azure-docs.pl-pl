@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a26c4b6d16ac16596f8b1b0606aca029be335d71
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994134"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038504"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -149,6 +149,23 @@ Jeśli nie masz już istniejącą zawartość do wypełniania bazy wiedzy knowle
 ## <a name="formatting-considerations"></a>Zagadnienia dotyczące formatowania
 
 Po zaimportowaniu pliku lub adres URL jest konwertowane do języka Markdown i przechowywane w tym formacie. Jeśli proces konwersji nie jest poprawnie konwersji łącza w Twoich plików i adresy URL, na należy edytować pytań i odpowiedzi **Edytuj** strony. 
+
+|Format|Przeznaczenie|
+|--|--|
+|`\n\n`| Nowy wiersz|
+|`\n*`|Punkcie do uporządkowanej listy|
+
+## <a name="editing-your-knowledge-base-locally"></a>Edytowanie wiedzy lokalnie
+
+Po utworzeniu bazy wiedzy, zaleca się wprowadzić zmiany w bazie wiedzy knowledge base tekście [portalu narzędzia QnA Maker](https://qnamaker.ai), zamiast eksportowania i ponownie zaimportować za pomocą plików lokalnych. Może jednak wystąpić sytuacje, które trzeba edytować wiedzy lokalnie. 
+
+Eksportowanie bazy wiedzy knowledge base z **ustawienia** stronie, a następnie edytować wiedzy z programem Microsoft Excel. Jeśli zdecydujesz się użyć innej aplikacji do edycji wyeksportowany plik TSV aplikacji może powodować błędy składniowe, ponieważ nie jest w pełni zgodne TSV. Ogólnie pliki TSV programu Microsoft Excel nie spowodują błędy formatowania. 
+
+Po zakończeniu edycji, należy ponownie zaimportować plik TSV z **ustawienia** strony. Spowoduje to zamianę całkowicie bieżącej bazy wiedzy przy importowany bazy wiedzy knowledge base. 
+
+## <a name="testing-your-markdown"></a>Testowanie kod Markdown
+
+Użyj **[CommonMark](https://commonmark.org/help/tutorial/index.html)** samouczka, aby sprawdzić kod Markdown. Samouczek ma **wypróbuj** funkcja szybkiego kopiowania/wklejania weryfikacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

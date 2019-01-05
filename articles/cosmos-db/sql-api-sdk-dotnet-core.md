@@ -1,21 +1,19 @@
 ---
 title: Usługa Azure Cosmos DB Interfejs API SQL platformy .NET Core, zestaw SDK i zasoby
 description: Poznaj interfejs API SQL platformy .NET Core i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami usługi Azure Cosmos DB .NET Core SDK.
-services: cosmos-db
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d947974575cf996ed880f2c1b5f8f7700b81ffd3
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.author: sngun
+ms.openlocfilehash: 5eb04f30fd6766b8df65998b8a4d53797b8341ba
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413510"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053555"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB platformy .NET Core SDK interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -57,6 +55,14 @@ Azure Cosmos DB platformy .NET Core SDK ma równoważności funkcji z najnowszej
 * Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems.
 * Obsługa strumieni.
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany.
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* Poprawa Logika ponawiania podczas pracy awaryjnej dla StoredProcedure wykonać wywołań.
+
+* Dokonano jeszcze DocumentClientEventSource pojedynczego wystąpienia. 
+
+* Napraw GatewayAddressCache nie zapewniane ConnectionPolicy RequestTimeout przekroczenia limitu czasu.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -227,6 +233,7 @@ Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](https
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |24 grudnia 2018 r. |--- |
 | [2.2.0](#2.2.0) |07 grudnia 2018 r. |--- |
 | [2.1.3](#2.1.3) |15 października 2018 r. |--- |
 | [2.1.2](#2.1.2) |04 października 2018 r. |--- |

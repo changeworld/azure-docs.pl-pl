@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 9482b1a33caaf73838101431dfc1faac7020ee42
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: cd4871e3e4613973a50c8ee0994fe0440150eddf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235032"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044029"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Utwórz szablon usługi Resource Manager klastra usługi Service Fabric
 
@@ -258,6 +258,14 @@ Na poniższym diagramie przedstawiono, w którym magazyn kluczy i konfiguracji u
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się teraz, gdy szablon dla klastra, jak [wdrożenia klastra Azure](service-fabric-cluster-creation-via-arm.md).  Jeśli zrobione, zapoznaj się z [Lista kontrolna gotowości produkcji](service-fabric-production-readiness-checklist.md) przed wdrożeniem w warunkach produkcyjnych klastra.
 
+Aby dowiedzieć się więcej na temat składni JSON i właściwości zasobów wdrożonych w tym artykule, zobacz:
+
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

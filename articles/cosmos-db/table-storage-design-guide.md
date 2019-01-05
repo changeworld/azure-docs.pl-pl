@@ -1,19 +1,19 @@
 ---
 title: Projektowanie tabel usługi Azure Cosmos DB do obsługi skalowania i wydajności
-description: 'Usługi Azure Storage Przewodnik po projektowaniu tabel: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure Cosmos DB i Azure Storage Table'
-author: SnehaGunda
-ms.author: sngun
+description: 'Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure Cosmos DB i Azure Storage Table'
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 12/07/2018
+author: wmengmsft
+ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 656a8acc06a0d02959dda42c980db65c011f0bb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140952"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044182"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 
@@ -132,7 +132,7 @@ Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ram
 
 W usłudze Table service oddzielnego węzła usługi jeden lub więcej zakończą się partycji i skali usługi przez dynamiczne równoważenie obciążenia partycji na węzłach. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
 
-Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Transakcje grupy jednostek
 W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są również nazywane *partii transakcji* w dokumentacji. EGTs może działać tylko na jednostek przechowywanych w tej samej partycji (udział ten sam klucz partycji w danej tabeli), więc potrzebujesz atomic transakcyjnych zachowanie w wielu jednostkach, należy się upewnić, że te jednostki są w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli prześlesz wielu jednoczesnych EGTs do przetwarzania, jest ważne, aby upewnić się, że te EGTs nie działają na jednostek, które są wspólne w EGTs, ponieważ w przeciwnym razie przetwarzania może być opóźniony w.
@@ -586,7 +586,7 @@ Umożliwia wyszukiwanie według nazwiska ze strukturą entity powyżej, musisz u
 
 Pierwszej opcji Tworzenie obiektu blob dla każdego unikatowy nazwisko i w każdym magazynie obiektów blob listę **PartitionKey** (dział) i **RowKey** (identyfikator pracownika) wartości dla pracowników, które mają ten nazwisko. Podczas dodawania lub usuwania pracownika, należy się upewnić, że zawartości odpowiedniego obiektu blob jest ostatecznie spójny z jednostkami pracownika.  
 
-<u>Opcja #2:</u> tworzenia indeksu jednostek w tej samej partycji  
+<u>Opcja #2.</u> Tworzenie jednostek indeksu w jednej partycji  
 
 Druga opcja można użyć jednostki indeksu, zawierające następujące dane:  
 
@@ -608,7 +608,7 @@ Poniższe kroki opisują proces, który należy wykonać w przypadku koniecznoś
 2. Przeanalizować listy identyfikatorów w polu EmployeeIDs pracowników.  
 3. Aby uzyskać dodatkowe informacje na temat każdego z tych pracowników (na przykład ich adresów e-mail), pobrać każdej jednostki pracowników przy użyciu **PartitionKey** wartość "Sprzedaż" i **RowKey** wartości z kolekcji Lista pracowników, który został uzyskany w kroku 2.  
 
-<u>Opcja #3:</u> tworzenia indeksu jednostek w oddzielnej partycji lub tabeli  
+<u>Opcja #3:</u> Tworzenie indeksu jednostek w oddzielnej partycji lub tabeli  
 
 Trzecia opcja można użyć jednostki indeksu, zawierające następujące dane:  
 
@@ -1300,7 +1300,7 @@ W pozostałej części tej sekcji opisano niektóre z funkcji w bibliotece klien
 #### <a name="retrieving-heterogeneous-entity-types"></a>Trwa pobieranie typów jednostek heterogenicznych
 Jeśli używasz biblioteki klienta usługi Storage są trzy opcje do pracy z wieloma typami encji.  
 
-Jeśli jest znany typ jednostki przechowywane z określonym **RowKey** i **PartitionKey** wartości, a następnie po pobraniu jednostki, jak pokazano w poprzednich dwóch przykładach, można określić typu jednostki, Pobieranie jednostki typu **EmployeeEntity**: [wykonywania kwerendy punktu, przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library) i [Pobieranie wielu jednostek za pomocą LINQ](#retrieving-multiple-entities-using-linq).  
+Jeśli jest znany typ jednostki przechowywane z określonym **RowKey** i **PartitionKey** wartości, a następnie po pobraniu jednostki, jak pokazano w poprzednich dwóch przykładach, można określić typu jednostki, Pobieranie jednostki typu **EmployeeEntity**: [Wykonywanie kwerendy punktu, przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library) i [Pobieranie wielu jednostek za pomocą LINQ](#retrieving-multiple-entities-using-linq).  
 
 Drugą opcją jest użycie **DynamicTableEntity** typu (zbiór właściwości) zamiast konkretny typ jednostki POCO (Ta opcja może również zwiększyć wydajność, ponieważ nie ma potrzeby do serializacji i deserializacji jednostki do typów .NET). Poniższy kod C# potencjalnie pobiera wielu jednostek o różnych typach z tabeli, ale zwraca wszystkie jednostki jako **DynamicTableEntity** wystąpień. Następnie używa **EntityType** właściwości, aby określić typ każdego obiektu:  
 
@@ -1509,7 +1509,7 @@ Aplikacja kliencka można wywołać wiele metod asynchronicznych, takich jak ta,
 ### <a name="credits"></a>Napisy końcowe
 Chcielibyśmy podziękować następujących członków zespołu platformy Azure dla swojego wkładu: Dominic Betts, firma Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, i vamshidhar Kommineni, Vinay Shah i Serdar Ozler także Tom Hollander z DX firmy Microsoft. 
 
-Również chcielibyśmy podziękować następujące MVPs firmy Microsoft dla swoich opinii podczas cykli przeglądu: Papirov Igora i Edward Bakker.
+Chcielibyśmy także podziękować następujące MVPs firmy Microsoft dla swoich opinii podczas cykli przeglądu: Papirov Igora i Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

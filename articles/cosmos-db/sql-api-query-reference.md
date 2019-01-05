@@ -1,19 +1,19 @@
 ---
 title: Składnia języka SQL w usłudze Azure Cosmos DB
 description: W tym artykule opisano składnia języka zapytania SQL używany w usłudze Azure Cosmos DB, różnych operatorów i słów kluczowych jest dostępna w tym języku.
-author: LalithaMV
+author: markjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: reference
 ms.date: 12/07/2018
-ms.author: laviswa
+ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: eec3846319a93e94ca362d9ef6815a73d0ca958a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142562"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044386"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Dokumentacja języka w usłudze Azure Cosmos DB SQL 
 
@@ -474,7 +474,7 @@ ORDER BY <sort_specification>
 |**Kategoria**|**Szczegóły**|  
 |-|-|  
 |**Operacje arytmetyczne**|Operator oczekuje input(s) się numery. Dane wyjściowe jest również liczbą. Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub jest typu innego niż liczba następnie wynik **niezdefiniowane**.|  
-|**bitowe**|Operator oczekuje input(s) jako 32-bitowej liczby całkowitej ze znakiem numery. Dane wyjściowe są również 32-bitowa liczba całkowita.<br /><br /> Dowolna wartość nie jest liczbą całkowitą, zostanie zaokrąglony. Dodatnia wartość zostanie zaokrąglona w dół, ujemne wartości zaokrąglane w górę.<br /><br /> Każdą wartość, która znajduje się poza zakresem 32-bitową liczbę całkowitą zostaną przekonwertowane, wykonując ostatnich 32 bity jego dwójki notacji uzupełnienia.<br /><br /> Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub innych typów niż numer, a następnie w wyniku **niezdefiniowane**.<br /><br /> **Uwaga:** powyżej zachowanie jest zgodne z zachowaniem bitowy operator w JavaScript.|  
+|**bitowe**|Operator oczekuje input(s) jako 32-bitowej liczby całkowitej ze znakiem numery. Dane wyjściowe są również 32-bitowa liczba całkowita.<br /><br /> Dowolna wartość nie jest liczbą całkowitą, zostanie zaokrąglony. Dodatnia wartość zostanie zaokrąglona w dół, ujemne wartości zaokrąglane w górę.<br /><br /> Każdą wartość, która znajduje się poza zakresem 32-bitową liczbę całkowitą zostaną przekonwertowane, wykonując ostatnich 32 bity jego dwójki notacji uzupełnienia.<br /><br /> Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub innych typów niż numer, a następnie w wyniku **niezdefiniowane**.<br /><br /> **Uwaga:** Powyżej zachowanie jest zgodne z zachowaniem bitowy operator w JavaScript.|  
 |**logical**|Operator oczekuje input(s) jako Boolean(s). Dane wyjściowe również jest wartością logiczną.<br />Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub innych typów niż wartość logiczną, a następnie wynik będzie **niezdefiniowane**.|  
 |**Porównanie**|Operator oczekuje input(s) mają tego samego typu i nie jest niezdefiniowana. Dane wyjściowe jest wartością logiczną.<br /><br /> Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub danych wejściowych mają różne typy, a następnie w wyniku **niezdefiniowane**.<br /><br /> Zobacz **porządkowanie wartości do porównania** tabeli wartości kolejności szczegółowe informacje.|  
 |**ciąg**|Operator oczekuje input(s) jako ciągi. Dane wyjściowe jest ciąg.<br />Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub typem innym niż ciąg, a następnie wynik jest **niezdefiniowane**.|  
@@ -517,7 +517,7 @@ ORDER BY <sort_specification>
   
  Typy wartości w usłudze Cosmos DB, często nie są znane, dopóki nie są one pobierane z bazy danych. Aby można było obsługiwać zapewnienia ich wydajnego wykonywania zapytań, większość operatorów mają wymagania dotyczące typu strict. Również operatory samodzielnie, nie należy wykonywać konwersje niejawne.  
   
- Oznacza to, że zapytania, takich jak: Wybierz * z katalogu głównego r r.Age gdzie = 21 zwróci tylko dokumentów za pomocą właściwości wiek równą liczbie 21. Dokumenty z właściwością wiek równa "21" lub ciągu "0021", nie będą zgodne jako wyrażenie "21" = 21 ocenia do niezdefiniowanego. Umożliwia to lepsze wykorzystanie indeksów, ponieważ wyszukiwania określonej wartości (takie jak numer 21) jest szybsze niż wyszukiwanie nieokreśloną liczbę potencjalnych dopasowuje (liczby 21 lub ciągi "21", "021", "21.0"...). To różni się od sposobu JavaScript ocenia operatory na wartości różnych typów.  
+ Oznacza to, że zapytanie takie jak: Wybierz * z katalogu głównego r r.Age gdzie = 21 zwróci tylko dokumentów za pomocą właściwości wiek równą liczbie 21. Dokumenty z właściwością wiek równa "21" lub ciągu "0021", nie będą zgodne jako wyrażenie "21" = 21 ocenia do niezdefiniowanego. Umożliwia to lepsze wykorzystanie indeksów, ponieważ wyszukiwania określonej wartości (takie jak numer 21) jest szybsze niż wyszukiwanie nieokreśloną liczbę potencjalnych dopasowuje (liczby 21 lub ciągi "21", "021", "21.0"...). To różni się od sposobu JavaScript ocenia operatory na wartości różnych typów.  
   
  **Tablice i obiekty równości i porównania**  
   
@@ -1051,7 +1051,7 @@ EXP (<numeric_expression>)
   
  Wykładnik potęgi liczby jest stałą **e** podniesioną do potęgi liczby. Na przykład EXP(1.0) = e ^ 1.0 = 2.71828182845905 i EXP(10) = e ^ 10 = 22026.4657948067.  
   
- Jest to liczba wykładniczą logarytm naturalny liczby sam: EXP (dziennik (n)) = n. A logarytm naturalny wykładniczą liczby jest liczbą sam: LOG (EXP (n)) = n.  
+ Jest to liczba wykładniczą logarytm naturalny liczby sam: EXP (dziennik (n)) = n. A logarytm naturalny wykładniczą liczby jest liczbą sam: Dziennik (EXP (n)) = n.  
   
  **Przykłady**  
   
@@ -1108,7 +1108,7 @@ LOG (<numeric_expression> [, <base>])
   
  Logarytm naturalny to logarytm o podstawie **e**, gdzie **e** jest stałą nieracjonalnej w przybliżeniu równa 2.718281828.  
   
- Logarytm naturalny wykładniczą liczby jest to liczba sam: LOG (EXP (n)) = n. I wykładniczą logarytm naturalny liczby jest to liczba sam: EXP (dziennik (n)) = n.  
+ Logarytm naturalny wykładniczą liczby jest to liczba sam: Dziennik (EXP (n)) = n. I wykładniczą logarytm naturalny liczby jest to liczba sam: EXP (dziennik (n)) = n.  
   
  **Przykłady**  
   

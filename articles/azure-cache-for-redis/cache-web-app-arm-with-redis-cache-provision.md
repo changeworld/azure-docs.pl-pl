@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: adca39fd86563ad4e494995feb843b76b76806d6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f95db9b1c8119784d2b1d9cfb9dd005fc42ac3e4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019604"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033795"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Tworzenie aplikacji internetowej oraz pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu szablonu
 W tym temacie dowiesz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża aplikację internetową platformy Azure z pamięcią podręczną Azure dla usługi Redis. Dowiesz się, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md).
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md). Aby dowiedzieć się więcej na temat składni JSON i właściwości dla typów zasobów pamięci podręcznej, zobacz [typów zasobów Microsoft.Cache](/azure/templates/microsoft.cache/allversions).
 
 Aby uzyskać kompletny szablon, zobacz [aplikacji internetowej z pamięcią podręczną Azure Redis szablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 

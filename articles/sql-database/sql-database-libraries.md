@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: b8e41b77bfb47a08d443fb05e9d59f3f0f958358
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 29a6c7107a57babb5dc81fa22146897d3958f0f0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967916"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036345"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Biblioteki łączności i platformy dla programu SQL Server
 
@@ -25,11 +25,11 @@ Zapoznaj się z naszym [Pobierz samouczki dla początkujących](https://aka.ms/s
 
 Poniższa tabela zawiera listę bibliotek łączności lub *sterowniki* że aplikacje klienckie mogą używać różnych języków, aby połączyć się i używać programu SQL Server działającego lokalnie lub w chmurze. Można ich używać w systemie Linux, Windows lub platformy Docker i ich używać do nawiązania połączenia usługi Azure SQL Database i Azure SQL Data Warehouse. 
 
-| Język | Platforma | Zasoby dodatkowe | Do pobrania | Rozpoczęcie pracy |
+| Język | Platforma | Dodatkowe zasoby | Do pobrania | Rozpoczęcie pracy |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET dla programu SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Pobieranie](https://www.microsoft.com/net/download/) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Sterownik JDBC firmy Microsoft dla programu SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Pobieranie](https://go.microsoft.com/fwlink/?linkid=852460) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows, Linux, macOS| [Sterownik PHP SQL dla programu SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Pobieranie](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Wprowadzenie](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows, Linux, macOS| [Sterownik PHP SQL dla programu SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Pobieranie](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Sterownik node.js dla programu SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Instalowanie](https://msdn.microsoft.com/library/mt652094.aspx) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Sterownik SQL języka Python](https://msdn.microsoft.com/library/mt652092.aspx) | Zainstaluj opcje: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [Moduł pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Sterownik języka Ruby dla programu SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Instalowanie](https://msdn.microsoft.com/library/mt711041.aspx) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)

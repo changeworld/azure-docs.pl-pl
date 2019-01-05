@@ -1,20 +1,19 @@
 ---
 title: Operacje kopiowania tabeli usługi Azure Cosmos DB Cassandra API z platformy Spark.
 description: Ten artykuł szczegółowo opisuje sposób kopiowania danych między tabelami w interfejsu API usługi Azure Cosmos DB Cassandra
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 4be80bfa7354f4a4b6a13a7a34150c7052a2117b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227133"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034166"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Operacje kopiowania tabeli usługi Azure Cosmos DB Cassandra API z platformy Spark
 
@@ -147,6 +146,6 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- * Rozpoczynanie pracy z usługą [Tworzenie konta interfejsu API rozwiązania Cassandra, bazy danych i tabelę](create-cassandra-api-account-java.md) przy użyciu aplikacji języka Java.
- * [Ładowanie przykładowych danych do tabeli bazy danych Cassandra API](cassandra-api-load-data.md) przy użyciu aplikacji języka Java.
- * [Wykonywanie zapytań dotyczących danych z konta interfejsu API rozwiązania Cassandra](cassandra-api-query-data.md) przy użyciu aplikacji języka Java.
+ * Rozpocznij od [utworzenia konta, bazy danych i tabeli interfejsu API Cassandra](create-cassandra-api-account-java.md) przy użyciu aplikacji w języku Java.
+ * [Ładowanie przykładowych danych do tabeli interfejsu API Cassandra](cassandra-api-load-data.md) przy użyciu aplikacji w języku Java.
+ * [Wykonywanie zapytań dotyczących danych z poziomu konta interfejsu API Cassandra](cassandra-api-query-data.md) przy użyciu aplikacji w języku Java.

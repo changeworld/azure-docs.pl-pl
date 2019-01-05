@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001281"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035427"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -42,7 +42,7 @@ Możesz użyć tych kopii zapasowych:
 
 ## <a name="how-long-are-backups-kept"></a>Jak długo są przechowywane kopie zapasowe
 
-Każda baza danych SQL ma domyślny okres przechowywania kopii zapasowych, od 7 do 35 dni, od których zależy [model zakupu i warstwy usług](#pitr-retention-period). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych na serwerze logicznym platformy Azure. Aby uzyskać więcej informacji, zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-the-pitr-backup-retention-period).
+Każda baza danych SQL ma domyślny okres przechowywania kopii zapasowych, od 7 do 35 dni, od których zależy model zakupu i warstwy usług. Możesz zaktualizować kopię zapasową) okres przechowywania dla bazy danych na serwerze logicznym platformy Azure. Aby uzyskać więcej informacji, zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-the-pitr-backup-retention-period).
 
 Jeśli usuniesz bazę danych, SQL Database zostanie zachowana kopie zapasowe w taki sam sposób jak dla bazy danych online. Na przykład po usunięciu podstawowej bazy danych zawierającej okresu przechowywania siedmiu dni, kopii zapasowej, która jest cztery dni zostanie zapisany przez trzy kolejne dni.
 
@@ -109,7 +109,7 @@ Można zmienić domyślny okres przechowywania kopii zapasowych Odzyskiwanie prz
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Zmiana okresu przechowywania kopii zapasowej Odzyskiwanie przy użyciu witryny Azure portal
 
-Aby zmienić okres przechowywania kopii zapasowej Odzyskiwanie przy użyciu witryny Azure portal, przejdź do obiektu serwera okres przechowywania, którego chcesz zmienić w portalu, a następnie wybierz odpowiednią opcję na podstawie na obiektu serwera, który jest modyfikowany. 
+Aby zmienić okres przechowywania kopii zapasowej Odzyskiwanie przy użyciu witryny Azure portal, przejdź do obiektu serwera okres przechowywania, którego chcesz zmienić w portalu, a następnie wybierz odpowiednią opcję na podstawie na obiektu serwera, który jest modyfikowany.
 
 #### <a name="change-pitr-for-a-logical-server"></a>Zmiana Odzyskiwanie serwera logicznego
 

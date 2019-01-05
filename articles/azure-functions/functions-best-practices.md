@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78882742549632e7f1f6362f9e3ad0ae0034ffda
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c8581510f16896df74f814e501648374d984945e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634680"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039337"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizuj wydajność i niezawodność usługi Azure Functions
 
@@ -37,7 +37,7 @@ Zawsze, gdy jest to możliwe, Refaktoryzacja duże funkcje na mniejsze funkcja u
 
 ### <a name="cross-function-communication"></a>Funkcja komunikacji między
 
-[Trwałe funkcje](durable/durable-functions-overview.md) i [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md) zostały opracowane w celu zarządzania stanami i komunikacji między wiele funkcji.
+[Trwałe funkcje](durable/durable-functions-concepts.md) i [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md) zostały opracowane w celu zarządzania stanami i komunikacji między wiele funkcji.
 
 Jeśli nie używa trwałe Functions lub Logic Apps do integracji z wielu funkcji, jest zazwyczaj najlepszym rozwiązaniem, aby używać magazynu kolejek dla wielu funkcji komunikacji.  Głównym celem jest, że kolejki magazynu są tańsze i łatwiejsze do aprowizowania. 
 

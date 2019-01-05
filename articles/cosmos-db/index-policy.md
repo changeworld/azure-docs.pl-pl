@@ -6,32 +6,32 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2153f0a16df9e79b3f5324ce19880e2708855196
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0fb2c3daf19ce07d9641cbc5504cb3b598ad5b0d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848004"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034459"
 ---
 # <a name="indexing-policy-in-azure-cosmos-db"></a>Zasady indeksowania w usłudze Azure Cosmos DB
 
 Można zastąpić domyślnych zasad indeksowania w kontenerze usługi Azure Cosmos, konfigurując następujące parametry:
 
-* **Dołącz lub Wyklucz z indeksu elementów i ścieżek**: można wyłączyć lub włączyć określonych elementów w indeksie, gdy wstawiasz lub zastąpienie elementów w kontenerze. Można również Dołącz lub Wyklucz określone ścieżki/właściwości mają być indeksowane w kontenerach. Ścieżki mogą obejmować wzorców symboli wieloznacznych, na przykład *.
+* **Dołącz lub Wyklucz z indeksu elementów i ścieżek**: Można wyłączyć lub włączyć określonych elementów w indeksie, gdy wstawiasz lub zastąpienie elementów w kontenerze. Można również Dołącz lub Wyklucz określone ścieżki/właściwości mają być indeksowane w kontenerach. Ścieżki mogą obejmować wzorców symboli wieloznacznych, na przykład *.
 
-* **Konfiguruj typy indeksu**: dodatkowo do zakresu ścieżki zindeksowane, można dodać inne typy indeksów takich jak przestrzennych.
+* **Konfiguruj typy indeksu**: Ponadto do zakresu ścieżki zindeksowane, można dodać inne typy indeksów takich jak przestrzennych.
 
-* **Konfigurowanie trybów indeksu**: za pomocą zasad indeksowania w kontenerze, można skonfigurować różne tryby indeksowania takich jak *spójność* lub *Brak*.
+* **Konfigurowanie trybów indeksu**: Za pomocą zasad indeksowania w kontenerze, można skonfigurować różne tryby indeksowania takich jak *spójność* lub *Brak*.
 
 ## <a name="indexing-modes"></a>Tryby indeksowania 
 
 Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania, które można skonfigurować w kontenerze usługi Azure Cosmos. Można skonfigurować następujące dwa tryby indeksowania za pośrednictwem zasad indeksowania: 
 
-* **Spójne**: Jeśli kontenera usługi Azure Cosmos zasady są ustawione na spójność, kwerend w określonym kontenerze postępuj zgodnie z tego samego poziomu spójności, jak określony dla operacji odczytu punktu (na przykład silne, powiązana nieaktualność, "session" lub ostateczna). 
+* **Spójne**: Jeśli kontener usługi Azure Cosmos zasady są ustawione na spójność, kwerend w określonym kontenerze postępuj zgodnie z tego samego poziomu spójności, jak określony dla operacji odczytu punktu (na przykład silne, powiązana nieaktualność, "session" lub ostateczna). 
 
   Indeks jest aktualizowana synchronicznie, w przypadku aktualizowania elementów. Na przykład insert, replace, aktualizacji i operacje usuwania elementu spowoduje aktualizacji indeksu. Spójne indeksowania obsługuje spójne zapytania kosztem wpływ na przepływność zapisu. Zmniejszenie przepływność zapisu zależy od "ścieżki dołączona w indeksowaniu" i "poziom spójności". Spójność indeksowania w trybie zaprojektowano pod kątem zapisu szybko i zapytań od razu obciążeń.
 
-* **Brak**: kontener, który nie ma żadnego indeksu trybie nie ma indeksu skojarzonych z nim. Jest to często używane, jeśli bazy danych Azure Cosmos jest używany jako magazyn kluczy i wartości, a elementy są dostępne tylko dla ich właściwości Identyfikatora.
+* **Brak**: Kontener, który nie ma żadnego indeksu trybie nie ma indeksu skojarzonych z nim. Jest to często używane, jeśli bazy danych Azure Cosmos jest używany jako magazyn kluczy i wartości, a elementy są dostępne tylko dla ich właściwości Identyfikatora.
 
   > [!NOTE]
   > Konfigurowanie trybu indeksowania jako Brak ma efektem ubocznym porzucenie wszelkie istniejące indeksy. Tej opcji należy używać czy Twoich wzorców dostępu wymagają Identyfikatora buduje łącze własne tylko.

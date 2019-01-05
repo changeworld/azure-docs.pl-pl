@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: jroth
-ms.openlocfilehash: c663aec02d4d1808426a9f05a6674d5504563a63
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ffee3bb5cbeff4e2222307e2a1afb4691ae93d5
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009406"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053044"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatyzowanie zadań zarządzania na maszynach wirtualnych platformy Azure za pomocą rozszerzenia agenta programu SQL Server (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
 > * [Wdrożenie klasyczne](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
-Rozszerzenie agenta IaaS programu SQL Server (SQLIaaSExtension) działa na maszynach wirtualnych platformy Azure w celu zautomatyzowania zadań administracyjnych. Ten artykuł zawiera omówienie usług obsługiwanych przez rozszerzenie, a także instrukcje dotyczące instalacji, stanu i usuwania.
+Rozszerzenie agenta IaaS programu SQL Server (SqlIaasExtension) działa na maszynach wirtualnych platformy Azure w celu zautomatyzowania zadań administracyjnych. Ten artykuł zawiera omówienie usług obsługiwanych przez rozszerzenie, a także instrukcje dotyczące instalacji, stanu i usuwania.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -70,7 +70,7 @@ Wymagania dotyczące korzystania z rozszerzenia agenta IaaS programu SQL Server 
 Rozszerzenie agenta IaaS programu SQL Server jest automatycznie instalowany podczas przeprowadzania aprowizacji obrazów programu SQL Server w galerii maszyn wirtualnych. Jeśli musisz ręcznie zainstaluj rozszerzenie na jednym z tych maszyn wirtualnych serwera SQL, należy użyć następującego polecenia programu PowerShell:
 
 ```powershell
-Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension" -Version "1.2" -Location "East US 2"
+Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
 ```
 
 > [!IMPORTANT]
@@ -80,7 +80,7 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "
 > Rozszerzenie agenta IaaS programu SQL Server jest obsługiwana tylko na [obrazy z galerii maszyn wirtualnych programu SQL Server](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (płatność za rzeczywiste użycie lub bring-your-own-license). Nie jest obsługiwana, jeśli ręcznie zainstalować program SQL Server na maszynie wirtualnej tylko do systemu operacyjnego Windows Server lub wdrożyć dostosowane VHD maszyny Wirtualnej programu SQL Server. W takich przypadkach może być możliwe do zainstalowania i zarządzać rozszerzenie ręcznie przy użyciu programu PowerShell, ale nie uzyskasz ustawień konfiguracji programu SQL Server w witrynie Azure portal. Jednak zdecydowanie zalecane jest aby zamiast tego zainstalować obrazu z galerii maszyn wirtualnych programu SQL Server, a następnie ją Dostosuj.
 
 ## <a name="status"></a>Stan
-Jest jednym ze sposobów, aby sprawdzić, czy rozszerzenie jest zainstalowane. Aby wyświetlić stan agenta w witrynie Azure portal. Wybierz **wszystkie ustawienia** w oknie maszyny wirtualnej, a następnie kliknąć **rozszerzenia**. Powinien zostać wyświetlony **SQLIaaSExtension** rozszerzenie wymienione.
+Jest jednym ze sposobów, aby sprawdzić, czy rozszerzenie jest zainstalowane. Aby wyświetlić stan agenta w witrynie Azure portal. Wybierz **wszystkie ustawienia** w oknie maszyny wirtualnej, a następnie kliknąć **rozszerzenia**. Powinien zostać wyświetlony **SqlIaasExtension** rozszerzenie wymienione.
 
 ![Rozszerzenie agenta IaaS programu SQL Server w witrynie Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -101,7 +101,7 @@ W witrynie Azure Portal, można odinstalować rozszerzenie, klikając przycisk w
 
 Można również użyć **Remove-AzureRmVMSqlServerExtension** polecenia cmdlet programu PowerShell.
 
-    Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension"
+    Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
 
 ## <a name="next-steps"></a>Kolejne kroki
 Rozpocząć korzystanie z jednej z usług obsługiwanych przez rozszerzenie. Więcej informacji na ten temat można znaleźć w artykułach, do którego odwołuje się [obsługiwanych usługach](#supported-services) dalszej części tego artykułu.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8cbd09beffb8d86ab35e5fc1cf15c37b1bef9eb2
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002284"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050612"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Monitorowanie ciągłe za pomocą usługi Azure Monitor
 
@@ -32,7 +32,7 @@ W tym artykule opisano kolejne kroki umożliwiające włączanie ciągłego moni
 Aby uzyskać observability w całym środowisku, musisz włączyć monitorowania dla wszystkich aplikacji sieci web i usług. To pozwala łatwo przedstawić wizualnie połączenia i transakcji end-to-end dotyczące wszystkich składników.
 
 - [Funkcja Azure DevOps Projects](../devops-project/overview.md) umożliwiają uproszczone środowisko z istniejącego kodu i repozytorium Git lub wybrać jeden z przykładowych aplikacji, aby utworzyć potok ciągłej integracji (CI) i ciągłe dostarczanie (CD) na platformie Azure.
-- [Ciągłe monitorowanie w potoku metodyki DevOps w wersji](../application-insights/app-insights-vsts-continuous-monitoring.md) umożliwia bramy ani wycofać wdrożenie oparte na danych monitorowania.
+- [Ciągłe monitorowanie w potoku metodyki DevOps w wersji](../azure-monitor/app/continuous-monitoring.md) umożliwia bramy ani wycofać wdrożenie oparte na danych monitorowania.
 - [Monitor stanu](../azure-monitor/app/monitor-performance-live-website-now.md) umożliwia instrumentowanie działającej aplikacji .NET na Windows za pomocą usługi Azure Application Insights, bez konieczności modyfikowania ani jego ponownego wdrażania kodu.
 - Jeśli masz dostęp do kodu aplikacji, Włącz pełne monitorowanie za pomocą [usługi Application Insights](../application-insights/app-insights-overview.md) przez zainstalowanie usługi Azure Monitor zestaw Application Insights SDK dla [.NET](../application-insights/quick-monitor-portal.md), [języka Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), lub [innych języków programowania](../azure-monitor/app/platforms.md). Dzięki temu można określić niestandardowe zdarzenia, metryki lub wyświetleń stron, które są istotne dla Twojej firmy i aplikacji.
 
@@ -64,7 +64,7 @@ Ciągła integracja / ciągłe wdrażanie pozwala na integrowanie i wdrażanie z
 
 - Użyj [potoki Azure](/azure/devops/pipelines) Implementowanie ciągłego wdrażania i automatyzowanie całego procesu od zatwierdzania kodu do środowiska produkcyjnego, oparte na testach ciągłej integracji/ciągłego wdrażania.
 - Użyj [bramki jakości](/devops/pipelines/release/approvals/gates) można zintegrować monitorowanie w przed wdrożeniem lub po wdrożeniu. Dzięki temu są spełniane metryki klucza kondycji i wydajności (KPI) jako aplikacji przenieść z deweloperów do produkcji i różnice w środowisku infrastruktury lub skalowania jest do niekorzystnego wpływu na kluczowych wskaźników wydajności.
-- [Obsługa osobne monitorowania instancje](../application-insights/app-insights-separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../azure-monitor/platform/metrics-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Log Analytics](log-query/cross-workspace-query.md).
+- [Obsługa osobne monitorowania instancje](../azure-monitor/app/separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../azure-monitor/platform/metrics-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Tworzenie alertów informacje z możliwością działania za pomocą akcji
@@ -80,16 +80,16 @@ Krytyczne aspekty monitorowania jest aktywnie powiadamiającą administratorów 
 Zapewnienia, że usługi deweloperów i operacyjne mają dostęp do narzędzi i te same dane telemetryczne pozwala na wyświetlanie wzorców w całym środowisku i zminimalizować swoje średniego czasu wykrywania (MTTD) i Średni czas przywracania (MTTR).
 
 - Przygotowanie [niestandardowe pulpity nawigacyjne](../application-insights/app-insights-tutorial-dashboards.md) oparte na typowych metryk i dzienników dla różnych ról w organizacji. Pulpity nawigacyjne można połączyć dane z wszystkich zasobów platformy Azure.
-- Przygotowanie [skoroszyty](../application-insights/app-insights-usage-workbooks.md) zapewnienie wiedzy między środowiskami deweloperskim i operacji. Może je przygotować jako dynamiczne raporty z wykresy metryk i dzienników zapytań lub przewodniki nawet jako rozwiązywania problemów przygotowane przez deweloperów, pomoc techniczną lub operacje do obsługi podstawowych problemów.
+- Przygotowanie [skoroszyty](../azure-monitor/app/usage-workbooks.md) zapewnienie wiedzy między środowiskami deweloperskim i operacji. Może je przygotować jako dynamiczne raporty z wykresy metryk i dzienników zapytań lub przewodniki nawet jako rozwiązywania problemów przygotowane przez deweloperów, pomoc techniczną lub operacje do obsługi podstawowych problemów.
 
 ## <a name="continuously-optimize"></a>Zapewnij ciągłą optymalizację
  Monitorowanie jest jednym z podstawowych aspektów popularnych Build-Measure-Learn filozofia, zalecanego stale śledzenie kluczowych wskaźników wydajności i metryki zachowanie użytkowników i następnie fundusze optymalizujesz je za pomocą planowania iteracji. Usługa Azure Monitor pomaga zbierać metryki i dzienniki odpowiednie dla Twojej firmy i dodać nowe punkty danych w ramach następnego wdrożenia, zgodnie z potrzebami.
 
 - Użyj narzędzi w usłudze Application Insights do [śledzenie zachowania użytkowników końcowych i zaangażowania](../application-insights/app-insights-tutorial-users.md).
-- Użyj [analizy wpływu](../application-insights/app-insights-usage-impact.md) ułatwiające priorytety obszary, które chcesz się skupić się na dysku do ważnych kluczowych wskaźników wydajności.
+- Użyj [analizy wpływu](../azure-monitor/app/usage-impact.md) ułatwiające priorytety obszary, które chcesz się skupić się na dysku do ważnych kluczowych wskaźników wydajności.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o składnikach różnica [usługi Azure Monitor](overview.md).
-- [Dodawanie ciągłego monitorowania](../application-insights/app-insights-vsts-continuous-monitoring.md) do potoku wydania.
+- [Dodawanie ciągłego monitorowania](../azure-monitor/app/continuous-monitoring.md) do potoku wydania.

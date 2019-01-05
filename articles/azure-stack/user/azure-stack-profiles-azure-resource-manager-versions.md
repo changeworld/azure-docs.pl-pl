@@ -10,29 +10,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380220"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036243"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profilów w usłudze Azure Stack
 
 Dla każdego profilu interfejsu API używanych przez usługę Azure Stack, w tym artykule, można znaleźć dostawcy zasobów i numery wersji. W tym artykule tabelach wersje obsługiwanych wersji interfejsu API profilów i każdy dostawca zasobów. Każdy dostawca zasobów zawiera zestaw typów zasobów i numery określonej wersji.
 
 Profil interfejsu API używa trzech konwencji nazewnictwa:
- - najnowsza
- - Rrrr mm-dd hybrydowe
- - rrrr mm-dd-profile
+
+ - **latest**
+ - **yyyy-mm-dd-hybrid**
+ - **rrrr mm-dd-profile**
 
 Objaśnienia dotyczące profilów interfejsu API i cykl wersji wersji dla usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
 
 > [!Note]  
-> **Najnowsze** profilu interfejsu API zawiera najnowszej wersji interfejsu API dostawcy zasobów i nie znajduje się w tym artykule.
+> **Najnowsze** profilu interfejsu API zawiera najnowszą wersję interfejsu API dostawcy zasobów i nie znajduje się w tym artykule.
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>Omówienie 2018-03-01-hybrydowe
 
@@ -42,7 +43,7 @@ Objaśnienia dotyczące profilów interfejsu API i cykl wersji wersji dla usług
 | Microsoft.Network | 2017-10-01<br>Brama sieci VPN będzie 2017-03-01 |
 | Microsoft.Storage (płaszczyzny danych) | 2017-04-17 |
 | Microsoft.Storage (płaszczyznę kontroli) | 2016-01-01 |
-| Firmy Microsoft. Sieć Web | 2016-08-01<br>czyli r (teraz) na platformie Azure |
+| Microsoft Sieć Web | 2016-08-01<br>czyli r (teraz) na platformie Azure |
 | Microsoft.KeyVault | 2016-10-01 (nie zostanie zmieniona) |
 | Microsoft.Resources (Azure Resource Manager SAM) | 2016-02-01 |
 | Microsoft.Authorization (operacje dotyczące zasad) | 2015-11-01 |
@@ -76,13 +77,13 @@ Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w pr
 | Resources_Locks | 2016-09-01 |
 | Subskrypcje | 2016-06-1 |
 
-Aby uzyskać bardziej listę wersji dla każdego typu zasobu dla dostawców w profilu interfejsu api, zobacz [szczegóły 2018-03-01-rozwiązania hybrydowego](#details-for-the-2018-03-01-hybrid)
+Aby uzyskać listę wersji każdego typu zasobu dla dostawców w profilu interfejsu API Zobacz następną sekcję.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Szczegóły dotyczące 2018-03-01-rozwiązania hybrydowego
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Kontrola dostępu oparta na rolach umożliwia zarządzanie akcjami, które użytkownicy w organizacji mogą wykonywać względem zasobów. Ten zestaw operacji umożliwia definiowanie ról, przypisywanie ról użytkownikom lub grupom i uzyskiwanie informacji o uprawnieniach. Aby uzyskać więcej informacji, zobacz [autoryzacji](https://docs.microsoft.com/rest/api/authorization/).
+Kontrola dostępu oparta na rolach umożliwia zarządzanie akcjami, które użytkownicy w organizacji mogą wykonywać względem zasobów. Ten zestaw operacji umożliwia definiowanie ról, przypisywanie ról użytkownikom lub grupom i uzyskiwanie informacji o uprawnieniach. Aby uzyskać więcej informacji, zobacz [autoryzacji](/rest/api/authorization/).
 
 | Typy zasobów | Wersje interfejsu API |
 |---------------------|--------------------|
@@ -108,7 +109,7 @@ Kontrola dostępu oparta na rolach umożliwia zarządzanie akcjami, które użyt
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Obliczenia interfejsów API usługi Azure umożliwiają dostęp programowy do maszyn wirtualnych i obsługujących je zasobów. Aby uzyskać więcej informacji, zobacz [usługi Azure Compute](https://docs.microsoft.com/rest/api/compute/).
+Obliczenia interfejsów API usługi Azure umożliwiają dostęp programowy do maszyn wirtualnych i obsługujących je zasobów. Aby uzyskać więcej informacji, zobacz [usługi Azure Compute](/rest/api/compute/).
 
 | Typ zasobu | Wersja interfejsu API |
 |---------------------------------------------------------------|-------------|
@@ -155,7 +156,7 @@ Obliczenia interfejsów API usługi Azure umożliwiają dostęp programowy do ma
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-Magazyny zarządzania kluczem, a także klucze, wpisy tajne i certyfikaty w ramach Twoich magazynów kluczy. Aby uzyskać więcej informacji, zobacz [odwołania API REST usługi Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/).
+Magazyny zarządzania kluczem, a także klucze, wpisy tajne i certyfikaty w ramach Twoich magazynów kluczy. Aby uzyskać więcej informacji, zobacz [odwołania API REST usługi Azure Key Vault](/rest/api/keyvault/).
 
 | Typy zasobów | Wersje interfejsu API |
 |-------------------------|--------------|
@@ -166,7 +167,7 @@ Magazyny zarządzania kluczem, a także klucze, wpisy tajne i certyfikaty w rama
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Wynik wywołania usługi Operations jest reprezentacją listy dostępnych operacji chmury w sieci. Aby uzyskać więcej informacji, zobacz [interfejsu API REST operacji](https://docs.microsoft.com/rest/api/operation/).
+Wynik wywołania usługi operations jest reprezentacją listy operacji chmury dostępnej sieci. Aby uzyskać więcej informacji, zobacz [interfejsu API REST operacji](/rest/api/operation/).
 
 | Typy zasobów | Wersje interfejsu API |
 |---------------------------|--------------|
@@ -188,7 +189,7 @@ Wynik wywołania usługi Operations jest reprezentacją listy dostępnych operac
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrastruktura rozwiązaniach platformy Azure. Grupujesz powiązane zasoby w grupy zasobów i wdrażasz swoje zasoby za pomocą szablonów JSON. Wprowadzenie do wdrażania zasobów i zarządzania nimi przy użyciu usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrastruktura rozwiązaniach platformy Azure. Grupujesz powiązane zasoby w grupy zasobów i wdrażasz swoje zasoby za pomocą szablonów JSON. Wprowadzenie do wdrażania zasobów i zarządzania nimi przy użyciu usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 | Typy zasobów | Wersje interfejsu API |
 |-----------------------------------------|-------------------|
@@ -202,7 +203,7 @@ Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrast
 | Metadane rozszerzenia | 2015-01-01 |
 | Linki | 2016-09-01 |
 | Lokalizacje | 2015-01-01 |
-| Oferta | 2015-01-01 |
+| Oferty | 2015-01-01 |
 | Operacje | 2015-01-01 |
 | Dostawcy | 2017-08-01 |
 | Grupy zasobów | 2016-09-01 |
@@ -220,7 +221,7 @@ Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrast
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim kontem magazynu i kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST dostawcy zasobów usługi Azure Storage](https://docs.microsoft.com/rest/api/storagerp/).
+Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim kontem magazynu i kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST dostawcy zasobów magazynu Azure](/rest/api/storagerp/).
 
 | Typy zasobów | Wersje interfejsu API |
 |-------------------------|--------------|
@@ -299,7 +300,7 @@ Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim ko
 | Metadane rozszerzenia | 2015-01-01 |
 | Linki | 2016-09-01 |
 | Lokalizacje | 2015-01-01 |
-| Oferta | 2015-01-01 |
+| Oferty | 2015-01-01 |
 | Operacje | 2015-01-01 |
 | Dostawcy | 2017-08-01 |
 | Grupy zasobów | 2016-09-01 |

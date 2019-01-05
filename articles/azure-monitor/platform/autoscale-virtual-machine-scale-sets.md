@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 5ff6e29fc4d7607c44541c7947404a0bc0301207
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c7b4da7292600f3d477d5c16263660eb6d4d4226
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581494"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051276"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguracja zaawansowane automatyczne skalowanie usługi VM Scale Sets za pomocą szablonów usługi Resource Manager
 Możesz skalować i skalowalnego w poziomie w zestawach skalowania maszyn wirtualnych na podstawie dotyczące progów metryk wydajności, według powtarzającego się harmonogramu lub według określonej daty. Można również skonfigurować powiadomienia e-mail i elementy webhook dla akcji skalowania. W tym instruktażu przedstawiono przykład konfigurowania tych obiektów w zestawie skalowania maszyn wirtualnych przy użyciu szablonu usługi Resource Manager.
@@ -247,3 +247,5 @@ Użyj poniższych linków, aby dowiedzieć się więcej na temat skalowania auto
 [Zarządzanie Skalowanie automatyczne za pomocą interfejsu wiersza polecenia](cli-samples.md#autoscale)
 
 [Konfigurowanie elementu Webhook i powiadomienia E-mail dotyczące automatycznego skalowania](autoscale-webhook-email.md)
+
+[Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings) odwołanie do szablonu

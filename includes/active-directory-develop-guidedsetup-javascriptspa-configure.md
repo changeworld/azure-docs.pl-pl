@@ -14,28 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 2e65c5f0d6c2d493abcd61bea4077cbdd8ff95fa
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 135ee9f6b833165cd393b9c5ca582e0ee9499e0f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331313"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54057404"
 ---
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
-
-Istnieje wiele sposobów, aby zarejestrować aplikację. Wybierz opcję, która najlepiej spełnia Twoje potrzeby:
-* [Tryb ekspresowy — Użyj tego przewodnika Szybki Start SPA, aby skonfigurować aplikację](#option-1-register-your-application-express-mode)
-* [Zaawansowany tryb — ręcznie skonfigurować ustawienia aplikacji](#option-2-register-your-application-advanced-mode)
-
-### <a name="option-1-register-your-application-express-mode"></a>Opcja 1: Rejestrowanie aplikacji (Tryb ekspresowy)
-
-1. Zaloguj się do [rejestracji aplikacji portalu platformy Azure (wersja zapoznawcza)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) zarejestrować aplikację.
-1. Na **rejestrowania aplikacji** strony, wprowadź nazwę aplikacji.
-1. W obszarze **obsługiwane typy kont**, wybierz opcję **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**.
-1. Po zakończeniu wybierz pozycję **Rejestruj**.
-1. Postępuj zgodnie z instrukcjami przewodnika Szybki Start, aby pobrać i automatycznie skonfigurować swoją nową aplikację dla Ciebie w jednym kliknięciem.
-
-### <a name="option-2-register-your-application-advanced-mode"></a>Opcja 2: Rejestrowanie aplikacji (Tryb zaawansowany)
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) zarejestrować aplikację.
 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.

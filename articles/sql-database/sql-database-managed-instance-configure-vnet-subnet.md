@@ -11,26 +11,27 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 53aba5192ddf57598965fcfe0db5f2b18423c7e9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/03/2019
+ms.openlocfilehash: 1718177a0902bc7049eb6986e5a1d128eeb3f233
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346369"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040962"
 ---
 # <a name="configure-an-existing-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie istniejącej sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database
 
-Wystąpienie usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) i podsieć, w wersji dedykowanej dla wystąpień zarządzanych tylko. Jeśli jest skonfigurowany zgodnie z opisem w można użyć istniejącej sieci wirtualnej i podsieci [wymagania dotyczące zarządzanych sieci wirtualnej wystąpienia](sql-database-managed-instance-connectivity-architecture.md#network-requirements). 
+Wystąpienie usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) i podsieć, w wersji dedykowanej dla wystąpień zarządzanych tylko. Jeśli jest skonfigurowany zgodnie z opisem w można użyć istniejącej sieci wirtualnej i podsieci [wymagania dotyczące zarządzanych sieci wirtualnej wystąpienia](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-Jeśli masz nowej podsieci, które nadal nie jest skonfigurowane, nie masz pewności podsieci jest powiązana z [wymagania](sql-database-managed-instance-connectivity-architecture.md#network-requirements), lub chcesz sprawdzić, są nadal zgodne z podsieci [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po pewne zmiany, które zostały wprowadzone, możesz sprawdzić i modyfikować sieci przy użyciu skryptów opisano w tej sekcji. 
+Jeśli masz nowej podsieci, które nadal nie jest skonfigurowane, nie masz pewności podsieci jest powiązana z [wymagania](sql-database-managed-instance-connectivity-architecture.md#network-requirements), lub chcesz sprawdzić, są nadal zgodne z podsieci [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po pewne zmiany, które zostały wprowadzone, możesz sprawdzić i modyfikować sieci przy użyciu skryptów opisano w tej sekcji.
 
   > [!Note]
-  > Wystąpienie zarządzane można utworzyć tylko w sieci wirtualnej usługi Resource Manager. Sieci wirtualnych platformy Azure wdrożone za pomocą klasycznego modelu wdrażania nie jest obsługiwany. Upewnij się, Oblicz rozmiar podsieci postępując zgodnie z wytycznymi podanymi w [określi rozmiar podsieci wystąpienia zarządzanego](#determine-the-size-of-subnet-for-managed-instances) sekcji, ponieważ podsieć nie można zmienić rozmiaru, gdy wdrażanie zasobów w obrębie.
+  > Wystąpienie zarządzane można utworzyć tylko w sieci wirtualnej usługi Resource Manager. Sieci wirtualnych platformy Azure wdrożone za pomocą klasycznego modelu wdrażania nie jest obsługiwany. Upewnij się, Oblicz rozmiar podsieci postępując zgodnie z wytycznymi podanymi w [określi rozmiar podsieci wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md) artykułu, ponieważ podsieć nie można zmienić rozmiaru, gdy wdrażanie zasobów w obrębie.
 
-## <a name="validate-and-modify-an-existing-virtual-network"></a>Weryfikowanie i modyfikowanie istniejącej sieci wirtualnej 
+## <a name="validate-and-modify-an-existing-virtual-network"></a>Weryfikowanie i modyfikowanie istniejącej sieci wirtualnej
 
 Jeśli chcesz utworzyć wystąpienie zarządzane wewnątrz istniejącej podsieci, zaleca się poniższy skrypt programu PowerShell, aby przygotować się do podsieci:
+
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
 
@@ -43,6 +44,7 @@ $parameters = @{
 
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
+
 Przygotowanie podsieci odbywa się w trzech prostych krokach:
 
 1. Sprawdź poprawność — wybranej sieci wirtualnej i podsieci są prawidłowe dla zarządzanego wystąpienia wymagań sieciowych.

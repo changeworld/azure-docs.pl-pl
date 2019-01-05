@@ -1,23 +1,22 @@
 ---
 title: Skalowanie przepływności w usłudze Azure Cosmos DB
 description: W tym artykule opisano, jak usługi Azure Cosmos DB jest skalowana przepływność elastycznie
-services: cosmos-db
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 4da893f71f3bb91ba021dcf259d20ddd72bfbf90
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5834bf88b63209d2374cfea71fc0f01a1f7451c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821994"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033438"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Skalowanie przepływności w usłudze Azure Cosmos DB
 
-W usłudze Azure Cosmos DB, aprowizowana przepływność jest reprezentowany jako żądania jednostek na sekundę (RU/s, liczba mnoga: jednostek zarezerwowanych). Mierzenie koszt odczytu i zapisu operacji dotyczących kontenera usługi Cosmos, jak pokazano na poniższej ilustracji:
+W usłudze Azure Cosmos DB, aprowizowana przepływność jest reprezentowany jako żądania jednostek na sekundę (RU/s, liczba mnoga: Jednostki zarezerwowane). Mierzenie koszt odczytu i zapisu operacji dotyczących kontenera usługi Cosmos, jak pokazano na poniższej ilustracji:
 
 ![Jednostki żądania](./media/scale-throughput/figure1.png)
 

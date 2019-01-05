@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 72101b8b6c945e58e06cea371ce4222cd87bcec7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d029de11c7101e961506f1fa46f5a71c6efb103e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079488"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044012"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu szablonu
 
@@ -80,3 +80,4 @@ Aby wdrożyć szablon przy użyciu interfejsu wiersza polecenia platformy Azure,
 
 [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)
 
+Składnię JSON i właściwości modułu równoważenia obciążenia w szablonie, zobacz [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

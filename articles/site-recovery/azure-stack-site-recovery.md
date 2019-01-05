@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976583"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039473"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
@@ -142,7 +142,7 @@ Dla każdej maszyny, którą chcesz replikować, znaleźć adres IP:
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Krok 2: Utwórz magazyn i Wybieranie celu replikacji
 
-1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Monitorowanie i zarządzanie** > **Backup i Site Recovery**.
+1. W witrynie Azure portal wybierz **Utwórz zasób** > **narzędzia do zarządzania** > **Backup i Site Recovery**.
 2. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. 
 3. W **grupy zasobów**, Utwórz lub wybierz grupę zasobów. Firma Microsoft korzysta z **contosoRG**.
 4. W **lokalizacji**, wprowadź region platformy Azure. Użyj wartości **Europa Zachodnia**.

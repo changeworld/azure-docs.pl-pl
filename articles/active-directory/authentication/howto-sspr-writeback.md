@@ -10,16 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086951"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040663"
 ---
-# <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie funkcji zapisywania zwrotnego haseł
-
-Firma Microsoft zaleca, aby używać funkcji automatycznej aktualizacji [program Azure AD Connect](../hybrid/how-to-connect-install-express.md) podczas korzystania z funkcji zapisywania zwrotnego haseł.
+# <a name="how-to-configure-password-writeback"></a>Porady: Konfigurowanie zapisywania zwrotnego haseł
 
 W następujących krokach założono, program Azure AD Connect została już skonfigurowana w danym środowisku, za pomocą [Express](../hybrid/how-to-connect-install-express.md) lub [niestandardowe](../hybrid/how-to-connect-install-custom.md) ustawienia.
 
@@ -38,7 +36,25 @@ Typowe zadania dotyczące rozwiązywania problemów związanych z zapisywaniem z
 > [!WARNING]
 > Zapisywanie zwrotne haseł przestaną działać dla klientów, którzy korzystają z wersji Azure AD Connect 1.0.8641.0 i gdy starsze [Azure Access Control service (ACS) została wycofana w dniu 7 listopada 2018](../develop/active-directory-acs-migration.md). Usługa Azure AD Connect wersje 1.0.8641.0 i starsze nie będzie już umożliwiać funkcji zapisywania zwrotnego haseł w tym czasie, ponieważ są one zależne od usługi ACS do obsługi tej funkcji.
 >
-> Aby uniknąć przerw w działaniu usługi, uaktualnianie z poprzedniej wersji programu Azure AD Connect do nowszej wersji, zobacz artykuł [program Azure AD Connect: uaktualnianie z poprzedniej wersji do najnowszej wersji](../hybrid/how-to-upgrade-previous-version.md)
+> Aby uniknąć przerw w działaniu usługi, uaktualnianie z poprzedniej wersji programu Azure AD Connect do nowszej wersji, zobacz artykuł [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](../hybrid/how-to-upgrade-previous-version.md)
+>
+
+## <a name="licensing-requirements-for-password-writeback"></a>Wymagania licencyjne dla funkcji zapisywania zwrotnego haseł
+
+**Samoobsługowe hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym jest funkcją premium usługi Azure AD**. Aby uzyskać więcej informacji na temat licencjonowania, zobacz [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jeden z następujących licencji, które są przypisane w dzierżawie usługi:
+
+* Usługa Azure AD — warstwa Premium P1
+* Usługa Azure AD — warstwa Premium P2
+* Pakiet Enterprise Mobility + Security E3 lub A3
+* Pakiet Enterprise Mobility + Security E5 lub A5
+* Rozwiązania Microsoft 365 E3 lub A3
+* Rozwiązania Microsoft 365 E5 lub A5
+* Rozwiązania Microsoft 365 F1
+
+> [!WARNING]
+> Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają jednego z poprzednich planów dla tej funkcji do pracy.
 >
 
 ## <a name="active-directory-permissions"></a>Uprawnienia usługi Active Directory

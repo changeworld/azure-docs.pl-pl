@@ -11,55 +11,55 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: bc0ca62699c21848e4d5fdc18bef292dce4634bf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/03/2019
+ms.openlocfilehash: a7a27d8447a306bc7a3440d64cc6216ca20d2528
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863469"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038153"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Wieloma fragmentami zapytań, za pomocą narzędzi elastycznych baz danych
 
 ## <a name="overview"></a>Przegląd
 
-Za pomocą [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md), możesz tworzyć rozwiązania bazy danych podzielonej na fragmenty. **Wykonywanie zapytań w wielu fragmentów** używane do wykonywania zadań, takich jak kolekcja/raportowania danych wymagające uruchomienia zapytania rozciąga kilka fragmentów. (Ten element, aby porównać [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md), który wykonuje całą pracę na jeden fragment.) 
+Za pomocą [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md), możesz tworzyć rozwiązania bazy danych podzielonej na fragmenty. **Wykonywanie zapytań w wielu fragmentów** używane do wykonywania zadań, takich jak kolekcja/raportowania danych wymagające uruchomienia zapytania rozciąga kilka fragmentów. (Ten element, aby porównać [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md), który wykonuje całą pracę na jeden fragment.)
 
-1. Pobierz **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) lub **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map), [platformy .NET ](https://msdn.microsoft.com/library/azure/dn807370.aspx)) przy użyciu **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), lub **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metody. Zobacz **[konstruowanie ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)** i  **[RangeShardMap lub ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)**.
-2. Tworzenie **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_connection), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)) obiektu.
-3. Tworzenie **MultiShardStatement lub MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)). 
-4. Ustaw **Właściwość CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.commandtext.aspx#P:Microsoft.Azure.SqlDatabase.ElasticScale.Query.MultiShardCommand.CommandText)) do polecenia języka T-SQL.
-5. Wykonaj polecenie wywołując **ExecuteQueryAsync lub ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement.executeQueryAsync), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.executereader.aspx)) metody.
-6. Wyświetl wyniki za pomocą **MultiShardResultSet lub MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_result_set), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)) klasy. 
+1. Pobierz **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) lub **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [platformy .NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) przy użyciu **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), lub **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metody. Zobacz [konstruowanie ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) i [RangeShardMap lub ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Tworzenie **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) obiektu.
+3. Tworzenie **MultiShardStatement lub MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
+4. Ustaw **Właściwość CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) do polecenia języka T-SQL.
+5. Wykonaj polecenie wywołując **ExecuteQueryAsync lub ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) metody.
+6. Wyświetl wyniki za pomocą **MultiShardResultSet lub MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) klasy.
 
 ## <a name="example"></a>Przykład
 
-Poniższy kod ilustruje użycie wielu fragmentów, wykonywanie zapytań przy użyciu danego **ShardMap** o nazwie *myShardMap*. 
+Poniższy kod ilustruje użycie wielu fragmentów, wykonywanie zapytań przy użyciu danego **ShardMap** o nazwie *myShardMap*.
 
 ```csharp
-using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString)) 
-{ 
+using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString))
+{
     using (MultiShardCommand cmd = conn.CreateCommand())
-    { 
-        cmd.CommandText = "SELECT c1, c2, c3 FROM ShardedTable"; 
-        cmd.CommandType = CommandType.Text; 
-        cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn; 
-        cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults; 
+    {
+        cmd.CommandText = "SELECT c1, c2, c3 FROM ShardedTable";
+        cmd.CommandType = CommandType.Text;
+        cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn;
+        cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
 
-        using (MultiShardDataReader sdr = cmd.ExecuteReader()) 
-        { 
+        using (MultiShardDataReader sdr = cmd.ExecuteReader())
+        {
             while (sdr.Read())
-            { 
-                var c1Field = sdr.GetString(0); 
-                var c2Field = sdr.GetFieldValue<int>(1); 
+            {
+                var c1Field = sdr.GetString(0);
+                var c2Field = sdr.GetFieldValue<int>(1);
                 var c3Field = sdr.GetFieldValue<Int64>(2);
-            } 
-        } 
-    } 
-} 
+            }
+        }
+    }
+}
 ```
 
-Najważniejszą różnicą składa się wieloma fragmentami połączeń. Gdzie **SqlConnection** operuje na pojedynczej bazy danych **MultiShardConnection** przyjmuje ***zbiór fragmentów*** jako dane wejściowe. Wypełnianie kolekcji fragmentów z mapy fragmentów. Następnie wykonywania zapytania w kolekcji przy użyciu fragmentów **UNION ALL** semantyki gromadzi pojedynczy wynik ogólny. Opcjonalnie można dodać nazwę fragmentu wiersza, z której pochodzi do danych wyjściowych przy użyciu **ExecutionOptions** właściwość polecenia. 
+Najważniejszą różnicą składa się wieloma fragmentami połączeń. Gdzie **SqlConnection** operuje na pojedynczej bazy danych **MultiShardConnection** przyjmuje ***zbiór fragmentów*** jako dane wejściowe. Wypełnianie kolekcji fragmentów z mapy fragmentów. Następnie wykonywania zapytania w kolekcji przy użyciu fragmentów **UNION ALL** semantyki gromadzi pojedynczy wynik ogólny. Opcjonalnie można dodać nazwę fragmentu wiersza, z której pochodzi do danych wyjściowych przy użyciu **ExecutionOptions** właściwość polecenia.
 
 Należy pamiętać, wywołanie **myShardMap.GetShards()**. Ta metoda umożliwia pobranie wszystkich fragmentów z mapy fragmentów i zapewnia łatwy sposób uruchamiania zapytania dla wszystkich odpowiednich baz danych. Zbiór fragmentów dla zapytań wieloma fragmentami może być dostosowany dalsze, wykonując zapytanie LINQ na kolekcji zwrócony z wywołania **myShardMap.GetShards()**. W połączeniu z zasadami wyniki częściowe bieżące możliwości badania wieloma fragmentami został zaprojektowany do działania oraz dziesiątki do setek fragmentów.
 

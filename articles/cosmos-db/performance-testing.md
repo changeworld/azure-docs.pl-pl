@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 776956624dc1da12427d6e4f79ea5e59788f2459
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d2863e39b5f28c56e2b9045513aa83326d8b8c7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135359"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043196"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Wydajność i skalę, testowanie za pomocą usługi Azure Cosmos DB
 
@@ -37,16 +37,16 @@ Jeśli potrzebujesz opcji konfiguracji po stronie klienta w celu poprawy wydajno
 ## <a name="run-the-performance-testing-application"></a>Uruchamianie aplikacji do testowania wydajnościowego
 Aby skompilować i uruchomić przykład .NET jest najszybszym sposobem na rozpoczęcie pracy, zgodnie z opisem w poniższych krokach. Można również przejrzeć kod źródłowy i zaimplementować podobne konfiguracje w aplikacjach klienckich.
 
-**Krok 1:** pobieranie projektu z [testowania próbki wydajności usługi Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), lub utworzenie rozwidlenia repozytorium GitHub.
+**Krok 1:** Pobieranie projektu z [testowania próbki wydajności usługi Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), lub utworzenie rozwidlenia repozytorium GitHub.
 
-**Krok 2:** zmodyfikować ustawienia EndpointUrl, AuthorizationKey, CollectionThroughput i DocumentTemplate (opcjonalnie) w pliku App.config.
+**Krok 2:** Zmodyfikuj ustawienia dla EndpointUrl, AuthorizationKey, CollectionThroughput i DocumentTemplate (opcjonalnie) w pliku App.config.
 
 > [!NOTE]
 > Przed udostępnieniem kolekcji o wysokiej przepływności, można znaleźć [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/) do szacowania kosztów w jednej kolekcji. Usługa Azure Cosmos DB opłaty naliczane są, Magazyn i przepływność niezależnie od siebie w systemie godzinowym. Możliwe obniżenie kosztów przez usunięcie lub obniżenia przepływność kolekcji usługi Azure Cosmos DB po zakończeniu testowania.
 > 
 > 
 
-**Krok 3:** skompilować i uruchomić aplikację konsoli w wierszu polecenia. Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
+**Krok 3:** Skompilować i uruchomić aplikację konsoli w wierszu polecenia. Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
 
     C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
@@ -89,7 +89,7 @@ Aby skompilować i uruchomić przykład .NET jest najszybszym sposobem na rozpoc
     Press any key to exit...
 
 
-**Krok 4 (jeśli jest to konieczne):** przepływności zgłoszonej (RU/s) za pomocą narzędzia powinna być taka sama lub większa niż aprowizowana przepływność kolekcji lub zestaw kolekcji. Jeśli nie jest, zwiększenie DegreeOfParallelism w małych odstępach może pomóc Ci osiągnięcia limitu. Jeśli płaskowyżach przepływność z aplikacji klienckich, należy uruchomić wiele wystąpień aplikacji, na maszynach klienckich w dodatkowych. Jeśli potrzebujesz pomocy dotyczącej tego kroku, Wyślij wiadomość e-mail askcosmosdb@microsoft.com lub pliku biletu pomocy technicznej z [witryny Azure portal](https://portal.azure.com).
+**Krok 4. (jeśli jest to konieczne):** Przepływności zgłoszonej (RU/s) za pomocą narzędzia powinna być taka sama lub większa niż aprowizowana przepływność kolekcji lub zestaw kolekcji. Jeśli nie jest, zwiększenie DegreeOfParallelism w małych odstępach może pomóc Ci osiągnięcia limitu. Jeśli płaskowyżach przepływność z aplikacji klienckich, należy uruchomić wiele wystąpień aplikacji, na maszynach klienckich w dodatkowych. Jeśli potrzebujesz pomocy dotyczącej tego kroku, Wyślij wiadomość e-mail askcosmosdb@microsoft.com lub pliku biletu pomocy technicznej z [witryny Azure portal](https://portal.azure.com).
 
 Po utworzeniu jest uruchomiona aplikacja, możesz wypróbować różne [zasady indeksowania](index-policy.md) i [poziomów spójności](consistency-levels.md) Aby zrozumieć ich wpływ na przepływność i opóźnienie. Możesz również przejrzeć kod źródłowy i zaimplementować podobne konfiguracje własne zestawy testów lub aplikacje produkcyjne.
 

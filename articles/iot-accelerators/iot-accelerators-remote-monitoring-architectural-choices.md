@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679600"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050595"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Zdalne monitorowanie wyborów związanych z architekturą
 
@@ -51,7 +51,7 @@ Usługa Azure IoT Hub jest używany jako brama chmury rozwiązanie monitorowania
 
 Łączności między urządzeniami IoT można użyć:
 
-- [Zestawy SDK urządzeń IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) implementacji natywnej aplikacji klienckiej dla Twojego urządzenia. Zestawy SDK oferują otok wokół interfejsu API REST Centrum IoT i obsługiwać scenariusze, takie jak ponownych prób.
+- [Zestawy SDK urządzeń IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) implementacji natywnej aplikacji klienckiej dla Twojego urządzenia. Zestawy SDK oferują otok wokół interfejsu API REST Centrum IoT i obsługiwać scenariusze, takie jak ponownych prób.
 - Integracja z usługą Azure IoT Edge, wdrażanie i zarządzanie nimi na Twoich urządzeniach działa w kontenerach moduły niestandardowe.
 - Integracja zarządzania urządzeniami automatyczne w usłudze IoT Hub do zarządzania podłączone urządzenia w trybie zbiorczym.
 

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 34f69340e0e7cad583ba0b8797a076a4fd6e3097
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c8aadcf7b37e28035e936a9f722ee832127e928d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019695"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038589"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Tworzenie pamięci podręcznej Azure dla pamięci podręcznej Redis przy użyciu szablonu
 W tym temacie dowiesz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża pamięć podręczna systemu Azure dla usługi Redis. Pamięć podręczna może służyć za pomocą istniejącego konta magazynu do przechowywania danych diagnostycznych. Dowiesz się również, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
 Obecnie ustawienia diagnostyczne są wspólne dla wszystkich pamięci podręcznych, w tym samym regionie, w ramach subskrypcji. Trwa aktualizacja co pamięci podręcznej w regionie ma wpływ na wszystkie inne pamięci podręczne w regionie.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md).
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md). Aby dowiedzieć się więcej na temat składni JSON i właściwości dla typów zasobów pamięci podręcznej, zobacz [typów zasobów Microsoft.Cache](/azure/templates/microsoft.cache/allversions).
 
 Aby uzyskać kompletny szablon, zobacz [pamięci podręcznej Azure Redis szablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 

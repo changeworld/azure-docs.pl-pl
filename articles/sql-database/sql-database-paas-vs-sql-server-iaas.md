@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: e9f322198cf94232dd2d87aa1f27dbbd6a282b72
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: c1ef32256569d1718f6848a968585216f43f333a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995001"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033455"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>Wybieranie opcji programu SQL Server po prawej stronie na platformie Azure — PaaS lub IaaS
 
@@ -87,10 +87,11 @@ Poniższa tabela zawiera podsumowanie głównych cech usługi SQL Database i pro
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Względy biznesowe przemawiające za wyborem usługi Azure SQL Database lub programu SQL Server na maszynach wirtualnych Azure
 
 Istnieje kilka czynników, które mogą mieć wpływ na Twoją decyzję, aby wybrać PaaS lub IaaS do hostowania bazy danych SQL:
+
 - [Koszt](#cost) — opcja zarówno PaaS i IaaS obejmować podstawowej ceny określające podstawową infrastrukturę i Licencjonowanie. Jednak przy użyciu opcji IaaS należy zainwestować dodatkowy czas i zasoby umożliwiające zarządzanie bazą danych w przypadku, gdy w modelu PaaS otrzymujesz tych funkcji administrowania uwzględnione w cenie. Opcja IaaS umożliwia zamknięcie Twoich zasobów, gdy nie używasz ich do zmniejszenia kosztów, gdy zawsze działa PaaS w wersji, chyba że jeśli porzucać i odtwarzać swoje zasoby, gdy są potrzebne.
 - [Administracja](#administration) — opcje PaaS Zmniejsz ilość czasu, który należy zainwestować zarządzać bazą danych. Jednak go również uniemożliwić wykonywanie niektórych zadań administracyjnych niestandardowy, zwiększające wydajność przetwarzania obciążenia.
 - [Umowa dotycząca poziomu usług](#service-level-agreement-sla) — zarówno IaaS i PaaS zapewnienia wysokiego, branżowy standard umowy SLA. Opcja PaaS gwarantuje SLA na poziomie 99,99%, gdy IaaS gwarancji SLA 99,95% dla infrastruktury, co oznacza, należy wdrożyć dodatkowe mechanizmy, aby zapewnić dostępność bazy danych. W skrajnych przypadkach, jeśli chcesz zaimplementować rozwiązania o wysokiej dostępności, który jest zgodny PaaS, konieczne może być tworzenie dodatkowych programu SQL Server na maszynie Wirtualnej i konfigurowanie grup dostępności AlwaysOn, które może być double koszt bazy danych.
-- [Czas przeniesienia do chmury](#time-to-move-to-cloud) -programu SQL Server na maszynie Wirtualnej platformy Azure jest dokładne dopasowanie środowiska, dlatego migracji ze środowiska lokalnego do maszyny Wirtualnej SQL Azure nie jest inny niż przeniesienie baz danych z jednego na serwerze lokalnym do innego. Wystąpienie zarządzane umożliwia również bardzo łatwa migracja; jednak mogą istnieć pewne zmiany, które należy zastosować przed migracją do wystąpienia zarządzanego.
+- [Czas na przeniesienie na platformę Azure](#market) -programu SQL Server na maszynie Wirtualnej platformy Azure jest dokładne dopasowanie środowiska, dlatego migracji ze środowiska lokalnego do maszyny Wirtualnej SQL Azure nie jest inny niż przeniesienie baz danych z jednego na serwerze lokalnym do innego. Wystąpienie zarządzane umożliwia również bardzo łatwa migracja; jednak mogą istnieć pewne zmiany, które należy zastosować przed migracją do wystąpienia zarządzanego.
 
 Czynniki te zostaną omówione bardziej szczegółowo w poniższych sekcjach.
 
@@ -102,10 +103,8 @@ Ograniczone fundusze są często podstawowym czynnikiem decydującym o wyborze s
 
 Obecnie **bazy danych SQL** jest oferowana jako usługa i jest dostępna w kilku warstwach usług z cenami różnych zasobów, z których wszystkie są naliczane godzinowo według stałej stawki ustalanej na podstawie warstwy usługi i wybranego rozmiaru obliczeń.
 Za pomocą pojedynczej bazy danych SQL można wybrać warstwę usług, który spełnia Twoje potrzeby z szerokiej gamy ceny, zaczynając od 5$ / miesiąc dla warstwy podstawowa.
-Wystąpienie zarządzane SQL Database możesz także dostarczyć własną licencję. Aby uzyskać więcej informacji o licencjonowaniu bring your own, zobacz [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/) lub użyj [Kalkulator korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/#sql-database) aby zobaczyć, jak **Zaoszczędź do 40%**.
+Wystąpienie zarządzane SQL Database możesz także dostarczyć własną licencję. Aby uzyskać więcej informacji o licencjonowaniu bring your own, zobacz [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/) lub użyj [Kalkulator korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) aby zobaczyć, jak **Zaoszczędź do 40%**.
 Rozliczany jest również internetowy ruch wychodzący po zwykłych [stawkach transferu danych](https://azure.microsoft.com/pricing/details/data-transfers/). Możesz dynamicznie dostosować warstwy usług i obliczenia rozmiarów odpowiednio do potrzeb przepływności zależeć od Twojej aplikacji. Aby uzyskać najnowsze informacje dotyczące bieżących obsługiwanych warstw usług można wyświetlić [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Można również utworzyć [pul elastycznych](sql-database-elastic-pool.md) współużytkowanie zasobów między wystąpieniami bazy danych do zmniejszenia kosztów i obsłużyć obciążenie nagłego zapotrzebowania.
-
-
 
 W przypadku usługi **SQL Database** oprogramowanie bazy danych jest automatycznie konfigurowane, poprawiane i uaktualniane przez firmę Microsoft, co obniża koszty administracyjne. Ponadto [wbudowana funkcja tworzenia kopii zapasowych](sql-database-automated-backups.md) pozwala osiągnąć znaczne oszczędności kosztów, zwłaszcza w przypadku dużej liczby baz danych.
 

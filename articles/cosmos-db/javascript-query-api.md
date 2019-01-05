@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 00ad005fff54940dbec468e0fde105e936579378
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 42850cc5f8280b29811f9607557f38507262694a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411028"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034407"
 ---
 # <a name="working-with-javascript-language-integrated-query-api-with-azure-cosmos-db"></a>Praca z zapytanie o języku zintegrowanym JavaScript interfejsu API za pomocą usługi Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Aby uzyskać więcej informacji, zobacz [dokumentacja po stronie serwera usługi
 W poniższej tabeli przedstawiono różne zapytania SQL i odpowiednie zapytania języka JavaScript. Podobnie jak w przypadku zapytań SQL właściwości (na przykład item.id) jest rozróżniana wielkość liter.
 
 > [!NOTE]
-> `__` (podwójne podkreślenie) jest aliasem, aby `getContext().getCollection()` podczas korzystania z zapytania interfejsu API języka JavaScript.
+> `__` (podwójne podkreślenie) jest aliasem funkcji `getContext().getCollection()` podczas korzystania z interfejsu API zapytań języka JavaScript.
 
 |**SQL**|**Zapytanie JavaScript API**|**Opis**|
 |---|---|---|

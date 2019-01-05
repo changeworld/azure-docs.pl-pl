@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741890"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036566"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Więcej informacji na temat szablonów zestawów skalowania maszyn wirtualnych
 [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć szablon zestawu minimalnej wielkości oraz jak zmodyfikować ten szablon służy do potrzeb różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss). 
@@ -70,7 +70,7 @@ Następnym ekranem jest sekcji zasobów szablonu. W tym miejscu możesz zdefinio
    "resources": [
 ```
 
-Wszystkie zasoby wymagają `type`, `name`, `apiVersion`, i `location` właściwości. W tym przykładzie pierwszy zasób ma typ `Microsft.Network/virtualNetwork`, nazwa `myVnet`i apiVersion `2016-03-30`. (Aby uzyskać najnowszą wersję interfejsu API dla typu zasobu, zobacz [dokumentację interfejsu API REST usługi Azure](https://docs.microsoft.com/rest/api/).)
+Wszystkie zasoby wymagają `type`, `name`, `apiVersion`, i `location` właściwości. W tym przykładzie pierwszy zasób ma typ [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), nazwa `myVnet`i apiVersion `2016-03-30`. (Aby uzyskać najnowszą wersję interfejsu API dla typu zasobu, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).)
 
 ```json
      {
@@ -124,7 +124,7 @@ W tym przypadku istnieje tylko jeden element na liście sieci wirtualnej z poprz
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>Określ właściwości zestawu skalowania
-Zestawy skalowania ma wiele właściwości dostosowywania maszyn wirtualnych w zestawie skalowania. Aby uzyskać pełną listę tych właściwości, zobacz [dokumentacji interfejsu API REST zestawu skalowania](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). W tym samouczku kilka często używanych właściwości są ustawione.
+Zestawy skalowania ma wiele właściwości dostosowywania maszyn wirtualnych w zestawie skalowania. Aby uzyskać pełną listę tych właściwości, zobacz [odwołanie do szablonu](/azure/templates/microsoft.compute/virtualmachinescalesets). W tym samouczku kilka często używanych właściwości są ustawione.
 ### <a name="supply-vm-size-and-capacity"></a>Określ rozmiar maszyny Wirtualnej i pojemność
 Zestaw skalowania musi wiedzieć, jaki rozmiar maszyny Wirtualnej do utworzenia ("Nazwa jednostki sku") i jak wiele takich maszyn wirtualnych, aby utworzyć ("pojemność jednostki sku"). Aby zobaczyć, które rozmiary maszyn wirtualnych są dostępne, zobacz [dokumentacji rozmiarów maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 

@@ -1,21 +1,19 @@
 ---
 title: Usługa Azure Cosmos DB Interfejs API SQL języka Java, zestaw SDK i zasoby
 description: Poznaj interfejs API SQL języka Java i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK usługi Azure Cosmos DB SQL języka Java.
-services: cosmos-db
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5c733ecd65482e4b02a5d4e28784e84e63f2231
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: e62276debf121cc39fc5642ed8e5a9faf6b876ed
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340525"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039643"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0e325de3a9a28d824ea9a6bfb7b3346bf9285e58
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975648"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033319"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja platformy Azure cyfrowego Twins struktury Swagger
 
@@ -102,9 +102,9 @@ Aby dowiedzieć się więcej o testowaniu interaktywnie żądania chronione prze
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o modele obiektów Twins cyfrowych platformy Azure i wykres analizy przestrzennej, przeczytaj [zrozumieć Azure cyfrowego bliźniaczych reprezentacji obiektów modeli](./concepts-objectmodel-spatialgraph.md).
+- Dowiedz się więcej o modele obiektów Twins cyfrowych platformy Azure i wykres analizy przestrzennej, przeczytaj [zrozumieć Azure cyfrowego bliźniaczych reprezentacji obiektów modeli](./concepts-objectmodel-spatialgraph.md).
 
-Aby dowiedzieć się, jak można uwierzytelnić przy użyciu interfejsu API zarządzania, przeczytaj [Uwierzytelnij za pomocą interfejsów API](./security-authenticating-apis.md).
+- Aby dowiedzieć się, jak można uwierzytelnić przy użyciu interfejsu API zarządzania, przeczytaj [Uwierzytelnij za pomocą interfejsów API](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/how-to-use-swagger/swagger_management_top.PNG

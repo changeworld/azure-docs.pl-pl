@@ -1,19 +1,20 @@
 ---
 title: Za pomocą biblioteki .NET wykonawca zbiorcze można wykonać operacji importu zbiorczego operacje i aktualizacji w usłudze Azure Cosmos DB
 description: Zbiorcze importowanie i aktualizowanie dokumentów usługi Azure Cosmos DB za pomocą biblioteki .NET przetwarzania zbiorczego.
-services: cosmos-db
 author: tknandu
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: adde24faa4bd0f15eb3a2700021e9ace14fcc6b4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: d6fed65dad0e8f12495177b274cef181e9e91879
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840983"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044318"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą biblioteki .NET przetwarzania zbiorczego
 

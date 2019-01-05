@@ -1,18 +1,17 @@
 ---
 title: Dowiedz się, jak zabezpieczyć dostęp do danych w usłudze Azure Cosmos DB
 description: Więcej informacji na temat pojęć dotyczących kontroli dostępu w usłudze Azure Cosmos DB, m.in. klucze główne klucze tylko do odczytu, użytkowników i uprawnień.
-services: cosmos-db
 author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: c203334b0ea1b47aa1884155f477e34bd8f2e1db
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a3bf6557bce10eddabaa52cc4a997ed661a8fc31
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724763"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041343"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpieczanie dostępu do danych usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie zabezpieczania dostępu do danych przechowywanych w [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

@@ -8,16 +8,16 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865837"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038963"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Wdrażanie zapory platformy Azure przy użyciu szablonu
 
-[Szablonu konfiguracji piaskownicy tworzenie AzureFirewall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) tworzy środowisko testowe sieci za pomocą zapory. Sieć ma jednej sieci wirtualnej (VNet) z trzema podsieciami: *AzureFirewallSubnet*, *ServersSubnet*, i *JumpboxSubnet*. *ServersSubnet* i *JumpboxSubnet* każda podsieć ma jednej, dwóch podstawowej maszyny wirtualnej systemu Windows Server.
+[Szablonu konfiguracji piaskownicy tworzenie AzureFirewall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) tworzy środowisko testowe sieci za pomocą zapory. Sieci ma jednej sieci wirtualnej (VNet) z trzema podsieciami: *AzureFirewallSubnet*, *ServersSubnet*, i *JumpboxSubnet*. *ServersSubnet* i *JumpboxSubnet* każda podsieć ma jednej, dwóch podstawowej maszyny wirtualnej systemu Windows Server.
 
 Zapora jest w *AzureFirewallSubnet* podsieci, a kolekcja reguł aplikacji przy użyciu jednej reguły, które zezwalają na dostęp do *www.microsoft.com*.
 
@@ -40,9 +40,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. W portalu na **Tworzenie ustawień piaskownicy AzureFirewall** strony, wpisz lub wybierz następujące wartości:
    
    - **Grupa zasobów**: Wybierz **Utwórz nową**, wpisz nazwę grupy zasobów, a wybierz **OK**. 
-   - **Nazwa sieci wirtualnej**: wpisz nazwę nowej sieci wirtualnej. 
-   - **Nazwa użytkownika administratora**: wpisz nazwę użytkownika dla konta administratora.
-   - **Hasło administratora**: wpisz hasło administratora. 
+   - **Nazwa sieci wirtualnej**: Wpisz nazwę nowej sieci wirtualnej. 
+   - **Nazwa użytkownika administratora**: Wpisz nazwę użytkownika dla konta administratora.
+   - **Hasło administratora**: Wpisz hasło administratora. 
    
 1. Przeczytaj warunki i postanowienia, a następnie wybierz **zgodę na warunki i postanowienia, o których wspomniano**.
    
@@ -51,6 +51,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
    Potrwa kilka minut, aby utworzyć zasoby. 
    
 1. Zapoznaj się z zasobami, które zostały utworzone za pomocą zapory. 
+
+Aby poznać składnię JSON i właściwości dla zapory w szablonie, zobacz temat [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -66,4 +68,4 @@ Nie usuwaj grupy zasobów i zapory, jeśli planowane jest przejście do zapory s
 Następnie można monitorować dzienniki zapory platformy Azure:
 
 > [!div class="nextstepaction"]
-> [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+> [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
