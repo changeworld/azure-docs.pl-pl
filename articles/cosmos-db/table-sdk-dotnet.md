@@ -1,22 +1,21 @@
 ---
 title: Usługa Azure Cosmos DB Table API .NET SDK i zasoby
 description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
-services: cosmos-db
-author: rnagpal
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.author: rnagpal
-ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2492e3d49f9b7e965c33ed4419f566e81dd62ed
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878588"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043468"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table — interfejs API platformy .NET: Pobierz i informacje o wersji
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tabel interfejsu API platformy .NET: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -28,8 +27,8 @@ ms.locfileid: "52878588"
 |---|---|
 |**Zestaw SDK do pobrania**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](https://aka.ms/acdbtableapiref)|
-|**Szybki start**|[Azure Cosmos DB: Tworzenie aplikacji za pomocą platformy .NET i interfejsu API tabel](create-table-dotnet.md)|
-|**Samouczek**|[Azure Cosmos DB: Programowanie za pomocą interfejsu Table API na platformie .NET](tutorial-develop-table-dotnet.md)|
+|**Szybki start**|[Usługi Azure Cosmos DB: Tworzenie aplikacji przy użyciu platformy .NET i interfejsu API tabel](create-table-dotnet.md)|
+|**Samouczek**|[Usługi Azure Cosmos DB: Programowanie za pomocą interfejsu Table API na platformie .NET](tutorial-develop-table-dotnet.md)|
 |**Bieżącej struktury obsługiwanej**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]

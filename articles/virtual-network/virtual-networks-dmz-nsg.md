@@ -5,8 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457293"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052397"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Przykład 1 — Tworzenie prostej sieci obwodowej za pomocą grup NSG z szablonem usługi Azure Resource Manager
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -51,8 +49,8 @@ W sekcji odwołań znajduje się link do szablonu usługi Azure Resource Manager
 
 **Do tworzenia tego środowiska** (szczegółowe instrukcje znajdują się w sekcji odwołań do tego dokumentu);
 
-1. Wdrażanie szablonu usługi Resource Manager platformy Azure w: [szablony szybkiego startu platformy Azure][Template]
-2. Zainstaluj przykładową aplikację w: [przykładowy skrypt aplikacji][SampleApp]
+1. Wdrażanie szablonu usługi Resource Manager platformy Azure na: [Szablony szybkiego startu platformy Azure][Template]
+2. Zainstaluj przykładową aplikację na: [Przykładowy skrypt aplikacji][SampleApp]
 
 >[!NOTE]
 >Dla protokołu RDP do serwerów zaplecza w tym wystąpieniu na serwerze usług IIS jest używany jako "przesiadkowym." Pierwszy protokołu RDP na serwerze usług IIS, a następnie z RDP serwera usług IIS do serwerów zaplecza. Alternatywnie publiczny adres IP może być skojarzone z każdym serwerem kart Sieciowych dla protokołu RDP łatwiejsze.
@@ -350,7 +348,7 @@ Aby wdrożyć szablon, który tworzy tego przykładu z serwisu GitHub i witryny 
 Aby usunąć to wdrożenie, Usuń grupę zasobów i wszystkie zasoby podrzędne zostaną również usunięte.
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Po pomyślnym uruchomieniu szablon, można skonfigurować serwer sieci web i serwerów aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej. Aby zainstalować przykładową aplikację dla tego i innych przykładowych sieci obwodowych, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
+Po pomyślnym uruchomieniu szablon, można skonfigurować serwer sieci web i serwerów aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej. Aby zainstalować przykładową aplikację w tym i inne przykłady strefy DMZ, jedno zostało podane z łącza: [Przykładowy skrypt aplikacji][SampleApp]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

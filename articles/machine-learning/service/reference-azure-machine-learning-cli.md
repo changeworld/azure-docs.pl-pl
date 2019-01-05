@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f85934b0c800ca354cc9cff02132a40c8eccea57
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bbe843f3481c6cd15f2c14386088cbb8d2d355d6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014849"
+ms.locfileid: "54053129"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -119,11 +119,15 @@ Poniższe polecenia pokazują, jak pracować z eksperymentów przy użyciu inter
     az ml project attach --experiment-name myhistory
     ```
 
-* Rozpocznij przebieg eksperymentu. Korzystając z tego polecenia, należy określić obliczeniowego elementu docelowego. W tym przykładzie `local` korzysta z komputera lokalnego do nauczenia modelu, przy użyciu `train.py` skryptu:
+* Rozpocznij przebieg eksperymentu. Korzystając z tego polecenia, należy określić nazwę `.runconfig` pliku, który zawiera konfiguracji uruchamiania. Obliczeniowego elementu docelowego używa konfiguracji uruchamiania do utworzenia środowiska do szkolenia modelu. W tym przykładzie konfiguracji uruchamiania jest ładowany z `./aml_config/myrunconfig.runconfig` pliku.
 
     ```azurecli-interactive
-    az ml run submit -c local train.py
+    az ml run submit -c myrunconfig train.py
     ```
+
+    Domyślne `.runconfig` plików o nazwie `docker.runconfig` i `local.runconfig` są tworzone po dołączeniu projekt za pomocą `az ml project attach` polecenia. Użytkownik może być konieczne zmodyfikowanie tych przed ich użyciem w celu nauczenia modelu. 
+
+    Możesz również utworzyć programowo przy użyciu konfigurację uruchomieniową [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) klasy. Po utworzeniu można użyć `save()` metodę w celu utworzenia `.runconfig` pliku.
 
 * Wyświetlanie listy przesłanych eksperymentów:
 

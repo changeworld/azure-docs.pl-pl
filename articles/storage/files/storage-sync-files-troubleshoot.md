@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7aa5ccb402bf8648668a5eb00d6a740caf7bf3d4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794553"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055153"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -145,11 +145,13 @@ Kondycja punktu końcowego serwera działania"nie" oznacza, że punkt końcowy s
 
 Punkt końcowy serwera nie mogą rejestrować działanie synchronizacji z następujących powodów:
 
-- Serwer osiągnął maksymalną liczbę sesji jednoczesnych synchronizacji. Usługa Azure File Sync obecnie obsługuje 2 sesji ActiveSync na procesor lub maksymalnie 8 sesji ActiveSync na serwerze.
+- Serwer ma aktywną sesję synchronizacji usługi VSS (SnapshotSync). Podczas sesji synchronizacji usługi VSS jest aktywny dla punktu końcowego serwera, inne punkty końcowe serwera, w tym samym woluminie nie można uruchomić sesji synchronizacji start zakończenie sesji synchronizacji Usługa VSS.
 
-- Serwer ma aktywną sesję synchronizacji usługi VSS (SnapshotSync). Podczas sesji synchronizacji usługi VSS jest aktywny dla punktu końcowego serwera, inne punkty końcowe serwera na serwerze nie można uruchomić sesji synchronizacji start zakończenie sesji synchronizacji Usługa VSS.
+    Aby sprawdzić bieżące działanie synchronizacji na serwerze, zobacz [jak monitorować postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Aby sprawdzić bieżące działanie synchronizacji na serwerze, zobacz [jak monitorować postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Serwer osiągnął maksymalną liczbę sesji jednoczesnych synchronizacji. 
+    - Wersja agenta 4.x i nowszych: Limit różni się w zależności od dostępnych zasobów systemowych.
+    - Wersja agenta 3.x: 2 sesji ActiveSync na procesor lub maksymalnie 8 sesji ActiveSync na serwerze.
 
 > [!Note]  
 > Jeśli stan serwera w bloku zarejestrowanych serwerów jest "Pojawia się w trybie Offline", wykonaj kroki opisane w temacie [punkt końcowy serwera ma stan kondycji "No Activity" lub "Pending" i stanu serwera w bloku zarejestrowane serwery "Pojawia się w trybie offline" ](#server-endpoint-noactivity) sekcji.
@@ -244,13 +246,14 @@ Aby wyświetlić te błędy, uruchom **FileSyncErrorsReport.ps1** skrypt program
 **Dziennik ItemResults — błędy synchronizacji na element**  
 | WARTOŚĆ HRESULT | HRESULT (dziesiętna) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80065 | -2134376347 | ECS_E_DATA_TRANSFER_BLOCKED | Plik tworzył trwałych błędów podczas synchronizacji, a więc nastąpi tylko próba synchronizacji raz dziennie. Błędu można znaleźć w dzienniku zdarzeń wcześniejsze. | W pakiecie agents R2 (2.0) i powyżej, jest udostępniane pierwotnego błędu zamiast tego. Uaktualnienie do najnowszego agenta, aby wyświetlić błędu lub Przyjrzyj się wcześniej dzienniki zdarzeń, aby znaleźć przyczynę błędu, oryginalnym. |
-| 0x7B | 123 | ERROR_INVALID_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę pliku lub katalogu jest zagrożona. Zobacz [wskazówki dotyczące nazewnictwa w usłudze Azure Files](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) i listę nieobsługiwanych znaków poniżej. |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę pliku lub katalogu jest zagrożona. Zobacz [wskazówki dotyczące nazewnictwa w usłudze Azure Files](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) i listę nieobsługiwanych znaków poniżej. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiany nie ma jeszcze wykryty przez synchronizacji. Synchronizacja zostanie przywrócona do działania po wykryciu tej zmiany. | Nie jest wymagana żadna akcja. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Nie jest wymagana żadna akcja. Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia. |
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Nie jest wymagana żadna akcja. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ nie jest jeszcze zsynchronizowany folder zależny. Ten element zostanie zsynchronizowany po zsynchronizowaniu zmian zależnych. | Nie jest wymagana żadna akcja. |
+| 0x7B | 123 | ERROR_INVALID_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę pliku lub katalogu jest zagrożona. Zobacz [obsługi nieobsługiwane znaki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Aby uzyskać więcej informacji. |
+| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę pliku lub katalogu jest zagrożona. Zobacz [obsługi nieobsługiwane znaki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Aby uzyskać więcej informacji. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Nie jest wymagana żadna akcja. Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiany nie ma jeszcze wykryty przez synchronizacji. Synchronizacja zostanie przywrócona do działania po wykryciu tej zmiany. | Nie jest wymagana żadna akcja. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Nie można zsynchronizować pliku, ponieważ osiągnięto limit udziału plików platformy Azure. | Aby rozwiązać ten problem, zobacz [osiągnięto limit magazynowania udziału plików platformy Azure](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) w przewodniku rozwiązywania problemów. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ten błąd może wystąpić, jeśli plik jest szyfrowany przez rozwiązanie nieobsługiwany (np. systemu plików NTFS system szyfrowania plików) lub plik ma blokadę usuwania w stanie oczekiwania. | Jeśli plik jest szyfrowany przez rozwiązanie nieobsługiwane, odszyfrowywania pliku i przy użyciu rozwiązania obsługiwanych szyfrowania. Aby uzyskać listę rozwiązań pomocy technicznej, zobacz [rozwiązań do szyfrowania](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) w przewodniku planowania. Jeśli plik znajduje się w obszarze usuwanie w stanie oczekiwania, plik zostanie usunięty, gdy są zamykane wszystkie otwarte dojścia do plików. |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Nie jest wymagana żadna akcja. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi on zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwane znaki
@@ -872,5 +875,5 @@ Jeśli problem nie zostanie rozwiązany, należy uruchomić narzędzie AFSDiag:
 
 ## <a name="see-also"></a>Zobacz także
 - [Usługa Azure Files — często zadawane pytania](storage-files-faq.md)
-- [Rozwiązywanie problemów z usługą Azure Files w Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [Rozwiązywanie problemów z usługą Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Rozwiązywanie problemów z usługą Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)

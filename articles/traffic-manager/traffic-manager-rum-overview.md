@@ -1,13 +1,9 @@
 ---
-title: Pomiary rzeczywistego użytkownika w usługi Azure Traffic Manager | Dokumentacja firmy Microsoft
+title: Pomiary rzeczywistego użytkownika w usłudze Azure Traffic Manager
 description: Wprowadzenie do pomiarów rzeczywistego użytkownika w usłudze Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,33 +12,33 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4e8d808d65c9898d230455d128e3ffc50db303d6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fd37ef739522955ae8227db39a41aecf199d65c3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178117"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052823"
 ---
-# <a name="traffic-manager-real-user-measurements-overview"></a>Omówienie rzeczywiste pomiary użytkownika Menedżera ruchu
+# <a name="traffic-manager-real-user-measurements-overview"></a>Omówienie pomiarów rzeczywistego użytkownika Menedżera ruchu
 
-Po skonfigurowaniu profilu usługi Traffic Manager przy użyciu metody routingu wydajności usługi analizuje gdzie żądań zapytań DNS pochodzą z i podejmuje decyzje dotyczące routingu do kierowania tych komputerom zgłaszającym żądania do regionu Azure, co umożliwia im uzyskać najmniejsze opóźnienia. Jest to osiągane przez wykorzystanie analizy opóźnienia sieci, które obsługuje Menedżera ruchu dla innego użytkownika końcowego sieci.
+Po skonfigurowaniu profilu usługi Traffic Manager przy użyciu metody routingu wydajności usługi przegląda gdzie pochodzą z żądań zapytań DNS i sprawia, że decyzje w kwestii routingu do kierowania tych dostępu komputerom zgłaszającym żądania do regionu platformy Azure, co umożliwia im najmniejszego opóźnienia. Jest to realizowane przy użyciu analizy opóźnienia sieci, które usługi Traffic Manager obsługuje dla użytkowników końcowych w różnych sieciach.
 
-Rzeczywiste pomiary użytkownika umożliwia miarę pomiarów opóźnienia sieci do regiony platformy Azure za pośrednictwem aplikacji klienckich, które użytkownicy końcowi mogą używać, i mieć Menedżera ruchu należy wziąć pod uwagę także te informacje podczas podejmowania decyzji dotyczących routingu. Wybierając Użyj rzeczywiste pomiary użytkownika, można zwiększyć jego dokładność routingu dla żądań pochodzących z tych sieci, gdzie znajdują się użytkowników końcowych. 
+Pomiary dotyczące prawdziwych użytkowników umożliwia pomiar pomiary opóźnienia sieci do regionów platformy Azure z aplikacji klienckich, których użytkownicy końcowi, i mają usługi Traffic Manager należy wziąć pod uwagę także te informacje podczas podejmowania decyzji dotyczących routingu. Wybierając używania pomiarów rzeczywistego użytkownika, można zwiększyć jego dokładność routingu w przypadku żądań pochodzących z tych sieci, w którym znajdują się użytkownicy końcowi. 
 
-## <a name="how-real-user-measurements-work"></a>Jak działają rzeczywiste pomiary użytkownika
+## <a name="how-real-user-measurements-work"></a>Jak działają pomiarów rzeczywistego użytkownika
 
-Rzeczywiste pomiary użytkownika pracy dzięki użyciu opóźnienie miary aplikacje klienckie regiony platformy Azure, widziany przez użytkownika końcowego sieci, w których są używane. Na przykład jeśli masz strony sieci web, który jest dostępny przez użytkowników w różnych lokalizacjach (na przykład w Ameryce Północnej regionach), można wykorzystać możliwości rzeczywiste pomiary użytkownika korzystając z metody routingu wydajności można pobrać je do najlepszych region platformy Azure która jest hostowana aplikacja serwera.
+Pomiary dotyczące prawdziwych użytkowników działają przez opóźnienie miary aplikacji klienta do regionów platformy Azure widziany przez sieci przez użytkownika końcowego, w których są używane. Na przykład, jeśli strony sieci web, która jest dostępna dla użytkowników w różnych lokalizacjach (na przykład w regionach Ameryki Północnej), umożliwia pomiarów rzeczywistego użytkownika za pomocą metody routingu opartego na wydajności przygotowania ich do najlepszych regionu platformy Azure, w którym serwer Aplikacja jest hostowana.
 
-Rozpocznie się osadzanie Azure podanego kodu JavaScript (z Unikatowy klucz w nim) na stronach sieci web. Po zakończeniu tej operacji, gdy użytkownik odwiedza tej strony sieci Web, JavaScript wysyła zapytanie do Menedżera ruchu, aby uzyskać informacje o regionach platformy Azure, że powinien on pomiaru. Usługa zwraca zestaw punktów końcowych do skryptu, który, a następnie miary tych regionów kolejno pobierając obraz piksela hostowanej w regionach platformy Azure i zapisując opóźnienia między czasem żądanie zostało wysłane i czasu otrzymania pierwszego bajtu . Pomiarów są następnie przekazywane do usługi Traffic Manager.
+Rozpoczyna się od osadzania Azure podanego kodu JavaScript (z unikatowym kluczem w nim) na stronach sieci web. Gdy zostanie to zrobione, zawsze wtedy, gdy użytkownik odwiedzi tej strony sieci Web, kod JavaScript wysyła zapytanie do usługi Traffic Manager, aby uzyskać informacje o regionach platformy Azure, czy powinien on miar. Usługa zwraca zestaw punktów końcowych do skryptu, a następnie miary w tych regionach po kolei pobierając obrazem piksela hostowaną w tych regionach platformy Azure i zapisując opóźnienia między czasem żądanie zostało wysłane i godzinę po odebrania pierwszego bajtu . Te są następnie odsyłane usługi Traffic Manager.
 
-Wraz z upływem czasu dzieje się wiele razy, a w wielu sieciach prowadzące do usługi Traffic Manager uzyskiwanie dokładniejszych informacji na temat opóźnienia sieci, w którym znajdują się użytkownicy końcowi. Te informacje uruchamia wprowadzenie do uwzględnienia w decyzje dotyczące routingu wprowadzone przez Menedżera ruchu. W związku z tym prowadzi do zwiększenia dokładności tych decyzji na podstawie rzeczywistych pomiarów użytkownika wysyłane.
+Wraz z upływem czasu dzieje się tak wiele razy, a w wielu sieciach prowadzące do usługi Traffic Manager wprowadzenie dokładniejszych informacji na temat opóźnienia sieci, w którym znajdują się użytkownicy końcowi. Te informacje uruchamia, wprowadzenie do uwzględnienia w decyzje w kwestii routingu podjęte przez Traffic Manager. W rezultacie prowadzi do zwiększenia dokładności w te decyzje oparte na pomiarów rzeczywistego użytkownika wysyłane.
 
-Gdy używasz rzeczywiste pomiary użytkownika są rozliczane na podstawie liczby pomiarów wysyłane do usługi Traffic Manager. Aby uzyskać więcej informacji o cenach, odwiedź stronę [cennikiem usługi Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Gdy używasz pomiarów rzeczywistego użytkownika, są rozliczane na podstawie liczby pomiarów wysyłane do usługi Traffic Manager. Aby uzyskać więcej informacji na temat cen, odwiedź stronę [usługi Traffic Manager stronę z cennikiem](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak używać [rzeczywiste pomiary użytkownika ze stronami sieci web](traffic-manager-create-rum-web-pages.md)
-- Dowiedz się [działania Menedżera ruchu](traffic-manager-overview.md)
+- Dowiedz się, jak używać [pomiarów rzeczywistego użytkownika ze stronami sieci web](traffic-manager-create-rum-web-pages.md)
+- Dowiedz się, [jak działa usługa Traffic Manager](traffic-manager-overview.md)
 - Dowiedz się więcej o [Mobile Center](https://docs.microsoft.com/mobile-center/)
-- Dowiedz się więcej o [metody routingu ruchu](traffic-manager-routing-methods.md) obsługiwane przez Menedżera ruchu
-- Dowiedz się, jak [Tworzenie profilu Menedżera ruchu](traffic-manager-create-profile.md)
+- Dowiedz się więcej o [metody routingu ruchu](traffic-manager-routing-methods.md) obsługiwane przez usługę Traffic Manager
+- Dowiedz się, jak [Tworzenie profilu usługi Traffic Manager](traffic-manager-create-profile.md)
 

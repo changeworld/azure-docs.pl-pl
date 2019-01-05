@@ -1,20 +1,19 @@
 ---
 title: Usługa Azure Cosmos DB Interfejs API SQL platformy .NET, zestaw SDK i zasoby
 description: Poznaj interfejs API SQL platformy .NET i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK .NET usługi Azure Cosmos DB.
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337941"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051955"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -54,6 +53,14 @@ ms.locfileid: "53337941"
 * Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems. 
 * Obsługa strumieni. 
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* Poprawa Logika ponawiania podczas pracy awaryjnej dla StoredProcedure wykonać wywołań.
+
+* Dokonano jeszcze DocumentClientEventSource pojedynczego wystąpienia. 
+
+* Napraw GatewayAddressCache nie zapewniane ConnectionPolicy RequestTimeout przekroczenia limitu czasu.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -350,6 +357,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |24 grudnia 2018 r. |--- |
 | [2.2.0](#2.2.0) |07 grudnia 2018 r. |--- |
 | [2.1.3](#2.1.3) |15 października 2018 r. |--- |
 | [2.1.2](#2.1.2) |04 października 2018 r. |--- |

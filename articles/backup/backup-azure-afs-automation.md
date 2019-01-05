@@ -4,98 +4,98 @@ description: Wdrażanie i zarządzanie nimi kopii zapasowych na platformie Azure
 services: backup
 author: pvrk
 manager: shivamg
-keywords: PowersShell; Usługa Azure files kopii zapasowych. Przywracanie plików platformy Azure;
+keywords: Program PowerShell; Usługa Azure Files backup; Przywracanie plików platformy Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632639"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051224"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Użyj programu PowerShell do tworzenia kopii i przywracanie udziałów plików platformy Azure
 
-W tym artykule pokazano, jak tworzyć kopie zapasowe i odzyskiwanie udziału plików platformy Azure z magazynu usługi Recovery Services za pomocą poleceń cmdlet programu Azure PowerShell. Magazyn usługi Recovery Services jest zasobem usługi Azure Resource Manager, umożliwia ochronę danych i zasoby usługi Azure Backup i Azure Site Recovery.
+W tym artykule pokazano, jak tworzyć kopie zapasowe i odzyskiwanie udziału plików platformy Azure z magazynu usługi Recovery Services za pomocą poleceń cmdlet programu Azure PowerShell. Magazyn usługi Recovery Services jest zasobem usługi Azure Resource Manager, który służy do ochrony danych i zasobów w usłudze Azure Backup i Azure Site Recovery.
 
 ## <a name="concepts"></a>Pojęcia
 
-Jeśli użytkownik nie jest zaznajomiony z usługą Azure Backup z omówieniem usługi, zapoznaj się z artykułem [co to jest usługa Azure Backup?](backup-introduction-to-azure-backup.md). Przed rozpoczęciem upewnij się, wykonanie Uwaga w wersji zapoznawczej możliwości tworzenia kopii zapasowej udziałów plików platformy Azure udokumentowane [tutaj](backup-azure-files.md).
+Jeśli nie znasz z usługą Azure Backup z omówieniem usługi, zobacz [co to jest usługa Azure Backup?](backup-introduction-to-azure-backup.md). Przed rozpoczęciem wykonywania tej procedury, zobacz możliwości w wersji zapoznawczej, które są używane do kopii zapasowej Azure pliku udziałów w [udziały plików kopii zapasowej Azure](backup-azure-files.md).
 
-Aby skutecznie za pomocą programu PowerShell, jest niezbędne do zrozumienia hierarchii obiektów i z których ma rozpoczynać się.
+Skutecznie przy użyciu programu PowerShell, jest niezbędne do hierarchii obiektów i gdzie należy zacząć od zrozumienia.
 
 ![Hierarchia obiektów usług odzyskiwania](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Aby wyświetlić Dokumentacja poleceń cmdlet AzureRm.RecoveryServices.Backup programu PowerShell, zobacz [usługi Azure Backup — poleceń cmdlet usług odzyskiwania](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup) w bibliotece platformy Azure.
+Aby wyświetlić **AzureRm.RecoveryServices.Backup** Dokumentacja poleceń cmdlet programu PowerShell, zobacz [usługi Azure Backup — polecenia cmdlet usługi Recovery Services](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup) w bibliotece platformy Azure.
 
 ## <a name="setup-and-registration"></a>Konfiguracja i rejestracja
 
 > [!NOTE]
-> Jak wspomniano [tutaj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), obsługa nowych funkcji w kończy się z modułu AzureRM w listopada 2018 r. W związku z tym firma Microsoft świadczy pomoc techniczną dla kopii zapasowej udziałów plików platformy Azure za pomocą nowego modułu "Az" PS teraz w zasadach dostępności ogólnej.
+> Jak wspomniano w [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), obsługa nowych funkcji w usłudze AzureRM modułu nazwą kończącą się listopada 2018 r. Pomoc techniczna jest świadczona w celu wykonania kopii zapasowej udziałów plików platformy Azure za pomocą nowego modułu Az PowerShell, która jest teraz ogólnie dostępna.
 
-Aby rozpocząć:
+Wykonaj następujące kroki, aby rozpocząć.
 
-1. [Pobierz najnowszą wersję programu PowerShell "Az"](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (minimalna wymagana wersja to: 1.0.0)
+1. [Pobierz najnowszą wersję programu Az PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0). Minimalna wymagana wersja to 1.0.0.
 
-2. Znajdowanie dostępnych poleceń cmdlet programu PowerShell kopia zapasowa Azure, wpisując następujące polecenie:
+2. Znajdź **programu Kopia zapasowa Azure PowerShell** dostępne, wprowadzając następujące polecenie cmdlet.
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
-    Aliasy i polecenia cmdlet dla usługi Kopia zapasowa Azure, usługi Azure Site Recovery i magazyn usługi Recovery Services są wyświetlane. Poniższy rysunek jest przykładem zostaną wyświetlone. Nie jest pełną listę poleceń cmdlet.
+    Aliasy i polecenia cmdlet dla usługi Kopia zapasowa Azure, usługi Azure Site Recovery i magazyn usługi Recovery Services są wyświetlane. Poniższy rysunek jest przykładem zostanie wyświetlony. Nie jest pełną listę poleceń cmdlet.
 
-    ![Lista usług Recovery Services](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
+    ![Listę poleceń cmdlet usługi Recovery Services](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-3. Zaloguj się do subskrypcji platformy Azure, konta przy użyciu **Connect AzAccount**. To polecenie cmdlet powoduje wyświetlenie strony wyświetli monit o podanie poświadczeń konta:
+3. Zaloguj się do konta platformy Azure przy użyciu **Connect AzAccount**. To polecenie cmdlet powoduje wyświetlenie strony sieci web, która wyświetli monit o podanie poświadczeń konta:
 
-    * Alternatywnie można uwzględnić poświadczeń konta jako parametru w **Connect AzAccount** polecenia cmdlet, za pomocą **— poświadczeń** parametru.
-    * Jeśli jesteś partnerem CSP, Praca w imieniu dzierżawy, określenia klienta jako dzierżawca, za pomocą ich identyfikatora dzierżawy lub dzierżawy podstawowej nazwy domeny. Na przykład: **Połącz AzAccount-dzierżawy "fabrikam.com"**
+    * Alternatywnie można uwzględnić poświadczeń konta jako parametru w **Connect AzAccount** polecenia cmdlet przy użyciu **-poświadczeń** parametru.
+    * Jeśli jesteś partnerem CSP pracującym w imieniu dzierżawy, określ klienta jako dzierżawca, za pomocą ich identyfikatora dzierżawy lub dzierżawy podstawowej nazwy domeny. Na przykład **Connect AzAccount-dzierżawy** fabrikam.com.
 
-4. Skojarz subskrypcję, której chcesz użyć przy użyciu konta, ponieważ konto może mieć kilka subskrypcji:
+4. Skojarz subskrypcję, której chcesz użyć przy użyciu konta, ponieważ konto może mieć wiele subskrypcji.
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Jeśli używasz usługi Azure Backup po raz pierwszy, musisz użyć **AzResourceProvider rejestru** polecenia cmdlet, aby zarejestrować dostawcę usługi Azure Recovery Service w ramach subskrypcji.
+5. Jeśli używasz usługi Azure Backup po raz pierwszy, użyj **AzResourceProvider rejestru** polecenia cmdlet, aby zarejestrować dostawcę usługi Azure Recovery Services w ramach subskrypcji.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-6. Aby sprawdzić, czy dostawców pomyślnie zarejestrowane, używając następujących poleceń:
+6. Sprawdź, czy dostawców pomyślnie zarejestrowana przy użyciu następującego polecenia.
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-    W danych wyjściowych polecenia **RegistrationState** należy zmienić na **zarejestrowanej**. Jeśli nie, uruchom **AzResourceProvider rejestru** ponownie polecenie cmdlet.
+    W danych wyjściowych polecenia **RegistrationState** zmieni się na **zarejestrowanej**. Jeśli nie widzisz tej zmiany, uruchom **AzResourceProvider rejestru** ponownie polecenie cmdlet.
 
 Następujące zadania można zautomatyzować za pomocą programu PowerShell:
 
-* Tworzenie magazynu usługi Recovery Services
-* Konfigurowanie tworzenia kopii zapasowej udziałów plików platformy Azure
-* Wyzwalanie zadania tworzenia kopii zapasowej
-* Monitorowanie zadania tworzenia kopii zapasowej
-* Przywróć udział plików platformy Azure
-* Przywracanie pojedynczych plików platformy Azure z udziału plików platformy Azure
+* Utwórz magazyn usługi Recovery Services.
+* Konfigurowanie kopii zapasowej udziałów plików platformy Azure.
+* Wyzwalanie zadania tworzenia kopii zapasowej.
+* Monitorowanie zadania tworzenia kopii zapasowej.
+* Przywróć udział plików platformy Azure.
+* Przywracanie pojedynczych plików platformy Azure z udziału plików platformy Azure.
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-Następujące kroki przeprowadzą Cię przez proces tworzenia magazynu usługi Recovery Services.
+Wykonaj następujące kroki, aby utworzyć magazyn usługi Recovery Services.
 
-1. Magazyn usługi Recovery Services jest zasobu usługi Resource Manager, dlatego należy go umieścić w grupie zasobów. Możesz użyć istniejącej grupy zasobów lub Utwórz grupę zasobów za pomocą **New AzResourceGroup** polecenia cmdlet. Podczas tworzenia grupy zasobów, określ nazwę i lokalizację grupy zasobów.  
+1. Magazyn usługi Recovery Services jest zasobem usługi Resource Manager, należy go umieścić w grupie zasobów. Można użyć istniejącej grupy zasobów lub utworzyć nową grupę zasobów o **New AzResourceGroup** polecenia cmdlet. Podczas tworzenia grupy zasobów, określ nazwę i lokalizację grupy zasobów.  
 
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
-2. Użyj **New AzRecoveryServicesVault** polecenia cmdlet, aby utworzyć magazyn usługi Recovery Services. Pamiętaj określić lokalizację tego samego magazynu, która była używana dla grupy zasobów.
+2. Użyj **New AzRecoveryServicesVault** polecenia cmdlet, aby utworzyć magazyn usługi Recovery Services. Określ lokalizację tego samego magazynu, która była używana dla grupy zasobów.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-3. Określenie typu nadmiarowości magazynu, które mają być używane; Możesz użyć [magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md) lub [magazyn geograficznie nadmiarowy (GRS)](../storage/common/storage-redundancy-grs.md). Poniższy przykład pokazuje, że ustawiono opcję - BackupStorageRedundancy testvault GeoRedundant.
+3. Określenie typu nadmiarowości magazynu do użycia. Możesz użyć [magazyn lokalnie nadmiarowy](../storage/common/storage-redundancy-lrs.md) lub [magazyn geograficznie nadmiarowy](../storage/common/storage-redundancy-grs.md). W poniższym przykładzie przedstawiono **- BackupStorageRedundancy** opcja dla **testvault** równa **GeoRedundant**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -104,13 +104,13 @@ Następujące kroki przeprowadzą Cię przez proces tworzenia magazynu usługi R
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Wyświetlanie magazynów w ramach subskrypcji
 
-Aby wyświetlić wszystkie magazyny w ramach subskrypcji, użyj **Get AzRecoveryServicesVault**:
+Aby wyświetlić wszystkie magazyny w ramach subskrypcji, użyj **Get AzRecoveryServicesVault**.
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-Rezultat jest podobny do poniższego przykładu, zwróć uwagę, że znajdują się skojarzone parametrów ResourceGroupName i lokalizacji.
+Dane wyjściowe będą podobne do poniższego przykładu. Należy zauważyć, że skojarzone **ResourceGroupName** i **lokalizacji** są dostarczane.
 
 ```powershell
 Name              : Contoso-vault
@@ -124,16 +124,16 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Wiele poleceń cmdlet usługi Azure Backup wymaga obiektu magazynu usługi Recovery Services jako danych wejściowych.
 
-Użyj **AzRecoveryServicesVaultContext zestaw** można ustawić kontekst magazynu. Po ustawieniu kontekst magazynu ma zastosowanie do wszystkich kolejnych poleceń cmdlet. W poniższym przykładzie ustawiono kontekst magazynu dla magazynu, *testvault*.
+Użyj **AzRecoveryServicesVaultContext zestaw** można ustawić kontekst magazynu. Po ustawieniu kontekst magazynu ma zastosowanie do wszystkich kolejnych poleceń cmdlet. W poniższym przykładzie ustawiono kontekst magazynu dla **testvault**.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
 > [!NOTE]
-> Planujemy wycofana ustawienie kontekst magazynu zgodnie z wytycznymi programu Azure PowerShell. Zamiast tego zaleca się użytkownikom na przekazywanie Identyfikatora magazynu zgodnie z poniższymi
+> Planujemy wycofana ustawieniu kontekst magazynu zgodnie z wytycznymi programu Azure PowerShell. Zamiast tego zaleca się, że użytkownicy przekazać identyfikator magazynu zgodnie z opisem w poniższych instrukcji.
 
-Alternatywnie możesz można magazynu/pobierania identyfikator magazynu, do której chcesz wykonać operacji programu PowerShell i przekazywać je do odpowiednich poleceń.
+Alternatywnie magazynu lub pobrać identyfikator magazynu, do której chcesz wykonać operacji programu PowerShell i przekazywać je do odpowiednich poleceń.
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -141,9 +141,13 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 
 ## <a name="configure-backup-for-an-azure-file-share"></a>Skonfigurowanie kopii zapasowej dla udziału plików platformy Azure
 
-### <a name="create-protection-policy"></a>Utwórz zasady ochrony
+### <a name="create-a-protection-policy"></a>Tworzenie zasad ochrony
 
-Zasady tworzenia kopii zapasowej ochrony jest skojarzony z co najmniej jedne zasady przechowywania. Zasady przechowywania Określa, jak długo punkt odzyskiwania jest przechowywana, przed usunięciem. Użyj **Get AzRecoveryServicesBackupRetentionPolicyObject** Aby wyświetlić domyślne zasady przechowywania.  Podobnie można użyć **Get AzRecoveryServicesBackupSchedulePolicyObject** uzyskać domyślne zasady harmonogramu. **New AzRecoveryServicesBackupProtectionPolicy** polecenie cmdlet tworzy obiekt programu PowerShell, który zawiera informacje o zasadach tworzenia kopii zapasowej. Obiekty zasad harmonogram i okres przechowywania są używane jako dane wejściowe **New AzRecoveryServicesBackupProtectionPolicy** polecenia cmdlet. Poniższy przykład zasad harmonogram i zasady przechowywania są przechowywane w zmiennych. W przykładzie użyto tych zmiennych, aby zdefiniować parametry podczas tworzenia zasad ochrony *NewPolicy*.
+Zasady tworzenia kopii zapasowej ochrony jest skojarzony z co najmniej jedne zasady przechowywania. Zasady przechowywania Określa, jak długo punkt odzyskiwania jest przechowywana, przed usunięciem. Użyj **Get AzRecoveryServicesBackupRetentionPolicyObject** Aby wyświetlić domyślne zasady przechowywania. 
+
+Podobnie, można użyć **Get AzRecoveryServicesBackupSchedulePolicyObject** uzyskać domyślne zasady harmonogramu. **New AzRecoveryServicesBackupProtectionPolicy** polecenie cmdlet tworzy obiekt programu PowerShell, który zawiera informacje o zasadach tworzenia kopii zapasowej. Obiekty zasad harmonogram i okres przechowywania są używane jako dane wejściowe **New AzRecoveryServicesBackupProtectionPolicy** polecenia cmdlet. 
+
+Poniższy przykład zasad harmonogram i zasady przechowywania są przechowywane w zmiennych. W przykładzie użyto tych zmiennych, aby zdefiniować parametry podczas **NewPolicy** tworzone są zasady ochrony.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -151,7 +155,7 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "Azure
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu:
+Dane wyjściowe będą podobne do poniższego przykładu.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -159,21 +163,21 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
 
-NewAFSPolicy przyjmuje codzienne wykonywanie kopii zapasowych i przechowuje je przez 30 dni.
+**NewAFSPolicy** przyjmuje codzienne wykonywanie kopii zapasowych oraz przechowujące ją przez 30 dni.
 
 ### <a name="enable-protection"></a>Włączanie ochrony
 
-Po zdefiniowaniu zasad ochrony można włączyć ochrony dla udziału plików platformy Azure z tymi zasadami.
+Po zdefiniowaniu zasad ochrony, aby umożliwić ochronę udziału plików platformy Azure z tymi zasadami.
 
-Najpierw Pobierz obiekt odpowiednich zasad za pomocą **Get AzRecoveryServicesBackupProtectionPolicy** polecenia cmdlet. Można użyć tego polecenia cmdlet, aby uzyskać szczegółowe zasady lub aby wyświetlić zasady skojarzone z typem obciążenia.
+Najpierw Pobierz obiekt odpowiednich zasad za pomocą **Get AzRecoveryServicesBackupProtectionPolicy** polecenia cmdlet. Użyj następującego polecenia cmdlet, aby wyświetlić zasady skojarzone z typem obciążenia lub uzyskania określonych zasad.
 
-Poniższy przykład pobiera zasady dla obciążeń typu migracji.
+Poniższy przykład pobiera zasady dla typu obciążenia **migracji**.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu:
+Dane wyjściowe będą podobne do poniższego przykładu.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -182,25 +186,25 @@ dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 
 ```
 
 > [!NOTE]
-> Strefa czasowa BackupTime pola w programie PowerShell jest czasem UTC. Podczas wykonywania kopii zapasowej jest wyświetlany w witrynie Azure portal, czas jest dostosowywany do lokalnej strefy czasowej.
+> Strefa czasowa **BackupTime** pola w programie PowerShell jest uniwersalny czas koordynowany (UTC). Podczas wykonywania kopii zapasowej jest wyświetlany w witrynie Azure portal, czas jest dopasowywana do lokalnej strefy czasowej.
 >
 >
 
-Następujące zasady pobiera zasady kopii zapasowych o nazwie "dailyafs"
+Następujące zasady pobiera zasady kopii zapasowych o nazwie **dailyafs**.
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 ```
 
-Użyj **AzRecoveryServicesBackupProtection Włącz** Aby włączyć ochronę elementu z danymi zasadami. Gdy zasady zostało skojarzone z magazynem, tworzenia kopii zapasowej przepływ pracy zostanie wyzwolony w czasie, zdefiniowane w harmonogram zasad.
+Użyj **AzRecoveryServicesBackupProtection Włącz** Aby włączyć ochronę elementu z danymi zasadami. Po skojarzone z magazynem zasad tworzenia kopii zapasowej przepływ pracy zostanie wyzwolony w czasie, zdefiniowane w harmonogram zasad.
 
-Poniższy przykład umożliwia ochronę udziału plików platformy Azure, "testAzureFileShare", w obszarze magazynu konta "testStorageAcct", przy użyciu dailyafs zasad.
+Poniższy przykład umożliwia włączenie ochrony udziału plików platformy Azure **testAzureFileShare** na koncie magazynu **testStorageAcct** z zasadami **dailyafs**.
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol
 ```
 
-Polecenie czeka, aż zostanie ukończona zadania konfiguracji ochrony, a także zapewnia podobnych danych wyjściowych, jak pokazano poniżej.
+Polecenie czeka, aż zakończone zadania konfiguracji ochrony oraz udostępnia dane wyjściowe podobne, jak pokazano.
 
 ```cmd
 WorkloadName       Operation            Status                 StartTime                                                                                                         EndTime                   JobID
@@ -218,7 +222,7 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
-Polecenie zwraca zadanie, które mają być śledzone o identyfikatorze jak w poniższym przykładzie.
+Polecenie zwraca zadanie o identyfikatorze mają być śledzone, jak pokazano w poniższym przykładzie.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -226,13 +230,13 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS       Backup               Completed            11/12/2018 2:42:07 PM     11/12/2018 2:42:11 PM     8bdfe3ab-9bf7-4be6-83d6-37ff1ca13ab6
 ```
 
-Firma Microsoft korzysta z migawki udziału plików platformy Azure podczas wykonywania kopii zapasowych i dlatego zwykle ukończeniu zadania przez razem, gdy polecenie jest zwracane te dane wyjściowe
+Migawki udziału plików platformy Azure są używane podczas tworzenia kopii zapasowych są wykonywane, więc zazwyczaj zadanie zostanie ukończone do czasu, polecenie zwraca następujące dane wyjściowe.
 
-### <a name="modify-protection-policy"></a>Zmodyfikuj zasady ochrony
+### <a name="modify-the-protection-policy"></a>Zmodyfikuj zasady ochrony
 
-Jeśli chcesz zmienić zasady, o które jest chronione udziału plików platformy Azure, użyj **AzRecoveryServicesBackupProtection Włącz** przy użyciu odpowiedniego elementu kopii zapasowej i nowych zasad ochrony.
+Aby zmienić zasady, z którą jest chroniony udziału plików platformy Azure, użyj **AzRecoveryServicesBackupProtection Włącz** przy użyciu odpowiedniego elementu kopii zapasowej i nowych zasad ochrony.
 
-Poniższy przykład zmienia zasady ochrony "testAzureFS" z "dailyafs" do "monthlyafs"
+Następujący przykład zmienia **testAzureFS** zasady ochrony na podstawie **dailyafs** do **monthlyafs**.
 
 ```powershell
 $monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
@@ -241,13 +245,13 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
 ```
 
-## <a name="restore-azure-file-sharesazure-files"></a>Przywracanie udziałów plików platformy Azure / Azure plików
+## <a name="restore-azure-file-shares-and-azure-files"></a>Przywracanie udziałów plików platformy Azure i usługi Azure files
 
-Możesz przywrócić cały udział plików, do jego oryginalnej lub alternatywnej lokalizacji. Podobnie poszczególnych plików z udziału plików można przywrócić również.
+Możesz przywrócić cały udział plików do lokalizacji oryginalnej lub alternatywnej lokalizacji. Podobnie pojedyncze pliki z udziału plików można przywracać, zbyt.
 
-### <a name="fetching-recovery-points"></a>Pobieranie punktów odzyskiwania
+### <a name="fetch-recovery-points"></a>Pobierz punkty odzyskiwania
 
-Użyj **Get AzRecoveryServicesBackupRecoveryPoint** polecenia cmdlet, aby wyświetlić listę wszystkich punktów odzyskiwania dla elementu kopii zapasowej. W poniższym skrypcie zmiennej, **$rp**, jest tablicą punkty odzyskiwania dla wybranego elementu kopii zapasowej z ostatnich siedmiu dni. Tablica jest posortowana w kolejności odwrotnej względem czasie przy użyciu najnowszego punktu odzyskiwania pod indeksem 0. Użyj standardowych indeksowanie tablicy programu PowerShell, aby wybrać punkt odzyskiwania. W tym przykładzie $rp [0] wybiera najnowszego punktu odzyskiwania.
+Użyj **Get AzRecoveryServicesBackupRecoveryPoint** polecenia cmdlet, aby wyświetlić listę wszystkich punktów odzyskiwania dla elementu kopii zapasowej. W poniższym skrypcie zmiennej **$rp** jest tablicą, punkty odzyskiwania dla wybranego elementu kopii zapasowej z ostatnich siedmiu dni. Tablica jest posortowana w odwrotnej kolejności czasie przy użyciu najnowszego punktu odzyskiwania w indeksie **0**. Użyj standardowych indeksowanie tablicy programu PowerShell, aby wybrać punkt odzyskiwania. W tym przykładzie **$rp [0]** wybiera najnowszego punktu odzyskiwania.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -257,7 +261,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu:
+Dane wyjściowe będą podobne do poniższego przykładu.
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -273,20 +277,20 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-Po wybraniu punktu odzyskiwania istotne, należy przejść do Przywróć udział plików/plik z lokalizacją alternatywny/oryginalny, jak wyjaśniono poniżej.
+Po wybraniu punktu odzyskiwania odpowiednie przywrócić udziału plików lub plików do lokalizacji alternatywnej lub oryginalnej lokalizacji zgodnie z opisem w tym miejscu.
 
 ### <a name="restore-azure-file-shares-to-an-alternate-location"></a>Przywracanie udziałów plików platformy Azure do lokalizacji alternatywnej
 
-#### <a name="restoring-an-azure-file-share"></a>Przywrócenie udziału plików platformy Azure
+#### <a name="restore-an-azure-file-share"></a>Przywróć udział plików platformy Azure
 
 Określenie alternatywnej lokalizacji, podając następujące informacje:
 
-* ***TargetStorageAccountName***: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu powinny należeć do tej samej lokalizacji co magazyn.
-* ***TargetFileShareName***: Udziały plików w ramach docelowe konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej
-* ***TargetFolder***: Folderu w udziale plików, do którego dane są przywracane. Jeśli zawartość kopii zapasowej powinny zostać przywrócone do folderu głównego, należy podać wartości folder docelowy jako pusty ciąg
-* ***Wykonanie polecenia ResolveConflict***: Instrukcja w przypadku konfliktu z przywróconych danych. Akceptuje "Zastąp" lub "pomija"
+* **TargetStorageAccountName**: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi być w tej samej lokalizacji co magazyn.
+* **TargetFileShareName**: Konto zostanie przywrócona zawartość kopii zapasowej udziałów plików w ramach magazynu docelowego.
+* **TargetFolder**: Folderu w udziale plików, do którego dane są przywracane. Jeśli zawartość kopii zapasowej można przywrócić do folderu głównego, należy podać wartości folder docelowy jako pusty ciąg.
+* **Wykonanie polecenia ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconych danych. Akceptuje **zastąpić** lub **Pomiń**.
 
-Podaj te parametry do polecenia restore do przywrócenia kopii zapasowej udziału plików do lokalizacji alternatywnej.
+Podaj te parametry do polecenia restore, aby przywrócić udziału plików kopii zapasowej do lokalizacji alternatywnej.
 
 ````powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
@@ -300,28 +304,28 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
 ````
 
-#### <a name="restoring-an-azure-file"></a>Przywracanie plików platformy Azure
+#### <a name="restore-an-azure-file"></a>Przywracanie plików platformy Azure
 
-W przypadku chcesz przywrócić poszczególnych plików, a nie cały udział plików, ten plik należy jednoznacznie zidentyfikować, podając następujące parametry.
+Aby przywrócić poszczególnych plików, a nie cały udział plików, identyfikują poszczególnych plików, podając następujące parametry:
 
-* ***TargetStorageAccountName***: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu powinny należeć do tej samej lokalizacji co magazyn.
-* ***TargetFileShareName***: Udziały plików w ramach docelowe konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej
-* ***TargetFolder***: Folderu w udziale plików, do którego dane są przywracane. Jeśli zawartość kopii zapasowej powinny zostać przywrócone do folderu głównego, należy podać wartości folder docelowy jako pusty ciąg
-* ***SourceFilePath***: Ścieżka bezwzględna plików, można przywrócić w udziale plików, w postaci ciągu. Jest to tej samej ścieżki, które są używane w ```Get-AzStorageFile``` PS polecenia cmdlet.
-* ***SourceFileType***: Czy katalog lub plik jest zaznaczony. Akceptuje "Directory" lub "File"
-* ***Wykonanie polecenia ResolveConflict***: Instrukcja w przypadku konfliktu z przywróconych danych. Akceptuje "Zastąp" lub "pomija"
+* **TargetStorageAccountName**: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi być w tej samej lokalizacji co magazyn.
+* **TargetFileShareName**: Konto zostanie przywrócona zawartość kopii zapasowej udziałów plików w ramach magazynu docelowego.
+* **TargetFolder**: Folderu w udziale plików, do którego dane są przywracane. Jeśli zawartość kopii zapasowej można przywrócić do folderu głównego, należy podać wartości folder docelowy jako pusty ciąg.
+* **SourceFilePath**: Ścieżka bezwzględna plików, można przywrócić w udziale plików, w postaci ciągu. Ta ścieżka jest tej samej ścieżki, które są używane w **Get AzStorageFile** polecenia cmdlet programu PowerShell.
+* **SourceFileType**: Czy katalog lub plik jest zaznaczony. Akceptuje **katalogu** lub **pliku**.
+* **Wykonanie polecenia ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconych danych. Akceptuje **zastąpić** lub **Pomiń**.
 
-Jak widać, dodatkowe parametry odnoszą się tylko do pojedynczych plików do przywrócenia.
+Dodatkowe parametry są powiązane tylko pojedynczy plik, który ma zostać przywrócone.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-Spowoduje to zwrócenie również zadania, które mają być śledzone za pomocą Identyfikatora, jak pokazano powyżej.
+To polecenie zwraca również wartość zadania o identyfikatorze mają być śledzone, jak przedstawiono wcześniej.
 
-### <a name="restore-azure-file-shares-to-original-location"></a>Przywracanie udziałów plików platformy Azure do oryginalnej lokalizacji
+### <a name="restore-azure-file-shares-to-the-original-location"></a>Przywracanie udziałów plików platformy Azure do oryginalnej lokalizacji
 
-W przypadku oryginalnej lokalizacji przywracania wszystkie/docelowego związane z parametrów nie musi być określony. Tylko ```ResolveConflict``` musi zostać dostarczona
+Podczas przywracania do oryginalnej lokalizacji wszystkie parametry dotyczące przeznaczenia i docelowy nie trzeba określać. Tylko **ResolveConflict** musi zostać podana.
 
 #### <a name="overwrite-an-azure-file-share"></a>Zastąp udziału plików platformy Azure
 
@@ -337,7 +341,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="track-backup-and-restore-jobs"></a>Śledzenie kopii zapasowej i przywracanie zadania
 
-Operacje i przywracania kopii zapasowych na żądanie Zwróć wraz z Identyfikatorem zadania, jak pokazano [powyżej](#trigger-an-on-demand-backup). Użyj ```Get-AzRecoveryServicesBackupJobDetails``` polecenia cmdlet, aby śledzić postęp zadania i pobrać szczegółowe informacje.
+Operacje i przywracania kopii zapasowych na żądanie zwrócenie zadania oraz Identyfikatora, jak pokazano w poprzedniej sekcji ["Wyzwól kopię zapasową na żądanie".](#trigger-an-on-demand-backup) Użyj **Get AzRecoveryServicesBackupJobDetails** polecenia cmdlet, aby śledzić postęp zadania i pobrać więcej szczegółów.
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -362,5 +366,5 @@ $job.ErrorDetails
 
  ErrorCode ErrorMessage                                          Recommendations
  --------- ------------                                          ---------------
-1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support
+1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```

@@ -1,5 +1,5 @@
 ---
-title: Konstruktor Raspberry Pi z aplikacją usługi Azure IoT Central (Python) | Dokumentacja firmy Microsoft
+title: Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (Python) | Dokumentacja firmy Microsoft
 description: Jako deweloper w urządzeniu jak połączyć z urządzeniem Raspberry Pi do usługi Azure IoT Central aplikacji przy użyciu języka Python.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f39832b50ed983e7d8a0bfc0a06366870717fa3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239597"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051989"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (Python)
 
@@ -25,7 +25,7 @@ W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniem Ra
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
-* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji Szybki Start](quick-deploy-iot-central.md).
+* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi, systemem operacyjnym Raspbian. Potrzebujesz monitora, klawiatury i myszy podłączone do urządzenia Raspberry Pi można uzyskiwać dostęp do środowiska graficznego interfejsu użytkownika. Urządzenia Raspberry Pi musi mieć możliwość [połączenie z Internetem](https://www.raspberrypi.org/learning/software-guide/wifi/).
 * Opcjonalnie [Hat sensie](https://www.raspberrypi.org/products/sense-hat/) tablicy dodatku dla urządzenia Raspberry Pi. Ta tablica zbiera dane telemetryczne z różnych czujników do wysłania do aplikacji usługi Azure IoT Central. Jeśli nie masz **Hat sensie** tablicy, możesz zamiast tego użyć emulatora (dostępne jako część obrazu urządzenia Raspberry Pi).
 
@@ -42,7 +42,7 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
     - Żyroskop (X, Y, Z)
 - Ustawienia
     - Napięcie
-    - Bieżący
+    - Bieżące
     - Wentylator szybkości
     - Przełącz Podczerwieni.
 - Właściwości
@@ -107,7 +107,7 @@ Ustawienia liczbowe
 | Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| Bieżące      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika

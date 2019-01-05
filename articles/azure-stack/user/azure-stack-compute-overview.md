@@ -6,40 +6,40 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0d75b13369cff4e99bef6f57a3b01f3d8eee6e4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 61b923b278d13bdcf97e05859c36b14bf9edba6e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227167"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051000"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Wprowadzenie do maszyn wirtualnych usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Usługa Azure Stack oferuje maszyn wirtualnych (VM) jako jednego typu na żądanie, skalowalnych zasobów obliczeniowych. Można wybrać Maszynę wirtualną, gdy potrzebujesz większej kontroli nad środowiskiem obliczeniowym niż inne opcje. Ten artykuł zawiera szczegółowe informacje, przed przystąpieniem do tworzenia maszyny Wirtualnej.
+Usługa Azure Stack oferuje maszyn wirtualnych (VM) jako jednego typu na żądanie, skalowalnych zasobów obliczeniowych. Można wybrać Maszynę wirtualną, gdy potrzebujesz większej kontroli nad środowiskiem obliczeniowym. Ten artykuł zawiera szczegółowe informacje, przed utworzeniem pierwszej maszyny Wirtualnej.
 
 Maszynę wirtualną platformy Azure Stack umożliwia swobodne korzystanie z wirtualizacji bez konieczności zarządzania klastrami lub poszczególnych maszyn. Jednak nadal trzeba utrzymywać w maszynie Wirtualnej, wykonując zadania, takie jak konfigurowania, poprawiania i instalacji oprogramowania, które uruchamia na ich temat.
 
-Maszyny wirtualne usługi Azure Stack można użyć na różne sposoby. Na przykład:
+Za pomocą usługi Azure Stack maszyny wirtualne na kilka sposobów. Na przykład:
 
 - **Tworzenie i testowanie**  
-    Maszyny wirtualne platformy Azure Stack oferuje szybki i łatwy sposób tworzenia komputerów o określonej konfiguracji wymaganej do kodowania i testowania aplikacji.
+    Maszyny wirtualne platformy Azure Stack umożliwia utworzenie komputera o określonej konfiguracji wymaganej do kodowania i testowania aplikacji.
 
 - **Aplikacje w chmurze**  
-    Ponieważ żądanie aplikacji mogą się zmieniać, może mieć ze względów ekonomicznych warto ją uruchomić na maszynie Wirtualnej w usłudze Azure Stack. Jeśli zajdzie potrzeba użycia dodatkowych maszyn wirtualnych, wystarczy je opłacić. Gdy dodatkowe maszyny staną się zbędne, można je wyłączyć.
+    Ponieważ żądanie aplikacji mogą się zmieniać, może mieć ze względów ekonomicznych warto ją uruchomić na maszynie Wirtualnej w usłudze Azure Stack. Płaci się za dodatkowe maszyny wirtualne, gdy potrzeby i wyłączać je po użytkownik nie.
 
 - **Rozszerzone centrum danych**  
-    Maszyn wirtualnych w sieci wirtualnej usługi Azure Stack mogą zostać z łatwością połączyć, z siecią organizacji lub na platformie Azure.
+    Maszyny wirtualne w sieci wirtualnej usługi Azure Stack może być połączona z siecią organizacji lub na platformie Azure.
 
-Maszyny wirtualne, które używane przez aplikację można skalować w górę lub skalowanie w poziomie do dowolnie jest wymagany do własnych potrzeb.
+Maszyny wirtualne, które używane przez aplikację można skalować w górę lub skalowania w poziomie, aby niezależnie od rodzaju jest wymagany do własnych potrzeb.
 
-## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Co należy wziąć pod uwagę przed utworzeniem maszyny wirtualnej?
+## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Co należy wziąć pod uwagę przed utworzeniem maszyny Wirtualnej
 
-Brak zawsze wiele uwagi dotyczące projektowania, podczas tworzenia infrastruktury aplikacji w usłudze Azure Stack. Te aspekty maszyny Wirtualnej są ważne wziąć pod uwagę przed rozpoczęciem tworzenia infrastruktury:
+Brak zawsze zagadnienia dotyczące projektowania, podczas tworzenia infrastruktury aplikacji w usłudze Azure Stack. Te aspekty maszyny Wirtualnej są ważne wziąć pod uwagę przed rozpoczęciem tworzenia infrastruktury:
 
 - Nazwy zasobów aplikacji.
 - Rozmiar maszyny Wirtualnej.
@@ -52,30 +52,29 @@ Brak zawsze wiele uwagi dotyczące projektowania, podczas tworzenia infrastruktu
 
 Maszyna wirtualna ma nazwę do niej przypisany, i ma nazwę komputera, skonfigurowany jako część systemu operacyjnego. Nazwa maszyny wirtualnej może zawierać maksymalnie 15 znaków.
 
-Jeśli używasz usługi Azure Stack można utworzyć dysku systemu operacyjnego, nazwę komputera i nazwę maszyny wirtualnej są takie same. Jeśli przekazywanie i użycia własnego obrazu, który zawiera skonfigurowany wcześniej system operacyjny i używać go do utworzenia maszyny wirtualnej, nazwy mogą być różne. Po przekazaniu pliku obrazu, wprowadź nazwę komputera w systemie operacyjnym i nazwę maszyny wirtualnej, takie same, najlepszym rozwiązaniem.
+Jeśli używasz usługi Azure Stack można utworzyć dysku systemu operacyjnego, nazwę komputera i nazwę maszyny wirtualnej są takie same. Jeśli przekazywanie i użycia własnego obrazu, który zawiera skonfigurowany wcześniej system operacyjny i używać go do utworzenia maszyny wirtualnej, nazwy mogą być różne. Przesłany własny plik obrazu, najlepszym rozwiązaniem, upewnij się, nazwa komputera systemu operacyjnego i nazwę maszyny wirtualnej są takie same.
 
 ### <a name="vm-size"></a>Rozmiar maszyny wirtualnej
 
-Rozmiar maszyny Wirtualnej, którego używasz, zależy od obciążenia, które chcesz uruchomić. Wybrany rozmiar ma więc wpływ na takie czynniki jak moc procesora, pamięć i przestrzeń dyskowa. Usługa Azure Stack oferuje szeroką gamę rozmiarów do obsługi wielu różnych zastosowań.
+Rozmiar maszyny Wirtualnej, którego używasz, zależy od obciążenia, które chcesz uruchomić. Wybrany rozmiar ma więc wpływ na takie czynniki jak moc procesora, pamięć i przestrzeń dyskowa. Usługa Azure Stack oferuje wiele różnych rozmiarów do obsługi wielu różnych zastosowań.
 
 ### <a name="vm-limits"></a>Limity maszyn wirtualnych
 
-Twoja subskrypcja ma domyślnie ustawiony limit przydziałów, w miejscu, które mogą mieć wpływ na wdrożenie wielu maszyn wirtualnych w projekcie. Aktualny limit dla każdej subskrypcji wynosi 20 maszyn wirtualnych na region.
+Twoja subskrypcja ma domyślnie ustawiony limit przydziałów, w miejscu, które mogą mieć wpływ na wdrożenie maszyn wirtualnych w projekcie. Aktualny limit dla każdej subskrypcji wynosi 20 maszyn wirtualnych na region.
 
 ### <a name="operating-system-disks-and-images"></a>Dyski i obrazy z systemem operacyjnym
 
-Maszyny wirtualne wykorzystują wirtualne dyski twarde do przechowywania ich systemu operacyjnego oraz danych. Wirtualne dyski twarde są również używane do obsługi obrazów, spośród których można wybierać, chcąc zainstalować system operacyjny.
-Usługa Azure Stack zapewnia marketplace do użycia z różnymi wersjami i typami systemów operacyjnych. Obrazy z Marketplace są identyfikowane za pomocą wydawcy obrazu, oferty, jednostki sku i wersji (zwykle najnowszą.)
+Maszyny wirtualne wykorzystują wirtualne dyski twarde do przechowywania ich systemu operacyjnego oraz danych. Wirtualne dyski twarde są również używane do obsługi obrazów, spośród których można wybierać, chcąc zainstalować system operacyjny. Usługa Azure Stack zapewnia marketplace do użycia z różnymi wersjami i typami systemów operacyjnych. Obrazy z Marketplace są identyfikowane za pomocą wydawcy obrazu, oferty, jednostki SKU i wersji (zwykle wersja jest określony jako **najnowsze**.)
 
-W poniższej tabeli przedstawiono niektóre sposoby, można znaleźć informacje o obrazie:
+W poniższej tabeli przedstawiono, jak znaleźć informacje o obrazie:
 
 |Metoda|Opis|
 |---------|---------|
 |Portal usługi Azure Stack|Wartości są podawane automatycznie po wybraniu obrazu, który ma zostać użyty.|
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
-|Interfejsy API REST     |[Wyświetl listę wydawców obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br>[Wyświetl listę ofert obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[Obraz listy jednostek SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
+|Interfejsy API REST     |[Wyświetl listę wydawców obrazów](/rest/api/compute/platformimages/platformimages-list-publishers)<br>[Wyświetl listę ofert obrazów](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[Obraz listy jednostek SKU](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
-Istnieje możliwość przesłania i użycia własnego obrazu. Jeśli to zrobisz, nie są używane nazwy wydawcy, oferty i jednostki sku.
+Istnieje możliwość przesłania i użycia własnego obrazu. Jeśli to zrobisz, nazwę wydawcy, oferta i jednostka SKU nie są używane.
 
 ### <a name="extensions"></a>Rozszerzenia
 
@@ -93,8 +92,7 @@ Typowe zadania można realizować przy użyciu różnych rozszerzeń:
 
 ### <a name="related-resources"></a>Powiązane zasoby
 
-W poniższej tabeli przedstawiono zasoby są używane przez maszynę Wirtualną i muszą istnieć lub być tworzone podczas tworzenia maszyny Wirtualnej.
-
+W poniższej tabeli przedstawiono zasoby są używane przez maszynę Wirtualną i muszą istnieć lub być tworzone podczas tworzenia maszyny Wirtualnej:
 
 |Zasób|Wymagane|Opis|
 |---------|---------|---------|
@@ -107,9 +105,7 @@ W poniższej tabeli przedstawiono zasoby są używane przez maszynę Wirtualną 
 
 ## <a name="create-your-first-vm"></a>Tworzenie pierwszej maszyny Wirtualnej
 
-Masz kilka opcji, aby utworzyć Maszynę wirtualną. Wybór zależy od środowiska.
-W poniższej tabeli przedstawiono informacje ułatwiające rozpoczęcie tworzenia maszyny Wirtualnej.
-
+Masz kilka opcji, aby utworzyć Maszynę wirtualną. Wybór zależy od środowiska. Poniższa tabela zawiera informacje ułatwiające rozpoczęcie tworzenia maszyny Wirtualnej:
 
 |Metoda|Artykuł|
 |---------|---------|
@@ -131,12 +127,11 @@ Można zarządzać maszynami wirtualnymi przy użyciu portalu w przeglądarce in
 
 Poniższej tabeli przedstawiono niektóre metody, których można uzyskać informacji o maszynie Wirtualnej.
 
-
 |Metoda|Opis|
 |---------|---------|
 |Portal usługi Azure Stack|W menu Centrum kliknij maszyn wirtualnych, a następnie wybierz maszynę Wirtualną z listy. Na stronie dla maszyny Wirtualnej masz dostęp do podstawowych informacji, wartości ustawień i metryk monitorowania.|
-|Azure PowerShell|Zarządzanie maszynami wirtualnymi jest podobny na platformie Azure i usługi Azure Stack. Aby uzyskać więcej informacji na temat przy użyciu programu PowerShell zobacz następujący temat platformy Azure:<br>[Tworzenie i zarządzanie maszynami wirtualnymi Windows za pomocą modułu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
-|Zestawy SDK klienta|Zarządzanie za pomocą języka C# maszyn wirtualnych jest podobny na platformie Azure i usługi Azure Stack. Aby uzyskać więcej informacji zobacz następujący temat platformy Azure:<br>[Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka C#](https://docs.microsoft.com/azure/virtual-machines/windows/csharp)|
+|Azure PowerShell|Zarządzanie maszynami wirtualnymi jest podobny na platformie Azure i usługi Azure Stack. Aby uzyskać więcej informacji na temat przy użyciu programu PowerShell zobacz następujący temat platformy Azure:<br>[Tworzenie i zarządzanie maszynami wirtualnymi Windows za pomocą modułu Azure PowerShell](../../virtual-machines/windows/tutorial-manage-vm.md#understand-vm-sizes)|
+|Zestawy SDK klienta|Zarządzanie za pomocą języka C# maszyn wirtualnych jest podobny na platformie Azure i usługi Azure Stack. Aby uzyskać więcej informacji zobacz następujący temat platformy Azure:<br>[Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka C#](../../virtual-machines/windows/csharp.md)|
 
 ### <a name="connect-to-your-vm"></a>Łączenie z maszyną wirtualną
 

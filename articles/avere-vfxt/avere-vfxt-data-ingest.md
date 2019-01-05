@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bf16c0fbc7090bf9b548796765502cde1731aef9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634131"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050493"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Przenoszenie danych do klastra vFXT — równoległego pozyskiwania 
 
@@ -19,7 +19,7 @@ Po utworzeniu nowego klastra vFXT pierwsze zadanie może być do przenoszenia da
 
 Ponieważ klaster vFXT Avere jest skalowalna wielu klientów pamięci podręcznej, to najszybszy i najbardziej efektywny sposób kopiowania danych do niego jest z wieloma klientami. Ta technika parallelizes pozyskiwanie pomiarów dotyczących plików i obiektów.
 
-![Diagram przedstawiający wielu klientów wielowątkowych przenoszenia danych: W lewym górnym rogu, ikona magazynu sprzętu lokalnego ma wiele strzałki, pochodzących z niego. Strzałki wskazują cztery komputery klienckie. Z każdego komputera klienckiego trzy strzałki wskazują Avere vFXT. Skieruj wiele strzałki Avere vFXT, do usługi Blob storage.](media/avere-vfxt-parallel-ingest.png) 
+![Diagram przedstawiający wielu klientów wielowątkowych przenoszenia danych: W lewym górnym rogu ikonę magazynu sprzętu lokalnego ma wiele strzałki pochodzących z niego. Strzałki wskazują cztery komputery klienckie. Z każdego komputera klienckiego trzy strzałki wskazują Avere vFXT. Skieruj wiele strzałki Avere vFXT, do usługi Blob storage.](media/avere-vfxt-parallel-ingest.png) 
 
 ``cp`` Lub ``copy`` poleceń, które są często używane do korzystania z na przesyłanie danych z jednego magazynu systemu do drugiego to procesy jednowątkowe kopiować tylko jeden plik jednocześnie. Oznacza to, że serwer plików jest wprowadzane tylko jeden plik jednocześnie — czyli do marnowania zasobów klastra.
 
@@ -167,7 +167,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ### <a name="create-file-manifests"></a>Utwórz plik manifestów
 
-Po zrozumienia metod powyżej (wielu kopii wątków na docelowym, wielu miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych sieci), rozważ, czy to zalecenie: Tworzenie pliku manifestów, a następnie używać ich z kopią polecenia na wielu klientach.
+Po zrozumienia metod powyżej (wielu kopii wątków na docelowym, wielu miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych sieci), należy wziąć pod uwagę tego zalecenia: Tworzenie pliku manifestów, a następnie używać ich za pomocą polecenia kopiowania na wielu klientach.
 
 W tym scenariuszu UNIX ``find`` polecenie, aby utworzyć manifesty plików lub katalogów:
 
@@ -272,7 +272,7 @@ Aby użyć msrsync do wypełniania woluminie chmury platformy Azure z klastrem A
 1. Zainstaluj msrsync i jego wymagania wstępne (rsync i języka Python w wersji 2.6 lub nowszej)
 1. Określ, całkowita liczba plików i katalogów do skopiowania.
 
-   Na przykład, użyj narzędzia Avere ``prime.py`` z argumentami ```prime.py --directory /path/to/some/directory``` (dostępne pobierając adresu url https://raw.githubusercontent.com/Azure/Avere/master/src/dataingestor/prime.py).
+   Na przykład, użyj narzędzia Avere ``prime.py`` z argumentami ```prime.py --directory /path/to/some/directory``` (dostępne pobierając adresu url https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
 
    Jeśli nie używa ``prime.py``, można obliczyć liczbę elementów za pomocą Gnu ``find`` narzędzie w następujący sposób:
 

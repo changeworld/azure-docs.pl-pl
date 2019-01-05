@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 514516dcc28e99d03611c7db6ec09c7b4a48ff0e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306667"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051445"
 ---
 # <a name="visualize-data-with-power-bi"></a>Wizualizacja danych przy użyciu usługi Power BI
 Ten samouczek przedstawia sposób nawiązania połączenia z usługą SQL Data Warehouse przy użyciu usługi Power BI oraz tworzenia podstawowych wizualizacji.
@@ -32,7 +32,7 @@ Do wykonania kroków opisanych w tym samouczku potrzebne są:
 ## <a name="1-connect-to-your-database"></a>1. Nawiązywanie połączenia z bazą danych
 Aby otworzyć usługę Power BI nawiązać połączenie się z bazą danych AdventureWorksDW:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 2. Kliknij pozycję **Bazy danych SQL** i wybierz bazę danych AdventureWorks usługi SQL Data Warehouse.
    
     ![Znajdowanie bazy danych](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -77,7 +77,7 @@ Teraz możesz przystąpić do analizowania przykładowych danych bazy AdventureW
 
 W dowolnym momencie możesz kliknąć menu **Plik** i wybrać polecenie **Zapisz**, aby zapisać postęp.
 
-## <a name="using-direct-connnect"></a>Za pomocą bezpośredniego Konstruktor
+## <a name="using-direct-connect"></a>Połącz z przy użyciu bezpośrednich
 Jako za pomocą usługi Azure SQL Database, SQL dane magazynu bezpośrednie łączenie umożliwia przekazywanie logicznego wraz z możliwości analitycznych usługi Power BI. Za pomocą bezpośredniego Connect zapytania są wysyłane do usługi Azure SQL Data Warehouse w w czasie rzeczywistym gdy eksplorujesz dane.  Ta funkcja w połączeniu ze skalą usługi SQL Data Warehouse, umożliwia tworzenie dynamicznych raportów w ciągu kilku minut w obliczu terabajtów danych. Ponadto wprowadzenie przycisku Otwórz w usłudze Power BI umożliwia użytkownikom bezpośrednie łączenie usługi Power BI do usługi SQL Data Warehouse bez zbierania informacji z innymi częściami systemu Azure.
 
 Korzystając z połączenia bezpośredniego:

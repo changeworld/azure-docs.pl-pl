@@ -1,42 +1,42 @@
 ---
-title: Wdrażanie aplikacji na platformie Azure przy użyciu siedliska
-description: Dowiedz się, jak spójnie wdrożyć aplikację na maszynach wirtualnych platformy Azure i kontenerów
-keywords: Azure, chef, devops, maszyny wirtualne, omówienie można zautomatyzować, siedliska
+title: Wdrażanie aplikacji na platformie Azure przy użyciu platformy Habitat
+description: Dowiedz się, jak i spójne wdrażanie aplikacji na maszynach wirtualnych platformy Azure i kontenerów
+keywords: Azure, programu chef, metodyki devops, maszyny wirtualne, przegląd, automatyzacja habitat
 ms.service: virtual-machines-linux
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 73c6834eb53c0496fa673dd25ab90abc18a6a139
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 4847d9ce551c9acf1e4fb6325c770187b2cfd89f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267444"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052295"
 ---
-# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Wdrażanie aplikacji na platformie Azure przy użyciu siedliska
-[Siedliska](https://www.habitat.sh/) jest pierwszy jej rodzaju projekt open source, który oferuje całkowicie nowe podejście do zarządzania aplikacjami. Siedliska sprawia, że aplikacja i automatyzacji jego jednostkę wdrożenia. Gdy aplikacje są ujęte w lekkie "środowisku", środowisko uruchomieniowe kontenera, od zera lub PaaS, nie jest już fokus i ograniczają aplikacji. 
+# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Wdrażanie aplikacji na platformie Azure przy użyciu platformy Habitat
+[Habitat](https://www.habitat.sh/) jest pierwszy jej rodzaj projektu open source, który oferuje nowe podejście do zarządzania aplikacjami. Habitat sprawia, że aplikacja i jej automatyzacji jednostką wdrożenia. Gdy aplikacje są opakowane w uproszczone "habitat", środowisko uruchomieniowe kontenera, komputerach bez systemu operacyjnego lub PaaS, nie jest już fokus i nie ogranicza aplikację. 
 
-W tym artykule opisano korzyści wynikające ze stosowania siedliska.
+W tym artykule opisano korzyści z używania platformy Habitat.
 
 ## <a name="support-for-the-modern-application"></a>Obsługa aplikacji modern
-Pakiety siedliska zawierają wszystkie elementy aplikacji musi być uruchamiane przez cały cykl życia. Siedliska podstawowe składniki są:
-- Format opakowania — aplikacje w pakiecie siedliska są atomic niezmienne i podlegającą inspekcji.
-- Nadzorca siedliska uruchamia pakiety aplikacji z funkcją rozpoznawanie elementu równorzędnego te pakiety relacje, strategii uaktualniania i zasady zabezpieczeń. Nadzorca siedliska konfiguruje i zarządza aplikacji niezależnie od środowiska jest obecny.
-- Ekosystem siedliska udostępnia usługę kompilacji, która przyjmuje plan kompilacji siedliska, tworzy pakiet siedliska i publikuje go do magazynu.
+Pakiety platformy habitat zawierają wszystko, co aplikacja musi zostać uruchomiony przez cały cykl życia. Składniki podstawowe firmy habitat to:
+- Format pakowania — aplikacje w pakiecie Habitat są niepodzielne, niezmienne i inspekcji.
+- Pakiety aplikacji w Habitat nadzorca jest uruchamiany przy użyciu rozpoznawania elementów równorzędnych te pakiety relacje, strategii uaktualniania i zasad zabezpieczeń. Nadzorca Habitat konfiguruje i zarządza aplikacji dla dowolnego środowiska jest obecny.
+- Ekosystem platformy Habitat także przyjmuje planu platformy Habitat kompilacji, który tworzy pakiet Habitat i publikuje go do magazynu usługi kompilacji.
 
-## <a name="run-any-application-anywhere"></a>Uruchamiać aplikacje w dowolnym miejscu
-Siedliska umożliwia uruchamianie aplikacji zostały zmodyfikowane w dowolnym środowisku środowiska wykonawczego. Obejmuje on wszystko, od zera i maszyn wirtualnych do kontenerów (na przykład Docker), systemy zarządzania klastrem (na przykład Mesosphere lub Kubernetes) i systemów PaaS (na przykład kluczową Foundry chmury).
+## <a name="run-any-application-anywhere"></a>Uruchamianie dowolnej aplikacji w dowolnym miejscu
+Za pomocą systemu Habitat aplikacje mogą być uruchamiane zostały zmodyfikowane w dowolnym środowisku uruchomieniowym. Aplikacja może być cokolwiek z komputerów bez systemu operacyjnego i maszyn wirtualnych do kontenerów (takich jak platforma Docker), systemów zarządzania klastrami (na przykład Mesosphere lub Kubernetes) i systemy PaaS (takie jak Pivotal Cloud Foundry).
 
 ## <a name="easily-port-legacy-applications"></a>Łatwo portu starszych aplikacji
-W przypadku starszych aplikacji są ujęte w pakiecie siedliska, aplikacje są niezależne od środowiska, dla których pierwotnie zostały zaprojektowane. Pakiety szybko mogą zostać przeniesione do bardziej nowoczesnych środowiskach, takich jak chmury lub kontenery. Ponadto ponieważ pakiety siedliska standard na zewnątrz połączonej interfejsu, starsze aplikacje staną się znacznie ułatwia zarządzanie.
+Gdy starsze aplikacje zostaną opakowane w pakiecie Habitat, aplikacje są niezależne od środowiska, dla której zostały pierwotnie zaprojektowane. Pakietów można szybko przenosić do bardziej nowoczesnych środowiskach chmury lub kontenerów. Ponadto ponieważ pakiety platformy Habitat standardowe i na zewnątrz interfejs umożliwiający dostęp do Internetu, starsze aplikacje stają się znacznie łatwiejsze w zarządzaniu.
 
-## <a name="improve-the-container-experience"></a>Udoskonalanie kontenera
-Siedliska zmniejsza się złożoność zarządzania kontenerami w środowiskach produkcyjnych. Dzięki automatyzacji konfiguracji aplikacji w kontenerze, siedliska adresów kroju deweloperzy wyzwania podczas przenoszenia aplikacji kontenera ze środowisk Programowanie w środowisku produkcyjnym.
+## <a name="improve-the-container-experience"></a>Ulepszenia kontenera
+Habitat zmniejsza złożoność zarządzania kontenerami w środowiskach produkcyjnych. Dzięki automatyzacji konfiguracji aplikacji w kontenerze, Habitat adresów twarzy deweloperów trudności podczas przenoszenia aplikacji opartych na kontenerach z środowisk deweloperskich w środowisku produkcyjnym.
 
-## <a name="integrate-into-the-chef-devops-workflow"></a>Integrowanie opracowywania oprogramowania Chef przepływu pracy
-Projekt siedliska jest sponsor Chef. Siedliska wykorzystuje środowisko głębokiego Chef firmy przy użyciu automatyzacji infrastruktury w celu przełączenia możliwości automatyzacji Niespotykana aplikacji. Chef będzie oferować komercyjnej pomocy technicznej dla siedliska i zapewnić bezproblemową integrację między siedlisko i dostarczania Chef można całkowicie zautomatyzować cyklu wersji aplikacji od projektowania do wdrożenia.
+## <a name="integrate-into-the-chef-devops-workflow"></a>Integrowanie przepływ pracy DevOps programu Chef
+Projekt platformy Habitat to sponsor Chef. Habitat wykorzystuje doświadczenie związane z programem Chef z automatyzację infrastruktury, aby udostępnić możliwości automatyzacji niezrównaną na potrzeby aplikacji. Program chef będzie oferty komercyjnej pomocy technicznej dla platformy Habitat i zapewnić bezproblemową integrację między Habitat i dostarczanie Chef, aby zautomatyzować cykl wersji aplikacji, od projektowania do wdrożenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Utwórz maszynę wirtualną systemu Windows na platformie Azure przy użyciu Chef](/azure/virtual-machines/windows/chef-automation)
+* [Utwórz maszynę wirtualną Windows na platformie Azure przy użyciu programu Chef](/azure/virtual-machines/windows/chef-automation)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: e91ca12c06a1582b9bb715031a9c379b1a47b04b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713463"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054949"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozowanie typowe scenariusze za pomocą usługi Service Fabric
 
@@ -140,7 +140,7 @@ Sprawdź poniższe linki umożliwiają uzyskanie pełną listę liczników wydaj
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../azure-monitor/app/alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
-* [Inteligentne wykrywanie w usłudze Application Insights](../application-insights/app-insights-proactive-diagnostics.md) wykonuje aktywnego analizy telemetrii są wysyłane do sztucznej Inteligencji w celu otrzymania potencjalnych problemów z wydajnością
+* [Inteligentne wykrywanie w usłudze Application Insights](../azure-monitor/app/proactive-diagnostics.md) wykonuje aktywnego analizy telemetrii są wysyłane do sztucznej Inteligencji w celu otrzymania potencjalnych problemów z wydajnością
 * Dowiedz się więcej o usłudze Log Analytics [alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
 * W przypadku klastrów w środowisku lokalnym usługa Log Analytics oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Log Analytics. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z usługi Log Analytics przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md)
 * Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics

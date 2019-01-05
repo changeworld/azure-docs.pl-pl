@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: twhitney
-ms.openlocfilehash: 07c227c198166254eb130604685a4ba5884b783a
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5432266bd042b527156852aaf30fef09f3bf8c72
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299881"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053300"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -193,6 +193,11 @@ Określ mapowanie portów w odpowiednim formacie. W tym artykule, musisz podać 
    </ServiceManifestImport>
 ``` 
 
+Zalecamy zaszyfrowanie hasła repozytorium, zapoznaj się [ Zarządzanie zaszyfrowane klucze tajne w aplikacji usługi Service Fabric](service-fabric-application-secret-management.md)
+
+### <a name="configure-cluster-wide-credentials"></a>Skonfiguruj poświadczenia całego klastra
+Zapoznaj się [w tej dokumentacji](
+service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 ## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
 W wersji środowiska uruchomieniowego 6.3 izolacji maszyny Wirtualnej jest obsługiwana dla kontenerów systemu Linux, w tym samym obsługuje dwa tryby izolacji dla kontenerów: procesu oraz funkcji Hyper-v. W trybie izolacji funkcji Hyper-v jądra są odizolowane dla każdego kontenera i hosta kontenera. Izolacji funkcji Hyper-v jest implementowany przy użyciu [wyczyść kontenery](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Tryb izolacji można określić dla klastrów systemu Linux w programie `ServicePackageContainerPolicy` elementu w pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Ustawieniem domyślnym jest w trybie izolacji procesu. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
@@ -210,7 +215,7 @@ W wersji środowiska uruchomieniowego 6.3 izolacji maszyny Wirtualnej jest obsł
 
 
 ## <a name="configure-resource-governance"></a>Konfigurowanie zarządzania zasobami
-[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity można ustawić dla następujących zasobów: Memory, MemorySwap, CpuShares (CPU — względna waga), MemoryReservationInMB, BlkioWeight (BlockIO — względna waga). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
+[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity zasobów można ustawić dla następujących zasobów: Pamięć, MemorySwap, CpuShares (CPU — Względna waga), MemoryReservationInMB, BlkioWeight (blockio — Względna waga). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
 
 ```xml
 <ServiceManifestImport>

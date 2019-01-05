@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728350"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049966"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
@@ -71,7 +71,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 
 
 ## <a name="application-insights-workbooks"></a>Application Insights skoroszytów
-[Skoroszyty](../application-insights/app-insights-usage-workbooks.md) są interaktywne dokumentów, które zawierają szczegółowe informacje w danych, analizy i współpracy w ramach zespołu. Szczegółowe przykłady, w którym skoroszyty są przydatne rozwiązywania problemów przewodniki i postmortem zdarzenia.
+[Skoroszyty](../azure-monitor/app/usage-workbooks.md) są interaktywne dokumentów, które zawierają szczegółowe informacje w danych, analizy i współpracy w ramach zespołu. Szczegółowe przykłady, w którym skoroszyty są przydatne rozwiązywania problemów przewodniki i postmortem zdarzenia.
 
 ![Skoroszyt](media/visualizations/workbook.png)
 
@@ -140,7 +140,7 @@ Dane w dzienniku i dane metryk w usłudze Azure Monitor dostęp za pośrednictwe
 - Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](platform/data-collection.md).
 - Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
 - Dowiedz się więcej o [widoków w usłudze Azure Monitor](platform/view-designer.md).
-- Dowiedz się więcej o [skoroszytów w usłudze Application Insights](../application-insights/app-insights-usage-workbooks.md).
+- Dowiedz się więcej o [skoroszytów w usłudze Application Insights](../azure-monitor/app/usage-workbooks.md).
 - Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../azure-monitor/platform/powerbi.md).
 - Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../azure-monitor/platform/grafana-plugin.md).
 

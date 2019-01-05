@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 50f5cf48838e5578dc94c61b4463f94e76f886e6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 92a3caefaa0185aa4bd86fbf66d6279e49b0f5c1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028591"
+ms.locfileid: "54053238"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
 
@@ -166,7 +166,7 @@ Są obsługiwane w następujących środowiskach:
 
 ### <a name="configure-snapshot-collection-for-other-net-applications"></a>Konfigurowanie zbierania migawek dla innych aplikacji .NET
 
-1. Jeśli aplikacja nie jest już za pomocą usługi Application Insights, zacznij od [włączenie usługi Application Insights i ustawić dla klucza Instrumentacji](../../application-insights/app-insights-windows-desktop.md).
+1. Jeśli aplikacja nie jest już za pomocą usługi Application Insights, zacznij od [włączenie usługi Application Insights i ustawić dla klucza Instrumentacji](../../azure-monitor/app/windows-desktop.md).
 
 2. Dodaj [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
 
@@ -478,4 +478,4 @@ Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub z
 
 * [Ustaw punkty przyciągania w kodzie](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) można pobrać migawek bez oczekiwania na wyjątek.
 * [Diagnozowanie wyjątków w aplikacjach sieci web](../../azure-monitor/app/asp-net-exceptions.md) wyjaśnia, jak ustawienie widoczności więcej wyjątków usługi Application Insights.
-* [Wykrywanie inteligentne](../../application-insights/app-insights-proactive-diagnostics.md) automatycznie wykrywa anomalie wydajność.
+* [Wykrywanie inteligentne](../../azure-monitor/app/proactive-diagnostics.md) automatycznie wykrywa anomalie wydajność.

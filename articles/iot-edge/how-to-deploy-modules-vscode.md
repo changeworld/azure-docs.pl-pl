@@ -4,18 +4,18 @@ description: Użyj programu Visual Studio Code, aby wdrożyć moduły na urządz
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 212f103a356dc3663795a5e5453869c99da3fff9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 345b8d0ab2a45e87ccc3465c31dbe53861154b70
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100824"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054138"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Wdrażanie usługi Azure IoT Edge modułów z programu Visual Studio Code
 
@@ -28,7 +28,7 @@ W tym artykule pokazano, jak utworzyć manifest wdrożenia JSON, a następnie u�
 * [Usługi IoT hub](../iot-hub/iot-hub-create-through-portal.md) w subskrypcji platformy Azure. 
 * [Urządzenie usługi IoT Edge](how-to-register-device-portal.md) za pomocą zainstalowanego środowiska uruchomieniowego usługi IoT Edge. 
 * [Program Visual Studio Code](https://code.visualstudio.com/)
-* [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
+* [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) for Visual Studio Code. 
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 

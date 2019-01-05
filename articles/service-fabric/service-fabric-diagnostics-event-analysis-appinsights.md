@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001774"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053623"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights
 
@@ -127,4 +127,4 @@ Klikając **Analytics** spowoduje przejście do portalu analiza usługi Applicat
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../azure-monitor/app/alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
-* [Inteligentne wykrywanie w usłudze Application Insights](../application-insights/app-insights-proactive-diagnostics.md) wykonuje aktywnego analizę danych telemetrycznych wysyłanych do usługi Application Insights, aby ostrzec o potencjalne problemy z wydajnością
+* [Inteligentne wykrywanie w usłudze Application Insights](../azure-monitor/app/proactive-diagnostics.md) wykonuje aktywnego analizę danych telemetrycznych wysyłanych do usługi Application Insights, aby ostrzec o potencjalne problemy z wydajnością

@@ -1,5 +1,5 @@
 ---
-title: 'Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncTools | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Dokumentacja programu PowerShell ADSyncTools | Dokumentacja firmy Microsoft'
 description: Ten dokument zawiera informacje dotyczące modułu programu ADSyncTools.psm1 PowerShell.
 author: billmath
 manager: mtillman
@@ -8,14 +8,14 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 586f3c81fad79f49b3506b0bd84a4f7b218d8605
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426489"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054967"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncTools
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncTools
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncTools.psm1, dostępnej w programie Azure AD Connect.
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Wyczyść ADSyncToolsConsistencyGuid
@@ -470,7 +470,7 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>STRESZCZENIE
-Pobieranie historii przebiegu Podłączaj usługi AAD
+Pobierz AAD Connect historii uruchamiania
 
 ### <a name="syntax"></a>SKŁADNIA
 
@@ -479,7 +479,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja, która zwraca historii uruchamiania Podłączaj usługi AAD w formacie XML
+Funkcja, która zwraca AAD Connect historii uruchamiania w formacie XML
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -526,7 +526,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja historii uruchamiania usługi AAD Konstruktor zapytań i eksportuje wszystkich użytkowników zgłaszających błąd: "atrybut SourceAnchor został zmieniony."
+Funkcja zapytania usługi AAD Connect historii uruchamiania i eksportuje wszystkich użytkowników zgłaszających błąd: "Atrybut SourceAnchor został zmieniony."
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -593,7 +593,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>OPIS
-Generuje plik wszystkim użytkownikom usługi Azure AD Synchronized, zawierającego wartość ImmutableID w formacie identyfikatora GUID wymagania: moduł programu PowerShell MSOnline
+Generuje plik wszystkim użytkownikom usługi Azure AD Synchronized, zawierającego wartość ImmutableID w formacie identyfikatora GUID wymagania: Moduł programu PowerShell MSOnline
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -719,7 +719,7 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 Ten skrypt pobiera wszystkie obiekty z docelowej jednostki organizacyjnej w domenie usługi Active Directory — filtrowane według klasy obiektu (komputer/użytkownika) i usuwa wszystkie certyfikaty wygasłe obecny w atrybucie certyfikatu użytkownika.
 Domyślnie (tryb BackupOnly) tylko wykona kopię zapasową wygasłe certyfikaty, które do pliku, a nie wszystkie zmiany w AD.
 Jeśli używasz - BackupOnly $false, wówczas każdy obecny w atrybucie UserCertificate dla tych obiektów wygasł certyfikat zostanie usunięty z usługi AD, po której są kopiowane do pliku.
-Każdy certyfikat będzie można utworzyć kopie zapasowe rozdzielonych filename: ObjectClass_ObjectGUID_CertThumprint.cer skrypt utworzy plik dziennika w formacie CSV, wyświetlanie wszystkich użytkowników z certyfikatami albo jest nieprawidłowa lub wygasła, włączając rzeczywiste akcję podejmowaną ( Pominięto/wyeksportowany/usunięte).
+Każdy certyfikat będzie można utworzyć kopie zapasowe rozdzielonych nazwa pliku: ObjectClass_ObjectGUID_CertThumprint.cer skrypt utworzy plik dziennika w formacie CSV Pokazywanie wszystkich użytkowników z certyfikatami, które są albo nieprawidłowa lub wygasła, włączając rzeczywiste akcję podejmowaną (pomijane wyeksportowane/usunięte).
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -1227,7 +1227,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>OPIS
-Aktualizacji użytkowników z nową wartością ConsistencyGuid (ImmutableId) pobrane z ConsistencyGuid raport ta funkcja obsługuje przełącznik WhatIf Uwaga: raport ConsistencyGuid muszą zostać zaimportowane z Demiliter kartę
+Aktualizuje użytkowników przy użyciu nowej wartości ConsistencyGuid (ImmutableId) wykonane z tego raportu ConsistencyGuid obsługuje funkcję przełącznika WhatIf Uwaga: Raport ConsistencyGuid muszą zostać zaimportowane z Demiliter kartę
 
 ### <a name="examples"></a>PRZYKŁADY
 

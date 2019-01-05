@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.component: metrics
-ms.openlocfilehash: a5e38f1400b99c6030799121d37721c26e16649c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17f82eb0940d0e1baca23a882ca301804fbd00dd
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721142"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054813"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
 W tym artykule pokazano, jak za pomocą [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurowania alertów dotyczących metryk platformy Azure. Pozwala na automatyczne konfigurowanie alertów dotyczących zasobów podczas jego tworzenia, aby upewnić się, że wszystkie zasoby są prawidłowo monitorowane.
@@ -404,4 +404,4 @@ Alert w szablonie usługi Resource Manager przydaje się w większości przypadk
 ## <a name="next-steps"></a>Następne kroki
 * [Dowiedz się więcej o alertach](alerts-overview.md)
 * [Dodaj ustawienia diagnostyczne](../../azure-monitor/platform/diagnostic-logs-stream-template.md) do szablonu usługi Resource Manager
-
+* Składnię JSON i właściwości, zobacz [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) odwołanie do szablonu.

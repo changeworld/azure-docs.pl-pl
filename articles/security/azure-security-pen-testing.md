@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 4096cf3a44b7c32ed94fdd2ef5dcbad9db08a386
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3f7d44a2a34f6b52c2229cf6491e99c65d5bb525
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054155"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052993"
 ---
 # <a name="pen-testing"></a>Testowanie penetracyjne
 Jest jedną z korzyści z używania platformy Azure do testowania aplikacji i wdrażania, można szybko uzyskać środowisk utworzonych.  Nie trzeba martwić się o tworzenia zapotrzebowania, pobieranie i "pracy i zestawianie" sprzętu w środowisku lokalnym.
@@ -40,7 +40,7 @@ Od 15 czerwca 2017 r. firmy Microsoft nie wymaga już wstępnej akceptacji do pr
 Standardowe testy, które można wykonać obejmują:
 
 * Testy w punktach końcowych, aby odkryć [Otwórz sieci Web aplikacji Security Project (OWASP) top 10 luk w zabezpieczeniach](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-* [Testowanie argumentu rozmycie](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) punktów końcowych sieci
+* [Testowanie argumentu rozmycie](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) punktów końcowych sieci
 * [Skanowanie portów](https://en.wikipedia.org/wiki/Port_scanner) punktów końcowych sieci
 
 Jeden typ testu, który nie może wykonać jest dowolnym rodzaju [przeprowadzenie ataku typu "odmowa usługi" (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) ataku. Obejmuje to inicjowanie ataków DoS, samego lub wykonywania powiązanych testów, które mogą określić, pokazują lub symulacji wszelkiego rodzaju atak DoS.

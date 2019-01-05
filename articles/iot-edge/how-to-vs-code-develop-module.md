@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/14/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb3d19d35a15d5476594948b035a39ae703f1c3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5eb896978e9b04a6ad87fe1f669d9155e9cc1433
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551446"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053215"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów dla usługi Azure IoT Edge
 
@@ -31,7 +31,7 @@ Dla modułów napisanych w C#, Node.js lub Java, istnieją dwa sposoby do debugo
 
 Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/) pierwszy, a następnie dodaj następujące rozszerzenia:
 
-- [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
+- [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Rozszerzenia platformy docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Visual Studio rozszerzenia specyficznych dla języka opracowywano w:
   - C#, w tym usługi Azure Functions: [Rozszerzenie języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
@@ -73,7 +73,7 @@ Jeśli nie opracowujesz modułu w języku C, należy również oparta na środow
 
 ## <a name="create-a-new-solution-template"></a>Utwórz nowy szablon rozwiązania
 
-Poniższe kroki pokazują jak utworzyć moduł usługi IoT Edge w języku preferowanym rozwoju (w tym usługi Azure Functions, napisany w C#) przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge. Możesz rozpocząć tworzenie rozwiązania, a następnie generowania pierwszego modułu w ramach tego rozwiązania. Każdy roztwór może zawierać wiele modułów.
+Poniższe kroki pokazują jak utworzyć moduł usługi IoT Edge w języku preferowanym rozwoju (w tym usługi Azure Functions, napisany w C#) przy użyciu programu Visual Studio Code i narzędzi usługi Azure IoT. Możesz rozpocząć tworzenie rozwiązania, a następnie generowania pierwszego modułu w ramach tego rozwiązania. Każdy roztwór może zawierać wiele modułów.
 
 1. Wybierz **widoku** > **polecenia palety**.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: d1214df922e8e656ba2ff566571d878b0031fea9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000261"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052040"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -81,9 +81,9 @@ Jeśli urządzenia nie można użyć zestawów SDK urządzeń, nadal można poł
 
   Aby uzyskać więcej informacji na temat generowania tokenów sygnatur dostępu Współdzielonego, zobacz sekcję urządzenia [tokenów zabezpieczających za pomocą usługi IoT Hub][lnk-sas-tokens].
 
-  Podczas testowania, możesz również użyć dla wielu platform [rozszerzenie Azure IoT Hub Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej: rozszerzenie Azure IoT Toolkit) lub [Device Explorer] [ lnk-device-explorer]narzędzie, aby szybko wygenerować token sygnatury dostępu Współdzielonego, który można skopiować i wkleić do własnego kodu:
+  Podczas testowania, możesz również użyć dla wielu platform [narzędzia usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) lub [Device Explorer] [ lnk-device-explorer] narzędzie, aby szybko wygenerować token sygnatury dostępu Współdzielonego, który można skopiować i Wklej swój kod:
 
-Aby uzyskać zestaw narzędzi usługi Azure IoT Hub:
+Aby uzyskać narzędzia usługi Azure IoT:
 
   1. Rozwiń **AZURE IOT HUB DEVICES** kartę w lewym dolnym rogu programu Visual Studio Code.
   2. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **generowania tokenu sygnatury dostępu Współdzielonego dla urządzenia**.

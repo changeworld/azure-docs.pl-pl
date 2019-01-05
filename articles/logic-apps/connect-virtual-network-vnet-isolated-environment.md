@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/06/2018
-ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 41ba0816dde63bc611dcb5be544609b88dfe9158
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997536"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052647"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Połączyć się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps za pośrednictwem środowiska usług integracji (ISE)
 
@@ -103,15 +103,15 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    ![Podaj szczegóły środowiska](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Właściwość | Wymagane | Wartość | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku | 
    | **Grupa zasobów** | Yes | <*Azure-resource nazwa_grupy*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
    | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska | 
    | **Lokalizacja** | Yes | <*Region platformy Azure — centrum danych*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska | 
    | **Dyspozycyjność** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu środowiska ISE | 
-   | **Sieć wirtualna** | Yes | <*Azure — — nazwa sieci wirtualnej —*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji, upewnij się, że już [Konfigurowanie kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps](#vnet-access). | 
-   | **Podsieci** | Yes | <*Zakres adresów IP*> | ISE wymaga czterech *pusty* podsieci. Te podsieci są undelegated do dowolnej usługi i są używane do tworzenia zasobów w danym środowisku. Możesz *nie można zmienić* te zakresy adresów IP po utworzeniu środowiska. <p><p>Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet). Każda podsieć musi spełniać następujące kryteria: <p>— Nie może istnieć w tym samym zakresie adresów dla wybranej sieci wirtualnej ani żadnych innych prywatnych adresów IP gdzie sieć wirtualna jest połączona. <br>-Używa nazwy, która nie zaczyna się od numeru lub łącznik. <br>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>— Wymagają przestrzeń adresów klasy B. <br>-Zawiera `/27`. Na przykład w każdej podsieci, w tym miejscu określa zakres 32-bitowy adres: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, i `10.0.0.96/27`. <br>-Musi być pusta. |
+   | **Sieć wirtualna** | Yes | <*Azure — — nazwa sieci wirtualnej —*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji, upewnij się, że już [Konfigurowanie kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps](#vnet-access). | 
+   | **Podsieci** | Yes | <*Zakres adresów IP*> | ISE wymaga czterech *pusty* podsieci. Te podsieci są undelegated do dowolnej usługi i są używane do tworzenia zasobów w danym środowisku. Możesz *nie można zmienić* te zakresy adresów IP po utworzeniu środowiska. <p><p>Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet). Każda podsieć musi spełniać następujące kryteria: <p>-Używa nazwy, która nie zaczyna się od numeru lub łącznik. <br>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>— Wymagają przestrzeń adresów klasy B. <br>-Zawiera `/27`. Na przykład w każdej podsieci, w tym miejscu określa zakres 32-bitowy adres: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, i `10.0.0.96/27`. <br>-Musi być pusta. |
    |||||
 
    <a name="create-subnet"></a>
@@ -120,7 +120,7 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    1. W obszarze **podsieci** wybierz **konfigurację podsieci Zarządzaj**.
 
-      ![Zarządzanie konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Zarządzaj konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
 
    1. Na **podsieci** okienku wybierz **podsieci**.
 
@@ -129,7 +129,7 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
    1. Na **Dodaj podsieć** okienku, podaj te informacje.
 
       * **Nazwa**: Nazwa podsieci
-      * **Zakres adresów (blok CIDR)**: zakres swoje podsieci w sieci wirtualnej i w formacie CIDR
+      * **Zakres adresów (blok CIDR)**: Zakres swoje podsieci w sieci wirtualnej i w formacie CIDR
 
       ![Dodaj szczegóły podsieci](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 

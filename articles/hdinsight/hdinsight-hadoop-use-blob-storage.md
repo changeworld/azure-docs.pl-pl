@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 7513ce90437ebf3d06d4ceb0ea5a83610db5f7dd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/04/2019
+ms.openlocfilehash: a94f55449535faf0f4d061e3368f408843361063
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742698"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051972"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
-Aby analizować dane w klastrze HDInsight, można przechowywać dane w usłudze Azure Storage [Azure Data Lake Storage ogólnego 1 / usługi Azure Data Lake Storage Gen2] i / lub. Obie opcje magazynowania pozwalają bezpiecznie usuwać klastry usługi HDInsight używane do obliczeń bez utraty danych użytkownika.
+Aby analizować dane w klastrze HDInsight, można przechowywać danych albo w [usługi Azure Storage](../storage/common/storage-introduction.md), [usługi Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[usługi Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md), lub obu. Obie opcje magazynowania pozwalają bezpiecznie usuwać klastry usługi HDInsight używane do obliczeń bez utraty danych użytkownika.
 
 Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra HDInsight w usłudze Azure Storage jako domyślny system plików można wskazać kontener obiektów blob lub usługi HDInsight 3.6, można wybrać usługę Azure Storage lub Azure Data Lake Storage ogólnego 1 / usługi Azure Data Lake Storage Gen 2 jako domyślne pliki system z pewnymi wyjątkami. Aby uzyskać możliwość wykorzystania Data Lake Storage Gen 1 jako domyślnej i połączonego magazynu, zobacz [dostępność dla klastra HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
 
@@ -31,13 +31,16 @@ Usługa Azure Storage to niezawodne rozwiązanie ogólnego przeznaczenia, które
 
 | Typ konta magazynu | Obsługiwane usługi | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane |
 |----------------------|--------------------|-----------------------------|------------------------|
-| Ogólnego przeznaczenia w wersji 2   | Obiekt blob               | Standardowa (Standard)                    | Gorący, chłodny Archive3    |
+| Ogólnego przeznaczenia w wersji 2   | Obiekt blob               | Standardowa (Standard)                    | Gorąca, chłodna, archiwum *    |
 | Ogólnego przeznaczenia w wersji 1   | Obiekt blob               | Standardowa (Standard)                    | ND                    |
-| Blob Storage         | Obiekt blob               | Standardowa (Standard)                    | Gorący, chłodny Archive3    |
+| Blob Storage         | Obiekt blob               | Standardowa (Standard)                    | Gorąca, chłodna, archiwum *    |
 
 Używanie domyślnego kontenera obiektów blob do przechowywania danych firmowych nie jest zalecane. Dobrym rozwiązaniem jest usunięcie domyślnego kontenera obiektów blob po każdym użyciu, aby obniżyć koszty magazynowania. Należy pamiętać, że domyślny kontener zawiera dzienniki aplikacji i systemu. Koniecznie pobierz dzienniki przed usunięciem kontenera.
 
 Udostępnianie pojedynczego kontenera obiektów blob jako domyślnego systemu plików dla wielu klastrów nie jest obsługiwane.
+ 
+ > [!NOTE]  
+ > Warstwa dostępu archiwum jest w trybie offline warstwę, która ma kilka opóźnieniem godzinę i nie jest zalecane do użycia z usługą HDInsight. Aby uzyskać więcej informacji, zobacz <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier">warstwę dostępu archiwum</a>.
 
 ## <a name="hdinsight-storage-architecture"></a>Architektura magazynu usługi HDInsight
 Na poniższym diagramie przedstawiono schemat architektury magazynu usługi HDInsight dotyczący korzystania z usługi Azure Storage:

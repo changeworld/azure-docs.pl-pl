@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 14dd5eef90ff4e6b3281f5a1337b9b59796277e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a68b312d4b2a35bdaf2f2973c403c750645352b9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018759"
+ms.locfileid: "54054935"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET.
 
@@ -84,7 +84,7 @@ W oknie wyszukiwania usługi Visual Studio Application Insights zobaczysz dane z
 > [!Tip]
 > Jeśli nie są wyświetlane żadne dane, upewnij się, że zakres czasu jest poprawny, a następnie kliknij ikonę wyszukiwania.
 
-[Dowiedz się więcej o narzędziach usługi Application Insights w programie Visual Studio](../../application-insights/app-insights-visual-studio.md).
+[Dowiedz się więcej o narzędziach usługi Application Insights w programie Visual Studio](../../azure-monitor/app/visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Wyświetlanie telemetrii w portalu sieci Web
@@ -106,7 +106,7 @@ Opublikuj aplikacje na serwerze IIS lub na platformie Azure. Obejrzyj [transmisj
 
 Dane telemetryczne są gromadzone w portalu Application Insights, w którym można monitorować metryki, przeszukiwać telemetrię i konfigurować [pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md). Można także użyć zaawansowanego [języka zapytań usługi Log Analytics](https://aka.ms/LogAnalyticsLanguage) do przeanalizowania użycia i wydajności lub znalezienia określonych zdarzeń.
 
-Można również analizować telemetrię w programie [Visual Studio](../../application-insights/app-insights-visual-studio.md) za pomocą narzędzi, takich jak wyszukiwanie diagnostyczne i [trendy](../../application-insights/app-insights-visual-studio-trends.md).
+Można również analizować telemetrię w programie [Visual Studio](../../azure-monitor/app/visual-studio.md) za pomocą narzędzi, takich jak wyszukiwanie diagnostyczne i [trendy](../../azure-monitor/app/visual-studio-trends.md).
 
 > [!NOTE]
 > Jeśli Twoja aplikacja wysyła taką ilość telemetrii, że bliskie jest osiągnięcie [limitów ograniczania przepustowości](../../azure-monitor/app/pricing.md#limits-summary), włączone zostanie [próbkowanie](../../azure-monitor/app/sampling.md) automatyczne. Próbkowania powoduje zmniejszenie ilości telemetrii wysyłanych z aplikacji przy jednoczesnym zachowaniu skorelowanych danych w celach diagnostycznych.
@@ -147,14 +147,14 @@ Istnieją jeszcze inne tematy, które warto przejrzeć, jeśli interesują Cię 
 
 ### <a name="analysis"></a>Analiza
 
-* **[Praca z usługą Application Insights w programie Visual Studio](../../application-insights/app-insights-visual-studio.md)**<br/>Zawiera informacje o debugowaniu przy użyciu telemetrii, wyszukiwaniu diagnostycznym i przechodzeniu do szczegółów kodu.
+* **[Praca z usługą Application Insights w programie Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Zawiera informacje o debugowaniu przy użyciu telemetrii, wyszukiwaniu diagnostycznym i przechodzeniu do szczegółów kodu.
 * **[Praca z portalem usługi Application Insights](../../azure-monitor/app/app-insights-dashboards.md)**<br/> Zawiera informacje o pulpitach nawigacyjnych, zaawansowanych narzędziach diagnostycznych i analitycznych, alertach, mapie zależności aplikacji na żywo oraz eksportowaniu telemetrii.
 * **[Analiza](../../azure-monitor/log-query/get-started-portal.md)** — zaawansowany język zapytań.
 
 ### <a name="alerts"></a>Alerty
 
 * [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md): Utwórz testy, aby upewnić się, że Twoja witryna jest widoczna w sieci web.
-* [Inteligentne diagnostyki](../../application-insights/app-insights-proactive-diagnostics.md): Te testy są uruchamiane automatycznie, dzięki czemu nie trzeba nic robić, aby je skonfigurować. Ta funkcja powiadomi Cię, jeśli w aplikacji występuje nietypowa liczba nieudanych żądań.
+* [Inteligentne diagnostyki](../../azure-monitor/app/proactive-diagnostics.md): Te testy są uruchamiane automatycznie, dzięki czemu nie trzeba nic robić, aby je skonfigurować. Ta funkcja powiadomi Cię, jeśli w aplikacji występuje nietypowa liczba nieudanych żądań.
 * [Alerty metryki](../../azure-monitor/app/alerts.md): Ustaw je w celu otrzymania ostrzeżenia, gdy Metryka przekroczy próg. Możesz je ustawić dla metryk niestandardowych, które zakodujesz w aplikacji.
 
 ### <a name="automation"></a>Automatyzacja

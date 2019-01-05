@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 1c657fd7b3059dcf46a371b133a5d078e02f0599
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014203"
+ms.locfileid: "54054292"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Działanie internetowe w usłudze Azure Data Factory
-Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie. 
+Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie.
 
 ## <a name="syntax"></a>Składnia
 
 ```json
-{  
+{
    "name":"MyWebActivity",
    "type":"WebActivity",
-   "typeProperties":{  
+   "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
-      "headers":{  
+      "headers":{
          "Content-Type":"application/json"
       },
-      "authentication":{  
-         "type":"ClientCertificate",  
+      "authentication":{
+         "type":"ClientCertificate",
          "pfx":"****",
          "password":"****"
       },
-      "datasets":[  
-         {  
+      "datasets":[
+         {
             "referenceName":"<ConsumedDatasetName>",
             "type":"DatasetReference",
-            "parameters":{  
+            "parameters":{
                ...
             }
          }
       ],
-      "linkedServices":[  
-         {  
+      "linkedServices":[
+         {
             "referenceName":"<ConsumedLinkedServiceName>",
             "type":"LinkedServiceReference"
          }
@@ -92,10 +92,10 @@ W poniższej tabeli przedstawiono wymagania dotyczące zawartości JSON:
 Jeśli nie jest wymagane uwierzytelnianie, nie ma właściwości "uwierzytelnianie".
 
 ### <a name="basic"></a>Podstawowa
-Określ nazwę użytkownika i hasło do użycia z uwierzytelnianiem podstawowym. 
+Określ nazwę użytkownika i hasło do użycia z uwierzytelnianiem podstawowym.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"Basic",
    "username":"****",
    "password":"****"
@@ -103,12 +103,12 @@ Określ nazwę użytkownika i hasło do użycia z uwierzytelnianiem podstawowym.
 ```
 
 ### <a name="client-certificate"></a>Certyfikat klienta
-Określ zawartość algorytmem Base64 pliku PFX i hasło. 
+Określ zawartość algorytmem Base64 pliku PFX i hasło.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"ClientCertificate",
-   "pfx":"****",   
+   "pfx":"****",
    "password":"****"
 }
 ```
@@ -125,7 +125,7 @@ Określ identyfikator uri zasobu, dla którego zostanie żądana tokenu dostępu
 ```
 
 ## <a name="request-payload-schema"></a>Schemat ładunku żądania
-Korzystając z metody POST/PUT właściwości treści reprezentuje ładunek, które są wysyłane do punktu końcowego. Usługi połączone i zestawy danych można przekazać jako część ładunku. Poniżej przedstawiono schematu dla ładunku: 
+Korzystając z metody POST/PUT właściwości treści reprezentuje ładunek, które są wysyłane do punktu końcowego. Usługi połączone i zestawy danych można przekazać jako część ładunku. Poniżej przedstawiono schematu dla ładunku:
 
 ```json
 {
@@ -144,11 +144,11 @@ Korzystając z metody POST/PUT właściwości treści reprezentuje ładunek, kt�
             }
         }]
     }
-} 
+}
 ```
 
 ## <a name="example"></a>Przykład
-W tym przykładzie działanie internetowe w potoku wywołuje punktu końcowego REST. Przekazuje on połączonej usługi Azure SQL i zestaw danych usługi Azure SQL do punktu końcowego. Punkt końcowy REST używa parametrów połączenia usługi Azure SQL do łączenia się z serwerem Azure SQL i zwraca nazwę wystąpienia programu SQL server. 
+W tym przykładzie działanie internetowe w potoku wywołuje punktu końcowego REST. Przekazuje on połączonej usługi Azure SQL i zestaw danych usługi Azure SQL do punktu końcowego. Punkt końcowy REST używa parametrów połączenia usługi Azure SQL do łączenia się z serwerem Azure SQL i zwraca nazwę wystąpienia programu SQL server.
 
 ### <a name="pipeline-definition"></a>Definicji potoku
 
@@ -242,7 +242,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
+Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory:
 
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 4663cb467d7d1d864425f4899c829b6618b9547c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584466"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051700"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Użyj wystąpień RDMA lub procesora GPU w pulach usługi Batch
 
@@ -100,7 +100,7 @@ Aby skonfigurować wyspecjalizowane rozmiar maszyny Wirtualnej w puli usługi Ba
 
 Aby uruchamiać aplikacje CUDA w puli, węzłów kontrolera sieci Windows, musisz zainstalować sterowniki procesora GPU NVDIA. Następujące przykładowe Użyj pakietu aplikacji, aby zainstalować sterowniki procesora GPU firmy NVIDIA. Możesz wybrać tę opcję, jeśli obciążenie jest zależna od określonej wersji sterowników procesora GPU.
 
-1. Pobierz pakiet instalacyjny dla sterowników procesora GPU w systemie Windows Server 2016 z [witryny sieci Web firmy NVIDIA](http://us.download.nvidia.com/Windows/) — na przykład [wersji 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Zapisz plik lokalnie przy użyciu krótką nazwę, takich jak *GPUDriverSetup.exe*.
+1. Pobierz pakiet instalacyjny dla sterowników procesora GPU w systemie Windows Server 2016 z [witryny sieci Web firmy NVIDIA](https://www.nvidia.com/Download/index.aspx) — na przykład [wersji 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Zapisz plik lokalnie przy użyciu krótką nazwę, takich jak *GPUDriverSetup.exe*.
 2. Utwórz plik zip pakietu.
 3. Przekaż pakiet do konta usługi Batch. Aby uzyskać instrukcje, zobacz [pakiety aplikacji](batch-application-packages.md) wskazówki. Określ identyfikator aplikacji, takich jak *GPUDriver*i wersji, takich jak *411.82*.
 1. Korzystając z interfejsów API usługi Batch lub witryny Azure portal, Utwórz pulę w konfiguracji maszyny wirtualnej z żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia, aby zainstalować sterowniki procesora GPU NVIDIA dyskretnie za pomocą zadania uruchamiania:

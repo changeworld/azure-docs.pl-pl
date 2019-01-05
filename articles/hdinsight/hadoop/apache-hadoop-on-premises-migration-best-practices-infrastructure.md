@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6b0b047e74496fb9e58df05dc6118c5f376cb99d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1a8c0ec8a7926d443963075fec576b9e2168d41f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437524"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052636"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
 
@@ -68,7 +68,7 @@ Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokal
 |Wodnej|Węzeł brzegowy HDInsight
 |StreamSets|HDInsight krawędzi 
 |Palantir|IaaS 
-|Sailpoint|Iaas 
+|SailPoint|Iaas 
 
 Aby uzyskać więcej informacji, zobacz artykuł [składniki platformy Apache Hadoop dostępne z różnymi wersjami HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)
 
@@ -205,7 +205,7 @@ HDInsight obsługuje [punkty końcowe usługi sieci wirtualnej](../../virtual-ne
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 - [Punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [Podnieś poziom zabezpieczeń HDInsight z punktami końcowymi usługi](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/.md)
+- [Podnieś poziom zabezpieczeń HDInsight z punktami końcowymi usługi](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>HDInsight nawiązać połączenie z siecią lokalną
 

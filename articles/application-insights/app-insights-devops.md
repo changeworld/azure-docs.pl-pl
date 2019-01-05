@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a160cd6d81ab7cb760a85ee7cbdbedf55c17167
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 31ab9f37bcb4ea32caa48edf9460fa7ffcdf764d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998237"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052074"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
@@ -94,7 +94,7 @@ Real Madryt używa modułu usługi Power BI, aby wyświetlić ich dane telemetry
 ![Power BI widok danych telemetrycznych usługi Application Insights](./media/app-insights-devops/080.png)
 
 ## <a name="smart-detection"></a>Wykrywanie inteligentne
-[Diagnostyka proaktywna](app-insights-proactive-diagnostics.md) jest najnowszych funkcji. Bez żadnej specjalnej konfiguracji przez Ciebie usługi Application Insights automatycznie wykrywa i ostrzega o tym nietypowe wzrostami współczynniki błędów w aplikacji. Jest to inteligentny zignorować tła okazjonalnych awarii i wzrostu, które są po prostu proporcjonalny do wzrost liczby żądań. Na przykład jeśli wystąpi awaria w jednej z usług, których zależysz lub nową kompilację, po prostu wdrożonych nie działa tak dobrze, a następnie będziesz wiedzieć o nim, jak najszybciej Przyjrzyj się swój adres e-mail. (I istnieją elementy webhook, dzięki czemu można wyzwalać inne aplikacje)
+[Diagnostyka proaktywna](../azure-monitor/app/proactive-diagnostics.md) jest najnowszych funkcji. Bez żadnej specjalnej konfiguracji przez Ciebie usługi Application Insights automatycznie wykrywa i ostrzega o tym nietypowe wzrostami współczynniki błędów w aplikacji. Jest to inteligentny zignorować tła okazjonalnych awarii i wzrostu, które są po prostu proporcjonalny do wzrost liczby żądań. Na przykład jeśli wystąpi awaria w jednej z usług, których zależysz lub nową kompilację, po prostu wdrożonych nie działa tak dobrze, a następnie będziesz wiedzieć o nim, jak najszybciej Przyjrzyj się swój adres e-mail. (I istnieją elementy webhook, dzięki czemu można wyzwalać inne aplikacje)
 
 Innym aspektem ta funkcja wykonuje codzienne szczegółowej analizy telemetrii, wyszukiwanie nietypowe wzorce wydajności, które są trudne do odnajdywania. Na przykład prowadzą spadek wydajności związany z określonym obszarze geograficznym lub przy użyciu wersji przeglądarki.
 

@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: df4f6066a4bf03f6b09777f3556c52a237501592
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497658"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052346"
 ---
 # <a name="using-dns-in-azure-stack"></a>Przy użyciu systemu DNS w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Usługa Azure Stack obsługuje następujące funkcje systemu nazw domen (DNS, Domain Name System):
 
@@ -33,7 +33,7 @@ Usługa Azure Stack obsługuje następujące funkcje systemu nazw domen (DNS, Do
 
 Można określić etykietę nazwy domeny DNS dla publicznych adresów IP zasobów. Używa usługi Azure Stack **domainnamelabel.location.cloudapp.azurestack.external** nazwę etykiety i mapy do publicznego adresu IP w usłudze Azure Stack zarządzane serwery DNS.
 
-Na przykład, jeśli utworzysz publiczny zasób adresu IP za pomocą **contoso** jako etykietę nazwy domeny w lokalizacji lokalnej usługi Azure Stack [w pełni kwalifikowaną nazwę domeny (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)  **contoso.local.cloudapp.azurestack.external** rozpoznawany jako publiczny adres IP zasobu.   Aby utworzyć niestandardową domenę rekord CNAME, który wskazuje na publiczny adres IP w usłudze Azure Stack, można użyć tej nazwy FQDN.
+Na przykład, jeśli utworzysz publiczny zasób adresu IP za pomocą **contoso** jako etykietę nazwy domeny w lokalizacji lokalnej usługi Azure Stack [w pełni kwalifikowaną nazwę domeny (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)  **contoso.local.cloudapp.azurestack.external** rozpoznawany jako publiczny adres IP zasobu. Aby utworzyć niestandardową domenę rekord CNAME, który wskazuje na publiczny adres IP w usłudze Azure Stack, można użyć tej nazwy FQDN.
 
 Aby dowiedzieć się więcej na temat rozpoznawania nazw, zobacz [rozpoznawania nazw DNS](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) artykułu.
 
@@ -54,27 +54,23 @@ Można tworzyć i zarządzać strefami DNS i rekordów w usłudze Azure Stack.
 
 Usługa Azure Stack zapewnia podobne do platformy Azure, usługi DNS przy użyciu interfejsów API, które są zgodne z interfejsów API usługi Azure DNS.  Hostowanie domen w usłudze Azure Stack DNS, pozwala na zarządzanie rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API i narzędzi. Można również użyć tego samego rozliczeń i pomocy technicznej co w innych usług platformy Azure.
 
-Infrastruktura usługi system DNS Azure Stack jest mniejszych niż platformy Azure. Rozmiar i położenie wdrożenia usługi Azure Stack ma wpływ na zakres, skalowalność i wydajność DNS. Oznacza to, że wydajności, dostępności, globalnej dystrybucji i wysokiej dostępności może się różnić wdrożenia wdrożenia.
+Infrastruktura usługi system DNS Azure Stack jest mniejszych niż platformy Azure. Rozmiar i położenie wdrożenia usługi Azure Stack ma wpływ na zakres, skalowalność i wydajność DNS. Oznacza to, że wydajności, dostępności, globalną dystrybucję i wysoka dostępność może się różnić wdrożenia wdrożenia.
 
 ## <a name="comparison-with-azure-dns"></a>Porównanie z usługą Azure DNS
 
-DNS w usłudze Azure Stack jest podobny do serwera DNS na platformie Azure, ale istnieją ważne wyjątki:
+DNS w usłudze Azure Stack jest podobny do serwera DNS na platformie Azure, ale istnieje kilka wyjątków ważne:
 
-* **Nie obsługuje rekordów AAAA**
+* **Nie obsługuje rekordów AAAA**: Usługa Azure Stack nie obsługuje rekordów AAAA, ponieważ usługi Azure Stack nie obsługuje adresów IPv6. Jest to główna różnica między DNS na platformie Azure i usługi Azure Stack.
 
-    Usługa Azure Stack nie obsługuje rekordów AAAA, ponieważ usługi Azure Stack nie obsługuje adresów IPv6. Jest to główna różnica między DNS na platformie Azure i usługi Azure Stack.
-* **Nie jest wielodostępnych**
+* **Nie jest wielodostępne**: Usługa DNS w usłudze Azure Stack nie jest wielodostępne. Poszczególni dzierżawcy nie można utworzyć tej samej strefie DNS. Tylko pierwszy subskrypcję, która podejmuje próbę utworzenia strefy zakończy się powodzeniem, a każde kolejne wywołanie się nie powieść. Jest to Najważniejszą różnicą między platformą Azure i usługi system DNS Azure Stack.
 
-    Usługa DNS w usłudze Azure Stack nie jest wielodostępne. Poszczególni dzierżawcy nie można utworzyć tej samej strefie DNS. Tylko pierwszy subskrypcję, która podejmuje próbę utworzenia strefy zakończy się powodzeniem, a każde kolejne wywołanie się nie powieść. Jest to Najważniejszą różnicą między platformą Azure i usługi system DNS Azure Stack.
-* **Znaczniki, metadane i elementów etag**
-
-    Występują niewielkie różnice w jak Azure Stack obsługuje tagi, metadane, elementów etag i limitów.
+* **Znaczniki, metadane i elementów etag**: Występują niewielkie różnice w jak Azure Stack obsługuje tagi, metadane, elementów etag i limitów.
 
 Aby dowiedzieć się więcej o usłudze Azure DNS, zobacz [strefy i rekordy DNS](../../dns/dns-zones-records.md).
 
 ### <a name="tags"></a>Tagi
 
-Usługa system DNS Azure Stack obsługuje, za pomocą usługi Azure Resource Manager tagów zasobów strefy DNS. Go nie obsługuje tagów w zestawach rekordów DNS, jako alternatywę, "metadata" jest obsługiwana w zestawach rekordów DNS, jak wyjaśniono dalej.
+Usługa system DNS Azure Stack obsługuje, za pomocą usługi Azure Resource Manager tagów zasobów strefy DNS. Nie obsługuje tagów w zestawach rekordów DNS, mimo że alternatywnym **metadanych** jest obsługiwana w zestawach rekordów DNS, zgodnie z opisem w następnej sekcji.
 
 ### <a name="metadata"></a>Metadane
 
@@ -86,7 +82,7 @@ Załóżmy, że dwie osoby lub dwóch procesów spróbuj zmodyfikować rekord DN
 
 Usługa system DNS Azure Stack używa *elementów etag* bezpiecznie obsłużyć równoczesnych zmian do tego samego zasobu. Elementy etag różnią się od usługi Azure Resource Manager *tagi*. Każdy zasób DNS (strefy lub zestawu rekordów) ma element Etag skojarzone z nią. Po pobraniu zasobu jego element Etag również są pobierane. Podczas aktualizowania zasobu, można przesłać element Etag dzięki usłudze Azure Stack DNS można sprawdzić, czy tag Etag na dopasowania serwera. Ponieważ każda aktualizacja do zasobu w wyniku element Etag, są ponownie generowane, element etag wskazuje, że nastąpiła zmiana współbieżnych. Elementy etag może również podczas tworzenia nowego zasobu upewnij się, że zasób nie istnieje.
 
-Domyślnie polecenia cmdlet programu PowerShell do programu Azure Stack DNS za pomocą elementów etag blokować współbieżnych zmian do stref i zestawy rekordów. Opcjonalny **-zastąpić** przełącznik może służyć do pomijania sprawdzania elementu Etag, w tym przypadku wszystkie równoczesnych zmian, które miały miejsce zostaną zastąpione.
+Domyślnie polecenia cmdlet programu PowerShell do programu Azure Stack DNS za pomocą elementów etag blokować współbieżnych zmian do stref i zestawy rekordów. Możesz użyć opcjonalnego `-Overwrite` przełączyć się do pomijania sprawdzania elementu Etag, co powoduje, że równoczesnych zmian, które miały miejsce zostaną zastąpione.
 
 Na poziomie interfejsu API REST usługi Azure Stack DNS elementów etag są określane przy użyciu nagłówków HTTP. Ich zachowanie jest opisane w poniższej tabeli:
 
@@ -109,4 +105,4 @@ Następujące limity domyślne są stosowane podczas korzystania z usługi Azure
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wprowadzenie do międzynarodowych nazw domen dla usługi Azure Stack](azure-stack-understanding-dns.md)
+- [Wprowadzenie do międzynarodowych nazw domen dla usługi Azure Stack](azure-stack-understanding-dns.md)

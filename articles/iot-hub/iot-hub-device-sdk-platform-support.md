@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879392"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053197"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Obsługa Platform do usługi Azure IoT SDK
 
@@ -20,9 +20,9 @@ ms.locfileid: "52879392"
 
 Firma Microsoft obsługuje wiele różnych systemów operacyjnych/platform/platform i można rozszerzyć za pomocą zestawu SDK C usługi IoT platformy Azure. Niektóre są obsługiwane oficjalnie przez zespół, pogrupowane według warstwy, które reprezentują poziom pomocy technicznej, które użytkownicy mogą oczekiwać. *W pełni obsługiwane platformy* oznacza, że firma Microsoft:
 
-    * Stale kompiluje i uruchamia testy end-to-end na głównej maszynie wirtualnej i wersje obsługiwane LTS.  Aby zapewnić pokrycie testu w różnych wersjach, firma Microsoft zwykle testowania wstępnego najnowszej wersji LTS i najpopularniejszych wersji.  Inne wersje tej samej platformy, może być obsługiwany za pośrednictwem zgodność wersji platformy.
-    * Zawiera wskazówki dotyczące instalacji lub pakietów, jeśli ma to zastosowanie.
-    * W pełni obsługuje platformy w witrynie GitHub.
+- Stale kompiluje i uruchamia testy end-to-end na głównej maszynie wirtualnej i wersje obsługiwane LTS.  Aby zapewnić pokrycie testu w różnych wersjach, firma Microsoft zwykle testowania wstępnego najnowszej wersji LTS i najpopularniejszych wersji.  Inne wersje tej samej platformy, może być obsługiwany za pośrednictwem zgodność wersji platformy.
+- Zawiera wskazówki dotyczące instalacji lub pakietów, jeśli ma to zastosowanie.
+- W pełni obsługuje platformy w witrynie GitHub.
 
 Ponadto listy partnerów ma przenoszone naszego zestawu SDK języka C na wielu platformach i są one utrzymywanie warstwę abstrakcji platformy (PAL). [Certyfikat platformy Microsoft Azure dla IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/) również funkcje listę platform systemów operacyjnych różnych zestawów SDK zostały przetestowane przed. Zestawy SDK regularnie kompilacji na tych platformach, z ograniczoną testowania i obsługi:
 
@@ -67,7 +67,7 @@ Istnieje kilka obsługiwane platformy.
 | Ubuntu 16.04 LTS    | X64  | .NET core 2.1        | .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET core 2.1        | .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET framework 4.7   | .NET standard 2.0 |
-| Windows Server 2016 | X64  | .NET framework 4.5.1 | ND               |
+| Windows Server 2016 | X64  | .NET Framework 4.5.1 | ND               |
 
 ### <a name="nodejs-sdk"></a>Zestaw SDK dla platformy Node.js
 

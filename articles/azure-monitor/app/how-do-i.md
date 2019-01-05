@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dacd2e0d43f2c7711539896b88838adb85542963
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999685"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051734"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mogę (...) w usłudze Application Insights?
 ## <a name="get-an-email-when-"></a>Otrzymaj wiadomość e-mail po...
@@ -83,11 +83,11 @@ Oto niektóre ważne kwestie:
 ## <a name="separate-telemetry-from-different-versions"></a>Osobne dane telemetryczne z różnych wersji
 
 * Wiele ról w aplikacji: Użyj pojedynczego zasobu usługi Application Insights i przefiltruj [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Oddzielanie programowania, testowania i wersji: Używać różnych zasobów usługi Application Insights. Wybierz kluczy Instrumentacji z pliku web.config. [Dowiedz się więcej](../../application-insights/app-insights-separate-resources.md)
-* Raportowanie wersji kompilacji: Dodaj właściwość za pomocą inicjatora telemetrii. [Dowiedz się więcej](../../application-insights/app-insights-separate-resources.md)
+* Oddzielanie programowania, testowania i wersji: Używać różnych zasobów usługi Application Insights. Wybierz kluczy Instrumentacji z pliku web.config. [Dowiedz się więcej](../../azure-monitor/app/separate-resources.md)
+* Raportowanie wersji kompilacji: Dodaj właściwość za pomocą inicjatora telemetrii. [Dowiedz się więcej](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Monitorowanie serwerów wewnętrznej bazy danych i aplikacji klasycznych
-[Użyć modułu programu Windows Server SDK](../../application-insights/app-insights-windows-desktop.md).
+[Użyć modułu programu Windows Server SDK](../../azure-monitor/app/windows-desktop.md).
 
 ## <a name="visualize-data"></a>Wizualizowanie danych
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Pulpit nawigacyjny z metrykami z wieloma aplikacjami

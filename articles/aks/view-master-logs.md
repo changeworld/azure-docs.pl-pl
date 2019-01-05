@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 5d8aa2c25bf79278b10b96f93733e3abf89e4783
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971185"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040748"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,18 +31,15 @@ Usługa log Analytics jest włączona i zarządzane w witrynie Azure portal. Aby
 1. Wybierz grupę zasobów klastra usługi AKS, takich jak *myResourceGroup*. Nie wybieraj grupę zasobów, która zawiera poszczególne zasoby klastra AKS, takie jak *MC_myResourceGroup_myAKSCluster_eastus*.
 1. Po lewej stronie wybierz **ustawień diagnostycznych**.
 1. Wybierz klaster AKS, taką jak *myAKSCluster*, następnie **Włącz diagnostykę**.
-1. Wprowadź nazwę, taką jak *myAKSLogs*, następnie wybierz opcję, aby **wysyłanie do usługi Log Analytics**.
+1. Wprowadź nazwę, taką jak *myAKSClusterLogs*, następnie wybierz opcję, aby **wysyłanie do usługi Log Analytics**.
     * Możliwość *Konfiguruj* usługi Log Analytics, a następnie wybierz istniejący obszar roboczy lub **Utwórz nowy obszar roboczy**.
     * Jeśli musisz utworzyć obszar roboczy, podaj nazwę, grupę zasobów i lokalizacji.
-1. Na liście dostępnych dzienników, wybierz pozycję dzienniki, które ma zostać włączone, takie jak *apiserver klastra kubernetes w usłudze*, *Menedżera klastra kubernetes w usłudze kontrolera*, i *klastra kubernetes w usłudze scheduler*. Możesz wrócić i zmienić zebranych dzienników po włączeniu usługi Log Analytics.
+1. Na liście dostępnych dzienników wybierz dzienniki, które mają zostać włączone. Domyślnie *apiserver klastra kubernetes w usłudze*, *Menedżera klastra kubernetes w usłudze kontrolera*, i *klastra kubernetes w usłudze scheduler* dzienniki są włączone. Możesz włączyć dodatkowe dzienniki, takich jak *klastra kubernetes w usłudze inspekcji* i *skalowanie klastra*. Możesz wrócić i zmienić zebranych dzienników po włączeniu usługi Log Analytics.
 1. Gdy wszystko będzie gotowe, wybierz **Zapisz** Aby włączyć zbieranie dzienników wybrane.
 
 W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnostycznych* okna, a następnie opcję, aby utworzyć obszar roboczy usługi Log Analytics:
 
 ![Włącz obszar roboczy Log Analytics dla klastra usługi AKS w Log Analytics](media/view-master-logs/enable-oms-log-analytics.png)
-
->[!NOTE]
->Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Harmonogram zasobnik testowych w klastrze usługi AKS
 

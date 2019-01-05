@@ -1,5 +1,5 @@
 ---
-title: Konstruktor Raspberry Pi z aplikacją usługi Azure IoT Central (C#) | Dokumentacja firmy Microsoft
+title: Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#) | Dokumentacja firmy Microsoft
 description: Jako deweloper w urządzeniu jak łączyć z urządzeniem Raspberry Pi do usługi Azure IoT Central aplikacji przy użyciu języka C#.
 author: viv-liu
 ms.author: viviali
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50956727"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051394"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
 
@@ -26,7 +26,7 @@ W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniem Ra
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
 * [Platforma .NET core 2](https://www.microsoft.com/net) zainstalowane na komputerze deweloperskim. Należy przygotować także Edytor odpowiedni kod taki jak [programu Visual Studio Code](https://code.visualstudio.com/).
-* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji Szybki Start](quick-deploy-iot-central.md).
+* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi, systemem operacyjnym Raspbian.
 
 
@@ -43,7 +43,7 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
     - Żyroskop (X, Y, Z)
 - Ustawienia
     - Napięcie
-    - Bieżący
+    - Bieżące
     - Wentylator szybkości
     - Przełącz Podczerwieni.
 - Właściwości
@@ -350,7 +350,7 @@ Ustawienia liczbowe
 | Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| Bieżące      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika

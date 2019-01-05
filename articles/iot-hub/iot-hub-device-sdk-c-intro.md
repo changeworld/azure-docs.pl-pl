@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339267"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053912"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
 
@@ -75,11 +75,11 @@ Istnieje kilka narzędzi typu open source, które ułatwiają zarządzanie Centr
 
 * Aplikacji Windows, o nazwie [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-* Rozszerzenia programu Visual Studio Code dla wielu platform o nazwie [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej Azure IoT Toolkit).
+* Rozszerzenia programu Visual Studio Code dla wielu platform o nazwie [narzędzia IoT Azure](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 * Interfejs wiersza polecenia dla wielu platform Python o nazwie [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension).
 
-Ten samouczek używa graficznym *Eksplorator urządzeń* narzędzia. Możesz użyć *rozszerzenie Azure IoT Hub Toolkit dla programu VS Code* w przypadku tworzenia w programie VS Code. Można również użyć *rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0* narzędzia, jeśli wolisz używać narzędzi interfejsu wiersza polecenia.
+Ten samouczek używa graficznym *Eksplorator urządzeń* narzędzia. Możesz użyć *narzędzia usługi Azure IoT dla programu VS Code* w przypadku tworzenia w programie VS Code. Można również użyć *rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0* narzędzia, jeśli wolisz używać narzędzi interfejsu wiersza polecenia.
 
 Narzędzie device explorer używa bibliotek usługi Azure IoT do wykonywania różnych funkcji w Centrum IoT Hub, w tym dodawanie urządzeń. Jeśli używasz narzędzie device explorer, aby dodać urządzenie, zostanie wyświetlony ciąg połączenia dla Twojego urządzenia. Należy te parametry połączenia do uruchamiania aplikacji przykładowej.
 

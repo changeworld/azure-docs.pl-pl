@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: da481a2b6a20b5b5dbd75a23aafffc0bc0a8fef9
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752762"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055170"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -84,7 +84,7 @@ Usługa Azure Stack wydaje poprawki na bieżąco. Pamiętaj zainstalować [najno
  
     Po zaimportowaniu poprawnie certyfikatów hosta rozszerzenia obowiązkowe, można wznowić aktualizację 1811 z portalu administratora. Gdy firmy Microsoft z informacją o tym operatorom usługi Azure Stack, aby umieścić jednostki skalowania w tryb konserwacji podczas procesu aktualizacji, awarii ze względu na Brak rozszerzenia certyfikatów hosta powinien nie wpływa na istniejące obciążenia lub usługi.  
 
-    Podczas instalacji tej aktualizacji portal użytkowników usługi Azure Stack jest niedostępna, gdy host rozszerzenia jest konfigurowane. Konfiguracja hosta rozszerzenia może potrwać do 5 godzin. W tym czasie możesz sprawdzić stan aktualizacji lub wznowić działanie instalacji nie można zaktualizować przy użyciu [Azure PowerShell administratora stosu lub uprzywilejowanego punkt końcowy](azure-stack-monitor-update.md).
+    Podczas instalacji tej aktualizacji portal użytkowników usługi Azure Stack jest niedostępna, gdy host rozszerzenia jest konfigurowane. Konfiguracja hosta rozszerzenia może potrwać do 5 godzin. W tym czasie można sprawdzić stan aktualizacji lub wznowić niepomyślną instalację aktualizacji przy użyciu [programu PowerShell administratora usługi Azure Stack lub punktu końcowego z uprzywilejowanym dostępem](azure-stack-monitor-update.md).
 
 ## <a name="new-features"></a>Nowe funkcje
 
@@ -195,7 +195,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 - Podczas uruchamiania [AzureStack testu](azure-stack-diagnostic-test.md), jeśli **AzsInfraRoleSummary** lub **AzsPortalApiSummary** test zakończy się niepowodzeniem, zostanie wyświetlony monit o uruchomienie  **Test AzureStack** z `-Repair` flagi.  Po uruchomieniu tego polecenia, jego wykonanie nie powiodło się następujący komunikat o błędzie:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  Ten problem zostanie rozwiązany w przyszłej wersji.
 
-- Podczas instalacji aktualizacji 1811 w obsłudze portalu usługi Azure Stack jest niedostępna, gdy host rozszerzenia jest konfigurowane. Konfiguracja hosta rozszerzenia może potrwać do 5 godzin. W tym czasie możesz sprawdzić stan aktualizacji lub wznowić działanie instalacji nie można zaktualizować przy użyciu [Azure PowerShell administratora stosu lub uprzywilejowanego punkt końcowy](azure-stack-monitor-update.md). 
+- Podczas instalacji aktualizacji 1811 w obsłudze portalu usługi Azure Stack jest niedostępna, gdy host rozszerzenia jest konfigurowane. Konfiguracja hosta rozszerzenia może potrwać do 5 godzin. W tym czasie można sprawdzić stan aktualizacji lub wznowić niepomyślną instalację aktualizacji przy użyciu [programu PowerShell administratora usługi Azure Stack lub punktu końcowego z uprzywilejowanym dostępem](azure-stack-monitor-update.md). 
 
 - Podczas instalacji aktualizacji 1811 pulpitu nawigacyjnego portalu użytkownika mogą nie być dostępne, a dostosowań mogą zostać utracone. Pulpit nawigacyjny można przywrócić na ustawienie domyślne, po zakończeniu aktualizacji, otwierając ustawienia portalu i wybierając **przywrócić ustawienia domyślne**.
 

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie urządzeniem chmury usługi Azure IoT Hub, obsługa komunikatów za pomocą rozszerzenia Azure IoT Hub Toolkit dla programu Visual Studio Code | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować urządzenie pod kątem komunikatów przesyłanych z chmury i wysyłać chmury komunikaty z urządzenia w usłudze Azure IoT Hub za pomocą rozszerzenia Azure IoT Hub Toolkit dla programu Visual Studio Code.
+title: Zarządzanie urządzeniem chmury usługi Azure IoT Hub, obsługa komunikatów za pomocą narzędzia IoT platformy Azure dla programu Visual Studio Code | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować urządzenie pod kątem komunikatów przesyłanych z chmury i wysyłać chmury komunikaty z urządzenia w usłudze Azure IoT Hub za pomocą narzędzia IoT platformy Azure dla programu Visual Studio Code.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 7/20/2018
 ms.author: junhan
-ms.openlocfilehash: afb0a2ce4dfdd5d3a98a6dad03ee78eeaafbd308
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5f3c4a1c03757d78bd907baa3aef5c2e06d6a8dd
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338383"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053963"
 ---
-# <a name="use-azure-iot-hub-toolkit-extension-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Rozszerzenie Azure IoT Hub Toolkit dla programu Visual Studio Code służy do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub
+# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Narzędzia Azure IoT dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub
 
 ![Diagram end-to-end](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Usługa Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej Azure IoT Toolkit) jest przydatne rozszerzenia programu Visual Studio Code, które ułatwia zarządzanie IoT Hub. Ten artykuł koncentruje się na temat korzystania z rozszerzenia Azure IoT Hub Toolkit dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT hub.
+[Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) jest przydatne rozszerzenia programu Visual Studio Code, które ułatwia usługi IoT Hub zarządzania i programowania aplikacji IoT. Ten artykuł koncentruje się na temat korzystania z usługi Azure IoT Tools for Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>Zawiera informacje
 
-Dowiesz się, jak używać rozszerzenia usługi Azure IoT Hub Toolkit dla programu Visual Studio Code do monitorowania komunikatów wysyłanych z urządzenia do chmury i wysyłanie komunikatów z chmury do urządzeń. Komunikaty z urządzenia do chmury może być dane czujników urządzenia umożliwia zbieranie informacji o, a następnie wysyła do Centrum IoT hub. Może to być komunikatów z chmury do urządzeń polecenia, które usługi IoT hub wysyła do Twojego urządzenia miga DIODĘ, który jest podłączony do Twojego urządzenia.
+Dowiesz się, jak używać usługi Azure IoT Tools for Visual Studio Code do monitorowania komunikatów wysyłanych z urządzenia do chmury i wysyłanie komunikatów z chmury do urządzeń. Komunikaty z urządzenia do chmury może być dane czujników urządzenia umożliwia zbieranie informacji o, a następnie wysyła do Centrum IoT hub. Może to być komunikatów z chmury do urządzeń polecenia, które usługi IoT hub wysyła do Twojego urządzenia miga DIODĘ, który jest podłączony do Twojego urządzenia.
 
 ## <a name="what-you-will-do"></a>Będziesz robić
 
-- Użyj rozszerzenia Azure IoT Hub Toolkit dla programu Visual Studio Code do monitorowania komunikatów wysyłanych z urządzenia do chmury.
-- Użyj rozszerzenia Azure IoT Hub Toolkit dla programu Visual Studio Code do wysyłania komunikatów z chmury do urządzeń.
+- Narzędzia usługi Azure IoT dla programu Visual Studio Code do monitorowania komunikatów wysyłanych z urządzenia do chmury.
+- Narzędzia usługi Azure IoT dla programu Visual Studio Code do wysyłania komunikatów z chmury do urządzeń.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
 - Aktywna subskrypcja platformy Azure.
 - Usługi Azure IoT hub w ramach Twojej subskrypcji.
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Zestaw narzędzi do usługi Azure IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+- [Narzędzia usługi Azure IoT dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Zaloguj się do dostępu do usługi IoT hub
 

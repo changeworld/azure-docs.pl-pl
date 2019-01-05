@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: c23ff8a22284416a9c87750e4ca0448e0690de0e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f828ebf9131be014d2ea572b3314b1aacd630d14
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017518"
+ms.locfileid: "54050354"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ręczne konfigurowanie aplikacji Application Insights dla aplikacji platformy .NET
 
@@ -99,7 +99,7 @@ Jeśli plik ApplicationInsights.config został dostosowany, zapisz jego kopię p
     `<InstrumentationKey>` *skopiowany klucz instrumentacji* `</InstrumentationKey>`
 * Upewnij się, że właściwości pliku ApplicationInsights.config w Eksploratorze rozwiązań są ustawione na **Akcja kompilacji = Zawartość, Kopiuj do katalogu wyjściowego = Kopiuj**.
 
-Warto ustawić klucz instrumentacji w kodzie, jeśli chcesz [przełączyć klucz konfiguracji dla innych konfiguracji kompilacji](app-insights-separate-resources.md). Klucza ustawionego w kodzie nie trzeba ustawiać w pliku `.config`.
+Warto ustawić klucz instrumentacji w kodzie, jeśli chcesz [przełączyć klucz konfiguracji dla innych konfiguracji kompilacji](../azure-monitor/app/separate-resources.md). Klucza ustawionego w kodzie nie trzeba ustawiać w pliku `.config`.
 
 ## <a name="run"></a> Uruchamianie projektu
 Użyj klawisza **F5** do uruchomienia aplikacji i wypróbuj jej działanie: otwórz różne strony, aby wygenerować dane telemetryczne.
@@ -115,13 +115,13 @@ Poszukaj danych na wykresach w bloku Przegląd. Na początku zobaczysz tylko jed
 
 ![Klikaj elementy, aby uzyskać więcej danych](./media/app-insights-windows-services/12-first-perf.png)
 
-Klikaj elementy wykresów, aby wyświetlać bardziej szczegółowe metryki. [Dowiedz się więcej o metrykach.](app-insights-web-monitor-performance.md)
+Klikaj elementy wykresów, aby wyświetlać bardziej szczegółowe metryki. [Dowiedz się więcej o metrykach.](../azure-monitor/app/web-monitor-performance.md)
 
 ### <a name="no-data"></a>Brak danych?
 * Otwieraj różne strony w aplikacji, aby wygenerować dane telemetryczne.
 * Otwórz kafelek [Wyszukaj](../azure-monitor/app/diagnostic-search.md), aby wyświetlić poszczególne zdarzenia. Niekiedy potrzeba nieco więcej czasu, zanim zdarzenia dotrą przez potok metryk.
 * Odczekaj kilka sekund, a następnie kliknij przycisk **Odśwież**. Wykresy są odświeżane okresowo, ale można odświeżyć je ręcznie, jeśli oczekiwane jest pojawienie się pewnych danych.
-* Zobacz [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md).
+* Zobacz [Rozwiązywanie problemów](../azure-monitor/app/troubleshoot-faq.md).
 
 ## <a name="publish-your-app"></a>Publikowanie aplikacji
 Przeprowadź teraz wdrożenie aplikacji na swoim serwerze lub na platformie Azure i obserwuj gromadzenie się danych.

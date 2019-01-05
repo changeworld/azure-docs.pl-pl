@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998399"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037416"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Tworzenie bramy aplikacji przy użyciu szablonu usługi Azure Resource Manager
 
@@ -68,7 +68,7 @@ Z witryny GitHub można pobrać istniejący szablon usługi Azure Resource Manag
 
    * **type**. Typ zasobu tworzonego przez szablon. W tym przypadku jest typ `Microsoft.Network/applicationGateways`, która reprezentuje bramy aplikacji.
    * **name**. Nazwa zasobu. Zwróć uwagę na `[parameters('applicationGatewayName')]`, co oznacza, że nazwa jest podana jako dane wejściowe przez Ciebie lub w pliku parametrów podczas wdrażania.
-   * **properties**. Lista właściwości zasobu. Ten szablon korzysta z sieci wirtualnej i publicznego adresu IP podczas tworzenia aplikacji bramy.
+   * **properties**. Lista właściwości zasobu. Ten szablon korzysta z sieci wirtualnej i publicznego adresu IP podczas tworzenia aplikacji bramy. Składnię JSON i właściwości bramy aplikacji w szablonie, zobacz [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways).
 
 1. Przejdź z powrotem do [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kliknij przycisk **azuredeploy-parameters.json**, a następnie kliknij przycisk **RAW**.
@@ -118,7 +118,7 @@ Z witryny GitHub można pobrać istniejący szablon usługi Azure Resource Manag
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Wdrażanie szablonu usługi Azure Resource Manager przy użyciu programu PowerShell
 
-Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami, aby zalogować się do platformy Azure i wybierz swoją subskrypcję.
+Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [Jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami, aby zalogować się do platformy Azure i wybierz swoją subskrypcję.
 
 1. Zaloguj się do programu PowerShell
 
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz skonfigurować odciążanie protokołu SSL, odwiedź: [Configure an application gateway for SSL offload](tutorial-ssl-cli.md) (Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL).
+Jeśli chcesz skonfigurować odciążanie protokołu SSL, odwiedź stronę: [Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL](tutorial-ssl-cli.md).
 
-Jeśli chcesz skonfigurować bramę aplikacji do użycia z wewnętrznym modułem równoważenia obciążenia, odwiedź: [Create an application gateway with an internal load balancer (ILB)](redirect-internal-site-cli.md) (Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia).
+Jeśli chcesz skonfigurować bramę aplikacji za pomocą wewnętrznego modułu równoważenia obciążenia, odwiedź stronę: [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB)](redirect-internal-site-cli.md).
 
 Więcej ogólnych informacji na temat opcji równoważenia obciążenia możesz znaleźć, odwiedzając:
 
