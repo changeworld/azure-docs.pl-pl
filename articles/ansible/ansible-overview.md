@@ -3,17 +3,17 @@ title: Za pomocą platformy Azure za pomocą rozwiązania Ansible
 description: Wprowadzenie do korzystania z rozwiązania Ansible w celu automatyzuje aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji.
 ms.service: ansible
 keywords: rozwiązania ansible, azure, omówienie, modułów rozwiązania ansible, aprowizowanie chmury, wdrażanie aplikacji, devops, zarządzanie konfiguracją, elementy playbook rozwiązania ansible
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
 ms.topic: article
-ms.openlocfilehash: 22eeb3993cd408a8369236683da3db466a348a30
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d684c4238a7550ca3ec34629fffdc9791db55954
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956783"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052704"
 ---
 # <a name="ansible-with-azure"></a>Rozwiązanie Ansible na platformie Azure
 

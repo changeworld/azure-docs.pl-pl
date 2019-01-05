@@ -1,19 +1,17 @@
 ---
 title: Usługa Power BI samouczek dla łącznika usługi Azure Cosmos DB
 description: Użyj tego samouczka usługi Power BI, importować JSON, tworzyć raporty bezpośrednio i wizualizuj dane przy użyciu łącznika usługi Azure Cosmos DB i usługa Power BI.
-keywords: Usługa Power bi, samouczek, wizualizowanie danych, usługa power bi łącznika
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: fa4e6aa1274609ebf990a02d41f63541668d3b37
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438714"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043655"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 

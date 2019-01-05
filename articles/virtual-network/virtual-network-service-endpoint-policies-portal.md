@@ -1,13 +1,10 @@
 ---
-title: Tworzenie i kojarzenie zasad punktów końcowych usługi — witryna Azure portal | Dokumentacja firmy Microsoft
+title: Tworzenie i kojarzenie zasad punktów końcowych usługi — witryna Azure portal
+titlesuffix: Azure Virtual Network
 description: W tym artykule Dowiedz się, jak skonfigurować i skojarzona usługa zasad punktów końcowych przy użyciu witryny Azure portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: anithaa
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 6bd318da5b3cd667d0a39b9c963e8d3ffd472f41
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633014"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054439"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Tworzenie, zmienianie lub usuwanie zasad punktów końcowych usługi za pomocą witryny Azure portal
 
@@ -47,9 +44,9 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 3. Wprowadź lub wybierz następujące informacje w **podstawy** 
 
    - Subskrypcja: Wybierz swoją subskrypcję dla zasad.    
-   - Grupa zasobów: Wybierz **Utwórz nową** i wprowadź *myResourceGroup*.     
+   - Grupa zasobów: Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.     
    - Nazwa: myEndpointPolicy
-   - Lokalizacja: Zachodnie środkowe stany USA     
+   - Lokalizacja: Środkowo-zachodnie stany USA     
  
    ![Tworzenie punktu końcowego usługi podstawowe informacje dotyczące zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
    
@@ -66,7 +63,7 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
    
 5. Opcjonalnie: Wprowadź lub wybierz następujące informacje w **tagi**:
    
-   - Klucz: Wybierz klucz dla zasad. Przykład: dział     
+   - Klucz: Wybierz klucz dla zasad. Przykład: Dział     
    - Wartość: Wprowadź pary wartości klucza. Przykład: Finanse
 
 6. Wybierz **przeglądanie + tworzenie**. Zweryfikuj informacje i kliknięcie **Utwórz**. Może wprowadzać dalszych zmian, kliknij przycisk **Wstecz**. 
@@ -101,9 +98,9 @@ Zanim będzie można skojarzyć zasady z podsiecią, należy utworzyć sieć wir
 3. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
    - Nazwa: myVirtualNetwork      
    - Przestrzeń adresowa: 10.0.0.0/16      
-   - Subskrypcja: Wybierz swoją subskrypcję. Zasady powinny znajdować się w tej samej subskrypcji co sieć wirtualna     
+   - Subskrypcja: Wybierz subskrypcję. Zasady powinny znajdować się w tej samej subskrypcji co sieć wirtualna     
    - Grupa zasobów: Wybierz **Użyj istniejącej** , a następnie wybierz *myResourceGroup*     
-   - Lokalizacja: Zachodnie środkowe stany USA     
+   - Lokalizacja: Środkowo-zachodnie stany USA     
    - Nazwa podsieci: prywatne     
    - Zakres adresów: 10.0.0.0/24
      

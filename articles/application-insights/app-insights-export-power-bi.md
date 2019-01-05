@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: b4d87ab62503bee1ff54ba9713f7c49d09a2e547
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1a5f756c4fac92260e77b24ca2cde6abccf0797a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015070"
+ms.locfileid: "54042788"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](https://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
@@ -65,7 +65,7 @@ Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 8. Ręcznie odświeżyć raport w odstępach czasu lub skonfigurować zaplanowane odświeżanie na stronie opcji.
 
 ### <a name="export-a-funnel"></a>Wyeksportować lejka
-1. [Wprowadź lejku](usage-funnels.md).
+1. [Wprowadź lejku](../azure-monitor/app/usage-funnels.md).
 2. Wybierz **usługa Power BI**.
 
    ![Przycisk zrzut ekranu usługi Power BI](./media/app-insights-export-power-bi/button.png)

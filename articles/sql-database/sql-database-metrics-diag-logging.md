@@ -11,28 +11,28 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601563"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044573"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
 Usługa Azure SQL Database, pul elastycznych, wystąpienia zarządzanego i baz danych w wystąpieniu zarządzanym można przesyłać strumieniowo dzienniki metryki i Diagnostyka ułatwiają monitorowanie wydajności. Można skonfigurować bazę danych do przesłania użycia zasobów, pracowników i sesji oraz łączność z jedną z następujących zasobów platformy Azure:
 
-* **Usługa Azure SQL Analytics**: Aby uzyskać inteligentnego monitorowania platformy Azure bazach danych, które zawiera raporty dotyczące wydajności, alerty i zalecenia dotyczące ograniczania ryzyka.
-* **Usługa Azure Event Hubs**: zintegrować telemetrycznych usługi SQL Database za pomocą Twojego niestandardowego rozwiązania do monitorowania lub potokami.
-* **Usługa Azure Storage**: w celu archiwizowania ogromnych ilości danych telemetrycznych za ułamek ceny.
+- **Usługa Azure SQL Analytics**: Aby uzyskać inteligentnego monitorowania platformy Azure bazach danych, które zawiera raporty dotyczące wydajności, alerty i zalecenia dotyczące ograniczania ryzyka.
+- **Usługa Azure Event Hubs**: zintegrować telemetrycznych usługi SQL Database za pomocą Twojego niestandardowego rozwiązania do monitorowania lub potokami.
+- **Usługa Azure Storage**: w celu archiwizowania ogromnych ilości danych telemetrycznych za ułamek ceny.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
 Aby uzyskać więcej informacji na temat kategorii metryk i dzienników, obsługiwane przez różne usługi platformy Azure zobacz:
 
-* [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Przegląd dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Przegląd dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Ten artykuł zawiera wskazówki ułatwiające włączenie dane diagnostyczne i telemetryczne dla baz danych, pul elastycznych i wystąpienia zarządzanego. Również może pomóc Ci zrozumieć, jak skonfigurować usługi Azure SQL Analytics jako narzędzia do monitorowania w celu wyświetlania dane diagnostyczne i telemetryczne bazy danych.
 
@@ -101,7 +101,6 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne do u
 
 > [!NOTE]
 > Dzienniki inspekcji zabezpieczeń nie można włączyć za pomocą ustawień diagnostycznych bazy danych. Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2), i [SQL inspekcji dzienników w usłudze Azure Log Analytics i Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
-
 > [!TIP]
 > Powtórz te czynności dla każdej usługi Azure SQL Database, którą chcesz monitorować.
 
@@ -112,17 +111,17 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne do u
 Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla baz danych w wystąpieniu zarządzanym, wykonaj następujące kroki:
 
 1. Przejdź do bazy danych w wystąpieniu zarządzanym.
-1. Wybierz **ustawień diagnostycznych**.
-1. Wybierz **Włącz diagnostykę** Jeśli nie poprzednie ustawienia istnieje, lub wybierz **Edytuj ustawienie** edytować poprzedniego ustawienia.
+2. Wybierz **ustawień diagnostycznych**.
+3. Wybierz **Włącz diagnostykę** Jeśli nie poprzednie ustawienia istnieje, lub wybierz **Edytuj ustawienie** edytować poprzedniego ustawienia.
    - Możesz utworzyć maksymalnie trzech (3) równoległych połączeń dane diagnostyczne i telemetryczne strumienia.
    - Wybierz **+ Dodaj ustawienie diagnostyczne** skonfigurować transmisję strumieniową równoległego danych diagnostycznych do wielu zasobów.
 
    ![Włącz diagnostykę w wystąpieniu zarządzanym bazy danych](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. Wprowadź nazwę ustawienia do własnych celów.
-1. Wybierz zasób docelowy dla przesyłania strumieniowego danych diagnostycznych: **Archiwum do konta magazynu**, **Stream do usługi event hub**, lub **wysyłanie do usługi Log Analytics**.
-1. Zaznacz pole wyboru, aby uzyskać dane diagnostyczne i telemetryczne bazy danych: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** i **błędy**.
-1. Wybierz pozycję **Zapisz**.
+4. Wprowadź nazwę ustawienia do własnych celów.
+5. Wybierz zasób docelowy dla przesyłania strumieniowego danych diagnostycznych: **Archiwum do konta magazynu**, **Stream do usługi event hub**, lub **wysyłanie do usługi Log Analytics**.
+6. Zaznacz pole wyboru, aby uzyskać dane diagnostyczne i telemetryczne bazy danych: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** i **błędy**.
+7. Wybierz pozycję **Zapisz**.
 
    ![Skonfigurować diagnostykę dla zarządzanego wystąpienia bazy danych](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -170,7 +169,7 @@ Można skonfigurować wystąpienia zarządzanego zasobu zebrać następujące da
 
 | Zasób | Monitorowanie danych telemetrycznych |
 | :------------------- | ------------------- |
-| **Wystąpienie zarządzane** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
+| **Wystąpienie zarządzane** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
 
 Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla wystąpienia zarządzanego zasobu, wykonaj następujące kroki:
 
@@ -338,11 +337,11 @@ Po wybrane dane są przesyłane strumieniowo do usługi Event Hubs, jesteś o kr
 
 Strumieniowa metryk można użyć w usłudze Event Hubs do:
 
-* **Aby wyświetlić kondycję usługi, aktywną ścieżkę danych strumieniowych do usługi Power BI**. Za pomocą usługi Event Hubs, Stream Analytics i Power BI, można łatwo przekształcać metryki i Diagnostyka danych do niemal w czasie rzeczywistym szczegółowe informacje na usługi platformy Azure. Aby uzyskać omówienie sposobu konfigurowania Centrum zdarzeń, przetwarzanie danych za pomocą usługi Stream Analytics i używaj usługi Power BI jako dane wyjściowe, zobacz [usługi Stream Analytics i usługą Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
+- **Aby wyświetlić kondycję usługi, aktywną ścieżkę danych strumieniowych do usługi Power BI**. Za pomocą usługi Event Hubs, Stream Analytics i Power BI, można łatwo przekształcać metryki i Diagnostyka danych do niemal w czasie rzeczywistym szczegółowe informacje na usługi platformy Azure. Aby uzyskać omówienie sposobu konfigurowania Centrum zdarzeń, przetwarzanie danych za pomocą usługi Stream Analytics i używaj usługi Power BI jako dane wyjściowe, zobacz [usługi Stream Analytics i usługą Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
-* **Stream dzienników do innej firmy, rejestrowania i dane telemetryczne strumieni**. Za pomocą usługi Event Hubs, przesyłanie strumieniowe, możesz uzyskać metryki i Diagnostyka dzienników do różnych firm monitorowania oraz dziennik rozwiązań do analizy.
+- **Stream dzienników do innej firmy, rejestrowania i dane telemetryczne strumieni**. Za pomocą usługi Event Hubs, przesyłanie strumieniowe, możesz uzyskać metryki i Diagnostyka dzienników do różnych firm monitorowania oraz dziennik rozwiązań do analizy.
 
-* **Tworzenie niestandardowej telemetrii i rejestrowania platformy**. Czy już masz platformy niestandardowej telemetrii lub rozważa zbudowania jej? Wysoce skalowalne publikowania/subskrybowania rodzaj usługi Event Hubs umożliwia elastyczne pozyskanie dzienniki diagnostyczne. Zobacz [Dan Rosanova Przewodnik po platformie danych telemetrycznych w skali globalnej przy użyciu usługi Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+- **Tworzenie niestandardowej telemetrii i rejestrowania platformy**. Czy już masz platformy niestandardowej telemetrii lub rozważa zbudowania jej? Wysoce skalowalne publikowania/subskrybowania rodzaj usługi Event Hubs umożliwia elastyczne pozyskanie dzienniki diagnostyczne. Zobacz [Dan Rosanova Przewodnik po platformie danych telemetrycznych w skali globalnej przy użyciu usługi Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="stream-into-storage"></a>Stream do usługi Storage
 
@@ -386,7 +385,7 @@ Jeśli używasz usługi Azure SQL Analytics, możesz monitorować swoje użycie 
 
 ## <a name="metrics-and-logs-available"></a>Metryki i dostępnych dzienników
 
-Zebrane dane telemetryczne z monitorowania może służyć do własnego _niestandardowe analizy_ i _opracowywanie aplikacji_ przy użyciu [języka SQL Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries). 
+Zebrane dane telemetryczne z monitorowania może służyć do własnego _niestandardowe analizy_ i _opracowywanie aplikacji_ przy użyciu [języka SQL Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="all-metrics"></a>Wszystkie metryki
 
@@ -690,12 +689,12 @@ Dowiedz się więcej o [format dziennika Intelligent Insights](sql-database-inte
 
 Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć, metryki i rejestrowanie kategorie obsługiwane przez różne usługi platformy Azure, zobacz:
 
-* [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Przegląd dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Przegląd dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Aby dowiedzieć się więcej na temat usługi Event Hubs, przeczytaj:
 
-* [Co to jest usługa Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Co to jest usługa Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Aby dowiedzieć się więcej o usłudze Azure Storage, zobacz [sposobu pobierania metryki i Diagnostyka dzienników z magazynu](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

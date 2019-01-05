@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 71f024c81983fcb9c3e99bdf633a5bde306452b8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873244"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051241"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka kliencka elastic Database przy użyciu platformy Entity Framework
 Ten dokument przedstawia zmiany w aplikacji Entity Framework, które są wymagane w celu integracji z [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Koncentruje się na tworzenie [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md) z platformą Entity Framework **Code First** podejście. [Kod najpierw — Nowa baza danych](https://msdn.microsoft.com/data/jj193542.aspx) samouczek dla platformy EF służy jako przykład uruchomionych w tym dokumencie. Przykładowy kod, towarzyszący ten dokument jest częścią narzędzi elastycznej bazy danych zestaw przykładów w Visual Studio Code Samples.
@@ -42,10 +42,10 @@ Po utworzeniu tych baz danych, wypełnij posiadaczy miejsce w **Program.cs** prz
 ## <a name="entity-framework-workflows"></a>Przepływy pracy programu Entity Framework
 Entity Framework deweloperzy opierają się na jednym z następujących czterech przepływy pracy umożliwiające tworzenie aplikacji i zapewnienie trwałości obiektów w aplikacji: 
 
-* **Kod pierwszy (Nowa baza danych)**: EF deweloperów tworzy modelu w kodzie aplikacji, a następnie EF generuje bazy danych z niego. 
-* **Kod pierwszy (istniejącej bazy danych)**: dewelopera umożliwia generowanie kodu aplikacji, dla modelu na podstawie istniejącej bazy danych programu EF.
-* **Pierwszy model**: deweloper tworzy model w Projektancie platformy EF, a następnie EF tworzy bazy danych z modelu.
-* **Baza danych pierwszy**: programistka używa EF narzędzia na potrzeby wnioskowania dotyczącego modelu z istniejącej bazy danych. 
+* **Kod pierwszy (Nowa baza danych)**: Dla deweloperów platformy EF tworzy modelu w kodzie aplikacji, a następnie EF generuje bazy danych z niego. 
+* **Kod pierwszy (istniejącej bazy danych)**: Projektant umożliwia EF, generowanie kodu aplikacji, dla modelu na podstawie istniejącej bazy danych.
+* **Pierwszy model**: Deweloper tworzy model w Projektancie platformy EF, a następnie EF tworzy bazę danych z modelu.
+* **Baza danych pierwszy**: Programistka używa EF narzędzia na potrzeby wnioskowania dotyczącego modelu z istniejącej bazy danych. 
 
 Te metody zależy od klasy DbContext w sposób niewidoczny dla użytkownika zarządzać połączeniami bazy danych i schemat bazy danych dla aplikacji. Różne Konstruktory klasy bazowej typu DbContext pozwalają na różne poziomy kontroli nad połączenia tworzenie, uruchamianie bazy danych i tworzenia schematu. Wyzwania powstać przede wszystkim z faktu, że zarządzanie połączenia bazy danych, które są zapewniane przez EF przecina z funkcjami zarządzania połączenia interfejsów routingu zależnego od danych zapewnianych przez Biblioteka kliencka elastic database. 
 
@@ -59,9 +59,9 @@ Menedżera mapowań fragmentów uniemożliwia użytkownikom niespójne widoków 
 ## <a name="requirements"></a>Wymagania
 Pracując z biblioteki klienta elastycznej bazy danych i interfejsów API programu Entity Framework, aby zachować następujące właściwości: 
 
-* **Skalowalny w poziomie**: Dodawanie i usuwanie baz danych z warstwy danych aplikacji podzielonej na fragmenty stosownie do potrzeb pojemności w aplikacji. Oznacza to, kontrolę nad tworzeniem i usuwaniem baz danych i za pomocą elastycznej bazy danych Menedżera mapowań fragmentów interfejsów API do zarządzania bazami danych i mapowania podfragmentów. 
-* **Spójność**: aplikacja wykorzystuje dzielenia na fragmenty i korzysta z możliwości routingu zależnego od danych biblioteki klienta. Aby uniknąć uszkodzenia lub wyniki kwerendy problem, połączenia jest przeprowadzana za pośrednictwem Menedżera mapowań fragmentów. Zachowuje również sprawdzania poprawności i spójność.
-* **Kod pierwszy**: zachować wygody paradygmat pierwszy kod firmy EF. W Code First klas w aplikacji są mapowane przezroczyste podstawowe struktury bazy danych. Kod aplikacji współdziała z DbSets, który maski większością aspektów przetwarzania podstawowej bazy danych.
+* **Skalowalny w poziomie**: Aby dodać lub usunąć bazy danych z warstwy danych aplikacji podzielonej na fragmenty, stosownie do potrzeb pojemność aplikacji. Oznacza to, kontrolę nad tworzeniem i usuwaniem baz danych i za pomocą elastycznej bazy danych Menedżera mapowań fragmentów interfejsów API do zarządzania bazami danych i mapowania podfragmentów. 
+* **Spójność**: Aplikacja stosuje dzielenia na fragmenty i wykorzystuje funkcje routingu zależnego od danych biblioteki klienta. Aby uniknąć uszkodzenia lub wyniki kwerendy problem, połączenia jest przeprowadzana za pośrednictwem Menedżera mapowań fragmentów. Zachowuje również sprawdzania poprawności i spójność.
+* **Kod pierwszy**: Aby zachować wygody paradygmat pierwszy kod firmy EF. W Code First klas w aplikacji są mapowane przezroczyste podstawowe struktury bazy danych. Kod aplikacji współdziała z DbSets, który maski większością aspektów przetwarzania podstawowej bazy danych.
 * **Schemat**: Entity Framework obsługuje tworzenie schematu początkowej bazy danych i rozwój kolejnych schematu za pomocą migracji. Przy zachowaniu możliwości, dostosowanie aplikacji jest łatwe jak ewoluuje danych. 
 
 Poniższe wskazówki powoduje, że sposób spełniają te wymagania aplikacji Code First, za pomocą narzędzi elastycznych baz danych. 
@@ -189,7 +189,7 @@ Powyższe przykłady kodu ilustrują, domyślny konstruktor ponownie zapisuje wy
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>Wdrożenie schematu fragmentów za pomocą migracji EF
 Zarządzanie schematami automatyczne jest wygodne, dostarczane przez program Entity Framework. W kontekście aplikacji za pomocą narzędzi elastycznych baz danych chcesz zachować tej możliwości, aby automatycznie aprowizować schematu do nowo utworzonego fragmentów, gdy bazy danych zostaną dodane do aplikacji podzielonej na fragmenty. Głównym zastosowaniem jest zwiększenie pojemności w warstwie danych dla aplikacji podzielonej na fragmenty, przy użyciu programu EF. Opierając się na możliwości firmy EF Zarządzanie schematami zmniejsza nakład pracy administracyjnej bazy danych za pomocą aplikacji podzielonej na fragmenty, w oparciu o EF. 
 
-Wdrożenie schematu za pomocą migracji EF, sprawdza się najlepiej w **bez otwierania połączenia**. Jest to w przeciwieństwie do scenariusz routingu zależnego od danych, która opiera się na otwarte połączenia, udostępniane przez interfejs API klienta elastycznej bazy danych. Inna różnica polega na wymaganie spójności: podczas pożądane w celu zapewnienia spójności dla wszystkich połączeń routingu zależnego od danych do ochrony przed manipulowania mapy fragmentów współbieżnych, nie jest to niepożądane, za pomocą początkowego wdrażania schematu nowej bazy danych ma jeszcze nie został zarejestrowany w ramach mapowania fragmentów i jeszcze nie została przydzielona do przechowywania podfragmentów. W związku z tym polega na połączenia regularne bazy danych dla tego scenariusza, w przeciwieństwie do routingu zależnego od danych.  
+Wdrożenie schematu za pomocą migracji EF, sprawdza się najlepiej w **bez otwierania połączenia**. Jest to w przeciwieństwie do scenariusz routingu zależnego od danych, która opiera się na otwarte połączenia, udostępniane przez interfejs API klienta elastycznej bazy danych. Inna różnica polega na wymaganie spójności: Podczas pożądane w celu zapewnienia spójności dla wszystkich połączeń routingu zależnego od danych do ochrony przed manipulowania mapy fragmentów współbieżnych nie jest problemem z wdrożeniem schemat początkowy do nowej bazy danych, która ma jeszcze nie został zarejestrowany w ramach mapowania fragmentów i nie zostały jeszcze przydzielony do przechowywania podfragmentów. W związku z tym polega na połączenia regularne bazy danych dla tego scenariusza, w przeciwieństwie do routingu zależnego od danych.  
 
 Prowadzi to do podejście gdzie wdrażania schematu za pomocą migracji EF jest ściśle powiązany z rejestracją nową bazę danych jako fragmentów w mapowania fragmentów w aplikacji. To zależy od następujących wymagań wstępnych: 
 
@@ -236,13 +236,13 @@ W tym przykładzie pokazano metodę **RegisterNewShard** , rejestruje fragmentu 
         } 
 
         // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connnectionString) 
+        private static string SetInitializerForConnection(string connectionString) 
         { 
             // You want existence checks so that the schema can get deployed 
             Database.SetInitializer<ElasticScaleContext<T>>( 
         new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connnectionString; 
+            return connectionString; 
         } 
 
 Jedna może być używana wersja konstruktora dziedziczone z klasy podstawowej. Jednak kod wymaga upewnić się, że domyślny inicjator dla platformy EF jest używany podczas nawiązywania połączenia. Dlatego krótkim przekierować do metody statycznej przed wywołaniem do konstruktora klasy bazowej, przy użyciu parametrów połączenia. Należy pamiętać, że rejestracja fragmentów powinny być uruchamiane w domenie innej aplikacji lub proces, aby upewnić się, że ustawienia inicjatora EF nie wchodzą w konflikt. 

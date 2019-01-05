@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: c9c9f07eab395df716a4575338f881f07d573b74
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019133"
+ms.locfileid: "54044250"
 ---
-# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Zestawy danych i połączone usługi w usłudze Azure Data Factory 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Zestawy danych i połączone usługi w usłudze Azure Data Factory
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-create-datasets.md)
 > * [Bieżąca wersja](concepts-datasets-linked-services.md)
 
-W tym artykule opisano, jakie zestawy danych są, jak są one definiowane w formacie JSON i w jaki sposób są one używane w potoki usługi Azure Data Factory. 
+W tym artykule opisano, jakie zestawy danych są, jak są one definiowane w formacie JSON i w jaki sposób są one używane w potoki usługi Azure Data Factory.
 
-Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](introduction.md) omówienie. 
+Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](introduction.md) omówienie.
 
 ## <a name="overview"></a>Przegląd
 Fabryka danych może obejmować jeden lub wiele potoków. A **potoku** jest logicznym grupowaniem **działania** wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Może na przykład użyć działania kopiowania, aby skopiować dane z lokalnego programu SQL Server do usługi Azure Blob storage. Następnie należy użyć działania programu Hive, które uruchamia skrypt Hive w klastrze usługi HDInsight platformy Azure do przetwarzania danych z magazynu obiektów Blob w celu wygenerowania danych wyjściowych. Może na koniec użyj drugiego działania kopiowania, aby skopiować dane wyjściowe do usługi Azure SQL Data Warehouse, na podstawie której raportowania dotyczącego rozwiązania analizy biznesowej (BI). Aby uzyskać więcej informacji na temat potoków i działań, zobacz [potoki i działania](concepts-pipelines-activities.md) w usłudze Azure Data Factory.
@@ -70,7 +70,7 @@ typeProperties | Właściwości typu są różne dla każdego magazynu danych lu
 connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie
 
 ## <a name="linked-service-example"></a>Przykład połączona usługa
-Następujące połączonej usługi jest połączona usługa Azure Storage. Należy zauważyć, że typ jest ustawiona na AzureStorage. Właściwości typu połączonej usługi Azure Storage obejmują parametry połączenia. Usługa Data Factory używa tych parametrów połączenia, aby nawiązać połączenie z magazynem danych w czasie wykonywania. 
+Następujące połączonej usługi jest połączona usługa Azure Storage. Należy zauważyć, że typ jest ustawiona na AzureStorage. Właściwości typu połączonej usługi Azure Storage obejmują parametry połączenia. Usługa Data Factory używa tych parametrów połączenia, aby nawiązać połączenie z magazynem danych w czasie wykonywania.
 
 ```json
 {
@@ -101,7 +101,7 @@ Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
         "linkedServiceName": {
                 "referenceName": "<name of linked service>",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "structure": [
             {
@@ -136,7 +136,7 @@ W poniższym przykładzie zestaw danych reprezentuje tabelę o nazwie MyTable w 
         "type": "AzureSqlTable",
         "linkedServiceName": {
                 "referenceName": "MyAzureSqlLinkedService",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "typeProperties":
         {
@@ -166,9 +166,9 @@ W przykładzie w poprzedniej sekcji, typ zestawu danych jest równa **AzureSqlTa
         "type": "AzureBlob",
         "linkedServiceName": {
                 "referenceName": "MyAzureStorageLinkedService",
-                 "type": "LinkedServiceReference",
-        }, 
- 
+                "type": "LinkedServiceReference",
+        },
+
         "typeProperties": {
             "fileName": "input.log",
             "folderPath": "adfgetstarted/inputdata",
@@ -218,14 +218,14 @@ Zestawy danych można utworzyć przy użyciu jednej z następujących narzędzi 
 
 ## <a name="current-version-vs-version-1-datasets"></a>Bieżąca wersja i zestawów danych w wersji 1
 
-Poniżej przedstawiono niektóre różnice między usługi Data Factory i zestawów danych w wersji 1 usługi Data Factory: 
+Poniżej przedstawiono niektóre różnice między usługi Data Factory i zestawów danych w wersji 1 usługi Data Factory:
 
 - Właściwość zewnętrznych nie jest obsługiwana w bieżącej wersji. Zastępuje się wyrazami [wyzwalacza](concepts-pipeline-execution-triggers.md).
 - Właściwości zasad i dostępności nie są obsługiwane w bieżącej wersji. Czas rozpoczęcia dla potoku, który jest zależny od [wyzwalaczy](concepts-pipeline-execution-triggers.md).
-- O określonym zakresie zestawów danych (zbiory danych zdefiniowanych w potoku) nie są obsługiwane w bieżącej wersji. 
+- O określonym zakresie zestawów danych (zbiory danych zdefiniowanych w potoku) nie są obsługiwane w bieżącej wersji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące samouczki krok po kroku dotyczące tworzenia potoków i zestawów danych przy użyciu jednej z następujących narzędzi lub zestawów SDK. 
+Zobacz następujące samouczki krok po kroku dotyczące tworzenia potoków i zestawów danych przy użyciu jednej z następujących narzędzi lub zestawów SDK.
 
 - [Quickstart: create a data factory using .NET (Szybki start: tworzenie fabryki danych przy użyciu platformy .NET)](quickstart-create-data-factory-dot-net.md)
 - [Szybki Start: tworzenie fabryki danych przy użyciu programu PowerShell](quickstart-create-data-factory-powershell.md)

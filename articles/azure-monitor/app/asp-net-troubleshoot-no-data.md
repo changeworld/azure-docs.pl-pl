@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2695f4e2dcd2441b0a8845bd194d4e393e1d7ca
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 18416f4208a77c27290b7e524b207fc681f06fdb
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020476"
+ms.locfileid: "54050816"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -39,7 +39,7 @@ ms.locfileid: "54020476"
 ## <a name="q01"></a>Nie opcji "Dodaj usługę Application Insights" w programie Visual Studio
 *Czy mogę kliknij prawym przyciskiem myszy istniejący projekt w Eksploratorze rozwiązań, nie widzę żadnych opcji usługi Application Insights.*
 
-* Nie wszystkie typy projektu .NET są obsługiwane przez narzędzia. Projekty sieci Web i usługi WCF są obsługiwane. Dla innych typów projektów, takich jak aplikacje klasycznych lub usługi, nadal możesz [ręcznie dodać zestaw SDK usługi Application Insights do projektu](../../application-insights/app-insights-windows-desktop.md).
+* Nie wszystkie typy projektu .NET są obsługiwane przez narzędzia. Projekty sieci Web i usługi WCF są obsługiwane. Dla innych typów projektów, takich jak aplikacje klasycznych lub usługi, nadal możesz [ręcznie dodać zestaw SDK usługi Application Insights do projektu](../../azure-monitor/app/windows-desktop.md).
 * Upewnij się, że masz [Visual Studio 2013 Update 3 lub nowszym](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Jest on wstępnie zainstalowany, za pomocą narzędzi Developer Analytics, które zawierają zestaw SDK usługi Application Insights.
 * Wybierz **narzędzia**, **rozszerzenia i aktualizacje** i sprawdź, czy **Developer Analytics Tools** jest zainstalowane i włączone. Jeśli tak, kliknij przycisk **aktualizacje** można sprawdzić, czy jest aktualizacja.
 * Otwórz okno dialogowe Nowy projekt i wybierz aplikację sieci Web ASP.NET. Jeśli widzisz ma opcji Application Insights, są zainstalowane narzędzia. Jeśli nie, spróbuj odinstalować, a następnie ponowne zainstalowanie narzędzi usługi Application Insights.
@@ -154,7 +154,7 @@ Dane pochodzą ze skryptów na stronach sieci web.
 Zobacz [telemetrii zależności](../../azure-monitor/app/asp-net-dependencies.md) i [dane telemetryczne dotyczące wyjątków](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Brak danych wydajności
-Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla [usług sieci web Java](../../azure-monitor/app/java-collectd.md), [aplikacje komputerowe Windows](../../application-insights/app-insights-windows-desktop.md), [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md), i [Usług azure Cloud Services](../../application-insights/app-insights-overview.md). znajdziesz go w obszarze Ustawienia serwerów.
+Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla [usług sieci web Java](../../azure-monitor/app/java-collectd.md), [aplikacje komputerowe Windows](../../azure-monitor/app/windows-desktop.md), [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md), i [Usług azure Cloud Services](../../application-insights/app-insights-overview.md). znajdziesz go w obszarze Ustawienia serwerów.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Brak danych (serwer), ponieważ po opublikowaniu aplikacji się z serwerem
 * Sprawdź, faktycznie kopiowane przez firmę Microsoft. DLL dotycząca usługi Application Insights do serwera, wraz z Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll

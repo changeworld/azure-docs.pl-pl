@@ -1,21 +1,19 @@
 ---
 title: Operacje agregacji w tabelach interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark
 description: W tym artykule opisano operacje prostej agregacji wobec tabel interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.custom: basics, DDL, DML
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 385a365ac3b81bca70a71eeed7ca1876c9df49b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 56cd2284fb4bf7dabb280170757c128b8f985433
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225005"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037314"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Operacje agregacji w tabelach interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark 
 
@@ -93,15 +91,15 @@ Wybierz [opcji magazynu]( https://spark.apache.org/docs/2.2.0/rdd-programming-gu
 
 * MEMORY_AND_DISK: Sklepy RDD jako po deserializacji obiektów języka Java w maszyna JVM. Jeśli RDD nie mieści się w pamięci, magazynu na partycje, które nie mieści się na dysku, a w każdym przypadku, gdy wymagane, ich zapoznaj się z lokalizacji, w których są one przechowywane.
 
-* MEMORY_ONLY_SER (Java/Scala): RDD magazynów jako serializowana tablicy obiektów jednego bajtu Java dla każdej partycji. Ta opcja jest kompaktowa w porównaniu do po deserializacji obiekty, zwłaszcza w przypadku korzystania z szybkiego serializator, ale więcej mocy procesora CPU do odczytu.
+* MEMORY_ONLY_SER (Java/Scala): Sklepy RDD jako Zserializowany tablicę obiektów jednego bajtu Java dla każdej partycji. Ta opcja jest kompaktowa w porównaniu do po deserializacji obiekty, zwłaszcza w przypadku korzystania z szybkiego serializator, ale więcej mocy procesora CPU do odczytu.
 
 * MEMORY_AND_DISK_SER (Java/Scala): Ta opcja magazynowania przypomina MEMORY_ONLY_SER, jedyną różnicą jest to, że wylewa się partycji, które nie mieszczą się w pamięci dysku, zamiast ich ponowne obliczanie, gdy zajdzie taka potrzeba.
 
 * DISK_ONLY: Partycje RDD są przechowywane na dysku tylko.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Replikuje takie Same jak poziomy powyżej, ale każda partycja na dwóch węzłach klastra.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Replikuje takie same jak poziomy powyżej, ale każda partycja na dwóch węzłach klastra.
 
-* (Eksperymentalne) OFF_HEAP: Podobnie jak MEMORY_ONLY_SER, ale jej przechowuje dane w pamięci poza sterty i wymaga, aby wyłączyć sterty pamięci włączenia wcześniej. 
+* OFF_HEAP (wersja eksperymentalna): Podobnie jak MEMORY_ONLY_SER, ale przechowuje dane w pamięci poza sterty i wymaga, aby wyłączyć sterty pamięci włączenia wcześniej. 
 
 ```scala
 //Workaround

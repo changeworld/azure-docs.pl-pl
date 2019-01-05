@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25b8b66e67450cb96cd988efd6dd5ffd03377fde
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016549"
+ms.locfileid: "54052159"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Aplikacja wolno Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
 Ten artykuł pomoże Ci rozwiązywania problemów z wydajnością aplikacji powolne [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -92,7 +92,7 @@ Każda aplikacja usługi App Service zawiera punkt końcowy rozszerzonego zarzą
 - Edytorów kodów źródłowych, takich jak [DevOps platformy Azure](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Narzędzia do zarządzania dla połączonych zasobów, takich jak bazy danych MySQL jest podłączony do aplikacji.
 
-[Usługa Azure Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzenie witryny, która jest również dostępna monitorowania wydajności. Aby korzystać z usługi Application Insights, możesz ponownie skompiluj kod, za pomocą zestawu SDK. Można także zainstalować rozszerzenia, które zapewnia dostęp do dodatkowych danych. Zestaw SDK pozwala napisać kod, aby monitorować użycie i wydajność Twojej aplikacji bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [monitorowania wydajności w aplikacjach sieci web](../application-insights/app-insights-web-monitor-performance.md).
+[Usługa Azure Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzenie witryny, która jest również dostępna monitorowania wydajności. Aby korzystać z usługi Application Insights, możesz ponownie skompiluj kod, za pomocą zestawu SDK. Można także zainstalować rozszerzenia, które zapewnia dostęp do dodatkowych danych. Zestaw SDK pozwala napisać kod, aby monitorować użycie i wydajność Twojej aplikacji bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [monitorowania wydajności w aplikacjach sieci web](../azure-monitor/app/web-monitor-performance.md).
 
 <a name="collect" />
 

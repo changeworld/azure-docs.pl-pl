@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 86823579286ac0b8fae39c265b387ea6b4ad99ee
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fda0f600fa7cb130511f2bd8b53543acfbcc7759
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755244"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054303"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 
@@ -292,4 +292,4 @@ dataflow.to_pandas_dataframe().head()
 |1|1011871|Rynek "rolników Stearns Homestead|http://Stearnshomestead.com |Drogowa ridge 6975|Parma|Cuyahoga|
 |2|1011878|Rynek 100 mila|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. głównej ulicy rolników rynku|http://thetownofsixmile.wordpress.com/ |106 S. głównej ulicy|Sześć mila|||
-|4|1010691|Ulica 10 społeczności rolników rynku|http://agrimissouri.com/mo-grown/grodetail.php... |Ulica 10 i topoli|Lamar|Barton|
+|4|1010691|Ulica 10 społeczności rolników rynku|https://agrimissouri.com/... |Ulica 10 i topoli|Lamar|Barton|

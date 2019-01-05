@@ -1,19 +1,18 @@
 ---
 title: Zmień źródło danych dla HL7 FHIR zasoby — Azure Cosmos DB
 description: Dowiedz się, jak skonfigurować powiadomienia o zmianie dla HL7 FHIR opieki zdrowotnej kartoteki przy użyciu usługi Azure Logic Apps, Azure Cosmos DB i Service Bus.
-keywords: HL7 fhir
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089228"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044522"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Powiadamianie pacjentów zmiany opieki zdrowotnej rekordu HL7 FHIR przy użyciu aplikacji logiki i Azure Cosmos DB
 
@@ -38,9 +37,9 @@ Na wysokim poziomie projektu wymagane następujące kroki przepływu pracy:
 
 ## <a name="solution-architecture"></a>Architektura rozwiązania
 To rozwiązanie wymaga trzech aplikacji logiki, aby spełnić powyższych wymagań i Ukończ przepływ pracy w rozwiązaniu. Trzy aplikacje logiki są:
-1. **Aplikacja HL7 FHIR mapowania**: pobranie dokumentu HL7 C-Życiorysu, przekształca je do zasobu FHIR, a następnie zapisuje je do usługi Azure Cosmos DB.
-2. **Aplikacja EHR**: zapytania repozytorium usługi Azure Cosmos DB FHIR i zapisuje odpowiedź do kolejki usługi Service Bus. Ta aplikacja logiki korzysta [aplikacji interfejsu API](#api-app) do pobrania nowych i zmienionych dokumentów.
-3. **Proces powiadamiania aplikacji**: wysyła wiadomość e-mail z powiadomieniem z dokumentami zasobów FHIR w treści.
+1. **Aplikacja HL7 FHIR mapowania**: Odbiera dokumentu HL7 C-Życiorysu, przekształca je do zasobu FHIR, a następnie zapisuje je do usługi Azure Cosmos DB.
+2. **Aplikacja EHR**: Repozytorium usługi Azure Cosmos DB FHIR zapytania, a następnie zapisuje odpowiedź do kolejki usługi Service Bus. Ta aplikacja logiki korzysta [aplikacji interfejsu API](#api-app) do pobrania nowych i zmienionych dokumentów.
+3. **Proces powiadamiania aplikacji**: Wysyła wiadomość e-mail z powiadomieniem z dokumentami zasobów FHIR w treści.
 
 ![Trzy aplikacje logiki wykorzystanych w tym rozwiązaniu opieki zdrowotnej HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
@@ -57,12 +56,12 @@ Usługa Azure Cosmos DB jest repozytorium dla zasobów FHIR, jak pokazano na pon
 Logic Apps obsługuje procesu przepływu pracy. Poniższe zrzuty ekranu Pokaż aplikacje Logic Apps, utworzone dla tego rozwiązania. 
 
 
-1. **Aplikacja HL7 FHIR mapowania**: odbieranie dokumentu HL7 C-Życiorysu, aby przekształcić je do zasobu FHIR przy użyciu pakietu integracyjnego dla przedsiębiorstw dla usługi Logic Apps. Pakiet integracyjny dla przedsiębiorstw obsługuje mapowanie z Życiorysu C do FHIR zasobów.
+1. **Aplikacja HL7 FHIR mapowania**: Otrzymuj dokumentu HL7 C-Życiorysu i przekształcić je do zasobu FHIR przy użyciu pakietu integracyjnego dla przedsiębiorstw dla usługi Logic Apps. Pakiet integracyjny dla przedsiębiorstw obsługuje mapowanie z Życiorysu C do FHIR zasobów.
 
     ![Aplikacja logiki używaną do odbierania HL7 FHIR rekordów opieki zdrowotnej](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **Aplikacja EHR**: repozytorium usługi Azure Cosmos DB FHIR zapytania i Zapisz odpowiedź do kolejki usługi Service Bus. Kod aplikacji GetNewOrModifiedFHIRDocuments znajduje się poniżej.
+2. **Aplikacja EHR**: Zapytanie usługi Azure Cosmos DB FHIR repozytorium, a następnie zapisz odpowiedź do kolejki usługi Service Bus. Kod aplikacji GetNewOrModifiedFHIRDocuments znajduje się poniżej.
 
     ![Aplikacja logiki, używany do wykonywania zapytań w usłudze Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
@@ -92,8 +91,8 @@ Używamy [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/
 - Int: Liczba zwróconych dokumentów
 
 **Dane wyjściowe**
-- Powodzenie: Kod stanu: odpowiedzi 200,: listy dokumentów (tablicę JSON)
-- Błąd: Kod stanu: odpowiedzi 404,: "żadnych dokumentów, znaleziono"*Nazwa zasobu "* typ zasobu"
+- Powodzenie: Kod stanu: 200, odpowiedzi: Lista dokumentów (tablicę JSON)
+- Błąd: Kod stanu: 404-odpowiedzi: "Znaleziono żadnych dokumentów"*Nazwa zasobu "* typu zasobu"
 
 <a id="api-app-source"></a>
 

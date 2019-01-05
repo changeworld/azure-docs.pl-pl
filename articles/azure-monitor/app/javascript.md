@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63ee308c50a2d5399dd395dc90c2666fae0bbf49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: be7cb2e602f1c8c0c8471c866d68c28e0ec37498
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999462"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042346"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](../../application-insights/app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 Wstaw skrypt tuż przed tagiem `</head>` na każdej stronie, którą chcesz śledzić. Jeśli witryna ma stronę wzorcową, możesz umieścić skrypt na tej stronie. Na przykład:
 
 * W projekcie ASP.NET MVC możesz umieścić go w pliku `View\Shared\_Layout.cshtml`
-* W przypadku witryny programu SharePoint w panelu sterowania otwórz plik [Ustawienia witryny / Strona wzorcowa](../../application-insights/app-insights-sharepoint.md).
+* W przypadku witryny programu SharePoint w panelu sterowania otwórz plik [Ustawienia witryny / Strona wzorcowa](../../azure-monitor/app/sharepoint.md).
 
 Skrypt zawiera klucz instrumentacji, który kieruje dane do odpowiedniego zasobu usługi Application Insights. 
 
@@ -118,7 +118,7 @@ Otwórz blok Przeglądarka, aby wyświetlić agregowane dane wydajności z przeg
 
 ![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij kolejno opcje Ustawienia, Przeglądarki](./media/javascript/03.png)
 
-Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](../../application-insights/app-insights-troubleshoot-faq.md).
+Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](../../azure-monitor/app/troubleshoot-faq.md).
 
 Blok Przeglądarka jest [blokiem Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) z wstępnie ustawionymi filtrami i wybranymi wykresami. Jeśli chcesz, możesz edytować przedział czasu, filtry i konfiguracje wykresów, a następnie zapisać wynik jako ulubiony. Kliknij przycisk **Przywróć domyślne**, aby wrócić do oryginalnej konfiguracji bloku.
 
@@ -227,7 +227,7 @@ Nazwa strony może zawierać te same znaki co adres URL, ale wszystko po znakach
 ## <a name="usage-tracking"></a>Śledzenie użycia
 Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
-* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](../../application-insights/app-insights-usage-overview.md)
+* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](../../azure-monitor/app/usage-overview.md)
 * [Informacje o interfejsie API do monitorowania niestandardowych zdarzeń i metryk](../../azure-monitor/app/api-custom-events-metrics.md).
 
 ## <a name="video"></a> Wideo
@@ -238,7 +238,7 @@ Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
 
 ## <a name="next"></a> Następne kroki
-* [Śledzenie użycia](../../application-insights/app-insights-usage-overview.md)
+* [Śledzenie użycia](../../azure-monitor/app/usage-overview.md)
 * [Niestandardowe zdarzenia i metryki](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Tworzenie — pomiar— nauka](../../application-insights/app-insights-usage-overview.md)
+* [Tworzenie — pomiar— nauka](../../azure-monitor/app/usage-overview.md)
 

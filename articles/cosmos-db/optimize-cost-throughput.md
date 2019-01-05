@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: f0d0442a8640a75b21e95e3ae024fd7994602b51
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807945"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038334"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Optymalizowanie kosztów przepływności w usłudze Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Jak pokazano w poniższej tabeli, w zależności od wybranego interfejsu API, mo
 |Interfejs API|Dla **udostępnionego** przepływności, skonfiguruj |Dla **dedykowanych** przepływności, skonfiguruj |
 |----|----|----|
 |Interfejs API SQL|Database (Baza danych)|Kontener|
-|Interfejs API usługi Azure Cosmos DB, bazy danych mongodb|Database (Baza danych)|Collection|
+|Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB|Database (Baza danych)|Collection|
 |Interfejs API rozwiązania Cassandra|Przestrzeń kluczy|Tabela|
 |Interfejs API języka Gremlin|Konto bazy danych|Graph|
 |Interfejs API tabel|Konto bazy danych|Tabela|
