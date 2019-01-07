@@ -1,20 +1,20 @@
 ---
 title: Diagnozowanie i rozwiązywanie problemów z zestawu SDK usługi Azure Cosmos DB Java Async
 description: Używanie funkcji, takich jak rejestrowania po stronie klienta i inne narzędzia innych firm do identyfikacji, diagnozowanie i rozwiązywanie problemów w usłudze Azure Cosmos DB.
-services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
-ms.component: cosmosdb-sql
-ms.openlocfilehash: 951c26ea5b5c77cf205e7793834d564889b9a635
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: cosmosdb-sql
+ms.reviewer: sngun
+ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876107"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039847"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Rozwiązywanie problemów, gdy używasz zestawu SDK Java Async z kontami interfejsu API SQL usługi Azure Cosmos DB
 W tym artykule omówiono typowe problemy, rozwiązania, czynności diagnostycznych i narzędzia, gdy używasz [zestawu SDK Java Async](sql-api-sdk-async-java.md) z kontami interfejsu API SQL usługi Azure Cosmos DB.
@@ -63,7 +63,7 @@ Jeśli Twoja aplikacja jest wdrożona w usłudze Azure Virtual Machines bez publ
 Jeśli używasz serwera proxy HTTP, upewnij się, może obsługiwać liczbę połączeń, skonfigurowanych w zestawie SDK `ConnectionPolicy`.
 W przeciwnym razie napotkasz problemy z połączeniem.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Nieprawidłowe kodowanie wzorzec: blokowanie wątku Netty operacji We/Wy
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Nieprawidłowy wzorzec kodowania: Blokowanie wątku Netty operacji We/Wy
 
 Zestaw SDK używa [Netty](https://netty.io/) biblioteki we/wy nawiązać połączenia z usługą Azure Cosmos DB. Zestaw SDK ma asynchronicznych interfejsów API i korzysta z nieblokującej na poziomie interfejsów API Netty we/wy. Zestaw SDK we/wy praca jest wykonywana w wątkach Netty we/wy. Liczba operacji We/Wy Netty wątków jest skonfigurowany do być taka sama jak liczba rdzeni procesora CPU maszyny aplikacji. 
 

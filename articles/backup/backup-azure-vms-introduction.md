@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 9a80671a72f059e24a8cebc5de803af9261ad829
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ebb8d5d141dab39e73297342907d4439b30a9fbf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743956"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042482"
 ---
 # <a name="about-azure-vm-backup"></a>Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
 
@@ -42,7 +42,7 @@ Usługa Azure Backup nie szyfruje danych jako część procesu tworzenia kopii z
 
 - Kopii zapasowych maszyn wirtualnych szyfrowane za pomocą funkcji Bitlocker szyfrowania Key(BEK) tylko, a klucz szyfrowania bloków oraz klucz szyfrowania Key(KEK) jest obsługiwany, zarządzane i niezarządzane maszyn wirtualnych platformy Azure.
 - BEK(secrets) i KEK(keys) kopii zapasowej są szyfrowane, dzięki czemu mogą odczytywać i używane tylko wtedy, gdy przywrócone do magazynu kluczy przez autoryzowanych użytkowników.
-- Ponieważ klucz szyfrowania bloków jest również kopię zapasową, w scenariuszach, gdzie klucz szyfrowania bloków zostało utracone lub autoryzowanych użytkowników można przywrócić klucz szyfrowania bloków do magazynu kluczy i odzyskać zaszyfrowanych maszyn wirtualnych. Kluczy i wpisów tajnych zaszyfrowanych maszyn wirtualnych kopię zapasową w postaci zaszyfrowanej, dzięki czemu może odczytywać nieautoryzowanym użytkownikom ani platformy Azure, lub użyj kopii zapasowej kluczy i wpisów tajnych. Tylko użytkownicy z odpowiedni poziom uprawnień można kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, a także kluczy i wpisów tajnych.
+- Ponieważ klucz szyfrowania bloków jest również kopię zapasową, w scenariuszach, gdzie klucz szyfrowania bloków zostało utracone lub autoryzowanych użytkowników można przywrócić klucz szyfrowania bloków do magazynu kluczy i odzyskać zaszyfrowanych maszyn wirtualnych. Kluczy i wpisów tajnych zaszyfrowanych maszyn wirtualnych kopię zapasową w postaci zaszyfrowanej, dzięki czemu może odczytywać nieautoryzowanym użytkownikom ani platformy Azure, lub użyj kopii zapasowej kluczy i wpisów tajnych. Tylko użytkownicy z odpowiedni poziom uprawnień można i przywracanie kopii zapasowej zaszyfrowanych maszyn wirtualnych, a także kluczy i wpisów tajnych.
 
 ## <a name="snapshot-consistency"></a>Migawka spójności
 
@@ -68,7 +68,7 @@ W poniższej tabeli opisano różne typy spójności.
 **migawki** | **Na podstawie usługi VSS** | **Szczegóły** | **Odzyskiwanie**
 --- | --- | --- | ---
 **Spójna na poziomie aplikacji** | Tak (tylko Windows) | Wykonywanie kopii zapasowych spójnych aplikacji przechwytywania pamięci zawartości i oczekujących operacji We/Wy. Migawki spójne z aplikacji, użyj składnika zapisywania usługi VSS (lub pre lub używanego po nim skryptu dla systemu Linux), który zapewnienia spójności danych aplikacji, zanim wystąpi kopii zapasowej. | Podczas przywracania z migawki spójności aplikacji, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje mają swój początek w spójnym stanie.
-**Spójne na poziomie systemu plików** | Tak (tylko Windows) |  Kopie zapasowe spójne z pliku zapewnić spójne tworzenie kopii zapasowych plików na dysku, robienie wszystkie pliki w tym samym czasie.<br/><br/> Punkty odzyskiwania usługi Azure Backup są spójne dla pliku:<br/><br/> -Linux maszyn wirtualnych, kopie zapasowe, które nie mają wstępnie lub używanego po nim skrypty lub które mają skryptu, który uległ awarii.<br/><br/> — Kopie zapasowe maszyn wirtualnych Windows gdzie Usługa VSS nie powiodła się. | W przypadku odzyskiwania przy użyciu migawek spójna na poziomie plików, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje potrzebuje, aby wdrożyć ich własny mechanizm "poprawki", aby upewnić się, że przywróconych danych są spójne.
+**Spójne na poziomie systemu plików** | Tak (tylko Windows) |  Kopie zapasowe spójne z pliku zapewnić spójne tworzenie kopii zapasowych plików na dysku, robienie wszystkie pliki w tym samym czasie.<br/><br/> Punkty odzyskiwania usługi Azure Backup są spójne dla pliku:<br/><br/> -Linux maszyn wirtualnych, kopie zapasowe, które nie mają wstępnie lub używanego po nim skrypty lub które mają skryptu, który uległ awarii.<br/><br/> — Kopie zapasowe maszyn wirtualnych Windows gdzie Usługa VSS nie powiodła się. | W przypadku odzyskiwania przy użyciu migawek spójna na poziomie plików, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje muszą implementować ich własny mechanizm "poprawki", aby upewnić się, że przywróconych danych są spójne.
 **Spójne na poziomie awarii** | Nie | Spójność awarii często zdarza się, wyłączaniu Maszynie wirtualnej platformy Azure w czasie wykonywania kopii zapasowej.  Tylko dane, które już istnieje na dysku w czasie wykonywania kopii zapasowej jest przechwytywane i kopii zapasowej.<br/><br/> Punktu odzyskiwania spójnego na poziomie awarii nie gwarantuje spójności danych dotyczące systemu operacyjnego lub aplikacji. | Istnieją żadnej gwarancji, ale zazwyczaj rozruchów maszyn wirtualnych i zgodny z dyskiem zaznacz, aby naprawić błędy uszkodzenia. Wszystkie dane w pamięci lub zapisu, które nie zostały przeniesione do dysku zostaną utracone. Aplikacje implementować własne Weryfikacja danych. Na przykład dla aplikacji bazy danych, jeśli dziennik transakcji zawiera wpisy, które nie znajdują się w bazie danych, oprogramowanie bazy danych przedstawia dopóki dane są spójne.
 
 
@@ -83,26 +83,14 @@ Usługa Azure Backup ma numer limitów dotyczących subskrypcji i magazynów.
 
 ### <a name="disk-considerations"></a>Zagadnienia dotyczące dysków
 
-Kopia zapasowa próbuje wykonywane tak szybko, jak to możliwe, wykorzystywanie tylu zasobów, ponieważ jest to możliwe.
-
-- Proces tworzenia kopii zapasowej w celu zmaksymalizowania jej szybkość działania, próbuje utworzyć kopię zapasową wszystkich dysków maszyny Wirtualnej w sposób równoległy.
-- Na przykład jeśli maszyna wirtualna ma cztery dyski, usługa próbuje utworzyć kopię zapasową wszystkie cztery dyski równolegle.
-- Liczba dysków, w których powstaje kopia zapasowa jest najważniejszym czynnikiem umożliwiającym określenie ruchu kopii zapasowej konta magazynu.
-- Wszystkie operacje We/Wy są ograniczone dzięki *docelowa przepustowość dla pojedynczego obiektu Blob*, która ma limit równy 60 MB na sekundę.
-- Dla każdego dysku, w których powstaje kopia zapasowa kopia zapasowa Azure odczytuje bloków na dysku i przechowuje tylko zmienionych danych (przyrostową kopię zapasową). Poniższe wartości średniej przepływności można użyć do szacowania czasu wymaganego do utworzenia kopii zapasowej dysku o podanej wielkości.
-
-    **Operacja** | **Najlepszego przypadku przepływności**
-    --- | ---
-    Początkowa kopia zapasowa | 160 MB/s |
-    Przyrostowa kopia zapasowa | 640 MB/s <br><br> Przepływność znacznie spada Jeśli dane różnicowe są rozdzielane na dysku.|
-
+Operacja tworzenia kopii zapasowej optymalizuje przez utworzenie kopii zapasowych dysków maszyny Wirtualnej w sposób równoległy. Na przykład jeśli maszyna wirtualna ma cztery dyski, usługa próbuje utworzyć kopię zapasową wszystkie cztery dyski równolegle. Dla każdego dysku, w których powstaje kopia zapasowa kopia zapasowa Azure odczytuje bloków na dysku i przechowuje tylko zmienionych danych (przyrostową kopię zapasową).
 
 
 ### <a name="scheduling-considerations"></a>Zagadnienia dotyczące planowania
 
 Planowanie tworzenia kopii zapasowej ma wpływ na wydajność.
 
-- Jeśli konfigurujesz zasady, więc wszystkie maszyny wirtualne kopie zapasowe są tworzone w tym samym czasie, zostanie zaplanowane zakleszczenie ruchu jako próbuje utworzyć kopię zapasową wszystkich dysków w sposób równoległy proces tworzenia kopii zapasowej.
+- Jeśli konfigurujesz zasady, więc wszystkie maszyny wirtualne kopie zapasowe są tworzone w tym samym czasie, zostanie zaplanowane zakleszczenie ruchu zgodnie z procesu tworzenia kopii zapasowej próbuje utworzyć kopię zapasową wszystkich dysków w sposób równoległy.
 - Aby zmniejszyć ruch kopii zapasowej, tworzenie kopii zapasowych różnych maszyn wirtualnych w różnych porę dnia, bez nakładania się.
 
 
@@ -128,39 +116,28 @@ Kopia zapasowa składa się z dwóch etapów tworzenie migawek i przekazywania m
 
 Następujące sytuacje, które mogą wpływać na czas wykonywania kopii zapasowych:
 
-
-- **Tworzenie początkowej kopii zapasowej dla nowo dodany dysk do maszyny Wirtualnej już chronione**: Jeśli maszyna wirtualna jest przechodzących przyrostowej kopii zapasowej, gdy nowy dysk zostanie dodany następnie kopii zapasowej pominąć SLA jeden dzień, w zależności od rozmiaru nowego dysku.
-- **Pofragmentowane aplikacji**: Jeśli aplikacja jest nieprawidłowo skonfigurowana może nie być optymalne dla magazynu:
-    - Jeśli migawka zawiera wiele zapisów niewielkich, fragmentacji, usługa spędza dodatkowy czas przetwarzania danych zapisanych przez aplikacje.
-    - W przypadku aplikacji uruchomionych na maszynie Wirtualnej bloku zapisy aplikacji zalecane minimalne wynosząca 8 KB. Jeśli aplikacja korzysta z blokiem mniej niż 8 KB, odbywa się wydajność tworzenia kopii zapasowej.
-- **Konto magazynu przeciążone**: Można było zaplanować tworzenie kopii zapasowej, gdy aplikacja jest uruchomiona w środowisku produkcyjnym lub jeśli więcej niż pięciu do dziesięciu dyski znajdują się w tym samym koncie magazynu.
-- **Tryb wyboru (DW) spójność**: Dysków większych niż 1TB, dysków kopii zapasowej może być w trybie DW z kilku powodów:
-    - Przenosi dysku zarządzanego jako część ponowne uruchomienie maszyny Wirtualnej.
-    - Promuje migawki do podstawowego obiektu blob.
-
+- **Tworzenie początkowej kopii zapasowej dla nowo dodany dysk do maszyny Wirtualnej już chronione**: Jeśli maszyna wirtualna jest w trakcie tworzenia przyrostowych kopii zapasowych i dodaniu nowego dysku do tej maszyny Wirtualnej, a następnie czas tworzenia kopii zapasowej można wyjść poza 24 godziny, ponieważ nowo dodany dysk ma przeprowadzenie replikacji początkowej wraz z replikacji różnicowej istniejących dysków.
+- **Fragmentacja**: Kopii zapasowej produktu skanowania pod kątem zmian przyrostowych między operacjami dwóch kopii zapasowych. Operacje tworzenia kopii zapasowej są szybsze podczas zmiany na dysku jest zlokalizowana w porównaniu do zmiany są rozprzestrzeniania się na dysku. 
+- **Postęp dokonany w**: Dzienny współczynnik zmian (w przypadku replikacja przyrostowa) dysku jest większy niż 200 GB może potrwać większa niż 8 godzin, aby ukończyć operację. Jeśli maszyna wirtualna ma więcej niż jeden dysk i jeden z tych dysków trwa dłużej do wykonywania kopii zapasowych, następnie go może mieć wpływ na ogólną wykonywanie kopii zapasowej lub może spowodować błąd. 
+- **Tryb porównywania (DW) sumy kontrolnej**: Tryb DW jest stosunkowo wolniej niż tryb zoptymalizowane używane przez natychmiastowe RP. Jeśli korzystasz już z RP błyskawiczne i usunięto migawki warstwy 1, kopii zapasowych Przełącza tryb DW, powodując Operacja tworzenia kopii zapasowej niż co 24 godziny (lub niepowodzenie).
 
 ## <a name="restore-considerations"></a>Zagadnienia dotyczące przywracania
 
 Operacja przywracania obejmuje dwa główne zadania: kopiowanie danych z magazynu do na wybranym koncie magazynu i tworzenie maszyny wirtualnej. Czas potrzebny do skopiowania danych z magazynu zależy od tego, gdzie kopie zapasowe są przechowywane na platformie Azure i lokalizacja konta magazynu. Czas poświęcony na kopiowanie danych zależy od:
 
 - **Czas oczekiwania w kolejce**: Ponieważ procesów informatycznych przywrócić zadania z wielu kont magazynu, w tym samym czasie, przywracanie żądania są umieszczane w kolejce.
-- **Czas kopiowania danych**: Dane są kopiowane z magazynu do konta magazynu. Przywróć czas zależy od operacji We/Wy i przepływność wybranego konta magazynu, która korzysta z usługi Azure Backup. W celu skrócenia czasu kopiowania podczas procesu przywracania, wybierz konto magazynu nie załadowano z innymi aplikacji zapisu i odczytu.
+- **Czas kopiowania danych**: Dane są kopiowane z magazynu do konta magazynu. Przywróć czas zależy od operacji We/Wy i przepływność wybranego konta magazynu, który używa usługi Azure Backup. W celu skrócenia czasu kopiowania podczas procesu przywracania, wybierz konto magazynu nie załadowano z innymi aplikacji zapisu i odczytu.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
 Sugerujemy następujące rozwiązania w zakresie podczas konfigurowania kopii zapasowych maszyn wirtualnych:
 
-- Nie Planowanie tworzenia kopii zapasowych dla ponad 100 maszyn wirtualnych z jednego magazynu, w tym samym czasie.
-- Planowanie kopii zapasowych maszyn wirtualnych poza godzinami poza szczytem. Dzięki temu usługa Backup korzysta z operacji We/Wy do przesyłania danych z konta magazynu do magazynu.
-- Jeśli wykonujesz kopie zapasowe dysków zarządzanych, usługa Azure Backup obsługuje zarządzanie magazynem. Jeśli wykonujesz kopie zapasowe dysków niezarządzanych:
-    - Upewnij się, że dotyczą zasady tworzenia kopii zapasowych maszyn wirtualnych, rozkładają się na wielu kontach magazynu.
-    - Nie więcej niż 20 dysków z jednego konta magazynu powinna być chroniona przez ten sam harmonogram tworzenia kopii zapasowej.
-    - Jeśli masz większe niż 20 dyskami na koncie magazynu, rozkłada się na tych maszynach wirtualnych wiele zasad, aby uzyskać wymagane operacje We/Wy podczas fazy transferu procesu tworzenia kopii zapasowej.
-    - Nie należy przywracać maszynę Wirtualną z systemem w magazynie premium storage do tego samego konta magazynu. Jeśli proces operacji przywracania pokrywa się z operacji tworzenia kopii zapasowej, zmniejsza dostępne operacje We/Wy do utworzenia kopii zapasowej.
-    - Dla kopii zapasowej maszyny Wirtualnej usługi Premium na stos kopii zapasowej maszyny Wirtualnej w wersji 1 należy przydzielić tylko 50% całkowitego konta miejsca do magazynowania, dzięki czemu usługa Backup może kopiowania migawki do konta magazynu i transferu danych z konta magazynu do magazynu.
-- Zalecane jest używanie różnych kont magazynu, zamiast przy użyciu tego samego konta magazynu w celu przywracania maszyn wirtualnych z jednym magazynie. Spowoduje to uniknąć ograniczania przepustowości i spowodować 100% przywracania zakończone sukcesem dobrą wydajność.
-- Przywracanie z warstwy 1 magazynu warstwy zostanie ukończona w ciągu kilku minut przed Przywracanie magazynu warstwy 2, które zajmuje kilka godzin. Zaleca się używać [funkcji błyskawiczne RP](backup-upgrade-to-vm-backup-stack-v2.md) Aby szybciej przeprowadzać operacje przywracania. Jest to tylko odpowiednie zarządzanych maszyn wirtualnych platformy Azure.
-
+- Uaktualnij magazynów do błyskawicznych jednostki Uzależnionej. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+- Rozważ zmodyfikowanie zasad czasu podanego ustawienia domyślnego (na przykład. Jeśli czas zasadę domyślną jest 12:00 AM należy wziąć pod uwagę przyroście minut) kiedy są pobierane migawki danych, aby zapewnić optymalne wykorzystanie zasobów.
+- Dla maszyny Wirtualnej usługi Premium kopii zapasowej na temat funkcji innych niż - błyskawiczne RP przydziela ~ 50% całkowitego konta miejsca do magazynowania. Usługa Kopia zapasowa wymaga to miejsce, do kopiowania migawki do tego samego konta magazynu, a także podczas przenoszenia go do magazynu.
+- Do przywrócenia maszyn wirtualnych z jednego magazynu, zalecane jest aby stosować różne [kont magazynu w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) aby upewnić się, nie ograniczeni docelowe konto magazynu. Na przykład każda maszyna wirtualna musi mieć inne konto magazynu (Jeśli 10 maszyn wirtualnych zostaną przywrócone, a następnie należy wziąć pod uwagę przy użyciu 10 różnych kont magazynu).
+- Przywracanie z warstwy magazynu warstwy 1 (Migawka) zakończy się w ciągu kilku minut (ponieważ jest to tego samego konta magazynu) dla warstwy magazynu warstwy 2 (magazynu), co może zająć do godziny. Zaleca się używać [błyskawiczne RP](backup-upgrade-to-vm-backup-stack-v2.md) funkcji, aby szybciej przeprowadzać operacje przywracania w przypadku których dane są dostępne w warstwie 1 (Jeśli dane mają zostać przywrócone z magazynu, a następnie potrwa czasu).
+- Limit liczby dysków na konto magazynu jest względem jak duże dyski są wykorzystywane przez aplikacje działające na maszynie Wirtualnej IaaS. Upewnij się, jeśli wiele dysków znajdują się w ramach pojedynczego konta magazynu. Ogólną praktyką jest Jeśli w 5 – 10 dysków co najmniej jednego konta magazynu, równoważenie obciążenia, przenosząc niektóre dyski na oddzielnych kontach magazynu.
 
 ## <a name="backup-costs"></a>Koszty tworzenia kopii zapasowej
 
@@ -193,6 +170,5 @@ Za przykład niech posłuży A2 standardowy rozmiar maszyny wirtualnej, która m
 
 Po zapoznaniu się z procesu kopii zapasowej i zagadnienia dotyczące wydajności, wykonaj następujące czynności:
 
-- Pobierz [arkusz kalkulacyjny programu Excel planowania pojemności na potrzeby](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33) możesz wypróbować dysku i kopii zapasowych, planowanie liczb.
 - [Dowiedz się więcej o](../virtual-machines/windows/premium-storage-performance.md) Dostrajanie aplikacji, aby uzyskać optymalną wydajność z usługą Azure storage. Fokus artykuł w magazynie premium storage, ale jest również zastosowanie w przypadku dysków magazynu w warstwie standardowa.
 - [Rozpoczynanie pracy](backup-azure-arm-vms-prepare.md) przy użyciu kopii zapasowej, przeglądając maszyn wirtualnych z osłoną i ograniczenia, tworzenie magazynu i przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych.
