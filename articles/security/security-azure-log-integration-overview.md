@@ -1,6 +1,6 @@
 ---
-title: Integracja dzienników z zasobów platformy Azure z systemów SIEM | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat integracji dziennika Azure, jego kluczowych możliwości i jak działa.
+title: Integrowanie dzienników z zasobów platformy Azure z systemów SIEM | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -15,66 +15,66 @@ ms.workload: na
 ms.date: 06/07/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 3c875060a7abdf4431026e79ce966efdc89e4e77
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f20da4ab60eeec3e9c353445f6bc20449b9c1cb6
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236182"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584483"
 ---
-# <a name="introduction-to-azure-log-integration"></a>Wprowadzenie do integracji dzienników Azure
+# <a name="introduction-to-azure-log-integration"></a>Wprowadzenie do integracji dzienników platformy Azure
 
 >[!IMPORTANT]
-> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01. Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-Integracja dziennika Azure została udostępniona usprawniających integracji Azure dzienniki z lokalnego systemu Security Information and Event Management (SIEM).
+Integracja dzienników platformy Azure została udostępniona upraszcza zadanie integracji Azure dzienników z lokalnym systemem Security Information and Event Management (SIEM).
 
- Zalecaną metodą całkującej dzienników Azure jest do użycia z dostawcą SIEM łączników. Azure Monitor zapewnia możliwość strumienia dzienniki w usłudze event hubs i dostawców SIEM można napisać łączniki do dalszej integracji dzienników z Centrum zdarzeń SIEM.  Opis sposobu wykonywania, postępuj zgodnie z instrukcjami [Monitor strumienia danych monitorowania usługi event hubs](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Artykuł zawiera także listę rozwiązań Siem, dla których bezpośrednie Azure łączników są już dostępne.  
+ Jest zalecaną metodą zintegrowanie dzienniki platformy Azure do użycia łączników s dostawcy rozwiązania SIEM. Usługa Azure Monitor umożliwia przesyłanie strumieniowe dzienników do usługi event hubs i dostawców rozwiązania SIEM można napisać łączniki do dalszej integracji dzienników z Centrum zdarzeń do rozwiązania SIEM.  Aby uzyskać opis sposobu działania, postępuj zgodnie z instrukcjami w [Monitor strumienia danych monitorowania usługi event hubs](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Artykuł zawiera również listę rozwiązań Siem, dla których bezpośrednie łączników usługi Azure są już dostępne.  
 
 > [!IMPORTANT]
-> Większość dostawców rozwiązań SIEM zainteresowanie podstawowy jest zbierania dzienników maszyny wirtualnej, dołączyć tę opcję w ich rozwiązania. Przy użyciu SIEM dostawcy łącznik jest zawsze preferowanych alternatywnej.
+> Jeśli zainteresowanie podstawowy jest zbieranie dzienników maszyny wirtualnej, większość dostawców rozwiązania SIEM uwzględnić tę opcję w swoich rozwiązaniach. Za pomocą rozwiązania SIEM dostawcy łącznik jest zawsze preferowana alternatywa.
 
-Dokumentację dotyczącą funkcji integracji dziennika Azure jest nadal obsługiwane dopóki funkcja jest przestarzała.
+Dokumentacja na temat funkcji Azure Log Integration nadal jest już uaktualniana, dopóki ta funkcja jest przestarzała.
 
-Przeczytaj więcej dowiedzieć się więcej o funkcji integracji dziennika Azure:
+Odczyt, aby dowiedzieć się więcej na temat funkcji Azure Log Integration:
 
-Integracja z usługą Azure dziennika zdarzeń systemu Windows zbiera dzienniki Podglądu zdarzeń systemu Windows, [Dzienniki aktywności Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), [alerty Centrum zabezpieczeń Azure](../security-center/security-center-intro.md), i [dzienników diagnostyki Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) z Zasoby platformy Azure. Integracja ułatwia rozwiązania SIEM, podaj jednolity pulpit nawigacyjny dla wszystkich zasobów, czy lokalnie lub w chmurze. Pulpit nawigacyjny służy do odbierania, agregacji skorelowania i analizować alerty dla zdarzeń zabezpieczeń.
+Integracja dzienników platformy Azure zbiera Windows zdarzenia w dziennikach podglądu zdarzeń Windows [Dzienniki aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md), [alerty Centrum zabezpieczeń Azure](../security-center/security-center-intro.md), i [dzienniki diagnostyczne platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md) z Zasoby platformy Azure. Integracja ułatwia rozwiązania SIEM, czy zapewnić jednolity pulpit nawigacyjny dla wszystkich zasobów w środowisku lokalnym lub w chmurze. Pulpit nawigacyjny służy do odbierania, agregacji, korelowanie i analizowanie alerty dla zdarzeń dotyczących zabezpieczeń.
 
 > [!NOTE]
-> Obecnie integracji dziennika Azure obsługuje tylko Azure handlowych i chmury Azure dla instytucji rządowych. Inne chmury nie są obsługiwane.
+> Obecnie usługa Azure Log Integration obsługuje tylko Azure komercyjnych i chmury Azure Government. Inne chmury nie są obsługiwane.
 
-![Proces integracji dziennika Azure][1]
+![Proces integracji dzienników Azure][1]
 
 ## <a name="what-logs-can-i-integrate"></a>Jakie dzienniki można zintegrować?
 
-Azure tworzy szczegółowe rejestrowanie dla poszczególnych usług Azure. Dzienniki reprezentują trzy typy dziennika:
+Azure tworzy szczegółowe rejestrowanie dla poszczególnych usług platformy Azure. Dzienniki reprezentują trzy typy dzienników:
 
-* **Dzienniki sterowania i zarządzania nimi**: zapewniają wgląd w [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) operacji tworzenia, AKTUALIZOWANIA lub usuwania. Przykładem tego typu dziennika jest dziennik aktywności platformy Azure.
-* **Dane płaszczyzny dzienniki**: zapewniają wgląd w zdarzenia, które są wywoływane, gdy używasz zasobów platformy Azure. Przykładem tego typu dziennika jest Podgląd zdarzeń systemu Windows **systemu**, **zabezpieczeń**, i **aplikacji** kanałów na maszynie wirtualnej systemu Windows. Innym przykładem jest rejestrowania diagnostyki Azure można skonfigurować za pośrednictwem Monitora Azure.
-* **Przetworzonych zdarzeń**: Podaj przeanalizowane zdarzeń i informacji o alertach, które są przetwarzane. Przykładem tego typu zdarzenia jest alerty Centrum zabezpieczeń Azure. Centrum zabezpieczeń Azure przetwarza i analizuje subskrypcji do alertów, które mają zastosowanie do bieżącego strukturę bezpieczeństwa podaj.
+* **Dzienniki kontroli/zarządzania**: Zapewniają widoczność [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) operacje tworzenia, AKTUALIZOWANIA lub usuwania. W dzienniku aktywności platformy Azure znajduje się przykład tego typu dziennika.
+* **Dzienniki na płaszczyźnie danych**: Zapewniają wgląd w zdarzenia, które są wywoływane, gdy używasz zasobów platformy Azure. Przykładem tego typu dziennika jest Podgląd zdarzeń Windows **systemu**, **zabezpieczeń**, i **aplikacji** kanałów na maszynie wirtualnej Windows. Innym przykładem jest rejestrowania diagnostyki platformy Azure można skonfigurować za pomocą usługi Azure Monitor.
+* **Przetworzone zdarzenia**: Podaj przeanalizowany zdarzeń i informacje o alertach, które są przetwarzane dla Ciebie. Przykładem tego typu zdarzenia jest alerty Centrum zabezpieczeń Azure. Usługa Azure Security Center przetwarza i analizuje subskrypcji, aby zapewnić alerty, które są istotne dla bieżącego poziomu bezpieczeństwa.
 
-Integracja z usługą Azure dziennika obsługuje ArcSight, QRadar i Splunk. Skontaktuj się z dostawcą SIEM w celu oceny, czy dostawca posiada natywnego łącznika. Nie używaj integracji dziennika Azure, jeśli natywnego łącznika jest dostępna.
+Integracja dzienników platformy Azure obsługuje ArcSight QRadar i Splunk. Skontaktuj się z dostawcą rozwiązania SIEM, aby ocenić, czy dostawca posiada natywnych łącznika. Nie należy używać usługi Azure Log Integration, jeśli dostępny jest łącznik natywnych.
 
-Jeśli nie są dostępne żadne inne opcje, należy wziąć pod uwagę przy użyciu integracji z dzienników Azure. W poniższej tabeli przedstawiono Nasze zalecenia:
+Jeśli brak innych dostępnych opcji, należy wziąć pod uwagę za pomocą usługi Azure Log Integration. Poniższa tabela zawiera Nasze zalecenia:
 
-|SIEM | Klient używa już integrator dzienników Azure | Klient bada opcji integracji SIEM|
+|SIEM | Klient używa już integratora dziennika platformy Azure | Klient, bada opcji integracji rozwiązania SIEM|
 |---------|--------------------------|-------------------------------------------|
-|**Splunk** | Rozpocząć migrację do [dodatek Azure Monitor dla Splunk](https://splunkbase.splunk.com/app/3534/). | Użyj [łącznik Splunk](https://splunkbase.splunk.com/app/3534/). |
-|**QRadar** | Migracja do i rozpocząć korzystanie z łącznika QRadar, które są udokumentowane w ostatniej sekcji [Azure strumienia danych do Centrum zdarzeń do użycia przez monitorowania przez narzędzie zewnętrzne](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). | Korzystania z łącznika QRadar, które są udokumentowane w ostatniej sekcji [Azure strumienia danych do Centrum zdarzeń do użycia przez monitorowania przez narzędzie zewnętrzne](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). |
-|**ArcSight** | Nadal używać integrator dzienników Azure, aż do łącznika jest dostępny, a następnie przeprowadzić migrację do rozwiązania opartego na łącznika.  | Rozważ użycie zamiast Analiza dzienników Azure. Nie są podłączone do integracji dziennika Azure, chyba że chcesz przejść przez proces migracji, po udostępnieniu łącznika. |
+|**Splunk** | Rozpocznij Migrowanie na [dodatek usługi Azure Monitor dla Splunk](https://splunkbase.splunk.com/app/3534/). | Użyj [łącznika Splunk](https://splunkbase.splunk.com/app/3534/). |
+|**QRadar** | Migrowanie do lub rozpocząć korzystanie z łącznika QRadar, które jest opisane w ostatniej sekcji [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). | Używanie łącznika QRadar wymienioną w ostatniej sekcji [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). |
+|**ArcSight** | W dalszym ciągu używać integratora dziennika platformy Azure, dopóki łącznik jest dostępny, a następnie przeprowadzić migrację do rozwiązań opartych na łącznika.  | Należy rozważyć użycie usługi Azure Log Analytics jako alternatywa. Powiadomień nie dołączy do integracji dziennika Azure, chyba że chcesz przejść przez proces migracji po udostępnieniu łącznika. |
 
 > [!NOTE]
-> Chociaż integracji dziennika Azure to rozwiązanie bezpłatne, istnieją magazynu Azure koszty związane z magazynu informacji o pliku dziennika.
+> Integracja dzienników platformy Azure jest bezpłatne rozwiązanie, istnieją koszty magazynów platformy Azure związane z magazynem informacje pliku dziennika.
 
-Jeśli potrzebujesz pomocy, możesz utworzyć [żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md). Dla usługi, wybierz **integracji dziennika**.
+Jeśli potrzebujesz pomocy, możesz utworzyć [żądania pomocy technicznej](../azure-supportability/how-to-create-azure-support-request.md). Usługi, wybierz **integracji dzienników**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule wprowadzone do integracji dziennika Azure. Aby dowiedzieć się więcej na temat integracji dziennika Azure i typy dzienników, które są obsługiwane, zobacz następujące artykuły:
+Ten artykuł zawiera wprowadzenie do integracji dziennika Azure. Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure i typy dzienników, które są obsługiwane, zobacz następujące artykuły:
 
-* [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-get-started.md). Ten samouczek przeprowadzi Cię przez instalację integracji dziennika Azure. Zawiera również opis integrowanie dzienników z magazynu systemu Windows Azure Diagnostics (WAD), dzienniki aktywności platformy Azure, alerty Centrum zabezpieczeń Azure i dzienników inspekcji usługi Azure Active Directory.
-* [Integracja dziennika Azure — często zadawane pytania (FAQ)](security-azure-log-integration-faq.md). Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące integracji dziennika Azure.
-* Dowiedz się więcej o sposobie [strumienia Azure monitorowania danych do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+* [Rozpoczynanie pracy z usługą Azure Log Integration](security-azure-log-integration-get-started.md). Ten samouczek przeprowadzi instalację integracji dzienników Azure. Ona również opis integracji dzienników z magazynu Windows Azure Diagnostics narzędzie diagnostyczne, dzienniki aktywności platformy Azure, alertów usługi Azure Security Center i dzienników inspekcji usługi Azure Active Directory.
+* [Integracja dzienników platformy Azure — często zadawane pytania (FAQ)](security-azure-log-integration-faq.md). Tych często zadawanych PYTAŃ, odpowiedzi na często zadawane pytania dotyczące usługi Azure Log Integration.
+* Dowiedz się więcej na temat [strumienia monitorujących dane do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png

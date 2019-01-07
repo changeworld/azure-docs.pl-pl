@@ -2,382 +2,296 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: c4329b9efef3cdb2911466e64ac6c9f07a1e9b31
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52271652"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728574"
 ---
-<a name="cs_0_csharpprogramexample_h2"/>
-
 ## <a name="c-program-example"></a>Przykład programu w języku C#
 
-W kolejnych sekcjach tego artykułu zaprezentowano program w języku C#, który wysyła instrukcje języka Transact-SQL do bazy danych SQL przy użyciu platformy ADO.NET. Program w języku C# wykonuje następujące akcje:
+W kolejnych sekcjach tego artykułu zaprezentowano program w języku C#, który wysyła instrukcje języka Transact-SQL (T-SQL) do bazy danych SQL przy użyciu platformy ADO.NET. Program w języku C# prezentuje następujące akcje:
 
-1. [Łączy się z naszą bazą danych SQL za pomocą platformy ADO.NET](#cs_1_connect).
-2. [Tworzy tabele](#cs_2_createtables).
-3. [Wypełnia tabele danymi, wydając instrukcje INSERT języka T-SQL](#cs_3_insert).
-4. [Aktualizuje dane przy użyciu sprzężenia](#cs_4_updatejoin).
-5. [Usuwa dane przy użyciu sprzężenia](#cs_5_deletejoin).
-6. [Wybiera wiersze danych przy użyciu sprzężenia](#cs_6_selectrows).
-7. Zamyka połączenie (co usuwa wszystkie tabele tymczasowe z bazy danych tempdb).
+- [Połączenie z bazą danych SQL za pomocą platformy ADO.NET](#cs_1_connect)
+- [Metody, które zwracają instrukcje języka T-SQL](#cs_2_return)
+    - Tworzenie tabel
+    - Wypełnianie tabel danymi
+    - Aktualizowanie, usuwanie i wybieranie danych
+- [Przesyłanie kodu języka T-SQL do bazy danych](#cs_3_submit)
 
-Program w języku C# zawiera:
+### <a name="entity-relationship-diagram-erd"></a>Diagram relacji jednostek
 
-- Kod w języku C# do łączenia się z bazą danych.
-- Metody zwracające kod źródłowy w języku T-SQL.
-- Dwie metody wysyłające kod w języku T-SQL do bazy danych.
+Wcześniejsze instrukcje `CREATE TABLE` zawierają słowo kluczowe **REFERENCES** w celu utworzenia relacji między dwiema tabelami za pomocą *klucza obcego*. Jeśli używasz bazy danych *tempdb*, wykomentuj słowo kluczowe `--REFERENCES`, wpisując na początku dwa łączniki.
 
-#### <a name="to-compile-and-run"></a>Kompilowanie i uruchamianie
+Ten diagram relacji jednostek przedstawia relację między dwiema tabelami. Wartości w kolumnie *podrzędnej* **tabEmployee.DepartmentCode** są ograniczone do wartości znajdujących się w kolumnie *nadrzędnej* **tabDepartment.DepartmentCode**.
 
-Ten program w języku C# to logicznie jeden plik cs. Tutaj jednak program jest fizycznie podzielony na kilka bloków kodu, aby poprawić widoczność i czytelność kodu. Aby skompilować i uruchomić ten program, wykonaj następujące czynności:
-
-1. Utwórz projekt w języku C# w programie Visual Studio.
-    - Typem projektu powinna być aplikacja *konsoli*. Należy go wybrać z hierarchii zbliżonej do następującej: **Szablony** > **Visual C#** > **Klasyczny pulpit systemu Windows** > **Aplikacja konsoli (.NET Framework)**.
-3. W pliku **Program.cs** wymaż wiersze kodu początkowego.
-3. Skopiuj i wklej do pliku Program.cs każdy z następujących bloków, w tej samej kolejności, w jakiej są wyświetlane tutaj.
-4. W pliku Program.cs zmodyfikuj następujące wartości w metodzie **Main**:
-
-   - **cb.DataSource**
-   - **cd.UserID**
-   - **cb.Password**
-   - **InitialCatalog**
-
-5. Upewnij się, że przywoływany jest zestaw **System.Data.dll**. Aby to sprawdzić, rozwiń węzeł **Odwołania** w okienku **Eksplorator rozwiązań**.
-6. Aby skompilować program w programie Visual Studio, kliknij menu **Kompilacja**.
-7. Aby uruchomić program z programu Visual Studio, kliknij przycisk **Uruchom**. Dane wyjściowe raportu są wyświetlane w oknie cmd.exe.
+![Diagram relacji jednostek pokazujący klucz obcy](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Istnieje możliwość edytowania kodu w języku T-SQL w celu dodania znaku **#** na początku nazw tabel, co powoduje ich utworzenie jako tabel tymczasowych w **bazie danych tempdb**. Może to być przydatne dla celów demonstracyjnych, gdy nie jest dostępna testowa baza danych. Tabele tymczasowe są usuwane automatycznie przy zamykaniu połączenia. W przypadku tabel tymczasowych nie są wymuszane żadne instrukcje REFERENCES dla kluczy obcych.
->
+> Istnieje możliwość edytowania kodu w języku T-SQL w celu dodania znaku `#` na początku nazw tabel, co powoduje ich utworzenie jako tabel tymczasowych w *bazie danych tempdb*. Jest to przydatne dla celów demonstracyjnych, gdy nie jest dostępna testowa baza danych. Podczas ich używania nie są wymuszane żadne odwołania do kluczy obcych. Ponadto tabele tymczasowe są usuwane automatycznie, gdy połączenie zostanie zamknięte po zakończeniu działania programu.
+
+### <a name="to-compile-and-run"></a>Kompilowanie i uruchamianie
+
+Program w języku C# jest logicznie jednym plikiem cs, ale fizycznie jest podzielony na kilka bloków kodu, aby poprawić czytelność. Aby skompilować i uruchomić program, wykonaj następujące czynności:
+
+1. Utwórz projekt w języku C# w programie Visual Studio. Typ projektu powinien mieć wartość *Konsola*, którą można znaleźć w obszarze **Szablony** > **Visual C#** > **Aplikacja klasyczna systemu Windows** > **Aplikacja konsoli (.NET Framework)**.
+
+1. W pliku *Program.cs* zamień startowe wiersze kodu, wykonując następujące czynności:
+
+    1. Skopiuj i wklej poniższe bloki kodu w tej samej kolejności, w której są zaprezentowane, zobacz sekcje [Połączenie z bazą danych](#cs_1_connect), [Generowanie kodu języka T-SQL](#cs_2_return) i [Przesyłanie do bazy danych](#cs_3_submit).
+
+    1. Zmień następujące wartości w metodzie `Main`:
+
+        - *cb.DataSource*
+        - *cb.UserID*
+        - *cb.Password*
+        - *cb.InitialCatalog*
+
+1. Upewnij się, że przywoływany jest zestaw *System.Data.dll*. Aby to sprawdzić, rozwiń węzeł **Odwołania** w okienku **Eksplorator rozwiązań**.
+
+1. Aby skompilować i uruchomić program z poziomu programu Visual Studio, kliknij przycisk **Uruchom**. Dane wyjściowe raportu są wyświetlane w oknie programu, a wartości identyfikatora GUID będą różnić się w różnych przebiegach testu.
+
+    ```Output
+    =================================
+    T-SQL to 2 - Create-Tables...
+    -1 = rows affected.
+
+    =================================
+    T-SQL to 3 - Inserts...
+    8 = rows affected.
+
+    =================================
+    T-SQL to 4 - Update-Join...
+    2 = rows affected.
+
+    =================================
+    T-SQL to 5 - Delete-Join...
+    2 = rows affected.
+
+    =================================
+    Now, SelectEmployees (6)...
+    8ddeb8f5-9584-4afe-b7ef-d6bdca02bd35 , Alison , 20 , acct , Accounting
+    9ce11981-e674-42f7-928b-6cc004079b03 , Barbara , 17 , hres , Human Resources
+    315f5230-ec94-4edd-9b1c-dd45fbb61ee7 , Carol , 22 , acct , Accounting
+    fcf4840a-8be3-43f7-a319-52304bf0f48d , Elle , 15 , NULL , NULL
+    View the report output here, then press any key to end the program...
+    ```
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>Blok nr 1 kodu w języku C#: łączenie za pomocą platformy ADO.NET
 
-- [Dalej](#cs_2_createtables)
-
+### <a name="connect-to-sql-database-using-adonet"></a>Połączenie z bazą danych SQL za pomocą platformy ADO.NET
 
 ```csharp
 using System;
-using System.Data.SqlClient;   // System.Data.dll 
+using System.Data.SqlClient;   // System.Data.dll
 //using System.Data;           // For:  SqlDbType , ParameterDirection
 
 namespace csharp_db_test
 {
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         try
-         {
-            var cb = new SqlConnectionStringBuilder();
-            cb.DataSource = "your_server.database.windows.net";
-            cb.UserID = "your_user";
-            cb.Password = "your_password";
-            cb.InitialCatalog = "your_database";
-
-            using (var connection = new SqlConnection(cb.ConnectionString))
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
             {
-               connection.Open();
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "your_server.database.windows.net";
+                cb.UserID = "your_user";
+                cb.Password = "your_password";
+                cb.InitialCatalog = "your_database";
 
-               Submit_Tsql_NonQuery(connection, "2 - Create-Tables",
-                  Build_2_Tsql_CreateTables());
+                using (var connection = new SqlConnection(cb.ConnectionString))
+                {
+                    connection.Open();
 
-               Submit_Tsql_NonQuery(connection, "3 - Inserts",
-                  Build_3_Tsql_Inserts());
+                    Submit_Tsql_NonQuery(connection, "2 - Create-Tables", Build_2_Tsql_CreateTables());
 
-               Submit_Tsql_NonQuery(connection, "4 - Update-Join",
-                  Build_4_Tsql_UpdateJoin(),
-                  "@csharpParmDepartmentName", "Accounting");
+                    Submit_Tsql_NonQuery(connection, "3 - Inserts", Build_3_Tsql_Inserts());
 
-               Submit_Tsql_NonQuery(connection, "5 - Delete-Join",
-                  Build_5_Tsql_DeleteJoin(),
-                  "@csharpParmDepartmentName", "Legal");
+                    Submit_Tsql_NonQuery(connection, "4 - Update-Join", Build_4_Tsql_UpdateJoin(),
+                        "@csharpParmDepartmentName", "Accounting");
 
-               Submit_6_Tsql_SelectEmployees(connection);
+                    Submit_Tsql_NonQuery(connection, "5 - Delete-Join", Build_5_Tsql_DeleteJoin(),
+                        "@csharpParmDepartmentName", "Legal");
+
+                    Submit_6_Tsql_SelectEmployees(connection);
+                }
             }
-         }
-         catch (SqlException e)
-         {
-            Console.WriteLine(e.ToString());
-         }
-         Console.WriteLine("View the report output here, then press any key to end the program...");
-         Console.ReadKey();
-      }
-```
-
-
-<a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>Blok nr 2 kodu w języku C#: kod w języku T-SQL do tworzenia tabel
-
-- [Wstecz](#cs_1_connect) &nbsp; / &nbsp; [Dalej](#cs_3_insert)
-
-```csharp
-      static string Build_2_Tsql_CreateTables()
-      {
-         return @"
-DROP TABLE IF EXISTS tabEmployee;
-DROP TABLE IF EXISTS tabDepartment;  -- Drop parent table last.
-
-
-CREATE TABLE tabDepartment
-(
-   DepartmentCode  nchar(4)          not null
-      PRIMARY KEY,
-   DepartmentName  nvarchar(128)     not null
-);
-
-CREATE TABLE tabEmployee
-(
-   EmployeeGuid    uniqueIdentifier  not null  default NewId()
-      PRIMARY KEY,
-   EmployeeName    nvarchar(128)     not null,
-   EmployeeLevel   int               not null,
-   DepartmentCode  nchar(4)              null
-      REFERENCES tabDepartment (DepartmentCode)  -- (REFERENCES would be disallowed on temporary tables.)
-);
-";
-      }
-```
-
-#### <a name="entity-relationship-diagram-erd"></a>Diagram relacji jednostek
-
-Wcześniejsze instrukcji CREATE TABLE zawierają słowo kluczowe **REFERENCES** do tworzenia relacji za pomocą *klucza obcego* między dwiema tabelami.  Jeśli używasz bazy danych tempdb, wykomentuj słowo kluczowe `--REFERENCES`, wpisując na początku dwa łączniki.
-
-Poniżej zaprezentowano diagram relacji jednostek, który przedstawia relację między dwiema tabelami. Wartości w kolumnie *podrzędnej* #tabEmployee.DepartmentCode są ograniczone do wartości znajdujących się w kolumnie *nadrzędnej* #tabDepartment.Department.
-
-![Diagram relacji jednostek pokazujący klucz obcy](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
-
-
-<a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>Blok nr 3 kodu w języku C#: kod w języku T-SQL do wstawiania danych
-
-- [Wstecz](#cs_2_createtables) &nbsp; / &nbsp; [Dalej](#cs_4_updatejoin)
-
-
-```csharp
-      static string Build_3_Tsql_Inserts()
-      {
-         return @"
--- The company has these departments.
-INSERT INTO tabDepartment
-   (DepartmentCode, DepartmentName)
-      VALUES
-   ('acct', 'Accounting'),
-   ('hres', 'Human Resources'),
-   ('legl', 'Legal');
-
--- The company has these employees, each in one department.
-INSERT INTO tabEmployee
-   (EmployeeName, EmployeeLevel, DepartmentCode)
-      VALUES
-   ('Alison'  , 19, 'acct'),
-   ('Barbara' , 17, 'hres'),
-   ('Carol'   , 21, 'acct'),
-   ('Deborah' , 24, 'legl'),
-   ('Elle'    , 15, null);
-";
-      }
-```
-
-
-<a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>Blok nr 4 kodu w języku C#: kod w języku T-SQL do aktualizacji ze sprzężeniem
-
-- [Wstecz](#cs_3_insert) &nbsp; / &nbsp; [Dalej](#cs_5_deletejoin)
-
-
-```csharp
-      static string Build_4_Tsql_UpdateJoin()
-      {
-         return @"
-DECLARE @DName1  nvarchar(128) = @csharpParmDepartmentName;  --'Accounting';
-
-
--- Promote everyone in one department (see @parm...).
-UPDATE empl
-   SET
-      empl.EmployeeLevel += 1
-   FROM
-      tabEmployee   as empl
-      INNER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   WHERE
-      dept.DepartmentName = @DName1;
-";
-      }
-```
-
-
-<a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>Blok nr 5 kodu w języku C#: kod w języku T-SQL do usuwania ze sprzężeniem
-
-- [Wstecz](#cs_4_updatejoin) &nbsp; / &nbsp; [Dalej](#cs_6_selectrows)
-
-
-```csharp
-      static string Build_5_Tsql_DeleteJoin()
-      {
-         return @"
-DECLARE @DName2  nvarchar(128);
-SET @DName2 = @csharpParmDepartmentName;  --'Legal';
-
-
--- Right size the Legal department.
-DELETE empl
-   FROM
-      tabEmployee   as empl
-      INNER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   WHERE
-      dept.DepartmentName = @DName2
-
--- Disband the Legal department.
-DELETE tabDepartment
-   WHERE DepartmentName = @DName2;
-";
-      }
-```
-
-
-
-<a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>Blok nr 6 kodu w języku C#: kod w języku T-SQL do wybierania wierszy
-
-- [Wstecz](#cs_5_deletejoin) &nbsp; / &nbsp; [Dalej](#cs_6b_datareader)
-
-
-```csharp
-      static string Build_6_Tsql_SelectEmployees()
-      {
-         return @"
--- Look at all the final Employees.
-SELECT
-      empl.EmployeeGuid,
-      empl.EmployeeName,
-      empl.EmployeeLevel,
-      empl.DepartmentCode,
-      dept.DepartmentName
-   FROM
-      tabEmployee   as empl
-      LEFT OUTER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   ORDER BY
-      EmployeeName;
-";
-      }
-```
-
-
-<a name="cs_6b_datareader"/>
-### <a name="c-block-6b-executereader"></a>Blok nr 6b kodu w języku C#: ExecuteReader
-
-- [Wstecz](#cs_6_selectrows) &nbsp; / &nbsp; [Dalej](#cs_7_executenonquery)
-
-Ta metoda jest przeznaczona do uruchamiania instrukcji SELECT w języku T-SQL, która jest tworzona przez metodę **Build_6_Tsql_SelectEmployees**.
-
-
-```csharp
-      static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)
-      {
-         Console.WriteLine();
-         Console.WriteLine("=================================");
-         Console.WriteLine("Now, SelectEmployees (6)...");
-
-         string tsql = Build_6_Tsql_SelectEmployees();
-
-         using (var command = new SqlCommand(tsql, connection))
-         {
-            using (SqlDataReader reader = command.ExecuteReader())
+            catch (SqlException e)
             {
-               while (reader.Read())
-               {
-                  Console.WriteLine("{0} , {1} , {2} , {3} , {4}",
-                     reader.GetGuid(0),
-                     reader.GetString(1),
-                     reader.GetInt32(2),
-                     (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
-                     (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
-               }
+                Console.WriteLine(e.ToString());
             }
-         }
-      }
+
+            Console.WriteLine("View the report output here, then press any key to end the program...");
+            Console.ReadKey();
+        }
 ```
 
+<a name="cs_2_return"/>
 
-<a name="cs_7_executenonquery"/>
-### <a name="c-block-7-executenonquery"></a>Blok nr 7 kodu w języku C#: ExecuteNonQuery
-
-- [Wstecz](#cs_6b_datareader) &nbsp; / &nbsp; [Dalej](#cs_8_output)
-
-Ta metoda jest wywoływana dla operacji, które modyfikują dane w tabelach bez zwracania żadnych wierszy danych.
-
+### <a name="methods-that-return-t-sql-statements"></a>Metody, które zwracają instrukcje języka T-SQL
 
 ```csharp
-      static void Submit_Tsql_NonQuery(
-         SqlConnection connection,
-         string tsqlPurpose,
-         string tsqlSourceCode,
-         string parameterName = null,
-         string parameterValue = null
-         )
-      {
-         Console.WriteLine();
-         Console.WriteLine("=================================");
-         Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
+static string Build_2_Tsql_CreateTables()
+{
+    return @"
+        DROP TABLE IF EXISTS tabEmployee;
+        DROP TABLE IF EXISTS tabDepartment;  -- Drop parent table last.
 
-         using (var command = new SqlCommand(tsqlSourceCode, connection))
-         {
-            if (parameterName != null)
-            {
-               command.Parameters.AddWithValue(  // Or, use SqlParameter class.
-                  parameterName,
-                  parameterValue);
-            }
-            int rowsAffected = command.ExecuteNonQuery();
-            Console.WriteLine(rowsAffected + " = rows affected.");
-         }
-      }
-   } // EndOfClass
+        CREATE TABLE tabDepartment
+        (
+            DepartmentCode  nchar(4)          not null    PRIMARY KEY,
+            DepartmentName  nvarchar(128)     not null
+        );
+
+        CREATE TABLE tabEmployee
+        (
+            EmployeeGuid    uniqueIdentifier  not null  default NewId()    PRIMARY KEY,
+            EmployeeName    nvarchar(128)     not null,
+            EmployeeLevel   int               not null,
+            DepartmentCode  nchar(4)              null
+            REFERENCES tabDepartment (DepartmentCode)  -- (REFERENCES would be disallowed on temporary tables.)
+        );
+    ";
+}
+
+static string Build_3_Tsql_Inserts()
+{
+    return @"
+        -- The company has these departments.
+        INSERT INTO tabDepartment (DepartmentCode, DepartmentName)
+        VALUES
+            ('acct', 'Accounting'),
+            ('hres', 'Human Resources'),
+            ('legl', 'Legal');
+
+        -- The company has these employees, each in one department.
+        INSERT INTO tabEmployee (EmployeeName, EmployeeLevel, DepartmentCode)
+        VALUES
+            ('Alison'  , 19, 'acct'),
+            ('Barbara' , 17, 'hres'),
+            ('Carol'   , 21, 'acct'),
+            ('Deborah' , 24, 'legl'),
+            ('Elle'    , 15, null);
+    ";
+}
+
+static string Build_4_Tsql_UpdateJoin()
+{
+    return @"
+        DECLARE @DName1  nvarchar(128) = @csharpParmDepartmentName;  --'Accounting';
+
+        -- Promote everyone in one department (see @parm...).
+        UPDATE empl
+        SET
+            empl.EmployeeLevel += 1
+        FROM
+            tabEmployee   as empl
+        INNER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        WHERE
+            dept.DepartmentName = @DName1;
+    ";
+}
+
+static string Build_5_Tsql_DeleteJoin()
+{
+    return @"
+        DECLARE @DName2  nvarchar(128);
+        SET @DName2 = @csharpParmDepartmentName;  --'Legal';
+
+        -- Right size the Legal department.
+        DELETE empl
+        FROM
+            tabEmployee   as empl
+        INNER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        WHERE
+            dept.DepartmentName = @DName2
+
+        -- Disband the Legal department.
+        DELETE tabDepartment
+            WHERE DepartmentName = @DName2;
+    ";
+}
+
+static string Build_6_Tsql_SelectEmployees()
+{
+    return @"
+        -- Look at all the final Employees.
+        SELECT
+            empl.EmployeeGuid,
+            empl.EmployeeName,
+            empl.EmployeeLevel,
+            empl.DepartmentCode,
+            dept.DepartmentName
+        FROM
+            tabEmployee   as empl
+        LEFT OUTER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        ORDER BY
+            EmployeeName;
+    ";
 }
 ```
 
+<a name="cs_3_submit"/>
 
-<a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>Blok nr 8 kodu w języku C#: rzeczywiste dane wyjściowe testu w konsoli
+### <a name="submit-t-sql-to-the-database"></a>Przesyłanie kodu języka T-SQL do bazy danych
 
-- [Wstecz](#cs_7_executenonquery)
+```csharp
+static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)
+{
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("Now, SelectEmployees (6)...");
 
-W tej sekcji znajdują się dane wyjściowe, które program wysłał do konsoli. Przebiegi testów różnią się między sobą jedynie wartościami identyfikatorów GUID.
+    string tsql = Build_6_Tsql_SelectEmployees();
 
+    using (var command = new SqlCommand(tsql, connection))
+    {
+        using (SqlDataReader reader = command.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Console.WriteLine("{0} , {1} , {2} , {3} , {4}",
+                    reader.GetGuid(0),
+                    reader.GetString(1),
+                    reader.GetInt32(2),
+                    (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
+                    (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
+            }
+        }
+    }
+}
 
-```text
-[C:\csharp_db_test\csharp_db_test\bin\Debug\]
->> csharp_db_test.exe
+static void Submit_Tsql_NonQuery(
+    SqlConnection connection,
+    string tsqlPurpose,
+    string tsqlSourceCode,
+    string parameterName = null,
+    string parameterValue = null
+    )
+{
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
 
-=================================
-Now, CreateTables (10)...
-
-=================================
-Now, Inserts (20)...
-
-=================================
-Now, UpdateJoin (30)...
-2 rows affected, by UpdateJoin.
-
-=================================
-Now, DeleteJoin (40)...
-
-=================================
-Now, SelectEmployees (50)...
-0199be49-a2ed-4e35-94b7-e936acf1cd75 , Alison , 20 , acct , Accounting
-f0d3d147-64cf-4420-b9f9-76e6e0a32567 , Barbara , 17 , hres , Human Resources
-cf4caede-e237-42d2-b61d-72114c7e3afa , Carol , 22 , acct , Accounting
-cdde7727-bcfd-4f72-a665-87199c415f8b , Elle , 15 , NULL , NULL
-
-[C:\csharp_db_test\csharp_db_test\bin\Debug\]
->>
+    using (var command = new SqlCommand(tsqlSourceCode, connection))
+    {
+        if (parameterName != null)
+        {
+            command.Parameters.AddWithValue(  // Or, use SqlParameter class.
+                parameterName,
+                parameterValue);
+        }
+        int rowsAffected = command.ExecuteNonQuery();
+        Console.WriteLine(rowsAffected + " = rows affected.");
+    }
+}
+} // EndOfClass
+}
 ```

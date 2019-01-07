@@ -28,8 +28,14 @@ items:
     href: cli-samples.md
 - name: Pojęcia
   items:
-  - name: Migracja z wersji 2 do wersji 3
-    href: migrate-from-v2-to-v3.md
+  - name: Konta
+    items:
+    - name: Migracja z wersji 2 do wersji 3
+      href: migrate-from-v2-to-v3.md
+    - name: Limity przydziału i ograniczenia
+      href: limits-quotas-constraints.md
+    - name: Konta magazynu
+      href: storage-account-concept.md
   - name: Jednostki
     href: entities-overview.md
     items:
@@ -79,15 +85,21 @@ items:
       href: live-event-states-billing.md
     - name: Opóźnienie
       href: live-event-latency.md
-  - name: Konta magazynu
-    href: storage-account-concept.md
+  - name: Azure Media Player
+    href: use-azure-media-player.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Tworzenie konta — interfejs wiersza polecenia
-    href: create-account-cli-how-to.md
-  - name: Dostęp do interfejsów API — interfejs wiersza polecenia
-    href: access-api-cli-how-to.md
-  - name: Upload
+  - name: Rozpoczęcie pracy
+    items:
+    - name: Tworzenie konta — interfejs wiersza polecenia
+      href: create-account-cli-how-to.md
+    - name: Dostęp do interfejsów API — interfejs wiersza polecenia
+      href: access-api-cli-how-to.md
+    - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
+      href: media-reserved-units-cli-how-to.md
+  - name: Konfigurowanie programu Postman
+    href: media-rest-apis-with-postman.md
+  - name: Przekazywanie zawartości
     items:
     - name: Z protokołu HTTP(s) — .NET
       href: job-input-from-http-how-to.md
@@ -95,6 +107,22 @@ items:
       href: job-input-from-local-file-how-to.md
     - name: Z pliku lokalnego — REST
       href: upload-files-rest-how-to.md
+  - name: Kodowanie zawartości
+    items:
+    - name: Dostosowywanie wstępnych ustawień przekształcania — .NET
+      href: customize-encoder-presets-how-to.md
+  - name: Używanie usługi Event Grid
+    items:
+    - name: Monitorowanie zdarzeń — portal
+      href: monitor-events-portal-how-to.md
+    - name: Monitorowanie zdarzeń — interfejs wiersza polecenia
+      href: job-state-events-cli-how-to.md
+  - name: Ochrona zawartości
+    items:
+    - name: Za pomocą szyfrowania AES-128 — .NET
+      href: protect-with-aes128.md
+    - name: Za pomocą DRM — .NET
+      href: protect-with-drm.md
   - name: Tworzenie filtrów
     items:
     - name: Przy użyciu platformy .NET
@@ -103,26 +131,6 @@ items:
       href: filters-dynamic-manifest-rest-howto.md
     - name: Przy użyciu interfejsu wiersza polecenia
       href: filters-dynamic-manifest-cli-howto.md
-  - name: Kodowanie
-    items:
-    - name: Dostosowywanie wstępnych ustawień przekształcania — .NET Core
-      href: customize-encoder-presets-how-to.md
-  - name: Używanie usługi Event Grid
-    items:
-    - name: Monitorowanie zdarzeń — portal
-      href: monitor-events-portal-how-to.md
-    - name: Monitorowanie zdarzeń — interfejs wiersza polecenia
-      href: job-state-events-cli-how-to.md
-  - name: Ochrona
-    items:
-    - name: Za pomocą szyfrowania AES-128 — .NET
-      href: protect-with-aes128.md
-    - name: Za pomocą DRM — .NET
-      href: protect-with-drm.md
-  - name: Konfigurowanie programu Postman
-    href: media-rest-apis-with-postman.md
-  - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
-    href: media-reserved-units-cli-how-to.md
 - name: Dokumentacja
   items:
   - name: Specyfikacja interfejsu OpenAPI (Swagger)
@@ -181,13 +189,11 @@ items:
       href: https://aka.ms/ams-v3-ruby-sdk
   - name: Informacje o wersji
     href: release-notes.md
-  - name: Limity przydziału i ograniczenia
-    href: limits-quotas-constraints.md
   - name: Często zadawane pytania
     href: frequently-asked-questions.md
-ms.openlocfilehash: 660052b4e82f6e005c096b5ac1edd7a80c2d5339
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 9acf8f3ce9f5886d5f61087a58d863047bd0b605
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744976"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014526"

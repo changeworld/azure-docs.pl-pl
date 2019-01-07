@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1dc312598fa9bbacedc085480b0771adeb2d182a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5459786ccf69c51fec1630d612fd37b1b78c36c9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731419"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017008"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizą w usłudze Application Insights
 Problemy z [analizy usługi Application Insights](analytics.md)? Zacznij tutaj. Analytics to zaawansowane wyszukiwanie narzędzia usługi Azure Application Insights.
@@ -78,7 +78,7 @@ Zasób aplikacji został usunięty z usługi Application Insights i t nie jest d
 
 Nie masz uprawnień do otwarcia tej aplikacji w usłudze Analytics.
 
-* Czy został wyświetlony link od kogoś innego? Poproś go, aby upewnić się, że jesteś w [czytelnicy lub współautorzy dla tej grupy zasobów](../../application-insights/app-insights-resources-roles-access-control.md).
+* Czy został wyświetlony link od kogoś innego? Poproś go, aby upewnić się, że jesteś w [czytelnicy lub współautorzy dla tej grupy zasobów](../../azure-monitor/app/resources-roles-access-control.md).
 * Czy zapisać link przy użyciu innych poświadczeń? Otwórz [witryny Azure portal](https://portal.azure.com), wyloguj się, a następnie spróbuj ten link ponownie, podając poprawne poświadczenia.
 
 ## <a name="html-storage"></a>403 ... Magazyn HTML5

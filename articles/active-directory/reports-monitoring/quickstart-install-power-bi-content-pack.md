@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 314f1c1656485f93942eb23f928cc66720a12565
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622538"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753544"
 ---
-# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Szybki start: instalowanie pakietu zawartości usługi Power BI dla usługi Azure Active Directory
+# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Szybki start: Instalowanie pakietu zawartości usługi Power BI dla usługi Azure Active Directory
 
 |  |
 |--|
@@ -39,7 +39,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
 * Konto usługi Power BI. To jest to samo konto, co konto usługi O365 lub Azure AD. 
 * Identyfikator dzierżawy usługi Azure AD. To jest **Identyfikator katalogu** ze [strony właściwości](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) w witrynie Azure Portal.
-* Licencja usługi Azure AD Premium (P1/P2). 
+* Licencja usługi Azure AD Premium (P1/P2). Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md).
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>Instalowanie pakietu zawartości Azure AD Power BI 
 

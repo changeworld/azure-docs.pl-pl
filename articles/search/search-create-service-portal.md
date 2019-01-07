@@ -6,19 +6,23 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315989"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002641"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
-Informacje o sposobie tworzenia i aprowizacji usługi Azure Search w portalu. 
+Usługa Azure Search jest zasobem autonomicznym umożliwiającym dodawanie środowiska wyszukiwania do niestandardowych aplikacji. Można ją łatwo zintegrować z wieloma innymi usługami platformy Azure lub korzystać z niej w aplikacjach hostowanych na serwerach sieciowych lub w oprogramowaniu uruchomionym na innych platformach w chmurze. 
+
+Ten artykuł zawiera informacje dotyczące tworzenia zasobu usługi Azure Search w [portalu Azure](https://portal.azure.com/). 
+
+![Zasób usługi Azure Search w portalu](media/search-create-service-portal/azure-search-resource-label.png)
 
 Preferujesz program PowerShell? Użyj [szablonu usługi](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manager. Jeśli potrzebujesz pomocy, aby rozpocząć, zapoznaj się z artykułem [Manage Azure Search with PowerShell](search-manage-powershell.md) (Zarządzanie usługą Azure Search przy użyciu programu PowerShell).
 
@@ -31,13 +35,15 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 ## <a name="find-azure-search"></a>Znajdowanie usługi Azure Search
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
-3. Wybierz pozycję **Internet** > **Azure Search**.
+3. Za pomocą paska wyszukiwania znajdź ciąg „Azure Search” lub przejdź do zasobu, wybierając opcje **Sieć Web** > **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>Tworzenie nazwy usługi i punktu końcowego adresu URL
 
-Nazwa usługi jest częścią punktu końcowego adresu URL, względem którego interfejs API wywołuje polecenia: `https://your-service-name.search.windows.net`. Wprowadź nazwę usługi w polu **Adres URL**. 
+Nazwa usługi jest częścią punktu końcowego adresu URL, względem którego interfejs API wywołuje polecenia: `https://your-service-name.search.windows.net`. Wprowadź nazwę usługi w polu **Adres URL**.
+
+Na przykład jeśli chcesz, aby punkt końcowy znajdował się pod adresem `https://my-app-name-01.search.windows.net`, wpisz `my-app-name-01`.
 
 Wymagania dotyczące nazwy usługi:
    * Musi być unikatowa w obrębie przestrzeni nazw search.windows.net
@@ -51,6 +57,8 @@ Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usłu
 
 ## <a name="select-a-resource-group"></a>Wybieranie grupy zasobów
 Grupa zasobów jest kolekcją używanych razem usług i zasobów platformy Azure. Jeśli na przykład używasz usługi Azure Search do indeksowania bazy danych SQL, obie usługi powinny należeć do tej samej grupy zasobów.
+
+Jeśli nie łączysz zasobów w pojedynczą grupę lub jeśli istniejące grupy zasobów zawierają zasoby używane w niezwiązanych ze sobą rozwiązaniach, utwórz nową grupę zasobów specjalnie na potrzeby usługi Azure Search.
 
 > [!TIP]
 > Usunięcie grupy zasobów powoduje usunięcie zawartych w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu. 
@@ -109,7 +117,7 @@ Chociaż większość klientów używa tylko jednej usługi, nadmiarowość usł
 Druga usługa nie jest wymagana w celu zapewnienia wysokiej dostępności. Wysoka dostępność zapytań ma miejsce wtedy, gdy używane są co najmniej 2 repliki w tej samej usłudze. Repliki są aktualizowane w odpowiedniej kolejności, co oznacza, że podczas wdrażania aktualizacji usługi działa co najmniej jedna replika. Aby uzyskać więcej informacji na temat czasu pracy, zobacz [Umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Następne kroki
-Po aprowizacji usługi Azure Search można przystąpić do [definiowania indeksu](search-what-is-an-index.md) w celu przekazywania i wyszukiwania danych. 
+Po aprowizacji usługi Azure Search możesz utworzyć w portalu swój pierwszy indeks.
 
 > [!div class="nextstepaction"]
-> [Jak używać usługi Azure Search na platformie .NET](search-howto-dotnet-sdk.md)
+> [Samouczek: importowanie danych, indeksu i uruchamianie zapytań w portalu](search-get-started-portal.md)

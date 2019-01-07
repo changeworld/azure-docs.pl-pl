@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej w języku PHP w systemie Linux — Azure App Service | Microsoft Docs
+title: Tworzenie aplikacji w języku PHP w systemie Linux — Azure App Service | Microsoft Docs
 description: Wdróż swoją pierwszą aplikację Hello World w języku PHP w usłudze App Service w systemie Linux w ciągu kilku minut.
 services: app-service\web
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: af413528c279c5fcab472347d247b17dd5061167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257407"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628412"
 ---
-# <a name="create-a-php-web-app-in-app-service-on-linux"></a>Tworzenie aplikacji internetowej w języku PHP w usłudze App Service w systemie Linux
+# <a name="create-a-php-app-in-app-service-on-linux"></a>Tworzenie aplikacji w języku PHP w usłudze App Service w systemie Linux
 
 > [!NOTE]
-> W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji internetowej PHP na platformie Azure](../app-service-web-get-started-php.md).
+> W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji PHP na platformie Azure](../app-service-web-get-started-php.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji PHP w usłudze Azure App Service w systemie Linux. Aplikację internetową z wbudowanym obrazem możesz utworzyć przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w usłudze Cloud Shell, a usługa Git umożliwia wdrażanie kodu w języku PHP w aplikacji internetowej.
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji PHP w usłudze Azure App Service w systemie Linux. Aplikację z wbudowanym obrazem możesz utworzyć przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w usłudze Cloud Shell. Usługa Git umożliwia wdrażanie kodu w języku PHP w aplikacji usługi App Service.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-php/hello-world-in-browser.png)
 
@@ -80,15 +80,15 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-Przejdź do witryny, aby zobaczyć nowo utworzoną aplikację internetową z wbudowanym obrazem. Zastąp ciąg _&lt;nazwa aplikacji>_ nazwą swojej aplikacji internetowej.
+Przejdź do witryny, aby zobaczyć nowo utworzoną aplikację z wbudowanym obrazem. Zastąp ciąg _&lt;app name>_ nazwą swojej aplikacji.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Tak powinna wyglądać nowa aplikacja internetowa:
+Tak powinna wyglądać nowa aplikacja:
 
-![Pusta strona aplikacji internetowej](media/quickstart-php/app-service-web-service-created.png)
+![Pusta strona aplikacji](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -125,7 +125,7 @@ Przejdź do wdrożonej aplikacji za pomocą przeglądarki sieci Web.
 http://<app_name>.azurewebsites.net
 ```
 
-Przykładowy kod w języku PHP jest uruchamiany w aplikacji internetowej z wbudowanym obrazem.
+Przykładowy kod w języku PHP jest uruchamiany w usłudze App Service w systemie Linux z wbudowanym obrazem.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-php/hello-world-in-browser.png)
 
@@ -150,15 +150,15 @@ Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w
 
 ![Zaktualizowana przykładowa aplikacja działająca na platformie Azure](media/quickstart-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Zarządzanie nową aplikacją internetową platformy Azure
+## <a name="manage-your-new-azure-app"></a>Zarządzanie nową aplikacją platformy Azure
 
-Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową.
+Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją.
 
 W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
+![Nawigacja w portalu do aplikacji platformy Azure](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-Zostanie wyświetlona strona Omówienie aplikacji internetowej. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+Zostanie wyświetlona strona omówienia aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
 ![Strona usługi App Service w witrynie Azure Portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

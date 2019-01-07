@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do interfejsu API tabel usługi Azure Cosmos DB
-description: Dowiedz się, jak korzystać z usługi Azure Cosmos DB i popularnych interfejsów API MongoDB OSS w celu przechowywania ogromnych wolumenów danych typu klucz-wartość i wykonywania zapytań na tych danych przy zachowaniu małych opóźnień.
+description: Dowiedz się, jak korzystać z usługi Azure Cosmos DB i interfejsu API tabel platformy Azure w celu przechowywania ogromnych wolumenów danych typu klucz-wartość i wykonywania zapytań na tych danych przy zachowaniu małych opóźnień.
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 2647065d251caea571e2bfcd5703bbb3bec08345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 393a64cb62bcaf3623f77850ff43437396d7db81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074310"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720156"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Wprowadzenie do usługi Azure Cosmos DB: Interfejs API tabel
 

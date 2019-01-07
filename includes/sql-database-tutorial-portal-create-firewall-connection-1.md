@@ -2,113 +2,91 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: a999a18ccd504d6928a5eb1e209fbf55cb8506f5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ab31ee82e8035fe888fa70b5796aef2c2b2939b2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52271632"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728565"
 ---
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 
-Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](../articles/sql-database/sql-database-service-tiers-dtu.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../articles/azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym bazy danych Azure SQL Database](../articles/sql-database/sql-database-features.md). 
+Baza danych Azure SQL istnieje w ramach zdefiniowanego zestawu [zasobów obliczeniowych i magazynowych](../articles/sql-database/sql-database-service-tiers-dtu.md). Baza danych działa w ramach [grupy zasobów platformy Azure](../articles/azure-resource-manager/resource-group-overview.md) oraz [serwera logicznego bazy danych Azure SQL Database](../articles/sql-database/sql-database-features.md).
 
-Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL. 
+Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
-2. Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Nowy** w obszarze **SQL Database** wybierz pozycję **Utwórz**.
+1. Na stronie **Nowy** wybierz pozycje **Bazy danych** > **SQL Database**.
 
    ![tworzenie pustej bazy danych](../articles/sql-database/media/sql-database-design-first-database/create-empty-database.png)
 
-3. Wypełnij formularz Baza danych SQL w sposób pokazany na wcześniejszej ilustracji, używając następujących informacji:   
+1. W okienku **SQL Database** wpisz lub wybierz następujące wartości:
 
-   | Ustawienie       | Sugerowana wartość | Opis | 
-   | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Nazwa bazy danych** | mySampleDatabase | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). | 
-   | **Subskrypcja** | Twoja subskrypcja  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+   | Ustawienie       | Sugerowana wartość | Opis |
+   | ------------ | ------------------ | ------------------------------------------------- |
+   | **Nazwa bazy danych** | *yourDatabase* | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
+   | **Subskrypcja** | *yourSubscription*  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
+   | **Grupa zasobów** | *yourResourceGroup* | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
    | **Wybierz źródło** | Pusta baza danych | Określa, że ma zostać utworzona pusta baza danych. |
 
-4. Kliknij pozycję **Serwer**, aby utworzyć i skonfigurować nowy serwer dla nowej bazy danych. Wypełnij **formularz nowego serwera**, używając następujących informacji: 
+   ![tworzenie bazy danych](../articles/sql-database/media/sql-database-design-first-database/create-database.png)
 
-   | Ustawienie       | Sugerowana wartość | Opis | 
-   | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). | 
-   | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
-   | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej 8 znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
+   1. Wybierz pozycję **Serwer**, aby skonfigurować serwer dla nowej bazy danych. Następnie wpisz lub wybierz następujące wartości:
 
-   ![tworzenie serwera bazy danych](../articles/sql-database/media/sql-database-design-first-database/create-database-server.png)
+      | Ustawienie       | Sugerowana wartość | Opis |
+      | ------------ | ------------------ | ------------------------------------------------- |
+      | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+      | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
+      | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej 8 znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
+      | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
 
-5. Kliknij pozycję **Wybierz**.
+      Wybierz pozycję **Wybierz**.
 
-6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU i ilość miejsca do magazynowania. Przejrzyj opcje liczby jednostek DTU i miejsca do magazynowania dostępne dla poszczególnych warstw usługi. 
+      ![tworzenie serwera bazy danych](../articles/sql-database/media/sql-database-design-first-database/create-database-server.png)
 
-7. Na potrzeby tego samouczka wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **100 jednostek DTU (S3)** i **400** GB miejsca do magazynowania.
+   1. Wybierz pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU i ilość miejsca do magazynowania. Przejrzyj opcje jednostek DTU i miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
 
-   ![tworzenie bazy danych s1](../articles/sql-database/media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
+      Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania wybierz przycisk **Zastosuj**.
 
-8. Zaakceptuj warunki wersji zapoznawczej, aby użyć opcji **dodatkowego magazynu**. 
+   1. Wprowadź **sortowanie** dla pustej bazy danych (na potrzeby tego samouczka użyj wartości domyślnej). Aby uzyskać więcej informacji na temat sortowań, zobacz [Collations](/sql/t-sql/statements/collations) (Sortowania).
 
-   > [!IMPORTANT]
-   > \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
-   >
-   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Administracja USA — Wirginia, Azja Południowo-Wschodnia, Europa Zachodnia, Francja Środkowa, Japonia Wschodnia, Kanada Środkowa, Kanada Wschodnia, Korea Środkowa, Niemcy Środkowe, Południowo-środkowe stany USA, Wschodnie stany USA 2 i Zachodnie stany USA. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](../articles/sql-database/sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   > 
+1. Teraz, po uzupełnieniu formularza usługi **SQL Database**, wybierz przycisk **Utwórz**, aby utworzyć bazę danych. Wykonanie tego kroku może potrwać maksymalnie półtorej minuty.
 
-9. Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania kliknij przycisk **Zastosuj**.  
+1. Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.
 
-10. Wybierz **sortowanie** dla pustej bazy danych (na potrzeby tego samouczka użyj wartości domyślnej). Aby uzyskać więcej informacji na temat sortowań, zobacz [Sortowania](https://docs.microsoft.com/sql/t-sql/statements/collations)
+     ![powiadomienie](../articles/sql-database/media/sql-database-design-first-database/notification.png)
 
-11. Kliknij pozycję **Utwórz**, aby aprowizować bazę danych. Aprowizowanie trwa około półtorej minuty. 
+## <a name="create-a-firewall-rule"></a>Tworzenie reguły zapory
 
-12. Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.
-    
-     ![powiadomienie](../articles/sql-database/media/sql-database-get-started-portal/notification.png)
-
-## <a name="create-a-server-level-firewall-rule"></a>Tworzenie reguły zapory na poziomie serwera
-
-Usługa SQL Database tworzy zaporę na poziomie serwera, która uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze, chyba że zostanie utworzona reguła zapory otwierająca zaporę dla konkretnych adresów IP. Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera usługi SQL Database](../articles/sql-database/sql-database-firewall-configure.md) dla podanego adresu IP klienta i włączyć zewnętrzną łączność przez zaporę usługi SQL Database wyłącznie dla konkretnego adresu IP. 
+Usługa SQL Database tworzy zaporę na poziomie serwera, aby uniemożliwić zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze. Wykonaj następujące kroki, aby utworzyć [regułę zapory usługi SQL Database na poziomie serwera](../articles/sql-database/sql-database-firewall-configure.md) dla Twojego adresu IP klienta. Ten proces włącza zewnętrzną łączność przez zaporę usługi SQL Database tylko dla Twojego adresu IP.
 
 > [!NOTE]
-> Usługa SQL Database nawiązuje komunikację na porcie 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez firmową zaporę. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
->
+> Usługa SQL Database nawiązuje komunikację na porcie 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez firmową zaporę. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że administrator otworzy port 1433.
 
-1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona omówienie bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver20170824.database.windows.net**) i dalsze opcje konfiguracji. 
+1. Po ukończeniu wdrażania wybierz pozycję **Bazy danych SQL** w menu po lewej stronie i wybierz bazę danych *yourDatabase* na stronie **Bazy danych SQL**. Dla bazy danych zostanie otwarta strona **Przegląd** zawierająca w pełni kwalifikowaną nazwę serwera (na przykład *yourserver.database.windows.net*) i opcje dalszej konfiguracji.
 
-2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i jego bazami danych w kolejnych przewodnikach Szybki start. 
+1. Skopiuj w pełni kwalifikowaną nazwę serwera do użycia w celu nawiązania połączenia z serwerem i jego bazami danych w późniejszych krokach.
 
-   ![nazwa serwera](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 
+   ![nazwa serwera](../articles/sql-database/media/sql-database-design-first-database/server-name.png)
 
-3. Kliknij pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database. 
+1. Wybierz pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database.
 
-   ![reguła zapory serwera](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![reguła zapory serwera](../articles/sql-database/media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
+   1. Wybierz pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-5. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+   1. Wybierz pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
 
-6. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
+   1. Wybierz przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 
-Teraz można połączyć się z serwerem usługi SQL Database i jego bazami danych przy użyciu programu SQL Server Management Studio lub innego wybranego narzędzia z tego adresu IP przy użyciu poprzednio utworzonego konta administratora serwera.
-
+Teraz z Twojego adresu IP można połączyć się przez zaporę z serwerem usługi SQL Database i jego bazami danych przy użyciu programu SQL Server Management Studio lub innego wybranego narzędzia. Używaj wcześniej utworzonego konta administratora serwera.
 
 > [!IMPORTANT]
-> Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Kliknij przycisk **WYŁ.** na tej stronie, aby wyłączyć tę opcję dla wszystkich usług platformy Azure.
-
-## <a name="sql-server-connection-information"></a>Informacje o połączeniu z serwerem SQL
-
-Pobierz w pełni kwalifikowaną nazwę serwera dla serwera Azure SQL Database w witrynie Azure Portal. W pełni kwalifikowanej nazwy serwera używa się do nawiązywania połączenia z serwerem przy użyciu programu SQL Server Management Studio.
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Wybierz opcję **Bazy danych SQL** z menu po lewej stronie, a następnie kliknij bazę danych na stronie **Bazy danych SQL**. 
-3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**.
-
-   ![informacje o połączeniu](../articles/sql-database/media/sql-database-get-started-portal/server-name.png)
+> Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Wybierz przycisk **WYŁ.** na tej stronie, aby wyłączyć tę opcję dla wszystkich usług platformy Azure.

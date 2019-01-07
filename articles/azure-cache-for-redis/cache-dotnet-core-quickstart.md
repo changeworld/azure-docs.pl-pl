@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f2d55155a6df496eec4a92aca5b3b932e03c181
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a253b1d34b134700778152b7ef0b0571190b2511
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018830"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554847"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Szybki start: Korzystanie z usługi Azure Cache for Redis przy użyciu aplikacji platformy .NET Core
 
@@ -195,7 +195,7 @@ W pliku *Program.cs* dodaj następujący kod do procedury `Main` klasy `Program`
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
             Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             cacheCommand = "GET Message";
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
             Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
@@ -211,7 +211,7 @@ W pliku *Program.cs* dodaj następujący kod do procedury `Main` klasy `Program`
 
 Zapisz plik *Program.cs*.
 
-Usługi Azure Cache for Redis mają konfigurowalną liczbę baz danych (domyślnie 16), których można użyć do logicznego odseparowania danych w usłudze Azure Cache for Redis. Kod łączy się z domyślną bazą danych DB 0. Aby uzyskać więcej informacji, zobacz [What are Redis databases?](cache-faq.md#what-are-redis-databases) (Co to są bazy danych Redis?) i [Default Redis server configuration](cache-configure.md#default-redis-server-configuration) (Domyślna konfiguracja serwera Redis).
+Usługa Azure Cache for Redis ma konfigurowalną liczbę baz danych (domyślnie 16), których można użyć do logicznego odseparowania danych w tej usłudze. Kod łączy się z domyślną bazą danych DB 0. Aby uzyskać więcej informacji, zobacz [What are Redis databases?](cache-faq.md#what-are-redis-databases) (Co to są bazy danych Redis?) i [Default Redis server configuration](cache-configure.md#default-redis-server-configuration) (Domyślna konfiguracja serwera Redis).
 
 Elementy pamięci podręcznej można zapisywać i pobierać za pomocą metod `StringSet` i `StringGet`.
 
@@ -248,7 +248,7 @@ dotnet add package Newtonsoft.json
 
 Dodaj następującą instrukcję `using` na początku pliku *Program.cs*:
 
-```charp
+```csharp
 using Newtonsoft.Json;
 ```
 

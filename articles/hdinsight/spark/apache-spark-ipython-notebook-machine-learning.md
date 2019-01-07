@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie aplikacji uczenia maszynowego platformy Spark w usłudze Azure HDInsight'
+title: 'Samouczek: tworzenie aplikacji uczenia maszynowego platformy Apache Spark w usłudze Azure HDInsight'
 description: Instrukcje krok po kroku dotyczące tworzenia aplikacji uczenia maszynowego platformy Apache Spark w klastrach HDInsight Spark przy użyciu notesu Jupyter.
 services: hdinsight
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0a0712e4985414263d1e90299d78d5e30fe78a3e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580574"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608515"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Samouczek: tworzenie aplikacji uczenia maszynowego platformy Apache Spark w usłudze HDInsight 
 
@@ -97,7 +97,7 @@ W tej aplikacji [potok uczenia maszynowego](https://spark.apache.org/docs/2.2.0/
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    Aby uzyskać więcej informacji o samym potoku i jego działaniu, zobacz <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark machine learning pipeline (Potok uczenia maszynowego platformy Spark)</a>.
+    Aby uzyskać więcej informacji o potoku i jego działaniu, zobacz <a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Apache Spark machine learning pipeline</a> (Potok uczenia maszynowego platformy Apache Spark).
 
 5. Dopasuj potok do dokumentu szkoleniowego.
    
@@ -184,7 +184,7 @@ W tej aplikacji [potok uczenia maszynowego](https://spark.apache.org/docs/2.2.0/
 10. Zamknij notes, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie wybierz pozycję **Close and Halt** (Zamknij i zatrzymaj). Ta akcja powoduje zatrzymanie i zamknięcie notesu.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Uczenie maszynowe platformy Spark z użyciem biblioteki Anaconda scikit-learn
-Klastry Apache Spark w usłudze HDInsight obejmują biblioteki Anaconda. Zawierają także bibliotekę **scikit-learn** do uczenia maszynowego. W tej bibliotece znajdują się różne zestawy danych, za pomocą których można utworzyć przykładowe aplikacje bezpośrednio w notesie Jupyter. Przykłady użycia biblioteki scikit-learn można znaleźć na stronie[http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+Klastry Apache Spark w usłudze HDInsight obejmują biblioteki Anaconda. Zawierają także bibliotekę **scikit-learn** do uczenia maszynowego. W tej bibliotece znajdują się różne zestawy danych, za pomocą których można utworzyć przykładowe aplikacje bezpośrednio w notesie Jupyter. Przykłady użycia biblioteki scikit-learn można znaleźć na stronie[https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="next-steps"></a>Następne kroki
 

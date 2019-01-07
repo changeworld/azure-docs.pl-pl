@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 26b5b16e3eb016edbe53c3526e51c3aa44f307b5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: cced3d363f9eb7418d6f453eccb1bf1d7ac20ead
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583588"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972349"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>Samouczek: jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows na platformie Python
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskania dostępu do aplikacji, usługi i zasoby informatyczne.
 
-W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy.
@@ -80,7 +80,7 @@ W tym artykule jest używana właśnie utworzona grupa zasobów.
 
 Następnie utworzysz magazyn kluczy w grupie zasobów utworzonej w poprzednim kroku. Podaj następujące informacje:
 
-* Nazwa magazynu kluczy: nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0-9, a – z, A-Z, i -).
+* Nazwa magazynu kluczy: nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0-9, a–z, A–Z, i -).
 * Nazwa grupy zasobów.
 * Lokalizacja: **Zachodnie stany USA**.
 
@@ -137,7 +137,7 @@ Możesz wykonać czynności opisane w tym [samouczku](https://docs.microsoft.com
 
 ## <a name="create-and-run-sample-python-app"></a>Tworzenie i uruchamianie przykładowej aplikacji w języku Python
 
-Poniżej znajduje się przykładowy plik o nazwie „Sample.py”. Używana jest w nim biblioteka [requests](http://docs.python-requests.org/master/) do wykonywania wywołań HTTP GET.
+Poniżej znajduje się przykładowy plik o nazwie „Sample.py”. Używana jest w nim biblioteka [requests](http://docs.python-requests.org/en/master/) do wykonywania wywołań HTTP GET.
 
 ## <a name="edit-samplepy"></a>Edytowanie pliku Sample.py
 Po utworzeniu pliku Sample.py otwórz go i skopiuj poniższy kod.
