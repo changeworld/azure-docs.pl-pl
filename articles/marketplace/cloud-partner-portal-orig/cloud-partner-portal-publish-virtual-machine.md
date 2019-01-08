@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247079"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078120"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Publikowanie maszyny wirtualnej w portalu Azure Marketplace
 
@@ -29,37 +29,25 @@ Ten artykuł zawiera kroki potrzebne do opublikowania oferty maszyny wirtualnej 
 
 Następujące wymagania wstępne pomoc techniczna i nietechniczna dotyczą publikowaniu maszyny wirtualnej w portalu Azure Marketplace
 
-### <a name="technical"></a>Technical Preview
+### <a name="technical"></a>Techniczna
 
--   [Techniczne wymagania wstępne dotyczące tworzenia obrazów maszyn wirtualnych w portalu Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Techniczne wymagania wstępne dotyczące tworzenia obrazów maszyn wirtualnych w portalu Azure Marketplace](../cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
 -   [Tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [& Utwórz test z obrazu Maszynę wirtualną systemu Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Tworzenie i przekazywanie wirtualnego dysku twardego Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [& Utwórz test maszyny Wirtualnej z systemem Windows za pomocą obrazu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
-
--   [Jak rozwiązywać problemy z typowych problemów napotykanych podczas tworzenia wirtualnego dysku twardego](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
+-   [Jak rozwiązywać problemy z typowych problemów napotykanych podczas tworzenia wirtualnego dysku twardego](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 -   [Zalecenia dotyczące zabezpieczeń dla obrazów portalu Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>Nietechniczne (wymagania biznesowe)
 
  -   Siedziba firmy (lub firmy od niej zależnej) znajduje się w kraju sprzedaży obsługiwanym przez Portal Azure Marketplace
-
 -   Muszą mieć licencję produktu w sposób, który jest zgodny z modelami rozliczeń obsługiwanym przez Portal Azure Marketplace
-
 -   Jesteś odpowiedzialny za wprowadzanie pomocy technicznej dostępne dla klientów w sposób rozsądny z komercyjnego punktu widzenia. Ta obsługa można bezpłatną, płatną lub zasadzie wsparcia społeczności.
-
 -   Jesteś odpowiedzialny za Licencjonowanie oprogramowania oraz wszystkie zależności oprogramowania innych firm.
-
--   Możesz podać zawartość, która spełnia kryteria dotyczące oferty był wyświetlany w portalu Azure Marketplace i w portalu zarządzania Azure.
-
+-   Możesz podać zawartość, która spełnia kryteria dotyczące oferty był wyświetlany w portalu Azure Marketplace i w witrynie Azure portal.
 -   Wyrażasz zgodę na warunki usługi Azure Marketplace — zasady udziału oraz Umowie wydawcy portalu.
-
 -   Użytkownik zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [zasady zachowania poufności informacji firmy Microsoft](https://www.microsoft.com/privacystatement/default.aspx), i [umowę programu certyfikat platformy Azure Microsoft](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -116,7 +104,7 @@ Jednostka SKU pojawia się w ramach oferty nadrzędne w witrynie Azure Marketpla
 
     **Nazwa**
 
-    Nazwa wyświetlana oferty. Ta nazwa jest wyświetlana w portalu Azure Marketplace i w witrynie Azure Portal. Może zawierać maksymalnie 50 znaków. Użyj poniższych wskazówek Nazwa oferty:
+    Nazwa wyświetlana oferty. Ta nazwa jest wyświetlana w portalu Azure Marketplace i w witrynie Azure portal. Może zawierać maksymalnie 50 znaków. Użyj poniższych wskazówek Nazwa oferty:
     -  Warto umieścić tu rozpoznawalną nazwę marki produktu. 
     - Nie dołączaj nazwę swojej firmy, chyba że jak oferty są sprzedawane.
     - Jeśli ta oferta jest marketingu w swojej własnej witryny sieci Web, upewnij się, że nazwa jest taka sama jak nazwa w witrynie sieci Web.
@@ -140,7 +128,7 @@ Po dodaniu jednostki SKU, zostanie wyświetlona lista jednostek SKU w widoku jed
 
 ### <a name="hide-this-sku"></a>Ukryj tej jednostki SKU
 
-To ustawienie umożliwia zarządzanie widoczność jednostki SKU. Jeśli "Ukryj ten jednostki SKU" jest wyłączona, jednostka SKU jest widoczna w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure Portal](https://portal.azure.com/) dla klientów. Można ukryć jednostki SKU, jeśli chcesz tylko jego dostępnych za pośrednictwem szablony rozwiązań i nie zakupu indywidualnie.
+To ustawienie umożliwia zarządzanie widoczność jednostki SKU. Jeśli "Ukryj ten jednostki SKU" jest wyłączona, jednostka SKU jest widoczna w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](https://portal.azure.com/) dla klientów. Można ukryć jednostki SKU, jeśli chcesz tylko jego dostępnych za pośrednictwem szablony rozwiązań i nie zakupu indywidualnie.
 
 ### <a name="cloud-availability"></a>Dostępności w chmurze
 
@@ -177,7 +165,7 @@ Możesz zarządzać licencjonowania oprogramowania działającego na maszynie Wi
 
 #### <a name="usage-based-monthly-billed-sku"></a>Użycie na podstawie miesięczne rozliczane jednostki SKU
 
-Klienci jest naliczana na podstawie za godzinę, oparte na stawkach ustawione przez wydawców na rozmiary maszyn wirtualnych. W przypadku programu **rozliczeń godzinowych** modelu jednostek SKU, całkowita cena będzie sumą kosztów oprogramowania pobieranych przez wydawcę i kosztów infrastruktury pobierane przez firmę Microsoft. Co godzinę i miesięczna cena to łączny koszt pojawi się do klienta, podczas biorąc pod uwagę zakupu. Rozliczenia będą w tym przypadku co miesiąc.
+Klienci jest naliczana na podstawie za godzinę, oparte na stawkach ustawione przez wydawców na rozmiary maszyn wirtualnych. Jeśli **rozliczeń godzinowych** model jest używany, cena łączna jest sumą kosztów oprogramowania pobieranych przez wydawcę i kosztów infrastruktury pobierane przez firmę Microsoft. Co godzinę i miesięczna cena to łączny koszt pojawi się do klienta, podczas biorąc pod uwagę zakupu. Rozliczenia będą w tym przypadku co miesiąc.
 
 W ramach modelu na podstawie użycia istnieją dodatkowe ustawienia wymagane przez użytkownika.
 
@@ -188,21 +176,21 @@ W tym miejscu klienta nie naliczona koszt oprogramowania przez pierwsze 30/90 dn
 
 **Za rdzeń**
 
-Możesz ustawić ceny na rdzeń dla danej jednostki SKU. W tym celu wystarczy wprowadzić cena podstawowa dla pojedynczego rdzenia i firma Microsoft automatycznie compute ceny dla pozostałych rdzenie. Wprowadź ceny w USD w portalu, a firma Microsoft spowoduje automatyczne obliczenie cen dla innych regionach. Sprawdź ceny w innych regionach, za pomocą **Eksport danych ceny**
+Możesz ustawić ceny na rdzeń dla danej jednostki SKU. Dla tej opcji wystarczy wprowadzić cena podstawowa dla pojedynczego rdzenia i firma Microsoft automatycznie compute ceny dla pozostałych rdzenie. Wprowadź ceny w USD w portalu, a firma Microsoft spowoduje automatyczne obliczenie cen dla innych regionach. Sprawdź ceny w innych regionach, za pomocą **Eksport danych ceny**
 
 ![Za rdzeń](./media/cloud-partner-portal-publish-virtual-machine/publishvm6.png)
 
 
 **Cennik dyskretnych**
 
-Możesz ustawić ceny dla poszczególnych zestawów rdzeni pojedynczo, jeśli chcesz cena każdego rdzenia oddzielnie.
+Możesz ustawić ceny dla każdego zestawu rdzeni pojedynczo, jeśli chcesz cena każdego rdzenia oddzielnie.
 
 ![Cennik dyskretnych](./media/cloud-partner-portal-publish-virtual-machine/publishvm7.png)
 
 **Cennik eksportu / importu**
 
-Zapewniają elastyczność do wyeksportowania, ceny, który został skonfigurowany za pośrednictwem portalu, aby wprowadzić zmiany za pomocą interfejsu programu excel. Pozwala to również sprawdzić ceny regionu i ceny w lokalnej walucie.
-Kliknięcie **ceny eksportu** pobierze plik programu excel z wstępnie uzupełnionym szczegóły cennika. Będzie można edytować w programie excel, a następnie użyć **ceny importu** zaimportować zmiany, które zostały wprowadzone.
+Zapewniają elastyczność do wyeksportowania, ceny, który został skonfigurowany za pośrednictwem portalu, aby wprowadzić zmiany za pomocą interfejsu programu excel. Ta opcja umożliwia zweryfikowanie ceny regionu i ceny w lokalnej walucie.
+Kliknięcie **ceny eksportu** pobierze plik programu Excel z wstępnie uzupełnionym szczegóły cennika. Będzie można edytować te informacje w arkuszu, a następnie użyć **ceny importu** zaimportować zmiany, które zostały wprowadzone.
 Zaimportowane ceny zostanie naliczona w portalu, jak również.
 
 W tym cen w programie excel ceny dla różnych regionów są wyświetlane w walucie lokalnej. Kurs, której używamy są odświeżane raz dziennie.
@@ -219,24 +207,18 @@ W tym cen w programie excel ceny dla różnych regionów są wyświetlane w walu
 
 Następnej sekcji, aby ukończyć będzie sekcji obrazów maszyn wirtualnych. Przed przejściem do tej sekcji, musisz mieć wirtualny dysk twardy, który chcesz opublikować gotowy. Oto kilka linków, ułatwiając tworzenie wirtualnego dysku twardego:
 
--   [Techniczne wymagania wstępne dotyczące tworzenia obrazów maszyn wirtualnych w portalu Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Techniczne wymagania wstępne dotyczące tworzenia obrazów maszyn wirtualnych w portalu Azure Marketplace](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
 -   [Tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [& Utwórz test z obrazu Maszynę wirtualną systemu Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Tworzenie i przekazywanie wirtualnego dysku twardego Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [& Utwórz test maszyny Wirtualnej z systemem Windows za pomocą obrazu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
+-   [Jak rozwiązywać problemy z typowych problemów napotykanych podczas tworzenia wirtualnego dysku twardego](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 
--   [Jak rozwiązywać problemy z typowych problemów napotykanych podczas tworzenia wirtualnego dysku twardego](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
-Po utworzeniu możesz już wirtualny dysk twardy, możesz rozpocząć wypełniania tej sekcji.
-Poniżej przedstawiono niektórych informacji dla niektórych pól.
+Po utworzeniu możesz już wirtualny dysk twardy, możesz rozpocząć wypełniania tej sekcji.  Poniżej przedstawiono niektórych informacji dla niektórych pól.
 
 ### <a name="recommended-vm-sizes"></a>Zalecane rozmiary maszyn wirtualnych
 
-Wybierz maksymalnie sześć zalecane rozmiary maszyn wirtualnych. Są to zalecenia, Pobierz wyświetlane klientów w witrynie Azure Marketplace i w bloku warstwa cenowa w portalu Azure, gdy będą rozważać zakup i wdrożenie Twojego obrazu. **Te wartości są jedynie zaleceniami. Klient jest w stanie wybrać dowolny rozmiar maszyny Wirtualnej, który obsługuje dyski określone w obrazie.**  Poniższy zrzut ekranu przedstawia zalecane rozmiary maszyn wirtualnych, że odbiorcy będą widzieć w witrynie Azure Portal.
+Wybierz maksymalnie sześć zalecane rozmiary maszyn wirtualnych. Te zalecenia są wyświetlane dla klientów w witrynie Azure Marketplace i w bloku warstwa cenowa w portalu Azure, gdy będą rozważać zakup i wdrożenie Twojego obrazu. *Te rozmiary są jedynie zaleceniami. Klient jest w stanie wybrać dowolny rozmiar maszyny Wirtualnej, który obsługuje dyski określone w obrazie.*  Poniższy zrzut ekranu przedstawia zalecane rozmiary maszyn wirtualnych, które klient zostanie wyświetlony w witrynie Azure portal.
 
 
 ![Zalecane rozmiary maszyn wirtualnych](./media/cloud-partner-portal-publish-virtual-machine/publishvm9.png)
@@ -248,9 +230,9 @@ Określ porty, które chcesz wprowadzone otwarty i dostępny. Te porty są otwar
 
 ### <a name="adding-vm-images"></a>Dodawanie obrazów maszyn wirtualnych
 
-Następnym krokiem jest, aby dodać obraz maszyny Wirtualnej dla danej jednostki SKU. Możesz dodać maksymalnie 8 wersji dysków na jednostki SKU. Tylko najwyższy dysku numer wersji dla określonej jednostki SKU będą widoczne w portalu Azure Marketplace. Inne osoby będą widoczne za pośrednictwem interfejsów API.
+Następnym krokiem jest, aby dodać obraz maszyny Wirtualnej dla danej jednostki SKU. Możesz dodać maksymalnie osiem wersji dysków na jednostki SKU. Tylko najwyższy dysku numer wersji dla określonej jednostki SKU będą widoczne w portalu Azure Marketplace. Inne osoby będą widoczne za pośrednictwem interfejsów API.
 
-W obszarze **wersje dyskowe**, wybierz opcję **+ nowa wersja**. Pokazuje to następujące pola, które należy wypełnić.
+W obszarze **wersje dyskowe**, wybierz opcję **+ nowa wersja**. Ta opcja umożliwia pokazanie następujące pola, które należy wypełnić.
 
 #### <a name="vm-image-version"></a>Wersja obrazu maszyny Wirtualnej
 
@@ -258,13 +240,13 @@ Wersja obrazu maszyny Wirtualnej musi wykonać [wersji semantycznej](http://semv
 
 #### <a name="os-vhd-url"></a>ADRES URL WIRTUALNEGO DYSKU TWARDEGO SYSTEMU OPERACYJNEGO
 
-Wprowadź [identyfikatora URI sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) utworzony dla wirtualnego dysku twardego systemu operacyjnego.
+Wprowadź [identyfikatora URI sygnatury dostępu współdzielonego](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) utworzony dla wirtualnego dysku twardego systemu operacyjnego.
 
 W przypadku dysków danych skojarzonych z tej jednostki SKU, możesz dodać te dyski, wybierając **+ nowy dysk danych** łącza. Ta akcja wyświetla dodatkowe pola, które należy wypełnić.
 
 #### <a name="lun-vhd-url"></a>ADRES URL WIRTUALNEGO DYSKU TWARDEGO JEDNOSTKI LUN
 
-Wprowadź [identyfikatora URI sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) dla dysku z danymi.
+Wprowadź [identyfikatora URI sygnatury dostępu współdzielonego](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) dla dysku z danymi.
 
 #### <a name="lun-number"></a>Numer LUN
 
@@ -286,7 +268,7 @@ Przypisz tę jednostkę LUN numer. Ta liczba będzie zarezerwowana dla tego dysk
 
 ## <a name="to-configure-the-marketplace"></a>Aby skonfigurować w portalu Marketplace
 
-Konfigurowanie pola, które są wyświetlane w celu skorzystania z oferty na przy użyciu widoku witryny Marketplace [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure Portal](https://portal.azure.com/).
+Konfigurowanie pola, które są wyświetlane w celu skorzystania z oferty na przy użyciu widoku witryny Marketplace [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji (wersja zapoznawcza)
 
@@ -294,9 +276,9 @@ Lista identyfikatorów subskrypcji platformy Azure, który ma mieć dostęp do t
 
 ### <a name="suggested-categories"></a>Sugerowane kategorie
 
-Wybierz maksymalnie 5 kategorie z podanej listy, które oferty można najlepiej skojarzony z. Wybrane kategorie, będzie używany do mapowania oferty dostępne w kategorie produktów [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure Portal](https://portal.azure.com/).
+Wybierz maksymalnie pięć kategorii z dostarczonej listy, który Twoja oferta może być najlepiej skojarzony z. Wybrane kategorie, będzie używany do mapowania oferty dostępne w kategorie produktów [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](https://portal.azure.com/).
 
-Poniższe przykłady przedstawiają informacje portalu marketplace w portalu Azure Marketplace i witryny Azure Portal.
+Poniższe przykłady przedstawiają informacje portalu marketplace w portalu Azure Marketplace i witryny Azure portal.
 
 **Azure Marketplace**
 
@@ -316,7 +298,6 @@ Poniższe przykłady przedstawiają informacje portalu marketplace w portalu Azu
 ![publishvm12](./media/cloud-partner-portal-publish-virtual-machine/publishvm12.png)
 
 
-
 ![publishvm13](./media/cloud-partner-portal-publish-virtual-machine/publishvm13.png)
 
 
@@ -333,7 +314,7 @@ Wykonaj te wytyczne dotyczące logo przekazany do portalu Cloud Partner:
 
 -   Nie używaj w logo tła gradientowego.
 
--   Należy unikać wprowadzania tekstu na logo. Obejmuje to Twoja firma lub marką. Wygląd i działanie logo powinno być *prostego* i unikać gradientów.
+-   Unikaj umieszczania tekst, łącznie z firmy lub marki nazwy, logo.  Wygląd i działanie logo powinno być *prostego* i unikać gradientów.
 
 -   Nie powinien być rozciągnięty logo.
 
@@ -343,9 +324,9 @@ Logo usługi Hero jest opcjonalne. Wydawcy mogą zrezygnować z Przekaż Hero lo
 
 #### <a name="guidelines-for-the-hero-logo-icon"></a>Wytyczne dotyczące ikona logo Hero
 
--   Nazwa wyświetlana wydawcy, tytuł plan i ofertę długie podsumowanie są wyświetlane przy użyciu biały kolor czcionki. Należy unikać wszelkich jasny kolor w tle. Czarny, biały i przezroczystego tła nie jest dozwolone dla elementu Hero ikon.
+-   Nazwa wyświetlana wydawcy, tytuł plan i ofertę długie podsumowanie są wyświetlane przy użyciu czcionki o kolorze białym. Należy unikać wszelkich jasny kolor w tle. Czarny, biały i przezroczystego tła nie jest dozwolone dla elementu Hero ikon.
 
--   Nazwa wyświetlana wydawcy, plan, że tytuł, długie Podsumowanie oferty i przycisk Utwórz są osadzane programowo wewnątrz Hero logo gdy oferty na liście. Nie należy wprowadzić dowolny tekst, podczas projektowania Hero logo. Pozostaw puste miejsce po prawej stronie logo. Ta przestrzeń powinny być 415 x 100 pikseli i jest zwracana w 370 pikseli od lewej strony.
+-   Nazwa wyświetlana wydawcy, plan, że tytuł, długie Podsumowanie oferty i przycisk Utwórz są osadzane programowo wewnątrz Hero logo gdy oferta znajduje się na liście. Nie należy wprowadzić dowolny tekst, podczas projektowania Hero logo. Pozostaw puste miejsce po prawej stronie logo. Ta przestrzeń powinny być 415 x 100 pikseli i jest zwracana w 370 pikseli od lewej strony.
 
 ![Przykład logo Duży obraz](./media/cloud-partner-portal-publish-virtual-machine/publishvm14.png)
 

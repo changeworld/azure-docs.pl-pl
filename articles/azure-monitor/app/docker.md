@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4e4ca1ca4878a2a405b12413e4378a2cb79aef6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999122"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077457"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorowanie aplikacji Docker w usłudze Application Insights
 
@@ -36,9 +36,9 @@ Po uruchomieniu [obrazu usługi Application Insights](https://hub.docker.com/r/m
 
 ## <a name="set-up-your-application-insights-resource"></a>Konfigurowanie zasobu usługi Application Insights
 
-1. Zaloguj się do [portalu Microsoft Azure](https://azure.com) , a następnie otwórz zasób usługi Application Insights dla aplikacji; lub [Utwórz nową](../../application-insights/app-insights-create-new-resource.md). 
+1. Zaloguj się do [portalu Microsoft Azure](https://azure.com) , a następnie otwórz zasób usługi Application Insights dla aplikacji; lub [Utwórz nową](../../azure-monitor/app/create-new-resource.md ). 
    
-    *Który zasób powinien używać?* Jeśli aplikacje, które są uruchomione na hoście zostały opracowane przez innego użytkownika, a następnie należy [Utwórz nowy zasób usługi Application Insights](../../application-insights/app-insights-create-new-resource.md). Jest to, gdzie wyświetlać i analizować dane telemetryczne. (Wybierz "Ogólne" dla typu aplikacji).
+    *Który zasób powinien używać?* Jeśli aplikacje, które są uruchomione na hoście zostały opracowane przez innego użytkownika, a następnie należy [Utwórz nowy zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md ). Jest to, gdzie wyświetlać i analizować dane telemetryczne. (Wybierz "Ogólne" dla typu aplikacji).
    
     Ale jeśli jesteś deweloperem aplikacji, a następnie mamy nadzieję, że możesz [dodano zestaw SDK usługi Application Insights](../../azure-monitor/app/java-live.md) do każdego z nich. Jeśli są one wszystkie naprawdę składniki aplikacji biznesowej, które można skonfigurować wszystkie z nich do wysyłania telemetrii do jednego zasobu i użyjesz tego samego zasobu, aby wyświetlić dane cyklu życia i wydajność platformy Docker. 
    

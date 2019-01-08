@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e620deae1a73c110dd22133a12155166a55b999
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: cb2383ee8a921aa2c9c4e3b536edc203dd883200
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052023"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074448"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -141,7 +141,7 @@ Możemy wyszukać adres IP (IPv4 lub IPv6) klienta sieci web przy użyciu [GeoLi
 
 Można skonfigurować `ClientIpHeaderTelemetryInitializer` można przyjąć adresu IP z różnych nagłówka. W niektórych systemach, na przykład, jest przenoszony przez serwer proxy, należy załadować równoważenia lub w sieci CDN `X-Originating-IP`. [Dowiedz się więcej](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-Możesz [wykorzystać usługę Power BI](../../application-insights/app-insights-export-power-bi.md) Aby wyświetlić dane telemetryczne żądania na mapie.
+Możesz [wykorzystać usługę Power BI](../../azure-monitor/app/export-power-bi.md ) Aby wyświetlić dane telemetryczne żądania na mapie.
 
 
 ## <a name="data"></a>Jak długo dane są przechowywane w portalu? Czy jest ono bezpieczne?

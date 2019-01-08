@@ -1,35 +1,35 @@
 ---
-title: Unikatowe funkcje usługi Azure BLOB typu Page | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure BLOB typu Page i korzyści, w tym za pomocą przypadków przykładowe skrypty.
+title: Omówienie usługi Azure BLOB typu Page | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure BLOB typu Page i korzyści, w tym przypadki użycia za pomocą przykładowych skryptów.
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022692"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063937"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Unikatowe funkcje Azure stronicowych obiektów blob
+# <a name="overview-of-azure-page-blobs"></a>Omówienie usługi Azure BLOB typu Page
 
-Usługa Azure Storage udostępnia trzy typy magazynu obiektów blob: blokowe obiekty BLOB i Uzupełnialnych obiektów blob, stronicowe obiekty BLOB. Blokowe obiekty BLOB składają się z bloków i są idealne do przechowywania tekstu lub pliki binarne i efektywnie przekazywanie dużych plików. Dołącz obiekty BLOB również składają się z bloków, ale są one zoptymalizowane do operacji uzupełnialnych, dzięki czemu idealne rozwiązanie w scenariuszach logowania. Stronicowe obiekty BLOB składają 512-bajtowego stron do 8 TB w całkowity rozmiar i są przeznaczone dla operacji częstego odczytu/zapisu losowych. Stronicowe obiekty BLOB są podstawą dysków IaaS platformy Azure. Ten artykuł koncentruje się na wyjaśniające, funkcje i korzyści dotyczące stronicowych obiektów blob.
+Usługa Azure Storage udostępnia trzy typy magazynu obiektów blob: Obiekty BLOB typu Block, obiekty BLOB dołączania i stronicowe obiekty BLOB. Blokowe obiekty BLOB składają się z bloków i są idealne do przechowywania tekstu lub pliki binarne i efektywnie przekazywanie dużych plików. Dołącz obiekty BLOB również składają się z bloków, ale są one zoptymalizowane do operacji uzupełnialnych, dzięki czemu idealne rozwiązanie w scenariuszach logowania. Stronicowe obiekty BLOB składają 512-bajtowego stron do 8 TB w całkowity rozmiar i są przeznaczone dla operacji częstego odczytu/zapisu losowych. Stronicowe obiekty BLOB są podstawą dysków IaaS platformy Azure. Ten artykuł koncentruje się na wyjaśniające, funkcje i korzyści dotyczące stronicowych obiektów blob.
 
 Stronicowe obiekty BLOB to zbiór stron 512-bajtowych, które zapewniają możliwość odczytu/zapisu dowolnego zakresów bajtów. W związku z tym stronicowe obiekty BLOB są idealnym rozwiązaniem do przechowywania struktur danych na podstawie indeksu i rozrzedzone, takich jak dyski systemu operacyjnego i danych dla maszyn wirtualnych i baz danych. Na przykład bazy danych SQL Azure używa stronicowych obiektów blob jako podstawowego magazynu trwałego dla baz danych. Ponadto stronicowe obiekty BLOB są również często używane do plików za pomocą opartej na zakresie aktualizacji.  
 
-Najważniejsze funkcje platformy Azure stronicowe obiekty BLOB są jego interfejsu REST, trwałości powiązanego magazynu oraz możliwości bezproblemowej migracji do platformy Azure. Te funkcje zostały omówione bardziej szczegółowo w następnej sekcji. Ponadto usługa Azure stronicowe obiekty BLOB są obecnie obsługiwane na dwa typy magazynów: Magazyn w warstwie Premium i magazynu w warstwie standardowa. Usługa Premium Storage jest zaprojektowany specjalnie dla obciążeń wymagających spójnej wysokiej wydajności i małymi opóźnieniami, co stronicowe obiekty BLOB w warstwie premium jest idealny dla bazy danych magazynu danych o wysokiej wydajności.  Magazynu w warstwie standardowa jest bardziej ekonomiczna w przypadku obciążeń niewrażliwego na opóźnienia.
+Najważniejsze funkcje platformy Azure stronicowe obiekty BLOB są jego interfejsu REST, trwałości powiązanego magazynu oraz możliwości bezproblemowej migracji do platformy Azure. Te funkcje zostały omówione bardziej szczegółowo w następnej sekcji. Ponadto usługa Azure stronicowe obiekty BLOB są obecnie obsługiwane na dwa typy magazynów: Usługa Premium Storage i magazynu w warstwie standardowa. Usługa Premium Storage jest zaprojektowany specjalnie dla obciążeń wymagających spójnej wysokiej wydajności i małymi opóźnieniami, co stronicowe obiekty BLOB w warstwie premium jest idealny dla bazy danych magazynu danych o wysokiej wydajności.  Magazynu w warstwie standardowa jest bardziej ekonomiczna w przypadku obciążeń niewrażliwego na opóźnienia.
 
 ## <a name="sample-use-cases"></a>Przykładowe przypadki użycia
 
 Omówmy kilka przypadków użycia w przypadku stronicowych obiektów blob, począwszy od dysków IaaS platformy Azure. Usługa Azure BLOB typu Page stanowią szkielet platformy dysków wirtualnych IaaS platformy Azure. Zarówno systemu operacyjnego platformy Azure, jak i dyski danych są zaimplementowane jako dyski wirtualne, których dane są trwale utrwalony na platformie Azure Storage i następnie dostarczane do maszyn wirtualnych, aby osiągnąć najwyższą wydajność. Dyski platformy Azure są utrwalane w funkcji Hyper-V [formatu wirtualnego dysku twardego](https://technet.microsoft.com/library/dd979539.aspx) i przechowywane jako [stronicowych obiektów blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) w usłudze Azure Storage. Oprócz używania wirtualnych dysków maszyn wirtualnych IaaS platformy Azure, stronicowych obiektów blob umożliwia także PaaS i DBaaS scenariuszy, takich jak usługa Azure SQL DB, która aktualnie używa stronicowych obiektów blob do przechowywania danych SQL, umożliwiając szybkie losowe operacje odczytu i zapisu dla bazy danych. Innym przykładem może być w przypadku usługi PaaS dla dostępu do nośnika udostępnionego dla aplikacji współpracy, wideo i edycji stronicowe obiekty BLOB umożliwić szybki dostęp do losowych lokalizacjach na nośniku. Umożliwia również szybkie i wydajne edytowanie i scalanie z tego samego nośnika przez wielu użytkowników. 
 
 Pierwszy usług firmy Microsoft innych firm, takich jak usługi Azure Site Recovery, usługi Azure Backup, a także wielu innych deweloperów wdrożono wiodące w branży innowacje za pomocą interfejsu REST stronicowych obiektów blob. Poniżej przedstawiono niektóre unikatowych scenariuszy implementowane na platformie Azure: 
-* Zarządzanie migawek przyrostowych skierowane do aplikacji: aplikacje mogą korzystać z migawek obiektów blob strony i interfejsów API REST do zapisywania punkty kontrolne aplikacji bez konieczności kosztownych zduplikowanie danych. Usługa Azure Storage obsługuje lokalne migawki dla stronicowych obiektów blob, które nie wymagają kopiowania całego obiektu blob. Te migawki publicznych interfejsów API również włączyć dostęp i kopiowanie różnic między migawkami.
-* Migracja aplikacji i danych ze środowiska lokalnego do chmury na żywo: kopiowanie danych lokalnych i używanie interfejsów API REST do zapisu bezpośrednio do platformy Azure stronicowych obiektów blob podczas lokalnej maszyny Wirtualnej będzie nadal działać. Gdy element docelowy ma zawiera, możesz szybko przejściu w tryb failover maszyny Wirtualnej platformy Azure przy użyciu tych danych. W ten sposób można migrować maszyny wirtualne i dyski wirtualne ze środowiska lokalnego do chmury przy minimalnych przestojach, ponieważ migracja danych przebiega w tle, gdy będziesz nadal używać maszyny Wirtualnej i przestojów potrzebne w trybie failover będzie krótki (w minutach).
+* Zarządzanie migawek przyrostowych skierowane do aplikacji: Aplikacje mogą korzystać z migawek obiektów blob strony i interfejsów API REST do zapisywania punkty kontrolne aplikacji bez konieczności kosztownych zduplikowanie danych. Usługa Azure Storage obsługuje lokalne migawki dla stronicowych obiektów blob, które nie wymagają kopiowania całego obiektu blob. Te migawki publicznych interfejsów API również włączyć dostęp i kopiowanie różnic między migawkami.
+* Migracja na żywo aplikacji i danych ze środowiska lokalnego do chmury: Kopiowanie danych lokalnych i używanie interfejsów API REST do zapisu bezpośrednio do platformy Azure stronicowych obiektów blob podczas lokalnej maszyny Wirtualnej będzie nadal działać. Gdy element docelowy ma zawiera, możesz szybko przejściu w tryb failover maszyny Wirtualnej platformy Azure przy użyciu tych danych. W ten sposób można migrować maszyny wirtualne i dyski wirtualne ze środowiska lokalnego do chmury przy minimalnych przestojach, ponieważ migracja danych przebiega w tle, gdy będziesz nadal używać maszyny Wirtualnej i przestojów potrzebne w trybie failover będzie krótki (w minutach).
 * [Na podstawie sygnatury dostępu Współdzielonego](../common/storage-dotnet-shared-access-signature-part-1.md) udostępnione dostęp, co umożliwia obsługę scenariuszy takich jak czytniki wielu i jednego składnika zapisywania z obsługą mechanizmu kontroli współbieżności.
 
 ## <a name="page-blob-features"></a>Cechy stronicowego obiektu blob

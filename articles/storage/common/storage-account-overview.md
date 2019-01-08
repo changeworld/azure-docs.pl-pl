@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2940e1d8328ffaea799ddff4afc9669aaa85a2f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255766"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065634"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -23,33 +23,13 @@ Aby dowiedzieć się, jak utworzyć konto usługi Azure storage, zobacz [Tworzen
 
 ## <a name="types-of-storage-accounts"></a>Typy kont magazynu
 
-Usługa Azure Storage udostępnia trzy typy kont magazynu. Każdy typ obsługuje różne funkcje i ma swój własny model cen. Przed utworzeniem konta magazynu, aby określić typ konta, które sprawdza się najlepiej w aplikacjach, należy wziąć pod uwagę te różnice. Dostępne są następujące typy kont magazynu:
-
-* **[Konta ogólnego przeznaczenia v2](#general-purpose-v2-accounts)**  (zalecane w przypadku większości scenariuszy)
-* **[Konta ogólnego przeznaczenia w wersji 1](#general-purpose-v1-accounts)**
-* **[Konta usługi blob storage](#blob-storage-accounts)** 
-
-W poniższej tabeli opisano typy kont magazynu i ich funkcji:
-
-| Typ konta magazynu | Obsługiwane usługi                       | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane               | Opcje replikacji                                                | Model wdrażania<sup>1</sup>  | Szyfrowanie<sup>2</sup> |
-|----------------------|------------------------------------------|-----------------------------|--------------------------------------|--------------------------------------------------------------------|-------------------|------------|
-| Ogólnego przeznaczenia w wersji 2   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Gorąca, chłodna, archiwum<sup>3</sup> | MAGAZYN LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager | Zaszyfrowane  |
-| Ogólnego przeznaczenia w wersji 1   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | ND                                  | LRS, GRS, RA-GRS                                                   | Klasyczna usługa Resource Manager  | Zaszyfrowane  |
-| Blob Storage         | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Standardowa (Standard)                    | Gorąca, chłodna, archiwum<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Resource Manager  | Zaszyfrowane  |
-
-<sup>1</sup>zaleca się użycie modelu wdrażania usługi Azure Resource Manager. W niektórych lokalizacjach, nadal można utworzyć konta magazynu przy użyciu klasycznego modelu wdrażania, a istniejące konta klasycznego w dalszym ciągu obsługiwana. Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager a klasycznym wdrożeniu: omówienie modeli wdrażania i stanu zasobów](../../azure-resource-manager/resource-manager-deployment-model.md).
-
-<sup>2</sup>wszystkie konta magazynu są szyfrowane przy użyciu szyfrowania usługi Storage (SSE) dla danych magazynowanych. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md).
-
-<sup>3</sup>warstwy archiwum jest dostępna na poziomie obiektu blob poszczególnych tylko, nie na poziomie konta magazynu. Tylko blokowe obiekty BLOB i uzupełnialnych obiektów blob można znaleźć w temacie. Aby uzyskać więcej informacji, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalnego](../blobs/storage-blob-storage-tiers.md).
-
-<sup>4</sup>magazyn strefowo nadmiarowy (ZRS) jest dostępna tylko dla kont magazynu ogólnego przeznaczenia standard w wersji 2. Aby uzyskać więcej informacji na temat magazynu ZRS, zobacz [magazyn strefowo nadmiarowy (ZRS): wysoko dostępnych aplikacji usługi Azure Storage](storage-redundancy-zrs.md). Aby uzyskać więcej informacji na temat innych opcji replikacji, zobacz [replikacja usługi Azure Storage](storage-redundancy.md).
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
 ### <a name="general-purpose-v2-accounts"></a>Konta ogólnego przeznaczenia, wersja 2
 
 Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi Azure Storage i uwzględnić je wszystkie funkcje ogólnego przeznaczenia w wersji 1 i kont usługi Blob storage. Konta ogólnego przeznaczenia w wersji 2 dostarczanie najniższy gigabajt ceny pojemności dla usługi Azure Storage oraz konkurencyjne w branży ceny transakcji. Konta magazynu ogólnego przeznaczenia v2 obsługują te usługi Azure Storage:
 
-- Obiekty BLOB (wszystkie typy: strona bloku, dołączanie,)
+- Obiekty BLOB (wszystkie typy: Blokuj, Dołącz strony)
 - Pliki
 - Dyski
 - Kolejki
@@ -98,7 +78,7 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 Kont magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
 * Warstwa wydajności warstwy standardowa do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyny wirtualnej platformy Azure.
-* Warstwa wydajności premium do przechowywania tylko dysków maszyny wirtualnej platformy Azure. Zobacz temat [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: usługa Storage o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure), aby uzyskać szczegółowe informacje o usłudze Premium Storage.
+* Warstwa wydajności premium do przechowywania tylko dysków maszyny wirtualnej platformy Azure. Zobacz [usługi Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../../virtual-machines/windows/premium-storage.md) szczegółowe omówienie usługi Premium storage.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Warstwy dostępu dla bloku danych obiektu blob
 
@@ -133,7 +113,7 @@ Wszystkie dane na koncie magazynu są szyfrowane po stronie usługi. Aby uzyska�
 
 ## <a name="storage-account-endpoints"></a>Punkty końcowe konta usługi Storage
 
-Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla swoich danych. Każdy obiekt, który jest przechowywany w usłudze Azure Storage ma adres, który zawiera Twoje unikatową nazwę konta. Kombinacja nazwy konta i punktu końcowego usługi Azure Storage stanowi punktów końcowych konta magazynu.
+Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla danych użytkownika. Każdy obiekt przechowywany w usłudze Azure Storage ma adres, który zawiera unikatową nazwę konta. Kombinacja nazwy konta i punktu końcowego usługi Azure Storage stanowi punkty końcowe konta magazynu.
 
 Na przykład, jeśli nosi nazwę konta magazynu ogólnego przeznaczenia *mystorageaccount*, znajdują się domyślne punkty końcowe dla tego konta:
 
@@ -157,9 +137,9 @@ Musi być autoryzowana każdego żądania skierowanego do swojego konta magazynu
 
 Możesz udzielić dostępu do danych na koncie magazynu przy użyciu dowolnej z następujących metod:
 
-- **Usługa Azure Active Directory:** poświadczeń Użyj usługi Azure Active Directory (Azure AD) w celu uwierzytelniania użytkownika, grupy lub innych tożsamości do uzyskiwania dostępu do danych obiektów blob i kolejek (wersja zapoznawcza). W przypadku pomyślnego uwierzytelnienia tożsamości usługi Azure AD zwraca token do użycia w autoryzowania żądania do usługi Azure Blob storage i Queue storage. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
-- **Udostępniony klucz autoryzacji:** konstruowania parametrów połączenia używanych przez aplikację w środowisku uruchomieniowym dostępu do magazynu platformy Azure za pomocą klucz dostępu konta magazynu. Wartości w parametrach połączenia są używane do konstruowania *autoryzacji* nagłówek, który jest przekazywany do usługi Azure Storage. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Storage, parametry połączenia](storage-configure-connection-string.md).
-- **Sygnatura dostępu współdzielonego:** Użyj sygnatury dostępu współdzielonego można delegować dostępu do zasobów na koncie magazynu, jeśli nie używasz uwierzytelniania usługi Azure AD. Sygnatury dostępu współdzielonego to token, który hermetyzuje wszystkie informacje wymagane do autoryzowania żądania do usługi Azure Storage w polu adres URL. Można określić zasobów magazynu, uprawnień i interwał, które uprawnienia są prawidłowe w ramach sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [Using shared access signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Usługa Azure Active Directory:** Użyj poświadczeń usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkownika, grupy lub innych tożsamości do uzyskiwania dostępu do danych obiektów blob i kolejek (wersja zapoznawcza). W przypadku pomyślnego uwierzytelnienia tożsamości usługi Azure AD zwraca token do użycia w autoryzowania żądania do usługi Azure Blob storage i Queue storage. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
+- **Udostępniony klucz autoryzacji:** Klucz dostępu konta magazynu należy używać do tworzenia parametrów połączenia używanych przez aplikację w środowisku uruchomieniowym dostępu do magazynu Azure. Wartości w parametrach połączenia są używane do konstruowania *autoryzacji* nagłówek, który jest przekazywany do usługi Azure Storage. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Storage, parametry połączenia](storage-configure-connection-string.md).
+- **Sygnatura dostępu współdzielonego:** Jeśli nie używasz uwierzytelniania usługi Azure AD można delegować dostępu do zasobów na koncie magazynu za pomocą sygnatury dostępu współdzielonego. Sygnatury dostępu współdzielonego to token, który hermetyzuje wszystkie informacje wymagane do autoryzowania żądania do usługi Azure Storage w polu adres URL. Można określić zasobów magazynu, uprawnień i interwał, które uprawnienia są prawidłowe w ramach sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [Using shared access signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z innej metody autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Nadal m ożna również udzielić szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego. 

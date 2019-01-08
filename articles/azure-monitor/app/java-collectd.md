@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: a57422b4bbac4b929a67495bfffeec7bf0476e9c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 039ebe9d38b4ac4f63b078489a9c442e08aff0b0
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000227"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075111"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: Metryki wydajności systemu Linux w usłudze Application Insights
 
@@ -29,7 +29,7 @@ Zazwyczaj służy zebrane Jeśli masz już [Instrumentacji usługi sieci web Jav
 ![Przykładowe wykresy](./media/java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>Uzyskaj klucz Instrumentacji
-W [portalu Microsoft Azure](https://portal.azure.com), otwórz [usługi Application Insights](../../application-insights/app-insights-overview.md) zasobów, w którym ma się pojawić się dane. (Lub [Utwórz nowy zasób](../../application-insights/app-insights-create-new-resource.md).)
+W [portalu Microsoft Azure](https://portal.azure.com), otwórz [usługi Application Insights](../../application-insights/app-insights-overview.md) zasobów, w którym ma się pojawić się dane. (Lub [Utwórz nowy zasób](../../azure-monitor/app/create-new-resource.md ).)
 
 Wykonaj kopię klucza instrumentacji, który identyfikuje zasób.
 

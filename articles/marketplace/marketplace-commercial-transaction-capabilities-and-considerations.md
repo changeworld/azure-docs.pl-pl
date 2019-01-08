@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880186"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075638"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace transakcji handlowych możliwości i zagadnienia
 
@@ -46,7 +46,7 @@ Oprócz wersji próbnej opcje publikowania i listy transact publikowania opcja j
 
 Korzystając z opcji publikowania transact, firma Microsoft zapewnia sprzedaży i wdrożenie oprogramowania innej firmy do subskrypcji platformy Azure przez klienta. Wydawcy należy wziąć pod uwagę Naliczanie opłat za infrastrukturę platformy Azure, a internetowa wydawcy opłat licencyjnych, podczas wybierania rozliczeń modelu i oferują typ w witrynie Azure Marketplace. 
 
-Transact opcji publikowania w witrynie Azure Marketplace jest obecnie obsługiwana dla następujących typów ofert: maszyny wirtualne, aplikacje platformy Azure lub aplikacje SaaS.
+Opcja publikowania Transact w witrynie Azure Marketplace jest obecnie obsługiwana dla następujących typów oferty: Maszyny wirtualne, aplikacje platformy Azure lub aplikacje SaaS.
 
 ![[Programu Enterprise oferty w witrynie Azure Marketplace]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
 
@@ -64,13 +64,13 @@ W przypadku aplikacji SaaS wydawcy muszą uwzględniać opłaty za użycie infra
 
 W zależności od opcji transakcji używany opłat za licencje na oprogramowanie wydawcy jest widoczne w następujący sposób:  
 
-* Bezpłatna: Brak opłat za licencje na oprogramowanie. 
+* Bezpłatne: Brak opłat za licencje na oprogramowanie. 
 
-* Model dostarczania własnej licencji (BYOL): wszelkie odpowiednie opłaty za licencje na oprogramowanie odbywa się bezpośrednio od wydawcy i klientów. Microsoft tylko przechodzą przez opłaty za użycie infrastruktury platformy Azure. (Maszyny wirtualne i tylko w przypadku aplikacji platformy Azure).
+* Model dostarczania własnej licencji (BYOL): Wszelkie odpowiednie opłaty za licencje na oprogramowanie odbywa się bezpośrednio od wydawcy i klientów. Microsoft tylko przechodzą przez opłaty za użycie infrastruktury platformy Azure. (Maszyny wirtualne i tylko w przypadku aplikacji platformy Azure).
 
-* Płatność za rzeczywiste użycie: Opłat za licencje oprogramowania są uporządkowane jako za godzinę, rdzeń (vCPU) ceny stawka od w infrastrukturze platformy Azure używane. Dotyczy to tylko maszyny wirtualne i aplikacje platformy Azure.
+* Płatność za rzeczywiste użycie: Opłaty za licencję oprogramowania są uporządkowane jako za godzinę, rdzeń (vCPU) ceny stawka od w infrastrukturze platformy Azure używane. Dotyczy to tylko maszyny wirtualne i aplikacje platformy Azure.
 
-* Subskrypcja ceny (oparty na lokacji): opłat za licencje oprogramowania są uporządkowane jako opłata miesięczna, cyklicznych.  Dotyczy to tylko aplikacji SaaS i aplikacje platformy Azure — aplikacje zarządzane przez.
+* Subskrypcja ceny (oparty na lokacji): Opłaty za licencję oprogramowania są uporządkowane jako opłata miesięczna, cyklicznych.  Dotyczy to tylko aplikacji SaaS i aplikacje platformy Azure — aplikacje zarządzane przez.
 
 * Bezpłatna wersja próbna oprogramowania: Brak opłat za licencje na oprogramowanie do 30 dni lub 90 dni.
 
@@ -214,7 +214,7 @@ Po wybraniu subskrypcji lub zgodnie z rzeczywistym użyciem modele cen, firma Mi
 
 Aby uzyskać więcej informacji i prawne zasad, zobacz [umowie wydawcy portalu](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) (dostępne w portalu Cloud Partner).
 
-Aby uzyskać pomoc dotyczącą pytań związanych z rozliczeniami [utworzyć zdarzenie pomocy technicznej](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636764613233453423) i wybierz maszyny wirtualne lub aplikacji sieci Web (zwane również aplikacje SaaS) w zależności od typu oferty używane.
+Aby uzyskać pomoc dotyczącą pytań związanych z rozliczeniami [utworzyć zdarzenie pomocy technicznej](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&pesid=16230&forceorigin=esmc&ccsid=636764613233453423) i wybierz maszyny wirtualne lub aplikacji sieci Web (zwane również aplikacje SaaS) w zależności od typu oferty używane.
 
 ## <a name="transact-requirements"></a>Wymagania dotyczące transakcji
 
@@ -238,7 +238,7 @@ Opcja publikowania transact jest dostępne tylko do użytku z następujących ty
 
 Wybierz z bezpłatnej, bring-your-own-license lub płatności-zgodnie-you-rzeczywistym-pricing modeli, a następnie prezentować w postaci zdefiniowane na poziomie oferty jednostki SKU. Na rachunku za platformę Azure przez klienta firmy Microsoft przedstawia informacje o wydawcy opłat za licencje na oprogramowanie niezależnie od opłaty podstawowej infrastruktury platformy Azure. Opłaty za infrastrukturę platformy Azure są sterowane za korzystanie z oprogramowania wydawcy.
 
-**Aplikacji platformy Azure: Szablon rozwiązania usługi lub aplikacji zarządzanej** 
+**Aplikacje platformy Azure: Szablon rozwiązania usługi lub aplikacji zarządzanej** 
 
 Należy zarezerwować maszyny wirtualne lub ściąga za pośrednictwem sumę cen maszyn wirtualnych. Dla zarządzanych aplikacji w ramach jednego planu jednolitą stawkę miesięcznej subskrypcji można wybrać jako ceny modelu w zamian cen maszyn wirtualnych. W obu przypadkach opłaty za użycie infrastruktury platformy Azure są przekazywane do klienta oddzielnie od opłat licencyjnych oprogramowania, ale w tym samym zestawienie rozliczeniowe.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure zarządzanej aplikacji tworzenia interfejsu użytkownika funkcji definicji | Dokumentacja firmy Microsoft
-description: Opisuje funkcje do użycia podczas konstruowania definicji interfejsu użytkownika dla aplikacji zarządzanych platformy Azure
+title: Azure Managed Application create funkcje definicji interfejsu użytkownika | Dokumentacja firmy Microsoft
+description: W tym artykule opisano funkcje do użycia podczas konstruowania definicji interfejsu użytkownika usługi Azure Managed Applications
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304508"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063798"
 ---
 # <a name="createuidefinition-functions"></a>Funkcje CreateUiDefinition
 Ta sekcja zawiera podpisy dla wszystkich obsługiwanych funkcji CreateUiDefinition.
 
-Aby korzystać z funkcji, należy ująć deklaracji w nawiasy kwadratowe. Na przykład:
+Aby korzystać z funkcji, należy ująć deklaracji z nawiasami kwadratowymi. Na przykład:
 
 ```json
 "[function()]"
 ```
 
-Ciągi i innych funkcji można odwoływać się jako parametrów dla funkcji, ale ciągów muszą być ujęte w apostrofy. Na przykład:
+Ciągi i inne funkcje, które mogą być przywoływane jako parametrów dla funkcji, ale parametry muszą być ujęte w apostrofy. Na przykład:
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-Jeśli to możliwe, właściwości dane wyjściowe funkcji można odwoływać się za pomocą operatora kropki. Na przykład:
+Gdy to stosowne, mogą przywoływać właściwości danych wyjściowych przez funkcję za pomocą operatora kropki. Na przykład:
 
 ```json
 "[func().prop1]"
 ```
 
 ## <a name="referencing-functions"></a>Funkcje odwołań
-Funkcje te można odwoływać się do danych wyjściowych z właściwości lub kontekstu CreateUiDefinition.
+Te funkcje można odwoływać się do danych wyjściowych z właściwości lub kontekst CreateUiDefinition.
 
-### <a name="basics"></a>podstawy
+### <a name="basics"></a>Podstawy
 Zwraca wartości danych wyjściowych elementu, który jest zdefiniowany w kroku podstawy.
 
 Poniższy przykład zwraca dane wyjściowe elementu o nazwie `foo` w kroku podstawy:
@@ -54,7 +54,7 @@ Poniższy przykład zwraca dane wyjściowe elementu o nazwie `foo` w kroku podst
 ```
 
 ### <a name="steps"></a>kroki
-Zwraca wartości danych wyjściowych elementu, który jest zdefiniowany w określonym punkcie. Aby uzyskać wartości wyjściowe elementów w kroku podstawy, należy użyć `basics()` zamiast tego.
+Zwraca wartości danych wyjściowych elementu, który jest zdefiniowany w określonym punkcie. Aby uzyskać wartości danych wyjściowych elementów w kroku podstawy, użyj `basics()` zamiast tego.
 
 Poniższy przykład zwraca dane wyjściowe elementu o nazwie `bar` w kroku o nazwie `foo`:
 
@@ -63,7 +63,7 @@ Poniższy przykład zwraca dane wyjściowe elementu o nazwie `bar` w kroku o naz
 ```
 
 ### <a name="location"></a>location
-Zwraca lokalizację wybrany w kroku podstawy lub w bieżącym kontekście.
+Zwraca lokalizację wybrana w kroku podstawy lub w bieżącym kontekście.
 
 Poniższy przykład może zwrócić `"westus"`:
 
@@ -72,18 +72,18 @@ Poniższy przykład może zwrócić `"westus"`:
 ```
 
 ## <a name="string-functions"></a>Funkcje ciągów
-Tych funkcji można używać tylko z ciągami formatu JSON.
+Te funkcje należy używać tylko z ciągami formatu JSON.
 
 ### <a name="concat"></a>concat
 Łączy jeden lub więcej ciągów.
 
-Na przykład jeśli wartości wyjściowej `element1` Jeśli `"bar"`, a następnie w tym przykładzie zwraca ciąg `"foobar!"`:
+Na przykład jeśli wartość danych wyjściowych `element1` Jeśli `"bar"`, a następnie w tym przykładzie zwraca ciąg `"foobar!"`:
 
 ```json
-"[concat('foo', steps('step1').element1), '!']"
+"[concat('foo', steps('step1').element1, '!')]"
 ```
 
-### <a name="substring"></a>substring
+### <a name="substring"></a>podciąg
 Zwraca podciąg określonego ciągu. Podciąg rozpoczyna się od określonego indeksu i ma określony czas.
 
 Poniższy przykład zwraca `"ftw"`:
@@ -92,8 +92,8 @@ Poniższy przykład zwraca `"ftw"`:
 "[substring('azure-ftw!!!1one', 6, 3)]"
 ```
 
-### <a name="replace"></a>Zamień
-Zwraca wartość typu ciąg, w którym wszystkie wystąpienia określonego ciągu w ciągu bieżącej są zastępowane innego ciągu.
+### <a name="replace"></a>Zastąp
+Zwraca ciąg, w której wszystkie wystąpienia określonego ciągu w ciągu bieżącej zastępuje się innym ciągiem.
 
 Poniższy przykład zwraca `"Everything is awesome!"`:
 
@@ -129,10 +129,10 @@ Poniższy przykład zwraca `"FOOBAR"`:
 ```
 
 ## <a name="collection-functions"></a>Kolekcja funkcji
-Te funkcje mogą być używane z kolekcjami, takich jak obiektów, tablic i ciągi w formacie JSON.
+Te funkcje mogą być używane z kolekcjami, takich jak ciągi JSON, tablic i obiektów.
 
 ### <a name="contains"></a>zawiera
-Zwraca `true` ciąg zawierający określony podciąg, tablica zawiera określoną wartość, czy obiekt zawiera określony klucz.
+Zwraca `true` ciąg zawiera podany podciąg, tablica zawiera określoną wartość, czy obiekt zawiera określony klucz.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
 Poniższy przykład zwraca `true`:
@@ -141,7 +141,7 @@ Poniższy przykład zwraca `true`:
 "[contains('foobar', 'foo')]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `false`:
 
 ```json
@@ -164,8 +164,8 @@ Poniższy przykład zwraca `true`:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>długość
-Zwraca liczbę znaków w ciągu, liczba wartości w tablicy lub liczba kluczy w obiekcie.
+### <a name="length"></a>Długość
+Zwraca liczbę znaków w ciąg, liczba wartości w tablicy lub liczba kluczy w obiekcie.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
 Poniższy przykład zwraca `6`:
@@ -174,7 +174,7 @@ Poniższy przykład zwraca `6`:
 "[length('foobar')]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `3`:
 
 ```json
@@ -198,7 +198,7 @@ Poniższy przykład zwraca `2`:
 ```
 
 ### <a name="empty"></a>pusty
-Zwraca `true` Jeśli ciąg, tablicy lub obiekt ma wartość null lub pusty.
+Zwraca `true` przypadku ciągów, tablicy lub obiektu o wartości null ani być pusta.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
 Poniższy przykład zwraca `true`:
@@ -207,7 +207,7 @@ Poniższy przykład zwraca `true`:
 "[empty('')]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `false`:
 
 ```json
@@ -230,8 +230,8 @@ Poniższy przykład zwraca `false`:
 "[empty(steps('foo').element1)]"
 ```
 
-#### <a name="example-4-null-and-undefined"></a>Przykład 4: wartości null i niezdefiniowana
-Załóżmy `element1` jest `null` lub niezdefiniowany. Poniższy przykład zwraca `true`:
+#### <a name="example-4-null-and-undefined"></a>Przykład 4: wartości null i niezdefiniowane
+Załóżmy `element1` jest `null` lub niezdefiniowaną. Poniższy przykład zwraca `true`:
 
 ```json
 "[empty(steps('foo').element1)]"
@@ -247,7 +247,7 @@ Poniższy przykład zwraca `"f"`:
 "[first('foobar')]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `1`:
 
 ```json
@@ -270,7 +270,7 @@ Poniższy przykład zwraca `{"key1": "foobar"}`:
 ```
 
 ### <a name="last"></a>ostatni
-Zwraca ostatni znak określony ciąg, ostatni wartość określonej tablicy lub ostatniego klucza i wartość określonego obiektu.
+Zwraca ostatni znak określony ciąg, ostatnie wartości określonej tablicy lub klucz ostatnio i wartość określonego obiektu.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
 Poniższy przykład zwraca `"r"`:
@@ -279,7 +279,7 @@ Poniższy przykład zwraca `"r"`:
 "[last('foobar')]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `2`:
 
 ```json
@@ -302,8 +302,8 @@ Poniższy przykład zwraca `{"key2": "raboof"}`:
 "[last(steps('foo').element1)]"
 ```
 
-### <a name="take"></a>podejmij
-Zwraca określoną liczbę ciągłe znaków od początku ciągu, określoną liczbę wartości ciągłej od początku tablicy lub określoną liczbę ciągłych kluczy i wartości od początku obiektu.
+### <a name="take"></a>Wypełnij
+Zwraca określoną liczbę znaków sąsiadujących z początku ciągu, określoną liczbę wartości sąsiadujących z początku tablicy lub określoną liczbę ciągłych kluczy i wartości od samego początku obiektu.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
 Poniższy przykład zwraca `"foo"`:
@@ -312,7 +312,7 @@ Poniższy przykład zwraca `"foo"`:
 "[take('foobar', 3)]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `[1, 2]`:
 
 ```json
@@ -335,8 +335,8 @@ Poniższy przykład zwraca `{"key1": "foobar"}`:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>Pomiń
-Pomija określoną liczbę elementów w kolekcji, a następnie zwraca wszystkie pozostałe elementy.
+### <a name="skip"></a>pomiń
+Pomija określoną liczbę elementów w kolekcji, a następnie zwraca pozostałe elementy.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
 Poniższy przykład zwraca `"bar"`:
@@ -345,7 +345,7 @@ Poniższy przykład zwraca `"bar"`:
 "[skip('foobar', 3)]"
 ```
 
-#### <a name="example-2-array"></a>Przykład 2: tablicy
+#### <a name="example-2-array"></a>Przykład 2: tablica
 Załóżmy `element1` zwraca `[1, 2, 3]`. Poniższy przykład zwraca `[3]`:
 
 ```json
@@ -368,7 +368,7 @@ Poniższy przykład zwraca `{"key2": "raboof"}`:
 ```
 
 ## <a name="logical-functions"></a>Funkcje logiczne
-W przypadku korzystania z tej możliwości można używać tych funkcji. Niektóre funkcje mogą nie obsługiwać wszystkich typów danych JSON.
+Te funkcje można używać w Stanach warunkowych. Niektóre funkcje mogą nie obsługiwać wszystkich typów danych JSON.
 
 ### <a name="equals"></a>równa się
 Zwraca `true` Jeśli oba parametry mają ten sam typ i wartość. Ta funkcja obsługuje wszystkie typy danych JSON.
@@ -391,8 +391,8 @@ Poniższy przykład zwraca `false`:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>mniej
-Zwraca `true` jeśli pierwszym parametrem jest ściśle mniejsza niż drugi parametr. Ta funkcja obsługuje tylko parametry numer typu i ciągu.
+### <a name="less"></a>less
+Zwraca `true` , jeśli pierwszy parametr jest mniejsza niż drugi parametr. Ta funkcja obsługuje tylko parametry typu number i ciąg.
 
 Poniższy przykład zwraca `true`:
 
@@ -407,7 +407,7 @@ Poniższy przykład zwraca `false`:
 ```
 
 ### <a name="lessorequals"></a>lessOrEquals
-Zwraca `true` jeśli pierwszym parametrem jest mniejsza niż drugi parametr. Ta funkcja obsługuje tylko parametry numer typu i ciągu.
+Zwraca `true` Jeśli pierwszy parametr jest mniejszy niż drugi parametr. Ta funkcja obsługuje tylko parametry typu number i ciąg.
 
 Poniższy przykład zwraca `true`:
 
@@ -416,7 +416,7 @@ Poniższy przykład zwraca `true`:
 ```
 
 ### <a name="greater"></a>większa
-Zwraca `true` jeśli pierwszym parametrem jest większa niż drugi parametr. Ta funkcja obsługuje tylko parametry numer typu i ciągu.
+Zwraca `true` Jeśli pierwszy parametr jest większa niż drugi parametr. Ta funkcja obsługuje tylko parametry typu number i ciąg.
 
 Poniższy przykład zwraca `false`:
 
@@ -431,7 +431,7 @@ Poniższy przykład zwraca `true`:
 ```
 
 ### <a name="greaterorequals"></a>greaterOrEquals
-Zwraca `true` jeśli pierwszym parametrem jest większa niż lub równa drugiego parametru. Ta funkcja obsługuje tylko parametry numer typu i ciągu.
+Zwraca `true` , jeśli pierwszy parametr jest większa lub równa wartości drugiego parametru. Ta funkcja obsługuje tylko parametry typu number i ciąg.
 
 Poniższy przykład zwraca `true`:
 
@@ -470,7 +470,7 @@ Poniższy przykład zwraca `true`:
 ```
 
 ### <a name="not"></a>nie
-Zwraca `true` , gdy parametr jest `false`. Ta funkcja obsługuje tylko parametrów typu wartość logiczna.
+Zwraca `true` Jeśli parametr daje w wyniku `false`. Ta funkcja obsługuje tylko parametrów typu wartość logiczna.
 
 Poniższy przykład zwraca `true`:
 
@@ -484,20 +484,20 @@ Poniższy przykład zwraca `false`:
 "[not(equals(0, 0))]"
 ```
 
-### <a name="coalesce"></a>połączenie
+### <a name="coalesce"></a>COALESCE
 Zwraca wartość pierwszego parametru inną niż null. Ta funkcja obsługuje wszystkie typy danych JSON.
 
-Załóżmy `element1` i `element2` jest nieokreślona. Poniższy przykład zwraca `"foobar"`:
+Załóżmy `element1` i `element2` są niezdefiniowane. Poniższy przykład zwraca `"foobar"`:
 
 ```json
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
 ## <a name="conversion-functions"></a>Funkcje konwersji
-Te funkcje można przekonwertować wartości między typami danych JSON i kodowania.
+Te funkcje można przekonwertować wartości z zakresu od kodowania i typy danych JSON.
 
 ### <a name="int"></a>int
-Konwertuje parametru na liczbę całkowitą. Ta funkcja obsługuje parametry liczbę typ i ciąg.
+Konwertuje parametr na liczbę całkowitą. Ta funkcja obsługuje parametry typu number i ciąg.
 
 Poniższy przykład zwraca `1`:
 
@@ -511,8 +511,8 @@ Poniższy przykład zwraca `2`:
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>liczba zmiennoprzecinkowa
-Konwertuje parametr zmiennoprzecinkowych. Ta funkcja obsługuje parametry liczbę typ i ciąg.
+### <a name="float"></a>float
+Konwertuje parametr liczb zmiennoprzecinkowych. Ta funkcja obsługuje parametry typu number i ciąg.
 
 Poniższy przykład zwraca `1.0`:
 
@@ -527,7 +527,7 @@ Poniższy przykład zwraca `2.9`:
 ```
 
 ### <a name="string"></a>ciąg
-Konwertuje parametru na ciąg. Ta funkcja obsługuje parametry wszystkich typów danych JSON.
+Konwertuje parametr na ciąg. Ta funkcja obsługuje parametry wszystkich typów danych JSON.
 
 Poniższy przykład zwraca `"1"`:
 
@@ -554,7 +554,7 @@ Poniższy przykład zwraca `"{"foo":"bar"}"`:
 ```
 
 ### <a name="bool"></a>wartość logiczna
-Konwertuje parametr na wartość logiczną. Ta funkcja obsługuje parametry typu numer, ciągu i typu Boolean. Podobnie jak wartości logiczne w języku JavaScript, wszystkie wartości z wyjątkiem `0` lub `'false'` zwraca `true`.
+Konwertuje parametr na wartość logiczną. Ta funkcja obsługuje parametry typu number, string i Boolean. Podobnie jak wartości logicznych w języku JavaScript, wszystkie wartości z wyjątkiem `0` lub `'false'` zwraca `true`.
 
 Poniższy przykład zwraca `true`:
 
@@ -580,8 +580,8 @@ Poniższy przykład zwraca `true`:
 "[bool('true')]"
 ```
 
-### <a name="parse"></a>analizy
-Konwertuje parametr typu macierzystego. Innymi słowy, ta funkcja jest odwrotność `string()`. Ta funkcja obsługuje tylko parametry typu string.
+### <a name="parse"></a>Analizy
+Konwertuje parametr typu natywnego. Innymi słowy, ta funkcja jest przeciwieństwem `string()`. Ta funkcja obsługuje tylko parametry typu string.
 
 Poniższy przykład zwraca `1`:
 
@@ -608,7 +608,7 @@ Poniższy przykład zwraca `{"foo":"bar"}`:
 ```
 
 ### <a name="encodebase64"></a>encodeBase64
-Koduje parametru zaszyfrowanym ciągiem base-64. Ta funkcja obsługuje tylko parametry typu string.
+Koduje parametr na ciąg zakodowany base-64. Ta funkcja obsługuje tylko parametry typu string.
 
 Poniższy przykład zwraca `"Zm9vYmFy"`:
 
@@ -617,7 +617,7 @@ Poniższy przykład zwraca `"Zm9vYmFy"`:
 ```
 
 ### <a name="decodebase64"></a>decodeBase64
-Dekoduje parametru z zaszyfrowanym ciągiem base-64. Ta funkcja obsługuje tylko parametry typu string.
+Dekoduje parametr z ciąg zakodowany base-64. Ta funkcja obsługuje tylko parametry typu string.
 
 Poniższy przykład zwraca `"foobar"`:
 
@@ -626,7 +626,7 @@ Poniższy przykład zwraca `"foobar"`:
 ```
 
 ### <a name="encodeuricomponent"></a>encodeuricomponent —
-Koduje parametru na ciąg kodowany adres URL. Ta funkcja obsługuje tylko parametry typu string.
+Koduje parametr na ciąg zakodowany w adresie URL. Ta funkcja obsługuje tylko parametry typu string.
 
 Poniższy przykład zwraca `"https%3A%2F%2Fportal.azure.com%2F"`:
 
@@ -634,8 +634,8 @@ Poniższy przykład zwraca `"https%3A%2F%2Fportal.azure.com%2F"`:
 "[encodeUriComponent('https://portal.azure.com/')]"
 ```
 
-### <a name="decodeuricomponent"></a>decodeuricomponent —
-Dekoduje parametr ciągu zakodowane w adresie URL. Ta funkcja obsługuje tylko parametry typu string.
+### <a name="decodeuricomponent"></a>decodeUriComponent
+Dekoduje parametr z ciąg zakodowany w adresie URL. Ta funkcja obsługuje tylko parametry typu string.
 
 Poniższy przykład zwraca `"https://portal.azure.com/"`:
 
@@ -644,7 +644,7 @@ Poniższy przykład zwraca `"https://portal.azure.com/"`:
 ```
 
 ## <a name="math-functions"></a>Funkcje matematyczne
-### <a name="add"></a>dodaj
+### <a name="add"></a>add
 Dodaje dwie liczby i zwraca wynik.
 
 Poniższy przykład zwraca `3`:
@@ -654,7 +654,7 @@ Poniższy przykład zwraca `3`:
 ```
 
 ### <a name="sub"></a>Sub
-Odejmuje druga liczba od pierwszej liczby i zwraca wynik.
+Odejmuje drugą liczbę od pierwszej liczby i zwraca wynik.
 
 Poniższy przykład zwraca `1`:
 
@@ -672,7 +672,7 @@ Poniższy przykład zwraca `6`:
 ```
 
 ### <a name="div"></a>div
-Dzieli numer pierwszej numerem drugi i zwraca wynik. Wynik jest zawsze liczbą całkowitą.
+Dzieli liczbę pierwszy, drugi liczbą i zwraca wynik. Wynik jest zawsze liczbą całkowitą.
 
 Poniższy przykład zwraca `2`:
 
@@ -680,8 +680,8 @@ Poniższy przykład zwraca `2`:
 "[div(6, 3)]"
 ```
 
-### <a name="mod"></a>mod
-Dzieli numer pierwszej przez drugą liczbę i zwraca resztę.
+### <a name="mod"></a>dzielenie modulo
+Dzieli liczbę pierwszy, drugi liczbą i zwraca resztę z dzielenia.
 
 Poniższy przykład zwraca `0`:
 
@@ -696,7 +696,7 @@ Poniższy przykład zwraca `2`:
 ```
 
 ### <a name="min"></a>min.
-Zwraca małych dwóch liczb.
+Zwraca mały dwóch liczb.
 
 Poniższy przykład zwraca `1`:
 
@@ -705,7 +705,7 @@ Poniższy przykład zwraca `1`:
 ```
 
 ### <a name="max"></a>maks.
-Zwraca większych dwóch liczb.
+Zwraca większy z dwóch liczb.
 
 Poniższy przykład zwraca `2`:
 
@@ -714,7 +714,7 @@ Poniższy przykład zwraca `2`:
 ```
 
 ### <a name="range"></a>Zakres
-Generuje w sekwencji liczb całkowitych określonego zakresu.
+Generuje sekwencję liczb całkowitych w obrębie określonego zakresu.
 
 Poniższy przykład zwraca `[1,2,3]`:
 
@@ -723,7 +723,7 @@ Poniższy przykład zwraca `[1,2,3]`:
 ```
 
 ### <a name="rand"></a>RAND
-Zwraca liczbę losową integralną określonego zakresu. Ta funkcja nie generuje kryptograficznie bezpiecznego liczb losowych.
+Zwraca losową liczbę całkowitą z określonego zakresu. Ta funkcja nie generuje kryptograficznie bezpieczne liczb losowych.
 
 Poniższy przykład może zwrócić `42`:
 
@@ -740,8 +740,8 @@ Poniższy przykład zwraca `3`:
 "[floor(3.14)]"
 ```
 
-### <a name="ceil"></a>ceil
-Zwraca największa liczba całkowita większa lub równa podanej liczbie.
+### <a name="ceil"></a>Ceil —
+Zwraca największą liczbę całkowitą, większy lub równy podanej liczbie.
 
 Poniższy przykład zwraca `4`:
 
@@ -787,5 +787,5 @@ Poniższy przykład zwraca `"1991-01-01T00:59:59.000Z"`:
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+* Wprowadzenie do usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 

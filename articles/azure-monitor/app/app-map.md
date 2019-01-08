@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e89ba38b7993b8f2d17704ff592eecd3d02d303e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731356"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063118"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
 
@@ -191,13 +191,13 @@ Aby uzyskać więcej informacji o tym, jak zastąpić właściwości cloud_RoleN
 
 Jeśli występują problemy z mapy aplikacji, aby działać zgodnie z oczekiwaniami, wykonaj poniższe kroki:
 
-1. Upewnij się, że ponownie przy użyciu zestawu SDK w oficjalnie obsługiwany. Zestawy SDK nieobsługiwany społeczności mogą nie obsługiwać korelacji.
+1. Upewnij się, że używasz oficjalnie obsługiwanym zestawem SDK. Zestawy SDK nieobsługiwany społeczności mogą nie obsługiwać korelacji.
 
     Zapoznaj się z tym [artykułu](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) Aby uzyskać listę obsługiwanych zestawów SDK.
 
 2. Uaktualnij wszystkie składniki do najnowszej wersji zestawu SDK.
 
-3. Jeśli możesz ponownie przy użyciu usługi Azure Functions przy użyciu C#Przeprowadź uaktualnienie do [funkcje w wersji 2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Jeśli używasz usługi Azure Functions przy użyciu C#Przeprowadź uaktualnienie do [funkcje w wersji 2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
 4. Upewnij się, [cloud_RoleName](app-map.md#Set-cloud-RoleName) jest poprawnie skonfigurowana.
 

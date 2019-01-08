@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8afe994f2441e736d660a306746508e9c6d13691
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ca9148093660f3ed223fd2117e85d309c919e040
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001842"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076930"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Użyj usługi Stream Analytics, aby przetworzyć wyeksportowane dane z usługi Application Insights
 [Usługa Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) jest idealnym narzędziem do przetwarzania danych [wyeksportowany z usługi Application Insights](export-telemetry.md). Stream Analytics można pobierają dane z różnych źródeł. Go przekształcić i filtrowania danych, a następnie kierować do różnych ujścia.
@@ -25,7 +25,7 @@ ms.locfileid: "54001842"
 W tym przykładzie utworzymy adaptera, który pobiera dane z usługi Application Insights, zmiana nazwy, przetwarza niektóre pola i przekazuje go do usługi Power BI.
 
 > [!WARNING]
-> Są znacznie lepsze i łatwiejsze [zalecane sposoby, aby wyświetlić dane usługi Application Insights w usłudze Power BI](../../application-insights/app-insights-export-power-bi.md). Ścieżka przedstawionych w tym miejscu jest tylko przykład ilustrujący sposób przetwarzania wyeksportowane dane.
+> Są znacznie lepsze i łatwiejsze [zalecane sposoby, aby wyświetlić dane usługi Application Insights w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ). Ścieżka przedstawionych w tym miejscu jest tylko przykład ilustrujący sposób przetwarzania wyeksportowane dane.
 > 
 > 
 
@@ -198,7 +198,7 @@ Zaczekaj, aż zadanie jest uruchomione.
 
 ## <a name="see-results-in-power-bi"></a>Wyświetlanie wyników w usłudze Power BI
 > [!WARNING]
-> Są znacznie lepsze i łatwiejsze [zalecane sposoby, aby wyświetlić dane usługi Application Insights w usłudze Power BI](../../application-insights/app-insights-export-power-bi.md). Ścieżka przedstawionych w tym miejscu jest tylko przykład ilustrujący sposób przetwarzania wyeksportowane dane.
+> Są znacznie lepsze i łatwiejsze [zalecane sposoby, aby wyświetlić dane usługi Application Insights w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ). Ścieżka przedstawionych w tym miejscu jest tylko przykład ilustrujący sposób przetwarzania wyeksportowane dane.
 > 
 > 
 

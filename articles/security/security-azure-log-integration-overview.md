@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/07/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: f20da4ab60eeec3e9c353445f6bc20449b9c1cb6
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e9b547b6b582e38a51196815522132dd807c971b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584483"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079038"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Wprowadzenie do integracji dzienników platformy Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "53584483"
 
 Integracja dzienników platformy Azure została udostępniona upraszcza zadanie integracji Azure dzienników z lokalnym systemem Security Information and Event Management (SIEM).
 
- Jest zalecaną metodą zintegrowanie dzienniki platformy Azure do użycia łączników s dostawcy rozwiązania SIEM. Usługa Azure Monitor umożliwia przesyłanie strumieniowe dzienników do usługi event hubs i dostawców rozwiązania SIEM można napisać łączniki do dalszej integracji dzienników z Centrum zdarzeń do rozwiązania SIEM.  Aby uzyskać opis sposobu działania, postępuj zgodnie z instrukcjami w [Monitor strumienia danych monitorowania usługi event hubs](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Artykuł zawiera również listę rozwiązań Siem, dla których bezpośrednie łączników usługi Azure są już dostępne.  
+ Zalecaną metodą zintegrowanie dzienniki platformy Azure jest korzystanie z łączników z dostawcą rozwiązania SIEM. Usługa Azure Monitor umożliwia przesyłanie strumieniowe dzienników do usługi event hubs i dostawców rozwiązania SIEM można napisać łączniki do dalszej integracji dzienników z Centrum zdarzeń do rozwiązania SIEM.  Aby uzyskać opis sposobu działania, postępuj zgodnie z instrukcjami w [Monitor strumienia danych monitorowania usługi event hubs](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Artykuł zawiera również listę rozwiązań Siem, dla których bezpośrednie łączników usługi Azure są już dostępne.  
 
 > [!IMPORTANT]
 > Jeśli zainteresowanie podstawowy jest zbieranie dzienników maszyny wirtualnej, większość dostawców rozwiązania SIEM uwzględnić tę opcję w swoich rozwiązaniach. Za pomocą rozwiązania SIEM dostawcy łącznik jest zawsze preferowana alternatywa.

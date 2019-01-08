@@ -3,7 +3,7 @@ title: Wdróż swoją ofertę w portalu Azure Marketplace | Dokumentacja firmy M
 description: Dowiedz się więcej o, a następnie przeprowadzenie instrukcjami, aby wdrażać oferty — obraz maszyny wirtualnej, usługi dla deweloperów, usługi danych itd. — w portalu Azure Marketplace.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
-ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 058f50853795453617593a6a07e2951f15f28174
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714285"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076115"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Wdróż swoją ofertę w portalu Azure Marketplace
 Gdy jesteś zadowolony z ofertą (oznacza to, należy przetestować scenariusze klientów, marketing zawartości, itp.) i wszystko będzie gotowe do uruchomienia i zażądać **wypchnięcia do produkcji** na **Publikuj** kartę.  
@@ -50,7 +51,7 @@ Gdy jesteś zadowolony z ofertą (oznacza to, należy przetestować scenariusze 
 ## <a name="production-checklist-for-all-virtual-machine-offers"></a>Lista kontrolna produkcji, dla wszystkich ofert z maszyny wirtualnej
 * Upewnij się, że jesteś partnerem z certyfikatem platformy Microsoft Azure
 * Na karcie jednostki SKU opcję "Hide tej jednostki SKU z witryny Marketplace, ponieważ zawsze powinny zostać zakupione za pomocą szablonu rozwiązania" powinien być oznaczony jako tak tylko wtedy, gdy jednostka SKU jest częścią szablonu rozwiązania. We wszystkich innych przypadkach ta opcja zawsze powinien być oznaczony jako nie.
-* Pamiętaj: Nie należy zmieniać ustawienie widoczności jednostki SKU po jednostki SKU znajduje się na liście. Ta funkcja nie jest obsługiwana.
+* Należy pamiętać: Nie należy zmieniać ustawienie widoczności jednostki SKU po jednostki SKU znajduje się na liście. Ta funkcja nie jest obsługiwana.
 * Upewnij się, że logo przestrzegają wytycznych dotyczących logo portalu Azure Marketplace, które zostały podane poniżej.
 * Opis oferty i jednostki SKU nie powinny być takie same.
 * Jednostek SKU tytuł i oferują długie podsumowanie nie powinny być takie same.
@@ -62,7 +63,7 @@ Gdy jesteś zadowolony z ofertą (oznacza to, należy przetestować scenariusze 
 * Projekt platformy Azure ma prostą paletę kolorów. Niskich numer podstawowy i pomocniczy kolory na logo.
 * Kolory motywu w witrynie Azure Portal są białe i czarne. Dlatego należy unikać te kolory jako kolor tła logo usługi. Użyj niektóre koloru, która spowodowałaby wprowadzenie Twoje logo widocznym w witrynie Azure portal. Zalecamy proste kolory podstawowe. Jeśli korzystają z przezroczystym tłem, upewnij się, że logo/tekstu nie jest białe lub czarny.
 * Nie należy używać gradientu tła na logo.
-* Należy unikać wprowadzania tekstu, nawet Twoja firma lub nazwa marki na logo.
+* Należy unikać wprowadzania tekstu, nawet firmy, lub oznaczyć nazwy, logo.
 * Wygląd i działanie logo powinno być "płaską" i unikać gradientów.
 * Logo nie powinien być rozciągnięty.
 
@@ -70,7 +71,7 @@ Gdy jesteś zadowolony z ofertą (oznacza to, należy przetestować scenariusze 
 
 * Logo usługi Hero jest opcjonalne. Wydawcy mogą zrezygnować z Przekaż Hero logo. **Jednak po przekazanych ikony elementów hero, nie można usunąć z publikowanie portalu. W tym czasie partner musi korzystać z portalu Azure Marketplace dotyczących ikony Hero inne oferty nie zostanie zatwierdzona do środowiska produkcyjnego.**
 * Nazwa wyświetlana wydawcy, nazwa jednostki SKU i długie Podsumowanie oferty są wyświetlane w kolorze białym czcionki. Dlatego należy unikać, pamiętając wszelkie jasny kolor tła ikony elementów Hero. Czarny, biały i przezroczyste tło nie jest dozwolone dla elementu Hero ikon.
-* Wydawcy Nazwa wyświetlana, nazwa jednostki SKU, długie Podsumowanie oferty i przycisk Utwórz są osadzone programowo wewnątrz Hero logo po oferty, które będą uwzględnione na liście. Nie należy więc wprowadzić dowolny tekst, podczas projektowania Hero logo. Po prostu pozostaw puste miejsce po prawej stronie, ponieważ tekst (np. Nazwa wyświetlana wydawcy, tytuł jednostki SKU, długie Podsumowanie oferty) zostaną uwzględnione programowo przez firmę Microsoft za pośrednictwem miejsca. Puste miejsce tekst powinien być 415 x 100, po prawej stronie (i przesunięty 370px z lewej strony).
+* Wydawcy Nazwa wyświetlana, nazwa jednostki SKU, długie Podsumowanie oferty i przycisk Utwórz są osadzone programowo wewnątrz Hero logo po oferty, które będą uwzględnione na liście. Nie należy więc wprowadzić dowolny tekst, podczas projektowania Hero logo. Po prostu pozostaw puste miejsce po prawej stronie ponieważ tekst (oznacza to, że nazwa wyświetlana wydawcy, tytuł jednostki SKU, długie Podsumowanie oferty) zostaną uwzględnione programowo przez firmę Microsoft za pośrednictwem miejsca. Puste miejsce tekst powinien być 415 x 100, po prawej stronie (i jest przesuwane w 370 pikseli od lewej strony).
 
 ## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>Oferuje dodatkowe produkcji listy kontrolnej zawierającej już uwzględnione na liście maszyny wirtualnej
 * Sprawdź, czy jest już oferty o takiej samej nazwie oferty z Twojej firmy. Jeśli tak, należy dodać nową wersję jednostki SKU w istniejącej oferty zamiast tworzenia nowej oferty duplikatów.
@@ -81,7 +82,7 @@ Gdy jesteś zadowolony z ofertą (oznacza to, należy przetestować scenariusze 
 Po tej oferty przechodzi na żywo, należy przetestować scenariusze klientów, sprawdź, czy wszystkie kontrakty i funkcje działają prawidłowo w środowisku produkcyjnym jako przetestowany i zweryfikowany w środowisku przejściowym.
 
 ## <a name="see-also"></a>Zobacz także
-* [Wprowadzenie: jak opublikować ofertę w portalu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Wprowadzenie: Jak opublikować ofertę w portalu Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png

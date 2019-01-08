@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52b18f3f6f1166650fb13694f3eed54c28bbc0a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c41444f94e4685d246de225500c8a5beefc74944
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731388"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065617"
 ---
 # <a name="analytics-in-application-insights"></a>Analiza w usłudze Application Insights
 Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](../../application-insights/app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana. Jeśli już skonfigurowano usługę Application Insights dla jednej z aplikacji, a następnie można analizować dane swojej aplikacji, otwierając analizy z Twojej aplikacji [bloku przeglądu](../../azure-monitor/app/app-insights-dashboards.md).
@@ -48,7 +48,7 @@ Firma Microsoft następnie liczby rekordów dla każdego kraju (znaleziono danyc
 Język ma wiele atrakcyjnych funkcji:
 
 * [Filtr](/azure/kusto/query/whereoperator) telemetrii aplikacji pierwotnych według dowolnego pola, w tym swoje właściwości niestandardowych i metryk.
-* [Dołącz do](/azure/kusto/query/joinoperator) wielu tabel korelowanie żądań z wyświetleń stron, wywołań zależności, wyjątki i ślady dzienników.
+* [Dołącz do](/azure/kusto/query/joinoperator) wielu tabel — korelowanie żądania wyświetleń stron, wywołań zależności, wyjątki i ślady dzienników.
 * Zaawansowane statystyczne [agregacji](/azure/kusto/query/summarizeoperator).
 * Natychmiastowe i zaawansowane wizualizacje.
 * [Interfejs API REST](https://dev.applicationinsights.io/) służące do uruchamiania zapytań programowo, na przykład za pomocą programu PowerShell.

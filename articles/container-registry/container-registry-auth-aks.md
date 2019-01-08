@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752541"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078783"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
 
@@ -44,7 +44,7 @@ az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Dostęp za pomocą wpisie tajnym rozwiązania Kubernetes
 
-W niektórych przypadkach nie można przypisać rolę wymagane do udostępnienie go do usługi ACR jednostki generowane automatycznie usługi AKS. Na przykład ze względu na model zabezpieczeń Twojej organizacji, możesz nie mieć wystarczających uprawnień w katalogu usługi Azure AD, aby przypisać rolę do jednostki usługi AKS, generowane. W takim przypadku można utworzyć nową jednostkę usługi, a następnie przyznać jej dostęp do rejestru kontenerów, za pomocą wpisu tajnego ściągania obrazów platformy Kubernetes.
+W niektórych przypadkach nie można przypisać rolę wymagane do udostępnienie go do usługi ACR jednostki generowane automatycznie usługi AKS. Na przykład ze względu na model zabezpieczeń w organizacji, nie masz wystarczających uprawnień w dzierżawie usługi Azure Active Directory do przypisywania roli do jednostki usługi generowanych przez usługi AKS. Przypisywanie roli do nazwy głównej usługi wymaga kontem usługi Azure AD, aby mieć uprawnienia do zapisu do dzierżawy usługi Azure AD. Jeśli nie masz uprawnień, możesz utworzyć nową jednostkę usługi, a następnie przyznać jej dostęp do rejestru kontenerów, za pomocą wpisu tajnego ściągania obrazów platformy Kubernetes.
 
 Użyj następującego skryptu, aby utworzyć nową jednostkę usługi, (użyjesz jej poświadczenia wpisie tajnym rozwiązania Kubernetes obraz ściągnięcia). Modyfikowanie `ACR_NAME` zmiennej w środowisku przed uruchomieniem skryptu.
 

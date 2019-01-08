@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 147887151abd5c1f7455b0efbf9aadbc2d884183
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a96cfcb07252dc4a9089eab2decaec9efb01a67b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796776"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064997"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Jak używać wywołania zwrotnego wykrywania jednostki
 
@@ -95,7 +95,7 @@ Oto kod wywołania zwrotnego:
 6. Kliknij przycisk "Wynik akcje".
     - Kliknięcie przycisku wyzwala wywołanie zwrotne wykrywania jednostki
     - Wywołanie zwrotne kod ustawia wartość jednostki CityResolved poprawnie "new york"
-7. Wybierz odpowiedź, "Warszawa, jest to bardzo dobre rozwiązanie."
+7. Wybierz odpowiedź "new york to bardzo dobre rozwiązanie".
 
 Ten wzorzec jest typowy dla wielu scenariuszy botów. Wypowiedzi użytkowników i jednostek wyodrębnione są dostarczane do logiki biznesowej, a tej logiki przekształca wypowiedź w formie kanonicznej, który następnie jest zapisywany do programowego jednostek dla kolejnych włącza okna dialogowego.
 

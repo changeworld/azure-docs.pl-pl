@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 0c70d3b5166b0e3719aa621091920d2c91696bf1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: bd5c3a6fc4a2d6f6a8b4f07154c02d7d29211ec9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973540"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078596"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
 Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Site Recovery. Jeśli masz pytania dotyczące po przeczytaniu tego artykułu, opublikuj je na [Forum usług odzyskiwania Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -91,7 +91,7 @@ Dla maszyn wirtualnych i serwerów fizycznych replikowanych między lokalnych wi
 Usługa Azure Site Recovery replikuje dane do konta usługi Azure storage za pośrednictwem publicznego punktu końcowego. Replikacja nie jest za pośrednictwem sieci VPN lokacja lokacja. Można utworzyć sieci VPN lokacja lokacja z siecią wirtualną platformy Azure. To nie koliduje z replikacji usługi Site Recovery.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Replikacja maszyn wirtualnych na platformie Azure mogą używać usługi ExpressRoute?
-Tak, [można użyć usługi ExpressRoute](concepts-expressroute-with-site-recovery.md) replikowania lokalnych maszyn wirtualnych do platformy Azure. Usługa Azure Site Recovery replikuje dane na koncie usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. Po maszyny wirtualne mają zostały przełączone w tryb failover siecią wirtualną platformy Azure można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering) konfiguracji sieci wirtualnej platformy Azure. Replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej.
+Tak, [można użyć usługi ExpressRoute](concepts-expressroute-with-site-recovery.md) replikowania lokalnych maszyn wirtualnych do platformy Azure. Usługa Azure Site Recovery replikuje dane na koncie usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Po maszyny wirtualne mają zostały przełączone w tryb failover siecią wirtualną platformy Azure można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering) konfiguracji sieci wirtualnej platformy Azure. Replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej. W przypadku, gdy są chronione maszyn VMware lub fizycznych komputerów, upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. 
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Czy istnieją wymagania wstępne związane z replikacją maszyn wirtualnych do platformy Azure?
 [Maszyny wirtualne VMware](vmware-physical-azure-support-matrix.md#replicated-machines) i [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) ma zostać zreplikowana na platformie Azure, powinny być zgodne z wymaganiami platformy Azure.

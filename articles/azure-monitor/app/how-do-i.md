@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: dacd2e0d43f2c7711539896b88838adb85542963
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051734"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074210"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mogę (...) w usłudze Application Insights?
 ## <a name="get-an-email-when-"></a>Otrzymaj wiadomość e-mail po...
@@ -94,7 +94,7 @@ Oto niektóre ważne kwestie:
 * W [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md), dostosować wykres i zapisz go jako ulubione. Przypnij go do pulpitu nawigacyjnego platformy Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Pulpit nawigacyjny z danymi z innych źródeł i usługi Application Insights
-* [Eksportowanie telemetrii do usługi Power BI](../../application-insights/app-insights-export-power-bi.md).
+* [Eksportowanie telemetrii do usługi Power BI](../../azure-monitor/app/export-power-bi.md ).
 
 Lub
 

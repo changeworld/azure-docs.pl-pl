@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: d67b53d80b74d0a6ad3c4264a55a5e277acffd20
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ddf4763b8f5abb81c7d884d9d978c85843410ccb
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083907"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064950"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Znajdowanie pomocy i otworzyć bilet pomocy technicznej usługi Azure Active Directory
 Firma Microsoft zapewnia globalne technicznych, przedsprzedaży, rozliczeń i pomoc techniczna dla subskrypcji usługi Azure Active Directory (Azure AD). Obsługa jest dostępna online i telefonicznie w przypadku Microsoft Azure płatnych subskrypcji i wersji próbnej. Telefoniczna pomoc techniczna i online pomocy technicznej dotyczącej rozliczeń są dostępne w dodatkowych językach. 
@@ -51,7 +51,7 @@ Jeśli nie możesz znaleźć odpowiedzi przy użyciu zasobów samodzielnej pomoc
    
 4. Dla **usługi**, wybierz opcję **usługi Azure Active Directory**, a następnie wybierz pozycję **dalej**.
 
-5. Na **Problem** bloku wybierz [ważność](https://azure.microsoft.com/support/plans/response/)).
+5. Na **Problem** bloku wybierz [ważność](https://azure.microsoft.com/support/plans/response/).
   
 6. Wybierz **typ problemu**, a następnie wybierz pozycję **kategorii** dla tego typu. W tym momencie możesz również oferowana informacje o samodzielnej pomocy dla kategorii problemu.
   
@@ -68,9 +68,9 @@ Jeśli nie możesz znaleźć odpowiedzi przy użyciu zasobów samodzielnej pomoc
 
 1. Zaloguj się do [w Centrum administracyjnym usługi Office 365](https://portal.office.com) przy użyciu konta z pakietu Enterprise Mobility + Security (EMS) licencji.
 
-2. Na **pomocy technicznej** kafelka, wybierz opcję **nowe żądanie obsługi**: ![zrzut ekranu portalu usługi Office 365](./media/active-directory-troubleshooting-support-howto/office-portal.png)
+2. Na **pomocy technicznej** kafelka, wybierz opcję **nowe żądanie obsługi**: ![Zrzut ekranu portalu usługi Office 365](./media/active-directory-troubleshooting-support-howto/office-portal.png)
 
-3. Na **obsługują Przegląd** wybierz opcję **Zarządzanie tożsamościami** lub **Zarządzanie użytkownikami i domeny**: ![zrzut ekranu z kategorii pomocy technicznej usługi Azure AD](./media/active-directory-troubleshooting-support-howto/select-identity.png)
+3. Na **pomoc techniczna — omówienie** wybierz opcję **Zarządzanie tożsamościami** lub **Zarządzanie użytkownikami i domeny**: ![Kategorie pomocy technicznej usługi Azure AD zrzut ekranu](./media/active-directory-troubleshooting-support-howto/select-identity.png)
 
 4. Aby uzyskać **funkcji**, wybierz funkcję usługi Azure AD, dla którego chcesz pomocy technicznej.
 

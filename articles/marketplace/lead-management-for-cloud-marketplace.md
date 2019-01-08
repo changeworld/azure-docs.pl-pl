@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 8bb964308e11d238def4eed3f194ffc9ef8ab086
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: abaad7eabf92b6f3f53d7807af132959533552b9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840167"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076964"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Zarządzanie potencjalnych klientów dla portalu marketplace w chmurze
 
@@ -60,7 +60,7 @@ Po technicznych, skonfiguruj znajduje się w miejscu, należy dołączyć potenc
 
 ## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Typowe błędy konfiguracji potencjalnego klienta podczas publikowania w portalu cloud partner 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Sprawdź ustawienia konta Dynamics CRM. LastCRMError: Nie można zalogować się do usługi Dynamics CRM, LastCRMException:** 
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Sprawdź ustawienia konta Dynamics CRM. LastCRMError: Nie można się zalogować do usługi Dynamics CRM, LastCRMException:** 
 
 > Jeśli wybrano opcję uwierzytelniania usługi O365, sprawdź, czy konto użytkownika i hasła jest prawidłowa. Jeśli wybrano usługi AAD, sprawdź, czy identyfikator dzierżawy, identyfikator aplikacji i aplikacji wpisu tajnego klucza dopasowuje co zostało skonfigurowane na usługi AAD. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Jeśli nazwa użytkownika/hasło konta jest prawidłowa, upewnij się, ma dostęp do Dynamics 365 i ma przypisaną licencję (kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office). 
 
@@ -73,25 +73,25 @@ Po technicznych, skonfiguruj znajduje się w miejscu, należy dołączyć potenc
 
 > Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Nie powiodło się — SecLib::RetrievePrivilegeForUser żadnych ról przypisanych do użytkownika.**  
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Nie powiodło się — SecLib::RetrievePrivilegeForUser żadnych ról są przypisane do użytkownika.**  
 
-> Rozwiązanie: Przypisz rolę zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) w obszarze Ustawienia zabezpieczeń 
+> Rozwiązanie: Przypisywanie roli zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) w obszarze Ustawienia zabezpieczeń 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie znaleziono aplikacji z identyfikatorem w katalogu** 
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie można odnaleźć aplikacji o identyfikatorze w katalogu** 
 
 > Identyfikatora aplikacji podanego w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 8 (w obszarze Azure Active Directory z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Żądany identyfikator dzierżawy nie jest prawidłowe i nie jest prawidłową domenę zewnętrzną formatem** 
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Identyfikator żądanej dzierżawy nie jest format prawidłowych i nie domeny zewnętrznej** 
 
 > Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątku:: Błąd sprawdzanie poprawności poświadczeń.: podano nieprawidłowy klucz tajny.** 
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Błąd walidacji poświadczeń.: Podano nieprawidłowy klucz tajny.** 
 
-> Rozwiązanie: Zaloguj się do witryny Azure Portal, sprawdź, czy klucz aplikacji jest zgodny, co znajduje się w portalu Cloud Partner. Wygeneruj hasło oparte na instrukcji w kroku 10 (w obszarze Azure Active Directory), z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Rozwiązanie: Sprawdź, jeśli klucz aplikacji jest zgodny, co znajduje się w portalu Cloud Partner, zaloguj się do witryny Azure Portal. Wygeneruj hasło oparte na instrukcji w kroku 10 (w obszarze Azure Active Directory), z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
 **Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Kanał żądania przekroczył limit czasu podczas oczekiwania na odpowiedź po 00:02:00. Zwiększ wartość limitu czasu podawaną do wywołania na żądanie, lub zwiększ wartość właściwości SendTimeout w powiązaniu. Czas przydzielony na tę operację mógł stanowić część większego limitu czasu.**  
 
-> Rozwiązanie: Logowania do portalu Cloud Partner, sprawdź szczegóły Storefront >> docelowego potencjalnego klienta >> adresu URL, sprawdź, czy jest prawidłowe wystąpienie dynamicznego CRM
+> Rozwiązanie: Zaloguj się do portalu Cloud Partner, sprawdź szczegóły w sklepie >> docelowego potencjalny klient >> adresu URL, sprawdź, czy jest prawidłowe wystąpienie dynamicznego CRM
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -102,7 +102,7 @@ Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketpl
 
 **Gdzie można uzyskać pomoc w konfigurowaniu Moje docelowego potencjalnego klienta** 
 
-Można znaleźć w tej dokumentacji: [pozyskiwanie potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) lub Wyślij bilet pomocy technicznej za pośrednictwem typu oferty wybierz aka.ms/marketplacepublishersupport i zarządzanie potencjalnymi klientami. 
+Można znaleźć w tej dokumentacji: [Pozyskiwanie potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) lub Wyślij bilet pomocy technicznej za pośrednictwem typu oferty wybierz aka.ms/marketplacepublishersupport i zarządzanie potencjalnymi klientami. 
 
 
 
@@ -150,7 +150,7 @@ Tytuł = MSFT_TEST_636573304831318844
 
 **Mam na żywo oferty, ale nie widzę żadnych potencjalnych klientów?**
 
-Poszczególnymi potencjalnymi klientami będą mieć dane przekazane w polach w lokalizacji docelowej potencjalnego klienta, potencjalni klienci pojawią się w następującym formacie: **Akcja źródłowa | Oferty** 
+Poszczególnymi potencjalnymi klientami będzie mieć danych przekazanych w polach w lokalizacji docelowej potencjalnego klienta, potencjalni klienci pojawią się w następującym formacie: **Akcja źródłowa | Oferty** 
 
   *Źródła:*
 

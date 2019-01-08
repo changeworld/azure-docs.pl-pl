@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/21/2018
+ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291219"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063289"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM
 
@@ -30,9 +30,9 @@ Usługa Azure AD Privileged Identity Management (PIM) generuje alerty w przypadk
 
 W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról w katalogu, oraz jak naprawiać i jak zapobiec. Ważność ma mają następujące znaczenie:
 
-* **Wysoka**: wymaga natychmiastowego działania z powodu naruszenia zasad.
-* **Średnia**: nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
-* **Niska**: nie wymagać natychmiastowego działania, ale sugeruje zmianę preferowane zasady.
+* **Wysoka**: Wymaga natychmiastowego działania z powodu naruszenia zasad.
+* **Średnia**: Nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
+* **Niska**: Nie wymagać natychmiastowego działania, ale sugeruje zmianę preferowane zasady.
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Administratorzy nie są używane role uprzywilejowane
 
@@ -69,7 +69,7 @@ W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról w katalogu, o
 | | |
 | --- | --- |
 | **Ważność** | Medium |
-| **Dlaczego warto uzyskać ten alert?** | Konta, które nie uległy zmianie hasła ostatnio może być usługa lub udostępnionych kont, które nie są już uaktualniana. Te konta, w ramach ról uprzywilejowanych są narażone na ataki. |
+| **Dlaczego warto uzyskać ten alert?** | Konta w roli uprzywilejowanej, które nie uległy zmianie hasła w ciągu ostatnich 90 dni. Te konta może być usługa lub udostępnionych kont, które nie są obsługiwane i są narażone na ataki. |
 | **Jak naprawić?** | Przegląd konta na liście. Jeśli już nie potrzebują dostępu, należy je usunąć z ich ról uprzywilejowanych. |
 | **Zapobieganie** | Upewnij się, kont, które są udostępniane są obracanie silne hasła po zmiany użytkowników, którzy znać hasło. </br>Regularne przeglądy kont z ról uprzywilejowanych przy użyciu [przeglądów dostępu](pim-how-to-start-security-review.md) i usuwanie przypisań ról, które nie są już potrzebne. |
 | **Akcja ograniczenia w portalu** | Usuwa konto z ich roli uprzywilejowanej. |

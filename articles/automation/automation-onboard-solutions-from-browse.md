@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039432"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062948"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązania Update Management, śledzenia zmian i spis rozwiązań na wielu maszynach wirtualnych
 
@@ -59,6 +59,24 @@ Jeśli wybrany obszar roboczy nie został połączony z kontem usługi Automatio
 
 ![Brak obszaru roboczego](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
+Podczas włączania rozwiązania, tylko niektóre regiony są obsługiwane w przypadku łączenia obszar roboczy usługi Log Analytics i konto usługi Automation.
+
+W poniższej tabeli przedstawiono obsługiwane mapowania:
+
+|**Regionu obszaru roboczego usługi log Analytics**|**Region usługi Azure Automation**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+
 Usuń zaznaczenie pola wyboru obok dowolnej maszyny wirtualnej, których nie chcesz, aby włączyć. Maszyny wirtualne, których nie można włączyć są już usunięte.
 
 Kliknij przycisk **Włącz** Aby włączyć rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
@@ -80,13 +98,13 @@ Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć
 
 1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
 
-1. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
+2. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
 
    ![Odłącz strona obszaru roboczego](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
 
-1. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
+3. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
 
 Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
@@ -106,13 +124,13 @@ Podczas dołączania wielu maszyn, może być maszyn, które są wyświetlane ja
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Maszyna wirtualna raportuje do innego obszaru roboczego: "\<workspaceName\>".  Zmienianie konfiguracji na potrzeby włączania
 
-**Przyczyna**: ten błąd wskazuje, że maszyna wirtualna, który próbujesz dodać raporty do innego obszaru roboczego.
+**Przyczyna**: Ten błąd wskazuje, że maszyna wirtualna, który próbujesz dodać raporty do innego obszaru roboczego.
 
-**Rozwiązanie**: kliknij **jako konfiguracji** zmiany docelowego obszaru roboczego konto usługi Automation i Log Analytics.
+**Rozwiązanie**: Kliknij przycisk **jako konfiguracji** zmiany docelowego obszaru roboczego konto usługi Automation i Log Analytics.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Maszyna wirtualna raporty do obszaru roboczego, który nie jest dostępny w ramach tej subskrypcji
 
-**Przyczyna**: obszar roboczy, któremu podlega maszyny wirtualnej:
+**Przyczyna**: Obszar roboczy, któremu podlega maszyny wirtualnej:
 
 * Znajduje się w innej subskrypcji lub
 * Już nie istnieje, lub
@@ -122,19 +140,19 @@ Podczas dołączania wielu maszyn, może być maszyn, które są wyświetlane ja
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Wersja systemu operacyjnego maszyny Wirtualnej lub dystrybucji nie jest obsługiwana.
 
-**Przyczyna:** rozwiązanie nie jest obsługiwana dla wszystkich dystrybucje systemu Linux i wszystkich wersji systemu Windows.
+**Przyczyna:** Rozwiązanie nie jest obsługiwana dla wszystkich dystrybucje systemu Linux i wszystkich wersji systemu Windows.
 
-**Rozwiązanie:** dotyczą [listę obsługiwanych klientów](automation-update-management.md#clients) dla rozwiązania.
+**Rozwiązanie:** Zapoznaj się [listę obsługiwanych klientów](automation-update-management.md#clients) dla rozwiązania.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Nie można włączyć klasycznych maszyn wirtualnych
 
-**Przyczyna**: maszyny wirtualne, które używają klasycznego modelu wdrażania nie są obsługiwane.
+**Przyczyna**: Maszyny wirtualne, które używają klasycznego modelu wdrażania nie są obsługiwane.
 
-**Rozwiązanie**: Migruj maszynę wirtualną do modelu wdrażania usługi resource manager. Aby dowiedzieć się, jak to zrobić, zobacz [migrację zasobów modelu wdrożenia klasycznego](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Rozwiązanie**: Migruj maszynę wirtualną, do modelu wdrażania usługi resource manager. Aby dowiedzieć się, jak to zrobić, zobacz [migrację zasobów modelu wdrożenia klasycznego](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Maszyna wirtualna jest zatrzymana. (cofnięty przydział)
 
-**Przyczyna**: maszynę wirtualną w nie **systemem** stanu.
+**Przyczyna**: Maszynę wirtualną w nie **systemem** stanu.
 
 **Rozwiązanie**: W celu dołączenia maszyny Wirtualnej w celu rozwiązania maszyny Wirtualnej musi być uruchomiona. Kliknij przycisk **uruchamianie maszyny Wirtualnej** wbudowany link prowadzący do uruchomienia maszyny Wirtualnej bez konieczności opuszczania strony.
 

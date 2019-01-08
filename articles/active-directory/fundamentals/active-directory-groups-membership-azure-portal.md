@@ -12,12 +12,12 @@ ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13be8cbe9c05b9dcf513588825a22722c66e529
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104275"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061899"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Dodawanie lub usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory
 Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory.
@@ -29,7 +29,7 @@ Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usług
 Można dodać istniejącej grupy zabezpieczeń do innej istniejącej grupy zabezpieczeń (nazywane również zagnieżdżone grupy), tworzenia elementu członkowskiego grupy (podgrupy) i grupy nadrzędnej. Element członkowski grupy dziedziczy atrybuty i właściwości grupy nadrzędnej, zaoszczędzić czas.
 
 >[!Important]
->Obecnie nie obsługujemy:<ul><li>Dodawanie grupy do grupy synchronizowane z usługą Active Directory w środowisku lokalnym</li><li>Dodawanie grup zabezpieczeń do grup usługi Office 365</li><li>Dodawanie grup usługi Office 365 do grupy zabezpieczeń lub inne grupy usługi Office 365</li><li>Przypisywanie aplikacji do grup zagnieżdżonych</li><li>Stosowanie licencji do grupy zagnieżdżone</li></ul>
+>Obecnie nie obsługujemy:<ul><li>Dodawanie grupy do grupy synchronizowane z usługą Active Directory w środowisku lokalnym.</li><li>Dodawanie grup zabezpieczeń do grup usługi Office 365.</li><li>Dodawanie grup usługi Office 365 do grupy zabezpieczeń lub inne grupy usługi Office 365.</li><li>Przypisywanie aplikacji do grup zagnieżdżonych.</li><li>Stosowanie licencji do grup zagnieżdżonych.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Aby dodać grupę, jest członkiem innej grupy
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 371c7b2eb2f2e0e34dc80cf8fe6771620fa76765
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 51658fe686e2826618b2044cd969e6b4d463b93f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099941"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063191"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Przechowywanie danych tożsamości na potrzeby klientów w Europie w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) pomaga zarządzać tożsamościami użytkowników i tworzenia zasad dostępu opartych na analizie, których zabezpieczania zasobów organizacji. Dane tożsamości są przechowywane w lokalizacji opartej na adresie podanym przez Twoją organizację podczas dokonywania subskrypcji usługi. Na przykład subskrybowania usługi Office 365 lub platformy Azure. Aby uzyskać szczegółowe informacje na temat przechowywania danych tożsamości, zobacz sekcję [Gdzie przechowywane są Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) w Centrum zaufania Microsoft.
@@ -55,7 +55,7 @@ W przypadku organizacji korzystających z europejskich adresów większość dan
 
 - **Microsoft Azure Active Directory B2C (Azure AD B2C)**
 
-    Usługa Azure AD B2C przechowuje wszystkie dane użytkownika w europejskich centrach danych. Jednak dzienniki operacyjne (bez danych osobowych) pozostają w lokalizacji, z której użytkownik uzyskuje dostęp do usług. Na przykład jeśli użytkownik uzyskuje dostęp do usługi B2C w Stanach Zjednoczonych, dzienniki operacyjne pozostają w Stanach Zjednoczonych. Ponadto wszystkie dane konfiguracji zasad, które nie zawierają danych osobowych, są przechowywane wyłącznie na terenie Stanów Zjednoczonych. Aby uzyskać więcej informacji na temat konfiguracji zasad, zobacz artykuł [Azure Active Directory B2C: Built-in policies (Azure Active Directory B2C — wbudowane zasady)](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies).
+    Usługa Azure AD B2C przechowuje wszystkie dane użytkownika w europejskich centrach danych. Jednak dzienniki operacyjne (bez danych osobowych) pozostają w lokalizacji, z której użytkownik uzyskuje dostęp do usług. Na przykład jeśli użytkownik uzyskuje dostęp do usługi B2C w Stanach Zjednoczonych, dzienniki operacyjne pozostają w Stanach Zjednoczonych. Ponadto wszystkie dane konfiguracji zasad, które nie zawierają danych osobowych, są przechowywane wyłącznie na terenie Stanów Zjednoczonych. Aby uzyskać więcej informacji na temat konfiguracji zasad, zobacz [usługi Azure Active Directory B2C: Wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) artykułu.
 
 - **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
     
@@ -72,7 +72,7 @@ W przypadku organizacji korzystających z europejskich adresów większość dan
     Aby uzyskać więcej informacji na temat przechowywania danych usług firmy Microsoft, zobacz sekcję [Gdzie przechowywane są Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) w Centrum zaufania Microsoft.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat opisanych powyżej funkcji i funkcjonalności, zobacz następujące artykuły.
+Aby uzyskać więcej informacji o tych funkcji i możliwości opisanych powyżej zobacz następujące artykuły:
 - [Co to jest uwierzytelnianie wieloskładnikowe?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
 - [Samoobsługowe resetowanie haseł w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
 - [Co to jest usługa Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73dc8c2217a0f4eecd5d5b0f934624d9491055a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 99a8ac29167db4619d68cfa51de6a747d5ae9a51
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040238"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079174"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
@@ -38,7 +38,7 @@ Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
-1. Jeśli nie zostały jeszcze [Zainstaluj usługę Application Insights](../../azure-monitor/app/asp-net.md) w aplikacji sieci web platformy ASP.NET lub [aplikacja serwera Windows](../../application-insights/app-insights-windows-services.md), zrób to teraz. 
+1. Jeśli nie zostały jeszcze [Zainstaluj usługę Application Insights](../../azure-monitor/app/asp-net.md) w aplikacji sieci web platformy ASP.NET lub [aplikacja serwera Windows](../../azure-monitor/app/windows-services.md), zrób to teraz. 
 2. **Aktualizacja do najnowszej wersji** pakietu usługi Application Insights. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami Nuget**. Otwórz **aktualizacje** karcie wyboru **Uwzględnij wersję wstępną**i wybrać wszystkie pakiety Microsoft.ApplicationInsights.*.
 
     Ponownie wdróż aplikację.

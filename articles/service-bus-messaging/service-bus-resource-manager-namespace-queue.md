@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4010f1582b726993a5540898492c76aa543fa2d9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 4d16e6161d2e31ed104f6b1ed9842470dd5faae9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407743"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062421"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus i kolejki za pomocą szablonu usługi Azure Resource Manager
 
@@ -116,6 +116,8 @@ Tworzy standardową przestrzeń nazw usługi Service Bus typu **komunikatów**, 
         }]
     }]
 ```
+
+Składnię JSON i właściwości, zobacz [przestrzenie nazw](/azure/templates/microsoft.servicebus/namespaces) i [kolejek](/azure/templates/microsoft.servicebus/namespaces/queues).
 
 ## <a name="commands-to-run-deployment"></a>Polecenia umożliwiające uruchomienie wdrożenia
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]

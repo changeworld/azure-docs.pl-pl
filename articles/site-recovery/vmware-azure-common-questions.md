@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 920ae8ff09cb8e936a1ba70b2c862bd9bc076046
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e229fcc2c9eb6b8e1b49293dfd741a2f96f62871
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974696"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077389"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -108,6 +108,12 @@ Tak, można dodać nowe maszyny wirtualne do istniejącej grupy replikacji po w�
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Można zmodyfikować maszyny wirtualne, które jest replikowana, dodając lub zmienianie rozmiaru dysków?
 
 Potrzeby replikacji oprogramowania VMware do platformy Azure można zmodyfikować rozmiaru dysku. Jeśli chcesz dodać nowe dyski, czego potrzebujesz, aby dodać dysk, a następnie ponownie włączyć ochronę maszyny Wirtualnej.
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Można przeprowadzić migrację maszyn lokalnych nowe Vcenter bez wywierania wpływu na trwającą replikację?
+Nie, zmiany Vcenter lub migracji będzie miało wpływ na trwającą replikację. Należy skonfigurować usługi ASR za pomocą nowego Vcenter i włączyć replikację dla maszyn.
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Można replikować do pamięci podręcznej/docelowego konta magazynu, która ma sieci wirtualnej (przy użyciu zapór usługi Azure storage) skonfigurowane na nim?
+Nie, usługa Azure Site Recovery nie obsługuje replikację do magazynu w sieci wirtualnej.
 
 ## <a name="configuration-server"></a>Serwer konfiguracji
 
@@ -225,9 +231,10 @@ Platforma Azure została zaprojektowana z myślą o odporności danych. Usługa 
 Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokalizacji Jeśli oryginalny jest niedostępna. [Dowiedz się więcej](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Dlaczego muszę sieci VPN lub usługi ExpressRoute do powrotu po awarii?
-
 Podczas powrotu po awarii z platformy Azure, powrót do maszyny Wirtualnej w środowisku lokalnym są kopiowane dane z platformy Azure i dostęp prywatny jest wymagany.
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>Czy mogę zmienić rozmiar maszyny Wirtualnej platformy Azure po włączeniu trybu failover?
+Nie, nie można zmienić rozmiar docelowej maszyny Wirtualnej po przejściu w tryb failover.
 
 
 ## <a name="automation-and-scripting"></a>Automatyzacji i opracowywaniu skryptów

@@ -12,21 +12,21 @@ ms.date: 08/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 6c08022b47fb1a118e95a54eedf9b5239496ebf7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 405e86506f13472886878eb18557121c752e9464
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092234"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062302"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Usuń grupę przy użyciu usługi Azure Active Directory
 Możesz usunąć grupę usługi Azure Active Directory (Azure AD) na dowolną liczbę powodów, ale zazwyczaj będzie się, ponieważ możesz:
 
-- Niepoprawnie ustawione **typ grupy** do niewłaściwej opcji
+- Niepoprawnie ustawione **typ grupy** nieprawidłową opcję.
 
-- Utworzone nieprawidłowa lub zduplikowane grupy przez pomyłkę 
+- Utworzona przez pomyłkę nieprawidłowa lub grupy. 
 
-- Nie są już potrzebne grupy
+- Nie są już potrzebne grupy.
 
 ## <a name="to-delete-a-group"></a>Aby usunąć grupę
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.

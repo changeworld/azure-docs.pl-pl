@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6323a4b8243791cc7a9f847c7d08e5bd5946e96
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025270"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076777"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -27,7 +27,7 @@ Przed skonfigurowaniem Eksport ciągły istnieje kilka rozwiązań alternatywnyc
 * Przycisk Eksportuj w górnej części bloku metryk lub wyszukiwanie umożliwia przeniesienie tabele i wykresy do arkusza kalkulacyjnego programu Excel.
 
 * [Analiza](../../azure-monitor/app/analytics.md) udostępnia zaawansowany język zapytań dla danych telemetrycznych. Można także eksportować wyniki.
-* Jeśli zajmujesz się na [eksplorować dane w usłudze Power BI](../../application-insights/app-insights-export-power-bi.md), możesz to zrobić, bez korzystania z eksportu ciągłego.
+* Jeśli zajmujesz się na [eksplorować dane w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ), możesz to zrobić, bez korzystania z eksportu ciągłego.
 * [Interfejsu API REST dostępu do danych](https://dev.applicationinsights.io/) pozwala uzyskiwać dostęp do danych telemetrycznych programowo.
 * Można także przejść do ustawień [eksportu ciągłego przy użyciu programu Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 

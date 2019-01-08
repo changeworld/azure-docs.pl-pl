@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: d2ff854d291f65848c7e87b88d8020a835b3bdaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fcfb3943109adbc095b90073f041662fb5c65b56
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958665"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078885"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Oferty maszyny wirtualnej Podręcznik publikowania
 
@@ -66,14 +66,15 @@ Podczas wdrażania urządzenia wirtualnego subskrypcji skojarzonych z klientem, 
 | Wymaganie | Szczegóły |  
 |:--- |:--- | 
 | Rozliczeń oraz metod pomiarów | Maszyna wirtualna musi obsługiwać comiesięcznym rozliczeniem BYOL i płatność za rzeczywiste użycie. |  
-| Wirtualny dysk twardy (VHD) zgodnych z platformą Azure | Maszyny wirtualne muszą zostać skompilowane na systemie Windows lub Linux.<ul> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego systemu Linux, odwiedź stronę tworzenia dysku VHD zgodnych z platformą Azure (opartych na systemie Linux) sekcji znajdujący się w [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2- Create-an-Azure-Compatible-VHD-Linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego Windows można znaleźć tworzenia dysku VHD zgodnych z platformą Azure (z systemem Windows) sekcji znajdujący się w [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3- Create-an-Azure-Compatible-VHD-Windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul> |  
+| Wirtualny dysk twardy (VHD) zgodnych z platformą Azure | Maszyny wirtualne muszą zostać skompilowane na systemie Windows lub Linux. <ul> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego systemu Linux, zobacz [dystrybucje systemu Linux zalecanych dla na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego Windows, zobacz [utworzyć wirtualny dysk twardy zgodnych z platformą Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli użytkownik jeszcze tego nie zrobiono, 
 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.
 
 Jeśli jesteś zarejestrowanym i tworzysz nową ofertę czy działa na podstawie istniejącego
 
-- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty
+- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty.
+- Zobacz [oferty maszyny wirtualnej](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) Aby uzyskać więcej informacji.

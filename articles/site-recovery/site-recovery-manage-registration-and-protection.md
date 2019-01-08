@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 43394be7acc4c561147ffc86744f2daf0d751788
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844570"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074992"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -138,7 +138,7 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 
 1. W **chronione elementy** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy maszyny > **Wyłącz replikację**.
 2. W **Wyłącz replikację** wybierz jedną z następujących opcji:
-    - **Wyłącz replikację i Usuń (zalecane)** — ta opcja to usunięcie replikowanego elementu z usługi Azure Site Recovery i replikacji dla maszyny została zatrzymana. Konfiguracja replikacji na serwerze konfiguracji jest wyczyszczone, a Site Recovery rozliczenia dla tego serwera chronionego została zatrzymana.
+    - **Wyłącz replikację i Usuń (zalecane)** — ta opcja to usunięcie replikowanego elementu z usługi Azure Site Recovery i replikacji dla maszyny została zatrzymana. Konfiguracja replikacji na serwerze konfiguracji jest wyczyszczone, a Site Recovery rozliczenia dla tego serwera chronionego została zatrzymana. Należy pamiętać, że ta opcja tylko mogą być używane, gdy serwer konfiguracji jest w stanie połączonym.
     - **Usuń** — tę opcję, powinien być używane tylko wtedy, gdy środowisko źródłowe został usunięty lub jest niedostępny (nie połączono). Spowoduje to usunięcie replikowanego elementu z usługi Azure Site Recovery (rozliczanie kończy się). Konfiguracja replikacji na serwerze konfiguracji **nie będzie** wyczyszczone. 
 
 > [!NOTE]

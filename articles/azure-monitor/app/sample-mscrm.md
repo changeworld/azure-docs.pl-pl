@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 9028d682d7807b8b153153840356e2e37b082b27
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12b4a4639991628265a19a5d45f3abdef590efcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028531"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077933"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Przewodnik: Włączanie Telemetrii dla usługi Microsoft Dynamics CRM Online przy użyciu usługi Application Insights
 W tym artykule pokazano, jak można pobrać danych telemetrycznych z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) przy użyciu [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Omówimy kompletnego procesu dodawania skrypt usługi Application Insights do aplikacji, przechwytywania danych i wizualizacja danych.
@@ -107,7 +107,7 @@ Kliknij wykres, aby uzyskać więcej informacji:
 
 ![Liczba sesji według wersji przeglądarki](./media/sample-mscrm/23.png)
 
-#### <a name="geolocation"></a>Używanie funkcji Geolokalizacji
+#### <a name="geolocation"></a>Geolokalizacja
 ![Liczba sesji według kraju](./media/sample-mscrm/24.png)
 
 ![Sesje i użytkownicy wg krajów](./media/sample-mscrm/25.png)
@@ -127,7 +127,7 @@ Kliknij wykres, aby uzyskać więcej informacji:
 [Przeglądaj w przykładowym kodzie](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="power-bi"></a>Power BI
-Możesz wykonać nawet dokładniejszej analizy, gdy użytkownik [dane są eksportowane do usługi Microsoft Power BI](../../application-insights/app-insights-export-power-bi.md).
+Możesz wykonać nawet dokładniejszej analizy, gdy użytkownik [dane są eksportowane do usługi Microsoft Power BI](../../azure-monitor/app/export-power-bi.md ).
 
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>Przykładowe Microsoft Dynamics CRM rozwiązanie
 [Poniżej przedstawiono przykładowe rozwiązanie zaimplementowany w Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).

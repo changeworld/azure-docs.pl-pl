@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bd85214efc3c8f67d41563e3ca46a1e2278c4868
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999536"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062677"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -509,7 +509,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Wypełnij** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytu w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Filtr** |**Filtr** | Opcjonalny. Wyrażenie filtru OData dla tabeli danych wejściowych w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
-|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
+|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -767,7 +767,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Właściwość TableName** |**Właściwość TableName** | Nazwa tabeli.| 
 |**właściwości partitionKey** |**właściwości partitionKey** | Klucz partycji tabeli jednostki do zapisania. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
 |**rowKey** |**RowKey** | Klucz wiersza jednostki tabeli do zapisu. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
-|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
+|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -779,7 +779,7 @@ Magazyn tabel danych wyjściowych powiązanie obsługuje następujące scenarius
 
   W języku C# i skrypt języka C#, dostęp do jednostki tabeli danych wyjściowych za pomocą parametru metody, takie jak `out T paramName` lub wartości zwracanej przez funkcję. W języku C# `paramName` jest wartością określoną w `name` właściwość *function.json*. `T` mogą być dowolnego typu serializacji, jeśli klucz partycji i klucz wiersza są dostarczane przez *function.json* pliku lub `Table` atrybutu. W przeciwnym razie `T` musi być typem, który zawiera `PartitionKey` i `RowKey` właściwości. W tym scenariuszu `T` zwykle implementuje `ITableEntity` lub pochodzi od klasy `TableEntity`, ale nie musi.
 
-* **Zapisywanie co najmniej jeden wiersz w języku C# lub C#**
+* **Wpisz jeden lub więcej wierszy w C# lub C# skryptu**
 
   W języku C# i skrypt języka C#, dostęp do jednostki tabeli danych wyjściowych przy użyciu parametru metody `ICollector<T> paramName` lub `IAsyncCollector<T> paramName`. W języku C# `paramName` jest wartością określoną w `name` właściwość *function.json*. `T` Określa schemat jednostki, które chcesz dodać. Zazwyczaj `T` pochodzi od klasy `TableEntity` lub implementuje `ITableEntity`, ale nie musi. Klucz partycji i wiersza klucza wartości w *function.json* lub `Table` atrybut konstruktora nie są używane w tym scenariuszu.
 

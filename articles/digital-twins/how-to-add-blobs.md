@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6bb1709d10a406d88378189cd68b9a36abed2c8d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9abf1eebe8174160bd671d83086ed641708b98eb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017570"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073955"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 
 Obiekty BLOB są bez określonej struktury reprezentacje popularnych typów plików, takich jak dzienniki i obrazy. Obiekty BLOB zachować informacje o jakiego rodzaju dane reprezentują przy użyciu typu MIME (na przykład: "image/jpeg") i metadanych (nazwa, opis, typ i tak dalej).
 
-Platforma Azure obsługuje cyfrowego Twins dołączanie obiektów blob na urządzeniach, miejsca do magazynowania i użytkowników. Obiekty BLOB mogą reprezentować zdjęcie profilowe dla użytkownika, zdjęcia urządzenia, wideo, mapy lub dziennika.
+Platforma Azure obsługuje cyfrowego Twins dołączanie obiektów blob na urządzeniach, miejsca do magazynowania i użytkowników. Obiekty BLOB mogą reprezentować obraz profilu użytkownika, zdjęcia urządzenia, wideo, mapy, zip oprogramowania układowego, dane JSON, do dziennika itp.
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
@@ -32,7 +32,7 @@ Wieloczęściowy żądań służy do przekazywania obiektów blob do określonyc
 
 ### <a name="blob-metadata"></a>Metadane obiektu blob
 
-Oprócz **Content-Type** i **Content-Disposition**, wieloczęściowego żądań, należy określić prawidłowe treść kodu JSON. Treść kodu JSON, który można przesłać zależy od rodzaju operacji żądania HTTP, która jest wykonywana.
+Oprócz **Content-Type** i **Content-Disposition**, żądania wieloczęściowego obiektu blob Azure cyfrowego bliźniaczych reprezentacji należy określić prawidłowe treść kodu JSON. Treść kodu JSON, który można przesłać zależy od rodzaju operacji żądania HTTP, która jest wykonywana.
 
 Są cztery główne schematów JSON:
 
@@ -48,12 +48,15 @@ Dowiedz się więcej o używaniu dokumentację referencyjną, zapoznając się [
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Aby **WPIS** żądanie, która przekazuje plik tekstowy jako obiekt blob i kojarzy ją z obszarem:
+Przekaż plik tekstowy jako obiekt blob i skojarzyć ją z obszarem, należy uwierzytelnionego żądania HTTP POST do:
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
-Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/spaces/blobs
+```
 
+Następujące jednostki:
+
+```plaintext
 --USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
@@ -96,6 +99,16 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
+W obu przykładach:
+
+1. Sprawdź, czy nagłówki obejmują: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Sprawdź, czy treści wieloczęściowej wiadomości:
+
+   - Pierwsza część zawiera metadane wymaganego obiektu blob.
+   - Druga część zawiera plik tekstowy.
+
+1. Sprawdź, czy plik jest dostarczany jako `Content-Type: text/plain`.
+
 ## <a name="api-endpoints"></a>Punkty końcowe interfejsu API
 
 W poniższych sekcjach opisano, punkty końcowe interfejsu API związanych z obiektami blob podstawowych i ich funkcje.
@@ -106,7 +119,7 @@ Obiekty BLOB można dołączyć do urządzenia. Na poniższej ilustracji przedst
 
 ![Obiekty BLOB urządzenia][2]
 
-Na przykład, zaktualizuj lub Utwórz obiekt blob i dołączyć obiekt blob do urządzenia, aby **PATCH** limit czasu żądania:
+Na przykład aby zaktualizować lub tworzenie obiektu blob, a następnie Dołącz obiekt blob do urządzenia, należy uwierzytelnionego żądania HTTP PATCH, aby:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -132,7 +145,7 @@ Obiekty BLOB można także dołączyć do miejsca do magazynowania. Poniższa il
 
 ![Obiekty BLOB miejsca][3]
 
-Na przykład aby zwrócić obiekt blob dołączonych do miejsca, należy **UZYSKAĆ** limit czasu żądania:
+Na przykład aby zwrócić obiekt blob dołączonych do miejsca, należy uwierzytelnionego żądania HTTP GET do:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -142,7 +155,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | Identyfikator żądanego obiektu blob |
 
-Tworzenie **PATCH** żądania do tego samego punktu końcowego umożliwia opis metadanych aktualizacji i Utwórz nową wersję obiektu blob. Żądanie HTTP jest wysyłane za pośrednictwem **PATCH** metody, oraz wszelkie niezbędne meta i wieloczęściowych danych formularza.
+POPRAWKI zażadaj tego samego punktu końcowego opisów metadanych aktualizacji i tworzy nowe wersje obiektu blob. Żądanie HTTP jest wysyłane za pośrednictwem metody PATCH, oraz wszelkie niezbędne meta i wieloczęściowych danych formularza.
 
 Operacje zakończone powodzeniem zwracają **SpaceBlob** obiekt, który jest zgodny ze schematem następujące. Służy do pracy z danymi zwrócone.
 
@@ -157,7 +170,7 @@ Obiekty BLOB można dołączyć do modeli użytkownika (na przykład, aby skojar
 
 ![Obiekty BLOB użytkownika][4]
 
-Na przykład można pobrać obiektu blob dołączonych do użytkownika, należy **UZYSKAĆ** żądania o formularzu wymaganych danych do:
+Na przykład można pobrać obiektu blob dołączonych do użytkownika, należy utworzyć uwierzytelnionego żądania HTTP GET z wszelkimi danymi formularzu wymaganych do:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID

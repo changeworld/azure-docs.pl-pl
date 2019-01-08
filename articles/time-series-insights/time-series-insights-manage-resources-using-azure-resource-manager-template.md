@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9200b3b8cd85bfd94bbc4c66cccb35b78a97aaff
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554694"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062659"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów usługi Time Series Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -34,6 +34,7 @@ Szablon usługi Resource Manager to plik JSON, który definiuje infrastrukturę 
 
 - [Omówienie usługi Azure Resource Manager — wdrożenie szablonu](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../azure-resource-manager/resource-group-template-deploy.md)
+- [Typy zasobów Microsoft.TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 [201-timeseriesinsights środowiska z eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) szablon szybkiego startu jest opublikowana w witrynie GitHub. Ten szablon tworzy środowisko usługi Time Series Insights, źródłem zdarzeń podrzędnych pod kątem korzystanie ze zdarzeń z Centrum zdarzeń i dostęp do zasad, które udzielić dostępu do danych środowiska. Jeśli w istniejącym Centrum zdarzeń nie jest określona, zostanie utworzony przy użyciu wdrażania.
 

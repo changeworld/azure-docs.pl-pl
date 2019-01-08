@@ -3,7 +3,7 @@ title: Tworzenie i rejestrowanie konta wydawcy | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące tworzenia konta Microsoft Developer, więc po zatwierdzeniu, możesz sprzedawać różnych oferują typy w portalu Azure Marketplace.
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 3b1d0a7476cff2be00aa44bb8b859261099298d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: f32a3a992445bc3aeccc035e54653555bfd64d6c
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236694"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078426"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 W tym artykule przedstawiono tworzenie konta niezbędne i procesu rejestracji, aby stać się zatwierdzonych Microsoft Developer Portal Azure Marketplace.
@@ -27,7 +28,7 @@ W tym artykule przedstawiono tworzenie konta niezbędne i procesu rejestracji, a
 ## <a name="1-create-a-microsoft-account"></a>1. Tworzenie konta Microsoft
 Aby rozpocząć proces publikowania, musisz utworzyć konto Microsoft. To konto będzie używane do zarejestrowania się w obu **Microsoft Developer Center** i **portalu wydawców Azure**. Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. Nie powinien być określony dla usługi lub oferty.
 
-Adres stanowiący nazwę użytkownika powinien należeć do domeny i kontrolowany przez Twój zespół IT. Publikowanie powiązanych działań powinno być wykonywane przy użyciu tego konta.
+Adres stanowiący nazwę użytkownika powinien należeć do domeny i kontrolowany przez Twój zespół IT. Wszystkie działania związane z publikowania powinny odbywać się przy użyciu tego konta.
 
 > [!WARNING]
 > Wyrazy, takie jak **"Azure"** i **"Microsoft"** nie są obsługiwane w przypadku rejestracji konta Microsoft. Unikaj używania tych słów aby ukończyć proces rejestracji i tworzenia konta.
@@ -42,19 +43,19 @@ Podczas tworzenia konta firmy, należy przestrzegać następujących wytycznych,
 
 * Tworzenie konta Microsoft, przy użyciu adresu e-mail, który należy do domeny swojej firmy, ale nie do pojedynczej osoby — na przykład windowsapps@fabrikam.com.
 * Ograniczanie dostępu do tego konta Microsoft do najmniejszej możliwej liczby deweloperów.
-* Ustawianie firmowej poczty e-mail listy dystrybucyjnej, która zawiera wszystkich użytkowników, którzy potrzebują dostępu do konta dewelopera, a następnie dodać ten adres e-mail do informacji zabezpieczających. Dzięki temu wszyscy pracownicy na liście, aby otrzymać kody zabezpieczeń w razie oraz do zarządzania informacji zabezpieczających konta Microsoft. Jeśli skonfigurowanie listy dystrybucyjnej nie jest możliwe, właściciel konta e-mail poszczególnych będzie muszą być dostępne dostęp do i udostępniania kodu zabezpieczeń po wyświetleniu monitu (na przykład po dodaniu nowe informacje zabezpieczające do konta lub kiedy musi być dostępny z nowego urządzenia).
+* Ustawianie firmowej poczty e-mail listy dystrybucyjnej, która zawiera wszystkich użytkowników, którzy potrzebują dostępu do konta dewelopera, a następnie dodać ten adres e-mail do informacji zabezpieczających. Ta konfiguracja umożliwia wszystkich pracowników na liście, aby otrzymać kody zabezpieczeń w razie oraz do zarządzania informacji zabezpieczających konta Microsoft. Jeśli skonfigurowanie listy dystrybucyjnej nie jest możliwe, właściciel konta e-mail poszczególnych będzie muszą być dostępne dostęp do i udostępniania kodu zabezpieczeń po wyświetleniu monitu (na przykład po dodaniu nowe informacje zabezpieczające do konta lub kiedy musi być dostępny z nowego urządzenia).
 * Dodaj numer telefonu firmy, który nie wymaga rozszerzenia i jest dostępny dla innych członków zespołu klucza.
-* Ogólnie rzecz biorąc należy mieć deweloperów, zaloguj się do konta dewelopera firmy przy użyciu zaufanych urządzeń. Wszyscy członkowie zespołu klucza powinien mieć dostęp do tych zaufanych urządzeń. Zmniejsza to potrzebę kody zabezpieczeń do wysłania, gdy dostęp do tego konta.
+* Ogólnie rzecz biorąc mają deweloperów, zaloguj się do konta dewelopera firmy przy użyciu zaufanych urządzeń. Wszyscy członkowie zespołu klucza powinien mieć dostęp do tych zaufanych urządzeń. Takie podejście zmniejsza potrzebę kody zabezpieczeń do wysłania, gdy dostęp do tego konta.
 * Jeśli musisz zezwolić na dostęp do konta z komputera z niezaufanej, ograniczyć że dostęp do maksymalnie pięciu deweloperów. W idealnym przypadku tych deweloperów powinna dostęp do konta z maszyny, które współużytkować ten sam geograficzne i lokalizacja w sieci.
 * Przejrzyj często stosowane w firmie zabezpieczające na stronie [ https://account.live.com/proofs/Manage ](https://account.live.com/proofs/Manage) się upewnić, że jest ona wszystkie bieżące.
 
-Konto dewelopera powinni mieć dostęp przede wszystkim z zaufanych komputerów z systemem. Jest to istotne, ponieważ ma limitu liczby kody wygenerowane na jednym koncie na tydzień. Umożliwia ona także najbardziej bezproblemowe środowisko logowania.
+Konto dewelopera powinni mieć dostęp przede wszystkim z zaufanych komputerów z systemem. To ograniczenie jest krytyczne, ponieważ ma limitu liczby kody wygenerowane na jednym koncie na tydzień. Umożliwia ona także najbardziej bezproblemowe środowisko logowania.
 
-Aby uzyskać więcej informacji na temat wytycznych konta dewelopera dodatkowe i zabezpieczeń, kliknij [tutaj](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+Aby uzyskać więcej informacji na temat wytycznych konta dewelopera dodatkowe i zabezpieczeń, zobacz [tutaj](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Instrukcje
 1. Otwórz nowy Incognito przeglądarki Chrome lub Internet Explorer przeglądanie InPrivate sesji przeglądania w celu zapewnienia, że nie zalogowano do istniejącego konta.
-2. Zarejestruj wiadomość e-mail (na wcześniej wskazówki dotyczące np. windowsapp@fabrikam.com) jako konto Microsoft za pośrednictwem łącza [ https://signup.live.com/signup.aspx ](https://signup.live.com/signup.aspx). Postępuj zgodnie z poniższymi instrukcjami.
+2. Zarejestruj wiadomość e-mail (na wytycznych powyżej, na przykład windowsapp@fabrikam.com) jako konto Microsoft za pośrednictwem łącza [ https://signup.live.com/signup.aspx ](https://signup.live.com/signup.aspx). Postępuj zgodnie z poniższymi instrukcjami.
 
    1. Podczas rejestrowania konta jako konta Microsoft, musisz podać prawidłowy numer telefonu dla systemu, aby wysłać kod weryfikacyjny konta jako wiadomość SMS lub telefonicznie.
    2. Podczas rejestrowania konta jako konta Microsoft, musisz podać poprawny identyfikator poczty e-mail do odbierania automatyczne wiadomości e-mail do weryfikacji konta.
@@ -62,7 +63,7 @@ Aby uzyskać więcej informacji na temat wytycznych konta dewelopera dodatkowe i
 4. Teraz możesz używać tego nowego konta Microsoft w Microsoft Developer Center.
 
 ## <a name="2-register-your-account-in-microsoft-developer-center"></a>2. Zarejestruj swoje konto w programie Microsoft Developer Center
-Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden raz. Bazy danych WHOIS musi być prawidłową przedstawiciela firmy, a następnie podaj swoje informacje osobiste, aby zweryfikować swoją tożsamość. Osoby, rejestrowanie, należy użyć konta Microsoft, który jest udostępniany dla firmy, **i mogą być używane to samo konto w portalu wydawców Azure.** Należy sprawdzić, upewnij się, że Twoja firma nie ma jeszcze konta Microsoft Developer Center przed podjęciem próby utwórz je. W trakcie będą zbierane informacje adres firmy, informacje o koncie bankowym i opodatkowania. Zwykle można je uzyskać od osób kontaktowych związanych z finansami lub biznesem.
+Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden raz. Bazy danych WHOIS musi być prawidłową przedstawiciela firmy, a następnie podaj swoje informacje osobiste, aby zweryfikować swoją tożsamość. Osoby, rejestrowanie, należy użyć konta Microsoft, który jest udostępniany dla firmy, *i mogą być używane to samo konto w portalu wydawców Azure.* Sprawdź, czy Twoja firma nie ma jeszcze konta Microsoft Developer Center przed podjęciem próby utworzyć. W trakcie będą zbierane informacje adres firmy, informacje o koncie bankowym i opodatkowania. Dane te są zwykle u: finansami lub.
 
 > [!IMPORTANT]
 > Aby można było przejść przez różne etapy oferty tworzenia i wdrażania, należy wykonać następujące składniki dla deweloperów w profilu.
@@ -82,11 +83,10 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
 
 ### <a name="register-your-company-account"></a>Zarejestruj konto firmowe
 1. Otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania w celu zapewnienia, że użytkownik nie zalogowany do konta osobistego.
-2. Przejdź do [ http://dev.windows.com/registration?accountprogram=azure ](http://dev.windows.com/registration?accountprogram=azure) Aby zarejestrować się jako sprzedawcy w Centrum deweloperów. Przed kontynuowaniem przeczytaj następujące ważne uwagi.
+2. Przejdź do [ http://dev.windows.com/registration?accountprogram=azure ](http://dev.windows.com/registration?accountprogram=azure) Aby zarejestrować się jako sprzedawcy w Centrum deweloperów. Pamiętaj o następujących kwestiach:
 
    > [!IMPORTANT]
-   > Upewnij się, że wiadomości e-mail identyfikator lub listy dystrybucyjnej (listy dystrybucyjnej zaleca się wyeliminować zależność od osób), który będzie używany do rejestrowania w Centrum deweloperów przy pierwszej rejestracji jako konta Microsoft. Jeśli nie, następnie zarejestruj za pomocą tego [łącze](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Ponadto **e-mail dowolny identyfikator w domenie firmy Microsoft tj @microsoft.com nie można użyć** o rejestrację w Centrum deweloperów.
-   >
+   > Upewnij się, że wiadomości e-mail identyfikator lub listy dystrybucyjnej (listy dystrybucyjnej zaleca się wyeliminować zależność od osób), który będzie używany do rejestrowania w Centrum deweloperów przy pierwszej rejestracji jako konta Microsoft. Jeśli nie, następnie zarejestruj za pomocą tego [łącze](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Ponadto *dowolnej wiadomości e-mail identyfikator w domenie firmy Microsoft, na przykład @microsoft.com, nie można użyć* o rejestrację w Centrum deweloperów.
    >
 
     ![Rysowanie][img-signin]
@@ -98,7 +98,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
     ![Rysowanie](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **"Sprzedaż — od" kraje:** sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostki musi pochodzić z jednej z zatwierdzonych "sprzedaż — od" krajów powyżej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać więcej informacji, zobacz [Marketplace — zasady udziału](https://go.microsoft.com/fwlink/?LinkID=526833).
+   > **"Sprzedaż — od" krajach:** Aby sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostka musi być z jednej z zatwierdzonych "sprzedaż — od" krajów powyżej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać więcej informacji, zobacz [Marketplace — zasady udziału](https://go.microsoft.com/fwlink/?LinkID=526833).
    >
    >
 5. Wybierz opcję "Typ konta" jako **firmy** a następnie kliknij przycisk **dalej** przycisku.
@@ -131,9 +131,9 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
 11. Kliknij przycisk **Zakończ** aby potwierdzić swoją rejestrację. Komunikat z potwierdzeniem będziemy wysyłać na adres e-mail.
 12. Jeśli zamierzasz opublikować tylko bezpłatnych ofert, kliknij przycisk **przejdź do portalu wydawców Azure Marketplace** i możesz przejść do sekcji 3 w tym dokumencie [Zarejestruj swoje konto w portalu wydawców](#3-register-your-account-in-the-publishing-portal).
 
-Jeśli zamierzasz publikować komercyjne oferuje (np. oferty maszyny wirtualnej z modelem rozliczeń godzinowych), kliknij przycisk **zaktualizować informacje o Twoim koncie** gdzie należy wypełnić podatkowe i bankowe informacji w danych konta Centrum deweloperów.
+Jeśli zamierzasz publikować komercyjne oferuje (na przykład oferty maszyny wirtualnej z modelem rozliczeń godzinowych), kliknij przycisk **zaktualizować informacje o Twoim koncie** gdzie należy wypełnić podatkowe i bankowe informacji w Centrum deweloperów konto.
 
-Jeśli chcesz zaktualizować później informacje podatkowe i bankowe, a następnie można przenieść do następnej sekcji, czyli części 3 tego dokumentu, [Zarejestruj swoje konto w portalu wydawców](#3-register-your-account-in-the-publishing-portal), a następnie ją później za pomocą łączy w publikowania na platformie Azure Portal.
+Jeśli chcesz zaktualizować później informacje podatkowe i bankowe, a następnie przejściem do następnej sekcji tego dokumentu (sekcja 3) [Zarejestruj swoje konto w portalu wydawców](#3-register-your-account-in-the-publishing-portal), a następnie ją później za pomocą łączy w publikowania na platformie Azure Portal.
 
 > [!IMPORTANT]
 > W przypadku ofert handlowych nie będzie możliwe wypychanie Twoich ofert w środowisku produkcyjnym nie kończą działania informacje podatkowe i bankowe konta.
@@ -174,7 +174,7 @@ Jeśli chcesz zaktualizować później informacje podatkowe i bankowe, możesz p
 >
 >
 
-Jeśli masz problemy z rejestracją Centrum deweloperów, Prześlij zgłoszenie do pomocy technicznej zgodnie z poniższymi instrukcjami
+Jeśli masz problemy z rejestracją Centrum deweloperów, zgłoszenie do pomocy technicznej zgodnie z poniższymi instrukcjami
 
 1. Przejdź do łącza pomocy technicznej [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
 2. W obszarze **skontaktuj się z nami** sekcji, kliknij przycisk **przesłać** (jak pokazano na poniższym zrzucie ekranu)
@@ -183,7 +183,7 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, Prześlij zgłoszenie 
 3. Wybierz pozycję "Pomoc z Centrum deweloperów" jako **typ problemu** oraz "Opublikuj aplikacje i zarządzać nimi" jako **kategorii**. Następnie kliknij przycisk "Start email".
 
     ![Rysowanie](media/marketplace-publishing-accounts-creation-registration/imgAddTax_03.png)
-4. Otrzymasz ze strony logowania. Użyj logowania konta Microsoft w. Jeśli nie masz konta Microsoft, następnie utwórz ją przy użyciu tego [łącze](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
+4. Otrzymasz ze strony logowania. Użyj dowolnej logowania konta Microsoft. Jeśli nie masz konta Microsoft, utwórz ją przy użyciu tego [łącze](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
 5. Wypełnij szczegóły tego problemu i jego subit--ticket, klikając **przesyłania** przycisku.
 
     ![Rysowanie](media/marketplace-publishing-accounts-creation-registration/imgAddTax_05.png)
@@ -193,7 +193,7 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, Prześlij zgłoszenie 
 
 1. Otwórz nowy Incognito przeglądarki Chrome lub Internet Explorer przeglądanie InPrivate sesji przeglądania w celu zapewnienia, że użytkownik nie zalogowany do konta osobistego.
 2. Przejdź do obszaru [http://publish.windowsazure.com](http://publish.windowsazure.com) (Ustawienia — Integracje i usługi).
-3. Jeśli nowy użytkownik i zalogowanie się do publikowania portal po raz pierwszy, następnie musisz zarejestrować się w taki sam identyfikator poczty e-mail, z którym jest zarejestrowana danych konta Centrum deweloperów. W ten sposób danych konta Centrum deweloperów i publikowania w portalu konta zostaną połączone ze sobą. Inni członkowie firmie, którzy pracują nad aplikacją, później można dodać jako współadministratora w publikowania portalu, wykonując poniższe kroki.
+3. Jeśli nowy użytkownik i zalogowanie się do publikowania portal po raz pierwszy, następnie musisz zarejestrować się w taki sam identyfikator poczty e-mail, z którym jest zarejestrowana danych konta Centrum deweloperów. W ten sposób, konto Centrum deweloperów i publikowania w portalu konta zostaną połączone ze sobą. Inni członkowie firmie, którzy pracują nad aplikacją, później można dodać jako współadministratora w publikowania portalu, wykonując poniższe kroki.
 
 Jeśli dodano jako współadministrator podczas publikowania w portalu, następnie możesz zarejestrować się za pomocą konta współadministratora.
 
@@ -210,10 +210,10 @@ Jeśli dodano jako współadministrator podczas publikowania w portalu, następn
 >
 >
 
-1. Upewnij się, że identyfikator poczty e-mail współadministrator account(MSA) firmy Microsoft. Jeśli nie, zarejestruj go jako zarządzanych kont usług, za pomocą tego [łącze](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
+1. Upewnij się, że identyfikator poczty e-mail współadministrator account(MSA) firmy Microsoft. Jeśli nie, zarejestruj go jako za pomocą tego konta Microsoft [łącze](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
 2. Upewnij się, że istnieje co najmniej jedną aplikację przy użyciu konta administratora, zanim spróbujesz dodać współadministratora.
-3. Po wykonaniu czynności powyższe kroki, zaloguj się do publikowania portalu z współadministrator identyfikator poczty e-mail, a następnie, w przypadku wylogowania.
-4. Teraz Zaloguj się do publikowania w portalu przy użyciu identyfikatora poczty e-mail administratora.
+3. Po wykonaniu czynności powyższe kroki, zaloguj się do publikowania witryny portal przy użyciu współadministrator, Wyślij wiadomość e-mail identyfikator i następnie zaloguj.
+4. Teraz zalogować się do publikowania w portalu przy użyciu identyfikatora administratora poczty e-mail.
 5. Przejdź do wydawcy -> Wybierz -> konta administratorów -> Dodaj współadministrator (zrzut ekranu, podane poniżej)
 
    ![Rysowanie](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
@@ -221,7 +221,7 @@ Jeśli dodano jako współadministrator podczas publikowania w portalu, następn
 ## <a name="5-steps-to-delete-a-co-admin-in-the-publishing-portal"></a>5. Kroki, aby usunąć współadministrator podczas publikowania w portalu
 **Przy założeniu, że jesteś administratorem,** podane poniżej przedstawiono kroki, aby usunąć współadministratora.
 
-1. Zaloguj się do publikowania w portalu przy użyciu identyfikatora poczty e-mail administratora.
+1. Zaloguj się do publikowania w portalu przy użyciu identyfikatora administratora poczty e-mail.
 2. Przejdź do **wydawców** -> Wybierz -> Twoje konto **Administratorzy** -> **Współadministratorzy**.
 3. Kliknij pozycję **X** przycisk znajdujący się obok współadministrator ma tot usuwania (zrzut ekranu, podane poniżej).
 
@@ -231,7 +231,7 @@ Jeśli dodano jako współadministrator podczas publikowania w portalu, następn
 Teraz, że Twoje konto zostanie utworzone i zarejestrowany, upewnij się, spełniają lub spełnisz Nietechniczne wymagań wstępnych, aby opublikować ofertę, przeglądając [Nietechniczne wstępne](marketplace-publishing-pre-requisites.md).
 
 ## <a name="see-also"></a>Zobacz także
-* [Wprowadzenie: jak opublikować ofertę w portalu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Wprowadzenie: Jak opublikować ofertę w portalu Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
 [img-email]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-verifyemail.jpg

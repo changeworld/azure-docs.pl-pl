@@ -3,7 +3,7 @@ title: Testowanie oferty maszyny Wirtualnej w portalu Marketplace | Dokumentacja
 description: Dowiedz się, jak do testowania obrazu maszyny Wirtualnej w portalu Azure Marketplace.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
@@ -14,22 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: bf41953300c3042853118c815dbf64e4474106fa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ROBOTS: NOINDEX
+ms.openlocfilehash: b90353dbbc5d019897735cfc05caa3ee094dfedc
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194117"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078817"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Przetestuj swoje oferty maszyny Wirtualnej w portalu Azure Marketplace w przemieszczania
-Wdrożenie przejściowe oznacza wdrożenie jednostki SKU w prywatnej "piaskownicy", której można przetestować i zweryfikować jego działanie przed wdrożeniem jej w portalu Marketplace. Jednostka SKU pojawia się na etapie wdrażania przejściowego, tak jak do klienta, który wdrożył ją. Obraz maszyny Wirtualnej musi mieć certyfikat ma zostać wypchnięty do wdrażania przejściowego.
+Wdrożenie przejściowe oznacza wdrożenie jednostki SKU w prywatnej "piaskownicy", której można przetestować i zweryfikować jego działanie przed wdrożeniem jej w portalu Marketplace. Jednostka SKU pojawia się na etapie wdrażania przejściowego, tak jak do klienta, który wdrożył ją. Musi zawierać obraz maszyny Wirtualnej, zanim zostanie przypisany do wdrażania przejściowego.
 
-## <a name="step-1-push-your-offer-to-staging"></a>Krok 1. Wypchnięcia oferty do wdrażania przejściowego
+## <a name="step-1-push-your-offer-to-staging"></a>Krok 1: Wypchnięcia oferty do wdrażania przejściowego
 1. Na **Publikuj** kliknij pozycję **Wypychanie do wdrażania przejściowego**.
    
     ![Rysowanie](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
 2. Jeśli w portalu wydawców powiadamia o błędach, popraw je.
-3. W **kto ma dostęp do oferty przygotowanych?** okna dialogowego wprowadź listę subskrypcji platformy Azure, które będą używane do wyświetlenia podglądu oferty w [portalu Azure w wersji zapoznawczej](https://portal.azure.com).
+3. W **kto ma dostęp do oferty przygotowanych?** okna dialogowego wprowadź listę subskrypcji platformy Azure, które będą używane do wyświetlenia podglądu oferty w [witryny Azure portal](https://portal.azure.com).
    
    > [!NOTE]
    > W przypadku maszyn wirtualnych i szablony rozwiązań, **nie** subskrypcji listy dozwolonych elementów typu dostawcy usług Kryptograficznych, DreamSpark i Azure in Open.
@@ -42,7 +43,7 @@ Wdrożenie przejściowe oznacza wdrożenie jednostki SKU w prywatnej "piaskownic
    > - Po zakończeniu certyfikacji rozpoczęcia replikacji, oferty, we wszystkich centrach danych platformy Azure. Zazwyczaj zajmuje 24-48hours na zakończenie replikacji ale może potrwać tydzień w zależności od rozmiaru wirtualnego dysku twardego. Jeśli jednak żądanie ma stało się tylko marketingowych zmiany, następnie replikacji jest szybsze.
    > - Po zakończeniu replikacji to oferta będzie dostępna w [witryny Azure portal](http:/portal.azure.com). W tym czasie stan stają się PRZYGOTOWANE podczas publikowania w portalu. Przygotowane oferty jest widoczna w [witryny Azure portal](http:/portal.azure.com) wyłącznie przy użyciu identyfikatorów adres e-mail skojarzony z subskrypcją za pomocą której oferty są przygotowywane.
 
-1. Zaloguj się do [portalu Azure w wersji zapoznawczej](https://portal.azure.com) przy użyciu jednej z subskrypcji platformy Azure wymienionych w poprzednim kroku.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu jednej z subskrypcji platformy Azure wymienionych w poprzednim kroku.
 2. Znajdź swoją ofertę i sprawdzanie poprawności punktów obrazu maszyny Wirtualnej:
    
    * Upewnij się, że marketingowych zawartości prawidłowo wyświetlane w portalu Marketplace.

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 11/30/2018
+ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846899"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065345"
 ---
 # <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
 
@@ -35,7 +35,7 @@ Wysłane wiadomości e-mail z usługi PIM dla usługi Azure AD i role zasobów p
 
 Te wiadomości e-mail zawierają **PIM** prefiks w wierszu tematu. Oto przykład:
 
-- Usługi PIM: Alain Charon trwale została przypisana rola Czytelnik kopii zapasowej
+- USŁUGI PIM: Alain Charon trwale została przypisana rola Czytelnik kopii zapasowej
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>Wiadomości e-mail z usługi PIM dla ról usługi Azure AD
 
@@ -43,16 +43,15 @@ Usługa PIM wysyła wiadomości e-mail, gdy wystąpią następujące zdarzenia d
 
 - Po aktywacji ról uprzywilejowanych oczekuje na zatwierdzenie
 - Po wykonaniu żądania aktywacji roli uprzywilejowanej
-- Gdy jest przypisany jako uprawnionych ról uprzywilejowanych
 - Po włączeniu usługi Azure AD PIM
 
 Kto otrzymuje te wiadomości e-mail, usługi ról usługi Azure AD zależy od Twojej roli, zdarzenia i powiadomienia ustawienie:
 
-| Użytkownik | Aktywacja roli oczekuje na zatwierdzenie | Żądanie aktywacji roli zostało zakończone. | Rola jest przypisywana jako uprawnione | Włączono usługę PIM |
-| --- | --- | --- | --- | --- |
-| Administrator ról uprzywilejowanych</br>(Aktywowany/uprawnione) | Yes</br>(tylko wtedy, gdy określono nie jawnego osób zatwierdzających) | Tak* | Yes | Yes |
-| Administrator zabezpieczeń</br>(Aktywowany/uprawnione) | Nie | Tak* | Yes | Yes |
-| Administrator globalny</br>(Aktywowany/uprawnione) | Nie | Tak* | Yes | Yes |
+| Użytkownik | Aktywacja roli oczekuje na zatwierdzenie | Żądanie aktywacji roli zostało zakończone. | Włączono usługę PIM |
+| --- | --- | --- | --- |
+| Administrator uprawnionej roli</br>(Aktywowany/uprawnione) | Yes</br>(tylko wtedy, gdy określono nie jawnego osób zatwierdzających) | Tak* | Yes |
+| Administrator zabezpieczeń</br>(Aktywowany/uprawnione) | Nie | Tak* | Yes |
+| Administrator globalny</br>(Aktywowany/uprawnione) | Nie | Tak* | Yes |
 
 \* Jeśli [ **powiadomienia** ustawienie](pim-how-to-change-default-settings.md#notifications) ustawiono **Włącz**.
 

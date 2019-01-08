@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 5834bf88b63209d2374cfea71fc0f01a1f7451c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c5e4720a6b830158581d17bbdcb9aba49e13183b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033438"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064495"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Skalowanie przepływności w usłudze Azure Cosmos DB
 
 W usłudze Azure Cosmos DB, aprowizowana przepływność jest reprezentowany jako żądania jednostek na sekundę (RU/s, liczba mnoga: Jednostki zarezerwowane). Mierzenie koszt odczytu i zapisu operacji dotyczących kontenera usługi Cosmos, jak pokazano na poniższej ilustracji:
 
-![Jednostki żądania](./media/scale-throughput/figure1.png)
+![Jednostki żądania](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 Możesz aprowizować jednostek żądań na kontener Cosmos lub bazy danych Cosmos. Jednostek ru zaprowizowanych w kontenerze jest dostępna wyłącznie dla operacji wykonywanych w tym kontenerze. Jednostek ru zaprowizowanych w bazie danych są współużytkowane przez wszystkie kontenery w ramach tej bazy danych (z wyjątkiem wszystkie kontenery z wyłącznie przypisanych RUs).
 

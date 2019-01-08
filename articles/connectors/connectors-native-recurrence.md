@@ -1,6 +1,6 @@
 ---
-title: Utwórz regularnie uruchomionych zadań i przepływów pracy z usługą Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które są uruchamiane zgodnie z harmonogramem przy użyciu łącznika cyklu w usłudze Azure Logic Apps
+title: Planowanie i uruchamianie automatycznych zadań i przepływów pracy z usługą Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań zaplanowanych, jak i cykliczne z łącznikiem cyklu w usłudze Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,24 +10,24 @@ ms.reviewer: klam, LADocs
 ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
-ms.date: 09/25/2017
-ms.openlocfilehash: 905157ab530ae042318de520f9d6fe24cb9d59ce
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 01/08/2019
+ms.openlocfilehash: 369bdba063f8582b8343682dcbbc990d2f63e21a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127058"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078069"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Tworzenie i uruchamianie zadań cyklicznych i przepływów pracy z usługą Azure Logic Apps
 
-Aby zaplanować zadania, akcje, obciążenia lub procesy, które regularnie uruchamiane, można utworzyć przepływu pracy aplikacji logiki, która rozpoczyna się od **harmonogram — cyklicznie** [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts). Z tego wyzwalacza można ustawić datę i godzinę uruchamiania cyklu oraz do wykonywania zadań, takich jak te przykłady i inne harmonogramu cyklu:
+Aby zaplanować działania, obciążenia lub procesy, które regularnego uruchamiania, tworzenia przepływu pracy aplikacji logiki, która rozpoczyna się od **harmonogram — cyklicznie** [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts). Można ustawić datę i godzinę uruchamiania przepływu pracy oraz do wykonywania zadań, takich jak te przykłady i inne harmonogramu cyklu:
 
-* Pobieranie danych wewnętrznych: [uruchamiania procedur składowanych SQL](../connectors/connectors-create-api-sqlazure.md) każdego dnia.
-* Pobierz dane zewnętrzne: Ściągaj raporty pogodowe z agencji NOAA co 15 minut.
-* Danych raportu: wiadomości E-mail podsumowanie wszystkich zamówień przekracza określoną ilością w ostatnim tygodniu.
-* Przetwarzanie danych: kompresowanie już dziś przekazał obrazów w każdy dzień tygodnia, poza godzinami szczytu.
-* Oczyszczanie danych: Usuń wszystkie tweety starsze niż trzy miesiące.
-* Archiwizowanie danych: wypychanie faktur do usługa Kopia zapasowa co miesiąc.
+* Pobieranie danych wewnętrznych: [Uruchamiania procedur składowanych SQL](../connectors/connectors-create-api-sqlazure.md) każdego dnia.
+* Pobierz dane zewnętrzne: Ściągnij raporty pogodowe z agencji NOAA co 15 minut.
+* Dane raportu: Wyślij wiadomość e-mail jest podsumowanie wszystkich zamówień przekracza określoną ilością w ostatnim tygodniu.
+* Przetwarzanie danych: Kompresuj współczesnych przekazanych obrazów w każdy dzień tygodnia, poza godzinami szczytu.
+* Wyczyść dane: Usuń wszystkie tweety starsze niż trzy miesiące.
+* Archiwizowanie danych: Wypchnij faktur usługa Kopia zapasowa co miesiąc.
 
 Ten wyzwalacz obsługuje wielu wzorców, na przykład:
 
@@ -37,7 +37,9 @@ Ten wyzwalacz obsługuje wielu wzorców, na przykład:
 * Uruchom i Powtórz co tydzień, ale tylko dla określonych dni, takich jak soboty i niedziele.
 * Uruchom i Powtórz co tydzień, ale tylko dla określonych dni i godziny, np. od poniedziałku do piątku w 8:00 do 17:00:00.
 
-Po każdym aktywowaniu wyzwalacza cyklu, Logic Apps tworzy i uruchamia nowe wystąpienie przepływu pracy aplikacji logiki.
+Po każdym aktywowaniu wyzwalacza cyklu, Logic Apps tworzy i uruchamia nowe wystąpienie przepływu pracy aplikacji logiki. 
+
+Aby od razu wyzwolenie aplikacji logiki i uruchomić jeden raz bez cykliczne, zobacz [wykonywania zadania tylko jeden raz](#run-once) w dalszej części tego tematu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -49,9 +51,9 @@ Po każdym aktywowaniu wyzwalacza cyklu, Logic Apps tworzy i uruchamia nowe wyst
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Tworzenie pustej aplikacji logiki lub Dowiedz się, [sposób tworzenia pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. Gdy zostanie wyświetlony Projektant aplikacji logiki, w polu wyszukiwania wprowadź ciąg "cyklicznie", jako filtr. Wybierz **harmonogram — cyklicznie** wyzwalacza. 
+2. Gdy zostanie wyświetlony Projektant aplikacji logiki, w polu wyszukiwania, wybierz **wszystkich**. W polu wyszukiwania wprowadź ciąg "cyklicznie" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Cykl - harmonogramu** 
 
-   ![Harmonogram — wyzwalacz cykliczny](./media/connectors-native-recurrence/add-recurrence-trigger.png)
+   ![Wybieranie wyzwalacza "Harmonogram — cykl"](./media/connectors-native-recurrence/add-recurrence-trigger.png)
 
    Ten wyzwalacz jest teraz pierwszy krok w aplikacji logiki.
 
@@ -95,11 +97,11 @@ Możesz skonfigurować te właściwości dla wyzwalacza.
 
 | Name (Nazwa) | Wymagane | Nazwa właściwości | Typ | Opis | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Częstotliwość** | Yes | frequency | Ciąg | Jednostka czasu cyklu: **drugi**, **minutę**, **godzinę**, **dzień**, **tygodnia**, lub  **Miesiąc** | 
-| **Interwał** | Yes | interval | Liczba całkowita | Dodatnia liczba całkowita, która opisuje, jak często przepływu pracy jest uruchamiana na podstawie częstotliwości. <p>Domyślny interwał wynosi 1. Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczna: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Po drugie: 1 9,999,999 sekundy.<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| **Częstotliwość** | Yes | frequency | Ciąg | Jednostka czasu cyklu: **Drugi**, **minutę**, **godzinę**, **dzień**, **tydzień**, lub **miesiąca** | 
+| **Interwał** | Yes | interval | Liczba całkowita | Dodatnia liczba całkowita, która opisuje, jak często przepływu pracy jest uruchamiana na podstawie częstotliwości. <p>Domyślny interwał wynosi 1. Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 | **Strefa czasowa** | Nie | timeZone | Ciąg | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Wybierz strefę czasową, który chcesz zastosować. | 
-| **Godzina rozpoczęcia** | Nie | startTime | Ciąg | Podaj godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i wybierz strefę czasową, np. czasu pacyficznego. Alternatywnie można wskazać "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** ta godzina rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie zaznaczysz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. [*Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę?*](#start-time) | 
-| **W tych dniach** | Nie | weekDays | Ciąg lub tablicę ciągów | Jeśli wybierzesz opcję "Week", można wybrać jeden lub więcej dni, gdy zachodzi potrzeba uruchomienia przepływu pracy: **poniedziałek**, **wtorek**, **środę**, **czwartek** , **Piątek**, **sobota**, i **niedziela** | 
+| **Godzina rozpoczęcia** | Nie | startTime | Ciąg | Podaj godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i wybierz strefę czasową, np. czasu pacyficznego. Alternatywnie można wskazać "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie zaznaczysz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. [*Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę?*](#start-time) | 
+| **W tych dniach** | Nie | weekDays | Ciąg lub tablicę ciągów | Jeśli wybierzesz opcję "Week", można wybrać jeden lub więcej dni, gdy zachodzi potrzeba uruchomienia przepływu pracy: **Poniedziałek**, **wtorek**, **środę**, **czwartek**, **piątek**, **sobota**, i **Niedziela** | 
 | **W tych godzinach** | Nie | hours | Liczba całkowita lub tablicy liczb całkowitych | Jeśli wybierzesz opcję "Day" lub "Week", można wybrać jeden lub więcej liczb całkowitych z zakresu od 0 do 23 godzin dnia, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład jeśli określisz "10", "12" i "14", możesz uzyskać 10 AM, 12 PM i 14: 00 jako znaki godzinę. | 
 | **W tych minutach** | Nie | minutes | Liczba całkowita lub tablicy liczb całkowitych | Jeśli wybierzesz opcję "Day" lub "Week", można wybrać jeden lub więcej liczb całkowitych z zakresu od 0 do 59 jako minuty, godziny, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład "30" można określić jako znacznik minutę i godziny, dnia, korzystając z poprzedniego przykładu, możesz uzyskać 10:30:00, 12:30:00 i 14:30:00. | 
 ||||| 
@@ -109,42 +111,49 @@ Możesz skonfigurować te właściwości dla wyzwalacza.
 Oto przykład [definicji wyzwalacza cyklu](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger):
 
 ``` json
-{
-    "triggers": {
-        "Recurrence": {
-            "type": "Recurrence",
-            "recurrence": {
-                "frequency": "Week",
-                "interval": 1,
-                "schedule": {
-                    "hours": [
-                        10,
-                        12,
-                        14
-                    ],
-                    "minutes": [
-                        30
-                    ],
-                    "weekDays": [
-                        "Monday"
-                    ]
-                },
-               "startTime": "2017-09-07T14:00:00",
-               "timeZone": "Pacific Standard Time"
-            }
-        }
-    }
+"triggers": {
+   "Recurrence": {
+      "type": "Recurrence",
+      "recurrence": {
+         "frequency": "Week",
+         "interval": 1,
+         "schedule": {
+            "hours": [
+               10,
+               12,
+               14
+            ],
+            "minutes": [
+               30
+            ],
+            "weekDays": [
+               "Monday"
+            ]
+         },
+         "startTime": "2017-09-07T14:00:00",
+         "timeZone": "Pacific Standard Time"
+      }
+   }
 }
 ```
 
 ## <a name="faq"></a>Często zadawane pytania
 
+<a name="run-once"></a>
+
+**PYT.:** Co zrobić, jeśli chcę, aby uruchomić aplikację logiki, który jest od razu i jeden raz tylko? </br>
+**ODP.:** Aby od razu wyzwolenie aplikacji logiki i uruchomić jeden raz bez cyklicznego, można użyć **harmonogramu: Uruchom raz zadania** szablonu. Po utworzeniu nowej aplikacji logiki, ale przed otwarciem projektanta aplikacji logiki w obszarze **szablony** sekcji z **kategorii** listy wybierz pozycję **harmonogram**, a następnie wybierz pozycję szablon:
+
+![Wybierz pozycję "harmonogramu: Uruchamianie zadania raz"szablonu](./media/connectors-native-recurrence/choose-run-once-template.png)
+
+Lub, jeśli używasz szablonu pustej aplikacji logiki, uruchomić swoją aplikację logiki, za pomocą **zostanie odebrane żądanie po HTTP - żądania** wyzwalacza. Czas rozpoczęcia tego wyzwalacza można przekazać jako parametr. W następnym kroku należy dodać **opóźnienie do — Planowanie** akcji i podaj czas podczas uruchamiania następnej akcji.
+
 <a name="example-recurrences"></a>
 
-**P: czy** jakie są inne harmonogramy cyklu przykład? </br>
-**Odp.:** Oto więcej przykładów:
+**PYT.:** Jakie są inne harmonogramy cyklu przykład? </br>
+**ODP.:** Oto więcej przykładów:
 
-| Cykl | Interwał | Częstotliwość | Godzina rozpoczęcia | W tych dniach | W tych godzinach | W tych minutach | Uwaga |
+| Cykl | Interval | Częstotliwość | Godzina rozpoczęcia | W tych dniach | W tych godzinach | W tych minutach | Uwaga |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
 | Uruchamiany co 15 minut (nie Data i godzina rozpoczęcia) | 15 | Minuta | {Brak} | {unavailable} | {Brak} | {Brak} | Ten harmonogram jest uruchamiany natychmiast, a następnie oblicza przyszłe powtórzenia na podstawie ostatniego czasu wykonywania. | 
 | Uruchamiany co 15 minut (przy użyciu Data i godzina rozpoczęcia) | 15 | Minuta | *startDate*T*startTime*Z | {unavailable} | {Brak} | {Brak} | Ten harmonogram nie zaczyna się *wszelkie wcześniej* niż określona data rozpoczęcia i godzina, a następnie oblicza przyszłe powtórzenia na podstawie ostatniego czasu wykonywania. | 
@@ -171,14 +180,14 @@ Oto przykład [definicji wyzwalacza cyklu](../logic-apps/logic-apps-workflow-act
 
 <a name="start-time"></a>
 
-**P: czy** jakie są sposoby, że data i godzina rozpoczęcia można używać? </br>
-**Odp.:** poniżej przedstawiono niektóre wzorce, które pokazują sposób kontrolowania cykli z użyciem Data i godzina rozpoczęcia i jak aparat usługi Logic Apps wykonuje te cykli:
+**PYT.:** Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę? </br>
+**ODP.:** Poniżej przedstawiono niektóre wzorce, które pokazują sposób kontrolowania cykli z użyciem Data i godzina rozpoczęcia i jak aparat usługi Logic Apps wykonuje te cykli:
 
 | Godzina rozpoczęcia | Cykl bez harmonogramu | Cykl z harmonogramem | 
 | ---------- | --------------------------- | ------------------------ | 
 | {Brak} | Uruchamia natychmiast pierwszy obciążenia. <p>Uruchamia przyszłych obciążeń na podstawie ostatniego czasu wykonywania. | Uruchamia natychmiast pierwszy obciążenia. <p>Uruchamia przyszłych obciążeń na podstawie określonego harmonogramu. | 
-| Godzina rozpoczęcia w przeszłości | Oblicza czas wykonywania na podstawie określonym czasie rozpoczęcia i czas odrzucenia ostatnie uruchomienie. Uruchamia pierwszy obciążenie w przyszłości dalej, czas wykonywania. <p>Uruchamia przyszłych obciążeń na podstawie obliczeń z ostatniego czasu wykonywania. <p>Aby uzyskać więcej informacji zobacz przykład pod tą tabelą. | Uruchamia obciążenia pierwszego *nie wcześniej* niż czas rozpoczęcia opierają na harmonogramie obliczonym na podstawie czasu rozpoczęcia. <p>Uruchamia przyszłych obciążeń na podstawie określonego harmonogramu. <p>**Uwaga:** Jeśli Określ cykl z harmonogramem, ale nie określaj godziny lub minuty dla harmonogramu, a następnie przyszłych czas wykonywania są obliczane przy użyciu godzin lub minut, odpowiednio, od momentu pierwszego uruchomienia. | 
-| Czas rozpoczęcia obecnie i w przyszłości | Uruchamia pierwszy obciążenia o określonej godzinie. <p>Uruchamia przyszłych obciążeń na podstawie obliczeń z ostatniego czasu wykonywania. | Uruchamia obciążenia pierwszego *nie wcześniej* niż czas rozpoczęcia opierają na harmonogramie obliczonym na podstawie czasu rozpoczęcia. <p>Uruchamia przyszłych obciążeń na podstawie określonego harmonogramu. <p>**Uwaga:** Jeśli Określ cykl z harmonogramem, ale nie określaj godziny lub minuty dla harmonogramu, a następnie przyszłych czas wykonywania są obliczane przy użyciu godzin lub minut, odpowiednio, od momentu pierwszego uruchomienia. | 
+| Godzina rozpoczęcia w przeszłości | Oblicza czas wykonywania na podstawie określonym czasie rozpoczęcia i czas odrzucenia ostatnie uruchomienie. Uruchamia pierwszy obciążenie w przyszłości dalej, czas wykonywania. <p>Uruchamia przyszłych obciążeń na podstawie obliczeń z ostatniego czasu wykonywania. <p>Aby uzyskać więcej informacji zobacz przykład pod tą tabelą. | Uruchamia obciążenia pierwszego *nie wcześniej* niż czas rozpoczęcia opierają na harmonogramie obliczonym na podstawie czasu rozpoczęcia. <p>Uruchamia przyszłych obciążeń na podstawie określonego harmonogramu. <p>**Uwaga:** Jeśli Określ cykl z harmonogramem, ale nie określono, godziny lub minuty dla harmonogramu, następnie przyszłych czas wykonywania są obliczane przy użyciu godzin lub minut, odpowiednio, od momentu pierwszego uruchomienia. | 
+| Czas rozpoczęcia obecnie i w przyszłości | Uruchamia pierwszy obciążenia o określonej godzinie. <p>Uruchamia przyszłych obciążeń na podstawie obliczeń z ostatniego czasu wykonywania. | Uruchamia obciążenia pierwszego *nie wcześniej* niż czas rozpoczęcia opierają na harmonogramie obliczonym na podstawie czasu rozpoczęcia. <p>Uruchamia przyszłych obciążeń na podstawie określonego harmonogramu. <p>**Uwaga:** Jeśli Określ cykl z harmonogramem, ale nie określono, godziny lub minuty dla harmonogramu, następnie przyszłych czas wykonywania są obliczane przy użyciu godzin lub minut, odpowiednio, od momentu pierwszego uruchomienia. | 
 ||||
 
 **Przykład dotyczący ostatnich czas rozpoczęcia z cyklem, ale bez harmonogramu** 

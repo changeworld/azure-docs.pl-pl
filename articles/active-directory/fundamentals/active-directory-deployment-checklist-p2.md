@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078243"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064716"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Usługa Azure Active Directory Premium P2 licencjonowania lista funkcji
 
@@ -33,7 +33,7 @@ W tym przewodniku założono, że masz licencje usługi Azure AD Premium P2, pak
 
 [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
-## <a name="plan-and-deploy-day-1-30"></a>Planowanie i wdrażanie: 1 – 30 dni
+## <a name="plan-and-deploy-day-1-30"></a>Planowanie i wdrażanie: Dzień 1-30
 
 - Wyznaczenie więcej niż jednego administratora globalnego (break szkła konta)
    - [Zarządzanie kontami administracyjnymi z dostępem awaryjnego w usłudze Azure AD](../users-groups-roles/directory-emergency-access.md)
@@ -64,7 +64,7 @@ W tym przewodniku założono, że masz licencje usługi Azure AD Premium P2, pak
    - [Implementowanie usługi Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)
 - [Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
 
-## <a name="plan-and-deploy-day-31-90"></a>Planowanie i wdrażanie: 31-90 dni
+## <a name="plan-and-deploy-day-31-90"></a>Planowanie i wdrażanie: Dzień 31-90
 
 - [Planowanie dostępu użytkowników-gości](../b2b/what-is-b2b.md)
    - [Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal](../b2b/add-users-administrator.md)
@@ -84,7 +84,7 @@ W tym przewodniku założono, że masz licencje usługi Azure AD Premium P2, pak
 - Całościowe zarządzanie cyklem życia użytkowników
    - Usługa Azure AD ma podejście do zarządzania cyklem życia tożsamości
    - Usuń wymagane ręczne wykonanie czynności z cyklu życia dla konta pracowników, aby uniemożliwić nieautoryzowany dostęp:
-      - Synchronizowanie tożsamości ze źródłem prawdziwych danych (w systemie HR) do usługi Azure AD. Link do obsługiwane systemy Kadrowe)
+      - Synchronizowanie tożsamości ze źródłem prawdziwych danych (w systemie HR) do usługi Azure AD.
       - [Aby automatycznie przypisać użytkowników do grup na podstawie ich atrybutów z działu KADR (lub źródło prawdziwych danych), takich jak dział, tytuł, region i inne atrybuty, należy użyć grup dynamicznych.](../users-groups-roles/groups-dynamic-membership.md)
       - [Użyj dostępu oparte na grupach zarządzania aprowizacji automatycznie aprowizować użytkowników do aplikacji SaaS.](../manage-apps/what-is-access-management.md)
 

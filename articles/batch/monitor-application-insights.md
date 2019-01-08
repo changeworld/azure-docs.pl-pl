@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 4a77f73f4d87f7def7c8a841c7a59aed04b9bee2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 69ba67eb74333e8316b739fc2f264434643cab95
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020051"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075145"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorowania i debugowania aplikacji usługi Azure Batch dla środowiska .NET za pomocą usługi Application Insights
 
@@ -35,11 +35,11 @@ Przykładowe języka C# rozwiązanie z kodem, która ma towarzyszyć w tym artyk
 
 * [Konto usługi Batch i połączone konto magazynu](batch-account-create-portal.md)
 
-* [Zasób usługi Application Insights](../application-insights/app-insights-create-new-resource.md)
+* [Zasób usługi Application Insights](../azure-monitor/app/create-new-resource.md )
   
    * Użyj witryny Azure portal do utworzenia usługi Application Insights *zasobów*. Wybierz *ogólne* **typ aplikacji**.
 
-   * Kopiuj [klucz Instrumentacji](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) z poziomu portalu. Jest wymagany w dalszej części tego artykułu.
+   * Kopiuj [klucz Instrumentacji](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) z poziomu portalu. Jest wymagany w dalszej części tego artykułu.
   
   > [!NOTE]
   > Może być [naliczane](https://azure.microsoft.com/pricing/details/application-insights/) dla danych przechowywanych w usłudze Application Insights. Obejmuje to diagnostyki i monitorowania danych omówionych w tym artykule.

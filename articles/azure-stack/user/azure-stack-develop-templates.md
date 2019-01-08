@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 16cf679f91dae185a857813ec27441b9a4440e37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.reviewer: ''
+ms.openlocfilehash: 34804dae53fcf06d1a18bf503cdabea61f272585
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244053"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065396"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Zagadnienia dotyczące szablonów usługi Azure Resource Manager
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Podczas opracowywania aplikacji, jest ważne, aby zapewnić Przenoszalność szablonu między platformą Azure i usługi Azure Stack. Ten artykuł zawiera informacje dotyczące tworzenia usługi Azure Resource Manager [szablony](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), dzięki czemu możesz prototypu w Twojej aplikacji i przetestuj wdrożenie na platformie Azure bez dostępu do środowiska usługi Azure Stack.
 
 ## <a name="resource-provider-availability"></a>Dostępność dostawcy zasobów
 
-Szablon, który zamierzasz wdrożyć należy używać tylko usług Microsoft Azure, które są już dostępne lub w wersji zapoznawczej w usłudze Azure Stack.
+Szablon, który planujesz wdrożyć należy używać tylko usług Microsoft Azure, które są już dostępne lub w wersji zapoznawczej w usłudze Azure Stack.
 
 ## <a name="public-namespaces"></a>Publiczne obszary nazw
 
-Ponieważ usługi Azure Stack znajduje się w centrum danych, ma przestrzenie nazw punktu końcowego innej usługi niż chmury publicznej platformy Azure. W rezultacie zapisane na stałe publiczne punkty końcowe w szablonach usługi Azure Resource Manager zakończyć się niepowodzeniem podczas próby wdróż je w usłudze Azure Stack. Można tworzyć dynamicznie przy użyciu punktów końcowych usługi *odwołania* i *łączenie* funkcji można pobrać wartości od dostawcy zasobów podczas wdrażania. Na przykład zamiast hardcoding *blob.core.windows.net* w szablonie, należy pobrać [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) aby dynamicznie ustawić *osDisk.URI* punktu końcowego:
+Ponieważ usługi Azure Stack znajduje się w centrum danych, ma przestrzenie nazw punktu końcowego innej usługi niż chmury publicznej platformy Azure. W rezultacie ustaloną publiczne punkty końcowe w szablonach usługi Azure Resource Manager zakończyć się niepowodzeniem przy próbie wdróż je w usłudze Azure Stack. Można tworzyć dynamicznie przy użyciu punktów końcowych usługi `reference` i `concatenate` funkcji można pobrać wartości od dostawcy zasobów podczas wdrażania. Na przykład zamiast kodować *blob.core.windows.net* w szablonie, należy pobrać [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) aby dynamicznie ustawić *osDisk.URI* punktu końcowego:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -56,7 +56,7 @@ Wersje usługi platformy Azure mogą się różnić między platformą Azure i u
 
 ## <a name="template-functions"></a>Funkcje szablonów
 
-Usługa Azure Resource Manager [funkcje](../../azure-resource-manager/resource-group-template-functions.md) zapewniają możliwości, które są wymagane do tworzenia dynamicznych szablonów. Na przykład program funkcje zadań, takich jak:
+Usługa Azure Resource Manager [funkcje](../../azure-resource-manager/resource-group-template-functions.md) możliwości są wymagane do tworzenia dynamicznych szablonów. Na przykład program funkcje zadań, takich jak:
 
 * Łączenie lub przycinanie ciągów.
 * Odwołuje się do wartości, z poziomu innych zasobów.

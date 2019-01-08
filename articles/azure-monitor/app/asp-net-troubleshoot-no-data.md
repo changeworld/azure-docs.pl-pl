@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 18416f4208a77c27290b7e524b207fc681f06fdb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2387af0ddd9f6f3ecbe91afaaca66d89f070c036
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050816"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076046"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -58,7 +58,7 @@ Poprawka:
 * Sprawdź podane poświadczenia logowania dla konta bezpośrednio do platformy Azure. 
 * W przeglądarce, sprawdź, czy masz dostęp do [witryny Azure portal](https://portal.azure.com). Otwórz okno Ustawienia i czy ma żadnych ograniczeń.
 * [Dodaj usługę Application Insights do istniejącego projektu](../../azure-monitor/app/asp-net.md): W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz pozycję "Dodaj usługę Application Insights."
-* Jeśli nadal nie działa, postępuj zgodnie z [procedury ręcznego](../../application-insights/app-insights-windows-services.md) Dodaj zasób w portalu, a następnie dodaj zestaw SDK do projektu. 
+* Jeśli nadal nie działa, postępuj zgodnie z [procedury ręcznego](../../azure-monitor/app/windows-services.md) Dodaj zasób w portalu, a następnie dodaj zestaw SDK do projektu. 
 
 ## <a name="emptykey"></a>Otrzymuję komunikat o błędzie "klucz Instrumentacji nie może być pusty"
 Prawdopodobnie wystąpił problem podczas były używane do instalowania usługi Application Insights lub może być karty rejestrowania.

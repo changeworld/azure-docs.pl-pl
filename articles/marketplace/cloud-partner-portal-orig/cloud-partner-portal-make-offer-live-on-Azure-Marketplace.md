@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ff3ca665382efc9133a4c4ce3f3fde25c03c5e52
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ad22f1944d3fe9a088b66da4cf4df7136db497f7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810961"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075342"
 ---
 <a name="make-your-virtual-machine-offer-live-on-azure-marketplace"></a>Utworzyć maszynę wirtualną oferty na żywo w witrynie Azure Marketplace
 =========================================================
@@ -51,13 +51,13 @@ Przejdźmy teraz przez poszczególne kroki publikowania, omówić, co się dziej
 
 Gdy klikniesz pozycję "Publikuj", zautomatyzowane kontrole ma miejsce, aby upewnić się, że wszystkie wymagane pola zostały wypełnione na ofertę. Jeśli wszystkie pola są wypełniane, obok pola zostanie wyświetlone ostrzeżenie i należy wypełnić ją dokładnie następnie ponownie kliknij przycisk "Publikuj".
 
-Po zakończeniu tego kroku poprawnie wyświetlone wyskakujące okienko, pytaniem o adres e-mail. To jest wiadomość e-mail, do którego zostanie wyświetlony publikowania powiadomienia o stanie dla pozostałych procesu publikowania. Po przesłaniu adresu e-mail, ten krok jest pełny.
+Po wykonaniu tego kroku poprawnie, okno podręczne wyświetli monit o podanie adresu e-mail. To jest wiadomość e-mail, do którego zostanie wyświetlony publikowania powiadomienia o stanie dla pozostałych procesu publikowania. Po przesłaniu adresu e-mail, ten krok jest pełny.
 
 ![Oferta przejdź na żywo sekwencji 4 — publikowanie oferty](./media/cloud-partner-portal-offer-go-live-azure-marketplace/publishyouroffer.png)
 
 **Certyfikacja (\<5 dni)**
 
-Ten krok jest, gdzie możemy uruchomić wiele testów, aby upewnić się, że obraz maszyny Wirtualnej spełnia wymagania dotyczące certyfikatu platformy Azure. Wszystkie wskazówki, musisz upewnić się, Przekaż wymagania dotyczące certyfikacji są [tutaj](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites).
+Ten krok jest, gdzie możemy uruchomić wiele testów, aby upewnić się, że obraz maszyny Wirtualnej spełnia wymagania dotyczące certyfikatu platformy Azure. Wszystkie wskazówki, musisz upewnić się, Przekaż wymagania dotyczące certyfikacji są [tutaj](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md).
 
 Ponieważ może to potrwać kilka dni, możesz zarejestrować się poza portalu Cloud Partner. Firma Microsoft wyśle Ci wiadomość e-mail z powiadomieniem Jeśli występują błędy, które należy spełnić. Jeśli testy zakończą się pomyślnie z sukcesem, proces zostanie automatycznie przejść do kroku inicjowania obsługi.
 
@@ -75,17 +75,17 @@ Ponadto skonfigurowanie funkcji generowania prowadzić sprawdzamy, czy czy integ
 
 Otrzymasz wiadomość e-mail z powiadomieniem, że Twoja oferta została ukończona pomyślnie kroki wymagane do dostępu do oferty w wersji zapoznawczej. W tym kroku należy wyświetlenia podglądu oferty i upewnij się, że wszystko wygląda jak należy go i maszyny Wirtualnej prawidłowo służy do wdrażania w środowisku przejściowym.
 
-**Tylko na liście dozwolonych subskrypcje można wykonać tej weryfikacji.**\*
+*Tylko na liście dozwolonych subskrypcje można wykonać tej weryfikacji.*
 
 **Przygotowania wydawcy**
 
-Po upewnieniu się, wszystko wygląda poprawnie i działa poprawnie, w wersji zapoznawczej, można przystąpić do emisji na żywo. Aby to zrobić, kliknij Go Live w obszarze stanu kartę, a firma Microsoft rozpocznie się czynności, aby utworzyć ofertę na żywo, w środowisku produkcyjnym i w witrynie sieci Web. Zazwyczaj potrwa kilka godzin od momentu, możesz kliknąć Go Live i oferta jest dostępna na żywo w witrynie sieci Web. Wyślemy wiadomość e-mail z powiadomieniem po oferty oficjalnie na żywo w witrynie sieci Web.
+Po upewnieniu się, wszystko wygląda poprawnie i działa poprawnie, w wersji zapoznawczej, można przystąpić do emisji na żywo. Kliknij przycisk **Go Live** w obszarze **stan** kartę, a firma Microsoft rozpocznie się czynności, aby utworzyć ofertę na żywo, w środowisku produkcyjnym i w witrynie sieci Web. Zazwyczaj potrwa kilka godzin od momentu, możesz kliknąć Go Live i oferta jest dostępna na żywo w witrynie sieci Web. Wyślemy wiadomość e-mail z powiadomieniem po oferty oficjalnie na żywo w witrynie sieci Web.
 
 ![Oferty z rzeczywistym użyciem na żywo sekwencji 5 — przejdź na żywo](./media/cloud-partner-portal-offer-go-live-azure-marketplace/golive.png)
 
 **Na żywo**
 
-Oferty jest teraz na żywo w witrynie Azure Marketplace i witryny Azure Portal, a klienci będą mogli przeglądać i wdrożyć maszynę wirtualną dla swoich subskrypcji platformy Azure. W dowolnym momencie można kliknąć kartę wszystkie oferty i wyświetlany jest stan dla wszystkich Twoich ofert wymienione w prawej kolumnie. Kliknij stan, aby zobaczyć stan przepływu publikowania szczegóły oferty.
+Oferty jest teraz na żywo w witrynie Azure Marketplace i witryny Azure portal, a klienci będą mogli przeglądać i wdrożyć maszynę wirtualną dla swoich subskrypcji platformy Azure. W dowolnym momencie można kliknąć kartę wszystkie oferty i wyświetlany jest stan dla wszystkich Twoich ofert wymienione w prawej kolumnie. Kliknij stan, aby zobaczyć stan przepływu publikowania szczegóły oferty.
 
 <a name="error-handling"></a>Obsługa błędów
 --------------
@@ -94,7 +94,7 @@ W procesie publikowania może napotkać błąd. Jeśli okaże się błąd, otrzy
 
 ![Oferty z rzeczywistym użyciem sekwencji na żywo 6 - komunikat o błędzie](./media/cloud-partner-portal-offer-go-live-azure-marketplace/errormessage.png)
 
-Jeśli wystąpią błędy w procesie publikowania należy są wymagane do rozwiąż je, a następnie kliknij przycisk Publikuj, aby ponownie uruchomić proces. W przypadku ponownego publikowania po wszelkie poprawki błędów, należy uruchomić na początku kroki publikowania na weryfikacji wymagań wstępnych.
+Jeśli wystąpią błędy w procesie publikowania jest wymagane, aby rozwiązać te problemy, a następnie kliknij przycisk Publikuj, aby ponownie uruchomić proces. W przypadku ponownego publikowania po wszelkie poprawki błędów, należy uruchomić na początku kroki publikowania na weryfikacji wymagań wstępnych.
 
 Jeśli występują problemy rozpoznawania błąd, należy otworzyć żądanie pomocy technicznej, aby uzyskać pomoc z inżynierami pomocy technicznej.
 

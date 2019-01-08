@@ -12,12 +12,12 @@ ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: b857b0bd56b479d4301535a4e1f734d8002dcc8e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c63872ce19cc7076929785cc7bd150c1599c5705
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099056"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063054"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Edytowanie informacji o grupie za pomocą usługi Azure Active Directory
 
@@ -50,7 +50,7 @@ Za pomocą usługi Azure Active Directory (Azure AD), można edytować grupę us
 
     - **Typ grupy.** Typ grupy nie można zmienić po jej utworzeniu. Aby zmienić **typ grupy**, należy usunąć grupę i Utwórz nową.
     
-    - **Typ członkostwa.** Zmień typ członkostwa. Aby uzyskać więcej informacji na temat różnych typów dostępne członkostwa, zobacz [porady: utworzenie podstawowej grupy i dodawać członków przy użyciu portalu Azure Active Directory](active-directory-groups-create-azure-portal.md)
+    - **Typ członkostwa.** Zmień typ członkostwa. Aby uzyskać więcej informacji na temat różnych typów dostępne członkostwa, zobacz [jak: Utworzenie podstawowej grupy i dodawać członków przy użyciu portalu Azure Active Directory](active-directory-groups-create-azure-portal.md).
     
     - **Identyfikator obiektu.** Nie można zmienić Identyfikatora obiektu, ale możesz skopiować go do użycia w poleceniach programu PowerShell dla grupy. Aby uzyskać więcej informacji o używaniu poleceń cmdlet programu PowerShell, zobacz [poleceń cmdlet usługi Azure Active Directory, do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-v2-cmdlets.md).
 

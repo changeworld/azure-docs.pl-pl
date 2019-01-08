@@ -5,16 +5,16 @@ description: Klucze konta magazynu zapewnienie seemless integrację usługi Azur
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: bryanla
-ms.author: bryanla
+author: prashanthyv
+ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e110a24af6a0d49ea949db6bc30ab344c81d0f48
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 3ee0d19c174490d558a8ff06d3f5e038ffff211f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619286"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064444"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -32,7 +32,7 @@ ms.locfileid: "52619286"
 1. [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) zainstalować interfejs wiersza polecenia Azure   
 2. [Tworzenie konta magazynu](https://azure.microsoft.com/services/storage/)
     - Wykonaj kroki opisane w tym [dokumentu](https://docs.microsoft.com/azure/storage/) można utworzyć konta magazynu  
-    - **Wskazówki dotyczące nazewnictwa:** nazwy kont magazynu muszą należeć do zakresu od 3 do 24 znaków i może zawierać tylko cyfry i małe litery.        
+    - **Wskazówki dotyczące nazewnictwa:** Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.        
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Krok po kroku instrukcje dotyczące sposobu używania usługi Key Vault do zarządzania kluczami konta magazynu
 --------------------------------------------------------------------------------

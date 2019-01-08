@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 31c4268522ca373ca0b467c13dd83500e18ef8e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890946"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065889"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -102,6 +102,7 @@ Aby pracować z kolekcji, zazwyczaj tablice, ciągi i czasami słowników, możn
 | [pusty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Sprawdź, czy kolekcja jest pusta. | 
 | [pierwszy](../logic-apps/workflow-definition-language-functions-reference.md#first) | Zwraca pierwszy element z kolekcji. | 
 | [Część wspólna](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Zwraca kolekcję, która ma *tylko* wspólne elementy w określonej kolekcji. | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gdy wewnątrz powtarzającej się akcji, za pośrednictwem tablicy, zwraca bieżący element w tablicy podczas iteracji bieżącej akcji. | 
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Zwraca ciąg, który ma *wszystkie* elementy z tablicy, oddzielone od określonego znaku. | 
 | [ostatni](../logic-apps/workflow-definition-language-functions-reference.md#last) | Zwraca ostatni element z kolekcji. | 
 | [Długość](../logic-apps/workflow-definition-language-functions-reference.md#length) | Zwraca liczbę elementów w tablicy lub ciągu. | 
@@ -265,7 +266,7 @@ Aby pracować z uniform resource identifier (URI) i uzyskać różne wartości w
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>Funkcje manipulowania: JSON i XML
+## <a name="manipulation-functions-json--xml"></a>Funkcje manipulowania: JSON I XML
 
 Aby pracować z obiektami JSON i XML węzłów, można użyć tych funkcji manipulowania. Aby uzyskać pełną dokumentację o każdej z nich, zobacz [Alfabetyczna lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
@@ -691,7 +692,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*Znacznik czasu:*> | Yes | Ciąg | Ciąg, który zawiera znacznik czasu | 
 | <*Interwał*> | Yes | Liczba całkowita | Liczba jednostek w określonym czasie można dodać | 
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Druga", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
+| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Drugi", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
 | <*Format*> | Nie | Ciąg | Albo [pojedynczego specyfikatora formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowy wzorzec formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-ddTHH:mm:ss:fffffffK), która spełnia [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 ||||| 
 
@@ -752,9 +753,9 @@ and(false, false)
 
 I zwraca następujące wyniki:
 
-* Pierwszy przykład: oba wyrażenia są spełnione, więc zwraca `true`. 
-* Drugi przykład: jedno wyrażenie ma wartość false, dlatego zwraca `false`.
-* Trzeci przykład: oba wyrażenia są fałszywe, dlatego zwraca `false`.
+* Pierwszy przykład: Oba wyrażenia są spełnione, więc zwraca `true`. 
+* Drugi przykład: Jedno wyrażenie ma wartość false, dlatego zwraca `false`.
+* Trzeci przykład: Oba wyrażenia są fałszywe, dlatego zwraca `false`.
 
 *Przykład 2*
 
@@ -768,9 +769,9 @@ and(equals(1, 2), equals(1, 3))
 
 I zwraca następujące wyniki:
 
-* Pierwszy przykład: oba wyrażenia są spełnione, więc zwraca `true`. 
-* Drugi przykład: jedno wyrażenie ma wartość false, dlatego zwraca `false`.
-* Trzeci przykład: oba wyrażenia są fałszywe, dlatego zwraca `false`.
+* Pierwszy przykład: Oba wyrażenia są spełnione, więc zwraca `true`. 
+* Drugi przykład: Jedno wyrażenie ma wartość false, dlatego zwraca `false`.
+* Trzeci przykład: Oba wyrażenia są fałszywe, dlatego zwraca `false`.
 
 <a name="array"></a>
 
@@ -1646,8 +1647,8 @@ empty('abc')
 
 I zwraca następujące wyniki: 
 
-* Pierwszy przykład: przekazuje ciąg pusty, funkcja zwraca `true`. 
-* Drugi przykład: przekazuje ciąg "abc", więc funkcja zwraca `false`. 
+* Pierwszy przykład: Przekazuje ciąg pusty, funkcja zwraca `true`. 
+* Drugi przykład: Przekazuje ciąg "abc", więc funkcja zwraca `false`. 
 
 <a name="endswith"></a>
 
@@ -1721,8 +1722,8 @@ equals('abc', 'abcd')
 
 I zwraca następujące wyniki: 
 
-* Pierwszy przykład: obie wartości są równoważne, więc funkcja zwraca `true`.
-* Drugi przykład: obie wartości nie są równoważne, więc funkcja zwraca `false`.
+* Pierwszy przykład: Obie wartości są równoważne, więc funkcja zwraca `true`.
+* Drugi przykład: Obie wartości nie są równoważne, więc funkcja zwraca `false`.
 
 <a name="first"></a>
 
@@ -1895,7 +1896,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | Parametr | Wymagane | Typ | Opis | 
 | --------- | -------- | ---- | ----------- | 
 | <*Interwał*> | Yes | Liczba całkowita | Liczba jednostek określonego czasu do odjęcia | 
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Druga", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
+| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Drugi", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
 | <*Format*> | Nie | Ciąg | Albo [pojedynczego specyfikatora formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowy wzorzec formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-ddTHH:mm:ss:fffffffK), która spełnia [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. | 
 ||||| 
 
@@ -1937,7 +1938,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | Parametr | Wymagane | Typ | Opis | 
 | --------- | -------- | ---- | ----------- | 
 | <*Interwał*> | Yes | Liczba całkowita | Liczba jednostek określonego czasu do odjęcia | 
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Druga", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
+| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Drugi", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
 | <*Format*> | Nie | Ciąg | Albo [pojedynczego specyfikatora formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowy wzorzec formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-ddTHH:mm:ss:fffffffK), która spełnia [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. | 
 ||||| 
 
@@ -2077,7 +2078,7 @@ I zwraca wynik: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-### <a name="if"></a>Jeśli
+### <a name="if"></a>if
 
 Sprawdź, czy wyrażenie jest prawdziwe lub fałszywe. Na podstawie wyniku, zwrócić określoną wartość.
 
@@ -2725,8 +2726,8 @@ not(true)
 
 I zwrócić następujące wyniki:
 
-* Pierwszy przykład: wyrażenie ma wartość FAŁSZ, aby funkcja zwraca `true`.
-* Drugi przykład: wyrażenie ma wartość true, dzięki czemu funkcja zwraca `false`.
+* Pierwszy przykład: Wyrażenie ma wartość FAŁSZ, aby funkcja zwraca `true`.
+* Drugi przykład: Wyrażenie ma wartość true, dzięki czemu funkcja zwraca `false`.
 
 *Przykład 2*
 
@@ -2739,8 +2740,8 @@ not(equals(1, 1))
 
 I zwrócić następujące wyniki:
 
-* Pierwszy przykład: wyrażenie ma wartość FAŁSZ, aby funkcja zwraca `true`.
-* Drugi przykład: wyrażenie ma wartość true, dzięki czemu funkcja zwraca `false`.
+* Pierwszy przykład: Wyrażenie ma wartość FAŁSZ, aby funkcja zwraca `true`.
+* Drugi przykład: Wyrażenie ma wartość true, dzięki czemu funkcja zwraca `false`.
 
 <a name="or"></a>
 
@@ -2773,8 +2774,8 @@ or(false, false)
 
 I zwrócić następujące wyniki:
 
-* Pierwszy przykład: co najmniej jedno wyrażenie ma wartość true, dzięki czemu funkcja zwraca `true`.
-* Drugi przykład: oba wyrażenia są fałszywe, funkcja zwraca `false`.
+* Pierwszy przykład: Co najmniej jedno wyrażenie ma wartość true, dzięki czemu funkcja zwraca `true`.
+* Drugi przykład: Oba wyrażenia są fałszywe, funkcja zwraca `false`.
 
 *Przykład 2*
 
@@ -2787,8 +2788,8 @@ or(equals(1, 2), equals(1, 3))
 
 I zwrócić następujące wyniki:
 
-* Pierwszy przykład: co najmniej jedno wyrażenie ma wartość true, dzięki czemu funkcja zwraca `true`.
-* Drugi przykład: oba wyrażenia są fałszywe, funkcja zwraca `false`.
+* Pierwszy przykład: Co najmniej jedno wyrażenie ma wartość true, dzięki czemu funkcja zwraca `true`.
+* Drugi przykład: Oba wyrażenia są fałszywe, funkcja zwraca `false`.
 
 <a name="parameters"></a>
 
@@ -3294,7 +3295,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*Znacznik czasu:*> | Yes | Ciąg | Ciąg, który zawiera znacznik czasu | 
 | <*Interwał*> | Yes | Liczba całkowita | Liczba jednostek określonego czasu do odjęcia | 
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Druga", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
+| <*timeUnit*> | Yes | Ciąg | Jednostka czasu za pomocą *interwał*: "Drugi", "Minute", "Hour", "Day", "Week", "Month", "Year" | 
 | <*Format*> | Nie | Ciąg | Albo [pojedynczego specyfikatora formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowy wzorzec formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-ddTHH:mm:ss:fffffffK), która spełnia [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. | 
 ||||| 
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435280"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078528"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Usługa Azure Active Directory, inteligentnej blokady
 
@@ -70,6 +70,14 @@ Aby sprawdzić, lub zmodyfikuj wartości inteligentnej blokady dla Twojej organi
 > Przy pierwszym zalogowaniu po blokady nie powiedzie się także, konto blokuje ponownie. Jeśli konto blokady wielokrotnie, zwiększony czas trwania blokady.
 
 ![Dostosuj zasady blokady inteligentne usługi Azure AD w witrynie Azure portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Jak ustalić, czy funkcja Smartlockout działa lub nie
+
+Po wyzwoleniu próg smartlockout zablokowaniu konta zostanie wyświetlony następujący komunikat:
+
+**Twoje konto zostało tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później, a jeśli nadal występują problemy, skontaktuj się z administratorem.**
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Dowiedz się, jak zablokować nieprawidłowych haseł w organizacji za pomocą usługi Azure AD.](howto-password-ban-bad.md)

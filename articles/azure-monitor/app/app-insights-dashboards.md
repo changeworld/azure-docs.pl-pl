@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: d3dca1d7247a822720d32e32fe959053fb80ddd1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0135f3ab79852e55187874ce1d5a0695238de207
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052483"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074839"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Nawigacja i pulpity nawigacyjne w portalu Application Insights
 Po utworzeniu [Konfigurowanie usługi Application Insights w projekcie](../../application-insights/app-insights-overview.md), dane telemetryczne dotyczące użycia i wydajności aplikacji będą wyświetlane w zasobie usługi Application Insights projektu w [witryny Azure portal](https://portal.azure.com).
@@ -113,10 +113,10 @@ Blok przeglądu jest bramy Aby dowiedzieć się więcej o aplikacji.
 * [**Wyszukiwanie** ](../../azure-monitor/app/diagnostic-search.md) — zbadać konkretne wystąpienia zdarzenia, takie jak żądania, wyjątki, lub ślady dzienników.
 * [**Analiza** ](../../azure-monitor/app/analytics.md) -zaawansowanych zapytań w ramach telemetrii.
 * **Zakres czasu** — Dostosuj zakres wyświetlanych przez wszystkich wykresach w bloku.
-* **Usuń** — Usuwanie zasobu usługi Application Insights dla tej aplikacji. Należy również albo usunąć pakiety usługi Application Insights w kodzie aplikacji, lub edytować [klucz Instrumentacji](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) w swojej aplikacji, aby kierować dane telemetryczne do innego zasobu usługi Application Insights.
+* **Usuń** — Usuwanie zasobu usługi Application Insights dla tej aplikacji. Należy również albo usunąć pakiety usługi Application Insights w kodzie aplikacji, lub edytować [klucz Instrumentacji](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) w swojej aplikacji, aby kierować dane telemetryczne do innego zasobu usługi Application Insights.
 
 ### <a name="essentials-tab"></a>Karcie danych podstawowych
-* [Klucz Instrumentacji](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) — identyfikuje ten zasób aplikacji.
+* [Klucz Instrumentacji](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) — identyfikuje ten zasób aplikacji.
 
 ### <a name="app-navigation-bar"></a>Pasek nawigacyjny aplikacji
 ![Lewy pasek nawigacyjny](./media/app-insights-dashboards/app-left-nav-bar.png)

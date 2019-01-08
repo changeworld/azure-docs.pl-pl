@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: qianw211
-ms.openlocfilehash: 44526445629d2cbfe3aab3cf62316a1163f8f2d7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 29909e9fba209ee892bc5fd3b0c08026ee5250b0
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266876"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075485"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Podręcznik publikowania dla różnych typów ofert
 
@@ -50,7 +50,7 @@ Typów ofert w usłudze Azure Marketplace są wymienione w poniższej tabeli.
 
 Ponadto zobacz [ **wymagania usługi Azure AD** ](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad) przez opcje listowania i oferuje typy, aby uzyskać więcej informacji na temat wymagań rejestracji jednokrotnej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 *   Należy przejrzeć wymagania kwalifikacyjne w opcje publikowania przez sekcję typ oferty w celu sfinalizowania wyborem i konfiguracją, oferty.
 *   Przejrzyj wzorców publikowania w sklepie przykłady w sposób swoje rozwiązanie mapowania typu oferty i konfiguracji.

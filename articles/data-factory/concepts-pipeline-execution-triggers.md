@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 6d0524471ddc62e1ff6285bd0c80049917e726a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d103061289991fb149b7c8d76430b37a6b385f80
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014951"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064376"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
 > * [Wersja 1](v1/data-factory-scheduling-and-execution.md)
 > * [Bieżąca wersja](concepts-pipeline-execution-triggers.md)
 
-_Uruchomienie potoku_ w bieżącej wersji usługi Azure Data Factory definiuje wystąpienie wykonania potoku. Załóżmy na przykład istnienie potoku, który jest wykonywany o godzinie 8:00, 9:00 i 10:00. W takim przypadku występują trzy osobne uruchomienia potoku. Każde uruchomienie potoku ma unikatowy identyfikator uruchomienia potoku. Identyfikator uruchomienia jest identyfikatorem GUID, który w sposób unikatowy definiuje to konkretne uruchomienie potoku. 
+_Uruchomienie potoku_ w bieżącej wersji usługi Azure Data Factory definiuje wystąpienie wykonania potoku. Załóżmy na przykład istnienie potoku, który jest wykonywany o godzinie 8:00, 9:00 i 10:00. W takim przypadku występują trzy osobne uruchomienia potoku. Każde uruchomienie potoku ma unikatowy identyfikator uruchomienia potoku. Identyfikator uruchomienia jest identyfikatorem GUID, który w sposób unikatowy definiuje to konkretne uruchomienie potoku.
 
 Uruchomienia potoku są tworzone zazwyczaj przez przekazanie argumentów do parametrów, które definiujesz w potoku. Potok możesz wykonywać ręcznie albo za pomocą _wyzwalacza_. Ten artykuł zawiera szczegółowe informacje na temat obu metod wykonywania potoku.
 
@@ -84,7 +84,7 @@ Możesz uruchomić potok ręcznie, używając jednej z następujących metod:
 - Zestaw SDK dla języka Python
 
 ### <a name="rest-api"></a>Interfejs API REST
-Następujące przykładowe polecenie ilustruje, jak ręcznie uruchomić potok przy użyciu interfejsu API REST:  
+Następujące przykładowe polecenie ilustruje, jak ręcznie uruchomić potok przy użyciu interfejsu API REST:
 
 ```
 POST
@@ -175,7 +175,7 @@ Wyzwalacz harmonogramu uruchamia potoki zgodnie z harmonogramem zegarowym. Ten w
 Aby uzyskać więcej informacji o wyzwalaczach harmonogramu i przykładach, zobacz [Tworzenie wyzwalacza harmonogramu](how-to-create-schedule-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definicja wyzwalacza harmonogramu
-Tworząc wyzwalacz harmonogramu, należy określić planowanie i powtarzanie przy użyciu definicji JSON. 
+Tworząc wyzwalacz harmonogramu, należy określić planowanie i powtarzanie przy użyciu definicji JSON.
 
 Aby wyzwalacz harmonogramu uruchamiał potok, należy dołączyć odwołanie do konkretnego potoku do definicji wyzwalacza. Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków.
 
@@ -292,7 +292,7 @@ W poniższej tabeli przedstawiono, w jaki sposób właściwość **startTime** k
 
 Rozpatrzmy przykład zdarzeń w przypadku, gdy czas rozpoczęcia przypada w przeszłości, z cyklem, ale bez harmonogramu. Załóżmy, że obecna data i godzina to 13:00 08-04-2017, czas rozpoczęcia to 14:00 07-04-2017, a cykl jest określony na 2 dni. (Wartość właściwości **recurrence** definiuje się, ustawiając właściwość **frequency** na wartość „day” („dzień”) i właściwość **interval** na wartość 2). Zwróć uwagę, że wartość właściwości **startTime** dotyczy przeszłej daty i następuje przed aktualną godziną.
 
-W tych warunkach pierwsze wykonanie następuje o 14:00 w dniu 09-04-2017. Aparat harmonogramu oblicza wystąpienia wykonania od czasu rozpoczęcia. Wszystkie wystąpienia w przeszłości są odrzucane. Aparat wykorzystuje następne wystąpienie, które ma miejsce w przyszłości. W tym scenariuszu godziną rozpoczęcia jest 14:00 w dniu 07-04-2017. Następne wystąpienie zostanie uruchomione za dwa dni od tego czasu, czyli o 14:00 w dniu 09-04-2017.
+W tych warunkach pierwsze wykonanie następuje 2017-04-09 o 14:00. Aparat harmonogramu oblicza wystąpienia wykonania od czasu rozpoczęcia. Wszystkie wystąpienia w przeszłości są odrzucane. Aparat wykorzystuje następne wystąpienie, które ma miejsce w przyszłości. W tym scenariuszu godziną rozpoczęcia jest 14:00 w dniu 07-04-2017. Następne wystąpienie zostanie uruchomione za dwa dni od tego czasu, czyli o 14:00 w dniu 09-04-2017.
 
 Czas pierwszego wykonania jest identyczny, nawet jeśli właściwość **startTime** ma wartość 14:00 05-04-2017 lub 14:00 01-04-2017. Po pierwszym wykonaniu kolejne wykonania są obliczane przy użyciu harmonogramu. W związku z tym kolejne wykonania zostaną uruchomione o 14:00 w dniu 11-04-2017, a następnie o 14:00 w dniu 13-04-2017, o 14:00 w dniu 15-04-2017 i tak dalej.
 
@@ -312,7 +312,7 @@ W poniższej tabeli opisano szczegółowo elementy właściwości **schedule**:
 | **minutes** | Minuty godziny, o których uruchamiany jest wyzwalacz. |- Liczba całkowita<br />- Tablica liczb całkowitych|
 | **hours** | Godziny dnia, o których uruchamiany jest wyzwalacz. |- Liczba całkowita<br />- Tablica liczb całkowitych|
 | **weekDays** | Dni tygodnia, w które uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością tygodniową.|<br />- Poniedziałek<br />- Wtorek<br />- Środa<br />- Czwartek<br />- Piątek<br />- Sobota<br />- Niedziela<br />- Tablica wartości dni (maksymalny rozmiar tablicy to 7)<br /><br />W wartościach dni nie są uwzględniane wielkości liter|
-| **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |-Tablica **monthlyOccurrence** obiektów: `{ "day": day,  "occurrence": occurrence }`<br />- Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.<br />- Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.|
+| **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |-Tablica **monthlyOccurrence** obiektów: `{ "day": day, "occurrence": occurrence }`<br />- Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.<br />- Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.|
 | **monthDays** | Dzień miesiąca, w którym uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |- Dowolna wartość <= -1 i >= -31<br />- Dowolna wartość >= 1 i <= 31<br />- Tablica wartości|
 
 ## <a name="tumbling-window-trigger"></a>Wyzwalacz okna wirowania
@@ -372,7 +372,7 @@ Poniższa tabela zawiera porównanie wyzwalacza okna wirowania i wyzwalacza harm
 | **Możliwość ponowienia próby** | Obsługiwane. Uruchomienia potoków zakończone niepowodzeniem mają domyślne zasady ponawiania próby ustawione na wartość 0 lub zasady określone przez użytkownika w definicji wyzwalacza. Automatycznie ponawia próbę, gdy uruchomienia potoku zakończą się niepowodzeniem z powodu limitów współbieżności/serwerów/ograniczania (czyli kody stanu 400: Błąd użytkownika, 429: Zbyt wiele żądań i 500: Wewnętrzny błąd serwera). | Nieobsługiwane. |
 | **Współbieżność** | Obsługiwane. Użytkownicy mogą jawnie ustawić limity współbieżności dla wyzwalacza. Umożliwia od 1 do 50 jednocześnie wyzwolonych uruchomień potoków. | Nieobsługiwane. |
 | **Zmienne systemu** | Obsługuje używanie zmiennych systemowych **WindowStart** i **WindowEnd**. Użytkownicy mogą uzyskiwać dostęp do zmiennych `triggerOutputs().windowStartTime` i `triggerOutputs().windowEndTime` jako zmiennych systemu wyzwalacza w definicji wyzwalacza. Wartości są używane odpowiednio jako czas rozpoczęcia okna i czas zakończenia okna. Na przykład w przypadku wyzwalacza okna wirowania uruchamianego co godzinę dla okna od godz. 1:00 do 2:00 definicją jest zmienna `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` i `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nieobsługiwane. |
-| **Relacja potoku do wyzwalacza** | Obsługuje relację „jeden do jednego”. Można wyzwolić tylko jeden potok. | Obsługuje relacje „wiele do wielu”. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków. | 
+| **Relacja potoku do wyzwalacza** | Obsługuje relację „jeden do jednego”. Można wyzwolić tylko jeden potok. | Obsługuje relacje „wiele do wielu”. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące samouczki:

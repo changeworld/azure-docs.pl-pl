@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850979"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073411"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Istnieje wiele korzyści, zaloguj się do maszyn wirtualnych systemu Linux na pl
   - Aby dodatkowo zabezpieczyć logowanie do maszyn wirtualnych platformy Azure można skonfigurować uwierzytelnianie wieloskładnikowe.
   - Możliwość zalogowania się do maszyn wirtualnych systemu Linux w usłudze Azure Active Directory działa również w przypadku klientów używających [usług federacyjnych](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Bezproblemową współpracę:** With Role-Based kontroli dostępu (RBAC), można określić, kto zalogować się do danej maszyny Wirtualnej jako zwykli użytkownicy lub z uprawnieniami administratora. Gdy użytkownicy dołączyć lub opuścić zespół, można zaktualizować zasad RBAC dla maszyny Wirtualnej udzielić dostępu, zgodnie z potrzebami. To środowisko jest znacznie prostsze niż w przypadku czyszczenie maszyn wirtualnych, aby usunąć niepotrzebne kluczy publicznych SSH. Gdy pracownik odejdzie z organizacji ich konta użytkownika zostało wyłączone lub usunięte z usługi Azure AD, nie będzie mieć dostęp do zasobów.
+- **Bezproblemową współpracę:** Za pomocą opartej na rolach kontrola dostępu (RBAC), można określić, kto może logować do danej maszyny Wirtualnej jako zwykli użytkownicy lub z uprawnieniami administratora. Gdy użytkownicy dołączyć lub opuścić zespół, można zaktualizować zasad RBAC dla maszyny Wirtualnej udzielić dostępu, zgodnie z potrzebami. To środowisko jest znacznie prostsze niż w przypadku czyszczenie maszyn wirtualnych, aby usunąć niepotrzebne kluczy publicznych SSH. Gdy pracownik odejdzie z organizacji ich konta użytkownika zostało wyłączone lub usunięte z usługi Azure AD, nie będzie mieć dostęp do zasobów.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Obsługiwane regiony platformy Azure i dystrybucje systemu Linux
 
@@ -96,8 +96,8 @@ az vm extension set \
 
 Usługa Azure policy kontroli dostępu opartej na rolach (RBAC) określa, kto może zalogować się do maszyny Wirtualnej. Do autoryzacji logowania na maszynie Wirtualnej używane są dwie role RBAC:
 
-- **Logowanie administratora maszyny wirtualnej**: użytkownicy z tą rolą przypisane zalogować się do maszyny wirtualnej platformy Azure z uprawnieniami użytkownika głównego administratora Windows lub Linux.
-- **Logowanie użytkownika maszyny wirtualnej**: użytkownicy z tą rolą przypisane zalogować się do maszyny wirtualnej platformy Azure z uprawnieniami zwykłego użytkownika.
+- **Logowanie administratora maszyny wirtualnej**: Użytkownicy z tą rolą przypisane zalogować się do maszyny wirtualnej platformy Azure za pomocą administratora Windows lub Linux głównego użytkownikowi uprawnienia.
+- **Logowanie użytkownika maszyny wirtualnej**: Użytkownicy z tą rolą przypisane zalogować się do maszyny wirtualnej platformy Azure z uprawnieniami zwykłego użytkownika.
 
 > [!NOTE]
 > Aby umożliwić użytkownikowi logowanie się do maszyny Wirtualnej za pomocą protokołu SSH, należy przypisać jedną *Logowanie administratora maszyny wirtualnej* lub *logowanie użytkownika maszyny wirtualnej* roli. Użytkownikiem platformy Azure z *właściciela* lub *Współautor* ról przypisanych do maszyny Wirtualnej automatycznie nie mają uprawnień do logowania się do maszyny Wirtualnej za pomocą protokołu SSH.
@@ -150,7 +150,7 @@ Zamknij okno przeglądarki, wróć do protokołu SSH Monituj i naciśnij klawisz
 
 ## <a name="sudo-and-aad-login"></a>Identyfikator logowania "sudo" i usługi AAD
 
-Przy pierwszym uruchomieniu "sudo", będzie zostać poproszona o uwierzytelnienie po raz drugi. Jeśli nie chcesz uwierzytelnić się ponownie do uruchomienia "sudo", można edytować plik sudo `/aad/etc/sudoers.d/aad_admins` i Zastąp ten wiersz:
+Przy pierwszym uruchomieniu "sudo", będzie zostać poproszona o uwierzytelnienie po raz drugi. Jeśli nie chcesz uwierzytelnić się ponownie do uruchomienia "sudo", można edytować plik sudo `/etc/sudoers.d/aad_admins` i Zastąp ten wiersz:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -166,7 +166,7 @@ w tym:
 
 Niektóre typowe błędy przy próbie SSH przy użyciu poświadczeń usługi Azure AD nie obejmują żadnych przypisanych ról RBAC i powtórzyć monitami, aby zalogować. Następujące sekcje zawierają rozwiązania tych problemów.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Odmowa dostępu: nie jest przypisana rola RBAC
+### <a name="access-denied-rbac-role-not-assigned"></a>Odmowa dostępu: Nie jest przypisana rola RBAC
 
 Jeśli zobaczysz następujący błąd w wierszu polecenia usługi SSH, sprawdź, czy masz [skonfigurowane zasady RBAC](#configure-rbac-policy-for-the-virtual-machine) dla maszyny Wirtualnej, która udziela użytkownikowi albo *Logowanie administratora maszyny wirtualnej* lub *wirtualnych Logowanie użytkownika maszyny* roli:
 

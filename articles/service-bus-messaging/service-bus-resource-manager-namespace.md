@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: c616ad86e6846800d214feeaf100f63e311f78b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 248ac7ed2a855dd1df71e6e44d1aa7065ddd8ba4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282734"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062071"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus przy użyciu szablonu usługi Azure Resource Manager
 W tym przewodniku Szybki Start utworzysz szablonu usługi Azure Resource Manager, który tworzy przestrzeń nazw usługi Service Bus typu **komunikatów** z **standardowa** jednostki SKU. Artykuł definiuje również parametry, które są określone dla wykonywania wdrożenia. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb. Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Azure Resource Manager][Authoring Azure Resource Manager templates]. Aby uzyskać kompletny szablon, zobacz [szablon przestrzeni nazw usługi Service Bus] [ Service Bus namespace template] w witrynie GitHub.
@@ -96,7 +96,7 @@ Utwórz plik JSON o nazwie **MyServiceBusNamespace.json** o następującej zawar
 }
 ```
 
-Ten szablon tworzy standardową przestrzeń nazw usługi Service Bus.
+Ten szablon tworzy standardową przestrzeń nazw usługi Service Bus. Składnię JSON i właściwości, zobacz [przestrzenie nazw](/azure/templates/microsoft.servicebus/namespaces) odwołanie do szablonu.
 
 ## <a name="create-the-parameters-json"></a>Utwórz parametry JSON
 Szablon utworzony w poprzednim kroku zawiera sekcję o nazwie `Parameters`. Można zdefiniować parametry dla tych wartości, które różnią się na podstawie projektu wdrażania lub w zależności od środowiska docelowego. Ten szablon definiuje następujące parametry: **serviceBusNamespaceName**, **serviceBusSku**, i **lokalizacji**. Aby dowiedzieć się więcej na temat jednostek SKU usługi Service Bus, zobacz [jednostek usługi Service Bus SKU](https://azure.microsoft.com/pricing/details/service-bus/) do utworzenia.

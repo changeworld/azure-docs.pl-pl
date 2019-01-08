@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420102"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065804"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
 
@@ -276,10 +276,9 @@ Możliwość wymuszenia na bramie, nawiązać połączenia z usługą Azure Serv
 
 ## <a name="windows-service-account"></a>Konto usługi Windows
 
-Lokalna brama danych działa jak usługa Windows o nazwie "On-premises data gateway service", ale używa jej poświadczenia "Logowanie jako" konto "NT SERVICE\PBIEgwService". Domyślnie lokalna brama danych ma uprawnienia "Logowanie jako usługa" na komputerze, na którym instalujesz bramę. Do tworzenia i zarządzania bramą w witrynie Azure portal, konto usługi Windows musi mieć co najmniej **Współautor** uprawnienia. 
+Na komputerze, na którym instalujesz bramę danych lokalnych brama działa jako konto usługi Windows o nazwie "On-premises data gateway service". Jednak brama używa nazwy "NT SERVICE\PBIEgwService" do przedstawienia poświadczeń "Logowanie jako" konto. Domyślnie brama ma uprawnienia "Logowanie jako usługa" na komputerze, na którym instalujesz bramę. Konto usługi Windows bramy zwykle różni się od konta używanego do połączeń z lokalnymi źródłami danych oraz od pracy lub nauki, którego używasz do logowania do usług w chmurze.
 
-> [!NOTE]
-> Konta usługi Windows różni się od konta używanego do nawiązywania połączenia z lokalnymi źródłami danych i z konta służbowego lub szkolnego, używane na potrzeby logowania do usług w chmurze.
+Umożliwia tworzenie i obsługa bramy w witrynie Azure portal, to konto usługi Windows musi mieć co najmniej **Współautor** uprawnienia. Aby sprawdzić te uprawnienia, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md). 
 
 <a name="restart-gateway"></a>
 
@@ -329,58 +328,58 @@ Poniższe kroki opisują, co się dzieje, gdy użytkownik w chmurze korzysta z e
 
 ### <a name="general"></a>Ogólne
 
-**Q**: czy potrzebuję bramy dla źródeł danych w chmurze, takich jak Azure SQL Database? <br/>
-**Element**: nie, brama nawiązuje połączenie ze źródłami danych w środowisku lokalnym, tylko.
+**Q**: Czy potrzebuję bramy dla źródeł danych w chmurze, takich jak Azure SQL Database? <br/>
+**A**: Nie, brama nawiązuje połączenie ze źródłami danych w środowisku lokalnym, tylko.
 
-**Q**: czy brama musi być zainstalowany na tym samym komputerze co źródło danych? <br/>
-**Element**: nie, brama nawiązuje połączenie ze źródłem danych przy użyciu podanych informacji o połączeniu. Jako aplikację kliencką w tym sensie, należy wziąć pod uwagę bramy. Brama musi jedynie możliwość podłączania do nazwy serwera, który został dostarczony.
+**Q**: Czy brama musi być zainstalowany na tym samym komputerze co źródło danych? <br/>
+**A**: Nie, brama nawiązuje połączenie ze źródłem danych przy użyciu podanych informacji o połączeniu. Jako aplikację kliencką w tym sensie, należy wziąć pod uwagę bramy. Brama musi jedynie możliwość podłączania do nazwy serwera, który został dostarczony.
 
 <a name="why-azure-work-school-account"></a>
 
-**Q**: Dlaczego należy I użycie konta firmowego lub szkolnego do logowania? <br/>
-**A**: konto służbowe lub szkolne może używać tylko po zainstalowaniu lokalnej bramy danych. Konto logowania są przechowywane w dzierżawie, który jest zarządzany przez usługę Azure Active Directory (Azure AD). Zazwyczaj główna nazwa użytkownika konta usługi Azure AD (UPN) jest zgodny z adresem e-mail.
+**Q**: Dlaczego należy używać konta służbowego lub szkolnego do logowania? <br/>
+**A**: Konto służbowe lub szkolne może używać tylko w przypadku, po zainstalowaniu lokalnej bramy danych. Konto logowania są przechowywane w dzierżawie, który jest zarządzany przez usługę Azure Active Directory (Azure AD). Zazwyczaj główna nazwa użytkownika konta usługi Azure AD (UPN) jest zgodny z adresem e-mail.
 
-**Q**: gdzie przechowywane są moje poświadczenia? <br/>
-**A**: poświadczenia wprowadzone dla źródła danych są szyfrowane i przechowywane w usłudze bramy w chmurze. Poświadczenia są odszyfrowywane w lokalnej bramy danych.
+**Q**: Gdzie przechowywane są moje poświadczenia? <br/>
+**A**: Poświadczenia wprowadzone dla źródła danych są szyfrowane i przechowywane w usłudze bramy w chmurze. Poświadczenia są odszyfrowywane w lokalnej bramy danych.
 
-**Q**: czy istnieją jakiekolwiek wymagania dotyczące przepustowości sieci? <br/>
+**Q**: Czy istnieją jakiekolwiek wymagania dotyczące przepustowości sieci? <br/>
 **A**: Sprawdź, czy połączenie sieciowe ma dobrej przepływności. Każde środowisko jest inne, a ilość wysyłanych danych może mieć wpływ na wyniki. Zapewnieniu poziomu przepływności między źródłem danych lokalnych i centrami danych platformy Azure, spróbuj [usługi Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Aby ocenić przepływność, wypróbuj narzędzie zewnętrzne, takie jak Azure Speed Test.
 
-**Q**: co to jest opóźnienie przed wykonaniem zapytań do źródła danych z bramy? Co to jest najlepsza architektura? <br/>
-**A**: w celu zmniejszenia opóźnienia sieci, należy zainstalować bramę jak najbliżej źródła danych, jak to możliwe. Jeśli bramę można zainstalować w rzeczywistym źródle danych, tym odległości minimalizuje opóźnienia. Ponadto należy wziąć pod uwagę bliskość centrów danych platformy Azure. Na przykład jeśli usługa korzysta z centrum danych zachodnie stany USA, a masz programu SQL Server hostowanego w Maszynie wirtualnej platformy Azure, następnie można maszyny Wirtualnej platformy Azure w regionie zachodnie stany USA za. Ta odległości minimalizuje opóźnienia i pozwala uniknąć opłat za ruch wychodzący na maszynie Wirtualnej platformy Azure.
+**Q**: Co to jest opóźnienie przed wykonaniem zapytań do źródła danych z bramy? Co to jest najlepsza architektura? <br/>
+**A**: Do zmniejszenia opóźnienia sieci, należy zainstalować bramę jak najbliżej źródła danych, jak to możliwe. Jeśli bramę można zainstalować w rzeczywistym źródle danych, tym odległości minimalizuje opóźnienia. Ponadto należy wziąć pod uwagę bliskość centrów danych platformy Azure. Na przykład jeśli usługa korzysta z centrum danych zachodnie stany USA, a masz programu SQL Server hostowanego w Maszynie wirtualnej platformy Azure, następnie można maszyny Wirtualnej platformy Azure w regionie zachodnie stany USA za. Ta odległości minimalizuje opóźnienia i pozwala uniknąć opłat za ruch wychodzący na maszynie Wirtualnej platformy Azure.
 
-**Q**: sposób wyniki są odsyłane do chmury? <br/>
-**A**: wyniki są wysyłane za pośrednictwem usługi Azure Service Bus.
+**Q**: Jak wyniki są odsyłane do chmury? <br/>
+**A**: Wyniki są wysyłane za pośrednictwem usługi Azure Service Bus.
 
-**Q**: istnieją połączenia przychodzące do bramy z chmury? <br/>
-**Element**: nie, brama używa połączeń wychodzących do usługi Azure Service Bus.
+**Q**: Czy istnieją połączenia przychodzące do bramy z chmury? <br/>
+**A**: Nie, brama używa połączeń wychodzących do usługi Azure Service Bus.
 
-**Q**: co zrobić, jeśli zablokuję połączenia wychodzące? Co muszę otworzyć? <br/>
-**A**: porty i hosty, których używa brama.
+**Q**: Co się stanie, jeśli zablokuję połączenia wychodzące? Co muszę otworzyć? <br/>
+**A**: Zobacz, portów i hostów używanych przez bramę.
 
-**Q**: co to jest nazwa rzeczywistej usługi Windows o nazwie? <br/>
-**A**: na karcie usługi w Menedżerze zadań, nazwa usługi jest "PBIEgwService" lub Power BI Enterprise Gateway Service. W konsoli usługi nazwa usługi jest "Usługa bramy danych lokalnych". Usługa Windows używa "NT SERVICE\PBIEgwService" jako identyfikatora SID usług (SSID).
+**Q**: Co to jest nazwa rzeczywistej usługi Windows o nazwie? <br/>
+**A**: Na karcie usługi w Menedżerze zadań nazwa usługi jest "PBIEgwService" lub Power BI Enterprise Gateway Service. W konsoli usługi nazwa usługi jest "Usługa bramy danych lokalnych". Usługa Windows używa "NT SERVICE\PBIEgwService" jako identyfikatora SID usług (SSID).
 
-**Q**: można uruchomić bramy usługi Windows, przy użyciu konta usługi Azure Active Directory? <br/>
-**Element**: nie, usługa Windows muszą mieć prawidłowe konto Windows.
+**Q**: Brama Windows service uruchomić przy użyciu konta usługi Azure Active Directory? <br/>
+**A**: Nie, usługa Windows musi mieć prawidłowe konto Windows.
 
 ### <a name="disaster-recovery"></a>Odzyskiwanie po awarii
 
-**Q**: jakie opcje są dostępne na potrzeby odzyskiwania po awarii? <br/>
-**A**: można użyć klucza odzyskiwania w celu przywrócenia lub przeniesienia bramy. Klucz odzyskiwania jest określany podczas instalowania bramy.
+**Q**: Jakie opcje są dostępne do odzyskania po awarii? <br/>
+**A**: Klucz odzyskiwania służy do przywrócenia lub przeniesienia bramy. Klucz odzyskiwania jest określany podczas instalowania bramy.
 
-**Q**: co to jest korzyść klucza odzyskiwania? <br/>
-**A**: klucz odzyskiwania umożliwia migrację lub odzyskiwanie ustawień bramy po awarii.
+**Q**: Co to jest korzyść klucza odzyskiwania? <br/>
+**A**: Klucz odzyskiwania umożliwia migrację lub odzyskiwanie ustawień bramy po awarii.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 W tej sekcji omówiono niektóre typowe problemy, które może być podczas konfigurowania i korzystania z lokalnej bramy danych.
 
-**Q**: Dlaczego moja instalacja bramy nie? <br/>
-**A**: ten problem może wystąpić, jeśli oprogramowanie antywirusowe na komputerze docelowym jest nieaktualna. Można albo zaktualizuj oprogramowanie antywirusowe lub wyłączenia oprogramowania antywirusowego, ale tylko podczas instalacji bramy i ponownie włączyć oprogramowanie.
+**Q**: Dlaczego nie Moja instalacja bramy? <br/>
+**A**: Ten problem może się zdarzyć, jeśli oprogramowanie antywirusowe na komputerze docelowym jest nieaktualna. Można albo zaktualizuj oprogramowanie antywirusowe lub wyłączenia oprogramowania antywirusowego, ale tylko podczas instalacji bramy i ponownie włączyć oprogramowanie.
 
-**Q**: Dlaczego nie widzę mojego instalacji bramy podczas tworzenia zasobu bramy na platformie Azure? <br/>
-**A**: ten problem może się zdarzyć z tych powodów:
+**Q**: Dlaczego nie widzisz Moja instalacja bramy, podczas tworzenia zasobu bramy na platformie Azure? <br/>
+**A**: Ten problem może się zdarzyć z tych powodów:
 
 * Instalację bramy już jest zarejestrowany i zgłoszone przez inny zasób bramy na platformie Azure. Instalacje bramy nie są wyświetlane na liście wystąpienia, po utworzeniu zasoby bramy dla nich.
 Aby sprawdzić rejestracje bramy w witrynie Azure portal, zapoznaj się z wszystkich zasobów platformy Azure za pomocą **na poziomie lokalnych bram danych** wpisz *wszystkich* subskrypcji platformy Azure. 
@@ -389,11 +388,11 @@ Aby sprawdzić rejestracje bramy w witrynie Azure portal, zapoznaj się z wszyst
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-**Q**: gdzie znajdują się dzienniki bramy? <br/>
-**A**: zobacz [ **dzienniki** sekcji](#logs) w dalszej części tego artykułu.
+**Q**: Gdzie znajdują się dzienniki bramy? <br/>
+**A**: Zobacz [ **dzienniki** sekcji](#logs) w dalszej części tego artykułu.
 
-**Q**: jak mogę sprawdzić, co zapytania są wysyłane do źródła danych w środowisku lokalnym? <br/>
-**A**: możesz włączyć funkcję śledzenie zapytań, który zawiera zapytania, które są wysyłane. Pamiętaj, aby zmienić kwerendę, Śledzenie wstecz do oryginalnej wartości po zakończeniu rozwiązywania problemów. Pozostawienie włączona funkcja śledzenia zapytań tworzy większe dzienniki.
+**Q**: Jak mogę sprawdzić, co zapytania są wysyłane do źródła danych w środowisku lokalnym? <br/>
+**A**: Można włączyć funkcję śledzenie zapytań, który zawiera zapytania, które są wysyłane. Pamiętaj, aby zmienić kwerendę, Śledzenie wstecz do oryginalnej wartości po zakończeniu rozwiązywania problemów. Pozostawienie włączona funkcja śledzenia zapytań tworzy większe dzienniki.
 
 Można również przeglądać narzędzia, które ma źródła danych w celu śledzenia zapytań. Na przykład można użyć Extended Events lub SQL Profiler for SQL Server i usług Analysis Services.
 

@@ -13,12 +13,12 @@ ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0d3f417b5a169b3d8d91d85b5f47496064c8f5f3
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077465"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063356"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory
 Wiele usług Azure Active Directory (Azure AD) wymagają aktywacji produktu usługi Azure AD i wszystkich użytkowników lub grup (i skojarzone elementy członkowskie) licencji dla tego produktu. Tylko użytkownicy z liczby aktywnych licencji będą mogli uzyskać dostęp do licencjonowanych usługi Azure AD.
@@ -57,7 +57,8 @@ Możesz wyświetlić dostępne produkty, w poszczególnych licencji, w tym spraw
 ## <a name="assign-licenses-to-users-or-groups"></a>Przypisywanie licencji do użytkowników lub grup
 Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Azure AD dysponuje odpowiednią licencją. Jest do Ciebie czy chcesz dodać prawa licencyjne do poszczególnych użytkowników lub całych grup.
 
->! [Uwaga] Licencjonowanie na podstawie grupy jest funkcją publicznej wersji zapoznawczej usługi Azure AD i jest dostępna z dowolnej płatnych planu licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Aby uzyskać szczegółowe informacje o tym, jak dodać użytkowników, zobacz [jak dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory](add-users-azure-active-directory.md). Aby uzyskać szczegółowe informacje o tym, jak tworzyć grupy i dodawać członków, zobacz [utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md).
+>[!Note]
+>Licencjonowanie na podstawie grupy jest funkcją publicznej wersji zapoznawczej usługi Azure AD i jest dostępna z dowolnej płatnych planu licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Aby uzyskać szczegółowe informacje o tym, jak dodać użytkowników, zobacz [jak dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory](add-users-azure-active-directory.md). Aby uzyskać szczegółowe informacje o tym, jak tworzyć grupy i dodawać członków, zobacz [utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md).
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>Aby przypisać licencję do określonego użytkownika
 1. Na **produktów** stronie, wybierz nazwę wersji, którą chcesz przypisać do użytkownika. Na przykład _Azure Active Directory — wersja Premium (Plan 2)_.

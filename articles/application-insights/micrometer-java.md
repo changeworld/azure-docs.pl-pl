@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3bf24a4ed17986ff948a7396e608a51ae38208a5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255316"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076505"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać mikrometryczne z zestawu SDK usługi Azure Application Insights Java
 Mikrometryczne aplikacji środki metryki monitorowania dla aplikacji w oparciu o JVM kodu i pozwala wyeksportować dane do systemów monitorowania Ulubione. Ten artykuł nauczy Cię sposób użycia mikrometryczne za pomocą usługi Application Insights dla aplikacji Spring Boot i aplikacje inne niż platformy Spring Boot.
@@ -27,7 +27,7 @@ Dodaj następujące zależności do pliku pom.xml lub build.gradle:
 * [Szczegółowe informacje aplikacji spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA lub nowszy
 * Mikrometryczne rejestru Azure 1.1.0 lub nowszy
 * [Starsza wersja Spring mikrometryczne](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 lub nowszej (jest to backports, kod autokonfiguracji Spring framework).
-* [Zasób dotycząca usługi Application Insights](app-insights-create-new-resource.md)
+* [Zasób dotycząca usługi Application Insights](../azure-monitor/app/create-new-resource.md )
 
 Kroki
 
@@ -65,7 +65,7 @@ Dodaj następujące zależności do pliku pom.xml lub build.gradle:
 
 * Application Insights Spring boot starter 2.1.2 lub nowszy
 * Azure — platformy spring — rozruchu metryki uruchamiających 2.0.7 lub nowszy  
-* [Zasób usługi Application Insights](app-insights-create-new-resource.md)
+* [Zasób usługi Application Insights](../azure-monitor/app/create-new-resource.md )
 
 Kroki:
 
@@ -126,7 +126,7 @@ Dodaj następujące zależności do pliku pom.xml lub build.gradle:
 * [Usługa Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) lub nowszy
 * [Rejestrowanie filtru sieci Web](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * Mikrometryczne rejestru Azure 1.1.0 lub nowszy
-* [Zasób usługi Application Insights](app-insights-create-new-resource.md)
+* [Zasób usługi Application Insights](../azure-monitor/app/create-new-resource.md )
 
 Kroki:
 

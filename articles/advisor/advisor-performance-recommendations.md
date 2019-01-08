@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 93757c9f589ec1a6d5065d32740831dac922a015
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013240"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079072"
 ---
 # <a name="advisor-performance-recommendations"></a>Zalecenia dotyczące wydajności usługi Advisor
 
@@ -39,11 +39,6 @@ Advisor zapewnia spójne, skonsolidowanego widoku zaleceń dotyczących wszystki
 
 Aby uzyskać więcej informacji na temat funkcji SQL Database Advisor, zobacz [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Poprawa pamięć podręczna systemu Azure dla usługi Redis, wydajność i niezawodność
-
-Klasyfikator identyfikuje pamięć podręczna systemu Azure dla wystąpienia pamięci podręcznej Redis, gdzie mogą być niekorzystny wpływ na wydajność wysokiego użycia pamięci, obciążenie serwera, przepustowość sieci lub dużej liczby połączeń klientów. Advisor udostępnia także najlepsze rozwiązania zalecenia, aby uniknąć potencjalnych problemów. Aby uzyskać więcej informacji na temat usługi Azure Cache zaleceń pamięci podręcznej Redis, zobacz [pamięci podręcznej Azure redis Cache Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
-
-
 ## <a name="improve-app-service-performance-and-reliability"></a>Zwiększ wydajność usługi App Service i niezawodność
 
 Usługa Azure Advisor integruje się poniżej rekomendowane najlepsze rozwiązania dla środowiska usług aplikacji i rozszerzają zakres odnajdywania możliwości platformy. Zalecenia dotyczące usług aplikacji należą:
@@ -52,6 +47,16 @@ Usługa Azure Advisor integruje się poniżej rekomendowane najlepsze rozwiązan
 
 Aby uzyskać więcej informacji o zaleceniach App Services, zobacz [najlepsze rozwiązania dotyczące usługi Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Użycie usługi Managed Disks, aby zapobiegać ograniczaniu przepływności dysków operacji We/Wy
+
+Klasyfikator zidentyfikuje maszyny wirtualne, które należą do konta magazynu, która wkrótce osiągnie docelową wartość skalowalności. Dzięki temu narażone na ograniczenia wydajności operacji We/Wy. Advisor zaleci, że te maszyny wirtualne używać dysków Managed Disks, zapobiegając obniżeniu wydajności.
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Aby zwiększyć wydajność i niezawodność dysków maszyny wirtualnej za pomocą usługi Premium Storage
+
+Advisor ustala maszyn wirtualnych przy użyciu dysków, które mają dużą liczbę transakcjach na swoim koncie magazynu w warstwie standardowa i zaleca się uaktualnienie do dysków w warstwie premium. 
+
+Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia /. Dyski maszyn wirtualnych, które używają kont usługi premium storage umożliwia przechowywanie danych na dyskach półprzewodnikowych (SSD). Aby uzyskać najlepszą wydajność aplikacji firma Microsoft zaleca, poddane migracji wszystkie dyski maszyny wirtualnej, wymagających wysokiej operacje We/Wy do magazynu premium storage.
+
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Usuwanie danych pochylenia tabeli magazynu danych SQL, tak aby zwiększyć wydajność zapytań
 
 Niesymetryczność danych może spowodować wąskie gardła przenoszenia lub zasób zbędnych danych, podczas uruchamiania obciążenia. Klasyfikator wykryje danych dystrybucji pochylanie większy niż 15% i zaleca, aby ponownie dystrybuować swoje dane, a następnie ponownie wybory klucza dystrybucji tabel. Aby dowiedzieć się więcej na temat identyfikowania i usuwania niesymetryczność, zobacz [Rozwiązywanie problemów z niesymetryczności](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
@@ -59,6 +64,14 @@ Niesymetryczność danych może spowodować wąskie gardła przenoszenia lub zas
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Utwórz lub zaktualizuj nieaktualnych tabela statystyk dotyczących tabeli magazynu danych SQL, tak aby zwiększyć wydajność zapytań
 
 Klasyfikator identyfikuje tabele, które nie mają aktualnych [Statystyka tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) i zaleca tworzenia lub aktualizowania tabeli statystyk. Zapytanie, że optymalizator używa aktualnych danych statycznych do szacowania kardynalności lub liczbę wierszy w wyniku zapytania, co umożliwia Optymalizator zapytań utworzyć planu zapytania o wysokiej jakości największą wydajność magazynu danych SQL.
+
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Skalowanie w górę do optymalizacji wykorzystania pamięci podręcznej w tabelach usługi SQL Data Warehouse, aby zwiększyć wydajność zapytań
+
+Usługa Azure Advisor wykrywa, jeśli usługi SQL Data Warehouse ma wysoki pamięć podręczna używana wartość procentowa i niskiej trafień procent. Oznacza to, eksmisji wysokiej pamięci podręcznej, który może mieć wpływ na wydajność usługi SQL Data Warehouse. Klasyfikator sugeruje, skalowanie usługi SQL Data Warehouse, aby upewnić się, że zostało przydzielone wystarczająco dużo pojemności pamięci podręcznej dla danego obciążenia.
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Konwertowanie tabel SQL Data Warehouse na zreplikowanych tabel w celu zwiększenia wydajności zapytań
+
+Klasyfikator identyfikuje tabele, które nie są zreplikowane tabele, ale będą korzystać z konwersji i sugeruje, konwertowania tych tabel. Zalecenia są oparte na rozmiar replikowanej tabeli, liczbą kolumn, typ dystrybucji tabeli i liczba partycji w tabeli SQL Data Warehouse. Dodatkowe heurisitics mogą być udostępniane w zalecenia dla kontekstu. Aby dowiedzieć się więcej o sposobie tego zalecenia, zobacz [zalecenia dotyczące usługi SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migrację konta magazynu usługi Azure Resource Manager do wszystkich najnowszych funkcji platformy Azure
 

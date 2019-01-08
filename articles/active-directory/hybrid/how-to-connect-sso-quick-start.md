@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Bezproblemowego logowania jednokrotnego — szybki start | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Bezproblemowe logowanie jednokrotne — szybki start | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano sposób rozpoczęcia pracy za pomocą usługi Azure Active Directory bezproblemowe logowanie jednokrotne
 services: active-directory
 keywords: Co to jest program Azure AD Connect, instalowanie usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: ed3271eb2fdae1b89013f0145b0e08de49792305
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687337"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062880"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Szybki start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Wdrażanie bezproblemowego logowania jednokrotnego
 
@@ -46,15 +46,15 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
     >[!NOTE]
     >Bezproblemowe logowanie Jednokrotne obsługuje wiele lasów usługi AD, czy istnieją AD relacji zaufania między nimi lub nie.
 
-* **Konfigurowanie poświadczeń administratora domeny**: musisz mieć poświadczenia administratora domeny, dla każdej usługi Active Directory lasu, który:
+* **Konfigurowanie poświadczeń administratora domeny**: Musisz mieć poświadczenia administratora domeny, dla każdej usługi Active Directory lasu, który:
     * Można zsynchronizować z usługą Azure AD za pomocą usługi Azure AD Connect.
     * Zawiera użytkowników, dla których chcesz włączyć bezproblemowego logowania jednokrotnego.
     
-* **Włączenie nowoczesnego uwierzytelniania**: musisz włączyć [nowoczesnego uwierzytelniania](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) w dzierżawie usługi dla tej funkcji do pracy.
+* **Włączenie nowoczesnego uwierzytelniania**: Należy włączyć [nowoczesnego uwierzytelniania](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) w dzierżawie usługi dla tej funkcji do pracy.
 
-* **Użyj najnowszej wersji klientów usługi Office 365**: aby dyskretnej logowania jednokrotnego przy użyciu klientów usługi Office 365 (Outlook, Word, Excel i innych), usługi użytkownicy musieli używać 16.0.8730.xxxx wersji lub nowszej.
+* **Użyj najnowszej wersji klientów usługi Office 365**: Aby dyskretnej logowania jednokrotnego przy użyciu klientów usługi Office 365 (Outlook, Word, Excel i innych), usługi użytkownicy musieli używać 16.0.8730.xxxx wersji lub nowszej.
 
-## <a name="step-2-enable-the-feature"></a>Krok 2: Włączanie funkcji
+## <a name="step-2-enable-the-feature"></a>Krok 2: Włącz tę funkcję
 
 Włącz bezproblemowe logowanie Jednokrotne za pomocą [programu Azure AD Connect](whatis-hybrid-identity.md).
 
@@ -66,11 +66,11 @@ Jeśli wykonujesz nowej instalacji programu Azure AD Connect, wybierz opcję [ni
 >[!NOTE]
 > Opcja będzie dostępna do wyboru tylko wtedy, gdy metoda rejestracji jednokrotnej **synchronizacji skrótów haseł** lub **uwierzytelniania przekazywanego**.
 
-![Usługi Azure AD Connect: Logowanie użytkownika](./media/how-to-connect-sso-quick-start/sso8.png)
+![Program Azure AD Connect: Logowanie użytkowników](./media/how-to-connect-sso-quick-start/sso8.png)
 
 Jeśli masz już instalację programu Azure AD Connect, wybierz opcję **zmiana użytkownika logowania** strony w programie Azure AD Connect, a następnie wybierz pozycję **dalej**. Jeśli używasz wersji Azure AD Connect 1.1.880.0 lub wyższy, **Włącz logowanie jednokrotne** opcja zostanie zaznaczona domyślnie. Jeśli używasz starszej wersji programu Azure AD Connect, wybierz opcję **Włącz logowanie jednokrotne** opcji.
 
-![Azure AD Connect: Zmień logowanie użytkownika](./media/how-to-connect-sso-quick-start/changeusersignin.png)
+![Program Azure AD Connect: Zmiany logowania użytkownika](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Kontynuuj pracę z kreatorem, aż dojdziesz do **Włącz logowanie jednokrotne** strony. Zapewniają, że poświadczenia administratora domeny dla każdej usługi Active Directory lasu, który:
     * Można zsynchronizować z usługą Azure AD za pomocą usługi Azure AD Connect.
@@ -88,16 +88,16 @@ Wykonaj te instrukcje, aby sprawdzić, prawidłowo włączona bezproblemowe logo
 3. Wybierz **programu Azure AD Connect**.
 4. Upewnij się, że **bezproblemowego logowania jednokrotnego** funkcji pojawia się jako **włączone**.
 
-![Witryna Azure portal: okienko program Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
+![Azure Portal: Okienko usługi Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
 > Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. To konto komputera jest wymagany dla funkcja działała. Jeśli używane są architektur Pass--Hash i ograniczania ryzyka kradzieży poświadczeń w Twoim środowisku w środowisku lokalnym, upewnij się, że `AZUREADSSOACC` konto komputera nie znajdą się w kontenerze kwarantanny. Wprowadź odpowiednie zmiany, aby utworzyć konto komputera w kontenerze komputerów. Po bezproblemowe logowanie Jednokrotne zostało pomyślnie włączone w kreatorze program Azure AD Connect, przenieść `AZUREADSSOACC` konta komputera do organizacji jednostki Organizacyjnej gdzie innych kont odbywa się w celu zapewnienia, że nie jest usuwany przypadkowo.
 
-## <a name="step-3-roll-out-the-feature"></a>Krok 3: Wdrażanie tej funkcji
+## <a name="step-3-roll-out-the-feature"></a>Krok 3: Wdrażanie funkcji
 
 Można stopniowo wdrożeniem bezproblemowe logowanie Jednokrotne dla użytkowników wykonując instrukcje podane poniżej. Rozpocznij, dodając następujący adres URL usługi Azure AD do wszystkie lub wybrane ustawienia strefy Intranet użytkowników za pomocą zasad grupy w usłudze Active Directory:
 
-- https://autologon.microsoftazuread-sso.com
+- `https://autologon.microsoftazuread-sso.com`
 
 Ponadto należy włączyć zasadę strefy intranetowej, nosi nazwę **zezwala na aktualizacje na pasku stanu za pomocą skryptu** za pomocą zasad grupy. 
 
@@ -106,7 +106,7 @@ Ponadto należy włączyć zasadę strefy intranetowej, nosi nazwę **zezwala na
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Dlaczego należy zmodyfikować ustawienia strefy Intranet użytkowników?
 
-Domyślnie przeglądarka automatycznie oblicza poprawnej strefy Internet lub Intranet, z określonym adresem URL. Na przykład "http://contoso/"mapuje do strefy Intranet, podczas gdy"http://intranet.contoso.com/" mapuje do strefy Internet (ponieważ jest to adres URL zawiera kropkę). Przeglądarki będzie wysyłał bilety protokołu Kerberos do punktu końcowego w chmurze, takich jak usługa Azure AD adres URL, chyba że dodasz do strefy Intranet w przeglądarce adres URL.
+Domyślnie przeglądarka automatycznie oblicza poprawnej strefy Internet lub Intranet, z określonym adresem URL. Na przykład `http://contoso/` mapuje do strefy Intranet, podczas gdy `http://intranet.contoso.com/` mapuje do strefy Internet (ponieważ jest to adres URL zawiera kropkę). Przeglądarki będzie wysyłał bilety protokołu Kerberos do punktu końcowego w chmurze, takich jak usługa Azure AD adres URL, chyba że dodasz do strefy Intranet w przeglądarce adres URL.
 
 Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkowników:
 
@@ -122,12 +122,12 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
 3. Przejdź do **Konfiguracja użytkownika** > **Szablony administracyjne** > **składników Windows**  >   **Program Internet Explorer** > **internetowy Panel sterowania** > **strony zabezpieczeń**. Następnie wybierz pozycję **strefy Lista przypisywanie witryn do**.
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Włącz zasady, a następnie wprowadź następujące wartości w oknie dialogowym:
-   - **Nazwa wartości**: gdzie bilety protokołu Kerberos są przekazywane adres URL usług Azure AD.
+   - **Nazwa wartości**: Usługa Azure AD adres URL gdzie bilety protokołu Kerberos są przesyłane dalej.
    - **Wartość** (dane): **1** wskazuje strefy intranetowej.
 
     Wynik wygląda następująco:
 
-    Nazwa wartości: https://autologon.microsoftazuread-sso.com
+    Nazwa wartości: `https://autologon.microsoftazuread-sso.com`
   
     Wartość (dane): 1
 
@@ -181,7 +181,7 @@ Mozilla Firefox automatycznie nie korzysta z uwierzytelniania Kerberos. Każdy u
 1. Uruchom przeglądarkę Firefox, a następnie wprowadź `about:config` na pasku adresu. Odrzuć wszelkie powiadomienia, które są wyświetlane.
 2. Wyszukaj **network.negotiate-auth.trusted — identyfikatory URI** preferencji. Ta opcja wyświetla listę zaufanych witryn w przeglądarce Firefox uwierzytelniania Kerberos.
 3. Kliknij prawym przyciskiem myszy i wybierz **Modyfikuj**.
-4. Wprowadź https://autologon.microsoftazuread-sso.com w polu.
+4. Wprowadź `https://autologon.microsoftazuread-sso.com` w polu.
 5. Wybierz **OK** i ponownym otwarciu przeglądarki.
 
 #### <a name="safari-macos"></a>Safari (macOS)
@@ -190,7 +190,7 @@ Upewnij się, że maszyny z systemem macOS jest przyłączony do usługi AD. Ins
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (wszystkie platformy)
 
-Jeśli zastępowano [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) lub [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ustawienia zasad w danym środowisku, upewnij się, sytuacja: dodajesz usługę Azure AD adres URL (https://autologon.microsoftazuread-sso.com) do nich również.
+Jeśli zastępowano [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) lub [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ustawienia zasad w danym środowisku, upewnij się, sytuacja: dodajesz usługę Azure AD adres URL (`https://autologon.microsoftazuread-sso.com`) do nich również.
 
 #### <a name="google-chrome-macos-only"></a>Google Chrome (tylko w systemie macOS)
 
@@ -211,27 +211,27 @@ Aby przetestować funkcję dla określonego użytkownika, upewnij się, że zost
   - Masz [udostępniona funkcja](##step-3-roll-out-the-feature) do tego użytkownika za pomocą zasad grupy.
 
 Aby przetestować scenariusz, w którym użytkownik musi wprowadzić tylko nazwę użytkownika, ale nie hasło:
-   - Zaloguj się do https://myapps.microsoft.com/ w nowej sesji przeglądarki prywatnych.
+   - Zaloguj się do `https://myapps.microsoft.com/` w nowej sesji przeglądarki prywatnych.
 
 Aby przetestować scenariusz, gdzie użytkownik nie musi wprowadzać nazwy użytkownika lub hasło, należy użyć jednej z następujących czynności: 
-   - Zaloguj się do https://myapps.microsoft.com/contoso.onmicrosoft.com w nowej sesji przeglądarki prywatnych. Zastąp *contoso* nazwą Twojej dzierżawy.
-   - Zaloguj się do https://myapps.microsoft.com/contoso.com w nowej sesji przeglądarki prywatnych. Zastąp *contoso.com* zweryfikowanej domeny (nie domeny federacyjnej) w dzierżawie.
+   - Zaloguj się do `https://myapps.microsoft.com/contoso.onmicrosoft.com` w nowej sesji przeglądarki prywatnych. Zastąp *contoso* nazwą Twojej dzierżawy.
+   - Zaloguj się do `https://myapps.microsoft.com/contoso.com` w nowej sesji przeglądarki prywatnych. Zastąp *contoso.com* zweryfikowanej domeny (nie domeny federacyjnej) w dzierżawie.
 
-## <a name="step-5-roll-over-keys"></a>Krok 5: Przerzucić klucze
+## <a name="step-5-roll-over-keys"></a>Krok 5. Przerzucić klucze
 
-W kroku 2 Azure AD Connect tworzy konta komputerów (reprezentowanie usługi Azure AD) w lasach usługi Active Directory na których włączono bezproblemowe logowanie Jednokrotne. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory bezproblemowe logowanie jednokrotne: techniczne](how-to-connect-sso-how-it-works.md).
+W kroku 2 Azure AD Connect tworzy konta komputerów (reprezentowanie usługi Azure AD) w lasach usługi Active Directory na których włączono bezproblemowe logowanie Jednokrotne. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory bezproblemowego logowania jednokrotnego: Rozbudowana technicznie](how-to-connect-sso-how-it-works.md).
 
 >[!IMPORTANT]
 >Klucz odszyfrowywania protokołu Kerberos na koncie komputera, jeśli wyciek, może służyć do generowania bilety protokołu Kerberos dla dowolnego użytkownika w lesie usługi AD. Uczestników złośliwych działań można następnie personifikację logowania usługi Azure AD dla użytkowników, których bezpieczeństwo zostało naruszone. Zdecydowanie zaleca się, że okresowo wdrożysz za pośrednictwem tych kluczy odszyfrowywania protokołu Kerberos — co najmniej raz na 30 dni.
 
-Aby uzyskać instrukcje na temat sposobu przerzucić klucze, zobacz [usługi Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania dotyczące](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Pracujemy nad możliwość wprowadzenia automatyczne wdrożenie za pośrednictwem kluczy.
+Aby uzyskać instrukcje na temat sposobu przerzucić klucze, zobacz [usługi Azure Active Directory bezproblemowego logowania jednokrotnego: Często zadawane pytania dotyczące](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Pracujemy nad możliwość wprowadzenia automatyczne wdrożenie za pośrednictwem kluczy.
 
 >[!IMPORTANT]
 >Nie trzeba wykonać ten krok _natychmiast_ po włączeniu tej funkcji. Przechodzą kluczy odszyfrowywania protokołu Kerberos co najmniej raz na 30 dni.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozbudowana technicznie](how-to-connect-sso-how-it-works.md): zrozumienie sposobu działania funkcji bezproblemowego logowania jednokrotnego.
-- [Często zadawane pytania dotyczące](how-to-connect-sso-faq.md): odpowiedzi na często zadawane pytania dotyczące bezproblemowego logowania jednokrotnego.
+- [Rozbudowana technicznie](how-to-connect-sso-how-it-works.md): Dowiedz się, jak działa funkcja bezproblemowego logowania jednokrotnego.
+- [Często zadawane pytania dotyczące](how-to-connect-sso-faq.md): Uzyskaj odpowiedzi na często zadawane pytania dotyczące bezproblemowego logowania jednokrotnego.
 - [Rozwiązywanie problemów z](tshoot-connect-sso.md): Dowiedz się, jak rozwiązać typowe problemy z funkcją bezproblemowego logowania jednokrotnego.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Użyj Forum usługi Azure Active Directory do pliku sugestie dotyczące nowych funkcji.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Forum usługi Azure Active Directory umożliwia pliku sugestie dotyczące nowych funkcji.

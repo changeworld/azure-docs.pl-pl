@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993821"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074543"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
 
@@ -674,6 +674,10 @@ W języku C# i innych językach .NET, można użyć wzorca wiązania imperatywne
 ## <a name="functionjson-file-schema"></a>Schemat pliku Function.JSON
 
 *Function.json* schemat pliku znajduje się w temacie [ http://json.schemastore.org/function ](http://json.schemastore.org/function).
+
+## <a name="testing-bindings"></a>Testowanie powiązań
+
+Podczas tworzenia funkcji lokalnie, należy przetestować wiązania za pomocą programu Visual Studio 2017 lub Visual Studio Code. Aby dowiedzieć się więcej, zobacz [strategii testowania kodu w usłudze Azure Functions](functions-test-a-function.md). Można również wywołać powiązania protokołu HTTP przy użyciu interfejsów API REST. Aby dowiedzieć się więcej, zobacz [ręcznie uruchomić bez funkcji wyzwalanej przez HTTP](functions-manually-run-non-http.md).
 
 ## <a name="handling-binding-errors"></a>Obsługa błędów powiązań
 

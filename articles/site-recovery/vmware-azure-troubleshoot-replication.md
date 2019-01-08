@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 30f128e75feb149453b642739f57c3a16ade524f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c53dc81da9469c0628adbd3751dc818997fa4d05
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053095"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063682"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -28,7 +28,9 @@ Poniższej liście przedstawiono sposoby można sprawdzić na maszynie źródło
 
 *  W wierszu polecenia na serwerze źródłowym użyj Telnet, aby wykonać polecenie ping do serwera przetwarzania za pośrednictwem portu HTTPS (9443 jest domyślnym portem HTTPS), uruchamiając następujące polecenie. Polecenie sprawdza, czy problemy z połączeniem sieciowym i problemy z tego bloku port zapory.
 
+
    `telnet <process server IP address> <port>`
+
 
    > [!NOTE]
    > Użyj Telnet, aby przetestować łączność. Nie używaj `ping`. Jeśli Telnet nie jest zainstalowany, wykonaj czynności opisane w [zainstalować klienta usługi Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx).

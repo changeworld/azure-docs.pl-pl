@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: twhitney
-ms.openlocfilehash: e6552984fd629810fd5e422c92ef9ee8ecd2b342
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053112"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063832"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
@@ -332,9 +332,9 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ### <a name="configure-cluster-wide-credentials"></a>Skonfiguruj poświadczenia całego klastra
 
-Począwszy od v6.3, usługi Service Fabric Zezwalaj użytkownikowi na konfigurowanie poświadczeń całego klastra, które mogą być używane jako poświadczenia repozytorium domyślne przez aplikacje.
+Począwszy od 6.3 środowisko uruchomieniowe usługi Service Fabric umożliwia skonfigurowanie poświadczeń całego klastra, które mogą być używane jako domyślne poświadczenia repozytorium przez aplikacje.
 
-Możesz mogą włączać i wyłączać funkcję, dodając atrybut "UseDefaultRepositoryCredentials" do ContainerHostPolicies w ApplicationManifest.xml na "true/false" wartość logiczną.
+Można włączyć lub wyłączyć tę funkcję, dodając `UseDefaultRepositoryCredentials` atrybutu `ContainerHostPolicies` w ApplicationManifest.xml z `true` lub `false` wartość.
 
 ```xml
 <ServiceManifestImport>
@@ -348,14 +348,14 @@ Możesz mogą włączać i wyłączać funkcję, dodając atrybut "UseDefaultRep
 </ServiceManifestImport>
 ```
 
-Będzie to poinformować usługę Service Fabric, aby użyć domyślnych poświadczeń repozytorium, które można określić w ClusterManifest sekcji hostingu.  Jeśli UseDefaultRepositoryCredentials jest ustawiony na wartość true, Usługa Service Fabric odczytu teraz spowoduje następujące wartości, w clustermanifest:
+Usługa Service Fabric, następnie używa domyślnych poświadczeń repozytorium, które można określić w ClusterManifest w obszarze `Hosting` sekcji.  Jeśli `UseDefaultRepositoryCredentials` jest `true`, Usługa Service Fabric odczytuje następujące wartości z ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (ciąg)
 * DefaultContainerRepositoryPassword (ciąg)
 * IsDefaultContainerRepositoryPasswordEncrypted (wartość logiczna)
-* DefaultContainerRepositoryPasswordType(string)---Z v6.4 obsługiwane
+* DefaultContainerRepositoryPasswordType (ciąg)---obsługiwane począwszy od 6,4 środowiska uruchomieniowego
 
-Oto przykład elementy, które można dodać wewnątrz sekcji hostingu ClusterManifestTemplate.json. Więcej informacji na temat [jak skonfigurować ustawienia klastra](service-fabric-cluster-fabric-settings.md) i [ jak zaszyfrować hasła](service-fabric-application-secret-management.md)
+Oto przykład elementy, które można dodać wewnątrz `Hosting` sekcji w pliku ClusterManifestTemplate.json. Aby uzyskać więcej informacji, zobacz [ustawienia klastra usługi Azure Service Fabric zmiany](service-fabric-cluster-fabric-settings.md) i [wpisów tajnych aplikacji zarządzania usługi Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
       {
@@ -384,7 +384,6 @@ Oto przykład elementy, które można dodać wewnątrz sekcji hostingu ClusterMa
         ]
       },
 ```
-
 
 ## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
 System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz tryb funkcji Hyper-V. W trybie izolacji procesu wszystkie kontenery działające na tym samym hoście współdzielą jądro z hostem. W trybie izolacji funkcji Hyper-V jądra są odizolowane dla każdego kontenera funkcji Hyper-V i hosta kontenera. Tryb izolacji można określić w elemencie `ContainerHostPolicies` pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Ustawieniem domyślnym jest w trybie izolacji procesu na hostach z systemem Windows Server. Na hostach z systemem Windows 10 jest obsługiwane tylko trybu izolacji funkcji Hyper-V, więc kontener działa w trybie izolacji funkcji Hyper-V, niezależnie od jej ustawień trybu izolacji. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.

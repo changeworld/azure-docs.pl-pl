@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 37f0ba800cca4b096691a8bb6b43eb33a636d833
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ca7d565c020e8ac4510c7a65745a9e052b69551d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284867"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063192"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso — skalowanie migracji na platformę Azure
 
@@ -24,7 +24,7 @@ W tym artykule jest jednym z serii artykułów, które dokumentują sposób fikc
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
+[Artykuł 1: Przegląd](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
 [Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | Contoso przygotowuje swoją infrastrukturę lokalną i jej infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używany dla wszystkich artykułów migracji w serii. | Jest dostępna.
 [Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure](contoso-migration-assessment.md)  | Contoso uruchamia oceny aplikacji rozwiązania SmartHotel360 jej w środowisku lokalnym, działające w programie VMware. Contoso ocenia aplikacji maszyn wirtualnych przy użyciu usługi Azure Migrate bazy danych oraz aplikacji programu SQL Server przy użyciu Data Migration Assistant. | Dostępne
 [Artykuł 4: Ponowne hostowanie aplikacji na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database](contoso-migration-rehost-vm-sql-managed-instance.md) | Firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla swoich aplikacji rozwiązania SmartHotel360 w środowisku lokalnym. Firma Contoso jest migrowana aplikację frontonu maszyn wirtualnych za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso bazy danych aplikacji jest migrowana do wystąpienia zarządzanego Azure SQL Database przy użyciu [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Dostępne   
@@ -32,11 +32,11 @@ W tym artykule jest jednym z serii artykułów, które dokumentują sposób fikc
 [Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w grupie dostępności AlwaysOn programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso przeprowadza migrację aplikacji przy użyciu Site Recovery do migracji maszyn wirtualnych aplikacji i Database Migration Service migrację bazy danych aplikacji do klastra programu SQL Server, który jest chroniony przez grupy dostępności AlwaysOn. | Dostępne
 [Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Contoso zostanie ukończona lift-and-shift migrację swoich aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
 [Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i usługa Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso swoją aplikację osTicket systemu Linux jest migrowana do maszyn wirtualnych platformy Azure przy użyciu usługi Site Recovery. Jej zmigrowaniu bazy danych aplikacji do usługi Azure Database for MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
-[Artykuł 9: Refaktoryzacja aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso wykonuje migrację swoich aplikacji rozwiązania SmartHotel360 na aplikację internetową platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych. | Dostępne    
-[Artykuł 10: Refaktoryzacja aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso przeprowadza migrację swoich aplikacji osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu lokacjach. Aplikacja sieci web jest zintegrowana z usługą GitHub ciągłego dostarczania. Baza danych aplikacji jest migrowana do usługi Azure Database for MySQL — wystąpienia. | Dostępne
-[Artykuł 11: Refaktoryzacja Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
-[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazy danych aplikacji przy użyciu usługi Azure SQL Database. | Dostępne    
-[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne 
+[Artykuł 9: Refaktoryzuj aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso wykonuje migrację swoich aplikacji rozwiązania SmartHotel360 na aplikację internetową platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych. | Dostępne    
+[Artykuł 10: Refaktoryzuj aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso przeprowadza migrację swoich aplikacji osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu lokacjach. Aplikacja sieci web jest zintegrowana z usługą GitHub ciągłego dostarczania. Baza danych aplikacji jest migrowana do usługi Azure Database for MySQL — wystąpienia. | Dostępne
+[Artykuł 11: Refaktoryzuj Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
+[Artykuł 12: Ponowne Ustalanie architektury aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazy danych aplikacji przy użyciu usługi Azure SQL Database. | Dostępne    
+[Artykuł 13: Ponownie skompiluj aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne 
 Artykuł 14: Skalowanie migracji na platformę Azure | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | W tym artykule
 
 ## <a name="business-drivers"></a>Czynniki biznesowe
@@ -44,11 +44,11 @@ Artykuł 14: Skalowanie migracji na platformę Azure | Po wypróbowanie kombinac
 Zespół kierowniczy IT ściśle podjęła współpracę z partnerami biznesowymi, aby zrozumieć, czego chcą osiągnąć za pomocą tej migracji:
 
 - **Adres rozwój**: Contoso rośnie, co powoduje wykorzystanie w systemach lokalnych i infrastruktury.
-- **Zwiększenie wydajności**: Contoso musi usunąć niepotrzebne procedur i usprawniać procesy dla deweloperów i użytkowników. Potrzeby biznesowe IT szybkie i nie odpadów czasu lub pieniądze, w związku z tym dostarczania szybciej na wymagania klientów.
-- **Zwiększenie elastyczności**: Contoso IT musi być w reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany w witrynie marketplace, aby umożliwić sukces w globalnej gospodarki reagować. Nie może pobrać w taki sposób, lub stają się blocker biznesowych.
-- **Skala**: w miarę rozwoju firmy pomyślnie, zespół IT firmy Contoso, musisz podać systemów, które można rozwijać w tym samym tempie.
-- **Poprawa modeli kosztów**: firma Contoso chce zmniejszyć wymogi kapitałowe budżetu IT.  Firma Contoso chce korzystać z możliwości chmury do skalowania i zmniejszyć zapotrzebowanie na drogiego sprzętu.
-- **Niższe koszty licencjonowania**: Contoso chce, aby zminimalizować koszty chmury.
+- **Zwiększenie wydajności**: Firmy Contoso musi usunąć niepotrzebne procedur i usprawniać procesy dla deweloperów i użytkowników. Potrzeby biznesowe IT szybkie i nie odpadów czasu lub pieniądze, w związku z tym dostarczania szybciej na wymagania klientów.
+- **Zwiększenie elastyczności**: Contoso IT trzeba zwiększyć szybkość reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany w witrynie marketplace, aby umożliwić sukces w globalnej gospodarki reagować. Nie może pobrać w taki sposób, lub stają się blocker biznesowych.
+- **Skala**: W miarę rozwoju firmy pomyślnie, zespół IT firmy Contoso, musisz podać systemów, które można rozwijać w tym samym tempie.
+- **Poprawa modeli kosztów**: Firma Contoso chce zmniejszyć wymogi kapitałowe budżetu IT.  Firma Contoso chce korzystać z możliwości chmury do skalowania i zmniejszyć zapotrzebowanie na drogiego sprzętu.
+- **Niższe koszty licencjonowania**: Firma Contoso chce, aby zminimalizować koszty chmury.
 
 
 ## <a name="migration-goals"></a>Cele migracji
@@ -80,16 +80,16 @@ Po planowaniu i konfigurowaniu [infrastruktury platformy Azure](contoso-migratio
 
 Teraz, gdy Contoso zostały przypięte czynniki biznesowe i celów migracji, określa czterowtykowe podejście do procesu migracji:
 
-- **Faza 1 — ocena**: odnajdować bieżące i zorientuj się, czy są one odpowiednie dla migracji na platformę Azure.
-- **Faza 2 — migracja**: przenieść zasoby na platformę Azure. Jak są one przenoszone aplikacji i obiektów na platformie Azure będzie zależała od aplikacji, a co chcą osiągnąć.
-- **Faza 3 — Optymalizacja**: po przeniesieniu zasobów na platformie Azure, firma Contoso potrzebuje poprawić i uprościć ich wydajność i maksymalną wydajność.
-- **Faza 4 — zabezpieczanie & Zarządzaj**: wszystko w miejscu, firma Contoso używa teraz zabezpieczeń platformy Azure i zarządzania zasobami usługi, które pozwalają zarządzać sposobem, zabezpieczanie i Monitoruj swoje aplikacje w chmurze na platformie Azure.
+- **Faza 1 — ocena**: Odnajdywanie zasobów bieżącego i ustalić, czy są one odpowiednie dla migracji na platformę Azure.
+- **Faza 2 — migracja**: Przenieś zasoby na platformie Azure. Jak są one przenoszone aplikacji i obiektów na platformie Azure będzie zależała od aplikacji, a co chcą osiągnąć.
+- **Faza 3 — Optymalizacja**: Po przeniesieniu zasobów na platformie Azure, firma Contoso potrzebuje poprawić i uprościć ich wydajność i maksymalną wydajność.
+- **Faza 4 — Zabezpieczanie i zarządzanie**: Wszystko w miejscu Contoso używa teraz zabezpieczeniom i operacjom zarządzania zasobami platformy Azure i usługi do zarządzania, zabezpieczania i Monitoruj swoje aplikacje w chmurze na platformie Azure.
 
 
 Tych faz nie szeregowego w całej organizacji. Każda część projektu migracji firmy Contoso będzie na różnych etapach procesu oceny i migracji. Optymalizacja, zabezpieczeń i zarządzania będą trwającą wraz z upływem czasu.
 
 
-## <a name="phase-1-assess"></a>Faza 1: oceny
+## <a name="phase-1-assess"></a>Faza 1: Ocena
 
 Contoso dotyczącego proces od wykrywania i oceny aplikacji w środowisku lokalnym, danych i infrastruktury. Oto, co będzie wykonywać firma Contoso:
 
@@ -172,10 +172,10 @@ Usługa Azure Migrate pomaga odnajdywać i oceniać maszyny wirtualne programu V
 1. Odnajdywanie: Odnajdywanie lokalnych maszyn wirtualnych z programu VMware.
     - Usługa Azure Migrate obsługuje odnajdywania z wielu serwerów programu vCenter (szeregowo) i mogą być uruchamiane operacje odnajdywania w oddzielnych projektów usługi Azure Migrate.
     - Usługa Azure Migrate odnajduje za pomocą środków na maszynę Wirtualną VMware z systemem Migrate Collector. Tego samego modułu zbierającego można odnalezienia maszyn wirtualnych na różnych vCenter Server i wysyłania danych do różnych projektów.
-1. Ocena gotowości: oceny, czy maszyny lokalne są odpowiednie na potrzeby działających na platformie Azure. Ocena zawiera:
-    - Zalecenia dotyczące rozmiaru: uzyskiwanie zaleceń dotyczących rozmiarów maszyn wirtualnych platformy Azure, w oparciu o historii wydajności lokalnych maszyn wirtualnych.
-    - Szacowane miesięczne koszty używania: Uzyskaj szacowane koszty uruchamiania lokalnych maszyn na platformie Azure.
-2. Zidentyfikowanie zależności: wizualizacja zależności maszyn lokalnych, aby utworzyć grupy optymalnych maszyn na potrzeby oceny i migracji.
+1. Ocena gotowości: Oceń, czy maszyny lokalne są odpowiednie na potrzeby działających na platformie Azure. Ocena zawiera:
+    - Zalecenia dotyczące rozmiaru: Uzyskiwanie zaleceń dotyczących rozmiarów maszyn wirtualnych platformy Azure, w oparciu o historii wydajności lokalnych maszyn wirtualnych.
+    - Szacowany miesięczny koszt: oblicz szacowane koszty uruchamiania maszyn lokalnych na platformie Azure.
+2. Określenie zależności:  Wizualizacja zależności maszyn lokalnych, aby utworzyć grupy optymalnych maszyn na potrzeby oceny i migracji.
 
 
 ![Azure Migrate](./media/contoso-migration-scale/azure-migrate.png)
@@ -216,7 +216,7 @@ Oprócz usługi DMS firma Contoso ma kilka skryptów, ich użyć do odnalezienia
 
 Istnieje kilka innych narzędzi partnera, które mogą ułatwić firmy Contoso w ocenie w lokalnym środowisku pod kątem migracji do platformy Azure. [Dowiedz się więcej](https://azure.microsoft.com/migration/partners/) o partnerzy migracji platformy Azure.  
 
-## <a name="phase-2-migrate"></a>Faza 2: migracji
+## <a name="phase-2-migrate"></a>Faza 2: Migrate (Migracja)
 
 Wraz z oceną ich pełną firma Contoso potrzebuje do identyfikowania narzędzia do przenoszenia ich aplikacji, danych i infrastruktury na platformie Azure. 
 
@@ -241,8 +241,8 @@ Dane muszą być uwzględnione, szczególnie w przypadku ilości baz danych, kt�
 
 Firma Contoso jest używany przede wszystkim kilka usług platformy Azure i narzędzia do migracji:
 
-- [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview): organizuje odzyskiwanie po awarii oraz migrację lokalnych maszyn wirtualnych na platformie Azure.
-- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview): umożliwia migrowanie lokalnych baz danych, takich jak SQL Server, MySQL i Oracle na platformie Azure.
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview): Organizuje odzyskiwanie po awarii i umożliwia migrowanie lokalnych maszyn wirtualnych na platformie Azure.
+- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview): Umożliwia migrowanie lokalnych baz danych, takich jak SQL Server, MySQL i Oracle na platformie Azure.
 
 
 #### <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -289,9 +289,9 @@ Firma Contoso potrzebuje ustalenie sposobu wdrażania tych składników, w oparc
 --- | ---
 **Maksymalna dziennych zmian** | Serwer pojedynczego procesu może obsługiwać dzienny zmiany szybkości do 2 TB. Ponieważ maszyny Wirtualnej można używać tylko jednego serwera przetwarzania, maksymalny Dzienny współczynnik zmian danych obsługiwanym zreplikowanej maszyny Wirtualnej jest 2 TB.
 **Maksymalna przepływność** | Konto magazynu platformy Azure w warstwie standardowa może obsługiwać maksymalnie 20 000 żądań na sekundę i operacji wejścia/wyjścia na sekundę (IOPS) w replikacji maszyn wirtualnych powinna być w ramach tego limitu. Na przykład jeśli maszyna wirtualna ma dyski 5, a każdy dysk generuje 120 na SEKUNDĘ (8K rozmiar) na maszynie Wirtualnej, następnie będzie w obrębie platformy Azure limit operacji We/Wy dysku 500.<br/><br/> Pamiętaj, że liczba kont magazynu, potrzebne jest taki sam, na maszynie źródłowej łączna liczba operacji We/Wy, podzielona przez 20 000. Replikowanej maszyny mogą należeć tylko do jednego konta magazynu na platformie Azure.
-**Serwer konfiguracji** | Na podstawie szacunku firmy Contoso replikacji 100 = 200 maszyn wirtualnych razem i [określania rozmiaru wymagania dotyczące serwera konfiguracji](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server), Contoso szacowaną potrzeb maszyny serwera konfiguracji w następujący sposób:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięci: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Oprócz wymagania dotyczące rozmiaru Contoso należy upewnij się, że serwer konfiguracji znajduje się optymalnie, w tej samej sieci i segment sieci LAN jako maszyny wirtualne, które będą migrowane.
-**Serwer przetwarzania** | Contoso wdroży autonomiczny serwer dedykowanego procesu o możliwość replikowania maszyn wirtualnych 100 – 200:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięci: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Serwer przetwarzania będzie ciężko i jako takie powinien znajdować się na hoście ESXi, która może obsłużyć We/Wy dysku, ruch sieciowy i procesora CPU wymagane dla replikacji. Firma Contoso będzie wziąć pod uwagę dedykowanego hosta, w tym celu. 
-**Sieć** | Firmy Contoso ma przeglądowi bieżącej infrastruktury sieci VPN typu lokacja lokacja i decyzję o implementacji usługi Azure ExpressRoute. Implementacja znaczenie krytyczne, ponieważ wówczas zmniejszyć czas oczekiwania i zwiększyć przepustowość do regionu wschodnie stany USA 2 Azure podstawowego firmy Contoso.<br/><br/> **Monitorowanie**: Contoso należy uważnie monitorować danych napływających z serwera przetwarzania. Jeśli dane przeciążenia przepustowość sieci, firma Contoso będzie należy wziąć pod uwagę [ograniczanie przepustowości serwera przetwarzania](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+**Serwer konfiguracji** | Na podstawie szacunku firmy Contoso replikacji 100 = 200 maszyn wirtualnych razem i [określania rozmiaru wymagania dotyczące serwera konfiguracji](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-along-with-in-built-process-server), Contoso szacowaną potrzeb maszyny serwera konfiguracji w następujący sposób:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięć: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Oprócz wymagania dotyczące rozmiaru Contoso należy upewnij się, że serwer konfiguracji znajduje się optymalnie, w tej samej sieci i segment sieci LAN jako maszyny wirtualne, które będą migrowane.
+**Serwer przetwarzania** | Contoso wdroży autonomiczny serwer dedykowanego procesu o możliwość replikowania maszyn wirtualnych 100 – 200:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięć: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Serwer przetwarzania będzie ciężko i jako takie powinien znajdować się na hoście ESXi, która może obsłużyć We/Wy dysku, ruch sieciowy i procesora CPU wymagane dla replikacji. Firma Contoso będzie wziąć pod uwagę dedykowanego hosta, w tym celu. 
+**Sieć** | Firmy Contoso ma przeglądowi bieżącej infrastruktury sieci VPN typu lokacja lokacja i decyzję o implementacji usługi Azure ExpressRoute. Implementacja znaczenie krytyczne, ponieważ wówczas zmniejszyć czas oczekiwania i zwiększyć przepustowość do regionu wschodnie stany USA 2 Azure podstawowego firmy Contoso.<br/><br/> **Monitorowanie**: Firma Contoso będzie musiał uważnie monitorować danych napływających z serwera przetwarzania. Jeśli dane przeciążenia przepustowość sieci, firma Contoso będzie należy wziąć pod uwagę [ograniczanie przepustowości serwera przetwarzania](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Magazyn platformy Azure** | W przypadku migracji Contoso musi zidentyfikować właściwego typu i liczbę kont usługi Azure storage.  Usługa Site Recovery replikuje dane maszyny Wirtualnej do usługi Azure storage.<br/><br/> Usługa Site Recovery można replikować na standardowy lub premium (SSD) konta usługi storage.<br/><br/> Aby zdecydować, magazynu, należy przejrzeć Contoso [limity przestrzeni dyskowej](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)i wziąć pod uwagę przewidywanego wzrostu i zwiększone użycie wraz z upływem czasu. Biorąc pod uwagę szybkość i priorytetów migracji, Contoso zdecydował się na użycie kont usługi premium storage.<br/><br/> One utworzysz i ponowne użycie wielu kont magazynu w trakcie migracji.
 Firma Contoso dokonała decyzję, aby korzystać z dysków zarządzanych dla wszystkich maszyn wirtualnych, które są wdrażane na platformie Azure.  Operacje We/Wy wymagane określi, jeśli dyski będzie standardowa (HDD) lub Premium (SSD).<br/>.<br/>
 
@@ -364,7 +364,7 @@ Firma Contoso będzie również korzystać ze skryptów do zlokalizowania nieuż
 Partner narzędzi, takich jak [Hanu](https://hanu.com/insight/) i [Scalr]( https://www.scalr.com/cost-optimization/) nadającego się.
 
 
-## <a name="phase-4-secure--manage"></a>Faza 4 — Zabezpieczenia i zarządzanie nimi
+## <a name="phase-4-secure--manage"></a>Faza 4: Zabezpieczenia i zarządzanie nimi
 
 Na tym etapie firma Contoso używa zasobów platformy Azure zabezpieczeniom i operacjom zarządzania do zarządzania, zabezpieczania i monitorować aplikacje w chmurze na platformie Azure. Wspomniane zasoby pomogą do uruchomienia bezpiecznego i dobrze zarządzanego środowiska podczas korzystania z produktów dostępnych w witrynie Azure portal. Contoso rozpoczyna się korzystać z tych usług podczas migracji i z obsługą hybrydowej platformy Azure jest kontynuowane przy użyciu wielu z nich spójne środowisko pracy w chmurze hybrydowej.
 

@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969934"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063871"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z Amazon Simple Storage Service przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Bieżąca wersja](connector-amazon-simple-storage-service.md)
 
@@ -31,7 +31,7 @@ Można skopiować danych Amazon S3, do dowolnego obsługiwanego magazynu danych 
 W szczególności ten łącznik Amazon S3 obsługuje kopiowania plików jako — jest lub analizowania plików za pomocą [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Ten łącznik Amazon S3 można użyć do kopiowania danych z **dowolnego dostawcy magazynu zgodny S3** np. [usłudze Google Cloud Storage](#copy-from-google-cloud-storage). Określ odpowiedni adres URL usługi w konfiguracji usługi połączonej.
+>Ten łącznik Amazon S3 można użyć do kopiowania danych z **dowolnego dostawcy magazynu zgodny S3** np. [usłudze Google Cloud Storage](connector-google-cloud-storage.md). Określ odpowiedni adres URL usługi w konfiguracji usługi połączonej.
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
@@ -212,35 +212,6 @@ Aby skopiować dane z usługi Amazon S3, należy ustawić typ źródłowego w dz
         }
     }
 ]
-```
-
-## <a name="copy-from-google-cloud-storage"></a>Kopiowanie z usługi Google Cloud Storage
-
-Ponieważ usłudze Google Cloud Storage zapewnia współdziałanie zgodnego z S3, aby skopiować dane z magazynu w chmurze Google do dowolnego, można użyć łącznik Amazon S3 [obsługiwanych magazynów danych ujścia](copy-activity-overview.md#supported-data-stores-and-formats). 
-
-Możesz znaleźć określonego wpisu w usłudze Google Cloud Storage w usłudze ADF tworzenia interfejsu użytkownika łącznika galerii, automatycznie wypełnia adres URL usługi jako `https://storage.googleapis.com`. Aby znaleźć klucz dostępu i klucz tajny, przejdź do **usłudze Google Cloud Storage** > **ustawienia** > **współdziałanie**. Zapoznaj się z tym artykułem od samego początku szczegółowe omówienie korzystania z łącznika S3 do kopiowania danych.
-
-**Przykład połączonej usługi:**
-
-```json
-{
-    "name": "GoogleCloudStorageLinkedService",
-    "properties": {
-        "type": "AmazonS3",
-        "typeProperties": {
-            "accessKeyId": "<access key id>",
-            "secretAccessKey": {
-                "type": "SecureString",
-                "value": "<secret access key>"
-            },
-            "serviceUrl": "https://storage.googleapis.com"
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

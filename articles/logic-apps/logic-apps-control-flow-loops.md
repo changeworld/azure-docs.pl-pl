@@ -3,28 +3,28 @@ title: Dodawanie pętli, które Powtarzanie operacji, lub przetwarzać tablice �
 description: Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 5ba5e5abef4ebdc58c44cbe7f5ba584efe8abfc7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+manager: jeconnoc
+ms.date: 01/05/2019
+ms.topic: article
+ms.openlocfilehash: 728152c8f9e7d4cceb4b1c8165bbf087927f58e8
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233110"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063322"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 
-Aby wykonać iterację tablic w aplikacji logiki, można użyć [pętlę "Foreach"](#foreach-loop) lub [sekwencyjne pętlę "Foreach"](#sequential-foreach-loop). Iteracji dla standardowych pętli "Foreach" Uruchom równolegle, podczas uruchamiania iteracji dla pętli "Foreach" sekwencyjnej, pojedynczo. Uzyskać maksymalną liczbę elementów tablicy, które pętli "Foreach" mogą przetwarzać w przebiegu aplikacji logiki pojedynczego, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
+W celu przetwarzania tablicy w aplikacji logiki, można utworzyć [pętlę "Foreach"](#foreach-loop). Ta pętla powtarza się co najmniej jedną akcję dla każdego elementu w tablicy. Ograniczenia dotyczące liczby elementów tablicy, które wykonuje pętlę "Foreach" mogą przetwarzać, w temacie [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
 
-> [!TIP] 
+Powtarzanie operacji, dopóki nie zostanie spełniony warunek lub stan zmieni się, można utworzyć ["pętlą Until"](#until-loop). Twoja aplikacja logiki działa wszystkich akcji wewnątrz pętli, a następnie sprawdza warunek lub stanu. Jeśli warunek jest spełniony, pętla zatrzymuje się. W przeciwnym razie powtórzeniu pętli. Limity liczby "Do" pętli w aplikacji logiki, uruchamianie, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
+
+> [!TIP]
 > Jeśli masz wyzwalacz, który odbiera tablicy i chcesz uruchomić przepływ pracy dla każdego elementu tablicy, możesz to zrobić *debatch* tablicy przy użyciu [ **SplitOn** wyzwalacza właściwości](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
-  
-Aby powtórzyć działania, dopóki spełniony jest warunek lub niektóre stan został zmieniony, należy użyć ["pętlą Until"](#until-loop). Twoja aplikacja logiki najpierw wykonuje wszystkie akcje wewnątrz pętli, a następnie sprawdza warunek jako ostatni krok. Jeśli warunek jest spełniony, pętla zatrzymuje się. W przeciwnym razie powtórzeniu pętli. Maksymalna liczba "Do" pętli w aplikacji logiki pojedynczego uruchamiania, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,21 +36,31 @@ Aby powtórzyć działania, dopóki spełniony jest warunek lub niektóre stan z
 
 ## <a name="foreach-loop"></a>Pętlę "Foreach"
 
-Akcje należy powtórzyć dla każdego elementu w tablicy, należy użyć pętli "Foreach" w przepływie pracy aplikacji logiki. Może zawierać wiele działań w pętli "Foreach" i można zagnieżdżać pętli "Foreach" wewnątrz siebie nawzajem. Domyślnie cykle w pętlę "Foreach" Standardowa uruchamiane równolegle. Aby uzyskać maksymalną liczbę równoległych cykle tego "Foreach" pętli można uruchomić, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md).
+Pętlę"Foreach" powtarza się co najmniej jedną akcję dla każdego elementu tablicy i działa tylko w przypadku tablic. Liczba iteracji w pętli "Foreach" Uruchom równolegle. Jednak można uruchamiać iteracji jednego naraz, konfigurując [sekwencyjne pętlę "Foreach"](#sequential-foreach-loop). 
 
-> [!NOTE] 
-> Pętlę "Foreach" działa tylko w przypadku tablicy, a następnie użyć działania w pętli `@item()` odwołanie do przetworzenia każdego elementu w tablicy. Jeśli określisz dane, które nie znajduje się w tablicy, przepływ pracy aplikacji logiki nie powiedzie się. 
+Poniżej przedstawiono kilka kwestii, korzystając z pętli "Foreach":
 
-Na przykład ta aplikacja logiki wyśle do Ciebie codzienne podsumowanie z kanału informacyjnego RSS witryny sieci Web. Aplikacja używa pętli "Foreach", która wysyła wiadomość e-mail każdego nowego elementu znaleziono.
+* W zagnieżdżonej pętli iteracji zawsze uruchamiane sekwencyjnie, nie równolegle. Równolegle operacji dla elementów w zagnieżdżonej pętli, należy utworzyć i [wywołać aplikację logiki podrzędnych](../logic-apps/logic-apps-http-endpoint.md).
+
+* Aby uzyskać przewidywalne wyniki operacji na zmiennych w pętlach, Uruchom te pętli sekwencyjnie.
+
+* Akcje w pętli "Foreach" pętli użycia [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
+wyrażenie odwołania do przetworzenia każdego elementu w tablicy. Jeśli określisz dane, które nie znajduje się w tablicy, przepływ pracy aplikacji logiki nie powiedzie się. 
+
+Ta przykładowa aplikacja logiki wysyła codzienne podsumowanie kanału informacyjnego RSS witryny sieci Web. Aplikacja używa pętli "Foreach", która wysyła wiadomość e-mail dla każdego nowego elementu.
 
 1. [Ta przykładowa aplikacja logiki tworzenie](../logic-apps/quickstart-create-first-logic-app-workflow.md) przy użyciu konta Outlook.com lub Office 365 Outlook.
 
 2. Między RSS wyzwalania oraz akcję wysyłania wiadomości e-mail, Dodaj pętlę "Foreach". 
 
-   Aby dodać pętlę między krokami, przesuń wskaźnik nad strzałką znajdującą się, w której chcesz dodać pętli. 
-   Wybierz **znak plus** (**+**) wyświetlany, wybierz **Dodaj dla każdego**.
+   1. Aby dodać pętlę między krokami, wskaźnik myszy nad strzałką znajdującą się między tymi krokami. 
+   Wybierz **znak plus** (**+**), zostanie wyświetlone, następnie wybierz pozycję **Dodaj akcję**.
 
-   ![Dodaj pętlę "Foreach" między krokami](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+      ![Wybierz pozycję "Dodaj akcję"](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+
+   1. W polu wyszukiwania, wybierz **wszystkich**. W polu wyszukiwania wpisz "for each" jako filtr. Z listy akcji wybierz następującą akcję: **Dla każdego — formant**
+
+      ![Dodaj pętlę "For each"](media/logic-apps-control-flow-loops/select-for-each.png)
 
 3. Tworzenie pętli. W obszarze **wybierz dane wyjściowe z poprzednich kroków** po **Dodaj zawartość dynamiczną** zostanie wyświetlona lista, wybierz **linki źródła danych** tablicy, która jest wynikiem wyzwalacz kanału informacyjnego RSS. 
 
@@ -63,7 +73,7 @@ Na przykład ta aplikacja logiki wyśle do Ciebie codzienne podsumowanie z kana�
 
    ![Wybierz tablicy](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
 
-4. Aby wykonać akcję dla każdego elementu tablicy, przeciągnij **Wyślij wiadomość e-mail** akcji do **dla każdego** pętli. 
+4. Aby uruchomić akcję dla każdego elementu tablicy, przeciągnij **Wyślij wiadomość e-mail** akcji do pętli. 
 
    Twoja aplikacja logiki może wyglądać następująco:
 
@@ -79,86 +89,90 @@ Jeśli pracujesz w widoku kodu aplikacji logiki, można zdefiniować `Foreach` p
 
 ``` json
 "actions": {
-    "myForEachLoopName": {
-        "type": "Foreach",
-        "actions": {
-            "Send_an_email": {
-                "type": "ApiConnection",
-                "inputs": {
-                    "body": {
-                        "Body": "@{item()}",
-                        "Subject": "New CNN post @{triggerBody()?['publishDate']}",
-                        "To": "me@contoso.com"
-                    },
-                    "host": {
-                        "api": {
-                            "runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/office365"
-                        },
-                        "connection": {
-                            "name": "@parameters('$connections')['office365']['connectionId']"
-                        }
-                    },
-                    "method": "post",
-                    "path": "/Mail"
-                },
-                "runAfter": {}
-            }
-        },
-        "foreach": "@triggerBody()?['links']",
-        "runAfter": {},
-    }
-},
+   "myForEachLoopName": {
+      "type": "Foreach",
+      "actions": {
+         "Send_an_email": {
+            "type": "ApiConnection",
+            "inputs": {
+               "body": {
+                  "Body": "@{item()}",
+                  "Subject": "New CNN post @{triggerBody()?['publishDate']}",
+                  "To": "me@contoso.com"
+               },
+               "host": {
+                  "api": {
+                     "runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/office365"
+                  },
+                  "connection": {
+                     "name": "@parameters('$connections')['office365']['connectionId']"
+                  }
+               },
+               "method": "post",
+               "path": "/Mail"
+            },
+            "runAfter": {}
+         }
+      },
+      "foreach": "@triggerBody()?['links']",
+      "runAfter": {}
+   }
+}
 ```
 
 <a name="sequential-foreach-loop"></a>
 
-## <a name="foreach-loop-sequential"></a>Pętlę "Foreach": sekwencyjne
+## <a name="foreach-loop-sequential"></a>Pętlę "Foreach": Sekwencyjne
 
-Domyślnie każdy cykl w pętli "Foreach" uruchamia się równolegle dla każdego elementu tablicy. Aby uruchomić każdy cykl po kolei, należy ustawić **sekwencyjnego** opcji w pętlę "Foreach".
+Domyślnie cykle w pętli "Foreach" Uruchom równolegle. Aby uruchomić każdy cykl po kolei, należy ustawić pętli **sekwencyjnego** opcji. Pętli "Foreach" musi działać po kolei po można zagnieżdżać pętli lub zmienne wewnątrz pętli, w których spodziewasz przewidywalne wyniki. 
 
 1. W pętli w prawym górnym rogu wybierz **wielokropek** (**...** ) > **Ustawienia**.
 
    ![W pętli "Foreach" Wybierz "..." > "Ustawienia"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-2. Włącz **sekwencyjnego** ustawienie, wybierz **gotowe**.
+1. Włącz **kontroli współbieżności** ustawienie. Przenieś **stopień równoległości** suwak, aby **1**i wybierz polecenie **gotowe**.
 
-   ![Włącz ustawienie sekwencyjne pętlę "Foreach"](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![Włącz ustawienie "Kontrola współbieżności"](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-Można również ustawić **operationOptions** parametr `Sequential` w definicji JSON aplikacji logiki. Na przykład:
+Jeśli pracujesz z definicji JSON aplikacji logiki, możesz użyć `Sequential` opcji, dodając `operationOptions` parametru, na przykład:
 
 ``` json
 "actions": {
-    "myForEachLoopName": {
-        "type": "Foreach",
-        "actions": {
-            "Send_an_email": {               
-            }
-        },
-        "foreach": "@triggerBody()?['links']",
-        "runAfter": {},
-        "operationOptions": "Sequential"
-    }
-},
+   "myForEachLoopName": {
+      "type": "Foreach",
+      "actions": {
+         "Send_an_email": { }
+      },
+      "foreach": "@triggerBody()?['links']",
+      "runAfter": {},
+      "operationOptions": "Sequential"
+   }
+}
 ```
 
 <a name="until-loop"></a>
 
 ## <a name="until-loop"></a>"Pętlą until"
   
-Aby Powtarzanie operacji, dopóki spełniony jest warunek lub niektóre stan został zmieniony, należy użyć pętli "Do momentu" w przepływie pracy aplikacji logiki. Poniżej przedstawiono niektóre typowe przypadki użycia, w którym można korzystać z pętli "Do momentu":
+Aby powtórzyć działania, dopóki nie zostanie spełniony warunek lub stan zmieni się, należy umieścić te akcje w pętli "Do momentu". Poniżej przedstawiono kilka typowych scenariuszy, w którym można korzystać z pętli "Do momentu":
 
-* Wywołanie punktu końcowego, dopóki nie zostanie wyświetlona odpowiedź, którą chcesz.
-* Utwórz rekord w bazie danych, poczekaj, aż określone pole w tym zatwierdzeniu rekordu i kontynuować przetwarzanie. 
+* Wywołanie punktu końcowego, dopóki nie uzyskasz odpowiedzi, który ma.
 
-Na przykład o 8:00:00 każdego dnia, ta aplikacja logiki zwiększa wartość zmiennej do momentu wartość zmiennej jest równa 10. Następnie aplikacja logiki wysyła wiadomość e-mail, który potwierdza bieżącą wartość. Chociaż w tym przykładzie użyto usługi Office 365 Outlook, można użyć dowolnego dostawcy poczty e-mail obsługiwane przez usługę Logic Apps ([Przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/)). Jeśli korzystasz z innego konta e-mail, ogólne kroki będą takie same, ale interfejs użytkownika może się trochę różnić. 
+* Utwórz rekord w bazie danych. Poczekaj, aż określone pole w tym zatwierdzeniu rekordu. Kontynuować przetwarzanie. 
 
-1. Tworzenia pustej aplikacji logiki. W Projektancie aplikacji logiki, wyszukaj "cykl", a następnie wybierz następujący wyzwalacz: **harmonogram — cyklicznie** 
+Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa wartość zmiennej do momentu wartość zmiennej jest równa 10. Aplikacja logiki wysyła następnie wiadomość e-mail, który potwierdza bieżącą wartość. 
 
-   ![Dodawanie wyzwalacza "Harmonogram — cyklicznie"](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
+> [!NOTE]
+> Te kroki odnoszą się usługi Office 365 Outlook, ale można użyć dowolnego dostawcy poczty e-mail, który obsługuje Logic Apps. 
+> [Sprawdź tę listę łączników](https://docs.microsoft.com/connectors/). Jeśli używasz innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej. 
 
-2. Określ, kiedy wyzwalacza, ustawiając interwał, częstotliwość i godzinę. Aby ustawić godzinę, wybierz **Pokaż opcje zaawansowane**.
+1. Tworzenia pustej aplikacji logiki. W Projektancie aplikacji logiki, w polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "cykl". Z listy wyzwalaczy wybierz następujący wyzwalacz: **Cykl - harmonogramu**
 
-   ![Dodawanie wyzwalacza "Harmonogram — cyklicznie"](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
+   ![Dodawanie wyzwalacza "Harmonogram — cykl"](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
+
+1. Określ, kiedy wyzwalacza, ustawiając interwał, częstotliwość i godzinę. Aby ustawić godzinę, wybierz **Pokaż opcje zaawansowane**.
+
+   ![Skonfiguruj harmonogram cyklu](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
    | Właściwość | Wartość |
    | -------- | ----- |
@@ -167,11 +181,11 @@ Na przykład o 8:00:00 każdego dnia, ta aplikacja logiki zwiększa wartość zm
    | **W tych godzinach** | 8 |
    ||| 
 
-3. W obszarze wyzwalacza wybierz **nowy krok** > **Dodaj akcję**. Wyszukaj "zmienne", a następnie wybierz tę akcję: **zmienne — inicjowane zmiennej**
+1. W obszarze wyzwalacza wybierz **nowy krok**. Wyszukaj "zmienne" i wybierz następującą akcję: **Inicjowanie zmiennej — zmienne**
 
-   ![Dodaj "Zmienne - inicjowane zmiennej" Akcja](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
+   ![Dodawanie akcji "Initialize zmiennej — zmienne"](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
-4. Ustawianie zmiennej następującymi wartościami:
+1. Ustawianie zmiennej następującymi wartościami:
 
    ![Ustawianie właściwości zmiennej](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
@@ -182,27 +196,35 @@ Na przykład o 8:00:00 każdego dnia, ta aplikacja logiki zwiększa wartość zm
    | **Wartość** | 0 | Zmiennej przez wartość początkowa | 
    |||| 
 
-5. W obszarze **inicjowane zmiennej** akcji, wybierz **nowy krok** > **więcej**. Wybierz tę pętlę: **Dodaj instrukcję wykonuj do**
+1. W obszarze **inicjowane zmiennej** akcji, wybierz **nowy krok**. 
 
-   ![Dodaj pętlę "wykonuj, dopóki"](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
+1. W polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "do" i wybierz następującą akcję: **Do momentu — formant**
 
-6. Tworzenie warunku zakończenia pętli, wybierając **Limit** zmiennej i **jest taki sam** operatora. Wprowadź **10** jako wartość porównania.
+   ![Dodawanie "pętli do"](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
+
+1. Tworzenie warunku zakończenia pętli, wybierając **Limit** zmiennej i **jest taki sam** operatora. Wprowadź **10** jako wartość porównania.
 
    ![Tworzenie warunku zakończenia pętli zatrzymywania](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-7. Wewnątrz pętli, wybierz **Dodaj akcję**. Wyszukaj "zmienne", a następnie dodać tę akcję: **zmienne — Zwiększ wartość zmiennej**
+1. Wewnątrz pętli, wybierz **Dodaj akcję**. 
+
+1. W polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "zmienne" i wybierz następującą akcję: **Zwiększ wartość zmiennej — zmienne**
 
    ![Dodawanie akcji dla zmiennej przyrostu o wartości](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-8. Dla **nazwa**, wybierz opcję **Limit** zmiennej. Aby uzyskać **wartość**, wpisz "1". 
+1. Dla **nazwa**, wybierz opcję **Limit** zmiennej. Aby uzyskać **wartość**, wpisz "1". 
 
    ![Zwiększ "Limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-9. W obszarze, ale poza pętlę Dodaj akcję, która wysyła wiadomość e-mail. W razie potrzeby zaloguj się do swojego konta e-mail.
+1. Wybierz poza i w obszarze pętli **nowy krok**. 
+
+1. W polu wyszukiwania, wybierz **wszystkich**. Znajduj i dodawaj akcji, która wysyła wiadomość e-mail, na przykład: 
 
    ![Dodaj akcję, która wysyła wiadomość e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
-10. Ustaw właściwości adresu e-mail. Dodaj **Limit** zmiennej do tematu. W ten sposób można sprawdzić, czy bieżąca wartość zmiennej spełnia określony warunek, na przykład:
+1. W razie potrzeby zaloguj się do swojego konta e-mail.
+
+1. Ustaw adres e-mail właściwości akcji. Dodaj **Limit** zmiennej do tematu. W ten sposób można sprawdzić, czy bieżąca wartość zmiennej spełnia określony warunek, na przykład:
 
     ![Ustawianie właściwości wiadomości e-mail](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
@@ -213,7 +235,7 @@ Na przykład o 8:00:00 każdego dnia, ta aplikacja logiki zwiększa wartość zm
     | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
     |||| 
 
-11. Zapisz aplikację logiki. Aby ręcznie przetestować aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**.
+1. Zapisz aplikację logiki. Aby ręcznie przetestować aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**.
 
     Po logikę zacznie działać, otrzymasz wiadomość e-mail z zawartością, który określiłeś:
 
@@ -225,8 +247,8 @@ Pętlę "Do momentu" ma limity domyślne, które zatrzymać wykonywanie, jeśli 
 
 | Właściwość | Wartość domyślna | Opis | 
 | -------- | ------------- | ----------- | 
-| **Liczba** | 60 | Maksymalna liczba pętli, które Uruchom przed kończy pętli. Wartość domyślna to 60 cykli. | 
-| **limit czasu** | PT1H | Kończy działanie maksymalną ilość czasu, aby uruchomić pętlę przed pętli. Wartość domyślna to 1 godzina i jest określony w formacie ISO 8601. <p>Wartość limitu czasu jest szacowana dla każdego cyklu pętli. Jeśli żadnych działań w pętli trwa dłużej niż limit czasu, nie zatrzymuje bieżącego cyklu, ale na następny cykl i nie uruchomi się, ponieważ nie jest spełniony warunek limit. | 
+| **Liczba** | 60 | Największa liczba pętli, które Uruchom przed kończy pętli. Wartość domyślna to 60 cykli. | 
+| **limit czasu** | PT1H | Kończy działanie większości ilość czasu, aby uruchomić pętlę przed pętli. Wartość domyślna to 1 godzina i jest określony w formacie ISO 8601. <p>Wartość limitu czasu jest szacowana dla każdego cyklu pętli. Jeśli żadnych działań w pętli trwa dłużej niż limit czasu, nie zatrzymuje bieżącego cyklu. Jednak na następny cykl nie zaczyna się, ponieważ nie jest spełniony warunek limit. | 
 |||| 
 
 Aby zmienić te domyślne limity, wybierz **Pokaż opcje zaawansowane** w kształcie akcji pętli.
@@ -239,73 +261,74 @@ Jeśli pracujesz w widoku kodu aplikacji logiki, można zdefiniować `Until` pę
 
 ``` json
 "actions": {
-    "Initialize_variable": {
-        // Definition for initialize variable action
-    },
-    "Send_an_email": {
-        // Definition for send email action
-    },
-    "Until": {
-        "type": "Until",
-        "actions": {
-            "Increment_variable": {
-                "type": "IncrementVariable",
-                "inputs": {
-                    "name": "Limit",
-                    "value": 1
-                },
-                "runAfter": {}
-            }
-        },
-        "expression": "@equals(variables('Limit'), 10)",
-        // To prevent endless loops, an "Until" loop 
-        // includes these default limits that stop the loop. 
-        "limit": { 
-            "count": 60,
-            "timeout": "PT1H"
-        },
-        "runAfter": {
-            "Initialize_variable": [
-                "Succeeded"
-            ]
-        },
-    }
-},
+   "Initialize_variable": {
+      // Definition for initialize variable action
+   },
+   "Send_an_email": {
+      // Definition for send email action
+   },
+   "Until": {
+      "type": "Until",
+      "actions": {
+         "Increment_variable": {
+            "type": "IncrementVariable",
+            "inputs": {
+               "name": "Limit",
+               "value": 1
+            },
+            "runAfter": {}
+         }
+      },
+      "expression": "@equals(variables('Limit'), 10)",
+      // To prevent endless loops, an "Until" loop 
+      // includes these default limits that stop the loop. 
+      "limit": { 
+         "count": 60,
+         "timeout": "PT1H"
+      },
+      "runAfter": {
+         "Initialize_variable": [
+            "Succeeded"
+         ]
+      }
+   }
+}
 ```
 
-W kolejnym przykładzie ta pętla "Do momentu" wywołuje punkt końcowy HTTP, który tworzy zasób i zatrzymuje się wraz z treści odpowiedzi HTTP zwraca stan "Completed". Aby zapobiec nieskończonej pętli, pętla zatrzymuje również Jeśli którykolwiek z tych warunków:
+W tym przykładzie "Do momentu" pętli wywołuje punkt końcowy HTTP, która umożliwia utworzenie zasobu. Pętla zatrzymuje się wraz z treści odpowiedzi HTTP zwraca `Completed` stanu. Aby zapobiec nieskończonej pętli, pętla zatrzymuje również Jeśli którykolwiek z tych warunków:
 
-* Pętla została uruchomiona 10 razy określony przez `count` atrybutu. Wartość domyślna to 60 razy. 
-* Pętla zawiera próbowano uruchomić na dwie godziny, określony przez `timeout` atrybutu w formacie ISO 8601. Wartość domyślna to jedna godzina.
+* Pętla uruchomiono 10 razy określony przez `count` atrybutu. Wartość domyślna to 60 razy. 
+
+* Pętli został uruchomiony przez dwie godziny, określony przez `timeout` atrybutu w formacie ISO 8601. Wartość domyślna to jedna godzina.
   
 ``` json
 "actions": {
-    "myUntilLoopName": {
-        "type": "Until",
-        "actions": {
-            "Create_new_resource": {
-                "type": "Http",
-                "inputs": {
-                    "body": {
-                        "resourceId": "@triggerBody()"
-                    },
-                    "url": "https://domain.com/provisionResource/create-resource",
-                    "body": {
-                        "resourceId": "@triggerBody()"
-                    }
-                },
-                "runAfter": {},
-                "type": "ApiConnection"
-            }
-        },
-        "expression": "@equals(triggerBody(), 'Completed')",
-        "limit": {
-            "count": 10,
-            "timeout": "PT2H"
-        },
-        "runAfter": {}
-    }
-},
+   "myUntilLoopName": {
+      "type": "Until",
+      "actions": {
+         "Create_new_resource": {
+            "type": "Http",
+            "inputs": {
+               "body": {
+                  "resourceId": "@triggerBody()"
+               },
+               "url": "https://domain.com/provisionResource/create-resource",
+               "body": {
+                  "resourceId": "@triggerBody()"
+               }
+            },
+            "runAfter": {},
+            "type": "ApiConnection"
+         }
+      },
+      "expression": "@equals(triggerBody(), 'Completed')",
+      "limit": {
+         "count": 10,
+         "timeout": "PT2H"
+      },
+      "runAfter": {}
+   }
+}
 ```
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej

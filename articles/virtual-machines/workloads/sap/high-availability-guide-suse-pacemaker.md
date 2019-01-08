@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076359"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074380"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -483,12 +483,12 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
-1. Przejdź do strony <https://portal.azure.com>
+1. Przejdź do < https\://portal.azure.com >
 1. Otwórz blok usługi Azure Active Directory  
    Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
 1. Kliknij przycisk rejestracje aplikacji
 1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http://localhost) i kliknij przycisk Utwórz
+1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http\://localhost) i kliknij przycisk Utwórz
 1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
 1. Wybierz nową aplikację, a następnie kliknij przycisk kluczy na karcie Ustawienia
 1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk Zapisz
@@ -525,7 +525,7 @@ Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Tw
 
 Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
 
-1. Przejdź do strony https://portal.azure.com
+1. Przejdź do https\://portal.azure.com
 1. Otwieranie bloku wszystkie zasoby
 1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
 1. Kliknij przycisk kontroli dostępu (IAM)

@@ -10,20 +10,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: 17fb8a82709e7c0c7353b70f7731895889167a79
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cafae6d71401bc44813b2e366f8e72f7b806236b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873958"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062779"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Python w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 ## <a name="python-and-api-version-profiles"></a>Profile wersji języka Python i interfejsu API
 
@@ -31,95 +31,87 @@ Zestaw SDK języka Python obsługuje profilami wersji interfejsu API pod kątem 
 
 1. **latest**  
     Profil jest przeznaczony dla najnowszej wersji interfejsu API dla wszystkich dostawców usług na platformie Azure.
-2.  **2017-03-09-profile**  
-    **2017-03-09-profile**  
-    Profil jest przeznaczony dla wersji interfejsu API dostawcy zasobów, obsługiwane przez usługę Azure Stack.
+2. **2017-03-09-profile**  
+   **2017-03-09-profile**  
+   Profil jest przeznaczony dla wersji interfejsu API dostawcy zasobów, obsługiwane przez usługę Azure Stack.
 
-    Aby uzyskać więcej informacji o profilach interfejsu API i usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
+   Aby uzyskać więcej informacji o profilach interfejsu API i usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
 
-## <a name="install-azure-python-sdk"></a>Instalowanie zestawu Azure Python SDK
+## <a name="install-the-azure-python-sdk"></a>Instalowanie zestawu Azure Python SDK
 
-1.  Zainstaluj oprogramowanie Git z [oficjalna witryna](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-2.  Aby uzyskać instrukcje dotyczące instalowania zestawu SDK języka Python, zobacz [platformy Azure dla deweloperów języka Python](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python).
-3.  Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji ma być używany w dalszej części. Aby uzyskać instrukcje utworzyć subskrypcję, zobacz [Tworzenie subskrypcji ofert w usłudze Azure Stack](../azure-stack-subscribe-plan-provision-vm.md). 
-4.  Tworzenie jednostki usługi, a następnie zapisz jego identyfikator i klucz tajny. Aby uzyskać instrukcje, aby utworzyć jednostkę usługi dla usługi Azure Stack, zobacz [zapewniają dostęp aplikacji do usługi Azure Stack](../azure-stack-create-service-principals.md). 
-5.  Upewnij się, że jednostki usługi rola właściciel/Współautor subskrypcji. Aby uzyskać instrukcje dotyczące sposobu przypisywania roli do jednostki usługi, zobacz [zapewniają dostęp aplikacji do usługi Azure Stack](../azure-stack-create-service-principals.md).
+1. Zainstaluj oprogramowanie Git z [oficjalna witryna](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+2. Aby uzyskać instrukcje dotyczące instalowania zestawu SDK języka Python, zobacz [platformy Azure dla deweloperów języka Python](/python/azure/python-sdk-azure-install?view=azure-python).
+3. Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji do użycia w przyszłości. Aby uzyskać instrukcje dotyczące tworzenia subskrypcji, zobacz [Tworzenie subskrypcji ofert w usłudze Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
+4. Tworzenie jednostki usługi, a następnie zapisz jego identyfikator i klucz tajny. Aby uzyskać instrukcje dotyczące sposobu tworzenia jednostki usługi dla usługi Azure Stack, zobacz [zapewniają dostęp aplikacji do usługi Azure Stack](../azure-stack-create-service-principals.md).
+5. Upewnij się, że jednostki usługi rola właściciel/Współautor subskrypcji. Aby uzyskać instrukcje dotyczące sposobu przypisywania roli do jednostki usługi, zobacz [zapewniają dostęp aplikacji do usługi Azure Stack](../azure-stack-create-service-principals.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było używać zestawu Azure SDK dla języka Python z usługą Azure Stack, należy podać następujące wartości, a następnie ustaw wartości zmiennych środowiskowych. Zapoznaj się z instrukcjami pod tabelą systemu operacyjnego na temat ustawiania zmiennych środowiskowych. 
+Aby można było używać zestawu Azure Python SDK przy użyciu usługi Azure Stack, należy podać następujące wartości, a następnie ustaw wartości zmiennych środowiskowych. Zapoznaj się z instrukcjami pod tabelą systemu operacyjnego na temat ustawiania zmiennych środowiskowych.
 
 | Wartość | Zmienne środowiskowe | Opis |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | Identyfikator dzierżawy | AZURE_TENANT_ID | Zalety usługi Azure Stack [identyfikator dzierżawy](../azure-stack-identity-overview.md). |
-| Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji niniejszego dokumentu. |
+| Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji tego artykułu. |
 | Identyfikator subskrypcji | AZURE_SUBSCRIPTION_ID | [Identyfikator subskrypcji](../azure-stack-plan-offer-quota-overview.md#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
-| Wpis tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji nazwy głównej usługi zapisane podczas tworzenia nazwy głównej usługi. |
+| Wpis tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji jednostki usługi zapisane podczas tworzenia nazwy głównej usługi. |
 | Punkt końcowy usługi Resource Manager | ARM_ENDPOINT | Zobacz [punktu końcowego Menedżera zasobów usługi Azure Stack](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 
+## <a name="python-samples-for-azure-stack"></a>Przykłady w języku Python dla usługi Azure Stack
 
-## <a name="python-samples-for-azure-stack"></a>Przykłady w języku Python dla usługi Azure Stack 
-
-Poniższe przykłady kodu można użyć do wykonywania typowych zadań zarządzania dla maszyn wirtualnych w usługi Azure Stack.
-
-Przykłady kodu pokazują, aby:
+Poniższe przykłady kodu można użyć do wykonywania typowych zadań zarządzania dla maszyn wirtualnych w usługi Azure Stack. Przykłady kodu pokazują, aby:
 
 - Tworzenie maszyn wirtualnych:
-    - Utwórz maszynę wirtualną z systemem Linux
-    - Tworzenie maszyny wirtualnej systemu Windows
+  - Utwórz maszynę wirtualną z systemem Linux
+  - Tworzenie maszyny wirtualnej systemu Windows
 - Zaktualizuj maszynę wirtualną:
-    - Rozwiń dysk
-    - Tagowanie maszyny wirtualnej
-    - Dołączanie dysków danych
-    - Odłączanie dysków danych
+  - Rozwiń dysk
+  - Tagowanie maszyny wirtualnej
+  - Dołączanie dysków danych
+  - Odłączanie dysków danych
 - Działanie maszyny wirtualnej:
-    - Uruchom maszynę wirtualną
-    - Zatrzymaj maszynę wirtualną
-    - Uruchom ponownie maszynę wirtualną
+  - Uruchom maszynę wirtualną
+  - Zatrzymaj maszynę wirtualną
+  - Uruchom ponownie maszynę wirtualną
 - Lista maszyn wirtualnych
 - Usuń maszynę wirtualną
 
-Aby przejrzeć kod do wykonywania tych operacji, zapoznaj się z **run_example()** funkcji w skrypcie języka Python **Hybrid/unmanaged-disks/example.py** w repozytorium GitHub [ wirtualne maszyn python-w zarządzaniu](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88).
+Aby przejrzeć kod, który wykonuje te operacje, zobacz **run_example()** funkcji w skrypcie języka Python **Hybrid/unmanaged-disks/example.py** w repozytorium GitHub [ wirtualne maszyn python-w zarządzaniu](https://github.com/Azure-Samples/virtual-machines-python-manage).
 
-Każda operacja jest wyraźnie oznaczony komentarz i funkcję drukowania.
-Przykłady niekoniecznie w kolejności przedstawionej w powyższej listy.
-
+Każda operacja jest wyraźnie oznaczony komentarz i funkcję drukowania. Przykłady niekoniecznie w kolejności przedstawionej na tej liście.
 
 ## <a name="run-the-python-sample"></a>Uruchom aplikację przykładową języka Python
 
-1.  Jeśli nie masz jeszcze, [zainstaluj język Python](https://www.python.org/downloads/).
+1. Jeśli jeszcze tego nie zrobiono, [zainstaluj język Python](https://www.python.org/downloads/). W tym przykładzie (i zestawu SDK) jest zgodna z języka Python 2.7, 3.4, 3.5 i 3.6.
 
-    W tym przykładzie (i zestawu SDK) jest zgodna z języka Python 2.7, 3.4, 3.5 i 3.6.
+2. Ogólne zalecenia dotyczące programowania w języku Python jest środowisko wirtualne. Aby uzyskać więcej informacji, zobacz [dokumentace Pro Python](https://docs.python.org/3/tutorial/venv.html).
 
-2.  Ogólne zalecenia dotyczące programowania w języku Python jest środowisko wirtualne. 
-    Aby uzyskać więcej informacji zobacz https://docs.python.org/3/tutorial/venv.html
-    
-    Zainstaluj i zainicjuj środowisko wirtualne z modułem "venv" na środowisku Python 3 (należy zainstalować [virtualenv](https://pypi.python.org/pypi/virtualenv) for Python 2.7):
+3. Zainstaluj i zainicjuj środowisko wirtualne z modułem "venv" na środowisku Python 3 (należy zainstalować [virtualenv](https://pypi.python.org/pypi/virtualenv) for Python 2.7):
 
-    ````bash
+    ```bash
     python -m venv mytestenv # Might be "python3" or "py -3.6" depending on your Python installation
     cd mytestenv
     source bin/activate      # Linux shell (Bash, ZSH, etc.) only
     ./scripts/activate       # PowerShell only
     ./scripts/activate.bat   # Windows CMD only
-    ````
+    ```
 
-3.  Sklonuj repozytorium.
+4. Sklonuj repozytorium:
 
-    ````bash
+    ```bash
     git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
-    ````
+    ```
 
-4.  Instalowanie zależności przy użyciu narzędzia pip.
+5. Instalowanie zależności przy użyciu narzędzia pip:
 
-    ````bash
+    ```bash
     cd virtual-machines-python-manage\Hybrid
     pip install -r requirements.txt
-    ````
+    ```
 
-5.  Tworzenie [nazwy głównej usługi](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) do pracy z usługą Azure Stack. Upewnij się, Twoja jednostka usługi ma [roli właściciel/Współautor](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) w ramach Twojej subskrypcji.
+6. Tworzenie [nazwy głównej usługi](../azure-stack-create-service-principals.md) do pracy z usługą Azure Stack. Upewnij się, Twoja jednostka usługi ma [roli właściciel/Współautor](../azure-stack-create-service-principals.md#assign-a-role) w ramach Twojej subskrypcji.
 
-6.  Ustaw następujące zmienne i wyeksportować te zmienne środowiskowe w bieżącej powłoce. 
+7. Ustaw następujące zmienne i wyeksportować te zmienne środowiskowe w bieżącej powłoce:
 
     ```bash
     export AZURE_TENANT_ID={your tenant id}
@@ -129,20 +121,17 @@ Przykłady niekoniecznie w kolejności przedstawionej w powyższej listy.
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  Aby można było uruchomić ten przykład, Ubuntu 16.04-LTS i obrazy WindowsServer-2012-R2-Datacenter musi być obecny w witrynie marketplace usługi Azure Stack. Mogą to być albo [pobrany z platformy Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) lub [dodane do repozytorium obrazów platformy](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+8. Aby można było uruchomić ten przykład, Ubuntu 16.04-LTS i obrazy WindowsServer-2012-R2-Datacenter musi być obecny w witrynie marketplace usługi Azure Stack. Mogą to być albo [pobrany z platformy Azure](../azure-stack-download-azure-marketplace-item.md), lub dodać do [repozytorium obrazów platformy](../azure-stack-add-vm-image.md).
 
-8. Uruchom przykład.
+9. Uruchom przykład:
 
-    ```
+    ```python
     python unmanaged-disks\example.py
     ```
 
 ## <a name="notes"></a>Uwagi
 
-Być może uznasz, że próba pobrania dysku systemu operacyjnego maszyny Wirtualnej przy użyciu `virtual_machine.storage_profile.os_disk`.
-W niektórych przypadkach może to wykonywać co ma, ale należy pamiętać, że zapewnia `OSDisk` obiektu.
-Aby można było zaktualizować rozmiar dysku systemu operacyjnego jako `example.py` należy nie `OSDisk` obiektu, ale `Disk` obiektu.
-`example.py` pobiera `Disk` obiektu następującym kodem:
+Być może uznasz, że próba pobrania dysku systemu operacyjnego maszyny Wirtualnej przy użyciu `virtual_machine.storage_profile.os_disk`. W niektórych przypadkach może to wykonywać co ma, ale należy pamiętać, że zapewnia **OSDisk** obiektu. Aby można było zaktualizować rozmiar dysku systemu operacyjnego, jako `example.py` tak, możesz **dysku** obiektu nie **OSDisk** obiektu. `example.py` pobiera **dysku** obiektu z następującymi właściwościami:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name

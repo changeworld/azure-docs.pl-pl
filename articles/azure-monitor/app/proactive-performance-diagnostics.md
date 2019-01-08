@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: de28bce852d00900bee19b2fa4d7e4e39d050b4d
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1db4f4be7ab883e6be52b52bd93a43468829bed5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054524"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076629"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -80,7 +80,7 @@ Wiadomości e-mail o anomaliach wydajności wykrywania inteligentnego mogą zawi
 
   * Jeszcze nie ale możesz:
     * [Konfigurowanie alertów](../../azure-monitor/app/alerts.md) , poinformować Cię, gdy Metryka przekracza próg.
-    * [Eksportowanie telemetrii](../../azure-monitor/app/export-telemetry.md) do [bazy danych](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi Power BI](../../application-insights/app-insights-export-power-bi.md), gdzie można analizować je samodzielnie.
+    * [Eksportowanie telemetrii](../../azure-monitor/app/export-telemetry.md) do [bazy danych](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi Power BI](../../azure-monitor/app/export-power-bi.md ), gdzie można analizować je samodzielnie.
 * *Jak często jest wykonywana analiza*
 
   * Firma Microsoft analizy Codzienne uruchamianie WE dane telemetryczne z poprzedniego dnia (pełny dzień w strefie czasowej UTC).

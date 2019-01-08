@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 79d9ab603b8548269647b7922c6eb01dcc228c4c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1a1038bec66cd90e2cd0cbc8b125857403317d89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019592"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078256"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
@@ -41,11 +41,11 @@ Dostępne są dodatkowe informacje dotyczące obrazów systemu RHEL na platformi
 
 * Dostęp do RHUI hostowanymi na platformie Azure jest ograniczona do maszyn wirtualnych w ramach [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Jeśli jesteś pośredniczenie cały ruch maszyny Wirtualnej za pomocą infrastruktury sieci w środowisku lokalnym, może być konieczne skonfigurować trasy zdefiniowane przez użytkownika, dostęp do usługi RHUI Azure maszyn wirtualnych PAYG systemu RHEL.
 
-### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEl EUS i blokowanie wersji maszyn wirtualnych systemu RHEL
+### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS i blokowanie wersji maszyn wirtualnych systemu RHEL
 Niektórzy klienci mogą chcieć zablokować RHEL maszyn wirtualnych do niektórych wersji pomocniczej systemu RHEL. Możesz wersji blokady do określonej wersji pomocniczej maszyny Wirtualnej systemu RHEL, aktualizując repozytoriów, aby wskazywał repozytoriów wsparcia aktualizacji. Użyj poniższych instrukcji, aby zablokować maszyny Wirtualnej z systemem RHEL w konkretnej wersji pomocniczej:
 
 >[!NOTE]
-> Dotyczy to tylko systemu RHEL 7.2 7.5
+> Dotyczy to tylko dla wersji systemu RHEL, dla których EUS jest dostępna. W momencie pisania tego dokumentu w tym systemu RHEL 7.2 7.6. Szczegółowe informacje są dostępne pod adresem [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.
 
 1. Wyłącz EUS innych repozytoriów:
     ```bash

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 5693307f9d032ad544a44eabd19126700c5a4099
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e23173b006fcc83f0e4b30b59a65e772b68a612d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407165"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062013"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów magistrali usług przy użyciu szablonów usługi Azure Resource Manager
 
@@ -233,7 +233,7 @@ Do uruchomienia [pełną](../azure-resource-manager/deployment-modes.md) wdroże
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-### <a name="verify-the-deployment"></a>Weryfikacja wdrożenia
+### <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 Jeśli zasoby zostały pomyślnie wdrożone, zostanie wyświetlone podsumowanie wdrożenia w oknie programu PowerShell:
 
 ```powershell
@@ -258,6 +258,7 @@ Teraz wiesz, podstawowych przepływów pracy i polecenia do wdrożenia szablonu 
 * [Omówienie usługi Azure Resource Manager][Azure Resource Manager overview]
 * [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell][Deploy resources with Azure Resource Manager templates]
 * [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Typy zasobów elementu Microsoft.ServiceBus](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md

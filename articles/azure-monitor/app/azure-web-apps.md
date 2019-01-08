@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie wydajności w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Monitorowanie wydajności aplikacji dla aplikacji internetowych platformy Azure. Udostępnianie wykresów czasu ładowania i odpowiedzi oraz informacji o zależnościach oraz ustawianie alertów dotyczących wydajności.
+title: Monitorowanie wydajności usługi aplikacji Azure | Dokumentacja firmy Microsoft
+description: Monitorowanie wydajności aplikacji dla usług Azure app services. Udostępnianie wykresów czasu ładowania i odpowiedzi oraz informacji o zależnościach oraz ustawianie alertów dotyczących wydajności.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96a7b775ec051f3511a179ebd4e879f50b9af32
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3e027b92114bdf8cebf6e6bf239ebd9beb4943d6
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019644"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073343"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności w usłudze Azure App Service
 W [witryny Azure Portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności aplikacji dla aplikacji sieci web, mobilnych zaplecza i aplikacji API apps w [usługi Azure App Service](../../app-service/overview.md). [Usługa Azure Application Insights](../../application-insights/app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
@@ -25,20 +25,20 @@ W [witryny Azure Portal](https://portal.azure.com) możesz skonfigurować monito
 ## <a name="run-time-or-build-time"></a>W czasie wykonywania lub czasie kompilacji
 Możesz skonfigurować monitorowanie, instrumentując aplikację na jeden z dwóch sposobów:
 
-* **Czas wykonywania** — możesz wybrać rozszerzenie monitorowania wydajności, gdy aplikacja internetowa już działa. Nie trzeba ponownie kompilować ani instalować aplikacji. Uzyskujesz standardowy zestaw pakietów, które monitorują czasy odpowiedzi, współczynniki sukcesu, wyjątki, zależności itd. 
+* **Czasu wykonywania** — możesz wybrać rozszerzenie monitorowania, gdy usługi app service jest już aktywna wydajności. Nie trzeba ponownie kompilować ani instalować aplikacji. Uzyskujesz standardowy zestaw pakietów, które monitorują czasy odpowiedzi, współczynniki sukcesu, wyjątki, zależności itd. 
 * **Czas kompilacji** — możesz zainstalować pakiet w aplikacji podczas programowania. Ta opcja jest bardziej wszechstronna. Oprócz tych samych pakietów standardowych możesz napisać kod w celu dostosowania telemetrii lub wysłania własnych danych telemetrii. Możesz rejestrować określone działania lub zdarzenia zgodnie z semantyką domeny aplikacji. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Instrumentacja w czasie wykonywania za pomocą usługi Application Insights
-Jeśli już masz uruchomioną aplikację internetową na platformie Azure, otrzymujesz pewne informacje monitorowania: żądania i współczynniki błędów. Dodaj usługę Application Insights, aby uzyskać więcej informacji, na przykład czasy odpowiedzi, monitorowanie wywołań dla zależności, inteligentne wykrywanie i zaawansowany język zapytań usługi Log Analytics. 
+Jeśli korzystasz już z usługi app service na platformie Azure, otrzymujesz pewne informacje monitorowania: żądania i współczynniki błędów. Dodaj usługę Application Insights, aby uzyskać więcej informacji, na przykład czasy odpowiedzi, monitorowanie wywołań dla zależności, inteligentne wykrywanie i zaawansowany język zapytań usługi Log Analytics. 
 
-1. **Wybierz usługę Application Insights** w Panelu sterowania platformy Azure dla aplikacji internetowej.
+1. **Wybierz usługę Application Insights** w Panelu sterowania platformy Azure dla usługi app service.
 
     ![W obszarze Ustawienia wybierz pozycję Application Insights](./media/azure-web-apps/settings-app-insights.png)
 
    * O ile nie jest już skonfigurowany zasób usługi Application Insights dla tej aplikacji, należy wybrać opcję utworzenia nowego zasobu. 
 
     > [!NOTE]
-    > Po kliknięciu **OK** do utworzenia nowego zasobu, zostanie wyświetlony monit do **Zastosuj ustawienia monitorowania**. Wybieranie **Kontynuuj** połączy nowy zasób usługi Application Insights do aplikacji sieci web, wykonując będzie również **wyzwolić ponowne uruchomienie aplikacji sieci web**. 
+    > Po kliknięciu **OK** do utworzenia nowego zasobu, zostanie wyświetlony monit do **Zastosuj ustawienia monitorowania**. Wybieranie **Kontynuuj** połączy nowy zasób usługi Application Insights do usługi app service, wykonując będzie również **wyzwolić ponowne uruchomienie usługi app service**. 
 
     ![Instrumentacja aplikacji internetowej](./media/azure-web-apps/create-resource.png)
 
@@ -46,7 +46,7 @@ Jeśli już masz uruchomioną aplikację internetową na platformie Azure, otrzy
 
     ![Wybierz opcje dla danej platformy](./media/azure-web-apps/choose-options.png)
 
-3. **Zastosuj instrumentację aplikacji internetowej** po zainstalowaniu usługi Application Insights.
+3. **Instrumentacja usługi app service** po zainstalowaniu usługi Application Insights.
 
    **Włącz monitorowanie po stronie klienta** dla telemetrii widoku strony i użytkownika.
 
@@ -95,6 +95,17 @@ Usługa Application Insights może zapewnić bardziej szczegółową telemetrię
 ## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED powoduje, że niekompletne odpowiedzi HTML w aplikacji sieci web .NET CORE.
+
+Włączenie języka Javascript przy użyciu usług App Services może spowodować odpowiedzi html na obcięte.
+
+- Obejście 1: Określ ustawienie aplikacji APPINSIGHTS_JAVASCRIPT_ENABLED na wartość false lub całkowicie usunąć i ponownie uruchom
+- Obejście 2: Dodawanie zestawu sdk przy użyciu kodu i usuń rozszerzenie (Profiler i Snapshot debugger nie będzie w tej konfiguracji)
+
+Śledzimy ten problem [tutaj](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Uruchom profilera aplikacji na żywo](../../azure-monitor/app/profiler.md).

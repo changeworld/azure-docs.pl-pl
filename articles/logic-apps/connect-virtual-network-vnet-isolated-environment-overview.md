@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845199"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061027"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów sieci wirtualnej platformy Azure z usługi Azure Logic Apps za pomocą środowiska usług integracji (ISEs)
 
@@ -33,7 +33,7 @@ W tym omówieniu opisano, jak ISE umożliwia aplikacji usługi logic apps i kont
 
 ## <a name="isolated-versus-global"></a>Odizolowane w porównaniu z globalnego
 
-Po utworzeniu środowiska zintegrowana usługa (ISE) na platformie Azure, wybierz sieć wirtualną platformy Azure gdzie Twoje *wstrzyknąć* środowiska. Platforma Azure wdroży wystąpieniem prywatnym usługi Logic Apps do sieci wirtualnej. Ta akcja powoduje utworzenie środowiska izolowanego, na którym można tworzyć i aplikacje logiki są uruchamiane na dedykowanych zasobów. Podczas tworzenia aplikacji logiki, możesz wybrać tego środowiska jako lokalizacja Twojej aplikacji, co umożliwia aplikacji logiki bezpośredni dostęp do zasobów w sieci wirtualnej. 
+Po utworzeniu środowiska zintegrowana usługa (ISE) na platformie Azure wybierz sieci wirtualnej platformy Azure, której chcesz *wstrzyknąć* Twojego środowiska ISE. Platforma Azure wdroży wystąpieniem prywatnym usługi Logic Apps do sieci wirtualnej. Ta akcja powoduje utworzenie środowiska izolowanego, na którym można tworzyć i aplikacje logiki są uruchamiane na dedykowanych zasobów. Podczas tworzenia aplikacji logiki, możesz wybrać tego środowiska jako lokalizacja Twojej aplikacji, co umożliwia aplikacji logiki bezpośredni dostęp do zasobów w sieci wirtualnej. 
 
 Logic apps w środowisku ISE Podaj tego samego środowiska użytkowników i możliwości podobne do tych jako globalne usługi Logic Apps. Nie tylko można użyć tych samych wbudowanych akcji i łączników usługi Logic Apps globalnych, ale możesz również użyć łączników specyficzne dla środowiska ISE. Na przykład poniżej przedstawiono niektóre łączniki standardowe, które oferują wersje, które są uruchamiane w środowisku ISE:
  

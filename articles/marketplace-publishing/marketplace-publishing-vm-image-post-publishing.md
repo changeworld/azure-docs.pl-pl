@@ -3,7 +3,7 @@ title: Zarządzanie obraz maszyny wirtualnej w witrynie Azure Marketplace | Doku
 description: Szczegółowy przewodnik na temat zarządzania obraz maszyny wirtualnej w witrynie Azure Marketplace po początkowej publikacji
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
@@ -14,28 +14,29 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7aea357c22a928d8af96791bf9cb4bd3c94f37b4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252976"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077066"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Przewodnik poprodukcyjnych oferty maszyny wirtualnej w witrynie Azure Marketplace
 W tym artykule wyjaśniono, jak można zaktualizować na żywo maszyny wirtualnej z tej oferty w portalu Azure Marketplace. Jego przeprowadzi Cię przez proces dodawania jednego lub więcej nowych jednostek SKU do istniejącej oferty. On również przeprowadzi Cię przez proces usuwania oferty na żywo maszyny wirtualnej lub jednostki SKU z witryny Marketplace.
 
 Po oferty/jednostki SKU jest umieszczone w [witryny Azure portal](http://portal.azure.com), nie można zmienić następujące pola tekstowe:
 
-* **Identyfikator oferty**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **identyfikator oferty**.
-* **Identyfikator jednostki SKU**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **jednostki SKU** > **Dodaj jednostkę SKU**.
-* **Namespace wydawcy**: W publikowania portalu, przejdź do **maszyn wirtualnych** > **wskazówki** > **Poinformuj nas o Twoja firma**(znajdujący się w obszarze "Krok 2 zarejestrować Twoja firma") > **Namespace wydawcy** > **Namespace**.
+* **Identyfikator oferty**: Podczas publikowania w portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **identyfikator oferty**.
+* **Identyfikator jednostki SKU**: Podczas publikowania w portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **jednostki SKU** > **Dodaj jednostkę SKU**.
+* **Namespace wydawcy**: W publikowania portalu, przejdź do **maszyn wirtualnych** > **wskazówki** > **Poinformuj nas o Twoja firma** (znajdują się w "Zarejestruj się w kroku 2 usługi "Firma") > **Namespace wydawcy** > **Namespace**.
 
 Po oferty/jednostki SKU znajduje się w [Marketplace](https://azure.microsoft.com/marketplace), nie można zmienić następujące pola tekstowe:
 
-* **Identyfikator oferty**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **identyfikator oferty**.
-* **Identyfikator jednostki SKU**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **jednostki SKU** > **Dodaj jednostkę SKU**.
-* **Namespace wydawcy**: W publikowania portalu, przejdź do **maszyn wirtualnych** > **wskazówki** > **Poinformuj nas o Twoja firma**(znajdujący się w obszarze "Krok 2 Register") **Namespace wydawcy** > **Namespace**.
-* **Porty**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **otwierać porty**.
+* **Identyfikator oferty**: Podczas publikowania w portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **identyfikator oferty**.
+* **Identyfikator jednostki SKU**: Podczas publikowania w portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **jednostki SKU** > **Dodaj jednostkę SKU**.
+* **Namespace wydawcy**: Podczas publikowania w portalu, przejdź do **maszyn wirtualnych** > **wskazówki** > **Poinformuj nas o Twoja firma** (znajdujący się w obszarze "Krok 2 Register") **Namespace wydawcy** > **Namespace**.
+* **Porty**: Podczas publikowania w portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **otwierać porty**.
 * **Zmiany wymienione dla jednostek SKU cennika**
 * **Zmiana modelu rozliczeń wymienionych dla jednostek SKU**
 * **Usuwanie rozliczeń regionach wymienionych dla jednostek SKU**
@@ -310,7 +311,7 @@ Aby cofnąć model rozliczeń do produkcji wartości, wykonaj następujące krok
 
 2. Przejdź do **maszyn wirtualnych** , a następnie wybierz swoją ofertę.
 3. W menu po lewej stronie kliknij **jednostki SKU** kartę.
-4. Kliknij przycisk **Edytuj** przycisk, aby przywrócić model rozliczeń. W otwartym oknie, zaznacz lub wyczyść **Pomoc dotycząca rozliczeń i licencjonowania odbywa się zewnętrznie z platformy Azure (zwane również Bring Your Own License)** pole wyboru.
+4. Kliknij przycisk **Edytuj** przycisk, aby przywrócić model rozliczeń. W wyświetlonym oknie zostanie otwarta, zaznacz lub wyczyść **Pomoc dotycząca rozliczeń i licencjonowania odbywa się zewnętrznie z platformy Azure (zwane również Bring Your Own License)** pole wyboru.
 
     ![Edytuj rozliczeń](media/marketplace-publishing-vm-image-post-publishing/img09-04.png)
 5. Wykonaj kroki w "Wycofaj cena listy do produkcji wartości", w tym artykule.
@@ -330,10 +331,10 @@ Aby cofnąć ustawienie widoczności wymienionych jednostki SKU do produkcji war
 5. Po wykonaniu tych czynności przy użyciu zmian, kliknij przycisk **ŻĄDANIA zatwierdzenia do WYPYCHANIA do produkcji** ponownie opublikować ofertę w portalu Marketplace.
 
 ## <a name="see-also"></a>Zobacz także
-* [Rozpoczynanie pracy: Publikowanie oferty w portalu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Rozpocznij pracę: Publikowanie oferty w portalu Azure Marketplace](marketplace-publishing-getting-started.md)
 * [Omówienie raportowania wypłaty](marketplace-publishing-report-payout.md)
 * [Zmień swoje incentive sprzedawcą dostawcy rozwiązań w chmurze](marketplace-publishing-csp-incentive.md)
 * [Rozwiązywanie typowych problemów związanych z publikowania w portalu Marketplace](marketplace-publishing-support-common-issues.md)
 * [Uzyskaj pomoc techniczną jako wydawca](marketplace-publishing-get-publisher-support.md)
 * [Tworzenie obrazu maszyny Wirtualnej w środowisku lokalnym](marketplace-publishing-vm-image-creation-on-premise.md)
-* [Tworzenie maszyny wirtualnej z systemem Windows w portalu Azure w wersji zapoznawczej](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Tworzenie maszyny wirtualnej z systemem Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

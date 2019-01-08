@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 1c6579776b86decb78c172578cbe55a66c05d78f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6eb7993b4dbec3ab4901dc7071d18eae98ab8ae4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54026557"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079259"
 ---
 > [!NOTE]
 > Wieloczęściowy żądań zwykle wymagają trzy części:
@@ -34,3 +34,5 @@ Wieloczęściowy żądań jest możliwe programowo (za pośrednictwem C#), za po
 > * Zawartość obiektu blob, obejmujących bez określonej struktury zawartość pliku do przekazania
 >
 > Żadna z dwóch części nie jest wymagana dla **PATCH** żądań. Oba są wymagane dla **WPIS** lub operacji tworzenia.
+
+[Szybki Start zajętość kodu źródłowego](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) zawiera pełną C# przykłady pokazujące sposób wprowadzania wieloczęściowego żądań cyfrowego Twins zarządzania interfejsów API usługi Azure.

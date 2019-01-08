@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 310a528dc41632b3864033305177d074231cef4f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 825c6a7dd0c0163a1fd298ca7510f2483a5df2ad
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998374"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076522"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Omówienie monitorowania kontenerów na platformie Azure
 Dzięki systemowi Azure można skutecznie monitorować i zarządzać obciążeń wdrożonych na kontenery usługi Azure Kubernetes lub Docker. Należy zrozumieć, jak działają kontenerów przy użyciu wielu aplikacji mikrousług w celu dostarczenia usługi reliable service w dużej skali i usługi monitorowania plan pomocy technicznej. Ten artykuł zawiera krótkie omówienie zarządzania i monitorowania pomagają zrozumieć ich możliwości platformy Azure i które są odpowiednie na podstawie własnych wymagań.
@@ -27,6 +27,6 @@ Za pomocą [usługi Azure Monitor dla kontenerów](container-insights-overview.m
 
 Dla kontenerów działających poza hostowana usługa Kubernetes usługi Azure, usługi Log Analytics [rozwiązanie Windows i kontener platformy Docker](../../azure-monitor/insights/containers.md) ułatwia wyświetlanie oraz zarządzanie nimi hostach kontenerów Windows i platformy Docker. Z obszaru roboczego usługi Log Analytics można wyświetlić szczegóły spisu, wydajności i zdarzeń z węzłów i kontenery w środowisku. Możesz wyświetlić szczegółowe informacje o inspekcji polecenia używane z kontenerami pokazywanie i kontenerów można rozwiązać, wyświetlania i przeszukiwania scentralizowanych dzienników bez konieczności uzyskania zdalnego dostępu do hostów platformy Docker lub Windows.
 
-Aby osiągnąć holistycznego lub monitorowania aplikacji end-to-end, wszelkich zależności czy jest on platformy Azure lub lokalnymi zasobami, należy monitorować za pomocą usługi Azure Monitor lub usługi Log Analytics.  Warstwa aplikacji powinny być włączone, aby można było dodać dodatkową warstwę świadomości kondycji, zarówno na poziomie platformy i aplikacji, za pomocą usługi Application Insights. Na poziomie platformy są zestawy SDK usługi Application Insights dla [Kubernetes]( https://github.com/Microsoft/ApplicationInsights-Kubernetes), [Docker](https://hub.docker.com/r/microsoft/applicationinsights/), i [usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights). Dla aplikacji mikrousług jest obsługa [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../application-insights/app-insights-nodejs-quick-start.md), [.Net](../../azure-monitor/app/asp-net.md), [.Net Core](../../azure-monitor/app/asp-net-core.md), a także wiele innych [języków/platformy](../../azure-monitor/app/platforms.md). 
+Aby osiągnąć holistycznego lub monitorowania aplikacji end-to-end, wszelkich zależności czy jest on platformy Azure lub lokalnymi zasobami, należy monitorować za pomocą usługi Azure Monitor lub usługi Log Analytics.  Warstwa aplikacji powinny być włączone, aby można było dodać dodatkową warstwę świadomości kondycji, zarówno na poziomie platformy i aplikacji, za pomocą usługi Application Insights. Na poziomie platformy są zestawy SDK usługi Application Insights dla [Kubernetes]( https://github.com/Microsoft/ApplicationInsights-Kubernetes), [Docker](https://hub.docker.com/r/microsoft/applicationinsights/), i [usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights). Dla aplikacji mikrousług jest obsługa [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/learn/nodejs-quick-start.md), [.Net](../../azure-monitor/app/asp-net.md), [.Net Core](../../azure-monitor/app/asp-net-core.md), a także wiele innych [języków/platformy](../../azure-monitor/app/platforms.md). 
 
 W przeciwnym razie problemy zaczną niezidentyfikowanych, może mieć wpływ na dostępność aplikacji i nie zostaną spełnione cele poziomu usługi.  

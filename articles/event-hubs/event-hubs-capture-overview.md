@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8e44db9c992a2c4905a392323994c67befea9a9a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e2adae46e3124fcd407fa4d4677f02bdface0a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096727"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077644"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#capacity). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
@@ -62,15 +62,43 @@ Przechwytywanie można skonfigurować w Centrum zdarzeń tworzenia czasu za pomo
 - [Włączanie przechwytywania usługi Event Hubs przy użyciu witryny Azure portal](event-hubs-capture-enable-through-portal.md)
 - [Tworzenie przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i włączanie funkcji przechwytywania przy użyciu szablonu usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
+
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Eksplorowanie plików przechwyconej i pracą z nimi przy użyciu systemu Avro
 
 Funkcja przechwytywania usługi Event Hubs tworzy pliki w formacie Avro, zgodnie z instrukcjami na przedział czasu skonfigurowane. Można wyświetlić tych plików w dowolne narzędzie takie jak [Eksploratora usługi Azure Storage][Azure Storage Explorer]. Możesz pobrać pliki lokalnie w celu pracy z nimi.
 
 Pliki tworzone przez przechwytywania usługi Event Hubs mają następujące schemacie Avro:
 
-![Schemat akro][3]
+![Schemacie Avro][3]
 
-Łatwe Eksplorowanie plików Avro polega na użyciu [narzędzia Avro] [ Avro Tools] jar z Apache. Po pobraniu ten plik jar, można wyświetlić schemat określonego pliku Avro, uruchamiając następujące polecenie:
+Łatwe Eksplorowanie plików Avro polega na użyciu [narzędzia Avro] [ Avro Tools] jar z Apache. Można również użyć [Apache Drill] [ Apache Drill] dla lekkie środowisko oparte na SQL lub [platformy Apache Spark] [ Apache Spark] do wykonywania złożonych rozproszonych Przetwarzanie pozyskiwanych danych. 
+
+### <a name="use-apache-drill"></a>Użyj Apache testowania odzyskiwania po awarii
+
+[Apache Drill] [ Apache Drill] to "open source SQL zapytań aparat do eksploracji danych big data" który wykonywać zapytania na danych z częściową strukturą i ze strukturą, wszędzie tam, gdzie jest. Aparat można uruchomić jako węzeł autonomiczny lub jako klaster ogromna uzyskać wysoką wydajność.
+
+Macierzystą obsługę w usłudze Azure Blob storage jest dostępna, która ułatwia zapytania o dane w pliku Avro zgodnie z opisem w dokumentacji:
+
+[Apache Drill: Dodatek magazynu obiektów Blob platformy Azure][Apache Drill: Azure Blob Storage Plugin]
+
+Łatwo kwerendy przechwyconych plików, można tworzyć i wykonać Maszynę wirtualną przy użyciu Apache Drill włączyć za pomocą kontenera dostępu do magazynu obiektów Blob platformy Azure:
+
+https://github.com/yorek/apache-drill-azure-blob
+
+Przykładowe pełnej end-to-end jest dostępna w przesyłania strumieniowego w repozytorium skalowania:
+
+[Przesyłanie strumieniowe w dużej skali: Funkcja przechwytywania usługi Event Hubs]
+
+### <a name="use-apache-spark"></a>Korzystanie z platformy Apache Spark
+
+[Platforma Apache Spark] [ Apache Spark] "ujednolicone analytics to aparat obsługi jest do przetwarzania danych na dużą skalę." Ona obsługę innych języków, w tym SQL i mogą łatwo uzyskiwać dostęp do usługi Azure Blob storage. Dostępne są dwie opcje uruchamiania platformy Apache Spark na platformie Azure, a jednocześnie zapewnia łatwy dostęp do usługi Azure Blob storage:
+
+- [HDInsight: Adresowanie plików w usłudze Azure storage][HDInsight: Address files in Azure storage]
+- [Usługa Azure Databricks: Usługa Azure Blob storage][Azure Databricks: Azure Blob Storage]
+
+### <a name="use-avro-tools"></a>Korzystaj z narzędzi Avro
+
+[Narzędzia Avro] [ Avro Tools] są dostępne jako pakiet jar. Po pobraniu pliku jar, można wyświetlić schemat określonego pliku Avro, uruchamiając następujące polecenie:
 
 ```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
@@ -106,8 +134,8 @@ Apache Avro ma pełne przewodniki wprowadzenie dla [Java] [ Java] i [Python][Pyt
 Funkcja przechwytywania usługi Event Hubs jest mierzone w podobny sposób do wszystkich jednostek przepływności: jako dodatkowy co godzinę. Opłata jest wprost proporcjonalna do liczby jednostek przepływności zakupionych dla przestrzeni nazw. Jednostki przepływności są zwiększyć i zmniejszyć, liczniki przechwytywania usługi Event Hubs zwiększyć i zmniejszyć do zapewnienia wydajności dopasowania. Liczniki wystąpić w połączeniu sekcją. Aby uzyskać szczegółowe informacje o cenach, zobacz [cen usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
 ## <a name="integration-with-event-grid"></a>Integracja z usługą Event Grid 
-Możesz utworzyć subskrypcję usługi Azure Event Grid z przestrzeni nazw usługi Event Hubs jako źródła. Następującego samouczka dowiesz się, jak utworzyć subskrypcję usługi Event Grid przy użyciu Centrum zdarzeń jako źródło i aplikację usługi Azure Functions jako ujścia: [procesu i przeprowadzić migrację przechwycone dane z usługi Event Hubs w usłudze SQL Data Warehouse przy użyciu usługi Event Grid i Azure Functions](store-captured-data-data-warehouse.md).
 
+Możesz utworzyć subskrypcję usługi Azure Event Grid z przestrzeni nazw usługi Event Hubs jako źródła. Następującego samouczka dowiesz się, jak utworzyć subskrypcję usługi Event Grid przy użyciu Centrum zdarzeń jako źródło i aplikację usługi Azure Functions jako ujścia: [Przetwarzania, a następnie przeprowadzić migrację przechwycone dane z usługi Event Hubs w usłudze SQL Data Warehouse przy użyciu usługi Event Grid i Azure Functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -119,6 +147,8 @@ Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event H
 * [Przegląd usługi Event Hubs][Event Hubs overview]
 
 [Apache Avro]: http://avro.apache.org/
+[Apache Drill]: https://drill.apache.org/
+[Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: http://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
@@ -126,3 +156,7 @@ Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event H
 [Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
+[Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
+[Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
+[Przesyłanie strumieniowe w dużej skali: Funkcja przechwytywania usługi Event Hubs]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

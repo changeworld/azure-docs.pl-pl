@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 06c6d2935358650eb9f7ef1cda55d5292e203daf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019932"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076250"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -73,15 +73,17 @@ Za pomocą treść kodu JSON:
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
 
-Po utworzeniu dopasowujące jednostki, Przekaż fragment kodu funkcji z następujących uwierzytelnionego wieloczęściowego żądania HTTP POST:
+Tworzenie funkcji zdefiniowanej przez użytkownika polega na utworzeniu wieloczęściowego żądania HTTP do cyfrowego Twins zarządzania interfejsów API usługi Azure.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+Po utworzeniu dopasowujące jednostki, Przekaż fragment kodu funkcji z następujących uwierzytelnionego wieloczęściowego żądanie HTTP POST do:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Użyj następujących treść kodu JSON:
+Użyj następujących treści:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY

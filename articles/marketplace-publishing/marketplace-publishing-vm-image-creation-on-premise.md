@@ -3,7 +3,7 @@ title: Tworzenie obrazu maszyny wirtualnej w środowisku lokalnym, w portalu Azu
 description: Informacje i wykonaj kroki, aby utworzyć obraz maszyny Wirtualnej w środowisku lokalnym i wdrażania w portalu Azure Marketplace przez inne osoby do zakupu.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: e5571a0933284a52d5567db0505ecaced6c6c336
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9fbb2f50905b1b80a092ba13f860f30cb9423a9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253503"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077797"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Tworzenie obrazu maszyny wirtualnej w środowisku lokalnym dla portalu Azure Marketplace
 Zdecydowanie zaleca się tworzenie Azure wirtualne dyski twarde (VHD) bezpośrednio w chmurze przy użyciu protokołu Remote Desktop Protocol. Jednak jeśli trzeba, istnieje możliwość pobierania wirtualnego dysku twardego i Opracuj go za pomocą infrastruktury lokalnej.  
@@ -144,7 +145,7 @@ Użyj [Add-AzureVhd](https://msdn.microsoft.com/library/dn495173.aspx) polecenia
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
 ### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>Przekazywanie wirtualnego dysku twardego za pomocą narzędzia wiersza polecenia dla systemów Mac i Linux
-Za pomocą [narzędzie wiersza polecenia systemu Linux](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2), należy użyć następującego: Tworzenie obrazu maszyny wirtualnej platformy azure <image name> — lokalizacji <Location of the data center> — system operacyjny Linux <LocationOfLocalVHD>
+Za pomocą [narzędzie wiersza polecenia systemu Linux](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2), użyj następującego polecenia: `azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>`
 
 ## <a name="see-also"></a>Zobacz także
 * [Tworzenie obrazu maszyny wirtualnej w portalu Marketplace](marketplace-publishing-vm-image-creation.md)

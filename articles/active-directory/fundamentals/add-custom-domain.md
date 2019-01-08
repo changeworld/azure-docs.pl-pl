@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 14035fe9061af98b10b822c3b7b9213cdda3fbbd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3fdbbd1d3cf27172ed9ba5c5087ffc331e01ccf9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098305"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076811"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
 Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain@contoso.com*.
@@ -63,7 +63,7 @@ Po utworzeniu katalogu, możesz dodać niestandardową nazwę domeny.
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>Dodaj informacje DNS do rejestratora domen
 Po dodaniu niestandardowej nazwy domeny do usługi Azure AD, musisz powrócić do rejestratora domen i Dodaj informacje o usłudze Azure AD DNS z skopiowany plik TXT. Tworzenie tego TXT rekordu dla domeny "sprawdza" własności nazwy domeny.
 
--  Wróć do rejestratora domen, Utwórz nowy rekord TXT dla domeny na podstawie informacji DNS skopiowany, ustaw **TTL** (czas wygaśnięcia) do 60 minut, a następnie zapisz informacje.
+-  Wróć do rejestratora domen, Utwórz nowy rekord TXT dla domeny na podstawie informacji DNS skopiowany, ustaw **TTL** (czas wygaśnięcia) do 3600 sekund (60 minut), a następnie zapisz informacje.
 
     >[!Important]
     >Możesz zarejestrować dowolną liczbę nazw domeny. Jednak każda domena pobiera swój własny rekord TXT z usługi Azure AD. Należy zachować ostrożność podczas wprowadzania danych pliku TXT u rejestratora domen. Jeśli wprowadź nieprawidłowa lub zduplikowana informacji przez pomyłkę, należy poczekać, aż wartość TTL upłynie limit czasu (60 minut), aby spróbować ponownie.
@@ -98,10 +98,10 @@ Po zarejestrowaniu niestandardową nazwę domeny, należy upewnić się, że jes
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dodawanie innego administratora globalnego do katalogu. Aby uzyskać więcej informacji, zobacz [jak przypisać role i Administratorzy](active-directory-users-assign-role-azure-portal.md)
+- Dodawanie innego administratora globalnego do katalogu. Aby uzyskać więcej informacji, zobacz [jak przypisać role i Administratorzy](active-directory-users-assign-role-azure-portal.md).
 
-- Dodawanie użytkowników do domeny, zobacz [jak dodać lub usunąć użytkowników](add-users-azure-active-directory.md)
+- Dodawanie użytkowników do domeny, zobacz [jak dodać lub usunąć użytkowników](add-users-azure-active-directory.md).
 
-- Zarządzanie z informacjami dotyczącymi nazwy domeny w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md)
+- Zarządzanie z informacjami dotyczącymi nazwy domeny w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md).
 
 - Jeśli masz lokalne wersje systemu Windows Server, który chcesz użyć wraz z usługi Azure Active Directory, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md).

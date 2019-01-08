@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123486"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074720"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikacje SaaS oferują Podręcznik publikowania
 
-Aplikacje SaaS mogą być publikowane w witrynie marketplace przy użyciu trzech wywołań różnych akcji: "Skontaktuj się ze mną," "Wypróbuj teraz" i "Pobierz teraz." W tym przewodniku wyjaśniono te trzy opcje, łącznie z wymaganiami dla każdego. 
+Aplikacje SaaS mogą być publikowane w witrynie marketplace przy użyciu trzech wywołań różnych akcji: "Kontakt ze mną," "opcji Wypróbuj teraz" i "Pobierz teraz." W tym przewodniku wyjaśniono te trzy opcje, łącznie z wymaganiami dla każdego. 
 
 ## <a name="offer-overview"></a>Przegląd oferty  
 
@@ -34,8 +34,8 @@ Aplikacje SaaS są dostępne w obu sklepów platformy Azure w poniższej tabeli 
 | AppSource | Tak (kontakt ze mną) | Tak (w usłudze Power BI na Dynamics) |
 | Rynek platformy Azure | Nie | Tak (aplikacje SaaS) |   
 
-**Lista:** opcji publikowania listy składa się z kontakt ze mną typ oferty i jest używany podczas uczestnictwa poziomu wersji próbnej lub transakcji nie jest możliwe. Zaletą tego podejścia jest umożliwienie wydawców za pomocą rozwiązania na rynek od razu zacząć odbierać potencjalnych klientów, które mogą być uwzględniane w transakcji, aby zwiększyć swoją firmę.  
-**Wersja próbna/transakcja:** klient ma możliwość bezpośrednio kupowania i Zamów wersję próbną rozwiązania. Wersja próbna środowiska pracy zwiększa poziom zaangażowania oferowane klientom i umożliwia klientom do zbadania rozwiązania przed zakupem. W środowisku wersji próbnej będziesz mieć lepszą szanse podwyższania poziomu w sklepów i możesz spodziewać się więcej oraz dokładniejsze potencjalni klienci zaangażowaniu klientów. Wersje próbne musi zawierać bezpłatną pomoc techniczną dotyczącą co najmniej na czas trwania okresu próbnego.  
+**Lista:**  Opcja publikowania listy składa się z kontakt ze mną typ oferty i jest używany podczas uczestnictwa poziomu wersji próbnej lub transakcji nie jest możliwe. Zaletą tego podejścia jest umożliwienie wydawców za pomocą rozwiązania na rynek od razu zacząć odbierać potencjalnych klientów, które mogą być uwzględniane w transakcji, aby zwiększyć swoją firmę.  
+**Wersja próbna/transakcji:**  Klient ma możliwość bezpośrednio kupowania i Zamów wersję próbną rozwiązania. Wersja próbna środowiska pracy zwiększa poziom zaangażowania oferowane klientom i umożliwia klientom do zbadania rozwiązania przed zakupem. W środowisku wersji próbnej będziesz mieć lepszą szanse podwyższania poziomu w sklepów i możesz spodziewać się więcej oraz dokładniejsze potencjalni klienci zaangażowaniu klientów. Wersje próbne musi zawierać bezpłatną pomoc techniczną dotyczącą co najmniej na czas trwania okresu próbnego.  
 
 | Oferty aplikacji SaaS | Wymagania biznesowe | Wymagania techniczne |  
 | --- | --- | --- |  
@@ -94,7 +94,7 @@ Samouczki sprawdź następujące kwestie:
 * [Microsoft Azure wideo poświęcone usłudze Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Bezpłatne szkolenia Azure Active Directory znajduje się w temacie  
-* [Platforma Microsoft Azure dla seria specjalistów IT: Usługa Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [Platforma Microsoft Azure dla seria specjalistów IT: Usługa Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Ponadto usługi Azure Active Directory zapewnia lokacji pod kątem aktualizacji usługi   
 * [Aktualizacje usługi Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
@@ -144,11 +144,12 @@ Microsoft obsługuje transakcji handlowych. Firma Microsoft rozlicza klientów w
 |Strona docelowa transakcji | Możesz hostować Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzać ich konta usługi SaaS. |   
 | Subskrypcja interfejsu API | Należy udostępnić to usługa, która mogą wchodzić w interakcje z subskrypcją SaaS, tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Okresowo będą wydawane niekrytyczne zmiany interfejsu API. |  
 
-## <a name="next-steps"></a>Następne kroki
-Jeśli użytkownik jeszcze tego nie zrobiono, 
+## <a name="next-steps"></a>Kolejne kroki
+Jeśli użytkownik jeszcze tego nie zrobiono,
 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.
 
 Jeśli jesteś zarejestrowanym i tworzysz nową ofertę czy działa na podstawie istniejącego
 
-- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty
+- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty.
+- Zobacz [oferty aplikacji SaaS usługi Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer) Aby uzyskać więcej informacji.

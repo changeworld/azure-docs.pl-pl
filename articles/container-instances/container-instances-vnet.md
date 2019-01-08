@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993298"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077475"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -33,26 +33,28 @@ Grupy kontenerów wdrożonych w sieci wirtualnej platformy Azure obsługi takich
 
 Niektóre ograniczenia mają zastosowanie w przypadku wdrażania grup kontenerów z siecią wirtualną.
 
-* Kontenery Windows nie są obsługiwane
 * Aby wdrożyć grup kontenerów do podsieci, podsieci nie może zawierać innych typów zasobów. Usuń wszystkie istniejące zasoby z istniejącej podsieci przed wdrożeniem grup kontenerów do niej, lub Utwórz nową podsieć.
 * Grupy kontenerów wdrożonych w sieci wirtualnej nie obsługują obecnie publiczne adresy IP i etykiety nazwy DNS.
 * Ze względu na dodatkowe zaangażowanych zasobów sieciowych wdrożenie grupy kontenera z siecią wirtualną jest zazwyczaj trwa nieco dłużej niż wdrażanie wystąpienia standard kontenera.
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następującym ograniczeniom wdrażanie wystąpień kontenerów w sieci wirtualnej.
+Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następującym ograniczeniom wdrażanie wystąpień kontenerów w sieci wirtualnej. 
 
-**Obsługiwane** regionów:
+**Obsługiwane regiony i limity zasobów**
 
-* Europa Północna (northeurope)
-* Europa Zachodnia (westeurope)
-* Zachodnie stany USA (westus)
-* Wschodnie stany USA (eastus)
+| Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
+| -------- | :---: | :---: | :-----------: |
+| Europa Zachodnia | Linux | 4 | 14 |
+| Zachodnie stany USA, Wschodnie stany USA | Linux | 2 | 3,5 |
+| Australia Wschodnia, Europa Północna | Linux | 1 | 1.5 |
 
-**Nieobsługiwana** zasobów sieciowych:
+Ograniczenia zasobów kontenera, może różnić się od limity wystąpień kontenerów obsługi sieci w tych regionach. Obecnie kontenery systemu Linux są obsługiwane dla tej funkcji. Planowana jest obsługa Windows.
 
-* Sieciowa grupa zabezpieczeń
+**Nieobsługiwane sieci zasobów i funkcji**
+
 * Azure Load Balancer
+* Wirtualne sieci równorzędne
 
 **Usunięcie zasobu sieciowego** wymaga [dodatkowe kroki](#delete-network-resources) po wdrożeniu grupy kontenerów w sieci wirtualnej.
 

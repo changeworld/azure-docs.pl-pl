@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231631"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063220"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Utwórz zmienne, zapisywania i zarządzaniu wartości w usłudze Azure Logic Apps
 
@@ -28,7 +28,10 @@ Można utworzyć zmienne dla typów danych, takich jak liczba całkowita, liczba
 * Przypisz inną wartość do zmiennej.
 * Wstaw lub *Dołącz* wartość zmiennej jako ostatnia razem w ciągu lub tablicy.
 
-Zmienne istnieją i są globalne tylko w ramach wystąpienie aplikacji logiki, która je tworzy. Ponadto utrzymują się między wszystkie iteracje pętli zostaną wewnątrz wystąpienie aplikacji logiki. Podczas odwoływania się do zmiennej, należy użyć nazwy zmiennej jako token, a nie nazwy akcji, która jest w zwykły sposób, aby odwoływać się do danych wyjściowych akcji.
+Zmienne istnieją i są globalne tylko w ramach wystąpienie aplikacji logiki, która je tworzy. Ponadto utrzymują się między wszystkie iteracje pętli zostaną wewnątrz wystąpienie aplikacji logiki. Podczas odwoływania się do zmiennej, należy użyć nazwy zmiennej jako token, a nie nazwy akcji, która jest w zwykły sposób, aby odwoływać się do danych wyjściowych akcji. 
+
+> [!IMPORTANT]
+> Domyślnie cykle w pętli "Foreach" Uruchom równolegle. W przypadku używania zmiennych w pętlach uruchomić pętlę [sekwencyjnie](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) tak zwracają przewidywalne wartości zmiennych. 
 
 Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>. 
 
@@ -38,7 +41,7 @@ Aby skorzystać z tego artykułu, Oto elementy, które są potrzebne:
 
 * Aplikacja logiki, w którym chcesz utworzyć zmienną 
 
-  Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki 
 
@@ -58,7 +61,7 @@ Można utworzyć zmienną i zadeklarować jego typu danych i wartość początko
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Dodaj akcję](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plus, a następnie wybierz **Dodaj akcję**.
@@ -69,11 +72,11 @@ Można utworzyć zmienną i zadeklarować jego typu danych i wartość początko
 
 4. Podaj te informacje w zmiennej:
 
-   | Właściwość | Wymagane | Wartość |  Opis |
+   | Właściwość | Wymagany | Wartość |  Opis |
    |----------|----------|-------|--------------|
-   | Name (Nazwa) | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
+   | Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
    | Typ | Yes | <*Typ zmiennej*> | Typ danych dla zmiennej | 
-   | Wartość | Nie | <*Wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: mimo że jest to opcjonalne, ustaw tę wartość najlepszym rozwiązaniem jest więc zawsze znasz ich wartość początkową zmiennej. | 
+   | Wartość | Nie | <*Wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: Mimo, że jest to opcjonalne, ustaw tę wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, wartość początkową zmiennej. | 
    ||||| 
 
    ![Inicjuj zmienną](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -195,7 +198,7 @@ Aby zwiększyć lub *przyrostu* zmiennej przez wartość stałą, Dodaj **zmienn
 
    Na przykład ta aplikacja logiki już wyzwalacz i akcja, która utworzyć zmienną. Tak Dodaj nową akcję w obszarze następujące kroki:
 
-   ![Dodawanie akcji](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
+   ![Dodaj akcję](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
    Aby dodać akcję między krokami istniejących, przesuń wskaźnik myszy strzałkę łączącego się tak, aby pojawia się znak plusa (+). Wybierz znak plus, a następnie wybierz **Dodaj akcję**.
 
@@ -205,10 +208,10 @@ Aby zwiększyć lub *przyrostu* zmiennej przez wartość stałą, Dodaj **zmienn
 
 3. Podaj te informacje w zmiennej przyrostu o wartości:
 
-   | Właściwość | Wymagane | Wartość |  Opis |
+   | Właściwość | Wymagany | Wartość |  Opis |
    |----------|----------|-------|--------------|
-   | Name (Nazwa) | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
-   | Wartość | Nie | <*wartość przyrostu*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: mimo że jest to opcjonalne, ustaw tę wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
+   | Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
+   | Wartość | Nie | <*wartość przyrostu*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
    |||| 
 
    Na przykład: 
@@ -232,7 +235,7 @@ Jeśli przełącznik przy użyciu projektanta widoku edytora kodu poniżej przed
 },
 ```
 
-## <a name="example-create-loop-counter"></a>Przykład: Tworzenie licznika pętli
+## <a name="example-create-loop-counter"></a>Przykład: Utwórz Licznik pętli
 
 Zmienne są często używane do zliczania liczby, które jest uruchamiane w pętli. Ten przykład pokazuje, jak utworzyć i używać zmiennych dla tego zadania, tworząc pętli, który zlicza załączników do wiadomości e-mail.
 
@@ -325,10 +328,10 @@ Aby zmniejszyć lub *dekrementacji* zmiennej przez wartość stałą, postępuj 
 
 Poniżej przedstawiono właściwości dla **Zmniejsz zmienną** akcji:
 
-| Właściwość | Wymagane | Wartość |  Opis |
+| Właściwość | Wymagany | Wartość |  Opis |
 |----------|----------|-------|--------------|
-| Name (Nazwa) | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmniejszyć | 
-| Wartość | Nie | <*wartość przyrostu*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: mimo że jest to opcjonalne, ustaw tę wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
+| Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmniejszyć | 
+| Wartość | Nie | <*wartość przyrostu*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
 ||||| 
 
 Jeśli przełącznik przy użyciu projektanta widoku edytora kodu poniżej przedstawiono sposób **Zmniejsz zmienną** akcji pojawia się wewnątrz definicji aplikacji logiki, która jest w formacie JSON.
@@ -360,9 +363,9 @@ Wartość jest wymagana, ponieważ ta akcja nie ma wartości domyślnej.
 
 Poniżej przedstawiono właściwości dla **Ustaw zmienną** akcji:
 
-| Właściwość | Wymagane | Wartość |  Opis | 
+| Właściwość | Wymagany | Wartość |  Opis | 
 |----------|----------|-------|--------------| 
-| Name (Nazwa) | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
+| Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
 | Wartość | Yes | <*Nowa wartość*> | Wartość, którą chcesz przypisać do zmiennej. Oba muszą mieć ten sam typ danych. | 
 ||||| 
 
@@ -418,9 +421,9 @@ W przypadku zmiennych, które przechowują ciągi lub tablice można wstawić lu
 
 Poniżej przedstawiono właściwości dla **dołączenia do...**  akcje:
 
-| Właściwość | Wymagane | Wartość |  Opis | 
+| Właściwość | Wymagany | Wartość |  Opis | 
 |----------|----------|-------|--------------| 
-| Name (Nazwa) | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
+| Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
 | Wartość | Yes | <*Dołącz wartość*> | Wartość, którą chcesz dołączyć, i może mieć dowolny typ | 
 |||||  
 

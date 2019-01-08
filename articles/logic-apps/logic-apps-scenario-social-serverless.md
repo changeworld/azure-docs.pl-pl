@@ -10,18 +10,18 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229421"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061061"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Utwórz pulpit nawigacyjny szczegółowych informacji z klientów przesyłania strumieniowego za pomocą usługi Azure Logic Apps i Azure Functions
 
-Platforma Azure oferuje narzędzia niewymagające użycia serwera, które ułatwiają szybkie tworzenie i hostowanie aplikacji w chmurze, bez konieczności myśleć o infrastrukturę. W ramach tego samouczka możesz utworzyć pulpit nawigacyjny, który wyzwala na opinie klientów, analizuje informacji zwrotnych za pomocą usługi machine learning i publikuje informacje do źródła, takich jak usługa Power BI lub Azure Data Lake.
+Platforma Azure oferuje [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) narzędzia, które ułatwiają szybkie tworzenie i hostowanie aplikacji w chmurze, bez myśleć o infrastrukturę. W ramach tego samouczka możesz utworzyć pulpit nawigacyjny, który wyzwala na opinie klientów, analizuje informacji zwrotnych za pomocą usługi machine learning i publikuje informacje do źródła, takich jak usługa Power BI lub Azure Data Lake.
 
-Dla tego rozwiązania należy na użytek tych kluczowych składników platformy Azure aplikacje niewymagające użycia serwera: [usługi Azure Functions](https://azure.microsoft.com/services/functions/) i [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+W przypadku tego rozwiązania można użyć tych kluczowych składników platformy Azure aplikacje niewymagające użycia serwera: [Usługa Azure Functions](https://azure.microsoft.com/services/functions/) i [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Usługa Azure Logic Apps udostępnia aparatu przepływu pracy bez użycia serwera w chmurze, dzięki czemu można aranżacje są składnikami bez użycia serwera i nawiązać połączenie z ponad 200 usług i interfejsów API. Usługa Azure Functions zapewnia bezserwerowych obliczeń w chmurze. To rozwiązanie używa usługi Azure Functions dla Oflagowanie klienta tweety na podstawie wstępnie zdefiniowanych słów kluczowych.
 
 W tym scenariuszu utworzysz aplikację logiki, która wyzwala w znajdowaniu informacji zwrotnych od klientów. Niektóre łączniki, że pomoc odpowiadania na opinie klientów obejmują usługi Outlook.com, Office 365, małp ankiety, Twitter, a [żądania HTTP za pomocą formularza sieci web](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Przepływ pracy, którą tworzysz monitoruje hasztag w serwisie Twitter.
@@ -34,7 +34,7 @@ Możesz [skompilować całe rozwiązanie w programie Visual Studio](../logic-app
 
    Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [Przewodnik Szybki start dotyczący witryny Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) lub [Szybki Start dla programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-2. W Projektancie aplikacji logiki, Znajdź i dodawanie wyzwalacza usługi Twitter, który ma tę akcję: **po wysłaniu nowego tweetu**
+2. W Projektancie aplikacji logiki Znajdź, a następnie dodaj wyzwalacz usługi Twitter, który ma tę akcję: **Po wysłaniu nowego tweetu**
 
 3. Skonfiguruj wyzwalacz, aby nasłuchiwać tweety na podstawie słów kluczowych lub hasztagiem.
 
@@ -60,8 +60,8 @@ W celu wykrywania tonacji za jakiś tekst, można użyć [usług Azure Cognitive
 
 Po uzyskaniu tweet danych i szczegółowych informacji dotyczących tweetu teraz użyć kilku istotnych łączniki i ich działania:
 
-* **Power BI — Dodawanie wierszy do przesyłania strumieniowego zestawu danych**: Wyświetl przychodzących tweety na pulpicie nawigacyjnym usługi Power BI.
-* **Azure Data Lake, Dołącz plik**: Dodawanie danych klienta do zestawu danych usługi Azure Data Lake do uwzględnienia w zadaniach usługi analytics.
+* **Power BI — Dodawanie wierszy do zestawu danych przesyłania strumieniowego**: Wyświetl przychodzących tweety na pulpicie nawigacyjnym usługi Power BI.
+* **Azure Data Lake, Dołącz plik**: Dodaj dane klienta do zestawu danych usługi Azure Data Lake do uwzględnienia w zadaniach usługi analytics.
 * **SQL — Dodawanie wierszy**: Store danych w bazie danych do nowszej pobierania.
 * **Slack — Wyślij wiadomość**: Powiadom kanał Slack o negatywną opinię, które mogą wymagać reakcji.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4abed1718d77c93e864fe5bb1d39aba5e5272f10
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081544"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074474"
 ---
 # <a name="determine-your-publishing-option"></a>Określić swoje opcja publikowania
 Opcja publikowania, wybranej oferty bezpośrednio dotyczy zarówno wymagania kwalifikacyjne, jak i portalu marketplace GTM korzyści. Co ważniejsze wybór publikowania opcja i typ oferty w portalu Cloud Partner definiuje interakcji użytkowników z oferty w portalu marketplace.
@@ -62,18 +62,18 @@ Storefront, gdy zostanie wyświetlony oferty, witryny Azure Marketplace i/lub w 
 
 ## <a name="choose-a-publishing-option"></a>Wybierz jedną z opcji publikowania
 
-Dostępne opcje publikowania oferują zróżnicowany zaangażowania, zapewniając dostęp do prowadzić do udostępniania i [korzyści Go-To-Market](https://partner.microsoft.com/en-US/reach-customers/gtm). Wybierz z trzech możliwych opcji publikowania, przed rozpoczęciem korzystania z portalu Cloud Partner, tworzenie oferty w portalu marketplace. Należy zwrócić uwagę wywołania do akcji, które odpowiadają za pomocą opcji publikowania:
+Dostępne opcje publikowania oferują zróżnicowany zaangażowania, zapewniając dostęp do prowadzić do udostępniania i [korzyści Go-To-Market](https://partner.microsoft.com/reach-customers/gtm). Wybierz z trzech możliwych opcji publikowania, przed rozpoczęciem korzystania z portalu Cloud Partner, tworzenie oferty w portalu marketplace. Należy zwrócić uwagę wywołania do akcji, które odpowiadają za pomocą opcji publikowania:
 
 | **Opcja publikowania**    | **Opis**  |
 | :------------------- | :-------------------|
 | **Lista** | Proste, wyświetlanie listy aplikacji lub usługi, która umożliwia użytkownikowi marketplace nawiązanie połączenia z klientem za pośrednictwem żądania **skontaktuj się ze mną** wezwanie do akcji. |
-| **Wersja próbna** | Użyj portalu marketplace do zwiększenia możliwości odnajdywania i zautomatyzować aprowizację aplikacji Wersja próbna, umożliwiające użytkownikom potencjalnych użycia środowiska w aplikacjach SaaS, IaaS lub Microsoft bezpłatnie przez ograniczony czas, zanim zakupu. Wywołania do akcji używane dla wersji próbnej opcja publikowania są albo: **bezpłatna wersja próbna** lub **wersji testowej**. |
+| **Wersja próbna** | Użyj portalu marketplace do zwiększenia możliwości odnajdywania i zautomatyzować aprowizację aplikacji Wersja próbna, umożliwiające użytkownikom potencjalnych użycia środowiska w aplikacjach SaaS, IaaS lub Microsoft bezpłatnie przez ograniczony czas, zanim zakupu. Wywołania do akcji używane dla wersji próbnej opcja publikowania są: **Bezpłatna wersja próbna** lub **wersji testowej**. |
 | **Przeprowadzaj transakcje** | Aplikacja działa na platformie Azure i mogą być udostępniane jako zasób bezpośrednio w subskrypcji platformy Azure przez klienta, gdy klient wybierze pobierz ją teraz wywołanie akcji. Opłaty licencyjne oprogramowania Opcjonalnie można kupić i rozliczane przy użyciu wybranego przez klienta instrumentu płatniczego i warunki, a użytkownik może oferować ograniczony czasowo dostęp do Twojego **bezpłatna wersja próbna oprogramowania** (dostępne tylko dla platformy Azure Portal Marketplace.) |
 
 >[!Note]
 >Korzystając z instrukcji języka Transact opcji publikowania, jest należy zrozumieć przed wybraniem typ oferty i tworzenie oferty cen, rozliczeń, fakturowania i informacje dotyczące wypłat zagadnienia. Przegląd [rozliczeń w portalu Marketplace i komercyjnych zagadnienia artykuł, aby dowiedzieć się więcej](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 *   Po wybraniu opcji publikowania, można przystąpić do [wybierz typ oferty](./publisher-guide-by-offer-type.md) który będzie używany do przedstawienia oferty.
 *   Należy przejrzeć wymagania kwalifikacyjne w opcje publikowania przez sekcję typ oferty w celu sfinalizowania wyborem i konfiguracją, oferty.

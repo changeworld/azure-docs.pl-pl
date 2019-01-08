@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7422e7145acfece9c9da3277c8d92c949220dbab
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: bbb849b19d523c315e192110ce71c4f382e04657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039320"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077916"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -1076,7 +1076,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-ikey"></a> Klucz Instrumentacji dynamiczne
 
-Unikaj łączenia operacji się dane telemetryczne z programowania, testowania i środowisk produkcyjnych, możesz [należy utworzyć osobne zasoby usługi Application Insights](../../application-insights/app-insights-create-new-resource.md) i zmień ich kluczy, w zależności od środowiska.
+Unikaj łączenia operacji się dane telemetryczne z programowania, testowania i środowisk produkcyjnych, możesz [należy utworzyć osobne zasoby usługi Application Insights](../../azure-monitor/app/create-new-resource.md ) i zmień ich kluczy, w zależności od środowiska.
 
 Zamiast pobierania klucza Instrumentacji z pliku konfiguracji, jest on ustawiany w kodzie. Ustaw klucz w metodzie inicjalizacji, takich jak pliku global.aspx.cs usługi sieci Web platformy ASP.NET:
 
@@ -1170,7 +1170,7 @@ Aby określić, jak długo dane są przechowywane, zobacz [retencji danych i pry
     Brak. Nie trzeba je opakować w klauzulach try-catch. Jeśli zestaw SDK napotyka problemy, zarejestruje wiadomości w danych wyjściowych konsoli debugowania i — jeśli komunikaty za pośrednictwem — w wyszukiwaniu diagnostycznym.
 * *Czy istnieje interfejs API REST do pobierania danych z portalu?*
 
-    Tak, [API dostępu do danych](https://dev.applicationinsights.io/). Inne sposoby, aby wyodrębnić dane obejmują [wyeksportować z analizy w usłudze Power BI](../../application-insights/app-insights-export-power-bi.md) i [Eksport ciągły](../../azure-monitor/app/export-telemetry.md).
+    Tak, [API dostępu do danych](https://dev.applicationinsights.io/). Inne sposoby, aby wyodrębnić dane obejmują [wyeksportować z analizy w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ) i [Eksport ciągły](../../azure-monitor/app/export-telemetry.md).
 
 ## <a name="next"></a>Następne kroki
 

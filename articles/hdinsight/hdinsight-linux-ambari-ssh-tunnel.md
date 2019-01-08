@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 3cf13dc7b3a57435e4e93d6f01da482a2b992bb9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743871"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065311"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Korzystanie z tunelowania SSH do uzyskania dostępu do systemu Apache Ambari web UI, JobHistory, NameNode, Apache Oozie i innych web UI
 
@@ -126,10 +126,10 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
 
 Po ustanowieniu klastra, wykonaj następujące kroki, aby sprawdzić, czy są dostępne usługi sieci web UI sieci Ambari Web:
 
-1. W przeglądarce przejdź do http://headnodehost:8080. `headnodehost` Adres są wysyłane za pośrednictwem tunelu do klastra i rozwiązania z węzłem głównym, z systemem Ambari. Po wyświetleniu monitu wprowadź nazwę użytkownika administratora (Administrator) i hasło dla klastra. Może pojawić się prośba drugi raz przez interfejs webowy Ambari. Jeśli tak, należy ponownie wprowadzić informacje.
+1. W przeglądarce przejdź do http\:/ / headnodehost:8080. `headnodehost` Adres są wysyłane za pośrednictwem tunelu do klastra i rozwiązania z węzłem głównym, z systemem Ambari. Po wyświetleniu monitu wprowadź nazwę użytkownika administratora (Administrator) i hasło dla klastra. Może pojawić się prośba drugi raz przez interfejs webowy Ambari. Jeśli tak, należy ponownie wprowadzić informacje.
 
    > [!NOTE]  
-   > Korzystając z http://headnodehost:8080 adresów do łączenia z klastrem, jest nawiązywane za pośrednictwem tunelu. Komunikacja jest zabezpieczana za pomocą tunelu SSH, zamiast HTTPS. Aby połączyć się za pośrednictwem Internetu, przy użyciu protokołu HTTPS, użyj https://clustername.azurehdinsight.net, gdzie **clustername** jest nazwą klastra.
+   > Przy użyciu protokołu http\://headnodehost:8080 adres, aby połączyć się z klastrem, jest nawiązywane za pośrednictwem tunelu. Komunikacja jest zabezpieczana za pomocą tunelu SSH, zamiast HTTPS. Aby połączyć się za pośrednictwem Internetu, przy użyciu protokołu HTTPS, używania protokołu https\:/ / clustername.azurehdinsight.net, gdzie **clustername** jest nazwą klastra.
 
 2. Interfejs użytkownika sieci Web Ambari zaznacz systemu plików HDFS z listy po lewej stronie.
 
@@ -149,7 +149,7 @@ Po ustanowieniu klastra, wykonaj następujące kroki, aby sprawdzić, czy są do
     ![Obraz przedstawiający NameNode interfejsu użytkownika](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]  
-   > Zwróć uwagę, adres URL dla tej strony; powinny być podobne do **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Ten identyfikator URI przy użyciu w wewnętrznej w pełni kwalifikowana nazwa domeny (FQDN) węzła i jest dostępna tylko podczas używania tunelu SSH.
+   > Zwróć uwagę, adres URL dla tej strony; powinny być podobne do **http\://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Ten identyfikator URI przy użyciu w wewnętrznej w pełni kwalifikowana nazwa domeny (FQDN) węzła i jest dostępna tylko podczas używania tunelu SSH.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

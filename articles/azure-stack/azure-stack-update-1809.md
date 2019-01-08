@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754054"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077967"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -48,6 +48,8 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
    Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Azure Stack](azure-stack-integrate-security.md).
 
 - Możesz teraz [Przenieś zasób rejestracji](azure-stack-registration.md#move-a-registration-resource) na platformie Azure, między grupami zasobów bez konieczności ponownej rejestracji. Dostawców rozwiązań w chmurze (CSP) również można przenieść zasobu rejestracji między subskrypcjami, tak długo, jak nowym i starym subskrypcje są mapowane na ten sam identyfikator partnera programu CSP. Nie ma to wpływu na istniejące mapowania dzierżawy klienta. 
+
+- Dodano obsługę przypisywanie wielu adresów IP dla każdego interfejsu sieciowego.  Aby uzyskać więcej informacji, zobacz [przypisać wiele adresów IP do maszyn wirtualnych przy użyciu programu PowerShell](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 

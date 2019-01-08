@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 6f644416a9e56009aadd0f8e1b217402d625af84
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: dc903fca206f5d40f631181b83252f505b9f57a2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788739"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065214"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -30,7 +30,7 @@ Aby dowiedzieć się wymagania infrastruktura usługi Azure Site Recovery, zebra
 **Serwer konfiguracji** | Serwer konfiguracji powinien być w stanie obsłużyć dzienną wydajność współczynnika zmian we wszystkich obciążeń uruchomionych na chronionych maszynach i wymaga wystarczającą przepustowość, aby stale replikować dane do usługi Azure Storage.<br/><br/> Najlepszym rozwiązaniem jest zlokalizować serwer konfiguracji na tej samej sieci oraz na segment sieci LAN jako maszyn, które mają być chronione. Mogą znajdować się w innej sieci, ale maszyn, które mają być chronione, powinny mieć widoczność sieci 3 warstwy do niego.<br/><br/> Zalecenia dotyczące rozmiaru serwera konfiguracji są podsumowane w tabeli w poniższej sekcji.
 **Serwer przetwarzania** | Pierwszy serwer przetwarzania jest instalowany domyślnie na serwerze konfiguracji. Można wdrażać dodatkowych serwerów przetwarzania do skalowania środowiska. <br/><br/> Serwer przetwarzania odbiera dane replikacji z chronionych maszyn i optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania. Następnie wysyła dane do platformy Azure. Maszyna serwera przetwarzania powinna mieć wystarczające zasoby do wykonywania tych zadań.<br/><br/> Serwer przetwarzania korzysta z pamięci podręcznej opartej na dyskach. Do obsługi zmian danych przechowywanych w przypadku awarii lub wąskich gardeł, należy użyć dysku oddzielne pamięci podręcznej 600 GB lub więcej.
 
-## <a name="size-recommendations-for-the-configuration-serverin-built-process-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji serwera/wbudowane procesu
+## <a name="size-recommendations-for-the-configuration-server-along-with-in-built-process-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji (wraz z w wbudowanym serwerem przetwarzania)
 
 Każdy serwer configuration wdrażanych za pośrednictwem [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) z serwerem przetwarzania wbudowanych. Zasoby serwera konfiguracji, takich jak procesor CPU, pamięci, miejsca są wykorzystywane różne stawki, gdy serwer przetwarzania wbudowanych jest wykorzystywany do ochrony maszyn wirtualnych. Z tego powodu wymagania różnią się, gdy jest wykorzystywany przez serwer przetwarzania wbudowanych.
 Serwer konfiguracji, w którym serwer przetwarzania wbudowanych służy do ochrony obciążeń może obsługiwać maksymalnie 200 maszyn wirtualnych, w oparciu o następujące konfiguracje
@@ -47,18 +47,6 @@ Gdzie:
 
 * Każda maszyna źródłowa jest konfigurowana 3 dyskami 100 GB.
 * Użyliśmy porównawczych magazyn 8 dysków SAS o wielkości 10 tys. obr/min, za pomocą RAID 10 dla miar dysk pamięci podręcznej.
-
-## <a name="size-recommendations-for-the-configuration-server"></a>Zalecenia dotyczące rozmiaru serwera konfiguracji
-
-Jeśli nie planujesz serwer konfiguracji jest używany jako serwer przetwarzania, postępuj zgodnie z poniżej danego konfigurację, aby obsłużyć maksymalnie 650 maszyn wirtualnych.
-
-**CPU** | **RAM** | **Rozmiar dysku systemu operacyjnego** | **Współczynnik zmian danych** | **Chronione maszyny**
---- | --- | --- | --- | ---
-24 procesorów wirtualnych Vcpu (2 sockets * 12 rdzeni \@ 2,5 GHz [GHz])| 32GB | 80 GB | Nie dotyczy | Maksymalnie 650 maszyn wirtualnych
-
-W przypadku gdy każda maszyna źródłowa jest konfigurowana 3 dyskami 100 GB.
-
-Ponieważ funkcje serwera przetwarzania nie jest wykorzystywana, współczynnik zmian danych nie ma zastosowania. Aby zachować powyżej pojemność, możesz przełączyć obciążenie z serwera przetwarzania wbudowanych do innego procesu skalowania w poziomie postępując zgodnie z wytycznymi [tutaj](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
 
 ## <a name="size-recommendations-for-the-process-server"></a>Zalecenia dotyczące rozmiaru serwera przetwarzania
 
@@ -123,7 +111,7 @@ Możesz też użyć polecenia cmdlet [Set-OBMachineSetting](https://technet.micr
 Przed rozpoczęciem konfigurowania infrastruktury usługi Azure Site Recovery, musisz uzyskać dostęp do środowiska, aby zmierzyć od następujących czynników: zgodnych maszyn wirtualnych, danych dotyczących dziennego zmieniać szybkości, wymagana przepustowość sieci dla żądanego celu punktu odzyskiwania, liczba usługi Azure site recovery składniki wymagane, czas potrzebny do ukończenia replikacji początkowej itp.,
 
 1. W celu mierzenia tych parametrów, upewnij się, że uruchamianie planisty wdrożenia w środowisku za pomocą wytycznych udostępnione [tutaj](site-recovery-deployment-planner.md).
-2. Wdrażanie serwera konfiguracji z wymaganiami, o których wspomniano [tutaj](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server). Jeśli obciążenie produkcyjne przekracza 650 maszyn wirtualnych, należy wdrożyć innym serwerze konfiguracji.
+2. Wdrażanie serwera konfiguracji za pomocą wspomniane powyżej wymogi. Jeśli obciążenie produkcyjne przekracza 650 maszyn wirtualnych, należy wdrożyć innym serwerze konfiguracji.
 3. Oparte na mierzonego dziennych zmian danych, wdrażanie [serwerów przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#download-installation-file) za pomocą wytycznych rozmiar wyrażam [tutaj](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
 4. Jeśli oczekujesz, współczynnik zmian danych dla maszyny wirtualnej z dyskiem mogłaby spowodować przekroczenie 2 MB/s, upewnij się, że [Konfigurowanie konta usługi premium storage](tutorial-prepare-azure.md#create-a-storage-account). Ponieważ planista wdrożenia jest uruchamiana dla określonego przedziału czasu, szczytowe danych zmiany stawki innym czasie, gdy okresy nie mogą być przechwytywane w raporcie.
 5. Zgodnie z żądanym celem punktu odzyskiwania [Ustaw przepustowość sieci](site-recovery-plan-capacity-vmware.md#control-network-bandwidth).

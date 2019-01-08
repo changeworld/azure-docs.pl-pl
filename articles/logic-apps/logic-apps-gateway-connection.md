@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie dostępu do źródeł danych w środowisku lokalnym dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Utworzyć i skonfigurować lokalną bramę danych, tak aby dostęp do źródeł danych w środowisku lokalnym z aplikacji logiki
+title: Dostęp do źródeł danych w środowisku lokalnym z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Łączenie danych lokalnych źródeł z aplikacji logiki przez utworzenie lokalnej bramy danych
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,19 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413710"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064070"
 ---
-# <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Łączenie ze źródłami danych w środowisku lokalnym z usługi Azure Logic Apps za pomocą lokalnej bramy danych
+# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Łączenie ze źródłami danych lokalnych z usługi Azure Logic Apps
 
-Aby uzyskać dostęp do źródeł danych w środowisku lokalnym, w aplikacjach logiki, można utworzyć zasobu bramy danych na platformie Azure tak, aby użyć aplikacji usługi logic apps [łączniki lokalne](../logic-apps/logic-apps-gateway-install.md#supported-connections). W tym artykule przedstawiono sposób tworzenia zasobu bramy usługi Azure *po* możesz [pobrać i zainstalować bramę na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md). 
+Dostęp do źródeł danych w środowisku lokalnym pochodzących z tworzonych aplikacji logiki, utwórz zasób bramy danych lokalnych w witrynie Azure portal. Następnie można użyć aplikacji usługi logic apps [łączniki lokalne](../logic-apps/logic-apps-gateway-install.md#supported-connections). W tym artykule przedstawiono sposób tworzenia zasobu bramy usługi Azure *po* możesz [pobrać i zainstalować bramę na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md). 
+
+> [!TIP]
+> Aby połączyć się z sieciami wirtualnymi platformy Azure, należy rozważyć utworzenie [ *środowisko usługi integracji* ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zamiast tego. 
 
 Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz następujące artykuły:
 
@@ -65,7 +68,7 @@ Po zainstalowaniu bramy na komputerze lokalnym, będzie można utworzyć zasobu 
    | **Nazwa** | Nazwa zasobu bramy | 
    | **Subskrypcja** | Nazwa subskrypcji platformy Azure, która powinna być tej samej subskrypcji co aplikacja logiki. Domyślna subskrypcja opiera się na konto platformy Azure, używane do logowania. | 
    | **Grupa zasobów** | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) służący do organizowania powiązanych zasobów | 
-   | **Lokalizacja** | Azure ogranicza możliwość użycia tej lokalizacji na tym samym regionie, który został wybrany dla Usługa bramy w chmurze podczas [instalacji bramy](../logic-apps/logic-apps-gateway-install.md). <p>**Uwaga**: Upewnij się, ta lokalizacja zasobu bramy odpowiada lokalizacji usługi w chmurze bramy. W przeciwnym razie instalacji bramy może nie być widoczna na liście zainstalowanych bram można wybrać w następnym kroku. Można użyć różnych regionach, bramy zasobu bazy danych i aplikacji logiki. | 
+   | **Lokalizacja** | Azure ogranicza możliwość użycia tej lokalizacji na tym samym regionie, który został wybrany dla Usługa bramy w chmurze podczas [instalacji bramy](../logic-apps/logic-apps-gateway-install.md). <p>**Uwaga**: Upewnij się, że ta lokalizacja zasobu bramy jest zgodna lokalizacji usługi w chmurze bramy. W przeciwnym razie instalacji bramy może nie być widoczna na liście zainstalowanych bram można wybrać w następnym kroku. Można użyć różnych regionach, bramy zasobu bazy danych i aplikacji logiki. | 
    | **Nazwa instalacji** | Jeśli Twoja instalacja bramy nie została jeszcze wybrana, wybierz bramę, która została wcześniej zainstalowana. | 
    | | | 
 

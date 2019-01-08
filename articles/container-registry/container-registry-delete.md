@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 01/04/2019
 ms.author: danlep
-ms.openlocfilehash: a1644f68465cffa8cce27257bb91100c111af8a1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b18638057def03a02024200edb157e5caf08a669
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857775"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065175"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Usuwanie obrazów kontenerów w usłudze Azure Container Registry
 
@@ -60,7 +60,7 @@ W rejestrze prywatnym, takich jak usługa Azure Container Registry nazwa obrazu 
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
 ```
 
-Do dyskusji na temat obrazów, tagowanie najlepszych rozwiązań, zobacz [Docker Tagowania: najlepsze rozwiązania dotyczące obrazów platformy docker przechowywanie wersji i tagowania] [ tagging-best-practices] wpis w blogu w witrynie MSDN.
+Do dyskusji na temat obrazów, tagowanie najlepszych rozwiązań, zobacz [znakowanie platformy Docker: Najlepsze rozwiązania dotyczące obrazów platformy docker przechowywanie wersji i tagowania] [ tagging-best-practices] wpis w blogu w witrynie MSDN.
 
 ### <a name="layer"></a>Warstwa
 
@@ -129,9 +129,9 @@ $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea
 
 Dane obrazów można usunąć z rejestru kontenerów na kilka sposobów:
 
-* Usuń [repozytorium](#delete-repository): usuwa wszystkie obrazy i wszystkie warstwy unikatowy w repozytorium.
-* Usuń, [tag](#delete-by-tag): usuwa obrazu, tag, wszystkie warstwy unikatowy odwołuje się obraz i wszystkie inne znaczniki skojarzone z obrazem.
-* Usuń, [skrótu manifestu](#delete-by-manifest-digest): usuwa obrazu, wszystkie warstwy unikatowy odwołuje się obraz i wszystkie znaczniki skojarzone z obrazem.
+* Usuń [repozytorium](#delete-repository): Usuwa wszystkie obrazy i wszystkie warstwy unikatowy w repozytorium.
+* Usuń, [tag](#delete-by-tag): Usuwa obrazu, tag, wszystkie warstwy unikatowy odwołuje się obraz i wszystkie inne znaczniki skojarzone z obrazem.
+* Usuń, [skrótu manifestu](#delete-by-manifest-digest): Usuwa obraz, wszystkie warstwy unikatowy odwołuje się obraz i wszystkie znaczniki skojarzone z obrazem.
 
 ## <a name="delete-repository"></a>Usuwanie repozytorium
 
@@ -239,20 +239,20 @@ Jak wspomniano w [skrótu manifestu](#manifest-digest) sekcji wypychanie zmodyfi
      },
      {
        "digest": "sha256:d2bdc0c22d78cde155f53b4092111d7e13fe28ebf87a945f94b19c248000ceec",
-       "tags": null,
+       "tags": [],
        "timestamp": "2018-07-11T21:32:21.1400513Z"
      }
    ]
    ```
 
-Jak widać w danych wyjściowych w ostatnim kroku w sekwencji, ma teraz oddzielone manifestu, którego `"tags"` właściwość `null`. Tego manifestu nadal istnieje w rejestrze, wraz z danymi dowolnego unikatowe warstwy, której się odwołuje. **Można usunąć takie oddzielone obrazy i ich warstwy danych, należy usunąć przez skrót manifestu**.
+Jak widać w danych wyjściowych w ostatnim kroku w sekwencji, ma teraz oddzielone manifestu, którego `"tags"` właściwość jest pusta tablica. Tego manifestu nadal istnieje w rejestrze, wraz z danymi dowolnego unikatowe warstwy, której się odwołuje. **Można usunąć takie oddzielone obrazy i ich warstwy danych, należy usunąć przez skrót manifestu**.
 
 ### <a name="list-untagged-images"></a>Wyświetlenie listy obrazów bez znaczników
 
 Możesz wyświetlić listę wszystkich obrazów bez znaczników w repozytorium, używając następującego polecenia wiersza polecenia platformy Azure. Zastąp `<acrName>` i `<repositoryName>` przy użyciu wartości odpowiednich dla danego środowiska.
 
 ```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName>  --query "[?tags==null].digest"
+az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?!(tags[?'*'])].digest"
 ```
 
 ### <a name="delete-all-untagged-images"></a>Usuń wszystkie obrazy bez znaczników
@@ -283,7 +283,7 @@ REPOSITORY=myrepository
 # Delete all untagged (orphaned) images
 if [ "$ENABLE_DELETE" = true ]
 then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags==null].digest" -o tsv \
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?!(tags[?'*'])].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
     echo "No data deleted. Set ENABLE_DELETE=true to enable image deletion."
@@ -310,7 +310,7 @@ $registry = "myregistry"
 $repository = "myrepository"
 
 if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags==null].digest" -o tsv `
+    az acr repository show-manifests --name $registry --repository $repository --query "[?!(tags[?'*'])].digest" -o tsv `
     | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
 } else {
     Write-Host "No data deleted. Set `$enableDelete = `$TRUE to enable image deletion."

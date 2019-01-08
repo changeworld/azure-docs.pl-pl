@@ -3,7 +3,7 @@ title: Przewodnik opisujący Tworzenie szablonu rozwiązania w portalu Marketpla
 description: Szczegółowe instrukcje dotyczące sposobu tworzenia, certyfikować i wdrażania wielu maszyn wirtualnych szablon rozwiązań dla obrazu dla zakupu w portalu Azure Marketplace.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 4a72f11b55d1c315a9dce62de3e6d23c340baa51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 914dece4ba064af00c5b2c34d43dedbb1d62e2e2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232865"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073745"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Przewodnik, aby utworzyć szablon rozwiązań dla witryny Azure Marketplace
 Po wykonaniu kroku 1, [o tworzeniu konta i rejestracji][link-acct-creation], firma Microsoft przewodnikiem po utworzeniu szablonu rozwiązań zgodnych z platformą Azure w [techniczne wymagania wstępne dotyczące tworzenia Szablon rozwiązania](marketplace-publishing-solution-template-creation-prerequisites.md). Teraz przeprowadzimy Cię przez kroki tworzenia szablonu rozwiązania dla wielu maszyn wirtualnych na [portalu wydawców] [ link-pubportal] dla witryny Azure Marketplace.
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>Utwórz ofertę szablonu rozwiązania w portalu wydawców
-Przejdź do [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Podczas logowania się po raz pierwszy do [portalu wydawców](https://publish.windowsazure.com/), użyj tego samego konta, z którego zarejestrowano profil sprzedawcy firmy. Później można dodać każdy pracownik firmy jako współadministratora w portalu wydawców.
+Przejdź do [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Podczas logowania się po raz pierwszy do [portalu wydawców](https://publish.windowsazure.com/), użyj tego samego konta, z którego zarejestrowano profil sprzedawcy firmy. Później można dodać każdy pracownik firmy jako coadmin w portalu wydawców.
 
 ### <a name="1-select-solution-templates"></a>1. Wybierz opcję "Szablony rozwiązań"
   ![Rysowanie][img-pubportal-menu-sol-templ]
@@ -40,11 +41,11 @@ Szablon rozwiązania jest nadrzędny dla wszystkich jego topologii. Można zdefi
 
   Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
-  Witryna Azure Portal: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
+  Witryna Azure portal: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
 * Dodaj nową wersję.
 
 ### <a name="4-get-your-topology-versions-certified"></a>4. Pobierz swoje wersje topologii certyfikat
-Przekaż plik zip, który zawiera wszystkie wymagane pliki do aprowizacji tej konkretnej wersji tej topologii. Ten plik zip musi zawierać następujące informacje:
+Przekaż plik zip, który zawiera wszystkie wymagane pliki do aprowizacji tej konkretnej wersji tej topologii. Ten plik zip musi zawierać następujące pliki:
 
 * *mainTemplate.json* i *createUiDefinition.json* pliku w katalogu głównym.
 * Połączone szablony i wszystkie wymagane skrypty.
@@ -55,14 +56,14 @@ Przekaż plik zip, który zawiera wszystkie wymagane pliki do aprowizacji tej ko
   >
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, utworzony szablon rozwiązania i przekazany plik zip, postępuj zgodnie z instrukcjami w [Przewodnik po zawartości marketingowej witryny Marketplace](marketplace-publishing-push-to-staging.md) przed wypchnięciem oferty do wdrażania przejściowego. Aby wyświetlić pełny zestaw publikowanie artykułów w witrynie marketplace, odwiedź stronę [wprowadzenie: jak opublikować ofertę w portalu Azure Marketplace](marketplace-publishing-getting-started.md).
+Teraz, utworzony szablon rozwiązania i przekazany plik zip, postępuj zgodnie z instrukcjami [Przewodnik po zawartości marketingowej witryny Marketplace](marketplace-publishing-push-to-staging.md) przed wypchnięciem oferty do wdrażania przejściowego. Aby wyświetlić pełny zestaw publikowanie artykułów w witrynie marketplace, odwiedź stronę [wprowadzenie: Jak opublikować ofertę w portalu Azure Marketplace](marketplace-publishing-getting-started.md).
 
 Użytkownik może również zainteresować te pokrewne artykuły:
 
-* Obrazy maszyn wirtualnych: [dotyczące obrazów maszyn wirtualnych na platformie Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* Rozszerzenia maszyn wirtualnych: [rozszerzeń maszyn wirtualnych platformy Azure i funkcji](../virtual-machines/extensions/features-windows.md)
+* Obrazy maszyn wirtualnych: [Informacje o obrazach maszyn wirtualnych na platformie Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
+* Rozszerzenia maszyn wirtualnych: [Rozszerzenia maszyny Wirtualnej platformy Azure i funkcji](../virtual-machines/extensions/features-windows.md)
 * Usługa Azure Resource Manager: [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) i [przykłady prostego szablonu](https://github.com/rjmax/ArmExamples)
-* Ogranicza konto magazynu: [jak monitorować ograniczania konta magazynu](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) i [magazynu w warstwie Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
+* Ogranicza konto magazynu: [Jak monitorować ograniczania konta magazynu](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) i [magazynu w warstwie Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

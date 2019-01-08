@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91f6254fe756f256a2c88429fb4d96156867ef4a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1f9a108a91a2fa917ec58e6cff487c6dca71130f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001910"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076403"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Dane telemetryczne dotyczące żądań: Model danych usługi Application Insights
 
@@ -63,9 +63,9 @@ Maksymalna długość: 1024 znaki
 
 ## <a name="success"></a>Powodzenie
 
-Wskazanie wywołanie powodzeniem lub niepowodzeniem. To pole jest wymagane. Gdy Nieustawione jawnie na `false` — żądanie uznane za zakończy się powodzeniem. Ustaw tę wartość na `false` czy operacji zostało przerwane przez wyjątek zwrócił błąd o kodzie wyniku.
+Wskazanie wywołanie powodzeniem lub niepowodzeniem. To pole jest wymagane. Gdy Nieustawione jawnie na `false` — żądanie jest traktowane jako zakończy się powodzeniem. Ustaw tę wartość na `false` czy operacji zostało przerwane przez wyjątek zwrócił błąd o kodzie wyniku.
 
-Dla aplikacji sieci web usługi Application Insights Definiuj żądanie jako zakończony niepowodzeniem, gdy kod odpowiedzi jest mniejsza `400` lub równa `401`. Jeśli to domyślne mapowanie nie odpowiada semantycznego aplikacji istnieją jednak przypadki. Kod odpowiedzi `404` może wskazywać "żadnych rekordów", które mogą być częścią regularnego przepływu. Ponadto może to oznaczać przerwanego linku. Zerwane linki można zaimplementować nawet bardziej zaawansowanych logiki. Uszkodzone linki można oznaczyć jako błędy tylko wtedy, gdy te linki znajdują się w tej samej lokacji, analizując odwołania adresu url. Lub oznaczyć je jako błędy podczas uzyskiwania dostępu do aplikacji mobilnych firmy. Podobnie `301` i `302` wskazuje błąd podczas uzyskiwania dostępu do klienta, który nie obsługuje przekierowania.
+Dla aplikacji sieci web usługi Application Insights zdefiniuj żądanie jako pomyślne gdy kod odpowiedzi jest mniejsza niż `400` lub równa `401`. Jeśli to domyślne mapowanie nie odpowiada semantycznego aplikacji istnieją jednak przypadki. Kod odpowiedzi `404` może wskazywać "żadnych rekordów", które mogą być częścią regularnego przepływu. Ponadto może to oznaczać przerwanego linku. Zerwane linki można zaimplementować nawet bardziej zaawansowanych logiki. Uszkodzone linki można oznaczyć jako błędy tylko wtedy, gdy te linki znajdują się w tej samej lokacji, analizując odwołania adresu url. Lub oznaczyć je jako błędy podczas uzyskiwania dostępu do aplikacji mobilnych firmy. Podobnie `301` i `302` wskazuje błąd podczas uzyskiwania dostępu do klienta, który nie obsługuje przekierowania.
 
 Częściowo zaakceptowane zawartości `206` może wskazywać na błąd żądania ogólnego. Na przykład punkt końcowy usługi Application Insights odbiera partii elementów telemetrii jako pojedynczego żądania. Zwraca `206` gdy niektóre elementy w partii nie zostały przetworzone pomyślnie. Rosnąca liczba `206` wskazuje problem, który musi sprawdzić. Podobne logika dotyczy `207` wiele stanów, w których Powodzenie mogą być najgorszy kodów odpowiedzi oddzielne.
 

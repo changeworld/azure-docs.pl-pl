@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 93e6819f5b732ed318296aa338a427f1bf92ed74
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4fc17daf640e95ab028150cec029471a0c7bc565
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042896"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062999"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
 Usługa Azure Cosmos DB w sposób przezroczysty replikuje dane we wszystkich regionach platformy Azure skojarzony z Twoim kontem Cosmos. Usługa cosmos DB wykorzystuje wiele warstw nadmiarowości danych, jak pokazano na poniższej ilustracji:
 
-![Podział na partycje fizyczne](./media/high-availability/figure1.png)
+![Podział na partycje fizyczne](./media/high-availability/cosmosdb-data-redundancy.png)
 
 - Dane w kontenerach Cosmos w poziomie jest podzielona na partycje.
 

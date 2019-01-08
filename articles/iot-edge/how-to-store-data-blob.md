@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 287f67ff9eb0ecc214bd8e8fd3c27660cea185c7
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b5dcc4295467aee82547bc2a0894320bd110998f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055068"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065821"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -86,7 +86,7 @@ Portal Azure Marketplace udostępnia usługi IoT Edge, moduły, które można wd
       >[!IMPORTANT]
       >Usługa Azure IoT Edge jest uwzględniana wielkość liter, wykonywać wywołania do modułów, gdy zestaw SDK usługi Storage domyślnie na małe litery. Aby upewnić się, że nie są przerwane połączenia w usłudze Azure Blob Storage na moduł usługi IoT Edge, nadaj jej nazwę małe litery. 
 
-   2. Wartość domyślna **opcje tworzenia kontenera** powiązań portów, które wymaga kontenera, ale również należy dodać informacje o koncie magazynu i powiązania dla katalogu magazynu na urządzeniu. Zastąp kod JSON w portalu przy użyciu poniższych JSON:
+   2. Wartość domyślna **opcje tworzenia kontenera** powiązań portów, które wymaga kontenera, ale również należy dodać informacje o koncie magazynu i powiązania dla katalogu magazynu na urządzeniu. Zastąp kod JSON w portalu JSON poniżej:
     
       ```json
       {
@@ -121,7 +121,7 @@ Portal Azure Marketplace udostępnia usługi IoT Edge, moduły, które można wd
    4. Wybierz pozycję **Zapisz**.
 
 4. Wybierz **dalej** aby kontynuować do następnego kroku w kreatorze.
-5. W **określanie tras** kroku kreatora wybierz **dalej**.
+5. W **określanie tras** kroku kreatora wybierz pozycję **dalej**.
 6. W kroku **Przegląd wdrożenia** kreatora wybierz pozycję **Prześlij**.
 7. Po przesłaniu wdrożenia, można wrócić do **usługi IoT Edge** strony Centrum IoT Hub. Wybierz urządzenie usługi IoT Edge docelowych przy użyciu wdrażania, aby otworzyć jego szczegóły. 
 8. W szczegółowych informacji o urządzeniu, sprawdź, czy moduł magazynu obiektów blob znajduje się w obu **określonym we wdrożeniu** i **zgłoszona przez urządzenie**. Może upłynąć kilka minut w przypadku modułu do pracy na urządzeniu i następnie odsyłane do usługi IoT Hub. Odśwież stronę aby zobaczyć zaktualizowany stan. 

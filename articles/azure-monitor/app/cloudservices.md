@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 710b584777abc312388c3857ced06ce196416a31
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 170ba8e85318ab3774aef95b0a62e452bc2c5e24
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042941"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077865"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -217,7 +217,7 @@ Aby uzyskać ogólny obraz systemu, można przenieść kluczowe wykresy monitoro
 
 Jeśli system używa innych usług platformy Azure, takich jak Stream Analytics, należy również uwzględnić wykresy ich monitorowania. 
 
-Jeśli masz klienta aplikacji mobilnej, użyj pakietu [App Center](../../application-insights/app-insights-mobile-center-quickstart.md). Utwórz zapytania w pozycji [Analiza](../../azure-monitor/app/analytics.md), aby wyświetlić liczby zdarzeń i przypiąć je do pulpitu nawigacyjnego.
+Jeśli masz klienta aplikacji mobilnej, użyj pakietu [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). Utwórz zapytania w pozycji [Analiza](../../azure-monitor/app/analytics.md), aby wyświetlić liczby zdarzeń i przypiąć je do pulpitu nawigacyjnego.
 
 ## <a name="example"></a>Przykład
 [Przykład](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) monitoruje usługę mającą rolę sieci Web i dwie role procesów roboczych.

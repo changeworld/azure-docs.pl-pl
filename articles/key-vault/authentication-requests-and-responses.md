@@ -10,16 +10,15 @@ ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296554"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074057"
 ---
 # <a name="authentication-requests-and-responses"></a>Uwierzytelnianie, żądania i odpowiedzi
 
@@ -65,13 +64,13 @@ Ten temat zawiera szczegółowe informacje o usłudze Azure Key Vault. Aby uzysk
 ## <a name="error-responses"></a>Odpowiedzi na błędy  
  Obsługa błędów użyje kodów stanu HTTP. Typowe wyniki są:  
 
--   2xx — Powodzenie: używane do normalnego działania. Treść odpowiedzi zawiera oczekiwany wynik  
+-   2xx — Powodzenie: Używane do normalnego działania. Treść odpowiedzi zawiera oczekiwany wynik  
 
--   3xx — Przekierowanie: 304 "niezmodyfikowane" mogą być zwrócone do spełnienia warunkowego GET. Inne kody 3xx może służyć w przyszłości do wskazania zmiany DNS i ścieżkę.  
+-   3xx — przekierowania: 304 "Nie jest modyfikowany" mogą być zwrócone do spełnienia warunkowego GET. Inne kody 3xx może służyć w przyszłości do wskazania zmiany DNS i ścieżkę.  
 
--   4xx — Błąd klienta: używany w żądaniach, brakujące klucze, błędy składniowe, nieprawidłowe parametry, błędy uwierzytelniania, itp. Treść odpowiedzi zawiera wyjaśnienie szczegółowy komunikat o błędzie.  
+-   4xx — Błąd klienta: Używany w żądaniach, brakujące klucze, błędy składniowe, nieprawidłowe parametry, błędy uwierzytelniania, itd. Treść odpowiedzi zawiera wyjaśnienie szczegółowy komunikat o błędzie.  
 
--   5xx — Błąd serwera: używane do błędy wewnętrzne serwera. Treść odpowiedzi będzie zawierać informacje o błędzie podsumowania.  
+-   5xx — Błąd serwera: Używany do błędy wewnętrzne serwera. Treść odpowiedzi będzie zawierać informacje o błędzie podsumowania.  
 
  System jest przeznaczona do pracy związany z serwera proxy lub zapory. W związku z tym klient może zostać wyświetlony innych kodach błędów.  
 
@@ -115,7 +114,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  Parametry nagłówka WWW-Authenticate są następujące:  
 
--   Autoryzacja: adres usługi autoryzacji OAuth2, która może być używana w celu uzyskania tokenu dostępu dla żądania.  
+-   Autoryzacja: Adres usługi autoryzacji OAuth2, która może być używana w celu uzyskania tokenu dostępu dla żądania.  
 
 -   Zasób: Nazwa zasobu do użycia w żądaniu autoryzacji.  
 

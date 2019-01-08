@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 4653803623ed0c847fa63663204b5842f7a03d08
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584211"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063917"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek dotyczący usługi Azure Log Integration: Przetwarzanie zdarzeń usługi Azure Key Vault przy użyciu usługi Event Hubs
 
@@ -25,13 +25,13 @@ ms.locfileid: "53584211"
 
 Integracja dzienników platformy Azure umożliwia pobieranie zarejestrowanych zdarzeń i udostępnić je zabezpieczeń informacjami i zdarzeniami (SIEM) systemu zarządzania. W tym samouczku przedstawiono przykład sposobu integracji dzienników platformy Azure mogą być używane do przetwarzania dzienników, które są nabywane za pośrednictwem usługi Azure Event Hubs.
 
-Preferowaną metodą integracji dzienników platformy Azure jest za pomocą łącznika usługi Azure Monitor s dostawcy rozwiązania SIEM, a także następujące [instrukcje](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Jednak jeśli Twoja t dostawcy rozwiązania SIEM udostępnić łącznik do usługi Azure Monitor, może być można używać integracji dzienników platformy Azure jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwany przez usługi Azure Log Integration) do czasu udostępnienia łącznika programu.
+Preferowaną metodą integracji dzienników platformy Azure jest za pomocą łącznika usługi Azure Monitor z dostawcą rozwiązania SIEM, a także następujące [instrukcje](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcy rozwiązania SIEM nie udostępnia łącznik do usługi Azure Monitor, może być można używać integracji dzienników platformy Azure jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwany przez usługi Azure Log Integration) do czasu udostępnienia łącznika programu.
 
  
-Użyj tego samouczka, zapoznaniu się z jak Azure Log Integration i centrów zdarzeń współpracują ze sobą, zgodnie z krokami przykład i zrozumienie, jak każdy krok obsługuje rozwiązania. Możesz wykonać był zdobytą w tym miejscu utworzyć własne instrukcje pomocy technicznej Twojej firmy s unikatowe wymagania.
+Użyj tego samouczka, zapoznaniu się z jak Azure Log Integration i centrów zdarzeń współpracują ze sobą, zgodnie z krokami przykład i zrozumienie, jak każdy krok obsługuje rozwiązania. Następnie można podjąć, co wykorzystasz zdobyte umiejętności w tym miejscu utworzyć własne instrukcje obsługuje unikatowe wymagania Twojej firmy.
 
 >[!WARNING]
-Kroki i polecenia w tym samouczku nie są przeznaczone do można kopiować i wklejać. Są one jedynie przykładowe. Nie należy używać poleceń programu PowerShell, ponieważ jest w danym środowisku na żywo. Należy dostosować je w zależności od używanego środowiska unikatowy.
+Kroki i polecenia w tym samouczku nie są przeznaczone do można kopiować i wklejać. Są one jedynie przykładowe. Nie należy używać poleceń programu PowerShell "w jakim jest" w środowisku na żywo. Należy dostosować je w zależności od używanego środowiska unikatowy.
 
 
 Ten samouczek przeprowadzi Cię przez proces podejmowania działań usługi Azure Key Vault zalogowany do Centrum zdarzeń i udostępniając je jako pliki w formacie JSON do systemu SIEM. Następnie należy skonfigurować systemu SIEM do przetwarzania plików JSON.
@@ -80,7 +80,7 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące el
 ## <a name="create-supporting-infrastructure-elements"></a>Utwórz elementy infrastruktury obsługi
 
 1. Otwórz okno programu PowerShell z podwyższonym i przejdź do **C:\Program Files\Microsoft Azure Log Integration**.
-1. Zaimportuj polecenia cmdlet AzLog, uruchamiając skrypt LoadAzLogModule.ps1. Wprowadź `.\LoadAzLogModule.ps1` polecenia. (Zwróć uwagę. \ tego polecenia.) Powinny zostać wyświetlone informacje podobne do następujących:</br>
+1. Zaimportuj polecenia cmdlet AzLog, uruchamiając skrypt LoadAzLogModule.ps1. Wprowadź `.\LoadAzLogModule.ps1` polecenia. (Zwróć uwagę ". \" tego polecenia.) Powinny zostać wyświetlone informacje podobne do następujących:</br>
 
    ![Listę załadowanych modułów](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące el
 
    ![Okno programu PowerShell](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. Utwórz zmienne do przechowywania wartości, które będą używane później. Wprowadź każdy z poniższych wierszy programu PowerShell. Może być konieczne dostosowanie wartości pod kątem danego środowiska.
-    - ```$subscriptionName = �Visual Studio Ultimate with MSDN�``` (Nazwa subskrypcji usługi mogą się różnić. Można go było wyświetlić jako część danych wyjściowych poprzedniego polecenia.)
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Nazwa subskrypcji usługi mogą się różnić. Można go było wyświetlić jako część danych wyjściowych poprzedniego polecenia.)
     - ```$location = 'West US'``` (Ta zmienna będzie służyć do przekazywania lokalizacji, w którym utworzone zasoby. Można zmienić tej zmiennej do dowolnej lokalizacji wybranej.)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (Nazwa może zawierać wszystko, ale powinien on zawierać tylko małe litery i cyfry).

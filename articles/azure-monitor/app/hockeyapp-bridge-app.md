@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 73e1fac5ba9fbb981c92ff8d32064f7d34729ef7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 06a9cf124708984444bc2bc19f2529a3c0f75283
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812290"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074363"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Eksplorowanie danych platformy HockeyApp w usłudze Application Insights
 
 > [!NOTE]
-> Platforma HockeyApp nie jest już dostępna dla nowych aplikacji. Istniejące wdrożenia usługi HockeyApp będą nadal działać. Visual Studio App Center jest teraz usługę zalecane przez firmę Microsoft do monitorowania nowych aplikacji mobilnych. [Dowiedz się, jak skonfigurować swoje aplikacje za pomocą platformy App Center i Application Insights](../../application-insights/app-insights-mobile-center-quickstart.md).
+> Platforma HockeyApp nie jest już dostępna dla nowych aplikacji. Istniejące wdrożenia usługi HockeyApp będą nadal działać. Visual Studio App Center jest teraz usługę zalecane przez firmę Microsoft do monitorowania nowych aplikacji mobilnych. [Dowiedz się, jak skonfigurować swoje aplikacje za pomocą platformy App Center i Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 [Platforma HockeyApp](https://azure.microsoft.com/services/hockeyapp/) to usługa umożliwiająca monitorowanie na żywo aplikacje komputerowe i mobilne. Z usługi HockeyApp można wysyłać niestandardowe i śledzenie danych telemetrycznych do monitorowania użycia i pomagają w procesie diagnozowania (oprócz pobierania danych o awariach). Ten strumień danych telemetrycznych można wykonywać zapytania za pomocą zaawansowanego [Analytics](../../azure-monitor/app/analytics.md) funkcji [usługi Azure Application Insights](../../application-insights/app-insights-overview.md). Ponadto mogą [Eksportowanie niestandardowych i śledzić dane telemetryczne](export-telemetry.md). Aby włączyć te funkcje, należy skonfigurować most, który przekazuje HockeyApp niestandardowe dane do usługi Application Insights.
 
@@ -33,7 +33,7 @@ W usłudze HockeyApp, Otwórz okno Ustawienia konta, [tokeny interfejsu API](htt
 
 ![Pobierz token z interfejsu API platformy HockeyApp](./media/hockeyapp-bridge-app/01.png)
 
-Otwórz portal Microsoft Azure i [Utwórz zasób usługi Application Insights](../../application-insights/app-insights-create-new-resource.md). Ustaw typ aplikacji "Aplikacja HockeyApp bridge":
+Otwórz portal Microsoft Azure i [Utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md ). Ustaw typ aplikacji "Aplikacja HockeyApp bridge":
 
 ![Nowy zasób usługi Application Insights](./media/hockeyapp-bridge-app/02.png)
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: ed3203cde8bad8c506bacf3607faecfbcde2cd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6be0603c8332a6d1bd6c965a167b14f5a22362e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606864"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064223"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 
@@ -33,7 +33,7 @@ Poniższe sekcje pokazują, jak skonfigurować długoterminowe przechowywanie, w
 
 Można skonfigurować bazy danych SQL [przechowywania automatycznych kopii zapasowych](sql-database-long-term-retention.md) przez okres dłuższy niż okres przechowywania w warstwie usługi. 
 
-1. W witrynie Azure portal, wybierz swój serwer SQL, a następnie kliknij przycisk **Zarządzanie kopiami zapasowymi**. Na **konfigurowania zasad** , a następnie wybierz pole wyboru dla bazy danych, na którym chcesz ustawić lub zmodyfikować długoterminowe zasady przechowywania kopii zapasowych.
+1. W witrynie Azure portal, wybierz swój serwer SQL, a następnie kliknij przycisk **Zarządzanie kopiami zapasowymi**. Na **konfigurowania zasad** karcie *zaznacz pole wyboru dla bazy danych, na którym chcesz ustawić lub zmodyfikować długoterminowe zasady przechowywania kopii zapasowych*. Jeśli pole wyboru obok bazy danych nie jest zaznaczona, zmiany zasad nie będą dotyczyć tej bazy danych.  
 
    ![Zarządzanie łącze kopii zapasowych](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 

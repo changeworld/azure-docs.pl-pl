@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868671"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074006"
 ---
 # <a name="requirements-by-listing-type"></a>Wymagania dotyczące przez typ oferty  
 Wymagania techniczne i marketingowe zawartości zależą od storefront, typ oferty i typ oferty. Przejrzyj następujące specyfikacje, aby sprawdzić zgodność.  
@@ -29,7 +29,7 @@ Wymagania techniczne i marketingowe zawartości zależą od storefront, typ ofer
 2. Wyświetlanie typów i wymagania dotyczące typu oferty:  
     *   Aby uzyskać więcej informacji na temat typów i typów ofert odwiedź Określ typ wyświetlania listy dla strony rozwiązania znajdujących się na [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  
 
-## <a name="storefront-requirements-appsource"></a>Wymagania StoreFront: usługi AppSource  
+## <a name="storefront-requirements-appsource"></a>StoreFront wymagania: AppSource  
 W poniższej tabeli opisano wymagania wstępne do publikowania w usłudze AppSource.  
 
 | Wymaganie | Szczegóły | Wymagane czy Zalecane |  
@@ -40,19 +40,19 @@ W poniższej tabeli opisano wymagania wstępne do publikowania w usłudze AppSou
 | ***Oprogramowanie jako usługa (SaaS) aplikacji dla firm*** | Aplikacja musi spełniać następujące wymagania.<ul> <li>Aplikacja SaaS line-of-business</li> <li>Proces biznesowy fokus</li> <li>Przeznaczone dla przedsiębiorstw</li> <li>Umożliwienie użytkownikom używania ich poświadczeń firmowych, aby zalogować się, takie jak nazwa użytkownika i hasło</li> </ul> | Wymagane |  
 | ***Okres bezpłatnej wersji próbnej i wersja próbna*** | Aplikacja musi zawierać jeden następujące opcje w kolejności, klient może używać aplikacji bezpłatnie przez ograniczony czas.<ul> <li>Podaj `try` metody, dzięki czemu klienci mogą rozpocząć okres próbny aplikacji w usłudze AppSource</li> <li>Podaj `request trial` opcji w usłudze AppSource, dzięki czemu klienci mogą poprosić o wersję próbną aplikacji</li> </ul>Bezpłatna wersja próbna, który podasz muszą zaoferować klientowi przez wstępnie określony czas, aby wypróbować aplikację, bez dodatkowych kosztów. | Wymagane |  
 | ***Można je łatwo konfigurować, gotowych do użycia rozwiązanie*** | Aplikacja musi być łatwo i szybko skonfigurować i skonfigurować za pomocą dostosowanie nie jest wymagane. | Wymagane |  
-| ***Zarządzanie potencjalnymi klientami*** | Należy włączyć usługi CRM, aby zaakceptować danych potencjalnego klienta, zanim otrzymasz potencjalnych klientów w sklepie.<ul> <li>Przykłady CRM czy Marketo, Microsoft Dynamics i Salesforce</li> </ul> | Wymagane |  
+| ***Zarządzanie potencjalnymi klientami*** | Włączanie usługi CRM, aby zaakceptować danych potencjalnego klienta, zanim otrzymasz potencjalnych klientów w sklepie.<ul> <li>Przykłady CRM czy Marketo, Microsoft Dynamics i Salesforce</li> </ul> | Wymagane |  
 | ***Zasady ochrony prywatności i warunki użytkowania*** | Aplikację należy podać link do strony zasad ochrony prywatności przy użyciu publicznego adresu URL. Warunki użytkowania, musi być podana podczas publikowania jako tekst. | Wymagane |  
 | ***Pomoc techniczna*** | Aplikację należy podać link do strony pomocy technicznej klienta przy użyciu publicznego adresu URL. Jeśli Twoja aplikacja jest korzystania z wersji próbnej, następnie musi obsługiwać bez dodatkowych opłat w okresie próbnym. | Wymagane |  
 
-## <a name="storefront-requirements-azure-marketplace"></a>StoreFront wymagania: Portal Azure Marketplace  
+## <a name="storefront-requirements-azure-marketplace"></a>StoreFront wymagania: Azure Marketplace  
 Poniżej przedstawiono wymagania wstępne, aby uzyskać listę typów w portalu Azure Marketplace.  
 
 | Wymaganie | Szczegóły | Typ oferty |  
 |:--- |:--- |:--- |  
-| ***— Zasady udziału*** | Aplikacji muszą być zgodne z zasadami uczestnictwa w portalu Azure Marketplace.<ul> <li>Aby uzyskać więcej informacji na temat zasad uczestnictwa, odwiedź witrynę Azure Marketplace — zasady udziału strony znajduje się w [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).</li></ul> | list<br />Przeprowadzaj transakcje<br />trial |  
+| ***— Zasady udziału*** | Aplikacja musi być zgodna z zasadami uczestnictwa w portalu Azure Marketplace.<ul> <li>Aby uzyskać więcej informacji na temat zasad uczestnictwa, odwiedź witrynę Azure Marketplace — zasady udziału strony znajduje się w [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).</li></ul> | list<br />Przeprowadzaj transakcje<br />trial |  
 | ***Integracja z usługą firmy Microsoft*** | Oferty należy użyć lub rozszerzyć typów usługi Microsoft Azure, takich jak obliczeniowych, sieci i magazynu. Oferty należy wyrównać do istniejącej kategorii portalu Azure Marketplace, takich jak bazy danych, zabezpieczeń lub sieci.<ul> <li>Aby uzyskać więcej informacji na temat oferty w witrynie Marketplace można znaleźć aplikacje z portalu Marketplace strony znajduje się w [azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps).</li> </ul> | list<br />Przeprowadzaj transakcje<br />trial |  
 | ***Grupy odbiorców*** | Oferty muszą być dla specjalistów IT, deweloperów rozwiązań w chmurze lub innych ról customer Technical Preview. | list<br />Przeprowadzaj transakcje<br />trial |  
-| ***Zarządzanie potencjalnymi klientami*** | Należy włączyć CRM (programu Marketo, Microsoft Dynamics lub Salesforce) do akceptowania danych potencjalnego klienta, zanim otrzymasz potencjalnych klientów w sklepie. | list<br />Przeprowadzaj transakcje<br />trial |  
+| ***Zarządzanie potencjalnymi klientami*** | Włącz CRM (programu Marketo, Microsoft Dynamics lub Salesforce) do akceptowania danych potencjalnego klienta, zanim otrzymasz potencjalnych klientów w sklepie. | list<br />Przeprowadzaj transakcje<br />trial |  
 | ***Zasady ochrony prywatności i warunki użytkowania*** | Aplikację należy podać link do strony zasad ochrony prywatności przy użyciu publicznego adresu URL. Warunki użytkowania, musi być podana podczas publikowania jako tekst. | list<br />Przeprowadzaj transakcje<br />trial |  
 | ***Pomoc techniczna*** | Oferty, musisz podać link do strony pomocy technicznej klienta przy użyciu publicznego adresu URL. Oferty w przypadku korzystania z wersji próbnej, następnie musi obsługiwać bez dodatkowych opłat w okresie próbnym. | Przeprowadzaj transakcje<br />trial |    
 
@@ -64,19 +64,19 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 | Typ oferty | Witryna sklepu | Szczegóły |  
 |:---        |:---        |:---     |  
-| Usługi doradcze | AppSource | [Wymagania: AppSource: lista: usługi doradcze](#requirements-appsource-list-consulting-services) |  
-| Usługi doradcze | Azure Marketplace | [Wymagania: Portal Azure Marketplace: lista: usługi doradcze](#requirements-azure-marketplace-list-consulting-services) |  
+| Usługi doradcze | AppSource | [Wymagania: AppSource: Lista: Usługi doradcze](#requirements-appsource-list-consulting-services) |  
+| Usługi doradcze | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Lista: Usługi doradcze](#requirements-azure-marketplace-list-consulting-services) |  
 | Kontakt ze mną | AppSource | [](#) |  
-| Kontakt ze mną | Azure Marketplace | [Wymagania: AppSource: lista: kontakt ze mną](#requirements-azure-marketplace-list-contact-me) |  
+| Kontakt ze mną | Azure Marketplace | [Wymagania: AppSource: Lista: Kontakt ze mną](#requirements-azure-marketplace-list-contact-me) |  
 
-#### <a name="requirements-appsource-list-consulting-service"></a>Wymagania: AppSource: lista: Usługa DORADCZA  
+#### <a name="requirements-appsource-list-consulting-service"></a>Wymagania: AppSource: Lista: Usługa DORADCZA  
 
 | Wymagania | Szczegóły |  
 |:--- |:--- |  
 | Charakterystyki oferty usługi | Usługi doradcze musi spełniać następujące kryteria.<ul> <li>Dostarczaj zaangażowania ustalony zakres, czas, stałej cenie (lub wolne).</li> <li>Orient przede wszystkim dla przedsprzedaży.</li> <li>Ogranicz do jednego klienta.</li> <li>Należy przeprowadzić w lokacji.</li> </ul> |  
 | Partner wymagania dotyczące usług doradczych | Spełniasz kryteria, które w obszarze odpowiednie dla Twojej usługi.<table><tr><th>Obszar rozwiązania</th><th>Kryteria</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Mieć kompetencję na poziomie Silver lub Gold zarządzania relacjami z klientami chmury.</td></tr><tr><td>Dynamics 365 for Finance and Operations, wersja Enterprise</td><td>Mieć kompetencję na poziomie Silver lub Gold Planowanie zasobów przedsiębiorstwa i przychody od operacji w chmurze w końcu 12 miesięcy najmniej 25 000 USD.</td></tr><tr><td>Dynamics 365 for Finance and Operations, wersja Business</td><td>Służą jako dostawca usług chmury (CSP) lub cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY) dla jednego lub więcej klientów.</td></tr><tr><td>Power BI</td><td>Spełnia kryteria partnera z zakresu rozwiązań.</td></tr><tr><td>PowerApps</td><td>Ma to rozwiązanie pokaz partnerów.</td></tr></table><ul> <li>Aby uzyskać więcej informacji na temat zarządzania relacjami z klientami, odwiedź stronę chmury zarządzania relacjami z klientami strony znajduje się w [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Aby uzyskać więcej informacji o planowaniu zasobów, odwiedź stronę planowania zasobów przedsiębiorstwa strony znajduje się w [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Aby uzyskać więcej informacji o dostawcy usług Kryptograficznych, odwiedź witrynę dostawcy usług w chmurze strony znajduje się w [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Aby uzyskać więcej informacji na temat jako uprawniony partner CYFROWY, odwiedź stronę Digital Partner of Record i skojarzenie partnera strony znajduje się w [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Aby uzyskać więcej informacji na temat rozwiązania partnera kryteria, odwiedź stronę Partner — Przegląd rozwiązania i zachęty dokumencie znajdującym się w [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx? SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Aby uzyskać więcej informacji na temat pokaz partnerów można znaleźć pokaz partnerów strony znajduje się w [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
 
-#### <a name="requirements-azure-marketplace-list-consulting-service"></a>Wymagania dotyczące: Azure Marketplace: lista: Usługa DORADCZA  
+#### <a name="requirements-azure-marketplace-list-consulting-service"></a>Wymagania: Portal Azure Marketplace: Lista: Usługa DORADCZA  
 
 | Wymagania | Szczegóły |  
 |:--- |:--- |  
@@ -91,35 +91,35 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 | Typ oferty | Witryna sklepu | Szczegóły |  
 |:---        |:---        |:---     |  
-| Bezpłatne / wersja próbna SaaS | AppSource | [Wyświetlanie listy wymagania dotyczące typu: wersja próbna](#listing-type-requirements-trial) |  
-| Bezpłatne / wersja próbna SaaS | Azure Marketplace | [Wymagania: Azure Marketplace: wersja próbna: bezpłatna wersja próbna / wersja próbna SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| Interaktywna demonstracja | AppSource | [Wyświetlanie listy wymagania dotyczące typu: wersja próbna](#listing-type-requirements-trial) |  
-| Interaktywna demonstracja | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersja próbna: interaktywna demonstracja](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Wersja testowa | AppSource | [Wyświetlanie listy wymagania dotyczące typu: wersja próbna](#listing-type-requirements-trial) |  
-| Wersja testowa | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersja próbna: wersja testowa](#requirements-azure-marketplace-trial-test-drive) |  
+| Bezpłatne / wersja próbna SaaS | AppSource | [Wymagania dotyczące typu listy: Wersja próbna](#listing-type-requirements-trial) |  
+| Bezpłatne / wersja próbna SaaS | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Wersja próbna: Bezpłatna wersja próbna / wersja próbna SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktywna demonstracja | AppSource | [Wymagania dotyczące typu listy: Wersja próbna](#listing-type-requirements-trial) |  
+| Interaktywna demonstracja | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Wersja próbna: Interaktywna demonstracja](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Wersja testowa | AppSource | [Wymagania dotyczące typu listy: Wersja próbna](#listing-type-requirements-trial) |  
+| Wersja testowa | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Wersja próbna: Wersja testowa](#requirements-azure-marketplace-trial-test-drive) |  
 
-#### <a name="requirements-azure-marketplace-trial"></a>Wymagania: Portal Azure Marketplace: wersja próbna  
+#### <a name="requirements-azure-marketplace-trial"></a>Wymagania: Portal Azure Marketplace: Wersja próbna  
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-| Okres bezpłatnej wersji próbnej i wersja próbna | Klient może używać aplikacji bezpłatnie przez ograniczony czas.<br /><br />Klient nie jest wymagane płacisz wszelkich opłat licencji lub subskrypcji oferty sieci Web lub aplikacji. Klient nie jest wymagana do zapłacenia za podstawowych produktów firmy Microsoft lub usługi. Wszystkie opcje wersji próbnej są wdrażane do subskrypcji platformy Azure. Masz wyłączną kontrolę wersji próbnej w optymalizacji kosztów i zarządzania.<br /><br />Możesz wybrać bezpłatną wersję próbną, pokaz interaktywny lub wersja testowa. Niezależnie od tego, możesz wybrać Twoja bezpłatna wersja próbna muszą zaoferować klientowi za pomocą wstępnie ustawionych ilości czasu na wypróbowanie aplikacji bez ponoszenia dodatkowych kosztów.<ul> <li>Aby rozpocząć proces tworzenia wersji testowej, Wyślij wiadomość e-mail do [ amp-testdrive@microsoft.com ](mailto:amp-testdrive@microsoft.com).</li> </ul>Uwaga: Wersja próbna środowiska SaaS platformy Azure Marketplace muszą zezwalać na klientom Zaloguj się przy użyciu poświadczeń służbowych.<ul> <li>Aby uzyskać więcej informacji, odwiedź stronę usługi AppSource, wersja próbna środowiska znajdującej się na [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
+| Okres bezpłatnej wersji próbnej i wersja próbna | Klient może używać aplikacji bezpłatnie przez ograniczony czas.<br /><br />Klient nie jest wymagane płacisz wszelkich opłat licencji lub subskrypcji oferty sieci Web lub aplikacji. Klient nie jest wymagana do zapłacenia za podstawowych produktów firmy Microsoft lub usługi. Wszystkie opcje wersji próbnej są wdrażane do subskrypcji platformy Azure. Masz wyłączną kontrolę wersji próbnej w optymalizacji kosztów i zarządzania.<br /><br />Możesz wybrać bezpłatną wersję próbną, pokaz interaktywny lub wersja testowa. Niezależnie od tego, możesz wybrać Twoja bezpłatna wersja próbna muszą zaoferować klientowi za pomocą wstępnie ustawionych ilości czasu na wypróbowanie aplikacji bez ponoszenia dodatkowych kosztów.<ul> <li>Aby rozpocząć proces tworzenia wersji testowej, Wyślij wiadomość e-mail do [ amp-testdrive@microsoft.com ](mailto:amp-testdrive@microsoft.com).</li> </ul>Uwaga: Azure środowiska próbne SaaS w portalu Marketplace musi umożliwiają klientom Zaloguj się przy użyciu poświadczeń służbowych.<ul> <li>Aby uzyskać więcej informacji, odwiedź stronę usługi AppSource, wersja próbna środowiska znajdującej się na [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
 | Można je łatwo konfigurować, gotowych do użycia rozwiązanie | Aplikacja musi być łatwo i szybko skonfigurować i skonfigurować. |  
 | Dostępność / czas pracy | Twoja aplikacja SaaS lub platformy musi mieć czas działania co najmniej 99,9%. |  
 | Usługa Azure Active Directory | Oferty muszą zezwalać na, że usługi Azure Active Directory (Azure AD) federacyjnego logowania jednokrotnego (SSO) (Azure AD Federacyjna usługa rejestracji Jednokrotnej), za zgodą włączone. |  
 
-#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>Wymagania: Azure Marketplace: wersja próbna: bezpłatna wersja próbna / wersja próbna SaaS  
+#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>Wymagania: Portal Azure Marketplace: Wersja próbna: Bezpłatna wersja próbna / wersja próbna SaaS  
 
 | Korzyść | Wymaganie |  
 |:--- |:--- |  
 | Umożliwia klientowi do wypróbowania produktu przed zakupy z zautomatyzowaną metodę konwersji do użycia. Umożliwia także dowody koncepcji dla klienta i wspólne zaangażowanie z zespołami sprzedaży firmy Microsoft. | Twoje rozwiązanie jest maszyny wirtualnej lub szablonu rozwiązania.<br /><br />Twoje rozwiązanie jest SaaS, oferty i oferują wielodostępne produktów SaaS.<br /><br />Masz pierwszego uruchomienia komputera do uruchomienia klienta i szybko.<br /><br />Masz pojedynczej dzierżawy, ale są dodawania klientów jako użytkowników-gości. |  
 
-#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>Wymagania dotyczące: Azure Marketplace: wersja próbna: interaktywna demonstracja  
+#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>Wymagania: Portal Azure Marketplace: Wersja próbna: Interaktywna demonstracja  
 
 | Korzyść | Wymaganie |  
 |:--- |:--- |  
 | Umożliwia klientom w taki sposób zobaczyć w działaniu, bez złożoności konfigurowania rozwiązania. | Rozwiązanie wymaga złożonych ustawień, które byłyby trudne do osiągnięcia w okresie próbnym. |  
 
-#### <a name="requirements-azure-marketplace-trial-test-drive"></a>Wymagania dotyczące: Azure Marketplace: wersja próbna: wersja testowa  
+#### <a name="requirements-azure-marketplace-trial-test-drive"></a>Wymagania: Portal Azure Marketplace: Wersja próbna: Wersja testowa  
 
 | Korzyść | Wymaganie |  
 |:--- |:--- |  
@@ -133,24 +133,24 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 | Typ oferty | Witryna sklepu | Szczegóły |   
 |:---        |:---        | :--- |  
-| Aplikacje platformy Azure: aplikacja zarządzana | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Transact: aplikacje platformy Azure: aplikacja zarządzana](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Aplikacje platformy Azure: szablon rozwiązania | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacje platformy Azure: szablon rozwiązania](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
-| Containers | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Transact: kontener](#requirements-azure-marketplace-transact-container) |  
-| Aplikacja SaaS  | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Transact: aplikacja SaaS](#requirements-azure-marketplace-transact-saas-app) |  
-| Maszyna wirtualna | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: maszyny wirtualnej](#requirements-azure-marketplace-transact-virtual-machine) |  
+| Aplikacje platformy Azure: Aplikacje zarządzane | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Aplikacje platformy Azure: Aplikacje zarządzane](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Aplikacje platformy Azure: Szablon rozwiązania | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Aplikacje platformy Azure: Szablon rozwiązania](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Kontener](#requirements-azure-marketplace-transact-container) |  
+| Aplikacja SaaS  | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Aplikacja SaaS](#requirements-azure-marketplace-transact-saas-app) |  
+| Maszyna wirtualna | Azure Marketplace | [Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Maszyna wirtualna](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 
 #### Requirements: Azure Marketplace: Transact: Azure apps: Solution template   -->
 
-#### <a name="requirements-azure-marketplace-transact-container"></a>Wymagania: Portal Azure Marketplace: Transact: kontener  
+#### <a name="requirements-azure-marketplace-transact-container"></a>Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Kontener  
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
 | Rozliczeń oraz metod pomiarów | Albo bezpłatną pomoc techniczną lub model rozliczeń w ramach opcji BYOL. |  
 | Obrazów platformy docker | Obraz kontenera musi być oparta na format obrazu platformy Docker i muszą zostać pobrane z rejestrów kontenerów platformy Azure. |  
 
-#### <a name="requirements-azure-marketplace-transact-saas-app"></a>Wymagania: Portal Azure Marketplace: Transact: aplikacja SaaS  
+#### <a name="requirements-azure-marketplace-transact-saas-app"></a>Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Aplikacja SaaS  
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
@@ -159,14 +159,13 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 | Strona docelowa transakcji | Hostowanie strony docelowej platformy Azure markami transakcji. Stroną docelową umożliwia klientom tworzenie i zarządzanie kontem usługi SaaS. |  
 | Subskrypcja SaaS interfejsu API | Zapewnia to usługa, która wchodzi w interakcję z tą subskrypcją SaaS na tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Wszystkie krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Wszystkie niekrytyczne zmiany interfejsu API są okresowo aktualizowane. |  
 
-#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Wymagania dotyczące: Azure Marketplace: Transact: maszyny wirtualnej  
+#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Wymagania: Portal Azure Marketplace: Przeprowadzaj transakcje: Maszyna wirtualna  
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- | 
 | Rozliczeń oraz metod pomiarów | Maszyna wirtualna musi obsługiwać comiesięcznym rozliczeniem BYOL i płatność za rzeczywiste użycie. |  
-| Wirtualny dysk twardy (VHD) zgodnych z platformą Azure | Maszyny wirtualne muszą zostać skompilowane na systemie Windows lub Linux.<ul> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego systemu Linux, odwiedź stronę tworzenia dysku VHD zgodnych z platformą Azure (opartych na systemie Linux) sekcji znajdujący się w [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2- Create-an-Azure-Compatible-VHD-Linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego Windows można znaleźć tworzenia dysku VHD zgodnych z platformą Azure (z systemem Windows) sekcji znajdujący się w [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3- Create-an-Azure-Compatible-VHD-Windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul> |  
+| Wirtualny dysk twardy (VHD) zgodnych z platformą Azure | Maszyny wirtualne muszą zostać skompilowane na systemie Windows lub Linux.<ul> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego systemu Linux, zobacz [dystrybucje systemu Linux zalecanych dla na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Aby uzyskać więcej informacji na temat tworzenia wirtualnego dysku twardego Windows, zobacz [utworzyć wirtualny dysk twardy zgodnych z platformą Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
 
 ## <a name="next-steps"></a>Kolejne kroki
 *   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
- 
----  
+

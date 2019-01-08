@@ -14,12 +14,12 @@ ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 42568a6da6cb8994fa8804f294cf67b30fada4fb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050153"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078766"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij kontekstu użytkownika identyfikatorów, aby zapewnić użycie w usłudze Azure Application Insights
 
@@ -38,7 +38,7 @@ Aby móc śledzić zmiany w czasie działania użytkownika, usługi Application 
 - Sesje: Zawiera identyfikatora sesji.
 
 > [!NOTE]
-> Jest to zaawansowane artykułu konspekt ręczne wykonanie czynności dla śledzenia działań użytkownika za pomocą usługi Application Insights. Z wieloma aplikacjami sieci web **te kroki nie mogą być wymagane**, jako domyślne serwerowe zestawy SDK w połączeniu z [/przeglądarki klienta kodu JavaScript SDK](../../application-insights/app-insights-website-monitoring.md), często są wystarczające do automatycznego śledzenia działanie użytkownika. Jeśli nie skonfigurowano [monitorowania po stronie klienta](../../application-insights/app-insights-website-monitoring.md) oprócz SDK po stronie serwera, należy to najpierw zrobić i sprawdzić, jeśli narzędzia do analizy zachowania użytkownika działają w oczekiwany sposób.
+> Jest to zaawansowane artykułu konspekt ręczne wykonanie czynności dla śledzenia działań użytkownika za pomocą usługi Application Insights. Z wieloma aplikacjami sieci web **te kroki nie mogą być wymagane**, jako domyślne serwerowe zestawy SDK w połączeniu z [/przeglądarki klienta kodu JavaScript SDK](../../azure-monitor/app/website-monitoring.md ), często są wystarczające do automatycznego śledzenia działanie użytkownika. Jeśli nie skonfigurowano [monitorowania po stronie klienta](../../azure-monitor/app/website-monitoring.md ) oprócz SDK po stronie serwera, należy to najpierw zrobić i sprawdzić, jeśli narzędzia do analizy zachowania użytkownika działają w oczekiwany sposób.
 
 ## <a name="choosing-user-ids"></a>Wybieranie nazw użytkowników
 

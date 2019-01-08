@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1a64749b7218fccfdad6b6eeebfac39a44aa0522
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2b1aca07fe60a328dac9d3724454a21835026a53
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687775"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063849"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "38687775"
 Usługi Azure Resource Manager służy do tworzenia i zarządzania usługi Azure IoT hubs programowo. W tym samouczku dowiesz się, jak utworzyć Centrum IoT hub z programu C# za pomocą szablonu usługi Azure Resource Manager.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami:  [Usługa Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -203,6 +203,7 @@ Po wdrożeniu usługi IoT hub przy użyciu szablonu usługi Azure Resource Manag
 
 * Przeczytaj o możliwości [interfejs API REST dostawcy zasobów usługi IoT Hub][lnk-rest-api].
 * Odczyt [Omówienie usługi Azure Resource Manager] [ lnk-azure-rm-overview] Aby dowiedzieć się więcej o możliwościach usługi Azure Resource Manager.
+* Składnię JSON i właściwości do użycia w szablonach, zobacz [typów zasobów Microsoft.Devices](/azure/templates/microsoft.devices/iothub-allversions).
 
 Aby dowiedzieć się więcej na temat tworzenia usługi IoT Hub, zobacz następujące artykuły:
 

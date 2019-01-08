@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/07/2019
 ms.author: alkohli
-ms.openlocfilehash: f5e19d59dfddc3be849700f3678519179b5b39ba
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 31bcc5ed447b32f4474ecef6a8a9f79377061975
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49164573"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078987"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Informacje o wersji usługi Azure Data Box — wersja zapoznawcza bramy
 
@@ -31,7 +31,10 @@ Poniższa tabela zawiera podsumowanie problemów rozwiązanych w tej wersji.
 
 | Nie. | Problem |
 | --- | --- |
-| 1 | W tej wersji, gdy pliku, który został przekazany przez inne narzędzie (AzCopy) jest odświeżane, a następnie są aktualizowane w sposób zwiększa/rozszerzający rozmiar pliku, a następnie obserwuje się następujący błąd: *błąd 400: InvalidBlobOrBlock (do określonego obiektu blob lub bloku zawartość jest nieprawidłowa.)*|
+| **1.** | W tej wersji gdy plik, który został przekazany przez inne narzędzie (AzCopy) jest odświeżane, a następnie zaktualizowane w taki sposób, że wzrost/rozszerza rozmiar pliku następnie następujący błąd zostanie wykryty: *Błąd 400: InvalidBlobOrBlock (określona zawartość obiektu blob lub bloku jest nieprawidłowy).*|
+| **2.** |Z powodu błędu w tej wersji, może zostać wyświetlony wystąpień kod błędu: 110 w *error.xml* z nazwami nierozpoznany element. | 
+| **3.** |Z powodu błędu w tej wersji może zostać wyświetlony wystąpień 2003. kod błędu w trakcie przekazywania określonych plików. | 
+| **4.** |W tej wersji można odświeżyć tylko jeden udział w danym momencie. | 
 
 
 ## <a name="known-issues-in-preview-release"></a>Znane problemy w wersji zapoznawczej
@@ -42,15 +45,12 @@ Poniższa tabela zawiera podsumowanie znanych problemów występujących dla bra
 | --- | --- | --- | --- |
 | **1.** |Aktualizacje |Urządzenia bramy pola danych, utworzony w starszej wersji zapoznawczej, nie można zaktualizować wersji do tej wersji. |Pobieranie obrazów dysku wirtualnego z nowej wersji i konfigurowanie i wdrażanie nowych urządzeń. Aby uzyskać więcej informacji, przejdź do [przygotowanie do wdrożenia usługi Azure Gateway pole danych](data-box-gateway-deploy-prep.md). |
 | **2.** |Dysk aprowizowane dane |Po aprowizowaniu dysk z danymi o określonym rozmiarze określonym i utworzyć odpowiednią bramę pole danych, należy nie zmniejszania dysk z danymi. Podjęto próbę zmniejszania wyniki dysku spowoduje utratę wszystkich danych lokalnych na urządzeniu. | |
-| **3.** |Odświeżanie |W tej wersji można odświeżyć tylko jeden udział w danym momencie. | |
-| **4.** |Zmiana nazwy |Zmiana nazwy obiektów nie jest obsługiwana. |Jeśli ta funkcja ma kluczowe znaczenie podczas przepływu pracy, skontaktuj się z Microsoft Support. |
-| **5.** |Copy| Jeśli plik tylko do odczytu jest kopiowany do urządzenia, właściwości tylko do odczytu nie są zachowywane. | |
-| **6.** |Dzienniki| Z powodu błędu w tej wersji, może zostać wyświetlony wystąpień kod błędu: 110 w *error.xml* z nazwami nierozpoznany element. | |
-| **7.** |Upload | Z powodu błędu w tej wersji może zostać wyświetlony wystąpień 2003. kod błędu w trakcie przekazywania określonych plików. | |
-| **8.** |Typy plików | Nie są obsługiwane następujące typy plików systemu Linux: znak plików bloku, gniazda, potoki, plików łącza symbolicznego.  |Kopiowanie tych plików wyników w plikach długość 0 tworzonych na systemu plików NFS jest udostępnianie. Te pliki pozostają w stanie błędu i są również zgłaszane w *error.xml*. |
-| **9.** |Usuwanie | Z powodu błędu w tej wersji usunięcie udziału NFS następnie udział mogą nie zostać usunięte. Będzie wyświetlany stan udziału *usuwanie*.  |Dzieje się tak, tylko wtedy, gdy udział jest przy użyciu nazwy pliku nieobsługiwany. |
-| **10.** |Odświeżanie | Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania.  | |
-| **11.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
+| **3.** |Zmiana nazwy |Zmiana nazwy obiektów nie jest obsługiwana. |Jeśli ta funkcja ma kluczowe znaczenie podczas przepływu pracy, skontaktuj się z Microsoft Support. |
+| **4.** |Copy| Jeśli plik tylko do odczytu jest kopiowany do urządzenia, właściwości tylko do odczytu nie są zachowywane. | |
+| **5.** |Typy plików | Nie są obsługiwane następujące typy plików systemu Linux: znak plików bloku, gniazda, potoki, plików łącza symbolicznego.  |Kopiowanie tych plików wyników w plikach długość 0 tworzonych na systemu plików NFS jest udostępnianie. Te pliki pozostają w stanie błędu i są również zgłaszane w *error.xml*. |
+| **6.** |Usuwanie | Z powodu błędu w tej wersji usunięcie udziału NFS następnie udział mogą nie zostać usunięte. Będzie wyświetlany stan udziału *usuwanie*.  |Dzieje się tak, tylko wtedy, gdy udział jest przy użyciu nazwy pliku nieobsługiwany. |
+| **7.** |Odświeżanie | Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania.  | |
+| **8.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
 
 
 

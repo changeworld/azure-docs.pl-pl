@@ -1,5 +1,5 @@
 ---
-title: Jak zarządzać swoim kontem usługi Azure Maps i klucze | Dokumentacja firmy Microsoft
+title: Zarządzaj swoim kontem usługi Azure Maps i klucze | Dokumentacja firmy Microsoft
 description: Za pomocą witryny Azure portal do zarządzania kontem usługi Azure Maps oraz Zarządzaj kluczami dostępu.
 author: walsehgal
 ms.author: v-musehg
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 351bc26d6c5b3dcfa9479138f2bd523f64a2912a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a4449153894069d431dcf417d9741796998e1d4c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335816"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061010"
 ---
-# <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Jak zarządzać swoim kontem usługi Azure Maps i klucze
+# <a name="manage-your-azure-maps-account-and-keys"></a>Zarządzaj swoim kontem usługi Azure Maps i klucze
 
-Możesz zarządzać swoim kontem usługi Azure Maps i klucze w witrynie Azure portal. Po utworzeniu konta i klucz, można zaimplementować interfejsów API w witrynie sieci web lub aplikacji mobilnej.
+Możesz zarządzać swoim kontem usługi Azure Maps i klucze w witrynie Azure portal. Po utworzeniu konta i klucz, można zaimplementować interfejsów API w witrynie sieci Web lub aplikacji mobilnej.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -25,9 +25,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 
-2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
+2. Wybierz **Utwórz zasób** w lewym górnym rogu witryny Azure portal.
 
-3. Wyszukaj i wybierz pozycję **mapy**, następnie kliknij przycisk **Utwórz**.
+3. Wyszukaj i wybierz pozycję **mapy**. Następnie wybierz przycisk **Utwórz**.
 
 4. Wprowadź informacje dla nowego konta.
 
@@ -35,13 +35,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="manage-keys-on-the-account-page"></a>Zarządzanie kluczami na stronie konta
 
-Po utworzeniu konta otrzymasz dwa klucze losowo generowany. Klawisze do uwierzytelniania względem interfejsów API usługi mapy, gdy chcesz pobrać dane mapy lub Utwórz nowe wystąpienie mapy JavaScript.
+Po utworzeniu konta otrzymasz dwa klucze losowo generowany. Aby pobrać dane mapy lub utworzyć nowe wystąpienie mapy JavaScript, użyj klawiszy do uwierzytelniania względem interfejsów API usługi Azure Maps.
 
-Klucze możesz znaleźć w witrynie Azure portal. Przejdź do swojego konta, a następnie wybierz pozycję **klucze** z menu.
+Klucze możesz znaleźć w witrynie Azure portal. Przejdź do swojego konta. Następnie wybierz pozycję **klucze** z menu.
 
 ![Zarządzanie kluczami konta w portalu](./media/how-to-manage-account-keys/account-keys-portal.png)
 
-Na tej stronie możesz skopiować klucze lub wygenerować nowe.
+Na tej stronie można skopiować klucze lub wygenerować nowe.
 
 ## <a name="delete-an-account"></a>Usuwanie konta
 
@@ -49,14 +49,14 @@ Możesz usunąć konto w witrynie Azure portal. Przejdź do strony Przegląd kon
 
 ![Usunąć swoje konto w portalu](./media/how-to-manage-account-keys/account-delete-portal.png)
 
-Następnie zostanie wyświetlona strona potwierdzenia. Użytkownik potwierdzi usunięcie Twojego konta, wpisując jej nazwę.
+Następnie zobaczysz stronę potwierdzenia. Użytkownik potwierdzi usunięcie Twojego konta, wpisując jej nazwę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak zarządzać warstwa cenowa konta usługi Azure Maps:
-> [!div class="nextstepaction"]
-> [Zarządzanie warstwy cenowej](./how-to-manage-pricing-tier.md)
+* Dowiedz się, jak zarządzać warstwy cenowej konta usługi Azure Maps:
+    > [!div class="nextstepaction"] 
+    > [Warstwa cenowa zarządzania](./how-to-manage-pricing-tier.md)
 
-Dowiedz się, jak wyświetlać metryki użycia interfejsu API dla swojego konta usługi Azure Maps:
-> [!div class="nextstepaction"]
-> [Wyświetl metryki użycia](./how-to-view-api-usage.md)
+* Dowiedz się, jak wyświetlać metryki użycia interfejsu API dla swojego konta usługi Azure Maps:
+    > [!div class="nextstepaction"] 
+    > [Wyświetl metryki użycia](./how-to-view-api-usage.md)

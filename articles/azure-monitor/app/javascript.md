@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: be7cb2e602f1c8c0c8471c866d68c28e0ec37498
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 79801ba7a7b50d751cd105a4c8bcd39bb6681c54
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042346"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075357"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](../../application-insights/app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -44,7 +44,7 @@ Jeśli nie ma zasobu, utwórz go:
 
 ![Wybierz kolejno opcje Nowe, Usługi dla deweloperów, Application Insights.](./media/javascript/01-create.png)
 
-*Już masz pytania?* [Więcej informacji na temat tworzenia zasobu](../../application-insights/app-insights-create-new-resource.md).
+*Już masz pytania?* [Więcej informacji na temat tworzenia zasobu](../../azure-monitor/app/create-new-resource.md ).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Dodawanie skryptu zestawu SDK do aplikacji lub stron sieci Web
 

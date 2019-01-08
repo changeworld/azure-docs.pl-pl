@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dbd97ba8faacdc387a6e0b78c206f65a201ca246
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261551"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074091"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi konsultingowe dla witryny Azure Marketplace i AppSource
 Usługi w portalu Azure Marketplace i AppSource doradcze zapewnia partnerów firmy Microsoft, cel połączenia klientów z usługami do obsługi i rozszerzać ich korzystanie z platformy Azure i celów biznesowych. 
@@ -66,8 +66,8 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |Podstawowy produkt |Wymagania kwalifikacyjne |
 |---------|---------|
 | Dynamics 365 for Customer Engagement    |   Na poziomie Silver lub Gold [zarządzania relacjami z klientami chmury](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) kompetencji.    | 
-|Dynamics 365 for Finance and Operations, wersja Enterprise  |  Na poziomie Silver lub Gold [Planowanie zasobów przedsiębiorstwa](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) kompetencji i minimalne przychód z $25 tys w operacji w chmurze w końcu 12 miesięcy.       |
-|Dynamics 365 for Finance and Operations, wersja Business  |  Pełnią [dostawca usług chmury (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) lub [cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) dla co najmniej jednego odbiorcy      |
+|Dynamics 365 for Finance and Operations, wersja Enterprise  |  Na poziomie Silver lub Gold [Planowanie zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencji i minimalne przychód z $25 tys w operacji w chmurze w końcu 12 miesięcy.       |
+|Dynamics 365 for Finance and Operations, wersja Business  |  Pełnią [dostawca usług chmury (CSP)](https://partner.microsoft.com/cloud-solution-provider) lub [cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY)](https://partner.microsoft.com/membership/digital-partner-of-record) dla co najmniej jednego odbiorcy      |
 |Usługa Power BI, elementy wizualne usługi Power BI niestandardowe | Spełnia [kryteria partnera z zakresu rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
 |PowerApps | Publikacji [pokaz partnerów]() rozwiązania
 
@@ -87,7 +87,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 Uruchamianie usługi doradcze zaczną na żywo w określonym regionie geograficznym. Pierwsze uruchomienie będzie: Stanów Zjednoczonych, Kanadzie, Zjednoczonym Królestwie i Australii. Katalogi dla innych krajów zostanie umieszczona na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak zarejestrować dla usługi w portalu Azure Marketplace i AppSource doradcze
-Rozpocznij od [rejestrowanie](https://azuremarketplace.microsoft.com/en-us/sell/signup) danych firmowych w portalu marketplace. Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
+Rozpocznij od [rejestrowanie](https://azuremarketplace.microsoft.com/sell/signup) danych firmowych w portalu marketplace. Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
 
 **Jakie można oczekiwać po rejestracji** zespół organizujący dołączanie skontaktuje się z Tobą w 1 do 3 dni roboczych przy użyciu powitalnej wiadomości e-mail, który będzie zawierać informacje o logowaniu Cloud Partner Portal (CPP). [Portal dla partnerów w chmurze](https://cloudpartner.azure.com) jest portal listy oferty, gdzie wydawców przesyłać informacje i opinie. 
 
@@ -120,36 +120,36 @@ Przed rejestracją można rozpocząć zbieranie i przygotowywanie zawartości, k
 Wyświetlanie listy usług doradczych dotyczących oferty w portalu Azure Marketplace i AppSource obejmuje następujące etapy:
 
 1. **Wyświetlanie listy**: Rozpocznij, opracowując nowe oferty w, logując się do Twojej [portalu Cloud Partner](https://cloudpartner.azure.com) konta. Z menu rozwijanego wybierz pozycję "Nowa oferta" i usług doradczych dotyczących. Wprowadź swoje artefaktu listy i publikowania.
-2. **Sprawdzanie poprawności**: Twoje żądanie zostanie oceniony w celu zapewnienia, że spełniają kryteria kwalifikacyjne. Firma Microsoft wyśle instrukcje dotyczące wyświetlania listy usług doradczych oferty. 
+2. **Sprawdzanie poprawności**: Twoje żądanie jest przejrzane w celu zapewnienia, że spełniają kryteria kwalifikacyjne. Firma Microsoft wyśle instrukcje dotyczące wyświetlania listy usług doradczych oferty. 
 3. **Prześlij**: Podaj wymagane informacje, który znajduje się w instrukcji. Zawartość i wszystkie materiały pomocnicze musi zostać przesłany w języku angielskim. 
-4. **Przegląd**: działu marketing i redakcyjnych monitoruje swoje zgłoszenie i optymalizuje aplikację na potrzeby czytelności, gramatyka i efektywność. 
-5. **Przemieszczania**: przesyłanie są przygotowywane do zapoznania się z nimi. 
-6. **Publikowanie**: gdy klient i firma Microsoft jest zadowalająca zawartości przejściowej, Twoja lista jest gotowa do aktywowania w portalu marketplace. Data gotowej do pracy z listy, zależy od kraju, który jest określony w swojej ofercie. Jeśli katalog dla wybranego kraju działa już na portalu Azure Marketplace lub w usłudze AppSource, Twoja lista pojawi się w ciągu kilku godzin. W przeciwnym razie listę pojawi się jak najszybciej wykazu przechodzi na żywo.
+4. **Przegląd**: Nasz zespół marketingu i redakcyjnych monitoruje swoje zgłoszenie i optymalizuje je dla czytelności, gramatyka i efektywność. 
+5. **Przemieszczania**: Przesłane dane są przygotowywane do zapoznania się z nimi. 
+6. **Publikowanie**: Gdy klient i firma Microsoft jest zadowalająca zawartości przejściowej, Twoja lista jest gotowa do aktywowania w portalu marketplace. Data gotowej do pracy z listy, zależy od kraju, który jest określony w swojej ofercie. Jeśli katalog dla wybranego kraju działa już na portalu Azure Marketplace lub w usłudze AppSource, Twoja lista pojawi się w ciągu kilku godzin. W przeciwnym razie listę pojawi się jak najszybciej wykazu przechodzi na żywo.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>Kryteria przeglądu zawartości i ofert
 Oferty musi być jednym z następujących pięć typów usługi (możesz wyświetlić listę więcej niż jedną): 
 
 * **Ocena**: Ocena środowiska klienta, aby określić możliwości zastosowania rozwiązania i Oszacuj koszt i czas. 
-* **Widoków**: wprowadzenie do rozwiązania lub usługa doradcza, aby narysować odsetek klientów przy użyciu struktur, demonstracje i przykłady klientów. 
-* **Implementacja**: Pełna instalacja, która powstaje w pełni działającego rozwiązania. Zaleca się ograniczenie go do rozwiązania, które mogą być implementowane w ciągu dwóch tygodni lub mniej. 
-* **Weryfikacja koncepcji**: implementacja ograniczony zakres, aby ustalić, czy rozwiązanie spełnia wymagania klientów. 
-* **Warsztaty**: interaktywne zaangażowania, które odbywa się lokalnie do klienta. Może ona obejmować szkolenie, sprawozdaniach, ocen i pokazy, które są oparte na danych lub środowisko klienta. 
+* **Widoków**: Wprowadzenie do rozwiązania lub usługa doradcza, aby narysować odsetek klientów przy użyciu struktur, demonstracje i przykłady klientów. 
+* **Implementacja**: Pełna instalacja wyniki w pełni działającego rozwiązania. Zaleca się ograniczenie go do rozwiązania, które mogą być implementowane w ciągu dwóch tygodni lub mniej. 
+* **Weryfikacja koncepcji**: Implementacja ograniczony zakres, aby ustalić, czy rozwiązanie spełnia wymagania klientów. 
+* **Warsztaty**: Interaktywne zaangażowania, które odbywa się lokalnie do klienta. Może ona obejmować szkolenie, sprawozdaniach, ocen i pokazy, które są oparte na danych lub środowisko klienta. 
 
-**Uwaga:** z wyjątkiem *widoków* typ usługi, usługi doradcze zostanie zaoferowana osobiście (czyli u klienta w lokalizacji klienta lub partnera) lub wirtualnie (oznacza to, za pośrednictwem Telekonferencje, sieci web konferencje lub wykonania zdalnego). Sprawozdaniach muszą być dostarczane osobiście.
+**Uwaga:** Z wyjątkiem *widoków* typ usługi, usługi doradcze zostanie zaoferowana osobiście (czyli u klienta w lokalizacji klienta lub partnera) lub wirtualnie (oznacza to, za pośrednictwem Telekonferencje, sieci web konferencji, lub zdalnego Implementacja). Sprawozdaniach muszą być dostarczane osobiście.
 
 Po skonfigurowaniu wymaganych elementów wymienionych powyżej zespołu przeglądu zawartości zostanie przeprowadzona Weryfikacja, czy opis oferty jest informacyjne i pełny dla użytkowników docelowych. 
 
 #### <a name="listing-title"></a>Tytuł listy
 
-Pole tytułu jest ograniczona do 50 znaków i musi przekazuje typ czasu trwania i usługa oferty, aby zmaksymalizować optymalizacji dla aparatów wyszukiwania. Wymagany format jest następujący: Nazwa: typu czasu trwania
+Pole tytułu jest ograniczona do 50 znaków i musi przekazuje typ czasu trwania i usługa oferty, aby zmaksymalizować optymalizacji dla aparatów wyszukiwania. Wymagany format to w następujący sposób: NAZWA: TYPU CZASU TRWANIA
 
 Przykłady:
 
 
 |Przykładowy tytuł  |Niepoprawny Format  |
 |---------|---------|
-|Wprowadzenie do usługi Azure IoT w dziedzinie produkcji    |   Produkcji IoT: ocena 2-dniowych      |
-|Warsztaty w tostery inteligentne        |  Tostery inteligentnych: warsztaty 1 tydzień       |
+|Wprowadzenie do usługi Azure IoT w dziedzinie produkcji    |   Produkcyjny IoT: 2-dniowych oceny      |
+|Warsztaty w tostery inteligentne        |  Inteligentne tostery: Warsztaty 1 tydzień       |
 |  PoC migracji programu SQL Server    | Migracja SQL: 3 tygodnie weryfikacji koncepcji        |
 
 #### <a name="listing-summaries-and-descriptions"></a>Wyświetlanie podsumowań i opisów
@@ -176,12 +176,13 @@ W portalu Cloud Partner, można dodać formatowanie do Twojej listy przy użyciu
 * * Ustaw kursywę Podsumowanie oferty
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli użytkownik jeszcze tego nie zrobiono, 
 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.
 
 Jeśli jesteś zarejestrowanym i pracą z nimi w portalu Cloud Partner, 
 
-- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty
+- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty.
+- Zobacz [doradcze oferty usługi platformy Azure i Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) Aby uzyskać więcej informacji.

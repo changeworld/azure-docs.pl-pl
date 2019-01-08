@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 458b615ea872b62a412a71cbbb0b3827ccb4d9b8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580930"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064478"
 ---
 # <a name="azure-log-integration-faq"></a>Integracja dzienników platformy Azure — często zadawane pytania
 
@@ -31,7 +31,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących i
 
 Integracja dzienników platformy Azure to usługa systemu operacyjnego Windows, która służy do integracji nieprzetworzonych dzienników z zasobów platformy Azure w Twojej lokalnej zabezpieczeń informacjami i zdarzeniami (SIEM) systemów zarządzania. Integracja ta zapewnia jednolity pulpit nawigacyjny dla wszystkich zasobów w środowisku lokalnym lub w chmurze. Użytkownik może, a następnie agregacji, korelowanie, analizowanie i alertów dla zdarzeń dotyczących zabezpieczeń skojarzone z aplikacjami.
 
-Preferowaną metodą integracji dzienników platformy Azure jest za pomocą łącznika usługi Azure Monitor s dostawcy rozwiązania SIEM, a także następujące [instrukcje](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Jednak jeśli Twoja t dostawcy rozwiązania SIEM udostępnić łącznik do usługi Azure Monitor, może być można używać integracji dzienników platformy Azure jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwany przez usługi Azure Log Integration) do czasu udostępnienia łącznika programu.
+Preferowaną metodą integracji dzienników platformy Azure jest za pomocą łącznika usługi Azure Monitor z dostawcą rozwiązania SIEM, a także następujące [instrukcje](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcy rozwiązania SIEM nie udostępnia łącznik do usługi Azure Monitor, może być można używać integracji dzienników platformy Azure jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwany przez usługi Azure Log Integration) do czasu udostępnienia łącznika programu.
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Oprogramowanie integracji dzienników platformy Azure jest bezpłatne?
 

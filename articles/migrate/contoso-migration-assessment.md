@@ -8,22 +8,22 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635020"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065498"
 ---
-# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: ocena obciążeń lokalnych pod kątem migracji na platformę Azure
+# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: Ocena obciążeń lokalnych pod kątem migracji do platformy Azure
 
 W tym artykule Contoso ocenia jego aplikacji rozwiązania SmartHotel360 lokalnych do migracji na platformę Azure.
 
-Ten artykuł jest częścią serii, która dokumentuje, jak fikcyjnej firmy Contoso migruje swoje zasoby lokalne do chmury Microsoft Azure. Seria zawiera informatio tła i scenariusze wdrożenia są szczegółowo, które ilustrują sposób konfigurowania infrastruktury migracji, ocenić przydatność, korzystając z zasobów lokalnych do migracji, a następnie uruchom różnego rodzaju migracji. Scenariusze zwiększanie się stopnia skomplikowania. Artykuły zostaną dodane do serii wraz z upływem czasu.
+Ten artykuł jest częścią serii, która dokumentuje, jak fikcyjnej firmy Contoso migruje swoje zasoby lokalne do chmury Microsoft Azure. Seria zawiera ogólne informacje i scenariusze wdrożenia są szczegółowo, które ilustrują sposób konfigurowania infrastruktury migracji, ocenić przydatność, korzystając z zasobów lokalnych do migracji, a następnie uruchom różnego rodzaju migracji. Scenariusze zwiększanie się stopnia skomplikowania. Artykuły zostaną dodane do serii wraz z upływem czasu.
 
 Artykuł | Szczegóły | Stan
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
+[Artykuł 1: Przegląd](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
 [Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | Contoso przygotowuje swoją infrastrukturę lokalną i jej infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używany dla wszystkich artykułów w serii. | Dostępne
 Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure | Contoso uruchamia oceny aplikacji rozwiązania SmartHotel360 jej w środowisku lokalnym, działające w programie VMware. Contoso ocenia aplikacji maszyn wirtualnych przy użyciu usługi Azure Migrate bazy danych oraz aplikacji programu SQL Server przy użyciu Data Migration Assistant. | W tym artykule
 [Artykuł 4: Ponowne hostowanie aplikacji na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database](contoso-migration-rehost-vm-sql-managed-instance.md) | Firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla swoich aplikacji rozwiązania SmartHotel360 w środowisku lokalnym. Jej zmigrowaniu aplikacji frontonu, za pomocą usługi Azure Site Recovery. Baza danych aplikacji jest migrowana do bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Database Migration Service. | Dostępne
@@ -31,11 +31,11 @@ Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure | Contoso u
 [Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w grupie dostępności AlwaysOn programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje aplikacji rozwiązania SmartHotel360 użyciu usługi Site Recovery do migracji maszyn wirtualnych aplikacji i Database Migration Service migrację bazy danych aplikacji do klastra programu SQL Server, który jest chroniony przez grupy dostępności AlwaysOn. | Dostępne
 [Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Contoso zostanie ukończona lift-and-shift migrację swoich aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
 [Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i usługa Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje swoją aplikację osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu Site Recovery. Jej zmigrowaniu bazy danych aplikacji do usługi Azure Database for MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
-[Artykuł 9: Refaktoryzacja aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso wykonuje migrację swoich aplikacji rozwiązania SmartHotel360 na aplikację internetową platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych. | Dostępne
-[Artykuł 10: Refaktoryzacja aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje swoją aplikację osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu regionach platformy Azure przy użyciu usługi Azure Traffic Manager, zintegrowana z usługą GitHub ciągłego dostarczania. Contoso migruje bazy danych aplikacji do usługi Azure Database for MySQL — wystąpienia. | Dostępne
-[Artykuł 11: Refaktoryzacja Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
-[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazę danych za pomocą usługi Azure SQL Database. | Dostępne
-[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
+[Artykuł 9: Refaktoryzuj aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso wykonuje migrację swoich aplikacji rozwiązania SmartHotel360 na aplikację internetową platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych. | Dostępne
+[Artykuł 10: Refaktoryzuj aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje swoją aplikację osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu regionach platformy Azure przy użyciu usługi Azure Traffic Manager, zintegrowana z usługą GitHub ciągłego dostarczania. Contoso migruje bazy danych aplikacji do usługi Azure Database for MySQL — wystąpienia. | Dostępne
+[Artykuł 11: Refaktoryzuj Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
+[Artykuł 12: Ponowne Ustalanie architektury aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazę danych za pomocą usługi Azure SQL Database. | Dostępne
+[Artykuł 13: Ponownie skompiluj aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
 [Artykuł 14: Skalowanie migracji na platformę Azure](contoso-migration-scale.md) | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | Dostępne
 
 
@@ -69,9 +69,9 @@ Ten diagram przedstawia bieżącej infrastruktury lokalnej firmy Contoso:
 Firmy Contoso IT zespół kierowniczy pracował ściśle zintegrowana z partnerami biznesowymi firmy, aby zrozumieć, co firma chce osiągnąć za pomocą tej migracji:
 
 - **Adres rozwój**: Contoso rośnie. Co w efekcie zwiększa wykorzystanie w systemach lokalnych i infrastruktury w firmie.
-- **Zwiększenie wydajności**: Contoso musi usunąć niepotrzebne procedur i usprawniać procesy dla jego deweloperów i użytkowników. Potrzeby biznesowe IT do szybkiego i do nie odpadów czas i pieniądze, więc firma może szybciej na wymagania klientów.
-- **Zwiększenie elastyczności**: Contoso IT musi być w reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany, które występują w witrynie marketplace termin firmy im odnosić sukcesy w globalnej gospodarki reagować. IT w firmie Contoso nie może pobrać w taki sposób, lub stają się blocker biznesowych.
-- **Skala**: jak pomyślnie rozwoju działalności firmy Contoso IT, należy podać systemów, które można rozwijać w tym samym tempie.
+- **Zwiększenie wydajności**: Firma Contoso potrzebuje usunąć niepotrzebne procedur i usprawniać procesy dla jego deweloperów i użytkowników. Potrzeby biznesowe IT do szybkiego i do nie odpadów czas i pieniądze, więc firma może szybciej na wymagania klientów.
+- **Zwiększenie elastyczności**:  Contoso IT trzeba zwiększyć szybkość reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany, które występują w witrynie marketplace termin firmy im odnosić sukcesy w globalnej gospodarki reagować. IT w firmie Contoso nie może pobrać w taki sposób, lub stają się blocker biznesowych.
+- **Skala**: Jak pomyślnie rozwoju działalności firmy Contoso IT, należy podać systemów, które można rozwijać w tym samym tempie.
 
 ## <a name="assessment-goals"></a>Cele oceny
 
@@ -88,7 +88,7 @@ Firma Contoso używa narzędzi firmy Microsoft, jej oceny migracji. Narzędzia d
 
 Technologia | Opis | Koszty
 --- | --- | ---
-[Asystent migracji danych](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Firma Contoso używa Data Migration Assistant do oceny i wykrycia problemów ze zgodnością, które mogłyby wpłynąć na jego działanie bazy danych na platformie Azure. Data Migration Assistant ocenia równoważność funkcji między źródłami SQL i elementy docelowe. Zaleca się wydajności i niezawodności. | Data Migration Assistant to narzędzie bezpłatna, udostępniona do pobrania.
+[Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Firma Contoso używa Data Migration Assistant do oceny i wykrycia problemów ze zgodnością, które mogłyby wpłynąć na jego działanie bazy danych na platformie Azure. Data Migration Assistant ocenia równoważność funkcji między źródłami SQL i elementy docelowe. Zaleca się wydajności i niezawodności. | Data Migration Assistant to narzędzie bezpłatna, udostępniona do pobrania.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Firma Contoso używa usługi Azure Migrate, aby ocenić jego maszyn wirtualnych VMware. Usługa Azure Migrate ocenia przydatność migracji maszyn. Oferuje ona oszacowania rozmiarów i kosztów, co działających na platformie Azure.  | Od maja 2018 r. Usługa Azure Migrate jest bezpłatna usługa.
 [Mapa usługi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Usługa Azure Migrate rozwiązania Service map przedstawia zależności między maszynami, które firma chce przeprowadzić migrację. | które jest częścią usługi Azure Log Analytics. Obecnie firmy Contoso, mogą używać rozwiązania Service Map przez 180 dni bez ponoszenia opłat.
 
@@ -135,11 +135,11 @@ Contoso i inni użytkownicy muszą spełniać następujące wymagania wstępne d
 Poniżej przedstawiono, jak Contoso wykonuje oceny:
 
 > [!div class="checklist"]
-> * **Krok 1: Pobierz i zainstaluj Data Migration Assistant**: Contoso przygotowuje Data Migration Assistant dla oceny lokalnej bazy danych programu SQL Server.
-> * **Krok 2: Ocena bazy danych przy użyciu Data Migration Assistant**: Contoso działa i analizowanie oceny bazy danych.
-> * **Krok 3: Przygotowywanie oceny maszyn wirtualnych przy użyciu usługi Azure Migrate**: Contoso konfiguruje lokalnych kont i dostosowanie ustawień programu VMware.
-> * **Krok 4. odnajdywanie lokalnych maszyn wirtualnych przy użyciu usługi Azure Migrate**: Contoso tworzy usługę Azure Migrate maszyna wirtualna modułu zbierającego. Następnie firmy Contoso jest uruchamiany moduł zbierający w celu odnalezienia maszyn wirtualnych do oceny.
-> * **Krok 5: Przygotowywanie analizy zależności za pomocą usługi Azure Migrate**: firma Contoso instaluje agentów usługi Azure Migrate na maszynach wirtualnych, dzięki czemu firma może zobaczyć mapowanie zależności między maszynami wirtualnymi.
+> * **Krok 1. Pobierz i zainstaluj Data Migration Assistant**: Contoso przygotowuje Data Migration Assistant dla oceny lokalnej bazy danych programu SQL Server.
+> * **Krok 2. Ocena bazy danych przy użyciu Data Migration Assistant**: Firmy Contoso jest uruchamiany i analizowanie oceny bazy danych.
+> * **Krok 3. Przygotowywanie oceny maszyn wirtualnych przy użyciu usługi Azure Migrate**: Contoso konfiguruje lokalnych kont i dostosowanie ustawień programu VMware.
+> * **Krok 4. Odnajdywanie lokalnych maszyn wirtualnych przy użyciu usługi Azure Migrate**: Contoso tworzy usługę Azure Migrate maszyna wirtualna modułu zbierającego. Następnie firmy Contoso jest uruchamiany moduł zbierający w celu odnalezienia maszyn wirtualnych do oceny.
+> * **Krok 5. Przygotowywanie analizy zależności za pomocą usługi Azure Migrate**: Firma Contoso instaluje agentów usługi Azure Migrate na maszynach wirtualnych, dzięki czemu firma może zobaczyć mapowanie zależności między maszynami wirtualnymi.
 > * **Krok 6: Oceny maszyn wirtualnych przy użyciu usługi Azure Migrate**: Contoso sprawdza zależności, grupy maszyn wirtualnych i uruchamia oceny. Gdy ocena będzie gotowa, Contoso analizuje oceny w ramach przygotowania do migracji.
 
 ## <a name="step-1-download-and-install-data-migration-assistant"></a>Krok 1: Pobierz i zainstaluj Asystenta migracji danych
@@ -217,9 +217,9 @@ Firma Contoso potrzebuje do utworzenia konta VMware, usługa Azure Migrate możn
 
 Odnajdywanie maszyny Wirtualnej wymaga konta tylko do odczytu w programie vCenter Server, który ma następujące właściwości:
 
-- **Typ użytkownika**: co najmniej użytkownik tylko do odczytu.
-- **Uprawnienia**: obiekt centrum danych, można wybrać **Propagacja do obiektu podrzędnego** pola wyboru. Aby uzyskać **roli**, wybierz opcję **tylko do odczytu**.
-- **Szczegóły**: użytkownik został przypisany na poziomie centrum danych, dostęp do wszystkich obiektów w centrum danych.
+- **Typ użytkownika**: Co najmniej użytkownik tylko do odczytu.
+- **Uprawnienia**: Obiekt centrum danych, można wybrać **Propagacja do obiektu podrzędnego** pola wyboru. Aby uzyskać **roli**, wybierz opcję **tylko do odczytu**.
+- **Szczegóły**: Użytkownik został przypisany na poziomie centrum danych, dostęp do wszystkich obiektów w centrum danych.
 - Aby ograniczyć dostęp, Przypisz **bez dostępu** roli **Propagacja do obiektu podrzędnego** obiektu do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).
 
 ### <a name="verify-permissions-to-create-a-vm"></a>Weryfikowanie uprawnień do utworzenia maszyny wirtualnej
@@ -351,7 +351,7 @@ Po zakończeniu zbierania Contoso sprawdza, czy maszyny wirtualne są wyświetla
 
     ![Usługa Azure Migrate — wymagana jest instalacja agenta](./media/contoso-migration-assessment/machines-no-agent.png)
 
-## <a name="step-5-prepare-for-dependency-analysis"></a>Krok 5: Przygotowywanie analizy zależności
+## <a name="step-5-prepare-for-dependency-analysis"></a>Krok 5. Przygotowywanie analizy zależności
 
 Aby wyświetlić zależności między maszynami wirtualnymi, które chce ocenić, Contoso pobiera i instaluje agentów na maszynach wirtualnych aplikacji. Firma Contoso instaluje agentów na wszystkich maszynach wirtualnych w przypadku aplikacji, zarówno dla Windows i Linux.
 

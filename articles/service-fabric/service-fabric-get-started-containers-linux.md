@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 1/4/2019
 ms.author: twhitney
-ms.openlocfilehash: 5432266bd042b527156852aaf30fef09f3bf8c72
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: e02acb0d283257658d4466295e3be323072210b5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053300"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062370"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -193,7 +193,7 @@ Określ mapowanie portów w odpowiednim formacie. W tym artykule, musisz podać 
    </ServiceManifestImport>
 ``` 
 
-Zalecamy zaszyfrowanie hasła repozytorium, zapoznaj się [ Zarządzanie zaszyfrowane klucze tajne w aplikacji usługi Service Fabric](service-fabric-application-secret-management.md)
+Zalecamy zaszyfrowanie hasła repozytorium. Zapoznaj się [ Zarządzanie zaszyfrowane klucze tajne w aplikacji usługi Service Fabric](service-fabric-application-secret-management.md) instrukcje.
 
 ### <a name="configure-cluster-wide-credentials"></a>Skonfiguruj poświadczenia całego klastra
 Zapoznaj się [w tej dokumentacji](

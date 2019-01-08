@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: d955f5c11121e8d42bc4b02b75427ab07298e74b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 660120a1314c0071aa5b1cf3eae668e1626813a1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264186"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073462"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Aplikacje platformy Azure: Rozwiązanie szablon oferty, Podręcznik publikowania
+# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Aplikacje platformy Azure: Oferta szablonu rozwiązania Podręcznik publikowania
 
 Szablony rozwiązań są jednym z głównych sposobów publikowania rozwiązania w portalu Marketplace. Użyj tego przewodnika, aby poznać wymagania dla tej oferty. 
 
@@ -40,7 +40,7 @@ Szablony te rozwiązania są oferuje transakcji, które są wdrożone i rozlicza
 |  |  |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli użytkownik jeszcze tego nie zrobiono, [zarejestrować](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.
 
 Jeśli jesteś zarejestrowanym i tworzysz nową ofertę lub Praca w istniejącym, zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty.
