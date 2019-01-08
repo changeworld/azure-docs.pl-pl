@@ -1,23 +1,20 @@
 ---
-title: 'Samouczek: Projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal'
+title: 'Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą witryny Azure Portal'
 description: Ten samouczek pokazuje, jak zaprojektować pierwszą bazę danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406386"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536529"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: Projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
 
 Azure Database for PostgreSQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzanie nimi. Za pomocą witryny Azure Portal możesz łatwo zarządzać serwerem i zaprojektować bazę danych.
 
@@ -51,7 +48,7 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for Pos
     ![Tworzenie serwera](./media/tutorial-design-database-using-azure-portal/2-create.png)
 
     - Nazwa serwera: **mydemoserver** (nazwa serwera jest mapowana na nazwę DNS i dlatego musi być globalnie unikatowa) 
-    - Subskrypcja: jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w ramach której istnieje zasób lub będą za niego naliczane opłaty.
+    - Subskrypcja: Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zasób istnieje lub dla której są za niego naliczane opłaty.
     - Grupa zasobów: **myresourcegroup**
     - Wybrane przez Ciebie login i hasło administratora serwera
     - Lokalizacja
@@ -197,7 +194,7 @@ Załóżmy, że ta tabela została przypadkowo usunięta. W takiej sytuacji nie�
 
    - **Punkt przywracania**: wybierz punkt w czasie przed zmianą serwera
    - **Serwer docelowy**: podaj nazwę nowego serwera, na który chcesz przywrócić dane
-   - **Lokalizacja**: nie można wybrać regionu; domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
+   - **Lokalizacja**: nie można wybrać regionu — domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
    - **Warstwa cenowa**: nie możesz zmienić tej wartości podczas przywracania serwera. Jest taka sama jak w przypadku serwera źródłowego. 
 3.  Kliknij przycisk **OK**, aby [przywrócić serwer do punktu w czasie](./howto-restore-server-portal.md) sprzed usunięcia tabeli. Przywrócenie serwera do innego punktu w czasie spowoduje utworzenie nowego serwera będącego duplikatem oryginalnego serwera z określonego przez Ciebie punktu w czasie, o ile zawiera się on w okresie przechowywania dla Twojej [warstwy cenowej](./concepts-pricing-tiers.md).
 
@@ -212,4 +209,4 @@ W tym samouczku przedstawiono sposób użycia witryny Azure Portal i innych narz
 > * Aktualizowanie danych
 > * Przywracanie danych
 
-Następnie, aby dowiedzieć się, jak można użyć interfejsu wiersza polecenia platformy Azure do wykonywania podobnych zadań, przejrzyj następujący samouczek: [Design your first Azure Database for PostgreSQL using Azure CLI (Projektowanie pierwszej bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure)](tutorial-design-database-using-azure-cli.md)
+W następnym samouczku dowiesz się, jak wykonywać podobne zadania przy użyciu interfejsu wiersza polecenia platformy Azure: [Projektowanie pierwszej bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure](tutorial-design-database-using-azure-cli.md)

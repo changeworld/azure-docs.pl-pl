@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: korzystanie z modelu domeny — REST, PHP — przetwarzanie obrazów'
+title: 'Szybki start: zawartość obrazu specyficzna dla domeny — REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz modeli domeny do rozpoznania elementów krajobrazu na obrazie przy użyciu interfejsu API przetwarzania obrazów oraz języka PHP.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 176e11615fe2f2c1b58b7608dfd5cbd349f9e547
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 19aa1874a93c4a52f6fc5ff75848c1ca6815db1e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340090"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581345"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: korzystanie z modelu domeny przy użyciu interfejsu API REST i języka PHP w przetwarzaniu obrazów
+# <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>Szybki start: rozpoznawanie zawartości specyficznej dla domeny przy użyciu interfejsu API REST i języka PHP w przetwarzaniu obrazów
 
-W tym przewodniku Szybki start użyjesz modelu domeny do rozpoznania elementów krajobrazu lub, opcjonalnie, celebrytów na zdalnie przechowywanym obrazie za pomocą interfejsu API REST przetwarzania obrazów. Metoda [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) umożliwia zastosowanie modelu specyficznego dla domeny do rozpoznawania zawartości w ramach obrazu.
+W tym przewodniku Szybki start użyjesz modelu domeny do rozpoznania elementów krajobrazu lub opcjonalnie osobistości na zdalnie przechowywanym obrazie za pomocą interfejsu API REST przetwarzania obrazów. Metoda [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) umożliwia zastosowanie modelu specyficznego dla domeny do rozpoznawania zawartości w ramach obrazu.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
@@ -33,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-1. Zainstaluj pakiet [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) PHP5.
+1. Zainstaluj pakiet [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) PHP5.
    1. Otwórz okno wiersza polecenia jako administrator.
    1. Uruchom następujące polecenie:
 

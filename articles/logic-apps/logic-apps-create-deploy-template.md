@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000567"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065736"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Tworzenie szablonów usługi Azure Resource Manager do wdrażania aplikacji logiki
 
@@ -34,7 +34,7 @@ W zasobie aplikacji logiki możesz znaleźć tę definicję w `definition` wła�
 * **Połączenia**: Odnosi się do rozdzielenia zasobów, które są bezpiecznie przechowywane metadane dotyczące wszystkie połączenia łącznika, takie jak parametry połączenia i token dostępu.
 W zasobie aplikacji logiki, aplikację logiki odwołuje się do tych zasobów `parameters` sekcji.
 
-Wszystkie te fragmenty istniejących aplikacji logiki można wyświetlić za pomocą narzędzia, takiego jak [Eksploratora zasobów Azure](http://resources.azure.com).
+Wszystkie te fragmenty istniejących aplikacji logiki można wyświetlić za pomocą narzędzia, takiego jak [Eksploratora zasobów Azure](http://resources.azure.com). Składnię JSON i właściwości, zobacz [typów zasobów Microsoft.Logic](/azure/templates/microsoft.logic/allversions).
 
 Aby szablon aplikacji logiki do używania z wdrożeniami grup zasobów, należy zdefiniować zasoby i sparametryzuj zgodnie z potrzebami.
 Na przykład Jeżeli wdrażasz rozwoju, testowania i środowiska produkcyjnego, prawdopodobnie chcesz użyć ciągów innego połączenia z bazą danych SQL w każdym środowisku.

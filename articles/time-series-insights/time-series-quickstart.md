@@ -1,5 +1,5 @@
 ---
-title: Szybki start — Eksplorator usługi Azure Time Series Insights | Microsoft Docs
+title: 'Szybki start: Eksplorator usługi Azure Time Series Insights | Microsoft Docs'
 description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę z eksploratorem usługi Azure Time Series Insights w przeglądarce internetowej, aby wizualizować duże ilości danych IoT. Poznaj najważniejsze funkcje w środowisku pokazu.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 11/15/2017
-ms.openlocfilehash: 6b2a21cf50c03c8e44794540074dabf90049bc7c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 32ed0ec178f7a0064fae88357011197e71604885
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275520"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555544"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Szybki start: Poznawanie usługi Azure Time Series Insights
 W tym przewodniku Szybki start pokazano, jak rozpocząć pracę z eksploratorem usługi Azure Time Series Insights w bezpłatnym środowisku pokazowym. Dowiesz się, jak przy użyciu przeglądarki internetowej wizualizować duże ilości danych IoT, i poznasz najważniejsze funkcje eksploratora usługi Time Series Insights. 

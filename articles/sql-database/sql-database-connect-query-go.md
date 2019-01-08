@@ -12,16 +12,16 @@ ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 12/07/2018
-ms.openlocfilehash: 34b3ee54c48040eaa6f7b7569921678869baa84b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f86312ee1d11e5ac4c7626f5fd4c8223dac8b52
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092370"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744704"
 ---
-# <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Go do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Golang do wykonywania zapytań w bazie danych Azure SQL Database
 
-W tym przewodniku Szybki start pokazano, jak używać języka programowania [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) do nawiązywania połączenia z usługą Azure SQL Database, a następnie uruchamiać instrukcje języka Transact-SQL, aby wykonywać zapytania i modyfikować dane. [Go](https://golang.org/) jest językiem programowania typu „open source”, który umożliwia łatwe tworzenie prostego, niezawodnego i wydajnego oprogramowania.  
+W tym przewodniku Szybki start użyjesz języka programowania [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) do nawiązania połączenia z bazą danych Azure SQL Database. Następnie uruchomisz instrukcje języka Transact-SQL (T-SQL), aby wykonać zapytanie i zmodyfikować dane. [Golang](https://golang.org/) jest językiem programowania typu „open source”, który umożliwia łatwe tworzenie prostego, niezawodnego i wydajnego oprogramowania.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -31,7 +31,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 - [Reguła zapory na poziomie serwera](sql-database-get-started-portal-firewall.md) skonfigurowana dla publicznego adresu IP komputera.
 
-- Zainstalowany język Go i związane z nim oprogramowanie dla systemu operacyjnego:
+- Zainstalowany język Golang i związane z nim oprogramowanie dla systemu operacyjnego:
 
     - **MacOS**: zainstaluj oprogramowanie Homebrew i GoLang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
     - **Ubuntu**:  zainstaluj oprogramowanie GoLang. Zobacz [Krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
@@ -41,7 +41,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-## <a name="create-go-project-and-dependencies"></a>Tworzenie projektu Go i zależności
+## <a name="create-golang-project-and-dependencies"></a>Tworzenie projektu języka Golang i zależności
 
 1. Z poziomu terminalu utwórz nowy folder projektu o nazwie **SqlServerSample**. 
 
@@ -49,7 +49,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
    mkdir SqlServerSample
    ```
 
-2. Zmień katalog na **SqlServerSample** i zainstaluj sterownik programu SQL Server dla języka Go.
+2. Przejdź do folderu **SqlServerSample** i zainstaluj sterownik programu SQL Server dla języka Go.
 
    ```bash
    cd SqlServerSample
@@ -59,7 +59,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 ## <a name="create-sample-data"></a>Tworzenie danych przykładowych
 
-1. W wybranym edytorze tekstów utwórz plik o nazwie **CreateTestData.sql** w folderze **SqlServerSample**. Skopiuj i wklej do tego pliku poniższy kod T-SQL, który tworzy schemat, tabelę i wstawia kilka wierszy.
+1. W edytorze tekstów utwórz plik o nazwie **CreateTestData.sql** w folderze **SqlServerSample**. W pliku wklej poniższy kod T-SQL, który tworzy schemat oraz tabelę i wstawia kilka wierszy.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -85,14 +85,14 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 2. Użyj polecenia `sqlcmd`, aby nawiązać połączenie z bazą danych i uruchomić nowo utworzony skrypt SQL. Zastąp odpowiednie wartości dla swojego serwera, bazy danych, nazwy użytkownika i hasła.
 
    ```bash
-   sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
+   sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
    ```
 
 ## <a name="insert-code-to-query-sql-database"></a>Wstawianie kodu zapytania bazy danych SQL
 
 1. Utwórz plik o nazwie **sample.go** w folderze **SqlServerSample**.
 
-2. Otwórz plik i wklej następujący kod. Dodaj odpowiednie wartości dla swojego serwera, bazy danych, nazwy użytkownika i hasła. W tym przykładzie używane są metody GoLang Context, aby upewnić się, że istnieje aktywne połączenie z serwerem bazy danych.
+2. Wklej ten kod w pliku. Dodaj wartości dla swojego serwera, bazy danych, nazwy użytkownika i hasła. W tym przykładzie są używane [metody kontekstowe](https://golang.org/pkg/context/) języka Golang w celu upewnienia się, że istnieje aktywne połączenie z serwerem bazy danych.
 
    ```go
    package main
@@ -108,11 +108,11 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
    var db *sql.DB
 
-   var server = "your_server.database.windows.net"
+   var server = "<your_server.database.windows.net>"
    var port = 1433
-   var user = "your_username"
-   var password = "your_password"
-   var database = "your_database"
+   var user = "<your_username>"
+   var password = "<your_password>"
+   var database = "<your_database>"
 
    func main() {
        // Build connection string
@@ -311,6 +311,6 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 ## <a name="next-steps"></a>Następne kroki
 
 - [Projektowanie pierwszej bazy danych SQL na platformie Azure](sql-database-design-first-database.md)
-- [Sterownik języka Go dla programu Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
+- [Sterownik języka Golang dla programu Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Zgłaszanie problemów/zadawanie pytań](https://github.com/denisenkom/go-mssqldb/issues)
 

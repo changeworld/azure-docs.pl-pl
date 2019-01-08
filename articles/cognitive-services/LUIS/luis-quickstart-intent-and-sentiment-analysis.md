@@ -1,7 +1,7 @@
 ---
 title: Analiza tonacji
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
+description: W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,56 +9,64 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ee50907d7965a66d09dc57113e87edecb1932083
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098941"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754292"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Samouczek 9:  wyodrębnianie tonacji całej wypowiedzi
-W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
+# <a name="tutorial--get-sentiment-of-utterance"></a>Samouczek:  Uzyskiwanie tonacji wypowiedzi
 
-Analiza tonacji to możliwość określenia, czy wypowiedź użytkownika jest pozytywna, negatywna, czy neutralna. 
+W tym samouczku utworzysz aplikację, która pokazuje, jak określić pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Tworzenie nowej aplikacji
+> * Dodawanie analizy tonacji jako ustawienia publikowania
+> * Szkolenie aplikacji
+> * Publikowanie aplikacji
+> * Uzyskiwanie tonacji wypowiedzi z punktu końcowego
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="sentiment-analysis-is-a-publish-setting"></a>Analiza tonacji to ustawienie publikowania
 
 Następujące wypowiedzi przedstawiają przykłady tonacji:
 
 |Opinia|Wynik|Wypowiedź|
 |:--|:--|:--|
 |pozytywna|0,91 |John W. Smith zostało świetnie w prezentacji w Paryżu.|
-|pozytywna|0,84 |jill-jones@mycompany.com czy wspaniałe prace nad Parker pomysłu sprzedaży.|
+|pozytywna|0,84 |The Seattle engineers did fabulous work on the Parker sales pitch.|
 
-Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Nie trzeba wyszukiwać wyrazów wskazujących tonację w wypowiedzi ani oznaczać ich etykietami, ponieważ analiza tonacji dotyczy całej wypowiedzi. 
+Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Nie ma potrzeby odnajdywania słów wskazujących tonację w ramach wypowiedzi i oznaczania ich. 
 
 Ponieważ jest to ustawienie publikowania, nie widać go na stronach intencji i jednostek. Jest ono widoczne w okienku [interactive test](luis-interactive-test.md#view-sentiment-results) (Test interaktywny) lub podczas testowania pod adresem URL punktu końcowego. 
 
-**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka 
-> * Dodawanie analizy tonacji jako ustawienia publikowania
-> * Szkolenie
-> * Publikowanie
-> * Uzyskiwanie tonacji wypowiedzi z punktu końcowego
+## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+## <a name="add-personname-prebuilt-entity"></a>Dodawanie wstępnie utworzonej jednostki PersonName 
 
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+1. Wybierz pozycję **Entities** (Jednostki) w menu nawigacji po lewej stronie.
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json).
+1. Naciśnij przycisk **Add prebuilt entity** (Dodaj wstępnie utworzoną jednostkę).
 
-2. Zaimportuj plik JSON do nowej aplikacji.
+1. Wybierz następującą jednostkę z listy wstępnie utworzonych jednostek, a następnie wybierz pozycję **Done** (Gotowe):
 
-3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `sentiment`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
+    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-## <a name="employeefeedback-intent"></a>Intencja EmployeeFeedback 
+    ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+
+## <a name="create-an-intent-to-determine-employee-feedback"></a>Utwórz intencję, aby określić opinie pracowników
+
 Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy. 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
@@ -71,122 +79,66 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 4. Dodaj kilka wypowiedzi wskazujących, że pracownik robi coś dobrze lub że musi poprawić swoje wyniki w określonym obszarze:
 
-    Pamiętaj, że w tej aplikacji Human Resources pracownicy są definiowani w jednostce List (Lista), `Employee`, według nazwy, adresu e-mail, numeru wewnętrznego, numer telefonu komórkowego lub federalnego numeru ubezpieczenia społecznego (Stany Zjednoczone). 
-
     |Wypowiedzi|
     |--|
-    |425-555-1212 did a nice job of welcoming back a co-worker from maternity leave|
-    |234-56-7891 did a great job of comforting a co-worker in their time of grief.|
-    |jill-jones@mycompany.com didn't have all the required invoices for the paperwork.|
-    |john.w.smith@mycompany.com turned in the required forms a month late with no signatures|
-    |x23456 didn't make it to the important marketing off-site meeting.|
-    |x12345 missed the meeting for June reviews.|
-    |Jill Jones rocked the sales pitch at Harvard|
-    |John W. Smith did a great job on the presentation at Stanford|
+    |John Smith did a nice job of welcoming back a co-worker from maternity leave|
+    |Jill Jones did a great job of comforting a co-worker in their time of grief.|
+    |Bob Barnes didn't have all the required invoices for the paperwork.|
+    |Todd Thomas turned in the required forms a month late with no signatures|
+    |Katherine Kelly didn't make it to the important marketing off-site meeting.|
+    |Denise Dillard missed the meeting for June reviews.|
+    |Mark Mathews rocked the sales pitch at Harvard|
+    |Walter Williams did a great job on the presentation at Stanford|
 
     [ ![Zrzut ekranu aplikacji LUIS z przykładami wypowiedzi w intencji EmployeeFeedback](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train"></a>Szkolenie
+## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurowanie aplikacji pod kątem analizy tonacji
+
 1. Wybierz pozycję **Manage** (Zarządzaj) w prawym górnym okienku nawigacji, a następnie wybierz pozycję **Publish settings** (Ustawienia publikowania) z menu po lewej stronie.
 
-2. Przestaw przełącznik **Sentiment Analysis** (Analiza tonacji), aby włączyć to ustawienie. 
+1. Wybierz pozycję **Sentiment Analysis** (Analiza tonacji), aby włączyć to ustawienie. 
 
     ![Włączanie analizy tonacji jako ustawienia publikowania](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikowanie aplikacji w celu umożliwienia wysyłania zapytań z punktu końcowego do trenowanego modelu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-sentiment-of-utterance-from-endpoint"></a>Uzyskiwanie tonacji wypowiedzi z punktu końcowego
+## <a name="get-the-sentiment-of-an-utterance-from-the-endpoint"></a>Uzyskiwanie tonacji wypowiedzi z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Jill Jones work with the media team on the public portal was amazing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
+1. Przejdź na koniec tego adresu URL i wprowadź ciąg `Jill Jones work with the media team on the public portal was amazing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
     
     ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {
         "intent": "EmployeeFeedback",
-        "score": 0.4983256
+        "score": 0.9616192
       },
       "intents": [
         {
           "intent": "EmployeeFeedback",
-          "score": 0.4983256
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.06617523
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.04631853
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0103248553
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.007531875
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00344597152
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00337914471
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.0026357458
+          "score": 0.9616192
         },
         {
           "intent": "None",
-          "score": 0.00214573368
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00157622492
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 7.379545E-05
+          "score": 0.09347677
         }
       ],
       "entities": [
         {
           "entity": "jill jones",
-          "type": "Employee",
-          "startIndex": 0,
-          "endIndex": 9,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
-        },
-        {
-          "entity": "media team",
-          "type": "builtin.keyPhrase",
-          "startIndex": 25,
-          "endIndex": 34
-        },
-        {
-          "entity": "public portal",
-          "type": "builtin.keyPhrase",
-          "startIndex": 43,
-          "endIndex": 55
-        },
-        {
-          "entity": "jill jones",
-          "type": "builtin.keyPhrase",
+          "type": "builtin.personName",
           "startIndex": 0,
           "endIndex": 9
         }
@@ -198,11 +150,19 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
     }
     ```
 
-    Wynik analizy sentimentAnalysis jest pozytywny i ma wartość 0,86. 
+    Wynik analizy sentimentAnalysis jest pozytywny i ma wartość 86%. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>Informacje pokrewne
+
+* Analiza tonacji jest udostępniana za pośrednictwem funkcji [analizy tekstu](../Text-Analytics/index.yml) usługi Cognitive Service. Ta funkcja jest ograniczona do [obsługiwanych języków](luis-language-support.md##languages-supported) przez analizę tekstu.
+* [Jak trenować](luis-how-to-train.md)
+* [Jak opublikować](luis-how-to-publish-app.md)
+* [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku dodaliśmy analizę tonacji jako ustawienie publikowania, aby wyodrębnić wartości tonacji z wypowiedzi jako całości.

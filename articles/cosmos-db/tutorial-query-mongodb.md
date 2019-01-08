@@ -1,29 +1,29 @@
 ---
-title: 'Azure Cosmos DB: Jak wykonywać zapytania za pomocą interfejsu MongoDB API?'
-description: Dowiedz się, jak za pomocą interfejsu MongoDB API wykonywać zapytania w usłudze Azure Cosmos DB
+title: Wykonywanie zapytań o dane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
+description: Dowiedz się, jak wykonywać zapytania o dane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 services: cosmos-db
-author: SnehaGunda
-ms.author: sngun
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/29/2018
-ms.openlocfilehash: 8c865ab7fa997b169e481612ce791d960688da56
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/26/2018
+ms.openlocfilehash: b2bfc48fa0ba8aab0bbdf19e1b127155633e2271
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841510"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793210"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu MongoDB API
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Wykonywanie zapytań o dane przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-Interfejs [API dla bazy danych MongoDB](mongodb-introduction.md) w usłudze Azure Cosmos DB obsługuje [zapytania powłoki MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+[Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB](mongodb-introduction.md) obsługuje [zapytania bazy danych MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Wykonywanie zapytania o dane za pomocą bazy danych MongoDB
+> * Wykonywanie zapytania o dane przechowywane w bazie danych Cosmos za pomocą powłoki bazy danych MongoDB
 
 Możesz rozpocząć pracę, korzystając z przykładów zawartych w tym dokumencie i obejrzeć wideo [Query Azure Cosmos DB with MongoDB shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) (Wykonywanie zapytań względem usługi Azure Cosmos DB za pomocą powłoki bazy danych MongoDB).
 
@@ -303,7 +303,7 @@ Następne zapytanie zwraca wszystkie rodziny, w których rozmiar tablicy z dzie�
 W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Przedstawiono sposób wykonywania zapytań przy użyciu bazy danych MongoDB 
+> * Przedstawiono sposób wykonywania zapytań przy użyciu interfejsu API usługi Cosmos DB dla bazy danych MongoDB
 
 Możesz teraz przejść do następnego samouczka, aby dowiedzieć się, jak dystrybuować swoje dane globalnie.
 

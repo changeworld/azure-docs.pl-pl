@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5558409c3a3b0aef3757ebb73b2046a7018e4150
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 66fdb1313177b6f6a285f7d1b1b02dadac9472cc
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088191"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810444"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Tworzenie kontenera w usłudze Azure Cosmos DB
 
@@ -20,7 +20,7 @@ W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcja, tabela, 
 
 ## <a name="create-a-container-using-azure-portal"></a>Tworzenie kontenera przy użyciu witryny Azure Portal
 
-### <a id="portal-sql"></a>Interfejs API SQL (podstawowy)
+### <a id="portal-sql"></a>Interfejs API SQL
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 
@@ -36,7 +36,7 @@ W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcja, tabela, 
 
 ![Interfejs API SQL tworzy kolekcję](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>Interfejs API usługi MongoDB
+### <a id="portal-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 
@@ -51,7 +51,7 @@ W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcja, tabela, 
    * Wprowadź przepływność, na przykład 1000 jednostek RU.
    * Kliknij przycisk **OK**.
 
-![Interfejs API usługi MongoDB tworzy kolekcję](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB tworzy kolekcję](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Interfejs API rozwiązania Cassandra
 
@@ -109,7 +109,7 @@ W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcja, tabela, 
 
 ## <a name="create-a-container-using-azure-cli"></a>Tworzenie kontenera przy użyciu interfejsu wiersza polecenia platformy Azure
 
-### <a id="cli-sql"></a>Interfejs API SQL (podstawowy)
+### <a id="cli-sql"></a>Interfejs API SQL
 
 ```azurecli-interactive
 # Create a container with a partition key and provision 1000 RU/s throughput.
@@ -123,7 +123,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-mongodb"></a>Interfejs API usługi MongoDB
+### <a id="cli-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 ```azurecli-interactive
 # Create a collection with a shard key and provision 1000 RU/s throughput.
@@ -191,7 +191,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>Interfejs API usługi MongoDB
+### <a id="dotnet-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -199,7 +199,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> W usłudze MongoDB nie funkcjonuje pojęcie jednostek żądań. Aby utworzyć nową kolekcję z odpowiednią przepływnością, skorzystaj z witryny Azure Portal lub interfejsu API SQL, jak pokazano w poprzednich przykładach.
+W przypadku protokołu przewodowego usługi MongoDB nie funkcjonuje pojęcie jednostek żądań. Aby utworzyć nową kolekcję z odpowiednią przepływnością, skorzystaj z witryny Azure Portal lub interfejsu API SQL, jak pokazano w poprzednich przykładach.
 
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
 

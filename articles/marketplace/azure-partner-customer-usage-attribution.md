@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602175"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077746"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -36,10 +36,8 @@ Uznanie autorstwa użycia klienta jest wymagany we wszystkich [szablony rozwiąz
 
 ## <a name="use-resource-manager-templates"></a>Używanie szablonów usługi Resource Manager
 
-Wiele rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy użyciu szablonów usługi Resource Manager. W przypadku szablonu usługi Resource Manager, który jest dostępny w portalu Azure Marketplace, w usłudze GitHub lub jako Szybki Start, proces, aby zmodyfikować szablon, aby włączyć nowe metody śledzenia powinna być bardzo proste. Jeśli nie używasz szablonu usługi Azure Resource Manager, Oto kilka linków, aby umożliwić użytkownikom lepsze rozumienie szablonów usługi Resource Manager oraz jak utworzyć: 
+Wiele rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy użyciu szablonów usługi Resource Manager. W przypadku szablonu usługi Resource Manager, który jest dostępny w portalu Azure Marketplace, w usłudze GitHub lub jako Szybki Start, proces, aby zmodyfikować szablon, aby włączyć nowe metody śledzenia powinna być bardzo proste. Aby uzyskać więcej informacji, zobacz [tworzenie i wdrażanie pierwszego szablonu usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
 
-*   [Tworzenie i wdrażanie pierwszego szablonu usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Utwórz szablon rozwiązań dla witryny Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>Dodaj identyfikator GUID szablonu
 
@@ -270,11 +268,15 @@ Firma Microsoft zapewnia partnerom widok wdrożeń klientów swoje szablony i sz
 
 **Identyfikator GUID, kto może dodawać do szablonu?**
 
-Zasób śledzenia jest przeznaczona do łączenia z rozwiązania partnerskiego do użycia platformy Azure przez klienta. Dane użycia jest powiązany tożsamość Microsoft Partner Network partnera (identyfikator MPN). 
+Zasób śledzenia jest przeznaczona do łączenia z rozwiązania partnerskiego do użycia platformy Azure przez klienta. Dane użycia jest powiązany tożsamość Microsoft Partner Network partnera (identyfikator MPN). Raportowanie jest dostępny dla partnerów w CPP.
 
 **Po dodaniu identyfikator GUID można go zmienić?**
  
 Tak, klienta lub implementacji partnera może dostosować szablon i zmienić lub usunąć identyfikator GUID. Zaleca się, że partnerzy aktywnie opisywania roli zasobów i identyfikator GUID dla ich klientów i partnerów, aby uniemożliwić usunięcie lub edycji do śledzenia identyfikator GUID. Zmiana identyfikatora GUID dotyczy tylko nowych, nie istniejących wdrożeń i zasobów.
+
+**Kiedy reporting będą dostępne?**
+
+Wersja beta, raportowania powinien być dostępny wkrótce. Zgłoszenie zostanie zintegrowana CPP.
 
 **Czy mogę śledzić szablony wdrażany z repozytorium firmy Microsoft, takich jak GitHub**
 

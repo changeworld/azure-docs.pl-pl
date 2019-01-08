@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 8beabfb8c77d4d62b9b15dca8ae3146c34c3b20a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634816"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998680"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Szybki start: wysyłanie i odbieranie komunikatów przy użyciu interfejsu wiersza polecenia Azure i środowiska Java
+# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Szybki start: Wysyłanie i odbieranie komunikatów przy użyciu interfejsu wiersza polecenia Azure i środowiska Java
 
 Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz niezawodność. Typowy scenariusz usługi Service Bus obejmuje zwykle rozdzielanie od siebie co najmniej dwóch aplikacji, usług lub procesów (aplikacje nie muszą być w tym samym czasie w trybie online), przesyłanie zmian stanu lub danych oraz wysyłanie komunikatów między aplikacjami. 
 
@@ -66,7 +66,7 @@ Po uruchomieniu ostatniego polecenia skopiuj i wklej parametry połączenia oraz
 
 ## <a name="send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów
 
-Po utworzeniu przestrzeni nazw i kolejki (i jeśli użytkownik ma wszystkie niezbędne poświadczenia) można wysyłać i odbierać komunikaty. Kod można przeanalizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java).
+Po utworzeniu przestrzeni nazw i kolejki (i jeśli użytkownik ma wszystkie niezbędne poświadczenia) można wysyłać i odbierać komunikaty. Kod można przeanalizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 1. Upewnij się, że usługa Cloud Shell jest uruchomiona i wyświetla wiersz polecenia Bash.
 
@@ -108,7 +108,7 @@ az group delete --resource-group myResourceGroup
 
 ## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
 
-Ta sekcja zawiera więcej szczegółów na temat kluczowych sekcji przykładowego kodu. Kod znajdujący się w repozytorium GitHub można przeglądać [tutaj](https://github.com/Azure/azure-service-bus/blob/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java).
+Ta sekcja zawiera więcej szczegółów na temat kluczowych sekcji przykładowego kodu. Kod znajdujący się w repozytorium GitHub można przeglądać [tutaj](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 ### <a name="get-connection-string-and-queue"></a>Pobieranie kolejki i parametrów połączenia
 

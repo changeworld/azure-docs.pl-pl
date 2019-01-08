@@ -3,22 +3,21 @@ title: Samouczek dotyczący usługi Kubernetes na platformie Azure — tworzenie
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) utworzysz wystąpienie usługi Azure Container Registry i przekażesz przykładowy obraz kontenera aplikacji.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4f240d346457717c66a6ed189cfd8610c7a764da
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 51cfc62adaf9d9c780888477aa6eab2a812fe98c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918653"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718037"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Samouczek: wdrażanie usługi Azure Container Registry i korzystanie z niej
+# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Samouczek: Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
-Usługa Azure Container Registry (ACR) to oparty na platformie Azure rejestr prywatny na potrzeby obrazów kontenerów platformy Docker. Prywatny rejestr kontenerów umożliwia bezpieczne tworzenie i wdrażanie aplikacji oraz niestandardowego kodu. W tym samouczku (część druga z siedmiu) wdrożysz wystąpienie usługi ACR i wypchniesz do niego obraz kontenera. Omawiane kwestie:
+Usługa Azure Container Registry (ACR) to prywatny rejestr obrazów kontenera. Prywatny rejestr kontenerów umożliwia bezpieczne tworzenie i wdrażanie aplikacji oraz niestandardowego kodu. W tym samouczku (część druga z siedmiu) wdrożysz wystąpienie usługi ACR i wypchniesz do niego obraz kontenera. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie wystąpienia usługi Azure Container Registry
@@ -26,13 +25,13 @@ Usługa Azure Container Registry (ACR) to oparty na platformie Azure rejestr pry
 > * Przekazywanie obrazu do usługi ACR
 > * Wyświetlanie obrazów w rejestrze
 
-W kolejnych samouczkach to wystąpienie usługi ACR zostanie zintegrowane z klastrem Kubernetes w usłudze AKS, a aplikacja zostanie wdrożona na podstawie obrazu.
+W dodatkowych samouczkach to wystąpienie usługi ACR zostanie zintegrowane z klastrem Kubernetes w usłudze AKS, a aplikacja zostanie wdrożona na podstawie obrazu.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 W [poprzednim samouczku ][aks-tutorial-prepare-app] utworzono obraz kontenera na potrzeby prostej aplikacji do głosowania platformy Azure. Jeśli obraz aplikacji do głosowania platformy Azure nie został utworzony, wróć do artykułu [Samouczek 1 — Tworzenie obrazów kontenerów][aks-tutorial-prepare-app].
 
-Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.44 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="create-an-azure-container-registry"></a>Tworzenie rejestru Azure Container Registry
 
@@ -44,7 +43,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz wystąpienie usługi Azure Container Registry przy użyciu polecenia [az acr create][az-acr-create] i podaj własną nazwę rejestru. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. W dalszej części tego samouczka wartość `<acrName>` zostanie użyta jako symbol zastępczy nazwy rejestru kontenerów. *Podstawowa* jednostka SKU to zoptymalizowany pod kątem kosztów punkt wejścia do celów programistycznych zapewniający równowagę między przestrzenią dyskową i przepływnością.
+Utwórz wystąpienie usługi Azure Container Registry przy użyciu polecenia [az acr create][az-acr-create] i podaj własną nazwę rejestru. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. W dalszej części tego samouczka wartość `<acrName>` zostanie użyta jako symbol zastępczy nazwy rejestru kontenerów. Podaj własną, unikatową nazwę rejestru. *Podstawowa* jednostka SKU to zoptymalizowany pod kątem kosztów punkt wejścia do celów programistycznych zapewniający równowagę między przestrzenią dyskową i przepływnością.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -101,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>Wypychanie obrazów do rejestru
 
-Teraz możesz wypchnąć obraz *azure-vote-front* do wystąpienia usługi ACR. Użyj polecenia [docker push][docker-push] i podaj własny adres *acrLoginServer* na potrzeby nazwy obrazu w następujący sposób:
+Po skompilowaniu i otagowaniu obrazu *azure-vote-front* możesz wypchnąć go do wystąpienia usługi ACR. Użyj polecenia [docker push][docker-push] i podaj własny adres *acrLoginServer* na potrzeby nazwy obrazu w następujący sposób:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1

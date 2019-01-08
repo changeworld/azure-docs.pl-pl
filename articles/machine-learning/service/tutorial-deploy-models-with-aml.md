@@ -11,27 +11,27 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d93eadd1053cfbc88b2d0748f2f22e359694baa7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312174"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579655"
 ---
-# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Samouczek:  wdrażanie modelu klasyfikacji obrazów w wystąpieniu kontenera platformy Azure
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: wdrażanie modelu klasyfikacji obrazów w usłudze Azure Container Instances
 
 Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W [poprzednim samouczku](tutorial-train-models-with-aml.md) przeszkoliliśmy modele uczenia maszynowego, a następnie zarejestrowaliśmy model w Twoim obszarze roboczym w chmurze.  
 
-Teraz możesz przystąpić do wdrażania modelu jako usługi internetowej w [usłudze Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Usługa internetowa jest obrazem, w tym przypadku obrazem platformy Docker, który hermetyzuje logikę oceniania i sam model. 
+Teraz możesz przystąpić do wdrażania modelu jako usługi internetowej w usłudze [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Usługa internetowa jest obrazem, w tym przypadku obrazem platformy Docker. Hermetyzuje ona logikę oceniania i sam model. 
 
-W tej części samouczka użyjesz usługi Azure Machine Learning, aby wykonać następujące czynności:
+W tej części samouczka użyjesz usługi Azure Machine Learning, aby wykonać następujące zadania:
 
 > [!div class="checklist"]
-> * Konfigurowanie środowiska testowego
-> * Pobieranie modelu z obszaru roboczego
-> * Testowanie modelu w środowisku lokalnym
-> * Wdrażanie modelu w usłudze Container Instances
-> * Testowanie wdrożonego modelu
+> * Konfigurowanie środowiska testowego.
+> * Pobieranie modelu z obszaru roboczego.
+> * Testowanie modelu w środowisku lokalnym.
+> * Wdrażanie modelu w usłudze Container Instances.
+> * Testowanie wdrożonego modelu.
 
 Usługa Container Instances nie jest idealnym rozwiązaniem w przypadku wdrożeń produkcyjnych, ale znakomicie nadaje się do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi Azure Kubernetes Service. Aby uzyskać więcej informacji, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
@@ -46,7 +46,7 @@ Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://gith
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj szkolenie modelu przy użyciu następującego notesu: [Samouczek nr 1: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Wykonaj szkolenie modelu przy użyciu następującego notesu: [Samouczek (część 1): uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Konfigurowanie środowiska
@@ -55,7 +55,7 @@ Zacznij od skonfigurowania środowiska testowego.
 
 ### <a name="import-packages"></a>Importowanie pakietów
 
-Zaimportuj pakiety języka Python potrzebne w tym samouczku.
+Zaimportuj pakiety języka Python potrzebne w tym samouczku:
 
 ```python
 %matplotlib inline
@@ -72,7 +72,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="retrieve-the-model"></a>Pobieranie modelu
 
-W poprzednim samouczku w Twoim obszarze roboczym został zarejestrowany model. Teraz załaduj ten obszar roboczy i pobierz model do katalogu lokalnego.
+W poprzednim samouczku w Twoim obszarze roboczym został zarejestrowany model. Teraz załaduj ten obszar roboczy i pobierz model do katalogu lokalnego:
 
 
 ```python
@@ -87,16 +87,16 @@ import os
 os.stat('./sklearn_mnist_model.pkl')
 ```
 
-## <a name="test-model-locally"></a>Testowanie modelu w środowisku lokalnym
+## <a name="test-the-model-locally"></a>Testowanie modelu w środowisku lokalnym
 
-Przed wdrożeniem upewnij się, że model działa w środowisku lokalnym, wykonując następujące czynności:
-* Ładowanie danych testowych
-* Przewidywanie danych testowych
-* Badanie macierzy pomyłek
+Przed wdrożeniem upewnij się, że model działa w środowisku lokalnym:
+* Ładowanie danych testowych.
+* Przewidywanie danych testowych.
+* Badanie macierzy pomyłek.
 
 ### <a name="load-test-data"></a>Ładowanie danych testowych
 
-Załaduj dane testowe z katalogu **./data/** utworzonego w ramach samouczka dotyczącego szkolenia.
+Załaduj dane testowe z katalogu **./data/** utworzonego w ramach samouczka dotyczącego szkolenia:
 
 ```python
 from utils import load_data
@@ -110,7 +110,7 @@ y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 
 ### <a name="predict-test-data"></a>Przewidywanie danych testowych
 
-Dostarcz do modelu zestaw danych testowych, aby uzyskać przewidywania.
+Aby uzyskać przewidywania, dostarcz do modelu zestaw danych testowych:
 
 ```python
 import pickle
@@ -122,7 +122,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>Badanie macierzy pomyłek
 
-Wygeneruj macierz pomyłek, aby sprawdzić, ile próbek z zestawu testowego zostało poprawnie sklasyfikowanych. Zwróć uwagę na błędnie sklasyfikowane wartości niepoprawnych przewidywań. 
+Wygeneruj macierz pomyłek, aby sprawdzić, ile próbek z zestawu testowego zostało poprawnie sklasyfikowanych. Zwróć uwagę na błędnie sklasyfikowane wartości niepoprawnych przewidywań: 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -147,7 +147,7 @@ Dane wyjściowe przedstawiają macierz pomyłek:
     Overall accuracy: 0.9204
    
 
-Użyj polecenia `matplotlib`, aby wyświetlić macierz pomyłek w postaci wykresu. Na tym wykresie oś X reprezentuje wartości rzeczywiste, a oś Y — przewidywane. Kolor w każdej siatce oznacza współczynnik błędów. Im jaśniejszy kolor, tym wyższy współczynnik błędów. Na przykład wiele wartości 5 zostało błędnie sklasyfikowanych jako 3. Dlatego w położeniu (5,3) widać jasny element siatki.
+Użyj polecenia `matplotlib`, aby wyświetlić macierz pomyłek w postaci wykresu. Na tym wykresie oś x przedstawia wartości rzeczywiste, a oś y — przewidywane. Kolor w każdej siatce pokazuje współczynnik błędów. Im jaśniejszy kolor, tym wyższy współczynnik błędów. Na przykład wiele wartości 5 zostało błędnie sklasyfikowanych jako 3. Dlatego w położeniu (5,3) widać jasny element siatki:
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -172,23 +172,23 @@ plt.show()
 
 ![Wykres przedstawiający macierz pomyłek](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-web-service"></a>Wdrażanie w postaci usługi internetowej
+## <a name="deploy-as-a-web-service"></a>Wdrażanie w postaci usługi internetowej
 
 Gdy model został przetestowany i wyniki są zadowalające, wdróż model jako usługę internetową hostowaną w usłudze Container Instances. 
 
-Aby utworzyć odpowiednie środowisko dla usługi Container Instances, dostarcz następujące elementy:
-* Skrypt oceniania pokazujący, jak korzystać z modelu
-* Plik środowiska pokazujący, jakie pakiety trzeba zainstalować
-* Plik konfiguracji umożliwiający utworzenie wystąpienia kontenera
-* Przeszkolony wcześniej model
+Aby utworzyć odpowiednie środowisko dla usługi Container Instances, dostarcz następujące składniki:
+* Skrypt oceniania pokazujący, jak korzystać z modelu.
+* Plik środowiska pokazujący, jakie pakiety trzeba zainstalować.
+* Plik konfiguracji umożliwiający utworzenie wystąpienia kontenera.
+* Przeszkolony wcześniej model.
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Tworzenie skryptu oceniania
 
-Utwórz skrypt oceniania o nazwie score.py. Wywołanie usługi internetowej używa tego skryptu jako instrukcji korzystania z modelu.
+Utwórz skrypt oceniania o nazwie **score.py**. Wywołanie usługi internetowej używa tego skryptu jako instrukcji korzystania z modelu.
 
-W skrypcie oceniania muszą znaleźć się dwie wymagane funkcje:
+Uwzględnij te dwie wymagane funkcje w skrypcie:
 * Funkcja `init()`, która zazwyczaj ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, po uruchomieniu kontenera platformy Docker. 
 
 * Funkcja `run(input_data)` używa modelu do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe do uruchomienia zazwyczaj używają formatu JSON na potrzeby serializacji i deserializacji, ale obsługiwane są też inne formaty.
@@ -206,7 +206,7 @@ from azureml.core.model import Model
 
 def init():
     global model
-    # retreive the path to the model file using the model name
+    # retrieve the path to the model file using the model name
     model_path = Model.get_model_path('sklearn_mnist')
     model = joblib.load(model_path)
 
@@ -221,7 +221,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Tworzenie pliku środowiska
 
-Następnie utwórz plik środowiska o nazwie myenv.yml, który określa wszystkie zależności pakietu skryptu. Ten plik gwarantuje zainstalowanie tych wszystkich zależności w obrazie platformy Docker. Ten model wymaga pakietów `scikit-learn` i `azureml-sdk`.
+Następnie utwórz plik środowiska o nazwie **myenv.yml**, który określa wszystkie zależności pakietu skryptu. Ten plik gwarantuje zainstalowanie tych wszystkich zależności w obrazie platformy Docker. Ten model wymaga pakietów `scikit-learn` i `azureml-sdk`:
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies 
@@ -232,16 +232,16 @@ myenv.add_conda_package("scikit-learn")
 with open("myenv.yml","w") as f:
     f.write(myenv.serialize_to_string())
 ```
-Przejrzyj zawartość pliku `myenv.yml`.
+Przejrzyj zawartość pliku `myenv.yml`:
 
 ```python
 with open("myenv.yml","r") as f:
     print(f.read())
 ```
 
-### <a name="create-configuration-file"></a>Tworzenie pliku konfiguracji
+### <a name="create-a-configuration-file"></a>Tworzenie pliku konfiguracji
 
-Utwórz plik konfiguracji wdrożenia i określ liczbę procesorów oraz wielkość pamięci RAM (w GB) wymaganej dla kontenera usługi Container Instances. Chociaż zależy to od modelu, wartość domyślna określająca 1 rdzeń i 1 GB pamięci RAM zazwyczaj jest wystarczająca dla wielu modeli. Jeśli w przyszłości będzie potrzeba więcej, trzeba będzie ponownie utworzyć obraz i jeszcze raz wdrożyć usługę.
+Utwórz plik konfiguracji wdrożenia. Określ liczbę procesorów oraz wielkość pamięci RAM (w GB) wymaganej dla kontenera usługi Container Instances. Chociaż zależy to od modelu, wartość domyślna określająca jeden rdzeń i 1 GB pamięci RAM jest wystarczająca dla wielu modeli. Jeśli w przyszłości będziesz potrzebować więcej, możesz ponownie utworzyć obraz i jeszcze raz wdrożyć usługę.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -253,14 +253,14 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```
 
 ### <a name="deploy-in-container-instances"></a>Wdrażanie w usłudze Container Instances
-Szacowany czas trwania: **ok. 7–8 min**
+Szacowany czas do zakończenia wdrażania to **około siedmiu lub ośmiu minut**.
 
 Skonfiguruj i wdróż obraz. Poniższy kod wykonuje następujące kroki:
 
-1. Utworzenie obrazu z następujących elementów:
-   * Plik oceniania (`score.py`)
-   * Plik środowiska (`myenv.yml`)
-   * Plik modelu
+1. Utworzenie obrazu za pomocą następujących plików:
+   * plik oceniania (`score.py`),
+   * plik środowiska (`myenv.yml`),
+   * plik modelu.
 1. Zarejestrowanie tego obrazu w obszarze roboczym. 
 1. Wysłanie obrazu do kontenera usługi Container Instances.
 1. Uruchomienie kontenera w usłudze Container Instances przy użyciu obrazu.
@@ -286,25 +286,25 @@ service = Webservice.deploy_from_model(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-Pobierz punkt końcowy HTTP usługi internetowej oceniania akceptujący wywołania klienta REST. Ten punkt końcowy można udostępnić każdemu, kto chce przetestować usługę internetową lub zintegrować ją z aplikacją. 
+Pobierz punkt końcowy HTTP usługi internetowej oceniania akceptujący wywołania klienta REST. Ten punkt końcowy można udostępnić każdemu, kto chce przetestować usługę internetową lub zintegrować ją z aplikacją: 
 
 ```python
 print(service.scoring_uri)
 ```
 
 
-## <a name="test-deployed-service"></a>Testowanie wdrożonej usługi
+## <a name="test-the-deployed-service"></a>Testowanie wdrożonego modelu
 
 Wcześniej wszystkie dane testowe zostały ocenione za pomocą lokalnej wersji modelu. Teraz możesz przetestować wdrożony model przy użyciu losowej próbki 30 obrazów z danych testowych.  
 
 Poniższy kod wykonuje następujące kroki:
 1. Wysłanie danych w postaci tablicy JSON do usługi internetowej hostowanej w usłudze Container Instances. 
 
-1. Wywołanie usługi przy użyciu interfejsu API `run` zestawu SDK. Możesz również wykonać wywołania nieprzetworzone, używając dowolnego narzędzia HTTP, takiego jak curl.
+1. Wywołanie usługi przy użyciu interfejsu API `run` zestawu SDK. Możesz również wykonać wywołania nieprzetworzone, używając dowolnego narzędzia HTTP, takiego jak **curl**.
 
 1. Wydrukowanie zwróconych przewidywań i wykreślenie ich razem z obrazami wejściowymi. Do wyróżniania błędnie sklasyfikowanych próbek służy czerwona czcionka i odwrócony obraz (biały na czarnym tle). 
 
- Ponieważ dokładność modelu jest wysoka, może być konieczne kilkukrotne uruchomienie poniższego kodu, zanim uda się zobaczyć błędnie sklasyfikowaną próbkę.
+Ponieważ dokładność modelu jest wysoka, może być konieczne kilkukrotne uruchomienie poniższego kodu, zanim uda się zobaczyć błędnie sklasyfikowaną próbkę:
 
 ```python
 import json
@@ -339,9 +339,13 @@ for s in sample_indices:
 plt.show()
 ```
 
-Oto wynik jednej losowej próbki obrazów testowych: ![Grafika przedstawiająca wyniki](./media/tutorial-deploy-models-with-aml/results.png)
+Ten wynik pochodzi z jednej losowej próbki obrazów testowych:
 
-W celu przetestowania usługi internetowej możesz również wysłać nieprzetworzone żądanie HTTP.
+![Grafika przedstawiająca wyniki](./media/tutorial-deploy-models-with-aml/results.png)
+
+![Wyniki](./media/tutorial-deploy-models-with-aml/results.png)
+
+W celu przetestowania usługi internetowej możesz również wysłać nieprzetworzone żądanie HTTP:
 
 ```python
 import requests
@@ -378,6 +382,6 @@ service.delete()
 
 ## <a name="next-steps"></a>Następne kroki
 
-+ Poznaj wszystkie [opcje wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md), w tym usługę ACI, usługę Azure Kubernetes Service, układy FPGA i usługę IoT Edge.
++ Dowiedz się więcej o wszystkich [opcjach wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md). Wśród tych opcji znajdują się usługi Azure Container Instances i Azure Kubernetes Service, układy FPGA i usługa Azure IoT Edge.
 
-+ Zobacz, jak usługa Azure Machine Learning automatycznie wybiera i dostosowuje najlepszy algorytm dla modelu i tworzy ten model dla Ciebie. Wypróbuj samouczek dotyczący [algorytmu automatycznego wyboru](tutorial-auto-train-models.md). 
++ Zobacz, jak usługa Azure Machine Learning automatycznie wybiera i dostosowuje najlepszy algorytm dla modelu. Tworzy również ten model dla Ciebie. Wypróbuj samouczek dotyczący [algorytmu automatycznego wyboru](tutorial-auto-train-models.md). 

@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cdd73c46d87ec09439188024945bd60299bb1d57
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256999"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629751"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure Web Apps
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Samouczek: Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service
 
-Usługa Azure Web Apps oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten samouczek pokazuje, jak powiązać niestandardowy certyfikat protokołu SSL zakupiony od zaufanego urzędu certyfikacji z usługą [Azure Web Apps](app-service-web-overview.md). Po zakończeniu, będzie można uzyskać dostęp do aplikacji internetowej w punkcie końcowym protokołu HTTPS niestandardowej domeny DNS.
+Usługa Azure App Service oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten samouczek pokazuje, jak powiązać niestandardowy certyfikat protokołu SSL zakupiony od zaufanego urzędu certyfikacji z usługą [Azure App Service](overview.md). Po zakończeniu będzie można uzyskać dostęp do aplikacji w punkcie końcowym protokołu HTTPS niestandardowej domeny DNS.
 
 ![Aplikacja internetowa z niestandardowym certyfikatem protokołu SSL](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -39,14 +39,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
 
 > [!NOTE]
-> Jeśli potrzebujesz uzyskać niestandardowy certyfikat protokołu SSL, możesz pobrać go bezpośrednio w witrynie Azure Portal i powiązać ze swoją aplikacją internetową. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
+> Jeśli potrzebujesz niestandardowego certyfikatu protokołu SSL, możesz pobrać go bezpośrednio w witrynie Azure Portal i powiązać ze swoją aplikacją. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
 
 - [Utwórz aplikację usługi App Service](/azure/app-service/)
-- [Mapuj niestandardową nazwę DNS na swoją aplikację internetową](app-service-web-tutorial-custom-domain.md)
+- [Zamapuj niestandardową nazwę DNS na swoją aplikację usługi App Service](app-service-web-tutorial-custom-domain.md)
 - Uzyskaj certyfikat protokołu SSL z zaufanego urzędu certyfikacji
 - Zachowaj klucz prywatny użyty do podpisania żądania certyfikatu protokołu SSL
 
@@ -70,7 +70,7 @@ Aby używać certyfikatu w usłudze App Service, musi on spełniać wszystkie na
 
 ## <a name="bind-your-ssl-certificate"></a>Wiązanie certyfikatu protokołu SSL
 
-Wszystko jest gotowe do przekazania certyfikatu protokołu SSL do Twojej aplikacji internetowej.
+Wszystko jest gotowe do przekazania certyfikatu protokołu SSL do aplikacji.
 
 ### <a name="merge-intermediate-certificates"></a>Scalanie certyfikatów pośrednich
 
@@ -114,7 +114,7 @@ Jeśli używasz usług IIS lub programu _Certreq.exe_ do wygenerowania swojego �
 
 ### <a name="upload-your-ssl-certificate"></a>Przekazywanie certyfikatu protokołu SSL
 
-Aby przekazać certyfikat protokołu SSL, kliknij pozycję **Ustawienia protokołu SSL** w lewym obszarze nawigacji aplikacji internetowej.
+Aby przekazać certyfikat protokołu SSL, kliknij pozycję **Ustawienia protokołu SSL** w lewym obszarze nawigacyjnym aplikacji.
 
 Kliknij pozycję **Przekaż certyfikat**. 
 
@@ -154,24 +154,24 @@ Gdy usługa App Service zakończy przekazywanie Twojego certyfikatu, zostanie on
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Ponowne mapowanie rekordu A dla połączenia SSL z adresu IP
 
-Jeśli w swojej aplikacji internetowej nie używasz protokołu SSL opartego na protokole IP, przejdź do sekcji [Testowanie protokołu HTTPS dla domeny niestandardowej](#test).
+Jeśli w swojej aplikacji nie używasz protokołu SSL opartego na protokole IP, przejdź do sekcji [Testowanie protokołu HTTPS dla domeny niestandardowej](#test).
 
-Domyślnie aplikacja internetowa używa udostępnionego publicznego adresu IP. Gdy powiążesz certyfikat z protokołem SSL opartym na protokole IP, usługa App Service utworzy nowy, dedykowany adres IP dla Twojej aplikacji internetowej.
+Domyślnie aplikacja używa udostępnionego publicznego adresu IP. Gdy powiążesz certyfikat z protokołem SSL opartym na protokole IP, usługa App Service utworzy nowy, dedykowany adres IP dla Twojej aplikacji.
 
-Jeśli rekord A jest mapowany na aplikację internetową, zaktualizuj rejestr domeny przy użyciu tego nowego, dedykowanego adresu IP.
+Jeśli rekord A jest mapowany na aplikację, zaktualizuj rejestr domeny przy użyciu tego nowego, dedykowanego adresu IP.
 
-Strona **Domena niestandardowa** Twojej aplikacji internetowej zostanie zaktualizowana z nowego, dedykowanego adresu IP. [Skopiuj ten adres IP](app-service-web-tutorial-custom-domain.md#info), a następnie [ponownie mapuj rekord A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na ten nowy adres IP.
+Strona **Domena niestandardowa** Twojej aplikacji zostanie zaktualizowana za pomocą nowego, dedykowanego adresu IP. [Skopiuj ten adres IP](app-service-web-tutorial-custom-domain.md#info), a następnie [ponownie mapuj rekord A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na ten nowy adres IP.
 
 <a name="test"></a>
 
 ## <a name="test-https"></a>Testowanie protokołu HTTPS
 
-Teraz pozostało tylko upewnienie się, że protokół HTTPS działa dla domeny niestandardowej. W różnych przeglądarkach przejdź na adres `https://<your.custom.domain>`, aby zobaczyć, że Twoja aplikacja internetowa jest udostępniana.
+Teraz pozostało tylko upewnienie się, że protokół HTTPS działa dla domeny niestandardowej. W różnych przeglądarkach przejdź na adres `https://<your.custom.domain>`, aby sprawdzić, czy Twoja aplikacja jest udostępniana.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 > [!NOTE]
-> Jeśli Twoja aplikacja internetowa wyświetla błędy walidacji certyfikatu, prawdopodobnie używasz certyfikatu z podpisem własnym.
+> Jeśli Twoja aplikacja wyświetla błędy walidacji certyfikatu, prawdopodobnie używasz certyfikatu z podpisem własnym.
 >
 > Jeśli tak nie jest, certyfikaty pośrednie mogły zostać pominięte podczas eksportowania certyfikatu do pliku PFX.
 
@@ -187,9 +187,9 @@ Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania,
 
 ## <a name="enforce-https"></a>Wymuszanie protokołu HTTPS
 
-Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji internetowej przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
+Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
 
-Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
+Na stronie aplikacji w obszarze nawigacji po lewej stronie wybierz pozycję **Ustawienia protokołu SSL**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
 
 ![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -203,7 +203,7 @@ Po zakończeniu operacji przejdź do dowolnego adresu URL protokołu HTTP, któr
 
 Aplikacja domyślnie umożliwia korzystanie z protokołu [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2, który jest zalecanym poziomem protokołu TLS przez standardy branżowe, takie jak [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Aby wymusić inne wersje protokołu TLS, wykonaj następujące kroki:
 
-Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w obszarze **wersji protokołu TLS** wybierz minimalną wersję protokołu TLS do użycia. To ustawienie kontroluje tylko wywołania przychodzące. 
+Na stronie aplikacji w obszarze nawigacji po lewej stronie wybierz pozycję **Ustawienia protokołu SSL**. Następnie w obszarze **wersji protokołu TLS** wybierz minimalną wersję protokołu TLS do użycia. To ustawienie kontroluje tylko wywołania przychodzące. 
 
 ![Wymuszanie protokołu TLS 1.1 lub 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
@@ -211,7 +211,7 @@ Po ukończeniu operacji aplikacja odrzuca wszystkie połączenia z niższymi wer
 
 ## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 
-Tworzenie powiązań protokołu SSL dla Twojej aplikacji internetowej możesz zautomatyzować za pomocą skryptów, korzystając z [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).
+Tworzenie powiązań protokołu SSL dla Twojej aplikacji możesz zautomatyzować za pomocą skryptów, korzystając z [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -260,9 +260,9 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Certyfikaty publiczne (opcjonalnie)
-Jeśli aplikacja wymaga dostępu do zasobów zdalnych jako klient, a zasób zdalny wymaga uwierzytelniania certyfikatów, możesz przekazać [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) do aplikacji internetowej. Certyfikaty publiczne nie są wymagane dla powiązań SSL aplikacji.
+Jeśli aplikacja wymaga dostępu do zasobów zdalnych jako klient, a zasób zdalny wymaga uwierzytelniania certyfikatów, możesz przekazać do aplikacji [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/). Certyfikaty publiczne nie są wymagane dla powiązań SSL aplikacji.
 
-Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load). Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów komputera lokalnego, musisz użyć aplikacji internetowej w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [How to configure public certificates to your Web App (Jak skonfigurować certyfikaty publiczne dla aplikacji internetowej)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md). Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli chcesz przechować certyfikat w magazynie certyfikatów komputera lokalnego, musisz użyć aplikacji w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [Jak skonfigurować certyfikaty publiczne dla aplikacji usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Przekazywanie certyfikatu publicznego](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

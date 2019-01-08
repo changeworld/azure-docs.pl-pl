@@ -8,20 +8,20 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: e26190b46a79d581e5996e51bfd104f1d4beb6f6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d741550fc64ef7544e33304f8608ad6e6ee3426e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094036"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723653"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C++ w systemie Linux przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Ubuntu Linux 16.04. Należy użyć zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services do transkrypcji mowy na tekst w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
+W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Ubuntu Linux 16.04 lub 18.04. Użyjesz zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services do transkrypcji na tekst w czasie rzeczywistym mowy z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -31,9 +31,9 @@ Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskry
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.1.0`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.2.0`.
 
-Zestawu Speech SDK dla systemu Linux można używać do kompilowania aplikacji 64-bitowych i 32-bitowych. Wymagane biblioteki i pliki nagłówkowe można pobrać jako plik TAR ze strony https://aka.ms/csspeech/linuxbinary.
+Zestawu Speech SDK dla systemu Linux można używać do kompilowania aplikacji 64-bitowych i 32-bitowych. Wymagane biblioteki i pliki nagłówkowe można pobrać jako plik tar ze strony https://aka.ms/csspeech/linuxbinary.
 
 Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
@@ -129,16 +129,12 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    We recognized: What's the weather like?
    ```
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w folderze `quickstart/cpp-linux`.
-
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Recognize intents from speech by using the Speech SDK for C++](how-to-recognize-intents-from-speech-cpp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK mowy dla języka C++)
+> [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

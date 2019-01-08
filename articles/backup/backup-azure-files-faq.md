@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874570"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793516"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -39,31 +39,34 @@ Tak. Musisz jednak [zatrzymać ochronę](backup-azure-files.md#stop-protecting-a
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>W których obszarach geograficznych można tworzyć kopie zapasowe udziałów plików usługi Azure Files? <br/>
 Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w wersji zapoznawczej tylko w następujących obszarach geograficznych: 
--   Australia Wschodnia (AE) 
+- Australia Wschodnia (AE) 
 - Australia Południowo-Wschodnia (ASE) 
 - Brazylia Południowa (BRS)
 - Kanada Środkowa (CNC)
--   Kanada Wschodnia (CE)
--   Środkowe stany USA (CUS)
--   Azja Wschodnia (EA)
--   Wschodnie stany USA (EUS)
--   Wschodnie stany USA 2 (EUS2)
+- Kanada Wschodnia (CE)
+- Środkowe stany USA (CUS)
+- Azja Wschodnia (EA)
+- Wschodnie stany USA (EUS)
+- Wschodnie stany USA 2 (EUS2)
 - Japonia Wschodnia (JPE)
 - Japonia Zachodnia (JPW)
--   Indie Środkowe (INC) 
+- Indie Środkowe (INC) 
 - Indie Południowe (INS)
 - Korea Środkowa (KRC)
 - Korea Południowa (KRS)
--   Północno-środkowe stany USA (NCUS) 
--   Europa Północna (NE) 
--   Południowo-środkowe stany USA (SCUS) 
--   Azja Południowo-Wschodnia (SEA)
--   Południowe Zjednoczone Królestwo (UKS) 
--   Zachodnie Zjednoczone Królestwo (UKW) 
--   Europa Zachodnia (WE) 
--   Zachodnie stany USA (WUS)
--   Zachodnio-środkowe stany USA (WCUS)
--   Zachodnie stany USA 2 (WUS 2)
+- Północno-środkowe stany USA (NCUS) 
+- Europa Północna (NE) 
+- Południowo-środkowe stany USA (SCUS) 
+- Azja Południowo-Wschodnia (SEA)
+- Południowe Zjednoczone Królestwo (UKS) 
+- Zachodnie Zjednoczone Królestwo (UKW) 
+- Europa Zachodnia (WE) 
+- Zachodnie stany USA (WUS)
+- Zachodnio-środkowe stany USA (WCUS)
+- Zachodnie stany USA 2 (WUS 2)
+- US Gov Arizona (UGA)
+- US Gov Teksas (UGT)
+- US Gov Wirginia (UGV)
 
 Napisz na adres [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), jeśli chcesz używać tej usługi w określonym obszarze geograficznym, którego nie ma na powyższej liście.
 

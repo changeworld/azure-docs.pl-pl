@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/28/2018
 ms.author: juliako
-ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613396"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969339"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Samouczek: transmisja strumieniowa na żywo z usługi Media Services w wersji 3 przy użyciu interfejsów API
 
@@ -89,7 +89,7 @@ Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platfor
 
 ### <a name="create-a-live-event"></a>Utwórz wydarzenie na żywo
 
-W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu kanału LiveEvent (o wartości parametru LiveEventEncodingType ustawionej na None). Jeśli chcesz utworzyć kanał LiveEvent obsługujący kodowanie na żywo, musisz nadać parametrowi LiveEventEncodingType wartość Basic. 
+W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu kanału LiveEvent (o wartości parametru LiveEventEncodingType ustawionej na None). Jeśli chcesz utworzyć kanał LiveEvent obsługujący kodowanie na żywo, musisz nadać parametrowi LiveEventEncodingType wartość Standard. 
 
 Jest kilka rzeczy, które warto określić podczas tworzenia zdarzenia na żywo:
 
@@ -107,7 +107,7 @@ Podczas tworzenia zdarzenia można określić, że będzie ono automatycznie uru
 
 ### <a name="get-ingest-urls"></a>Pobieranie adresów URL pozyskiwania
 
-Po utworzeniu kanału można pobrać adresy URL pozyskiwania, które należy udostępnić koderowi na żywo. Koder używa tych adresów URL do wprowadzenia strumienia na żywo.
+Po utworzeniu kanału LiveEvent można pobrać adresy URL pozyskiwania, które należy udostępnić koderowi na żywo. Koder używa tych adresów URL do wprowadzenia strumienia na żywo.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 

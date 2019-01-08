@@ -1,6 +1,6 @@
 ---
-title: Skrypt programu PowerShell Azure przykładowe — obliczania rozmiaru kontenera obiektu blob | Dokumentacja firmy Microsoft
-description: Obliczania rozmiaru kontenera w magazynie obiektów Blob Azure przez sumowanie rozmiar każdego z jego obiektów blob.
+title: Przykładowy skrypt programu Azure PowerShell — obliczanie rozmiaru kontenera obiektów blob | Microsoft Docs
+description: Obliczanie rozmiaru kontenera w usłudze Azure Blob Storage przez zsumowanie rozmiaru wszystkich zawartych w nim obiektów blob.
 services: storage
 documentationcenter: na
 author: tamram
@@ -15,23 +15,23 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: f6f421e780bfbb7922a4b11f758330f2a9a0b84b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b41366b89a0598d52ae973e2a6d27e60ed548765
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24814579"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634460"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>Obliczania rozmiaru kontenera magazynu obiektów Blob
+# <a name="calculate-the-size-of-a-blob-storage-container"></a>Obliczanie rozmiaru kontenera w usłudze Blob Storage
 
-Ten skrypt oblicza rozmiar kontenera w magazynie obiektów Blob Azure przez sumowanie rozmiar obiektów blob w kontenerze.
+Ten skrypt oblicza rozmiar kontenera w usłudze Azure Blob Storage przez zsumowanie rozmiaru obiektów blob w tym kontenerze.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> Ten skrypt programu PowerShell zawiera szacowany rozmiar kontenera i nie powinna być używana związanych z rozliczeniami obliczeń. Aby uzyskać skrypt, który oblicza rozmiar kontenera do celów rozliczeń, zobacz [obliczania rozmiaru kontenera magazynu obiektów Blob na potrzeby rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
+> Ten skrypt programu PowerShell określa szacunkowy rozmiar kontenera i nie należy go używać w obliczeniach na potrzeby rozliczeń. Jeśli potrzebujesz skryptu obliczającego rozmiar kontenera na potrzeby rozliczeń, zobacz [Obliczanie rozmiaru kontenera obiektów blob na potrzeby rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -39,25 +39,25 @@ Ten skrypt oblicza rozmiar kontenera w magazynie obiektów Blob Azure przez sumo
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, kontenera i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, kontener i wszystkie powiązane zasoby.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name bloblisttestrg
+Remove-AzResourceGroup -Name bloblisttestrg
 ```
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń do obliczania rozmiaru kontenera magazynu obiektów Blob. Każdy element w tabeli łącza do dokumentacji specyficzne dla polecenia.
+Ten skrypt zawiera następujące polecenia, służące do obliczenia rozmiaru kontenera w usłudze Blob Storage. Każda pozycja w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/get-azurermstorageaccount) | Pobiera określonego konta magazynu lub wszystkich kont magazynu w grupie zasobów lub subskrypcji. |
-| [Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) | Wyświetla listę obiektów blob w kontenerze. ||
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Pobiera określone konto usługi Storage lub wszystkie konta usługi Storage w grupie zasobów lub subskrypcji. |
+| [Get-AzStorageBlob](/powershell/module/azure.storage/get-AzStorageblob) | Zwraca listę obiektów blob w kontenerze. ||
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać skrypt, który oblicza rozmiar kontenera do celów rozliczeń, zobacz [obliczania rozmiaru kontenera magazynu obiektów Blob na potrzeby rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
+Jeśli potrzebujesz skryptu obliczającego rozmiar kontenera na potrzeby rozliczeń, zobacz [Obliczanie rozmiaru kontenera obiektów blob na potrzeby rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 
-Aby uzyskać więcej informacji dotyczących modułu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
-Przykłady skryptów PowerShell dodatkowego miejsca do magazynowania znajdują się w [przykłady środowiska PowerShell dla usługi Azure Storage](../blobs/storage-samples-blobs-powershell.md).
+Więcej przykładowych skryptów programu PowerShell dla usługi Storage można znaleźć na stronie [PowerShell samples for Azure Storage (Przykładowe skrypty programu PowerShell dla usługi Azure Storage)](../blobs/storage-samples-blobs-powershell.md).

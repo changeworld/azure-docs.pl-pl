@@ -8,17 +8,17 @@ ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 7e654e070ce64b0f5e7f9fb5734bf0ec1584dbf6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9db223075284b02de1cf3de8cfa7a0b5aa35f286
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423613"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754224"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API środowiska .NET
 
 Usługa Azure Batch umożliwia wydajne uruchamianie równoległych zadań wsadowych oraz zadań wsadowych obliczeń o wysokiej wydajności na platformie Azure. W tym samouczku przedstawiono przykład uruchamiania równoległego obciążenia za pomocą usługi Azure Batch i języka C#. Poznasz prosty przepływ pracy aplikacji usługi Azure Batch i sposób pracy programowej z zasobami usług Azure Batch i Storage. Omawiane kwestie:
 
@@ -175,8 +175,8 @@ Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu 
 
 Podczas przekazywania plików używane są dwie metody w pliku `Program.cs`:
 
-* `UploadResourceFilesToContainerAsync`: zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainerAsync` w celu przekazania wszystkich plików przekazywanych w parametrze `inputFilePaths`.
-* `UploadResourceFileToContainerAsync`: przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje.
+* `UploadResourceFilesToContainerAsync`: Zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainerAsync` w celu przekazania wszystkich plików przekazanych w parametrze `inputFilePaths`.
+* `UploadResourceFileToContainerAsync`: Przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -248,11 +248,14 @@ await job.CommitAsync();
 
 Przykładowa aplikacja tworzy zadania podrzędne w ramach zadania, wywołując metodę `AddTasksAsync`, co powoduje utworzenie listy obiektów [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Każdy obiekt `CloudTask` uruchamia narzędzie ffmpeg w celu przetworzenia wejściowego obiektu `ResourceFile` za pomocą właściwości [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline). Narzędzie ffmpeg zostało już zainstalowane na wszystkich węzłach podczas tworzenia puli. Tutaj wiersz polecenia jest używany do uruchomienia narzędzia ffmpeg w celu przekonwertowania każdego z plików wejściowych w formacie MP4 (wideo) na format MP3 (audio).
 
-Przykładowa aplikacja tworzy obiekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) w zadaniu podrzędnym.
+Przykładowa aplikacja tworzy obiekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) w zadaniu podrzędnym. Wcześniej w przykładowym kodzie uzyskano adres URL sygnatury dostępu współdzielonego (`outputContainerSasUrl`) w celu zapewnienia dostępu do zapisu do kontenera wyjściowego. Zwróć uwagę na warunki ustawione dla obiektu `outputFile`. Plik wyjściowy z zadania jest przekazywany do kontenera tylko po pomyślnym zakończeniu zadania (`OutputFileUploadCondition.TaskSuccess`). Zobacz cały [przykładowy kod](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) w witrynie GitHub, aby uzyskać więcej informacji o szczegółach implementacji.
 
 Następnie przykładowa aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych.
 
 ```csharp
+ // Create a collection to hold the tasks added to the job.
+List<CloudTask> tasks = new List<CloudTask>();
+
 for (int i = 0; i < inputFiles.Count; i++)
 {
     string taskId = String.Format("Task{0}", i);
@@ -265,7 +268,7 @@ for (int i = 0; i < inputFiles.Count; i++)
         ".mp3");
     string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
-    // Create a cloud task (with the task ID and command line) 
+    // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);
     task.ResourceFiles = new List<ResourceFile> { inputFiles[i] };
 

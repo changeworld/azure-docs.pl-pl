@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: wywoływanie punktu końcowego za pomocą środowiska Node.js — wyszukiwanie niestandardowe Bing'
+title: 'Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Node.js | Microsoft Docs'
 titlesuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start pokazano, w jaki sposób wysyłać żądania wyników wyszukiwania z niestandardowego wystąpienia wyszukiwania przy użyciu środowiska Node.js w celu wywołania punktu końcowego wyszukiwania niestandardowego Bing.
+description: Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing w języku Node.js
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,77 +10,71 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: c0c97dd52f8fc3ff590c86f32f794beeb00f4b05
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3af35a9aea9115971d1fbd251da3fbaddb011c5f
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310256"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555799"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing (Node.js)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Node.js
 
-W tym przewodniku Szybki start pokazano, w jaki sposób wysyłać żądania wyników wyszukiwania z niestandardowego wystąpienia wyszukiwania przy użyciu środowiska Node.js w celu wywołania punktu końcowego wyszukiwania niestandardowego Bing. 
+Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing. Chociaż ta aplikacja jest napisana w języku JavaScript, interfejs API wyszukiwania niestandardowego Bing jest usługą internetową RESTful zgodną z większością języków programowania. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
+- Wystąpienie wyszukiwania niestandardowego Bing. Zobacz [Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md), aby uzyskać więcej informacji.
 
-- Gotowe do użycia wystąpienie usługi wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md).
-- Zainstalowane środowisko [Node.js](https://www.nodejs.org/).
-- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać, aktywując [bezpłatną wersję próbną](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub użyć klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure (zobacz [Konto interfejsu Cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+- [Node.js](https://www.nodejs.org/)
 
-## <a name="run-the-code"></a>Uruchamianie kodu
+- [Biblioteka żądań języka JavaScript](https://github.com/request/request)
 
-Aby uruchomić ten przykład, wykonaj następujące kroki:
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-1. Utwórz folder do przechowywania kodu.  
-  
-2. W wierszu polecenia lub terminalu przejdź do właśnie utworzonego folderu.  
-  
-3. Zainstaluj moduł węzła **request**.
-    <pre>
-    npm install request
-    </pre>  
-    
-4. W utworzonym folderze utwórz plik o nazwie BingCustomSearch.js i skopiuj do niego następujący kod. Zastąp wartości **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** odpowiednio kluczem subskrypcji i identyfikatorem konfiguracji.  
-  
-    ``` javascript
+## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
+
+1. Utwórz nowy plik JavaScript w swoim ulubionym środowisku IDE lub edytorze i dodaj instrukcję `require()` dla biblioteki żądań. Utwórz zmienne dla swojego klucza subskrypcji, identyfikator konfiguracji niestandardowej i termin wyszukiwania. 
+
+    ```javascript
     var request = require("request");
     
     var subscriptionKey = 'YOUR-SUBSCRIPTION-KEY';
     var customConfigId = 'YOUR-CUSTOM-CONFIG-ID';
     var searchTerm = 'microsoft';
-    
-    var options = {
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>Wysyłanie i odbieranie żądania wyszukiwania 
+
+1. Utwórz zmienną do przechowywania informacji wysyłanych w żądaniu. Skonstruuj adres URL żądania, dodając termin wyszukiwania do parametru zapytania `q=` oraz identyfikator konfiguracji niestandardowej wystąpienia wyszukiwania do parametru `customconfig=`. Oddziel parametry za pomocą znaku `&`. 
+
+    ```javascript
+    var info = {
         url: 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 
-          'q=' + searchTerm + 
-          '&customconfig=' + customConfigId,
+            'q=' + searchTerm + "&" +
+            'customconfig=' + customConfigId,
         headers: {
             'Ocp-Apim-Subscription-Key' : subscriptionKey
         }
     }
-    
-    request(options, function(error, response, body){
-        var searchResponse = JSON.parse(body);
-        for(var i = 0; i < searchResponse.webPages.value.length; ++i){
-            var webPage = searchResponse.webPages.value[i];
-            console.log('name: ' + webPage.name);
-            console.log('url: ' + webPage.url);
-            console.log('displayUrl: ' + webPage.displayUrl);
-            console.log('snippet: ' + webPage.snippet);
-            console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
-            console.log();
-        }
-    })
-    ```  
-  
-6. Uruchom kod za pomocą następującego polecenia:  
-  
-    ```    
-    node BingCustomSearch.js
-    ``` 
+    ```
+
+1. Biblioteka żądań JavaScript umożliwia wysłanie żądania wyszukiwania do Twojego wystąpienia wyszukiwania niestandardowego Bing i wyświetlenie informacji o wynikach, łącznie z nazwą wyszukiwania, jego adresem URL i datą ostatniego przeszukiwania strony internetowej.
+
+    ```javascript
+    request(info, function(error, response, body){
+            var searchResponse = JSON.parse(body);
+            for(var i = 0; i < searchResponse.webPages.value.length; ++i){
+                var webPage = searchResponse.webPages.value[i];
+                console.log('name: ' + webPage.name);
+                console.log('url: ' + webPage.url);
+                console.log('displayUrl: ' + webPage.displayUrl);
+                console.log('snippet: ' + webPage.snippet);
+                console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
+                console.log();
+            }
+    ```
 
 ## <a name="next-steps"></a>Następne kroki
-- [Konfigurowanie środowiska hostowanego interfejsu użytkownika](./hosted-ui.md)
-- [Wyróżnianie tekstu za pomocą znaczników dekoracji](./hit-highlighting.md)
-- [Dzielenie na strony wyników wyszukiwania stron internetowych](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](./tutorials/custom-search-web-page.md)

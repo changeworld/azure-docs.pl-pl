@@ -10,14 +10,14 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: aahi
-ms.openlocfilehash: d39ec856d628a8a607c6a8ea214f5dd9fbd63a9c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0c98f75417bbcba13e179502eb1c8b4488b17d78
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427365"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558026"
 ---
-# <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
+# <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
 
 Wyszukiwanie niestandardowe Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów. Jeśli na przykład masz witrynę internetową poświęconą sztukom walki, w której znajduje się funkcja wyszukiwania, możesz określić domeny, witryny podrzędne i strony internetowe, które będą przeszukiwane przez usługę Bing. Użytkownicy zobaczą wyniki dostosowane do zawartości, która ich interesuje, zamiast przewijać strony ogólnych wyników wyszukiwania, które mogą zawierać nieistotną zawartość. 
 
@@ -79,7 +79,7 @@ Aby wykluczyć wyniki z określonych witryn internetowych lub adresów URL, doda
 
 ## <a name="add-pinned-entries"></a>Dodawanie wpisów przypiętych
 
-Aby przypiąć określoną stronę internetową na początku wyników wyszukiwania, dodaj stronę internetową i termin zapytania do karty **Pinned** (Przypięte). Karta **Pinned** (Przypięte) zawiera listę par stron internetowych i terminów zapytań określających stronę internetową, która jest wyświetlana jako najlepszy wynik dla określonego zapytania. Ta strona internetowa zostaje przypięta tylko wtedy, gdy ciąg zapytania użytkownika jest zgodny z ciągiem zapytania przypiętego elementu na podstawie jego warunku dopasowania. W wyszukiwaniach będą wyświetlane tylko indeksowane strony internetowe. Aby uzyskać więcej informacji, zobacz [Define your custom view (Definiowanie widoku niestandardowego)](../define-your-custom-view.md#pin-to-top).
+Aby przypiąć określoną stronę internetową na początku wyników wyszukiwania, dodaj stronę internetową i termin zapytania do karty **Pinned** (Przypięte). Karta **Pinned** (Przypięte) zawiera listę par stron internetowych i terminów zapytań określających stronę internetową, która jest wyświetlana jako najlepszy wynik dla określonego zapytania. Ta strona internetowa zostaje przypięta tylko wtedy, gdy ciąg zapytania użytkownika jest zgodny z ciągiem zapytania przypiętego elementu na podstawie jego warunku dopasowania. W wyszukiwaniach będą wyświetlane tylko indeksowane strony internetowe. Aby uzyskać więcej informacji, zobacz [Define your custom view (Definiowanie widoku niestandardowego)](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Na stronie **Configuration** (Konfiguracja) kliknij kartę **Pinned** (Przypięte) i wprowadź stronę internetową oraz termin zapytania strony internetowej, które mają być zwracane jako najlepszy wynik.  
   
@@ -127,10 +127,10 @@ Wyszukiwanie niestandardowe zapewnia hostowany interfejs użytkownika do rendero
 
 Istnieją dwa sposoby korzystania z hostowanego interfejsu użytkownika.  
 
-- Opcja 1. Zintegrowanie dostarczonego fragmentu kodu JavaScript z aplikacją.
-- Opcja 2. Użycie dostarczonego punktu końcowego HTML.
+- Opcja 1: zintegrowanie dostarczonego fragmentu kodu JavaScript z aplikacją.
+- Opcja 2: użycie dostarczonego punktu końcowego HTML.
 
-W dalszej części tego samouczka przedstawiono **opcję 1 — fragment kodu Javascript**.  
+W dalszej części tego samouczka przedstawiono **opcję 1 — fragment kodu JavaScript**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Konfigurowanie rozwiązania programu Visual Studio
 

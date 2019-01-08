@@ -1,18 +1,19 @@
 ---
-title: Przechwytywanie zdarzeń z przestrzeni usługi Azure Digital Twins | Microsoft Docs
+title: 'Samouczek: Przechwytywanie zdarzeń z przestrzeni usługi Azure Digital Twins | Microsoft Docs'
 description: Dowiedz się, w jaki sposób otrzymywać powiadomienia z przestrzeni po zintegrowaniu usługi Azure Digital Twins z usługą Logic Apps, korzystając z kroków opisanych w tym samouczku.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a52a3be8c3023893569e95b566a18c032be26459
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583265"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556020"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 
@@ -174,7 +175,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    d. W oknie **Do** wprowadź swój identyfikator poczty e-mail, aby otrzymywać powiadomienia. W polu **Temat** wprowadź tekst **Powiadomienie usługi Digital Twins dotyczące niskiej jakości powietrza**. Następnie wybierz pozycję **TopologyObjectId** na liście **Zawartość dynamiczna** pozycji **Przeanalizuj dane JSON**.
 
-   d. W obszarze **Treść** w tym samym oknie wprowadź tekst podobny do następującego: **Wykryto niską jakość powietrza w pomieszczeniu. Należy dostosować temperaturę**. Możesz samodzielnie opracowywać treść, korzystając z elementów na liście **Zawartość dynamiczna**.
+   d. W obszarze **Treść** w tym samym oknie wprowadź tekst podobny do następującego: **W pomieszczeniu wykryto, że powietrze jest niskiej jakości, a temperatura wymaga regulacji**. Możesz samodzielnie opracowywać treść, korzystając z elementów na liście **Zawartość dynamiczna**.
 
    ![Opcje „Wyślij wiadomość e-mail” usługi Logic Apps](./media/tutorial-facilities-events/logic-app-send-email.png)
 

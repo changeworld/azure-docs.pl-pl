@@ -9,34 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096693"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971413"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>Samouczek 4. Wyodrębnianie dokładnych dopasowań tekstu
-W tym samouczku dowiesz się, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może zawierać listę synonimów. W przypadku aplikacji Human Resources pracownik może być identyfikowany za pomocą kilku kluczowych informacji, takich jak nazwa, adres e-mail, numer telefonu i identyfikator TID. 
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Samouczek: Uzyskiwanie dokładnych danych dopasowanych na podstawie tekstu z wypowiedzi
 
-Aplikacja Human Resources musi określić, który pracownik jest przenoszony z jednego budynku do innego. W przypadku wypowiedzi o przeniesieniu pracownika usługa LUIS określa intencję i wyodrębnia pracownika, aby aplikacja kliencka mogła utworzyć standardowe polecenie przeniesienia pracownika.
-
-Ta aplikacja używa jednostki listy do wyodrębnienia pracownika. Do pracownika można odwoływać się przy użyciu nazwy, wewnętrznego numeru telefonu służbowego,numeru telefonu komórkowego, adresu e-mail lub federalnego numer ubezpieczenia społecznego (USA). 
-
-Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
-
-* Wartości danych należą do znanego zestawu.
-* Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. 
+W tym samouczku dowiesz się, jak uzyskać dane jednostki zgodne ze wstępnie zdefiniowaną listą elementów. 
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka
-> * Dodawanie intencji MoveEmployee
+> * Tworzenie aplikacji
+> * Dodawanie intencji
 > * Dodawanie jednostki listy 
 > * Szkolenie 
 > * Publikowanie
@@ -44,25 +35,31 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
+## <a name="what-is-a-list-entity"></a>Co to jest jednostka listy?
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+Jednostka listy jest dokładnym dopasowaniem tekstu do słów w wypowiedzi. 
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json).
+Każdy element na liście może zawierać listę synonimów. W przypadku aplikacji Human Resources dział firmy może być identyfikowany za pomocą kilku kluczowych informacji takich jak oficjalna nazwa, typowe akronimy i kody działu rozliczeń. 
 
-2. Zaimportuj plik JSON do nowej aplikacji.
+Aplikacja Human Resources musi określić dział, do którego przechodzi pracownik. 
 
-3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `list`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
+Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
+* Wartości danych należą do znanego zestawu.
+* Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
+* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu. 
 
-## <a name="moveemployee-intent"></a>Intencja MoveEmployee
+## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
+
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Tworzenie intencji przeniesienia pracowników do innego działu
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
-3. Wprowadź ciąg `MoveEmployee` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
+3. Wprowadź ciąg `TransferEmployeeToDepartment` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
     ![Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
@@ -70,205 +67,122 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
     |Przykładowe wypowiedzi|
     |--|
-    |move John W. Smith from B-1234 to H-4452|
-    |mv john.w.smith@mycompany.com from office b-1234 to office h-4452|
-    |shift x12345 to h-1234 tomorrow|
-    |place 425-555-1212 in HH-2345|
-    |move 123-45-6789 from A-4321 to J-23456|
-    |mv Jill Jones from D-2345 to J-23456|
-    |shift jill-jones@mycompany.com to M-12345|
-    |x23456 to M-12345|
-    |425-555-0000 to h-4452|
-    |234-56-7891 to hh-2345|
+    |Move John W. Smith to the accounting department (Przenieś Johna W. Smitha do działu księgowości)|
+    |Transfer Jill Jones from to R&D (Przenieś Jill Jones z do zespołu badawczo-rozwojowego)|
+    |Dept 1234 has a new member named Bill Bradstreet (Dział 1234 ma nowego członka o imieniu Bill Bradstreet)|
+    |Place John Jackson in Engineering (Umieść Johna Jacksona w zespole inżynieryjnym) |
+    |Move Debra Doughtery to Inside Sales (Przenieś Debrę Doughtery do wewnętrznego działu sprzedaży)|
+    |Mv Jill Jones to IT (Przenieś Jill Jones do działu IT)|
+    |Shift Alice Anderson to DevOps (Przenieś Alice Anderson do działu DevOps)|
+    |Carl Chamerlin to Finance (Carl Chamerlin do działu finansów)|
+    |Steve Standish to 1234 (Steve Standish do 1234)|
+    |Tanner Thompson to 3456 (Tanner Thompson do 3456)|
 
-    [ ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z wyróżnionymi nowymi wypowiedziami](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    Należy pamiętać, że liczba i jednostka datetimeV2 zostały dodane w poprzednim samouczku i zostaną automatycznie oznaczone etykietą, kiedy zostaną znalezione w dowolnej przykładowej wypowiedzi.
+    [![Zrzut ekranu przedstawiający intencję z przykładowymi wypowiedziami](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Zrzut ekranu przedstawiający intencję z przykładowymi wypowiedziami")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="employee-list-entity"></a>Jednostka listy pracowników
-Teraz, gdy intencja **MoveEmployee** ma przykładowe wypowiedzi, usługa LUIS musi zrozumieć, czym jest pracownik. 
+## <a name="department-list-entity"></a>Jednostka listy działów
 
-Podstawowa nazwa _kanoniczna_ każdego elementu to numer pracownika. Dla tej domeny przykładami synonimów każdej nazwy kanonicznej są: 
+Teraz, gdy intencja **TransferEmployeeToDepartment** ma przykładowe wypowiedzi, usługa LUIS musi zrozumieć, czym jest dział. 
 
-|Cel synonimu|Wartość synonimu|
+Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady synonimów każdej nazwy kanonicznej są następujące: 
+
+|Nazwa kanoniczna|Synonimy|
 |--|--|
-|Nazwa|John W. Smith|
-|Adres e-mail|john.w.smith@mycompany.com|
-|Numer wewnętrzny|x12345|
-|Numer osobistego telefonu komórkowego|425-555-1212|
-|Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
-
+|Księgowość|ksg<br>ksgwsc<br>3456|
+|Development Operations|DevOps<br>4949|
+|Inżynieria|inz<br>inznr<br>4567|
+|Finanse|fin<br>2020|
+|Technologie informatyczne|IT<br>2323|
+|Sprzedaż wewnętrzna|sprzedazw<br>sprzedazwewn<br>1414|
+|Badania i projektowanie|R&D<br>1234|
 
 1. Wybierz pozycję **Entities** (Jednostki) w lewym panelu.
 
-2. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę).
+1. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę).
 
-3. W oknie podręcznym jednostki wprowadź ciąg `Employee` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
+1. W oknie podręcznym jednostki wprowadź ciąg `Department` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
 
-    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-4. Na stronie jednostki Employee (Pracownik) wprowadź `Employee-24612` jako nową wartość.
+1. Na stronie jednostki Department (Dział) wprowadź `Accounting` jako nową wartość.
 
     [![Zrzut ekranu przedstawiający wprowadzanie wartości](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Zrzut ekranu przedstawiający wprowadzanie wartości")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-5. W obszarze Synonyms (Synonimy) dodaj następujące wartości:
-
-    |Cel synonimu|Wartość synonimu|
-    |--|--|
-    |Nazwa|John W. Smith|
-    |Adres e-mail|john.w.smith@mycompany.com|
-    |Numer wewnętrzny|x12345|
-    |Numer osobistego telefonu komórkowego|425-555-1212|
-    |Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
+1. W przypadku synonimów dodaj synonimy z poprzedniej tabeli.
 
     [![Zrzut ekranu przedstawiający wprowadzanie synonimów](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Zrzut ekranu przedstawiający wprowadzanie synonimów")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
-6. Wprowadź `Employee-45612` jako nową wartość.
+1. Kontynuuj dodawanie wszystkich nazw kanonicznych i ich synonimów. 
 
-7. W obszarze Synonyms (Synonimy) dodaj następujące wartości:
+## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
 
-    |Cel synonimu|Wartość synonimu|
-    |--|--|
-    |Name (Nazwa)|Jill Jones|
-    |Email address (Adres e-mail)|jill-jones@mycompany.com|
-    |Numer wewnętrzny|x23456|
-    |Numer osobistego telefonu komórkowego|425-555-0000|
-    |Federalny numer ubezpieczenia społecznego (USA)|234-56-7891|
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train"></a>Szkolenie
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikowanie aplikacji w celu umożliwienia wysyłania zapytań z punktu końcowego do trenowanego modelu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Pobieranie przewidywania intencji i jednostek z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `shift 123-45-6789 from Z-1242 to T-54672`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe wypowiedzi oznaczone etykietami, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnionym elementem `Employee`.
+1. Przejdź na koniec tego adresu URL i wprowadź ciąg `shift Joe Smith to IT`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe wypowiedzi oznaczone etykietami, dlatego jest dobra do testowania i powinna zwrócić intencję `TransferEmployeeToDepartment` z wyodrębnionym elementem `Department`.
 
   ```json
-  {
-    "query": "shift 123-45-6789 from Z-1242 to T-54672",
-    "topScoringIntent": {
-      "intent": "MoveEmployee",
-      "score": 0.9882801
-    },
-    "intents": [
-      {
-        "intent": "MoveEmployee",
-        "score": 0.9882801
+    {
+      "query": "shift Joe Smith to IT",
+      "topScoringIntent": {
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9775754
       },
-      {
-        "intent": "FindForm",
-        "score": 0.016044287
-      },
-      {
-        "intent": "GetJobInformation",
-        "score": 0.007611245
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.007063288
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00684710965
-      },
-      {
-        "intent": "None",
-        "score": 0.00304174074
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.002981
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 0.00212222221
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.00191026414
-      },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0007461446
-      }
-    ],
-    "entities": [
-      {
-        "entity": "123 - 45 - 6789",
-        "type": "Employee",
-        "startIndex": 6,
-        "endIndex": 16,
-        "resolution": {
-          "values": [
-            "Employee-24612"
-          ]
+      "intents": [
+        {
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9775754
+        },
+        {
+          "intent": "None",
+          "score": 0.0154493852
         }
-      },
-      {
-        "entity": "123",
-        "type": "builtin.number",
-        "startIndex": 6,
-        "endIndex": 8,
-        "resolution": {
-          "value": "123"
+      ],
+      "entities": [
+        {
+          "entity": "it",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 20,
+          "resolution": {
+            "values": [
+              "Information Technology"
+            ]
+          }
         }
-      },
-      {
-        "entity": "45",
-        "type": "builtin.number",
-        "startIndex": 10,
-        "endIndex": 11,
-        "resolution": {
-          "value": "45"
-        }
-      },
-      {
-        "entity": "6789",
-        "type": "builtin.number",
-        "startIndex": 13,
-        "endIndex": 16,
-        "resolution": {
-          "value": "6789"
-        }
-      },
-      {
-        "entity": "-1242",
-        "type": "builtin.number",
-        "startIndex": 24,
-        "endIndex": 28,
-        "resolution": {
-          "value": "-1242"
-        }
-      },
-      {
-        "entity": "-54672",
-        "type": "builtin.number",
-        "startIndex": 34,
-        "endIndex": 39,
-        "resolution": {
-          "value": "-54672"
-        }
-      }
-    ]
-  }
+      ]
+    }
   ```
-
-  Pracownik został znaleziony i zwrócony jako typ `Employee` o rozpoznanej wartości `Employee-24612`.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Informacje pokrewne
+
+* [Lista jednostki](luis-concept-entity-types.md#list-entity) — informacje koncepcyjne
+* [Jak trenować](luis-how-to-train.md)
+* [Jak opublikować](luis-how-to-publish-app.md)
+* [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
+
+
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono nową intencję, dodano przykładowe wypowiedzi, a następnie utworzono jednostkę listy, aby wyodrębnić z wypowiedzi dokładne dopasowania tekstu. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
+
+Kontynuuj pracę z tą aplikacją, [dodając jednostkę złożoną](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
 > [Dodawanie jednostki hierarchicznej do aplikacji](luis-quickstart-intent-and-hier-entity.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu drukowanego (OCR) — REST, PHP — przetwarzanie obrazów'
+title: 'Szybki start: wyodrębnianie tekstu drukowanego — REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka PHP.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 10be09c4d18cc7bc395937e1a175a5bfcd1e5d7e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 2707134c3fb451f4386748f691086eeb617d3ebe
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340243"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581389"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka PHP
 
@@ -33,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-1. Zainstaluj pakiet [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) PHP5.
+1. Zainstaluj pakiet [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) PHP5.
    1. Otwórz okno wiersza polecenia jako administrator.
    1. Uruchom następujące polecenie:
 

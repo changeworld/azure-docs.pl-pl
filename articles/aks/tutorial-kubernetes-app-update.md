@@ -3,22 +3,21 @@ title: Samouczek dotyczący usługi Kubernetes na platformie Azure — aktualizo
 description: Z tego samouczka dotyczącego usługi Azure Kubernetes Service (AKS) dowiesz się, jak zaktualizować istniejące wdrożenie aplikacji do usługi AKS przy użyciu nowej wersji kodu aplikacji.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2dd52fec112b879e072d3ac5598dd7978e68cbc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ed4a65e9e4e579277866bdafda67eb577a76bbfe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919557"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714818"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
-Po wdrożeniu aplikacji w usłudze Kubernetes można ją zmodyfikować, określając nowy obraz kontenera lub wersję obrazu. W takiej sytuacji aktualizacja jest przygotowywana tak, aby tylko część była współbieżnie aktualizowana. Ta aktualizacja etapowa umożliwia kontynuowanie działania podczas aktualizacji aplikacji. Udostępnia ona również mechanizm wycofywania w przypadku niepowodzenia wdrożenia.
+Po wdrożeniu aplikacji w usłudze Kubernetes można ją zmodyfikować, określając nowy obraz kontenera lub wersję obrazu. Aktualizacja jest przygotowywana tak, aby tylko część wdrożenia była aktualizowana w tym samym czasie. Ta aktualizacja etapowa umożliwia kontynuowanie działania podczas aktualizacji aplikacji. Udostępnia ona również mechanizm wycofywania w przypadku niepowodzenia wdrożenia.
 
 W tym samouczku (część szósta z siedmiu) aktualizowana jest przykładowa aplikacja do głosowania platformy Azure. Omawiane kwestie:
 
@@ -30,21 +29,21 @@ W tym samouczku (część szósta z siedmiu) aktualizowana jest przykładowa apl
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontenera, obraz został przekazany do usługi Azure Container Registry i utworzono klaster Kubernetes. Następnie uruchomiono aplikację w klastrze usługi Kubernetes.
+W poprzednich samouczkach aplikacja była spakowana do obrazu kontenera. Ten obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi AKS. Aplikacja została następnie wdrożona w klastrze usługi AKS.
 
-Sklonowano również repozytorium aplikacji, w tym kod źródłowy aplikacji i utworzony wcześniej plik narzędzia Docker Compose używany w tym samouczku. Sprawdź, czy został utworzony klon repozytorium oraz czy katalogi zostały zmienione na sklonowany katalog. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
+Sklonowano również repozytorium aplikacji, w tym kod źródłowy aplikacji i utworzony wcześniej plik narzędzia Docker Compose używany w tym samouczku. Sprawdź, czy został utworzony klon repozytorium oraz czy katalogi zostały zmienione na sklonowany katalog. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, zacznij od części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
-Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.44 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="update-an-application"></a>Aktualizowanie aplikacji
 
-Wprowadźmy zmianę w przykładowej aplikacji, a następnie zaktualizujmy wersję już wdrożoną do klastra usługi AKS. Kod źródłowy aplikacji przykładowej znajduje się w katalogu *azure-vote*. Otwórz plik *config_file.cfg* za pomocą edytora, takiego jak `vi`:
+Wprowadźmy zmianę w przykładowej aplikacji, a następnie zaktualizujmy wersję już wdrożoną do klastra usługi AKS. Upewnij się, że jesteś w sklonowanym katalogu *azure-voting-app-redis*. Kod źródłowy aplikacji przykładowej znajduje się wówczas w katalogu *azure-vote*. Otwórz plik *config_file.cfg* za pomocą edytora, takiego jak `vi`:
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
 ```
 
-Zmień wartości parametrów *VOTE1VALUE* i *VOTE2VALUE* na różne kolory. Poniższy przykład przedstawia zaktualizowane wartości kolorów:
+Zmień wartości parametrów *VOTE1VALUE* i *VOTE2VALUE* na różne wartości, na przykład kolory. Poniższy przykład przedstawia zaktualizowane wartości:
 
 ```
 # UI Configurations
@@ -54,7 +53,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Zapisz i zamknij plik.
+Zapisz i zamknij plik. W programie `vi` użyj polecenia `:wq`.
 
 ## <a name="update-the-container-image"></a>Aktualizowanie obrazu kontenera
 
@@ -70,7 +69,7 @@ Aby sprawdzić, czy w zaktualizowanym obrazie kontenera wyświetlane są wprowad
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
-Zaktualizowane wartości kolorów w pliku *config_file.cfg* są wyświetlane w uruchomionej aplikacji.
+Zaktualizowane wartości w pliku *config_file.cfg* są wyświetlane w uruchomionej aplikacji.
 
 ## <a name="tag-and-push-the-image"></a>Tagowanie i wypychanie obrazu
 
@@ -144,13 +143,13 @@ Aby wyświetlić zaktualizowaną aplikację, najpierw uzyskaj zewnętrzny adres 
 kubectl get service azure-vote-front
 ```
 
-Następnie otwórz adres IP w lokalnej przeglądarce internetowej.
+Następnie otwórz adres IP usługi w lokalnej przeglądarce internetowej:
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra Kubernetes. W tym samouczku omówiono:
+W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra usługi AKS. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Aktualizowanie kodu aplikacji frontonu

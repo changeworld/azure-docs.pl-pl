@@ -13,20 +13,20 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c83526ac5fd6fb6c757bffab08414d940694998
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253265"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635429"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows
 
 Ten przykładowy skrypt kopiuje wszystkie obiekty blob ze wskazanego przez użytkownika źródłowego konta magazynu na wskazane przez użytkownika docelowe konto magazynu. 
 
-W tym celu jest używane polecenie `Get-AzureStorageContainer`, zwracające listę wszystkich kontenerów na koncie magazynu. Następnie przykładowy skrypt uruchamia polecenia narzędzia AzCopy, aby skopiować poszczególne kontenery ze źródłowego konta magazynu na konto docelowe. W przypadku wystąpienia błędów przykładowy skrypt ponawia próbę zgodnie z wartością $retryTimes (domyślnie 3 razy, można zmienić to ustawienie przy użyciu parametru `-RetryTimes`). Jeśli błąd wystąpi podczas każdej z ponownych prób, użytkownik może uruchomić skrypt przykładowy ponownie, określając ostatni pomyślnie skopiowany kontener przy użyciu parametru `-LastSuccessContainerName`. W takim przypadku przykładowy skrypt będzie kontynuował kopiowanie kontenerów od tego miejsca.
+W tym celu jest używane polecenie `Get-AzStorageContainer`, zwracające listę wszystkich kontenerów na koncie magazynu. Następnie przykładowy skrypt uruchamia polecenia narzędzia AzCopy, aby skopiować poszczególne kontenery ze źródłowego konta magazynu na konto docelowe. W przypadku wystąpienia błędów przykładowy skrypt ponawia próbę zgodnie z wartością $retryTimes (domyślnie 3 razy, można zmienić to ustawienie przy użyciu parametru `-RetryTimes`). Jeśli błąd wystąpi podczas każdej z ponownych prób, użytkownik może uruchomić skrypt przykładowy ponownie, określając ostatni pomyślnie skopiowany kontener przy użyciu parametru `-LastSuccessContainerName`. W takim przypadku przykładowy skrypt będzie kontynuował kopiowanie kontenerów od tego miejsca.
 
-Ten przykładowy skrypt wymaga modułu programu PowerShell dla usługi Azure Storage w wersji **4.0.2** lub nowszej. Można sprawdzić, jaka wersja jest zainstalowana, przy użyciu polecenia `Get-Module -ListAvailable Azure.storage`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Ten przykładowy skrypt wymaga modułu programu PowerShell dla usługi Azure Storage w wersji **0.7** lub nowszej. Można sprawdzić, jaka wersja jest zainstalowana, przy użyciu polecenia `Get-Module -ListAvailable Az.storage`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,8 +68,8 @@ Ten skrypt zawiera następujące polecenia, służące do skopiowania danych mi�
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureStorageContainer](/powershell/module/azure.storage/Get-AzureStorageContainer) | Zwraca kontenery skojarzone z kontem magazynu. |
-| [New-AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Tworzy kontekst usługi Azure Storage. |
+| [Get-AzStorageContainer](/powershell/module/azure.storage/Get-AzStorageContainer) | Zwraca kontenery skojarzone z kontem magazynu. |
+| [New-AzStorageContext](/powershell/module/azure.storage/New-AzStorageContext) | Tworzy kontekst usługi Azure Storage. |
 
 ## <a name="next-steps"></a>Następne kroki
 

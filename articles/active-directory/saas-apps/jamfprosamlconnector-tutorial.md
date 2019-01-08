@@ -1,228 +1,241 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia Jamf Pro | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i narzędzia Jamf Pro.
+title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem Jamf Pro | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i oprogramowaniem Jamf Pro.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/03/2018
+ms.topic: tutorial
+ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: d28e28a2c4f8144da16c4838f07c9b8bb5ce67f0
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
-ms.translationtype: MT
+ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268161"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810818"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia Jamf Pro
+# <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z oprogramowaniem Jamf Pro
 
-W tym samouczku dowiesz się, jak integrowanie narzędzia Jamf Pro z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować oprogramowanie Jamf Pro z usługą Azure Active Directory (Azure AD).
+Zintegrowanie oprogramowania Jamf Pro z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie narzędzia Jamf Pro z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do oprogramowania Jamf Pro.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do oprogramowania Jamf Pro (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do narzędzia Jamf Pro.
-- Użytkowników, aby automatycznie uzyskać zalogowanych do narzędzia Jamf Pro (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą narzędzia Jamf Pro, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z oprogramowaniem Jamf Pro, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Narzędzie Jamf Pro logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja oprogramowania Jamf Pro z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
-Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-1. Dodawanie narzędzia Jamf Pro z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+* Oprogramowanie Jamf Pro obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług oraz dostawcę tożsamości**
 
-## <a name="adding-jamf-pro-from-the-gallery"></a>Dodawanie narzędzia Jamf Pro z galerii
+## <a name="adding-jamf-pro-from-the-gallery"></a>Dodawanie oprogramowania Jamf Pro z galerii
 
-Aby skonfigurować integrację z narzędziem Jamf Pro w usłudze Azure AD, należy dodać narzędzia Jamf Pro z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację oprogramowania Jamf Pro z usługą Azure AD, musisz dodać oprogramowanie Jamf Pro z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać narzędzia Jamf Pro z galerii, wykonaj następujące czynności:**
+**Aby dodać oprogramowanie Jamf Pro z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![image](./media/jamfprosamlconnector-tutorial/selectazuread.png)
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![image](./media/jamfprosamlconnector-tutorial/a_select_app.png)
-    
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![image](./media/jamfprosamlconnector-tutorial/a_new_app.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-4. W polu wyszukiwania wpisz **narzędzia Jamf Pro**, wybierz opcję **narzędzia Jamf Pro** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-     ![image](./media/jamfprosamlconnector-tutorial/a_add_app.png)
+4. W polu wyszukiwania wpisz **Jamf Pro**, wybierz pozycję **Jamf Pro** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+     ![Jamf Pro na liście wyników](common/search-new-app.png)
 
-W tej sekcji skonfigurujesz i test usługi Azure AD logowanie jednokrotne za pomocą narzędzia Jamf Pro w oparciu o nazwie "Britta Simon" użytkownika testowego.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w narzędziu Jamf Pro do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w narzędziu Jamf Pro musi zostać ustanowione.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z oprogramowaniem Jamf Pro, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w oprogramowaniu Jamf Pro.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą narzędzia Jamf Pro, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z oprogramowaniem Jamf Pro, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego narzędzia Jamf Pro](#create-a-jamf-pro-test-user)**  — aby odpowiednikiem Britta Simon w narzędziu Jamf Pro, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w oprogramowaniu Jamf Pro](#configure-jamf-pro-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego oprogramowania Jamf Pro](#create-jamf-pro-test-user)** — aby mieć w oprogramowaniu Jamf Pro odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji narzędzia Jamf Pro.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą narzędzia Jamf Pro, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Jamf Pro, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **narzędzia Jamf Pro** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Jamf Pro** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![image](./media/jamfprosamlconnector-tutorial/b1_b2_select_sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-2. Kliknij przycisk **pojedynczej zmiany trybu logowania jednokrotnego** na górze ekranu, aby wybrać **SAML** trybu.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-      ![image](./media/jamfprosamlconnector-tutorial/b1_b2_saml_ssso.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![image](./media/jamfprosamlconnector-tutorial/b1_b2_saml_sso.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+4. Jeśli chcesz przeprowadzić konfigurację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    ![image](./media/jamfprosamlconnector-tutorial/b1-domains_and_urlsedit.png)
+    ![Informacje o domenie i adresach URL aplikacji Jamf Pro dla logowania jednokrotnego](common/idp-intiated.png)
 
-5. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/metadata`.
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/SSO`.
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![image](./media/jamfprosamlconnector-tutorial//b2-domains_and_urls.png)
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com`
 
-    c. Kliknij przycisk **Ustaw dodatkowe adresy URL**.
-
-    d. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.jamfcloud.com`.
-
-    ![image](./media/jamfprosamlconnector-tutorial//b4-domains_and_urls.png)
+    ![Informacje o domenie i adresach URL aplikacji Jamf Pro dla logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Wystąpi rzeczywista wartość identyfikatora z **logowania jednokrotnego** sekcji w portalu narzędzia Jamf Pro, co zostało wyjaśnione w dalszej części tego samouczka. Można wyodrębnić rzeczywiste **poddomeny** z wartości identyfikatora i używać go **poddomeny** informacji adres URL logowania i adres URL odpowiedzi.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Rzeczywista wartość identyfikatora zostanie pobrana z sekcji **Single Sign-On** (Logowanie jednokrotne) w portalu oprogramowania Jamf Pro, co objaśniono w dalszej części tego samouczka. Możesz wyodrębnić rzeczywistą wartość **poddomeny** z wartości identyfikatora i użyć tych informacji o **poddomenie** w adresie URL logowania i adresie URL odpowiedzi. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i zapisz go na użytkownika komputer.
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![image](./media/jamfprosamlconnector-tutorial/C2_certificate.png)
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
-7. Aby zautomatyzować konfigurację w narzędziu Jamf Pro, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
+### <a name="configure-jamf-pro-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w oprogramowaniu Jamf Pro
+
+1. Aby zautomatyzować konfigurację w oprogramowaniu Jamf Pro, musisz zainstalować **rozszerzenie przeglądarki do bezpiecznego logowania Moje aplikacje**, klikając pozycję **Zainstaluj rozszerzenie**.
 
     ![image](./media/jamfprosamlconnector-tutorial/install_extension.png)
- 
-8. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **instalacji narzędzia Jamf Pro** nastąpi bezpośrednie przekierowanie do aplikacji w narzędziu Jamf Pro. W tym miejscu podaj poświadczenia administratora do logowania się do narzędzia Jamf Pro. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzowania czynności 9 – 12.
+
+2. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Skonfiguruj aplikację Jamf Pro**. Spowoduje to bezpośrednie przejście do aplikacji Jamf Pro. W tym miejscu podaj poświadczenia administratora w celu zalogowania się do aplikacji Jamf Pro. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzuje kroki 3–7.
 
     ![image](./media/jamfprosamlconnector-tutorial/d1_saml.png)
 
-9. Jeśli chcesz ręcznie skonfigurować narzędzia Jamf Pro, Otwórz nowe okno przeglądarki sieci web i dziennika do witryny firmy narzędzia Jamf Pro z uprawnieniami administratora i wykonaj następujące czynności:
+3. Jeśli chcesz ręcznie skonfigurować oprogramowanie Jamf Pro, otwórz nowe okno przeglądarki internetowej i zaloguj się do witryny firmowej Jamf Pro jako administrator, a następnie wykonaj następujące czynności:
 
-10. Kliknij pozycję **ikonę ustawienia** w prawym górnym rogu strony.
+4. Kliknij **ikonę Ustawienia** w prawym górnym rogu strony.
 
-    ![Konfiguracja narzędzia Jamf Pro](./media/jamfprosamlconnector-tutorial/configure1.png)
+    ![Konfiguracja oprogramowania Jamf Pro](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-11. Kliknij pozycję **logowanie jednokrotne**.
+5. Kliknij pozycję **Single Sign On** (Logowanie jednokrotne).
 
-    ![Konfiguracja narzędzia Jamf Pro](./media/jamfprosamlconnector-tutorial/configure2.png)
+    ![Konfiguracja oprogramowania Jamf Pro](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-12. Na **logowania jednokrotnego** strony należy wykonać następujące czynności:
+6. Na stronie **Single Sign On**(Logowanie jednokrotne) wykonaj następujące czynności:
 
-    ![Pojedynczy w narzędziu Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+    ![Logowanie jednokrotne w oprogramowaniu Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
-    a. Wybierz **Jamf Pro serwera** włączyć logowanie jednokrotne dostępu.
+    a. Wybierz pozycję **Jamf Pro Server** (Serwer oprogramowania Jamf Pro), aby włączyć dostęp przy użyciu logowania jednokrotnego.
 
-    b. Wybierając **obejścia Zezwalaj wszystkim użytkownikom** użytkownicy nie nastąpi przekierowanie do strony logowania dostawcy tożsamości do uwierzytelniania, ale można zalogować się do narzędzia Jamf Pro bezpośrednio zamiast tego. Gdy użytkownik próbuje dostęp do narzędzia Jamf Pro za pośrednictwem dostawcy tożsamości, występuje logowanie Jednokrotne zainicjowane przez dostawcę tożsamości uwierzytelniania i autoryzacji.
+    b. Wybranie opcji **Allow bypass for all users** (Zezwalaj na obejście dla wszystkich użytkowników) spowoduje, że użytkownicy nie będą przekierowywani do strony logowania dostawcy tożsamości w celu uwierzytelniania, ale zamiast tego będą mogli bezpośrednio zalogować się do oprogramowania Jamf Pro. Gdy użytkownik spróbuje uzyskać dostęp do oprogramowania Jamf Pro za pośrednictwem dostawcy tożsamości, nastąpi uwierzytelnianie i autoryzacja za pomocą logowania jednokrotnego zainicjowanego przez dostawcę tożsamości.
 
-    c. Wybierz **NameID** opcja dla **mapowania użytkownika: SAML**. Domyślnie to ustawienie ma wartość **NameID** , ale można zdefiniować atrybutów niestandardowych.
+    d. Wybierz opcję **NameID** dla ustawienia **USER MAPPING: SAML** (ODWZOROWANIE UŻYTKOWNIKA: SAML). Domyślnie to ustawienie ma wartość **NameID**, ale można zdefiniować atrybut niestandardowy.
 
-    d. Wybierz **E-mail** dla **mapowania użytkownika: narzędzia JAMF PRO**. Narzędzia Jamf Pro mapuje atrybutów SAML wysyłane przez dostawcę tożsamości na następujące sposoby: przez użytkowników i grup. Gdy użytkownik próbuje uzyskać dostęp do narzędzia Jamf Pro, domyślnie narzędzia Jamf Pro pobiera informacje o użytkowniku od dostawcy tożsamości i dopasowuje je względem kont użytkowników w narzędziu Jamf Pro. Jeśli przychodzące konto użytkownika nie istnieje w narzędziu Jamf Pro, to Dopasowywanie nazw grupy występuje.
+    d. Wybierz opcję **Email** dla ustawienia **USER MAPPING: JAMF PRO** (ODWZOROWANIE UŻYTKOWNIKA: JAMF PRO). Oprogramowanie Jamf Pro mapuje atrybuty SAML wysyłane przez dostawcę tożsamości na następujące sposoby: według użytkowników i według grup. Gdy użytkownik próbuje uzyskać dostęp do oprogramowania Jamf Pro, domyślnie oprogramowanie Jamf Pro pobiera informacje o użytkowniku od dostawcy tożsamości i uzgadnia je względem kont użytkowników w oprogramowaniu Jamf Pro. Jeśli przychodzące konto użytkownika nie istnieje w oprogramowaniu Jamf Pro, wykonywane jest dopasowanie nazwy grupy.
 
-    e. Wklej wartość `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` w **nazwa ATRYBUTU grupy** pola tekstowego.
+    e. Wklej wartość `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` w polu tekstowym **GROUP ATTRIBUTE NAME** (NAZWA ATRYBUTU GRUPY).
 
-13. Na tym samym przewiń stronę w dół maksymalnie **dostawcy tożsamości** w obszarze **logowania jednokrotnego** sekcji, a następnie wykonaj następujące czynności:
+7. Na tej samej stronie przewiń ekran w dół do pola **IDENTITY PROVIDER** (DOSTAWCA TOŻSAMOŚCI) w sekcji **Single Sign-On** (Logowanie jednokrotne), a następnie wykonaj następujące kroki:
 
-    ![Konfiguracja narzędzia Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
+    ![Konfiguracja oprogramowania Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. Wybierz **innych** jako opcję z **dostawcy tożsamości** listy rozwijanej.
+    a. Wybierz pozycję **Other** (Inne) z listy rozwijanej **IDENTITY PROVIDER** (DOSTAWCA TOŻSAMOŚCI).
 
-    b. W **inny DOSTAWCA** polu tekstowym wprowadź **usługi Azure AD**.
+    b. W polu tekstowym **OTHER PROVIDER** (INNY DOSTAWCA) wprowadź wartość **Azure AD**.
 
-    c. Wybierz **adres URL metadanych** jako opcję z **źródła METADANYCH dostawcy tożsamości** listy rozwijanej i Wklej w poniższym polu tekstowym **adres Url metadanych Federacji aplikacji** wartość, która Skopiowano z witryny Azure portal.
+    d. Wybierz pozycję **Metadata URL** (Adres URL metadanych) jako opcję z listy rozwijanej **IDENTITY PROVIDER METADATA SOURCE** (ŹRÓDŁO METADANYCH DOSTAWCY TOŻSAMOŚCI) i w następującym polu tekstowym wklej wartość  **adresu URL metadanych federacji aplikacji** skopiowaną z witryny Azure Portal.
 
-    d. Kopiuj **identyfikator jednostki** wartość i wklej go w **identyfikator jednostki** polu tekstowym w **Jamf Pro domena i adresy URL** sekcji w witrynie Azure portal.
+    d. Skopiuj wartość pola **Identyfikator jednostki** i wklej ją w polu tekstowym **Identyfikator (identyfikator jednostki)** w sekcji **Domena i adresy URL oprogramowania Jamf Pro** w witrynie Azure Portal.
 
-    >[!NOTE]
-    > W tym miejscu wartość rozmyte jest częścią poddomeny. Ta wartość służy do ukończenia adres URL logowania i adres URL odpowiedzi w **Jamf Pro domena i adresy URL** sekcji w witrynie Azure portal.
+    > [!NOTE]
+    > W tym miejscu rozmyta wartość jest częścią poddomeny. Ta wartość służy do wypełnienia adresu URL logowania i adresu URL odpowiedzi w sekcji **Domena i adresy URL oprogramowania Jamf Pro** w witrynie Azure Portal.
 
     e. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![image](./media/jamfprosamlconnector-tutorial/d_users_and_groups.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz **nowego użytkownika** w górnej części ekranu.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![image](./media/jamfprosamlconnector-tutorial/d_adduser.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![image](./media/jamfprosamlconnector-tutorial/d_userproperties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W **nazwa** pola wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Wybierz pozycję **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-jamf-pro-test-user"></a>Tworzenie użytkownika testowego narzędzia Jamf Pro
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do narzędzia Jamf Pro, musi być obsługiwana w narzędziu Jamf Pro. W przypadku narzędzia Jamf Pro aprowizacji to zadanie ręczne.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Jamf Pro.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Jamf Pro**.
 
-1. Zaloguj się do witryny firmy narzędzia Jamf Pro z uprawnieniami administratora.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Kliknij pozycję **ikonę ustawienia** w prawym górnym rogu strony.
+2. Na liście aplikacji wybierz **Jamf Pro**.
+
+    ![Link oprogramowania Jamf Pro na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-jamf-pro-test-user"></a>Tworzenie użytkownika testowego oprogramowania Jamf Pro
+
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w oprogramowaniu Jamf Pro, muszą być oni aprowizowaniu w oprogramowaniu Jamf Pro. W przypadku oprogramowania Jamf Pro aprowizacja jest zadaniem ręcznym.
+
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+
+1. Zaloguj się do witryny firmowej oprogramowania Jamf Pro jako administrator.
+
+2. Kliknij **ikonę Ustawienia** w prawym górnym rogu strony.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-3. Kliknij pozycję **narzędzia Jamf Pro kont użytkowników i grup**.
+3. Kliknij pozycję **Konta i grupy użytkowników oprogramowania Jamf Pro**.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user1.png)
 
@@ -230,60 +243,38 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do narzędzia Jam
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user2.png)
 
-5. Wybierz **Utwórz standardowe konto**.
+5. Wybierz pozycję **Utwórz standardowe konto**.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. Na **nowe konto** dailog, wykonaj następujące czynności:
+6. W oknie dialogowym **Nowe konto** wykonaj następujące kroki:
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. W **USERNAME** polu tekstowym wpisz pełną nazwę BrittaSimon.
+    a. W polu tekstowym **USERNAME** (NAZWA UŻYTKOWNIKA) wpisz pełną nazwę użytkownika BrittaSimon.
 
-    b. Wybierz odpowiednie opcje zgodnie z Twoją organizację dla **poziom dostępu**, **zestawu uprawnień**oraz **stan dostępu**.
+    b. Wybierz odpowiednie opcje zgodnie z Twoją organizacją dla pól **ACCESS LEVEL** (POZIOM DOSTĘPU), **PRIVILEGE SET** (ZESTAW UPRAWNIEŃ) i **ACCESS STATUS** (STAN DOSTĘPU).
 
-    c. W **imię i nazwisko** polu tekstowym wpisz pełną nazwę Britta Simon.
+    d. W polu tekstowym **FULL NAME** (IMIĘ I NAZWISKO) wpisz imię i nazwisko Britta Simon.
 
-    d. W **adres E-mail** pole tekstowe, wpisz adres e-mail konta Britta Simon.
+    d. W polu tekstowym **EMAIL ADDRESS** (ADRES E-MAIL) wpisz adres e-mail konta użytkownika Britta Simon.
 
-    e. W **hasło** pole tekstowe, wpisz hasło użytkownika.
+    e. W polu tekstowym **PASSWORD** (HASŁO) wpisz hasło użytkownika.
 
-    f. W **POTWIERDŹ hasło** pole tekstowe, wpisz hasło użytkownika.
+    f. W polu tekstowym **VERIFY PASSWORD** (WERYFIKUJ HASŁO) wpisz hasło użytkownika.
 
     g. Kliknij pozycję **Zapisz**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do narzędzia Jamf Pro.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **narzędzia Jamf Pro**.
+Po kliknięciu kafelka Jamf Pro w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Jamf Pro, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-    ![image](./media/jamfprosamlconnector-tutorial/d_all_applications.png)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-2. Na liście aplikacji wybierz **narzędzia Jamf Pro**.
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![image](./media/jamfprosamlconnector-tutorial/d_all_proapplications.png)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
-
-    ![image](./media/jamfprosamlconnector-tutorial/d_leftpaneusers.png)
-
-4. Wybierz **Dodaj** przycisk, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
-
-    ![image](./media/jamfprosamlconnector-tutorial/d_assign_user.png)
-
-4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-
-5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka narzędzia Jamf Pro w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji narzędzia Jamf Pro.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
-
-## <a name="additional-resources"></a>Zasoby dodatkowe
-
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,39 +1,39 @@
 ---
-title: Obsługa funkcji Azure Cosmos DB dla bazy danych MongoDB
-description: Dowiedz się więcej o obsłudze funkcji dostępnych w interfejsach API bazy danych MongoDB usługi Azure Cosmos DB dla bazy danych MongoDB w wersji 3.4.
+title: Używanie interfejsu API usługi Azure Cosmos DB na potrzeby obsługi funkcji bazy danych MongoDB
+description: Dowiedz się więcej o obsłudze funkcji dostępnych w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB w wersji 3.4.
 services: cosmos-db
-author: alekseys
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: overview
-ms.date: 11/15/2017
-ms.author: alekseys
-ms.openlocfilehash: 01e8af08ff5059867cc49cb9d55ae92f2ae21cdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: bb25cf6ed60317dd5d7266e2f4750c2bb9f4859d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879677"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790287"
 ---
-# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Obsługa interfejsu API bazy danych MongoDB dla funkcji i składni bazy danych MongoDB
+# <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Używanie interfejsu API usługi Azure Cosmos DB na potrzeby obsługi funkcji i składni bazy danych MongoDB
 
-Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Możesz komunikować się z interfejsem API bazy danych MongoDB za pośrednictwem dowolnych [sterowników](https://docs.mongodb.org/ecosystem/drivers) klienta bazy danych MongoDB typu „open source”. Interfejs API bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta dzięki przestrzeganiu [protokołu przewodowego](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) MongoDB.
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Możesz komunikować się z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB, używając dowolnych [sterowników](https://docs.mongodb.org/ecosystem/drivers) klienta bazy danych MongoDB typu „open source”. Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta dzięki przestrzeganiu [protokołu przewodowego](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) MongoDB.
 
-Używając interfejsu API bazy danych MongoDB usługi Azure Cosmos DB, można korzystać z dobrze znanych zalet interfejsów API bazy danych MongoDB oraz wszystkich funkcji na poziomie korporacyjnym dostarczanych przez usługę Azure Cosmos DB: [globalnej dystrybucji](distribute-data-globally.md), [automatycznego fragmentowania](partition-data.md), gwarancji dostępności i opóźnień, automatycznego indeksowania każdego pola, szyfrowania magazynowanego, tworzenia kopii zapasowych itd.
+Używając interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, można korzystać z dobrze znanych zalet bazy danych MongoDB oraz wszystkich funkcji na poziomie korporacyjnym dostarczanych przez usługę Cosmos DB: [globalnej dystrybucji](distribute-data-globally.md), [automatycznego fragmentowania](partition-data.md), gwarancji dostępności i opóźnień, automatycznego indeksowania każdego pola, szyfrowania danych magazynowanych, tworzenia kopii zapasowych itd.
 
 ## <a name="mongodb-protocol-support"></a>Obsługa protokołów bazy danych MongoDB
 
-Interfejs API bazy danych MongoDB w usłudze Azure Cosmos DB jest domyślnie zgodny z wersją **3.2** serwera MongoDB. Poniżej wymieniono obsługiwane operacje wraz z ewentualnymi ograniczeniami lub wyjątkami. Funkcje i operatory zapytań dodane w wersji **3.4** bazy danych MongoDB są obecnie dostępne w wersji zapoznawczej. Każdy sterownik klienta, który rozumie te protokoły, powinien umożliwiać połączenie z usługą Cosmos DB za pomocą interfejsu API bazy danych MongoDB.
+Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB jest domyślnie zgodny z wersją **3.2** serwera MongoDB. Poniżej wymieniono obsługiwane operacje wraz z ewentualnymi ograniczeniami lub wyjątkami. Funkcje i operatory zapytań dodane w wersji **3.4** bazy danych MongoDB są obecnie dostępne w wersji zapoznawczej. Dowolny sterownik klienta działający zgodnie z tymi protokołami umożliwia połączenie z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
 [Potok agregacji usługi MongoDB](#aggregation-pipeline) również jest obecnie dostępny jako oddzielna funkcja w wersji zapoznawczej.
 
 ## <a name="mongodb-query-language-support"></a>Obsługa języka zapytań bazy danych MongoDB
 
-Interfejs API bazy danych MongoDB usługi Azure Cosmos DB zapewnia niemal pełną obsługę konstrukcji języka zapytań bazy danych MongoDB. Poniżej można znaleźć szczegółową listę obecnie obsługiwanych operacji, operatorów, etapów, poleceń i opcji.
+Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB zapewnia niemal pełną obsługę konstrukcji języka zapytań bazy danych MongoDB. Poniżej można znaleźć szczegółową listę obecnie obsługiwanych operacji, operatorów, etapów, poleceń i opcji.
 
 ## <a name="database-commands"></a>Polecenia bazy danych
 
-Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na wszystkich kontach interfejsu API bazy danych MongoDB.
+Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następujące polecenia bazy danych:
 
 ### <a name="query-and-write-operation-commands"></a>Polecenia operacji zapytań i zapisu
 - delete
@@ -73,7 +73,7 @@ Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na wszyst
 
 ## <a name="aggregation-pipelinea"></a>Potok agregacji</a>
 
-Usługa Azure Cosmos DB obsługuje potok agregacji w publicznej wersji zapoznawczej. Instrukcje dotyczące dołączenia do publicznej wersji zapoznawczej znajdują się na [blogu platformy Azure](https://aka.ms/mongodb-aggregation).
+Usługa Cosmos DB obsługuje potok agregacji w publicznej wersji zapoznawczej. Instrukcje dotyczące dołączenia do publicznej wersji zapoznawczej znajdują się na [blogu platformy Azure](https://aka.ms/mongodb-aggregation).
 
 ### <a name="aggregation-commands"></a>Polecenia agregacji
 - aggregate
@@ -308,32 +308,34 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klucza so
 
 ## <a name="unique-indexes"></a>Indeksy unikatowe
 
-Usługa Azure Cosmos DB indeksuje każde pole w dokumentach, które są domyślnie zapisywane w bazie danych. Indeksy unikatowe zapewniają, że wartości w danym polu nie dublują się we wszystkich dokumentach w kolekcji; również klucz domyślny „_id” jest kluczem unikatowym. Teraz w usłudze Azure Cosmos DB można tworzyć niestandardowe indeksy – za pomocą polecenia createIndex, w którym można używać ograniczenia „unique”.
+Usługa Cosmos DB indeksuje każde pole w dokumentach, które są domyślnie zapisywane w bazie danych. Indeksy unikatowe zapewniają, że wartości w danym polu nie dublują się we wszystkich dokumentach w kolekcji; również klucz domyślny „_id” jest kluczem unikatowym. W usłudze Cosmos DB można tworzyć niestandardowe indeksy, używając polecenia createIndex, w którym można stosować ograniczenie „unique”.
 
-Indeksy unikatowe są dostępne dla wszystkich kont interfejsu API bazy danych MongoDB.
+Unikatowe indeksy są dostępne dla wszystkich kont usługi Cosmos używających interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
 ## <a name="time-to-live-ttl"></a>Czas wygaśnięcia (TTL)
 
-Usługa Azure Cosmos DB obsługuje względny czas wygaśnięcia (TTL) na podstawie znacznika czasu dokumentu. Czas wygaśnięcia można włączyć dla kolekcji interfejsu API bazy danych MongoDB w witrynie [Azure Portal](https://portal.azure.com).
+Usługa Cosmos DB obsługuje czas wygaśnięcia (TTL) na podstawie znacznika czasu dokumentu. Czas wygaśnięcia można włączyć dla kolekcji, przechodząc do witryny [Azure Portal](https://portal.azure.com).
 
 ## <a name="user-and-role-management"></a>Zarządzanie użytkownikami i rolami
 
-Usługa Azure Cosmos DB nie obsługuje jeszcze użytkowników i ról. Usługa Azure Cosmos DB obsługuje kontrolę dostępu opartą na rolach (RBAC) oraz hasła/klucze do odczytu-zapisu i tylko do odczytu, które można uzyskać w witrynie [Azure Portal](https://portal.azure.com) (na stronie Parametry połączenia).
+Usługa Cosmos DB nie obsługuje jeszcze użytkowników i ról. Usługa Cosmos DB obsługuje jednak kontrolę dostępu opartą na rolach (RBAC) oraz hasła/klucze do odczytu-zapisu i tylko do odczytu, które można uzyskać w witrynie [Azure Portal](https://portal.azure.com) (na stronie Parametry połączenia).
 
 ## <a name="replication"></a>Replikacja
 
-Usługa Azure Cosmos DB obsługuje automatyczną, natywną replikację na najniższych warstwach. Ta logika została rozszerzona, aby osiągnąć małe opóźnienia oraz replikację globalną. Usługa Azure Cosmos DB nie obsługuje poleceń dotyczących replikacji ręcznej.
+Usługa Cosmos DB obsługuje automatyczną, natywną replikację na najniższych warstwach. Ta logika została rozszerzona, aby osiągnąć małe opóźnienia oraz replikację globalną. Usługa Cosmos DB nie obsługuje poleceń dotyczących replikacji ręcznej.
 
 ## <a name="write-concern"></a>Ustawienie Write Concern
 
-Niektóre interfejsy API bazy danych MongoDB obsługują ustawienie [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/), określające liczbę odpowiedzi wymaganych podczas operacji zapisu. Ze względu na sposób obsługi replikacji w tle w usłudze Cosmos DB wszystkie operacje zapisu mają domyślnie automatycznie ustawioną opcję Quorum (Kworum). Ustawienia Write Concern określone w kodzie klienta są ignorowane. Aby dowiedzieć się więcej, zobacz [Maksymalizowanie dostępności i wydajności za pomocą poziomów spójności](consistency-levels.md).
+Niektóre aplikacje polegają na ustawieniu [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/), które określa liczbę odpowiedzi wymaganych podczas operacji zapisu. Ze względu na sposób obsługi replikacji w tle w usłudze Cosmos DB wszystkie operacje zapisu mają domyślnie automatycznie ustawioną opcję Quorum (Kworum). Ustawienia Write Concern określone w kodzie klienta są ignorowane. Aby dowiedzieć się więcej, zobacz [Maksymalizowanie dostępności i wydajności za pomocą poziomów spójności](consistency-levels.md).
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
 
-Usługa Azure Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serwera. Usługa Azure Cosmos DB nie obsługuje poleceń dotyczących ręcznego dzielenia na fragmenty.
+Usługa Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serwera. Usługa Cosmos DB nie obsługuje poleceń dotyczących ręcznego dzielenia na fragmenty.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [używać programu Studio 3T](mongodb-mongochef.md) z interfejsem API dla bazy danych MongoDB.
-- Dowiedz się, jak [używać programu Robo 3T](mongodb-robomongo.md) z interfejsem API dla bazy danych MongoDB.
-- Eksploruj usługę Azure Cosmos DB, korzystając z pomocy dla protokołów do bazy danych [MongoDB](mongodb-samples.md).
+- Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+- Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+- Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+
+<sup>Uwaga: w tym artykule opisano funkcję usługi Azure Cosmos DB, która zapewnia zgodność protokołu przewodowego z bazami danych MongoDB. Firma Microsoft nie uruchamia baz danych MongoDB w celu udostępnienia tej usługi. Usługa Azure Cosmos DB nie jest powiązana z firmą MongoDB, Inc.</sup>

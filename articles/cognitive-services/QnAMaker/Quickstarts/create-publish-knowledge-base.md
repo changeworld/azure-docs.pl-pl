@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 4b4f208524f18b98d44dc3d34e05359445fb2f17
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644789"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598314"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Tworzenie, szkolenie i publikowanie bazy wiedzy usługi QnA Maker
 
@@ -57,9 +57,7 @@ Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podr�
 
 11. W prawym górnym rogu wybierz pozycję **Zapisz i przeszkol**, aby zapisać wprowadzone zmiany i przeszkolić model usługi QnA Maker. Zmiany nie są przechowywane, o ile nie zostaną zapisane.
 
-   ![Zapisywanie i szkolenie](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
-
-12. W prawym górnym rogu wybierz pozycję **Test**, aby przetestować, czy wprowadzone zmiany weszły w życie. Wprowadź w polu **hi there** (Hej), a następnie naciśnij klawisz Enter. Powinna zostać wyświetlona odpowiedź utworzona jako reakcja.
+12. W prawym górnym rogu wybierz pozycję **Test**, aby przetestować, czy wprowadzone zmiany weszły w życie. Wprowadź w polu `hi there`, a następnie naciśnij klawisz Enter. Powinna zostać wyświetlona odpowiedź utworzona jako reakcja.
 
 13. Wybierz pozycję **Zbadaj**, aby bardziej szczegółowo sprawdzić odpowiedź. Okno testów służy do testowania Twoich zmian w bazie wiedzy zanim zostaną opublikowane.
 

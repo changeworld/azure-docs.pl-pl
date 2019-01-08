@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b6c04c5b167eb963e9b2befa57e270ac454f5d74
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344282"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629887"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -78,7 +78,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
     * &lt;nazwa_ASE&gt;.p.azurewebsites.net
 
-   Istnieje funkcja o nazwie „nazwy domen niestandardowych”, która umożliwia mapowanie istniejącej nazwy DNS na aplikację internetową. Więcej informacji o tej funkcji można znaleźć w dokumencie [Mapowanie istniejącej nazwy DNS na aplikację internetową][customdomain]. Nazwa domeny niestandardowej używanej z aplikacjami i nazwa domeny używana przez środowisko ASE nie mogą się nakładać. W przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia mającego nazwę domeny _contoso.com_ nie można używać następujących nazw domen niestandardowych dla aplikacji:
+   Możesz [mapować istniejącą nazwę DNS na swoją aplikację][customdomain]. Nazwa domeny niestandardowej używanej z aplikacjami i nazwa domeny używana przez środowisko ASE nie mogą się nakładać. W przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia mającego nazwę domeny _contoso.com_ nie można używać następujących nazw domen niestandardowych dla aplikacji:
 
     * www.contoso.com
 
@@ -88,7 +88,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
    Jeśli znasz nazwy domen niestandardowych używane z aplikacjami, wybierz dla środowiska ASE z wewnętrznym modułem równoważenia obciążenia taką domenę, dla której nie występuje konflikt z tymi nazwami domen niestandardowych. W tym przykładzie można użyć jako domeny środowiska ASE czegoś w rodzaju *contoso-wewn.com*, ponieważ ta nazwa nie jest w konflikcie z nazwami domen niestandardowych, które kończą się na *.contoso.com*.
 
-1. Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
+8. Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
 
     ![Tworzenie środowiska ASE][1]
 
@@ -160,23 +160,23 @@ Aby przekazać własne certyfikaty i przetestować dostęp:
 
 1. Uzyskaj adres wewnętrznego modułu równoważenia obciążenia środowiska ASE. Wybierz pozycję **ASE** > **Właściwości** > **Wirtualny adres IP**.
 
-1. Po utworzeniu środowiska ASE utwórz aplikację internetową w środowisku ASE.
+2. Po utworzeniu środowiska ASE utwórz w nim aplikację.
 
-1. Utwórz maszynę wirtualną, jeśli w tej sieci wirtualnej nie ma żadnej.
+3. Utwórz maszynę wirtualną, jeśli w tej sieci wirtualnej nie ma żadnej.
 
     > [!NOTE] 
     > Nie próbuj tworzyć tej maszyny wirtualnej w tej samej podsieci, w której istnieje środowisko ASE — nie powiedzie się to lub wystąpią problemy.
     >
 
-1. Skonfiguruj ustawienia DNS dla domeny środowiska ASE. W domenie w usłudze DNS możesz użyć symbolu wieloznacznego. Aby przeprowadzić proste testy, edytuj plik hosts na maszynie wirtualnej w celu ustawienia dla nazwy aplikacji internetowej wirtualnego adresu IP:
+4. Skonfiguruj ustawienia DNS dla domeny środowiska ASE. W domenie w usłudze DNS możesz użyć symbolu wieloznacznego. Aby przeprowadzić proste testy, edytuj plik hosts na maszynie wirtualnej w celu ustawienia dla nazwy aplikacji wirtualnego adresu IP:
 
-    a. Jeśli nazwa domeny środowiska ASE to _.aseilb.com_ i utworzysz aplikację internetową o nazwie _mojaaplikacja_, będzie ona miała adres _mojaaplikacja.aseilb.com_. Następnie skonfiguruj rozpoznawanie adresu _mojaaplikacja.aseilb.com_ jako adresu wewnętrznego modułu równoważenia obciążenia. (W systemie Windows plik hosts znajduje się w folderze _C:\Windows\System32\drivers\etc\_).
+    a. Jeśli nazwa domeny środowiska ASE to _.aseilb.com_ i utworzysz aplikację o nazwie _mojaaplikacja_, będzie ona miała adres _mojaaplikacja.aseilb.com_. Następnie skonfiguruj rozpoznawanie adresu _mojaaplikacja.aseilb.com_ jako adresu wewnętrznego modułu równoważenia obciążenia. (W systemie Windows plik hosts znajduje się w folderze _C:\Windows\System32\drivers\etc\_).
 
     b. Aby przetestować publikowanie wdrażania w Internecie lub dostęp do konsoli zaawansowanej, utwórz rekord dla _mojaaplikacja.scm.aseilb.com_.
 
-1. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. (Lub przejdź do strony z nazwą dowolnej aplikacji internetowej w używanej domenie).
+5. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. (Lub przejdź do strony z nazwą dowolnej aplikacji w używanej domenie).
 
-1. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. Jeśli używasz certyfikatu z podpisem własnym, zaakceptuj brak zabezpieczeń.
+6. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. Jeśli używasz certyfikatu z podpisem własnym, zaakceptuj brak zabezpieczeń.
 
     Adres IP wewnętrznego modułu równoważenia obciążenia znajduje się w obszarze **Adresy IP**. Ta lista zawiera również adresy IP używane przez zewnętrzne wirtualne adresy IP oraz do obsługi ruchu przychodzącego zarządzania.
 
@@ -237,7 +237,7 @@ Aby dowiedzieć się więcej na temat sposobu konfigurowania używania środowis
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[webapps]: ../app-service-web-overview.md
+[webapps]: ../overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/

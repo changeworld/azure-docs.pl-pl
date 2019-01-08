@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący przeszukiwania częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure — Azure Search
+title: Samouczek dotyczący wyszukiwania danych JSON w usłudze Azure Blob Storage — Azure Search
 description: W tym samouczku pokazano, jak przeszukiwać częściowo ustrukturyzowane dane obiektów blob platformy Azure przy użyciu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313829"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632946"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Samouczek: Przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
 
@@ -60,7 +60,7 @@ Przykładowe pliki JSON były pierwotnie plikami tekstowymi uzyskanymi z witryny
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>Przekazywanie przykładowych danych
 

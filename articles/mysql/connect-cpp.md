@@ -1,24 +1,21 @@
 ---
 title: Nawiązywanie połączeń z usługą Azure Database for MySQL za pomocą języka C++
 description: Ten przewodnik Szybki start zawiera przykład kodu w języku C++, za pomocą którego można nawiązywać połączenie z danymi usługi Azure Database for MySQL i wykonywać zapytania względem nich.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
-ms.devlang: C++
+ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: b262359b91a2545682e7611c44cfccd2b08da0c1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987668"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544196"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań przy użyciu łącznika/języka C++
+# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań przy użyciu łącznika/języka C++
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL przy użyciu aplikacji języka C++. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym temacie założono, że wiesz już, jak programować w języku C++, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -43,7 +40,7 @@ W krokach w tej sekcji założono, że wiesz już, jak programować za pomocą t
 ### <a name="configure-visual-studio"></a>**Konfigurowanie programu Visual Studio**
 1. W programie Visual Studio w lokalizacji Projekt -> Właściwości -> Konsolidator -> Ogólne -> Dodatkowe katalogi biblioteki dodaj katalog „lib\opt” (tj. C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) łącznika języka C++.
 2. W programie Visual Studio w pozycji Projekt -> Właściwości -> C/C++ -> Ogólne -> Dodatkowe katalogi dyrektywy include:
-   - Dodaj katalog „\include” łącznika języka C++ (tj. C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9\include\).
+   - Dodaj katalog „\include” łącznika języka C++ (tj. C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\).
    - Dodaj katalog główny biblioteki Boost (tj. C:\boost_1_64_0\).
 3. W programie Visual Studio w lokalizacji Projekt -> Właściwości -> Konsolidator -> Wejście -> Dodatkowe zależności dodaj plik **mysqlcppconn.lib** w polu tekstowym.
 4. Skopiuj plik **mysqlcppconn.dll** z folderu biblioteki łącznika języka C++ utworzonego w kroku 3 do tego samego katalogu, w którym znajduje się plik wykonywalny aplikacji, albo dodaj go do zmiennej środowiskowej, aby aplikacja mogła go odnaleźć.

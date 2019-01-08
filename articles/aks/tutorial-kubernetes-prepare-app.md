@@ -3,20 +3,19 @@ title: Samouczek dotyczący usługi Kubernetes na platformie Azure — przygotow
 description: Z tego samouczka dotyczącego usługi Azure Kubernetes Service (AKS) dowiesz się, jak przygotować i skompilować aplikację z wieloma kontenerami przy użyciu narzędzia Docker Compose, którą można następnie wdrożyć w usłudze AKS.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b529af1db6d72d87abc25eb37f2f1c39216a0ba4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297064"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724168"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: Przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
 
 Ten samouczek, część 1 z 7, obejmuje przygotowanie aplikacji z wieloma kontenerami do użycia w usłudze Kubernetes. Istniejące narzędzia programistyczne, takie jak narzędzia Docker Compose, są używane do lokalnego kompilowania i testowania aplikacji. Omawiane kwestie:
 
@@ -29,7 +28,7 @@ Po zakończeniu następująca aplikacja będzie uruchomiona w lokalnym środowis
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-W kolejnych samouczkach obraz kontenera zostanie przekazany do usługi Azure Container Registry, a następnie wdrożony w klastrze usługi AKS.
+W dodatkowych samouczkach obraz kontenera zostanie przekazany do usługi Azure Container Registry, a następnie wdrożony w klastrze usługi AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -49,7 +48,7 @@ Użyj narzędzia [git][], aby sklonować przykładową aplikację do swojego śr
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Zmień katalogi, aby pracować w sklonowanym katalogu.
+Przejdź do sklonowanego katalogu.
 
 ```console
 cd azure-voting-app-redis

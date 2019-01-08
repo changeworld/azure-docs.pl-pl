@@ -2,8 +2,7 @@
 title: 'Samouczek: Uruchamianie usługi Azure Functions za pomocą zadań usługi Azure Stream Analytics | Microsoft Docs'
 description: W tym samouczku przedstawiono konfigurowanie usługi Azure Functions jako ujścia danych wyjściowych dla zadań usługi Stream Analytics.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
@@ -11,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164164"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993012"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Uruchamianie usługi Azure Functions z zadań usługi Azure Stream Analytics 
 
@@ -152,7 +151,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
 
 1. Otwórz zadanie usługi Stream Analytics w witrynie Azure Portal.  
 
-2. Przejdź do funkcji, a następnie wybierz pozycje **Omówienie** > **Wyjścia** > **Dodaj**. Aby dodać nowe wyjście, wybierz pozycję **Azure Function** jako opcję ujścia. Jest dostępny nowy adapter wyjściowy usługi Functions z następującymi właściwościami:  
+2. Przejdź do funkcji, a następnie wybierz pozycje **Omówienie** > **Wyjścia** > **Dodaj**. Aby dodać nowe wyjście, wybierz pozycję **Azure Function** jako opcję ujścia. Adapter wyjściowy usługi Functions ma następujące właściwości:  
 
    |**Nazwa właściwości**|**Opis**|
    |---|---|
@@ -160,7 +159,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
    |Opcja importu| Można użyć funkcji z bieżącej subskrypcji lub, jeśli funkcja znajduje się w innej subskrypcji, podać ustawienia ręcznie. |
    |Aplikacja usługi Functions| Nazwa aplikacji usługi Functions. |
    |Funkcja| Nazwa funkcji w aplikacji usługi Functions (nazwa funkcji run.csx).|
-   |Maksymalny rozmiar partii|Umożliwia ustawienie maksymalnego rozmiaru poszczególnych partii danych wyjściowych, które są przesyłane do funkcji. Domyślnie ta wartość jest równa 256 KB.|
+   |Maksymalny rozmiar partii|Umożliwia ustawienie maksymalnego rozmiaru w bajtach poszczególnych partii danych wyjściowych, które są przesyłane do funkcji. Domyślnie ta wartość jest równa 262 144 B (256 KB).|
    |Maksymalna liczba partii|Umożliwia określenie maksymalnej liczby zdarzeń w każdej z partii wysyłanych do funkcji. Wartość domyślna to 100. Ta właściwość jest opcjonalna.|
    |Klucz|Pozwala na użycie funkcji z innej subskrypcji. Podaj wartość klucza, aby uzyskać dostęp do funkcji. Ta właściwość jest opcjonalna.|
 

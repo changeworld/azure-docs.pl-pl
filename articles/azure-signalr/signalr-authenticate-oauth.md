@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: beaedf754df2b1c4739c5dfb2abcdc40c163dc81
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254126"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599863"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Samouczek: Uwierzytelnianie w usłudze Azure SignalR Service
 
@@ -378,7 +378,7 @@ W tej sekcji włączysz prawdziwe uwierzytelnianie, dodając atrybut `Authorize`
 
 ## <a name="deploy-the-app-to-azure"></a>Wdrażanie aplikacji na platformie Azure
 
-W tej sekcji użyjesz interfejsu wiersza polecenia (CLI) platformy Azure z poziomu usługi Azure Cloud Shell, aby utworzyć nową [aplikację internetową platformy Azure](https://docs.microsoft.com/azure/app-service/) do hostowania Twojej aplikacji platformy ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
+W tej sekcji użyjesz interfejsu wiersza polecenia (CLI) platformy Azure z poziomu usługi Azure Cloud Shell, aby utworzyć nową aplikację internetową w usłudze [Azure App Service](https://docs.microsoft.com/azure/app-service/) do hostowania Twojej aplikacji platformy ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
 
 Kroki opisane w tej sekcji używają rozszerzenia *signalr* dla interfejsu wiersza polecenia platformy Azure. Uruchom następujące polecenie, aby zainstalować rozszerzenie *signalr* dla interfejsu wiersza polecenia platformy Azure:
 

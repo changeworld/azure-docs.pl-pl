@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd3229773b19b9f6c4d9ff76402f1841a4810bc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851132"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793074"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -136,7 +136,7 @@ Na stronie **Przygotowywanie źródła** wybierz pozycję **+ Serwer konfiguracj
     11. W obszarze **Postęp instalacji** wyświetlane są informacje dotyczące procesu instalacji. Po zakończeniu wybierz opcję **Zakończ**. Zostanie wyświetlone okno z komunikatem o konieczności ponownego uruchomienia. Kliknij przycisk **OK**. Następnie w oknie zostanie wyświetlony komunikat dotyczący hasła wymaganego do połączenia z serwerem konfiguracji. Skopiuj hasło do schowka i zapisz je w bezpiecznym miejscu.
 6. Na maszynie wirtualnej uruchom plik cspsconfigtool.exe, aby utworzyć co najmniej jedno konto zarządzania na serwerze konfiguracji. Upewnij się, że konta zarządzania mają uprawnienia administratora na wystąpieniach usługi EC2, które chcesz zmigrować.
 
-Po zakończeniu konfigurowania serwera konfiguracji wróć do portalu i wybierz utworzony przez siebie serwer jako **Serwer konfiguracji**. Wybierz opcję **OK**, aby przejść do kroku 3: Przygotowywanie celu.
+Po zakończeniu konfigurowania serwera konfiguracji wróć do portalu i wybierz utworzony przez siebie serwer jako **Serwer konfiguracji**. Wybierz pozycję **OK**, aby przejść do kroku 3. Przygotowywanie celu.
 
 ### <a name="3-prepare-target"></a>3. Przygotowywanie celu
 

@@ -1,118 +1,112 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z usługa Citrix ShareFile | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i usługa Citrix ShareFile.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Citrix ShareFile | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Citrix ShareFile.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: tutorial
+ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 9919be128ae651b589a37f957cc59ce6d171143f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: eab9970915e3c20eb6b0a7a4bff48490bdca83b8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431736"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976481"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Samouczek: Integracja usługi Azure Active Directory z usługa Citrix ShareFile
+# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Citrix ShareFile
 
-W tym samouczku dowiesz się, jak zintegrować rozwiązanie Citrix ShareFile za pomocą usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Citrix ShareFile z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Citrix ShareFile z usługą Azure AD oferuje następujące korzyści:
 
-Integrowanie usługa Citrix ShareFile z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Citrix ShareFile.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Citrix ShareFile (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do usługa Citrix ShareFile.
-- Użytkowników, aby automatycznie uzyskać zalogowanych do usługa Citrix ShareFile (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą usługa Citrix ShareFile, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Citrix ShareFile potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Usługa Citrix ShareFile logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Citrix ShareFile z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodaj rozwiązanie Citrix ShareFile z galerii
-1. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="add-citrix-sharefile-from-the-gallery"></a>Dodaj rozwiązanie Citrix ShareFile z galerii
-Aby skonfigurować integrację z usługa Citrix ShareFile w usłudze Azure AD, należy dodać rozwiązanie Citrix ShareFile z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Citrix ShareFile obsługuje logowanie jednokrotne inicjowane przez **SP**
 
-**Aby dodać rozwiązanie Citrix ShareFile z galerii, wykonaj następujące czynności:**
+## <a name="adding-citrix-sharefile-from-the-gallery"></a>Dodawanie aplikacji Citrix ShareFile z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Citrix ShareFile z usługą Azure AD, musisz dodać aplikację Citrix ShareFile z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację Citrix ShareFile z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **usługa Citrix ShareFile**, wybierz opcję **usługa Citrix ShareFile** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Usługa Citrix ShareFile na liście wyników](./media/sharefile-tutorial/tutorial_sharefile_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji można skonfigurować, i test usługi Azure AD logowanie jednokrotne za pomocą usługa Citrix ShareFile oparte na użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **Citrix ShareFile**, wybierz pozycję **Citrix ShareFile** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w usługa Citrix ShareFile do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w usługa Citrix ShareFile musi nawiązać.
+     ![Aplikacja Citrix ShareFile na liście wyników](common/search-new-app.png)
 
-Usługa Citrix ShareFile przypisywanie wartości **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługa Citrix ShareFile, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Citrix ShareFile, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Citrix ShareFile.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego usługa Citrix ShareFile](#create-a-citrix-sharefile-test-user)**  — aby odpowiednikiem Britta Simon w usługa Citrix ShareFile połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Citrix ShareFile, należy utworzyć poniższe bloki konstrukcyjne:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Citrix ShareFile](#configure-citrix-sharefile-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Citrix ShareFile](#create-citrix-sharefile-test-user)** — aby mieć w aplikacji Citrix ShareFile odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji usługa Citrix ShareFile.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z usługa Citrix ShareFile, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **usługa Citrix ShareFile** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Citrix ShareFile, wykonaj następujące kroki:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Citrix ShareFile** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/sharefile-tutorial/tutorial_sharefile_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **Citrix ShareFile domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Citrix ShareFile domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/sharefile-tutorial/tutorial_sharefile_url.png)
-    
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<tenant-name>.sharefile.com/saml/login`
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Citrix ShareFile](common/sp-identifier-reply.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenant-name>.sharefile.com/saml/login`
+
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
 
     | |
     |---|
@@ -123,164 +117,145 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<tenant-name>.sharefile.eu/saml/info`|
     | |
     
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
     | |
     |---|
     | `https://<tenant-name>.sharefile.com/saml/acs`|
     | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
     | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
-    | |
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej firmy Citrix ShareFile klienta](https://www.citrix.co.in/products/sharefile/support.html) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta Citrix ShareFile](https://www.citrix.co.in/products/citrix-content-collaboration/support.html), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/sharefile-tutorial/tutorial_sharefile_certificate.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. W sekcji **Skonfiguruj aplikację Citrix ShareFile** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/sharefile-tutorial/tutorial_general_400.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Na **Citrix ShareFile konfiguracji** kliknij **skonfiguruj rozwiązanie Citrix ShareFile** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    a. Adres URL logowania
 
-    ![Usługa Citrix ShareFile konfiguracji](./media/sharefile-tutorial/tutorial_sharefile_configure.png)
+    b. Identyfikator usługi Azure AD
 
-1. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **usługa Citrix ShareFile** witryny firmy jako administrator.
+    d. Adres URL wylogowywania
 
-1. Na pasku narzędzi u góry kliknij **administratora**.
+### <a name="configure-citrix-sharefile-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Citrix ShareFile
 
-1. W okienku nawigacji po lewej stronie wybierz **skonfigurować logowanie jednokrotne**.
+1. W innym oknie przeglądarki internetowej zaloguj się do firmowej witryny usługi **Citrix ShareFile** jako administrator.
+
+2. Na pasku narzędzi u góry kliknij pozycję **Admin** (Administrator).
+
+3. W okienku nawigacji po lewej stronie wybierz pozycję **Configure Single Sign-On** (Skonfiguruj logowanie jednokrotne).
    
-    ![Administracja konta](./media/sharefile-tutorial/ic773627.png "kont administracyjnych")
+    ![Administrowanie kontem](./media/sharefile-tutorial/ic773627.png "Administrowanie kontem")
 
-1. Na **jednokrotne logowanie / plik konfiguracji SAML 2.0** stronie okna dialogowego, w obszarze **podstawowych ustawień**, wykonaj następujące czynności:
+4. Na stronie dialogowej **Single Sign-On / SAML 2.0 Configuration** (Logowanie jednokrotne / Konfiguracja SAML 2.0) w obszarze **Basic Settings** (Ustawienia podstawowe) wykonaj następujące kroki:
    
-    ![Logowanie jednokrotne](./media/sharefile-tutorial/ic773628.png "logowanie jednokrotne")
+    ![Logowanie jednokrotne](./media/sharefile-tutorial/ic773628.png "Logowanie jednokrotne")
    
-    a. Kliknij przycisk **Włącz SAML**.
+    a. Kliknij pozycję **Enable SAML** (Włącz protokół SAML).
     
-    b. W **Your wystawca dostawcy tożsamości / identyfikator jednostki** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
+    b. W polu tekstowym **Your IDP Issuer/ Entity ID** (Wystawca IDP / Identyfikator jednostki) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
 
-    c. Kliknij przycisk **zmiany** obok **certyfikat X.509** pola, a następnie przekaż certyfikat został pobrany z witryny Azure portal.
+    d. Kliknij pozycję **Change** (Zmień) obok pola **X.509 Certificate** (Certyfikat X.509), a następnie przekaż certyfikat pobrany z witryny Azure Portal.
     
-    d. W **adres URL logowania** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowanej w witrynie Azure portal.
+    d. W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
     
-    e. W **adres URL wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal.
+    e. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
-1. Kliknij przycisk **Zapisz** w portalu zarządzania usługa Citrix ShareFile.
+5. Kliknij pozycję **Save** (Zapisz) w portalu zarządzania usługi Citrix ShareFile.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/sharefile-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/sharefile-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/sharefile-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/sharefile-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-citrix-sharefile-test-user"></a>Tworzenie użytkownika testowego usługa Citrix ShareFile
-
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do usługa Citrix ShareFile, musi być obsługiwana na rozwiązanie Citrix ShareFile. W przypadku usługa Citrix ShareFile aprowizacji to zadanie ręczne.
-
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
-
-1. Zaloguj się do Twojej **usługa Citrix ShareFile** dzierżawy.
-
-1. Kliknij przycisk **Zarządzanie użytkownikami \> Zarządzanie główną użytkowników \> + Utwórz pracowników**.
-   
-   ![Tworzenie pracownika](./media/sharefile-tutorial/IC781050.png "Tworzenie pracownika")
-
-1. Na **podstawowe informacje** sekcji, wykonaj następujące czynności:
-   
-   ![Podstawowe informacje](./media/sharefile-tutorial/IC799951.png "podstawowe informacje")
-   
-   a. W **adres E-mail** polu tekstowym wpisz adres e-mail Britta Simon jako **brittasimon@contoso.com**.
-   
-   b. W **imię** polu tekstowym wpisz **imię** użytkownika jako **Britta**.
-   
-   c. W **nazwisko** polu tekstowym wpisz **nazwisko** użytkownika jako **Simon**.
-
-1. Kliknij przycisk **Dodaj użytkownika**.
-  
-   >[!NOTE]
-   >Właściciel konta usługi Azure AD będzie otrzymywać wiadomości e-mail i kliknij link, aby potwierdzić swoje konto, zanim stanie się aktywny. Aprowizuj konta użytkownika usługi Azure AD, można użyć innych narzędzi do tworzenia konta użytkownika usługa Citrix ShareFile lub interfejsów API dostarczonych przez rozwiązanie Citrix ShareFile.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielenie dostępu usługa Citrix ShareFile.
+W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure dla użytkownika Britta Simon, udzielając dostępu do aplikacji Citrix ShareFile.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Citrix ShareFile**.
 
-**Aby przypisać Britta Simon usługa Citrix ShareFile, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wpisz i wybierz ciąg **Citrix ShareFile**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link aplikacji Citrix ShareFile na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **usługa Citrix ShareFile**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Usługa Citrix ShareFile łącze na liście aplikacji](./media/sharefile-tutorial/tutorial_sharefile_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-citrix-sharefile-test-user"></a>Tworzenie użytkownika testowego aplikacji Citrix ShareFile
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Citrix ShareFile, należy ich aprowizować w aplikacji Citrix ShareFile. W przypadku aplikacji Citrix ShareFile aprowizację wykonuje się ręcznie.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-Po kliknięciu kafelka usługa Citrix ShareFile w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji usługa Citrix ShareFile.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+1. Zaloguj się do dzierżawy usługi **Citrix ShareFile**.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+2. Kliknij pozycję **Manage Users \> Manage Users Home \> + Create Employee** (Zarządzaj użytkownikami > Zarządzaj użytkownikami — strona główna > + Utwórz pracownika).
+   
+    ![Tworzenie pracownika](./media/sharefile-tutorial/IC781050.png "Tworzenie pracownika")
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+3. W sekcji **Basic Information** (Informacje podstawowe) wykonaj następujące kroki:
+   
+    ![Informacje podstawowe](./media/sharefile-tutorial/IC799951.png "Informacje podstawowe")
+   
+    a. W polu tekstowym **Email Address** (Adres e-mail) wpisz adres e-mail użytkownika Britta Simon jako **brittasimon@contoso.com**.
+   
+    b. W polu tekstowym **First Name** (Imię) wpisz **imię** użytkownika jako **Britta**.
+   
+    d. W polu tekstowym **Last Name** (Nazwisko) wpisz **nazwisko** użytkownika jako **Simon**.
 
-<!--Image references-->
+4. Kliknij pozycję **Add User** (Dodaj użytkownika).
+  
+    >[!NOTE]
+    >Właściciel konta usługi Azure AD otrzyma wiadomość e-mail i użyje linku, aby potwierdzić swoje konto, zanim stanie się ono aktywne. Aby aprowizować konta użytkowników usługi Azure AD, możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników udostępnianych przez usługę Citrix ShareFile.
 
-[1]: ./media/sharefile-tutorial/tutorial_general_01.png
-[2]: ./media/sharefile-tutorial/tutorial_general_02.png
-[3]: ./media/sharefile-tutorial/tutorial_general_03.png
-[4]: ./media/sharefile-tutorial/tutorial_general_04.png
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-[100]: ./media/sharefile-tutorial/tutorial_general_100.png
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-[200]: ./media/sharefile-tutorial/tutorial_general_200.png
-[201]: ./media/sharefile-tutorial/tutorial_general_201.png
-[202]: ./media/sharefile-tutorial/tutorial_general_202.png
-[203]: ./media/sharefile-tutorial/tutorial_general_203.png
+Po kliknięciu kafelka Citrix ShareFile w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Citrix ShareFile, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+
+## <a name="additional-resources"></a>Dodatkowe zasoby
+
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark | Microsoft Docs
-description: Dowiedz się, jak uruchamiać zapytania platformy Spark w klastrze usługi Azure Databricks w celu uzyskania dostępu do danych na koncie magazynu usługi Azure Data Lake Storage Gen2.
+title: 'Samouczek: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark | Microsoft Docs'
+description: Z tego samouczka dowiesz się, jak uruchamiać zapytania platformy Spark w klastrze usługi Azure Databricks w celu uzyskania dostępu do danych na koncie magazynu usługi Azure Data Lake Storage Gen2.
 services: storage
 author: dineshmurthy
 ms.component: data-lake-storage-gen2
@@ -8,56 +8,62 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: dineshm
-ms.openlocfilehash: 88a05eb8fa59740012ca6c7a8d8508d565854dc7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974161"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548990"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Samouczek: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark
+# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Samouczek: uzyskiwanie dostępu do danych usługi Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark
 
-Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi Azure Databricks zapytania platformy Apache Spark dotyczące danych na koncie magazynu platformy Azure z włączoną usługą Azure Data Lake Storage Gen2 w wersji zapoznawczej.
+W tym samouczku pokazano, jak połączyć klaster usługi Azure Databricks z danymi przechowywanymi na koncie magazynu platformy Azure z włączoną usługą Azure Data Lake Storage Gen2 w wersji zapoznawczej. Takie połączenie umożliwia natywne wykonywanie w klastrze zapytań i analiz dotyczących tych danych.
+
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie klastra usługi Databricks
 > * Pozyskiwanie danych bez struktury na koncie magazynu
 > * Uruchamianie analiz dotyczących danych w magazynie obiektów blob
 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku przedstawiono sposób używania danych dotyczących lotów udostępnianych przez [Departament Transportu Stanów Zjednoczonych](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) i wykonywania na nich zapytań. Pobierz dane dotyczące linii lotniczych obejmujące co najmniej dwa lata (zaznaczając wszystkie pola) i zapisz wyniki na swoim komputerze. Pamiętaj o zanotowaniu nazwy i ścieżki pobranego pliku. Te informacje będą potrzebne później.
+W tym samouczku przedstawiono sposób używania danych dotyczących lotów udostępnianych przez [Departament Transportu Stanów Zjednoczonych](https://transtats.bts.gov/DL_SelectFields.asp) i wykonywania na nich zapytań. 
 
-> [!NOTE]
-> Kliknij pole wyboru **Prezipped file** (Wstępnie spakowany plik), aby zaznaczyć wszystkie pola danych. Pobrane dane będą miały rozmiar wielu gigabajtów, ale taka ilość danych jest potrzebna do analizy.
+1. Zaznacz pole wyboru **Prezipped file** (Wstępnie spakowany plik), aby wybrać wszystkie pola danych.
+2. Wybierz pozycję **Download** (Pobierz) i zapisz wyniki na swojej maszynie.
+3. Zanotuj nazwę i ścieżkę pobranego pliku. Te informacje będą potrzebne później.
 
-## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Tworzenie konta magazynu platformy Azure z możliwościami analitycznymi
+Do pracy z tym samouczkiem potrzebujesz konta magazynu z funkcjami analizy. Aby utworzyć to konto, zalecamy ukończenie [przewodnika szybki start](data-lake-storage-quickstart-create-account.md) dotyczącego tego tematu. Po utworzeniu konta magazynu przejdź do niego i pobierz ustawienia konfiguracji.
 
-Aby rozpocząć, utwórz nowe [konto magazynu z możliwościami analitycznymi](data-lake-storage-quickstart-create-account.md) i nadaj mu unikatową nazwę. Następnie przejdź do tego konta magazynu i pobierz ustawienia konfiguracji.
-
-1. W obszarze **Ustawienia** kliknij pozycję **Klucze dostępu**.
-2. Kliknij przycisk **Kopiuj** obok pozycji **klucz1**, aby skopiować wartość klucza.
+1. W obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**.
+2. Wybierz przycisk **Kopiuj** obok pozycji **klucz1**, aby skopiować wartość klucza.
 
 Nazwa konta i klucz są wymagane do wykonania kolejnych kroków w tym samouczku. Otwórz edytor tekstu i zapisz nazwę konta oraz klucz do późniejszego użycia.
 
 ## <a name="create-a-databricks-cluster"></a>Tworzenie klastra usługi Databricks
 
-Następnym krokiem jest utworzenie [klastra usługi Databricks](https://docs.azuredatabricks.net/) jako obszaru roboczego danych.
+Następnym krokiem jest utworzenie klastra usługi Databricks jako obszaru roboczego danych.
 
-1. Utwórz wystąpienie [usługi Databricks](https://ms.portal.azure.com/#create/Microsoft.Databricks) i nadaj mu nazwę **myFlightDataService** (pamiętaj o zaznaczeniu pola wyboru *Przypnij do pulpitu nawigacyjnego* podczas tworzenia usługi).
-2. Kliknij pozycję **Uruchom obszar roboczy**, aby otworzyć obszar roboczy w nowym oknie przeglądarki.
-3. Kliknij pozycję **Klastry** na pasku nawigacji po lewej stronie.
-4. Kliknij pozycję **Utwórz klaster**.
-5. Wpisz **myFlightDataCluster** w polu *Nazwa klastra*.
-6. Wybierz pozycję **Standardowa_D8s_v3** w polu *Typ procesu roboczego*.
-7. Zmień wartość **Minimalna liczba procesów roboczych** na *4*.
-8. Kliknij przycisk **Utwórz klaster** w górnej części strony (ukończenie tego procesu może potrwać do 5 minut).
-9. Po zakończeniu procesu wybierz pozycję **Azure Databricks** w lewym górnym rogu paska nawigacji.
-10. Wybierz pozycję **Notes** w sekcji **Nowy** w dolnej części strony.
-11. Wprowadź wybraną nazwę w polu **Nazwa**, a następnie wybierz język **Python**.
-12. Możesz pozostawić wartości domyślne we wszystkich pozostałych polach.
-13. Wybierz pozycję **Utwórz**.
-14. Wklej następujący kod do komórki **Cmd 1**. Pamiętaj, aby w przykładowym kodzie zastąpić symbole zastępcze widoczne w nawiasach własnymi wartościami:
+1. W witrynie [Azure Portal](https://portal.azure.com) wybierz polecenie **Utwórz zasób**.
+2. Wprowadź ciąg **Azure Databricks** w polu wyszukiwania.
+3. Wybierz pozycję **Utwórz** w bloku usługi Azure Databricks.
+4. Nadaj wystąpieniu usługi Databricks nazwę **myFlightDataService** (pamiętaj o zaznaczeniu pola wyboru *Przypnij do pulpitu nawigacyjnego* podczas tworzenia usługi).
+5. Wybierz pozycję **Uruchom obszar roboczy**, aby otworzyć obszar roboczy w nowym oknie przeglądarki.
+6. Wybierz pozycję **Klastry** na pasku nawigacyjnym po lewej stronie.
+7. Wybierz pozycję **Utwórz klaster**.
+8. Wpisz **myFlightDataCluster** w polu **Nazwa klastra**.
+9. Wybierz pozycję **Standardowa_D8s_v3** w polu **Typ procesu roboczego**.
+10. Zmień wartość **Minimalna liczba procesów roboczych** na **4**.
+11. Wybierz pozycję **Utwórz klaster** w górnej części strony. Ukończenie tego procesu może zająć do 5 minut.
+12. Po zakończeniu procesu wybierz pozycję **Azure Databricks** w lewym górnym rogu paska nawigacji.
+13. Wybierz pozycję **Notes** w sekcji **Nowy** w dolnej części strony.
+14. Wprowadź wybraną nazwę w polu **Nazwa**, a następnie wybierz język **Python**.
+15. Możesz pozostawić wartości domyślne we wszystkich pozostałych polach.
+16. Wybierz pozycję **Utwórz**.
+17. Wklej następujący kod do komórki **Cmd 1**. W przykładowym kodzie zastąp symbole zastępcze widoczne w nawiasach własnymi wartościami:
 
     ```scala
     %python%
@@ -72,13 +78,13 @@ Następnym krokiem jest utworzenie [klastra usługi Databricks](https://docs.azu
         mount_point = "/mnt/flightdata",
         extra_configs = configs)
     ```
-15. Naciśnij klawisze **SHIFT + ENTER**, aby uruchomić komórkę kodu.
+18. Naciśnij klawisze **SHIFT + ENTER**, aby uruchomić komórkę kodu.
 
 ## <a name="ingest-data"></a>Pozyskiwanie danych
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
 
-Następnym zadaniem jest skopiowanie danych z pliku *csv* do usługi Azure Storage za pomocą narzędzia AzCopy. Otwórz okno wiersza polecenia i wpisz następujące polecenia. Pamiętaj o zastąpieniu symboli zastępczych `<DOWNLOAD_FILE_PATH>`, , i `<ACCOUNT_KEY>` odpowiednimi wartościami zapisanymi w poprzednim kroku.
+Następnym zadaniem jest skopiowanie danych z pliku *csv* do usługi Azure Storage za pomocą narzędzia AzCopy. Otwórz okno wiersza polecenia i wpisz następujące polecenia. Pamiętaj o zastąpieniu symboli zastępczych `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>` i `<ACCOUNT_KEY>` odpowiednimi wartościami zapisanymi w poprzednim kroku.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -95,7 +101,7 @@ W przeglądarce otwórz ponownie usługę Databricks i wykonaj następujące kro
 3. Wpisz **CSV2Parquet** w polu **Nazwa**.
 4. Możesz pozostawić wartości domyślne we wszystkich pozostałych polach.
 5. Wybierz pozycję **Utwórz**.
-6. Wklej następujący kod w komórce **Cmd 1** (ten kod jest zapisywany automatycznie w edytorze).
+6. Wklej następujący kod do komórki **Cmd 1**. Ten kod jest automatycznie zapisywany w edytorze.
 
     ```python
     # Use the previously established DBFS mount point to read the data
@@ -106,11 +112,11 @@ W przeglądarce otwórz ponownie usługę Databricks i wykonaj następujące kro
     print("Done")
     ```
 
-## <a name="explore-data-using-hadoop-distributed-file-system"></a>Eksplorowanie danych przy użyciu rozproszonego systemu plików usługi Hadoop
+## <a name="explore-data"></a>Eksplorowanie danych
 
-Wróć do obszaru roboczego usługi Databricks i kliknij ikonę **Ostatnie** na pasku nawigacji po lewej stronie.
+Wróć do obszaru roboczego usługi Databricks i wybierz ikonę **Ostatnie** na pasku nawigacji po lewej stronie.
 
-1. Kliknij notes **Flight Data Analytics**.
+1. Wybierz notes **Flight Data Analytics**.
 2. Naciśnij klawisze **Ctrl + Alt + N**, aby utworzyć nową komórkę.
 
 Wprowadź każdy z poniższych bloków kodu w komórce **Cmd 1** i naciśnij klawisze **Cmd + Enter**, aby uruchomić skrypt języka Python.
@@ -137,7 +143,7 @@ Przy użyciu tego przykładowego kodu możesz eksplorować hierarchię systemu p
 
 Następnie możesz rozpocząć wykonywanie zapytań dotyczących danych przekazanych na swoje konto magazynu. Wprowadź każdy z poniższych bloków kodu w komórce **Cmd 1** i naciśnij klawisze **Cmd + Enter**, aby uruchomić skrypt języka Python.
 
-### <a name="simple-queries"></a>Proste zapytania
+### <a name="run-simple-queries"></a>Uruchamianie prostych zapytań
 
 Aby utworzyć ramki danych dla źródeł danych, uruchom następujący skrypt:
 
@@ -198,7 +204,8 @@ print('Airports in Texas: ', out.show(100))
 out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
-### <a name="complex-queries"></a>Złożone zapytania
+
+### <a name="run-complex-queries"></a>Uruchamianie złożonych zapytań
 
 Aby wykonać następujące, bardziej złożone zapytania, uruchom kolejno poszczególne segmenty w notesie i sprawdź wyniki.
 
@@ -241,6 +248,12 @@ output.show(10, False)
 display(output)
 ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy grupa zasobów i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu zaznacz grupę zasobów konta magazynu i wybierz pozycję **Usuń**.
+
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+[!div class="nextstepaction"] 
+> [Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+

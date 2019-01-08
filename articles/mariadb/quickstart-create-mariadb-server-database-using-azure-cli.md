@@ -1,21 +1,19 @@
 ---
-title: 'Szybki start: tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure'
+title: 'Szybki start: Tworzenie serwera usługi Azure Database for MariaDB — interfejs wiersza polecenia platformy Azure'
 description: W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MariaDB w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566452"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538751"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -52,14 +50,14 @@ Ustawienie | Wartość przykładowa | Opis
 name | **mydemoserver** | Wprowadź unikatową nazwę, która identyfikuje Twój serwer usługi Azure Database for MariaDB. Nazwa serwera może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
 resource-group | **myresourcegroup** | Wprowadź nazwę grupy zasobów platformy Azure.
 sku-name | **GP_Gen5_2** | Nazwa jednostki SKU. Zgodnie z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne* w skrócie. Aby uzyskać więcej informacji na temat parametru **sku-name**, zobacz sekcję poniżej tabeli.
-backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: 7–35. 
-geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)** i **Disabled (Wyłączone)**.
+backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: od 7 do 35. 
+geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)**, **Disabled (Wyłączone)**.
 location | **westus** | Lokalizacja platformy Azure dla serwera.
-ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)** i **Disabled (Wyłączone)**.
+ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)**, **Disabled (Wyłączone)**.
 storage-size | **51200** | Pojemność magazynu serwera (w megabajtach). Prawidłowy rozmiar magazynu to 5120 MB (minimum) rosnący z przyrostem 1024 MB. Aby uzyskać więcej informacji na temat limitów rozmiaru magazynu, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md). 
 version | **10.2** | Wersja główna aparatu MariaDB.
 admin-user | **myadmin** | Nazwa użytkownika w przypadku logowania administratora. Parametr **admin-user** nie może mieć wartości **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi ono zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry i znaki inne niż alfanumeryczne.
+admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi zawierać znaki z trzech z następujących kategorii: wielkie litery alfabetu angielskiego, małe litery alfabetu angielskiego, cyfry i znaki inne niż alfanumeryczne.
 
 Wartość parametru **sku-name** jest zgodna z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne*, co zostało pokazane w poniższych przykładach:
 + `--sku-name B_Gen5_4` mapuje do warstwy cenowej Podstawowa, generacji obliczeniowej Gen 5 i 4 rdzeni wirtualnych.

@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący używania usługi Azure Key Vault z poziomu aplikacji internetowej | Microsoft Docs
+title: Samouczek dotyczący używania usługi Azure Key Vault z poziomu aplikacji internetowej — Azure Key Vault | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak używać usługi Azure Key Vault z poziomu aplikacji internetowej.
 services: key-vault
 author: barclayn
@@ -9,16 +9,16 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 79bccbcbcf78de18504c5cb0235e29930d90ede8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079467"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999309"
 ---
-# <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Samouczek: używanie usługi Azure Key Vault z poziomu aplikacji internetowej
+# <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Samouczek: Używanie usługi Azure Key Vault z poziomu aplikacji internetowej
 
 Z tego samouczka dowiesz się, jak używać usługi Azure Key Vault z poziomu aplikacji internetowej na platformie Azure. Przedstawia on proces uzyskiwania dostępu do wpisu tajnego w usłudze Azure Key Vault w celu użycia w aplikacji internetowej. Następnie na podstawie tego procesu samouczek przedstawia sposób użycia certyfikatu zamiast klucza tajnego klienta. Ten samouczek jest przeznaczony dla deweloperów aplikacji internetowych, którzy mają podstawową wiedzę na temat tworzenia aplikacji internetowych na platformie Azure.
 
@@ -40,9 +40,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * Identyfikator klienta i klucz tajny klienta dla aplikacji internetowej zarejestrowanej w usłudze Azure Active Directory, która ma dostęp do usługi Key Vault.
 * Aplikacja internetowa. Ten samouczek zawiera instrukcje dotyczące aplikacji ASP.NET MVC wdrożonej na platformie Azure jako aplikacja internetowa.
 
-Wykonaj czynności opisane w artykule [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md), aby uzyskać identyfikator URI wpisu tajnego, identyfikator klienta i klucz tajny klienta oraz zarejestrować aplikację. Aplikacja internetowa będzie uzyskiwać dostęp do magazynu i musi być zarejestrowana w usłudze Azure Active Directory. Musi również mieć uprawnienia dostępu do usługi Key Vault. Jeśli tak nie jest, wróć do kroku „Rejestrowanie aplikacji” w samouczku „Rozpoczynanie pracy” i powtórz wymienione tam czynności. Aby uzyskać więcej informacji o tworzeniu aplikacji internetowych platformy Azure, zobacz [Przegląd usługi Web Apps](../app-service/app-service-web-overview.md).
+Wykonaj czynności opisane w artykule [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md), aby uzyskać identyfikator URI wpisu tajnego, identyfikator klienta i klucz tajny klienta oraz zarejestrować aplikację. Aplikacja internetowa będzie uzyskiwać dostęp do magazynu i musi być zarejestrowana w usłudze Azure Active Directory. Musi również mieć uprawnienia dostępu do usługi Key Vault. Jeśli tak nie jest, wróć do kroku „Rejestrowanie aplikacji” w samouczku „Rozpoczynanie pracy” i powtórz wymienione tam czynności. Aby uzyskać więcej informacji o tworzeniu aplikacji internetowych platformy Azure, zobacz [Przegląd usługi Web Apps](../app-service/overview.md).
 
-Ten przykład wymaga ręcznego aprowizowania tożsamości usługi Azure Active Directory. Najlepiej jednak zamiast tego korzystać z [tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md), co umożliwia automatyczne aprowizowanie tożsamości usługi Azure AD. Aby dowiedzieć się więcej, zobacz przykład w witrynie [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) oraz powiązany [samouczek dotyczący usług App Service i Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Możesz także zapoznać się z dotyczącym usługi Key Vault artykułem [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault — samouczek](tutorial-web-application-keyvault.md).
+Ten przykład wymaga ręcznego aprowizowania tożsamości usługi Azure Active Directory. Najlepiej jednak zamiast tego korzystać z [tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md), co umożliwia automatyczne aprowizowanie tożsamości usługi Azure AD. Aby dowiedzieć się więcej, zobacz przykład w witrynie [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) oraz powiązany [samouczek dotyczący usług App Service i Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity). Możesz także zapoznać się z dotyczącym usługi Key Vault artykułem [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault — samouczek](tutorial-web-application-keyvault.md).
 
 ## <a id="packages"></a>Dodawanie pakietów NuGet
 
@@ -71,8 +71,6 @@ Do pliku web.config należy dodać trzy następujące ustawienia aplikacji. Dla 
     <add key="SecretUri" value="secreturi" />
     <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
-
-
 
 ## <a id="gettoken"></a>Dodawanie metody w celu pobrania tokenu dostępu
 
@@ -188,11 +186,11 @@ Po uruchomieniu tych poleceń można wyświetlić aplikację w usłudze Azure AD
 
 Teraz dodamy do aplikacji internetowej kod w celu uzyskania dostępu do certyfikatu i użycia go do uwierzytelniania. 
 
-Pierwszy fragment kodu umożliwia uzyskanie dostępu do certyfikatu. Zwróć uwagę, że parametr StoreLocation ma wartość CurrentUser, a nie LocalMachine. Ponadto w metodzie Find wprowadzamy wartość „false”, ponieważ używamy certyfikatu testowego.
+Pierwszy fragment kodu umożliwia uzyskanie dostępu do certyfikatu. Parametr StoreLocation ma wartość CurrentUser, a nie LocalMachine. Ponadto w metodzie Find wprowadzamy wartość „false”, ponieważ używamy certyfikatu testowego.
 
 ```cs
 //Add this using statement
-using System.Security.Cryptography.X509Certificates;  
+using System.Security.Cryptography.X509Certificates;  
 
 public static class CertificateHelper
 {

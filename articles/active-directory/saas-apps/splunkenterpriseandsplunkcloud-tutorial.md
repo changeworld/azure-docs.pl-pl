@@ -1,228 +1,192 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z platformy Splunk Enterprise i w chmurze Splunk | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i platformy Splunk Enterprise i Splunk chmury.
+title: 'Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Splunk Enterprise and Splunk Cloud | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i rozwiązaniem Splunk Enterprise and Splunk Cloud.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b3e2b4a9-749c-4895-813d-db46f8dfdbf8
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/02/2017
+ms.topic: tutorial
+ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: b1eb8f198b0d9e25a6514e19794c9b1d54a4cd3e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 15596c79859b4af08f3b1992a6aa072f5f86b48f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436087"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974934"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z platformy Splunk Enterprise i w chmurze Splunk
+# <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Splunk Enterprise and Splunk Cloud
 
-W tym samouczku dowiesz się, jak zintegrować platformę Splunk Enterprise i Splunk chmury za pomocą usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować rozwiązanie Splunk Enterprise and Splunk Cloud z usługą Azure Active Directory (Azure AD).
+Integracja rozwiązania Splunk Enterprise and Splunk Cloud z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie platformy Splunk Enterprise i Splunk chmury z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do rozwiązania Splunk Enterprise and Splunk Cloud.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do rozwiązania Splunk Enterprise and Splunk Cloud (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do platformy Splunk Enterprise i w chmurze Splunk
-- Użytkowników, aby automatycznie uzyskać zalogowane platformy Splunk Enterprise i w chmurze Splunk (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu platformy Splunk Enterprise i w chmurze Splunk, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z rozwiązaniem Splunk Enterprise and Splunk Cloud, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Platformy Splunk Enterprise i w chmurze Splunk logowania jednokrotnego włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja rozwiązania Splunk Enterprise and Splunk Cloud z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodanie platformy Splunk Enterprise i Splunk chmury z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Dodanie platformy Splunk Enterprise i Splunk chmury z galerii
-Aby skonfigurować integrację z platformy Splunk Enterprise i Splunk chmury w usłudze Azure AD, należy dodać platformy Splunk Enterprise i Splunk chmury z galerii z listą zarządzanych aplikacji SaaS.
+* Rozwiązanie Splunk Enterprise and Splunk Cloud obsługuje logowanie jednokrotne inicjowane przez **SP**
 
-**Aby dodać platformy Splunk Enterprise i Splunk chmury z galerii, wykonaj następujące czynności:**
+## <a name="adding-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Dodawanie rozwiązania Splunk Enterprise and Splunk Cloud z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację rozwiązania Splunk Enterprise and Splunk Cloud z usługą Azure AD, należy dodać rozwiązanie Splunk Enterprise and Splunk Cloud z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać rozwiązanie Splunk Enterprise and Splunk Cloud z galerii, wykonaj następujące czynności:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **platformy Splunk Enterprise i w chmurze Splunk**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_search.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **platformy Splunk Enterprise i w chmurze Splunk**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_addfromgallery.png)
+4. W polu wyszukiwania wpisz **Splunk Enterprise and Splunk Cloud**, wybierz pozycję **Splunk Enterprise and Splunk Cloud** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne z platformy Splunk Enterprise i Splunk w chmurze na koncie użytkownika testu o nazwie "Britta Simon."
+     ![Rozwiązanie Splunk Enterprise and Splunk Cloud na liście wyników](common/search-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika platformy Splunk Enterprise i Splunk chmura jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika platformy Splunk Enterprise i Splunk chmury musi nawiązać.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Platformy Splunk Enterprise i w chmurze Splunk przypisywanie wartości **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z rozwiązaniem Splunk Enterprise and Splunk Cloud, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem rozwiązania Splunk Enterprise and Splunk Cloud.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu platformy Splunk Enterprise i w chmurze Splunk, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z rozwiązaniem Splunk Enterprise and Splunk Cloud, należy ukończyć poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego platformy Splunk Enterprise i w chmurze Splunk](#creating-a-splunk-enterprise-and-splunk-cloud-test-user)**  — aby mają odpowiednika Britta Simon w platformy Splunk Enterprise i chmury Splunk, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego rozwiązania Splunk Enterprise and Splunk Cloud](#configure-splunk-enterprise-and-splunk-cloud-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego rozwiązania Splunk Enterprise and Splunk Cloud](#create-splunk-enterprise-and-splunk-cloud-test-user)** — aby udostępnić w rozwiązaniu Splunk Enterprise and Splunk Cloud odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji platformy Splunk Enterprise i Splunk chmury.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z platformy Splunk Enterprise i w chmurze Splunk, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Splunk Enterprise and Splunk Cloud, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **platformy Splunk Enterprise i w chmurze Splunk** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Splunk Enterprise and Splunk Cloud** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **platformy Splunk Enterprise i Splunk chmury domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<splunkserverUrl>/en-US/app/launcher/home`
-    
-    b. W **identyfikator** pole tekstowe, wpisz adres URL serwera Splunk.
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<splunkserver>/saml/acs`
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. W tym miejscu zalecamy przy użyciu unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [zespołu pomocy technicznej platformy Splunk Enterprise i Splunk Cloud Client](https://www.splunk.com/content/splunkcom/en_us/about-us/contact.html#tabs/customer-support) do uzyskania tych wartości. 
+    ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania Splunk Enterprise and Splunk Cloud](common/sp-identifier-reply.png)
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<splunkserverUrl>/en-US/app/launcher/home`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_certificate.png) 
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `<splunkserverUrl>`
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<splunkserver>/saml/acs`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z [zespołem obsługi klienta rozwiązania Splunk Enterprise and Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Aby skonfigurować logowanie jednokrotne na **platformy Splunk Enterprise i w chmurze Splunk** stronie, musisz wysłać pobrany **XML metadanych** do [zespołupomocytechnicznejplatformySplunkEnterpriseiwchmurzeSplunk](https://www.splunk.com/content/splunkcom/en_us/about-us/contact.html#tabs/customer-support).
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>Konfigurowanie logowania jednokrotnego rozwiązania Splunk Enterprise and Splunk Cloud
 
-![Utwórz użytkownika usługi Azure AD][100]
+Aby skonfigurować logowanie jednokrotne po stronie rozwiązania **Splunk Enterprise and Splunk Cloud**, należy wysłać pobrany **plik XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal do [zespołu pomocy technicznej rozwiązania Splunk Enterprise and Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/splunkenterpriseandsplunkcloud-tutorial/create_aaduser_01.png) 
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/splunkenterpriseandsplunkcloud-tutorial/create_aaduser_02.png) 
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/splunkenterpriseandsplunkcloud-tutorial/create_aaduser_03.png) 
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/splunkenterpriseandsplunkcloud-tutorial/create_aaduser_04.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
+
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-splunk-enterprise-and-splunk-cloud-test-user"></a>Tworzenie użytkownika testowego platformy Splunk Enterprise i w chmurze Splunk
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w platformy Splunk Enterprise, jak i Splunk chmury. Praca z [zespołu pomocy technicznej platformy Splunk Enterprise i w chmurze Splunk](https://www.splunk.com/content/splunkcom/en_us/about-us/contact.html#tabs/customer-support) Aby dodać użytkowników do platformy Splunk Enterprise i Splunk chmury.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do rozwiązania Splunk Enterprise and Splunk Cloud.
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do platformy Splunk Enterprise i Splunk chmury.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Splunk Enterprise and Splunk Cloud**.
 
-![Przypisz użytkownika][200] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-**Aby przypisać Britta Simon do platformy Splunk Enterprise, jak i chmury Splunk, wykonaj następujące czynności:**
+2. Na liście aplikacji wpisz i wybierz pozycję **Splunk Enterprise and Splunk Cloud**.
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+    ![Link rozwiązania Splunk Enterprise and Splunk Cloud na liście aplikacji](common/all-applications.png)
 
-    ![Przypisz użytkownika][201] 
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-1. Na liście aplikacji wybierz **platformy Splunk Enterprise i w chmurze Splunk**.
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_app.png) 
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-    ![Przypisz użytkownika][202] 
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Tworzenie użytkownika testowego rozwiązania Splunk Enterprise and Splunk Cloud
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w rozwiązaniu Splunk Enterprise and Splunk Cloud. Aby dodać użytkowników do platformy Splunk Enterprise and Splunk Cloud, współpracuj z  [zespołem pomocy technicznej rozwiązania Splunk Enterprise and Splunk Cloud](https://www.splunk.com/about-us/contact.html#tabs/customer-support). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania usługi Azure AD SSOonfiguration, za pomocą panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu platformy Splunk Enterprise, a chmura Splunk kafelka w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji platformy Splunk Enterprise i Splunk chmury.
+Po kliknięciu kafelka Splunk Enterprise and Splunk Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Splunk Enterprise and Splunk Cloud, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_01.png
-[2]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_02.png
-[3]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_03.png
-[4]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_04.png
-
-[100]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_100.png
-
-[200]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_200.png
-[201]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_201.png
-[202]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_202.png
-[203]: ./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

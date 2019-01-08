@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6086c3d3bc025feaf9da2d4c26d7f008b304b57
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867039"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788127"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu platformy React i usługi Azure Cosmos DB  
 
-W tym wieloczęściowym samouczku wideo przedstawiono sposób tworzenia głównej aplikacji do śledzenia przy użyciu zaplecza platformy React. Aplikacja używająca języka Node i usługi Express dla serwera łączy się z usługą Azure Cosmos DB przy użyciu [interfejsu API usługi MongoDB](mongodb-introduction.md), a następnie łączy zaplecze platformy React z częścią serwera w aplikacji. W samouczku przedstawiono również sposób skalowania typu „wskaż i kliknij” bazy usługi Azure Cosmos DB w witrynie Azure Portal oraz sposób wdrażania aplikacji w Internecie, tak aby wszyscy użytkownicy mogli śledzić swoje ulubione aplikacje główne. 
+W tym wieloczęściowym samouczku wideo przedstawiono sposób tworzenia głównej aplikacji do śledzenia przy użyciu zaplecza platformy React. Aplikacja używająca języka Node i usługi Express dla serwera łączy się z bazą danych Cosmos skonfigurowaną za pomocą [interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](mongodb-introduction.md), a następnie łączy fronton platformy React z częścią serwera w aplikacji. W samouczku przedstawiono również sposób skalowania typu „wskaż i kliknij” bazy usługi Cosmos DB w witrynie Azure Portal oraz sposób wdrażania aplikacji w Internecie, tak aby wszyscy użytkownicy mogli śledzić swoje ulubione aplikacje główne. 
 
-Usługa [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) obsługuje połączenia klienta bazy danych MongoDB, dlatego można używać usługi zamiast bazy danych MongoDB, ale stosując ten sam kod już używany w dla aplikacji bazy danych MongoDB. Zyskuje się w ten sposób dodatkowe korzyści, takie jak proste wdrażanie w chmurze, skalowanie i niezwykle szybkie operacje odczytu i zapisu.  
+Usługa [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) obsługuje zgodność protokołu przewodowego z bazą danych MongoDB, umożliwiając klientom używanie usługi Azure Cosmos DB zamiast bazy danych MongoDB.  
 
 W tym wieloczęściowym samouczku opisano następujące zadania:
 

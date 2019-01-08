@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do akceleratorów rozwiązań Azure IoT | Microsoft Docs
+title: Wprowadzenie do akceleratorów rozwiązań IoT — Azure | Microsoft Docs
 description: Informacje na temat akceleratorów rozwiązań Azure IoT. Akceleratory rozwiązań IoT to kompletne, kompleksowe oraz gotowe do wdrożenia rozwiązania IoT.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 79c8f0f1c987de6320770416641300f3b8bb7c1d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824544"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607206"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
 
@@ -34,7 +34,7 @@ Obecnie dostępne do wdrożenia są cztery akceleratory rozwiązań:
 
 ### <a name="remote-monitoring"></a>Zdalne monitorowanie
 
-Ten akcelerator rozwiązania umożliwia zbieranie danych telemetrycznych z urządzeń zdalnych i sterowanie nimi. Przykładowe urządzenia to systemy chłodzenia zamontowane w placówce klienta lub zawory w odległych przepompowniach.
+[Akcelerator rozwiązań Zdalne monitorowanie](iot-accelerators-remote-monitoring-sample-walkthrough.md) umożliwia zbieranie danych telemetrycznych z urządzeń zdalnych i sterowanie nimi. Przykładowe urządzenia to systemy chłodzenia zamontowane w placówce klienta lub zawory w odległych przepompowniach.
 
 Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane telemetryczne z połączonych urządzeń, aprowizować nowe urządzenia lub uaktualniać oprogramowanie układowe połączonych urządzeń:
 
@@ -42,7 +42,7 @@ Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane
 
 ### <a name="connected-factory"></a>Połączona fabryka
 
-Ten akcelerator rozwiązania umożliwia zbieranie danych telemetrycznych z zasobów przemysłowych korzystających z interfejsu [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) oraz sterowanie nimi. Zasoby przemysłowe mogą obejmować stanowiska montażu i testowania na fabrycznej linii produkcyjnej.
+[Akcelerator rozwiązań Połączona fabryka](iot-accelerators-connected-factory-sample-walkthrough.md) umożliwia zbieranie danych telemetrycznych z zasobów przemysłowych korzystających z interfejsu [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) oraz sterowanie nimi. Zasoby przemysłowe mogą obejmować stanowiska montażu i testowania na fabrycznej linii produkcyjnej.
 
 Pulpit nawigacyjny połączonej fabryki umożliwia monitorowanie urządzeń przemysłowych i zarządzanie nimi:
 
@@ -50,7 +50,7 @@ Pulpit nawigacyjny połączonej fabryki umożliwia monitorowanie urządzeń prze
 
 ### <a name="predictive-maintenance"></a>Konserwacja predykcyjna
 
-Ten akcelerator rozwiązań umożliwia przewidywanie, kiedy urządzenie zdalne ulegnie awarii, dzięki czemu można przeprowadzić konserwację przed awarią tego urządzenia. Akcelerator rozwiązania używa algorytmów uczenia maszynowego do przewidywania awarii na podstawie danych telemetrycznych z urządzenia. Przykładowe urządzenia to silniki lotnicze lub windy.
+[Akcelerator rozwiązań Konserwacja predykcyjna](iot-accelerators-predictive-walkthrough.md) umożliwia przewidywanie, kiedy urządzenie zdalne ulegnie awarii, dzięki czemu można przeprowadzić konserwację przed awarią tego urządzenia. Akcelerator rozwiązania używa algorytmów uczenia maszynowego do przewidywania awarii na podstawie danych telemetrycznych z urządzenia. Przykładowe urządzenia to silniki lotnicze lub windy.
 
 Za pomocą pulpitu nawigacyjnego konserwacji predykcyjnej można wyświetlać analizę konserwacji predykcyjnej:
 
@@ -58,7 +58,7 @@ Za pomocą pulpitu nawigacyjnego konserwacji predykcyjnej można wyświetlać an
 
 ### <a name="device-simulation"></a>Symulacja urządzenia
 
-Ten akcelerator rozwiązania umożliwia uruchamianie symulowanych urządzeń, które generują realistyczne dane telemetryczne. Za pomocą tego akceleratora rozwiązania możesz przetestować zachowanie innych akceleratorów rozwiązań oraz własnych niestandardowych rozwiązań IoT.
+[Akcelerator rozwiązań Symulacja urządzenia](iot-accelerators-device-simulation-overview.md) umożliwia uruchamianie symulowanych urządzeń, które generują realistyczne dane telemetryczne. Za pomocą tego akceleratora rozwiązania możesz przetestować zachowanie innych akceleratorów rozwiązań oraz własnych niestandardowych rozwiązań IoT.
 
 Za pomocą aplikacji internetowej symulacji urządzenia można konfigurować i uruchamiać symulacje:
 
@@ -85,7 +85,7 @@ Pierwotne akceleratory rozwiązań zostały napisane przy użyciu platformy .NET
 | Połączona fabryka      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Symulacja urządzenia      | Mikrousługi | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Aby dowiedzieć się więcej na temat architektury mikrousług, zobacz [Architektura aplikacji .NET](https://www.microsoft.com/net/learn/architecture) i [Mikrousługi: rewolucja w aplikacjach wspierana przez chmurę](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+Aby dowiedzieć się więcej na temat architektury mikrousług, zobacz [Wprowadzenie do architektury referencyjnej usługi Azure IoT](iot-accelerators-architecture-overview.md).
 
 ## <a name="deployment-options"></a>Opcje wdrożenia
 
@@ -93,9 +93,9 @@ Akceleratory rozwiązań można wdrażać z witryny [akceleratorów rozwiązań 
 
 Akcelerator rozwiązania monitorowania zdalnego można wdrażać w następujących konfiguracjach:
 
-* **Standardowa:** rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na kilku maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
-* **Podstawowa:** tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.
-* **Lokalna:** wdrożenie na maszynie lokalnej na potrzeby testowania i opracowywania. W tym podejściu mikrousługi są wdrażane w lokalnym kontenerze Docker, a także nawiązywane jest połączenie z usługą IoT Hub i Azure Cosmos DB oraz usługami Azure Storage w chmurze.
+* **Standardowa:** Rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na kilku maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
+* **Podstawowa:** Tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.
+* **Lokalna:** Wdrożenie na maszynie lokalnej na potrzeby testowania i opracowywania. W tym podejściu mikrousługi są wdrażane w lokalnym kontenerze Docker, a także nawiązywane jest połączenie z usługą IoT Hub i Azure Cosmos DB oraz usługami Azure Storage w chmurze.
 
 Kosztem działania akceleratora rozwiązań jest łączny [koszt działania używanych przez niego podstawowych usług platformy Azure](https://azure.microsoft.com/pricing). Szczegóły używanych usług platformy Azure są widoczne podczas wybierania opcji wdrażania.
 

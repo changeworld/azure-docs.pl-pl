@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: wywoływanie interfejsu API przetwarzania obrazów'
+title: 'Przykład: wywoływanie interfejsu API analizy obrazu — przetwarzanie obrazów'
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak wywołać interfejs API przetwarzania obrazów przy użyciu wzorca REST w usługach Azure Cognitive Services.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981749"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581712"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Przykład: jak wywoływać interfejs API przetwarzania obrazów
 
@@ -26,10 +27,10 @@ W tym przewodniku przedstawiono, jak wywoływać interfejs API przetwarzania obr
 
 ### <a name="Prerequisites">Wymagania wstępne</a> 
 Adres URL obrazu lub ścieżka do obrazu przechowywanego lokalnie.
-  * Obsługiwane metody wejściowe: dane binarne nieprzetworzonego obrazu w postaci pliku typu application/octet stream lub adres URL obrazu
+  * Obsługiwane metody wprowadzania danych: dane binarne nieprzetworzonego obrazu w postaci pliku typu application/octet stream lub adres URL obrazu
   * Obsługiwane formaty obrazów: JPEG, PNG, GIF, BMP
-  * Rozmiar pliku obrazu: mniej niż 4 MB
-  * Wymiar obrazu: większy niż 50 x 50 pikseli
+  * Rozmiar pliku obrazu: mniej niż 4 MB
+  * Wymiary obrazu: więcej niż 50 x 50 pikseli
   
 W poniższych przykładach przedstawiono następujące funkcje:
 
@@ -41,7 +42,7 @@ Funkcje zostały podzielone na:
   * **Opcja pierwsza:** Analiza z zakresami — analizowanie tylko danego modelu
   * **Opcja druga:** Analiza rozszerzona — analizowanie w celu dostarczenia dodatkowych szczegółów w oparciu o [taksonomię obejmującą 86 kategorii](../Category-Taxonomy.md)
   
-### <a name="Step1">Krok 1: Autoryzowanie wywołania interfejsu API</a> 
+### <a name="Step1">Krok 1. Autoryzowanie wywołania interfejsu API</a> 
 Każde wywołanie do interfejsu API przetwarzania obrazów wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania. 
 
 Aby uzyskać klucz subskrypcji, zobacz temat [How to obtain subscription keys](../Vision-API-How-to-Topics/HowToSubscribe.md
@@ -59,7 +60,7 @@ Aby uzyskać klucz subskrypcji, zobacz temat [How to obtain subscription keys](.
 
 ```var visionClient = new VisionServiceClient(“Your subscriptionKey”);```
 
-### <a name="Step2">Krok 2: Przekazywanie obrazu do usługi interfejsu API przetwarzania obrazów i uzyskanie tagów, opisów i osobistości</a>
+### <a name="Step2">Krok 2. Przekazywanie obrazu do usługi interfejsu API przetwarzania obrazów i uzyskanie tagów, opisów oraz osobistości</a>
 Najprostszym sposobem wykonania wywołania interfejsu API przetwarzania obrazów jest bezpośrednie przekazanie obrazu. Odbywa się to przez wysłanie żądania „POST” z typem zawartości application/octet-stream wraz z danymi odczytanymi z obrazu. W przypadku obiektów „Tags” i „Description” ta metoda przekazywania będzie taka sama dla wszystkich wywołań interfejsu API przetwarzania obrazów. Jedyną różnicę będą stanowić parametry zapytania określone przez użytkownika. 
 
 Poniżej przedstawiono, jak uzyskać obiekty „Tags” i „Description” dla danego obrazu:
@@ -119,7 +120,7 @@ W przypadku wywoływania tej metody najpierw wywołamy klasyfikator obejmujący 
 
 Wszystkie parametry zapytania w wersji 1 będą w tym przypadku działać tak samo.  Jeśli parametr visualFeatures=categories nie zostanie podany, zostanie niejawnie włączony.
 
-### <a name="Step3">Krok 3: Pobieranie danych wyjściowych JSON dla analyze&visualFeatures=Tags, Description oraz zapoznanie się z nimi</a>
+### <a name="Step3">Krok 3. Pobieranie danych wyjściowych JSON dla parametru analyze&visualFeatures=Tags, Description oraz zapoznanie się z nimi</a>
 
 Oto przykład:
 ```
@@ -159,7 +160,7 @@ description.tags[] |    ciąg  | Lista tagów.  Jeśli występuje niewystarczaj�
 description.captions[].text | ciąg    | Fraza opisująca obraz.
 description.captions[].confidence   | numer    | Poziom ufności dla frazy.
 
-### <a name="Step4">Krok 4: Pobieranie danych wyjściowych JSON modeli specyficznych dla domeny i zapoznanie się z nimi</a>
+### <a name="Step4">Krok 4. Pobieranie danych wyjściowych JSON modeli specyficznych dla domeny i zapoznanie się z nimi</a>
 
 **Opcja pierwsza:** Analiza z zakresami — analizowanie tylko danego modelu
 
@@ -179,7 +180,7 @@ Dane wyjściowe będą w formie tablicy tagów, jak w tym przykładzie:
   }
 ```
 
-**Opcja druga**: Analiza rozszerzona — analizowanie w celu dostarczenia dodatkowych szczegółów w oparciu o taksonomię obejmującą 86 kategorii
+**Opcja druga:** Analiza rozszerzona — analizowanie w celu dostarczenia dodatkowych szczegółów w oparciu o taksonomię obejmującą 86 kategorii
 
 W przypadku modeli specyficznych dla domeny używających opcji drugiej (analiza rozszerzona) zwracany typ kategorii zostaje rozszerzony. Oto przykład:
 ```

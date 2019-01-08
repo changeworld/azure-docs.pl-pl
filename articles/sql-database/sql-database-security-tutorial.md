@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 12/17/2018
+ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409772"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558638"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych w usłudze Azure SQL Database
 
@@ -136,6 +136,9 @@ Wykonaj aprowizowanie administratora usługi Azure Active Directory dla serwera 
     ![Wybór usługi AD](./media/sql-database-aad-authentication/8choose-ad.png)
 
 2. Na stronie **programu SQL Server** wybierz opcję **Administrator usługi Active Directory**, a następnie na stronie **Administratora usługi Active Directory** wybierz opcję **Ustaw administratora**.  ![wybór usługi Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+   > [!IMPORTANT]
+   > Aby wykonać to zadanie, musisz mieć rolę „Administrator firmy” lub „Administrator globalny”.
 
 3. Na stronie **Dodawanie administratora** wyszukaj użytkownika, wybierz użytkownika lub grupę do pełnienia funkcji administratora, a następnie kliknij opcję **Wybierz**. (Na stronie administratora usługi Active Directory wyświetlono wszystkich członków i grupy danej usługi Active Directory). Nie można wybrać wyszarzonych użytkowników lub grup, ponieważ nie są oni obsługiwani jako administratorzy usługi Azure AD. (Zobacz listę obsługiwanych administratorów w sekcji **Funkcje i ograniczenia usługi Azure AD** artykułu [Korzystanie z uwierzytelniania usługi Azure Active Directory do uwierzytelniania w usłudze SQL Database lub SQL Data Warehouse](sql-database-aad-authentication.md)). Kontrola dostępu oparta na rolach (RBAC) ma zastosowanie tylko do portalu i nie jest stosowana na serwerze SQL.
     ![wybór administratora](./media/sql-database-aad-authentication/select-admin.png)  

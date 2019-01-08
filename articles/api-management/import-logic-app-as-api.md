@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 4b5f884fe6e1f1fdc12d7993418f7a10614a4cbe
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 76a509c1cb9277ac72f99ec9ebfc239bfd71390c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602959"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969186"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Importowanie aplikacji logiki jako interfejsu API
 
@@ -33,8 +33,8 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
-+ Upewnij się, że Twoja subskrypcja obejmuje aplikację logiki. Aby uzyskać więcej informacji, zobacz [Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
+* Upewnij się, że Twoja subskrypcja obejmuje aplikację logiki, która uwidacznia punkt końcowy HTTP. Aby uzyskać więcej informacji, zobacz [Trigger workflows with HTTP endpoints (Wyzwalanie przepływów pracy za pomocą punktów końcowych HTTP)](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -44,7 +44,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 2. Wybierz pozycję **Aplikacja logiki** z listy **Dodaj nowy interfejs API**.
 
     ![Aplikacja logiki](./media/import-logic-app-as-api/logic-app-api.png)
-3. Naciśnij pozycję **Przeglądaj**, aby wyświetlić listę aplikacji logiki w ramach subskrypcji.
+3. Naciśnij pozycję **Przeglądaj**, aby wyświetlić listę wywoływalnych aplikacji logiki w ramach subskrypcji.
 4. Wybierz aplikację. Usługa APIM znajduje program Swagger skojarzony z wybraną aplikacją, a następnie pobiera go i importuje. 
 5. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.
 6. Opublikuj interfejs API przez skojarzenie go z produktem. W takim przypadku jest używany produkt typu „*Nieograniczony*”.  Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.

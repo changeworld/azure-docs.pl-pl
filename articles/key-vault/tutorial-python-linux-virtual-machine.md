@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: acc926151e5abd1d6f9d0992591575198d1fdf44
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f5d74c2283d25d5774bd46bb9fe94795ff98fe9b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890538"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720577"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>Samouczek: jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux w języku Python
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>Samouczek: Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux w języku Python
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskania dostępu do aplikacji, usługi i zasoby informatyczne.
 
-W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy.
@@ -80,7 +80,7 @@ W tym artykule jest używana właśnie utworzona grupa zasobów.
 
 Następnie utworzysz magazyn kluczy w grupie zasobów utworzonej w poprzednim kroku. Podaj następujące informacje:
 
-* Nazwa magazynu kluczy: nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0-9, a – z, A-Z, i -).
+* Nazwa magazynu kluczy: Nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0–9, a–z, A–Z i -).
 * Nazwa grupy zasobów.
 * Lokalizacja: **Zachodnie stany USA**.
 
@@ -160,7 +160,7 @@ Możesz wykonać czynności opisane w tym [samouczku](https://docs.microsoft.com
 
 ## <a name="create-and-run-sample-python-app"></a>Tworzenie i uruchamianie przykładowej aplikacji w języku Python
 
-Poniżej znajduje się przykładowy plik o nazwie „Sample.py”. Używana jest w nim biblioteka [requests](http://docs.python-requests.org/master/) do wykonywania wywołań HTTP GET.
+Poniżej znajduje się przykładowy plik o nazwie „Sample.py”. Używana jest w nim biblioteka [requests](https://pypi.org/project/requests/2.7.0/) do wykonywania wywołań HTTP GET.
 
 ## <a name="edit-samplepy"></a>Edytowanie pliku Sample.py
 Po utworzeniu pliku Sample.py otwórz go i skopiuj poniższy kod.

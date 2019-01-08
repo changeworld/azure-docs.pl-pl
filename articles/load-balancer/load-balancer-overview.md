@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 55cb1eee1c0319f9b1037476da208de377e0c47b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185617"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971192"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -68,7 +68,7 @@ Moduł równoważenia obciążenia zapewnia następujące podstawowe możliwośc
 
 * **Przekierowywanie portów**
 
-    Za pomocą modułu równoważenia obciążenia można utworzyć regułę NAT dla ruchu przychodzącego w celu przekazywania ruchu z określonego portu konkretnego adresu IP frontonu do określonego portu wystąpienia zaplecza w ramach sieci wirtualnej. Odbywa się również przy użyciu takiej samej dystrybucji opartej na skrótach, co w przypadku równoważenia obciążenia. Typowe scenariusze dotyczące tej funkcji to sesje protokołu Remote Desktop Protocol (RDP) lub protokołu Secure Shell (SSH) względem poszczególnych wystąpień maszyn wirtualnych w ramach usługi Azure Virtual Network. Istnieje możliwość zamapowania wielu wewnętrznych punktów końcowych na różne porty w ramach tego samego adresu IP frontonu. Adresów IP frontonu można użyć do zdalnego administrowania maszynami wirtualnymi za pośrednictwem Internetu bez konieczności stosowania dodatkowego serwera przesiadkowego.
+    Za pomocą modułu równoważenia obciążenia można utworzyć regułę NAT dla ruchu przychodzącego w celu przekazywania ruchu z określonego portu konkretnego adresu IP frontonu do określonego portu wystąpienia zaplecza w ramach sieci wirtualnej. Odbywa się również przy użyciu takiej samej dystrybucji opartej na skrótach, co w przypadku równoważenia obciążenia. Typowe scenariusze dotyczące tej funkcji to sesje protokołu Remote Desktop Protocol (RDP) lub protokołu Secure Shell (SSH) względem poszczególnych wystąpień maszyn wirtualnych w ramach usługi Azure Virtual Network. Istnieje możliwość zamapowania wielu wewnętrznych punktów końcowych na różne porty w ramach tego samego adresu IP frontonu. Adresów IP frontonu można użyć do zdalnego administrowania maszynami wirtualnymi przez Internet bez konieczności stosowania dodatkowego serwera przesiadkowego.
 
 * **Niezależny od aplikacji i przezroczysty**
 
