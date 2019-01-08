@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: analizowanie obrazu zdalnego — REST, Python — przetwarzanie obrazów'
+title: 'Szybki start: analizowanie obrazu zdalnego — REST, Python'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu zdalnego za pomocą interfejsu API przetwarzania obrazów i języka Python.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: daad35129c99deb37b44e4a98e0c228963d99840
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: f60a3c3c2ab586bdf1eb44cf1e81a9adb87584b0
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854156"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583940"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i języka Python podczas przetwarzania obrazów
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie urządzeń w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure — samouczek | Microsoft Docs
+title: Samouczek dotyczący konfigurowania urządzeń w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
 description: W tym samouczku pokazano, w jaki sposób konfigurować urządzenia połączone z akceleratorem rozwiązań do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679158"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599505"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania
 

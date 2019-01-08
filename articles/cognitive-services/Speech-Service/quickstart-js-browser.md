@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, Javascript (przeglądarka) — usługi mowy'
+title: 'Szybki start: rozpoznawanie mowy, JavaScript (przeglądarka) — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b6add6ac94e45789033cfe9913ec64e69f394f45
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087919"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715141"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Szybki start: rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć witrynę internetową przy użyciu powiązania języka JavaScript zestawu SDK usługi Mowa z usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja jest oparta na zestawie SDK usługi Mowa z usługi Microsoft Cognitive Services ([pobierz wersję 1.1.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikacja jest oparta na zestawie SDK usługi Mowa z usługi Microsoft Cognitive Services ([pobierz wersję 1.2.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,8 +40,8 @@ Utwórz nowy, pusty folder. W przypadku, gdy chcesz hostować przykład na serwe
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Pobierz zestaw SDK usługi Mowa jako [pakiet zip](https://aka.ms/csspeech/jsbrowserpackage) i rozpakuj go do nowo utworzonego folderu. Powinno to spowodować rozpakowanie dwóch plików, `microsoft.cognitiveservices.speech.sdk.bundle.js` i `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
-Drugi z tych plików jest opcjonalny i służy do ułatwienia debugowania kodu zestawu SDK w razie potrzeby.
+Pobierz zestaw SDK usługi Mowa jako [pakiet zip](https://aka.ms/csspeech/jsbrowserpackage) i rozpakuj go do nowo utworzonego folderu. Powoduje to rozpakowanie dwóch plików: `microsoft.cognitiveservices.speech.sdk.bundle.js` i `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Ten drugi plik jest opcjonalny i przydaje się podczas debugowania do kodu zestawu SDK.
 
 ## <a name="create-an-indexhtml-page"></a>Tworzenie strony index.html
 
@@ -103,10 +103,7 @@ Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub otwórz plik i
 
 Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej publiczny adres URL, pod którym hostowany jest folder, wprowadź swój [region](regions.md) i wyzwól rozpoznawanie za pomocą mikrofonu. Jeśli skonfigurowano tę funkcję, pobierze ona token ze źródła tokenu.
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w folderze `quickstart/js-browser`.
-
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Pobierz nasze przykłady](speech-sdk.md#get-the-samples)
+> [Zapoznaj się z przykładami dla języka JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)

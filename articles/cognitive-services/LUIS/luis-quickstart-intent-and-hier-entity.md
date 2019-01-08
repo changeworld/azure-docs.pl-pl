@@ -9,32 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 91a9646e88adbfaf6d3c3fc0b06b341c647e773f
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104411"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753697"
 ---
-# <a name="tutorial-5-extract-contextually-related-data"></a>Samouczek 5: Wyodrębnianie danych powiązanych kontekstowo
-W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura. Aby wygenerować polecenie służbowe, potrzebne są oba elementy danych. Są one powiązane ze sobą.  
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych powiązanych kontekstowo z wypowiedzi
 
-Ta aplikacja określa, dokąd pracownik ma zostać przeniesiony z lokalizacji źródłowej (budynek i biuro) do lokalizacji docelowej (budynek i biuro). Używa ona jednostki hierarchicznej do określania lokalizacji w wypowiedzi. Celem jednostki **hierarchicznej** jest znalezienie powiązanych danych w wypowiedzi na podstawie kontekstu. 
-
-Jednostka hierarchiczna jest odpowiednia dla tego typu danych, ponieważ oba elementy danych:
-
-* Są prostymi jednostkami.
-* Są ze sobą powiązane w kontekście wypowiedzi.
-* Używają określonych wybranych wyrazów w celu wskazania poszczególnych lokalizacji. Przykładowe wyrazy tego typu to: from/to (od/do), leaving/headed to (opuszczać/kierować się do), away from/toward (w kierunku od/do).
-* Obie lokalizacje często znajdują się w tej samej wypowiedzi. 
-* Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
+W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.  
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka
+> * Tworzenie nowej aplikacji
 > * Dodawanie intencji 
 > * Dodawanie jednostki hierarchicznej lokalizacji z elementami podrzędnymi miejsca początkowego i docelowego
 > * Szkolenie
@@ -43,47 +34,47 @@ Jednostka hierarchiczna jest odpowiednia dla tego typu danych, ponieważ oba ele
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
+## <a name="hierarchical-data"></a>Dane hierarchiczne
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+Ta aplikacja określa, dokąd ma zostać przeniesiony pracownik z miasta źródłowego do miasta docelowego. Używa ona jednostki hierarchicznej do określania lokalizacji w wypowiedzi. 
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json).
+Jednostka hierarchiczna jest odpowiednia dla tego typu danych, ponieważ oba elementy danych, lokalizacje podrzędne:
 
-2. Zaimportuj plik JSON do nowej aplikacji.
+* Są prostymi jednostkami.
+* Są ze sobą powiązane w kontekście wypowiedzi.
+* Używają określonych wybranych wyrazów w celu wskazania poszczególnych jednostek. Przykładowe wyrazy tego typu to: from/to (od/do), leaving/headed to (opuszczać/kierować się do), away from/toward (w kierunku od/do).
+* Oba elementy podrzędne często znajdują się w tej samej wypowiedzi. 
+* Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
 
-3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `hier`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
+## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
-## <a name="remove-prebuilt-number-entity-from-app"></a>Usuwanie wstępnie skompilowanej jednostki numeru z aplikacji
-Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, [tymczasowo usuń wstępnie skompilowaną jednostkę numeru](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token). 
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-move-employees-between-cities"></a>Tworzenie intencji przeniesienia pracowników między miastami
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Wybierz pozycję **Entities** (Jednostki) w menu po lewej stronie.
+1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
-3. Zaznacz pole wyboru z lewej strony liczby jednostek na liście. Wybierz pozycję **Usuń**. 
+1. Wprowadź ciąg `MoveEmployeeToCity` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
-## <a name="add-utterances-to-moveemployee-intent"></a>Dodawanie wypowiedzi do intencji MoveEmployee
+    ![Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)](./media/luis-quickstart-intent-and-hier-entity/create-new-intent-move-employee-to-city.png)
 
-1. Wybierz pozycję **Intents** (Intencje) z menu po lewej.
-
-2. Wybierz pozycję **MoveEmployee** z listy intencji.
-
-3. Dodaj następujące przykładowe wypowiedzi:
+1. Dodaj przykładowe wypowiedzi do intencji.
 
     |Przykładowe wypowiedzi|
     |--|
-    |Move John W. Smith **to** a-2345|
-    |Direct Jill Jones **to** b-3499|
-    |Organize the move of x23456 **from** hh-2345 **to** e-0234|
-    |Begin paperwork to set x12345 **leaving** a-3459 **headed to** f-34567|
-    |Displace 425-555-0000 **away from** g-2323 **toward** hh-2345|
+    |move John W. Smith leaving Seattle headed to Dallas (przenieś Johna W. Smitha z Seattle do Dallas)|
+    |transfer Jill Jones from Seattle to Cairo (przenieś Jill Jones z Seattle do Kairu)|
+    |Place John Jackson away from Tampa, coming to Atlanta (Umieść Johna Jacksona opuszczającego Tampę w Atlancie) |
+    |move Debra Doughtery to Tulsa from Dallas (przenieś Debrę Doughtery do Tulsy z Dallas)|
+    |mv Jill Jones leaving Cairo headed to Tampa (przesuń Jill Jones z Kairu do Tampy)|
+    |Shift Alice Anderson to Oakland from Redmond (Transferuj Alice Anderson do Oakland z Redmond)|
+    |Carl Chamerlin from San Francisco to Redmond (Carl Chamerlin z San Francisco do Redmond)|
+    |Transfer Steve Standish from San Diego toward Bellevue (Transferuj Steve’a Standisha z San Diego do Bellevue) |
+    |lift Tanner Thompson from Kansas city and shift to Chicago (Tannera Thompsona z Kansas City przenieś do Chicago)|
 
     [ ![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
-
-    W samouczku dotyczącym [jednostki listy](luis-quickstart-intent-and-list-entity.md) wyznaczany jest pracownik według nazwy, adresu e-mail, numeru wewnętrznego, numeru telefonu komórkowego lub federalnego numeru ubezpieczenia społecznego (Stany Zjednoczone). Te numery pracowników są używane w zniesławiających. Poprzednie przykładowe wypowiedzi przedstawiają różne sposoby wskazywania lokalizacji źródłowych, które wyróżniono za pomocą pogrubienia. Celowo w niektórych wypowiedziach znajdują się tylko miejsca docelowe. Pomaga to usłudze LUIS zrozumieć, jak te lokalizacje są umieszczane w wypowiedzi, jeśli nie określono źródła.     
-
-    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>Tworzenie jednostki Location (Lokalizacja)
 Usługa LUIS musi zrozumieć, czym jest lokalizacja, oznaczając źródło i miejsce docelowe w wypowiedziach. Jeśli chcesz zobaczyć wypowiedź w widoku tokenu (nieprzetworzonym), na pasku nad wypowiedziami wybierz przełącznik oznaczony etykietą **Entities View** (Widok jednostek). Po przełączeniu przełącznika kontrolka będzie mieć etykietę **Tokens View** (Widok tokenów).
@@ -91,169 +82,103 @@ Usługa LUIS musi zrozumieć, czym jest lokalizacja, oznaczając źródło i mie
 Przeanalizujmy następującą wypowiedź:
 
 ```json
-mv Jill Jones from a-2349 to b-1298
+move John W. Smith leaving Seattle headed to Dallas
 ```
 
-W wypowiedzi są podane dwie lokalizacje: `a-2349` i `b-1298`. Załóżmy, że litera odpowiada nazwie budynku, a numer wskazuje biuro w tym budynku. Dobrym rozwiązaniem jest pogrupowanie ich jako elementów podrzędnych jednostki hierarchicznej `Locations`, ponieważ oba elementy danych muszą zostać wyodrębnione z wypowiedzi w celu wykonania żądania w aplikacji klienckiej i są ze sobą powiązane. 
+W wypowiedzi są podane dwie lokalizacje: `Seattle` i `Dallas`. Obie są zgrupowane jako elementy podrzędne jednostki hierarchicznej `Location`, ponieważ oba elementy danych muszą zostać wyodrębnione z wypowiedzi w celu wykonania żądania w aplikacji klienckiej i są ze sobą powiązane. 
  
 Jeśli obecny jest tylko jeden element podrzędny jednostki hierarchicznej (lokalizacja początkowa lub docelowa), też jest wyodrębniany. Nie jest konieczne znalezienie wszystkich elementów podrzędnych, aby wyodrębnić jeden lub część z nich. 
 
-1. W wypowiedzi `Displace 425-555-0000 away from g-2323 toward hh-2345` zaznacz wyraz `g-2323`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części. Wprowadź nazwę jednostki `Locations` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
+1. W wypowiedzi `move John W. Smith leaving Seattle headed to Dallas` zaznacz wyraz `Seattle`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części. Wprowadź nazwę jednostki `Location` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
 
-    [![Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
 
-2. W oknie podręcznym wybierz typ jednostki **Hierarchical** (Hierarchiczna) z elementami `Origin` i `Destination` jako podrzędnymi. Wybierz pozycję **Done** (Gotowe).
+1. W oknie podręcznym wybierz typ jednostki **Hierarchical** (Hierarchiczna) z elementami `Origin` i `Destination` jako podrzędnymi. Wybierz pozycję **Done** (Gotowe).
 
     ![Zrzut ekranu przedstawiający okno dialogowe tworzenia jednostki dla nowej jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Zrzut ekranu przedstawiający okno dialogowe tworzenia jednostki dla nowej jednostki lokalizacji")
 
-3. Etykieta dla elementu `g-2323` jest oznaczona jako `Locations`, ponieważ usługa LUIS nie może ustalić, czy termin jest lokalizacją początkową, docelową czy żadną z nich. Wybierz pozycję `g-2323`, wybierz pozycję **Locations** (Lokalizacje), a następnie przejdź do menu z prawej strony i wybierz pozycję `Origin`.
+1. Etykieta dla elementu `Seattle` jest oznaczona jako `Location`, ponieważ usługa LUIS nie może ustalić, czy termin jest lokalizacją początkową, docelową czy żadną z nich. Wybierz pozycję `Seattle`, wybierz pozycję **Location** (Lokalizacja), a następnie przejdź do menu z prawej strony i wybierz pozycję `Origin`.
 
-    [![Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
 
-5. Aby oznaczyć etykietą inne lokalizacje we wszystkich innych wypowiedziach, wybierz budynek i biuro w wypowiedzi, a następnie wybierz pozycję Locations (Lokalizacje) i w menu z prawej strony wybierz pozycję `Origin` lub `Destination`. Po oznaczeniu etykietami wszystkich lokalizacji wypowiedzi w obszarze **Tokens View** (widok tokenów) będą wyglądać podobnie do wzorca. 
+1. Dodaj etykiety do innych lokalizacji we wszystkich innych wypowiedziach. Po oznaczeniu wszystkich lokalizacji wypowiedzi będą wyglądać podobnie do wzorca. 
 
-    [![Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach](media/luis-quickstart-intent-and-hier-entity/all-intents-marked-with-origin-and-destination-location.png "Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach")](media/luis-quickstart-intent-and-hier-entity/all-intents-marked-with-origin-and-destination-location.png#lightbox)
 
-## <a name="add-prebuilt-number-entity-to-app"></a>Dodawanie wstępnie skompilowanej jednostki numeru do aplikacji
-Dodaj wstępnie skompilowaną jednostkę numeru z powrotem do aplikacji.
+    Czerwone podkreślenie wskazuje, że usługa LUIS nie ma pewności co do jednostki. Rozstrzygnie to szkolenie. 
 
-1. Wybierz pozycję **Entities** (Jednostki) w menu nawigacji po lewej stronie.
+## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
 
-2. Naciśnij przycisk **Add prebuilt entity** (Dodaj wstępnie utworzoną jednostkę).
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-3. Wybierz pozycję **number** (liczba) z listy wstępnie skompilowanych jednostek, a następnie wybierz pozycję **Done** (Gotowe).
-
-    ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
-
-## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikowanie aplikacji w celu umożliwienia wysyłania zapytań z punktu końcowego do trenowanego modelu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Pobieranie przewidywania intencji i jednostek z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-2. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnioną jednostką hierarchiczną.
+1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnioną jednostką hierarchiczną.
 
     ```json
     {
-      "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
+      "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
-        "intent": "MoveEmployee",
-        "score": 0.9966052
+        "intent": "MoveEmployeeToCity",
+        "score": 0.979823351
       },
       "intents": [
         {
-          "intent": "MoveEmployee",
-          "score": 0.9966052
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.0325253047
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.006137873
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.00462633232
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00415637763
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.00382325822
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00249120337
+          "intent": "MoveEmployeeToCity",
+          "score": 0.979823351
         },
         {
           "intent": "None",
-          "score": 0.00130756292
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00119622645
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 1.26910036E-05
+          "score": 0.0156363435
         }
       ],
       "entities": [
         {
-          "entity": "jill - jones @ mycompany . com",
-          "type": "Employee",
-          "startIndex": 18,
-          "endIndex": 41,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
+          "entity": "portland",
+          "type": "Location::Destination",
+          "startIndex": 41,
+          "endIndex": 48,
+          "score": 0.6044041
         },
         {
-          "entity": "x - 2345",
-          "type": "Locations::Origin",
-          "startIndex": 48,
-          "endIndex": 53,
-          "score": 0.8520272
-        },
-        {
-          "entity": "g - 23456",
-          "type": "Locations::Destination",
-          "startIndex": 58,
-          "endIndex": 64,
-          "score": 0.974032
-        },
-        {
-          "entity": "-2345",
-          "type": "builtin.number",
-          "startIndex": 49,
-          "endIndex": 53,
-          "resolution": {
-            "value": "-2345"
-          }
-        },
-        {
-          "entity": "-23456",
-          "type": "builtin.number",
-          "startIndex": 59,
-          "endIndex": 64,
-          "resolution": {
-            "value": "-23456"
-          }
+          "entity": "tampa",
+          "type": "Location::Origin",
+          "startIndex": 32,
+          "endIndex": 36,
+          "score": 0.739491045
         }
       ]
     }
     ```
     
-    Przewidywana jest poprawna intencja, a tablica jednostek zawiera wartości lokalizacji początkowej i docelowej w odpowiedniej właściwości **entity** (jednostka).
+    Przewidywana jest poprawna intencja, a tablica jednostek zawiera wartości lokalizacji początkowej i docelowej w odpowiedniej właściwości **entities** (jednostki).
     
-
-## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Czy można było użyć wyrażenia regularnego dla każdej lokalizacji?
-Tak, utwórz jednostkę wyrażenia regularnego z rolami źródłowymi i docelowymi, a następnie użyj jej we wzorcu.
-
-Lokalizacje w tym przykładzie, takie jak `a-1234`, są zgodnie ze specyficznym formatem obejmującym jedną lub dwie litery z kreską, po których następuje seria 4 lub 5 wartości liczbowych. Te dane można przedstawić jako jednostkę wyrażenia regularnego z rolą dla każdej lokalizacji. Role są dostępne tylko w przypadku wzorców. Można utworzyć wzorce w oparciu o te wypowiedzi, a następnie utworzyć wyrażenie regularne dla formatu lokalizacji i dodawać je do wzorców. 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="hierarchical-entities-versus-roles"></a>Jednostki hierarchiczne a role
+## <a name="related-information"></a>Informacje pokrewne
 
-Aby uzyskać więcej informacji, zobacz [Role a jednostki hierarchiczne](luis-concept-roles.md#roles-versus-hierarchical-entities).
+* [Jednostki hierarchiczne](luis-concept-entity-types.md) — informacje koncepcyjne
+* [Jak trenować](luis-how-to-train.md)
+* [Jak opublikować](luis-how-to-publish-app.md)
+* [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
+* [Role a jednostki hierarchiczne](luis-concept-roles.md#roles-versus-hierarchical-entities)
+* [Ulepszanie przewidywań za pomocą wzorców](luis-concept-patterns.md)
 
 ## <a name="next-steps"></a>Następne kroki
+
 W tym samouczku utworzono nową intencję i dodano przykładowe wypowiedzi dla uczonych kontekstowo danych dotyczących lokalizacji początkowej i docelowej. Gdy aplikacja zostanie wyszkolona i opublikowana, aplikacja kliencka będzie mogła używać tych informacji do tworzenia biletu przeniesienia z odpowiednimi informacjami.
 
 > [!div class="nextstepaction"] 

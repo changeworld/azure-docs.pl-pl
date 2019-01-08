@@ -1,122 +1,119 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z platformy SAP Cloud Platform | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i SAP Cloud Platform.
+title: 'Samouczek: Integracja usługi Azure Active Directory z platformą SAP Cloud Platform | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i platformą SAP Cloud Platform.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/15/2017
+ms.topic: tutorial
+ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 07b3c32601d90fdeed1c335c0f36a5ccbdbe4f1d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 5ea4c3928c7bb3ee8250fd7b69ff9646a698fa3b
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446718"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809084"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Samouczek: Integracja usługi Azure Active Directory z platformy SAP Cloud Platform
+# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Samouczek: Integracja usługi Azure Active Directory z platformą SAP Cloud Platform
 
-W tym samouczku dowiesz się, jak zintegrować SAP Cloud Platform w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować platformę SAP Cloud Platform z usługą Azure Active Directory (Azure AD).
+Zintegrowanie platformy SAP Cloud Platform z usługą Azure AD daje następujące korzyści:
 
-Integrowanie platformy usług w chmurze SAP z usługą Azure AD zapewnia następujące korzyści:
+* Możliwość kontrolowania dostępu do platformy SAP Cloud Platform za pomocą usługi Azure AD.
+* Umożliwianie użytkownikom automatycznego logowania się do platformy SAP Cloud Platform (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do platformy SAP Cloud Platform.
-- Użytkowników, aby automatycznie uzyskać zalogowanych do platformy SAP Cloud Platform (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą platformy SAP Cloud Platform, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z platformą SAP Cloud Platform, potrzebujesz następujących elementów:
 
-- Subskrypcję usługi Azure AD
-- Platforma usług w chmurze SAP logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja platformy SAP Cloud Platform z obsługą logowania jednokrotnego
 
-Po ukończeniu tego samouczka użytkowników usługi Azure AD została przypisana do platformy SAP Cloud Platform będzie można logowania jednokrotnego do aplikacji przy użyciu [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po ukończeniu tego samouczka użytkownicy usługi Azure AD przypisani do platformy SAP Cloud Platform będą mogli logować się do aplikacji za pomocą funkcji logowania jednokrotnego, korzystając z informacji zawartych w sekcji [Wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 >[!IMPORTANT]
->Należy wdrożyć własną aplikację lub subskrybować aplikacji na Twoim koncie platformy SAP Cloud Platform, aby przetestować logowanie jednokrotne. W tym samouczku aplikacja jest wdrażana w ramach konta.
+>Aby przetestować logowanie jednokrotne, należy wdrożyć własną aplikację lub zasubskrybować aplikację w ramach własnego konta platformy SAP Cloud Platform. W tym samouczku aplikacja jest wdrożona w ramach konta.
 > 
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie SAP Cloud Platform za pomocą galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-sap-cloud-platform-from-the-gallery"></a>Dodawanie SAP Cloud Platform za pomocą galerii
-Aby skonfigurować integrację programu SAP Cloud Platform w usłudze Azure AD, należy dodać SAP Cloud Platform z galerii z listą zarządzanych aplikacji SaaS.
+* Platforma SAP Cloud Platform obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać SAP Cloud Platform z galerii, wykonaj następujące czynności:**
+## <a name="adding-sap-cloud-platform-from-the-gallery"></a>Dodawanie platformy SAP Cloud Platform z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację platformy SAP Cloud Platform z usługą Azure AD, należy dodać tę platformę z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać platformę SAP Cloud Platform z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **SAP Cloud Platform**, wybierz opcję **SAP Cloud Platform** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![SAP Cloud Platform na liście wyników](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą oparte na użytkownika testu o nazwie "Britta Simon" platformy SAP Cloud Platform.
+4. W polu wyszukiwania wpisz **SAP Cloud Platform**, wybierz pozycję **SAP Cloud Platform** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w SAP Cloud Platform jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w SAP Cloud Platform musi zostać nawiązane.
+     ![Platforma SAP Cloud Platform na liście wyników](common/search-new-app.png)
 
-W systemie SAP Cloud Platform przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą platformy SAP Cloud Platform, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z platformą SAP Cloud Platform, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem platformy SAP Cloud Platform.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego SAP Cloud Platform](#create-a-sap-cloud-platform-test-user)**  — aby odpowiednikiem Britta Simon w platformy SAP Cloud Platform jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z platformą SAP Cloud Platform, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego platformy SAP Cloud Platform](#configure-sap-cloud-platform-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego platformy SAP Cloud Platform](#create-sap-cloud-platform-test-user)** — aby udostępnić na platformie SAP Cloud Platform odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji SAP Cloud Platform.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne na platformie SAP Cloud Platform, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **SAP Cloud Platform** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie SAP Cloud Platform, wykonaj następujące kroki:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **SAP Cloud Platform** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **SAP Cloud Platform domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![SAP Cloud Platform domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    a. W **na adres URL logowania** pole tekstowe, wpisz adres URL używany przez użytkowników, aby zalogować się do swojej **SAP Cloud Platform** aplikacji. To jest adres URL konta zasobu chronionego w aplikacji SAP Cloud Platform. Adres URL jest oparty na następującym wzorcem: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje o domenie i adresach URL logowania jednokrotnego platformy SAP Cloud Platform](common/sp-identifier-reply.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL używany przez użytkowników do logowania się do aplikacji **SAP Cloud Platform**. To jest adres URL chronionego zasobu w aplikacji SAP Cloud Platform specyficzny dla konta. Adres URL jest zgodny z następującym wzorcem: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
      >[!NOTE]
-     >To jest adres URL do aplikacji SAP Cloud Platform, która wymaga uwierzytelnienia użytkownika.
+     >To jest adres URL w aplikacji SAP Cloud Platform, która wymaga uwierzytelnienia użytkownika.
      > 
 
     | |
@@ -124,7 +121,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
     | `https://<subdomain>.hana.ondemand.com/<instancename>` |
 
-    b. W **identyfikator** textbox zapewni platformy chmury SAP wpisz adres URL przy użyciu jednej z następujących wzorców: 
+    b. W polu tekstowym **Identyfikator** podaj adres URL platformy SAP Cloud Platform, korzystając z jednego z następujących wzorców: 
 
     | |
     |--|
@@ -133,7 +130,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://us1.hana.ondemand.com/<instancename>` |
     | `https://ap1.hana.ondemand.com/<instancename>` |
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
 
     | |
     |--|
@@ -146,213 +143,181 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej SAP Cloud Platform Client](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) można pobrać adresu URL logowania jednokrotnego i identyfikator. Adres URL odpowiedzi można uzyskać z sekcję zarządzania zaufania, co zostało wyjaśnione w dalszej części tego samouczka.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta platformy SAP Cloud Platform](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html), aby pobrać adres URL logowania i identyfikator. Adres URL odpowiedzi można uzyskać w sekcji zarządzania relacjami zaufania, co zostało wyjaśnione w dalszej części tego samouczka.
     > 
-     
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_certificate.png) 
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+### <a name="configure-sap-cloud-platform-single-sign-on"></a>Konfigurowanie logowania jednokrotnego na platformie SAP Cloud Platform
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
+1. W innym oknie przeglądarki internetowej zaloguj się do panelu sterowania platformy SAP Cloud Platform pod adresem `https://account.<landscape host>.ondemand.com/cockpit`(na przykład: https://account.hanatrial.ondemand.com/cockpit).
 
-1. W oknie przeglądarki internetowej innej, zaloguj się do panelu sterowania SAP Cloud Platform na `https://account.<landscape host>.ondemand.com/cockpit`(na przykład: https://account.hanatrial.ondemand.com/cockpit).
-
-1. Kliknij przycisk **zaufania** kartę.
+2. Kliknij kartę **Trust** (Relacja zaufania).
    
-    ![Zaufanie](./media/sap-hana-cloud-platform-tutorial/ic790800.png "zaufania")
+    ![Karta Relacja zaufania](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Karta Relacja zaufania")
 
-1. W sekcji Zarządzanie zaufania w obszarze **lokalnego usługodawcy**, wykonaj następujące czynności:
+3. W sekcji Trust Management (Zarządzanie relacjami zaufania) w obszarze **Local Service Provider** (Lokalny dostawca usług), wykonaj następujące kroki:
 
-    ![Zaufanie zarządzania](./media/sap-hana-cloud-platform-tutorial/ic793931.png "zaufania zarządzania")
+    ![Sekcja Zarządzanie relacjami zaufania](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Sekcja Zarządzanie relacjami zaufania")
    
     a. Kliknij pozycję **Edytuj**.
 
-    b. Jako **typu konfiguracji**, wybierz opcję **niestandardowe**.
+    b. W polu **Configuration Type** (Typ konfiguracji) wybierz pozycję **Custom** (Niestandardowa).
 
-    c. Jako **lokalna nazwa dostawcy**, pozostaw wartość domyślną. Skopiuj tę wartość i wklej go do **identyfikator** pola w konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
+    d. W polu **Local Provider Name** (Nazwa dostawcy lokalnego) pozostaw wartość domyślną. Skopiuj tę wartość i wklej ją w polu **Identifier** (Identyfikator) w konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
 
-    d. Aby wygenerować **klucza podpisywania** i **certyfikat podpisywania** pary kluczy, kliknij przycisk **generowania pary klucza**.
+    d. Aby wygenerować parę kluczy w polach **Signing Key** (Klucz podpisywania) i **Signing Certificate** (Certyfikat podpisywania), kliknij przycisk **Generate Key Pair** (Generuj parę kluczy).
 
-    e. Jako **jednostki propagacji**, wybierz opcję **wyłączone**.
+    e. Ustaw pole **Principal Propagation** (Propagacja jednostki) na wartość **Disabled** (Wyłączona).
 
-    f. Jako **siły uwierzytelniania**, wybierz opcję **wyłączone**.
+    f. Ustaw pole **Force Authentication** (Wymuś uwierzytelnianie) na wartość **Disabled** (Wyłączone).
 
     g. Kliknij pozycję **Zapisz**.
 
-1. Po zapisaniu **lokalnego usługodawcy** ustawienia, wykonaj następujące polecenie, aby uzyskać adres URL odpowiedzi:
+4. Po zapisaniu ustawień w sekcji **Local Service Provider** (Lokalny dostawca usług) wykonaj następujące kroki, aby uzyskać adres URL odpowiedzi:
    
-    ![Pobierz metadane](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Pobierz metadane")
+    ![Pozycja Pobierz metadane](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Pozycja Pobierz metadane")
 
-    a. Pobierz plik metadanych SAP Cloud Platform, klikając **Get Metadata**.
+    a. Pobierz plik metadanych platformy SAP Cloud Platform, klikając pozycję **Get Metadata** (Pobierz metadane).
 
-    b. Otwórz pobrany plik XML metadanych SAP Cloud Platform, a następnie zlokalizuj **ns3:AssertionConsumerService** tagu.
+    b. Otwórz pobrany plik XML z metadanymi platformy SAP Cloud Platform, a następnie znajdź tag **ns3:AssertionConsumerService**.
  
-    c. Skopiuj wartość **lokalizacji** atrybutu, a następnie wklej go do **adres URL odpowiedzi** pola w konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
+    d. Skopiuj wartość atrybutu **Location**, a następnie wklej ją w polu **Adres URL odpowiedzi** w ramach konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
 
-1. Kliknij przycisk **zaufanego dostawcy tożsamości** kartę, a następnie kliknij przycisk **Dodawanie zaufanego dostawcy tożsamości**.
+5. Kliknij kartę **Trusted Identity Provider** (Zaufany dostawca tożsamości), a następnie kliknij pozycję **Add Trusted Identity Provider** (Dodaj zaufanego dostawcę tożsamości).
    
-    ![Zaufanie zarządzania](./media/sap-hana-cloud-platform-tutorial/ic790802.png "zaufania zarządzania")
+    ![Sekcja Zarządzanie relacjami zaufania](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Sekcja Zarządzanie relacjami zaufania")
    
     >[!NOTE]
-    >Aby zarządzać listą zaufanych dostawców tożsamości, musisz wybrany typ konfiguracji niestandardowych w sekcji lokalnego usługodawcy. Dla typu konfiguracji domyślnej należy nie można edytować i niejawne zaufanie w usłudze identyfikator SAP. Dla żadnego z nich nie masz żadnych ustawień zaufania.
+    >Aby zarządzać listą zaufanych dostawców tożsamości, należy wybrać niestandardowy typ konfiguracji w sekcji Local Service Provider (Lokalny dostawca usług). W przypadku domyślnego typu konfiguracji relacja zaufania z usługą identyfikatora SAP jest nieedytowalna i niejawna. W przypadku braku konfiguracji nie istnieją żadne ustawienia relacji zaufania.
     > 
     > 
 
-1. Kliknij przycisk **ogólne** kartę, a następnie kliknij przycisk **Przeglądaj** można przekazać pliku pobranego metadanych.
+6. Kliknij kartę **General** (Ogólne), a następnie kliknij pozycję **Browse** (Przeglądaj), aby przekazać pobrany plik metadanych.
     
-    ![Zaufanie zarządzania](./media/sap-hana-cloud-platform-tutorial/ic793932.png "zaufania zarządzania")
+    ![Sekcja Zarządzanie relacjami zaufania](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Sekcja Zarządzanie relacjami zaufania")
     
     >[!NOTE]
-    >Po przekazaniu pliku metadanych wartości **pojedynczy adres URL logowania**, **adres URL wylogowania jednokrotnego**, i **certyfikat podpisywania** są wypełniane automatycznie.
+    >Po przekazaniu pliku metadanych wartości pól **Single Sign-on URL** (Adres URL logowania jednokrotnego), **Single Logout URL** (Adres URL wylogowywania jednokrotnego) i **Signing Certificate** (Certyfikat podpisywania) zostaną wypełnione automatycznie.
     > 
      
-1. Kliknij kartę **Atrybuty**.
+7. Kliknij kartę **Atrybuty**.
 
-1. Na **atrybuty** karcie, wykonaj następujące kroki:
+8. Na karcie **Attributes** (Atrybuty) wykonaj następujące kroki:
     
-    ![Atrybuty](./media/sap-hana-cloud-platform-tutorial/ic790804.png "atrybutów") 
+    ![Karta Atrybuty](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Karta Atrybuty") 
 
-    a. Kliknij przycisk **atrybut Add Assertion-Based**, a następnie dodaj następujące atrybuty oparte na potwierdzenie:
+    a. Kliknij pozycję **Add Assertion-Based Attribute** (Dodaj atrybut oparty na asercji), a następnie dodaj następujące atrybuty oparte na asercjach:
        
-    | Atrybut asercji | Atrybut podmiotu zabezpieczeń |
+    | Atrybut asercji | Atrybut jednostki |
     | --- | --- |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |Imię |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |nazwisko |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |firstname |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |lastname |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |email |
    
      >[!NOTE]
-     >Konfiguracja atrybutów zależy od tego, jak aplikacje na punkt połączenia usługi są tworzone, oznacza to, atrybutów, które spełniają oczekiwane w odpowiedzi SAML i pod nazwą, której (atrybut podmiotu zabezpieczeń), uzyskiwania dostępu do tego atrybutu w kodzie.
+     >Konfiguracja atrybutów zależy od sposobu tworzenia aplikacji w ramach punktu połączenia usługi, to znaczy od tego, które atrybuty są oczekiwane w odpowiedzi SAML i pod jaką nazwą (atrybut jednostki) uzyskiwany jest dostęp do tego atrybutu w kodzie.
      > 
     
-    b. **Domyślny atrybut** na zrzucie ekranu jest tylko w celach ilustracyjnych. Nie jest wymagane dokonanie scenariusza pracy.  
+    b. Wartość pola **Default Attribute** (Domyślny atrybut) na zrzucie ekranu służy tylko do celów ilustracyjnych. Nie jest ona wymagana do działania tego scenariusza.  
  
-    c. Nazwy i wartości dla **atrybutu jednostki** pokazano na zrzucie ekranu są zależne od jak opracowano aplikację. Istnieje możliwość, że aplikacja wymaga innego mapowania.
+    d. Nazwy i wartości w kolumnie **Principal Attribute** (Atrybut jednostki) na zrzucie ekranu są zależne od sposobu tworzenia aplikacji. Istnieje możliwość, że w Twojej aplikacji wymagane będzie użycie innych mapowań.
 
-### <a name="assertion-based-groups"></a>Grupy oparte na potwierdzenie
+### <a name="assertion-based-groups"></a>Grupy oparte na asercjach
 
-Jako opcjonalny krok można skonfigurować grupy oparte na potwierdzenie dla usługi Azure Active Directory dostawcy tożsamości.
+Jako opcjonalny krok możesz skonfigurować grupy oparte na asercjach na potrzeby dostawcy tożsamości usługi Azure Active Directory.
 
-Na platformie SAP w chmurze przy użyciu grup umożliwia dynamiczne przypisywanie co najmniej jednego użytkownika do co najmniej jedną rolę w aplikacjach platformy SAP Cloud Platform ustalany na podstawie wartości atrybutów w potwierdzenie SAML 2.0. 
+Korzystanie z grup na platformie SAP Cloud Platform pozwala na dynamiczne przypisywanie co najmniej jednego użytkownika do co najmniej jednej roli w aplikacjach platformy SAP Cloud Platform na podstawie wartości atrybutów w ramach asercji protokołu SAML 2.0. 
 
-Na przykład, jeśli potwierdzenie zawiera atrybut "*kontraktu = tymczasowe*", możesz postanowić skanuje użytkowników, które mają zostać dodane do grupy"*tymczasowe*". Grupa "*tymczasowe*" może zawierać co najmniej jedną rolę z co najmniej jednej aplikacji wdrożonych w ramach Twojego konta platformy SAP Cloud Platform.
+Na przykład jeśli asercja zawiera atrybut „*contract=temporary*”, możesz dodać wszystkich użytkowników, których on dotyczy, do grupy „*TEMPORARY*”. Grupa „*TEMPORARY*” może zawierać co najmniej jedną rolę z co najmniej jednej aplikacji wdrożonej w ramach Twojego konta platformy SAP Cloud Platform.
  
-Jeśli chcesz jednocześnie przypisać wielu użytkowników do co najmniej jedną rolę aplikacji na Twoim koncie platformy SAP Cloud Platform przy użyciu grup opartych na potwierdzenie. Jeśli chcesz przypisać tylko jednego lub małych liczbę użytkowników do określonych ról, zaleca się przydzielenie ich bezpośrednio w "**autoryzacji**" na karcie Panelu sterowania platformy SAP Cloud Platform.
+Użyj grup opartych na asercjach, jeśli chcesz jednocześnie przypisać wielu użytkowników do co najmniej jednej roli aplikacji w ramach Twojego konta platformy SAP Cloud Platform. Jeśli chcesz przypisać tylko jednego lub niewielką liczbę użytkowników do określonych ról, zalecamy przypisanie ich bezpośrednio na karcie **Authorizations** (Autoryzacje) z poziomu panelu sterowania platformy SAP Cloud Platform.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Przycisk usługi Azure Active Directory](./media/sap-hana-cloud-platform-tutorial/create_aaduser_01.png)
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/sap-hana-cloud-platform-tutorial/create_aaduser_02.png)
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/sap-hana-cloud-platform-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/sap-hana-cloud-platform-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-sap-cloud-platform-test-user"></a>Tworzenie użytkownika testowego SAP Cloud Platform
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do platformy SAP Cloud Platform, należy przypisać role w programie SAP Cloud Platform do nich.
-
-**Aby przypisać rolę użytkownikowi, wykonaj następujące czynności:**
-
-1. Zaloguj się do Twojej **SAP Cloud Platform** Panelu sterowania.
-
-1. Wykonaj następujące czynności:
-   
-    ![Autoryzacje](./media/sap-hana-cloud-platform-tutorial/ic790805.png "autoryzacji")
-   
-    a. Kliknij przycisk **autoryzacji**.
-
-    b. Kliknij przycisk **użytkowników** kartę.
-
-    c. W **użytkownika** pole tekstowe, wpisz adres e-mail użytkownika.
-
-    d. Kliknij przycisk **przypisać** można przypisać użytkownika do roli.
-
-    e. Kliknij pozycję **Zapisz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do platformy SAP Cloud Platform.
+W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do platformy SAP Cloud Platform.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie **SAP Cloud Platform**.
 
-**Aby przypisać Britta Simon SAP Cloud Platform, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wpisz ciąg **SAP Cloud Platform** i wybierz odpowiednią pozycję.
 
-    ![Przypisz użytkownika][201] 
+    ![Link platformy SAP Cloud Platform na liście Aplikacje](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **SAP Cloud Platform**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link SAP Cloud Platform na liście aplikacji](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-sap-cloud-platform-test-user"></a>Tworzenie użytkownika testowego platformy SAP Cloud Platform
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do platformy SAP Cloud Platform, należy przypisać im role na tej platformie.
 
-Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+**Aby przypisać rolę użytkownikowi, wykonaj następujące kroki:**
 
-Po kliknięciu kafelka SAP Cloud Platform na panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji SAP Cloud Platform.
+1. Zaloguj się do panelu sterowania platformy **SAP Cloud Platform**.
 
+2. Wykonaj poniższe kroki:
+   
+    ![Karta Autoryzacje](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Karta Autoryzacje")
+   
+    a. Kliknij pozycję **Authorization** (Autoryzacja).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+    b. Kliknij kartę **Users** (Użytkownicy).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+    d. W polu tekstowym **User** (Użytkownik) wpisz adres e-mail użytkownika.
 
+    d. Kliknij pozycję **Assign** (Przypisz), aby przypisać użytkownika do roli.
 
+    e. Kliknij pozycję **Zapisz**.
 
-<!--Image references-->
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-[1]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_01.png
-[2]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_02.png
-[3]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_03.png
-[4]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_04.png
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-[100]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_100.png
+Po kliknięciu kafelka SAP Cloud Platform w panelu dostępu powinno nastąpić automatyczne zalogowanie do platformy SAP Cloud Platform, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-[200]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_200.png
-[201]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_201.png
-[202]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_202.png
-[203]: ./media/sap-hana-cloud-platform-tutorial/tutorial_general_203.png
+## <a name="additional-resources"></a>Dodatkowe zasoby
+
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

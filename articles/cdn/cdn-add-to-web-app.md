@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: db4a9a43a971f66870c2079762b9c62802122baa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093327"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602821"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Samouczek: dodawanie usługi Azure CDN do aplikacji internetowej usługi Azure App Service
 
-W tym samouczku przedstawiono sposób dodawania usługi [Microsoft Azure Content Delivery Network (CDN)](cdn-overview.md) do [aplikacji internetowej w usłudze Azure App Service](../app-service/app-service-web-overview.md). Web Apps to usługa do hostowania aplikacji internetowych, interfejsów API REST i zapleczy aplikacji mobilnych. 
+W tym samouczku przedstawiono sposób dodawania usługi [Microsoft Azure Content Delivery Network (CDN)](cdn-overview.md) do [aplikacji internetowej w usłudze Azure App Service](../app-service/overview.md). Web Apps to usługa do hostowania aplikacji internetowych, interfejsów API REST i zapleczy aplikacji mobilnych. 
 
 Oto strona główna przykładowej statycznej witryny HTML, z którą będziesz pracować:
 
@@ -268,6 +268,6 @@ Które czynności umiesz wykonać:
 Zapoznaj się z następującymi artykułami, aby dowiedzieć się, jak zoptymalizować wydajność usługi CDN:
 
 > [!div class="nextstepaction"]
-> [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Samouczek: Dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
 
 

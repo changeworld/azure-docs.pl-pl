@@ -10,32 +10,32 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226589"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538875"
 ---
 # <a name="quickstart-create-reviews-using-net"></a>Szybki start: tworzenie przeglądów przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
  
 - Tworzenie zestawu przeglądów dla moderatorów-ludzi
 - Uzyskiwanie stanu istniejących przeglądów dla moderatorów-ludzi
 
-Zawartość przechodzi przez automatyczną moderację przed zaplanowaniem przeglądu przez człowieka. W tym artykule opisano jak utworzyć przegląd do moderowania przez człowieka. Pełniejszy scenariusz można znaleźć w samouczkach [Moderowanie zawartości serwisu Facebook](facebook-post-moderation.md) i [Moderowanie katalogu handlu elektronicznego](ecommerce-retail-catalog-moderation.md).
+Zawartość przechodzi przez automatyczną moderację przed zaplanowaniem przeglądu przez człowieka. W tym artykule opisano jak utworzyć przegląd do moderowania przez człowieka. Pełniejszy scenariusz można znaleźć w samouczkach [Moderowanie zawartości serwisu Facebook](facebook-post-moderation.md) i [Moderowanie obrazów produktów na potrzeby handlu elektronicznego](ecommerce-retail-catalog-moderation.md).
 
 W tym artykule założono, że znasz już program Visual Studio i język C#.
 
 ## <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator
 
-Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
-Zapoznaj się [przewodnikiem Szybki start](quick-start.md), aby dowiedzieć się, jak można uzyskać klucz.
+Aby używać usług Content Moderator przy użyciu interfejsu API REST lub zestawu SDK, potrzebny jest klucz subskrypcji.
+Zapoznaj się z [przewodnikiem Szybki start](quick-start.md) i dowiedz się, jak można uzyskać klucz.
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zarejestruj konto narzędzia do przeprowadzania przeglądów, jeśli nie zostało to zrobione w poprzednim kroku
 
-Jeśli używasz usługi Content Moderator w witrynie Azure Portal, także [zarejestruj konto narzędzia do przeprowadzania przeglądów](https://contentmoderator.cognitive.microsoft.com/) i utwórz zespół osób przeglądających. Do wywołania interfejsu API w celu uruchomienia zadania i wyświetlenia przeglądów w narzędziu do przeprowadzaniu przeglądów jest potrzebny identyfikator zespołu i narzędzie do przeprowadzania przeglądów.
+Jeśli używasz usługi Content Moderator w witrynie Azure Portal, także [zarejestruj konto narzędzia do przeglądów](https://contentmoderator.cognitive.microsoft.com/) i utwórz zespół osób przeglądających. Do wywołania interfejsu API w celu uruchomienia zadania i wyświetlenia przeglądów w narzędziu do przeglądów jest potrzebny identyfikator zespołu i narzędzie do przeglądów.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że Twój klucz interfejsu API umożliwia wywołanie interfejsu API przeglądu w celu utworzenia przeglądu.
 

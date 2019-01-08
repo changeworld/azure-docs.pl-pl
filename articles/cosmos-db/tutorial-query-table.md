@@ -9,14 +9,14 @@ ms.component: cosmosdb-table
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: 3d50e51a0d4ccbbd9b21cda87dc457ea1cbe02fd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e0a22256637792f5b84a346c54a79ee314f92e8e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879200"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601801"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API tabel
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Samouczek: wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API tabel
 
 [Interfejs API tabel](table-introduction.md) usługi Azure Cosmos DB obsługuje zapytania OData i [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) dla danych klucz-wartość (tabeli).  
 
@@ -86,7 +86,7 @@ Możesz także wykonywać zapytania za pomocą wyrażenia LINQ, co oznacza odpow
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("people");
+CloudTable table = tableClient.GetTableReference("People");
 
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
     .Where(

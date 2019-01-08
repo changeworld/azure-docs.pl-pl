@@ -9,18 +9,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 4551968cc446bb949d0b18cb77211808169cb907
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103476"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752609"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Samouczek 5: Wyodrębnianie danych o formacie swobodnym
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Samouczek: wyodrębnianie danych o formacie swobodnym za pomocą jednostki Pattern.any
 
 W tym samouczku używamy jednostki Pattern.any do wyodrębniania danych z wypowiedzi, gdzie wypowiedzi są prawidłowo sformatowane i gdzie koniec danych można łatwo pomylić z pozostałymi wyrazami wypowiedzi. 
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
+
+> [!div class="checklist"]
+> * Importowanie aplikacji przykładowej
+> * Dodawanie przykładowych wypowiedzi do istniejącej jednostki
+> * Tworzenie jednostki Pattern.any
+> * Tworzenie wzorca
+> * Szkolenie
+> * Testowanie nowego wzorca
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>Używanie jednostki Pattern.any
 
 Jednostka Pattern.any umożliwia wyszukiwanie danych o swobodnym formacie, gdzie treść jednostki sprawia, że trudno rozróżnić koniec jednostki od reszty wypowiedzi. 
 
@@ -50,24 +64,12 @@ Różna długość zawiera wyrazy, które mogą wprowadzać usługę LUIS w bł�
 |Who authored {FormName}[?] (Kto jest autorem {Nazwa_formularza}[?])|
 |{FormName} is published in French[?] (Czy {Nazwa_formularza} jest publikowany w języku francuskim [?])|
 
-**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
-
-> [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka
-> * Dodawanie przykładowych wypowiedzi do istniejącej jednostki
-> * Tworzenie jednostki Pattern.any
-> * Tworzenie wzorca
-> * Szkolenie
-> * Testowanie nowego wzorca
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+Wykonaj następujące czynności:
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 

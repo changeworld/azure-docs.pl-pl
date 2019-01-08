@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 59354b7f4a1a82d1fa2fd105bd743ecb73526434
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242130"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716110"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
@@ -35,8 +35,8 @@ Ta aplikacja to reklamowa tablica ogłoszeń. Aby utworzyć reklamę, użytkowni
 
 Aplikacja korzysta z [przetwarzania kolejkowego](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby przekazać obciążające procesor zadania związane z tworzeniem miniatur do procesu zaplecza.
 
-## <a name="alternative-architecture-web-apps-and-webjobs"></a>Architektura alternatywna: usługa Web Apps i zadania WebJob
-Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w [usłudze Azure Web Apps](/azure/app-service/) i używanie funkcji [zadań WebJob](https://go.microsoft.com/fwlink/?LinkId=390226) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Architektura alternatywna: usługi App Service i WebJobs
+Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w usłudze [Azure App Service](/azure/app-service/) i używanie funkcji zadań [WebJob](https://go.microsoft.com/fwlink/?LinkId=390226) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure App Service, Cloud Services i Virtual Machines](../app-service/overview-compare.md).
 
 ## <a name="what-youll-learn"></a>Zawartość
 * Jak umożliwić tworzenie aplikacji platformy Azure na komputerze przez zainstalowanie zestawu Azure SDK.
@@ -232,7 +232,7 @@ Parametry połączenia konta magazynu platformy Azure dla projektu roli Sieć We
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **ContosoAdsWeb** w obszarze **Role** w projekcie **ContosoAdsCloudService**, a następnie kliknij polecenie **Właściwości**.
 
     ![Właściwości roli](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Kliknij kartę **Ustawienia**. W polu listy rozwijanej Konfiguracja usługi wybierz wartość **Chmura**.
+2. Kliknij kartę **Ustawienia**. W polu listy rozwijanej **Konfiguracja usługi** wybierz wartość **Chmura**.
 
     ![Konfiguracja chmury](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wybierz wpis **StorageConnectionString**. Na prawym końcu wiersza pojawi się przycisk z wielokropkiem (**...**). Kliknij przycisk z wielokropkiem, aby otworzyć okno dialogowe **Tworzenie parametrów połączenia konta usługi Storage**.
@@ -391,7 +391,7 @@ W tej sekcji będziesz konfigurować parametry połączenia usługi Azure Storag
 8. Pozostając w oknie właściwości **ContosoAdsWorker — [Rola]** dodaj inny ciąg połączenia:
 
    * Nazwa: ContosoAdsDbConnectionString
-   * Typ: ciąg
+   * Wpisz: Ciąg
    * Wartość: wklej parametry połączenia zastosowane już do projektu roli Sieć Web. (Poniższy przykład dotyczy programu Visual Studio 2013. Nie zapomnij zmienić źródła danych, jeśli kopiujesz ten przykład i korzystasz z programu Visual Studio 2015 lub nowszego).
 
        ```
@@ -775,7 +775,7 @@ Film wideo zawierający wprowadzenie do najlepszych rozwiązań i wzorców usłu
 
 Więcej informacji zawierają następujące zasoby:
 
-* [Azure Cloud Services, część 1: wprowadzenie](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Usługi Azure Cloud Services — część 1: Wprowadzenie](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak zarządzać usługami Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak wybrać dostawcę usług w chmurze](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

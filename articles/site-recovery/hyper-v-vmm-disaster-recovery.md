@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 040d0dae7bb16e0c2a79640812b18ad75754ca3e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846610"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794519"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
 
@@ -65,7 +65,7 @@ Przygotuj program VMM w następujący sposób:
 
 Wybierz, co chcesz replikować, i miejsce, do którego chcesz przeprowadzać replikację.
 
-1. Kliknij kolejno pozycje **Site Recovery** > **Krok 1. Przygotowanie infrastruktury** > **Cel ochrony**.
+1. Kliknij pozycje **Site Recovery** > **Krok 1. Przygotowanie infrastruktury** > **Cel ochrony**.
 2. Wybierz pozycję **Do lokacji odzyskiwania**, a następnie wybierz pozycję **Tak, przy użyciu funkcji Hyper-V**.
 3. Wybierz pozycję **Tak**, aby wskazać, że używasz programu VMM do zarządzania hostami funkcji Hyper-V.
 4. Wybierz pozycję **Tak**, jeśli masz pomocniczy serwer VMM. Jeśli wdrażasz replikację między chmurami na pojedynczym serwerze VMM, kliknij pozycję **Nie**. Następnie kliknij przycisk **OK**.

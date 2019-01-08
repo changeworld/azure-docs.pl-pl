@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: Analiza wideo w czasie rzeczywistym za pomocą interfejsu API przetwarzania obrazów'
+title: 'Przykład: analiza wideo w czasie rzeczywistym — przetwarzanie obrazów'
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak można wykonywać analizę niemalże w czasie rzeczywistym na ramkach pobieranych ze strumienia wideo na żywo za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: 058f2ad58665a88d2d3cf3ce20b43ac0fad30000
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 140e45270cf29eec48df260efa29b8aacac2d855
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983199"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580471"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Jak analizować wideo w czasie rzeczywistym
 W przewodniku pokazano, jak można prowadzić analizę niemalże w czasie rzeczywistym na ramkach pobieranych ze strumienia wideo na żywo. Podstawowe składniki takiego systemu to:
@@ -68,13 +69,13 @@ W naszym docelowym systemie „producent — konsument” mamy wątek producenta
 ```CSharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread. 
 while (true)
 {
     // Grab a frame. 
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame. 
     if (ShouldAnalyze(f))
     {
@@ -106,10 +107,10 @@ while (true)
 {
     // Get the oldest task. 
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed. 
     var output = await analysisTask;
-     
+     
     // Consume the exception or result. 
     if (output.Exception != null)
     {
@@ -128,13 +129,13 @@ Aby jak najszybciej uzyskać gotową działającą aplikację, zaimplementowano 
 
 Biblioteka zawiera klasę FrameGrabber, która implementuje omówiony powyżej system producent — konsument, pozwalający na przetwarzanie ramek wideo z kamery internetowej. Użytkownik może określić dokładną formę wywołania interfejsu API, a klasa korzysta ze zdarzeń, aby przekazać do wywołującego kodu informację o tym, kiedy nowa ramka została pozyskana lub dostępny jest nowy wynik analizy.
 
-Dwie przykładowe aplikacje korzystające z biblioteki ilustrują niektóre z tych możliwości. Pierwsza z nich to prosta aplikacja konsolowa, której uproszczoną wersję przedstawiono poniżej. Pobiera ona ramki z domyślnej kamery internetowej i przekazuje je do interfejsu API rozpoznawania twarzy w celu wykrycia twarzy.
+Dwie przykładowe aplikacje korzystające z tej biblioteki ilustrują niektóre z tych możliwości. Pierwsza z nich to prosta aplikacja konsolowa, której uproszczoną wersję przedstawiono poniżej. Pobiera ona ramki z domyślnej kamery internetowej i przekazuje je do interfejsu API rozpoznawania twarzy w celu wykrycia twarzy.
 ```CSharp
 using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
-     
+     
 namespace VideoFrameConsoleApplication
 {
     class Program
@@ -175,9 +176,9 @@ namespace VideoFrameConsoleApplication
 ```
 Druga przykładowa aplikacja jest trochę bardziej interesująca i umożliwia wybranie, który interfejs API może przyjmować ramki wideo. Po lewej stronie aplikacja przedstawia podgląd wideo na żywo, a po prawej stronie pokazuje najnowszy wynik interfejsu API nałożony na odpowiadającą mu ramkę.
 
-W większości trybów będzie występować widoczne opóźnienie między wideo prezentowanym na żywo po lewej stronie a wizualizowaną analizą po prawej stronie. To opóźnienie wynika z czasu potrzebnego na realizację wywołania interfejsu API. Wyjątkiem od tej reguły jest tryb „EmotionsWithClientFaceDetect” (wykrywanie emocji na twarzy po stronie klienta), który przed przesłaniem jakichkolwiek obrazów do usług Cognitive Services przeprowadza lokalny proces wykrywania twarzy na komputerze klienckim za pomocą biblioteki OpenCV. W ten sposób natychmiast dokonujemy wizualizacji wykrytej twarzy, a następnie aktualizujemy emocje po zakończeniu wywołania interfejsu API. Ten przykład demonstruje podejście „hybrydowe”, w którym pewna prosta część przetwarzania może być wykonywana na komputerze klienckim, po czym, jeśli jest to konieczne, za pomocą interfejsów API usług Cognitive Services można rozszerzyć jej wyniki, przeprowadzając bardziej zaawansowaną analizę.
+W większości trybów będzie występować widoczne opóźnienie między obrazem wideo na żywo po lewej stronie a wizualizowaną analizą po prawej stronie. To opóźnienie wynika z czasu potrzebnego na realizację wywołania interfejsu API. Wyjątkiem od tej reguły jest tryb „EmotionsWithClientFaceDetect” (wykrywanie emocji na twarzy po stronie klienta), który przed przesłaniem jakichkolwiek obrazów do usług Cognitive Services przeprowadza lokalny proces wykrywania twarzy na komputerze klienckim za pomocą biblioteki OpenCV. W ten sposób natychmiast dokonujemy wizualizacji wykrytej twarzy, a następnie aktualizujemy emocje po zakończeniu wywołania interfejsu API. Ten przykład demonstruje podejście „hybrydowe”, w którym pewna prosta część przetwarzania może być wykonywana na komputerze klienckim, po czym, jeśli jest to konieczne, za pomocą interfejsów API usług Cognitive Services można rozszerzyć jej wyniki, przeprowadzając bardziej zaawansowaną analizę.
 
-![HowToAnalyzeVideo (Jak analizować wideo)](../../Video/Images/FramebyFrame.jpg)
+![Zrzut ekranu aplikacji LiveCameraSample przedstawiający obrazu z wyświetlanymi tagami](../../Video/Images/FramebyFrame.jpg)
 
 ### <a name="integrating-into-your-codebase"></a>Integrowanie z bazą kodu
 Aby zacząć pracę z tym przykładem, wykonaj następujące kroki:
@@ -189,7 +190,7 @@ Aby zacząć pracę z tym przykładem, wykonaj następujące kroki:
 2. Sklonuj repozytorium GitHub [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 
 3. Otwórz przykład w programie Visual Studio 2015, skompiluj i uruchom przykładowe aplikacje:
-    - W przypadku aplikacji BasicConsoleSample klucz interfejsu API rozpoznawania twarzy jest zapisany bezpośrednio w kodzie w pliku [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - W przypadku aplikacji BasicConsoleSample klucz interfejsu API rozpoznawania twarzy jest zapisany bezpośrednio w kodzie w pliku [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - W przypadku aplikacji LiveCameraSample klucze należy wprowadzić w okienku Ustawienia aplikacji. Zostaną one utrwalone pomiędzy sesjami jako dane użytkownika.
         
 
@@ -201,11 +202,11 @@ Gdy wszystko będzie gotowe do integracji, wystarczy **po prostu odwoływać si�
 Podobnie jak w przypadku wszystkich usług Cognitive Services deweloperzy aplikacji korzystający z naszych interfejsów API i przykładów są zobowiązani do przestrzegania „[Kodeksu postępowania dewelopera usług Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)”. 
 
 
-Funkcje pozwalające na interpretację obrazu, głosu, wideo lub tekstu z biblioteki VideoFrameAnalyzer korzystają z usług Azure Cognitive Services. Microsoft otrzyma obrazy, pliki audio i wideo oraz inne przekazane dane (za pośrednictwem tej aplikacji) i może z nich korzystać w celu doskonalenia usługi. Prosimy użytkowników o pomoc w ochronie osób, których dane aplikacja wysyła do usług Azure Cognitive Services. 
+Funkcje pozwalające na interpretację obrazu, głosu, wideo lub tekstu z biblioteki VideoFrameAnalyzer korzystają z usług Azure Cognitive Services. Do firmy Microsoft są wysyłane obrazy, pliki audio i wideo oraz inne dane przekazywane za pośrednictwem tej aplikacji. Dane te mogą zostać użyte w celu udoskonalania usług. Prosimy o pomoc w ochronie prywatności osób, których dane są wysyłane do usług Azure Cognitive Services przy użyciu aplikacji. 
 
 
 ## <a name="summary"></a>Podsumowanie
 W tym przewodniku pokazano, jak przeprowadzać analizę niemalże w czasie rzeczywistym dotyczącą transmisji strumieniowych wideo na żywo przy użyciu interfejsów API rozpoznawania twarzy, przetwarzania obrazów i rozpoznawania emocji oraz jak można wykorzystać nasz przykładowy kod, aby rozpocząć pracę. Tworzenie aplikacji możesz rozpocząć za pomocą bezpłatnych kluczy interfejsu API na [stronie tworzenia konta usługi Microsoft Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). 
 
-Zachęcamy do przekazywania opinii i sugestii w [repozytorium GitHub](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) lub, w przypadku szerszych informacji zwrotnych dotyczących interfejsów API, na naszej [witrynie UserVoice](https://cognitive.uservoice.com/).
+Zachęcamy do przekazywania opinii i sugestii w [repozytorium GitHub](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) lub, w przypadku szerszych informacji zwrotnych dotyczących interfejsów API, na naszej [witrynie UserVoice](https://cognitive.uservoice.com/).
 

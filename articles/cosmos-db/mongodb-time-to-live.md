@@ -1,23 +1,23 @@
 ---
 title: Funkcja czasu wygaśnięcia (TTL) poszczególnych dokumentów w bazie danych MongoDB w usłudze Azure Cosmos DB
-description: Dowiedz się, jak ustawić wartość czasu wygaśnięcia dla dokumentów bazy danych usługi Cosmos Azure utworzonych za pośrednictwem interfejsu API bazy danych MongoDB w celu automatycznego przeczyszczania ich z systemu po upływie określonego czasu.
+description: Dowiedz się, jak ustawić wartość czasu wygaśnięcia przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w celu automatycznego przeczyszczania ich z systemu po upływie określonego czasu.
 services: cosmos-db
-author: orestis-ms
-ms.author: orkostak
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 08/10/2018
-ms.openlocfilehash: 547ee489581b7e7e9203151fbfcdaad45dca8ea1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.openlocfilehash: d7c811dba3ad9b894fd5dae47e898f51ec4d05e5
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868765"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790099"
 ---
-# <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>Wygasanie danych w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB
+# <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Wygasanie danych za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-Funkcjonalność czasu wygaśnięcia (TTL, time-to-live) umożliwia automatyczne wygasanie danych bazy danych. Interfejs API bazy danych MongoDB korzysta z funkcji czasu wygaśnięcia usługi Azure Cosmos DB. Obsługiwane są dwa tryby: ustawianie domyślnej wartości czasu wygaśnięcia dla całej kolekcji oraz ustawianie wartości czasu wygaśnięcia dla poszczególnych dokumentów. Logika zarządzająca indeksami czasu wygaśnięcia i wartościami czasu wygaśnięcia dla poszczególnych dokumentów w interfejsie API bazy danych MongoDB jest [taka sama jak w usłudze Azure Cosmos DB](../cosmos-db/mongodb-indexing.md).
+Funkcjonalność czasu wygaśnięcia (TTL, time-to-live) umożliwia automatyczne wygasanie danych bazy danych. Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB korzysta z podstawowych możliwości czasu wygaśnięcia usługi Cosmos DB. Obsługiwane są dwa tryby: ustawianie domyślnej wartości czasu wygaśnięcia dla całej kolekcji oraz ustawianie wartości czasu wygaśnięcia dla poszczególnych dokumentów. Logika zarządzająca indeksami czasu wygaśnięcia i wartościami czasu wygaśnięcia dla poszczególnych dokumentów w interfejsie API usługi Cosmos DB dla bazy danych MongoDB jest [taka sama jak w usłudze Cosmos DB](../cosmos-db/mongodb-indexing.md).
 
 ## <a name="ttl-indexes"></a>Indeksy czasu wygaśnięcia
 Aby włączyć czas wygaśnięcia dla całej kolekcji, należy utworzyć [„Indeks czasu wygaśnięcia”](../cosmos-db/mongodb-indexing.md). Indeks czasu wygaśnięcia jest indeksem dla pola _ts z wartością „expireAfterSeconds”.
@@ -72,10 +72,11 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 ``` 
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>Jak aktywować funkcję czasu wygaśnięcia poszczególnych dokumentów
-Funkcję czasu wygaśnięcia poszczególnych dokumentów można aktywować za pomocą karty funkcji w wersji zapoznawczej konta interfejsu API bazy danych MongoDB w witrynie Azure Portal.
+
+Funkcję czasu wygaśnięcia poszczególnych dokumentów można aktywować za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
 ![Zrzut ekranu przedstawiający aktywację funkcji czasu wygaśnięcia poszczególnych dokumentów w portalu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>Następne kroki
-* [Automatyczne wygasanie danych w kolekcjach usługi Azure Cosmos DB przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)
-* [Indeksowanie w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB](../cosmos-db/mongodb-indexing.md)
+* [Expire data in Azure Cosmos DB automatically with time to live](../cosmos-db/time-to-live.md) (Automatyczne wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia)
+* [Indexing your Cosmos database configured with Azure Cosmos DB's API for MongoDB](../cosmos-db/mongodb-indexing.md) (Indeksowanie bazy danych usługi Cosmos skonfigurowanej przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB)

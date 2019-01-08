@@ -1,18 +1,19 @@
 ---
-title: Monitorowanie przestrzeni za pomocą usługi Azure Digital Twins | Microsoft Docs
+title: 'Samouczek: Monitorowanie przestrzeni za pomocą usługi Azure Digital Twins | Microsoft Docs'
 description: Dowiedz się, jak aprowizować zasoby przestrzenne i monitorować warunki pracy za pomocą usługi Azure Digital Twins, wykonując czynności opisane w tym samouczku.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584200"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556105"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Samouczek: aprowizowanie budynku i monitorowanie warunków pracy za pomocą usługi Azure Digital Twins
 

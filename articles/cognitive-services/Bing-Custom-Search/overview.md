@@ -1,7 +1,7 @@
 ---
-title: Czym jest wyszukiwanie niestandardowe Bing?
+title: Co to jest interfejs API wyszukiwania niestandardowego Bing?
 titlesuffix: Azure Cognitive Services
-description: Ogólne omówienie wyszukiwania niestandardowego Bing.
+description: Interfejs API wyszukiwania niestandardowego Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,48 +10,42 @@ ms.component: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: aahi
-ms.openlocfilehash: 2be1d76cc37de2ce2965cc08c116b37286bd8b52
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8dae58b1ae58a634ca6a566424a7c2d3fcf6add2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163249"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554609"
 ---
-# <a name="what-is-bing-custom-search"></a>Czym jest wyszukiwanie niestandardowe Bing?
+# <a name="what-is-the-bing-custom-search-api"></a>Co to jest interfejs API wyszukiwania niestandardowego Bing?
 
-Wyszukiwanie niestandardowe Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów. Na przykład jeśli jesteś właścicielem witryny internetowej, w której znajduje się środowisko wyszukiwania, możesz określić domeny, witryny i strony internetowe, które będą przeszukiwane przez usługę Bing. Użytkownicy zobaczą wyniki wyszukiwania dostosowane do zawartości, która ich interesuje, zamiast przewijać kolejne strony ogólnych wyników wyszukiwania zawierające nieistotną zawartość.
+Interfejs API wyszukiwania niestandardowego Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów bez wyświetlania reklam. Możesz określać domeny i strony internetowe do wyszukiwania w usłudze Bing, a także przypinać, podnosić lub obniżać określoną zawartość, aby tworzyć niestandardowe widoki internetowe i ułatwiać użytkownikom szybkie znajdowanie odpowiednich wyników wyszukiwania. 
 
-Aby utworzyć niestandardowy widok internetowy, użyj [portalu](https://customsearch.ai) usługi wyszukiwania niestandardowego Bing. Portal umożliwia utworzenie wystąpienia wyszukiwania niestandardowego, określającego domeny, witryny i strony internetowe, które będą lub nie będą przeszukiwane przez usługę Bing. Oprócz określenia adresów URL treści, które znasz, możesz użyć portalu do znalezienia istotnych treści, które możesz dodać.
+## <a name="features"></a>Funkcje
 
-Portal umożliwia także przypięcie określonej strony internetowej na początku listy wyników wyszukiwania w przypadku wprowadzenia przez użytkownika określonego terminu. 
+|Cecha  |Opis  |
+|---------|---------|
+|[Sugestie dotyczące wyszukiwania niestandardowego w czasie rzeczywistym](define-custom-suggestions.md)     | Podaj sugestie dotyczące wyszukiwania, które mogą być wyświetlane jako lista rozwijana podczas wpisywania przez użytkowników.       | 
+|[Środowiska niestandardowego wyszukiwania obrazów](get-images-from-instance.md)     | Pozwól użytkownikom wyszukiwać obrazy z domen i witryn internetowych określonych w Twoim wystąpieniu wyszukiwania niestandardowego.        |        
+|[Środowiska niestandardowego wyszukiwania wideo](get-videos-from-instance.md)     | Pozwól użytkownikom wyszukiwać filmy wideo z domen i witryn określonych w Twoim wystąpieniu wyszukiwania niestandardowego.        |    
+|[Udostępnianie wystąpienia wyszukiwania niestandardowego](share-your-custom-search.md)     | Edytuj i testuj wystąpienie wyszukiwania zespołowo, udostępniając je członkom Twojego zespołu.        | 
+|[Konfigurowanie interfejsu użytkownika dla aplikacji i witryn internetowych](hosted-ui.md)     | Edytuj i testuj wystąpienie wyszukiwania zespołowo, udostępniając je członkom Twojego zespołu.        | 
+## <a name="workflow"></a>Przepływ pracy
 
-Po zdefiniowaniu wystąpienia możesz zintegrować wyszukiwanie niestandardowe ze swoją witryną internetową, aplikacją klasyczną lub aplikacją mobilną przez wywołanie interfejsu API wyszukiwania niestandardowego Bing. Jeśli masz aplikację lub witrynę internetową, możesz skorzystać z hostowanego interfejsu użytkownika do obsługi interfejsu wyszukiwania.
+Używając [portalu wyszukiwania niestandardowego Bing](https://customsearch.ai), możesz utworzyć wystąpienie wyszukiwania dostosowanego. Portal umożliwia utworzenie wystąpienia wyszukiwania niestandardowego, określającego domeny, witryny i strony internetowe, które będą lub nie będą przeszukiwane przez usługę Bing. Portal umożliwia również: wyświetlanie podglądu środowiska wyszukiwania, dostosowywanie rankingów wyszukiwania udostępnianych przez interfejs API oraz opcjonalnie konfigurowanie interfejsu użytkownika z możliwością wyszukiwania, aby można było renderować go w Twoich witrynach internetowych i aplikacjach.
 
-Na poniższej ilustracji pokazano, jak łatwo można integrować funkcję wyszukiwania niestandardowego.
+Po utworzeniu wystąpienia wyszukiwania możesz zintegrować je (opcjonalnie także interfejs użytkownika) z witryną internetową lub aplikacją, wywołując interfejs API wyszukiwania niestandardowego Bing:
 
-![picture alt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "Jak działa wyszukiwanie niestandardowe Bing.")
+![Obraz pokazujący, że można nawiązać połączenie z funkcją wyszukiwania niestandardowego Bing za pośrednictwem interfejsu API](media/BCS-Overview.png "Sposób działania wyszukiwania niestandardowego Bing.")
 
-## <a name="adding-custom-search-box-suggestions"></a>Dodawanie niestandardowych sugestii w polu wyszukiwania
-
-Możesz wzbogacić środowisko wyszukiwania niestandardowego, dodając niestandardowe sugestie w polu wyszukiwania. Ta funkcja umożliwia podawanie niestandardowych sugestii wyszukiwań, dopasowanych do środowiska wyszukiwania. Podczas wpisywania tekstu w polu wyszukiwania przez użytkownika jest wyświetlana lista rozwijana zawierająca ciągi zapytań sugerowane na podstawie częściowo wpisanego ciągu zapytania. Możesz określić, czy mają być zwracane tylko wprowadzone przez Ciebie sugestie niestandardowe, czy również sugestie usługi Bing. [Dowiedz się więcej](define-custom-suggestions.md).
-
-## <a name="adding-custom-image-search-experience"></a>Dodawanie środowiska niestandardowego wyszukiwania obrazów
-
-Możesz wzbogacić środowisko wyszukiwania niestandardowego, dodając do niego wyszukiwanie obrazów. Podobnie jak w przypadku wyników z Internetu interfejs API wyszukiwania niestandardowego obsługuje wyszukiwanie obrazów w witrynach internetowych uwzględnionych na liście w Twoim wystąpieniu. [Dowiedz się więcej](get-images-from-instance.md).
-
-## <a name="adding-custom-video-search-experience"></a>Dodawanie środowiska niestandardowego wyszukiwania wideo
-
-Możesz wzbogacić środowisko wyszukiwania niestandardowego, dodając do niego wyszukiwanie wideo. Podobnie jak w przypadku wyników z Internetu interfejs API wyszukiwania niestandardowego obsługuje wyszukiwanie wideo w witrynach internetowych uwzględnionych na liście w Twoim wystąpieniu. [Dowiedz się więcej](get-videos-from-instance.md).
-
-## <a name="sharing-your-custom-search-instance-with-others"></a>Udostępnianie wystąpienia wyszukiwania niestandardowego innym osobom
-
-Możesz łatwo umożliwić wspólne edytowanie i testowanie wystąpienia, udostępniając je członkom swojego zespołu. [Dowiedz się więcej](share-your-custom-search.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby szybko rozpocząć pracę, zobacz [Tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md).
 
 Aby uzyskać szczegółowe informacje na temat dostosowywania wystąpienia wyszukiwania, zobacz [Define a custom search instance (Definiowanie wystąpienia wyszukiwania niestandardowego)](define-your-custom-view.md).
+
+Pamiętaj o przeczytaniu [wymagań dotyczących używania i wyświetlania usługi Bing](./use-and-display-requirements.md) w celu korzystania z wyników wyszukiwania w Twoich usługach i aplikacjach.
 
 Zapoznaj się z dokumentacją poszczególnych punktów końcowych wyszukiwania niestandardowego. Dokumentacja zawiera listę punktów końcowych, nagłówków i parametrów zapytań, które są stosowane w żądaniach wyników wyszukiwania. Zawiera także definicje obiektów odpowiedzi.
 
@@ -60,5 +54,3 @@ Zapoznaj się z dokumentacją poszczególnych punktów końcowych wyszukiwania n
 - [Niestandardowy interfejs API wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
 - [Interfejs API niestandardowego automatycznego sugerowania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
 
-
-Nie zapomnij przeczytać [wymagań w zakresie korzystania z usługi Bing i wyświetlania danych z niej](./use-and-display-requirements.md), aby nie złamać żadnych reguł dotyczących korzystania z wyników wyszukiwania.

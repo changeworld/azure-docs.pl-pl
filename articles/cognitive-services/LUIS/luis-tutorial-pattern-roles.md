@@ -9,18 +9,36 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094410"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753119"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Samouczek 4. Wyodrębnianie wzorców powiązanych kontekstowo
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: wyodrębnianie wzorców powiązanych kontekstowo przy użyciu ról
 
 W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.  Gdy korzystasz z wzorców, do celów intencji potrzebnych jest mniej wypowiedzi.
+
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
+
+> [!div class="checklist"]
+> * Importowanie aplikacji przykładowej
+> * Tworzenie nowych jednostek
+> * Tworzenie nowej intencji
+> * Szkolenie
+> * Publikowanie
+> * Pobieranie intencji i jednostek z punktu końcowego
+> * Tworzenie wzorca z rolami
+> * Tworzenie listy fraz Cities (Miasta)
+> * Pobieranie intencji i jednostek z punktu końcowego
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-roles-in-patterns"></a>Używanie ról we wzorcach
 
 Celem ról jest wyodrębnienie kontekstowo powiązanych jednostek z wypowiedzi. W wypowiedzi `Move new employee Robert Williams from Sacramento and San Francisco` wartości miasta początkowego i docelowego są ze sobą powiązane, a każda z tych lokalizacji jest określona za pomocą wspólnego języka. 
 
@@ -37,27 +55,12 @@ Ponieważ przykładowa wypowiedź `Move new employee Robert Williams from Sacram
 
 Jeśli masz problem z wykrywaniem prostych jednostek, ponieważ określają one nazwę, na przykład nazwę miasta, rozważ dodanie listy fraz zawierających podobne wartości. Pomaga to w wykrywaniu nazwy miasta poprzez dostarczenie usłudze LUIS dodatkowego sygnału dotyczącego tego rodzaju słowa lub frazy. Listy fraz ułatwiają działanie wzorca tylko w zakresie wykrywania jednostek, co jest konieczne do uzyskania dopasowania. 
 
-**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
-
-> [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka
-> * Tworzenie nowych jednostek
-> * Tworzenie nowej intencji
-> * Szkolenie
-> * Publikowanie
-> * Pobieranie intencji i jednostek z punktu końcowego
-> * Tworzenie wzorca z rolami
-> * Tworzenie listy fraz Cities (Miasta)
-> * Pobieranie intencji i jednostek z punktu końcowego
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+Wykonaj następujące czynności:
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 

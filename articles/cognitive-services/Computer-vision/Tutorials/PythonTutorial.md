@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: interfejs API przetwarzania obrazów dla języka Python'
+title: 'Samouczek: wykonywanie operacji na obrazach — Python'
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać interfejsu API przetwarzania obrazów za pomocą języka Python przy użyciu notesów Jupyter. Wyniki wizualizuj przy użyciu popularnych bibliotek.
 services: cognitive-services
@@ -8,24 +8,25 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: kefre
-ms.openlocfilehash: 16054d19c1ce6f211ebd3e2f0bbc4d152a255dda
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.openlocfilehash: 55e5168c36eb16944142c2deaae9bc94d60d2fe4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276971"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582018"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>Samouczek: interfejs API przetwarzania obrazów dla języka Python
+# <a name="tutorial-computer-vision-api-python"></a>Samouczek: interfejs API przetwarzania obrazów języka Python
 
-W tym samouczku pokazano, jak używać interfejsu API przetwarzania obrazów w języku Python oraz jak wizualizować wyniki za pomocą popularnych bibliotek. Do uruchomienia tego samouczka użyjesz programu Jupyter. Aby dowiedzieć się, jak zacząć korzystać z interakcyjnych notesów Jupyter, zapoznaj się z [dokumentacją programu Jupyter](http://jupyter.readthedocs.io/en/latest/index.html).
+W tym samouczku pokazano, jak używać interfejsu API przetwarzania obrazów w języku Python oraz jak wizualizować wyniki za pomocą popularnych bibliotek. Do uruchomienia tego samouczka użyjesz programu Jupyter. Aby dowiedzieć się, jak zacząć korzystać z interakcyjnych notesów Jupyter, zapoznaj się z [dokumentacją programu Jupyter](https://jupyter.readthedocs.io/en/latest/index.html).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Środowisko Python w wersji 2.7 lub nowszej albo 3.5 lub nowszej](https://www.python.org/downloads/)
 - Narzędzie [pip](https://pip.pypa.io/en/stable/installing/)
-- Zainstalowana aplikacja [Jupyter Notebook](http://jupyter.org/install)
+- Zainstalowana aplikacja [Jupyter Notebook](https://jupyter.org/install)
 
 ## <a name="open-the-tutorial-notebook-in-jupyter"></a>Otwieranie notesu samouczka w programie Jupyter 
 

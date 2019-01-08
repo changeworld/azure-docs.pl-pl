@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie urządzeń IoT z poziomu rozwiązania platformy Azure — samouczek | Microsoft Docs
+title: Samouczek dotyczący monitorowania urządzeń IoT z poziomu rozwiązania platformy Azure — Azure | Microsoft Docs
 description: W tym samouczku pokazano, jak monitorować urządzenia IoT przy użyciu akceleratora rozwiązań do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d8afe474f88f0881de5b0e7b132009c6e03ac2af
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7dd7612817f83fe713759965fc28f6f86a0d624a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824748"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602532"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: monitorowanie urządzeń IoT
+# <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: Monitorowanie urządzeń IoT
 
 W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania w celu monitorowania połączonych urządzeń IoT. Użyjesz pulpitu nawigacyjnego rozwiązania, aby wyświetlać dane telemetryczne, informacje na temat urządzenia, alerty i wskaźniki KPI.
 

@@ -1,21 +1,21 @@
 ---
-title: Kopiowanie danych na urządzenie Microsoft Azure Data Box | Microsoft Docs
-description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box
+title: Kopiowanie danych na urządzenie Microsoft Azure Data Box za pośrednictwem protokołu SMB | Microsoft Docs
+description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box za pośrednictwem protokołu SMB
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 12/19/2018
 ms.author: alkohli
-ms.openlocfilehash: b59830677ac8c07c6b7adbab24c82ca25d71f5a0
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093463"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790304"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box 
+# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk za pośrednictwem protokołu SMB
 
 W tym samouczku opisano sposób nawiązywania połączenia i kopiowania danych z komputera-hosta za pomocą lokalnego interfejsu internetowego użytkownika. Opisano też sposób przygotowywania do wysłania urządzenia Data Box.
 
@@ -30,32 +30,29 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono [samouczek dotyczący konfigurowania urządzenia Azure Data Box](data-box-deploy-set-up.md).
+1. Ukończono [Samouczek: konfigurowanie usługi Azure Data Box](data-box-deploy-set-up.md).
 2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
 3. Masz komputer-host zawierający dane, które mają zostać skopiowane na urządzenie Data Box. Na komputerze hosta wymagane jest:
     - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-system-requirements.md).
-    - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
+    - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, użyj połączenia danych 1 GbE (będzie to miało negatywny wpływ na szybkość kopiowania). 
 
 ## <a name="connect-to-data-box"></a>Nawiązywanie połączenia z urządzeniem Data Box
 
 W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
-- Maksymalnie jeden udział dla konta magazynu w warstwie Premium lub konta magazynu obiektów blob. 
+- Maksymalnie jeden udział dla konta magazynu w warstwie Premium lub konta magazynu obiektów blob.
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
-Rozważmy następujący przykład. 
+W poniższej tabeli przedstawiono ścieżkę UNC do udziałów na urządzeniu Data Box i adres URL ścieżki w usłudze Azure Storage, pod który przekazywane są dane. Ostateczny adres URL w usłudze Azure Storage można uzyskać ze ścieżki udziału UNC.
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Blokowe obiekty blob platformy Azure | <li>Ścieżka UNC do udziałów: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Stronicowe obiekty blob platformy Azure  | <li>Ścieżka UNC do udziałów: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure Files       |<li>Ścieżka UNC do udziałów: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-- Konto magazynu: *Mystoracct*
-- Udział dla blokowych obiektów blob: *Mystoracct_BlockBlob/my-container/blob*
-- Udział dla stronicowych obiektów blob: *Mystoracct_PageBlob/my-container/blob*
-- Udział pliku: *Mystoracct_AzFile/my-share*
-
-W zależności od tego, czy Twoje urządzenie Data Box jest podłączone do komputera-hosta z systemem Windows Server, czy do hosta z systemem Linux, czynności wymagane do nawiązania połączenia i kopiowania mogą być różne.
-
-### <a name="connect-via-smb"></a>Nawiązywanie połączenia przy użyciu protokołu SMB 
-
-Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące czynności, aby nawiązać połączenie z urządzeniem Data Box.
+Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące kroki, aby nawiązać połączenie z urządzeniem Data Box.
 
 1. Pierwszym krokiem jest uwierzytelnienie i uruchomienie sesji. Przejdź do pozycji **Połącz i skopiuj**. Kliknij przycisk **Pobierz poświadczenia**, aby pobrać poświadczenia dostępu do udziałów skojarzonych z kontem magazynu. 
 
@@ -65,16 +62,16 @@ Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące
     
     ![Pobieranie poświadczeń udziału 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Uzyskaj dostęp do udziałów skojarzonych z Twoim kontem magazynu (Mystoracct w poniższym przykładzie). Aby uzyskać dostęp do udziałów, użyj ścieżki `\\<IP of the device>\ShareName`. W zależności od formatu danych nawiąż połączenie z udziałami (użyj nazwy udziału), korzystając z następującego adresu: 
-    - *\\<IP address of the device>\Mystoracct_Blob*
-    - *\\<IP address of the device>\Mystoracct_Page*
-    - *\\<IP address of the device>\Mystoracct_AzFile*
-    
-    Aby nawiązać połączenie z udziałami z Twojego komputera-hosta, otwórz okno polecenia. W wierszu polecenia wpisz polecenie:
+3. Aby uzyskać dostęp do udziałów skojarzonych z kontem magazynu (*devicemanagertest1* w poniższym przykładzie) z komputera-hosta, otwórz okno polecenia. W wierszu polecenia wpisz polecenie:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Po wyświetleniu monitu wprowadź hasło dla udziału. W poniższym przykładzie pokazano nawiązywanie połączenia z udziałem za pomocą poprzedniego polecenia.
+    W zależności od formatu danych ścieżki udziałów są następujące:
+    - Blokowe obiekty blob platformy Azure — `\\10.126.76.172\devicemanagertest1_BlockBlob`
+    - Stronicowe obiekty blob platformy Azure — `\\10.126.76.172\devicemanagertest1_PageBlob`
+    - Pliki platformy Azure — `\\10.126.76.172\devicemanagertest1_AzFile`
+    
+4. Po wyświetleniu monitu wprowadź hasło dla udziału. W poniższym przykładzie pokazano nawiązywanie połączenia z udziałem za pomocą poprzedniego polecenia.
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
@@ -82,53 +79,29 @@ Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące
     The command completed successfully.
     ```
 
-4. Naciśnij klawisze Windows + R. W oknie **Uruchamianie** podaj `\\<device IP address>`. Kliknij przycisk **OK**. Spowoduje to otworzenie Eksploratora plików. Teraz udziały powinny być widoczne jako foldery.
+4. Naciśnij klawisze Windows + R. W oknie **Uruchamianie** podaj `\\<device IP address>`. Kliknij przycisk **OK**, aby otworzyć Eksploratora plików.
     
     ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5.  **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Czasami na ikonie folderu może być wyświetlany szary krzyżyk. Ten krzyżyk nie oznacza warunku błędu. Foldery są oflagowywane przez aplikację w celu śledzenia stanu.
+    Teraz udziały powinny być widoczne jako foldery.
     
-    ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
-
-### <a name="connect-via-nfs"></a>Nawiązywanie połączenia przy użyciu sieciowego systemu plików 
-
-Jeśli używasz komputera-hosta z systemem Linux, wykonaj następujące czynności, aby skonfigurować urządzenie Data Box na potrzeby zezwalania na dostęp do klientów sieciowego systemu plików.
-
-1. Podaj adresy IP dozwolonych klientów, którzy mogą uzyskiwać dostęp do udziału. W lokalnym internetowym interfejsie użytkownika przejdź do strony **Połącz i skopiuj**. W obszarze **Ustawienia sieciowego systemu plików** kliknij przycisk **Dostęp klienta do sieciowego systemu plików**. 
-
-    ![Konfigurowanie dostępu klienta do sieciowego systemu plików 1](media/data-box-deploy-copy-data/nfs-client-access.png)
-
-2. Podaj adres IP klienta sieciowego systemu plików i kliknij przycisk **Dodaj**. Powtarzając ten krok, możesz skonfigurować dostęp dla wielu klientów sieciowego systemu plików. Kliknij przycisk **OK**.
-
-    ![Konfigurowanie dostępu klienta do sieciowego systemu plików 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
-
-2. Upewnij się, że na komputerze-hoście z systemem Linux zainstalowano [obsługiwaną wersję](data-box-system-requirements.md) klienta sieciowego systemu plików. Użyj konkretnej wersji dla określonej dystrybucji systemu Linux. 
-
-3. Po zainstalowaniu klienta sieciowego systemu plików użyj następującego polecenia, aby zainstalować udział sieciowego systemu plików na Twoim urządzeniu Data Box:
-
-    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
-
-    Poniższy przykład pokazuje, jak nawiązać połączenie z urządzeniem Data Box za pomocą sieciowego systemu plików. Adres IP urządzenia Data Box: IP `10.161.23.130`. Udział `Mystoracct_Blob` jest zainstalowany na maszynie ubuntuVM. Punkt instalacji: `/home/databoxubuntuhost/databox`.
-
-    `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
-
+    **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *$root* na koncie magazynu.
+    
+    ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
 ## <a name="copy-data-to-data-box"></a>Kopiowanie danych na urządzenie Data Box
 
 Po nawiązaniu połączenia z udziałami urządzenia Data Box następnym krokiem jest skopiowanie danych. Przed rozpoczęciem kopiowania danych należy uwzględnić następujące kwestie:
 
 - Upewnij się, że dane są kopiowane do udziałów odpowiadających właściwym formatom danych. To znaczy na przykład, że dane blokowych obiektów blob są kopiowane do udziału dla blokowych obiektów blob. Jeśli format danych nie pasuje do odpowiedniego typu udziału, na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
--  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box limits](data-box-limits.md) (Ograniczenia usług Azure Storage i urządzenia Data Box). 
+-  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Limity usługi Azure Storage i urządzenia Data Box](data-box-limits.md).
 - Jeśli dane przekazywane przy użyciu urządzenia Data Box będą jednocześnie przekazywane przez inne aplikacje, poza urządzeniem Data Box, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 - Nie zaleca się jednoczesnego używania protokołu SMB i sieciowego systemu plików ani kopiowania tych samych danych do tego samego końcowego miejsca docelowego na platformie Azure. W takich przypadkach nie można określić ostatecznego wyniku.
+- Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *$root* na koncie magazynu.
 
-### <a name="copy-data-via-smb"></a>Kopiowanie danych za pośrednictwem protokołu SMB
-
-Po nawiązaniu połączenia z udziałem SMB zainicjuj kopiowanie danych. 
-
-Do kopiowania danych możesz użyć dowolnego narzędzia kopiowania plików zgodnego z protokołem SMB, na przykład narzędzia Robocopy. Za pomocą narzędzia Robocopy można zainicjować wiele zadań kopiowania. Użyj następującego polecenia:
+Po nawiązaniu połączenia z udziałem SMB rozpocznij kopiowanie danych. Do kopiowania danych możesz użyć dowolnego narzędzia kopiowania plików zgodnego z protokołem SMB, na przykład narzędzia Robocopy. Za pomocą narzędzia Robocopy można zainicjować wiele zadań kopiowania. Użyj następującego polecenia:
     
-    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
+    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
  Atrybuty opisano w poniższej tabeli.
     
@@ -138,8 +111,8 @@ Do kopiowania danych możesz użyć dowolnego narzędzia kopiowania plików zgod
 |/r:     |Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania.         |
 |/w:     |Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach.         |
 |/is     |Zawiera te same pliki.         |
-|/nfl     |Określa, że nazwy plików nie mają być rejestrowane w dzienniku.         |
-|/ndl    |Określa, że nazwy katalogów nie mają być rejestrowane w dzienniku.        |
+|/nfl     |Określa, że nazwy plików nie są rejestrowane.         |
+|/ndl    |Określa, że nazwy katalogów nie są rejestrowane.        |
 |/np     |Określa, że postęp operacji kopiowania (liczba skopiowanych do tej pory plików lub katalogów) nie będzie wyświetlany. Wyświetlanie postępu znacznie obniża wydajność.         |
 |/MT     | Użyj wielowątkowości (zaleca się użycie 32 lub 64 wątków). Ta opcja nie jest używana z plikami zaszyfrowanymi. Może być konieczne oddzielne plików zaszyfrowanych od niezaszyfrowanych. Jednak kopiowanie jednowątkowe znacznie obniża wydajność.           |
 |/fft     | Użyj, aby zmniejszyć stopień szczegółowości sygnatury czasu dla każdego systemu plików.        |
@@ -223,80 +196,11 @@ W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma 
     
    ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
-### <a name="copy-data-via-nfs"></a>Kopiowanie danych za pośrednictwem sieciowego systemu plików
-
-Jeśli korzystasz z komputera-hosta z systemem Linux, użyj narzędzia do kopiowania podobnego do narzędzia Robocopy. W systemie Linux są dostępne na przykład narzędzia [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) lub [Ultracopier](https://ultracopier.first-world.info/).  
-
-Polecenie `cp` jest jedną z najlepszych opcji do kopiowania katalogów. Aby uzyskać więcej informacji dotyczących użycia, przejdź do [stron man narzędzia cp](http://man7.org/linux/man-pages/man1/cp.1.html).
-
-W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego należy przestrzegać następujących wytycznych:
-
- - Zainstaluj pakiet **CIFS Utils** lub **NFS Utils** w zależności od systemu plików używanego przez Twojego klienta systemu Linux.
-
-    `sudo apt-get install cifs-utils`
-
-    `sudo apt-get install nfs-utils`
-
- -  Zainstaluj narzędzia **Rsync** i **Parallel** (polecenia różnią się w zależności od wersji dystrybucji systemu Linux).
-
-    `sudo apt-get install rsync`
-   
-    `sudo apt-get install parallel` 
-
- - Utwórz punkt instalacji.
-
-    `sudo mkdir /mnt/databox`
-
- - Zainstaluj wolumin.
-
-    `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
-
- - Zdubluj strukturę katalogów folderów.  
-
-    `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
-
- - Skopiuj pliki. 
-
-    `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
-
-     gdzie j określa liczbę przetwarzań równoległych, X = liczba równoległych kopii
-
-     Na początku zaleca się użycie 16 równoległych kopii i zwiększanie liczby wątków w zależności od dostępności zasobów.
 
 ## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
 
-Ostatnim krokiem jest przygotowanie urządzenia do wysłania. W tym kroku wszystkie udziały urządzenia zostają przeniesione do trybu offline. Po rozpoczęciu przygotowywania urządzenia do wysłania dostęp do udziałów nie jest już możliwy.
-1. Przejdź do pozycji **Przygotowanie do wysłania** i kliknij przycisk **Rozpocznij przygotowywanie**. 
-   
-    ![Przygotowanie do wysłania 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
-2. Domyślnie sumy kontrolne są obliczane podczas przygotowania do wysłania. Obliczanie sum kontrolnych może trochę potrwać — w zależności od rozmiaru danych. Kliknij przycisk **Rozpocznij przygotowywanie**.
-    1. Udziały urządzenia zostaną przeniesione w tryb offline, a urządzenie zostanie zablokowane na czas przygotowywania do wysłania.
-        
-        ![Przygotowanie do wysłania 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 
-   
-    2. Po zakończeniu przygotowywania urządzenia jego stan zostanie zaktualizowany do wartości *Gotowe do wysyłki*. 
-        
-        ![Przygotowanie do wysłania 1](media/data-box-deploy-copy-data/prepare-to-ship3.png)
-
-    3. Pobierz listę plików (manifest), która została skopiowana w ramach tego procesu. Później możesz użyć tej listy, aby zweryfikować pliki przekazane na platformę Azure.
-        
-        ![Przygotowanie do wysłania 1](media/data-box-deploy-copy-data/prepare-to-ship4.png)
-
-3. Zamknij urządzenie. Przejdź do strony **Zamknij lub uruchom ponownie** i kliknij przycisk **Zamknij**. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **OK**, aby kontynuować.
-4. Odłącz kable. Następnym krokiem jest wysłanie urządzenia do firmy Microsoft.
-
- 
-<!--## Appendix - robocopy parameters
-
-This section describes the robocopy parameters used when copying the data to optimize the performance.
-
-|    Platform    |    Mostly small files < 512 KB                           |    Mostly medium  files 512 KB-1 MB                      |    Mostly large files > 1 MB                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 Robocopy sessions <br> 16 threads per sessions    |    3 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 24 threads per sessions    |  |
-|    Data Box Heavy     |    6 Robocopy sessions <br> 24 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |   
-|    Data Box Disk         |    4 Robocopy sessions <br> 16 threads per sessions             |    2 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 16 threads per sessions    |   
--->
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -307,7 +211,7 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, tak
 > * Kopiowanie danych na urządzenie Data Box
 > * Przygotowywanie do wysłania urządzenia Data Box
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak skonfigurować i skopiować dane na urządzenie Data Box.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzenie Data Box do firmy Microsoft.
 
 > [!div class="nextstepaction"]
 > [Wysyłka urządzenia Azure Data Box do firmy Microsoft](./data-box-deploy-picked-up.md)

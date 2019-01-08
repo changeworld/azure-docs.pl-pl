@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: interfejs API przetwarzania obrazów w języku JavaScript'
+title: 'Samouczek: wykonywanie operacji na obrazach — JavaScript'
 titlesuffix: Azure Cognitive Services
-description: Zapoznaj się z podstawową wersją aplikacji JavaScript, która korzysta z interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services. Przeprowadź proces optycznego rozpoznawania znaków (OCR), twórz miniatury i wykorzystuj funkcje wizualizacji w obrazie.
+description: Zapoznaj się z podstawową wersją aplikacji JavaScript, która korzysta z interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: KellyDF
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 46d992fc44a0c3b2d355861d5753aa6f8c22215e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341314"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581379"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>Samouczek: interfejs API przetwarzania obrazów w języku JavaScript
 
@@ -494,7 +495,7 @@ Funkcja optycznego rozpoznawania znaków (OCR) w ramach przetwarzania obrazów a
 
 Aby skorzystać z funkcji OCR w aplikacji z samouczka, wykonaj następujące czynności:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR — krok 1: Dodanie kodu procedury obsługi zdarzeń do przycisku formularza
+### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR — krok 1. Dodanie kodu procedury obsługi zdarzeń do przycisku formularza
 
 Otwórz plik **ocr.html** w edytorze tekstów i w dolnej części pliku znajdź funkcję **ocrButtonClick**.
 

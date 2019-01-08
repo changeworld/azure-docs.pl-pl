@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 48beb93fbc5952951fff1ed31e5f8625faf78ccd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3d8ba7c89f320344081ed8f3a722883c3234fa90
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850401"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810988"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
 
@@ -20,21 +20,21 @@ Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza po
 | |  |
 |---|---|
 |**Tworzenie konta, bazy danych i kontenerów usługi Azure Cosmos DB**||
-| [Tworzenie konta interfejsu API SQL](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy pojedyncze konto, bazę danych i kontener interfejsu SQL API w usłudze Azure Cosmos DB. |
-| [Tworzenie konta interfejsu API bazy danych MongoDB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i kolekcję interfejsu API bazy danych MongoDB w usłudze Azure Cosmos DB. |
-| [Tworzenie konta interfejsu Gremlin API](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i graf interfejsu Gremlin API w usłudze Azure Cosmos DB. |
-| [Tworzenie konta interfejsu Cassandra API](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto i bazę danych interfejsu API Cassandra usługi Azure Cosmos DB. |
-| [Tworzenie konta interfejsu API tabel](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i tabelę interfejsu API tabel usługi Azure Cosmos DB. |
+| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API SQL](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy pojedyncze konto, bazę danych i kontener usługi Azure Cosmos DB. |
+| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API usługi Cosmos DB dla bazy danych MongoDB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto usługi Azure Cosmos DB, bazę danych i kolekcję. |
+| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API języka Gremlin](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i graf usługi Azure Cosmos DB. |
+| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API Cassandra](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto i bazę danych usługi Azure Cosmos DB. |
+| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API tabel](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i tabelę usługi Azure Cosmos DB. |
 |**Skalowanie usługi Azure Cosmos DB**||
 | [Skalowanie przepływności kontenerów](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zmienia aprowizowaną przepływność w kontenerze.|
 | [Replikowanie konta bazy danych usługi Azure Cosmos DB w wielu regionach i konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|
 |**Zabezpieczanie usługi Azure Cosmos DB**||
 | [Uzyskiwanie kluczy kont](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje podstawowe i pomocnicze klucze główne zapisu oraz klucze podstawowe i pomocnicze tylko do odczytu dla konta.|
-| [Uzyskiwanie parametrów połączenia bazy danych MongoDB](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje parametry połączenia umożliwiające połączenie aplikacji bazy danych MongoDB z Twoim kontem usługi Azure Cosmos DB.|
+| [Pobieranie parametrów połączenia dla konta usługi Cosmos skonfigurowanego za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje parametry połączenia umożliwiające połączenie aplikacji bazy danych MongoDB z Twoim kontem usługi Azure Cosmos DB.|
 | [Ponowne generowanie kluczy konta](scripts/secure-regenerate-key-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Ponownie generuje klucze konta.|
 | [Tworzenie zapory](scripts/create-firewall-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy zasady kontroli dostępu do adresów IP dla połączeń przychodzących w celu ograniczenia dostępu do konta z zatwierdzonego zestawu maszyn i/lub usług w chmurze.|
 |**Wysoka dostępność, odzyskiwanie po awarii, tworzenie i przywracanie kopii zapasowej**||
 | [Konfigurowanie zasad trybu failover](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Ustawia priorytet trybu failover poszczególnych regionów, w których konto jest replikowane.|
 |**Łączenie usługi Azure Cosmos DB z zasobami**||
-| [Łączenie aplikacji internetowej z usługą Azure Cosmos DB](../app-service/scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Utwórz i połącz bazę danych usługi Azure Cosmos DB oraz aplikację internetową platformy Azure.|
+| [Łączenie aplikacji internetowej z usługą Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Utwórz i połącz bazę danych usługi Azure Cosmos DB oraz aplikację internetową platformy Azure.|
 |||

@@ -3,22 +3,21 @@ title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — uakt
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) dowiesz się, jak uaktualnić istniejący klaster usługi AKS do najnowszej dostępnej wersji rozwiązania Kubernetes.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c0710be11b95b66d16661b5aff9cbf739ccda92
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f64ff611516b972d9440e212309ee22e1a12a928
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901943"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719442"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Samouczek: uaktualnianie rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-W ramach cyklu życia aplikacji i klastra możesz chcieć wykonać uaktualnienie do najnowszej dostępnej wersji rozwiązania Kubernetes i skorzystać z nowych funkcji. Klaster usługi Azure Kubernetes Service (AKS) można uaktualnić za pomocą interfejsu wiersza polecenia platformy Azure. Aby zminimalizować przestój uruchomionych aplikacji, węzły Kubernetes są dokładnie [odizolowywane i opróżniane][kubernetes-drain] w ramach procesu uaktualniania.
+W ramach cyklu życia aplikacji i klastra możesz chcieć wykonać uaktualnienie do najnowszej dostępnej wersji rozwiązania Kubernetes i skorzystać z nowych funkcji. Klaster usługi Azure Kubernetes Service (AKS) można uaktualnić za pomocą interfejsu wiersza polecenia platformy Azure.
 
 W tym samouczku (część siódma z siedmiu) jest uaktualniany klaster Kubernetes. Omawiane kwestie:
 
@@ -29,9 +28,9 @@ W tym samouczku (część siódma z siedmiu) jest uaktualniany klaster Kubernete
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontenera, obraz został przekazany do usługi Azure Container Registry i utworzono klaster Kubernetes. Następnie uruchomiono aplikację w klastrze usługi Kubernetes. Jeśli te kroki nie zostały wykonane, a chcesz skorzystać z tej części samouczka, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
+W poprzednich samouczkach aplikacja była spakowana do obrazu kontenera. Ten obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi AKS. Aplikacja została następnie wdrożona w klastrze usługi AKS. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
-Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.44 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="get-available-cluster-versions"></a>Pobieranie dostępnych wersji klastrów
 
@@ -41,26 +40,34 @@ Przed uaktualnieniem klastra użyj polecenia [az aks get-upgrades][], aby sprawd
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-W poniższym przykładzie bieżąca wersja to *1.9.6*, a dostępne wersje są wyświetlone w kolumnie *Uaktualnienia*.
+W poniższym przykładzie bieżąca wersja to *1.9.11*, a dostępne wersje są wyświetlone w kolumnie *Uaktualnienia*.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  ----------------------
-default  myResourceGroup  1.9.9            1.9.9              1.10.3, 1.10.5, 1.10.6
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
 ```
 
 ## <a name="upgrade-a-cluster"></a>Uaktualnianie klastra
 
-Użyj polecenia [az aks upgrade][], aby uaktualnić klaster usługi AKS. W poniższym przykładzie klaster jest uaktualniany do rozwiązania Kubernetes w wersji *1.10.6*.
+Aby zminimalizować zakłócenia dla działających aplikacji, węzły są dokładnie odizolowywane i opróżniane. W ramach tego procesu są wykonywane następujące kroki:
+
+1. Harmonogram usługi Kubernetes zapobiega planowaniu dodatkowych zasobników w węźle, który ma zostać uaktualniony.
+1. Zasobniki uruchomione w węźle są planowane w innych węzłach w klastrze.
+1. Tworzony jest węzeł, który uruchamia najnowsze składniki platformy Kubernetes.
+1. Gdy nowy węzeł jest gotowy i dołączony do klastra, harmonogram usługi Kubernetes rozpoczyna uruchamianie w nim zasobników.
+1. Stary węzeł jest usuwany, a kolejny węzeł w klastrze rozpoczyna proces odizolowywania i opróżniania.
+
+Użyj polecenia [az aks upgrade][], aby uaktualnić klaster usługi AKS. W poniższym przykładzie klaster jest uaktualniany do rozwiązania Kubernetes w wersji *1.10.9*.
 
 > [!NOTE]
-> Jednocześnie można uaktualnić tylko jedną wersję pomocniczą. Na przykład można wykonać uaktualnienie z wersji *1.9.6* do *1.10.3*, ale wykonanie uaktualnienia bezpośrednio z wersji *1.9.6* do wersji *1.11.x* nie jest możliwe. Aby wykonać uaktualnienie z wersji *1.9.6* do wersji *1.11.x*, najpierw wykonaj uaktualnienie z wersji *1.9.6* do wersji *1.10.3*, a następnie wykonaj kolejne uaktualnienie z wersji *1.10.3* do wersji *1.11.x*.
+> Jednocześnie można uaktualnić tylko jedną wersję pomocniczą. Na przykład można wykonać uaktualnienie z wersji *1.9.11* do *1.10.9*, ale wykonanie uaktualnienia bezpośrednio z wersji *1.9.6* do wersji *1.11.x* nie jest możliwe. Aby wykonać uaktualnienie z wersji *1.9.11* do wersji *1.11.x*, najpierw wykonaj uaktualnienie z wersji *1.9.11* do wersji *1.10.x*, a następnie wykonaj kolejne uaktualnienie z wersji *1.10.x* do wersji *1.11.x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
 ```
 
-Poniższe skrócone przykładowe dane wyjściowe pokazują, że parametr *kubernetesVersion* ma teraz wartość *1.10.6*:
+Poniższe skrócone przykładowe dane wyjściowe pokazują, że parametr *kubernetesVersion* ma teraz wartość *1.10.9*:
 
 ```json
 {
@@ -78,7 +85,7 @@ Poniższe skrócone przykładowe dane wyjściowe pokazują, że parametr *kubern
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.6",
+  "kubernetesVersion": "1.10.9",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -93,17 +100,17 @@ Potwierdź, że uaktualnienie powiodło się, używając polecenia [az aks show]
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Następujące przykładowe dane wyjściowe pokazują, że w klastrze usługi AKS uruchomiona jest *wersja 1.10.6 rozwiązania Kubernetes*:
+Poniższe przykładowe dane wyjściowe pokazują, że w klastrze usługi AKS jest uruchomione *rozwiązanie Kubernetes w wersji 1.10.9*:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
-Jest to ostatnia część serii samouczków, więc możesz usunąć klaster usługi AKS. Gdy węzły rozwiązania Kubernetes działają na maszynach wirtualnych platformy Azure, nadal są naliczane opłaty, nawet jeśli nie korzystasz z klastra. Usuń grupę zasobów, usługę kontenera i wszystkie powiązane zasoby za pomocą polecenia [az group delete][az-group-delete].
+Ten samouczek jest ostatnią część serii, dlatego możesz usunąć klaster usługi AKS. Gdy węzły rozwiązania Kubernetes działają na maszynach wirtualnych platformy Azure, nadal są naliczane opłaty, nawet jeśli nie korzystasz z klastra. Usuń grupę zasobów, usługę kontenera i wszystkie powiązane zasoby za pomocą polecenia [az group delete][az-group-delete].
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

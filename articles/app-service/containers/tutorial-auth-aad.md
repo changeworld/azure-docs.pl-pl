@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 65c503c96305cf23b97511dd06a56b5eb6fcc1be
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8ebaab260d38a3fe4f492f2545c5ec8b07990235
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409418"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715243"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Samouczek: kompleksowe uwierzytelnianie i autoryzacja użytkowników w usłudze Azure App Service w systemie Linux
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ponadto usługa App Service zapewnia wbudowaną obsługę [uwierzytelniania i autoryzacji użytkowników](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). Ten samouczek przedstawia sposób zabezpieczania aplikacji za pomocą uwierzytelniania i autoryzacji usługi App Service. W samouczku użyto aplikacji ASP.NET Core z frontonem Angular.js, ale jest to tylko przykład. Uwierzytelnianie i autoryzacja usługi App Service obsługuje wszystkie środowiska uruchomieniowe języków, a wykonując kroki samouczka, można dowiedzieć się, jak zastosować je w przypadku preferowanego języka.
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ponadto usługa App Service zapewnia wbudowaną obsługę [uwierzytelniania i autoryzacji użytkowników](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). Ten samouczek przedstawia sposób zabezpieczania aplikacji za pomocą uwierzytelniania i autoryzacji usługi App Service. W samouczku użyto aplikacji ASP.NET Core z frontonem Angular.js, ale jest to tylko przykład. Uwierzytelnianie i autoryzacja usługi App Service obsługuje wszystkie środowiska uruchomieniowe języków, a wykonując kroki samouczka, można dowiedzieć się, jak zastosować je w przypadku preferowanego języka.
 
 Samouczek korzysta z aplikacji przykładowej w celu pokazania, jak zabezpieczyć aplikację samodzielną (w sekcji [Włączanie uwierzytelniania i autoryzacji w aplikacji zaplecza](#enable-authentication-and-authorization-for-back-end-app)).
 
@@ -86,7 +86,7 @@ W tym kroku wdrożysz projekt w dwóch aplikacjach usługi App Service. Jedna ap
 
 ### <a name="create-azure-resources"></a>Tworzenie zasobów platformy Azure
 
-W usłudze Cloud Shell uruchom następujące polecenia, aby utworzyć dwie aplikacje internetowe. Zastąp zmienne _&lt;front\_end\_app\_name>_ i _&lt;back\_end\_app\_name>_ dwiema nazwami aplikacji unikatowymi w skali globalnej (prawidłowe znaki to `a-z`, `0-9` i `-`). Aby uzyskać więcej informacji na temat każdego polecenia, zobacz [Tworzenie aplikacji internetowej platformy .NET Core w usłudze App Service w systemie Linux](quickstart-dotnetcore.md).
+W usłudze Cloud Shell uruchom następujące polecenia, aby utworzyć dwie aplikacje usługi App Service. Zastąp zmienne _&lt;front\_end\_app\_name>_ i _&lt;back\_end\_app\_name>_ dwiema nazwami aplikacji unikatowymi w skali globalnej (prawidłowe znaki to `a-z`, `0-9` i `-`). Aby uzyskać więcej informacji na temat każdego polecenia, zobacz [Tworzenie aplikacji platformy .NET Core w usłudze App Service w systemie Linux](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -129,7 +129,7 @@ git commit -m "add CORS to back end"
 
 ### <a name="push-to-azure-from-git"></a>Wypychanie z narzędzia Git na platformę Azure
 
-W lokalnym oknie terminalu uruchom następujące polecenia Git, aby wdrożyć w aplikacji zaplecza. Zastąp zmienną _&lt;deploymentLocalGitUrl-of-back-end-app>_ adresem URL zdalnego repozytorium Git zapisanym w sekcji [Tworzenie zasobów platformy Azure](#create-azure-resources). Gdy w Menedżerze poświadczeń repozytorium Git zostanie wyświetlony monit o podanie poświadczeń, upewnij się, że wprowadzasz [poświadczenia wdrożenia](../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), a nie poświadczenia, których używasz do logowania się w witrynie Azure Portal.
+W lokalnym oknie terminalu uruchom następujące polecenia Git, aby wdrożyć w aplikacji zaplecza. Zastąp zmienną _&lt;deploymentLocalGitUrl-of-back-end-app>_ adresem URL zdalnego repozytorium Git zapisanym w sekcji [Tworzenie zasobów platformy Azure](#create-azure-resources). Gdy w Menedżerze poświadczeń repozytorium Git zostanie wyświetlony monit o podanie poświadczeń, upewnij się, że wprowadzasz [poświadczenia wdrożenia](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), a nie poświadczenia, których używasz do logowania się w witrynie Azure Portal.
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
@@ -143,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>Przechodzenie do aplikacji internetowych platformy Azure
+### <a name="browse-to-the-azure-apps"></a>Przechodzenie do aplikacji platformy Azure
 
 Przejdź na następujące adresy URL w przeglądarce i zobacz, że te dwie aplikacje działają.
 
@@ -453,7 +453,7 @@ Które czynności umiesz wykonać:
 > * Używanie tokenów dostępu z poziomu kodu serwera
 > * Używanie tokenów dostępu z poziomu kodu klienta (przeglądarki)
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację internetową.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure Web Apps (Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure)](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+> [Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

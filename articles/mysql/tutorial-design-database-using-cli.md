@@ -1,22 +1,19 @@
 ---
 title: 'Samouczek: projektowanie bazy danych usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure'
 description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MySQL i zarządzać nimi przy użyciu interfejsu wiersza polecenia platformy Azure.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 60cfb5e1c5fa44952ca6a5e6fc411f4a6ab0e8be
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966983"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545794"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -176,18 +173,18 @@ Załóżmy, że ta tabela została przypadkowo usunięta. W takiej sytuacji nie�
 Do wykonania przywrócenia potrzebne będą następujące informacje:
 
 - Punkt przywracania: wybierz punkt w czasie przed zmianą serwera. Musi mieć wartość większą od lub równą wartości Najstarsza kopia zapasowa źródłowej bazy danych.
-- Serwer docelowy: podaj nazwę nowego serwera, do którego chcesz wykonać przywrócenie
-- Serwer źródłowy: podaj nazwę serwera, z którego chcesz wykonać przywrócenie
-- Lokalizacja: nie można wybrać regionu; domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
+- Serwer docelowy: podaj nazwę nowego serwera, na który chcesz przywrócić dane
+- Serwer źródłowy: podaj nazwę serwera, z którego chcesz wykonać przywrócenie.
+- Lokalizacja: nie można wybrać regionu — domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
 ```
 
 Polecenie `az mysql server restore` wymaga podania następujących parametrów:
-| Ustawienie | Sugerowana wartość | Opis  |
+| Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje serwer źródłowy.  |
+| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje serwer źródłowy.  |
 | name | mydemoserver-restored | Nazwa nowego serwera utworzonego za pomocą polecenie przywracania. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Wybierz punkt w czasie, do którego ma zostać przeprowadzone przywrócenie. Ta data i godzina musi przypadać w okresie przechowywania kopii zapasowej serwera źródłowego. Użyj daty i godziny w formacie ISO8601. Na przykład możesz użyć własnej lokalnej strefy czasowej, takiej jak `2017-04-13T05:59:00-08:00`, lub użyć formatu UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Nazwa lub identyfikator serwera źródłowego, z którego ma zostać przeprowadzone przywrócenie. |

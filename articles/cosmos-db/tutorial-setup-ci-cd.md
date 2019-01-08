@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 8b64142a7d693e8e48e1739a61978abbab740e3d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 83178abab84679dcfb36a361950097f9224eda81
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875216"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810648"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -81,7 +81,7 @@ Poniżej przedstawiono przykładowy plik **.runsettings**, który definiuje para
 </RunSettings>
 ```
 
-Jeśli konfigurujesz potok ciągłej integracji/ciągłego wdrażania dla aplikacji, która używa interfejsu API bazy danych MongoDB usługi Azure Cosmos DB, to parametry połączenia bazy danych MongoDB domyślnie zawierają numer portu 10255. Jednak ten port nie jest obecnie otwarty. Jako alternatywny należy używać portu 10250 w celu ustanowienia połączenia. Parametry połączenia interfejsu API bazy danych MongoDB pozostają takie same, z wyjątkiem obsługiwanego numeru portu: 10250 zamiast 10255.
+Jeśli konfigurujesz potok ciągłej integracji/ciągłego wdrażania dla aplikacji, która używa interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, to parametry połączenia bazy danych MongoDB domyślnie zawierają numer portu 10255. Jednak ten port nie jest obecnie otwarty. Jako alternatywny należy używać portu 10250 w celu ustanowienia połączenia. Parametry połączenia interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB pozostają takie same, z wyjątkiem obsługiwanego numeru portu: 10250 zamiast 10255.
 
 Te parametry `TestRunParameters` są wywoływane za pośrednictwem właściwości `TestContext` w projekcie testowym aplikacji. Oto przykład testu wykonywanego względem usługi Cosmos DB.
 

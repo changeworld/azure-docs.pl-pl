@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 98e69c7759f736c132601305156290f7a43eeaf9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319357"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537583"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
@@ -48,14 +48,14 @@ sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-Aby przeprowadzić wdrożenie dla funkcji Web App for Containers, zainstaluj platformę Docker na głównym serwerze Jenkins lub na agencie maszyny wirtualnej używanym na potrzeby tej kompilacji. Aby uzyskać instrukcje, zobacz [Instalowanie platformy Docker w systemie Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
+Aby przeprowadzić wdrożenie dla funkcji Web App for Containers, zainstaluj platformę Docker na głównym serwerze Jenkins lub na agencie maszyny wirtualnej używanym na potrzeby tej kompilacji. Aby uzyskać instrukcje, zobacz [Zainstaluj platformę Docker w systemie Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
 ## <a name="service-principal"></a> Dodawanie jednostki usługi platformy Azure do poświadczeń serwera Jenkins
 
 W celu wdrażania na platformie Azure potrzebna jest jednostka usługi platformy Azure. 
 
 
-1. Aby utworzyć jednostkę usługi platformy Azure, użyj [interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) lub [witryny Azure Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+1. Aby utworzyć jednostkę usługi platformy Azure, użyj [interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) lub [witryny Azure Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 2. Na pulpicie nawigacyjnym serwera Jenkins wybierz pozycję **Credentials** > **System** (Poświadczenia > System). Następnie wybierz pozycję **Global credentials (unrestricted)** (Poświadczenia globalne [bez ograniczeń]).
 3. Aby dodać jednostkę usługi platformy Microsoft Azure, wybierz pozycję **Add Credentials** (Dodaj poświadczenia). Podaj wartości w polach **Subscription ID** (Identyfikator subskrypcji), **Client ID** (Identyfikator klienta), **Client Secret** (Wpis tajny klienta) i **OAuth 2.0 Token Endpoint** (Punkt końcowy tokenu OAuth 2.0). W polu **ID** ustaw wartość **mySp**. Będziemy używać tego identyfikatora w kolejnych krokach w tym artykule.
 
@@ -64,9 +64,9 @@ W celu wdrażania na platformie Azure potrzebna jest jednostka usługi platformy
 
 Aby wdrożyć projekt w funkcji Web Apps, możesz przekazać artefakty kompilacji za pośrednictwem przekazywania pliku. Usługa Azure App Service obsługuje wiele opcji wdrażania. Dodatek Jenkins dla usługi Azure App Service upraszcza wdrażanie i oferuje opcję wdrażania w zależności od typu pliku. 
 
-* W przypadku aplikacji Java EE jest używane [wdrożenie WAR](/azure/app-service/app-service-deploy-zip#deploy-war-file).
-* W przypadku aplikacji Java SE jest używane [wdrożenie ZIP](/azure/app-service/app-service-deploy-zip#deploy-zip-file).
-* W przypadku innych języków jest używane [wdrożenie Git](/azure/app-service/app-service-deploy-local-git).
+* W przypadku aplikacji Java EE jest używane [wdrożenie WAR](/azure/app-service/deploy-zip#deploy-war-file).
+* W przypadku aplikacji Java SE jest używane [wdrożenie ZIP](/azure/app-service/deploy-zip#deploy-zip-file).
+* W przypadku innych języków jest używane [wdrożenie Git](/azure/app-service/deploy-local-git).
 
 Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azure App Service i aplikacji internetowej do uruchomienia aplikacji Java.
 
@@ -206,7 +206,7 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Przejdź do adresu http://&lt;nazwa_Twojej_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Zastąp fragmenty &lt;x> i &lt;y> dowolnymi liczbami, aby uzyskać sumę x+y. Kalkulator pokaże sumę: ![Calculator: add](./media/execute-cli-jenkins-pipeline/calculator-add.png) (Kalkulatora: dodawanie)
+3. Przejdź do adresu http://&lt;nazwa_Twojej_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Zastąp fragmenty &lt;x> i &lt;y> dowolnymi liczbami, aby uzyskać sumę x+y. Kalkulator pokazuje sumę: ![Calculator: add](./media/execute-cli-jenkins-pipeline/calculator-add.png) (Kalkulator: dodawanie)
 
 ### <a name="for-azure-app-service-on-linux"></a>Dla usługi Azure App Service w systemie Linux
 

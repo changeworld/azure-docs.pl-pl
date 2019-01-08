@@ -1,6 +1,6 @@
 ---
 title: Samouczek dotyczący instalacji urządzenia fizycznego Azure Data Box Edge | Microsoft Docs
-description: Drugi samouczek na temat instalacji usługi Azure Data Box Edge dotyczy rozpakowywania, umieszczania na stojaku i podłączanie kabli urządzenia fizycznego.
+description: Drugi samouczek na temat instalacji usługi Azure Data Box Edge dotyczy rozpakowywania, umieszczania na stojaku i podłączania kabli urządzenia fizycznego.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6776eeb3cfdef98084c36a9441acafb8de1ab5b2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963850"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720326"
 ---
-# <a name="tutorial-install-azure-data-box-edge-preview"></a>Samouczek: instalowanie usługi Azure Data Box Edge (wersja zapoznawcza)
+# <a name="tutorial-install-azure-data-box-edge-preview"></a>Samouczek: Instalowanie usługi Azure Data Box Edge (wersja zapoznawcza)
 
 W tym samouczku opisano sposób instalowania urządzenia fizycznego Data Box Edge. Procedura instalacji obejmuje rozpakowywanie, montowanie na stojaku i podłączanie kabli urządzenia. 
 
-Instalacja może potrwać około 2 godzin.
+Instalacja może potrwać około dwóch godzin.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -30,17 +30,17 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Podłączanie kabli urządzenia
 
 > [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Rozwiązanie Data Box Edge jest w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wymagania wstępne dotyczące instalacji urządzenia fizycznego są następujące.
+Wymagania wstępne dotyczące instalacji urządzenia fizycznego są następujące:
 
 ### <a name="for-the-data-box-edge-resource"></a>Zasób usługi Data Box Edge
 
 Przed rozpoczęciem upewnij się, że:
 
-* Zostały wykonane wszystkie kroki samouczka [Przygotowywanie portalu pod kątem usługi Data Box Edge](data-box-edge-deploy-prep.md).
+* Wykonano wszystkie kroki podane w temacie [Przygotowywanie do wdrożenia usługi Azure Data Box Edge (wersja zapoznawcza)](data-box-edge-deploy-prep.md).
     * Utworzono zasób usługi Data Box Edge, aby wdrożyć urządzenie.
     * Wygenerowano klucz aktywacji w celu aktywowania urządzenia przy użyciu zasobu usługi Data Box Edge.
 
@@ -49,17 +49,20 @@ Przed rozpoczęciem upewnij się, że:
 
 Przed wdrożeniem urządzenia:
 
-- Upewnij się, że urządzenie zostało bezpiecznie umieszczone na płaskiej, stabilnej i poziomej powierzchni roboczej (lub podobnej).
+- Upewnij się, że urządzenie zostało bezpiecznie umieszczone na płaskiej, stabilnej i poziomej powierzchni roboczej.
 - Sprawdź, czy lokacja, w której chcesz zamontować urządzenie, ma:
-    - standardowe zasilanie prądem przemiennym z niezależnego źródła lub
-    - jednostkę dystrybucji zasilania na stojaku (PDU, rack power distribution unit) z zasilaczem UPS.
-- Upewnij się, że na stojaku, na którym chcesz zamontować urządzenie, masz dostępne gniazdo 1U.
+    - standardowe zasilanie prądem przemiennym z niezależnego źródła
+
+        — Lub —
+    - jednostkę dystrybucji zasilania na stojaku (PDU, rack power distribution unit) z zasilaczem UPS
+    - Dostępne gniazdo 1U w stojaku, na którym zamierzasz zainstalować urządzenie
 
 ### <a name="for-the-network-in-the-datacenter"></a>Sieć w centrum danych
 
 Przed rozpoczęciem:
 
 - Zapoznaj się z wymaganiami dotyczącymi przygotowania sieci pod kątem wdrożenia usługi Data Box Edge i skonfiguruj sieć w centrum danych zgodnie z tymi wymaganiami. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące sieci dla usługi Data Box Edge](data-box-gateway-system-requirements.md#networking-requirements).
+
 - Aby umożliwić optymalne działanie urządzenia, przepustowość połączenia internetowego musi wynosić co najmniej 20 Mb/s.
 
 
@@ -72,8 +75,9 @@ To urządzenie jest dostarczane w jednym pudełku. Aby rozpakować urządzenie, 
 3. Rozpakuj zawartość pudełka. Po rozpakowaniu upewnij się, że masz:
     - jedno urządzenie Edge w pojedynczej obudowie,
     - dwa przewody zasilania,
-    - jeden beznarzędziowy zestaw do montażu przesuwnego (zawiera dwie szyny boczne i sprzęt do montowania).
-4. Jeśli nie otrzymasz elementów wymienionych powyżej, skontaktuj się z pomocą techniczną usługi Data Box Edge. Następnym krokiem jest zamontowanie urządzenia na stojaku.
+    - jeden beznarzędziowy zestaw do montażu na stojaku (zawiera dwie szyny boczne i sprzęt do montowania)
+
+Jeśli nie otrzymasz wszystkich elementów wymienionych tutaj, skontaktuj się z pomocą techniczną usługi Data Box Edge. Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
 
 ## <a name="rack-the-device"></a>Montowanie urządzenia na stojaku
@@ -84,15 +88,18 @@ Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Aby zamon
 > Aby urządzenie Data Box Edge działało poprawnie, należy je zamontować na stojaku.
 
 
-1. Pociągnij przednią blokadę, aby uwolnić wewnętrzną szynę z zestawu prowadnic. Zwolnij blokadę zaczepu i popchnij środkową szynę do środka, aby wysunąć szynę. Wewnętrzna i zewnętrzna szyna powinny być teraz rozdzielone.
+1. Pociągnij przednią blokadę, aby uwolnić wewnętrzną szynę z zestawu prowadnic. Zwolnij blokadę zaczepu i popchnij środkową szynę do środka, aby wysunąć szynę.  
+    Wewnętrzna i zewnętrzna szyna powinny być teraz rozdzielone.
 
     ![Montowanie szyn na stojaku](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
-2. Teraz zamontuj zewnętrzne szyny na pionowych elementach regału stojaka. Aby ułatwić orientację, przód szyn został oznaczony etykietą „Front”, a koniec został przymocowany do przedniej części obudowy. 
-    
+2. Zamontuj zewnętrzne szyny na pionowych elementach regału stojaka. Aby ułatwić orientację, suwaki szyn zostały oznaczone etykietą **Front** i ten koniec jest przymocowany do przedniej części obudowy.    
     1. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozciągnij szynę, aby jej długość była równa odległości między pionowymi słupkami stojaka. Najpierw przyczep zewnętrzną szynę do tylnego słupka stojaka. Dopasuj tylny uchwyt montażowy tak, aby umieścić go w otworach montażowych na stojaku.   
-    2. Naciśnij i przytrzymaj spust na tylnym uchwycie, aby odsłonić metalowe haki. Wyrównaj i włóż do otworów montażowych, a następnie zwolnij spust.
+
+    2. Naciśnij i przytrzymaj spust na tylnym uchwycie, aby odsłonić metalowe haki. Wyrównaj i włóż tylny uchwyt do otworów montażowych, a następnie zwolnij spust.
+
     3. Wyrównaj przedni uchwyt z otworami montażowymi.
+
     4. Przedni uchwyt powinien być teraz przymocowany do stojaka. Opcjonalnie można użyć śrub M5 X 10L, aby przykręcić szyny do słupków, jeśli to konieczne. 
 
     ![Montowanie szyn na stojaku](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
@@ -105,14 +112,12 @@ Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Aby zamon
 
 Poniższe procedury opisują sposób podłączania kabli urządzenia Edge do zasilania i sieci.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Przed rozpoczęciem podłączania kabli urządzenia będą potrzebne następujące elementy:
+Aby można było rozpocząć podłączanie kabli urządzenia, potrzebne są następujące elementy:
 
 - Urządzenie fizyczne Edge, rozpakowane i zamontowane na stojaku.
 - Dwa kable zasilające. 
 - Co najmniej jeden kabel sieciowy 1-GbE RJ-45 służący do łączenia z interfejsem zarządzania. Istnieją dwa interfejsy sieciowe 1-GbE: jeden do zarządzania i drugi stanowiący interfejs danych w urządzeniu.
-- Jeden miedziany kabel 25-GbE SFP+ dla każdego interfejsu sieciowego danych do skonfigurowania. Co najmniej jeden sieciowy interfejs danych — PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 — musi być połączony z Internetem (łączność z platformą Azure).
+- Jeden miedziany kabel 25-GbE SFP+ dla każdego interfejsu sieciowego danych do skonfigurowania. Co najmniej jeden sieciowy interfejs danych — PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 — musi być połączony z Internetem (umożliwiając łączność z platformą Azure).  
 - Dostęp do dwóch jednostek dystrybucji zasilania (zalecane).
 
 > [!NOTE]
@@ -127,8 +132,11 @@ Urządzenie Edge jest wyposażone w 8 dysków SSD NVMe. Na przednim panelu znajd
 Wykonaj poniższe kroki, aby podłączyć kable urządzenia do sieci i zasilania.
 
 1. Podłącz kable zasilające do poszczególnych zasilaczy w obudowie. Aby zapewnić wysoką dostępność, zainstaluj i podłącz oba zasilacze do różnych źródeł zasilania.
+
 2. Podłącz kable zasilające do jednostek dystrybucji zasilania stojaka. Upewnij się, że dwa zasilacze korzystają z oddzielnych źródeł zasilania.
+
 3. Połącz interfejs sieciowy 1 GbE PORT 1 z komputerem używanym do konfigurowania urządzenia fizycznego. PORT 1 jest dedykowanym interfejsem zarządzania.
+
 4. Co najmniej jeden PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 łączący z Internetem/siecią centrum danych. W przypadku łączenia za pomocą portu PORT 2 użyj kabla sieciowego RJ-45. W przypadku interfejsów sieciowych 25-GbE użyj miedzianych kabli SFP+.  
 
 

@@ -1,6 +1,6 @@
 ---
-title: Skrypt programu Azure PowerShell — tworzenie konta interfejsu MongoDB API usługi Azure Cosmos DB
-description: Przykładowy skrypt programu Azure PowerShell — tworzenie konta interfejsu MongoDB API usługi Azure Cosmos DB
+title: Skrypt programu Azure PowerShell — tworzenie konta interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
+description: Przykładowy skrypt programu Azure PowerShell — tworzenie konta interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/29/2018
-ms.openlocfilehash: 1df8749f0032f60bc3d18f6d8352712e74c53fd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c12f2f86e56ac90fbea366e43959dd934c89d931
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963900"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811056"
 ---
-# <a name="azure-cosmos-db-create-a-mongodb-api-account-using-powershell"></a>Usługa Azure Cosmos DB tworzenie konta interfejsu MongoDB API przy użyciu programu PowerShell
+# <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-powershell"></a>Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell tworzy konto interfejsu MongoDB API usługi Azure Cosmos DB. 
+Ten przykładowy skrypt programu PowerShell tworzy konto Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

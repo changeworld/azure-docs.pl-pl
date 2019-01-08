@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 182dada35e0bea7101cc58ff62fde76fbcb8971e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003456"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722281"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Tworzenie i wdrażanie aplikacji Node.js do usługi w chmurze Azure
 
@@ -60,7 +60,7 @@ Wykonaj poniższe zadania w celu utworzenia nowego projektu Usługi w chmurze Az
 
     Polecenie cmdlet powoduje utworzenie następujących plików:
 
-   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** i **ServiceDefinition.csdef**: specyficzne dla platformy Azure pliki niezbędne do publikowania aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie hostowanej usługi platformy Azure — omówienie].
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** i **ServiceDefinition.csdef**: pliki specyficzne dla platformy Azure niezbędne do opublikowania aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie hostowanej usługi platformy Azure — omówienie].
    * **deploymentSettings.json**: przechowuje ustawienia lokalne, które są używane przez polecenia cmdlet programu Azure PowerShell dotyczące wdrożenia.
 4. Wprowadź poniższe polecenie, aby dodać nową rolę sieci Web:
 
@@ -164,7 +164,7 @@ Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowi
 
 <!-- URL List -->
 
-[Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines]: ../app-service/choose-web-site-cloud-service-vm.md
+[Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines]: ../app-service/overview-compare.md
 [korzystanie z lekkiej aplikacji internetowej]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178

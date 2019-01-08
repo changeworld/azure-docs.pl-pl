@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 44ad80732d1e874ccec4ecc376b9ce9b513a3aa9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166578"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652375"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
@@ -37,9 +37,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Znajomość zagadnień dotyczących tworzenia tematów platformy Kafka. Aby uzyskać więcej informacji, zobacz dokument [Przewodnik Szybki start dla platformy Kafka w usłudze HDInsight](./kafka/apache-kafka-get-started.md).
 
-* Znajomość zagadnień dotyczących tworzenia i wdrażania rozwiązań systemu Storm (topologii). W szczególności topologii wykorzystujących strukturę [Flux](https://storm.apache.org/releases/current/flux.html). Aby uzyskać więcej informacji, zobacz dokument [Tworzenie topologii systemu Storm w języku Java](./storm/apache-storm-develop-java-topology.md).
+* Znajomość zagadnień dotyczących tworzenia i wdrażania rozwiązań systemu Storm (topologii). W szczególności topologii wykorzystujących strukturę [Apache Storm Flux](https://storm.apache.org/releases/current/flux.html). Aby uzyskać więcej informacji, zobacz dokument [Tworzenie topologii systemu Apache Storm w języku Java](./storm/apache-storm-develop-java-topology.md).
 
-* Zestaw [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
+* Zestaw [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -54,7 +54,7 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
     * `JAVA_HOME\bin` (lub równoważną ścieżkę).
     * Katalog, w którym zainstalowano narzędzie Maven.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki przedstawione w tym dokumencie wymagają grupy zasobów platformy Azure, która zawiera zarówno system Storm w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Storm może komunikować się bezpośrednio z klastrem Kafka.
 > 
 > Dla Twojej wygody w tym dokumencie umieszczono link do szablonu, który umożliwia utworzenie wszystkich wymaganych zasobów platformy Azure. 
@@ -124,7 +124,7 @@ Ten samouczek obejmuje dwie topologie:
 
 * Moduł odczytujący platformy Kafka: Odczytuje dane z platformy Kafka, a następnie zapisuje je w magazynie plików zgodnym z systemem plików HDFS klastra Storm.
 
-    > [!WARNING] 
+    > [!WARNING]  
     > Aby umożliwić pracę systemu Storm z magazynem zgodnym z systemem plików HDFS używanym przez usługę HDInsight, należy wykonać akcję skryptu. Skrypt instaluje kilka plików jar w ścieżce `extlib` systemu Storm. Szablon w tym samouczku automatycznie używa skryptu podczas tworzenia klastra.
     >
     > Jeśli nie używasz szablonu dostępnego w tym dokumencie do utworzenia klastra Storm, musisz ręcznie zastosować akcję skryptu dla klastra.
@@ -141,7 +141,7 @@ Następujące parametry są ustawiane w czasie wykonywania dla tych topologii:
 
 * `${kafka.zookeeper.hosts}`: Hosty w klastrze Kafka, na których jest uruchomiona usługa Zookeeper.
 
-* `${hdfs.url}`: Adres URL systemu plików dla składnika HDFSBolt. Wskazuje, czy dane są zapisywane na koncie usługi Azure Storage, czy w usłudze Azure Data Lake Store.
+* `${hdfs.url}`: Adres URL systemu plików dla składnika HDFSBolt. Wskazuje, czy dane są zapisywane na koncie usługi Azure Storage, czy w usłudze Azure Data Lake Storage.
 
 * `${hdfs.write.dir}`: Katalog, w którym są zapisywane dane.
 
@@ -373,7 +373,7 @@ Projekt zawiera plik o nazwie `dev.properties` używany do przekazywania paramet
 | `kafka.broker.hosts` | Hosty brokera platformy Kafka (węzły procesu roboczego). |
 | `kafka.topic` | Temat platformy Kafka używany przez topologie. |
 | `hdfs.write.dir` | Katalog, w którym topologia modułu odczytującego platformy Kafka zapisuje dane. |
-| `hdfs.url` | System plików używany przez klaster Storm. W przypadku kont usługi Azure Storage użyj wartości `wasb:///`. W przypadku usługi Azure Data Lake Store użyj wartości `adl:///`. |
+| `hdfs.url` | System plików używany przez klaster Storm. W przypadku kont usługi Azure Storage użyj wartości `wasb:///`. W przypadku usługi Azure Data Lake Storage użyj wartości `adl:///`. |
 
 ## <a name="create-the-clusters"></a>Tworzenie klastrów
 
@@ -383,7 +383,7 @@ Na poniższym diagramie przedstawiono przepływ komunikacji między systemem Sto
 
 ![Diagram przedstawiający klastry Storm i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Inne usługi w klastrze, takie jak SSH i [Apache Ambari](https://ambari.apache.org/), są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
 Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klastry Kafka i Storm, wykonaj następujące kroki:
@@ -400,7 +400,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
     * Platforma Kafka w usłudze HDInsight 3.6 (trzy węzły procesu roboczego)
     * System Storm w usłudze HDInsight 3.6 (trzy węzły procesu roboczego)
 
-  > [!WARNING]
+  > [!WARNING]  
   > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia utworzenie klastra Kafka zawierającego trzy węzły procesu roboczego.
 
 2. Wypełnij pola w sekcji **Wdrożenie niestandardowe**, używając następujących wskazówek:
@@ -425,7 +425,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
 4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**.
 
-> [!NOTE]
+> [!NOTE]  
 > Tworzenie klastrów może potrwać do 20 minut.
 
 ## <a name="build-the-topology"></a>Tworzenie topologii
@@ -463,7 +463,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > W poniższym przykładzie dla powłoki Bash przyjęto, że zmienna `$CLUSTERNAME` zawiera nazwę klastra __Kafka__. Przyjęto także, że jest zainstalowane narzędzie [jq](https://stedolan.github.io/jq/) w wersji 1.5 lub nowszej. Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra.
 
     ```bash
@@ -474,7 +474,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Choć mogą występować więcej niż dwa hosty brokera dla klastra, nie trzeba podawać klientom pełnej listy wszystkich hostów. Wystarczy jeden lub dwa.
 
 2. Za pomocą jednej z następujących metod odnajdź hosty usługi Zookeeper platformy __Kafka__ w klastrze usługi HDInsight:
@@ -490,7 +490,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > W poniższym przykładzie dla powłoki Bash przyjęto, że zmienna `$CLUSTERNAME` zawiera nazwę klastra __Kafka__. Przyjęto również, że jest zainstalowane narzędzie [jq](https://stedolan.github.io/jq/). Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra.
 
     ```bash
@@ -501,7 +501,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
         zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Choć występują więcej niż dwa węzły usługi Zookeeper, nie trzeba podawać klientom pełnej listy wszystkich hostów. Wystarczy jeden lub dwa.
 
     Zapisz tę wartość, ponieważ jest używana później.
@@ -512,8 +512,8 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-    > [!IMPORTANT]
-    > Wpis `hdfs.url` jest skonfigurowany dla klastra, który korzysta z konta usługi Azure Storage. Aby zastosować tę topologię z klastrem Storm używającym usługi Data Lake Store, zmień tę wartość z `wasb` na `adl`.
+    > [!IMPORTANT]  
+    > Wpis `hdfs.url` jest skonfigurowany dla klastra, który korzysta z konta usługi Azure Storage. Aby zastosować tę topologię z klastrem Storm używającym usługi Data Lake Storage, zmień tę wartość z `wasb` na `adl`.
 
 4. Zapisz plik `dev.properties`, a następnie wykonaj następujące polecenie w celu przekazania go do klastra **Storm**:
 
@@ -630,7 +630,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
 3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
-> [!WARNING]
+> [!WARNING]  
 > Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć.
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.

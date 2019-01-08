@@ -1,36 +1,36 @@
 ---
-title: Samouczek dotyczący dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API bazy danych MongoDB
-description: Dowiedz się, jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API bazy danych MongoDB.
+title: Samouczek dotyczący konfigurowania dystrybucji globalnej przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
+description: Dowiedz się, jak skonfigurować dystrybucję globalną przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 services: cosmos-db
 keywords: global distribution, MongoDB
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: mvc
-ms.openlocfilehash: 27fa9849c13de151f6922e829514cc8838f295ea
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a5bcfcac891a80807a15657a91eb44df1921f7ee
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874771"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787193"
 ---
-# <a name="set-up-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Konfigurowanie dystrybucji globalnej usługi Azure Cosmos DB przy użyciu interfejsu API bazy danych MongoDB
+# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Konfigurowanie globalnie rozproszonej bazy danych przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-W tym artykule przedstawiono, jak za pomocą witryny Azure Portal skonfigurować dystrybucję globalną usługi Azure Cosmos DB, a następnie nawiązać połączenie przy użyciu interfejsu API bazy danych MongoDB.
+W tym artykule przedstawiono, jak za pomocą witryny Azure Portal skonfigurować globalnie rozproszoną bazę danych i nawiązać z nią połączenie przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
 > * Konfigurowanie dystrybucji globalnej przy użyciu witryny Azure Portal
-> * Konfigurowanie dystrybucji globalnej przy użyciu [interfejsu API bazy danych MongoDB](mongodb-introduction.md)
+> * Konfigurowanie dystrybucji globalnej przy użyciu [interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](mongodb-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>Weryfikowanie konfiguracji regionalnej przy użyciu interfejsu API bazy danych MongoDB
-Najprostszym sposobem dokładnego sprawdzenia konfiguracji globalnej w ramach interfejsu API dla bazy danych MongoDB jest uruchomienie polecenia *isMaster()* z poziomu powłoki Mongo.
+## <a name="verifying-your-regional-setup"></a>Weryfikowanie konfiguracji regionalnej 
+Prostym sposobem sprawdzenia konfiguracji globalnej za pomocą interfejsu API usługi Cosmos DB dla bazy danych MongoDB jest uruchomienie polecenia *isMaster()* z poziomu powłoki Mongo.
 
 Z poziomu powłoki Mongo:
 
@@ -64,9 +64,9 @@ Przykładowe wyniki:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>Nawiązywanie połączenia z preferowanym regionem przy użyciu interfejsu API bazy danych MongoDB
+## <a name="connecting-to-a-preferred-region"></a>Nawiązywanie połączenia z preferowanym regionem 
 
-Interfejs API bazy danych MongoDB umożliwia określenie preferencji odczytu kolekcji dla globalnie rozproszonej bazy danych. Na potrzeby odczytów z małymi opóźnieniami i wysokiej dostępności globalnej zaleca się ustawienie preferencji odczytu kolekcji na wartość *najbliższe*. Preferencja odczytu *najbliższe* jest skonfigurowana do odczytu z najbliższego regionu.
+Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB umożliwia określenie preferencji odczytu kolekcji dla globalnie rozproszonej bazy danych. Na potrzeby odczytów z małymi opóźnieniami i wysokiej dostępności globalnej zaleca się ustawienie preferencji odczytu kolekcji na wartość *najbliższe*. Preferencja odczytu *najbliższe* jest skonfigurowana do odczytu z najbliższego regionu.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -96,9 +96,9 @@ W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie dystrybucji globalnej przy użyciu witryny Azure Portal
-> * Konfigurowanie dystrybucji globalnej przy użyciu interfejsów API SQL
+> * Konfigurowanie dystrybucji globalnej przy użyciu interfejsu API usługi Cosmos DB dla bazy danych MongoDB
 
 Teraz możesz przejść do następnego samouczka, aby dowiedzieć się, jak programować lokalnie przy użyciu lokalnego emulatora usługi Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Programowanie lokalnie za pomocą emulatora](local-emulator.md)
+> [Programowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB](local-emulator.md)

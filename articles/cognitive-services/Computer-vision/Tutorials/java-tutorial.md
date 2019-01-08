@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: interfejs API przetwarzania obrazów dla języka Java'
+title: 'Samouczek: wykonywanie operacji na obrazach — Java'
 titlesuffix: Azure Cognitive Services
 description: Zapoznaj się z podstawową aplikacją biblioteki Swing języka Java, która korzysta z interfejsu API przetwarzania obrazów w usłudze Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
@@ -9,17 +9,18 @@ ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
+ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f039e85ab3fccfc36b704f06d9fcfa3b4cfed758
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340260"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584551"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>Samouczek: interfejs API przetwarzania obrazów dla języka Java
+# <a name="tutorial-computer-vision-api-java"></a>Samouczek: interfejs API przetwarzania obrazów języka Java
 
-W tym samouczku przedstawiono funkcje interfejsu API REST przetwarzania obrazów w usłudze Azure Cognitive Services.
+W tym samouczku przedstawiono funkcje interfejsu API REST przetwarzania obrazów usług Azure Cognitive Services.
 
 Zapoznaj się z aplikacją biblioteki Swing języka Java, w której zastosowano interfejs API REST przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych na obrazie (m.in. twarzy). Ten przykład umożliwia przesłanie adresu URL obrazu na potrzeby analizy lub przetwarzania. Ten przykład typu open source może posłużyć jako szablon do tworzenia własnej aplikacji w języku Java korzystającej z interfejsu API REST przetwarzania obrazów.
 

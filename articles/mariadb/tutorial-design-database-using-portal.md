@@ -3,18 +3,16 @@ title: 'Samouczek: projektowanie bazy danych usługi Azure Database for MariaDB 
 description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MariaDB i zarządzać nimi przy użyciu witryny Azure Portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 20714bed5c36cd93d11cb4ade6640798775f5055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 23af00b8a8e061056e9b7ad8ea2c999414783ad6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322060"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538110"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MariaDB za pomocą witryny Azure Portal
 
@@ -56,7 +54,7 @@ Serwer usługi Azure Database for MariaDB jest tworzony za pomocą zdefiniowaneg
     Grupa zasobów | **myresourcegroup** | Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów.
     Wybierz źródło | **Puste** | Wybierz pozycję **Puste**, aby utworzyć nowy serwer. W przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for MariaDB należy wybrać pozycję **Kopia zapasowa**.
     Identyfikator logowania administratora serwera | **myadmin** | Konto logowania do użycia podczas nawiązywania połączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Hasło | *wartość wybrana przez użytkownika* | Wprowadź nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itp.).
+    Hasło | *wartość wybrana przez użytkownika* | Wprowadź nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % i tak dalej).
     Potwierdź hasło | *wartość wybrana przez użytkownika*| Potwierdź hasło do konta administratora.
     Lokalizacja | *region najbliżej Twoich użytkowników*| Wybierz lokalizację najbliżej użytkowników lub innych aplikacji platformy Azure.
     Wersja | *najnowsza wersja*| Najnowsza wersja, chyba że z konkretnych powodów wymagane jest użycie innej wersji.
@@ -172,7 +170,7 @@ Załóżmy, że przypadkowo usunięto ważną tabelę bazy danych i nie można j
    ![Formularz Przywracanie](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **Punkt przywracania**: wybierz punkt w czasie w podanym przedziale czasowym, do którego chcesz wykonać przywrócenie. Pamiętaj o przekonwertowaniu lokalnej strefy czasowej na czas UTC.
-   - **Przywróć na nowy serwer**: wprowadź nazwę nowego serwera, do którego chcesz wykonać przywrócenie.
+   - **Przywróć na nowy serwer**: wprowadź nazwę nowego serwera do przywrócenia.
    - **Lokalizacja**: region jest taki sam jak w przypadku serwera źródłowego i nie można go zmienić.
    - **Warstwa cenowa**: warstwa cenowa jest taka sama jak w przypadku serwera źródłowego i nie można jej zmienić.
    

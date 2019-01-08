@@ -13,16 +13,16 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091394"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651951"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki start: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
 
-Edytor zapytań SQL jest narzędziem przeglądarki portalu Azure, które ułatwia wykonywanie zapytań SQL w bazie danych Azure SQL Database lub usłudze Azure SQL Data Warehouse. W tym przewodniku Szybki start pokazano, jak używać edytora zapytań w celu nawiązywania połączenia z bazą danych SQL, a następnie uruchamiać instrukcje języka Transact-SQL, aby wysyłać zapytania o dane oraz wstawiać, aktualizować i usuwać dane.
+Edytor zapytań SQL jest narzędziem przeglądarki portalu Azure, które ułatwia wykonywanie zapytań SQL w bazie danych Azure SQL Database lub usłudze Azure SQL Data Warehouse. W tym przewodniku skorzystasz z edytora zapytań w celu nawiązania połączenia z bazą danych SQL, a następnie uruchomisz instrukcje języka Transact-SQL, aby wykonywać zapytania o dane oraz wstawiać, aktualizować i usuwać dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -70,7 +70,7 @@ Skonfigurowanie administratora usługi Active Directory (AD) umożliwia korzysta
 
 4. Na pasku narzędzi strony administratora usługi AD wybierz pozycję **Zapisz**.
 
-5. Przejdź do bazy danych **mySampleDatabase**, a następnie z menu po lewej stronie wybierz pozycję **Edytor zapytań (wersja zapoznawcza)**. Zostanie wyświetlona strona **Logowanie**. Jeśli jesteś administratorem usługi AD, po prawej stronie w obszarze **Logowanie jednokrotne usługi Active Directory** zostanie wyświetlony komunikat, że użytkownik został zalogowany. 
+5. Przejdź do bazy danych **mySampleDatabase**, a następnie z menu po lewej stronie wybierz pozycję **Edytor zapytań (wersja zapoznawcza)**. Zostanie wyświetlona strona **Logowanie**. Jeśli jesteś administratorem usługi AD, po prawej stronie w obszarze **Logowanie jednokrotne usługi Active Directory** zostanie wyświetlony komunikat informujący, że użytkownik został zalogowany. 
    
 6. Kliknij przycisk **OK**.
 
@@ -92,9 +92,9 @@ Skonfigurowanie administratora usługi Active Directory (AD) umożliwia korzysta
 
 ## <a name="insert-data"></a>Wstawianie danych
 
-Użyj następującej instrukcji [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby dodać nowy produkt do tabeli `SalesLT.Product`.
+Uruchom następującą instrukcję [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby dodać nowy produkt do tabeli `SalesLT.Product`.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -117,14 +117,14 @@ Użyj następującej instrukcji [INSERT](https://msdn.microsoft.com/library/ms17
    ```
 
 
-2. Wybierz polecenie **Uruchom**, aby wstawić nowy wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
+2. Wybierz polecenie **Uruchom**, aby wstawić nowy wiersz do tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
 
 
 ## <a name="update-data"></a>Aktualizowanie danych
 
-Użyj następującej instrukcji [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) języka Transact-SQL, aby zmodyfikować nowy produkt.
+Uruchom następującą instrukcję [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) języka Transact-SQL, aby zmodyfikować nowy produkt.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -132,11 +132,11 @@ Użyj następującej instrukcji [UPDATE](https://msdn.microsoft.com/library/ms17
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wybierz polecenie **Uruchom**, aby zaktualizować wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
+2. Wybierz polecenie **Uruchom**, aby zaktualizować określony wiersz w tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
 
 ## <a name="delete-data"></a>Usuwanie danych
 
-Użyj następującej instrukcji [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy produkt.
+Uruchom następującą instrukcję [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy produkt.
 
 1. Zastąp poprzednie zapytanie następującym:
 
@@ -145,7 +145,7 @@ Użyj następującej instrukcji [DELETE](https://msdn.microsoft.com/library/ms18
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wybierz polecenie **Uruchom**, aby usunąć wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
+2. Wybierz polecenie **Uruchom**, aby usunąć wiersz z tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Zagadnienia dotyczące edytora zapytań
@@ -156,7 +156,7 @@ Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań
 
 * Naciśnięcie klawisza F5 powoduje odświeżenie strony edytora i utratę tworzonego zapytania.
 
-* Edytor zapytań nie obsługuje nawiązywania połączenia z główną bazą danych.
+* Edytor zapytań nie obsługuje nawiązywania połączeń z bazą danych `master`.
 
 * Istnieje limit czasu na wykonanie zapytania wynoszący 5 minut.
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989910"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001468"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Tworzenie bezserwerowego interfejsu API za pomocą usługi Azure Functions
 
@@ -71,7 +71,7 @@ W następnej sekcji udostępnisz interfejs API za pośrednictwem serwera proxy. 
 
 Serwer proxy może wskazywać dowolny zasób HTTP, na przykład:
 - Azure Functions 
-- Aplikacje interfejsów API w usłudze [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- Aplikacje interfejsów API w usłudze [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)
 - Kontenery platformy Docker w usłudze [App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Jakikolwiek inny hostowany interfejs API
 
@@ -104,7 +104,7 @@ Wykonaj ponownie procedurę [Tworzenie aplikacji funkcji](https://docs.microsoft
     | Pole | Wartość przykładowa | Opis |
     |---|---|---|
     | Name (Nazwa) | HelloProxy | Przyjazna nazwa używana tylko do zarządzania |
-    | Szablon trasy | /api/hello | Określa trasę używaną do wywoływania tego serwera proxy |
+    | Szablon trasy | /api/remotehello | Określa trasę używaną do wywoływania tego serwera proxy |
     | Adres URL zaplecza | https://%HELLO_HOST%/api/hello | Określa punkt końcowy, do którego powinno być przekazywane żądanie |
     
 1. Zwróć uwagę, że serwery proxy nie zapewniają prefiksu ścieżki podstawowej `/api`, który musi znajdować się w szablonie trasy.
@@ -112,9 +112,9 @@ Wykonaj ponownie procedurę [Tworzenie aplikacji funkcji](https://docs.microsoft
 1. Kliknij pozycję **Utwórz**.
 1. Nowy serwer proxy możesz wypróbować, kopiując adres URL serwera proxy i testując go w przeglądarce lub używając ulubionego klienta HTTP.
     1. W przypadku funkcji anonimowej użyj adresu:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
     1. W przypadku funkcji z autoryzacją użyj adresu:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>Tworzenie makiety interfejsu API
 
@@ -132,7 +132,7 @@ Po wykonaniu wszystkich powyższych kroków plik proxies.json powinien wygląda�
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         }
@@ -148,7 +148,7 @@ Następnie dodasz makietę interfejsu API. Zastąp plik proxies.json następują
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         },

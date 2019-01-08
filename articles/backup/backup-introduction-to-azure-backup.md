@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 8/2/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f07bcf3cb1b489ad7ec06dff1437e49d83748998
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878335"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631166"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Omówienie funkcji usługi Azure Backup
 Azure Backup to oparta na platformie Azure usługa, która umożliwia tworzenie kopii zapasowej (lub ochronę) i przywracanie danych w chmurze Microsoft Cloud. Usługa Azure Backup pozwala zastąpić dotychczasowe rozwiązania tworzenia kopii zapasowych, istniejące lokalnie lub poza siedzibą firmy, rozwiązaniem opartym na chmurze, które jest niezawodne, bezpieczne i konkurencyjne cenowo. Usługa Azure Backup oferuje wiele składników, które możesz pobrać i wdrożyć na odpowiednim komputerze, serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Recovery Services na platformie Azure. Informacje o tym, jakich składników należy użyć do ochrony konkretnych danych, aplikacji lub obciążeń, znajdują się w [tabeli składników usługi Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (w dalszej części tego artykułu).
@@ -78,17 +78,17 @@ Poniższa tabela zawiera macierz danych i obciążeń, które mogą być chronio
 | Maszyny wirtualne IaaS platformy Azure (Linux) |uruchomione na platformie Azure |[Azure Backup (rozszerzenie maszyny wirtualnej)](backup-azure-vms-introduction.md) |
 
 ## <a name="linux-support"></a>Obsługa systemu Linux
-W poniższej tabeli przedstawiono składniki usługi Azure Backup, które obsługują system Linux.  
+W poniższej tabeli przedstawiono składniki usługi Azure Backup obsługiwane w systemie Linux.  
 
-| Składnik | Obsługa w systemie Linux (zatwierdzonym przez Azure) |
-| --- | --- |
-| Agent usługi Azure Backup (MARS) |Nie (tylko agent oparty na systemie Windows) |
-| System Center DPM |<li> Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/> <li> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare </br> </br>  *Spójna na poziomie plików kopia zapasowa nie jest dostępna dla maszyny wirtualnej platformy Azure* <br/> |
-| Azure Backup Server |<li>Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/> <li> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare </br></br> *Spójna na poziomie plików kopia zapasowa nie jest dostępna dla maszyny wirtualnej platformy Azure*  |
-| Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |Spójna na poziomie aplikacji kopia zapasowa korzystająca ze [struktury skryptów uruchamianych przed utworzeniem i po utworzeniu kopii zapasowej](backup-azure-linux-app-consistent.md)<br/> [Szczegółowe odzyskiwanie plików](backup-azure-restore-files-from-vm.md)<br/> [Przywracanie wszystkich dysków maszyn wirtualnych](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Przywracanie maszyny wirtualnej](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
+**Składnik** | **Linux (zatwierdzony przez Azure)**
+--- | --- 
+Agent usługi Azure Backup (MARS) | Nie (tylko agent oparty na systemie Windows) 
+System Center DPM | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
+Azure Backup Server | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure 
+Usługa Backup dla maszyn wirtualnych IaaS platformy Azure | Spójna na poziomie aplikacji kopia zapasowa korzystająca ze [struktury skryptów uruchamianych przed utworzeniem i po utworzeniu](backup-azure-linux-app-consistent.md)<br/><br/> [Odzyskiwanie na poziomie plików](backup-azure-restore-files-from-vm.md)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie przywróconego dysku](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie punktu odzyskiwania](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Korzystanie z maszyn wirtualnych usługi Premium Storage przy użyciu usługi Azure Backup
-Usługa Azure Backup chroni maszyny wirtualne usługi Premium Storage. Azure Premium Storage to magazyn oparty na dyskach SSD i zaprojektowany z myślą o obsłudze dużych obciążeń wejścia/wyjścia. Usługa Premium Storage jest atrakcyjna dla obciążeń maszyn wirtualnych. Aby uzyskać więcej informacji o usłudze Premium Storage, zobacz artykuł [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../virtual-machines/windows/premium-storage.md) (Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
+Usługa Azure Backup chroni maszyny wirtualne usługi Premium Storage. Azure Premium Storage to magazyn oparty na dyskach SSD i zaprojektowany z myślą o obsłudze dużych obciążeń wejścia/wyjścia. Usługa Premium Storage jest atrakcyjna dla obciążeń maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Premium Storage, zobacz artykuł [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../virtual-machines/windows/premium-storage.md) (Magazyn Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
 
 ### <a name="back-up-premium-storage-vms"></a>Tworzenie kopii zapasowej maszyn wirtualnych usługi Premium Storage
 Podczas wykonywania kopii zapasowych maszyn wirtualnych usługi Premium Storage usługa Backup tworzy tymczasową lokalizację o nazwie „AzureBackup-” na koncie usługi Premium Storage. Rozmiar lokalizacji przejściowej jest równy rozmiarowi migawki punktu odzyskiwania. Upewnij się, że ilość wolnego miejsca na koncie Premium Storage jest wystarczająca do obsługi tymczasowej lokalizacji przejściowej. Aby uzyskać więcej informacji, zobacz [Premium Storage limitations](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) (Ograniczenia usługi Premium Storage). Po zakończeniu zadania tworzenia kopii zapasowej lokalizacja tymczasowa zostanie usunięta. Cena przestrzeni dyskowej użytej na potrzeby lokalizacji tymczasowej jest zgodna z ogólnym [cennikiem usługi Premium Storage](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
@@ -209,7 +209,7 @@ Chronione wystąpienie to ogólna nazwa komputera z systemem Windows, serwera (f
 Typowe przykłady chronionych wystąpień to maszyny wirtualne, serwery aplikacji, bazy danych i komputery osobiste z systemem operacyjnym Windows. Na przykład:
 
 * Maszyna wirtualna, na której działa funkcja Hyper-V lub sieć szkieletowa funkcji hypervisor Azure IaaS. Systemem operacyjnym gościa maszyny wirtualnej może być system Windows Server lub Linux.
-* Serwer aplikacji, który może być maszyną fizyczną lub wirtualną z systemem Windows Server, obsługujący obciążenia korzystające z danych wymagających tworzenia kopii zapasowych. Typowe obciążenia to: Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server i rola serwera plików w systemie Windows Server. Aby tworzyć kopie zapasowe tych obciążeń, należy korzystać z programu System Center Data Protection Manager (DPM) lub usługi Azure Backup Server.
+* Serwer aplikacji: Serwer aplikacji, który może być maszyną fizyczną lub wirtualną z systemem Windows Server, obsługujący obciążenia korzystające z danych wymagających tworzenia kopii zapasowych. Typowe obciążenia to: Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server i rola serwera plików w systemie Windows Server. Aby tworzyć kopie zapasowe tych obciążeń, należy korzystać z programu System Center Data Protection Manager (DPM) lub usługi Azure Backup Server.
 * Komputer osobisty lub przenośny albo stacja robocza z systemem operacyjnym Windows.
 
 

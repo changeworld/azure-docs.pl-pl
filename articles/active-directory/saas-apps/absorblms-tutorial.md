@@ -1,290 +1,280 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z ochrony przed rozproszonymi LMS | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ochrony przed rozproszonymi LMS.
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Absorb LMS | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i usługą Absorb LMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/15/2017
+ms.topic: tutorial
+ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 066ae92056e4b80b6627b371d6ebeb3235b2781d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
-ms.translationtype: MT
+ms.openlocfilehash: f7f96b4357e7db61d3b5d30b93eff8960e515c2d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043782"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971294"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Samouczek: Integracja usługi Azure Active Directory z ochrony przed rozproszonymi LMS
+# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Absorb LMS
 
-W tym samouczku dowiesz się, jak zintegrować ochrony przed rozproszonymi LMS za pomocą usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować usługę Absorb LMS z usługą Azure Active Directory (Azure AD).
+Integracja usługi Absorb LMS z usługą Azure AD zapewnia następujące korzyści:
 
-Integracja ochrony przed rozproszonymi LMS z usługą Azure AD zapewnia następujące korzyści:
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do usługi Absorb LMS.
+* Umożliwianie użytkownikom automatycznego logowania się do usługi Absorb LMS (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do ochrony przed rozproszonymi LMS.
-- Aby umożliwić użytkownikom automatyczne logowanie do ochrony przed rozproszonymi LMS (przy użyciu logowania jednokrotnego) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji, witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z ochrony przed rozproszonymi LMS, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Absorb LMS, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Ochrony przed rozproszonymi LMS logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Nie zalecamy korzystania do środowiska produkcyjnego na potrzeby tego samouczka.
-
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Absorb LMS z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-* Dodawanie ochrony przed rozproszonymi LMS z galerii
-* Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="add-absorb-lms-from-the-gallery"></a>Dodawanie ochrony przed rozproszonymi LMS z galerii
-Aby skonfigurować integrację ochrony przed rozproszonymi LMS w usłudze Azure AD, należy dodać wchłonąć LMS z galerii z listą zarządzanych aplikacji SaaS.
+* Usługa Absorb LMS obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-Aby dodać wchłonąć LMS z galerii, wykonaj następujące czynności:
+## <a name="adding-absorb-lms-from-the-gallery"></a>Dodawanie usługi Absorb LMS z galerii
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację usługi Absorb LMS z usługą Azure AD, należy dodać usługę Absorb LMS z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać usługę Absorb LMS z galerii, wykonaj następujące czynności:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W okienku aplikacji przedsiębiorstwa][2]
-    
-3. Aby dodać aplikację, wybierz pozycję **nową aplikację** przycisku.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-4. W polu wyszukiwania wpisz **ochrony przed rozproszonymi LMS**, wybierz opcję **ochrony przed rozproszonymi LMS** w wyniku panelu, a następnie wybierz **Dodaj** przycisku.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Wchłonąć LMS na liście wyników](./media/absorblms-tutorial/tutorial_absorblms_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą ochrony przed rozproszonymi LMS, w oparciu o użytkownika testu o nazwie Britta Simon.
+4. W polu wyszukiwania wpisz ciąg **Absorb LMS**, wybierz pozycję **Absorb LMS** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, co użytkownik odpowiednika LMS ochrony przed rozproszonymi znajduje się w usłudze Azure AD. Innymi słowy należy ustanowić relację łącza między użytkownikiem w usłudze Azure AD i odpowiedniego użytkownika w ochrony przed rozproszonymi LMS.
+     ![Usługa Absorb LMS na liście wyników](common/search-new-app.png)
 
-Ustanowienia tej relacji łączy, przypisując *nazwy użytkownika* wartość w usłudze Azure AD jako *Username* wartość ochrony przed rozproszonymi LMS.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z ochrony przed rozproszonymi LMS, wykonaj bloki konstrukcyjne w pięć następnych sekcjach.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w usłudze Absorb LMS, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usługi Absorb LMS.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w usłudze Absorb LMS, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji ochrony przed rozproszonymi LMS.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w usłudze Absorb LMS](#configure-absorb-lms-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego usługi Absorb LMS](#create-absorb-lms-test-user)** — aby mieć w usłudze Absorb LMS odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z ochrony przed rozproszonymi LMS, wykonaj następujące czynności:
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **ochrony przed rozproszonymi LMS** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Absorb LMS, wykonaj następujące kroki:
 
-2. W **logowanie jednokrotne** dialogowym **tryb** wybierz opcję **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/absorblms-tutorial/tutorial_absorblms_samlbase.png)
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Absorb LMS** wybierz pozycję **Logowanie jednokrotne**.
 
-3. W **ochrony przed rozproszonymi LMS domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Ochrony przed rozproszonymi LMS domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/absorblms-tutorial/tutorial_absorblms_url.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    a. W **identyfikator** wpisz adres URL, który używa następującej składni: `https://<subdomain>.myabsorb.com/Account/SAML`.
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    b. W **adres URL odpowiedzi** wpisz adres URL, który używa następującej składni: `https://<subdomain>.myabsorb.com/Account/SAML`.
-     
-    > [!NOTE] 
-    > Te adresy URL nie są rzeczywiste wartości. Zaktualizuj je za pomocą rzeczywisty identyfikator i adresy URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z pomocą [zespołem pomocy technicznej klienta ochrony przed rozproszonymi LMS](https://www.absorblms.com/support). 
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-4. W **certyfikat podpisywania SAML** sekcji w **Pobierz** kolumny wybierz **XML metadanych**, a następnie zapisz plik metadanych do komputera.
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Link do pobierania podpisywania certyfikatu](./media/absorblms-tutorial/tutorial_absorblms_certificate.png) 
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-5. Wybierz pozycję **Zapisz**.
+    ![Informacje dotyczące domeny i adresów URL logowania jednokrotnego w usłudze Absorb LMS](common/idp-intiated.png)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/absorblms-tutorial/tutorial_general_400.png)
-    
-6. W **konfiguracji ochrony przed rozproszonymi LMS** zaznacz **konfigurowania ochrony przed rozproszonymi LMS** otworzyć **Konfigurowanie logowania jednokrotnego** okna, a następnie skopiuj **adres URL wylogowania** w **krótki przewodnik po sekcji.**
+    Jeśli korzystasz z **interfejsu użytkownika usługi Absorb 5**, użyj następującej konfiguracji:
 
-    ![W okienku ochrony przed rozproszonymi LMS konfiguracji](./media/absorblms-tutorial/tutorial_absorblms_configure.png) 
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://company.myabsorb.com/account/saml`
 
-7. W nowym oknie przeglądarki sieci web należy zalogować się jako administrator do ochrony przed rozproszonymi LMS witryny firmy.
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://company.myabsorb.com/account/saml`
 
-8. Wybierz **konta** przycisk w prawym górnym rogu. 
+    Jeśli korzystasz ze **środowiska nowego ucznia usługi Absorb 5**, użyj następującej konfiguracji:
 
-    ![Przycisk konta](./media/absorblms-tutorial/1.png)
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-9. W okienku konta wybierz **ustawienia portalu**.
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-    ![Link ustawienia portalu](./media/absorblms-tutorial/2.png)
-    
-10. Wybierz kartę **Użytkownicy**.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta usługi Absorb LMS](https://support.absorblms.com/hc/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Na karcie Użytkownicy](./media/absorblms-tutorial/3.png)
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-11. Na stronie konfiguracji rejestracji jednokrotnej wykonaj następujące czynności:
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![Na stronie konfiguracji rejestracji jednokrotnej](./media/absorblms-tutorial/4.png)
+6. W sekcji **Konfigurowanie usługi Absorb LMS** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    a. W **tryb** wybierz opcję **zainicjował dostawcy tożsamości**.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    b. Otwórz w Notatniku certyfikat, który został pobrany z witryny Azure portal. Usuń **---BEGIN CERTIFICATE---** i **---END CERTIFICATE---** tagów. Następnie w **klucz** pole, Wklej pozostałej zawartości.
-    
-    c. W **Właściwość Id** wybierz atrybut, który został skonfigurowany jako identyfikator użytkownika w usłudze Azure AD. Na przykład jeśli *userPrincipalName* jest zaznaczona w usłudze Azure AD, wybierz **Username**.
+    a. Adres URL logowania
 
-    d. W **adres URL logowania** pole, Wklej **adres URL dostępu użytkownika** z aplikacji **właściwości** strony w witrynie Azure Portal.
+    b. Identyfikator usługi Azure AD
 
-    e. W **adres URL wylogowania**, Wklej **adres URL wylogowania** wartości, który został skopiowany z **Konfigurowanie logowania jednokrotnego** okna witryny Azure portal.
+    d. Adres URL wylogowywania
 
-12. Przełącz **Zezwalaj tylko na logowanie SSO** do **na**.
+### <a name="configure-absorb-lms-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze Absorb LMS
 
-    ![Przełącz tylko Zezwalaj na logowanie SSO](./media/absorblms-tutorial/5.png)
+1. W nowym oknie przeglądarki internetowej zaloguj się jako administrator do firmowej witryny usługi Absorb LMS.
 
-13. Wybierz **Zapisz.**
+2. Wybierz przycisk **Account** (Konto) w prawym górnym rogu.
 
-> [!TIP]
-> Może odczytywać zwięzłe wersji tych instrukcji w [witryny Azure portal](https://portal.azure.com) podczas konfigurowania aplikacji. Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** karty i dostępu do osadzonego Dokumentacja usługi za pośrednictwem **konfiguracji** sekcji u dołu. Aby uzyskać więcej informacji, zobacz [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+    ![Przycisk Account (Konto)](./media/absorblms-tutorial/1.png)
+
+3. W okienku Account (Konto) wybierz pozycję **Portal Settings** (Ustawienia portalu).
+
+    ![Link Portal Settings (Ustawienia portalu)](./media/absorblms-tutorial/2.png)
+
+4. Wybierz kartę **Manage SSO Settings** (Zarządzaj ustawieniami logowania jednokrotnego).
+
+    ![Karta Users (Użytkownicy)](./media/absorblms-tutorial/managesso.png)
+
+5. Na stronie **Manage Single Sign-On Settings** (Zarządzanie ustawieniami logowania jednokrotnego) wykonaj następujące czynności:
+
+    ![Strona konfiguracji logowania jednokrotnego](./media/absorblms-tutorial/settings.png)
+
+    a. W polu tekstowym **Name** (Nazwa) wprowadź nazwę, np. Logowanie jednokrotne witryny Azure AD Marketplace.
+
+    b. W polu **Method** (Metoda) wybierz pozycję **SAML**.
+
+    d. W Notatniku otwórz certyfikat pobrany z witryny Azure Portal. Usuń tagi **---BEGIN CERTIFICATE---** i **---END CERTIFICATE---**. Następnie w polu **Key** (Klucz) wklej pozostałą zawartość.
+
+    d. W polu **Mode** (Tryb) wybierz pozycję **Identity Provider Initiated** (Inicjowane przez dostawcę tożsamości).
+
+    e. W polu **Id Property** (Właściwość identyfikatora) wybierz atrybut, który został skonfigurowany jako identyfikator użytkownika w usłudze Azure AD. Jeśli na przykład w usłudze Azure AD wybrano identyfikator *userPrincipalName*, wybierz pozycję **Username** (Nazwa użytkownika).
+
+    f. W polu **Signature Type** (Typ podpisu) wybierz pozycję **Sha256**.
+
+    g. W polu **Login URL** (Adres URL logowania) wklej wartość pola **Adres URL na potrzeby uzyskiwania dostępu przez użytkowników** ze strony **Właściwości** aplikacji w witrynie Azure Portal.
+
+    h. W polu **Logout URL** (Adres URL wylogowywania) wklej wartość pola **Adres URL wylogowywania** skopiowaną z okna **Konfigurowanie logowania** w witrynie Azure Portal.
+
+    i. Przełącz opcję **Automatically Redirect** (Automatyczne przekierowywanie) na wartość **On** (Włączone).
+
+6. Wybierz przycisk **Save** (Zapisz).
+
+    ![Przełącznik zezwalania na logowanie tylko za pomocą funkcji logowania jednokrotnego](./media/absorblms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji opisano tworzenie użytkownika testowego Britta Simon w witrynie Azure portal.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/absorblms-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-2. Aby wyświetlić listę użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
-    
-    !["Użytkownicy i grupy" i "All users" linki](./media/absorblms-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-3. W górnej części okna dialogowego wybierz **Dodaj**.
- 
-    ![Przycisk Dodaj](./media/absorblms-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
- 
-    ![Okno dialogowe użytkownika](./media/absorblms-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    b. W **nazwa_użytkownika** pole tekstowe, wpisz adres e-mail Britta Simon.
+    d. Kliknij pozycję **Utwórz**.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość w **hasło** pole.
-
-    d. Wybierz pozycję **Utwórz**.
-
-### <a name="create-an-absorb-lms-test-user"></a>Tworzenie użytkownika testowego ochrony przed rozproszonymi LMS
-
-Dla użytkowników usługi Azure AD zalogować się do ochrony przed rozproszonymi LMS ich można skonfigurować w ochrony przed rozproszonymi LMS.  
-
-W przypadku ochrony przed rozproszonymi systemu LMS konfiguracja jest zadanie ręczne.
-
-Aby skonfigurować konto użytkownika, wykonaj następujące czynności:
-
-1. Zaloguj się do witryny firmy ochrony przed rozproszonymi LMS jako administrator.
-
-2. W okienku po lewej stronie wybierz **użytkowników**.
-
-    ![Łącze ochrony przed rozproszonymi użytkowników LMS](./media/absorblms-tutorial/absorblms_users.png)
-
-3. W **użytkowników** okienku wybierz **użytkowników**.
-
-    ![Łącze użytkowników](./media/absorblms-tutorial/absorblms_userssub.png)
-
-4. W **Dodaj nowe** listy rozwijanej wybierz **użytkownika**.
-
-    ![Dodaj nowe listy rozwijanej](./media/absorblms-tutorial/absorblms_createuser.png)
-
-5. Na **Dodaj użytkownika** wykonaj następujące czynności:
-
-    ![Strona Dodawanie użytkownika](./media/absorblms-tutorial/user.png)
-
-    a. W **imię** wpisz imię, takich jak **Britta**.
-
-    b. W **nazwisko** wpisz nazwisko, takich jak **Simon**.
-    
-    c. W **Username** wpisz pełną nazwę, taką jak **Britta Simon**.
-
-    d. W **hasło** wpisz hasło Britta Simon.
-
-    e. W **Potwierdź hasło** pole, wprowadź ponownie hasło.
-    
-    f. Ustaw **jest aktywny** Przełącz, aby **Active**.  
-
-6. Wybierz **Zapisz.**
- 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć użytkownika Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ochrony przed rozproszonymi LMS.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi Absorb LMS.
 
-![Przypisanie roli użytkownika][200]
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie wybierz pozycję **Absorb LMS**.
 
-Aby przypisać użytkownika Britta Simon do ochrony przed rozproszonymi LMS, wykonaj następujące czynności:
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, przejdź do widoku katalogu, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+2. Na liście aplikacji wpisz nazwę usługi **Absorb LMS** i wybierz ją.
 
-    ![Link "Wszystkie aplikacje"][201] 
+    ![Link do usługi Absorb LMS na liście aplikacji](common/all-applications.png)
 
-2. W **aplikacje** listy wybierz **ochrony przed rozproszonymi LMS**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link ochrony przed rozproszonymi LMS na liście aplikacji](./media/absorblms-tutorial/tutorial_absorblms_app.png) 
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202] 
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. W **użytkowników i grup** dialogowym **użytkowników** listy wybierz **Britta Simon**.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-6. W **użytkowników i grup** okno dialogowe, wybierz opcję **wybierz** przycisku.
+### <a name="create-absorb-lms-test-user"></a>Tworzenie użytkownika testowego usługi Absorb LMS
 
-7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
-    
+Aby użytkownicy usługi Azure AD mogli zalogować się do usługi Absorb LMS, muszą być oni skonfigurowani w usłudze Absorb LMS. W przypadku usługi Absorb LMS aprowizacja to zadanie wykonywane ręcznie.
+
+**Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
+
+1. Zaloguj się jako administrator do firmowej witryny usługi Absorb LMS.
+
+2. W okienku **Users** (Użytkownicy) wybierz pozycję **Users** (Użytkownicy).
+
+    ![Link Users (Użytkownicy)](./media/absorblms-tutorial/absorblms_userssub.png)
+
+3. Wybierz kartę **User** (Użytkownik).
+
+    ![Lista rozwijana Add New (Dodaj nowego)](./media/absorblms-tutorial/absorblms_createuser.png)
+
+4. Na stronie **Add User** (Dodawanie użytkownika) wykonaj następujące czynności:
+
+    ![Strona Add User (Dodawanie użytkownika)](./media/absorblms-tutorial/user.png)
+
+    a. W polu **First Name** (Imię) wpisz imię, np. **Britta**.
+
+    b. W polu **Last Name** (Nazwisko) wpisz nazwisko, np. **Simon**.
+
+    d. W polu **Username** (Nazwa użytkownika) wpisz imię i nazwisko, np. **Britta Simon**.
+
+    d. W polu **Password** (Hasło) wpisz hasło użytkownika.
+
+    e. W polu **Confirm Password** (Potwierdź hasło) ponownie wpisz hasło.
+
+    f. Ustaw przełącznik **Is Active** (Jest aktywny) na wartość **Active** (Aktywny).
+
+5. Wybierz przycisk **Save** (Zapisz).
+
+    ![Przełącznik zezwalania na logowanie tylko za pomocą funkcji logowania jednokrotnego](./media/absorblms-tutorial/save.png)
+
+    > [!NOTE]
+    > Domyślnie aprowizacja użytkowników nie jest włączona w ramach logowania jednokrotnego. Jeśli klient chce włączyć tę funkcję, musi ją skonfigurować w sposób opisany w [tej](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning) dokumentacji. Ponadto należy pamiętać, że aprowizacja użytkowników jest dostępna tylko w **środowisku nowego ucznia usługi Absorb 5** przy użyciu adresu URL usługi ACS: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-W panelu dostępu wybierając **ochrony przed rozproszonymi LMS** kafelka automatycznie zaloguje Cię do ochrony przed rozproszonymi LMS aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Absorb LMS na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Absorb LMS, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/absorblms-tutorial/tutorial_general_01.png
-[2]: ./media/absorblms-tutorial/tutorial_general_02.png
-[3]: ./media/absorblms-tutorial/tutorial_general_03.png
-[4]: ./media/absorblms-tutorial/tutorial_general_04.png
-
-[100]: ./media/absorblms-tutorial/tutorial_general_100.png
-
-[200]: ./media/absorblms-tutorial/tutorial_general_200.png
-[201]: ./media/absorblms-tutorial/tutorial_general_201.png
-[202]: ./media/absorblms-tutorial/tutorial_general_202.png
-[203]: ./media/absorblms-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

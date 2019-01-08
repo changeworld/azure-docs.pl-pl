@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887512"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787634"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
 
 Ten samouczek to druga część serii. Przedstawiono w nim sposób tworzenia i debugowania aplikacji usługi Azure Service Fabric Mesh w lokalnym klastrze projektowym.
 
@@ -93,8 +93,8 @@ Jeśli wystąpią błędy kompilacji pliku **service.yaml**, upewnij się, że d
 ### <a name="debug-in-visual-studio"></a>Debugowanie w programie Visual Studio
 
 Podczas debugowania aplikacji usługi Service Fabric Mesh w programie Visual Studio używany jest lokalny klaster programowania usługi Service Fabric. Aby zobaczyć, jak elementy do wykonania są pobierane z usługi zaplecza, przeprowadź debugowanie metody OnGet().
-1. W projekcie **WebFrontEnd** otwórz plik **Strony** > **Index.cshtml** > **Index.cshtml.cs** i ustaw punkt przerwania w metodzie **Get** (wiersz 17).
-2. W projekcie **ToDoService** otwórz plik **TodoController.cs** i ustaw punkt przerwania w metodzie **OnGet** (wiersz 15).
+1. W projekcie **WebFrontEnd** otwórz plik **Strony** > **Index.cshtml** > **Index.cshtml.cs** i ustaw punkt przerwania w metodzie **OnGet** (wiersz 17).
+2. W projekcie **ToDoService** otwórz plik **TodoController.cs** i ustaw punkt przerwania w metodzie **Get** (wiersz 15).
 3. Odśwież stronę w przeglądarce. Działanie aplikacji zostanie zatrzymane w punkcie przerwania w metodzie `OnGet()` frontonu internetowego. Możesz zbadać wartość zmiennej `backendUrl`, aby sprawdzić, w jaki sposób zmienne środowiskowe zdefiniowane w pliku **service.yaml** zostały połączone w adres URL używany do komunikacji z usługą zaplecza.
 4. Pomiń (F10) wywołanie `client.GetAsync(backendUrl).GetAwaiter().GetResult())`. Działanie aplikacji zatrzyma się w punkcie przerwania `Get()` kontrolera. W tej metodzie możesz zobaczyć, jak lista elementów do wykonania jest pobierana z listy w pamięci.
 5. Gdy skończysz, zatrzymaj debugowanie projektu w programie Visual Studio, naciskając klawisze **Shift+F5**.

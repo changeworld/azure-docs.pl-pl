@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: analizowanie obrazu zdalnego — REST, JavaScript — przetwarzanie obrazów'
+title: 'Szybki start: analizowanie obrazu zdalnego — REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu za pomocą interfejsu API przetwarzania obrazów w języku JavaScript.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: acfaed619aa8d6e90060b31023e0ae0f33709d73
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 573e65f8f1a6e092da6d46d6a98fb89b1a476179
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853034"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581134"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i języka JavaScript podczas przetwarzania obrazów
 

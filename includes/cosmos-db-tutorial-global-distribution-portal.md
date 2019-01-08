@@ -2,27 +2,21 @@
 title: Globalna dystrybucja usługi Azure Cosmos DB
 description: Dowiedz się, jak globalnie replikować dane za pomocą usługi Azure Cosmos DB w witrynie Azure Portal
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: fb9418d47d2888467e1c1c40862833029111b75b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38747559"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53796117"
 ---
-Informacje na temat dystrybucji globalnej usługi Azure Cosmos DB możesz poznać w poniższym klipie wideo, w którym menedżer programu usługi Azure Cosmos DB Andrew Liu poprowadzi Cię przez funkcje globalnej dystrybucji.
-
->[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
-
-Aby uzyskać więcej informacji na temat sposobu działania globalnej replikacji bazy danych w usłudze Azure Cosmos DB, zobacz [Globalna dystrybucja danych za pomocą usługi Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
-
 ## <a id="addregion"></a>Dodawanie regionów globalnej bazy danych przy użyciu witryny Azure Portal
-Usługa Azure Cosmos DB jest dostępna we wszystkich [regionach świadczenia usług platformy Azure][azureregions] na całym świecie. Po wybraniu domyślnego poziomu spójności dla Twojego konta bazy danych możesz skojarzyć co najmniej jeden region (w zależności od wybranego domyślnego poziomu spójności i globalnych potrzeb dystrybucji).
+Usługa Azure Cosmos DB jest dostępna we wszystkich [regionach świadczenia usługi Azure][azureregions] na całym świecie. Po wybraniu domyślnego poziomu spójności dla Twojego konta bazy danych możesz skojarzyć co najmniej jeden region (w zależności od wybranego domyślnego poziomu spójności i globalnych potrzeb dystrybucji).
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na pasku po lewej stronie kliknij pozycję **Azure Cosmos DB**.
 2. Na stronie usługi **Azure Cosmos DB** wybierz konto bazy danych do modyfikacji.
@@ -41,7 +35,7 @@ Istnieją dwa typowe scenariusze konfigurowania co najmniej dwóch regionów:
 
 Aby zapewnić użytkownikom końcowym małe opóźnienia, zalecane jest wdrożenie zarówno aplikacji, jak i usługi Azure Cosmos DB w regionach, które odpowiadają lokalizacjom użytkowników aplikacji.
 
-W przypadku BCDR zalecane jest dodawanie regionów na podstawie par regionów opisanych w artykule [Business continuity and disaster recovery (BCDR): Azure Paired Regions (Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR): regiony sparowane platformy Azure)][bcdr].
+W przypadku BCDR zalecane jest dodawanie regionów na podstawie par regionów opisanych w artykule [Ciągłość działania i odzyskiwanie po awarii (BCDR): sparowane regiony platformy Azure][bcdr].
 
 <!--
 

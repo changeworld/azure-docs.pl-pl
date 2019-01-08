@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963325"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788626"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Samouczek: wdrażanie aplikacji usługi Service Fabric Mesh
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Samouczek: Wdrażanie aplikacji usługi Service Fabric Mesh
 
 Ten samouczek to trzecia część serii. Przedstawiono w nim sposób publikowania internetowej aplikacji usługi Azure Service Fabric Mesh bezpośrednio z poziomu programu Visual Studio.
 
@@ -113,10 +113,10 @@ Podczas wykonywania pozostałych kroków możesz użyć usługi Azure Cloud Shel
 
 Na tym etapie Twoja aplikacja została wdrożona. Jej stan możesz sprawdzić za pomocą polecenia `app show`. 
 
-Nazwa aplikacji w samouczku to `ServiceMeshApp`. Zbierz szczegółowe informacje dotyczące aplikacji za pomocą następującego polecenia:
+Nazwa aplikacji w samouczku to `todolistapp`. Zbierz szczegółowe informacje dotyczące aplikacji za pomocą następującego polecenia:
 
 ```azurecli-interactive
-az mesh app show --resource-group $rg --name ServiceMeshApp
+az mesh app show --resource-group $rg --name todolistapp
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>Wyświetlanie wszystkich aplikacji aktualnie wdrożonych w subskrypcji

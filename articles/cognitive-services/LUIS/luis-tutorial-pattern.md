@@ -9,23 +9,23 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 05af52ab492fcfe509b547efdd182a366642b9ed
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075526"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754411"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3. Dodawanie typowych formatów wypowiedzi
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Samouczek: dodawanie wspólnego szablonu wzorca formatów wypowiedzi
 
 W ramach tego samouczka w celu zwiększenia przewidywania intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania. Wzorzec jest kombinacją dopasowywania wyrażeń i uczenia maszynowego.  Przykładowa wypowiedź szablonu wraz z wypowiedziami intencji pozwala usłudze LUIS lepiej zrozumieć, jakie wypowiedzi pasują do intencji. 
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
-> * Korzystanie z istniejącej aplikacji samouczka 
+> * Importowanie aplikacji przykładowej 
 > * Tworzenie intencji
 > * Szkolenie
 > * Publikowanie
@@ -37,13 +37,13 @@ W ramach tego samouczka w celu zwiększenia przewidywania intencji i jednostek p
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+Wykonaj następujące czynności:
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 

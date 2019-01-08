@@ -4,22 +4,20 @@ description: Dowiedz się, jak zaprojektować swoją pierwszą bazę danych SQL 
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
-ms.devlang: ''
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
-ms.date: 11/01/2018
-ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/10/2018
+ms.openlocfilehash: cf180f6e2970ac4435602f1cceeb98a4dd9e8724
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912343"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727169"
 ---
-# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Samouczek: projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Samouczek: Projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
 
 Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i narzędzia ADO.NET w programie Visual Studio wykonać następujące czynności:
 
@@ -35,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zainstalowany program [Visual Studio Community 2017, Visual Studio Professional 2017 lub Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/).
+Instalacja [programu Visual Studio 2017](https://www.visualstudio.com/downloads/)
 
 <!-- The following included .md, sql-database-tutorial-portal-create-firewall-connection-1.md, is long.
 And it starts with a ## H2.
@@ -51,16 +49,16 @@ And it starts with a ## H2.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono podstawowe zadania dotyczące bazy danych, takie jak tworzenie bazy danych i tabel, ładowanie danych i tworzenie zapytań oraz przywracanie bazy danych do wcześniejszego punktu w czasie. W tym samouczku omówiono:
+W tym samouczku przedstawiono podstawowe zadania dotyczące baz danych, takie jak tworzenie bazy danych i tabel, łączenie się z bazą danych, ładowanie danych i uruchamianie zapytań. W tym samouczku omówiono:
+
 > [!div class="checklist"]
 > * Tworzenie bazy danych
 > * Konfigurowanie reguły zapory
 > * Nawiązywanie połączenia z bazą danych za pomocą [programu Visual Studio i języka C#](sql-database-connect-query-dotnet-visual-studio.md)
 > * Tworzenie tabel
-> * Wstawianie, aktualizowanie i usuwanie danych
-> * Zapytania o dane
+> * Wstawianie, aktualizowanie i usuwanie danych oraz wykonywanie zapytań o dane
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat migracji danych.
+Przejdź do następnego samouczka, aby dowiedzieć się więcej o migracji danych.
 
 > [!div class="nextstepaction"]
-> [Migracja bazy danych SQL Server do usługi Azure SQL Database](sql-database-migrate-your-sql-server-database.md)
+> [Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS](../dms/tutorial-sql-server-to-azure-sql.md)

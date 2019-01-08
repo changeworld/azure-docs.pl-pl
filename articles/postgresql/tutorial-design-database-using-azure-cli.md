@@ -1,22 +1,19 @@
 ---
 title: 'Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure'
 description: W tym samouczku przedstawiono, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i skonfigurować pierwszy serwer usługi Azure Database for PostgreSQL oraz wykonywać względem niego zapytania.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: c04eede63df50359af55f3956041df10fa2d075e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 03c9d647c98122b63b81baa453e0cccdf951901a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982345"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547324"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
@@ -195,9 +192,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 Polecenie `az postgres server restore` wymaga podania następujących parametrów:
-| Ustawienie | Sugerowana wartość | Opis  |
+| Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje serwer źródłowy.  |
+| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje serwer źródłowy.  |
 | name | mydemoserver-restored | Nazwa nowego serwera utworzonego za pomocą polecenie przywracania. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Wybierz punkt w czasie, do którego ma zostać przeprowadzone przywrócenie. Ta data i godzina musi przypadać w okresie przechowywania kopii zapasowej serwera źródłowego. Użyj daty i godziny w formacie ISO8601. Na przykład możesz użyć własnej lokalnej strefy czasowej, takiej jak `2017-04-13T05:59:00-08:00`, lub użyć formatu UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Nazwa lub identyfikator serwera źródłowego, z którego ma zostać przeprowadzone przywrócenie. |
@@ -218,4 +215,4 @@ W tym samouczku omówiono sposób użycia interfejsu wiersza polecenia platformy
 > * Aktualizowanie danych
 > * Przywracanie danych
 
-Następnie, aby dowiedzieć się, jak można użyć witryny Azure Portal do wykonywania podobnych zadań, przejrzyj następujący samouczek: [Projektowanie pierwszej bazy danych Azure Database for PostgreSQL przy użyciu witryny Azure Portal](tutorial-design-database-using-azure-portal.md)
+W następnym samouczku dowiesz się, jak wykonywać podobne zadania w witrynie Azure Portal: [Projektowanie pierwszej bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal](tutorial-design-database-using-azure-portal.md)

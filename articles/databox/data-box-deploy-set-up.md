@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427526"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791323"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
 
@@ -29,7 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono [samouczek dotyczący zamawiania urządzenia Azure Data Box](data-box-deploy-ordered.md).
+1. Ukończono [Samouczek: zamawianie urządzenia Azure Data Box](data-box-deploy-ordered.md).
 2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**. 
     - Do urządzenia dołączono etykietę wysyłkową w przezroczystej kieszeni pod bieżącą etykietą. Przechowuj tę etykietę w bezpiecznym miejscu, ponieważ użyjesz jej do wysyłki zwrotnej.
     - W niektórych regionach Europy możesz otrzymać urządzenie w opakowaniu. Pamiętaj, aby po rozpakowaniu urządzenia zachować opakowanie na wypadek wysyłki zwrotnej.
@@ -69,7 +69,7 @@ Wykonaj poniższe kroki, aby podłączyć kable do urządzenia.
 Wykonaj poniższe kroki, aby skonfigurować urządzenie przy użyciu lokalnego internetowego interfejsu użytkownika i interfejsu użytkownika portalu.
 
 1. Skonfiguruj kartę Ethernet na komputerze przenośnym używanym do nawiązywania połączenia z urządzeniem za pomocą statycznego adresu IP 192.168.100.5 i podsieci 255.255.255.0. 
-2. Nawiąż połączenie z portem MGMT urządzenia i uzyskaj dostęp do jego lokalnego internetowego interfejsu użytkownika pod adresem https://192.168.100.10. Może to potrwać do 5 minut po włączeniu urządzenia.
+2. Nawiąż połączenie z portem MGMT urządzenia i uzyskaj dostęp do jego lokalnego internetowego interfejsu użytkownika pod adresem https\://192.168.100.10. Może to potrwać do 5 minut po włączeniu urządzenia.
 3. Kliknij pozycję **Szczegóły**, a następnie kliknij pozycję **Przejdź do strony internetowej**.
 
    ![Nawiązywanie połączenia z lokalnym internetowym interfejsem użytkownika](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 

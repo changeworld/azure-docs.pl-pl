@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270267"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714342"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service
 
-Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym samouczku przedstawiono, w jaki sposób można zmapować istniejącą niestandardową nazwę DNS na aplikacje internetowe platformy Azure.
+Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku przedstawiono, w jaki sposób można zmapować istniejącą niestandardową nazwę DNS na usługę Azure App Service.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -48,7 +48,7 @@ W celu ukończenia tego samouczka:
   Aby na przykład dodać wpisy DNS dla domen `contoso.com` i `www.contoso.com`, musisz mieć możliwość skonfigurowania ustawień DNS dla domeny katalogu głównego `contoso.com`.
 
   > [!NOTE]
-  > Jeśli nie masz istniejącej nazwy domeny, możesz [zakupić domenę za pośrednictwem witryny Azure Portal](custom-dns-web-site-buydomains-web-app.md). 
+  > Jeśli nie masz istniejącej nazwy domeny, możesz [zakupić domenę za pośrednictwem witryny Azure Portal](manage-custom-dns-buy-domain.md). 
 
 ## <a name="prepare-the-app"></a>Przygotowywanie aplikacji
 
@@ -156,7 +156,7 @@ Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona 
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
@@ -231,7 +231,7 @@ Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona 
 ![Dodany rekord A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
@@ -286,7 +286,7 @@ Wybierz ponownie ikonę **+**, aby dodać inną nazwę hosta zgodną z domeną z
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 ## <a name="test-in-browser"></a>Testowanie w przeglądarce
 
@@ -305,7 +305,7 @@ Jeśli podczas przechodzenia do adresu URL domeny niestandardowej występuje bł
 
 ## <a name="migrate-an-active-domain"></a>Migrowanie aktywnej domeny
 
-Aby przeprowadzić migrację aktywnej witryny oraz jej nazwy domeny DNS do usługi App Service bez przestojów, zobacz [Migrate an active DNS name to Azure App Service](app-service-custom-domain-name-migrate.md) (Migrowanie aktywnej nazwy DNS do usługi Azure App Service).
+Aby przeprowadzić migrację aktywnej witryny oraz jej nazwy domeny DNS do usługi App Service bez przestojów, zobacz [Migrate an active DNS name to Azure App Service](manage-custom-dns-migrate-domain.md) (Migrowanie aktywnej nazwy DNS do usługi Azure App Service).
 
 ## <a name="redirect-to-a-custom-directory"></a>Przekierowywanie do katalogu niestandardowego
 
@@ -334,7 +334,7 @@ az webapp config hostname add \
     --hostname <fully_qualified_domain_name> 
 ``` 
 
-Aby uzyskać więcej informacji, zobacz [Map a custom domain to a web app](scripts/app-service-cli-configure-custom-domain.md) (Mapowanie domeny niestandardowej na aplikację internetową). 
+Aby uzyskać więcej informacji, zobacz [Map a custom domain to a web app](scripts/cli-configure-custom-domain.md) (Mapowanie domeny niestandardowej na aplikację internetową). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +347,7 @@ Set-AzureRmWebApp `
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-Aby uzyskać więcej informacji, zobacz [Assign a custom domain to a web app](scripts/app-service-powershell-configure-custom-domain.md) (Przypisywanie domeny niestandardowej do aplikacji internetowej).
+Aby uzyskać więcej informacji, zobacz [Assign a custom domain to a web app](scripts/powershell-configure-custom-domain.md) (Przypisywanie domeny niestandardowej do aplikacji internetowej).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -363,4 +363,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby dowiedzieć się, jak powiązać niestandardowy certyfikat SSL z aplikacją internetową.
 
 > [!div class="nextstepaction"]
-> [Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md)

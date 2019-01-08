@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3ebf450f4e84fed572307a18f20f36013e32c7a5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986121"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630703"
 ---
-# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
+# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
 W tym samouczku przedstawimy podstawowe kroki rozszerzania pojemności magazynu w systemie Windows Server przy użyciu usługi Azure File Sync. Mimo że w tym samouczku używamy maszyny wirtualnej platformy Azure z systemem Windows Server, ten proces jest zazwyczaj wykonywany na serwerach lokalnych. Jeśli wszystko będzie gotowe do wdrożenia usługi Azure File Sync w Twoim środowisku, skorzystaj w zamian z artykułu [Deploy Azure File Sync (Wdrażanie usługi Azure File Sync)](storage-sync-files-deployment-guide.md).
 
 > [!div class="checklist"]
@@ -163,14 +163,14 @@ Na maszynie wirtualnej z systemem **Windows Server 2016 Datacenter** zostanie au
 
 1. Zamknij **Eksploratora** i **Menedżera serwera**.
 
-### <a name="download-the-azurerm-powershell-module"></a>Pobieranie modułu AzureRM programu PowerShell
-Następnie na maszynie wirtualnej z systemem **Windows Server 2016 Datacenter** zainstaluj **moduł AzureRM programu PowerShell** na serwerze.
+### <a name="download-the-azure-powershell-module"></a>Pobieranie modułu programu Azure PowerShell
+Następnie na maszynie wirtualnej z systemem **Windows Server 2016 Datacenter** zainstaluj **moduł programu Azure PowerShell** na serwerze.
 
 1. Na maszynie wirtualnej otwórz okno programu PowerShell z podwyższonym poziomem uprawnień.
 1. Uruchom następujące polecenie:
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az -AllowClobber
    ```
 
    > [!NOTE]
@@ -189,7 +189,7 @@ Następnie na maszynie wirtualnej z systemem **Windows Server 2016 Datacenter** 
 
 1. Wybierz odpowiedź `Yes` lub `Yes to All`, aby kontynuować instalację.
 
-Moduł `AzureRM` to zbiorczy moduł poleceń cmdlet programu Azure PowerShell. Po jego zainstalowaniu są pobierane wszystkie dostępne moduły usługi Azure Resource Manager i są udostępniane do użycia ich polecenia cmdlet.
+Moduł `Az` to zbiorczy moduł poleceń cmdlet programu Azure PowerShell. Po jego zainstalowaniu są pobierane wszystkie dostępne moduły usługi Azure Resource Manager i są udostępniane do użycia ich polecenia cmdlet.
 
 Na tym etapie zakończono konfigurowanie środowiska na potrzeby samouczka i wszystko jest gotowe do rozpoczęcia wdrażania **usługi synchronizacji magazynu**.
 
@@ -237,7 +237,7 @@ Wdrożono usługę synchronizacji z platformą Azure i zainstalowano agenta na m
 ## <a name="register-windows-server"></a>Rejestrowanie systemu Windows Server
 Zarejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazynu powoduje ustanowienie relacji zaufania między serwerem (lub klastrem) oraz usługą synchronizacji magazynu. Serwer można zarejestrować tylko w jednej usłudze synchronizacji magazynu i można go synchronizować z innymi serwerami i udziałami plików platformy Azure skojarzonymi z tą samą usługą synchronizacji magazynu.
 
-Interfejs użytkownika rejestracji serwera powinien zostać otwarty automatycznie po zainstalowaniu **agenta usługi Azure File Sync**. W przeciwnym razie można otworzyć go ręcznie w lokalizacji jego pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
+Interfejs użytkownika rejestracji serwera powinien zostać otwarty automatycznie po zainstalowaniu **agenta usługi Azure File Sync**. Jeśli tak się nie stanie, można otworzyć go ręcznie z lokalizacji pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
 
 1. Po otwarciu interfejsu użytkownika rejestracji serwera na maszynie wirtualnej kliknij przycisk **OK**.
 1. Kliknij pozycję **Zaloguj się**, aby rozpocząć.

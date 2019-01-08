@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 8106c68397dea8d52c6d2daa2d09dfbc72c2a4c8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 58829bcd1b3c38b70929167beae5d8866483d616
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995062"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716501"
 ---
-# <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Samouczek: dodawanie domeny niestandardowej do usługi Front Door
+# <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Samouczek: Dodawanie do usługi Front Door domeny niestandardowej
 W tym Samouczku opisano, jak dodać domenę niestandardową do usługi Front Door. W przypadku dostarczania aplikacji przy użyciu usługi Azure Front Door Service domena niestandardowa jest niezbędna, jeśli chcesz, aby nazwa Twojej domeny była widoczna w żądaniu użytkownika końcowego. Widoczna nazwa domeny może być wygodna dla klientów i przydatna dla celów związanych ze znakowaniem.
 
 Po utworzeniu usługi Front Door domyślny host frontonu, który jest domeną podrzędną domeny `azurefd.net`, zostaje dołączony do adresu URL na potrzeby domyślnego dostarczania zawartości usługi Front Door z wewnętrznej bazy danych (na przykład https:\//contoso.azurefd.net/activeusers.htm). Dla Twojej wygody usługa Azure Front Door udostępnia opcję kojarzenia domeny niestandardowej z hostem domyślnym. Ta opcja umożliwia dostarczanie zawartości przy użyciu domeny niestandardowej w adresie URL zamiast korzystania z nazwy domeny należącej do usługi Front Door (np. https:\//www.contoso.com/photo.png). 
@@ -34,9 +34,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door. Aby uzyskać więcej informacji, zobacz temat [Quickstart: Create a Front Door for a highly available global web application](quickstart-create-front-door.md) (Szybki start: tworzenie usługi Front Door na potrzeby łatwo dostępnej globalnej aplikacji internetowej).
+Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door. Aby uzyskać więcej informacji, zobacz temat [Szybki start: tworzenie usługi Front Door](quickstart-create-front-door.md).
 
-Jeśli nie masz jeszcze domeny niestandardowej, musisz ją najpierw kupić od dostawcy domeny. Zobacz na przykład temat [Buy a custom domain name (Kupowanie nazwy domeny niestandardowej)](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).
+Jeśli nie masz jeszcze domeny niestandardowej, musisz ją najpierw kupić od dostawcy domeny. Zobacz na przykład temat [Buy a custom domain name (Kupowanie nazwy domeny niestandardowej)](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
 Jeśli używasz platformy Azure do hostowania [domen DNS](https://docs.microsoft.com/azure/dns/dns-overview), musisz delegować system nazw domen (DNS) dostawcy domen do usługi Azure DNS. Więcej informacji można znaleźć w temacie [Delegowanie domeny do usługi DNS platformy Azure](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). W przeciwnym razie, jeśli używasz dostawcy domeny do obsługi domeny DNS, przejdź do sekcji [Tworzenie rekordu DNS CNAME](#create-a-cname-dns-record).
 
@@ -66,11 +66,11 @@ Aby utworzyć rekord CNAME z poziomu domeny podrzędnej afdverify:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - Element źródłowy: wprowadź nazwę domeny niestandardowej z uwzględnieniem nazwy domeny podrzędnej afdverify w następującym formacie: afdverify._&lt;nazwa domeny niestandardowej&gt;_. Na przykład afdverify.www.contoso.com.
+    - Źródło: wprowadź nazwę domeny niestandardowej z uwzględnieniem nazwy domeny podrzędnej afdverify w następującym formacie: afdverify._&lt;nazwa domeny niestandardowej&gt;_. Na przykład afdverify.www.contoso.com.
 
-    - Typ: wprowadź wartość *CNAME*.
+    - Wpisz: Wprowadź wartość *CNAME*.
 
-    - Element docelowy: wprowadź domyślnego hosta frontonu usługi Front Door z uwzględnieniem nazwy domeny podrzędnej afdverify w następującym formacie: afdverify._&lt;nazwa punktu końcowego&gt;_.azurefd.net. Na przykład afdverify.contoso.azurefd.net.
+    - Miejsce docelowe: wprowadź domyślnego hosta frontonu usługi Front Door z uwzględnieniem nazwy domeny podrzędnej afdverify w następującym formacie: afdverify._&lt;nazwa punktu końcowego&gt;_.azurefd.net. Na przykład afdverify.contoso.azurefd.net.
 
 4. Zapisz zmiany.
 
@@ -86,13 +86,13 @@ Na przykład procedura rejestratora domen GoDaddy wygląda następująco:
 
 5. Wypełnij następujące pola wpisu CNAME:
 
-    - Typ: pozostaw wybraną pozycję *CNAME*.
+    - Wpisz: Pozostaw pozycję *CNAME* wybraną.
 
     - Host: wprowadź domenę podrzędną domeny niestandardowej do użycia, z uwzględnieniem nazwy domeny podrzędnej afdverify. Na przykład afdverify.www.
 
     - Wskazuje na: wprowadź nazwę hosta domyślnego hosta frontonu usługi Front Door, z uwzględnieniem nazwy domeny podrzędnej afdverify. Na przykład afdverify.contoso.azurefd.net. 
 
-    - Czas wygaśnięcia: pozostaw wybraną wartość *1 godzina*.
+    - Czas wygaśnięcia: Pozostaw wartość *1 godzina* wybraną.
 
 6. Wybierz pozycję **Zapisz**.
  
@@ -118,7 +118,7 @@ Po zarejestrowaniu domeny niestandardowej można dodać ją do usługi Front Doo
    Platforma Azure sprawdzi, czy dla wprowadzonej nazwy domeny niestandardowej istnieje rekord CNAME. Jeśli rekord CNAME jest poprawny, domena niestandardowa zostanie zweryfikowana.
 
 >[!WARNING]
-> **Musisz** upewnić się, że każdy z hostów frontonu (z uwzględnieniem domen niestandardowych) w usłudze Front Door ma regułę rozsyłania ze skojarzoną z nim domyślną ścieżką („/\*”). Oznacza to, że wśród wszystkich reguł rozsyłania musi być co najmniej jedna reguła rozsyłania dla każdego z hostów frontonu zdefiniowana w ścieżce domyślnej („/\*”). Jeśli tak nie będzie, ruch użytkownika końcowego może nie być trasowany prawidłowo.
+> **Musisz** upewnić się, że każdy z hostów frontonu (z uwzględnieniem domen niestandardowych) w usłudze Front Door ma regułę rozsyłania ze skojarzoną z nim domyślną ścieżką („/\*”). Oznacza to, że wśród wszystkich reguł rozsyłania musi być co najmniej jedna reguła rozsyłania dla każdego z hostów frontonu zdefiniowana w ścieżce domyślnej („/\*”). Jeśli tak nie będzie, ruch użytkowników końcowych może nie być kierowany prawidłowo.
 
 ## <a name="verify-the-custom-domain"></a>Weryfikowanie domeny niestandardowej
 
@@ -143,11 +143,11 @@ Aby utworzyć rekord CNAME dla domeny niestandardowej:
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azurefd.net |
 
-    - Źródło: wprowadź nazwę domeny niestandardowej (np. www.contoso.com).
+    - Źródło: Wprowadź nazwę domeny niestandardowej (np. www.contoso.com).
 
-    - Typ: wprowadź wartość *CNAME*.
+    - Wpisz: Wprowadź wartość *CNAME*.
 
-    - Element docelowy: wprowadź domyślny host frontonu usługi Front Door. Jego wymagany format to: _&lt;nazwa hosta&gt;_.azurefd.net. Na przykład contoso.azurefd.net.
+    - Miejsce docelowe: wprowadź domyślny host frontonu usługi Front Door. Jego wymagany format to: _&lt;nazwa hosta&gt;_.azurefd.net. Na przykład contoso.azurefd.net.
 
 4. Zapisz zmiany.
 
@@ -167,13 +167,13 @@ Na przykład procedura rejestratora domen GoDaddy wygląda następująco:
 
 5. Wypełnij pola wpisu CNAME:
 
-    - Typ: pozostaw wybraną pozycję *CNAME*.
+    - Wpisz: Pozostaw pozycję *CNAME* wybraną.
 
-    - Host: wprowadź domenę podrzędną domeny niestandardowej do użycia. Na przykład www lub profil.
+    - Host: Wprowadź domenę podrzędną domeny niestandardowej do użycia. Na przykład www lub profil.
 
     - Wskazuje na: wprowadź domyślną nazwę hosta usługi Front Door. Na przykład contoso.azurefd.net. 
 
-    - Czas wygaśnięcia: pozostaw wybraną wartość *1 godzina*.
+    - Czas wygaśnięcia: Pozostaw wartość *1 godzina* wybraną.
 
 6. Wybierz pozycję **Zapisz**.
  

@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f355604e2bff1c3f03c8237f30cbe41ce7e5810
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b50609449d6144d2bb013d82e2eb29e94b5b01be
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616151"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754122"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
 
 Dowiedz się, jak wykonywać iteracje w Twoim szablonie usługi Azure Resource Manager w celu utworzenia wielu wystąpień zasobu platformy Azure. W tym samouczku zmodyfikujesz szablon w celu utworzenia trzech wystąpień konta magazynu.
+
+Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Otwieranie szablonu szybkiego startu
@@ -120,14 +122,14 @@ Zapoznaj się z sekcją [Wdrażanie szablonu](./resource-manager-quickstart-crea
 
 Aby wyświetlić wszystkie trzy konta magazynu, pomiń parametr --name:
 
-# <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -149,7 +151,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia wielu wystąpień konta magazynu. Do tej pory zostało utworzone jedno konto magazynu lub wiele wystąpień konta magazynu. W następnym samouczku utworzysz szablon z wieloma zasobami i wieloma typami zasobów. Niektóre zasoby zawierają zasoby zależne.
+W tym samouczku przedstawiono sposób tworzenia wielu wystąpień konta magazynu. W następnym samouczku dowiesz się, jak przenieść zasób z jednej grupy zasobów do innej grupy zasobów.
 
 > [!div class="nextstepaction"]
-> [Tworzenie zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [Przenoszenie zasobów](./resource-manager-tutorial-move-resources.md)

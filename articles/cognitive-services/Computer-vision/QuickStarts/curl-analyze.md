@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: analizowanie obrazu zdalnego — REST, cURL — przetwarzanie obrazów'
+title: 'Szybki start: analizowanie obrazu zdalnego — REST, cURL'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu zdalnego za pomocą interfejsu API przetwarzania obrazów i biblioteki cURL.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 04ad5ff2e148a5f5469cd13ce6106e6466d645b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 18e7c084686099611db0c3042e66181df19d6186
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344034"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581542"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i biblioteki cURL podczas przetwarzania obrazów
 

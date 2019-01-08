@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu odręcznego — REST, C# — przetwarzanie obrazów'
+title: 'Szybki start: wyodrębnianie tekstu odręcznego — REST, C#'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst odręczny przy użyciu interfejsu API przetwarzania obrazów i języka C#.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: c0b24414450e29d9f33e6f4e378819842c80d480
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 892f66d13544d9bc53d62673143c5a3af3ee8af1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853510"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578873"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu odręcznego przy użyciu interfejsu API REST i języka C&#35 w przetwarzaniu obrazów
 

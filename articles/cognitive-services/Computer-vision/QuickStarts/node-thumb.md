@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: generowanie miniatur — REST, Node.js — przetwarzanie obrazów'
+title: 'Szybki start: generowanie miniatury — REST, Node.js'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka Node.js.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 3d92849eae64e48cb2052b233b89c96ad702e622
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: cda00b7d8a9d7b597f5702769eb367a7fa93d2dc
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971066"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578941"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-nodejs-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka Node.js podczas przetwarzania obrazów
 

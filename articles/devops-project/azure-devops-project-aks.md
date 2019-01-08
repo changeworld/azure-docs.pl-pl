@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2aa103b36f60a84aaafc47f03a6cf6d5b6b66160
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620646"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993791"
 ---
 # <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service za pomocą usługi Azure DevOps Projects
 
@@ -191,4 +191,4 @@ Opcjonalnie możesz zmodyfikować potoki kompilacji i wydania, aby zaspokoić po
 Aby dowiedzieć się więcej na temat korzystania z pulpitu nawigacyjnego platformy Kubernetes, zobacz:
 
 > [!div class="nextstepaction"]
-> [Korzystanie z pulpitu nawigacyjnego rozwiązania Kubernetes](https://docs.microsoft.com/en-us/azure/aks/kubernetes-dashboard)
+> [Korzystanie z pulpitu nawigacyjnego rozwiązania Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
