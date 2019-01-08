@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: b58237f25a51438f0255243f960cc2a6aed2b0ca
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6badfabb3ad20b5c17b3bb2bf09ae13f63568d05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679175"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714756"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -106,10 +106,18 @@ Usługa Application Gateway zapewnia natywną obsługę protokołów WebSocket i
 
 Protokoły WebSocket i HTTP/2 umożliwiają pełnodupleksową komunikację między serwerem i klientem przez długotrwałe połączenie TCP. Pozwala to na bardziej interaktywną komunikację między serwerem internetowym a klientem, która może być dwukierunkowa bez konieczności sondowania, co jest wymagane w implementacjach opartych na protokole HTTP. Te protokoły mają niskie obciążenie, w odróżnieniu od protokołu HTTP, i mogą ponownie używać tego samego połączenia TCP dla wielu żądań/odpowiedzi, co zapewnia bardziej efektywne wykorzystanie zasobów. Te protokoły są przeznaczone do pracy z użyciem tradycyjnych portów HTTP, tj. 80 i 443.
 
+## <a name="rewrite-http-headers-public-preview"></a>Ponowne zapisywanie nagłówków HTTP (publiczna wersja zapoznawcza)
+
+Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji w ramach żądania lub odpowiedzi. Ponowne zapisywanie nagłówków HTTP ułatwia realizację różnych ważnych scenariuszy, takich jak dodanie pól nagłówka związanych z zabezpieczeniami, takich jak HSTS/X-Ochrona-XSS, lub usunięcie pól nagłówka odpowiedzi, których zawartość mogłaby spowodować ujawnienie poufnych informacji, takich jak nazwa serwera wewnętrznej bazy danych. 
+
+Usługa Application Gateway obsługuje teraz możliwość ponownego zapisywania nagłówków w przychodzących żądaniach HTTP, jak również w wychodzących odpowiedziach HTTP. Będzie można dodawać, usuwać lub aktualizować nagłówki żądania i odpowiedzi HTTP podczas przenoszenia pakietów żądań/odpowiedzi między pulami klienta i wewnętrznej bazy danych. Można ponownie zapisać zarówno standardowe (zdefiniowane w [dokumencie RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)), jak i niestandardowe pola nagłówka.  
+
+Aby uzyskać więcej informacji na temat tej funkcji w publicznej wersji zapoznawczej, zobacz artykuł [Ponowne zapisywanie nagłówków HTTP](rewrite-http-headers.md).
+
 ## <a name="next-steps"></a>Następne kroki
 
 W zależności od wymagań i środowiska możesz utworzyć testową usługę Application Gateway przy użyciu witryny Azure Portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure:
 
-- [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal](quick-create-portal.md)
+- [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal](quick-create-portal.md).
 - [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure PowerShell](quick-create-powershell.md)
 - [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure](quick-create-cli.md)

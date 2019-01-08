@@ -14,16 +14,16 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f41172a493f3e5e1b98cbba32b0180cee16c072
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eab4365b6b86a82f29dbd1a79d4fda6dc9b30e0e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018956"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971328"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis
 
-Usługa Azure Cache for Redis jest oparta na popularnym rozwiązaniu open source [Azure Cache for Redis](https://redis.io/). Zazwyczaj jest używana jako pamięć podręczna w celu poprawy wydajności i skalowalności systemów, które są silnie uzależnione od magazynów danych na zapleczu. Poprawa wydajności jest możliwa dzięki tymczasowemu kopiowaniu często używanych danych do szybkiego magazynu znajdującego się blisko aplikacji. W przypadku usługi [Azure Cache for Redis](https://redis.io/) ten szybki magazyn jest umieszczany w pamięci za pomocą usługi Azure Cache for Redis zamiast ładowania z dysku przez bazę danych.
+Usługa Azure Cache for Redis opiera się na popularnym oprogramowaniu [Redis](https://redis.io/). Zazwyczaj jest używana jako pamięć podręczna w celu poprawy wydajności i skalowalności systemów, które są silnie uzależnione od magazynów danych na zapleczu. Poprawa wydajności jest możliwa dzięki tymczasowemu kopiowaniu często używanych danych do szybkiego magazynu znajdującego się blisko aplikacji. W przypadku usługi [Azure Cache for Redis](https://redis.io/) ten szybki magazyn jest umieszczany w pamięci za pomocą usługi Azure Cache for Redis zamiast ładowania z dysku przez bazę danych.
 
 Usługa Azure Cache for Redis może także służyć jako magazyn struktury danych w pamięci, rozproszona nierelacyjna baza danych i broker komunikatów. Wydajność aplikacji jest zwiększana dzięki wykorzystaniu małego opóźnienia i wysokiej przepustowości aparatu Redis.
 

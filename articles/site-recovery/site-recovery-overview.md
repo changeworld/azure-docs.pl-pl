@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5942f27313cf8bb6a9ed8bf0a5cc4fb556693065
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2cd9e89c92b2bed75c52654d779f4f7d8c17596e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832228"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975325"
 ---
 # <a name="about-site-recovery"></a>Informacje o usłudze Site Recovery
 
@@ -23,8 +23,8 @@ W przypadku organizacji konieczne jest zastosowanie strategii związanej z ciąg
 
 W celu realizacji strategii BCDR można wykorzystać usługi Azure Recovery Services:
 
-- **Usługa Site Recovery**: usługa Site Recovery pomaga zapewnić ciągłość działalności biznesowej dzięki utrzymywaniu działania aplikacji biznesowych i obciążeń podczas awarii. Usługa Site Recovery replikuje obciążenia uruchomione na maszynach fizycznych i wirtualnych z lokacji podstawowej do lokacji dodatkowej. W przypadku awarii w lokacji głównej ma miejsce przełączenie w tryb failover do lokacji dodatkowej, z poziomu której możliwy jest dostęp do aplikacji. Po ponownym uruchomieniu lokacji głównej możliwy jest do niej powrót po awarii.  
-- **Usługa Backup**: usługa [Azure Backup](https://docs.microsoft.com/azure/backup/) powoduje, że dane są bezpieczne i możliwe do odzyskania dzięki tworzeniu ich kopii zapasowej na platformie Azure.
+- **Usługa Site Recovery**: Usługa Site Recovery pomaga zapewnić ciągłość działalności biznesowej dzięki utrzymywaniu działania aplikacji biznesowych i obciążeń podczas awarii. Usługa Site Recovery replikuje obciążenia uruchomione na maszynach fizycznych i wirtualnych z lokacji podstawowej do lokacji dodatkowej. W przypadku awarii w lokacji głównej ma miejsce przełączenie w tryb failover do lokacji dodatkowej, z poziomu której możliwy jest dostęp do aplikacji. Po ponownym uruchomieniu lokacji głównej możliwy jest do niej powrót po awarii.  
+- **Usługa Backup**: Usługa [Azure Backup](https://docs.microsoft.com/azure/backup/) utrzymuje bezpieczeństwo i możliwość odzyskiwania danych dzięki tworzeniu ich kopii zapasowej na platformie Azure.
 
 Usługa Site Recovery może zarządzać replikacją dla:
 

@@ -3,7 +3,7 @@ title: Przewodniki Szybki start dotyczące nawiązywania połączeń z usługą 
 description: Przewodniki Szybki start z informacjami na temat nawiązywania połączeń z usługą Azure SQL Database i wykonywania zapytań.
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,14 +12,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 11/01/2018
-ms.openlocfilehash: ab1f96b2348c24a746aaa7bdd670f396884ee3f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 613b4cf2b08269259a4608a6960b815777cd0ae9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870201"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608038"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Szybki start: nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Przewodniki Szybki start: nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań
 
 Poniższy dokument zawiera linki do przykładów związanych z platformą Azure przedstawiających nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań. Zawiera także pewne rekomendacje dotyczące protokołu TLS.
 

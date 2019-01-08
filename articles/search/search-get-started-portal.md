@@ -1,32 +1,34 @@
 ---
-title: Samouczek dotyczący indeksowania, wykonywania zapytań i filtrowania w witrynie Azure Portal — Azure Search
-description: Podczas pracy z tym samouczkiem użyjesz wstępnie zdefiniowanych danych przykładowych do wygenerowania indeksu w usłudze Azure Search za pomocą witryny Azure Portal. Dowiedz się więcej o wyszukiwaniu pełnotekstowym, filtrach, aspektach, wyszukiwaniu rozmytym, wyszukiwaniu geograficznym i innych funkcjach.
+title: Samouczek szybkiego startu indeksowania i wykonywania zapytań przy użyciu witryny Azure Portal — usługa Azure Search
+description: Podczas pracy z tym samouczkiem szybkiego startu użyjesz wbudowanych danych przykładowych do wygenerowania indeksu w usłudze Azure Search za pomocą witryny Azure Portal. Dowiedz się więcej o wyszukiwaniu pełnotekstowym, filtrach, aspektach, wyszukiwaniu rozmytym, wyszukiwaniu geograficznym i innych funkcjach.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314027"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001791"
 ---
-# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>Samouczek: Korzystanie z wbudowanych narzędzi portalu do indeksowania i wykonywania zapytań w usłudze Azure Search
+# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
 
-Aby szybko przejrzeć i poznać pojęcia dotyczące usługi Azure Search, możesz użyć wbudowanych narzędzi dostępnych na stronie usługi Azure Search w witrynie Azure Portal. Te narzędzia mogą nie oferować pełnej funkcjonalności platformy .NET i interfejsów API REST. Jednak kreatory i edytory zapewniają wprowadzenie do usługi Azure Search bez używania kodu, dzięki czemu możesz od razu zacząć pisać interesujące zapytania dotyczące przykładowego zestawu danych.
+Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatory i edytory nie oferują pełnej równoważności z interfejsami API .NET i REST, ale możesz szybko zacząć pracę bez korzystania z kodu, w ciągu kilku minut pisząc ciekawe zapytania odnoszące się do danych przykładowych.
 
 > [!div class="checklist"]
-> * Na początek skorzystaj z publicznie dostępnych danych przykładowych i wygeneruj automatycznie indeks usługi Azure Search za pomocą **kreatora importu danych**.
-> * Wyświetl schemat i atrybuty dowolnego indeksu opublikowanego w usłudze Azure Search.
-> * Zapoznaj się z wyszukiwaniem pełnotekstowym, filtrami, aspektami, wyszukiwaniem rozmytym i wyszukiwaniem geograficznym, korzystając z **Eksploratora wyszukiwania**.  
+> * Rozpocznij od publicznego bezpłatnego zestawu przykładowych danych hostowanego na platformie Azure
+> * Uruchom kreatora **Importowanie danych** w usłudze Azure Search, aby załadować dane i wygenerować indeks
+> * Monitoruj w portalu postęp indeksowania
+> * Wyświetlaj istniejący indeks i opcje służące do modyfikowania go
+> * Zapoznaj się z wyszukiwaniem pełnotekstowym, filtrami, aspektami, wyszukiwaniem rozmytym i wyszukiwaniem geograficznym, korzystając z **Eksploratora wyszukiwania**
 
-Jeśli te narzędzia oferują zbyt ograniczone funkcje, możesz skorzystać z [wprowadzenia do programowania dla usługi Azure Search z użyciem kodu .NET](search-howto-dotnet-sdk.md) lub [internetowych narzędzi do testowania wywołań interfejsu API REST](search-fiddler.md).
+Jeśli te narzędzia oferują zbyt ograniczone funkcje, możesz skorzystać z [wprowadzenia do programowania dla usługi Azure Search z użyciem kodu .NET](search-howto-dotnet-sdk.md) albo skorzystać z narzędzi [Postman lub Fiddler do wykonywania wywołań interfejsu API REST](search-fiddler.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Możesz także obejrzeć 6-minutowy pokaz czynności wykonywanych w ramach tego samouczka, rozpoczynający się od około trzeciej minuty tego [klipu wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
 
@@ -44,82 +46,95 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Wielu klientów zaczyna od bezpłatnej usługi. Ta wersja jest ograniczona do trzech indeksów, trzech źródeł danych i trzech indeksatorów. Przed rozpoczęciem upewnij się, że dysponujesz miejscem na dodatkowe elementy. W ramach tego samouczka tworzony jest jeden obiekt każdego typu.
 
-> [!TIP]
-> Na kafelkach na pulpicie nawigacyjnym usługi wyświetlana jest liczba posiadanych już indeksów, indeksatorów i źródeł danych. Kafelek Indeksator zawiera wskaźniki sukcesów i niepowodzeń. Kliknij kafelek, aby wyświetlić liczbę indeksatorów.
->
-> ![Kafelki dla indeksatorów i źródeł danych][1]
->
+W sekcjach na pulpicie nawigacyjnym usługi wyświetlana jest liczba posiadanych już indeksów, indeksatorów i źródeł danych. 
+
+! [Lista indeksów, indeksatorów i źródeł danych][media/search-get-started-portal/tiles-indexers-datasources2.png]
 
 ## <a name="create-index"></a> Tworzenie indeksu i ładowanie danych
 
 Zapytania wyszukiwania używają iteracyjnie [*indeksu*](search-what-is-an-index.md) zawierającego dane z możliwością wyszukiwania, metadane i dodatkowe konstrukcje, które optymalizują określone zachowania związane z wyszukiwaniem.
 
-W tym samouczku zostanie użyty wbudowany przykładowy zestaw danych, który można przeszukiwać przy użyciu [*indeksatora*](search-indexer-overview.md) za pośrednictwem **kreatora importu danych**. Indeksator to przeszukiwarka specyficzna dla źródła, mająca możliwość odczytu metadanych i zawartości z obsługiwanych źródeł danych platformy Azure. Te indeksatory są widoczne w portalu za pośrednictwem kreatora **Importowanie danych**. Później możesz programowo tworzyć indeksatory i zarządzać nimi jako niezależnymi zasobami.
+W tym samouczku zostanie użyty wbudowany przykładowy zestaw danych, który można przeszukiwać przy użyciu [*indeksatora*](search-indexer-overview.md) za pośrednictwem **kreatora importu danych**. Indeksator to przeszukiwarka specyficzna dla źródła, mająca możliwość odczytu metadanych i zawartości z obsługiwanych źródeł danych platformy Azure. Indeksatory są zazwyczaj używane programowo, ale w portalu można uzyskać do nich dostęp za pośrednictwem kreatora **Importowanie danych**. 
 
-### <a name="step-1-start-the-import-data-wizard"></a>Krok 1. Uruchamianie kreatora importu danych
+### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Krok 1 — Uruchomienie Kreatora importowania danych i utworzenie źródła danych
 
-1. Na pulpicie nawigacyjnym usługi Azure Search kliknij pozycję **Importuj dane** na pasku poleceń, aby uruchomić kreatora. Ten kreator ułatwia tworzenie i wypełnianie indeksu wyszukiwania.
+1. Na pulpicie nawigacyjnym usługi Azure Search kliknij pozycję **Importuj dane** na pasku poleceń, aby utworzyć i wypełnić indeks wyszukiwania.
 
-    ![Polecenie importu danych][2]
+   ![Polecenie importu danych](media/search-get-started-portal/import-data-cmd2.png)
 
-2. W kreatorze kliknij kolejno pozycje **Połącz z danymi** > **Przykłady** > **realestate-us-sample**. To źródło danych jest wstępnie skonfigurowane przy użyciu nazwy, typu i informacji o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
+2. W kreatorze kliknij kolejno pozycje **Połącz z danymi** > **Przykłady** > **realestate-us-sample**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
 
-    ![Wybieranie przykładowego zestawu danych][9]
+   ![Wybieranie przykładowego zestawu danych](media/search-get-started-portal/import-datasource-sample2.png)
 
-3. Kliknij pozycję **OK**, aby go użyć.
+3. Przejdź do następnej strony.
 
-### <a name="skip-cognitive-skills"></a>Pomijanie kroku Umiejętności poznawcze
+   ![Przycisk następnej strony dla wyszukiwania poznawczego](media/search-get-started-portal/next-button-add-cog-search.png)
 
-Obszar **Importuj dane** zawiera opcjonalny krok dotyczący umiejętności poznawczych, który umożliwia dodanie niestandardowych algorytmów sztucznej inteligencji do indeksowania. Na razie pomiń ten krok i przejdź do kroku **Dostosowywanie indeksu docelowego**.
+### <a name="step-2---skip-cognitive-skills"></a>Krok 2 — Pomijanie kroku Umiejętności poznawcze
+
+Kreator obsługuje tworzenie [potoku umiejętności poznawczych](cognitive-search-concept-intro.md) w celu wykorzystania algorytmów sztucznej inteligencji usługi Cognitive Services do indeksowania. 
+
+Na razie pominiemy ten krok i przejdziemy bezpośrednio do kroku **Dostosowywanie indeksu docelowego**.
+
+   ![Pomijanie kroku Umiejętności poznawcze](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
 > Możesz wypróbować nową funkcję wyszukiwania poznawczego (wersja zapoznawcza) dla usługi Azure Search z poziomu [przewodnika Szybki start dotyczącego wyszukiwania poznawczego](cognitive-search-quickstart-blob.md) lub [samouczka](cognitive-search-tutorial-blob.md).
 
-   ![Pomijanie kroku Umiejętności poznawcze][11]
+### <a name="step-3---configure-index"></a>Krok 3 — Konfigurowanie indeksu
 
-### <a name="step-2-define-the-index"></a>Krok 2. Definiowanie indeksu
-
-Zazwyczaj indeks jest tworzony ręcznie przy użyciu kodu. W tym samouczku kreator może wygenerować indeks dla dowolnego źródła danych, które może przeszukiwać. Indeks wymaga co najmniej nazwy i kolekcji pól. Jedno z pól powinno być oznaczone jako klucz dokumentu w celu jednoznacznego zidentyfikowania poszczególnych dokumentów.
+Zazwyczaj tworzenie indeksu jest czynnością bazującą na kodzie, którą wykonuje się przed załadowaniem danych. Jednak, jak pokazano w tym samouczku, kreator może wygenerować indeks podstawowy dla dowolnego źródła danych, które może przeszukiwać. Indeks wymaga co najmniej nazwy i kolekcji pól. Jedno z pól powinno być oznaczone jako klucz dokumentu w celu jednoznacznego zidentyfikowania poszczególnych dokumentów. Ponadto można określić analizatory języka lub sugestory, aby stosować autouzupełnianie lub sugerowane zapytania.
 
 Pola mają typy danych i atrybuty. Pola wyboru w górnej części są *atrybutami indeksu*, które kontrolują sposób używania pola.
 
 * **Pobieranie** oznacza, że pole jest wyświetlane na liście wyników wyszukiwania. Możesz oznaczyć poszczególne pola tak, aby nie były uwzględniane w wynikach wyszukiwania. W tym celu wystarczy usunąć zaznaczenie danego pola wyboru, na przykład wtedy, gdy pola są używane tylko w wyrażeniach filtrowania.
-* Atrybuty **Filtrowanie**, **Sortowanie** i **Tworzenie aspektów** określają, czy pole może być używane w strukturze nawigacji tworzenia aspektów, filtrowania lub sortowania.
+* **Klucz** to unikatowy identyfikator dokumentu. Zawsze jest ciągiem znaków i jest wymagany.
+* Atrybuty **Możliwość filtrowania**, **Z możliwością sortowania** i **Możliwość tworzenia aspektów** określają, czy pola mogą być używane w strukturze nawigacji filtrowania, sortowania lub tworzenia aspektów.
 * **Wyszukiwanie** oznacza, że pole jest uwzględniane podczas wyszukiwania pełnotekstowego. Ciągi można przeszukiwać. Pól liczbowych i logicznych często nie można wyszukiwać.
+
+Wymagania dotyczące rozmiaru magazynu nie są zależne od Twojego wyboru. Na przykład jeśli ustawisz atrybut **Możliwość pobierania** dla wielu pól, nie zwiększy to wymaganego rozmiaru magazynu.
 
 Domyślnie kreator skanuje źródło danych w poszukiwaniu unikatowych identyfikatorów jako podstawy dla pola klucza. Ciągi są określane jako możliwe do pobierania i przeszukiwania. Liczby całkowite są określane jako możliwe do pobierania, filtrowania, sortowania i tworzenia aspektów.
 
-  ![Wygenerowany indeks realestate][3]
+1. Zaakceptuj wszystkie ustawienia domyślne.
 
-Kliknij przycisk **OK**, aby utworzyć indeks.
+  ![Wygenerowany indeks realestate](media/search-get-started-portal/realestateindex2.png)
 
-### <a name="step-3-define-the-indexer"></a>Krok 3. Definiowanie indeksatora
+2. Przejdź do następnej strony.
+
+  ![Następna strona — tworzenie indeksatora](media/search-get-started-portal/next-button-create-indexer.png)
+
+### <a name="step-4---configure-indexer"></a>Krok 4 — Konfigurowanie indeksatora
 
 W kreatorze **importu danych** kliknij pozycję **Indeksator** > **Nazwa**, a następnie wpisz nazwę indeksatora.
 
-Ten obiekt definiuje proces wykonywalny. Możesz go uruchamiać w ramach harmonogramu cyklicznego, ale na razie użyj opcji domyślnej, aby uruchomić indeksatora jednorazowo natychmiast po kliknięciu przycisku **OK**.  
+Ten obiekt definiuje proces wykonywalny. Możesz go uruchamiać w ramach harmonogramu cyklicznego, ale na razie użyj opcji domyślnej, aby od razu uruchomić indeksator jeden raz.
 
-  ![Indeksator realestate][8]
+Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
 
-### <a name="check-progress"></a>Sprawdzanie postępu
+  ![Indeksator realestate](media/search-get-started-portal/realestate-indexer2.png)
 
-Aby monitorować importowanie danych, wróć do pulpitu nawigacyjnego usługi, przewiń w dół, a następnie kliknij dwukrotnie kafelek **Indeksatory**, aby otworzyć listę indeksatorów. Na liście powinien być widoczny nowo utworzony indeksator w stanie wskazującym trwające indeksowanie lub pomyślne jego zakończenie wraz z liczbą zindeksowanych dokumentów.
+## <a name="monitor-progress"></a>Monitorowanie postępu
 
-   ![Komunikat o postępie indeksatora][4]
+Kreator powinien przenieść Cię do listy Indeksatory, gdzie można monitorować postęp. W przypadku samodzielnej nawigacji przejdź do strony Przegląd, a następnie kliknij przycisk **Indeksatory**.
 
-### <a name="step-4-view-the-index"></a>Krok 4. Wyświetlanie indeksu
+Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinien być widoczny nowo utworzony indeksator w stanie wskazującym na trwające indeksowanie lub jego pomyślne zakończenie wraz z liczbą zindeksowanych dokumentów.
 
-Kafelki na pulpicie nawigacyjnym usługi przedstawiają podsumowanie informacji o różnych obiektach w zasobach, a także umożliwiają dostęp do informacji szczegółowych. Kafelek **Indeksy** zawiera listę istniejących indeksów, zawierającą między innymi indeks *realestate-us-sample* utworzony w poprzednim kroku.
+   ![Komunikat o postępie indeksatora](media/search-get-started-portal/indexers-inprogress2.png)
 
-Kliknij teraz indeks *realestate-us-sample*, aby wyświetlić dostępne w portalu opcje dotyczące jego definicji. Opcja **Dodaj/edytuj pola** umożliwia tworzenie nowych pól i dodawanie do nich atrybutów. Istniejące pola mają fizyczną reprezentację w usłudze Azure Search i w związku z tym nie można ich modyfikować nawet za pomocą kodu. Aby wprowadzić poważne zmiany w istniejącym polu, utwórz nowe pole i usuń poprzednią wersję.
+## <a name="view-the-index"></a>Wyświetlanie indeksu
 
-   ![Przykładowa definicja indeksu][10]
+Na liście **Indeksy** wyświetlone są istniejące indeksy, łącznie z indeksem *realestate-us-sample* utworzonym w kreatorze w poprzednim kroku.
+
+Korzystając z tej listy, można wyświetlić schemat indeksu i opcjonalnie dodać nowe pola, ale nie można zmienić istniejących pól. Istniejące pola mają fizyczną reprezentację w usłudze Azure Search i w związku z tym nie można ich modyfikować nawet za pomocą kodu. Aby całkowicie zmienić istniejące pole, utwórz nowy indeks, usuwając poprzednią wersję.
+
+   ![Przykładowa definicja indeksu](media/search-get-started-portal/sample-index-def.png)
 
 Inne konstrukcje, takie jak profile oceniania i opcje CORS, można dodać w dowolnym momencie.
 
-Aby dobrze zaznajomić się z elementami, które można i których nie można edytować podczas projektowania indeksu, poświęć chwilę na zapoznanie się z opcjami definicji indeksu. Opcje wyświetlane na szaro oznaczają, że danej wartości nie można zmodyfikować ani usunąć. Podobnie, pomiń na razie pola wyboru Analizator i Sugestor.
+Aby dobrze zaznajomić się z elementami, które można i których nie można edytować podczas projektowania indeksu, poświęć chwilę na zapoznanie się z opcjami definicji indeksu. Opcje wyświetlane na szaro oznaczają, że danej wartości nie można zmodyfikować ani usunąć. 
 
-## <a name="query-index"></a> Wykonywanie zapytań względem indeksu
+## <a name="query-index"></a> Tworzenie zapytań za pomocą Eksploratora wyszukiwania
 
 Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego zapytań za pomocą wbudowanej strony zapytań, noszącej nazwę [**Eksplorator wyszukiwania**](search-explorer.md). Zawiera ona pole wyszukiwania, umożliwiające testowanie dowolnych ciągów zapytań.
 
@@ -129,11 +144,11 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
 
 1. Kliknij pozycję **Eksplorator wyszukiwania** na pasku poleceń.
 
-   ![Polecenie Eksploratora wyszukiwania][5]
+   ![Polecenie Eksploratora wyszukiwania](media/search-get-started-portal/search-explorer-cmd2.png)
 
 2. Na pasku poleceń kliknij pozycję **Zmień indeks**, aby przełączyć się na zestaw danych *realestate-us-sample*. Na pasku poleceń kliknij pozycję **Ustaw wersję interfejsu API**, aby wyświetlić dostępne interfejsy API REST. W przypadku poniższych zapytań użyj ogólnie dostępnej wersji (2017-11-11).
 
-   ![Polecenia indeksu i interfejsu API][6]
+   ![Polecenia indeksu i interfejsu API](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
 3. Na pasku wyszukiwania wprowadź poniższe ciągi zapytań, a następnie kliknij pozycję **Wyszukaj**.
 
@@ -141,17 +156,21 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
     > **Eksplorator wyszukiwania** umożliwia tylko obsługę [żądań interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents). Akceptuje on zarówno [prostą składnię zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), jak i składnię [pełnego analizatora zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), a także wszystkie parametry wyszukiwania dostępne w ramach operacji [Wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents).
     >
 
+## <a name="example-queries"></a>Przykładowe zapytania
+
+Można wprowadzać terminy i frazy (podobnie jak w wyszukiwaniu Bing lub Google) lub w pełni określone wyrażenia zapytania. Wyniki są zwracane w postaci pełnych dokumentów JSON.
+
 ### <a name="simple-query-with-top-n-results"></a>Proste zapytanie z pierwszymi N wynikami
 
-#### <a name="example-string-searchseattle"></a>Przykład (ciąg): `search=seattle`
+#### <a name="example-string-query-searchseattle"></a>Przykład (zapytanie w postaci ciągu znaków): `search=seattle`
 
 * Parametr **search** służy do wprowadzania pełnotekstowego wyszukiwania słów kluczowych — w tym przypadku zwrócone zostaną oferty w King County w stanie Waszyngton zawierające ciąg *Seattle* w dowolnym polu możliwym do przeszukania w dokumencie.
 
-* **Eksplorator wyszukiwania** zwraca wyniki w formacie JSON, które są szczegółowe i trudne do odczytania, jeśli dokumenty mają gęstą strukturę. Jest to zamierzone. Widoczność całego dokumentu jest ważne z punktu widzenia celów programowania, zwłaszcza podczas testów. Aby zwiększyć wygodę użytkowania, należy napisać kod [obsługujący wyniki wyszukiwania](search-pagination-page-layout.md) w celu wyróżnienia istotnych elementów.
+* **Eksplorator wyszukiwania** zwraca wyniki w formacie JSON, które są szczegółowe i trudne do odczytania, jeśli dokumenty mają gęstą strukturę. Jest to zamierzone. Widoczność całego dokumentu jest ważna dla celów programowania, zwłaszcza podczas testów. Aby zwiększyć wygodę użytkowania, należy napisać kod [obsługujący wyniki wyszukiwania](search-pagination-page-layout.md) w celu wyróżnienia istotnych elementów.
 
-* Dokumenty składają się ze wszystkich pól oznaczonych jako możliwe do pobierania w indeksie. Aby wyświetlić atrybuty indeksu w portalu, kliknij zestaw danych *realestate-us-sample* w kafelku **Indeksy**.
+* Dokumenty składają się ze wszystkich pól oznaczonych jako możliwe do pobierania w indeksie. Aby wyświetlić atrybuty indeksu w portalu, kliknij pozycję *realestate-us-sample* na liście **Indeksy**.
 
-#### <a name="example-parameterized-searchseattlecounttruetop100"></a>Przykład (sparametryzowane): `search=seattle&$count=true&$top=100`
+#### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>Przykład (zapytanie sparametryzowane): `search=seattle&$count=true&$top=100`
 
 * Symbol **&** służy do dołączania parametrów wyszukiwania, które mogą być podane w dowolnej kolejności.
 
@@ -231,13 +250,13 @@ Wyszukiwanie geoprzestrzenne jest przydatne, jeśli aplikacja wyszukiwania ma fu
 
 ## <a name="takeaways"></a>Wnioski
 
-W tym samouczku podano krótkie wprowadzenie do korzystania z usługi Azure Search w witrynie Azure Portal.
+W tym samouczku podano krótkie wprowadzenie do korzystania z usługi Azure Search za pomocą witryny Azure Portal.
 
 Opisano tworzenie indeksu wyszukiwania przy użyciu kreatora **Importowanie danych**. Zostały przedstawione [indeksatory](search-indexer-overview.md), a także podstawowy przepływ pracy projektowania indeksu, w tym [obsługiwane modyfikacje opublikowanego indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
 Przy użyciu **Eksploratora wyszukiwania** w witrynie Azure Portal przedstawiono podstawową składnię zapytań w ramach praktycznych przykładów kluczowych możliwości, takich jak filtry, wyróżnianie trafień, wyszukiwanie rozmyte i wyszukiwanie geograficzne.
 
-Przedstawiono też używanie kafelków na pulpicie nawigacyjnym portalu dla indeksu wyszukiwania, indeksatora i źródeł danych. Dla dowolnego nowego źródła danych możesz przy użyciu portalu szybko sprawdzić jego definicje lub kolekcje pól przy minimalnym nakładzie pracy.
+Przedstawiono również sposób znajdowania indeksów, indeksatorów i źródeł danych w portalu. Dla dowolnego nowego źródła danych możesz przy użyciu portalu szybko sprawdzić jego definicje lub kolekcje pól przy minimalnym nakładzie pracy.
 
 ## <a name="clean-up"></a>Czyszczenie
 
@@ -247,19 +266,6 @@ Jeśli w tym samouczku usługa Azure Search była używana po raz pierwszy, usu�
 
 Możesz lepiej poznać usługę Azure Search przy użyciu narzędzi programistycznych:
 
-* [Tworzenie indeksu za pomocą zestawu SDK platformy .NET](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [Tworzenie indeksu za pomocą interfejsów API REST](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* Używanie [narzędzia do testowania w sieci Web, takiego jak Postman lub Fiddler, do wywoływania interfejsów API REST usługi Azure Search](search-fiddler.md)
-
-<!--Image references-->
-[1]: ./media/search-get-started-portal/tiles-indexers-datasources2.png
-[2]: ./media/search-get-started-portal/import-data-cmd2.png
-[3]: ./media/search-get-started-portal/realestateindex2.png
-[4]: ./media/search-get-started-portal/indexers-inprogress2.png
-[5]: ./media/search-get-started-portal/search-explorer-cmd2.png
-[6]: ./media/search-get-started-portal/search-explorer-changeindex-se2.png
-[7]: ./media/search-get-started-portal/search-explorer-query2.png
-[8]: ./media/search-get-started-portal/realestate-indexer2.png
-[9]: ./media/search-get-started-portal/import-datasource-sample2.png
-[10]: ./media/search-get-started-portal/sample-index-def.png
-[11]: ./media/search-get-started-portal/skip-cog-skill-step.png
+* [Tworzenie indeksu przy użyciu zestawu .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+* [Tworzenie indeksu przy użyciu interfejsów API REST](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
+* [Tworzenie indeksu przy użyciu narzędzia Postman lub Fiddler i interfejsów API REST usługi Azure Search](search-fiddler.md)

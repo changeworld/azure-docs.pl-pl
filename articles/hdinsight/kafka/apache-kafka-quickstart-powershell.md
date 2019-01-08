@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 8ac288a3b62b305ca45ba8ef2dcc6cdaf6aaf6bd
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1dd80cffe64e6c93a0681400d067182f1a74afff
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309645"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581872"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Szybki start: tworzenie platformy Apache Kafka w klastrze usługi HDInsight
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Szybki start: Tworzenie platformy Apache Kafka w klastrze usługi HDInsight
 
 [Apache Kafka](https://kafka.apache.org/) to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania. 
 
@@ -24,7 +24,7 @@ W tym samouczku szybkiego startu dowiesz się, jak utworzyć klaster [platformy 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Dostęp do interfejsu API platformy Kafka mogą uzyskać tylko zasoby będące w tej samej sieci wirtualnej. W tym przewodniku Szybki start uzyskasz dostęp do klastra bezpośrednio przy użyciu protokołu SSH. Aby do platformy Kafka podłączyć inne usługi, sieci lub maszyny wirtualne, należy najpierw utworzyć sieć wirtualną, a następnie utworzyć zasoby w obrębie tej sieci.
 >
 > Aby uzyskać więcej informacji, zobacz dokument [Connect to Apache Kafka using a virtual network (Nawiązywanie połączenia z platformą Apache Kafka za pomocą sieci wirtualnej)](apache-kafka-connect-vpn-gateway.md).
@@ -43,7 +43,7 @@ W tym samouczku szybkiego startu dowiesz się, jak utworzyć klaster [platformy 
 
     * [Zainstaluj podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10). Dystrybucje systemu Linux dostępne za pośrednictwem sklepu Microsoft Store udostępniają polecenie `ssh`.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > W krokach opisanych w tym dokumencie założono, że używasz jednego z klientów SSH wymienionego powyżej. Jeśli używasz innego klienta SSH i napotkasz problemy, zapoznaj się z dokumentacją swojego klienta SSH.
     >
     > Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -132,16 +132,16 @@ New-AzureRmHDInsightCluster `
         -DisksPerWorkerNode $disksPerNode
 ```
 
-> [!WARNING]
+> [!WARNING]  
 > Tworzenie klastra usługi HDInsight może potrwać do 20 minut.
 
-> [!TIP]
+> [!TIP]  
 > Parametr `-DisksPerWorkerNode` konfiguruje skalowalność platformy Kafka w usłudze HDInsight. Do przechowywania danych platforma Kafka w usłudze HDInsight używa dysku lokalnego maszyn wirtualnych w klastrze. Ze względu na duże obciążenie we/wy platformy Kafka używana jest usługa [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md), która zapewnia wysoką przepływność i więcej miejsca do magazynowania w każdym węźle. 
 >
 > Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Typ dysku zależy od rozmiaru maszyny wirtualnej używanej przez węzły procesu roboczego (brokery platformy Kafka). Dyski w warstwie Premium są używane automatycznie przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych. Typ maszyny wirtualnej możesz ustawić przy użyciu parametru `-WorkerNodeSize`. Aby uzyskać więcej informacji o parametrach, zobacz dokumentację polecenia [New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster).
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Jeśli planujesz użyć więcej niż 32 węzłów procesów roboczych (podczas tworzenia klastra albo skalując klaster po utworzeniu), musisz użyć parametru `-HeadNodeSize`, aby określić rozmiar maszyny wirtualnej z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -169,7 +169,7 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 83 packages can be updated.
 37 updates are security updates.
@@ -210,7 +210,7 @@ W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Apache Ambari w
 
     Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (nie dla konta SSH).
 
-    > [!NOTE]
+    > [!NOTE]  
     > To polecenie pobiera wszystkie hosty Zookeeper, a następnie zwraca tylko dwie pierwsze pozycje. Taka nadmiarowość jest wymagana, jeśli jeden z hostów będzie nieosiągalny.
 
 4. Aby sprawdzić, czy zmienna środowiskowa jest poprawnie ustawiona, użyj następującego polecenia:
@@ -257,14 +257,14 @@ Platforma Kafka przechowuje strumienie danych w *tematach*. Tematami można zarz
 
     * Każda partycja jest replikowana w trzech węzłach procesu roboczego w klastrze.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Jeśli klaster został utworzony w regionie świadczenia usługi Azure, który udostępnia trzy domeny błędów, użyj współczynnika replikacji o wartości 3. W przeciwnym razie użyj współczynnika replikacji o wartości 4.
         
         W regionach z trzema domenami błędów współczynnik replikacji o wartości 3 umożliwia rozmieszczenie replik w różnych domenach błędów. W regionach z dwoma domenami błędów współczynnik replikacji o wartości cztery umożliwia równomierne rozmieszczenie replik między domenami.
         
         Aby uzyskać informacje dotyczące liczby domen błędów w regionie, zobacz dokument [Availability of Linux virtual machines (Dostępność maszyn wirtualnych z systemem Linux)](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-        > [!IMPORTANT] 
+        > [!IMPORTANT]   
         > Platforma Kafka nie uwzględnia domen błędów platformy Azure. Utworzone repliki partycji tematów mogą nie zostać prawidłowo rozpowszechnione w celu zapewnienia wysokiej dostępności.
 
         Aby zapewnić wysoką dostępność, użyj [narzędzia do ponownego równoważenia partycji platformy Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). To narzędzie należy uruchomić, korzystając z połączenia SSH z węzłem głównym klastra platformy Kafka.
@@ -291,7 +291,7 @@ Platforma Kafka przechowuje strumienie danych w *tematach*. Tematami można zarz
 
     To polecenie usuwa temat o nazwie `topicname`.
 
-    > [!WARNING]
+    > [!WARNING]  
     > W przypadku usunięcia utworzonego wcześniej tematu `test` konieczne będzie jego ponowne utworzenie. Jest on używany w czynnościach opisanych w dalszej części tego dokumentu.
 
 Aby uzyskać więcej informacji na temat poleceń dostępnych w narzędziu `kafka-topics.sh`, użyj następującego polecenia:
@@ -324,7 +324,7 @@ Poniżej przedstawiono procedurę zapisywania rekordów w utworzonym wcześniej 
    
     To polecenie umożliwia pobranie rekordów z tematu i ich wyświetlenie. Polecenie `--from-beginning` informuje odbiorcę, aby rozpocząć od początku strumienia w celu pobrania wszystkich rekordów.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Jeśli korzystasz ze starszej wersji platformy Kafka, zastąp element `--bootstrap-server $KAFKABROKERS` elementem `--zookeeper $KAFKAZKHOSTS`.
 
 4. Użyj klawiszy __Ctrl+C__, aby zatrzymać odbiorcę.
@@ -339,7 +339,7 @@ Gdy grupa zasobów, usługa HDInsight i wszystkie pokrewne zasoby nie będą ju�
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-> [!WARNING]
+> [!WARNING]  
 > Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć.
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.

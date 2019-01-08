@@ -1,5 +1,5 @@
 ---
-title: Wypróbowywanie opartego na chmurze rozwiązania do zdalnego monitorowania IoT na platformie Azure | Microsoft Docs
+title: Testowanie opartego na chmurze rozwiązania do zdalnego monitorowania IoT — Azure | Microsoft Docs
 description: W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań usługi Azure IoT do zdalnego monitorowania oraz zalogować się do pulpitu nawigacyjnego rozwiązania i korzystać z niego.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824782"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608361"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: Testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
 
 W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań do zdalnego monitorowania usługi Azure IoT. W tym rozwiązaniu opartym na chmurze użyjesz strony **Pulpit nawigacyjny**, aby wyświetlić urządzenia symulowane na mapie, i strony **Konserwacja**, aby zareagować na alert dotyczący ciśnienia z symulowanego urządzenia typu „chiller” (chłodziarki). Ten akcelerator rozwiązań może posłużyć jako punkt wyjścia dla własnej implementacji lub do nauki.
 
@@ -142,4 +142,4 @@ W tym przewodniku Szybki start wdrożono akcelerator rozwiązań do zdalnego mon
 Aby dowiedzieć się więcej na temat akceleratora rozwiązań korzystającego z urządzeń symulowanych, przejdź do następującego samouczka.
 
 > [!div class="nextstepaction"]
-> [Samouczek: monitorowanie urządzeń IoT](iot-accelerators-remote-monitoring-monitor.md)
+> [Samouczek: Monitorowanie urządzeń IoT](iot-accelerators-remote-monitoring-monitor.md)

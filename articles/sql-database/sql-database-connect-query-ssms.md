@@ -4,7 +4,7 @@ description: Dowiedz się, jak łączyć się z bazą danych SQL Database na pla
 keywords: łączenie z bazą danych SQL, sql server management studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098960"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745078"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych SQL Azure
 
-[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) służy do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows. W tym przewodniku Szybki start pokazano, jak używać narzędzia SSMS do nawiązywania połączenia z usługą Azure SQL Database, a następnie uruchamiać instrukcje w języku Transact-SQL, wysyłać zapytania o dane, a także wstawiać, aktualizować i usuwać dane. 
+W tym przewodniku Szybki start nawiążesz połączenie z bazą danych SQL na platformie Azure przy użyciu programu [SQL Server Management Studio][ssms-install-latest-84g] (SSMS). Następnie uruchomisz instrukcje języka Transact-SQL w celu wykonywania zapytań, wstawiania, aktualizowania i usuwania danych. Program SQL Server Management Studio możesz wykorzystać do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -75,11 +75,11 @@ W środowisku SMSS połącz się z serwerem usługi Azure SQL Database.
 
 ## <a name="query-data"></a>Zapytania o dane
 
-Użyj następującego kodu [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) języka Transact-SQL, aby wykonać zapytanie o 20 najpopularniejszych produktów według kategorii.
+Uruchom następujący kod z instrukcją [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) języka Transact-SQL, aby wykonać zapytanie o 20 najpopularniejszych produktów według kategorii.
 
-1. W Eksploratorze obiektów kliknij prawym przyciskiem myszy pozycję **mojaPrzykladowaBazaDanych** i wybierz opcję **Nowe zapytanie**. Zostanie otwarte puste okno zapytania, które jest połączone z Twoją bazą danych.
+1. W Eksploratorze obiektów kliknij prawym przyciskiem myszy pozycję **mojaPrzykladowaBazaDanych** i wybierz opcję **Nowe zapytanie**. Zostanie otwarte nowe okno zapytania połączone z Twoją bazą danych.
 
-1. Wklej w oknie zapytania to zapytanie SQL.
+2. Wklej w oknie zapytania to zapytanie SQL.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -90,13 +90,13 @@ Użyj następującego kodu [SELECT](https://msdn.microsoft.com/library/ms189499.
 
 3. Na pasku narzędzi wybierz pozycję **Wykonaj**, aby pobrać dane z tabel `Product` i `ProductCategory`.
 
-    ![zapytanie do pobierania danych z 2 tabel](./media/sql-database-connect-query-ssms/query2.png)
+    ![zapytanie do pobierania danych z dwóch tabel](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Wstawianie danych
 
-Użyj następującego kodu [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby utworzyć nowy produkt w tabeli `SalesLT.Product`.
+Uruchom następujący kod z instrukcją [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby utworzyć nowy produkt w tabeli `SalesLT.Product`.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -117,11 +117,11 @@ Użyj następującego kodu [INSERT](https://msdn.microsoft.com/library/ms174335.
            ,GETDATE() );
    ```
 
-2. Wybierz polecenie **Wykonaj**, aby wstawić nowy wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
+2. Wybierz polecenie **Wykonaj**, aby wstawić nowy wiersz do tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
 ## <a name="view-the-result"></a>Wyświetlanie wyniku
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    SELECT * FROM [SalesLT].[Product] 
@@ -134,7 +134,7 @@ Użyj następującego kodu [INSERT](https://msdn.microsoft.com/library/ms174335.
  
 ## Update data
 
-Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
 1. Replace the previous query with this one.
 
@@ -144,20 +144,20 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wybierz polecenie **Wykonaj**, aby zaktualizować wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
+2. Wybierz polecenie **Wykonaj**, aby zaktualizować określony wiersz w tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
 ## <a name="delete-data"></a>Usuwanie danych
 
-Użyj następującego kodu [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy, wcześniej dodany produkt.
+Uruchom następujący kod z instrukcją [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy produkt.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wybierz polecenie **Wykonaj**, aby usunąć wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
+2. Wybierz polecenie **Wykonaj**, aby usunąć określony wiersz z tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
 ## <a name="next-steps"></a>Następne kroki
 

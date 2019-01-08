@@ -1,20 +1,18 @@
 ---
-title: 'Szybki start: tworzenie serwera usługi Azure Database for MariaDB za pomocą witryny Azure Portal'
+title: 'Szybki start: Tworzenie serwera usługi Azure Database for MariaDB — witryna Azure Portal'
 description: W tym artykule przedstawiono sposób tworzenia przykładowego serwera usługi Azure Database for MariaDB za pomocą witryny Azure Portal w ciągu około pięciu minut.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 721cd87dcf58a2b5a7a8fd32fdfa8b2d65453b24
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: fb02cfd2419d1c98a92d1eae8b59256499d017a8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321941"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541391"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą witryny Azure Portal
 
@@ -49,7 +47,7 @@ Aby utworzyć serwer usługi Azure Database for MariaDB:
     Grupa zasobów | **myresourcegroup** | Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów. 
     Wybierz źródło | **Puste** | Wybierz opcję **Puste**, aby utworzyć nowy serwer od początku. Opcję **Kopia zapasowa** należy wybrać w przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for MariaDB.
     Identyfikator logowania administratora serwera | **myadmin** | Konto logowania do użycia podczas łączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Hasło | *wartość wybrana przez użytkownika* | Wprowadź nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itp.).
+    Hasło | *wartość wybrana przez użytkownika* | Wprowadź nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % i tak dalej).
     Potwierdź hasło | *wartość wybrana przez użytkownika*| Potwierdź hasło do konta administratora.
     Lokalizacja | *region najbliżej Twoich użytkowników*| Wybierz lokalizację najbliżej użytkowników lub innych aplikacji platformy Azure.
     Wersja | *najnowsza wersja*| Najnowsza wersja, chyba że z konkretnych powodów wymagana jest inna wersja.
