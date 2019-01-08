@@ -1,5 +1,5 @@
 ---
-title: Wypróbowywanie rozwiązania na platformie Azure w celu zarządzania przemysłowymi urządzeniami IoT | Microsoft Docs
+title: Wypróbowywanie rozwiązania do zarządzania przemysłowymi urządzeniami IoT — Azure | Microsoft Docs
 description: W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań usługi Azure IoT połączonej fabryki oraz zalogować się do pulpitu nawigacyjnego rozwiązania i korzystać z niego.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139018"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602651"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Szybki start: testowanie rozwiązania opartego na chmurze w celu zarządzania przemysłowymi urządzeniami IoT
+# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Szybki start: testowanie rozwiązania opartego na chmurze do zarządzania przemysłowymi urządzeniami IoT
 
 Ten przewodnik Szybki start przedstawia sposób wdrażania akceleratora rozwiązań usługi Azure IoT połączonej fabryki w celu uruchomienia opartej na chmurze symulacji monitorowania przemysłowych urządzeń IoT i zarządzania nimi. Podczas wdrażania akceleratora rozwiązań połączonej fabryki jest on wstępnie wypełniany symulowanymi zasobami, które umożliwiają wykonanie kroków opisanych w typowym przemysłowym scenariuszu IoT. Z rozwiązaniem jest połączonych kilka symulowanych fabryk, które raportują wartości danych potrzebne do obliczenia ogólnej wydajności sprzętu (OEE, Overall Equipment Efficiency) oraz kluczowych wskaźników wydajności (KPI, Key Performance Indicator). Ten przewodnik Szybki start pokazuje, jak wykonywać następujące zadania za pomocą pulpitu nawigacyjnego rozwiązania:
 

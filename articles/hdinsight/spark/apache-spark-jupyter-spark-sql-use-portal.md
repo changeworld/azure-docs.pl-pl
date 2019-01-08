@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie klastra Spark w usłudze HDInsight przy użyciu witryny Azure Portal'
+title: 'Szybki start: Tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu witryny Azure Portal'
 description: W tym przewodniku Szybki start pokazano, jak za pomocą witryny Azure Portal utworzyć klaster Apache Spark w usłudze Azure HDInsight i uruchomić zapytanie Spark SQL.
 services: hdinsight
 author: hrasheed-msft
@@ -9,26 +9,26 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 370503cc463fd3683f47fe0b573ad83daa0b9d14
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5833571bc1c1ac2674723abf286437c3e5e0a5ae
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584557"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791869"
 ---
-# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu witryny Azure Portal
-Dowiedz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu Hive. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat klastra Spark w usłudze HDInsight, zobacz [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
+# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Szybki start: Tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu witryny Azure Portal
+Dowiedz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu Hive. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat platformy Apache Spark w usłudze HDInsight, zobacz [Omówienie: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
 
-W tym przewodniku Szybki start użyjesz witryny Azure Portal do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage 2. generacji, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+W tym przewodniku Szybki start użyjesz witryny Azure Portal do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Opłaty za klastry usługi HDInsight są naliczane proporcjonalnie za minutę, niezależnie od ich użycia. Pamiętaj o usunięciu klastra po zakończeniu korzystania z niego. Aby uzyskać więcej informacji, zobacz sekcję [Czyszczenie zasobów](#clean-up-resources) w tym artykule.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Tworzenie klastra Spark w usłudze HDInsight
 
-1. W witrynie Azure Portal wybierz pozycje **Utwórz zasób** > **Dane i analiza** > **HDInsight**. 
+1. W witrynie Azure Portal wybierz kolejno pozycje **Utwórz zasób** > **Analiza** > **HDInsight**. 
 
     ![Usługa HDInsight w witrynie Azure Portal](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster.png "Usługa HDInsight w witrynie Azure Portal")
 2. W obszarze **Podstawy** podaj następujące wartości:
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
     |---------|---------|
     |**Nazwa klastra**     | Podaj nazwę klastra Spark w usłudze HDInsight. Nazwą klastra używaną w tym przewodniku Szybki start jest **myspark20180403**.|
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure używaną dla tego klastra. Subskrypcją używaną na potrzeby tego przewodnika Szybki start jest **&lt;subskrypcja platformy Azure**. |
-    |**Typ klastra**| Rozwiń pozycję, a następnie wybierz opcję **Spark** jako typ klastra i określ wersję klastra Spark. <br/> <img src="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-type.png" alt = "Slect HDInsight clsuter type" /> |
+    |**Typ klastra**| Rozwiń pozycję, a następnie wybierz opcję **Spark** jako typ klastra i określ wersję klastra Spark. <br/> <img src="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-type.png" alt = "Select HDInsight cluster type" /> |
     |**Nazwa użytkownika logowania klastra**| Wprowadź nazwę użytkownika logowania klastra.  Nazwa domyślna to *admin*. To konto służy do logowania do notesu Jupyter w dalszej części przewodnika Szybki start. |
     |**Hasło logowania klastra**| Wprowadź hasło logowania klastra. |
     |**Nazwa użytkownika protokołu SSH (Secure Shell)**| Wprowadź nazwę użytkownika protokołu SSH. Nazwą użytkownika protokołu SSH używaną w tym przewodniku Szybki start jest **sshuser**. Domyślnie to konto współdzieli hasło z kontem *Nazwa użytkownika logowania klastra*. |
@@ -53,7 +53,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
     ![Tworzenie konfiguracji magazynu klastra Spark w usłudze HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Tworzenie klastra Spark w usłudze HDInsight — konfiguracje magazynu")
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Na zrzucie ekranu jest widoczna pozycja **Wybierz istniejący**. Link przełącza między opcjami **Utwórz nowy** i **Wybierz istniejący**.
 
     **Domyślny kontener** ma domyślną nazwę.  Jeśli chcesz, możesz zmienić nazwę.
@@ -63,7 +63,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 3. Na stronie **Podsumowanie** wybierz pozycję **Utwórz**. Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.
 
-Problemy podczas tworzenia klastrów usługi HDInsight mogą świadczyć o braku odpowiednich uprawnień. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące kontroli dostępu](../hdinsight-administer-use-portal-linux.md#create-clusters).
+Problemy podczas tworzenia klastrów usługi HDInsight mogą świadczyć o braku odpowiednich uprawnień. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące kontroli dostępu](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
 

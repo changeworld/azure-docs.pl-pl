@@ -9,12 +9,12 @@ ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 76bc59b41bf35f6427b1dcb273f3f50c5e70b748
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f69babb4520b4829a8cf59e2dac7763471a2db65
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344061"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557103"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Samouczek: Opracowywanie modułu usługi IoT Edge w środowisku Node.js i wdrażanie go na urządzeniu symulowanym
 
@@ -36,6 +36,7 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 Urządzenie usługi Azure IoT Edge:
 
 * Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+* Jeśli korzystasz z usługi IoT Edge w systemie Windows, usługa IoT Edge w wersji 1.0.5 nie będzie obsługiwać modułów Node.js. Aby uzyskać więcej informacji, zobacz [Informacje o wersji 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Aby uzyskać instrukcje dotyczące sposobu instalowania określonej wersji, zobacz [Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego](how-to-update-iot-edge.md).
 
 Zasoby w chmurze:
 

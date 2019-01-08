@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93185483a2c5a1ddb308cc2fc9fd918c539b5e3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105533"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602333"
 ---
 # <a name="azure-and-jenkins"></a>Platforma Azure i serwer Jenkins
 
@@ -46,5 +46,5 @@ Wtyczki serwera Jenkins umożliwiają wdrażanie aplikacji na platformie Azure w
 
  Wtyczki są dostępne w przypadku wdrażania w następujących usługach i środowiskach:
 
-- [Aplikacja internetowa platformy Azure w systemie Linux](/azure/app-service/containers/app-service-linux-intro). Aby rozpocząć pracę, zobacz [samouczek](java-deploy-webapp-tutorial.md).
-- [Aplikacja internetowa platformy Azure](/azure/app-service/app-service-web-overview). Aby rozpocząć pracę, zobacz [instrukcje](deploy-Jenkins-app-service-plugin.md).
+- [Azure App Service dla systemu Linux](/azure/app-service/containers/app-service-linux-intro). Aby rozpocząć pracę, zobacz [samouczek](java-deploy-webapp-tutorial.md).
+- [Azure App Service](/azure/app-service/overview). Aby rozpocząć pracę, zobacz [instrukcje](deploy-Jenkins-app-service-plugin.md).

@@ -1,5 +1,5 @@
 ---
-title: Samouczek — jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux na platformie .NET | Microsoft Docs
+title: Samouczek — jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux na platformie .NET — Azure Key Vault | Microsoft Docs
 description: Samouczek konfigurowania aplikacji platformy ASP.NET Core w celu odczytu wpisu tajnego z usługi Key Vault
 services: key-vault
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 928339a245525933ae142a5d73137ce699cf1f7c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 68a788205917e87469b432de435e296dcabc350c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712334"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001689"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Samouczek: jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux na platformie .NET
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskania dostępu do aplikacji, usługi i zasoby informatyczne.
 
-W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji konsolowej pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji konsolowej pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy.
@@ -45,6 +45,7 @@ Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami](key-vault-wha
 W tym samouczku jest używana tożsamość usługi zarządzanej
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Co to jest tożsamość usługi zarządzanej i jak działa?
+
 Zanim przejdziemy dalej, omówmy tożsamość usługi zarządzanej. Usługa Azure Key Vault może bezpiecznie przechowywać poświadczenia, więc nie znajdują się w Twoim kodzie, ale w celu ich pobrania należy uwierzytelnić się w usłudze Azure Key Vault. Aby uwierzytelniać się w usłudze Key Vault, potrzebne są poświadczenia. Jest to klasyczny problem dotyczący uruchamiania. Dzięki magii platformy Azure i usługi Azure AD, tożsamość usługi zarządzanej udostępnia „tożsamość uruchamiania”, która ułatwia rozpoczęcie wykonywania czynności.
 
 Oto jak to działa. Po włączeniu tożsamości usługi zarządzanej dla wybranej usługi platformy Azure, takiej jak Virtual Machines, App Service lub Functions, platforma Azure tworzy [jednostkę usługi](key-vault-whatis.md#basic-concepts) dla wystąpienia usługi w usłudze Azure Active Directory i wprowadza poświadczenia dla jednostki usługi w tym wystąpieniu usługi. 
@@ -54,7 +55,7 @@ Oto jak to działa. Po włączeniu tożsamości usługi zarządzanej dla wybrane
 Następnie Twój kod wywołuje lokalną usługę metadanych dostępną w zasobie platformy Azure, aby uzyskać tokenu dostępu.
 W celu uwierzytelniania w usłudze Azure Key Vault kod używa tokenu dostępu otrzymanego z lokalnego elementu MSI_ENDPOINT. 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
 
@@ -80,7 +81,7 @@ W tym artykule jest używana właśnie utworzona grupa zasobów.
 
 Następnie utworzysz magazyn kluczy w grupie zasobów utworzonej w poprzednim kroku. Podaj następujące informacje:
 
-* Nazwa magazynu kluczy: nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0-9, a – z, A-Z, i -).
+* Nazwa magazynu kluczy: nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0–9, a–z, A–Z, i -).
 * Nazwa grupy zasobów.
 * Lokalizacja: **Zachodnie stany USA**.
 
@@ -132,6 +133,7 @@ Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut. Nastę
 Zanotuj wartość elementu `publicIpAddress` z danych wyjściowych maszyny wirtualnej. Ten adres służy do uzyskiwania dostępu do maszyny wirtualnej w następnych krokach.
 
 ## <a name="assign-identity-to-virtual-machine"></a>Przypisywanie tożsamości do maszyny wirtualnej
+
 W tym kroku utworzymy tożsamość przypisaną przez system do maszyny wirtualnej, uruchamiając następujące polecenie:
 
 ```
@@ -148,21 +150,23 @@ Zanotuj wartość elementu systemAssignedIdentity pokazaną poniżej. Dane wyjś
 ```
 
 ## <a name="give-vm-identity-permission-to-key-vault"></a>Przyznawanie tożsamości maszyny wirtualnej uprawnienia do usługi Key Vault
+
 Teraz możemy przyznać powyżej utworzonej tożsamości uprawnienie do usługi Key Vault, uruchamiając następujące polecenie:
 
 ```
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>Logowanie do maszyny wirtualnej
+## <a name="sign-in-to-the-virtual-machine"></a>Logowanie do maszyny wirtualnej
 
-Teraz zaloguj się do maszyny wirtualnej za pomocą terminalu:
+Teraz zaloguj się do maszyny wirtualnej za pomocą terminalu
 
 ```
 ssh azureuser@<PublicIpAddress>
 ```
 
 ## <a name="install-dot-net-core-on-linux"></a>Instalowanie platformy Dot Net core w systemie Linux
+
 ### <a name="register-the-microsoft-product-key-as-trusted-run-the-following-two-commands"></a>Zarejestruj klucz produktu firmy Microsoft jako zaufany. Uruchom następujące dwa polecenia:
 
 ```
@@ -171,6 +175,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ```
 
 ### <a name="set-up-desired-version-host-package-feed-based-on-operating-system"></a>Skonfiguruj źródło danych pakietu hosta żądanej wersji na podstawie systemu operacyjnego
+
 ```
 # Ubuntu 17.10
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-artful-prod artful main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -209,6 +214,7 @@ dotnet run
 ```
 
 ## <a name="edit-console-app"></a>Edytowanie aplikacji konsolowej
+
 Otwórz plik Program.cs i dodaj te pakiety:
 ```
 using System;
@@ -218,7 +224,9 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-Następnie zmień plik klasy, aby zawierał poniższy kod. Jest to proces składający się z dwóch kroków. 
+
+Następnie zmień plik klasy, aby zawierał poniższy kod. To proces dwuetapowy.
+
 1. Pobieranie tokenu z lokalnego punktu końcowego tożsamości usługi zarządzanej na maszynie wirtualnej, który z kolei pobiera token z usługi Azure Active Directory
 2. Przekazywanie tokenu do usługi Key Vault i pobieranie wpisu tajnego 
 
@@ -268,7 +276,6 @@ Następnie zmień plik klasy, aby zawierał poniższy kod. Jest to proces skład
 ```
 
 Powyższy kod pokazuje, jak wykonać operacje w usłudze Azure Key Vault na maszynie wirtualnej platformy Azure z systemem Linux. 
-
 
 ## <a name="next-steps"></a>Następne kroki
 

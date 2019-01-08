@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582432"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792530"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co to jest usługa Azure Internet of Things (IoT)?
 
@@ -109,15 +109,15 @@ Na platformie Azure istnieje kilka usług powiązanych z IoT i ustalenie, które
 
 3. [**IoT Hub**](/azure/iot-hub/): ta usługa pozwala na łączenie się urządzeń z centrum IoT oraz na monitorowanie i kontrolowanie miliardów urządzeń IoT. Jest ona szczególnie przydatna, jeśli jest potrzebna komunikacja dwukierunkowa między urządzeniami IoT a zapleczem. Jest to usługa bazowa dla usługi IoT Central i akceleratorów rozwiązań IoT. 
 
-4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): jest to usługa pomocnika dla usługi IoT Hub, za pomocą której można bezpiecznie aprowizować urządzenia w centrum IoT. Usługa ta pozwala łatwo błyskawicznie aprowizować miliony urządzeń, zamiast aprowizować je jedno po drugim. 
+4. [**Usługa IoT Hub Device Provisioning**](/azure/iot-dps/): jest to usługa pomocnika dla usługi IoT Hub, za pomocą której można bezpiecznie aprowizować urządzenia w centrum IoT. Usługa ta pozwala łatwo błyskawicznie aprowizować miliony urządzeń, zamiast aprowizować je jedno po drugim. 
 
 5. [**IoT Edge**](/azure/iot-edge/): ta usługa jest oparta na usłudze IoT Hub. Za jej pomocą można analizować dane na urządzeniach IoT zamiast w chmurze. Dzięki przeniesieniu części obciążenia na brzeg można wysyłać mniej komunikatów do chmury. 
 
 6. [**Azure Digital Twins**](../digital-twins/index.yml): ta usługa umożliwia tworzenie kompleksowych modeli środowiska fizycznego. Umożliwia ona modelowanie relacji i interakcji między osobami, obszarami i urządzeniami. Na przykład można określać potrzeby konserwacyjne dla fabryki, analizować wymagania energetyczne w czasie rzeczywistym dla sieci elektrycznej lub optymalizować użycie dostępnej przestrzeni w biurze.
 
-7. [**Time Series Insights**](/azure/time-series-insights): ta usługa pozwala na przechowywanie, wizualizowanie i odpytywanie dużych ilości danych szeregów czasowych generowanych przez urządzenia IoT. Można jej używać razem z usługą IoT Hub. 
+7. [**Time Series Insights**](/azure/time-series-insights): ta usługa pozwala na przechowywanie i wizualizowanie dużych ilości danych szeregów czasowych generowanych przez urządzenia IoT oraz wykonywanie zapytań na tych danych. Można jej używać razem z usługą IoT Hub. 
 
-8. [**Azure Maps**](/azure/azure-maps): ta usługa zapewnia informacje geograficzne aplikacjom internetowym i mobilnym. Dostępny jest pełny zestaw interfejsów API REST, a także internetowa kontrolka JavaScript, za pomocą których można tworzyć elastyczne aplikacje działające na komputerach oraz aplikacje mobilne dla urządzeń zarówno firmy Apple, jak i z systemem Windows.
+8. [**Azure Maps**](/azure/azure-maps): ta usługa udostępnia informacje geograficzne aplikacjom internetowym i mobilnym. Dostępny jest pełny zestaw interfejsów API REST, a także internetowa kontrolka JavaScript, za pomocą których można tworzyć elastyczne aplikacje działające na komputerach oraz aplikacje mobilne dla urządzeń zarówno firmy Apple, jak i z systemem Windows.
 
 ## <a name="next-steps"></a>Następne kroki
 

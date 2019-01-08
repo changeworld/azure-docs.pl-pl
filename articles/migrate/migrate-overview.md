@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250591"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969135"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -35,10 +35,11 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 - Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
 -  Projekt usługi Azure Migrate można utworzyć tylko w następujących lokalizacjach geograficznych. Jednak nie ogranicza to możliwości tworzenia przypisań dla innych lokalizacji docelowych platformy Azure.
-    **Lokalizacja geograficzna** | **Lokalizacja magazynu**
+    **Lokalizacja geograficzna** | **Lokalizacja usługi Storage**
     --- | ---
-    Stany Zjednoczone | Zachodnio-środkowe stany USA lub Wschodnie stany USA
     Azure Government | Administracja USA — Wirginia
+    Europa | Europa Północna lub Europa Zachodnia
+    Stany Zjednoczone | Wschodnie stany USA lub Zachodnio-środkowe stany USA
 
     Lokalizacja geograficzna powiązana z projektem migracji służy do przechowywania metadanych wykrytych w środowisku lokalnym. Metadane są przechowywane w jednym z regionów w oparciu o lokalizację geograficzną określoną dla projektu migracji. Jeśli używasz wizualizacji zależności przez utworzenie nowego obszaru roboczego usługi Log Analytics, obszar roboczy zostanie utworzony w tym samym regionie co projekt.
 - Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.

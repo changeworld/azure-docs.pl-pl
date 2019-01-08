@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start:  Wprowadzenie do języka Python'
+title: 'Szybki start: Wprowadzenie do języka Python'
 titleSuffix: Azure Machine Learning service
 description: Rozpocznij pracę z usługą Azure Machine Learning w języku Python. Użyj zestawu SDK języka Python, aby utworzyć obszar roboczy, który stanowi podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie.
 services: machine-learning
@@ -11,27 +11,29 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3ab55cec4b8483cf254ec3d9fe68521baca9cdf5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: da84d6361d80db8aea797827ed3d7bc612e2eda3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268518"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999054"
 ---
-# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu zestawu SDK języka Python
+# <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu zestawu SDK języka Python
 
-W tym przewodniku Szybki start użyjesz zestawu Azure Machine Learning SDK dla języka Python, aby utworzyć [obszar roboczy](concept-azure-machine-learning-architecture.md) usługi Machine Learning i go używać. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. W tym przewodniku Szybki start rozpoczynasz pracę od skonfigurowania własnego środowiska języka Python i serwera notesów Jupyter. Aby uruchomić bez instalacji, zobacz [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal](quickstart-get-started.md).
+W tym artykule użyjesz zestawu SDK Azure Machine Learning dla języka Python, aby utworzyć [obszar roboczy](concept-azure-machine-learning-architecture.md) usługi Azure Machine Learning i go używać. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie za pomocą usługi Machine Learning. 
+
+Rozpoczynasz pracę od skonfigurowania własnego środowiska języka Python i serwera Jupyter Notebook. Aby uruchomić je bez instalacji, zobacz [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal](quickstart-get-started.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
-W tym samouczku zainstalujesz zestaw SDK języka Python oraz wykonasz następujące czynności:
-
+W tym artykule opisano następujące zagadnienia:
+* Instalacja zestawu SDK dla języka Python.
 * Tworzenie obszaru roboczego w subskrypcji platformy Azure.
 * Tworzenie pliku konfiguracji dla obszaru roboczego do późniejszego użycia w innych notesach i skryptach.
 * Pisanie kodu, który rejestruje wartości w obszarze roboczym.
 * Wyświetlanie zarejestrowanych wartości w obszarze roboczym.
 
-W tym przewodniku Szybki start utworzysz obszar roboczy i plik konfiguracji. Możesz ich użyć jako wstępnie wymaganych składników na potrzeby innych samouczków usługi Machine Learning i artykułów z instrukcjami. Podobnie jak w przypadku innych usług platformy Azure korzystanie z usługi Machine Learning jest ograniczone określonymi limitami i przydziałami. [Learn about quotas and how to request more (Więcej informacji o limitach przydziału i zwiększaniu limitów)](how-to-manage-quotas.md).
+Tworzysz obszar roboczy i plik konfiguracji, których będzie można użyć jako elementów wymaganych wstępnie w innych samouczkach usługi Machine Learning i artykułach zawierających instrukcje. Podobnie jak w przypadku innych usług platformy Azure korzystanie z usługi Machine Learning jest ograniczone pewnymi limitami i przydziałami. [Learn about quotas and how to request more (Więcej informacji o limitach przydziału i zwiększaniu limitów)](how-to-manage-quotas.md).
 
 Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platformy Azure, gdy będą dostępne w regionie:
  
@@ -44,111 +46,108 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 ## <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
->[!NOTE]
-> Kod w tym artykule wymaga zestawu Azure Machine Learning SDK w wersji 1.0.2 lub nowszej. 
+> [!IMPORTANT]
+> Pomiń tę sekcję, jeśli używasz maszyny wirtualnej do analizy danych utworzonej po 27 września 2018 r.
+> Maszyny wirtualne do analizy danych utworzone po tej dacie mają preinstalowany zestaw SDK języka Python.
 
-*Pomiń tę sekcję, jeśli używasz maszyny wirtualnej nauki o danych utworzonej po 27 września 2018 r.* Te maszyny wirtualne nauki o danych są preinstalowane z zestawem SDK języka Python.
+Kod w tym artykule wymaga zestawu Azure Machine Learning SDK w wersji 1.0.2 lub nowszej.
 
-Przed zainstalowaniem zestawu SDK zalecamy utworzenie izolowanego środowiska języka Python. W tym przewodniku Szybki start jest używane narzędzie [Miniconda](https://conda.io/docs/user-guide/install/index.html), ale możesz również użyć pełnego zainstalowanego narzędzia [Anaconda](https://www.anaconda.com/) lub [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
+Przed zainstalowaniem zestawu SDK zalecamy utworzenie izolowanego środowiska języka Python. W tym artykule używane jest narzędzie [Miniconda](https://conda.io/docs/user-guide/install/index.html), ale możesz również użyć pełnego zainstalowanego narzędzia [Anaconda](https://www.anaconda.com/) lub [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
 ### <a name="install-miniconda"></a>Instalowanie narzędzia Miniconda
 
-
-[Pobierz](https://conda.io/miniconda.html) i zainstaluj narzędzie Miniconda. Wybierz wersję języka Python 3.7 lub nowszą. Nie wybieraj wersji 2.x języka Python.
+[Pobierz i zainstaluj narzędzie Miniconda](https://conda.io/miniconda.html). Wybierz środowisko Python 3.7 lub nowsze. Nie wybieraj wersji 2.x języka Python.
 
 ### <a name="create-an-isolated-python-environment"></a>Tworzenia izolowanego środowiska języka Python 
 
-Otwórz okno wiersza polecenia. Utwórz nowe środowisko conda o nazwie `myenv` w języku Python 3.6.
+1. Otwórz okno wiersza polecenia i utwórz nowe środowisko conda o nazwie *myenv* w języku Python 3.6.
 
-```shell
-conda create -n myenv -y Python=3.6
-```
+    ```shell
+    conda create -n myenv -y Python=3.6
+    ```
 
-Aktywuj środowisko.
+1. Aktywuj środowisko.
 
-  ```shell
-  conda activate myenv
-  ```
+    ```shell
+    conda activate myenv
+    ```
 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
-W aktywowanym środowisku conda zainstaluj zestaw SDK. Ten kod instaluje podstawowe składniki zestawu Machine Learning SDK. Ponadto instaluje serwer aplikacji Jupyter Notebook w środowisku conda. Instalacja trwa kilka minut; jest to zależne od konfiguracji maszyny.
+W aktywowanym środowisku conda zainstaluj zestaw SDK. Ten kod instaluje podstawowe składniki zestawu Machine Learning SDK. Ponadto instaluje serwer aplikacji Jupyter Notebook w środowisku conda. Instalacja trwa kilka minut; czas jej trwania zależy od konfiguracji maszyny.
 
 ```sh
-# install Jupyter
+# Install Jupyter
 conda install nb_conda
 
-# install the base SDK and Jupyter Notebook
+# Install the base SDK and Jupyter Notebook
 pip install azureml-sdk[notebooks]
-
 ```
 
-Możesz również użyć innych „dodatkowych” słów kluczowych w celu zainstalowania dodatkowych składników zestawu SDK.
+Możesz użyć dodatkowych słów kluczowych, aby zainstalować inne składniki zestawu SDK:
 
 ```sh
-# install the base SDK and auto ml components
+# Install the base SDK and auto ml components
 pip install azureml-sdk[automl]
 
-# install the base SDK and model explainability component
+# Install the base SDK and the model explainability component
 pip install azureml-sdk[explain]
 
-# install the base SDK and experimental components
+# Install the base SDK and experimental components
 pip install azureml-sdk[contrib]
 ```
 
-W zamian użyj tej instalacji w środowisku platformy Databricks.
+W środowisku Azure Databricks użyj zamiast tego następującego polecenia instalacji:
 
 ```
-# install the base SDK and automl components in Azure Databricks environment
-# read more at: https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks
+# Install the base SDK and automl components in the Azure Databricks environment.
+# For more information, see https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks.
 pip install azureml-sdk[databricks]
 ```
 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Aby uruchomić aplikację Jupyter Notebook, wprowadź to polecenie.
-```shell
-jupyter notebook
-```
+1. Aby uruchomić aplikację Jupyter Notebook, wpisz to polecenie:
 
-W oknie przeglądarki utwórz nowy notes przy użyciu domyślnego jądra `Python 3`. 
+    ```shell
+    jupyter notebook
+    ```
 
-Aby wyświetlić wersję zestawu SDK, wprowadź poniższy kod języka Python w komórce notesu, a następnie wykonaj go.
+1. W oknie przeglądarki utwórz nowy notes przy użyciu domyślnego jądra `Python 3`. 
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
+1. Aby wyświetlić wersję zestawu SDK, wprowadź poniższy kod języka Python w komórce notesu, a następnie wykonaj go:
 
-Utwórz nową grupę zasobów platformy Azure i nowy obszar roboczy.
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-Znajdź wartość parametru `<azure-subscription-id>` na [liście subskrypcji w witrynie Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Użyj dowolnej subskrypcji, w której masz rolę właściciela lub współautora.
+1. Znajdź wartość parametru `<azure-subscription-id>` na [liście subskrypcji w witrynie Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Użyj dowolnej subskrypcji, w której masz rolę właściciela lub współautora.
 
-```python
-from azureml.core import Workspace
-ws = Workspace.create(name='myworkspace',
-                      subscription_id='<azure-subscription-id>',    
-                      resource_group='myresourcegroup',
-                      create_resource_group=True,
-                      location='eastus2' # or other supported Azure region  
-                     )
-```
+   ```python
+   from azureml.core import Workspace
+   ws = Workspace.create(name='myworkspace',
+                         subscription_id='<azure-subscription-id>', 
+                         resource_group='myresourcegroup',
+                         create_resource_group=True,
+                         location='eastus2' # Or other supported Azure region   
+                        )
+   ```
 
-Wykonanie powyższego kodu może spowodować wyzwolenie nowego okna przeglądarki umożliwiającego zalogowanie się na koncie platformy Azure. Po zalogowaniu token uwierzytelniania będzie buforowany lokalnie.
+   Podczas wykonywania kodu może zostać wyświetlony monit o zalogowanie się do konta platformy Azure. Po zalogowaniu token uwierzytelniania będzie buforowany lokalnie.
 
-Aby wyświetlić szczegóły obszaru roboczego, takie jak skojarzony magazyn, rejestr kontenerów oraz magazyn kluczy, wprowadź poniższy kod.
+1. Aby wyświetlić szczegóły obszaru roboczego, takie jak skojarzony magazyn, rejestr kontenerów oraz magazyn kluczy, wprowadź poniższy kod:
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
 
 
 ## <a name="write-a-configuration-file"></a>Zapisywanie pliku konfiguracji
 
-Zapisz szczegóły obszaru roboczego w pliku konfiguracji do bieżącego katalogu. Ten plik ma nazwę „aml_config\config.json”.  
+Zapisz szczegóły obszaru roboczego w pliku konfiguracji do bieżącego katalogu. Ten plik ma nazwę *aml_config\config.json*.  
 
-Ten plik konfiguracji obszaru roboczego ułatwia późniejsze załadowanie tego samego obszaru roboczego. Możesz załadować go z innymi notesami i skryptami w tym samym katalogu lub podkatalogu. 
+Plik konfiguracji obszaru roboczego ułatwia późniejsze załadowanie tego samego obszaru roboczego. Możesz załadować go z innymi notesami i skryptami w tym samym katalogu lub podkatalogu. 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-
-Wywołanie interfejsu API `write_config()` tworzy plik konfiguracyjny w bieżącym katalogu. Plik `config.json` zawiera poniższy skrypt.
+Wywołanie interfejsu API `write_config()` tworzy plik konfiguracyjny w bieżącym katalogu. Plik *config.json* zawiera następujący skrypt:
 
 ```json
 {
@@ -164,9 +163,8 @@ Napisz kod korzystający z podstawowych interfejsów API zestawu SDK w celu śle
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
-
 ## <a name="view-logged-results"></a>Wyświetlanie zarejestrowanych wyników
-Po zakończeniu przebiegu możesz wyświetlić przebieg eksperymentu w witrynie Azure Portal. Użyj następującego kodu, aby wyświetlić adres URL w wynikach ostatniego przebiegu.
+Po zakończeniu przebiegu możesz wyświetlić przebieg eksperymentu w witrynie Azure Portal. Aby wyświetlić adres URL prowadzący do wyników dla ostatniego przebiegu, użyj następującego kodu:
 
 ```python
 print(run.get_portal_url())
@@ -174,25 +172,24 @@ print(run.get_portal_url())
 
 Użyj linku, aby wyświetlić zarejestrowane wartości w witrynie Azure Portal w przeglądarce.
 
-![Zarejestrowane wartości w portalu](./media/quickstart-create-workspace-with-python/logged-values.png)
+![Zarejestrowane wartości w witrynie Azure Portal](./media/quickstart-create-workspace-with-python/logged-values.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 >[!IMPORTANT]
->Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Machine Learning i artykułach z instrukcjami.
+>Utworzonych tutaj zasobów możesz użyć jako wstępnie wymaganych składników w innych samouczkach usługi Machine Learning i artykułach z instrukcjami.
 
-Jeśli nie planujesz używać utworzonych tutaj zasobów, usuń je, aby uniknąć naliczania opłat.
+Jeśli nie planujesz korzystać z zasobów, które zostały utworzone w tym artykule, usuń je, aby uniknąć ponoszenia opłat.
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=delete)]
 
-
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono zasoby niezbędne do eksperymentowania i wdrażania modeli. Uruchomiono też kod w notesie. Zbadano historię przebiegów dotyczącą tego kodu w obszarze roboczym w chmurze.
+W tym artykule utworzono zasoby niezbędne do eksperymentowania i wdrażania modeli. Uruchomiono kod w notesie i zbadano historię uruchamiania tego kodu w obszarze roboczym w chmurze.
 
-Potrzebujesz jeszcze kilku pakietów w swoim środowisku, które będą używane w samouczkach usługi Machine Learning.
+Aby użyć tego kodu w samouczkach usługi Machine Learning, potrzebujesz w swoim środowisku jeszcze kilku pakietów.
 
 1. W przeglądarce zamknij notes.
-1. W oknie wiersza polecenia użyj polecenia `Ctrl`+`C`, aby zatrzymać serwer notesów.
+1. W oknie wiersza polecenia użyj skrótu klawiaturowego Ctrl+C, aby zatrzymać serwer Jupyter Notebook.
 1. Zainstaluj dodatkowe pakiety.
 
     ```shell
@@ -200,8 +197,7 @@ Potrzebujesz jeszcze kilku pakietów w swoim środowisku, które będą używane
     pip install azureml-sdk[automl]
     ```
 
-
-Po zainstalowaniu tych pakietów postępuj zgodnie z instrukcjami w samouczkach, aby nauczyć i wdrożyć model. 
+Po zainstalowaniu tych pakietów postępuj zgodnie z instrukcjami w samouczkach, aby przetrenować i wdrożyć model. 
 
 > [!div class="nextstepaction"]
 > [Samouczek: trenowanie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)

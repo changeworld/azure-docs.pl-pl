@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: d0b6fc1ebd08b29b9acc28cfb0107b815c7d7bad
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 74240298b0c8bec46ab2beab6fcdfbb59fd7b12a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068247"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579978"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 
@@ -171,7 +171,7 @@ Na koniec wyświetl listę wszystkich dostępnych planów usług. Plany usług t
 W tym kroku użyjesz narzędzia Helm do zainstalowania zaktualizowanego planu narzędzia Helm dla środowiska WordPress. Plan umożliwia aprowizację zewnętrznego wystąpienia usługi Azure Database for MySQL, z którego może korzystać środowisko WordPress. Ten proces może potrwać kilka minut.
 
 ```azurecli-interactive
-helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0
+helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 Aby sprawdzić, czy instalacja spowodowała aprowizację odpowiednich zasobów, wyświetl zainstalowane wystąpienia usług i powiązania:

@@ -8,18 +8,18 @@ ms.topic: include
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: de24478a39b656c1326bc53825aab317e652d672
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6af620f54acb3bf782f05b81f12aca2103cddf47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53007928"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654923"
 ---
 >[!IMPORTANT]
 >Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Azure Machine Learning i artykułach z instrukcjami. 
 
 
-Jeśli nie planujesz używać utworzonych tutaj zasobów, usuń je, aby uniknąć naliczania opłat.
+Jeśli nie planujesz używać utworzonych zasobów, usuń je, aby uniknąć naliczania opłat.
 
 1. W witrynie Azure Portal na końcu z lewej strony wybierz pozycję **Grupy zasobów**.
  
@@ -29,4 +29,4 @@ Jeśli nie planujesz używać utworzonych tutaj zasobów, usuń je, aby unikną�
 
 1. Wybierz pozycję **Usuń grupę zasobów**.
 
-1. Wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+1. Wpisz nazwę grupy zasobów. Następnie wybierz pozycję **Usuń**.

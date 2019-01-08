@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164436"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608651"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Samouczek: tworzenie bazy wiedzy, a następnie odpowiadanie na pytanie za pomocą portalu usługi QnA Maker
 
@@ -83,9 +83,9 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
 
 1. Wybierz ostatnią stronę pytań i odpowiedzi u dołu tabeli. Na tej stronie wyświetlane są pytania i odpowiedzi od osobowości dla konwersacji. 
 
-1. Na pasku narzędzi powyżej listy pytań i odpowiedzi wybierz ikonę koła zębatego. Spowoduje to wyświetlenie filtrów dla każdego pytania i odpowiedzi. Pytania dla konwersacji mają już ustawiony filtr **redakcyjny: konwersacja**. Ten filtr jest zwracany do aplikacji klienckiej wraz z wybraną odpowiedzią. Aplikacja kliencka, na przykład czatbot, może używać tego filtru w celu określenia dodatkowego przetwarzania lub interakcji z użytkownikiem.
+1. Na pasku narzędzi powyżej listy pytań i odpowiedzi wybierz ikonę metadanych. Spowoduje to wyświetlenie tagów metadanych dla każdego pytania i odpowiedzi. Pytania dla konwersacji mają już ustawione metadane **redakcyjny: konwersacja**. Te metadane są zwracane do aplikacji klienckiej wraz z wybraną odpowiedzią. Aplikacja kliencka, na przykład czatbot, może używać tych filtrowanych metadanych w celu określenia dodatkowego przetwarzania lub interakcji z użytkownikiem.
 
-    ![Filtry widoku](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![Wyświetlanie tagów metadanych](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. Wybierz pozycję **Zapisywanie i szkolenie** na górnym pasku menu.
 
@@ -171,7 +171,7 @@ Po opublikowaniu bazy wiedzy wyświetlany jest punkt końcowy
    
     ```
 
-    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). Usługa QnA Maker zwróciła także wszystkie powiązane pytania, jak również właściwość metadanych zawierającą informacje o filtrze konwersacji.  
+    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). Usługa QnA Maker zwróciła także wszystkie powiązane pytania oraz właściwość metadanych zawierającą informacje o tagu metadanych konwersacji.  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>Używanie narzędzia Curl do wykonywania zapytania o odpowiedź domyślną
 

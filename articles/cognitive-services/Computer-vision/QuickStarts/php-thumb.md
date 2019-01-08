@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: generowanie miniatur — REST, PHP — przetwarzanie obrazów'
+title: 'Szybki start: generowanie miniatury — REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka PHP.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 171893dd3017d46c405d2269506fe37896155e55
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1527f57a1d300f730222d100bc9caf2001098fea
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964513"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579349"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka PHP podczas przetwarzania obrazów
 
@@ -33,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-1. Zainstaluj pakiet [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) PHP5.
+1. Zainstaluj pakiet [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) PHP5.
    1. Otwórz okno wiersza polecenia jako administrator.
    1. Uruchom następujące polecenie:
 
