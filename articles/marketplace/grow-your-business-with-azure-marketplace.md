@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 054215a44b66d8fbf30c1a3e61f66425350392b1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233018"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074546"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Rozwijaj swoją działalność w portalu marketplace 
 Po opublikowaniu oferty w usłudze AppSource lub w witrynie Azure Marketplace, można użyć swojej listy jako doskonała dla wspólnych działań (GTM wprowadzenie) go-to-market z firmą Microsoft. Kierowania ruchu do oferty w portalu Marketplace i pielęgnacji potencjalnych klientów w witrynie Marketplace, na przykład, są skuteczne sposoby Przyspiesz rozwój swojej firmy. 
@@ -33,15 +33,15 @@ Tabele w kolejnych sekcjach zawierają sugestie dotyczące tworzenia atrakcyjne 
 ### <a name="storefront-offer-details"></a>Szczegóły oferty sklepu
 | Ustawienia sklepu | Najlepszym rozwiązaniem jest |
 |:--- |:--- |  
-| Nazwa oferty | Podaj silne tytułu:<br>Nazwy aplikacji powinna komunikują się podstawowej wartości, który otrzymywał swoich klientów. W tym słów kluczowych w tytule aplikacji sieci może pomóc w aplikację, której zostanie wyznaczona ranga wyższej w wynikach aparatu wyszukiwania.<br><br>Wykonaj zestaw format tytuł oferty usługi konsultingowe:<br>[Nazwa oferty]: [czas trwania] [typ oferty] \(na przykład *Contoso: implementacja 2-tygodniowych*)<br><br>Być zgodne z wytycznymi dotyczącymi oznaczania marką:<br>Postępuj zgodnie z [Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) i inne istotne, specyficzne dla produktu wytyczne, gdy odwołujesz się do znaków towarowych firmy Microsoft i nazwy oprogramowania, produktów i usług firmy Microsoft. |
+| Nazwa oferty | Podaj silne tytułu:<br>Nazwy aplikacji powinna komunikują się podstawowej wartości, który otrzymywał swoich klientów. W tym słów kluczowych w tytule aplikacji sieci może pomóc w aplikację, której zostanie wyznaczona ranga wyższej w wynikach aparatu wyszukiwania.<br><br>Wykonaj zestaw format tytuł oferty usługi konsultingowe:<br>[Nazwa oferty]: [czas trwania] [typ oferty] (na przykład *Contoso: Implementacja 2-tygodniowych*)<br><br>Być zgodne z wytycznymi dotyczącymi oznaczania marką:<br>Postępuj zgodnie z [Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) i inne istotne, specyficzne dla produktu wytyczne, gdy odwołujesz się do znaków towarowych firmy Microsoft i nazwy oprogramowania, produktów i usług firmy Microsoft. |
 | Opis oferty | Podaj opis, wyczyść oferty:<br>Wyraźnie opisać Twoją ofertę w pierwszym kilku zdaniach korzyści z użytkowania opis. Należy pamiętać, że pierwszy kilku zdaniach, może być wyświetlany w wynikach wyszukiwarki. Nie należy polegać na funkcje i możliwości sprzedaży produktu. Zamiast tego należy skoncentrować się na wartości, jakie możesz dostarczać. Za pomocą słownika branżowych lub na podstawie korzyści sformułowanie, ile to możliwe.<br><br>Podstawowe składniki swoje korzyści powinien zawierać następujące informacje:<ul><li>Opis produktu</li><li>Typ użytkownika, który korzysta z produktu</li><li>Potrzeby klientów lub problemy, odnoszący się do produktu</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Lista StoreFront — szczegóły
 | Ustawienia sklepu | Najlepszym rozwiązaniem jest |
 |:--- |:--- |  
-| Branże: Aplikacje usługi AppSource i tylko w przypadku usług doradczych | Wybierz branż, jeśli Twoja oferta dotyczy branżowych wymogów:<br>Wyróżnienia możliwości specyficznych dla branży w opisie oferty.<br><br>**Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest wskazana w portalu dla partnerów w chmurze. |
-| Kategorie | Wybierz kategorie, najlepiej zharmonizowanych z oferty:<br>Wybierz kategorie ostrożnie, ponieważ klienci używają ich do wyszukiwania odpowiednich aplikacji. Pamiętaj wywołać się, jak Twoja oferta obsługuje potrzeb konkretnej kategorii w opisie oferty.<br><br> **Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest wskazana w portalu dla partnerów w chmurze. |
-| Produkty, które Twoja aplikacja współpracuje ze (3&nbsp;max): tylko aplikacje usługi AppSource | Wyświetl dodatkowe produkty i technologie, które korzysta z rozwiązania, lub rozszerzenie:<br>Na przykład usługi Azure IoT Hub lub Azure Machine Learning. |
+| Branże: Aplikacje usługi AppSource i tylko w przypadku usług doradczych | Wybierz branż, jeśli Twoja oferta dotyczy branżowych wymogów:<br>Wyróżnienia możliwości specyficznych dla branży w opisie oferty.<br><br>**Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest oznaczany w portalu dla partnerów w chmurze. |
+| Kategorie | Wybierz kategorie, najlepiej zharmonizowanych z oferty:<br>Wybierz kategorie ostrożnie, ponieważ klienci używają ich do wyszukiwania odpowiednich aplikacji. Pamiętaj wywołać się, jak Twoja oferta obsługuje potrzeb konkretnej kategorii w opisie oferty.<br><br> **Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest oznaczany w portalu dla partnerów w chmurze. |
+| Produkty, które Twoja aplikacja współpracuje ze (3&nbsp;max): Tylko aplikacje usługi AppSource | Wyświetl dodatkowe produkty i technologie, które korzysta z rozwiązania, lub rozszerzenie:<br>Na przykład usługi Azure IoT Hub lub Azure Machine Learning. |
 | Wyszukiwanie słów kluczowych (3&nbsp;max) | Użyj słów kluczowych, które pomagają użytkownikom biznesowym znaleźć oferty podczas wyszukiwania w witrynie Azure Marketplace i w usłudze AppSource lub za pomocą aparatów wyszukiwania:<br>Identyfikowanie najważniejszych trzech słów kluczowych ofertą; zawierać słów kluczowych w oferty Podsumowanie i opis. i wyświetlać listę słów kluczowych w tym miejscu. |
 
 ### <a name="storefront-marketing-details"></a>StoreFront szczegóły obrotu
@@ -50,7 +50,7 @@ Tabele w kolejnych sekcjach zawierają sugestie dotyczące tworzenia atrakcyjne 
 | Oferty logo (PNG format, 48&nbsp;&times;&nbsp;48): strona wyszukiwania | Projektowanie i zoptymalizować logo dla nośnika cyfrowego:<br>Przekaż logo w formacie PNG do strony wyszukiwania oferty. |
 | Oferty logo (PNG format, 216&nbsp;&times;&nbsp;216): strona szczegółów aplikacji | Projektowanie i zoptymalizować logo dla nośnika cyfrowego:<br>Przekaż logo w formacie PNG do szczegółów aplikacji, na stronie oferty listy. |
 | Dokumenty "Dowiedz się więcej" | Uwzględnić, pomocnicze zasoby "Dowiedz się więcej, sprzedaży i marketingu:<br>Na przykład oficjalne dokumenty, broszury, list kontrolnych lub prezentacji programu PowerPoint. Zapisz wszystkie pliki w formacie PDF. Celem powinno być Poinformuj klientów, sprzedaży do nich.<br><br>Dodaj link do strony docelowej aplikacji do wszystkich dokumentów, a następnie dodaj parametry adresu URL, aby ułatwić śledzenie odwiedzających i wersje próbne. |
-| Wideo: Usługi AppSource, consulting services oraz rozwiązanie SaaS zapewnia tylko | Wideo najsilniejszych komunikują się wartość oferty w postaci narracji:<br>Upewnij się, klient nie Twoja firma, hero wątku. Film wideo należy adres głównych wyzwań i cele klientów docelowych.<br><br>Zalecana długość: 60 – 90 sekund.<br><br>Uwzględniaj słów kluczowych, używające nazwy plików wideo.<br><br>Rozważ dodanie obejrzeć dodatkowe filmy wideo, np. instrukcje, wprowadzenie lub wideo z opinią klienta. |
+| Wideo: Usługa AppSource, consulting services oraz rozwiązanie SaaS zapewnia tylko | Wideo najsilniejszych komunikują się wartość oferty w postaci narracji:<br>Upewnij się, klient nie Twoja firma, hero wątku. Film wideo należy adres głównych wyzwań i cele klientów docelowych.<br><br>Zalecana długość: 60 – 90 sekund.<br><br>Uwzględniaj słów kluczowych, używające nazwy plików wideo.<br><br>Rozważ dodanie obejrzeć dodatkowe filmy wideo, np. instrukcje, wprowadzenie lub wideo z opinią klienta. |
 | Zrzuty ekranu (1280&nbsp;&times;&nbsp;720) | Dodaj do pięciu zrzuty ekranu:<br>Uwzględniaj klucza słów kluczowych w nazwach plików. |
 
 ## <a name="marketing-best-practices"></a>Najlepsze rozwiązania marketingowe 
@@ -147,8 +147,8 @@ Znaczek portalu Azure Marketplace jest dostarczana jako część bezpłatnie [ko
 
 ### <a name="link-to-your-app-listing-page-in-the-marketplace-from-your-website"></a>Link do strony listy aplikacji w portalu marketplace z witryny sieci Web
 Podczas łączenia z wskaźnika AppSource lub witrynie Azure Marketplace w witrynie do Twojej listy w portalu marketplace, obsługują silne analiza i raportowanie, umieszczając następujące parametry zapytania na końcu adresu URL:
-* **SRC**: obejmują źródło, z którego ruch jest kierowany do usługi AppSource (na przykład witryny sieci Web, usługi LinkedIn lub Facebook).
-* **mktcmpid**: marketing identyfikator kampanii, który może zawierać maksymalnie 16 znaków dowolną kombinacją liter, cyfry, podkreślenia i łączników (na przykład *blogpost_12*).
+* **SRC**: Obejmują źródło, z którego ruch jest kierowany do usługi AppSource (na przykład witryny sieci Web, usługi LinkedIn lub Facebook).
+* **mktcmpid**: Marketing identyfikator kampanii, który może zawierać maksymalnie 16 znaków dowolną kombinacją liter, cyfry, podkreślenia i łączników (na przykład *blogpost_12*).
 
 Następującego przykładowego adresu URL zawiera zarówno parametru zapytania: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
