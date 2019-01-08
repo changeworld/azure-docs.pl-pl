@@ -4,16 +4,17 @@ description: Dowiedz się, jak wprowadzić maszyny wirtualne VMware i fizyczne s
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 517355a32fc7a549370aed2c7a8408c3a0887e13
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838025"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973177"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych VMware i fizycznych serwerów replikowanych na platformie Azure
 
@@ -68,7 +69,7 @@ Sprawdź właściwości maszyny wirtualnej i upewnij się, że maszyna wirtualna
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, do którego przełączenie w tryb failover ma zostać wykonane. Możesz użyć jednej z następujących opcji:
    - **Najnowszy**: ta opcja najpierw przetwarza wszystkie dane wysyłane do usługi Site Recovery. Zapewnia najniższą wartość celu puntu odzyskiwania, ponieważ maszyna wirtualna platformy Azure utworzona po przejściu do trybu failover zawiera wszystkie dane, które zostały zreplikowane w usłudze Site Recovery do momentu włączenia trybu failover.
    - **Najnowszy przetworzony**: ta opcja wprowadza maszynę wirtualną w tryb failover z użyciem najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
-   - **Najnowszy spójny na poziomie aplikacji**: ta opcja wprowadza maszynę wirtualną w tryb failover z użyciem najnowszego spójnego na poziomie aplikacji punktu odzyskiwania przetworzonego przez usługę Site Recovery.
+   - **Najnowszy spójny na poziomie aplikacji**: ta opcja wprowadza maszynę wirtualną w tryb failover z użyciem najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery.
    - **Niestandardowy**: umożliwia określenie punktu odzyskiwania.
 
 3. Wybierz opcję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover**, aby spróbować przeprowadzić zamknięcie źródłowych maszyn wirtualnych przed włączeniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.
@@ -76,7 +77,7 @@ Sprawdź właściwości maszyny wirtualnej i upewnij się, że maszyna wirtualna
 W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. **Dłuższy czas testowego przełączania w tryb failover** może występować w przypadku maszyn wirtualnych VMware korzystających z usługi mobilności w wersji starszej niż 9,8, serwerów fizycznych, maszyn wirtualnych VMware z systemem Linux, maszyn wirtualnych funkcji Hyper-V chronionych jako serwery fizyczne, maszyn wirtualnych VMware, które nie mają włączonej usługi DHCP, oraz maszyn wirtualnych VMware, które nie mają następujących sterowników rozruchowych: storvsc, vmbus, storflt, intelide, atapi.
 
 > [!WARNING]
-> **Nie anuluj trybu failover po rozpoczęciu przełączania**: przed uruchomieniem trybu failover replikacja maszyny wirtualnej zostanie zatrzymana.
+> **Nie anuluj trybu failover, który jest w toku**: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej.
 > Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Nawiązywanie połączenia z maszyną wirtualną przełączoną w tryb failover na platformie Azure

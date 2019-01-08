@@ -8,21 +8,21 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e77ee61e3d318b355b978ce21031f3f55a26feca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090112"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724627"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu zestawu Speech SDK usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja jest oparta na pakiecie Maven zestawu Speech SDK usługi Microsoft Cognitive Services w wersji 1.1.0 oraz systemie Android Studio 3.1.
+Aplikacja jest oparta na pakiecie Maven zestawu Speech SDK usługi Microsoft Cognitive Services w wersji 1.2.0 oraz systemie Android Studio 3.1.
 Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32 lub 64-bitowymi procesorami ARM i procesorami x86 lub x64 firmy Intel.
 
 > [!NOTE]
@@ -58,9 +58,9 @@ Przygotowanie nowego projektu Android w programie Android Studio zajmie trochę 
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.1.0`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.2.0`.
 
-Zestaw Speech SDK dla systemu Android znajduje się w pakiecie pod nazwą [AAR (biblioteka Android)](https://developer.android.com/studio/projects/android-library) i zawiera niezbędne biblioteki oraz uprawnienia systemu Android wymagane do ich używania.
+Zestaw Speech SDK dla systemu Android znajduje się w pakiecie o nazwie [AAR (biblioteka Android)](https://developer.android.com/studio/projects/android-library) i zawiera niezbędne biblioteki oraz wymagane uprawnienia systemu Android.
 Jest hostowany w repozytorium Maven znajdującym się pod adresem https://csspeechstorage.blob.core.windows.net/maven/.
 
 Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno Project Structure (Struktura projektu), wybierając kolejno pozycje **File (Plik)** > **Project Structure (Struktura projektu)** z paska menu programu Android Studio. W oknie Project Structure (Struktura projektu), wprowadź następujące zmiany:
@@ -73,7 +73,7 @@ Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno Project St
 
    ![Zrzut ekranu okna Project Structure (Struktura projektu)](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. W wyświetlonym oknie wprowadź nazwę i wersję zestawu Speech SDK dla systemu Android, `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0`. Następnie wybierz przycisk **OK**.
+1. W wyświetlonym oknie wprowadź nazwę i wersję zestawu Speech SDK dla systemu Android, `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`. Następnie wybierz przycisk **OK**.
    Teraz należy dodać zestaw Speech SDK do listy zależności, jak przedstawiono poniżej:
 
    ![Zrzut ekranu okna Project Structure (Struktura projektu)](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -86,7 +86,7 @@ Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno Project St
 
 ## <a name="create-user-interface"></a>Tworzenie interfejsu użytkownika
 
-Utworzymy podstawowy interfejs użytkownika dla aplikacji. Edytuj układ dla głównego działania, `activity_main.xml`. Początkowo układ zawiera pasek tytułu z nazwą aplikacji i element TextView zawierający tekst „Hello World!”
+Utworzymy podstawowy interfejs użytkownika dla aplikacji. Edytuj układ dla głównego działania, `activity_main.xml`. Początkowo układ zawiera pasek tytułu z nazwą aplikacji i element TextView zawierający tekst „Hello World!”.
 
 * Kliknij element TextView. Zmień atrybut ID w prawym górnym rogu na `hello`.
 
@@ -98,7 +98,7 @@ Utworzymy podstawowy interfejs użytkownika dla aplikacji. Edytuj układ dla gł
 
   ![Zrzut ekranu przedstawiający ikonę różdżki](media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-Tekst i graficzne przedstawienie interfejsu użytkownika powinno teraz wyglądać następująco.
+Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać następująco:
 
 <table>
 <tr>
@@ -141,16 +141,12 @@ Naciśnij przycisk w aplikacji, aby przejść do sekcji rozpoznawania mowy. Kole
 
 ![Zrzut ekranu aplikacji Android](media/sdk/qs-java-android-13-gui-on-device.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w folderze `quickstart/java-android`.
-
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Recognize intents from speech by using the Speech SDK for Java](how-to-recognize-intents-from-speech-java.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK mowy dla języka Java)
+> [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
