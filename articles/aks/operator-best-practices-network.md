@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: b1d4a3bde7852cb4eb9192ed1eab80c20613510a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ad6ab27a51cf082be71262b887a459f6c7cc906
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263839"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101976"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -140,7 +140,7 @@ Ten artykuł koncentruje się na łączności sieciowej i zabezpieczeń. Aby uzy
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
 [Serwer Nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
-[haproxy]: http://www.haproxy.org
+[haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik
 [barracuda-waf]: https://www.barracuda.com/products/webapplicationfirewall/models/5
 

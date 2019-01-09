@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e451fd2c2dad5c411d0a8faa8e9c044648759001
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626001"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121740"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -69,10 +69,10 @@ Praktyczny przewodnik dotyczący end-to-end Rozwiązywanie problemów w aplikacj
   * [Rozwiązywanie problemów w usłudze Azure Files przy użyciu Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Rozwiązywanie problemów z usługą Azure Files z systemem Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Dodatki]
-  * [Dodatek 1: Przy użyciu programu Fiddler do przechwytywania ruchu HTTP i HTTPS]
-  * [Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]
-  * [Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]
-  * [Dodatek 4: Przy użyciu programu Excel, aby wyświetlić metryki i dane dziennika]
+  * [Dodatek 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS]
+  * [Dodatek 2: Za pomocą programu Wireshark do przechwytywania ruchu sieciowego]
+  * [Dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer]
+  * [Dodatek 4: Aby wyświetlić metryki i rejestrowanie danych za pomocą programu Excel]
   * [Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure]
 
 ## <a name="introduction"></a>Wprowadzenie
@@ -125,7 +125,7 @@ Możesz użyć [witryny Azure portal](https://portal.azure.com) umożliwiającyc
 [Witryny Azure portal](https://portal.azure.com) można również dołączyć powiadomienia zdarzenia mające wpływ na różne usługi platformy Azure.
 Uwaga: Te informacje wcześniej była dostępna, wraz z danych historycznych na [pulpitu nawigacyjnego usług systemu Azure](http://status.azure.com).
 
-Gdy [witryny Azure portal](https://portal.azure.com) zbiera informacje o kondycji z wewnątrz centrów danych platformy Azure (monitorowanie w poziomie), możesz również przyjęcie podejścia poza do generowania transakcji syntetycznych, które okresowo dostępu aplikacji sieci web hostowanych na platformie Azure, z wielu lokalizacji. Usługi oferowane przez [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) i Application Insights dla metodyki DevOps platformy Azure są przykładem tego podejścia. Aby uzyskać więcej informacji na temat usługi Application Insights dla metodyki DevOps platformy Azure, zobacz dodatku "[dodatek 5: monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure](#appendix-5)."
+Gdy [witryny Azure portal](https://portal.azure.com) zbiera informacje o kondycji z wewnątrz centrów danych platformy Azure (monitorowanie w poziomie), możesz również przyjęcie podejścia poza do generowania transakcji syntetycznych, które okresowo dostępu aplikacji sieci web hostowanych na platformie Azure, z wielu lokalizacji. Usługi oferowane przez [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) i Application Insights dla metodyki DevOps platformy Azure są przykładem tego podejścia. Aby uzyskać więcej informacji na temat usługi Application Insights dla metodyki DevOps platformy Azure, zobacz dodatku "[dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure](#appendix-5). "
 
 ### <a name="monitoring-capacity"></a>Monitorowanie wydajności
 Ponieważ obiekty BLOB są zazwyczaj konto największą część danych przechowywanych metryk usługi Storage tylko przechowuje metryki pojemności dla usługi blob (w czasie pisania, nie jest możliwe monitorowanie pojemności, tabele i kolejki za pomocą metryk usługi Storage). Możesz znaleźć te dane w **$MetricsCapacityBlob** tabeli po włączeniu monitorowania usługi obiektów Blob. Metryki magazynu rejestruje następujące dane raz dziennie, a następnie można użyć wartości **RowKey** do określenia, czy wiersz zawiera jednostki, która odnosi się do danych użytkownika (wartość **danych**) lub dane analizy (wartość **analytics**). Każda jednostka przechowywanych zawiera informacje o wielkość wykorzystanego magazynu (**pojemności** mierzony w bajtach) i bieżącą liczbę kontenerów (**ContainerCount**) i obiektów blob (**ObjectCount** ) używane w ramach konta magazynu. Aby uzyskać więcej informacji na temat metryki pojemności, przechowywane w **$MetricsCapacityBlob** tabeli, zobacz [schemat tabeli metryk usługi Analytics magazynu](https://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -220,9 +220,9 @@ Biblioteki klienta usługi Storage dla platformy .NET umożliwia zbieranie danyc
 ### <a name="using-network-logging-tools"></a>Za pomocą narzędzia rejestracji w sieci
 Można przechwytywać ruch między klientem i serwerem zawierają szczegółowe informacje o dane, które są wymiana klient i serwer i podstawowe warunki w sieci. Narzędzia rejestrowania przydatne sieci obejmują:
 
-* [Narzędzie fiddler](http://www.telerik.com/fiddler) jest to bezpłatny internetowy serwer proxy, który umożliwia zbadanie nagłówki i dane ładunku komunikatów żądań i odpowiedzi HTTP i HTTPS debugowania. Aby uzyskać więcej informacji, zobacz [dodatku 1: przy użyciu narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS](#appendix-1).
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) i [Wireshark](http://www.wireshark.org/) są bezpłatne sieci analizatory protokołu, umożliwiające wyświetlanie pakietów szczegółowe informacje dla różnych protokołów sieciowych. Aby uzyskać więcej informacji na temat programu Wireshark, zobacz "[dodatek 2: za pomocą programu Wireshark do przechwytywania ruchu sieciowego](#appendix-2)".
-* Microsoft Message Analyzer jest narzędziem do firmy Microsoft, która zastępuje Monitor sieci, które oprócz przechwytywanie danych pakietów sieciowych, pomaga przeglądać i analizować dane dziennika przechwycone z innych narzędzi. Aby uzyskać więcej informacji, zobacz "[dodatku 3: za pomocą programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego](#appendix-3)".
+* [Narzędzie fiddler](http://www.telerik.com/fiddler) jest to bezpłatny internetowy serwer proxy, który umożliwia zbadanie nagłówki i dane ładunku komunikatów żądań i odpowiedzi HTTP i HTTPS debugowania. Aby uzyskać więcej informacji, zobacz [dodatku 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS](#appendix-1).
+* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) i [Wireshark](http://www.wireshark.org/) są bezpłatne sieci analizatory protokołu, umożliwiające wyświetlanie pakietów szczegółowe informacje dla różnych protokołów sieciowych. Aby uzyskać więcej informacji na temat programu Wireshark, zobacz "[dodatek 2: Do przechwytywania ruchu sieciowego za pomocą programu Wireshark](#appendix-2)".
+* Microsoft Message Analyzer jest narzędziem do firmy Microsoft, która zastępuje Monitor sieci, które oprócz przechwytywanie danych pakietów sieciowych, pomaga przeglądać i analizować dane dziennika przechwycone z innych narzędzi. Aby uzyskać więcej informacji, zobacz "[dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer](#appendix-3)".
 * Jeśli chcesz wykonać test podstawowej łączności, aby sprawdzić, czy komputerze klienckim może połączyć się z usługą Azure storage za pośrednictwem sieci, nie możesz tego zrobić przy użyciu standardu **ping** narzędzia na komputerze klienckim. Można jednak użyć [ **tcping** narzędzie](http://www.elifulkerson.com/projects/tcping.php) Aby sprawdzić łączność.
 
 W wielu przypadkach dane dzienników z rejestrowania magazynu i biblioteki klienta usługi Storage będą wystarczające, aby zdiagnozować problem, ale w niektórych przypadkach mogą wymagać bardziej szczegółowe informacje, które zapewniają następujące narzędzia rejestrowania w sieci. Na przykład za pomocą programu Fiddler, aby wyświetlić komunikaty HTTP i HTTPS umożliwia wyświetlenie nagłówka i ładunku danych wysyłane do i z usługi magazynu, które umożliwiłyby zbadać, jak aplikacja kliencka ponawia próbę operacji magazynu. Analizatory protokołów, takich jak program Wireshark działają na poziomie pakietów, które umożliwia wyświetlenie danych TCP, który umożliwiłby rozwiązywać problemy z łącznością i utraty pakietów. Analizator komunikatów mogą działać w warstwach protokołów HTTP i TCP.
@@ -372,9 +372,9 @@ Należy sprawdzić dzienniki po stronie klienta, aby zobaczyć, ile żądań, ż
 #### <a name="investigating-network-latency-issues"></a>Badanie problemów z opóźnieniem sieci
 Zazwyczaj duże opóźnienie end-to-end spowodowane przez sieć jest ze względu na przejściowe warunki. Za pomocą narzędzi takich jak program Wireshark lub Microsoft Message Analyzer, można zbadać oba problemów przejściowe i trwałe sieci, takich jak porzuconych pakietów.
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią za pomocą programu Wireshark zobacz "[Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]."
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią za pomocą programu Wireshark zobacz "[Dodatek 2: Za pomocą programu Wireshark do przechwytywania ruchu sieciowego]. "
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią przy użyciu programu Microsoft Message Analyzer, zobacz "[Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]."
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią przy użyciu programu Microsoft Message Analyzer, zobacz "[dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer]. "
 
 ### <a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Metryki wskazują niską wartość AverageE2ELatency i niską wartość AverageServerLatency, ale na kliencie występuje duże opóźnienie
 W tym scenariuszu najbardziej prawdopodobną przyczyną jest opóźnienia w żądań magazynu docieranie do usługi storage. Powinieneś zbadać, dlaczego żądania od klienta nie wykorzystują ją przy użyciu usługę blob Service.
@@ -389,9 +389,9 @@ Ponadto sprawdź, czy klient wykonuje wiele ponownych prób i Sprawdź przyczyn�
 
 Jeśli nie występują żadne problemy w kliencie, należy zbadać potencjalne problemy z siecią, takie jak utrata pakietów. Za pomocą narzędzi takich jak program Wireshark lub Microsoft Message Analyzer do badania problemów z siecią.
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią za pomocą programu Wireshark zobacz "[Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]."
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią za pomocą programu Wireshark zobacz "[Dodatek 2: Za pomocą programu Wireshark do przechwytywania ruchu sieciowego]. "
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią przy użyciu programu Microsoft Message Analyzer, zobacz "[Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]."
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z siecią przy użyciu programu Microsoft Message Analyzer, zobacz "[dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer]. "
 
 ### <a name="metrics-show-high-AverageServerLatency"></a>Metryki wskazują wysoką wartość AverageServerLatency
 W przypadku wysokiej **wartość AverageServerLatency** żądań pobierania obiektów blob, należy używać dzienników rejestrowania magazynu można sprawdzić, czy są ponownych żądań dotyczących tego samego obiektu blob (lub zestaw obiektów blob). W przypadku żądań przekazywania obiektu blob powinien być sprawdzony bloku rozmiar klienta jest używany (na przykład bloków który chunks mniej niż 64 KB, rozmiar może spowodować koszty ogólne, chyba że operacje odczytywania są również w mniej niż 64 KB), a jeśli wielu klientów, przekazujesz do tego samego obiektu blob w para bloków llel. Należy także sprawdzić metryki na minutę dla gwałtowny wzrost liczby żądań, które wynikają z przekroczeniem na drugim cele skalowalności: Zobacz też "[Metryki wskazują wzrost wartości PercentTimeoutError]."
@@ -401,7 +401,7 @@ Jeśli widzisz wysokiego **wartość AverageServerLatency** do pobrania obiektu 
 Wysoka **wartość AverageServerLatency** wartości mogą też być objawem źle zaprojektowany tabel lub kwerend, czy wynik w ramach operacji skanowania lub że oparte na wzorcu dołączania/dołączana niezalecane. Aby uzyskać więcej informacji, zobacz "[Metryki wskazują wzrost wartości PercentThrottlingError]".
 
 > [!NOTE]
-> Kompleksowe Lista kontrolna dotycząca wydajności listy kontrolnej w tym miejscu można znaleźć: [wydajność magazynu systemu Microsoft Azure i Lista kontrolna dotycząca skalowalności](storage-performance-checklist.md).
+> Można znaleźć kompleksowe Lista kontrolna dotycząca wydajności listy kontrolnej w tym miejscu: [Wydajność magazynu platformy Microsoft Azure i Lista kontrolna dotycząca skalowalności](storage-performance-checklist.md).
 > 
 > 
 
@@ -452,14 +452,14 @@ Swoje metryki wskazują wzrost **wartości PercentTimeoutError** dla jednego z u
 > 
 > 
 
-**Wartości PercentTimeoutError** Metryka to agregacji z następujących metryk: **ClientTimeoutError**, **AnonymousClientTimeoutError**,  **SASClientTimeoutError**, **ServerTimeoutError**, **AnonymousServerTimeoutError**, i **SASServerTimeoutError**.
+**Wartości PercentTimeoutError** Metryka to agregacji z następujących metryk: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**,  **AnonymousServerTimeoutError**, i **SASServerTimeoutError**.
 
 Limity czasu serwera są spowodowane przez błąd na serwerze. Przekroczenia limitu czasu klienta się tak zdarzyć, ponieważ operacja na serwerze został przekroczony limit czasu określony przez klienta; na przykład klienta przy użyciu biblioteki klienta usługi Storage można ustawić limitu czasu dla operacji przy użyciu **ServerTimeout** właściwość **QueueRequestOptions** klasy.
 
 Limity czasu serwera wskazywać na problem z usługą Magazyn, który wymaga dalszego badania. Metryki można użyć, aby zobaczyć, czy osiągasz limity skalowalności usługi i określić wszelkie skoki w ruchu, które mogą być przyczyną tego problemu. Jeśli ten problem występuje sporadycznie, może to być spowodowane równoważenia obciążenia działania w usłudze. Jeśli ten problem jest trwały i nie jest spowodowany przez aplikację osiągnięcia limitów skalowalności usługi, należy zgłosić problemu wymagającego pomocy technicznej. Dla limitów czasu klienta należy zdecydować, jeśli limit czasu jest ustawiona na odpowiednią wartość w klienta i albo zmień wartość limitu czasu w obiekcie klienta lub zbadać, jak możesz może zwiększyć wydajność operacji w usłudze magazynu, na przykład, optymalizując zapytania tabeli lub zmniejszenie rozmiaru wiadomości.
 
 ### <a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metryki wskazują wzrost wzrost wartości PercentNetworkError
-Swoje metryki wskazują wzrost **wartości PercentNetworkError** dla jednego z usługi storage. **Wartości PercentNetworkError** Metryka to agregacji z następujących metryk: **NetworkError**, **AnonymousNetworkError**, i **SASNetworkError** . Występują one w przypadku usługi storage wykrywa błąd sieciowy, gdy klient wysyła żądanie magazynu.
+Swoje metryki wskazują wzrost **wartości PercentNetworkError** dla jednego z usługi storage. **Wartości PercentNetworkError** Metryka to agregacji z następujących metryk: **NetworkError**, **AnonymousNetworkError**, i **SASNetworkError**. Występują one w przypadku usługi storage wykrywa błąd sieciowy, gdy klient wysyła żądanie magazynu.
 
 Najczęstszą przyczyną tego błędu jest klientem odłączania, zanim upłynie limit czasu w usłudze storage. Badanie kodu w swoim kliencie, aby zrozumieć, kiedy i dlaczego klient odłączy się od usługi storage. Aby zbadać problemy z połączeniem sieciowym z klienta, można użyć programu Wireshark, Microsoft Message Analyzer ani Tcping. Te narzędzia są opisane w [dodatki].
 
@@ -471,9 +471,9 @@ Jeśli Twoja aplikacja kliencka jest zgłaszania błędów HTTP 403 (zabronione)
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab-… |Trwa uruchamianie operacji z lokalizacji podstawowej dla trybu lokalizacji PrimaryOnly. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Uruchamianie synchroniczne żądanie https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp; sr = c&amp;si = mypolicy&amp;sig = 2BmcR6zbudIH2F5Ikm % 2FyhNYZEmJNQ OFnd4Rd7z01fIvh % 3D&amp;parametru api-version = 2014-02-14. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Oczekiwanie na odpowiedź. |
-| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: serwer zdalny zwrócił błąd: (403) zabroniony. |
+| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (403) zabroniony. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Odebrano odpowiedź. Kod stanu 403, identyfikator żądania = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, zawartość MD5 = element ETag =. |
-| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Zgłoszono wyjątek podczas operacji: serwer zdalny zwrócił błąd: (403) zabroniony... |
+| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Zgłoszono wyjątek podczas operacji: Serwer zdalny zwrócił błąd: (403) zabroniony... |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Sprawdzanie, jeśli należy wykonać ponownie operację. Liczba ponownych prób = 0, kod stanu HTTP 403 i wyjątek = = Serwer zdalny zwrócił błąd: (403) zabroniony... |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Ustawiono podstawowego, w oparciu o trybu lokalizacji w następnej lokalizacji. |
 | Microsoft.WindowsAzure.Storage |Błąd |1 |85d077ab -… |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: (403) zabroniony. |
@@ -534,7 +534,7 @@ Wpisy dziennika:
 | de8b1c3c-... |Uruchamianie synchroniczne żądanie https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Przygotowywanie do zapisywania danych na żądanie. |
-| e2d06d78-... |Wyjątek podczas oczekiwania na odpowiedź: serwer zdalny zwrócił błąd: (404) nie można odnaleźć... |
+| e2d06d78-... |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (404) nie można odnaleźć... |
 | e2d06d78-... |Odebrano odpowiedź. Kod stanu 404, identyfikator żądania = = 353ae3bc-..., zawartość MD5 = element ETag =. |
 | e2d06d78-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, kontynuowanie z pozostałą częścią operacji. |
 | e2d06d78-... |Trwa pobieranie treści odpowiedzi. |
@@ -544,14 +544,14 @@ Wpisy dziennika:
 | e2d06d78-... |Oczekiwanie na odpowiedź. |
 | de8b1c3c-... |Dane żądania zapisu. |
 | de8b1c3c-... |Oczekiwanie na odpowiedź. |
-| e2d06d78-... |Wyjątek podczas oczekiwania na odpowiedź: serwer zdalny zwrócił błąd: konflikt (409)... |
+| e2d06d78-... |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: Konflikt (409)... |
 | e2d06d78-... |Odebrano odpowiedź. Kod stanu = 409, identyfikator żądania = c27da20e-..., zawartość MD5 = element ETag =. |
 | e2d06d78-... |Pobiera treść odpowiedzi błędu. |
-| de8b1c3c-... |Wyjątek podczas oczekiwania na odpowiedź: serwer zdalny zwrócił błąd: (404) nie można odnaleźć... |
+| de8b1c3c-... |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (404) nie można odnaleźć... |
 | de8b1c3c-... |Odebrano odpowiedź. Kod stanu 404, identyfikator żądania = = 0eaeab3e-..., zawartość MD5 = element ETag =. |
-| de8b1c3c-... |Zgłoszono wyjątek podczas operacji: serwer zdalny zwrócił błąd: (404) nie można odnaleźć... |
+| de8b1c3c-... |Zgłoszono wyjątek podczas operacji: Serwer zdalny zwrócił błąd: (404) nie można odnaleźć... |
 | de8b1c3c-... |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: (404) nie można odnaleźć... |
-| e2d06d78-... |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: konflikt (409)... |
+| e2d06d78-... |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: Konflikt (409)... |
 
 W tym przykładzie dziennika pokazują, że klient z przeplotem żądań z **CreateIfNotExists** — metoda (żądania identyfikator e2d06d78...) z żądaniami z **UploadFromStream** — metoda (de8b1c3c-...). Ta technologia odbywa się, ponieważ aplikacja kliencka asynchroniczne wywoływanie tych metod. Modyfikowanie kodu asynchronicznego w kliencie, aby upewnić się, tworzy kontener, przed podjęciem próby przekazania danych do obiektu blob w kontenerze. W idealnym przypadku należy utworzyć swoje kontenery z wyprzedzeniem.
 
@@ -677,8 +677,8 @@ Więcej informacji można znaleźć w temacie [Use the Azure Storage Emulator fo
 ### <a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>Występują problemy podczas instalowania zestawu Azure SDK dla platformy .NET
 Podczas instalowania zestawu SDK, nie jest on próby zainstalowania emulatora magazynu na komputerze lokalnym. Dziennik instalacji zawiera jedną z następujących komunikatów:
 
-* CAQuietExec: Błąd: nie można uzyskać dostępu do wystąpienia SQL
-* CAQuietExec: Błąd: nie można utworzyć bazy danych
+* CAQuietExec:  Błąd: Nie można uzyskać dostępu do wystąpienia SQL
+* CAQuietExec:  Błąd: Nie można utworzyć bazy danych
 
 Przyczyną jest problem z istniejącej instalacji LocalDB. Domyślnie emulator magazynu używa LocalDB do utrwalenia danych, gdy jej symuluje usług Azure storage. Możesz zresetować wystąpienia LocalDB, uruchamiając następujące polecenia w oknie wiersza polecenia, zanim spróbujesz zainstalować zestaw SDK.
 
@@ -698,11 +698,11 @@ Jeśli poprzednie sekcje dotyczące rozwiązywania problemów nie zostanie uwzgl
 * Informacjom metryki ułatwią Ci wyszukać dane dziennika po stronie serwera, aby uzyskać szczegółowe informacje o błędach, które pojawiają się. Te informacje mogą pomóc Ci rozwiązać problem.
 * Jeśli informacje w dziennikach po stronie serwera nie jest wystarczające, aby rozwiązać ten problem uda, umożliwia dzienników po stronie klienta biblioteki klienta usługi Storage Zbadaj zachowanie aplikacji klienckiej i narzędzi, takich jak Fiddler, program Wireshark i Microsoft Analizator komunikatów do badania sieci.
 
-Aby uzyskać więcej informacji na temat za pomocą programu Fiddler, zobacz "[Dodatek 1: Przy użyciu programu Fiddler do przechwytywania ruchu HTTP i HTTPS]."
+Aby uzyskać więcej informacji na temat za pomocą programu Fiddler, zobacz "[dodatek 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS]. "
 
-Aby uzyskać więcej informacji o korzystaniu z programu Wireshark, zobacz "[Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]."
+Aby uzyskać więcej informacji o korzystaniu z programu Wireshark, zobacz "[Dodatek 2: Za pomocą programu Wireshark do przechwytywania ruchu sieciowego]. "
 
-Aby uzyskać więcej informacji o korzystaniu z programu Microsoft Message Analyzer, zobacz "[Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]."
+Aby uzyskać więcej informacji o korzystaniu z programu Microsoft Message Analyzer, zobacz "[dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer]. "
 
 ## <a name="appendices"></a>Dodatki
 Dodatki opisano kilka narzędzi, które mogą być przydatne podczas diagnozowania i rozwiązywania problemów przy użyciu usługi Azure Storage (i inne usługi). Narzędzia te nie są częścią usługi Azure Storage, a niektóre są produktów innych firm. W efekcie narzędzia omówione w te dodatki nie są obejmowane przez wszystkie umowy dotyczącej pomocy technicznej, które mogą wiązać Ciebie z Microsoft Azure lub usługi Azure Storage, a w związku z tym jako część procesu oceny należy sprawdzić opcje licencjonowania i pomocy technicznej dostępne od dostawców tych narzędzi.
@@ -737,7 +737,7 @@ Poniższej procedury dowiesz się, jak przechwytywanie pakietów szczegółowe i
 4. Dodaj filtr do **filtr przechwytywania** pola tekstowego. Na przykład **hosta contosoemaildist.table.core.windows.net** skonfiguruje program Wireshark w celu przechwycenia tylko pakiety wysyłane do i z punkt końcowy usługi tabel w **contosoemaildist** konta magazynu. Zapoznaj się z [pełną listę filtrów przechwytywania](http://wiki.wireshark.org/CaptureFilters).
    
    ![][6]
-5. Kliknij przycisk **Start**. Program Wireshark teraz Przechwyć wszystkie pakiety Wyślij do lub z punkt końcowy usługi tabel, jak używać aplikacji klienta na komputerze lokalnym.
+5. Kliknij przycisk **Uruchom**. Program Wireshark teraz Przechwyć wszystkie pakiety Wyślij do lub z punkt końcowy usługi tabel, jak używać aplikacji klienta na komputerze lokalnym.
 6. Po zakończeniu kliknij pozycję menu głównego **przechwytywania** i następnie **zatrzymać**.
 7. Aby zapisać przechwycone dane w pliku przechwytywania programu Wireshark, w menu głównym kliknij **pliku** a następnie **Zapisz**.
 
@@ -754,7 +754,7 @@ Możesz również wyświetlić dane TCP, jak warstwa aplikacji widzi on, klikaj�
 > 
 > 
 
-### <a name="appendix-3"></a>Dodatku 3: Za pomocą programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego
+### <a name="appendix-3"></a>Dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer
 Korzystanie z analizatora komunikatów firmy Microsoft do przechwytywania ruchu HTTP i HTTPS, w sposób podobny do programu Fiddler i przechwytywania ruchu sieciowego w sposób podobny do programu Wireshark.
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Konfigurowanie śledzenia sesji sieci web przy użyciu programu Microsoft Message Analyzer
@@ -788,7 +788,7 @@ Po utworzeniu sesji śledzenia w Microsoft Message Analyzer, można określić f
 
 Aby uzyskać więcej informacji na temat śledzenia Microsoft komunikatów analizatora lokalnego warstwy łącza zobacz [dostawcy Microsoft-PEF-NDIS-PacketCapture](https://technet.microsoft.com/library/jj659264.aspx).
 
-### <a name="appendix-4"></a>Dodatek 4: Za pomocą programu Excel, aby wyświetlić metryki i rejestrowanie danych
+### <a name="appendix-4"></a>Dodatek 4: Aby wyświetlić metryki i rejestrowanie danych za pomocą programu Excel
 Wiele narzędzi umożliwiają pobranie danych metryk usługi Storage z usługi Azure table storage w formacie rozdzielanym, który można łatwo załadować dane do programu Excel do wyświetlania i analizy. Dane rejestrowania magazynu z magazynu obiektów blob platformy Azure jest już w formacie rozdzielanym, który można załadować do programu Excel. Jednak należy dodać odpowiednie nagłówki kolumn na podstawie informacji o [Format dziennika analizy magazynu](https://msdn.microsoft.com/library/azure/hh343259.aspx) i [schemat tabeli metryk usługi Analytics magazynu](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 Aby zaimportować rejestrowania magazynu danych do programu Excel, po pobraniu go z magazynu obiektów blob:
@@ -805,7 +805,7 @@ Można również użyć funkcji usługi Application Insights dla metodyki DevOps
 * Upewnij się, że usługi sieci web jest dostępna i działa prawidłowo. Czy Twoja aplikacja jest witryną sieci web lub aplikacji urządzenia, która korzysta z usługi sieci web, go Przetestuj adres URL co kilka minut z lokalizacji na całym świecie i powiadomienie Cię o tym, jeśli występuje problem.
 * Szybkie diagnozowanie problemów z wydajnością dowolnej wyjątków w usłudze sieci web. Dowiedz się, jeśli są rozciągnięcia procesora CPU lub innych zasobów, uzyskiwanie śladów stosu wyjątków i łatwo przeszukiwać dane dziennika śledzenia. Jeśli wydajność aplikacji spadnie poniżej wydatkami telekomunikacyjnymi, Microsoft może wysyłać wiadomości e-mail. Można monitorować usługi sieci web platformy .NET i Java.
 
-Więcej informacji można znaleźć [co to jest usługa Application Insights](../../application-insights/app-insights-overview.md).
+Więcej informacji można znaleźć [co to jest usługa Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 <!--Anchors-->
 [Wprowadzenie]: #introduction
@@ -861,10 +861,10 @@ Więcej informacji można znaleźć [co to jest usługa Application Insights](..
 [Inny problem z usługą magazynu]: #you-have-a-different-issue-with-a-storage-service
 
 [Dodatki]: #appendices
-[Dodatek 1: Przy użyciu programu Fiddler do przechwytywania ruchu HTTP i HTTPS]: #appendix-1
-[Dodatek 2: Przy użyciu programu Wireshark do przechwytywania ruchu sieciowego]: #appendix-2
-[Dodatek 3: Przy użyciu programu Microsoft Message Analyzer do przechwytywania ruchu sieciowego]: #appendix-3
-[Dodatek 4: Przy użyciu programu Excel, aby wyświetlić metryki i dane dziennika]: #appendix-4
+[Dodatek 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS]: #appendix-1
+[Dodatek 2: Za pomocą programu Wireshark do przechwytywania ruchu sieciowego]: #appendix-2
+[Dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer]: #appendix-3
+[Dodatek 4: Aby wyświetlić metryki i rejestrowanie danych za pomocą programu Excel]: #appendix-4
 [Dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure]: #appendix-5
 
 <!--Image references-->

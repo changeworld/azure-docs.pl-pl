@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: ebb8d5d141dab39e73297342907d4439b30a9fbf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042482"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107433"
 ---
 # <a name="about-azure-vm-backup"></a>Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
 
@@ -30,7 +30,7 @@ Oto, jak usługi Azure Backup wykonuje kopię zapasową maszyn wirtualnych platf
     - To rozszerzenie jest zainstalowane podczas pierwszego tworzenia kopii zapasowej maszyny Wirtualnej.
     - Aby zainstalować rozszerzenie, musi być uruchomiona maszyna wirtualna.
     - Jeśli maszyna wirtualna nie jest uruchomiona, usługa Backup utworzy migawkę powiązanego magazynu (ponieważ gdy maszyna wirtualna jest zatrzymana, nie występują zapisy aplikacji).
-4. Rozszerzenie kopii zapasowej tworzy migawkę poziom miejsca do magazynowania, spójnego na poziomie aplikacji.
+4. Rozszerzenie kopii zapasowej tworzy migawkę spójną/spójna na poziomie plików awarii poziom miejsca do magazynowania.
 5. Po migawki dane są przesyłane do magazynu. Aby zmaksymalizować wydajność, usługa identyfikuje i przesyła jedynie te bloki danych, które uległy zmianie od czasu poprzedniej kopii zapasowej (delta).
 5. Po ukończeniu przesyłania danych migawka jest usuwana, a utworzony zostaje punkt odzyskiwania.
 
@@ -48,14 +48,14 @@ Usługa Azure Backup nie szyfruje danych jako część procesu tworzenia kopii z
 
 Do wykonania migawek w uruchomionej aplikacji, Azure kopie zapasowe migawek spójności aplikacji.
 
-- **Maszyny wirtualne Windows**: W przypadku maszyn wirtualnych Windows usługa Backup służy do koordynowania z woluminów w tle kopii Service (VSS) uzyskanie spójnej migawki dysków maszyny Wirtualnej.
+- **Maszyny wirtualne z systemem Windows**: W przypadku maszyn wirtualnych Windows usługa Backup służy do koordynowania z woluminów w tle kopii Service (VSS) uzyskanie spójnej migawki dysków maszyny Wirtualnej.
     - Domyślnie program Azure kopie zapasowe pełnych kopii zapasowych usługi VSS. [Dowiedz się więcej](http://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
     - Jeśli chcesz zmienić ustawienie kopii zapasowych Azure przyjmuje kopie kopii zapasowych usługi VSS, należy ustawić następujący klucz rejestru:
         ```
         [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
         ""USEVSSCOPYBACKUP"="TRUE"
         ```
-- **Maszyny wirtualne systemu Linux**: Upewnij się, że maszyny wirtualne systemu Linux spójny na poziomie aplikacji w przypadku usługi Azure Backup tworzy migawkę, umożliwia struktury i skryptu używanego po utworzeniu systemu Linux. Można napisać własne niestandardowe skrypty do zapewnienie spójności podczas wykonywania migawki maszyny Wirtualnej.
+- **Maszyny wirtualne z systemem Linux**: Upewnij się, że maszyny wirtualne systemu Linux spójny na poziomie aplikacji w przypadku usługi Azure Backup tworzy migawkę, umożliwia struktury i skryptu używanego po utworzeniu systemu Linux. Można napisać własne niestandardowe skrypty do zapewnienie spójności podczas wykonywania migawki maszyny Wirtualnej.
     -  Tylko usługa Azure Backup wywoła przed i po skryptów napisanych przez użytkownika.
     - Jeśli skryptu poprzedzającego i skryptu używanego po utworzeniu wykonane pomyślnie, kopia zapasowa Azure oznacza punkt odzyskiwania jako spójnych z aplikacją. Jednak możesz ponoszą ostateczną odpowiedzialność za spójności aplikacji podczas za pomocą skryptów niestandardowych.
     - [Dowiedz się więcej](backup-azure-linux-app-consistent.md) o konfigurowaniu skryptów.

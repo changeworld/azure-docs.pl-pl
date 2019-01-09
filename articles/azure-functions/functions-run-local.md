@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 3239cbc957d2a79c7a5411604759f86f0268bd70
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976311"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103693"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -307,6 +307,7 @@ func host start
 | **`--password`** | Hasło lub plik, który zawiera hasło do pliku .pfx. Używana tylko z `--cert`. W wersji 2.x tylko. |
 | **`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
 | **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe, zanim proces zostanie zakończony. Używana tylko wtedy, gdy uruchamianie podstawowych narzędzi w zintegrowanym środowisku programistycznym (IDE).|
+| **`--script-root --prefix`** | Można określić ścieżkę do katalogu głównego aplikacji funkcji, który ma zostać uruchomić lub wdrożyć. Służy to do skompilowanych projektach, generujących pliki projektu do podfolderu. Na przykład podczas kompilowania biblioteki klas C# plików projektu, host.json, local.settings.json i function.json są generowane w *głównego* podfolder ze ścieżką, takich jak `MyProject/bin/Debug/netstandard2.0`. W tym przypadku Ustaw prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji, podczas uruchamiania na platformie Azure. |
 | **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Domyślne: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
 
