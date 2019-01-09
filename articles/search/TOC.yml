@@ -11,7 +11,7 @@ items:
     href: search-create-service-portal.md
   - name: Portal
     items:
-    - name: Importowanie — indeksowanie — wyszukiwanie
+    - name: Importowanie, indeksowanie i wykonywanie zapytań za pomocą narzędzi
       href: search-get-started-portal.md
     - name: Wypróbuj wyszukiwanie kognitywne
       href: cognitive-search-quickstart-blob.md
@@ -60,12 +60,12 @@ items:
   items:
   - name: Wyszukiwanie kognitywne (wersja zapoznawcza)
     items:
+    - name: Dołączanie zasobu usługi Cognitive Services
+      href: cognitive-search-attach-cognitive-services.md
     - name: Definiowanie zestawu umiejętności
       href: cognitive-search-defining-skillset.md
     - name: Tworzenie odwołania do adnotacji
       href: cognitive-search-concept-annotations-syntax.md
-    - name: Kojarzenie usług Cognitive Services z zestawem umiejętności
-      href: cognitive-search-attach-cognitive-services.md
     - name: Tworzenie mapowania na pola indeksu
       href: cognitive-search-output-field-mapping.md
     - name: Przetwarzanie i wyodrębnianie informacji z obrazów
@@ -287,9 +287,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 4bf8c36945d1a02d87ca6b0602de14d7f9694594
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d6b670b1302ec4363ebdf1853ae93677268724f7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999394"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121281"
