@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 0e325de3a9a28d824ea9a6bfb7b3346bf9285e58
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033319"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120958"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja platformy Azure cyfrowego Twins struktury Swagger
 
@@ -55,7 +55,7 @@ Możesz wybrać każdego modelu obiektów uwzględnione na liście, aby uzyskać
 
 ![Model struktury swagger][3]
 
-Wygenerowany modele obiektów struktury Swagger są wygodne wyświetlić wszystkie dostępne Azure cyfrowego bliźniaczych reprezentacji [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md). Deweloperzy mogą udostępnić użycia tego zasobu, podczas ich tworzenia rozwiązań na Twins cyfrowych platformy Azure.
+Wygenerowany modele obiektów struktury Swagger są wygodne wyświetlić wszystkie dostępne Azure cyfrowego bliźniaczych reprezentacji [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md). Deweloperzy mogą używać tego zasobu, podczas ich tworzenia rozwiązań na Twins cyfrowych platformy Azure.
 
 ## <a name="endpoint-summary"></a>Podsumowanie punktu końcowego
 
@@ -79,7 +79,7 @@ Po wybraniu określonego punktu końcowego, zobacz **wypróbuj działanie rozwi�
 
 ![Spróbuj struktury swagger][5]
 
-Rozwiń tę sekcję, aby wyświetlić pola wejściowe dla wszystkich wymaganych i opcjonalnych parametrów. Wprowadź odpowiednie wartości, a następnie wybierz pozycję **Execute**.
+Rozwiń tę sekcję, aby wyświetlić pola wejściowe dla wszystkich wymaganych i opcjonalnych parametrów. Wprowadź prawidłowe wartości, a następnie wybierz pozycję **Execute**.
 
 ![Nastąpiła struktury swagger][6]
 

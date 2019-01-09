@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 333fec5b9459979d7735f0dd292d7367d86353fe
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7c5bfa96e7f9ef7812b8487c479b34d926633287
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326157"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105920"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
 > [!NOTE]
@@ -25,7 +25,7 @@ Narzędzie diagnostyczne systemu Azure jest używany z innymi produktami firmy M
 
 Plik konfiguracji usługi Azure Diagnostics definiuje wartości, które są stosowane do inicjalizacji Monitor diagnostyki. Ten plik jest używany do zainicjowania ustawień diagnostycznych konfiguracji podczas uruchamiania Monitora diagnostyki.  
 
- Domyślnie plik schematu konfiguracji diagnostyki platformy Azure jest zainstalowany na `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` katalogu. Zastąp `<version>` z zainstalowaną wersją programu [zestawu Azure SDK](http://www.windowsazure.com/develop/downloads/).  
+ Domyślnie plik schematu konfiguracji diagnostyki platformy Azure jest zainstalowany na `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` katalogu. Zastąp `<version>` z zainstalowaną wersją programu [zestawu Azure SDK](https://www.windowsazure.com/develop/downloads/).  
 
 > [!NOTE]
 >  Plik konfiguracji diagnostyki jest zwykle używany z zadania uruchamiania, które wymagają danych diagnostycznych, które mają być zbierane we wcześniejszej części procesu uruchamiania. Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobacz [zbierania danych rejestrowania przez diagnostykę platformy Azure przy użyciu](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a39d497c90f49f8699b9d27be175e501973804c5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811515"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118391"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -26,7 +26,7 @@ Usługa Azure Monitor zapewnia jeden potok w celu uzyskania dostępu do wszystki
 W środowisku platformy Azure istnieje kilka "warstwy" danych monitorowania, a metoda uzyskiwania dostępu do danych z każdej warstwy różni się nieco. Zazwyczaj te warstwy można przedstawić jako:
 
 - **Dane monitorowania aplikacji:** Dane dotyczące wydajności i funkcji kodu zostały napisane i działają na platformie Azure. Przykładami aplikacji, danych monitorowania ślady wydajności, dzienniki aplikacji i danych telemetrycznych użytkownika. Monitorowanie danych aplikacji zwykle są zbierane w jednym z następujących sposobów:
-  - Instrumentując kodu za pomocą zestawu SDK, takich jak [zestawu SDK usługi Application Insights](../../application-insights/app-insights-overview.md).
+  - Instrumentując kodu za pomocą zestawu SDK, takich jak [zestawu SDK usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
   - Uruchamiając agent monitorowania, który nasłuchuje nowych aplikacji dzienników na maszynie działania aplikacji, takich jak [agenta diagnostyki Azure Windows](./../../azure-monitor/platform/diagnostics-extension-overview.md) lub [agenta diagnostyki Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md).
 - **Dane monitorowania systemu operacyjnego gościa:** Dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Przykładowe dane monitorowania systemu operacyjnego gościa będzie dzienników syslog systemu Linux lub zdarzeń systemu Windows. Aby zbierać dane tego typu, należy zainstalować agenta, takie jak [agenta diagnostyki Azure Windows](./../../azure-monitor/platform/diagnostics-extension-overview.md) lub [agenta diagnostyki Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md).
 - **Dane monitorowania zasobów platformy Azure:** Dane dotyczące operacji zasobu platformy Azure. W przypadku niektórych typów zasobów platformy Azure, takie jak maszyny wirtualne ma systemu operacyjnego gościa i aplikacji do monitorowania wewnątrz tej usługi platformy Azure. Dla innych zasobów platformy Azure, takich jak sieciowe grupy zabezpieczeń zasobu danych monitorowania jest najwyższej warstwy danych (ponieważ nie ma systemu operacyjnego gościa lub aplikacja działająca w tych zasobach). Te dane można zbierać w programach [ustawień diagnostycznych zasobu](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
@@ -98,7 +98,7 @@ Musisz zainstalować agenta, aby wysyłać dane monitorowania systemu operacyjne
 
 ## <a name="application-monitoring-data"></a>Dane monitorowania aplikacji
 
-Monitorowanie danych aplikacji wymaga, że kod został zinstrumentowany przy użyciu zestawu SDK, dzięki czemu nie występuje ogólnego przeznaczenia rozwiązania do monitorowania danych do Centrum zdarzeń w systemie Azure routing aplikacji. Jednak [usługi Azure Application Insights](../../application-insights/app-insights-overview.md) co usługa, która może służyć do zbierania danych z poziomu aplikacji platformy Azure. Jeśli używasz usługi Application Insights obejmuje strumieniowe przesyłanie danych monitorowania do Centrum zdarzeń, wykonując następujące czynności:
+Monitorowanie danych aplikacji wymaga, że kod został zinstrumentowany przy użyciu zestawu SDK, dzięki czemu nie występuje ogólnego przeznaczenia rozwiązania do monitorowania danych do Centrum zdarzeń w systemie Azure routing aplikacji. Jednak [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) co usługa, która może służyć do zbierania danych z poziomu aplikacji platformy Azure. Jeśli używasz usługi Application Insights obejmuje strumieniowe przesyłanie danych monitorowania do Centrum zdarzeń, wykonując następujące czynności:
 
 1. [Skonfiguruj Eksport ciągły](../../azure-monitor/app/export-telemetry.md) danych usługi Application Insights do konta magazynu.
 
@@ -108,7 +108,7 @@ Monitorowanie danych aplikacji wymaga, że kod został zinstrumentowany przy uż
 
 Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monitor pozwala łatwo zintegrować ją z partnerem rozwiązania SIEM i narzędzi do monitorowania. Większość narzędzi wymagają parametry połączenia Centrum zdarzeń i pewnych uprawnień do Twojej subskrypcji platformy Azure można odczytać danych z Centrum zdarzeń. Tutaj znajduje się niepełna lista narzędzi obsługujących integrację usługi Azure Monitor:
 
-* **IBM QRadar** — Microsoft Azure DSM i Protokół Centrum zdarzeń Azure firmy Microsoft są dostępne do pobrania z [witryna internetowa Pomocy technicznej firmy IBM](http://www.ibm.com/support). Możesz [dowiedzieć się więcej o integracji z platformą Azure w tym miejscu](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **IBM QRadar** — Microsoft Azure DSM i Protokół Centrum zdarzeń Azure firmy Microsoft są dostępne do pobrania z [witryna internetowa Pomocy technicznej firmy IBM](https://www.ibm.com/support). Możesz [dowiedzieć się więcej o integracji z platformą Azure w tym miejscu](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk** — w zależności od ustawień Splunk, dostępne są dwie opcje:
     1. [Dodatek monitora platformy Azure dla programu Splunk](https://splunkbase.splunk.com/app/3534/) jest dostępna w Splunkbase i projekt open source. [Dokumentacja jest tutaj](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Jeśli nie możesz zainstalować dodatkowe wystąpienia Splunk (np.) Jeśli przy użyciu serwera proxy lub działające w chmurze Splunk), możesz przekazywać te zdarzenia do modułu zbierającego zdarzenia HTTP Splunk przy użyciu [tę funkcję, która jest wyzwalana przez nowych komunikatów w Centrum zdarzeń](https://github.com/Microsoft/AzureFunctionforSplunkVS).

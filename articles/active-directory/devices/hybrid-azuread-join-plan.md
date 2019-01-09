@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować urządzenia dołączone hybrydowo do usługi Azure Active Directory | Microsoft Docs
+title: Jak zaplanować implementacji hybrydowej usługi Azure Active Directory join, w usłudze Azure Active Directory (Azure AD) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować urządzenia dołączone hybrydowo do usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 02699e5072801dbb8f4a8f97c88db006d31e6e0f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022040"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102282"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
 Podobnie jak w przypadku użytkownika, urządzenie staje się kolejną tożsamością, którą należy chronić oraz używać do zabezpieczania zasobów w dowolnym czasie i miejscu. W tym celu można przenieść tożsamości urządzeń do usługi Azure AD przy użyciu jednej z następujących metod:
 
@@ -54,7 +54,6 @@ Aby zaplanować hybrydowego wdrożenia usługi Azure AD, należy się zapoznać 
 
 
  
-
 
 ## <a name="review-supported-devices"></a>Przegląd obsługiwanych urządzeń 
 
@@ -112,7 +111,7 @@ Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnion
 
 Dołączenie do hybrydowej usługi Azure AD jest proces automatycznego rejestrowania urządzeń przyłączonych do domeny lokalnej za pomocą usługi Azure AD. Istnieją przypadki, w których nie chcesz wszystkich urządzeń do automatycznej rejestracji. Jeśli to PRAWDA dla Ciebie, zobacz [sposób kontrolowania dołączenie do hybrydowej usługi Azure AD urządzeń](hybrid-azuread-join-control.md).
 
-Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure AD zarejestrowany](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) do swojej dzierżawy, należy rozważyć usunięcie tego stanu przed włączeniem dołączenie do hybrydowej usługi Azure AD. Podwójna stanu do hybrydowej usługi Azure Ad join i usługi Azure AD, zarejestrowane urządzenia nie jest obsługiwane. Z wersji systemu Windows 10 1809 wprowadzono następujące zmiany w celu uniknięcia tego podwójną stanu: 
+Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure AD zarejestrowany](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) do swojej dzierżawy, należy rozważyć usunięcie tego stanu przed włączeniem dołączenie do hybrydowej usługi Azure AD. Podwójna stanu do obu, dołączenie do hybrydowej usługi Azure AD i Azure AD, zarejestrowane urządzenia nie jest obsługiwane. Z wersji systemu Windows 10 1809 wprowadzono następujące zmiany w celu uniknięcia tego podwójną stanu: 
  - Wszelkie istniejący stan usługi Azure AD zarejestrowany będą automatycznie usuwane, gdy urządzenie jest przyłączone do usługi Azure AD hybrydowej. 
  - Użytkownik może uniemożliwić urządzenia przyłączone do domeny usługi Azure AD zarejestrowany przez dodanie tego klucza rejestru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 
@@ -149,17 +148,17 @@ Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia kreator umożl
  Jeśli zainstalowanie wymaganej wersji programu Azure AD Connect nie jest dostępną opcją w, zobacz [jak ręcznie skonfigurować rejestrację urządzeń](../device-management-hybrid-azuread-joined-devices-setup.md). 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Alternatywny identyfikator logowania obsługi w dołączenie do hybrydowej usługi Azure AD
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Obsługa Identyfikatora alternatywnej nazwy logowania w dołączenie do hybrydowej usługi Azure AD
 
-Windows 10 hybrydowych w usłudze Azure AD join udostępnia ograniczoną obsługę [alternatywnych identyfikatorów logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na podstawie typu identyfikatora logowania alternatywnej [metodę uwierzytelniania](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa typy alternatywnych identyfikatorów logowania, które może znajdować się w danym środowisku.
+Windows 10 hybrydowych w usłudze Azure AD join udostępnia ograniczoną obsługę [alternatywnych identyfikatorów logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na podstawie typu Identyfikatora logowania alternatywnej [metodę uwierzytelniania](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa rodzaje alternatywne identyfikatory, które może znajdować się w danym środowisku:
 
- - Routing alternatywnego identyfikatora logowania: Routing alternatywny identyfikator logowania ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa, contoso.org i contoso.co.uk są prawidłowe domen, które są własnością firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
+ - Routing alternatywnego Identyfikatora logowania: Routing alternatywny identyfikator logowania ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa, contoso.org i contoso.co.uk są prawidłowe domen, które są własnością firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
- - Bez obsługi routingu alternatywnego identyfikatora logowania: Nierutowalny alternatywnego identyfikatora logowania nie ma zweryfikowanej domeny. Dotyczy tylko w ramach prywatnej sieci organizacji. Na przykład jeśli podstawowy domena jest domeną contoso.com, contoso.local nie jest możliwe do zweryfikowania domeny w Internecie, ale jest używany w ramach sieci firmy Contoso.
+ - Bez obsługi routingu alternatywnego Identyfikatora logowania: Nierutowalny alternatywnego Identyfikatora logowania nie ma zweryfikowanej domeny. Dotyczy tylko w ramach prywatnej sieci organizacji. Na przykład jeśli podstawowy domena jest domeną contoso.com, contoso.local nie jest możliwe do zweryfikowania domeny w Internecie, ale jest używany w ramach sieci firmy Contoso.
  
-Poniższa tabela zawiera szczegółowe informacje na temat obsługi jednej z tych alternatywnych identyfikatorów logowania systemu Windows 10 hybrydowej usługi Azure AD sprzężenia
+Poniższa tabela zawiera szczegółowe informacje na temat obsługi jednego z tych alternatywnych identyfikatorów logowania w dołączenie do hybrydowej usługi Azure AD w systemie Windows 10
 
-|Typ identyfikatora logowania alternatywnej|Typ domeny|Wersja systemu Windows 10|Opis|
+|Typ Identyfikatora logowania alternatywnej|Typ domeny|Wersja systemu Windows 10|Opis|
 |-----|-----|-----|-----|
 |Routing|Federacyjne |W wersji 1703|Ogólnie dostępna|
 |Routing|Zarządzane|W wersji 1709|Obecnie dostępna w prywatnej wersji zapoznawczej. Samoobsługowe Resetowanie HASEŁ usługi Azure AD nie jest obsługiwane. |

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 915c57033209ff982946163c408cf8557515e2f5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999207"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106845"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
@@ -102,6 +102,15 @@ Funkcje zdefiniowane przez użytkownika można pisać w języku JavaScript. Meto
 - Dołącz grafu metadanych do czujnika czytania przed wysłaniem się powiadomienie.
 
 Aby uzyskać więcej informacji, zobacz [jak używać funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
+
+
+#### <a name="examples"></a>Przykłady
+
+[Repozytorium GitHub dla cyfrowego Twins C# przykładowe](https://github.com/Azure-Samples/digital-twins-samples-csharp/) zawiera kilka przykładów funkcje zdefiniowane przez użytkownika:
+- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) szuka emisji dwutlenku węgla, ruchu i wartości temperatury, aby określić, czy pokoju jest dostępna z tymi wartościami w zakresie. [Samouczki bliźniaki cyfrowego](tutorial-facilities-udf.md) zapoznaj się z tej funkcji, które bardziej szczegółowo. 
+- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) szuka danych z wielu czujników ruchu i ustali, że miejsce jest dostępna, jeśli żadna z nich wykryć wszelkie ruchu. Można łatwo zastąpić funkcji zdefiniowanej przez użytkownika używane w każdym [Szybki Start](quickstart-view-occupancy-dotnet.md), lub [samouczki](tutorial-facilities-setup.md), wprowadzając zmiany, o których wspomniano w sekcji komentarze w pliku. 
+
+
 
 ### <a name="role-assignment"></a>Przypisanie roli
 

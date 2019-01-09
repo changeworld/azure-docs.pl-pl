@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 1f9a108a91a2fa917ec58e6cff487c6dca71130f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076403"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117150"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Dane telemetryczne dotyczące żądań: Model danych usługi Application Insights
 
-Elementu telemetrii żądania (w [usługi Application Insights](../../application-insights/app-insights-overview.md)) reprezentuje Sekwencja logiczna wykonywania wyzwalana przez żądanie zewnętrzne do aplikacji. Wykonanie każdego żądania jest identyfikowane za pomocą unikatowych `ID` i `url` zawierający wszystkie parametry wykonywania. Żądania można pogrupować wg logiczne `name` i zdefiniuj `source` tego żądania. Wykonywanie kodu może spowodować `success` lub `fail` i ma określony `duration`. Liczba wykonań sukcesów i niepowodzeń, które mogą być zgrupowane jeszcze bardziej przez `resultCode`. Godzina rozpoczęcia dla telemetrii żądania zdefiniowane na poziomie schematu envelope.
+Elementu telemetrii żądania (w [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentuje Sekwencja logiczna wykonywania wyzwalana przez żądanie zewnętrzne do aplikacji. Wykonanie każdego żądania jest identyfikowane za pomocą unikatowych `ID` i `url` zawierający wszystkie parametry wykonywania. Żądania można pogrupować wg logiczne `name` i zdefiniuj `source` tego żądania. Wykonywanie kodu może spowodować `success` lub `fail` i ma określony `duration`. Liczba wykonań sukcesów i niepowodzeń, które mogą być zgrupowane jeszcze bardziej przez `resultCode`. Godzina rozpoczęcia dla telemetrii żądania zdefiniowane na poziomie schematu envelope.
 
 Żądanie telemetrii obsługuje model standardowy rozszerzalność przy użyciu niestandardowego `properties` i `measurements`.
 

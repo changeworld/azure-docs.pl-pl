@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f754242d0cf7ee30572b21a3f4daf6fd2c0f63ff
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 63a198b082c7486de2392153291a11be5bcb2f9e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275911"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103227"
 ---
 # <a name="validate-azure-stack-system-state"></a>Sprawdzanie poprawności stanu systemu w usłudze Azure Stack
 
@@ -125,7 +125,7 @@ W poniższych scenariuszach chmury są testowane przez narzędzie sprawdzania po
 
 - **BackupSharePath** i **BackupShareCredential** są używane podczas testowania kopii zapasowej ustawień infrastruktury, jak pokazano na [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-case-examples) sekcji.
 
-- Narzędzie sprawdzania poprawności obsługuje również typowe parametry programu PowerShell: Verbose, Debug ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable i OutVariable. Aby uzyskać więcej informacji, zobacz [o typowych parametrach](http://go.microsoft.com/fwlink/?LinkID=113216).  
+- Narzędzie sprawdzania poprawności obsługuje również typowe parametry programu PowerShell: Verbose, Debug ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable i OutVariable. Aby uzyskać więcej informacji, zobacz [o typowych parametrach](https://go.microsoft.com/fwlink/?LinkID=113216).  
 
 ## <a name="use-case-examples"></a>Skorzystaj z przykładów wielkości liter
 

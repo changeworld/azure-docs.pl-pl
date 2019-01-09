@@ -11,16 +11,16 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 69ba67eb74333e8316b739fc2f264434643cab95
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 986a05dab29226ff492269587ab6c0f49585cef6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075145"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119911"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorowania i debugowania aplikacji usługi Azure Batch dla środowiska .NET za pomocą usługi Application Insights
 
-[Usługa Application Insights](../application-insights/app-insights-overview.md) zapewnia elegancki i zaawansowany sposób dla deweloperów do monitorowania i debugowania aplikacji wdrożonej w usłudze Azure services. Usługa Application Insights umożliwia monitorowanie liczników wydajności i wyjątków, a także Instrumentacji kodu za pomocą metryk niestandardowych i śledzenie. Integracja usługi Application Insights z aplikacji usługi Azure Batch pozwala uzyskać głęboki wgląd w zachowania i badania problemów w czasie niemal rzeczywistym.
+[Usługa Application Insights](../azure-monitor/app/app-insights-overview.md) zapewnia elegancki i zaawansowany sposób dla deweloperów do monitorowania i debugowania aplikacji wdrożonej w usłudze Azure services. Usługa Application Insights umożliwia monitorowanie liczników wydajności i wyjątków, a także Instrumentacji kodu za pomocą metryk niestandardowych i śledzenie. Integracja usługi Application Insights z aplikacji usługi Azure Batch pozwala uzyskać głęboki wgląd w zachowania i badania problemów w czasie niemal rzeczywistym.
 
 Ten artykuł pokazuje, jak dodać i skonfigurować Biblioteka usługi Application Insights do rozwiązania usługi Azure Batch dla środowiska .NET i instrumentacji w kodzie aplikacji. Pokazuje także sposób monitorować aplikację za pośrednictwem witryny Azure portal i tworzyć niestandardowe pulpity nawigacyjne. Usługa Application Insights dotyczących pomocy technicznej w innych językach, Przyjrzyj się [dokumentacji języki, platformy i integracje](../azure-monitor/app/platforms.md).
 
@@ -342,7 +342,7 @@ Ze względu na charakter na dużą skalę aplikacji usługi Azure Batch, które 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-overview.md).
+* Dowiedz się więcej o [usługi Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 * Usługa Application Insights dotyczących pomocy technicznej w innych językach, Przyjrzyj się [dokumentacji języki, platformy i integracje](../azure-monitor/app/platforms.md).
 

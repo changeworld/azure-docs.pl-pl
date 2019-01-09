@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ae51151bd20d2c715d868e916f7bc633040efa40
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442985"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121534"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurowanie zakresu synchronizacji z usługi Azure AD do domeny zarządzanej
 W tym artykule pokazano, jak skonfigurować tylko określone konta użytkowników mają być synchronizowane z katalogiem usługi Azure AD do domeny zarządzanej usług domenowych Azure AD.
@@ -59,11 +59,11 @@ Wykonaj poniższe kroki, aby skonfigurować synchronizację o określonym zakres
 
 1. Wykonaj następujące czynności:
   * [Zadanie 1: Zainstaluj wymagane moduły programu PowerShell](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules).
-  * [Zadanie 2: Tworzenie jednostki usługi wymagane w katalogu usługi Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-  * [Zadanie 3: Tworzenie i Konfigurowanie grupy "Administratorzy usługi AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
-  * [Zadanie 4: Zarejestruj dostawcę zasobów usługi Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
-  * [Zadanie 5: Tworzenie grupy zasobów](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
-  * [Zadanie 6: Tworzenie i konfigurowanie sieci wirtualnej](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
+  * [Zadanie 2. Tworzenie jednostki usługi wymagane w katalogu usługi Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
+  * [Zadanie 3. Tworzenie i Konfigurowanie grupy "Administratorzy usługi AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
+  * [Zadanie 4. Zarejestruj dostawcę zasobów usługi Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
+  * [Zadanie 5. Utwórz grupę zasobów](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
+  * [Zadanie 6. Tworzenie i konfigurowanie sieci wirtualnej](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
 
 2. Wybierz grupy, które chcesz synchronizować, a następnie podaj nazwę wyświetlaną grup, które chcesz zsynchronizować z domeną zarządzaną.
 
@@ -173,7 +173,7 @@ foreach ($id in $newGroupIds)
     }
     catch
     {
-        Write-Error "Exception occured assigning Object-ID: $id. Exception: $($_.Exception)."
+        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
     }
 }
 

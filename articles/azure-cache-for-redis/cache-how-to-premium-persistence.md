@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: d74f552395a80509c76adf70aef0581260126b49
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019696"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105850"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera ofert różnych pamięci podręcznych, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w warstwie premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -130,7 +130,7 @@ Aby uzyskać RDB i AOF trwałości:
 
 * Jeśli była skalowana na większy rozmiar, nie ma żadnego wpływu.
 * Jeśli mają być skalowane do mniejszego rozmiaru i ma niestandardowy [baz danych](cache-configure.md#databases) ustawienie, który jest większy niż [limit bazy danych](cache-configure.md#databases) dla Twojego nowego rozmiaru danych w tych bazach danych nie jest przywrócony. Aby uzyskać więcej informacji, zobacz [to niestandardowe ustawienie dotyczy podczas skalowania baz danych?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Jeśli mają być skalowane do mniejszego rozmiaru i mniejszy rozmiar do przechowywania wszystkich danych z ostatniej kopii zapasowej nie ma wystarczająco dużo miejsca, kluczy zostanie wykluczona podczas procesu przywracania, zazwyczaj przy użyciu [allkeys lru](http://redis.io/topics/lru-cache) zasady eksmisji.
+* Jeśli mają być skalowane do mniejszego rozmiaru i mniejszy rozmiar do przechowywania wszystkich danych z ostatniej kopii zapasowej nie ma wystarczająco dużo miejsca, kluczy zostanie wykluczona podczas procesu przywracania, zazwyczaj przy użyciu [allkeys lru](https://redis.io/topics/lru-cache) zasady eksmisji.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Częstotliwość wykonywania kopii zapasowych pliku RDB można zmienić po utworzeniu pamięci podręcznej?
 Tak, można zmienić częstotliwość wykonywania kopii zapasowych dla trwałości RDB na **trwałość danych Redis** bloku. Aby uzyskać instrukcje, zobacz [Redis Konfigurowanie trwałości](#configure-redis-persistence).

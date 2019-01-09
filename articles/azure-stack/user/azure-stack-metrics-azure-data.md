@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: 45c06afd0d298c467d8f0a3a42b68bf1948c6ed3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726750"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106294"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Usługa Azure Monitor w usłudze Azure Stack
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Ten artykuł zawiera omówienie usługi Azure Monitor w usłudze Azure Stack. Omówiono w nim działania usługi Azure Monitor i dodatkowe informacje na temat korzystania z usługi Azure Monitor w usłudze Azure Stack. 
 
@@ -126,7 +126,7 @@ Ogólnie rzecz biorąc, można manipulować śledzeniem, kierowaniem i pobierani
  - [Program PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Interface(CLI) wiersza polecenia dla wielu platform](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [Interfejs API REST](https://docs.microsoft.com/rest/api/monitor)
- - [Zestaw SDK platformy .NET](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+ - [Zestaw SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4efd4622745a4a86c691cec32f5b93225715930a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6e2621103e79e201a6f3a9d45350e3b71d15f47c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974385"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119615"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługę Application Insights i Log Analytics
-[Usługi Azure Application Insights](../../application-insights/app-insights-overview.md) usługa używa liczby adresów IP. Może być konieczne, te adresy, czy aplikacja, który jest monitorowany znajduje się za zaporą.
+[Usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) usługa używa liczby adresów IP. Może być konieczne, te adresy, czy aplikacja, który jest monitorowany znajduje się za zaporą.
 
 > [!NOTE]
-> Mimo że te adresy są statyczne, istnieje możliwość, że konieczne będzie ich od czasu do czasu zmiany.
+> Mimo że te adresy są statyczne, istnieje możliwość, że konieczne będzie ich od czasu do czasu zmiany. Cały ruch usługi Application Insights reprezentuje ruch wychodzący z wyjątkiem monitorowanie dostępności i elementy webhook, które wymagają reguł zapory dla ruchu przychodzącego.
 > 
 > 
 

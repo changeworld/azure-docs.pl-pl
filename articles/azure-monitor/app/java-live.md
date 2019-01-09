@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 4510c66dc0a64f65de9f9ee57563b847e20e25de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5d0866bdd96a1b0f626c369cfd646f6249a4da54
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000482"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121383"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Usługa Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
 
-W przypadku aplikacji sieci web, która jest już uruchomiona na serwerze J2EE można rozpocząć monitorowanie z [usługi Application Insights](../../application-insights/app-insights-overview.md) bez konieczności wprowadzania zmian w kodzie lub ponownie skompilować projekt. Po wybraniu tej opcji, możesz uzyskać informacje o żądaniach HTTP wysyłane do serwera, nieobsłużone wyjątki i liczniki wydajności.
+W przypadku aplikacji sieci web, która jest już uruchomiona na serwerze J2EE można rozpocząć monitorowanie z [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) bez konieczności wprowadzania zmian w kodzie lub ponownie skompilować projekt. Po wybraniu tej opcji, możesz uzyskać informacje o żądaniach HTTP wysyłane do serwera, nieobsłużone wyjątki i liczniki wydajności.
 
 Potrzebna będzie subskrypcja platformy [Microsoft Azure](https://azure.com).
 

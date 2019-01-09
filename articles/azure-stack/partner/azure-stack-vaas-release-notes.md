@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: a6245472f0fc3f65dcbeebdf251387efed5f02b8
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333022"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106277"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Informacje o wersji dotyczące weryfikacji jako usługa
 
@@ -49,7 +49,7 @@ W tym artykule znajdują się informacje o wersji dla usługi Azure Stack weryfi
 
 - Wymagania wstępne VaaS i wirtualny dysk twardy z aktualizacjami
 
-    `Install-VaaSPrerequisites` teraz wymaga poświadczeń administratora chmury, aby rozwiązać problem podczas sprawdzania poprawności pakietu. Dokumentacja w [pobrać i zainstalować agenta](azure-stack-vaas-local-agent.md#download-and-install-the-agent) został zaktualizowany o następujące czynności:
+    `Install-VaaSPrerequisites` teraz wymaga poświadczeń administratora chmury, aby rozwiązać problem podczas sprawdzania poprawności rozwiązań. Dokumentacja w [pobrać i zainstalować agenta](azure-stack-vaas-local-agent.md#download-and-install-the-agent) został zaktualizowany o następujące czynności:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -76,7 +76,7 @@ W tym artykule znajdują się informacje o wersji dla usługi Azure Stack weryfi
 
   - Powiadomienia podpisywania pakietu
 
-    Po przesłaniu pakietu dostosowywania OEM jako część przepływu pracy weryfikacji pakietu formatu pakietu zostanie zweryfikowana, aby upewnić się, czy jest zgodna z opublikowanych specyfikacji. Jeśli pakiet nie jest zgodne, działanie zakończy się niepowodzeniem. Powiadomienia e-mail będą wysyłane na adres e-mail zarejestrowany skontaktuj się z usługi Azure Active Directory dla dzierżawy.
+    Po przesłaniu pakietu dostosowywania OEM jako część przepływu pracy weryfikacji rozwiązania formatu pakietu zostanie zweryfikowana, aby upewnić się, czy jest zgodna z opublikowanych specyfikacji. Jeśli pakiet nie jest zgodne, działanie zakończy się niepowodzeniem. Powiadomienia e-mail będą wysyłane na adres e-mail zarejestrowany skontaktuj się z usługi Azure Active Directory dla dzierżawy.
 
   - Kategoria testu interaktywne
 

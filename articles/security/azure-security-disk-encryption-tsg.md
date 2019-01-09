@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 01/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6cf415112f245421b3225c2e2ccb07a7bbf9332
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098304"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103169"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -72,6 +72,9 @@ Wszelkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane nadal mu
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Usługa Azure Key Vault za zaporą
 Maszyna wirtualna musi mieć możliwość dostępu do magazynu kluczy. Zobacz wskazówki dotyczące dostępu do usługi key vault za zaporą, [usługi Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) zespół zachowuje. 
+
+### <a name="azure-instance-metadata-service"></a>Wystąpienie usługi Azure Metadata Service 
+Maszyna wirtualna musi być w stanie uzyskać dostęp do [Azure Instance Metadata service](../virtual-machines/windows/instance-metadata-service.md) punktu końcowego, który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny Wirtualnej.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Zarządzanie pakietami systemu Linux za zaporą
 

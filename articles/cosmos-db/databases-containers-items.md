@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 23400331db3bd63eeeb843c9772604fabf5a87d1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043774"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107739"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Praca z baz danych Azure Cosmos, kontenery i elementów
 
@@ -45,7 +45,7 @@ Możesz porozmawiać z bazą danych Azure Cosmos przy użyciu następujących in
 
 ## <a name="azure-cosmos-containers"></a>Kontenery usługi Azure Cosmos
 
-Kontener usługi Azure Cosmos jest jednostką skalowalności zarówno aprowizowaną przepływność i Magazyn elementów. Kontener jest podzielona na partycje w poziomie i następnie replikowane w wielu regionach. Elementy, które dodajesz do kontenera i przepływność, aprowizować w nim są automatycznie rozmieszczane w określonym zestawie partycji logicznej na podstawie klucza partycji. Aby dowiedzieć się więcej na temat partycji i klucza partycji, zobacz [partycjami logicznymi](partition-data.md) artykułu. 
+Kontener usługi Azure Cosmos jest jednostką skalowalności zarówno aprowizowaną przepływność i Magazyn elementów. Kontener jest podzielona na partycje w poziomie i następnie replikowane w wielu regionach. Elementy, które dodajesz do kontenera i przepływność, które można aprowizować w nim są automatycznie rozpraszane określonym zestawie partycji logicznej na podstawie klucza partycji. Aby dowiedzieć się więcej na temat partycji i klucza partycji, zobacz [partycjami logicznymi](partition-data.md) artykułu. 
 
 Podczas tworzenia kontenera usługi Azure Cosmos, należy skonfigurować przepływność w jednym z następujących trybów:
 

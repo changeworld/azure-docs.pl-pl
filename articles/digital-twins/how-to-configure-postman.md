@@ -8,18 +8,19 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 32c56a2ac3df9f386300a6ee8207a76c8031ab10
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 824c0caf0d54e8484093304c39c9f5dc05c83298
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016719"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117523"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Konfigurowanie narzędzia Postman bliźniaki cyfrowych platformy Azure
 
-W tym artykule opisano sposób konfigurowania klienta REST narzędzia Postman do interakcji z i przetestować cyfrowego Twins zarządzania interfejsów API usługi Azure.
+W tym artykule opisano sposób konfigurowania klienta REST narzędzia Postman do interakcji z i przetestować cyfrowego Twins zarządzania interfejsów API usługi Azure. W szczególności opisano:
 
-Artykuł pokazuje, jak skonfigurować aplikację usługi Azure Active Directory, aby korzystać z tego przepływu przyznawanie niejawne protokołu OAuth 2.0. Również zawiera opis sposobu konfigurowania klienta REST narzędzia Postman, aby wysyłać żądania HTTP żadnego wpływu na token do interfejsów API zarządzania.
+* jak skonfigurować aplikację usługi Azure Active Directory, aby korzystać z tego przepływu przyznawanie niejawne protokołu OAuth 2.0.
+* jak skonfigurować klienta REST narzędzia Postman, aby wysyłać żądania HTTP żadnego wpływu na token do interfejsów API zarządzania.
 
 ## <a name="postman-summary"></a>Podsumowanie narzędzia postman
 
@@ -88,7 +89,11 @@ Następnie instalowanie i Konfigurowanie narzędzia Postman w celu uzyskania tok
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o uwierzytelnianiu przy użyciu interfejsów API Management, przeczytaj [Uwierzytelnij za pomocą interfejsów API](./security-authenticating-apis.md).
+- Aby dowiedzieć się o interfejsy API umożliwiające zarządzanie cyfrowego bliźniaczych reprezentacji i sposobu ich używania, przeczytaj [jak używać interfejsów API zarządzania Twins cyfrowego Azure](how-to-navigate-apis.md).
+
+- Aby dowiedzieć się więcej o uwierzytelnianiu przy użyciu interfejsów API Management, przeczytaj [Uwierzytelnij za pomocą interfejsów API](./security-authenticating-apis.md). 
+
+
 
 <!-- Images -->
 [1]: media/how-to-configure-postman/implicit-flow.png

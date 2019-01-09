@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581253"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104679"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano konfiguracje dla pamięci podręcznej Azure dla wystąpienia usługi Redis. W tym temacie omówiono również domyślne Redis konfiguracji serwera dla usługi Azure Cache do wystąpienia usługi Redis.
@@ -147,7 +147,7 @@ Domyślnie dostęp inny niż za pomocą protokołu SSL jest zablokowany dla nowy
 * `volatile-ttl`
 * `noeviction`
 
-Aby uzyskać więcej informacji na temat `maxmemory` zasad, zobacz [zasady eksmisji](http://redis.io/topics/lru-cache#eviction-policies).
+Aby uzyskać więcej informacji na temat `maxmemory` zasad, zobacz [zasady eksmisji](https://redis.io/topics/lru-cache#eviction-policies).
 
 **Zastrzeżone maxmemory** ustawienie określa ilość pamięci w Megabajtach, zarezerwowane dla operacji pamięć podręczna, takich jak replikacji podczas pracy awaryjnej. Ustawienie tej wartości umożliwia mają spójniejsze środowisko pracy serwera Redis, gdy zmienia się obciążenia. Nowsze dla obciążeń, które są zapisu ciężkich należy ustawić tę wartość. Jeśli pamięci jest zarezerwowana dla takich operacji, jest niedostępna dla magazynu danych w pamięci podręcznej.
 
@@ -170,7 +170,7 @@ Redis na skonfigurowano powiadomienia przestrzeni kluczy **Zaawansowane ustawien
 > 
 > 
 
-Aby uzyskać więcej informacji, zobacz [Redis powiadomienia przestrzeni kluczy](http://redis.io/topics/notifications). Przykładowy kod, zobacz [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) w pliku [Witaj, świecie](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) próbki.
+Aby uzyskać więcej informacji, zobacz [Redis powiadomienia przestrzeni kluczy](https://redis.io/topics/notifications). Przykładowy kod, zobacz [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) w pliku [Witaj, świecie](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) próbki.
 
 
 <a name="recommendations"></a>
@@ -406,7 +406,7 @@ Nowej usługi Azure Cache dla wystąpień usługi Redis są konfigurowane przy u
 | `maxmemory-samples` |3 |Zapisanie w pamięci, LRU i minimalny czas wygaśnięcia algorytmy są przybliżonego algorytmy zamiast dokładne algorytmów. Domyślnie usługa Redis trzy klucze kontrole i wybór ten, który był ostatnio używany podczas mniej. |
 | `lua-time-limit` |5000 |Maksymalny czas wykonywania skryptu Lua (w milisekundach). Jeśli osiągnięty zostanie maksymalny czas wykonywania, Redis, rejestruje nadal trwa wykonywanie po maksymalny dozwolony czas skryptu i uruchamia na udzielenie odpowiedzi na zapytania z powodu błędu. |
 | `lua-event-limit` |500 |Maksymalny rozmiar kolejki zdarzeń skryptu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity buforu danych wyjściowych klienta można wymusić odłączenie klientów, którzy nie są odczytywanie danych z serwera wystarczająco szybko przyczyny (typową przyczyną jest, czy klient Pub/Sub nie mogą korzystać z tak szybko, jak Wydawca może tworzyć je wiadomości). Aby uzyskać więcej informacji, zobacz [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity buforu danych wyjściowych klienta można wymusić odłączenie klientów, którzy nie są odczytywanie danych z serwera wystarczająco szybko przyczyny (typową przyczyną jest, czy klient Pub/Sub nie mogą korzystać z tak szybko, jak Wydawca może tworzyć je wiadomości). Aby uzyskać więcej informacji, zobacz [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>limit `databases` różni się dla każdej usługi Azure Cache dla warstwy cenowej usługi Redis i mogą zostać ustawione podczas tworzenia pamięci podręcznej. Jeśli nie `databases` ustawienie jest określane podczas tworzenia pamięci podręcznej, wartość domyślna to 16.
@@ -424,7 +424,7 @@ Nowej usługi Azure Cache dla wystąpień usługi Redis są konfigurowane przy u
   * P2 (13 GB - 130 GB) — maksymalnie 32 bazami danych
   * P3 (26 GB - 260 GB) — maksymalnie 48 baz danych
   * P4 (53 GB do 530 GB) — maksymalnie 64 baz danych
-  * Wszystkich premium pamięci podręcznych z klastra pamięci podręcznej Redis enabled - klastra pamięci podręcznej Redis obsługuje wyłącznie korzystanie z bazy danych 0 więc `databases` ograniczenia dla dowolnego cache w warstwie premium przy użyciu klastra pamięci podręcznej Redis, włączone jest faktycznie 1 i [wybierz](http://redis.io/commands/select) polecenie nie jest dozwolone. Aby uzyskać więcej informacji, zobacz [należy wprowadzać żadnych zmian Moja aplikacja kliencka, aby użyć klastrowania?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Wszystkich premium pamięci podręcznych z klastra pamięci podręcznej Redis enabled - klastra pamięci podręcznej Redis obsługuje wyłącznie korzystanie z bazy danych 0 więc `databases` ograniczenia dla dowolnego cache w warstwie premium przy użyciu klastra pamięci podręcznej Redis, włączone jest faktycznie 1 i [wybierz](https://redis.io/commands/select) polecenie nie jest dozwolone. Aby uzyskać więcej informacji, zobacz [należy wprowadzać żadnych zmian Moja aplikacja kliencka, aby użyć klastrowania?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy danych Redis?](cache-faq.md#what-are-redis-databases)
 
@@ -473,14 +473,14 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 > 
 > 
 
-Aby uzyskać więcej informacji na temat polecenia Redis zobacz [ http://redis.io/commands ](http://redis.io/commands).
+Aby uzyskać więcej informacji na temat polecenia Redis zobacz [ https://redis.io/commands ](https://redis.io/commands).
 
 ## <a name="redis-console"></a>Konsola pamięci podręcznej redis
 Można bezpiecznie wysyłać polecenia do wystąpienia pamięci podręcznej Redis przy użyciu pamięci podręcznej Azure **konsolę pamięci podręcznej Redis**, który jest dostępny w witrynie Azure portal dla wszystkich warstw pamięci podręcznej.
 
 > [!IMPORTANT]
 > - Konsolę pamięci podręcznej Redis nie działa z [sieci Wirtualnej](cache-how-to-premium-vnet.md). Gdy pamięć podręczna jest częścią sieci Wirtualnej, tylko klienci w sieci Wirtualnej można uzyskać dostęp do pamięci podręcznej. Ponieważ konsolę pamięci podręcznej Redis działa w przeglądarce lokalnego znajduje się poza siecią Wirtualną, nie można połączyć pamięci podręcznej.
-> - Nie wszystkie polecenia usługi Redis są obsługiwane w pamięci podręcznej Azure dla usługi Redis. Aby uzyskać listę poleceń pamięci podręcznej Redis, które są wyłączone dla usługi Azure Cache dla pamięci podręcznej Redis, zobacz poprzedni [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](#redis-commands-not-supported-in-azure-cache-for-redis) sekcji. Aby uzyskać więcej informacji na temat polecenia Redis zobacz [ http://redis.io/commands ](http://redis.io/commands).
+> - Nie wszystkie polecenia usługi Redis są obsługiwane w pamięci podręcznej Azure dla usługi Redis. Aby uzyskać listę poleceń pamięci podręcznej Redis, które są wyłączone dla usługi Azure Cache dla pamięci podręcznej Redis, zobacz poprzedni [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](#redis-commands-not-supported-in-azure-cache-for-redis) sekcji. Aby uzyskać więcej informacji na temat polecenia Redis zobacz [ https://redis.io/commands ](https://redis.io/commands).
 > 
 > 
 

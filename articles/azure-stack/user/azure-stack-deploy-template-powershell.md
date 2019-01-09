@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 34ced37213ddb585b382965cf73c454d4c9f93e9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 76348ef6984585856565ff39bfa707f1319477bb
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014050"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107215"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Wdrażanie szablonu do usługi Azure Stack przy użyciu programu PowerShell
 
@@ -35,7 +35,7 @@ W tym przykładzie użyto **AzureRM** poleceń cmdlet programu PowerShell i szab
 >[!NOTE]
 >Przed podjęciem próby w tym przykładzie, upewnij się, że masz [skonfigurowaniu programu PowerShell](azure-stack-powershell-configure-user.md) dla użytkownika usługi Azure Stack.
 
-1. Przejdź do [ http://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) i Znajdź **101-simple-windows-vm** szablonu. Zapisz szablon do tej lokalizacji: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
+1. Przejdź do [ https://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) i Znajdź **101-simple-windows-vm** szablonu. Zapisz szablon do tej lokalizacji: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Otwórz wiersz polecenia programu PowerShell.
 3. Zastąp `username` i `password` w poniższym skrypcie za pomocą nazwy użytkownika i hasło, a następnie uruchom skrypt:
 
