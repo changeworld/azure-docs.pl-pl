@@ -21,7 +21,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54025593"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
 > * [Wersja 1](data-factory-on-premises-mongodb-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-mongodb.md)
 
