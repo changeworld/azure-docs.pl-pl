@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 322cd75fe9198bae459e7c22bed794f583d13363
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 69caec10c1be067cf9e8fc7ad83c8daeaced2bda
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326200"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106698"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schemat konfiguracji usługi platformy Azure Diagnostyka 1.2
 > [!NOTE]
@@ -109,12 +109,12 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|Wymagany. Dostępne są następujące atrybuty opcjonalne:<br /><br /> -                     **overallQuotaInMB** -maksymalną ilość miejsca na dysku lokalnym, które mogą być używane przez różne rodzaje danych diagnostycznych zebranych przez diagnostykę platformy Azure. Ustawienie domyślne to 5120MB.<br /><br /> -                     **useProxyServer** — Konfigurowanie diagnostyki platformy Azure, użyj ustawień serwera proxy, zgodnie z ustawień programu Internet Explorer.|  
 |**Zrzutów awaryjnych**|Włączanie zbierania zrzutów awaryjnych. Dostępne są następujące atrybuty opcjonalne:<br /><br /> -                     **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania zrzuty awaryjne.<br /><br /> -                     **crashDumpType** -zrzuty konfiguruje diagnostyki Azure do zbierania Mini lub pełnej awarii.<br /><br /> -                     **directoryQuotaPercentage**— określa wartość procentową **overallQuotaInMB** mają zostać zarezerwowane dla zrzuty awaryjne na maszynie Wirtualnej.|  
-|**DiagnosticInfrastructureLogs**|Włącz zbieranie dzienników generowanych przez usługi Azure Diagnostics. Dzienniki infrastruktury diagnostycznej są przydatne podczas rozwiązywania problemów sam system diagnostyki. Dostępne są następujące atrybuty opcjonalne:<br /><br /> -                     **scheduledTransferLogLevelFilter** — Określa minimalny poziom ważności zebranych danych dzienników.<br /><br /> -                     **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**Katalogi**|Umożliwia zbieranie zawartości katalogu, dzienniki żądania dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**DiagnosticInfrastructureLogs**|Włącz zbieranie dzienników generowanych przez usługi Azure Diagnostics. Dzienniki infrastruktury diagnostycznej są przydatne podczas rozwiązywania problemów sam system diagnostyki. Dostępne są następujące atrybuty opcjonalne:<br /><br /> -                     **scheduledTransferLogLevelFilter** — Określa minimalny poziom ważności zebranych danych dzienników.<br /><br /> -                     **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**Katalogi**|Umożliwia zbieranie zawartości katalogu, dzienniki żądania dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|Konfiguruje zbieranie zdarzeń funkcji ETW z źródła zdarzeń i/lub manifestu ETW na podstawie dostawcy.|  
 |**Metryki**|Ten element umożliwia generowanie tabeli liczników wydajności, która jest zoptymalizowana pod kątem zapytań. Każdego licznika wydajności, która jest zdefiniowana w **liczniki wydajności** elementu są przechowywane w tabeli metryk, oprócz tabeli licznika wydajności. Wymagany atrybut:<br /><br /> **resourceId** — jest to identyfikator zasobu maszyny wirtualnej diagnostyki Azure do wdrażania. Pobierz **resourceID** z [witryny Azure portal](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** -> **< nazwa\>**. Kliknij przycisk **właściwości** kafelka, a następnie skopiuj wartość z **identyfikator** pola.|  
-|**PerformanceCounters**|Umożliwia zbieranie liczników wydajności. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**WindowsEventLog**|Umożliwia zbieranie dzienników zdarzeń systemu Windows. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**PerformanceCounters**|Umożliwia zbieranie liczników wydajności. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**WindowsEventLog**|Umożliwia zbieranie dzienników zdarzeń systemu Windows. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
  Umożliwia zbieranie zrzutów awaryjnych. W poniższej tabeli opisano elementy podrzędne:  
@@ -154,8 +154,8 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Umożliwia skonfigurowanie kolekcji zdarzeń generowanych przez [EventSource — klasa](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Wymagany atrybut:<br /><br /> **Dostawca** — Nazwa klasy zdarzeń EventSource.<br /><br /> Dostępne są następujące atrybuty opcjonalne:<br /><br /> -                     **scheduledTransferLogLevelFilter** — minimalny poziom ważności do przesyłania do swojego konta magazynu.<br /><br /> -                     **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [typu danych czasu trwania XML](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
-|**EtwManifestProviderConfiguration**|Wymagany atrybut:<br /><br /> **Dostawca** — identyfikator GUID dostawcy zdarzeń<br /><br /> Dostępne są następujące atrybuty opcjonalne:<br /><br /> - **scheduledTransferLogLevelFilter** — minimalny poziom ważności do przesyłania do swojego konta magazynu.<br /><br /> -                     **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [typu danych czasu trwania XML](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Umożliwia skonfigurowanie kolekcji zdarzeń generowanych przez [EventSource — klasa](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Wymagany atrybut:<br /><br /> **Dostawca** — Nazwa klasy zdarzeń EventSource.<br /><br /> Dostępne są następujące atrybuty opcjonalne:<br /><br /> -                     **scheduledTransferLogLevelFilter** — minimalny poziom ważności do przesyłania do swojego konta magazynu.<br /><br /> -                     **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [typu danych czasu trwania XML](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwManifestProviderConfiguration**|Wymagany atrybut:<br /><br /> **Dostawca** — identyfikator GUID dostawcy zdarzeń<br /><br /> Dostępne są następujące atrybuty opcjonalne:<br /><br /> - **scheduledTransferLogLevelFilter** — minimalny poziom ważności do przesyłania do swojego konta magazynu.<br /><br /> -                     **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [typu danych czasu trwania XML](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  Umożliwia skonfigurowanie kolekcji zdarzeń generowanych przez [EventSource — klasa](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). W poniższej tabeli opisano elementy podrzędne:  
@@ -178,7 +178,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**MetricAggregation**|Wymagany atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [typu danych czasu trwania XML](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**MetricAggregation**|Wymagany atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [typu danych czasu trwania XML](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="performancecounters-element"></a>Performancecounters — Element  
  Umożliwia zbieranie liczników wydajności. W poniższej tabeli opisano elementy podrzędne:  

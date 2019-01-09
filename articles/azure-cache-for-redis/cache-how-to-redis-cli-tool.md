@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: wesmc
-ms.openlocfilehash: 4cefae50482547b910c6468854a251b0f61ce558
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019631"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106328"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak używać narzędzia wiersza polecenia usługi Redis z usługą Azure Cache dla pamięci podręcznej Redis
 
@@ -26,7 +26,7 @@ ms.locfileid: "53019631"
 
 Narzędzie jest dostępne dla platform Windows, pobierając [Redis narzędzia wiersza polecenia dla Windows](https://github.com/MSOpenTech/redis/releases/). 
 
-Jeśli chcesz uruchomić narzędzie wiersza polecenia na innej platformie, Pobierz pamięć podręczna systemu Azure dla usługi Redis z [ http://redis.io/download ](https://redis.io/download).
+Jeśli chcesz uruchomić narzędzie wiersza polecenia na innej platformie, Pobierz pamięć podręczna systemu Azure dla usługi Redis z [ https://redis.io/download ](https://redis.io/download).
 
 ## <a name="gather-cache-access-information"></a>Zbieranie informacji o dostęp do pamięci podręcznej
 

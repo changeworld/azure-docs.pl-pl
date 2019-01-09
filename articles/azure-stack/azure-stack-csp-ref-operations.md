@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6d28eea434b081602f0e2455b22fcc58022a800e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343847"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117117"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy w usłudze Azure Stack
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Ten artykuł zawiera szczegółowe informacje o operacji rejestracji. Można użyć tych operacji, aby:
 - Zarządzanie rejestracjami dzierżawy
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Stack i profilami interfe
 
 ### <a name="powershell"></a>PowerShell
 
-Użyj polecenia cmdlet New-AzureRmResource na aktualizację zasobu rejestracji. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Oto przykład sposobu dodawania dzierżawy:
+Użyj polecenia cmdlet New-AzureRmResource na aktualizację zasobu rejestracji. Oto przykład sposobu dodawania dzierżawy:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -67,11 +67,11 @@ Użyj polecenia cmdlet New-AzureRmResource na aktualizację zasobu rejestracji. 
 
 ### <a name="api-call"></a>Wywołanie interfejsu API
 
-**Operacja**: Umieść  
+**Operacja**: PUT  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Odpowiedź**: 201 utworzone  
-**Treść odpowiedzi**: pusty  
+**Odpowiedź**: 201 utworzono  
+**Treść odpowiedzi**: Pusty  
 
 ## <a name="list-all-registered-tenants"></a>Lista wszystkich zarejestrowanych dzierżaw
 
@@ -100,7 +100,7 @@ Aby wyświetlić listę wszystkich zarejestrowanych dzierżaw, należy użyć po
 
 Możesz uzyskać listę wszystkich mapowań dzierżawy przy użyciu operacji GET
 
-**Operacja**: pobieranie  
+**Operacja**: GET  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
@@ -149,12 +149,12 @@ Istnieje możliwość usunięcia dzierżawy, który został dodany do rejestracj
 
 Możesz usunąć mapowania dzierżawy przy użyciu operacji usuwania.
 
-**Operacja**: usuwanie  
+**Operacja**: DELETE  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **Odpowiedź**: 204 żadnej zawartości  
-**Treść odpowiedzi**: pusty
+**Treść odpowiedzi**: Pusty
 
 ## <a name="next-steps"></a>Kolejne kroki
 

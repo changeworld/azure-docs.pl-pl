@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 49d49553a9375baa92160d9d9a89936acc7dd461
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632793"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102622"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 
@@ -30,7 +30,7 @@ W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane syst
 
 Firma Microsoft udostępni zarówno pełne miesięczne pakiety aktualizacji, jak i pakietów poprawek w celu rozwiązania określonych problemów z. 
 
-Miesięczne pakiety aktualizacji znajdują się w bezpieczny punkt końcowy platformy Azure. Możesz pobrać je ręcznie przy użyciu [narzędzia pobierania usługi Azure Stack aktualizacje](http://aka.ms/azurestackupdatedownload). Jeśli jednostki skalowania jest połączony, aktualizacja zostanie automatycznie wyświetlony w portalu administratora jako **dostępna aktualizacja**. Pełne co miesiąc pakiety aktualizacji są dobrze udokumentowane w każdej wersji. Aby uzyskać więcej informacji na temat poszczególnych wersji kliknąć dowolną wersją z [cykl wersji pakietu aktualizacji](#update-package-release-cadence) dalszej części tego artykułu.
+Miesięczne pakiety aktualizacji znajdują się w bezpieczny punkt końcowy platformy Azure. Możesz pobrać je ręcznie przy użyciu [narzędzia pobierania usługi Azure Stack aktualizacje](https://aka.ms/azurestackupdatedownload). Jeśli jednostki skalowania jest połączony, aktualizacja zostanie automatycznie wyświetlony w portalu administratora jako **dostępna aktualizacja**. Pełne co miesiąc pakiety aktualizacji są dobrze udokumentowane w każdej wersji. Aby uzyskać więcej informacji na temat poszczególnych wersji kliknąć dowolną wersją z [cykl wersji pakietu aktualizacji](#update-package-release-cadence) dalszej części tego artykułu.
 
 Pakiety aktualizacji poprawki znajdują się w tej samej bezpieczny punkt końcowy platformy Azure. Możesz pobrać je ręcznie przy użyciu łącza osadzonego we wszystkich artykułach bazy wiedzy odpowiednich poprawek; na przykład [usługi Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Podobnie jak pakiety aktualizacji pełną, miesięczną, Operatorzy usługi Azure Stack można pobrać plików XML, bin i .exe i zaimportować je za pomocą procedury w [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md). Operatorzy usługi Azure Stack przy użyciu jednostek skalowania połączonych zobaczą poprawki są automatycznie wyświetlane w portalu administratora z komunikatem **dostępna aktualizacja**.
 

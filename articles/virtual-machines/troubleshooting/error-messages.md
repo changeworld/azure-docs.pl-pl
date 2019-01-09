@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: b996d42e5c543235d09b46d29889bc5eaeafd52a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413889"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118979"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Zrozumienie typowe komunikaty o błędach, gdy można zarządzać maszynami wirtualnymi na platformie Azure
 
@@ -171,14 +171,14 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  OperationNotAllowed  |  Nie można zmienić rozmiaru maszyny Wirtualnej, ponieważ żądany rozmiar {0} nie jest dostępny w klastrze, w którym zestaw dostępności jest aktualnie przydzielony. Dostępne rozmiary to: {1}. Więcej informacji na maszyn wirtualnych, zmiana rozmiaru w strategii https://aka.ms/azure-resizevm.  |
 |  OperationNotAllowed  |  Nie można zmienić rozmiaru maszyny Wirtualnej, ponieważ żądany rozmiar {0} nie jest dostępny w klastrze, w którym maszyna wirtualna jest aktualnie przydzielonych. Aby zmienić rozmiar maszyny Wirtualnej, aby {1} Cofnij Przydział (jest to operacja Zatrzymaj w witrynie Azure portal), a następnie spróbuj ponownie wykonać operację zmiany rozmiaru. Więcej informacji na maszyn wirtualnych, zmiana rozmiaru w strategii https://aka.ms/azure-resizevm.  |
 |  OSProvisioningClientError  |  Aprowizacja systemu operacyjnego nie powiodła się dla maszyny Wirtualnej "{0}", ponieważ system operacyjny gościa jest aktualnie aprowizowany.  |
-|  OSProvisioningClientError  |  Aprowizacja systemu operacyjnego dla maszyny Wirtualnej "{0}" nie powiodło się. Szczegóły błędu: {1} upewnij się, że obraz został poprawnie przygotowany (uogólniony). <ul><li>Instrukcje Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  Aprowizacja systemu operacyjnego dla maszyny Wirtualnej "{0}" nie powiodło się. Szczegóły błędu: {1} Upewnij się, że obraz został poprawnie przygotowany (uogólniony). <ul><li>Instrukcje Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
 |  OSProvisioningClientError  |  Generowania klucza hosta SSH nie powiodło się. Szczegóły błędu: {0}. Aby rozwiązać ten problem, sprawdź się, jeśli agent systemu Linux jest prawidłowo skonfigurowane. <ul><li>Możesz sprawdzić zgodnie z instrukcjami na: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  Nazwa użytkownika określona dla maszyny Wirtualnej jest nieprawidłowa dla tej dystrybucji systemu Linux. Szczegóły błędu: {0}.  |
 |  OSProvisioningInternalError  |  Aprowizacja systemu operacyjnego nie powiodła się dla maszyny Wirtualnej "{0}" z powodu błędu wewnętrznego.  |
 |  OSProvisioningTimedOut  |  Aprowizacja systemu operacyjnego dla maszyny Wirtualnej "{0}" nie została zakończona w wyznaczonym czasie. Maszyna wirtualna może nadal pomyślnie zakończyć aprowizację. Sprawdź później stan inicjowania obsługi administracyjnej.  |
 |  OSProvisioningTimedOut  |  Aprowizacja systemu operacyjnego dla maszyny Wirtualnej "{0}" nie została zakończona w wyznaczonym czasie. Maszyna wirtualna może nadal pomyślnie zakończyć aprowizację. Sprawdź później stan inicjowania obsługi administracyjnej. Ponadto upewnij się, że obraz został poprawnie przygotowany (uogólniony).   <ul><li>Instrukcje Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instrukcje dla systemu Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OSProvisioningTimedOut  |  Aprowizacja systemu operacyjnego dla maszyny Wirtualnej "{0}" nie została zakończona w wyznaczonym czasie. Jednak agent gościa maszyny Wirtualnej zostało wykryte, uruchomione. Sugeruje to, system operacyjny gościa nie został poprawnie przygotowany do użycia jako obraz maszyny Wirtualnej (z właściwością CreateOption = FromImage). Aby rozwiązać ten problem, użyj wirtualnego dysku twardego, ponieważ jest z właściwością CreateOption = Attach lub odpowiednio przygotować go do użycia jako obraz:   <ul><li>Instrukcje Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instrukcje dla systemu Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OverConstrainedAllocationRequest  |  Wymagany rozmiar maszyny wirtualnej nie jest obecnie dostępny w wybranej lokalizacji.  |
+|  OverConstrainedAllocationRequest  |  Wymagany rozmiar maszyny Wirtualnej nie jest obecnie dostępna w wybranej lokalizacji.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Nie można zaktualizować zasobu w tej chwili z powodu trwającej platformy aktualizacji. Spróbuj ponownie później.  |
 |  StorageAccountLimitation  |  Konto magazynu "{0}" nie obsługuje stronicowych obiektów blob, które są wymagane do tworzenia dysków.  |
 |  StorageAccountLimitation  |  Konto magazynu "{0}" przekroczyła limit przydziału.  |

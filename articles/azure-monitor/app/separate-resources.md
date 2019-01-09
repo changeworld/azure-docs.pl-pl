@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 592efa5cc6a4918c03680e9785f85792eaa90099
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2e9c599c12ed10327d352baee02500d2284d98d8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54046120"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121485"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddzielanie danych telemetrycznych z programowania, testowania i produkcji
 
-Podczas tworzenia następnej wersji aplikacji sieci web, użytkownik nie chce mieszały się [usługi Application Insights](../../application-insights/app-insights-overview.md) dane telemetryczne z nowej wersji i już pełnej wersji. Aby uniknąć nieporozumień, Wyślij dane telemetryczne z różnych etapach rozwoju do oddzielnych zasobów usługi Application Insights przy użyciu kluczy Instrumentacji oddzielne (kluczy ikey). Aby ułatwić przemieszcza się nieco od jednego etapu do innego należy zmienić wartość klucza instrumentacji, może być warto ustawić klucz Instrumentacji w kodzie, a w pliku konfiguracji. 
+Podczas tworzenia następnej wersji aplikacji sieci web, użytkownik nie chce mieszały się [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) dane telemetryczne z nowej wersji i już pełnej wersji. Aby uniknąć nieporozumień, Wyślij dane telemetryczne z różnych etapach rozwoju do oddzielnych zasobów usługi Application Insights przy użyciu kluczy Instrumentacji oddzielne (kluczy ikey). Aby ułatwić przemieszcza się nieco od jednego etapu do innego należy zmienić wartość klucza instrumentacji, może być warto ustawić klucz Instrumentacji w kodzie, a w pliku konfiguracji. 
 
 (Jeśli system jest usługi Azure Cloud Service, ma [innej metody ustalania osobne kluczy ikey](../../azure-monitor/app/cloudservices.md).)
 

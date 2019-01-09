@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 096cf8e7a03f00cd5854ac4ce9569b14fe4b761b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: cdcb4e06afab2cccff7baa92989ccf904f42cf88
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581480"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118017"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do maszyn wirtualnych
 
@@ -52,6 +52,10 @@ Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raport
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Zastosowanie rabat związany z rezerwacją do maszyn wirtualnych Windows
 
 Po uruchomieniu wystąpień maszyn wirtualnych Windows Rezerwacja ma zostać zastosowana do pokrycia kosztów infrastruktury. Aplikacja rezerwacji kosztów infrastruktury maszyny Wirtualnej dla maszyn wirtualnych Windows jest taka sama jak w przypadku innych niż - Windows maszyn wirtualnych. Opłaty są naliczane osobno dla oprogramowania Windows na podstawie poszczególnych procesorów wirtualnych. Zobacz [koszty oprogramowania Windows za pomocą rezerwacji](https://go.microsoft.com/fwlink/?linkid=862756). Mogą obejmować usługi Windows koszty za pomocą licencjonowania [Azure korzyści użycia hybrydowego dla systemu Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
+
+## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>Rabat ma zastosowanie do różnych rozmiarów elastyczność rozmiaru wystąpienia
+
+Przy zakupie rezerwacji wystąpienia maszyny Wirtualnej, jeśli zostanie wybrana **zoptymalizowane pod kątem**: **wystąpienia elastyczność rozmiaru**, pokrycia Rabat zależy od rozmiaru maszyny Wirtualnej, należy wybrać. Rezerwację można zastosować do rozmiarów maszyn wirtualnych (VM) w tej samej grupie rozmiar w serii. Aby uzyskać więcej informacji, zobacz [elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

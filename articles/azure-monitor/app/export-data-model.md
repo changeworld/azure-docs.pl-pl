@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/21/2016
+ms.date: 01/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c906f313ae367fcc660d1ce1df0b3d667c7f04a3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016123"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119276"
 ---
 # <a name="application-insights-export-data-model"></a>Model danych eksportu Insights aplikacji
-Poniższa tabela zawiera listę właściwości telemetrii wysyłanych z [usługi Application Insights](../../application-insights/app-insights-overview.md) zestawów SDK do portalu.
+Poniższa tabela zawiera listę właściwości telemetrii wysyłanych z [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) zestawów SDK do portalu.
 Zobaczysz tych właściwości w danymi wyjściowymi [eksportu ciągłego](export-telemetry.md).
 Widoczne są także w filtry właściwości w [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) i [wyszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md).
 
@@ -130,9 +130,11 @@ Wszystkie rodzaje danych telemetrycznych towarzyszą sekcję kontekstu. Nie wszy
 | context.Device.Locale |ciąg |de-DE, en-GB... |
 | context.Device.Network |ciąg | |
 | context.device.oemName |ciąg | |
+| context.Device.OS |ciąg | |
 | context.device.osVersion |ciąg |System operacyjny hosta |
 | context.device.roleInstance |ciąg |Identyfikator serwera hosta |
 | context.device.roleName |ciąg | |
+| context.device.screenResolution |ciąg | |
 | context.Device.Type |ciąg |Komputer PC, przeglądarce... |
 | context.Location |obiekt |Pochodnej ClientIP. |
 | context.Location.City |ciąg |Pochodnej ClientIP, jeśli są znane |
@@ -146,10 +148,13 @@ Wszystkie rodzaje danych telemetrycznych towarzyszą sekcję kontekstu. Nie wszy
 | context.Session.ID |ciąg |Identyfikator grupy działań z tego samego źródła. Okres 30 minut bez operacji sygnalizuje koniec sesji. |
 | context.session.isFirst |wartość logiczna | |
 | context.user.accountAcquisitionDate |ciąg | |
+| context.user.accountId |ciąg | |
 | context.user.anonAcquisitionDate |ciąg | |
 | context.user.anonId |ciąg | |
 | context.user.authAcquisitionDate |ciąg |[Uwierzytelniony użytkownik](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |ciąg | |
 | context.user.isAuthenticated |wartość logiczna | |
+| context.user.storeRegion |ciąg | |
 | internal.data.documentVersion |ciąg | |
 | internal.Data.ID |ciąg | Unikatowy identyfikator, który jest przypisywany podczas element pobieranym do usługi Application Insights |
 
@@ -347,6 +352,6 @@ Zamiast wstępnie agregacji metryk, możesz użyć [próbkowania](../../azure-mo
 Z wyjątkiem sytuacji, gdy inaczej czasu trwania są reprezentowane w liczba dziesiątych części mikrosekund tak, aby 10000000.0 oznacza, że 1 sekundę.
 
 ## <a name="see-also"></a>Zobacz także
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [Eksport ciągły](export-telemetry.md)
 * [Przykłady kodu](export-telemetry.md#code-samples)

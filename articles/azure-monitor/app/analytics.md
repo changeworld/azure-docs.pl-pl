@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c41444f94e4685d246de225500c8a5beefc74944
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065617"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120890"
 ---
 # <a name="analytics-in-application-insights"></a>Analiza w usłudze Application Insights
-Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](../../application-insights/app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana. Jeśli już skonfigurowano usługę Application Insights dla jednej z aplikacji, a następnie można analizować dane swojej aplikacji, otwierając analizy z Twojej aplikacji [bloku przeglądu](../../azure-monitor/app/app-insights-dashboards.md).
+Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana. Jeśli już skonfigurowano usługę Application Insights dla jednej z aplikacji, a następnie można analizować dane swojej aplikacji, otwierając analizy z Twojej aplikacji [bloku przeglądu](../../azure-monitor/app/app-insights-dashboards.md).
 
 ![Otwórz portal.azure.com otwórz zasób usługi Application Insights, a następnie kliknij przycisk Analiza.](./media/analytics/001.png)
 

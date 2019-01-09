@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322043"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117439"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania przy użyciu skali maszyny wirtualnej platformy Azure
 Zestaw skalowania maszyn wirtualnych platformy Azure może automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, na których działa Twoja aplikacja. To zachowanie automatycznych i elastycznych zmniejsza koszty zarządzania do monitorowania i optymalizowania wydajności aplikacji. Możesz utworzyć zasady, które określają akceptowalny poziom wydajności dla pozytywnych komfort. Po spełnieniu tych zdefiniowanych progów, reguły skalowania automatycznego podjąć działania w celu dostosowania pojemność zestawu skalowania. Można także zaplanować zdarzeń, aby automatycznie zwiększać lub zmniejszyć pojemność zestawu skalowania o stałej razy. Ten artykuł zawiera omówienie metryk wydajności, które są dostępne i jakie akcje skalowania automatycznego można wykonywać.
@@ -122,7 +122,7 @@ Aby uzyskać więcej informacji, zobacz artykuły o tym, jak włączyć rozszerz
 ## <a name="application-level-metrics-with-app-insights"></a>Metryki poziomu aplikacji za pomocą usługi App Insights
 Aby uzyskać więcej wgląd w wydajność aplikacji, można użyć usługi Application Insights. Zainstalowanie mały pakiet Instrumentacji w swojej aplikacji, która monitoruje aplikację i wysyła dane telemetryczne do platformy Azure. Można monitorować metryki, takie jak czas odpowiedzi aplikacji, wydajność ładowania strony, a liczba sesji. Te metryki aplikacji może służyć do tworzenia reguł skalowania automatycznego na poziomie szczegółowym i osadzone, jak wyzwolić reguły oparte na uzyskiwanie przydatnych wyników analiz, które mogą mieć wpływ na wrażenia użytkowników.
 
-Aby uzyskać więcej informacji o usłudze Application Insights, zobacz [Co to jest usługa Application Insights](../application-insights/app-insights-overview.md).
+Aby uzyskać więcej informacji o usłudze Application Insights, zobacz [Co to jest usługa Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 
 ## <a name="scheduled-autoscale"></a>Automatyczne skalowanie według harmonogramu

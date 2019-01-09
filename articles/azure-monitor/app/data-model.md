@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 85541d649a0b2720e3d33b98cea7883b3725f609
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025151"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120669"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Model danych telemetrii Insights aplikacji
 
-[Usługa Azure Application Insights](../../application-insights/app-insights-overview.md) wysyła dane telemetryczne z aplikacji sieci web w witrynie Azure Portal, dzięki czemu można analizować wydajność i użycie aplikacji. Model danych telemetrycznych są standaryzowane tak, aby można utworzyć platformy i monitorowania niezależny od języka. 
+[Usługa Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła dane telemetryczne z aplikacji sieci web w witrynie Azure Portal, dzięki czemu można analizować wydajność i użycie aplikacji. Model danych telemetrycznych są standaryzowane tak, aby można utworzyć platformy i monitorowania niezależny od języka. 
 
 Dane zbierane przez usługę Application Insights modele tego wzorca do wykonywania typowych aplikacji:
 

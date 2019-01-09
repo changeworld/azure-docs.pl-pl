@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fe4a3a4c5bbb1954fb44bd94d33d108b81ba3893
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 898f0974a6a29abde5c84d611adc8d50c3873141
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057072"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121075"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analizowanie trendów w programie Visual Studio
 Narzędzie Trendy usługi Application Insights wizualizuje sposób, w jaki ważne zdarzenia telemetrii aplikacji internetowej zmieniają się z upływem czasu, co ułatwia szybkie identyfikowanie problemów i anomalii. Łącząc Cię z bardziej szczegółowymi informacjami diagnostycznymi, narzędzie Trendy może ułatwić zwiększenie wydajności aplikacji, śledzenie przyczyn wyjątków oraz odkrywanie szczegółowych danych w zdarzeniach niestandardowych.
@@ -29,7 +29,7 @@ Narzędzie Trendy usługi Application Insights wizualizuje sposób, w jaki ważn
 
 ## <a name="configure-your-web-app-for-application-insights"></a>Konfigurowanie aplikacji internetowej na potrzeby usługi Application Insights
 
-Jeśli nie zostało to jeszcze zrobione, [skonfiguruj swoją aplikację internetową na potrzeby usługi Application Insights](../../application-insights/app-insights-overview.md). Dzięki temu będzie można wysyłać dane telemetryczne do portalu usługi Application Insights. Narzędzie Trendy odczytuje dane telemetryczne z tego miejsca.
+Jeśli nie zostało to jeszcze zrobione, [skonfiguruj swoją aplikację internetową na potrzeby usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Dzięki temu będzie można wysyłać dane telemetryczne do portalu usługi Application Insights. Narzędzie Trendy odczytuje dane telemetryczne z tego miejsca.
 
 Narzędzie Trendy usługi Application Insights jest dostępne w programie Visual Studio 2015 Update 3 i nowszych wersjach.
 
@@ -69,7 +69,7 @@ Następnie kliknij pozycję **Analizuj telemetrię**, aby uruchomić zapytanie.
 Aby poruszać się między bąbelkami w wizualizacji:
 
 * Kliknij, aby wybrać bąbelek, który aktualizuje filtry w dolnej części okna, podsumowując tylko te zdarzenia, które wystąpiły w określonym czasie
-* Kliknij dwukrotnie bąbelek, aby przejść do narzędzia Wyszukiwanie i wyświetlić wszystkie zdarzenia telemetrii, które wystąpiły w tym czasie
+* Kliknij dwukrotnie bąbelek, aby przejść do narzędzia Search i wyświetlić wszystkie zdarzenia telemetrii, które wystąpiły w tym okresie
 * Naciśnij klawisz Ctrl i kliknij bąbelek, aby usunąć jego zaznaczenie w wizualizacji.
 
 > [!TIP]
@@ -94,7 +94,7 @@ Aby anulować zastosowanie jednego z tych filtrów, kliknij przycisk **Usuń wyb
 ![Wiele filtrów](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Znajdowanie anomalii
-Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są nieprawidłowe w porównaniu do innych bąbelków w tym samym szeregu czasowym. Z menu rozwijanego Typ widoku wybierz pozycję **Liczby w przedziale czasu (wyróżnij anomalie)** lub **Wartości procentowe w przedziale czasu (wyróżnij anomalie)**. Czerwone bąbelki są nieprawidłowe. Anomalie są zdefiniowane jako bąbelki zawierające liczby/wartości procentowe przekraczające 2,1 raza standardowe odchylenie od liczb/wartości procentowych, które wystąpiły w ostatnich dwóch okresach (na przykład 48 godzin w przypadku przeglądania ostatnich 24 godzin).
+Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są nieprawidłowe w porównaniu do innych bąbelków w tym samym szeregu czasowym. Z menu rozwijanego Typ widoku wybierz pozycję **Liczby w przedziale czasu (wyróżnij anomalie)** lub **Wartości procentowe w przedziale czasu (wyróżnij anomalie)**. Czerwone bąbelki są nieprawidłowe. Anomalie są zdefiniowane jako bąbelki zawierające liczby/wartości procentowe przekraczające 2,1 raza standardowe odchylenie od liczb/wartości procentowych, które wystąpiły w ostatnich dwóch okresach (48 godzin w przypadku przeglądania ostatnich 24 godzin, itp.).
 
 ![Kolorowe punkty oznaczają anomalie](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

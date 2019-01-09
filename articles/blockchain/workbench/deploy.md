@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 12/4/2018
+ms.date: 1/8/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876153"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102996"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie aplikacji Azure Blockchain Workbench
 
@@ -36,7 +36,7 @@ Blockchain Workbench umożliwia wdrażanie księgi łańcucha bloków, wraz z ze
 * 2 kont usługi azure Storage (Standard-LRS)
 * 2 zestawów skalowania maszyn wirtualnych (w przypadku węzłów modułu sprawdzania poprawności i proces roboczy)
 * 2 sieci wirtualnej (w tym moduł równoważenia obciążenia, sieciowej grupy zabezpieczeń i publiczny adres IP dla każdej sieci wirtualnej)
-* Opcjonalnie: Usługa Azure Monitor
+* Opcjonalnie: Azure Monitor
 
 Poniżej przedstawiono przykład wdrożenia utworzone w **myblockchain** grupy zasobów.
 
@@ -61,7 +61,7 @@ Azure Blockchain Workbench wymaga rejestracji konfiguracji i aplikacji usługi A
 Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania aplikacji Blockchain Workbench. W poniższych sekcjach opisano, jak wdrożyć platformę.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz swoje konto w prawym górnym prawym rogu i przejdź do żądanej usługi Azure AD dzierżawy, którym chcesz wdrożyć aplikacji Azure Blockchain Workbench.
+2. Wybierz swoje konto w prawym górnym rogu i przełącz się do żądanej dzierżawy usługi Azure AD, w której chcesz wdrożyć aplikacji Azure Blockchain Workbench.
 3. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**. Wyszukaj `Azure Blockchain Workbench` w **Przeszukaj witrynę Marketplace** pasku wyszukiwania. 
 
     ![Pasek wyszukiwania w witrynie Marketplace](media/deploy/marketplace-search-bar.png)
@@ -119,7 +119,7 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
 
     | Ustawienie | Opis  |
     |---------|--------------|
-    | Punkt końcowy Ethereum RPC | Podaj końcowych wywołań RPC w istniejącej sieci PoA łańcucha bloków. Punkt końcowy rozpoczyna się od https:// lub http:// i kończy się za pomocą numeru portu. Na przykład: `https://network.westus.cloudapp.com:8540` |
+    | Punkt końcowy Ethereum RPC | Podaj końcowych wywołań RPC w istniejącej sieci PoA łańcucha bloków. Punkt końcowy rozpoczyna się od https:// lub http:// i kończy się za pomocą numeru portu. Na przykład: `http<s>://<network-url>:<port>` |
     | Ustawienia usługi Azure Active Directory | Wybierz **później dodać**.</br>Uwaga: Jeśli została wybrana opcja [wstępne skonfigurowanie usługi Azure AD](#azure-ad-configuration) lub ponownego wdrażania, możliwość *Dodaj teraz*. |
     | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. |
 
@@ -159,7 +159,7 @@ Aby skojarzyć niestandardowej nazwy domeny z aplikacji Blockchain Workbench, zo
 Usługa Azure AD, musi być skonfigurowany do ukończenia wdrożenia aplikacji Blockchain Workbench. Użyjesz skrypt programu PowerShell w celu konfiguracji.
 
 1. W przeglądarce przejdź do [Blockchain Workbench — adres URL sieci Web](#blockchain-workbench-web-url).
-2. Zostaną wyświetlone instrukcje pozwalające skonfigurować usługi Azure AD przy użyciu usługi Cloud Shell. Skopiuj polecenia i uruchom usługę Cloud Shell.
+2. Zostaną wyświetlone instrukcje dotyczące konfigurowania usługi Azure AD przy użyciu usługi Cloud Shell. Skopiuj polecenia i uruchom usługę Cloud Shell.
 
     ![Uruchom skrypt usługi AAD](media/deploy/launch-aad-script.png)
 
@@ -216,7 +216,7 @@ Wdrożenie aplikacji Blockchain Workbench wymaga rejestracji aplikacji usługi A
 Następnie należy zmodyfikować manifest, użyj ról aplikacji w usłudze Azure AD, aby określić administratorów aplikacji Blockchain Workbench.  Aby uzyskać więcej informacji na temat manifestów aplikacji, zobacz [manifest aplikacji w usłudze Azure Active Directory](../../active-directory/develop/reference-app-manifest.md).
 
 1. Aplikacja została zarejestrowana, można wybrać **manifestu** w okienku szczegółów zarejestrowanej aplikacji.
-2. Wygeneruj identyfikator GUID. Można wygenerować identyfikatora GUID za pomocą polecenia programu PowerShell [identyfikator guid]:: NewGuid () lub identyfikator GUID nowego polecenia cmdlet. Innym rozwiązaniem jest użyć generator GUID witryny sieci Web.
+2. Wygeneruj identyfikator GUID. Można wygenerować identyfikatora GUID za pomocą polecenia programu PowerShell [identyfikator guid]:: (NewGuid) lub identyfikator GUID nowego polecenia cmdlet. Innym rozwiązaniem jest użyć generator GUID witryny sieci Web.
 3. Zamierzasz zaktualizować **appRoles** sekcji manifestu. W okienku manifestu edycji wybierz **Edytuj** i Zastąp `"appRoles": []` przy użyciu podanego formatu JSON. Pamiętaj zastąpić wartość **identyfikator** pola o identyfikatorze GUID został wygenerowany. 
 
     ![Edytowanie manifestu](media/deploy/edit-manifest.png)

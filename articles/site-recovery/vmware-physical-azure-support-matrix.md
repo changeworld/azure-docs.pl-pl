@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: a66917f1ab4e554dbb5a8cd1fb9013e111970714
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999819"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107502"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -111,7 +111,7 @@ Menedżer woluminów | Przed [9.20 wersji](https://support.microsoft.com/en-in/h
 Urządzenia magazynujące Parawirtualne | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Blokuj wielu kolejek operacji We/Wy urządzenia | Nieobsługiwane.
 Serwery fizyczne z kontrolera magazynu HP CCISS | Nieobsługiwane.
-Konwencja nazewnictwa punktu instalacji/urządzenia | Nazwa urządzenia lub nazwę punktu instalacji powinny być unikatowe. Upewnij się, że żadne dwa punkty urządzeń/instalacji z uwzględnieniem wielkości liter nazwy. </br> Przykład: Nazewnictwo dwóch urządzeń z tej samej maszyny wirtualnej jako *urządzenia 1* i *urządzenia 1* jest niedozwolone.
+Konwencja nazewnictwa punktu instalacji/urządzenia | Nazwa urządzenia lub nazwę punktu instalacji powinny być unikatowe. Upewnij się, że żadna para urządzeń/punktów instalacji nie ma takich samych nazw, z uwzględnieniem wielkości liter. </br> Przykład: Nazewnictwo dwóch urządzeń z tej samej maszyny wirtualnej jako *urządzenia 1* i *urządzenia 1* jest niedozwolone.
 Katalogi | Przed [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. Następujące katalogi (jeśli skonfigurowany jako oddzielne partycje /-systemów plików) wszystkie muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: / (root), / Boot/usr, /usr/local, /var, etc.</br>2. / boot powinny znajdować się na partycji dysku i nie LVM woluminu.<br/><br/> Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) lub nowszy, powyżej ograniczenia nie mają zastosowania.
 
 Wymagania dotyczące miejsca na wolne | 2 GB na partycję/root <br/><br/> 250 MB do folderu instalacji XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak metadane sumy kontrolnej, są obsługiwane z usługi mobilności wersji 9.10 wartości. Użyj narzędzia xfs_info, aby sprawdzić superblock XFS dla partycji. Jeśli ftype jest ustawiona na 1, XFSv5 funkcje są w użyciu.
@@ -169,7 +169,7 @@ Gość/serwera zaszyfrowanego dysku | Nie
 Gość/serwer systemu plików NFS | Nie
 Gość/serwera SMB 3.0 | Nie
 Gość/serwera RDM | Yes<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.
+Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
 Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Yes
 Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Yes
 Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Yes

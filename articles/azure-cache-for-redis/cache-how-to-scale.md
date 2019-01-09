@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 46f94a512ea78016a327357a3d0ee25a91ad607e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019688"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105206"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak skalować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze funkcji i rozmiar pamięci podręcznej. Po utworzeniu pamięci podręcznej możesz skalować rozmiar i warstwę cenową w pamięci podręcznej, jeśli zmienią się wymagania dotyczące aplikacji. W tym artykule pokazano, jak skalować pamięć podręczną przy użyciu witryny Azure portal i narzędzi, takich jak Azure PowerShell i wiersza polecenia platformy Azure.
@@ -136,7 +136,7 @@ Nie, Twoja nazwa pamięci podręcznej i klucze są bez zmian podczas operacji sk
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Spowoduje utratę danych z przepełnieniu pamięci podręcznej podczas skalowania?
 * Gdy **podstawowe** skalowania na nowy rozmiar pamięci podręcznej, wszystkie dane zostaną utracone i pamięć podręczna jest niedostępna podczas operacji skalowania.
 * Gdy **podstawowe** skalowania pamięci podręcznej do **standardowa** pamięci podręcznej, dane w pamięci podręcznej są zwykle zachowywane.
-* Gdy **standardowa** skalowania pamięci podręcznej do warstwy, lub rozmiar większy lub **Premium** skalowania na większy rozmiar pamięci podręcznej, wszystkie dane są zwykle zachowywane. Podczas skalowania **standardowa** lub **Premium** pamięci podręcznej do mniejszego rozmiaru, dane zostaną utracone w zależności od tego, jak dużo danych znajduje się w pamięci podręcznej, związane z nowy rozmiar, gdy jest on skalowany. Jeśli dane zostaną utracone podczas skalowania w dół, klucze obrazuje przy użyciu [allkeys lru](http://redis.io/topics/lru-cache) zasady eksmisji. 
+* Gdy **standardowa** skalowania pamięci podręcznej do warstwy, lub rozmiar większy lub **Premium** skalowania na większy rozmiar pamięci podręcznej, wszystkie dane są zwykle zachowywane. Podczas skalowania **standardowa** lub **Premium** pamięci podręcznej do mniejszego rozmiaru, dane zostaną utracone w zależności od tego, jak dużo danych znajduje się w pamięci podręcznej, związane z nowy rozmiar, gdy jest on skalowany. Jeśli dane zostaną utracone podczas skalowania w dół, klucze obrazuje przy użyciu [allkeys lru](https://redis.io/topics/lru-cache) zasady eksmisji. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Moje niestandardowe bazy danych ustawia dotyczy podczas skalowania?
 Jeśli skonfigurowano niestandardowej wartości dla `databases` ustawienia podczas tworzenia pamięci podręcznej, należy pamiętać, że niektóre ceny warstwy mają różne [baz danych limity](cache-configure.md#databases). Poniżej przedstawiono kilka kwestii, podczas skalowania w tym scenariuszu:

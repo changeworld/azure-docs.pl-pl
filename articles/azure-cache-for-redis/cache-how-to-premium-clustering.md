@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: e0c50046cd3cdb4db7c9e7e3961124b891b3c0a4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 44b25263dbeb0d787120ae3a86076b2f888ed46f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019635"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107484"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurowanie pamięci podręcznej Redis klastrowania dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. W tym artykule opisano jak skonfigurować klaster w warstwie premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -27,12 +27,12 @@ Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej
 Aby uzyskać informacje o innych funkcjach pamięci podręcznej — wersja premium, zobacz [wprowadzenie do usługi Azure Cache w warstwie Redis Premium](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>Co to jest klaster pamięci podręcznej Redis?
-Pamięć podręczna systemu Azure dla usługi Redis zapewnia klastrowania Redis jako [zaimplementowane w pamięci podręcznej Redis](http://redis.io/topics/cluster-tutorial). Za pomocą klaster pamięci podręcznej Redis możesz uzyskać następujące korzyści: 
+Pamięć podręczna systemu Azure dla usługi Redis zapewnia klastrowania Redis jako [zaimplementowane w pamięci podręcznej Redis](https://redis.io/topics/cluster-tutorial). Za pomocą klaster pamięci podręcznej Redis możesz uzyskać następujące korzyści: 
 
 * Zdolność do automatycznego dzielenia zestawu danych między wieloma węzłami. 
 * Możliwość kontynuowania operacji po podzbioru węzłów występują błędy, lub nie można nawiązać komunikacji z pozostałą częścią klastra. 
-* Więcej przepływności: przepływności, wydłuża liniowo zwiększyć liczbę fragmentów. 
-* Większym rozmiarze pamięci: zwiększa liniowo, jak zwiększyć liczbę fragmentów.  
+* Więcej przepływności: Przepływność zwiększa liniowo, jak zwiększyć liczbę fragmentów. 
+* Większym rozmiarze pamięci: Zwiększa liniowo, jak zwiększyć liczbę fragmentów.  
 
 Klaster nie zwiększa liczbę połączeń, które są dostępne dla klastra pamięci podręcznej. Aby uzyskać więcej informacji na temat rozmiaru, przepływności i przepustowości w pamięciach podręcznych premium, zobacz [jakich pamięć podręczna systemu Azure, oferty pamięci podręcznej Redis i rozmiaru należy używać?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -101,7 +101,7 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Należy wprowadzać żadnych zmian do mojej aplikacji klienta do korzystania z klastrowania?
 * Gdy klaster jest włączona, tylko bazy danych 0 jest dostępna. Jeśli Twoja aplikacja kliencka używa wielu baz danych i próby odczytu lub zapisu w bazie danych innych niż 0, zostanie zgłoszony następujący wyjątek. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
-  Aby uzyskać więcej informacji, zobacz [Redis specyfikacja klastra — zaimplementowano podzbioru](http://redis.io/topics/cluster-spec#implemented-subset).
+  Aby uzyskać więcej informacji, zobacz [Redis specyfikacja klastra — zaimplementowano podzbioru](https://redis.io/topics/cluster-spec#implemented-subset).
 * Jeśli używasz [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/), należy użyć 1.0.481 lub nowszej. Łączenie z pamięcią podręczną, korzystając z tych samych [punktów końcowych, porty i klucze](cache-configure.md#properties) używanego podczas nawiązywania połączenia z pamięcią podręczną, które ma włączone klastrowanie. Jedyna różnica polega na tym, że wszystkie operacje odczytu i zapisu musi odbywać się do bazy danych 0.
   
   * Inni klienci mogą mieć inne wymagania. Zobacz [wszystkich klientów usługi Redis obsługują klastra?](#do-all-redis-clients-support-clustering)
@@ -109,14 +109,14 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 * Jeśli używasz dostawcy stanu sesji platformy ASP.NET w pamięci podręcznej Redis, należy użyć 2.0.1 lub nowszej. Zobacz [Użyj, klastrowania z dostawcy stanu sesji ASP.NET dla usługi Redis i buforowanie danych wyjściowych?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Jak klucze są dystrybuowane w klastrze?
-Dla usługi Redis [modelu dystrybucji kluczy](http://redis.io/topics/cluster-spec#keys-distribution-model) dokumentacji: obszarach kluczy zostanie podzielona na miejsc 16384. Każdy klucz jest wyznaczany skrót i przypisane do jednej z tych miejsc, które są rozproszone na węzłach klastra. Można skonfigurować, która część klucza jest przekazywane do upewnij się, że wiele kluczy znajdują się w tym samym fragmencie, za pomocą tagów wyznaczania wartości skrótu.
+Dla usługi Redis [modelu dystrybucji kluczy](https://redis.io/topics/cluster-spec#keys-distribution-model) dokumentacji: Przestrzeń kluczy jest dzielony na miejsc 16384. Każdy klucz jest wyznaczany skrót i przypisane do jednej z tych miejsc, które są rozproszone na węzłach klastra. Można skonfigurować, która część klucza jest przekazywane do upewnij się, że wiele kluczy znajdują się w tym samym fragmencie, za pomocą tagów wyznaczania wartości skrótu.
 
-* Klucze z tagiem wyznaczania wartości skrótu — Jeśli dowolnej części klucza jest ujęty w `{` i `}`, tylko część klucza jest wyznaczana wartość skrótu dla celów określenia miejsca wyznaczania wartości skrótu klucza. Na przykład, następujące klucze 3 znajduje się w tym samym fragmencie: `{key}1`, `{key}2`, i `{key}3` ponieważ tylko `key` część nazwy jest wyznaczana wartość skrótu. Pełną listę kluczy skrótu tag specyfikacje zobacz [klawiszy skrótu tagi](http://redis.io/topics/cluster-spec#keys-hash-tags).
+* Klucze z tagiem wyznaczania wartości skrótu — Jeśli dowolnej części klucza jest ujęty w `{` i `}`, tylko część klucza jest wyznaczana wartość skrótu dla celów określenia miejsca wyznaczania wartości skrótu klucza. Na przykład, następujące klucze 3 znajduje się w tym samym fragmencie: `{key}1`, `{key}2`, i `{key}3` ponieważ tylko `key` część nazwy jest wyznaczana wartość skrótu. Pełną listę kluczy skrótu tag specyfikacje zobacz [klawiszy skrótu tagi](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Klucze bez tagu hash - całą nazwę klucza jest używana do wyznaczania wartości skrótu. Skutkuje to statystycznie rozdzielenie między fragmentami pamięci podręcznej.
 
 Aby uzyskać najlepszą wydajność i przepływność firma Microsoft zaleca równomiernie dystrybucji kluczy. Jeśli używasz kluczy z tagu wyznaczania wartości skrótu jest aplikacji ponosić odpowiedzialność za zapewnienie klucze są rozmieszczane równomiernie.
 
-Aby uzyskać więcej informacji, zobacz [modelu dystrybucji kluczy](http://redis.io/topics/cluster-spec#keys-distribution-model), [fragmentowania danych klaster pamięci podręcznej Redis](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding), i [klawiszy skrótu tagi](http://redis.io/topics/cluster-spec#keys-hash-tags).
+Aby uzyskać więcej informacji, zobacz [modelu dystrybucji kluczy](https://redis.io/topics/cluster-spec#keys-distribution-model), [fragmentowania danych klaster pamięci podręcznej Redis](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding), i [klawiszy skrótu tagi](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
 Przykładowy kod na temat pracy z klastra i lokalizowania kluczy w jednym fragmencie z klienta StackExchange.Redis, zobacz [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) część [Witaj, świecie](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) próbki.
 
@@ -124,7 +124,7 @@ Przykładowy kod na temat pracy z klastra i lokalizowania kluczy w jednym fragme
 Największy rozmiar pamięci podręcznej — wersja premium jest 53 GB. Można utworzyć do 10 fragmentów, dzięki czemu maksymalny rozmiar 530 GB. Jeśli potrzebujesz większego rozmiaru [Zażądaj więcej](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Wszyscy klienci Redis obsługują klastra?
-W chwili obecnej, których nie wszyscy klienci nie obsługują Redis klastrowania. StackExchange.Redis to taki, który obsługuje jej. Aby uzyskać więcej informacji na temat innych klientów, zobacz [odtwarzanie z klastrem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) części [samouczek dotyczący klastra Redis](http://redis.io/topics/cluster-tutorial). 
+W chwili obecnej, których nie wszyscy klienci nie obsługują Redis klastrowania. StackExchange.Redis to taki, który obsługuje jej. Aby uzyskać więcej informacji na temat innych klientów, zobacz [odtwarzanie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) części [samouczek dotyczący klastra Redis](https://redis.io/topics/cluster-tutorial). 
 
 Protokół klastrowania pamięci podręcznej Redis wymaga każdego połączenia klienta z każdego fragmentu bezpośrednio w trybie klastrowania. Podjęto próbę użycia klienta, który nie obsługuje klastrowania prawdopodobnie spowoduje w partii [wyjątki przekierowania PRZENIESIONO](https://redis.io/topics/cluster-spec#moved-redirection).
 
@@ -137,7 +137,7 @@ Protokół klastrowania pamięci podręcznej Redis wymaga każdego połączenia 
 Możesz nawiązać połączenie z pamięci podręcznej, korzystając z tych samych [punktów końcowych](cache-configure.md#properties), [porty](cache-configure.md#properties), i [klucze](cache-configure.md#access-keys) używanego podczas nawiązywania połączenia z pamięcią podręczną, które ma włączone klastrowanie. Usługa redis zarządza usługi klastrowania na wewnętrznej bazie danych, dzięki czemu nie trzeba zarządzać nim z komputera klienckiego z.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Czy mogę bezpośrednio nawiązać poszczególne fragmenty przepełnieniu pamięci podręcznej?
-Protokół klastrowania wymaga, że klient nawiązuj kontakty poprawne fragmentu. Dlatego klient należy to zrobić poprawnie dla Ciebie. Dzięki temu powiedział każdego fragmentu składa się z pary pamięci podręcznej podstawowy i węzeł repliki, nazywane zbiorczo wystąpienie pamięci podręcznej. Można połączyć się z tych wystąpień pamięci podręcznej przy użyciu narzędzia pamięci podręcznej redis — interfejs wiersza polecenia w [niestabilne](http://redis.io/download) gałąź repozytorium pamięci podręcznej Redis w witrynie GitHub. Ta wersja implementuje podstawowej pomocy technicznej, gdy pracę z usługą `-c` przełącznika. Aby uzyskać więcej informacji, zobacz [odtwarzanie z klastrem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [ http://redis.io ](http://redis.io) w [samouczek dotyczący klastra Redis](http://redis.io/topics/cluster-tutorial).
+Protokół klastrowania wymaga, że klient nawiązuj kontakty poprawne fragmentu. Dlatego klient należy to zrobić poprawnie dla Ciebie. Dzięki temu powiedział każdego fragmentu składa się z pary pamięci podręcznej podstawowy i węzeł repliki, nazywane zbiorczo wystąpienie pamięci podręcznej. Można połączyć się z tych wystąpień pamięci podręcznej przy użyciu narzędzia pamięci podręcznej redis — interfejs wiersza polecenia w [niestabilne](https://redis.io/download) gałąź repozytorium pamięci podręcznej Redis w witrynie GitHub. Ta wersja implementuje podstawowej pomocy technicznej, gdy pracę z usługą `-c` przełącznika. Aby uzyskać więcej informacji, zobacz [odtwarzanie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [ https://redis.io ](https://redis.io) w [samouczek dotyczący klastra Redis](https://redis.io/topics/cluster-tutorial).
 
 Aby uzyskać bez obsługi protokołu ssl Użyj następujących poleceń.
 

@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 01/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837175"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121196"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory
-W tym artykule opisano dwa sposoby na przejęcie nazwy domeny DNS w niezarządzanego katalogu usługi Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi rejestruje się w usłudze w chmurze, która korzysta z usługi Azure AD, jest dodawany do niezarządzanego katalogu usługi Azure AD na podstawie swojej domeny poczty e-mail. Więcej informacji na temat samoobsługowego lub "wirusowego" rejestrowania w usłudze, zobacz [co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
+W tym artykule opisano dwa sposoby na przejęcie nazwy domeny DNS w niezarządzanego katalogu usługi Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi rejestruje się w usłudze w chmurze, która korzysta z usługi Azure AD, jest dodawany do niezarządzanego katalogu usługi Azure AD na podstawie swojej domeny poczty e-mail. Więcej informacji na temat samoobsługowego lub "wirusowego" rejestracji dla usługi, zobacz [co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Decyzja w sprawie sposobu przejmowanie katalogu niezarządzanego
 Podczas procesu przejęcia przez administratora możesz udowodnić własność w sposób opisany w artykule [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md). W kolejnych sekcjach objaśniono środowisko pracy administratora bardziej szczegółowo, ale w tym miejscu znajduje się podsumowanie:
@@ -41,7 +41,7 @@ Niektóre produkty, które zawierają SharePoint i OneDrive, takich jak Office 3
 
 3. Wiadomość e-mail z potwierdzeniem z usługi Power BI, wybierz **tak, to ja**.
 
-4. Zaloguj się do [Centrum administracyjnego usługi Office 365](https://portal.office.com/adminportal/Home) przy użyciu konta użytkownika usługi Power BI. Pojawi się komunikat z monitem o **Zostań administratorem** nazwy domeny, która została już zweryfikowana w niezarządzanej dzierżawy. Wybierz **tak, chcę być administratorem**.
+4. Zaloguj się do [Centrum administracyjnego usługi Office 365](https://portal.office.com/admintakeover) przy użyciu konta użytkownika usługi Power BI. Pojawi się komunikat z monitem o **Zostań administratorem** nazwy domeny, która została już zweryfikowana w niezarządzanej dzierżawy. Wybierz **tak, chcę być administratorem**.
   
   ![pierwszy zrzut ekranu przedstawiający Zostań administratorem](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -53,9 +53,9 @@ Po zweryfikowaniu rekordy DNS TXT u rejestratora nazw domen można zarządzać d
 
 Po ukończeniu powyższych kroków, jesteś teraz administratorem globalnym dzierżawy Fourth Coffee w usłudze Office 365. Aby zintegrować nazwę domeny z innymi usługami Azure, możesz usunąć go z usługi Office 365 i dodać go do innej dzierżawy zarządzanych na platformie Azure.
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Dodawanie nazwy domeny do zarządzanej dzierżawy w usłudze Azure AD 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Dodawanie nazwy domeny do zarządzanej dzierżawy w usłudze Azure AD
 
-1. Otwórz [Centrum administracyjnego usługi Office 365](https://portal.office.com/adminportal/Home).
+1. Otwórz [Centrum administracyjnego usługi Office 365](https://portal.office.com/admintakeover).
 2. Wybierz **użytkowników** , a następnie utworzyć nowe konto użytkownika o nazwie, takich jak *user@fourthcoffeexyz.onmicrosoft.com* nie używa nazwy domeny niestandardowej. 
 3. Upewnij się, że nowe konto użytkownika ma uprawnienia administratora globalnego dla dzierżawy usługi Azure AD.
 4. Otwórz **domen** kartę w Centrum administracyjnym usługi Office 365, wybierz nazwę domeny i wybierz **Usuń**. 

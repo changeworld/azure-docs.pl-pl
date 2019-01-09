@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: c9b843bfd448c05cb2b11165e54d19db0a7ad60e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a7f3e23cd74baa2e1fdef178be8c5b213a3905ef
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019736"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105291"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera dostawca stanu sesji, który służy do przechowywania swojej sesji stanu w pamięci z pamięcią podręczną Azure Redis zamiast bazy danych programu SQL Server. Aby korzystać z pamięci podręcznej dostawcy stanu sesji, najpierw skonfigurować pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET przy użyciu usługi Azure Cache dla pakietu Redis NuGet stanu sesji w pamięci podręcznej.
@@ -127,7 +127,7 @@ Gdy te kroki są wykonywane, aplikacja jest skonfigurowana na potrzeby pamięci 
 * Dostawca stanu sesji programu SQL Server — ten dostawca przechowuje stanu sesji w programie Sql Server. Użyj tego dostawcy, aby przechowywanie stanu sesji w magazynie trwałym. Umożliwia skalowanie aplikacji sieci Web, ale przy użyciu programu Sql Server dla sesji ma wpływ na wydajność Twojej aplikacji sieci Web. Możesz również użyć tego dostawcy z [konfiguracji OLTP w pamięci](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) do poprawy wydajności.
 * Rozproszone w pamięci dostawcy stanu sesji takich jak pamięci podręcznej Azure redis Cache dostawca stanu sesji — ten dostawca zapewnia najlepsze cechy obu światów. Twoja aplikacja sieci Web może mieć prosty, szybkich i skalowalnych dostawca stanu sesji. Ponieważ ten dostawca przechowuje stanu sesji w pamięci podręcznej, aplikacja musi wziąć pod uwagę w wszystkich właściwości, które są skojarzone po rozmowie z dystrybucji w pamięci podręcznej, takie jak błędy przejściowe problemy z siecią. Aby uzyskać wskazówki na temat korzystania z pamięci podręcznej, zobacz [wskazówki dotyczące buforowania](../best-practices-caching.md) z Microsoft Patterns & wskazówki [projektowania aplikacji w chmurze platformy Azure i wytyczne dotyczące implementacji](https://github.com/mspnp/azure-guidance).
 
-Aby uzyskać więcej informacji o stanie sesji i innych najlepszych rozwiązań, zobacz [najlepsze praktyki programowania aplikacji sieci Web (tworzenie rzeczywistych aplikacji w chmurze dzięki platformie Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+Aby uzyskać więcej informacji o stanie sesji i innych najlepszych rozwiązań, zobacz [najlepsze praktyki programowania aplikacji sieci Web (tworzenie rzeczywistych aplikacji w chmurze dzięki platformie Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zapoznaj się z [dostawca wyjściowej pamięci podręcznej ASP.NET dla usługi Azure Cache dla usługi Redis](cache-aspnet-output-cache-provider.md).

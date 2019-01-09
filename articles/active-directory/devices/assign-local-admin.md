@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 702ebdc0966a72396ac644b154ba13d2321fd5d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a4671d383c46bf0b932ce528f4eacb7255bad5e7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631349"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105410"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do sposobu zarządzania do lokalnej grupy administratorów w usłudze Azure AD
 
@@ -64,7 +64,10 @@ Aby zmodyfikować rolę administrator urządzenia, należy skonfigurować **Doda
 
 ![Dodatkowi administratorzy lokalni](./media/assign-local-admin/10.png)
 
- 
+>[!NOTE]
+> Ta opcja wymaga dzierżawy usługi Azure AD Premium. 
+
+
 Administratorzy urządzenia są przypisane do urządzeń przyłączonych do wszystkich Azure AD. Nie można określić zakres Administratorzy urządzenia do określonego zestawu urządzeń. Aktualizacja roli administratora urządzenia nie musi koniecznie mieć bezpośredni wpływ na użytkowników, których to dotyczy. W przypadku urządzeń użytkownik jest zalogowany w, odbywa się aktualizacja uprawnień:
      
 

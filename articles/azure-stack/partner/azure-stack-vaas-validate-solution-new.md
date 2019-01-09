@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 7949e764baa7a4e20eb988c78817b6b4f0045593
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e6cfdca207b114871a478262f14ea960be5985df
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333772"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104968"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>Weryfikowanie nowych rozwiązań usługi Azure Stack
 
@@ -28,39 +28,60 @@ Dowiedz się, jak używać **sprawdzania poprawności rozwiązań** przepływu p
 
 Rozwiązanie usługi Azure Stack jest sprzętu zestawienie komponentów (BoM), który ma zostać wspólnie uzgodnione między firmami Microsoft i partnerów po spełniające wymagania certyfikacji logo systemu Windows Server. Rozwiązanie musi recertified, gdy nastąpiła zmiana na sprzęt BoM. W razie dalszych pytań o tym, kiedy ponownie certyfikować rozwiązania, skontaktuj się z zespołem pod adresem [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
 
-Aby przeprowadzić certyfikację rozwiązania, należy uruchomić przepływu pracy weryfikacji rozwiązania dwukrotnie. Uruchomić go jeden raz dla *minimalny zestaw* obsługiwana konfiguracja. Drugi czas uruchamiania *maksymalnie* obsługiwana konfiguracja. Certyfikacja potwierdzająca rozwiązania firmy Microsoft, jeśli obie konfiguracje pomyślnie przejść wszystkie testy.
+Aby przeprowadzić certyfikację rozwiązania, należy uruchomić przepływ pracy weryfikacji rozwiązania dwukrotnie. Uruchomić go jeden raz dla *minimalny zestaw* obsługiwana konfiguracja. Drugi czas uruchamiania *maksymalnie* obsługiwana konfiguracja. Certyfikacja potwierdzająca rozwiązania firmy Microsoft, jeśli obie konfiguracje pomyślnie przejść wszystkie testy.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
 ## <a name="create-a-solution-validation-workflow"></a>Tworzenie przepływu pracy weryfikacji rozwiązania
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
-2. Wybierz **Start** na **walidacji rozwiązania** kafelka.
+
+3. Wybierz **Start** na **walidacji rozwiązania** kafelka.
 
     ![Rozwiązanie walidacji przepływu pracy kafelka](media/tile_validation-solution.png)
 
-3. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
-4. Wybierz **konfiguracji rozwiązania**.
+4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
+
+5. Wybierz **konfiguracji rozwiązania**.
     - **Minimalna**: rozwiązanie jest skonfigurowany przy użyciu obsługiwanych minimalna liczba węzłów.
     - **Maksymalna**: rozwiązanie jest skonfigurowany przy użyciu obsługiwanych maksymalną liczbę węzłów.
-5. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
     ![Informacje o rozwiązaniu sprawdzania poprawności](media/workflow_validation-solution_info.png)
 
-6. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
     > Nie można modyfikować parametrów środowiska po utworzeniu przepływu pracy.
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
-8. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     Nastąpi przekierowanie do strony Podsumowanie testów.
 
-## <a name="execute-solution-validation-tests"></a>Wykonywanie testów sprawdzania poprawności rozwiązań
+## <a name="run-solution-validation-tests"></a>Uruchom testy weryfikacyjne rozwiązania
 
-W **podsumowania testy sprawdzania poprawności rozwiązań** strony, zobaczysz listę testów, wymagane do zakończenia weryfikacji.
+W **rozwiązanie weryfikacji sprawdza Podsumowanie** strony, zobaczysz listę testów, wymagane do zakończenia weryfikacji.
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+W przepływach pracy sprawdzania poprawności **planowania** przetestujesz typowe parametry przepływu pracy na poziomie, które zostały określone podczas tworzenia przepływu pracy (zobacz [wspólnych parametrów przepływów pracy dla usługi Azure Stack weryfikacji jako usługa](azure-stack-vaas-parameters.md)). Jeśli dowolna z wartości parametrów testu stają się nieprawidłowe, użytkownik musi resupply je, zgodnie z instrukcją w [zmodyfikować parametry przepływu pracy](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+
+> [!NOTE]
+> Planowanie testów sprawdzania poprawności w istniejącym wystąpieniu utworzy nowe wystąpienie zamiast w starym wystąpieniu w portalu. Dzienniki starej instalacji zostaną zachowane, ale nie są dostępne z poziomu portalu.  
+Po pomyślnym zakończeniu testu **harmonogram** akcja zostanie wyłączona.
+
+1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
+2. Wybierz następujące testy:
+    - Aparat symulacji w chmurze
+    - Obliczenia operacyjnej zestaw SDK
+    - Test identyfikator dysku
+    - Pakiet operacyjnej zestaw SDK rozszerzenia usługi KeyVault
+    - Operacyjnej zestaw SDK magazynu kluczy
+    - Pakiet operacyjnej zestaw SDK sieci
+    - Pakiet operacyjnej zestaw SDK konta magazynu
+
+3. Wybierz **harmonogram** z menu kontekstowego, aby otworzyć wiersz do planowania wystąpieniem testu.
+
+4. Przejrzyj parametry testu, a następnie wybierz pozycję **przesyłania** do zaplanowania testów do wykonania.
 
 ![Test weryfikacji rozwiązania harmonogramu](media/workflow_validation-solution_schedule-test.png)
 

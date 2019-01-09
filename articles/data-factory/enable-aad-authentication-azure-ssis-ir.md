@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 12/25/2018
+ms.date: 1/8/2019
 ms.author: douglasl
-ms.openlocfilehash: be14eb59cb89676b0d69b94246f35ad6dfc7eed9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: be26aa95ddac7b63293cee234209ac52243f110a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792651"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104339"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
@@ -114,10 +114,28 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
 9.  Wyczyść okno zapytania, wprowadź następujące polecenie języka T-SQL, a następnie wybierz **Execute** na pasku narzędzi.
 
     ```sql
+    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
+    ```
+
+    Polecenie powinno zakończyć się pomyślnie, udzielania zawartej użytkownikowi możliwość tworzenia bazy danych (SSISDB).
+
+10.  Jeśli chcesz się przełączyć na potrzeby uwierzytelniania usługi Azure AD dla środowiska Azure-SSIS IR do niego dostęp z bazy danych SSISDB został utworzony przy użyciu uwierzytelniania programu SQL, kliknij prawym przyciskiem myszy **SSISDB** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
+
+11.  W oknie zapytania wprowadź następujące polecenie języka T-SQL, a następnie wybierz pozycję **Execute** na pasku narzędzi.
+
+    ```sql
+    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
+    ```
+
+    Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika do reprezentowania grupy.
+
+12.  Wyczyść okno zapytania, wprowadź następujące polecenie języka T-SQL, a następnie wybierz **Execute** na pasku narzędzi.
+
+    ```sql
     ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
     ```
 
-    Polecenie powinno zakończyć się pomyślnie, udzielania zawartej użytkownikowi możliwość tworzenia bazy danych.
+    Polecenie powinno zakończyć się pomyślnie, udzielania zawartej użytkownikowi możliwość dostępu do bazy danych SSISDB.
 
 ## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Włączanie usługi Azure AD na wystąpienie zarządzane usługi Azure SQL Database
 
@@ -127,15 +145,15 @@ Wystąpienie usługi Azure SQL Database Managed obsługuje tworzenie bazy danych
 
 1.   W witrynie Azure portal wybierz **wszystkich usług** -> **serwerów SQL** nawigacji po lewej stronie.
 
-1.   Wybierz wystąpienie usługi zarządzane, należy skonfigurować przy użyciu uwierzytelniania usługi Azure AD.
+2.   Wybierz wystąpienie usługi zarządzane, należy skonfigurować przy użyciu uwierzytelniania usługi Azure AD.
 
-1.   W **ustawienia** części bloku wybierz **administratora usługi Active Directory**.
+3.   W **ustawienia** części bloku wybierz **administratora usługi Active Directory**.
 
-1.   Na pasku poleceń Wybierz **Ustaw administratora**.
+4.   Na pasku poleceń Wybierz **Ustaw administratora**.
 
-1.   Wybierz konto użytkownika usługi Azure AD, można wprowadzić administrator serwera, a następnie wybierz pozycję **wybierz**.
+5.   Wybierz konto użytkownika usługi Azure AD, można wprowadzić administrator serwera, a następnie wybierz pozycję **wybierz**.
 
-1.   Na pasku poleceń Wybierz **Zapisz**.
+6.   Na pasku poleceń Wybierz **Zapisz**.
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Dodawanie tożsamości zarządzanej dla usługi ADF jako użytkownik w wystąpieniu zarządzanym usługi Azure SQL Database
 
@@ -168,7 +186,7 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
     ```
     
-    Polecenie powinno zakończyć się pomyślnie, udzielanie tożsamości zarządzanej dla usługi ADF możliwość utworzenia bazy danych.
+    Polecenie powinno zakończyć się pomyślnie, udzielanie tożsamości zarządzanej dla usługi ADF możliwość utworzenia bazy danych (SSISDB).
 
 ## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Aprowizacja Azure-SSIS IR w aplikacji portal/ADF platformy Azure
 

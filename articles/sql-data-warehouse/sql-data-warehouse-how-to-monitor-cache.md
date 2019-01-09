@@ -5,17 +5,17 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
+ms.component: performance
 ms.topic: how-to
-ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2a0504ae0e5c3dbf70ad84526176beae52f55870
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385536"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103132"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorować Gen2 pamięci podręcznej
 Architektura magazynu Gen2 automatycznie tworzy warstwy segmentów najczęściej poszukiwanych magazynu kolumn w pamięci podręcznej znajdującej się na NVMe oparte na dyskach SSD, przeznaczona dla magazynów danych Gen2. Większa wydajność jest wykonywane zapytania pobierają segmenty, które są znajdującej się w pamięci podręcznej. W tym artykule opisano sposób monitorowania i rozwiązywanie problemów z wydajnością wolnych zapytań, ustalając, czy obciążenie optymalnie korzystanie z pamięci podręcznej Gen2.  
@@ -39,15 +39,15 @@ Tabela poniżej opisano scenariusze, w oparciu o wartości metryk pamięci podr�
 | **Wysoki procent pamięć podręczna w użyciu** |          Scenariusz 1           |          Scenariusz 2          |
 | **Niska pamięć podręczna używana wartość procentowa**  |          Scenariusz 3           |          Scenariusz 4          |
 
-**Scenariusz 1:** są optymalnie przy użyciu pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania.
+**Scenariusz 1:** Używane są optymalnie pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania.
 
-**Scenariusz 2:** bieżącego zestawu danych roboczych nie mieści się w pamięci podręcznej, co powoduje, że niskiej wartości procentowej ze względu na fizyczne odczyty trafień w pamięci podręcznej. Rozważ skalowanie w górę poziomu wydajności i ponownie uruchom obciążenia, aby wypełnić pamięć podręczną.
+**Scenariusz 2:** Bieżący zestaw danych roboczych nie mieści się w pamięci podręcznej, co powoduje, że niskiej wartości procentowej ze względu na fizyczne odczyty trafień w pamięci podręcznej. Rozważ skalowanie w górę poziomu wydajności i ponownie uruchom obciążenia, aby wypełnić pamięć podręczną.
 
-**Scenariusz 3:** jest prawdopodobne, że zapytanie działa wolno, z przyczyn niezwiązanych ze sobą w pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania. Możesz też rozważyć [skalowanie w dół wystąpienia](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) Aby zmniejszyć rozmiar pamięci podręcznej w celu obniżenia kosztów. 
+**Scenariusz 3:** Istnieje prawdopodobieństwo, że zapytanie działa wolno, z przyczyn niezwiązanych ze sobą w pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania. Możesz też rozważyć [skalowanie w dół wystąpienia](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) Aby zmniejszyć rozmiar pamięci podręcznej w celu obniżenia kosztów. 
 
-**Scenariusz 4:** miał zimnych pamięci podręcznej, która może być powód, dlaczego zapytania została powolne. Należy rozważyć ponowne uruchomienie zapytania jako zestaw danych roboczych powinny teraz być w buforowane. 
+**Scenariusz 4:** Trzeba było zimnych pamięci podręcznej, która może być powód, dlaczego zapytania została powolne. Należy rozważyć ponowne uruchomienie zapytania jako zestaw danych roboczych powinny teraz być w buforowane. 
 
-**Ważne: Procent trafień w pamięci podręcznej, lub wartość procentowa pamięć podręczna w użyciu nie jest aktualizacji po ponownym uruchomieniu obciążenie, zestaw roboczy może już być przechowywanych w pamięci. Uwaga tylko klastrowanego magazynu kolumn, które tabele są buforowane.**
+**Ważne: Procent trafień w pamięci podręcznej, lub wartość procentowa pamięć podręczna w użyciu nie jest aktualizacji po ponownym uruchomieniu obciążenie, zestaw roboczy może być już znajdującym się w pamięci. Uwaga tylko klastrowanego magazynu kolumn, które tabele są buforowane.**
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat dostosowywania wydajności kwerendy ogólne, zobacz [monitorowania wykonywanych zapytań](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).

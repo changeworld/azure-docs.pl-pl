@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0135f3ab79852e55187874ce1d5a0695238de207
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074839"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117081"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Nawigacja i pulpity nawigacyjne w portalu Application Insights
-Po utworzeniu [Konfigurowanie usługi Application Insights w projekcie](../../application-insights/app-insights-overview.md), dane telemetryczne dotyczące użycia i wydajności aplikacji będą wyświetlane w zasobie usługi Application Insights projektu w [witryny Azure portal](https://portal.azure.com).
+Po utworzeniu [Konfigurowanie usługi Application Insights w projekcie](../../azure-monitor/app/app-insights-overview.md), dane telemetryczne dotyczące użycia i wydajności aplikacji będą wyświetlane w zasobie usługi Application Insights projektu w [witryny Azure portal](https://portal.azure.com).
 
 ## <a name="find-your-telemetry"></a>Znajdź telemetrii
 Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do zasobu usługi Application Insights, który został utworzony dla aplikacji.
@@ -34,7 +34,7 @@ Blok przeglądu (strona) dla aplikacji zawiera podsumowanie informacji o kluczow
 Można dostosowywać każdy siatki i wykresy i przypiąć je do pulpitu nawigacyjnego. W ten sposób możesz zebrać kluczowe dane telemetryczne z różnych aplikacji na centralnym pulpicie nawigacyjnym.
 
 ## <a name="dashboards"></a>Pulpity nawigacyjne
-Pierwszą rzeczą, zostanie wyświetlony po zalogowaniu się do [portalu Microsoft Azure](https://portal.azure.com) jest pulpit nawigacyjny. W tym miejscu możesz zebrać wykresów, które są dla Ciebie najważniejsze we wszystkich zasobach platformy Azure, w tym dane telemetryczne z [usługi Azure Application Insights](../../application-insights/app-insights-overview.md).
+Pierwszą rzeczą, zostanie wyświetlony po zalogowaniu się do [portalu Microsoft Azure](https://portal.azure.com) jest pulpit nawigacyjny. W tym miejscu możesz zebrać wykresów, które są dla Ciebie najważniejsze we wszystkich zasobach platformy Azure, w tym dane telemetryczne z [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Dostosowanego pulpitu nawigacyjnego.](./media/app-insights-dashboards/31.png)
 

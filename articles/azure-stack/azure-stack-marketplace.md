@@ -12,45 +12,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 12310c088777d65bef211747806f942433857e40
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: ''
+ms.openlocfilehash: 6c8a2cd746f1090e802f90a49f9a1f7469e98f5f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632352"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121524"
 ---
-# <a name="the-azure-stack-marketplace-overview"></a>Omówienie usługi Azure Stack w portalu Marketplace
+# <a name="azure-stack-marketplace-overview"></a>Omówienie usługi Azure Stack w portalu Marketplace
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Portal Marketplace to zbiór usług, aplikacji i zasobów dostosowane do usługi Azure Stack. Zasoby obejmują sieci, maszyn wirtualnych, magazynu i tak dalej. Użytkownicy przejdź tutaj, aby tworzyć nowe zasoby i wdrażanie nowych aplikacji. Go traktować jako zakupów katalog, w którym użytkownicy mogą przeglądać i wybierz elementy, które mają być użyte. Aby użyć elementu portalu Marketplace, użytkownicy muszą subskrybować oferty, który przyznaje im dostępu do elementu.
+W portalu Azure Marketplace stosu to zbiór usług, aplikacji i zasobów dostosowane do usługi Azure Stack. Zasoby obejmują sieci, maszyn wirtualnych, magazynu i inne. Użyj portalu Marketplace, aby tworzyć nowe zasoby i wdrażanie nowych aplikacji; Przeglądaj i wybierz elementy, które chcesz użyć. Aby użyć elementu portalu Marketplace, użytkownicy muszą subskrybować oferty, który przyznaje im dostępu do elementu.
 
-Jako operatorów usługi Azure Stack możesz wybierać elementy, które można dodać (publikowanie) w portalu Marketplace. Możesz opublikować elementów, takich jak bazy danych, App Services i tak dalej. Publikowanie sprawia, że ich widoczne dla wszystkich użytkowników. Możesz opublikować niestandardowe elementy, które tworzysz. Możesz również publikować elementy z rosnącej [listy elementów w portalu Azure Marketplace](azure-stack-marketplace-azure-items.md). Podczas publikowania elementu portalu Marketplace, użytkownicy mogli je zobaczyć w ciągu pięciu minut.
+Jako operatorów usługi Azure Stack możesz wybierać elementy, które można dodać (publikowanie) w portalu Marketplace. Można publikować elementy, takie jak bazy danych, App Services i tak dalej. Publikowanie sprawia, że ich widoczne dla wszystkich użytkowników. Możesz opublikować niestandardowe elementy, które tworzysz lub opublikować elementy z rosnącej [listy elementów w portalu Azure Marketplace](azure-stack-marketplace-azure-items.md). Podczas publikowania elementu portalu Marketplace, użytkownicy mogli je zobaczyć w ciągu pięciu minut.
 
-> [!Caution]  
-> Wszystkie artefakty elementu galerii, znane jako obrazy i pliki w formacie json, są dostępne bez uwierzytelniania po ich udostępnienie w portalu marketplace usługi Azure Stack. Więcej uwagi podczas publikowania elementów portalu marketplace niestandardowych można znaleźć [tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md).
+> [!CAUTION]  
+> Wszystkie artefakty elementu galerii, w tym obrazy i pliki w formacie JSON, są dostępne bez uwierzytelniania po ich udostępnienie w witrynie Azure Marketplace stosu. Więcej uwagi podczas publikowania elementów portalu marketplace niestandardowych można znaleźć [tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md).
 
-Aby otworzyć w portalu Marketplace, w konsoli administracyjnej wybierz **+ Utwórz zasób**.
+Aby otworzyć w portalu Marketplace w portalu wybierz opcję administrator **+ Utwórz zasób**.
 
-![](media/azure-stack-publish-custom-marketplace-item/image1.png)
+![Portal Marketplace](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
 ## <a name="marketplace-items"></a>Elementy portalu Marketplace
+
 Element usługi Azure Stack w portalu Marketplace jest usługa, aplikacji lub zasobu, który użytkownicy można pobrać do użycia. Wszystkie elementy usługi Azure Stack w portalu Marketplace są widoczne dla wszystkich użytkowników, w tym elementy administracyjne, takie jak plany i oferty. Te elementy nie wymagają subskrypcji do widoku, ale to nie działa dla użytkowników.
 
 Każdy element Marketplace ma:
 
-* Inicjowanie obsługi zasobu szablon usługi Azure Resource Manager
-* Metadane, takie jak ciągi, ikony i inne materiały marketingowe
-* Informacje o formatowaniu do wyświetlania elementu w portalu
+* Szablon usługi Azure Resource Manager do aprowizacji zasobów.
+* Metadane, takie jak ciągi, ikony i inne materiały marketingowe.
+* Informacje o formatowaniu do wyświetlania elementu w portalu.
 
-Każdy element opublikowanych w portalu Marketplace w formacie pakietu galerii platformy Azure (.azpkg). Dodaj oddzielnie, wdrażania lub środowisko uruchomieniowe zasoby (na przykład kod, pliki zip z oprogramowania i obrazów maszyn wirtualnych) do usługi Azure Stack nie jako część elementu portalu Marketplace. 
+Każdy element opublikowanych w portalu Marketplace w formacie pakietu galerii platformy Azure (.azpkg). Dodaj oddzielnie, wdrażania lub środowisko uruchomieniowe zasobów (kod, pliki zip z oprogramowania i obrazów maszyn wirtualnych) do usługi Azure Stack nie jako część elementu portalu Marketplace.
 
-Za pomocą wersji 1803 i nowsze usługi Azure Stack konwertuje obrazy plików rozrzedzonych podczas pobierania na platformie Azure lub podczas przekazywania obrazów niestandardowych. Ten proces powoduje dodanie czasu podczas dodawania obrazu, ale pozwala zaoszczędzić miejsce i przyspiesza wdrażanie tych obrazów. Konwersja ma zastosowanie tylko do nowych obrazów.  Istniejących obrazów nie są zmieniane. 
+Za pomocą wersji 1803 i nowsze usługi Azure Stack konwertuje obrazy plików rozrzedzonych podczas pobierania na platformie Azure lub podczas przekazywania obrazów niestandardowych. Ten proces powoduje dodanie czasu podczas dodawania obrazu, ale pozwala zaoszczędzić miejsce i przyspiesza wdrażanie tych obrazów. Konwersja ma zastosowanie tylko do nowych obrazów. Istniejących obrazów nie są zmieniane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Pobieranie elementów portalu Marketplace](azure-stack-download-azure-marketplace-item.md)  
-[Tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md)
 
+* [Pobieranie elementów portalu Marketplace](azure-stack-download-azure-marketplace-item.md)  
+* [Tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md)

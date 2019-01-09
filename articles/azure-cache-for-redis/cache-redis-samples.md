@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e14e76be50fc71738779e0196b2034ca4f8e0097
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744993"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103885"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Przykłady usługi Azure Cache for Redis
 Ten temat zawiera listę przykładów pamięci podręcznej Redis, obejmujące scenariusze, takie jak łączenie z pamięci podręcznej, odczytywania i zapisywania danych do i z pamięci podręcznej i za pomocą usługi Azure Cache ASP.NET dla dostawców usługi Redis pamięć podręczna systemu Azure. Niektóre przykłady to projekty do pobrania, a niektóre zapewniają wskazówki krok po kroku i umieszczania fragmentów kodu, ale nie należy przeprowadzać konsolidacji z projektem do pobrania.
@@ -47,7 +47,7 @@ Aby uzyskać więcej informacji, zobacz [StackExchange.Redis](https://github.com
 [Praca z obiektami platformy .NET w pamięci podręcznej](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) przedstawiono sposób wykonywania serializacji obiektów platformy .NET, dzięki czemu mogą być zapisanie ich do i odczytywać je z usługi Azure Cache dla wystąpienia usługi Redis. 
 
 ## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Na użytek pamięć podręczna systemu Azure dla usługi Redis jako płyty montażowej skalowania SignalR platformy ASP.NET
-[Używać usługi Azure Cache dla usługi Redis jako płyty montażowej skalowania dla programu ASP.NET SignalR](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) w przykładzie pokazano, jak używać usługi Azure Cache dla usługi Redis jako płyty montażowej SignalR. Aby uzyskać więcej informacji na temat systemu backplane zobacz [SignalR — skalowanie w poziomie przy użyciu usługi Redis](http://www.asp.net/signalr/overview/performance/scaleout-with-redis).
+[Używać usługi Azure Cache dla usługi Redis jako płyty montażowej skalowania dla programu ASP.NET SignalR](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) w przykładzie pokazano, jak używać usługi Azure Cache dla usługi Redis jako płyty montażowej SignalR. Aby uzyskać więcej informacji na temat systemu backplane zobacz [SignalR — skalowanie w poziomie przy użyciu usługi Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Pamięć podręczna systemu Azure dla przykładowych zapytań klienta pamięci podręcznej Redis
 Niniejszy przykład pokazuje porównuje wydajności między uzyskiwanie dostępu do danych z pamięci podręcznej i uzyskiwanie dostępu do danych z magazynu stanu trwałego. Ten przykład ma dwa projekty.

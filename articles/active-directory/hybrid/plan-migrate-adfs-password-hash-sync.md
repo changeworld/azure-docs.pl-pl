@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cad368cb968b94d1327cc99ed4dfa6df0aedd2cd
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a14e630c23af3e0228bf4806851f29cfab199215
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555102"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103982"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>Migrowanie z Federacji na synchronizację skrótów haseł w usłudze Azure AD
 Ten dokument zawiera wskazówki dotyczące przenoszenia z usług AD FS do synchronizacji skrótów haseł.
@@ -133,9 +133,9 @@ Przed przekonwertowaniem z Federacji na zarządzane, należy rozważyć ściśle
 |-|-|
 | Chcesz zachować usług AD FS w przypadku innych aplikacji.| Będą używać usługi Azure AD i usług AD FS i, należy wziąć pod uwagę doświadczenia użytkownika końcowego w wyniku. Użytkownicy mogą muszą uwierzytelnić się dwa razy w niektórych scenariuszach, gdy do usługi Azure AD (gdzie otrzymają one logowania jednokrotnego i nowszych wersjach do innych aplikacji, takich jak Office 365) i ponownie dla wszystkich aplikacji, nadal powiązane z usług AD FS jako zaufanie jednostki uzależnionej. |
 | Usługi AD FS są silnie dostosowanego i architekturze w ustawieniach dostosowania określone w pliku onload.js, którego nie można zduplikować w usłudze Azure AD (na przykład zmienisz środowisko logowania, aby użytkownicy tylko wprowadź formacie SamAccountName swoją nazwę użytkownika w przeciwieństwie nazwy UPN, lub silnie marki środowisko logowania)| Należy sprawdzić, czy bieżący wymagań dostosowania użytkownika mogą zostać spełnione przez usługę Azure AD przed kontynuowaniem. Sekcje znakowania programu AD FS i opcji dostosowania usług AD FS, aby uzyskać dodatkowe informacje i wskazówki można znaleźć.|
-| Blokują starsze uwierzytelnianie klientów za pośrednictwem usług AD FS.| Rozważ zastąpienie kontrolki do blokowania uwierzytelnianie starszych klientów aktualnie dostępne w usługach AD FS przy użyciu kombinacji [dostępu warunkowego kontroluje dla starszych uwierzytelniania](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [dostępu klienta programu Exchange Online Reguły](http://aka.ms/EXOCAR).|
+| Blokują starsze uwierzytelnianie klientów za pośrednictwem usług AD FS.| Rozważ zastąpienie kontrolki do blokowania uwierzytelnianie starszych klientów aktualnie dostępne w usługach AD FS przy użyciu kombinacji [dostępu warunkowego kontroluje dla starszych uwierzytelniania](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [dostępu klienta programu Exchange Online Reguły](https://aka.ms/EXOCAR).|
 | Możesz wymagać od użytkowników wykonać uwierzytelnianie wieloskładnikowe dla rozwiązania z serwerem usługi MFA w środowisku lokalnym, podczas uwierzytelniania usług AD FS.| Nie można iniekcję żądanie usługi MFA za pomocą lokalnego rozwiązania MFA do przepływ uwierzytelniania dla domeny zarządzanej, jednak można użyć usługi Azure MFA, w tym celu przyszłości raz domeny jest konwertowany. Jeśli użytkownicy nie korzystają już dzisiaj usługi Azure MFA, to będzie obejmować kroku rejestracji jednorazowe przez użytkownika końcowego, który trzeba będzie przygotowania i komunikują się użytkownikom końcowym.|
-| Używasz zasad kontroli dostępu (reguł autoryzacji) już dziś w usługach AD FS do kontrolowania dostępu do usługi Office 365.| Należy wziąć pod uwagę, zastępując je z równoważne usługi Azure AD [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) i [reguł dostępu klienta Exchange Online](http://aka.ms/EXOCAR).|
+| Używasz zasad kontroli dostępu (reguł autoryzacji) już dziś w usługach AD FS do kontrolowania dostępu do usługi Office 365.| Należy wziąć pod uwagę, zastępując je z równoważne usługi Azure AD [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) i [reguł dostępu klienta Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>Zagadnienia dotyczące typowych dostosowania usług AD FS
 
@@ -368,7 +368,7 @@ Konwersja odbywa się przy użyciu modułu Azure AD PowerShell.
 
 Korzystając z Twojej dzierżawy został Federacji, użytkownicy zostały przekierowaniu ze strony logowania usługi Azure AD do środowiska usług AD FS. Teraz, gdy dzierżawy jest skonfigurowany do używania synchronizacji skrótów haseł zamiast Federacji, użytkownicy nie będą Pobierz przekierowane do usług AD FS i zamiast tego będzie zalogować się bezpośrednio za pomocą strony logowania usługi Azure AD.
 
-Otwórz program Internet Explorer w trybie InPrivate w celu uniknięcia bezproblemowe logowanie Jednokrotne logowanie automatyczne, a następnie przejdź do strony logowania usługi Office 365 ([http://portal.office.com](http://portal.office.com/)). Wpisz nazwę UPN użytkownika, a następnie kliknij przycisk Dalej. Upewnij się, że wpisz nazwę UPN użytkownika hybrydowych, które zostało synchronizowane z lokalnej usługi Active Directory i który został wcześniej federacyjnych. Użytkownik zostanie wyświetlony ekran do wpisywania nazwy użytkownika i hasła.
+Otwórz program Internet Explorer w trybie InPrivate w celu uniknięcia bezproblemowe logowanie Jednokrotne logowanie automatyczne, a następnie przejdź do strony logowania usługi Office 365 ([https://portal.office.com](https://portal.office.com/)). Wpisz nazwę UPN użytkownika, a następnie kliknij przycisk Dalej. Upewnij się, że wpisz nazwę UPN użytkownika hybrydowych, które zostało synchronizowane z lokalnej usługi Active Directory i który został wcześniej federacyjnych. Użytkownik zostanie wyświetlony ekran do wpisywania nazwy użytkownika i hasła.
 
 ![Obraz 9](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
 

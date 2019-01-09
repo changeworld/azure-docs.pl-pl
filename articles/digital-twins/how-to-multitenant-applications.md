@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: 443a697a576aa26fe352d8ad47d9e61214c3fcf3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024114"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119972"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Włączanie aplikacji wielodostępnych za pomocą Twins cyfrowych platformy Azure
 
@@ -41,7 +41,7 @@ W tym scenariuszu należy wziąć pod uwagę deweloperów, tworzenie rozwiązani
 Problem:
 
 - Podczas **klienta** loguje się do **DEVELOPER**w aplikacji, aplikacja nie może uzyskać tokenów dla **klienta**firmy użytkownikom na uwierzytelnianie za pomocą cyfrowych Twins zarządzania interfejsów API usługi Azure.
-- Wyjątek pojawi się w usłudze Azure Active Directory wskazujący, że Twins cyfrowych platformy Azure nie został rozpoznany w ramach **klienta**w katalogu.
+- Wyjątek jest wystawiony w usłudze Azure Active Directory wskazujący, że Twins cyfrowych platformy Azure nie został rozpoznany w ramach **klienta**w katalogu.
 
 ## <a name="problem-solution"></a>Rozwiązanie problemu
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: c7273a1ef6ef4eab1d8bfadec33eeaacf4d222e9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 85764c0ee5b8ed117fb191657d54abe5bd10a703
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083011"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116555"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ręczne konfigurowanie aplikacji Application Insights dla aplikacji platformy .NET
 
-[Usługi Application Insights](../../application-insights/app-insights-overview.md) można skonfigurować do monitorowania szerokiej gamy aplikacji lub ról aplikacji, składników lub mikrousług. Program Visual Studio oferuje [jednoetapową konfigurację](../../azure-monitor/app/asp-net.md) usług i aplikacji internetowych. W przypadku innych typów aplikacji platformy .NET, takich jak role serwera wewnętrznej bazy danych lub aplikacje klasyczne, można ręcznie skonfigurować usługi Application Insights.
+[Usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) można skonfigurować do monitorowania szerokiej gamy aplikacji lub ról aplikacji, składników lub mikrousług. Program Visual Studio oferuje [jednoetapową konfigurację](../../azure-monitor/app/asp-net.md) usług i aplikacji internetowych. W przypadku innych typów aplikacji platformy .NET, takich jak role serwera wewnętrznej bazy danych lub aplikacje klasyczne, można ręcznie skonfigurować usługi Application Insights.
 
 ![Przykładowe wykresy monitorowania wydajności](./media/windows-services/10-perf.png)
 

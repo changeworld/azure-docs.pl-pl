@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002216"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102979"
 ---
 # <a name="what-is-distributed-tracing"></a>Co to jest rozproszonego śledzenia?
 
-Pojawienie się nowoczesnym rozwiązaniom w chmurze i [mikrousług](http://azure.com/microservices) architektury spowodowało proste, niezależnie do wdrożenia usług, które mogą pomóc w obniżeniu kosztów przy jednoczesnym zwiększeniu dostępność i przepływność. Ale podczas gdy przesunięcia te mają poszczególnych usług ułatwia zrozumienie jako całości, ich wprowadzone ogólną systemów trudniejsze poprawić i debugowania.
+Pojawienie się nowoczesnym rozwiązaniom w chmurze i [mikrousług](https://azure.com/microservices) architektury spowodowało proste, niezależnie do wdrożenia usług, które mogą pomóc w obniżeniu kosztów przy jednoczesnym zwiększeniu dostępność i przepływność. Ale podczas gdy przesunięcia te mają poszczególnych usług ułatwia zrozumienie jako całości, ich wprowadzone ogólną systemów trudniejsze poprawić i debugowania.
 
 W architekturami monolitycznymi uzyskane używaliśmy do debugowania za pomocą stosów wywołań. Stosy wywołań to doskonały narzędzia do wyświetlania przepływem wykonania (metoda wywoływana metoda B, który wywołuje metodę C), oraz szczegóły i parametry o każdej z tych wywołań. Jest to doskonałe rozwiązanie dla monolitycznych projektów lub usług działających w ramach jednego procesu, ale w jaki sposób możemy debugować kiedy wywołanie jest granicę procesu nie po prostu odwołania na stosie lokalnego? 
 
@@ -59,4 +59,4 @@ Witryna OpenCensus zachowuje Dokumentacja referencyjna interfejsu API [Python](h
 
 * [Podręcznik użycia OpenCensus języka Python](https://opencensus.io/api/python/trace/usage.html)
 * [Mapa aplikacji](./../../azure-monitor/app/app-map.md)
-* [Monitorowanie wydajności end-to-end](./../../application-insights/app-insights-tutorial-performance.md)
+* [Monitorowanie wydajności end-to-end](./../../azure-monitor/learn/tutorial-performance.md)

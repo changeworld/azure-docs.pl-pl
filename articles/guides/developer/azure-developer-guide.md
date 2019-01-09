@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c4eefa09f0a70d42601a5b1fe8694500b5c6be2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714359"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118255"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -178,7 +178,7 @@ Swoją aplikację wzwyż i działających na platformie Azure muszą mieć możl
 
 -   **Visual Studio Application Insights**: Hostowanymi na platformie Azure rozszerzalną usługą analizy integrującej się z programem Visual Studio do monitorowania aplikacji sieci web na żywo. Udostępnia dane, które należy ciągłym udoskonalaniu wydajności i użyteczności aplikacji, czy jest hostowany na platformie Azure lub nie.
 
-    >**Rozpoczynanie pracy**: Postępuj zgodnie z [samouczka usługi Application Insights](../../application-insights/app-insights-overview.md).
+    >**Rozpoczynanie pracy**: Postępuj zgodnie z [samouczka usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 -   **Usługa Azure Monitor**: Usługa, która pomaga w wizualizacji, zapytania, trasy, archiwizować i działania dotyczące metryk i dzienników generowanych przez usługi infrastruktury platformy Azure i zasobów. Monitor zapewnia widoki danych, zobacz temat w witrynie Azure portal, a następnie jest jedno źródło monitorowania zasobów platformy Azure.
  

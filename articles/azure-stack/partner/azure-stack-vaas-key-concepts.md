@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 871df693878611b0322a0f06634c62a7a9efd90a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6a14a806b48b30d84b021a84a1ef0a2f4318ea94
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335167"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106478"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Sprawdzanie poprawności jako kluczowe pojęcia dotyczące usługi
 
@@ -44,7 +44,7 @@ Przepływy pracy są pogrupowane według typu scenariusz testowania. Podczas tes
 ![Kafelki przepływu pracy VaaS](media/tile_all-workflows.png)
 
 > [!NOTE]
-> **Sprawdzanie poprawności pakietu** przepływu pracy aktualnie obsługuje dwa scenariusze: [pakietów zweryfikować OEM](azure-stack-vaas-validate-oem-package.md) i [Zweryfikuj aktualizacje oprogramowania firmy Microsoft](azure-stack-vaas-validate-microsoft-updates.md).
+> **Sprawdzania poprawności rozwiązań** przepływu pracy aktualnie obsługuje dwa scenariusze: [Sprawdzanie poprawności pakietów OEM](azure-stack-vaas-validate-oem-package.md) i [Zweryfikuj aktualizacje oprogramowania firmy Microsoft](azure-stack-vaas-validate-microsoft-updates.md).
 
 Aby uzyskać więcej informacji na temat typów przepływu pracy, zobacz [co to jest weryfikacja jako usługa dla usługi Azure Stack?](azure-stack-vaas-overview.md).
 
@@ -52,10 +52,10 @@ Aby uzyskać więcej informacji na temat typów przepływu pracy, zobacz [co to 
 
 1. Na pulpicie nawigacyjnym rozwiązania Utwórz nowe rozwiązanie lub wybierz istniejącą. Odświeża i umożliwia Kafelki przepływu pracy.
 2. Aby utworzyć nowy przepływ pracy, wybierz **Start** w dowolnym kafelku. Aby uzyskać informacje specyficzne dla każdego przepływu pracy zobacz następujące artykuły:
-    - Przebieg testu: [Szybki Start: Użyj weryfikacji jako portal usługi do zaplanowania Twojego pierwszego testu](azure-stack-vaas-schedule-test-pass.md)
-    - Sprawdzanie poprawności rozwiązania: [weryfikowanie nowych rozwiązań usługi Azure Stack](azure-stack-vaas-validate-solution-new.md)
-    - Sprawdzanie poprawności pakietu: [Zweryfikuj aktualizacje oprogramowania firmy Microsoft](azure-stack-vaas-validate-microsoft-updates.md)
-    - Sprawdzanie poprawności pakietu: [pakietów weryfikacji producenta OEM](azure-stack-vaas-validate-oem-package.md)
+    - Przebieg testu: [Szybki start: Użyj sprawdzania poprawności jako portal usługi, do zaplanowania Twojego pierwszego testu](azure-stack-vaas-schedule-test-pass.md)
+    - Sprawdzanie poprawności rozwiązania: [Weryfikowanie nowych rozwiązań usługi Azure Stack](azure-stack-vaas-validate-solution-new.md)
+    - Sprawdzanie poprawności rozwiązania: [Weryfikowanie aktualizacje oprogramowania firmy Microsoft](azure-stack-vaas-validate-microsoft-updates.md)
+    - Sprawdzanie poprawności rozwiązania: [Sprawdzanie poprawności pakietów producenta OEM](azure-stack-vaas-validate-oem-package.md)
 
 3. Do zarządzania i monitorowania istniejącego przepływu pracy, wybierz **Zarządzaj** na kafelku przepływu pracy. Wybierz nazwę przepływu pracy i użyć **Edytuj** przycisk, aby wyświetlić właściwości lub zmień wspólnych parametrów testu.
 

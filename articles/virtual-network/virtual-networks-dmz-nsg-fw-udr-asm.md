@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: fdb3c5cbd3acee90386352c6f180a71aa81f54fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23885245"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119445"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie sieci obwodowej do ochrony sieci z zapory, przez i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
-W tym przykładzie utworzy sieć obwodową z zapory, cztery serwery z systemem windows, użytkownik zdefiniowane routingu, przesyłania dalej protokołu IP i grup zabezpieczeń sieci. On również przeprowadzi wszystkich odpowiednich poleceń, aby zapewnić głębsze zrozumienie każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Ponadto w odwołaniach sekcja jest kompletny kod i instrukcje do tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
+W tym przykładzie utworzy sieć obwodową z zapory, cztery serwery z systemem windows, użytkownik zdefiniowane routingu, przesyłania dalej protokołu IP i grup zabezpieczeń sieci. On również przeprowadzi każdego odpowiednie polecenia, aby zapewnić lepiej zrozumieć każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Na koniec w odwołaniach sekcja jest kompletny kod i instrukcje umożliwiające tworzenie tego środowiska do testowania i eksperymentowania z różnymi scenariuszami. 
 
 ![Dwukierunkowe sieci obwodowe NVA, NSG i przez][1]
 
 ## <a name="environment-setup"></a>Konfigurowanie środowiska
-W tym przykładzie jest subskrypcji, która zawiera następujące elementy:
+W tym przykładzie ma subskrypcję, która zawiera następujące elementy:
 
 * Trzy usługi w chmurze: "SecSvc001", "FrontEnd001" i "BackEnd001"
-* "CorpNetwork" przy użyciu trzech podsieci sieci wirtualnej: "SecNet", "Fronton" i "Wewnętrzna"
-* Urządzenie wirtualne sieci, w tym przykładzie zaporą, połączony z podsiecią SecNet
-* Windows Server, który reprezentuje serwer sieci web aplikacji ("IIS01")
-* Dwa okna serwerów, które reprezentują aplikacji z powrotem kończyć serwery ("AppVM01", "AppVM02")
-* Windows server, który reprezentuje serwer DNS ("DNS01")
+* Sieć wirtualna "CorpNetwork", z trzema podsieciami: "SecNet", "Fronton" i "Wewnętrzna"
+* Wirtualne urządzenie sieciowe, w tym przykładzie Zapora połączona z podsiecią SecNet
+* Windows Server, który reprezentuje serwer aplikacji sieci web ("IIS01")
+* Serwery dwa okna, które reprezentują aplikacji z powrotem zakończenia serwerów ("AppVM01", "AppVM02")
+* Serwer Windows, który reprezentuje serwer DNS ("DNS01")
 
-W poniższej sekcji odwołań jest skrypt programu PowerShell, który zostanie skompilowany większość środowiska opisane powyżej. Tworzenie maszyn wirtualnych i sieci wirtualnych, chociaż są realizowane przez skrypt przykładowy nie opisano szczegółowo w tym dokumencie.
+W poniższej sekcji odwołania są skrypt programu PowerShell, który zostanie skompilowany większość środowiska opisanych powyżej. Tworzenie maszyn wirtualnych i sieci wirtualne, chociaż są wykonywane tylko przez przykładowy skrypt, nie opisano szczegółowo w tym dokumencie.
 
-Aby utworzyć środowiska:
+Aby skompilować środowiska:
 
-1. Zapisz plik xml konfiguracji sieci zawarte w sekcji odwołań (zaktualizowany o nazwy, lokalizacji i IP adresów do dopasowania danego scenariusza)
-2. Zaktualizuj zmienne użytkownika w skrypcie, aby dopasować środowiska, które jest skrypt do uruchomienia przed (subskrypcje, nazwy usługi itp.)
+1. Zapisz plik xml konfiguracji sieci znajdujących się w części odwołania (zaktualizowane przy użyciu nazwy, lokalizacji i adresów IP adresy, które mają odpowiadać danym scenariuszu)
+2. Zaktualizuj zmienne użytkownika w skrypcie, aby dopasować środowiska, które skrypt ma być uruchamiana względem (subskrypcji, nazwy usług itp.)
 3. Uruchom skrypt programu PowerShell
 
-**Uwaga**: region oznaczony w skrypcie programu PowerShell musi odpowiadać oznaczony w pliku xml konfiguracji sieci.
+**Uwaga**: Region oznaczony w skrypcie programu PowerShell musi odpowiadać oznaczony w pliku xml konfiguracji sieci.
 
-Po pomyślnym uruchomieniu skryptu może podjąć następujące kroki skryptu po:
+Poniższe kroki skryptu używanego po utworzeniu mogą zostać podjęte, gdy skrypt zostanie uruchomiony pomyślnie:
 
-1. Konfigurowanie reguł zapory, ten temat znajdują się w sekcji poniżej: opis reguły zapory.
+1. Konfigurowanie reguł zapory, znajdują się w sekcji poniżej: Opis reguły zapory.
 2. Opcjonalnie w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej.
 
-Po uruchomieniu skryptu pomyślnie zapory, zasady zostaną muszą zostać wykonane zostało to opisane w sekcji: reguł zapory.
+Po pomyślnym uruchomieniu skryptu zapory, których zasady będą musieli wykonać znajdują się w sekcji: Reguły zapory.
 
-## <a name="user-defined-routing-udr"></a>Zdefiniowane przez użytkownika routingu (przez)
-Domyślnie następujące trasy systemowe są zdefiniowane jako:
+## <a name="user-defined-routing-udr"></a>Zdefiniowane przez użytkownika routingu (trasy zdefiniowanej przez użytkownika)
+Domyślnie następujące trasy systemowe są definiowane jako:
 
         Effective routes : 
          Address Prefix    Next hop type    Next hop IP address Status   Source     
@@ -68,35 +68,35 @@ Domyślnie następujące trasy systemowe są zdefiniowane jako:
          {172.16.0.0/12}   Null                                 Active   Default    
          {192.168.0.0/16}  Null                                 Active   Default
 
-VNETLocal jest zawsze prefiksy określonych adresów sieci wirtualnej dla tej sieci określonych (ie go ulegnie zmianie z sieci wirtualnej do sieci wirtualnej w zależności od tego, jak zdefiniowano każdej określonej sieci wirtualnej). Pozostałe tras systemowych są statyczne i domyślne jako powyżej.
+VNETLocal jest zawsze prefiksy adresów zdefiniowanych sieci wirtualnej dla tej określonej sieci (ie zmieni z sieci wirtualnej do sieci wirtualnej w zależności od tego, jak jest zdefiniowany każdej określonej sieci wirtualnej). Pozostałe tras systemowych są statyczne i domyślne opisanych powyżej.
 
-Podobnie jak w przypadku priorytet trasy są przetwarzane przy użyciu metody najdłuższym prefiksu dopasowania (LPM), w związku z tym specyficzny trasy w tabeli powinna zostać zastosowana do podanego adresu.
+Jak w przypadku priorytetu trasy są przetwarzane za pomocą metody najdłuższego prefiksu dopasowania (LPM), w związku z tym naliczona zostałaby bardziej konkretny od pozostałych trasy w tabeli do zadanego miejsca docelowego adresu.
 
-W związku z tym w sieci wirtualnej do miejsca docelowego z powodu trasy 10.0.0.0/16 zostanie przekierowane ruchu (na przykład do serwera DNS01 10.0.2.4) przeznaczone dla sieci lokalnej (10.0.0.0/16). Innymi słowy 10.0.2.4, trasy 10.0.0.0/16 jest specyficzny trasy, mimo że 10.0.0.0/8 i 0.0.0.0/0 również można zastosować, ale ponieważ są one mniejsze określonych nie wpływają one na ten ruch. W związku z tym ruch do 10.0.2.4 mają następnego przeskoku lokalnej sieci wirtualnej i po prostu trasy do miejsca docelowego.
+W związku z tym ruch w sieci (na przykład do serwera DNS01 10.0.2.4) do sieci lokalnej (10.0.0.0/16) może być kierowany w sieci wirtualnej do miejsca docelowego, z powodu trasy 10.0.0.0/16. Innymi słowy, w przypadku 10.0.2.4, trasy 10.0.0.0/16 jest najbardziej określoną trasę, mimo że 10.0.0.0/8 i 0.0.0.0/0 również można zastosować, ale ponieważ są one mniej określonych nie wpływają one na ten ruch. Dlatego ruch do 10.0.2.4 mają następnym przeskokiem do lokalnej sieci wirtualnej i po prostu trasy do miejsca docelowego.
 
-Jeśli ruch jest przeznaczona do 10.1.1.1, na przykład, trasy 10.0.0.0/16 nie zastosować, ale 10.0.0.0/8 będzie najbardziej konkretny i to ruch pomijane ("czarna holed"), ponieważ następnego przeskoku jest Null. 
+Jeśli ruch jest przeznaczona do 10.1.1.1, na przykład, w takich sytuacjach przydałaby się trasy 10.0.0.0/16, ale 10.0.0.0/8 będzie najczęściej określonych i ruch będzie to porzucić ("black holed"), ponieważ następny przeskok ma wartość Null. 
 
-Jeśli miejsce docelowe nie dotyczą prefiksy wartości Null ani prefiksy VNETLocal, a następnie wykonać najmniej określonej trasy, 0.0.0.0/0 oraz być kierowane z Internetem jako następnego przeskoku i w związku z tym out krawędzi internet platformy Azure.
+Jeśli miejsce docelowe nie można zastosować do dowolnego z prefiksami o wartości Null lub prefiksy VNETLocal, a następnie wykonać co najmniej określonej trasy, 0.0.0.0/0 oraz kierować z Internetem w następnym skoku, a tym samym poziomie granicy Internetu platformy Azure.
 
-Jeśli istnieją dwie identyczne prefiksów w tabeli tras, poniżej przedstawiono kolejność preferencji na podstawie atrybutu "source" tras:
+Jeśli istnieją dwie identyczne prefiksy w tabeli tras, są następujące elementy w kolejności preferencji na podstawie atrybutu "źródło" trasy:
 
-1. "VirtualAppliance" = ręcznie dodawane do tabeli trasę zdefiniowany przez użytkownika
-2. "Właściwość VPNGateway" = dynamiczny trasy protokołu BGP (gdy jest używany z sieci hybrydowe), dodane przez protokół dynamicznej sieci, te trasy może ulec zmianie jako protokół dynamicznej automatycznie uwzględnia zmiany w połączyć za pomocą sieci
-3. "Default" = tras systemowych, lokalnej sieci wirtualnej i statyczne wpisy, jak pokazano w powyższej tabeli tras.
+1. "VirtualAppliance" = ręcznie dodawane do tabeli trasy zdefiniowany przez użytkownika
+2. "Bramy VPNGateway" = dynamiczny trasy protokołu BGP (gdy jest używane z sieci hybrydowe), dodane przez protokół dynamicznej sieci, te trasy może zmienić wraz z upływem czasu Protokół dynamicznej automatycznie uwzględnia zmiany w sieci równorzędnej
+3. "Default" = trasy systemowe i lokalnej sieci wirtualnej i statyczne wpisy, jak pokazano w powyższej tabeli tras.
 
 > [!NOTE]
-> Użytkownik zdefiniowane routingu przez mogą teraz używać z usługi ExpressRoute i bram sieci VPN, aby wymusić wychodzące i przychodzące między lokalizacjami ruch będzie kierowany do sieci (NVA) urządzenia wirtualnego.
+> Można teraz używać zdefiniowaną przez użytkownika routingu (UDR) przy użyciu usługi ExpressRoute i bramy sieci VPN, aby wymusić wychodzące i przychodzące między środowiskami lokalnymi ruch do wirtualnego urządzenia sieciowego (WUS).
 > 
 > 
 
 #### <a name="creating-the-local-routes"></a>Tworzenie tras lokalnych
-W tym przykładzie są potrzebne dwie tabele routingu, jeden dla każdej podsieci frontonu i wewnętrznej bazy danych. Każda tabela została załadowana z tras statycznych, które są odpowiednie dla danej podsieci. Na potrzeby tego przykładu każda tabela zawiera trzy tras:
+W tym przykładzie są potrzebne dwie tabele routingu, jeden dla każdej z podsieciami frontonu i wewnętrznej bazy danych. Każda tabela jest załadowana trasy statyczne, które są odpowiednie dla danej podsieci. Na potrzeby tego przykładu każda tabela zawiera trzy trasy:
 
-1. Definicja ruchu w podsieci lokalnej z następnego przeskoku zezwalająca na ruch podsieci lokalnej ominąć zaporę
-2. Ruchu w sieci wirtualnej z przeskoku dalej zdefiniowany jako zapory, zastępuje domyślną regułę, umożliwiający lokalny ruch sieci wirtualnej do routingu bezpośredniego
-3. Pozostałe cały ruch (0/0) z przeskoku dalej zdefiniowany jako zapory
+1. Ruchu w podsieci lokalnej za pomocą następnego skoku zdefiniowanymi tak, aby zezwolić na ruch z podsieci lokalnej ominąć zaporę
+2. Ruchu w sieci wirtualnej za pomocą następnego skoku zdefiniowany jako zapora, ustawienie to zastępuje domyślną regułę zezwalającą na lokalny ruch w sieci wirtualnej kierować bezpośrednio
+3. Pozostałe cały ruch (0/0) za pomocą następnego skoku zdefiniowany jako zapora
 
-Po utworzeniu tabele routingu są one powiązane z ich podsieci. Dla podsieci Frontend tabeli routingu raz utworzony i powiązany z podsiecią powinien wyglądać następująco:
+Po utworzeniu tabele routingu są powiązane swoje podsieci. Dla podsieci Frontend tabeli routingu, jeden raz utworzona i powiązane z podsieci powinien wyglądać następująco:
 
         Effective routes : 
          Address Prefix    Next hop type    Next hop IP address Status   Source     
@@ -106,33 +106,33 @@ Po utworzeniu tabele routingu są one powiązane z ich podsieci. Dla podsieci Fr
          {0.0.0.0/0}       VirtualAppliance 10.0.0.4            Active
 
 
-Na przykład poniższe polecenia są używane do kompilacji tabeli tras Dodaj trasy zdefiniowane przez użytkownika, a następnie powiązać tabeli tras do podsieci (Uwaga; wszystkie elementy poniżej rozpoczynający się od znaku dolara (np.: $BESubnet) są zmiennych zdefiniowanych przez użytkownika ze skryptu w Odwołanie do sekcji tego dokumentu):
+Na przykład następujące polecenia służą do tworzenia tabeli tras, Dodaj trasy zdefiniowanej przez użytkownika, a następnie powiązania tabeli tras do podsieci (Uwaga; wszystkie elementy poniżej zaczynający się od znaku dolara (np.: $BESubnet) są zmienne zdefiniowane przez użytkownika ze skryptu w Odwołanie do sekcji tego dokumentu):
 
-1. Najpierw należy utworzyć podstawową tabelę routingu. Ta Wstawka kodu pokazano tworzenie tabeli podsieci wewnętrznej bazy danych. W skrypcie tworzona jest również odpowiedniego tabeli dla podsieci frontonu.
+1. Najpierw należy utworzyć podstawowej tabeli routingu. Ten fragment kodu przedstawia tworzenie tabeli podsieci wewnętrznej bazy danych. W skrypcie tworzony jest także odpowiedniej tabeli dla podsieci frontonu.
    
-     Nowe AzureRouteTable-Name $BERouteTableName "
+     Nowe AzureRouteTable — nazwa $BERouteTableName "
    
          -Location $DeploymentLocation `
          -Label "Route table for $BESubnet subnet"
-2. Po utworzeniu tabeli tras można dodać trasy zdefiniowane przez określonego użytkownika. W tym przedstawiono cały ruch (0.0.0.0/0), zostaną przesłane przez urządzenie wirtualne (zmiennej $VMIP [0], używany do przekazywania adres IP przypisany podczas tworzenia urządzenia wirtualnego wcześniej w skrypcie). W skrypcie tworzona jest również odpowiednią regułę w tabeli frontonu.
+2. Po utworzeniu tabeli tras można dodać trasy zdefiniowane przez określonego użytkownika. W tym odbierającej cały ruch (0.0.0.0/0) będą kierowane za pośrednictwem urządzenia wirtualnego (zmienną $VMIP [0] jest używany do przekazywania adresu IP przypisanego podczas tworzenia urządzenia wirtualnego wcześniej w skrypcie). W skrypcie odpowiednia reguła jest tworzona w tabeli frontonu.
    
      Get-AzureRouteTable $BERouteTableName | `
    
          Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
          -NextHopType VirtualAppliance `
          -NextHopIpAddress $VMIP[0]
-3. Powyżej wejście dla trasy przesłoni "0.0.0.0/0" trasy domyślnej, ale domyślna reguła 10.0.0.0/16 nadal istniejące umożliwiające ruchu w sieci wirtualnej, aby kierować bezpośrednio do miejsca docelowego, a nie do urządzenia wirtualnego sieci. Aby poprawne to zachowanie reguły wykonaj musi zostać dodany.
+3. Powyższe wejście dla trasy przesłonią "0.0.0.0/0" trasy domyślnej, ale domyślna reguła 10.0.0.0/16 nadal istniejące umożliwiające ruch sieciowy w ramach sieci wirtualnej w celu kierowania bezpośrednio do miejsca docelowego, a nie wirtualnego urządzenia sieciowego. Aby poprawne to zachowanie reguły postępuj zgodnie z musi zostać dodany.
    
         Get-AzureRouteTable $BERouteTableName | `
             Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
             -NextHopType VirtualAppliance `
             -NextHopIpAddress $VMIP[0]
-4. W tym momencie jest wybór ma zostać wykonane. Z powyższych na dwa sposoby cały ruch będzie przekierowywać do zapory w celu oceny, nawet ruch w ramach pojedynczej podsieci. Może to konieczne, jednak aby zezwolić na ruch w rozesłać lokalnie bez udziału z zapory innej podsieci, można dodać bardzo określona reguła. Ta trasa stanów, które dowolnego adresu destine dla podsieci lokalnej można po prostu kierować bezpośrednio (Typ następnego przeskoku = VNETLocal).
+4. W tym momencie jest wybór ma zostać wykonane. Za pomocą powyższych dwóch tras cały ruch będzie kierować do zapory dla oceny, nawet ruch sieciowy w ramach pojedynczej podsieci. To może być wskazane, jednak, aby zezwolić na ruch w obrębie podsieci do rozsyłania lokalnie bez angażowania w zaporze trzeci, można dodać bardzo szczegółowych reguł. Ta trasa stanów, które każdy adres destine dla lokalnej podsieci można po prostu ma kierować bezpośrednio (Typ następnego przeskoku = VNETLocal).
    
         Get-AzureRouteTable $BERouteTableName | `
             Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
             -NextHopType VNETLocal
-5. Na koniec z tabeli routingu tworzone i wypełniane przy użyciu trasy zdefiniowane przez użytkownika, tabela musi teraz powiązać z podsiecią. W skrypcie frontonu tabelę tras jest także powiązany podsieci frontonu. Oto skryptu powiązanie dla podsieci wewnętrznej.
+5. Na koniec z tabeli routingu utworzony i wypełniony tras zdefiniowanych przez użytkownika, tabela musi teraz być powiązana z podsiecią. W skrypcie tabeli tras frontonu również jest powiązana z podsiecią Frontend. Oto skrypt powiązania dla podsieci zaplecza.
    
      Zestaw AzureSubnetRouteTable - VirtualNetworkName $VNetName "
    
@@ -140,31 +140,31 @@ Na przykład poniższe polecenia są używane do kompilacji tabeli tras Dodaj tr
         -RouteTableName $BERouteTableName
 
 ## <a name="ip-forwarding"></a>Przesyłanie dalej IP
-Funkcja pomocnika przez, jest przekazywanie adresów IP. To ustawienie na urządzenie wirtualne, które pozwala na odbieranie ruchu kierowanego nie specjalnie do urządzenia, a następnie przesyła ten ruch do końcowego miejsca docelowego.
+Funkcja pomocnika trasy zdefiniowanej przez użytkownika, to przekazywanie adresów IP. To ustawienie na urządzenie wirtualne, które umożliwia odbieranie ruchu nie jest skierowana do urządzenia, a następnie przekazują ruch do ostatecznego miejsca przeznaczenia.
 
-Na przykład jeśli ruch z AppVM01 zgłasza żądanie do serwera DNS01 przez czy trasy to zapory. Z przesyłania dalej protokołu IP włączone ruchu dla miejsca docelowego DNS01 (10.0.2.4) zostanie zaakceptowane przez urządzenia (10.0.0.4) i następnie przekazywane do końcowego miejsca docelowego (10.0.2.4). Bez przekazywania adresów IP jest włączona Zapora ruch może nie zostać zaakceptowane przez urządzenia, mimo że tabeli tras ma zapory w następnym skoku. 
+Na przykład jeśli ruch z AppVM01 kieruje żądanie do serwera DNS01 trasy zdefiniowanej przez użytkownika będzie kierować to do zapory. Z włączoną funkcją przekazywania adresów IP ruch dla miejsca docelowego DNS01 (10.0.2.4) zostaną zaakceptowane przez urządzenie (10.0.0.4) i następnie przekazywane do ostatecznego miejsca docelowego (10.0.2.4). Bez przekazywania adresów IP jest włączona Zapora ruch nie była akceptowana przez urządzenie, mimo że tabela tras ma zapory w następnym skoku. 
 
 > [!IMPORTANT]
-> Warto Pamiętaj, aby umożliwić przekazywanie adresów IP w połączeniu z routingiem zdefiniowane użytkownika.
+> Koniecznie pamiętać umożliwić przekazywanie adresów IP w połączeniu z routingu zdefiniowanego użytkownika.
 > 
 > 
 
-Konfigurowanie przekazywania adresów IP jest jednego polecenia i może odbywać się w czasie tworzenia maszyny Wirtualnej. Przepływ w tym przykładzie fragment kodu jest na końcu skryptu i zgrupowana za pomocą polecenia przez:
+Konfigurowanie przekazywania adresów IP jest pojedyncze polecenie i może odbywać się podczas tworzenia maszyny Wirtualnej. Przepływ w tym przykładzie fragment kodu się w kierunku końca skryptu i zgrupowane za pomocą poleceń trasy zdefiniowanej przez użytkownika:
 
-1. Wywołanie wystąpienia maszyny Wirtualnej, które w tym przypadku jest Twoje urządzenie wirtualne zapory, a następnie włącz przesyłania dalej protokołu IP (Uwaga; dowolny element w czerwonym rozpoczynający się od znaku dolara (np.: $VMName[0]) jest zmienną zdefiniowanych przez użytkownika ze skryptu zamieszczone w tej sekcji tego dokumentu. Pierwsza maszyna wirtualna w tablicy maszyn wirtualnych, na przykład skryptu pracę bez żadnych modyfikacji reprezentuje zero w nawiasach [0], pierwsza maszyna wirtualna (VM 0) musi być zapory):
+1. Wywołać wystąpienia maszyny Wirtualnej, który w tym przypadku jest urządzenie wirtualne zapory, a następnie włączyć funkcję przekazywania adresów IP (Uwaga; dowolny element w czerwonym zaczynający się od znaku dolara (np.: $VMName[0]) jest zdefiniowane przez użytkownika zmienną ze skryptu zamieszczone w tej sekcji niniejszego dokumentu. Zero w nawiasie [0] reprezentuje pierwszą maszynę Wirtualną w tablicy, której maszyny wirtualne, aby uzyskać przykładowy skrypt działać bez żadnych modyfikacji, pierwsza maszyna wirtualna (VM, 0) muszą być zapory):
    
-     Get-AzureVM-Name $VMName [0] - ServiceName $ServiceName [0] | `
+     Get-AzureVM — nazwa $VMName [0] - ServiceName $ServiceName [0] | `
    
         Set-AzureIPForwarding -Enable
 
 ## <a name="network-security-groups-nsg"></a>Sieciowe grupy zabezpieczeń (NSG)
-W tym przykładzie grupa NSG jest wbudowana i następnie ładowane przy użyciu jednej reguły. Ta grupa jest następnie powiązać tylko z podsieci frontonu i wewnętrznej bazy danych (nie SecNet). Deklaratywnie budowanego następującą regułę:
+W tym przykładzie grupa NSG jest wbudowana i następnie ładowane przy użyciu jednej reguły. Ta grupa jest następnie powiązany tylko z podsieciami frontonu i wewnętrznej bazy danych (nie SecNet). Deklaratywne budowanego następującą regułę:
 
-1. Odmowa cały ruch (wszystkie porty) z Internetu do całej sieci wirtualnej (wszystkie podsieci)
+1. Odmowa cały ruch (wszystkich portów) z Internetu do całej sieci wirtualnej (wszystkie podsieci)
 
-Mimo że grupy NSG są używane w tym przykładzie, jego głównym celem jest jako dodatkowej warstwy obrony przed ręcznej konfiguracji. Chcemy, aby zablokować wszystkie przychodzący ruch z Internetu do każdego serwera sieci Web, lub podsieci wewnętrznej bazy danych, ruch powinny przepływać tylko za pośrednictwem podsieci SecNet do zapory (i następnie jeśli odpowiednią frontonu lub wewnętrznej bazy danych podsieci). Plus przy użyciu reguł przez w miejscu, dowolnego ruchu, który należy do podsieci frontonu lub wewnętrznej bazy danych może być kierowane limit do zapory (dzięki użyciu przez). Zapora będzie traktować jako asymetrycznego przepływu i spowoduje pominięcie ruchu wychodzącego. W związku z tym są trzy warstwy zabezpieczeń, ochrony podsieci frontonu i wewnętrznej bazy danych; 1) otwórz punktów końcowych na FrontEnd001 i BackEnd001 usługi w chmurze, 2) grupy NSG zezwalających na ruch z Internetu, 3) zapory usunięcie asymetrycznego ruchu.
+Mimo że sieciowe grupy zabezpieczeń są używane w tym przykładzie, jego głównym celem jest jako dodatkowej warstwy obrony przed ręczne błędnej konfiguracji. Chcemy zablokować wszystkie przychodzący ruch z Internetu do każdego frontonu lub podsieci wewnętrznej bazy danych, ruch tylko powinna przepływać przez podsieci SecNet do zapory (i jeśli następnie właściwe frontonu lub wewnętrznej bazy danych podsieci). Ponadto za pomocą reguł trasy zdefiniowanej przez użytkownika w miejscu, cały ruch, która została wprowadzona do podsieci frontonu lub wewnętrznej bazy danych będzie nastąpi przekierowanie się do zapory (dzięki trasy zdefiniowanej przez użytkownika). Zapora widział to jako przepływ asymetryczne i będzie pomijać ruch wychodzący. Dlatego istnieją trzy warstwy zabezpieczeń, ochrony z podsieciami frontonu i wewnętrznej bazy danych; (1) otwórz punktów końcowych na FrontEnd001 i BackEnd001 usługi w chmurze, (2) sieciowe grupy zabezpieczeń odmawianie ruch z Internetu, (3) zapory usuwanie asymetrycznego ruch.
 
-Jeden punkt interesujące dotyczące grupy zabezpieczeń sieci, w tym przykładzie jest, że zawiera on tylko jedną regułę, pokazano poniżej, która jest odrzucanie ruch internetowy do całej sieci wirtualnej, obejmujące podsieci zabezpieczeń. 
+Jeden punkt interesujące dotyczące sieciowej grupy zabezpieczeń, w tym przykładzie jest to, czy zawiera on tylko jedną regułę, pokazano poniżej, aby zablokować ruch internetowy do całej sieci wirtualnej, która obejmuje podsieci zabezpieczeń, czyli. 
 
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
@@ -175,7 +175,7 @@ Jeden punkt interesujące dotyczące grupy zabezpieczeń sieci, w tym przykładz
         -DestinationPortRange '*' `
         -Protocol *
 
-Jednak ponieważ grupa NSG jest powiązany tylko z podsieci frontonu i zaplecza, reguła nie jest przetwarzana na ruch przychodzący z podsiecią zabezpieczeń. W związku z tym mimo że reguły NSG mówi nie ruch internetowy do dowolnego adresu w sieci wirtualnej, ponieważ grupa NSG nigdy nie został powiązany z podsiecią zabezpieczeń, ruch będzie przepływać z podsiecią zabezpieczeń.
+Jednak ponieważ sieciowa grupa zabezpieczeń jest powiązana tylko z podsieci frontonu i zaplecza, reguła nie jest przetwarzane na ruch przychodzący do podsieci zabezpieczeń. W rezultacie mimo że reguła sieciowej grupy zabezpieczeń jest wyświetlany komunikat nie ruch internetowy do dowolnego adresu w sieci wirtualnej, ponieważ sieciowa grupa zabezpieczeń nigdy nie została powiązana z podsiecią zabezpieczeń, ruch będzie przepływać do podsieci zabezpieczeń.
 
     Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
         -SubnetName $FESubnet -VirtualNetworkName $VNetName
@@ -184,129 +184,129 @@ Jednak ponieważ grupa NSG jest powiązany tylko z podsieci frontonu i zaplecza,
         -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
 ## <a name="firewall-rules"></a>Reguły zapory
-Zapory zasady przekazywania zostanie muszą zostać utworzone. Ponieważ Zapora jest blokowanie lub funkcji przekazywania wszystkich przychodzące, wychodzące, sieć wirtualną wewnątrz ruchu wiele reguł zapory są wymagane. Ponadto cały ruch przychodzący nastąpi trafienie usługi zabezpieczeń publicznego adresu IP (na różnych portów), do przetworzenia przez zaporę. Najlepszym rozwiązaniem jest diagram logiczny przepływów przed rozpoczęciem konfigurowania podsieci i reguły zapory, aby uniknąć zmian później. Poniższa ilustracja jest widok logiczny reguły zapory, w tym przykładzie:
+Na zaporze reguły przekazywania będzie muszą zostać utworzone. Ponieważ Zapora blokuje lub funkcji przekazywania, wszystkie przychodzące, wychodzące, sieć wirtualną wewnątrz ruchu wiele reguł zapory są wymagane. Ponadto wszystkie ruch przychodzący będzie trafień usługi zabezpieczeń publiczny adres IP (na różne porty) do przetworzenia przez zaporę. Najlepszym rozwiązaniem jest diagram logiczny przepływów, przed rozpoczęciem konfigurowania podsieci i reguły zapory, aby uniknąć przerabiać później. Poniższa ilustracja jest widok logiczny reguł zapory, w tym przykładzie:
 
 ![Widok logiczny reguł zapory][2]
 
 > [!NOTE]
-> Oparte na urządzenie wirtualne sieci używana, porty zarządzania będą się różnić. W tym przykładzie, który odwołuje się do zapory NextGen Barracuda, który używa portów 22, 801 i 807. Zapoznaj się z dokumentacją dostawcy urządzenia można znaleźć odpowiednie porty używane do zarządzania urządzeniami używana.
+> Oparte na wirtualne urządzenie sieciowe używane, porty zarządzania będą się różnić. W tym przykładzie, który odwołuje się do Barracuda NextGen Firewall, który używa porty 22, 801 i 807. Zapoznaj się dokumentacją dostawcy urządzenia, aby znaleźć dokładnie portów używanych do zarządzania urządzeniami używana.
 > 
 > 
 
 ### <a name="logical-rule-description"></a>Opis reguły logiczne
-Na powyższym diagramie logiczne podsieci zabezpieczeń nie jest wyświetlane, ponieważ Zapora jest tylko zasobów tej podsieci, a ten diagram jest wyświetlany reguły zapory i sposób ich logicznie akceptować lub odrzucać przepływów ruchu sieciowego i nie rzeczywistej ścieżce routingiem. Ponadto zewnętrzne porty wybrany na potrzeby ruchu protokołu RDP są wyższe ranged portów (8014 — 8026) i wybranych do nieco wyrównany z ostatnich dwóch oktety lokalny adres IP dla czytelności łatwiejsze (np. adres serwera lokalnego 10.0.1.4 jest skojarzony z portu zewnętrznego 8014), jednak można użyć żadnych wyższej niekolidujących portów.
+W powyższym diagramie logicznym podsieci zabezpieczeń nie jest wyświetlany, ponieważ Zapora jest tylko zasobów tej podsieci, a ten diagram jest wyświetlane reguły zapory i jak one logicznie blokują lub zezwalają na ruch i nie rzeczywistej ścieżce trasowane. Ponadto portów zewnętrznych wybrany z ruchem RDP są wyższe zakres portów (8014 — 8026) i zostały wybrane do nieco wyrównane z ostatnich dwóch oktety adresu IP lokalnego czytelność (np. adres serwera lokalnego 10.0.1.4 jest skojarzony z portu zewnętrznego 8014), jednak można użyć żadnych portów wyższych bezkonfliktowe.
 
-Na przykład potrzebujemy 7 typów reguł, te typy reguł są opisane w następujący sposób:
+W tym przykładzie potrzebujemy 7 typów reguł, te typy reguł są opisane w następujący sposób:
 
 * Reguły zewnętrzne (dla ruchu przychodzącego):
-  1. Zarządzanie reguła: Ta reguła przekierowania aplikacji zezwala na ruch do przekazania do portów zarządzania urządzenie wirtualne sieci.
-  2. Zasady protokołu RDP (na każdym serwerze z systemem windows): następujące cztery reguły (po jednym dla każdego serwera) umożliwi Zarządzanie poszczególnych serwerów za pomocą protokołu RDP. Może to również być połączone w jedną regułę w zależności od możliwości urządzenie wirtualne sieci używane.
-  3. Reguły ruchu aplikacji: Istnieją dwie reguły ruchu aplikacji pierwszy dla ruchu w sieci web frontonu i drugą dla ruchu zaplecza (np serwera sieci web do warstwy danych). Konfiguracja te reguły będzie zależą od architektury sieci (w którym są umieszczane serwerów) i przepływów ruchu (kierunku przepływów ruchu sieciowego i portów, do których są używane).
-     * Pierwsza reguła będzie zezwalać na ruch rzeczywisty aplikacji do serwera aplikacji. Inne zasady Zezwalaj na zabezpieczenia, zarządzanie, itp., reguły aplikacji są co Zezwalaj użytkowników zewnętrznych lub usług, uzyskać dostęp do aplikacji. Na przykład jest jednym serwerze sieci web na porcie 80, w związku z tym pojedynczą aplikacji regułę zapory przekierować ruch przychodzący do zewnętrznego adresu IP do sieci web serwerów wewnętrzny adres IP. Sesja przekierowywania ruchu czy NAT się pod uwagę wewnętrznego serwera.
-     * Drugą regułę ruchu aplikacji jest wewnętrzna reguły zezwalającej na serwerze sieci Web komunikował się z serwerem AppVM01 (ale nie AppVM02) za pomocą dowolnego portu.
-* Wewnętrzne zasady (dla ruchu w sieci wirtualnej wewnątrz)
-  1. Ruch wychodzący do Internetu reguły: Ta reguła będzie zezwalać na ruch z żadną siecią do przekazania do wybranych sieci. Ta reguła jest zwykle domyślna reguła już w zaporze, ale w stanie wyłączenia. Ta reguła powinna być włączona w tym przykładzie.
-  2. Reguła DNS: Ta reguła zezwala tylko na ruch DNS (port 53) do przekazania do serwera DNS. Dla tego środowiska, większość ruchu z serwera sieci Web do wewnętrznej bazy danych jest zablokowany ta zasada umożliwia DNS w szczególności z żadnych podsieci lokalnej.
-  3. Reguła podsieci do sieci: Ta reguła jest umożliwienie dowolnego serwera w podsieci wewnętrznej w celu połączenia z serwerem z podsieci frontonu (ale nie odwrotnie).
-* Reguła awaryjnego (dla ruchu, który nie spełnia żadnego z powyższych):
-  1. Odmów wszystkie reguły ruchu: To powinna zawsze być końcowego reguły (pod względem priorytetu), a jako takie Jeśli przepływa ruch nie pasuje do żadnej z powyższych zasad, które zostaną usunięte przez tę regułę. Jest to domyślna reguła i zwykle jest aktywna, żadnych modyfikacji nie są zwykle wymagane.
+  1. Reguły zarządzania zapory: Ta reguła przekierowania aplikacji zezwala na ruch do przekazania do portów zarządzania wirtualnego urządzenia sieciowego.
+  2. Reguły protokołu RDP (dla każdego serwera systemu windows): Te cztery reguły (po jednym dla każdego serwera) umożliwi Zarządzanie poszczególnych serwerów za pośrednictwem protokołu RDP. To, można również połączone w jedną regułę, w zależności od możliwości sieciowe urządzenie wirtualne używane.
+  3. Reguły ruchu dla aplikacji: Istnieją dwie reguły ruchu aplikacji pierwszy do ruchu w sieci web frontonu, a drugi dla ruchu w sieci wewnętrznej (na przykład serwer sieci web do warstwy danych). Konfiguracji tych zasad będzie zależeć od architektury sieci (w którym są umieszczane serwery) i przepływy ruchu (kierunku przepływu ruchu, a które porty są używane).
+     * Pierwsza reguła umożliwi ruch rzeczywisty aplikacji do serwera aplikacji. Inne zasady umożliwiające zabezpieczeń, zarządzania, itp., reguł aplikacji są co umożliwia użytkownikom zewnętrznym lub usług, uzyskać dostęp do aplikacji. W tym przykładzie jest jednym serwerze sieci web na porcie 80, dlatego pojedynczą aplikację regułę zapory przekieruje ruch przychodzący na zewnętrzny adres IP jako wewnętrzny adres IP w sieci web serwerów. Sesja przekierowanego ruchu będzie translatora adresów Sieciowych uwagę do wewnętrznego serwera.
+     * Drugą regułę ruchu aplikacji jest zaplecza reguły zezwalającej na serwerze sieci Web na komunikowanie się z serwerem AppVM01 (ale nie AppVM02) za pośrednictwem dowolnego portu.
+* Wewnętrzne zasady (dla ruchu między sieciami wirtualnymi wewnątrz)
+  1. Ruch wychodzący do Internetu reguły: Ta zasada będzie zezwolić na ruch z żadną siecią do przekazania do wybranych sieci. Ta reguła jest zazwyczaj domyślna reguła już w zaporze, ale w stanie wyłączenia. Ta reguła powinna być włączona w tym przykładzie.
+  2. Reguła DNS: Ta reguła zezwala tylko na ruch DNS (port 53) do przekazania do serwera DNS. Dla tego środowiska, których większość ruchu z frontonu do zaplecza jest zablokowane ta zasada wyraźnie dopuszczają DNS z dowolnej podsieci lokalnej.
+  3. Reguła podsieci do sieci: Ta reguła jest umożliwienie dowolnego serwera w tej podsieci zaplecza, połączyć się z dowolnego serwera w podsieci frontonu (ale nie odwrotnie).
+* Reguła odporne na uszkodzenia (dla ruchu, który nie spełnia żadnego z powyższych):
+  1. Odmów wszystkie reguły ruchu: Powinna zawsze być końcowa reguła (w kategoriach priority), a związku z tym jeśli ruch przepływa nie pasuje do żadnej z powyższych zasad, które zostaną usunięte przez tę regułę. Jest to domyślna reguła i zazwyczaj aktywowana, nie są ogólnie potrzebne modyfikacje.
 
 > [!TIP]
-> Na drugiej reguły ruchu aplikacji każdy port jest dozwolone w przypadku łatwy w tym przykładzie w rzeczywistym scenariuszu najbardziej określonego portu i zakresy adresów mają być używane do zmniejszyć obszar ataków tej reguły.
+> Na drugiej reguły ruchu aplikacji każdy port jest dozwolony dla łatwy w tym przykładzie, w przypadku rzeczywistych najbardziej określonego portu i zakresy adresów powinny być używane do zmniejszyć obszar ataków tej reguły.
 > 
 > 
 
 <br />
 
 > [!IMPORTANT]
-> Po utworzeniu wszystkich powyższych reguł, należy przejrzeć priorytet każdej reguły, aby upewnić się, ruch ma być dozwolony lub odrzucany zgodnie z potrzebami. Na przykład reguły są w kolejności priorytetu. Jest łatwy do zostanie zablokowana z powodu nieprawidłowo uporządkowane reguły zapory. Co najmniej upewnij się, że zarządzania zapory sam jest zawsze bezwzględną reguły priorytet najwyższy.
+> Po utworzeniu wszystkich powyższych reguł jest ważne zapoznać się z priorytetem każdej reguły, aby upewnić się, ruch będzie dozwolony lub zabroniony zgodnie z potrzebami. W tym przykładzie reguły są w kolejności priorytetów. To ułatwia zostanie zablokowana zapory z powodu nieprawidłowo uporządkowane reguł. Jako minimum upewnij się, że zarządzanie zapory, sama jest zawsze bezwzględne reguły priorytet najwyższy.
 > 
 > 
 
 ### <a name="rule-prerequisites"></a>Reguły wymagań wstępnych
-Jeden wstępnie wymagane oprogramowanie dla maszyny wirtualnej uruchomionej zapory są publiczne punkty końcowe. Zapory do przetwarzania ruchu sieciowego odpowiednie publiczne punkty końcowe musi być otwarty. Istnieją trzy typy ruchu w tym przykładzie; 1) ruch związany z zarządzaniem kontrola zapory i reguł zapory, 2) na ruch RDP do kontrolowania serwerów z systemem windows, a ruch 3) aplikacji. Są trzy kolumny typów ruchu w prawym górnym połowy widok logiczny reguł zapory powyżej.
+Jeden warunek wstępny dla maszyny wirtualnej z systemem zapory są publiczne punkty końcowe. Zapory do przetwarzania ruchu odpowiednie publicznych punktów końcowych musi być otwarty. Istnieją trzy typy ruchu sieciowego, w tym przykładzie; Ruch protokołu RDP (1) ruch związany z zarządzaniem do kontroli zapory i reguł zapory, 2) w celu kontrolowania serwerów z systemem windows i ruchu (3) aplikacji. Oto trzy kolumny typów ruchu sieciowego w prawym górnym połowę widok logiczny reguł zapory powyżej.
 
 > [!IMPORTANT]
-> Należy pamiętać, że jest tutaj klucza takeway **wszystkie** ruchu rozpocznie się za pośrednictwem zapory. Tak do pulpitu zdalnego na serwerze IIS01, nawet jeśli jest już w usłudze w chmurze Front End i podsieci frontonu, dostępu do tego serwera firma Microsoft będzie muszą dla protokołu RDP w zaporze na porcie 8014, a następnie zezwalać wewnętrznie trasy żądania protokołu RDP z portem RDP IIS01 zapory. Przycisk "Połącz" portalu Azure nie będzie działać, ponieważ nie istnieje żadne bezpośrednią ścieżkę RDP IIS01 (o ile portalu można zobaczyć). Oznacza to, że wszystkie połączenia z Internetem będzie usługi zabezpieczeń i Port, np. secscv001.cloudapp.net:xxxx (odwołanie w schemacie powyżej mapowanie portu zewnętrznego i wewnętrznym adresem IP i Port).
+> Należy pamiętać, że jest tutaj kluczy takeway **wszystkich** ruchu pojawią się przez zaporę. Więc do pulpitu zdalnego z serwerem IIS01, mimo że jest w pierwszej usłudze końcowy w chmurze i w podsieci frontonu dostępu do tego serwera firma Microsoft będzie konieczne protokołu RDP do zapory na porcie 8014, a następnie pozwól zaporę, tak aby kierować żądania protokołu RDP wewnętrznie do IIS01 Por protokołu RDP t. Przycisk "Połącz" w witrynie Azure portal nie będą działać, ponieważ nie ma bezpośredniego RDP ścieżki do IIS01 (o ile zobaczyć portalu). Oznacza to, że wszystkie połączenia z Internetem będzie usługa zabezpieczeń i Port, np. secscv001.cloudapp.net:xxxx (odwołanie w powyższym wykresie mapowania portu zewnętrznego i wewnętrznym adresem IP i Port).
 > 
 > 
 
-Punkt końcowy można otworzyć zarówno w czasie tworzenia maszyny Wirtualnej lub po kompilacji jest przeprowadzane w przykładowy skrypt i przedstawionym poniżej na następujący fragment kodu (Uwaga; dowolnego elementu, począwszy od znak dolara (np.: $VMName[$i]) jest zmienną zdefiniowanych przez użytkownika ze skryptu zamieszczone w tej sekcji tego dokumentu. "$I" w nawiasach [$i] reprezentuje liczbę tablicy określonej maszyny Wirtualnej w tablicy maszyn wirtualnych):
+Punkt końcowy, można otworzyć zarówno w czasie tworzenia maszyny Wirtualnej lub po kompilacji, jak jest wykonywane w skrypcie przykład i przedstawionym poniżej na następujący fragment kodu (Uwaga; dowolnego elementu rozpoczynający się od znaku dolara (np.: $VMName[$i]) jest zdefiniowane przez użytkownika zmienną ze skryptu w sectio odwołania n tego dokumentu. "$I" w nawiasie [$i] reprezentuje tablicę określonej maszyny Wirtualnej w tablicy maszyn wirtualnych):
 
     Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
         -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
         Update-AzureVM
 
-Mimo że nie wyraźnie przedstawiony tutaj ze względu na użycie zmiennych, ale punkty końcowe są **tylko** otworzyć zabezpieczeń usługi w chmurze. Pozwala to zapewnić, że cały ruch przychodzący jest obsługiwane (kierowane, translatora adresów Sieciowych porzucone) przez zaporę.
+Chociaż nie wyraźnie przedstawiony tutaj ze względu na użycie zmiennych, ale punkty końcowe są **tylko** otworzyć zabezpieczenia usługi w chmurze. Pozwala to upewnić się, że cały ruch przychodzący jest obsługiwane (kierowane, translatora adresów Sieciowych spadły) przez zaporę.
 
-Klienta zarządzania musi być zainstalowana na komputerze Zarządzanie zaporą i tworzyć konfiguracje wymagane. Można znaleźć dostawcy dokumentacji zapory (lub inne NVA) do zarządzania urządzeniem. W pozostałej części tej sekcji i kolejnej sekcji, tworzenie reguł zapory, opisano konfigurację zapory, za pomocą klienta zarządzania dostawców (tj. portalu Azure lub programu PowerShell).
+Klient zarządzania będzie muszą być zainstalowane na komputerze do zarządzania zaporą i tworzyć konfiguracje wymagane. Wyświetlone dostawcę dokumentacji zapory (lub innego urządzenia WUS) do zarządzania urządzeniem. W pozostałej części tej sekcji i kolejnej sekcji, tworzenie reguł zapory, opisano konfigurację zapory, za pomocą klienta zarządzania dostawcami, (tj. nie witryny Azure portal lub programu PowerShell).
 
-Instrukcje dotyczące pobierania klienta i nawiązywania połączenia z Barracuda używana w tym przykładzie można znaleźć tutaj: [Barracuda NG administratora](https://techlib.barracuda.com/NG61/NGAdmin)
+Instrukcje dotyczące pobierania klienta i nawiązywania połączenia z Barracuda, używany w tym przykładzie można znaleźć tutaj: [Barracuda NG administratora](https://techlib.barracuda.com/NG61/NGAdmin)
 
-Po zalogowaniu się na zaporze, ale przed utworzeniem reguły zapory, istnieją dwie klasy obiektu wymagań wstępnych, które mogą ułatwić tworzenie reguły łatwiejsze. Obiekty sieci i usługi.
+Po zalogowaniu się na zaporze, ale przed utworzeniem reguł zapory, istnieją dwie klasy obiektu wymagań wstępnych, które mogą ułatwić tworzenie reguł łatwiejsze. Obiekty usługi & sieci.
 
-W tym przykładzie trzy obiekty nazwanej sieci powinien być zdefiniowany (jeden dla podsieci frontonu i podsieci wewnętrznej bazy danych, a także obiekt sieci adresu IP serwera DNS). Aby utworzyć sieć o nazwie; począwszy od klienta pulpitu nawigacyjnego Barracuda NG administratora, przejdź na kartę Konfiguracja, w sekcji konfiguracji operacyjnych kliknij zestaw reguł, kliknij przycisk "Sieci" w menu obiekty zapory, a następnie kliknij przycisk Nowa, w menu Edycja sieci. Obiekt sieci teraz można utworzyć, dodając nazwy i prefiksu:
+W tym przykładzie trzy obiekty sieci o nazwie powinna być zdefiniowana (po jednym dla podsieci frontonu i podsieci wewnętrznej bazy danych, również do obiektu sieciowego dla adresu IP serwera DNS). Aby utworzyć sieć nazwane; począwszy od pulpitu nawigacyjnego klienta Barracuda NG administratora, przejdź na kartę Konfiguracja, w sekcji Konfiguracja operacyjnej kliknij zestaw reguł, kliknij pozycję "Sieci" w menu obiekty zapory, a następnie kliknij pozycję Nowy w menu Edycja sieci. Obiekt network teraz można utworzyć, dodając nazwę i prefiksu:
 
 ![Utwórz obiekt sieci frontonu][3]
 
-Spowoduje to utworzenie nazwanej sieci dla podsieci frontonu, podobne obiekt powinien zostać utworzony dla tej podsieci wewnętrznej bazy danych. Teraz podsieci można łatwiej odwoływać się nazwa reguły zapory.
+Spowoduje to utworzenie nazwanego sieci dla podsieci frontonu, należy utworzyć podobne obiektu w podsieci wewnętrznej bazy danych. Teraz podsieci można łatwiej odwoływać się według nazwy w regułach zapory.
 
-Dla obiekt serwera DNS:
+Aby uzyskać obiekt serwera DNS:
 
 ![Utwórz obiekt serwera DNS][4]
 
-Ten jedno odwołanie adres IP zostanie wykorzystana w regule DNS w dalszej części dokumentu.
+Ten jedno odwołanie adresu IP będą wykorzystywane w regule DNS w dalszej części dokumentu.
 
-Drugi obiekty wymagań wstępnych są obiektami usługi. Te będą stanowiły portów połączeń protokołu RDP dla każdego serwera. Ponieważ istniejący obiekt usługi protokołu RDP jest powiązany z domyślnym portem RDP, 3389, utworzyć nowych usług można zezwalać na ruch z zewnętrznego portów (8014 8026). Nowych portów można również dodać do istniejącej usługi protokołu RDP, ale w celu ułatwienia demonstracyjnych, można utworzyć regułę dla każdego serwera. Aby utworzyć nową regułę protokołu RDP na serwerze. począwszy od klienta pulpitu nawigacyjnego Barracuda NG administratora, przejdź na kartę Konfiguracja, w sekcji konfiguracji operacyjnych kliknij zestaw reguł, a następnie kliknij przycisk "Usługi" w menu obiekty zapory, przewiń w dół listę usług i wybierz usługę "RDP". Kliknij prawym przyciskiem myszy i wybierz Kopiuj, a następnie kliknij prawym przyciskiem myszy i wybierz Wklej. Teraz jest obiektem usługi RDP Copy1, które mogą być edytowane. Kliknij prawym przyciskiem myszy RDP Copy1 i wybierz polecenie Edytuj, usługa Edytuj obiekt okna punktu obecności się, jak pokazano poniżej:
+Drugi obiekty wymagań wstępnych są obiektami usługi. Te będzie reprezentować portów połączeń protokołu RDP dla każdego serwera. Ponieważ istniejący obiekt usługi RDP jest powiązany z portem RDP domyślne, 3389, nowych usług mogą być tworzone na ruch z portów zewnętrznych (8014 8026). Nowych portów, również może zostać dodany do istniejącej usługi protokołu RDP, ale w celu ułatwienia demonstracji, można utworzyć regułę dla każdego serwera. Aby utworzyć nową regułę protokołu RDP dla serwera; począwszy od pulpitu nawigacyjnego klienta Barracuda NG administratora, przejdź na kartę Konfiguracja, w sekcji Konfiguracja operacyjnej kliknij zestaw reguł, a następnie kliknij pozycję "Usługi" w menu obiekty zapory, przewiń w dół na liście usług i wybierz usługę "RDP". Kliknij prawym przyciskiem myszy wybierz kopię, a następnie kliknij prawym przyciskiem myszy i wybierz pozycję wklejania. Teraz jest obiektem usługi Copy1 protokołu RDP, które można edytować. Kliknij prawym przyciskiem myszy Copy1 protokołu RDP i wybierz pozycję Edytuj, usługa Edytuj obiekt okno zostanie wyświetlone w górę, jak pokazano poniżej:
 
-![Kopiowanie reguły domyślnej protokołu RDP][5]
+![Kopiuj domyślna reguła protokołu RDP][5]
 
-Następnie można edytować wartości do reprezentowania usługi protokołu RDP dla określonego serwera. Dla AppVM01 powyżej domyślną regułę RDP powinno zostać zmodyfikowane w celu uwzględnienia nowej nazwy usługi, opis i portu zewnętrznego RDP używany na rysunku 8 diagramie (Uwaga: porty nie zostaną zmienione z domyślnych RDP 3389 na porcie zewnętrznym używane dla tego określonego serwera, w przypadku AppVM01 porcie zewnętrznym jest 8025) zmodyfikowane usługi są wyświetlane poniżej :
+Następnie można edytować wartość do reprezentowania usługi protokołu RDP dla określonego serwera. Dla AppVM01 powinien być modyfikowany powyżej Reguła domyślna RDP, aby odzwierciedlały nową nazwę usługi, opis i zewnętrznych portu RDP używanej w diagramie rysunek 8 (Uwaga: porty są zmieniane z domyślna RDP 3389 na porcie zewnętrznym używane dla tego określonego serwera w przypadku AppVM01 porcie zewnętrznym jest 8025) zmodyfikowaną usługę znajdują się poniżej:
 
 ![Reguła AppVM01][6]
 
-Ten proces powtarza się do tworzenia usług protokołu RDP dla pozostałych serwerów; AppVM02 DNS01 i IIS01. Tworzenie tych usług będzie tworzenia reguły prostszy i bardziej oczywistymi w następnej sekcji.
+Ten proces należy powtórzyć do tworzenia usług protokołu RDP dla pozostałych serwerów; AppVM02 DNS01 i IIS01. Tworzenie usługi spowoduje, że tworzenie reguł prostszy i bardziej oczywisty w następnej sekcji.
 
 > [!NOTE]
-> Usługa protokołu RDP dla zapory nie jest wymagana dwóch powodów; 1) pierwsze zapory maszyny Wirtualnej jest obrazem opartymi na systemie Linux, więc SSH będzie używany port 22 na potrzeby zarządzania maszyny Wirtualnej zamiast protokołu RDP, a port 22 2) i dwa porty zarządzania są dozwolone w pierwszej regule zarządzania opisane poniżej, aby umożliwić łączność w procesie zarządzania.
+> Usługi protokołu RDP dla zapory nie są potrzebne do dwóch przyczyn; pierwszy 1), zapory maszyny Wirtualnej jest obrazem opartych na systemie Linux, dzięki czemu SSH będzie używana na porcie 22 dla zarządzania maszyną Wirtualną, a nie protokołu RDP i (2) port 22 i dwa porty zarządzania są dozwolone w pierwszej reguły zarządzania opisane poniżej, aby umożliwić łączność zarządzania.
 > 
 > 
 
 ### <a name="firewall-rules-creation"></a>Tworzenie reguły zapory
-Istnieją trzy typy reguł zapory, w tym przykładzie, wszystkie mają różne ikony:
+Istnieją trzy typy reguł zapory używane w tym przykładzie, wszystkie one mają różne ikony:
 
-Reguła przekierowania aplikacji: ![przekierowania ikona aplikacji][7]
+Reguła przekierowania aplikacji: ![Ikona przekierowania aplikacji][7]
 
-Reguła NAT docelowego: ![docelowym translacji adresów Sieciowych ikony][8]
+Reguła NAT do docelowej: ![Ikona translatora adresów Sieciowych docelowego][8]
 
-Reguła przebiegu: ![Przekaż ikonę][9]
+Reguła — dostęp próbny: ![Przekaż ikonę][9]
 
-Więcej informacji na temat tych zasad można znaleźć w witrynie sieci web Barracuda.
+Więcej informacji na temat tych reguł można znaleźć w witrynie sieci web firmy Barracuda.
 
-Utworzenie następujących reguł (lub sprawdź, czy istniejących reguł domyślnych), począwszy od pulpitu nawigacyjnego klienta Barracuda NG administratora, przejdź do karty konfiguracji, w konfiguracji operacyjnej sekcji kliknij zestaw reguł. Siatki o nazwie "Main reguły" wyświetli istniejących reguł active i zdezaktywowane tej zapory. W prawym górnym rogu tej siatki jest mały, zielony "+", kliknij tutaj, aby utworzyć nową regułę (Uwaga: Zapora może być "zablokowana" zmian, jeśli widoczny przycisk oznaczony jako "Lock" i nie można utworzyć lub edytować reguły, kliknij ten przycisk "Odblokuj" zestaw reguł i Zezwól na edytowanie). Jeśli chcesz edytować istniejącą regułę, wybierz reguły, kliknij prawym przyciskiem myszy i wybierz pozycję Edytuj regułę.
+Utworzenie następujących reguł (lub Sprawdź istniejące reguły domyślne), zaczynając od administratora NG Barracuda klienta pulpitu nawigacyjnego, przejdź na kartę Konfiguracja w konfiguracji operacyjnej sekcji kliknij pozycję zestaw reguł. Siatce o nazwie "Main reguły" zostaną wyświetlone istniejące reguły aktywne i nieaktywne na tej zapory. W prawym górnym rogu tej siatce są małe, zielony "+" przycisk, kliknij tutaj, aby utworzyć nową regułę (Uwaga: Zapora może być "zablokowany" zmian, jeśli zostanie wyświetlony przycisk oznaczone jako "Zablokuj" i nie można utworzyć lub edytować reguły, kliknij ten przycisk, aby "Odblokuj" zestaw reguł i  Zezwól na edytowanie). Jeśli chcesz edytować istniejącą regułę, wybierz regułę, że prawym przyciskiem myszy i wybierz pozycję Edytuj regułę.
 
-Gdy reguły są tworzone i/lub zmodyfikowane, musi być przypisany do zapory i następnie aktywowany, jeśli nie zostanie to zrobione zmian reguły nie zacznie obowiązywać. Proces wypychania i aktywacji jest opisany poniżej opisy reguł Szczegóły.
+Gdy reguły są tworzone i/lub zmodyfikowane, musi być wypchnięte do zapory i następnie aktywowany, jeśli nie zostanie to zrobione zmian reguły nie zostały zastosowane. Proces wypychania i aktywacji jest opisane poniżej opisy reguł szczegółowe informacje.
 
-Szczegółowe informacje na temat każdej reguły wymagane do wykonania w tym przykładzie są opisane w następujący sposób:
+Szczegółowe informacje na temat każdej reguły wymaganiem do wykonania w tym przykładzie opisano w następujący sposób:
 
-* **Zarządzanie reguły zapory**: ten przekierowania aplikacji reguła zezwala na ruch do przekazania do portów zarządzania urządzenie wirtualne sieci, w tym przykładzie zapory NextGen Barracuda. Porty zarządzania są 801, 807 i opcjonalnie 22. Wewnętrzne i zewnętrzne porty są takie same (tzn. bez translacji port). Reguły i ustawienia dostępu do danych, reguła domyślna i domyślnie włączona (w wersji zapory NextGen Barracuda 6.1).
+* **Zarządzanie reguła zapory**: Ta reguła przekierowania aplikacji zezwala na ruch do przekazania do portów zarządzania sieciowe urządzenie wirtualne, w tym przykładzie zapora Barracuda NextGen. Porty zarządzania są 801 807 i opcjonalnie 22. Porty wewnętrznych i zewnętrznych są takie same (czyli nie tłumaczenie port). Reguły i ustawienia-MGMT-dostęp, reguła domyślna i domyślnie włączona (w wersji Barracuda NextGen Firewall 6.1).
   
-    ![Reguły zapory zarządzania][10]
+    ![Reguły zarządzania zapory][10]
 
 > [!TIP]
-> Przestrzeń adresowa źródła w tej regule jest, jeżeli zakresów adresów IP zarządzania są znane, zmniejszenie ten zakres będzie również zmniejszyć obszar ataków na porty zarządzania.
+> Przestrzeń adresowa źródła w tej regule jest, jeśli zakresy adresów IP zarządzania są znane, co zmniejsza ten zakres będzie również zmniejszyć obszar ataków do portów zarządzania.
 > 
 > 
 
-* **Zasady protokołu RDP**: reguł NAT przeznaczenia tych umożliwi Zarządzanie poszczególnych serwerów za pomocą protokołu RDP.
-  Istnieją cztery pola krytyczne potrzebne do utworzenia tej reguły:
+* **Reguły protokołu RDP**:  Te reguły translatora adresów Sieciowych docelowego umożliwi Zarządzanie poszczególnych serwerów za pośrednictwem protokołu RDP.
+  Istnieją cztery pola krytyczne potrzebne, aby utworzyć tę regułę:
   
-  1. Źródło — Zezwalaj na RDP z dowolnego miejsca, odwołanie "Dowolne" jest używany w polu źródło.
-  2. Usługi — użyj odpowiedniego obiektu usługi utworzonego wcześniej, w tym przypadku "AppVM01 RDP", zewnętrzne porty przekierowania do serwerów lokalny adres IP i port 3386 (domyślny port protokołu RDP). Jest to określona reguła dostępu RDP do AppVM01.
-  3. Miejsce docelowe — powinien być *lokalnych portów w zaporze*, "DCHP 1 lokalny adres IP" lub eth0 używania statycznych adresów IP. Numer porządkowy (eth0, eth1 itp.) może się różnić, jeśli urządzenia sieciowe ma wiele interfejsów lokalnych. Jest to port zapory wysyła z (może być taki sam jak port odbierania), rzeczywista routingiem miejsce docelowe jest w polu listy docelowej.
-  4. Przekierowanie — w tej sekcji informuje urządzenie wirtualne gdzie ostatecznie przekierować ruch. Najprostsza przekierowania jest umieszczenie adresów IP i Port (opcjonalnie) w polu listy docelowej. Jeśli port nie jest używany port docelowy dla ruchu przychodzącego żądania będzie używany (ie nie tłumaczenie), jeśli port jest wybrany port będzie również NAT oraz adres IP zajmie się.
+  1. Źródło — Zezwalaj na RDP z dowolnego miejsca i odwołania "Dowolne" jest używany w polu źródłowym.
+  2. Usługi — użyj odpowiedniego obiektu usługi utworzone wcześniej w tym przypadku "AppVM01 RDP", portów zewnętrznego przekierowania do serwerów lokalny adres IP i port 3386 (domyślny port protokołu RDP). Ta reguła określonych ma dostęp RDP do AppVM01.
+  3. Miejsce docelowe — powinno być *lokalny port w zaporze*, "DCHP 1 lokalny adres IP" lub eth0, jeśli za pomocą statycznych adresów IP. Liczbę porządkową (eth0, eth1 itp.) może się różnić, jeśli urządzenia sieciowego ma wiele interfejsów lokalnych. Jest to port zapory wysyła z (może być taki sam jak port odbieranie), rzeczywiste trasowane miejsce docelowe znajduje się w polu listy docelowej.
+  4. Przekierowywanie — w tej sekcji informuje urządzenie wirtualne dokąd przekierowywać ostatecznie ten ruch. Najprostsza przekierowania jest umieszczenie adresów IP i portu (opcjonalnie) w polu listy docelowej. Jeśli port nie jest używany port docelowy dla ruchu przychodzącego żądania, będzie używany (ie nie tłumaczenie), jeśli port jest wyznaczony numer portu będzie również translatora adresów Sieciowych oraz adres IP zajmie się.
      
-     ![Reguły zapory protokołu RDP][11]
+     ![Reguła protokołu RDP][11]
      
      Łącznie cztery reguły protokołu RDP potrzebne do utworzenia: 
      
@@ -318,277 +318,277 @@ Szczegółowe informacje na temat każdej reguły wymagane do wykonania w tym pr
      | RDP-AppVM02 |AppVM02 |AppVm02 protokołu RDP |10.0.2.6:3389 |
 
 > [!TIP]
-> Zawężanie zakresu pola źródłowego i usług w dół zmniejsza podatność na ataki. Najbardziej ograniczonym zakresie, co umożliwi funkcji powinny być używane.
+> Zawężając zakres pola źródłowego i usługi zostaną zmniejszyć obszar narażony na ataki. Najbardziej ograniczonym zakresie, które umożliwi funkcji powinna być używana.
 > 
 > 
 
-* **Reguły ruchu aplikacji**: istnieją dwie reguły ruchu aplikacji pierwszy dla ruchu w sieci web frontonu i drugą dla ruchu zaplecza (np serwera sieci web do warstwy danych). Te zasady będą zależą od architektury sieci (w którym są umieszczane serwerów) i przepływów ruchu (kierunku przepływów ruchu sieciowego i portów, do których są używane).
+* **Reguły ruchu aplikacji**: Istnieją dwie reguły ruchu aplikacji pierwszy do ruchu w sieci web frontonu, a drugi dla ruchu w sieci wewnętrznej (na przykład serwer sieci web do warstwy danych). Te reguły będzie zależeć od architektury sieci (w którym są umieszczane serwery) i przepływy ruchu (kierunku przepływu ruchu, a które porty są używane).
   
-    Najpierw omówiona jest reguła frontonu dla ruchu w sieci web:
+    Najpierw omówione jest reguła frontonu dla ruchu w sieci web:
   
     ![Reguła zapory w sieci Web][12]
   
-    Ta reguła NAT docelowym zezwala na ruch rzeczywisty aplikacji do serwera aplikacji. Inne zasady Zezwalaj na zabezpieczenia, zarządzanie, itp., reguły aplikacji są co Zezwalaj użytkowników zewnętrznych lub usług, uzyskać dostęp do aplikacji. Na przykład jest jednym serwerze sieci web na porcie 80, w związku z tym reguły zapory jednej aplikacji przekierować ruch przychodzący do zewnętrznego adresu IP do sieci web serwerów wewnętrzny adres IP.
+    Ta reguła NAT do docelowej zezwala na ruch rzeczywiste aplikacje do osiągnięcia serwera aplikacji. Inne zasady umożliwiające zabezpieczeń, zarządzania, itp., reguł aplikacji są co umożliwia użytkownikom zewnętrznym lub usług, uzyskać dostęp do aplikacji. W tym przykładzie jest jednym serwerze sieci web na porcie 80, dlatego pojedynczą aplikację regułę zapory przekieruje ruch przychodzący na zewnętrzny adres IP jako wewnętrzny adres IP w sieci web serwerów.
   
-    **Uwaga**: czy istnieje nie portu w polu listy docelowej przypisany, w związku z tym przychodzący port 80 (lub 443 dla wybranej usługi) będzie używany w przekierowywanie serwera sieci web. Jeśli serwer sieci web nasłuchuje na innym porcie, na przykład portu 8080, pole listy docelowej może zostać zaktualizowana do 10.0.1.4:8080, aby umożliwić na przekierowanie portu.
+    **Uwaga**: czy istnieje nie portu w polu listy docelowej przypisany, dlatego przychodzący port 80 (lub 443 dla wybranej usługi) będzie używany w przekierowania serwera sieci web. Jeśli serwer sieci web nasłuchuje na innym porcie, na przykład portu 8080, pole listy docelowej może zostać zaktualizowana w celu 10.0.1.4:8080, aby umożliwić na przekierowanie portów.
   
-    Następny reguły ruchu aplikacji jest wewnętrzna reguły zezwalającej na serwerze sieci Web komunikował się z serwerem AppVM01 (ale nie AppVM02) za pośrednictwem usługi:
+    Następną regułę ruchu aplikacji jest zaplecza reguły zezwalającej na serwerze sieci Web na komunikowanie się z serwerem AppVM01 (ale nie AppVM02) przy użyciu dowolnej usługi:
   
-    ![Reguły zapory AppVM01][13]
+    ![Reguła AppVM01 zapory][13]
   
-    Ta zasada przebiegu umożliwia dowolnego serwera IIS w podsieci frontonu w celu osiągnięcia AppVM01 (adres IP 10.0.2.5) na dowolnym porcie przy użyciu protokołu uzyskują dostęp do danych wymaganych przez aplikację sieci web.
+    Ta zasada — dostęp próbny umożliwia dowolnego serwera usług IIS w podsieci frontonu w celu osiągnięcia AppVM01 (adresu IP 10.0.2.5) na dowolnym porcie przy użyciu dowolnego protokołu dostępu do danych wymagane przez aplikację sieci web.
   
-    W tym zrzucie ekranu "\<jawne dest\>" jest używany w polu docelowym oznaczającego 10.0.2.5 jako miejsca docelowego. Może to być albo jawne pokazany lub a o nazwie obiektu Network (jak to zostało zrobione w wymaganiach wstępnych dotyczących serwera DNS). Jest to administratora zapory, które zostanie użyta metoda. Aby dodać 10.0.2.5 jako Explict Desitnation, kliknij dwukrotnie pierwszy pusty wiersz pod \<jawne dest\> i podaj adres w wyskakującym oknie.
+    Na tym zrzucie ekranu "\<jawne dest\>" jest używana w pole docelowe oznaczającego 10.0.2.5 jako miejsca docelowego. Może to być albo jawne pokazany lub w nazwie obiektu Network (jak zostało to zrobione w sekcji wymagania wstępne dla serwera DNS). Jest to w gestii administratora zapory, które zostanie użyta metoda. Aby dodać 10.0.2.5 jako Desitnation stosowany jawny, kliknij dwukrotnie ikonę na pierwszym pustym wierszu pod \<jawne dest\> i w oknie wyskakującym wprowadź adres.
   
-    Z tą regułą przekazać odłączenia translatora adresów Sieciowych jest niezbędne, ponieważ jest to wewnętrzny ruchu, dlatego metodę połączenia może mieć wartości "No SNAT".
+    Z tą regułą przekazać odłączenia translatora adresów Sieciowych jest wymagana, ponieważ jest to ruch wewnętrzny, aby metoda połączenia można ustawić na "Brak SNAT".
   
-    **Uwaga**: sieć źródłową w tej regule jest dowolnego zasobu w podsieci frontonu, jeśli będą tylko jedną lub znanych określoną liczbę serwerów sieci web, obiekt sieci można utworzyć zasobu dokładniej do dokładnego adresów IP zamiast w całej podsieci frontonu.
+    **Uwaga**: Sieć źródłowa w tej regule jest dowolnego zasobu w podsieci frontonu, jeśli będzie istnieć tylko jeden lub znanego określonej liczbie serwerów sieci web obiekt sieci można utworzyć zasobu na dokładniejszą do adresów IP dokładnego, a nie całej podsieci frontonu.
 
 > [!TIP]
-> Ta reguła jest używana usługa "Any" przykładowej aplikacji ułatwiające skonfigurować i stosować, umożliwi to również ICMPv4 (ping) w jednej reguły. Jednak to nie jest zalecanym rozwiązaniem. Porty i protokoły ("usługi") powinny zostać zawężony do minimum, możliwe umożliwiający operacji aplikacji zmniejszyć obszar ataków tej granicy.
+> Ta reguła jest używana usługa "Any" Przykładowa aplikacja ułatwiają konfigurowanie i używanie, to będzie również umożliwiać ICMPv4 (ping) w jednej reguły. Jednak to nie jest zalecanym rozwiązaniem. Porty i protokoły ("usługi") należy zawężony do minimum, możliwe umożliwiająca operacji aplikacji zmniejszyć obszar narażony na ataki przez tę granicę.
 > 
 > 
 
 <br />
 
 > [!TIP]
-> Mimo że ta zasada zawiera odwołania do jawnego dest używany, spójnego podejścia powinny być używane w konfiguracji zapory. Zaleca się, że nazwanego obiektu sieci używanego w dla czytelności łatwiejsze i obsługi. Jawne dest służy tutaj pokazanie metody odniesienia i zazwyczaj nie jest zalecane (szczególnie w przypadku złożonych konfiguracji).
+> Mimo że ta reguła zawiera odwołanie jawne dest używany, spójne podejście powinno być używane w całym konfigurację zapory. Zaleca się, że nazwany obiekt sieci używane w całym dla czytelność i obsługi. Jawne dest jest używany w tym miejscu tylko po to, aby wyświetlić alternatywne reference — metoda i ogólnie nie zaleca się (szczególnie w przypadku złożonych konfiguracji).
 > 
 > 
 
-* **Ruch wychodzący do Internetu reguły**: przekazania tej reguły będzie zezwalać na ruch z żadną siecią źródłowego do przekazania do wybranej sieci docelowych. Ta reguła jest domyślna reguła zwykle już na zaporze Barracuda NextGen, ale jest w stanie wyłączenia. Kliknięcie prawym przyciskiem myszy tę regułę mają dostęp do polecenia uaktywnić reguły. Reguła pokazane została zmodyfikowana, aby dodać dwie podsieci lokalnej, które zostały utworzone jako odwołania w sekcji wymagań wstępnych tego dokumentu z atrybutem źródłowym tej reguły.
+* **Ruch wychodzący do Internetu reguły**: Ta zasada — dostęp próbny umożliwi ruch z żadną siecią źródła do przekazania do wybranej sieci docelowej. Ta reguła jest domyślna reguła zwykle już na Zapora Barracuda NextGen, ale jest w stanie wyłączenia. Kliknij prawym przyciskiem myszy w tej regule dostęp polecenia reguły aktywacji. Reguła pokazane tutaj została zmodyfikowana, aby dodać dwie podsieci lokalne, które zostały utworzone jako odwołania w sekcji wymagań wstępnych w tym dokumencie z atrybutem źródłowym tej reguły.
   
-    ![Reguła ruchu wychodzącego][14]
-* **Reguła DNS**: przekazać ta reguła zezwala tylko na ruch DNS (port 53) do przekazania do serwera DNS. Dla tego środowiska, większość ruchu z serwera sieci Web do wewnętrznej bazy danych jest zablokowany ta zasada umożliwia w szczególności DNS.
+    ![Reguły ruchu wychodzącego zapory][14]
+* **Reguła DNS**: Ta zasada — dostęp próbny zezwala tylko na ruch DNS (port 53) do przekazania do serwera DNS. Dla tego środowiska, których większość ruchu z frontonu do zaplecza jest zablokowane ta zasada umożliwia specjalnie DNS.
   
-    ![Reguły zapory DNS][15]
+    ![Reguła DNS][15]
   
-    **Uwaga**: na tym ekranie jest dołączony zrzut metodę połączenia. Ponieważ ta reguła ma wewnętrzny adres IP ruch wewnętrzny adres IP, NATing nie jest wymagane, to metodę połączenia jest równa "No SNAT" dla tej reguły przebiegu.
-* **Reguła podsieci do sieci**: przekazać ta reguła jest domyślna reguła, która została aktywowana i zmodyfikowane, aby każdy serwer w podsieci zaplecza w celu połączenia z serwerem w podsieci frontonu. Ta reguła jest ruchu wszystkie wewnętrznej tak SNAT nie można ustawić metodę połączenia.
+    **Uwaga**: Na tym ekranie zrzut metodę połączenia jest dołączony. Ponieważ ta reguła ma wewnętrzny adres IP, aby ruch wewnętrzny adres IP, NATing nie jest wymagany, to metoda połączenia jest równa "No SNAT" dla tej reguły — dostęp próbny.
+* **Reguła podsieci do sieci**: Ta reguła — dostęp próbny jest domyślną regułę, która została aktywowana i zmodyfikowane, aby każdy serwer w podsieci zaplecza, aby nawiązać połączenie z dowolnego serwera w podsieci frontonu. Ta reguła jest ruch wewnętrzny wszystkich, więc SNAT nie można ustawić metodę połączenia.
   
-    ![Reguła sieci wirtualnej wewnątrz zapory][16]
+    ![Reguły sieci wirtualnej wewnątrz zapory][16]
   
-    **Uwaga**: pole wyboru dwukierunkowe nie zaznaczono (ani nie jest zaznaczone w większości reguł), to ma znaczenie dla tej reguły, ponieważ ułatwia to reguły "w jedną stronę", można zainicjować połączenia z podsieci wewnętrznej sieci frontonu, ale nie odwrotnie. Jeśli pole wyboru zostało zaznaczone, ta zasada umożliwiłyby ruch dwukierunkowy, który z naszych diagram logiczny nie jest wymagana.
-* **Odmów wszystkie reguły ruchu**: zawsze powinien to być ostateczne reguły (pod względem priorytet) i jako taki Jeśli ruch przepływa nie pasuje do żadnego z poprzednim zasady zostaną usunięte przez tę regułę. Jest to domyślna reguła i zwykle jest aktywna, żadnych modyfikacji nie są zwykle wymagane. 
+    **Uwaga**: Dwukierunkowa zaznacz pole wyboru nie jest zaznaczone (ani nie jest zaewidencjonowany większość reguł), jest to istotne dla tej reguły, w tym, że to sprawia, że to reguły "w jedną stronę", połączenie może zostać zainicjowane z podsieci zaplecza sieć frontonu, ale nie odwrotnie. Ta zasada, pole wyboru zostało zaznaczone, czy włączyć ruch dwukierunkowy, który z naszych diagram logiczny nie jest wymagana.
+* **Odmów wszystkie reguły ruchu**: Powinna zawsze być końcowa reguła (w kategoriach priority), a związku z tym jeśli ruch przepływa nie pasuje do żadnej z powyższych zasad, które zostaną usunięte przez tę regułę. Jest to domyślna reguła i zazwyczaj aktywowana, nie są ogólnie potrzebne modyfikacje. 
   
     ![Zapora regułę Odmów][17]
 
 > [!IMPORTANT]
-> Po utworzeniu wszystkich powyższych reguł, należy przejrzeć priorytet każdej reguły, aby upewnić się, ruch ma być dozwolony lub odrzucany zgodnie z potrzebami. Na przykład reguły są w kolejności ich powinny być wyświetlane w siatce Main przesyłania reguły w kliencie zarządzania Barracuda.
+> Po utworzeniu wszystkich powyższych reguł jest ważne zapoznać się z priorytetem każdej reguły, aby upewnić się, ruch będzie dozwolony lub zabroniony zgodnie z potrzebami. W tym przykładzie reguły są w kolejności, w której powinny one zostać wyświetlone w siatce Main reguł w kliencie zarządzania Barracuda przekazywania.
 > 
 > 
 
-## <a name="rule-activation"></a>Reguły aktywacji
-Z ruleset zmodyfikowane w specyfikacji diagram logiki zestaw reguł należy przekazać do zapory i następnie aktywowany.
+## <a name="rule-activation"></a>Reguła aktywacji
+Za pomocą modyfikacji ze specyfikacją diagram logiki zestaw reguł zestaw reguł musi być przekazane do zapory i następnie aktywowany.
 
 ![Aktywacja reguły zapory][18]
 
-W prawym górnym rogu klienta zarządzania są klastra przycisków. Kliknij przycisk "Wyślij zmiany", aby wysłać zmodyfikowane reguły zapory, a następnie kliknij przycisk "Uaktywnij".
+W prawym górnym rogu klienta zarządzania są klastra przycisków. Kliknij przycisk "Wyślij zmiany", aby wysyłać modyfikacji reguły zapory, a następnie kliknij przycisk "Aktywuj".
 
-W aktywacji zestaw reguł zapory tej kompilacji w środowisku przykładzie zostanie zakończona.
+Za pomocą aktywacji zestawu reguł zapory na przykład kompilacji środowiska zostało ukończone.
 
 ## <a name="traffic-scenarios"></a>Scenariusze ruchu
 > [!IMPORTANT]
-> Takeway klucza ma należy pamiętać, że **wszystkie** ruchu rozpocznie się przez zaporę. Tak do pulpitu zdalnego na serwerze IIS01, nawet jeśli jest już w usłudze w chmurze Front End i podsieci frontonu, dostępu do tego serwera firma Microsoft będzie muszą dla protokołu RDP w zaporze na porcie 8014, a następnie zezwalać wewnętrznie trasy żądania protokołu RDP z portem RDP IIS01 zapory. Przycisk "Połącz" portalu Azure nie będzie działać, ponieważ nie istnieje żadne bezpośrednią ścieżkę RDP IIS01 (o ile portalu można zobaczyć). Oznacza to, że wszystkie połączenia z Internetem będzie usługi zabezpieczeń i Port, np. secscv001.cloudapp.net:xxxx.
+> Takeway klucza jest należy pamiętać, że **wszystkich** ruchu pojawią się przez zaporę. Więc do pulpitu zdalnego z serwerem IIS01, mimo że jest w pierwszej usłudze końcowy w chmurze i w podsieci frontonu dostępu do tego serwera firma Microsoft będzie konieczne protokołu RDP do zapory na porcie 8014, a następnie pozwól zaporę, tak aby kierować żądania protokołu RDP wewnętrznie do IIS01 Por protokołu RDP t. Przycisk "Połącz" w witrynie Azure portal nie będą działać, ponieważ nie ma bezpośredniego RDP ścieżki do IIS01 (o ile zobaczyć portalu). Oznacza to, że wszystkie połączenia z Internetem będzie usługa zabezpieczeń i Port, np. secscv001.cloudapp.net:xxxx.
 > 
 > 
 
-W tych sytuacjach następujące reguły zapory powinny być stosowane:
+W tych scenariuszach następujące reguły zapory powinny być stosowane:
 
 1. Zarządzanie zaporą
-2. RDP do IIS01
-3. RDP do DNS01
-4. RDP do AppVM01
-5. RDP do AppVM02
-6. Aplikacja ruchu w sieci Web
-7. Ruch aplikacji do AppVM01
+2. Połączenie przez RDP IIS01
+3. Połączenie przez RDP DNS01
+4. Połączenie przez RDP AppVM01
+5. Połączenie przez RDP AppVM02
+6. Ruchem aplikacji sieci Web
+7. Ruch aplikacji AppVM01
 8. Ruch wychodzący do Internetu
 9. Frontonu DNS01
-10. Wewnątrz podsieci ruchu (zaplecza do tylko frontonu)
-11. Odmów wszystkich
+10. Ruch wewnątrz podsieci (zaplecza do tylko fronton)
+11. Odmów wszystkim
 
-Zestaw reguł zapory rzeczywiste najprawdopodobniej będzie miał wiele reguł oprócz tych, reguły na dowolnym danym zapory będą także mieć różne numery niż wymienione w tym miejscu. Tej listy i skojarzone z nimi numery są zapewnienie istotność między tylko te reguły 11 i względny priorytet jeden z nich. Innymi słowy; na zaporze rzeczywiste "RDP do IIS01" może być numer reguły 5, ale tak długo, jak jest poniżej reguły "Zarządzanie zaporą" i powyżej reguły "RDP DNS01" czy Dopasuj z tej listy. Lista będzie również pomóc w poniższych scenariuszy, dzięki czemu skrócenia; np. "Reguła Zapory 9 (DNS)". Jednak cztery reguły protokołu RDP będzie można zbiorczo skrót, "reguły protokołu RDP" gdy scenariusz ruchu sieciowego jest związana z RDP.
+Zestaw reguł zapory rzeczywiste najprawdopodobniej będą mieć wiele zasad oprócz wspomnianych, reguł zapory, na danej będą mieć również liczb inny priorytet niż wymienione w tym miejscu. Tej liście, a skojarzone z nimi numery jest zapewnienie zgodności między tylko te reguły jedenaście i względny priorytet wśród nich. Innymi słowy; na zaporze rzeczywiste "RDP do IIS01" może być numer reguły 5, ale tak długo, jak jest poniżej reguły "Zarządzanie zaporą" i powyżej reguły "RDP DNS01" będzie wyrównanie zamiarem tej listy. Lista będzie również pomóc w poniższe scenariusze, dzięki czemu zwięzłości; np. "Reguła Zapory 9 (DNS)". Celu skrócenia programu, cztery reguły protokołu RDP będzie można zbiorczo skrót, "reguły protokołu RDP" podczas scenariusza ruch nie jest powiązana protokołu RDP.
 
-Odwołaj również, czy grupy zabezpieczeń sieci w miejscu dla ruchu przychodzącego internet podsieci frontonu i wewnętrznej bazy danych.
+Pamiętaj, że sieciowe grupy zabezpieczeń są w miejscu dla ruch przychodzący z Internetu na z podsieciami frontonu i wewnętrznej bazy danych.
 
 #### <a name="allowed-internet-to-web-server"></a>(Dozwolone) Internet do serwera sieci Web
-1. Strony internetowe użytkownika żądania HTTP z SecSvc001.CloudApp.Net (Internet ukierunkowane usługa w chmurze)
+1. Stronę internetową użytkownika żądania HTTP z SecSvc001.CloudApp.Net (usługa chmury połączonego z Internetem)
 2. Chmury usługi przekazuje ruch przez otwarty punkt końcowy na porcie 80 do interfejsu zapory 10.0.0.4:80
-3. Nie NSG przypisane do podsieci zabezpieczeń, tak reguły NSG systemu zezwolić na ruch do zapory
-4. Ruch trafienia wewnętrzny adres IP zapory (10.0.1.4)
+3. Brak sieciowej grupy zabezpieczeń przypisane do podsieci zabezpieczeń, dlatego reguły sieciowej grupy zabezpieczeń systemu zezwalają na ruch do zapory
+4. Ruch osiąga wewnętrzny adres IP zapory (10.0.1.4)
 5. Zapora rozpoczyna przetwarzanie reguł:
-   1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-   2. Reguły Zapory 2-5 (zasad protokołu RDP) nie zastosować, przejść do następnej reguły
-   3. PD zasady 6 (aplikacji: sieci Web) zastosować, ruch jest dozwolony, zapory NAT go do 10.0.1.4 (IIS01)
-6. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-   1. 1 reguły NSG (Zablokuj Internet) nie ma zastosowania (ruch został NAT czy przez zaporę, w związku z tym adres źródłowy jest teraz zaporą, który znajduje się w podsieci zabezpieczeń i widoczne dla podsieci Frontend NSG za ruch "lokalnie", w związku z tym jest dozwolone), przejść do następnej reguły
-   2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
-7. IIS01 nasłuchuje ruchu w sieci web, otrzymuje tego żądania i rozpoczyna przetwarzanie żądania
-8. Próby IIS01 inicjuje sesję FTP do AppVM01 podsieci wewnętrznej bazy danych
-9. Trasy przez podsieci frontonu sprawia, że Zapora następnego skoku
-10. Nie reguł dla ruchu wychodzącego w podsieci frontonu, ruch jest dozwolony
+   1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+   2. Reguły Zapory 2 do 5 (protokół RDP reguły) nie zastosować, przenieść następną regułę
+   3. Reguła Zapory 6 (aplikacji: Stosowanie aplikacji sieci Web), ruch jest dozwolony, zapory NAT jego 10.0.1.4 (IIS01)
+6. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie ma zastosowania (ten ruch był translatora adresów Sieciowych będzie przez zaporę, dlatego adres źródłowy jest teraz zapory, która znajduje się w podsieci zabezpieczeń i widoczne dla podsieci Frontend sieciowa grupa zabezpieczeń to "local" ruchu i w związku z tym jest dozwolona), przenieść następną regułę
+   2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
+7. IIS01 nasłuchuje ruchu w sieci web, odbiera żądania i rozpoczyna przetwarzanie żądania
+8. Próby IIS01 inicjuje sesję FTP, aby AppVM01 podsieci wewnętrznej bazy danych
+9. Trasa zdefiniowana przez użytkownika trasy podsieci frontonu sprawia, że Zapora następny przeskok
+10. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
 11. Zapora rozpoczyna przetwarzanie reguł:
-    1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-    2. Reguły Zapory 2-5 (zasad protokołu RDP) nie są spełnione, przejść do następnej reguły
-    3. PD zasady 6 (aplikacji: sieci Web) nie są spełnione, przejść do następnej reguły
-    4. PD zasady 7 (aplikacji: wewnętrznej bazy danych) jest stosowana, ruch jest dozwolony, zapora przekazuje ruch do 10.0.2.5 (AppVM01)
-12. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-    1. Grupy NSG reguła 1 (Zablokuj Internet) nie są spełnione, przejść do następnej reguły
-    2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
-13. AppVM01 odbiera żądanie i inicjuje sesję i odpowiada
-14. Trasy przez podsieci wewnętrznej bazy danych powoduje, że Zapora następnego skoku
-15. Ponieważ nie ma żadnych wychodzących reguł NSG podsieci wewnętrznej bazy danych, odpowiedzi jest dozwolone.
+    1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+    2. Reguły Zapory 2 do 5 (protokół RDP reguły) nie zastosować, przenieść następną regułę
+    3. Reguła Zapory 6 (aplikacji: Sieć Web) nie zastosować, przenieść następną regułę
+    4. Reguła Zapory 7 (aplikacji: Zastosuj wewnętrznej bazy danych), ruch jest dozwolony, zapora przekazuje ruch do 10.0.2.5 (AppVM01)
+12. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+    1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie zastosować, przenieść następną regułę
+    2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
+13. AppVM01 odbiera żądanie i inicjuje sesję, a odpowiada
+14. Trasa zdefiniowana przez użytkownika trasy podsieci zaplecza sprawia, że Zapora następny przeskok
+15. Ponieważ brak wychodzących reguł sieciowej grupy zabezpieczeń w podsieci wewnętrznej bazy danych, odpowiedź jest dozwolone
 16. Ponieważ to zwraca ruchu na ustanowienie sesji zapora przekazuje odpowiedź z powrotem do serwera sieci web (IIS01)
-17. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-    1. Grupy NSG reguła 1 (Zablokuj Internet) nie są spełnione, przejść do następnej reguły
-    2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
-18. Serwer usług IIS odbiera odpowiedź, wykonuje transakcję za pomocą AppVM01 i następnie kończy tworzenie odpowiedzi HTTP, odpowiedź HTTP są wysyłane do żądającego
-19. Ponieważ nie ma żadnych reguł NSG dla ruchu wychodzącego w odpowiedzi jest dozwolone podsieci frontonu
-20. Odpowiedź HTTP trafienia zapory i ponieważ to jest odpowiedź na ustanowienie sesji translatora adresów Sieciowych jest akceptowane przez zaporę
-21. Zapora następnie przekierowuje odpowiedź z powrotem do użytkownika Internet
-22. Ponieważ nie ma nie wychodzące reguły NSG lub przeskoków przez podsieci frontonu odpowiedzi jest dozwolone i użytkownik Internetu odbiera żądanej strony sieci web.
+17. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+    1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie zastosować, przenieść następną regułę
+    2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
+18. Na serwerze usług IIS odbiera odpowiedź, wykonuje transakcję za pomocą AppVM01 i następnie kończy tworzenia odpowiedzi HTTP, odpowiedź HTTP są wysyłane do obiektu żądającego
+19. Ponieważ brak wychodzących reguł sieciowej grupy zabezpieczeń w podsieci Frontend jest dozwolony w odpowiedzi
+20. Odpowiedź HTTP trafienia zapory, a ponieważ to jest odpowiedź na ustanowienie sesji translatora adresów Sieciowych jest akceptowane przez zaporę
+21. Zapora następnie przekierowuje odpowiedź z powrotem do użytkownika internetowego
+22. Ponieważ nie wychodzące reguły sieciowej grupy zabezpieczeń lub przeskoków trasy zdefiniowanej przez użytkownika w podsieci frontonu, odpowiedź jest dozwolone i użytkownik Internetu odbiera żądanej strony sieci web.
 
-#### <a name="allowed-internet-rdp-to-backend"></a>(Dozwolone) Internet RDP do wewnętrznej bazy danych
-1. Administrator serwera w Internecie żądań sesji protokołu RDP do AppVM01 za pośrednictwem SecSvc001.CloudApp.Net:8025, gdzie 8025 jest numer portu przypisany użytkownik reguły zapory "RDP AppVM01"
+#### <a name="allowed-internet-rdp-to-backend"></a>(Dozwolone) Internet protokołu RDP do wewnętrznej bazy danych
+1. Administrator serwera w Internecie żądań sesji protokołu RDP, aby AppVM01 za pośrednictwem SecSvc001.CloudApp.Net:8025, gdzie 8025 jest numerem portu przypisanych przez użytkownika dla reguły zapory "RDP AppVM01"
 2. Usługi w chmurze przekazuje ruch przez otwarty punkt końcowy na porcie 8025 do interfejsu zapory na 10.0.0.4:8025
-3. Nie NSG przypisane do podsieci zabezpieczeń, tak reguły NSG systemu zezwolić na ruch do zapory
+3. Brak sieciowej grupy zabezpieczeń przypisane do podsieci zabezpieczeń, dlatego reguły sieciowej grupy zabezpieczeń systemu zezwalają na ruch do zapory
 4. Zapora rozpoczyna przetwarzanie reguł:
-   1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-   2. 2 reguły Zapory (RDP IIS) nie są spełnione, przejść do następnej reguły
-   3. PD zasady 3 (RDP DNS01) nie są spełnione, przejść do następnej reguły
-   4. Zastosować PD zasady 4 (RDP AppVM01), ruch jest dozwolony, zapory NAT na 10.0.2.5:3386 (portem RDP na AppVM01)
-5. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-   1. 1 reguły NSG (Zablokuj Internet) nie ma zastosowania (ruch został NAT czy przez zaporę, w związku z tym adres źródłowy jest teraz zaporą, który znajduje się w podsieci zabezpieczeń i widoczne dla grupy NSG podsieci wewnętrznej bazy danych jako "lokalnie" ruchu, w związku z tym jest dozwolone), przejść do następnej reguły
-   2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
+   1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+   2. PD reguła 2 (RDP IIS) nie zastosować, przenieść następną regułę
+   3. PD zasady 3 (RDP DNS01) nie zastosować, przenieść następną regułę
+   4. Zastosuj PD zasady 4 (protokół RDP AppVM01), ruch jest dozwolony, zapory NAT jego 10.0.2.5:3386 (portem RDP na AppVM01)
+5. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie ma zastosowania (ten ruch był translatora adresów Sieciowych będzie przez zaporę, dlatego adres źródłowy jest teraz zapory, która znajduje się w podsieci zabezpieczeń i widoczne dla sieciowa grupa zabezpieczeń podsieci wewnętrznej bazy danych to "local" ruchu i w związku z tym jest dozwolona), przenieść następną regułę
+   2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
 6. AppVM01 nasłuchuje ruchu protokołu RDP i odpowiada
-7. Z wychodzących reguł NSG Zastosuj reguły domyślne, a zwracany ruch jest dozwolony
-8. PRZEZ kieruje ruch wychodzący do zapory w następnym skoku
-9. Ponieważ to zwraca ruchu na ustanowienie sesji zapora przekazuje odpowiedź do użytkowników Internetu
-10. Włączono sesji protokołu RDP
-11. AppVM01 wyświetli monit o hasło nazwy użytkownika
+7. Nie wychodzące reguły sieciowej grupy zabezpieczeń domyślne reguły stosuje się i jest dozwolony ruch powrotny
+8. Trasa zdefiniowana przez użytkownika kieruje ruch wychodzący do zapory jako następnego przeskoku
+9. Ponieważ to zwraca ruchu na ustanowienie sesji zapora przekazuje odpowiedź z powrotem do użytkownika internetowego
+10. Sesję RDP jest włączona.
+11. AppVM01 monituje o podanie hasła nazwy użytkownika
 
-#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Dozwolone) Wyszukiwania DNS serwera sieci Web na serwerze DNS
-1. Sieci Web serwera, IIS01, musi na www.data.gov strumieniowego źródła danych, ale musi rozpoznać adresu.
-2. Konfigurację sieci dla listy sieci wirtualnej DNS01 (10.0.2.4 podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądanie DNS DNS01
-3. PRZEZ kieruje ruch wychodzący do zapory w następnym skoku
-4. Brak wychodzących reguł NSG są powiązane z podsieci frontonu, ruch jest dozwolony.
+#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Dozwolone) Wyszukiwanie DNS serwera sieci Web na serwerze DNS
+1. Sieci Web Server, IIS01, potrzeb w www.data.gov strumieniowych źródeł danych, ale musi rozpoznać adresu.
+2. W konfiguracji sieci VNet list DNS01 (10.0.2.4 w podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądania DNS DNS01
+3. Trasa zdefiniowana przez użytkownika kieruje ruch wychodzący do zapory jako następnego przeskoku
+4. Brak wychodzących reguł sieciowej grupy zabezpieczeń są powiązane z podsiecią Frontend, ruch jest dozwolony.
 5. Zapora rozpoczyna przetwarzanie reguł:
-   1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-   2. Reguły Zapory 2-5 (zasad protokołu RDP) nie są spełnione, przejść do następnej reguły
-   3. PD zasady 6 i 7 (zasady aplikacji) nie są spełnione, przejść do następnej reguły
-   4. 8 reguły Zapory (do Internetu) nie są spełnione, przejść do następnej reguły
-   5. Zastosuj reguły Zapory 9 DNS (Domain Name System), ruch jest dozwolony, zapora przekazuje ruch do 10.0.2.4 (DNS01)
-6. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-   1. Grupy NSG reguła 1 (Zablokuj Internet) nie są spełnione, przejść do następnej reguły
-   2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
+   1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+   2. Reguły Zapory 2 do 5 (protokół RDP reguły) nie zastosować, przenieść następną regułę
+   3. PD zasad 6 i 7 (reguły aplikacji) nie zastosować, przenieść następną regułę
+   4. 8 reguły Zapory (Internet w celu) nie zastosować, przenieść następną regułę
+   5. Zastosuj 9 reguły Zapory (DNS, Domain Name System), ruch jest dozwolony, zapora przekazuje ruch do 10.0.2.4 (DNS01)
+6. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie zastosować, przenieść następną regułę
+   2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
 7. Serwer DNS odbiera żądanie
-8. Serwer DNS nie ma adresu w pamięci podręcznej i prosi o główny serwer DNS w Internecie
-9. PRZEZ kieruje ruch wychodzący do zapory w następnym skoku
-10. Nie wychodzące reguły NSG podsieci wewnętrznej bazy danych, ruch jest dozwolony
+8. Serwer DNS nie ma adresu pamięci podręcznej i prosi główny serwer DNS w Internecie
+9. Trasa zdefiniowana przez użytkownika kieruje ruch wychodzący do zapory jako następnego przeskoku
+10. Nie wychodzące reguły sieciowej grupy zabezpieczeń w podsieci wewnętrznej bazy danych, ruch jest dozwolony.
 11. Zapora rozpoczyna przetwarzanie reguł:
-    1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-    2. Reguły Zapory 2-5 (zasad protokołu RDP) nie są spełnione, przejść do następnej reguły
-    3. PD zasady 6 i 7 (zasady aplikacji) nie są spełnione, przejść do następnej reguły
+    1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+    2. Reguły Zapory 2 do 5 (protokół RDP reguły) nie zastosować, przenieść następną regułę
+    3. PD zasad 6 i 7 (reguły aplikacji) nie zastosować, przenieść następną regułę
     4. Zastosuj 8 reguły Zapory (do Internetu), ruch jest dozwolony, sesja jest SNAT się do głównego serwera DNS w Internecie
-12. Serwer DNS w Internecie odpowiada, ponieważ w tej sesji zostało zainicjowane przez zaporę, odpowiedź jest akceptowany przez zaporę
-13. Jak jest to ustanowienie sesji, zapora przekazuje odpowiedź na serwerze inicjujący DNS01
-14. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-    1. Grupy NSG reguła 1 (Zablokuj Internet) nie są spełnione, przejść do następnej reguły
-    2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
-15. Serwer DNS odbiera i będzie buforować odpowiedź i następnie odpowiada na żądania początkowego do IIS01
-16. Trasy przez podsieci wewnętrznej bazy danych powoduje, że Zapora następnego skoku
-17. Wychodzące NSG nie istnieją żadne reguły w podsieci wewnętrznej bazy danych ruch jest dozwolony.
-18. Jest to ustanowienie sesji na zaporze, odpowiedź jest przesyłany dalej przez zaporę do serwera IIS
-19. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-    1. Nie zasady grupy NSG, która ma zastosowanie do przychodzącego ruchu w podsieci wewnętrznej bazy danych do podsieci frontonu, aby żadna grupa NSG zasady stosowane
-    2. Domyślna reguła system zezwala na ruch między podsieciami pozwala tego rodzaju ruch, ruch jest dozwolony
-20. IIS01 odbiera odpowiedź z DNS01
+12. Odpowiedzi serwera DNS w sieci Internet, ponieważ w tej sesji zostało zainicjowane przez zaporę, odpowiedź jest akceptowany przez zaporę
+13. Jak jest to ustanowienie sesji, zapora przekazuje odpowiedź do serwera inicjujący DNS01
+14. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+    1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie zastosować, przenieść następną regułę
+    2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
+15. Serwer DNS odbiera będzie buforować odpowiedź i następnie odpowie na żądanie początkowy powrót do IIS01
+16. Trasa zdefiniowana przez użytkownika trasy podsieci zaplecza sprawia, że Zapora następny przeskok
+17. Brak wychodzących reguł sieciowej grupy zabezpieczeń istnieje w podsieci wewnętrznej bazy danych, ruch jest dozwolony.
+18. Jest to ustanowienie sesji w zaporze, odpowiedź jest przesyłany dalej przez zaporę do serwera usług IIS
+19. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+    2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami będzie zezwalającej na ten ruch, więc ruch jest dozwolony
+20. IIS01 odbiera odpowiedź od DNS01
 
-#### <a name="allowed-backend-server-to-frontend-server"></a>(Dozwolone) Serwer wewnętrznej bazy danych do serwera frontonu
-1. Administrator zalogowany do AppVM02 za pomocą protokołu RDP zażąda pliku bezpośrednio z serwera IIS01 za pomocą Eksploratora plików systemu windows
-2. Trasy przez podsieci wewnętrznej bazy danych powoduje, że Zapora następnego skoku
-3. Ponieważ nie ma żadnych wychodzących reguł NSG podsieci wewnętrznej bazy danych, odpowiedzi jest dozwolone.
+#### <a name="allowed-backend-server-to-frontend-server"></a>(Dozwolone) Serwer wewnętrznej bazy danych, serwer frontonu
+1. Administrator zalogowany do AppVM02 za pośrednictwem protokołu RDP zażąda pliku bezpośrednio z serwera IIS01 za pomocą Eksploratora plików systemu windows
+2. Trasa zdefiniowana przez użytkownika trasy podsieci zaplecza sprawia, że Zapora następny przeskok
+3. Ponieważ brak wychodzących reguł sieciowej grupy zabezpieczeń w podsieci wewnętrznej bazy danych, odpowiedź jest dozwolone
 4. Zapora rozpoczyna przetwarzanie reguł:
-   1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-   2. Reguły Zapory 2-5 (zasad protokołu RDP) nie są spełnione, przejść do następnej reguły
-   3. PD zasady 6 i 7 (zasady aplikacji) nie są spełnione, przejść do następnej reguły
-   4. 8 reguły Zapory (do Internetu) nie są spełnione, przejść do następnej reguły
-   5. 9 reguły Zapory (DNS, Domain Name System) nie są spełnione, przejść do następnej reguły
+   1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+   2. Reguły Zapory 2 do 5 (protokół RDP reguły) nie zastosować, przenieść następną regułę
+   3. PD zasad 6 i 7 (reguły aplikacji) nie zastosować, przenieść następną regułę
+   4. 8 reguły Zapory (Internet w celu) nie zastosować, przenieść następną regułę
+   5. 9 reguły Zapory (DNS, Domain Name System) nie zastosować, przenieść następną regułę
    6. Zastosuj 10 reguły Zapory (Intra-podsieć), ruch jest dozwolony, zapora przekazuje ruch do 10.0.1.4 (IIS01)
-5. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-   1. Grupy NSG reguła 1 (Zablokuj Internet) nie są spełnione, przejść do następnej reguły
-   2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
-6. Zakładając, że odpowiednie uwierzytelniania i autoryzacji, IIS01 akceptuje żądania i odpowiedzi
-7. Trasy przez podsieci frontonu sprawia, że Zapora następnego skoku
-8. Ponieważ nie ma żadnych reguł NSG dla ruchu wychodzącego w odpowiedzi jest dozwolone podsieci frontonu
-9. Jak jest to istniejącej sesji na zaporze ta odpowiedź jest dozwolone i zapory zwraca odpowiedź AppVM02
-10. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-    1. Grupy NSG reguła 1 (Zablokuj Internet) nie są spełnione, przejść do następnej reguły
-    2. Reguły NSG domyślne zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł NSG
+5. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie zastosować, przenieść następną regułę
+   2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
+6. Zakładając, że odpowiednie uwierzytelnianie i autoryzacja, IIS01 akceptuje żądania i odpowiedzi
+7. Trasa zdefiniowana przez użytkownika trasy podsieci frontonu sprawia, że Zapora następny przeskok
+8. Ponieważ brak wychodzących reguł sieciowej grupy zabezpieczeń w podsieci Frontend jest dozwolony w odpowiedzi
+9. Jak jest to istniejącej sesji w obrębie zapory ta odpowiedź jest dozwolone, i zapory, zwraca odpowiedź do AppVM02
+10. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+    1. 1 regułę sieciowej grupy zabezpieczeń (Internet bloku) nie zastosować, przenieść następną regułę
+    2. Domyślne reguły sieciowej grupy zabezpieczeń zezwolić na ruch podsieci do sieci, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł sieciowej grupy zabezpieczeń
 11. AppVM02 odbiera odpowiedź
 
-#### <a name="denied-internet-direct-to-web-server"></a>(Odmowa) Internet bezpośrednio do serwera sieci Web
-1. Internet użytkownik próbuje uzyskać dostęp serwer sieci web, IIS01, za pośrednictwem usługi FrontEnd001.CloudApp.Net
-2. Ponieważ nie ma żadnych punktów końcowych otwarte dla ruchu HTTP, to nie przejdzie za pośrednictwem usługi w chmurze, a nie dociera do serwera
-3. Jeśli punkty końcowe zostały otwarte jakiegoś powodu, NSG (Zablokuj Internet) w podsieci frontonu uniemożliwiają ten ruch
-4. Na koniec trasy przez podsieci frontonu czy Wyślij cały ruch wychodzący z IIS01 do zapory w następnym skoku, a zapora będzie traktować jako asymetrycznego ruchu i upuść wychodzące odpowiedzi, w związku z tym są co najmniej trzy warstwy niezależne obrony pomiędzy Internetem i IIS01 za pośrednictwem jego uniemożliwia nieautoryzowanym niewłaściwego dostępu usługi w chmurze.
+#### <a name="denied-internet-direct-to-web-server"></a>(Odrzucony) Internet bezpośrednio do serwera sieci Web
+1. Internet użytkownik próbuje uzyskać dostęp serwera sieci web IIS01, za pośrednictwem usługi FrontEnd001.CloudApp.Net
+2. Punkty końcowe nie są otwarte dla ruchu HTTP, to nie przejdzie przez usługę w chmurze, a nie dociera do serwera
+3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie (bloku Internet) sieciowej grupy zabezpieczeń w podsieci frontonu
+4. Na koniec trasy zdefiniowanej przez użytkownika trasy podsieci frontonu prześle wszelki ruch wychodzący z IIS01 do zapory w następnym skoku, a zapora będzie to zobaczyć jako asymetrycznego ruchu i upuść wychodzące odpowiedzi Thus są co najmniej trzy warstwy niezależnych obrony między internet i IIS01 za pośrednictwem jego uniemożliwia nieautoryzowany niewłaściwego dostępu usługi w chmurze.
 
-#### <a name="denied-internet-to-backend-server"></a>(Odmowa) Internet do serwera wewnętrznej bazy danych
-1. Internet użytkownik próbuje uzyskać dostęp w pliku na AppVM01 za pośrednictwem usługi BackEnd001.CloudApp.Net
-2. Ponieważ nie ma żadnych punktów końcowych otwarty do udziału plików, to nie przejdzie usługi w chmurze, a nie dociera do serwera
-3. Jeśli punkty końcowe zostały otwarte jakiegoś powodu, NSG (Zablokuj Internet) umożliwia zablokowanie tego ruchu
-4. Na koniec trasy przez czy Wyślij cały ruch wychodzący z AppVM01 do zapory w następnym skoku, a zapora będzie traktować jako asymetrycznego ruchu i upuść wychodzące odpowiedzi, w związku z tym są co najmniej trzy warstwy niezależne obrony pomiędzy Internetem i AppVM01 za pośrednictwem jego uniemożliwia nieautoryzowanym niewłaściwego dostępu usługi w chmurze.
+#### <a name="denied-internet-to-backend-server"></a>(Odrzucony) Internet do serwera wewnętrznej bazy danych
+1. Internet użytkownik próbuje uzyskać dostęp pliku na AppVM01 za pośrednictwem usługi BackEnd001.CloudApp.Net
+2. Punkty końcowe nie są otwarte dla udziału plików, to nie przejdzie z usługą w chmurze, a nie dociera do serwera
+3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie sieciowej grupy zabezpieczeń (Block Internet)
+4. Na koniec trasy UDR prześle wszelki ruch wychodzący z AppVM01 do zapory w następnym skoku, a zapora będzie to zobaczyć jako asymetrycznego ruchu i upuść wychodzące odpowiedzi, dlatego są co najmniej trzy warstwy niezależnych obrony między Internetem a AppVM01 za pośrednictwem jego uniemożliwia nieautoryzowany niewłaściwego dostępu usługi w chmurze.
 
-#### <a name="denied-frontend-server-to-backend-server"></a>(Odmowa) Serwer frontonu do serwera wewnętrznej bazy danych
-1. Przykładowa IIS01 zostało naruszone i działa złośliwego kodu w trakcie skanowania serwerów podsieci wewnętrznej bazy danych.
-2. Trasy przez podsieci frontonu czy Wyślij cały ruch wychodzący z IIS01 do zapory w następnym skoku. Nie jest to coś, który może być modyfikowany przez złamany maszynę Wirtualną.
-3. Zapora może przetwarzać ruchu, jeśli żądanie zostało AppVM01 lub serwera DNS podczas wyszukiwania DNS, które potencjalnie być dozwolony ruch przez zaporę (z powodu PD zasady 7 i 9). Wszelki inny ruch zostałby zablokowany przez PD zasady 11 (Odmów wszystko).
-4. Jeśli zaawansowane wykrywanie zagrożeń został włączony na zaporze (nieuwzględnionego w tym dokumencie, zajrzyj do dokumentacji dostawcy urządzenia określoną sieć zaawansowane funkcje zagrożenia), nawet ruch, który będzie dozwolone przez zasady przekazywania podstawowe, omówiony w niniejszym dokumencie można zapobiec, jeśli ruch zawarte podpisów znanych lub wzorce, które Flaga regułę advanced threat.
+#### <a name="denied-frontend-server-to-backend-server"></a>(Odrzucony) Serwer frontonu do serwera wewnętrznej bazy danych
+1. Przyjęto założenie, IIS01 zostało naruszone i działa złośliwego kodu próby przeskanowania serwerów podsieci wewnętrznej bazy danych.
+2. Trasa zdefiniowana przez użytkownika trasy podsieci frontonu będzie Wyślij cały ruch wychodzący z IIS01 do zapory w następnym skoku. To nie jest coś, co może być zmienione przez maszynę Wirtualną ze złamanymi zabezpieczeniami.
+3. Zapora może przetwarzać ruchu sieciowego, jeśli żądanie zostało AppVM01 lub serwera DNS dla wyszukiwania DNS, które potencjalnie być dozwolony ruch przez zaporę (z powodu PD zasady 7 i 9). Wszystkie pozostałe rodzaje ruchu zostałby zablokowany przez 11 reguły Zapory (Odmów wszystkiego).
+4. Jeśli zaawansowanego wykrywania zagrożeń został włączony na zaporze (nieuwzględnione w tym dokumencie, można znaleźć w dokumentacji dostawcy dla urządzenia sieciowego określonych zaawansowane możliwości zagrożeń), nawet ruch, który może być blokowany przez reguły przekazywania podstawowych omówione w tym dokumencie można zapobiec, jeśli ruch zawarte podpisów znanych lub wzorców, które Flaga regułę zaawansowanych zagrożeń.
 
-#### <a name="denied-internet-dns-lookup-on-dns-server"></a>(Odmowa) Wyszukiwania DNS w Internecie na serwerze DNS
-1. Internet użytkownik podejmuje próbę wyszukiwania wewnętrzny rekord DNS na DNS01 za pośrednictwem usługi BackEnd001.CloudApp.Net 
-2. Ponieważ nie ma żadnych punktów końcowych otwarte dla ruchu DNS, to nie przejdzie za pośrednictwem usługi w chmurze, a nie dociera do serwera
-3. Jeśli punkty końcowe zostały otwarte jakiegoś powodu, reguły NSG (Zablokuj Internet) w podsieci frontonu uniemożliwiają ten ruch
-4. Na koniec tras przez podsieci wewnętrznej bazy danych będzie Wyślij cały ruch wychodzący z DNS01 do zapory w następnym skoku, a zapora będzie traktować jako asymetrycznego ruchu i upuść wychodzące odpowiedzi związku z tym są co najmniej trzy warstwy niezależne obrony między Internet i DNS01 za pośrednictwem jego uniemożliwia nieautoryzowanym niewłaściwego dostępu usługi w chmurze.
+#### <a name="denied-internet-dns-lookup-on-dns-server"></a>(Odrzucony) Wyszukiwanie DNS w sieci Internet, na serwerze DNS
+1. Internet użytkownik podejmuje próbę wyszukiwania wewnętrznego rekord DNS na DNS01 za pośrednictwem usługi BackEnd001.CloudApp.Net 
+2. Punkty końcowe nie są otwarte dla ruch DNS, to nie przejdzie przez usługę w chmurze, a nie dociera do serwera
+3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie reguły sieciowej grupy zabezpieczeń (Block Internet), podsieci frontonu
+4. Na koniec trasy zdefiniowanej przez użytkownika trasy podsieci wewnętrznej bazy danych będzie wysyłać wszelki ruch wychodzący z DNS01 do zapory w następnym skoku i Zapora będzie to zobaczyć jako asymetrycznego ruchu i upuść wychodzące odpowiedzi Thus są co najmniej trzy warstwy niezależnych obrony między Internet i DNS01 za pośrednictwem jego uniemożliwia nieautoryzowany niewłaściwego dostępu usługi w chmurze.
 
-#### <a name="denied-internet-to-sql-access-through-firewall"></a>(Odmowa) Internet w celu SQL dostęp za pośrednictwem zapory
-1. Internet użytkownik żąda danych SQL z SecSvc001.CloudApp.Net (Internet ukierunkowane usługa w chmurze)
-2. Ponieważ nie ma żadnych punktów końcowych otwarte dla bazy danych SQL, to nie przejdzie usługi w chmurze i nie osiągnąć zapory
-3. Jeśli punkty końcowe SQL były otwarte jakiegoś powodu, Zapora może rozpocząć przetwarzania zasad:
-   1. PD reguła 1 (PD Mgmt) nie są spełnione, przejść do następnej reguły
-   2. Reguły Zapory 2-5 (zasad protokołu RDP) nie zastosować, przejść do następnej reguły
-   3. PD zasady 6 i 7 (zasady aplikacji) nie są spełnione, przejść do następnej reguły
-   4. 8 reguły Zapory (do Internetu) nie są spełnione, przejść do następnej reguły
-   5. 9 reguły Zapory (DNS, Domain Name System) nie są spełnione, przejść do następnej reguły
-   6. 10 reguły Zapory (Intra-podsieci) nie są spełnione, przejść do następnej reguły
-   7. Zastosować PD zasady 11 (Odmów wszystko), ruch jest przetwarzania zasad zablokowane, stop
+#### <a name="denied-internet-to-sql-access-through-firewall"></a>(Odrzucony) Internet w celu SQL dostęp przez zaporę
+1. Internet użytkownik żąda danych serwera SQL z SecSvc001.CloudApp.Net (usługa chmury połączonego z Internetem)
+2. Punkty końcowe nie są otwarte dla programu SQL, to nie przejdzie z usługą w chmurze i w takich sytuacjach przydałaby dotrzeć do zapory
+3. W przypadku punktów końcowych SQL były otwarte niektóre przyczyny, zapora będzie rozpocząć przetwarzanie reguł:
+   1. 1 regułę Zapory (PD Mgmt) nie zastosować, przenieść następną regułę
+   2. Reguły Zapory 2 do 5 (protokół RDP reguły) nie zastosować, przenieść następną regułę
+   3. PD zasady 6 i 7 (reguł aplikacji) nie zastosować, przenieść następną regułę
+   4. 8 reguły Zapory (Internet w celu) nie zastosować, przenieść następną regułę
+   5. 9 reguły Zapory (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   6. 10 reguły Zapory (Intra-podsieci) nie zastosować, przenieść następną regułę
+   7. Zastosuj zasady 11 Pd (Odmów wszystkiego), ruch jest przetwarzanie reguł blokowania, Zatrzymaj
 
 ## <a name="references"></a>Dokumentacja
 ### <a name="main-script-and-network-config"></a>Skrypt głównego i konfiguracji sieci
-Zapisz skrypt pełna w pliku skryptu programu PowerShell. Zapisz konfigurację sieci w pliku o nazwie "NetworkConf2.xml".
-Modyfikuj zmienne zdefiniowane przez użytkownika, zgodnie z potrzebami. Uruchom skrypt, a następnie postępuj zgodnie z instrukcjami instalacji reguły zapory powyżej.
+Pełny skrypt należy zapisać w pliku skryptu programu PowerShell. W pliku o nazwie "NetworkConf2.xml", można zapisać konfiguracji sieci.
+Zmodyfikuj zmienne zdefiniowane przez użytkownika, zgodnie z potrzebami. Uruchom skrypt, a następnie postępuj zgodnie z powyższych instrukcji konfiguracji reguły zapory.
 
-#### <a name="full-script"></a>Pełna skryptu
-Ten skrypt zostanie, na podstawie zmiennych zdefiniowanych przez użytkownika:
+#### <a name="full-script"></a>Pełny skrypt
+Ten skrypt będzie na podstawie zmiennych zdefiniowanych przez użytkownika:
 
 1. Łączenie się z subskrypcją platformy Azure
-2. Utwórz nowe konto magazynu
-3. Utwórz nową sieć wirtualną i trzy podsieci zgodnie z definicją w pliku konfiguracji sieci
-4. Tworzenie maszyn wirtualnych pięć; zapory 1 i 4 systemu windows server maszyny wirtualne
-5. Skonfiguruj przez w tym:
+2. Tworzenie nowego konta magazynu
+3. Utwórz nową sieć wirtualną oraz trzy podsieci, zgodnie z definicją w pliku konfiguracji sieci
+4. Tworzenie pięć maszyn wirtualnych; Zapora 1 i 4 systemu windows server maszyn wirtualnych
+5. Skonfiguruj trasy zdefiniowanej przez użytkownika w tym:
    1. Utworzenie dwóch nowych tabel tras
-   2. Dodawanie do tabel tras
+   2. Dodawanie tras do tabel
    3. Powiąż tabel do odpowiednich podsieci
-6. Włącz przesyłanie dalej IP na analizę NVA
-7. Skonfiguruj grupy NSG w tym:
-   1. Tworzenie grupy NSG
-   2. Dodanie reguły
-   3. Powiązanie grupy NSG z odpowiednich podsieci
+6. Włączanie przekazywania adresów IP na urządzeniu WUS
+7. Konfigurowanie sieciowej grupy zabezpieczeń w tym:
+   1. Tworzenie sieciowej grupy zabezpieczeń
+   2. Dodawanie reguły
+   3. Powiązanie odpowiednie podsieci sieciową grupę zabezpieczeń
 
-Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie na się, że połączenie internetowe, komputera lub serwera.
+Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Internetem, komputera lub serwera.
 
 > [!IMPORTANT]
-> Uruchomienie tego skryptu można ostrzeżenia lub inne komunikaty informacyjne, które pop w programie PowerShell. Tylko komunikaty o błędach na czerwono są przyczyną problemu.
+> Po uruchomieniu tego skryptu można ostrzeżenia lub inne komunikaty informacyjne, które punktów obecności w programie PowerShell. Tylko komunikaty o błędach w kolorze czerwonym są zaniepokoić.
 > 
 > 
 
@@ -782,7 +782,7 @@ Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie na się, ż
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
@@ -923,7 +923,7 @@ Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie na się, ż
 
 
 #### <a name="network-config-file"></a>Plik konfiguracji sieci
-Zapisz ten plik xml z lokalizacji zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w skrypcie powyżej.
+Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w skrypcie powyżej.
 
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
@@ -959,25 +959,25 @@ Zapisz ten plik xml z lokalizacji zaktualizowane i dodać link do tego pliku do 
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Jeśli chcesz zainstalować przykładową aplikację dla tego i innych przykładowych sieci obwodowych, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
+Jeśli chcesz zainstalować przykładową aplikację w tym i inne przykłady strefy DMZ, jedno zostało podane z łącza: [Przykładowy skrypt aplikacji][SampleApp]
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Dwukierunkowe sieci obwodowe NVA, NSG i przez"
 [2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "Widok logiczny reguł zapory"
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "Utwórz obiekt sieci frontonu"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "Utwórz obiekt serwera DNS"
-[5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "Kopiowanie reguły domyślnej protokołu RDP"
+[5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "Kopiuj domyślna reguła protokołu RDP"
 [6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "Reguła AppVM01"
 [7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "Ikona przekierowania aplikacji"
-[8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "Ikona NAT docelowego"
-[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Ikona — dostęp próbny"
-[10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "Reguły zapory zarządzania"
-[11]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulerdp.png "Reguły zapory protokołu RDP"
+[8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "Ikona translatora adresów Sieciowych docelowego"
+[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Przekaż ikonę"
+[10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "Reguły zarządzania zapory"
+[11]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulerdp.png "Reguła protokołu RDP"
 [12]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleweb.png "Reguła zapory w sieci Web"
-[13]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleappvm01.png "Reguły zapory AppVM01"
-[14]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleoutbound.png "Reguła ruchu wychodzącego"
-[15]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledns.png "Reguły zapory DNS"
-[16]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleintravnet.png "Reguła sieci wirtualnej wewnątrz zapory"
+[13]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleappvm01.png "Reguła AppVM01 zapory"
+[14]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleoutbound.png "Reguły ruchu wychodzącego zapory"
+[15]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledns.png "Reguła DNS"
+[16]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleintravnet.png "Reguły sieci wirtualnej wewnątrz zapory"
 [17]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledeny.png "Zapora regułę Odmów"
 [18]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/firewallruleactivate.png "Aktywacja reguły zapory"
 

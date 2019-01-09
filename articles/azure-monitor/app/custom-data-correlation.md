@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 892342dfa4407a7ed138ffb004e7854c0cd07b4a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d034bf130440fdb5b783db41161ab5a21a306478
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53798058"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103116"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korelowanie danych usługi Application Insights z niestandardowymi źródłami danych
 
@@ -28,7 +28,7 @@ Sytuacje, w których możesz chcieć niestandardowe dane obejmują:
 
 - Tabele danych wzbogacenia lub wyszukiwania: na przykład uzupełnienia nazwy serwera z właścicielem serwera i lokalizacji laboratorium, w którym można znaleźć 
 - Korelacja ze źródłami danych — usługa Application Insights: na przykład zostały korelowanie danych dotyczących zakupu w sklepie sieci web przy użyciu informacji z usługi realizacji zakupu w celu określenia, jak dokładny szacowania czasu wysyłania 
-- Dane niestandardowe całkowicie: liczbę naszym klientom lubisz język zapytań i wydajność platformy danych usługi Log Analytics, która będzie tworzyć kopię usługi Application Insights, a chcesz go użyć do zapytania o dane, w ogóle nie jest powiązany z usługi Application Insights. Na przykład śledzić wydajność słoneczny panelu inteligentnego instalacja głównego w ramach opisanych [tutaj]( http://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
+- Dane niestandardowe całkowicie: liczbę naszym klientom lubisz język zapytań i wydajność platformy danych usługi Log Analytics, która będzie tworzyć kopię usługi Application Insights, a chcesz go użyć do zapytania o dane, w ogóle nie jest powiązany z usługi Application Insights. Na przykład śledzić wydajność słoneczny panelu inteligentnego instalacja głównego w ramach opisanych [tutaj]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Sposób korelowania danych niestandardowych z danych usługi Application Insights 
 

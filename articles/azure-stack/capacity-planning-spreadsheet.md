@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: a37575e6e6e8902dc2dd89a26011031c2e1419c4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6f6e680f7ce613d7a6d9f227765ce599c537e2d3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557261"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106515"
 ---
 # <a name="azure-stack-capacity-planner"></a>Planista wydajności usługi Azure Stack
 Planisty wydajności usługi Azure Stack to arkusz kalkulacyjny, używany do planowania pojemności zasobu usługi Azure Stack. Capacity planner zapewnia możliwość projektowania różne przydziały zasobów obliczeniowych i zobacz, jak te zmieszczą się na wybór ofert sprzętu. Poniżej znajdują się szczegółowe instrukcje dotyczące użycia usługi Azure Stack kalkulatora.
 
 ## <a name="worksheet-descriptions"></a>Opis arkusza
-Poniżej przedstawiono krótkie podsumowanie arkusze zawarte w arkuszu kalkulacyjnym Planisty wydajności usługi Azure Stack, który można pobrać z [ http://aka.ms/azstackcapacityplanner ](https://aka.ms/azstackcapacityplanner):
+Poniżej przedstawiono krótkie podsumowanie arkusze zawarte w arkuszu kalkulacyjnym Planisty wydajności usługi Azure Stack, który można pobrać z [ https://aka.ms/azstackcapacityplanner ](https://aka.ms/azstackcapacityplanner):
 
 |Nazwa karty|Opis|
 |-----|-----|

@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 01/09/2019
 ms.author: sethm
-ms.openlocfilehash: b6739a194f6374cf90e6508f4a4316892daaf3dd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7de32573ac6c0d084be3fdd6ff2c3641559fc31f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079246"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118833"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Tworzenie subskrypcji ofert w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Po zakończeniu [Utwórz ofertę](azure-stack-create-offer.md), użytkownicy muszą subskrypcji dla tej oferty, zanim będzie można go używać. Istnieją dwa sposoby, Uzyskaj subskrypcję użytkowników oferty:
 
@@ -32,11 +32,11 @@ Po zakończeniu [Utwórz ofertę](azure-stack-create-offer.md), użytkownicy mus
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>Utwórz subskrypcję jako operator chmury
 
-Operatorzy chmury mogą korzystać z portalu administratora, aby utworzyć subskrypcję z ofertą użytkownika.  Można tworzyć subskrypcje dla członków dzierżawie katalogu.  Gdy [wielodostępu](azure-stack-enable-multitenancy.md) jest włączone, można również utworzyć subskrypcji dla użytkowników w dzierżawach dodatkowego katalogu.
+Operatorzy chmury mogą korzystać z portalu administratora, aby utworzyć subskrypcję z ofertą użytkownika. Można tworzyć subskrypcje dla członków dzierżawie katalogu. Gdy [wielodostępu](azure-stack-enable-multitenancy.md) jest włączone, można również utworzyć subskrypcji dla użytkowników w dzierżawach dodatkowego katalogu.
 
 Jeśli nie chcesz, aby dzierżawcom możliwości tworzenia własnych subskrypcji, Oznacz jako prywatne ofert, a następnie Utwórz subskrypcje dla dzierżawców. To podejście jest typowa, gdy integracji usługi Azure Stack z zewnętrznego rozliczeń lub systemy wykazu usług.
 
-Po utworzeniu subskrypcji dla użytkownika, można zalogować się do portalu użytkowników i zobacz, czy masz subskrypcję oferty.  
+Po utworzeniu subskrypcji dla użytkownika, można zalogować się do portalu użytkowników i zobacz, że mają subskrypcję oferty.  
 
 ### <a name="to-create-a-subscription-for-a-user"></a>Aby utworzyć subskrypcję dla użytkownika
 
@@ -48,17 +48,17 @@ Po utworzeniu subskrypcji dla użytkownika, można zalogować się do portalu u�
 
      - **Usługa Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **USŁUG AD FS:** `<user1>@<azurestack.local>` 
+     - **USŁUG AD FS:** `<user1>@<azurestack.local>`
 
    - **Dzierżawy katalogu** — wybierz dzierżawę katalogu, w której należy konto użytkownika. Jeśli nie została włączona wielodostępność, dostępna jest dzierżawie katalogu lokalnego.
 
 3. Wybierz **oferują**. W obszarze **oferuje**, wybierz **oferują** dla tej subskrypcji. Ponieważ tworzysz subskrypcji dla użytkownika, wybierz **prywatnej** jako stan ułatwień dostępu.
 
-4. Wybierz **Utwórz** do utworzenia subskrypcji. Zobaczysz nowej subskrypcji w ramach **subskrypcja użytkownika**. Gdy użytkownik loguje się do portalu użytkowników mogą zobaczyć szczegółowe informacje dotyczące subskrypcji.
+4. Wybierz **Utwórz** do utworzenia subskrypcji. Nowa subskrypcja jest wyświetlana w obszarze **subskrypcja użytkownika**. Gdy użytkownik loguje się do portalu użytkowników, mogą zobaczyć szczegółowe informacje dotyczące subskrypcji.
 
 ### <a name="to-make-an-add-on-plan-available"></a>Aby udostępnić planu dodatku
 
-Operator chmury można dodać planu dodatku do utworzonej wcześniej subskrypcję w dowolnym momencie:
+Operator chmury można dodać planu do utworzonej wcześniej subskrypcję w dowolnym momencie:
 
 1. W portalu administracyjnym wybierz **wszystkich usług** a następnie w obszarze **zasoby administracyjne** kategorii, wybierz opcję **subskrypcji użytkownika**. Wybierz subskrypcję, którą chcesz zmienić.
 
@@ -71,11 +71,11 @@ Operator chmury można dodać planu dodatku do utworzonej wcześniej subskrypcj�
 Jako użytkownik należy zalogować się do portalu użytkowników, aby zlokalizować i subskrybować oferty publicznej i planów dodatkowych dla Twojej dzierżawy katalogu (organizacja).
 
 >[!NOTE]
->Jeśli Twoje środowisko usługi Azure Stack obsługuje [wielodostępu](azure-stack-enable-multitenancy.md) można również subskrybować oferty w dzierżawie katalogu zdalnego.
+>Jeśli Twoje środowisko usługi Azure Stack obsługuje [wielodostępu](azure-stack-enable-multitenancy.md), można również subskrybować oferty w dzierżawie katalogu zdalnego.
 
 ### <a name="to-subscribe-to-an-offer"></a>Subskrybowanie oferty
 
-1. [Zaloguj się w](azure-stack-connect-azure-stack.md) do aplikacji portal użytkowników usługi Azure Stack (https://portal.local.azurestack.external) i wybierz **Uzyskaj subskrypcję**.
+1. [Zaloguj się w](azure-stack-connect-azure-stack.md) do [portal użytkowników usługi Azure Stack](https://portal.local.azurestack.external) i wybierz **Uzyskaj subskrypcję**.
 
    ![Uzyskaj subskrypcję](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
@@ -84,19 +84,19 @@ Jako użytkownik należy zalogować się do portalu użytkowników, aby zlokaliz
    ![Tworzenie oferty](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. Po subskrybowaniu oferty, Odśwież portal aby zobaczyć, jakie usługi są częścią nowej subskrypcji.
+
 4. Aby wyświetlić subskrypcji, którą utworzono, wybierz **wszystkich usług** a następnie w obszarze **ogólne** wybierz kategorię **subskrypcje**. Wybierz subskrypcję, aby wyświetlić szczegóły subskrypcji.  
 
 ### <a name="to-subscribe-to-an-add-on-plan"></a>Aby subskrybować planu dodatku
 
 Jeśli oferta ma planu dodatku, można dodać ten plan do subskrypcji w dowolnym momencie.  
 
-1. W aplikacji portal użytkowników, wybierz **wszystkich usług**. Następnie w obszarze **ogólne** wybierz kategorię **subskrypcje**, a następnie wybierz subskrypcję, zmiany. Jeśli są dostępne, żadnych planów dodatków **+ Dodaj plan** jest aktywny i Kafelek, aby **planów dodatków**.
+1. W aplikacji portal użytkowników, wybierz **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**, a następnie wybierz subskrypcję, zmiany. Jeśli są dostępne, żadnych planów dodatków **+ Dodaj plan** jest aktywny i Kafelek, aby **planów dodatków**. 
 
-   >[!NOTE]
-   >Jeśli **+ Dodaj plan** nie jest aktywny, a następnie nie ma żadnych planów dodatków dla oferty skojarzonego z posiadaną subskrypcją.
+   Jeśli **+ Dodaj plan** nie jest aktywne, a następnie nie ma żadnych planów dodatków dla oferty skojarzonego z posiadaną subskrypcją.
 
 1. Wybierz **+ Dodaj plan** lub **planów dodatków** kafelka. W obszarze **planów dodatków**, wybierz plan, którego chcesz dodać.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Inicjowanie obsługi administracyjnej maszyny wirtualnej](azure-stack-provision-vm.md)
+- [Inicjowanie obsługi administracyjnej maszyny wirtualnej](azure-stack-provision-vm.md)

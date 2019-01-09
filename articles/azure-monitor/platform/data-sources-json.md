@@ -1,6 +1,6 @@
 ---
 title: Zbieranie niestandardowe dane JSON w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Może być zbierana niestandardowego źródła danych JSON w usłudze Azure Monitor dla systemu Linux przy użyciu agenta usługi Log Analytics.  Te niestandardowymi źródłami danych mogą być proste skrypty zwracanie JSON, takich jak narzędzie curl lub jeden z jego FluentD ponad 300 wtyczek. Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
+description: Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty zwracanie JSON, takich jak narzędzie curl lub jeden z jego FluentD ponad 300 wtyczek. Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 64f1d7b1437ea018a25db18e5f92bffaac8f7099
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438459"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105223"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Zbieranie niestandardowego źródła danych JSON za pomocą agenta usługi Log Analytics dla systemu Linux w usłudze Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Niestandardowe źródła danych JSON można łączyć w [dzienniki usługi Azure Monitor](data-collection.md) przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](http://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
+
+Niestandardowe źródła danych JSON można łączyć w [usługi Log Analytics](data-collection.md) przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](http://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
+
 
 > [!NOTE]
 > Agent analizy dziennika dla systemu Linux v1.1.0-217 + jest wymagany dla niestandardowe dane JSON
@@ -31,7 +33,7 @@ Niestandardowe źródła danych JSON można łączyć w [dzienniki usługi Azure
 
 ### <a name="configure-input-plugin"></a>Konfigurowanie danych wejściowych wtyczki
 
-Aby zebrać dane JSON w usłudze Azure Monitor, należy dodać `oms.api.` do ekranu startowego tagu FluentD we wtyczce danych wejściowych.
+Aby zebrać dane JSON w usłudze Log Analytics, należy dodać `oms.api.` do ekranu startowego tagu FluentD we wtyczce danych wejściowych.
 
 Na przykład Oto osobnego pliku konfiguracji `exec-json.conf` w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Ta metoda korzysta z wtyczki FluentD `exec` do uruchomienia polecenia curl co 30 sekund.  Dane wyjściowe tego polecenia są zbierane przez wtyczkę dane wyjściowe JSON.
 
@@ -85,9 +87,9 @@ Uruchom ponownie agenta usługi Log Analytics dla usługi systemu Linux za pomoc
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Dane wyjściowe
-Dane będą zbierane w dziennikach w usłudze Azure Monitor z typem rekordu `<FLUENTD_TAG>_CL`.
+Dane będą zbierane w usłudze Log Analytics z typem rekordu `<FLUENTD_TAG>_CL`.
 
-Na przykład niestandardowy tag `tag oms.api.tomcat` w usłudze Azure Monitor z typem rekordu `tomcat_CL`.  Można pobrać wszystkie rekordy tego typu z następującym zapytaniem dziennika.
+Na przykład niestandardowy tag `tag oms.api.tomcat` w usłudze Log Analytics z typem rekordu `tomcat_CL`.  Można pobrać wszystkie rekordy tego typu z następującym zapytaniem dziennika.
 
     Type=tomcat_CL
 

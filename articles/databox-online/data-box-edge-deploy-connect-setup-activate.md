@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: f4ca513e3c2e2345dc0005b95ddb7927c0164ffe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383021"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121621"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Samouczek: Łączenie, konfigurowanie i aktywowania usługi Azure Data Box Edge (wersja zapoznawcza) 
 
@@ -29,7 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie i Aktywuj urządzenia fizycznego
 
 > [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed kolejność i wdrożyć to rozwiązanie, przejrzyj [Azure warunki świadczenia usługi dla wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -85,7 +85,10 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonf
     - Jeżeli w Twoim środowisku włączony jest protokół DHCP, interfejsy sieciowe są automatycznie konfigurowane. Adres IP, podsieci, bramy i DNS są automatycznie przypisywane.
     - Jeśli nie jest włączony protokół DHCP, możesz przypisać statyczne adresy IP, w razie potrzeby.
     - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
-   
+
+    >[!NOTE] 
+    > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu siec ze statycznego do protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich adpaters w **właściwości urządzenia** w witrynie Azure portal dla usługi.
+
 1. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawień serwera proxy sieci Web**, a następnie skonfiguruj serwer proxy sieci web. Mimo, że konfiguracja serwera proxy sieci web jest opcjonalny, jeśli używasz serwera proxy sieci web, możesz go skonfigurować tylko na tej stronie.
    
    ![Strona "Ustawienia serwera proxy sieci Web"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)

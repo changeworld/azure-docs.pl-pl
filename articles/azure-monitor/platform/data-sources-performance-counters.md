@@ -1,6 +1,6 @@
 ---
-title: Zbieraj i Analizuj liczników wydajności w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Liczniki wydajności są zbierane przez usługi Azure Monitor do analizowania wydajności agentów systemów Windows i Linux.  W tym artykule opisano sposób konfigurowania zbiór liczników wydajności zarówno Windows, i agenci dla systemu Linux, ich szczegóły są przechowywane w obszarze roboczym i analizowanie ich w witrynie Azure portal.
+title: Zbieraj i Analizuj liczników wydajności w usłudze Log Analytics | Dokumentacja firmy Microsoft
+description: Liczniki wydajności są zbierane przez usługę Log Analytics do analizowania wydajności agentów systemów Windows i Linux.  W tym artykule opisano sposób konfigurowania zbiór liczników wydajności zarówno Windows, i agenci dla systemu Linux, ich szczegóły są przechowywane w obszarze roboczym i analizowanie ich w witrynie Azure portal.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018l
 ms.author: magoedte
-ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8359dda2521773145f9e3e870c3c21db1546004b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438374"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103710"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor
-Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa Azure Monitor można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
+# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics
+Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa log Analytics można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
 
 ![Liczniki wydajności](media/data-sources-performance-counters/overview.png)
 
@@ -88,7 +88,7 @@ W poniższej tabeli opisano parametry w tym elemencie.
 | interval | Częstotliwość, na którym są zbierane liczniki obiektu. |
 
 
-Poniższa tabela zawiera listę obiektów i liczników, które można określić w pliku konfiguracji.  Dostępne są dodatkowe liczniki dla określonych aplikacji zgodnie z opisem w [zbierania liczników wydajności dla aplikacji systemu Linux w usłudze Azure Monitor](data-sources-linux-applications.md).
+Poniższa tabela zawiera listę obiektów i liczników, które można określić w pliku konfiguracji.  Dostępne są dodatkowe liczniki dla określonych aplikacji zgodnie z opisem w [zbierania liczników wydajności dla aplikacji systemu Linux w usłudze Log Analytics](data-sources-linux-applications.md).
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -182,7 +182,7 @@ Poniżej przedstawiono konfigurację domyślną dla metryki wydajności.
     </source>
 
 ## <a name="data-collection"></a>Zbieranie danych
-Usługa Azure Monitor umożliwia zbieranie informacji o wszystkich liczników wydajności określonej w ich określonego interwału dla wszystkich agentów, które mają zainstalowanych liczników.  Dane nie są agregowane, a dane pierwotne są dostępne we wszystkich widokach zapytanie dziennika, przez czas określony przez subskrypcję.
+Log Analytics zbiera wszystkie liczniki wydajności określonej w ich określonego interwału dla wszystkich agentów, które mają zainstalowanych liczników.  Dane nie są agregowane, a dane pierwotne są dostępne we wszystkich widokach zapytanie dziennika, przez czas określony przez subskrypcję.
 
 ## <a name="performance-record-properties"></a>Właściwości rekordu wydajności
 Rekordy wydajności mają typ **wydajności** i mają właściwości podane w poniższej tabeli.

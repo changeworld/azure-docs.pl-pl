@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a3a4039e8b9c372212655718a40a57fedcfa188d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075791"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117269"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Monitorowanie ciągłe za pomocą usługi Azure Monitor
 
@@ -34,7 +34,7 @@ Aby uzyskać observability w całym środowisku, musisz włączyć monitorowania
 - [Funkcja Azure DevOps Projects](../devops-project/overview.md) umożliwiają uproszczone środowisko z istniejącego kodu i repozytorium Git lub wybrać jeden z przykładowych aplikacji, aby utworzyć potok ciągłej integracji (CI) i ciągłe dostarczanie (CD) na platformie Azure.
 - [Ciągłe monitorowanie w potoku metodyki DevOps w wersji](../azure-monitor/app/continuous-monitoring.md) umożliwia bramy ani wycofać wdrożenie oparte na danych monitorowania.
 - [Monitor stanu](../azure-monitor/app/monitor-performance-live-website-now.md) umożliwia instrumentowanie działającej aplikacji .NET na Windows za pomocą usługi Azure Application Insights, bez konieczności modyfikowania ani jego ponownego wdrażania kodu.
-- Jeśli masz dostęp do kodu aplikacji, Włącz pełne monitorowanie za pomocą [usługi Application Insights](../application-insights/app-insights-overview.md) przez zainstalowanie usługi Azure Monitor zestaw Application Insights SDK dla [.NET](../azure-monitor/learn/quick-monitor-portal.md), [języka Java ](../azure-monitor/learn/java-quick-start.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md), lub [innych języków programowania](../azure-monitor/app/platforms.md). Dzięki temu można określić niestandardowe zdarzenia, metryki lub wyświetleń stron, które są istotne dla Twojej firmy i aplikacji.
+- Jeśli masz dostęp do kodu aplikacji, Włącz pełne monitorowanie za pomocą [usługi Application Insights](../azure-monitor/app/app-insights-overview.md) przez zainstalowanie usługi Azure Monitor zestaw Application Insights SDK dla [.NET](../azure-monitor/learn/quick-monitor-portal.md), [języka Java ](../azure-monitor/learn/java-quick-start.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md), lub [innych języków programowania](../azure-monitor/app/platforms.md). Dzięki temu można określić niestandardowe zdarzenia, metryki lub wyświetleń stron, które są istotne dla Twojej firmy i aplikacji.
 
 
 
@@ -85,7 +85,7 @@ Zapewnienia, że usługi deweloperów i operacyjne mają dostęp do narzędzi i 
 ## <a name="continuously-optimize"></a>Zapewnij ciągłą optymalizację
  Monitorowanie jest jednym z podstawowych aspektów popularnych Build-Measure-Learn filozofia, zalecanego stale śledzenie kluczowych wskaźników wydajności i metryki zachowanie użytkowników i następnie fundusze optymalizujesz je za pomocą planowania iteracji. Usługa Azure Monitor pomaga zbierać metryki i dzienniki odpowiednie dla Twojej firmy i dodać nowe punkty danych w ramach następnego wdrożenia, zgodnie z potrzebami.
 
-- Użyj narzędzi w usłudze Application Insights do [śledzenie zachowania użytkowników końcowych i zaangażowania](../application-insights/app-insights-tutorial-users.md).
+- Użyj narzędzi w usłudze Application Insights do [śledzenie zachowania użytkowników końcowych i zaangażowania](../azure-monitor/learn/tutorial-users.md).
 - Użyj [analizy wpływu](../azure-monitor/app/usage-impact.md) ułatwiające priorytety obszary, które chcesz się skupić się na dysku do ważnych kluczowych wskaźników wydajności.
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725324"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118187"
 ---
 # <a name="azure-operational-security-best-practices"></a>Najlepsze rozwiązania kwestii bezpieczeństwa platformy Azure
 Zabezpieczenia usługi Azure operational odnosi się do usługi, formanty i funkcje dostępne dla użytkowników na potrzeby ochrony danych, aplikacji i innych zasobów na platformie Azure. Bezpieczeństwa platformy Azure jest oparta na strukturę, która zawiera wiedzy uzyskanej dzięki możliwości, które są unikatowe dla firmy Microsoft, w tym [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl), [firmy Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) program oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
@@ -87,7 +87,7 @@ Możesz użyć [usługi Azure Resource Manager](https://azure.microsoft.com/docu
 - Upewnij się, że aplikacja może obsługiwać ruch na potrzeby następnego uruchomienia lub marketing kampanię z użyciem.
 
 **Najlepsze rozwiązanie**: Monitorowanie wydajności aplikacji.  
-**Szczegóły**: [Usługa Azure Application Insights](../application-insights/app-insights-overview.md) to usługa zarządzania (APM) aplikacji rozszerzalnej wydajności dla deweloperów sieci web na wielu platformach. Usługa Application Insights umożliwia monitorowanie aplikacji sieci web na żywo. Funkcja automatycznie wykrywa anomalie wydajność. Obejmuje narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć, jak użytkownicy w rzeczywistości korzystają z aplikacją. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
+**Szczegóły**: [Usługa Azure Application Insights](../azure-monitor/app/app-insights-overview.md) to usługa zarządzania (APM) aplikacji rozszerzalnej wydajności dla deweloperów sieci web na wielu platformach. Usługa Application Insights umożliwia monitorowanie aplikacji sieci web na żywo. Funkcja automatycznie wykrywa anomalie wydajność. Obejmuje narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć, jak użytkownicy w rzeczywistości korzystają z aplikacją. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Eliminowanie i chronić przed atakami DDoS
 Rozproszona odmowa usługi (DDoS) jest typem ataku, który próbuje wyczerpaniu zasobów aplikacji. Celem jest wpływ na dostępność aplikacji i jego zdolność do obsługi żądań uzasadnione. Te ataki stają się coraz bardziej złożone i większy rozmiar i wpływu. Mogą one być celem dowolnego punktu końcowego, który jest publicznie dostępny za pośrednictwem Internetu.

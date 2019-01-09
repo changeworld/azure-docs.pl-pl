@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 2467da8d5a87a3a9325b807aec48c584ab0197cb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079106"
+ms.locfileid: "54105189"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware w środowisku lokalnym lub serwerów fizycznych do lokacji dodatkowej
 
@@ -80,7 +80,7 @@ Zainstaluj następujące aktualizacje:
 > [!NOTE]
 >Wszystkie składniki programu Scout pliku zaktualizowanej wersji nie może być taka sama w pliku zip aktualizacji. Starsza wersja oznacza, że nie wprowadzono zmian w składniku od czasu poprzedniej aktualizacji tej aktualizacji.
 
-Pobierz [aktualizacji](https://aka.ms/asr-scout-update7) pliku zip. Ten plik zawiera wszystkie bazy danych binarnych i zbiorcze uaktualnienia plików binarnych w następujących składników: 
+Pobierz [aktualizacji](https://aka.ms/asr-scout-update7) pliku zip i [MySQL i PHP uaktualniania](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) plików konfiguracyjnych. Aktualizuj plik zip zawiera wszystkie bazy danych binarnych i zbiorcze uaktualnienia plików binarnych w następujących składników: 
   - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
   - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.GZ
   - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
@@ -126,7 +126,7 @@ Pobierz [aktualizacji](https://aka.ms/asr-scout-update7) pliku zip. Ten plik zaw
 6. **Linux główny serwer docelowy**: Aby zaktualizować program unified agent, skopiuj **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** na serwer docelowy z węzłem głównym systemu Linux i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
 7. **Serwer źródłowy Windows**: Aby zaktualizować program unified agent, skopiuj **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** na serwerze źródłowym. Kliknij dwukrotnie plik, aby go uruchomić. 
 8. **Serwer źródłowy z systemem Linux**: Aby zaktualizować program unified agent, skopiuj odpowiedniej wersji pliku program unified agent na serwerze z systemem Linux i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.  Przykład: Systemu RHEL 6.7 64-bitowego serwera, kopia **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** z serwerem i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
-9. Po uaktualnieniu serwera konfiguracji, serwer przetwarzania i serwera RX z wyżej wymienionych instalatory bibliotek języka PHP i MySQL musi zostać uaktualniony ręcznie przy użyciu czynności wymienionych w [sekcji](#manual-upgrade-for-php-and-mysql-on-cs-ps-and-rx).
+9. Po uaktualnieniu serwera konfiguracji, serwer przetwarzania i serwera RX z wyżej wymienionych instalatory bibliotek języka PHP i MySQL musi zostać uaktualniony ręcznie przy użyciu czynności wymienionych w sekcji 7.4 [Przewodniku szybkiej instalacji](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 

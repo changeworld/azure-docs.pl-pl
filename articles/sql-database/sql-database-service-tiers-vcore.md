@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 01/02/2019
-ms.openlocfilehash: f756f043a7ab3c9086b21b8bdb88a5a6a7ed60df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6a5902b8c442d83c86142bad516b862febd6522c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001604"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118204"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 
@@ -66,6 +66,10 @@ Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) o
 Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
+
+Jeśli chcesz używać swoich istniejących licencji programu SQL Server w środowisku lokalnym, możesz zapłacić tylko cena podstawowa podstawową infrastrukturą platformy Azure (na przykład maszyna wirtualna Azure gdzie działa baza danych) podczas SQL Server Database engine licencji nie zostaną uwzględnione na rachunku. W pewnym okresie możesz użyć swojej licencji w środowisku lokalnym, zarówno dla programu SQL Server i usługi Azure SQL Database. W przeciwnym razie koszt licencji dla aparatu bazy danych programu SQL Server będą uwzględniane w cenie usługi bazy danych lub wystąpienia. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure można utworzyć lub zaktualizować swoje bazy danych lub wystąpienia, istnieją dwie opcje cenowe, które można wybrać:
+- **BasePrice** oznacza, że możesz mieć ważną licencję programu SQL Server, który chcesz użyć jako części [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) i chcesz zapłacić tylko koszty infrastruktury podstawowej.
+- **LicenseIncluded** oznacza, że albo nie masz licencji programu SQL Server lokalne lub nie chcesz użyć swojej licencji w środowisku lokalnym dla bazy danych lub wystąpienia zarządzanego. W tym przypadku licencję programu SQL Server zostaną uwzględnione na rachunku. 
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migracja z modelu jednostek DTU do modelu rdzenia wirtualnego
 

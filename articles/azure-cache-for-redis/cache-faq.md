@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971532"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104067"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
@@ -90,7 +90,7 @@ Istnieje kilka sposobów, które możesz rozpocząć pracę z usługą Azure Cac
 
 * Możesz zapoznać się z jednego z naszych samouczków dotyczących [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), i [językaPython](cache-python-get-started.md).
 * Możesz obejrzeć [sposobu kompilacji o wysokiej wydajności aplikacji za pomocą Microsoft Azure Cache dla usługi Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Możesz zapoznać się w dokumentacji klienta dla klientów, którzy jest zgodny z językiem programowania projekt, aby zobaczyć sposób użycia usługi Redis. Istnieje wielu klientów Redis, które mogą służyć z pamięcią podręczną Azure redis Cache. Aby uzyskać listę klientów usługi Redis, zobacz [ http://redis.io/clients ](http://redis.io/clients).
+* Możesz zapoznać się w dokumentacji klienta dla klientów, którzy jest zgodny z językiem programowania projekt, aby zobaczyć sposób użycia usługi Redis. Istnieje wielu klientów Redis, które mogą służyć z pamięcią podręczną Azure redis Cache. Aby uzyskać listę klientów usługi Redis, zobacz [ https://redis.io/clients ](https://redis.io/clients).
 
 Jeśli nie masz jeszcze konta platformy Azure, możesz to zrobić:
 
@@ -210,7 +210,7 @@ Zazwyczaj domyślne wartości klienta są wystarczające. Można dostosować opc
       * Niniejsze wskazówki może prowadzić do więcej usprawnione czas oczekiwania na `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jakie usługi Azure Cache dla klientów usługi Redis można używać?
-Jedną z najważniejszych funkcji usługi Redis zakłada, że wielu klientów, obsługa wielu języków programowania różne. Aby uzyskać bieżącą listę klientów, zobacz [klienci Redis](http://redis.io/clients). Samouczki, które obejmują kilka różnych językach i klientów, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i kliknij żądany język z przełącznika język, w górnej części tego artykułu.
+Jedną z najważniejszych funkcji usługi Redis zakłada, że wielu klientów, obsługa wielu języków programowania różne. Aby uzyskać bieżącą listę klientów, zobacz [klienci Redis](https://redis.io/clients). Samouczki, które obejmują kilka różnych językach i klientów, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i kliknij żądany język z przełącznika język, w górnej części tego artykułu.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -236,12 +236,12 @@ Nie jest brak emulator dla pamięci podręcznej Azure redis cache, ale można ur
         }
 
 
-Opcjonalnie można skonfigurować [redis.conf](http://redis.io/topics/config) pliku, aby lepiej dopasować [domyślne ustawienia pamięci podręcznej](cache-configure.md#default-redis-server-configuration) dla pamięci podręcznej online platformy Azure dla usługi Redis, w razie potrzeby.
+Opcjonalnie można skonfigurować [redis.conf](https://redis.io/topics/config) pliku, aby lepiej dopasować [domyślne ustawienia pamięci podręcznej](cache-configure.md#default-redis-server-configuration) dla pamięci podręcznej online platformy Azure dla usługi Redis, w razie potrzeby.
 
 <a name="cache-commands"></a>
 
 ### <a name="how-can-i-run-redis-commands"></a>Jak uruchomić polecenia Redis
-Można użyć dowolnego polecenia wymienione pod [polecenia Redis](http://redis.io/commands#) z wyjątkiem polecenia wymienione pod [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Istnieje kilka opcji, aby uruchamiać polecenia usługi Redis.
+Można użyć dowolnego polecenia wymienione pod [polecenia Redis](https://redis.io/commands#) z wyjątkiem polecenia wymienione pod [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Istnieje kilka opcji, aby uruchamiać polecenia usługi Redis.
 
 * Jeśli pamięć podręczna warstwy standardowa lub Premium, możesz uruchamiać polecenia pamięci podręcznej Redis przy użyciu [konsolę pamięci podręcznej Redis](cache-configure.md#redis-console). Konsola pamięci podręcznej Redis zapewnia bezpieczny sposób do uruchamiania poleceń pamięci podręcznej Redis w portalu Azure.
 * Można również użyć narzędzia wiersza polecenia usługi Redis. Aby korzystać z nich, wykonaj następujące czynności:
@@ -257,7 +257,7 @@ Można użyć dowolnego polecenia wymienione pod [polecenia Redis](http://redis.
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Dlaczego nie ma MSDN odwołanie do biblioteki klas np. niektóre z innymi usługami platformy Azure w pamięci podręcznej Redis Azure?
-Usługa Microsoft Azure Cache pamięci podręcznej Redis jest oparta na popularnej open source pamięć podręczna systemu Azure dla usługi Redis i może zostać oceniony przez cały szereg [klienci Redis](http://redis.io/clients) dla wielu języków programowania. Każdy klient ma własny interfejs API, który sprawia, że wywołania do pamięci podręcznej Azure wystąpienie pamięci podręcznej Redis za pomocą [polecenia Redis](http://redis.io/commands).
+Usługa Microsoft Azure Cache pamięci podręcznej Redis jest oparta na popularnej open source pamięć podręczna systemu Azure dla usługi Redis i może zostać oceniony przez cały szereg [klienci Redis](https://redis.io/clients) dla wielu języków programowania. Każdy klient ma własny interfejs API, który sprawia, że wywołania do pamięci podręcznej Azure wystąpienie pamięci podręcznej Redis za pomocą [polecenia Redis](https://redis.io/commands).
 
 Ponieważ różni się każdego klienta, istnieje nie jeden scentralizowane odwołań do klas w witrynie MSDN, a każdy klient zachowuje własną dokumentację referencyjną. Oprócz dokumentacją referencyjną istnieje kilka samouczków, w którym pokazano, jak rozpocząć pracę z usługą Azure Cache dla pamięci podręcznej Redis przy użyciu różnych języków i pamięci podręcznej klientów. Aby uzyskać dostęp do tych samouczków, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i kliknij żądany język z przełącznika język, w górnej części tego artykułu.
 
@@ -310,7 +310,7 @@ Aby uzyskać instrukcje dotyczące pobierania narzędzia pamięci podręcznej Re
 * Redis Cache działa najlepiej z mniejszej wartości, dlatego należy rozważyć siekanie większe danych na wiele kluczy. W [tej dyskusji Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb jest uznawany za duży. Odczyt [w tym artykule](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) dotyczącej problemu przykład, która może być spowodowany przez dużych wartościach.
 * Konfigurowanie usługi [ustawienia puli wątków](#important-details-about-threadpool-growth) w celu uniknięcia przekroczenia limitu czasu.
 * Użyj co najmniej connectTimeout domyślnej równej 5 sekund. Ten interwał spowodowałoby to nadanie StackExchange.Redis wystarczająco dużo czasu, aby ponownie ustanowić połączenia, w przypadku blip sieci.
-* Należy pamiętać o poprawa wydajności przy użyciu różnych operacji, które są uruchomione. Na przykład `KEYS` polecenia jest operacją O(n) i należy ich unikać. [Witryny redis.io](http://redis.io/commands/) znajdują się wokół złożoności czasu dla każdej operacji, która go obsługuje. Kliknij każdy polecenie, aby wyświetlić złożoności dla każdej operacji.
+* Należy pamiętać o poprawa wydajności przy użyciu różnych operacji, które są uruchomione. Na przykład `KEYS` polecenia jest operacją O(n) i należy ich unikać. [Witryny redis.io](https://redis.io/commands/) znajdują się wokół złożoności czasu dla każdej operacji, która go obsługuje. Kliknij każdy polecenie, aby wyświetlić złożoności dla każdej operacji.
 
 #### <a name="configuration-and-concepts"></a>Konfiguracja i pojęcia
 * Dla systemów produkcyjnych należy używać warstwy standardowa i Premium. Warstwa podstawowa to system jeden węzeł nie replikacji danych i objęta umową SLA. Ponadto można użyć co najmniej C1 pamięci podręcznej. Pamięci podręczne C0 są zwykle używane w scenariuszach proste tworzenie i testowanie.
@@ -329,7 +329,7 @@ Aby uzyskać instrukcje dotyczące pobierania narzędzia pamięci podręcznej Re
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jakie są niektóre zagadnienia podczas korzystania z Typowe polecenia Redis?
 * Nie należy uruchamiać niektórych poleceń pamięci podręcznej Redis, które zająć dużo czasu, aby zakończyć bez zrozumienia wpływu tych poleceń.
-  * Na przykład nie uruchamiaj [KLUCZE](http://redis.io/commands/keys) polecenia w środowisku produkcyjnym, ponieważ trwa długo w zależności od liczby kluczy. Redis jest serwerem jednowątkowe i przetwarza polecenia jednego naraz. W przypadku innych poleceń wydane po KLUCZE są nie będą przetwarzane do czasu pamięci podręcznej Redis przetwarza polecenia KLUCZE. [Witryny redis.io](http://redis.io/commands/) znajdują się wokół złożoności czasu dla każdej operacji, która go obsługuje. Kliknij każdy polecenie, aby wyświetlić złożoności dla każdej operacji.
+  * Na przykład nie uruchamiaj [KLUCZE](https://redis.io/commands/keys) polecenia w środowisku produkcyjnym, ponieważ trwa długo w zależności od liczby kluczy. Redis jest serwerem jednowątkowe i przetwarza polecenia jednego naraz. W przypadku innych poleceń wydane po KLUCZE są nie będą przetwarzane do czasu pamięci podręcznej Redis przetwarza polecenia KLUCZE. [Witryny redis.io](https://redis.io/commands/) znajdują się wokół złożoności czasu dla każdej operacji, która go obsługuje. Kliknij każdy polecenie, aby wyświetlić złożoności dla każdej operacji.
 * Rozmiary kluczy — należy użyć kluczy/wartości małych lub dużych kluczy/wartości? Ogólnie rzecz biorąc zależy od scenariusza. Dany scenariusz wymaga kluczy, można dopasować ConnectionTimeout i ponów próbę wykonania wartości i Dostosuj swoją logikę ponawiania prób. Z perspektywy serwera Redis mniejsze wartości są przestrzegane mają lepszą wydajność.
 * Te zagadnienia nie oznaczają, że nie można przechowywać większe wartości w pamięci podręcznej Redis; należy pamiętać o następujących kwestiach. Opóźnienia będzie wyższa. Jeśli masz jeden zestaw danych, który jest większy lub taki, który jest mniejszy, można użyć wielu wystąpień ConnectionMultiplexer, każdego skonfigurowanego z innym zestawem wartości limitu czasu, a następnie spróbuj ponownie, zgodnie z opisem w poprzedniej [co zrobić StackExchange.Redis Opcje konfiguracji](#cache-configuration) sekcji.
 

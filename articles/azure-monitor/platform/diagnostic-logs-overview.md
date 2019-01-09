@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 08ad8964fee2d94677832fa664ed2e18cb9f772c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551447"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104985"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -83,7 +83,7 @@ Można włączyć zbierania dzienników diagnostycznych [jako część tworzenia
 
 Po utworzeniu zasobu, przechodząc do określonego zasobu lub przechodząc do usługi Azure Monitor, można włączyć zbierania dzienników diagnostycznych zasobów w witrynie Azure portal. Aby je włączyć za pomocą usługi Azure Monitor:
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do usługi Azure Monitor i kliknij **ustawień diagnostycznych**
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do usługi Azure Monitor i kliknij **ustawień diagnostycznych**
 
     ![Monitorowanie sekcji usługi Azure Monitor](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 

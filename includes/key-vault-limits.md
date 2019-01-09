@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: efa367157a8fd896cdc9680bf2ab6ba6a9e3dbb0
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53430013"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084008"
 ---
 Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup>):
 
@@ -23,6 +23,9 @@ Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone mag
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
 |
+
+> [!NOTE]
+> Powyżej wartości progowe są ważona i wymuszania znajduje się w ich suma. Możesz tworzyć 125 operacje RSA - przez moduł HSM — 4k i 0 RSA - przez moduł HSM - 2, lub 124 RSA - przez moduł HSM — 4k i 16 RSA - przez moduł HSM — 2 tys. Później w tym samym interwale 10 sekund innych operacji spowoduje, że wyjątek AKV klienta.
 
 > [!NOTE]
 > Jeśli przyjrzymy się w poniższej tabeli, możesz zobaczyć, że dla kluczy opartych na oprogramowanie zezwalamy na 2000 transakcji na 10 sekund, a przez moduł HSM kopii klucze zezwalamy na 1000 transakcji na 10 sekund. Współczynnik kopii oprogramowania następującą liczbę transakcji: klucze 3072 klucze 2048 to 500/2000 lub Update 0.4. Oznacza to, że jeśli klient ma 500 3072 transakcje klucza w ciągu 10 sekund, osiągną swój limit maksymalny wynoszący i nie można wykonać żadnych innych operacji klucza. 

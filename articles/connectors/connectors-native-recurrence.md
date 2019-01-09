@@ -11,12 +11,12 @@ ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
-ms.openlocfilehash: 369bdba063f8582b8343682dcbbc990d2f63e21a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a1f89ca6e9dc2d05180df14ff0f4dc52729a7e03
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078069"
+ms.locfileid: "54107841"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Tworzenie i uruchamianie zadań cyklicznych i przepływów pracy z usługą Azure Logic Apps
 
@@ -39,7 +39,7 @@ Ten wyzwalacz obsługuje wielu wzorców, na przykład:
 
 Po każdym aktywowaniu wyzwalacza cyklu, Logic Apps tworzy i uruchamia nowe wystąpienie przepływu pracy aplikacji logiki. 
 
-Aby od razu wyzwolenie aplikacji logiki i uruchomić jeden raz bez cykliczne, zobacz [wykonywania zadania tylko jeden raz](#run-once) w dalszej części tego tematu.
+Aby wyzwolić aplikacji logiki i uruchomić tylko jeden raz w przyszłości, zobacz [wykonywania zadania tylko jeden raz](#run-once) w dalszej części tego tematu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -141,8 +141,8 @@ Oto przykład [definicji wyzwalacza cyklu](../logic-apps/logic-apps-workflow-act
 
 <a name="run-once"></a>
 
-**PYT.:** Co zrobić, jeśli chcę, aby uruchomić aplikację logiki, który jest od razu i jeden raz tylko? </br>
-**ODP.:** Aby od razu wyzwolenie aplikacji logiki i uruchomić jeden raz bez cyklicznego, można użyć **harmonogramu: Uruchom raz zadania** szablonu. Po utworzeniu nowej aplikacji logiki, ale przed otwarciem projektanta aplikacji logiki w obszarze **szablony** sekcji z **kategorii** listy wybierz pozycję **harmonogram**, a następnie wybierz pozycję szablon:
+**PYT.:** Co zrobić, jeśli chcę, aby uruchomić aplikację logiki w przyszłości tylko jeden raz? </br>
+**ODP.:** Aby wyzwolić aplikacji logiki i uruchomić jeden raz bez cyklicznego, można użyć **harmonogramu: Uruchom raz zadania** szablonu. Po utworzeniu nowej aplikacji logiki, ale przed otwarciem projektanta aplikacji logiki w obszarze **szablony** sekcji z **kategorii** listy wybierz pozycję **harmonogram**, a następnie wybierz pozycję szablon:
 
 ![Wybierz pozycję "harmonogramu: Uruchamianie zadania raz"szablonu](./media/connectors-native-recurrence/choose-run-once-template.png)
 

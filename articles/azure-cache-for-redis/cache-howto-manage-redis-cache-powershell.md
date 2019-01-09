@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 0186882183ed0848fd8b14d186b55ad1a5ff58ea
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019708"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105240"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ W tym temacie pokazano, jak przeprowadzić takie jak tworzenie typowych zadań, 
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Aby uzyskać więcej informacji na temat klasycznego modelu wdrażania, zobacz [usługi Azure Resource Manager a klasycznym wdrożeniu: omówienie modeli wdrażania i stanu zasobów](../azure-resource-manager/resource-manager-deployment-model.md).
+Aby uzyskać więcej informacji na temat klasycznego modelu wdrażania, zobacz [usługi Azure Resource Manager a klasycznym wdrożeniu: Modele wdrażania i stanu zasobów](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli zainstalowano już Azure PowerShell, konieczne jest posiadanie programu Azure PowerShell w wersji 1.0.0 lub nowszym. Aby sprawdzić wersję programu Azure PowerShell, który został zainstalowany przy użyciu następującego polecenia w wierszu polecenia programu Azure PowerShell.
@@ -130,14 +130,14 @@ Poniższa tabela zawiera właściwości i opisy parametrów często używane pod
 | ResourceGroupName |Nazwa grupy zasobów, w której chcesz utworzyć pamięci podręcznej | |
 | Rozmiar |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Liczba fragmentów, aby utworzyć podczas tworzenia cache w warstwie premium przy włączonym klastrowaniu. Prawidłowe wartości to: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| SKU |Określa jednostki SKU w pamięci podręcznej. Prawidłowe wartości to: podstawowa, standardowa i Premium |Standardowa (Standard) |
+| SKU |Określa jednostki SKU w pamięci podręcznej. Prawidłowe wartości to: Podstawowa, Standardowa i Premium |Standardowa (Standard) |
 | RedisConfiguration |Określa ustawienia konfiguracji pamięci podręcznej Redis. Aby uzyskać szczegółowe informacje na temat poszczególnych ustawień, zobacz następującą [właściwości RedisConfiguration](#redisconfiguration-properties) tabeli. | |
 | EnableNonSslPort |Wskazuje, czy port bez protokołu SSL jest włączony. |False |
 | MaxMemoryPolicy |Ten parametr jest przestarzały — zamiast tego użyj RedisConfiguration. | |
 | StaticIP |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. | |
 | Podsieć |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. | |
 | VirtualNetwork |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa identyfikator zasobu sieci Wirtualnej, w której ma zostać wdrożony w pamięci podręcznej. | |
-| Właściwość KeyType |Określa, które klucz dostępu, można wygenerować ponownie podczas odnawiania klucze dostępu. Prawidłowe wartości to: podstawowe, pomocnicze | |
+| Właściwość KeyType |Określa, które klucz dostępu, można wygenerować ponownie podczas odnawiania klucze dostępu. Prawidłowe wartości to: Podstawowy i pomocniczy | |
 
 ### <a name="redisconfiguration-properties"></a>Właściwości RedisConfiguration
 | Właściwość | Opis | Warstwy cenowe |
@@ -148,11 +148,11 @@ Poniższa tabela zawiera właściwości i opisy parametrów często używane pod
 | maxmemory-reserved |Konfiguruje [pamięci zarezerwowanej](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla procesów pamięć podręczna |Standardowa i Premium |
 | maxmemory-policy |Konfiguruje [zasady eksmisji](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla pamięci podręcznej |Wszystkie warstwy cenowe |
 | powiadomienia przestrzeni kluczy — zdarzenia |Konfiguruje [powiadomienia przestrzeni kluczy](cache-configure.md#keyspace-notifications-advanced-settings) |Standardowa i Premium |
-| hash-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](http://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
-| hash-max-ziplist-value |Konfiguruje [optymalizacji pamięci](http://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
-| zestaw max-intset — wpisy |Konfiguruje [optymalizacji pamięci](http://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
-| zset-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](http://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
-| zset-max-ziplist-value |Konfiguruje [optymalizacji pamięci](http://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
+| hash-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
+| hash-max-ziplist-value |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
+| zestaw max-intset — wpisy |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
+| zset-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
+| zset-max-ziplist-value |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | bazy danych |Umożliwia skonfigurowanie liczby baz danych. Tej właściwości można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Aby utworzyć pamięć podręczna systemu Azure dla usługi Redis
@@ -237,7 +237,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `New-AzureRmRedis
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Aby utworzyć pamięć podręczną za pomocą parametrów domyślnych, uruchom następujące polecenie.
 
@@ -317,7 +317,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Set-AzureRmRedis
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 `Set-AzureRmRedisCache` Polecenia cmdlet można używać do aktualizacji właściwości, takie jak `Size`, `Sku`, `EnableNonSslPort`i `RedisConfiguration` wartości. 
 
@@ -421,7 +421,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Get-AzureRmRedis
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Do zwracania informacji dotyczących wszystkich pamięci podręcznych w bieżącej subskrypcji, uruchom `Get-AzureRmRedisCache` bez żadnych parametrów.
 
@@ -488,7 +488,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Get-AzureRmRedis
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Aby pobrać klucze służące do pamięci podręcznej, należy wywołać `Get-AzureRmRedisCacheKey` polecenia cmdlet i przekazać nazwę pamięci podręcznej nazwę grupy zasobów, która zawiera pamięci podręcznej.
 
@@ -533,7 +533,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `New-AzureRmRedis
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Aby ponownie wygenerować klucz podstawowy lub pomocniczy dla pamięci podręcznej, należy wywołać `New-AzureRmRedisCacheKey` polecenia cmdlet i przekaż nazwę grupy zasobów oraz określ `Primary` lub `Secondary` dla `KeyType` parametru. W poniższym przykładzie pomocniczy klucz dostępu dla pamięci podręcznej zostanie ponownie wygenerowany.
 
@@ -584,7 +584,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Remove-AzureRmRe
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 W poniższym przykładzie nazwę pamięci podręcznej `myCache` zostanie usunięty.
 
@@ -648,7 +648,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Import-AzureRmRe
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 Następujące polecenie importuje dane z magazynu obiektów blob, określony przez identyfikator uri sygnatury dostępu Współdzielonego do usługi Azure Cache dla usługi Redis.
@@ -707,7 +707,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Export-AzureRmRe
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 Następujące polecenie eksportuje dane z usługi Azure Cache dla wystąpienia usługi Redis do określonego przez identyfikator uri sygnatury dostępu Współdzielonego kontenera.
@@ -768,7 +768,7 @@ Aby wyświetlić listę dostępnych parametrów oraz ich opisy `Reset-AzureRmRed
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 Poniższe polecenie wykonuje ponowny rozruch oba węzły określonego pamięci podręcznej.
@@ -781,9 +781,9 @@ Poniższe polecenie wykonuje ponowny rozruch oba węzły określonego pamięci p
 Aby dowiedzieć się więcej na temat programu Windows PowerShell przy użyciu platformy Azure, zobacz następujące zasoby:
 
 * [Pamięć podręczna systemu Azure dla usługi Redis dokumentacji poleceń cmdlet w witrynie MSDN](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
-* [Polecenia cmdlet usługi Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkID=394765): Dowiedz się, jak korzystać z poleceń cmdlet w module usługi Azure Resource Manager.
-* [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Dowiedz się, jak tworzenie i zarządzanie grupami zasobów w witrynie Azure portal.
-* [Blog dotyczący platformy Azure](https://azure.microsoft.com/blog/): informacje o nowych funkcjach w systemie Azure.
-* [Blog programu Windows PowerShell](https://blogs.msdn.com/powershell): informacje o nowych funkcjach w programie Windows PowerShell.
-* ["Witaj, twórco skryptów!" Blog](http://blogs.technet.com/b/heyscriptingguy/): Uzyskaj praktyczne wskazówki i porady od społeczności programu Windows PowerShell.
+* [Polecenia cmdlet usługi Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkID=394765): Dowiedz się używać poleceń cmdlet w module usługi Azure Resource Manager.
+* [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Dowiedz się, jak utworzyć i zarządzanie grupami zasobów w witrynie Azure portal.
+* [Blog dotyczący platformy Azure](https://azure.microsoft.com/blog/): Więcej informacji na temat nowych funkcji w systemie Azure.
+* [Blog programu Windows PowerShell](https://blogs.msdn.com/powershell): Dowiedz się więcej o nowych funkcjach w programie Windows PowerShell.
+* ["Witaj, twórco skryptów!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Uzyskaj praktyczne wskazówki i porady od społeczności programu Windows PowerShell.
 

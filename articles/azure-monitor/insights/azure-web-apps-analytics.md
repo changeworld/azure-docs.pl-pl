@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 57cc1d25f38c1aec7495a3ea542a7b467829dc41
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1ebe0b9d3cbe14bf35e05db3349a5aebb11b5716
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184716"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120108"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne metryk we wszystkich zasobach aplikacji sieci Web platformy Azure
 
@@ -28,4 +28,4 @@ ms.locfileid: "53184716"
 > Rozwiązanie analiza aplikacji sieci Web platformy Azure została przeniesiona do pomoc techniczna w społeczności.  
 >- Rozwiązanie nie jest już dostępna w witrynie Azure Marketplace, ale mogą być instalowane z [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) gdzie nie jest obsługiwany przez społeczność.
 >- Klienci, którzy już zainstalowano rozwiązania można nadal z niego korzystać ze zmianami.  
->- Firma Microsoft zaleca się, że używasz [usługi Application Insights](../../application-insights/app-insights-overview.md) do monitorowania aplikacji sieci web.
+>- Firma Microsoft zaleca się, że używasz [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) do monitorowania aplikacji sieci web.

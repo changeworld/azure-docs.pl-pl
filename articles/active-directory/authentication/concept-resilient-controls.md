@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b6640e4ef9751e235c0310b0d725cd7e27ff2b40
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53746136"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101925"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -230,7 +230,7 @@ Musisz cofnąć zmiany wprowadzone w ramach aktywowano plan awaryjny po przywró
 Jeśli Twoja organizacja korzysta z zasad starszej wersji usługi MFA na użytkownika, można rozważyć alternatywne:
 
 1. Jeśli masz adres IP ruchu wychodzącego w sieci firmowej, możesz dodać ich jako zaufane adresy IP, aby włączyć uwierzytelnianie tylko do sieci firmowej.
- 2. Jeśli nie masz spis wychodzące adresy IP lub należy włączyć dostęp i spoza sieci firmowej, możesz dodać całą przestrzeń adresów IPv4 jako zaufane adresy IP w notacji CIDR (na przykład 192.168.1.1/24).
+ 2. Jeśli nie masz spis wychodzące adresy IP lub należy włączyć dostęp i spoza sieci firmowej, można dodać całą przestrzeń adresów IPv4 jako zaufane adresy IP, określając 0.0.0.0/1 i 128.0.0.0/1.
 
 >[!IMPORTANT]
  > Jeśli rozszerzenie jest zaufane adresy IP w celu odblokowania dostępu, nie można wygenerować zdarzeń o podwyższonym ryzyku skojarzone z adresami IP (na przykład, więc podróż jest wykluczona lub nieznanych lokalizacji).

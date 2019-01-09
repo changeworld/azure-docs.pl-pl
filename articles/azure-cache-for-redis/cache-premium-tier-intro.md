@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0978e906467fd5b16f25bd2e053980dda4510127
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 906ab6c433df7cf452d1f5ab4660abce8d4674fc
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019743"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107518"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Wprowadzenie do platformy Azure pamięci podręcznej Redis w warstwie Premium
 Pamięć podręczna systemu Azure dla usługi Redis jest rozproszona, zarządzana pamięć podręczna, która umożliwia tworzenie szybko reagujących aplikacji przy zapewnieniu superszybkiego dostępu do danych. 
@@ -34,7 +34,7 @@ Nowa warstwa Premium jest warstwa przeznaczona dla przedsiębiorstw, która obej
 Aby uzyskać więcej informacji na temat rozmiaru, przepływności i przepustowości w pamięciach podręcznych premium, zobacz [pamięci podręcznej Azure redis Cache — często zadawane pytania](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="redis-data-persistence"></a>Trwałość danych Redis
-Warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej Podstawowa/standardowa wszystkie dane są przechowywane tylko w pamięci. W przypadku podstawowej infrastruktury problemów może być możliwej utracie danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce), opcje w [trwałość Redis](http://redis.io/topics/persistence). 
+Warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej Podstawowa/standardowa wszystkie dane są przechowywane tylko w pamięci. W przypadku podstawowej infrastruktury problemów może być możliwej utracie danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce), opcje w [trwałość Redis](https://redis.io/topics/persistence). 
 
 Aby uzyskać instrukcje na temat konfigurowania trwałości, zobacz [Konfigurowanie trwałości dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
 

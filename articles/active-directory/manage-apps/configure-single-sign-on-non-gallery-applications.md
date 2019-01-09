@@ -1,37 +1,33 @@
 ---
-title: Konfigurowanie logowania jednokrotnego usługi Azure AD dla aplikacji | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak do samoobsługi połączyć aplikacje do usługi Azure Active Directory przy użyciu języka SAML i logowania jednokrotnego opartego na hasło
+title: Single - aplikacje spoza galerii logowania jednokrotnego usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Konfigurowanie logowania jednokrotnego (SSO) do aplikacji spoza galerii w usłudze Azure Active Directory (Azure AD)
 services: active-directory
 author: barbkess
-documentationcenter: na
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2018
+ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: bb2fcbad3d415a8ac7a8e0c3237fcb97042defd7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408135"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121349"
 ---
-# <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w usłudze Azure Active Directory
 
-Ten artykuł dotyczy funkcja, która umożliwia administratorom skonfigurowanie logowania jednokrotnego do aplikacji, które nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez konieczności pisania kodu*. Ta funkcja została wydana w wersji zapoznawczej Technical Preview 18 listopada 2015 i znajduje się w [usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-whatis.md). Jeśli zamiast tego szukasz wskazówki dla deweloperów o tym, jak zintegrować aplikacje niestandardowe z usługą Azure AD za pomocą kodu, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
+Ten artykuł dotyczy funkcja, która umożliwia administratorom skonfigurowanie logowania jednokrotnego do aplikacji, które nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez konieczności pisania kodu*. Jeśli zamiast tego szukasz wskazówki dla deweloperów o tym, jak zintegrować aplikacje niestandardowe z usługą Azure AD za pomocą kodu, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
 
 Galeria aplikacji usługi Azure Active Directory zawiera listę aplikacji, które są znane formularz logowania jednokrotnego przy użyciu usługi Azure Active Directory, pomocy technicznej zgodnie z opisem w [w tym artykule](what-is-single-sign-on.md). Po (jako IT specjalista lub system integratora w swojej organizacji) znalezieniu aplikacji, którą chcesz się połączyć, możesz rozpocząć zgodnie z instrukcjami krok po kroku przedstawiony w witrynie Azure portal umożliwia logowanie jednokrotne.
 
-Klienci z [usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-whatis.md) licencji również uzyskać te dodatkowe możliwości:
+Te funkcje są również dostępne, zgodnie z umowy licencyjnej. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/active-directory/). 
 
-* Samoobsługowa integracja dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjowanego przez dostawcę usług lub inicjowane przez dostawcę tożsamości)
-* Samoobsługowa integracja dowolnej aplikacji sieci web, który jest oparty na języku HTML strony logowania za pomocą [SSO oparte na hasłach](what-is-single-sign-on.md#password-based-sso)
+- Samoobsługowa integracja dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjowanego przez dostawcę usług lub inicjowane przez dostawcę tożsamości)
+- Samoobsługowa integracja dowolnej aplikacji sieci web, który jest oparty na języku HTML strony logowania za pomocą [SSO oparte na hasłach](what-is-single-sign-on.md#password-based-sso)
 * Samoobsługowe połączenia aplikacji, które używają protokołu Standard SCIM do inicjowania obsługi użytkowników ([opisane w tym miejscu](use-scim-to-provision-users-and-groups.md))
 * Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sso)
 

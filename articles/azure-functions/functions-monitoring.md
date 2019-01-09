@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 62ee1c880987d0f9ad358f1a0d31af4a73263725
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017977"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121230"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
-[Usługa Azure Functions](functions-overview.md) oferuje wbudowaną integrację z [usługi Azure Application Insights](../application-insights/app-insights-overview.md) dla funkcji monitorowania. W tym artykule przedstawiono sposób konfigurowania funkcji do wysyłania plików dziennika generowanych przez system do usługi Application Insights.
+[Usługa Azure Functions](functions-overview.md) oferuje wbudowaną integrację z [usługi Azure Application Insights](../azure-monitor/app/app-insights-overview.md) dla funkcji monitorowania. W tym artykule przedstawiono sposób konfigurowania funkcji do wysyłania plików dziennika generowanych przez system do usługi Application Insights.
 
 ![Eksplorator metryk usługi Application Insights](media/functions-monitoring/metrics-explorer.png)
 
@@ -414,7 +414,7 @@ Poniżej przedstawiono przykładowe reprezentacja JSON `customDimensions` danych
 W skrypcie funkcji języka C#, można użyć `LogMetric` metody rozszerzenia `ILogger` utworzyć metryki niestandardowe w usłudze Application Insights. Oto przykładowe wywołanie metody:
 
 ```csharp
-logger.LogMetric("TestMetric", 1234); 
+logger.LogMetric("TestMetric", 1234);
 ```
 
 Ten kod jest alternatywą do wywoływania `TrackMetric` przy użyciu [interfejsu API usługi Application Insights dla platformy .NET](#custom-telemetry-in-c-functions).
@@ -429,10 +429,10 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="logging-custom-metrics"></a>Rejestrowanie metryki niestandardowe  
 
-W przypadku funkcji środowiska Node.js można użyć `context.log.metric` metodą tworzenia metryki niestandardowe w usłudze Application Insights. Oto przykładowe wywołanie metody:
+Podczas uruchamiania na [wersji 1.x](functions-versions.md#creating-1x-apps) funkcje środowiska uruchomieniowego, można użyć funkcji Node.js `context.log.metric` metodą tworzenia metryki niestandardowe w usłudze Application Insights. Ta metoda nie jest obsługiwana w wersji 2.x. Oto przykładowe wywołanie metody:
 
 ```javascript
-context.log.metric("TestMetric", 1234); 
+context.log.metric("TestMetric", 1234);
 ```
 
 Ten kod jest alternatywą do wywoływania `trackMetric` przy użyciu [zestawu SDK środowiska Node.js dla usługi Application Insights](#custom-telemetry-in-javascript-functions).

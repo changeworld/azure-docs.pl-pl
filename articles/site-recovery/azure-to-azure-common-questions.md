@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 6fe7152e43640a809ab9f4de39b1c6b599975a20
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ced306b00a5761ae096e918b43a8e67e649580dd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969951"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106022"
 ---
 # <a name="common-questions---azure-to-azure-replication"></a>Często zadawane pytania — replikacji Azure – Azure
 
@@ -62,7 +62,7 @@ Nie, Usługa Site Recovery nie wymaga łączności z Internetem, ale dostęp do 
 ## <a name="replication-policy"></a>Zasady replikacji
 
 ### <a name="what-is-a-replication-policy"></a>Co to są zasady replikacji?
-Definiuje ustawienia odzyskiwania punktu przechowywania historii i aplikacji częstotliwość wykonywania migawek. Domyślnie usługa Azure Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi 24 godzin czas przechowywania punktu odzyskiwania i "60 minut częstotliwość migawek spójnych na poziomie aplikacji.
+Definiuje ustawienia odzyskiwania punktu przechowywania historii i aplikacji częstotliwość wykonywania migawek. Domyślnie usługa Azure Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi 24 godzin czas przechowywania punktu odzyskiwania i "60 minut częstotliwość migawek spójnych na poziomie aplikacji. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings) sposobu konfigurowania zasad replikacji]
 
 ### <a name="what-is-crash-consistent-recovery-point"></a>Co to jest punkt odzyskiwania spójnego na poziomie awarii?
 Punktu odzyskiwania spójnego na poziomie awarii reprezentuje dane na dysku, tak, jakby maszyny Wirtualnej uległ awarii lub przewód zasilający została ściągnięta z serwera w momencie utworzenia migawki. Nie obejmuje wszystko, co zostało w pamięci, gdy migawka została utworzona. Obecnie większość aplikacji można odzyskać od awarii migawki spójne z aplikacjami. Punktu odzyskiwania spójnego na poziomie awarii jest wystarczająco zwykle nie bazy danych, systemów operacyjnych i aplikacji, takich jak serwery plików, serwery DHCP, serwerów wydruku i tak dalej.
@@ -96,6 +96,24 @@ W przypadku początkowej replikacji pierwszego punktu odzyskiwania, który pobie
 
 ### <a name="does-increasing-recovery-points-retention-windows-increases-the-storage-cost"></a>Zwiększenie okna przechowywania punktów odzyskiwania powoduje zwiększenie kosztów magazynu?
 Tak, jeśli zwiększysz okres przechowywania z 24 godzin do 72 godzin, a następnie Usługa Site Recovery zapisze punktów odzyskiwania do dodania 48 godzin, które będą naliczane z zastosowaniem możesz opłaty za magazyn. Na przykład jeśli punkt odzyskiwania jednego zmiany różnicowe wynosi 10 GB i każdy gigabajt jest $0.16 na miesiąc wyniósłby $1.6 * 48 dodatkowe opłaty za miesiąc.
+
+## <a name="multi-vm-consistency"></a>Spójność wielu maszyn wirtualnych 
+
+### <a name="what-is-multi--vm-consistency"></a>Co to jest spójność wielu maszyn wirtualnych?
+Oznacza to, upewniając się, że punkt odzyskiwania są spójne dla wszystkich replikowanych maszyn wirtualnych.
+Usługa Site Recovery zapewnia możliwość "Spójność wielu maszyn wirtualnych" który, gdy wybrane tworzy grupę replikacji do replikacji ze sobą wszystkich komputerów, które są częścią grupy.
+Wszystkie maszyny wirtualne będą korzystać ze współdzielonych punktów odzyskiwania awarii i spójny na poziomie aplikacji, gdy przełączone w tryb failover.
+Zapoznaj się z artykułem samouczka, aby [włączono spójność "Wielu maszyn wirtualnych"](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
+
+### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Czy mogę trybu failover jednej maszyny wirtualnej w grupie replikacji spójności "Wielu maszyn wirtualnych"?
+Wybierając opcję "Spójność wielu maszyn wirtualnych" są informujący, że aplikacja ma zależności na wszystkich maszynach wirtualnych w grupie. W związku z tym tryb failover jednej maszyny wirtualnej jest niedozwolona. 
+
+### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-multi-vm-consistency-replication-group"></a>Ile maszyn wirtualnych można replikować jako część grupy replikacji spójności "Wielu maszyn wirtualnych"?
+Teraz można replikować 16 maszyny wirtualnej ze sobą w grupie replikacji.
+
+### <a name="when-should-i-enable-multi-vm-consistency-"></a>Kiedy należy włączyć spójność wielu maszyn wirtualnych?
+Włączenie spójności wielu maszyn wirtualnych może wpłynąć na wydajność obciążeń (ponieważ jest intensywnie korzystających z procesora CPU) i powinna być używana tylko wtedy, jeśli maszyn są to samo obciążenie i jest wymagana spójność między wieloma maszynami. Na przykład jeśli masz 2 serwery sql i 2 serwery sieci web w aplikacji, a następnie użytkownik powinien mieć spójności "Wielu maszyn wirtualnych" w przypadku serwerów sql.
+
 
 ## <a name="failover"></a>Tryb failover
 

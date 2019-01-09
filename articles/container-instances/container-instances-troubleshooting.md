@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 01/08/2019
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820362"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119054"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
@@ -48,7 +48,7 @@ Jeśli określisz obraz, który nie obsługuje usługi Azure Container Instances
 
 Ten błąd występuje najczęściej w przypadku wdrażania obrazów Windows, które są oparte na półroczny kanał (Konsola SAC) wersji. Na przykład Windows w wersji 1709 i 1803 są wersje SAC i wygenerować ten błąd, po wdrożeniu.
 
-Usługa Azure Container Instances obsługuje Windows oparte tylko na wersji Long-Term Servicing Channel (LTSC). Aby rozwiązać ten problem, gdy wdrażanie kontenerów Windows, należy zawsze wdrażać obrazy na podstawie LTSC.
+Usługa Azure Container Instances obsługuje obecnie obrazów Windows tylko na podstawie **systemu Windows Server 2016 Long-Term Servicing kanału (LTSC)** wydania. Aby rozwiązać ten problem, gdy wdrażanie kontenerów Windows, należy zawsze wdrażać obrazy oparte na systemie Windows Server 2016 LTSC. Obrazy oparte na systemie Windows Server 2019 r (LTSC) nie są obsługiwane.
 
 Aby uzyskać szczegółowe informacje dotyczące LTSC i konsola SAC wersji systemu Windows, zobacz [Omówienie systemu Windows Server z kanału semi-Annual Channel][windows-sac-overview].
 

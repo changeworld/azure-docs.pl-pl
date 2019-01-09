@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: ca924494231f422d6edc8990ef851c9ef454cd1d
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972001"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120006"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
-Dostawcy zasobów MySQL Server umożliwia udostępnianie baz danych MySQL jako usługi Azure Stack. Dostawcy zasobów MySQL działa jako usługa na maszynie wirtualnej (VM) systemu Windows Server 2016 Server Core.
+Użyj dostawcy zasobów serwera MySQL Server w celu uwidocznienia baz danych MySQL jako usługi Azure Stack. Dostawcy zasobów MySQL działa jako usługa na maszynie wirtualnej (VM) systemu Windows Server 2016 Server Core.
 
 > [!IMPORTANT]
 > Tworzenie elementów na serwerach tego hosta SQL lub MySQL jest obsługiwane tylko dostawcy zasobów. Elementy utworzone na serwerze hosta, które nie są tworzone przez dostawcę zasobów może prowadzić do niezgodnego stanu.
@@ -45,6 +45,7 @@ Istnieje kilka wymagań wstępnych, które muszą być spełnione przed wdrożen
 
   |Minimalna wersja usługi Azure Stack|Wersja MySQL RP|
   |-----|-----|
+  |Wersja 1811 (1.1811.0.101)|[MySQL RP wersji 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
   |Wersja 1808 (1.1808.0.97)|[MySQL RP wersji 1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
   |W wersji 1804 (1.0.180513.1)|[MySQL RP wersji 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
   |     |     |
@@ -97,7 +98,7 @@ Można określić te parametry, z poziomu wiersza polecenia. Jeśli nie istnieje
 | **RetryDuration** | Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 |
 | **Dezinstalacja** | Usuwa dostawcę zasobów i wszystkie powiązane zasoby (zobacz poniższe informacje o). | Nie |
 | **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie |
-| **AcceptLicense** | Pomija monit o zaakceptowanie licencji GPL.  <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html> | |
+| **AcceptLicense** | Pomija monit o zaakceptowanie licencji GPL.  <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html> | |
 
 ## <a name="deploy-the-mysql-resource-provider-using-a-custom-script"></a>Wdrażanie dostawcy zasobów MySQL przy użyciu niestandardowego skryptu
 

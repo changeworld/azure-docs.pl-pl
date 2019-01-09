@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 99a8ac29167db4619d68cfa51de6a747d5ae9a51
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079174"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119240"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
-Sonda serce interwałów pulsu aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą Live Stream metryk z [usługi Application Insights](../../application-insights/app-insights-overview.md). Wybierania i filtrowania liczniki wydajności i metryki, aby obejrzeć w czasie rzeczywistym, bez żadnych zakłóceń w usłudze. Sprawdź, czy ślady stosu z przykładowych nie powiodło się żądań i wyjątków. Wraz z [Profiler](../../azure-monitor/app/profiler.md), [rozszerzenia Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md), i [testowania wydajnościowego](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), Live Stream metryk udostępnia zaawansowane i nieinwazyjny narzędzie diagnostyczne dla sieci web na żywo witryna.
+Sonda serce interwałów pulsu aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą Live Stream metryk z [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Wybierania i filtrowania liczniki wydajności i metryki, aby obejrzeć w czasie rzeczywistym, bez żadnych zakłóceń w usłudze. Sprawdź, czy ślady stosu z przykładowych nie powiodło się żądań i wyjątków. Wraz z [Profiler](../../azure-monitor/app/profiler.md), [rozszerzenia Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md), i [testowania wydajnościowego](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), Live Stream metryk udostępnia zaawansowane i nieinwazyjny narzędzie diagnostyczne dla sieci web na żywo witryna.
 
 Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 

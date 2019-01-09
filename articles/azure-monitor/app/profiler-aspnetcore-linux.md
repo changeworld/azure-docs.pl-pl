@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: bfd6f59ca61d14bc8187aa7c56c29ac44b40b8e9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074289"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118493"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil aplikacji sieci web platformy ASP.NET Core platformy Azure w systemie Linux za pomocą Application Insights Profiler
 
 Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
-Dowiedz się, jaka jest zużywany czas w każdej metodzie działającej aplikacji internetowej przy użyciu [usługi Application Insights](../../application-insights/app-insights-overview.md). Application Insights Profiler jest teraz dostępny do aplikacji sieci web platformy ASP.NET Core, które są hostowane w systemie Linux w usłudze Azure App Service. Ten przewodnik zawiera instrukcje krok po kroku w sposób można zbierać ślady Profiler dla aplikacji sieci web platformy ASP.NET Core w systemie Linux.
+Dowiedz się, jaka jest zużywany czas w każdej metodzie działającej aplikacji internetowej przy użyciu [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler jest teraz dostępny do aplikacji sieci web platformy ASP.NET Core, które są hostowane w systemie Linux w usłudze Azure App Service. Ten przewodnik zawiera instrukcje krok po kroku w sposób można zbierać ślady Profiler dla aplikacji sieci web platformy ASP.NET Core w systemie Linux.
 
 Po ukończeniu tego przewodnika aplikacji może zbierać ślady Profiler, takich jak śladów, które są wyświetlane na obrazie. W tym przykładzie śledzenia Profiler wskazuje, że żądanie namierzenie internetowego jest powolne, ze względu na czas oczekiwania. *Ścieżka aktywna* w kodzie, który spowalnia aplikacji jest oznaczony ikoną gaśniczego. **o** method in Class metoda **HomeController** sekcji spowalnia aplikacji sieci web, ponieważ wywołuje metodę **Thread.Sleep** funkcji.
 

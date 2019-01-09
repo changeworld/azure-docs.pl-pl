@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: d3adeb2e9fab22d1e9c10b2deb4591c29ccff748
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1441e16e141bd33acfdfe4087f74afbc7b47bc77
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074397"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118289"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -57,7 +57,7 @@ Certyfikaty składają się z trzech zasoby powiązane ze sobą połączone ze s
 
      Aby uzyskać więcej informacji o tworzeniu konta przy użyciu dostawcy urzędu certyfikacji, zobacz wpis powiązane [blog usługi Key Vault](https://aka.ms/kvcertsblog).  
 
-**Krok 3.1** — skonfiguruj [certyfikatu kontakty](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) powiadomień. Jest to kontaktu dla użytkownika usługi Key Vault. Usługa Key Vault nie wymusza ten krok.  
+**Krok 3.1** — Konfigurowanie [certyfikatu kontakty](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) powiadomień. Jest to kontaktu dla użytkownika usługi Key Vault. Usługa Key Vault nie wymusza ten krok.  
 
 Uwaga — Ten proces, za pomocą krok 3.1, jest to jednorazowa operacja.  
 

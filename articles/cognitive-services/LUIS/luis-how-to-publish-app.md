@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: a3d27e7be97901c6757ca6991a7404f3b00f21e7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 241227270aeede93b74d3d94c782dfe7eaf1fbf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605572"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121706"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikowanie aplikacji aktywnych, uczonego w punkcie końcowym przejściowych lub produkcyjnych
 
@@ -56,11 +56,9 @@ Analiza tonacji umożliwia LUIS w celu integracji z [analizy tekstu](https://azu
 
 Nie trzeba podać klucz analizy tekstu, a nie są pobierane opłaty rozliczeń dla tej usługi do konta platformy Azure. Jeśli zaznaczysz to ustawienie, jest trwały. 
 
-Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych.
+Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych. Etykiety tonacji `positive`, `neutral`, i `negative` odbywa się dla obsługiwanych kultur. Obecnie tylko język angielski obsługuje etykiety tonacji. 
 
 Aby uzyskać więcej informacji na temat odpowiedzi JSON punktu końcowego za pomocą analizy opinii, zobacz [analizy tonacji](luis-concept-data-extraction.md#sentiment-analysis)
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

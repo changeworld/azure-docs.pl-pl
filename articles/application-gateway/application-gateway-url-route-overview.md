@@ -1,18 +1,17 @@
 ---
-title: Routing zawartości oparty na adresach URL — omówienie | Microsoft Docs
-description: Ta strona zawiera omówienie routingu zawartości opartego na adresach URL, konfiguracji UrlPathMap i reguły PathBasedRouting w usłudze Application Gateway.
+title: Omówienie routingu zawartości opartego na adresach URL w usłudze Azure Application Gateway
+description: Ta strona zawiera omówienie routingu zawartości opartego na adres URL bramy aplikacji platformy Azure, konfiguracji UrlPathMap i reguły pathbasedrouting w usłudze.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: d5d8ed09da2b05de079bc1b62066bb4008a659d8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218427"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118371"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing oparty na ścieżkach URL — omówienie
 
@@ -20,7 +19,7 @@ Routing oparty na ścieżkach URL umożliwia kierowanie ruchu do pul serwerów z
 
 Jeden ze scenariuszy polega na kierowaniu żądań dla różnych typów zawartości do różnych pól serwerów zaplecza.
 
-W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domeny contoso.com z trzech pul serwerów zaplecza, na przykład: VideoServerPool, ImageServerPool i DefaultServerPool.
+W poniższym przykładzie Usługa Application Gateway obsługuje ruch dla domeny contoso.com z trzech pul serwerów zaplecza na przykład: Puli VideoServerPool, ImageServerPool i DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
@@ -62,8 +61,37 @@ Element urlPathMap jest używany do określania wzorców ścieżki na potrzeby m
 }]
 ```
 
-> [!NOTE]
-> PathPattern: to ustawienie to lista wzorców ścieżek, które trzeba dopasować. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg przekazywany do dopasowywania ścieżki nie zawiera żadnego tekstu po pierwszym? lub # i te znaki są niedozwolone w tym miejscu. W przeciwnym razie znaków w adresie URL są dozwolone w PathPattern.
+### <a name="pathpattern"></a>PathPattern
+
+PathPattern znajduje się lista wzorców ścieżki do dopasowania. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg przekazywany do dopasowywania ścieżki nie zawiera żadnego tekstu po pierwszym? lub # i te znaki są niedozwolone w tym miejscu. W przeciwnym razie znaków w adresie URL są dozwolone w PathPattern.
+
+Wzorce obsługiwane zależą od którego czy wdrażanie bramy Application Gateway v1 lub v2:
+
+#### <a name="v1"></a>w wersji 1
+
+Reguły ścieżki jest rozróżniana wielkość liter.
+
+|wzorzec ścieżki V1  |Są obsługiwane?  |
+|---------|---------|
+|`/images/*`     |tak|
+|`/images*`     |nie|
+|`/images/*.jpg`     |nie|
+|`/*.jpg`     |nie|
+|`/Repos/*/Comments/*`     |nie|
+|`/CurrentUser/Comments/*`     |tak|
+
+#### <a name="v2"></a>v2
+
+Reguły ścieżki jest uwzględniana wielkość liter.
+
+|wzorzec ścieżki v2  |Są obsługiwane?  |
+|---------|---------|
+|`/images/*`     |tak|
+|`/images*`     |tak|
+|`/images/*.jpg`     |nie|
+|`/*.jpg`     |nie|
+|`/Repos/*/Comments/*`     |nie|
+|`/CurrentUser/Comments/*`     |tak|
 
 Aby uzyskać więcej informacji, zobacz [Resource Manager template using URL-based routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) (Szablon usługi Resource Manager korzystający z routingu opartego na adresach URL).
 

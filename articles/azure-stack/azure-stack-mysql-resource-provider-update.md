@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: ee76d71f89fb94c8c05c6a733dac241a9e4fa13c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: 790a8bfed693f03cdadd036cab17eb94dee1c1ed
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965142"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119295"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych MySQL 
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack.*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack.*
 
 Nowe karty dostawcy zasobów programu SQL może być zwolnione po zaktualizowaniu kompilacji usługi Azure Stack. Chociaż istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe. 
 
@@ -110,7 +110,7 @@ Te parametry można określić w wierszu polecenia. Jeśli nie istnieje lub dowo
 | **RetryDuration** | Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 | 
 | **Dezinstalacja** | Usuń dostawcę zasobów i wszystkie powiązane zasoby (zobacz poniższe informacje o). | Nie | 
 | **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie | 
-| **AcceptLicense** | Pomija monit o zaakceptowanie licencji GPL.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+| **AcceptLicense** | Pomija monit o zaakceptowanie licencji GPL.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
  
 
 ## <a name="next-steps"></a>Kolejne kroki

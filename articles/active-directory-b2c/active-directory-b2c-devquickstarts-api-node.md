@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847664"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117915"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Usługa Azure AD B2C: zabezpieczanie interfejsu API sieci Web przy użyciu środowiska Node.js
+# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Usługa Azure AD B2C: Zabezpieczanie interfejsu API sieci web przy użyciu środowiska Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Usługa Azure Active Directory (Azure AD) B2C umożliwia zabezpieczanie interfejsu API sieci Web za pomocą tokenów dostępu protokołu OAuth 2.0. Tokeny te służą aplikacjom klienckim używającym usługi Azure AD B2C do uwierzytelniania w obrębie interfejsu API. W tym artykule pokazano, jak utworzyć interfejs API „lista zadań do wykonania”, umożliwiający użytkownikom dodawanie zadań i tworzenie listy zadań. Interfejs API sieci Web jest zabezpieczony za pomocą usługi Azure AD B2C i zezwala na zarządzanie listami zadań do wykonania tylko uwierzytelnionym użytkownikom.
@@ -263,15 +263,15 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="required-values"></a>Wymagane wartości
-`clientID`: identyfikator klienta aplikacji interfejsu API sieci Web.
+`clientID`: Identyfikator klienta aplikacji interfejsu API sieci Web.
 
-`IdentityMetadata`: w tym miejscu moduł `passport-azure-ad` szuka danych konfiguracji dostawcy tożsamości. Wyszukuje również klucze do weryfikacji tokenów sieci Web JSON.
+`IdentityMetadata`: Jest to miejsce `passport-azure-ad` szuka danych konfiguracji dla dostawcy tożsamości. Wyszukuje również klucze do weryfikacji tokenów sieci Web JSON.
 
-`audience`: jednolity identyfikator zasobów (URI, Uniform Resource Identifier) z portalu, który identyfikuje aplikację wywołującą.
+`audience`: Jednolity identyfikator zasobów (URI) z portalu, który identyfikuje aplikację wywołującą.
 
-`tenantName`: nazwa dzierżawy (na przykład **contoso.onmicrosoft.com**).
+`tenantName`: Nazwa dzierżawy (na przykład **contoso.onmicrosoft.com**).
 
-`policyName`: zasady, które mają być używane do weryfikacji tokenów przychodzących na serwerze. Powinny to być te same zasady, które są używane do logowania w aplikacji klienta.
+`policyName`: Zasady, które mają być używane do weryfikacji tokenów przychodzących na serwerze. Powinny to być te same zasady, które są używane do logowania w aplikacji klienta.
 
 > [!NOTE]
 > Na tę chwilę należy używać tych samych zasad w konfiguracji klienta i serwera. Jeśli zasady zostały już utworzone w ramach tego przewodnika, nie trzeba tego robić ponownie. Ponieważ zadania w tym przewodniku zostały wykonane, nie ma potrzeby konfigurowania nowych zasad w ramach przewodników klienta w witrynie.
@@ -337,13 +337,13 @@ Po przekazaniu do serwera informacji, która baza danych MongoDB ma być używan
 ### <a name="expand-the-model"></a>Rozszerzanie modelu
 Ten model schematu jest prosty. Można go rozszerzyć w zależności od potrzeb.
 
-`owner`: kto jest przydzielony do zadania. Ten obiekt to **ciąg**.  
+`owner`: Kto jest przydzielony do zadania. Ten obiekt to **ciąg**.  
 
-`Text`: samo zadanie. Ten obiekt to **ciąg**.
+`Text`: Samo zadanie. Ten obiekt to **ciąg**.
 
-`date`: termin ukończenia zadania. Ten obiekt to **data i godzina**.
+`date`: Data nadchodzi data ukończenia zadania. Ten obiekt to **data i godzina**.
 
-`completed`: czy zadanie zostało ukończone. Ten obiekt to **dane logiczne**.
+`completed`: Jeśli zadanie zostało ukończone. Ten obiekt to **dane logiczne**.
 
 ### <a name="create-the-schema-in-the-code"></a>Tworzenie schematu w kodzie
 W wierszu polecenia zmień katalog na `azuread`, jeśli nie jest jeszcze określony:
@@ -549,7 +549,7 @@ Moduły Restify i Express oferują możliwość głębokiego dostosowania do ser
 
 
 var server = restify.createServer({
-    name: "Microsoft Azure Active Directroy TODO Server",
+    name: "Microsoft Azure Active Directory TODO Server",
     version: "2.0.1"
 });
 

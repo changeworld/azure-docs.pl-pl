@@ -11,26 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515832"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121179"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Sprawdzanie poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
 
-Dostępne jest narzędzie narzędzie do sprawdzania gotowości usługi Azure Stack, opisane w tym artykule [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Można użyć narzędzia, aby sprawdzić, czy [generowanych certyfikaty infrastruktury kluczy publicznych](azure-stack-get-pki-certs.md) są odpowiednie na potrzeby przed wdrożeniem. Certyfikaty należy sprawdzić, czy, pozostawiając wystarczająco dużo czasu na test i ponownego wystawienia certyfikatów, jeśli to konieczne.
+Dostępne jest narzędzie narzędzie do sprawdzania gotowości usługi Azure Stack, opisane w tym artykule [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Można użyć narzędzia, aby sprawdzić, czy [generowanych certyfikaty infrastruktury kluczy publicznych](azure-stack-get-pki-certs.md) są odpowiednie na potrzeby przed wdrożeniem. Weryfikowanie certyfikatów, pozostawiając wystarczająco dużo czasu na test i ponownego wystawienia certyfikatów, jeśli to konieczne.
 
 Narzędzie sprawdzania gotowości wykonuje następujące operacje sprawdzania poprawności certyfikatu:
 
 - **Przeczytaj PFX**  
-    Sprawdza, czy prawidłowy plik PFX, prawidłowe hasło i wyświetli ostrzeżenie, jeśli informacje o publicznym nie jest chroniony hasłem. 
+    Sprawdza, czy prawidłowy plik PFX, prawidłowe hasło i tego, czy informacje o publicznym nie jest chroniony hasłem. 
 - **Algorytm podpisu**  
-    Sprawdza, czy podpis algorytm nie jest algorytm SHA1.
+    Sprawdza, że algorytm podpisu jest algorytm SHA1.
 - **Klucz prywatny**  
     Sprawdza, czy klucz prywatny jest obecny i są eksportowane z atrybutem komputera lokalnego. 
 - **Łańcuch certyfikatów**  
@@ -86,8 +86,8 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
     
      - Umieść swoje certyfikaty w katalogach odpowiedni, utworzony w poprzednim kroku. Na przykład:  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
+        - `c:\certificates\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\ARM Admin\CustomerCertificate.pfx`
 
 3. W oknie programu PowerShell, należy zmienić wartości **RegionName** i **FQDN** odpowiednie do środowiska usługi Azure Stack i uruchom następujące polecenie:
 
@@ -145,7 +145,7 @@ Invoke-AzsCertificateValidation Completed
 
 ### <a name="known-issues"></a>Znane problemy
 
-**Objaw**: testy są pomijane.
+**Objaw**: Testy zostały pominięte.
 
 **Przyczyna**: AzsReadinessChecker pomija pewne testy, jeśli zależność nie jest spełniony:
 
@@ -172,7 +172,7 @@ Invoke-AzsCertificateValidation Completed
     Invoke-AzsCertificateValidation Completed
     ```
 
-**Rozpoznawanie**: postępuj zgodnie z tego narzędzia ze wskazówkami zawartymi w sekcji szczegółów w ramach każdego zestawu testów dla każdego certyfikatu.
+**Rozwiązanie**: Postępuj zgodnie z tego narzędzia ze wskazówkami zawartymi w sekcji szczegółów w ramach każdego zestawu testów dla każdego certyfikatu.
 
 ## <a name="perform-platform-as-a-service-certificate-validation"></a>Platformy, należy wykonać jako Walidacja certyfikatów usług
 

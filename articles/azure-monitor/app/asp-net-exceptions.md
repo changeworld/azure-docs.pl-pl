@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6f534858194719a0d3059808073ae057f150b599
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021020"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116991"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights
-Wyjątki w aplikacji internetowej na żywo są zgłaszane przez [usługi Application Insights](../../application-insights/app-insights-overview.md). Żądania zakończone niepowodzeniem można skorelować wyjątki i inne zdarzenia, u klienta i serwera, dzięki czemu można szybko diagnozować ich przyczyny.
+Wyjątki w aplikacji internetowej na żywo są zgłaszane przez [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Żądania zakończone niepowodzeniem można skorelować wyjątki i inne zdarzenia, u klienta i serwera, dzięki czemu można szybko diagnozować ich przyczyny.
 
 ## <a name="set-up-exception-reporting"></a>Skonfiguruj raportowanie wyjątków
 * Zapewnienie wyjątków zgłoszonych z aplikacji serwera:

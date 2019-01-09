@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: bb240437870ce5457e40e8dcc3b31f3909b546fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607136"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103370"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
 Narzędzie diagnostyczne systemu Azure oferuje elastyczne sposoby zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do usługi Azure Storage. Począwszy od marca 2016 r. (zestaw SDK 2.9) przedział czasu możesz wysyłanie danych diagnostycznych niestandardowymi źródłami danych i transferu danych ścieżkę aktywną w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -316,7 +316,7 @@ namespace EventHubListener
     Najpierw upewnij się, że informacje o Centrum i konfiguracji zdarzenia jest poprawna, jak wyjaśniono wcześniej. Czasami **PrivateConfig** jest resetowany do aktualizacji wdrożenia. Zalecane poprawki, jest zapewnienie wszystkie zmiany *.wadcfgx* w projekcie, a następnie wypychania aktualizacji kompletnej aplikacji. Jeśli nie jest to możliwe, upewnij się, że aktualizacji diagnostyki wypycha kompletna **PrivateConfig** zawierającej klucz sygnatury dostępu Współdzielonego.  
 * Podjęto sugestii i Centrum zdarzeń nadal nie działa.
 
-    Spróbuj wykonać wyszukiwanie w tabeli usługi Azure Storage, która zawiera dzienniki i błędów dla usługi Azure Diagnostics, sama: **WADDiagnosticInfrastructureLogsTable**. Jedną z opcji jest, aby użyć narzędzia, takie jak [Eksploratora usługi Azure Storage](http://www.storageexplorer.com) połączyć się z tego konta magazynu, wyświetlić tę tabelę, a następnie dodaj zapytanie dla sygnatury czasowej w ostatnich 24 godzinach. To narzędzie umożliwia eksportowanie pliku CSV, a następnie otwórz go w aplikacji, takich jak program Microsoft Excel. Excel można łatwo wyszukiwać ciągi karty telefonicznej, takich jak **EventHubs**, aby zobaczyć, jaki dokładnie błąd jest zgłaszany.  
+    Spróbuj wykonać wyszukiwanie w tabeli usługi Azure Storage, która zawiera dzienniki i błędów dla usługi Azure Diagnostics, sama: **WADDiagnosticInfrastructureLogsTable**. Jedną z opcji jest, aby użyć narzędzia, takie jak [Eksploratora usługi Azure Storage](https://www.storageexplorer.com) połączyć się z tego konta magazynu, wyświetlić tę tabelę, a następnie dodaj zapytanie dla sygnatury czasowej w ostatnich 24 godzinach. To narzędzie umożliwia eksportowanie pliku CSV, a następnie otwórz go w aplikacji, takich jak program Microsoft Excel. Excel można łatwo wyszukiwać ciągi karty telefonicznej, takich jak **EventHubs**, aby zobaczyć, jaki dokładnie błąd jest zgłaszany.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 • [Dowiedz się więcej o usłudze Event Hubs](https://azure.microsoft.com/services/event-hubs/)

@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 11/05/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9f5f3c4ce08cde81c883bfdac87012dcfd80b8a4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036601"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119734"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 W usłudze Azure Stack można udostępnić obrazy maszyn wirtualnych dla użytkowników. Obrazy te mogą być przywoływane przez Szablony usługi Azure Resource Manager lub dodać je do interfejsu użytkownika usługi Azure Marketplace jako elementu portalu Marketplace. Można użyć dowolnego obrazu formularza globalnym rynku platformy Azure lub dodać swój własny obraz niestandardowy. Możesz dodać Maszynę wirtualną za pomocą portalu lub programu Windows PowerShell.
 
@@ -48,7 +48,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
    * Zanotuj identyfikator URI, gdzie możesz przekazać obraz magazynu obiektów blob. Identyfikator URI magazynu obiektów blob ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
-   * Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasad dostępu**. Opcjonalnie można zamiast niego wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob. Ten krok zapewnia, że obiekt blob jest dostępna do użytku z Dodawanie tego elementu jako obraz. Jeśli obiekt blob nie jest dostępne anonimowo, obraz maszyny Wirtualnej zostanie utworzony się w stanie niepowodzenia.
+   * Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasad dostępu**. Opcjonalnie możesz wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob. Ten krok zapewnia, że obiekt blob jest dostępna do użytku z Dodawanie tego elementu jako obraz. Jeśli obiekt blob nie jest dostępne anonimowo, obraz maszyny Wirtualnej zostanie utworzony się w stanie niepowodzenia.
 
    ![Przejdź do obiektów blob konta magazynu](./media/azure-stack-add-vm-image/image1.png)
 
@@ -154,7 +154,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 3. Zaloguj się do usługi Azure Stack jako operator. Aby uzyskać instrukcje, zobacz [Zaloguj się do usługi Azure Stack jako operator](azure-stack-powershell-configure-admin.md).
 
-4. Utwórz konto magazynu w globalnym platformy Azure lub usługi Azure Stack, do przechowywania Twojego niestandardowego obrazu maszyny Wirtualnej. Aby uzyskać instrukcje zobacz [Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+4. Utwórz konto magazynu w globalnym platformy Azure lub usługi Azure Stack, do przechowywania Twojego niestandardowego obrazu maszyny Wirtualnej. Aby uzyskać instrukcje zobacz [Szybki Start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 5. Przygotowywanie obrazu systemu operacyjnego Windows lub Linux w formacie VHD (nie VHDX), przekazania obrazu do swojego konta magazynu i Pobierz identyfikator URI, do której można pobrać obrazu maszyny Wirtualnej programu PowerShell.  
 

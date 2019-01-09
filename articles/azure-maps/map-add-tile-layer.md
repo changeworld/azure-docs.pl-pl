@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 57cde41bf65c370f86ebc57a39e917b95721ca81
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: a9decacc3b22676d94726e3cf979198b3486d270
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892471"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104645"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Dodaj warstwę kafelków do mapy
 
@@ -24,7 +24,7 @@ Obciążenia warstwy kafelków na kafelkach z serwera. Obrazy te można wstępni
 
 * X, Y notacji powiększenia — zależnie od poziomu powiększenia i x jest kolumną y jest pozycja wiersz fragmentu siatkę kafelków.
 * Notacja Quadkey - kombinacja x, y, informacje powiększenia do wartości pojedynczy ciąg, który jest unikatowy identyfikator dla danego kafelka.
-* Pole ograniczenia — współrzędne pola ograniczenia może służyć do określenia obrazu w formacie `{west},{south},{east},{north}` która jest powszechnie używana przez [Services mapowanie sieci Web (WMS)](http://www.opengeospatial.org/standards/wms).
+* Pole ograniczenia — współrzędne pola ograniczenia może służyć do określenia obrazu w formacie `{west},{south},{east},{north}` która jest powszechnie używana przez [Services mapowanie sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) jest doskonałym sposobem na wizualizowanie dużych zestawów danych na mapie. Nie można wygenerować warstwę kafelków z obrazu tylko dane wektorowe może również być renderowana jako warstwa kafelków za. Przez Renderowanie danych wektorowych jako warstwa kafelków, kontrolki mapy tylko musi załadować Kafelki, które mogą być znacznie mniejszy rozmiar pliku niż dane wektorowe, które reprezentują. Ta technika jest używany przez wiele, którzy potrzebują do renderowania milionów wierszy danych na mapie.
@@ -38,9 +38,9 @@ Adres URL kafelka przekazany do warstwy kafelków muszą być adres URL protoko�
 * `{bbox-epsg-3857}` -Otaczający pola ciągu w formacie `{west},{south},{east},{north}` EPSG 3857 przestrzenne odwołanie do systemu.
 * `{subdomain}` — Symbol zastępczy, gdzie ma zostać dodana wartości podrzędnej, jeśli określony.
 
-## <a name="add-a-tile-layer"></a>Dodaj warstwę kafelków
+## <a name="add-a-tile-layer"></a>Dodawanie warstwy kafelków
 
- Ten przykład pokazuje, jak utworzyć warstwę Kafelek wskazujący zestaw kafelków, korzystających z x, y, powiększenia fragmentacji systemu. Źródłem tej warstwy kafelków jest w nakładce radarowy o pogodzie z [Iowa środowiska Mesonet z Iowa State University](http://mesonet.agron.iastate.edu/ogc/).
+ Ten przykład pokazuje, jak utworzyć warstwę Kafelek wskazujący zestaw kafelków, korzystających z x, y, powiększenia fragmentacji systemu. Źródłem tej warstwy kafelków jest w nakładce radarowy o pogodzie z [Iowa środowiska Mesonet z Iowa State University](https://mesonet.agron.iastate.edu/ogc/).
 
 <br/>
 

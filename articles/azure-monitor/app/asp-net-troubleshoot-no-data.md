@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2387af0ddd9f6f3ecbe91afaaca66d89f070c036
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 690822848fa2c6524f98c9bbd32e6d2890e4a9c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076046"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118766"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -34,7 +34,7 @@ ms.locfileid: "54076046"
 
 *Czy mogę [zainstalować Monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md) na serwerze sieci web, aby monitorować istniejące aplikacje. Nie widzę żadnych wyników.*
 
-* Zobacz [Rozwiązywanie problemów z Monitora stanu](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights). 
+* Zobacz [Rozwiązywanie problemów z Monitora stanu](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot). 
 
 ## <a name="q01"></a>Nie opcji "Dodaj usługę Application Insights" w programie Visual Studio
 *Czy mogę kliknij prawym przyciskiem myszy istniejący projekt w Eksploratorze rozwiązań, nie widzę żadnych opcji usługi Application Insights.*
@@ -154,7 +154,7 @@ Dane pochodzą ze skryptów na stronach sieci web.
 Zobacz [telemetrii zależności](../../azure-monitor/app/asp-net-dependencies.md) i [dane telemetryczne dotyczące wyjątków](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Brak danych wydajności
-Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla [usług sieci web Java](../../azure-monitor/app/java-collectd.md), [aplikacje komputerowe Windows](../../azure-monitor/app/windows-desktop.md), [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md), i [Usług azure Cloud Services](../../application-insights/app-insights-overview.md). znajdziesz go w obszarze Ustawienia serwerów.
+Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla [usług sieci web Java](../../azure-monitor/app/java-collectd.md), [aplikacje komputerowe Windows](../../azure-monitor/app/windows-desktop.md), [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md), i [Usług azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). znajdziesz go w obszarze Ustawienia serwerów.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Brak danych (serwer), ponieważ po opublikowaniu aplikacji się z serwerem
 * Sprawdź, faktycznie kopiowane przez firmę Microsoft. DLL dotycząca usługi Application Insights do serwera, wraz z Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 40ee4fe15b2fde917c1d056a1454b95b9655b465
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999734"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103774"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -44,6 +44,9 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 
 Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch regionach w obrębie tego samego klastra geograficznego. Klastry geograficzne są zdefiniowane, pamiętając o opóźnieniu przesyłania danych i niezależność danych.
 
+>[!NOTE]
+>Jeśli nie jesteś w stanie Zobacz region w ramach klastra geograficznym podczas włączania replikacji, a następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. W przeciwnym razie niż zgłosić żądanie pomocy technicznej w ramach subskrypcji "Typ problemu".
+>
 **Geograficzne klastra** | **Regiony platformy Azure**
 -- | --
 Ameryka | Kanada Wschodnia, środkowe stany USA Kanada środkowe, południowo-, Zachodnia środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Północnośrodkowa

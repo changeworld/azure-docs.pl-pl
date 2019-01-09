@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1ddadcf17a5733767e24505b970b2ac21c8d7fa8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326132"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103948"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów z usługi Diagnostyka Azure
 W tym artykule opisano informacje dotyczące rozwiązywania problemów, która jest odpowiednia do korzystania z usługi Azure Diagnostics. Aby uzyskać więcej informacji na temat usługi Diagnostyka Azure, zobacz [Omówienie usługi Azure Diagnostics](diagnostics-extension-overview.md).
@@ -118,7 +118,7 @@ Konfiguracja diagnostyki zawiera instrukcje dotyczące określonego typu danych,
 #### <a name="is-the-host-generating-data"></a>Host generuje dane?
 - **Liczniki wydajności**: Otwórz monitora wydajności i Sprawdź licznik.
 
-- **Dzienniki śledzenia**:  Zdalny dostęp do maszyny Wirtualnej i Dodaj TextWriterTraceListener do pliku konfiguracyjnego aplikacji.  Zobacz http://msdn.microsoft.com/library/sk36c28t.aspx skonfigurować odbiornik tekstu.  Upewnij się, że `<trace>` element ma `<trace autoflush="true">`.<br />
+- **Dzienniki śledzenia**:  Zdalny dostęp do maszyny Wirtualnej i Dodaj TextWriterTraceListener do pliku konfiguracyjnego aplikacji.  Zobacz https://msdn.microsoft.com/library/sk36c28t.aspx skonfigurować odbiornik tekstu.  Upewnij się, że `<trace>` element ma `<trace autoflush="true">`.<br />
 Jeśli nie widzisz dzienników generowanych, zobacz [więcej informacji na temat dzienników śledzenia Brak](#more-about-trace-logs-missing).
 
 - **Śladów funkcji ETW**: Dostęp zdalny do maszyny Wirtualnej i instalowanie narzędzia PerfView.  W narzędzia PerfView, uruchom **pliku** > **polecenie użytkownika** > **nasłuchiwania etwprovder1** > **etwprovider2**i tak dalej. **Nasłuchiwania** polecenia jest rozróżniana wielkość liter i nie może być spacji między rozdzielana przecinkami lista dostawców ETW. Jeśli polecenie nie powiedzie się uruchomić, możesz wybrać **dziennika** przycisk w prawym dolnym rogu narzędzia Perfview, aby zobaczyć, jakie podjęto próbę uruchomienia i jakiego wyniku.  Przy założeniu, że dane wejściowe są poprawne, nowe okno podręczne z. W ciągu kilku sekund możesz rozpocząć wyświetlanie śladów funkcji ETW.
@@ -217,9 +217,9 @@ Alternatywnie pulpitu zdalnego do maszyny i spójrz na plik konfiguracji diagnos
 
 W obu przypadkach Wyszukaj **Microsoft.Azure.Diagnostics**, a następnie dla **xmlCfg** lub **WadCfg** pola.
 
-Podczas wyszukiwania na maszynie wirtualnej i **WadCfg** pole jest obecny, oznacza to, konfiguracji jest w formacie JSON. Jeśli **xmlCfg** pole jest obecny, oznacza to, konfiguracji XML i jest kodowany algorytmem Base64. Musisz [zdekodować](http://www.bing.com/search?q=base64+decoder) aby zobaczyć plik XML, który został załadowany przez diagnostykę.
+Podczas wyszukiwania na maszynie wirtualnej i **WadCfg** pole jest obecny, oznacza to, konfiguracji jest w formacie JSON. Jeśli **xmlCfg** pole jest obecny, oznacza to, konfiguracji XML i jest kodowany algorytmem Base64. Musisz [zdekodować](https://www.bing.com/search?q=base64+decoder) aby zobaczyć plik XML, który został załadowany przez diagnostykę.
 
-Dla roli usługi w chmurze, w przypadku wybrania konfiguracji z dysku, dane są zakodowane w formacie base64, więc należy [zdekodować](http://www.bing.com/search?q=base64+decoder) aby zobaczyć plik XML, który został załadowany przez diagnostykę.
+Dla roli usługi w chmurze, w przypadku wybrania konfiguracji z dysku, dane są zakodowane w formacie base64, więc należy [zdekodować](https://www.bing.com/search?q=base64+decoder) aby zobaczyć plik XML, który został załadowany przez diagnostykę.
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Kody zakończenia wtyczki w usłudze Azure diagnostyki
 Wtyczka zwraca poniższe kody zakończenia:

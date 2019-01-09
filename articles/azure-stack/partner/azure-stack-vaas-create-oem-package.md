@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: John.Haskin
-ms.openlocfilehash: fc2659fb9bbe043a61f1ad49bb4290b7ccf834f8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 245826e816f77db3394d1fc3858246ec5d1d605a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422018"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102010"
 ---
 # <a name="create-an-oem-package"></a>Tworzenie pakietu producenta OEM
 
@@ -28,7 +28,7 @@ Pakiet rozszerzenia usługi Azure Stack OEM to mechanizm, który OEM określonej
 
 ## <a name="creating-the-package"></a>Tworzenie pakietu
 
-Po utworzeniu i zweryfikowany, pakiet rozszerzenia OEM może służyć w VaaS.  Przed kontynuowaniem upewnij się, że zostały wykonane kroki [tworzenia pakietu OEM](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). Pakiet jest następnie przesłane do firmy Microsoft oraz VaaS wyników testów z przepływu pracy weryfikacji pakietu rejestracji. Poniższe kroki zawierają szczegółowe instrukcje dotyczące pakietu wygenerowane pliki w pliku zip pojedynczego, którą może wykorzystać VaaS.
+Po utworzeniu i zweryfikowany, pakiet rozszerzenia OEM może służyć w VaaS.  Przed kontynuowaniem upewnij się, że zostały wykonane kroki [tworzenia pakietu OEM](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). Pakiet jest następnie przesłane do firmy Microsoft oraz VaaS wyników testów z przepływu pracy weryfikacji rozwiązania rejestracji. Poniższe kroki zawierają szczegółowe instrukcje dotyczące pakietu wygenerowane pliki w pliku zip pojedynczego, którą może wykorzystać VaaS.
 
 1. Zidentyfikuj następującej zawartości pakietu:
     - Plik wykonywalny o nazwie `<Publisher>-<Model>-<Version>.exe`
@@ -49,7 +49,7 @@ Aby sprawdzić poprawność struktury pliku zip, sprawdź go i sprawdź, czy są
 
 ![Poprawnie pakietu zawartości](media/vaas-create-oem-package-3.png)
 
-Można teraz przekazywane do VaaS pliku zip i podpisany przez firmę Microsoft w przepływie pracy sprawdzanie poprawności pakietu.
+Można teraz przekazany do VaaS pliku zip i podpisany przez firmę Microsoft w przepływie pracy weryfikacji rozwiązania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

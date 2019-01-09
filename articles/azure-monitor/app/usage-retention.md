@@ -13,16 +13,16 @@ ms.date: 05/03/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 4b21632f936093c0a48abf2d13389f22306045cc
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052908"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121366"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analiza zachowania użytkownika dla aplikacji sieci web za pomocą usługi Application Insights
 
-Funkcja przechowywania w [usługi Azure Application Insights](../../application-insights/app-insights-overview.md) pomaga analizować, ilu użytkowników wraca do swojej aplikacji i jak często wykonywać określone zadania lub osiąganiu celów. Na przykład po uruchomieniu witryny gier, możesz porównać liczby użytkowników, którzy wróć do witryny po utracie grę z liczbą którzy powrotu po wygraną. Ta wiedza może pomóc ulepszyć środowisko użytkownika i jej strategią biznesową.
+Funkcja przechowywania w [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomaga analizować, ilu użytkowników wraca do swojej aplikacji i jak często wykonywać określone zadania lub osiąganiu celów. Na przykład po uruchomieniu witryny gier, możesz porównać liczby użytkowników, którzy wróć do witryny po utracie grę z liczbą którzy powrotu po wygraną. Ta wiedza może pomóc ulepszyć środowisko użytkownika i jej strategią biznesową.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 

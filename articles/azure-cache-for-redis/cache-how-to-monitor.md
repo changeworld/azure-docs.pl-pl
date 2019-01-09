@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b6264d47c7627d72b8746c79e7e050fd468171de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582715"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105121"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure do celów Redis [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) zapewnienie kilka opcji do monitorowania wystąpień pamięci podręcznej. Można wyświetlić metryki, przypinać wykresy metryk do tablicy startowej, dostosować zakres dat i godzin, wykresy monitorowania, Dodaj i Usuń metryki z wykresów i ustawić alerty, gdy są spełnione określone warunki. Te narzędzia umożliwiają monitorowanie kondycji pamięci podręcznej Azure dla wystąpienia usługi Redis i ułatwia zarządzanie aplikacjami buforowania.
 
-Metryki dla usługi Azure Cache dla wystąpienia usługi Redis są zbierane przy użyciu usługi Redis [informacje](http://redis.io/commands/info) polecenia około dwa razy na minutę i automatycznie przechowywane przez 30 dni (zobacz [eksportowanie metryk pamięci podręcznej](#export-cache-metrics) do skonfigurowania zasady przechowywania różnych), może być wyświetlany w przypadku wykresów metryki i sprawdzane przez reguły alertów. Aby uzyskać więcej informacji o różnych wartościach informacje używane dla każdego metryki pamięci podręcznej, zobacz [dostępne metryki i raportowanie interwałów](#available-metrics-and-reporting-intervals).
+Metryki dla usługi Azure Cache dla wystąpienia usługi Redis są zbierane przy użyciu usługi Redis [informacje](https://redis.io/commands/info) polecenia około dwa razy na minutę i automatycznie przechowywane przez 30 dni (zobacz [eksportowanie metryk pamięci podręcznej](#export-cache-metrics) do skonfigurowania zasady przechowywania różnych), może być wyświetlany w przypadku wykresów metryki i sprawdzane przez reguły alertów. Aby uzyskać więcej informacji o różnych wartościach informacje używane dla każdego metryki pamięci podręcznej, zobacz [dostępne metryki i raportowanie interwałów](#available-metrics-and-reporting-intervals).
 
 <a name="view-cache-metrics"></a>
 
@@ -98,7 +98,7 @@ Wszystkie metryki. zawiera dwie wersje. Jedna Metryka mierzy wydajność całą 
 
 | Metryka | Opis |
 | --- | --- |
-| Trafienia w pamięci podręcznej |Liczba pomyślnych wyszukiwań kluczy w określonym interwale raportowania. To jest mapowany `keyspace_hits` z pamięci podręcznej Redis [informacje](http://redis.io/commands/info) polecenia. |
+| Trafienia w pamięci podręcznej |Liczba pomyślnych wyszukiwań kluczy w określonym interwale raportowania. To jest mapowany `keyspace_hits` z pamięci podręcznej Redis [informacje](https://redis.io/commands/info) polecenia. |
 | Opóźnienie pamięci podręcznej (wersja zapoznawcza) | Czas oczekiwania w pamięci podręcznej obliczana w oparciu off opóźnień między węzłami pamięci podręcznej. Ta metryka jest mierzony w mikrosekundach i ma trzy wymiary: "Średnia", "Min" i "Max", którą reprezentują średnią, minimalną i maksymalną opóźnienie pamięci podręcznej odpowiednio w określonym interwale raportowania. |
 | Chybienia w pamięci podręcznej |Liczba zakończonych niepowodzeniem klucza wyszukiwania w określonym interwale raportowania. To jest mapowany `keyspace_misses` polecenia Redis informacje. Chybienia w pamięci podręcznej nie musi oznaczać, że występuje problem z pamięcią podręczną. Na przykład gdy użycie wzorca z odkładaniem do pamięci podręcznej programowania, aplikacja wygląda pierwszy w pamięci podręcznej dla elementu. Jeśli element nie ma (Chybienie pamięci podręcznej), elementu jest pobierana z bazy danych i dodane do pamięci podręcznej użytku następnym razem. Chybienia w pamięci podręcznej są normalne zachowanie dla wzorca odkładania do pamięci podręcznej programowania. Jeśli liczba chybień pamięci podręcznej jest większa niż oczekiwano, sprawdź logikę aplikacji, która wypełnia i odczytu z pamięci podręcznej. Jeśli elementów jest wykluczana z pamięci podręcznej z powodu dużego wykorzystania pamięci, a następnie może istnieć kilka Chybienia pamięci podręcznej, ale byłoby lepsze metrykę, aby monitorować wykorzystanie pamięci `Used Memory` lub `Evicted Keys`. |
 | Odczyt pamięci podręcznej |Ilość danych odczytanych z pamięci podręcznej w MB na sekundę (MB/s) w określonym interwale raportowania. Ta wartość jest tworzony na podstawie kart interfejsu sieciowego, które obsługują maszyny wirtualnej, który hostuje pamięci podręcznej i nie jest określone usługi Redis. **Ta wartość odpowiada przepustowości sieci używanej przez tę pamięć podręczną. Jeśli chcesz skonfigurować alerty dotyczące limity przepustowości sieci po stronie serwera, utwórz ją za pomocą tego `Cache Read` licznika. Zobacz [tej tabeli](cache-faq.md#cache-performance) limitów obserwowanych przepustowości dla różnych pamięci podręcznej ceny warstwy i rozmiarów.** |

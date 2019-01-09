@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 72a42e273029bd42d77531953ff5cbfc0fe5c295
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810903"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118595"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie i Zarządzanie przypisaniami ról w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -276,9 +276,9 @@ W poniższych przykładach pokazano, jak skonfigurować treść JSON w kilku sce
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby przejrzeć Twins cyfrowego Azure roli —-kontroli dostępu opartej na —, przeczytaj [roli base-access-control](./security-authenticating-apis.md).
+- Aby przejrzeć Twins cyfrowego Azure roli —-kontroli dostępu opartej na —, przeczytaj [roli base-access-control](./security-authenticating-apis.md).
 
-Informacje na temat uwierzytelniania interfejsu API Twins cyfrowych platformy Azure, przeczytaj [uwierzytelniania interfejsu API](./security-authenticating-apis.md).
+- Informacje na temat uwierzytelniania interfejsu API Twins cyfrowych platformy Azure, przeczytaj [uwierzytelniania interfejsu API](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/security-roles/roleassignments.png

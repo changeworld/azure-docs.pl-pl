@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 4 — tworzenie relacji | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek lekcja 4 Tworzenie relacji | Dokumentacja firmy Microsoft
 description: Opisuje sposób tworzenia relacji w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d37b30708e3817460e5aa01f045c1e9f9032532e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428495"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117745"
 ---
 # <a name="create-relationships"></a>Tworzenie relacji
 
@@ -22,10 +22,10 @@ W tej lekcji sprawdzisz relacje, które zostały automatycznie utworzone po zaim
 Szacowany czas trwania lekcji: **10 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 3. Oznaczanie jako tabeli dat](../tutorials/aas-lesson-3-mark-as-date-table.md). 
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 3: Oznacz jako tabelę dat](../tutorials/aas-lesson-3-mark-as-date-table.md). 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Przegląd istniejących relacji i dodawanie nowych  
-Podczas importowania danych przy użyciu narzędzia Pobierz dane uzyskano siedem tabel z bazy danych AdventureWorksDW2014. Ogólnie rzecz biorąc, podczas importowania danych ze źródła relacyjnego istniejące relacje są importowane automatycznie wraz z danymi. Aby pobrać dane w celu automatycznego utworzenia relacji w modelu danych, musi istnieć relacja między tabelami w źródle danych.
+Podczas importowania danych przy użyciu narzędzia Pobierz dane uzyskano siedem tabel z bazy danych AdventureWorksDW2014. Ogólnie rzecz biorąc, podczas importowania danych ze źródła relacyjnego istniejące relacje są importowane automatycznie wraz z danymi. Aby uzyskać dane automatycznie utworzyć relacje w modelu danych musi istnieć relacje między tabelami w źródle danych.
 
 Przed przystąpieniem do tworzenia modelu należy sprawdzić, czy relacje między tabelami zostały utworzone prawidłowo. W tym samouczku zostaną również dodane trzy nowe relacje.  
 
@@ -60,7 +60,7 @@ Przed przystąpieniem do tworzenia modelu należy sprawdzić, czy relacje międz
     |Yes|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |Yes|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Jeśli brakuje dowolnej z tych relacji, sprawdź, czy model zawiera następujące tabele: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory i FactInternetSales. W przypadku tabel pochodzących z tego samego połączenia źródła danych, które zostały zaimportowane w różnym czasie, relacje między takimi tabelami nie są tworzone i należy utworzyć je ręcznie. Jeśli relacje nie są wyświetlane, oznacza to, że nie ma żadnych relacji w źródle danych. Możesz je utworzyć ręcznie w modelu danych.
+    Jeśli brakuje któregokolwiek z tych relacji, sprawdź, czy model zawiera następujące tabele: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory i FactInternetSales. W przypadku tabel pochodzących z tego samego połączenia źródła danych, które zostały zaimportowane w różnym czasie, relacje między takimi tabelami nie są tworzone i należy utworzyć je ręcznie. Jeśli relacje nie są wyświetlane, oznacza to, że nie ma żadnych relacji w źródle danych. Możesz je utworzyć ręcznie w modelu danych.
 
 ### <a name="take-a-closer-look"></a>Przyjrzyjmy się temu bliżej
 W widoku diagramu zwróć uwagę na strzałkę, gwiazdkę i liczbę w wierszach, które wskazują relacje między tabelami.
@@ -95,7 +95,7 @@ W niektórych przypadkach może być konieczne utworzenie dodatkowych relacji mi
      ![aas-lesson4-newinactive](../tutorials/media/aas-lesson4-newinactive.png)
   
 ## <a name="whats-next"></a>Co dalej?
-[Lekcja 5. Tworzenie kolumn obliczeniowych](../tutorials/aas-lesson-5-create-calculated-columns.md).
+[Lekcja 5 Tworzenie kolumn obliczeniowych](../tutorials/aas-lesson-5-create-calculated-columns.md).
   
   
   

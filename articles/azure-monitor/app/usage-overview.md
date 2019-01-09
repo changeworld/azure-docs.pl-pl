@@ -13,22 +13,22 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 6d8570c78fcf28a236374579a9cb85c7c27f6ec8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076981"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118527"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
-Które funkcje aplikacji mobilnej lub sieci web, na których są najbardziej popularne? Czy użytkownicy osiągnąć cele związane z Twoją aplikacją? Czy rezygnują w szczególności punktach i są one później powrócić?  [Usługa Azure Application Insights](../../application-insights/app-insights-overview.md) pomaga uzyskać pełen wgląd w jaki sposób użytkownicy używają Twojej aplikacji. Za każdym razem, gdy aktualizujesz aplikację, możesz ocenić, jak dobrze działa w przypadku użytkowników. Za pomocą tej wiedzy ułatwia decyzje dotyczące następnego cykle rozwojowe w oparciu o dane.
+Które funkcje aplikacji mobilnej lub sieci web, na których są najbardziej popularne? Czy użytkownicy osiągnąć cele związane z Twoją aplikacją? Czy rezygnują w szczególności punktach i są one później powrócić?  [Usługa Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomaga uzyskać pełen wgląd w jaki sposób użytkownicy używają Twojej aplikacji. Za każdym razem, gdy aktualizujesz aplikację, możesz ocenić, jak dobrze działa w przypadku użytkowników. Za pomocą tej wiedzy ułatwia decyzje dotyczące następnego cykle rozwojowe w oparciu o dane.
 
 ## <a name="send-telemetry-from-your-app"></a>Wysyłanie danych telemetrycznych z Twojej aplikacji
 
 Aby uzyskiwać najlepsze wyniki są uzyskiwane przez zainstalowanie usługi Application Insights, zarówno w kodzie serwera aplikacji, jak i na stronach sieci web. Składniki klienta i serwera aplikacji wysyłają dane telemetryczne do portalu Azure w celu analizy.
 
-1. **Kod serwera:** Zainstaluj moduł odpowiednie dla Twojego [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../application-insights/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), lub [innych](../../azure-monitor/app/platforms.md) aplikacja.
+1. **Kod serwera:** Zainstaluj moduł odpowiednie dla Twojego [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), lub [innych](../../azure-monitor/app/platforms.md) aplikacja.
 
     * *Nie chcesz zainstalować kod serwera? Po prostu [Utwórz zasób usługi Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
 

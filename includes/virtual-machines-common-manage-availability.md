@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035151"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084059"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą prowadzić do maszyny wirtualnej platformy Azure: nieplanowana konserwacja sprzętu, nieoczekiwany Przestój i planowana konserwacja.
@@ -32,7 +32,7 @@ Aby zmniejszyć wpływ przestoju spowodowanego co najmniej jednym z tych zdarze�
 
 * [Konfigurowanie wielu maszyn wirtualnych w zestawie dostępności w celu zapewnienia nadmiarowości]
 * [Używanie dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności]
-* [Używanie zaplanowanych zdarzeń do proaktywnego reagowania na zdarzenia wpływające na maszynie wirtualnej ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Używanie zaplanowanych zdarzeń do proaktywnego reagowania na zdarzenia wpływające na maszynie wirtualnej](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Konfigurowanie każdej warstwy aplikacji w osobnych zestawach dostępności]
 * [Łączenie modułu równoważenia obciążenia z zestawami dostępności]
 * [Strefy dostępności umożliwiają ochronę przed awariami na poziomie centrum danych]
@@ -65,6 +65,10 @@ Jeśli planujesz używać maszyn wirtualnych z [dyskami niezarządzanymi](../art
 1. **Obsługuj wszystkie dyski (systemu operacyjnego i danych) skojarzone z maszyną wirtualną na tym samym koncie magazynu.**
 2. Przed dodaniem kolejnych wirtualnych dysków twardych do konta magazynu **przejrzyj [limity](../articles/storage/common/storage-scalability-targets.md) dotyczące liczby niezarządzanych dysków na koncie magazynu**.
 3. **Używaj oddzielnego konta magazynu dla każdej maszyny wirtualnej w zestawie dostępności.** Nie stosuj współużytkowania kont magazynu przez wiele maszyn wirtualnych w tym samym zestawie dostępności. Dopuszczalne jest dla maszyn wirtualnych w różnych zestawach dostępności do współużytkowania kont magazynu, jeśli są przestrzegane powyżej najlepszych rozwiązań ![niezarządzane dyski błędów](./media/virtual-machines-common-manage-availability/umd-updated.png)
+
+## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Aktywnie odpowiadać na zdarzenia wpływające na maszynie wirtualnej przy użyciu zaplanowanych zdarzeń
+
+Po zasubskrybowaniu [zaplanowane zdarzenia](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), maszyna wirtualna jest powiadamiany o zdarzeniach nadchodzącej konserwacji, które mogą mieć wpływ na maszynie Wirtualnej. Gdy zaplanowanych zdarzeń są włączone, maszyna wirtualna znajduje się minimalną ilość czasu przed wykonaniem związanych z konserwacją. Na przykład aktualizacje systemu operacyjnego hosta, które mogą mieć wpływ na maszynie Wirtualnej są kolejkowane w górę jako zdarzenia, które określają wpływ, jak i czasu, jaką konserwacji zostanie wykonana, jeśli nie podjęto żadnej akcji. Planowanie zdarzeń są kolejkowane również, gdy platforma Azure wykryje awaria sprzętowa bezpośrednie, która może mieć wpływ na Twoje maszyny Wirtualnej, co pozwala określić, kiedy korygujący powinno być przeprowadzane. Klienci mogą użyć zdarzenia do wykonywania zadań, przed konserwacji, takich jak zapisywanie, przechodzenie w tryb failover do regionu pomocniczego i tak dalej. Po wykonaniu logikę do poprawnego działania obsługi zdarzeń związanych z konserwacją, należy zatwierdzić oczekujące zaplanowane zdarzenie umożliwia platformy kontynuować wykonywanie konserwacji.
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>Konfigurowanie każdej warstwy aplikacji w osobnych zestawach dostępności
 Jeśli wszystkie maszyny wirtualne są niemal identyczne i służą temu samemu celowi związanemu z aplikacją, zalecamy skonfigurowanie zestawu dostępności dla każdej warstwy aplikacji.  Jeśli umieścisz dwie różne warstwy w tym samym zestawie dostępności, wszystkie maszyny wirtualne w tej samej warstwie aplikacji będzie można jednocześnie uruchomić ponownie. Skonfigurowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności dla każdej warstwy gwarantuje, że co najmniej jedna maszyna wirtualna w każdej warstwie jest dostępna.

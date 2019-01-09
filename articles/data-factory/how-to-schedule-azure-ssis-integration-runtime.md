@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 1/8/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5920ec5ec8e864b5bdb986544a3cdc259e7344da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c1dfc4ed969735be26ae075900cd850e016afffa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053640"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107586"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowisko Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania środowiska Azure-SSIS Integration Runtime (IR) przy użyciu usługi Azure Data Factory (ADF). Azure-SSIS IR to ADF obliczenia zasobów dedykowanych do wykonywania pakietów usług SQL Server Integration Services (SSIS). Uruchamianie środowiska Azure-SSIS IR ma koszt związany z nim. W związku z tym zazwyczaj chcesz uruchomić środowiska IR tylko wtedy, gdy konieczne wykonywanie pakietów usług SSIS na platformie Azure i Zatrzymaj środowiska IR, gdy nie trzeba go dłużej. Możesz użyć usługi ADF interfejsu użytkownika (UI) / aplikacji lub programu Azure PowerShell [ręcznie rozpocząć lub zatrzymać środowiska IR](manage-azure-ssis-integration-runtime.md)).
@@ -54,7 +54,7 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
  
    Nazwa usługi ADF musi być globalnie unikatowa. Jeśli zostanie wyświetlony następujący błąd, Zmień nazwę usługi ADF (np. Twojanazwamyazuressisdatafactory) i spróbuj ponownie go utworzyć. Zobacz [Data Factory — reguły nazewnictwa](naming-rules.md) artykuł, aby dowiedzieć się więcej na temat reguł nazewnictwa artefaktów usługi ADF.
   
-   `Data factory name �MyAzureSsisDataFactory� is not available`
+   `Data factory name MyAzureSsisDataFactory is not available`
       
 4. Wybieranie subskrypcji platformy Azure **subskrypcji** w ramach której chcesz utworzyć usługi ADF. 
 5. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
@@ -86,23 +86,21 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
    
 2. W **działania** przybornika, rozwiń węzeł **ogólne** menu, przeciągania i upuszczania **Web** działania na powierzchnię projektanta potoku. W **ogólne** karty w oknie właściwości działania, Zmień nazwę działania na **startMyIR**. Przełącz się do **ustawienia** kartę, a następnie wykonaj następujące czynności.
 
-    1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który rozpoczyna się Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`.
+    1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który rozpoczyna się Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Można też również skopiuj i wklej identyfikator zasobu środowiska IR z jego monitorowania strony w ADF interfejsu użytkownika/aplikacji, aby zastąpić następująca część powyższy adres URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
     
-    Można też również skopiuj i wklej identyfikator zasobu środowiska IR z jego monitorowania strony w ADF interfejsu użytkownika/aplikacji, aby zastąpić następująca część powyższy adres URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
-    
-   ![Identyfikator zasobu środowiska IR ADF SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+       ![Identyfikator zasobu środowiska IR ADF SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
     2. Dla **metoda**, wybierz opcję **WPIS**. 
     3. Aby uzyskać **treści**, wprowadź `{"message":"Start my IR"}`. 
     4. Dla **uwierzytelniania**, wybierz opcję **MSI** Aby użyć tożsamości zarządzanej dla usługi ADF, zobacz [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) artykuł, aby uzyskać więcej informacji.
-    5. Aby uzyskać **zasobów**, wprowadź `https://management.azure.com/`. 
+    5. Aby uzyskać **zasobów**, wprowadź `https://management.azure.com/`.
     
-   ![Harmonogram działania w sieci Web usługi ADF środowisko SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       ![Harmonogram działania w sieci Web usługi ADF środowisko SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
 3. Klonowanie pierwszego potoku, aby utworzyć drugi, zmieniając nazwę działania na **stopMyIR** i zastępuje następujące właściwości.
 
     1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który zatrzymuje Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
-  
+    
     2. Aby uzyskać **treści**, wprowadź `{"message":"Stop my IR"}`. 
 
 4. Tworzenie potoku trzeci, przeciąganie i upuszczanie **wykonywanie pakietu SSIS** działanie z **działania** przybornika w Projektancie potoku powierzchni i skonfiguruj go zgodnie z instrukcjami w [ Wywoływanie pakietów SSIS za pomocą działania wykonywania pakietów SSIS w usłudze ADF](how-to-invoke-ssis-package-ssis-activity.md) artykułu.  Alternatywnie, można użyć **procedury składowanej** działania zamiast i skonfiguruj go zgodnie z instrukcjami w [wywoływanie pakietów SSIS za pomocą działania procedury składowanej w usłudze ADF](how-to-invoke-ssis-package-stored-procedure-activity.md) artykułu.  Następnie połączony działanie wykonanie procedury składowanej/pakietu SSIS między dwa działania internetowe, których uruchamianie/zatrzymywanie środowiska IR jest podobne do tych działań w sieci Web w potokach pierwszy/drugi.
