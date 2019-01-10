@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 30eb458b9d0584b467479163d8312d7bd5456be1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409738"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157332"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -651,7 +651,7 @@ Przykłady znajdują się następujące wzorce uwierzytelniania przepływ klient
 Active Directory Authentication Library (ADAL) można użyć do uwierzytelnienia użytkownika inicjowania z klienta przy użyciu uwierzytelniania usługi Azure Active Directory.
 
 1. Skonfiguruj zaplecza aplikacji mobilnej dla logowania jednokrotnego usługi AAD, wykonując [Jak skonfigurować usługi App Service dla logowania usługi Active Directory] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
-2. W programie Visual Studio lub Xamarin Studio, otwórz projekt i Dodaj odwołanie do `Microsoft.IdentityModel.CLients.ActiveDirectory` pakietu NuGet. Podczas wyszukiwania, obejmują wersje wstępne.
+2. W programie Visual Studio lub Xamarin Studio, otwórz projekt i Dodaj odwołanie do `Microsoft.IdentityModel.Clients.ActiveDirectory` pakietu NuGet. Podczas wyszukiwania, obejmują wersje wstępne.
 3. Dodaj następujący kod do aplikacji, zależnie od platformy, którego używasz. W poszczególnych usług wprowadź następujące elementy zastępcze:
 
    * Zastąp **INSERT-urzędu-tutaj** nazwą dzierżawy, w której aprowizowano aplikacji. Powinna być w formacie https://login.microsoftonline.com/contoso.onmicrosoft.com. Ta wartość może zostać skopiowany z karcie domeny w usłudze Azure Active Directory w [Azure Portal].

@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja uzupełniająca — wiersze szczegółów | Microsoft Docs'
+title: 'Usługa Azure Analysis Services samouczek lekcja uzupełniająca: Wiersze szczegółów | Dokumentacja firmy Microsoft'
 description: Opisuje sposób tworzenia wyrażenia wierszy szczegółów w samouczku usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ed4ba27332123d41a9e031f221eedb57fa228b9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f52d6ebf4a65a6a182b24017d652693c6f5e4072
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425975"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190242"
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Lekcja uzupełniająca — wiersze szczegółów
 

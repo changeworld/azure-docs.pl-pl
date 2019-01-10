@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 3d408c2a2f9de69d8a12a394df68acff8f3d0bf7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 3c1caa2485437768781ada2c7271445ccd3c19e1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121664"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190332"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
-W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych. Monitoruje kondycję systemu operacyjnego usługi Azure virtual machines (VMs) i zestawy skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku. Monitorowanie obejmuje odnajdywania oraz mapowania zależności aplikacji, które mogą być hostowane na nich.
+W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych. Monitoruje kondycję systemu operacyjnego usługi Azure virtual machines (VMs) i zestawy skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku. Monitorowanie obejmuje odnajdywania oraz mapowania zależności aplikacji, które mogą być hostowane na nich. 
 
 Należy włączyć usługi Azure Monitor dla maszyn wirtualnych przy użyciu jednej z następujących metod:
 
