@@ -4,17 +4,16 @@ description: W tym przewodniku Szybki start pokazano, jak połączyć istniejąc
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.custom: quickstart
-ms.openlocfilehash: 954be5699bb039f9eeaae827e6564fea6dfe70ff
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 1f8b20d70f6fb0a219ec484f730d9c085a3519a2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040459"
 ---
 # <a name="migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Migracja istniejącej aplikacji internetowej MongoDB na platformie Node.js do usługi Azure Cosmos DB 
 

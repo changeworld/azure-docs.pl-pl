@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: ad17b6ef032c7bc25a019d53f12cc33baa3163f3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340901"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034322"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -144,4 +144,4 @@ Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokal
 Utworzono i opublikowano aplikację funkcji trwałej w języku JavaScript za pomocą narzędzia Visual Studio Code.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat typowych wzorców funkcji trwałej](durable-functions-overview.md)
+> [Dowiedz się więcej na temat typowych wzorców funkcji trwałej](durable-functions-concepts.md)

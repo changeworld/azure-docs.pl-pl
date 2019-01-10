@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 0a407cdfd6786848825a114ff5667ccaff91fe71
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: bd0bb1c967885aa5e74728156a073e9ccc0ca48f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556877"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105886"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Szybki start: Jak używać usługi Azure Cache for Redis za pomocą języka Java
 
@@ -38,7 +38,7 @@ Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edyt
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Apache Maven](http://maven.apache.org/)
+[Apache Maven](https://maven.apache.org/)
 
 
 

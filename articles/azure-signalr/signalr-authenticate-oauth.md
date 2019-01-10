@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599863"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103795"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Samouczek: Uwierzytelnianie w usłudze Azure SignalR Service
 
@@ -547,7 +547,7 @@ Aby wdrożyć swój kod, należy wykonać następujące polecenia w powłoce Git
 
 Ostatnim zadaniem, które należy wykonać, jest aktualizacja **adresu URL strony głównej** i **adresu URL wywołania zwrotnego autoryzacji** aplikacji OAuth usługi GitHub, aby wskazywał nową hostowaną aplikację.
 
-1. Otwórz witrynę [http://github.com](http://github.com) w przeglądarce i przejdź do pozycji **Settings** > **Developer settings** > **Oauth Apps** (Ustawienia > Ustawienia dewelopera > Aplikacje Oauth) swojego konta.
+1. Otwórz witrynę [https://github.com](https://github.com) w przeglądarce i przejdź do pozycji **Settings** > **Developer settings** > **Oauth Apps** (Ustawienia > Ustawienia dewelopera > Aplikacje Oauth) swojego konta.
 
 2. Kliknij aplikację uwierzytelniania oraz zaktualizuj **adres URL strony głównej** i **adres URL wywołania zwrotnego autoryzacji** w sposób przedstawiony poniżej:
 

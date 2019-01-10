@@ -94,8 +94,8 @@
 ## [Opinia](https://feedback.azure.com/forums/556165-azure-analysis-services)
 ## [Cennik](https://azure.microsoft.com/pricing/details/analysis-services/)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
-## [Witryna Stackoverflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
-## [Wideo](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [Filmy wideo](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 
 
 

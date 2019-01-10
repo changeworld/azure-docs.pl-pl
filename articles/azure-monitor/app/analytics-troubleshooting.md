@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5459786ccf69c51fec1630d612fd37b1b78c36c9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017008"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189936"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizą w usłudze Application Insights
 Problemy z [analizy usługi Application Insights](analytics.md)? Zacznij tutaj. Analytics to zaawansowane wyszukiwanie narzędzia usługi Azure Application Insights.
 
 ## <a name="limits"></a>Limity
 * Obecnie wyniki zapytania są ograniczone do dokładnie w ciągu tygodnia ostatnich danych.
-* Firma Microsoft testuje w przeglądarkach: najnowsze wersje programu Chrome, Microsoft Edge i przeglądarki Internet Explorer.
+* Przetestowanie w przeglądarkach: najnowszej wersji programu Chrome, Microsoft Edge i Internet Explorer.
 
 ## <a name="known-incompatible-browser-extensions"></a>Rozszerzenia znanych niezgodna przeglądarka
 * Ghostery
@@ -54,7 +54,7 @@ Wystąpił błąd (podczas uwierzytelniania lub podczas generowania tokenu dost�
 2. Czy do otwarcia portalu użyto ulubionych, zakładki lub zapisanego linku? Czy zalogowano się przy użyciu innych poświadczeń niż użyte podczas zapisywania linku?
 3. Spróbuj użyć okna przeglądarki w trybie prywatnym/incognito (po zamknięciu wszystkich tych okien). Musisz podać swoje poświadczenia. 
 4. Otwórz (inny zwykłe) okno przeglądarki i przejdź do [Azure](https://portal.azure.com). Wyloguj się. Następnie otwórz hiperlink i zaloguj się z prawidłowymi poświadczeniami.
-5. Użytkownicy przeglądarek Microsoft Edge i Internet Explorer mogą również otrzymać ten błąd, gdy ustawienia zaufanej strefy nie są obsługiwane.
+5. Microsoft Edge i przeglądarki Internet Explorer, użytkownicy mogą również otrzymać ten błąd, gdy ustawienia zaufanej strefy nie są obsługiwane.
    
     Sprawdź zarówno [portalu analiza](https://portal.azure.com) i [portalu Azure Active Directory](https://portal.azure.com) znajdują się w tej samej strefie zabezpieczeń:
    

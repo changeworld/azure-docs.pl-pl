@@ -1,21 +1,19 @@
 ---
 title: Tworzenie aplikacji Node.js w usłudze Azure Cosmos DB za pomocą interfejsu API języka Gremlin
 description: Przykładowy kod Node.js, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
-services: cosmos-db
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 58fca9e66b0be12992d7762824df4ceb9a22e614
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 11eec492501f7ead639aa928fe0ddaafb2f1d1bc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073418"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033676"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Usługa Azure Cosmos DB tworzenie aplikacji Node.js za pomocą interfejsu API języka Gremlin
 
