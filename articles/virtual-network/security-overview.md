@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: b6b3111928baf7fa52a5d87d818e15302b96e790
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025899"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159064"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -71,15 +71,18 @@ Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla siec
 * **MicrosoftContainerRegistry** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Microsoft Container Registry. W przypadku określenia wartości *MicrosoftContainerRegistry* dozwolony lub blokowany jest ruch do usługi MicrosoftContainerRegistry. Jeśli chcesz zezwolić na dostęp do usługi MicrosoftContainerRegistry w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: MicrosoftContainerRegistry.[nazwa regionu]. 
 * **AzureContainerRegistry** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Container Registry. W przypadku określenia wartości *AzureContainerRegistry* dozwolony lub blokowany jest ruch do usługi AzureContainerRegistry. Jeśli chcesz zezwolić na dostęp do usługi AzureContainerRegistry w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: AzureContainerRegistry.[nazwa regionu]. 
 * **AppService** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure AppService. W przypadku określenia wartości *AppService* dozwolony lub blokowany jest ruch do usługi AppService. Jeśli chcesz zezwolić na dostęp do usługi AppService w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: AppService.[nazwa regionu]. 
-* **AppServiceManagement** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure AppService Management. W przypadku określenia wartości *AppServiceManagement* dozwolony lub blokowany jest ruch do usługi AppServiceManagement. Jeśli chcesz zezwolić na dostęp do usługi AppServiceManagement w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: AppServiceManagement.[nazwa regionu]. 
-* **ApiManagement** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Api Management. W przypadku określenia wartości *ApiManagement* dozwolony lub blokowany jest ruch do usługi ApiManagement. Jeśli chcesz zezwolić na dostęp do usługi ApiManagement w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: ApiManagement.[nazwa regionu]. 
+* **AppServiceManagement** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure AppService Management. W przypadku określenia wartości *AppServiceManagement* dozwolony lub blokowany jest ruch do usługi AppServiceManagement. 
+* **ApiManagement** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Api Management. W przypadku określenia wartości *ApiManagement* dozwolony lub blokowany jest ruch do usługi ApiManagement.  
 * **AzureConnectors** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Connectors. W przypadku określenia wartości *AzureConnectors* dozwolony lub blokowany jest ruch do usługi AzureConnectors. Jeśli chcesz zezwolić na dostęp do usługi AzureConnectors w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: AzureConnectors.[nazwa regionu]. 
-* **GatewayManager** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Gateway Manager. W przypadku określenia wartości *GatewayManager* dozwolony lub blokowany jest ruch do usługi GatewayManager. Jeśli chcesz zezwolić na dostęp do usługi GatewayManager w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: GatewayManager.[nazwa regionu]. 
+* **GatewayManager** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Gateway Manager. W przypadku określenia wartości *GatewayManager* dozwolony lub blokowany jest ruch do usługi GatewayManager.  
 * **AzureDataLake** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi Azure Data Lake. W przypadku określenia wartości *AzureDataLake* dozwolony lub blokowany jest ruch do usługi AzureDataLake. 
 * **AzureActiveDirectory** (tylko usługa Resource Manager): ten tag określa prefiksy adresów usługi AzureActiveDirectory. W przypadku określenia wartości *AzureActiveDirectory* dozwolony lub blokowany jest ruch do usługi AzureActiveDirectory.  
+* **AzureMonitor** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi AzureMonitor. Jeśli określisz *AzureMonitor* wartości, ruch jest dozwolony lub zablokowany do AzureMonitor. 
+* **ServiceFabric** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi ServiceFabric. Jeśli określisz *ServiceFabric* wartości, ruch jest dozwolony lub zablokowany do ServiceFabric. 
+* **AzureMachineLearning** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi AzureMachineLearning. Jeśli określisz *AzureMachineLearning* wartości, ruch jest dozwolony lub zablokowany do AzureMachineLearning. 
 
 > [!NOTE]
-> Tagi usług platformy Azure określają prefiksy adresów określonych chmur, które są używane. Regionalne tagi usług nie są obsługiwane przez chmury krajowe. Obsługiwane są wyłącznie formaty globalne, na przykład *Storage* i *Sql*.
+> Tagi usług platformy Azure określają prefiksy adresów określonych chmur, które są używane. 
 
 > [!NOTE]
 > W przypadku zaimplementowania [punktu końcowego usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md) dla usługi takiej jak usługa Azure Storage lub Azure SQL Database, platforma Azure dodaje [trasę](virtual-networks-udr-overview.md#optional-default-routes) do podsieci sieci wirtualnej dla usługi. Prefiksy adresów dla trasy to te same prefiksy adresów lub zakresy CIDR, co w odpowiednim tagu usługi.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 3a8b0ecefe9e314e8056c941c9ef4ce32d1cbb75
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119377"
+ms.locfileid: "54159795"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -353,7 +353,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 ```
 
 ### <a name="using-liquid-templates-with-set-body"></a>Za pomocą szablonów Liquid z treścią zestawu
-`set-body` Zasad może być skonfigurowana do używania [Liquid](https://shopify.github.io/liquid/basics/introduction/) języka szablonów transfom treści żądania lub odpowiedzi. Może to być bardzo skuteczne, jeśli chcesz całkowicie zmienić kształt format komunikatu.
+`set-body` Zasad może być skonfigurowana do używania [Liquid](https://shopify.github.io/liquid/basics/introduction/) języka szablonów do przekształcania treści żądania lub odpowiedzi. Może to być bardzo skuteczne, jeśli chcesz całkowicie zmienić kształt format komunikatu.
 
 > [!IMPORTANT]
 > Implementacja cieczy używane w `set-body` zasada została skonfigurowana w trybie"C#". Jest to szczególnie ważne podczas wykonywania czynności, takie jak filtrowanie. Na przykład za pomocą filtru dat wymaga użycia Pascal wielkość liter w wyrazie i C# daty, np. formatowania:

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 408d43f07179f9f18c05f22fdd4ea36a3a90cb49
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076270"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157313"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache i serwer zawartości wdrożenia na maszynach wirtualnych platformy Azure
 
@@ -331,7 +331,7 @@ Zaktualizowaną listę SAP MaxDB dokumentację można znaleźć w następującyc
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania MaxDB SAP dla instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Konfiguracja magazynu
-Usługa Azure storage najlepsze rozwiązania dotyczące SAP MaxDB wykonaj ogólne zalecenia, o których wspomniano w rozdziale [struktury wdrożenia RDBMS][dbms-guide-2].
+Usługa Azure storage najlepsze rozwiązania dotyczące SAP MaxDB wykonaj ogólne zalecenia, o których wspomniano w rozdziale [struktury magazynu maszyny wirtualnej w przypadku wdrożeń RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
 > Podobnie jak inne bazy danych SAP MaxDB ma plików danych i dziennika. Jednak w terminologii SAP MaxDB prawidłowy termin jest "wolumin" (nie "plik"). Na przykład istnieją SAP MaxDB woluminów danych i woluminy dziennika. Nie należy mylić ich z woluminów dysku systemu operacyjnego. 
@@ -458,7 +458,7 @@ Poniżej dostępne są dwie opcje:
 
 1. **Klient znajduje się w wewnętrznej bazie danych systemu SAP** jest klientem, jeśli system SAP wewnętrznej bazy danych skonfigurowano na dostęp do zawartości serwera SAP, tego systemu SAP. Jak SAP system i SAP serwera zawartości są wdrażane w tym samym regionie platformy Azure, w tym samym centrum danych platformy Azure, są fizycznie blisko siebie. W związku z tym nie ma potrzeby dedykowanego serwera pamięci podręcznej SAP. Bezpośredni dostęp klientów SAP interfejsu użytkownika (SAP GUI lub przeglądarki sieci web) w systemie SAP i SAP system pobiera dokumenty z serwera zawartości SAP.
 2. **Klient jest w przeglądarce sieci web w środowisku lokalnym** można skonfigurować serwer zawartości programu SAP były dostępne bezpośrednio z poziomu przeglądarki sieci web. W tym przypadku przeglądarki sieci web działających lokalnie to klient serwera zawartości SAP. W lokalnym centrum danych i centrum danych platformy Azure są umieszczane w różnych lokalizacjach fizycznych (najlepiej blisko siebie). W lokalnym centrum danych jest podłączony do platformy Azure za pomocą usługi Azure VPN lokacja-lokacja lub ExpressRoute. Mimo że obie opcje oferują bezpiecznego połączenia sieci VPN na platformie Azure, połączenie lokacja lokacja nie oferuje SLA przepustowości i opóźnienia sieci między lokalnym centrum danych i centrum danych platformy Azure. Aby przyspieszyć dostęp do dokumentów, wykonaj jedną z następujących czynności:
-   1. Instalacja serwera pamięci podręcznej SAP w środowisku lokalnym, Zamknij, aby przeglądarki sieci web na lokalnym (opcja [to] [ dbms-guide-900-sap-cache-server-on-premises] rysunek)
+   1. Zainstaluj serwer pamięci podręcznej SAP w środowisku lokalnym, blisko przeglądarki sieci web w środowisku lokalnym (opcja na rysunku poniżej)
    2. Konfigurowanie usługi Azure ExpressRoute, która oferuje szybki i małym opóźnieniu dedykowane połączenie sieciowe między lokalnym centrum danych i centrum danych platformy Azure.
 
 ![Opcja instalacji serwera pamięci podręcznej SAP w środowisku lokalnym](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)

@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 031cb10e476ba068f7e3d7baf3b19f7703caf170
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580050"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159931"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Kopie zapasowe oprogramowania SAP HANA na podstawie migawek magazynu
 
@@ -88,7 +88,7 @@ Usługa Azure Backup ma cztery fazy główne:
 
 Szczegółowe informacje o tym, gdzie można skopiować te skrypty i szczegółowe informacje o sposobie działania usługi Azure Backup dokładnie sprawdź następujące artykuły:
 
-- [Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej na platformie Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+- [Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 - [Spójna na poziomie aplikacji Kopia zapasowa maszyn wirtualnych systemu Linux platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)
 
 

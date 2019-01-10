@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c6472b824eefdd1954f3645c69090d1fb5455de
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fb1ac992f174327d08a606549da7b2b094a7a88e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754462"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157993"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -26,8 +26,7 @@ Potoki tworzenia są widoczne dla członków usługi Azure Machine Learning [obs
 
 Potoki Użyj zdalnego obliczeniowych elementów docelowych dla obliczeń i magazynu pośredniego i końcowego dane skojarzone z tego potoku. Potoki można odczytu i zapisu danych do i z obsługiwanych [usługi Azure Storage](https://docs.microsoft.com/azure/storage/) lokalizacji.
 
->[!Note]
->Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree).
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -101,35 +100,138 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="set-up-compute"></a>Konfigurowanie obliczeń
+## <a name="set-up-compute-target"></a>Konfigurowanie obliczeniowego elementu docelowego
 
-W usłudze Azure Machine Learning termin *obliczenia* (lub *obliczeniowego elementu docelowego*) odwołuje się do maszyny i klastry, które wykonują etapów obliczeniowych w potoku, machine learning. Na przykład można utworzyć zasoby obliczeniowe usługi Azure Machine Learning na potrzeby uruchamiania etapów.
+W usłudze Azure Machine Learning termin __obliczenia__ (lub __obliczeniowego elementu docelowego__) odwołuje się do maszyny i klastry, które wykonują etapów obliczeniowych w potoku, machine learning.   Zobacz [celów obliczeń dla szkoleń modelowych](how-to-set-up-training-targets.md) poznania pełnej listy celów obliczeń oraz jak utworzyć i dołączyć je do obszaru roboczego.  Proces tworzenia i/lub dołączanie obliczeniowego elementu docelowego jest taki sam niezależnie od tego, czy podczas uczenia modelu lub etap potoku. Po utworzeniu i dołączyć obliczeniowego elementu docelowego, użyj `ComputeTarget` obiektu w swojej [etap potoku](#steps).
+
+Poniżej przedstawiono przykłady tworzenie i dołączanie obliczeniowych elementów docelowych dla:
+
+* Usługi Azure Machine Learning obliczeń
+* Azure Databricks 
+* Azure Data Lake Analytics
+
+### <a name="azure-machine-learning-compute"></a>Usługi Azure Machine Learning obliczeń
+
+Można tworzyć zasoby obliczeniowe usługi Azure Machine Learning na potrzeby uruchamiania etapów.
+
+    ```python
+    compute_name = "aml-compute"
+     if compute_name in ws.compute_targets:
+        compute_target = ws.compute_targets[compute_name]
+        if compute_target and type(compute_target) is AmlCompute:
+            print('Found compute target: ' + compute_name)
+    else:
+        print('Creating a new compute target...')
+        provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                    min_nodes = 1, 
+                                                                    max_nodes = 4)
+         # create the compute target
+        compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+        
+        # Can poll for a minimum number of nodes and for a specific timeout. 
+        # If no min node count is provided it will use the scale settings for the cluster
+        compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+        
+         # For a more detailed view of current cluster status, use the 'status' property    
+        print(compute_target.status.serialize())
+    ```
+
+### <a id="databricks"></a>Usługa Azure Databricks
+
+Usługa Azure Databricks to oparta na platformie Apache Spark środowisko w chmurze platformy Azure. Może służyć jako cel obliczenia z potoku usługi Azure Machine Learning.
+
+Utwórz obszar roboczy usługi Azure Databricks, przed jego użyciem. Aby utworzyć tych zasobów, zobacz [uruchamianie zadania Spark w usłudze Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) dokumentu.
+
+Aby dołączyć usługi Azure Databricks, jako cel obliczenia, podaj następujące informacje:
+
+* __Nazwa obliczeniowego Databricks__: Nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
+* __Nazwa obszaru roboczego usługi Databricks__: Nazwa obszaru roboczego usługi Azure Databricks.
+* __Token dostępu usługi Databricks__: Token dostępu używany do uwierzytelniania usługi Azure Databricks. Aby wygenerować token dostępu, zobacz [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+
+Poniższy kod przedstawia sposób dołączania usługi Azure Databricks jako cel obliczenia przy użyciu zestawu SDK usługi Azure Machine Learning:
 
 ```python
-compute_name = "aml-compute"
- if compute_name in ws.compute_targets:
-    compute_target = ws.compute_targets[compute_name]
-    if compute_target and type(compute_target) is AmlCompute:
-        print('Found compute target: ' + compute_name)
-else:
-    print('Creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
-                                                                min_nodes = 1, 
-                                                                max_nodes = 4)
-     # create the compute target
-    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+import os
+from azureml.core.compute import ComputeTarget, DatabricksCompute
+from azureml.exceptions import ComputeTargetException
+
+databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_workspace_name = os.environ.get("AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get("AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
+databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
+    print('databricks_access_token {}'.format(databricks_access_token))
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
+                                                           workspace_name = databricks_workspace_name,
+                                                           access_token = databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+             ws,
+             databricks_compute_name,
+             attach_config
+         )
     
-    # Can poll for a minimum number of nodes and for a specific timeout. 
-    # If no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    databricks_compute.wait_for_completion(True)
+```
+### <a id="adla"></a>Azure Data Lake Analytics
+
+Usługa Azure Data Lake Analytics to platforma analiz danych big data w chmurze platformy Azure. Może służyć jako cel obliczenia z potoku usługi Azure Machine Learning.
+
+Tworzenie konta usługi Azure Data Lake Analytics przed jego użyciem. Aby utworzyć ten zasób, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentu.
+
+Aby dołączyć usługi Data Lake Analytics, jako cel obliczenia, możesz użyć zestawu SDK usługi Azure Machine Learning i podaj następujące informacje:
+
+* __Nazwa obliczeniowego__: Nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
+* __Grupa zasobów__: Grupy zasobów zawierającej konto usługi Data Lake Analytics.
+* __Nazwa konta__: Nazwa konta usługi Data Lake Analytics.
+
+Poniższy kod przedstawia sposób dołączania usługi Data Lake Analytics, jako cel obliczenia:
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, AdlaCompute
+from azureml.exceptions import ComputeTargetException
+
+
+adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_group = os.environ.get("AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get("AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
+                                                     account_name = adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+             ws,
+             adla_compute_name,
+             attach_config
+         )
     
-     # For a more detailed view of current cluster status, use the 'status' property    
-    print(compute_target.status.serialize())
+    adla_compute.wait_for_completion(True)
 ```
 
-## <a name="construct-your-pipeline-steps"></a>Konstruowania etapów potoku
+> [!TIP]
+> Potoki usługi Azure Machine Learning może pracować tylko z danych przechowywanych w magazynie danych domyślnego konta usługi Data Lake Analytics. Jeśli dane potrzebne do pracy z znajduje się w magazynie innych niż domyślne, można użyć [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) do kopiowania danych przed szkolenia.
 
-Teraz możesz przystąpić do definiowania etap potoku. Wiele wbudowanych kroków są dostępne za pośrednictwem zestawu SDK usługi Azure Machine Learning. Jest najbardziej podstawowym te kroki `PythonScriptStep`, które uruchamia skrypt w języku Python w określonym obliczeniowego elementu docelowego.
+## <a id="steps"></a>Konstruowania etapów potoku
+
+Po utworzeniu i dołączyć obliczeniowego elementu docelowego w Twoim obszarze roboczym, jesteś gotowy do definiowania etap potoku. Wiele wbudowanych kroków są dostępne za pośrednictwem zestawu SDK usługi Azure Machine Learning. Jest najbardziej podstawowym te kroki [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), które uruchamia skrypt w języku Python w określonym obliczeniowego elementu docelowego.
 
 ```python
 trainStep = PythonScriptStep(
@@ -155,13 +257,36 @@ compareModels = [trainStep, extractStep, compareStep]
 pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
 ```
 
+W poniższym przykładzie użyto usługi Azure Databricks obliczeniowego elementu docelowego utworzonego wcześniej: 
+
+```python
+dbStep = DatabricksStep(
+    name="databricksmodule",
+    inputs=[step_1_input],
+    outputs=[step_1_output],
+    num_workers=1,
+    notebook_path=notebook_path,
+    notebook_params={'myparam': 'testparam'},
+    run_name='demo run name',
+    databricks_compute=databricks_compute,
+    allow_reuse=False
+)
+# List of steps to run
+steps = [dbStep]
+
+# Build the pipeline
+pipeline1 = Pipeline(workspace=ws, steps=steps)
+```
+
 ## <a name="submit-the-pipeline"></a>Przesyłanie potoku
 
 Po przesłaniu potoku usługi Azure Machine Learning sprawdza zależności dla każdego kroku i przesyła migawkę katalog źródłowy, wskazana. Jeśli katalog źródłowy nie zostanie określony, bieżący katalog lokalny jest przekazywany.
 
+
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
+pipeline_run.wait_for_completion()
 ```
 
 Przy pierwszym uruchomieniu potoku usługi Azure Machine Learning:

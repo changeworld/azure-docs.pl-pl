@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: 7afa628ea455aa28f1717de8da66b631baeee4f1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a93a3db3010fb9e9d2270414cadeae86b70bb8d0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870457"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157466"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurowanie wersji zasad SSL i szyfrowania pakietów w usłudze Application Gateway
 
@@ -106,7 +106,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Skonfigurować niestandardowe zasady protokołu SSL
 
-Podczas konfigurowania niestandardowych zasad protokołu SSL, przekazać następujące parametry: właściwość PolicyType "," MinProtocolVersion "," CipherSuite "i" bramy aplikacji. Jeśli użytkownik podejmie próbę inne parametry są przekazywane, wystąpi błąd podczas tworzenia lub aktualizowania Application Gateway. 
+Podczas konfigurowania niestandardowych zasad protokołu SSL, należy przekazać następujące parametry: PolicyType, MinProtocolVersion, CipherSuite i bramy aplikacji. Jeśli użytkownik podejmie próbę inne parametry są przekazywane, wystąpi błąd podczas tworzenia lub aktualizowania Application Gateway. 
 
 W poniższym przykładzie ustawiono niestandardowe zasady protokołu SSL w bramie aplikacji. Ustawia wersję protokołu minimalne `TLSv1_1` i włącza następujące mechanizmy:
 
@@ -139,7 +139,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Tworzenie bramy aplikacji przy użyciu wstępnie zdefiniowanych zasad protokołu SSL
 
-Podczas konfigurowania wstępnie zdefiniowanych zasad protokołu SSL należy przekazać następujące parametry: PolicyType, PolicyName i bramy aplikacji. Jeśli użytkownik podejmie próbę inne parametry są przekazywane, wystąpi błąd podczas tworzenia lub aktualizowania Application Gateway.
+Podczas konfigurowania wstępnie zdefiniowanych zasad protokołu SSL, należy przekazać następujące parametry: PolicyType PolicyName i bramy aplikacji. Jeśli użytkownik podejmie próbę inne parametry są przekazywane, wystąpi błąd podczas tworzenia lub aktualizowania Application Gateway.
 
 Poniższy przykład tworzy nową bramę aplikacji przy użyciu wstępnie zdefiniowanych zasad protokołu SSL.
 
@@ -207,7 +207,7 @@ $RG = "YourResourceGroupName"
 
 $AppGw = get-azurermapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 
-# Choose either custom policy or prefedined policy and uncomment the one you want to use.
+# Choose either custom policy or predefined policy and uncomment the one you want to use.
 
 # SSL Custom Policy
 # Set-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256" -ApplicationGateway $AppGw

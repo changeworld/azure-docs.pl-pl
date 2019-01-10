@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138589"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159170"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. W tym artykule omówiono cele skalowalności i wydajności dla usługi Azure Files i usługi Azure File Sync.
@@ -39,11 +39,11 @@ Za pomocą usługi Azure File Sync mają próbowaliśmy jak najszerzej się proj
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-performance-metrics"></a>Metryki wydajności usługi Azure File Sync
-Ponieważ agent usługi Azure File Sync jest uruchomiony na komputerze z serwerem systemu Windows, który nawiązuje połączenie z udziałami plików platformy Azure, wydajność synchronizacji obowiązujące zależy od wielu czynników, w ramach infrastruktury: Windows Server i podstawowych konfiguracji dysku, przepustowość sieci między serwerem i usługi Azure storage, rozmiar pliku, rozmiar całkowitej zestawu danych a działania w zestawie danych. Ponieważ usługi Azure File Sync działa na poziomie plików, charakterystyki wydajności, rozwiązania opartej na usłudze Azure File Sync lepiej jest mierzony w liczbę obiektów (pliki i katalogi) przetwarzanych na sekundę. 
+Ponieważ agent usługi Azure File Sync jest uruchomiony na komputerze z serwerem systemu Windows, który nawiązuje połączenie z udziałami plików platformy Azure, wydajność synchronizacji obowiązujące zależy od wielu czynników, w ramach infrastruktury: Windows Server i podstawowych konfiguracji dysków, przepustowość sieci między serwerem a usługa Azure storage pliku rozmiar, rozmiar całkowitej zestawu danych i działania w zestawie danych. Ponieważ usługi Azure File Sync działa na poziomie plików, charakterystyki wydajności, rozwiązania opartej na usłudze Azure File Sync lepiej jest mierzony w liczbę obiektów (pliki i katalogi) przetwarzanych na sekundę. 
  
 Dla usługi Azure File Sync wydajność jest szczególnie ważne w dwóch etapach:
-1. **Początkowe jednorazowe Inicjowanie obsługi administracyjnej**: w celu zoptymalizowania wydajności początkowego udostępnienia, dotyczą [dołączania przy użyciu usługi Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) szczegóły optymalizację wdrażania.
-2. **Trwającą synchronizacji**: po danych jest początkowo zasilany w udziałach plików platformy Azure, usługi Azure File Sync zapewnia wiele punktów końcowych w synchronizacji.
+1. **Początkowa jednorazowe Inicjowanie obsługi administracyjnej**: Aby zoptymalizować wydajność po początkowej aprowizacji, zapoznaj się [dołączania przy użyciu usługi Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) szczegóły optymalizację wdrażania.
+2. **Trwającą synchronizacji**: Po danych jest początkowo zasilany w udziałach plików platformy Azure, usługi Azure File Sync zapewnia wiele punktów końcowych w synchronizacji.
 
 Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki przestrzegane są podczas testowania wewnętrznego w systemie przy użyciu konfiguracji
 
@@ -59,9 +59,9 @@ Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki prze
 |-|-|
 | Liczba obiektów | 10 mln obiektów | 
 | Rozmiar zestawu danych| TiB ~ 4 |
-| Średni rozmiar plików | KiB ~ 500 (największy plik: 100 GiB) |
-| Przekaż przepływności | obiekty 15 na sekundę |
-| Namespace pobierania przepływności * | 350 obiektów na sekundę |
+| Średni rozmiar plików | KiB ~ 500 (największy plik: 100 giB) |
+| Przekaż przepływności | 20 obiektów na sekundę |
+| Namespace pobierania przepływności * | 400 obiektów na sekundę |
  
 * Po utworzeniu nowego punktu końcowego serwera agenta usługi Azure File Sync nie pobiera żadnej zawartości pliku. Najpierw synchronizuje pełną przestrzeni nazw i następnie wyzwalaczy w tle odwołania do pobierania plików, albo w całości lub, jeśli obsługa warstw w chmurze jest włączony, aby zasady obsługi warstw w chmurze ustawiony w punkcie końcowym serwera.
 
@@ -70,8 +70,8 @@ Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki prze
 | Liczba obiektów synchronizowane| 125 000 obiektów (około 1% zmian) | 
 | Rozmiar zestawu danych| 50 giB |
 | Średni rozmiar plików | ~ 500 KiB |
-| Przekaż przepływności | 20 obiektów na sekundę |
-| Pobierz pełną przepływność * | obiekty 30 na sekundę |
+| Przekaż przepływności | obiekty 30 na sekundę |
+| Pobierz pełną przepływność * | obiekty 60 na sekundę |
  
 * Jeśli chmura warstw jest włączona, najprawdopodobniej będzie obserwować lepszą wydajność, jako część pliku danych zostanie pobrana. Usługa Azure File Sync pobiera tylko dane plików w pamięci podręcznej po zmianie na żadnym z punktów końcowych. Dla wszystkich plików warstwowych lub być nowo utworzoną agenta nie pobiera dane z pliku, a zamiast tego synchronizuje tylko przestrzeń nazw w celu wszystkie punkty końcowe serwera. Agent obsługuje również częściowe pobieranie plików warstwowych, ponieważ są one używane przez użytkownika. 
  

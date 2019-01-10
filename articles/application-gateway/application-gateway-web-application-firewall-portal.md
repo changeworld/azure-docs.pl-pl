@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 12ef6447e53ba0da3fbd3d56749d7798c49a2cfe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993938"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157143"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tworzenie bramy aplikacji z zaporą aplikacji sieci web przy użyciu witryny Azure portal
 
@@ -119,7 +119,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 ### <a name="add-backend-servers"></a>Dodawanie serwerów zaplecza
 
 1. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij pozycję **myAppGateway**.
-2. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij przycisk **appGateayBackendPool**.
+2. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij pozycję **appGatewayBackendPool**.
 3. Kliknij przycisk **Add target** dodawania każdej maszyny wirtualnej, który został utworzony do puli zaplecza.
 
     ![Dodawanie serwerów zaplecza](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)

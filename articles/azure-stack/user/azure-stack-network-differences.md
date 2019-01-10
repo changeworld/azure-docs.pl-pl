@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: de98387b0c7d5eb3c5ca99f9aa31619397e2aadf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4aa62319ee37b2f82455d1a3c7ad2d224988d93e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944583"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160067"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Zagadnienia dotyczące sieci usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Sieć usługi Azure Stack ma wiele funkcji oferowanych przez sieci platformy Azure. Jednakże istnieją niektóre podstawowe różnice, które należy zrozumieć przed wdrożeniem sieci usługi Azure Stack.
 
 Ten artykuł zawiera przegląd unikatową zagadnienia dotyczące sieci usługi Azure Stack i jej funkcji. Aby dowiedzieć się więcej o różnicach wysokiego poziomu usługi Azure Stack i platformą Azure, zobacz [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
 
-## <a name="cheat-sheet-networking-differences"></a>Ściągawka: różnice sieci
+## <a name="cheat-sheet-networking-differences"></a>Ściągawka: Różnice w sieci
 
 | Usługa | Cecha | Azure (globalna) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,7 +54,6 @@ Ten artykuł zawiera przegląd unikatową zagadnienia dotyczące sieci usługi A
 |  | Domyślna witryna bramy | Platforma Azure obsługuje konfigurację domyślną witrynę dla wymuszonego tunelowania. | Nie jest jeszcze obsługiwany. |
 |  | Zmiana rozmiaru bramy | Platforma Azure obsługuje zmienianie rozmiaru bramy po wdrożeniu. | Ponowne ustalanie rozmiaru nie obsługiwane. |
 |  | Konfiguracja aktywny/aktywny | Obsługiwane | Nie jest jeszcze obsługiwany. |
-|  | Zasad IKE/IPSec | Usługa Azure obsługuje niestandardowej konfiguracji zasad IPSec. | Nie jest jeszcze obsługiwany. |
 |  | UsePolicyBasedTrafficSelectors | Platforma Azure obsługuje przy użyciu opartych na zasadach selektorów ruchu połączeń bramy oparte na trasach. | Nie jest jeszcze obsługiwany. |
 | Moduł równoważenia obciążenia | SKU | Podstawowa i standardowa usługi równoważenia obciążenia są obsługiwane. | Obsługiwane jest tylko podstawowy moduł równoważenia obciążenia.  Właściwość SKU nie jest obsługiwana. |
 |  | Strefy | Strefy dostępności są obsługiwane. | Nie jest jeszcze obsługiwany |
@@ -65,11 +64,9 @@ Ten artykuł zawiera przegląd unikatową zagadnienia dotyczące sieci usługi A
 |  | Pobierz efektywne list ACL | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Włącz przyspieszona sieć | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Przesyłanie dalej IP | Domyślnie wyłączone.  Można ją włączyć. | Przełączenie tego ustawienia nie jest obsługiwane.  Na domyślnie. |
-|  | Wiele konfiguracji adresów IP dla każdego interfejsu | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Grupy zabezpieczeń aplikacji | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Etykieta nazwy wewnętrznego serwera DNS | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Prywatny adres IP w wersji | Obsługiwane są zarówno protokołu IPv6 i IPv4. | Obsługiwany jest tylko protokół IPv4. |
-|  | Konfiguracja podstawowego adresu IP | Obsługiwane. Identyfikuje podstawowa konfiguracja adresu IP w interfejsie. | Nie jest jeszcze obsługiwany. |
 | Network Watcher | Network Watcher dzierżawy możliwości monitorowania sieci | Obsługiwane | Nie jest jeszcze obsługiwany. |
 | CDN | Profilów sieci dostarczania zawartości | Obsługiwane | Nie jest jeszcze obsługiwany. |
 | Brama aplikacji | Równoważenie obciążenia warstwy 7 | Obsługiwane | Nie jest jeszcze obsługiwany. |

@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/8/2019
+ms.date: 1/9/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: c1dfc4ed969735be26ae075900cd850e016afffa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9f1ee309156a39078ffdfeed2c75d86476ac8b48
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107586"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158656"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowisko Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania środowiska Azure-SSIS Integration Runtime (IR) przy użyciu usługi Azure Data Factory (ADF). Azure-SSIS IR to ADF obliczenia zasobów dedykowanych do wykonywania pakietów usług SQL Server Integration Services (SSIS). Uruchamianie środowiska Azure-SSIS IR ma koszt związany z nim. W związku z tym zazwyczaj chcesz uruchomić środowiska IR tylko wtedy, gdy konieczne wykonywanie pakietów usług SSIS na platformie Azure i Zatrzymaj środowiska IR, gdy nie trzeba go dłużej. Możesz użyć usługi ADF interfejsu użytkownika (UI) / aplikacji lub programu Azure PowerShell [ręcznie rozpocząć lub zatrzymać środowiska IR](manage-azure-ssis-integration-runtime.md)).
@@ -86,7 +86,7 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
    
 2. W **działania** przybornika, rozwiń węzeł **ogólne** menu, przeciągania i upuszczania **Web** działania na powierzchnię projektanta potoku. W **ogólne** karty w oknie właściwości działania, Zmień nazwę działania na **startMyIR**. Przełącz się do **ustawienia** kartę, a następnie wykonaj następujące czynności.
 
-    1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który rozpoczyna się Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Można też również skopiuj i wklej identyfikator zasobu środowiska IR z jego monitorowania strony w ADF interfejsu użytkownika/aplikacji, aby zastąpić następująca część powyższy adres URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
+    1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który rozpoczyna się Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Alternatywnie też skopiuj i wklej identyfikator zasobu środowiska IR z jego monitorowania strony w ADF interfejsu użytkownika/aplikacji, aby zastąpić następująca część powyższy adres URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![Identyfikator zasobu środowiska IR ADF SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
@@ -99,7 +99,7 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
   
 3. Klonowanie pierwszego potoku, aby utworzyć drugi, zmieniając nazwę działania na **stopMyIR** i zastępuje następujące właściwości.
 
-    1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który zatrzymuje Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
+    1. Dla **adresu URL**, wprowadź następujący adres URL dla interfejsu API REST, który zatrzymuje Azure-SSIS IR, zastępując `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, i `{integrationRuntimeName}` rzeczywistymi wartościami dla środowiska IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. Aby uzyskać **treści**, wprowadź `{"message":"Stop my IR"}`. 
 

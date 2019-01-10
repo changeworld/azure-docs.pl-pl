@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337924"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157080"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
 
@@ -92,11 +92,11 @@ W poniższych sekcjach omówiono typowe scenariusze, które są bardziej złożo
 
 ## <a name="scenario-app-accessing-microsoft-graph"></a>Scenariusz: Uzyskiwanie dostępu do programu Microsoft Graph aplikacji
 
-W tym scenariuszu Dowiedz się, jak aplikacja sieci web żąda dostępu do programu Microsoft Graph. Zasady dostępu warunkowego można w takim przypadku można przypisać do programu SharePoint, Exchange lub innej usługi, która jest dostępna jako obciążenie za pomocą programu Microsoft Graph. W tym przykładzie załóżmy, że istnieje zasady dostępu warunkowego w usłudze Sharepoint Online.
+W tym scenariuszu Dowiedz się, jak aplikacja sieci web żąda dostępu do programu Microsoft Graph. Zasady dostępu warunkowego można w takim przypadku można przypisać do programu SharePoint, Exchange lub innej usługi, która jest dostępna jako obciążenie za pomocą programu Microsoft Graph. W tym przykładzie załóżmy, że istnieje zasady dostępu warunkowego w usłudze SharePoint Online.
 
 ![Uzyskiwanie dostępu do programu Microsoft Graph diagramu przepływu aplikacji](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
 
-Aplikację po raz pierwszy żąda autoryzacji w programie Microsoft Graph, która wymaga dostępu do podrzędnego obciążenia bez dostępu warunkowego. Żądanie zakończy się pomyślnie bez wywoływania żadnych zasad i aplikacja odbiera tokenów dla programu Microsoft Graph. W tym momencie aplikacja może używać tokenu dostępu w żądaniu elementu nośnego dla żądanego punktu końcowego. Teraz aplikacji potrzebuje dostępu do usługi Sharepoint Online punkt końcowy programu Microsoft Graph, na przykład: `https://graph.microsoft.com/v1.0/me/mySite`
+Aplikację po raz pierwszy żąda autoryzacji w programie Microsoft Graph, która wymaga dostępu do podrzędnego obciążenia bez dostępu warunkowego. Żądanie zakończy się pomyślnie bez wywoływania żadnych zasad i aplikacja odbiera tokenów dla programu Microsoft Graph. W tym momencie aplikacja może używać tokenu dostępu w żądaniu elementu nośnego dla żądanego punktu końcowego. Teraz aplikacji potrzebuje dostępu do usługi SharePoint Online punkt końcowy programu Microsoft Graph, na przykład: `https://graph.microsoft.com/v1.0/me/mySite`
 
 Aplikacja jest już prawidłowy token dla programu Microsoft Graph, który może wykonywać nowe żądanie bez wystawienia nowego tokenu. To żądanie nie powiedzie się i wystawiono wyzwanie oświadczeń programu Microsoft Graph w formie HTTP 403 — Dostęp zabroniony z ```WWW-Authenticate``` wyzwanie.
 
@@ -108,7 +108,7 @@ error=insufficient_claims
 www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
 ```
 
-Żądania oświadczeń znajduje się wewnątrz ```WWW-Authenticate``` nagłówka, który można przeanalizować w celu wyodrębnienia parametru oświadczeń dla następnego żądania. Gdy jest ona dołączana do nowego żądania, do oceny zasad dostępu warunkowego podczas logowania użytkownik wie, usługi Azure AD, a aplikacja jest teraz zgodne z zasadami dostępu warunkowego. Powtórzenie żądania do punktu końcowego usługi Sharepoint Online kończy się powodzeniem.
+Żądania oświadczeń znajduje się wewnątrz ```WWW-Authenticate``` nagłówka, który można przeanalizować w celu wyodrębnienia parametru oświadczeń dla następnego żądania. Gdy jest ona dołączana do nowego żądania, do oceny zasad dostępu warunkowego podczas logowania użytkownik wie, usługi Azure AD, a aplikacja jest teraz zgodne z zasadami dostępu warunkowego. Powtórzenie żądania do punktu końcowego usługi SharePoint Online kończy się powodzeniem.
 
 ```WWW-Authenticate``` Nagłówek mają strukturę unikatowe i nie jest proste, można przeanalizować w celu wyodrębniania wartości. Poniżej przedstawiono krótkie metodę, aby pomóc.
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: f18af40c67195ee2e1e74c04c0834eea06fb14d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1f5eb085239ac985aa3355b1e91dac9639827339
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191958"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155086"
 ---
 # <a name="contoso-migration-overview"></a>Migracja Contoso: Przegląd
 
@@ -39,7 +39,7 @@ Strategie migracji do chmury można podzielić na cztery ogólne kategorie: reho
 **Rehost** | Często określane jako migracji "lift-and-shift". Ta opcja nie wymaga zmian w kodzie, a teraz migrujesz istniejące aplikacje na platformę Azure szybko. Każda aplikacja jest migrowana jest czerpać korzyści z pracy w chmurze, bez ryzyko i koszty związane ze zmianami kodu. | Jeśli musisz szybko przenieść aplikacje do chmury.<br/><br/> Jeśli chcesz przenieść aplikację bez modyfikowania go.<br/><br/> Gdy Twoje aplikacje mające architekturę, dzięki czemu mogą one używać [IaaS platformy Azure](https://azure.microsoft.com/overview/what-is-iaas/) skalowalność po migracji.<br/><br/> Gdy aplikacje są istotnym elementem dla Twojej firmy, ale nie ma potrzeby natychmiastowego zmiany możliwości aplikacji.
 **Refaktoryzacja** | Często określane jako "ponowne pakowanie", Refaktoryzacja wymaga minimalne zmiany dotyczące aplikacji, tak, aby umożliwić im połączenie z [modelu PaaS platformy Azure](https://azure.microsoft.com/overview/what-is-paas/)i korzystać z oferty w chmurze.<br/><br/> Na przykład można przeprowadzić migracji istniejących aplikacji do usługi Azure App Service lub Azure Kubernetes Service (AKS).<br/><br/> Alternatywnie można refaktoryzacji relacyjnych i nierelacyjnych baz danych na opcje, takie jak wystąpienia zarządzanego Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure Cosmos DB. | W przypadku aplikacji z łatwością mogą być udostępniane do pracy na platformie Azure.<br/><br/> Jeśli chcesz zastosować innowacyjne praktyki metodyki DevOps udostępnianych przez platformę Azure lub myślisz o DevOps za pomocą strategii kontenerów dla obciążeń.<br/><br/> Do refaktoryzacji, należy wziąć pod uwagę przenośność istniejącej bazy kodu i umiejętności tworzenia dostępne.
 **Przekształcanie** | Transformować migracji koncentruje się na modyfikowanie, a także rozszerzanie funkcjonalności aplikacji i bazy kodu, aby zoptymalizować architektury aplikacji skalowalności chmury.<br/><br/> Na przykład może spowodować przerwanie monolitycznych w grupie mikrousług współpracują ze sobą i łatwe skalowanie w dół.<br/><br/> Alternatywnie można Przekształcanie relacyjnych i nierelacyjnych baz danych do w pełni zarządzanych rozwiązań DBaaS, takich jak wystąpienia zarządzanego Azure SQL Database, Azure Database for MySQL — Azure Database for PostgreSQL i Azure Cosmos DB. | Gdy Twoje aplikacje muszą główne wersje zawierają nowe funkcje lub wydajnie pracować nad platforma usług w chmurze.<br/><br/> Jeśli chcesz korzystać z istniejących inwestycji w aplikacji, spełnianie wymagań skalowalności, zastosować innowacyjne praktyki DevOps platformy Azure i zminimalizować wykorzystanie maszyn wirtualnych.
-**Ponowna kompilacja** | Ponownie skompiluj ma rzeczy w kroku dalsze poprzez ponowną kompilację aplikacji od podstaw przy użyciu technologii chmury platformy Azure.<br/><br/> Na przykład można zbudować zielone pole aplikacji przy użyciu technologii natywnych dla chmury, takich jak Azure Functions, Azure AI, wystąpienia zarządzanego Azure SQL Database i Azure Cosmos DB. | Gdy ma szybki rozwój i istniejących aplikacji o ograniczonej funkcjonalności lub okresu eksploatacji.<br/><br/> Gdy wszystko będzie gotowe przyspieszyć wprowadzanie innowacji firmy (w tym metodyki DevOps, udostępnianych przez platformę Azure), tworzyć nowe aplikacje przy użyciu technologii natywnych dla chmury i korzystać z zalet postępy w sztucznej Inteligencji, łańcuch bloków i IoT.
+**Ponowna kompilacja** | Ponownie skompiluj ma rzeczy w kroku dalsze poprzez ponowną kompilację aplikacji od podstaw przy użyciu technologii chmury platformy Azure.<br/><br/> Na przykład można utworzyć aplikacji zielone pole za pomocą [natywnych dla chmury](http://azure.com/cloudnative) technologii, takich jak Azure Functions, Azure AI, wystąpienia zarządzanego Azure SQL Database i Azure Cosmos DB. | Gdy ma szybki rozwój i istniejących aplikacji o ograniczonej funkcjonalności lub okresu eksploatacji.<br/><br/> Gdy wszystko będzie gotowe przyspieszyć wprowadzanie innowacji firmy (w tym metodyki DevOps, udostępnianych przez platformę Azure), tworzyć nowe aplikacje przy użyciu technologii natywnych dla chmury i korzystać z zalet postępy w sztucznej Inteligencji, łańcuch bloków i IoT.
 
 ## <a name="migration-articles"></a>Artykuły migracji
 

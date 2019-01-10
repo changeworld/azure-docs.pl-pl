@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190649"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157177"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -101,7 +101,7 @@ To pokazuje typ każda zmienna i pierwsze kilka wartości w zestawie danych.
 
     data$spam <- as.factor(data$spam)
 
-Do wykonania niektórych analizę należy użyć [ggplot2](http://ggplot2.org/) pakietów popularnych wydarzeniom biblioteki dla języka R, która jest już zainstalowana na maszynie Wirtualnej. Uwaga: dane podsumowania wyświetlane wcześniej, że mamy statystyki podsumowujące częstotliwość znak wykrzyknika. Spróbujmy wykreślania tych częstotliwości, w tym miejscu przy użyciu następujących poleceń:
+Do wykonania niektórych analizę należy użyć [ggplot2](https://ggplot2.tidyverse.org/) pakietów popularnych wydarzeniom biblioteki dla języka R, która jest już zainstalowana na maszynie Wirtualnej. Uwaga: dane podsumowania wyświetlane wcześniej, że mamy statystyki podsumowujące częstotliwość znak wykrzyknika. Spróbujmy wykreślania tych częstotliwości, w tym miejscu przy użyciu następujących poleceń:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)

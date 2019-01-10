@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997826"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156871"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Zewnętrzne powiązanie tabeli dla usługi Azure Functions (wersja eksperymentalna)
 
-W tym artykule opisano sposób pracy z danymi tabelarycznymi na dostawców SaaS, takich jak Sharepoint i Dynamics w usłudze Azure Functions. Usługi Azure Functions obsługuje danych wejściowych i wyjściowych powiązania dla tabel zewnętrznych.
+W tym artykule opisano sposób pracy z danymi tabelarycznymi na dostawców SaaS, takich jak SharePoint i Dynamics w usłudze Azure Functions. Usługi Azure Functions obsługuje danych wejściowych i wyjściowych powiązania dla tabel zewnętrznych.
 
 > [!IMPORTANT]
 > Powiązania tabeli zewnętrznej jest eksperymentalny i nigdy nie może osiągnąć stan jest ogólnie dostępna (GA). Znajduje się tylko na platformie Azure funkcji 1.x i nie ma żadnych planów, aby dodać go do usługi Azure Functions 2.x. W przypadku scenariuszy, które wymagają dostępu do danych w modelu SaaS dostawców należy wziąć pod uwagę przy użyciu [aplikacje logiki, które wywołują funkcje](functions-twitter-email.md).
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Źródło danych w arkuszach Google
 
-Aby utworzyć tabelę do użycia z tym przykładem w witrynie Docs Google, należy utworzyć arkusz kalkulacyjny z arkusza o nazwie `Contact`. Łącznik nie można użyć nazwy wyświetlanej w arkuszu kalkulacyjnym. Potrzeb nazwa wewnętrzna (pogrubiony), który ma być używany jako dataSetName, na przykład: `docs.google.com/spreadsheets/d/` **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** dodać nazwy kolumn `Id`, `LastName`, `FirstName` do pierwszego wiersza, a następnie wypełnimy danych na kolejnych wierszy.
+Aby utworzyć tabelę do użycia z tym przykładem w witrynie Docs Google, należy utworzyć arkusz kalkulacyjny z arkusza o nazwie `Contact`. Łącznik nie można użyć nazwy wyświetlanej w arkuszu kalkulacyjnym. Potrzeb nazwa wewnętrzna (pogrubiony), który ma być używany jako dataSetName, na przykład: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** Dodaj nazwy kolumn `Id`, `LastName`, `FirstName` do pierwszego wiersza, a następnie wypełnianie danych w kolejnych wierszach.
 
 ### <a name="salesforce"></a>SalesForce
 

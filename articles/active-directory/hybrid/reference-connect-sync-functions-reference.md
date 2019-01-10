@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: informacje ogólne o funkcjach | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect: Funkcje dokumentacja | Dokumentacja firmy Microsoft'
 description: Odwołanie deklaratywne wyrażenia inicjowania obsługi administracyjnej w synchronizacji programu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425697"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157483"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: informacje ogólne o funkcjach
+# <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach
 W programie Azure AD Connect funkcje są używane do manipulowania wartością atrybutu podczas synchronizacji.  
 Składnia funkcji jest wyrażona w następującym formacie:  
 `<output type> FunctionName(<input type> <position name>, ..)`
@@ -146,7 +146,7 @@ CDate-funkcja zwraca wartość daty/godziny UTC z ciągu. Daty i godziny nie jes
 **Składnia:**  
 `dt CDate(str value)`
 
-* Wartość: Ciąg znaków z daty, godziny oraz opcjonalnie strefy czasowej
+* Wartość: Ciąg zawierający daty, godziny oraz opcjonalnie strefy czasowej
 
 **Uwagi:**  
 Zwracanego ciągu jest zawsze w formacie UTC.
@@ -166,7 +166,7 @@ Zwraca wartości identyfikatora Oid rozszerzenia krytyczne obiektu certyfikatu.
 
 **Składnia:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certformat"></a>CertFormat
@@ -175,7 +175,7 @@ Zwraca nazwę formatu certyfikatu X.509v3.
 
 **Składnia:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certfriendlyname"></a>CertFriendlyName
@@ -184,7 +184,7 @@ Zwraca skojarzonego aliasu dla certyfikatu.
 
 **Składnia:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certhashstring"></a>CertHashString
@@ -193,7 +193,7 @@ Zwraca wartość skrótu SHA1 certyfikatu X.509v3 jako ciąg szesnastkowy.
 
 **Składnia:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certissuer"></a>CertIssuer
@@ -202,7 +202,7 @@ Zwraca nazwę urzędu certyfikacji, który wystawił certyfikat X.509v3.
 
 **Składnia:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certissuerdn"></a>CertIssuerDN
@@ -211,7 +211,7 @@ Zwraca nazwę wyróżniającą wystawcy certyfikatu.
 
 **Składnia:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certissueroid"></a>CertIssuerOid
@@ -220,7 +220,7 @@ Zwraca identyfikator Oid wystawcy certyfikatu.
 
 **Składnia:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
@@ -229,7 +229,7 @@ Zwraca informacje algorytm klucza dla tego certyfikatu X.509v3 jako ciąg.
 
 **Składnia:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
@@ -238,7 +238,7 @@ Zwraca parametry algorytmu klucza dla certyfikatu X.509v3 jako ciąg szesnastkow
 
 **Składnia:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certnameinfo"></a>CertNameInfo
@@ -247,7 +247,7 @@ Zwraca podmiot i Wystawca nazwy z certyfikatu.
 
 **Składnia:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 *   X509NameType: Wartość X509NameType tematu.
 *   includesIssuerName: true, aby zawierał on nazwę wystawcy; w przeciwnym razie wartość false.
 
@@ -258,7 +258,7 @@ Zwraca datę w czasie lokalnym, po upływie którego certyfikat nie jest już pr
 
 **Składnia:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certnotbefore"></a>CertNotBefore
@@ -267,7 +267,7 @@ Zwraca datę w czasie lokalnym, na którym zaczyna obowiązywać certyfikat.
 
 **Składnia:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
@@ -276,7 +276,7 @@ Zwraca identyfikator Oid klucza publicznego dla certyfikatu X.509v3.
 
 **Składnia:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
@@ -285,7 +285,7 @@ Zwraca identyfikator Oid parametrów klucza publicznego certyfikatu X.509v3.
 
 **Składnia:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certserialnumber"></a>CertSerialNumber
@@ -294,7 +294,7 @@ Zwraca numer seryjny certyfikatu X.509v3.
 
 **Składnia:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
@@ -303,7 +303,7 @@ Zwraca identyfikator Oid algorytm używany do tworzenia podpisu certyfikatu.
 
 **Składnia:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certsubject"></a>CertSubject
@@ -312,7 +312,7 @@ Pobiera nazwa wyróżniająca podmiotu z certyfikatu.
 
 **Składnia:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
@@ -321,7 +321,7 @@ Zwraca nazwa wyróżniająca podmiotu z certyfikatu.
 
 **Składnia:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
@@ -330,7 +330,7 @@ Zwraca identyfikator Oid nazwy podmiotu z certyfikatu.
 
 **Składnia:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certthumbprint"></a>certthumbprint, aby
@@ -339,7 +339,7 @@ Zwraca odcisk palca certyfikatu.
 
 **Składnia:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="certversion"></a>CertVersion
@@ -348,7 +348,7 @@ Zwraca wersja formatu X.509 certyfikatu.
 
 **Składnia:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
 ### <a name="cguid"></a>CGuid
@@ -394,7 +394,7 @@ Funkcja ConvertFromBase64 konwertuje wartość określonego zakodowane w formaci
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Źródło: Ciąg zakodowany w formacie Base64  
-* Kodowania: UTF8 Unicode i ASCII,
+* Kodowanie: Unicode i ASCII, UTF8
 
 **Przykład**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
@@ -410,7 +410,7 @@ Funkcja ConvertFromUTF8Hex konwertuje określoną wartość Hex UTF8 zakodowane 
 **Składnia:**  
 `str ConvertFromUTF8Hex(str source)`
 
-* Źródło: stingu zakodowany 2-bajtowych UTF8
+* Źródło: Stingu zakodowany 2-bajtowych UTF8
 
 **Uwagi:**  
 Różnica między tej funkcji i ConvertFromBase64([],UTF8), wynik jest przyjazna dla atrybutu nazwy domeny.  
@@ -485,7 +485,7 @@ Konwertuje funkcję CStr typie danych ciągu.
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* wartość: może być wartością liczbową, atrybut odwołania lub atrybut typu wartość logiczna.
+* Wartość: Może to być wartość liczbową, atrybut odwołania lub atrybut typu wartość logiczna.
 
 **Przykład:**  
 `CStr([dn])`  
@@ -499,7 +499,7 @@ Zwraca wartość typu Date zawierającą datę, do której dodano określony prz
 **Składnia:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* Interwał: String, wyrażenie, które ma przedział czasu, które chcesz dodać. Ciąg musi mieć jedną z następujących wartości:
+* Interwał: Wyrażenie ciągu, który jest interwałem czasu, które chcesz dodać. Ciąg musi mieć jedną z następujących wartości:
   * rrrr roku
   * q kwartał
   * mln miesiąc
@@ -510,8 +510,8 @@ Zwraca wartość typu Date zawierającą datę, do której dodano określony prz
   * h Godzina
   * n minut
   * s drugiego
-* wartość: liczba jednostek, które chcesz dodać. Może być dodatnia (Aby uzyskać daty w przyszłości) lub ujemna (Aby uzyskać daty w przeszłości).
-* Data: daty/godziny reprezentująca datę, do którego zostanie dodany interwału.
+* Wartość: Liczba jednostek, które chcesz dodać. Może być dodatnia (Aby uzyskać daty w przyszłości) lub ujemna (Aby uzyskać daty w przeszłości).
+* Data: Daty/godziny reprezentująca datę, do którego zostanie dodany interwału.
 
 **Przykład:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
@@ -539,7 +539,7 @@ Funkcja DNComponent zwraca wartość określonego składnika DN z lewej strony.
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * Nazwa wyróżniająca: atrybut odwołania do interpretacji
-* ComponentNumber: Składnik w DN do zwrócenia
+* ComponentNumber: Składnik nazwy domeny do zwrócenia
 
 **Przykład:**  
 `DNComponent(CRef([dn]),1)`  
@@ -556,7 +556,7 @@ Funkcja DNComponentRev zwraca wartość określonego składnika DN, przechodząc
 
 * Nazwa wyróżniająca: atrybut odwołania do interpretacji
 * ComponentNumber — składnik w DN do zwrócenia
-* Opcje: DC — Ignoruj wszystkich składników za pomocą "dc ="
+* Opcje: Kontroler domeny — Ignoruj wszystkich składników za pomocą "dc ="
 
 **Przykład:**  
 Jeśli nazwa wyróżniająca jest "cn = Jan, jednostki organizacyjnej Atlanta, ou = GA, ou = = US, dc = contoso, dc = com" następnie  
@@ -600,7 +600,7 @@ Funkcja FormatDateTime jest używany do formatowania daty/godziny do ciągu w ok
 * Format: ciąg reprezentujący w formacie, aby przekonwertować.
 
 **Uwagi:**  
-Możliwe wartości dla formatu można znaleźć tutaj: [zdefiniowane przez użytkownika formaty daty i godziny (Format funkcja)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+Możliwe wartości dla formatu można znaleźć tutaj: [Niestandardowa data i godzina formatów dla funkcji FORMATUJĄCEJ](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Przykład:**  
 
@@ -627,8 +627,8 @@ IIF — funkcja zwraca jeden zestaw możliwych wartości na podstawie określone
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 * warunek: dowolna wartość lub wyrażenie, które może przyjąć wartość true lub false.
-* Wartość_dla_prawdy: Jeśli warunek to PRAWDA, zwrócona wartość.
-* Wartość_dla_fałszu: Jeśli warunek ma wartość FAŁSZ, zwrócona wartość.
+* Wartość_dla_prawdy: Jeśli warunek jest spełniony, zwrócona wartość.
+* Wartość_dla_fałszu: Jeśli wyrażenie zwróci wartość false, zwracana wartość.
 
 **Przykład:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
@@ -714,7 +714,7 @@ Zwraca wartość PRAWDA, jeśli danych pierwotnych może być serializowany do o
 
 **Składnia:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: certyfikat X.509 reprezentacja tablicy bajtów. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
+*   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 - - -
 ### <a name="isempty"></a>IsEmpty
 **Opis:**  
@@ -852,8 +852,8 @@ Funkcja sprzężenia przyjmuje parametry wielowartościowe i zwraca ciąg jednow
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* Atrybut: wielowartościowy atrybut zawierającą ciągi, które mają zostać połączone.
-* Ogranicznik: dowolny ciąg, który jest używany do rozdzielania podciągów w zwracanym ciągu. W przypadku pominięcia znaku spacji ("") jest używany. Jeśli ogranicznikiem jest ciągiem o zerowej długości ("") lub nic, wszystkie elementy na liście są łączone nie ogranicznikami.
+* Atrybut: Wielowartościowy atrybut zawierającą ciągi, które mają zostać połączone.
+* Ogranicznik: Dowolny ciąg używany do rozdzielania podciągów w zwracanym ciągu. W przypadku pominięcia znaku spacji ("") jest używany. Jeśli ogranicznikiem jest ciągiem o zerowej długości ("") lub nic, wszystkie elementy na liście są łączone nie ogranicznikami.
 
 **Uwagi**  
 Występuje parzystość między funkcjami dołączania i podziału. Funkcja sprzężenia przyjmuje tablicę ciągów i dołączania ich przy użyciu ciągu ogranicznika, aby zwrócić pojedynczy ciąg. Funkcja Split przyjmuje ciąg i oddziela go na ogranicznika, aby zwracało tablicę ciągów. Najważniejszą różnicą jest jednak, że sprzężenia mogą ciągów się dowolnym ciągiem ogranicznik, podziału jedynie rozdzielić ciągów za pomocą pojedynczego znaku ogranicznika.
@@ -982,8 +982,8 @@ PadLeft — funkcja po lewej stronie podkładki ciąg do określonej długości,
 `str PadLeft(str string, num length, str padCharacter)`
 
 * ciąg: ciąg do wypełnienia.
-* długość: liczba całkowita reprezentująca wymagana długość ciągu.
-* padCharacter: ciąg składający się z pojedynczego znaku do użycia jako znak konsoli
+* Czas trwania: Liczba całkowita reprezentująca wymagana długość ciągu.
+* padCharacter: Ciąg zawierający pojedynczy znak używany jako znak konsoli
 
 **Uwagi:**
 
@@ -1007,8 +1007,8 @@ Padright — funkcja po prawej stronie podkładki ciąg do określonej długośc
 `str PadRight(str string, num length, str padCharacter)`
 
 * ciąg: ciąg do wypełnienia.
-* długość: liczba całkowita reprezentująca wymagana długość ciągu.
-* padCharacter: ciąg składający się z pojedynczego znaku do użycia jako znak konsoli
+* Czas trwania: Liczba całkowita reprezentująca wymagana długość ciągu.
+* padCharacter: Ciąg zawierający pojedynczy znak używany jako znak konsoli
 
 **Uwagi:**
 
@@ -1077,7 +1077,7 @@ Funkcji Replace zamienia wszystkie wystąpienia ciągu do innego ciągu.
 **Składnia:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* ciąg: ciąg do zastąpienia wartości.
+* Ciąg: Ciąg, aby zastąpić wartości w.
 * OldValue: Ciąg do wyszukania oraz do zastąpienia.
 * NewValue: Ciąg do zastąpienia w.
 
@@ -1100,7 +1100,7 @@ Funkcja ReplaceChars zamienia wszystkie wystąpienia znaków znalezionych w cią
 **Składnia:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* ciąg: ciąg do zastąpienia znaków.
+* Ciąg: Ciąg do zastąpienia znaków.
 * ReplacePattern: ciąg zawierający słownika przy użyciu znaków do zastąpienia.
 
 Format to {źródło1}: {nazwach target1}, {źródło2}: {target2}, {źródłoN}, {targetN} której źródłem jest znak do znalezienia i target ciąg do zamiany.
@@ -1172,7 +1172,7 @@ Wszystkie wartości w atrybutu wielowartościowego (lub danych wyjściowych wyra
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* element: reprezentuje element atrybutu wielowartościowego
+* element: Reprezentuje element atrybutu wielowartościowego
 * Atrybut: atrybutu wielowartościowego
 * wyrażenie: wyrażenie, które zwraca kolekcję wartości
 * warunek: dowolnej funkcji, która pozwala na przetwarzanie elementu w atrybucie
@@ -1222,8 +1222,8 @@ Funkcja przełącznik jest używana do zwracać pojedynczą wartość, w oparciu
 **Składnia:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* wyrażenie: wyrażenie wariant ma zostać oceniona.
-* wartość: wartość zwracana, jeśli odpowiednie wyrażenie ma wartość True.
+* wyrażenie: Wyrażenie typu Variant, które ma zostać oceniona.
+* Wartość: Wartość do zwrócenia, jeśli odpowiednie wyrażenie ma wartość True.
 
 **Uwagi:**  
 Na liście argumentów funkcji przełącznika składa się z par wartości i wyrażeń. Wyrażenia są przetwarzane od lewej do prawej, a wartość skojarzoną z pierwsze wyrażenie, aby zwrócić wartość True jest zwracana. Jeśli elementy nie są prawidłowo sparowane, wystąpi błąd czasu wykonywania.
@@ -1279,7 +1279,7 @@ Zwraca podzestaw elementów wartości z atrybutu wielowartościowego (lub danych
 **Składnia:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* element: reprezentuje element atrybutu wielowartościowego
+* element: Reprezentuje element atrybutu wielowartościowego
 * Atrybut: atrybutu wielowartościowego
 * warunek: dowolne wyrażenie, które mogą być obliczane na wartość true lub false
 * wyrażenie: wyrażenie, które zwraca kolekcję wartości
@@ -1295,9 +1295,9 @@ Funkcja With udostępnia uproszczenie złożone wyrażenie, przy użyciu zmienne
 
 **Składnia:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* Zmienna: reprezentuje Podwyrażenie.
+* Zmienna: Reprezentuje Podwyrażenie.
 * Podwyrażenie: Podwyrażenie reprezentowany przez zmienną.
-* complexExpression: wyrażenie złożone.
+* complexExpression: Wyrażenie złożone.
 
 **Przykład:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
@@ -1335,5 +1335,5 @@ Zwraca "jest"
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Opis wyrażeń związanych z Aprowizacją deklaratywną](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect Sync: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

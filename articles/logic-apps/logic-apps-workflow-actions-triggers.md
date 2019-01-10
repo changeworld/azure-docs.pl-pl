@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
-ms.translationtype: MT
+ms.openlocfilehash: 613423c02de7f1140674c28ee57bd471c3a52b96
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044777"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158248"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołania do typów wyzwalaczy i akcji dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -54,8 +54,8 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 | <*Nazwa wyzwalacza*> | Ciąg | Nazwa wyzwalacza | 
 | <*Typ wyzwalacza*> | Ciąg | Typ wyzwalacza, takiego jak "Http" lub "ApiConnection" | 
 | <*dane wejściowe wyzwalacza*> | Obiekt JSON | Dane wejściowe, które określają zachowanie tego wyzwalacza | 
-| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Druga", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczna: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Po drugie: 1 9,999,999 sekundy.<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
+| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -133,10 +133,10 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | Ciąg | Nazwa wyzwalacza | 
 | <*Nazwa połączenia*> | Ciąg | Nazwa połączenia zarządzanego interfejsu API, który korzysta z przepływu pracy | 
-| <*Typ metody*> | Ciąg | Metoda HTTP do komunikacji z zarządzany interfejs API: "GET", "PUT", "POST", "Poprawka", "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda HTTP do komunikacji z zarządzany interfejs API: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*Operacja interfejsu API*> | Ciąg | Operacja wywołania interfejsu API | 
-| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Druga", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczna: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Po drugie: 1 9,999,999 sekundy.<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
+| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -155,7 +155,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
  
 | Element | Typ | Opis |
 |---------|------|-------------| 
-| nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
+| Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
 | Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
@@ -304,10 +304,10 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Ciąg | Metoda HTTP na potrzeby sondowania określony punkt końcowy: "GET", "PUT", "POST", "Poprawka", "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda HTTP na potrzeby sondowania określony punkt końcowy: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*adres URL punktu końcowego*> | Ciąg | HTTP lub HTTPS URL punktu końcowego, sondowanie <p>Maksymalny rozmiar ciągu: 2 KB | 
-| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Druga", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczna: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Po drugie: 1 9,999,999 sekundy.<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
+| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -328,7 +328,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 
 | Element | Typ | Opis |
 |---------|------|-------------| 
-| nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
+| Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
 | Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
@@ -401,7 +401,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Ciąg | Metoda HTTP do użycia dla żądania subskrypcji: "GET", "PUT", "POST", "Poprawka" lub "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda HTTP do użycia dla żądania subskrypcji: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*Subskrypcja — adres URL punktu końcowego*> | Ciąg | Adres URL punktu końcowego, gdzie wysyłać żądania subskrypcji | 
 |||| 
 
@@ -409,7 +409,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Ciąg | Metoda HTTP do użycia na żądanie anulowania: "GET", "PUT", "POST", "Poprawka" lub "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda HTTP do użycia na żądanie anulowania. "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*Anulowanie subskrypcji — adres URL punktu końcowego*> | Ciąg | Adres URL punktu końcowego, gdzie wysyłać żądania anulowania | 
 | <*zawartości w treści*> | Ciąg | Każdy komunikat zawartości do wysłania w subskrypcji lub anulowania żądania | 
 | <*Metoda uwierzytelniania*> | Obiekt JSON | Metoda żądania używa do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie połączeń wychodzących usługi Scheduler](../scheduler/scheduler-outbound-authentication.md). |
@@ -423,7 +423,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 | Element | Typ | Opis |
 |---------|------|-------------| 
-| nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
+| Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
 | Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
@@ -495,15 +495,15 @@ Ten wyzwalacz jest uruchamiany na podstawie na harmonogramie cyklu określonego 
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Druga", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczna: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Po drugie: 1 9,999,999 sekundy.<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Jednostka czasu*> | Ciąg | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
+| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | Ciąg | Data i godzina rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i określić strefę czasową, np. "Pacyfik (czas standardowy)" lub podaj "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** ta godzina rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [Utwórz i harmonogram, regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
+| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | Ciąg | Data i godzina rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i określić strefę czasową, np. "Pacyfik (czas standardowy)" lub podaj "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [Utwórz i harmonogram, regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
 | <*Strefa czasowa*> | Ciąg | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, który chcesz zastosować. | 
 | <*jeden lub więcej — godzina znaków*> | Liczba całkowita lub tablicy liczb całkowitych | Jeśli określisz "Day" lub "Week" dla `frequency`, można określić co najmniej jeden liczby całkowite z zakresu od 0 do 23, oddzielone przecinkami, w formacie godziny, dnia, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład jeśli określisz "10", "12" i "14", możesz uzyskać 10 AM, 12 PM i 14: 00 jako znaki godzinę. | 
 | <*jeden lub więcej — minuty znaków*> | Liczba całkowita lub tablicy liczb całkowitych | Jeśli określisz "Day" lub "Week" dla `frequency`, można określić co najmniej jeden liczby całkowite z zakresu od 0 do 59, oddzielając je średnikami, jako minuty, godziny, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład "30" można określić jako znacznik minutę i godziny, dnia, korzystając z poprzedniego przykładu, możesz uzyskać 10:30:00, 12:30:00 i 14:30:00. | 
@@ -612,7 +612,7 @@ Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, kt
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Ciąg | Metody, która przychodzące żądania muszą używać do wywoływania aplikacji logiki: "GET", "PUT", "POST", "Poprawka", "DELETE" |
+| <*Typ metody*> | Ciąg | Metoda żądania przychodzące, należy użyć do wywoływania aplikacji logiki: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" |
 | <*względna ścieżka — dla — zaakceptowane — parametru*> | Ciąg | Ścieżka względna dla parametru, który może zaakceptować adresu URL usługi punktu końcowego | 
 | <*wymagane właściwości*> | Tablica | Jedną lub więcej właściwości, które wymagają wartości | 
 | <*Maksymalna liczba uruchomień*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy aplikacji logiki uruchamiane w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
@@ -892,7 +892,7 @@ Ta akcja spowoduje wysłanie żądania HTTP do [zarządzanych przez firmę Micro
 |-------|------|-------------| 
 | <*Nazwa akcji*> | Ciąg | Nazwa akcji, podany przez łącznik | 
 | <*Nazwa interfejsu API*> | Ciąg | Nazwa zarządzanych przez firmę Microsoft interfejs API, który jest używany dla połączenia | 
-| <*Typ metody*> | Ciąg | Metoda HTTP dla wywołania interfejsu API: "GET", "PUT", "POST", "Poprawka" lub "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda HTTP dla wywołania interfejsu API: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*Operacja interfejsu API*> | Ciąg | Operacja wywołania interfejsu API | 
 |||| 
 
@@ -971,7 +971,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
 | <*Nazwa akcji*> | Ciąg | Nazwa akcji, podany przez łącznik | 
-| <*Typ metody*> | Ciąg | Metoda HTTP do użycia podczas subskrybowania lub anulowania subskrypcji z punktu końcowego: "GET", "PUT", "POST", "Poprawka" lub "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda HTTP do użycia dla subskrypcji lub anulowania subskrypcji z punktu końcowego: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*Subskrypcja — adres URL interfejsu API*> | Ciąg | Identyfikator URI do użycia dla subskrypcji do interfejsu API | 
 |||| 
 
@@ -1072,7 +1072,7 @@ Ta akcja wymaga wcześniej utworzony [funkcji platformy Azure](../azure-function
 | Wartość | Typ | Opis | 
 |-------|------|-------------|  
 | <*Identyfikator platformy Azure — funkcja*> | Ciąg | Identyfikator zasobu dla funkcji platformy Azure, który ma zostać wywołana. Oto formatu dla tej wartości:<p>"/subscriptions/ <*Identyfikatora subskrypcji platformy azure*> /resourceGroups/ <*grupy zasobów platformy Azure*> /providers/Microsoft.Web/sites/ <*Azure-function-app-name*> /Functions/ <*azure-function-name*> " | 
-| <*Typ metody*> | Ciąg | Metoda HTTP do użycia podczas wywoływania funkcji: "GET", "PUT", "POST", "Poprawka" lub "DELETE" <p>Jeśli nie zostanie określony, wartość domyślna to metoda "POST". | 
+| <*Typ metody*> | Ciąg | Metoda HTTP do użycia podczas wywoływania funkcji: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" <p>Jeśli nie zostanie określony, wartość domyślna to metoda "POST". | 
 ||||
 
 *Opcjonalne*
@@ -1142,7 +1142,7 @@ Ta akcja spowoduje wysłanie żądania do określonego punktu końcowego i spraw
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Ciąg | Metoda do użycia podczas wysyłania żądania: "GET", "PUT", "POST", "Poprawka" lub "DELETE" | 
+| <*Typ metody*> | Ciąg | Metoda do użycia podczas wysyłania żądania: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*HTTP-lub HTTPS-— adres URL punktu końcowego*> | Ciąg | HTTP lub HTTPS punkt końcowy do wywołania. Maksymalny rozmiar ciągu: 2 KB | 
 |||| 
 
@@ -1238,7 +1238,7 @@ Ta akcja powoduje utworzenie pola przyjazny dla użytkownika lub *tokenów* przy
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
 | <*Źródło JSON*> | Obiekt JSON | Zawartość JSON, który chcesz przeanalizować | 
-| <*Schemat JSON*> | Obiekt JSON | Schemat JSON opisujące zawartość JSON, używanym w akcji do analizowania źródła zawartości JSON bazowego. <p>**Porada**: W Projektancie aplikacji logiki, możesz podać schematu lub podać przykładowy ładunek akcji można wygenerować schematu. | 
+| <*Schemat JSON*> | Obiekt JSON | Schemat JSON opisujące zawartość JSON, używanym w akcji do analizowania źródła zawartości JSON bazowego. <p>**Porada**: W Projektancie aplikacji logiki możesz podać schematu lub podać przykładowy ładunek akcji można wygenerować schematu. | 
 |||| 
 
 *Przykład*
@@ -1340,7 +1340,7 @@ Ta akcja tworzy tablicę z elementów w innej tablicy na podstawie określonego 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
 | <*Tablica*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła. Jeśli określisz wyrażenia, należy ująć to wyrażenie z podwójnymi cudzysłowami. |
-| <*warunek lub filtr*> | Ciąg | Na warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadne wartości nie spełnia warunku, a następnie ta akcja stworzy pustą tablicę. |
+| <*warunek lub filtr*> | Ciąg | Na warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadne wartości nie spełnia warunku, ta akcja stworzy pustą tablicę. |
 |||| 
 
 *Przykład*
@@ -1666,7 +1666,7 @@ Ta akcja zatrzymuje działanie dla wystąpienia przepływu pracy aplikacji logik
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Stan*> | Ciąg | Stan aby powrócić do uruchomienia: "Niepowodzenie", "Odwołania" lub "Powodzenie" |
+| <*status*> | Ciąg | Stan aby powrócić do uruchomienia: "Nie", "Anulowane" lub "Powodzenie" |
 |||| 
 
 *Opcjonalne*
@@ -1737,7 +1737,7 @@ Ta akcja wstrzymuje wykonywanie przepływu pracy przez określony interwał lub 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
 | <*Liczba jednostek*> | Liczba całkowita | Aby uzyskać **opóźnienie** akcji, liczba oczekiwania | 
-| <*Interwał*> | Ciąg | Dla **opóźnienie** akcji, interwał oczekiwania: "Druga", "Minute", "Hour", "Day", "Week", "Month" | 
+| <*Interwał*> | Ciąg | Aby uzyskać **opóźnienie** akcji, interwał oczekiwania: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
 | <*sygnatury czasowej*> | Ciąg | Aby uzyskać **opóźnienie do momentu** akcji, datę i godzinę wznowić wykonywanie. Ta wartość musi mieć [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
 |||| 
 
@@ -2090,10 +2090,10 @@ Tej akcji, nazywana również *switch, instrukcja*, umożliwia organizowanie inn
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*wyrażenia obiektów lub token*> | Różni się | Wyrażenie, obiekt JSON lub tokenu, aby oceniać | 
+| <*wyrażenia obiektów lub token*> | Różna | Wyrażenie, obiekt JSON lub tokenu, aby oceniać | 
 | <*Nazwa akcji*> | Ciąg | Nazwa akcji do uruchomienia uwzględniania wielkości liter | 
 | <*Definicja akcji*> | Obiekt JSON | Definicja akcji do uruchomienia uwzględniania wielkości liter | 
-| <*wartość dopasowania*> | Różni się | Wartość do porównania z wynikiem oceniono | 
+| <*wartość dopasowania*> | Różna | Wartość do porównania z wynikiem oceniono | 
 |||| 
 
 *Opcjonalne*
@@ -2350,9 +2350,9 @@ Oto przykład, który ogranicza równoczesnych uruchomień do 10 wystąpień:
 
 1. W tego wyzwalacza w prawym górnym rogu, wybierz przycisk wielokropka (...), a następnie wybierz **ustawienia**.
 
-2. W obszarze **kontroli współbieżności**ustaw **Zastąp domyślne** do **na**. 
+2. W obszarze **kontroli współbieżności**ustaw **Limit** do **na**. 
 
-3. Przeciągnij **stopień równoległości** suwaka na wartość, która ma. 
+3. Przeciągnij **stopień równoległości** suwaka na wartość, która ma. Aby uruchomić aplikację logiki po kolei, przeciągnij wartość suwaka na **1**.
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2387,9 +2387,9 @@ Oto przykład, który ogranicza równoczesnych uruchomień do 10 iteracji:
 
 1. W **dla każdego** akcji w prawym górnym rogu, wybierz przycisk wielokropka (...), a następnie wybierz **ustawienia**.
 
-2. W obszarze **kontroli współbieżności**ustaw **Zastąp domyślne** do **na**. 
+2. W obszarze **kontroli współbieżności**ustaw **kontroli współbieżności** do **na**. 
 
-3. Przeciągnij **stopień równoległości** suwaka na wartość, która ma. 
+3. Przeciągnij **stopień równoległości** suwaka na wartość, która ma. Aby uruchomić aplikację logiki po kolei, przeciągnij wartość suwaka na **1**.
 
 <a name="change-waiting-runs"></a>
 
@@ -2465,7 +2465,7 @@ Ustaw `operationOptions` właściwości `SingleInstance`:
 
 1. W tego wyzwalacza w prawym górnym rogu, wybierz przycisk wielokropka (...), a następnie wybierz **ustawienia**.
 
-2. W obszarze **kontroli współbieżności**ustaw **Zastąp domyślne** do **na**. 
+2. W obszarze **kontroli współbieżności**ustaw **Limit** do **na**. 
 
 3. Przeciągnij **stopień równoległości** suwak, aby liczba `1`. 
 
@@ -2516,7 +2516,7 @@ Ustaw `operationOptions` właściwości `Sequential`:
 
 1. W **dla każdego** akcji w prawym górnym rogu, wybierz przycisk wielokropka (...), a następnie wybierz **ustawienia**.
 
-2. W obszarze **kontroli współbieżności**ustaw **Zastąp domyślne** do **na**. 
+2. W obszarze **kontroli współbieżności**ustaw **kontroli współbieżności** do **na**. 
 
 3. Przeciągnij **stopień równoległości** suwak, aby liczba `1`. 
 
@@ -2577,7 +2577,7 @@ Poniżej przedstawiono typy uwierzytelniania, które można skonfigurować:
 
 Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `authentication` obiekt JSON, który ma następujące właściwości:
 
-| Właściwość | Wymagane | Wartość | Opis | 
+| Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **type** | Yes | "Podstawowa" | Typ uwierzytelniania do użycia, która jest tutaj "Basic" | 
 | **Nazwa użytkownika** | Yes | "@parameters(userNameParam)" | Parametr, który przekazuje nazwę użytkownika do uwierzytelniania na potrzeby uzyskiwania dostępu do punktu końcowego usługi docelowej |
@@ -2608,7 +2608,7 @@ Na przykład, w tym miejscu jest format `authentication` obiektu w definicji wyz
 
 Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `authentication` obiekt JSON, który ma następujące właściwości:
 
-| Właściwość | Wymagane | Wartość | Opis | 
+| Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **type** | Yes | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL) | 
 | **plik PFX** | Yes | <*Base64 — zakodowane — — plik pfx*> | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
@@ -2631,7 +2631,7 @@ Na przykład, w tym miejscu jest format `authentication` obiektu w definicji wyz
 
 Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `authentication` obiekt JSON, który ma następujące właściwości:
 
-| Właściwość | Wymagane | Wartość | Opis | 
+| Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth | 
 | **Urząd** | Nie | <*Adres URL dla urzędu token wystawcy*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |  
@@ -2644,7 +2644,7 @@ Dla tego typu uwierzytelniania mogą zawierać definicji wyzwalacza lub akcji `a
 | **Klucz tajny** | Tak, tylko w przypadku "Wpis tajny" typ poświadczeń | <*klucz tajny dla uwierzytelniania*> | Zakodowane w formacie base64 klucza tajnego, który klient korzysta z żądania autoryzacji |
 ||||| 
 
-Na przykład, w tym miejscu jest format `authentication` obiektu, kiedy definicji wyzwalacza lub akcji używa typ poświadczeń "Wpis tajny": Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [ochronę poufnych informacji](#secure-info). 
+Na przykład, w tym miejscu jest format `authentication` obiektu, kiedy typ poświadczeń "Wpis tajny" korzysta z definicji wyzwalacza lub akcji: Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [ochronę poufnych informacji](#secure-info). 
 
 ```javascript
 "authentication": {

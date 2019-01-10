@@ -1,23 +1,23 @@
 ---
-author: tomarcher
+author: tomarchermsft
 ms.service: ansible
 ms.topic: include
 ms.date: 08/09/2018
 ms.author: tarcher
-ms.openlocfilehash: fa1f7fe0b4b70aae4f9165197d5d1463df1f2e3b
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fe995535cd42571ad96f192883e48f4b6ea1eb0e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40026442"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160407"
 ---
-1. W usłudze Cloud Shell Utwórz plik o nazwie `rg.yml`.
+1. W usłudze Cloud Shell utwórz plik o nazwie `rg.yml`.
 
     ```bash
     vi rg.yml
     ```
 
-1. Wprowadź trybu wstawiania, wybierając **I** klucza.
+1. Przejdź do trybu wstawiania, naciskając klawisz **I**.
 
 1. Wklej następujący kod do edytora:
 
@@ -35,9 +35,9 @@ ms.locfileid: "40026442"
            var: rg
    ```
 
-1. Wyjdź z trybu wstawiania, wybierając **Esc** klucza.
+1. Opuść tryb wstawiania, naciskając klawisz **Esc**.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq

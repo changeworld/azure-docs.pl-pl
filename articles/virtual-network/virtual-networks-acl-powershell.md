@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 1fce5b98d9e12ad373a4ca9d851fb717b3f47045
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250360"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154814"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Zarządzanie listami kontroli dostępu do punktu końcowego w klasycznym modelu wdrażania przy użyciu programu PowerShell
 Można tworzyć i zarządzać sieci list kontroli dostępu (ACL) dla punktów końcowych przy użyciu programu Azure PowerShell lub w portalu zarządzania. W tym temacie znajdziesz procedury dla listy ACL typowych zadań, które można wykonać przy użyciu programu PowerShell. Na liście programu Azure PowerShell polecenia cmdlet zobacz [poleceń cmdlet do zarządzania platformy Azure](https://go.microsoft.com/fwlink/?LinkId=317721). Aby uzyskać więcej informacji na temat list ACL, zobacz [co to jest sieć kontroli listy dostępu (ACL)?](virtual-networks-acl.md). Jeśli chcesz zarządzać Twojej listy kontroli dostępu za pomocą portalu zarządzania, zobacz [jak się punkty końcowe do maszyny wirtualnej](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -58,7 +58,7 @@ W poniższym przykładzie przedstawiono sposób tworzenia nowej listy kontroli d
         $acl1 = New-AzureAclConfig
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
-            –Description "Sharepoint ACL config"
+            –Description "SharePoint ACL config"
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"

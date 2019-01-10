@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 69310e51495cbb91303c3e8837ad42f6a4ac3374
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 03a73d672aefc1b8203f3df5cf2301e94e322129
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972912"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159948"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzowanie dołączania do usługi Azure Security Center przy użyciu programu PowerShell
 
@@ -81,7 +81,7 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
 
 5.  Opcjonalnie: Zdecydowanie zaleca się że zdefiniujesz szczegóły kontaktu zabezpieczeń dla subskrypcji, możesz dołączyć, który będzie używany jako adresaci powiadomień i alertów wygenerowanych przez usługę Security Center:
 
-        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
+        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
 6.  Przypisz inicjatywę zasady Centrum zabezpieczeń domyślne:
 

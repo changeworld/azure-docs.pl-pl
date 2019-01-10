@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597824"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156242"
 ---
 # <a name="door-monitor"></a>Monitor drzwi biblioteki          
 
@@ -66,13 +66,13 @@ Zobaczysz teraz formularz rejestracji usługi SendGrid.
 
 Wypełnij formularz rejestracji:
 
-   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid lub użyć istniejącego. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
+   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid, lub użyj istniejącej. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
 
    * **Nazwa**: Nazwa usługi SendGrid. Wybierz unikatową nazwę, różniące się od innych usług, które mogą wiązać Ciebie.
 
-   * **Hasło**: usługa wymaga hasła, które nie będą używane dla wszystkich elementów, w tym projekcie.
+   * **Hasło**: Usługa wymaga hasła, które nie będą używane dla wszystkich elementów, w tym projekcie.
 
-   * **Adres e-mail**: usługi SendGrid wyśle weryfikacji tego adresu e-mail.
+   * **adres e-mail**: Usługa SendGrid wyśle weryfikacji na ten adres e-mail.
 
 Sprawdź **Przypnij do pulpitu nawigacyjnego** opcji w celu ułatwienia tej aplikacji można znaleźć w przyszłości, a następnie kliknij przycisk **zakupu** można przesłać formularza logowania.
  
@@ -106,13 +106,13 @@ Zostanie wyświetlony formularz rejestracji.
 
 Wypełnij pola w formularzu tworzenia konta.
 
-   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid lub użyć istniejącego. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
+   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid, lub użyj istniejącej. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
 
-   * **Nazwa centrum iot**: Nazwa centrum IoT. Wybierz unikatową nazwę, różniące się od innych usług, które mogą wiązać Ciebie.
+   * **Nazwa centrum iot Hub**: Nazwa centrum IoT. Wybierz unikatową nazwę, różniące się od innych usług, które mogą wiązać Ciebie.
 
-   * **Sku usługi iot Hub**: F1 (maksymalnie jedno na subskrypcję) jest bezpłatne. Więcej informacji o cenach można wyświetlić na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/iot-hub/).
+   * **Jednostka Sku usługi iot Hub**: F1 (maksymalnie jedno na subskrypcję) jest bezpłatne. Więcej informacji o cenach można wyświetlić na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-   * **Wiadomości E-mail z**: to pole może mieć tego samego adresu e-mail użyto podczas konfigurowania usługi SendGrid.
+   * **Wiadomości E-mail z**: To pole powinno być tego samego adresu e-mail, którego użyto podczas konfigurowania usługi SendGrid.
 
 Sprawdź **Przypnij do pulpitu nawigacyjnego** opcji w celu ułatwienia tej aplikacji można znaleźć w przyszłości, a następnie kliknij przycisk **zakupu** kiedy wszystko będzie gotowe przejść do następnego kroku.
  
@@ -135,7 +135,7 @@ Po lewej stronie rozwiń **przykłady ARDUINO** sekcji, przejdź do **przykłady
 
 ![Mini solution przykłady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Przykładowa aplikacja można również otworzyć z palety poleceń. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+Przykładowa aplikacja można również otworzyć z palety poleceń. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: Przykłady**.
 
 ### <a name="provision-azure-services"></a>Aprowizacja usług platformy Azure
 
@@ -162,7 +162,7 @@ Następnie Przekaż kod dla urządzenia.
 
 #### <a name="macos"></a>macOS
 
-1. Umieść Mxchip tryb konfiguracji: naciśnij i przytrzymaj A przycisk, a następnie wypychania i zwolnij przycisk resetowania. Na ekranie są wyświetlane "Konfiguracja".
+1. Umieść Mxchip tryb konfiguracji: Przytrzymaj naciśnięty przycisk A, a następnie Wypchnij, a następnie zwolnij przycisk resetowania. Na ekranie są wyświetlane "Konfiguracja".
 
 2. Kliknij przycisk `Cmd+P` do uruchomienia `task device-upload`.
 
@@ -177,7 +177,7 @@ Program VS Code, a następnie rozpoczyna się weryfikowanie i przekazywanie Ardu
 Mxchip rozruchu i uruchamiania kodu.
 
 > [!NOTE]
-> Czasami może pojawić się "Błąd: az3166 usługi: Nieznany pakiet" komunikat o błędzie. Ten błąd występuje, gdy indeksu pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się [sekcji Projektowanie Mxchip IoT często zadawanych pytań](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Czasami może pojawić się "Błąd: AZ3166 USŁUGI: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeksu pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się [sekcji Projektowanie Mxchip IoT często zadawanych pytań](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Projekt testowy
 
@@ -185,16 +185,16 @@ Program najpierw inicjuje po Mxchip obecności stabilne pola magnetycznego.
 
 Po zainicjowaniu `Door closed` jest wyświetlany na ekranie. W przypadku zmiany pola magnetycznego stan zmieni się na `Door opened`. Każdym drzwi zmiany stanu, otrzymasz wiadomość e-mail z powiadomieniem. (Te wiadomości e-mail może potrwać do pięciu minut do odebrania).
 
-![Pól blisko czujnika: zamknięta](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "pól blisko czujnika: zamknięta")
+![Pól blisko czujnika: Drzwi zamknięte](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "pól blisko czujnika: Drzwi zamknięte")
 
-![Magnes odsunąć od czujnika: otworzyć drzwi](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "magnes odsunąć od czujnika: otworzyć drzwi biblioteki")
+![Magnes odsunąć od czujnika: Drzwi Opened](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "magnes odsunąć od czujnika: Otworzyć drzwi biblioteki")
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
 Jeśli napotkasz problemy, zapoznaj się [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub połączyć się przy użyciu następujących kanałów:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Witryna Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

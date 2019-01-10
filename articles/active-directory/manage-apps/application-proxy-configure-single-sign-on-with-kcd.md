@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 26b0bd3c6bec2427cd95deb05cc19c4dd3b22aa3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136250"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159540"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -66,13 +66,15 @@ Konfiguracja usługi Active Directory różni się w zależności od tego, czy T
 1. Aby uzyskać listę wymagań wstępnych dotyczących pracy z ograniczonego delegowania protokołu Kerberos między domenami, zobacz [ograniczonego delegowania protokołu Kerberos w domenach](https://technet.microsoft.com/library/hh831477.aspx).
 2. Użyj `principalsallowedtodelegateto` właściwości na serwerze łącznika, aby włączyć serwer Proxy aplikacji delegować do serwera łącznika. Serwer aplikacji `sharepointserviceaccount` i delegowania server `connectormachineaccount`. Dla systemu Windows 2012 R2 należy użyć następującego kodu, na przykład:
 
-        $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+```powershell
+$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
 
-        Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-        Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+```
 
-Konto komputera dodatki Service Pack lub konto usługi, w którym jest uruchomiona pula aplikacji dodatki Service Pack, może być Sharepointserviceaccount.
+`sharepointserviceaccount` może to być konto komputera dodatki Service Pack lub konto usługi, w którym jest uruchomiona pula aplikacji dodatki Service Pack.
 
 ## <a name="configure-single-sign-on"></a>Konfigurowanie logowania jednokrotnego 
 1. Opublikowanie aplikacji zgodnie z instrukcji przedstawionych w temacie [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-add-on-premises-application.md). Upewnij się, że wybrano **usługi Azure Active Directory** jako **metoda uwierzytelniania wstępnego**.

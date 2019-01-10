@@ -3,20 +3,20 @@ title: Zarządzanie aplikacjami logiki w programie Visual Studio — Azure Logic
 description: Zarządzanie aplikacjami logiki i innych zasobów platformy Azure za pomocą Eksploratora chmury w usłudze Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: dbb38336f0521f8f8e526ad3f5e13829075e7cca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445647"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158149"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki w programie Visual Studio
 
@@ -62,10 +62,10 @@ W programie Visual Studio można znaleźć wszystkie aplikacje logiki, które s�
 
 2. Oparte na tego, czy przeszukujesz przez **grup zasobów** lub **typów zasobów**, wykonaj następujące kroki:
 
-   * **Grupy zasobów**: w ramach Twojej subskrypcji platformy Azure, programu Cloud Explorer pokazuje wszystkie grupy zasobów, które są skojarzone z tą subskrypcją. 
+   * **Grupy zasobów**: W ramach Twojej subskrypcji platformy Azure programu Cloud Explorer pokazuje wszystkie grupy zasobów, które są skojarzone z tą subskrypcją. 
    Rozwiń grupę zasobów, który zawiera aplikację logiki, a następnie wybierz swoją aplikację logiki.
 
-   * **Typy zasobów**: w ramach Twojej subskrypcji platformy Azure, rozwiń węzeł **Logic Apps**. Po programie Cloud Explorer pokazuje wszystkie aplikacje wdrożone logiki, które są skojarzone z Twoją subskrypcją, wybierz swoją aplikację logiki.
+   * **Typy zasobów**: W ramach Twojej subskrypcji platformy Azure, rozwiń węzeł **Logic Apps**. Po programie Cloud Explorer pokazuje wszystkie aplikacje wdrożone logiki, które są skojarzone z Twoją subskrypcją, wybierz swoją aplikację logiki.
 
 <a name="open-designer"></a>
 
@@ -171,7 +171,14 @@ Aby usunąć aplikację logiki w witrynie Azure portal, w programie Cloud Explor
 ![Usuwanie aplikacji logiki](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
 
 > [!NOTE]
-> Po usunięciu aplikacji logiki są tworzone nie nowe przebiegi. Wszystkie w toku i oczekujących uruchomień, zostaną anulowane. Jeśli masz tysiące przebiegów, anulowania może zająć znaczną ilość czasu, aby zakończyć. 
+> Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów. Wszystkie trwające i oczekujące przebiegi zostają anulowane. Anulowanie kilku tysięcy przebiegów może zająć dużo czasu. 
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Po otwarciu projektu aplikacji logiki w Projektancie aplikacji logiki możesz nie otrzymać opcję wybierania subskrypcji platformy Azure. Zamiast tego aplikacja logiki zostanie otwarty z subskrypcją platformy Azure, który nie jest ten, którego chcesz użyć. To zachowanie ma miejsce, ponieważ po otwarciu pliku JSON aplikacji logiki, Visual Studio zapisuje w pamięci podręcznej pierwszy w wybranej subskrypcji do użytku w przyszłości. Aby rozwiązać ten problem, spróbuj wykonać jedną z następujących czynności:
+
+* Zmień nazwę pliku JSON aplikacji logiki. Pamięć podręczna subskrypcji zależy od nazwy pliku. 
+* Aby usunąć wcześniej wybrane subskrypcje dla *wszystkich* usuwanie aplikacji logiki w swoim rozwiązaniu *ukryte* folderze .vs w katalogu tego rozwiązania. Ta lokalizacja przechowuje informacje o subskrypcji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

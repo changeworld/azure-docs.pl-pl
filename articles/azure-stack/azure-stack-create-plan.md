@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6399e1838b00fc533ab42a76e4f1f1667e3a434a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077566"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159523"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Tworzenie planu w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 [Plany](azure-stack-key-features.md) są grupami obejmującymi co najmniej jedną usługę. Jako dostawca może utworzyć plany do zaoferowania użytkownikom. Z kolei użytkownicy subskrybują oferty, aby korzystać z planów i usług, które należą do. W tym przykładzie pokazano, jak utworzyć plan, który zawiera magazyn dostawców zasobów obliczeniowych, sieci i. Ten plan zapewnia subskrybentom aprowizację maszyn wirtualnych.
 
-1. Zaloguj się do portalu administratora usługi Azure Stack (https://adminportal.local.azurestack.external).
+1. Zaloguj się do [portalu administratora usługi Azure Stack](https://adminportal.local.azurestack.external).
 
-2. Aby utworzyć plan i ofertę, która może być subskrybowana przez użytkowników, wybierz **+ Utwórz zasób** > **oferty i plany** > **Plan**.
+2. Aby utworzyć plan i ofertę, która może być subskrybowana przez użytkowników, wybierz **+ Utwórz zasób**, następnie **oferty i plany**, następnie **Plan**.
   
    ![Wybierz plan](media/azure-stack-create-plan/select-plan.png)
 
@@ -72,4 +72,4 @@ ms.locfileid: "49077566"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie oferty](azure-stack-create-offer.md)
+* [Tworzenie oferty](azure-stack-create-offer.md)

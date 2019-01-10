@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 954a57bb9253e4f18d61c3a699b6e721568da292
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059711"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157415"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Łączenie zestawu deweloperskiego IoT Mxchip do zdalnego monitorowania usługi Azure IoT akceleratora rozwiązań
 
@@ -77,12 +77,12 @@ Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować si�
 3. Podłącz Mxchip do komputera. Program VS Code automatycznie wykrywa swoje Mxchip i otwiera następujące strony:
 
   * Strona wprowadzenia Mxchip.
-  * Przykłady Arduino: Przykłady praktyczne wprowadzenie Mxchip.
+  * Przykłady Arduino: Praktyczne przykłady wprowadzenie Mxchip.
 
 4. Po lewej stronie rozwiń **przykłady ARDUINO** sekcji, przejdź do **przykłady zestawu DEWELOPERSKIEGO az3166 usługi > AzureIoT**i wybierz **RemoteMonitoring**. Nowe okno programu VS Code zostanie otwarty z folderu projektu w nim.
 
    > [!NOTE]
-   > Jeśli występuje Zamknij okienko zostanie ponownie otwarty. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+   > Jeśli występuje Zamknij okienko zostanie ponownie otwarty. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: Przykłady**.
 
 ## <a name="provision-required-azure-services"></a>Provision wymagane usługi platformy Azure
 
@@ -127,7 +127,7 @@ Jeśli chcesz zmienić zapisane na stałe **az3166 usługi** ID urządzenia nies
 Jeśli napotkasz problemy, zapoznaj się [kit dla deweloperów IoT — często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub skontaktowanie się z nami za pomocą następujących kanałów:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Witryna Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

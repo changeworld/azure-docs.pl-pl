@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 478b1352d0bf2eec9af62e519b50e61dea6cc8fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584880"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158435"
 ---
 # <a name="api-management-advanced-policies"></a>Usługa API Management zaawansowane zasady
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -103,7 +103,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 ```
 
 #### <a name="example"></a>Przykład
- Ten przykład pokazuje, jak przeprowadzić filtrowanie zawartości przez usunięcie elementów danych z odpowiedzi otrzymanych z usługi zaplecza, korzystając z `Starter` produktu. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 34:30. Rozpocznij od 31:50 zobaczyć Przegląd [ciemny Sky prognoz interfejsu API](https://developer.forecast.io/) używany dla tej wersji demonstracyjnej.
+ Ten przykład pokazuje, jak przeprowadzić filtrowanie zawartości przez usunięcie elementów danych z odpowiedzi otrzymanych z usługi zaplecza, korzystając z `Starter` produktu. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: Więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 34:30. Rozpocznij od 31:50 zobaczyć Przegląd [ciemny Sky prognoz interfejsu API](https://developer.forecast.io/) używany dla tej wersji demonstracyjnej.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -449,7 +449,7 @@ status code and media type. If no example or schema found, the content is empty.
 > [!NOTE]
 >  Gdy tylko `interval` jest określony, **stałej** Interwał ponownych prób są wykonywane.
 > Gdy tylko `interval` i `delta` są określone, **liniowej** interwał ponawiania prób algorytm jest używany, gdy czas oczekiwania między ponownymi próbami jest obliczany zgodnie z następującą formułę - `interval + (count - 1)*delta`.
-> Gdy `interval`, `max-interval` i `delta` są określone, **wykładniczego** interwał ponawiania prób algorytm ma być stosowany, gdy czas oczekiwania między ponownymi próbami rośnie wykładniczo od wartości `interval` do wartość `max-interval` zgodnie z poniższym forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
+> Gdy `interval`, `max-interval` i `delta` są określone, **wykładniczego** interwał ponawiania prób algorytm ma być stosowany, gdy czas oczekiwania między ponownymi próbami rośnie wykładniczo od wartości `interval` do wartość `max-interval` zgodnie z następującą formułę - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Należy pamiętać, że ograniczenia użycia zasady podrzędne będą dziedziczone przez te zasady.
@@ -959,7 +959,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 
 |Atrybut|Opis|Wymagane|Domyślne|
 |---------------|-----------------|--------------|-------------|
-|dla|Określa, czy `wait` zasad oczekiwania dla wszystkich zasad bezpośrednie podrzędne na ukończone lub po prostu jednego. Dozwolone wartości to:<br /><br /> -   `all` -Poczekaj, aż wszystkie zasady bezpośrednie podrzędne w celu ukończenia<br />-wszelkie - poczekaj, aż wszystkie zasady bezpośrednie podrzędne zakończyć. Po zakończeniu pierwszej zasady bezpośrednie podrzędne `wait` kończy zasad i wykonywania innych zasad bezpośrednie podrzędne zostanie zakończony.|Nie|all|
+|for|Określa, czy `wait` zasad oczekiwania dla wszystkich zasad bezpośrednie podrzędne na ukończone lub po prostu jednego. Dozwolone wartości to:<br /><br /> -   `all` -Poczekaj, aż wszystkie zasady bezpośrednie podrzędne w celu ukończenia<br />-wszelkie - poczekaj, aż wszystkie zasady bezpośrednie podrzędne zakończyć. Po zakończeniu pierwszej zasady bezpośrednie podrzędne `wait` kończy zasad i wykonywania innych zasad bezpośrednie podrzędne zostanie zakończony.|Nie|all|
 
 ### <a name="usage"></a>Sposób użycia
 

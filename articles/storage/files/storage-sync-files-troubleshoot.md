@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 7aa5ccb402bf8648668a5eb00d6a740caf7bf3d4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055153"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157636"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -552,6 +552,16 @@ W przypadku których istnieje wiele na błędy synchronizacji plików, sesje syn
 | **Wymagana korekta** | Yes |
 
 Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy ani istniejącym punktem końcowym serwera.
+
+<a id="-2134375817"></a>**Synchronizacja nie powiodła się, ponieważ wersja sterownika filtru nie jest zgodny z wersją agenta**  
+| | |
+|-|-|
+| **HRESULT** | 0x80C80277 |
+| **HRESULT (dziesiętna)** | -2134375817 |
+| **Ciąg błędu** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
+| **Wymagana korekta** | Yes |
+
+Ten błąd występuje, ponieważ załadowane wersja Obsługa poziomów w chmurze (StorageSync.sys) sterownika filtru nie jest zgodny z usługą agenta synchronizacji magazynu (FileSyncSvc). Jeśli agent usługi Azure File Sync został uaktualniony, uruchom ponownie serwer, aby zakończyć instalację. Jeśli błąd będzie nadal występować, odinstaluj agenta, uruchom ponownie serwer i ponownie zainstaluj agenta usługi Azure File Sync.
 
 <a id="-2134376373"></a>**Usługa jest obecnie niedostępna.**  
 | | |

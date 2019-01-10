@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185430"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159659"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -98,6 +98,8 @@ Wykres wydajności przedstawia cztery metryki wydajności:
 - **Liczba węzłów**: Liczba węzłów i stan usługi Kubernetes. Są Stany węzłów klastra, reprezentowany *wszystkich*, *gotowe*, i *niegotowe* i może być filtrowana indywidualnie lub w połączeniu w selektorze powyżej wykresu. 
 - **Liczba zasobników działań**: Liczba zasobników i stan usługi Kubernetes. Są Stany zasobników reprezentowane *wszystkich*, *oczekujące*, *systemem*, i *nieznany* i może być filtrowana indywidualnie lub w Selektor powyżej wykresu. 
 
+Strzałka w lewo/w prawo umożliwia przechodzić przez każdy punkt danych na wykresie i Strzałka w górę/w dół klucze, aby przechodzić między wiersze percentyl.
+
 Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta automatycznie wyświetlane w prawej części strony to okienko właściwości.  Pokazuje właściwości elementu zaznaczone, w tym etykiety, należy zdefiniować do organizowania obiekty usługi Kubernetes. Kliknij pozycję **>>** połączyć w okienku view\hide okienka.  
 
 ![W okienku właściwości perspektyw Kubernetes przykład](./media/container-insights-analyze/perspectives-preview-pane-01.png)
@@ -129,7 +131,7 @@ Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale okn
 
 ![Wybór percentyl filtrowanie danych](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-Gdy przesuniesz wskaźnik myszy nad wykres słupkowy w ramach **Trend** kolumny, Każdy słupek pokazuje użycie procesora CPU lub pamięci, w zależności od tego, który jest wybrana metryka, 15 minut przed upływem próbki.  
+Gdy przesuniesz wskaźnik myszy nad wykres słupkowy w ramach **Trend** kolumny, Każdy słupek pokazuje użycie procesora CPU lub pamięci, w zależności od tego, który jest wybrana metryka, 15 minut przed upływem próbki. Po wybraniu wykresu trendu za pomocą klawiatury, umożliwia klawisze Alt + PageUp lub Alt + PageDown przechodzić przez każdy słupek indywidualnie i szczegółowe informacje ten sam sposób jak w mouseover.
 
 ![Trend paska przykład po wskazaniu wskaźnikiem wykresu](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 

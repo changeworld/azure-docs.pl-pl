@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7734ff6c5992ebb27ff63c0329afa03e5bf96a2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995086"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158860"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
-W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. 
+W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
 
-Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszenia. Pisanie i operacje usuwania są zablokowane na temat grup zasobów, dopiero po zakończeniu przenoszenia. Ta blokada oznacza, że nie Dodawanie, aktualizowanie lub usuwanie zasobów w grupach zasobów, ale nie oznacza, że zasoby są zablokowane. Na przykład jeśli zostanie przeniesiony do nowej grupy zasobów programu SQL Server i jego bazy danych, aplikacji korzystającej z bazy danych środowisk bez przestojów. Nadal może odczytywać i zapisywać w bazie danych.
+Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszenia. Operacje zapisu i usuwania na grupach zasobów są blokowane do momentu zakończenia przenoszenia. Ta blokada oznacza, że nie można dodawać, aktualizować ani usuwać zasobów w tych grupach zasobów, ale nie oznacza to, że zasoby są zamrożone. Jeśli na przykład przeniesiesz program SQL Server i jego bazę danych do nowej grupy zasobów, nie dojdzie do przestoju aplikacji korzystającej z tej bazy danych. Nadal będzie możliwe odczytywanie i zapisywanie danych w bazie danych.
 
 Przenoszenie zasobu tylko przenosi je do nowej grupy zasobów. Operacji przenoszenia nie można zmienić lokalizacji zasobu. Nowa grupa zasobów może mieć inną lokalizację, ale to nie ulega zmianie lokalizacji zasobu.
 
@@ -98,7 +98,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
-* Magazyn usługi Recovery Services — muszą być zarejestrowane w prywatnej wersji zapoznawczej. Zobacz [ograniczenia usług Recovery Services](#recovery-services-limitations).
+* Magazyn usługi Recovery Services — muszą być zarejestrowane w [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
@@ -305,9 +305,9 @@ Operacja może trwać kilka minut.
 
 ### <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
-Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby wypróbować tę funkcję, zapisać AskAzureBackupTeam@microsoft.com.
+Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
-Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS. 
+Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS.
 
 Jeśli maszyna wirtualna nie jest przenoszony z magazynem, bieżących punktów odzyskiwania maszyn wirtualnych pozostają w magazynie, dopóki nie wygasną. Czy maszyna wirtualna została przeniesiona z magazynem, czy nie, możesz przywrócić maszynę wirtualną z historii kopii zapasowych w magazynie.
 
@@ -330,9 +330,9 @@ Klastry HDInsight można przenieść do nowej subskrypcji lub grupy zasobów. Je
 
 Podczas przenoszenia klastra usługi HDInsight do nowej subskrypcji, należy najpierw przenieść innych zasobów (np. konta magazynu). Następnie przenieś klaster HDInsight samodzielnie.
 
-## <a name="checklist-before-moving-resources"></a>Listę kontrolną przed przenoszeniem zasobów
+## <a name="checklist-before-moving-resources"></a>Sporządzenie listy kontrolnej przed przeniesieniem zasobów
 
-Istnieje kilka ważnych kroków, aby zrobić przed przeniesieniem zasobu. Dzięki sprawdzeniu tych warunków można uniknąć błędów.
+Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki sprawdzeniu tych warunków można uniknąć błędów.
 
 1. Subskrypcje źródłowe i docelowe muszą istnieć w tej samej [dzierżawy usługi Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md). Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, należy użyć programu Azure PowerShell lub wiersza polecenia platformy Azure.
 

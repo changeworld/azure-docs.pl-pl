@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: da11bb0669bf6bde2c65b2a7a0badaa1ae35abda
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: MT
+ms.openlocfilehash: 27368ec1f41553950ab1689f8b37c15d14d29808
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189131"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156667"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Jak wyświetlić kontenera dzienników czasu rzeczywistego z usługą Azure Monitor dla kontenerów (wersja zapoznawcza)
 Ta funkcja, która jest obecnie dostępna w wersji zapoznawczej, zapewnia wgląd w czasie rzeczywistym w dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Po wybraniu tej opcji, zostanie wyświetlone nowe okienko pod tabelą danych wydajności kontenerów na **kontenery** widoku który pokazuje na żywo rejestrowania generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym.  
@@ -65,7 +65,7 @@ Po włączeniu autoryzacji RBAC platformy Kubernetes, należy zastosować powią
 2. Utwórz powiązanie reguły klastra, uruchamiając następujące polecenie: `kubectl create -f LogReaderRBAC.yaml`. 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurowanie usługi AKS przy użyciu usługi Azure Active Directory
-AKS można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). Jeśli konfigurujesz to po raz pierwszy, zobacz [integracji usługi Azure Active Directory z usługą Azure Kubernetes Service](../../aks/aad-integration.md). Podczas wykonywania czynności, aby utworzyć [aplikacja kliencka](../../aks/aad-integration.md#create-client-application) i określ **identyfikator URI przekierowania**, należy dodać inny identyfikator URI do listy ** https://ininprodeusuxbase.microsoft.com/***.  
+AKS można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). Jeśli konfigurujesz to po raz pierwszy, zobacz [integracji usługi Azure Active Directory z usługą Azure Kubernetes Service](../../aks/aad-integration.md). Podczas wykonywania czynności, aby utworzyć [aplikacja kliencka](../../aks/aad-integration.md#create-client-application) i określ **identyfikator URI przekierowania**, należy dodać inny identyfikator URI do listy `https://ininprodeusuxbase.microsoft.com/*`.  
 
 >[!NOTE]
 >Konfigurowanie uwierzytelniania za pomocą usługi Azure Active Directory dla logowania jednokrotnego można wykonywać tylko podczas wstępnej wdrożenia nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego na dla klastra usługi AKS już wdrożone.  

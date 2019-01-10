@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 164fc42d905c9354a58ea6f66a739ea05f12e601
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979237"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157772"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
@@ -38,7 +38,7 @@ Zobacz następujące sekcje, aby dowiedzieć się, jak zasób można sprawdzać 
 
 ## <a name="sample-tokens"></a>Przykładowe tokenów
 
-tokeny w wersji 1.0 i 2.0 wyglądają bardzo podobnie i zawierać wiele z tych samych oświadczeń. Przykład każdego z nich znajduje się w tym miejscu.
+tokeny w wersji 1.0 i 2.0 wyglądać mniej więcej i zawierać wiele z tych samych oświadczeń. Przykład każdego z nich znajduje się w tym miejscu.
 
 ### <a name="v10"></a>Wersja 1.0
 
@@ -79,7 +79,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 | `nonce` | Ciąg | Unikatowy identyfikator używany do ochrony przed atakami powtarzania tokenu. Zasób może zapisać tę wartość, aby zapewnić ochronę przed odtworzenie. |
 | `alg` | Ciąg | Określa algorytm, który był używany do podpisywania tokenu, na przykład "RS256" |
 | `kid` | Ciąg | Określa odcisk palca klucza publicznego, który jest używany do podpisywania tego tokenu. Emitowane zarówno w wersji 1.0, jak i w wersji 2.0 tokenów dostępu. |
-| `x5t` | Ciąg | Działa tak samo, (w użyciu i wartości) jako `kid`. To oświadczenie starszych emitowane tylko w tokeny dostępu w wersji 1.0 do celów zgodności. |
+| `x5t` | Ciąg | Działa tak samo, (w użyciu i wartości) jako `kid`. `x5t` starsze oświadczenia znacznikowej tylko w tokeny dostępu w wersji 1.0 do celów zgodności. |
 
 ### <a name="payload-claims"></a>Ładunek oświadczeń
 
@@ -121,7 +121,7 @@ Poniższe oświadczenia zostaną uwzględnione w tokenów w wersji 1.0, jeśli m
 | Claim | Format | Opis |
 |-----|--------|-------------|
 | `ipaddr`| Ciąg | Adres IP użytkownika dokonało uwierzytelnienia z komputera. |
-| `onprem_sid`| Ciąg w [format identyfikatora SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | W przypadkach, w której użytkownik ma uwierzytelniania lokalnego to oświadczenie udostępnia identyfikatora SID. To może służyć do autoryzacji w starszych aplikacji. |
+| `onprem_sid`| Ciąg w [format identyfikatora SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | W przypadkach, w której użytkownik ma uwierzytelniania lokalnego to oświadczenie udostępnia identyfikatora SID. Możesz użyć `onprem_sid` do autoryzacji w starszych aplikacji. |
 | `pwd_exp`| int, sygnatura czasowa systemu UNIX | Wskazuje, kiedy wygasa hasło użytkownika. |
 | `pwd_url`| Ciąg | Adres URL, których użytkownicy mogą być wysyłane do zresetowania swojego hasła. |
 | `in_corp`|wartość logiczna | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie są one oświadczenia nie zostaną uwzględnione. |
@@ -200,7 +200,7 @@ Logika biznesowa aplikacji określają ten krok, niektóre typowe metody autoryz
 * Sprawdzanie poprawności stanu uwierzytelniania przy użyciu klienta wywołującego `appidacr` -nie może być 0 Jeśli klienci nie są dozwolone do wywołania interfejsu API.
 * Zapoznaj się z listą przeszłości `nonce` oświadczeń zweryfikować token nie jest on odtwarzany.
 * Sprawdź, czy `tid` dopasowuje dzierżawy, który można wywoływać interfejs API.
-* Użyj `acr` oświadczenia sprawdzić, użytkownik wykonał usługi MFA. Należy pamiętać, że powinno to być wymuszane za pomocą [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+* Użyj `acr` oświadczenia sprawdzić, użytkownik wykonał usługi MFA. Powinno to być wymuszane za pomocą [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 * Jeśli żądanej `roles` lub `groups` oświadczenia w tokenie dostępu, sprawdź, czy użytkownik jest w tej grupie mogą wykonać tę akcję.
   * Tokeny pobrany przy użyciu niejawnego przepływu, prawdopodobnie należy zbadać [programu Microsoft Graph](https://developer.microsoft.com/graph/) dla tych danych, ponieważ jest często zbyt duży, aby zmieścić ją w tokenie. 
 
@@ -218,14 +218,14 @@ Odśwież tokeny mogą zostać unieważnione lub odwołać w dowolnym momencie i
 ### <a name="token-timeouts"></a>Token przekroczeń limitu czasu
 
 * MaxInactiveTime: Jeśli nie została użyta w czasie przez MaxInactiveTime token odświeżania, odświeżanie tokenu nie będzie już prawidłowy. 
-* MaxSessionAge: Jeśli MaxAgeSessionMultiFactor lub MaxAgeSessionSingleFactor zostały ustawione na coś innego niż domyślne (aż do odwołane), to ponowne uwierzytelnianie będą wymagane po upływie tego czasu w MaxAgeSession *. 
+* MaxSessionAge: Jeśli ustawiono MaxAgeSessionMultiFactor lub MaxAgeSessionSingleFactor na coś innego niż domyślne (aż do odwołane) to ponowne uwierzytelnianie będą wymagane po upływie tego czasu w MaxAgeSession *. 
 * Przykłady:
   * Dzierżawa ma MaxInactiveTime 5 dni, użytkownik przeszedł na urlopie w każdym tygodniu i więc usługi AAD nie otrzymała żądanie nowego tokenu przez użytkownika w ciągu 7 dni. Następnym razem użytkownik zażąda nowego tokenu, znajdą ich odświeżyć Token został odwołany, a ich musi ponownie wprowadzić swoje poświadczenia.
   * Poufnej aplikacji ma MaxAgeSessionSingleFactor 1 dzień. Jeśli użytkownik loguje się w poniedziałek i wtorek (po upływie 25 godzin), ich będą musieli ponownie uwierzytelniać.
 
 ### <a name="revocation"></a>Odwołania
 
-|   | Plik cookie oparte na hasłach | Token oparte na hasłach | Na podstawie plików cookie bez hasła | Inne niż hasło na podstawie tokenu | Token poufne klienta| 
+|   | Cookie opartego na hasłach | Token opartego na hasłach | Opartego na hasłach inne niż plik cookie | Token opartego na hasłach inne niż | Token poufne klienta| 
 |---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
 | Hasło wygasło | Pozostanie aktywny| Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
 | Hasło zostało zmienione przez użytkownika | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |

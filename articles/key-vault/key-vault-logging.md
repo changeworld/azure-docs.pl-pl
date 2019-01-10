@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: e4d5004deeff43e83406ecb5d06b2857817531c6
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074290"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159965"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
@@ -38,7 +38,7 @@ Ten samouczek ułatwi rozpoczęcie pracy z funkcją rejestrowania usługi Azure 
 > [!NOTE]
 > Ten samouczek nie zawiera instrukcji dotyczących sposobu tworzenia magazynów kluczy, kluczy ani kluczy tajnych. Te informacje można znaleźć w temacie [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md). Instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia znajdują się w [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
 >
-> Obecnie nie można skonfigurować usługi Azure Key Vault w portalu Azure. Zamiast tego użyj tych instrukcji usługi Azure PowerShell.
+> Ten artykuł zawiera instrukcje programu Azure PowerShell w celu zaktualizowania rejestrowania diagnostycznego. Jednak takie same włączona przy użyciu usługi Azure Monitor w witrynie Azure portal w **dzienniki diagnostyczne** sekcji. 
 >
 >
 

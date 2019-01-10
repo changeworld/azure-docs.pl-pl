@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060215"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158928"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Potrząśnij, wstrząsnąć dla Tweet — pobieranie wiadomości z usługi Twitter za pomocą usługi Azure Functions
 
@@ -52,7 +52,7 @@ Uruchom po otwarciu folderu projektu.
 Po lewej stronie rozwiń **przykłady ARDUINO** sekcji, przejdź do **przykłady zestawu DEWELOPERSKIEGO az3166 usługi > AzureIoT**i wybierz **ShakeShake**. Zostanie otwarte nowe okno programu VS Code wyświetlanie folderu projektu. Jeśli nie są wyświetlane w sekcji az3166 usługi zestawu DEWELOPERSKIEGO, upewnij się, urządzenie jest prawidłowo podłączony i ponownie uruchom Visual Studio Code.  
 ![mini solution przykłady](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Możesz również otworzyć przykładowy projekt z palety poleceń. Kliknij przycisk `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+Możesz również otworzyć przykładowy projekt z palety poleceń. Kliknij przycisk `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: Przykłady**.
 
 ## <a name="provision-azure-services"></a>Aprowizacja usług platformy Azure
 
@@ -118,7 +118,7 @@ Po ustawieniu parametrów połączenia, weryfikuje i przekazuje ją następnie u
 
 2. Mxchip rozruchu i uruchamiania kodu.
 
-Możesz uzyskać "Błąd: az3166 usługi: Nieznany pakiet" komunikat o błędzie. Ten błąd występuje, gdy indeks pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się z ["Nieznany pakiet" Błąd w często zadawanych PYTAŃ IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+Możesz uzyskać "Błąd: AZ3166 USŁUGI: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeks pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się z ["Nieznany pakiet" Błąd w często zadawanych PYTAŃ IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Projekt testowy
 
@@ -167,7 +167,7 @@ Do celów testowych, ten przykładowy projekt używa wstępnie skonfigurowane to
 
 3. Użyj [niektóre narzędzia](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) do generowania tokenu elementu nośnego usługi Twitter z te dwa klucze.
 
-4. W [witryny Azure portal](https://portal.azure.com/){: target = "_blank"}, zagłębieniem się w **grupy zasobów** i Znajdź funkcję platformy Azure (typ: usługi App Service) dla projektu "Wstrząsnąć potrząsanie". Nazwa zawiera zawsze "potrząsania..." ciągu.
+4. W [witryny Azure portal](https://portal.azure.com/){: target = "_blank"}, zagłębieniem **grupy zasobów** i Znajdź funkcję platformy Azure (typ: Usługa App Service) dla projektu "Wstrząsnąć potrząsanie". Nazwa zawiera zawsze "potrząsania..." ciągu.
 
    ![Funkcja platformy Azure](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
@@ -202,7 +202,7 @@ Lub uruchamiając kod, istnieją pewne blips, które powodują ponowne uruchomie
 Jeśli występują inne problemy, zapoznaj się [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub skontaktuj się z nami za pomocą następujących kanałów:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Witryna Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c30e18c42f310172b07995e0ad88a505a01c4218
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036142"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159608"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services — Rozwiązywanie problemów z alertami
 Ten artykuł zawiera przewodniki dotyczące rozwiązywania problemów w ramach wszystkich alertów, które mogą występować w domenie zarządzanej.
@@ -56,7 +56,7 @@ Wybierz kroki rozwiązywania problemów, które odnoszą się do Identyfikatora 
 
 
 
-## <a name="aadds100-missing-directory"></a>AADDS100: Brak katalogu
+## <a name="aadds100-missing-directory"></a>AADDS100: Brakujący katalog
 **Komunikat alertu:**
 
 *Katalog usługi Azure AD skojarzonego z Twoją domeną zarządzaną mógł zostać usunięty. Domena zarządzana nie jest już w obsługiwanej konfiguracji. Microsoft nie może monitorować, zarządzanie, patch i synchronizacji z domeną zarządzaną.*
@@ -67,7 +67,7 @@ Przyczyną tego błędu jest zwykle nieprawidłowo przenoszenie Twojej subskrypc
 
 Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i utwórz go ponownie w nowym katalogu. Jeśli występują problemy, usuwanie, skontaktuj się z zespołem produktu usługi Azure Active Directory Domain Services [obsługi](active-directory-ds-contact-us.md).
 
-## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: W tym katalogu jest uruchomiona usługa Azure AD B2C
+## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Usługa Azure AD B2C została uruchomiona w tym katalogu
 **Komunikat alertu:**
 
 *Nie można włączyć usługi domenowe Azure AD w katalogu usługi Azure AD B2C.*
@@ -114,7 +114,7 @@ W sieci wirtualnej maszyn mogą wysyłać żądania do zasobów platformy Azure,
 4. Aby przyłączania do domeny maszyn wirtualnych do nowej domeny, wykonaj [tego przewodnika](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. Aby upewnić się, że alert nie zostanie rozwiązany, Sprawdź kondycję Twojej domeny w ciągu dwóch godzin.
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Twoja subskrypcja platformy Azure nie można odnaleźć
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Nie można odnaleźć subskrypcji platformy Azure
 
 **Komunikat alertu:**
 
@@ -128,7 +128,7 @@ Azure AD Domain Services wymaga subskrypcji do funkcji i nie można przenieść 
 2. [Usuwanie domeny zarządzanej](active-directory-ds-disable-aadds.md) z istniejącego katalogu usługi Azure AD.
 3. Postępuj zgodnie z [wprowadzenie](active-directory-ds-getting-started.md) przewodnika, aby ponownie utworzyć domeny zarządzanej.
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Twoja subskrypcja platformy Azure jest wyłączona.
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Subskrypcja platformy Azure została wyłączona
 
 **Komunikat alertu:**
 
@@ -140,7 +140,7 @@ Azure AD Domain Services wymaga subskrypcji do funkcji i nie można przenieść 
 1. [Odnów swoją subskrypcję platformy Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
 2. Po odnowieniu subskrypcji usługi Azure AD Domain Services otrzymasz powiadomienie z platformy Azure, aby ponownie włączyć domenę zarządzaną.
 
-## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Subskrypcja przeniesiona katalogów
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Katalogi przenieść subskrypcję
 
 **Komunikat alertu:**
 
@@ -179,7 +179,7 @@ Azure AD Domain Services tworzy określonych zasobów podczas wdrażania, aby dz
 
 Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i [ponownie utworzyć domeny zarządzanej](active-directory-ds-getting-started.md)
 
-## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: Według nazwy głównej usługi, brak autoryzacji
+## <a name="aadds111-service-principal-unauthorized"></a>AADDS111: Brak jednostki usługi autoryzacji
 
 **Komunikat alertu:**
 
@@ -193,7 +193,7 @@ Nasze jednostek usługi muszą mieć dostęp do zarządzania i tworzenia zasobó
 2. Przegląd dostępu wszystkich użytkowników, nazwy głównej usługi o identyfikatorze ```abba844e-bc0e-44b0-947a-dc74e5d09022``` i udzielanie dostępu, którego miała miejsce odmowa przed tą datą.
 
 
-## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Za mało adresu IP w domenie zarządzanej
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Za mało adresów IP w domenie zarządzanej
 
 **Komunikat alertu:**
 
@@ -224,7 +224,7 @@ Nasze jednostek usługi muszą mieć dostęp do zarządzania i tworzenia zasobó
 
 Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i [ponownie utwórz domenę zarządzaną](active-directory-ds-getting-started.md).
 
-## <a name="aadds114-subnet-invalid"></a>AADDS114: Nieprawidłowa podsieć
+## <a name="aadds114-subnet-invalid"></a>AADDS114: Podsieć jest nieprawidłowa
 
 **Komunikat alertu:**
 
@@ -258,7 +258,7 @@ Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń 
 
 
 
-## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: Synchronizacji nie zostało ukończone w chwilę
+## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: Synchronizacja nie została ukończona w chwilę
 
 **Komunikat alertu:**
 

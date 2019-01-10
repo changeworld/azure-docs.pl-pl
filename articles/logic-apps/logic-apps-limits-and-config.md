@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c7eaecf74f56035c39267407e6a965c57897b1ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015444"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159030"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -85,10 +85,10 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Współbieżności wyzwalacza | 50 | Domyślny limit wynosi 20. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub w sposób równoległy. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [współbieżności wyzwalacza zmiany](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maksymalna przebiegów oczekiwania | 100 | Domyślny limit wynosi 10. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które mogą poczekać do uruchamiania, gdy aplikacja logiki jest już uruchomiona maksymalna liczba współbieżnych wystąpień. <p><p>Aby zmienić domyślny limit wartość z zakresu od 0 do 100 włącznie, zobacz [ograniczać przebiegi oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Elementy foreach | 100 000 | Limit ten opisuje maksymalną liczbę elementów tablicy, które mogą przetwarzać pętlę "for each". <p><p>Do filtrowania większych tablic, można użyć [Akcja zapytania](../connectors/connectors-native-query.md). | 
-| Współbieżność foreach | 50 | Domyślny limit wynosi 20. Ten limit w tym artykule opisano "for each" Maksymalna liczba iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić "for each" współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Współbieżności wyzwalacza | 50 ograniczenie współbieżności | Po włączeniu kontroli współbieżności dla wyzwalacza domyślny limit wynosi 25. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub w sposób równoległy. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [limit współbieżności wyzwalacza zmiany](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maksymalna przebiegów oczekiwania | 100 ograniczenie współbieżności | Po włączeniu kontroli współbieżności dla wyzwalacza domyślny limit wynosi 10. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które mogą poczekać do uruchamiania, gdy aplikacja logiki jest już uruchomiona maksymalna liczba współbieżnych wystąpień. <p><p>Aby zmienić domyślny limit wartość z zakresu od 0 do 100 włącznie, zobacz [ograniczać przebiegi oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Elementy tablicy foreach | 100 000 | Limit ten opisuje maksymalną liczbę elementów tablicy, które mogą przetwarzać pętlę "for each". <p><p>Do filtrowania większych tablic, można użyć [Akcja zapytania](../connectors/connectors-native-query.md). | 
+| Współbieżność foreach | 50 ograniczenie współbieżności | Po włączeniu kontroli współbieżności dla tej pętli domyślny limit wynosi 20. Ten limit w tym artykule opisano "for each" Maksymalna liczba iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić współbieżności "for each" limit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | Elementy SplitOn | 100 000 | | 
 | Iteracje UNTIL | 5000 | | 
 |||| 
@@ -119,9 +119,9 @@ Przejdź powyżej tych limitów w normalnego przetwarzania lub uruchamiania test
 
 | Name (Nazwa) | Limit | Uwagi |
 |------|-------|-------|
-| FTP | 50 MB | Aby obejść to ograniczenie, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
-| SFTP | 50 MB | Aby obejść to ograniczenie, należy użyć [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md) lub zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
-| SFTP-SSH | 1 GB | Aby obejść to ograniczenie, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
+| FTP | 50 MB | Aby przekroczyć tego limitu, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
+| SFTP | 50 MB | Aby przekroczyć tego limitu, należy użyć [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md) lub zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
+| SFTP-SSH | 1 GB | Aby przekroczyć tego limitu, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
 |||| 
 
 <a name="request-limits"></a>

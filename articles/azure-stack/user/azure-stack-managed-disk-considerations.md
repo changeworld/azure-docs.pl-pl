@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: e86e1d862644aa143046045e74ec994d42a5598e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3445974cf832b7ed594f704615482e1d9b0e351c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050170"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159370"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: różnice i zagadnienia dotyczące
 
@@ -29,7 +29,7 @@ Ten artykuł zawiera podsumowanie znane różnice między [stosu usługi Azure M
 Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS dzięki zarządzaniu [kont magazynu](../azure-stack-manage-storage-accounts.md) skojarzone z dyskami maszyn wirtualnych.
 
 > [!Note]  
-> Dyski zarządzane w usłudze Azure Stack jest dostępna w wersji 1808.
+> Dyski zarządzane w usłudze Azure Stack jest dostępna aktualizacja 1808. Włączono domyślnie podczas tworzenia maszyn wirtualnych przy użyciu portalu Azure Stack z 1811 aktualizacji.
   
 
 ## <a name="cheat-sheet-managed-disk-differences"></a>Ściągawka: Różnice dysku zarządzanego
@@ -67,7 +67,7 @@ Usługa Azure Stack Managed Disks obsługuje następujące wersje interfejsu API
 
 ## <a name="known-issues"></a>Znane problemy
 
-Po zastosowaniu [aktualizacji 1811](../azure-stack-update-1811.md), można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
+Po zastosowaniu aktualizacji po 1808, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
 
 - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
    1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.

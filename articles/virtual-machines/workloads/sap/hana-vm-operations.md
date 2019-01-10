@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d716a27cc2b4879451a8d5edbca46ca1bbfeaf40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 96b0c44ff36dac3832e518deeed7f07b11e78c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968991"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160050"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfiguracje infrastruktury SAP HANA i operacji na platformie Azure
 Ten dokument zawiera wskazówki dotyczące konfigurowania infrastruktury platformy Azure i obsługi systemów SAP HANA, które zostały wdrożone na natywnych maszynach wirtualnych platformy Azure (maszyny wirtualne). Dokument zawiera również informacje o konfiguracji dla oprogramowania SAP HANA skalowalnego w poziomie dla jednostki SKU maszyny Wirtualnej M128s. Ten dokument nie jest przeznaczona do zastąpienia dokumentacji SAP standardowa obejmuje następującą zawartością:
@@ -208,7 +208,7 @@ Po zainstalowaniu maszyn wirtualnych do uruchamiania oprogramowania SAP HANA, po
 
 Jednak w przypadku wdrożeń, które są trwałe, musisz utworzyć architektury sieci wirtualne centrum danych na platformie Azure. Ta architektura zaleca się rozdzielenie bramy sieci wirtualnej platformy Azure, który nawiązuje połączenie z środowiska lokalnego do oddzielnych sieci wirtualnej platformy Azure. Ta oddzielną sieć wirtualną powinien obsługiwać cały ruch, powodują, że do środowiska lokalnego lub z Internetem. Takie podejście umożliwia wdrażanie oprogramowania do inspekcji i ruchu rejestrowania, który wprowadzi wirtualnego centrum danych na platformie Azure w tej sieci wirtualnej serwera centralnego oddzielne. Dlatego należy jednej sieci wirtualnej obsługującego całe oprogramowanie i konfiguracje związanego z in - ruch wychodzący i aby wdrożenie systemu Azure.
 
-Artykuły [wirtualnego centrum danych Azure: perspektywa sieci](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) i [Azure Virtual Datacenter i Enterprise Control Plane](https://docs.microsoft.com/azure/architecture/vdc/) podać więcej informacji na temat podejścia do wirtualnego centrum danych i powiązane Usługa Azure projektowania sieci wirtualnej.
+Artykuły [wirtualnego centrum danych Azure: Perspektywa sieci](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) i [Azure Virtual Datacenter i Enterprise Control Plane](https://docs.microsoft.com/azure/architecture/vdc/) podać więcej informacji na temat podejścia wirtualnego centrum danych i powiązane projektowania sieci wirtualnej platformy Azure.
 
 
 >[!NOTE]
@@ -403,8 +403,8 @@ Zobacz dodatkowe informacje na temat platformy Azure przyspieszonej łączności
 
 Zgodnie z DT 2.0 najlepszych rozwiązań przepływność operacji We/Wy dysku powinna być minimalna 50 MB na sekundę na każdy rdzeń fizyczny. Patrząc specyfikacji dla dwóch typów maszyn wirtualnych platformy Azure, które są obsługiwane dla DT w wersji 2.0 jeden, zostanie wyświetlony dysku maksymalny limit przepływności operacji We/Wy dla maszyny Wirtualnej:
 
-- E32sv3: 768 MB/s (niebuforowanych) oznacza to stosunek 48 MB na sekundę na każdy rdzeń fizyczny
-- M64-32ms: 1000 MB/s (niebuforowanych) co oznacza, że stosunek 62,5 MB na sekundę na każdy rdzeń fizyczny
+- E32sv3:   768 MB/s (niebuforowanych) co oznacza, że stosunek 48 MB na sekundę na każdy rdzeń fizyczny
+- M64-32MS:  1000 MB/s (niebuforowanych) co oznacza, że stosunek 62,5 MB na sekundę na każdy rdzeń fizyczny
 
 Konieczne jest dołączenie wielu dysków platformy Azure do maszyny Wirtualnej w wersji 2.0 DT i Utwórz raid oprogramowania (rozkładanie) na poziomie systemu operacyjnego w celu osiągnięcia maksymalnego limitu przepustowości dysku na maszynie Wirtualnej. Pojedynczy dysk platformy Azure nie może dostarczyć przepływności do osiągnięcia maksymalnego limitu maszyn wirtualnych w tym zakresie. Usługa Azure Premium storage jest obowiązkowe, aby uruchomić DT w wersji 2.0. 
 

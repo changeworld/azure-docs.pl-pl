@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako;johndeu
-ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233467"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159744"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services operacji
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "50233467"
 
 Usługa Media Services udostępnia interfejs API REST, który akceptuje JSON lub atom + pub XML format. Interfejsu API REST usługi Media Services wymaga określonych nagłówki HTTP, które każdy klient musi wysłać podczas nawiązywania połączenia z usługi Media Services, a także zestaw opcjonalne nagłówki. W poniższych sekcjach opisano nagłówki i zleceń HTTP, można użyć podczas tworzenia żądań i odbierania odpowiedzi z usługi Media Services.
 
-Uwierzytelnianie interfejsu API REST usługi Media także odbywa się za pośrednictwem uwierzytelniania usługi Azure Active Directory, który jest opisany w artykule [uwierzytelnianie usługi Azure AD dostęp do interfejsu API usługi multimediów Azure z użyciem usług REST](media-services-rest-connect-with-aad.md)
+Uwierzytelnianie interfejsu API REST usługi Media Services odbywa się za pośrednictwem uwierzytelniania usługi Azure Active Directory, który jest opisany w artykule [uwierzytelnianie usługi Azure AD dostęp do interfejsu API usługi multimediów Azure z użyciem usług REST](media-services-rest-connect-with-aad.md)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -58,9 +58,9 @@ Za każde wywołanie, wprowadzone do usługi Media Services ustawiono wymagane n
 | Nagłówek | Typ | Wartość |
 | --- | --- | --- |
 | Autoryzacja |Elementu nośnego |Elementu nośnego jest mechanizm autoryzacji akceptowane tylko. Wartość musi również zawierać token dostępu udostępniony przez usługę Azure Active Directory. |
-| x-ms-version |Dziesiętna |2.17 (lub najnowsza wersja)|
-| DataServiceVersion |Dziesiętna |3.0 |
-| MaxDataServiceVersion |Dziesiętna |3.0 |
+| x-ms-version |Dziesiętny |2.17 (lub najnowsza wersja)|
+| DataServiceVersion |Dziesiętny |3.0 |
+| MaxDataServiceVersion |Dziesiętny |3.0 |
 
 > [!NOTE]
 > Ponieważ usługa Media Services korzysta z protokołu OData do udostępnienia jej interfejsów API REST, nagłówki DataServiceVersion i MaxDataServiceVersion powinny być uwzględnione w wszystkie żądania; Jednak jeśli nie są one następnie obecnie usługi Media Services przyjęto założenie, że wartość DataServiceVersion używana jest 3.0.
@@ -73,7 +73,7 @@ Oto zbiór opcjonalne nagłówki:
 | --- | --- | --- |
 | Date |RFC 1123 daty |Sygnatura czasowa żądania |
 | Zaakceptuj |Typ zawartości |Żądany typ zawartości odpowiedzi podobny do następującego:<p> -application/json; odata = pełne<p> -application/atom + xml<p> Odpowiedzi mogą mieć inny typ zawartości, takie jak pobieranie obiektów blob, gdy odpowiedź oznaczająca Powodzenie zawiera strumienia obiektu blob jako ładunek. |
-| Zaakceptuj kodowania |Gzip, deflate |GZIP i DEFLATE, kodowanie, jeśli ma to zastosowanie. Uwaga: W przypadku dużych zasobów usługi Media Services może Ignoruj ten nagłówek i zwrócić nieskompresowanych danych. |
+| Zaakceptuj kodowania |Gzip, deflate |GZIP i DEFLATE, kodowanie, jeśli ma to zastosowanie. Uwaga: W przypadku dużych zasobów usługi Media Services może zignorować ten nagłówek i zwróć nieskompresowanych danych. |
 | Zaakceptuj języka |"en", "es" i tak dalej. |Określa preferowany język dla odpowiedzi. |
 | Accept-Charset |Typ zestaw znaków, takich jak "UTF-8" |Domyślna to UTF-8. |
 | X-HTTP-Method. |Metoda HTTP |Umożliwia klientom lub zapory, które nie obsługują metod HTTP, takich jak PUT lub DELETE w celu użycia tych metod tunelowania przez wywołanie GET. |
@@ -89,7 +89,7 @@ Poniżej znajduje się zestaw nagłówków, które mogą być zwrócone do użyt
 | Identyfikator żądania klienta |Ciąg |Identyfikator określony przez obiekt wywołujący w oryginalne żądanie, jeśli jest obecny. |
 | Date |RFC 1123 daty |Data/czas przetwarzania żądania. |
 | Content-Type |Różna |Typ zawartości treści odpowiedzi. |
-| Kodowanie zawartości |Różna |Gzip lub deflate, odpowiednio. |
+| Content-Encoding |Różna |Gzip lub deflate, odpowiednio. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standardowa zleceń HTTP obsługiwane przez usługę Media Services
 Poniżej przedstawiono pełną listę zleceń HTTP, które mogą być używane podczas wprowadzania HTTP żądania:

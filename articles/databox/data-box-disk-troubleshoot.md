@@ -4,30 +4,27 @@ description: W tym artykule opisano sposób rozwiązywania problemy z usługą A
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: overview
-ms.date: 10/09/2018
+ms.subservice: disk
+ms.topic: article
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 776108b109bc27e0f8059d287e87c67aeca9fbd2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 83b3a271006df38744b9de49ed6350bea3aeef4d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091854"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159387"
 ---
-# <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Rozwiązywanie problemów z usługą Azure Data Box Disk (wersja zapoznawcza)
+# <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Rozwiązywanie problemów z dysku Azure Data Box
 
-Ten artykuł dotyczy usługi Microsoft Azure Data Box w wersji zapoznawczej. W artykule opisano niektóre złożone przepływy pracy i zadania związane z zarządzaniem, które można wykonywać w usługach Data Box i Data Box Disk. 
+Ten artykuł ma zastosowanie do dysku systemu Microsoft Azure Data Box i opisano przepływy pracy, umożliwia rozwiązanie wszelkich problemów, które zobaczysz podczas wdrażania tego rozwiązania. 
 
-Można zarządzać usługą Data Box Disk w witrynie Azure Portal. Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. W witrynie Azure Portal można zarządzać zamówieniami, zarządzać urządzeniami oraz śledzić stan zamówienia na kolejnych etapach aż do ukończenia.
-
-W tym artykule zawarto następujące samouczki:
+Ten artykuł zawiera następujące sekcje:
 
 - Pobieranie dzienników diagnostycznych
 - Wykonywanie zapytań dotyczących dzienników aktywności
-
-
-> [!IMPORTANT]
-> Rozwiązanie Data Box jest dostępne w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+- Błędy narzędzia do odblokowywania dysków Data Box Disk
+- Błędy narzędzia do dzielenia skopiowanych dysków Data Box Disk
 
 ## <a name="download-diagnostic-logs"></a>Pobieranie dzienników diagnostycznych
 
@@ -74,23 +71,23 @@ Dzienniki aktywności są przechowywane przez 90 dni. Możesz wykonać zapytanie
 | Brak<br><br>Narzędzie do odblokowywania dysków Data Box ulega awarii.                                                                            | Funkcja BitLocker nie jest zainstalowana. Upewnij się, że na komputerze hosta, na którym uruchomiono narzędzie do odblokowywania dysków Data Box, zainstalowano funkcję BitLocker.                                                                            |
 | The current .NET Framework is not supported. The supported versions are 4.5 and later.<br><br>Narzędzie kończy działanie, wyświetlając komunikat.  | Program .NET 4.5 nie jest zainstalowany. Zainstaluj program .NET 4.5 lub nowszą wersję na komputerze hosta, na którym uruchomiono narzędzie do odblokowywania dysków Data Box.                                                                            |
 | Could not unlock or verify any volumes. Contact Microsoft Support.  <br><br>Za pomocą narzędzia nie można odblokować lub sprawdzić żadnego zablokowanego dysku. | Narzędzie nie mogło odblokować żadnego z zablokowanych dysków przy użyciu podanego klucza dostępu. Skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać informacje o kolejnych krokach.                                                |
-| Following volumes are unlocked and verified. <br>Volume drive letters: E:<br>Could not unlock any volumes with the following passkeys: werwerqomnf, qwerwerqwdfda <br><br>Narzędzie odblokowało niektóre dyski i wyświetla listę liter dysków, które udało się odblokować, i tych, których nie udało się odblokować.| Częściowe powodzenie. Nie udało się odblokować niektórych dysków przy użyciu podanego klucza dostępu. Skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać informacje o kolejnych krokach. |
+| Following volumes are unlocked and verified. <br>Litery dysku woluminu: E:<br>Could not unlock any volumes with the following passkeys: werwerqomnf, qwerwerqwdfda <br><br>Narzędzie odblokowało niektóre dyski i wyświetla listę liter dysków, które udało się odblokować, i tych, których nie udało się odblokować.| Częściowe powodzenie. Nie udało się odblokować niektórych dysków przy użyciu podanego klucza dostępu. Skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać informacje o kolejnych krokach. |
 | Could not find locked volumes. Verify disk received from Microsoft is connected properly and is in locked state.          | Narzędzie nie odnajduje żadnych zablokowanych dysków. Dyski są już odblokowane lub nie zostały wykryte. Upewnij się, że dyski są podłączone i zablokowane.                                                           |
-| Fatal error: Invalid parameter<br>Parameter name: invalid_arg<br>USAGE:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>Example: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>Example: DataBoxDiskUnlock /SystemCheck<br>Example: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Get this passkey from Azure DataBox Disk order. The passkey unlocks your disks.<br>/Help:           This option provides help on cmdlet usage and examples.<br>/SystemCheck:    This option checks if your system meets the requirements to run the tool.<br><br>Press any key to exit. | Wprowadzono nieprawidłowy parametr. Dozwolone parametry to: /SystemCheck, /PassKey oraz /Help.                                                                            |
+| Błąd krytyczny: Nieprawidłowy parametr<br>Parameter name: invalid_arg<br>USAGE:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>Przykład: DataBoxDiskUnlock /PassKeys:passkey1; passkey2 passkey3<br>Przykład: DataBoxDiskUnlock /SystemCheck<br>Przykład: / Help DataBoxDiskUnlock<br><br>/ Klucze dostępu:       Pobierz ten klucz dostępu z usługi Azure DataBox Disk zamówienia. The passkey unlocks your disks.<br>/ Help:           Ta opcja zapewnia pomoc na użycie polecenia cmdlet i przykładów.<br>/ SystemCheck:    Ta opcja sprawdza, czy system spełnia wymagania, aby uruchomić narzędzie.<br><br>Press any key to exit. | Wprowadzono nieprawidłowy parametr. Dozwolone parametry to: /SystemCheck, /PassKey oraz /Help.                                                                            |
 
 ## <a name="data-box-disk-split-copy-tool-errors"></a>Błędy narzędzia do dzielenia skopiowanych dysków Data Box Disk
 
 |Komunikat o błędzie/ostrzeżenia  |Zalecenia |
 |---------|---------|
 |[Informacje] Pobieranie hasła funkcji BitLocker dla woluminu: m <br>[Błąd] Przechwycono wyjątek podczas pobierania klucza funkcji BitLocker dla woluminu m:<br> Sekwencja nie zawiera elementów.|Ten błąd jest zwracany, jeśli docelowe dyski Data Box Disk są w trybie offline. <br> W przypadku dysków w trybie online należy użyć narzędzia `diskmgmt.msc`.|
-|[Błąd] Zgłoszono wyjątek: operacja usługi WMI zakończyła się niepowodzeniem:<br> Method = UnlockWithNumericalPassword, ReturnValue = 2150694965, <br>Win32Message = format podanego hasła odzyskiwania jest nieprawidłowy. <br>Hasła odzyskiwania funkcji BitLocker są 48-cyfrowe. <br>Sprawdź, czy hasło odzyskiwania ma poprawny format, a następnie spróbuj ponownie.|Użyj narzędzia do odblokowywania dysków Data Box Disk, aby odblokować dyski i ponowić próbę wykonania polecenia. Aby uzyskać więcej informacji, przejdź na stronę <li> [Odblokowywanie dysków Data Box Disk dla klientów systemu Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odblokowywanie dysków Data Box Disk dla klientów systemu Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
-|[Błąd] Zgłoszono wyjątek: plik DriveManifest.xml znajduje się na dysku docelowym. <br> Oznacza to, że dysk docelowy został prawdopodobnie przygotowany przy użyciu innego pliku dziennika. <br>Aby dodać więcej danych do tego samego dysku, użyj poprzedniego pliku dziennika. Aby usunąć istniejące dane i ponownie użyć dysku docelowego dla nowego zadania importu, usuń plik DriveManifest.xml z dysku. Ponownie uruchom to polecenie, używając nowego pliku dziennika.| Ten błąd zostanie wyświetlony podczas próby użycia tego samego zestawu dysków w wielu sesjach importowania. <br> Z jedną sesją dzielenia i kopiowania można użyć tylko jednego zestawu dysków.|
-|[Błąd] Zgłoszono wyjątek: CopySessionId importdata-sept-test-1 odwołuje się do poprzedniej sesji kopiowania i nie może zostać użyty ponownie w nowej sesji kopiowania.|Ten błąd jest zgłaszany w przypadku próby użycia tej samej nazwy zadania dla nowego zadania, które zostało poprzednio pomyślnie ukończone.<br> Należy przypisać unikatową nazwę dla nowego zadania.|
+|[Błąd] Zgłoszono wyjątek: Nie można wykonać operacji usługi WMI:<br> Method = UnlockWithNumericalPassword, ReturnValue = 2150694965, <br>Win32Message = format podanego hasła odzyskiwania jest nieprawidłowy. <br>Hasła odzyskiwania funkcji BitLocker są 48-cyfrowe. <br>Sprawdź, czy hasło odzyskiwania ma poprawny format, a następnie spróbuj ponownie.|Użyj narzędzia do odblokowywania dysków Data Box Disk, aby odblokować dyski i ponowić próbę wykonania polecenia. Aby uzyskać więcej informacji, przejdź na stronę <li> [Odblokowywanie dysków Data Box Disk dla klientów systemu Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odblokowywanie dysków Data Box Disk dla klientów systemu Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
+|[Błąd] Zgłoszono wyjątek: Plik DriveManifest.xml istnieje na dysku docelowego. <br> Oznacza to, że dysk docelowy został prawdopodobnie przygotowany przy użyciu innego pliku dziennika. <br>Aby dodać więcej danych do tego samego dysku, użyj poprzedniego pliku dziennika. Aby usunąć istniejące dane i ponownie użyć dysku docelowego dla nowego zadania importu, usuń plik DriveManifest.xml z dysku. Ponownie uruchom to polecenie, używając nowego pliku dziennika.| Ten błąd zostanie wyświetlony podczas próby użycia tego samego zestawu dysków w wielu sesjach importowania. <br> Z jedną sesją dzielenia i kopiowania można użyć tylko jednego zestawu dysków.|
+|[Błąd] Zgłoszono wyjątek: CopySessionId dane importowania września test-1 odwołuje się do poprzedniej sesji kopii i nie można użyć ponownie dla nowej sesji kopiowania.|Ten błąd jest zgłaszany w przypadku próby użycia tej samej nazwy zadania dla nowego zadania, które zostało poprzednio pomyślnie ukończone.<br> Należy przypisać unikatową nazwę dla nowego zadania.|
 |[Informacje] Nazwa pliku lub katalogu docelowego przekracza limit długości dla systemu plików NTFS. |Ten komunikat jest zgłaszany, gdy nazwa pliku docelowego została zmieniona z powodu długiej ścieżki pliku.<br> Aby sterować tym zachowaniem, należy zmodyfikować opcję dyspozycji w pliku `config.json`.|
-|[Błąd] Zgłoszono wyjątek: nieprawidłowa sekwencja ucieczki pliku JSON. |Ten komunikat jest zgłaszany, gdy format pliku config.json jest nieprawidłowy. <br> Przed zapisaniem pliku `config.json` zweryfikuj go przy użyciu narzędzia [JSONlint](https://jsonlint.com/).|
+|[Błąd] Zgłoszono wyjątek: Nieprawidłowa sekwencja ucieczki JSON. |Ten komunikat jest zgłaszany, gdy format pliku config.json jest nieprawidłowy. <br> Przed zapisaniem pliku `config.json` zweryfikuj go przy użyciu narzędzia [JSONlint](https://jsonlint.com/).|
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, w jaki sposób [zarządzać usługą Data Box Disk w witrynie Azure Portal](data-box-portal-ui-admin.md).

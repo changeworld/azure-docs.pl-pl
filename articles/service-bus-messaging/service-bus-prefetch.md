@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c88ea7433232b62c006c908cd2768d318d36d43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 292f8ae1821cdcc4fd6274808b53454ec51eaea0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854052"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157403"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Pobrana z wyprzedzeniem komunikatów usługi Azure Service Bus
 
@@ -50,7 +50,7 @@ Jeśli blokada dyskretnie wygaśnie w buforze pobierania z wyprzedzeniem, komuni
 
 Jeśli potrzebujesz wysokiego stopnia niezawodności do przetwarzania komunikatów, a przetwarzanie zajmuje dużo pracy i godziny, zalecane jest, skorzystać z funkcji pobierania z wyprzedzeniem, konserwatywnie lub wcale.
 
-Jeśli potrzebujesz najwyższej w całym i przetwarzanie komunikatów jest powszechnie tanie, pobieranie z wyprzedzeniem daje przepływności znaczne korzyści.
+Jeśli potrzebujesz wysokiej przepływności i przetwarzania komunikatów jest powszechnie tanie, pobieranie z wyprzedzeniem daje przepływności znaczne korzyści.
 
 Liczba maksymalna pobieranie z wyprzedzeniem i czasu trwania blokady skonfigurowanego w obrębie kolejki lub subskrypcji muszą być rozmieszczane w taki sposób, że limit czasu blokady co najmniej przekracza zbiorczą oczekiwanego komunikatu przetwarzania czas maksymalny rozmiar buforu pobierania z wyprzedzeniem, a także jeden komunikat. W tym samym czasie, limit czasu blokady nie powinny być tak długo, że liczba komunikatów może przekroczyć ich maksymalna [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) podczas przypadkowo są odrzucane, dlatego wymagającej wygaśnie przed trwa przed przeniesieniem ich blokady.
 

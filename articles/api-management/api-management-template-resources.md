@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: cfbb04ea56eacfd859b6ce520da5396ad91d9abf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4a7e3e9ff414c8f7ba1c49924f1d8659d72ae3e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121298"
+ms.locfileid: "54158214"
 ---
 # <a name="azure-api-management-template-resources"></a>Zasoby szablonu usługi Azure API Management
 Usługa Azure API Management zawiera następujące typy zasobów, do użytku w Deweloper szablonów portalu.  
@@ -275,7 +275,7 @@ Usługa Azure API Management zawiera następujące typy zasobów, do użytku w D
 |OAuth2TokenType_ImplicitGrant_AuthorizationResponse|WYMAGANE. Typ wystawionego tokenu.|  
 |OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|WYMAGANE. Typ wystawionego tokenu.|  
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Nazwa użytkownika właściciela zasobu.|  
-|OAuth2UnsupportedTokenType|Typ tokenu "{0}" nie jest obsługiwany.|  
+|OAuth2UnsupportedTokenType|Typ tokenu "{0}" nie jest obsługiwane.|  
 |OAuth2InvalidState|Nieprawidłowa odpowiedź z serwera autoryzacji|  
 |OAuth2GrantType_AuthorizationCode|Kod autoryzacji|  
 |OAuth2GrantType_Implicit|Niejawny|  
@@ -361,7 +361,7 @@ Usługa Azure API Management zawiera następujące typy zasobów, do użytku w D
 |WebProductsUsageLimitsHeader|Limity użycia|  
 |WebProductsYouAreNotSubscribed|Subskrybujesz ten produkt.|  
 |WebProductsYouRequestedSubscription|Żądasz zasubskrybowania tego produktu.|  
-|ErrorYouNeedtoAgreeWithLegalTerms|Musisz zgodzić się na Warunki użytkowania, zanim będzie można kontynuować.|  
+|ErrorYouNeedToAgreeWithLegalTerms|Musisz zgodzić się na Warunki użytkowania, zanim będzie można kontynuować.|  
 |ButtonLabelAddSubscription|Dodawanie subskrypcji|  
 |LinkLabelChangeSubscriptionName|zmień|  
 |ButtonLabelConfirm|Potwierdź|  
@@ -517,7 +517,7 @@ Usługa Azure API Management zawiera następujące typy zasobów, do użytku w D
 |WebDevelopersSecondaryKey|Klucz pomocniczy|  
 |ButtonLabelShowKey|Show|  
 |ButtonLabelRenewSubscription|Renew|  
-|WebDevelopersSubscriptionReqested|Żądana {0}|  
+|WebDevelopersSubscriptionRequested|Żądana {0}|  
 |WebDevelopersSubscriptionRequestedState|Żądane|  
 |WebDevelopersSubscriptionTableNameHeader|Name (Nazwa)|  
 |WebDevelopersSubscriptionTableStateHeader|Stan|  

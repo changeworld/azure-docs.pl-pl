@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: 6a5902b8c442d83c86142bad516b862febd6522c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.date: 01/08/2019
+ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118204"
+ms.locfileid: "54156820"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 
@@ -67,9 +67,28 @@ Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejący
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
 
-Jeśli chcesz używać swoich istniejących licencji programu SQL Server w środowisku lokalnym, możesz zapłacić tylko cena podstawowa podstawową infrastrukturą platformy Azure (na przykład maszyna wirtualna Azure gdzie działa baza danych) podczas SQL Server Database engine licencji nie zostaną uwzględnione na rachunku. W pewnym okresie możesz użyć swojej licencji w środowisku lokalnym, zarówno dla programu SQL Server i usługi Azure SQL Database. W przeciwnym razie koszt licencji dla aparatu bazy danych programu SQL Server będą uwzględniane w cenie usługi bazy danych lub wystąpienia. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure można utworzyć lub zaktualizować swoje bazy danych lub wystąpienia, istnieją dwie opcje cenowe, które można wybrać:
-- **BasePrice** oznacza, że możesz mieć ważną licencję programu SQL Server, który chcesz użyć jako części [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) i chcesz zapłacić tylko koszty infrastruktury podstawowej.
-- **LicenseIncluded** oznacza, że albo nie masz licencji programu SQL Server lokalne lub nie chcesz użyć swojej licencji w środowisku lokalnym dla bazy danych lub wystąpienia zarządzanego. W tym przypadku licencję programu SQL Server zostaną uwzględnione na rachunku. 
+Dzięki korzyści użycia hybrydowego platformy Azure, możesz płacić tylko za podstawową infrastrukturą platformy Azure przy użyciu istniejących licencji programu SQL Server dla aparatu bazy danych SQL, sama (**BasePrice**) i płacić za zarówno podstawowej infrastruktury i licencję programu SQL Server (**LicenseIncluded**). Można wybrać lub zmienić modelu licencjonowania przy użyciu witryny Azure portal lub przy użyciu jednej z poniższych interfejsów API.
+
+- Aby ustawić lub zaktualizowania typu licencji przy użyciu programu PowerShell:
+
+  - [Nowe AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [Zestaw AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [Nowe AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [Zestaw AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+
+- Aby ustawić lub zaktualizowania typu licencji przy użyciu wiersza polecenia platformy Azure:
+
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [Tworzenie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [Aktualizacja wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+
+- Aby ustawić lub zaktualizowania typu licencji przy użyciu interfejsu API REST:
+
+  - [Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [Zarządzane wystąpienia — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [Wystąpienia zarządzane — aktualizacja](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migracja z modelu jednostek DTU do modelu rdzenia wirtualnego
 

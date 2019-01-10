@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 728152c8f9e7d4cceb4b1c8165bbf087927f58e8
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063322"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159489"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 
@@ -42,7 +42,7 @@ Poniżej przedstawiono kilka kwestii, korzystając z pętli "Foreach":
 
 * W zagnieżdżonej pętli iteracji zawsze uruchamiane sekwencyjnie, nie równolegle. Równolegle operacji dla elementów w zagnieżdżonej pętli, należy utworzyć i [wywołać aplikację logiki podrzędnych](../logic-apps/logic-apps-http-endpoint.md).
 
-* Aby uzyskać przewidywalne wyniki operacji na zmiennych w pętlach, Uruchom te pętli sekwencyjnie.
+* Aby uzyskać przewidywalne wyniki operacji na zmienne podczas każdej iteracji pętli, Uruchom te pętli sekwencyjnie. Na przykład gdy uruchomionych współbieżnie pętli kończy się, inkrementacja, dekrementacja i Dołącz do zmiennej operacji zwrócić przewidywalne wyniki. Jednak podczas każdej iteracji w pętli jednocześnie uruchomione te operacje może zwrócić nieoczekiwane wyniki. 
 
 * Akcje w pętli "Foreach" pętli użycia [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 wyrażenie odwołania do przetworzenia każdego elementu w tablicy. Jeśli określisz dane, które nie znajduje się w tablicy, przepływ pracy aplikacji logiki nie powiedzie się. 
@@ -130,9 +130,9 @@ Domyślnie cykle w pętli "Foreach" Uruchom równolegle. Aby uruchomić każdy c
 
    ![W pętli "Foreach" Wybierz "..." > "Ustawienia"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. Włącz **kontroli współbieżności** ustawienie. Przenieś **stopień równoległości** suwak, aby **1**i wybierz polecenie **gotowe**.
+1. W obszarze **kontroli współbieżności**, Włącz **kontroli współbieżności** ustawienie **na**. Przenieś **stopień równoległości** suwak, aby **1**i wybierz polecenie **gotowe**.
 
-   ![Włącz ustawienie "Kontrola współbieżności"](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![Włącz mechanizm kontroli współbieżności](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
 Jeśli pracujesz z definicji JSON aplikacji logiki, możesz użyć `Sequential` opcji, dodając `operationOptions` parametru, na przykład:
 

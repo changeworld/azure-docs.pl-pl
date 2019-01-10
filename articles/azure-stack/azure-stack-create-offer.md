@@ -11,25 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 4ccff997c7e9f29aafc6966730ab36dfcf72ca9f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 079f45e37bef24ac974a0e2df7b1e81f1002cac0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077344"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159081"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Tworzenie oferty w usłudze Azure Stack
 
-[Oferuje](azure-stack-key-features.md) grup co najmniej jeden plan, które dostawcy przedstawiają użytkownikom kupowanie lub subskrybować. W tym dokumencie pokazano, jak utworzyć ofertę, która obejmuje [planu, który został utworzony](azure-stack-create-plan.md). Ta oferta umożliwia subskrybentom Konfigurowanie maszyn wirtualnych.
+[Oferuje](azure-stack-key-features.md) grup co najmniej jeden plan, które dostawcy przedstawiają użytkowników, których Ci użytkownicy mogą kupić lub subskrybować. W tym artykule opisano, jak utworzyć ofertę obejmującą [planu, który został utworzony](azure-stack-create-plan.md). Ta oferta zapewnia subskrybentom możliwość konfigurowania maszyn wirtualnych (VM).
 
-1. Zaloguj się do portalu administratora usługi Azure Stack (https://adminportal.local.azurestack.external) i wybierz **+ Utwórz zasób** > **dzierżawy oferty i plany** > **oferują**.
+1. Zaloguj się do [portalu administratora usługi Azure Stack](https://adminportal.local.azurestack.external) i wybierz **+ Utwórz zasób**, następnie **dzierżawy oferty i plany**, a następnie **oferują**.
 
    ![Tworzenie oferty](media/azure-stack-create-offer/image01.png)
   
-2. W obszarze **nowa oferta**, wprowadź **nazwę wyświetlaną** i **Nazwa zasobu**, a następnie w obszarze **grupy zasobów**, wybierz opcję **Create nowe** lub **Użyj istniejącej**. Nazwa wyświetlana jest przyjazną nazwę dla oferty. Ta przyjazna nazwa jest tylko informacje dotyczące oferty, którą widzą użytkownicy Po subskrybowaniu oferty. Użyj nazwy intuicyjne, która pomaga użytkownikom zrozumieć, co jest dostarczane z tej oferty. Nazwa zasobu jest widoczna tylko dla administratora. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
+2. W obszarze **nowa oferta**, wprowadź **nazwę wyświetlaną** i **Nazwa zasobu**, a następnie w obszarze **grupy zasobów**, wybierz opcję **Create nowe** lub **Użyj istniejącej**. Nazwa wyświetlana jest przyjazną nazwę dla oferty. Ta przyjazna nazwa jest tylko informacje dotyczące oferty, którą widzą użytkownicy Po subskrybowaniu oferty. Użyj nazwy intuicyjne, która pomaga użytkownikom zrozumieć, co jest dostarczane z tej oferty. Tylko administrator może zobaczyć nazwy zasobu. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
 
    ![Nowa oferta](media/azure-stack-create-offer/image01a.png)
   
@@ -37,17 +37,17 @@ ms.locfileid: "49077344"
 
    ![Wybierz plan](media/azure-stack-create-offer/image02.png)
   
-4. Po utworzeniu oferty, możesz zmienić jego stan. Oferty muszą być wykonane *publicznych* dla użytkowników uzyskać pełny widok podczas subskrybowania. Może być oferty:
+4. Po utworzeniu oferty, możesz zmienić jego stan. Oferty muszą być wykonane **publicznych** dla użytkowników uzyskać pełny widok podczas subskrybowania. Może być oferty:
 
-   - **Publiczne**: widoczne dla użytkowników.
-   - **Prywatne**: widoczne tylko dla administratorów w chmurze. To ustawienie jest przydatne podczas opracowywania planu lub oferty, lub jeśli chce się z administratorem chmury [tworzenia każdej subskrypcji dla użytkowników](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
-   - **Zlikwidowane**: zamknięte dla nowych subskrybentów. Administrator chmury można użyć stanu zlikwidowane, aby uniemożliwić przyszłe subskrypcje, ale pozostawić bieżących subskrybentów bez zmian.
+   - **Publiczne**: Widoczne dla użytkowników.
+   - **Prywatne**: Jest to widoczne tylko dla administratorów w chmurze. To ustawienie jest przydatne podczas opracowywania planu lub oferty, lub jeśli chce się z administratorem chmury [tworzenia każdej subskrypcji dla użytkowników](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
+   - **Zlikwidowana**: Zamknięte dla nowych subskrybentów. Administrator chmury można zlikwidować oferty, aby uniemożliwić przyszłe subskrypcje, ale pozostawić bieżących subskrybentów bez zmian.
 
    > [!TIP]  
-   > Zmiany tej oferty nie są bezpośrednio widoczne dla użytkownika. Aby zobaczyć zmiany, użytkownicy mogą mieć wylogowania się i zaloguj się ponownie do portalu użytkowników będzie nowej oferty.
+   > Zmiany w ramach oferty nie są bezpośrednio widoczne dla użytkownika. Aby zobaczyć zmiany, użytkownicy mogą mieć wylogowania się i zaloguj się ponownie do portalu użytkowników będzie nowej oferty.
 
-   W obszarze Przegląd dla oferty wybierz **stan ułatwień dostępu**. Wybierz stan, w której chcesz użyć (na przykład **publicznych**), a następnie wybierz **Zapisz**.
- 
+   Na ekranie Przegląd dla oferty, wybierz **stan ułatwień dostępu**. Wybierz stan, w której chcesz użyć (na przykład **publicznych**), a następnie wybierz pozycję **Zapisz**.
+
      ![Wybierz stan](media/azure-stack-create-offer/change-stage-1807.png)
 
      Jako alternatywę, wybierz **zmiany stanu** , a następnie wybierz stan.
@@ -55,7 +55,7 @@ ms.locfileid: "49077344"
     ![Wybierz stan ułatwień dostępu](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > Umożliwia także środowiska PowerShell do utworzenia domyślnego oferty, przydziały i planów. Aby uzyskać więcej informacji, zobacz [modułu programu PowerShell usługi Azure Stack 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
+   > Umożliwia także środowiska PowerShell do utworzenia domyślnego oferty, przydziały i planów. Aby uzyskać więcej informacji, zobacz [modułu programu PowerShell usługi Azure Stack 1.4.0](/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

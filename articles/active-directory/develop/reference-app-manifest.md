@@ -17,12 +17,12 @@ ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: a971806b453d34aa8459cb30090024bfca96d342
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d89a80ac6d6e81fd9cc68e1dc04d4461691994fd
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631192"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157976"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 
@@ -47,12 +47,9 @@ Aby skonfigurować manifest aplikacji:
 > [!NOTE]
 > Jeśli nie widzisz **Przykładowa wartość** kolumnę po **opis**, zmaksymalizuj okno przeglądarki i przewijania/przesunięcia, aż zobaczysz **Przykładowa wartość** kolumny.
 
->[!div class="mx-tdBreakAll"]
->[!div class="mx-tdCol2BreakAll"]
-
 | Klucz  | Typ wartości | Opis  | Przykładowa wartość |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Int32 dopuszczającego wartość null | Określa wersję tokenu dostępu akceptowane dla bieżącego zasobu interfejsu API. Możliwe wartości to 1, 2, wartość null. Wartość domyślna to wartość null, która będzie traktowane jako 2. | `2` |
+| `accessTokenAcceptedVersion` | Int32 dopuszczającego wartość null | Określa wersję tokenu dostępu, oczekiwany przez zasób. Spowoduje to zmianę wersji i niezależny od punktu końcowego lub użytego do wysłania żądania tokenu dostępu klienta utworzone format tokenu JWT.<br/><br/>Użyty punkt końcowy, w wersji 1.0 lub 2.0, jest wybierany przez klienta i ma wpływ tylko na wersję id_tokens. Zasoby muszą jawnie skonfigurować `accesstokenAcceptedVersion` do wskazania format tokena dostępu obsługiwane.<br/><br/>Możliwe wartości dla `accesstokenAcceptedVersion` są 1, 2 lub wartość null. Jeśli ma wartość null, domyślnie jest równa 1, który odnosi się do endpoint w wersji 1.0. | `2` |
 | `allowPublicClient` | wartość logiczna | Określa typ bazowy aplikacji. Usługa Azure AD wnioskuje typ aplikacji z replyUrlsWithType domyślnie. Brak niektórych scenariuszy, w którym usługi Azure AD nie może określić typ aplikacji klienckich (np. [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) przepływ, gdy żądanie HTTP jest możliwe bez Przekierowywanie adresu URL). W takich przypadkach usługi Azure AD będzie interpretować typ aplikacji, w oparciu o wartość tej właściwości. Jeśli ta wartość jest równa true typ bazowy aplikacji jest ustawiony jako publicznych klienta, takich jak zainstalowanych aplikacji uruchomionej na urządzeniu przenośnym. Wartość domyślna to false, co oznacza, że typ bazowy aplikacji jest poufne klienta, takie jak aplikacja sieci web. | `false` |
 | `appId` | Ciąg identyfikatora | Określa unikatowy identyfikator aplikacji, który jest przypisany do aplikacji przez usługę Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | Typ tablicy | Określa kolekcję ról, które aplikacja może deklarować. Te role można przypisać do użytkowników, grup lub jednostki usługi. Aby uzyskać więcej przykładów i informacje, zobacz [Dodaj role aplikacji w aplikacji i odbierać je w tokenie](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |

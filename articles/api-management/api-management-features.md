@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: a00328608c582dcd28dbc78b5b56829f9d1ab500
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: eae36aa6e60e3da03c59952a1d9e035e6a773d2d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585554"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156701"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Porównanie warstw usługi Azure API Management oparta na funkcjach
 
@@ -29,10 +29,10 @@ Każda usługa API Management [warstwy cenowej](https://aka.ms/apimpricing) ofer
 | Integracja z usługą Azure AD<sup>1</sup>                                                             | Nie                            | Yes            | Nie             | Yes            | Yes            |
 | Obsługa usługi Virtual Network (VNet)                                                               | Nie                            | Yes            | Nie             | Nie             | Yes            |
 | Wdrażanie w wielu regionach                                                                      | Nie                            | Nie             | Nie             | Nie             | Yes            |
-| Wielu niestandardowych nazw domen                                                                 | Nie                            | Nie             | Nie             | Nie             | Yes            |
+| Wiele niestandardowych nazw domen                                                                 | Nie                            | Nie             | Nie             | Nie             | Yes            |
 | Portal dla deweloperów<sup>2</sup>                                                                 | Nie                            | Yes            | Yes            | Yes            | Yes            |
 | Wbudowaną pamięć podręczną                                                                               | Nie                            | Yes            | Yes            | Yes            | Yes            |
-| Wbudowanym narzędziom analitycznym                                                                           | Nie                            | Yes            | Yes            | Yes            | Yes            |
+| Wbudowane narzędzia do analityki                                                                           | Nie                            | Yes            | Yes            | Yes            | Yes            |
 | [Ustawienia protokołu SSL](api-management-howto-manage-protocols-ciphers.md)                             | Nie                            | Yes            | Yes            | Yes            | Yes            |
 | [Zewnętrzna pamięć podręczna](https://aka.ms/apimbyoc)                                                    | Yes                           | Nie<sup>3</sup> | Nie<sup>3</sup> | Nie<sup>3</sup> | Nie<sup>3</sup> |
 | [Uwierzytelnianie certyfikatu klienta](api-management-howto-mutual-certificates-for-clients.md) | Nie<sup>4</sup>                | Yes            | Yes            | Yes            | Yes            |
@@ -42,7 +42,7 @@ Każda usługa API Management [warstwy cenowej](https://aka.ms/apimpricing) ofer
 | Usługa Azure Monitor dzienniki i metryki                                                               | Nie<sup>5</sup>                | Yes            | Yes            | Yes            | Yes            |
 
 <sup>1</sup> umożliwia korzystanie z usługi Azure AD (i usługi Azure AD B2C) jako dostawcy tożsamości dla logowanie użytkowników w portalu dla deweloperów.<br/>
-<sup>2</sup> pokrewne funkcje w tym np. użytkownikom, grupom, problemy, szablony applicationsn i poczty e-mail i powiadomień.<br/>
+<sup>2</sup> pokrewne funkcje w tym np. użytkownikom, grupom, problemy, aplikacje i szablony wiadomości e-mail i powiadomień.<br/>
 <sup>3</sup> wkrótce zostanie udostępniona Obsługa zewnętrzna pamięć podręczna dla tej warstwy.<br/>
 <sup>4</sup> uwierzytelnianie certyfikatu klienta, które zostaną dodane do warstwa zużycie przed jego ogólnie dostępne.<br/>
 <sup>5</sup> pełne usługi Azure Monitor Obsługa zostanie dodana do warstwy zużycia.

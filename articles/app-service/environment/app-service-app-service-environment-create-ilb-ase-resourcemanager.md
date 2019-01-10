@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276368"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156684"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager
 
@@ -42,7 +42,7 @@ Przykładowy szablon usługi Azure Resource Manager i jego pliku skojarzone z ni
 
 Większość parametrów w *azuredeploy.parameters.json* pliku są wspólne dla tworzenia zarówno środowiska ASE z wewnętrznym modułem równoważenia obciążenia, a także za pomocą środowisk ASE powiązany z publicznych adresów VIP.  Poniżej wywołania parametrów ważne out lub które są unikatowe, podczas tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia:
 
-* *interalLoadBalancingMode*:  W większości przypadków zestawie to 3, co oznacza, że ruch HTTP/HTTPS na portach 80/443 i kanału kontroli/danych, które porty wysłuchaliśmy przez usługę FTP w środowisku ASE, będą powiązane wewnętrznego przydzielony adres wewnętrznej sieci wirtualnej.  Jeśli ta właściwość zamiast tego jest równa 2, następnie usługę FTP powiązanych portów (kanały zarówno kontroli, jak i dane), będą powiązane adresu wewnętrznego modułu równoważenia obciążenia, podczas gdy ruch HTTP/HTTPS pozostanie na publicznych adresów VIP.
+* *Tryb internalLoadBalancingMode*:  W większości przypadków zestawie to 3, co oznacza, że ruch HTTP/HTTPS na portach 80/443 i kanału kontroli/danych, które porty wysłuchaliśmy przez usługę FTP w środowisku ASE, będą powiązane wewnętrznego przydzielony adres wewnętrznej sieci wirtualnej.  Jeśli ta właściwość zamiast tego jest równa 2, następnie usługę FTP powiązanych portów (kanały zarówno kontroli, jak i dane), będą powiązane adresu wewnętrznego modułu równoważenia obciążenia, podczas gdy ruch HTTP/HTTPS pozostanie na publicznych adresów VIP.
 * *sufiks DNS*:  Ten parametr określa domyślne domeny katalogu głównego, który zostanie przypisany do środowiska ASE.  W publicznej wersji usługi Azure App Service, domyślnej domeny katalogu głównego dla wszystkich aplikacji sieci web jest *azurewebsites.net*.  Jednak ponieważ środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest wewnętrzny do sieci wirtualnej klienta, nie ma sensu do korzystania z domeny katalogu głównego domyślnego usług publicznych.  Zamiast tego środowisko ASE z wewnętrznym modułem równoważenia obciążenia powinien mieć domyślnej domeny katalogu głównego, pasującą do użycia w wewnętrznej sieci wirtualnej firmy.  Na przykład użyć domyślnej domeny katalogu głównego, z hipotetyczny Contoso Corporation *wewnętrznego contoso.com* dla aplikacji, które mają być tylko do rozpoznania i jest dostępny w sieci wirtualnej firmy Contoso. 
 * *ipSslAddressCount*:  Ten parametr jest automatycznie ustawiana domyślnie na wartość 0 w *azuredeploy.json* pliku, ponieważ środowiska ASE z wewnętrznym modułem równoważenia obciążenia ma tylko jeden adres wewnętrznego modułu równoważenia obciążenia.  Nie ma żadnych jawnych adresów IP SSL za środowisko ASE wewnętrznego modułu równoważenia obciążenia i dlatego puli adresów IP protokołu SSL dla środowiska ASE z wewnętrznym modułem równoważenia obciążenia musi być równa zero, w przeciwnym razie wystąpi błąd inicjowania obsługi administracyjnej. 
 
@@ -60,7 +60,7 @@ Po utworzeniu środowiska ASE wewnętrznego modułu równoważenia obciążenia,
 
 Istnieją różne sposoby, aby uzyskać prawidłowy certyfikat SSL tym wewnętrzne urzędy certyfikacji, zakup certyfikat od wystawcy zewnętrznego i przy użyciu certyfikatu z podpisem własnym.  Niezależnie od źródła certyfikatu SSL należy poprawnie skonfigurować następujące atrybuty certyfikatu:
 
-* *Temat*:  Ten atrybut musi być równa **lokalizacji głównego domain-here.com*
+* *Podmiot*:  Ten atrybut musi być równa **lokalizacji głównego domain-here.com*
 * *Alternatywna nazwa podmiotu*:  Ten atrybut musi zawierać zarówno **lokalizacji głównego domain-here.com*, i **.SCM.domena-głównego-domeny — here.com*.  Przyczyną drugi wpis jest, że będzie nawiązywane połączenia SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami przy użyciu adresu w postaci *your-app-name.scm.your-root-domain-here.com*.
 
 Za pomocą ważnego certyfikatu SSL w kasie potrzebne są dwa dodatkowe kroki przygotowawcze.  Certyfikat SSL musi być konwertowany/zapisany jako plik pfx.  Należy pamiętać, plik PFX musi zawierać wszystkie pośrednie i certyfikaty główne i musi zostać zabezpieczony za pomocą hasła.

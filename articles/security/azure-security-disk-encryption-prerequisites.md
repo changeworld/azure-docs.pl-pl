@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/17/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57136ac267af078068f33df6ee85dfccd287606a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537702"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156514"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -67,12 +67,10 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalowanie programu Azure PowerShell do użytku na komputerze lokalnym (opcjonalnie): 
 1. Postępuj zgodnie z instrukcjami w linkach w systemie operacyjnym, następnie Kontynuuj mimo że pozostałe kroki.      
-    - [Instalowanie i konfigurowanie programu PowerShell platformy Azure dla Windows](/powershell/azure/install-azurerm-ps). 
+    - [Instalowanie i konfigurowanie programu PowerShell platformy Azure dla Windows](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0). 
         - Zainstaluj moduł PowerShellGet, programu Azure PowerShell i Załaduj moduł AzureRM. 
-    - [Instalowanie i konfigurowanie programu Azure Powershell w systemach macOS i Linux](/powershell/azure/install-azurermps-maclinux).
-        -  Zainstaluj program PowerShell Core, programu Azure PowerShell dla platformy .NET Core i załadowania modułu Az.
 
-2. Sprawdź zainstalowane wersje modułu AzureRM. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
+2. Sprawdź zainstalowane wersje modułu AzureRM. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module).
     -  Moduł AzureRM musi być w wersji 6.0.0 lub nowszej.
     - Zaleca się korzystanie z najnowszej wersji modułu AzureRM.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: iainfou
-ms.openlocfilehash: 4e3f2f33cfffeacbcbeccc4f17f55b7d0e1a985c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c4a79571d22276f4874d6b8bb5fda3d86ca5f929
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50098026"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154984"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących HTTPS i używanie certyfikatów protokołu TLS w usłudze Azure Kubernetes Service (AKS)
 
@@ -179,7 +179,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-*- V* parametru w naszym `curl` polecenie wyświetla pełne informacje, w tym certyfikat TLS odebrany. W połowie za pomocą programu curl danych wyjściowych, można sprawdzić, użyto certyfikatu TLS. *-K* parametr nadal ładowania strony, mimo że firma Microsoft korzysta z certyfikatu z podpisem własnym. Poniższy przykład pokazuje, że *wystawcy: CN=demo.azure.com; O = aks — ruch przychodzący tls* użyto certyfikatu:
+*- V* parametru w naszym `curl` polecenie wyświetla pełne informacje, w tym certyfikat TLS odebrany. W połowie za pomocą programu curl danych wyjściowych, można sprawdzić, użyto certyfikatu TLS. *-K* parametr nadal ładowania strony, mimo że firma Microsoft korzysta z certyfikatu z podpisem własnym. Poniższy przykład pokazuje, że *wystawcy: CN=Demo.Azure.com; O = aks — ruch przychodzący tls* użyto certyfikatu:
 
 ```
 [...]
@@ -192,7 +192,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-Teraz Dodaj */hello-world-two* ścieżkę na adres, takie jak *https://demo.azure.com/hello-world-two*. Zwracana jest drugiej aplikacji demonstracyjnej z tytułem niestandardowych, jak pokazano w następujących danych wyjściowych skróconego przykładu:
+Teraz Dodaj */hello-world-two* ścieżkę na adres, takie jak `https://demo.azure.com/hello-world-two`. Zwracana jest drugiej aplikacji demonstracyjnej z tytułem niestandardowych, jak pokazano w następujących danych wyjściowych skróconego przykładu:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two

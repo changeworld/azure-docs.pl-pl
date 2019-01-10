@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257609"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159456"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego w systemie Windows Server
 Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, można wdrożyć i uruchamianie aplikacji usługi Service Fabric w dowolnym środowisku, które zawiera zestaw wzajemnie połączonych komputery serwera Windows, lokalnie lub za pomocą dowolnego dostawcy chmury. Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia klastrów usługi Service Fabric o nazwie pakietu autonomicznego w systemie Windows Server.
@@ -61,7 +61,7 @@ W ramach pakietu instalacyjnego jest instalowanych kilka przykładowych plików 
 
 Klaster utworzony w tym artykule jest niebezpieczne.  Każda osoba może połączyć się z nim anonimowo i przeprowadzić operacje związane z zarządzaniem. Dlatego też klastry produkcyjne należy zawsze zabezpieczać przy użyciu certyfikatów X.509 lub zabezpieczeń systemu Windows.  Zabezpieczenia są konfigurowane tylko w momencie tworzenia klastra. Nie można włączyć zabezpieczeń później, gdy klaster jest już utworzony. Aktualizacja pliku konfiguracji, Włącz [certyfikatów zabezpieczeń](service-fabric-windows-cluster-x509-security.md) lub [zabezpieczeń Windows](service-fabric-windows-cluster-windows-security.md). Dalsze informacje na temat zabezpieczeń klastra usługi Service Fabric można znaleźć w temacie [Secure a cluster](service-fabric-cluster-security.md) (Zabezpieczanie klastra).
 
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>Krok 1A: tworzenie niezabezpieczony lokalnego klastra projektowego
+### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>Krok 1A: Utwórz niezabezpieczony lokalnego klastra projektowego
 Usługa Service Fabric można wdrożyć klaster programowania z jednego komputera przy użyciu *ClusterConfig.Unsecure.DevCluster.json* plik dołączony [przykłady](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 Rozpakowywanie pakietu autonomicznego na komputerze, skopiuj przykładowy plik konfiguracji na komputer lokalny, a następnie uruchom *CreateServiceFabricCluster.ps1* skryptu za pomocą sesji programu PowerShell administratora z folderu pakietu autonomicznego .
@@ -85,7 +85,7 @@ Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnien
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    Dane wyjściowe powinny być podobne do następujących. Jeśli pole dolnej "Zakończono pomyślnie" jest zwracana jako "Prawda", wykonuje sprawdzenie powiodło się i klaster wydaje się być możliwy do wdrożenia na podstawie danych wejściowych konfiguracji.
+    Powinny pojawić się dane wyjściowe podobne do następujących: Jeśli pole dolnej "Zakończono pomyślnie" jest zwracana jako "Prawda", wykonuje sprawdzenie powiodło się i klaster wydaje się być możliwy do wdrożenia na podstawie danych wejściowych konfiguracji.
 
     ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
@@ -104,7 +104,7 @@ Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnien
     Passed                     : True
     ```
 
-2. Utwórz klaster: Uruchom *CreateServiceFabricCluster.ps1* skrypt, aby wdrożyć klaster usługi Service Fabric w każdej maszynie w konfiguracji. 
+2. Utwórz klaster:  Uruchom *CreateServiceFabricCluster.ps1* skrypt, aby wdrożyć klaster usługi Service Fabric w każdej maszynie w konfiguracji. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -150,7 +150,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3: Wizualizowanie klastra za pomocą Eksploratora usługi Service Fabric
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3: Wizualizowanie klastra za pomocą narzędzia Service Fabric Explorer
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to odpowiednie narzędzie do wizualizowania klastra i zarządzania aplikacjami.  Service Fabric Explorer to usługa, która działa w klastrze otwieranym w przeglądarce, przechodząc do [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer).
 
 Pulpit nawigacyjny klastra zawiera omówienie klastra, w tym podsumowanie kondycji węzła i aplikacji. Widok węzła przedstawia fizyczny układ klastra. Dla danego węzła można sprawdzić, które aplikacje mają kod wdrożony w tym węźle.

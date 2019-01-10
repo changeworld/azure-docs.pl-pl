@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/8/2019
+ms.date: 1/9/2019
 ms.author: douglasl
-ms.openlocfilehash: be26aa95ddac7b63293cee234209ac52243f110a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5cc625e07f1c92c53491e83f4049bad12cd9d1a1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104339"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158265"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
@@ -187,6 +187,17 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
     ```
     
     Polecenie powinno zakończyć się pomyślnie, udzielanie tożsamości zarządzanej dla usługi ADF możliwość utworzenia bazy danych (SSISDB).
+
+8.  Jeśli chcesz się przełączyć na potrzeby uwierzytelniania usługi Azure AD dla środowiska Azure-SSIS IR do niego dostęp z bazy danych SSISDB został utworzony przy użyciu uwierzytelniania programu SQL, kliknij prawym przyciskiem myszy **SSISDB** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
+
+9.  W oknie zapytania wprowadź następujące polecenie języka T-SQL, a następnie wybierz pozycję **Execute** na pasku narzędzi.
+
+    ```sql
+    CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo
+    ALTER ROLE db_owner ADD MEMBER [{the managed identity name}]
+    ```
+
+    Polecenie powinno zakończyć się pomyślnie, udzielanie tożsamości zarządzanej dla usługi ADF możliwość dostępu do bazy danych SSISDB.
 
 ## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Aprowizacja Azure-SSIS IR w aplikacji portal/ADF platformy Azure
 

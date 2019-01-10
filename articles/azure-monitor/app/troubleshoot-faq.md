@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0ad9179c5a6589df1168c5cebc3dcbd5496b9870
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121128"
+ms.locfileid: "54156293"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -44,7 +44,7 @@ ms.locfileid: "54121128"
 * [Usługi w chmurze na platformie Azure](../../azure-monitor/app/cloudservices.md)
 * [Serwery aplikacji działające w platformy Docker](../../azure-monitor/app/docker.md)
 * [Aplikacje jednej strony sieci web](../../azure-monitor/app/javascript.md)
-* [Program SharePoint](sharepoint.md)
+* [SharePoint](sharepoint.md)
 * [Aplikacja klasyczna Windows](../../azure-monitor/app/windows-desktop.md)
 * [Inne platformy](../../azure-monitor/app/platforms.md)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2017
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 8603ccf4643d7b1abd977cc372cde3fe24f98e07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: e4cb22866fa2885208b912c88d56243ac7826480
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724876"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159251"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Wyświetlanie powiadomień dotyczących kondycji usługi przy użyciu witryny Azure portal
 
@@ -49,12 +49,12 @@ category | Ta właściwość jest zawsze **ServiceHealth**.
 resourceId | Identyfikator zasobu zasób objęty wpływem.
 Properties.Title | Zlokalizowane tytuł dla tej komunikacji. Domyślnym będzie angielski.
 Properties.Communication | Zlokalizowane szczegóły dotyczące komunikacji z kod znaczników HTML. Domyślnym będzie angielski.
-Properties.incidentType | Jeden z następujących wartości: **Wymagana akcja**, **informacji**, **zdarzenia**, **konserwacji**, lub **zabezpieczeń**.
+Properties.incidentType | Jeden z następujących wartości: **Wymagana akcja**, **informacyjny**, **zdarzenia**, **konserwacji**, lub **zabezpieczeń**.
 Properties.trackingId | Zdarzenie, z którą jest skojarzone to zdarzenie. Umożliwia korelowanie zdarzeń powiązanych ze zdarzeniem.
 Properties.impactedServices | O zmienionym znaczeniu obiektu blob JSON opisujące usługi i regiony wpływ zdarzenie. Właściwość zawiera listę usług, z których każdy ma **ServiceName**i listę regionów, których to dotyczy, z których każdy ma **RegionName**.
 Properties.defaultLanguageTitle | Komunikacja w języku angielskim.
 Properties.defaultLanguageContent | Komunikacja w języku angielskim, jako kod znaczników HTML czy zwykły tekst.
-Properties.Stage | Możliwe wartości parametru **zdarzenia**, i **zabezpieczeń** są **aktywny,** **rozwiązane** lub **RCA**. Dla **wymagana akcja** lub **informacji** jest jedyną wartością **Active.** Aby uzyskać **konserwacji** są: **Aktywne**, **planowane**, **InProgress**, **anulowane**, **zmienił czas**, **rozwiązane**, lub **pełną**.
+Properties.Stage | Możliwe wartości parametru **zdarzenia**, i **zabezpieczeń** są **aktywny,** **rozwiązane** lub **RCA**. Aby uzyskać **wymagana akcja** lub **komunikat o charakterze informacyjnym** jest to jedyna wartość **Active.** Aby uzyskać **konserwacji** są: **Aktywne**, **planowane**, **InProgress**, **anulowane**, **zmienił czas**, **rozwiązane**, lub **pełną**.
 Properties.communicationId | Komunikacja, z którą jest skojarzone to zdarzenie.
 
 ### <a name="details-on-service-health-level-information"></a>Szczegółowe informacje na temat poziomu informacje o kondycji usług
@@ -71,7 +71,7 @@ Properties.communicationId | Komunikacja, z którą jest skojarzone to zdarzenie
             <dd>Standardowa planowanej konserwacji</dd>
         </dl>
     </li>
-    <li><b>Informacje o</b> (properties.incidentType == informacji) <dl>
+    <li><b>Informacje o</b> (properties.incidentType == informacyjne) <dl>
             <dt>Informacyjny</dt>
             <dd>Administrator może być konieczne zapobiegną do istniejących usług</dd>
         </dl>

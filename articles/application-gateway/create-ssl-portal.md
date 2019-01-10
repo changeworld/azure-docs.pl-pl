@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 814c3ebec326ab1c17f4fea7f11b2bacaa6b42d9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2ae8c14b40fa13a1aa8008588fb0efb1b1d2c3f6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997608"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159421"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurowanie bramy aplikacji przy użyciu kończenia żądań SSL przy użyciu witryny Azure portal
 
@@ -148,7 +148,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 ### <a name="add-backend-servers"></a>Dodawanie serwerów zaplecza
 
 3. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij pozycję **myAppGateway**.
-4. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij przycisk **appGateayBackendPool**.
+4. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij pozycję **appGatewayBackendPool**.
 5. Kliknij przycisk **Add target** dodawania każdej maszyny wirtualnej, który został utworzony do puli zaplecza.
 
     ![Dodawanie serwerów zaplecza](./media/create-ssl-portal/application-gateway-backend.png)

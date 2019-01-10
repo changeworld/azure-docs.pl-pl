@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747919"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157211"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
@@ -168,15 +168,15 @@ SELECT * FROM devices.modules
 Firma Microsoft nie zezwalaj na sprzężenie między urządzeniami i devices.modules kolekcji. Jeśli chcesz bliźniaczych reprezentacjach modułów zapytań między urządzeniami, możesz zrobić go na podstawie tagów. To zapytanie będzie zwracać wszystkie bliźniaczych reprezentacjach modułów dla wszystkich urządzeń ze stanem skanowania:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning'
+SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
 To zapytanie będzie zwracać wszystkie bliźniaczych reprezentacjach modułów ze stanem skanowania, ale tylko na określony podzbiór urządzeń:
 
 ```sql
-Select * from devices.modules 
-  where properties.reported.status = 'scanning' 
-  and deviceId IN ['device1', 'device2']
+SELECT * FROM devices.modules 
+  WHERE properties.reported.status = 'scanning' 
+  AND deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>Przykład w języku C#
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM — klauzula
 
-**z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **URZĄDZENIOM** do zapytań bliźniaczych reprezentacji urządzeń lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
+**z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **Z urządzeń** do zapytań bliźniaczych reprezentacji urządzeń lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
 
 
 ## <a name="where-clause"></a>Klauzula WHERE
@@ -447,8 +447,8 @@ Obsługiwane są następujące operatory:
 
 | Rodzina | Operatory |
 | --- | --- |
-| Operacje arytmetyczne |+, -, *, /, % |
-| Logiczne |AND, OR, NOT |
+| Arytmetyczny |+, -, *, /, % |
+| Logiczny |AND, OR, NOT |
 | Porównanie |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkcje
@@ -462,12 +462,12 @@ Obsługiwane są następujące funkcje matematyczne w warunkach trasy:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| ABS(x) | Zwraca wartość bezwzględną (pozytywna) wartość podanego wyrażenia liczbowego. |
+| ABS(x) | Zwraca wartość bezwzględną (dodatnią) podanego wyrażenia liczbowego. |
 | EXP(x) | Zwraca wartość określonego wyrażenia liczbowego (e ^ x). |
 | Power(x,y) | Zwraca wartość z określonego wyrażenia do wskazanej potęgi (x ^ y).|
 | SQUARE(x) | Zwraca kwadrat określoną wartość liczbową. |
-| CEILING(x) | Zwraca najmniejszą wartość liczby całkowitej większa lub równa określonej wyrażenia liczbowego. |
-| FLOOR(x) | Zwraca największą liczbę całkowitą, mniejsze niż lub równe określonego wyrażenia liczbowego. |
+| CEILING(x) | Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą. |
+| FLOOR(x) | Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą. |
 | SIGN(x) | Zwraca wynik dodatni (+ 1), wartość zero (0) lub minus (-1) z określonego wyrażenia liczbowego.|
 | SQRT(x) | Zwraca pierwiastek kwadratowy z określoną wartość liczbową. |
 
@@ -478,7 +478,7 @@ W warunkach trasy następujące sprawdzania typu i rzutowania funkcje są obsłu
 | AS_NUMBER | Konwertuje ciąg wejściowy na liczbę. `noop` Jeśli wartość wejściowa jest numerem; `Undefined` Jeśli ciąg nie reprezentuje liczbę.|
 | IS_ARRAY | Zwraca wartość logiczną wskazującą, czy Tablica typu z określonego wyrażenia. |
 | IS_BOOL | Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie jest wartością logiczną. |
-| IS_DEFINED | Zwraca wartość Boolean wskazującą, jeśli właściwość zostanie przypisana wartość. |
+| IS_DEFINED | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
 | IS_NULL | Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie ma wartość null. |
 | IS_NUMBER | Zwraca wartość logiczną wskazującą, jeżeli typ podanego wyrażenia jest liczbą. |
 | IS_OBJECT | Zwraca wartość logiczną wskazującą, czy obiekt JSON typu z określonego wyrażenia. |
@@ -489,15 +489,15 @@ Obsługiwane są następujące funkcje ciągów w warunkach trasy:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Zwraca ciąg, który jest wynikiem złączenie co najmniej dwóch wartości ciągu. |
+| CONCAT (x, y,...) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
 | LENGTH(x) | Zwraca liczbę znaków z określonego wyrażenia ciągu.|
-| LOWER(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych wielkiej litery na małe litery. |
-| UPPER(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych małej litery na wielkie litery. |
+| LOWER(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
+| UPPER(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
 | SUBSTRING (string, start [, długość]) | Zwraca część wyrażenia ciągu, zaczynając od pozycji liczony od zera określony znak i kontynuuje do określonej długości lub do końca ciągu. |
-| INDEX_OF (string, fragment) | Zwraca pozycję początkową pierwsze wystąpienie ciągu drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli nie zostanie znaleziony ciąg.|
+| INDEX_OF (string, fragment) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony.|
 | STARTS_WITH (x, y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia rozpoczyna się od drugiego. |
 | ENDS_WITH (x, y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia kończy się na drugi. |
-| CONTAINS(x,y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenie zawiera drugą. |
+| CONTAINS(x,y) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
