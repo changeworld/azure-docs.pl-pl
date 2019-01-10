@@ -5,21 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 657800c6f96560c68e690ccbd1dfb166c5034812
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 51a0f560a0e4b6ff791d5ed3f9f221eb2eeb9b4d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430140"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191347"
 ---
 # <a name="analysis-services-high-availability"></a>Analiza usługi wysokiej dostępności
+
 W tym artykule opisano, zapewniając wysoką dostępność dla serwerów usług Azure Analysis Services. 
 
-
 ## <a name="assuring-high-availability-during-a-service-disruption"></a>Zapewnienie wysokiej dostępności podczas przerw w działaniu usługi
+
 Chociaż rzadko, w centrum danych platformy Azure może mieć awarię. Taka awaria powoduje zakłócenia działania firmy, która może trwać kilka minut lub może trwać wiele godzin. Wysoka dostępność w większości przypadków odbywa się przy użyciu nadmiarowość serwera. Za pomocą usług Azure Analysis Services można osiągnąć nadmiarowość, tworząc dodatkowe, pomocnicze serwery w jednym lub kilku regionach. Podczas tworzenia nadmiarowych serwerów, aby mieć pewność, danych i metadanych na tych serwerach są zsynchronizowane z serwerem w regionie, który przeszedł do trybu offline, możesz:
 
 * Wdrażaj modele na serwerach nadmiarowych w innych regionach. Ta metoda wymaga przetwarzania danych na serwerze podstawowym i serwerach nadmiarowych w równoległych, zapewniając wszystkie serwery są zsynchronizowane.
@@ -31,6 +32,7 @@ W obu przypadkach Jeśli serwer podstawowy ulegnie awarii, należy zmienić para
 Aby uniknąć konieczności zmiany parametrów połączenia na klientach raportowania, należy utworzyć serwer [alias](analysis-services-server-alias.md) dla podstawowego serwera. Jeśli serwer podstawowy ulegnie awarii, możesz zmienić aliasu, aby wskazać nadmiarowe serwer w innym regionie. Można zautomatyzować alias na nazwę serwera, tworząc sprawdzenie kondycji punktu końcowego na serwerze podstawowym. W przypadku niepowodzenia sprawdzania kondycji tego samego punktu końcowego można nakazać serwerowi nadmiarowy w innym regionie. 
 
 ## <a name="related-information"></a>Informacje pokrewne
+
 [Kopia zapasowa i przywracanie](analysis-services-backup.md)   
 [Zarządzanie usług Azure Analysis Services](analysis-services-manage.md)   
 [Alias serwera nazw](analysis-services-server-alias.md) 

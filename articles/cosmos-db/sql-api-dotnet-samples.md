@@ -1,19 +1,18 @@
 ---
 title: 'Azure Cosmos DB: przykłady platformy .NET dla interfejsu SQL API'
 description: Znajdź w witrynie GitHub przykłady dla platformy .NET w języku C# służące do wykonywania typowych zadań przy użyciu interfejsu SQL API w usłudze Azure Cosmos DB, w tym operacji CRUD.
-keywords: Przykład w języku NoSQL
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
-ms.author: rnagpal
-ms.openlocfilehash: 00161c8eac445a02ffbb7a3f0a15af24df7f8c3a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.author: sngun
+ms.openlocfilehash: 5d80c0a8464a9672859a3fbd305bbd4ab322b092
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001825"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037093"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: przykłady platformy .NET dla interfejsu SQL API
 > [!div class="op_single_selector"]

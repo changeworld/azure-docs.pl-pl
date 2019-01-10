@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: ced7964fc96138ad7b18ab72d6c479e8db7eab8a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 115604d9b2aa21018742bbedbc737405b52599e4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436232"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188950"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -82,6 +82,8 @@ Zmień konfigurację serwerów DNS w sieci Wirtualnej usług AD DS platformy Azu
 Po nawiązaniu komunikacji równorzędnej między sieciami wirtualnymi, należy skonfigurować HDInsight sieci Wirtualnej do użycia niestandardowego serwera DNS i wprowadzić prywatnych adresów IP usług AD DS Azure jako adresy serwera DNS. Obie sieci wirtualne, używając tych samych serwerów DNS, niestandardową nazwę domeny zostanie rozwiązany do prawego adresu IP i będzie dostępny z HDInsight. Na przykład jeśli nazwa domeny "contoso.com" następnie po wykonaniu tego kroku pingowanie "contoso.com" powinna być rozpoznawana adresów IP usług AD DS platformy Azure po prawej stronie. 
 
 ![Konfigurowanie serwerów DNS niestandardowe dla wirtualnej sieci równorzędnej](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+
+Jeśli używasz reguł sieciowych grup zabezpieczeń w podsieci usługi HDInsight, należy umożliwić [wymaganych adresów IP](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) dla ruchu przychodzącego i ruchu wychodzącego. 
 
 **Aby przetestować** Jeśli sieci są poprawnie skonfigurowane, Dołącz do HDInsight sieci Wirtualnej/podsieci maszyny Wirtualnej systemu windows i zbadaj nazwy domeny (jego powinien rozwiązać adres IP), a następnie uruchom **ldp.exe** uzyskać dostępu do domeny usług AD DS platformy Azure. Następnie **przyłączanie maszyny Wirtualnej systemu windows do domeny, aby potwierdzić** się wszystkie wymagane wywołania RPC sukcesem między klientem i serwerem. Można również użyć **nslookup** o potwierdzenie sieci dostępu do konta magazynu lub dowolnego zewnętrzne bazy danych można użyć (na przykład zewnętrzny Magazyn metadanych Hive lub Ranger bazy danych).
 Upewnij się, że wszystkie [wymagane porty](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) dozwolonych elementów znajdują się w podsieci usługi AAD DS reguły sieciowej grupy zabezpieczeń, jeśli DS usługi AAD jest zabezpieczony przez sieciową grupę zabezpieczeń. Jeśli maszyna wirtualna przyłączenie do domeny systemu windows to się powiedzie, można przejść do następnego kroku i utworzyć klastry z ESP.

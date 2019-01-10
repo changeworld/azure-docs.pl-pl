@@ -1,6 +1,6 @@
 ---
 title: Bezpieczny dostęp do usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Ochrona dostępu do wyzwalaczy, danych wejściowych i danych wyjściowych, parametrów akcji i usług w przepływach pracy dla usługi Azure Logic Apps
+description: Dodawanie zabezpieczeń w usłudze Azure Logic Apps, w tym wyzwalaczy, danych wejściowych i danych wyjściowych, parametrów i innych usług
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,262 +9,362 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 11/22/2016
-ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/08/2019
+ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232600"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189534"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
-Poniżej przedstawiono sposoby zabezpieczenie dostępu do różnych składników aplikacji logiki:
+Poniżej przedstawiono elementów w aplikacji logiki gdzie można zabezpieczyć dostęp do:
 
-* Zabezpieczanie dostępu do wyzwalania przepływu pracy aplikacji logiki z wyzwalaczem żądania HTTP.
-* Zabezpieczanie dostępu do zarządzania, edytowanie lub odczytywanie aplikacji logiki.
-* Bezpieczny dostęp do zawartości wewnątrz dane wejściowe i wyjściowe dla przebiegu aplikacji logiki.
-* Zabezpiecz dane wejściowe dla działania w przepływie pracy aplikacji logiki lub parametrów.
-* Bezpieczny dostęp do usług, które odbierać żądania z przepływu pracy aplikacji logiki.
+* [Wyzwalacze żądania lub elementu Webhook](#secure-triggers)
+* [Operacje, takie jak zarządzanie, edytowanie lub przeglądanie](#secure-operations) aplikacji logiki
+* [Dane wejściowe i wyjściowe](#secure-run-history) z aplikacji logiki w historii uruchamiania
+* [Parametry akcji i dane wejściowe](#secure-action-parameters)
+* [Usługi, które żądania get](#secure-requests) z aplikacji logiki
 
-## <a name="secure-access-to-trigger"></a>Bezpieczny dostęp do wyzwolenia
+<a name="secure-triggers"></a>
 
-Podczas pracy z aplikacją logiki, który jest uruchamiany na żądania HTTP ([żądania](../connectors/connectors-native-reqres.md) lub [elementu Webhook](../connectors/connectors-native-webhook.md)), możesz ograniczyć dostęp, tak aby tylko autoryzowani klienci mogą wyzwalać aplikacji logiki. Wszystkie żądania do aplikacji logiki są szyfrowane i chronione za pomocą protokołu SSL.
+## <a name="secure-access-to-request-triggers"></a>Bezpieczny dostęp do żądania wyzwalaczy
 
-### <a name="shared-access-signature"></a>Sygnatura dostępu współdzielonego
+Gdy Twoja aplikacja logiki używa wyzwalacz na podstawie żądań HTTP, takich jak [żądania](../connectors/connectors-native-reqres.md) lub [elementu Webhook](../connectors/connectors-native-webhook.md) wyzwalacz, możesz ograniczyć dostęp, tylko autoryzowani klienci mogą uruchomić swoją aplikację logiki. Wszystkich żądań odebranych przez aplikację logiki są szyfrowane i chronione przy użyciu protokołu Secure Sockets Layer (SSL). Poniżej przedstawiono różne sposoby, można zabezpieczyć dostęp do tego typu wyzwalacza:
 
-Każdy punkt końcowy żądania, dla aplikacji logiki obejmuje [sygnatury dostępu współdzielonego (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) jako część adresu URL. Każdy adres URL zawiera `sp`, `sv`, i `sig` parametr zapytania. Uprawnienia są określane przez `sp`, a odpowiadają metod HTTP dozwolonych, `sv` jest wersją używaną do generowania, i `sig` jest używany do uwierzytelniania dostępu do wyzwalania. Podpis jest generowana z użyciem algorytm SHA256 za pomocą klucza tajnego dla wszystkich ścieżek URL i właściwości. Klucz tajny nigdy nie jest widoczne i opublikowany i są przechowywane zaszyfrowane i przechowywane jako część aplikacji logiki. Twoja aplikacja logiki autoryzuje tylko wyzwalaczy, które zawierają prawidłowego podpisu utworzonych za pomocą klucza tajnego.
+* [Generowanie sygnatury dostępu współdzielonego](#sas)
+* [Ogranicz przychodzące adresy IP](#restrict-incoming-IP)
+* [Dodawanie usługi Azure Active Directory, OAuth lub innych zabezpieczeń](#add-authentication)
+
+<a name="sas"></a>
+
+### <a name="generate-shared-access-signatures"></a>Generowanie sygnatury dostępu współdzielonego
+
+Każdy punkt końcowy żądania, w aplikacji logiki obejmuje [sygnatury dostępu współdzielonego (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) w adresie URL punktu końcowego. Każdy adres URL zawiera `sp`, `sv`, i `sig` parametru zapytania:
+
+* `sp` Określa uprawnienia, które mapują do metod HTTP dozwolonych do użycia.
+* `sv` Określa wersję używaną do generowania podpisu.
+* `sig` jest używany do uwierzytelniania dostępu do wyzwalacza.
+
+Podpis jest generowana z użyciem algorytm SHA256 za pomocą klucza dostępu do kluczy tajnych na wszystkich ścieżkach URL i właściwości. Klucz tajny nigdy nie jest widoczne ani opublikowane i są przechowywane zaszyfrowane i przechowywane za pomocą aplikacji logiki. Twoja aplikacja logiki autoryzuje tylko wyzwalaczy, zawierające prawidłowy podpis utworzony za pomocą klucza tajnego. 
+
+Poniżej przedstawiono więcej informacji na temat zabezpieczania dostępu za pomocą sygnatura dostępu współdzielonego:
+
+* [Wygeneruj ponownie klucze dostępu](#access-keys)
+* [Utwórz wygasające adresów URL wywołania zwrotnego](#expiring-URLs)
+* [Tworzyć adresy URL z kluczem podstawowym lub pomocniczym](#primary-secondary-key)
+
+<a name="access-keys"></a>
 
 #### <a name="regenerate-access-keys"></a>Wygeneruj ponownie klucze dostępu
 
-Można ponownie wygenerować nowy klucz bezpieczne, w dowolnym momencie za pośrednictwem portalu interfejsu API REST lub na platformie Azure. Wszystkie bieżące adresy URL, które zostały wygenerowane, wcześniej przy użyciu starego klucza są unieważniane i traci wyzwolenie aplikacji logiki.
+Aby ponownie wygenerować klucza bezpiecznego dostępu w dowolnym momencie, należy użyć interfejsu API REST platformy Azure lub w witrynie Azure portal. Wszystkie wcześniej wygenerowany adresów URL, które są unieważniane stary klucz, a nie są już autoryzacji do wyzwalacza aplikacji logiki. Adresy URL, który można pobrać po ponownego wygenerowania są podpisane za pomocą nowego klucza dostępu.
 
-1. W witrynie Azure portal Otwórz aplikację logiki, które chcesz ponownie wygenerować klucz
-1. Kliknij przycisk **klucze dostępu** elementu menu, w obszarze **ustawienia**
-1. Wciśnij klawisz, aby ponownie wygenerować i ukończyć proces
+1. Otwórz aplikację logiki, która ma klucz, który chcesz ponownie wygenerować w witrynie Azure portal.
 
-Adresy URL, który można pobrać po ponownego wygenerowania są podpisane za pomocą nowego klucza dostępu.
+1. W menu aplikacji logiki w ramach **ustawienia**, wybierz opcję **klucze dostępu**.
 
-#### <a name="creating-callback-urls-with-an-expiration-date"></a>Tworzenie adresów URL wywołania zwrotnego z datą wygaśnięcia
+1. Wybierz klucz, który chcesz ponownie wygenerować i ukończyć proces.
 
-Jeśli udostępniasz adres URL z innych stron, można wygenerować adresy URL przy użyciu określonych kluczy i daty wygaśnięcia, zgodnie z potrzebami. Można następnie bezproblemowo wdrażać kluczy, lub upewnij się, że dostęp, uruchomienie aplikacji jest ograniczony do niektórych przedziału czasu. Można określić datę wygaśnięcia dla danego adresu URL za pośrednictwem [logiki aplikacji interfejsu API REST](https://docs.microsoft.com/rest/api/logic/workflowtriggers):
+<a name="expiring-urls"></a>
 
-``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
-```
+#### <a name="create-callback-urls-with-expiration-dates"></a>Tworzenie adresów URL wywołania zwrotnego znajdują się daty wygaśnięcia
 
-W treści zawierać właściwości `NotAfter` jako ciąg daty JSON, która zwraca adres URL wywołania zwrotnego, która obowiązuje tylko `NotAfter` daty i godziny.
-
-#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>Tworzenie adresów URL za pomocą podstawowy lub pomocniczy klucz tajny
-
-Podczas generowania lub listy adresy URL wywołania zwrotnego Wyzwalacze oparte na żądanie, można również określić który klucz używany do podpisywania adresu URL.  Można wygenerować adresu URL podpisany przy użyciu określonego klucza przy użyciu [logiki aplikacji interfejsu API REST](https://docs.microsoft.com/rest/api/logic/workflowtriggers) w następujący sposób:
+Jeśli adres URL punktu końcowego wyzwalacza opartego na żądaniach udostępniane inne strony, można wygenerować adresy URL wywołania zwrotnego określonych kluczy i daty wygaśnięcia, zgodnie z potrzebami. Można następnie bezproblemowo wdrażać kluczy, lub ograniczyć dostęp do wyzwalania aplikacji logiki do określonego przedziału czasu. Należy określić datę wygaśnięcia dla danego adresu URL, za pomocą [interfejsu API REST aplikacji logiki](https://docs.microsoft.com/rest/api/logic/workflowtriggers), na przykład:
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-W treści zawierać właściwości `KeyType` jako `Primary` lub `Secondary`.  Spowoduje to zwrócenie podpisane przez bezpieczny klucz określony adres URL.
+W treści zawierać `NotAfter`właściwości przy użyciu JSON daty ciąg. Ta właściwość zwraca adres URL wywołania zwrotnego, który jest prawidłowy tylko do `NotAfter` daty i godziny.
+
+<a name="primary-secondary-key"></a>
+
+#### <a name="create-urls-with-primary-or-secondary-secret-key"></a>Tworzenie adresów URL przy użyciu podstawowy lub pomocniczy klucz tajny
+
+Po wygenerowaniu lub listy adresów URL wywołania zwrotnego dla Wyzwalacze oparte na żądanie, można również określić klucz do użycia podczas podpisywania adresu URL. Można wygenerować adresu URL, który jest podpisany przy użyciu określonego klucza przy użyciu [interfejsu API REST aplikacji logiki](https://docs.microsoft.com/rest/api/logic/workflowtriggers), na przykład:
+
+``` http
+POST 
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+```
+
+W treści zawierać `KeyType` właściwości jako `Primary` lub `Secondary`. Ta właściwość zwraca adres URL, który jest podpisany przy użyciu określonego klucza bezpieczne.
+
+<a name="restrict-incoming-ip"></a>
 
 ### <a name="restrict-incoming-ip-addresses"></a>Ogranicz przychodzące adresy IP
 
-Oprócz sygnatura dostępu współdzielonego możesz ograniczyć, wywoływanie aplikacji logiki tylko z określonych klientów.  Na przykład jeśli zarządzasz punktu końcowego usługi za pomocą usługi Azure API Management, można ograniczyć aplikację logiki, aby akceptowała żądania, jeśli żądanie pochodzi z adresu IP wystąpienia usługi API Management.
+Wraz z Shared Access Signature możesz chcieć ograniczyć określonych klientów wywołujących aplikację logiki.  
+Na przykład jeśli zarządzasz żądania punktu końcowego usługi Azure API Management, można ograniczyć aplikację logiki w celu umożliwienia akceptowania żądań tylko z adresu IP wystąpienia usługi API Management. 
 
-To ustawienie można skonfigurować w ustawieniach aplikacji logiki:
+#### <a name="set-ip-ranges---azure-portal"></a>Ustawianie zakresów adresów IP — witryna Azure portal
 
-1. W witrynie Azure portal Otwórz aplikację logiki, które chcesz dodać ograniczenia adresów IP
-1. Kliknij przycisk **ustawienia przepływu pracy** elementu menu, w obszarze **ustawienia**
-1. Określ listę zakresów adresów IP do zaakceptowania przez wyzwalacz
+Aby skonfigurować to ograniczenie w witrynie Azure portal, przejdź do ustawień aplikacji logiki: 
 
-Prawidłowy zakres adresów IP przybiera format `192.168.1.1/32`. Jeśli chcesz, aby aplikację logiki, aby były uruchamiane tylko wtedy jako zagnieżdżoną aplikację logiki, wybierz opcję **tylko inne aplikacje logic apps** opcji. Ta opcja powoduje zapisanie pustą tablicę do zasobu, znaczenie tylko wywołania z usługi (aplikacje logiki nadrzędnego) uruchomiony pomyślnie.
+1. W witrynie Azure portal Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+
+1. W menu aplikacji logiki w ramach **ustawienia**, wybierz opcję **ustawienia przepływu pracy**.
+
+1. W obszarze **konfiguracji kontroli dostępu** > 
+**dozwolone przychodzące adresy IP**, wybierz opcję **konkretnych zakresów adresów IP**.
+
+1. W obszarze **zakresy adresów IP dla wyzwalaczy**, określ zakresy adresów IP, które akceptuje wyzwalacza. Prawidłowy zakres adresów IP korzysta z tych formatów: *x.x.x.x/x* lub *x.x.x.x-x.x.x.x* 
+
+Jeśli chcesz, aby aplikacja logiki ogień tylko jako zagnieżdżoną aplikację logiki, **dozwolone przychodzące adresy IP** listy wybierz **tylko inne aplikacje Logic Apps**. Ta opcja zapisuje pusta tablica zasobu aplikacji logiki, więc tylko wywołania z usługi Logic Apps (aplikacje logiki nadrzędnego) może wyzwalać zagnieżdżoną aplikację logiki.
 
 > [!NOTE]
-> Nadal można uruchomić aplikację logiki z wyzwalaczem żądania za pośrednictwem interfejsu API REST / zarządzania `/triggers/{triggerName}/run` niezależnie od adresów IP. Ten scenariusz wymaga uwierzytelniania przy użyciu interfejsu API REST platformy Azure, a wszystkie zdarzenia pojawią się w dzienniku inspekcji usługi Azure. Zestaw kontroli dostępu w zasad odpowiednio.
+> Niezależnie od tego, adres IP, nadal można uruchomić aplikację logiki, która zawiera wyzwalacz na podstawie żądań przy użyciu `/triggers/{triggerName}/run` za pośrednictwem interfejsu API REST platformy Azure lub usługi API Management. Jednak w tym scenariuszu nadal wymaga uwierzytelnienia przy użyciu interfejsu API REST platformy Azure, a wszystkie zdarzenia są wyświetlane w dzienniku inspekcji usługi Azure. Upewnij się, że odpowiednio ustawić zasady kontroli dostępu.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Ustawianie zakresów adresów IP w definicji zasobu
+#### <a name="set-ip-ranges---logic-app-deployment-template"></a>Ustawianie zakresów adresów IP — Szablon wdrożenia aplikacji logiki
 
-Jeśli używasz [Szablon wdrożenia](logic-apps-create-deploy-template.md) do automatyzowania wdrożeń, ustawienia zakresu adresów IP można skonfigurować w szablonie zasobu.  
+Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożenia usługi Azure Resource Manager](logic-apps-create-deploy-template.md), można ustawić zakresy adresów IP w tym szablonie, na przykład:
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "triggers": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "triggers": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
-
 ```
 
-### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Dodawanie usługi Azure Active Directory, OAuth lub innych zabezpieczeń
+<a name="add-authentication"></a>
 
-Aby dodać więcej protokoły autoryzacji na podstawie aplikacji logiki [usługi Azure API Management](https://azure.microsoft.com/services/api-management/) oferty zaawansowana funkcja monitorowania, zabezpieczeń, zasad i dokumentację dla dowolnego punktu końcowego za pomocą funkcji, aby udostępnić aplikację logiki jako interfejsu API. Usługa Azure API Management może narazić publicznych lub prywatnych punktu końcowego dla aplikacji logiki, który może używać usługi Azure Active Directory, certyfikat, OAuth lub inne standardy zabezpieczeń. Po odebraniu żądania usługi Azure API Management przekazuje żądania do aplikacji logiki (wykonanie wszelkie niezbędne przekształcenia lub ograniczenia śledząc). Przychodzące ustawień zakresu adresów IP w aplikacji logiki służy do Zezwalaj tylko na aplikację logiki, aby zostać wywołany z usługi API Management.
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Dodawanie usługi Azure Active Directory, OAuth lub innych zabezpieczeń
 
-## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Bezpieczny dostęp do zarządzania lub edytowanie aplikacji logiki
+Aby dodać więcej protokoły autoryzacji do aplikacji logiki, należy rozważyć użycie [usługi Azure API Management](https://azure.microsoft.com/services/api-management/). Ta usługa oferuje rozbudowane monitorowanie, zabezpieczenia, zasad i dokumentację dla dowolnego punktu końcowego i daje możliwość udostępnienia aplikacji logiki jako interfejsu API. Usługa API Management może narazić publicznych lub prywatnych punktu końcowego dla aplikacji logiki, które można następnie użyć usługi Azure Active Directory, OAuth, certyfikat lub inne standardy zabezpieczeń. Gdy usługa API Management odbiera żądanie, usługa wysyła żądanie do aplikacji logiki, umożliwiając wszelkie niezbędne przekształcenia lub ograniczenia po drodze. Aby umożliwić tylko usługi API Management wyzwolenie aplikacji logiki, można użyć ustawień zakresu adresów IP przychodzących aplikację logiki. 
 
-Można ograniczyć dostęp do operacji zarządzania w aplikacji logiki, aby były tylko do określonych użytkowników lub grupy mogą wykonywać operacje na zasobie. Aplikacje logiki, skorzystaj z Kalkulatora [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) funkcji i można dostosować, używając tych samych narzędzi.  Istnieje kilka wbudowanych ról, które można przypisać członków subskrypcją również:
+<a name="secure-operations"></a>
 
-* **Współautor aplikacji logiki** — zapewnia dostęp do wyświetlania, edytowania i aktualizowanie aplikacji logiki.  Nie można usunąć zasobu lub wykonywać operacje administracyjne.
-* **Operator aplikacji logiki** — można wyświetlić aplikacji logiki i historii uruchamiania i włączanie/wyłączanie.  Nie można edytować ani aktualizacji definicji.
+## <a name="secure-access-to-logic-app-operations"></a>Bezpieczny dostęp do operacji w aplikacji logiki
 
-Można również użyć [blokady zasobu platformy Azure](../azure-resource-manager/resource-group-lock-resources.md) zmienianie lub usuwanie aplikacji logiki. Ta możliwość jest przydatne, aby zapobiec zasoby produkcyjne z zmiany lub usunięcia.
+Aby umożliwić tylko określonych użytkowników lub grup uruchamianie operacji na aplikację logiki, można ograniczyć dostęp do zadań, takich jak zarządzanie, edytowania i wyświetlania. Usługa Logic Apps obsługuje [based kontroli dostępu (RBAC)](../role-based-access-control/role-assignments-portal.md), które można dostosować lub przypisać role wbudowane do elementów członkowskich w ramach subskrypcji, na przykład:
 
-## <a name="secure-access-to-contents-of-the-run-history"></a>Bezpieczny dostęp do zawartości historii uruchamiania
+* **Współautor aplikacji logiki**: Użytkownicy mogą przeglądać, edytować i zaktualizuj swoją aplikację logiki. Tej roli nie można usunąć aplikacji logiki lub uruchamiania operacji administratora.
+* **Operator aplikacji logiki**: Użytkownicy mogą wyświetlić swoją aplikację logiki i historii uruchamiania i włączyć lub wyłączyć aplikację logiki. Tej roli nie można edytować ani zaktualizować aplikacji logiki.
 
-Możesz ograniczyć dostęp do zawartości danych wejściowych ani danych wyjściowych z poprzednich przebiegów do określonych zakresów adresów IP.  
+Aby uniemożliwić innym użytkownikom zmienianie lub usuwanie aplikacji logiki, można użyć [blokady zasobu platformy Azure](../azure-resource-manager/resource-group-lock-resources.md). Ta funkcja pomaga uniemożliwić innym użytkownikom zmienianie lub usuwanie zasobów w środowisku produkcyjnym.
 
-Wszystkie dane w ramach przebieg przepływu pracy są szyfrowane, przesyłanych i magazynowanych. Gdy wykonywane jest wywołanie do historii przebiegów, usługa uwierzytelnia żądanie i zawiera łącza do żądania i odpowiedzi dane wejściowe i wyjściowe. Ten link, mogą być chronione, dlatego żądania tylko do wyświetlania zawartości z wyznaczonym zakresu adresów IP zwrócona zawartość. Ta funkcja służy do dodatkową kontrolę dostępu. Można nawet określić adresu IP, takich jak `0.0.0.0` więc nie można uzyskać dostępu do danych wejściowych lub wyjściowych. Tylko osoba posiadająca uprawnienia administratora można usunąć tego ograniczenia, zapewniając możliwość "just-in-time" dostęp do zawartości przepływu pracy.
+<a name="secure-run-history"></a>
 
-To ustawienie można skonfigurować w ustawieniach zasobów w witrynie Azure Portal:
+## <a name="secure-access-to-logic-app-run-history"></a>Bezpieczny dostęp do historii przebiegu aplikacji logiki
 
-1. W witrynie Azure portal Otwórz aplikację logiki, które chcesz dodać ograniczenia adresów IP
-2. Kliknij przycisk **konfiguracji kontroli dostępu** elementu menu, w obszarze **ustawienia**
-3. Określ listę zakresów adresów IP w celu uzyskania dostępu do zawartości
+Aby chronić zawartości przekazywanej w postaci danych wejściowych ani danych wyjściowych z poprzedniego uruchomienia aplikacji logiki, można ograniczyć dostęp do określonych zakresów adresów IP. Ta funkcja oferuje większą kontrolę dostępu. Wszystkie dane w przebiegu aplikacji logiki są szyfrowane podczas przesyłania i przechowywanych. W przypadku żądania historii przebiegu aplikacji logiki, Logic Apps uwierzytelnia żądanie zawiera łącza do dane wejściowe i dane wyjściowe z żądania i odpowiedzi w przepływie pracy aplikacji logiki. Można chronić te linki, dlatego żądania tylko z określonego adresu IP zwrócona tej zawartości. Na przykład użytkownik może nawet określić adres IP takich jak `0.0.0.0-0.0.0.0` , dzięki czemu nie będą mogli dane wejściowe i wyjściowe. Tylko osoby z uprawnieniami administratora można usunąć tego ograniczenia, zapewniając możliwość "just-in-time" dostęp do zawartości aplikacji logiki.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Ustawianie zakresów adresów IP w definicji zasobu
+### <a name="set-ip-ranges---azure-portal"></a>Ustawianie zakresów adresów IP — witryna Azure portal
 
-Jeśli używasz [Szablon wdrożenia](logic-apps-create-deploy-template.md) do automatyzowania wdrożeń, ustawienia zakresu adresów IP można skonfigurować w szablonie zasobu.  
+Aby skonfigurować to ograniczenie w witrynie Azure portal, przejdź do ustawień aplikacji logiki:
+
+1. W witrynie Azure portal Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+
+1. W menu aplikacji logiki w ramach **ustawienia**, wybierz opcję **ustawienia przepływu pracy**.
+
+1. W obszarze **konfiguracji kontroli dostępu** > 
+**dozwolone przychodzące adresy IP**, wybierz opcję **konkretnych zakresów adresów IP**.
+
+1. W obszarze **zakresy adresów IP dla zawartości**, określ zakresy adresów IP, które mogą uzyskać dostęp do zawartości w danych wejściowych i wyjściowych. Prawidłowy zakres adresów IP korzysta z tych formatów: *x.x.x.x/x* lub *x.x.x.x-x.x.x.x* 
+
+### <a name="set-ip-ranges---logic-app-deployment-template"></a>Ustawianie zakresów adresów IP — Szablon wdrożenia aplikacji logiki
+
+Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożenia usługi Azure Resource Manager](logic-apps-create-deploy-template.md), można ustawić zakresy adresów IP w tym szablonie, na przykład:
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "contents": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "contents": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
 ```
 
-## <a name="secure-parameters-and-inputs-within-a-workflow"></a>Zabezpieczanie parametrów i danych wejściowych w przepływie pracy
+<a name="secure-action-parameters"></a>
 
-Można zdefiniować parametry niektóre aspekty definicji przepływu pracy dla wdrażania w środowiskach. Ponadto niektóre parametry może być bezpieczne parametry, które nie mają być wyświetlane podczas edytowania przepływu pracy, takie jak identyfikator klienta i klucz tajny klienta dla [uwierzytelniania usługi Azure Active Directory](../connectors/connectors-native-http.md#authentication) akcji HTTP.
+## <a name="secure-action-parameters-and-inputs"></a>Zabezpieczanie parametry akcji i dane wejściowe
 
-### <a name="using-parameters-and-secure-parameters"></a>Za pomocą parametrów i bezpieczne
+W przypadku wdrażania w różnych środowiskach, można zdefiniować parametry konkretnych aspektów w definicji przepływu pracy aplikacji logiki. Na przykład można określić parametrów w [Szablon wdrożenia usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Aby uzyskać dostęp do wartości parametru zasobów, podczas wykonywania, można użyć `@parameters('parameterName')` wyrażenie, które są dostarczane przez [język definicji przepływów pracy](https://aka.ms/logicappsdocs). 
 
-Do uzyskania dostępu do wartości parametru zasobu w czasie wykonywania, [język definicji przepływów pracy](https://aka.ms/logicappsdocs) zapewnia `@parameters()` operacji. Można również [Określ parametry w szablonie wdrożenia zasobów](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ale jeśli określisz typ parametru jako `securestring`, parametr nie będą zwracane z pozostałą częścią definicji zasobu i nie będą dostępne, wyświetlając zasobu po wdrożeniu.
+Ponadto można zabezpieczyć określone parametry, które nie mają wyświetlone podczas edytowania przepływu pracy aplikacji logiki, gdy używasz `securestring` typ parametru. Na przykład, można zabezpieczyć parametry, takie jak identyfikator klienta i klucz tajny klienta używany do uwierzytelniania za pomocą akcji HTTP [usługi Azure Active Directory](../connectors/connectors-native-http.md#authentication).
+Po określeniu typu parametru jako `securestring`, parametr nie jest zwracany za pomocą definicji zasobu i nie będzie dostępny, wyświetlając zasobu po wdrożeniu. 
 
 > [!NOTE]
-> Jeśli Twój parametr jest używany w nagłówkach ani treści żądania, parametr może być widoczna, uzyskując dostęp do historii uruchamiania i wychodzące żądania HTTP. Upewnij się, że odpowiednio ustawić zasady dostępu do zawartości.
-> Nagłówki autoryzacji nie są widoczne za pośrednictwem danych wejściowych lub wyjściowych. Wpis tajny jest używane, wpis tajny nie jest możliwe do pobierania.
+> Podczas korzystania z parametru w nagłówkach żądania lub treść tego parametru może być widoczna podczas uzyskiwania dostępu do aplikacji logiki, historii uruchamiania i wychodzące żądania HTTP. Upewnij się, odpowiednio ustawić zasady dostępu do zawartości.
+> Nagłówki autoryzacji nie są widoczne za pośrednictwem danych wejściowych lub wyjściowych. Dlatego jeśli klucz tajny jest używany istnieje, wpis tajny nie jest możliwe do pobierania.
 
-#### <a name="resource-deployment-template-with-secrets"></a>Szablon wdrożenia zasobów przy użyciu kluczy tajnych
+W tym przykładzie przedstawiono Szablon wdrożenia usługi Azure Resource Manager, która używa więcej niż jeden parametr środowiska uruchomieniowego za pomocą `securestring` typu: 
 
-W poniższym przykładzie pokazano wdrożenia, który odwołuje się do parametru secure `secret` w czasie wykonywania. W pliku oddzielne parametry można określić wartość środowiska `secret`, lub użyj [usługi Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) do pobierania wpisów tajnych na wdrażanie czasu.
+* `armTemplatePasswordParam`, które to dane wejściowe na potrzeby definicji aplikacji logiki `logicAppWfParam` parametru
 
-``` json
+* `logicAppWfParam`, które to dane wejściowe dla akcji HTTP przy użyciu uwierzytelniania podstawowego
+
+W pliku oddzielne parametry można określić wartość środowiska `armTemplatePasswordParam` parametr lub możesz pobrać wpisów tajnych w czasie wdrażania przy użyciu [usługi Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Wewnętrzny `parameters` sekcji należy do definicji przepływu pracy aplikacji logiki, podczas zewnętrzny `parameters` sekcji należy do wdrożenia szablonu.
+
+```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "secretDeploymentParam": {
-         "type": "securestring"
+      "logicAppName": {       
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 80,
+         "metadata": {         
+            "description": "Name of the Logic App."       
+         }     
+      },
+      "armTemplatePasswordParam": {
+         "type": "securestring"     
+      },     
+      "logicAppLocation": {       
+         "type": "string",
+         "defaultValue": "[resourceGroup().location]",
+         "allowedValues": [         
+            "[resourceGroup().location]",
+            "eastasia",
+            "southeastasia",
+            "centralus",
+            "eastus",
+            "eastus2",
+            "westus",
+            "northcentralus",
+            "southcentralus",
+            "northeurope",
+            "westeurope",
+            "japanwest",
+            "japaneast",
+            "brazilsouth",
+            "australiaeast",
+            "australiasoutheast",
+            "southindia",
+            "centralindia",
+            "westindia",
+            "canadacentral",
+            "canadaeast",
+            "uksouth",
+            "ukwest",
+            "westcentralus",
+            "westus2"
+         ],
+         "metadata": {
+            "description": "Location of the Logic App."
+         }
       }
    },
    "variables": {},
-   "resources": [ {
-      "name": "secret-deploy",
-      "type": "Microsoft.Logic/workflows",
-      "location": "westus",
-      "tags": {
-         "displayName": "LogicApp"
-      },
-      "apiVersion": "2016-06-01",
-      "properties": {
-         "definition": {
-            "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-            "actions": {
-               "Call_External_API": {
-                  "type": "Http",
-                  "inputs": {
-                     "headers": {
-                        "Authorization": "@parameters('secret')"
+   "resources": [
+      {       
+         "name": "[parameters('logicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('logicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "actions": {
+                  "HTTP": {
+                     "type": "Http",
+                     "inputs": {
+                        "method": "GET",
+                        "uri": "http://www.microsoft.com",
+                        "authentication": {
+                           "type": "Basic",
+                           "username": "username",
+                              "password": "@parameters('logicAppWfParam')"
+                        }
                      },
-                     "body": "This is the request"
-                  },
                   "runAfter": {}
-               }
+                  }
+               },
+               "parameters": { 
+                  "logicAppWfParam": {
+                     "type": "securestring"
+                  }
+               },
+               "triggers": {
+                  "manual": {
+                     "type": "Request",
+                     "kind": "Http",
+                     "inputs": {
+                        "schema": {}
+                     }
+                  }
+               },
+               "contentVersion": "1.0.0.0",
+               "outputs": {}
             },
             "parameters": {
-               "secret": {
-                  "type": "SecureString"
+               "logicAppWfParam": {
+                  "value": "[parameters('armTemplatePasswordParam')]"
                }
-            },
-            "triggers": {
-               "manual": {
-                  "type": "Request",
-                  "kind": "Http",
-                  "inputs": {
-                     "schema": {}
-                  }
-               }
-            },
-            "contentVersion": "1.0.0.0",
-            "outputs": {}
-         },
-         "parameters": {
-            "secret": {
-               "value": "[parameters('secretDeploymentParam')]"
             }
          }
       }
-   } ],
-   "outputs": {}
-}
+   ],
+   "outputs": {} 
+}   
 ```
 
-## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>Bezpieczny dostęp do usług odbierania żądań z przepływu pracy
+<a name="secure-requests"></a>
 
-Istnieje wiele sposobów, aby ułatwić zabezpieczanie dowolnego punktu końcowego, aplikacja logiki musi uzyskać dostęp.
+## <a name="secure-access-to-services-receiving-requests"></a>Bezpieczny dostęp do odbierania żądań usług
 
-### <a name="using-authentication-on-outbound-requests"></a>Przy użyciu uwierzytelniania w odpowiedzi na żądania wychodzące
+Oto kilka sposobów, można zabezpieczyć dowolnego punktu końcowego, gdy aplikacja logiki musi mieć dostęp i wysyła żądania.
 
-Podczas pracy z protokołu HTTP, HTTP + Swagger (interfejsu Open API) lub Akcja elementu Webhook, możesz dodać uwierzytelnianie do żądania są wysyłane. Może obejmować uwierzytelnianie podstawowe, uwierzytelnianie certyfikatu lub uwierzytelniania usługi Azure Active Directory. Można znaleźć szczegółowe informacje na temat sposobu konfigurowania tego uwierzytelnienia [w tym artykule](../connectors/connectors-native-http.md#authentication).
+### <a name="add-authentication-on-outbound-requests"></a>Dodawanie uwierzytelniania dla wychodzących żądań
 
-### <a name="restricting-access-to-logic-app-ip-addresses"></a>Ograniczanie dostępu do adresów IP aplikacji logiki
+Podczas pracy z protokołu HTTP, HTTP + Swagger (interfejsu Open API) lub Akcja elementu Webhook, możesz dodać do żądania wysłanego przez aplikację logiki uwierzytelniania. Na przykład można użyć uwierzytelniania podstawowego, uwierzytelnianie certyfikatu lub uwierzytelniania usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [uwierzytelniania wyzwalacze i akcje](logic-apps-workflow-actions-triggers.md#connector-authentication) i [uwierzytelniania dla akcji HTTP](../connectors/connectors-native-http.md#authentication).
 
-Wywołania z aplikacji logiki pochodzą określony zbiór adresów IP dla regionu. Możesz dodać dodatkowe, filtrowanie, aby akceptowała żądania wyznaczonej adresów IP. Aby uzyskać listę adresów IP, zobacz [logiki limity i Konfiguracja aplikacji](logic-apps-limits-and-config.md#configuration).
+### <a name="restrict-access-to-logic-app-ip-addresses"></a>Ograniczanie dostępu do adresów IP aplikacji logiki
 
-### <a name="on-premises-connectivity"></a>Łączność lokalna
+Wywołania z aplikacji logiki pochodzą z określonych adresów IP wyznaczone na podstawie tego. Aby dodać, filtrowania, który akceptuje żądania tylko z adresów IP. Dla tych adresów IP, zobacz [limity i konfiguracja dla usługi Azure Logic Apps](logic-apps-limits-and-config.md#configuration).
 
-Aplikacje logiki udostępniają integrację z kilku usług, aby zapewnić bezpieczne i niezawodne w środowisku lokalnym komunikacji.
+### <a name="secure-on-premises-connectivity"></a>Bezpieczne połączenia lokalnego
+
+Usługa Azure Logic Apps zapewnia integrację z tych usług w bezpieczną i niezawodną komunikację lokalne.
 
 #### <a name="on-premises-data-gateway"></a>Brama danych lokalnych
 
-Wiele zarządzanych łączników dla usługi logic apps zapewnia bezpieczne połączenie systemów lokalnych, w tym System plików, SQL, SharePoint i bazy danych DB2. Brama przekazuje dane ze źródeł lokalnych w kanałach zaszyfrowanych za pomocą usługi Azure Service Bus. Cały ruch pochodzący jako bezpieczny ruch wychodzący z agenta bramy. Dowiedz się więcej o [sposobu działania bramy danych](logic-apps-gateway-install.md#gateway-cloud-service).
+Wiele łączników zarządzanych w usłudze Azure Logic Apps zapewniają bezpieczne połączenia z systemów lokalnych, takich jak System plików, SQL, SharePoint, bazy danych DB2 i inne. Brama wysyła dane ze źródeł lokalnych w kanałach zaszyfrowanych za pomocą usługi Azure Service Bus. Cały ruch pochodzący jako bezpieczny ruch wychodzący z agenta bramy. Dowiedz się, [jak lokalna brama danych działa](logic-apps-gateway-install.md#gateway-cloud-service).
 
 #### <a name="azure-api-management"></a>Usługa Azure API Management
 
-[Usługa Azure API Management](https://azure.microsoft.com/services/api-management/) ma opcjom łączności w środowisku lokalnym, w tym site-to-site VPN i ExpressRoute integracji dla zabezpieczonych serwera proxy i komunikacji z systemami lokalnymi. W Projektancie aplikacji logiki można szybko wybrać interfejsu API dostępne w usłudze Azure API Management w ramach przepływu pracy, zapewniając szybki dostęp do systemów lokalnych.
+[Usługa Azure API Management](https://azure.microsoft.com/services/api-management/) udostępnia opcje połączenie lokalne, takie jak lokacja lokacja wirtualnej sieci prywatnej, jak i integracji usługi ExpressRoute na potrzeby zabezpieczonych serwera proxy i komunikacji z systemami lokalnymi. W Projektancie aplikacji logiki można wybrać interfejs API udostępnianych przez usługę API Management z przepływu pracy aplikacji logiki, zapewniając szybki dostęp do systemów lokalnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Tworzenie szablonu wdrożenia](logic-apps-create-deploy-template.md)  
-[Obsługa wyjątków](logic-apps-exception-handling.md)  
-[Monitorowanie aplikacji logiki](logic-apps-monitor-your-logic-apps.md)  
-[Diagnozowanie błędów aplikacji logiki i problemów](logic-apps-diagnosing-failures.md)  
+
+* [Tworzenie szablonu wdrożenia](logic-apps-create-deploy-template.md)  
+* [Obsługa wyjątków](logic-apps-exception-handling.md)  
+* [Monitorowanie aplikacji logiki](logic-apps-monitor-your-logic-apps.md)  
+* [Diagnozowanie błędów aplikacji logiki i problemów z](logic-apps-diagnosing-failures.md)  

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd28e071fca37b120349ec3b471662909b323a0c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082955"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189154"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
 
@@ -84,7 +84,7 @@ Przed lub w sposób równoległy do projektu, planowania i przygotowania, można
 
 1.  Optymalizuj transferu danych na platformę Azure. Stopniu zależą od klienta przypadków transfer za pośrednictwem [usługi Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) ze środowiska lokalnego zostało najszybszy, jeśli próba zawierała wystarczającą przepustowość obwodu usługi Express. Z innymi klientami przechodzenia przez internet się okazało, aby szybciej
 2.  W przypadku migracji heterogenicznej platformy SAP, który obejmuje eksportowanie i importowanie danych w bazie danych, przetestować, optymalizacji eksportowania i importowania fazy. Dla dużych migracji dotyczących programu SQL Server jako platformy docelowej, można znaleźć zaleceń [tutaj](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Podejście migracji Monitor/SWPM można wykonać w przypadku, gdy nie ma potrzeby uaktualniania wersji połączone lub [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) przetwarzania podczas łączenia migracji uaktualnianie wersji SAP i spełnienia pewnych źródłowa i docelowa platforma DBMS kombinacje, zgodnie z opisem, na przykład w [opcji migracji bazy danych (DMO) z SUMĄ 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872). 
-    1.  Wyeksportuj eksportu, przekazywanie pliku eksportu do platformy Azure i importowania wydajności.  Maksymalizuj nakładanie się eksportu i importu
+    1.  Eksportuj do źródła, przekazywanie pliku eksportu do platformy Azure i importowania wydajności.  Maksymalizuj nakładanie się eksportu i importu
     2.  Oceń objętości bazy danych między obiekt docelowy oraz docelowy platformy, aby odzwierciedlały zmiany rozmiaru infrastruktury    
     3.  Sprawdzanie poprawności i zoptymalizować chronometrażu 
 3.  Sprawdzanie poprawności Technical Preview 

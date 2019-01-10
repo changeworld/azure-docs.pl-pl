@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 1b9821a0115aba96f4588049273bd7a157121ded
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156633"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188644"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktywności funkcji platformy Azure w usłudze Azure Data Factory
 
@@ -25,7 +25,7 @@ Działanie funkcji platformy Azure umożliwia uruchamianie [usługi Azure Functi
 
 ## <a name="azure-function-linked-service"></a>Usługa połączona — funkcja
 
-Zwracany typ funkcji platformy Azure ma to obiekt jobject prawidłowe. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) jest *nie* jobject zostanie opróżniony.) Czymkolwiek kończy się niepowodzeniem i zgłasza błąd ogólny użytkownik *błąd podczas wywoływania punktu końcowego*.
+Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) jest *nie* `JObject`.) Dowolny zwracany typ inny niż `JObject` kończy się niepowodzeniem i zgłasza błąd ogólny użytkownik *błąd podczas wywoływania punktu końcowego*.
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |

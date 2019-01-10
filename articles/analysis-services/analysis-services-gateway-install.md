@@ -5,20 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa089db385995f6c44ea2238c91a3ac59946daae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407660"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190378"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
+
 Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure Analysis Services, w tym samym regionie, łączenie ze źródłami danych w środowisku lokalnym. Aby dowiedzieć się więcej na temat bramy, zobacz [lokalnej bramy danych](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 **Minimalne wymagania:**
 
 * .NET 4.5 framework
@@ -44,6 +46,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
 
 
 ## <a name="download"></a>Pobierz
+
  [Pobierz bramę](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Zainstaluj
@@ -62,6 +65,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
    > Jeśli zalogujesz się przy użyciu konta domeny w usłudze Azure AD jest mapowany do swojego konta organizacyjnego. Konta organizacji jest używane jako administrator bramy.
 
 ## <a name="register"></a>Zarejestruj się
+
 W celu utworzenia zasobu bramy na platformie Azure, możesz zarejestrować lokalne wystąpienie, który został zainstalowany przy użyciu usługi bramy w chmurze. 
 
 1.  Wybierz **Zarejestruj nową bramę na tym komputerze**.
@@ -77,6 +81,7 @@ W celu utworzenia zasobu bramy na platformie Azure, możesz zarejestrować lokal
 
 
 ## <a name="create-resource"></a>Tworzenie zasobu brama platformy Azure
+
 Po został zainstalowany i zarejestrowany bramy, należy do utworzenia zasobu bramy w Twojej subskrypcji platformy Azure. Zaloguj się do platformy Azure przy użyciu tego samego konta, którego użyto podczas rejestracji bramy.
 
 1. W witrynie Azure portal kliknij **Utwórz zasób** > **integracji** > **lokalnej bramy danych**.
@@ -91,7 +96,7 @@ Po został zainstalowany i zarejestrowany bramy, należy do utworzenia zasobu br
    
       Domyślna subskrypcja opiera się na konto platformy Azure, która użyte do zalogowania.
 
-    * **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
+    * **Grupa zasobów**: Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.
 
     * **Lokalizacja**: Wybierz region, zarejestrować bramę.
 
@@ -115,6 +120,7 @@ Po został zainstalowany i zarejestrowany bramy, należy do utworzenia zasobu br
 Gotowe. Jeśli potrzebujesz otwarcie portów lub wykonaj rozwiązywania wszelkich problemów, koniecznie zapoznaj się z [lokalnej bramy danych](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Zarządzanie usług Analysis Services](analysis-services-manage.md)   
 * [Pobieranie danych z usług Azure Analysis Services](analysis-services-connect.md)   
 * [Używanie bramy dla źródeł danych w usłudze Azure Virtual Network](analysis-services-vnet-gateway.md)

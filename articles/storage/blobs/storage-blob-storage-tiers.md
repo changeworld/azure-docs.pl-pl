@@ -5,17 +5,17 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/09/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: e12e29a5a627110ce845cd44be6dd97b717f9b26
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 21e442c7a0cdd0edcce77c862b11ae368d4a3abc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014501"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191670"
 ---
-# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu
+# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: — Wersja Premium (wersja zapoznawcza), warstw magazynowania gorąca, chłodna i archiwum
 
 ## <a name="overview"></a>Przegląd
 
@@ -62,8 +62,8 @@ Aby korzystać z tej warstwy aprowizować nowe konto magazynu blokowych obiektó
 W trakcie okresu zapoznawczego warstwy dostępu do usługi Premium:
 
 - Jest dostępna jako magazyn lokalnie nadmiarowy (LRS)
-- Jest dostępna tylko w następujących regionach: wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA
-- Nie obsługuje automatycznego warstw i zarządzanie cyklem życia danych
+- Jest dostępna tylko w następujących regionach: Wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA
+- Nie obsługuje warstw na poziomie obiektu lub automatyczną obsługą warstw pozwalająca za pomocą funkcji zarządzania cyklem życia danych
 
 Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej z warstwy Premium dostępu, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](https://aka.ms/premiumblob).
 
@@ -86,7 +86,8 @@ Warstwa magazynowania chłodna ma niższe koszty magazynowania i wyższe koszty 
 
 Usługa Archive storage ma najniższy koszt magazynowania i wyższe koszty pobierania danych w porównaniu do warstwy gorąca i chłodna. Ta warstwa jest przeznaczona dla danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni.
 
-Gdy obiekt blob znajduje się w magazynie archiwalnym, jest w trybie offline i nie można odczytać (z wyjątkiem metadanych, które jest w trybie online i dostępne), skopiować, zastąpić ani zmodyfikować. Nie można również tworzyć migawek obiektu blob w magazynie archiwalnym. Można jednak używać istniejących operacji do usuwania lub wyświetlania listy obiektów blob, pobierania ich właściwości/metadanych albo zmiany warstwy obiektu blob.
+Gdy obiekt blob znajduje się w magazynie archiwalnym, danych obiektów blob jest w trybie offline i nie można odczytać skopiowany, zastąpione lub zmodyfikowane. Nie można również tworzyć migawek obiektu blob w magazynie archiwalnym. Jednak metadane obiektu blob pozostaje online i dostępne, co umożliwia wyświetlanie listy obiektów blob i jego właściwości. W przypadku obiektów blob w warstwie Archiwum jedynymi prawidłowymi operacjami są: GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier oraz DeleteBlob. 
+
 
 Przykładowe scenariusze użycia dotyczące warstwy magazynu archiwum obejmują:
 
@@ -110,20 +111,27 @@ W obrębie jednego konta jest możliwe współistnienie obiektów blob należąc
 > [!NOTE]
 > Magazyn Archiwum i funkcja obsługi warstw na poziomie obiektów blob obsługują tylko blokowe obiekty blob. Nie można także zmienić warstwy blokowego obiektu blob, który ma migawki.
 
-Dane przechowywane w warstwie dostępu do wersji Premium nie warstwowe gorąca, chłodna lub archiwum, przy użyciu [Ustawianie warstwy obiektu Blob](/rest/api/storageservices/set-blob-tier) lub za pomocą zarządzania cyklem życia usługi Azure Blob Storage. W celu przeniesienia danych należy synchronicznie skopiować obiekty BLOB z dostępu Premium do korzystania z gorącej [umieścić blok z adresu URL interfejsu API](/rest/api/storageservices/put-block-from-url) lub wersję narzędzia AzCopy, która obsługuje ten interfejs API. *Umieścić blok z adresu URL* API synchronicznie kopiuje dane na serwerze, co oznacza ukończenia wywołania tylko raz wszystkie dane są przenoszone z oryginalnej lokalizacji serwera do lokalizacji docelowej.
+> [!NOTE]
+> Dane przechowywane w warstwie Premium i dostępu nie może obecnie należeć do warstwy gorąca, chłodna lub archiwum, przy użyciu [Ustawianie warstwy obiektu Blob](/rest/api/storageservices/set-blob-tier) lub za pomocą zarządzania cyklem życia usługi Azure Blob Storage. W celu przeniesienia danych należy synchronicznie skopiować obiekty BLOB z dostępu Premium do korzystania z gorącej [umieścić blok z adresu URL interfejsu API](/rest/api/storageservices/put-block-from-url) lub wersję narzędzia AzCopy, która obsługuje ten interfejs API. *Umieścić blok z adresu URL* API synchronicznie kopiuje dane na serwerze, co oznacza ukończenia wywołania tylko raz wszystkie dane są przenoszone z oryginalnej lokalizacji serwera do lokalizacji docelowej.
 
 ### <a name="blob-lifecycle-management"></a>Zarządzanie cyklem życia obiektów blob
 Zarządzanie cyklem życia magazynu obiektów blob (wersja zapoznawcza) oferuje zaawansowane, oparte na regułach zasadę, która umożliwia przeniesienie danych do najlepszych warstwy dostępu i wygasanie danych na końcu jej cyklu projektowania. Zobacz [Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure](storage-lifecycle-management-concepts.md) Aby dowiedzieć się więcej.  
 
 ### <a name="blob-level-tiering-billing"></a>Rozliczanie obsługi warstw na poziomie obiektów blob
 
-Gdy obiekt blob jest przenoszony do chłodniejszej warstwy (gorąca -> chłodna, gorąca -> archiwum lub chłodna -> archiwum), operacja jest rozliczana jako operacja zapisu do warstwy docelowej, gdzie operacje zapisu (za 10 000 operacji) i opłaty za zapisu (za GB) danych w warstwie docelowej mają zastosowanie. Jeśli obiekt blob jest przenoszony do cieplejszej warstwy (archiwum -> chłodna, archiwum -> gorąca lub chłodna -> gorąca), operacja jest rozliczana jako odczyt z warstwy źródłowej, w których obowiązują operacje odczytu (za 10 000 operacji) i opłaty za pobieranie (za GB) danych z warstwy źródłowej.
+Gdy obiekt blob jest przenoszony do chłodniejszej warstwy (gorąca -> chłodna, gorąca -> archiwum lub chłodna -> archiwum), operacja jest rozliczana jako operacja zapisu do warstwy docelowej, gdzie operacje zapisu (za 10 000 operacji) i opłaty za zapisu (za GB) danych w warstwie docelowej mają zastosowanie. Gdy obiekt blob jest przenoszony do cieplejszej warstwy (archiwum -> chłodna, archiwum -> gorąca lub chłodna -> gorąca), operacja jest rozliczana jako odczyt z warstwy źródłowej, w których obowiązują operacje odczytu (za 10 000 operacji) i opłaty za pobieranie (za GB) danych z warstwy źródłowej.
+
+| | **Zapis opłaty** | **Opłata za odczyt** 
+| ---- | ----- | ----- |
+| **Kierunek SetBlobTier** | Gorąca -> chłodna, gorąca -> archiwum, chłodna -> archiwum | Archiwum -> chłodna, archiwum -> gorąca, chłodna -> gorąca
 
 W przypadku przełączania warstwy konta z gorąca na chłodna, opłata wyniesie za operacje zapisu (za 10 000 operacji) dla wszystkich obiektów blob bez ustawionej warstwy tylko na kontach GPv2. Nie ma opłat dla tej zmiany w kontach magazynu obiektów Blob. Opłata wyniesie zarówno dla operacji odczytu (za 10 000 operacji) i pobieranie danych (za GB) w przypadku przełączania usługi Blob storage lub GPv2 Zmiana warstwy konta z chłodna na gorąca. Opłaty za wczesne usunięcie dla dowolnego obiektu blob przeniesionych z warstwy chłodna lub archiwum mogą także obowiązywać.
 
 ### <a name="cool-and-archive-early-deletion"></a>Opłaty za wcześniejsze usunięcie w warstwach Chłodna i Archiwum
 
 Dodatkowo za GB danych, opłaty miesięcznej za każdy obiekt blob jest przenoszony do warstwy chłodna (tylko konta GPv2) podlega ciekawe wcześniejsze usunięcie w okresie 30 dni, a każdy obiekt blob jest przenoszony do warstwy archiwum podlega okresem wcześniejszego usunięcia 180 dni. Ta opłata jest naliczana proporcjonalnie. Na przykład, jeśli obiekt blob jest przenoszony do archiwum i następnie usunięty lub przeniesiony do warstwy gorąca po 45 dniach, możesz opłata będzie naliczana wczesne usunięcie odpowiadająca 135 (180 minus 45) dniom przechowywania tego obiektu blob w warstwie archiwum.
+
+Wcześniejsze usunięcie może obliczyć przy użyciu właściwość obiektu blob **czas utworzenia**, jeśli wystąpił brak dostępu do zmiany warstwy. W przeciwnym razie można używać podczas ostatniej modyfikacji warstwy dostępu chłodna lub archiwum, wyświetlając właściwość obiektu blob: **Zmień czas, dostęp do warstwy w-**. Aby uzyskać więcej informacji na temat właściwości obiektu blob, zobacz [uzyskać właściwości obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
 
 ## <a name="comparison-of-the-storage-tiers"></a>Porównanie warstw magazynowania
 
@@ -140,7 +148,7 @@ W poniższej tabeli przedstawiono porównanie gorącej, chłodna i archiwalna ma
 | **Cele dotyczące skalowalności i wydajności** | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia |
 
 > [!NOTE]
-> Konta Magazynu obiektów blob obsługują te same cele wydajności i skalowalności co konta magazynu ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Cele dotyczące skalowalności i wydajności usługi Magazyn Azure).
+> Konta Magazynu obiektów blob obsługują te same cele wydajności i skalowalności co konta magazynu ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
 ## <a name="quickstart-scenarios"></a>Scenariusze typu Szybki start
 
@@ -157,7 +165,7 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 3. W bloku Ustawienia kliknij pozycję **Konfiguracja**, aby wyświetlić i/lub zmienić konfigurację konta.
 
-4. Wybierz odpowiednią dla Twoich potrzeb warstwę magazynu: ustaw pozycję **Warstwa dostępu** na wartość **Chłodna** lub **Gorąca**.
+4. Wybierz odpowiednią warstwę magazynu do własnych potrzeb: Ustaw **warstwy dostępu** do jednej **chłodna** lub **gorąca**.
 
 5. Kliknij pozycję Zapisz w górnej części bloku.
 
@@ -175,11 +183,11 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów Blob opartego na warstwie każdego obiektu blob. Mieć na uwadze następujące zagadnienia dotyczące rozliczeń:
 
-* **Koszty usługi Storage**: oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy magazynowania. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
-* **Koszty dostępu do danych**: opłaty za dostęp do danych wzrastają w miarę, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie chłodna i warstwa magazynowania archiwum jest naliczana opłata dostępu do danych za każdy gigabajt dla operacji odczytu.
-* **Koszty transakcji**: w przypadku wszystkich warstw naliczana jest opłata za transakcję, która wzrasta w miarę, jak warstwa staje się chłodniejsza.
-* **Koszty transferu danych replikacji geograficznej**: ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
-* **Koszty transferu danych wychodzących**: transfery danych wychodzących (dane przesyłane poza region platformy Azure) powodują naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
+* **Koszty magazynowania**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy magazynowania. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
+* **Koszty dostępu do danych**: Dostęp do danych opłat wzrostu, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie chłodna i warstwa magazynowania archiwum jest naliczana opłata dostępu do danych za każdy gigabajt dla operacji odczytu.
+* **Koszty transakcji**: Brak opłat każdej transakcji dla wszystkich warstw, która zwiększa się, jak warstwa staje się chłodniejsza.
+* **Koszty transferu danych replikacji geograficznej**: Ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
+* **Koszty transferu danych wychodzących**: Wychodzące transfery danych (dane przesyłane poza region platformy Azure) Naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
 * **Zmiana warstwy magazynowania**: Zmiana warstwy magazynowania konta z chłodna na gorąca spowoduje naliczenie opłaty równej odczytanie wszystkich danych na koncie magazynu. Jednak zmiana warstwy magazynowania konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisanie wszystkich danych w warstwie chłodna (tylko konta GPv2).
 
 > [!NOTE]

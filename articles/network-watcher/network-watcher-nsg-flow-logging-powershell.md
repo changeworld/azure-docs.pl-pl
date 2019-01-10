@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 752370564c52513d59e99b18d5343b0575900463
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 120e9295c7e9bd196f40258e8eb8d8d2503cd086
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819359"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187532"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurowanie dzienników przepływu grupy zabezpieczeń w sieci przy użyciu programu PowerShell
 
@@ -32,43 +32,63 @@ ms.locfileid: "51819359"
 Dzienniki przepływu sieciowej grupy zabezpieczeń są funkcją usługi Network Watcher, który służy do wyświetlania informacji na temat przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Te dzienniki przepływu są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych, przepływ, który ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol), a jeśli zezwolenie lub odrzucenie ruchu sieciowego.
 
 > [!NOTE] 
-> Dzienniki usługi Flow w wersji 2 są tylko są one dostępne w regionie zachodnie stany centralnej USA. Konfiguracja jest dostępna za pośrednictwem witryny Azure Portal i interfejsu API REST. Włączanie w wersji 2 spowoduje dzienniki w nieobsługiwany region dzienników w wersji 1, zwrócone do swojego konta magazynu.
+> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączanie w wersji 2 dzienniki w nieobsługiwany region może spowodować dzienników w wersji 1, zwrócone do swojego konta magazynu.
 
 ## <a name="register-insights-provider"></a>Rejestrowanie dostawcy usługi Insights
 
 Aby rejestrowanie działało poprawnie, przepływ **Microsoft.Insights** dostawca musi być zarejestrowana. Jeśli nie masz pewności Jeśli **Microsoft.Insights** dostawca jest zarejestrowany, uruchom następujący skrypt.
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Insights
+Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Dzienniki przepływów Włączanie sieciowych grup zabezpieczeń
+## <a name="enable-network-security-group-flow-logs-and-traffic-analytics"></a>Dzienniki przepływów Włączanie sieciowych grup zabezpieczeń i analizy ruchu
 
 Na poniższym przykładzie przedstawiono polecenie, aby włączyć dzienniki przepływu:
 
 ```powershell
-$NW = Get-AzurermNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
-$nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName nsgRG -Name nsgName
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName StorageRG -Name contosostorage123
-Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
-Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true
+$NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+$nsg = Get-AzNetworkSecurityGroup -ResourceGroupName nsgRG -Name nsgName
+$storageAccount = Get-AzStorageAccount -ResourceGroupName StorageRG -Name contosostorage123
+Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
+
+#Traffic Analytics Parameters
+$workspaceResourceId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/trafficanalyticsrg/providers/microsoft.operationalinsights/workspaces/taworkspace"
+$workspaceGUID = "cccccccc-cccc-cccc-cccc-cccccccccccc"
+$workspaceLocation = "westeurope"
+
+#Configure Version 1 Flow Logs
+Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 1
+
+#Configure Version 2 Flow Logs, and configure Traffic Analytics
+Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2
+
+#Configure Version 2 FLow Logs with Traffic Analytics Configured
+Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2 -EnableTrafficAnalytics -WorkspaceResourceId $workspaceResourceId -WorkspaceGUID $worspaceid -WorkspaceLocation $workspaceRegion
+
+#Query Flow Log Status
+Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
 ```
 
 Konto magazynu, które określisz, że nie ma skonfigurowanych reguł sieci, które ograniczają dostęp do sieci tylko do usług firmy Microsoft lub określonych sieci wirtualnej. Konto magazynu może być w tym samym lub różnych subskrypcji platformy Azure, niż sieciowej grupy zabezpieczeń, pozwalających na korzystanie z usługi flow w dzienniku. Jeśli używasz różnych subskrypcji, one muszą być skojarzone z tą samą dzierżawą usługi Azure Active Directory. Konto używane dla każdej subskrypcji musi mieć [niezbędne uprawnienia](required-rbac-permissions.md).
 
-## <a name="disable-network-security-group-flow-logs"></a>Dzienniki przepływów wyłączyć grupy zabezpieczeń sieci
+## <a name="disable-traffic-analytics-and-network-security-group-flow-logs"></a>Wyłącz dzienniki analizy ruchu i Flow grupy zabezpieczeń w sieci
 
-Skorzystaj z następującego przykładu, aby wyłączyć dzienników przepływu:
+Skorzystaj z następującego przykładu, aby wyłączyć analizę ruchu i dzienniki przepływu:
 
 ```powershell
-Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $false
+#Disable Traffic Analaytics by removing -EnableTrafficAnalytics property
+Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2 -WorkspaceResourceId $workspaceResourceId -WorkspaceGUID $workspaceGUID -WorkspaceLocation $workspaceLocation
+
+#Disable Flow Logging
+Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $false
 ```
 
 ## <a name="download-a-flow-log"></a>Pobierz dziennik przepływu
 
 Lokalizacja magazynu dziennika przepływu jest zdefiniowany podczas tworzenia. Wygodne narzędzie dostępu do tych dzienników przepływu zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  http://storageexplorer.com/
 
-Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
+Jeśli określono konto magazynu, przepływ pliki dziennika są zapisywane na koncie magazynu w następującej lokalizacji:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json

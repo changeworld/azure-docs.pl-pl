@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001974"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190855"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
@@ -38,7 +38,7 @@ Te kroki odnoszą się Avere Panelu sterowania. Odczyt [dostęp do klastra vFXT]
 
 ## <a name="create-a-core-filer"></a>Utwórz filtr core
 
-"Core filtr" to termin vFXT systemu magazynu zaplecza. Magazyn może być urządzenie NAS sprzętu, takich jak NetApp lub Isilon lub może być magazynem obiektów w chmurze. Można znaleźć więcej informacji o filtrach core [w Avere klastra przewodnik ustawienia](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers).
+"Core filtr" to termin vFXT systemu magazynu zaplecza. Magazyn może być urządzenie NAS sprzętu, takich jak NetApp lub Isilon lub może być magazynem obiektów w chmurze. Można znaleźć więcej informacji o filtrach core [w Avere klastra przewodnik ustawienia](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
 Aby dodać filtr core, wybierz jedną z dwa główne rodzaje filtrach core:
 
@@ -70,7 +70,7 @@ Poniższe kroki należy dodać filtr core NAS:
   
    * Kliknij przycisk **dalej** i wybierz zasady pamięci podręcznej. 
    * Kliknij przycisk **Dodaj filtr**.
-   * Aby uzyskać szczegółowe informacje, zobacz [Dodawanie nowych NAS podstawowe filtr](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) w Avere klastra przewodnik ustawienia.
+   * Aby uzyskać szczegółowe informacje, zobacz [Dodawanie nowych NAS podstawowe filtr](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) w Avere klastra przewodnik ustawienia.
 
 Następnie przejdź do [utworzyć Rozgałęzienie](#create-a-junction).  
 
@@ -133,7 +133,7 @@ Aby dodać magazyn obiektów Blob, po utworzeniu klastra, wykonaj następujące 
    | Subskrypcja | Identyfikator subskrypcji |
    | Klucz dostępu do magazynu | Klucz konta usługi Azure storage (skopiowany w poprzednim kroku) | 
 
-   Kliknij przycisk **przesłać**.
+   Kliknij przycisk **Prześlij**.
 
    ![Ukończono formularza poświadczenia chmury w Panelu sterowania Avere](media/avere-vfxt-new-credential-submit.png)
 
@@ -156,7 +156,7 @@ Aby dodać magazyn obiektów Blob, po utworzeniu klastra, wykonaj następujące 
    * Opcjonalnie można ustawić **typ szyfrowania** do **Brak**.  Usługa Azure Storage jest domyślne szyfrowanie przekazywanego materiału.
    * Kliknij przycisk **Dodaj filtr**.
 
-  Aby uzyskać szczegółowe informacje, przeczytaj [Dodawanie nowych filtr core chmury](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>) w przewodniku Avere konfiguracji klastra. 
+  Aby uzyskać szczegółowe informacje, przeczytaj [Dodawanie nowych filtr core chmury](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) w przewodniku Avere konfiguracji klastra. 
 
 Strona zostanie odświeżona lub możesz odświeżyć stronę, aby wyświetlić swoje nowy filtr core.
 
@@ -168,7 +168,7 @@ Połączenie jest ścieżką, które tworzysz dla klientów. Klienci ścieżkę 
 
 Na przykład można utworzyć `/avere/files` do mapowania na Twoje filtr core NetApp `/vol0/data` eksportu i `/project/resources` podkatalogu.
 
-Więcej informacji o punktach transferu znajdują się w [przestrzeni nazw części przewodnika konfiguracji klastra Avere](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html).
+Więcej informacji o punktach transferu znajdują się w [przestrzeni nazw części przewodnika konfiguracji klastra Avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 Wykonaj następujące kroki w interfejsie ustawienia Panelu sterowania Avere:
 

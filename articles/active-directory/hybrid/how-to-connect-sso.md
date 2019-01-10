@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano usługi Azure Active Directory (Azure AD) bezproblemowego logowania jednokrotnego i jak pozwala musisz podać wartość true, logowania jednokrotnego dla użytkowników firmowych komputerów stacjonarnych w sieci firmowej.
 services: active-directory
 keywords: Co to jest program Azure AD Connect, instalowanie usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b74cf533c0fe59a0967b7063791df2cfc9a7a77
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c0533f0609539645c462c9e6f5b514a82f1162a1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913935"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187573"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -60,7 +60,7 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 - Jest bezpłatną funkcją, które nie potrzebują żadnych płatnej wersji usługi Azure AD z niego korzystać.
 - Jest on obsługiwany w klientów przeglądarki sieci web oraz klientów pakietu Office, które obsługują [nowoczesnego uwierzytelniania](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformach i w przeglądarkach zdolne do uwierzytelniania Kerberos:
 
-| OS\Browser |Internet Explorer|Brzeg|Google Chrome|Mozilla Firefox|Safari|
+| OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Tak\*|Nie|Yes|Tak\*\*\*|ND
 |Windows 8.1|Tak\*|ND|Yes|Tak\*\*\*|ND

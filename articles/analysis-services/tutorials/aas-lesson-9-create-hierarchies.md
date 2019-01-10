@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 9 — tworzenie hierarchii | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek lekcja 9 Tworzenie hierarchii | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak tworzyć hierarchie w modelu tabelarycznego.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e6591dc25ab498b496f6abff1041e448240896d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f34b2fd2ba5f6e3e1433fb8dac04d931a36920d0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426069"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188967"
 ---
 # <a name="create-hierarchies"></a>Tworzenie hierarchii
 
@@ -24,7 +24,7 @@ Aby utworzyć hierarchie, należy użyć projektanta modeli w *widoku diagramu*.
 Szacowany czas trwania lekcji: **20 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 8: Tworzenie perspektyw](../tutorials/aas-lesson-8-create-perspectives.md).  
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 8: Tworzenie perspektyw](../tutorials/aas-lesson-8-create-perspectives.md).  
   
 ## <a name="create-hierarchies"></a>Tworzenie hierarchii  
   
@@ -73,6 +73,6 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
     *  DayNumberOfWeek
   
  ## <a name="whats-next"></a>Co dalej?
-[Lekcja 10. Tworzenie partycji](../tutorials/aas-lesson-10-create-partitions.md). 
+[Lekcja 10: Tworzenie partycji](../tutorials/aas-lesson-10-create-partitions.md). 
   
   

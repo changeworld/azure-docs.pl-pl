@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 707bc41a2a66782d9540d95606c41685908e9848
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: cb93c29ae4cb8d365cd128c52ee726c10c94bc19
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429714"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189341"
 ---
 # <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
 
@@ -45,9 +45,7 @@ Po utworzeniu serwera na platformie Azure i wdrożyć model tabelaryczny, użytk
 ## <a name="connect-in-power-bi-service"></a>Łączenie w usłudze Power BI (usługa)
 
 1. Utwórz plik programu Power BI Desktop, który ma połączenie na żywo do modelu na serwerze.
-2. W [usługi Power BI](https://powerbi.microsoft.com), kliknij przycisk **Pobierz dane** > **pliki**, a następnie zlokalizuj i wybierz swój plik pbix.
-
-
+2. W [usługi Power BI](https://powerbi.microsoft.com), kliknij przycisk **Pobierz dane** > **pliki**, a następnie znajdź i wybierz swój plik pbix.
 
 ## <a name="see-also"></a>Zobacz także
 [Łączenie z usługami Azure Analysis Services](analysis-services-connect.md)   

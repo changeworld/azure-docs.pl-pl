@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f51fb1d92fdec93fdb57fd25f8ca1cbaeb4fc46
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834710"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188933"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
@@ -45,7 +45,7 @@ Możesz uzyskać dostęp do portalu MyApps, przechodząc do `https://myapps.micr
 
 Jeśli masz niestandardowe znakowanie skonfigurowana dla strony logowania, należy załadować znakowanie, dodając domeny Twojej organizacji do adresu URL (na przykład `https://myapps.microsoft.com/<your domain>.com`).
 
-Możesz użyć dowolnej nazwy aktywnych lub zweryfikowanej domeny, skonfigurowanego w portalu Azure, jak pokazano poniżej: ![nazwa domeny firmy Wingtip Toys][2]  
+Można użyć dowolnej nazwy aktywnych lub zweryfikowanej domeny, skonfigurowanego w portalu Azure, jak pokazano poniżej: ![Nazwa domeny usługi o nazwie Wingtip Toys][2]  
 
 Dystrybuuj adres URL, aby wszyscy użytkownicy logujący się do aplikacji, które są zintegrowane z usługą Azure AD.
 
@@ -65,7 +65,7 @@ Instalator jest architektury. Jeśli klikniesz link do pobierania, tylko Pobierz
 
 
 Rozszerzenie portalu MyApps jest obecnie dostępna dla:
-- **Krawędź**: Windows 10 Anniversary Edition lub nowszy. 
+- **Microsoft Edge**: Windows 10 Anniversary Edition lub nowszy. 
 - **Dla programu Chrome**: Windows 7 lub nowszy i System MacOS x lub później.
 - **Firefox 26.0 lub nowsze**: na Windows XP z dodatkiem SP2 lub nowszym i Mac OS X 10.6 lub później.
 - **Internet Explorer 11**: Windows 7 lub nowszy (ograniczona obsługa).
@@ -79,7 +79,7 @@ Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć ro
 - Możesz użyć firmy wewnętrznych adresów URL, podczas pracy zdalnej za pośrednictwem [serwera Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
-> Dodatkowe funkcje są dostępne tylko dla przeglądarki Microsoft Edge, Chrome i Firefox.
+> Dodatkowe funkcje są dostępne tylko w przypadku Microsoft Edge, Chrome i Firefox.
 >
 Możesz pobrać rozszerzenia bezpośrednio z następujących witryn:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)

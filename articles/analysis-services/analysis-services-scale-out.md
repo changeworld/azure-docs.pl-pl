@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/13/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321278"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190845"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -74,15 +74,19 @@ W **Przegląd** > model > **modelu Synchronize**.
 ![Suwak skalowalnego w poziomie](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>Interfejs API REST
+
 Użyj **synchronizacji** operacji.
 
 #### <a name="synchronize-a-model"></a>Synchronizowanie modelu   
+
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>Pobierz stan synchronizacji  
+
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
+
 Przed rozpoczęciem korzystania z programu PowerShell, [Instalowanie lub aktualizowanie najnowszy moduł AzureRM](https://github.com/Azure/azure-powershell/releases). 
 
 Aby ustawić liczba replik zapytań, należy użyć [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
@@ -101,9 +105,9 @@ SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funk
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-**Problem:** użytkownicy otrzymują błąd **nie można odnaleźć serwera "\<nazwa serwera >" wystąpienie w trybie połączenia "ReadOnly".**
+**Problem:** Użytkownicy otrzymują błąd **nie można odnaleźć serwera "\<nazwa serwera >" wystąpienie w trybie połączenia "ReadOnly".**
 
-**Rozwiązanie:** podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, należy zrezygnować z oddziel serwer przetwarzania od puli zapytań, dopiero po zakończeniu operacji skalowania w poziomie i synchronizacji. Metryki pamięci i QPU służy do monitorowania stanu synchronizacji.
+**Rozwiązanie:** Podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, należy zrezygnować z oddziel serwer przetwarzania od puli zapytań, dopiero po zakończeniu operacji skalowania w poziomie i synchronizacji. Metryki pamięci i QPU służy do monitorowania stanu synchronizacji.
 
 ## <a name="related-information"></a>Informacje pokrewne
 

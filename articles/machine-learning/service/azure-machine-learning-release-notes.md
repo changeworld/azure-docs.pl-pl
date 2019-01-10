@@ -11,16 +11,23 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: a43481bf6d9c95efdb9c4bc38ed400c5fe782c17
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 157591897adb7495382b540dc1517c4c652a2632
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157517"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190735"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning. 
+
+### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Zestaw SDK v1.0.6 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Dokumentacja zestawu SDK**: https://aka.ms/data-prep-sdk
+
++ **Poprawki błędów**
+  + Usunięto usterkę podczas odczytywania z publiczne kontenery obiektów Blob platformy Azure do odczytu, na platformie Spark
 
 ## <a name="2018-12-20"></a>2018-12-20: 
 

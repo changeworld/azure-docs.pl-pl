@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 12 — analiza w programie Excel | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek lekcja 12 Analizuj w programie Excel | Dokumentacja firmy Microsoft
 description: Opisuje sposób użycia funkcji analizy w programie Excel w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 425c3a351c75c63cb07df66d6122f4d900b4932e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e5ac04c7bd8174f823cacc67401af8a98b3d8170
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429766"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186485"
 ---
 # <a name="analyze-in-excel"></a>Analizuj w programie Excel
 
@@ -21,10 +21,10 @@ W tej lekcji użyjesz funkcji analizy w programie Excel, aby otworzyć program M
   
 Aby ukończyć tę lekcję, musisz dysponować programem Excel zainstalowanym na tym samym komputerze, co program Visual Studio.
   
-Szacowany czas trwania lekcji: **5 minut**  
+Szacowany czas trwania lekcji: **Pięć minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 11. Tworzenie ról](../tutorials/aas-lesson-11-create-roles.md).  
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 11 Tworzenie ról](../tutorials/aas-lesson-11-create-roles.md).  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Przeglądanie przy użyciu perspektywy domyślnej i perspektywy sprzedaży internetowej  
 W pierwszych zadaniach przejrzysz swój model przy użyciu zarówno perspektywy domyślnej, która zawiera wszystkie obiekty modelu, jak i utworzonej wcześniej perspektywy sprzedaży internetowej. Perspektywa sprzedaży internetowej nie zawiera obiektu tabeli Klient.  
@@ -69,7 +69,7 @@ Role są ważnym elementem każdego modelu tabelarycznego. Bez co najmniej jedne
 3.  Zamknij program Excel bez zapisywania skoroszytu.  
   
 ## <a name="whats-next"></a>Co dalej?
-Przejdź do następnej lekcji: [Lekcja 13. Wdrażanie](../tutorials/aas-lesson-13-deploy.md).
+Przejdź do następnej lekcji: [Lekcja 13: Wdrażanie](../tutorials/aas-lesson-13-deploy.md).
 
   
   

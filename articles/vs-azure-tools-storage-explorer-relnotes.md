@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94c1f255d7aae63d6faf44cc500c48c68bf6d3fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd6384dcd132ffb53e3531707c600465e8d0b649
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608957"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190021"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
@@ -27,15 +27,18 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux.
 
-## <a name="version-161"></a>Wersja 1.6.1
-12/18/2018 r.
+## <a name="version-162"></a>W wersji 1.6.2
+1/9/2019 r
 
-### <a name="download-azure-storage-explorer-161"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.6.1
-- [Usługa Azure Storage Explorer 1.6.1 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Eksplorator usługi Azure Storage 1.6.1 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Eksplorator usługi Azure Storage 1.6.1 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-162"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.6.2
+- [Usługa Azure Storage Explorer 1.6.2 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Eksplorator usługi Azure Storage 1.6.2 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Eksplorator usługi Azure Storage 1.6.2 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Poprawki
+* W 1.6.1 dodawane do listy ACL Gen2 ADLS przez identyfikator obiektu jednostki, których użytkownicy nie było zawsze zostały dodane jako grupy. Teraz tylko grupy są dodawane jako grupy i jednostki, takie jak andService aplikacje dla przedsiębiorstw, które jednostki są dodawane jako użytkownicy. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* Konto usługi ADLS Gen2 magazynu miała Brak kontenerów i został dołączony przy użyciu nazwy i klucza, następnie Eksploratora usługi Storage może nie wykryć czy konto magazynu było Gen2 usługi ADLS. Ten problem został rozwiązany. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* W 1.6.0 konflikty podczas kopiowania i wklejania będzie monituje o rozdzielczości. Zamiast tego konfliktami kopiowania po prostu odniosą sukcesu. Teraz w przypadku konfliktu pierwszy, pojawi się prośba jak jego rozwiązania. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * Ze względu na ograniczenia interfejsu API zostały wyłączone całej walidacji identyfikatory obiektów w oknie dialogowym Zarządzanie dostępem. Sprawdzanie poprawności teraz miało miejsce tylko dla użytkownika nazwy UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
 * W oknie dialogowym Gen2 ADLS i zarządzanie dostępem nie można zmodyfikować uprawnień dla grupy. Ten problem został rozwiązany. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * Dodano przeciągania i upuszczania Przekaż pomocy technicznej do edytora Gen2 usługi ADLS. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
@@ -103,6 +106,7 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 ## <a name="previous-releases"></a>Poprzednie wersje
 
+* [Wersja 1.6.1](#version-161)
 * [W wersji 1.6.0](#version-160)
 * [Wersja 1.5.0](#version-150)
 * [Wersja 1.4.4](#version-144)
@@ -135,6 +139,75 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 * [Wersja 0.7.20160129.1](#version-07201601291)
 * [Wersja 0.7.20160105.0](#version-07201601050)
 * [Wersja 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-161"></a>Wersja 1.6.1
+12/18/2018 r.
+
+### <a name="hotfixes"></a>Poprawki
+* Ze względu na ograniczenia interfejsu API zostały wyłączone całej walidacji identyfikatory obiektów w oknie dialogowym Zarządzanie dostępem. Sprawdzanie poprawności teraz miało miejsce tylko dla użytkownika nazwy UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* W oknie dialogowym Gen2 ADLS i zarządzanie dostępem nie można zmodyfikować uprawnień dla grupy. Ten problem został rozwiązany. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Dodano przeciągania i upuszczania Przekaż pomocy technicznej do edytora Gen2 usługi ADLS. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* Czasami brakuje właściwości adresu URL w oknie dialogowym właściwości ADLS Gen2 pliki i foldery "/". Ten problem został rozwiązany. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Jeśli pobieranie bieżących uprawnień dla kontenera usługi Azure Data Lake Store Gen2, plik lub folder nie powiedzie się, a następnie ten błąd jest teraz propertly wyświetlane w dzienniku aktywności. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Ścieżka tymczasowa utworzona przy otwieraniu plików została skrócona, aby zmniejszyć prawdopodobieństwo tworzenia ścieżki, która jest dłuższa niż MAX_PATH na Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Połącz teraz poprawnie zostanie wyświetlone okno dialogowe gdy żaden użytkownik nie zalogowany, a żadne zasoby nie zostały dołączone. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* W 1.6.0 zapisywanie właściwości dla innych SNS: obiektów blob i plików będzie zakodować wartości wszystkich właściwości. Pozwoliło to odnotować niepotrzebne kodowania wartości, które zawiera tylko znaki ASCII. Teraz z wartości będzie zapisywana tylko zawierają znaki spoza zestawu ASCII. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Przekazywanie folderu do kontenera obiektów Blob bez - SNS może zakończyć się niepowodzeniem, jeśli użyto sygnatury dostępu Współdzielonego i sygnatury dostępu Współdzielonego nie ma uprawnień do odczytu. Ten problem został rozwiązany. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Anulowanie transferu AzCopy zakończyło się niepowodzeniem. Ten problem został rozwiązany. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* Narzędzie AzCopy może zakończyć się niepowodzeniem podczas próby pobrania folderu z kontenera usługi Azure Data Lake Store Gen2 Blob, gdyby spacje w nazwie folderu. Ten problem został rozwiązany. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* Edytor bazy danych cosmos DB zostało uszkodzone w 1.6.0. Teraz jest to stała. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
+### <a name="new"></a>Nowa
+
+* Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
+* Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
+    * Tworzenie i usuwanie kontenerów
+    * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
+    * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
+    * Tworzenia nowych folderów
+    * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
+    * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
+    
+    Inne typowe funkcje obiektów Blob, takie jak usuwanie nietrwałe i migawki, nie są obecnie dostępne. Zarządzanie uprawnieniami jest również dostępna tylko po zalogowaniu. Ponadto podczas pracy na koncie usługi Azure Data Lake Store Gen2 Storage, Eksplorator usługi Storage będzie używać narzędzia AzCopy przekazywanie i pobieranie i domyślną przy użyciu nazwy i klucza poświadczeń dla wszystkich operacji, jeśli jest dostępny.
+* Po opinii silne użytkownika dzierżawy podziału ponownie można można przerwać dzierżawy dla wielu obiektów blob na raz.
+
+### <a name="known-issues"></a>Znane problemy
+
+* Podczas pobierania z konta usługi Azure Data Lake Store Gen2 magazynu, jeśli jeden z plików przesyłanych już istnieje, narzędzie AzCopy czasami ulegnie awarii. Ten problem zostanie rozwiązany w nadchodzącej poprawce.
+* Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Aby uzyskać więcej informacji zobacz #537.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, komentarz dotyczący tego problemu.
+* Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
+* W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów. W celu obejścia tego problemu podczas przekazywania lub pobierania z kontenera obiektów blob, służy funkcja eksperymentalna narzędzia AzCopy.
+* Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. Jest to ponieważ używamy Anuluj filtr obejście opisane w tym miejscu.
+* Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
+* Usługa Azure Stack nie obsługuje następujących funkcji. Podjęto próbę użycia tych funkcji podczas pracy z usługą Azure Stack zasobów może spowodować nieoczekiwane błędy.
+   * Udziały plików
+   * Poziomy dostępu
+   * Usuwanie nietrwałe
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszania sprzętowego procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksplorator usługi Storage wyświetla puste okno główne (pusty), możesz spróbować uruchomienie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Użytkownicy systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników w systemie Ubuntu 14.04, konieczne będzie upewnij się, GCC jest aktualne — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników w systemie Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-160"></a>W wersji 1.6.0
 12/5/2018 r.

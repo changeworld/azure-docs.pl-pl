@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 146467ef50c605f730fe6f65c349fc8a3a1fd045
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 92bab3e6dcea0b6b234d361a346698be15088fc0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426247"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191517"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – samouczek Adventure Works
 
@@ -45,7 +45,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 -   Usługa [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) z **przykładową bazą danych AdventureWorksDW** lub usługa SQL Server Data Warehouse z [przykładową bazą danych Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 
-    **Ważne:** jeśli przykładowa baza danych została zainstalowana w lokalnej usłudze SQL Server Data Warehouse i model jest wdrażany na serwerze usług Azure Analysis Services, wymagana jest [lokalna brama danych](../analysis-services-gateway.md).
+    **Ważne:** Jeśli Instalowanie przykładowej bazy danych do lokalnego programu SQL Server Data Warehouse i model jest wdrażany na serwerze usług Azure Analysis Services, [lokalnej bramy danych](../analysis-services-gateway.md) jest wymagana.
 
 -   Najnowsza wersja narzędzi [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) dla programu Visual Studio.
 
@@ -93,7 +93,7 @@ Te lekcje nie są wymagane do ukończenia samouczka, ale mogą pomóc lepiej zro
 
   
 ## <a name="next-steps"></a>Kolejne kroki  
-Aby rozpocząć, przejdź do [lekcji 1 „Tworzenie nowego projektu modelu tabelarycznego”](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Aby rozpocząć pracę, zobacz [Lekcja 1: Tworzenie nowego projektu modelu tabelarycznego](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   
   

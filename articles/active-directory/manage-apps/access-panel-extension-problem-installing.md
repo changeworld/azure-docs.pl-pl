@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: aa0602ec0ecb97e9174fe6ef552b88fc30900d09
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 46f1d49e210a483b8e7645d7eba84ad21ed477da
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356971"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190526"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Zainstaluj rozszerzenie przeglądarki panelu dostępu
 
@@ -36,7 +36,7 @@ Co najmniej panelu dostępu wymaga przeglądarki, która obsługuje język JavaS
 
 Logowania jednokrotnego opartego na hasłach można użyć dowolnej z poniższych przeglądarek:
 
-- **Krawędź**: Windows 10 Anniversary Edition lub nowszy. 
+- **Microsoft Edge**: Windows 10 Anniversary Edition lub nowszy. 
 - **Dla programu Chrome**: Windows 7 lub nowszy i System MacOS x lub później.
 - **Firefox 26.0 lub nowsze**: na Windows XP z dodatkiem SP2 lub nowszym i Mac OS X 10.6 lub później.
 
@@ -62,7 +62,7 @@ Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj następuj�
 Możesz również pobrać rozszerzenie dla programu Chrome i Microsoft Edge bezpośrednio z następujących witryn:
 
 - [Rozszerzenie przeglądarki Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozszerzenie Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Rozszerzenia Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Użyj mojej aplikacji bezpiecznego logowania rozszerzenia
 * Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.com`, skonfigurować domyślny adres URL, wykonując następujące czynności:
@@ -93,7 +93,7 @@ Możesz również pobrać rozszerzenie dla programu Chrome i Microsoft Edge bezp
     4. Teraz możesz przejść do adresu URL wewnętrzne firmy, nawet podczas pracy zdalnej.
 
 > [!NOTE]
-> Poprzedni opcje są dostępne tylko dla przeglądarki Microsoft Edge, Chrome i Firefox.
+> Poprzedni opcje są dostępne tylko w przypadku Microsoft Edge, Chrome i Firefox.
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>Konfigurowanie zasad grupy dla programu Internet Explorer
 
@@ -112,7 +112,7 @@ Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania zasad grupy i wd
 Aby uzyskać dostęp do narzędzia do diagnostyki i informacji o konfigurowaniu rozszerzenia dla programu Internet Explorer, zobacz [Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](manage-access-panel-browser-extension.md).
 
 > [!NOTE]
-> Internet Explorer jest ograniczona pomoc techniczną i nie będzie już otrzymywać nowe aktualizacje oprogramowania. Krawędź jest zalecane przeglądarki.
+> Internet Explorer jest ograniczona pomoc techniczną i nie będzie już otrzymywać nowe aktualizacje oprogramowania. Microsoft Edge jest zalecane przeglądarki.
 
 ## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Jeśli poprzednie kroki nie rozwiązują problemu
 

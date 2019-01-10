@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 333edfc4041e7ab0dfbe6d45f306b1450e6b9946
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 1558d8e8392ff49e2661e9f8bc41e41c5bbc6dd5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103150"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189852"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentacja aplikacji sieci web w czasie wykonywania za pomocą Monitora stanu usługi Application Insights
 
@@ -88,6 +88,23 @@ Jeśli chcesz ponownie przeprowadzić publikację bez dodawania usługi Applicat
 
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
+
+### <a name="confirm-a-valid-installation"></a>Upewnij się, prawidłowej instalacji 
+
+Oto kilka kroków, które należy wykonać, aby potwierdzić, że Twoja instalacja zakończyła się pomyślnie.
+
+- Upewnij się, że plik applicationInsights.config znajduje się w katalogu aplikacji docelowej i zawiera ikey.
+
+- Jeśli podejrzewasz, że brakuje danych można uruchomić proste zapytanie [Analytics](../log-query/get-started-portal.md) Aby wyświetlić listę wszystkich ról chmura obecnie wysyłania danych telemetrycznych.
+
+```Kusto
+union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+```
+
+- Jeśli potrzebujesz upewnić się, że usługa Application Insights jest pomyślnie dołączono można uruchomić [uchwyt Sysinternals](https://docs.microsoft.com/sysinternals/downloads/handle) za pomocą polecenia okna, aby upewnić się, że applicationinsights.dll został załadowany przez usługi IIS.
+
+`handle.exe /p w3wp.exe`
+
 
 ### <a name="cant-connect-no-telemetry"></a>Nie można nawiązać połączenia? Brak telemetrii?
 

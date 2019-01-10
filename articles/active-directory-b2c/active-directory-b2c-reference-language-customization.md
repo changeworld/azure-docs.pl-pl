@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e5bf7cc199fc8a439b5071faa89cce2e3ed47a75
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e115db18770ef304d823ff9c35d7d2cf302d5ccf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724319"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187766"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Dostosowywanie języka w usłudze Azure Active Directory B2C
 
@@ -175,7 +175,7 @@ Firma Microsoft obecnie nie zapewnia obsługi języków od prawej do lewej. Moż
 ### <a name="social-identity-provider-translations"></a>Tłumaczenia dostawcy tożsamości dla sieci społecznościowej
 Firma Microsoft udostępnia `ui_locales` OIDC parametr społecznościowych nazw logowania. Ale niektórzy dostawcy tożsamości społecznościowych, w tym usługi Facebook i Google, nie uznaje ich. 
 ### <a name="browser-behavior"></a>Zachowanie przeglądarki
-Chrome i Firefox zarówno zażądać dla swojego języka zestawu. Jeśli jest obsługiwany język, jest poprzedzana domyślnie. Krawędź obecnie nie żąda języka i przechodzi bezpośrednio do języka domyślnego.
+Chrome i Firefox zarówno zażądać dla swojego języka zestawu. Jeśli jest obsługiwany język, jest poprzedzana domyślnie. Microsoft Edge aktualnie nie żąda języka i przechodzi bezpośrednio do domyślnego języka.
 
 ### <a name="supported-languages"></a>Obsługiwane języki
 
@@ -205,7 +205,7 @@ Chrome i Firefox zarówno zażądać dla swojego języka zestawu. Jeśli jest ob
 | Holenderski                 | nl            |
 | Pendżabski               | pa            |
 | Polski                | pl            |
-| Portugalski — Brazylia   | pt-br         |
+| Portugalski (Brazylia)   | pt-br         |
 | Portugalski — Portugalia | pt-pt         |
 | Rumuński              | ro            |
 | Rosyjski               | ru            |

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238883"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189800"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
 
@@ -63,6 +63,7 @@ Podczas tworzenia projektu modelu tabelarycznego, tworzenie ról i dodawanie uż
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Aby dodać lub zarządzania rolami i użytkowników w programie SSMS
+
 Do dodawania ról i użytkowników, aby wdrożony model bazy danych, możesz muszą być połączone z serwerem jako administrator serwera lub już w roli bazy danych z uprawnieniami administratora.
 
 1. W obiekcie Exporer, kliknij prawym przyciskiem myszy **role** > **nową rolę**.
@@ -83,6 +84,7 @@ Do dodawania ról i użytkowników, aby wdrożony model bazy danych, możesz mus
 5. Jeśli rola, którą tworzysz ma uprawnienie do odczytu, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij przycisk **filtry wierszy**, wybierz tabelę, a następnie wpisz formułę języka DAX w **Filtr języka DAX** pola. 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Dodawanie ról i użytkowników za pomocą skryptów TMSL
+
 W oknie XMLA w programie SSMS lub przy użyciu programu PowerShell, można uruchomić skryptów TMSL. Użyj [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) polecenia i [role](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) obiektu.
 
 **Przykładowy skrypt TMSL**
@@ -116,6 +118,7 @@ W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli anal
 ```
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Do dodawania ról i użytkowników przy użyciu programu PowerShell
+
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) modułu zawiera polecenia cmdlet do zarządzania bazy danych specyficznych dla zadań i ogólnego przeznaczenia polecenia cmdlet Invoke-ASCmd, które akceptuje zapytanie skryptów języka TMSL (Tabular Model) lub skrypt. Następujące polecenia cmdlet są używane do zarządzania rolami bazy danych i użytkowników.
   
 |Polecenie cmdlet|Opis|
@@ -125,6 +128,7 @@ W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli anal
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Wykonywanie skryptów TMSL.|
 
 ## <a name="row-filters"></a>Filtry wierszy  
+
 Filtry wierszy definiują, które wiersze w tabeli mogą być przeszukiwane przez członków określonej roli. Filtry wierszy są zdefiniowane dla każdej tabeli w modelu przy użyciu formuły języka DAX.  
   
 Można zdefiniować filtry wierszy tylko do odczytu i odczytu ról i uprawnień procesu. Domyślnie jeśli Filtr wierszy nie jest zdefiniowany dla konkretnej tabeli elementy członkowskie można badać wszystkie wiersze w tabeli, chyba że filtrowanie krzyżowe stosuje z innej tabeli.
@@ -144,6 +148,7 @@ Filtry wierszy mają zastosowanie do określonych wierszy i powiązane wiersze. 
  Można użyć filtru, *=FALSE()*, aby odmówić dostępu do wszystkich wierszy dla całej tabeli.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
   [Zarządzanie administratorami serwerów](analysis-services-server-admins.md)   
   [Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell](analysis-services-powershell.md)  
   [Tabular Model Scripting Skorowidz języka (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

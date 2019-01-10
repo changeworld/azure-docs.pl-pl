@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: a2f654043146536ecf543ae2a0aa49537c2223e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 737e05f3d936481e06acfc0604ff739b9f01d5db
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344044"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191653"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  

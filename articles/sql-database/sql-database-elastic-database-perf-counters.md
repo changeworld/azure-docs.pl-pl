@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 84bd1283020492ef6724aabd7daad4e153b11717
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce5ba5f827b790e4ca91d1aed91dfad47cedac4e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043689"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191398"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Liczniki wydajności dla menedżera map fragmentów
 
@@ -34,7 +34,7 @@ Liczniki są używane do śledzenia wydajności [routing zależny od danych](sql
 
 ## <a name="create-performance-category-and-counters"></a>Tworzenie kategorii wydajności i liczników
 
-Aby utworzyć liczników, wywołaj metodę CreatePerformanceCategoryAndCounters [klasy ShardMapManagementFactory](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Tylko administrator może wykonać metodę:
+Aby utworzyć liczników, wywołaj metodę CreatePerformanceCategoryAndCounters [klasy ShardMapManagementFactory](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory). Tylko administrator może wykonać metodę:
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
@@ -42,7 +42,7 @@ Można również użyć [to](https://gallery.technet.microsoft.com/scriptcenter/
 Ta metoda tworzy następujące liczniki wydajności:  
 
 * **Buforowane mapowania**: Liczba mapowań mapowania fragmentów w pamięci podręcznej.
-* **Rekord DDR OP./s**: Częstotliwość zależne routingu operacje na danych dla mapowania fragmentów. Ten licznik jest aktualizowany po wywołaniu [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) skutkuje udane połączenie do fragmentu docelowego.
+* **Rekord DDR OP./s**: Częstotliwość zależne routingu operacje na danych dla mapowania fragmentów. Ten licznik jest aktualizowany po wywołaniu [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) skutkuje udane połączenie do fragmentu docelowego.
 * **Mapowanie trafień w pamięci podręcznej wyszukiwania na sekundę**: Szybkość przeprowadzania operacji wyszukiwania pomyślne pamięci podręcznej do mapowania w ramach mapowania fragmentów.
 * **Mapowanie chybień w pamięci podręcznej wyszukiwania na sekundę**: Szybkość przeprowadzania operacji wyszukiwania w pamięci podręcznej nie powiodło się dla mapowania w ramach mapowania fragmentów.
 * **Mapowania dodane lub zaktualizowane w pamięci podręcznej na sekundę**: Szybkość, w których mapowania są dodaniem lub zaktualizowaniem w pamięci podręcznej dla mapowania fragmentów.
@@ -54,7 +54,7 @@ Liczniki wydajności są tworzone dla każdego fragmentu pamięci podręcznej je
 
 Następujące zdarzenia wyzwolić tworzenie liczników wydajności:  
 
-* Inicjowanie [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) z [wczesne ładowanie](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), jeśli ShardMapManager zawiera żadnych mapowań fragmentów. Obejmują one [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) i [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) metody.
+* Inicjowanie [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) z [wczesne ładowanie](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), jeśli ShardMapManager zawiera żadnych mapowań fragmentów. Obejmują one [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) i [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) metody.
 * Pomyślne wyszukiwania mapowania fragmentów w postaci (przy użyciu [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) lub [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)).
 * Pomyślne utworzenie mapy fragmentów za pomocą CreateShardMap().
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753493"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191245"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu 
 
@@ -51,7 +51,7 @@ W poniższej tabeli podsumowano natywnych obsługę DRM na różnych platformach
 | **Platforma klienta** | **Natywne DRM** | **EME** |
 | --- | --- | --- | --- |
 | **Telewizorów typu Smart TV, odbiornikami** | PlayReady, Widevine i innych | Osadzony przeglądarki/EME dla PlayReady i Widevine|
-| **Windows 10** | PlayReady | MS Edge/IE11 dla technologii PlayReady|
+| **Windows 10** | PlayReady | Microsoft Edge/IE11 dla technologii PlayReady|
 | **Urządzenia z systemem android (telefon, tablet, takich jak Telewizor)** |Widevine |Dla programu Chrome dla Widevine |
 | **iOS** | FairPlay | Safari dla technologii FairPlay (od 11.2 system iOS) |
 | **macOS** | FairPlay | Safari dla technologii FairPlay (od przeglądarki Safari 9 + w systemie Mac OS X 10.11 i El Capitan)|

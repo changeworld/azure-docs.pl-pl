@@ -9,8 +9,8 @@ items:
   - name: Jak działa usługa
     displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
-  - name: Co się dzieje z aplikacją Workbench?
-    displayName: desktop ui
+  - name: Co się stało z aplikacją Workbench?
+    displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
   - name: Informacje o wersji
     displayName: what's new issues bugs
@@ -142,6 +142,9 @@ items:
   - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
     displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
+  - name: Eksportowanie i usuwanie danych
+    displayName: gdpr
+    href: how-to-export-delete-data.md
 - name: Dokumentacja
   items:
   - name: Zestaw SDK uczenia maszynowego
@@ -166,213 +169,11 @@ items:
     href: resource-known-issues.md
   - name: Uzyskiwanie pomocy technicznej
     href: support-for-aml-services.md
-  - name: Eksportowanie i usuwanie danych
-    displayName: gdpr
-    href: how-to-export-delete-data.md
-  - name: Przestarzała dokumentacja
-    items:
-    - name: Migrowanie z aplikacji Workbench
-      displayName: Workbench upgrade update transfer
-      href: how-to-migrate.md
-    - name: Eksportowanie lub usuwanie danych konta (przestarzałe)
-      href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Przewodnik Szybki start aplikacji Workbench (przestarzałe)
-      href: ../desktop-workbench/quickstart-installation.md
-    - name: Samouczek 1. Przygotowywanie danych
-      href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
-    - name: Samouczek 2. Tworzenie modeli
-      href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: Samouczek 3. Wdrażanie modeli
-      href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
-    - name: Samouczek 4. Zaawansowane przygotowywanie danych
-      href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
-    - name: Omówienie zarządzania modelami
-      href: ../desktop-workbench/model-management-overview.md
-    - name: Najważniejsze zadania interfejsu wiersza polecenia
-      href: ../desktop-workbench/cli-for-azure-machine-learning.md
-    - name: Korzystanie ze środowiska roboczego
-      items:
-      - name: Praca ze środowiskami IDE języka Python
-        href: ../desktop-workbench/how-to-configure-your-IDE.md
-      - name: Korzystanie z notesów programu Jupyter
-        href: ../desktop-workbench/how-to-use-jupyter-notebooks.md
-      - name: Integracja z repozytoriami usługi Git
-        href: ../desktop-workbench/using-git-ml-project.md
-      - name: Tworzenie struktury projektów za pomocą szablonu TDSP
-        href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-      - name: Roaming i współpraca
-        href: ../desktop-workbench/roaming-and-collaboration.md
-    - name: Korzystanie z rozszerzeń środowiska IDE
-      items:
-      - name: Używanie narzędzi Visual Studio Tools dla sztucznej inteligencji
-        href: ../desktop-workbench/quickstart-visual-studio-tools.md
-      - name: Korzystanie z narzędzi programu Visual Studio Code dla sztucznej inteligencji
-        href: ../desktop-workbench/quickstart-visual-studio-code-tools.md
-    - name: Używanie zestawu narzędzi sztucznej inteligencji usługi Azure IoT Edge
-      href: ../desktop-workbench/use-azure-iot-edge-ai-toolkit.md
-    - name: Konfigurowanie środowiska obliczeniowego
-      items:
-      - name: Konfigurowanie eksperymentowania
-        href: ../desktop-workbench/experimentation-service-configuration.md
-      - name: Tworzenie klastra DSVM i HDI Spark
-        href: ../desktop-workbench/how-to-create-dsvm-hdi.md
-      - name: Szkolenie przy użyciu procesora GPU
-        href: ../desktop-workbench/how-to-use-gpu.md
-    - name: Uzyskiwanie i rozumienie danych
-      items:
-      - name: Dodawanie źródła danych
-        href: ../desktop-workbench/data-source-wizard.md
-      - name: Przewodnik dotyczący przygotowywania danych
-        href: ../desktop-workbench/data-prep-getting-started.md
-      - name: Zaawansowane przygotowywanie danych
-        href: ../desktop-workbench/data-prep-user-guide.md
-      - name: Przekształcenia przygotowania danych
-        href: ../desktop-workbench/data-prep-appendix3-supported-transforms.md
-        items:
-        - name: Łączenie kolumn według przykładu
-          href: ../desktop-workbench/data-prep-combine-columns-by-example.md
-        - name: Tworzenie kolumn pochodnych według przykładu
-          href: ../desktop-workbench/data-prep-derive-column-by-example.md
-        - name: Dzielenie kolumn według przykładu
-          href: ../desktop-workbench/data-prep-split-column-by-example.md
-        - name: Rozwijanie danych JSON
-          href: ../desktop-workbench/data-prep-expand-json.md
-    - name: Opracowywanie modeli
-      items:
-      - name: Klasyfikowanie irysów przy użyciu interfejsu wiersza polecenia
-        href: ../desktop-workbench/tutorial-iris-azure-cli.md
-      - name: Śledzenie historii uruchomień i metryk modelu
-        href: ../desktop-workbench/how-to-use-run-history-model-metrics.md
-      - name: Znajdowanie uruchomienia o najlepszej dokładności
-        href: ../desktop-workbench/how-to-find-best-accuracy-cli.md
-      - name: Odczytywanie i zapisywanie plików
-        href: ../desktop-workbench/how-to-read-write-files.md
-      - name: Korzystanie z biblioteki MMLSpark
-        href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: Wdrażanie modeli i korzystanie z nich
-      items:
-      - name: Konfigurowanie zarządzania modelami
-        href: ../desktop-workbench/deployment-setup-configuration.md
-      - name: Skalowanie klastrów i usług
-        href: ../desktop-workbench/how-to-scale-clusters.md
-      - name: Włączanie protokołu SSL na klastrze MLC
-        href: ../desktop-workbench/how-to-setup-ssl-on-mlc.md
-      - name: Wdrażanie usługi internetowej
-        href: ../desktop-workbench/model-management-service-deploy.md
-      - name: Dostosowywanie kontenera
-        href: ../desktop-workbench/model-management-custom-container.md
-      - name: Wdrażanie na urządzeniu usługi IoT Edge
-        href: ../desktop-workbench/deploy-to-iot-edge-device.md
-      - name: Używanie usługi internetowej
-        href: ../desktop-workbench/model-management-consumption.md
-      - name: Zbieranie danych modelu
-        href: ../desktop-workbench/how-to-use-model-data-collection.md
-      - name: Przewodnik rozwiązywania problemów z wdrażaniem
-        href: ../desktop-workbench/how-to-deploy-troubleshooting-guide.md
-    - name: Stare przykłady
-      items:
-      - name: Analiza kolekcji dokumentów
-        href: ../desktop-workbench/scenario-document-collection-analysis.md
-      - name: Dopasowywanie pytań i odpowiedzi
-        href: ../desktop-workbench/scenario-qna-matching.md
-      - name: Konserwacja zapobiegawcza
-        href: ../desktop-workbench/scenario-predictive-maintenance.md
-      - name: Klasyfikacja obrazów z powietrza
-        href: ../desktop-workbench/scenario-aerial-image-classification.md
-      - name: Prognozowanie obciążenia serwera pod kątem terabajtów danych
-        href: ../desktop-workbench/scenario-big-data.md
-      - name: Prognozowanie szeregów czasowych zapotrzebowania na energię
-        href: ../desktop-workbench/scenario-time-series-forecasting.md
-      - name: Rozproszone dostosowywanie hiperparametrów
-        href: ../desktop-workbench/scenario-distributed-tuning-of-hyperparameters.md
-      - name: Przewidywanie zmienności klientów
-        href: ../desktop-workbench/scenario-churn-prediction.md
-      - name: Analiza opinii przy użyciu funkcji uczenia szczegółowego
-        href: ../desktop-workbench/scenario-sentiment-analysis-deep-learning.md
-      - name: Rozpoznawanie jednostek biomedycznych — przetwarzanie TDSP
-        href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
-      - name: Klasyfikowanie przychodów USA — przetwarzanie TDSP
-        href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
-      - name: Klasyfikacja obrazów przy użyciu narzędzi CNTK
-        href: ../desktop-workbench/scenario-image-classification-using-cntk.md
-      - name: Uczenie głębokie dla konserwacji predykcyjnej
-        href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
-    - name: Stara dokumentacja
-      items:
-      - name: Rozszerzenia języka Python na potrzeby przygotowywania danych
-        href: ../desktop-workbench/data-prep-python-extensibility-overview.md
-      - name: Obsługiwane źródła danych
-        href: ../desktop-workbench/data-prep-appendix2-supported-data-sources.md
-      - name: Ładowanie usługi Azure Cosmos DB jako źródła danych
-        href: ../desktop-workbench/data-prep-load-azure-cosmos-db.md
-      - name: Obsługiwani inspektorzy
-        href: ../desktop-workbench/data-prep-appendix4-supported-inspectors.md
-      - name: Obsługiwane miejsca docelowe danych
-        href: ../desktop-workbench/data-prep-appendix5-supported-destinations.md
-      - name: Obsługiwane kombinacje środowiska wykonywania i danych
-        href: ../desktop-workbench/data-prep-supported-runtime-data-environments.md
-      - name: Przykładowe wyrażenia filtru w języku Python
-        href: ../desktop-workbench/data-prep-appendix6-sample-filter-expressions-python.md
-      - name: Przykładowe niestandardowe przekształcenia przepływów danych w języku Python
-        href: ../desktop-workbench/data-prep-appendix7-sample-transform-data-flow-python.md
-      - name: Przykładowe połączenia źródeł w języku Python
-        href: ../desktop-workbench/data-prep-appendix8-sample-source-connections-python.md
-      - name: Przykładowe połączenia miejsc docelowych w języku Python
-        href: ../desktop-workbench/data-prep-appendix9-sample-destination-connections-python.md
-      - name: Przykładowe transformacje kolumn w języku Python
-        href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
-      - name: Interfejs API wykonywania na potrzeby przygotowywania danych
-        href: ../desktop-workbench/data-prep-python-execution-api.md
-      - name: Konfiguracja usługi eksperymentowania
-        href: ../desktop-workbench/experimentation-service-configuration-reference.md
-      - name: Interfejs API rejestrowania
-        href: ../desktop-workbench/reference-logging-api.md
-      - name: Szablon usługi Eksperymentowanie
-        href: ../desktop-workbench/experimentation-service-template.md
-      - name: Interfejs API zarządzania modelami
-        href: ../desktop-workbench/model-management-api-reference.md
-      - name: Interfejs wiersza polecenia zarządzania modelami
-        href: ../desktop-workbench/model-management-cli-reference.md
-      - name: Interfejs API zbierania danych modelu
-        href: ../desktop-workbench/model-data-collection-api-reference.md
-    - name: Pakiety domen
-      href: ../desktop-workbench/reference-python-package-overview.md
-      items:
-      - name: Pakiet przetwarzania obrazów jest przestarzały
-        items:
-        - name: Instalowanie pakietu
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision
-        - name: Model i wdrażanie
-          items:
-          - name: Klasyfikacja obrazów
-            href: ../desktop-workbench/how-to-build-deploy-image-classification-models.md
-          - name: Wykrywanie obiektów
-            href: ../desktop-workbench/how-to-build-deploy-object-detection-models.md
-          - name: Podobieństwa obrazów
-            href: ../desktop-workbench/how-to-build-deploy-image-similarity-models.md
-          - name: Zwiększanie dokładności modelu
-            href: ../desktop-workbench/how-to-improve-accuracy-for-computer-vision-models.md
-      - name: Pakiet prognozowania jest przestarzały
-        items:
-        - name: Omówienie i instalacja
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview
-        - name: Tworzenie i wdrażanie modeli prognozy
-          href: ../desktop-workbench/how-to-build-deploy-forecast-models.md
-      - name: Pakiet przyspieszania rozwiązań FPGA
-        href: reference-fpga-package-overview.md
-      - name: Pakiet analizy tekstu
-        items:
-        - name: Omówienie i instalacja są przestarzałe
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
-        - name: Tworzenie i wdrażanie modeli klasyfikacji tekstu
-          href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: Często zadawane pytania
-      href: ../desktop-workbench/frequently-asked-questions.md
-    - name: Stare problemy
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 4af9d970fe07370200d9c6472366ea3dab16a76c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+  - name: Porównanie produktów uczenia maszynowego w ofercie firmy Microsoft
+    href: overview-more-machine-learning.md
+ms.openlocfilehash: eb989777a0cf7fac41db64d05fa71a24efd34b5c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079225"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158963"

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: dea93fefc69664e4830efdab2052d2e1ca0fd2fa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 1e081eb98b1d9c076fd85c0b542d0bf4ae309935
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102486"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190412"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Co to jest weryfikacja jako usługa dla usługi Azure Stack?
 
@@ -62,8 +62,8 @@ Aby uzyskać więcej informacji, zobacz temat [Szybki start: Użyj weryfikacji j
 | Sprawdzanie poprawności przepływu pracy | Wymagane testy |
 |----|------------|
 | [Nowe rozwiązanie sprawdzania poprawności.](azure-stack-vaas-validate-solution-new.md) | Aparat symulacji w chmurze<br>Obliczenia operacyjnej zestaw SDK<br>Test identyfikator dysku<br>Pakiet operacyjnej zestaw SDK rozszerzenia usługi KeyVault<br>Operacyjnej zestaw SDK magazynu kluczy<br>Pakiet operacyjnej zestaw SDK sieci<br>Pakiet operacyjnej zestaw SDK konta magazynu<br> |
-| [Nowe rozwiązanie sprawdzania poprawności.](azure-stack-vaas-validate-oem-package.md) | Weryfikacja pakietu rozszerzenia producenta OEM<br>Aparat symulacji w chmurze |
-| [Miesięczne weryfikacji operacji Update.](azure-stack-vaas-validate-microsoft-updates.md) | Miesięczne Weryfikacja AzureStack aktualizacji<br>Aparat symulacji w chmurze<br> |
+| [Sprawdzanie poprawności pakietu producenta OEM](azure-stack-vaas-validate-oem-package.md) | Weryfikacja pakietu rozszerzenia producenta OEM<br>Aparat symulacji w chmurze |
+| [Miesięczne weryfikacji operacji update.](azure-stack-vaas-validate-microsoft-updates.md) | Miesięczne Weryfikacja AzureStack aktualizacji<br>Aparat symulacji w chmurze<br> |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

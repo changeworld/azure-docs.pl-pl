@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 830fc1d96825e28aad41aac9afee499b9bc1f7ae
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 02aa4eb37437861d428c6f361b3ff21def56b49b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357328"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189834"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Problemy z logowaniem do aplikacji przy użyciu panelu dostępu
 
@@ -92,11 +92,11 @@ Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj następuj�
 
 7.  Zaloguj się do panelu dostępu i zobacz, jeśli możesz to zrobić **Uruchom** logowania jednokrotnego hasła aplikacji
 
-Może również Pobierz rozszerzenie dla programu Chrome i Microsoft Edge z bezpośrednie linki poniżej:
+Mogą również pobrać rozszerzenie dla programu Chrome i Microsoft Edge z poniższych linków bezpośrednich:
 
 -   [Rozszerzenie panelu dostępu dla programu Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Rozszerzenie panelu dostępu usługi Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+-   [Rozszerzenie panelu dostępu do przeglądarki Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
 ## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji z galerii usługi Azure AD
 
@@ -285,7 +285,7 @@ Aby skonfigurować logowanie jednokrotne dla aplikacji, która nie znajduje się
 
   1. Aby skonfigurować aplikację jako logowanie Jednokrotne zainicjowane przez dostawcę tożsamości, wprowadź adres URL odpowiedzi i identyfikator.
 
-  2. **Opcjonalnie:** do konfigurowania aplikacji jako zainicjowanego przez dostawcę usług rejestracji Jednokrotnej adres URL logowania jest wymaganą wartością.
+  2. **Opcjonalnie:** Aby skonfigurować aplikację jako zainicjowanego przez dostawcę usług rejestracji Jednokrotnej, adres URL logowania jest wymagana wartość.
 
 12. W **atrybutów użytkownika**, wybierz Unikatowy identyfikator dla użytkowników w **identyfikator użytkownika** listy rozwijanej.
 
@@ -500,7 +500,7 @@ Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wyko
 
 11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adresu e-mail** pole wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
 13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 

@@ -10,12 +10,12 @@ ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 07f77a8390edcde1128a7381a54d622611637d78
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118306"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188900"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -278,7 +278,7 @@ Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynnoś
    > [!IMPORTANT]  
    > Za pomocą przystawki programu MMC programu AD FS należy skonfigurować reguły autoryzacji wystawiania, podczas korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS.
 
-4. Użycie programu Internet Explorer lub przeglądarki Microsoft Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie logowanie zakończy się niepowodzeniem. Na wystąpienie usług AD FS lub członek farmy uruchom następujące polecenie:
+4. Gdy używasz programu Internet Explorer lub przeglądarki Microsoft Edge do dostępu do usługi Azure Stack, należy zignorować powiązań tokenu. W przeciwnym razie logowanie zakończy się niepowodzeniem. Na wystąpienie usług AD FS lub członek farmy uruchom następujące polecenie:
 
    > [!note]  
    > Ten krok nie ma zastosowania w przypadku korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS. Jest bezpieczne pominąć to polecenie i kontynuować dzięki integracji z usługą.

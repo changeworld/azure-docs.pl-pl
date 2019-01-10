@@ -1,25 +1,25 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 2 — pobieranie danych | Microsoft Docs'
+title: 'Usługa Azure Analysis Services samouczek Lekcja 2: Pobieranie danych | Dokumentacja firmy Microsoft'
 description: Opisuje sposób pobierania i importowania danych w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7aaadb6237a3b16d166d3bc931fddc70fb4a792
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6643d0851be1ad9d2827f51af3662a469020654c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427624"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189324"
 ---
 # <a name="get-data"></a>Pobieranie danych
 
 W tej lekcji skorzystasz z funkcji pobierania danych programu SSDT w celu połączenia się z przykładową bazą danych Adventure Works, wybrania danych, wyświetlenia ich podglądu i odfiltrowania, a następnie zaimportowania danych do obszaru roboczego modelu.  
   
-Funkcja pobierania danych umożliwia importowanie danych z wielu różnych źródeł, takich jak: baza danych SQL Azure, Oracle, Sybase, kanał informacyjny OData, Teradata, pliki itp. Można również wykonywać kwerendy danych przy użyciu wyrażeń formuły Power Query M.
+Korzystając z funkcji pobierania danych, można importować dane z wielu różnych źródeł: Azure SQL Database, Oracle, Sybase, źródła danych OData, Teradata, pliki i więcej. Można również wykonywać kwerendy danych przy użyciu wyrażeń formuły Power Query M.
 
 > [!NOTE]
 > Zadania i obrazy w tym samouczku pokazują łączenie z bazą danych AdventureWorksDW2014 na serwerze lokalnym. W niektórych przypadkach baza danych Adventure Works na platformie Azure może być inna.
@@ -27,7 +27,7 @@ Funkcja pobierania danych umożliwia importowanie danych z wielu różnych źró
 Szacowany czas trwania lekcji: **10 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 1: Tworzenie nowego projektu modelu tabelarycznego](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 1: Tworzenie nowego projektu modelu tabelarycznego](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
 ## <a name="create-a-connection"></a>Tworzenie połączenia  
   
@@ -52,7 +52,7 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
   
 5.  W oknie Nawigator wybierz bazę danych **AdventureWorksDW2014**, a następnie kliknij przycisk **OK**. Spowoduje to utworzenie połączenia z bazą danych. 
   
-6.  W oknie Nawigator zaznacz pole wyboru dla następujących tabel: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, i **FactInternetSales**, a następnie kliknij przycisk **Edytuj**.
+6.  W oknie Nawigator zaznacz pole wyboru dla następujących tabel: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**,  **DimProductSubcategory**, i **FactInternetSales**, a następnie kliknij przycisk **Edytuj**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
@@ -151,7 +151,7 @@ Projekt modelu należy regularnie zapisywać.
 -   Kliknij kolejno opcje **Plik** > **Zapisz wszystko**.  
   
 ## <a name="whats-next"></a>Co dalej?
-[Lekcja 3. Oznaczanie jako tabeli dat](../tutorials/aas-lesson-3-mark-as-date-table.md).
+[Lekcja 3: Oznacz jako tabelę dat](../tutorials/aas-lesson-3-mark-as-date-table.md).
 
   
   

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e92e86f59058f1f226c67f873530cd9c06b5d5fc
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c26da5d047a1e904510f96b44d81632b6e98689e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428338"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190973"
 ---
 # <a name="create-perspectives"></a>Tworzenie perspektyw
 
@@ -23,10 +23,10 @@ Utworzona w tej lekcji perspektywa sprzedaży internetowej nie zawiera obiektu t
   
 Celem tej lekcji jest przedstawienie sposobu tworzenia perspektyw i zapoznanie się z narzędziami do tworzenia modelu tabelarycznego. Jeśli model zostanie później rozszerzony w celu uwzględnienia dodatkowych tabel, możesz utworzyć dodatkowe perspektywy, np. uwzględniające punkt widzenia zapasów magazynowych i sprzedaży.  
   
-Szacowany czas trwania lekcji: **5 minut**  
+Szacowany czas trwania lekcji: **Pięć minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 7. Tworzenie kluczowych wskaźników wydajności](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 7: Tworzenie kluczowych wskaźników wydajności](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
   
 ## <a name="create-perspectives"></a>Tworzenie perspektyw  
   
@@ -45,7 +45,7 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
     W kolejnej lekcji użyjesz funkcji Analiza w programie Excel do testowania tej perspektywy. Lista pól tabeli przestawnej programu Excel zawiera wszystkie tabele z wyjątkiem tabeli DimCustomer.  
 
 ## <a name="whats-next"></a>Co dalej?
-[Lekcja 9. Tworzenie hierarchii](../tutorials/aas-lesson-9-create-hierarchies.md).
+[Lekcja 9 Tworzenie hierarchii](../tutorials/aas-lesson-9-create-hierarchies.md).
   
   
   

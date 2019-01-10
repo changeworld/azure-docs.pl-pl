@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 1a0bf0e6057f26fd8d38dadde5689e41b4f1e165
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017280"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191789"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -161,7 +161,7 @@ Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udziel uprawnień do agenta potoki usługi Azure
-Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu dostępu po raz pierwszy. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta potoki usługi Azure. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
+Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem podczas Runtimest fIntegration z powodu błędu odmowy dostępu. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta potoki usługi Azure. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
 
 ### <a name="update-active-triggers"></a>Aktualizacja aktywnej wyzwalaczy
 Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta próba aktualizacji active wyzwalaczy. Aby zaktualizować active wyzwalaczy, musisz ręcznie je uruchamiać i zatrzymywać ich po wdrożeniu. W tym celu można dodać zadania programu Azure Powershell, jak pokazano w poniższym przykładzie:
@@ -183,7 +183,7 @@ Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta prób
 Można wykonać podobne kroki i użyć podobny kod (z `Start-AzureRmDataFactoryV2Trigger` funkcji) do ponownego uruchomienia wyzwalacze po wdrożeniu.
 
 > [!IMPORTANT]
-> Ciągła integracja i scenariusze wdrażania typu środowiska Integration Runtime w różnych środowiskach musi być taka sama. Na przykład, jeśli masz *może być samodzielnie hostowane* tego samego środowiska IR Integration Runtime (IR) w środowisku programistycznym, musi być typu *może być samodzielnie hostowane* w innych środowiskach, takich jak testowych i produkcyjnych również. Podobnie, jeśli udostępniasz środowiska integration Runtime na wiele etapów, należy skonfigurować urząd skarbowy jako *połączonej, może być samodzielnie hostowane* we wszystkich środowiskach, takich jak programowania, testowania i produkcji.
+> Ciągła integracja i scenariusze wdrażania typu środowiska Integration Runtime w różnych środowiskach musi być taka sama. Na przykład, jeśli masz *może być samodzielnie hostowane* tego samego środowiska IR Integration Runtime (IR) w środowisku programistycznym, musi być typu *może być samodzielnie hostowane* w innych środowiskach, takich jak testowych i produkcyjnych również. Podobnie, jeśli udostępniasz środowiska integration Runtime na wiele etapów, musisz skonfigurować środowiska Integration Runtime jako *połączonej, może być samodzielnie hostowane* we wszystkich środowiskach, takich jak programowania, testowania i produkcji.
 
 ## <a name="sample-deployment-template"></a>Przykładowy szablon wdrożenia
 
@@ -853,7 +853,7 @@ Można zdefiniować niestandardowe parametry szablonu usługi Resource Manager. 
 
 Oto niektóre wytyczne do użycia podczas tworzenia pliku parametrów niestandardowych. Zapoznaj się z przykładami tej składni, zobacz następującą sekcję [przykładowy plik niestandardowych parametrów](#sample).
 
-1. W przypadku określania tablicy w pliku definicji, wskazujesz, że dopasowania właściwości w szablonie jest tablicą. Fabryka danych wykonuje iterację przez wszystkich obiektów w tablicy przy użyciu definicji określony w pierwszym obiekcie tablicy. Drugi obiekt ciągu, staje się nazwę właściwości, która jest używana jako nazwa parametru dla każdej iteracji.
+1. W przypadku określania tablicy w pliku definicji, wskazujesz, że dopasowania właściwości w szablonie jest tablicą. Fabryka danych wykonuje iterację przez wszystkie obiekty w tablicy przy użyciu definicji określony w obiekcie Runtimest fIntegration tablicy. Drugi obiekt ciągu, staje się nazwę właściwości, która jest używana jako nazwa parametru dla każdej iteracji.
 
     ```json
     ...
@@ -988,3 +988,23 @@ Szablony połączonej usługi Resource Manager mają zwykle głównego szablonu 
 Pamiętaj, aby dodać skrypty fabryki danych w potoku ciągłej integracji/ciągłego wdrażania, przed i po nim zadania wdrażania.
 
 Jeśli nie masz skonfigurowane w usłudze Git połączone szablony są dostępne za pośrednictwem **szablonu ARM wyeksportować** gestu.
+
+## <a name="best-practices-for-cicd"></a>Najlepsze rozwiązania dotyczące ciągłej integracji/ciągłego wdrażania
+
+Jeśli używasz integrację z usługą Git przy użyciu usługi data factory, a masz potok ciągłej integracji/ciągłego wdrażania, który przenosi zmiany od etapu programowania do testu, a następnie do środowiska produkcyjnego, zaleca się następujące najlepsze rozwiązania:
+
+-   **Integracja z usługą Git**. Tylko należy skonfigurować tworzenia fabryki danych przy użyciu integrację z usługą Git. Zmiany testowych i produkcyjnych są wdrażane za pośrednictwem ciągłej integracji/ciągłego wdrażania, i nie trzeba również integrację z usługą Git.
+
+-   **Skrypt ciągła Integracja/ciągłe wdrażanie fabryki danych**. Przed wykonaniem kroku wdrażania usługi Resource Manager w ciągłej integracji/ciągłego wdrażania należy zadbać rzeczy, takich jak zatrzymywanie wyzwalaczy i innego rodzaju oczyszczania fabryki. Firma Microsoft zaleca używanie [ten skrypt](#sample-script-to-stop-and-restart-triggers-and-clean-up) jak ta odpowiada za wszystkie te rzeczy. Uruchom skrypt, jeden raz przed wdrożeniem i po po przy użyciu odpowiednich flagi.
+
+-   **Udostępnianie i środowiska Integration Runtime**. Środowiska Integration Runtime to jeden ze składników infrastrukturalnych w fabryce danych, które podlegają zmianom rzadziej i są podobne dla wszystkich etapów w ramach ciągłej integracji/ciągłego wdrażania. Co w efekcie usługi Data Factory oczekuje, że będziesz mieć taką samą nazwę i ten sam typ środowiska Integration Runtime we wszystkich etapów cyklu CI/CD. Jeśli chcesz udostępnić środowiska Integration Runtime we wszystkich etapów — na przykład własne środowiska Integration Runtime — jednym ze sposobów na udostępnianie jest hostingu własne środowisko IR w fabryce trójargumentowy, tylko dla zawierający udostępnionego środowiska Integration Runtime. Następnie można ich używać w Dev/Test/produkcji jako typ IR połączone.
+
+-   **Magazyn kluczy**. Gdy używasz zalecanych usługi Azure Key Vault, na podstawie połączonych usług, możesz korzystać z jego zalety jeden poziom dalsze, potencjalnie utrzymywanie oddzielnych magazynów kluczy dla Dev/Test/produkcji. Można również skonfigurować poziomów uprawnień osobne dla każdego z nich. Może nie chcieć członków zespołu musi mieć uprawnienia do kluczy tajnych produkcji. Zalecamy również można zachować tych samych nazw kluczy tajnych na wszystkich etapach. Przechowywanie takich samych nazwach, nie trzeba zmieniać szablonów usługi Resource Manager w ciągłej integracji/ciągłego wdrażania, ponieważ jedynym elementem, który musi zostać zmieniona nazwa magazynu kluczy, który jest jeden z parametrów szablonu usługi Resource Manager.
+
+## <a name="unsupported-features"></a>Nieobsługiwane funkcje
+
+-   Nie można opublikować poszczególnych zasobów, ponieważ zależą od siebie nawzajem jednostek fabryki danych. Na przykład wyzwalacze są zależne od potoki, potoki są zależne od zestawów danych i innych potoki itp. Śledzenie zmiany zależności jest trudne. Jeśli jest to możliwe wybrać zasoby, aby ręcznie opublikować byłoby możliwe do wybrania tylko podzbiór cały zestaw zmian, które mogłyby prowadzić do nieoczekiwanego zachowania rzeczy po opublikowaniu.
+
+-   Nie można opublikować z prywatnych gałęzi.
+
+-   Nie można hostować projektów Bitbucket.

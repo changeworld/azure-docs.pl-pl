@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 951a202f8d57c736af8c17af91859ce89e9efc7d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4e2feb1f5b0cad9a05f796d160a0a641622d6b59
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717963"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189223"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w C# przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
@@ -161,6 +161,8 @@ Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dodawanie intencji LUIS i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowienia** intencji. Pamiętaj, aby uczyć, publikowanie i [kompilacji](#build-the-bot) bot aplikacji sieci web. Bot i LUIS powinny mieć ten sam intencji.
+
+Zobacz więcej [przykłady](https://github.com/Microsoft/AI) z botami konwersacji. 
 
 > [!div class="nextstepaction"]
 > [Dodawanie intencji](./luis-how-to-add-intents.md)

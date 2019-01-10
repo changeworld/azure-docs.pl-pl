@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: f460c063ded489c8ec0ef23b35ab304c62943a98
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 73c94b79bb315c317d39ade704e2ee70a241a348
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337074"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187749"
 ---
-# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Aby poznać składniki aplikacji przy użyciu usługi Azure Monitor mapy maszyny wirtualne (wersja zapoznawcza)
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>W przypadku maszyn wirtualnych (wersja zapoznawcza) mapę, aby poznać składniki aplikacji za pomocą usługi Azure Monitor
 Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
 
 Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak za pomocą funkcji mapy. Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md).

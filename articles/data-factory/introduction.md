@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 87df752f62956cffd455358059a3ab7b275b6a5d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9704002a30556c76c65ddcad1cb576fbf4502b55
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090500"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014305"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-introduction.md)
 > * [Bieżąca wersja](introduction.md)
 
@@ -113,7 +112,7 @@ Aby uzyskać więcej informacji o pojęciach związanych z usługą Data Factory
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Jednak fabryka danych może mieć dostęp do magazynów danych i usług obliczeniowych w innych regionach świadczenia usługi Azure, aby przenosić dane między magazynami danych lub przetwarzać dane przy użyciu usług obliczeniowych.
+Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Jednak fabryka danych może mieć dostęp do magazynów danych i usług obliczeniowych w innych regionach świadczenia usługi Azure, aby przenosić dane między magazynami danych lub przetwarzać dane przy użyciu usług obliczeniowych.
 
 Sama usługa Azure Data Factory nie przechowuje żadnych danych. Usługa umożliwia tworzenie opartych na danych przepływów pracy do aranżowania przenoszenia danych między obsługiwanymi magazynami danych oraz przetwarzania danych przy użyciu usług obliczeniowych w innych regionach lub w środowisku lokalnym. Umożliwia także monitorowanie przepływów pracy i zarządzanie nimi przy użyciu zarówno mechanizmów programowych, jak i interfejsu użytkownika.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: c94c88aa088745a2ed421bff43c8d87382564a43
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c19b43f652b490ceb86606633f543f4e455b6116
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141479"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189307"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Projekt systemu ochrony zawartości przy użyciu kontroli dostępu przy użyciu usługi Azure Media Services
 
@@ -60,7 +60,7 @@ W poniższej tabeli podsumowano aplikacji natywnej platformy/środowiska macierz
 | **Platforma klienta** | **Natywna obsługa technologii DRM** | **Przeglądarka/aplikacji** | **Formatów przesyłania strumieniowego** |
 | --- | --- | --- | --- |
 | **Telewizorów typu Smart TV, operator odbiornikami, odbiornikami OTT** |PlayReady przede wszystkim i/lub Widevine i/lub inne |Linux, Opera, aparatu WebKit, inne |Różne formaty |
-| **Urządzenia z systemem Windows 10 (Windows PC, tablety Windows, Windows Phone, Xbox)** |PlayReady |MS Edge/IE11/EME<br/><br/><br/>Platforma uniwersalna systemu Windows |KRESKA (dla protokołu HLS, PlayReady nie jest obsługiwane)<br/><br/>DASH, Smooth Streaming (HLS, PlayReady nie jest obsługiwane) |
+| **Urządzenia z systemem Windows 10 (Windows PC, tablety Windows, Windows Phone, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Platforma uniwersalna systemu Windows |KRESKA (dla protokołu HLS, PlayReady nie jest obsługiwane)<br/><br/>DASH, Smooth Streaming (HLS, PlayReady nie jest obsługiwane) |
 | **Urządzenia z systemem android (telefon, tablet, takich jak Telewizor)** |Widevine |Dla programu Chrome/EME |DASH, HLS |
 | **iOS (iPhone, iPad), OS X, klientów i Apple TV** |FairPlay |Safari 8 +/ EME |HLS |
 
@@ -130,11 +130,11 @@ Te zagadnienia są ważne
 
 Jeśli używasz chmury publicznej do dostarczania licencji, licencje trwałe i nietrwałe mają bezpośredni wpływ na koszt dostarczania licencji. Następujące dwa przypadki różnorodności służą do zilustrowania:
 
-* Subskrypcja miesięczna: trwałego licencji i mapowanie klucz do zasobu z zawartości 1-do wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
+* Subskrypcja miesięczna: Użyj trwałego licencji i mapowanie klucz do zasobu z zawartości 1-do wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = 1
 
-* Subskrypcja miesięczna: nonpersistent licencji i mapowania 1-do-1 między klucz zawartości i zasobów. W takim przypadku:
+* Subskrypcja miesięczna: Za pomocą nietrwałych licencji i mapowania 1-do-1 między klucz zawartości i zasobów. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = [liczba filmów, którzy oglądali transmisje stacji] x [liczba sesji]
 
@@ -335,7 +335,7 @@ Aby zarejestrować i skonfigurować aplikację wskaźnika w usłudze Azure AD, w
 
 2. Dodaj nowy klucz aplikacji zasobu.
 
-3. Aktualizowanie pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "All".
+3. Aktualizacja pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "Wszystkie".
 
 4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]**. Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
 
@@ -367,8 +367,8 @@ Jeśli używasz niestandardowej usługi STS, przeprowadza się dwie zmiany:
 
 Istnieją dwa typy kluczy zabezpieczeń:
 
-* Klucz symetryczny: ten sam klucz służy do generowania i sprawdź token JWT.
-* Klucz asymetryczny: pary kluczy publiczny prywatny w X509 certyfikat jest używany z kluczem prywatnym, aby zaszyfrować/wygenerować token JWT i przy użyciu klucza publicznego w celu zweryfikowania tokenu.
+* Klucz symetryczny: Ten sam klucz służy do generowania i sprawdź token JWT.
+* Klucz asymetryczny: Pary kluczy publiczny prywatny w X509 certyfikat jest używany z kluczem prywatnym, aby zaszyfrować/wygenerować token JWT i przy użyciu klucza publicznego w celu zweryfikowania tokenu.
 
 > [!NOTE]
 > Jeśli używasz środowiska .NET Framework / C# jako platformy projektowej, X509 certyfikat używany dla klucza asymetrycznego zabezpieczeń musi mieć klucz o długości co najmniej 2048. Jest to wymagane klasy System.IdentityModel.Tokens.X509AsymmetricSecurityKey w programie .NET Framework. W przeciwnym razie jest zgłaszany następujący wyjątek:
@@ -407,15 +407,15 @@ Możesz skontaktować się ze wszystkich autorów konta utworzone lub dodawane.
 
 Poniższych zrzutach ekranu przedstawiono różne stron logowania w usługach używany przez inną domenę konta:
 
-**Niestandardowy usługi Azure AD dzierżawy konta domeny**: dostosowanego strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
+**Konto domeny dzierżawy niestandardowy usługi Azure AD**: Niestandardowe strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
+**Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: Strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Konto Microsoft**: strony logowania konta Microsoft dla konsumentów.
+**Konto Microsoft**: Strona logowania konta Microsoft dla konsumentów.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 

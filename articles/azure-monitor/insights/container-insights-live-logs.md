@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 27368ec1f41553950ab1689f8b37c15d14d29808
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 1a51e9b636e15f178de072af8372404af1dc47e2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156667"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187998"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Jak wyświetlić kontenera dzienników czasu rzeczywistego z usługą Azure Monitor dla kontenerów (wersja zapoznawcza)
-Ta funkcja, która jest obecnie dostępna w wersji zapoznawczej, zapewnia wgląd w czasie rzeczywistym w dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Po wybraniu tej opcji, zostanie wyświetlone nowe okienko pod tabelą danych wydajności kontenerów na **kontenery** widoku który pokazuje na żywo rejestrowania generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym.  
+Ta funkcja, która jest obecnie dostępna w wersji zapoznawczej, zapewnia wgląd w czasie rzeczywistym w dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Po wybraniu tej opcji, zostanie wyświetlone nowe okienko pod tabelą danych wydajności kontenerów na **kontenery** widoku.  Przedstawia on na żywo rejestrowania generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym.  
 
 Na żywo dzienniki obsługuje trzy różne metody kontroli dostępu do dzienników:
 
@@ -31,7 +31,7 @@ Na żywo dzienniki obsługuje trzy różne metody kontroli dostępu do dziennik�
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Klaster Kubernetes bez RBAC włączone
  
-Jeśli masz klaster Kubernetes, nie jest skonfigurowany z autoryzacji Kubernetes RBAC lub zintegrowana z usługą Azure AD logowania jednokrotnego, nie musisz wykonaj następujące kroki. Ponieważ autoryzacji Kubernetes korzysta z interfejsu api rozwiązania kubernetes, wymagany jest uprawnienia tylko do odczytu.
+Jeśli masz klaster Kubernetes, nie jest skonfigurowany z autoryzacji Kubernetes RBAC lub zintegrowana z usługą Azure AD logowania jednokrotnego, nie musisz wykonaj następujące kroki. Ponieważ autoryzacji Kubernetes korzysta z interfejsu api rozwiązania kubernetes, uprawnienia tylko do odczytu są wymagane.
 
 ## <a name="kubernetes-rbac-authorization"></a>Autoryzacji RBAC usługi Kubernetes
 Po włączeniu autoryzacji RBAC platformy Kubernetes, należy zastosować powiązania roli klastra. Krokach w poniższym przykładzie pokazano sposób konfigurowania powiązania rolę klastra za pomocą tego szablonu konfiguracji yaml.   
@@ -39,27 +39,27 @@ Po włączeniu autoryzacji RBAC platformy Kubernetes, należy zastosować powią
 1. Skopiuj i wklej plik yaml i zapisz go jako LogReaderRBAC.yaml.  
 
    ```
-   kind: ClusterRole 
    apiVersion: rbac.authorization.k8s.io/v1 
-   metadata:   
+   kind: ClusterRole 
+   metadata: 
       name: containerHealth-log-reader 
    rules: 
-      - apiGroups: [""]   
-        resources: ["pods/log"]   
+      - apiGroups: [""] 
+        resources: ["pods/log"] 
         verbs: ["get"] 
    --- 
-   kind: ClusterRoleBinding 
    apiVersion: rbac.authorization.k8s.io/v1 
-   metadata:   
+   kind: ClusterRoleBinding 
+   metadata: 
       name: containerHealth-read-logs-global 
-   subjects:   
-      - kind: User     
-        name: clusterUser
-        apiGroup: rbac.authorization.k8s.io 
-    roleRef:   
-       kind: ClusterRole
-       name: containerHealth-log-reader
+   roleRef: 
+       kind: ClusterRole 
+       name: containerHealth-log-reader 
        apiGroup: rbac.authorization.k8s.io 
+   subjects: 
+      - kind: User 
+        name: clusterUser 
+        apiGroup: rbac.authorization.k8s.io 
    ```
 
 2. Utwórz powiązanie reguły klastra, uruchamiając następujące polecenie: `kubectl create -f LogReaderRBAC.yaml`. 

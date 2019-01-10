@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d91ccd04ed06fb6c256a2d9911202d7df6d08a5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974441"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188304"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Usługa Azure Backup ma kilka wbudowanych korzyści, które zmniejsza koszty magazynu i sieci podczas początkowego pełne kopie zapasowe danych na platformę Azure. Początkowa pełne kopie zapasowe zazwyczaj przesyłanie dużych ilości danych, a także wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które przenieść tylko różnic/przyrostowa. Proces rozmieszczania w trybie offline usługa Azure Backup można użyć dysków do przekazania danych kopii zapasowej w trybie offline na platformę Azure.
@@ -109,7 +109,7 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
     * Komputer kopiowania ma dostęp do lokalizacji tymczasowej dla przepływu pracy w trybie offline rozmieszczania przy użyciu tej samej ścieżki sieciowej została podana w **inicjowanie kopii zapasowej offline** przepływu pracy.
     * Funkcja BitLocker jest włączona na komputerze kopiowania.
     * Zainstalowano program Azure PowerShell numer 3.7.0.
-    * Zainstalowano najnowsze przeglądarki zgodne (Microsoft Edge lub Internet Explorer 11) i języka JavaScript jest włączona. 
+    * Najnowsze zgodne przeglądarki (Microsoft Edge lub Internet Explorer 11) są zainstalowane, i języka JavaScript jest włączony. 
     * Komputer kopiowania można uzyskać dostęp do witryny Azure portal. Jeśli to konieczne, komputer kopia może być taka sama jak komputera źródłowego.
     
     > [!IMPORTANT] 

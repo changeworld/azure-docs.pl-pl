@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9bf445b54ab6ac2d3edf53fcc4bbcc39ee475a81
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119105"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189500"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -245,14 +245,14 @@ Aby zbierać zdarzenia śledzenia dla Windows, wykonaj następujące czynności:
 2. Naciśnij klawisz F12, aby uruchomić narzędzia dla deweloperów. Jeśli to konieczne, wyczyść ustawienie **Wyczyść wpisy w okienku nawigacji**.
 3. Kliknij przycisk **sieci** , a następnie Rozpocznij przechwytywanie ruchu sieciowego:
  - W przeglądarce Chrome, zaznacz **dziennika Zachowaj**. Nagrywanie powinna być uruchamiana automatycznie. Czerwone kółko oznacza, że ruch jest przechwytywania. Jeśli nie pojawia się, kliknij przycisk koła czarny, uruchom
- - W programie Microsoft Edge/IE rejestrowania powinna być uruchamiana automatycznie. W przeciwnym razie kliknij przycisk Odtwórz zielony.
+ - W programie Microsoft Edge, IE, rejestrowanie, powinna być uruchamiana automatycznie. W przeciwnym razie kliknij przycisk Odtwórz zielony.
 4. Spróbuj odtworzyć błąd.
 5. Po został napotkał błąd podczas rejestrowania, Zatrzymaj nagrywanie, a następnie zapisz kopię zarejestrowanych działań:
  - W przeglądarce Chrome, kliknij prawym przyciskiem myszy, a następnie kliknij przycisk **Zapisz jako plik HAR z zawartością**. Pakuje i eksportuje dzienniki w formacie .har.
- - W programie Microsoft Edge/IE, kliknij przycisk **eksportu przechwycone ruchu** ikony. Pakuje i eksportuje dziennika.
+ - W programie Microsoft Edge, IE, kliknij przycisk **eksportu przechwycić ruch** ikony. Pakuje i eksportuje dziennika.
 6. Przejdź do **konsoli** kartę pod kątem ostrzeżeń i błędów. Aby zapisać dziennik konsoli:
  - W przeglądarce Chrome kliknij prawym przyciskiem myszy w dowolnym miejscu w dzienniku konsoli. Wybierz **Zapisz jako**, aby wyeksportować i zip dziennika.
- - W programie Microsoft Edge/IE, kliknij prawym przyciskiem myszy na błędy i wybierz **skopiuj wszystkie**.
+ - W programie Microsoft Edge, IE, kliknij prawym przyciskiem myszy na błędy i wybierz **Kopiuj wszystko**.
 7. Zamknij narzędzia dla deweloperów.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kody błędów modułu zbierającego i zalecane akcje

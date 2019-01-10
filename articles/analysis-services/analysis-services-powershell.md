@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b4aec7ff560b0695175a18c9c7e429a8ab733345
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9e7683883963db2cf1911405225fcdbf289de2bb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633712"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187542"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell
 
@@ -22,11 +22,13 @@ W tym artykule opisano poleceń cmdlet programu PowerShell, używane do wykonywa
 Zadania zarządzania serwerem, takich jak tworzenie lub usuwanie serwera, zawieszanie lub wznawianie operacji serwerowych lub zmiana poziomu usług (warstwa) za pomocą poleceń cmdlet usługi Azure Resource Manager (zasób) i poleceń cmdlet usług Analysis Services (serwer). Inne zadania do zarządzania bazami danych, takich jak dodawanie lub usuwanie członków ról, przetwarzanie lub partycjonowanie użyj poleceń cmdlet zawartych w tym samym modułem programu SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Uprawnienia
-Większość zadań programu PowerShell wymaga, że masz uprawnienia administratora na serwerze usług Analysis Services, którymi zarządzasz. Zaplanowane zadania w programie PowerShell to operacje instalacji nienadzorowanej. Zasada usługą lub kontem obsługujących Harmonogram musi mieć uprawnienia administratora na serwerze usług Analysis Services. 
+
+Większość zadań programu PowerShell wymaga, że masz uprawnienia administratora na serwerze usług Analysis Services, którymi zarządzasz. Zaplanowane zadania w programie PowerShell to operacje instalacji nienadzorowanej. Konto lub jednostki, obsługujących harmonogram usługi musi mieć uprawnienia administratora na serwerze usług Analysis Services. 
 
 W przypadku operacji serwera przy użyciu poleceń cmdlet usługi AzureRm swojego konta lub konta uruchamiania usługi scheduler należy także być członkiem roli właściciela dla zasobów w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="resource-management-operations"></a>Operacje zarządzania zasobów 
+
 Moduł — [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices)
 
 |Polecenie cmdlet|Opis| 

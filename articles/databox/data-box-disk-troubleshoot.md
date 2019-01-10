@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 83b3a271006df38744b9de49ed6350bea3aeef4d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159387"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191704"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Rozwiązywanie problemów z dysku Azure Data Box
 
@@ -86,7 +86,76 @@ Dzienniki aktywności są przechowywane przez 90 dni. Możesz wykonać zapytanie
 |[Informacje] Nazwa pliku lub katalogu docelowego przekracza limit długości dla systemu plików NTFS. |Ten komunikat jest zgłaszany, gdy nazwa pliku docelowego została zmieniona z powodu długiej ścieżki pliku.<br> Aby sterować tym zachowaniem, należy zmodyfikować opcję dyspozycji w pliku `config.json`.|
 |[Błąd] Zgłoszono wyjątek: Nieprawidłowa sekwencja ucieczki JSON. |Ten komunikat jest zgłaszany, gdy format pliku config.json jest nieprawidłowy. <br> Przed zapisaniem pliku `config.json` zweryfikuj go przy użyciu narzędzia [JSONlint](https://jsonlint.com/).|
 
+## <a name="deployment-issues-for-linux"></a>Problemy z wdrażaniem w systemie Linux
 
+W tej sekcji przedstawiono niektóre najważniejsze problemy sterowaną podczas wdrażania dysku Data Box za pomocą klienta systemu Linux do kopiowania danych.
+
+### <a name="issue-drive-getting-mounted-as-read-only"></a>Problem: Dysk wprowadzenie zainstalowany jako tylko do odczytu
+ 
+**Przyczyna** 
+
+Może to być spowodowane system nieczyste plików. 
+
+- Woluminom dysku jako przeczytane nie działa z dyskami pola danych. Ten scenariusz nie jest obsługiwany z stacje odszyfrować dislocker. 
+- Woluminom jako odczytu i zapisu nie będzie działać. Użytkownik może mieć pomyślnie ponownej instalacji urządzenia przy użyciu następującego polecenia: 
+
+    `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
+
+   Chociaż woluminom zakończyło się pomyślnie, dane nie będą zachowywane.
+
+**Rozdzielczość**
+
+Jeśli zostanie wyświetlony błąd powyżej, można wypróbować jedno z następujących rozwiązań:
+
+- Zainstaluj [ `ntfsfix` ](https://linux.die.net/man/8/ntfsfix) (dostępne w `ntfsprogs` pakietu) i uruchamiać odpowiednie partycji.
+
+- Jeśli masz dostęp do systemu Windows
+
+    - Załaduj dysk do systemu Windows.
+    - Otwórz wiersz polecenia z uprawnieniami administracyjnymi. Uruchom `chkdsk` na woluminie.
+    - Bezpiecznie usunąć wolumin i spróbuj ponownie.
+ 
+### <a name="issue-error-with-data-not-persisting-after-copy"></a>Problem: Błąd nie utrzymuje się po kopiowania danych
+ 
+**Przyczyna** 
+
+Jeśli widzisz, że dysk nie znajdują się dane po odinstalować (chociaż dane zostały skopiowane do niej), a następnie można ponownie zainstalowany dysk jako odczytu / zapisu po dysk został zainstalowany jako tylko do odczytu.
+
+**Rozdzielczość**
+ 
+Jeśli tak jest rzeczywiście, zobacz Rozpoznawanie dla [dyskach Rozpoczynanie zainstalowanego jako tylko do odczytu](#issue-drive-getting-mounted-as-read-only).
+
+Jeśli nie było tak, [Pobierz dzienniki diagnostyczne](#download-diagnostic-logs) z systemu i [skontaktuj się z Microsoft Support](data-box-disk-contact-microsoft-support.md).
+
+## <a name="deployment-issues-for-windows"></a>Problemy z wdrażaniem dla Windows
+
+Tej sekcji opisano szczegółowo niektóre najważniejsze problemy sterowaną podczas wdrażania dysku Data Box za pomocą klienta systemu Linux do kopiowania danych
+
+### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problem: Nie można odblokować dysk z funkcją BitLocker
+ 
+**Przyczyna** 
+
+Wykorzystano hasło w oknie dialogowym funkcji BitLocker i próby odblokowania dysku za pomocą funkcji BitLocker odblokowania stacji okna dialogowego. Nie będzie działać. 
+
+**Rozdzielczość**
+
+Aby odblokować dyski Data Box, należy za pomocą narzędzia Data Box dysku odblokowania i podaj hasło w witrynie Azure portal.
+ 
+### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problem: Nie można odblokować lub sprawdzić niektóre woluminy. Contact Microsoft Support.
+ 
+**Przyczyna** 
+
+Może zostać wyświetlony następujący błąd w dzienniku błędów, a nie są w stanie odblokować lub sprawdzić niektóre woluminy.
+
+`Exception System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.`
+ 
+Oznacza to, że prawdopodobnie brakuje odpowiednią wersję programu Windows PowerShell na komputerze klienckim Windows.
+
+**Rozdzielczość**
+
+Możesz zainstalować [v programu Windows PowerShell 5.0](https://www.microsoft.com/download/details.aspx?id=54616) i spróbuj ponownie wykonać operację.
+ 
+Jeśli nadal nie można odblokować woluminy, [skontaktuj się z Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

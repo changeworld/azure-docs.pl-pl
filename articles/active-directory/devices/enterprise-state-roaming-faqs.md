@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247300"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189392"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming ustawień i danych — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na kilka pytań, na które Administratorzy IT mogą się pojawić w ustawień i synchronizacji danych w aplikacji.
@@ -31,13 +31,13 @@ Ten artykuł zawiera odpowiedzi na kilka pytań, na które Administratorzy IT mo
 
 * *Motyw*, która obejmuje funkcje, takie jak ustawienia motywu i paska zadań pulpitu.
 * *Ustawienia programu Internet Explorer*, włącznie z ostatnio otwartych karty i Ulubione.
-* *Ustawienia przeglądarki krawędzi*, na przykład Ulubione i przeczytania.
+* *Ustawienia przeglądarki Microsoft Edge*, na przykład Ulubione i przeczytania.
 * *Hasła*, w tym hasła internetowe, profile sieci Wi-Fi i inne.
 * *Preferencje językowe*, który zawiera ustawienia układów klawiatury, językiem, daty i godziny oraz więcej.
 * *Łatwość dostępu do funkcji*, takich jak motyw o wysokim kontraście i Narrator, Lupa.
 * *Inne ustawienia Windows*, takie jak ustawienia myszy.
 
-**Dane aplikacji**: Universal Windows apps mogła zapisywać dane ustawienia, do folderu mobilnego, a wszystkie dane zapisywane do tego folderu zostaną automatycznie zsynchronizowane. To Ty deweloperem poszczególnych aplikacji, aby zaprojektować aplikację, aby skorzystać z tej możliwości. Aby uzyskać więcej informacji na temat programowania aplikacji uniwersalnych Windows, która korzysta z roamingu, zobacz [interfejsu API usługi storage appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) i [systemu Windows 8 appdata roaming blog deweloperów](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Dane aplikacji**: Uniwersalne aplikacje Windows mogła zapisywać dane ustawienia, do folderu mobilnego, a wszystkie dane zapisywane do tego folderu zostaną automatycznie zsynchronizowane. To Ty deweloperem poszczególnych aplikacji, aby zaprojektować aplikację, aby skorzystać z tej możliwości. Aby uzyskać więcej informacji na temat programowania aplikacji uniwersalnych Windows, która korzysta z roamingu, zobacz [interfejsu API usługi storage appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) i [systemu Windows 8 appdata roaming blog deweloperów](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Które konto jest używane do celów synchronizacji ustawień?
 W Windows 8.1 ustawienia synchronizacji zawsze używane kont Microsoft konsumenta. Użytkownicy korporacyjni miał możliwość łączenia z konta Microsoft do swojego konta domeny usługi Active Directory do uzyskania dostępu do ustawień synchronizacji. W systemie Windows 10 to połączone konta Microsoft, że funkcja została zastąpiona framework konta podstawowy/dodatkowy.

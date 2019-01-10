@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d727c9c3a9add701263e799dba778b37e637adef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194287"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191925"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -385,7 +385,7 @@ Aby uzyskać więcej informacji, zobacz [haseł usługi Azure AD z ekranu logowa
  
 ### <a name="certificate-expire-notification"></a>Certyfikat wygasa powiadomień
 
-**Typ:** Stała  
+**Typ:** Ustalone  
 **Kategoria usług:** Aplikacje dla przedsiębiorstw  
 **Możliwości produktu:** Logowanie jednokrotne
  
@@ -857,7 +857,7 @@ Moje aplikacje rozszerzenia przeglądarki jest teraz dostępna za pośrednictwem
 - Możliwość bezpośrednio zalogować się do logowania jednokrotnego hasła opartego na aplikacji z poziomu strony logowania w aplikacji
 - Uruchamianie dowolnej aplikacji przy użyciu funkcji szybkiego wyszukiwania
 - Skróty do ostatnio używane aplikacje z rozszerzenia
-- Rozszerzenie jest dostępna dla przeglądarki Microsoft Edge, Chrome i Firefox.
+- Rozszerzenie jest dostępne dla programu Microsoft Edge, Chrome i Firefox.
  
 Aby uzyskać więcej informacji, zobacz [Moje zabezpieczenia aplikacji logowania rozszerzenia](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 
@@ -1278,7 +1278,7 @@ Ze względu na te nowe możliwości raportu interfejsów API w ramach punktu ko�
 
 ### <a name="automatic-sign-in-field-detection"></a>Wykrywanie automatyczne pól logowania
 
-**Typ:** Stała   
+**Typ:** Ustalone   
 **Kategoria usług:** Moje aplikacje  
 **Możliwości produktu:** Logowanie jednokrotne  
 

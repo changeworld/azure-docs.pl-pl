@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 87a46a0b6d5dda9f59e49a3b052dc7528df7410f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e6c7d682d9b16266208baeeff14168b3da157251
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039966"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186626"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Poświadczenia używane do dostępu do biblioteki klienckiej Elastic Database
 
@@ -31,7 +31,7 @@ Zobacz też [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL
 
 ## <a name="about-management-credentials"></a>Poświadczenia zarządzania — informacje
 
-Poświadczenia zarządzania są używane do tworzenia **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) obiektu dla aplikacji, które manipulują mapowań fragmentów. (Na przykład zobacz [dodanie fragmentu, za pomocą narzędzi elastycznych baz danych](sql-database-elastic-scale-add-a-shard.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md)). Użytkownik biblioteki klienta elastycznej skali tworzy SQL użytkowników i kont logowania SQL i upewnia się, że każdy otrzymuje uprawnienia odczytu/zapisu w bazie danych globalnych niezależnego fragmentu mapy i wszystkie również niezależnego fragmentu bazy danych. Te poświadczenia są używane do obsługi mapowania fragmentów globalnych i mapowań fragmentów w postaci lokalnej, gdy wykonywane są zmiany do mapy fragmentów. Na przykład użyć poświadczeń zarządzania można utworzyć obiektu Menedżera mapy fragmentów (przy użyciu **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)):
+Poświadczenia zarządzania są używane do tworzenia **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) obiektu dla aplikacji, które manipulują mapowań fragmentów. (Na przykład zobacz [dodanie fragmentu, za pomocą narzędzi elastycznych baz danych](sql-database-elastic-scale-add-a-shard.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md)). Użytkownik biblioteki klienta elastycznej skali tworzy SQL użytkowników i kont logowania SQL i upewnia się, że każdy otrzymuje uprawnienia odczytu/zapisu w bazie danych globalnych niezależnego fragmentu mapy i wszystkie również niezależnego fragmentu bazy danych. Te poświadczenia są używane do obsługi mapowania fragmentów globalnych i mapowań fragmentów w postaci lokalnej, gdy wykonywane są zmiany do mapy fragmentów. Na przykład użyć poświadczeń zarządzania można utworzyć obiektu Menedżera mapy fragmentów (przy użyciu **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
 
 ```java
 // Obtain a shard map manager.
@@ -59,7 +59,7 @@ Zwróć uwagę na użycie **smmReadOnlyConnectionString** aby odzwierciedlić u�
 
 ## <a name="connection-credentials"></a>Poświadczenia połączenia
 
-Dodatkowe poświadczenia są wymagane w przypadku korzystania z **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)) metodę, aby dostęp do fragmentu skojarzony klucz fragmentowania. Wymagane są poświadczenia zapewniające uprawnienia dostępu tylko do odczytu do tabel mapy fragmentów lokalnego znajdującej się na fragmentu. Jest to niezbędne do wykonywania sprawdzania poprawności połączenia dla fragmentu routing zależny od danych. Ten fragment kodu umożliwia dostęp do danych w kontekście routingu zależnego od danych:
+Dodatkowe poświadczenia są wymagane w przypadku korzystania z **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) metodę, aby dostęp do fragmentu skojarzony klucz fragmentowania. Wymagane są poświadczenia zapewniające uprawnienia dostępu tylko do odczytu do tabel mapy fragmentów lokalnego znajdującej się na fragmentu. Jest to niezbędne do wykonywania sprawdzania poprawności połączenia dla fragmentu routing zależny od danych. Ten fragment kodu umożliwia dostęp do danych w kontekście routingu zależnego od danych:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))

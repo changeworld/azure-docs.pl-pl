@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386999"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191432"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i problemów z zarządzaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
@@ -208,7 +208,7 @@ Te kroki można zautomatyzować za pomocą zadań uruchamiania, tak, aby zawsze 
 Po zostało to zrobione, można sprawdzić, czy włączono protokołu HTTP/2 nie przy użyciu jednej z następujących metod:
 
 - Włącz wersja protokołu w dzienniku dzienniki usług IIS i możliwość przejrzenia dzienników usług IIS. Protokołu HTTP/2 będzie wyświetlany w dziennikach. 
-- Włącz narzędzia dla deweloperów F12 w Internet Explorer/Microsoft Edge i przejść do karty sieciowej można zweryfikować protokołu. 
+- Włącz narzędzie programistyczne F12 w przeglądarce Internet Explorer/Microsoft Edge i przejdź do karty sieci, aby sprawdzić protokołu. 
 
 Aby uzyskać więcej informacji, zobacz [protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2).
 

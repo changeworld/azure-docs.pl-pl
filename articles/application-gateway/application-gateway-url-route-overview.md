@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: d5d8ed09da2b05de079bc1b62066bb4008a659d8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118371"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188763"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing oparty na ścieżkach URL — omówienie
 
@@ -65,7 +65,7 @@ Element urlPathMap jest używany do określania wzorców ścieżki na potrzeby m
 
 PathPattern znajduje się lista wzorców ścieżki do dopasowania. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg przekazywany do dopasowywania ścieżki nie zawiera żadnego tekstu po pierwszym? lub # i te znaki są niedozwolone w tym miejscu. W przeciwnym razie znaków w adresie URL są dozwolone w PathPattern.
 
-Wzorce obsługiwane zależą od którego czy wdrażanie bramy Application Gateway v1 lub v2:
+Obsługiwane wzorce zależą od tego, czy wdrażanie bramy Application Gateway v1 lub v2:
 
 #### <a name="v1"></a>w wersji 1
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b891995fab9e7def4b9b72f8bd8630d6b7e11d27
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023863"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189517"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -167,7 +167,7 @@ Poniższe sekcje zawierają informacje dotyczące różnych typów aplikacji i z
 
 ### <a name="cloud-based-applications"></a>Aplikacje oparte na chmurze
 
-Jeśli aplikacja zostanie dodany do galerii aplikacji Azure AD, użytkownicy otrzymują logowania jednokrotnego za pośrednictwem urządzeń przyłączonych do usługi Azure AD. Dodatkowa konfiguracja nie jest wymagana. Użytkownicy pobierają logowanie Jednokrotne zarówno, przeglądarek Microsoft Edge i Chrome. Dla programu Chrome, musisz wdrożyć [rozszerzenie systemu Windows 10 kont](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
+Jeśli aplikacja zostanie dodany do galerii aplikacji Azure AD, użytkownicy otrzymują logowania jednokrotnego za pośrednictwem urządzeń przyłączonych do usługi Azure AD. Dodatkowa konfiguracja nie jest wymagana. Użytkownicy otrzymują logowania jednokrotnego w, Microsoft Edge i przeglądarki Chrome. Dla programu Chrome, musisz wdrożyć [rozszerzenie systemu Windows 10 kont](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
 
 Wszystkie aplikacje Win32 który:
 

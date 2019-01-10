@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 7 — tworzenie kluczowych wskaźników wydajności | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek lekcja 7 Tworzenie kluczowych wskaźników wydajności | Dokumentacja firmy Microsoft
 description: Opisuje sposób tworzenia kluczowych wskaźników wydajności w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1e7fc5cd684610a5d96b5986f5c169741055c9b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d238b3bf159a5e540eb9c72ecbcee188bd357b05
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426822"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186536"
 ---
 # <a name="create-key-performance-indicators"></a>Tworzenie kluczowych wskaźników wydajności
 
@@ -22,7 +22,7 @@ W tej lekcji utworzysz kluczowe wskaźniki wydajności (KPI). Kluczowe wskaźnik
 Szacowany czas trwania lekcji: **15 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 6. Tworzenie miar](../tutorials/aas-lesson-6-create-measures.md).   
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 6 Tworzenie miar](../tutorials/aas-lesson-6-create-measures.md).   
   
 ## <a name="create-key-performance-indicators"></a>Tworzenie kluczowych wskaźników wydajności  
   
@@ -76,6 +76,6 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
 6.  W obszarze **Wybierz styl ikon** wybierz romb (czerwony), trójkąt (żółty), okrąg (zielony), a następnie kliknij przycisk **OK**.  
   
 ## <a name="whats-next"></a>Co dalej?
-[Lekcja 8. Tworzenie perspektyw](../tutorials/aas-lesson-8-create-perspectives.md).
+[Lekcja 8: Tworzenie perspektyw](../tutorials/aas-lesson-8-create-perspectives.md).
   
   

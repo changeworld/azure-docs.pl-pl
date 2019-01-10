@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958673"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189557"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
+
 Za pomocą dowolnego języka programowania obsługującego wywołania REST, można wykonać operacji asynchronicznych odświeżania danych na modeli tabelarycznych usług Azure Analysis Services. W tym synchronizacji repliki tylko do odczytu dla zapytania skalowalnego w poziomie. 
 
 Operacje odświeżania danych może zająć trochę czasu, w zależności od szeregu czynników, takich jak ilość danych, poziom optymalizacji za pomocą partycji itd. Tradycyjnie wywołania tych operacji z istniejących metod, takich jak przy użyciu [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tabelaryczny Model obiektów), [PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) poleceń cmdlet, lub [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (modelu tabelarycznego Scripting Language). Te metody mogą jednak wymagać często zawodnych, długoterminowych połączeń HTTP.
@@ -94,6 +95,7 @@ Treść może wyglądać w następujący sposób:
 ```
 
 ### <a name="parameters"></a>Parametry
+
 Określanie parametrów nie jest wymagana. Wartość domyślna jest stosowana.
 
 |Name (Nazwa)  |Typ  |Opis  |Domyślne  |
@@ -184,11 +186,11 @@ Aby sprawdzić stan operacji synchronizacji, należy użyć zlecenia GET, przeka
 
 Wartości `syncstate`:
 
-- 0: replikacji. Pliki bazy danych są replikowane do folderu docelowego.
-- 1: ponownego wypełniania. Baza danych jest wypełnienia w wystąpieniach serwera tylko do odczytu.
-- 2: Ukończono. Pomyślnie ukończono operację synchronizacji.
-- 3: nie powiodło się. Operacja synchronizacji nie powiodło się.
-- 4: Trwa kończenie. Operacja synchronizacji została ukończona, ale wykonuje czynności czyszczenia.
+- 0: Replikacja. Pliki bazy danych są replikowane do folderu docelowego.
+- 1. Ponownego wypełniania. Baza danych jest wypełnienia w wystąpieniach serwera tylko do odczytu.
+- 2. Ukończono. Pomyślnie ukończono operację synchronizacji.
+- 3. Niepowodzenie. Operacja synchronizacji nie powiodło się.
+- 4. Finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje czynności czyszczenia.
 
 ## <a name="code-sample"></a>Przykład kodu
 

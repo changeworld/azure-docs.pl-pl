@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 10 — tworzenie partycji | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek lekcja 10 Tworzenie partycji | Dokumentacja firmy Microsoft
 description: Opisuje sposób tworzenia partycji w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aaaee6f9a69f9cb619935f18f614d7572a755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429703"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191840"
 ---
 # <a name="create-partitions"></a>Tworzenie partycji
 
@@ -22,7 +22,7 @@ W tej lekcji utworzysz partycje dzielące tabelę FactInternetSales na mniejsze 
 Szacowany czas trwania lekcji: **15 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 9. Tworzenie hierarchii](../tutorials/aas-lesson-9-create-hierarchies.md).  
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 9 Tworzenie hierarchii](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Tworzenie partycji  
   
@@ -40,7 +40,7 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  W oknie dialogowym Filtrowanie wierszy, w obszarze **Pokaż wiersze, w których: OrderDate** pozostaw zaznaczoną opcję **wypada po lub w dniu**, a następnie w polu daty wpisz **1/1/2010**. Pozostaw zaznaczony operator **oraz**, wybierz opcję **jest przed**, a następnie w polu daty wpisz **1/1/2011** i kliknij przycisk **OK**.
+6.  W oknie dialogowym filtrowanie wierszy w **Pokaż wiersze, w których: OrderDate**, pozostaw **jest po lub w dniu**, a następnie w polu daty wpisz **1/1/2010**. Pozostaw zaznaczony operator **oraz**, wybierz opcję **jest przed**, a następnie w polu daty wpisz **1/1/2011** i kliknij przycisk **OK**.
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
@@ -109,4 +109,4 @@ Zwróć uwagę, że w Menedżerze partycji kolumna **Ostatnio przetwarzane** dla
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>Co dalej?
-Przejdź do następnej lekcji: [Lekcja 11. Tworzenie ról](../tutorials/aas-lesson-11-create-roles.md). 
+Przejdź do następnej lekcji: [Lekcja 11 Tworzenie ról](../tutorials/aas-lesson-11-create-roles.md). 

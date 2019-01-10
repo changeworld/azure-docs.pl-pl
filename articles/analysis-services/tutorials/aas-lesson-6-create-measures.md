@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 6 — tworzenie miar | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek Lekcja 6 Tworzenie miar | Dokumentacja firmy Microsoft
 description: Opisuje sposób tworzenia miar w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ce38cac7a0b175004fbb670069ddbeefb53e96e7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0e9f798917b557d99259ece4773cce0853b15237
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428576"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191687"
 ---
 # <a name="create-measures"></a>Tworzenie miar
 
@@ -28,7 +28,7 @@ W tej lekcji utworzysz miary zarówno przez wprowadzenie formuły języka DAX na
 Szacowany czas trwania lekcji: **30 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 5. Tworzenie kolumn obliczeniowych](../tutorials/aas-lesson-5-create-calculated-columns.md).  
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 5 Tworzenie kolumn obliczeniowych](../tutorials/aas-lesson-5-create-calculated-columns.md).  
   
 ## <a name="create-measures"></a>Tworzenie miar  
   
@@ -122,6 +122,6 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
 Miary utworzone dla tabeli FactInternetSales umożliwiają analizowanie kluczowych danych finansowych, takich jak sprzedaż, koszty i marża, dotyczących elementów zdefiniowanych przez filtr wybrany przez użytkownika.  
   
 ## <a name="whats-next"></a>Co dalej?
-[Lekcja 7. Tworzenie kluczowych wskaźników wydajności](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
+[Lekcja 7: Tworzenie kluczowych wskaźników wydajności](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
 
   

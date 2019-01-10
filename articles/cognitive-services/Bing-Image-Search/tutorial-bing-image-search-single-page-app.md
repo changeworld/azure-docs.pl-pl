@@ -3,19 +3,19 @@ title: 'Samouczek: tworzenie jednostronicowej aplikacji internetowej — interfe
 titleSuffix: Azure cognitive services
 description: Interfejs API wyszukiwania obrazów Bing umożliwia wyszukiwanie w Internecie odpowiednich obrazów o wysokiej jakości. Przy użyciu tego samouczka możesz utworzyć jednostronicową aplikację internetową, która wysyła zapytania wyszukiwania do interfejsu API i wyświetla wyniki na stronie internetowej.
 services: cognitive-services
-author: aahi
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: e2013b28e8c829d49efe662a9b0eba245c6d5fab
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7ab94c6d935222c65c1259f1ce3b01d10f78ec1
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253956"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062863"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania obrazów Bing
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 8f88bf6b0de8296de14dccd51b38ee6ca480f059
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065090"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191823"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
@@ -21,16 +21,16 @@ Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statyczn
 W przeciwieństwie do hostowania statycznej witryny internetowej, dynamicznych witryn, które są zależne od kodu po stronie serwera są najlepiej hostowane przy użyciu [usługi Azure App Service](/azure/app-service/overview).
 
 ## <a name="how-does-it-work"></a>Jak to działa?
-Po włączeniu statycznej witryny internetowej hostingu na swoim koncie magazynu, wybierz nazwę pliku domyślnego i opcjonalnie podaj ścieżkę do niestandardowa strona 404. Ponieważ ta funkcja jest włączona, kontener o nazwie *$web* jest tworzony, jeśli jeszcze nie istnieje. 
+Po włączeniu statycznej witryny internetowej hostingu na swoim koncie magazynu, wybierz nazwę pliku domyślnego i opcjonalnie podaj ścieżkę do niestandardowa strona 404. Ponieważ ta funkcja jest włączona, kontener o nazwie *$web* jest tworzony, jeśli jeszcze nie istnieje.
 
 Pliki *$web* kontenera są:
 
 - obsługiwane za pośrednictwem żądań dostępu anonimowego
 - dostępne tylko za pośrednictwem operacji odczytu obiektu
 - wielkość liter
-- dostępne w publicznej sieci Web zgodnie z tego wzorca: 
+- dostępne w publicznej sieci Web zgodnie z tego wzorca:
     - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
-- dostępne za pośrednictwem punktu końcowego magazynu obiektów Blob, zgodnie z tego wzorca: 
+- dostępne za pośrednictwem punktu końcowego magazynu obiektów Blob, zgodnie z tego wzorca:
     - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
 Punkt końcowy usługi Blob storage służy do przekazywania plików. Na przykład plik przekazany do tej lokalizacji:
@@ -100,7 +100,7 @@ az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEn
 Przekazywanie obiektów *$web* kontenera z katalogu źródłowego. Pamiętaj prawidłowo ucieczki odwołanie do *$web* kontenera w poleceniu. Na przykład, jeśli używasz interfejsu wiersza polecenia platformy Azure w usłudze CloudShell w witrynie Azure portal, ucieczki *$web* kontenera, jak pokazano:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d `$web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Wdrożenie
@@ -120,7 +120,7 @@ Aby włączyć metryki na stronach statycznej witryny internetowej, kliknij **us
 
 Dane metryk są generowane przez podłączenie do różnych metryk interfejsów API. Portal zawiera tylko składowe interfejsu API, używany w danym przedziale czasu, aby tylko skoncentrowane na elementach członkowskich, które zwracają dane. Aby upewnić się, że jesteś w stanie wybrać niezbędne składowej interfejsu API, pierwszym krokiem jest rozwiń przedział czasu.
 
-Kliknij przycisk przedział czasu, a następnie wybierz **ostatnie 24 godziny** a następnie kliknij przycisk **Zastosuj** 
+Kliknij przycisk przedział czasu, a następnie wybierz **ostatnie 24 godziny** a następnie kliknij przycisk **Zastosuj**
 
 ![Zakres czasu metryki statycznych witryn internetowych usługi Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

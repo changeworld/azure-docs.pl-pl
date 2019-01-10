@@ -6,13 +6,13 @@ ms.service: container-service
 author: iainfoulds
 ms.author: iainfou
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.date: 01/09/2019
+ms.openlocfilehash: 470ba6df76741dd5c9e9eed055cd7848d341082f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853635"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188457"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z repozytorium GitHub do usługi Azure Kubernetes Service (AKS) przy użyciu narzędzia Jenkins ciągłej integracji i ciągłego wdrażania
 
@@ -29,7 +29,7 @@ W tym samouczku wykonasz następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka, potrzebne są następujące elementy:
+Do ukończenia tego samouczka są potrzebne następujące elementy:
 
 - Podstawową wiedzę na temat usługi Kubernetes, Git, ciągłej integracji/ciągłego Dostarczania i kontenera obrazów
 
@@ -37,7 +37,7 @@ Do ukończenia tego samouczka, potrzebne są następujące elementy:
 
 - [Rejestru Azure Container Registry (ACR)][acr-quickstart], nazwę serwera logowania usługi ACR i klastrem AKS skonfigurowany tak, aby [uwierzytelnianie za pomocą rejestru ACR][acr-authentication]
 
-- Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej zainstalowany i skonfigurowany. Uruchom `az --version` Aby znaleźć wersję. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+- Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej zainstalowany i skonfigurowany. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 - [Zainstalowana platforma docker] [ docker-install] w systemie deweloperskim
 
@@ -229,11 +229,6 @@ Na stronie głównej portalu narzędzia Jenkins wybierz **nowy element** po lewe
 1. Wprowadź *azure-vote* jako nazwę zadania. Wybierz **projekt Freestyle**, a następnie wybierz **OK**
 1. W sekcji **Ogólne** wybierz projekt **GitHub** i wprowadź adres URL rozwidlonego repozytorium, taki jak *https://github.com/\<your-github-account\>/azure-voting-app-redis*
 1. W sekcji **Zarządzanie kodem źródłowym** wybierz pozycję **Git** i wprowadź adres URL *.git* rozwidlonego repozytorium, taki jak *https://github.com/\<your-github-account\>/azure-voting-app-redis.git*
-    - Za pomocą poświadczeń kliknij i **Dodaj** > **usługi Jenkins**
-    - W obszarze **rodzaj**, wybierz opcję **tekst wpisu tajnego** i wprowadź swoje [osobisty token dostępu GitHub] [ git-access-token] jako klucz tajny.
-    - Wybierz **Dodaj** po zakończeniu.
-
-    ![Poświadczenia usługi GitHub](media/aks-jenkins/github-creds.png)
 
 1. W obszarze **kompilowanie wyzwalaczy** zaznacz **wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITscm**
 1. W obszarze **środowisko budowania środowiska**, wybierz opcję **za pomocą klucza tajnego teksty lub plików**

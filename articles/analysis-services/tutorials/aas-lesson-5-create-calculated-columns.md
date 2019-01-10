@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja 5 — tworzenie kolumn obliczeniowych | Microsoft Docs'
+title: Usługa Azure Analysis Services samouczek lekcja 5 Tworzenie kolumn obliczeniowych | Dokumentacja firmy Microsoft
 description: Opisuje sposób tworzenia kolumn obliczeniowych w projekcie samouczka usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bb0a17d4b7e11dd83439d943abf0bdd34ef915ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428134"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187454"
 ---
 # <a name="create-calculated-columns"></a>Tworzenie kolumn obliczeniowych
 
@@ -26,7 +26,7 @@ W tej lekcji po raz pierwszy zostanie użyty język DAX (Data Analysis Expresion
 Szacowany czas trwania lekcji: **15 minut**  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji należy ukończyć lekcję poprzednią: [Lekcja 4. Tworzenie relacji](../tutorials/aas-lesson-4-create-relationships.md). 
+Ten temat stanowi część samouczka modelowania tabelarycznego, który należy wykonać w podanej kolejności. Przed przystąpieniem do wykonywania zadań w tej lekcji, należy ukończyć lekcję poprzednią: [Lekcja 4 Tworzenie relacji](../tutorials/aas-lesson-4-create-relationships.md). 
   
 ## <a name="create-calculated-columns"></a>Tworzenie kolumn obliczeniowych  
   
@@ -42,7 +42,7 @@ Ten temat stanowi część samouczka modelowania tabelarycznego, który należy 
   
     Nowa kolumna o nazwie **Kolumna obliczeniowa 1** zostanie wstawiona po lewej stronie kolumny **Kwartał kalendarzowy**.  
   
-4.  Na pasku formuły powyżej tabeli wpisz następującą formułę języka DAX: funkcja Autouzupełnianie ułatwia wpisywanie w pełni kwalifikowanych nazw kolumn i tabel oraz podaje listę dostępnych funkcji.  
+4.  Na pasku formuły powyżej tabeli wpisz następującą formułę języka DAX: Autouzupełnianie ułatwia wpisywanie w pełni kwalifikowanych nazw kolumn i tabel i wyświetla listę funkcji, które są dostępne.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
@@ -125,7 +125,7 @@ Kolumna obliczeniowa ProductCategoryName służy do tworzenia hierarchii w tabel
     Kolumna obliczeniowa Margin jest używana do analizowania marży poszczególnych transakcji sprzedaży.  
   
 ## <a name="whats-next"></a>Co dalej?
-[Lekcja 6. Tworzenie miar](../tutorials/aas-lesson-6-create-measures.md).
+[Lekcja 6 Tworzenie miar](../tutorials/aas-lesson-6-create-measures.md).
   
   
   

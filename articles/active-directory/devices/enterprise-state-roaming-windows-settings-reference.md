@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: c225761f18a89539ea4966fab620104a25d1270e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 45bf554e457e48704684fe8ac3b32c29f3f646b2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50098046"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189288"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
 Oto Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub kopii zapasowej w systemie Windows 10. 
@@ -44,15 +44,15 @@ Następujące grupy ustawienia są dostępne dla użytkowników końcowych włą
 
 * Motyw: tło pulpitu, Kafelek użytkownika, położenie paska zadań itd. 
 * Ustawień programu Internet Explorer: Historia przeglądania wpisane adresy URL, Ulubione, itp. 
-* Hasła: Menedżera poświadczeń Windows, w tym profile sieci Wi-Fi 
+* Hasła: Menedżer poświadczeń Windows, łącznie z profilami sieci Wi-Fi 
 * Preferencje językowe: słownika, ustawień języka systemu 
 * Ułatwienia dostępu: narrator, program Klawiatura ekranowa, program Lupa 
 * Inne ustawienia Windows: Zobacz szczegóły ustawień Windows
-* Ustawienia przeglądarki krawędzi: Ulubione Microsoft Edge, przeczytania i inne ustawienia
+* Ustawienia przeglądarki Microsoft Edge: Ulubione Microsoft Edge, przeczytania i inne ustawienia
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
-Synchronizowanie grupy (Ulubione, odczytywanie listy) ustawienie przeglądarki Microsoft Edge może włączona lub wyłączona przez użytkowników końcowych za pośrednictwem przeglądarki Microsoft Edge opcji menu Ustawienia.
+Trwa synchronizowanie grupy (Ulubione, przeczytania) ustawienia przeglądarki Microsoft Edge można włączać lub wyłączać przez użytkowników końcowych za pośrednictwem przeglądarki Microsoft Edge opcji menu Ustawienia.
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
@@ -74,10 +74,10 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Dane aplikacji**: poszczególnych aplikacji można zsynchronizować danych |Kopia zapasowa synchronizacji |Kopia zapasowa synchronizacji |Wewnętrzne |
 | **Lista aplikacji**: lista zainstalowanych aplikacji |X |kopia zapasowa |Inne |
 | **Bluetooth**: wszystkie ustawienia połączeń Bluetooth |X |X | |
-| **Wiersz polecenia**: ustawienia "Domyślne" wiersz polecenia |Synchronizacja |X |Wewnętrzne |
-| **Poświadczenia**: poświadczeń skrytki |Synchronizacja |Synchronizacja |hasło |
+| **Wiersz polecenia**: Polecenie Ustawienia monitu "Domyślne" |Synchronizacja |X |Wewnętrzne |
+| **poświadczenia**: Skrytka na poświadczenia |Synchronizacja |Synchronizacja |hasło |
 | **Daty, godziny i regionu**: automatyczne czasu (Synchronizacja czasowa Internet) |Synchronizacja |Synchronizacja |language |
-| **Daty, godziny i regionu**: 24-godzinny |Synchronizacja |X |language |
+| **Daty, godziny i Region**: zegar 24-godzinny |Synchronizacja |X |language |
 | **Daty, godziny i regionu**: Data i godzina |Synchronizacja |X |language |
 | **Daty, godziny i regionu**: strefa czasowa | |X |language |
 | **Daty, godziny i regionu**: czasu letniego |Synchronizacja |X |language |
@@ -97,19 +97,19 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Przeglądarka Microsoft Edge**: Ulubione |Synchronizacja |Synchronizacja |Wewnętrzne |
 | **Przeglądarka Microsoft Edge**: top witryn <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
 | **Przeglądarka Microsoft Edge**: wpisane adresy URL <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: ustawienia paska ulubionych <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: Pokaż przycisk Strona główna <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: Ulubione, ustawienia paska <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: Pokaż przycisk strony głównej <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
 | **Przeglądarka Microsoft Edge**: Blokuj wyskakujące okienka <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: pytaj mnie, co należy zrobić z każdego pobrania <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: oferują na zapisywanie haseł <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: wysyłanie żądania nie Śledź żądań <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: wpisy formularza <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: Pokaż sugestie dotyczące wyszukiwania i lokacji, podczas pisania <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: Spytaj użytkownika, co można zrobić za pomocą każdego pobrania <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: oferty na zapisywanie haseł <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: wysyłaj nagłówki nie Śledź żądania <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: zapisywanie wpisów w formularzu <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: Pokaż sugestie wyszukiwania i lokacji, podczas pisania <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
 | **Przeglądarka Microsoft Edge**: preferencji pliki cookie <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
-| **Przeglądarka Microsoft Edge**: let witryn zapisać chronionych nośnika licencji w urządzeniu <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
+| **Przeglądarka Microsoft Edge**: let Zapisz chronione nośnika licencji na urządzeniu z systemem lokacji <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
 | **Przeglądarka Microsoft Edge**: czytnika zawartości ekranu, ustawienia <sup> [[1]](#footnote-1)</sup> |Synchronizacja |Synchronizacja |Wewnętrzne |
 | **Duży kontrast**: Włączanie/wyłączanie |Synchronizacja |X |łatwość dostępu |
-| **Duży kontrast**: ustawienia kompozycji |Synchronizacja |X |łatwość dostępu |
+| **Duży kontrast**: Ustawienia kompozycji |Synchronizacja |X |łatwość dostępu |
 | **Program Internet Explorer**: Otwórz karty (adres URL i tytuł) |Synchronizacja |Synchronizacja |Internet Explorer |
 | **Program Internet Explorer**: odczytywanie listy |Synchronizacja |Synchronizacja |Internet Explorer |
 | **Program Internet Explorer**: wpisane adresy URL |Synchronizacja |Synchronizacja |Internet Explorer |
@@ -122,23 +122,23 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Klawiatura**: Włącz umocowany tak (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
 | **Klawiatura**: Włącz funkcję Klawisze filtru (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
 | **Klawiatura**: Włączanie przełączania kluczy (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
-| **Program Internet Explorer**: domeny języka: chiński (CHS) QWERTY — Włączanie, samodzielnie uczenia |Synchronizacja |X |Język |
-| **Język**: CHS QWERTY — ranking Release candidate dynamiczne Włączanie |Synchronizacja |X |Język |
-| **Język**: QWERTY (CHS) — znak zestawu chiński (uproszczony) |Synchronizacja |X |Język |
-| **Język**: QWERTY (CHS) — znak zestawu języka chińskiego tradycyjnego |Synchronizacja |X |Język |
-| **Język**: CHS QWERTY - pinyin rozmytego |Synchronizacja |kopia zapasowa |Język |
-| **Język**: CHS QWERTY - pary rozmytego |Synchronizacja |kopia zapasowa |Język |
-| **Język**: CHS QWERTY — pełna pinyin |Synchronizacja |X |Język |
-| **Język**: CHS QWERTY - double pinyin |Synchronizacja |X |Język |
+| **Program Internet Explorer**: domeny języka: Chiński (CHS) QWERTY — Włączanie, samodzielnie uczenia |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — ranking Release candidate dynamiczne Włączanie |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — Chiński (uproszczony) char zestawu |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — Chiński tradycyjny char zestawu |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — pinyin rozmytego |Synchronizacja |kopia zapasowa |Język |
+| **Język**: QWERTY (CHS) — pary rozmytego |Synchronizacja |kopia zapasowa |Język |
+| **Język**: QWERTY (CHS) — pełna pinyin |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — double pinyin |Synchronizacja |X |Język |
 | **Język**: QWERTY (CHS) — automatyczne poprawianie do czytania |Synchronizacja |X |Język |
-| **Język**: CHS QWERTY - klucz przełącznika C/E, shift |Synchronizacja |X |Język |
-| **Język**: CHS QWERTY - klucz przełącznika C/E, Ctrl |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — klucz przełącznika C/E, shift |Synchronizacja |X |Język |
+| **Język**: QWERTY (CHS) — klucz przełącznika C/E, Ctrl |Synchronizacja |X |Język |
 | **Język**: WUBI (CHS) — tryb wprowadzania pojedynczy znak |Synchronizacja |X |Język |
 | **Język**: WUBI (CHS) — Pokaż pozostałe kodowania kandydata |Synchronizacja |X |Język |
-| **Język**: WUBI (CHS) — sygnał dźwiękowy 4 niezwiązanych z pisaniem kodu jest nieprawidłowy |Synchronizacja |X |Język |
+| **Język**: WUBI (CHS) — sygnału dźwiękowego po 4 niezwiązanych z pisaniem kodu jest nieprawidłowy |Synchronizacja |X |Język |
 | **Język**: Bopomofo (CHT) — obejmują CJK Ext A |Synchronizacja |X |Język |
-| **Język**: japońskiego edytora IME - predykcyjne Pisownia i niestandardowe słowa |Synchronizacja |Synchronizacja |Język |
-| **Język**: koreański (KOR) edytora IME |X |X |Język |
+| **Język**: Japońskiego edytora IME - predykcyjne Pisownia i niestandardowe słowa |Synchronizacja |Synchronizacja |Język |
+| **Język**: Koreański (KOR) edytora IME |X |X |Język |
 | **Język**: rozpoznawania pisma ręcznego |X |X |Język |
 | **Język**: profil języka |Synchronizacja |kopia zapasowa |Język |
 | **Język**: sprawdzanie pisowni - Autokorekty i podświetl błędy pisowni. |Synchronizacja |kopia zapasowa |Język |
@@ -175,7 +175,7 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Wpisywanie**: Użyj wielkie litery, gdy I dwukrotnie naciśnij klawisz shift |Synchronizacja |kopia zapasowa |Język |
 | **Wpisywanie**: odtwarzanie dźwięku klucza podczas pisania |Synchronizacja |kopia zapasowa |Język |
 | **Wpisywanie**: danych personalizacji dla klawiatury dotykowej |Synchronizacja |kopia zapasowa |Język |
-| **Wi-Fi**: profile sieci Wi-Fi (tylko WPA) |Synchronizacja |Synchronizacja |Hasła |
+| **Sieci Wi-Fi**: Profile sieci Wi-Fi (tylko WPA) |Synchronizacja |Synchronizacja |Hasła |
 
 ###### <a name="footnote-1"></a>Przypis 1
 Minimalna obsługiwana wersja systemu operacyjnego Windows aktualizacją dla kreatywnych (kompilacja 15063). 

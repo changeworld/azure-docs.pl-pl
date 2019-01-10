@@ -1,24 +1,26 @@
 ---
-title: Wdrażanie usług Azure Analysis Services przy użyciu programu SSDT | Microsoft Docs
+title: Wdrażanie usług Azure Analysis Services przy użyciu programu Visual Studio (SSDT) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wdrożyć model tabelaryczny na serwerze usług Azure Analysis Services przy użyciu programu SSDT.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5f56ee65cd2ec5dfb39929f6985c26ebc339953e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a9f3dfba4c79b2369e99b95c13557557ed930c24
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429052"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188593"
 ---
-# <a name="deploy-a-model-from-ssdt"></a>Wdrażanie modelu w programie SSDT
+# <a name="deploy-a-model-from-visual-studio"></a>Wdrażanie modelu w programie Visual Studio
+
 Po utworzeniu serwera w ramach subskrypcji platformy Azure wszystko jest gotowe do wdrożenia bazy danych modelu tabelarycznego. Program SSDT (SQL Server Data Tools) służy do tworzenia i wdrażania projektu modelu tabelarycznego, nad którymi pracujesz. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Aby rozpocząć pracę, potrzebne będą następujące elementy:
 
 * **Serwer usług Analysis Services** na platformie Azure. Aby dowiedzieć się więcej, zobacz artykuł [Create an Azure Analysis Services server](analysis-services-create-server.md) (Tworzenie serwera usług Azure Analysis Services).
@@ -53,10 +55,12 @@ To wszystko!
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
 Jeśli wdrożenie zakończy się niepowodzeniem podczas wdrażania metadanych, prawdopodobną przyczyną jest brak połączenia programu SSDT z serwerem. Upewnij się, że możesz połączyć się z serwerem przy użyciu programu SSMS. Upewnij się, że właściwość serwera wdrażania dla projektu jest poprawna.
 
 Jeśli wdrożenie zakończy się niepowodzeniem dla tabeli, prawdopodobnie serwer nie mógł nawiązać połączenia ze źródłem danych. Jeśli źródło danych znajduje się w lokalnej sieci organizacji, należy zainstalować [bramę danych lokalnych](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Po wdrożeniu modelu tabelarycznego na serwerze możesz się z nim połączyć. W celu zarządzania modelem możesz [połączyć się przy użyciu programu SSMS](analysis-services-manage.md). Możesz również [nawiązać połączenie za pomocą narzędzia klienta](analysis-services-connect.md), takiego jak usługi Power BI, Power BI Desktop lub program Excel, i rozpocząć tworzenie raportów.
 

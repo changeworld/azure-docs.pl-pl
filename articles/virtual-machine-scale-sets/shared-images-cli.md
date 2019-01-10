@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 0aaa912a06136edbe04e6956d86faa47cf88136f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 41e2eee491141be3a7e39a70bccf8440890e2982
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116644"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186502"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Tworzenie i używanie udostępnianych obrazów dla zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -32,7 +32,6 @@ Podczas tworzenia zestawu skalowania należy wskazać obraz używany do wdrożen
 > * Utwórz definicję udostępnionego obrazu
 > * Utwórz wersję udostępnionego obrazu
 > * Tworzenie maszyny Wirtualnej na podstawie udostępnionego obrazu
-> * Usuń zasoby
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

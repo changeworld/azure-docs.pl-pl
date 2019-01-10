@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 6750276cf31d0c804b38cdf3ea6e41a4505c93f1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971822"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187421"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
-Zezwalaj na nagłówki HTTP, klient i serwer do przekazania dodatkowych informacji z żądania lub odpowiedzi. Ponowne napisanie te ułatwia nagłówki HTTP, wykonanie kilku ważnych scenariuszy, takich jak dodawanie nagłówka związanych z zabezpieczeniami pól, takich jak HSTS / X XSS ochrony lub usuwanie pola nagłówka odpowiedzi, który może spowodować ujawnienie poufnych informacji, takich jak nazwa serwera wewnętrznej bazy danych.
+Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji w ramach żądania lub odpowiedzi. Ponowne napisanie te ułatwia nagłówki HTTP, wykonanie kilku ważnych scenariuszy, takich jak dodawanie nagłówka związanych z zabezpieczeniami pól, takich jak HSTS / X XSS ochrony lub usuwanie pola nagłówka odpowiedzi, który może spowodować ujawnienie poufnych informacji, takich jak nazwa serwera wewnętrznej bazy danych.
 
-Usługa Application Gateway obsługuje teraz możliwość nadpisywania nagłówki przychodzących żądań HTTP, a także wychodzące odpowiedzi HTTP. Będzie można dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP podczas pakiety żądań/odpowiedzi przenoszenia między pulami klienta i zaplecza. Można napisać ponownie standardowe (zdefiniowane w [dokumencie RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) oraz pola niestandardowego nagłówka.
+Usługa Application Gateway obsługuje teraz możliwość ponownego zapisywania nagłówków w przychodzących żądaniach HTTP, jak również w wychodzących odpowiedziach HTTP. Będzie można dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP podczas pakiety żądań/odpowiedzi przenoszenia między pulami klienta i zaplecza. Można napisać ponownie obu pól nagłówka standardowe, jak również niestandardowych.
 
 > [!NOTE] 
 >
@@ -84,7 +84,11 @@ Można napisać ponownie wartość w nagłówki, aby:
 
 - Kombinacja powyższych.
 
-Zmienne serwera wymienione powyżej są zmienne, które dostarczają informacji o serwerze, połączenie klienta i bieżącego żądania połączenia. Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych serwera:
+## <a name="server-variables"></a>Zmienne serwera
+
+Zmienne serwera przydatne informacje są przechowywane na serwerze sieci web. Te zmienne zawierają informacje dotyczące serwera, połączenie z klientem a bieżącego żądania w połączeniu, takich jak adres IP klienta lub typ przeglądarki sieci web. One dynamicznie zmieniać, takie jak po załadowaniu nowej strony lub a opublikowania formularza.  Korzystanie z tych użytkowników zmiennych można ustawić nagłówki żądania, a także nagłówków odpowiedzi. 
+
+Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych serwera:
 
 | Zmienne serwera obsługiwane | Opis                                                  |
 | -------------------------- | :----------------------------------------------------------- |
@@ -100,7 +104,7 @@ Zmienne serwera wymienione powyżej są zmienne, które dostarczają informacji 
 | HTTP_STATUS                | Stan sesji, na przykład: 200, 400, 403 itp.                       |
 | http_version               | żądanie protokołu, zazwyczaj "HTTP/1.0", "HTTP/1.1" lub "HTTP/2.0" |
 | QUERY_STRING               | na liście wartość zmiennej pary poniżej "?" w żądanego adresu URL. |
-| received_byte              | długość żądania (w tym wierszu żądania, nagłówek i treść żądania) |
+| received_bytes             | długość żądania (w tym wierszu żądania, nagłówek i treść żądania) |
 | request_query              | argumenty w wierszu żądania                                |
 | request_scheme             | Schemat żądania, "http" lub "https"                            |
 | request_uri                | pełne oryginalnego identyfikatora URI żądania (z argumentami)                   |

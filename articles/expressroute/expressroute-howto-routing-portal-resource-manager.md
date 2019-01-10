@@ -1,19 +1,19 @@
 ---
-title: 'Skonfiguruj komunikację równorzędną dla obwodu — ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+title: 'Skonfiguruj komunikację równorzędną dla obwodu — ExpressRoute: Azure | Microsoft Docs'
 description: Ten artykuł zawiera instrukcje tworzenia i inicjowania obsługi komunikacji równorzędnej prywatnej, publicznej i firmy Microsoft obwodu usługi ExpressRoute. W tym artykule opisano również, jak aktualizować i usuwać komunikację równoległą dla obwodu oraz sprawdzać jej stan.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5c42b54cf41eed3df9ffe1fbd082ac6c27035769
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2ed6d23d9fe89715e41c8a40f70534f5edc44236
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139082"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189987"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute
 
@@ -29,6 +29,7 @@ Ten artykuł ułatwia tworzenie i zarządzanie nimi konfiguracji routingu dla ob
 > * [PowerShell (klasyczny)](expressroute-howto-routing-classic.md)
 > 
 
+Można skonfigurować jedną komunikację równorzędną, dwie lub trzy (prywatną Azure, publiczną Azure i Microsoft) dla obwodu usługi ExpressRoute. Możesz skonfigurować komunikację równorzędną w dowolnej kolejności. Musisz jednak pamiętać, aby kończyć konfiguracje poszczególnych komunikacji równorzędnych pojedynczo. Aby uzyskać więcej informacji na temat routingu domen i komunikacji równorzędnej, zobacz [informacje o obwodach i komunikacji równorzędnej](expressroute-circuit-peerings.md).
 
 ## <a name="configuration-prerequisites"></a>Wymagania wstępne dotyczące konfiguracji
 
@@ -42,8 +43,6 @@ Te instrukcje dotyczą tylko obwodów utworzonych przy pomocy dostawców oferuj�
 > Obecnie nie anonsujemy komunikacji równorzędnej skonfigurowanej przez dostawców usług w portalu zarządzania usługami. Pracujemy nad tym, by wkrótce włączyć tę funkcję. Skontaktuj się z dostawcą usług, przed skonfigurowaniem komunikacji równorzędnej BGP.
 > 
 > 
-
-Można skonfigurować jedną komunikację równorzędną, dwie lub trzy (prywatną Azure, publiczną Azure i Microsoft) dla obwodu usługi ExpressRoute. Możesz skonfigurować komunikację równorzędną w dowolnej kolejności. Musisz jednak pamiętać, aby kończyć konfiguracje poszczególnych komunikacji równorzędnych pojedynczo. Aby uzyskać więcej informacji na temat routingu domen i komunikacji równorzędnej, zobacz [domeny routingu usługi ExpressRoute](expressroute-circuit-peerings.md).
 
 ## <a name="msft"></a>Komunikacja równorzędna firmy Microsoft
 
@@ -65,9 +64,9 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizacji i usuwania konfiguracji k
   * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4, którego jesteś właścicielem, zarejestrowany w RIR/IRR. Z tej podsieci spowoduje przypisanie pierwszego adresu IP niemożliwe do routera, jak firma Microsoft używa drugiego IP niemożliwe do jego routera.
   * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Upewnij się, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora VLAN. Łączy podstawowe i pomocnicze należy używać tego samego identyfikatora sieci VLAN.
   * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS.
-  * Anonsowane prefiksy: musisz podać listę wszystkich prefiksów, które planujesz anonsować za pośrednictwem sesji BGP. Akceptowane są tylko prefiksy publicznych adresów IP. Jeśli zamierzasz wysłać zestaw prefiksów, możesz wysłać listę rozdzielonych przecinkami. Prefiksy te muszą być zarejestrowane na Ciebie w RIR/IRR.
-  * **Opcjonalnie —** numer ASN klienta: jeśli anonsujesz prefiksy, które nie są rejestrowane do numeru AS komunikacji równorzędnej, możesz określić numer AS, do którego są rejestrowane.
-  * Nazwa rejestru routingu: możesz określić RIR/IRR, względem którego rejestrowany jest numer AS i prefiksy.
+  * Anonsowane prefiksy: Musisz podać listę wszystkich prefiksów, które planujesz anonsować za pośrednictwem sesji BGP. Akceptowane są tylko prefiksy publicznych adresów IP. Jeśli zamierzasz wysłać zestaw prefiksów, możesz wysłać listę rozdzielonych przecinkami. Prefiksy te muszą być zarejestrowane na Ciebie w RIR/IRR.
+  * **Opcjonalnie —** numer ASN klienta: Jeśli anonsujesz prefiksy, które nie są rejestrowane do numeru AS komunikacji równorzędnej, możesz określić numer AS, do którego są rejestrowane.
+  * Nazwa rejestru routingu: Możesz określić RIR / IRR, względem którego numer AS i prefiksy są.
   * **Opcjonalnie —** Skrót MD5, jeśli zdecydujesz się go użyć.
 3. Możesz wybrać komunikację równorzędną, którą chcesz skonfigurować, jak pokazano w poniższym przykładzie. Zaznacz wiersz dotyczący komunikacji równorzędnej firmy Microsoft.
 

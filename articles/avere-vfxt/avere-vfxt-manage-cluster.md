@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999059"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189613"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Zarządzanie klastrem Avere vFXT
 
@@ -63,11 +63,11 @@ Do zamknięcia, ponownie uruchomić lub usunąć węzeł, Znajdź węzeł na li�
 > [!NOTE] 
 > Adresy IP może poruszać się między węzłami klastra, po zmianie liczba aktywnych węzłów.
 
-Odczyt [klaster > węzły FXT](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>) w przewodniku ustawienia Avere klastra, aby uzyskać więcej informacji.
+Odczyt [klaster > węzły FXT](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) w przewodniku ustawienia Avere klastra, aby uzyskać więcej informacji.
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Zatrzymaj lub uruchom ponownie klaster przy użyciu Panelu sterowania Avere
 
-**Konserwacji systemu** strona ustawień zawiera polecenia służące do ponownego uruchamiania usług klastrowania, ponownego uruchamiania klastra lub bezpiecznie wyłączania klastra. Odczyt [Administracja > konserwacji systemu](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>) (Avere klastra ustawienia przewodnik) Aby uzyskać szczegółowe informacje.
+**Konserwacji systemu** strona ustawień zawiera polecenia służące do ponownego uruchamiania usług klastrowania, ponownego uruchamiania klastra lub bezpiecznie wyłączania klastra. Odczyt [Administracja > konserwacji systemu](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (Avere klastra ustawienia przewodnik) Aby uzyskać szczegółowe informacje.
 
 Gdy klaster jest zamykana, publikuje komunikaty o stanie do **pulpit nawigacyjny** kartę na początku. Po kilku chwilach sesji Panelu sterowania Avere przestanie odpowiadać, co oznacza, że klaster został zamknięty.
 
@@ -83,7 +83,7 @@ Podobnie jak Avere Panelu sterowania operacje vfxt.py spróbuj upewnij się, że
 
 vfxt.PY jest preinstalowany na kontrolerze klastra maszyny Wirtualnej. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-Podręcznik użycia pełną vfxt.py jest dostępna w witrynie GitHub: [Zarządzanie klastrem przy użyciu vfxt.py w chmurze](https://github.com/azure/averesdk/blob/master/docs/README.md)
+Podręcznik użycia pełną vfxt.py jest dostępna w witrynie GitHub: [Klaster zarządzania chmurą vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Dodawanie węzłów klastra z vfxt.py
 

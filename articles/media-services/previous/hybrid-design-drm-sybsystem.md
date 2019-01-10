@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 84e2eb6a16ce9ee4889eacbf394754c5c2544f7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9026cab0651cd5f8433f9a8a7db0366a6ab13464
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245311"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190259"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Projekt hybrydowego DRM subsystem(s)
 
@@ -68,7 +68,7 @@ Jako część w chmurze kompleksową platformę wideo usługi Azure Media Servic
 
 ### <a name="drm-license-delivery"></a>Dostarczanie licencji DRM
 
-* Usługi AMS: Licencji DRM są dostarczane przez usługi dostarczania licencji usługi AMS.
+* USŁUGI AMS: Licencji DRM są dostarczane przez usługi dostarczania licencji usługi AMS.
 * Innych firm: Licencji DRM są dostarczane przez serwer licencji DRM innych firm, poza usługi AMS.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Konfigurowanie oparte na scenariusza hybrydowego
@@ -102,7 +102,7 @@ Oparte na wyjaśnienia w poprzedniej sekcji, w następujących scenariuszach hyb
 |AMS|Innych firm|Poza|Nie|Nie|Przykład 4|
 |Innych firm|Innych firm|AMS|Yes|Nie|    
 
-W przykładach objętych ochroną PlayReady i działa w przypadku DASH i smooth streaming. Poniższe adresy URL wideo są smooth streaming adresów URL. Aby uzyskać odpowiednie adresy URL DASH, Dołącz tylko "(format = mpd-time-csf)". Można użyć [usługi azure media test player](https://aka.ms/amtest) testowanie w przeglądarce. Umożliwia konfigurowanie protokołu przesyłania strumieniowego do użycia, w ramach której pomocy. Obsługuje PlayReady za pośrednictwem EME, IE11 i Microsoft Edge w systemie Windows 10. Aby uzyskać więcej informacji, zobacz [szczegółowe informacje na temat narzędzia test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+W przykładach objętych ochroną PlayReady i działa w przypadku DASH i smooth streaming. Poniższe adresy URL wideo są smooth streaming adresów URL. Aby uzyskać odpowiednie adresy URL DASH, Dołącz tylko "(format = mpd-time-csf)". Można użyć [usługi azure media test player](https://aka.ms/amtest) testowanie w przeglądarce. Umożliwia konfigurowanie protokołu przesyłania strumieniowego do użycia, w ramach której pomocy. IE11 i Microsoft Edge w systemie Windows 10 obsługują technologii PlayReady za pomocą rozszerzeń EME. Aby uzyskać więcej informacji, zobacz [szczegółowe informacje na temat narzędzia test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Przykład 1
 

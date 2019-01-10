@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321447"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190174"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Utwórz koncentrator wirtualny tabelę tras w celu kierowania ruchu do wirtualnego urządzenia sieciowego
 
@@ -21,7 +21,7 @@ W tym artykule przedstawiono sposób kierowania ruchu z koncentratora wirtualneg
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 * Tworzenie sieci WAN
 * Tworzenie koncentratora
@@ -43,7 +43,7 @@ Sprawdź, czy są spełnione następujące kryteria:
 
 ## <a name="signin"></a>1. Logowanie
 
-Upewnij się, że możesz zainstalować najnowszą wersję poleceń cmdlet programu PowerShell usługi Resource Manager. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). Jest to ważne, ponieważ wcześniejsze wersje poleceń cmdlet nie zawierają bieżących wartości potrzebnych w tym ćwiczeniu.
+Upewnij się, że możesz zainstalować najnowszą wersję poleceń cmdlet programu PowerShell usługi Resource Manager. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/overview). Jest to ważne, ponieważ wcześniejsze wersje poleceń cmdlet nie zawierają bieżących wartości potrzebnych w tym ćwiczeniu. Moduły w ją zgodnie z przykładami są usługi Azure Menedżera zasobów. Ten artykuł będzie można zaktualizować Az platformy Azure w przyszłości.
 
 1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i zaloguj się do konta platformy Azure. To polecenie cmdlet wyświetli monit o podanie poświadczeń logowania. Po zalogowaniu pobiera ono ustawienia konta, tak aby były dostępne dla programu Azure PowerShell.
 

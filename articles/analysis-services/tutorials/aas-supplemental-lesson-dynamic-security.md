@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek Azure Analysis Services: lekcja uzupełniająca — zabezpieczenia dynamiczne | Microsoft Docs'
+title: 'Usługa Azure Analysis Services samouczek lekcja uzupełniająca: Zabezpieczenia dynamiczne | Dokumentacja firmy Microsoft'
 description: Opisuje sposób korzystania z zabezpieczeń dynamicznych przy użyciu filtrów wierszy w samouczku usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1908d655064a4a320191695c048271246951c29c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235928"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187488"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Lekcja uzupełniająca — zabezpieczenia dynamiczne
 
@@ -21,7 +21,7 @@ W tej lekcji uzupełniającej utworzysz dodatkową rolę w celu zaimplementowani
   
 Aby zaimplementować zabezpieczenia dynamiczne, dodaj do modelu tabelę zawierającą nazwy użytkowników, którzy mogą połączyć się z modelem oraz przeglądać obiekty i dane modelu. Model tworzony przy użyciu tego samouczka znajduje się w kontekście Adventure Works, jednak w celu ukończenia tej lekcji należy dodać tabelę zawierającą użytkowników z własnej domeny. Nie jest wymagane podanie haseł dla dodawanych nazw użytkowników. Aby utworzyć tabelę EmployeeSecurity zawierającą niewielką próbkę użytkowników z własnej domeny, należy za pomocą funkcji Wklej wkleić dane pracowników z arkusza kalkulacyjnego programu Excel. W scenariuszu rzeczywistym tabela zawierająca nazwy użytkowników będzie zazwyczaj tabelą z istniejącej bazy danych użytej jako źródło danych, na przykład rzeczywistą tabelą DimEmployee.  
   
-Aby zaimplementować zabezpieczenia dynamiczne, należy użyć dwóch funkcji języka DAX: [USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) i [LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Te funkcje, zastosowane w formule filtra wierszy, są definiowane w nowej roli. Za pomocą funkcji LOOKUPVALUE formuła określa wartość z tabeli EmployeeSecurity. Następnie formuła przekazuje tę wartość funkcji USERNAME, która określa nazwę użytkownika dla zalogowanego użytkownika należącego do tej roli. Użytkownik może następnie przeglądać tylko dane określone przez filtry wierszy danej roli. W tym scenariuszu określisz, że pracownicy działu sprzedaży mogą przeglądać tylko dane sprzedaży internetowej dotyczące regionów sprzedaży, których są członkami.  
+Aby zaimplementować zabezpieczenia dynamiczne, należy użyć dwóch funkcji języka DAX: [Funkcja USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) i [funkcja LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Te funkcje, zastosowane w formule filtra wierszy, są definiowane w nowej roli. Za pomocą funkcji LOOKUPVALUE formuła określa wartość z tabeli EmployeeSecurity. Następnie formuła przekazuje tę wartość funkcji USERNAME, która określa nazwę użytkownika dla zalogowanego użytkownika należącego do tej roli. Użytkownik może następnie przeglądać tylko dane określone przez filtry wierszy danej roli. W tym scenariuszu określisz, że pracownicy działu sprzedaży mogą przeglądać tylko dane sprzedaży internetowej dotyczące regionów sprzedaży, których są członkami.  
   
 Zadania, które są unikatowe dla przedstawionego scenariusza modelu tabelarycznego Adventure Works, ale nie zawsze będą miały zastosowanie w przypadku rzeczywistych scenariuszy, zostały odpowiednio oznaczone. Każde zadanie zawiera dodatkowe informacje opisujące jego cel.  
   
@@ -37,7 +37,7 @@ Aby zaimplementować zabezpieczenia dynamiczne w tym scenariuszu Adventure Works
   
 1.  W Eksploratorze modeli tabelarycznych wybierz pozycję **Źródła danych**, kliknij prawym przyciskiem myszy połączenie, a następnie kliknij pozycję **Importuj nowe tabele**.  
 
-    Jeśli zostanie wyświetlone okno dialogowe Poświadczenia personifikacji, wpisz poświadczenia personifikacji używane w lekcji 2 „Dodawanie danych”.
+    Jeśli pojawi się okno dialogowe poświadczenia personifikacji, wpisz poświadczenia personifikacji, którego użyto w lekcji 2: Dodaj dane.
   
 2.  W oknie Nawigator wybierz tabelę **DimSalesTerritory**, a następnie kliknij przycisk **OK**.    
   
@@ -107,7 +107,7 @@ W tym zadaniu ukryjesz tabelę EmployeeSecurity, aby uniemożliwić jej wyświet
 W tym zadaniu utworzysz rolę użytkownika. Ta rola zawiera filtr wierszy, który definiuje wiersze w tabeli DimSalesTerritory widoczne dla użytkowników. Ten filtr jest następnie stosowany w kierunku relacji jeden-do-wielu w odniesieniu do wszystkich pozostałych tabel powiązanych z tabelą DimSalesTerritory. Zastosowany zostanie także filtr, który zabezpiecza całą tabelę EmployeeSecurity przed obsługą zapytań wykonywanych przez dowolnego użytkownika będącego członkiem roli.  
   
 > [!NOTE]  
-> Utworzona w tej lekcji rola Sales Employees by Territory (Pracownicy sprzedaży według regionu) ogranicza przeglądanie i wykonywanie zapytań przez członków wyłącznie do danych sprzedaży dotyczących regionu, do którego należą. Jeśli jako członek roli Sales Employees by Territory zostanie dodany użytkownik, który jest także członkiem roli utworzonej w [lekcji 11 „Tworzenie ról”](../tutorials/aas-lesson-11-create-roles.md), uzyskujemy kombinację uprawnień. W przypadku użytkownika będącego członkiem wielu ról następuje kumulacja uprawnień i filtrów wierszy zdefiniowanych dla każdej roli. Oznacza to, że użytkownik ma większe uprawnienia określone przez kombinację ról.  
+> Utworzona w tej lekcji rola Sales Employees by Territory (Pracownicy sprzedaży według regionu) ogranicza przeglądanie i wykonywanie zapytań przez członków wyłącznie do danych sprzedaży dotyczących regionu, do którego należą. Jeśli użytkownik zostanie dodany jako członek do pracownicy sprzedaży według roli terytorium, który jest także jako element członkowski w roli utworzone w [lekcja 11: Tworzenie ról](../tutorials/aas-lesson-11-create-roles.md), uzyskujemy kombinację uprawnień. W przypadku użytkownika będącego członkiem wielu ról następuje kumulacja uprawnień i filtrów wierszy zdefiniowanych dla każdej roli. Oznacza to, że użytkownik ma większe uprawnienia określone przez kombinację ról.  
   
 #### <a name="to-create-a-sales-employees-by-territory-user-role"></a>Tworzenie roli użytkownika Sales Employees by Territory  
   

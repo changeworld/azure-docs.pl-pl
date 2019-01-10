@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 6af369c9ba1621dcedc2adf74f0c25321422f3c4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0008384b53671b76e5cc0a6a405d3aa4986e73d2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357272"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191772"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii usługi Azure AD, skonfigurowanej do obsługi hasło logowania jednokrotnego
 
@@ -40,7 +40,7 @@ W przypadku logowania jednokrotnego opartego na hasłach może być przeglądark
 -   Firefox 26.0 lub nowsze wersje — na Windows XP z dodatkiem SP2 lub nowszy i w systemie Mac OS X 10,6 lub nowszy
 
 >[!NOTE]
->Rozszerzenie logowania jednokrotnego opartego na hasłach stają się dostępne w Microsoft Edge w systemie Windows 10, gdy staną się również obsługiwany rozszerzenia przeglądarki Microsoft Edge.
+>Rozszerzenie logowania jednokrotnego opartego na hasłach stają się dostępne dla programu Microsoft Edge w systemie Windows 10 po rozszerzenia przeglądarki w miarę udostępniania obsługi dla programu Microsoft Edge.
 >
 >
 
@@ -172,7 +172,7 @@ Aby przypisać jeden lub więcej użytkowników aplikacji bezpośrednio, wykonaj
 
 11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adresu e-mail** pole wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
 13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 

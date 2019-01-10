@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 09c8b63cddde547b0dc42cf1f15a8ac5002d0a3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725142"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187981"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -60,7 +60,7 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
 
     Do testowania AES lub CENC (Widevine i/lub technologii PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź opcje szyfrowania.
 
-    Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](https://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. Musisz wybrać odpowiednie przeglądarce w celu przetestowania różnych protokołów DRM: Dla programu Chrome/Opera/Firefox Widevine, MS Edge/IE11 dla technologii PlayReady, Safari w systemie macOS dla technologii FairPlay.
+    Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](https://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. Musisz wybrać odpowiednie przeglądarce w celu przetestowania różnych protokołów DRM: Dla programu Chrome/Opera/Firefox Widevine, Microsoft Edge/IE11 dla technologii PlayReady, Safari w systemie macOS dla technologii FairPlay.
 
 3. Secure Token Service (STS), która wystawia Token sieci Web JSON (JWT) jako token dostępu, aby uzyskać dostęp do zasobów w wewnętrznej bazie danych. Za pomocą usług dostarczania licencji usługi AMS jako zasobów wewnętrznej bazy danych. Usługa tokenu Zabezpieczającego musi definiują następujące elementy:
 

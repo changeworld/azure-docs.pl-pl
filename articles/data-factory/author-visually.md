@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/7/2018
+ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: afaa5ae622f962dcffec52dbdbea8a754ba260ab
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025389"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188498"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -76,17 +76,17 @@ Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacj
 
 ![Konfigurowanie ustawień repozytorium kodu na potrzeby tworzenia interfejsu użytkownika](media/author-visually/configure-repo-2.png)
 
-## <a name="use-a-different-azure-active-directory-tenant"></a>Użyj innej dzierżawy usługi Azure Active Directory
+### <a name="use-a-different-azure-active-directory-tenant"></a>Użyj innej dzierżawy usługi Azure Active Directory
 
 Repozytorium Git repozytoriów platformy Azure można utworzyć w innej dzierżawie usługi Azure Active Directory. Aby określić inną dzierżawą usługi Azure AD, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, której używasz.
 
-## <a name="use-your-personal-microsoft-account"></a>Użyj osobistego konta Microsoft
+### <a name="use-your-personal-microsoft-account"></a>Użyj osobistego konta Microsoft
 
 Do użytku osobistego konta Microsoft na integrację z usługą Git, możesz połączyć osobistych repozytorium Azure Active Directory w Twojej organizacji.
 
 1. Dodaj osobiste konto Microsoft do usługi Active Directory w Twojej organizacji jako Gość. Aby uzyskać więcej informacji, zobacz [użytkowników we współpracy Dodawanie usługi Azure Active Directory B2B, w witrynie Azure portal](../active-directory/b2b/add-users-administrator.md).
 
-2. Zaloguj się do witryny Azure Portal przy użyciu osobistego konta Microsoft. Następnie przełącz się do usługi Active Directory w Twojej organizacji.
+2. Zaloguj się do witryny Azure portal przy użyciu osobistego konta Microsoft. Następnie przełącz się do usługi Active Directory w Twojej organizacji.
 
 3. Przejdź do sekcji DevOps platformy Azure, w którym pojawi się osobistych repozytorium. Wybierz repozytorium i łączenie z usługą Active Directory.
 
@@ -94,7 +94,7 @@ Po wykonaniu tych kroków konfiguracji osobistych repozytorium jest dostępna po
 
 Aby uzyskać więcej informacji na temat łączenia repozytoriów platformy Azure do usługi Active Directory w Twojej organizacji, zobacz [połączyć organizacji DevOps platformy Azure do usługi Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
-## <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
+### <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
 
 Aby przełączyć się do innego repozytorium Git, Znajdź ikonę w prawym górnym rogu strony Przegląd usługi Data Factory, jak pokazano na poniższym zrzucie ekranu. Jeśli nie widzisz ikonę wyczyścić pamięci podręcznej lokalnej przeglądarki. Wybierz ikonę, aby usunąć skojarzenie z bieżącego repozytorium.
 
@@ -102,7 +102,7 @@ Po usunięciu skojarzenia z bieżącego repozytorium, można skonfigurować usta
 
 ![Usuń skojarzenie z bieżącego repozytorium Git](media/author-visually/remove-repo.png)
 
-## <a name="use-version-control"></a>Korzystanie z kontroli wersji
+### <a name="use-version-control"></a>Korzystanie z kontroli wersji
 Systemy kontroli wersji (znany także jako _kontroli źródła_) umożliwiają deweloperom współpracować nad kodu i śledzenie zmian wprowadzonych do kodu podstawowego. Kontrola źródła jest niezbędnego narzędzia dla deweloperów wielu projektów.
 
 Każde repozytorium Git repozytoriów platformy Azure, która jest skojarzona z fabryką danych ma gałąź pracy zespołowej. (`master` to gałąź domyślna współpracy). Użytkownicy mogą również tworzyć gałęzie funkcji, klikając **+ nowa gałąź** i Programowanie w gałęzie funkcji.
@@ -113,7 +113,7 @@ Gdy jesteś gotowy z programowaniem funkcji w gałęzi funkcji, możesz klikną�
 
 ![Utwórz nowe żądanie ściągnięcia](media/author-visually/create-pull-request.png)
 
-## <a name="configure-publishing-settings"></a>Konfigurowanie ustawień publikowania
+### <a name="configure-publishing-settings"></a>Konfigurowanie ustawień publikowania
 
 Aby skonfigurować gałąź publikowania — oznacza to, gałęzi, w którym są zapisywane szablonów usługi Resource Manager — Dodaj `publish_config.json` plik do folderu głównego w gałęzi współpracy. Data Factory odczytuje tego pliku, szuka pole `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podanej wartości. Następnie zapisuje wszystkie szablony usługi Resource Manager w określonej lokalizacji. Na przykład:
 
@@ -131,13 +131,39 @@ Podczas określania nowej gałęzi publikowania usługi Data Factory nie powoduj
 
 Data Factory odczytuje tylko `publish_config.json` plików podczas ładowania fabryki. Jeśli masz już fabryki załadowane w portalu, Odśwież przeglądarkę, aby wprowadzić zmiany zaczęły obowiązywać.
 
-## <a name="publish-code-changes"></a>Publikowanie zmian w kodzie
+### <a name="publish-code-changes"></a>Publikowanie zmian w kodzie
 Po zostały scalone zmiany w gałęzi współpracy (`master` jest ustawieniem domyślnym), wybierz opcję **Publikuj** ręcznie opublikować zmiany kodu w gałęzi głównej w usłudze Data Factory.
 
 ![Publikowanie zmian w usłudze Data Factory](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > Gałąź główna nie jest językiem co to jest wdrożony w usłudze Data Factory. Gałąź główna *musi* można ręcznie opublikować w usłudze Data Factory.
+
+### <a name="advantages-of-git-integration"></a>Korzyści wynikające z integracji usługi Git
+
+-   **Kontrola źródła**. W miarę ważnych obciążeń fabryki danych chcesz zintegrować fabryką przy użyciu narzędzia Git, aby korzystać z zalet kontroli źródła podobne do następującego:
+    -   Możliwość śledzenia/inspekcji zmian.
+    -   Możliwość wycofać zmiany, które wprowadziły błędów.
+-   **Zapisuje częściowe**. Po wprowadzeniu wiele zmian w fabryce będzie Pamiętaj, że w regularnym trybie na żywo, nie można zapisać zmian jako wersję roboczą, ponieważ nie jest jeszcze gotowa lub nie chcesz utracić wprowadzone zmiany, w przypadku awarii komputera. Dzięki integracji z usługą Git można kontynuować zapisywanie zmiany przyrostowe i opublikować fabryka jest tylko wtedy, gdy wszystko będzie gotowe. Git działa jako miejsce przemieszczania dla danego zadania, dopóki nie zostały przetestowane zmiany zgodnie z oczekiwaniami.
+-   **Współpraca i kontroli**. Jeśli masz wielu członków zespołu udział do tej samej fabryki, można zezwolić członkom zespołu współpracują ze sobą za pośrednictwem proces przeglądu kodu. Możesz też skonfigurować fabryką, taki sposób, że nie każdy Współautor fabryka ma uprawnienia do wdrażania do fabryki. Członkowie zespołu mogą po prostu można dokonać zmian za pomocą narzędzia Git, ale tylko określone osoby w zespole są dozwolone "Publikuj" zmiany w fabryce.
+-   **Wyświetlanie różnic**. W trybie Git, można uzyskać dostęp do Zobacz nieuprzywilejowany różnic ładunek o Pobierz publikowane w fabryce. Ta różnica pokazuje wszystkie zasoby/jednostki, które zostały zmodyfikowane lub dodane/usunięte od czasu ostatniego, która została opublikowana z fabryką. Oparte na tym diff, możesz kontynuować dalsze z publikowaniem lub wróć i Sprawdź zmiany i następnie wróć później.
+-   **Lepsze ciągłej integracji/ciągłego Dostarczania**. Jeśli używasz trybu Git można skonfigurować potok wydania do wyzwalania automatycznie tak szybko, jak wszelkie zmiany wprowadzone w fabryce deweloperów. Otrzymasz również dostosować właściwości w fabryce, które są dostępne jako parametry w szablonie usługi Resource Manager. Może być przydatne do przechowywania wymagany zestaw właściwości jako parametry, a wszystko inne twardych kodowanych.
+-   **Lepsza wydajność**. Średnia fabryki ładuje 10 x razy szybciej w trybie Git niż w regularnym trybie na żywo, ponieważ zasoby są pobierane za pośrednictwem usługi Git.
+
+### <a name="best-practices-for-git-integration"></a>Najlepsze rozwiązania dotyczące integracji usługi Git
+
+-   **Uprawnienia**. Zwykle nie chcesz, wszyscy członkowie zespołu nam uprawnień do ustawień fabrycznych za pomocą.
+    -   Wszyscy członkowie zespołu powinien mieć uprawnienia odczytu do usługi data factory.
+    -   Wybrany zestaw osób powinny mieć możliwość publikowania na fabryce oraz muszą należeć do roli "Współautor Data Factory" w fabryce.
+    -   Jednym z dobrych praktyk z kontroli źródła jest także zezwala na bezpośrednie zaewidencjonowania z gałęzią współpracy. To wymaganie zapobiega usterek, zgodnie z każdym zaewidencjonowaniu przechodzi przez proces żądania ściągnięcia.
+-   **Przełączanie trybów**.
+    -    Gdy jesteś w trybie Git, nie zaleca się do i z powrotem przełączania do trybu na żywo, przede wszystkim, ponieważ wszelkie zmiany wprowadzone w trybie na żywo, nie będą widoczne po użytkownik przejdź z powrotem do usługi Git. Spróbuj wprowadzić zmiany w trybie Git, sam, a następnie opublikować je za pośrednictwem interfejsu użytkownika.
+    -   Podobnie nie używać żadnych poleceń cmdlet programu powershell fabryki danych, zgodnie z ich osiągnąć ten sam efekt, stosując bezpośrednio podana zmiany fabryką na żywo.
+-   **Używanie haseł z usługi Azure Key Vault**.
+    -   Zdecydowanie zaleca się przy użyciu AzureKeyVault do przechowywania wszelkich parametrów połączenia lub hasła, które mają połączone usługi w fabryce danych.
+    -   Nie przechowujemy tajnych informacji w usłudze Git (ze względów bezpieczeństwa), dlatego wszelkie zmiany w połączonych usług razu są publikowane w fabryce na żywo. To natychmiastowe publikowanie czasami nie jest wymagana, ponieważ zmiany nie uzyskane przetestowane, który pozbawia Git.
+    -   W wyniku tych kluczy tajnych musi zostać pobrana z połączonych usług, używanego przez usługi Azure Key Vault, na podstawie.
+    -   Niektóre inne zalety używania usługi Key Vault jest fakt, że CICD było prostsze, pomijając utworzenie zapewnić tych kluczy tajnych Resource Manager — podczas wdrażania szablonu.
 
 ## <a name="author-with-github-integration"></a>Tworzenie za pomocą integracji usługi GitHub
 

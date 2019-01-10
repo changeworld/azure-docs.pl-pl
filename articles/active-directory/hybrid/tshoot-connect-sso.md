@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 308623b4643724d95777d7e21d1138f808e9c1c9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055904"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190429"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -36,23 +36,23 @@ Ten artykuł zawiera informacje dotyczące typowych problemów dotyczących usł
 - Jeśli użytkownik jest częścią zbyt wielu grup w usłudze Active Directory, biletu protokołu Kerberos użytkownika będzie prawdopodobnie zbyt duży, aby przetworzyć, a spowoduje to bezproblemowe logowanie Jednokrotne nie powiedzie się. Usługa Azure AD HTTPS żądań może mieć nagłówki o maksymalnym rozmiarze 50 KB; Bilety protokołu Kerberos, konieczne może być mniejszy niż ten limit, aby pomieścić inne artefakty usługi Azure AD (zwykle 2 – 5 KB), takich jak pliki cookie. Nasze zalecenie jest zmniejszenie członkostwa grupy użytkownika i spróbuj ponownie.
 - Jeśli synchronizacja co najmniej 30 lasów usługi Active Directory, nie można włączyć bezproblemowe logowanie Jednokrotne za pomocą usługi Azure AD Connect. Jako obejście tego problemu, możesz [ręcznie włączyć](#manual-reset-of-the-feature) funkcję w dzierżawie.
 - Dodawanie adresu URL usługi Azure AD (https://autologon.microsoftazuread-sso.com) do strefy Zaufane witryny zamiast lokalnej strefy intranetowej *uniemożliwia użytkownikom logowanie*.
-- Bezproblemowe logowanie Jednokrotne używa **RC4_HMAC_MD5** typu szyfrowania dla protokołu Kerberos. Wyłączanie korzystania z **RC4_HMAC_MD5** typ szyfrowania w ustawieniach usługi Active Directory spowoduje przerwanie bezproblemowe logowanie Jednokrotne. W narzędziu Edytor zarządzania zasadami grupy upewnij się, że wartość **RC4_HMAC_MD5** w obszarze **Konfiguracja komputera -> Ustawienia Windows -> Ustawienia zabezpieczeń -> Zasady lokalne -> Opcje zabezpieczeń — > "Zabezpieczenia sieciowe: Konfigurowanie typów szyfrowania dozwolonych dla protokołu Kerberos"** jest **włączone**. Ponadto bezproblemowe logowanie Jednokrotne nie może korzystać z innych typów szyfrowania, dlatego upewnij się, że są one **wyłączone**.
+- Bezproblemowe logowanie Jednokrotne używa **RC4_HMAC_MD5** typu szyfrowania dla protokołu Kerberos. Wyłączanie korzystania z **RC4_HMAC_MD5** typ szyfrowania w ustawieniach usługi Active Directory spowoduje przerwanie bezproblemowe logowanie Jednokrotne. W narzędziu Edytor zarządzania zasadami grupy upewnij się, że wartość **RC4_HMAC_MD5** w obszarze **Konfiguracja komputera -> Ustawienia Windows -> Ustawienia zabezpieczeń -> Zasady lokalne -> Opcje zabezpieczeń — > "Zabezpieczenia sieci: Konfigurowanie typów szyfrowania dozwolonych dla protokołu Kerberos"** jest **włączone**. Ponadto bezproblemowe logowanie Jednokrotne nie może korzystać z innych typów szyfrowania, dlatego upewnij się, że są one **wyłączone**.
 
 ## <a name="check-status-of-feature"></a>Sprawdź stan funkcji
 
 Upewnij się, że funkcja bezproblemowe logowanie Jednokrotne jest nadal **włączone** w dzierżawie. Stan możesz sprawdzić, przechodząc do **program Azure AD Connect** okienka [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com/).
 
-![Centrum administracyjne usługi Azure Active Directory: okienko program Azure AD Connect](./media/tshoot-connect-sso/sso10.png)
+![Centrum administracyjne usługi Azure Active Directory: Okienko usługi Azure AD Connect](./media/tshoot-connect-sso/sso10.png)
 
 Kliknij, aby wyświetlić wszystkich lasów usługi AD, które zostały włączone dla bezproblemowe logowanie Jednokrotne.
 
-![Centrum administracyjne usługi Azure Active Directory: okienko bezproblemowe logowanie Jednokrotne](./media/tshoot-connect-sso/sso13.png)
+![Centrum administracyjne usługi Azure Active Directory: Bezproblemowe logowanie Jednokrotne okienko](./media/tshoot-connect-sso/sso13.png)
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Przyczyny niepowodzenia logowania w Centrum administracyjnym usługi Azure Active Directory (wymaga licencji Premium)
 
 Jeśli dzierżawa usługi ma skojarzoną licencję usługi Azure AD Premium, możesz także obejrzeć [raport aktywności logowania](../reports-monitoring/concept-sign-ins.md) w [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com/).
 
-![Centrum administracyjne usługi Azure Active Directory: raporcie logowań](./media/tshoot-connect-sso/sso9.png)
+![Centrum administracyjne usługi Azure Active Directory: Raport dotyczący logowań](./media/tshoot-connect-sso/sso9.png)
 
 Przejdź do **usługi Azure Active Directory** > **logowania** w [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com/), a następnie wybierz pozycję aktywności logowania dla określonego użytkownika. Wyszukaj **kod błędu logowania** pola. Mapowania wartości tego pola Przyczyna niepowodzenia i rozwiązanie, korzystając z poniższej tabeli:
 
@@ -104,13 +104,13 @@ Po włączeniu inspekcji sukcesów na kontrolerze domeny, a następnie za każdy
 
 Jeśli rozwiązywania problemów nie pomogły, możesz ręcznie zresetować tę funkcję w dzierżawie. Wykonaj następujące kroki na serwerze lokalnym, w którym uruchamiasz program Azure AD Connect.
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>: Krok 1 moduł bezproblemowego logowania jednokrotnego programu PowerShell
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Krok 1: Zaimportuj moduł programu PowerShell usługi bezproblemowego logowania jednokrotnego
 
 1. Najpierw należy pobrać i zainstalować [usługi Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-2. Przejdź do `%programfiles%\Microsoft Azure Active Directory Connect` folderu.
+2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Zaimportuj moduł programu PowerShell usługi bezproblemowego logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Krok 2: Uzyskanie listy lasów usługi Active Directory, dla których włączono bezproblemowe logowanie Jednokrotne
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Krok 2: Pobierz listę lasów usługi Active Directory, dla których włączono bezproblemowe logowanie Jednokrotne
 
 1. Uruchom program PowerShell jako administrator. W programie PowerShell, należy wywołać `New-AzureADSSOAuthenticationContext`. Po wyświetleniu monitu wprowadź poświadczenia administratora globalnego dzierżawy.
 2. Wywołaj `Get-AzureADSSOStatus`. To polecenie umożliwia lista lasów usługi Active Directory (odszukaj pozycję na liście "Domeny"), na którym ta funkcja została włączona.

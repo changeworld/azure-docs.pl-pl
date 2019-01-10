@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: eeaedc84e860cebc0b001300ace4fe1594375af2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 737cb31fd4e33229e0317e6a0610fb098beed6f4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999411"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191908"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -66,7 +66,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Componen
 
 # Force Internet Explorer closed, if open. This is required to fully apply the setting.
 # Save any work you have open in the IE browser. This will not affect other browsers,
-# including Edge.
+# including Microsoft Edge.
 Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 ``` 
 
@@ -225,7 +225,7 @@ Zarejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazyn
 > Rejestracja serwera używa poświadczeń platformy Azure w celu utworzenia relacji zaufania między Usługa synchronizacji magazynu i systemu Windows Server, jednak później serwer tworzy i używa własną tożsamość, która jest prawidłowa, tak długo, jak serwer pozostaje zarejestrowany i bieżący token Shared Access Signature (SAS magazynu) jest prawidłowa. Nie można wystawić nowy token sygnatury dostępu Współdzielonego z serwerem, gdy serwer jest zarejestrowany, dlatego usunięcie serwera możliwość dostępu do udziałów plików platformy Azure, w zatrzymywanie wszelkie synchronizacji.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-Interfejs użytkownika rejestracji serwera powinno spowodować otwarcie automatycznie po zakończeniu instalacji agenta usługi Azure File Sync. Jeśli nie, można otworzyć go ręcznie z lokalizacji pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otwarciu interfejsu użytkownika rejestracji serwera wybierz **logowania** do rozpoczęcia.
+Interfejs użytkownika rejestracji serwera powinno spowodować otwarcie automatycznie po zakończeniu instalacji agenta usługi Azure File Sync. Jeśli tak się nie stanie, można otworzyć go ręcznie z lokalizacji pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otwarciu interfejsu użytkownika rejestracji serwera wybierz **logowania** do rozpoczęcia.
 
 Po zalogowaniu zostanie wyświetlony monit o następujące informacje:
 

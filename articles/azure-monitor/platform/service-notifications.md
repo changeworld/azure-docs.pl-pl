@@ -5,15 +5,15 @@ author: dkamstra
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2017
+ms.date: 4/12/2018
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: e4cb22866fa2885208b912c88d56243ac7826480
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159251"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190701"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Wyświetlanie powiadomień dotyczących kondycji usługi przy użyciu witryny Azure portal
 
@@ -58,43 +58,27 @@ Properties.Stage | Możliwe wartości parametru **zdarzenia**, i **zabezpieczeń
 Properties.communicationId | Komunikacja, z którą jest skojarzone to zdarzenie.
 
 ### <a name="details-on-service-health-level-information"></a>Szczegółowe informacje na temat poziomu informacje o kondycji usług
-  <ul>
-    <li><b>Wymagana akcja</b> (properties.incidentType == wymagana akcja) <dl>
-            <dt>Informacyjny</dt>
-            <dd>Czynności wykonywane przez administratora zajść konieczność uniemożliwiają wpływu na istniejące usługi</dd>
-        </dl>
-    </li>
-    <li><b>Konserwacja</b> (properties.incidentType == konserwacji) <dl>
-            <dt>Ostrzeżenie</dt>
-            <dd>pilnej konserwacji<dd>
-            <dt>Informacyjny</dt>
-            <dd>Standardowa planowanej konserwacji</dd>
-        </dl>
-    </li>
-    <li><b>Informacje o</b> (properties.incidentType == informacyjne) <dl>
-            <dt>Informacyjny</dt>
-            <dd>Administrator może być konieczne zapobiegną do istniejących usług</dd>
-        </dl>
-    </li>
-    <li><b>Zabezpieczenia</b> (properties.incidentType == zabezpieczeń) <dl>
-            <dt>Błąd</dt>
-            <dd>Powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.</dd>
-            <dt>Ostrzeżenie</dt>
-            <dd>Problemy z dostępem do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.</dd>
-            <dt>Informacyjny</dt>
-            <dd>Problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.</dd>
-        </dl>
-    </li>
-    <li><b>Usługa problemów</b> (properties.incidentType == zdarzenia) <dl>
-            <dt>Błąd</dt>
-            <dd>Powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.</dd>
-            <dt>Ostrzeżenie</dt>
-            <dd>Problemy z dostępem do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.</dd>
-            <dt>Informacyjny</dt>
-            <dd>Problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.</dd>
-        </dl>
-    </li>
-  </ul>
+
+**Wymagana akcja** (properties.incidentType == wymagana akcja)
+    - Komunikat o charakterze informacyjnym - czynności wykonywane przez administratora zajść konieczność uniemożliwiają wpływu na istniejące usługi
+    
+**Konserwacja** (properties.incidentType == konserwacji)
+    - Ostrzeżenie - pilnej konserwacji
+    - Komunikat o charakterze informacyjnym — standardowa planowanej konserwacji
+
+**Informacje o** (properties.incidentType == informacji)
+    - Informacyjny — Administrator może być konieczne zapobiegną do istniejących usług
+
+**Zabezpieczenia** (properties.incidentType == zabezpieczeń)
+    - Błąd — powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.
+    - Ostrzeżenie — problemy z dostępu do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.
+    - Komunikat o charakterze informacyjnym — problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.
+
+**Usługa problemów** (properties.incidentType == zdarzenia)
+    - Błąd — powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.
+    - Ostrzeżenie — problemy z dostępu do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.
+    - Komunikat o charakterze informacyjnym — problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.
+
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Wyświetl powiadomienia usługi kondycji w witrynie Azure portal
 1.  W [witryny Azure portal](https://portal.azure.com), wybierz opcję **Monitor**.

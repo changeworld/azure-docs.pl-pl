@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 613423c02de7f1140674c28ee57bd471c3a52b96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 27c074b12d2b151015e6946c483302387726dfc5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158248"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190833"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołania do typów wyzwalaczy i akcji dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -2706,7 +2706,7 @@ W `parameters` sekcję definicji aplikacji logiki, definiuje parametry używane 
 },
 ```
 
-Jeśli tworzysz lub przy użyciu szablonu wdrożenia usługi Azure Resource Manager, musisz też zawierać zewnętrznym `parameters` sekcji definicji szablonu. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [bezpieczny dostęp do aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
+Jeśli tworzysz lub przy użyciu szablonu wdrożenia usługi Azure Resource Manager, musisz też zawierać zewnętrznym `parameters` sekcji definicji szablonu. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [bezpieczny dostęp do aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

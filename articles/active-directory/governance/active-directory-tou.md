@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 12/20/2018
 ms.author: rolyon
-ms.openlocfilehash: 0a5d58d0403471d591ce2aa2ed9de9092127ea15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744109"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188432"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -263,7 +263,7 @@ Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 > |  | iOS | Android | Windows 10 | Inne |
 > | --- | --- | --- | --- | --- |
 > | **Aplikacja natywna** | Yes | Yes | Yes |  |
-> | **Edge** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
 > | **Program Internet Explorer** | Yes | Yes | Yes |  |
 > | **Chrome (z rozszerzeniem)** | Yes | Yes | Yes |  |
 
@@ -341,44 +341,44 @@ Można skonfigurować zasady dostępu warunkowego dla aplikacji rejestracja w us
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**PYT.: Jak sprawdzić, gdy /, jeśli użytkownik zaakceptował warunki użytkowania?**<br />
-ODP.: Na warunkach Użyj bloku kliknij liczbę w obszarze **zaakceptowano**. Można również wyświetlić lub zaakceptuj działań związanych z wyszukiwaniem w usłudze Azure AD dzienniki inspekcji. Aby uzyskać więcej informacji, zobacz [wyświetlić raport, który ma zaakceptowali i odrzucili](#view-who-has-accepted-and-declined) i [usługi Azure AD Wyświetl dzienniki inspekcji](#view-azure-ad-audit-logs).
+**Pyt.: Jak sprawdzić, gdy /, jeśli użytkownik zaakceptował warunki użytkowania?**<br />
+Odp.: Na warunkach Użyj bloku kliknij liczbę w obszarze **zaakceptowano**. Można również wyświetlić lub zaakceptuj działań związanych z wyszukiwaniem w usłudze Azure AD dzienniki inspekcji. Aby uzyskać więcej informacji, zobacz [wyświetlić raport, który ma zaakceptowali i odrzucili](#view-who-has-accepted-and-declined) i [usługi Azure AD Wyświetl dzienniki inspekcji](#view-azure-ad-audit-logs).
 
-**PYT.: Jak długo jest informacje przechowywane?**<br />
-ODP.: Użytkownik jest liczona w warunkach w raporcie użycia i który zaakceptowane odrzucone są przechowywane przez cały okres istnienia warunki użytkowania. Inspekcja usługi Azure AD, dzienniki są przechowywane przez 30 dni.
+**Pyt.: Jak długo jest informacje przechowywane?**<br />
+Odp.: Użytkownik jest liczona w warunkach w raporcie użycia i który zaakceptowane odrzucone są przechowywane przez cały okres istnienia warunki użytkowania. Inspekcja usługi Azure AD, dzienniki są przechowywane przez 30 dni.
 
-**PYT.: Dlaczego widzę różne liczby zgody w warunkach użytkowania raporcie użycia a usługą Azure AD dzienników inspekcji?**<br />
-ODP.: Warunki użycia raportu są przechowywane przez okres istnienia tego warunki użytkowania, podczas inspekcji usługi Azure AD, które dzienniki są przechowywane przez 30 dni. Ponadto warunki raporcie użycia są wyświetlane tylko bieżącego stanu zgody użytkowników. Na przykład jeśli użytkownik odmówi, a następnie akceptuje, warunki raporcie użycia zostaną wyświetlone tylko ten użytkownik akceptuje. Jeśli zachodzi potrzeba wyświetlenia historii, możesz użyć usługi Azure AD dzienniki inspekcji.
+**Pyt.: Dlaczego widzę różne liczby zgody w warunkach użytkowania raporcie użycia a usługą Azure AD dzienników inspekcji?**<br />
+Odp.: Warunki użycia raportu są przechowywane przez okres istnienia tego warunki użytkowania, podczas inspekcji usługi Azure AD, które dzienniki są przechowywane przez 30 dni. Ponadto warunki raporcie użycia są wyświetlane tylko bieżącego stanu zgody użytkowników. Na przykład jeśli użytkownik odmówi, a następnie akceptuje, warunki raporcie użycia zostaną wyświetlone tylko ten użytkownik akceptuje. Jeśli zachodzi potrzeba wyświetlenia historii, możesz użyć usługi Azure AD dzienniki inspekcji.
 
-**PYT.: Jeśli edytować szczegóły warunków użytkowania wymaga ich użytkowników o zaakceptowanie ponownie?**<br />
-ODP.: Nie, jeśli administrator podda edycji szczegóły warunków użytkowania (nazwa, nazwa wyświetlana, Wymagaj od użytkowników rozwinięcia lub Dodaj język), użytkownicy wymagają ponownej akceptacji nowych warunków nie jest wymagane.
+**Pyt.: Jeśli edytować szczegóły warunków użytkowania wymaga ich użytkowników o zaakceptowanie ponownie?**<br />
+Odp.: Nie, jeśli administrator podda edycji szczegóły warunków użytkowania (nazwa, nazwa wyświetlana, Wymagaj od użytkowników rozwinięcia lub Dodaj język), użytkownicy wymagają ponownej akceptacji nowych warunków nie jest wymagane.
 
-**PYT.: Czy mogę zaktualizować istniejący dokument z warunkami użytkowania?**<br />
-ODP.: Obecnie nie można zaktualizować istniejący dokument z warunkami użytkowania. Aby zmienić dokument z warunkami użytkowania, należy utworzyć nowe warunki wystąpienia użycia.
+**Pyt.: Czy mogę zaktualizować istniejący dokument z warunkami użytkowania?**<br />
+Odp.: Obecnie nie można zaktualizować istniejący dokument z warunkami użytkowania. Aby zmienić dokument z warunkami użytkowania, należy utworzyć nowe warunki wystąpienia użycia.
 
-**PYT.: Jeśli dokument z warunkami użytkowania PDF hiperłącza, czy użytkownicy końcowi będą mogli klikać?**<br />
-ODP.: Plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
+**Pyt.: Jeśli dokument z warunkami użytkowania PDF hiperłącza, czy użytkownicy końcowi będą mogli klikać?**<br />
+Odp.: Plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
 
-**PYT.: Warunki użytkowania, może obsługiwać wiele języków?**<br />
-ODP.: Tak. Aktualnie nie istnieją 108 różnych języków, administrator może skonfigurować dla pojedynczego warunki użytkowania. Administrator może przekazać wiele dokumentów PDF i oznaczać te dokumenty przy użyciu odpowiedniego języka (maksymalnie 108). Po zalogowaniu się użytkownicy końcowi możemy przyjrzeć się ich preferencji językowych przeglądarki i wyświetlić pasujących dokumentów. W przypadku braku dopasowania wyświetlamy dokument domyślny, który jest pierwszy dokument, który zostanie przekazany.
+**Pyt.: Warunki użytkowania, może obsługiwać wiele języków?**<br />
+Odp.: Tak. Aktualnie nie istnieją 108 różnych języków, administrator może skonfigurować dla pojedynczego warunki użytkowania. Administrator może przekazać wiele dokumentów PDF i oznaczać te dokumenty przy użyciu odpowiedniego języka (maksymalnie 108). Po zalogowaniu się użytkownicy końcowi możemy przyjrzeć się ich preferencji językowych przeglądarki i wyświetlić pasujących dokumentów. W przypadku braku dopasowania wyświetlamy dokument domyślny, który jest pierwszy dokument, który zostanie przekazany.
 
-**PYT.: Kiedy jest wyzwalane warunki użytkowania?**<br />
-ODP.: Warunki użytkowania są wyzwalane podczas logowania.
+**Pyt.: Kiedy jest wyzwalane warunki użytkowania?**<br />
+Odp.: Warunki użytkowania są wyzwalane podczas logowania.
 
-**PYT.: Jakie aplikacje mogą kierować warunki użytkowania?**<br />
-ODP.: Można utworzyć zasady dostępu warunkowego dla aplikacji przedsiębiorstwa, korzystających z nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [aplikacje przedsiębiorstwa](./../manage-apps/view-applications-portal.md).
+**Pyt.: Jakie aplikacje mogą kierować warunki użytkowania?**<br />
+Odp.: Można utworzyć zasady dostępu warunkowego dla aplikacji przedsiębiorstwa, korzystających z nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [aplikacje przedsiębiorstwa](./../manage-apps/view-applications-portal.md).
 
-**PYT.: Do danego użytkownika lub aplikacji można dodać wiele wersji warunków użytkowania?**<br />
-ODP.: Tak, tworząc wiele zasad dostępu warunkowego obejmujących grupy lub aplikacji. Jeśli użytkownik mieści się w zakresie wiele wersji warunków użytkowania, akceptują jeden z warunkami użytkowania w danym momencie.
+**Pyt.: Do danego użytkownika lub aplikacji można dodać wiele wersji warunków użytkowania?**<br />
+Odp.: Tak, tworząc wiele zasad dostępu warunkowego obejmujących grupy lub aplikacji. Jeśli użytkownik mieści się w zakresie wiele wersji warunków użytkowania, akceptują jeden z warunkami użytkowania w danym momencie.
 
-**PYT.: Co się stanie, jeśli użytkownik odrzuci warunki użytkowania?**<br />
-ODP.: Użytkownik zostanie zablokowany dostęp do aplikacji. Użytkownik będzie musiał zalogować się ponownie i zaakceptuj warunki w celu uzyskania dostępu.
+**Pyt.: Co się stanie, jeśli użytkownik odrzuci warunki użytkowania?**<br />
+Odp.: Użytkownik zostanie zablokowany dostęp do aplikacji. Użytkownik będzie musiał zalogować się ponownie i zaakceptuj warunki w celu uzyskania dostępu.
 
-**PYT.: Czy jest możliwe unaccept warunki użytkowania, które wcześniej zostały zaakceptowane**<br />
-ODP.: Możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-users-can-review-their-terms-of-use), ale obecnie nie istnieje sposób unaccept.
+**Pyt.: Czy jest możliwe unaccept warunki użytkowania, które wcześniej zostały zaakceptowane**<br />
+Odp.: Możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-users-can-review-their-terms-of-use), ale obecnie nie istnieje sposób unaccept.
 
-**PYT.: Co się stanie, jeśli również używam warunków i postanowień usługi Intune?**<br />
-ODP.: Jeśli skonfigurowano zarówno usługi Azure AD z warunkami użytkowania i [Intune warunki i postanowienia](/intune/terms-and-conditions-create), użytkownik będzie musiał zaakceptować oba te elementy. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego warunki rozwiązanie dla Twojej organizacji wpis w blogu](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+**Pyt.: Co się stanie, jeśli również używam warunków i postanowień usługi Intune?**<br />
+Odp.: Jeśli skonfigurowano zarówno usługi Azure AD z warunkami użytkowania i [Intune warunki i postanowienia](/intune/terms-and-conditions-create), użytkownik będzie musiał zaakceptować oba te elementy. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego warunki rozwiązanie dla Twojej organizacji wpis w blogu](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: f6c289c87f4f58fdad8950bdf61fa68016fe8d3e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5bb914de1cded7c70516bfb4bfdaa93c83fe0e4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042074"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188678"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Używanie klasy RecoveryManager do rozwiązywanie problemów z mapą fragmentów
 
-[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) klasa umożliwia aplikacji ADO.Net łatwiej wykryć i naprawić wszystkie niespójności między mapowania fragmentów globalne (GSM) i lokalnego podzielonej na fragmenty mapy (LSM) tak, w środowisku bazy danych podzielonej na fragmenty.
+[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) klasa umożliwia aplikacji ADO.Net łatwiej wykryć i naprawić wszystkie niespójności między mapowania fragmentów globalne (GSM) i lokalnego podzielonej na fragmenty mapy (LSM) tak, w środowisku bazy danych podzielonej na fragmenty.
 
 GSM i LSM śledzić mapowania poszczególnych baz danych w środowisku podzielonej na fragmenty. Czasami występuje przerwa między GSM i LSM. W takim przypadku użyj klasy RecoveryManager aby wykryć i naprawić przerwy.
 
@@ -49,7 +49,7 @@ Aby uzyskać więcej informacji na temat narzędzi elastycznej bazy danych Azure
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Pobieranie RecoveryManager z ShardMapManager
 
-Pierwszym krokiem jest utworzenie wystąpienia RecoveryManager. [Metoda GetRecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) zwraca Menedżer odzyskiwania dla bieżącego [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) wystąpienia. Aby rozwiązać niespójności w ramach mapowania fragmentów, możesz pobrać RecoveryManager mapy określonego fragmentu.
+Pierwszym krokiem jest utworzenie wystąpienia RecoveryManager. [Metoda GetRecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) zwraca Menedżer odzyskiwania dla bieżącego [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) wystąpienia. Aby rozwiązać niespójności w ramach mapowania fragmentów, możesz pobrać RecoveryManager mapy określonego fragmentu.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
@@ -83,7 +83,7 @@ Ponieważ zakłada się, że usunięcie bazy danych było to zamierzone, akcja k
 
 ## <a name="to-detect-mapping-differences"></a>Aby znaleźć różnice mapowania
 
-[Metoda DetectMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) wybiera i zwraca jedną z mapy fragmentów (lokalne lub globalne) jako źródło prawdziwych danych i uzgadnia mapowania na obu mapowań fragmentów w postaci (GSM i LSM).
+[Metoda DetectMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) wybiera i zwraca jedną z mapy fragmentów (lokalne lub globalne) jako źródło prawdziwych danych i uzgadnia mapowania na obu mapowań fragmentów w postaci (GSM i LSM).
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
@@ -94,19 +94,19 @@ Ponieważ zakłada się, że usunięcie bazy danych było to zamierzone, akcja k
 
 ## <a name="to-resolve-mapping-differences"></a>Aby rozwiązać różnice mapowania
 
-[Metoda ResolveMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) wybiera jedno z mapowań fragmentów w postaci (lokalne lub globalne) jako źródło prawdziwych danych i uzgadnia mapowania na obu mapowań fragmentów w postaci (GSM i LSM).
+[Metoda ResolveMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) wybiera jedno z mapowań fragmentów w postaci (lokalne lub globalne) jako źródło prawdziwych danych i uzgadnia mapowania na obu mapowań fragmentów w postaci (GSM i LSM).
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
 * *RecoveryToken* parametru wylicza różnice w mapowania między GSM i LSM dla określonego fragmentu.
-* [Wyliczenie MappingDifferenceResolution](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) służy do wskazywania metody postępowania po otrzymaniu różnica między mapowań fragmentów.
+* [Wyliczenie MappingDifferenceResolution](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) służy do wskazywania metody postępowania po otrzymaniu różnica między mapowań fragmentów.
 * **MappingDifferenceResolution.KeepShardMapping** jest zalecane, gdy LSM zawiera mapowanie dokładne i w związku z tym powinny być używane mapowanie we fragmencie. Zazwyczaj jest to wymagane w przypadku przejścia w tryb failover: fragmentu znajduje się teraz na nowym serwerze. Ponieważ najpierw należy usunąć fragment z GSM (przy użyciu metody RecoveryManager.DetachShard), mapowanie już nie istnieje w usłudze GSM. W związku z tym LSM należy ponownie ustanowić mapowania fragmentów.
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Dołącz do ShardMap fragmentu, po przywróceniu fragmentu
 
-[Metoda AttachShard](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) dołącza danego fragmentu do mapy fragmentów. Następnie wykrycia niespójności mapy fragmentów i aktualizuje mapowania, aby dopasować fragmentu punkcie przywracania fragmentu. Zakłada się, że bazy danych również jest zmieniana na odzwierciedlają oryginalna nazwa bazy danych (przed przywrócono fragmentu), ponieważ Przywracanie do punktu w czasie wartością domyślną jest dołączany wraz z sygnaturą czasową nową bazę danych.
+[Metoda AttachShard](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) dołącza danego fragmentu do mapy fragmentów. Następnie wykrycia niespójności mapy fragmentów i aktualizuje mapowania, aby dopasować fragmentu punkcie przywracania fragmentu. Zakłada się, że bazy danych również jest zmieniana na odzwierciedlają oryginalna nazwa bazy danych (przed przywrócono fragmentu), ponieważ Przywracanie do punktu w czasie wartością domyślną jest dołączany wraz z sygnaturą czasową nową bazę danych.
 
    ```java
    rm.AttachShard(location, shardMapName)

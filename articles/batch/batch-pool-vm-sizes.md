@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/07/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a1d733e918d4b53ea9dd220f5e379e0c8133c03a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540660"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191721"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybierz rozmiar maszyny Wirtualnej dla węzłów obliczeniowych w puli usługi Azure Batch
 
@@ -42,6 +42,16 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej obsługuje wszystkie rozmia
 | Podstawowa — seria A | Basic_A0 (A0) |
 | Seria A | Standardowa_A0 |
 | Seria B | Wszyscy |
+| Seria DC | Wszyscy | 
+| Extreme zoptymalizowanych pod kątem pamięci | Wszyscy |
+| Seria HB<sup>1</sup> | Wszyscy | 
+| Seria HC<sup>1</sup> | Wszyscy |
+| Seria Lsv2 | Wszyscy |
+| Seria NDv2<sup>1</sup> | Wszyscy |
+| Seria NVv2<sup>1</sup> | Wszyscy |
+| SAP HANA | Wszyscy |
+
+<sup>1</sup> nie są obecnie obsługiwane, ale będą obsługiwane w przyszłości.
 
 Następujących rozmiarów maszyn wirtualnych są obsługiwane tylko dla węzłów o niskim priorytecie:
 
