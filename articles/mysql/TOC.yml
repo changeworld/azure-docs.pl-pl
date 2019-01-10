@@ -196,6 +196,8 @@ items:
     href: /cli/azure/mysql
   - name: Interfejs API REST
     href: /rest/api/mysql
+  - name: Szablon usługi Resource Manager
+    href: /azure/templates/microsoft.dbformysql/allversions
   - name: Procedury składowane replikacji wejściowej danych
     href: reference-data-in-stored-procedures.md
 - name: Zasoby
@@ -236,9 +238,9 @@ items:
     href: partners-migration-mysql.md
   - name: Przewodnik po migracji bazy danych
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 8322ca7687a0a124c1f535cbac1c0c98f4ff6250
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c825a777affaabf6db04307de9c0f96efafc3d27
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074265"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191738"

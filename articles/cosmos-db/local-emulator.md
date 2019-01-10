@@ -1,19 +1,17 @@
 ---
 title: Programowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB
 description: Za pomocą emulatora usługi Azure Cosmos DB możesz bezpłatnie opracowywać i testować swoją aplikację w środowisku lokalnym. Subskrypcja platformy Azure nie jest potrzebna.
-services: cosmos-db
-keywords: Emulator usługi Azure Cosmos DB
-author: David-Noble-at-work
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 04/20/2018
-ms.author: danoble
-ms.openlocfilehash: 1876a74ff1631ee8a383ebe954df9756f7ef89f1
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+author: deborahc
+ms.author: dech
+ms.openlocfilehash: 559bdd479d02a8744f9b113c43c2c860d8218401
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811447"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038198"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Programowanie i testowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB
 

@@ -3,17 +3,17 @@ title: Tworzenie, zmienianie lub usuwanie tabeli tras platformy Azure za pomocą
 description: Dowiedz się, jak za pomocą rozwiązania Ansible utworzyć, zmienić lub usunąć tabelę tras
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, networking, route, route table
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
-ms.author: yuwzho, kyliel
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: fa050733bbfcdb8ae0f2630c4f716aeed0ebd07e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5d7a16ebda088d0ed42021e9def20a398e914ad9
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797132"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158130"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Tworzenie, zmienianie lub usuwanie tabeli tras platformy Azure za pomocą rozwiązania Ansible
 Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure, sieciami wirtualnymi i sieciami lokalnymi. Jeśli chcesz dokonać zmian w domyślnym routingu na platformie Azure, możesz to zrobić, tworząc [tabelę tras](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
@@ -42,7 +42,7 @@ W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który
         resource_group: "{{ resource_group }}"
 ```
 
-Zapisz ten podręcznik jako plik `route_table_create.yml`. Aby uruchomić podręcznik, użyj polecenia **ansible-playbook** w następujący sposób:
+Zapisz ten podręcznik jako plik `route_table_create.yml`. Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
 
 ```bash
 ansible-playbook route_table_create.yml

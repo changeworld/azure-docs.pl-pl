@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 3a606d3faab5c7034397c30801a9057c55aac3f2
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 7c7881f08828572c01a5e0decb270c653416ef9b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652816"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024267"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Szybki start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzoną 
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
   "location": "eastus",
   "managedBy": null,
-  "name": "myAKSCluster",
+  "name": "myResourceGroup",
   "properties": {
     "provisioningState": "Succeeded"
   },

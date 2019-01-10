@@ -4,17 +4,16 @@ description: Samouczek dotyczący konfigurowania i wersjonowania zestawu skalowa
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtual machine, Azure, scale set, network, storage, modules
-author: tomarcher
-manager: jeconnoc
+author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 4784672364e2bdf44f0415ab4e1e386a5a80076b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: bceef544b51126d4d470f6f13f07b54437b08df5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313058"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076896"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu narzędzia Terraform
 

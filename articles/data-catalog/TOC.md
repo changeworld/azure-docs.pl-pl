@@ -28,6 +28,7 @@
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
+## [Szablon usługi Resource Manager](/azure/templates/microsoft.datacatalog/catalogs)
 ## [Dokumentacja składni wyszukiwania](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Pojęcia dla deweloperów](data-catalog-developer-concepts.md)
 

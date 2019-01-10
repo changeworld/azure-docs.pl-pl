@@ -2,20 +2,21 @@
 title: Tworzenie aplikacji za pomocą interfejsu API tabel przy użyciu zestawu .NET SDK
 titleSuffix: Azure Cosmos DB
 description: Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu API tabel w usłudze Azure Cosmos DB przy użyciu zestawu .NET
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.author: sngun
+author: wmengmsft
+ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: sngun
+ms.openlocfilehash: 0f0e5219298cf0bce30e2a1e9d66135b4146db5d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251185"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036787"
 ---
 # <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Tworzenie aplikacji za pomocą interfejsu API tabel usługi Azure Cosmos DB przy użyciu zestawu .NET SDK
 

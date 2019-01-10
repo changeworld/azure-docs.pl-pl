@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b3cfd57ff0e4b881352c07081d71bb9ba80fd11e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d5cba3b21ff6099a4132a7ebfab38d1ead9afded
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000193"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118086"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Omówienie usługi Azure Application Insights dla metodyki DevOps
 
-Dzięki usłudze [Application Insights](../../application-insights/app-insights-overview.md) możesz szybko dowiedzieć się, jaka jest wydajność aktywnej aplikacji i jak jest używana. Jeśli wystąpi problem, usługa powiadomi Cię o tym, pomoże ocenić skutki problemu i ustalić jego przyczynę.
+Dzięki usłudze [Application Insights](../../azure-monitor/app/app-insights-overview.md) możesz szybko dowiedzieć się, jaka jest wydajność aktywnej aplikacji i jak jest używana. Jeśli wystąpi problem, usługa powiadomi Cię o tym, pomoże ocenić skutki problemu i ustalić jego przyczynę.
 
 Oto historia zespołu, który zajmuje się opracowywaniem aplikacji internetowych:
 
@@ -61,7 +61,7 @@ Błędy wyświetlane są jako czerwone kropki na wykresie testu internetowego:
 Ale co ważniejsze, zespół deweloperów otrzymuje wiadomość e-mail z alertem dotyczącym wszelkich błędów. Dzięki temu wiedzą o nich wcześniej niż niemal wszyscy klienci.
 
 ## <a name="monitor-performance"></a>Monitorowanie wydajności
-Na stronie Przegląd usługi Application Insights znajduje się wykres przedstawiający różne [kluczowe metryki](../../application-insights/app-insights-web-monitor-performance.md).
+Na stronie Przegląd usługi Application Insights znajduje się wykres przedstawiający różne [kluczowe metryki](../../azure-monitor/app/web-monitor-performance.md).
 
 ![Zrzut ekranu przedstawiający wykresy wskaźników KPI w ramach przeglądu wydajności](./media/detect-triage-diagnose/overview-graphs.png)
 
@@ -151,7 +151,7 @@ Wyjątki i zdarzenia pojawiają się w bloku [Wyszukiwanie diagnostyczne](diagno
 
 
 ## <a name="monitor-proactively"></a>Aktywne monitorowanie
-Marcela nie chce tylko siedzieć bezczynnie i czekać na alerty. Wkrótce po każdym ponownym wdrożeniu zapoznaje się z [czasami odpowiedzi](../../application-insights/app-insights-web-monitor-performance.md) — zarówno z ogólną wartością, jak i z tabelą najwolniejszych żądań i liczbą wyjątków.  
+Marcela nie chce tylko siedzieć bezczynnie i czekać na alerty. Wkrótce po każdym ponownym wdrożeniu zapoznaje się z [czasami odpowiedzi](../../azure-monitor/app/web-monitor-performance.md) — zarówno z ogólną wartością, jak i z tabelą najwolniejszych żądań i liczbą wyjątków.  
 
 ![Wykres czasu odpowiedzi i siatka czasu odpowiedzi serwera.](./media/detect-triage-diagnose/response-time.png)
 
@@ -184,7 +184,7 @@ Diagnostyka to nie to samo co debugowanie. Zanim zaczniesz przeglądać kod, mus
 
 Wolne działanie zależności czasem jest związane z problemami geolokalizacji. Fabrikam Bank korzysta z maszyn wirtualnych platformy Azure i okazało się, że nieumyślnie zlokalizowano serwer internetowy oraz serwer konta w różnych krajach. Osiągnięto znaczną poprawę, migrując jeden z nich.
 
-**Co zrobiliśmy?** Jeśli wydaje się, że problem nie jest kwestią zależności i nie zawsze występował, został prawdopodobnie wywołany przez niedawną zmianę. Perspektywa historyczna, którą zapewniają wykresy metryk i zdarzeń, ułatwia odnalezienie korelacji pomiędzy gwałtownymi zmianami a wdrożeniami. To zawęża obszar poszukiwań przyczyny problemu. Aby określić, które wiersze w kodzie aplikacji spowodowały spowolnienie działania, należy włączyć narzędzie Application Insights Profiler. Zapoznaj się z artykułem [Profiling live Azure web apps with Application Insights](./../../application-insights/app-insights-profiler.md) (Profilowanie aktywnych aplikacji internetowych platformy Azure za pomocą usługi Application Insights). Po włączeniu narzędzia Profiler zostanie wyświetlony ślad podobny do widocznego poniżej. W tym przykładzie można łatwo zauważyć, że to metoda *GetStorageTableData* spowodowała problem.  
+**Co zrobiliśmy?** Jeśli wydaje się, że problem nie jest kwestią zależności i nie zawsze występował, został prawdopodobnie wywołany przez niedawną zmianę. Perspektywa historyczna, którą zapewniają wykresy metryk i zdarzeń, ułatwia odnalezienie korelacji pomiędzy gwałtownymi zmianami a wdrożeniami. To zawęża obszar poszukiwań przyczyny problemu. Aby określić, które wiersze w kodzie aplikacji spowodowały spowolnienie działania, należy włączyć narzędzie Application Insights Profiler. Zapoznaj się z artykułem [Profiling live Azure web apps with Application Insights](./../../azure-monitor/app/profiler.md) (Profilowanie aktywnych aplikacji internetowych platformy Azure za pomocą usługi Application Insights). Po włączeniu narzędzia Profiler zostanie wyświetlony ślad podobny do widocznego poniżej. W tym przykładzie można łatwo zauważyć, że to metoda *GetStorageTableData* spowodowała problem.  
 
 ![Ślad narzędzia App Insights Profiler](./media/detect-triage-diagnose/AppInsightsProfiler.png)
 
@@ -215,7 +215,7 @@ Bez względu na powód dane pomagają zespołowi dowiedzieć się, co robią uż
 
 Zespół przyzwyczaja się do posiadania informacji na temat aktywności użytkowników. Teraz, opracowując nowe funkcje, planują sposób zbierania informacji zwrotnych na temat korzystania z nich. Od samego początku tworzenia funkcji umieszczają w niej wywołania śledzenia. Korzystają z informacji zwrotnych, aby poprawić działanie funkcji w każdym cyklu tworzenia oprogramowania.
 
-[Dowiedz się więcej na temat śledzenia użycia](../../application-insights/app-insights-usage-overview.md).
+[Dowiedz się więcej na temat śledzenia użycia](../../azure-monitor/app/usage-overview.md).
 
 ## <a name="apply-the-devops-cycle"></a>Stosowanie cyklu DevOps
 W ten oto sposób jeden zespół korzysta z usługi Application Insights, aby nie tylko naprawiać pojedyncze błędy, ale też doskonalić cały cykl tworzenia oprogramowania. Mam nadzieję, że udało mi się podsunąć Ci kilka pomysłów na skorzystanie z usługi Application Insights w celu lepszego zarządzania wydajnością aplikacji.
@@ -230,6 +230,6 @@ Możesz rozpocząć pracę na kilka sposobów, w zależności od właściwości 
 * [Aplikacja internetowa platformy ASP.NET](../../azure-monitor/app/asp-net.md)
 * [Aplikacja internetowa Java](../../azure-monitor/app/java-get-started.md)
 * [Aplikacja internetowa Node.js](../../azure-monitor/app/nodejs.md)
-* Już wdrożone aplikacje hostowane w usługach [IIS](../../azure-monitor/app/monitor-web-app-availability.md), [J2EE](../../azure-monitor/app/java-live.md) lub [Azure](../../application-insights/app-insights-overview.md).
+* Już wdrożone aplikacje hostowane w usługach [IIS](../../azure-monitor/app/monitor-web-app-availability.md), [J2EE](../../azure-monitor/app/java-live.md) lub [Azure](../../azure-monitor/app/app-insights-overview.md).
 * [Strony internetowe](../../azure-monitor/app/javascript.md) — aplikacja jednostronicowa lub zwykła strona internetowa — używane samodzielnie lub jako dodatek do dowolnych opcji serwerowych.
 * [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) do testowania aplikacji w publicznym Internecie.

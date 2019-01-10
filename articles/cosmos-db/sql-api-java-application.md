@@ -1,21 +1,19 @@
 ---
 title: Samouczek tworzenia aplikacji w języku Java za pomocą usługi Azure Cosmos DB
 description: W tym samouczku aplikacji internetowej w języku Java pokazano, jak przy użyciu usługi Azure Cosmos DB i interfejsu API SQL przechowywać dane i uzyskiwać do nich dostęp z poziomu aplikacji w języku Java hostowanej w usłudze Azure Websites.
-keywords: Programowanie aplikacji, samouczek bazy danych, aplikacja Java, samouczek aplikacji internetowej Java, Azure, Microsoft Azure
-services: cosmos-db
 author: tknandu
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: bdfe390314f2d2174a26e9b321022a3589a06467
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3add2b6800463cf9320d2fcfdd87897d2e38d32d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086543"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039813"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Tworzenie aplikacji internetowej w języku Java za pomocą usługi Azure Cosmos DB i interfejsu API SQL
 

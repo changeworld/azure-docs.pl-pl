@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek dotyczący klasyfikacji obrazów: Szkolenie modeli'
 titleSuffix: Azure Machine Learning service
-description: W tym samouczku pokazano, jak za pomocą usługi Azure Machine Learning przeprowadzić trenowanie modelu klasyfikacji obrazów, używając biblioteki scikit-learn w notesie Jupyter języka Python. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
+description: W tym samouczku pokazano, jak za pomocą usługi Azure Machine Learning przeprowadzić uczenie modelu klasyfikacji obrazów, używając biblioteki scikit-learn w notesie Jupyter języka Python. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 117934c83d54cb5454f476ffb3b1a1437c0fd30b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811481"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075944"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek: Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
 W tym samouczku przeprowadzisz uczenie modelu uczenia maszynowego zarówno lokalnie, jak i na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy trenowania i wdrażania dla usługi Azure Machine Learning w notesie Jupyter języka Python. Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 
-Ten samouczek uczy prostej regresji logistycznej przy użyciu zestawu danych [MNIST](https://yann.lecun.com/exdb/mnist/), biblioteki [scikit-learn](https://scikit-learn.org) oraz usługi Azure Machine Learning. MNIST jest popularnym zestawem danych składającym się z 70 000 obrazów w skali szarości. Każdy obraz ma rozmiar 28 x 28 pikseli i przedstawia odręcznie napisaną cyfrę z zakresu od 0 do 9. Celem jest utworzenie klasyfikatora wieloklasowego do identyfikacji cyfry reprezentowanej przez dany obraz. 
+Ten samouczek uczy prostej regresji logistycznej przy użyciu zestawu danych [MNIST](http://yann.lecun.com/exdb/mnist/), biblioteki [scikit-learn](https://scikit-learn.org) oraz usługi Azure Machine Learning. MNIST jest popularnym zestawem danych składającym się z 70 000 obrazów w skali szarości. Każdy obraz ma rozmiar 28 x 28 pikseli i przedstawia odręcznie napisaną cyfrę z zakresu od 0 do 9. Celem jest utworzenie klasyfikatora wieloklasowego do identyfikacji cyfry reprezentowanej przez dany obraz. 
 
 Dowiedz się, jak wykonać następujące czynności:
 
