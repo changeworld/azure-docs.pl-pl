@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340785"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215409"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -96,9 +96,9 @@ Wszystkie interfejsy API protokołu HTTP implementowany przez rozszerzenie wype�
 | taskHub    | Ciąg zapytania    | Nazwa [Centrum zadań](durable-functions-task-hubs.md). Jeśli nie zostanie określony, przyjmowana jest nazwa Centrum zadania bieżącej aplikacji funkcji. |
 | połączenie | Ciąg zapytania    | **Nazwa** parametrów połączenia dla konta magazynu. Jeśli nie zostanie określony, przyjmowana jest domyślne parametry połączenia dla aplikacji funkcji. |
 | systemKey  | Ciąg zapytania    | Klucz autoryzacji wymaganych do wywołania interfejsu API. |
-| showInput  | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `false`, wykonywania dane wejściowe nie zostaną uwzględnione w ładunku odpowiedzi.|
-| showHistory| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.|
-| showHistoryOutput| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, wyjściem działania zostaną uwzględnione w historii wykonywania aranżacji.|
+| showInput  | Ciąg zapytania    | Parametr opcjonalny; tylko jednego wystąpienia żądania. Jeśli ustawiono `false`, wykonywania dane wejściowe nie zostaną uwzględnione w ładunku odpowiedzi.|
+| showHistory| Ciąg zapytania    | Parametr opcjonalny; tylko jednego wystąpienia żądania. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.|
+| showHistoryOutput| Ciąg zapytania    | Parametr opcjonalny; tylko jednego wystąpienia żądania. Jeśli ustawiono `true`, wyjściem działania zostaną uwzględnione w historii wykonywania aranżacji.|
 | createdTimeFrom  | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone na lub po podanej sygnaturze czasowej ISO8601.|
 | createdTimeTo    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone w lub przed podaną sygnaturą czasową ISO8601.|
 | runtimeStatus    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtry listę wystąpień zwrócona na podstawie ich stanu środowiska uruchomieniowego. Aby wyświetlić listę wartości stanu środowiska uruchomieniowego możliwe, zobacz [zapytań wystąpień](durable-functions-instance-management.md) tematu. |
@@ -146,7 +146,7 @@ Mogą być zwracane kilka wartości Kod stanu to możliwe.
 | output          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
 | wartością createdTime     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
 | lastUpdatedTime | ciąg    | Czas, jaką utrwalone ostatniego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
-| historyEvents   | JSON      | Tablica JSON, zawierającą historię wykonywania aranżacji. To pole jest `null` chyba że `showHistory` parametr ciągu zapytania jest równa `true`.  |
+| historyEvents   | JSON      | Tablica JSON, zawierającą historię wykonywania aranżacji. To pole jest `null` chyba że `showHistory` parametr ciągu zapytania jest równa `true`. |
 
 Oto przykład ładunek odpowiedzi, tym aranżacji wykonywania historii i działania dane wyjściowe (sformatowane, aby zwiększyć czytelność):
 
