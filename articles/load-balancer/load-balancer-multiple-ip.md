@@ -1,5 +1,5 @@
 ---
-title: Równoważenie obciążenia na wielu konfiguracji adresu IP na platformie Azure
+title: Równoważenie obciążenia na wielu konfiguracji adresu IP — witryna Azure portal
 titlesuffix: Azure Load Balancer
 description: Równoważenie obciążenia w podstawowych i pomocniczych konfiguracji adresów IP.
 services: load-balancer
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: e6aff89fe45220e1642a91e6a2d31a9da422fdea
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4920d2a6c26da12effc2b44be8d3c6cbdb5e2a6f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163535"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199140"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP za pomocą witryny Azure portal
 
@@ -58,7 +58,7 @@ Aby uzyskać więcej informacji na temat tworzenia maszyn wirtualnych z wieloma 
 
 Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule.
 
-### <a name="step-1-configure-the-secondary-nics"></a>Krok 1. Skonfiguruj dodatkową kartą sieciową
+### <a name="step-1-configure-the-secondary-nics"></a>Krok 1: Skonfiguruj dodatkową kartą sieciową
 
 Dla każdej maszyny Wirtualnej w sieci wirtualnej należy dodać konfiguracji adresu IP dla pomocniczej karty Sieciowej:  
 
@@ -82,7 +82,7 @@ Dla każdej maszyny Wirtualnej w sieci wirtualnej należy dodać konfiguracji ad
 
 Po druga Konfiguracja protokołu IP dla pomocniczej karty Sieciowej jest zakończone, pojawi się w obszarze **konfiguracje adresów IP** ustawień dla danej karty sieciowej.
 
-### <a name="step-2-create-the-load-balancer"></a>Krok 2. Tworzenie modułu równoważenia obciążenia
+### <a name="step-2-create-the-load-balancer"></a>Krok 2: Tworzenie modułu równoważenia obciążenia
 
 Tworzenie modułu równoważenia obciążenia dla konfiguracji:
 
@@ -98,7 +98,7 @@ Tworzenie modułu równoważenia obciążenia dla konfiguracji:
 
 Moduł równoważenia obciążenia rozpocznie się do wdrożenia. Wdrożenie może potrwać kilka minut. Po zakończeniu wdrażania modułu równoważenia obciążenia jest wyświetlany jako zasób w grupie zasobów.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>Krok 3. Konfigurowanie puli adresów IP frontonu
+### <a name="step-3-configure-the-front-end-ip-pool"></a>Krok 3: Konfigurowanie puli adresów IP frontonu
 
 Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurować puli adresów IP frontonu na moduł równoważenia obciążenia:
 
@@ -156,7 +156,7 @@ Każda witryna sieci Web (contoso.com i fabrikam.com) można skonfigurować w pu
 
 Po skonfigurowaniu puli zaplecza adresy są wyświetlane w obszarze modułu równoważenia obciążenia **puli zaplecza** ustawienia.
 
-### <a name="step-5-configure-the-health-probe"></a>Krok 5: Konfigurowanie sondy kondycji
+### <a name="step-5-configure-the-health-probe"></a>Krok 5. Konfigurowanie sondy kondycji
 
 Konfigurowanie sondy kondycji modułu równoważenia obciążenia:
 

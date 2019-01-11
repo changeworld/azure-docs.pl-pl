@@ -11,21 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121417"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199654"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
 ![Application Insights symboli](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Dzięki obsłudze [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md), rozwiązanie do zarządzania łącznika usługi Application Insights nie jest już wymagany i staną się przestarzałe. Począwszy od lipca, nie można połączyć nowe zasoby usługi Application Insights do obszarów roboczych usługi Log Analytics. Istniejące linki i pulpity nawigacyjne będą nadal działać do listopada 2018 r. Aby uzyskać więcej informacji, zobacz [portalu pakietu OMS na platformę Azure](../../azure-monitor/platform/oms-portal-transition.md).
+> Dzięki obsłudze [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) i [wyświetlania wielu zasobów usługi Azure Monitor Application Insights](../log-query/unify-app-resource-data.md), rozwiązanie do zarządzania łącznika usługi Application Insights nie będą wymagane. Łącznik usługi Application Insights będzie przestarzały i usunięte z portalu Azure Marketplace, wraz z oficjalnie wycofywania na 15 stycznia 2019 komercyjnej chmury Azure i w chmurze dla administracji USA zakończenie obsługi portalu pakietu OMS, zostanie oficjalnie wycofana w marcu 30, 2019 r. Istniejące połączenia będą w dalszym ciągu działać aż do 30 czerwca 2019 r. Za pomocą obsługi portalu pakietu OMS nie ma możliwości do konfigurowania i usunąć istniejące połączenia z portalu. Będzie to możliwe przy użyciu interfejsu API REST, który zostanie udostępniona w styczniu maja 2019 r, a powiadomienie zostanie opublikowany na [aktualizacje platformy Azure](https://azure.microsoft.com/updates/). Aby uzyskać więcej informacji, zobacz [portalu pakietu OMS na platformę Azure](../../azure-monitor/platform/oms-portal-transition.md).
 
 Rozwiązanie łącznik aplikacji usługi Insights pomaga diagnozować problemy z wydajnością i zrozumieć do czego służą użytkowników z aplikacją, gdy są monitorowane [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Widoki te same dane telemetryczne aplikacji, który zobaczą deweloperzy w usłudze Application Insights są dostępne w usłudze Log Analytics. Jednak gdy możesz zintegrować swoje aplikacje usługi Application Insights z usługą Log Analytics, widoczność aplikacji zwiększa się przez umieszczenie danych i danych aplikacji w jednym miejscu. O tej samej widoków ułatwia współpracę z deweloperów aplikacji. Wspólne widoki mogą pomóc w skróceniu czasu wykrywanie i rozwiązywanie zarówno aplikacji, jak i problemy dotyczące platformy.
 

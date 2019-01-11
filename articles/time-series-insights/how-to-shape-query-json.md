@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: aa09183d1dbb78822b6c46333dada3ed7f54811a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c076d425a7740bd0eb6398e6b8720fa873f2fc30
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554575"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201265"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Sposób kształtowania JSON, aby zmaksymalizować wydajność zapytań 
 
@@ -200,4 +200,4 @@ Jeśli właściwość z dużą liczbą możliwych wartości, najlepiej Wyślij j
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby umieścić te wytyczne w praktyce, zobacz [składni zapytania usługi Azure Time Series Insights](/rest/api/time-series-insights/time-series-insights-reference-query-syntax) dowiedzieć się więcej o składni zapytań dla interfejsu API REST dostępu do danych usługi TSI.
+Aby umieścić te wytyczne w praktyce, zobacz [składni zapytania usługi Azure Time Series Insights](/rest/api/time-series-insights/ga-query-syntax) dowiedzieć się więcej o składni zapytań dla interfejsu API REST dostępu do danych usługi TSI.

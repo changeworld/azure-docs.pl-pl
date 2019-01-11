@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6793a83002029c009e3d4e124b4386feabecd5f8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583072"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201078"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup
 Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie maszyn wirtualnych (VM) przy użyciu usługi Azure Backup. Zapewnia także szczegółowe informacje o obsługiwanych scenariuszach, wymagania wstępne i kroki rozwiązywania problemów w przypadku wystąpienia błędów.
@@ -128,6 +128,8 @@ Wykonaj następujące kroki, aby zapewnić odpowiednie uprawnienia do wykonywani
 Po pomyślnie podano uprawnienia, możesz kontynuować włączania kopii zapasowej zaszyfrowanych maszyn wirtualnych.
 
 ## <a name="restore-an-encrypted-vm"></a>Przywracanie zaszyfrowanych maszyn wirtualnych
+Usługa Azure Backup obsługuje teraz Przywracanie [Azure zaszyfrowanych maszyn wirtualnych bez usługi Azure AD](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad) oprócz poprzedniej oferty przywracania pomocy technicznej Azure zaszyfrowanych maszyn wirtualnych z usługą Azure AD.<br>
+
 Przywrócić zaszyfrowaną maszynę Wirtualną, najpierw Przywróć dyski wykonując kroki opisane w sekcji "Przywracanie dysków kopii zapasowej" [wybierz konfigurację przywracania maszyny Wirtualnej](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Po tym można użyć jednej z następujących opcji:
 
 * Wykonaj kroki programu PowerShell [tworzenie maszyny Wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) tworzenie pełnej maszyny Wirtualnej z przywróconych dysków.

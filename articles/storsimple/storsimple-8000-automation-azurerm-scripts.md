@@ -1,6 +1,6 @@
 ---
-title: Za pomocą skryptów usługi Azure Resource Manager do zarządzania urządzeniami StorSimple | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Azure Resource Manager skryptów do automatyzacji zadań StorSimple
+title: Zarządzanie urządzeniami StorSimple za pomocą skryptów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure Resource Manager skryptów do automatyzacji zadań usługi StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f4456200d6f497a87424f12a23034dbff00c75aa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d9c428e3fa8d9fe964b83ae345bb70fd49a6ce1a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26373945"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215307"
 ---
-# <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Za pomocą skryptów na podstawie zestawu SDK usługi Azure Resource Manager do zarządzania urządzeniami StorSimple
+# <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Zarządzanie urządzeniami StorSimple za pomocą skryptów na podstawie zestawu SDK usługi Azure Resource Manager
 
-W tym artykule opisano, jak zestaw SDK usługi Azure Resource Manager skryptów może służyć do zarządzania urządzeniem serii StorSimple 8000. Przykładowy skrypt znajduje się również do prowadzą użytkownika przez kroki konfigurowania środowiska, aby uruchamiać te skrypty.
+W tym artykule opisano sposób zestawu SDK usługi Azure Resource Manager skryptów może służyć do zarządzania urządzeniem serii StorSimple 8000. Przykładowy skrypt znajduje się również przeprowadzi Cię przez kroki konfigurowania środowiska w taki sposób, aby uruchamiać tych skryptów.
 
-Ten artykuł dotyczy uruchomionych w portalu Azure tylko urządzeń z serii StorSimple 8000.
+Ten artykuł ma zastosowanie w portalu Azure, tylko urządzeń z serii StorSimple 8000.
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 
-Następujące przykładowe skrypty są dostępne w celu automatyzacji różne zadania StorSimple.
+Następujące przykładowe skrypty są dostępne w celu automatyzacji różne zadania usługi StorSimple.
 
-#### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Tabeli na podstawie zestawu SDK usługi Azure Resource Manager przykładowe skrypty
+#### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Tabelę na podstawie zestawu SDK usługi Azure Resource Manager przykładowe skrypty
 
-| Skrypt Menedżera zasobów Azure                    | Opis                                                                                                                                                                                                       |
+| Skrypt programu Azure Resource Manager                    | Opis                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [ServiceEncryptionRollover.ps1 autoryzacji](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Ten skrypt można zezwolić urządzeniu StorSimple można zmienić klucza szyfrowania danych usługi.                                                                                                           |
-| [Utwórz StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Ten skrypt tworzy 8010 lub 8020 urządzenia chmury StorSimple. Następnie można konfigurować i zarejestrowany w usłudze Menedżer StorSimple danych urządzenia chmury.                                                       |
+| [Autoryzuj ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Ten skrypt można zezwolić urządzeniu StorSimple można zmienić klucza szyfrowania danych usługi.                                                                                                           |
+| [Utwórz StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Ten skrypt tworzy 8010 lub 8020 urządzenia StorSimple w chmurze. Urządzenie w chmurze, następnie można konfigurować i rejestrowania przy użyciu usługi StorSimple Data Manager.                                                       |
 | [CreateOrUpdate Volume.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Ten skrypt tworzy lub modyfikuje woluminów StorSimple.                                                                                                                                                             |
-| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Ten skrypt zawiera listę wszystkich kopii zapasowych dla urządzeń zarejestrowanych przy użyciu usługi Menedżer StorSimple urządzenia.                                                                                                          |
-| [Get-DeviceBackupPolicy.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Ten skrypt zasad tworzenia kopii zapasowych dla urządzenia StorSimple.                                                                                                                                                 |
-| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Ten skrypt pobiera wszystkich zadań StorSimple uruchomionych w usłudze Menedżer StorSimple urządzenia.                                                                                                                     |
+| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Ten skrypt zawiera listę wszystkich kopii zapasowych dla urządzeń zarejestrowanych w usłudze Menedżer urządzeń StorSimple.                                                                                                          |
+| [Get-DeviceBackupPolicy.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Ten skrypt wszystkich zasad dotyczących kopii zapasowych dla urządzenia StorSimple.                                                                                                                                                 |
+| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Ten skrypt pobiera wszystkie zadania StorSimple uruchomione w usłudze Menedżer urządzeń StorSimple.                                                                                                                     |
 | [Get-DeviceUpdateAvailability.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Ten skrypt skanuje serwer aktualizacji i informuje o tym, jeśli aktualizacje są dostępne do zainstalowania na urządzeniu StorSimple.                                                                                          |
-| [DeviceUpdate.ps1 instalacji](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Ten skrypt instaluje dostępne aktualizacje na urządzeniu StorSimple.                                                                                                                                           |
-| [Zarządzanie CloudSnapshots.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Ten skrypt uruchamia migawkę chmury ręczne i usuwa starsze niż określona przechowywania w dniach migawki w chmurze.                                                                                                   |
-| [Monitor Backups.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Ten skrypt programu PowerShell dla elementu Runbook automatyzacji Azure informuje o stanie wszystkich zadań tworzenia kopii zapasowej.                                                                                                              |
+| [DeviceUpdate.ps1 instalacji](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Ten skrypt instaluje dostępnych aktualizacji na urządzeniu StorSimple.                                                                                                                                           |
+| [Zarządzanie CloudSnapshots.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Ten skrypt uruchamia migawkę w chmurze ręcznych i usuwa starsze niż liczba dni przechowywania określonej migawki w chmurze.                                                                                                   |
+| [Monitor Backups.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Ten skrypt programu Runbook PowerShell automatyzacji Azure informuje o stanie wszystkich zadań tworzenia kopii zapasowej.                                                                                                              |
 | [Usuń DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Ten skrypt usuwa pojedynczy obiekt kopii zapasowej.                                                                                                                                                           |
-| [Start DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Ten skrypt uruchamiania ręcznego tworzenia kopii zapasowej na urządzeniu StorSimple.                                                                                                                                       |
-| [CloudApplianceServiceEncryptionKey.ps1 aktualizacji](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Ten skrypt aktualizacji klucza szyfrowania danych usługi dla wszystkich zarejestrowanych urządzenia 8010/8020 StorSimple chmury przy użyciu usługi Menedżer StorSimple urządzenia.                                     |
-| [Sprawdź BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Ten skrypt prezentuje Brak kopii zapasowych po przeanalizowaniu wszystkie harmonogramy skojarzonych z zasadami tworzenia kopii zapasowej. Sprawdza także katalogu kopii zapasowej z listy dostępnych kopii zapasowych.             |
+| [Start-DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Ten skrypt uruchamia ręcznego tworzenia kopii zapasowej na urządzeniu StorSimple.                                                                                                                                       |
+| [Aktualizacja CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Ten skrypt aktualizuje klucz szyfrowania danych usługi dla wszystkich urządzeń StorSimple w chmurze 8010/8020 zarejestrowana przy użyciu usługi Menedżer urządzeń StorSimple.                                     |
+| [Sprawdź BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Ten skrypt powoduje wyróżnienie Brak kopii zapasowych po przeanalizowaniu wszystkie harmonogramy, które są skojarzone z zasadami tworzenia kopii zapasowych. Sprawdza także wykaz kopii zapasowych z listą dostępnych kopii zapasowych.             |
 
 
 
 
-## <a name="configure-and-run-a-sample-script"></a>Konfigurowanie i uruchamianie przykładowego skryptu
+## <a name="configure-and-run-a-sample-script"></a>Skonfiguruj i uruchom skrypt przykładowy
 
-W tej sekcji przyjmuje przykładowy skrypt i zawiera szczegóły różnych kroków wymaganych do uruchomienia skryptu.
+W tej sekcji pobiera przykładowy skrypt i szczegóły różnych kroków wymaganych do uruchomienia skryptu.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że masz:
 
 *   Zainstalowany program Azure PowerShell. Aby zainstalować moduły programu Azure PowerShell:
-    * W środowisku systemu Windows, postępuj zgodnie z instrukcjami [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0). Instalowanie programu Azure PowerShell na hoście z systemem Windows Server dla Twojego urządzenia StorSimple przy użyciu jednego.
-    * W środowisku systemu Linux lub MacOS postępuj zgodnie z instrukcjami [Instalowanie i konfigurowanie programu Azure PowerShell MacOS lub Linux](https://docs.microsoft.com/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0).
+    * W środowisku Windows, wykonaj kroki opisane w [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0). Instalowanie programu Azure PowerShell na hoście z systemem Windows Server dla usługi StorSimple przy użyciu jednego.
+    * W środowisku systemu Linux lub MacOS, wykonaj kroki opisane w [Instalowanie i konfigurowanie programu Azure PowerShell w systemie MacOS lub Linux](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux?view=azurermps-4.4.0).
 
-Aby uzyskać więcej informacji o korzystaniu z programu Azure PowerShell, przejdź do [rozpocząć używanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0).
+Aby uzyskać więcej informacji o używaniu programu Azure PowerShell, przejdź do [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0).
 
-### <a name="run-azure-powershell-script"></a>Uruchom skrypt programu PowerShell systemu Azure
+### <a name="run-azure-powershell-script"></a>Uruchom skrypt programu Azure PowerShell
 
-W tym przykładzie skrypt zawiera listę wszystkich zadań na urządzeniu StorSimple. Dotyczy to nieukończonych zadań, które zakończyło się pomyślnie, nie powiodło się lub są w toku. Wykonaj poniższe kroki, aby pobrać i uruchom skrypt.
+Skrypt używany w tym przykładzie wyświetlane są wszystkie zadania na urządzeniu StorSimple. Dotyczy to również zadania, które zakończyło się pomyślnie, nie powiodło się lub są w toku. Wykonaj poniższe kroki, aby pobrać i uruchomić skrypt.
 
 1. Uruchom program Azure PowerShell. Utwórz nowy folder i zmień katalog do nowego folderu.
 
@@ -77,28 +77,28 @@ W tym przykładzie skrypt zawiera listę wszystkich zadań na urządzeniu StorSi
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Pobierz interfejs wiersza polecenia NuGet](http://www.nuget.org/downloads) w folderze, który został utworzony w poprzednim kroku. Istnieją różne wersje _nuget.exe_. Wybierz wersję odpowiadający zestawu SDK. Każde łącze pobierania punktów bezpośrednio do _.exe_ pliku. Kliknij prawym przyciskiem myszy i Zapisz plik na komputerze, zamiast uruchomienie jej w przeglądarce.
+2. [Pobierz interfejs wiersza polecenia NuGet](http://www.nuget.org/downloads) w folderze, który został utworzony w poprzednim kroku. Istnieją różne wersje _nuget.exe_. Wybierz wersję odpowiadającą zestawu SDK. Każdy link pobierania punktów bezpośrednio do _.exe_ pliku. Należy koniecznie kliknij prawym przyciskiem myszy, a następnie zapisz plik na komputer, zamiast uruchamiać go za pomocą przeglądarki.
 
     Można również uruchomić następujące polecenie, aby pobrać i zapisać skrypt w tym samym folderze, który został utworzony wcześniej.
     
     ```
         wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
     ```
-3. Pobierz zestaw SDK zależnych.
+3. Pobierz zależnego zestawu SDK.
 
     ```
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.3
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.2.9-preview
     ```    
-4. Skrypt można pobrać przykładowy projekt GitHub.
+4. Pobierz skrypt z przykładowego projektu usługi GitHub.
 
     ```
         wget https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1 -Out Get-DeviceJobs.ps1
 
     ```
 
-5. Uruchom skrypt. Gdy monit o uwierzytelnienie, wprowadź swoje poświadczenia usługi Azure. Ten skrypt powinien output wyfiltrowanej listy wszystkich zadań na urządzeniu StorSimple.
+5. Uruchom skrypt. Po wyświetleniu, do uwierzytelniania, podaj swoje poświadczenia platformy Azure. Ten skrypt ma produkt wyjściowy filtrowana lista wszystkich zadań na urządzeniu StorSimple.
            
     ```           
         .\Get-StorSimpleJob.ps1 -SubscriptionId [subid] -TenantId [tenant id] -DeviceName [name of device] -ResourceGroupName [name of resource group] -ManagerName[name of device manager] -FilterByStatus [Filter for job status] -FilterByJobType [Filter for job type] -FilterByStartTime [Filter for start date time] -FilterByEndTime [Filter for end date time]
@@ -107,7 +107,7 @@ W tym przykładzie skrypt zawiera listę wszystkich zadań na urządzeniu StorSi
 
 ### <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-Następujące dane wyjściowe są prezentowane, gdy przykładowy skrypt jest uruchamiany. Dane wyjściowe zawierają wszystkie zadania uruchomione na zarejestrowane urządzenie uruchomiona na 25 września 2017 i wykonane przez 2 października 2017 r.
+Następujące dane wyjściowe są prezentowane w przypadku przykładowy skrypt jest uruchamiany. Dane wyjściowe zawierają wszystkich zadań uruchomionych na urządzeniu zarejestrowanych rozpoczęte 25 września 2017 r i zakończone przez 2 października 2017 r.
 
 ```
 -----------------------------------------
@@ -174,6 +174,6 @@ PS C:\Scripts\StorSimpleSDKTools>
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-[Usługi StorSimple za pomocą Menedżera urządzeń do zarządzania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+[Usługa Menedżer urządzeń StorSimple użycia do zarządzania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).

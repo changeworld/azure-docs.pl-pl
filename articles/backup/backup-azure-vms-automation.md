@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2cdeea546e7153c63cb1edfbc53f3644facc4f2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 847adc9f304e9da62129948616f0a3485b33ee7b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743905"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199531"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych przy użyciu programu PowerShell
 
@@ -72,7 +72,7 @@ Aby rozpocząć:
 6. Aby sprawdzić, czy dostawców pomyślnie zarejestrowane, używając następujących poleceń:
     ```powershell
     Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    ``` 
+    ```
     W danych wyjściowych polecenia **RegistrationState** należy zmienić na **zarejestrowanej**. Jeśli nie, uruchom **[Register-AzureRmResourceProvider](https://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** ponownie polecenie cmdlet.
 
 Następujące zadania można zautomatyzować za pomocą programu PowerShell:
@@ -185,7 +185,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 Po zdefiniowaniu zasad ochrony, nadal musisz włączyć zasady dla elementu. Użyj **[Enable-AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)** do włączenia ochrony. Włączenie ochrony wymaga dwóch obiektów - element i zasad. Gdy zasady zostało skojarzone z magazynem, tworzenia kopii zapasowej przepływ pracy zostanie wyzwolony w czasie, zdefiniowane w harmonogram zasad.
 
-Poniższe przykłady włączyć ochrony dla elementu V2VM, za pomocą zasad NewPolicy. Przykłady różnią się zależnie od tego, czy maszyna wirtualna jest zaszyfrowana i co typ szyfrowania. 
+Poniższe przykłady włączyć ochrony dla elementu V2VM, za pomocą zasad NewPolicy. Przykłady różnią się zależnie od tego, czy maszyna wirtualna jest zaszyfrowana i co typ szyfrowania.
 
 Aby włączyć ochronę na **niezaszyfrowane maszyn wirtualnych usługi Resource Manager**:
 
@@ -355,7 +355,7 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Przywracanie dysków zarządzanych
 
 > [!NOTE]
-> Jeśli chcesz przywrócić je jako dyski zarządzane dyski zarządzane kopii maszyny Wirtualnej, firma Microsoft wprowadza możliwość z programu Azure Powershell v 6.7.0. lub nowszy
+> Jeśli chcesz przywrócić je jako dyski zarządzane dyski zarządzane kopii maszyny Wirtualnej, firma Microsoft wprowadza możliwość z programu Azure PowerShell v 6.7.0. lub nowszy
 >
 >
 
@@ -457,7 +457,7 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny Wirtual
        }
        ```
 
-   * **Niezarządzane i zaszyfrowanych maszyn wirtualnych (tylko w przypadku klucza szyfrowania bloków)** -niezarządzanych, szyfrowanych maszyn wirtualnych (szyfrowane tylko przy użyciu klucza szyfrowania bloków), należy przywrócić klucz tajny do magazynu kluczy, zanim będzie możliwe dołączenie dysków. Aby uzyskać więcej informacji, zapoznaj się z artykułem [przywracanie zaszyfrowanych maszyn wirtualnych z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Poniższy przykład pokazuje, jak dołączyć dyski systemu operacyjnego i danych dla szyfrowanych maszyn wirtualnych. Podczas ustawiania dysku systemu operacyjnego, upewnij się wspomnieć o odpowiedni typ systemu operacyjnego.
+   * **Niezarządzane i zaszyfrowanych maszyn wirtualnych przy użyciu usługi Azure AD (tylko w przypadku klucza szyfrowania bloków)** -For niezarządzanego zaszyfrowanych maszyn wirtualnych z usługą Azure AD (szyfrowane tylko przy użyciu klucza szyfrowania bloków), należy przywrócić klucz tajny do magazynu kluczy, zanim będzie możliwe dołączenie dysków. Aby uzyskać więcej informacji, zobacz [przywracanie zaszyfrowanych maszyn wirtualnych z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Poniższy przykład pokazuje, jak dołączyć dyski systemu operacyjnego i danych dla szyfrowanych maszyn wirtualnych. Podczas ustawiania dysku systemu operacyjnego, upewnij się wspomnieć o odpowiedni typ systemu operacyjnego.
 
       ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -469,13 +469,8 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny Wirtual
        $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
       ```
-      Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
 
-      ```powershell
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -VolumeType Data
-      ```
-
-   * **Niezarządzane i zaszyfrowanych maszyn wirtualnych (BEK i KEK)** — w przypadku niezarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane przy użyciu BEK i KEK), Przywracanie klucza i wpisu tajnego do magazynu kluczy przed dołączeniem dyski. Aby uzyskać więcej informacji, zapoznaj się z artykułem [przywracanie zaszyfrowanych maszyn wirtualnych z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Poniższy przykład pokazuje, jak dołączyć dyski systemu operacyjnego i danych dla szyfrowanych maszyn wirtualnych.
+   * **Niezarządzane i zaszyfrowanych maszyn wirtualnych przy użyciu usługi Azure AD (BEK i KEK)** — w przypadku niezarządzanych zaszyfrowanych maszyn wirtualnych z usługą Azure AD (szyfrowane przy użyciu BEK i KEK), Przywracanie klucza i wpisu tajnego do magazynu kluczy przed dołączeniem dyski. Aby uzyskać więcej informacji, zobacz [przywracanie zaszyfrowanych maszyn wirtualnych z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Poniższy przykład pokazuje, jak dołączyć dyski systemu operacyjnego i danych dla szyfrowanych maszyn wirtualnych.
 
       ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -484,34 +479,100 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny Wirtual
       Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
       foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-       }
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+     }
       ```
 
-      Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
+   * **Niezarządzane i zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (tylko w przypadku klucza szyfrowania bloków)** — w przypadku niezarządzanych zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (szyfrowane tylko przy użyciu klucza szyfrowania bloków), jeśli źródło **magazynu kluczy/wpisów tajnych są niedostępne** przywrócić wpisy tajne usługi key vault za pomocą procedury w [przywrócić maszynę wirtualną z protokołem szyfrowania z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Następnie wykonaj następujące skrypty do ustawiania szczegółów szyfrowania w przywróconej obiekcie blob systemu operacyjnego (ten krok nie jest wymagana dla obiektu blob danych). $Dekurl mogą być pobierane z przywróconej magazynu kluczy.<br>
+
+   Poniższego skryptu musi być wykonywane tylko wtedy, gdy magazyn kluczy/wpisów tajnych źródła nie jest dostępna.
 
       ```powershell
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
+      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+      $osBlob = Get-AzureStorageBlob -Container $containerName -Blob $osBlobName
+      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+      $osBlob.ICloudBlob.SetMetadata()
       ```
 
-   * **Maszyny wirtualne zarządzane i niezaszyfrowane** — zarządzane maszyny wirtualne nie są szyfrowane, dołączanie przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
+    Po **wpisów tajnych są dostępne** i szczegółów szyfrowania również są ustawione w obiekcie Blob systemu operacyjnego, podłącz odpowiednie dyski za pomocą skryptu podane poniżej.<br>
 
-   * **Zarządzana i zaszyfrowanych maszyn wirtualnych (tylko w przypadku klucza szyfrowania bloków)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane tylko przy użyciu klucza szyfrowania bloków), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
-
-     Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
-
-       ```powershell
-       Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
-       ```
-
-   * **Zarządzana i zaszyfrowanych maszyn wirtualnych (BEK i KEK)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane przy użyciu BEK i KEK), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
-
-      Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
+    Jeśli dostępne są już magazyn kluczy lub kluczy tajnych źródła, następnie powyższy skrypt muszą nie można wykonać.
 
       ```powershell
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+      {
+      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+      }
       ```
+
+   * **Niezarządzane i zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (BEK i KEK)** — w przypadku niezarządzanych zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (szyfrowane przy użyciu BEK i KEK), jeśli źródło **keyVault/klucz/wpis tajny nie są dostępne** Przywracanie klucza i klucze tajne usługi key vault za pomocą procedury w [przywrócić maszynę wirtualną z protokołem szyfrowania z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Następnie wykonaj następujące skrypty do ustawiania szczegółów szyfrowania w przywróconej obiekcie blob systemu operacyjnego (ten krok nie jest wymagana dla obiektu blob danych). $Dekurl i $kekurl mogą być pobierane z przywróconej magazynu kluczy.
+
+   Poniższego skryptu musi być wykonywane tylko wtedy, gdy źródłowy magazyn kluczy/klucz/wpis tajny nie jest dostępna.
+
+    ```powershell
+      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
+      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+      $osBlob = Get-AzureStorageBlob -Container $containerName -Blob $osBlobName
+      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+      $osBlob.ICloudBlob.SetMetadata()
+      ```
+   Po **klucza lub kluczy tajnych są dostępne** i szczegółów szyfrowania ustawionych w obiekcie Blob systemu operacyjnego, podłącz odpowiednie dyski za pomocą skryptu podane poniżej.
+
+    Jeśli źródło/klucz/wpisów tajnych usługi keyVault są dostępne, następnie powyższy skrypt muszą nie można wykonać.
+
+    ```powershell
+      Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+      {
+      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+      }
+      ```
+
+  * **Maszyny wirtualne zarządzane i niezaszyfrowane** — zarządzane maszyny wirtualne nie są szyfrowane, dołączanie przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zobacz [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Zarządzana i zaszyfrowanych maszyn wirtualnych z usługą Azure AD (tylko w przypadku klucza szyfrowania bloków)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych z usługą Azure AD (szyfrowane tylko przy użyciu klucza szyfrowania bloków), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zobacz [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Zarządzana i zaszyfrowanych maszyn wirtualnych z usługą Azure AD (BEK i KEK)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych z usługą Azure AD (szyfrowane przy użyciu BEK i KEK), Dołącz przywróconych dysków zarządzanych. Aby uzyskać szczegółowe informacje, zobacz [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Zarządzane i zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (tylko w przypadku klucza szyfrowania bloków)** — dla zarządzanych, zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (szyfrowane tylko przy użyciu klucza szyfrowania bloków), jeśli źródło **magazynu kluczy/wpisów tajnych są niedostępne** przywrócić wpisy tajne usługi key vault przy użyciu procedury w programie [przywrócić maszynę wirtualną z protokołem szyfrowania z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Następnie wykonaj następujące skrypty można ustawić szczegółów szyfrowania w przywróconego dysku systemu operacyjnego (ten krok nie jest wymagany dla dysku z danymi). $Dekurl mogą być pobierane z przywróconej magazynu kluczy.
+
+    Poniższego skryptu musi być wykonywane tylko wtedy, gdy magazyn kluczy/wpisów tajnych źródła nie jest dostępna.  
+
+    ```powershell
+      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+      $diskupdateconfig = New-AzureRmDiskUpdateConfig -EncryptionSettingsEnabled $true
+      $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
+      Update-AzureRmDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+      ```
+
+    Po wpisy tajne są dostępne i szczegółów szyfrowania są ustawione na dysku systemu operacyjnego, aby dołączyć przywróconych dysków zarządzanych, zobacz [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Zarządzana i zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (BEK i KEK)** — w przypadku zarządzanych zaszyfrowanych maszyn wirtualnych bez usługi Azure AD (szyfrowane przy użyciu BEK i KEK), jeśli źródło **keyVault/klucz/wpis tajny nie są dostępne** Przywracanie klucza i wpisy tajne klucza Magazyn, korzystając z procedury w [przywrócić maszynę wirtualną z protokołem szyfrowania z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Następnie wykonaj następujące skrypty można ustawić szczegółów szyfrowania w przywróconego dysku systemu operacyjnego (ten krok nie jest wymagany dla dysku z danymi). $Dekurl i $kekurl mogą być pobierane z przywróconej magazynu kluczy.
+
+  Poniższego skryptu musi być wykonywane tylko wtedy, gdy źródłowy magazyn kluczy/klucz/wpis tajny nie jest dostępna.
+
+  ```powershell
+     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+     $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+     $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+     $diskupdateconfig = New-AzureRmDiskUpdateConfig -EncryptionSettingsEnabled $true
+     $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
+     $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $kekUrl -SourceVaultId $keyVaultId  
+     Update-AzureRmDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+    ```
+
+    Po klucza lub kluczy tajnych są dostępne i szczegółów szyfrowania są ustawione na dysku systemu operacyjnego, aby dołączyć przywróconych dysków zarządzanych, zobacz [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
 5. Określ ustawienia sieciowe.
 
@@ -525,11 +586,44 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny Wirtual
     $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName "test" -Location "WestUS" -SubnetId $vnet.Subnets[$subnetindex].Id -PublicIpAddressId $pip.Id
     $vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
     ```
+
 6. Utwórz maszynę wirtualną.
 
     ```powershell  
     New-AzureRmVM -ResourceGroupName "test" -Location "WestUS" -VM $vm
     ```
+
+7. Wypchnij ADE rozszerzenia.
+
+  * **Dla maszyny Wirtualnej z usługą Azure AD** — Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi  
+
+    **Tylko klucz szyfrowania bloków**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      ```
+
+    **BEK i KEK**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      ```
+
+  * **Dla maszyny Wirtualnej bez usługi Azure AD** — Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków z danymi.
+
+    Jeśli na wypadek, gdyby podczas wykonywania polecenia organ AADClientID, musisz zaktualizować programu Azure PowerShell.
+
+    **Tylko klucz szyfrowania bloków**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      ```
+
+      **BEK i KEK**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      ```
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Przywracanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure
 
@@ -614,4 +708,4 @@ Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli wolisz przy użyciu programu PowerShell do prowadzenia wi th subskrypcji platformy Azure zasobów, zapoznaj się z artykułem PowerShell [wdrażanie i zarządzanie nimi kopii zapasowych dla systemu Windows Server](backup-client-automation.md). Jeśli zarządzasz kopii zapasowych programu DPM, zapoznaj się z artykułem [wdrażanie i zarządzanie nimi kopii zapasowej programu DPM](backup-dpm-automation.md). Ma oba z tych artykułów wersji wdrożeń usługi Resource Manager i model klasyczny.  
+Jeśli wolisz, skontaktuj się z zasobami platformy Azure przy użyciu programu PowerShell, zapoznaj się z artykułem PowerShell [wdrażanie i zarządzanie nimi kopii zapasowych dla systemu Windows Server](backup-client-automation.md). Jeśli zarządzasz kopii zapasowych programu DPM, zapoznaj się z artykułem [wdrażanie i zarządzanie nimi kopii zapasowej programu DPM](backup-dpm-automation.md). Ma oba z tych artykułów wersji wdrożeń usługi Resource Manager i model klasyczny.  

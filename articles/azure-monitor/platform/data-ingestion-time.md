@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: d8d8e344ce9ee317a7f864492514162b1dc085f9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883061"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213131"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Czas wprowadzania danych w usłudze Log Analytics
 Usługa Azure Log Analytics to usługa danych dużej skali w usłudze Azure Monitor, pełniącą tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
@@ -46,7 +46,7 @@ Rozwiązań do zarządzania i agentów należy użyć różne strategie zbierani
 Aby upewnić się, że agent usługi Log Analytics jest uproszczone, agent buforuje dzienniki i okresowo przesyła je do usługi Log Analytics. Przekaż częstotliwość waha się między 30 sekund i 2 minut w zależności od typu danych. Większość danych jest przekazywany w obszarze 1 minutę. Warunki sieciowe może negatywnie wpłynąć na czas oczekiwania na tych danych do usługi Log Analytics punktem pozyskiwania osiągną.
 
 ### <a name="azure-logs-and-metrics"></a>Dzienniki platformy Azure i metryk 
-Dane dzienników aktywności może potrwać około 5 minut na udostępnienie w usłudze Log Analytics. Dane z dzienniki diagnostyczne i metryki może potrwać od 1 do 5 minut stają się dostępne, w zależności od usługi platformy Azure. Następnie przyjmują dodatkowe 30 – 60 sekund dla dzienników i więcej niż trzy minuty dla metryk dla danych do wysłania do usługi Log Analytics punktem pozyskiwania.
+Dane dzienników aktywności może potrwać około 5 minut na udostępnienie w usłudze Log Analytics. Dane z dzienniki diagnostyczne i metryki może 1 – 15 minut, stanie się dostępny dla przetwarzania, w zależności od usługi platformy Azure. Po jej udostępnieniu, następnie przyjmują dodatkowe 30 – 60 sekund dla dzienników i więcej niż trzy minuty dla metryk dla danych do wysłania do usługi Log Analytics punktem pozyskiwania.
 
 ### <a name="management-solutions-collection"></a>Zarządzanie rozwiązaniami kolekcji
 Niektóre rozwiązania nie zbierają dane z agenta i może używać metody kolekcji, które wprowadza dodatkowe opóźnienie. Niektóre rozwiązania zbierania danych w regularnych odstępach czasu, bez próby kolekcji niemal w czasie rzeczywistym. Konkretne przykłady są następujące:
@@ -73,22 +73,60 @@ Ten proces trwa obecnie około 5 minut po niskiej ilości danych, ale mniej czas
 
 
 ## <a name="checking-ingestion-time"></a>Sprawdzanie czasu wprowadzania
-Możesz użyć **pulsu** tabeli, aby poznać szacunkową liczbę opóźnieniami dla danych z agentów. Ponieważ po wysłaniu pulsu minutę, różnicy między bieżącym czasem i ostatni rekord pulsu najlepiej będzie zbliżony minuta, jak to możliwe.
+Czas wprowadzania mogą być różne dla różnych zasobów w różnych okolicznościach. Dziennik zapytań służy do identyfikowania określone zachowanie środowiska.
 
-Użyj następującego zapytania, aby wyświetlić listę komputerów z opóźnieniem najwyższy.
+### <a name="ingestion-latency-delays"></a>Pozyskiwanie opóźnienie opóźnienia
+Opóźnienie określonego rekordu można zmierzyć, porównując wynik [ingestion_time()](/azure/kusto/query/ingestiontimefunction) funkcja _TimeGenerated_ pola. Tych danych może służyć za pomocą różnych agregacji, aby dowiedzieć się, jak zachowuje się opóźnienia w pozyskiwaniu danych. Sprawdź niektórych. percentyl czasu pozyskiwania, aby uzyskać szczegółowe informacje z dużych ilości danych. 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | top 50 by IngestionTime asc
+Na przykład następujące zapytanie będzie pokazują, komputery, które miały najwyższą czas wprowadzania za pośrednictwem bieżącego dnia: 
 
+``` Kusto
+Heartbeat
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc  
+```
  
-Użyj następującej kwerendy w dużych środowiskach podsumowanie opóźnienie dla różnych wartości procentowych łączna liczba komputerów.
+Jeśli chcesz przejść do szczegółów czasu wprowadzania dla określonego komputera w określonym czasie, użyj następującego zapytania, która również wizualizuje dane w postaci wykresu: 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | summarize percentiles(IngestionTime, 50,95,99)
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart  
+```
+ 
+Użyj następującego zapytania, aby wyświetlić czas wprowadzania na komputerze według kraju, że znajdują się one w opartym na adresy IP: 
 
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+```
+ 
+Różne typy danych pochodzące od agenta może być czas opóźnienia różnych pozyskiwania, więc poprzednich zapytań, można użyć z innymi typami. Użyj następującego zapytania, aby sprawdzić czas wprowadzania różne usługi platformy Azure: 
 
+``` Kusto
+AzureDiagnostics 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+```
+
+### <a name="resources-that-stop-responding"></a>Zasoby, które przestanie odpowiadać 
+W niektórych przypadkach zasobu można zatrzymać wysyłanie danych. Aby dowiedzieć się, jeśli zasób jest wysyłanie danych, czy nie, Przyjrzyj się jej najbardziej aktualną rekordu, który może być zidentyfikowany przez standard _TimeGenerated_ pola.  
+
+Użyj _pulsu_ tabeli, aby sprawdzić dostępność maszyny Wirtualnej, ponieważ pulsu są wysyłane raz na minutę przez agenta. Użyj następującego zapytania, aby wyświetlić listę aktywnych komputerów, które nie zostały zgłoszone ostatnio pulsu: 
+
+``` Kusto
+Heartbeat  
+| where TimeGenerated > ago(1d) //show only VMs that were active in the last day 
+| summarize NoHeartbeatPeriod = now() - max(TimeGenerated) by Computer  
+| top 20 by NoHeartbeatPeriod desc 
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Odczyt [poziomu umowy dotyczącej usług (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) usługi Log Analytics.

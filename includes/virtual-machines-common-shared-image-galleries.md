@@ -5,20 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 48404c8b6f45ab79a9136154c44c7fd44572a3e6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: c65fb1f0f635e79d594a7f080124827e3218f612
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678211"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193442"
 ---
-Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych. Galeria obrazów udostępnionych udostępnia trzy główne wartości, które:
-- Proste zarządzanie
-- Skalowanie obrazów niestandardowych
-- Udostępnij swoje obrazy — udostępnianie obrazów do różnych użytkowników, nazw głównych usług lub grup usługi AD w ramach Twojej organizacji, a także różnych regionów przy użyciu replikacja w wielu regionach
+Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Przy użyciu galerii obrazów współdzielona możesz udostępnić swoje obrazy do różnych użytkowników, nazw głównych usług lub grup usługi Active Directory w Twojej organizacji. Udostępnianych obrazów mogą być replikowane w wielu regionach, szybsze skalowanie wdrożeń.
 
 Zarządzany obraz jest kopią albo pełnej maszyny wirtualnej (w tym wszelkich dołączonych dysków danych) lub po prostu dysku systemu operacyjnego, w zależności od tego, jak utworzyć obraz. Po utworzeniu maszyny Wirtualnej z obrazu kopiowania dysków VHD na ilustracji są używane do tworzenia dysków dla nowej maszyny Wirtualnej. Zarządzany obraz pozostaje w magazynie i można wielokrotnie tworzenie nowych maszyn wirtualnych.
 
@@ -28,10 +25,10 @@ Funkcja galerii obrazów współdzielona ma wiele typów zasobów:
 
 | Zasób | Opis|
 |----------|------------|
-| **Zarządzany obraz** | Jest to obraz linii bazowej, które mogą być używane autonomicznie lub użyty do utworzenia wielu **udostępniane wersje obrazów** w galerii obrazów.|
+| **Zarządzany obraz** | Jest to podstawowy obraz, które mogą być używane autonomicznie lub użyty do utworzenia **wersję obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionego maszyn wirtualnych. Zarządzany obraz to specjalny typ wirtualnego dysku twardego, który można utworzyć wiele maszyn wirtualnych i może teraz służyć do tworzenia wersji udostępnionego obrazu. |
 | **Galeria obrazów** | W portalu Azure Marketplace, takich jak **galerii obrazów** to repozytorium do zarządzania i udostępniania obrazów, ale możesz kontrolować, kto ma dostęp. |
-| **Image z galerie** | Obrazy w galerii są zdefiniowane i zawierają informacje dotyczące obrazu i wymagania dotyczące korzystania z niego wewnętrznie. Dotyczy to również, czy obraz jest Windows lub Linux, informacje o wersji i wymagań dotyczących minimalnej i maksymalnej pamięci. Ten typ obrazu jest zasobem w ramach modelu wdrażania usługi Resource Manager, ale nie jest używana bezpośrednio do tworzenia maszyn wirtualnych. Jest definicja typu obrazu. |
-| **Wersja udostępnionego obrazu** | **Wersję obrazu** , które jest używane do utworzenia maszyny Wirtualnej, podczas korzystania z galerii. Może mieć wiele wersji obrazu, zgodnie z potrzebami w danym środowisku. Gdy używasz, takie jak zarządzany obraz **wersję obrazu** tworzenie maszyny Wirtualnej, wersja obrazu jest używany do tworzenia nowych dysków dla maszyny Wirtualnej. Wersje obrazów można wielokrotnie. |
+| **Definicję obrazu** | Obrazy w galerii są zdefiniowane i zawierają informacje dotyczące obrazu i wymagania dotyczące korzystania z niego wewnętrznie. Dotyczy to również, czy obraz jest Windows lub Linux, informacje o wersji i wymagań dotyczących minimalnej i maksymalnej pamięci. Jest definicja typu obrazu. |
+| **Wersja obrazu** | **Wersję obrazu** , które jest używane do utworzenia maszyny Wirtualnej, podczas korzystania z galerii. Może mieć wiele wersji obrazu, zgodnie z potrzebami w danym środowisku. Gdy używasz, takie jak zarządzany obraz **wersję obrazu** tworzenie maszyny Wirtualnej, wersja obrazu jest używany do tworzenia nowych dysków dla maszyny Wirtualnej. Wersje obrazów można wielokrotnie. |
 
 <br>
 
@@ -44,21 +41,19 @@ Wsparcie regionalne dla galerii udostępnionego obrazu jest w ograniczonej wersj
 
 | Utwórz galerię w  | Replikowanie wersji |
 |--------------------|----------------------|
-| Środkowo-zachodnie stany USA    |Środkowo-południowe stany USA|
-| Wschodnie stany USA 2          |Wschodnie stany USA|
-| Środkowo-południowe stany USA   |Wschodnie stany USA 2|
-| Azja Południowo-Wschodnia     |Zachodnie stany USA|
-| Europa Zachodnia        |Zachodnie stany USA 2|
-|                    |Środkowe stany USA|
-|                    |Środkowo-północne stany USA|
-|                    |Kanada Środkowa|
-|                    |Kanada Wschodnia|
-|                    |Europa Północna|
-|                    |Europa Zachodnia|
-|                    |Indie Południowe|
-|                    |Azja Południowo-Wschodnia|
+| Środkowo-zachodnie stany USA    |We wszystkich regionach publicznych&#42;|
+| Wschodnie stany USA 2          ||
+| Środkowo-południowe stany USA   ||
+| Azja Południowo-Wschodnia     ||
+| Europa Zachodnia        ||
+| Zachodnie stany USA            ||
+| Wschodnie stany USA            ||
+| Kanada Środkowa     ||
+|                    ||
 
 
+
+&#42;Można replikować do Australia Środkowa i Australia Środkowa 2, musisz mieć Twojej subskrypcji, na liście dozwolonych. Aby zażądać umieszczania na białej liście, przejdź do: https://www.microsoft.com/en-au/central-regions-eligibility/
 
 ## <a name="scaling"></a>Skalowanie
 Galeria obrazów udostępnionych pozwala określić liczbę replik mają platformy Azure, aby przechowywać obrazy. Dzięki temu w scenariuszach wdrażania wielu maszyn wirtualnych, zgodnie z wdrożenia maszyn wirtualnych może zostać rozłożona do różnych replik, zmniejszając prawdopodobieństwo utworzenie wystąpienia przetwarzania jest ograniczona z powodu przeciążenia dla pojedynczej repliki.
@@ -67,7 +62,9 @@ Galeria obrazów udostępnionych pozwala określić liczbę replik mają platfor
 
 
 ## <a name="replication"></a>Replikacja
-Galeria obrazów udostępnionych umożliwia również obrazów do innych regionów platformy Azure są automatycznie replikowane. Każda wersja obrazu udostępnione mogą być replikowane do innych regionów, w zależności od tego, co ma sens dla swojej organizacji. Przykładem jest zawsze replikowanie najnowszego obrazu w wielu regionach, gdy wszystkie starsze wersje są dostępne tylko w regionie 1. Pozwoli to zapisać kosztów magazynowania wersje udostępnionych obrazów. Regiony, które wersji udostępnionych obraz jest replikowany do może zostać zaktualizowana po godzinie utworzenia. Czas potrzebny do replikowania do różnych regionów zależy od tego, ilości danych, w której są kopiowane i liczbie regionów, wersja jest replikowana do. W niektórych przypadkach może to potrwać kilka godzin. Podczas replikacji jest wykonywane, możesz wyświetlić stan replikacji na region. Po zakończeniu replikacji obrazu w regionie, następnie można wdrożyć maszyny Wirtualnej lub zestawu skalowania maszyn wirtualnych, korzystając z wersji obrazu w regionie.
+Galeria obrazów udostępnionych umożliwia również obrazów do innych regionów platformy Azure są automatycznie replikowane. Każda wersja obrazu udostępnione mogą być replikowane do innych regionów, w zależności od tego, co ma sens dla swojej organizacji. Przykładem jest zawsze replikowanie najnowszego obrazu w wielu regionach, gdy wszystkie starsze wersje są dostępne tylko w regionie 1. Pozwoli to zapisać kosztów magazynowania wersje udostępnionych obrazów. 
+
+Regiony, które wersji udostępnionych obraz jest replikowany do może zostać zaktualizowana po godzinie utworzenia. Czas potrzebny do replikowania do różnych regionów zależy od tego, ilości danych, w której są kopiowane i liczbie regionów, wersja jest replikowana do. W niektórych przypadkach może to potrwać kilka godzin. Podczas replikacji jest wykonywane, możesz wyświetlić stan replikacji na region. Po zakończeniu replikacji obrazu w regionie, następnie można wdrożyć maszyny Wirtualnej lub zestawu skalowania maszyn wirtualnych, korzystając z wersji obrazu w regionie.
 
 ![Grafika pokazująca, jak można replikować obrazów](./media/shared-image-galleries/replication.png)
 
@@ -87,6 +84,25 @@ Galeria obrazów udostępnione, udostępnionego obrazu i wersję udostępnionego
 Brak bez dodatkowych opłat za korzystanie z usługi Shared galerii obrazów. Opłata wyniesie dla następujących zasobów:
 - Koszty magazynowania, przechowywania wersji udostępnionego obrazu. To zależy od liczby replik wersji i liczbie regionów, wersja są replikowane do.
 - Opłaty za ruch wychodzący sieci replikacji w regionie źródłowym wersji do replikowanych regionach.
+
+## <a name="sdk-support"></a>Obsługa zestawu SDK
+
+Następujące zestawy SDK obsługują tworzenie udostępnione, galerie obrazów:
+
+- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
+- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](https://docs.microsoft.com/go/azure/)
+
+## <a name="templates"></a>Szablony
+
+Można utworzyć zasobu galerii obrazów udostępnione za pomocą szablonów. Dostępnych jest kilka szablonów szybkiego startu platformy Azure: 
+
+- [Tworzenie udostępnionego galerii obrazów](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Utwórz definicję obrazu w udostępnionym galerii obrazów](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Utwórz wersję obrazu w udostępnionym galerii obrazów](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Utwórz Maszynę wirtualną z obrazu wersji](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania 
 
@@ -135,9 +151,9 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. Tak. Istnieją 3 scenariusze, w oparciu o typy obrazów, które mogą wiązać Ciebie.
 
- Scenariusz 1: W przypadku obrazu zarządzanego następnie możesz utworzyć definicję obrazu i wersję obrazu z niego.
+ Scenariusz 1: Jeśli masz obrazu zarządzanego, następnie można utworzyć definicję obrazu i wersję obrazu z niego.
 
- Scenariusz 2: W przypadku niezarządzanych uogólnionego obrazu możesz można utworzenie obrazu zarządzanego z niego, a następnie utworzyć definicję obrazu i wersję obrazu z niego. 
+ Scenariusz 2: W przypadku niezarządzanych uogólnionego obrazu utworzenie obrazu zarządzanego z niego, a następnie utworzyć definicję obrazu i wersję obrazu z niego. 
 
  Scenariusz 3: W przypadku wirtualnego dysku twardego w lokalnym systemie plików, musisz przekazać wirtualny dysk twardy, utworzenie obrazu zarządzanego, a następnie można tworzyć i obrazów, definicji i wersję obrazu z niego. 
     - Jeśli wirtualny dysk twardy maszyny Wirtualnej z systemem Windows, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
@@ -221,7 +237,7 @@ Wersja obrazu:
 1. Liczba replik regionalnych, który określa liczbę replik ma zostać utworzony na region. 
 2. Typowe liczba replik, co jest ustawieniem domyślnym, na liczba regionów, w przypadku, gdy nie jest określona liczba replik regionalne. 
 
-Aby określić liczbę replik regionalnych, należy przekazać lokalizacji wraz z liczbą replik, której chcesz utworzyć w danym regionie, w następujący sposób: "środkowe stany USA Południowa = 2". 
+Aby określić liczbę replik regionalnej, należy przekazać lokalizacji wraz z liczbą repliki, który chcesz utworzyć w danym regionie, w następujący sposób: "Południowo-środkowe stany USA = 2". 
 
 Jeśli liczba replik regionalnych nie zostanie określony z każdej lokalizacji, domyślna liczba replik będzie wspólnej liczba replik, który określiłeś. 
 

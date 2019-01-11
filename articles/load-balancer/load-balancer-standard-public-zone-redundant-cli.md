@@ -1,7 +1,7 @@
 ---
 title: Równoważenie obciążenia strefowo nadmiarowe maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
 titlesuffix: Azure Load Balancer
-description: Dowiedz się, jak tworzenie publicznego Load Balancer w warstwie standardowa przy użyciu strefy nadmiarowe serwera sieci Web przy użyciu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego przy użyciu strefy nadmiarowe serwera sieci Web przy użyciu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 82bb0387d8f1603b4b436bfe70d75d19b88f28b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250811"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197797"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Równoważenie obciążenia maszyn wirtualnych we wszystkich strefach dostępności przy użyciu wiersza polecenia platformy Azure
 
-W tym artykule opisano proces tworzenia publicznego [standardowego modułu równoważenia obciążenia](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe serwera sieci Web do strefy — nadmiarowość, bez konieczności korzystania z wielu rekordów DNS. Pojedynczy adres IP frontonu jest automatycznie strefowo nadmiarowe.  Za pomocą frontonu nadmiarowe strefy dla modułu równoważenia obciążenia, za pomocą pojedynczego adresu IP możesz teraz uzyskiwać dostęp dowolnej maszyny Wirtualnej w sieci wirtualnej w danym regionie, który jest we wszystkich strefach dostępności. Strefy dostępności chronią aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych.
+W tym artykule opisano proces tworzenia publicznego [Balancer w warstwie standardowa](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe serwera sieci Web do strefy — nadmiarowość, bez konieczności korzystania z wielu rekordów DNS. Pojedynczy adres IP frontonu jest automatycznie strefowo nadmiarowe.  Za pomocą frontonu nadmiarowe strefy dla modułu równoważenia obciążenia, za pomocą pojedynczego adresu IP możesz teraz uzyskiwać dostęp dowolnej maszyny Wirtualnej w sieci wirtualnej w danym regionie, który jest we wszystkich strefach dostępności. Strefy dostępności chronią aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych.
 
 Aby uzyskać więcej informacji na temat obsługi stref dostępności przy użyciu usługi Load Balancer w warstwie Standardowa, zobacz [Standard Load Balancer and Availability Zones (Usługa Load Balancer w warstwie Standardowa i strefy dostępności)](load-balancer-standard-availability-zones.md).
 
@@ -60,7 +60,7 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Tworzenie usługi Azure Load Balancer w warstwie standardowa
+## <a name="create-azure-standard-load-balancer"></a>Tworzenie modułu równoważenia obciążenia platformy Azure Standard
 W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następujących składników modułu równoważenia obciążenia:
 - Adres IP frontonu, który odbiera przychodzący ruch sieciowy w module równoważenia obciążenia.
 - Pula adresów IP zaplecza, gdzie pula frontonu wysyła ruch sieciowy o zrównoważonym obciążeniu.

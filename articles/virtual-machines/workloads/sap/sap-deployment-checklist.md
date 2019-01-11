@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189154"
+ms.locfileid: "54201333"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
 
@@ -83,7 +83,7 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
 Przed lub w sposób równoległy do projektu, planowania i przygotowania, można uruchomić programu pilotażowego. Fazy może również służyć do testowania, metod i projektowania, wprowadzone w fazie planowania i przygotowywania. Fazy pilotażowej może być rozciągnięty do rzeczywistego weryfikacji koncepcji. Zaleca się konfigurowanie i weryfikowanie pełne rozwiązanie o wysokiej dostępności i odzyskiwania po awarii oraz projektowania zabezpieczeń podczas wdrożenia pilotażowego. W niektórych przypadkach klient skalowalność badania również może zostać przeprowadzone na tym etapie. Pozostali klienci powinni używać wdrożenie systemów piaskownicy SAP jako fazy pilotażowej. Dlatego przyjęto założenie, że wszystkie podane systemu, w którym chcesz przeprowadzić migrację na platformę Azure na potrzeby programu pilotażowego.
 
 1.  Optymalizuj transferu danych na platformę Azure. Stopniu zależą od klienta przypadków transfer za pośrednictwem [usługi Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) ze środowiska lokalnego zostało najszybszy, jeśli próba zawierała wystarczającą przepustowość obwodu usługi Express. Z innymi klientami przechodzenia przez internet się okazało, aby szybciej
-2.  W przypadku migracji heterogenicznej platformy SAP, który obejmuje eksportowanie i importowanie danych w bazie danych, przetestować, optymalizacji eksportowania i importowania fazy. Dla dużych migracji dotyczących programu SQL Server jako platformy docelowej, można znaleźć zaleceń [tutaj](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Podejście migracji Monitor/SWPM można wykonać w przypadku, gdy nie ma potrzeby uaktualniania wersji połączone lub [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) przetwarzania podczas łączenia migracji uaktualnianie wersji SAP i spełnienia pewnych źródłowa i docelowa platforma DBMS kombinacje, zgodnie z opisem, na przykład w [opcji migracji bazy danych (DMO) z SUMĄ 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872). 
+2.  W przypadku migracji heterogenicznej platformy SAP, który obejmuje eksportowanie i importowanie danych w bazie danych, przetestować, optymalizacji eksportowania i importowania fazy. Dla dużych migracji dotyczących programu SQL Server jako platformy docelowej, można znaleźć zaleceń [tutaj](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Podejście migracji Monitor/SWPM można wykonać w przypadku, gdy nie ma potrzeby uaktualniania wersji połączone lub [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) przetwarzania podczas łączenia migracji uaktualnianie wersji SAP i spełnienia pewnych źródłowa i docelowa platforma DBMS kombinacje, zgodnie z opisem, na przykład w [opcji migracji bazy danych (DMO) z SUMĄ 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152). 
     1.  Eksportuj do źródła, przekazywanie pliku eksportu do platformy Azure i importowania wydajności.  Maksymalizuj nakładanie się eksportu i importu
     2.  Oceń objętości bazy danych między obiekt docelowy oraz docelowy platformy, aby odzwierciedlały zmiany rozmiaru infrastruktury    
     3.  Sprawdzanie poprawności i zoptymalizować chronometrażu 

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 191471d3538a9151827ee24a5887aa559383345b
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 78812f7bcce82090802672e3e232e713f0d047d1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785668"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214117"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi Service Fabric, która używa nazwy pospolitej certyfikatu zamiast odcisku palca
 Nie dwóch certyfikatów może mieć ten sam odcisk palca, który sprawia, że Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu nazwy pospolite certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsze. W tym artykule opisano, jak wdrożyć klaster usługi Service Fabric do użycia nazwy pospolitej certyfikatu zamiast odcisk palca certyfikatu.
  
 ## <a name="get-a-certificate"></a>Uzyskaj certyfikat
-Najpierw należy uzyskać certyfikat z [certyfikatu urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority).  Nazwa pospolita certyfikatu powinna być nazwą hosta klastra.  Na przykład "myclustername.southcentralus.cloudapp.azure.com".  
+Najpierw należy uzyskać certyfikat z [certyfikatu urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority).  Nazwa pospolita certyfikatu powinna być się dla domeny niestandardowej aplikacjom i zakupionych u rejestratora domen. Na przykład "azureservicefabricbestpractices.com;" te, których nie są pracownikami firmy Microsoft nie aprowizować certyfikaty dla domen MS, więc nazwy DNS modułu równoważenia obciążenia lub usługi Traffic Manager nie można użyć jako nazwy pospolite dla certyfikatu, a następnie należy aprowizować [strefy DNS platformy Azure](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) Jeśli niestandardowe Domena jako możliwej do rozpoznania na platformie Azure. Należy również zadeklarować domenę niestandardową, pochodzącymi jako Twojego klastra "element"managementEndpoint, jeśli chcesz, aby portal w celu odzwierciedlenia domeny niestandardowej alias dla klastra.
 
 Do celów testowych można pobrać certyfikatu podpisanego przez urząd certyfikacji od urzędu certyfikacji bezpłatnej lub otwarte.
 
 > [!NOTE]
-> Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra usługi Service Fabric w witrynie Azure portal nie są obsługiwane.
+> Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra usługi Service Fabric w witrynie Azure portal nie są obsługiwane. 
 
 ## <a name="upload-the-certificate-to-a-key-vault"></a>Przekaż certyfikat do magazynu kluczy
 Na platformie Azure klaster usługi Service Fabric jest wdrażany w zestawie skalowania maszyn wirtualnych.  Przekaż certyfikat do magazynu kluczy.  Podczas wdrażania klastra, certyfikat instaluje na zestaw skalowania maszyn wirtualnych, że klaster działa na.

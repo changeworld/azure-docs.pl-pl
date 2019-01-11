@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185787"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214134"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>Analizowanie danych tekstowych w usłudze Log Analytics
 Niektóre dane zebrane przez usługę Log Analytics będzie zawierać kilka rodzajów informacji w pojedynczej właściwości. Analizowanie tych danych na wiele właściwości atrybutu ułatwić używane w kwerendach. Typowym przykładem jest [dziennik niestandardowy](../../log-analytics/log-analytics-data-sources-custom-logs.md) , umożliwia zbieranie informacji o wpisu dziennika całego z wieloma wartościami w jednej właściwości. Tworząc osobne właściwości dla różnych wartości, można wyszukiwać i agregacji w każdego.
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Wyrażenia regularne
-Jeśli Twoje dane mogą zostać zidentyfikowane z wyrażeniem regularnym, można użyć [funkcje, które używają wyrażeń regularnych](/azure/kusto/query/re2) można wyodrębnić poszczególne wartości. W poniższym przykładzie użyto [wyodrębnić](/kusto/query/extractfunction) umożliwiające rozbicie _UPN_ pola z _AzureActivity_ rekordów, a następnie wróć unikatowych użytkowników.
+Jeśli Twoje dane mogą zostać zidentyfikowane z wyrażeniem regularnym, można użyć [funkcje, które używają wyrażeń regularnych](/azure/kusto/query/re2) można wyodrębnić poszczególne wartości. W poniższym przykładzie użyto [wyodrębnić](/azure/kusto/query/extractfunction) umożliwiające rozbicie _UPN_ pola z _AzureActivity_ rekordów, a następnie wróć unikatowych użytkowników.
 
 ```Kusto
 AzureActivity

@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1674a54ea78e7fea2cc39cb26fefc52b8764bc4c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093288"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200857"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS
 
-Microsoft Azure jest zobowiązana do zapewnienia prywatności danych i niezależność danych. System Azure umożliwia kontrolowanie danych hostowanymi na platformie Azure za pomocą wielu zaawansowanych technologii szyfrowania, kontroli i zarządzanie kluczami szyfrowania i kontroli i inspekcji dostępu do danych. Formant ten zapewnia klientom platformy Azure z możliwością wyboru rozwiązania, który najlepiej zaspokaja ich potrzeby biznesowe. W tym artykule poznasz rozwiązanie technologiczne: "Usługa Azure Disk Encryption for Windows IaaS i Linux virtual machines (VMs)". Technologia ta pomaga chronić i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. 
+Microsoft Azure jest zobowiązana do zapewnienia prywatności danych i niezależność danych. System Azure umożliwia kontrolowanie danych hostowanymi na platformie Azure za pomocą wielu zaawansowanych technologii szyfrowania, kontroli i zarządzanie kluczami szyfrowania i kontroli i inspekcji dostępu do danych. Formant ten zapewnia klientom platformy Azure z możliwością wyboru rozwiązania, który najlepiej zaspokaja ich potrzeby biznesowe. W tym artykule przedstawiono rozwiązanie technologiczne: "Szyfrowania dysku dla Windows i Linux IaaS maszyn wirtualnych (VM)." Technologia ta pomaga chronić i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -59,7 +59,7 @@ Rozwiązanie szyfrowanie dysków obsługuje następujących scenariuszy:
 Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, jeśli są włączone w systemie Microsoft Azure:
 
 * Integracja z usługą Azure Key Vault.
-* Maszyny wirtualne w warstwie standardowa: [A, D, DS, G, GS, F i tak dalej, maszyny wirtualne z serii IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/). [Maszyny wirtualne systemu Linux](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) w tych warstwach, musi spełniać wymagania dotyczące minimalnej ilości pamięci, 7 GB.
+* W warstwie standardowa maszyny wirtualne: [A, D, DS, G, GS, F i tak dalej, maszyny wirtualne z serii IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/). [Maszyny wirtualne systemu Linux](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) w tych warstwach, musi spełniać wymagania dotyczące minimalnej ilości pamięci, 7 GB.
 * Włączanie szyfrowania na Windows i maszyn wirtualnych IaaS z systemem Linux, dysku zarządzanego i skalowania maszyn wirtualnych w zestawie z obsługiwanych obrazów w galerii systemu Azure.
 * Wyłącz szyfrowanie dla dysków systemu operacyjnego i danych Windows IaaS VMs, skalowania maszyn wirtualnych w zestawie i maszyn wirtualnych dysku zarządzanego.
 * Wyłącz szyfrowanie na dyskach danych, dla systemu Linux IaaS maszyn wirtualnych skalowania maszyn wirtualnych w zestawie i maszyn wirtualnych dysku zarządzanego.
@@ -81,7 +81,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii:
 
 * Warstwa podstawowa maszyn wirtualnych IaaS.
 * Wyłącz szyfrowanie dla dysku systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux.
-* Wyłącz szyfrowanie dla dysku danych, gdy dysk systemu operacyjnego jest zaszyfrowany dla maszyn wirtualnych Iaas z systemem Linux.
+* Wyłącz szyfrowanie dla dysku danych, gdy dysk systemu operacyjnego jest zaszyfrowany dla maszyn wirtualnych IaaS z systemem Linux.
 * Maszyny wirtualne IaaS, które są tworzone za pomocą klasycznego metodę tworzenia maszyny Wirtualnej.
 * Włącz szyfrowanie klientów niestandardowych obrazów na maszynach wirtualnych IaaS z systemem Linux.
 * Integracja z systemem zarządzania kluczami w środowisku lokalnym.

@@ -6,15 +6,14 @@ author: yushwang
 manager: rossort
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/07/2019
+ms.date: 01/10/2019
 ms.author: yushwang
-ms.openlocfilehash: 8a2210e9917fa8676c767362cbce2facaf42d566
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0110b6daa34d0bb24ad0abb7128ee6409bc4ff25
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075128"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215460"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -57,10 +56,11 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 | F5 |Seria BIG-IP |12.0 |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[Przewodnik po konfiguracji](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
 | Internet Initiative Japan (IIJ) |Seria SEIL |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Przewodnik po konfiguracji](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Niezgodne |
-| Juniper |SRX |Oparte na zasadach: JunOS 10.2<br>Routebased: JunOS 11.4 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
-| Juniper |Seria J |Oparte na zasadach: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
-| Juniper |ISG |ScreenOS 6.3 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
-| Juniper |SSG |ScreenOS 6.2 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
+| Juniper |SRX |Oparte na zasadach: JunOS 10.2<br>Routebased: JunOS 11.4 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |Seria J |Oparte na zasadach: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |ISG |ScreenOS 6.3 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |SSG |ScreenOS 6.2 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |MX |JunOS 12.x|[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Routing and Remote Access Service |Windows Server 2012 |Niezgodne |[Przykłady konfiguracji](https://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control Security Gateway |ND |[Przewodnik po konfiguracji](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Niezgodne |
 | Palo Alto Networks |Wszystkie urządzenia z systemem PAN-OS |PAN-OS<br>Oparte na zasadach: 6.1.5 lub nowszy<br>RouteBased: 7.1.4 |[Przewodnik po konfiguracji](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Przewodnik po konfiguracji](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |

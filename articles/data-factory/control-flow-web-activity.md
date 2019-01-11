@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054292"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214304"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Działanie internetowe w usłudze Azure Data Factory
 Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie.
@@ -115,7 +115,7 @@ Określ zawartość algorytmem Base64 pliku PFX i hasło.
 
 ### <a name="managed-identity"></a>Tożsamość zarządzana
 
-Określ identyfikator uri zasobu, dla którego zostanie żądana tokenu dostępu za pomocą tożsamości zarządzanej przez usługę data factory. Aby wywołać interfejs API usługi Azure Resource Management, należy użyć `https://management.azure.com/`.
+Określ identyfikator uri zasobu, dla którego zostanie żądana tokenu dostępu za pomocą tożsamości zarządzanej przez usługę data factory. Aby wywołać interfejs API usługi Azure Resource Management, należy użyć `https://management.azure.com/`. Aby uzyskać więcej informacji na temat zarządzanych tożsamości działania zobacz [zarządzanych tożsamości dla zasobów platformy Azure, strona przeglądu](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {

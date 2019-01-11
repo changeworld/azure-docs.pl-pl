@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5ba596a85abbb529990efdf7b15ac50515de011b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117269"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214457"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Monitorowanie ciągłe za pomocą usługi Azure Monitor
 
@@ -47,7 +47,7 @@ Aplikacje są tylko tak niezawodna jak ich podstawowej infrastruktury. Posiadani
 - Dodaj [rozwiązania do monitorowania](insights/solutions-inventory.md) dla różnych aplikacji i usług w danym środowisku.
 
 
-[Infrastruktura jako kod](/devops/learn/what-is-infrastructure-as-code) to zarządzanie infrastrukturą w modelu opisowym przy użyciu tej samej wersji, jak zespoły DevOps na użytek kodu źródłowego. Ona dodaje niezawodność i skalowalność do środowiska i umożliwia wykorzystanie podobne procesy, które umożliwiają zarządzanie aplikacjami.
+[Infrastruktura jako kod](/azure/devops/learn/what-is-infrastructure-as-code) to zarządzanie infrastrukturą w modelu opisowym przy użyciu tej samej wersji, jak zespoły DevOps na użytek kodu źródłowego. Ona dodaje niezawodność i skalowalność do środowiska i umożliwia wykorzystanie podobne procesy, które umożliwiają zarządzanie aplikacjami.
 
 -  Użyj [szablonów usługi Resource Manager](platform/template-workspace-configuration.md) aby umożliwić monitorowanie i Konfigurowanie alertów za pośrednictwem duży zestaw zasobów.
 - Użyj [usługi Azure Policy](../governance/policy/overview.md) do wymuszają różne reguły dotyczące zasobów. Daje to gwarancję, że te zasoby pozostają zgodne ze standardami firmy i umów dotyczących poziomu usług. 
@@ -63,7 +63,7 @@ Ciągła integracja / ciągłe wdrażanie pozwala na integrowanie i wdrażanie z
 
 
 - Użyj [potoki Azure](/azure/devops/pipelines) Implementowanie ciągłego wdrażania i automatyzowanie całego procesu od zatwierdzania kodu do środowiska produkcyjnego, oparte na testach ciągłej integracji/ciągłego wdrażania.
-- Użyj [bramki jakości](/devops/pipelines/release/approvals/gates) można zintegrować monitorowanie w przed wdrożeniem lub po wdrożeniu. Dzięki temu są spełniane metryki klucza kondycji i wydajności (KPI) jako aplikacji przenieść z deweloperów do produkcji i różnice w środowisku infrastruktury lub skalowania jest do niekorzystnego wpływu na kluczowych wskaźników wydajności.
+- Użyj [bramki jakości](/azure/devops/pipelines/release/approvals/gates) można zintegrować monitorowanie w przed wdrożeniem lub po wdrożeniu. Dzięki temu są spełniane metryki klucza kondycji i wydajności (KPI) jako aplikacji przenieść z deweloperów do produkcji i różnice w środowisku infrastruktury lub skalowania jest do niekorzystnego wpływu na kluczowych wskaźników wydajności.
 - [Obsługa osobne monitorowania instancje](../azure-monitor/app/separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../azure-monitor/platform/metrics-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Log Analytics](log-query/cross-workspace-query.md).
 
 

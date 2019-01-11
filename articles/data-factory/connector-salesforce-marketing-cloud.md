@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b45284f8fe4bd7fb45e89eeecf13ae7b9b2969b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2a469864a7b4a693ecc908fda360da1b82e8c5f3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016685"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200449"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z usług Salesforce: Marketing Cloud przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -31,6 +31,9 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 Możesz skopiować dane z usługi Salesforce Marketing Cloud, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+
+>[!NOTE]
+>Ten łącznik nie obsługuje pobierania obiektów niestandardowych lub niestandardowe rozszerzenia danych.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 94769ea0ff05565ee11f7c167e28f239ca304d3d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049966"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213743"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
@@ -32,7 +32,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 ### <a name="advantages"></a>Zalety
 - Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, w tym metryki analytics, usługi log analytics i usługi Application Insights.
 - Obsługuje zarówno metryk i dzienników.
-- Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](../azure-monitor/platform/metrics-charts.md), [zapytań usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), i [mapuje](../azure-monitor/app/app-map.md) i [dostępności]()w usłudze Application Insights.
+- Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](../azure-monitor/platform/metrics-charts.md), [zapytań usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), i [mapuje](../azure-monitor/app/app-map.md) i dostępności w usłudze Application Insights.
 - Opcja osobistym lub udostępnione pulpity nawigacyjne. Zintegrowana z platformą Azure [uwierzytelniania opartego na rolach (RBAC)](../role-based-access-control/overview.md).
 - Automatyczne odświeżanie. Odświeżanie metryk zależy od zakresu czasu z co najmniej pięć minut. Odśwież dzienniki na jedną minutę.
 - Metryki sparametryzowanego pulpity nawigacyjne z sygnatury czasowej i parametry niestandardowe.

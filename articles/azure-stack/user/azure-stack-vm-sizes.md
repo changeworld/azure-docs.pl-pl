@@ -10,21 +10,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 5127b748111f993f95f940f4add81c42a032e038
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ad38bdf30d04f309bedaf9a7cc8b3d5b1aad6df7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722092"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215069"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Rozmiary maszyn wirtualnych obsługiwanych w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 W tym artykule wymieniono rozmiarów maszyn wirtualnych (VM), które są dostępne w usłudze Azure Stack.
+
+Dysk operacje We/Wy (dane wejściowe i wyjściowe operacji na sekundę) w usłudze Azure Stack zależy od rozmiaru maszyny Wirtualnej, a nie typ dysku. Oznacza, że dla serii Standard_Fs maszyn wirtualnych, niezależnie od tego, czy wybrano dysk SSD lub HDD dla typu dysku limit operacji We/Wy dysku danych jednego dodatkowego 2300 operacje We/Wy. Operacje We/Wy ograniczenia nakładane jest ograniczenie (maksymalną liczbę kolumn) do hałaśliwym sąsiedztwem. Nie jest zapewnienie obsługi operacji We/Wy, które otrzymasz od określonego rozmiaru maszyny Wirtualnej.
 
 ## <a name="general-purpose"></a>Zastosowania ogólne
 

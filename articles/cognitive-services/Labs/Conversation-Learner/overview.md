@@ -10,18 +10,18 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 63d13235ec7244978193ed97aac8d11b2ff65eeb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790779"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198137"
 ---
 # <a name="what-is-conversation-learner"></a>Czym jest Uczeń konwersacji?
 
 Uczeń konwersacji umożliwia tworzenie i uczenie interfejsy konwersacyjne obsługujące, które uczą się z interakcji przykład. 
 
-W odróżnieniu od tradycyjnych metod uczeń konwersacji uwzględnia end-to-end kontekście dialogu, aby poprawić odpowiedzi i oferować bardziej atrakcyjne środowiska użytkownika. Obejmujące szeroką gamę zadań przypadki użycia, uczeń konwersacji dotyczy usługi machine learning w tle roboty i agentów inteligentnych, które są mniej prawdopodobne frustrować użytkowników, pociągnąć za sobą dodatkowych klientów usługi koszty i więcej więcej spur intuicyjne interakcje.
+W odróżnieniu od tradycyjnych metod uczeń konwersacji uwzględnia end-to-end kontekście dialogu, aby poprawić odpowiedzi i oferować bardziej atrakcyjne środowiska użytkownika. Obejmujące szeroką gamę zadań przypadki użycia, uczeń konwersacji dotyczy usługi machine learning w tle roboty i agentów inteligentnych, które są mniej prawdopodobne frustrować użytkowników, pociągnąć za sobą dodatkowych klientów usługi koszty i spur interakcje bardziej intuicyjne.
 
 Deweloperzy zacznij od wprowadzenia prototypowe okien dialogowych, które mają być naśladowania. Model dowiaduje się, ponieważ wprowadzono więcej okien dialogowych. Gdy Model działa dobrze, Bot można wdrożyć dla użytkowników końcowych. Uczeń konwersacji dzienniki rozmów z użytkownikami, a deweloper może zapoznaj się z nimi. Jeśli błędy są wykrył, deweloper może być korekcji na miejscu i model, który jest od razu retrained i dostępne do użycia.
 

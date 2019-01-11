@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c6d36f3e1cef4fffbe38b0a70d42069577590627
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623183"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212264"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Usługa Azure Active Directory reporting opóźnienia
 
@@ -40,10 +40,14 @@ W poniższej tabeli wymieniono opóźnienie dotycząca raporty aktywności.
 > **Czas oczekiwania (95. percentyl)** odnosi się do czasu za pomocą którego 95% dzienników jest informowany, i **opóźnienie (99. percentyl)** odnosi się do czasu raportowane 99% dzienniki. 
 >
 
-| Raport | Czas oczekiwania (95. percentyl) |Opóźnienie (99. percentyl)|
-| :-- | --- | --- | 
-| Dzienniki inspekcji | 2 min  | 5 min  |
-| Logowania | 2 min  | 5 min |
+| Raport | Czas oczekiwania (95. percentyl) |Opóźnienie (99. percentyl)|Zakres czasu, w którym będą raportowane dzienników|
+| :-- | --- | --- | --- |
+| Dzienniki inspekcji | 2 min  | 5 min  | 2 do 60 minut. |
+| Logowania | 2 min  | 5 min | 2 – 120 minut. |
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Termin może wyświetlać danych działania po otrzymaniu licencji premium?
+
+Jeśli masz już danych dotyczących działań związanych z bezpłatnej licencji, a następnie natychmiast go zobaczyć, w czasie uaktualniania. Jeśli nie masz żadnych danych, następnie potrwa jeden lub dwa dni, dane wyświetlane w raportach, po uaktualnieniu do licencji premium.
 
 ## <a name="security-reports"></a>Raporty dotyczące zabezpieczeń
 

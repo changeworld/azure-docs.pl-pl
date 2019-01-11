@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2c4c2982febf1d81aaaa81bb9c894785b860503b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789861"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200090"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -52,7 +52,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 * Ten problem może również się zdarzyć, jeśli wiele kopii zapasowych są wyzwalane na dzień. Obecnie firma Microsoft zaleca, aby tylko jedna kopia zapasowa dziennie jako natychmiastowe RPs są przechowywane przez 7 dni, a tylko 18 błyskawiczny RPs może być skojarzony z maszyną Wirtualną, w dowolnym momencie. <br>
 
 Zalecana akcja:<br>
-Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, a następnie spróbuj ponownie wykonać operację w celu wyzwolenia oczyszczania. 
+Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, a następnie spróbuj ponownie wykonać operację w celu wyzwolenia oczyszczania.
 > [!NOTE]
     > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` np: AzureBackupRG_northeurope_1
 
@@ -105,14 +105,14 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 **Kod błędu:**: UserErrorUnsupportedDiskSize <br>
 **Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarze większym niż 1023 GB <br>
 
-Operację tworzenia kopii zapasowej może zakończyć się niepowodzeniem, podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do stosu kopii zapasowej maszyny Wirtualnej platformy Azure w wersji 2. Uaktualnienie do kopii zapasowych maszyn wirtualnych platformy Azure stack, podane w wersji 2 obsługuje do 4 TB. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do przywrócenia błyskawiczne, operację tworzenia kopii zapasowej może się nie powieść. Uaktualnianie do przywrócenia błyskawiczne zapewni obsługuje do 4TB, zobacz ten [artykułu](backup-instant-restore-capability.md).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported — obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa
 
 **Kod błędu:**: UserErrorStandardSSDNotSupported <br>
 **Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa <br>
 
-Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
+Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
 
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania

@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie komputera z siecią wirtualną przy użyciu uwierzytelniania punkt-lokacja i usługi RADIUS: PowerShell | Azure'
+title: 'Łączenie komputera z siecią wirtualną przy użyciu punkt-lokacja i uwierzytelniania usługi RADIUS: Program PowerShell | Azure'
 description: Bezpieczne łączenie klientów z systemami Windows i Mac OS X z siecią wirtualną przy użyciu uwierzytelniania P2S i usługi RADIUS.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: b5d69b8f9f004da93e5bed05b86e46f6e4214d63
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bd74aca180d291042e597ba6893009c38aa22555
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847358"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200908"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania usługi RADIUS: PowerShell
 
@@ -64,28 +64,28 @@ Sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie masz jeszcze subskry
 
 ### <a name="sign-in"></a>Logowanie
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ### <a name="example"></a>Przykładowe wartości
 
 Wartości przykładowych możesz użyć do tworzenia środowiska testowego lub odwoływać się do tych wartości, aby lepiej zrozumieć przykłady w niniejszym artykule. Można postępować zgodnie z opisanymi krokami i użyć przedstawionych wartości bez ich zmieniania lub zmienić je, aby odzwierciedlały dane środowisko.
 
-* **Nazwa: VNet1**
+* **Nazwa: Sieć VNet1**
 * **Przestrzeń adresowa: 192.168.0.0/16** i **10.254.0.0/16**<br>W tym przykładzie używamy więcej niż jednej przestrzeni adresowej, aby zilustrować, że ta konfiguracja współpracuje z wieloma przestrzeniami adresowymi. Jednak ta konfiguracja nie wymaga wielu przestrzeni adresowych.
-* **Nazwa podsieci: FrontEnd**
+* **Nazwa podsieci: Frontonu**
   * **Zakres adresów podsieci: 192.168.1.0/24**
-* **Nazwa podsieci: BackEnd**
+* **Nazwa podsieci: Wewnętrznej bazy danych**
   * **Zakres adresów podsieci: 10.254.1.0/24**
 * **Nazwa podsieci: GatewaySubnet**<br>Nazwa podsieci *GatewaySubnet* jest obowiązkowa, aby brama VPN mogła działać.
-  * **Zakres adresów podsieci bramy: 192.168.200.0/24** 
+  * **Zakres adresów podsieci: 192.168.200.0/24** 
 * **Pula adresów klienta sieci VPN: 172.16.201.0/24**<br>Klienci sieci VPN łączący się z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z puli adresów klientów sieci VPN.
-* **Subskrypcja:** jeśli masz więcej niż jedną subskrypcję, sprawdź, czy korzystasz z właściwej.
+* **Subskrypcja:** Jeśli masz więcej niż jedną subskrypcję, sprawdź, czy używane są poprawne.
 * **Grupa zasobów: TestRG**
 * **Lokalizacja: Wschodnie stany USA**
-* **Serwera DNS: Adres IP** serwera DNS, który ma być używany do rozpoznawania nazw dla sieci wirtualnej. (opcjonalnie)
-* **Nazwa bramy: Vnet1GW**
-* **Nazwa publicznego adresu IP: VNet1GWPIP**
-* **VpnType: RouteBased** 
+* **Serwer DNS: Adres IP** serwera DNS, który ma być używany do rozpoznawania nazw dla sieci wirtualnej. (opcjonalnie)
+* **Nazwa GW: Vnet1GW**
+* **Publiczna nazwa adresu IP: VNet1GWPIP**
+* **Typ VpnType: RouteBased** 
 
 ## 1. <a name="vnet"></a>Utwórz grupę zasobów, sieć wirtualna i publiczny adres IP adres
 

@@ -3,7 +3,7 @@ title: Instalacja sterowników procesora GPU z serii N usługi Azure dla systemu
 description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtualnych serii N z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 01/09/2019
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bd9f8508f67a3c4b87533fb514854b5f66a5f6b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017267"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201044"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
@@ -51,9 +51,9 @@ Zostanie wyświetlone dane wyjściowe podobne do poniższego przykładu (wyświe
 
 Następnie polecenia uruchamiania instalacji specyficzne dla Twojej dystrybucji.
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
-1. Pobierz i zainstaluj sterowniki CUDA.
+1. Pobierz i zainstaluj sterowniki CUDA w witrynie sieci Web firmy NVIDIA. Na przykład Ubuntu 16.04 LTS:
   ```bash
   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -97,7 +97,7 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS i Red Hat Enterprise Linux w wersji 7.3 lub wersji 7.4
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS i Red Hat Enterprise Linux
 
 1. Zaktualizuj jądra (zalecane). Jeśli postanowisz nie aktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla Twojej jądra.
 
@@ -174,7 +174,7 @@ Wdrażanie z obsługą dostępu RDMA maszyny wirtualne z serii N z jednego z obr
 
 Aby zainstalować sterowniki NVIDIA GRID NV lub maszyny wirtualne z serii NVv2, Utwórz połączenie SSH do każdej maszyny Wirtualnej, a następnie postępuj zgodnie z instrukcjami dla Twojej dystrybucji systemu Linux. 
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
 1. Uruchom polecenie `lspci`. Sprawdź, czy karty M60 firmy NVIDIA lub kart są widoczne jako urządzenia PCI.
 

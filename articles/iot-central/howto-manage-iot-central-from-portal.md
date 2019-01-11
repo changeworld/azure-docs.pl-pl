@@ -3,17 +3,17 @@ title: Zarządzanie IoT Central w witrynie Azure portal | Dokumentacja firmy Mic
 description: Zarządzanie IoT Central w witrynie Azure portal.
 services: iot-central
 ms.service: iot-central
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/30/2018
 ms.topic: conceptual
-manager: peterpr
-ms.openlocfilehash: 20b1c7500587324f6f7dbb5cc679a3603eff56bd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+manager: philmea
+ms.openlocfilehash: 73c8d64c53e23601b19a775a07b0b630c675b91f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963831"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200475"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzanie IoT Central w witrynie Azure portal 
 Oprócz tworzenia i zarządzania aplikacjami IoT Central w witrynie sieci Web IoT Central, można również zarządzać IoT Central w witrynie Azure portal. W tym artykule opisano, co jest możliwe i jak to zrobić.
@@ -33,7 +33,7 @@ Kliknij element wiersza IoT Central aplikacji w wynikach wyszukiwania.
 
 Teraz kliknij przycisk "Utwórz", aby wyświetlić formularz, który należy wypełnić.
 
-![Portal zarządzania: zasobów IoT Central](media/howto-manage-iot-central-from-portal/image0c.png)
+![Portal zarządzania: Zasobów IoT Central](media/howto-manage-iot-central-from-portal/image0c.png)
 
 Wypełnij wszystkie pola w formularzu. Ta forma jest podobne do formularza, do którego należy wypełnić do tworzenia aplikacji z witryny sieci Web IoT Central. Aby dowiedzieć się więcej na temat sposobu wypełniania każdego pola, zapoznaj się z [tworzenia aplikacji IoT Central](quick-deploy-iot-central.md) Szybki Start. 
 

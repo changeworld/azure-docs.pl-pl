@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: f41974c6e2b2b0565f0a2703cfd638777a6bb9eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/09/2019
+ms.openlocfilehash: 818dbf84f7b706d6f4a89354291775f091bb1afc
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878027"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215477"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych
 
@@ -33,109 +33,216 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 > [!NOTE]
 > Limity zasobów pojedynczych baz danych w pulach elastycznych są ogólnie takie same jak dla pojedynczych baz danych poza pule, które ma taką samą obliczenia rozmiaru. Na przykład maksymalna współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 pracowników. Dlatego maksymalny współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 jest również 200 pracowników. Uwaga: łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 to 210.
 
-## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Ogólnego przeznaczenia usługi warstwy: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług ogólnego przeznaczenia: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generacja 4 (część 1)
 
-|Obliczenia rozmiaru|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|Obliczenia rozmiaru|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
-|Rdzenie wirtualne|1|2|4|8|16|24|
-|Pamięć (GB)|7|14|28|56|112|168|
+|Rdzenie wirtualne|1|2|3|4|5|6|
+|Pamięć (GB)|7|14|21|28|35|42|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
+|Maksymalny rozmiar danych (GB)|512|756|756|1536|1536|1536|
+|Maksymalny rozmiar dziennika|154|227|227|461|461|461|
+|Rozmiar bazy danych TempDB (GB)|32|64|96|128|160|192|
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
-|Maksymalny rozmiar danych (GB)|512|756|1536|2048|3584|4096|
-|Maksymalny rozmiar dziennika|154|227|461|614|1075|1229|
-|Size(DB) bazy danych TempDB|32|64|128|256|384|384|
-|Docelowy operacji We/Wy (64 KB)|500|1000|2000|4000|7000|7000|
-|We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
-|Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|3360|5040|
+|We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|500|1000|1500|2000|2500|3000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) * |210|420|630|840|1050|1260|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba baz danych na pulę|100|200|500|500|500|500|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Maksymalna liczba baz danych na pulę|100|200|300|500|500|500|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Liczba replik|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
-|||
 
-### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
 
-|Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
-|:--- | --: |--: |--: |--: |--: |--: |--: |--: |
-|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
-|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
-|Pamięć (GB)|11|22|44|88|132|176|220|440|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|ND|
-|Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
-|Maksymalny rozmiar danych (GB)|512|756|1536|2048|3072|4096|4096|4096|
-|Maksymalny rozmiar dziennika|154|227|461|614|922|1229|1229|1229|
-|Size(DB) bazy danych TempDB|64|128|256|384|384|384|384|384|
-|Docelowy operacji We/Wy (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
-|We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
-|Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|2520|3360|4200|8400
-|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba baz danych na pulę|100|200|500|500|500|500|500|500|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
-|Liczba replik|1|1|1|1|1|1|1|1|
-|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
-|Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|ND|
-|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
-|||
+### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generacja 4 (część 2)
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług krytycznych Business: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
-
-### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
-
-|Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|Obliczenia rozmiaru|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
-|Rdzenie wirtualne|1|2|4|8|16|24|
-|Pamięć (GB)|7|14|28|56|112|168|
+|Rdzenie wirtualne|7|8|9|10|16|24|
+|Pamięć (GB)|49|56|63|70|112|168|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
-|Pojemność magazynu OLTP w pamięci (GB)|1|2|4|8|20|36|
+|Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
+|Maksymalny rozmiar danych (GB)|1536|2048|2048|2048|3584|4096|
+|Maksymalny rozmiar dziennika (GB)|461|614|614|614|1075|1229|
+|Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
+|Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
+|We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|3500|4000|4500|5000|7000|7000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba baz danych na pulę|200|500|500|500|500|500|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
+|Liczba replik|1|1|1|1|1|1|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|
+|Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
+|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
+
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+
+### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generowania 5 (część 1)
+
+|Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
+|Rdzenie wirtualne|2|4|6|8|10|12|14|
+|Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
+|Maksymalny rozmiar danych (GB)|512|756|756|1536|1536|1536|
+|Maksymalny rozmiar dziennika (GB)|154|227|227|461|461|461|461|
+|Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
+|Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
+|We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|500|1000|1500|2000|2500|3000|3500|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|1470|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba baz danych na pulę|200|500|500|500|500|500|500|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Liczba replik|1|1|1|1|1|1|1|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
+|Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
+|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
+
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+
+### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generowania 5 (część 2)
+
+|Obliczenia rozmiaru|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
+|Rdzenie wirtualne|16|18|20|24|32|40|80|
+|Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
+|Maksymalny rozmiar danych (GB)|2048|2048|3072|3072|4096|4096|4096|
+|Maksymalny rozmiar dziennika (GB)|614|614|922|922|1229|1229|1229|
+|Rozmiar bazy danych TempDB (GB)|384|384|384|384|384|384|384|
+|Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
+|We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|4000|4500|5000|6000|7000|7000|7000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1680|1890|2100|2520|33600|4200|8400|
+|Maksymalna liczba baz danych na pulę|500|500|500|500|500|500|500|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
+|Liczba replik|1|1|1|1|1|1|1|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
+|Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
+|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
+
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług krytycznych biznesowe: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
+
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generacja 4 (część 1)
+
+|Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|:--- | --: |--: |--: |--: |--: |--: |
+|Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
+|Rdzenie wirtualne|1|2|3|4|5|6|
+|Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
+|Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
+|Pojemność magazynu OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
-|Maksymalny rozmiar dziennika|307|307|307|307|307|307|
-|Size(DB) bazy danych TempDB|32|64|128|256|384|384|
-|Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|80000|120000|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
+|Rozmiar bazy danych TempDB (GB)|32|64|96|128|160|192|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
-|Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|3360|5040|
+|Docelowy operacji We/Wy (64 KB)|5000|10 000|15000|20000|25000|30000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
-|Liczba replik|3|3|3|3|3|3|
-|Multi-AZ|ND|ND|ND|ND|ND|ND|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
+|Liczba replik|4|4|4|4|4|4|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
-|||
 
-#### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
 
-|Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
-|:--- | --: |--: |--: |--: |--: |--: |--: |--: |
-|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
-|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
-|Pamięć (GB)|11|22|44|88|132|176|220|440|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Pojemność magazynu OLTP w pamięci (GB)|1.571|3,142|6.284|15.768|25.252|37.936|52.22|131.64|
-|Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
-|Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
-|Maksymalny rozmiar dziennika|307|307|307|307|614|1229|1229|1229|
-|Size(DB) bazy danych TempDB|64|128|256|384|384|384|384|384|
-|Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|60000|80000|100000|200000
-|Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|2520|3360|5040|8400|
-|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba baz danych na pulę|ND|50|100|100|100|100|100|100|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
-|Liczba replik|3|3|3|3|3|3|3|3|
-|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
-|||
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generacja 4 (część 2)
+
+|Obliczenia rozmiaru|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
+|Rdzenie wirtualne|7|8|9|10|16|24|
+|Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
+|Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
+|Pojemność magazynu OLTP w pamięci (GB)|7|8|9,5|11|20|36|
+|Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
+|Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
+|Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
+|We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|35000|40000|45000|50000|80000|120000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
+|Liczba replik|4|4|4|4|4|4|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
+|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
+
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+
+#### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 1)
+
+|Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
+|Rdzenie wirtualne|2|4|6|8|10|12|14|
+|Pamięć (GB)|11|22|33|44|55|66|77|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Pojemność magazynu OLTP w pamięci (GB)|1.571|3,142|4.713|6.284|8.655|11.026|13.397|
+|Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|1536|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
+|Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
+|Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
+|We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|5000|10 000|15000|20000|25000|30000|35000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|1470|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|100|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Liczba replik|4|4|4|4|4|4|4|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
+
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+
+#### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 2)
+
+|Obliczenia rozmiaru|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
+|Rdzenie wirtualne|16|18|20|24|32|40|80|
+|Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Pojemność magazynu OLTP w pamięci (GB)|15.768|18.139|20.51|25.252|37.936|52.22|131.64|
+|Maksymalny rozmiar danych (GB)|3072|3072|3072|4096|4096|4096|4096|
+|Maksymalny rozmiar dziennika (GB)|922|922|922|1229|1229|1229|1229|
+|Rozmiar bazy danych TempDB (GB)|384|384|384|384|384|384|384|
+|Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
+|We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
+|Docelowy operacji We/Wy (64 KB)|40000|45000|50000|60000|80000|100000|200000|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1680|1890|2100|2520|3360|4200|8400|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|100|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
+|Liczba replik|4|4|4|4|4|4|4|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
+
+\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
 
 Jeśli wszystkie rdzenie wirtualne w puli elastycznej są zajęte, każda baza danych w puli otrzymuje taką samą ilość zasobów obliczeniowych do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest Oprócz zapewniania dowolnej ilości zasobów, w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba rdzeni wirtualnych na bazę danych jest ustawiona na wartość inną niż zero.
 

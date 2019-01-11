@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
+ms.date: 01/10/2019
 ms.author: ergreenl
-ms.openlocfilehash: c424ae1865a710593e509372dc2424c0b8b516a0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: ed89954836fe262ba60f7401bd7b040e87b60101
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155171"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215188"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Usługi domenowe Azure Active Directory (AD)
 ## <a name="overview"></a>Przegląd
@@ -65,10 +65,10 @@ Oto kilka istotne aspekty domeny zarządzanej, który jest obsługiwany przez us
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure AD Domain Services dla organizacji hybrydowych
 Organizacje z hybrydowej infrastruktury informatycznej korzystać z różnych zasobów w chmurze i zasobów lokalnych. Takie organizacje synchronizować informacje o tożsamościach z ich z katalogu lokalnego do swojej dzierżawy usługi Azure AD. Jak migrować bardziej "patrzą" organizacji hybrydowych aplikacji lokalnych do chmury, szczególnie starszych aplikacji obsługujących katalogi, usług domenowych Azure AD może być przydatne do nich.
 
-Firma litware została wdrożona [program Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), aby zsynchronizować informacje o tożsamościach z ich z katalogu lokalnego do swojej dzierżawy usługi Azure AD. Informacje o tożsamości, która będzie synchronizowana obejmuje konta użytkowników, ich skrótów poświadczeń dla uwierzytelniania (synchronizacji haseł) i członkostwa w grupach.
+Firma litware została wdrożona [program Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), aby zsynchronizować informacje o tożsamościach z ich z katalogu lokalnego do swojej dzierżawy usługi Azure AD. Informacje o tożsamości, która będzie synchronizowana obejmuje konta użytkowników, ich skrótów poświadczeń dla uwierzytelniania (synchronizacji skrótów haseł) i członkostwa w grupach.
 
 > [!NOTE]
-> **Synchronizacja haseł to obowiązkowe dla organizacji hybrydowych do korzystania z usług domenowych Azure AD**. To wymaganie wynika poświadczeń użytkownika są potrzebne w domenie zarządzanej udostępniane przez usługi domenowe Azure AD do uwierzytelniania tych użytkowników za pomocą metod uwierzytelniania NTLM lub Kerberos.
+> **Synchronizacja skrótów haseł jest obowiązkowa dla organizacji hybrydowych do korzystania z usług domenowych Azure AD**. To wymaganie wynika poświadczeń użytkownika są potrzebne w domenie zarządzanej udostępniane przez usługi domenowe Azure AD do uwierzytelniania tych użytkowników za pomocą metod uwierzytelniania NTLM lub Kerberos.
 >
 >
 

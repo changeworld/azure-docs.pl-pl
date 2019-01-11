@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 3c683b24db2899ee680988c7bedc760d6bb8ec73
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a3327c2c6f9684efe0d86b0cf923886f7310e1b0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053761"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199788"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Przesyłanie dużej liczby zadań do zadania usługi Batch
 
@@ -45,7 +45,7 @@ Maksymalny rozmiar kolekcji zadań, który można dodać w pojedynczym wywołani
 * Następujące interfejsy API obsługuje znacznie większe kolekcji zadań — ograniczony tylko ilością dostępność pamięci RAM na przesyłanie klienta. Te interfejsy API obsługują przezroczyste podzielenie kolekcji zadań na "fragmenty" dla niskiego poziomu interfejsy API i ponownych prób, jeśli dodanie zadania nie powiodło się.
 
     * [Interfejs API programu .NET](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
-    * [Interfejs API języka Java](/java/api/com.microsoft.azure.batch.protocol._tasks.addcollectionasync?view=azure-java-stable)
+    * [Interfejs API języka Java](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
     * [Rozszerzenie usługi Azure Batch CLI](batch-cli-templates.md) z szablonów interfejsu wiersza polecenia usługi Batch
     * [Rozszerzenia zestawu SDK języka Python](https://pypi.org/project/azure-batch-extensions/)
 
@@ -61,7 +61,7 @@ To może zająć trochę czasu, aby dodać to duży zbiór zadań podrzędnych d
 
 * **Limity połączeń HTTP** -ograniczać liczbę jednoczesnych połączeń HTTP wydajność klienta usługi Batch podczas jego polega na dodaniu dużą liczbę zadań. Liczba połączeń HTTP jest ograniczona za pomocą określonych interfejsów API. Podczas tworzenia za pomocą interfejsu API programu .NET, na przykład [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) właściwość jest domyślnie ustawiona na 2. Zaleca się zwiększenie wartości na liczbę blisko lub większa niż liczba operacji równoległych.
 
-## <a name="example-batch-net"></a>Przykład: Usługi Batch — .NET
+## <a name="example-batch-net"></a>Przykład: Batch .NET
 
 Poniższe fragmenty kodu C# Pokaż ustawienia konfiguracji podczas dodawania dużej liczby zadań przy użyciu interfejsu API .NET usługi Batch.
 
@@ -85,7 +85,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 
 
-## <a name="example-batch-cli-extension"></a>Przykład: Batch rozszerzenie interfejsu wiersza polecenia
+## <a name="example-batch-cli-extension"></a>Przykład: Rozszerzenie interfejsu wiersza polecenia usługi Batch
 
 Korzystanie z rozszerzeń interfejsu wiersza polecenia usługi Azure Batch przy użyciu [szablonów interfejsu wiersza polecenia usługi Batch](batch-cli-templates.md), Utwórz plik JSON szablonu zadania, który zawiera [fabryki zadań](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md). Fabryka zadań umożliwia skonfigurowanie kolekcji powiązanych zadań dla zadania z definicji pojedynczego zadania.  
 
@@ -128,7 +128,7 @@ Poniżej przedstawiono przykładowy szablon zadania dla zadania jednowymiarowa p
 ```
 Aby uruchomić zadanie przy użyciu szablonu, zobacz [użycia usługi Azure Batch CLI templates and i transferu plików](batch-cli-templates.md).
 
-## <a name="example-batch-python-sdk-extension"></a>Przykładzie: Rozszerzenia zestawu SDK Python usługi Batch
+## <a name="example-batch-python-sdk-extension"></a>Przykład: Rozszerzenia zestawu SDK języka Python usługi Batch
 
 Aby użyć rozszerzenia Azure SDK Python usługi Batch, należy najpierw zainstalować zestaw SDK języka Python i rozszerzenia:
 

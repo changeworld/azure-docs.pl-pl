@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d36179685e2098455e00186827d35e6de18bf975
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8d0ad34496963c32c842033e81bdffb375a27412
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892303"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214678"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Dodaj warstwę obrazu do mapy
 
@@ -29,9 +29,9 @@ W tym artykule pokazano, jak można nakładki obraz stały zestaw współrzędny
 > [!TIP]
 > [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jest szybkie, łatwe nakładki obrazów na mapie. Jednak jeśli obraz jest duży, przeglądarka może mieć trudności z go załadować. W takim przypadku należy wziąć pod uwagę podzielenie obrazu na kafelkach i ładuje je do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
-## <a name="add-an-image-layer"></a>Dodaj warstwę obrazu
+## <a name="add-an-image-layer"></a>Dodawanie warstwy obrazów
 
-W tym przykładzie pokazano, jak nakładki obraz [mapy Newark New Jersey z 1922]((https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)) na mapie.
+W tym przykładzie pokazano, jak nakładki obraz [mapy Newark New Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapie.
 
 <br/>
 

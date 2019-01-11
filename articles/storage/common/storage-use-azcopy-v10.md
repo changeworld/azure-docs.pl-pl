@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808121"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212502"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Transferowanie danych za pomocą AzCopy v10 (wersja zapoznawcza)
 
@@ -55,7 +55,7 @@ Narzędzie AzCopy v10 nie wymaga instalacji. Otwórz preferowaną aplikacji wier
 
 V10 narzędzia AzCopy można użyć następujących opcji uwierzytelniania w usłudze Azure Storage:
 - **Usługa Azure Active Directory [obsługiwane na obiekt Blob i Azure Data Lake Store Gen2]**. Użyj ```.\azcopy login``` logować się za pomocą usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory.
-- **Sygnatury dostępu Współdzielonego tokeny [obsługiwane w usłudze obiektów Blob i plików]**. Dołącz token sygnatury dostępu Współdzielonego do ścieżka obiektu blob w wierszu polecenia z niego korzystać. Można wygenerować tokenu sygnatury dostępu Współdzielonego przy użyciu witryny Azure Portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Sygnatury dostępu Współdzielonego tokeny [obsługiwane w usłudze obiektów Blob i plików]**. Dołącz token sygnatury dostępu Współdzielonego do ścieżka obiektu blob w wierszu polecenia z niego korzystać. Można wygenerować tokenu sygnatury dostępu Współdzielonego przy użyciu witryny Azure Portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 ## <a name="getting-started"></a>Wprowadzenie
 

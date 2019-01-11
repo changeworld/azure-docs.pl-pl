@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: b81b9b34843974ceacf41b08a40a52418ea46d22
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3e8e1626987f7418fee9fc36515131650d865201
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547553"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213080"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurowanie źródeł wdrożenia
 
@@ -138,7 +138,7 @@ Musi mieć Account Microsoft połączony z kontem usługi OneDrive, aby zakończ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Użytkownicy mogą teraz używać źródła wdrożenia dla elementów, takich jak [ciągłe wdrażanie](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [lokalne wdrożenie narzędzia Git](https://docs.microsoft.com/azure/app-service/deploy-local-git), i [folder synchronizacji w chmurze](https://docs.microsoft.com/azure/app-service-web/deploy-content-sync).
+Użytkownicy mogą teraz używać źródła wdrożenia dla elementów, takich jak [ciągłe wdrażanie](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [lokalne wdrożenie narzędzia Git](https://docs.microsoft.com/azure/app-service/deploy-local-git), i [folder synchronizacji w chmurze](https://docs.microsoft.com/azure/app-service/deploy-content-sync).
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

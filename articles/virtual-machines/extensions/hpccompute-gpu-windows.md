@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/5/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 2a29cae6e7f391dfee75e89ea91525268db3fa62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4bb27959bb57f3d59621e5bbbfaba9aa0c331432
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971967"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200687"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Procesor GPU NVIDIA sterownika rozszerzenia dla Windows
 
@@ -37,7 +37,7 @@ To rozszerzenie obsługuje następujące OSs:
 
 | Dystrybucja | Wersja |
 |---|---|
-| Windows 10 | Podstawowe |
+| Windows 10 (maksymalnie wersji 1803)| Podstawowe |
 | Windows Server 2016 | Podstawowe |
 | Windows Server 2012 R2 | Podstawowe |
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | Operacja zakończona powodzeniem |
 | 1 | Operacja zakończona powodzeniem. Wymagany jest ponowny rozruch. |
-| 100 | Operacja nie obsługiwany lub nie można ukończyć. | Możliwe przyczyny: nieobsługiwana wersja programu PowerShell rozmiar maszyny Wirtualnej nie jest maszyn wirtualnych serii N niepowodzenia pobierania danych. Sprawdź pliki dziennika, aby ustalić przyczynę błędu. |
+| 100 | Operacja nie obsługiwany lub nie można ukończyć. | Możliwe przyczyny: Nieobsługiwana wersja programu PowerShell, rozmiar maszyny Wirtualnej nie jest maszyn wirtualnych serii N niepowodzenia pobierania danych. Sprawdź pliki dziennika, aby ustalić przyczynę błędu. |
 | 240, 840 operacji | Limit czasu operacji. | Ponów próbę wykonania operacji. |
 | -1 | Wystąpił wyjątek. | Sprawdź pliki dziennika, aby ustalić przyczynę wystąpienia wyjątku. |
 | -5 x | Operacja została przerwana ze względu na oczekujące na ponowny rozruch. | Uruchom ponownie maszynę Wirtualną. Instalacja będzie kontynuowana po ponownym uruchomieniu. Odinstaluj powinno zostać uruchomione ręcznie. |

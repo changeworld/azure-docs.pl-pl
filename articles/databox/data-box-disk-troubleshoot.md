@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 13e42ae9b25c769a468a8c9839fd1aaf0abf2787
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191704"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213148"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Rozwiązywanie problemów z dysku Azure Data Box
 
@@ -96,12 +96,11 @@ W tej sekcji przedstawiono niektóre najważniejsze problemy sterowaną podczas 
 
 Może to być spowodowane system nieczyste plików. 
 
-- Woluminom dysku jako przeczytane nie działa z dyskami pola danych. Ten scenariusz nie jest obsługiwany z stacje odszyfrować dislocker. 
-- Woluminom jako odczytu i zapisu nie będzie działać. Użytkownik może mieć pomyślnie ponownej instalacji urządzenia przy użyciu następującego polecenia: 
+Woluminom dysk w trybie odczytu i zapisu nie działa z dyskami pola danych. Ten scenariusz nie jest obsługiwany z stacje odszyfrować dislocker. Użytkownik może mieć pomyślnie ponownej instalacji urządzenia przy użyciu następującego polecenia: 
 
     `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
 
-   Chociaż woluminom zakończyło się pomyślnie, dane nie będą zachowywane.
+Chociaż woluminom zakończyło się pomyślnie, dane nie będą zachowywane.
 
 **Rozdzielczość**
 
@@ -125,11 +124,11 @@ Jeśli widzisz, że dysk nie znajdują się dane po odinstalować (chociaż dane
  
 Jeśli tak jest rzeczywiście, zobacz Rozpoznawanie dla [dyskach Rozpoczynanie zainstalowanego jako tylko do odczytu](#issue-drive-getting-mounted-as-read-only).
 
-Jeśli nie było tak, [Pobierz dzienniki diagnostyczne](#download-diagnostic-logs) z systemu i [skontaktuj się z Microsoft Support](data-box-disk-contact-microsoft-support.md).
+Jeśli nie było tak, skopiuj dzienniki z folderu, który zawiera dane pole dysku odblokować narzędzie i [skontaktuj się z Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="deployment-issues-for-windows"></a>Problemy z wdrażaniem dla Windows
 
-Tej sekcji opisano szczegółowo niektóre najważniejsze problemy sterowaną podczas wdrażania dysku Data Box za pomocą klienta systemu Linux do kopiowania danych
+Tej sekcji opisano szczegółowo niektóre najważniejsze problemy sterowaną podczas wdrażania dysku Data Box przy użyciu klienta Windows do kopiowania danych
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problem: Nie można odblokować dysk z funkcją BitLocker
  
@@ -139,7 +138,7 @@ Wykorzystano hasło w oknie dialogowym funkcji BitLocker i próby odblokowania d
 
 **Rozdzielczość**
 
-Aby odblokować dyski Data Box, należy za pomocą narzędzia Data Box dysku odblokowania i podaj hasło w witrynie Azure portal.
+Aby odblokować dyski Data Box, należy za pomocą narzędzia Data Box dysku odblokowania i podaj hasło w witrynie Azure portal. Aby uzyskać więcej informacji, przejdź do [samouczka: Rozpakowywanie, łączenie i odblokować dysku Azure Data Box](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problem: Nie można odblokować lub sprawdzić niektóre woluminy. Contact Microsoft Support.
  
@@ -155,7 +154,7 @@ Oznacza to, że prawdopodobnie brakuje odpowiednią wersję programu Windows Pow
 
 Możesz zainstalować [v programu Windows PowerShell 5.0](https://www.microsoft.com/download/details.aspx?id=54616) i spróbuj ponownie wykonać operację.
  
-Jeśli nadal nie można odblokować woluminy, [skontaktuj się z Microsoft Support](data-box-disk-contact-microsoft-support.md).
+Jeśli nadal nie można odblokować woluminy, skopiuj dzienniki z folderu, który zawiera dane pole dysku odblokować narzędzie i [skontaktuj się z Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

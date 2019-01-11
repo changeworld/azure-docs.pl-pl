@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 3c7b855588b45cd61bb13848720d6e926bbecba4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d17b1b754afc5067a885025dba83cd0fba2370d5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121111"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214576"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK .NET usługi Application Insights składa się kilka pakietów NuGet. [Pakiet podstawowego](https://www.nuget.org/packages/Microsoft.ApplicationInsights) zapewnia interfejs API do wysyłania danych telemetrycznych do usługi Application Insights. [Dodatkowe pakiety](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) Podaj dane telemetryczne *modułów* i *inicjatory* dla automatycznego śledzenia danych telemetrycznych z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączyć lub wyłączyć inicjatory i moduły danych telemetrycznych i ustawić parametry dla niektórych z nich.
@@ -233,7 +233,7 @@ Określa maksymalny rozmiar w Megabajtach, która jest przydzielona do magazynu 
 
 #### <a name="local-forwarder"></a>Lokalna usługa przesyłania dalej
 
-[Lokalne usługi przesyłania dalej](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) Agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i struktur i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux. W połączeniu z zestawu SDK Java usługi Application Insights lokalnej usługi przesyłania dalej zapewnia pełną obsługę [metryki na żywo](../../azure-monitor/app/live-stream.md) i próbkowanie adaptacyjne.
+[Lokalne usługi przesyłania dalej](opencensus-local-forwarder.md) Agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i struktur i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux. W połączeniu z zestawu SDK Java usługi Application Insights lokalnej usługi przesyłania dalej zapewnia pełną obsługę [metryki na żywo](../../azure-monitor/app/live-stream.md) i próbkowanie adaptacyjne.
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">

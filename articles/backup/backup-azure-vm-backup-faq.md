@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ec7de756a5b3c8e713fa8e73c18cebee32b83e28
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041292"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201316"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Często zadawane pytania dotyczące usługi Azure Backup
 
@@ -57,14 +57,13 @@ Jeśli zablokujesz grupy zasobów, usługa Azure Backup nie można usunąć star
 Nie. Data i godzina na komputerze lokalnym jest lokalny przy użyciu bieżącego letniego stosowane. Czas zaplanowanego tworzenia kopii zapasowych mogą się różnić od lokalnego czasu z powodu czasu letniego.
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Liczba dysków z danymi można dołączyć do maszyny Wirtualnej z kopii zapasowej przez usługę Azure Backup?
-Usługa Azure Backup można utworzyć kopii maszyn wirtualnych z maksymalnie 16 dysków. Obsługa 16 dysków znajduje się w [najnowszej wersji](backup-upgrade-to-vm-backup-stack-v2.md) kopii zapasowej maszyny Wirtualnej platformy Azure stack w wersji 2.
+Usługa Azure Backup można utworzyć kopii maszyn wirtualnych z maksymalnie 16 dysków. Obsługa 16 dysków znajduje się w [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Czy obsługę kopii zapasowych platformy Azure SSD zarządzanego dysku w warstwie standardowa?
-Usługa Azure Backup obsługuje [SSD w warstwie standardowa usługi managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD managed disks zapewnia nowy typ trwałego magazynu maszyn wirtualnych platformy Azure. Obsługa dysków SSD zarządzane znajduje się w [najnowszej wersji](backup-upgrade-to-vm-backup-stack-v2.md) kopii zapasowej maszyny Wirtualnej platformy Azure stack w wersji 2.
+Usługa Azure Backup obsługuje [SSD w warstwie standardowa usługi managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD managed disks zapewnia nowy typ trwałego magazynu maszyn wirtualnych platformy Azure. Obsługa dysków SSD zarządzane znajduje się w [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Możemy utworzyć kopię zapasową maszyny Wirtualnej z dyskiem z obsługą WA akcelerator zapisu?
-Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azure Backup można wykluczyć dysk z obsługą WA z kopii zapasowej. Wykluczenie dysku dla maszyn wirtualnych z dyskami z obsługą WA jest obsługiwana tylko dla subskrypcji, uaktualnić do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2. Aby przeprowadzić uaktualnienie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2, zobacz ten [artykułu](backup-upgrade-to-vm-backup-stack-v2.md). Ta funkcja jest obecnie dostępna w regionie Japonia Wschodnia, Europa Północna, Azja południowo-wschodnia, wschodnie stany USA, zachodnie stany USA 2, Europa Zachodnia i wschodnie stany USA 2.
-
+Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azure Backup można wykluczyć dysk z obsługą WA z kopii zapasowej. Wykluczenie dysku dla maszyn wirtualnych z dyskami z obsługą WA jest obsługiwana tylko dla subskrypcji, uaktualnić do natychmiastowe przywracanie.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mam Maszynę wirtualną z dyskami akcelerator zapisu (Waszyngton) i zainstalować oprogramowanie SAP HANA. Jak wykonać kopię zapasową?
 Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z obsługą WA, ale można wykluczyć z kopii zapasowej. Jednak kopii zapasowej nie zawiera spójność bazy danych, ponieważ na dysku włączony (Waszyngton) nie ma kopii zapasowej. Jeśli dysk systemu operacyjnego kopii zapasowych i kopii zapasowych dysków, które nie są włączone w stanie Waszyngton, można wykonywanie kopii zapasowych dysków przy użyciu tej konfiguracji.
@@ -104,7 +103,7 @@ Tak. Nawet wtedy, gdy usuniesz maszynę Wirtualną, możesz przejść do odpowie
 Zarządzane dysku maszyny wirtualnej platformy Azure Przywracanie do zestawów dostępności jest włączona, podając opcję w szablonie podczas przywracania jako dysków zarządzanych. Ten szablon zawiera parametr wejściowy o nazwie **zestawy dostępności**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak uzyskać szybsze wykonań przywracania?
-Aby zwiększyć wydajność przywracania, zalecamy przeniesienie do stosu kopii zapasowej maszyny Wirtualnej V2, a następnie użyć [funkcji błyskawiczne RP](backup-upgrade-to-vm-backup-stack-v2.md).
+Aby zwiększyć wydajność przywracania, firma Microsoft przechodzenia do [natychmiastowe Przywracanie](backup-instant-restore-capability.md) możliwości.
 
 ## <a name="manage-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych
 

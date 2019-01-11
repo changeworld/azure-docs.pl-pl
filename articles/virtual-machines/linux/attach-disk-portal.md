@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 519fd063e52d1e202ea76db0fd4be15ebd117cd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001620"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214933"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny Wirtualnej z systemem Linux za pomocą portalu 
 W tym artykule pokazano, jak dołączyć istniejących i nowych dysków do maszyny wirtualnej z systemem Linux w witrynie Azure portal. Możesz również [dołączanie dysku danych do maszyny Wirtualnej z systemem Windows w witrynie Azure portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -28,7 +28,7 @@ W tym artykule pokazano, jak dołączyć istniejących i nowych dysków do maszy
 Przed dołączeniem dyski do maszyny Wirtualnej, przejrzyj te wskazówki:
 
 * Liczba dysków z danymi można dołączać jest kontrolowana przez rozmiar maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Aby korzystać z usługi Premium storage, musisz mieć maszyny wirtualnej serii DS lub GS. Z tych maszyn wirtualnych, można użyć disks w warstwach Premium i standardowa. Usługa Premium storage jest dostępna w niektórych regionach. Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Aby korzystać z usługi Premium storage, musisz mieć maszyny wirtualnej serii DS lub GS. Z tych maszyn wirtualnych, można użyć disks w warstwach Premium i standardowa. Usługa Premium storage jest dostępna w niektórych regionach. Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Magazyn Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
 * Dyski dołączone do maszyn wirtualnych są faktycznie pliki VHD przechowywane na platformie Azure. Aby uzyskać więcej informacji, zobacz [informacje o dyskach i wirtualnych dyskach twardych dla maszyn wirtualnych](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Po dołączeniu dysku, należy [łączenie z maszyną Wirtualną systemu Linux zainstaluj nowy dysk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
@@ -96,7 +96,12 @@ Dane wyjściowe są podobne do poniższego przykładu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-W tym miejscu *sdc* to dysk, który chcemy. Określ partycję dysku za pomocą `fdisk`stał się podstawowym dysku na partycji 1 i zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
+W tym miejscu *sdc* to dysk, który chcemy. 
+
+### <a name="partion-a-new-disk"></a>Partion nowy dysk
+Jeśli używasz istniejącego dysku, który zawiera dane, przejdź do instalowania na dysku. Dołączając nowy dysk, musisz partycji na dysku.
+
+Użyj `fdisk` partycji dysku, stał się podstawowym dysku na partycji 1 i zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
@@ -176,8 +181,8 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-
-Teraz Utwórz katalog do instalacji systemu plików przy użyciu `mkdir`. Poniższy przykład tworzy katalog w */datadrive*:
+### <a name="mount-the-disk"></a>Zainstaluj dysk
+Utwórz katalog do instalacji systemu plików przy użyciu `mkdir`. Poniższy przykład tworzy katalog w */datadrive*:
 
 ```bash
 sudo mkdir /datadrive

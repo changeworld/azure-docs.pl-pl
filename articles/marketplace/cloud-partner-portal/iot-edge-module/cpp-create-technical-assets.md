@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 877e42dc8d6e69834cf989122f855ada560b813c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227760"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201248"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Przygotowanie modułu usługi IoT Edge, zasoby techniczne
 
@@ -111,7 +111,7 @@ Modułów przy użyciu zestawu SDK usługi IoT moduł musi równa identyfikator 
 - [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._product_info?view=azure-java-stable)
+- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 Dla modułów, które nie korzystają z zestawu SDK modułu IoT mniej dokładne informacje są dostępne za pośrednictwem portalu Cloud Partner, takie jak liczba plików do pobrania.
 

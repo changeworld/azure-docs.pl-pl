@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c60f835939b790a05bb536388b961a277e3101e3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278291"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215341"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Uruchamianie, zatrzymywanie i sporządzić raport na temat usługi testu chaos.
@@ -47,9 +47,9 @@ Aby pobrać następny segment zdarzenia chaosu, można określić token kontynua
 |Argument|Opis|
 | --- | --- |
 | --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| — Godzina zakończenia — utc | Windows pliku reprezentuje czas zakończenia przedziału czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) Aby uzyskać szczegółowe informacje. |
+| — Godzina zakończenia — utc | Windows pliku reprezentuje czas zakończenia przedziału czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) Aby uzyskać szczegółowe informacje. |
 | — Maksymalna liczba wyników | Maksymalna liczba wyników do zwrócenia w ramach kwerend stronicowanych. Ten parametr określa górną granicę na liczbie zwrócone wyniki. Wyniki zwracane, może być mniejsza niż określona maksymalna liczba wyników, jeśli nie mieszczą się w komunikacie zgodnie z ograniczeniami rozmiar maksymalny komunikatu zdefiniowane w konfiguracji. Jeśli ten parametr ma wartość zero lub nie określono, stronicowane zapytanie zawiera dowolną liczbę wyników jak to możliwe, który mieści się w komunikacie zwrotu. |
-| — utc-start-time | Windows pliku reprezentuje czas rozpoczęcia zakresu czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) Aby uzyskać szczegółowe informacje. |
+| — utc-start-time | Windows pliku reprezentuje czas rozpoczęcia zakresu czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) Aby uzyskać szczegółowe informacje. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne

@@ -2,18 +2,18 @@
 title: Przejdź interfejsów API Azure Twins cyfrowych | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak typowych wzorców zapytań interfejsów API zarządzania Twins cyfrowych platformy Azure.
 author: dsk-2015
-manager: bertvanhoof
+manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 2221e8b22450a353da42564e5b93342a11e59f71
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108321"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200959"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API zarządzania Twins cyfrowych platformy Azure
 
@@ -25,11 +25,11 @@ Na poniższej liście przedstawiono składniki cyfrowego interfejsów API bliźn
 
 * [/ spacje](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Te interfejsy API wchodzić w interakcje z lokalizacji fizycznych w ustawieniach. Te ułatwiają tworzenie, usuwanie i zarządzanie cyfrowego mapowania sieci lokalizacji fizycznych w formie [przestrzenne wykresu](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
 
-* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Te interfejsy API ułatwiają konfigurowanie zasobów, takich jak usługi IoT hub, wystąpienia Twins cyfrowych.
-
 * [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Te interfejsy API wchodzić w interakcje z urządzeniami w ustawieniach. Te urządzenia mogą zarządzać co najmniej jeden czujników. Na przykład urządzenie może być telefonu, pod czujników urządzenia Raspberry Pi lub bramy lora utworzonej i tak dalej.
 
 * [/Sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Te interfejsy API ułatwiają komunikowania się z czujników skojarzonych z urządzeń i sieci lokalizacji fizycznych. Czujników, Zapisz i Wyślij otoczenia wartości, które następnie mogą być używane do manipulowania środowiska przestrzennych.  
+
+* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Te interfejsy API ułatwiają konfigurowanie zasobów, takich jak usługi IoT hub, wystąpienia Twins cyfrowych.
 
 * [/ typów](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Te interfejsy API umożliwiają skojarzenie rozszerzone typy z obiektów reprezentacje urządzeń cyfrowych, można dodać szczególne cechy do tych obiektów. Te typy umożliwiają łatwe filtrowanie i grupowanie obiektów w Interfejsie użytkownika i funkcje niestandardowe, które przetwarzają dane telemetryczne. Przykłady typów rozszerzonej *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType* , *SpaceBlobType*, *SpaceResourceType*i tak dalej.
 

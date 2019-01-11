@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ac3c3d8f2a5ae37f1d32f9781f0cdbec0b293e8
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b3bcd752f14f5d43c8cb8f686534e016690c7c40
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055373"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198069"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Przywróć klucz usługi Key Vault i klucz tajny dla szyfrowanych maszyn wirtualnych przy użyciu usługi Azure Backup
 Ten artykuł zawiera informacje o przy użyciu kopii zapasowych maszyn wirtualnych platformy Azure przeprowadzić przywracanie zaszyfrowanych maszyn wirtualnych platformy Azure, z kluczem i wpisem tajnym nie istnieją w magazynie kluczy. Te kroki można również Jeśli chcesz zachować oddzielna kopia key (klucz szyfrowania klucza) i klucz tajny (klucz szyfrowania funkcją BitLocker) dla przywróconej maszyny Wirtualnej.
@@ -28,8 +28,8 @@ Ten artykuł zawiera informacje o przy użyciu kopii zapasowych maszyn wirtualny
 
 > [!NOTE]
 > Gdy dysk został przywrócony do zaszyfrowanej maszyny Wirtualnej, upewnij się, że:
-> 1. $details jest wypełniana szczegóły zadania przywracania dysku, zgodnie z opisem w [PowerShell kroki przywracania sekcji dysków](backup-azure-vms-automation.md#restore-an-azure-vm)
-> 2. Należy utworzyć maszyny Wirtualnej z przywróconych dysków tylko **po przywróceniu klucza i wpisu tajnego usługi key vault**.
+> * $details jest wypełniana szczegóły zadania przywracania dysku, zgodnie z opisem w [PowerShell kroki przywracania sekcji dysków](backup-azure-vms-automation.md#restore-an-azure-vm)
+> * Należy utworzyć maszyny Wirtualnej z przywróconych dysków tylko **po przywróceniu klucza i wpisu tajnego usługi key vault**.
 >
 >
 
@@ -61,7 +61,10 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 ```
 
 ## <a name="restore-secret"></a>Przywróć klucz tajny
-Użyj pliku JSON, wygenerowany powyżej, nazwa wpisu tajnego i wartości do niego, aby ustawić wpisu tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) ponownie w usłudze key vault. **Użyj tych poleceń cmdlet, jeśli maszyna wirtualna jest zaszyfrowana przy użyciu BEK i KEK.**
+
+Jeśli maszyna wirtualna platformy Azure bez usługi Azure AD jest zaszyfrowana przy użyciu klucza szyfrowania bloków tylko (zarówno dla Windows i maszyn wirtualnych systemu Linux), generowanie klucza tajnego nazwą i wartością za pomocą powyższych poleceń i niego można ustawić klucza tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) w magazynie kluczy.
+
+**Użyj tych poleceń cmdlet, jeśli maszyna wirtualna Windows jest zaszyfrowana przy użyciu BEK i KEK.**
 
 ```
 PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -71,17 +74,27 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Jeśli maszyna wirtualna jest **szyfrowany tylko przy użyciu klucza szyfrowania bloków**, generowanie pliku obiektu blob klucza tajnego z kodu JSON i źródła danych do przywrócenia klucza tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) w magazynie kluczy.
+**Jeśli maszyna wirtualna systemu Linux jest zaszyfrowany przy użyciu BEK i KEK, należy używać tych poleceń cmdlet.**
+
+```
+PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
+PS C:\> $Secret = ConvertTo-SecureString -String $secretdata -AsPlainText -Force
+PS C:\> $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
+PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = $encryptionObject.OsDiskKeyAndSecretDetails.KeyUrl;'MachineName' = 'vm-name'}
+PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
+```
+
+Jeśli maszyna wirtualna platformy Azure z usługą Active Directory jest **szyfrowany tylko przy użyciu klucza szyfrowania bloków**, generowanie pliku obiektu blob klucza tajnego z kodu JSON i źródła danych do przywrócenia klucza tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) w magazynie kluczy.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'
 PS C:\> [io.file]::WriteAllBytes($secretDestination, [System.Convert]::FromBase64String($encryptionObject.OsDiskKeyAndSecretDetails.KeyVaultSecretBackupData))
 PS C:\> Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $secretDestination -Verbose
-```
+  ```
 
 > [!NOTE]
-> 1. Wartość $secretname można uzyskać przez odwołujący się do danych wyjściowych $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl i przy użyciu tekstu po wpisów tajnych / np. adres URL wpisu tajnego danych wyjściowych jest https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 i nazwa wpisu tajnego jest B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> 2. Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa wpisu tajnego.
+> * Wartość $secretname można uzyskać przez odwołujący się do danych wyjściowych $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl i przy użyciu tekstu po wpisów tajnych / np. adres URL wpisu tajnego danych wyjściowych jest https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 i nazwa wpisu tajnego jest B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa wpisu tajnego.
 >
 >
 
@@ -111,9 +124,9 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secr
 ```
 
 > [!NOTE]
-> 1. Wartość $secretname można uzyskać, odwołując się do danych wyjściowych po1 $. KeyAndSecretDetails.SecretUrl i przy użyciu tekstu po wpisów tajnych / np. wpis tajny w danych wyjściowych adres URL jest https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 i nazwa wpisu tajnego jest B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> 2. Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa wpisu tajnego.
-> 3. Wartość DiskEncryptionKeyEncryptionKeyURL można uzyskać z magazynu kluczy po przywracania kluczy powrót i używanie [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) polecenia cmdlet
+> * Wartość $secretname można uzyskać, odwołując się do danych wyjściowych po1 $. KeyAndSecretDetails.SecretUrl i przy użyciu tekstu po wpisów tajnych / np. wpis tajny w danych wyjściowych adres URL jest https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 i nazwa wpisu tajnego jest B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa wpisu tajnego.
+> * Wartość DiskEncryptionKeyEncryptionKeyURL można uzyskać z magazynu kluczy po przywracania kluczy powrót i używanie [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) polecenia cmdlet
 >
 >
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d322a0027f786be0603e7147eb3ba24341dd7fbf
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653360"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214865"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -44,7 +44,7 @@ Ten temat zawiera omówienie raportów logowania.
 * Ponadto każdy użytkownik (niebędący administratorem) będą mogli ich własnych logowań 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
-* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Zobacz [wprowadzenie do usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) uaktualnić swoją wersję usługi Azure Active Directory.
+* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Należy pamiętać, że jeśli nie masz żadnych danych działań przed uaktualnieniem, potrwa kilka dni, dane wyświetlane w raportach, po uaktualnieniu do licencji premium.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
@@ -54,7 +54,7 @@ Raport logowań użytkownika zawiera odpowiedzi na następujące pytania:
 * Ilu użytkowników zalogowało się w ciągu tygodnia?
 * Jaki jest stan tych logowań?
 
-Dostęp do raportów logowania, wybierając **logowania** w **działania** części **usługi Azure Active Directory** bloku [witrynyAzureportal](https://portal.azure.com).
+Dostęp do raportów logowania, wybierając **logowania** w **działania** części **usługi Azure Active Directory** bloku [witrynyAzureportal](https://portal.azure.com). Należy pamiętać, że może zająć maksymalnie dwie godziny dla niektórych rekordów logowania wyświetlani w portalu.
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/61.png "Działania związane z logowaniem")
 

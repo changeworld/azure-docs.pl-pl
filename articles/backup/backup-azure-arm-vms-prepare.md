@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: ee7a9c407a26f9334a854c98793db8fc01244e2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a7a2d8729e1abdafa89eff912faf84d8f247b442
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994678"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215443"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -77,7 +77,7 @@ Jeśli to konieczne, zainstaluj agenta w następujący sposób.
 **Maszyny wirtualne z systemem Linux** | Instalację przy użyciu RPM lub DEB pakietu z repozytorium pakietów w Twojej dystrybucji jest preferowaną metodą instalacji i uaktualniania agenta systemu Linux dla platformy Azure. Wszystkie [zatwierdzonego dla dostawców dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Zintegruj pakiet Azure Linux agent repozytoriów i obrazów. Agent jest dostępna w [GitHub](https://github.com/Azure/WALinuxAgent), ale nie jest zalecane instalowanie z tego miejsca.
 Jeśli masz problemy z tworzeniem kopii zapasowej maszyny Wirtualnej platformy Azure, skorzystaj z poniższej tabeli, aby sprawdzić, czy agent maszyny Wirtualnej platformy Azure został poprawnie zainstalowany na maszynie wirtualnej. W tabeli przedstawiono dodatkowe informacje na temat agenta maszyny Wirtualnej dla Windows i maszyn wirtualnych systemu Linux.
 
-### <a name="establish-network-connectivity"></a>Ustanowienie połączenia z siecią
+### <a name="establish-network-connectivity"></a>Ustawianie łączności sieciowej
 
 Zapasowy numer wewnętrzny, uruchomione na maszynie Wirtualnej musi mieć dostęp ruchu wychodzącego do platformy Azure z publicznymi adresami IP. Aby zezwolić na dostęp możesz wykonywać następujące czynności:
 
@@ -90,7 +90,7 @@ Wybierając jedną z opcji, należy wziąć pod uwagę skutków ubocznych.
 
 **Opcja** | **Zalety** | **Wady**
 --- | --- | ---
-**SIECIOWA GRUPA ZABEZPIECZEŃ** | Bez dodatkowych kosztów. Łatwo zarządzać za pomocą tagów usługi | Zapewnia dostęp do całej platformy Azure i nie tylko magazyn. |
+**SIECIOWA GRUPA ZABEZPIECZEŃ** | Brak dodatkowych kosztów. Łatwo zarządzać za pomocą tagów usługi | Zapewnia dostęp do całej platformy Azure i nie tylko magazyn. |
 **Serwer proxy HTTP** | Ścisła kontrola nad adresy URL magazynu jest dozwolone.<br/><br/> Pojedynczy punkt internet access dla maszyn wirtualnych.<br/><br/> Dodatkowe koszty dla serwera proxy.
 **Nazwa FQDN tagów** | Łatwa w użyciu, jeśli masz zapory usługi Azure w podsieci sieci wirtualnej | Nie można utworzyć własne tagi nazwy FQDN lub zmodyfikować nazwy FQDN w tagu.
 
@@ -285,5 +285,5 @@ Po włączeniu kopii zapasowej:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Rozwiązanie wszelkich problemów, które występują w [agentów maszyny Wirtualnej platformy Azure](/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) lub [kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-troubleshoot.md).
+- Rozwiązanie wszelkich problemów, które występują w [agentów maszyny Wirtualnej platformy Azure](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) lub [kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-troubleshoot.md).
 - [Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-first-look-arm.md)

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: fbb1757cfb1118380e2f7d79566f6dc9832fce23
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e64820377421a3eae80d77d464e48979a3bb30a5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041497"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198630"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Java (asynchroniczny) usługi Azure Cosmos DB zestawu SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 
 <tr><td>**Zestaw SDK do pobrania**</td><td>[Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
 
-<tr><td>**Dokumentacja interfejsu API**</td><td>[Dokumentacja interfejsu API języka Java](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._asyncdocumentclient?view=azure-java-stable)</td></tr>
+<tr><td>**Dokumentacja interfejsu API**</td><td>[Dokumentacja interfejsu API języka Java](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable)</td></tr>
 
 <tr><td>**Przyczynia się do zestawu SDK**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
 

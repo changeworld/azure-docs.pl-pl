@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034091"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199072"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indeksu w usłudze Azure Cosmos DB
 
@@ -29,6 +29,9 @@ Usługa Azure Cosmos DB obsługuje indeks zakresu i wyznaczania wartości skrót
 
 - **Indeks skrótów** obsługuje wydajne równości i łączenia zapytań. W większości przypadków użycia większą precyzję niż domyślna wartość 3 bajtów nie ma potrzeby indeksów skrótu. Typ danych może być ciąg lub liczba.
 
+  > [!NOTE]
+  > Kontenery usługi Azure Cosmos obsługuje nowy układ indeksu, który nie używa już rodzaj indeksów skrótu. Jeśli określisz typ indeksu skrótu na zasady indeksowania żądań CRUD w kontenerze będzie po cichu ignorować rodzaj indeksu i odpowiedzi z kontenera, zawiera tylko rodzaj indeks zakresu. Domyślnie wszystkie nowe kontenery Cosmos używają nowego układu indeksu. 
+  
 - **Indeks zakresu** obsługuje zapytań o równość wydajne, zapytań o zakres (przy użyciu >, <>, =, < =,! =) i zapytania w klauzuli ORDER BY. Zapytania w klauzuli ORDER By, domyślnie wymagają także precyzja maksymalna wartość indeksu (-1). Typ danych może być ciąg lub liczba.
 
 - **Indeks przestrzenny** obsługuje wydajne przestrzennego (w ramach i odległość) zapytania. Typ danych może być punkt, wielokąta lub LineString. Usługa Azure Cosmos DB obsługuje również rodzaj indeks przestrzenny dla każdej ścieżki, który może być określony dla typów danych punkt, wielokąta lub LineString. Wartość w określonej ścieżce musi być prawidłowy fragment GeoJSON, takich jak {"type": "Point", "coordinates": [0.0, 10.0]}. Usługa Azure Cosmos DB obsługuje automatyczne indeksowanie punkt wielokąta i LineString typów danych.
@@ -58,6 +61,9 @@ Poniżej przedstawiono przykłady kwerend, które wyznaczania wartości skrótu,
 - Indeksy przestrzenne zawsze używaj domyślna dokładność indeksu dla wszystkich typów (punkt, LineString i wielokąta). Nie można zastąpić domyślną precyzję indeksu dla indeksów przestrzennych.
 
 Usługa Azure Cosmos DB zwraca błąd, gdy zapytanie używa klauzuli ORDER BY, ale nie ma indeksu zakresu na ścieżce kwerendy z maksymalną dokładnością.
+
+> [!NOTE]
+> Kontenery usługi Azure Cosmos obsługuje nowy układ indeksu, który nie wymaga już dokładności indeksie niestandardowym niż value(-1) maksymalna dokładność. Przy użyciu tej metody ścieżki zawsze jest indeksowana z maksymalną dokładnością. Jeśli określisz wartość dokładności pola na zasady indeksowania żądań CRUD w kontenerach będzie po cichu ignorować wartość dokładności pola i odpowiedzi z kontenera, zawiera tylko value(-1) maksymalna dokładność.  Domyślnie wszystkie nowe kontenery Cosmos używają nowego układu indeksu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

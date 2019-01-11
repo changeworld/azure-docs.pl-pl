@@ -3,17 +3,17 @@ title: Tworzenie i zarządzanie aplikacjami usługi Azure IoT Central jako dosta
 description: Jako dostawca CSP jak utworzyć aplikację usługi Azure IoT Central w imieniu klienta.
 services: iot-central
 ms.service: iot-central
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/29/2018
 ms.topic: conceptual
-manager: peterpr
-ms.openlocfilehash: b72b2183cb796602f05a0a6858d4de108d3cc2c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+manager: philmea
+ms.openlocfilehash: 73c3c57df215a66d914f5ea75475f74eff05a1f0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964802"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200296"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako dostawca CSP tworzenie i zarządzanie aplikację Central IoT platformy Azure w imieniu klienta 
 

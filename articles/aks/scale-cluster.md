@@ -1,84 +1,105 @@
 ---
-title: Skalowanie klastra usługi Kubernetes Azure (AKS)
-description: Skalowanie klastra usługi Kubernetes Azure (AKS).
+title: Skalowanie klastra usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak skalować liczbę węzłów w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 577fff2e659759647ffc7e96158ebcbe5a88ab25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 01/10/2019
+ms.author: iainfoulds
+ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934698"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214627"
 ---
-# <a name="scale-an-azure-kubernetes-service-aks-cluster"></a>Skalowanie klastra usługi Kubernetes Azure (AKS)
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Skalowanie liczby węzłów w klastrze usługi Azure Kubernetes Service (AKS)
 
-Skalowanie klastra usługi AKS do innej liczby węzłów jest łatwe.  Wybierz żądaną liczbę węzłów i uruchom polecenie `az aks scale`.  Podczas skalowania, węzły będą dokładnie [cordoned i opróżnione] [ kubernetes-drain] aby zminimalizować zakłócenia dla aplikacji.  Podczas skalowania w górę polecenie `az` czeka, aż węzły zostaną oznaczone jako `Ready` przez klaster Kubernetes.
+Jeśli zasób sprostania wymaganiom Twojej aplikacji, zmienić można ręcznie skalować klastra usługi AKS, aby uruchomić innej liczby węzłów. Skalowanie w węzły są dokładnie [odizolowywane i opróżniane] [ kubernetes-drain] aby zminimalizować zakłócenia dla działających aplikacji. Skalowanie w górę, `az` polecenie czeka, aż węzły zostaną oznaczone jako `Ready` przez klaster Kubernetes.
 
 ## <a name="scale-the-cluster-nodes"></a>Skalowanie węzłów klastra
 
-Użyj polecenia `az aks scale` w celu skalowania węzłów klastra. Poniższy przykład skaluje klastra o nazwie *myAKSCluster* do jednego węzła.
+Najpierw pobierz *nazwa* swojej za pomocą nodepool [az aks show] [ az-aks-show] polecenia. Poniższy przykład pobiera nazwę nodepool klastra o nazwie *myAKSCluster* w *myResourceGroup* grupy zasobów:
 
 ```azurecli-interactive
-az aks scale --name myAKSCluster --resource-group myResourceGroup --node-count 1
+az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-Dane wyjściowe:
+Następujące przykładowe dane wyjściowe pokazuje, że *nazwa* jest *nodepool1*:
+
+```console
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
+
+[
+  {
+    "count": 1,
+    "maxPods": 110,
+    "name": "nodepool1",
+    "osDiskSizeGb": 30,
+    "osType": "Linux",
+    "storageProfile": "ManagedDisks",
+    "vmSize": "Standard_DS2_v2"
+  }
+]
+```
+
+Użyj polecenia `az aks scale` w celu skalowania węzłów klastra. W poniższym przykładzie skala jest klaster o nazwie *myAKSCluster* do jednego węzła. Podaj własny *nodepool — nazwa* z poprzedniego polecenia, takie jak *nodepool1*:
+
+```azurecli-interactive
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
+```
+
+Następujące przykładowe dane wyjściowe pokazuje klastra ma została pomyślnie przeskalowana do jednego węzła, jak pokazano na *agentPoolProfiles* sekcji:
 
 ```json
 {
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.7.7",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
+  "aadProfile": null,
+  "addonProfiles": null,
+  "agentPoolProfiles": [
+    {
+      "count": 1,
+      "maxPods": 110,
+      "name": "nodepool1",
+      "osDiskSizeGb": 30,
+      "osType": "Linux",
+      "storageProfile": "ManagedDisks",
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
+  "enableRbac": true,
+  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
+  "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
+  "kubernetesVersion": "1.9.11",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "[...]"
+        }
+      ]
     }
   },
+  "location": "eastus",
+  "name": "myAKSCluster",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
+  "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
+  "servicePrincipalProfile": {
+    "clientId": "[...]",
+    "secret": null
+  },
   "tags": null,
   "type": "Microsoft.ContainerService/ManagedClusters"
 }
@@ -96,3 +117,4 @@ Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z samou
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
+[az-aks-show]: /cli/azure/aks#az-aks-show

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107231"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214746"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -63,7 +63,7 @@ Odp.: Aby wyświetlić dzienniki maszyny Wirtualnej, musisz być nadane uprawnie
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>PYTANIE: Dlaczego mogę można skorzystać z mojego obszaru roboczego w portalu pakietu OMS, ale jest zgłaszany błąd "nie masz dostępu" w witrynie Azure portal?  
 
-Odp.: Aby uzyskać dostęp do obszaru roboczego na platformie Azure, musi mieć przypisane uprawnienia platformy Azure. Istnieją przypadki, gdy nie masz wystarczających uprawnień dostępu. W takich przypadkach administrator musi przyznać uprawnienia w Azure.See [portalu pakietu OMS na platformę Azure](/../../azure-monitor/platform/oms-portal-transition.md) Aby uzyskać więcej informacji.
+Odp.: Aby uzyskać dostęp do obszaru roboczego na platformie Azure, musi mieć przypisane uprawnienia platformy Azure. Istnieją przypadki, gdy nie masz wystarczających uprawnień dostępu. W takich przypadkach administrator musi przyznać uprawnienia w Azure.See [portalu pakietu OMS na platformę Azure](oms-portal-transition.md) Aby uzyskać więcej informacji.
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>PYTANIE: Dlaczego nie nie widzę Projektant widoków zapisu w dziennikach? 
 Odp.: Projektant widoków jest dostępna tylko w dziennikach dla użytkowników przypisanych z uprawnieniami współautora lub nowszej.

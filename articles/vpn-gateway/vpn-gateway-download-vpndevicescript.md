@@ -1,90 +1,83 @@
 ---
-title: 'Pobierz skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S: usługi Azure Resource Manager | Dokumentacja firmy Microsoft'
-description: Ten artykuł przeprowadzi Cię przez pobierane skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager.
+title: 'Pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń S2S sieci VPN: Azure Resource Manager | Microsoft Docs'
+description: Ten artykuł przeprowadzi pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S z bramami sieci VPN Azure przy użyciu usługi Azure Resource Manager.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30317776"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200531"
 ---
-# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Pobierz skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S
+# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S
 
-Ten artykuł przeprowadzi Cię przez pobierane skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager. Na poniższym diagramie przedstawiono ogólny przepływ pracy.
+Ten artykuł przeprowadzi pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S z bramami sieci VPN Azure przy użyciu usługi Azure Resource Manager. Na poniższym diagramie przedstawiono ogólny przepływ pracy.
 
-![Pobieranie skryptu](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+![Pobierz skrypt](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 
 Następujące urządzenia mają dostępnych skryptów:
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>Temat skryptów konfiguracji urządzenia sieci VPN
+## <a name="about"></a>Skrypty konfiguracji urządzenia sieci VPN — informacje
 
-Połączenia sieci VPN między lokalizacjami składa się z bramy sieci VPN platformy Azure, lokalnego urządzenia sieci VPN i tunel VPN S2S protokołu IPsec, połączone. Przepływ pracy typowy obejmuje następujące kroki:
+Połączenie sieci VPN między lokalizacjami składa się z bramą Azure VPN gateway, lokalnego urządzenia sieci VPN i tunelu IPsec S2S sieci VPN, połączenie dwóch. Przepływ pracy typowy obejmuje następujące kroki:
 
-1. Tworzenie i konfigurowanie sieci VPN platformy Azure bramy sieci wirtualnej
-2. Tworzenie i konfigurowanie bramy sieci lokalnej platformy Azure, która reprezentuje lokalną sieć i urządzenia sieci VPN
-3. Tworzenie i konfigurowanie połączenia sieci VPN platformy Azure między bramą sieci VPN platformy Azure i Brama sieci lokalnej
-4. Konfigurowanie lokalnego urządzenia sieci VPN reprezentowany przez bramę sieci lokalnej, aby ustanowić rzeczywiste tunel S2S VPN z bramą sieci VPN platformy Azure
+1. Utwórz i skonfiguruj bramę Azure VPN gateway (Brama sieci wirtualnej)
+2. Utwórz i skonfiguruj bramę sieci lokalnej platformy Azure, która reprezentuje Twojej sieci lokalnej i urządzeniem sieci VPN
+3. Tworzenie i konfigurowanie połączenia sieci VPN platformy Azure między bramą sieci VPN platformy Azure i bramy sieci lokalnej
+4. Konfigurowanie lokalnego urządzenia sieci VPN, reprezentowane przez bramę sieci lokalnej, aby ustanowić rzeczywiste tunel S2S VPN z bramą sieci VPN platformy Azure
 
-Można wykonać kroki od 1 do 3 za pomocą platformy Azure [portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md), lub [interfejsu wiersza polecenia](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Ostatni krok obejmuje Konfigurowanie lokalnego urządzenia sieci VPN poza platformą Azure. Ta funkcja umożliwia pobieranie skryptu konfiguracji urządzenia sieci VPN z odpowiednimi wartościami bramy sieci VPN platformy Azure, sieci wirtualnej i prefiksy adresów sieci lokalnej i właściwości połączenia sieci VPN, itp. już wypełnione. Możesz użyć skryptu jako punkt początkowy lub zastosować skrypt bezpośrednio do lokalnego urządzenia sieci VPN za pomocą konsoli programu configuration.
+Możesz wykonać kroki od 1 do 3 za pomocą platformy Azure [portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md), lub [interfejsu wiersza polecenia](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Ostatni krok obejmuje Konfigurowanie lokalnych urządzeń sieci VPN spoza platformy Azure. Ta funkcja umożliwia pobieranie skryptu konfiguracji urządzenia sieci VPN, z odpowiednimi wartościami swojej bramy sieci VPN Azure sieci wirtualnej i prefiksy adresów sieci lokalnej i właściwości połączenia sieci VPN, itp. już wypełnione. Możesz użyć skryptu jako punktu wyjścia lub zastosować skrypt bezpośrednio do lokalnych urządzeń sieci VPN za pośrednictwem konsoli programu configuration.
 
 > [!IMPORTANT]
-> * Składnia dla każdego skryptu konfiguracji urządzenia sieci VPN jest inny i stopniu zależą od modeli i wersji oprogramowania układowego. Należy zwrócić szczególną uwagę na Twoje urządzenie modelu i informacje o wersji przed dostępnych szablonów.
-> * Niektóre wartości parametru musi być unikatowa na urządzeniu i nie można ustalić bez uzyskiwania dostępu do urządzenia. Skrypty do konfiguracji generowany Azure wstępnie wypełnić te wartości, ale należy upewnić się, że podane wartości są prawidłowe na urządzeniu. Przykłady:
->    * Numery — interfejs
+> * Składnia dla każdego skryptu konfiguracji urządzenia sieci VPN jest różne i stopniu zależą od modeli i wersji oprogramowania układowego. Należy zwrócić szczególną uwagę na Twoje urządzenie model i wersja informacje pod kątem dostępnych szablonów.
+> * Niektóre wartości parametru musi być unikatowa na urządzeniu i nie można ustalić bez uzyskiwania dostępu do urządzenia. Skryptów konfiguracyjnych generowanych przez usługi Azure wstępnie wypełnić te wartości, ale należy upewnić się, że podane wartości są prawidłowe na urządzeniu. Przykłady:
+>    * Numery
 >    * Numery listy kontroli dostępu
->    * Nazwy zasad lub cyfr, itp.
-> * Wyszukaj słowo kluczowe "**Zastąp**" osadzony w skrypcie można znaleźć parametrów, należy sprawdzić przed zastosowaniem skryptu.
-> * Niektóre szablony obejmują "**oczyszczania**" sekcji można zastosować do usunięcia konfiguracji. Domyślnie opatrzony sekcje oczyszczania.
+>    * Nazwy zasad lub liczb, itp.
+> * Wyszukaj słowa kluczowego "**Zastąp**" osadzony w skrypcie, aby odnaleźć parametrów, należy sprawdzić przed zastosowaniem skryptu.
+> * Niektóre szablony obejmują "**oczyszczania**" sekcji można zastosować, aby usunąć konfiguracje. Domyślnie opatrzony sekcje oczyszczania.
 
-## <a name="download-the-configuration-script-from-azure-portal"></a>Pobieranie skryptu konfiguracji z portalu Azure
+## <a name="download-the-configuration-script-from-azure-portal"></a>Pobierz skrypt konfiguracji z witryny Azure portal
 
-Tworzenie bramy sieci VPN platformy Azure, Brama sieci lokalnej i zasobu połączenia, połączenie dwóch. Następująca strona prowadzi użytkownika przez kroki:
+Utwórz bramę Azure VPN gateway, bramy sieci lokalnej i zasobu połączenia, połączenie dwóch. Następująca strona przeprowadzi Cię przez kroki:
 
-* [Utwórz połączenie lokacja-lokacja w portalu Azure](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Utwórz połączenie lokacja-lokacja w witrynie Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
-Po utworzeniu zasobu połączenia, postępuj zgodnie z instrukcjami poniżej, aby pobrać skrypty do konfiguracji urządzenia sieci VPN:
+Po utworzeniu zasobu połączenia postępuj zgodnie z poniższymi instrukcjami, aby pobrać skrypty konfiguracji urządzenia sieci VPN:
 
-1. W przeglądarce przejdź do [portalu Azure](http://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure
-2. Przejdź do zasobu połączenia, który został utworzony. Listę wszystkich zasobów połączenia można znaleźć klikając "Wszystkie usługi", a następnie "Sieć" i "Połączeń."
+1. W przeglądarce przejdź do [witryny Azure portal](http://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure
+2. Przejdź do zasobu połączenia, który został utworzony. Lista wszystkich zasobów połączenia można znaleźć, klikając pozycję "Wszystkie usługi", a następnie "Sieć" i "Połączenia".
 
     ![Lista połączeń](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
 
 3. Kliknij połączenie, które chcesz skonfigurować.
 
-    ![połączenie — omówienie](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
+    ![Przegląd połączenia](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
 
-4. Kliknij łącze "Pobierz konfiguracji" jako wyróżnione na czerwono na stronie przeglądu połączenia; Spowoduje to otwarcie strony "Pobieranie konfiguracji".
+4. Kliknij link "Pobierz konfiguracji", jak podkreślono na czerwono na stronie Przegląd połączenia; Spowoduje to otwarcie strony "Pobierania konfiguracji".
 
-    ![download-script-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
+    ![Pobierz skrypt 1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
 
-5. Wybierz wersję modelu rodziny i oprogramowanie układowe urządzenia sieci VPN, a następnie kliknij przycisk "Pobierz configuration".
+5. Wybierz wersję modelu rodziny i oprogramowania układowego urządzenia sieci VPN, a następnie kliknij przycisk "Pobierz configuration".
 
-    ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
+    ![download66 skryptu 2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
 
-6. Zostanie wyświetlony monit zapisać pobranego skryptu (plik tekstowy) w przeglądarce.
-7. Pobrany skryptu konfiguracji, otwórz go Edytor tekstu i wyszukaj słowo kluczowe "REPLACE" zidentyfikować i sprawdź, czy parametry, które mogą wymagać wymiany.
+6. Monit o zapisanie pobranego skryptu (plik tekstowy) w przeglądarce.
+7. Pobrany skrypt konfiguracji, otwórz go za pomocą edytora tekstów i wyszukaj słowo kluczowe "REPLACE" do zidentyfikowania i zbadania parametry, które może być konieczne, można zastąpić.
 
-    ![Edycja skryptu](./media/vpn-gateway-download-vpndevicescript/editscript.png)
+    ![Edytuj skrypt](./media/vpn-gateway-download-vpndevicescript/editscript.png)
 
-## <a name="download-the-configuration-script-using-azure-powershell"></a>Pobieranie skryptu konfiguracji przy użyciu programu Azure PowerShell
+## <a name="download-the-configuration-script-using-azure-powershell"></a>Pobierz skrypt konfiguracji przy użyciu programu Azure PowerShell
 
-Możesz również pobrać skrypt konfiguracji przy użyciu programu Azure PowerShell, jak pokazano w poniższym przykładzie:
+Możesz również pobrać skrypt konfiguracji, za pomocą programu Azure PowerShell, jak pokazano w poniższym przykładzie:
 
 ```azurepowershell-interactive
 $RG          = "TestRG1"
@@ -100,8 +93,8 @@ Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connectio
 
 ## <a name="apply-the-configuration-script-to-your-vpn-device"></a>Dotyczą skryptu konfiguracji urządzenia sieci VPN
 
-Po pobraniu i sprawdzić poprawności skryptu konfiguracji, następnym krokiem jest dotyczą skryptu urządzenia sieci VPN. Rzeczywiste procedura zależy od modele i sprawia, że urządzenia sieci VPN. Poszukaj stron instrukcji lub podręczniki operacji urządzenia sieci VPN.
+Po pobraniu i zweryfikować skrypt konfiguracji, następnym krokiem jest dotyczą skrypt urządzenia sieci VPN. Rzeczywiste procedura zależy od Twoich sprawia, że urządzenie sieci VPN i modeli. Zapoznaj się z podręczników operacji lub strony z instrukcjami dla urządzenia sieci VPN.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Kontynuować konfigurowanie Twojego [połączenie lokacja-lokacja](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Kontynuować konfigurowanie usługi [połączenia lokacja lokacja](vpn-gateway-howto-site-to-site-resource-manager-portal.md).

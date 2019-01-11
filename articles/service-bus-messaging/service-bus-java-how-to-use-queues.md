@@ -13,12 +13,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 804e0dd4b510b40c1ebbc5790308a429c2715724
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8d168e4171c96441162f1090a215cab8a70b7d1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573318"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198698"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Jak używać kolejek usługi Service Bus przy użyciu języka Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -109,7 +109,7 @@ public void run() throws Exception {
 
 ```
 
-Komunikaty wysyłane do i odbierane z usługi Service Bus są kolejki wystąpień [komunikat](/java/api/com.microsoft.azure.servicebus._message?view=azure-java-stable) klasy. Obiekty wiadomości mają zestaw właściwości standardowych (takich jak etykiety i TimeToLive), słownik, który jest używany do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść dowolnych danych aplikacji. Aplikacja możne ustawić treść komunikatu przez przekazanie dowolnego obiektu podlegającego serializacji do konstruktora wiadomości, a odpowiedni element serializujący zostanie następnie użyte do serializacji obiektu. Alternatywnie można udostępnić **języka java. WE/WY. InputStream** obiektu.
+Komunikaty wysyłane do i odbierane z usługi Service Bus są kolejki wystąpień [komunikat](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) klasy. Obiekty wiadomości mają zestaw właściwości standardowych (takich jak etykiety i TimeToLive), słownik, który jest używany do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść dowolnych danych aplikacji. Aplikacja możne ustawić treść komunikatu przez przekazanie dowolnego obiektu podlegającego serializacji do konstruktora wiadomości, a odpowiedni element serializujący zostanie następnie użyte do serializacji obiektu. Alternatywnie można udostępnić **języka java. WE/WY. InputStream** obiektu.
 
 
 Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB.
@@ -179,7 +179,7 @@ Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w r
 
 Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed blokady upłynie limit czasu (na przykład jeśli wystąpiła awaria aplikacji), Usługa Service Bus automatycznie odblokowuje komunikat i sprawia, że dostępne do ponownego odbioru.
 
-W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed **deleteMessage** wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*; oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu **getMessageId** metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed **deleteMessage** wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, co oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu **getMessageId** metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 ## <a name="next-steps"></a>Następne kroki
 Teraz, kiedy znasz już podstawy kolejek usługi Service Bus, zobacz [kolejki, tematy i subskrypcje] [ Queues, topics, and subscriptions] Aby uzyskać więcej informacji.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9a36859a2c6f42e02dccb76a514f09a705f37f56
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156514"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200432"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -35,7 +35,7 @@ Usługa Azure Disk Encryption jest obsługiwana w następujących systemach oper
 - Usługa Azure Disk Encryption jest tylko obsługiwana w określonych w galerii platformy Azure są dystrybucje systemu Linux serwera i wersje. Aby uzyskać listę aktualnie obsługiwanych wersji, zobacz [często zadawane pytania dotyczące usługi Azure dysku szyfrowanie](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 - Usługa Azure Disk Encryption wymaga, że maszyny wirtualne i usługi key vault, na których znajdują się w tym samym regionie platformy Azure i subskrypcji. Konfigurowanie zasobów w oddzielnych regionach powoduje awarię w włączenie funkcji usługi Azure Disk Encryption.
 
-## <a name="bkmk_LinuxPrereq"></a> Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych Iaas z systemem Linux 
+## <a name="bkmk_LinuxPrereq"></a> Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych IaaS z systemem Linux 
 
 - Usługa Azure Disk Encryption dla systemu Linux wymaga 7 GB pamięci RAM na maszynę Wirtualną, aby włączyć szyfrowanie dysku systemu operacyjnego na [obsługiwane obrazy](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Po zakończeniu procesu szyfrowania dysku systemu operacyjnego maszyny Wirtualnej można skonfigurować do uruchamiania przy użyciu mniejszej ilości pamięci.
 - Przed włączeniem szyfrowania, dysków danych do zaszyfrowania muszą właściwie się na liście/etc/fstab. Użyj nazwy urządzenia trwałego blok dla tego wpisu jako nazwy w formacie "/ dev/sdX" nie można polegać ma zostać skojarzony z tym samym dysku między ponownymi uruchomieniami, szczególnie w przypadku, po zastosowaniu szyfrowania urządzenia. Aby uzyskać więcej szczegółowych informacji dotyczących tego zachowania zobacz: [Rozwiązywanie problemów z zmiany nazwy urządzenia maszyny Wirtualnej systemu Linux](../virtual-machines/linux/troubleshoot-device-names-problems.md)

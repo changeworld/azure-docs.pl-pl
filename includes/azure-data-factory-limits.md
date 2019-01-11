@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 1/8/2019
+ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 203168f27e06d58c192bc5009db077461738011a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 2e9e4fe06f4d3802f6c0b3ff13e6cf6cdc218050
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54122789"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54211882"
 ---
 Data factory to usługa dla wielu dzierżawców, który ma następujące domyślne limity w miejscu, aby upewnić się, że subskrypcjami klientów są chronione przed jego obciążeń. Wiele limity można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu, kontaktując się z pomocą techniczną.
 
@@ -26,6 +26,7 @@ Data factory to usługa dla wielu dzierżawców, który ma następujące domyśl
 | Łączna liczba rdzeni procesora CPU dla środowiska Azure-SSIS Integration Runtime(s) w ramach jednej subskrypcji | 256 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Potok równoczesny przebiegów na fabryki danych (współużytkowane przez wszystkie potoki w fabryce) | 10 000  | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maksymalna liczba działań na potok (w tym wewnętrznego działania dla kontenerów) | 40 | 40 |
+| Maksymalna liczba połączonych środowiska Integration Runtime, które mogą być tworzone z jednym środowiskiem Integration Runtime | 20 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maksymalna liczba parametrów dla potoku | 50 | 50 |
 | Elementy ForEach | 100 000 | 100 000 |
 | Równoległość ForEach | 20 | 50 |

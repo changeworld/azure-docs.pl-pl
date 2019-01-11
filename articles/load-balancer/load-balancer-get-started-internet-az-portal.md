@@ -1,5 +1,5 @@
 ---
-title: Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowy za pomocą witryny Azure portal
+title: Tworzenie modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowe — witryna Azure portal
 titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web za pomocą witryny Azure portal
 services: load-balancer
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bdd890d85fa72098fecaf86a2782a25ceee783b7
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135695"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201129"
 ---
-#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Tworzenie publicznego modułu równoważenia obciążenia standardowego przy użyciu strefowo nadmiarowe frontonu przy użyciu witryny Azure portal
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowy za pomocą witryny Azure portal
 
-W tym artykule opisano proces tworzenia publicznego [standardowego modułu równoważenia obciążenia](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe frontonu przy użyciu adresu publicznego adresu IP standardowych. Strefowo nadmiarowe domyślnie jest adresu IP frontonu jednego standardowego modułu równoważenia obciążenia.
+W tym artykule opisano proces tworzenia publicznego [Balancer w warstwie standardowa](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe frontonu przy użyciu adresu publicznego adresu IP standardowych. Strefowo nadmiarowe domyślnie jest adresu IP frontonu jednego standardowego modułu równoważenia obciążenia.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

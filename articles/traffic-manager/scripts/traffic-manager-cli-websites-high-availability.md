@@ -1,6 +1,6 @@
 ---
-title: Azure CLI przykładowym skrypcie - kierować ruchem wysoką dostępność aplikacji | Dokumentacja firmy Microsoft
-description: Azure CLI przykładowym skrypcie - kierować ruchem wysoką dostępność aplikacji
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
-ms.openlocfilehash: 82264e51fcd64615a41f5fa652c4ad58ad9dabfb
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 27e8d5c0c26f6932d98cfbfd5abd4a756c077383
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313048"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215154"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Kierować ruchem wysoką dostępność aplikacji przy użyciu wiersza polecenia platformy Azure
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Kierowanie ruchem w celu zapewnienia wysokiej dostępności aplikacji przy użyciu wiersza polecenia platformy Azure
 
-Ten skrypt tworzy grupę zasobów, dwa planów usługi aplikacji, dwie aplikacje sieci web, profilu Menedżera ruchu i dwa punkty końcowe Menedżera ruchu. Menedżer ruchu kieruje ruch do aplikacji w jednym regionie jako regionu podstawowego, a w regionie pomocniczym, gdy aplikacja w regionie podstawowym jest niedostępny. Przed wykonaniem skryptu, należy zmienić wartości MyWebApp, MyWebAppL1 i MyWebAppL2 unikatowych wartości na platformie Azure. Po uruchomieniu skryptu, można uzyskać dostępu do aplikacji w regionie podstawowym z mywebapp.trafficmanager.net adresu URL.
+Ten skrypt tworzy grupę zasobów, dwóch planów usługi app service, dwie aplikacje internetowe, profilu usługi traffic manager i dwa punkty końcowe Menedżer ruchu. Usługa Traffic Manager kieruje ruch do aplikacji w jednym regionie w postaci regionu podstawowego, a także do regionu pomocniczego, gdy aplikacji w regionie głównym jest niedostępne. Przed wykonaniem skryptu, możesz zmienić wartości MyWebApp, MyWebAppL1 i MyWebAppL2 unikatowych wartości na platformie Azure. Po uruchomieniu skryptu dostęp do aplikacji w regionie podstawowym z mywebapp.trafficmanager.net adresu URL.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -37,7 +37,7 @@ Ten skrypt tworzy grupę zasobów, dwa planów usługi aplikacji, dwie aplikacje
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
 
-Po uruchomieniu przykładowym skrypcie, wykonaj polecenie może służyć do usunięcia grupy zasobów, aplikacji usługi app Service i wszystkie powiązane zasoby.
+Po wykonaniu przykładowego skryptu polecenia wykonaj można usunąć grupę zasobów, aplikacji usługi app Service i wszystkie pokrewne zasoby.
 
 ```azurecli
 az group delete --name myResourceGroup1 --yes
@@ -51,13 +51,13 @@ W tym skrypcie użyto następujących poleceń do utworzenia grupy zasobów, apl
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Tworzy plan usługi App Service. Przypomina farmy serwerów aplikacji sieci web platformy Azure. |
-| [Utwórz az appservice w sieci web](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_create) | Tworzy aplikację sieci web platformy Azure w ramach planu usługi aplikacji. |
-| [Utwórz profil Menedżera ruchu sieciowego az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Tworzy profil usługi Azure Traffic Manager. |
-| [Tworzenie punktu końcowego Menedżera ruchu sieciowego az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) | Dodaje punkt końcowy profilu Menedżera ruchu Azure. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
+| [Tworzenie aplikacji sieci Web az w sieci web](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
+| [Tworzenie profilu usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Tworzy profil usługi Azure Traffic Manager. |
+| [Tworzenie punktu końcowego usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) | Dodaje punkt końcowy do profilu usługi Traffic Manager platformy Azure. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 
-Dodatkowe przykłady skryptów aplikacji usługi interfejsu wiersza polecenia można znaleźć w [Azure Networking dokumentacji](../cli-samples.md).
+Więcej przykładowych skryptów interfejsu wiersza polecenia aplikacji usługi można znaleźć w [dokumentacji sieci platformy Azure](../cli-samples.md).

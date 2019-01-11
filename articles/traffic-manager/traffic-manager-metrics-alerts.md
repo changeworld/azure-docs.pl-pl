@@ -1,8 +1,7 @@
 ---
-title: Metryki i alerty w usłudze Azure Traffic Manager | Dokumentacja firmy Microsoft
+title: Metryki i alerty w usłudze Azure Traffic Manager
 description: W tym artykule opisano dostępne metryki dla usługi Traffic Manager na platformie Azure.
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,28 +10,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: bb7817b082da11de3071925d01a3402902410a6f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437973"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200194"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Alerty i metryki usługi Traffic Manager
 
-Traffic Manager umożliwia równoważenie, która obejmuje wiele metod routingu i opcje monitorowania punktu końcowego obciążenia oparte na systemie DNS. W tym artykule opisano metryki i skojarzonych alertach, które są dostępne dla klientów. 
+Usługa Traffic Manager umożliwia równoważenie obciążenia oparte na systemie DNS, który zawiera wiele metod routingu i opcje monitorowania punktu końcowego. W tym artykule opisano metryki i skojarzonych alertach, które są dostępne dla klientów. 
 
 ## <a name="metrics-available-in-traffic-manager"></a>Metryk dostępnych w usłudze Traffic Manager 
 
-Usługa Traffic Manager dostarcza następujące metryki na podstawie na profilu, które mogą być używane przez klientów, aby zrozumieć ich użycie funkcji usługi Traffic manager i stanu ich punkty końcowe w ramach tego profilu.  
+Usługa Traffic Manager dostarcza następujące metryki na podstawie na profil, że klienci mogą używać, aby zrozumieć ich użycie funkcji usługi Traffic manager i stanu ich punkty końcowe w ramach tego profilu.  
 
 ### <a name="queries-by-endpoint-returned"></a>Zapytania według zwracany punkt końcowy
-Użyj [ta metryka](../azure-monitor/platform/metrics-supported.md) do wyświetlania liczby zapytań, które zostały przetworzone przez profil usługi Traffic Manager w określonym czasie. Można również wyświetlić te same informacje o poziomu szczegółowości punktu końcowego, który pomoże zrozumieć, jak wiele razy punkt końcowy został zwrócony w odpowiedzi na kwerendę z usługi Traffic Manager.
+Użyj [ta metryka](../azure-monitor/platform/metrics-supported.md) do wyświetlania liczby zapytań, które profilu usługi Traffic Manager przetwarza w określonym czasie. Można również wyświetlić te same informacje o poziomu szczegółowości punktu końcowego, który pomoże zrozumieć, jak wiele razy punkt końcowy został zwrócony w odpowiedzi na kwerendę z usługi Traffic Manager.
 
-W poniższym przykładzie rysunek 1 przedstawia wszystkie odpowiedzi zapytania, które zostały zwrócone przez profil usługi Traffic Manager. 
+W poniższym przykładzie rysunek 1 przedstawia wszystkie odpowiedzi na kwerendy, które zwraca profilu usługi Traffic Manager. 
 
   
-![Metryki usługi Traffic Manager — zagregowany widok wszystkich zapytań](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
+![Zagregowany widok wszystkich zapytań](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
 *Rysunek 1: Zagregowany widok wszystkich zapytań*
   
@@ -44,10 +43,10 @@ Rysunek 2 przedstawia te same informacje, jednak zostanie ona podzielona przez p
 
 ## <a name="endpoint-status-by-endpoint"></a>Stan punktu końcowego na punkt końcowy
 Użyj [ta metryka](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) zrozumienie stanu kondycji punktów końcowych w profilu. Zajmuje się dwie wartości:
- - Użyj **1** , jeśli punkt końcowy jest uruchomiony.
+ - Użyj **1** Jeśli punkt końcowy jest uruchomiony.
  - Użyj **0** Jeśli punkt końcowy jest wyłączony.
 
-Ta metryka może zostać podany w postaci wartości zagregowanej reprezentuje stan wszystkich metryk (rysunek 3) lub go można podzielić (zobacz rysunek 4) aby wyświetlić stan określonych punktów końcowych. W przypadku pierwsze, jeśli poziom agregacji jest wybrany jako **Avg**, wartość tej metryki jest średnią arytmetyczną o stanie wszystkich punktów końcowych. Na przykład, jeśli profil, który ma dwa punkty końcowe i tylko jeden jest w dobrej kondycji, ta metryka będzie mieć wartość **0,50** jak pokazano na rysunku 3. 
+Ta metryka może zostać podany w postaci wartości zagregowanej reprezentuje stan wszystkich metryk (rysunek 3) lub go można podzielić (zobacz rysunek 4) aby wyświetlić stan określonych punktów końcowych. Jeśli poziom agregacji pierwszego, jeśli został wybrany jako **Avg**, wartość ta metryka jest średnią arytmetyczną o stanie wszystkich punktów końcowych. Na przykład, jeśli profil, który ma dwa punkty końcowe i tylko jeden jest w dobrej kondycji, następnie ta metryka ma wartość **0,50** jak pokazano na rysunku 3. 
 
 
 ![Metryki usługi Traffic Manager — złożonego widoku stanu punktu końcowego](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
@@ -66,4 +65,4 @@ Oprócz przetwarzania i wyświetlanie metryk z usługi Traffic Manager, usługi 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md)
-- Dowiedz się, jak [Utwórz nowy wykres przy użyciu usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)
+- Dowiedz się, jak [utworzyć wykres przy użyciu usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

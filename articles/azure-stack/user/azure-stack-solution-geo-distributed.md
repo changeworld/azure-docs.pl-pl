@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 917f9a5ff2f6f9f6101b19dccee05fe5ab25c5a9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714852"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214780"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
 
@@ -106,7 +106,7 @@ Aktualizowanie aplikacji sieci web foCreate pliku strefy DNS i publishr domeny. 
 Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacji sieci Web platformy Azure i usługi Azure Stack i automatyczne wypychanie zmian do obu chmur hybrydowych.
 
 > [!Note]  
-> Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" sekcji dla usługi Azure Stack operatora.
+> Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service [przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](../azure-stack-app-service-before-you-get-started.md) sekcji dla usługi Azure Stack operatora.
 
 #### <a name="add-code-to-azure-repos"></a>Dodaj kod do repozytoriów platformy Azure
 
@@ -422,7 +422,7 @@ Niestandardowy protokół SSL nie jest obsługiwany w warstwie **Bezpłatna** an
 
 1.  Wybierz jedną z następujących warstw: **Podstawowa**, **Standardowa** lub **Premium**.
 
-2.  Wybierz **wybierz**.
+2.  Wybierz przycisk **Wybierz**.
 
 ![Wybieranie warstwy cenowej](media/azure-stack-solution-geo-distributed/image36.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b5a129c2a92c18b979a3b0c2eeea7fa19791551c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633769"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214049"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
 
@@ -84,7 +84,7 @@ Aby zalogować się przy użyciu tożsamości usługi Azure AD za pomocą progra
    Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
    ```
 1. Zamknij i Otwórz okno programu PowerShell.
-1. Wywołaj [New AzStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
+1. Wywołaj [New AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
 1. Aby wywoływać polecenia cmdlet przy użyciu tożsamości usługi Azure AD, należy przekazać nowo utworzony kontekst do polecenia cmdlet.
 
 Poniższy przykład przedstawia listę obiektów blob w kontenerze za pomocą programu Azure PowerShell za pomocą tożsamości usługi Azure AD. Koniecznie Zastąp symbol zastępczy nazwy konta i kontenera przy użyciu własnych wartości: 

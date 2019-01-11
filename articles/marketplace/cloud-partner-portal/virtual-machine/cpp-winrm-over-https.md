@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1a341bf36842e49faf8e39f4056232c97cc4232c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b2c0dbfbf474cccdf2d1253b77869c59fd449591
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197034"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214559"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows zdalne zarządzanie przy użyciu protokołu HTTPS
 
 W tej sekcji opisano sposób konfigurowania maszyn wirtualnych hostowanych na platformie Azure, systemem Windows, dzięki czemu mogą być zarządzane i wdrożony zdalnie przy użyciu programu PowerShell.  Aby włączyć komunikację zdalną programu PowerShell, docelowa maszyna wirtualna musi ujawniać punkt końcowy HTTPS Windows Remote Management (WinRM).  Aby uzyskać więcej informacji na temat komunikacji zdalnej programu PowerShell, zobacz [uruchamianie poleceń zdalnych](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Aby uzyskać więcej informacji dotyczących usługi WinRM, zobacz [Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Jeśli utworzono Maszynę wirtualną przy użyciu jednej z metod "klasyczny" platformy Azure — Azure Portal programu Service Manager lub przestarzałe [Azure interfejs API zarządzania usługami] (https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)—, a następnie jest automatycznie konfigurowany z punktem końcowym usługi WinRM.  Jednak jeśli tworzysz Maszynę wirtualną podejścia "nowoczesnych" Azure przy użyciu dowolnej z następujących czynności, a następnie maszyna wirtualna będzie *nie* można skonfigurować w przypadku usługi WinRM przy użyciu protokołu HTTPS.  
+Jeśli utworzono Maszynę wirtualną przy użyciu jednej z metod "klasyczny" platformy Azure — Azure Portal programu Service Manager lub przestarzałe [interfejsu API zarządzania usługami Azure](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))—, a następnie jest automatycznie konfigurowany z punktem końcowym usługi WinRM.  Jednak jeśli tworzysz Maszynę wirtualną podejścia "nowoczesnych" Azure przy użyciu dowolnej z następujących czynności, a następnie maszyna wirtualna będzie *nie* można skonfigurować w przypadku usługi WinRM przy użyciu protokołu HTTPS.  
 
 - Za pomocą [witryny Azure portal](https://portal.azure.com/), zazwyczaj z zatwierdzonych base zgodnie z opisem w sekcji [utworzyć wirtualny dysk twardy zgodnych z platformą Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
 - [Za pomocą szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)

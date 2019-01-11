@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie komputera z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell | Microsoft Docs'
+title: 'Połącz komputer z siecią wirtualną platformy Azure przy użyciu punkt-lokacja i natywnego platformy Azure uwierzytelniania certyfikatu: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Bezpieczne łączenie klientów systemu Windows i Mac OS X z siecią wirtualną platformy Azure przy użyciu połączeń typu punkt-lokacja oraz certyfikatów z podpisem własnym lub wystawionych przez urząd certyfikacji. W tym artykule używany jest program PowerShell.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: c579bb32fdd43c95f027e6c9f5a6ef656d059d60
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f688c0e277f807ff27731c103ca407807052c9d3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847409"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199752"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną za pomocą natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: PowerShell
 
 W tym artykule opisano sposób bezpiecznego łączenia poszczególnych klientów z systemem Windows lub Mac OS X z siecią wirtualną platformy Azure. Połączenia sieci VPN typu punkt-lokacja przydają się w przypadku, gdy celem użytkownika jest połączenie się z siecią wirtualną z lokalizacji zdalnej, podczas pracy zdalnej z domu lub konferencji. Możesz również użyć połączenia typu punkt-lokacja zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną. Połączenia typu punkt-lokacja nie wymagają urządzenia sieci VPN ani publicznego adresu IP. Połączenie typu punkt-lokacja tworzy połączenie sieci VPN nawiązywane za pośrednictwem protokołu SSTP (Secure Socket Tunneling Protocol) lub IKEv2. Aby uzyskać więcej informacji na temat połączeń sieci VPN typu punkt-lokacja, zobacz [About Point-to-Site VPN (Informacje o sieci VPN typu punkt-lokacja)](point-to-site-about.md).
 
@@ -39,22 +39,22 @@ Sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie masz jeszcze subskry
 
 Wartości przykładowych możesz użyć do tworzenia środowiska testowego lub odwoływać się do tych wartości, aby lepiej zrozumieć przykłady w niniejszym artykule. Zmienne są ustawiane w sekcji [1](#declare) artykułu. Można postępować zgodnie z opisanymi krokami i użyć przedstawionych wartości bez ich zmieniania lub zmienić je, aby odzwierciedlały dane środowisko.
 
-* **Nazwa: VNet1**
+* **Nazwa: Sieć VNet1**
 * **Przestrzeń adresowa: 192.168.0.0/16** i **10.254.0.0/16**<br>W tym przykładzie jest używana więcej niż jedna przestrzeń adresowa, aby zilustrować, że ta konfiguracja współpracuje z wieloma przestrzeniami adresowymi. Jednak ta konfiguracja nie wymaga wielu przestrzeni adresowych.
-* **Nazwa podsieci: FrontEnd**
+* **Nazwa podsieci: Frontonu**
   * **Zakres adresów podsieci: 192.168.1.0/24**
-* **Nazwa podsieci: BackEnd**
+* **Nazwa podsieci: Wewnętrznej bazy danych**
   * **Zakres adresów podsieci: 10.254.1.0/24**
 * **Nazwa podsieci: GatewaySubnet**<br>Nazwa podsieci *GatewaySubnet* jest obowiązkowa, aby brama VPN mogła działać.
-  * **Zakres adresów podsieci bramy: 192.168.200.0/24** 
+  * **Zakres adresów podsieci: 192.168.200.0/24** 
 * **Pula adresów klienta sieci VPN: 172.16.201.0/24**<br>Klienci sieci VPN łączący się z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z puli adresów klientów sieci VPN.
-* **Subskrypcja:** jeśli masz więcej niż jedną subskrypcję, sprawdź, czy korzystasz z właściwej.
+* **Subskrypcja:** Jeśli masz więcej niż jedną subskrypcję, sprawdź, czy używane są poprawne.
 * **Grupa zasobów: TestRG**
 * **Lokalizacja: Wschodnie stany USA**
-* **Serwer DNS: adres IP** serwera DNS, który ma być używany do rozpoznawania nazw. (opcjonalnie)
-* **Nazwa bramy: Vnet1GW**
-* **Nazwa publicznego adresu IP: VNet1GWPIP**
-* **VpnType: RouteBased** 
+* **Serwer DNS: Adres IP** serwera DNS, który ma być używany do rozpoznawania nazw. (opcjonalnie)
+* **Nazwa GW: Vnet1GW**
+* **Publiczna nazwa adresu IP: VNet1GWPIP**
+* **Typ VpnType: RouteBased** 
 
 ## <a name="declare"></a>1. Zaloguj się i Ustawianie zmiennych
 
@@ -62,7 +62,7 @@ W tej sekcji, zaloguj się i zadeklarować wartości używane dla tej konfigurac
 
 ### <a name="sign-in"></a>Logowanie
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ### <a name="declare-variables"></a>Zadeklaruj zmienne
 
@@ -399,4 +399,4 @@ Certyfikat klienta można przywrócić przez usunięcie odcisku palca z listy od
 ## <a name="next-steps"></a>Kolejne kroki
 Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) (Maszyny wirtualne). Aby dowiedzieć się więcej o sieci i maszynach wirtualnych, zobacz [Azure and Linux VM network overview](../virtual-machines/linux/azure-vm-network-overview.md) (Omówienie sieci maszyny wirtualnej z systemem Linux i platformy Azure).
 
-Aby uzyskać informacje dotyczące rozwiązywania problemów z połączeniem typu punkt-lokacja, zobacz [Troubleshooting: Azure point-to-site connections problems (Rozwiązywanie problemów: problemy z połączeniami typu punkt-lokacja na platformie Azure)](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+Aby uzyskać informacje dotyczące rozwiązywania problemów P2S [Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

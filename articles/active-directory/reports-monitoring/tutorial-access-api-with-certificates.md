@@ -15,14 +15,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5714ed552c81d28a253aa57ad6e2ba1d67e543a1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961964"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214270"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Samouczek: Pobieranie danych przy użyciu usługi Azure Active Directory, interfejsu API raportowania przy użyciu certyfikatów
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Samouczek: Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure Active Directory z certyfikatami
 
 [Interfejsy API raportowania usługi Azure Active Directory (Azure AD)](concept-reporting-api.md) umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania. Jeśli chcesz uzyskać dostęp usługi Azure AD Reporting API bez interwencji użytkownika, należy skonfigurować dostęp do używania certyfikatów.
 
@@ -30,24 +30,28 @@ W tym samouczku dowiesz się, jak dostęp do interfejsu API programu Graph MS dl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Najpierw wykonaj [wymagania wstępne dotyczące dostępu do usługi Azure Active Directory reporting API](howto-configure-prerequisites-for-reporting-api.md). 
+1. Aby uzyskać dostęp do danych logowania, upewnij się, że masz już dzierżawę usługi Azure Active Directory z licencją premium (P1/P2). Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Należy pamiętać, że jeśli nie masz żadnych danych działań przed uaktualnieniem, potrwa kilka dni, dane wyświetlane w raportach, po uaktualnieniu do licencji premium. 
 
-2. Pobierz i zainstaluj [usługi Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md).
+2. Tworzenie lub przełącz się do konta użytkownika w **administratora globalnego**, **administrator zabezpieczeń**, **Czytelnik zabezpieczeń** lub **czytnika raportu** Rola dla dzierżawy. 
 
-3. Zainstaluj [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Ten moduł zapewnia kilka poleceń cmdlet narzędzi, w tym:
+3. Wykonaj [wymagania wstępne dotyczące dostępu do usługi Azure Active Directory reporting API](howto-configure-prerequisites-for-reporting-api.md). 
+
+4. Pobierz i zainstaluj [usługi Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md).
+
+5. Zainstaluj [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Ten moduł zapewnia kilka poleceń cmdlet narzędzi, w tym:
     - Biblioteki ADAL, służące do uwierzytelniania
     - Tokeny dostępu użytkownika, kluczy aplikacji i certyfikatów korzystających z bibliotek ADAL
     - Stronicowane wyniki obsługi interfejsu API programu Graph
 
-4. Jeśli po raz pierwszy przy użyciu modułu uruchamiania **MSCloudIdUtilsModule instalacji**, w przeciwnym razie importować go za pomocą **Import-Module** polecenia programu Powershell. Twoja sesja powinna wyglądać podobnie do tego ekranu: ![programu Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Jeśli po raz pierwszy przy użyciu modułu uruchamiania **MSCloudIdUtilsModule instalacji**, w przeciwnym razie importować go za pomocą **Import-Module** polecenia programu Powershell. Sesja powinna wyglądać podobnie do tego ekranu: ![Program Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-5. Użyj **New-SelfSignedCertificate** polecenia cmdlet programu Powershell do utworzenia certyfikatu testowego.
+7. Użyj **New-SelfSignedCertificate** polecenia cmdlet programu Powershell do utworzenia certyfikatu testowego.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-6. Użyj **eksportu certyfikatu** polecenia cmdlet, aby wyeksportować je do pliku certyfikatu.
+8. Użyj **eksportu certyfikatu** polecenia cmdlet, aby wyeksportować je do pliku certyfikatu.
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"

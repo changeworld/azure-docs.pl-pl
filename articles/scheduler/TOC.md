@@ -26,6 +26,7 @@
 # Dokumentacja
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [Interfejs API REST](/rest/api/scheduler)
+## [Szablon usługi Resource Manager](/azure/templates/microsoft.scheduler/allversions)
 
 # Zasoby
 ## [Harmonogram działania usługi Azure Scheduler](https://azure.microsoft.com/updates/?product=scheduler)
@@ -35,4 +36,4 @@
 ## [Cennik](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizacje usług](https://azure.microsoft.com/updates/?product=scheduler)
-## [Wideo](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [Filmy wideo](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)

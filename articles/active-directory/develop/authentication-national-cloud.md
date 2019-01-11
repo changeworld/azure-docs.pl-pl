@@ -3,7 +3,7 @@ title: Uwierzytelnianie przy użyciu usługi Azure AD w chmurach krajowych
 description: Więcej informacji na temat rejestracji oraz uwierzytelniania punktów końcowych aplikacji chmur krajowych.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
+author: negoe
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 12/20/2018
 ms.author: negoe
-ms.reviewer: negoe,andret,saeeda
+ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
-ms.openlocfilehash: 866a86178d66b7b4af069d684e4eb56c12db47ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dfca40c14ad0da3a3e3a8a32757ec40ace9acf6a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982005"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200568"
 ---
 # <a name="national-clouds"></a>Chmury krajowe
 
@@ -33,7 +33,11 @@ W tym chmury globalnej usługi Azure Active Directory jest wdrażany w chmurach 
 - Azure (Niemcy)
 - Azure w Chinach — 21Vianet
 
+Chmury krajowe są unikatowe i różne środowiska niż globalna platforma Azure. W związku z tym należy mieć świadomość niektóre podstawowe różnice podczas tworzenia aplikacji dla tych środowisk, takich jak rejestrowanie aplikacji i uzyskiwania tokenów certyfikatu oraz konfigurowanie punktów końcowych.
+
 ## <a name="app-registration-endpoints"></a>Punkty końcowe rejestracji aplikacji
+
+Brak osobnego portalu platformy Azure dla każdej z nich chmur krajowych. Do zintegrowania aplikacji z platformą tożsamości Microsoft w chmurze krajowej, musisz zarejestrować aplikację oddzielnie w każdej z witryny Azure portal specyficzne dla środowiska.
 
 Poniższa tabela zawiera listę podstawowych adresach URL używany do rejestrowania aplikacji w przypadku każdej chmury krajowe punktów końcowych usługi Azure Active Directory (Azure AD).
 
@@ -42,11 +46,13 @@ Poniższa tabela zawiera listę podstawowych adresach URL używany do rejestrowa
 | Usługa Azure AD dla instytucji rządowych USA |https://portal.azure.us
 |Niemiecka wersja platformy Azure AD |https://portal.microsoftazure.de
 |Usługi AD chińska wersja platformy Azure obsługiwane przez firmę 21Vianet |https://portal.azure.cn
-|Usługa Azure AD (usługa globalne)|https://portal.azure.com
+|Usługa Azure AD (usługa globalne)|https://portal.azure.com 
 
 ## <a name="azure-ad-authentication-endpoints"></a>Punkty końcowe uwierzytelniania usługi Azure AD
 
-Poniższa tabela zawiera listę podstawowych adresów URL dla punktów końcowych usługi Azure Active Directory (Azure AD), używany do uzyskiwania tokenów do wywołania programu Microsoft Graph dla każdej chmury krajowe.
+Chmur krajowych uwierzytelniać użytkowników oddzielnie w ramach każdego środowiska i punkty końcowe uwierzytelniania oddzielne.
+
+Poniższa tabela zawiera listę podstawowych adresach URL używany do uzyskiwania tokenów dla każdej chmury krajowe punktów końcowych usługi Azure Active Directory (Azure AD).
 
 | Chmury krajowe | Punkt końcowy uwierzytelniania usługi Azure AD
 | --- | --- |
@@ -55,20 +61,28 @@ Poniższa tabela zawiera listę podstawowych adresów URL dla punktów końcowyc
 |Usługi AD chińska wersja platformy Azure obsługiwane przez firmę 21Vianet | `https://login.chinacloudapi.cn`
 |Usługa Azure AD (usługa globalne)|`https://login.microsoftonline.com`
 
-Żądania do punktów końcowych autoryzacji lub tokenu usługi Azure AD można utworzyć przy użyciu odpowiednich specyficzne dla regionu podstawowego adresu URL. Na przykład w przypadku (Niemcy):
+- Żądania do punktów końcowych autoryzacji lub tokenu usługi Azure AD można utworzyć przy użyciu odpowiednich specyficzne dla regionu podstawowego adresu URL. Na przykład Azure (Niemcy):
 
-- Jest wspólnego punktu końcowego autoryzacji `https://login.microsoftonline.de/common/oauth2/authorize`
-- Typowe punktu końcowego tokenu jest `https://login.microsoftonline.de/common/oauth2/token` 
+  - Typowe punkt końcowy autoryzacji jest `https://login.microsoftonline.de/common/oauth2/authorize`.
+  - Typowe punktu końcowego tokenu jest `https://login.microsoftonline.de/common/oauth2/token`.
 
-Dla jednej dzierżawy aplikacji Zastąp rozpowszechnione w powyższych adresów URL z identyfikatorem dzierżawy lub nazwa, na przykład `https://login.microsoftonline.de/contoso.com`
+- Dla jednej dzierżawy aplikacji, Zastąp często używany w poprzednim adresy URL z Identyfikatorem dzierżawy lub nazwa, na przykład `https://login.microsoftonline.de/contoso.com`.
 
 >[!NOTE]
 > [Usługi Azure AD v2.0 autoryzacji]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) i tokenu punkty końcowe są dostępne tylko dla usługi global service. Nie jest jeszcze obsługiwane w przypadku wdrożeń chmur krajowych.
 
+## <a name="microsoft-graph-api"></a>Interfejs API programu Microsoft Graph
+
+Aby dowiedzieć się, jak wywoływać interfejsy API programu Graph firmy Microsoft w środowisku chmury krajowe, przejdź do [programu Microsoft Graph w chmurze krajowej](https://developer.microsoft.com/graph/docs/concepts/deployments).
+
+
+
+>[!IMPORTANT]
+Niektórych usług i funkcji, które znajdują się w określonych regionach usługi global service mogą nie być dostępne we wszystkich chmurach krajowych. Aby dowiedzieć się, jakie usługi są dostępne przejdź do [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/)
-- Dowiedz się więcej o [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- Dowiedz się więcej o [Azure (Niemcy)](https://docs.microsoft.com/azure/germany/)
-- Dowiedz się więcej o [podstawowe informacje o uwierzytelnianiu w usłudze Azure AD](authentication-scenarios.md)
-- Dowiedz się więcej o [wdrożenie programu Microsoft Graph na platformie chmury krajowe](https://developer.microsoft.com/graph/docs/concepts/deployments)
+- Dowiedz się więcej o [Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/).
+- Dowiedz się więcej o [Azure China 21Vianet](https://docs.microsoft.com/azure/china/).
+- Dowiedz się więcej o [Azure (Niemcy)](https://docs.microsoft.com/azure/germany/).
+- Dowiedz się więcej o [podstawowe informacje o uwierzytelnianiu w usłudze Azure AD](authentication-scenarios.md).

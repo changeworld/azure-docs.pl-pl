@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b96a00fb5dbf96a7b57adbaaacf24af319d86950
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718966"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215392"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -156,7 +156,7 @@ Następujące zadania, które można wykonywać za pomocą dzienników:
 Wszystkie dane dzienników w usłudze Azure Monitor są pobierane przy użyciu [zapytanie dziennika](../log-query/log-query-overview.md) napisane przy użyciu [język zapytań w Eksploratorze danych](../log-query/get-started-queries.md), co pozwala na szybkie pobierania, konsolidacji i analizowania zebranych danych. Użyj [usługi Log Analytics](../log-query/portals.md) pisania i testowania zapytań w witrynie Azure portal. Można interaktywnej pracy z wynikami lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać dzienniki przy użyciu [platformy Azure, interfejsu API REST monitorowania](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
-> Dane z usługi Application Insights są przechowywane w oddzielnej partycji niż inne dane dzienników w usłudze Azure Monitor. W ten sposób realizowany taką samą funkcjonalność jak inne dane dziennika, ale muszą używać [konsoli Application Insights](/azure-monitor/app/analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
+> Dane z usługi Application Insights są przechowywane w oddzielnej partycji niż inne dane dzienników w usłudze Azure Monitor. W ten sposób realizowany taką samą funkcjonalność jak inne dane dziennika, ale muszą używać [konsoli Application Insights](../app/analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
 
 ![Dzienniki](media/data-collection/logs.png)
 

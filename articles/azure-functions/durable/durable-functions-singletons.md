@@ -1,6 +1,6 @@
 ---
 title: Wzorce Singleton dla funkcje trwałe - Azure
-description: Jak używać pojedynczych elementów w rozszerzeniu Functons trwałe dla usługi Azure Functions.
+description: Jak używać pojedynczych elementów w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: jeconnoc
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3eaa5de1b1378ba78a7c57172fd0a155f72cd6c5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: aca7aa30744c79cefd3c7704a8fde1df203b2c9d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102520"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198987"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze orkiestratorów w funkcje trwałe (usługi Azure Functions)
 

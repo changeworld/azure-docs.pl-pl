@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: 8847a33d6d78060c066f60863c415c266cdc7214
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3bdb09de04ec5041d671f5af709a1a1e7133d141
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051887"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199514"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Zrozumienia i użycia, zestawami SDK Azure IoT Hub
 
@@ -65,7 +65,7 @@ Usługa Azure IoT Hub device zestawu SDK dla języka Java:
 * Dodaj do [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) projektu
 * [Kod źródłowy](https://github.com/Azure/azure-iot-sdk-java)
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
-* [Odwołania do modułu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)
+* [Odwołania do modułu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
 
 Usługa Azure IoT Hub device zestawu SDK dla środowiska Node.js: 
 

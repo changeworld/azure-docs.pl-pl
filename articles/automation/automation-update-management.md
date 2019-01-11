@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631859"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215001"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -125,6 +125,15 @@ Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów admini
 > [!NOTE]
 > Dla systemów z agenta programu Operations Manager aby można było w pełni zarządzane przez rozwiązania Update Management agent musi zostać zaktualizowany do programu Microsoft Monitoring Agent. Aby dowiedzieć się, jak zaktualizować agenta, zobacz [jak uaktualnić agenta programu Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
 
+## <a name="onboard"></a>Włączanie rozwiązania Update Management
+
+Aby rozpocząć, poprawiania systemów, należy włączyć rozwiązanie Update Management. Istnieje wiele sposobów dołączania maszyn do zarządzania aktualizacjami. Poniżej są zalecanym i obsługiwane sposoby na dołączenie rozwiązania:
+
+* [Z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)
+* [Z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md)
+* [Na koncie usługi Automation](automation-onboard-solutions-from-automation-account.md)
+* [Za pomocą elementu runbook usługi Azure Automation](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Upewnij się, że maszyny spoza platformy Azure są dołączone
 
 Aby upewnić się, że bezpośrednio połączone maszyny komunikują się z usługą Log Analytics po kilku minutach możesz uruchomić jedną następujących przeszukiwania dzienników.

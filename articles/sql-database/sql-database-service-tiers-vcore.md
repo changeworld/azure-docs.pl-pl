@@ -12,19 +12,19 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 01/08/2019
-ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6b5ff7294735048347c500d64b411f16bda5422f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156820"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212943"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Umożliwia również można wybrać generacji sprzętu:
 
 - 4. generacji — maksymalnie 24 logiczne procesory CPU oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów, pamięci rdzeń wirtualny = 1 PP (rdzeni fizycznych), 7 GB na rdzeń procesora, dołączonych dysków SSD
-- 5. generacji — maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz, — rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.1. GB na rdzeń procesora, szybkie eNVM dysków SSD
+- 5. generacji — maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz, — rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.1 GB na rdzeń procesora, szybkie eNVM dysków SSD
 
 model rdzenia wirtualnego pozwala również na używanie [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) uzyskanie oszczędności kosztów.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104067"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199922"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
@@ -120,7 +120,7 @@ Poniżej przedstawiono zagadnienia dotyczące wybierania oferty pamięci podręc
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Pamięć podręczna systemu Azure, wydajność pamięci podręcznej Redis
-W poniższej tabeli przedstawiono wartości maksymalnej przepustowości, przestrzegać podczas testowania różne rozmiary Standard i Premium zapisuje w pamięci podręcznej przy użyciu `redis-benchmark.exe` z maszyny Wirtualnej Iaas względem usługi Azure Cache dla punktu końcowego pamięci podręcznej Redis. Przepływność SSL testu porównawczego usługi redis jest używany przy użyciu programu stunnel nawiązywania połączenia z usługą Azure Cache dla punktu końcowego pamięci podręcznej Redis.
+W poniższej tabeli przedstawiono wartości maksymalnej przepustowości, przestrzegać podczas testowania różne rozmiary Standard i Premium zapisuje w pamięci podręcznej przy użyciu `redis-benchmark.exe` z maszyny Wirtualnej IaaS względem usługi Azure Cache dla punktu końcowego pamięci podręcznej Redis. Przepływność SSL testu porównawczego usługi redis jest używany przy użyciu programu stunnel nawiązywania połączenia z usługą Azure Cache dla punktu końcowego pamięci podręcznej Redis.
 
 >[!NOTE] 
 >Te wartości nie są gwarantowane i ma żadnej umowy SLA dla tych numerów, ale powinien być typowe. Powinny zostać załadowane przetestować aplikację, aby określić rozmiar pamięci podręcznej odpowiedniej dla twojej aplikacji.

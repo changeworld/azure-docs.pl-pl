@@ -7,20 +7,20 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: alkohli
-ms.openlocfilehash: c28eaf22d05bfda5085f9e269bda85ca0d46a7d3
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b5ced2814aff51317304cd44c41b04ab9a954844
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578131"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213199"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porównaj StorSimple przy użyciu usługi Azure File Sync i krawędź pola danych opcje transferu danych 
  
-Ten dokument zawiera omówienie opcji do transferu danych lokalnych do platformy Azure, porównanie: vs krawędź pola danych. Usługa Azure File Sync programu vs. Seria StorSimple 8000.
+Ten dokument zawiera omówienie opcji do transferu danych lokalnych do platformy Azure, porównanie: Vs krawędź pola danych. Usługa Azure File Sync programu vs. Seria StorSimple 8000.
 
-- **[Krawędź pola danych](/azure/databox-online/data-box-edge-overview.md)**  — krawędź pola danych jest lokalne urządzenie sieci, dane są przenoszone do i z platformy Azure, która ma włączone sztucznej Inteligencji krawędzi obliczeń wstępnie przetworzyć dane podczas przekazywania. Ona zostało ogłoszone na konferencji Ignite 2018 i w publicznej wersji zapoznawczej. Brama pole danych jest wersja wirtualna urządzenia przy użyciu tych samych możliwości transferu danych.
-- **[Usługa Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide.md)**  — usługi Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Ogólna dostępność usługi Azure File Sync ogłoszono we wcześniejszej części 2018 r.
-- **[Usługa StorSimple](/azure/storsimple/storsimple-overview.md)**  — StorSimple to urządzenie hybrydowych, które pomaga firmom konsolidować infrastruktury magazynu dla magazynu podstawowego, ochrony danych, archiwizacji i odzyskiwania po awarii w ramach jednego rozwiązania, ścisła integracja z usługą Usługa Azure storage. Można znaleźć cyklu życia produktu dla usługi StorSimple [tutaj](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+- **[Krawędź pola danych](/azure/databox-online/data-box-edge-overview)**  — krawędź pola danych jest lokalne urządzenie sieci, dane są przenoszone do i z platformy Azure, która ma włączone sztucznej Inteligencji krawędzi obliczeń wstępnie przetworzyć dane podczas przekazywania. Ona zostało ogłoszone na konferencji Ignite 2018 i w publicznej wersji zapoznawczej. Brama pole danych jest wersja wirtualna urządzenia przy użyciu tych samych możliwości transferu danych.
+- **[Usługa Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)**  — usługi Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Ogólna dostępność usługi Azure File Sync ogłoszono we wcześniejszej części 2018 r.
+- **[Usługa StorSimple](/azure/storsimple/storsimple-overview)**  — StorSimple to urządzenie hybrydowych, które pomaga firmom konsolidować infrastruktury magazynu dla magazynu podstawowego, ochrony danych, archiwizacji i odzyskiwania po awarii w ramach jednego rozwiązania, ścisła integracja z usługą Usługa Azure storage. Można znaleźć cyklu życia produktu dla usługi StorSimple [tutaj](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 ## <a name="comparison-summary"></a>Podsumowanie porównania
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: bb7a0b8c2d0511088282e180a108f8d925f0e4e8
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 059c227f9a5a5701e3fceca94b643c30d006ce67
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054755"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199956"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak wykonać aprowizację maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell
 
@@ -310,7 +310,7 @@ Maszyna wirtualna jest tworzona.
 > [!NOTE]
 > Można zignorować błąd dotyczący diagnostyki rozruchu. Standardowe konto magazynu jest utworzyć dla diagnostyki rozruchu, ponieważ określone konto magazynu dla dysku maszyny wirtualnej jest konto magazynu premium storage.
 
-## <a name="install-the-sql-iaas-agent"></a>Instalacja agenta SQL IaaS
+## <a name="install-the-sql-iaas-agent"></a>Zainstaluj agenta SQL IaaS
 Maszyny wirtualne programu SQL Server obsługują funkcje automatyczne zarządzanie za pomocą [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszynie wirtualnej, uruchom następujące polecenie po jego utworzeniu.
 
    ```PowerShell

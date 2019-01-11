@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3495d157f1a681e80b6d113acced53d01751690f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00183e14c16c6f13043272845a0fb45fe5e223f3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077498"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199735"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -74,7 +74,7 @@ Aby komunikat o błędzie, należy zarejestrować wywołanie zwrotne, które prz
    await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
 
-Aby uzyskać więcej informacji na temat klasy ModuleClient i jego metod komunikacji, zobacz dokumentacja interfejsu API preferowanego języka zestawu SDK: [ C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C i Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable), lub [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Aby uzyskać więcej informacji na temat klasy ModuleClient i jego metod komunikacji zobacz dokumentacja interfejsu API preferowanego języka zestawu SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C i Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable), lub [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 Rozwiązanie dla deweloperów jest odpowiedzialny za określenie reguł, które określają, jak Centrum usługi Edge przekazuje komunikatów między modułami. Reguły routingu są zdefiniowane w chmurze i przekazywany do Centrum usługi Edge w jego bliźniaczej reprezentacji urządzenia. Tej samej składni dla tras usługi IoT Hub jest używane do definiowania trasy między modułami w usłudze Azure IoT Edge. 
 

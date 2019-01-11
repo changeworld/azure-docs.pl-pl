@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f5663842a4d861ed6eb76de859b870aa7114cb04
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3968b05f119227552f88a50e96d3acbce6a19143
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063645"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199123"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -397,7 +397,7 @@ Niektóre typowe przyczyny, które moduł nie może pomyślnie zaimportować do 
 * Struktura nie jest zgodna strukturę, która automatyzacji musi się on w.
 * Moduł jest zależny od innego modułu, który nie został wdrożony na Twoim koncie usługi Automation.
 * Moduł brakuje jego zależności w folderze.
-* `New-AzureRmAutomationModule` Polecenia cmdlet jest używane do przekazywania modułu ani have't podanej ścieżki przechowywania pełnej lub nie został załadowany moduł przy użyciu publicznie dostępnego adresu URL.
+* `New-AzureRmAutomationModule` Polecenia cmdlet jest używane do przekazywania modułu, a nie jeszcze podanej ścieżki przechowywania pełnej lub nie został załadowany moduł przy użyciu publicznie dostępnego adresu URL.
 
 #### <a name="resolution"></a>Rozwiązanie
 

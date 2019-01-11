@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119221"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214005"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -92,7 +92,7 @@ Dane zebrane przez rozwiązanie do zarządzania alertami (rekordy z typem alertu
 Aplikację OMS mobile będzie sunsetted wraz z portalu pakietu OMS. Zamiast aplikację OMS mobile dostęp do informacji o infrastrukturę IT, pulpity nawigacyjne i zapisane zapytania dostępne witryny Azure portal bezpośrednio z przeglądarki w urządzeniu przenośnym. Aby otrzymywać alerty, należy skonfigurować [grup akcji platformy Azure](../../azure-monitor/platform/action-groups.md) do odbierania powiadomień w postaci wiadomości SMS lub połączenie głosowe
 
 ## <a name="application-insights-connector-and-solution"></a>Łącznik usługi Application Insights i rozwiązania
-[Łącznik usługi Application Insights](../../azure-monitor/platform/app-insights-connector.md) zapewnia sposób dołączenia danych usługi Application Insights do obszaru roboczego usługi Log Analytics. Ta duplikacja danych był wymagany do włączenia widoczności danych infrastruktury i aplikacji. Za pomocą usługi Application Insights rozszerzona obsługa przechowywania danych w marca 2019 i możliwość wykonywania [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md), nie ma potrzeby zduplikowane dane z zasobów usługi Application Insights i wysyłanie ich do usługi Log Analytics. Ponadto łącznik wysyła podzbiór właściwości aplikacji do usługi Log Analytics, daje zapytania obejmujące wiele zasobów rozszerzone elastyczność.  
+[Łącznik usługi Application Insights](../../azure-monitor/platform/app-insights-connector.md) zapewnia sposób dołączenia danych usługi Application Insights do obszaru roboczego usługi Log Analytics. Ta duplikacja danych był wymagany do włączenia widoczności danych infrastruktury i aplikacji. Za pomocą usługi Application Insights rozszerzona obsługa przechowywania danych w marca 2019 i możliwość wykonywania [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) oprócz możliwości [wyświetlania wielu zasobów usługi Azure Monitor Application Insights ](../log-query/unify-app-resource-data.md), nie ma potrzeby zduplikowane dane z zasobów usługi Application Insights i wysyłanie ich do usługi Log Analytics. Ponadto łącznik wysyła podzbiór właściwości aplikacji do usługi Log Analytics, daje zapytania obejmujące wiele zasobów rozszerzone elastyczność.  
 
 W efekcie łącznik usługi Application Insights będzie przestarzały i usunięte z portalu Azure Marketplace oraz obsługi portalu pakietu OMS na 30 marca 2019 r podczas istniejące połączenia będą w dalszym ciągu działać aż do 30 czerwca 2019 r. Za pomocą obsługi portalu pakietu OMS nie ma możliwości do konfigurowania i usunąć istniejące połączenia z portalu. Będzie to możliwe przy użyciu interfejsu API REST, który zostanie udostępniona w styczniu maja 2019 r, a powiadomienie zostanie opublikowany na [aktualizacje platformy Azure](https://azure.microsoft.com/updates/). 
 

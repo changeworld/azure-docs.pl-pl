@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634426"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213233"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 
@@ -77,7 +77,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 
-Poniższy przykład najpierw ustanawia połączenie do usługi Azure Storage przy użyciu kontekst konta magazynu, który zawiera nazwę konta magazynu i klucza dostępu. Następnie wywołuje [New AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue) polecenia cmdlet, aby utworzyć kolejkę o nazwie "queuename".
+Poniższy przykład najpierw ustanawia połączenie do usługi Azure Storage przy użyciu kontekst konta magazynu, który zawiera nazwę konta magazynu i klucza dostępu. Następnie wywołuje [New AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) polecenia cmdlet, aby utworzyć kolejkę o nazwie "queuename".
 
 ```powershell
 $queueName = "howtoqueue"
@@ -88,7 +88,7 @@ Aby uzyskać informacji na temat konwencji nazewnictwa dla usługi Azure Queue S
 
 ## <a name="retrieve-a-queue"></a>Pobieranie kolejki
 
-Można wykonywać zapytania i pobierać listę wszystkich kolejek na koncie magazynu lub określonej kolejki. Poniższe przykłady pokazują, jak można pobrać wszystkich kolejek na koncie magazynu i w odpowiedniej kolejce; Oba polecenia, użyj [Get AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue) polecenia cmdlet.
+Można wykonywać zapytania i pobierać listę wszystkich kolejek na koncie magazynu lub określonej kolejki. Poniższe przykłady pokazują, jak można pobrać wszystkich kolejek na koncie magazynu i w odpowiedniej kolejce; Oba polecenia, użyj [Get AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) polecenia cmdlet.
 
 ```powershell
 # Retrieve a specific queue

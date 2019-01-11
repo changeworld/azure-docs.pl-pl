@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 898080f445c54c93543a481bdd0487c70e772160
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994338"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214403"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -51,7 +51,7 @@ Usługa Azure Storage jest skalowalna, zgodnie z projektem, czy możesz uzyskać
 
 ### <a name="cost-effectiveness"></a>Ekonomiczność
 
-Jedną z wielu zalet tworzenia Data Lake Storage Gen2 na podstawie usługi Azure Blob storage to ekonomiczne pojemności i transakcji. W przeciwieństwie do innych usług magazynu w chmurze dane przechowywane w Data Lake Storage Gen2 nie jest wymagany do przeniesienia lub przekształcane przed przeprowadzeniem analizy. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage]((https://azure.microsoft.com/pricing/details/storage)).
+Jedną z wielu zalet tworzenia Data Lake Storage Gen2 na podstawie usługi Azure Blob storage to ekonomiczne pojemności i transakcji. W przeciwieństwie do innych usług magazynu w chmurze dane przechowywane w Data Lake Storage Gen2 nie jest wymagany do przeniesienia lub przekształcane przed przeprowadzeniem analizy. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 Ponadto funkcje, takie jak [hierarchicznej przestrzeni nazw](data-lake-storage-namespace.md) znacznie zwiększyć ogólną wydajność wielu zadań usługi analytics. Ta poprawa wydajności oznacza, że wymagają mniej mocy obliczeniowej do przetwarzania tej samej ilości danych, co spowodowało niższy całkowity koszt posiadania (TCO) dla zadania analiza end-to-end.
 

@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 01/10/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8fec963dfce8c55cc618f2ce6877d4d591a9cf27
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054927"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215222"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Używanie programu Visual Studio 2017 do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge (wersja zapoznawcza)
 
@@ -27,8 +27,11 @@ Narzędzia usługi Azure IoT Edge dla programu Visual Studio zapewnia następuj�
 - Kodu moduły usługi Azure IoT w języku C#, a jednocześnie ma wszystkie korzyści wynikające z programowania Visual Studio.
 - Zarządzanie urządzeniami usługi Azure IoT Edge i modułów przy użyciu interfejsu użytkownika.
 
-W tym artykule pokazano, jak tworzyć moduły usługi IoT Edge w języku C# za pomocą narzędzi usługi Azure IoT Edge dla programu Visual Studio 2017. Poznasz również sposób wdrażania projektu do Twojego urządzenia usługi Azure IoT Edge.
+W tym artykule pokazano, jak tworzyć moduły usługi IoT Edge w języku C# za pomocą narzędzi usługi Azure IoT Edge dla programu Visual Studio 2017. Poznasz również sposób wdrażania projektu do Twojego urządzenia usługi Azure IoT Edge. 
 
+  > [!TIP]
+  > Struktura projektu IoT Edge, które są tworzone przez program Visual Studio nie jest taki sam jak w programie Visual Studio Code.
+  
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym artykule założono, że używasz komputera lub maszyny wirtualnej z systemem Windows jako komputerze deweloperskim. Urządzenia usługi IoT Edge może być inny urządzenia fizycznego.

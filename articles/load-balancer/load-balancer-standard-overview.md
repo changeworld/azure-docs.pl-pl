@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2d4808aaccd704f4c54d44cfe7d45ddd84cf0e17
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438765"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198681"
 ---
-# <a name="azure-load-balancer-standard-overview"></a>Omówienie standardowego modułu równoważenia obciążenia na platformie Azure
+# <a name="azure-standard-balancer-overview"></a>Omówienie usługi Azure Balancer w warstwie standardowa
 
 Usługa Azure Load Balancer umożliwia skalowanie aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia może służyć do scenariuszy dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP. 
 
@@ -89,12 +89,12 @@ Standardowy moduł równoważenia obciążenia zapewnia metryk wielowymiarowych 
 
 | Metryka | Opis |
 | --- | --- |
-| Dostępność adresu VIP | Standardowy moduł równoważenia obciążenia nieustannie korzysta ze ścieżki danych z w obrębie regionu frontonu do stosu SDN, który obsługuje Twoja maszyna wirtualna modułu równoważenia obciążenia. Tak długo, jak utrzymać dobrej kondycji wystąpień, pomiar następuje taką samą ścieżkę ruchu ze zrównoważonym obciążeniem w danej aplikacji. Ścieżka danych, który jest używany przez klientów jest również sprawdzany. Miara jest niewidoczny dla aplikacji i nie kolidują z innymi operacjami.|
+| Dostępność adresu VIP | Load Balancer w warstwie standardowa stale korzysta ze ścieżki danych z w obrębie regionu frontonu do stosu SDN, który obsługuje Twoja maszyna wirtualna modułu równoważenia obciążenia. Tak długo, jak utrzymać dobrej kondycji wystąpień, pomiar następuje taką samą ścieżkę ruchu ze zrównoważonym obciążeniem w danej aplikacji. Ścieżka danych, który jest używany przez klientów jest również sprawdzany. Miara jest niewidoczny dla aplikacji i nie kolidują z innymi operacjami.|
 | Dostępność DIP | Standardowy moduł równoważenia obciążenia używa kondycji rozproszonej, sondowanie usługi, która monitoruje kondycję swojej aplikacji punktu końcowego zgodnie z ustawieniami konfiguracji. Ta metryka zapewnia agregacji lub na punkt końcowy filtrowania widoku każdego punktu końcowego poszczególnych wystąpień, w module równoważenia obciążenia w puli.  Aby zobaczyć, jak moduł równoważenia obciążenia widoków kondycji aplikacji wskazane przez konfigurację sondy kondycji.
-| SYN pakietów | Standardowy moduł równoważenia obciążenia nie zakończyć połączenia TCP lub korzystać z protokołu TCP lub UDP przepływów pakietów. Przepływów i ich uzgodnienia są zawsze między źródłem i wystąpienie maszyny Wirtualnej. Aby lepiej rozwiązywać scenariuszy protokołu TCP, można skorzystać z SYN liczniki pakietów, aby zrozumieć, jak wiele połączeń TCP prób. Metryka zgłasza liczbę pakietów TCP SYN, które zostały odebrane.|
-| Połączeń SNAT | Standardowy moduł równoważenia obciążenia zgłasza liczbę przepływy wychodzące, które są masqueraded na publiczny adres IP frontonu. Porty SNAT to zasób wyczerpującymi. Ta metryka może stanowić wskazówkę stopnia aplikacji powołuje się na SNAT dla ruchu wychodzącego przepływów.  Liczniki dla udane i nieudane przepływy wychodzące SNAT są zgłaszane i może służyć do rozwiązywania oraz zrozumieć kondycję swoich przepływów ruchu wychodzącego.|
-| Liczniki bajtów | Standardowy moduł równoważenia obciążenia raporty danych przetworzonych w ramach frontonu.|
-| Liczniki pakietów | Standardowy moduł równoważenia obciążenia raporty pakietów przetworzonych w ramach frontonu.|
+| SYN pakietów | Load Balancer w warstwie standardowa zakończenia połączenia protokołu TCP lub nie korzystać z protokołu TCP lub UDP przepływów pakietów. Przepływów i ich uzgodnienia są zawsze między źródłem i wystąpienie maszyny Wirtualnej. Aby lepiej rozwiązywać scenariuszy protokołu TCP, można skorzystać z SYN liczniki pakietów, aby zrozumieć, jak wiele połączeń TCP prób. Metryka zgłasza liczbę pakietów TCP SYN, które zostały odebrane.|
+| Połączeń SNAT | Load Balancer w warstwie standardowa zgłasza liczbę przepływy wychodzące, które są masqueraded na publiczny adres IP frontonu. Porty SNAT to zasób wyczerpującymi. Ta metryka może stanowić wskazówkę stopnia aplikacji powołuje się na SNAT dla ruchu wychodzącego przepływów.  Liczniki dla udane i nieudane przepływy wychodzące SNAT są zgłaszane i może służyć do rozwiązywania oraz zrozumieć kondycję swoich przepływów ruchu wychodzącego.|
+| Liczniki bajtów | Load Balancer w warstwie standardowa raporty danych przetworzonych w ramach frontonu.|
+| Liczniki pakietów | Load Balancer w warstwie standardowa raporty pakietów przetworzonych w ramach frontonu.|
 
 Przegląd [szczegółowe omówienie standardowa diagnostykę modułu równoważenia obciążenia](load-balancer-standard-diagnostics.md).
 
@@ -202,7 +202,7 @@ Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby pr
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Standardowy moduł równoważenia obciążenia jest obecnie dostępna we wszystkich regionach chmury publicznej.
+Load Balancer w warstwie standardowa jest obecnie dostępna we wszystkich regionach chmury publicznej.
 
 ## <a name="sla"></a>Umowa SLA
 

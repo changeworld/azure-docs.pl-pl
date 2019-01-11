@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: cb97725d61f899f2408dbb44d052c1dd4e6bc561
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189500"
+ms.locfileid: "54201299"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -28,6 +28,18 @@ Urządzenie ciągłe odnajdywania tylko zbiera dane dotyczące wydajności stale
    ![Zatrzymaj odnajdywanie](./media/troubleshooting-general/stop-discovery.png)
 
 - Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Usuwanie usługi Azure Migrate projektów i skojarzone obszaru roboczego analizy dzienników
+
+Po usunięciu projekt usługi Azure Migrate usuwa projekt migracji, wraz ze wszystkich grup i ocen. Jednak jeśli obszar roboczy usługi Log Analytics mają być dołączone do projektu, go nie powoduje automatycznego usunięcia obszaru roboczego usługi Log Analytics. Jest to spowodowane tym samym obszarze roboczym usługi Log Analytics mogą być używane dla wielu przypadków użycia. Jeśli chcesz usunąć obszar roboczy usługi Log Analytics, należy to zrobić ręcznie.
+
+1. Przejdź do obszaru roboczego usługi Log Analytics, dołączonych do projektu.
+   a. Jeśli projekt migracji nie zostały jeszcze usunięte, znajduje się łącze do obszaru roboczego ze strony Przegląd projektu w sekcji podstawowe elementy.
+   
+   ![Obszar roboczy LA](./media/troubleshooting-general/LA-workspace.png)
+
+   b. Jeśli został już usunięty projektu migracji, kliknij przycisk **grup zasobów** w okienku po lewej stronie w witrynie Azure portal i przejdź do grupy zasobów, w którym obszar roboczy został utworzony, a następnie przejdź do jej.
+2. Postępuj zgodnie z instrukcjami [w tym artykule](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) można usunąć obszaru roboczego.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Tworzenie projektu migracji nie powiodła się z powodu błędu *żądania muszą zawierać nagłówki tożsamości użytkownika*
 
@@ -80,7 +92,7 @@ Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zi
 
    ![Lokalizacja projektu](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>Błędy modułu zbierającego dzienniki
+## <a name="collector-issues"></a>Problemy z modułu zbierającego
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Wdrażanie usługi Azure Migrate Collector nie powiodło się z powodu błędu: Podany plik manifestu jest nieprawidłowy: Nieprawidłowy wpis manifestu pakietu OVF.
 
@@ -156,6 +168,17 @@ Jeśli problem nadal występuje w najnowszej wersji, może to być, ponieważ ma
 2. Jeśli nie możesz wykonać kroku 1, spróbuj połączyć się z programem vCenter Server za pośrednictwem adresu IP.
 3. Podaj prawidłowy numer portu, aby nawiązać połączenie z programem vCenter.
 4. Na koniec sprawdź, czy program vCenter Server działa.
+
+### <a name="antivirus-exclusions"></a>Wykluczenia programu antywirusowego
+
+Zabezpieczyć urządzenie Azure Migrate, musisz wykluczyć następujące foldery, w urządzeniu ze skanowania antywirusowego:
+
+- Folder, który zawiera pliki binarne usługi migracji platformy Azure. Wyklucz wszystkie podfoldery.
+  %ProgramFiles%\ProfilerService  
+- Usługa Azure Migrate aplikacji sieci Web. Wyklucz wszystkie podfoldery.
+  %SystemDrive%\inetpub\wwwroot
+- Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure migrate usługa wymaga RW dostęp do tego folderu.
+  %SYSTEMDRIVE%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>Problemy z wizualizacji zależności
 

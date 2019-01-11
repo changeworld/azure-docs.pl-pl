@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138164"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213454"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nie można wykonać protokołu RDP na maszynach wirtualnych platformy Azure, ponieważ usługa klienta DHCP jest wyłączona
 
@@ -35,9 +35,9 @@ Nie można wprowadzać z połączeniem RDP maszyny Wirtualnej na platformie Azur
 **Data**: 2015-12-16 11:19:36: 00 </br>
 **Identyfikator zdarzenia**: 7022 </br>
 **Zadanie kategorii**: Brak </br>
-**Poziom**: błąd </br>
-**Słowa kluczowe**: klasyczny</br>
-**Użytkownik**: n/d </br>
+**Poziom**: Błąd </br>
+**Keywords**: Wdrożenie klasyczne</br>
+**Użytkownik**: ND </br>
 **Komputer**: myvm.cosotos.com</br>
 **Opis**: Usługa klienta DHCP zawiesiła się podczas uruchamiania.</br>
 
@@ -62,7 +62,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
-1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](serial-console-windows.md#use-cmd-or-powershell-in-serial-console).
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, zobacz [interfejs sieciowy resetowania](reset-network-interface.md).
 2. Sprawdź, czy DHCP jest wyłączony w interfejsie sieciowym:
 
@@ -95,7 +95,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>Usługa klienta DHCP jest zatrzymana z powodu błędu odmowy dostępu
 
-1. Połączyć się z [konsoli szeregowej](serial-console-windows.md#) , a następnie otwórz wystąpienie programu PowerShell.
+1. Połączyć się z [konsoli szeregowej](serial-console-windows.md) , a następnie otwórz wystąpienie programu PowerShell.
 2. Pobierz narzędzia Monitor procesu w systemie, uruchamiając następujący skrypt:
 
    ```

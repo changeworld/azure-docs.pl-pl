@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408922"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213216"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -51,15 +51,14 @@ Oficjalnie obsługiwane są poniższe dystrybucje systemu Linux. Jednak agenta s
 * Debian GNU/Linux 8 i 9
 * LTS Ubuntu Linux 14.04 i 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
+## <a name="onboard"></a>Włączanie śledzenia zmian i spisu
 
-Aby rozpocząć śledzenie zmian, należy włączyć rozwiązanie śledzenia zmian i spisu dla konta usługi Automation.
+Aby rozpocząć śledzenie zmian, należy włączyć rozwiązanie śledzenia zmian i spisu. Istnieje wiele sposobów dołączania maszyn do śledzenia zmian i spisu. Poniżej są zalecanym i obsługiwane sposoby na dołączenie rozwiązania.
 
-1. W witrynie Azure portal przejdź do konta usługi Automation
-2. Wybierz **śledzenie zmian** w obszarze **konfiguracji**.
-3. Wybierz istniejący obszar roboczy Log analytics lub **Utwórz nowy obszar roboczy** i kliknij przycisk **Włącz**.
-
-Dzięki temu rozwiązaniu dla konta usługi automation. Rozwiązanie może potrwać do 15 minut, aby włączyć. Niebieski Baner powiadamia użytkownika, gdy rozwiązanie jest włączone. Przejdź z powrotem do **Change Tracking** strony na zarządzanie rozwiązaniem.
+* [Z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)
+* [Z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md)
+* [Na koncie usługi Automation](automation-onboard-solutions-from-automation-account.md)
+* [Za pomocą elementu runbook usługi Azure Automation](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurowanie śledzenia zmian i spisu
 
@@ -85,7 +84,7 @@ Poniższe kroki umożliwiają konfigurowanie śledzenia plików na komputerach z
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
 |Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie obejmuje pliki/katalogi, do których odwołuje się.<br>**Postępuj zgodnie z** — śledzi linki symboliczne podczas rekursji i zawiera również pliki/katalogi, do których odwołuje się.<br>**Zarządzanie** — śledzi linki symboliczne i umożliwia zmienianie zwracanej zawartości.     |
-|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **Wartość true,** lub **False**.|
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 > [!NOTE]
 > Opcja linków „Zarządzaj” nie jest zalecana. Pobieranie zawartości plików nie jest obsługiwane.
@@ -105,7 +104,7 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
 |Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”       |
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
-|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **Wartość true,** lub **False**.|
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Ustawienia symboli wieloznacznych, rekursji i środowiska
 
@@ -135,7 +134,7 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie kluczy rejestru na ko
 |Enabled (Włączony)     | Określa, czy ustawienia została zastosowana.        |
 |Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Klucz rejestru systemu Windows   | Ścieżka do sprawdzania pliku. Na przykład: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Klucz rejestru systemu Windows   | Ścieżka do sprawdzania pliku. Na przykład: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ## <a name="limitations"></a>Ograniczenia
 

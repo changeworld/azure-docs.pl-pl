@@ -12,21 +12,41 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b5d931225edce92590b9c2b7f28ad39630362e6d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721839"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213828"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
 SQL Data Sync to usługa oparta na usłudze Azure SQL Database, która umożliwia synchronizowanie danych, wybrana dwukierunkowo między wieloma bazami danych SQL i wystąpienia programu SQL Server.
 
 > [!IMPORTANT]
-> Usługa Azure SQL Data Sync jest **nie** obsługują wystąpienia zarządzanego Azure SQL Database w tej chwili.
+> Usługa Azure SQL Data Sync **nie** obsługuje obecnie wystąpienia zarządzanego usługi Azure SQL Database.
 
-## <a name="architecture-of-sql-data-sync"></a>Architektura SQL Data Sync
+## <a name="when-to-use-data-sync"></a>Kiedy należy używać synchronizacji danych
+
+Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być przechowywane aktualne między kilka baz danych Azure SQL lub bazy danych programu SQL Server. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
+
+-   **Synchronizacja danych hybrydowych:** Z opcją synchronizacji danych możesz przechowywać dane synchronizowane między lokalnymi bazami danych i baz danych Azure SQL, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
+
+-   **Aplikacje rozproszone:** W wielu przypadkach jest korzystne różnych obciążeń w różnych bazach danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
+
+-   **Globalnie dystrybuowane aplikacje:** Wiele firm obejmują wiele regionów i krajów nawet kilka. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
+
+Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scenariuszach:
+
+| Scenariusz | Niektóre zalecane rozwiązania |
+|----------|----------------------------|
+| Odzyskiwanie po awarii | [Geograficznie nadmiarowych kopii zapasowych Azure](sql-database-automated-backups.md) |
+| Odczyt skali | [Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu](sql-database-read-scale-out.md) |
+| ETL (OLTP, aby OLAP) | [Usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) lub [usług SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| Migracja z programu on-premises SQL Server do usługi Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+|||
+
+## <a name="overview-of-sql-data-sync"></a>Omówienie SQL Data Sync
 
 Synchronizacja danych opiera się wokół koncepcji grupą synchronizacji. Grupa synchronizacji jest grupą baz danych, które mają być synchronizowane.
 
@@ -49,26 +69,6 @@ Grupa synchronizacji ma następujące właściwości:
 -   **Interwał synchronizacji** opisano, jak często występuje synchronizacji.
 
 -   **Zasady rozwiązywania konfliktów** poziomu zasad grupy, który może być *wins Centrum* lub *wins elementu członkowskiego*.
-
-## <a name="when-to-use-data-sync"></a>Kiedy należy używać synchronizacji danych
-
-Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być przechowywane aktualne między kilka baz danych Azure SQL lub bazy danych programu SQL Server. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
-
--   **Synchronizacja danych hybrydowych:** Z opcją synchronizacji danych możesz przechowywać dane synchronizowane między lokalnymi bazami danych i baz danych Azure SQL, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
-
--   **Aplikacje rozproszone:** W wielu przypadkach jest korzystne różnych obciążeń w różnych bazach danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
-
--   **Globalnie dystrybuowane aplikacje:** Wiele firm obejmują wiele regionów i krajów nawet kilka. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
-
-Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scenariuszach:
-
-| Scenariusz | Niektóre zalecane rozwiązania |
-|----------|----------------------------|
-| Odzyskiwanie po awarii | [Geograficznie nadmiarowych kopii zapasowych Azure](sql-database-automated-backups.md) |
-| Odczyt skali | [Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu](sql-database-read-scale-out.md) |
-| ETL (OLTP, aby OLAP) | [Usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) lub [usług SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
-| Migracja z programu on-premises SQL Server do usługi Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
-|||
 
 ## <a name="how-does-data-sync-work"></a>Jak działa synchronizacja danych 
 

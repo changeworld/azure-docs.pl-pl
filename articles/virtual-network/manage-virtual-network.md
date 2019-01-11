@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ea78176b9e35643698acf3901b30520b7c7be3c2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016034"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214400"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
@@ -99,7 +99,13 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 ## <a name="add-or-remove-an-address-range"></a>Dodawanie lub usuwanie zakresu adresów
 
-Można dodawać i usuwać zakresów adresów sieci wirtualnej. Zakres adresów musi być określony w notacji CIDR, a nie może nakładać się na inne zakresy adresów w obrębie tej samej sieci wirtualnej. Zakresy adresów, jaką zdefiniujesz może być publiczny lub prywatny (RFC 1918). Czy można zdefiniować zakres adresów jako publicznych lub prywatnych, zakres adresów jest dostępny tylko z w ramach sieci wirtualnej z połączonymi sieciami wirtualnymi i sieciami lokalnymi, żadnych podłączonych do sieci wirtualnej. Nie można dodać poniższe zakresy adresów:
+Można dodawać i usuwać zakresów adresów sieci wirtualnej. Zakres adresów musi być określony w notacji CIDR, a nie może nakładać się na inne zakresy adresów w obrębie tej samej sieci wirtualnej. Zakresy adresów, jaką zdefiniujesz może być publiczny lub prywatny (RFC 1918). Czy można zdefiniować zakres adresów jako publicznych lub prywatnych, zakres adresów jest dostępny tylko z w ramach sieci wirtualnej z połączonymi sieciami wirtualnymi i sieciami lokalnymi, żadnych podłączonych do sieci wirtualnej. 
+
+<!-- You can decrease the address range for a given virtual network if you don't have any subnets associated with it. Otherwise, you can only extend the address range; for example, changing a /16 to /8 is possible. We recommend that you begin with a small address range, and then extend it later or add additional ranges.
+
+the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+
+Nie można dodać poniższe zakresy adresów:
 
 - 224.0.0.0/4 multiemisji)
 - 255.255.255.255/32 (emisji)
@@ -131,7 +137,7 @@ Wszystkie maszyny wirtualne, które są podłączone do sieci wirtualnej, zareje
 3.  Wybierz **serwerów DNS**w obszarze **ustawienia**.
 4. Wybierz jedną z następujących opcji:
     - **Domyślne (dostarczone do platformy Azure)**: Wszystkie nazwy zasobów i prywatne adresy IP są automatycznie rejestrowane na serwerach DNS platformy Azure. Można rozwiązać nazwy między wszystkie zasoby, które są podłączone do tej samej sieci wirtualnej. Tej opcji nie można używać do rozpoznawania nazw w sieciach wirtualnych. Aby rozpoznawanie nazw w sieciach wirtualnych, należy użyć niestandardowego serwera DNS.
-    - **Niestandardowe**: Możesz dodać jeden lub więcej serwerów w granicach platformy Azure dla sieci wirtualnej. Aby dowiedzieć się więcej na temat limity serwera DNS, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Istnieją następujące opcje:
+    - **Niestandardowy**: Możesz dodać jeden lub więcej serwerów w granicach platformy Azure dla sieci wirtualnej. Aby dowiedzieć się więcej na temat limity serwera DNS, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Istnieją następujące opcje:
         - **Dodaj adres**: Dodaje serwer do listy serwerów DNS sieci wirtualnej. Ta opcja również rejestruje serwer DNS z platformą Azure. Jeśli użytkownik jest już zarejestrowany serwer DNS z platformą Azure, możesz wybrać tego serwera DNS, na liście.
         - **Usuń adres**: Obok serwera, który chcesz usunąć, wybierz **...** , następnie **Usuń**. Usunięcie serwera usuwa serwer tylko z tej listy sieci wirtualnej. Serwer DNS nadal zarejestrowany na platformie Azure, aby użyć innych sieci wirtualnych.
         - **Zmień kolejność adresów serwerów DNS**: Jest to ważne, aby sprawdzić, czy listy serwerów DNS w odpowiedniej kolejności dla danego środowiska. Listy serwerów DNS są używane w kolejności, w jakiej zostały określone. Nie działają jako ustawienia działania okrężnego. Jeśli pierwszy serwer DNS na liście jest osiągalna, klient korzysta z tego serwera DNS, niezależnie od tego, czy serwer DNS działa prawidłowo. Usuń wszystkie serwery DNS, które są wyświetlane, a następnie dodaj je ponownie w kolejności, w którym chcesz.

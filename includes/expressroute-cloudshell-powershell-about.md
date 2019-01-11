@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/25/2018
+ms.date: 01/09/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 874643c5149cf6a222ab6d244dd561e5c4da5a84
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4d9f05ad1913646e7ca09690af965042817ef7ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251400"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193440"
 ---
 W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć usługi Azure Cloud Shell, bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po prostu kliknij przycisk **Kopiuj**, aby skopiować kod, wklej go do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby go uruchomić. Istnieje kilka sposobów uruchomienia usługi Cloud Shell:
 
@@ -26,4 +26,4 @@ W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polece
 
 Jeśli nie chcesz używać usługi Azure Cloud Shell, można zainstalować programu PowerShell lokalnie zamiast tego. Jeśli zdecydujesz się zainstalować program PowerShell i używać lokalnie, należy zainstalować najnowszą wersję poleceń cmdlet programu Azure PowerShell Resource Manager. Polecenia cmdlet programu PowerShell są często aktualizowane i zwykle konieczne zaktualizowanie poleceń cmdlet programu PowerShell można pobrać najnowszych wersji funkcji. Jeśli nie zaktualizujesz poleceń cmdlet programu PowerShell, mogą wystąpić błędy określonych wartości. 
 
-Aby znaleźć wersję programu PowerShell, które uruchamiasz lokalnie, użyj polecenia cmdlet "Get-Module - ListAvailable AzureRM". Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/install-azurerm-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+Aby znaleźć wersję programu PowerShell, które uruchamiasz lokalnie, użyj polecenia cmdlet "Get-Module - ListAvailable AzureRM". Aby uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/overview).

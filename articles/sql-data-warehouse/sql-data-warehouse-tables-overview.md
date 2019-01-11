@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302317"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212553"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w usłudze Azure SQL Data Warehouse
 
@@ -103,7 +103,7 @@ Tabeli partycjonowanej magazyny i wykonuje operacje na wiersze tabeli, zgodnie z
 ## <a name="columnstore-indexes"></a>Indeksy magazynu kolumn
 Domyślnie usługa SQL Data Warehouse przechowuje tabelę jako klastrowany indeks magazynu kolumn. Ta forma magazynowania danych uzyskuje kompresji dużej ilości danych i wydajności zapytań w dużych tabel.  Klastrowany indeks magazynu kolumn jest zwykle najlepszym wyborem, ale w niektórych przypadkach indeksu klastrowanego lub sterty jest strukturą odpowiedniego magazynu.
 
-Aby uzyskać listę funkcji magazynu kolumn, zobacz [co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-whats-new). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [maksymalizowania i jakości w indeksach magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Aby uzyskać listę funkcji magazynu kolumn, zobacz [co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [maksymalizowania i jakości w indeksach magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statystyki
 Optymalizator zapytań używa statystyki na poziomie kolumny, podczas tworzenia planu wykonania zapytania. Aby poprawić wydajność zapytań, ważne jest tworzenie statystyk dotyczących poszczególnych kolumn, szczególnie kolumny używane w sprzężeniach zapytania. Tworzenie i aktualizowanie statystyk nie odbywa się automatycznie. [Tworzenie statystyk](/sql/t-sql/statements/create-statistics-transact-sql) po utworzeniu tabeli. Aktualizowanie statystyk po znacznej liczby wierszy są dodane lub zmienione. Na przykład aktualizowanie statystyk po załadowaniu. Aby uzyskać więcej informacji, zobacz [wskazówki statystyki](sql-data-warehouse-tables-statistics.md).
@@ -133,7 +133,7 @@ Usługa SQL Data Warehouse obsługuje wiele, ale nie wszystkich, tabeli funkcji 
 - [Indeksowane widoki](/sql/relational-databases/views/create-indexed-views)
 - [Sekwencja](/sql/t-sql/statements/create-sequence-transact-sql)
 - [Kolumny rozrzedzone](/sql/relational-databases/tables/use-sparse-columns)
-- [Zastępczych klucze](). Wdrożenia przy użyciu [tożsamości](sql-data-warehouse-tables-identity.md).
+- Klucze zastępczy. Wdrożenia przy użyciu [tożsamości](sql-data-warehouse-tables-identity.md).
 - [Synonimy](/sql/t-sql/statements/create-synonym-transact-sql)
 - [Wyzwalacze](/sql/t-sql/statements/create-trigger-transact-sql)
 - [Unikatowe indeksy](/sql/t-sql/statements/create-index-transact-sql)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134441"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213115"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje ruch przychodzący zaporę systemu operacyjnego gościa maszyny Wirtualnej platformy Azure
 
@@ -112,8 +112,8 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
 
     > [!Note]
     > Poniższe wskazówki dotyczą zasad zapory, w zależności od tego, jak to skonfigurować:
-    >    * *BlockInbound*: cały ruch przychodzący jest blokowana, chyba że masz regułę obowiązuje zezwalającą na ruch.
-    >    * *BlockInboundAlways*: wszystkie reguły zapory zostanie zignorowany, a cały ruch będzie blokowany.
+    >    * *BlockInbound*: Cały ruch przychodzący będzie blokowany, chyba że masz regułę obowiązuje zezwalającą na ruch.
+    >    * *BlockInboundAlways*: Wszystkie reguły zapory zostanie zignorowany, a cały ruch będzie blokowany.
 
 2.  Edytuj *DefaultInboundAction* ustawić te profile **Zezwalaj** ruchu. Aby to zrobić, uruchom następujące polecenie:
 
@@ -142,7 +142,7 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
 
 #### <a name="mitigation-1"></a>Środki zaradcze 1
 
-Zobacz [sposób włączenia i wyłączenia zapory reguły w dokumentacji systemu operacyjnego gościa]().
+Zobacz [sposób włączenia i wyłączenia zapory reguły w systemie operacyjnym gościa](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>Środki zaradcze 2
 

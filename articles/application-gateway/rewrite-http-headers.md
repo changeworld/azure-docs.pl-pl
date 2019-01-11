@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187421"
+ms.locfileid: "54198529"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
@@ -116,8 +116,6 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 ## <a name="limitations"></a>Ograniczenia
 
 - Tę możliwość ponownego zapisywania nagłówków HTTP jest obecnie dostępna tylko za pośrednictwem programu Azure PowerShell, interfejsu API platformy Azure i zestawu Azure SDK. Pomoc techniczną za pomocą interfejsu wiersza polecenia portalu i platforma Azure będzie dostępna wkrótce.
-
-- Po zastosowaniu nadpisania nagłówek na Twojej bramy Application Gateway, nie należy używać portalu wprowadzania żadnych kolejnych zmian do tej bramy aplikacji, dopóki ta funkcja jest obsługiwana w portalu. Jeśli używasz portalu, aby wprowadzić zmiany do usługi Application Gateway, po zastosowaniu reguły ponownego pisania, nagłówek ponownie zapisać zasady. Możesz kontynuować wprowadzanie zmian przy użyciu programu Azure PowerShell, interfejsów API platformy Azure lub zestawu SDK usługi Azure.
 
 - Obsługa ponownego napisania nagłówka HTTP jest obsługiwana tylko w nowej jednostki SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). Ta funkcja nie będzie obsługiwana w starych jednostek SKU.
 

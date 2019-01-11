@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994967"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215273"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Najlepsze rozwiązania w celu skonfigurowania sieci w przypadku obciążeń migracji na platformę Azure
 
@@ -185,7 +185,7 @@ Podczas konfigurowania sieci VPN lokacja lokacja, możesz wykonać następujące
 **Dowiedz się więcej:**
 
 - [Przegląd](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) zgodne lokalnymi urządzeniami sieci VPN.
-- [Zapoznaj się z omówieniem](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway) bram sieci VPN.
+- [Zapoznaj się z omówieniem](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bram sieci VPN.
 - [Dowiedz się więcej o](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable) połączeń sieci VPN o wysokiej dostępności.
 - [Dowiedz się więcej o](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) planowanie i projektowanie bramy sieci VPN.
 - [Przegląd](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) ustawień usługi VPN gateway.

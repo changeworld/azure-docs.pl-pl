@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a5154d8d3a4922dead686c3d5002eaae818ff5a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002158"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201367"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -59,9 +59,9 @@ Po włączeniu funkcji jest tylko jedno wystąpienie funkcji. Nadajmy to wystąp
 
 * **Nowe wystąpienia funkcji nie są potrzebne**: `Function_0` jest w stanie przetworzyć wszystkie zdarzenia 1000 przed funkcje skalowanie logika aktywowany. W takim przypadku wszystkie 1000 komunikaty są przetwarzane przez `Function_0`.
 
-* **Następuje dodanie wystąpienia dodatkową funkcję**: Functions skalowanie logika ustali, że `Function_0` ma komunikatów jest większa niż może przetworzyć. W tym przypadku nowe wystąpienie aplikacji funkcji (`Function_1`) jest tworzony wraz z nową [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia. Usługa Event Hubs wykrywa, że nowe wystąpienie hosta próbuje odczytać wiadomości. Zdarzenie Hubs równoważy obciążenie partycji między jego wystąpienia hosta. Na przykład partycje 0-4 może być przypisana do `Function_0` i dzieli na partycje 5-9, aby `Function_1`.
+* **Następuje dodanie wystąpienia dodatkową funkcję**: Funkcje skalowanie logika ustali, że `Function_0` ma komunikatów jest większa niż może przetworzyć. W tym przypadku nowe wystąpienie aplikacji funkcji (`Function_1`) jest tworzony wraz z nową [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia. Usługa Event Hubs wykrywa, że nowe wystąpienie hosta próbuje odczytać wiadomości. Zdarzenie Hubs równoważy obciążenie partycji między jego wystąpienia hosta. Na przykład partycje 0-4 może być przypisana do `Function_0` i dzieli na partycje 5-9, aby `Function_1`.
 
-* **N większej liczby wystąpień funkcji są dodawane**: Functions skalowanie logika ustali, że oba `Function_0` i `Function_1` mają komunikatów jest większa niż ich może przetwarzać. Nowe wystąpienia aplikacji funkcji `Function_2`... `Functions_N` są tworzone, gdy `N` jest większa niż liczba partycji Centrum zdarzeń. W naszym przykładzie Usługa Event Hubs ponownie równoważy obciążenie partycji, w tym przypadku z wystąpień `Function_0`... `Functions_9`.
+* **N dodaniu większej liczby wystąpień funkcji**: Funkcje skalowanie logika ustali, że oba `Function_0` i `Function_1` mają komunikatów jest większa niż ich może przetwarzać. Nowe wystąpienia aplikacji funkcji `Function_2`... `Functions_N` są tworzone, gdy `N` jest większa niż liczba partycji Centrum zdarzeń. W naszym przykładzie Usługa Event Hubs ponownie równoważy obciążenie partycji, w tym przypadku z wystąpień `Function_0`... `Functions_9`.
 
 Należy pamiętać, że w przypadku funkcji można skalować do `N` wystąpień, czyli liczbę większą niż liczba partycji Centrum zdarzeń. W ten sposób upewnić się, że istnieją zawsze [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia można uzyskać blokad na partycje, gdy tylko staną się dostępne z innymi wystąpieniami. Opłaty są naliczane tylko za zasoby używane podczas wystąpienia funkcja wykonuje; nie są naliczane nadmiernej aprowizacji.
 
@@ -422,7 +422,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**grupy konsumentów** |**grupy konsumentów** | Opcjonalna właściwość, która ustawia [grupy odbiorców](../event-hubs/event-hubs-features.md#event-consumers) używany do subskrybowania zdarzenia w Centrum. W przypadku pominięcia `$Default` używanie grupy odbiorców. |
 |**Kardynalność** | Nie dotyczy | Dla języka Javascript. Ustaw `many` w celu włączenia przetwarzania wsadowego.  Jeśli pominięty lub ustawiony jako `one`, jeden komunikat o przekazany do funkcji. |
-|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku [przestrzeni nazw](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu wyzwalacz.|
+|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku [przestrzeni nazw](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu wyzwalacz.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -452,7 +452,7 @@ Zobacz [przykłady kodu](#trigger---example) używające tych właściwości we 
 
 Użyj usługi Event Hubs powiązania danych wyjściowych usługi można zapisać zdarzenia do strumienia zdarzeń. Konieczne jest posiadanie uprawnień wysłania do Centrum zdarzeń do zapisywania zdarzeń.
 
-Upewnij się, odwołania do wymaganego pakietu zostały spełnione: [funkcje 1.x](#packages---functions-1.x) lub [funkcje 2.x](#packages---functions-2.x)
+Upewnij się, odwołania do wymaganego pakietu zostały spełnione: [Funkcje 1.x](#packages---functions-1.x) lub [funkcje 2.x](#packages---functions-2.x)
 
 ## <a name="output---example"></a>Dane wyjściowe — przykład
 
@@ -659,7 +659,7 @@ public String sendTime(
  }
  ```
 
-W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@EventHubOutput` adnotacji w parametrach, którego wartość będzie wynosić poublished do Centrum zdarzeń.  Parametr powinien być typu `OutputBinding<T>` , gdzie T jest obiektu typu POJO lub dowolnego typu natywnego języka Java.
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@EventHubOutput` adnotacji w parametrach, którego wartość będą publikowane do Centrum zdarzeń.  Parametr powinien być typu `OutputBinding<T>` , gdzie T jest obiektu typu POJO lub dowolnego typu natywnego języka Java.
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 
@@ -689,7 +689,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje zdarzenie. |
 |**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
-|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku *przestrzeni nazw*, nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć uprawnienia do wysyłania do wysyłania wiadomości do strumienia zdarzeń.|
+|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku *przestrzeni nazw*, nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć uprawnienia do wysyłania do wysyłania wiadomości do strumienia zdarzeń.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

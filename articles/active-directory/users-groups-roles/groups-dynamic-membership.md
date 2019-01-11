@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a64f92df7592b4df419e5f70a32f631ca0504c6c
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994219"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214645"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -80,7 +80,7 @@ Poniżej przedstawiono właściwości użytkownika, które można użyć do utwo
 | city |Dowolną wartość ciągu lub *o wartości null* |(user.city - eq "value") |
 | Kraj |Dowolną wartość ciągu lub *o wartości null* |(user.country - eq "value") |
 | companyName | Dowolną wartość ciągu lub *o wartości null* | (user.companyName - eq "value") |
-| Dział |Dowolną wartość ciągu lub *o wartości null* |(user.department - eq "value") |
+| department |Dowolną wartość ciągu lub *o wartości null* |(user.department - eq "value") |
 | displayName |dowolną wartość ciągu |(user.displayName - eq "value") |
 | employeeId |dowolną wartość ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.facsimileTelephoneNumber - eq "value") |
@@ -348,7 +348,7 @@ Następujące atrybuty urządzenia może służyć.
  accountEnabled | wartość true, false | (device.accountEnabled - eq true)
  displayName | dowolną wartość ciągu |(device.displayName - eq "Rob Iphone")
  deviceOSType | dowolną wartość ciągu | (device.deviceOSType - eq "iPad")- lub (device.deviceOSType - eq "iPhone")
- deviceOSVersion | dowolną wartość ciągu | (urządzenie. OSVersion - eq "9.1")
+ deviceOSVersion | dowolną wartość ciągu | (device.deviceOSVersion - eq "9.1")
  deviceCategory | Nazwa kategorii prawidłowe urządzenie | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | dowolną wartość ciągu | (device.deviceManufacturer - eq "Samsung")
  deviceModel | dowolną wartość ciągu | (device.deviceModel - eq "iPad Air")

@@ -2,30 +2,25 @@
 title: Konfigurowanie certyfikatu SSL end-to-end za pomocą usługi Azure Application Gateway
 description: W tym artykule opisano sposób konfigurowania end-to-end SSL przy użyciu usługi Azure Application Gateway przy użyciu programu PowerShell
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945335"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214066"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
 ## <a name="overview"></a>Przegląd
 
-Usługa Azure Application Gateway obsługuje end-to-end szyfrowania ruchu. Usługa Application Gateway kończy połączenia SSL na bramie aplikacji. Następnie brama stosuje reguły routingu do ruchu sieciowego, reencrypts pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza na podstawie reguł routingu zdefiniowane. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
+Usługa Azure Application Gateway obsługuje end-to-end szyfrowania ruchu. Usługa Application Gateway kończy połączenia SSL na bramie aplikacji. Następnie brama stosuje reguły routingu do ruchu sieciowego, ponownie szyfruje pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza na podstawie reguł routingu zdefiniowane. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
 
-Usługa Application Gateway obsługuje definiowanie niestandardowe opcje protokołu SSL. Obsługuje także wyłączenie następujących protokołów: **TLSv1.0**, **TLSv1.1**, i **zabezpieczeń TLSv1.2**, jak również definiowanie mechanizmów szyfrowania, które do użycia i kolejność preferencji . Aby dowiedzieć się, jak można konfigurować opcje protokołu SSL, zobacz [Przegląd zasad SSL](application-gateway-SSL-policy-overview.md).
+Usługa Application Gateway obsługuje definiowanie niestandardowe opcje protokołu SSL. Obsługuje ona również wyłączenie następujących protokołów: **TLSv1.0**, **TLSv1.1**, i **zabezpieczeń TLSv1.2**, jak również definiowanie mechanizmów szyfrowania, które do użycia i w kolejności preferencji. Aby dowiedzieć się, jak można konfigurować opcje protokołu SSL, zobacz [Przegląd zasad SSL](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > Protokoły SSL 2.0 i protokołu SSL 3.0 są domyślnie wyłączone i nie może być włączone. One są uważane za niebezpieczne i nie można używać z usługą Application Gateway.
@@ -45,9 +40,9 @@ W tym scenariuszu wykonują następujące czynności:
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Do skonfigurowania end-to-end SSL z usługą application gateway, certyfikat jest wymagany dla bramy i certyfikaty są wymagane do serwerów zaplecza. Certyfikat bramy jest używany do szyfrowania i odszyfrowywania ruchu wysyłane do niej za pomocą protokołu SSL. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu.
+Do skonfigurowania end-to-end SSL z usługą application gateway, certyfikat jest wymagany dla bramy i certyfikaty są wymagane do serwerów zaplecza. Certyfikat bramy jest używany do uzyskania klucza symetrycznego zgodnie z specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany szyfruje i odszyfrowuje ruch wysyłany do bramy. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu.
 
-End-to-end szyfrowania SSL wewnętrznej musi być na liście dozwolonych usługi application gateway. Musisz przekazać certyfikatu publicznego serwera zaplecza do usługi application gateway. Dodawanie certyfikatu gwarantuje, że bramy application gateway komunikuje się tylko ze znanych wystąpień zaplecza. W ten sposób dalszej komunikacji end-to-end.
+End-to-end szyfrowania SSL wewnętrznej musi być na liście dozwolonych usługi application gateway. Przekazywanie certyfikatu publicznego serwera zaplecza do usługi application gateway. Dodawanie certyfikatu gwarantuje, że bramy application gateway komunikuje się tylko ze znanych wystąpień zaplecza. W ten sposób dalszej komunikacji end-to-end.
 
 W poniższych sekcjach opisano sposób konfiguracji.
 
@@ -258,7 +253,7 @@ Poprzednie kroki trwało Cię przez proces tworzenia aplikacji przy użyciu prot
 
    ```
 
-   3. Na koniec zaktualizuj bramę. Należy pamiętać, że ten ostatni krok długotrwałe zadanie. Gdy wszystko będzie gotowe, end-to-end skonfigurowano protokół SSL na bramie aplikacji.
+   3. Na koniec zaktualizuj bramę. Ten ostatni krok to długotrwałe zadanie. Gdy wszystko będzie gotowe, end-to-end skonfigurowano protokół SSL na bramie aplikacji.
 
    ```powershell
    $gw | Set-AzureRmApplicationGateway

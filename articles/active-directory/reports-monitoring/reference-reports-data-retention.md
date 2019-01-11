@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753136"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214474"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zasady przechowywania raportów w usłudze Azure Active Directory
 
@@ -40,6 +40,18 @@ Ten artykuł zawiera informacje o zasadach przechowywania danych dla raportów i
 
 - **Od razu** — Jeśli już pracy z raportami w witrynie Azure portal.
 - **W ciągu 2 godzin** — Jeśli jeszcze nie jest włączone raportowanie w portalu Azure.
+
+---
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Termin może wyświetlać danych działania po otrzymaniu licencji premium?
+
+Jeśli masz już danych dotyczących działań związanych z bezpłatnej licencji, a następnie natychmiast go zobaczyć, w czasie uaktualniania. Jeśli nie masz żadnych danych, następnie potrwa jeden lub dwa dni, dane wyświetlane w raportach, po uaktualnieniu do licencji premium.
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Po otrzymaniu licencja premium usługi Azure AD może wyświetlać dane w ciągu ostatniego miesiąca?
+
+Po przełączeniu ostatnio (w tym wersja próbna) w wersji premium, widać danych się do 7 dni początkowo. Gdy dane są gromadzone, dane można wyświetlić w ciągu ostatnich 30 dni.
 
 ---
 

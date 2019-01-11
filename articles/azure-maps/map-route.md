@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: e75fa6f40e3b93231f9da2f72897bd2d176de02d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 0fd8acf00f2afd0690fa84172c5dd2e242554b84
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823133"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212669"
 ---
 # <a name="show-directions-from-a-to-b"></a>Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
 
@@ -33,7 +33,7 @@ Wiersz w drugim bloku kodu tworzy wystąpienie usługi klienta.
 
 Trzeci tworzy i dodaje [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) obiektu do mapy.
 
- Wiersz jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z LineString. A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje wiersz obiektów w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako wiersze na mapie. Czwarty bloku kodu tworzy i Dodaj warstwę linii do mapy. Zobacz właściwości warstwy linii w [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest).
+ Wiersz jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z LineString. A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje wiersz obiektów w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako wiersze na mapie. Czwarty bloku kodu tworzy i Dodaj warstwę linii do mapy. Zobacz właściwości warstwy linii w [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.deprecated.linestringlayeroptions?view=azure-iot-typescript-latest).
 
 A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie. Piąty bloku kodu tworzy i dodać symbol warstwę do mapy.
 

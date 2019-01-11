@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 2a862a6f1165b0cdd4dfe46e638dc6b10eae9ee5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191330"
+ms.locfileid: "54201112"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Użyj danych zależne od routingu, aby skierować zapytanie do odpowiedniej bazy danych
 
@@ -68,7 +68,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **Klucz** parametr jest używany jako klucz wyszukiwania do mapy fragmentów, aby określić odpowiednią bazę danych dla żądania.
 * **ConnectionString** używany do przekazywania tylko poświadczenia użytkownika dla żądanego połączenia. Nie nazwy bazy danych lub nazwy serwera znajduje się w tym *connectionString* ponieważ metoda określa bazę danych i serwera przy użyciu **ShardMap**.
-* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) powinna być równa **ConnectionOptions.Validate** Jeśli środowisko, w którym dzielenie map na fragmenty maja zmiany i wiersze mogą przenosić do innych baz danych w wyniku operacji dzielenia ani scalania. To sprawdzanie poprawności obejmuje krótki zapytanie w celu lokalnego podzielonej na fragmenty mapy w docelowej bazy danych (nie do mapy fragmentów globalne), aby połączenie został dostarczony do aplikacji.
+* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) powinna być równa **ConnectionOptions.Validate** Jeśli środowisko, w którym dzielenie map na fragmenty maja zmiany i wiersze mogą przenosić do innych baz danych w wyniku operacji dzielenia ani scalania. To sprawdzanie poprawności obejmuje krótki zapytanie w celu lokalnego podzielonej na fragmenty mapy w docelowej bazy danych (nie do mapy fragmentów globalne), aby połączenie został dostarczony do aplikacji.
 
 W przypadku niepowodzenia weryfikacji względem lokalnego podzielonej na fragmenty mapy (co oznacza, że pamięć podręczna jest nieprawidłowy) Menedżera mapowań fragmentów zapytania globalnego podzielonej na fragmenty mapy uzyskać nowe poprawnej wartości do wyszukiwania, zaktualizuj pamięć podręczną i uzyskać i zwraca połączenie z odpowiednią bazą danych .
 

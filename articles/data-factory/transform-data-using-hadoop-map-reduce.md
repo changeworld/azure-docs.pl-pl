@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 7ba1c4e0f358a2168c06ab9172229525cd4c136c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016141"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214508"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania technologii MapReduce usługi Hadoop w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,9 +25,9 @@ ms.locfileid: "54016141"
 
 Działanie HDInsight MapReduce w usłudze Data Factory [potoku](concepts-pipelines-activities.md) wywołuje MapReduce program na [własne](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych.
 
-Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](introduction.md) i wykonać instrukcje z samouczka: [Samouczek: Przekształcanie danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
+Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](introduction.md) i wykonać instrukcje z samouczka: [Samouczek: Przekształcanie danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu.
 
-Zobacz [Pig](transform-data-using-hadoop-pig.md) i [Hive](transform-data-using-hadoop-hive.md) Aby uzyskać szczegółowe informacje o uruchamianiu programów Pig/Hive skrypty w HDInsight klastra z potoku przy użyciu działań HDInsight Pig i Hive. 
+Zobacz [Pig](transform-data-using-hadoop-pig.md) i [Hive](transform-data-using-hadoop-hive.md) Aby uzyskać szczegółowe informacje o uruchamianiu programów Pig/Hive skrypty w HDInsight klastra z potoku przy użyciu działań HDInsight Pig i Hive.
 
 ## <a name="syntax"></a>Składnia
 
@@ -49,10 +49,10 @@ Zobacz [Pig](transform-data-using-hadoop-pig.md) i [Hive](transform-data-using-h
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
         "getDebugInfo": "Failure",
         "arguments": [
-          "-SampleHadoopJobArgument1"
+            "-SampleHadoopJobArgument1"
         ],
         "defines": {
-          "param1": "param1Value"
+            "param1": "param1Value"
         }
     }
 }
@@ -79,7 +79,7 @@ Zobacz [Pig](transform-data-using-hadoop-pig.md) i [Hive](transform-data-using-h
 ## <a name="example"></a>Przykład
 Działania technologii MapReduce w HDInsight służy do uruchamiania dowolnego pliku jar MapReduce w klastrze usługi HDInsight. W poniższej definicji JSON przykładowe potoku działanie HDInsight jest skonfigurowany do uruchomienia pliku Mahout JAR.
 
-```json   
+```json
 {
     "name": "MapReduce Activity for Mahout",
     "description": "Custom MapReduce to generate Mahout result",
@@ -113,7 +113,7 @@ Działania technologii MapReduce w HDInsight służy do uruchamiania dowolnego p
 Można określić argumenty dla programu MapReduce w **argumenty** sekcji. W czasie wykonywania, widzisz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Aby odróżnić argumenty z argumentami MapReduce, należy wziąć pod uwagę przy użyciu opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe, — itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
+Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób:
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
 * [Działanie technologii hive](transform-data-using-hadoop-hive.md)

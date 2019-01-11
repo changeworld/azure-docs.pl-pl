@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 824c0caf0d54e8484093304c39c9f5dc05c83298
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 705d96225c699c6e9824dadbd7fa1272ba5ddb2d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117523"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213284"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Konfigurowanie narzędzia Postman bliźniaki cyfrowych platformy Azure
 
@@ -52,7 +52,7 @@ Konfigurowanie aplikacji usługi Azure Active Directory, aby korzystać z tego p
 
 Następnie instalowanie i Konfigurowanie narzędzia Postman w celu uzyskania tokenu usługi Azure Active Directory. Później dokonać uwierzytelnionego żądania HTTP przy użyciu tokenu uzyskano reprezentacji urządzeń cyfrowych platformy Azure:
 
-1. Przejdź do [www.getpostman.com]([https://www.getpostman.com/) pobrać aplikację.
+1. Przejdź do [www.getpostman.com](https://www.getpostman.com/) pobrać aplikację.
 1. Upewnij się, że Twoje **adres URL autoryzacji** jest poprawna. Powinno zająć format:
 
     ```plaintext

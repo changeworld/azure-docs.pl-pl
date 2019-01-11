@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 36c16cd48ffba704b9cc8b0884491c3b92543b5c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874587"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215494"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -187,9 +187,9 @@ Usługa Storage Analytics rejestruje następujące typy żądań uwierzytelniony
 ### <a name="azure-networking-logs"></a>Dzienników sieci platformy Azure
 Sieci, rejestrowanie i monitorowanie na platformie Azure to kompleksowe i obejmuje dwie szerokie kategorie:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): monitorowanie sieci opartych na scenariuszach jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Monitorowanie sieci opartych na scenariuszach jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 
-* [Monitorowanie zasobów](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): monitorowanie na poziomie zasobów składa się z czterech funkcji, dzienniki diagnostyczne, metryki, rozwiązywanie problemów i kondycji zasobów. Wszystkie te funkcje są tworzone na poziomie zasobów sieciowych.
+* [Monitorowanie zasobów](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Monitorowanie na poziomie zasobów składa się z czterech funkcji, dzienniki diagnostyczne, metryki, rozwiązywanie problemów i kondycji zasobów. Wszystkie te funkcje są tworzone na poziomie zasobów sieciowych.
 
 ![Dzienników sieci platformy Azure](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -219,19 +219,19 @@ Wyświetl dzienniki diagnostyczne udostępnia usługi Network Watcher. Ten widok
 
 
 Oprócz możliwości rejestrowania wymienionych wcześniej usługi Network Watcher obecnie ma następujące możliwości:
-- [Topologia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): udostępnia widok poziomie sieci, pokazujący różnych połączeń i skojarzenia między zasobami sieci w grupie zasobów.
+- [Topologia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Zapewnia widok poziomie sieci, pokazujący różnych połączeń i skojarzenia między zasobami sieci w grupie zasobów.
 
-- [Przechwytywanie pakietów zmiennych](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): przechwytuje pakietów danych do i z maszyny wirtualnej. Zaawansowane opcje filtrowania i dostosowawczych formanty, takie jak ustawienia limitu czasu i rozmiaru zapewniają uniwersalność. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w *.cap* format pliku.
+- [Przechwytywanie pakietów zmiennych](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Umożliwia przechwytywanie danych pakietów do i z maszyny wirtualnej. Zaawansowane opcje filtrowania i dostosowawczych formanty, takie jak ustawienia limitu czasu i rozmiaru zapewniają uniwersalność. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w *.cap* format pliku.
 
-* [Weryfikacja przepływu adresów IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie przepływ informacji 5-elementowe spójne kolekcje pakietów parametrów (oznacza to, że docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli pakiet zostanie odrzucona przez grupę zabezpieczeń, zwracany jest reguła i grupy, która odrzuciła pakiet.
+* [Weryfikacja przepływu adresów IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie przepływ informacji 5-elementowe spójne kolekcje pakietów parametrów (oznacza to, że docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli pakiet zostanie odrzucona przez grupę zabezpieczeń, zwracany jest reguła i grupy, która odrzuciła pakiet.
 
-* [Następny przeskok](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): określa następny przeskok dla pakiety przesyłane w sieci szkieletowej sieci platformy Azure, dzięki czemu możesz zdiagnozować dowolne błędnie skonfigurowane trasy zdefiniowane przez użytkownika.
+* [Dla następnego przeskoku](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Określa następny przeskok dla pakiety przesyłane w sieci szkieletowej sieci platformy Azure, dzięki czemu możesz zdiagnozować wszelkie nieprawidłowo trasy zdefiniowane przez użytkownika.
 
-* [Widok grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): pobiera reguł zabezpieczeń efektywny i zastosowane, które są stosowane na maszynie Wirtualnej.
+* [Widok grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Pobiera reguły zabezpieczeń efektywny i zastosowane, które są stosowane na maszynie Wirtualnej.
 
-* [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): ułatwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
+* [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Ułatwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
 
-* [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): umożliwia wyświetlenie użycia zasobów sieciowych limitów.
+* [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Umożliwia wyświetlenie użycia zasobów sieciowych limitów.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -249,21 +249,21 @@ Usługa Application Insights jest przeznaczona dla zespołu deweloperów po to, 
 
 * **Współczynniki zależności, czasy reakcji i współczynniki błędów**: Dowiedz się, czy usługi zewnętrzne nie spowalniają.
 
-* **Wyjątki**: analizowanie zagregowanych danych statystycznych lub wybieranie określonych wystąpień i przechodzenie do szczegółów śladu stosu i powiązanych żądań. Są zgłaszane zarówno wyjątki serwera, jak i przeglądarki.
+* **Wyjątki**: Analizowanie zagregowanych danych statystycznych lub wybieranie określonych wystąpień i przechodzenie do szczegółów śladu stosu i powiązanych żądań. Są zgłaszane zarówno wyjątki serwera, jak i przeglądarki.
 
-* **Wydajność ładowania i wyświetleń stron**: uzyskiwanie raportów z przeglądarek użytkowników.
+* **Wydajność ładowania i wyświetleń stron**: Pobierz raporty z przeglądarek użytkowników.
 
 * **Wywołania AJAX**: Uzyskaj stawki strony sieci Web, czasy reakcji i współczynniki błędów.
 
 * **Liczby użytkowników i sesji**.
 
-* **Liczniki wydajności**: pobieranie danych z maszyn serwera Windows lub Linux, takie jak procesor CPU, pamięć, a użycie sieci.
+* **Liczniki wydajności**: Pobieranie danych z maszyn serwera Windows lub Linux, takie jak procesor CPU, pamięci i wykorzystania sieci.
 
-* **Diagnostyka hosta**: pobieranie danych z platformy Docker lub na platformie Azure.
+* **Diagnostyka hosta**: Pobieranie danych z platformy Docker lub na platformie Azure.
 
-* **Diagnostyczne dzienniki śledzenia**: pobieranie danych z aplikacji, dzięki czemu można skorelować zdarzenia śledzenia z żądaniami.
+* **Diagnostyczne dzienniki śledzenia**: Pobieranie danych z aplikacji, dzięki czemu można skorelować zdarzenia śledzenia z żądaniami.
 
-* **Niestandardowe zdarzenia i metryki**: pobieranie danych, które samodzielnie zapisujesz w kodzie klienta lub serwera, do śledzenia zdarzeń biznesowych, takich jak sprzedane towary lub Wygrane gry.
+* **Niestandardowe zdarzenia i metryki**: Pobierz dane, które samodzielnie zapisujesz w kodzie klienta lub serwera, do śledzenia zdarzeń biznesowych, takich jak sprzedane towary lub Wygrane gry.
 
 Poniższej tabeli wymieniono i opisano scenariusze integracji:
 
@@ -271,9 +271,9 @@ Poniższej tabeli wymieniono i opisano scenariusze integracji:
 | --------------------- | :---------- |
 |[Mapa aplikacji](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Składniki Twojej aplikacji wraz z kluczowymi metrykami i alertami.||
 |[Na przykład wyszukiwanie diagnostyki danych](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Wyszukiwanie i filtrowanie zdarzeń, takich jak żądania, wyjątki, wywołania zależności, dzienniki śledzenia i wyświetlenia stron.||
-|[Eksplorator metryk dla danych zagregowanych](https://docs.microsoft.com/azure/application-insights/app-insights-metrics-explorer)|Eksploruj, filtruj i segmentuj zagregowane dane, takie jak liczby żądań, błędów i wyjątków, czasy reakcji, czasy ładowania stron.||
+|[Eksplorator metryk dla danych zagregowanych](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Eksploruj, filtruj i segmentuj zagregowane dane, takie jak liczby żądań, błędów i wyjątków, czasy reakcji, czasy ładowania stron.||
 |[Pulpity nawigacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Połącz dane z wielu zasobów i udostępnij innym osobom. Opcja ta doskonale nadaje się dla aplikacji wieloskładnikowych i ciągłego wyświetlania w pomieszczeniu zespołu.||
-|[Stream metryki na żywo](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)|Podczas wdrażania nowej kompilacji obejrzyj te wskaźniki wydajności prawie w czasie rzeczywistym, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.||
+|[Stream metryki na żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Podczas wdrażania nowej kompilacji obejrzyj te wskaźniki wydajności prawie w czasie rzeczywistym, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.||
 |[Analiza](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|Odpowiedz na trudne pytania dotyczące wydajności i użycia Twojej aplikacji za pomocą tego zaawansowanego języka zapytań.||
 |[Alerty automatyczne i ręczne](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Alerty automatyczne dostosowanie się do normalnych wzorców telemetrii Twojej aplikacji i są wyzwalane, gdy wystąpi coś poza zwykłym wzorcem. Możesz też ustawić alerty dla konkretnych poziomów metryk niestandardowych lub standardowych.||
 |[Program Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|Wyświetl dane dotyczące wydajności w kodzie. Przejdź do kodu ze śladów stosu.||
@@ -288,11 +288,11 @@ Wykrywanie zagrożeń w usłudze Azure Security Center polega na automatycznym z
 
 Usługa Security Center wykorzystuje zaawansowane narzędzia analizy zabezpieczeń, które wykraczają daleko poza metody bazujące na sygnaturze. Ma to zastosowanie przełomów w dużych ilości danych i [uczenia maszynowego](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technologii do oceny zdarzeń w całej sieci szkieletowej chmury. W ten sposób wykrywa zagrożenia, które byłyby niemożliwe do wykrycia przy użyciu ręcznych metod i prognozowanie ewolucji ataków. Do narzędzi analizy zabezpieczeń należą:
 
-* **Zintegrowana analiza zagrożeń**: wyszukuje strony znanych złośliwych podmiotów, stosując globalnych zagrożeń z produktów firmy Microsoft i usługi, jednostka przestępstw cyfrowych (DCU) firmy Microsoft, Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych.
+* **Zintegrowana analiza zagrożeń**: Sprawdza, czy strony znanych złośliwych podmiotów, stosując globalnych zagrożeń z produktów firmy Microsoft i usługi, jednostka przestępstw cyfrowych (DCU) firmy Microsoft, Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych.
 
-* **Analiza behawioralna**: stosuje znane wzorce w celu wykrycia złośliwego zachowania.
+* **Analiza behawioralna**: Stosuje znane wzorce w celu wykrycia złośliwego zachowania.
 
-* **Wykrywanie anomalii**: korzysta profilowania statystycznego w celu skompilowania historycznych linii bazowych. Narzędzie to alarmuje o odchyleniach od ustalonych linii bazowych zgodnych z wektorem potencjalnego ataku.
+* **Wykrywanie anomalii**: Korzysta z programu profilowania statystycznego w celu skompilowania historycznych linii bazowych. Narzędzie to alarmuje o odchyleniach od ustalonych linii bazowych zgodnych z wektorem potencjalnego ataku.
 
 Wiele operacji zabezpieczeń i reagowania na zdarzenia zespołów korzystają rozwiązania SIEM jako punktu wyjścia dla klasyfikowania i badanie alertów zabezpieczeń. Za pomocą integracji dzienników platformy Azure można zsynchronizować alertów usługi Security Center i zdarzenia zabezpieczeń dotyczące maszyny wirtualnej, zbieranych przez usługi Azure diagnostics i dzienniki inspekcji, za pomocą rozwiązania usługi Log Analytics lub rozwiązania SIEM w czasie zbliżonym do rzeczywistego.
 
@@ -367,23 +367,23 @@ Integracja dzienników obecnie obsługuje integrację Dzienniki aktywności plat
 |Dzienniki diagnostyczne (Dzienniki zasobów)|  Yes|
 |Dzienniki maszyny Wirtualnej|   Tak, za pomocą zdarzenia przesyłane dalej, a nie za pomocą pliku JSON|
 
-[Rozpoczynanie pracy z usługą Azure Log Integration](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started): ten samouczek przeprowadzi Cię przez zainstalowanie Azure Log Integration i integrowanie dzienników z usługi Azure storage, dzienniki aktywności platformy Azure, alertów usługi Azure Security Center i Azure AD dzienników inspekcji.
+[Rozpoczynanie pracy z usługą Azure Log Integration](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started): Ten samouczek przeprowadzi Cię przez zainstalowanie Azure Log Integration i integrowanie dzienników z usługi Azure storage, dzienniki aktywności platformy Azure, alertów usługi Azure Security Center i Azure AD dzienników inspekcji.
 
 Scenariusze integracji rozwiązania SIEM:
 
-* [Partner czynności konfiguracyjnych](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): ten wpis w blogu dowiesz się, jak skonfigurować program Azure Log Integration do pracy z rozwiązaniami partnerów Splunk, HP ArcSight i QRadar firmy IBM.
+* [Partner czynności konfiguracyjnych](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): Ten wpis w blogu dowiesz się, jak skonfigurować program Azure Log Integration do pracy z rozwiązaniami partnerów Splunk, HP ArcSight i QRadar firmy IBM.
 
-* [Azure Log Integration często zadawane pytania](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): Ten artykuł zawiera odpowiedzi na pytania dotyczące usługi Azure Log Integration.
+* [Integracja dzienników platformy Azure — często zadawane pytania](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): Ten artykuł zawiera odpowiedzi na pytania dotyczące usługi Azure Log Integration.
 
-* [Integrowanie alertów usługi Security Center z usługą Azure Log Integration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): w tym artykule omówiono sposób synchronizacji alertów usługi Security Center, maszyna wirtualna zabezpieczeń zebranych zdarzeń wg dzienniki diagnostyczne platformy Azure i dzienników inspekcji platformy Azure z usługi Log Analytics lub rozwiązania SIEM rozwiązanie.
+* [Integrowanie alertów usługi Security Center z usługą Azure Log Integration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): W tym artykule omówiono sposób synchronizacji alertów usługi Security Center, maszyna wirtualna zabezpieczeń zebranych zdarzeń wg dzienniki diagnostyczne platformy Azure i dzienników inspekcji platformy Azure za pomocą rozwiązania usługi Log Analytics lub rozwiązania SIEM.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Inspekcja i rejestrowanie](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): ochrona danych przy zachowaniu widoczności i szybko reagować na alerty zabezpieczeń w odpowiednim czasie.
+- [Inspekcja i rejestrowanie](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): Ochrona danych przy zachowaniu widoczności i szybko reagować na alerty zabezpieczeń w odpowiednim czasie.
 
-- [Zbierania rejestrowanie i dziennik inspekcji zabezpieczeń w systemie Azure](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): wprowadzić te ustawienia, aby upewnić się, że wystąpień platformy Azure są zbierane dane poprawne dzienniki zabezpieczeń i inspekcji.
+- [Zbierania rejestrowanie i dziennik inspekcji zabezpieczeń w systemie Azure](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Wymuszanie te ustawienia, aby upewnić się, że wystąpień platformy Azure są zbierane dane poprawne dzienniki zabezpieczeń i inspekcji.
 
-- [Skonfiguruj ustawienia inspekcji dla zbioru witryn](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Jeśli jesteś administratorem zbioru witryn, pobrać historii poszczególnych użytkowników, akcje i historię akcjach podjętych podczas zakresu określonej daty. 
+- [Skonfiguruj ustawienia inspekcji dla zbioru witryn](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Jeśli jesteś administratorem zbioru witryn, należy pobrać historii akcji dla poszczególnych użytkowników oraz historię akcjach podjętych podczas zakresu określonej daty. 
 
 - [Wyszukiwanie w dzienniku inspekcji w Centrum zgodności i zabezpieczeń usługi Office 365](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Użyj Centrum zgodności i zabezpieczeń usługi Office 365 do przeszukania dziennika inspekcji ujednolicone i Wyświetl działania użytkowników i administratorów w Twojej organizacji usługi Office 365.
 

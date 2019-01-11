@@ -2,7 +2,6 @@
 title: Usługa Azure monitorowania punktu końcowego usługi Traffic Manager | Dokumentacja firmy Microsoft
 description: W tym artykule mogą ułatwić zrozumienie, jak usługa Traffic Manager korzysta z monitorowania punktu końcowego i trybu failover punktu końcowego automatycznego klientom platformy Azure, wdrażać aplikacje o wysokiej dostępności
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890351"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199634"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
@@ -37,11 +36,11 @@ Aby skonfigurować monitorowanie punktu końcowego, należy określić następuj
 
     ![Monitorowanie punktu końcowego usługi Traffic Manager](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Rysunku: Monitorowanie punktu końcowego usługi Traffic Manager**
+    **Rysunek:  Monitorowanie punktu końcowego usługi Traffic Manager**
 
 ## <a name="how-endpoint-monitoring-works"></a>Działania monitorowania punktu końcowego
 
-Jeśli protokół monitorowania jest ustawiony jako protokołu HTTP lub HTTPS, agent sondowania usługi Traffic Manager kieruje żądanie GET do punktu końcowego przy użyciu protokołu, portu i ścieżki względnej, biorąc pod uwagę. Jeśli ponownie uzyskuje odpowiedź 200 OK lub dowolne odpowiedzi skonfigurowanych w **oczekiwany kod stanu: \*zakresy**, a następnie tego punktu końcowego jest uznawany za dobrej kondycji. Jeśli odpowiedź jest inna wartość, lub, jeżeli odpowiedź nie zostanie odebrana przed upływem limitu czasu określony, Traffic Manager sondowanie agenta ponownie próbuje zgodnie z ustawieniem tolerowana liczba niepowodzeń (ponowne próby są wykonywane tylko jeśli to ustawienie ma wartość 0). Jeśli liczbę kolejnych niepowodzeń jest wyższa niż wartość ustawienia tolerowana liczba niepowodzeń, punkt końcowy jest oznaczony jako w złej kondycji. 
+Jeśli protokół monitorowania jest ustawiony jako protokołu HTTP lub HTTPS, agent sondowania usługi Traffic Manager kieruje żądanie GET do punktu końcowego przy użyciu protokołu, portu i ścieżki względnej, biorąc pod uwagę. Jeśli ponownie uzyskuje odpowiedź 200 OK lub dowolne odpowiedzi skonfigurowanych w ** oczekiwany kod stanu: * zakresy **, a następnie tego punktu końcowego jest uznawany za dobrej kondycji. Jeśli odpowiedź jest inna wartość, lub, jeżeli odpowiedź nie zostanie odebrana przed upływem limitu czasu określony, Traffic Manager sondowanie agenta ponownie próbuje zgodnie z ustawieniem tolerowana liczba niepowodzeń (ponowne próby są wykonywane tylko jeśli to ustawienie ma wartość 0). Jeśli liczbę kolejnych niepowodzeń jest wyższa niż wartość ustawienia tolerowana liczba niepowodzeń, punkt końcowy jest oznaczony jako w złej kondycji. 
 
 Jeśli protokół monitorowania jest TCP, agent sondowania usługi Traffic Manager inicjuje żądanie połączenia protokołu TCP, przy użyciu określony port. Jeśli punkt końcowy odpowiada na żądanie przy użyciu odpowiedzi do nawiązania połączenia, sprawdzanie kondycji jest oznaczony jako sukcesu i agent sondowania usługi Traffic Manager resetuje połączenie TCP. Jeśli odpowiedź jest inna wartość, czy odpowiedź nie zostanie odebrana w określonym przedziale czasu określony, Traffic Manager sondowanie agenta ponownie próbuje zgodnie z ustawieniem tolerowana liczba niepowodzeń (ponowne próby są dokonywane informacji, jeśli to ustawienie ma wartość 0). Jeśli liczbę kolejnych niepowodzeń jest wyższa niż wartość ustawienia tolerowana liczba niepowodzeń, punkt końcowy jest oznaczona złej kondycji.
 
@@ -112,7 +111,7 @@ Oś czasu na poniższej ilustracji jest szczegółowy opis procesu monitorowania
 
 ![Punkt końcowy usługi Traffic Manager sekwencji trybu failover i powrotu po awarii](./media/traffic-manager-monitoring/timeline.png)
 
-**Rysunek: Traffic manager punktu końcowego trybu failover i odzyskiwania sekwencji**
+**Rysunek:  Traffic manager punktu końcowego trybu failover i odzyskiwania sekwencji**
 
 1. **GET**. Dla każdego punktu końcowego usługi Traffic Manager, system monitorowania wykonuje żądanie GET na ścieżce określonej w ustawieniach monitorowania.
 2. **Zakresu 200 OK lub niestandardowy kod określony profil usługi Traffic Manager ustawienia monitorowania** . System monitorowania oczekuje HTTP 200 OK lub lub kod niestandardowy zakres określony profil usługi Traffic Manager monitoring komunikat Ustawienia, które mają zostać zwrócone w ciągu 10 sekund. Po odebraniu tej odpowiedzi, rozpoznaje, że usługa jest dostępna.

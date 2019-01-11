@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074091"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213625"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi konsultingowe dla witryny Azure Marketplace i AppSource
 Usługi w portalu Azure Marketplace i AppSource doradcze zapewnia partnerów firmy Microsoft, cel połączenia klientów z usługami do obsługi i rozszerzać ich korzystanie z platformy Azure i celów biznesowych. 
@@ -69,7 +69,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |Dynamics 365 for Finance and Operations, wersja Enterprise  |  Na poziomie Silver lub Gold [Planowanie zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencji i minimalne przychód z $25 tys w operacji w chmurze w końcu 12 miesięcy.       |
 |Dynamics 365 for Finance and Operations, wersja Business  |  Pełnią [dostawca usług chmury (CSP)](https://partner.microsoft.com/cloud-solution-provider) lub [cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY)](https://partner.microsoft.com/membership/digital-partner-of-record) dla co najmniej jednego odbiorcy      |
 |Usługa Power BI, elementy wizualne usługi Power BI niestandardowe | Spełnia [kryteria partnera z zakresu rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Publikacji [pokaz partnerów]() rozwiązania
+|PowerApps | Publikacji [pokaz partnerów](https://appsource.microsoft.com/partners) rozwiązania
 
 <b> Aby uzyskać więcej informacji, zobacz [kompetencji za pośrednictwem sieci Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
  

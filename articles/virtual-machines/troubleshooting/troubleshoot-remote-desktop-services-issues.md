@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957709"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215120"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Usługi pulpitu zdalnego nie jest uruchamiania na Maszynie wirtualnej platformy Azure
 
 W tym artykule opisano sposób rozwiązywania problemów, po nawiązaniu połączenia z maszyny wirtualnej (VM) platformy Azure i usług pulpitu zdalnego lub TermService, nie jest uruchomienie lub nie została uruchomiona.
 
 > [!NOTE]  
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager. Zalecamy użycie tego modelu w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługa Azure Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager. Zalecamy użycie tego modelu w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -37,16 +37,16 @@ Podczas próby nawiązania połączenia z maszyną wirtualną, występują nast�
 
 - Zdalne wyświetlanie dzienników zdarzeń maszyny wirtualnej za pomocą Podglądu zdarzeń. Zobaczysz, że usług pulpitu zdalnego, TermService, nie jest uruchomienie lub nie została uruchomiona. Następujący dziennik znajduje się przykładowy:
 
-    **Rejestrowanie nazwy**: System </br>
-    **Źródło**: Menedżer sterowania usługami </br>
-    **Data**: 2017-12-16 11:19:36: 00</br>
-    **Identyfikator zdarzenia**: 7022</br>
+    **Rejestrowanie nazwy**:      System </br>
+    **Źródło**:        Menedżer sterowania usługami </br>
+    **Data**:          2017-12-16 11:19:36: 00</br>
+    **Identyfikator zdarzenia**:      7022</br>
     **Zadanie kategorii**: Brak</br>
-    **Poziom**: błąd</br>
-    **Słowa kluczowe**: klasyczny</br>
-    **Użytkownik**: n/d</br>
+    **Poziom**:         Błąd</br>
+    **Keywords**:      Wdrożenie klasyczne</br>
+    **Użytkownik**:          ND</br>
     **Komputer**: vm.contoso.com</br>
-    **Opis**: usługi pulpitu zdalnego zawiesiła się podczas uruchamiania. 
+    **Opis**: Usługi pulpitu zdalnego zawiesiła się podczas uruchamiania. 
 
     Funkcja konsoli szeregowej dostępu umożliwia również wyszukać te błędy, uruchamiając następujące zapytanie: 
 
@@ -112,7 +112,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService zostanie zatrzymana z powodu problemu odmowa dostępu
 
-1. Połączyć się z [konsoli szeregowej](serial-console-windows.md#) , a następnie otwórz wystąpienie programu PowerShell.
+1. Połączyć się z [konsoli szeregowej](serial-console-windows.md) , a następnie otwórz wystąpienie programu PowerShell.
 2. Pobierz narzędzia Monitor procesu w systemie, uruchamiając następujący skrypt:
 
    ```

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679533"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214032"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -82,11 +82,11 @@ Po włączeniu zarządzania aktualizacjami dla maszyn, można wyświetlić infor
 
 Komputery, które zostały niedawno włączono rozwiązanie Update Management może nie być jeszcze ocenione. Jest w stanie stan zgodności dla tych komputerów **nie oceniono**. Oto lista możliwych wartości dla stanu zgodności:
 
-- **Zgodne**: komputery, które są krytycznymi i aktualizacjami zabezpieczeń.
+- **Zgodne**: Komputery, które są krytycznymi i aktualizacjami zabezpieczeń.
 
-- **Niezgodne**: komputery, na których brakuje co najmniej jeden krytycznych lub aktualizacji zabezpieczeń.
+- **Niezgodne**: Komputery, na których brakuje co najmniej jeden krytycznych lub aktualizacji zabezpieczeń.
 
-- **Nie oceniono**: dane oceny aktualizacji nie zostały odebrane z komputera w oczekiwanym czasie. W przypadku komputerów z systemem Linux przedział czasu oczekiwania jest w ciągu ostatnich 3 godzin. W przypadku komputerów Windows oczekiwanego przedział czasu jest w ciągu ostatnich 12 godzin.
+- **Nie oceniono**: Dane oceny aktualizacji nie zostały odebrane z komputera w oczekiwanym czasie. W przypadku komputerów z systemem Linux przedział czasu oczekiwania jest w ciągu ostatnich 3 godzin. W przypadku komputerów Windows oczekiwanego przedział czasu jest w ciągu ostatnich 12 godzin.
 
 Aby wyświetlić stan agenta, wybierz link w **AKTUALIZUJ gotowość AGENTA** kolumny. Wybranie tej opcji powoduje otwarcie **hybrydowy proces roboczy** okienku i wyświetla stan hybrydowy proces roboczy. Na poniższej ilustracji przedstawiono przykład agenta, który nie został połączony z rozwiązania Update Management przez dłuższy czas:
 
@@ -113,7 +113,11 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
-Skanowanie jest uruchamiane dwa razy dziennie dla każdego zarządzanego komputera z Windows. Co 15 minut wywoływany jest interfejs API Windows Aby wykonać zapytanie o czas ostatniej aktualizacji ustalić, czy stan się zmienił. Jeśli stan został zmieniony, rozpoczyna się skanowanie pod kątem zgodności. Skanowanie jest uruchamiane co 3 godziny przez każdego zarządzanego komputera z systemem Linux.
+Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
+
+Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut MMA uruchamiany ponownie, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
+
+Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 3 godziny. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
 
 Może upłynąć od 30 minut do 6 godzin dla pulpitu nawigacyjnego wyświetlić zaktualizowane dane z zarządzanych komputerów.
 
@@ -125,10 +129,10 @@ Aby zaplanować nowe wdrożenie aktualizacji dla co najmniej jednej maszyny wirt
 
 W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 
-- **Nazwa**: wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
+- **Nazwa**: Wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
-- **Grupy do zaktualizowania (wersja zapoznawcza)**: zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
-- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybierz maszyny, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md)
+- **Grupy do zaktualizowania (wersja zapoznawcza)**: Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
+- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub maszyn, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
 
@@ -144,14 +148,14 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 
 - **Aktualizacje do uwzględnienia/wykluczenia** — spowoduje to otwarcie strony **Uwzględnij/Wyklucz**. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać dodatkowe informacje na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior)
 
-- **Ustawienia harmonogramu**: możesz zaakceptować domyślną datę i godzinę, czyli 30 minut po bieżącej godzinie. Można również określić inny czas.
+- **Ustawienia harmonogramu**: Możesz zaakceptować domyślną datę i godzinę, czyli 30 minut po bieżącej godzinie. Można również określić inny czas.
 
    Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z harmonogramem cyklicznym. Aby skonfigurować Harmonogram cykliczny, w obszarze **cyklu**, wybierz opcję **cyklicznie**.
 
    ![Okno dialogowe Ustawienia harmonogramu](./media/manage-update-multi/update-set-schedule.png)
 
-- **Skrypty wstępne i końcowe**: wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [Zarządzanie skryptami wstępnymi i końcowymi](pre-post-scripts.md).
-- **Okno konserwacji (w minutach)**: Podaj okres czasu, który ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
+- **Skrypty wstępne i końcowe**: Wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [Zarządzanie skryptami wstępnymi i końcowymi](pre-post-scripts.md).
+- **Okno obsługi (minuty)**: Określ czas, który ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
 
 - **Ponowne uruchomienie kontroli** — to ustawienie określa sposób obsługi ponownego uruchamiania dla wdrożenia aktualizacji.
 
@@ -181,9 +185,9 @@ Aby wyświetlić pulpit nawigacyjny wdrożenia aktualizacji, wybierz ukończone 
 
 **Niezaktualizowanie** okienko zawiera całkowitą liczbę aktualizacji i wynikami wdrożenia maszyny wirtualnej. Tabela po prawej stronie zawiera szczegółowy podział każdej aktualizacji i wyniki instalacji. Wyniki instalacji mogą mieć jedną z następujących wartości:
 
-- **Nie podjęto próby**: nie zainstalowano aktualizacji z powodu niewystarczającego czasu dostępności oparte na zdefiniowanym oknie konserwacji.
-- **Powodzenie**: aktualizacja powiodła się.
-- **Niepowodzenie**: aktualizacja nie powiodła się.
+- **Nie podjęto próby**: Nie można zainstalować aktualizacji, ponieważ niewystarczającego czasu była dostępna w oparciu o zdefiniowanym oknie konserwacji.
+- **Powodzenie**: Aktualizacja powiodła się.
+- **Niepowodzenie**: Aktualizacja nie powiodła się.
 
 Aby wyświetlić wszystkie wpisy dziennika utworzone przez wdrożenie, wybierz pozycję **Wszystkie dzienniki**.
 

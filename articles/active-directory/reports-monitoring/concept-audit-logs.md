@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1a2ec0e0513e0bcdcc3427a9e24385dc415ae651
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624662"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215035"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -45,7 +45,7 @@ Ten artykuł zawiera omówienie raport z audytu.
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
-Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat aktywności systemu pod kątem zgodności. Aby uzyskać dostęp do raportu inspekcji, zaznacz **dzienniki inspekcji** w **działania** części **usługi Azure Active Directory**. 
+Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat aktywności systemu pod kątem zgodności. Aby uzyskać dostęp do raportu inspekcji, zaznacz **dzienniki inspekcji** w **działania** części **usługi Azure Active Directory**. Należy zauważyć, że dzienniki inspekcji mogą opóźnienie maksymalnie na godzinę, dzięki czemu może podjąć to długo, aby były wyświetlane w portalu po zakończeniu zadania, dane o aktywności inspekcji.
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/61.png "Dzienniki inspekcji")
 

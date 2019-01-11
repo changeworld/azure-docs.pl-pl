@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: e4d96fa558e1122ef9e0fe0b265166757c45e678
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c9a66036902f346a7a9fd337416cbe85acca7856
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321054"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200942"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
@@ -301,7 +301,7 @@ W powyższym przykładzie `queryValue` jest powiązany z parametru ciągu zapyta
         @QueueOutput(name = "output", queueName = "test-output-java-metadata", connection = "AzureWebJobsStorage") OutputBinding<TestData> output,
         final ExecutionContext context
     ) {
-        context.getLogger().info("Java Queue trigger function processed a message: " + message + " whith metadaId:" + metadataId );
+        context.getLogger().info("Java Queue trigger function processed a message: " + message + " with metadaId:" + metadataId );
         TestData testData = new TestData();
         testData.id = metadataId;
         output.setValue(testData);

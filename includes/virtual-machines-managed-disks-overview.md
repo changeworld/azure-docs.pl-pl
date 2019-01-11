@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264417"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54211885"
 ---
 # <a name="azure-managed-disks-overview"></a>Omówienie usługi Azure Managed Disks
 
@@ -37,7 +37,7 @@ Managed Disks zapewnia to lepszą niezawodność zestawów dostępności przez z
 
 ### <a name="highly-durable-and-available"></a>Duża trwałość i wysoka dostępność
 
-Dyski platformy Azure zaprojektowano tak, aby zapewniały 99,999% dostępności. Śpij spokojnie, wiedząc, że masz trzy repliki danych, która zapewnia wysoką trwałość. Jeśli w jednej lub nawet w dwóch replikach wystąpią błędy, pozostałe repliki pomogą w zapewnieniu trwałości danych i dużej tolerancji w przypadku awarii. Ta architektura pomogła platformie Azure w zapewnieniu niezawodności klasy korporacyjnej dla dysków IaaS przez długi czas z rocznym współczynnikiem awarii w wysokości 0%, co stawia ją w czołówce branży. 
+Dyski platformy Azure zaprojektowano tak, aby zapewniały 99,999% dostępności. Śpij spokojnie, wiedząc, że masz trzy repliki danych, która zapewnia wysoką trwałość. Jeśli w jednej lub nawet w dwóch replikach wystąpią błędy, pozostałe repliki pomogą w zapewnieniu trwałości danych i dużej tolerancji w przypadku awarii. Ta architektura pomogła platformie Azure w zapewnieniu niezawodności klasy korporacyjnej dla dysków IaaS przez długi czas z rocznym współczynnikiem awarii w wysokości 0%, co stawia ją w czołówce branży.
 
 ### <a name="granular-access-control"></a>Szczegółową kontrolę dostępu
 
@@ -45,7 +45,7 @@ Możesz użyć [based kontroli dostępu (RBAC)](../articles/role-based-access-co
 
 ### <a name="azure-backup-service-support"></a>Pomoc techniczna usługi kopii zapasowej platformy Azure
 
-Tworzenie zadania tworzenia kopii zapasowej z kopii zapasowych opartych na czasie, łatwe przywracanie maszyny Wirtualnej i zasad przechowywania kopii zapasowych za pomocą usługi Kopia zapasowa Azure z usługą Managed Disks. Dyski zarządzane obsługują tylko magazyn lokalnie nadmiarowy (LRS) jako opcji replikacji. Trzy kopie danych są przechowywane w jednym regionie. Do odzyskiwania po awarii regionalnej, należy wykonać kopię zapasową dysków maszyn wirtualnych w różnych regionach za pomocą [usługę Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) i konto magazynu GRS jako magazyn kopii zapasowych. Usługa Azure Backup obsługuje obecnie rozmiary dysków do 4 TB dyski. Musisz [stosu kopii zapasowej maszyny Wirtualnej uaktualnienia do wersji 2](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md) obsługę dysków do 4 TB. Aby uzyskać więcej informacji, zobacz [usługi przy użyciu usługi Azure Backup dla maszyn wirtualnych z usługą Managed Disks](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Tworzenie zadania tworzenia kopii zapasowej z kopii zapasowych opartych na czasie, łatwe przywracanie maszyny Wirtualnej i zasad przechowywania kopii zapasowych za pomocą usługi Kopia zapasowa Azure z usługą Managed Disks. Dyski zarządzane obsługują tylko magazyn lokalnie nadmiarowy (LRS) jako opcji replikacji. Trzy kopie danych są przechowywane w jednym regionie. Do odzyskiwania po awarii regionalnej, należy wykonać kopię zapasową dysków maszyn wirtualnych w różnych regionach za pomocą [usługę Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) i konto magazynu GRS jako magazyn kopii zapasowych. Obecnie usługa Azure Backup obsługuje rozmiary dysków do 4 TB dyski, zobacz [natychmiastowe Przywracanie](../articles/backup/backup-instant-restore-capability.md) obsługę dysków do 4 TB. Aby uzyskać więcej informacji, zobacz [usługi przy użyciu usługi Azure Backup dla maszyn wirtualnych z usługą Managed Disks](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
@@ -63,35 +63,35 @@ Korzystając z dysków zarządzanych, zastosuj następujące zagadnienia dotycz�
 
 Przyjrzyjmy się bliżej w tych opcji.
 
-**Typ magazynu:** Managed Disks oferuje 3 warstwy wydajności: [standardowych dysków Twardych](../articles/virtual-machines/windows/standard-storage.md), [SSD w warstwie standardowa](../articles/virtual-machines/windows/disks-standard-ssd.md), i [Premium](../articles/virtual-machines/windows/premium-storage.md). Naliczanie opłat za dysku zarządzanego zależy od tego, jakiego typu magazynu wybranego dysku.
+**Typ magazynu:** Zarządzane warstwy wydajności 3 oferuje dyski: [Standardowy dysk twardy](../articles/virtual-machines/windows/standard-storage.md), [SSD w warstwie standardowa](../articles/virtual-machines/windows/disks-standard-ssd.md), i [Premium](../articles/virtual-machines/windows/premium-storage.md). Naliczanie opłat za dysku zarządzanego zależy od tego, jakiego typu magazynu wybranego dysku.
 
-**Rozmiar dysku**: opłaty za dyski zarządzane zależy od rozmiaru aprowizowanego dysku. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysków Managed Disks w określonych w poniższych tabelach. Każdy dysk zarządzany mapowany na jeden z obsługiwanych rozmiarów elastycznie i jest rozliczana w związku z tym. Na przykład jeśli Tworzenie dysku zarządzanego standardowe i określ aprowizowanego rozmiaru 200 GB, są rozliczane zgodnie z cennikiem typ dysku S15.
+**Rozmiar dysku**: Opłaty za dyski zarządzane, zależy od rozmiaru aprowizowanego dysku. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysków Managed Disks w określonych w poniższych tabelach. Każdy dysk zarządzany mapowany na jeden z obsługiwanych rozmiarów elastycznie i jest rozliczana w związku z tym. Na przykład jeśli Tworzenie dysku zarządzanego standardowe i określ aprowizowanego rozmiaru 200 GB, są rozliczane zgodnie z cennikiem typ dysku S15.
 
 Poniżej przedstawiono rozmiary dysków dla dysku zarządzanego w warstwie premium, rozmiary, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
 | **Premium SSD zarządzane <br>typ dysku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 
 Poniżej przedstawiono rozmiary dysków SSD w warstwie standardowa — dotyczących dysk zarządzany, rozmiary, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
 | **Standardowy dysk SSD zarządzane <br>typ dysku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
+| Rozmiar dysku        | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 
 W tym miejscu są dostępne dla standardowych dysków Twardych rozmiary dysków zarządzanych dysków, rozmiaru, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
 | **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 
-**Liczba transakcji**: opłaty są naliczane za liczbę transakcji, które można wykonać na standardowa dysku zarządzanego.
+**Liczba transakcji**: Opłaty są naliczane dla liczby transakcji, które można wykonać na standardowa dysku zarządzanego.
 
 Dyski SSD w warstwie standardowa użyć rozmiaru jednostki we/wy wynoszący 256KB. Transferowanych danych jest mniejsza niż 256 KB, jest uznawane za 1 jednostkę operacji We/Wy. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KB. Na przykład KB 1100 operacji We/Wy jest traktowana jako pięć jednostki we/wy.
 
 Nie ma żadnych kosztów transakcji dla dysku zarządzanego w warstwie premium.
 
-**Wychodzące transfery danych**: [wychodzące transfery danych](https://azure.microsoft.com/pricing/details/data-transfers/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
+**Wychodzące transfery danych**: [Wychodzące transfery danych](https://azure.microsoft.com/pricing/details/data-transfers/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 
 Aby uzyskać szczegółowe informacje na temat cen dla dysków Managed Disks, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 94ccd3f437f74b27ef158a5e373b6ff315b5eb42
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159030"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214848"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -323,7 +323,7 @@ Wszystkie aplikacje logiki w regionie, użyj tych samych zakresów adresów IP. 
 
 ### <a name="managed-connectors"></a>Zarządzane łączniki
 
-Do obsługi wywołania, [łączników zarządzanych przez firmę Microsoft](../connectors/apis-list.md) upewnij, tak skonfigurowany, konfiguracje zapory obejmują one wszystkie wychodzące adresy IP określone dla regionów, gdy istnieją aplikacje Logic Apps. Aby uzyskać [Azure dla instytucji rządowych](/azure-government/documentation-government-welcome) i [Azure China 21Vianet](/azure/china/china-welcome), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
+Do obsługi wywołania, [łączników zarządzanych przez firmę Microsoft](../connectors/apis-list.md) upewnij, tak skonfigurowany, konfiguracje zapory obejmują one wszystkie wychodzące adresy IP określone dla regionów, gdy istnieją aplikacje Logic Apps. Aby uzyskać [Azure dla instytucji rządowych](../azure-government/documentation-government-welcome.md) i [Azure China 21Vianet](/azure/china/china-welcome), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
 
 > [!IMPORTANT]
 > 

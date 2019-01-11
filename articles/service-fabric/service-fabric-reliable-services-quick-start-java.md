@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 84a495274ffadfe816ced21cd095f7a5e18d7f89
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049698"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199548"
 ---
 # <a name="get-started-with-reliable-services"></a>Wprowadzenie do usług Reliable Services
 > [!div class="op_single_selector"]
@@ -39,9 +39,9 @@ Jeśli musisz je skonfigurować, przejdź do strony [wprowadzenie na komputerze 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
 Aby rozpocząć pracę z usługami Reliable Services, należy tylko poznać kilka podstawowych pojęć:
 
-* **Typ usługi**: jest to Twoja implementacja usługi. Jest definicją klasy pisania, która rozszerza `StatelessService` i innego kodu lub zależności razem z nim, nazwę i numer wersji.
+* **Typ usługi**: Jest to Twoja implementacja usługi. Jest definicją klasy pisania, która rozszerza `StatelessService` i innego kodu lub zależności razem z nim, nazwę i numer wersji.
 * **Nazwane wystąpienie usługi**: Aby uruchomić usługę, należy utworzyć nazwanych wystąpień danego typu usługi znacznie jak tworzenia wystąpienia obiektu typu klasy. Wystąpienia usługi są w rzeczywistości wystąpieniami obiektu w klasie usługi, które piszesz.
-* **Host usługi**: utworzonych wystąpień usługi o nazwie trzeba uruchomić program wewnątrz hosta. Host usługi jest po prostu procesu, gdzie można uruchomić wystąpienia usługi.
+* **Host usługi**: Utworzonych wystąpień usługi o nazwie konieczne uruchamiane wewnątrz hosta. Host usługi jest po prostu procesu, gdzie można uruchomić wystąpienia usługi.
 * **Usługa rejestracji**: Rejestracja łączy wszystkie elementy. Typ usługi musi być zarejestrowany ze środowiskiem uruchomieniowym usługi Service Fabric na hoście usługi, aby umożliwić usługi Service Fabric utworzyć jego wystąpienia do uruchomienia.  
 
 ## <a name="create-a-stateless-service"></a>Tworzenie usługi bezstanowej
@@ -201,7 +201,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) stanowi implementację słownika, która służy do niezawodnego przechowywania stanu usługi. Usługa Service Fabric i niezawodne HashMaps dane można przechowywać bezpośrednio w usłudze bez konieczności dla zewnętrznego magazynu trwałego. Niezawodne HashMaps danych wysokiej dostępności. Usługa Service Fabric to w ramach przez tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który pozwala zmniejszyć wagę komplikacje związane z zarządzaniem tych replik oraz ich stanami.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) stanowi implementację słownika, która służy do niezawodnego przechowywania stanu usługi. Usługa Service Fabric i niezawodne HashMaps dane można przechowywać bezpośrednio w usłudze bez konieczności dla zewnętrznego magazynu trwałego. Niezawodne HashMaps danych wysokiej dostępności. Usługa Service Fabric to w ramach przez tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który pozwala zmniejszyć wagę komplikacje związane z zarządzaniem tych replik oraz ich stanami.
 
 Elementy Reliable Collections może przechowywać dowolnego typu języka Java, łącznie z typów niestandardowych przy użyciu kilku ostrzeżenia:
 

@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990964"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214491"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Linux z przyspieszonej sieci
 
 W tym samouczku dowiesz się, jak utworzyć maszynę wirtualną systemu Linux (VM) z przyspieszonej sieci. Aby utworzyć maszyny Wirtualnej z systemem Windows przy użyciu Accelerated Networking, zobacz [tworzenie maszyny Wirtualnej z systemem Windows przy użyciu Accelerated Networking](create-vm-accelerated-networking-powershell.md). Przyspieszona sieć umożliwia wirtualizację We/Wy z jednym elementem głównym (SR-IOV) do maszyny Wirtualnej, znacznie poprawia wydajność sieci. Tej ścieżki o wysokiej wydajności pomija hosta ze ścieżki danych, zmniejszając czas oczekiwania, zakłócenia i użycie procesora CPU, do użytku z najbardziej wymagających obciążeń sieci na obsługiwane typy maszyn wirtualnych. Na poniższej ilustracji przedstawiono komunikację między dwiema maszynami wirtualnymi z lub bez przyspieszonej łączności sieciowej:
 
-![porównanie](./media/create-vm-accelerated-networking/accelerated-networking.png)
+![Porównanie](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
 Bez przyspieszonej łączności sieciowej hosta i przełącznik wirtualny musi przechodzić przez cały ruch sieciowy do i z maszyny Wirtualnej. Przełącznik wirtualny udostępnia wszystkie egzekwowanie zasad, takich jak sieciowe grupy zabezpieczeń, listy kontroli dostępu, izolacji i innych usług z wirtualizacją sieci do ruchu sieciowego. Aby dowiedzieć się więcej na temat przełączników wirtualnych, przeczytaj [wirtualizacji sieci funkcji Hyper-V i przełączniku wirtualnym](https://technet.microsoft.com/library/jj945275.aspx) artykułu.
 
-Z przyspieszoną siecią ruch sieciowy dociera do maszyny Wirtualnej interfejsu sieciowego (NIC) i jest następnie przekazywany do maszyny Wirtualnej. Wszystkie zasady sieci, które mają zastosowanie przełącznika wirtualnego są teraz Odciążone i stosowane w sprzętu. Stosowanie zasad w sprzęcie umożliwia karty Sieciowej do przekazywania ruchu sieciowego bezpośrednio do maszyny Wirtualnej, hosta i przełącznik wirtualny, z pominięciem przy zachowaniu wszystkich zasad, które jest stosowany na hoście.
+Z przyspieszoną siecią ruch sieciowy dociera do maszyny wirtualnej interfejsu sieciowego (NIC) i jest następnie przekazywany do maszyny Wirtualnej. Wszystkie zasady sieci, które mają zastosowanie przełącznika wirtualnego są teraz Odciążone i stosowane w sprzętu. Stosowanie zasad w sprzęcie umożliwia karty Sieciowej do przekazywania ruchu sieciowego bezpośrednio do maszyny Wirtualnej, hosta i przełącznik wirtualny, z pominięciem przy zachowaniu wszystkich zasad, które jest stosowany na hoście.
 
 Korzyści z przyspieszoną siecią dotyczą tylko maszynę Wirtualną, która jest włączona. Aby uzyskać najlepsze wyniki jest idealnym rozwiązaniem włączyć tę funkcję na co najmniej dwie maszyny wirtualne podłączone do tej samej sieci wirtualnej platformy Azure (VNet). Podczas komunikacji między sieciami wirtualnymi ani nawiązywania połączenia w środowisku lokalnym, ta funkcja ma minimalny wpływ na ogólny czas oczekiwania.
 
 ## <a name="benefits"></a>Korzyści
-* **Zmniejszyć czas oczekiwania wyższe pakietów na sekundę (pps):** usunięcie przełącznika wirtualnego z ścieżki danych usuwa czasu jaki poświęcają pakietów na hoście dla przetwarzania zasad i zwiększa się liczba pakietów, które mogą być przetwarzane w ramach maszyny Wirtualnej.
-* **Zmniejszona zakłócenia:** przełącznik wirtualny przetwarzania zależy od ilości zasady, które musi zostać zastosowana i obciążenie procesora CPU, który wykonuje przetwarzanie. Odciążanie wymuszania zasad na sprzęcie usuwa tego zmienność, zapewniając pakietów bezpośrednio do maszyny Wirtualnej, usunięcie hosta do komunikacji z maszyną Wirtualną i wszystkie przerwań oprogramowania i przełączeń kontekstu.
-* **Zmniejszyć użycie procesora CPU:** przełącznika wirtualnego na hoście z pominięciem prowadzi do mniejsze wykorzystanie procesora CPU do przetwarzania ruchu sieciowego.
+* **Zmniejszyć czas oczekiwania wyższe pakietów na sekundę (pps):** Usunięcie przełącznika wirtualnego z ścieżki danych spowoduje usunięcie pakietów poświęcić czas na hoście dla przetwarzania zasad i zwiększa się liczba pakietów, które mogą być przetwarzane w ramach maszyny Wirtualnej.
+* **Jednoczesnym zmniejszeniu zakłóceń:** Przełącznik wirtualny przetwarzania zależy od tego, liczbę zasad, która musi zostać zastosowana i obciążenie procesora CPU, który wykonuje przetwarzanie. Odciążanie wymuszania zasad na sprzęcie usuwa tego zmienność, zapewniając pakietów bezpośrednio do maszyny Wirtualnej, usunięcie hosta do komunikacji z maszyną Wirtualną i wszystkie przerwań oprogramowania i przełączeń kontekstu.
+* **Obniżenie wykorzystanie procesora CPU:** Przełącznik wirtualny na hoście z pominięciem prowadzi do mniejsze wykorzystanie procesora CPU do przetwarzania ruchu sieciowego.
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 Poniższe dystrybucje obsługiwane są gotowe w galerii platformy Azure: 
@@ -53,17 +53,18 @@ Poniższe dystrybucje obsługiwane są gotowe w galerii platformy Azure:
 ## <a name="limitations-and-constraints"></a>Ograniczenia i ograniczenia
 
 ### <a name="supported-vm-instances"></a>Obsługiwane wystąpienia maszyny Wirtualnej
-Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są: D/DSv2 i F/Fs
+Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są następujące: D/DSv2 i F/Fs
 
-W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Serie obsługiwane są: D/DSv3, E/ESv3, Fsv2 i Ms/Mms.
+W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Seria obsługiwane są następujące: D/DSv3, E/ESv3, Fsv2 i Ms/Mms.
 
 Aby uzyskać więcej informacji na temat wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych systemu Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="regions"></a>Regiony
 Dostępne we wszystkich publicznych regionach platformy Azure, a także chmury dla instytucji rządowych platformy Azure.
 
-### <a name="network-interface-creation"></a>Tworzenie interfejsu sieciowego 
-Przyspieszonej sieci można włączyć tylko dla nowej karty sieciowej. Nie można włączyć dla istniejącej karty sieciowej.
+<!-- ### Network interface creation 
+Accelerated networking can only be enabled for a new NIC. It cannot be enabled for an existing NIC.
+removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Włączanie Accelerated Networking na uruchomionej maszyny Wirtualnej
 Obsługiwany rozmiar maszyny Wirtualnej bez obsługą przyspieszonej sieci może mieć tylko funkcja jest włączona, gdy zostanie zatrzymana i z cofniętą alokacją.  
 ### <a name="deployment-through-azure-resource-manager"></a>Wdrażanie za pomocą usługi Azure Resource Manager

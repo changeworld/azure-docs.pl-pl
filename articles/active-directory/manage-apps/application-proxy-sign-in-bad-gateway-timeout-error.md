@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 768a9d930314882f88eab630365475d69aa5f83b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134832"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213726"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -29,11 +29,11 @@ Ten artykuł pomaga w rozwiązywaniu typowych problemów dotyczących błędów 
 ## <a name="overview"></a>Przegląd
 Gdy zostanie wyświetlony ten błąd, należy znaleźć kod stanu na stronę błędu. Ten kod jest prawdopodobnie jednym z poniższych kodów stanu:
 
--   **Limit czasu bramy**: usługa serwera Proxy aplikacji nie ma dostępu do łącznika. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub sieci reguł wokół łącznika.
+-   **Limit czasu bramy**: Usługa serwera Proxy aplikacji nie ma dostępu do łącznika. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub sieci reguł wokół łącznika.
 
--   **Zła brama**: łącznik nie może uzyskać dostępu do aplikacji zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
+-   **Zła brama**: Łącznik nie może uzyskać dostępu do aplikacji zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
 
--   **Dostęp zabroniony**: użytkownik nie ma autoryzacji do dostępu do aplikacji. Ten błąd może wystąpić, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
+-   **Dostęp zabroniony**: Użytkownik nie ma uprawnień dostępu do aplikacji. Ten błąd może wystąpić, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
 
 Aby znaleźć kod, spójrz na tekst w lewym dolnym rogu komunikat o błędzie dla pola "Kod stanu:". Zobacz wszystkie dodatkowe porady w dolnej części strony.
 
@@ -62,7 +62,7 @@ Błąd Zła brama wskazuje łącznika nie można uzyskać dostępu do aplikacji 
 
 Jeśli zostanie wyświetlony błąd "niedozwolone", użytkownik nie zostały przypisane do aplikacji. Ten błąd może być w usłudze Azure Active Directory lub w aplikacji zaplecza.
 
-Aby dowiedzieć się, jak przypisać użytkowników do aplikacji na platformie Azure, zobacz [dokumentacją konfiguracji](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user).
+Aby dowiedzieć się, jak przypisać użytkowników do aplikacji na platformie Azure, zobacz [dokumentacją konfiguracji](application-proxy-add-on-premises-application.md#test-the-application).
 
 Jeśli upewnij się, że użytkownik jest przypisany do aplikacji na platformie Azure, sprawdź konfigurację użytkownika w aplikacji zaplecza. Jeśli używasz uwierzytelniania Kerberos ograniczone delegowanie/Integrated Windows zobacz stronę Rozwiązywanie problemów z ograniczonego delegowania protokołu Kerberos, wskazówki dotyczące.
 
@@ -82,11 +82,11 @@ Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
 4.  W tym miejscu istnieje kilka sposobów, aby przejść do szczegółów dalszych:
 
-  * Przenieś łącznika usługi active do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
+  * Łącznik usługi active przenieść do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
 
-  * Pobrać nowy łącznik dla tej grupy: na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Typicall łącznika jest zainstalowana na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
+  * Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Typicall łącznika jest zainstalowana na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
 
-  * Badanie łącznik nieaktywne: Jeśli łącznik jest wyświetlana jako nieaktywny, nie jest w stanie w celu dotarcia do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
+  * Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
 
 Po zakończeniu korzystania z następujące kroki, aby upewnić się, że aplikacja została przypisana do grupy z pracy łączniki, przetestuj aplikację ponownie. Jeśli nadal nie działa, przejdź do następnej sekcji.
 

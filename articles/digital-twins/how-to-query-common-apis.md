@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 0112853bf36c6b7b594400d303234d204b2ea24a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108293"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198647"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak wykonać zapytanie interfejsów API Twins cyfrowych platformy Azure do wykonywania typowych zadań
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono wzorców zapytań, aby pomóc Ci w realizacji typow
 
 W tej sekcji przedstawiono przykładowe zapytania, aby uzyskać więcej informacji na temat usługi udostępnione miejsca do magazynowania. Tworzenie uwierzytelnionego żądania GET HTTP z przykładowe zapytania, zastępując symbole zastępcze wartości z konfiguracji. 
 
-- Pobieranie węzłów głównych.
+- Pobierz miejsca do magazynowania, które są węzły główne.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
@@ -38,7 +38,7 @@ W tej sekcji przedstawiono przykładowe zapytania, aby uzyskać więcej informac
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Pobierz miejsca do magazynowania, których elementem nadrzędnym jest identyfikator danego obszaru i dołączyć zależności. 
+- Miejsca do magazynowania i informacji o nich czujnika/urządzenia, których elementem nadrzędnym jest identyfikator danego obszaru i które są na poziomie 2 do 5 [względem danego miejsca](how-to-navigate-apis.md#api-navigation). 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
@@ -91,7 +91,7 @@ W tej sekcji przedstawiono niektóre zapytania, aby uzyskać więcej informacji 
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-device-management"></a>Zapytania dotyczące zarządzania urządzeniami
+## <a name="queries-for-devices"></a>Zapytania dotyczące urządzeń
 
 W tej sekcji przedstawiono kilka przykładów, jak używać interfejsów API zarządzania, aby uzyskać szczegółowe informacje o urządzeniach. Wszystkie wywołania interfejsu API muszą zostać uwierzytelnione żądania GET HTTP.
 
@@ -167,7 +167,7 @@ W tej sekcji przedstawiono kilka przykładów, jak używać interfejsów API zar
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Pobieranie parametrów połączenia Centrum IoT dla określonego urządzenia.
+- Pobieranie parametrów połączenia urządzenia usługi IoT Hub dla urządzenia.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString

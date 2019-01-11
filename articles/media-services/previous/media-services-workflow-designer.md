@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 1521d18ab94c647aebf303b660574afe6612474d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fa858ffbae5c1a37851ea114efd0fbc9cf010e68
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250516"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200806"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Tworzenie zaawansowanych przepływów pracy kodowania za pomocą projektanta przepływu pracy
 ## <a name="overview"></a>Przegląd
@@ -30,7 +30,7 @@ Przepływy pracy mogą zawierać logiki wyboru klientów i rozgałęzień na pod
 
 Przykład przepływów pracy, które można utworzyć, obejmują:
 
-* Decyzji na podstawie przepływów pracy, które sprawdzić zawartość źródłową do rozpoznawania i kodowanie tylko ścieżki żądaną produktu wyjściowego.  Jest to helfpul, eliminując ograniczenia marnowania ścieżek, które może zostać wygenerowany przez upscaling inadvertantly zawartości źródłowej.
+* Decyzji na podstawie przepływów pracy, które sprawdzić zawartość źródłową do rozpoznawania i kodowanie tylko ścieżki żądaną produktu wyjściowego.  Jest to przydatne, eliminując ograniczenia marnowania ścieżek, które może zostać wygenerowany przez upscaling inadvertantly zawartości źródłowej.
 * Wiele plików wejściowych może służyć do obsługi transkrypcji, nakładki i łączenie razem zawartości. 
 
 To narzędzie może również modyfikować żadnego z naszych [opublikowane przepływów pracy](media-services-workflow-designer.md#existing_workflows). 

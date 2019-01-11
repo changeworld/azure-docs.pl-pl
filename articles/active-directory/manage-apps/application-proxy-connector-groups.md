@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52dc78b03a1be73763b5a3c494404f4d439d04ca
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139029"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198035"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników
 
@@ -73,11 +73,11 @@ W przypadku aplikacji z zainstalowanym IaaS, aby uzyskać dostęp do chmury grup
 
 Należy podjąć, na przykład, że organizacja, która ma kilka maszyny wirtualne podłączone do ich własnych IaaS hostowanych w sieci wirtualnej. Aby pracownicy mogli używać tych aplikacji, tych sieci prywatnych są połączone z siecią firmową za pomocą sieci VPN typu lokacja lokacja. Zapewnia to dobre środowisko dla pracowników, którzy są w środowisku lokalnym. Jednak może nie być idealne w przypadku pracowników zdalnych, ponieważ wymaga dodatkowych lokalnej infrastruktury do rozsyłania dostępu, jak pokazano na poniższym diagramie:
 
-![Sieci Iaas usługi Azure AD](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Sieci IaaS usługi Azure AD](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Za pomocą grup łączników serwera Proxy aplikacji usługi Azure AD należy włączyć wspólne usługi bezpieczny dostęp do wszystkich aplikacji bez konieczności tworzenia dodatkowe zależności w sieci firmowej:
 
-![Dostawców chmury wielu Iaas usługi Azure AD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Dostawców chmury wielu IaaS usługi Azure AD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Grupy łączników różne dla każdego lasu z obejmującego wiele lasów
 

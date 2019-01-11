@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: juliako
-ms.openlocfilehash: 758a3b30717e3bf516c1bceb5c255c397a6072cc
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 968614d183fe6857336ea92791ba4f1d279a5016
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291396"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198103"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porównanie usług Azure Media Services v3 wstępne i Video Indexer 
 
@@ -33,7 +33,7 @@ Obecnie nakładają się na funkcji oferowanych przez [interfejsów API w wersji
 |Szczegółowe informacje z nośnika|[Rozszerzone](video-indexer-output-json-v2.md) |[Podstawy](../latest/intelligence-concept.md)|
 |Środowiska|Zobacz pełną listę obsługiwanych funkcji: <br/> [Omówienie](video-indexer-overview.md)|Zwraca tylko informacjom o filmie wideo|
 |Rozliczenia|[Cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Zgodność|TBD|Usługa Media Services jest zgodna z wielu certyfikatów. Zapoznaj się z [Offerings.pdf zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) i poszukaj pozycji "Media Services" zobaczyć, jeśli jest on zgodny z certyfikatem zainteresowania.|
+|Zgodność|[Zgodność platformy Azure](https://aka.ms/AzureCompliance)|Usługa Media Services jest zgodna z wielu certyfikatów. Zapoznaj się z [Offerings.pdf zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) i poszukaj pozycji "Media Services" zobaczyć, jeśli jest on zgodny z certyfikatem zainteresowania.|
 |Bezpłatna wersja próbna|Wschodnie stany USA|Niedostępne|
 |Dostępność |Zachodnie stany USA, Azja Wschodnia, Europa Północna|Zobacz [stanu platformy Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 

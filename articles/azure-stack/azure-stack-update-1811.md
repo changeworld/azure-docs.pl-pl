@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/11/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055170"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214593"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -82,7 +82,7 @@ Usługa Azure Stack wydaje poprawki na bieżąco. Pamiętaj zainstalować [najno
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    Po zaimportowaniu poprawnie certyfikatów hosta rozszerzenia obowiązkowe, można wznowić aktualizację 1811 z portalu administratora. Gdy firmy Microsoft z informacją o tym operatorom usługi Azure Stack, aby umieścić jednostki skalowania w tryb konserwacji podczas procesu aktualizacji, awarii ze względu na Brak rozszerzenia certyfikatów hosta powinien nie wpływa na istniejące obciążenia lub usługi.  
+    Po zaimportowaniu poprawnie certyfikatów hosta rozszerzenia obowiązkowe, można wznowić aktualizację 1811 z portalu administratora. Gdy firmy Microsoft z informacją o tym operatorom usługi Azure Stack w celu zaplanowania okna obsługi podczas procesu aktualizacji, awarii ze względu na Brak rozszerzenia certyfikatów hosta powinien nie wpływa na istniejące obciążenia lub usługi.  
 
     Podczas instalacji tej aktualizacji portal użytkowników usługi Azure Stack jest niedostępna, gdy host rozszerzenia jest konfigurowane. Konfiguracja hosta rozszerzenia może potrwać do 5 godzin. W tym czasie można sprawdzić stan aktualizacji lub wznowić niepomyślną instalację aktualizacji przy użyciu [programu PowerShell administratora usługi Azure Stack lub punktu końcowego z uprzywilejowanym dostępem](azure-stack-monitor-update.md).
 
@@ -254,6 +254,12 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 ### <a name="compute"></a>Wystąpienia obliczeniowe
 
 - Podczas tworzenia nowego Windows maszyn wirtualnych (VM), **ustawienia** bloku wymaga, aby kontynuować, wybierz publicznego portu wejściowego. W 1811 to ustawienie jest wymagane, ale nie ma wpływu. Jest tak, ponieważ ta funkcja jest zależna od zaporę Windows Azure, która nie jest zaimplementowana w usłudze Azure Stack. Możesz wybrać **publiczne porty dla ruchu przychodzącego nie**, ani żadnych innych opcji, aby kontynuować tworzenie maszyny Wirtualnej. To ustawienie nie odniesie żadnego skutku.
+
+- Podczas tworzenia nowej maszyny wirtualnej Windows (VM), może zostać wyświetlony następujący błąd:
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   Ten błąd występuje, jeśli Włącz diagnostykę rozruchu na maszynie Wirtualnej, ale usunięcia konta magazynu diagnostyki rozruchu. Aby obejść ten problem, należy ponownie utworzyć konto magazynu o takiej samej nazwie jak użyte wcześniej.
 
 <!-- 3235634 – IS, ASDK -->
 - Aby wdrożyć maszyny wirtualne o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, określ sufiks jako **maszyna wirtualna standard_a2_v2 —** (v małe litery). Nie używaj **maszyna wirtualna Standard_A2_V2** (wielkie litery V). To działa na platformie Azure globalnych i niezgodności w usłudze Azure Stack.

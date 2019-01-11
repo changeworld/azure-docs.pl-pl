@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Traffic Manager — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Usługa Azure Traffic Manager — często zadawane pytania
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Traffic Manager
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963576"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200051"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -437,8 +437,8 @@ Istnieje nie ujemna, cennik wpływ przy użyciu profilów zagnieżdżonych.
 
 Rozliczanie usługi Traffic Manager ma dwa składniki: kontrole kondycji punktów końcowych i miliony zapytań DNS
 
-* Kontrole kondycji punktów końcowych: nie ma opłat dla profilu podrzędnych, gdy usługa skonfigurowany jako punkt końcowy w profilu nadrzędnej. Monitorowanie punktów końcowych w profilu podrzędnej jest rozliczana w zwykły sposób.
-* Zapytania DNS: każdego zapytania są traktowane jako jeden raz. Zapytanie profil nadrzędnego, który zwraca punktu końcowego z profilu podrzędnej jest przeliczane względem nadrzędnego tylko w przypadku profilu.
+* Kontrole kondycji punktów końcowych: Nie ma opłat dla profilu podrzędnych, gdy usługa skonfigurowany jako punkt końcowy w profilu nadrzędnej. Monitorowanie punktów końcowych w profilu podrzędnej jest rozliczana w zwykły sposób.
+* Zapytania DNS: Każde zapytanie są traktowane jako jeden raz. Zapytanie profil nadrzędnego, który zwraca punktu końcowego z profilu podrzędnej jest przeliczane względem nadrzędnego tylko w przypadku profilu.
 
 Aby uzyskać szczegółowe informacje, zobacz [usługi Traffic Manager stronę z cennikiem](https://azure.microsoft.com/pricing/details/traffic-manager/).
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 17ca5430a0fdba0bf11d7c2caecd19ec0a402c0e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b9f3561155038e91bc278f5d7ddc995adb53ad78
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556700"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198001"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja dla interfejsu API usługi Azure czas serii szczegółowych informacji
 
@@ -106,7 +106,7 @@ Użyj klucza i identyfikator aplikacji w aplikacji, do uwierzytelniania za pomoc
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać przykładowy kod, który wywołuje interfejs API czas serii szczegółowych informacji, zobacz [wykonywanie zapytań o dane przy użyciu języka C#](time-series-insights-query-data-csharp.md).
-- Aby uzyskać informacje referencyjne interfejsu API, zobacz [dokumentację interfejsu API zapytań](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+- Aby uzyskać informacje referencyjne interfejsu API, zobacz [dokumentację interfejsu API zapytań](/rest/api/time-series-insights/ga-query-api).
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostki usługi](../active-directory/develop/howto-create-service-principal-portal.md)

@@ -4,14 +4,14 @@ description: Często zadawane pytania dotyczące usługi Azure Migrate adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/10/2019
 ms.author: snehaa
-ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0d01715922286743b9442ae1c656b34c37a7d795
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975478"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201197"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -53,7 +53,7 @@ Usługa Azure Migrate obsługuje obecnie Europa, USA i Azure dla instytucji rzą
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
 Azure Government | Administracja USA — Wirginia
-Europa | Europa Północna i Europa Zachodnia
+Europa | Europa Północna lub Europa Zachodnia
 Stany Zjednoczone | Wschodnie stany USA z Zachodniego środkowe stany USA
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak lokacją lokalną łączyć się z usługi Azure Migrate?
@@ -136,6 +136,17 @@ Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i ni
 
 Może odnajdywać 1500 maszyn wirtualnych w projekcie migracji. Jeśli masz więcej maszyn w środowisku lokalnych [więcej](how-to-scale-assessment.md) o jak odkryjesz dużym środowisku, w usłudze Azure Migrate.
 
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Utrwalanie urządzenia usługi Azure Migrate, jakie są zalecane wykluczenia programu antywirusowego (pliki audio i wideo)?
+
+Należy wykluczyć poniższe foldery w urządzenia do skanowania antywirusowego:
+
+- Folder, który zawiera pliki binarne usługi migracji platformy Azure. Wyklucz wszystkie podfoldery.
+  %ProgramFiles%\ProfilerService  
+- Usługa Azure Migrate aplikacji sieci Web. Wyklucz wszystkie podfoldery.
+  %SystemDrive%\inetpub\wwwroot
+- Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure migrate usługa wymaga RW dostęp do tego folderu.
+  %SYSTEMDRIVE%\Profiler
+
 ## <a name="assessment"></a>Ocena
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Usługa Azure Migrate wsparcia podmiotu trzeciego podstawie Enterprise Agreement (EA) kosztuje szacowania?
@@ -144,6 +155,13 @@ Usługa Azure Migrate nie obsługuje obecnie Szacowanie kosztów dla [oferty z u
 
   ![Rabat](./media/resources-faq/discount.png)
 
+### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaka jest różnica między ustalania rozmiaru jako — w środowisku lokalnym i ustalania rozmiaru na podstawie wydajności?
+
+Po określeniu kryterium ustalania rozmiaru jako jako on-premises zmiany rozmiaru, usługa Azure Migrate nie należy wziąć pod uwagę dane wydajności maszyn wirtualnych i rozmiarach maszyn wirtualnych na podstawie konfiguracji w środowisku lokalnym. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, zmiany rozmiaru odbywa się na podstawie danych użycia. Na przykład, jeśli istnieje lokalna maszyna wirtualna z 4 rdzenie i 8 GB pamięci RAM z 50% wykorzystania Procesora i wykorzystania pamięci 50%. Jeśli kryterium ustalania rozmiaru jest rozmiaru jednostki SKU maszyny Wirtualnej platformy Azure z 4 rdzenie lokalne i 8GB pamięci RAM zaleca się, jednak jeśli kryterium ustalania rozmiaru na podstawie wydajności jako jednostki SKU maszyny Wirtualnej 2 rdzeni i 4 GB mogłoby być zaleca się jako procent wykorzystania jest uznawana za podczas rekomendowanie rozmiar. Podobnie dysków, rozmiaru dysku zależy od dwóch właściwości oceny — zmiany rozmiaru typu kryterium i magazynu. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności i magazynu jest uruchomiana automatycznie, wartości operacje We/Wy i przepływność dysku są traktowane jako do identyfikowania typ dysku docelowego (standardowa / Premium). Jeśli kryterium ustalania rozmiaru jest oparte na wydajności i typ magazynu jest premium, zaleca się dysku w warstwie premium, dysku w warstwie premium, jednostki SKU na platformie Azure jest wybierane na podstawie rozmiaru dysku w środowisku lokalnym. Ta sama logika jest używany do dysku zmiany rozmiaru, jeśli kryterium ustalania rozmiaru jest lokalne ustalanie rozmiaru i typu magazynu to standardowa lub premium.
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Jaki wpływ wydajności historii i percentyl użycia ma na zaleceń dotyczących rozmiarów?
+
+Te właściwości są tylko odpowiednie dla rozmiaru na podstawie wydajności. Usługa Azure Migrate umożliwia zbieranie informacji o historii wydajności maszyn lokalnych i używa ich do zaleca się typu dysk i rozmiar maszyny Wirtualnej na platformie Azure. Urządzenie modułu zbierającego stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym, co 20 sekund. Urządzenie zbiera przykłady 20 sekund i tworzy jeden punkt danych co 15 minut. Aby utworzyć jeden punkt danych, urządzenia szczytowa wartość wybierana jest opcja wszystkie przykłady 20 sekund i wysyła je do platformy Azure. Po utworzeniu oceny na platformie Azure, w oparciu o czas trwania wydajności i wartość percentylu historii wydajności, usługa Azure Migrate oblicza wartość efektywne wykorzystanie i używa go na potrzeby zmiany rozmiaru. Na przykład, jeśli zostały ustawione czas trwania wydajności za 1 dzień i percentyl wartości 95. percentyl, usługę Azure migrate przykładowe 15 min punktów wysyłane przez moduł zbierający dla ostatniego dnia, posortowane w kolejności rosnącej, a następnie wybiera wartość 95. percentyla jako skuteczne ut ilization. Wartość 95. percentyla gwarantuje, że ignorujesz jakiekolwiek elementy odstające, które mogą występować w przypadku wybrania 99. percentylu. Jeśli chcesz wybrać szczytowe użycie w okresie, a nie chcesz przeoczyć jakiekolwiek elementy odstające, należy wybrać 99. percentylu.
 
 ## <a name="dependency-visualization"></a>Wizualizacja zależności
 

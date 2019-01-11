@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: e922e2c18ebb87783bf0ed229ce7107c4577c994
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15767107a5c535cfda98da2a5177e15ca221f35d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882866"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214698"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Praca z wartości daty / godziny w zapytań usługi Log Analytics
 
@@ -91,7 +91,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-Możesz zobaczyć _timeAgo_ kolumna zawiera wartości takie jak: "00:09:31.5118992", co oznacza, są one formatowane jako hh:mm:ss.fffffff. Jeśli chcesz sformatować tych wartości, aby _numver_ minut od czasu rozpoczęcia, po prostu dzielnikiem tę wartość "1 minuta":
+Możesz zobaczyć _timeAgo_ kolumna zawiera wartości takie jak: "00:09:31.5118992", co oznacza, że są one formatowane jako hh:mm:ss.fffffff. Jeśli chcesz sformatować tych wartości, aby _numver_ minut od czasu rozpoczęcia, po prostu dzielnikiem tę wartość "1 minuta":
 
 ```Kusto
 Event
@@ -157,7 +157,7 @@ Event
 | Konwertowanie typów danych | [ToDateTime](/azure/kusto/query/todatetimefunction)[totimespan](/azure/kusto/query/totimespanfunction)  |
 | Zaokrągla wartość rozmiar pojemnika | [pojemnika](/azure/kusto/query/binfunction) |
 | Pobieranie określonej daty lub godziny | [temu](/azure/kusto/query/agofunction) [teraz](/azure/kusto/query/nowfunction)   |
-| Pobierz część wartości | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [miesiąc roku](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweek) [dzieńroku](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| Pobierz część wartości | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [miesiąc roku](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dzieńroku](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
 | Pobierz wartość typu date względem wartości  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Kolejne kroki
