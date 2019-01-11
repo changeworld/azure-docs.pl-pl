@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67d81387a347bb2061457bfd24553f304e965f38
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107433"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198766"
 ---
 # <a name="about-azure-vm-backup"></a>Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
 
@@ -132,11 +132,10 @@ Operacja przywracania obejmuje dwa główne zadania: kopiowanie danych z magazyn
 
 Sugerujemy następujące rozwiązania w zakresie podczas konfigurowania kopii zapasowych maszyn wirtualnych:
 
-- Uaktualnij magazynów do błyskawicznych jednostki Uzależnionej. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
 - Rozważ zmodyfikowanie zasad czasu podanego ustawienia domyślnego (na przykład. Jeśli czas zasadę domyślną jest 12:00 AM należy wziąć pod uwagę przyroście minut) kiedy są pobierane migawki danych, aby zapewnić optymalne wykorzystanie zasobów.
 - Dla maszyny Wirtualnej usługi Premium kopii zapasowej na temat funkcji innych niż - błyskawiczne RP przydziela ~ 50% całkowitego konta miejsca do magazynowania. Usługa Kopia zapasowa wymaga to miejsce, do kopiowania migawki do tego samego konta magazynu, a także podczas przenoszenia go do magazynu.
 - Do przywrócenia maszyn wirtualnych z jednego magazynu, zalecane jest aby stosować różne [kont magazynu w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) aby upewnić się, nie ograniczeni docelowe konto magazynu. Na przykład każda maszyna wirtualna musi mieć inne konto magazynu (Jeśli 10 maszyn wirtualnych zostaną przywrócone, a następnie należy wziąć pod uwagę przy użyciu 10 różnych kont magazynu).
-- Przywracanie z warstwy magazynu warstwy 1 (Migawka) zakończy się w ciągu kilku minut (ponieważ jest to tego samego konta magazynu) dla warstwy magazynu warstwy 2 (magazynu), co może zająć do godziny. Zaleca się używać [błyskawiczne RP](backup-upgrade-to-vm-backup-stack-v2.md) funkcji, aby szybciej przeprowadzać operacje przywracania w przypadku których dane są dostępne w warstwie 1 (Jeśli dane mają zostać przywrócone z magazynu, a następnie potrwa czasu).
+- Przywracanie z warstwy magazynu warstwy 1 (Migawka) zakończy się w ciągu kilku minut (ponieważ jest to tego samego konta magazynu) dla warstwy magazynu warstwy 2 (magazynu), co może zająć do godziny. Zaleca się używać [natychmiastowe Przywracanie](backup-instant-restore-capability.md) funkcji, aby szybciej przeprowadzać operacje przywracania w przypadku których dane są dostępne w warstwie 1 (Jeśli dane mają zostać przywrócone z magazynu, a następnie potrwa czasu).
 - Limit liczby dysków na konto magazynu jest względem jak duże dyski są wykorzystywane przez aplikacje działające na maszynie Wirtualnej IaaS. Upewnij się, jeśli wiele dysków znajdują się w ramach pojedynczego konta magazynu. Ogólną praktyką jest Jeśli w 5 – 10 dysków co najmniej jednego konta magazynu, równoważenie obciążenia, przenosząc niektóre dyski na oddzielnych kontach magazynu.
 
 ## <a name="backup-costs"></a>Koszty tworzenia kopii zapasowej

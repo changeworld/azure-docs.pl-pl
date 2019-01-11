@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: dc1de1bb43295d2ff9f260613ae568cdd2fbe6ae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103507"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198783"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Dzienniki niestandardowe w usłudze Log Analytics
 Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
@@ -164,6 +164,18 @@ Używamy zapytania *typu = MyApp_CL* do zwrócenia wszystkich rekordów z zebran
 Używamy pola niestandardowe, aby zdefiniować *EventTime*, *kodu*, *stan*, i *komunikat* pola i możemy zobaczyć różnicę w rekordach które są zwracane przez zapytanie.
 
 ![Zapytanie dziennika z polami niestandardowymi](media/data-sources-custom-logs/query-02.png)
+
+## <a name="alternatives-to-custom-logs"></a>Alternatywy dla dzienników niestandardowych
+Niestandardowe dzienniki są przydatne, jeśli pasuje do kryteriów wymienionych o danych, ale istnieją przypadki, podobny do następującego, w którym ma być kolejną strategią:
+
+- Dane nie mieści się wymaganej struktury, takich jak o sygnaturę czasową w innym formacie.
+- Plik dziennika nie spełnić wymagania, takie jak kodowanie pliku lub strukturę folderu nieobsługiwany.
+- Dane wymagają przetwarzania wstępnego i filtrowania przed kolekcji. 
+
+W przypadkach, w których nie można zebrać danych z dziennikami niestandardowymi należy wziąć pod uwagę następujące alternatywne strategie:
+
+- Użyj niestandardowego skryptu lub innej metody, aby zapisywać danych [zdarzeń Windows](data-sources-windows-events.md) lub [Syslog](data-sources-syslog.md) które są zbierane przez usługę Log Analytics. 
+- Wysłać dane bezpośrednio do usługi Log Analytics przy użyciu [interfejsu API modułu zbierającego dane HTTP](data-collector-api.md). Przykład za pomocą elementów runbook w usłudze Azure Automation można znaleźć w [zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation](runbook-datacollect.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.

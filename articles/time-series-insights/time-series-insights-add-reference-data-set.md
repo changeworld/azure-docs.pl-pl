@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0110ea79d05c0da57ac2d2e1f52194bed12152c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555561"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198426"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
 
@@ -98,4 +98,4 @@ Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie danymi referencyjnymi](time-series-insights-manage-reference-data-csharp.md) na drodze programowej.
-* Aby uzyskać pełną dokumentację interfejsu API, zobacz dokument [Interfejs API danych referencyjnych](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).
+* Aby uzyskać pełną dokumentację interfejsu API, zobacz dokument [Interfejs API danych referencyjnych](/rest/api/time-series-insights/ga-reference-data-api).

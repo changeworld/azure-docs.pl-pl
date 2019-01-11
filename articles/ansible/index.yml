@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5e2b31671a8f08bae1cba66e05d6ae72f960cf9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7225fece81672e539858567039e1ff086d97c2c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050935"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197729"
 documentType: LandingData
 title: Dokumentacja rozwiązania Ansible na platformie Azure
 metadata:
@@ -53,6 +53,9 @@ sections:
     - html: <a href="./ansible-deploy-app-vmss">Wdrażaj aplikacje w zestawach skalowania maszyn wirtualnych na platformie Azure.</a>
     - html: <a href="./ansible-create-configure-aks">Twórz klastry usługi Azure Kubernetes Service i zarządzaj nimi.</a>
     - html: <a href="./ansible-create-configure-application-gateway">Zarządzaj ruchem internetowym przy użyciu bramy aplikacji platformy Azure.</a>
+    - html: <a href="./ansible-auto-scale-vmss">Automatycznie skaluj zestaw skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible.</a>
+    - html: <a href="./ansible-scale-azure-web-apps">Skaluj aplikacje internetowe w ramach usługi Azure App Service za pomocą rozwiązania Ansible.</a>
+    - html: <a href="./ansible-create-configure-route-table">Twórz, zmieniaj lub usuwaj tabelę tras platformy Azure za pomocą rozwiązania Ansible.</a>
 - title: Dokumentacja
   items:
   - type: list
