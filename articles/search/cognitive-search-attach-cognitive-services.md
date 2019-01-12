@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 509125e7c93f34b9ce28c58cb1ec96db1074d995
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 315e050f9ff8768cfeb8ff5417834e8e163ce334
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119649"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231431"
 ---
 # <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Skojarzenie zasobu usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
-Algorytmy sztucznej Inteligencji zapewniają [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) potoki przetwarzania danych bez struktury są oparte na [ **zasobów usług Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zasoby, takie jak [ **komputerowej** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) umożliwiają analizowanie obrazów i optyczne rozpoznawanie znaków (OCR) wyodrębnianie tekstu i struktury poza pliki obrazów podczas [ **tekstu Analiza** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) umożliwia przetwarzanie, takich jak jednostki rozpoznawanie i klucz frazy, kilka języka naturalnego.
+Algorytmy sztucznej Inteligencji zapewniają [potoków wyszukiwania kognitywnego](cognitive-search-concept-intro.md) do przetwarzania danych bez struktury są oparte na [ **zasobów usług Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zasoby, takie jak [ **komputerowej** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) umożliwiają analizowanie obrazów i optyczne rozpoznawanie znaków (OCR) do wyodrębniania tekstu i struktury poza pliki obrazów podczas [ **tekstu Analiza** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) umożliwia przetwarzanie, takich jak jednostki rozpoznawanie i klucz frazy, kilka języka naturalnego.
 
-Możesz bezpłatnie wzbogacić ograniczonej liczby dokumentów lub możesz dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule dowiesz się, jak skojarzyć zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności w celu wzbogacenia danych podczas indeksowania.
+Bezpłatnie wzbogacanie ograniczonej liczby dokumentów lub dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule dowiesz się, jak skojarzyć zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności w celu wzbogacenia danych podczas indeksowania.
 
 Jeśli Potok składa się wyłącznie z [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), nie trzeba dołączać zasobu usług Cognitive Services.
 

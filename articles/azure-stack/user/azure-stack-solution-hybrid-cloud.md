@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/18/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e4da34be5b1e9eb2675f540fe4069cfd3dc1d056
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.reviewer: anajod
+ms.openlocfilehash: 95fcb98e9ca6ff85e37ee88d5a5122ffa6887bb4
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49410200"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245212"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Samouczek: Wdrażanie hybrydowe rozwiązanie w chmurze dzięki platformie Azure i usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 W tym samouczku dowiesz się, jak wdrożyć hybrydowe rozwiązanie w chmurze, która korzysta z chmury publicznej platformy Azure i w chmurze prywatnej usługi Azure Stack.
 
@@ -194,7 +194,7 @@ Aby dowiedzieć się, jak usługa App Service integruje się z sieciami wirtualn
 
 Brama sieci lokalnej w sieci wirtualnej usługi Azure Stack musi być skonfigurowane do kierowania ruchu z zakresu adresów point-to-site usługi App Service.
 
-1. W usłudze Azure Stack, przejdź do **bramy sieci lokalnej**. W obszarze **ustawienia**, wybierz opcję **konfiguracji**.
+1. W usłudze Azure Stack, przejdź do **bramy sieci lokalnej**. W obszarze **Ustawienia** wybierz pozycję **Konfiguracja**.
 
     ![Opcja konfiguracji bramy](media/azure-stack-solution-hybrid-cloud/image14.png)
 
@@ -308,7 +308,7 @@ Po utworzeniu aplikacji sieci web w środowisku usługi App Service uruchamia je
 
     ![Włącz skalowanie automatyczne](media/azure-stack-solution-hybrid-cloud/image17.png)
 
-3. Wprowadź nazwę dla **Nazwa ustawienia skalowania automatycznego**. Aby uzyskać **domyślne** reguły skalowania automatycznego, wybierz opcję **skalowania na podstawie metryki**. Ustaw **limity wystąpień** do **Minimum: 1**, **maksymalna: 10**, i **domyślne: 1**.
+3. Wprowadź nazwę dla **Nazwa ustawienia skalowania automatycznego**. Aby uzyskać **domyślne** reguły skalowania automatycznego, wybierz opcję **skalowania na podstawie metryki**. Ustaw **limity wystąpień** do **minimalna: 1**, **maksymalna: 10**, i **domyślne: 1**.
 
     ![Konfigurowanie automatycznego skalowania](media/azure-stack-solution-hybrid-cloud/image18.png)
 

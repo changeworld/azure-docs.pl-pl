@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364099"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244991"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Operacje obsługi dostawcy zasobów SQL
 
@@ -32,16 +32,6 @@ Dostawcy zasobów bazy danych SQL nie jest obsługiwane w ramach usługi Azure S
 ### <a name="provider-virtual-machine"></a>Maszyna wirtualna dostawcy
 
 Ponieważ dostawca zasobów jest uruchamiana na *użytkownika* maszyny wirtualnej, należy zastosować wymaganych poprawek i aktualizacji, po ich wydaniu. Pakiety aktualizacji Windows, które są dostarczane jako część cyklu poprawek i aktualizacji służy do stosowania aktualizacji do maszyny Wirtualnej.
-
-## <a name="backuprestoredisaster-recovery"></a>Kopia zapasowa/Przywracanie/odzyskiwanie po awarii
-
- Ponieważ istnieje dodatkowy składnik, dostawcy zasobów bazy danych SQL nie ma kopii zapasowej jako część procesu usługi Azure Stack firm ciągłości działania po awarii odzyskiwania (BCDR). Skrypty będzie świadczona w przypadku następujących operacji:
-
-- Tworzenie kopii zapasowej informacji o stanie (przechowywane na koncie magazynu usługi Azure Stack).
-- Przywracanie dostawcy zasobów, jeśli wymagane jest jej odzyskanie pełnego stosu.
-
->[!NOTE]
->W przypadku odzyskiwania można odzyskać serwerów baz danych, przed przywróceniem dostawcy zasobów.
 
 ## <a name="updating-sql-credentials"></a>Aktualizowanie poświadczeń SQL
 
@@ -122,7 +112,7 @@ Gdy za pomocą dostawcy zasobów SQL i bazy danych MySQL z usługą Azure Stack 
 
 ### <a name="known-issues"></a>Znane problemy
 
-**Problem**: dzienniki rotacji kluczy tajnych.<br>
+**Problem**: Dzienniki rotacji kluczy tajnych.<br>
 Dzienniki Aby uzyskać rotacji kluczy tajnych nie są automatycznie zbierane, jeśli niestandardowego skryptu rotacji wpisu tajnego zakończy się niepowodzeniem, po jej uruchomieniu.
 
 **Obejście**:<br>

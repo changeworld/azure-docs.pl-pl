@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: c7b002a0730e94e9507aed273b9be4fe35de5bf0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: 5609cb3cfeab7cbaae493403aac68b0ce56d299a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159404"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244617"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
@@ -65,7 +66,10 @@ _Zintegrowane systemy tylko dla instalacji_. Musisz podać certyfikat SQL PaaS P
 
 ## <a name="deploy-the-resource-provider"></a>Wdrażanie dostawcy zasobów
 
-Jeśli masz wszystkie wstępnie wymagane składniki zainstalowane, uruchomić **DeployMySqlProvider.ps1** skrypt w celu wdrożenia dostawcy zasobów bazy danych MYSQL. Skrypt DeployMySqlProvider.ps1 jest wyodrębniany jako część plik binarny w dostawcy zasobów MySQL, który został pobrany dla używanej wersji programu Azure Stack.
+Po zainstalowaniu wszystkich wymagań wstępnych można uruchomić **DeployMySqlProvider.ps1** skrypt w celu wdrożenia dostawcy zasobów bazy danych MySQL. Skrypt DeployMySqlProvider.ps1 jest wyodrębniany jako część plików instalacyjnych dostawcy zasobów MySQL, które pobrany dla używanej wersji programu Azure Stack.
+
+ > [!IMPORTANT]
+ > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
 
 Aby wdrożyć dostawcy zasobów bazy danych MySQL, Otwórz okno programu PowerShell (nie PowerShell ISE) nowe z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów MySQL. Zalecamy używanie nowe okno programu PowerShell, aby uniknąć potencjalnych problemów, spowodowane przez moduły programu PowerShell, które zostały już załadowane.
 
@@ -134,6 +138,10 @@ $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysq
 # And the cloudadmin credential required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force

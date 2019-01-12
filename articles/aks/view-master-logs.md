@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040748"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230598"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -36,6 +36,19 @@ Usługa log Analytics jest włączona i zarządzane w witrynie Azure portal. Aby
     * Jeśli musisz utworzyć obszar roboczy, podaj nazwę, grupę zasobów i lokalizacji.
 1. Na liście dostępnych dzienników wybierz dzienniki, które mają zostać włączone. Domyślnie *apiserver klastra kubernetes w usłudze*, *Menedżera klastra kubernetes w usłudze kontrolera*, i *klastra kubernetes w usłudze scheduler* dzienniki są włączone. Możesz włączyć dodatkowe dzienniki, takich jak *klastra kubernetes w usłudze inspekcji* i *skalowanie klastra*. Możesz wrócić i zmienić zebranych dzienników po włączeniu usługi Log Analytics.
 1. Gdy wszystko będzie gotowe, wybierz **Zapisz** Aby włączyć zbieranie dzienników wybrane.
+
+> [!NOTE]
+> AKS przechwytuje tylko dzienniki inspekcji dla klastrów, które są tworzone lub uaktualniony po włączeniu flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *AKSAuditLog* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> Poczekaj, aż stan pokazać *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> Gdy wszystko będzie gotowe, Odśwież rejestracji dostawcy zasobów usługi AKS przy użyciu [az provider register] [ az-provider-register] polecenia:
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnostycznych* okna, a następnie opcję, aby utworzyć obszar roboczy usługi Log Analytics:
 
@@ -133,3 +146,6 @@ W tym artykule przedstawiono sposób włączyć i przejrzeć dzienniki Aby uzysk
 [analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

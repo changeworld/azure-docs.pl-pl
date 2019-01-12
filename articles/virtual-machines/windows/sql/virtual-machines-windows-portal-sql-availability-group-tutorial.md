@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1605fdc5e49d2b8e95a2876dea8dff378ee33e2e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51238079"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232281"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -296,7 +296,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności wykonując nast�
 
     ![Kreatora nowej grupy dostępności, wybierz początkową synchronizację danych](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. W **Wybierz początkową synchronizację danych** wybierz **pełne** i określ udostępnionej lokalizacji sieciowej. W przypadku lokalizacji, użyj [udziału kopii zapasowej, który został utworzony](#backupshare). W przykładzie pochodzi **\\\\\<pierwszego serwera SQL\>\Backup\**. Kliknij przycisk **Dalej**.
+8. W **Wybierz początkową synchronizację danych** wybierz **pełne** i określ udostępnionej lokalizacji sieciowej. W przypadku lokalizacji, użyj [udziału kopii zapasowej, który został utworzony](#backupshare). W przykładzie, mógł on  **\\ \\ \<pierwszego serwera SQL\>\Backup\\**. Kliknij przycisk **Dalej**.
 
    >[!NOTE]
    >Pełna synchronizacja ma pełną kopię zapasową bazy danych w pierwszym wystąpieniu programu SQL Server i przywrócenie go do drugiego wystąpienia. Pełna synchronizacja w przypadku dużych baz danych nie jest zalecane, ponieważ może potrwać dłuższy czas. Teraz można zmniejszyć ręcznie wykonywanie kopii zapasowej bazy danych i przywracanie jej przy użyciu `NO RECOVERY`. Jeśli baza danych jest już przywrócona z `NO RECOVERY` na drugim serwerze SQL przed rozpoczęciem konfigurowania grupy dostępności, wybierz **tylko Dołącz**. Jeśli chcesz wykonać kopię zapasową po skonfigurowaniu grupy dostępności, wybierz polecenie **Pomiń początkową synchronizację danych**.

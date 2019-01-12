@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d7c8aa73f72f6db93c6ef78c333c36e1d26b74e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 805df837d5d33c5f21799e39145c62e71afdb4b5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995069"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231397"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych.
@@ -73,6 +73,8 @@ Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lak
 | Nazwa użytkownika | Nazwa użytkownika, który ma dostęp do zapisu w bazie danych. Stream Analytics obsługuje tylko uwierzytelnianie SQL. |
 | Hasło | Hasło służące do połączenia z bazą danych. |
 | Tabela | Nazwa tabeli, w którym plik wyjściowy zostanie zapisany. Nazwa tabeli jest rozróżniana wielkość liter i schematu w tej tabeli powinna być zgodna dokładnie z numerem pola i ich typy, które są generowane przez zadanie danych wyjściowych. |
+|Dziedziczą schemat partycji| Dzięki temu można dziedziczyć schematu partycjonowania z poprzedniego kroku zapytania umożliwiające topologia pełni równolegle z wielu składników zapisywania do tabeli. Aby uzyskać więcej informacji, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md).|
+|Liczba partii dopasowania| Zalecane górny limit liczbę rekordów wysyłane z każdego zbiorczego Wstaw transakcję.|
 
 > [!NOTE]
 > Aktualnie obsługiwana jest oferty usługi Azure SQL Database, dane wyjściowe zadania w usłudze Stream Analytics. Maszynę wirtualną platformy Azure z programem SQL Server z bazą danych dołączone nie jest obsługiwana. To może ulec zmianie w przyszłych wersjach.

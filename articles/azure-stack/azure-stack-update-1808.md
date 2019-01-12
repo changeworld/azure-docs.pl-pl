@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 8d477997e71843307f6c756a6974a23267842015
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754547"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244974"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -254,6 +254,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą **błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej**, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń.
 
 ### <a name="compute"></a>Wystąpienia obliczeniowe
+
+- Podczas tworzenia [maszyny Wirtualnej serii Dv2](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), maszyn wirtualnych D11 14v2 pozwalają tworzyć 4, 8, 16 i dysków z danymi 32 odpowiednio. Jednak w okienku maszyny Wirtualnej Utwórz pokazuje 8, 16, 32 i 64 dyski z danymi.
 
 <!-- 3164607 – IS, ASDK -->
 - Ponowne dołączenie odłączono dysk do tej samej maszyny wirtualnej (VM) z taką samą nazwę i numer LUN zakończy się niepowodzeniem z powodu błędu takich jak **nie można dołączyć dysku danych "datadisk" do maszyny Wirtualnej "vm1"**. Ten błąd występuje, ponieważ dysk jest obecnie odłączany lub ostatnia odłączanie operacja nie powiodła się. Zaczekaj, aż dysk zostanie całkowicie odłączony a następnie spróbuj ponownie lub usuń bądź Odłącz dysk jawnie ponownie. Obejście polega na dołączyć go ponownie z inną nazwą lub w innej jednostce LUN. 

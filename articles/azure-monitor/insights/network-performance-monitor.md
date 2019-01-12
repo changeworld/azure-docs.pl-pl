@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193794"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229850"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -109,7 +109,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
 
 4. Na **instalacji** stronie zobaczysz opcję, aby zainstalować agentów usługi Log Analytics i konfigurować agentów do monitorowania w **typowe ustawienia** widoku. Jak wyjaśniono wcześniej, jeśli zainstalowano i skonfigurowano agentów usługi Log Analytics wybierz **Instalatora** do skonfigurowania możliwości widoku, którego chcesz użyć. 
 
-   **Monitor wydajności**: Wybierz protokół do użycia na potrzeby transakcji syntetycznych w **domyślne** reguły monitora wydajności, a następnie wybierz **Zapisz i Kontynuuj**. Ten wybór protokołu zawiera tylko dla reguły domyślnej generowanych przez system. Należy wybrać protokół każdorazowo, należy jawnie utworzyć regułę, Monitor wydajności. Zawsze można przenieść do **domyślne** reguła ustawienia **monitora wydajności** kartę (wyświetlany po zakończeniu konfiguracji dnia 0) i Zmień protokół później. Jeśli nie chcesz rPerfomance tę funkcję można wyłączyć reguły domyślnej z **domyślne** reguła ustawienia **monitora wydajności** kartę.
+   **Monitor wydajności**: Wybierz protokół do użycia na potrzeby transakcji syntetycznych w **domyślne** reguły monitora wydajności, a następnie wybierz **Zapisz i Kontynuuj**. Ten wybór protokołu zawiera tylko dla reguły domyślnej generowanych przez system. Należy wybrać protokół każdorazowo, należy jawnie utworzyć regułę, Monitor wydajności. Zawsze można przenieść do **domyślne** reguła ustawienia **monitora wydajności** kartę (wyświetlany po zakończeniu konfiguracji dnia 0) i Zmień protokół później. Jeśli nie chcesz, aby funkcja monitora wydajności, można wyłączyć reguły domyślnej z **domyślne** reguła ustawienia **monitora wydajności** kartę.
 
    ![Widok Monitora wydajności](media/network-performance-monitor/npm-synthetic-transactions.png)
     
@@ -249,7 +249,7 @@ Topologia wyświetlane na mapie topologii warstwy 3 i nie zawiera warstwy 2, urz
 
 ## <a name="log-analytics-search"></a>Wyszukiwania usługi log Analytics 
 
-Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pulpitu nawigacyjnego rozwiązania Network Performance Monitor i przechodzenie do szczegółów strony jest również dostępna natywnie w [wyszukiwania usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Można wykonywać interakcyjne analizy danych w repozytorium i korelowanie danych z różnych źródeł. Możesz również utworzyć niestandardowe alerty i widoki i wyeksportować dane do programu Excel, Power BI lub możliwe do udostępnienia łącza. Typowe  **zapytania dotyczące** obszaru na pulpicie nawigacyjnym zawiera niektóre przydatne zapytania, które służą jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
+Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pulpitu nawigacyjnego rozwiązania Network Performance Monitor i przechodzenie do szczegółów strony jest również dostępna natywnie w [wyszukiwania usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Można wykonywać interakcyjne analizy danych w repozytorium i korelowanie danych z różnych źródeł. Możesz również utworzyć niestandardowe alerty i widoki i wyeksportować dane do programu Excel, Power BI lub możliwe do udostępnienia łącza.  **Typowe zapytania dotyczące** obszaru na pulpicie nawigacyjnym zawiera niektóre przydatne zapytania, które służą jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
 
 ## <a name="alerts"></a>Alerty
 
@@ -270,7 +270,7 @@ Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem witryny Azu
 4. Po pomyślnym utworzeniu alertu, można użyć łącza Zarządzanie alertami zarządzania alertami. 
 
 W przypadku tworzenia alertu, NPM tworzy na podstawie zapytania reguł alertów dzienników w usłudze Azure Monitor. To zapytanie jest triggerred co 5 minut, domyślnie. Usługa Azure monitor nie jest opłata w wysokości 250 pierwszego logowania reguły alertów utworzone, a wszystkie reguły alertów powyżej limit 250 reguł alertów dzienników będą naliczane zgodnie [alerty ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
-Powiadomienia są rozliczane osobno zgodnie [powiadomienia o cenach usługi Azure Monitor na stronie pricig](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Powiadomienia są rozliczane osobno zgodnie [powiadomienia ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 
 
 ## <a name="pricing"></a>Cennik

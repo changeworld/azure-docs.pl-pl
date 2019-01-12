@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 2d4808aaccd704f4c54d44cfe7d45ddd84cf0e17
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 15a67bb5d42028f945cc44a75a7210f132a434c3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198681"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245168"
 ---
 # <a name="azure-standard-balancer-overview"></a>Omówienie usługi Azure Balancer w warstwie standardowa
 
@@ -210,7 +210,12 @@ Standardowe moduły równoważenia obciążenia dostępnych z SLA na poziomie 99
 
 ## <a name="pricing"></a>Cennik
 
-Standard Load Balancer, która jest płatne produktu, na podstawie liczby skonfigurowanych reguł równoważenia obciążenia i wszystkie dane przychodzące i wychodzące przetworzone. Dla Load Balancer w warstwie standardowa informacje o cenach, odwiedź stronę [cennik usługi Równoważenie obciążenia](https://aka.ms/lbpricing) strony.
+Standardowa użycie modułu równoważenia obciążenia jest naliczana opłata.
+
+- Liczba skonfigurowanych równoważenia obciążenia i wychodzących reguł reguł (reguł dla ruchu przychodzącego translatora adresów Sieciowych nie wliczają łączna liczba reguł)
+- Ilość danych przetworzonych reguły ruchu przychodzącego i wychodzącego, niezależnie od. 
+
+Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warstwie Standardowa, przejdź na stronę [cennika modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 ## <a name="limitations"></a>Ograniczenia
 

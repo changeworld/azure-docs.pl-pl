@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.reviewer: unknown
+ms.openlocfilehash: d4c5def3cc61c1920ae99d5aa9f97b46cbda0045
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185736"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244498"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Kluczowe funkcje i pojęcia w usłudze Azure Stack
 Jeśli jesteś nowym użytkownikiem usługi Microsoft Azure Stack, te warunki i opisy funkcji może być przydatny.
@@ -77,7 +77,7 @@ Podczas tworzenia oferty, administrator usługi może zawierać **plan podstawow
 
 Administrator usługi może także zawierać **planów dodatków** w ofercie. Plany dodatkowe nie są uwzględniane domyślnie w ramach subskrypcji. Plany dodatkowe są plany dodatkowe (przydziały) dostępnych w ofercie, właściciel subskrypcji można dodać do swojej subskrypcji.
 
-### <a name="offers"></a>Oferta
+### <a name="offers"></a>Oferty
 Oferty są grupami co najmniej jeden plan, które dostawcy przedstawiają dzierżawcom do zasubskrybowania (zakupienia). Na przykład alfa oferuje może zawierać Plan A zawierający zestaw usług obliczeniowych i planowanie B, zawierające zestaw usług magazynu i sieci.
 
 Oferty, który jest dostarczany z zestawem planów podstawowych, a administratorzy usług mogą tworzyć plany dodatkowe, które dzierżaw może dodać do swojej subskrypcji.

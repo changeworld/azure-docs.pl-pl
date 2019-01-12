@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 21689cf7fe3df7ca7e362ba49824fadd5daaa3ea
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888778"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231738"
 ---
 # <a name="add-html-markers-to-the-map"></a>Dodaj znaczniki HTML do mapy
 
@@ -24,7 +24,7 @@ W tym artykule przedstawiono sposób dodawania niestandardowego kodu HTML, takic
 > Znaczniki HTML nie Podłączaj się do źródeł danych. Zamiast tego pozycję informacje są dodawane bezpośrednio do znacznika i znacznika jest dodawana do mapy `markers` właściwość, która jest [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
 
 > [!IMPORTANT]
-> W przeciwieństwie do większości warstw w kontrolki mapy platformy Azure w sieci Web, które używają WebGL renderowanie znaczniki HTML na użytek tradycyjnych elementów DOM renderowania. W efekcie więcej znaczników HTML dodane stroną więcej elementów modelu DOM, istnieją. Wydajność może się zmniejszyć po dodaniu kilku znaczników hundered HTML. Dla większych zestawów danych należy wziąć pod uwagę klastrowanie danych albo za pomocą warstwy symboli lub bąbelka.
+> W przeciwieństwie do większości warstw w kontrolki mapy platformy Azure w sieci Web, które używają WebGL renderowanie znaczniki HTML na użytek tradycyjnych elementów DOM renderowania. W efekcie więcej znaczników HTML dodane stroną więcej elementów modelu DOM, istnieją. Wydajność może się zmniejszyć po dodaniu kilku sto znaczników HTML. Dla większych zestawów danych należy wziąć pod uwagę klastrowanie danych albo za pomocą warstwy symboli lub bąbelka.
 
 ## <a name="add-an-html-marker"></a>Dodaj znacznik HTML
 

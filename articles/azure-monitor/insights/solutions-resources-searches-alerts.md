@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a2c45807f846dbe9d1c6bd91ce8c87958949ab17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344299"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231329"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -79,7 +79,7 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 | Właściwość | Opis |
 |:--- |:--- |
 | category | Kategoria dla zapisanego wyszukiwania.  Wszystkie zapisane wyszukiwania, w tym samym rozwiązaniu często współużytkują jednej kategorii, dzięki czemu są one zgrupowane razem w konsoli. |
-| Nazwa wyświetlana | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
+| displayname | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
@@ -153,7 +153,7 @@ Istnieją dwa typy działań zasobu określonego przez **typu** właściwości. 
 Akcje alertu mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
 
-```
+```json
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -290,7 +290,7 @@ W poniższych tabelach opisano właściwości zasobów akcji elementu Webhook.
 |:--|:--|:--|
 | type | Yes | Typ akcji.  Jest to **elementu Webhook** przypadku akcji elementów webhook. |
 | name | Yes | Nazwa wyświetlana dla akcji.  To nie jest wyświetlana w konsoli. |
-| wehookUri | Yes | Identyfikator URI dla elementu webhook. |
+| WebhookUri | Yes | Identyfikator URI dla elementu webhook. |
 | customPayload | Nie | Niestandardowy ładunek do wysłania do elementu webhook. Format zależy od tego, czego oczekuje elementu webhook. |
 
 
@@ -304,7 +304,7 @@ Poniżej przedstawiono przykładowe rozwiązania, które zawiera następujące z
 
 W przykładzie użyto [parametry standardowe rozwiązanie]( solutions-solution-file.md#parameters) zmiennych, które często będzie używana w ramach rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
 
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -462,7 +462,7 @@ W przykładzie użyto [parametry standardowe rozwiązanie]( solutions-solution-f
 ```
 
 Następujący plik parametrów zawiera przykłady wartości dla tego rozwiązania.
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",

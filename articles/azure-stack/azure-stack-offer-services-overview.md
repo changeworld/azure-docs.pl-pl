@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.reviewer: unknown
+ms.openlocfilehash: 754a0002aca52462910abe50825cff0254a7068f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127486"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244158"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Przegląd oferty usług w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 [Microsoft Azure Stack](azure-stack-poc.md) to hybrydowa platforma w chmurze, która umożliwia dostarczanie usług z centrum danych. Jako dostawca usług możesz zaoferować usług dla dzierżawców. W obrębie firmy lub w agencji rządowej może zaoferować usługami lokalnymi na potrzeby pracowników. 
 
@@ -47,11 +47,11 @@ Aby dostarczać użytkownikom tych usług, należy utworzyć [planów, ofert i p
 
 Podczas planowane swoje oferty, należy uwzględnić następujące kwestie:
 
-**Próbnych**: ofert wersji próbnych można użyć w celu przyciągnięcia nowych użytkowników, którzy następnie można uaktualnić do dodatkowych usług. Oferta wersji próbnej, utworzyć małą [plan podstawowy](azure-stack-plan-offer-quota-overview.md#base-plan) za pomocą opcjonalnych większego planu dodatku.
+**Próbnych**: Ofert wersji próbnych można użyć w celu przyciągnięcia nowych użytkowników, którzy następnie można uaktualnić do dodatkowych usług. Oferta wersji próbnej, utworzyć małą [plan podstawowy](azure-stack-plan-offer-quota-overview.md#base-plan) za pomocą opcjonalnych większego planu dodatku.
 
-**Planowanie pojemności**: być może dane o użytkownikach z zainstalowanymi pobrania dużych ilości zasobów i zapychaniem systemu dla wszystkich użytkowników. Aby pomóc wydajności, można [skonfigurować swoje plany z limitami przydziału](azure-stack-plan-offer-quota-overview.md#plans) limitu użycia.
+**Planowanie pojemności**: Być może dane o użytkownikach z zainstalowanymi pobrania dużych ilości zasobów i zapychaniem systemu dla wszystkich użytkowników. Aby pomóc wydajności, można [skonfigurować swoje plany z limitami przydziału](azure-stack-plan-offer-quota-overview.md#plans) limitu użycia.
 
-**Delegowane dostawców**: możesz udzielić osobom możliwość tworzenia oferty w danym środowisku. Na przykład, jeśli jesteś dostawcą usługi, możesz to zrobić [delegować](azure-stack-delegated-provider.md) dzięki możliwości usługi odsprzedawców. Lub, w przypadku organizacji, możesz delegować innych działów/oddziałach.
+**Delegowane dostawców**: Inne, które oferuje możliwość utworzenia można udzielić w danym środowisku. Na przykład, jeśli jesteś dostawcą usługi, możesz to zrobić [delegować](azure-stack-delegated-provider.md) dzięki możliwości usługi odsprzedawców. Lub, w przypadku organizacji, możesz delegować innych działów/oddziałach.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

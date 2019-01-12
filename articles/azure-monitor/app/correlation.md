@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8b31a85abf1c6034aaff511f23d96fae9ee64561
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117609"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230054"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -101,6 +101,43 @@ public void ConfigureServices(IServiceCollection services)
     // ....
 }
 ```
+
+#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Włącz obsługę śledzenia W3C rozproszonych dla aplikacji w języku Java
+
+Przychodzące:
+
+**Aplikacji w technologii J2EE** Dodaj następujące polecenie, aby `<TelemetryModules>` wewnątrz ApplicationInsights.xml
+
+```xml
+<Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule>
+   <Param name = "W3CEnabled" value ="true"/>
+   <Param name ="enableW3CBackCompat" value = "true" />
+</Add>
+```
+
+**Usługa Spring aplikacji rozruchu** Dodaj następujące właściwości:
+
+`azure.application-insights.web.enable-W3C=true`
+`azure.application-insights.web.enable-W3C-backcompat-mode=true`
+
+Wychodzące:
+
+Dodaj następujący kod do sztucznej Inteligencji — Agent.xml:
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> Tryb zgodności z poprzednimi wersjami jest domyślnie włączona i parametr enableW3CBackCompat jest opcjonalne i powinny być używane tylko w przypadku, gdy chcesz wyłączyć tę funkcję. 
+
+Najlepiej będzie to wymagane podczas wszystkie usługi zostały zaktualizowane do nowszej wersji zestawy SDK obsługujące protokół W3C. Zdecydowanie zaleca się przejść do nowszej wersji zestawów SDK z obsługą W3C tak szybko, jak to możliwe. 
+
+Upewnij się, że oba **konfiguracje przychodzące i wychodzące są dokładnie tych samych**.
 
 ## <a name="open-tracing-and-application-insights"></a>Usługa Application Insights i Otwórz śledzenie
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b61602d221c71fd756a23f338f2817561e9f5d09
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8e18822fff852a82b367acfa45e3d55048b4e54c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215086"
+ms.locfileid: "54232604"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Dodaj warstwę kafelków do mapy
 

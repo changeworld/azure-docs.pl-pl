@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: c0478b320afca1b82a79fa43e7b60c29a2cb2e7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ceab5152d6dc6db573a7fea8c673157068009ebe
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997932"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228813"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitoruj zależności, wyjątki przechwycony i czasy wykonania metody w aplikacji sieci web w języku Java
 
@@ -89,6 +89,32 @@ Ustaw zawartość pliku xml. Zmodyfikuj poniższy przykład, aby uwzględnić lu
 Należy włączyć raporty wyjątek i metoda chronometrażu dla poszczególnych metod.
 
 Domyślnie `reportExecutionTime` ma wartość true i `reportCaughtExceptions` ma wartość false.
+
+### <a name="spring-boot-agent-additional-config"></a>Usługa Spring dodatkowych konfiguracji rozruchu agenta
+
+`java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
+
+> [!NOTE]
+> W tym samym folderze należy Agent.xml sztucznej Inteligencji i plik jar agenta. Są one często wprowadzane razem w `/resources` folderu projektu. 
+
+#### <a name="enable-w3c-distributed-tracing"></a>Włącz śledzenie rozproszonych W3C
+
+Dodaj następujący kod do sztucznej Inteligencji — Agent.xml:
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> Tryb zgodności z poprzednimi wersjami jest domyślnie włączona i parametr enableW3CBackCompat jest opcjonalne i powinny być używane tylko w przypadku, gdy chcesz wyłączyć tę funkcję. 
+
+Najlepiej będzie to wymagane podczas wszystkie usługi zostały zaktualizowane do nowszej wersji zestawy SDK obsługujące protokół W3C. Zdecydowanie zaleca się przejść do nowszej wersji zestawów SDK z obsługą W3C tak szybko, jak to możliwe.
+
+Upewnij się, że **zarówno [przychodzących](correlation.md#w3c-distributed-tracing) i wychodzące (agent), konfiguracje** są dokładnie takie same.
 
 ## <a name="view-the-data"></a>Wyświetlanie danych
 W zasobie usługi Application Insights jest wyświetlana zagregowane zdalnego zależności i metoda czasy wykonania [w obszarze kafelka wydajności][metrics].

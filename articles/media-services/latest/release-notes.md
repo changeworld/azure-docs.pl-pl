@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: a16360fe74efe7394c061118bc4e6fa34e484858
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: bf80f78cc464fe274e83eca2f8afa420c2a8c453
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198546"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229960"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -33,6 +33,15 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 > Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
 
 Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do przenoszenia z usługi Media Services v2 do v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="december-2018"></a>Grudzień 2018 r.
+
+Aktualizacji z wersji ogólnie dostępnej wersji 3 interfejsu API:
+       
+* **PresentationTimeRange** właściwości nie są już wymagane, aby **AssetFilters** i **AccountFilters**. 
+* $Top i $skip zapytań opcje **zadania** i **przekształca** został usunięty i dodano $orderby. Podczas dodawania nowych funkcji szeregowania wykryto, że opcje $top i $skip przypadkowo miał została udostępniona wcześniej nawet, jeśli nie są zaimplementowane.
+* Ponownie włączono rozszerzalności wyliczenia. Ta funkcja została włączona w wersjach preview SDK i przypadkowo została wyłączona w wersji Ogólnodostępnej.
+* Zmieniono dwa wstępnie zdefiniowane zasady przesyłania strumieniowego. **SecureStreaming** jest teraz **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** jest teraz **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>Listopada 2018 r.
 

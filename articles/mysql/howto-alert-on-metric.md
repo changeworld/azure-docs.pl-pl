@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 999b1d03ad8cb0b27de10ff6457c0e6cc9112ee7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/10/2019
+ms.openlocfilehash: 1287df97f10033472c9717309688cf89887a66ed
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548735"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242968"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Konfigurowanie alertów dotyczących metryk usługi Azure Database for MySQL za pomocą witryny Azure portal 
 
@@ -25,48 +25,54 @@ Można skonfigurować alert, aby po jego wyzwoleniu, wykonaj następujące czynn
 * Wywołanie elementu webhook
 
 Można skonfigurować i uzyskać informacje na temat reguł alertów za pomocą:
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [Program PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
-* [Interfejs wiersza polecenia (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Interfejs wiersza polecenia platformy Azure](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Interfejs API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Tworzenie reguły alertu na metryki w witrynie Azure portal
 1. W [witryny Azure portal](https://portal.azure.com/), wybierz bazę danych Azure dla serwera MySQL, którą chcesz monitorować.
 
-2. W obszarze **monitorowanie** części paska bocznego wybierz **reguły alertów** jak pokazano:
+2. W obszarze **monitorowanie** części paska bocznego wybierz **alerty** jak pokazano:
 
-   ![Wybierz reguły alertów](./media/howto-alert-on-metric/1-alert-rules.png)
+   ![Wybierz reguły alertów](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. Wybierz **Dodaj alert dotyczący metryki** (ikony +). 
+3. Wybierz **Dodaj alert dotyczący metryki** (ikony +).
 
-4. **Dodaj regułę** zostanie otwarta strona, jak pokazano poniżej.  Wprowadź wymagane informacje:
+4. **Utwórz regułę** zostanie otwarta strona, jak pokazano poniżej. Wprowadź wymagane informacje:
 
-   ![Dodaj formularz alertu metryki](./media/howto-alert-on-metric/2-add-rule-form.png)
+   ![Dodaj formularz alertu metryki](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-   | Ustawienie | Opis  |
-   |---------|---------|
-   | Name (Nazwa) | Podaj nazwę reguły alertu. Ta wartość jest wysyłana w wiadomości e-mail powiadomień o alertach. |
-   | Opis | Podaj krótki opis reguły alertu. Ta wartość jest wysyłana w wiadomości e-mail powiadomień o alertach. |
-   | Alert dla | Wybierz **metryki** dla tego rodzaju alert. |
-   | Subskrypcja | To pole jest wstępnie wypełnione przy użyciu subskrypcji, który jest hostem usługi Azure Database for MySQL. |
-   | Grupa zasobów | To pole jest wstępnie wypełnione przy użyciu grupy zasobów usługi Azure Database for MySQL. |
-   | Zasób | To pole jest wypełniana wstępnie o nazwie usługi Azure Database for MySQL. |
-   | Metryka | Wybierz metrykę, którą chcesz wystawić alert w przypadku. Na przykład **procent użycia magazynu**. |
-   | Warunek | Wybierz warunek dla metryki, które ma zostać porównane z. Na przykład **większa**. |
-   | Próg | Wartość progowa metryki, na przykład 85 (procent). |
-   | Okres | Okres czasu, przez jaki reguła metryki muszą być spełnione przed wyzwala alert. Na przykład **w ciągu ostatnich 30 minut**. |
+5. W ramach **warunek** zaznacz **Dodaj warunek**.
 
-   Na podstawie przykładu, alert szuka procent użycia magazynu powyżej 85% w okresie 30 minut. Wyzwala alert w przypadku średnią wartość procentową magazynu został powyżej 85% w ciągu 30 minut. Gdy wystąpi to pierwszy wyzwalacz, wyzwala ponownie średnią wartość procentową magazynu po poniżej 85% ponad 30 minut.
+6. Wybierz metrykę, z listy sygnały, aby otrzymywać alerty na. W tym przykładzie wybierz "Magazynu percent".
+   
+   ![Wybierz metrykę](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-5. Wybierz metodę powiadomienia dla reguły alertu. 
+7. Konfigurowanie alert logic, w tym **warunek** (np.) "Większe niż"), **próg** (np.) 85 procent), **Agregacja czasu**, **okres** czasu reguła metryki muszą być spełnione przed wyzwalaczy alertu (np.) "W ciągu ostatnich 30 minut") a **częstotliwość**.
+   
+   Wybierz **gotowe** po zakończeniu.
 
-   Sprawdź **właściciele, współautorzy i czytelnicy poczty E-mail** opcję, jeśli chcesz, aby administratorzy subskrypcji i współadministratorzy w celu przesłania pocztą e-mail, gdy zostanie wyzwolony alert.
+   ![Wybierz metrykę](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-   Dodatkowe wiadomości e-mail, aby otrzymać powiadomienie, gdy zostanie wyzwolony alert, dodać je w **email(s) dodatkowego administratora** pola. Wiele wiadomości e-mail należy rozdzielić średnikami -  *email@contoso.com;email2@contoso.com*
+8. W ramach **grup akcji** zaznacz **Utwórz nowy** Aby utworzyć nową grupę, aby otrzymywać powiadomienia o alercie.
 
+9. Wypełnij formularz "Dodaj grupę akcji" przy użyciu nazwy krótkiej nazwy, subskrypcji i grupie zasobów.
+
+10. Konfigurowanie **poczty E-mail/SMS/wypychania/rejestr** typ akcji.
+    
+   Wybierz "Wiadomości E-mail Azure zasobu Manager rolę" Aby wybrać subskrypcję właściciele, współautorzy i czytelnicy otrzymywać powiadomienia.
+   
    Opcjonalnie możesz podać prawidłowy identyfikator URI w **elementu Webhook** jeśli ma ona wywoływana, gdy zostanie wyzwolony alert.
 
-6. Wybierz pozycję **OK**, aby utworzyć alert.
+   Wybierz **OK** po zakończeniu.
+
+   ![Grupa akcji](./media/howto-alert-on-metric/10-action-group-type.png)
+
+11. Określ nazwę reguły alertu, opis i ważności.
+
+   ![Grupa akcji](./media/howto-alert-on-metric/11-name-description-severity.png) 
+
+12. Wybierz **Utwórz regułę alertu** do utworzenia alertu.
 
    W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 

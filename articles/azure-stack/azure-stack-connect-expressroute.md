@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/22/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: e9365008c47c2aac71d3983a16db37b0c5ea62ea
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: unknown
+ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648109"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246232"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 W tym artykule pokazano, jak nawiązać połączenie z siecią wirtualną usługi Azure Stack siecią wirtualną platformy Azure przy użyciu [Microsoft Azure ExpressRoute](/azure/expressroute/) bezpośrednie połączenie.
 
@@ -134,7 +134,7 @@ Użyj poniższych procedur do tworzenia wymaganych zasobów sieciowych w usłudz
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
 1. Wybierz pozycję **Brama sieci wirtualnej** z listy zasobów sieciowych.
 1. W **nazwa** wprowadź **GW1**.
-1. Wybierz **sieć wirtualna**.
+1. Wybierz pozycję **Sieć wirtualna**.
 1. Wybierz **Tenant1VNet1** z listy rozwijanej.
 1. Wybierz **publiczny adres IP**, następnie **wybierz publiczny adres IP**, a następnie kliknij przycisk **Utwórz nową**.
 1. W **nazwa** wpisz **GW1-PiP**, a następnie kliknij przycisk **OK**.

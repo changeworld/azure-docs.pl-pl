@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 790a8bfed693f03cdadd036cab17eb94dee1c1ed
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: jiahan
+ms.openlocfilehash: 9f53dbd3546fcd3f761338664179b42fce5be200
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119295"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246028"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych MySQL 
 
 *Dotyczy: Zintegrowane systemy usługi Azure Stack.*
 
-Nowe karty dostawcy zasobów programu SQL może być zwolnione po zaktualizowaniu kompilacji usługi Azure Stack. Chociaż istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe. 
+Nowe MySQL, które karty dostawcy zasobów może być zwolnione, podczas tworzenia usługi Azure Stack zostały zaktualizowane. Chociaż istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe. 
 
-> [!IMPORTANT]
-> Należy zainstalować aktualizacji w kolejności, w której ich wydaniu. Nie można pominąć wersji. Można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+Począwszy od wydania wersji 1.1.33.0 dostawcy zasobów MySQL, są aktualizacjami zbiorczymi i nie muszą być zainstalowane w kolejności, w której zostały wydane; tak długo, jak wszystko, poczynając od wersji 1.1.24.0 lub nowszej. Na przykład jeśli używasz wersji 1.1.24.0 dostawcy zasobów bazy danych MySQL, następnie przeprowadzić uaktualnienie do wersji 1.1.33.0 lub później, bez konieczności najpierw zainstaluj wersję 1.1.30.0. Aby zapoznać się z wersji dostawcy dostępnych zasobów i wersję usługi Azure Stack, są one obsługiwane w, można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Aktualizowanie karty dostawcy zasobów MySQL (dotyczy tylko systemów zintegrowanych)
-
-Nowe karty dostawcy zasobów programu SQL może być zwolnione po zaktualizowaniu kompilacji usługi Azure Stack. Chociaż istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe.  
- 
 Aby zaktualizować dostawcy zasobów, możesz użyć **UpdateMySQLProvider.ps1** skryptu. Proces jest podobny do procesu, który został użyty do zainstalowania dostawcy zasobów, zgodnie z opisem w [wdrażanie dostawcy zasobów](#deploy-the-resource-provider) dalszej części tego artykułu. Skrypt jest dostarczonego z pobranymi dostawcy zasobów. 
+
+ > [!IMPORTANT]
+ > Przed uaktualnieniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
+
+## <a name="update-script-processes"></a>Zaktualizuj skrypt procesów
 
 **UpdateMySQLProvider.ps1** skrypt tworzy nową maszynę Wirtualną z najnowszym kodem dostawcy zasobów i migruje ustawień starej maszyny Wirtualnej do nowej maszyny Wirtualnej. Ustawienia są migrowane obejmują bazy danych i informacji o serwerze hostingu i rekordu DNS to konieczne. 
 
@@ -43,7 +43,27 @@ Aby zaktualizować dostawcy zasobów, możesz użyć **UpdateMySQLProvider.ps1**
 
 Skrypt wymaga użycia tych samych argumentów, które są opisane dla skryptu DeployMySqlProvider.ps1. Zapewniają także certyfikatu w tym miejscu.  
 
-Poniżej przedstawiono przykład *UpdateMySQLProvider.ps1* skrypt, który można uruchomić w wierszu polecenia programu PowerShell. Pamiętaj zmienić informacje o koncie i hasła, zgodnie z potrzebami:  
+
+## <a name="update-script-parameters"></a>Zaktualizuj Parametry skryptu 
+Można określić następujące parametry, z poziomu wiersza polecenia, po uruchomieniu **UpdateMySQLProvider.ps1** skrypt programu PowerShell. Jeśli nie istnieje lub dowolnym Walidacja parametru nie powiedzie się, zostanie wyświetlony monit zapewnić wymagane parametry. 
+
+| Nazwa parametru | Opis | Komentarz lub wartość domyślną | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | Poświadczenia dla administratora chmury, niezbędne do uzyskania dostępu do uprzywilejowanych punktu końcowego. | _Wymagane_ | 
+| **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, używane do wdrażania usługi Azure Stack. | _Wymagane_ | 
+| **VMLocalCredential** |Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ | 
+| **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ | 
+| **AzureEnvironment** | Środowiska platformy Azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | Plik PFX certyfikatu należy umieścić w tym katalogu, jak również. | _Opcjonalnie_ (_obowiązkowe_ dla wielowęzłowymi) | 
+| **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ | 
+| **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 | 
+| **RetryDuration** | Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 | 
+| **Dezinstalacja** | Usuń dostawcę zasobów i wszystkie powiązane zasoby (zobacz poniższe informacje o). | Nie | 
+| **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie | 
+| **AcceptLicense** | Pomija monit o zaakceptowanie licencji GPL.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+
+## <a name="update-script-example"></a>Przykładowy skrypt aktualizacji
+Oto przykład użycia *UpdateMySQLProvider.ps1* skrypt, który można uruchomić z konsoli programu PowerShell z podwyższonym poziomem uprawnień. Pamiętaj zmienić informacje o zmiennych i hasła, zgodnie z potrzebami:  
 
 > [!NOTE] 
 > Proces aktualizacji dotyczy tylko systemów zintegrowanych. 
@@ -92,26 +112,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 -DefaultSSLCertificatePassword $PfxPass ` 
 -DependencyFilesLocalPath $tempDir\cert ` 
 -AcceptLicense 
-``` 
- 
-### <a name="updatemysqlproviderps1-parameters"></a>Parametry UpdateMySQLProvider.ps1 
-Te parametry można określić w wierszu polecenia. Jeśli nie istnieje lub dowolnym Walidacja parametru nie powiedzie się, wyświetlany jest monit o zapewnić wymagane parametry. 
-
-| Nazwa parametru | Opis | Komentarz lub wartość domyślną | 
-| --- | --- | --- | 
-| **CloudAdminCredential** | Poświadczenia dla administratora chmury, niezbędne do uzyskania dostępu do uprzywilejowanych punktu końcowego. | _Wymagane_ | 
-| **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, używane do wdrażania usługi Azure Stack. | _Wymagane_ | 
-| **VMLocalCredential** |Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ | 
-| **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ | 
-| **AzureEnvironment** | Środowiska platformy Azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Plik PFX certyfikatu należy umieścić w tym katalogu, jak również. | _Opcjonalnie_ (_obowiązkowe_ dla wielowęzłowymi) | 
-| **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ | 
-| **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 | 
-| **RetryDuration** | Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 | 
-| **Dezinstalacja** | Usuń dostawcę zasobów i wszystkie powiązane zasoby (zobacz poniższe informacje o). | Nie | 
-| **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie | 
-| **AcceptLicense** | Pomija monit o zaakceptowanie licencji GPL.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
- 
+```  
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Obsługa dostawcy zasobów bazy danych MySQL](azure-stack-mysql-resource-provider-maintain.md)

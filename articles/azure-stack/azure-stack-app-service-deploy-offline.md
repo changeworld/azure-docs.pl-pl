@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: a3703133e5dc5f0525638562fab98f9416bcf26e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: db4c0f2d1197a190b33bd297bb597fd19057d875
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104662"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230343"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
@@ -27,14 +27,15 @@ ms.locfileid: "54104662"
 
 > [!IMPORTANT]
 > Dotyczą aktualizacji 1809 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.4.
->
->
 
 Postępując zgodnie z instrukcjami w tym artykule, możesz zainstalować [dostawcy zasobów usługi App Service](azure-stack-app-service-overview.md) do środowiska usługi Azure Stack, który jest:
 
 - nie jest połączony z Internetem
 - zabezpieczone przez usługi Active Directory Federation Services (AD FS).
 
+ > [!IMPORTANT]
+ > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
+ 
 Aby dodać dostawcę zasobów usługi App Service do wdrożenia usługi Azure Stack w trybie offline, należy wykonać te zadania najwyższego poziomu:
 
 1. Wykonaj [wstępnie wymagane kroki](azure-stack-app-service-before-you-get-started.md) (takich jak zakupienia certyfikatów, które może potrwać kilka dni, aby otrzymać).

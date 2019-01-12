@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: b39cc799218a4c6f865acac8b98f5fb977c83bdc
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: jiahan
+ms.openlocfilehash: 00a7644663b4628d20dbe598def158bc120a7aee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117796"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245467"
 ---
 # <a name="update-the-sql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych SQL
 
 *Dotyczy: Zintegrowane systemy usługi Azure Stack.*
 
-Nowego dostawcę zasobów programu SQL może być zwalniany, gdy usługi Azure Stack został zaktualizowany do nowej kompilacji. Mimo że istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe.
+Nowego dostawcę zasobów programu SQL może być zwalniany, gdy usługi Azure Stack został zaktualizowany do nowej kompilacji. Mimo że istniejącego dostawcy zasobów będzie nadal działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe. 
 
-> [!IMPORTANT]
-> Należy zainstalować aktualizacji w kolejności, w której ich wydaniu. Nie można pominąć wersji. Można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
-
-## <a name="overview"></a>Przegląd
+Począwszy od wydania wersji 1.1.33.0 dostawcy zasobów SQL są aktualizacjami zbiorczymi i nie muszą być zainstalowane w kolejności, w której zostały wydane; tak długo, jak wszystko, poczynając od wersji 1.1.24.0 lub nowszej. Na przykład jeśli używasz wersji 1.1.24.0 dostawcy zasobów bazy danych SQL, następnie przeprowadzić uaktualnienie do wersji 1.1.33.0 lub później, bez konieczności najpierw zainstaluj wersję 1.1.30.0. Aby zapoznać się z wersji dostawcy dostępnych zasobów i wersję usługi Azure Stack, są one obsługiwane w, można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 Aby zaktualizować dostawcy zasobów, użyj *UpdateSQLProvider.ps1* skryptu. Ten skrypt jest dołączona do pakietu instalacyjnego nowego dostawcy zasobu języka SQL. Proces aktualizacji jest podobny do procesu umożliwiającego [wdrażanie dostawcy zasobów](./azure-stack-sql-resource-provider-deploy.md). Skrypt aktualizacji zawiera te same argumenty co skrypt DeploySqlProvider.ps1 i musisz podać informacje o certyfikacie.
 
-### <a name="update-script-processes"></a>Zaktualizuj skrypt procesów
+ > [!IMPORTANT]
+ > Przed uaktualnieniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
+
+## <a name="update-script-processes"></a>Zaktualizuj skrypt procesów
 
 *UpdateSQLProvider.ps1* skrypt umożliwia utworzenie nowej maszyny wirtualnej (VM) z najnowszym kodem dostawcy zasobów.
 
@@ -47,11 +47,26 @@ Po *UpdateSQLProvider.ps1* skrypt umożliwia utworzenie nowej maszyny Wirtualnej
 * informacje o serwerze hostingu
 * wymagane rekordu DNS
 
-### <a name="update-script-powershell-example"></a>Zaktualizuj skrypt przykładowy programu PowerShell
+## <a name="update-script-parameters"></a>Zaktualizuj Parametry skryptu
 
-Można edytować i uruchom następujący skrypt z podwyższonym poziomem uprawnień ISE programu PowerShell. 
+Można określić następujące parametry, z poziomu wiersza polecenia, po uruchomieniu **UpdateSQLProvider.ps1** skrypt programu PowerShell. Jeśli nie istnieje lub dowolnym Walidacja parametru nie powiedzie się, zostanie wyświetlony monit zapewnić wymagane parametry.
 
-Pamiętaj, aby zmienić informacje o koncie i hasła, zgodnie z potrzebami w danym środowisku.
+| Nazwa parametru | Opis | Komentarz lub wartość domyślną |
+| --- | --- | --- |
+| **CloudAdminCredential** | Poświadczenia dla administratora chmury, niezbędne do uzyskania dostępu do uprzywilejowanych punktu końcowego. | _Wymagane_ |
+| **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack. | _Wymagane_ |
+| **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ |
+| **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
+| **AzureEnvironment** | Środowiska platformy Azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | Możesz również umieścić plik PFX certyfikatu w tym katalogu. | _Opcjonalnie na potrzeby jednego węzła, lecz obowiązkowa w przypadku wielu węzłów_ |
+| **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
+| **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |
+| **RetryDuration** |Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 |
+| **Dezinstalacja** | Usuwa dostawcę zasobów i wszystkie powiązane zasoby. | Nie |
+| **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie |
+
+## <a name="update-script-powershell-example"></a>Zaktualizuj skrypt przykładowy programu PowerShell
+Oto przykład użycia *UpdateSQLProvider.ps1* skrypt, który można uruchomić z konsoli programu PowerShell z podwyższonym poziomem uprawnień. Pamiętaj zmienić informacje o zmiennych i hasła, zgodnie z potrzebami:  
 
 > [!NOTE]
 > Ten proces aktualizacji dotyczy tylko systemów zintegrowanych w usłudze Azure Stack.
@@ -101,24 +116,6 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -DependencyFilesLocalPath $tempDir\cert `
 
  ```
-
-## <a name="updatesqlproviderps1-parameters"></a>Parametry UpdateSQLProvider.ps1
-
-Po uruchomieniu skryptu można określić następujące parametry, z poziomu wiersza polecenia. Jeśli nie istnieje lub dowolnym Walidacja parametru nie powiedzie się, zostanie wyświetlony monit zapewnić wymagane parametry.
-
-| Nazwa parametru | Opis | Komentarz lub wartość domyślną |
-| --- | --- | --- |
-| **CloudAdminCredential** | Poświadczenia dla administratora chmury, niezbędne do uzyskania dostępu do uprzywilejowanych punktu końcowego. | _Wymagane_ |
-| **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack. | _Wymagane_ |
-| **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów bazy danych SQL maszyny Wirtualnej. | _Wymagane_ |
-| **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
-| **AzureEnvironment** | Środowiska platformy Azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Możesz również umieścić plik PFX certyfikatu w tym katalogu. | _Opcjonalnie na potrzeby jednego węzła, lecz obowiązkowa w przypadku wielu węzłów_ |
-| **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
-| **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |
-| **RetryDuration** |Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 |
-| **Dezinstalacja** | Usuwa dostawcę zasobów i wszystkie powiązane zasoby. | Nie |
-| **DebugMode** | Zapobiega automatycznego czyszczenia po awarii. | Nie |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

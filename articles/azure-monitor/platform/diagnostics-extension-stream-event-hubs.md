@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ddef3ba2f1fa14445b0a06670d8f18abe76911ab
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103370"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230360"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
 Narzędzie diagnostyczne systemu Azure oferuje elastyczne sposoby zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do usługi Azure Storage. Począwszy od marca 2016 r. (zestaw SDK 2.9) przedział czasu możesz wysyłanie danych diagnostycznych niestandardowymi źródłami danych i transferu danych ścieżkę aktywną w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -35,7 +35,7 @@ W tym artykule przedstawiono sposób konfigurowania usługi Azure Diagnostics pr
 * Jak rozwiązywać problemy z połączeniem  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Dane receieving centrów zdarzeń z usługi Azure Diagnostics jest obsługiwana w usługi w chmurze, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i usługi Service Fabric, począwszy od Azure SDK 2.9 i odpowiednie narzędzia systemu Azure dla programu Visual Studio.
+Usługa Event Hubs odbierania danych z usługi Azure Diagnostics jest obsługiwana w usługi w chmurze, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i usługi Service Fabric, począwszy od Azure SDK 2.9 i odpowiednie narzędzia systemu Azure dla programu Visual Studio.
 
 * Rozszerzenie diagnostyki platformy Azure w wersji 1.6 ([zestawu Azure SDK dla platformy .NET 2.9 lub nowszej](https://azure.microsoft.com/downloads/) jest przeznaczony dla to domyślnie)
 * [Visual Studio 2013 lub nowszy](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)

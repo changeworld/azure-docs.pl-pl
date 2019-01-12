@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: anajod
+ms.openlocfilehash: 88c72994ec0c6cfc6222ccb31cabae7e354412eb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969536"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245535"
 ---
-# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
+# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Dowiedz się, jak korzystać zarówno lokalnie, jak i środowisk chmury publicznej do zmierzenia się z wielu funkcji przedsiębiorstwa. Usługa Azure Stack oferuje szybkie, bezpieczne i elastyczne rozwiązanie w zakresie zbierania, przetwarzania, przechowywania i rozpowszechniania danych lokalnych i zdalnych, szczególnie w przypadku, gdy bezpieczeństwa, poufności, zasady firmowe i wymogów prawnych mogą się różnić między lokalizacjami i użytkowników.
 
@@ -81,25 +81,25 @@ Kontener konta i obiektów blob magazynu będzie przechowywać wszystkie orygina
 
 3.  Dla konta, skorzystaj z poniższych informacji:
 
-    a.  Nazwa: **wybór**
+    a.  Nazwa: **Wartość wybrana przez użytkownika**
 
-    b.  Model wdrażania: **usługi Resource Manager**
+    b.  Model wdrażania: **Resource Manager**
 
-    c.  Rodzaj konta: **magazynu (ogólnego przeznaczenia w wersji 1)**
+    c.  Typ konta: **Magazyn (ogólnego przeznaczenia w wersji 1)**
 
     d.  Lokalizacja: **Zachodnie stany USA**
 
-    e.  Replikacja: **magazyn lokalnie nadmiarowy (LRS)**
+    e.  Replikacja: **Magazyn lokalnie nadmiarowy (LRS)**
 
-    f.  Wydajność: **standardowe**
+    f.  Wydajność: **Standardowa**
 
-    g.  Wymagany bezpieczny transfer: **wyłączone**
+    g.  Wymagany bezpieczny transfer: **Disabled (Wyłączone)**
 
-    h.  Subskrypcja: Wybierz jeden
+    h.  Subskrypcja: Wybierz jedno
 
     i.  Grupa zasobów: Określ nową grupę zasobów lub wybierz istniejącą grupę zasobów
 
-    j.  Konfigurowanie sieci wirtualnych: **wyłączone**
+    j.  Konfigurowanie sieci wirtualnych: **Disabled (Wyłączone)**
 
 4.  Wybierz **Utwórz, aby utworzyć konto magazynu**.
 
@@ -113,9 +113,9 @@ Kontener konta i obiektów blob magazynu będzie przechowywać wszystkie orygina
 
     ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image2.png)
 
-8.  Nazwa: **wybór**
+8.  Nazwa: **Wybór**
 
-9.  Poziom dostępu publicznego: **kontenera** (anonimowy dostęp do odczytu dla kontenerów i obiektów blob.)
+9.  Poziom dostępu publicznego: **Kontener** (anonimowy dostęp do odczytu dla kontenerów i obiektów blob.)
 
 10.  Kliknij przycisk **OK**.
 
@@ -168,7 +168,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
     ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image4.png)
 
-3.  Wybierz **C\#**  jako język i nazwa funkcji: `upload-to-azure` Ustaw harmonogram `0 0 * * * *`, ponieważ w CRON jest raz godzinę.
+3.  Wybierz **C\#**  jako język i nazwa funkcji: `upload-to-azure`  Ustaw harmonogram `0 0 * * * *`, ponieważ w CRON jest raz godzinę.
 
     ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image5.png)
 

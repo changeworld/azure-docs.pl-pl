@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fda0f600fa7cb130511f2bd8b53543acfbcc7759
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 87096e1507c080f68652ea27b368364d9ac7952a
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054303"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232502"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 
@@ -27,7 +27,19 @@ W tym artykule dowiesz się, trwa ładowanie danych przy użyciu różnych metod
 * Konwersja typu użycia wnioskowania podczas ładowania pliku
 * Funkcja obsługi połączeń MS SQL Server i usługi Azure Data Lake Storage
 
-## <a name="load-text-line-data"></a>Ładowanie danych wiersza tekstu 
+## <a name="load-data-automatically"></a>Automatyczne ładowanie danych
+
+Aby załadować dane automatycznie bez określenia typu pliku, należy użyć `auto_read_file()` funkcji. Typ pliku i argumenty wymagane do jego odczytu są automatycznie wywnioskować.
+
+```python
+import azureml.dataprep as dprep
+
+dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+```
+
+Funkcja ta jest przydatna, gdy typ pliku nie jest jawnie znany. Przykład użycia jest katalogu, który zawiera setek plików o różnych typach można przekonwertować na obiekty przepływu danych. Iteracją za pośrednictwem każdej ścieżki pliku i wywoływania `auto_read_file()` pozwala na łatwe przetwarzanie plików w katalogu, do listy obiektów przepływu danych.
+
+## <a name="load-text-line-data"></a>Ładowanie danych wiersza tekstu
 
 Aby odczytać dane zwykłego tekstu do przepływu danych, należy użyć `read_lines()` bez określania parametrów opcjonalnych.
 
@@ -188,7 +200,7 @@ dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 Zestaw SDK może również ładowanie danych ze źródła SQL. Aktualnie obsługiwana jest tylko program Microsoft SQL Server. Do odczytywania danych z programu SQL server, należy utworzyć `MSSQLDataSource` obiekt, który zawiera parametry połączenia. Parametr hasła `MSSQLDataSource` akceptuje `Secret` obiektu. Można utworzyć wpisu tajnego obiektu na dwa sposoby:
 
-* Zarejestruj wpisu tajnego i jego wartość przy użyciu aparatu wykonywania. 
+* Zarejestruj wpisu tajnego i jego wartość przy użyciu aparatu wykonywania.
 * Tworzenie wpisu tajnego z tylko `id` (Jeśli wartość wpisu tajnego jest już zarejestrowany w środowisku wykonawczym) przy użyciu `dprep.create_secret("[SECRET-ID]")`.
 
 ```python
@@ -232,7 +244,7 @@ az account show --query tenantId
 dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Jeśli Twoje konto użytkownika jest członkiem więcej niż jednej dzierżawy platformy Azure, należy określić dzierżawy w formie nazwy hosta URL usługi AAD.
 
 ### <a name="create-a-service-principal-with-the-azure-cli"></a>Tworzenie jednostki usługi przy użyciu wiersza polecenia platformy Azure
@@ -256,7 +268,7 @@ Aby skonfigurować listy ACL do systemu plików usługi Azure Data Lake Storage,
 az ad sp show --id "8dd38f34-1fcb-4ff9-accd-7cd60b757174" --query objectId
 ```
 
-Aby skonfigurować `Read` i `Execute` dostępu systemu plików usługi Azure Data Lake Storage, można skonfigurować listy ACL dla plików i folderów osobno. Jest to z faktu, że odpowiedni model listy ACL systemu plików HDFS nie obsługują dziedziczenia. 
+Aby skonfigurować `Read` i `Execute` dostępu systemu plików usługi Azure Data Lake Storage, można skonfigurować listy ACL dla plików i folderów osobno. Jest to z faktu, że odpowiedni model listy ACL systemu plików HDFS nie obsługują dziedziczenia.
 
 ```azurecli
 az dls fs access set-entry --account dpreptestfiles --acl-spec "user:e37b9b1f-6a5e-4bee-9def-402b956f4e6f:r-x" --path /

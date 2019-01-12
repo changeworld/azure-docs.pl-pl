@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549636"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232893"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -123,7 +123,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |JobDeleteStartEvent|Zadania Usuń rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, które zostały wymagane do usunięcia.|Nie wymiarów|
 |JobDisableCompleteEvent|Zdarzenia pełne wyłączenie zadań|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie wyłączone.|Nie wymiarów|
 |JobDisableStartEvent|Zadanie Wyłącz rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, wymagające być wyłączona.|Nie wymiarów|
-|JobStartEvent|Zadanie rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie uruchomione.|Nie wymiarów|
+|JobStartEvent|Zadanie rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, które zostało uruchomione pomyślnie.|Nie wymiarów|
 |JobTerminateCompleteEvent|Zadanie zakończenia zdarzenia ukończone|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie zakończone.|Nie wymiarów|
 |JobTerminateStartEvent|Zadanie zakończenia zdarzenia rozpoczęcia|Licznik|Łącznie|Całkowita liczba zadań, wymagające ma zostać zakończony.|Nie wymiarów|
 
@@ -816,7 +816,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ClusterDataCapacityFactor|Wykorzystanie pamięci podręcznej|Procent|Średnia|Poziom użycia w zakresie klastra|Nie wymiarów|
 |QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Zapytania czas w sekundach|QueryStatus|
 |IngestionsLoadFactor|Wykorzystanie pozyskiwania|Procent|Średnia|Współczynnik miejsc pozyskiwania używanych w klastrze|Nie wymiarów|
-|IsEngineAnsweringQuery|Podtrzymanie|Licznik|Średnia|Sprawdzanie poprawnością wskazuje respondes klastra do zapytań|Nie wymiarów|
+|IsEngineAnsweringQuery|Podtrzymanie|Licznik|Średnia|Poprawnością wyboru wskazuje, że klastra odpowiada na kwerendy|Nie wymiarów|
 |IngestCommandOriginalSizeInMb|Pozyskiwanie woluminu (w MB)|Licznik|Łącznie|Łączna ilość pozyskiwanych danych do klastra (w MB)|Nie wymiarów|
 |EventAgeSeconds|Opóźnienia w pozyskiwaniu danych (w sekundach)|Sekundy|Średnia|Czas wprowadzania od źródła (np. komunikat jest w Centrum zdarzeń) do klastra w ciągu kilku sekund|Nie wymiarów|
 |EventReceivedFromEventHub|Zdarzenia przetwarzane (dla usługi Event Hubs)|Licznik|Łącznie|Liczba zdarzeń przetwarzany przez klaster, gdy wprowadzane z Centrum zdarzeń|Nie wymiarów|

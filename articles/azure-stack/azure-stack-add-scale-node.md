@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983001"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232876"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Dodaj węzły jednostki rozbudowywać w usłudze Azure Stack
 
@@ -105,6 +105,7 @@ Stan dla jednostki skalowania i węzły jednostki skalowania można pobrać przy
 
 ### <a name="status-for-the-add-node-operation"></a>Stan operacji dodawania węzła 
 **Dla jednostki skalowania:**
+
 |Stan               |Opis  |
 |---------------------|---------|
 |Działanie              |Wszystkie węzły są aktywnie uczestniczy w jednostce skalowania.|
@@ -115,6 +116,7 @@ Stan dla jednostki skalowania i węzły jednostki skalowania można pobrać przy
 
 
 **Dla węzła jednostki skalowania:**
+
 |Stan                |Opis  |
 |----------------------|---------|
 |Działanie               |Węzeł jest aktywnie uczestniczy w jednostce skalowania.|
@@ -128,17 +130,17 @@ Stan dla jednostki skalowania i węzły jednostki skalowania można pobrać przy
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Poniżej przedstawiono typowych problemów występujących podczas dodawania węzła. 
 
-**Scenariusz 1:** operacji węzła jednostki skalowania Dodaj zakończy się niepowodzeniem, ale jeden lub więcej węzłów są wyświetlane ze stanem zatrzymania.  
-- Korygowanie: Napraw jeden lub więcej węzłów za pomocą operacji naprawy. Tylko operacji naprawy pojedynczego można uruchomić w tym samym czasie.
+**Scenariusz 1:**  Operacja węzła jednostki skalowania Dodaj zakończy się niepowodzeniem, ale jeden lub więcej węzłów są wyświetlane ze stanem zatrzymania.  
+- Środki zaradcze: Napraw jeden lub więcej węzłów za pomocą operacji naprawy. Tylko operacji naprawy pojedynczego można uruchomić w tym samym czasie.
 
-**Scenariusz 2:** co najmniej jeden węzeł jednostki skalowania zostały dodane, ale magazynu nie powiodło się. W tym scenariuszu obiekt węzła jednostki skalowania zgłasza stan uruchomione, ale zadanie konfigurowania magazynu nie jest uruchomiona.  
-- Korygowania: Używanie uprzywilejowanych punktu końcowego, aby sprawdzić kondycję magazynu, uruchamiając następujące polecenie cmdlet programu PowerShell:
+**Scenariusz 2:** Co najmniej jeden węzeł jednostki skalowania zostały dodane, ale magazynu nie powiodło się. W tym scenariuszu obiekt węzła jednostki skalowania zgłasza stan uruchomione, ale zadanie konfigurowania magazynu nie jest uruchomiona.  
+- Środki zaradcze: Użycie uprzywilejowanych punktu końcowego, aby sprawdzić kondycję magazynu, uruchamiając następujące polecenie cmdlet programu PowerShell:
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
 **Scenariusz 3:** Odebrano alert, który oznacza, że zadanie skalowalnego w poziomie magazynu nie powiodło się.  
-- Korygowanie: W tym przypadku zadanie konfiguracji magazynu nie powiodło się. Ten problem, należy się z pomocą techniczną.
+- Środki zaradcze: W tym przypadku zadanie konfiguracji magazynu nie powiodło się. Ten problem, należy się z pomocą techniczną.
 
 
 ## <a name="next-steps"></a>Kolejne kroki 

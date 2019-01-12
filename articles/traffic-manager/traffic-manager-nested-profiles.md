@@ -1,9 +1,11 @@
 ---
-title: Zagnieżdżone profile usługi Traffic Manager | Dokumentacja firmy Microsoft
+title: Zagnieżdżone profile usługi Traffic Manager na platformie Azure
+titlesuffix: Azure Traffic Manager
 description: W tym artykule opisano funkcję "Zagnieżdżone profile" z usługi Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648602"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228830"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Zagnieżdżone profile usługi Traffic Manager
 
@@ -28,7 +30,7 @@ Poniższe przykłady ilustrują sposób korzystania zagnieżdżone profile usłu
 
 ## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Przykład 1: Łączenie "Wydajność" i "Ważona" routing ruchu
 
-Załóżmy, że wdrażania aplikacji w następujących regionach: zachodnie stany USA, Europa Zachodnia i Azja Wschodnia. Metody routingu ruchu "Wydajność" usługi Traffic Manager umożliwia kierowanie ruchu do region najbliżej użytkownika.
+Załóżmy, że wdrożono aplikację w następujących regionach platformy Azure: Zachodnie stany USA, Europa Zachodnia i Azja Wschodnia. Metody routingu ruchu "Wydajność" usługi Traffic Manager umożliwia kierowanie ruchu do region najbliżej użytkownika.
 
 ![Profil usługi Traffic Manager w jednym][4]
 
@@ -61,7 +63,7 @@ Na poniższym rysunku przedstawiono tę konfigurację:
 > [!NOTE]
 > Metody routingu ruchu "Priority" rozsyła cały ruch do pojedynczego punktu końcowego. Związku z tym nieco cel w jest ustawienie MinChildEndpoints inne niż "1" dla profilu podrzędnych.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Przykład 3: Uszeregowane według priorytetów trybu failover regionów w routingu ruchu "Wydajność"
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Przykład 3: Regiony priorytetów trybu failover w routingu ruchu "Wydajność"
 
 Domyślne zachowanie dla metody routingu ruchu "Wydajność" jest w przypadku punktów końcowych w różnych lokalizacjach geograficznych, które użytkownicy końcowi są kierowane do punktu końcowego "najbliższy" pod kątem najniższych opóźnieniem sieci.
 
@@ -83,7 +85,7 @@ Zamiast opcji dodawania wielu punktów końcowych w regionie Europa Zachodnia, t
 
 ![Ruch "Wydajność" routing za pomocą dystrybucji niestandardowe ruchu w regionie][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Przykład 5: Ustawienia monitorowania na punkt końcowy
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Przykład 5: Ustawienia monitorowania dla punktu końcowego
 
 Załóżmy, że używasz usługi Traffic Manager można migrować bezproblemowym ruch ze starszej wersji lokalnej witryny sieci web do nowej wersji opartej na chmurze hostowanych na platformie Azure. Dla starszej wersji witryny chcesz użyć na stronie głównej identyfikatora URI do monitorowania kondycji lokacji. Ale z nową wersją oparte na chmurze, wdrażają niestandardową stronę monitorowania (ścieżka "/ monitor.aspx") zawierającej dodatkowe kontrole.
 

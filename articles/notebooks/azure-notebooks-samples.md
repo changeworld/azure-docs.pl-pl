@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971720"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243682"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Odnajdywanie i korzystanie z notesów próbki
 
@@ -33,7 +33,7 @@ Po zidentyfikowaniu Notes, którą chcesz, aby zapoznać się z poniżej przedst
 
 - [Azure notesów początkowy zestaw](https://notebooks.azure.com/#sample-redirect) zawiera wprowadzenie do języka Python, R, a F#, wraz z notesów ukazujące dostęp do danych, usług Azure Machine Learning i kilka ćwiczenia do nauki o danych.
 - [Wprowadzenie do notesów programu Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Wprowadzenie do nauki o danych](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) przez Jake Vanderplas.
+- [Wprowadzenie do nauki o danych](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) przez Jake Vanderplas.
 - [Galeria interesujące notesów](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projekt w witrynie GitHub)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Fizyka instrukcji z [dział fizyki na angielskie College London](https://notebooks.azure.com/cvanbreu/libraries)

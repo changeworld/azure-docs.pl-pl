@@ -14,48 +14,49 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972175"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231941"
 ---
 # <a name="offer-settings-tab"></a>Karta Ustawienia oferty
 
 Na **nowa oferta** ekranu, pierwszym krokiem jest utworzenie tożsamości oferty. Tożsamość oferty składa się z trzech części: **Identyfikator oferty**, **Identyfikatora wydawcy**, i **nazwa**. Każdy z tych elementów zostało opisane w poniższych sekcjach.
 
-![Tworzenie nowego doradcze usługi oferty — karta Ustawienia oferty](media/consultingoffer-settings-tab.png)
+![Utwórz nową ofertę usługi doradcze — oferuje karta Ustawienia](media/consultingoffer-settings-tab.png)
 
-*Identyfikator oferty*
+### <a name="offer-id"></a>Identyfikator oferty
 
-Ten identyfikator jest unikatową nazwą, utworzonej po przesłaniu najpierw oferty. Musi ona zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. **Identyfikatora oferty Offer ID** będą widoczne w adresie URL i wpływ na wyniki aparatu wyszukiwania. Na przykład *yourcompanyname_exampleservice*
+Ten identyfikator jest unikatową nazwą, utworzonej po przesłaniu najpierw oferty. Musi ona zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. **Identyfikatora oferty Offer ID** jest widoczna w adresie URL i wpływa na wynikach wyszukiwarki. Na przykład *yourcompanyname_exampleservice*.
 
-Jak pokazano w przykładzie **identyfikator oferty** pobiera dołączany do Identyfikatora wydawcy do utworzenia unikatowego identyfikatora. To jest udostępniany jako łącze stałe, mogą być zapisane, która jest indeksowana przez aparaty wyszukiwania.
+Jak pokazano w przykładzie **identyfikatora oferty Offer ID** jest dołączany do Identyfikatora wydawcy do utworzenia unikatowego identyfikatora. Ten unikatowy identyfikator jest udostępniany jako łącze stałe, mogą być zapisane, która jest indeksowana przez aparaty wyszukiwania.
 
-*Po oferta jest przeznaczona na żywo, nie można zaktualizować identyfikatora*
+>[!Note]
+>Po oferta jest przeznaczona na żywo, nie można zaktualizować jego identyfikator.
 
-*Identyfikator wydawcy*
+### <a name="publisher-id"></a>Identyfikator wydawcy
 
-Ten identyfikator jest związane z Twoim kontem. Jeśli zalogowano się za pomocą konta organizacyjnego usługi **wydawcy** identyfikator pojawią się w menu rozwijanym.
+Ten identyfikator jest związane z Twoim kontem. Po zalogowaniu się przy użyciu konta organizacyjnego usługi **Identyfikatora wydawcy** pojawia się w menu rozwijanym.
 
-*Nazwa*
+### <a name="name"></a>Name (Nazwa)
 
-Ten ciąg jest o tym, co będzie wyświetlana jako nazwa oferty w usłudze AppSource lub witrynie Azure Marketplace. *Nazwa* pola jest ograniczona do 50 znaków.  Recenzent może być konieczne edytowanie tytułu umożliwiający dołączenie Nazwa oferty o czasie trwania i typ oferty.
+Ten ciąg wyświetla się jako nazwa oferty w usłudze AppSource lub w witrynie Azure Marketplace. **Nazwa** pole jest ograniczona do 50 znaków. Recenzent może być konieczne edytowanie tytułu Dołącz czas trwania i oferować typu na nazwę swojej oferty.
 
-Poniższy przykład przez Edgewater Fullscope pokazuje, jak nazwa oferty jest składany. Nazwa oferty wygląda następująco:
+Poniższy przykład pokazuje, jak nazwa oferty jest składany. 
 
 ![Tworzenie nowej oferty usługi doradcze](media/cppsampleconsultingoffer.png)
 
 Nazwa oferty składa się z czterech części:
 
--   **Czas trwania:** — to zdefiniowano w **szczegóły Storefront** karta edytora. Czas trwania może być wyrażona w godzinach, dniach lub tygodniach.
--   **Typ usługi:** — to zdefiniowano w **szczegóły Storefront** karta edytora. Typy usług `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, i `Workshop`.
--   **Preposition:** — wstawiony przez recenzenta
--   **Nazwa:** — to zdefiniowano w **oferują ustawienia** strony.
+-   **Czas trwania:** Zdefiniowane na **szczegóły Storefront** karta edytora. Czas trwania może być wyrażona w godzinach, dniach lub tygodniach.
+-   **Typ usługi:** Zdefiniowane na **szczegóły Storefront** karta edytora. Typy usług `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, i `Workshop`.
+-   **Preposition:** Wstawione przez recenzenta.
+-   **Nazwa:** Zdefiniowane na **oferują ustawienia** strony.
 
 >[!Note]
->Pole nazwy jest ograniczona do 50 znaków. Nazwa, przesyłane może być konieczne można edytować przez recenzenta, aby zezwolić na czas trwania i oferują typ mają być dołączane do nazwy.
+>**Nazwa** pole jest ograniczona do 50 znaków. Recenzent może być konieczne edytowanie tytułu Dołącz czas trwania i oferować typu na nazwę swojej oferty.
 
 Poniższa lista zawiera kilka nazw dobrze nazwane oferty:
 
@@ -71,8 +72,8 @@ Poniższa lista zawiera kilka nazw dobrze nazwane oferty:
 -   Szybki Start CRM: 1-dniowych warsztatów
 -   Dynamics 365 for Sales: 2-dniowych oceny
 
-Po ukończeniu **oferują ustawienia** karty, możesz zapisać swoje zgłoszenie. Nazwa oferty będzie teraz wyświetlany powyżej edytora, a znajdziesz w oferuje wszystkie.
+Po wypełnieniu **oferują ustawienia** karta, Zapisz swoje zgłoszenie. Nazwa oferty pojawi się powyżej edytora i znaleźć go w **oferuje wszystkie**.
 
-**Następne kroki**
+## <a name="next-steps"></a>Kolejne kroki
 
-Teraz możesz wprowadzić [Storefront szczegóły i określić, czy publikować w portalu Azure Marketplace lub w usłudze AppSource](./cpp-consulting-service-storefront-details.md).
+Teraz możesz wprowadzić [storefront szczegóły i określić, czy mają być publikowane w witrynie Azure Marketplace lub w usłudze AppSource](./cpp-consulting-service-storefront-details.md).

@@ -14,27 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a4f9147008ceb0de32e0f5879a194b45bd4c6421
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106828"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245399"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 ## <a name="about-this-list"></a>Ta lista — informacje
 Podczas importowania interfejsu API, może spotkać się z pewnymi ograniczeniami lub identyfikowaniu problemów, które muszą zostać usunięty, zanim będzie można pomyślnie zaimportować. Ten artykuł dokumentów, te, uporządkowane według format importu interfejsu API.
 
 ## <a name="open-api"> </a>Plik OpenAPI/Swagger
-Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, sprawdzeniu poprawności jej — przy użyciu narzędzia Projektant w witrynie Azure portal (Edytor specyfikacja interfejsu OpenAPI projekt - Front End —,), lub ze stroną trzecią narzędzia takie jak <a href="https://editor.swagger.io">edytora programu Swagger</a>.
 
-* Jest obsługiwany tylko format JSON dla interfejsu OpenAPI.
-* Wymagane parametry zarówno ścieżka i kwerenda muszą mieć unikatowe nazwy. (W standardzie OpenAPI nazwę parametru tylko musi być unikatowa w lokalizacji, np. ścieżka, zapytanie, nagłówek.  Jednak w usłudze API Management zezwalamy na operacje, aby być suma rozłączna przez parametry zarówno ścieżka i kwerenda, (które nie obsługuje interfejsu OpenAPI). W związku z tym firma Microsoft wymaga nazwy parametrów, aby była unikatowa w ramach całego szablonu adresu URL.)
-* Schematy przywoływane przy użyciu **$ref** właściwości nie mogą zawierać inne **$ref** właściwości.
+Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, że zweryfikowaniu go wcześniej. Możesz to zrobić przy użyciu narzędzia Projektant w witrynie Azure portal (projekt - Front End — Edytor specyfikacji interfejsu OpenAPI) lub za pomocą narzędzia innej firmy takie jak <a href="https://editor.swagger.io">edytora programu Swagger</a>.
+
+### <a name="open-api-general"> </a>Ogólne
+
+* Wymagane parametry zarówno ścieżka i kwerenda muszą mieć unikatowe nazwy. (W standardzie OpenAPI nazwę parametru tylko musi być unikatowa w lokalizacji, na przykład ścieżka, zapytanie, nagłówek. Jednak w usłudze API Management zezwalamy na operacje, aby być suma rozłączna przez parametry zarówno ścieżka i kwerenda, (które nie obsługuje interfejsu OpenAPI). That's Dlaczego firma Microsoft wymaga nazwy parametrów, aby była unikatowa w ramach całego szablonu adresu URL.)
 * **$ref** wskaźniki nie można utworzyć zewnętrzne pliki odwołań.
 * **x-ms ścieżki** i **serwerach x** są obsługiwane tylko rozszerzenia.
-* Niestandardowe rozszerzenia są ignorowane podczas importowania i są nie zapisano lub zachowywane na potrzeby eksportu.
-* **Rekursja** — definicje, które są zdefiniowane rekursywnie (na przykład odnosić się do siebie) nie są obsługiwane przez usługi APIM.
+* Niestandardowe rozszerzenia są ignorowane podczas importowania i nie są zapisywane lub zachowywane na potrzeby eksportu.
+* **Rekursja** — API Management nie obsługuje rekursywnie definicji (na przykład odwołujące się do siebie).
+* Adres URL pliku źródłowego (jeśli jest dostępny) są stosowane do serwera względnych adresów URL.
+
+### <a name="open-api-v2"> </a>Plik OpenAPI w wersji 2
+
+* Jest obsługiwany tylko format JSON.
+
+### <a name="open-api-v3"> </a>W wersji 3 interfejsu OpenAPI
+
+* Jeśli wiele **serwerów** podano podejmie próbę wybierz pierwszy adres HTTPs URL usługi API Management. Jeśli nie ma żadnych adresów URL HTTPs — pierwszy adres URL protokołu HTTP. Jeśli nie ma żadnych adresów URL HTTP — adres URL serwera jest pusta.
+* **Przykłady** nie jest obsługiwane, ale **przykład** jest.
+* **Multipart/formularza data** nie jest obsługiwane.
 
 > [!IMPORTANT]
 > Zobacz ten [dokument](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/), aby uzyskać ważne informacje i wskazówki związane z importowaniem interfejsu OpenAPI.
@@ -42,10 +54,10 @@ Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, sprawdze
 ## <a name="wsdl"> </a>WSDL
 Pliki WSDL są używane do generowania interfejsy API SOAP przekazywane lub służyć jako zaplecza interfejsu API protokołu SOAP do REST.
 * **Powiązania protokołu SOAP** — obsługiwane są tylko protokołu SOAP powiązania styl "dokument" i "literal" kodowania. Nie jest obsługiwane dla styl "rpc" lub kodowaniem SOAP.
-* **WSDL** — ten atrybut nie jest obsługiwany. Klienci powinno się scalać operacji importu do jednego dokumentu.
+* **WSDL** — ten atrybut nie jest obsługiwane. Klienci powinno się scalać operacji importu do jednego dokumentu.
 * **Komunikaty, w których wiele części** -komunikatów tego typu nie są obsługiwane.
-* **WCF wsHttpBinding** — usługi protokołu SOAP utworzone za pomocą programu Windows Communication Foundation, należy użyć basicHttpBinding — wsHttpBinding nie jest obsługiwana.
-* **MTOM** — usług przy użyciu MTOM <em>może</em> pracy. Oficjalna Obsługa nie jest dostępna w tej chwili.
+* **WCF wsHttpBinding** — usługi protokołu SOAP utworzone za pomocą programu Windows Communication Foundation, należy użyć basicHttpBinding — wsHttpBinding nie jest obsługiwane.
+* **MTOM** — usług przy użyciu MTOM <em>może</em> pracy. Oficjalna Obsługa nie jest oferowana w tej chwili.
 * **Rekursja** — typy, które są zdefiniowane rekursywnie (na przykład, zobacz tablicę samodzielnie) nie są obsługiwane przez usługi APIM.
 * **Wiele przestrzeni nazw** — wiele przestrzeni nazw mogą być używane w schemacie, ale tylko docelowej przestrzeni nazw może służyć do definiowania części wiadomości. Przestrzenie nazw innej niż docelowa, które są używane do definiowania inne elementy wejściowe i wyjściowe nie są zachowywane. Mimo że można zaimportować dokumentu WSDL na eksport wszystkich części wiadomości są docelowy obszar nazw WSDL.
 

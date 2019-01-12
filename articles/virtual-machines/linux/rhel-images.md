@@ -13,15 +13,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2018
 ms.author: borisb
-ms.openlocfilehash: f178ac06b4ebfeef534233c2782423a7358f0c10
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719633"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229578"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Obrazy systemu Red Hat Enterprise Linux na platformie Azure
-W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące nazewnictwa i przechowywania
+W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące nazewnictwa i przechowywania.
+
+Można znaleźć informacji na temat zasad wsparcia firmy Red Hat dla wszystkich wersji systemu RHEL na [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.
 
 ## <a name="images-available-in-the-ui"></a>Obrazów dostępnych w interfejsie użytkownika
 Podczas wyszukiwania "Red Hat" w witrynie Marketplace lub tworzenie zasobu w witrynie Azure portal interfejsu użytkownika, zobaczysz podzbioru dostępnych obrazów systemu RHEL i powiązanych produktów firmy Red Hat. Można zawsze uzyskać pełen zestaw dostępnych obrazów maszyn wirtualnych przy użyciu interfejsu wiersza polecenia/programu PowerShell/interfejsu API usługi Azure.
@@ -108,3 +110,4 @@ Nasze bieżące zasady jest przechowywanie wszystkich poprzednio opublikowanych 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o usłudze Azure Red Hat Update Infrastructure [tutaj](https://aka.ms/rhui-update).
+* Można znaleźć informacji na temat zasad wsparcia firmy Red Hat dla wszystkich wersji systemu RHEL na [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.

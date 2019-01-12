@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: ad38bdf30d04f309bedaf9a7cc8b3d5b1aad6df7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 99491fdc9758c5ec930db5f584f009eb6705f789
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215069"
+ms.locfileid: "54231255"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Rozmiary maszyn wirtualnych obsługiwanych w usłudze Azure Stack
 
@@ -46,89 +46,89 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 |**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16 X 300 |1   |
 
 ### <a name="standard-a"></a>A standardowe 
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |    
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |    
 |----------------|--|------|----|----|----|-------|---------|
-|**Standardowa_A0** |1 |0,768 |20  |500 |500 |1 x 500  |1 / 100  |
-|**Standard_A1** |1 |1,75  |70  |500 |500 |2 x 500  |1 / 500  |
-|**Standard_A2** |2 |3,5   |135 |500 |500 |4 x 500  |1 / 500  |
-|**Standard_A3** |4 |7     |285 |500 |500 |8 x 500  |2 / 1000 |
-|**Standard_A4** |8 |14    |605 |500 |500 |16 x 500 |4 / 2000 |
-|**Standard_A5** |2 |14    |135 |500 |500 |4 x 500  |2 / 500  |
-|**Standard_A6** |4 |28    |285 |500 |500 |8 x 500  |2 / 1000 |
-|**Standard_A7** |8 |56    |605 |500 |500 |16 x 500 |4 / 2000 |
+|**Standardowa_A0** |1 |0,768 |20  |500 |500 |1 x 500  |1 |
+|**Standard_A1** |1 |1,75  |70  |500 |500 |2 x 500  |1 |
+|**Standard_A2** |2 |3,5   |135 |500 |500 |4 x 500  |1 |
+|**Standard_A3** |4 |7     |285 |500 |500 |8 x 500  |2 |
+|**Standard_A4** |8 |14    |605 |500 |500 |16 x 500 |4 |
+|**Standard_A5** |2 |14    |135 |500 |500 |4 x 500  |2 |
+|**Standard_A6** |4 |28    |285 |500 |500 |8 x 500  |2 |
+|**Standard_A7** |8 |56    |605 |500 |500 |16 x 500 |4 |
 
 ### <a name="av2-series"></a>Seria Av2
 *Wymaga usługi Azure Stack w wersji 1804 lub nowszej*
 
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |-----------------|----|----|-----|-----|------|--------------|---------|
-|**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2 / 2 x 500   |2 / 250  |
-|**Maszyna wirtualna Standard_A2_v2**  |2   |4   |20   |500 |2000  |4 / 4 x 500   |2 / 500  |
-|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8 / 8 x 500   |4 / 1000 |
-|**Maszyna wirtualna Standard_A8_v2**  |8   |16  |80   |500 |8000  |16 / 16 x 500 |8 / 2000 |
-|**Maszyna wirtualna Standard_A2m_v2** |2   |16  |20   |500 |2000  |4 / 4 x 500   |2 / 500  |
-|**Maszyna wirtualna Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8 x 500   |4 / 1000 |
-|**Maszyna wirtualna Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16 x 500 |8 / 2000 |
+|**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2 / 2 x 500   |2 |
+|**Maszyna wirtualna Standard_A2_v2**  |2   |4   |20   |500 |2000  |4 / 4 x 500   |2 |
+|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8 / 8 x 500   |4 |
+|**Maszyna wirtualna Standard_A8_v2**  |8   |16  |80   |500 |8000  |16 / 16 x 500 |8 |
+|**Maszyna wirtualna Standard_A2m_v2** |2   |16  |20   |500 |2000  |4 / 4 x 500   |2 |
+|**Maszyna wirtualna Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8 x 500   |4 |
+|**Maszyna wirtualna Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16 x 500 |8 |
 
 ### <a name="d-series"></a>Seria D
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |----------------|----|----|-----|----|------|------------|---------|
-|**Maszyna wirtualna Standard_D1** |1   |3,5 |50   |500 |3000  |4 / 4 x 500   |1 / 500  |
-|**Maszyna wirtualna Standard_D2** |2   |7   |100  |500 |6000  |8 / 8 x 500   |2 / 1000 |
-|**Maszyna wirtualna Standard_D3** |4   |14  |200  |500 |12000 |16 / 16 x 500 |4 / 2000 |
-|**Maszyna wirtualna Standard_D4** |8   |28  |400  |500 |24000 |32 / 32 x 500 |8 / 4000 |
+|**Maszyna wirtualna Standard_D1** |1   |3,5 |50   |500 |3000  |4 / 4 x 500   |1 |
+|**Maszyna wirtualna Standard_D2** |2   |7   |100  |500 |6000  |8 / 8 x 500   |2 |
+|**Maszyna wirtualna Standard_D3** |4   |14  |200  |500 |12000 |16 / 16 x 500 |4 |
+|**Maszyna wirtualna Standard_D4** |8   |28  |400  |500 |24000 |32 / 32 x 500 |8 |
 
 
 ### <a name="ds-series"></a>Seria DS
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |-----------------|----|----|-----|-----|------|-------------|---------|
-|**Standard_DS1** |1   |3,5 |7    |1000 |4000  |4 / 4x2300   |1 / 500  |
-|**Standard_DS2** |2   |7   |14   |1000 |8000  |8 / 8x2300   |2 / 1000 |
-|**Standard_DS3** |4   |14  |28   |1000 |16000 |16 / 16x2300 |4 / 2000 |
-|**Standard_DS4** |8   |28  |56   |1000 |32000 |32 / 32x2300 |8 / 4000 |
+|**Standard_DS1** |1   |3,5 |7    |1000 |4000  |4 / 4x2300   |1 |
+|**Standard_DS2** |2   |7   |14   |1000 |8000  |8 / 8x2300   |2 |
+|**Standard_DS3** |4   |14  |28   |1000 |16000 |16 / 16x2300 |4 |
+|**Standard_DS4** |8   |28  |56   |1000 |32000 |32 / 32x2300 |8 |
 
 ### <a name="dv2-series"></a>Seria Dv2
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |-------------------|----|----|-----|----|------|------------|---------|
-|**Maszyna wirtualna standard_d1_v2 —** |1   |3,5 |50   |500 |3000  |4 / 4 x 500   |1 / 500  |
-|**Maszyna wirtualna Standard_D2_v2** |2   |7   |100  |500 |6000  |8 / 8 x 500   |2 / 1000 |
-|**Maszyna wirtualna Standard_D3_v2** |4   |14  |200  |500 |12000 |16 / 16 x 500 |4 / 2000 |
-|**Maszyna wirtualna Standard_D4_v2** |8   |28  |400  |500 |24000 |32 / 32 x 500 |8 / 4000 |
-|**Maszyna wirtualna Standard_D5_v2** |16  |56  |800  |500 |48000 |64 / 64x500 |8 / 8000 |
+|**Maszyna wirtualna standard_d1_v2 —** |1   |3,5 |50   |500 |3000  |4 / 4 x 500   |1 |
+|**Maszyna wirtualna Standard_D2_v2** |2   |7   |100  |500 |6000  |8 / 8 x 500   |2 |
+|**Maszyna wirtualna Standard_D3_v2** |4   |14  |200  |500 |12000 |16 / 16 x 500 |4 |
+|**Maszyna wirtualna Standard_D4_v2** |8   |28  |400  |500 |24000 |32 / 32 x 500 |8 |
+|**Maszyna wirtualna Standard_D5_v2** |16  |56  |800  |500 |48000 |64 / 64x500 |8 |
 
 ### <a name="dsv2-series"></a>Seria DSv2
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |--------------------|----|----|----|-----|------|-------------|---------|
-|**Standardowa_ds1_v2** |1   |3,5 |7   |1000 |4000  |4 / 4x2300   |1 / 750  |
-|**Standard_DS2_v2** |2   |7   |14  |1000 |8000  |8 / 8x2300   |2 / 1500 |
-|**Standardowa_ds3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 / 3000 |
-|**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 / 6000 |
-|**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 / 10000 |
+|**Standardowa_ds1_v2** |1   |3,5 |7   |1000 |4000  |4 / 4x2300   |1 |
+|**Standard_DS2_v2** |2   |7   |14  |1000 |8000  |8 / 8x2300   |2 |
+|**Standardowa_ds3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 |
+|**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 |
+|**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 |
 
 
 ## <a name="compute-optimized"></a>Optymalizacja pod kątem obliczeń
 ### <a name="f-series"></a>Seria F
 *Wymaga usługi Azure Stack w wersji 1804 lub nowszej*
 
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |-----------------|----|----|-----|----|------|------------|---------|
-|**Maszyna wirtualna Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4 x 500   |2 / 750  |
-|**Maszyna wirtualna Standard_F2**  |2   |4   |32   |500 |6000  |8 / 8 x 500   |2 / 1500 |
-|**Maszyna wirtualna Standard_F4**  |4   |8   |64   |500 |12000 |16 / 16 x 500 |4 / 3000 |
-|**Maszyna wirtualna standard_f8 —**  |8   |16  |128  |500 |24000 |32 / 32 x 500 |8 / 6000 |
-|**Maszyna wirtualna standard_f16 —** |16  |32  |256  |500 |48000 |64 / 64x500 |8 / 6000 - 12000  |
+|**Maszyna wirtualna Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4 x 500   |2 |
+|**Maszyna wirtualna Standard_F2**  |2   |4   |32   |500 |6000  |8 / 8 x 500   |2 |
+|**Maszyna wirtualna Standard_F4**  |4   |8   |64   |500 |12000 |16 / 16 x 500 |4 |
+|**Maszyna wirtualna standard_f8 —**  |8   |16  |128  |500 |24000 |32 / 32 x 500 |8 |
+|**Maszyna wirtualna standard_f16 —** |16  |32  |256  |500 |48000 |64 / 64x500 |8 |
 
 
 ### <a name="fs-series"></a>Seria Fs
 *Wymaga usługi Azure Stack w wersji 1804 lub nowszej*  
 
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |------------------|----|----|----|-----|------|-------------|---------|
-|**Standard_F1s**  |1   |2   |4   |1000 |4000  |4 / 4x2300   |2 / 750  |
-|**Standard_F2s**  |2   |4   |8   |1000 |8000  |8 / 8x2300   |2 / 1500 |
-|**Standard_F4s**  |4   |8   |16  |1000 |16000 |16 / 16x2300 |4 / 3000 |
-|**Standard_F8s**  |8   |16  |32  |1000 |32000 |32 / 32x2300 |8 / 6000 |
-|**Standard_F16s** |16  |32  |64  |1000 |64000 |64 / 64x2300 |8 / 6000 - 12000  |
+|**Standard_F1s**  |1   |2   |4   |1000 |4000  |4 / 4x2300   |2 |
+|**Standard_F2s**  |2   |4   |8   |1000 |8000  |8 / 8x2300   |2 |
+|**Standard_F4s**  |4   |8   |16  |1000 |16000 |16 / 16x2300 |4 |
+|**Standard_F8s**  |8   |16  |32  |1000 |32000 |32 / 32x2300 |8 |
+|**Standard_F16s** |16  |32  |64  |1000 |64000 |64 / 64x2300 |8 |
 
 
 ### <a name="fsv2-series"></a>Seria Fsv2
@@ -149,37 +149,37 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 Pamięć zoptymalizowanych rozmiarów maszyn wirtualnych zapewnia wysoką współczynnika pamięci do procesorów, który jest przeznaczony dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.
 
 ### <a name="mo-d"></a>Seria D
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |------------------|---|----|----|--------|------|------------|---------|
-|**Maszyna wirtualna Standard_D11**  |2  |14  |100 |500     |6000  |8 / 8 x 500   |2 / 1000 |
-|**Maszyna wirtualna Standard_D12**  |4  |28  |200 |500     |12000 |16 / 16 x 500 |4 / 2000 |
-|**Maszyna wirtualna Standard_D13**  |8  |56  |400 |500     |24000 |32 / 32 x 500 |8 / 4000 |
-|**Maszyna wirtualna Standard_D14**  |16 |112 |800 |500     |48000 |64 / 64x500 |8 / 8000 |
+|**Maszyna wirtualna Standard_D11**  |2  |14  |100 |500     |6000  |8 / 8 x 500   |2 |
+|**Maszyna wirtualna Standard_D12**  |4  |28  |200 |500     |12000 |16 / 16 x 500 |4 |
+|**Maszyna wirtualna Standard_D13**  |8  |56  |400 |500     |24000 |32 / 32 x 500 |8 |
+|**Maszyna wirtualna Standard_D14**  |16 |112 |800 |500     |48000 |64 / 64x500 |8 |
 
 ### <a name="mo-ds"></a>Seria DS
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |-------------------|---|----|----|--------|------|-------------|---------|
-|**Standard_DS11**  |2  |14  |28  |1000    |8000  |8 / 8x2300   |2 / 1000 |
-|**Standard_DS12**  |4  |28  |56  |1000    |12000 |16 / 16x2300 |4 / 2000 |
-|**Standard_DS13**  |8  |56  |112 |1000    |32000 |32 / 32x2300 |8 / 4000 |
-|**Standard_DS14**  |16 |112 |224 |1000    |64000 |64 / 64x2300 |8 / 8000 |
+|**Standard_DS11**  |2  |14  |28  |1000    |8000  |8 / 8x2300   |2 |
+|**Standard_DS12**  |4  |28  |56  |1000    |12000 |16 / 16x2300 |4 |
+|**Standard_DS13**  |8  |56  |112 |1000    |32000 |32 / 32x2300 |8 |
+|**Standard_DS14**  |16 |112 |224 |1000    |64000 |64 / 64x2300 |8 |
 
 ### <a name="mo-dv2"></a>Seria Dv2
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |--------------------|----|----|-----|----|-------|-------------|---------|
-|**Maszyna wirtualna Standard_D11_v2** |2   |14  |100  |500 |6000   |8 / 8 x 500    |2 / 1500 |
-|**Maszyna wirtualna Standard_D12_v2** |4   |28  |200  |500 |12000  |16 / 16 x 500  |4 / 3000 |
-|**Maszyna wirtualna Standard_D13_v2** |8   |56  |400  |500 |24000  |32 / 32 x 500  |8 / 6000 |
-|**Maszyna wirtualna Standard_D14_v2** |16  |112 |800  |500 |48000  |64 / 64x500  |8 / 10000 |
+|**Maszyna wirtualna Standard_D11_v2** |2   |14  |100  |500 |6000   |8 / 8 x 500    |2 |
+|**Maszyna wirtualna Standard_D12_v2** |4   |28  |200  |500 |12000  |16 / 16 x 500  |4 |
+|**Maszyna wirtualna Standard_D13_v2** |8   |56  |400  |500 |24000  |32 / 32 x 500  |8 |
+|**Maszyna wirtualna Standard_D14_v2** |16  |112 |800  |500 |48000  |64 / 64x500  |8 |
 
 
 ### <a name="mo-dsv2"></a>Seria DSv2
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
-|**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |8 / 8x2300    |2 / 1500 |
-|**Standard_DS12_v2** |4   |28  |56   |1000 |16000  |16 / 16x2300  |4 / 3000 |
-|**Standardowa_ds13_v2** |8   |56  |112  |1000 |32000  |32 / 32x2300  |8 / 6000 |
-|**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 / 10000 |
+|**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |8 / 8x2300    |2 |
+|**Standard_DS12_v2** |4   |28  |56   |1000 |16000  |16 / 16x2300  |4 |
+|**Standardowa_ds13_v2** |8   |56  |112  |1000 |32000  |32 / 32x2300  |8 |
+|**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

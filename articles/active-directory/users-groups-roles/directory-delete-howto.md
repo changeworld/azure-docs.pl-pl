@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139690"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243886"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Usunąć dzierżawę usługi Azure Active Directory
+
 Po usunięciu dzierżawy również zostaną usunięte wszystkie zasoby, które są zawarte w dzierżawie. Należy przygotować, minimalizując skojarzone z nią zasoby przed usunięciem dzierżawy. Tylko administrator globalny usługi Azure Active Directory (Azure AD) można usunąć dzierżawę usługi Azure AD z poziomu portalu.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>Przygotowanie dzierżawy do usunięcia
@@ -59,17 +60,17 @@ Stan subskrypcji | Dane | Dostęp do danych
 Aktywne (30 dni w wersji próbnej)  | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Office 365 i zasobów 
 Wygasłe (30 dni)   | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Office 365 i zasobów
 Wyłączone (30 dni) | Dostęp do administratora tylko do danych  | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą dostęp do Centrum administracyjnego usługi Office 365, ale nie można przypisać licencje lub zaktualizować użytkowników
-Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie usuwane, jeśli brak innych usług, które są używane) | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą uzyskiwać dostęp do Centrum administracyjnego usługi Office 365, aby kupić i zarządzać innymi subskrypcjami 
+Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie usuwane, jeśli brak innych usług, które są używane) | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą uzyskiwać dostęp do Centrum administracyjnego usługi Office 365, aby kupić i zarządzać innymi subskrypcjami
 
 Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 3 dni, przy użyciu Microsoft Store dla firm Centrum administracyjnego. Ta funkcja będzie wkrótce dostępna do Centrum administracyjnego usługi Office 365.
 
 1. Zaloguj się do [Microsoft Store dla firm Centrum administracyjnego](https://businessstore.microsoft.com/manage/) przy użyciu konta, które jest administratorem globalnym w dzierżawie. Jeśli próbujesz usunąć dzierżawę "Contoso", który ma contoso.onmicrosoft.com domeny początkowej domyślnej, zaloguj się przy użyciu nazwy UPN takich jak admin@contoso.onmicrosoft.com.
 
-2. Przejdź do **Zarządzaj** kartę, a następnie wybierz pozycję **produktów i usług**, następnie wybierz subskrypcję, którą chcesz anulować. Po kliknięciu **anulować**, Odśwież stronę.
+2. Przejdź do **Zarządzaj** kartę, a następnie wybierz pozycję **produktów i usług**, następnie wybierz subskrypcję, którą chcesz anulować i wybierz **Usuń**.
   
   ![Usuń łącze do usuwania subskrypcji](./media/directory-delete-howto/delete-command.png)
   
-3. Wybierz **Usuń** do usunięcia subskrypcji i zaakceptuj warunki i postanowienia. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, można ponownie aktywować subskrypcję w ciągu trzech dni.
+3. Wybierz **Usuń subskrypcję** Zaakceptuj warunki i postanowienia i Usuń subskrypcję. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, może ponownie aktywować subskrypcję w ciągu następnych trzech dni.
   
   ![warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
 

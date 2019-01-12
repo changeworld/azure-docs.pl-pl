@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eb991df64f0454fa6103c9104e5c0e9991503a43
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 686d736798a4d949e3590d988f399d7da82d4fee
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198273"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231992"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Zdalna komunikacja usług w języku Java przy użyciu usług Reliable Services
 > [!div class="op_single_selector"]
@@ -91,8 +91,8 @@ W ramach komunikacji zdalnej propaguje wyjątki zgłaszane na usługę do klient
 Tworzenie ServiceProxy jest lekka operacja, aby można było utworzyć dowolną liczbę, według potrzeb. Tak długo, jak są one potrzebne, mogą zostać ponownie użyte wystąpień usługi Serwer Proxy. Jeśli zdalne wywołanie procedury zgłasza wyjątek, nadal można ponownie użyć tego samego wystąpienia serwera proxy. Każdy ServiceProxy zawiera komunikacji klienta używany do wysyłania wiadomości przez sieć. Podczas wywoływania wywołań zdalnych, wewnętrzne są sprawdzane w celu określenia, czy klient komunikacji jest nieprawidłowy. Na podstawie wyników tych kontroli, utworzone ponownie klienta komunikacji, jeśli to konieczne. W związku z tym, jeśli wystąpi wyjątek, nie trzeba ponownie utworzyć `ServiceProxy`.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory Lifetime
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabric_service_proxy_factory) fabryki, która tworzy proxy dla różnych usług zdalnych interfejsów. Jeśli używasz interfejsu API `ServiceProxyBase.create` do tworzenia serwera proxy i następnie framework tworzy `FabricServiceProxyFactory`.
-Warto utworzyć ręcznie, gdy trzeba zastąpić [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.service_remoting_client_factory) właściwości.
+[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) fabryki, która tworzy proxy dla różnych usług zdalnych interfejsów. Jeśli używasz interfejsu API `ServiceProxyBase.create` do tworzenia serwera proxy i następnie framework tworzy `FabricServiceProxyFactory`.
+Warto utworzyć ręcznie, gdy trzeba zastąpić [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) właściwości.
 Fabryka jest kosztowną operacją. `FabricServiceProxyFactory` zachowuje pamięć podręczną komunikacji klientów.
 Najlepszym rozwiązaniem jest pamięć podręczna `FabricServiceProxyFactory` tak długo, jak to możliwe.
 
@@ -102,7 +102,8 @@ Zdalne wyjątek zgłoszony przez interfejs API usługi, są wysyłane do klienta
 ServiceProxy obsługi wszystkich wyjątków trybu Failover dla partycji usługi jest tworzona dla. Ponownie naprawił punktów końcowych w przypadku pracy awaryjnej Exceptions(Non-Transient Exceptions) i ponawia próbę wywołania z właściwego punktu końcowego. Liczba ponownych prób dla trybu failover wyjątek jest nieokreślony.
 W przypadku TransientExceptions jego ponawia próbę tylko wywołania.
 
-Domyślne parametry ponawiania prób są zachowywane przez [OperationRetrySettings]. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operation_retry_settings) Te wartości można skonfigurować przez przekazanie obiektu OperationRetrySettings ServiceProxyFactory konstruktora.
+Domyślne parametry ponawiania prób są zachowywane przez [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+Te wartości można skonfigurować przez przekazanie obiektu OperationRetrySettings ServiceProxyFactory konstruktora.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zabezpieczenia komunikacji w przypadku usług Reliable Services](service-fabric-reliable-services-secure-communication-java.md)

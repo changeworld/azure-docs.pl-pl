@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 476e39d0ced465d75e44098b9508472b87b0e7b8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038334"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230173"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Optymalizowanie kosztów przepływności w usłudze Azure Cosmos DB
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Niejawnie natywnych zestawów SDK (.NET/.NET Core, Java, Node.js i Python) catch tej odpowiedzi, przestrzegać określony serwer nagłówka retry-after i ponowić próbę żądania. Chyba, że Twoje konto jest uzyskiwany współbieżnie przez wielu klientów, następne ponowienie próby zakończy się pomyślnie.
 
-Jeśli masz więcej niż jeden klient łącznie stale działające powyżej jest częstotliwość żądań domyślną liczbę ponownych prób aktualnie jest ustawiony do 9 może bot wystarczyć. W takim przypadku klient zgłasza `DocumentClientException` ze stanem kodu 429 do aplikacji. Domyślna liczba ponownych prób może zostać zmieniona przez ustawienie `RetryOptions` wystąpieniu ConnectionPolicy. Domyślnie DocumentClientException z kodem stanu 429 po skumulowany czas oczekiwania równej 30 sekund jest zwracany, jeśli żądanie będzie kontynuował pracę nad liczba żądań. Dzieje się tak nawet gdy aktualna liczba ponownych prób jest mniejsza niż liczba ponowień max, są to domyślne 9 lub wartości zdefiniowane przez użytkownika. 
+Jeśli masz więcej niż jeden klient łącznie operacyjnego stale powyżej żądań zakończonych, domyślną liczbę ponownych prób aktualnie jest ustawiony do 9, może nie być wystarczające. W takim przypadku klient zgłasza `DocumentClientException` ze stanem kodu 429 do aplikacji. Domyślna liczba ponownych prób może zostać zmieniona przez ustawienie `RetryOptions` wystąpieniu ConnectionPolicy. Domyślnie DocumentClientException z kodem stanu 429 po skumulowany czas oczekiwania równej 30 sekund jest zwracany, jeśli żądanie będzie kontynuował pracę nad liczba żądań. Dzieje się tak nawet gdy aktualna liczba ponownych prób jest mniejsza niż liczba ponowień max, są to domyślne 9 lub wartości zdefiniowane przez użytkownika. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) jest ustawiony na 3, więc w tym przypadku jeśli operację żądania ma prędkość ograniczoną przez przekraczające zarezerwowanej przepływności dla kolekcji, operację żądania ponawia próbę trzykrotnie przed zgłaszanie wyjątek do aplikacji.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) jest ustawiony na 60, w tym przypadku jeśli zbiorczą ponawiania czeka czas w kilka sekund na pierwsze żądanie przekracza 60 sekund, jest wyjątek.
 

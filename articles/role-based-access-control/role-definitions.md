@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1c8af3e0d3d5d29531a2ba81abc745fcdca5fb08
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715774"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231907"
 ---
 # <a name="understand-role-definitions"></a>Omówienie definicji ról
 
@@ -173,6 +173,10 @@ Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie pop
 | [Platforma Azure dla języka Python](/python/azure) | 0.40.0 lub nowszy |
 | [Zestaw Azure SDK dla środowiska Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 lub nowszy |
 
+Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzanie nimi zawartość, kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD w wersji zapoznawczej środowiska. Aby wyświetlanie i zarządzanie nimi zawartość kontenerów kolejki lub obiektu Blob kliknij link "Eksploruj dane za pomocą usługi Azure AD (wersja zapoznawcza)" na koncie magazynu — omówienie.
+
+![Zapoznaj się z kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD (wersja zapoznawcza)](./media/role-definitions/rbac-dataactions-browsing.png)
+
 ## <a name="actions"></a>Akcje
 
 `Actions` Uprawnień określa operacje zarządzania, dozwolone przez rolę do wykonania. Jest to kolekcja operacji ciągów, które identyfikują zabezpieczanych operacje dostawców zasobów platformy Azure. Poniżej przedstawiono kilka przykładów operacji zarządzania, które mogą być używane w `Actions`.
@@ -185,7 +189,7 @@ Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie pop
 | `Microsoft.Compute/virtualMachines/*` | Przyznaje dostęp do wszystkich operacji maszyn wirtualnych i jego podrzędnych typów zasobów.|
 | `microsoft.web/sites/restart/Action` | Przyznaje dostęp do ponownego uruchomienia aplikacji sieci web.|
 
-## <a name="notactions"></a>notActions
+## <a name="notactions"></a>NotActions
 
 `NotActions` Uprawnień określa operacje zarządzania, które są wykluczone z dozwolonych `Actions`. Użyj `NotActions` uprawnienia, jeśli zestaw operacji, które chcesz zezwolić na łatwiejsze jest definiowany przez ograniczone operacje z wyjątkiem. Dostęp udzielany przez rolę (czynne uprawnienia) jest obliczana przez odjęcie ilości `NotActions` operacje z `Actions` operacji.
 

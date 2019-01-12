@@ -1,10 +1,11 @@
 ---
-title: 'Szybki Start: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell'
+title: 'Szybki start: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell'
 titlesuffix: Azure Load Balancer
 description: W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu PowerShell
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
@@ -15,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b720e07b3da446d3b6fcb106e94e9cc36128bb8c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256319"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230649"
 ---
-# <a name="get-started"></a>Szybki Start: Tworzenie standardowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell
+# <a name="get-started"></a>Szybki start: Tworzenie standardowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi. Aby dowiedzieć się więcej na temat usługi Load Balancer w warstwie Standardowa, zobacz [Co to jest usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]

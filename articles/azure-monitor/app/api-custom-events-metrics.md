@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: aac5010ca6b0ed958a849bf203f1d2f80bcdb81c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bbe29f112d752be432c0f922b1cd07b8afe2d45e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119826"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232485"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -168,7 +168,7 @@ namespace User.Namespace.Example01
 {
     using System;
     using Microsoft.ApplicationInsights;
-    using TraceSeveretyLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
+    using TraceSeverityLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
 
     /// <summary>
     /// Most simple cases are one-liners.
@@ -220,7 +220,7 @@ namespace User.Namespace.Example01
             if (!animalsSold.TrackValue(count, species))
 
             {
-                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeveretyLevel.Error);
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeverityLevel.Error);
             }
 
             // You can inspect a metric object to reason about its current state. For example:
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric jest przestarzała w zestawie SDK platformy .NET. Metryki powinny zawsze być wstępnie zagregowane w określonym czasie przed wysłaniem. Użyj jednego z przeciążeń GetMetric(..) można uzyskać dostęp do możliwości wstępnego agregowania SDK metryki obiektu. W przypadku wdrażania własnej logiki wstępnego agregowania można użyć metody (ITelemetry metricTelemetry) śledzenie wysyłać wynikowej wartości zagregowanych. Jeśli aplikacja wymaga wysyłania elementu osobne dane telemetryczne w każdym razem, gdy bez agregacji w czasie, prawdopodobnie masz przypadek użycia dla danych telemetrycznych zdarzeń; Zobacz TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry).
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric jest przestarzała w zestawie SDK platformy .NET. Metryki powinny zawsze być wstępnie zagregowane w określonym czasie przed wysłaniem. Użyj jednego z przeciążeń GetMetric(..) można uzyskać dostęp do możliwości wstępnego agregowania SDK metryki obiektu. W przypadku wdrażania własnej logiki wstępnego agregowania można użyć metody (ITelemetry metricTelemetry) śledzenie wysyłać wynikowej wartości zagregowanych. Jeśli aplikacja wymaga wysyłania elementu osobne dane telemetryczne w każdym razem, gdy bez agregacji w czasie, prawdopodobnie masz przypadek użycia dla danych telemetrycznych zdarzeń; Zobacz TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
 
 Usługa Application Insights może wykresu metryki, które nie są dołączone do określonych zdarzeń. Na przykład można monitorować długość kolejki w regularnych odstępach czasu. Za pomocą metryk poszczególnymi pomiarami są mniej odsetek niż odmiany i trendów i wykresy więc statystyczne są.
 

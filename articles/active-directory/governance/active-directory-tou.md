@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/20/2018
+ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188432"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229476"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -87,9 +87,7 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
 
 1. Aby wymagać od użytkowników końcowych wyświetlić warunków użytkowania przed ich akceptacją, należy ustawić **Wymagaj od użytkowników rozwinięcia warunków użytkowania** do **na**.
 
-1. Aby wymagać od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z, należy ustawić **wymagać od użytkowników akceptacji na każdym urządzeniu** do **na**.
-
-    Jeśli nie widzisz **wymagać od użytkowników akceptacji na każdym urządzeniu** ustawień, oznacza to, że ta funkcja ma nie jeszcze zostało wdrożone w Twoim regionie. Ta funkcja oczekuje się, można w pełni wdrożony przez wcześniejsze stycznia 2019 r. Aby uzyskać więcej informacji, zobacz [na urządzenie z warunkami użytkowania](#per-device-terms-of-use).
+1. Aby wymagać od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z, należy ustawić **wymagać od użytkowników akceptacji na każdym urządzeniu** do **na**. Aby uzyskać więcej informacji, zobacz [na urządzenie z warunkami użytkowania](#per-device-terms-of-use).
 
 1. Jeśli chcesz wygasić zgadza się z warunkami użytkowania zgodnie z harmonogramem, ustaw **wygaśnie zgody** do **na**. Jeśli włączona, są wyświetlane dwa ustawienia dodatkowe harmonogramu.
 
@@ -253,9 +251,6 @@ Poniższa procedura opisuje sposób dodawania warunków użycia języka.
 ## <a name="per-device-terms-of-use"></a>Warunki użytkowania na urządzenie
 
 **Wymagać od użytkowników akceptacji na każdym urządzeniu** ustawienia umożliwia wymaganie od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z. Użytkownicy będą musieli proces dołączania urządzenia w usłudze Azure AD. Po dołączeniu urządzenia identyfikator urządzenia jest używana do wymuszania warunki użytkowania na każdym urządzeniu.
-
-> [!NOTE]
-> Jeśli nie widzisz **wymagać od użytkowników akceptacji na każdym urządzeniu** ustawienie podczas tworzenia nowe warunki użytkowania, oznacza to, że ta funkcja ma nie jeszcze zostało wdrożone w Twoim regionie. Ta funkcja oczekuje się, można w pełni wdrożony przez wcześniejsze stycznia 2019 r.
 
 Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 

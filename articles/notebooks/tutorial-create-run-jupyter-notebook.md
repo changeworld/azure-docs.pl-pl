@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106682"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244588"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Samouczek: tworzenie i uruchamianie notesu Jupyter przy użyciu języka Python
 
@@ -40,7 +40,7 @@ Ukończone notesu można znaleźć na [GitHub - Samples notesów usługi Azure](
 
 1. W **Utwórz nowy projekt** okna podręcznego, który pojawia się, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **Utwórz**:
 
-    - **Nazwa projektu**: liniowej przykład regresji — Cricket Chirps
+    - **Nazwa projektu**: Przykład regresji liniowej — Cricket Chirps
     - **Identyfikator projektu**: przykład liniowej regresji
     - **Projekt publicznych**: (usunięty)
     - **Utwórz plik README.md**: (usunięty)
@@ -411,17 +411,13 @@ Po zakończeniu korzystania z notesu, użyj **pliku** > **Zamknij i zatrzymania*
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Debugowanie notesów programu Visual Studio Code
 
-Jeśli komórki kodu w notesie nie działają w taki sposób, w których oczekujesz, możesz mieć kod błędy lub inne usterki. Jednak inne niż przy użyciu `print` instrukcji, aby wyświetlić wartości zmiennych, notesu programu Jupyter nie oferuje żadnych urządzeń debugowania.
+Jeśli komórki kodu w notesie nie działają w taki sposób, w których oczekujesz, możesz mieć kod błędy lub inne usterki. Jednak inne niż przy użyciu `print` instrukcji, aby wyświetlić wartości zmiennych, typowe środowisko Jupyter nie oferuje żadnych urządzeń debugowania.
 
-Na szczęście rozszerzenie języka Python dla programu Visual Studio Code można bezpośrednio zaimportować do notesu programu Jupyter jako plik pojedynczego kodu za pomocą usługi komórek języka znaczników Markdown w komentarzach. Następnie można uruchomić debugera programu Visual Studio Code, aby przejść przez kod, ustawić punkty przerwania, sprawdź stan i tak dalej. 
+Na szczęście możesz pobrać notesu *.ipynb* pliku, a następnie otwórz go w programie Visual Studio Code za pomocą rozszerzenia języka Python. Rozszerzenie bezpośrednio importuje notesu jako plik pojedynczego kodu, zachowując swoje komórek języka znaczników Markdown w komentarzach. Po zaimportowaniu Notes, można użyć debugera programu Visual Studio Code, można przejść przez kod, ustawić punkty przerwania, sprawdź stan i tak dalej. Po wprowadzeniu poprawek w kodzie, można następnie wyeksportować *.ipynb* pliku z programu Visual Studio Code, a następnie przekaż go do notesów usługi Azure.
 
-Po dokonaniu poprawek w kodzie, Zapisz *.ipynb* pliku, a następnie przekazać go do notesów usługi Azure.
+Aby uzyskać więcej informacji, zobacz [debugowania notesu programu Jupyter](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) w dokumentacji programu Visual Studio Code.
 
-Aby uzyskać więcej informacji zobacz następujące artykuły w dokumentacji programu Visual Studio Code:
-
-- [Omówienie notesów programu Jupyter w programie VS Code](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Samouczek języka Python — Konfigurowanie i uruchamianie debugera](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [Edycja — komórki kodu programu Jupyter](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+Zobacz też [programu Visual Studio Code — Obsługa Jupyter](https://code.visualstudio.com/docs/python/jupyter-support) do dodatkowych funkcji programu Visual Studio Code dla notesów programu Jupyter.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -430,9 +426,9 @@ Aby uzyskać więcej informacji zobacz następujące artykuły w dokumentacji pr
 Artykuły z poradami:
 
 - [Tworzenie i klonowanie projektów](create-clone-jupyter-notebooks.md)
-- [Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
-- [Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
+- [Prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
 - [Praca z plikami danych](work-with-project-data-files.md)
-- [Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Uzyskiwanie dostępu do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Korzystanie z usług Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

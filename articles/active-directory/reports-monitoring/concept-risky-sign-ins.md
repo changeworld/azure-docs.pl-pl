@@ -14,18 +14,18 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623863"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244719"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory
 
-Azure Active Directory (Azure AD) wykrywa podejrzane akcje, które są powiązane z kontami użytkowników. Dla każdej wykrytej akcji rekord o nazwie **zdarzenie o podwyższonym ryzyku** zostanie utworzony. Aby uzyskać więcej informacji, zobacz [zdarzeń o podwyższonym ryzyku w usłudze Azure AD](concept-risk-events.md). 
+Azure Active Directory (Azure AD) wykrywa podejrzane akcje, które są powiązane z kontami użytkowników. Dla każdej wykrytej akcji jest tworzony wpis nazywany **zdarzeniem o podwyższonym ryzyku**. Aby uzyskać więcej informacji, zobacz [zdarzeń o podwyższonym ryzyku w usłudze Azure AD](concept-risk-events.md). 
 
-Raporty zabezpieczeń z [witryny Azure portal](https://portal.azure.com) , wybierając **usługi Azure Active Directory** bloku, a następnie przechodząc do **zabezpieczeń** sekcji. 
+Dostęp do raportów zabezpieczeń można uzyskać z poziomu witryny [Azure Portal](https://portal.azure.com), wybierając blok **Azure Active Directory**, a następnie przechodząc do sekcji **Zabezpieczenia**. 
 
 Istnieją dwa raporty zabezpieczeń, które są obliczane zależnie od zdarzeń o podwyższonym ryzyku:
 
@@ -35,7 +35,7 @@ Istnieją dwa raporty zabezpieczeń, które są obliczane zależnie od zdarzeń 
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/10.png)
 
-Aby dowiedzieć się, jak skonfigurować zasady, które mogą powodować tych zdarzeń o podwyższonym ryzyku, zobacz [sposobu konfigurowania zasad ryzyka użytkownika](../identity-protection/howto-user-risk-policy.md).  
+Aby dowiedzieć się, jak skonfigurować zasady powodujące wyzwalanie tych zdarzeń o podwyższonym ryzyku, zobacz [Sposób konfigurowania zasad ryzyka użytkowników](../identity-protection/howto-user-risk-policy.md).  
 
 ## <a name="who-can-access-the-risky-sign-ins-report"></a>Kto ma dostęp do raportów ryzykownych logowań?
 
@@ -53,7 +53,7 @@ Wszystkie wersje usługi Azure AD umożliwiają raportów ryzykownych logowań. 
 
 - W **wersji usługi Azure Active Directory bezpłatna i podstawowa**, masz dostęp do listy ryzykownych logowań. 
 
-- Ponadto **usługi Azure Active Directory Premium 1** edition pozwala na badanie niektórych podstawowych zdarzeń o podwyższonym ryzyku, które zostały wykryte dla każdego raportu. 
+- Wersja **Azure Active Directory Premium 1** umożliwia ponadto badanie niektórych podstawowych zdarzeń związanych z ryzykiem, które uwzględniono w poszczególnych raportach. 
 
 - Wersja **Azure Active Directory Premium 2** oferuje najbardziej szczegółowe informacje na temat wszystkich zdarzeń o podwyższonym ryzyku i umożliwia konfigurowanie zasad zabezpieczeń, które automatycznie reagują na wystąpienie skonfigurowanych poziomów ryzyka.
 
@@ -85,12 +85,11 @@ Ten raport zawiera także opcję, aby:
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/93.png)
 
-
 ## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Raport dotyczący ryzykownych logowań dla wersji premium usługi Azure AD
 
 Raport dotyczący ryzykownych logowań w usłudze Azure AD w wersjach premium zapewnia:
 
-- Zagregowane informacje o wykrytych [typach zdarzeń o podwyższonym ryzyku](concept-risk-events.md)
+- Zagregowane informacje o [typy zdarzeń ryzyka](concept-risk-events.md) zostały wykryte. Za pomocą **wersji Azure AD Premium P1**, wykrywania, które nie są objęte licencja są traktowane jako zdarzenie o podwyższonym ryzyku **logowania z dodatkowym ryzykiem wykryto**. Za pomocą **wersji usługi Azure AD Premium P2**, uzyskać najbardziej szczegółowe informacje na temat wszystkie wykrycia bazowego.
 
 - Opcja pobrania raportu
 
@@ -127,6 +126,6 @@ Spowoduje to otwarcie bloku **Szczegóły** dla tego zdarzenia o podwyższonym r
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Jak skonfigurować zasady ryzyka użytkownika](../identity-protection/howto-user-risk-policy.md)
-- [Jak skonfigurować zasady dotyczące usuwania ryzyka](../identity-protection/howto-user-risk-policy.md)
+- [Sposób konfigurowania zasad ryzyka użytkowników](../identity-protection/howto-user-risk-policy.md)
+- [Sposób konfigurowania zasad podejmowania działań naprawczych dotyczących ryzyka](../identity-protection/howto-user-risk-policy.md)
 - [Rodzaje ryzykownych zdarzeń](concept-risk-events.md)

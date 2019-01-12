@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a20e4d713440ca6fe1adaf5b89bff347a8fd0bde
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ed720b0db68a11c573a763c4269349db97977eff
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744092"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231074"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -99,6 +99,25 @@ Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowyw
 
 Klienci z umową Enterprise Agreement podpisaną przed 1 lipca 2018 r. lub twórcę już obszar roboczy usługi Log Analytics w ramach subskrypcji, możesz nadal mieć dostęp do *bezpłatna* planu. Jeśli Twoja subskrypcja nie jest związany z istniejącą rejestracją umowy EA *bezpłatna* warstwa nie jest dostępna podczas tworzenia obszaru roboczego w nowej subskrypcji po 2 kwietnia 2018 r.  Dane są ograniczone do 7 dni przechowywania dla *bezpłatna* warstwy.  Dla starszego *autonomiczny* lub *na węzeł* warstwy, a także bieżący 2018 pojedynczą warstwę cenową, zebranych danych jest dostępna w ciągu ostatnich 31 dni. *Bezpłatna* warstwa ma dziennego limitu pozyskiwania 500 MB, a jeśli okaże się stale przekraczać kwoty dozwolone woluminu, można zmienić obszar roboczy do innego planu, aby zbierać dane powyżej tego limitu. 
 
+> [!NOTE]
+> Aby używać uprawnień wynikających z zakupu pakietu OMS E1 zestawu, pakiet E2 OMS lub dodatku pakietu OMS dla programu System Center, wybierz usługi Log Analytics *na węzeł* warstwy cenowej.
+
+## <a name="changing-pricing-tier"></a>Zmiana warstwy cenowej
+
+Jeśli obszar roboczy usługi Log Analytics ma dostęp do starszych warstw cenowych między starszych warstw cenowych:
+
+1. W witrynie Azure portal w okienku subskrypcji usługi Log Analytics wybierz obszar roboczy.
+
+2. W okienku obszaru roboczego w obszarze **ogólne**, wybierz opcję **warstwa cenowa**.  
+
+3. W obszarze **warstwa cenowa**, wybierz warstwę cenową, a następnie kliknij przycisk **wybierz**.  
+    ![Wybrany plan taryfowy](media/manage-cost-storage/workspace-pricing-tier-info.png)
+
+Jeśli chcesz przenieść obszar roboczy do bieżącej warstwy cenowej, trzeba [zmienić swoją subskrypcję monitorowania modelu cen w usłudze Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model) która spowoduje zmianę warstwy cenowej wszystkich obszarów roboczych w tej subskrypcji.
+
+> [!NOTE]
+> Jeśli obszar roboczy jest połączony z kontem usługi Automation, przed wybraniem warstwy cenowej *Autonomiczna (za GB)* musisz usunąć wszystkie rozwiązania **Automation and Control** i odłączyć konto usługi Automation. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Rozwiązania**, aby wyświetlić i usunąć rozwiązania. Aby odłączyć konto usługi Automation, kliknij nazwę konta usługi Automation w bloku **Warstwa cenowa**.
+
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów związanych z usługi Log Analytics nie jest już jest zbieranie danych
 Jeśli znajdują się na warstwie cenowej bezpłatna starszej wersji i wysłane w ciągu dnia więcej niż 500 MB danych, zbierania danych nie będzie możliwy do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje. W polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i brakujące dane, uruchom następujące zapytanie: 
@@ -136,22 +155,55 @@ Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danyc
 
 ### <a name="nodes-sending-data"></a>Węzły wysyłające dane
 
-Aby undersand liczby węzłów danych raportowania w ciągu ostatniego miesiąca, użyj
+Aby poznać liczbę komputerów (węzłów), zgłoszenie danych każdego dnia w ciągu ostatniego miesiąca, użyj
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Aby wyświetlić liczbę zdarzeń przetwarzanych na komputerze, należy użyć
+Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (niektóre typy danych są bezpłatne), korzystać z `_IsBilled` właściwości:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+
+Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typres danych dane są kosztowne do wykonania. 
+
+Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wysyłają rozliczane typów danych:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+
+Aby wyświetlić **rozmiar** płatnych zdarzeń wprowadzanych na komputerze, użyj `_BilledSize` właściwość, która zapewnia rozmiar w bajtach:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+To zapytanie zastąpi stary sposób wykonywanie zapytania dla tego typu danych użycia. 
+
+Aby wyświetlić **liczba** zdarzeń wprowadzanych na komputerze, należy użyć
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Skorzystaj z tej kwerendy rzadko się kosztowne do wykonania. Jeśli chcesz zobaczyć, jakie typy danych są sendng danych do konkretnego komputera, należy użyć:
+Aby wyświetlić liczbę płatnych zdarzeń wprowadzanych na komputerze, należy użyć 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Jeśli chcesz wyświetlić liczniki dla typów danych płatnych wysyłania danych do konkretnego komputera, należy użyć:
 
 `union withsource = tt *
-| where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 > [!NOTE]
 > Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i spowoduje, że ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.

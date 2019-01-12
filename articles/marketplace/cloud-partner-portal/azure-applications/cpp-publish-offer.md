@@ -1,5 +1,5 @@
 ---
-title: Publikowanie oferty aplikacji platformy Azure | Dokumentacja firmy Microsoft
+title: Publikowanie aplikacji platformy Azure — oferty w portalu Azure Marketplace | Dokumentacja firmy Microsoft
 description: W tym artykule opisano proces i kroki programu stawiane ofertom aplikacji platformy Azure w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,40 +12,77 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fff751d531864faee7bd234ddcf543ae2992a617
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: cfcb33f9586033db9f4197a341227365d43601cc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196953"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232723"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
-Po utworzeniu nowej oferty, podając informacje o **nowa oferta** strony, możesz opublikować ofertę. Wybierz **Publikuj** aby rozpocząć proces publikowania.
+Po utworzeniu oferty, podając informacje o **nowa oferta** strony, możesz opublikować ofertę. Wybierz **Publikuj** aby rozpocząć proces publikowania.
 
 Na poniższym diagramie przedstawiono główne kroki w procesie publikowania w celu skorzystania z oferty "Przejdź na żywo".
 
-  ![Kroki publikowania oferty](./media/offer-publishing-steps.png)
+![Kroki publikowania oferty](./media/offer-publishing-steps.png)
 
 ## <a name="detailed-description-of-publishing-steps"></a>Szczegółowy opis kroków publikowania
 
-W poniższej tabeli opisano każdy krok publikowania, za pomocą szacowany czas (maksimum) do wykonania poszczególnych kroków.
-W poniższej tabeli opisano każdy krok publikowania. Szacowany czas do zakończenia każdego kroku jest również podana.
-
+Poniższej tabeli wymieniono i opisano poszczególne kroki publikowania i zapewnia szacowany czas wykonania poszczególnych kroków.  Czas szacowania w "dni" są zdefiniowane jako dni roboczych, których wykluczone podczas weekendów i dni wolnych od pracy.
 
 |  **Krok publikowania**           | **czas**    | **Opis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Weryfikowanie wymagań wstępnych         | 15 min   | Oferuje informacje i ofertę, ustawienia zostaną zweryfikowane.                        |
-| Certyfikacja                  | 1 tydzień | Oferty są analizowane przez zespół certyfikacji platformy Azure. Oferta jest skanowany w poszukiwaniu wirusów, złośliwego oprogramowania, bezpieczeństwo, zgodność i problemy z zabezpieczeniami. Oferta jest sprawdzenie spełnia kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md). Opinia firmy pod warunkiem, jeśli problem zostanie znaleziony. |
-| Pakowanie | 1 godzina  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i konfiguracji. |
-|  Podpisywania wydawcy             |  -        | Wydawcy ostateczny Przegląd i potwierdzenie oferty przejdzie na żywo. Sprawdź, czy spełnia wszystkie wymagania dotyczące można wdrożyć swoją ofertę w wybranych subskrypcjach (w krokach informacji oferty).  Wybierz **Go Live** dzięki ofercie przejściem do następnego kroku. |
-| Pakowanie                 | 1 godzina | Zakończono oferty jest replikowana w regionach i systemów produkcyjnych w portalu marketplace. | 
-| Na żywo                           | 4 dni |Oferta jest zwolniony, replikowane do określonych regionów wymagane i udostępnione publicznie. |
+| Weryfikowanie wymagań wstępnych         | < 15 min    | Oferuje informacje i ofertę, ustawienia zostaną zweryfikowane.                        |
+| Sprawdź poprawność ustawień ich przychód | < 15 min  |      |
+| Certyfikacja                  | < 1 dzień     | Oferty są analizowane przez zespół certyfikacji platformy Azure. Oferta jest skanowany w poszukiwaniu wirusów, złośliwego oprogramowania, bezpieczeństwo, zgodność i problemy z zabezpieczeniami. Oferta jest sprawdzenie spełnia kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md). Ile opinii jest, że problem zostanie znaleziony. |
+| Testowanie poprawności dysku          | < 2 godziny   | (Opcjonalnie) Jeśli wersji testowej jest obecny, Microsoft weryfikuje, że można go wdrożyć i replikowane.  |
+| Tworzenie pakietów i rejestracji generowania potencjalnych klientów | < 1 godz.  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i wdrażane. |
+|  Podpisywania wydawcy             |  Ręcznie    | Wydawcy ostateczny Przegląd i potwierdzenie oferty przejdzie na żywo. Oferta jest teraz dostępna w wersji zapoznawczej.  Sprawdź, czy spełnia wszystkie wymagania dotyczące można wdrożyć swoją ofertę w wybranych subskrypcjach (w krokach informacji oferty).  Po upewnieniu się, oferty, wybierz **Go Live** dzięki ofercie przejściem do następnego kroku. |
+| Przegląd firmy Microsoft                | 7 — 14 dni * | Firma Microsoft całościowo przeglądy aplikacji systemu Azure i wiadomości e-mail, jeśli zostaną wykryte problemy.  * Rzadko ten krok może trwać dłużej niż 14 dni, w zależności od złożoności aplikacji i problemów niewykrytych.  |
+| Na żywo                           | < 1 dzień | Oferta jest zwolniony, replikowane do określonych regionów i udostępnione publicznie. |
+|   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+ 
+Możesz monitorować proces publikowania w **stan** karcie oferty w portalu Cloud Partner.
 
-Zezwalaj na maksymalnie 10 dni roboczych. proces publikowania zakończyć i udostępnieniu oferty. Po zakończeniu procesu publikowania, oferty, zostaną wyświetlone w [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
+![Karta Stan dla oferty aplikacji platformy Azure](./media/offer-status-tab.png)
+
+Po zakończeniu procesu publikowania, oferty, zostaną wyświetlone w [kategorii aplikacji Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
+
+
+## <a name="errors-and-review-feedback"></a>Błędy i opinii
+
+Oprócz wyświetlania stanu publikowania oferty, **stan** karta zawiera również komunikaty o błędach i informacje zwrotne z **przeglądu Microsoft** kroku.  Zwykle Przejrzyj problemy są przywoływane jako żądania ściągnięcia (PR).  Każdego żądania Ściągnięcia jest połączony z online programu Visual Studio Team Services (VSTS, zmieniona na [DevOps platformy Azure](https://azure.microsoft.com/services/devops/)) elementu, który zawiera szczegółowe informacje o problemie.  Poniższa ilustracja przedstawia przykład odwołania do przeglądu żądania Ściągnięcia.  Dla bardziej złożonych przypadkach zespoły przeglądu i pomoc techniczna może wiadomość e-mail. 
+
+![Stan karty zawierające opinii](./media/status-tab-ms-review.png)
+
+Opisywane problemy muszą spełnić, przed kontynuowaniem tej oferty, przez proces publikowania.  Na poniższym diagramie przedstawiono, jak ten proces opinii odnosi się do publikowania.
+
+![Kroki publikowania opinii w usłudze VSTS](./media/pub-flow-vsts-access.png)
+
+
+### <a name="vsts-access"></a>Dostęp do usługi VSTS
+
+Aby wyświetlić elementy usługi VSTS, do którego odwołuje się opinii, wydawcy muszą mieć uprawnienie odpowiednią autoryzacją.  W przeciwnym razie odbieranie nowych wydawców `401 - Not Authorized` strony odpowiedzi.  Aby zażądać dostępu do systemu usług VSTS Przegląd oferty, wykonaj następujące czynności:
+
+1. Zbierz następujące informacje:
+    - Twoja nazwa wydawcy i Identyfikatora
+    - Oferty (aplikacje platformy Azure), oferują nazwy i Identyfikatora jednostki SKU
+    - Żądanie ściągnięcia link na przykład `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/jfrog/pullrequest/<number>`.  Ten adres URL można pobrać z komunikatu powiadomienia lub adres strony odpowiedzi 401.
+    - Adresy e-mail osób z organizacji publikowania, który chcesz udzielić dostępu do.  Te powinna zawierać adresy właściciela, podanych podczas rejestracji jako wydawcę w portalu Cloud Partner.
+2. Utwórz żądanie pomocy technicznej.  Na pasku tytułu w portalu Cloud Partner wybierz **pomocy** przycisk, a następnie wybierz **pomocy technicznej** z menu.  Domyślne internetowej przeglądarki należy uruchomić i przejdź do firmy Microsoft nowe strony pomocy technicznej zdarzenia.  (Może mieć się się zalogować).
+3. Określ **typ problemu** jako **przechodzenia do portalu marketplace** i **kategorii** jako **problem z dostępem**, a następnie wybierz **Start żądanie**.
+
+    ![Kategoria bilet pomocy technicznej](./media/support-incident1.png)
+
+4. W **krok 1 z 2** strony, podaj swoje informacje kontaktowe i wybierz **Kontynuuj**.
+5. W **krok 2 z 2** strony, określ tytuł zdarzenia i podać informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz **przesyłania**.
+
+Jeśli tworzenie zdarzenia zakończyło się pomyślnie, zostanie wyświetlona strona potwierdzenia.  Zapisz informacje o potwierdzenie dla Twojej informacji.  Pomoc techniczna firmy Microsoft należy odpowiedzieć na Twoje żądanie dostępu w ciągu kilku dni roboczych.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Aktualizowanie istniejącej oferty](./cpp-update-existing-offer.md)
+Po opublikowaniu aplikacji platformy Azure możesz [aktualizowanie istniejącej oferty](./cpp-update-existing-offer.md) aby odzwierciedlić zmiany wymagania biznesowe lub techniczne. 

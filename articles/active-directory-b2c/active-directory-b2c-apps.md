@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5d90e9440758f457aca591e5c2792c6670868685
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721973"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245484"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
 Usługa Azure Active Directory (Azure AD) B2C obsługuje uwierzytelnianie w różnych architektur nowoczesnych aplikacji. Wszystkie one są oparte na standardowych protokołach branżowych [OAuth 2.0](active-directory-b2c-reference-protocols.md) lub [OpenID Connect](active-directory-b2c-reference-protocols.md). W tym dokumencie opisano typy aplikacji, które można tworzyć, niezależnie od języka lub platformy wolisz. Ułatwia on także zrozumienie ogólnych scenariuszy przed rozpoczęciem tworzenia aplikacji.
 
-Każda aplikacja, która używa usługi Azure AD B2C musi być zarejestrowana w Twojej [dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md) przy użyciu [witryny Azure Portal](https://portal.azure.com/). Proces rejestracji aplikacji służy do zbierania i przypisuje wartości, takich jak:
+Każda aplikacja, która używa usługi Azure AD B2C musi być zarejestrowana w Twojej [dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md) przy użyciu [witryny Azure portal](https://portal.azure.com/). Proces rejestracji aplikacji służy do zbierania i przypisuje wartości, takich jak:
 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację.
 * A **adres URL odpowiedzi** który może służyć do kierowania odpowiedzi z powrotem do aplikacji.
@@ -41,7 +41,7 @@ Te kroki mogą różnić się nieco w zależności od typu aplikacji, które two
 
 ## <a name="web-applications"></a>Aplikacje internetowe
 
-Dla aplikacji sieci web (w tym .NET, PHP, Java, Ruby, Python i Node.js), które są hostowane na serwerze i dostępne za pośrednictwem przeglądarki, usługa Azure AD B2C obsługuje [OpenID Connect](active-directory-b2c-reference-protocols.md) dla użytkownika wszystkich środowisk. Obejmuje to logowanie, rejestrację i zarządzanie profilami. W implementacji usługi Azure AD B2C protokołu OpenID Connect aplikacji sieci web inicjuje te funkcje środowiska użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD. Wynikiem żądania jest token `id_token`. Ten token zabezpieczający reprezentuje tożsamość użytkownika. Zawiera także informacje o użytkowniku w formie oświadczeń:
+Dla aplikacji sieci web (w tym .NET, PHP, Java, Ruby, Python i Node.js), które są hostowane na serwerze i dostępne za pośrednictwem przeglądarki, usługa Azure AD B2C obsługuje [OpenID Connect](active-directory-b2c-reference-protocols.md) dla użytkownika wszystkich środowisk. W implementacji usługi Azure AD B2C protokołu OpenID Connect aplikacji sieci web inicjuje środowisk pracy użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD. Wynikiem żądania jest token `id_token`. Ten token zabezpieczający reprezentuje tożsamość użytkownika. Zawiera także informacje o użytkowniku w formie oświadczeń:
 
 ```
 // Partial raw id_token
@@ -68,7 +68,7 @@ W aplikacji sieci web Każde wykonanie [zasad](active-directory-b2c-reference-po
 6. `id_token` Jest weryfikowana, a plik cookie sesji jest ustawiona.
 7. Strona bezpiecznych, jest zwracana do użytkownika.
 
-Sprawdzenie tokenu `id_token` przy użyciu publicznego klucza podpisywania otrzymanego z usługi Azure AD jest wystarczające do zweryfikowania tożsamości użytkownika. Powoduje ono również ustawienie pliku cookie sesji, którego można użyć do identyfikacji użytkownika w żądaniach na kolejnych stronach.
+Sprawdzenie tokenu `id_token` przy użyciu publicznego klucza podpisywania otrzymanego z usługi Azure AD jest wystarczające do zweryfikowania tożsamości użytkownika. Ten proces powoduje również ustawienie pliku cookie sesji, który może służyć do identyfikowania użytkownika w odpowiedzi na żądania następną stronę.
 
 Aby wyświetlić tym scenariuszem w praktyce, wypróbuj jedną z próbek kodu logowania aplikacji sieci web w naszym [sekcji wprowadzenie](active-directory-b2c-overview.md).
 
@@ -124,58 +124,18 @@ Aby skonfigurować przepływ poświadczeń klienta, zobacz [klienta OAuth 2.0 i 
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Łańcuchy interfejsu API sieci Web (przepływ „w imieniu”)
 
-Wiele architektur obejmuje interfejs API sieci Web, który musi wywołać inny podrzędny interfejs API sieci Web, przy czym oba interfejsy są zabezpieczane przez usługę Azure AD B2C. Ten scenariusz jest często spotykany w klientach natywnych, którzy mają zaplecza interfejsu API sieci Web. Następnie następuje wywołanie usługi online firmy Microsoft, np. interfejsu API Azure AD Graph.
+Wiele architektur obejmuje interfejs API sieci Web, który musi wywołać inny podrzędny interfejs API sieci Web, przy czym oba interfejsy są zabezpieczane przez usługę Azure AD B2C. Ten scenariusz jest często używany w klientach natywnych, którzy mają zaplecza interfejsu API sieci Web i wywołuje usługi online firmy Microsoft, takich jak interfejs API programu Graph usługi Azure AD.
 
 Ten scenariusz obejmujący łańcuch interfejsów API sieci Web może być obsługiwany przy użyciu przyznania poświadczeń elementu nośnego OAuth 2.0 JWT, określanego również jako przepływ „w imieniu”.  Jednak przepływ „w imieniu” nie jest obecnie wdrażany w usłudze Azure AD B2C.
 
-### <a name="reply-url-values"></a>Wartości adresów URL odpowiedzi
-
-Obecnie aplikacje, które są zarejestrowane w usłudze Azure AD B2C, mają wartości adresów URL odpowiedzi ograniczone do określonego zestawu. Adres URL odpowiedzi dla aplikacji i usług internetowych musi zaczynać się od schematu `https` i wartości wszystkich adresów URL odpowiedzi muszą współużytkować jedną domenę DNS. Na przykład nie można zarejestrować aplikacji internetowej z jednym z następujących adresów URL odpowiedzi:
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-System rejestracji porównuje całą nazwę DNS istniejącego adresu URL odpowiedzi z nazwą DNS dodawanego adresu URL odpowiedzi. Żądanie dodania nazwy DNS zakończy się niepowodzeniem, jeśli będzie spełniony jeden z następujących warunków:
-
-- Cała nazwa DNS nowego adresu URL odpowiedzi nie będzie zgodna z nazwą DNS istniejącego adresu URL odpowiedzi.
-- Cała nazwa DNS nowego adresu URL odpowiedzi nie jest poddomeną istniejącego adresu URL odpowiedzi.
-
-Na przykład jeśli aplikacja ma następujący adres URL odpowiedzi:
-
-`https://login.contoso.com`
-
-Można dodać do niego adres w następujący sposób:
-
-`https://login.contoso.com/new`
-
-W takim przypadku nazwa DNS jest idealnie zgodna. Można też zrobić tak:
-
-`https://new.login.contoso.com`
-
-W takim przypadku przywoływana jest poddomena DNS domeny login.contoso.com. Jeśli chcesz mieć aplikację z adresami URL odpowiedzi login-east.contoso.com i login-west.contoso.com, musisz dodać następujące adresy URL w podanej kolejności:
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Dwa ostatnie adresy można dodać, ponieważ są poddomenami pierwszego adresu URL odpowiedzi, contoso.com. 
-
-Podczas tworzenia aplikacji mobilnej/natywnej, można zdefiniować **identyfikator URI przekierowania** zamiast **URL powtarzania**. Istnieją dwie ważne uwagi podczas wybierania identyfikator URI przekierowania:
-
-- **Unikatowość**: schemat identyfikatora URI przekierowania powinien być unikatowy dla każdej aplikacji. W przykładzie `com.onmicrosoft.contoso.appname://redirect/path`, `com.onmicrosoft.contoso.appname` jest to schemat. Należy przestrzegać tego wzorca. Jeśli dwie aplikacje mają ten sam schemat, użytkownik zobaczy **wybierz aplikację** okna dialogowego. Jeśli użytkownik dokona nieprawidłowego wyboru, logowanie nie powiedzie się.
-- **Kompletność**: identyfikator URI przekierowania musi mieć schemat i ścieżkę. Ścieżka musi zawierać co najmniej jeden ukośnik po nazwie domeny. Na przykład `//contoso/` działa i `//contoso` zakończy się niepowodzeniem. Upewnij się, że nie ma żadnych znaków specjalnych, takich jak podkreślenia w identyfikator URI przekierowania.
-
 ### <a name="faulted-apps"></a>Uszkodzone aplikacje
 
-Aplikacje usługi Azure AD B2C nie należy edytować:
+Nie należy edytować aplikacji usługi Azure AD B2C w następujący sposób:
 
 - W innych portalach zarządzania aplikacjami, takie jak [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/).
 - Korzystanie z interfejsu API programu Graph lub programu PowerShell.
 
-Jeśli edytujesz aplikację usługi Azure AD B2C poza witryny Azure portal, stanie się uszkodzoną aplikacją i nie jest już możliwe za pomocą usługi Azure AD B2C. Musisz usunąć taką aplikację i utworzyć ją ponownie.
+Jeśli edytujesz aplikację usługi Azure AD B2C poza witryny Azure portal, stanie się uszkodzoną aplikacją i nie jest już możliwe za pomocą usługi Azure AD B2C. Usuń aplikację, a następnie utworzyć ją ponownie.
 
 Aby usunąć aplikację, przejdź do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/) i usuń ją tam. Aby aplikacja była widoczna, musisz być jej właścicielem (a nie tylko administratorem dzierżawy).
 

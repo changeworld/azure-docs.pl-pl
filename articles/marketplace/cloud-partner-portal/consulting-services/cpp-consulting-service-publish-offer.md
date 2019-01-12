@@ -14,30 +14,30 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb3730718c366cbf3fe9caecceeb4e65855ac8c4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dae86dcdd3ada10164be0120b49a8f5f7b642ccd
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346377"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231635"
 ---
-# <a name="publish-consulting-service-offer"></a>Publikowanie oferty usługi doradcze
+# <a name="publish-a-consulting-service-offer"></a>Opublikuj ofertę usługi doradcze
 
-Po ukończeniu **oferują ustawienia**, **szczegóły Storefront**, i **kontakty**, wybierz opcję **Publikuj** i podaj adres e-mail. Firma Microsoft jest gotowa do opublikowania oferty, otrzymasz wiadomość e-mail, aby wyświetlić jego podgląd, zanim usługa zostanie wprowadzona na żywo. Możesz wrócić do portalu, aby sprawdzić stan oferty w dowolnym momencie w czasie.
+Po zakończeniu **oferują ustawienia**, **szczegóły Storefront**, i **kontakty**, wybierz opcję **Publikuj** i podaj adres e-mail. Gdy firma Microsoft jest gotowa do opublikowania oferty, otrzymasz wiadomość e-mail, aby wyświetlić jego podgląd, zanim usługa zostanie wprowadzona na żywo. Możesz wrócić do portalu, aby sprawdzić stan oferty w dowolnym momencie.
 
-Oferty może pojawić się w "Publikuj anulowane" lub "Publikowania nie powiodło się." stan w procesie publikowania. Ten stan jest normalna część procesu i umożliwia firmie Microsoft i wprowadź zmiany do swojej oferty. Jeśli widzisz oferty "Publikowanie anulowane" pozostawić ją w tym stanie.
+Oferty może pojawić się w "Publikuj anulowane" lub "Publikowania nie powiodło się." stan w procesie publikowania. Te nazwy są normalna część procesu i Zezwalaj firmie Microsoft wprowadzić zmiany oferty. Jeśli Twoja oferta jest wyświetlany jako "Publikowanie anulowane", pozostaw stan.
 
-**Prowadzić docelowego**
+## <a name="lead-destination"></a>Prowadzić docelowego
 
-Możesz wybrać system CRM, gdzie będą przechowywane z potencjalnymi klientami. System CRM, tutaj jest, gdzie będzie zapisywać szczegóły użytkownicy końcowi, którzy spróbują aplikacji w usłudze AppSource (potencjalnych klientów).
+Możesz wybrać system CRM, w którym są przechowywane informacje o potencjalnych klientach. System CRM, tutaj jest, gdzie możemy zapisać informacje o użytkownikach, którzy spróbują aplikacji w usłudze AppSource.
 
-W zależności od systemu CRM, którą wybierzesz kliknij odpowiedni adres URL poniżej informacje na temat sposobu ukończenia kolejny zbiór pól
+Oparte na wybranego systemu CRM, wybierz odpowiedni adres URL z następującej listy informacji na temat sposobu wypełniania kolejny zbiór pól.
 
-* Wybierz [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Jeśli masz jedną z następujących systemów CRM: SalesForce i programu Marketo, Microsoft Dynamics CRM. 
+Wybierz [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Jeśli masz jedną z następujących systemów CRM:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
-**Następne kroki**
+## <a name="next-steps"></a>Kolejne kroki
 
-Przejdź do zaoferowania publikowania.
+Kontynuować Dowiedz się, jak opublikować ofertę.

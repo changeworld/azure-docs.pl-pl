@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427067"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231176"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, dla prognozę energii
 ## <a name="overview"></a>**Omówienie**
@@ -163,7 +163,7 @@ Poniższe kroki prowadzą, jak wizualizować dane w czasie rzeczywistym dane wyj
 
 1. Dodaj dane wyjściowe usługi Power BI w usłudze Azure Stream Analytics (ASA).
 
-   * Należy wykonać instrukcje w [usługi Azure Stream Analytics i Power BI: pulpit nawigacyjny analizy w czasie rzeczywistym o wgląd w czasie rzeczywistym danych przesyłanych strumieniowo](stream-analytics/stream-analytics-power-bi-dashboard.md) skonfigurować dane wyjściowe zadania usługi Azure Stream Analytics jako pulpit nawigacyjny usługi Power BI .
+   * Należy wykonać instrukcje w [usługi Azure Stream Analytics i Power BI: Pulpit nawigacyjny analizy w czasie rzeczywistym o wgląd w czasie rzeczywistym danych przesyłanych strumieniowo](stream-analytics/stream-analytics-power-bi-dashboard.md) skonfigurować dane wyjściowe zadania usługi Azure Stream Analytics jako pulpit nawigacyjny usługi Power BI.
    * Znajdź zadanie usługi stream analytics w swojej [witryny Azure portal](https://portal.azure.com). Nazwa zadania powinny być: YourSolutionName + streamingjob"" + losowe liczba + "asapbi" (czyli demostreamingjob123456asapbi).
    * Dodaj dane wyjściowe zadania ASA usługi Power BI. Ustaw **danych wyjściowych Alias** jako **"PBIoutput"**. Ustaw użytkownika **Nazwa zestawu danych** i **nazwy tabeli** jako **"EnergyStreamData"**. Po dodaniu danych wyjściowych kliknij **"Start"** w dolnej części strony Aby uruchomić zadanie usługi Stream Analytics. Powinna pojawić się komunikat z potwierdzeniem (na przykład "Uruchamianie zadania usługi stream analytics zakończyło się pomyślnie myteststreamingjob12345asablob").
 2. Zaloguj się do [usługi Power BI w trybie online](https://www.powerbi.com)
@@ -185,7 +185,7 @@ Poniższe kroki prowadzą, jak wizualizować dane w czasie rzeczywistym dane wyj
 W potoku danych ścieżki nieaktywnej essential celem jest prognozę żądanie każdego regionu. Usługa Power BI nawiązuje połączenie z bazą danych Azure SQL jako źródło danych, w którym są przechowywane wyniki przewidywań.
 
 > [!NOTE]
-> 1) Może potrwać kilka godzin, aby zbierać wystarczająco prognozy wyników na pulpicie nawigacyjnym. Zalecamy uruchomienie tego procesu 2 – 3 godziny po biedzie generator danych. (2) w tym kroku wymagań wstępnych jest pobrać i zainstalować bezpłatne oprogramowanie [Power BI desktop](https://powerbi.microsoft.com/desktop).
+> (1) może potrwać kilka godzin, aby zbierać wystarczająco prognozy wyników na pulpicie nawigacyjnym. Zalecamy uruchomienie tego procesu 2 – 3 godziny po biedzie generator danych. (2) w tym kroku wymagań wstępnych jest pobrać i zainstalować bezpłatne oprogramowanie [Power BI desktop](https://powerbi.microsoft.com/desktop).
 >
 >
 

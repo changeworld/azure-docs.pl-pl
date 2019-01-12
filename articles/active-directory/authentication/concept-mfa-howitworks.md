@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4e1dc4ded48330f19a11db193fa5fe400326b420
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114162"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232825"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Usługa Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Azure Multi-Factor Authentication
 
 Zabezpieczenia weryfikacji dwuetapowej znajduje się w jego warstwowego podejścia. Naruszenie wiele składników uwierzytelniania przedstawia znaczące wyzwane dla osób atakujących. Nawet wtedy, gdy osoba atakująca zarządza się hasło użytkownika, jest bezcelowe również bez posiadania dodatkową metodę uwierzytelniania. To działa, wymagając dwie lub więcej z następujących metod uwierzytelniania:
 
@@ -27,7 +27,7 @@ Zabezpieczenia weryfikacji dwuetapowej znajduje się w jego warstwowego podejśc
 
 <center>![Obraz metod uwierzytelniania koncepcyjne](./media/concept-mfa-howitworks/methods.png)</center>
 
-Usługa Azure Multi-Factor Authentication (MFA) zabezpiecza dostęp do danych i aplikacji przy zachowaniu uproszczenia dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając od drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie za pomocą szeregu łatwy w użyciu [metod uwierzytelniania](concept-authentication-methods.md).
+Usługa Azure Multi-Factor Authentication (MFA) zabezpiecza dostęp do danych i aplikacji przy zachowaniu uproszczenia dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając od drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie za pomocą szeregu łatwy w użyciu [metod uwierzytelniania](concept-authentication-methods.md). Użytkownicy mogą lub nie mogą być kwestionowane usługi MFA, w oparciu o decyzji związanych z konfiguracją, wprowadzane przez administratora.
 
 ## <a name="how-to-get-multi-factor-authentication"></a>Jak uzyskać uwierzytelnianie wieloskładnikowe?
 

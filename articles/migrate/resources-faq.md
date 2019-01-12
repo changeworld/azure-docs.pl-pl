@@ -4,14 +4,14 @@ description: Często zadawane pytania dotyczące usługi Azure Migrate adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 0d01715922286743b9442ae1c656b34c37a7d795
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201197"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230768"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -53,6 +53,7 @@ Usługa Azure Migrate obsługuje obecnie Europa, USA i Azure dla instytucji rzą
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
 Azure Government | Administracja USA — Wirginia
+Azja | Azja Południowo-Wschodnia
 Europa | Europa Północna lub Europa Zachodnia
 Stany Zjednoczone | Wschodnie stany USA z Zachodniego środkowe stany USA
 
@@ -63,6 +64,17 @@ Połączenie może być za pośrednictwem Internetu lub korzystać z usługi Exp
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Czy można zabezpieczyć maszynę Wirtualną z szablonu OVA?
 
 Tak długo, jak komunikacji i reguł zapory wymagane dla usługi Azure Migrate urządzenia do pracy pozostało jest dodatkowych składników (na przykład oprogramowanie antywirusowe) można dodać do szablonu OVA.   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Utrwalanie urządzenia usługi Azure Migrate, jakie są zalecane wykluczenia programu antywirusowego (pliki audio i wideo)?
+
+Należy wykluczyć poniższe foldery w urządzenia do skanowania antywirusowego:
+
+- Folder, który zawiera pliki binarne usługi migracji platformy Azure. Wyklucz wszystkie podfoldery.
+  %ProgramFiles%\ProfilerService  
+- Usługa Azure Migrate aplikacji sieci Web. Wyklucz wszystkie podfoldery.
+  %SystemDrive%\inetpub\wwwroot
+- Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure migrate usługa wymaga RW dostęp do tego folderu.
+  %SYSTEMDRIVE%\Profiler
 
 ## <a name="discovery"></a>Odnajdowanie
 
@@ -136,16 +148,6 @@ Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i ni
 
 Może odnajdywać 1500 maszyn wirtualnych w projekcie migracji. Jeśli masz więcej maszyn w środowisku lokalnych [więcej](how-to-scale-assessment.md) o jak odkryjesz dużym środowisku, w usłudze Azure Migrate.
 
-### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Utrwalanie urządzenia usługi Azure Migrate, jakie są zalecane wykluczenia programu antywirusowego (pliki audio i wideo)?
-
-Należy wykluczyć poniższe foldery w urządzenia do skanowania antywirusowego:
-
-- Folder, który zawiera pliki binarne usługi migracji platformy Azure. Wyklucz wszystkie podfoldery.
-  %ProgramFiles%\ProfilerService  
-- Usługa Azure Migrate aplikacji sieci Web. Wyklucz wszystkie podfoldery.
-  %SystemDrive%\inetpub\wwwroot
-- Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure migrate usługa wymaga RW dostęp do tego folderu.
-  %SYSTEMDRIVE%\Profiler
 
 ## <a name="assessment"></a>Ocena
 

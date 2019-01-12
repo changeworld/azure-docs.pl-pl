@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 9b721ab614bf1797604fe342de117c78ba703f96
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 01/10/2019
+ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557601"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232128"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -26,10 +26,6 @@ Następujące funkcje są w publicznej wersji zapoznawczej. Można korzystać z 
 ### <a name="integration-with-azure-machine-learning"></a>Integracja z usługą Azure Machine Learning
 
 Możesz skalować zadania usługi Stream Analytics, za pomocą usługi Machine Learning () ml. Aby dowiedzieć się więcej na temat wykorzystania funkcji uczenia Maszynowego w ramach zadania usługi Stream Analytics, odwiedź stronę [skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Zapoznaj się z rzeczywistych scenariuszy za pomocą [przeprowadzania analizy tonacji za pomocą usługi Azure Stream Analytics i Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
-
-### <a name="session-windows"></a>Sesji systemu windows
-
-Stream Analytics zapewnia natywną obsługę funkcji obsługi okien, dzięki czemu deweloperzy mogą zadania przetwarzania strumieniowego złożonych Autor przy minimalnym nakładzie pracy. [Sesji systemu windows](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) grupie zdarzenia odbierane w czasie podobne odfiltrowanie okresach czasu w przypadku, gdy nie ma żadnych danych. Aby dowiedzieć się więcej na temat funkcji obsługi okien, odwiedź stronę [wprowadzenie do funkcji obsługi okien usługi Stream Analytics](stream-analytics-window-functions.md).
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>Dane wyjściowe obiektu blob partycjonowanie przez niestandardowy czas
 

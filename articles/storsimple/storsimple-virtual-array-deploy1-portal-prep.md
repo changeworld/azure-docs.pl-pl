@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257269"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244787"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdrażanie rozwiązania StorSimple Virtual Array — przygotowanie witryny Azure portal
 
@@ -43,7 +43,7 @@ Aby wdrożyć rozwiązania StorSimple Virtual Array, zapoznaj się z następują
 | **#** | **W tym kroku** | **Można to zrobić...** | **I korzystać z tych dokumentów.** |
 | --- | --- | --- | --- |
 | 1. |**Konfigurowanie witryny Azure portal** |Tworzenie i konfigurowanie usługi Menedżer urządzeń StorSimple przed aprowizacji rozwiązania StorSimple Virtual Array. |[Przygotowywanie portalu](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Aprowizowanie macierzy wirtualnej** |Dla funkcji Hyper-V udostępniania i połącz rozwiązania StorSimple Virtual Array na komputerze hosta z funkcją Hyper-V w systemie Windows Server 2012 R2, Windows Server 2012 lub Windows Server 2008 R2. <br></br> <br></br> Dla oprogramowania VMware udostępniania i połącz rozwiązania StorSimple Virtual Array na komputerze hosta z systemem VMware ESXi 5.0, 5.5 i 6.0.<br></br> |[Aprowizowanie macierzy wirtualnej funkcji Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Aprowizowanie macierzy wirtualnej w środowisku programu VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**Aprowizowanie macierzy wirtualnej** |Dla funkcji Hyper-V udostępniania i połącz rozwiązania StorSimple Virtual Array na komputerze hosta z funkcją Hyper-V w systemie Windows Server 2012 R2, Windows Server 2012 lub Windows Server 2008 R2. <br></br> <br></br> Dla oprogramowania VMware udostępniania i połącz rozwiązania StorSimple Virtual Array na komputerze hosta z systemem VMware ESXi 5.0, 5.5, 6.0 lub 6.5.<br></br> |[Aprowizowanie macierzy wirtualnej funkcji Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Aprowizowanie macierzy wirtualnej w środowisku programu VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**Konfigurowanie macierzy wirtualnej** |Dla swojego serwera plików wykonywania początkowej konfiguracji, zarejestrować swojego serwera plików StorSimple i przeprowadzić konfigurację urządzenia. Następnie można aprowizować udziały SMB. <br></br> <br></br> Dla serwera iSCSI wykonywania początkowej konfiguracji, zarejestrować serwer iSCSI StorSimple i przeprowadzić konfigurację urządzenia. Następnie można alokować woluminy iSCSI. |[Konfigurowanie macierzy wirtualnej jako serwera plików](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Konfigurowanie macierzy wirtualnej jako serwera iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Teraz możesz rozpocząć konfigurowanie witryny Azure Portal.
@@ -71,7 +71,7 @@ Przed rozpoczęciem upewnij się, że:
 
 Przed wdrożeniem macierzy wirtualnej, upewnij się, że:
 
-* Masz dostęp do systemu hosta funkcji Hyper-V w systemie Windows Server 2008 R2 lub nowszym lub VMware (ESXi 5.0, 5.5 i 6.0), które mogą być używane do aprowizacji urządzenia.
+* Masz dostęp do systemu hosta funkcji Hyper-V w systemie Windows Server 2008 R2 lub nowszym lub VMware (ESXi 5.0, 5.5, 6.0 lub 6.5), które mogą być używane do aprowizacji urządzenia.
 * System hosta jest w stanie dedykować następujących zasobów, aby aprowizować macierz wirtualna:
   
   * Co najmniej 4 rdzenie.
@@ -90,9 +90,9 @@ Przed rozpoczęciem upewnij się, że:
 
 Poniższe instrukcje krok po kroku umożliwia przygotowanie portalem usługi Menedżer urządzeń StorSimple.
 
-## <a name="step-1-create-a-new-service"></a>Krok 1. Tworzenie nowej usługi
+## <a name="step-1-create-a-new-service"></a>Krok 1: Tworzenie nowej usługi
 
-Jedno wystąpienie usługi Menedżer urządzeń StorSimple można zarządzać wieloma macierze wirtualne StorSimple. Wykonaj poniższe kroki, aby utworzyć wystąpienie usługi Menedżer urządzeń StorSimple. Jeśli masz istniejącą usługę Menedżer urządzeń StorSimple do zarządzania z macierzami wirtualnymi, Pomiń ten krok i przejdź do [krok 2: uzyskanie klucza rejestracji usługi](#step-2-get-the-service-registration-key).
+Jedno wystąpienie usługi Menedżer urządzeń StorSimple można zarządzać wieloma macierze wirtualne StorSimple. Wykonaj poniższe kroki, aby utworzyć wystąpienie usługi Menedżer urządzeń StorSimple. Jeśli masz istniejącą usługę Menedżer urządzeń StorSimple do zarządzania z macierzami wirtualnymi, Pomiń ten krok i przejdź do [krok 2: Pobierz klucz rejestracji usługi](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -100,11 +100,11 @@ Jedno wystąpienie usługi Menedżer urządzeń StorSimple można zarządzać wi
 > Jeśli nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi, po pomyślnym utworzeniu usługi musisz utworzyć co najmniej jedno konto magazynu.
 > 
 > * Jeśli nie utworzono automatycznie konta magazynu, przejdź do kroku [Konfigurowanie nowego konta magazynu dla usługi](#optional-step-configure-a-new-storage-account-for-the-service) w celu uzyskania szczegółowych informacji.
-> * Jeśli włączono automatyczne tworzenie konta magazynu, przejdź do części [Krok 2. Pobieranie klucza rejestracji usługi](#step-2-get-the-service-registration-key).
+> * Jeśli włączono automatyczne tworzenie konta magazynu, przejdź do strony [krok 2: Pobierz klucz rejestracji usługi](#step-2-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>Krok 2. Pobieranie klucza rejestracji usługi
+## <a name="step-2-get-the-service-registration-key"></a>Krok 2: Pobieranie klucza rejestracji usługi
 
 Po skonfigurowaniu i uruchomieniu usługi Menedżer urządzeń StorSimple musisz pobrać klucz rejestracji usługi. Ten klucz służy do rejestrowania urządzenia StorSimple i łączenia go z usługą.
 
@@ -137,7 +137,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
    
    * Dysk VHDX dla funkcji Hyper-V w systemie Windows Server 2012 lub nowszy
    * Wirtualny dysk twardy dla funkcji Hyper-V w systemie Windows Server 2008 R2 lub nowszy
-   * Dysk VMDK dla oprogramowania VMWare ESXi 5.0, 5.5 i 6.0
+   * Dysk VMDK dla oprogramowania VMWare ESXi 5.0, 5.5, 6.0 lub 6.5
 5. Pobierz i rozpakuj plik na lokalnym dysku. Zanotuj lokalizację rozpakowanego pliku.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Krok opcjonalny: Konfigurowanie nowego konta magazynu dla usługi

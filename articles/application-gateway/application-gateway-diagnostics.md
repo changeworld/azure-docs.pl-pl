@@ -1,23 +1,18 @@
 ---
-title: Monitor uzyskiwanie dostępu do dzienników, Dzienniki wydajności, kondycja zaplecza i metryki dla usługi Application Gateway
-description: Dowiedz się, jak włączyć i zarządzać Dzienniki wydajności i uzyskiwanie dostępu do dzienników w usłudze Application Gateway
+title: Monitor uzyskiwanie dostępu do dzienników, Dzienniki wydajności, kondycja zaplecza i metryki dla usługi Azure Application Gateway
+description: Dowiedz się, jak włączyć i zarządzać uzyskiwanie dostępu do dzienników i dzienników wydajności dla usługi Azure Application Gateway
 services: application-gateway
-author: amitsriva
-manager: rossort
-tags: azure-resource-manager
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: 45a13bca32593895e51fa7fe3c5bd7ce1ba547e6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6cd21448742778b0a2a27aea41f7940b1a216cdc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437473"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231108"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -98,7 +93,7 @@ Poniższy fragment kodu przedstawia przykład odpowiedzi:
 Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów z bram application Gateway. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob storage i wyświetlane w różnych narzędzi, takich jak [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excel i Power BI. Możesz dowiedzieć się więcej o różnych typach dzienniki z następującej listy:
 
 * **Dziennik aktywności**: Możesz użyć [Dzienniki aktywności platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (znanego wcześniej pod nazwą operacyjne dzienniki i dzienników inspekcji) aby wyświetlić wszystkie operacje, które są przesyłane do Twojej subskrypcji platformy Azure i ich stan. Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
-* **Dziennik dostępu**: Ten dziennik służy do wyświetlania wzorce dostępu do bramy aplikacji i analizowania ważne informacje o IP obiektu wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod powrotny i bajtów wewnątrz i na zewnątrz. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji. Wystąpienia bramy aplikacji można zidentyfikować za pomocą właściwości identyfikator wystąpienia.
+* **Dziennik dostępu**: Ten dziennik służy do wyświetlania wzorce dostępu do bramy aplikacji i analizować istotne informacje. Obejmuje to IP obiektu wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod powrotny i bajtów wewnątrz i na zewnątrz. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji. Wystąpienie bramy Application Gateway jest identyfikowany przez właściwość instanceId.
 * **Dziennik wydajności**: Ten dziennik służy do wyświetlania, jak działają wystąpień bramy Application Gateway. Ten dziennik zawiera informacje o wydajności dla każdego wystąpienia, łączna liczba żądań obsługiwanych, w tym przepływność w bajtach, łączna liczba żądań obsługiwana liczba żądań zakończonych niepowodzeniem, a liczba zdrowe i niezdrowe wystąpień zaplecza. Dziennik wydajności są zbierane co 60 sekund.
 * **Dziennik zapory**: Ten dziennik służy do wyświetlania żądań, które są rejestrowane w trybie wykrywania i zapobiegania usługi application gateway, który jest skonfigurowany przy użyciu zapory aplikacji sieci web.
 
@@ -217,7 +212,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy została włączona w każ
 |healthyHostCount     | Liczba hosty o dobrej kondycji w puli zaplecza.        |
 |unHealthyHostCount     | Liczba hostów złej kondycji w puli zaplecza.        |
 |RequestCount     | Liczba żądań, które są obsługiwane.        |
-|opóźnienie | Czas oczekiwania (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
+|opóźnienie | Średnie opóźnienie (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
 |Przepływność| Średnia przepływność od czasu ostatniego dziennika, mierzone w bajtach na sekundę.|
 
@@ -299,7 +294,7 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowolnej z następujących metod:
 
 * **Narzędzia platformy Azure**: Pobieranie informacji z dziennika aktywności przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub witryny Azure portal. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w artykule [Activity operations with Resource Manager (Operacje działań przy użyciu usługi Resource Manager)](../azure-resource-manager/resource-group-audit.md).
-* **Usługa Power BI**: Jeśli nie masz jeszcze [usługi Power BI](https://powerbi.microsoft.com/pricing) konta, możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
+* **Power BI**: Jeśli nie masz jeszcze [usługi Power BI](https://powerbi.microsoft.com/pricing) konta, możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Wyświetlanie i analizowanie dostępu, wydajność i dzienniki zapory
 

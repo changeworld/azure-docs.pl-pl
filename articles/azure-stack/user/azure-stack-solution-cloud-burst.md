@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 57624133b249a8ec2ece90eac4a64729e4d15151
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: anajod
+ms.openlocfilehash: d2bdb351b72c9280a223381b62c01fff7ca5ca00
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968207"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244736"
 ---
-# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązania skalowania wielu chmur przy użyciu platformy Azure
+# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązań skalowania wielu chmur przy użyciu platformy Azure
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Dowiedz się, jak utworzyć rozwiązanie wielu chmur, aby zapewnić wyzwalanych ręcznie proces przełączenie z usługi Azure Stack hostowanych aplikacji sieci web, na platformie Azure hostowanych aplikacji sieci web przy użyciu skalowania automatycznego za pomocą usługi traffic manager, zapewniając elastyczność i skalowalność chmury narzędzia w warunkach obciążenia.
 

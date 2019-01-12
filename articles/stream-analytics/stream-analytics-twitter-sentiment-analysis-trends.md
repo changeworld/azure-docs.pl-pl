@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248731"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231142"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analiza tonacji w czasie rzeczywistym usługi Twitter w usłudze Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Narzędzia do analizy mediów społecznościowych ułatwić organizacjom Zrozumi
 
 Analiza trendu w czasie rzeczywistym usługi Twitter jest świetny przykład narzędziem analizy, ponieważ modelu subskrypcji hasztag umożliwia nasłuchiwania konkretnych słów kluczowych (hasztagi) i tworzyć analizy tonacji kanału informacyjnego.
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenariusz: Analiza tonacji mediów społecznościowych w czasie rzeczywistym
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenariusz: Analiza tonacji w mediach społecznościowych w czasie rzeczywistym
 
 Firma, która ma mediami witryny sieci Web jest zainteresowana zyskuje przewagę nad konkurencji, zawierających zawartość witryny, natychmiast odpowiednią dla jego czytników. Analiza mediów społecznościowych są używane w firmie do tematów, które są istotne dla czytników, wykonując analizy tonacji w czasie rzeczywistym danych z usługi Twitter.
 
@@ -36,7 +36,7 @@ W tym samouczku za pomocą aplikacji klienta, który jest podłączany do usług
 * Subskrypcja platformy Azure
 * Konto w serwisie Twitter 
 * W przypadku aplikacji usługi Twitter i [token dostępu OAuth](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) dla tej aplikacji. Firma Microsoft zapewnia ogólne instrukcje dotyczące sposobu tworzenia aplikacji usługi Twitter w dalszej części.
-* Aplikacja TwitterWPFClient odczytuje informacyjny usługi Twitter. Aby uzyskać tę aplikację, Pobierz [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) plik z repozytorium GitHub, a następnie Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz zobaczyć źródło kodu i uruchomić aplikację w debugerze, możesz pobrać kod źródłowy z [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Aplikacja TwitterWPFClient odczytuje informacyjny usługi Twitter. Aby uzyskać tę aplikację, Pobierz [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) plik z repozytorium GitHub, a następnie Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz zobaczyć źródło kodu i uruchomić aplikację w debugerze, możesz pobrać kod źródłowy z [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient). 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Tworzenie Centrum zdarzeń dla danych wejściowych usługi Stream Analytics
 
@@ -214,11 +214,11 @@ Teraz, gdy tweet zdarzenia są przesyłania strumieniowego w czasie rzeczywistym
 
 2. W **dane wejściowe** bloku kliknij  **+ &nbsp;Dodaj** a następnie wypełnij blok następującymi wartościami:
 
-    * **Alias wejściowy**: Użyj nazwy `TwitterStream`. Jeśli używasz innej nazwy, zanotuj je, ponieważ będą potrzebne później.
+    * **Alias danych wejściowych**: Użyj nazwy `TwitterStream`. Jeśli używasz innej nazwy, zanotuj je, ponieważ będą potrzebne później.
     * **Typ źródła**: Wybierz **strumienia danych**.
     * **Źródło**: Wybierz **Centrum zdarzeń**.
     * **Opcja importu**: Wybierz **Użyj Centrum zdarzeń z bieżącej subskrypcji**. 
-    * **Przestrzeń nazw magistrali usług**: wybierz przestrzeń nazw Centrum zdarzeń, który został utworzony wcześniej (`<yourname>-socialtwitter-eh-ns`).
+    * **Przestrzeń nazw magistrali usług**: Wybierz przestrzeń nazw Centrum zdarzeń, który został utworzony wcześniej (`<yourname>-socialtwitter-eh-ns`).
     * **Centrum zdarzeń**: Wybierz Centrum zdarzeń, który został utworzony wcześniej (`socialtwitter-eh`).
     * **Nazwa zasad Centrum zdarzeń**: Wybierz zasady dostępu, który został utworzony wcześniej (`socialtwitter-access`).
 
@@ -297,8 +297,8 @@ W tym samouczku piszesz zdarzenia zagregowane tweet z zapytania zadania do usłu
 
 2. W **dane wyjściowe** bloku kliknij  **+ &nbsp;Dodaj** a następnie wypełnij blok następującymi wartościami:
 
-    * **Alias wyjściowy**: Użyj nazwy `TwitterStream-Output`. 
-    * **Obiekt sink**: Wybierz **magazynu obiektów Blob**.
+    * **Alias danych wyjściowych**: Użyj nazwy `TwitterStream-Output`. 
+    * **Obiekt sink**: Wybierz pozycję **Blob storage**.
     * **Opcje importowania**: Wybierz **usługa blob storage z bieżącej subskrypcji**.
     * **Konto magazynu**. Wybierz **Utwórz nowe konto magazynu.**
     * **Konto magazynu** (drugie pole). Wprowadź `YOURNAMEsa`, gdzie `YOURNAME` jest nazwą lub inny unikatowy ciąg. Nazwę można użyć tylko małe litery i cyfry, a na platformie Azure musi być unikatowa. 

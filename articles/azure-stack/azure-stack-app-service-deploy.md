@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bbb8e39e60500a2d8310159cfbac5659964fc387
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104764"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230020"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -46,6 +46,9 @@ Instalowanie dostawcy zasobów usługi App Service ma co najmniej godzinę. Czas
  - Tworzenie strefy DNS i wpisy dla usługi App Service.
  - Zarejestruj dostawcę zasobów usługi App Service.
  - Zarejestruj elementy galerii usługi App Service.
+
+ > [!IMPORTANT]
+ > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
 
 Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki:
 

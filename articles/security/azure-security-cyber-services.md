@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: eed545c88b840f942ad763793595ef5b9c3cd19d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 69c4f08d93ee87a93d575d60e12890a0aebb1807
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233698"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244923"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Usługi firmy Microsoft w Cyberbezpieczeństwa
 
-Microsoft Services zapewnia kompleksowe podejście do zabezpieczeń, tożsamości i cyberbezpieczeństwa. Microsoft Services zawiera tablicę, zabezpieczenia i tożsamość usług różnych strategii, planowania, wdrażania i pomocy technicznej. Te usługi może pomóc klientom korporacyjnym wdrożyć rozwiązania zabezpieczeń całościowe, dopasowane do swoich celów strategicznych.
+Microsoft Services zapewnia kompleksowe podejście do zabezpieczeń, tożsamości i cyberbezpieczeństwa. Obejmują one tablicę usługi zabezpieczeń i zarządzania tożsamościami w strategii, planowania, wdrażania i pomocy technicznej. Te usługi może pomóc klientom korporacyjnym wdrożyć rozwiązania zabezpieczeń, dopasowane do swoich celów strategicznych.
 
-Bezpośredni dostęp do produktu, zespoły deweloperów możemy tworzyć rozwiązania, które integrują się i zwiększyć bezpieczeństwo najnowsze i tożsamościami naszych produktów w celu ochrony biznesowe i wspieraj innowacje dla naszych klientów.
+Usług firmy Microsoft można tworzyć rozwiązania, które integrują się i zwiększanie bezpieczeństwa najnowsze i tożsamościami naszych produktów, aby pomóc w ochronie biznesowe i wspieraj innowacje.
 
-Powierzono pomaga chronić i umożliwiają organizacjom największych na świecie, naszej różnorodne grupy zawodowo składa się z wysoce wykwalifikowani ekspertów, którzy oferują wiele zabezpieczeń i obsługę tożsamości.
+Nasz zespół specjalistów technicznych składa się z wysoce wykwalifikowani ekspertów, którzy oferują wiele zabezpieczeń i obsługę tożsamości.
 
 Dowiedz się więcej na temat usług udostępnianych przez Microsoft Services:
 

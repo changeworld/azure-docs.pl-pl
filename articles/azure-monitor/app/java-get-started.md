@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/10/2019
 ms.author: lagayhar
-ms.openlocfilehash: b662f5c4baa9c4c6e7689f3f463761dbd456f33f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: eb44c7d3e605f3d9cfc5cc30cd5cbcc8e9c1ae42
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074181"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230989"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -358,6 +358,14 @@ Istnieją dwie opcje zbierania danych o innych wyjątkach:
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Monitorowanie wywołań metod i zależności zewnętrznych
 [Zainstaluj agenta programu Java](java-agent.md) w celu rejestrowania określonych metod wewnętrznych i wywołań za pośrednictwem JDBC z danymi chronometrażu.
+
+## <a name="w3c-distributed-tracing"></a>W3C rozproszonego śledzenia
+
+Obsługuje teraz zestaw SDK Java usługi Application Insights [W3C rozproszonego śledzenia](https://w3c.github.io/trace-context/).
+
+Przychodzące konfiguracji zestawu SDK zostało wyjaśnione bardziej szczegółowo w sekcji artykułem [korelacji](correlation.md#w3c-distributed-tracing).
+
+Wychodzące konfiguracji zestawu SDK jest zdefiniowany w [Agent.xml sztucznej Inteligencji](java-agent.md) pliku.
 
 ## <a name="performance-counters"></a>Liczniki wydajności
 Otwórz pozycję **Ustawienia**, **Serwery**, aby wyświetlić zakres liczników wydajności.

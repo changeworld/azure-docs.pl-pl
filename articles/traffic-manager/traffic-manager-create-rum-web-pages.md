@@ -4,6 +4,7 @@ description: Konfigurowanie stron sieci web, aby wysyłać pomiary dotyczące pr
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 19a641ba86333047b90c36cef242d524ccad5fe1
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138181"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232009"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Azure Traffic Manager za pomocą stron sieci web
 
@@ -57,7 +58,7 @@ Po uzyskaniu klucza uruchamianie, następnym krokiem jest osadzanie tego skopiow
  
     ![Osadzanie kodu Javascript do strony sieci web dla pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    **Rysunek 3: Prosty HTML przy użyciu osadzonych rzeczywistego użytkownika pomiarów języka JavaScript**
+    **Rysunek 3: Prosty kod HTML z osadzonych rzeczywistych JavaScript pomiary dotyczące prawdziwych użytkowników**
 
 3.  Zapisz plik HTML i hosta go na serwerze sieci Web połączone z Internetem. 
 4. Następnym razem, gdy ta strona jest renderowany w przeglądarce sieci web, JavaScript, do których odwołuje się zostanie pobrany i skrypt będzie wykonywać pomiaru i operacje raportowania.

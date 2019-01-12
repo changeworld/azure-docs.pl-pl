@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0663f569edd0dec47949053b6ecf7fe49fa24a17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191823"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229306"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
@@ -144,7 +144,7 @@ Na koniec zaznacz pole wyboru obok pozycji **GetWebContent** w *wartości* selek
 
 ![Metryki statycznych witryn internetowych usługi Azure Storage GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-Jeden włączony statystyki ruchu na plikach w *$web* kontenera zgłoszone w pulpit nawigacyjny metryk.
+Po włączeniu ruchu statystyki dotyczące plików w *$web* kontenera są zgłaszane w pulpit nawigacyjny metryk.
 
 ## <a name="faq"></a>Często zadawane pytania
 

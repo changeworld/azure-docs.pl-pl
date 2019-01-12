@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0bc44dc31de4a45127468b956d01d7c3f8d92985
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122823"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54242364"
 ---
 Można korzystać z zalet wiele okazji do monitorowania maszyn wirtualnych, zbierając, wyświetlanie i analizowanie danych diagnostycznych i dane dziennika. W prostych [monitorowania](../articles/azure-monitor/overview.md) ekran Przegląd maszyny wirtualnej, można użyć dla maszyny Wirtualnej w witrynie Azure portal. Możesz użyć [rozszerzenia](../articles/virtual-machines/windows/extensions-features.md) Aby skonfigurować diagnostykę na maszynach wirtualnych, aby zbierać dodatkowe dane metryk. Umożliwia również bardziej zaawansowane opcje monitorowania, takich jak [usługi Application Insights](../articles/azure-monitor/app/app-insights-overview.md) i [usługi Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -31,7 +31,7 @@ Można skonfigurować i monitorować zbiorem [dane diagnostyczne](https://docs.m
 
 ## <a name="alerts"></a>Alerty
 
-Możesz utworzyć [alerty](../articles/azure-monitor/platform/alerts-overview.md) oparciu o konkretne metryki wydajności. Przykłady problemów, które użytkownik może otrzymywać alerty o średniego użycia procesora CPU przekroczy określony próg lub dostępnego wolnego miejsca na dysku spada poniżej pewnej ilości. Alerty można skonfigurować w [witryny Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)przy użyciu [programu Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), lub [wiersza polecenia platformy Azure](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
+Możesz utworzyć [alerty](../articles/azure-monitor/platform/alerts-overview.md) oparciu o konkretne metryki wydajności. Przykłady problemów, które użytkownik może otrzymywać alerty o średniego użycia procesora CPU przekroczy określony próg lub dostępnego wolnego miejsca na dysku spada poniżej pewnej ilości. Alerty można skonfigurować w [witryny Azure portal](../articles/azure-monitor/platform/alerts-classic-portal.md)przy użyciu [programu Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell), lub [wiersza polecenia platformy Azure](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli).
 
 ## <a name="azure-service-health"></a>Azure Service Health
 

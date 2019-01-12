@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: ee336fb5a60998aaac1518a85b8b92f63d9d4b64
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.reviewer: unknown
+ms.openlocfilehash: 61afc8a736025763f950307fdbb78bb21577b22f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318133"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244209"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Omówienie planu, oferty, przydziału i subskrypcji
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 [Usługa Azure Stack](azure-stack-poc.md) pozwala dostarczać cały szereg usług, takie jak maszyny wirtualne, bazy danych SQL Server, SharePoint, Exchange, a nawet [elementów portalu Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operatorów usługi Azure Stack, skonfiguruj i dostarczanie tych usług w usłudze Azure Stack przy użyciu planów, ofert i przydziałów.
 
@@ -67,7 +67,7 @@ Podczas tworzenia oferty, administrator usługi może zawierać plan podstawowy.
 
 Plany dodatkowe są opcjonalne plany, które możesz dodać do oferty. Plany dodatkowe nie są uwzględniane domyślnie w ramach subskrypcji. Plany dodatkowe są plany dodatkowe (z limitami przydziału) dostępnych w ofercie, subskrybent można dodać do swojej subskrypcji. Na przykład możesz zaoferować plan podstawowy z ograniczonymi zasobami z wersji próbnej i planu dodatku z zasobami bardziej znaczące klienci, którzy zdecydują się podczas wdrażania usługi.
 
-## <a name="offers"></a>Oferta
+## <a name="offers"></a>Oferty
 
 Oferty są grupami co najmniej jeden plany, które można utworzyć, dzięki czemu użytkownicy mogą je subskrybują. Na przykład alfa oferuje może zawierać, A Plan, który zawiera zbiór usług obliczeniowych i planowanie B, który zawiera zestaw usług magazynu i sieci.
 

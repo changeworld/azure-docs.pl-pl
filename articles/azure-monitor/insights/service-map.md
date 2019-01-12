@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186501"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232927"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -269,7 +269,7 @@ Mapa usługi integracji z zabezpieczeniami i inspekcją jest automatycznie, gdy 
 ![Okienko zabezpieczeń komputera](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>Integracja aktualizacji
-Integracja mapy usługi przy użyciu rozwiązania Update Management jest automatyczne, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym Log Anlaytics.
+Integracja mapy usługi przy użyciu rozwiązania Update Management jest automatyczne, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym usługi Log Analytics.
 
 **Aktualizacji maszyn** okienko wyświetla dane z rozwiązania Update Management dla wybranego serwera. Okienko zawiera podsumowanie dowolnych brakujących aktualizacji na serwerze w wybranym zakresie czasu.
 

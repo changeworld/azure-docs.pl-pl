@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/09/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: 1bc4fcda360a899fb2f58e2ac26270d160227a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: unknown
+ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902845"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245688"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Przegląd tożsamości usługi Azure Stack
 
@@ -33,8 +33,8 @@ Wybór Azure AD lub AD FS może zależeć od trybu, w którym można wdrożyć u
 
 Aby uzyskać więcej informacji o opcjach, które zależą od środowiska usługi Azure Stack, zobacz następujące artykuły:
 
-- Zestaw Azure Stack deployment kit: [zagadnienia dotyczące tożsamości](azure-stack-datacenter-integration.md#identity-considerations).
-- Zintegrowane systemy usługi Azure Stack: [decyzje dotyczące usługi Azure Stack do planowania wdrożenia zintegrowane systemy](azure-stack-deployment-decisions.md).
+- Usługa Azure Stack zestawu deployment kit: [Zagadnienia dotyczące tożsamości](azure-stack-datacenter-integration.md#identity-considerations).
+- Zintegrowane systemy usługi Azure Stack: [Decyzje dotyczące usługi Azure Stack do planowania wdrożenia zintegrowane systemy](azure-stack-deployment-decisions.md).
 
 ## <a name="common-concepts-for-identity"></a>Typowe pojęcia dla tożsamości
 
@@ -80,17 +80,17 @@ Można rejestrować aplikacje usługi Azure AD lub AD FS, a następnie oferty ap
 
 Zastosowań:
 
-- **Aplikacja sieci Web**: przykłady witryny Azure portal i usługi Azure Resource Manager. Obsługiwane są też wywołań interfejsu API sieci Web.
-- **Natywny klient**: przykłady programu Azure PowerShell, Visual Studio oraz wiersza polecenia platformy Azure.
+- **Aplikacja sieci Web**: Przykłady obejmują witryny Azure portal i usługi Azure Resource Manager. Obsługiwane są też wywołań interfejsu API sieci Web.
+- **Natywny klient**: Przykłady programu Azure PowerShell, Visual Studio oraz wiersza polecenia platformy Azure.
 
 Aplikacje mogą obsługiwać dwa rodzaje dzierżawy:
 
-- **Pojedynczej dzierżawy**: obsługuje użytkowników i usług, tylko z tym samym katalogu, w którym aplikacja jest zarejestrowany.
+- **Pojedynczej dzierżawy**: Obsługuje użytkowników i usług, tylko z tym samym katalogu, w którym aplikacja jest zarejestrowany.
 
   > [!NOTE]
   > Ponieważ usług AD FS obsługuje tylko jeden katalog, aplikacje utworzone w topologii usług AD FS są, zgodnie z projektem, aplikacje z jedną dzierżawą.
 
-- **Wielodostępne**: obsługuje korzystanie przez użytkowników i usług z katalogu, w którym aplikacja jest zarejestrowany i dodatkowe dzierżawy katalogów. Dzięki aplikacjom wielodostępnym użytkowników z innej dzierżawy katalogu (innej dzierżawy usługi Azure AD) mogą Zaloguj się do aplikacji. 
+- **Wielodostępne**: Obsługuje korzystanie przez użytkowników i usług z katalogu, w którym aplikacja jest zarejestrowany i dodatkowe dzierżawy katalogów. Dzięki aplikacjom wielodostępnym użytkowników z innej dzierżawy katalogu (innej dzierżawy usługi Azure AD) mogą Zaloguj się do aplikacji. 
 
   Aby uzyskać więcej informacji na temat obsługi wielu dzierżawców, zobacz [Włączanie wielodostępu](azure-stack-enable-multitenancy.md).
 
@@ -98,9 +98,9 @@ Aplikacje mogą obsługiwać dwa rodzaje dzierżawy:
 
 Podczas rejestrowania aplikacji, należy utworzyć dwa obiekty:
 
-- **Obiekt aplikacji**: reprezentacja globalnej aplikacji we wszystkich dzierżawach. Ta relacja jest jeden do jednego z aplikacją oprogramowania i istnieje tylko w katalogu, w którym aplikacja najpierw jest zarejestrowany.
+- **Obiekt aplikacji**: Reprezentacja globalnej aplikacji we wszystkich dzierżawach. Ta relacja jest jeden do jednego z aplikacją oprogramowania i istnieje tylko w katalogu, w którym aplikacja najpierw jest zarejestrowany.
 
-- **Obiektu jednostki usługi**: poświadczeniami, które jest tworzone dla aplikacji w katalogu, w którym ją najpierw jest zarejestrowany. Nazwy głównej usługi jest tworzona w katalogu każdej dodatkowe dzierżawy, którym aplikacja jest używana. Ta relacja może być jeden do wielu za pomocą aplikacji.
+- **Obiektu jednostki usługi**: Poświadczenie, które jest tworzone dla aplikacji w katalogu, w którym ją najpierw jest zarejestrowany. Nazwy głównej usługi jest tworzona w katalogu każdej dodatkowe dzierżawy, którym aplikacja jest używana. Ta relacja może być jeden do wielu za pomocą aplikacji.
 
 Aby dowiedzieć się więcej na temat aplikacji i obiektów nazw głównych usług, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -155,10 +155,10 @@ W przypadku aplikacji i użytkowników architektury usługi Azure Stack jest opi
 
 Uwierzytelnianie za pomocą dostawcy tożsamości i odbierać tokenu sieci Web JSON, musi mieć następujące informacje:
 
-1. **Adres URL dla systemu tożsamości (urzędu)**: adres URL, w którym dostawca tożsamości jest osiągalna. Na przykład *https://login.windows.net*.
+1. **Adres URL dla systemu tożsamości (urzędu)**: Adres URL, w którym dostawca tożsamości jest osiągalna. Na przykład *https://login.windows.net*.
 2. **Identyfikator URI Identyfikatora aplikacji dla usługi Azure Resource Manager**: Unikatowy identyfikator dla usługi Azure Resource Manager, która jest zarejestrowana u dostawcy tożsamości. Również jest unikatowy dla każdej instalacji usługi Azure Stack.
-3. **Poświadczenia**: poświadczenia służy do uwierzytelniania za pomocą dostawcy tożsamości.
-4. **Adres URL dla usługi Azure Resource Manager**: adres URL wskazuje na lokalizację usługi Azure Resource Manager. Na przykład *https://management.azure.com* lub *https://management.local.azurestack.external*.
+3. **poświadczenia**: Poświadczenia, które służy do uwierzytelniania za pomocą dostawcy tożsamości.
+4. **Adres URL dla usługi Azure Resource Manager**: Adres URL jest lokalizację usługi Azure Resource Manager. Na przykład *https://management.azure.com* lub *https://management.local.azurestack.external*.
 
 Gdy podmiot zabezpieczeń (klienta, aplikacja lub użytkownik) wykonuje żądanie uwierzytelnienia dostępu do zasobu, żądanie musi zawierać:
 

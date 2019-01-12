@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 9cc08920c5b8814a3e4b649f4518dce78c7cb38e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160599"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244243"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Konfigurowanie alertów dotyczących metryk usługi Azure Database dla serwera MariaDB za pomocą witryny Azure portal
 
@@ -25,10 +25,9 @@ Można skonfigurować alert, aby po jego wyzwoleniu, wykonaj następujące czynn
 * Wywołanie elementu webhook
 
 Można skonfigurować i uzyskać informacje na temat reguł alertów za pomocą:
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [Program PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Interfejs wiersza polecenia (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
-* [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Interfejs wiersza polecenia platformy Azure](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Interfejs API REST usługi Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Tworzenie reguły alertu na metrykę
 1. W [witryny Azure portal](https://portal.azure.com/), wybierz bazę danych Azure dla serwera MariaDB, którą chcesz monitorować.
@@ -49,7 +48,7 @@ Można skonfigurować i uzyskać informacje na temat reguł alertów za pomocą:
    
    ![Wybierz metrykę](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. Konfigurowanie alert logic, w tym **warunek** (np.) "Większe niż"), **próg** (np.) 85 procent), **Agregacja czasu**, **okres** czasu reguła metryki muszą być spełnione przed wyzwalaczy alertu (np.) "W ciągu ostatnich 30 minut", a **częstotliwość**.
+7. Konfigurowanie alert logic, w tym **warunek** (np.) "Większe niż"), **próg** (np.) 85 procent), **Agregacja czasu**, **okres** czasu reguła metryki muszą być spełnione przed wyzwalaczy alertu (np.) "W ciągu ostatnich 30 minut") a **częstotliwość**.
    
    Wybierz **gotowe** po zakończeniu.
 

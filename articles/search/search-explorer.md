@@ -1,5 +1,5 @@
 ---
-title: Eksplorator wyszukiwania w witrynie Azure portal do wykonywania zapytań indeksy — usługa Azure Search
+title: Narzędzie do wyszukiwania Eksploratora zapytań danych w witrynie Azure portal — usługa Azure Search
 description: Użyj narzędzi witryny Azure portal takich jak Eksplorator wyszukiwania zapytania indeksów w usłudze Azure Search. Wprowadź terminy wyszukiwania lub w pełni kwalifikowana ciągów znaków za pomocą zaawansowanej składni.
 manager: cgronlun
 author: HeidiSteen
@@ -9,48 +9,25 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2aa372d1f917608de753007cc75ab0d608cafbba
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85e574a56380384b10d0916385a8816fd26c2eeb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188729"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244804"
 ---
-# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Jak używać Eksploratora wyszukiwania zapytania indeksów w usłudze Azure Search 
+# <a name="search-explorer-for-querying-data-in-azure-search"></a>Eksplorator wyszukiwania dla wykonywanie zapytań o dane w usłudze Azure Search 
 
-W tym artykule dowiesz się, jak wykonywać zapytania dla istniejącej usługi Azure Search indeksu przy użyciu **Eksploratora wyszukiwania** w witrynie Azure portal. Eksploratora wyszukiwania można użyć do przesyłania prostych lub pełnych ciągów zapytań Lucene do dowolnego istniejącego indeksu w usłudze.
-
-## <a name="start-search-explorer"></a>Uruchom Eksploratora wyszukiwania
-
-1. W [witryny Azure portal](https://portal.azure.com), otwórz stronę usługi wyszukiwanie z pulpitu nawigacyjnego lub [Znajdź swoją usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) na liście usług.
-
-2. Na stronie Przegląd usługi kliknij **Eksploratora wyszukiwania**.
+W tym artykule dowiesz się, jak wykonywać zapytania dla istniejącej usługi Azure Search indeksu przy użyciu **Eksploratora wyszukiwania** w witrynie Azure portal. Eksploratora wyszukiwania można użyć do przesyłania prostych lub pełnych ciągów zapytań Lucene do dowolnego istniejącego indeksu w usłudze. 
 
    ![Wyszukaj polecenie Eksploratora w portalu](./media/search-explorer/search-explorer-cmd2.png "Wyszukaj polecenie Eksploratora w portalu")
 
-3. Wybierz indeks, aby wykonać zapytanie.
 
-   ![Wybierz indeks, aby wykonać zapytanie](./media/search-explorer/search-explorer-changeindex-se2.png "wybierz indeks")
-
-4. Opcjonalnie Ustaw wersję interfejsu API. Domyślnie aktualna jest ogólnie dostępna wersja interfejsu API jest zaznaczone, ale można wybrać wersję zapoznawczą lub starszy interfejs API, jeśli składnię, której chcesz użyć jest specyficzny dla wersji.
-
-5. Gdy indeks i wersja interfejsu API jest zaznaczone, wprowadź terminy wyszukiwania lub wyrażenia zapytania w pełni kwalifikowaną na pasku wyszukiwania i kliknij przycisk **wyszukiwania** do wykonania.
-
-   ![Wprowadź terminy wyszukiwania, a następnie kliknij przycisk Wyszukaj](./media/search-explorer/search-explorer-query-string-example.png "wyszukiwania wprowadź warunki i kliknij przycisk Wyszukaj")
-
-Porady dotyczące wyszukiwania w **Eksploratora wyszukiwania**:
-
-+ Wyniki są zwracane jako pełne dokumentów JSON, dzięki czemu można wyświetlić konstrukcji dokumentów i zawartości, które znajdują się w całości. Można użyć wyrażeń zapytania, pokazano w przykładach, limitu pola, które są zwracane.
-
-+ Dokumenty składają się ze wszystkich pól oznaczonych jako **możliwość pobierania** w indeksie. Aby wyświetlić atrybuty indeksu w portalu, kliknij *realestate-us-sample* w **indeksy** listy na stronie Przegląd wyszukiwania.
-
-+ Dowolnych zapytania, podobnie jak co może wprowadzić w przeglądarce internetowej komercyjnych są przydatne w przypadku testowania środowisko użytkownika końcowego. Na przykład zakładając, że przykładowy indeks realestate wbudowane, możesz wprowadzić nazwę "Waszyngton lake apartamentach Seattle" i można znaleźć terminy w wynikach wyszukiwania Ctrl-F. 
-
-+ Wyrażenia zapytania i filtrowanie musi być strategią składni, obsługiwane przez usługę Azure Search. Wartość domyślna to [prostą składnię](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale Opcjonalnie można użyć [pełne Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) bardziej zaawansowanych zapytań. [Wyrażenia filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) są składnia OData.
+Aby uzyskać pomocy dotyczącej rozpoczynania pracy, zobacz [Eksploratora wyszukiwania menu Start](#start-search-explorer).
 
 ## <a name="basic-search-strings"></a>Ciągi wyszukiwania podstawowego
 
-W poniższych przykładach założono przykładowy indeks realestate wbudowanych. Aby uzyskać więcej informacji na temat tworzenia tego indeksu, zobacz [Szybki Start: Import, indeksów i zapytań w witrynie Azure portal](search-get-started-portal.md).
+W poniższych przykładach założono przykładowy indeks realestate wbudowanych. Aby uzyskać pomoc przy tworzeniu tego indeksu, zobacz [Szybki Start: Import, indeksów i zapytań w witrynie Azure portal](search-get-started-portal.md).
 
 ### <a name="example-1---empty-search"></a>Przykład 1 — puste wyszukiwanie
 
@@ -128,6 +105,37 @@ Dodaj **$orderby** Aby posortować wyników według innego pola, oprócz wyniku 
    ![Wyrażenie OrderBy](./media/search-explorer/search-explorer-example-ordery.png "zmienić kolejność sortowania")
 
 Zarówno **$filter** i **$orderby** wyrażenia są konstrukcje OData. Aby uzyskać więcej informacji, zobacz [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (Składnia filtrowania OData).
+
+<a name="start-search-explorer"></a>
+
+## <a name="how-to-start-search-explorer"></a>Jak uruchomić Eksploratora wyszukiwania
+
+1. W [witryny Azure portal](https://portal.azure.com), otwórz stronę usługi wyszukiwanie z pulpitu nawigacyjnego lub [Znajdź swoją usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) na liście usług.
+
+2. Na stronie Przegląd usługi kliknij **Eksploratora wyszukiwania**.
+
+   ![Wyszukaj polecenie Eksploratora w portalu](./media/search-explorer/search-explorer-cmd2.png "Wyszukaj polecenie Eksploratora w portalu")
+
+3. Wybierz indeks, aby wykonać zapytanie.
+
+   ![Wybierz indeks, aby wykonać zapytanie](./media/search-explorer/search-explorer-changeindex-se2.png "wybierz indeks")
+
+4. Opcjonalnie Ustaw wersję interfejsu API. Domyślnie aktualna jest ogólnie dostępna wersja interfejsu API jest zaznaczone, ale można wybrać wersję zapoznawczą lub starszy interfejs API, jeśli składnię, której chcesz użyć jest specyficzny dla wersji.
+
+5. Gdy indeks i wersja interfejsu API jest zaznaczone, wprowadź terminy wyszukiwania lub wyrażenia zapytania w pełni kwalifikowaną na pasku wyszukiwania i kliknij przycisk **wyszukiwania** do wykonania.
+
+   ![Wprowadź terminy wyszukiwania, a następnie kliknij przycisk Wyszukaj](./media/search-explorer/search-explorer-query-string-example.png "wyszukiwania wprowadź warunki i kliknij przycisk Wyszukaj")
+
+Porady dotyczące wyszukiwania w **Eksploratora wyszukiwania**:
+
++ Wyniki są zwracane jako pełne dokumentów JSON, dzięki czemu można wyświetlić konstrukcji dokumentów i zawartości, które znajdują się w całości. Można użyć wyrażeń zapytania, pokazano w przykładach, limitu pola, które są zwracane.
+
++ Dokumenty składają się ze wszystkich pól oznaczonych jako **możliwość pobierania** w indeksie. Aby wyświetlić atrybuty indeksu w portalu, kliknij *realestate-us-sample* w **indeksy** listy na stronie Przegląd wyszukiwania.
+
++ Dowolnych zapytania, podobnie jak co może wprowadzić w przeglądarce internetowej komercyjnych są przydatne w przypadku testowania środowisko użytkownika końcowego. Na przykład zakładając, że przykładowy indeks realestate wbudowane, możesz wprowadzić nazwę "Waszyngton lake apartamentach Seattle" i można znaleźć terminy w wynikach wyszukiwania Ctrl-F. 
+
++ Wyrażenia zapytania i filtrowanie musi być strategią składni, obsługiwane przez usługę Azure Search. Wartość domyślna to [prostą składnię](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale Opcjonalnie można użyć [pełne Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) bardziej zaawansowanych zapytań. [Wyrażenia filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) są składnia OData.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

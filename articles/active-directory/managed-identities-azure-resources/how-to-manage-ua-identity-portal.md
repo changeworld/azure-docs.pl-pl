@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 971d0181cb8e38b952c3dd3dd1d7e5e1cbec5128
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720138"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244654"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Utwórz listę, usuń lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal
 
@@ -41,7 +41,7 @@ Aby utworzyć przypisanych przez użytkownika tożsamości zarządzanej, Twoje k
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure można utworzyć zarządzanej tożsamości przypisanych przez użytkownika.
 2. W polu wyszukiwania wpisz *tożsamości zarządzanych*, a następnie w obszarze **usług**, kliknij przycisk **tożsamości zarządzanych**.
 3. Kliknij przycisk **Dodaj** i wprowadź wartości w następujących polach, w obszarze **Utwórz przypisane do użytkowników zarządzanych** okienko tożsamości:
-   - **Nazwa zasobu**: jest to nazwa dla przypisanych do użytkowników zarządzanych tożsamości użytkownika, na przykład UAI1.
+   - **Nazwa zasobu**: Jest to nazwa dla przypisanych do użytkowników zarządzanych tożsamości użytkownika, na przykład UAI1.
    - **Subskrypcja**: Wybierz subskrypcję, można utworzyć przypisanych przez użytkownika tożsamości zarządzanych w ramach
    - **Grupa zasobów**: Utwórz nową grupę zasobów, aby zawierał zarządzanych tożsamości przypisanych przez użytkownika, lub wybierz **Użyj istniejącej** do tworzenia zarządzanych tożsamości przypisanych przez użytkownika w istniejącej grupie zasobów.
    - **Lokalizacja**: Wybierz lokalizację, aby wdrożyć przypisanych przez użytkownika tożsamości zarządzanej, na przykład **zachodnie stany USA**.
@@ -62,6 +62,8 @@ Na liście odczytu przypisanych przez użytkownika tożsamości zarządzanej, Tw
 ## <a name="delete-a-user-assigned-managed-identity"></a>Usuwanie tożsamości przypisanych przez użytkownika zarządzanej
 
 Aby usunąć przypisanych przez użytkownika tożsamości zarządzanej, Twoje konto musi [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) przypisania roli.
+
+Usuwanie tożsamości przypisanych przez użytkownika nie powoduje usunięcia go z maszyny Wirtualnej lub zasób, który został przypisany do.  Aby usunąć tożsamości przypisanych przez użytkownika z maszyny Wirtualnej, zobacz [usuwania przypisanych przez użytkownika tożsamości zarządzanej maszyny Wirtualnej](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) użycia konta skojarzonego z subskrypcją platformy Azure, aby usunąć tożsamości zarządzanej przypisanych przez użytkownika.
 2. Wybierz tożsamość zarządzaną przypisanych przez użytkownika, a następnie kliknij przycisk **Usuń**.

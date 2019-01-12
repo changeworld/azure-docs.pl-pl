@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d322a0027f786be0603e7147eb3ba24341dd7fbf
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214865"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245093"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -233,6 +233,12 @@ Po kliknięciu dnia na wykresie użycia aplikacji zostanie wyświetlona szczegó
 Opcja **Logowania** umożliwia pełny przegląd zdarzeń logowania do aplikacji.
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/11.png "Działania związane z logowaniem")
+
+## <a name="office-365-activity-logs"></a>Dzienniki aktywności usługi Office 365
+
+Można wyświetlić dzienniki aktywności usługi Office 365 z [Centrum administracyjnego usługi Office 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Mimo że aktywności usługi Office 365 i usługi Azure AD działania dzienniki współdzielą wiele zasobów katalogu tylko Office 365 Admin Center zapewnia pełnego widoku dzienników aktywności usługi Office 365. 
+
+Można także przejść do dzienników aktywności usługi Office 365, programowo przy użyciu [interfejsów API zarządzania usługi Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

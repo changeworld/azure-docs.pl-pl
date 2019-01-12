@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 68f7df2ab004477fae5df1d200fcd44929465e93
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233127"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232247"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Utwórz lub przyłącz gałęzi równoległej dla akcji przepływu pracy w usłudze Azure Logic Apps
 
@@ -37,7 +37,7 @@ Aby uruchomić niezależnych kroków w tym samym czasie, możesz dodać gałęzi
 
 ![Wykonaj kroki w sposób równoległy](media/logic-apps-control-flow-branches/parallel.png)
 
-Twoja aplikacja logiki czeka, aż wszystkie gałęzie zakończyć działanie przed kontynuowaniem przepływu pracy. Równoległe gałęzi Uruchom tylko wtedy, gdy ich `runAfter` wartości właściwości zgodny stan krok Zakończono nadrzędnej. Na przykład zarówno `branchAction1` i `branchAction2` są ustawione na uruchamianie tylko wtedy, gdy `parentAction` kończy się `Succeded` stanu.
+Twoja aplikacja logiki czeka, aż wszystkie gałęzie zakończyć działanie przed kontynuowaniem przepływu pracy. Równoległe gałęzi Uruchom tylko wtedy, gdy ich `runAfter` wartości właściwości zgodny stan krok Zakończono nadrzędnej. Na przykład zarówno `branchAction1` i `branchAction2` są ustawione na uruchamianie tylko wtedy, gdy `parentAction` kończy się `Succeeded` stanu.
 
 > [!NOTE]
 > Przed rozpoczęciem, aplikacja logiki musi już mieć krok gdzie dodaniu gałęzi równoległych.
