@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jeffgilb
-ms.reviewer: ''
+ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c4f8fd3d7a4885893a126c63776a5e241dc0f91
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721521"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246538"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Samouczek: udostępnić maszyn wirtualnych dla użytkowników usługi Azure Stack
 
@@ -70,7 +70,7 @@ Oferty są grupami co najmniej jeden plan, które dostawcy przedstawiają użytk
 
    - Najpierw należy utworzyć przydział usługi Compute. Na liście przestrzeni nazw wybierz **Microsoft.Compute** , a następnie wybierz **Tworzenie nowego limitu przydziału**.
 
-     ![Tworzenie nowego przydziału](media/azure-stack-tutorial-tenant-vm/image06.png)
+     ![Tworzenie nowego limitu przydziału](media/azure-stack-tutorial-tenant-vm/image06.png)
 
    - W **Utwórz przydział**, wprowadź nazwę dla limitu przydziału. Można zmienić lub akceptować wartości limitu przydziału, które są wyświetlane dla limitu przydziału, który tworzysz. W tym przykładzie firma Microsoft Zaakceptuj ustawienia domyślne i wybierz **OK**.
 

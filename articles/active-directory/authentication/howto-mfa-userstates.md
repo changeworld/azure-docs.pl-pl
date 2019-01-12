@@ -5,19 +5,20 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4726383d96b0bd17f346f7391ed968c5f96bef1e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5b88fda9252b4547a87b192ef662330912d67d1a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239257"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247218"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak, które wymuszają weryfikację dwuetapową dla użytkownika
+
 Można wybrać jedno z dwóch metod do wymagania weryfikacji dwuetapowej, które wymagają przy użyciu konta administratora globalnego. Pierwszym z nich jest umożliwienie każdy użytkownik usługi Azure Multi-Factor Authentication (MFA). Gdy użytkownicy są włączone indywidualnie, wykonują weryfikacji dwuetapowej każdym logowaniu (z pewnymi wyjątkami, takie jak podczas logowania z zaufanego adresu IP adresów lub _zapamiętanych urządzeniach_ jest włączona funkcja). Drugą opcją jest, aby skonfigurować zasady dostępu warunkowego, które wymagają weryfikacji dwuetapowej pod pewnymi warunkami.
 
 > [!TIP]
@@ -25,7 +26,7 @@ Można wybrać jedno z dwóch metod do wymagania weryfikacji dwuetapowej, które
 
 ## <a name="choose-how-to-enable"></a>Wybierz sposób włączania
 
-**Włączone przez zmianę stanu użytkownika** — to jest tradycyjnych metod wymagania weryfikacji dwuetapowej i jest omówiona w tym artykule. Działa z zarówno usługi Azure MFA w chmurze i serwera Azure MFA. Za pomocą tej metody wymaga od użytkowników weryfikacji dwuetapowej **za każdym razem, gdy** Zaloguj się i przesłania zasady dostępu warunkowego.
+**Włączone przez zmianę stanu użytkownika** — to jest tradycyjnych metod wymagania weryfikacji dwuetapowej i jest omówiona w tym artykule. Działa z zarówno usługi Azure MFA w chmurze i serwera Azure MFA. Za pomocą tej metody wymaga od użytkowników weryfikacji dwuetapowej **za każdym razem, gdy** Zaloguj się i przesłania zasady dostępu warunkowego. Jest to metodę używaną dla osób z licencjami na usługę Office 365 lub Microsoft 365 Business, ponieważ nie obejmują funkcji dostępu warunkowego.
 
 Obsługiwane przez zasady dostępu warunkowego — jest to najbardziej elastyczny sposób Włącz weryfikację dwuetapową dla użytkowników. Włączanie przy użyciu tylko zasad dostępu warunkowego działa w przypadku usługi Azure MFA w chmurze i jest funkcją premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w [wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md).
 

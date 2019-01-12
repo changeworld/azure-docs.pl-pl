@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/11/2019
+ms.openlocfilehash: 43ee1cb33d5d747671cde7463c8f2fcb6e020662
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040204"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246521"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja interfejsu API zarządzanego w wystąpieniach zarządzanych bazy danych SQL Azure
 
@@ -62,7 +62,6 @@ Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą 
 |[Utwórz fragment sql az](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Utworzenie zarządzanej bazy danych|
 |[AZ sql fragment listy](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Dostępne listy zarządzane bazy danych|
 |[AZ sql fragment przywracania](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Przywracanie zarządzanej bazy danych|
-|[Aktualizacja fragment sql az](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|Aktualizuje zarządzanej bazy danych|
 |[AZ sql fragment delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Usuwa zarządzanej bazy danych|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Języka Transact-SQL: Zarządzanie serwerów logicznych i baz danych

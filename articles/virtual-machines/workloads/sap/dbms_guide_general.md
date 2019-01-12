@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e514f35567f4be0932c7bcc591cbd0f05cd9814
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606762"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246878"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -133,7 +133,11 @@ Azure wymusza przydziału operacji We/Wy na dysk z danymi. Te przydziały dotycz
 
 > [!NOTE]
 > Aby można było korzystać z platformy Azure przez unikatowy [pojedynczy umowę SLA maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) wszystkie dyski dołączone muszą być typu usługi Azure Premium Storage, w tym podstawowy dysk VHD.
->
+
+
+> [!NOTE]
+> Nie jest obsługiwane do hosta głównego plików bazy danych (dane i pliki dziennika) baz danych SAP na sprzęcie pamięci masowej, który znajduje się w centrach danych w tej samej lokalizacji innej przylegające do centrów danych platformy Azure. SAP obciążenia tylko magazynu jest reprezentowany jako natywnego platformy Azure, usługa jest obsługiwana dla plików dziennika transakcji i danych baz danych SAP.
+> 
 
 Umieszczanie plików bazy danych i plików dziennika/ponownego wykonywania i typ magazynu platformy Azure, powinien być zdefiniowany przez wymagania dotyczące operacji We/Wy, opóźnienia i przepływności. Aby mogła mieć wystarczającej liczby operacji We/Wy, może być zmuszony do korzystać z wielu dysków lub użyj większy dysk usługi Premium Storage. W przypadku używania wielu dysków, czy tworzysz stripe oprogramowania na dyskach, które zawierają pliki danych lub plików dziennika/Ponów. W takiej sytuacji operacje We/Wy i przepływność dysków umowy SLA podstawowych dysków usługi Premium Storage lub Maksymalna osiągalna dysków operacje We/Wy z usługi Azure Standard Storage są kumulacyjne wynikowego zestawu usługi stripe.
 

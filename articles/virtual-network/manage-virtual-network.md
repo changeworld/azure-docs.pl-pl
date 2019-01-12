@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: ea78176b9e35643698acf3901b30520b7c7be3c2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214400"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247830"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
@@ -101,9 +101,9 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 Można dodawać i usuwać zakresów adresów sieci wirtualnej. Zakres adresów musi być określony w notacji CIDR, a nie może nakładać się na inne zakresy adresów w obrębie tej samej sieci wirtualnej. Zakresy adresów, jaką zdefiniujesz może być publiczny lub prywatny (RFC 1918). Czy można zdefiniować zakres adresów jako publicznych lub prywatnych, zakres adresów jest dostępny tylko z w ramach sieci wirtualnej z połączonymi sieciami wirtualnymi i sieciami lokalnymi, żadnych podłączonych do sieci wirtualnej. 
 
-<!-- You can decrease the address range for a given virtual network if you don't have any subnets associated with it. Otherwise, you can only extend the address range; for example, changing a /16 to /8 is possible. We recommend that you begin with a small address range, and then extend it later or add additional ranges.
+Można zmniejszyć zakres adresów sieci wirtualnej, jeśli nie masz żadnych podsieci skojarzonych z nim. W przeciwnym razie można rozszerzyć tylko zakres adresów, na przykład zmiana /16 do /8. Można rozpocząć z zakresem adresów małe, a następnie go później rozszerzyć lub Dodaj dodatkowe zakresy.
 
-the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 Nie można dodać poniższe zakresy adresów:
 

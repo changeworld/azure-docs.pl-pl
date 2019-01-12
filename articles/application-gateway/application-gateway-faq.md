@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/6/2018
+ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994862"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247507"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -25,7 +25,7 @@ Usługa Azure Application Gateway to kontroler dostarczania aplikacji (ADC) as a
 
 ### <a name="what-features-does-application-gateway-support"></a>Jakie funkcje obsługuje usługa Application Gateway?
 
-Usługa Application Gateway obsługuje Skalowanie automatyczne, odciążanie protokołu SSL i kompleksowej usługi SSL, zapory aplikacji sieci Web, koligacja sesji na podstawie plików cookie, adres url opartego na ścieżkach routingu, hostingu wielu witryn i innych. Aby uzyskać pełną listę obsługiwanych funkcji, zobacz [wprowadzenie do usługi Application Gateway](application-gateway-introduction.md).
+Usługa Application Gateway obsługuje Skalowanie automatyczne, odciążanie protokołu SSL i kompleksowej usługi SSL, zapory aplikacji sieci Web, koligacja sesji na podstawie plików cookie, adres url opartego na ścieżkach routingu, wielu lokacjach hostingu i inne. Aby uzyskać pełną listę obsługiwanych funkcji, zobacz [wprowadzenie do usługi Application Gateway](application-gateway-introduction.md).
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>Jaka jest różnica między bramą aplikacji i modułu równoważenia obciążenia platformy Azure?
 
@@ -53,7 +53,7 @@ Pule zaplecza może składać się z kartami sieciowymi, zestawy skalowania masz
 
 ### <a name="what-regions-is-the-service-available-in"></a>Jakie regiony usługa jest dostępna w?
 
-Usługa Application Gateway jest dostępna we wszystkich regionach, globalnej platformy Azure. Jest również dostępna w [Azure (Chiny)](https://www.azure.cn/) i [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/)
+Usługa Application Gateway jest dostępna we wszystkich regionach, globalnej platformy Azure. Jest również dostępna w [Azure China 21Vianet](https://www.azure.cn/) i [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/)
 
 ### <a name="is-this-a-dedicated-deployment-for-my-subscription-or-is-it-shared-across-customers"></a>Jest to dedykowane wdrożenia dla mojej subskrypcji lub jest udostępniana wielu odbiorców?
 
@@ -126,7 +126,7 @@ Nie, ale można wdrożyć inne bramy aplikacji w podsieci.
 
 Sieciowe grupy zabezpieczeń (NSG) są obsługiwane w podsieci bramy aplikacji z następującymi zastrzeżeniami:
 
-* Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534 w usłudze Application Gateway v1 jednostki SKU i porty 65200 – 65535 dla jednostki SKU w wersji 2. Zakres portów jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będzie można zainicjować wszelkie zmiany w tych punktach końcowych.
+* Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534 w usłudze Application Gateway v1 jednostki SKU i porty 65200 – 65535 dla jednostki SKU w wersji 2. Zakres portów jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będą mogli zainicjować wszelkie zmiany w tych punktach końcowych.
 
 * Nie można zablokować wychodzące połączenie z Internetem.
 
@@ -137,6 +137,8 @@ Sieciowe grupy zabezpieczeń (NSG) są obsługiwane w podsieci bramy aplikacji z
 Trasy zdefiniowane przez użytkownika (Udr) są obsługiwane w podsieci bramy aplikacji, tak długo, jak nie wpływają one komunikacji end-to-end żądania/odpowiedzi.
 
 Na przykład można skonfigurować trasy zdefiniowanej przez użytkownika w podsieci bramy aplikacji, aby wskazywał urządzenie zapory dla inspekcję pakietów, ale należy upewnić się, że pakiet może osiągnąć jego przeznaczenia wpis inspekcji. Niewykonanie tej czynności może spowodować nieprawidłowe kondycji sondy lub ruch zachowania routingu. Obejmuje to zapamiętane trasy lub domyślne trasy 0.0.0.0/0 propagowane przez usługi ExpressRoute lub bram sieci VPN w sieci wirtualnej.
+
+Tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji są **nie** obsługiwane w ramach jednostki SKU w wersji 2. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i strefowo nadmiarowe Application Gateway (publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations).
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Jakie są limity dla usługi Application Gateway? Czy można zwiększyć te limity?
 
@@ -206,11 +208,11 @@ Tak, usługa Application Gateway jednostkę SKU v2 obsługuje funkcję skalowani
 
 ### <a name="does-manual-scale-updown-cause-downtime"></a>Skalowanie ręczne odbywa się w górę/dół przestój Przyczyna?
 
-Brak przestojów, wystąpienia są rozproszone między domeny błędów i domenach uaktualniania.
+Brak przestojów. Wystąpienia są rozproszone między domeny błędów i domenach uaktualniania.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Usługa Application Gateway obsługuje opróżniania połączenia?
 
-Tak. Można skonfigurować połączenia opróżniania, aby zmienić członków w ramach puli zaplecza, bez przerw w działaniu. Pozwoli to na istniejące połączenia przejść do wysłania do ich poprzedniego miejsca docelowego, dopóki nie upłynie limit czasu można skonfigurować albo to połączenie jest zamykane. Tylko opróżniania połączenia czeka, aż bieżące aktywne połączenia do ukończenia. Usługa Application Gateway nie ma informacji o stanie sesji w aplikacji.
+Tak. Można skonfigurować połączenia opróżniania, aby zmienić członków w ramach puli zaplecza, bez przerw w działaniu. Dzięki temu istniejące połączenia przejść do wysłania do ich poprzedniego miejsca docelowego, dopóki nie upłynie limit czasu można skonfigurować albo to połączenie jest zamykane. Tylko opróżniania połączenia czeka, aż bieżące aktywne połączenia do ukończenia. Usługa Application Gateway nie ma informacji o stanie sesji w aplikacji.
 
 ### <a name="what-are-application-gateway-sizes"></a>Co to są rozmiarów bramy aplikacji?
 
@@ -292,7 +294,7 @@ Tak, [konfiguracji mechanizmów szyfrowania](application-gateway-ssl-policy-over
 
 ### <a name="how-many-ssl-certificates-are-supported"></a>Jak wiele certyfikatów SSL są obsługiwane?
 
-Maksymalnie 20 SSL certyfikaty są obsługiwane.
+Maksymalnie 100 SSL certyfikaty są obsługiwane.
 
 ### <a name="how-many-authentication-certificates-for-backend-re-encryption-are-supported"></a>Jak wiele certyfikatów uwierzytelniania dla wewnętrznej bazy danych ponownie szyfrować są obsługiwane?
 
@@ -374,13 +376,13 @@ Tak, usługa Application Gateway obsługuje alerty. Alerty są konfigurowane na 
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Jak analizować statystyki ruchu w usłudze Application Gateway?
 
-Można wyświetlać i analizować Dzienniki dostępu za pośrednictwem szereg mechanizmów, takich jak Azure Log Analytics, Excel, Power BI itp.
+Można wyświetlać i analizować Dzienniki dostępu przy użyciu kilku mechanizmów, takich jak Azure Log Analytics, Excel, Power BI itp.
 
 Opublikowane dotychczas również szablon usługi Resource Manager, która jest instalowana i uruchamiana popularnej [GoAccess](https://goaccess.io/) dziennik analizatora, aby uzyskać dostęp do dzienników usługi Application Gateway. GoAccess udostępnia cenne statystyki ruch HTTP, takie jak unikatowych osób odwiedzających, żądane pliki, hosty, systemy operacyjne, przeglądarki, kody stanu HTTP i nie tylko. Aby uzyskać więcej informacji, zobacz [pliku Readme w folderu szablonu usługi Resource Manager w usłudze GitHub](https://aka.ms/appgwgoaccessreadme).
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Kondycja wewnętrznej bazy danych zwraca stan nieznany w poznaniu przyczyny tego stanu?
 
-Najbardziej typową przyczyną jest dostęp do wewnętrznej bazy danych jest blokowane przez sieciową grupę zabezpieczeń lub niestandardowe DNS. Zobacz [zaplecza kondycji, rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md) Aby dowiedzieć się więcej.
+Najbardziej typową przyczyną jest dostęp do wewnętrznej bazy danych jest blokowany przez sieciową grupę zabezpieczeń lub niestandardowe DNS. Zobacz [zaplecza kondycji, rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md) Aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 

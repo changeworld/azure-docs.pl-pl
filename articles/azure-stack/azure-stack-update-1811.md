@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214593"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247626"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -40,9 +40,9 @@ Numerem kompilacji aktualizacji usługi Azure Stack 1811 **1.1811.0.101**.
 Usługa Azure Stack wydaje poprawki na bieżąco. Pamiętaj zainstalować [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1809 przed zaktualizowaniem usługi Azure Stack do 1811.
 
 > [!TIP]  
-> Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
-> - REKORDY ZASOBÓW: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
-> - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
+> Subskrybowania następujących *RSS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
+> - [FUNKCJA RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Usługa Azure Stack poprawki
 
@@ -260,6 +260,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
 
    Ten błąd występuje, jeśli Włącz diagnostykę rozruchu na maszynie Wirtualnej, ale usunięcia konta magazynu diagnostyki rozruchu. Aby obejść ten problem, należy ponownie utworzyć konto magazynu o takiej samej nazwie jak użyte wcześniej.
+
+- Podczas tworzenia [maszyny Wirtualnej serii Dv2](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), maszyn wirtualnych D11 14v2 pozwalają tworzyć 4, 8, 16 i dysków z danymi 32 odpowiednio. Jednak w okienku maszyny Wirtualnej Utwórz pokazuje 8, 16, 32 i 64 dyski z danymi.
 
 <!-- 3235634 – IS, ASDK -->
 - Aby wdrożyć maszyny wirtualne o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, określ sufiks jako **maszyna wirtualna standard_a2_v2 —** (v małe litery). Nie używaj **maszyna wirtualna Standard_A2_V2** (wielkie litery V). To działa na platformie Azure globalnych i niezgodności w usłudze Azure Stack.

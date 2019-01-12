@@ -5,6 +5,7 @@ description: Dowiedz się, jak tworzenie standardowego modułu równoważenia ob
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 2cbfa0232421bf6b0673ed87b4541564eb588979
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0a746ace4806495b17462b506f030811247240e2
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200480"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247195"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowych przy użyciu witryny Azure portal
 

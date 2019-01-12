@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 035284e23d3b600cbf1cbd5500a9821c2c628b05
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: ea8669189b5fc8d797fc03f579ea52e7c11a7078
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156208"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246963"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów programu SQL Server w usłudze Azure Stack
 
@@ -59,8 +60,11 @@ _Zintegrowane systemy tylko dla instalacji_. Musisz podać certyfikat SQL PaaS P
 
 ## <a name="deploy-the-sql-resource-provider"></a>Wdrażanie dostawcy zasobów bazy danych SQL
 
-Jeśli masz wszystkie wstępnie wymagane składniki zainstalowane, uruchomić **DeploySqlProvider.ps1** skrypt w celu wdrożenia dostawcy zasobów bazy danych SQL. Skrypt DeploySqlProvider.ps1 jest wyodrębniany jako część SQL plik binarny dostawcy zasobów, który został pobrany dla używanej wersji programu Azure Stack.
+Po zainstalowaniu wszystkich wymagań wstępnych można uruchomić **DeploySqlProvider.ps1** skrypt w celu wdrożenia dostawcy zasobów bazy danych SQL. Skrypt DeploySqlProvider.ps1 jest wyodrębniany jako część SQL plik binarny dostawcy zasobów, który został pobrany dla używanej wersji programu Azure Stack.
 
+ > [!IMPORTANT]
+ > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
+ 
 Aby wdrożyć dostawcy zasobów bazy danych SQL, otwórz **nowe** z podwyższonym poziomem uprawnień okno programu PowerShell (nie PowerShell ISE) i zmiany do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów programu SQL. Zalecamy używanie nowe okno programu PowerShell, aby uniknąć potencjalnych problemów, spowodowane przez moduły programu PowerShell, które zostały już załadowane.
 
 Uruchom skrypt DeploySqlProvider.ps1, który wykonuje następujące zadania:
@@ -133,6 +137,10 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change to the directory folder where you extracted the installation files. Do not provide a certificate on ASDK!
 . $tempDir\DeploySQLProvider.ps1 `

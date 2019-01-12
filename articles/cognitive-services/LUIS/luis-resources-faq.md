@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e75fa6560feb01ae912ad2040df7a8748ed0077b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714206"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246555"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -84,6 +84,14 @@ System powinien używać najwyższy intencji oceniania niezależnie od jego wart
 Trafienia punktu końcowego całkowita na pulpicie nawigacyjnym aplikacji są okresowo aktualizowane, ale metryki skojarzone z klucza punktu końcowego usługi LUIS w witrynie Azure portal są aktualizowane częściej.
 
 Jeśli nie widzisz trafień zaktualizowano punkt końcowy na pulpicie nawigacyjnym, zaloguj się do witryny Azure portal i Znajdź zasób skojarzony z klucza punktu końcowego usługi LUIS, a następnie otwórz **metryki** wybrać **łączna liczba wywołań** metryki. Jeśli klucza punktu końcowego jest używana do więcej niż jedną aplikacją usługi LUIS, metryki w witrynie Azure portal pokazuje łączna liczba wywołań ze wszystkich aplikacji usługi LUIS, które go używają.
+
+### <a name="is-there-a-powershell-command-to-the-endpoint-quota"></a>Czy istnieje polecenia programu PowerShell do przydział punktu końcowego?
+
+Aby wyświetlić limit przydziału punktu końcowego, można użyć polecenia programu PowerShell:
+
+```powershell
+Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moja aplikacja usługi LUIS była praca wczoraj, ale już dziś otrzymuję błędy 403. Nie można zmodyfikować aplikację tak. Jak go naprawić?
 Następujące [instrukcje](#how-do-i-create-and-assign-a-luis-endpoint-key) w następnym — często zadawane pytania do tworzenia klucza punktu końcowego usługi LUIS i przypisać je do aplikacji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
@@ -194,6 +202,12 @@ Wybierz szablon usługi LUIS i zaznaczenie **wybierz** przycisku w okienku szabl
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jakie regiony usługi LUIS obsługuje zalewanie mowy platformy Bot Framework?
 [Zalewanie mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) jest obsługiwana tylko dla aplikacji usługi LUIS w wystąpieniu centralny (USA).
+
+## <a name="api-programming-strategies"></a>Strategie programowania interfejsu API
+
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Jak programowo uzyskać region usługi LUIS zasobu? 
+
+Użyj usługi LUIS próby [Znajdź region](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programowo przy użyciu C# lub programie Node.Js. 
 
 ## <a name="luis-service"></a>Usługa LUIS
 

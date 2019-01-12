@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b656a82bab9be6f6c24ba0d418df9142a6a6c117
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2c71b0abd5069aeb00b63fde8b76e5bb0fc0beda
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199769"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246436"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -410,3 +410,4 @@ Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 * [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)
 * [Jak uruchomić prognoz usługi batch](how-to-run-batch-predictions.md)
+* [Usługa Azure Machine Learning za pomocą usługi Azure Virtual Networks](how-to-enable-virtual-network.md)

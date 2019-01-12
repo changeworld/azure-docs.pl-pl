@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2e251e534e0c79feb995fd181d6bb207873e4fdb
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: dadf3241b1f1c88deca0f4ca27c0ee463d5517b4
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212587"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247178"
 documentType: LandingData
 title: Wystąpienie zarządzane usługi Azure SQL Database
 metadata:
@@ -132,7 +132,7 @@ sections:
     items:
     - html: Dowiedz się więcej o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">charakterystyki sprzętu i ograniczenia</a> i <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">różnice języka Transact-SQL</a>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurowanie</a> sieci wirtualnej platformy Azure, w którym zostanie wdrożony wystąpienia zarządzanego.
-    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">Sprawdź poprawność</a> że istniejącej sieci wirtualnej platformy Azure może służyć do wdrożenia wystąpienia zarządzanego.
+    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Sprawdź poprawność</a> że istniejącej sieci wirtualnej platformy Azure może służyć do wdrożenia wystąpienia zarządzanego.
     - html: Nawiązać połączenie przy użyciu wystąpienia <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">maszyny wirtualnej platformy Azure</a> lub <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">punkt lokacja połączenie</a>, lub <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikacji</a>.
     - html: Sprawdź, czy można migrować bazy danych przy użyciu <a href="https://www.microsoft.com/download/details.aspx?id=53595">Asisstant migracji danych</a> lub <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Asystent eksperymentowania w usłudze bazy danych</a>.
     - html: Przenieś bazy danych do wystąpienia zarządzanego przy użyciu <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natywnych przywracania</a> lub <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.

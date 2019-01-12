@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7571e5f4d95320ab92fa3b69b0ea1f05ff9c771f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 982932f538f13ac3cb8f842a32f9439f717d971f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408406"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247779"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Samouczek: Tworzenie dzierżawy usługi Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Tworzenie dzierżawy usługi Azure AD B2C
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Upewnij się, używają katalogu, który zawiera Twoją subskrypcję, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który go zawiera. Jest to innego katalogu niż ten, który będzie zawierać dzierżawy usługi Azure AD B2C.
+2. Upewnij się, używają katalogu, który zawiera Twoją subskrypcję, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który go zawiera. Ten katalog jest inny niż ten, który będzie zawierać dzierżawy usługi Azure AD B2C.
 
     ![Przejdź do katalogu subskrypcji](./media/tutorial-create-tenant/switch-directory-subscription.png)
 
@@ -46,8 +46,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     W tym przykładzie nazwa dzierżawy jest contoso0926Tenant.onmicrosoft.com
 
-6. Na **Utwórz nową dzierżawę B2C lub łącze do istniejącej dzierżawy** wybierz **dzierżawy moją subskrypcję systemu Azure łączy istniejące usługi Azure AD B2C**, wybierz dzierżawcę, który został utworzony, wybierz swoją subskrypcję, kliknij przycisk **Utwórz nową** i wprowadź nazwę grupy zasobów, która będzie zawierać dzierżawy, wybierz lokalizację, a następnie kliknij **Utwórz**.
-7. Aby rozpocząć korzystanie z nowej dzierżawy, upewnij się, korzystania z katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który go zawiera.
+6. Na **Utwórz nową dzierżawę B2C lub łącze do istniejącej dzierżawy** wybierz **dzierżawy moją subskrypcję systemu Azure łączy istniejące usługi Azure AD B2C**, wybierz dzierżawcę, który został utworzony, wybierz subskrypcję, a następnie Kliknij przycisk **Utwórz nową**.
+7. Wprowadź nazwę grupy zasobów, która będzie zawierać dzierżawy, wybierz lokalizację, a następnie kliknij **Utwórz**.
+8. Aby rozpocząć korzystanie z nowej dzierżawy, upewnij się, korzystania z katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który go zawiera.
 
     ![Przełącz się do dzierżawy katalogu](./media/tutorial-create-tenant/switch-directories.png)
 
@@ -60,4 +61,4 @@ W tym artykule przedstawiono sposób:
 > * Łączenie dzierżawy z subskrypcją
 
 > [!div class="nextstepaction"]
-> [Włącz uwierzytelnianie za pomocą konta w aplikacji sieci web](active-directory-b2c-tutorials-web-app.md)
+> [Rejestrowanie aplikacji](tutorial-register-applications.md)

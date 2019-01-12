@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994950"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247267"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w usłudze Azure App Service
 [Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci web, mobilnych zaplecza i aplikacji API apps w [witryny Azure portal](https://portal.azure.com).
@@ -72,7 +72,7 @@ Dla aplikacji są dostępne metryki:
 | Metryka | Opis |
 | --- | --- |
 | **Średni czas odpowiedzi** | Średni czas dla aplikacji do obsługi żądań, w milisekundach. |
-| **Średni zestaw roboczy pamięci** | Średnia ilość pamięci używanej przez aplikację, w mebibytes (MiB). |
+| **Średni zestaw roboczy pamięci** | Średnia ilość pamięci używanej przez aplikację, w megabajtach (MiB). |
 | **Czas procesora CPU** | Moc procesora CPU, używane przez aplikację, w ciągu kilku sekund. Aby uzyskać więcej informacji na temat tej metryki, zobacz [procent vs Procesor czas procesora CPU](#cpu-time-vs-cpu-percentage). |
 | **Dane w** | Ilość przychodzącego przepustowości aplikacji MiB. |
 | **Dane wyjściowe** | Ilość przepustowości wychodzącej przez aplikację, w MiB. |
@@ -141,14 +141,12 @@ Aby dowiedzieć się więcej o wskaźnikach, zobacz [monitorowania metryk usług
 ## <a name="alerts-and-autoscale"></a>Alerty i automatyczne skalowanie
 Metryki dla aplikacji lub plan usługi App Service można podłączonymi do alertów. Aby uzyskać więcej informacji, zobacz [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Otrzymywanie powiadomień o alertach).
 
-Aplikacje usługi App Service, hostowane w skalowania automatycznego w pomocy technicznej plany podstawowa, standardowa lub Premium usługi App Service. Z funkcją automatycznego skalowania można skonfigurować zasady, które monitorują metryki planu usługi App Service. Zasady można zwiększyć lub zmniejszyć liczbę wystąpień, co może zapewnić dodatkowe zasoby, zgodnie z potrzebami. Reguły może również pomóc zaoszczędzić pieniądze, gdy aplikacja jest nadmiernie aprowizowane. 
+Aplikacje usługi App Service, hostowane w skalowania automatycznego w pomocy technicznej plany podstawowa, standardowa lub Premium usługi App Service. Z funkcją automatycznego skalowania można skonfigurować zasady, które monitorują metryki planu usługi App Service. Zasady można zwiększyć lub zmniejszyć liczbę wystąpień, co może zapewnić dodatkowe zasoby, zgodnie z potrzebami. Reguły może również pomóc zaoszczędzić pieniądze, gdy aplikacja jest nadmiernie aprowizowane.
 
 Aby uzyskać więcej informacji na temat automatycznego skalowania, zobacz [sposób skalowania](../monitoring-and-diagnostics/insights-how-to-scale.md) i [najlepsze rozwiązania dotyczące usługi Azure Monitor autoscaling](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
-
-
 
 <!-- Images. -->
 [http403]: ./media/web-sites-monitor/http403.png

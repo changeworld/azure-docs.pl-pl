@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6d6a06af90c02dee0a7711d7362d0604018cb4a5
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043043"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246589"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetuj wymaganiach dotyczących licencjonowania dla samoobsługowego hasła usługi Azure AD
 
@@ -33,15 +33,15 @@ Samoobsługowe haseł usługi Azure AD resetowania jest licencjonowany na użytk
 * Samoobsługowe resetowanie haseł użytkowników w chmurze
    * Jestem **użytkowników tylko w chmurze** i zapomniane hasła.
       * Chcę **resetowania** hasła na coś, co wiem.
-   * Ta funkcja jest dostępna w wersjach usługi Azure AD podstawowa, Premium P1 bądź Premium P2.
+   * Ta funkcja znajduje się w usłudze Azure AD w wersji podstawowa, Premium P1 lub P2 lub Microsoft 365 Business.
 
 * Samoobsługowe hasło Resetowanie/zmiana/odblokowywanie **przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym**
    * Jestem **użytkownika hybrydowego** Moje konto użytkownika usługi Active Directory w środowisku lokalnym jest zsynchronizowany z moim kontem usługi Azure AD za pomocą usługi Azure AD Connect. Chcę zmienić hasło, mieć zapomniane hasła lub zostało zablokowane.
       * Chcę zmienić hasło lub zresetować je coś o nim znać lub odblokowywanie mojego konta **i** ma czy zmiana zsynchronizowane z powrotem do lokalnej usługi Active Directory.
-   * Ta funkcja znajduje się w programie Azure AD Premium P1, albo w wersjach Premium P2.
+   * Ta funkcja znajduje się w usłudze Azure AD Premium P1 lub P2 lub Microsoft 365 Business.
 
 > [!WARNING]
-> Licencjonowanie plany usługi Office 365 autonomiczny *"Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym" nie jest obsługiwany* i wymaga planu, która obejmuje usługi Azure AD Premium P1 albo w wersjach Premium P2 dla tej funkcji do Praca.
+> Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają plan, który zawiera program Azure AD Premium P1, P2 — wersja Premium lub Microsoft 365 Business, w tym funkcje do pracy.
 >
 
 Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na następujących stronach:
@@ -50,6 +50,7 @@ Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na nas
 * [Usługa Azure Active Directory funkcje i możliwości](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
+* [Opis usługi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-business-service-description.md)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Włącz grupy lub Licencjonowanie oparte na użytkownika
 

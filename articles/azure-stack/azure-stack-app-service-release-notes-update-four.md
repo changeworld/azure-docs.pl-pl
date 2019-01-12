@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.reviewer: ''
-ms.openlocfilehash: 80948b973e6d20b4760e97311c5a65886cf91f8f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.reviewer: anwestg
+ms.openlocfilehash: b721545f27135e36b2999de5acc61e77539a94b2
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617013"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247320"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>Usługa App Service w usłudze Azure Stack update 4 — informacje o wersji
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Te informacje o wersji opisano ulepszeń i poprawek w usłudze Azure App Service na usługi Azure Stack Update 4 i znanych problemach. Znane problemy są podzielone na problemy z bezpośrednio do wdrożenia, proces aktualizacji i problemy z kompilacją (po instalacji).
 
@@ -204,10 +204,10 @@ Walidacja
 - Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej, jak w usłudze Azure App Service w dokumentacji wdrażania usługi Azure Stack.
 
 Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
- * Źródło: wszystkie
+ * Źródło: Dowolne
  * Zakres portów źródłowych: *
  * Miejsce docelowe: Adresy IP
- * Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
+ * Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
  * Zakres portów docelowych: 445
  * Protokół: TCP
  * Akcja: Zezwalaj

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 1dbfd668c2d233d299ee673da92ca203e72942fe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: unknown
+ms.openlocfilehash: af959507fc2e0d1b68f547d2856eb7020d3ed5c6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957427"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247580"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
@@ -228,7 +228,7 @@ Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -DeploymentDataJSO
 
 W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Start AzsReadinessChecker sprawdza, czy każda ścieżka PFX istnieje i sprawdza poprawność ich za pomocą region i FQDN zewnętrznej odczytu z pliku JSON danych wdrożenia wygenerowany dla wdrożenia. 
 
-### <a name="example-validate-azure-identity"></a>Przykład: Weryfikowania tożsamości platformy Azure
+### <a name="example-validate-azure-identity"></a>Przykład: Weryfikowanie tożsamości platformy Azure
 
 ```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
@@ -238,7 +238,7 @@ Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -Azur
 
 W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD o nazwie katalogu dzierżawy "azurestack.contoso.com"
 
-### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Przykład: Sprawdzanie poprawności tożsamości platformy Azure z danymi wdrażania (Obsługa wdrażania)
+### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Przykład: Weryfikowanie usługi Azure identity danymi wdrażania (Obsługa wdrażania)
 
 ```PowerSHell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
@@ -247,7 +247,7 @@ Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -Depl
 
 W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i Start AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD gdzie AzureCloud i TenantName są odczytywane z danych wdrożenia Plik JSON, generowany dla wdrożenia.
 
-### <a name="example-validate-azure-registration"></a>Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure
+### <a name="example-validate-azure-registration"></a>Przykład: Sprawdź poprawność rejestracji platformy Azure
 
 ```PowerShell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
@@ -258,7 +258,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker wykonuje następnie weryfikacji względem podane konto i subskrypcję, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack. 
 
-### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure z danymi wdrażania (zespół wdrażania)
+### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Przykład: Sprawdź poprawność rejestracja w usłudze Azure z danymi wdrażania (zespół wdrażania)
 
 ```PowerShell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
@@ -268,7 +268,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker następnie wykonuje sprawdzanie poprawności względem danego konta i subskrypcji, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack gdzie znajdują się dodatkowe szczegóły odczytać z pliku JSON danych wdrożenia wygenerowany dla wdrożenia.
 
-### <a name="example-importexport-pfx-package"></a>Przykład: PFX importu/eksportu pakietu
+### <a name="example-importexport-pfx-package"></a>Przykład: Pakiet PFX importu/eksportu
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
