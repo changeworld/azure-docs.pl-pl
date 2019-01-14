@@ -109,7 +109,7 @@
 ##### [Zarządzanie kontami magazynu](storsimple-8000-manage-storage-accounts.md)
 ##### [Zarządzanie kontenerami woluminów](storsimple-8000-manage-volume-containers.md)
 ##### [Zarządzanie woluminami — bieżące](storsimple-8000-manage-volumes-u2.md)
-###### [Często zadawane pytania: Lokalnie przypięte woluminy](storsimple-8000-local-volume-faq.md)
+###### [Często zadawane pytania: lokalnie przypięte woluminy](storsimple-8000-local-volume-faq.md)
 ##### [Kontrola dostępu oparta na rolach](storsimple-8000-role-based-access-control.md)
 ##### [Zarządzanie rekordami ACR](storsimple-8000-manage-acrs.md)
 ##### [Zarządzanie szablonami przepustowości](storsimple-8000-manage-bandwidth-templates.md)
@@ -209,7 +209,7 @@
 ## Dokumentacja
 ### [Interfejs API REST](https://docs.microsoft.com/rest/api/storsimple)
 ### [Polecenia cmdlet programu Windows PowerShell dla usługi StorSimple](https://technet.microsoft.com/library/dn688168.aspx)
-
+### [Szablon usługi Resource Manager](/azure/templates/microsoft.storsimple/allversions)
 
 # StorSimple Data Manager
 
