@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54018623"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Table storage za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
 > * [Wersja 1](v1/data-factory-azure-table-connector.md)
 > * [Bieżąca wersja](connector-azure-table-storage.md)
 
