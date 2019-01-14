@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54024842"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
 > * [Version1 ](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Bieżąca wersja](connector-azure-sql-data-warehouse.md)
 
