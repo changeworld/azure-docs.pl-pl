@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584449"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232757"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Samouczek: Zbuduj obraz przetwarzania aplikacji - C&#35;
 
@@ -97,9 +97,6 @@ Możesz uruchomić przykładową aplikację, aby zobaczyć sposób jej interakcj
    |Rozpoznawanie tekstu (OCR) | Używa [optyczne rozpoznawanie znaków](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) operację, aby rozpoznawać i wyodrębnianie drukowanych tekstu z obrazu. Możesz wybrać język do użycia lub umożliwić przetwarzanie obrazów, automatyczne wykrywanie języka. |
    |Rozpoznawanie tekstu w wersji 2 (w języku angielskim) | Używa [Rozpoznaj tekst](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) i [uzyskać rozpoznaje wynik operacji tekstu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) operacje asynchroniczne rozpoznaje i wyodrębnianie tekstu drukowanego na klawiaturze lub odręcznie z obrazu. |
    |Pobierz miniaturę | Używa [Pobierz miniaturę](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) operację, aby wygenerować miniatury obrazów lokalnych lub zdalnych. |
-
-   > [!IMPORTANT]
-   > Firma Microsoft odbierze obrazów, przekazywanie i może używać ich w celu ulepszenia interfejsu API przetwarzania obrazów i powiązanych usług. Przesłanie obrazu jest równoznaczne z potwierdzeniem, że stosowano się do zasad naszego [Kodeksu postępowania dewelopera](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
 
    Poniższy zrzut ekranu przedstawia stronę przewidzianych w scenariuszu analizowanie obrazów, po przeanalizowaniu przykładowy obraz.
    ![Zrzut ekranu przedstawiający stronę obraz analizy](../Images/Analyze_Image_Example.PNG)
