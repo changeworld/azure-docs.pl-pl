@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1ae0be44be524e4cb4e8d446e2279a1bfd800a04
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055085"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231618"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -59,7 +59,7 @@ Istnieją _usługi SDK_ dostępne dla wielu języków, które umożliwiają twor
 [Usługa Azure Storage](../storage/common/storage-introduction.md) to rozwiązanie magazynu w chmurze. Obejmuje usługi magazynu obiektów Blob, używanego do przechowywania danych obiektów bez struktury. Samouczki usługi IoT Hub używać magazynu obiektów blob.
 
 ## <a name="back-end-app"></a>Aplikacja wewnętrzna
-W kontekście [usługi IoT Hub](#iot-hub), aplikacji zaplecza, to aplikacja, która łączy się z jednego z punktów końcowych usługi skierowaną w Centrum IoT hub. Na przykład, może pobrać aplikacji zaplecza [urządzenia do chmury](#device-to-cloud)wiadomości lub zarządzać [rejestr tożsamości](#identity-registry). Zazwyczaj aplikacji zaplecza działa w chmurze, ale w wielu samouczków aplikacji zaplecza są aplikacji konsoli uruchomionych na lokalnej maszynie do programowania.
+W kontekście [usługi IoT Hub](#iot-hub), aplikacji zaplecza, to aplikacja, która łączy się z jednego z punktów końcowych usługi skierowaną w Centrum IoT hub. Na przykład, może pobrać aplikacji zaplecza [urządzenia do chmury](#device-to-cloud) wiadomości lub zarządzać [rejestr tożsamości](#identity-registry). Zazwyczaj aplikacji zaplecza działa w chmurze, ale w wielu samouczków aplikacji zaplecza są aplikacji konsoli uruchomionych na lokalnej maszynie do programowania.
 
 ## <a name="built-in-endpoints"></a>Wbudowane punkty końcowe
 Każde wystąpienie usługi IoT hub zawiera wbudowaną [punktu końcowego](iot-hub-devguide-endpoints.md) czyli zgodnego z Centrum zdarzeń. Możesz użyć dowolnego mechanizmu, który współpracuje z usługą Event Hubs do odczytywania komunikatów z urządzenia do chmury z tego punktu końcowego.
