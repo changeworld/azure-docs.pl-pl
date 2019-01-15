@@ -1,26 +1,8 @@
 ---
-title: 'NET # sieci neuronowych — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
-description: 'Składnia dla Net # neuronowych sieci specyfikacji języka, wraz z przykładami sposobu tworzenia modelu niestandardowych sieci neuronowych Net # użyciem usługi Azure Machine Learning Studio.'
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: reference
-ms.date: 03/01/2018
-ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631129"
+Tytuł: Net# Neural Networks titleSuffix: Opis usługi Azure Machine Learning Studio: Składnia dla Net # neuronowych sieci specyfikacji języka, wraz z przykładami sposobu tworzenia modelu niestandardowych sieci neuronowych Net # użyciem usługi Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: odwołanie
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6db4de61f84280b7e34f8a9d5c3290ff6d4f97ab
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200073"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267389"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migracja Contoso: Ponowne hostowanie aplikacji w środowisku lokalnym, na maszynach wirtualnych platformy Azure i grupy dostępności AlwaysOn programu SQL Server
 
@@ -107,7 +107,7 @@ Contoso ocenia swoich konstrukcjach proponowanych przez zestawiania listę zalet
 
 **Zagadnienia** | **Szczegóły**
 --- | ---
-**Specjaliści** | WEBVM zostaną przeniesione na platformę Azure bez konieczności wprowadzania zmian, tworzenie prostego migracji.<br/><br/> Warstwy programu SQL Server zostanie uruchomiony program SQL Server 2017 i systemem Windows Server 2016. Powoduje to wycofanie ich bieżącego systemu operacyjnego Windows Server 2008 R2 oraz uruchamianie programu SQL Server 2017 obsługuje wymagania techniczne i cele firmy Contoso. IT zapewnia 100% zgodności podczas przenoszenia od programu SQL Server 2008 R2.<br/><br/> Contoso mogą korzystać z inwestycji w pakiet Software Assurance, za pomocą korzyści użycia hybrydowego platformy Azure.<br/><br/> O wysokiej dostępności wdrożenia serwera SQL w przeglądzie zapewnia odporność na uszkodzenia, tak aby warstwy danych aplikacji jest już pojedynczym punktem krytycznym przejścia w tryb failover.
+**Specjaliści** | WEBVM zostaną przeniesione na platformę Azure bez konieczności wprowadzania zmian, tworzenie prostego migracji.<br/><br/> Warstwy programu SQL Server zostanie uruchomiony program SQL Server 2017 i systemem Windows Server 2016. Powoduje to wycofanie ich bieżącego systemu operacyjnego Windows Server 2008 R2 oraz uruchamianie programu SQL Server 2017 obsługuje wymagania techniczne i cele firmy Contoso. IT zapewnia 100% zgodności podczas przenoszenia od programu SQL Server 2008 R2.<br/><br/> Contoso mogą korzystać z inwestycji w pakiet Software Assurance, za pomocą korzyści użycia hybrydowego platformy Azure.<br/><br/> Wysoką dostępność, wdrożenie programu SQL Server na platformie Azure zapewnia odporność na uszkodzenia, tak aby warstwy danych aplikacji jest już pojedynczym punktem krytycznym przejścia w tryb failover.
 **Wady** | WEBVM jest uruchomiony system Windows Server 2008 R2. System operacyjny jest obsługiwany przez platformę Azure dla określonych ról (lipca 2018 r.). [Dowiedz się więcej](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> Warstwa sieci web aplikacji pozostanie pojedynczy punkt przejścia w tryb failover.</br><br/> Contoso należy kontynuować obsługi warstwa sieci web jako Maszynę wirtualną platformy Azure, zamiast przenosić do zarządzanej usługi, takie jak usługa Azure App Service.<br/><br/> Za pomocą wybranego rozwiązania Contoso należy kontynuować zarządzanie dwie maszyny wirtualne programu SQL Server, zamiast przechodzenia do zarządzanej platformy, takich jak wystąpienia zarządzanego Azure SQL Database. Ponadto z pakietem Software Assurance Contoso można wymienić swoich istniejących licencji do korzystania z taryf rabatowych na wystąpieniu zarządzanym bazy danych SQL Azure.
 
 
@@ -277,7 +277,7 @@ Administratorzy firmy Contoso można teraz wdrożyć wewnętrznego modułu równ
 
 Tworzą modułu równoważenia obciążenia w następujący sposób:
 
-1. W witrynie Azure portal > **sieć** > **usługi Load Balancer**, konfigurowania nowego wewnętrznego modułu równoważenia obciążenia: **WEWNĘTRZNEGO MODUŁU RÓWNOWAŻENIA OBCIĄŻENIA PROD-DB-EUS2-SQLAOG**.
+1. W witrynie Azure portal > **sieć** > **usługi Load Balancer**, konfigurowania nowego wewnętrznego modułu równoważenia obciążenia: **ILB-PROD-DB-EUS2-SQLAOG**.
 2. Ich umieszczenie modułu równoważenia obciążenia w sieci produkcyjnej **VNET-PROD-EUS2**, w podsieci bazy danych **PROD-DB-EUS2**.
 3. Mogą przypisać go statyczny adres IP: 10.245.40.100.
 4. Jako element sieci wdrażanych na moduł równoważenia obciążenia w grupie zasobów sieciowych **ContosoNetworkingRG**.
@@ -472,7 +472,7 @@ Administratorzy firmy Contoso wykonaj następujące kroki w następujący sposó
 8. Logowania z maszyną ponownie, a następnie automatycznie uruchomiony Kreator zarządzania serwerem konfiguracji.
 9. W Kreatorze one wybierz kartę Sieciową, aby odbierać ruch związany z replikacją. Nie można zmienić to ustawienie, po skonfigurowaniu go.
 10. Wybierają subskrypcji, grupy zasobów i Magazyn, w którym można zarejestrować serwer konfiguracji.
-        ![Vault](./media/contoso-migration-rehost-vm-sql-ag/cswiz1.png) 
+        ![vault](./media/contoso-migration-rehost-vm-sql-ag/cswiz1.png) 
 
 10. One, a następnie Pobierz i zainstaluj serwer MySQL, a program VMWare PowerCLI. 
 11. Po zakończeniu walidacji określają nazwy FQDN lub adres IP vCenter server lub hoście vSphere. Pozostaw domyślny port i określ przyjazną nazwę dla serwera vCenter.
@@ -551,23 +551,23 @@ Administratorzy firmy Contoso zostaną zmigrowane rozwiązania SmartHotel360 baz
 1. W narzędziu DMA działają nowej migracji - **SmartHotel**.
 2. Wybierają **typ serwera docelowego** jako **programu SQL Server na maszynach wirtualnych Azure**. 
 
-    ![PROGRAM DMA](media/contoso-migration-rehost-vm-sql-ag/dma-1.png)
+    ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-1.png)
 
 3. Informacje dotyczące migracji, co zwiększa **SQLVM** co serwer źródłowy i **SQLAOG1** jako element docelowy. One Określ poświadczenia dla poszczególnych maszyn.
 
-     ![PROGRAM DMA](media/contoso-migration-rehost-vm-sql-ag/dma-2.png)
+     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-2.png)
 
 4. Tworzą lokalny udział informacji bazy danych i konfiguracji. Musi być dostępny z dostępem do zapisu dla konta usługi SQL na SQLVM i SQLAOG1.
 
-    ![PROGRAM DMA](media/contoso-migration-rehost-vm-sql-ag/dma-3.png)
+    ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-3.png)
 
 5. Contoso wybiera dane logowania, które mają zostać poddane migracji, a następnie rozpoczyna migrację. Po zakończeniu program DMA pokazuje migracji pomyślne.
 
-    ![PROGRAM DMA](media/contoso-migration-rehost-vm-sql-ag/dma-4.png)
+    ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-4.png)
 
 6. Sprawdź, czy baza danych jest uruchomiona na **SQLAOG1**.
 
-    ![PROGRAM DMA](media/contoso-migration-rehost-vm-sql-ag/dma-5.png)
+    ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-5.png)
 
 Usługa DMS łączy maszynę Wirtualną w środowisku lokalnym SQL Server przez połączenie VPN lokacja lokacja między centrum danych firmy Contoso i platformą Azure, a następnie przeprowadza migrację bazy danych.
 

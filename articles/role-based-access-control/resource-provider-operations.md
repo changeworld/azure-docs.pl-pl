@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb72de7e9a61c874d4449a5b9c0422c787a7bdc0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c841fb8676cff8d15f54384aac84721bc8fb163b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728452"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267525"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -33,16 +33,16 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.AAD/domainServices/delete | Usuń usługi domeny |
+> | Akcja | Microsoft.AAD/domainServices/delete | Delete Domain Service |
 > | Akcja | Microsoft.AAD/domainServices/oucontainer/delete | Usuwanie kontenera jednostki organizacyjnej |
 > | Akcja | Microsoft.AAD/domainServices/oucontainer/read | Odczytaj jednostki organizacyjnej kontenerów |
 > | Akcja | Microsoft.AAD/domainServices/oucontainer/write | Zapis kontenera jednostki organizacyjnej |
-> | Akcja | Microsoft.AAD/domainServices/read | Usługi domenowe odczytu |
-> | Akcja | Microsoft.AAD/domainServices/write | Pisanie usług domenowych |
+> | Akcja | Microsoft.AAD/domainServices/read | Read Domain Services |
+> | Akcja | Microsoft.AAD/domainServices/write | Write Domain Service |
 > | Akcja | Microsoft.AAD/locations/operationresults/read |  |
 > | Akcja | Microsoft.AAD/Operations/read |  |
-> | Akcja | Microsoft.AAD/register/action | Zarejestruj usługę domeny |
-> | Akcja | Microsoft.AAD/unregister/action | Wyrejestruj usług domenowych |
+> | Akcja | Microsoft.AAD/register/action | Register Domain Service |
+> | Akcja | Microsoft.AAD/unregister/action | Unregister Domain Service |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
@@ -50,9 +50,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.aadiam/diagnosticsettings/DELETE | Usuwanie ustawienia diagnostyczne |
-> | Akcja | Microsoft.aadiam/diagnosticsettings/Read | Odczytywanie ustawienie diagnostyczne |
-> | Akcja | Microsoft.aadiam/diagnosticsettings/Write | Zapisywanie ustawienia diagnostyczne |
-> | Akcja | Microsoft.aadiam/diagnosticsettingscategories/Read | Odczytywanie kategorii ustawienie diagnostyczne |
+> | Akcja | microsoft.aadiam/diagnosticsettings/read | Odczytywanie ustawienie diagnostyczne |
+> | Akcja | microsoft.aadiam/diagnosticsettings/write | Zapisywanie ustawienia diagnostyczne |
+> | Akcja | microsoft.aadiam/diagnosticsettingscategories/read | Odczytywanie kategorii ustawienie diagnostyczne |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -1129,8 +1129,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Compute/virtualMachines/extensions/write | Tworzy nowe rozszerzenie maszyny wirtualnej lub aktualizuje istniejące rozszerzenie |
 > | Akcja | Microsoft.Compute/virtualMachines/generalize/action | Ustawia stan maszyny wirtualnej „Uogólniono” i przygotowuje maszynę wirtualną do przechwycenia |
 > | Akcja | Microsoft.Compute/virtualMachines/instanceView/read | Pobiera szczegółowy stan środowiska uruchomieniowego dla maszyny wirtualnej i jej zasobów |
-> | Element DataAction | Microsoft.Compute/virtualMachines/login/action | Zaloguj się do maszyny wirtualnej jako zwykły użytkownik |
-> | Element DataAction | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Zaloguj się do maszyny wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux |
+> | DataAction | Microsoft.Compute/virtualMachines/login/action | Zaloguj się do maszyny wirtualnej jako zwykły użytkownik |
+> | DataAction | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Zaloguj się do maszyny wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux |
 > | Akcja | Microsoft.Compute/virtualMachines/performMaintenance/action | Wykonuje operację konserwacji maszyny wirtualnej. |
 > | Akcja | Microsoft.Compute/virtualMachines/powerOff/action | Wyłącza maszynę wirtualną. Należy zauważyć, że maszyna wirtualna będzie w dalszym ciągu objęte rozliczeniami. |
 > | Akcja | Microsoft.Compute/virtualMachines/read | Pobierz właściwości maszyny wirtualnej |
@@ -2495,7 +2495,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/MetricDefinitions/Read | Przeczytaj definicje metryk |
 > | Akcja | Microsoft.Insights/Metrics/providers/Metrics/Read | Odczytaj metryki |
 > | Akcja | Microsoft.Insights/Metrics/Read | Odczytaj metryki |
-> | Element DataAction | Microsoft.Insights/Metrics/Write | Metryki zapisu |
+> | DataAction | Microsoft.Insights/Metrics/Write | Metryki zapisu |
 > | Akcja | Microsoft.Insights/MigrateToNewpricingModel/Action | Migruj subskrypcję do nowego modelu cen |
 > | Akcja | Microsoft.Insights/Operations/Read | Operacje odczytu |
 > | Akcja | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
@@ -2550,23 +2550,23 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.KeyVault/checkNameAvailability/read | Sprawdza, czy nazwa magazynu kluczy jest prawidłowa oraz czy została już użyta |
+> | Akcja | Microsoft.KeyVault/checkNameAvailability/read | Sprawdza, czy nazwa magazynu kluczy jest prawidłowa i nie jest w użyciu |
 > | Akcja | Microsoft.KeyVault/deletedVaults/read | Wyświetl właściwości usuniętych nietrwale magazynów kluczy |
 > | Akcja | Microsoft.KeyVault/hsmPools/delete | Usuń pulę modułów HSM |
 > | Akcja | Microsoft.KeyVault/hsmPools/joinVault/action | Dołącz magazyn kluczy do puli modułów HSM |
 > | Akcja | Microsoft.KeyVault/hsmPools/read | Wyświetl właściwości puli modułów HSM |
-> | Akcja | Microsoft.KeyVault/hsmPools/write | Utwórz nową pulę modułów HSM lub zaktualizuj właściwości istniejącej puli modułów HSM |
+> | Akcja | Microsoft.KeyVault/hsmPools/write | Utwórz nową pulę modułów HSM aktualizacji właściwości istniejącej puli modułów HSM |
 > | Akcja | Microsoft.KeyVault/locations/deletedVaults/purge/action | Przeczyść usunięty nietrwale magazyn kluczy |
-> | Akcja | Microsoft.KeyVault/locations/deletedVaults/read | Wyświetl właściwości usuniętego nietrwale magazynu kluczy |
-> | Akcja | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | Powiadamia element Microsoft.KeyVault o usuwaniu podsieci lub sieci wirtualnej |
+> | Akcja | Microsoft.KeyVault/locations/deletedVaults/read | Wyświetlanie właściwości usunięty nietrwale magazyn kluczy |
+> | Akcja | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | Powiadamia element Microsoft.KeyVault, że trwa usuwanie sieci wirtualnej lub podsieci |
 > | Akcja | Microsoft.KeyVault/locations/operationResults/read | Sprawdź wynik operacji długiego uruchamiania |
 > | Akcja | Microsoft.KeyVault/operations/read | Wyświetla operacje dostępne dla dostawcy zasobów Microsoft.KeyVault |
 > | Akcja | Microsoft.KeyVault/register/action | Rejestruje subskrypcję |
 > | Akcja | Microsoft.KeyVault/unregister/action | Wyrejestrowuje subskrypcję |
-> | Akcja | Microsoft.KeyVault/vaults/accessPolicies/write | Aktualizowanie istniejących zasad dostępu przez scalanie lub zastępowanie albo dodawanie nowych zasad dostępu do magazynu. |
+> | Akcja | Microsoft.KeyVault/vaults/accessPolicies/write | Aktualizowanie istniejących zasad dostępu przez scalanie lub zastępowanie lub Dodaj nowe zasady dostępu do magazynu. |
 > | Akcja | Microsoft.KeyVault/vaults/delete | Usuń magazyn kluczy |
-> | Akcja | Microsoft.KeyVault/vaults/deploy/action | Zapewnia dostęp do wpisów tajnych w magazynie kluczy podczas wdrażania zasobów platformy Azure |
-> | Akcja | Microsoft.KeyVault/vaults/read | Wyświetl właściwości magazynu kluczy |
+> | Akcja | Microsoft.KeyVault/vaults/deploy/action | Umożliwia dostęp do wpisów tajnych w magazynie kluczy podczas wdrażania zasobów platformy Azure |
+> | Akcja | Microsoft.KeyVault/vaults/read | Wyświetlanie właściwości magazynu kluczy |
 > | Akcja | Microsoft.KeyVault/vaults/secrets/read | Wyświetl właściwości wpisu tajnego, ale nie jego wartość |
 > | Akcja | Microsoft.KeyVault/vaults/secrets/write | Utwórz nowy wpis tajny lub zaktualizuj wartość istniejącego wpisu tajnego |
 > | Akcja | Microsoft.KeyVault/vaults/write | Utwórz nowy magazyn kluczy lub zaktualizuj właściwości istniejącego magazynu kluczy |
@@ -2672,163 +2672,163 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | Odczytaj dane z tabeli ADAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | Odczytaj dane z tabeli ADReplicationResult |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ADSecurityAssessmentRecommendation/read | Odczytaj dane z tabeli ADSecurityAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Alert/read | Odczytaj dane z tabeli Alert |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Odczytaj dane z tabeli AlertHistory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AppCenterError/read | Odczyt danych z tabeli AppCenterError |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Odczytaj dane z tabeli ApplicationInsights |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AuditLogs/read | Odczyt danych z tabeli AuditLogs |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Odczytaj dane z tabeli AzureActivity |
-> | Element DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Odczytaj dane z tabeli AzureMetrics |
-> | Element DataAction | Microsoft.LogAnalytics/logs/BoundPort/read | Odczytaj dane z tabeli BoundPort |
-> | Element DataAction | Microsoft.LogAnalytics/logs/CommonSecurityLog/read | Odczytaj dane z tabeli CommonSecurityLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ComputerGroup/read | Odczytaj dane z tabeli ComputerGroup |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ConfigurationChange/read | Odczytaj dane z tabeli ConfigurationChange |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ConfigurationData/read | Odczytaj dane z tabeli ConfigurationData |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerImageInventory/read | Odczytaj dane z tabeli ContainerImageInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerInventory/read | Odczytaj dane z tabeli ContainerInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerLog/read | Odczytaj dane z tabeli ContainerLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ContainerServiceLog/read | Odczytaj dane z tabeli ContainerServiceLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceAppCrash/read | Odczytaj dane z tabeli DeviceAppCrash |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceAppLaunch/read | Odczytaj dane z tabeli DeviceAppLaunch |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceCalendar/read | Odczytaj dane z tabeli DeviceCalendar |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceCleanup/read | Odczytaj dane z tabeli DeviceCleanup |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceConnectSession/read | Odczytaj dane z tabeli DeviceConnectSession |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceEtw/read | Odczytaj dane z tabeli DeviceEtw |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHardwareHealth/read | Odczytaj dane z tabeli DeviceHardwareHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHealth/read | Odczytaj dane z tabeli DeviceHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceHeartbeat/read | Odczytaj dane z tabeli DeviceHeartbeat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeHeartbeat/read | Odczytaj dane z tabeli DeviceSkypeHeartbeat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeSignIn/read | Odczytaj dane z tabeli DeviceSkypeSignIn |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DeviceSleepState/read | Odczytaj dane z tabeli DeviceSleepState |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHAppFailure/read | Odczytaj dane z tabeli DHAppFailure |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHAppReliability/read | Odczytaj dane z tabeli DHAppReliability |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHDriverReliability/read | Odczytaj dane z tabeli DHDriverReliability |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHLogonFailures/read | Odczytaj dane z tabeli DHLogonFailures |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHLogonMetrics/read | Odczytaj dane z tabeli DHLogonMetrics |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHOSCrashData/read | Odczytaj dane z tabeli DHOSCrashData |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHOSReliability/read | Odczytaj dane z tabeli DHOSReliability |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DHWipAppLearning/read | Odczytaj dane z tabeli DHWipAppLearning |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DnsEvents/read | Odczytaj dane z tabeli DnsEvents |
-> | Element DataAction | Microsoft.LogAnalytics/logs/DnsInventory/read | Odczytaj dane z tabeli DnsInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ETWEvent/read | Odczytaj dane z tabeli ETWEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Event/read | Odczytaj dane z tabeli Event |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ExchangeAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ExchangeOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeOnlineAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Odczytaj dane z tabeli Heartbeat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Odczytaj dane z tabeli IISAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Odczytaj dane z tabeli InboundConnection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/KubeEvents/read | Odczyt danych z tabeli KubeEvents |
-> | Element DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | Odczytaj dane z tabeli KubeNodeInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | Odczytaj dane z tabeli KubePodInventory |
-> | Element DataAction | Microsoft.LogAnalytics/logs/KubeServices/read | Odczyt danych z tabeli KubeServices |
-> | Element DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Odczytaj dane z tabeli LinuxAuditLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Odczytaj dane z tabeli MAApplication |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Odczytaj dane z tabeli MAApplicationHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Odczytaj dane z tabeli MAApplicationHealthAlternativeVersions |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Odczytaj dane z tabeli MAApplicationHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Odczytaj dane z tabeli MAApplicationInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Odczytaj dane z tabeli MAApplicationInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Odczytaj dane z tabeli MAApplicationReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Odczytaj dane z tabeli MADeploymentPlan |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Odczytaj dane z tabeli MADevice |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADeviceNotEnrolled/read | Odczyt danych z tabeli MADeviceNotEnrolled |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Odczytaj dane z tabeli MADevicePnPHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Odczytaj dane z tabeli MADevicePnPHealthAlternativeVersions |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Odczytaj dane z tabeli MADevicePnPHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Odczytaj dane z tabeli MADeviceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Odczytaj dane z tabeli MADriverInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Odczytaj dane z tabeli MADriverReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Odczytaj dane z tabeli MAOfficeAddin |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Odczytaj dane z tabeli MAOfficeAddinHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Odczytaj dane z tabeli MAOfficeAddinHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Odczytaj dane z tabeli MAOfficeAddinInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeAddinInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Odczytaj dane z tabeli MAOfficeAddinReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Odczytaj dane z tabeli MAOfficeApp |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Odczytaj dane z tabeli MAOfficeAppHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppInstance/read | Odczytaj dane z tabeli MAOfficeAppInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppReadiness/read | Odczytaj dane z tabeli MAOfficeAppReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeBuildInfo/read | Odczytaj dane z tabeli MAOfficeBuildInfo |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessment |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessmentDailyCounts |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Odczytaj dane z tabeli MAOfficeDeploymentStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Odczytaj dane z tabeli MAOfficeMacroHealth |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Odczytaj dane z tabeli MAOfficeMacroHealthIssues |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Odczytaj dane z tabeli MAOfficeMacroSummary |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Odczytaj dane z tabeli MAOfficeSuite |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuiteInstance/read | Odczytaj dane z tabeli MAOfficeSuiteInstance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAProposedPilotDevices/read | Odczytaj dane z tabeli MAProposedPilotDevices |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsBuildInfo/read | Odczytaj dane z tabeli MAWindowsBuildInfo |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessment |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessmentDailyCounts |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Odczytaj dane z tabeli MAWindowsDeploymentStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Odczytaj dane z tabeli MAWindowsSysReqInstanceReadiness |
-> | Element DataAction | Microsoft.LogAnalytics/logs/NetworkMonitoring/read | Odczytaj dane z tabeli NetworkMonitoring |
-> | Element DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Odczytaj dane z tabeli OfficeActivity |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Operation/read | Odczytaj dane z tabeli Operation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/OutboundConnection/read | Odczytaj dane z tabeli OutboundConnection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Perf/read | Odczytaj dane z tabeli Perf |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ProtectionStatus/read | Odczytaj dane z tabeli ProtectionStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | Odczytaj dane z tabeli ADAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | Odczytaj dane z tabeli ADReplicationResult |
+> | DataAction | Microsoft.LogAnalytics/logs/ADSecurityAssessmentRecommendation/read | Odczytaj dane z tabeli ADSecurityAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/Alert/read | Odczytaj dane z tabeli Alert |
+> | DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Odczytaj dane z tabeli AlertHistory |
+> | DataAction | Microsoft.LogAnalytics/logs/AppCenterError/read | Odczyt danych z tabeli AppCenterError |
+> | DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Odczytaj dane z tabeli ApplicationInsights |
+> | DataAction | Microsoft.LogAnalytics/logs/AuditLogs/read | Odczyt danych z tabeli AuditLogs |
+> | DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Odczytaj dane z tabeli AzureActivity |
+> | DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Odczytaj dane z tabeli AzureMetrics |
+> | DataAction | Microsoft.LogAnalytics/logs/BoundPort/read | Odczytaj dane z tabeli BoundPort |
+> | DataAction | Microsoft.LogAnalytics/logs/CommonSecurityLog/read | Odczytaj dane z tabeli CommonSecurityLog |
+> | DataAction | Microsoft.LogAnalytics/logs/ComputerGroup/read | Odczytaj dane z tabeli ComputerGroup |
+> | DataAction | Microsoft.LogAnalytics/logs/ConfigurationChange/read | Odczytaj dane z tabeli ConfigurationChange |
+> | DataAction | Microsoft.LogAnalytics/logs/ConfigurationData/read | Odczytaj dane z tabeli ConfigurationData |
+> | DataAction | Microsoft.LogAnalytics/logs/ContainerImageInventory/read | Odczytaj dane z tabeli ContainerImageInventory |
+> | DataAction | Microsoft.LogAnalytics/logs/ContainerInventory/read | Odczytaj dane z tabeli ContainerInventory |
+> | DataAction | Microsoft.LogAnalytics/logs/ContainerLog/read | Odczytaj dane z tabeli ContainerLog |
+> | DataAction | Microsoft.LogAnalytics/logs/ContainerServiceLog/read | Odczytaj dane z tabeli ContainerServiceLog |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceAppCrash/read | Odczytaj dane z tabeli DeviceAppCrash |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceAppLaunch/read | Odczytaj dane z tabeli DeviceAppLaunch |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceCalendar/read | Odczytaj dane z tabeli DeviceCalendar |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceCleanup/read | Odczytaj dane z tabeli DeviceCleanup |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceConnectSession/read | Odczytaj dane z tabeli DeviceConnectSession |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceEtw/read | Odczytaj dane z tabeli DeviceEtw |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceHardwareHealth/read | Odczytaj dane z tabeli DeviceHardwareHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceHealth/read | Odczytaj dane z tabeli DeviceHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceHeartbeat/read | Odczytaj dane z tabeli DeviceHeartbeat |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeHeartbeat/read | Odczytaj dane z tabeli DeviceSkypeHeartbeat |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceSkypeSignIn/read | Odczytaj dane z tabeli DeviceSkypeSignIn |
+> | DataAction | Microsoft.LogAnalytics/logs/DeviceSleepState/read | Odczytaj dane z tabeli DeviceSleepState |
+> | DataAction | Microsoft.LogAnalytics/logs/DHAppFailure/read | Odczytaj dane z tabeli DHAppFailure |
+> | DataAction | Microsoft.LogAnalytics/logs/DHAppReliability/read | Odczytaj dane z tabeli DHAppReliability |
+> | DataAction | Microsoft.LogAnalytics/logs/DHDriverReliability/read | Odczytaj dane z tabeli DHDriverReliability |
+> | DataAction | Microsoft.LogAnalytics/logs/DHLogonFailures/read | Odczytaj dane z tabeli DHLogonFailures |
+> | DataAction | Microsoft.LogAnalytics/logs/DHLogonMetrics/read | Odczytaj dane z tabeli DHLogonMetrics |
+> | DataAction | Microsoft.LogAnalytics/logs/DHOSCrashData/read | Odczytaj dane z tabeli DHOSCrashData |
+> | DataAction | Microsoft.LogAnalytics/logs/DHOSReliability/read | Odczytaj dane z tabeli DHOSReliability |
+> | DataAction | Microsoft.LogAnalytics/logs/DHWipAppLearning/read | Odczytaj dane z tabeli DHWipAppLearning |
+> | DataAction | Microsoft.LogAnalytics/logs/DnsEvents/read | Odczytaj dane z tabeli DnsEvents |
+> | DataAction | Microsoft.LogAnalytics/logs/DnsInventory/read | Odczytaj dane z tabeli DnsInventory |
+> | DataAction | Microsoft.LogAnalytics/logs/ETWEvent/read | Odczytaj dane z tabeli ETWEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/Event/read | Odczytaj dane z tabeli Event |
+> | DataAction | Microsoft.LogAnalytics/logs/ExchangeAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/ExchangeOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeOnlineAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Odczytaj dane z tabeli Heartbeat |
+> | DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Odczytaj dane z tabeli IISAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Odczytaj dane z tabeli InboundConnection |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeEvents/read | Odczyt danych z tabeli KubeEvents |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | Odczytaj dane z tabeli KubeNodeInventory |
+> | DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | Odczytaj dane z tabeli KubePodInventory |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeServices/read | Odczyt danych z tabeli KubeServices |
+> | DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Odczytaj dane z tabeli LinuxAuditLog |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Odczytaj dane z tabeli MAApplication |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Odczytaj dane z tabeli MAApplicationHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Odczytaj dane z tabeli MAApplicationHealthAlternativeVersions |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Odczytaj dane z tabeli MAApplicationHealthIssues |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Odczytaj dane z tabeli MAApplicationInstance |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Odczytaj dane z tabeli MAApplicationInstanceReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Odczytaj dane z tabeli MAApplicationReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Odczytaj dane z tabeli MADeploymentPlan |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Odczytaj dane z tabeli MADevice |
+> | DataAction | Microsoft.LogAnalytics/logs/MADeviceNotEnrolled/read | Odczyt danych z tabeli MADeviceNotEnrolled |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Odczytaj dane z tabeli MADevicePnPHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Odczytaj dane z tabeli MADevicePnPHealthAlternativeVersions |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Odczytaj dane z tabeli MADevicePnPHealthIssues |
+> | DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Odczytaj dane z tabeli MADeviceReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Odczytaj dane z tabeli MADriverInstanceReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Odczytaj dane z tabeli MADriverReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Odczytaj dane z tabeli MAOfficeAddin |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Odczytaj dane z tabeli MAOfficeAddinHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Odczytaj dane z tabeli MAOfficeAddinHealthIssues |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Odczytaj dane z tabeli MAOfficeAddinInstance |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeAddinInstanceReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Odczytaj dane z tabeli MAOfficeAddinReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Odczytaj dane z tabeli MAOfficeApp |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Odczytaj dane z tabeli MAOfficeAppHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppInstance/read | Odczytaj dane z tabeli MAOfficeAppInstance |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppReadiness/read | Odczytaj dane z tabeli MAOfficeAppReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeBuildInfo/read | Odczytaj dane z tabeli MAOfficeBuildInfo |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessment |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessmentDailyCounts |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Odczytaj dane z tabeli MAOfficeDeploymentStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Odczytaj dane z tabeli MAOfficeMacroHealth |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Odczytaj dane z tabeli MAOfficeMacroHealthIssues |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueInstanceReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Odczytaj dane z tabeli MAOfficeMacroSummary |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Odczytaj dane z tabeli MAOfficeSuite |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuiteInstance/read | Odczytaj dane z tabeli MAOfficeSuiteInstance |
+> | DataAction | Microsoft.LogAnalytics/logs/MAProposedPilotDevices/read | Odczytaj dane z tabeli MAProposedPilotDevices |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsBuildInfo/read | Odczytaj dane z tabeli MAWindowsBuildInfo |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessment |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessmentDailyCounts |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Odczytaj dane z tabeli MAWindowsDeploymentStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Odczytaj dane z tabeli MAWindowsSysReqInstanceReadiness |
+> | DataAction | Microsoft.LogAnalytics/logs/NetworkMonitoring/read | Odczytaj dane z tabeli NetworkMonitoring |
+> | DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Odczytaj dane z tabeli OfficeActivity |
+> | DataAction | Microsoft.LogAnalytics/logs/Operation/read | Odczytaj dane z tabeli Operation |
+> | DataAction | Microsoft.LogAnalytics/logs/OutboundConnection/read | Odczytaj dane z tabeli OutboundConnection |
+> | DataAction | Microsoft.LogAnalytics/logs/Perf/read | Odczytaj dane z tabeli Perf |
+> | DataAction | Microsoft.LogAnalytics/logs/ProtectionStatus/read | Odczytaj dane z tabeli ProtectionStatus |
 > | Akcja | Microsoft.LogAnalytics/logs/read | Odczytywanie danych ze wszystkich dzienników |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ReservedAzureCommonFields/read | Odczytaj dane z tabeli ReservedAzureCommonFields |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ReservedCommonFields/read | Odczytaj dane z tabeli ReservedCommonFields |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SCCMAssessmentRecommendation/read | Odczytaj dane z tabeli SCCMAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SCOMAssessmentRecommendation/read | Odczytaj dane z tabeli SCOMAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityAlert/read | Odczytaj dane z tabeli SecurityAlert |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityBaseline/read | Odczytaj dane z tabeli SecurityBaseline |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityBaselineSummary/read | Odczytaj dane z tabeli SecurityBaselineSummary |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityDetection/read | Odczytaj dane z tabeli SecurityDetection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SecurityEvent/read | Odczytaj dane z tabeli SecurityEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricOperationalEvent/read | Odczytaj dane z tabeli ServiceFabricOperationalEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableActorEvent/read | Odczytaj dane z tabeli ServiceFabricReliableActorEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableServiceEvent/read | Odczytaj dane z tabeli ServiceFabricReliableServiceEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Odczytaj dane z tabeli SfBAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli SfBOnlineAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SharePointOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli SharePointOnlineAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SigninLogs/read | Odczyt danych z tabeli SigninLogs |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Odczytaj dane z tabeli SPAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Odczytaj dane z tabeli SQLAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Odczytaj dane z tabeli SQLQueryPerformance |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Odczytaj dane z tabeli Syslog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/SysmonEvent/read | Odczytaj dane z tabeli SysmonEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Tables.Custom/read | Odczytywanie danych z dowolnego dziennika niestandardowego |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Odczytaj dane z tabeli UAApp |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Odczytaj dane z tabeli UAComputer |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Odczytaj dane z tabeli UAComputerRank |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UADriver/read | Odczytaj dane z tabeli UADriver |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UADriverProblemCodes/read | Odczytaj dane z tabeli UADriverProblemCodes |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAFeedback/read | Odczytaj dane z tabeli UAFeedback |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAHardwareSecurity/read | Odczytaj dane z tabeli UAHardwareSecurity |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAIESiteDiscovery/read | Odczytaj dane z tabeli UAIESiteDiscovery |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAOfficeAddIn/read | Odczytaj dane z tabeli UAOfficeAddIn |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAProposedActionPlan/read | Odczytaj dane z tabeli UAProposedActionPlan |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UASysReqIssue/read | Odczytaj dane z tabeli UASysReqIssue |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UAUpgradedComputer/read | Odczytaj dane z tabeli UAUpgradedComputer |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Update/read | Odczytaj dane z tabeli Update |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Odczytaj dane z tabeli UpdateRunProgress |
-> | Element DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Odczytaj dane z tabeli UpdateSummary |
-> | Element DataAction | Microsoft.LogAnalytics/logs/Usage/read | Odczytaj dane z tabeli Usage |
-> | Element DataAction | Microsoft.LogAnalytics/logs/VMBoundPort/read | Odczyt danych z tabeli VMBoundPort |
-> | Element DataAction | Microsoft.LogAnalytics/logs/VMConnection/read | Odczyt danych z tabeli VMConnection |
-> | Element DataAction | Microsoft.LogAnalytics/logs/W3CIISLog/read | Odczytaj dane z tabeli W3CIISLog |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSDeploymentStatus/read | Odczytaj dane z tabeli WaaSDeploymentStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSInsiderStatus/read | Odczytaj dane z tabeli WaaSInsiderStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WaaSUpdateStatus/read | Odczytaj dane z tabeli WaaSUpdateStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WDAVStatus/read | Odczytaj dane z tabeli WDAVStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WDAVThreat/read | Odczytaj dane z tabeli WDAVThreat |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsClientAssessmentRecommendation/read | Odczytaj dane z tabeli WindowsClientAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsEvent/read | Odczyt danych z tabeli WindowsEvent |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | Odczytaj dane z tabeli WindowsFirewall |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | Odczytaj dane z tabeli WindowsServerAssessmentRecommendation |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WireData/read | Odczytaj dane z tabeli WireData |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WorkloadMonitoringPerf/read | Odczyt danych z tabeli WorkloadMonitoringPerf |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WUDOAggregatedStatus/read | Odczytaj dane z tabeli WUDOAggregatedStatus |
-> | Element DataAction | Microsoft.LogAnalytics/logs/WUDOStatus/read | Odczytaj dane z tabeli WUDOStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/ReservedAzureCommonFields/read | Odczytaj dane z tabeli ReservedAzureCommonFields |
+> | DataAction | Microsoft.LogAnalytics/logs/ReservedCommonFields/read | Odczytaj dane z tabeli ReservedCommonFields |
+> | DataAction | Microsoft.LogAnalytics/logs/SCCMAssessmentRecommendation/read | Odczytaj dane z tabeli SCCMAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SCOMAssessmentRecommendation/read | Odczytaj dane z tabeli SCOMAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SecurityAlert/read | Odczytaj dane z tabeli SecurityAlert |
+> | DataAction | Microsoft.LogAnalytics/logs/SecurityBaseline/read | Odczytaj dane z tabeli SecurityBaseline |
+> | DataAction | Microsoft.LogAnalytics/logs/SecurityBaselineSummary/read | Odczytaj dane z tabeli SecurityBaselineSummary |
+> | DataAction | Microsoft.LogAnalytics/logs/SecurityDetection/read | Odczytaj dane z tabeli SecurityDetection |
+> | DataAction | Microsoft.LogAnalytics/logs/SecurityEvent/read | Odczytaj dane z tabeli SecurityEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/ServiceFabricOperationalEvent/read | Odczytaj dane z tabeli ServiceFabricOperationalEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableActorEvent/read | Odczytaj dane z tabeli ServiceFabricReliableActorEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableServiceEvent/read | Odczytaj dane z tabeli ServiceFabricReliableServiceEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Odczytaj dane z tabeli SfBAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli SfBOnlineAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SharePointOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli SharePointOnlineAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SigninLogs/read | Odczyt danych z tabeli SigninLogs |
+> | DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Odczytaj dane z tabeli SPAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Odczytaj dane z tabeli SQLAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Odczytaj dane z tabeli SQLQueryPerformance |
+> | DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Odczytaj dane z tabeli Syslog |
+> | DataAction | Microsoft.LogAnalytics/logs/SysmonEvent/read | Odczytaj dane z tabeli SysmonEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/Tables.Custom/read | Odczytywanie danych z dowolnego dziennika niestandardowego |
+> | DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Odczytaj dane z tabeli UAApp |
+> | DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Odczytaj dane z tabeli UAComputer |
+> | DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Odczytaj dane z tabeli UAComputerRank |
+> | DataAction | Microsoft.LogAnalytics/logs/UADriver/read | Odczytaj dane z tabeli UADriver |
+> | DataAction | Microsoft.LogAnalytics/logs/UADriverProblemCodes/read | Odczytaj dane z tabeli UADriverProblemCodes |
+> | DataAction | Microsoft.LogAnalytics/logs/UAFeedback/read | Odczytaj dane z tabeli UAFeedback |
+> | DataAction | Microsoft.LogAnalytics/logs/UAHardwareSecurity/read | Odczytaj dane z tabeli UAHardwareSecurity |
+> | DataAction | Microsoft.LogAnalytics/logs/UAIESiteDiscovery/read | Odczytaj dane z tabeli UAIESiteDiscovery |
+> | DataAction | Microsoft.LogAnalytics/logs/UAOfficeAddIn/read | Odczytaj dane z tabeli UAOfficeAddIn |
+> | DataAction | Microsoft.LogAnalytics/logs/UAProposedActionPlan/read | Odczytaj dane z tabeli UAProposedActionPlan |
+> | DataAction | Microsoft.LogAnalytics/logs/UASysReqIssue/read | Odczytaj dane z tabeli UASysReqIssue |
+> | DataAction | Microsoft.LogAnalytics/logs/UAUpgradedComputer/read | Odczytaj dane z tabeli UAUpgradedComputer |
+> | DataAction | Microsoft.LogAnalytics/logs/Update/read | Odczytaj dane z tabeli Update |
+> | DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Odczytaj dane z tabeli UpdateRunProgress |
+> | DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Odczytaj dane z tabeli UpdateSummary |
+> | DataAction | Microsoft.LogAnalytics/logs/Usage/read | Odczytaj dane z tabeli Usage |
+> | DataAction | Microsoft.LogAnalytics/logs/VMBoundPort/read | Odczyt danych z tabeli VMBoundPort |
+> | DataAction | Microsoft.LogAnalytics/logs/VMConnection/read | Odczyt danych z tabeli VMConnection |
+> | DataAction | Microsoft.LogAnalytics/logs/W3CIISLog/read | Odczytaj dane z tabeli W3CIISLog |
+> | DataAction | Microsoft.LogAnalytics/logs/WaaSDeploymentStatus/read | Odczytaj dane z tabeli WaaSDeploymentStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/WaaSInsiderStatus/read | Odczytaj dane z tabeli WaaSInsiderStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/WaaSUpdateStatus/read | Odczytaj dane z tabeli WaaSUpdateStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/WDAVStatus/read | Odczytaj dane z tabeli WDAVStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/WDAVThreat/read | Odczytaj dane z tabeli WDAVThreat |
+> | DataAction | Microsoft.LogAnalytics/logs/WindowsClientAssessmentRecommendation/read | Odczytaj dane z tabeli WindowsClientAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/WindowsEvent/read | Odczyt danych z tabeli WindowsEvent |
+> | DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | Odczytaj dane z tabeli WindowsFirewall |
+> | DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | Odczytaj dane z tabeli WindowsServerAssessmentRecommendation |
+> | DataAction | Microsoft.LogAnalytics/logs/WireData/read | Odczytaj dane z tabeli WireData |
+> | DataAction | Microsoft.LogAnalytics/logs/WorkloadMonitoringPerf/read | Odczyt danych z tabeli WorkloadMonitoringPerf |
+> | DataAction | Microsoft.LogAnalytics/logs/WUDOAggregatedStatus/read | Odczytaj dane z tabeli WUDOAggregatedStatus |
+> | DataAction | Microsoft.LogAnalytics/logs/WUDOStatus/read | Odczytaj dane z tabeli WUDOStatus |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -3044,7 +3044,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Element DataAction | Microsoft.Maps/accounts/data/read | Daje dostęp do odczytu danych na konto usługi maps. |
+> | DataAction | Microsoft.Maps/accounts/data/read | Daje dostęp do odczytu danych na konto usługi maps. |
 > | Akcja | Microsoft.Maps/accounts/delete | Usuwanie konta usługi Maps. |
 > | Akcja | Microsoft.Maps/accounts/eventGridFilters/delete | Usuń filtr usługi Event Grid |
 > | Akcja | Microsoft.Maps/accounts/eventGridFilters/read | Pobierz filtr usługi Event Grid |
@@ -3230,8 +3230,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/checkTrafficManagerNameAvailability/action | Służy do sprawdzania dostępności nazwy DNS względem usługi Traffic Manager. |
 > | Akcja | Microsoft.Network/connections/delete | Deletes VirtualNetworkGatewayConnection |
 > | Akcja | Microsoft.Network/connections/read | Gets VirtualNetworkGatewayConnection |
-> | Akcja | Microsoft.Network/connections/sharedkey/action | Pobierz VirtualNetworkGatewayConnection SharedKey |
-> | Akcja | Microsoft.Network/connections/sharedKey/read | Pobiera VirtualNetworkGatewayConnection SharedKey |
+> | Akcja | Microsoft.Network/connections/sharedkey/action | Get VirtualNetworkGatewayConnection SharedKey |
+> | Akcja | Microsoft.Network/connections/sharedKey/read | Gets VirtualNetworkGatewayConnection SharedKey |
 > | Akcja | Microsoft.Network/connections/sharedKey/write | Tworzy lub aktualizuje istniejące VirtualNetworkGatewayConnection SharedKey |
 > | Akcja | Microsoft.Network/connections/vpndeviceconfigurationscript/action | Pobiera konfigurację VirtualNetworkGatewayConnection urządzenia sieci Vpn |
 > | Akcja | Microsoft.Network/connections/write | Tworzy lub aktualizuje istniejące VirtualNetworkGatewayConnection |
@@ -3309,10 +3309,10 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/expressRouteGateways/expressRouteConnections/write | Połączenia Expressroute tworzy lub aktualizuje istniejące połączenia usługi Expressroute |
 > | Akcja | Microsoft.Network/expressRouteGateways/join/action | Dołącza brama usługi Express Route |
 > | Akcja | Microsoft.Network/expressRouteGateways/read | Pobierz brama usługi Express Route |
-> | Akcja | Microsoft.Network/expressRoutePorts/delete | Usuwa ExpressRoutePorts |
-> | Akcja | Microsoft.Network/expressRoutePorts/join/action | Dołącza ExpressRoutePorts |
-> | Akcja | Microsoft.Network/expressRoutePorts/links/read | Pobiera ExpressRouteLink |
-> | Akcja | Microsoft.Network/expressRoutePorts/read | Pobiera ExpressRoutePorts |
+> | Akcja | Microsoft.Network/expressRoutePorts/delete | Deletes ExpressRoutePorts |
+> | Akcja | Microsoft.Network/expressRoutePorts/join/action | Joins ExpressRoutePorts |
+> | Akcja | Microsoft.Network/expressRoutePorts/links/read | Gets ExpressRouteLink |
+> | Akcja | Microsoft.Network/expressRoutePorts/read | Gets ExpressRoutePorts |
 > | Akcja | Microsoft.Network/expressRoutePorts/write | Tworzy lub aktualizuje ExpressRoutePorts |
 > | Akcja | Microsoft.Network/expressRoutePortsLocations/read | Lokalizacje Get Express Route portów |
 > | Akcja | Microsoft.Network/expressRouteServiceProviders/read | Pobiera dostawców usługi Express Route |
@@ -3363,8 +3363,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/loadBalancers/read | Pobiera definicji modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/virtualMachines/read | Pobiera odwołania do wszystkich maszyn wirtualnych w ramach modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/write | Tworzy moduł równoważenia obciążenia lub aktualizuje istniejącego modułu równoważenia obciążenia |
-> | Akcja | Microsoft.Network/localnetworkgateways/delete | Usuwa LocalNetworkGateway |
-> | Akcja | Microsoft.Network/localnetworkgateways/read | Pobiera LocalNetworkGateway |
+> | Akcja | Microsoft.Network/localnetworkgateways/delete | Deletes LocalNetworkGateway |
+> | Akcja | Microsoft.Network/localnetworkgateways/read | Gets LocalNetworkGateway |
 > | Akcja | Microsoft.Network/localnetworkgateways/write | Tworzy lub aktualizuje istniejące LocalNetworkGateway |
 > | Akcja | Microsoft.Network/locations/availableDelegations/read | Pobiera dostępne delegacji |
 > | Akcja | Microsoft.Network/locations/bareMetalTenants/action | Alokuje lub weryfikuje dzierżawy bez systemu operacyjnego |
@@ -3512,20 +3512,20 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/write | Utwórz lub zaktualizuj HubVirtualNetworkConnection |
 > | Akcja | Microsoft.Network/virtualHubs/read | Pobierz koncentrator wirtualny |
 > | Akcja | Microsoft.Network/virtualHubs/write | Utwórz lub zaktualizuj koncentrator wirtualny |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/Connections/Read | Get VirtualNetworkGatewayConnection |
+> | Akcja | microsoft.network/virtualnetworkgateways/connections/read | Get VirtualNetworkGatewayConnection |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/delete | Usuwa element virtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/generatevpnclientpackage/Action | Generowanie pakietu klienta VPN dla bramy virtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/generatevpnprofile/Action | Wygeneruj pakiet profilu VpnProfile dla bramy VirtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/getadvertisedroutes/Action | Pobiera virtualNetworkGateway anonsowane trasy |
+> | Akcja | microsoft.network/virtualnetworkgateways/generatevpnclientpackage/action | Generowanie pakietu klienta VPN dla bramy virtualNetworkGateway |
+> | Akcja | microsoft.network/virtualnetworkgateways/generatevpnprofile/action | Wygeneruj pakiet profilu VpnProfile dla bramy VirtualNetworkGateway |
+> | Akcja | microsoft.network/virtualnetworkgateways/getadvertisedroutes/action | Pobiera virtualNetworkGateway anonsowane trasy |
 > | Akcja | Microsoft.Network/virtualnetworkgateways/getbgppeerstatus/Action | Pobiera stan elementu równorzędnego protokołu bgp bramy virtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/getlearnedroutes/Action | Pobiera virtualnetworkgateway rozpoznane trasy |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/getvpnclientconnectionhealth/Action | Pobierz na kondycji połączenie klienta sieci Vpn dla bramy VirtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/getvpnclientipsecparameters/Action | Uzyskać Ipsec klienta VPN parametrów VirtualNetworkGateway P2S klienta. |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/getvpnprofilepackageurl/Action | Pobiera adres URL pakietu profilu vpn wstępnie wygenerowanego klienta |
-> | Akcja | Microsoft.Network/virtualNetworkGateways/read | Pobiera element VirtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/reset/Action | Resetuje element virtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/resetvpnclientsharedkey/Action | Zresetuj klucz współużytkowany klienta VPN VirtualNetworkGateway P2S klienta. |
-> | Akcja | Microsoft.Network/virtualnetworkgateways/setvpnclientipsecparameters/Action | Konfigurowanie klienta VPN Ipsec parametrów VirtualNetworkGateway P2S klienta. |
+> | Akcja | microsoft.network/virtualnetworkgateways/getlearnedroutes/action | Pobiera virtualnetworkgateway rozpoznane trasy |
+> | Akcja | microsoft.network/virtualnetworkgateways/getvpnclientconnectionhealth/action | Get Per Vpn Client Connection Health for VirtualNetworkGateway |
+> | Akcja | microsoft.network/virtualnetworkgateways/getvpnclientipsecparameters/action | Uzyskać Ipsec klienta VPN parametrów VirtualNetworkGateway P2S klienta. |
+> | Akcja | microsoft.network/virtualnetworkgateways/getvpnprofilepackageurl/action | Pobiera adres URL pakietu profilu vpn wstępnie wygenerowanego klienta |
+> | Akcja | Microsoft.Network/virtualNetworkGateways/read | Gets a VirtualNetworkGateway |
+> | Akcja | microsoft.network/virtualnetworkgateways/reset/action | Resetuje element virtualNetworkGateway |
+> | Akcja | microsoft.network/virtualnetworkgateways/resetvpnclientsharedkey/action | Zresetuj klucz współużytkowany klienta VPN VirtualNetworkGateway P2S klienta. |
+> | Akcja | microsoft.network/virtualnetworkgateways/setvpnclientipsecparameters/action | Konfigurowanie klienta VPN Ipsec parametrów VirtualNetworkGateway P2S klienta. |
 > | Akcja | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | Listy obsługiwanych urządzeń sieci Vpn |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/write | Tworzy lub aktualizuje element VirtualNetworkGateway |
 > | Akcja | Microsoft.Network/virtualNetworks/BastionHosts/action | Pobiera refrences hostem bastionu w sieci wirtualnej. |
@@ -3547,7 +3547,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/virtualNetworks/write | Tworzy sieć wirtualną lub aktualizuje istniejącą sieć wirtualną |
 > | Akcja | Microsoft.Network/virtualNetworkTaps/delete | Usuń naciśnij sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworkTaps/join/action | Dołącza naciśnij sieci wirtualnej |
-> | Akcja | Microsoft.Network/virtualNetworkTaps/read | Pobierz naciśnij sieci wirtualnej |
+> | Akcja | Microsoft.Network/virtualNetworkTaps/read | Get Virtual Network Tap |
 > | Akcja | Microsoft.Network/virtualNetworkTaps/write | Utwórz lub zaktualizuj naciśnij sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualWans/delete | Usuwa wirtualnej sieci Wan |
 > | Akcja | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/delete | Usuwa wirtualnej P2SVpnServerConfiguration sieci Wan |
@@ -3560,12 +3560,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/virtualWans/vpnSites/read | Pobiera wszystkie lokacje sieci VPN, odwołujące się do wirtualnej sieci Wan. |
 > | Akcja | Microsoft.Network/virtualWans/write | Utwórz lub zaktualizuj wirtualne sieci Wan |
 > | Akcja | Microsoft.Network/vpnGateways/delete | Usuwa bramy VpnGateway. |
-> | Akcja | Microsoft.Network/vpngateways/listvpnconnectionshealth/Action | Kondycja połączenia pobiera wszystkie lub podzbiór połączenia dla bramy VpnGateway |
+> | Akcja | microsoft.network/vpngateways/listvpnconnectionshealth/action | Kondycja połączenia pobiera wszystkie lub podzbiór połączenia dla bramy VpnGateway |
 > | Akcja | Microsoft.Network/vpnGateways/read | Pobiera bramy VpnGateway. |
-> | Akcja | Microsoft.Network/vpngateways/reset/Action | Resetowanie bramy VpnGateway |
-> | Akcja | microsoft.network/vpnGateways/vpnConnections/delete | Usuwa obiekt VpnConnection. |
+> | Akcja | microsoft.network/vpngateways/reset/action | Resets a VpnGateway |
+> | Akcja | microsoft.network/vpnGateways/vpnConnections/delete | Deletes a VpnConnection. |
 > | Akcja | microsoft.network/vpnGateways/vpnConnections/read | Pobiera obiekt VpnConnection. |
-> | Akcja | microsoft.network/vpnGateways/vpnConnections/write | Umieszcza VpnConnection. |
+> | Akcja | microsoft.network/vpnGateways/vpnConnections/write | Puts a VpnConnection. |
 > | Akcja | Microsoft.Network/vpnGateways/write | Umieszcza bramy VpnGateway. |
 > | Akcja | Microsoft.Network/vpnsites/delete | Usuwa zasób lokacji sieci Vpn. |
 > | Akcja | Microsoft.Network/vpnsites/read | Pobiera zasób lokacji sieci Vpn. |
@@ -3857,20 +3857,20 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | Odczytaj dane z tabeli WUDOStatus |
 > | Akcja | Microsoft.OperationalInsights/workspaces/read | Pobiera istniejący obszar roboczy |
 > | Akcja | Microsoft.OperationalInsights/workspaces/regeneratesharedkey/action | Ponownie generuje klucz współużytkowany określony obszar roboczy |
-> | Akcja | Microsoft.operationalinsights/workspaces/Rules/Read | Pobieranie wszystkich reguł alertów. |
+> | Akcja | microsoft.operationalinsights/workspaces/rules/read | Pobieranie wszystkich reguł alertów. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/savedSearches/delete | Usuwa zapisane zapytanie wyszukiwania |
 > | Akcja | Microsoft.OperationalInsights/workspaces/savedSearches/read | Pobiera zapisane zapytanie wyszukiwania |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Results/Read | Pobierz zapisać wyniki wyszukiwania. Przestarzałe |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Schedules/Actions/DELETE | Usuwanie zaplanowanego wyszukiwania akcji. |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Schedules/Actions/Read | Pobierz akcje wyszukiwania według harmonogramu. |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Schedules/Actions/Write | Utwórz lub zaktualizuj operacje wyszukiwania według harmonogramu. |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Schedules/DELETE | Usuwanie zaplanowanych wyszukiwań. |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Schedules/Read | Uzyskaj zaplanowanych wyszukiwań. |
-> | Akcja | Microsoft.operationalinsights/workspaces/savedsearches/Schedules/Write | Utwórz lub zaktualizuj zaplanowanych wyszukiwań. |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/results/read | Pobierz zapisać wyniki wyszukiwania. Przestarzałe |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/delete | Usuwanie zaplanowanego wyszukiwania akcji. |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/read | Pobierz akcje wyszukiwania według harmonogramu. |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/write | Utwórz lub zaktualizuj operacje wyszukiwania według harmonogramu. |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/schedules/delete | Usuwanie zaplanowanych wyszukiwań. |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/schedules/read | Uzyskaj zaplanowanych wyszukiwań. |
+> | Akcja | microsoft.operationalinsights/workspaces/savedsearches/schedules/write | Utwórz lub zaktualizuj zaplanowanych wyszukiwań. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/savedSearches/write | Tworzy zapytanie zapisanego wyszukiwania |
 > | Akcja | Microsoft.OperationalInsights/workspaces/schema/read | Pobiera schemat wyszukiwania dla obszaru roboczego.  Schemat wyszukiwania zawiera widoczne pola i ich typy. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/search/action | Wykonuje zapytanie wyszukiwania |
-> | Akcja | Microsoft.operationalinsights/workspaces/Search/Read | Uzyskiwanie wyników wyszukiwania. Przestarzałe. |
+> | Akcja | microsoft.operationalinsights/workspaces/search/read | Uzyskiwanie wyników wyszukiwania. Przestarzałe. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Pobiera klucze wspólne dla obszaru roboczego. Te klucze są używane do łączenia agentów usługi Microsoft Operational Insights z obszarem roboczym. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/sharedKeys/read | Pobiera klucze wspólne dla obszaru roboczego. Te klucze są używane do łączenia agentów usługi Microsoft Operational Insights z obszarem roboczym. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/delete | Usuwa konfigurację magazynu. Spowoduje to zatrzymanie usługi Microsoft Operational Insights na podstawie odczytu danych z konta magazynu. |
@@ -4040,7 +4040,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Odczyt wszystkich elementów podlegających ochronie |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Zastosuj punkt odzyskiwania |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/delete | Usuń wszystkie chronione elementy |
-> | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Zatwierdzenie trybu failover |
+> | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Failover Commit |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Planowane przełączenie w tryb failover |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Odczyt wszystkich chronionych elementów |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Odczytywać wszystkie punkty odzyskiwania replikacji |
@@ -4786,11 +4786,11 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/operations/read | Sonduje stan operacji asynchronicznej. |
 > | Akcja | Microsoft.Storage/register/action | Rejestruje subskrypcję dostawcy zasobów magazynu i umożliwia tworzenie kont magazynu. |
 > | Akcja | Microsoft.Storage/skus/read | Wyświetla listę jednostek SKU obsługiwanych przez zasób Microsoft.Storage. |
-> | Element DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action | Zwraca wynik dodania zawartości obiektu blob |
-> | Element DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
-> | Element DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | Zwraca wynik usunięcia automatycznej migawki |
-> | Element DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
-> | Element DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action | Zwraca wynik dodania zawartości obiektu blob |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | Zwraca wynik usunięcia automatycznej migawki |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/containers/clearLegalHold/action | Usuń stan archiwizacji ze względów prawnych dla kontenera obiektów blob |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/delete | Usuń zasady niezmienności kontenera obiektów blob |
@@ -4810,11 +4810,11 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listServiceSas/action | Zwraca token sygnatury dostępu współdzielonego usługi dla określonego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Zwraca wynik usunięcia kolejki |
-> | Element DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Zwraca wynik dodania komunikatu |
-> | Element DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Zwraca wynik usunięcia komunikatu |
-> | Element DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Zwraca wynik przetworzenia komunikatu |
-> | Element DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
-> | Element DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Zwraca wynik zapisania komunikatu |
+> | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Zwraca wynik dodania komunikatu |
+> | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Zwraca wynik usunięcia komunikatu |
+> | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Zwraca wynik przetworzenia komunikatu |
+> | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
+> | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Zwraca wynik zapisania komunikatu |
 > | Akcja | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
 > | Akcja | Microsoft.Storage/storageAccounts/queueServices/queues/write | Zwraca wynik zapisania kolejki |
 > | Akcja | Microsoft.Storage/storageAccounts/queueServices/read | Zwraca statystyki lub wartości usługi kolejki. |
@@ -4832,7 +4832,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | microsoft.storagesync/locations/checkNameAvailability/action | Sprawdza się, że nazwa usługi synchronizacji magazynu jest prawidłowa i nie jest używany. |
-> | Akcja | Microsoft.storagesync/Locations/Workflows/Operations/Read | Pobiera stan operacji asynchronicznej |
+> | Akcja | microsoft.storagesync/locations/workflows/operations/read | Pobiera stan operacji asynchronicznej |
 > | Akcja | microsoft.storagesync/storageSyncServices/delete | Usuń wszystkie usługi synchronizacji magazynu |
 > | Akcja | microsoft.storagesync/storageSyncServices/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla usługi synchronizacji magazynu |
 > | Akcja | microsoft.storagesync/storageSyncServices/read | Przeczytaj dowolnej usługi synchronizacji magazynu |
@@ -5037,7 +5037,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.StorSimple/managers/storageDomains/write | Utwórz lub zaktualizuj domeny magazynu |
 > | Akcja | Microsoft.StorSimple/managers/write | Utwórz lub zaktualizuj menedżerów urządzeń |
 > | Akcja | Microsoft.StorSimple/Managers/write | Operacja Utwórz magazyn tworzy zasób platformy Azure typu „magazyn” |
-> | Akcja | Microsoft.StorSimple/register/action | Zarejestruj dostawcę Microsoft.StorSimple |
+> | Akcja | Microsoft.StorSimple/register/action | Register Provider Microsoft.StorSimple |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
@@ -5141,34 +5141,34 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Web/apimanagementaccounts/apiacls/Read | Pobierz interfejs Api zarządzania kontami Apiacls. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/apiacls/DELETE | Usuwanie interfejsu Api zarządzania konta interfejsów API Apiacls. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/apiacls/Read | Pobierz interfejs Api zarządzania konta interfejsów API Apiacls. |
+> | Akcja | microsoft.web/apimanagementaccounts/apiacls/read | Pobierz interfejs Api zarządzania kontami Apiacls. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/apiacls/delete | Usuwanie interfejsu Api zarządzania konta interfejsów API Apiacls. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/apiacls/read | Pobierz interfejs Api zarządzania konta interfejsów API Apiacls. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/apiacls/Write | Aktualizowanie interfejsu Api zarządzania konta interfejsów API Apiacls. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/connectionacls/Read | Pobierz interfejs Api zarządzania konta interfejsów API Connectionacls. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/confirmconsentcode/Action | Upewnij się, zgody kodu interfejsu Api zarządzania konta interfejsów API połączeń. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/connectionacls/DELETE | Usuwanie interfejsu Api zarządzania konta interfejsów API połączeń Connectionacls. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/connectionacls/Read | Pobierz interfejs Api zarządzania konta interfejsów API połączeń Connectionacls. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connectionacls/read | Pobierz interfejs Api zarządzania konta interfejsów API Connectionacls. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connections/confirmconsentcode/action | Upewnij się, zgody kodu interfejsu Api zarządzania konta interfejsów API połączeń. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connections/connectionacls/delete | Usuwanie interfejsu Api zarządzania konta interfejsów API połączeń Connectionacls. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connections/connectionacls/read | Pobierz interfejs Api zarządzania konta interfejsów API połączeń Connectionacls. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/connectionacls/Write | Aktualizowanie interfejsu Api zarządzania konta interfejsów API połączeń Connectionacls. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/DELETE | Usuwanie interfejsu Api zarządzania konta interfejsów API połączeń. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/getconsentlinks/Action | Pobieranie linków wyrażania zgody dla interfejsu Api zarządzania konta interfejsów API połączeń. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/listconnectionkeys/Action | Lista połączeń klucze połączenia interfejsu Api zarządzania konta interfejsów API. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connections/getconsentlinks/action | Pobieranie linków wyrażania zgody dla interfejsu Api zarządzania konta interfejsów API połączeń. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connections/listconnectionkeys/action | Lista połączeń klucze połączenia interfejsu Api zarządzania konta interfejsów API. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/listsecrets/Action | Lista kluczy tajnych połączenia interfejsu Api zarządzania konta interfejsów API. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/Read | Pobierz interfejs Api zarządzania konta interfejsów API połączeń. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/connections/read | Pobierz interfejs Api zarządzania konta interfejsów API połączeń. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Connections/Write | Aktualizowanie interfejsu Api zarządzania konta interfejsów API połączeń. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/DELETE | Usuń interfejsów API usługi Api Management kont. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/localizeddefinitions/DELETE | Usuwanie usługi Api Management interfejsy API kont zlokalizowane definicje. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/localizeddefinitions/Read | Uzyskaj usługi Api Management interfejsy API kont zlokalizowane definicje. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/localizeddefinitions/Write | Aktualizacja interfejsów Api zarządzania kontami usługi API zlokalizowany definicje. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Read | Pobierz interfejsy API usługi Api Management kont. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/localizeddefinitions/delete | Usuwanie usługi Api Management interfejsy API kont zlokalizowane definicje. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/localizeddefinitions/read | Uzyskaj usługi Api Management interfejsy API kont zlokalizowane definicje. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/localizeddefinitions/write | Aktualizacja interfejsów Api zarządzania kontami usługi API zlokalizowany definicje. |
+> | Akcja | microsoft.web/apimanagementaccounts/apis/read | Pobierz interfejsy API usługi Api Management kont. |
 > | Akcja | Microsoft.Web/apimanagementaccounts/APIs/Write | Zaktualizuj interfejsów API usługi Api Management kont. |
-> | Akcja | Microsoft.Web/apimanagementaccounts/connectionacls/Read | Pobierz interfejs Api zarządzania kontami Connectionacls. |
-> | Akcja | Microsoft.Web/availablestacks/Read | Pobierz dostępne stosów. |
+> | Akcja | microsoft.web/apimanagementaccounts/connectionacls/read | Pobierz interfejs Api zarządzania kontami Connectionacls. |
+> | Akcja | microsoft.web/availablestacks/read | Pobierz dostępne stosów. |
 > | Akcja | Microsoft.Web/certificates/Delete | Usunięcie istniejącego certyfikatu. |
 > | Akcja | Microsoft.Web/certificates/Read | Pobierz listę certyfikatów. |
 > | Akcja | Microsoft.Web/certificates/Write | Dodaj nowy certyfikat lub zaktualizuj istniejącą. |
-> | Akcja | Microsoft.Web/checknameavailability/Read | Sprawdź, czy nazwa zasobu jest dostępny. |
-> | Akcja | Microsoft.Web/classicmobileservices/Read | Uzyskiwanie klasycznego usług Mobile Services. |
+> | Akcja | microsoft.web/checknameavailability/read | Sprawdź, czy nazwa zasobu jest dostępny. |
+> | Akcja | microsoft.web/classicmobileservices/read | Uzyskiwanie klasycznego usług Mobile Services. |
 > | Akcja | Microsoft.Web/connectionGateways/Delete | Usuwa bramy połączenia. |
 > | Akcja | Microsoft.Web/connectionGateways/Join/Action | Dołącza do bramy połączenia. |
 > | Akcja | Microsoft.Web/connectionGateways/ListStatus/Action | Wyświetla stan bramy połączenia. |
@@ -5178,7 +5178,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Connections/confirmconsentcode/Action | Upewnij się, kod wyrażania zgody połączenia. |
 > | Akcja | Microsoft.Web/connections/Delete | Usuwa połączenie. |
 > | Akcja | Microsoft.Web/connections/Join/Action | Dołącza do połączenia. |
-> | Akcja | Microsoft.Web/Connections/listconsentlinks/Action | Listy linków wyrażania zgody dla połączeń. |
+> | Akcja | microsoft.web/connections/listconsentlinks/action | Listy linków wyrażania zgody dla połączeń. |
 > | Akcja | Microsoft.Web/connections/Move/Action | Przenosi połączenia. |
 > | Akcja | Microsoft.Web/connections/Read | Pobierz listę połączeń. |
 > | Akcja | Microsoft.Web/connections/Write | Tworzy lub aktualizuje połączenia. |
@@ -5190,94 +5190,94 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/customApis/Read | Pobierz listę niestandardowego interfejsu API. |
 > | Akcja | Microsoft.Web/customApis/Write | Tworzy lub aktualizuje niestandardowego interfejsu API. |
 > | Akcja | Microsoft.Web/deletedSites/Read | Pobierz właściwości aplikacji sieci Web usunięto |
-> | Akcja | Microsoft.Web/deploymentlocations/Read | Uzyskanie lokalizacji wdrożenia. |
+> | Akcja | microsoft.web/deploymentlocations/read | Uzyskanie lokalizacji wdrożenia. |
 > | Akcja | Microsoft.Web/geoRegions/Read | Pobierz listę regionów geograficznych. |
-> | Akcja | Microsoft.Web/hostingenvironments/capacities/Read | Pobierz hostingu możliwości środowiska. |
+> | Akcja | microsoft.web/hostingenvironments/capacities/read | Pobierz hostingu możliwości środowiska. |
 > | Akcja | Microsoft.Web/hostingEnvironments/Delete | Usuń środowisko App Service Environment |
-> | Akcja | Microsoft.Web/hostingenvironments/detectors/Read | Pobierz hostingu detektory środowisk. |
-> | Akcja | Microsoft.Web/hostingenvironments/Diagnostics/Read | Pobierz hostingu środowiska diagnostyki. |
-> | Akcja | Microsoft.Web/hostingenvironments/inboundnetworkdependenciesendpoints/Read | Pobierz punkty końcowe sieci wszystkie zależności dla ruchu przychodzącego. |
-> | Akcja | Microsoft.Web/hostingenvironments/metricdefinitions/Read | Pobierz hostingu definicje metryk środowiska. |
-> | Akcja | Microsoft.Web/hostingenvironments/multirolepools/metricdefinitions/Read | Pobierz hostingu definicje metryk pule pełniących wiele środowisk. |
-> | Akcja | Microsoft.Web/hostingenvironments/multirolepools/Metrics/Read | Pobierz hostingu środowisk pełniących wiele pul metryki. |
+> | Akcja | microsoft.web/hostingenvironments/detectors/read | Pobierz hostingu detektory środowisk. |
+> | Akcja | microsoft.web/hostingenvironments/diagnostics/read | Pobierz hostingu środowiska diagnostyki. |
+> | Akcja | microsoft.web/hostingenvironments/inboundnetworkdependenciesendpoints/read | Pobierz punkty końcowe sieci wszystkie zależności dla ruchu przychodzącego. |
+> | Akcja | microsoft.web/hostingenvironments/metricdefinitions/read | Pobierz hostingu definicje metryk środowiska. |
+> | Akcja | microsoft.web/hostingenvironments/multirolepools/metricdefinitions/read | Pobierz hostingu definicje metryk pule pełniących wiele środowisk. |
+> | Akcja | microsoft.web/hostingenvironments/multirolepools/metrics/read | Pobierz hostingu środowisk pełniących wiele pul metryki. |
 > | Akcja | Microsoft.Web/hostingEnvironments/multiRolePools/Read | Pobierz właściwości puli frontonu w środowisku usługi App Service |
-> | Akcja | Microsoft.Web/hostingenvironments/multirolepools/skus/Read | Pobierz hostingu środowisk pełniących wiele pul w jednostki SKU. |
-> | Akcja | Microsoft.Web/hostingenvironments/multirolepools/Usages/Read | Pobierz hostingu środowisk pełniących wiele pul użycia. |
+> | Akcja | microsoft.web/hostingenvironments/multirolepools/skus/read | Pobierz hostingu środowisk pełniących wiele pul w jednostki SKU. |
+> | Akcja | microsoft.web/hostingenvironments/multirolepools/usages/read | Pobierz hostingu środowisk pełniących wiele pul użycia. |
 > | Akcja | Microsoft.Web/hostingEnvironments/multiRolePools/Write | Tworzenie nowej puli frontonu w środowisku usługi App Service lub zaktualizuj istniejącą |
-> | Akcja | Microsoft.Web/hostingenvironments/Operations/Read | Pobierz hostingu operacji środowiska. |
-> | Akcja | Microsoft.Web/hostingenvironments/outboundnetworkdependenciesendpoints/Read | Pobierz punkty końcowe sieci wszystkie zależności ruchu wychodzącego. |
+> | Akcja | microsoft.web/hostingenvironments/operations/read | Pobierz hostingu operacji środowiska. |
+> | Akcja | microsoft.web/hostingenvironments/outboundnetworkdependenciesendpoints/read | Pobierz punkty końcowe sieci wszystkie zależności ruchu wychodzącego. |
 > | Akcja | Microsoft.Web/hostingEnvironments/Read | Pobierz właściwości środowiska usługi App Service |
 > | Akcja | Microsoft.Web/hostingEnvironments/reboot/Action | Ponowne uruchomienie wszystkich maszyn w środowisku usługi App Service |
 > | Akcja | Microsoft.Web/hostingenvironments/resume/Action | Wznów, środowiskach hostingu. |
-> | Akcja | Microsoft.Web/hostingenvironments/serverfarms/Read | Uzyskaj plany usługi App Service środowiska hostingu. |
-> | Akcja | Microsoft.Web/hostingenvironments/Sites/Read | Uzyskaj hostowanie aplikacji sieci Web środowiska. |
+> | Akcja | microsoft.web/hostingenvironments/serverfarms/read | Uzyskaj plany usługi App Service środowiska hostingu. |
+> | Akcja | microsoft.web/hostingenvironments/sites/read | Uzyskaj hostowanie aplikacji sieci Web środowiska. |
 > | Akcja | Microsoft.Web/hostingenvironments/suspend/Action | Wstrzymaj, środowiskach hostingu. |
-> | Akcja | Microsoft.Web/hostingenvironments/Usages/Read | Pobierz hostingu użycia środowiska. |
-> | Akcja | Microsoft.Web/hostingenvironments/workerpools/metricdefinitions/Read | Pobierz hostingu definicje metryki Workerpools środowisk. |
-> | Akcja | Microsoft.Web/hostingenvironments/workerpools/Metrics/Read | Pobierz hostingu środowiska Workerpools metryki. |
+> | Akcja | microsoft.web/hostingenvironments/usages/read | Pobierz hostingu użycia środowiska. |
+> | Akcja | microsoft.web/hostingenvironments/workerpools/metricdefinitions/read | Pobierz hostingu definicje metryki Workerpools środowisk. |
+> | Akcja | microsoft.web/hostingenvironments/workerpools/metrics/read | Pobierz hostingu środowiska Workerpools metryki. |
 > | Akcja | Microsoft.Web/hostingEnvironments/workerPools/Read | Pobierz właściwości puli procesów roboczych w środowisku usługi App Service |
-> | Akcja | Microsoft.Web/hostingenvironments/workerpools/skus/Read | Pobierz hostingu jednostki SKU Workerpools środowisk. |
-> | Akcja | Microsoft.Web/hostingenvironments/workerpools/Usages/Read | Pobierz hostingu środowiska Workerpools użycia. |
+> | Akcja | microsoft.web/hostingenvironments/workerpools/skus/read | Pobierz hostingu jednostki SKU Workerpools środowisk. |
+> | Akcja | microsoft.web/hostingenvironments/workerpools/usages/read | Pobierz hostingu środowiska Workerpools użycia. |
 > | Akcja | Microsoft.Web/hostingEnvironments/workerPools/Write | Tworzenie nowej puli procesów roboczych w środowisku usługi App Service lub zaktualizuj istniejącą |
 > | Akcja | Microsoft.Web/hostingEnvironments/Write | Utwórz nowe środowisko App Service Environment lub zaktualizuj istniejącą grupę |
-> | Akcja | Microsoft.Web/ishostingenvironmentnameavailable/Read | GET, jeśli nazwa środowiska hostingu jest dostępna. |
-> | Akcja | Microsoft.Web/ishostnameavailable/Read | Sprawdź, czy nazwa hosta jest dostępny. |
-> | Akcja | Microsoft.Web/isusernameavailable/Read | Sprawdź, czy nazwa użytkownika jest dostępna. |
+> | Akcja | microsoft.web/ishostingenvironmentnameavailable/read | GET, jeśli nazwa środowiska hostingu jest dostępna. |
+> | Akcja | microsoft.web/ishostnameavailable/read | Sprawdź, czy nazwa hosta jest dostępny. |
+> | Akcja | microsoft.web/isusernameavailable/read | Sprawdź, czy nazwa użytkownika jest dostępna. |
 > | Akcja | Microsoft.Web/listSitesAssignedToHostName/Read | Pobierz nazwy lokacji przypisany do nazwy hosta. |
-> | Akcja | Microsoft.Web/Locations/apioperations/Read | Pobierz operacje lokalizacji interfejsu API. |
-> | Akcja | Microsoft.Web/Locations/connectiongatewayinstallations/Read | Rozpoczynanie instalacji bramy połączenia lokalizacji. |
+> | Akcja | microsoft.web/locations/apioperations/read | Pobierz operacje lokalizacji interfejsu API. |
+> | Akcja | microsoft.web/locations/connectiongatewayinstallations/read | Rozpoczynanie instalacji bramy połączenia lokalizacji. |
 > | Akcja | microsoft.web/locations/deleteVirtualNetworkOrSubnets/action | Sieć wirtualna lub podsieć powiadomienie usunięcia dla lokalizacji. |
-> | Akcja | Microsoft.Web/Locations/extractapidefinitionfromwsdl/Action | Prowadzenie definicji interfejsu Api WSDL dla lokalizacji. |
-> | Akcja | Microsoft.Web/Locations/listwsdlinterfaces/Action | Interfejsy WSDL listy dla lokalizacji. |
-> | Akcja | Microsoft.Web/Locations/managedapis/apioperations/Read | Pobierz operacje zarządzany interfejs API lokalizacji. |
+> | Akcja | microsoft.web/locations/extractapidefinitionfromwsdl/action | Prowadzenie definicji interfejsu Api WSDL dla lokalizacji. |
+> | Akcja | microsoft.web/locations/listwsdlinterfaces/action | Interfejsy WSDL listy dla lokalizacji. |
+> | Akcja | microsoft.web/locations/managedapis/apioperations/read | Pobierz operacje zarządzany interfejs API lokalizacji. |
 > | Akcja | Microsoft.Web/locations/managedapis/Join/Action | Tworzy sprzężenie zarządzany interfejs API. |
-> | Akcja | Microsoft.Web/Locations/managedapis/Read | Pobierz lokalizacje zarządzanych interfejsów API. |
-> | Akcja | Microsoft.Web/Operations/Read | Pobierz operacje. |
-> | Akcja | Microsoft.Web/publishingusers/Read | Rozpoczynanie publikowania użytkowników. |
-> | Akcja | Microsoft.Web/publishingusers/Write | Aktualizacja publikowanie użytkowników. |
+> | Akcja | microsoft.web/locations/managedapis/read | Pobierz lokalizacje zarządzanych interfejsów API. |
+> | Akcja | microsoft.web/operations/read | Pobierz operacje. |
+> | Akcja | microsoft.web/publishingusers/read | Rozpoczynanie publikowania użytkowników. |
+> | Akcja | microsoft.web/publishingusers/write | Aktualizacja publikowanie użytkowników. |
 > | Akcja | Microsoft.Web/recommendations/Read | Pobierz listę zaleceń dla subskrypcji. |
 > | Akcja | Microsoft.Web/Register/Action | Rejestrowanie dostawcy zasobów Microsoft.Web dla subskrypcji. |
-> | Akcja | Microsoft.Web/resourcehealthmetadata/Read | Pobierz metadane kondycji zasobu. |
-> | Akcja | Microsoft.Web/serverfarms/Capabilities/Read | Skorzystaj z możliwości planów usługi App Service. |
+> | Akcja | microsoft.web/resourcehealthmetadata/read | Pobierz metadane kondycji zasobu. |
+> | Akcja | microsoft.web/serverfarms/capabilities/read | Skorzystaj z możliwości planów usługi App Service. |
 > | Akcja | Microsoft.Web/serverfarms/Delete | Usuń istniejący Plan usługi App Service |
-> | Akcja | Microsoft.Web/serverfarms/firstpartyapps/Settings/DELETE | Usuń ustawienia aplikacji innych firm pierwszy planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/firstpartyapps/Settings/Read | Pobierz ustawienia aplikacji innych firm pierwszy planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/firstpartyapps/Settings/Write | Aktualizowanie ustawień aplikacji innych firm pierwszy planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/hybridconnectionnamespaces/relays/DELETE | Usuń usługi App Service plany hybrydowe połączenie przestrzeni nazw przekaźników. |
-> | Akcja | Microsoft.Web/serverfarms/hybridconnectionnamespaces/relays/Read | Uzyskaj usługi App Service plany hybrydowe połączenie przestrzeni nazw przekaźników. |
-> | Akcja | Microsoft.Web/serverfarms/hybridconnectionnamespaces/relays/Sites/Read | Uzyskaj hybrydowe planów usługi App Service połączenia aplikacje sieci Web przekaźniki przestrzeni nazw. |
-> | Akcja | Microsoft.Web/serverfarms/hybridconnectionplanlimits/Read | Uzyskaj limity planu połączeń hybrydowych planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/hybridconnectionrelays/Read | Uzyskaj przekaźniki połączenia hybrydowego planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/metricdefinitions/Read | Pobierz definicje metryk planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/Metrics/Read | Pobierz metryki planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/operationresults/Read | Pobierz wyniki operacji planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/firstpartyapps/settings/delete | Usuń ustawienia aplikacji innych firm pierwszy planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/firstpartyapps/settings/read | Pobierz ustawienia aplikacji innych firm pierwszy planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/firstpartyapps/settings/write | Aktualizowanie ustawień aplikacji innych firm pierwszy planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/hybridconnectionnamespaces/relays/delete | Usuń usługi App Service plany hybrydowe połączenie przestrzeni nazw przekaźników. |
+> | Akcja | microsoft.web/serverfarms/hybridconnectionnamespaces/relays/read | Uzyskaj usługi App Service plany hybrydowe połączenie przestrzeni nazw przekaźników. |
+> | Akcja | microsoft.web/serverfarms/hybridconnectionnamespaces/relays/sites/read | Uzyskaj hybrydowe planów usługi App Service połączenia aplikacje sieci Web przekaźniki przestrzeni nazw. |
+> | Akcja | microsoft.web/serverfarms/hybridconnectionplanlimits/read | Uzyskaj limity planu połączeń hybrydowych planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/hybridconnectionrelays/read | Uzyskaj przekaźniki połączenia hybrydowego planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/metricdefinitions/read | Pobierz definicje metryk planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/metrics/read | Pobierz metryki planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/operationresults/read | Pobierz wyniki operacji planów usługi App Service. |
 > | Akcja | Microsoft.Web/serverfarms/Read | Pobiera właściwości planu usługi App Service |
 > | Akcja | Microsoft.Web/serverfarms/restartSites/Action | Uruchom ponownie wszystkie aplikacje sieci Web w planie usługi App Service |
-> | Akcja | Microsoft.Web/serverfarms/Sites/Read | Pobierz aplikacje sieci Web planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/skus/Read | Pobierz jednostki SKU planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/Usages/Read | Pobierz użycia planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/virtualnetworkconnections/Gateways/Write | Zaktualizuj bramy połączenia sieci wirtualnej planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/virtualnetworkconnections/Read | Uzyskaj połączenia sieć wirtualna planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/virtualnetworkconnections/Routes/DELETE | Usuń trasy połączenia sieć wirtualna planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/virtualnetworkconnections/Routes/Read | Uzyskaj tras połączenia sieci wirtualnych planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/virtualnetworkconnections/Routes/Write | Aktualizowanie tras połączenia sieci wirtualnych planów usługi App Service. |
-> | Akcja | Microsoft.Web/serverfarms/workers/reboot/Action | Uruchom ponownie pracowników planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/sites/read | Pobierz aplikacje sieci Web planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/skus/read | Pobierz jednostki SKU planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/usages/read | Pobierz użycia planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/virtualnetworkconnections/gateways/write | Zaktualizuj bramy połączenia sieci wirtualnej planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/virtualnetworkconnections/read | Uzyskaj połączenia sieć wirtualna planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/virtualnetworkconnections/routes/delete | Usuń trasy połączenia sieć wirtualna planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/virtualnetworkconnections/routes/read | Uzyskaj tras połączenia sieci wirtualnych planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/virtualnetworkconnections/routes/write | Aktualizowanie tras połączenia sieci wirtualnych planów usługi App Service. |
+> | Akcja | microsoft.web/serverfarms/workers/reboot/action | Uruchom ponownie pracowników planów usługi App Service. |
 > | Akcja | Microsoft.Web/serverfarms/Write | Utwórz nowy Plan usługi App Service lub zaktualizuj istniejącą |
-> | Akcja | Microsoft.Web/Sites/analyzecustomhostname/Read | Analizuj niestandardową nazwę hosta. |
+> | Akcja | microsoft.web/sites/analyzecustomhostname/read | Analizuj niestandardową nazwę hosta. |
 > | Akcja | Microsoft.Web/sites/applySlotConfig/Action | Zastosuj konfigurację sieci web app miejsca w docelowym gnieździe w bieżącej aplikacji sieci web |
 > | Akcja | Microsoft.Web/sites/backup/Action | Utwórz nową kopię zapasową aplikacji sieci web |
 > | Akcja | Microsoft.Web/Sites/Backup/Read | Uzyskaj kopii zapasowej aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Backup/Write | Aktualizacja kopii zapasowej aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Backups/Action | Odnajduje istniejącą kopię zapasową aplikacji, którą można przywrócić z obiektu blob w usłudze Azure storage. |
-> | Akcja | Microsoft.Web/Sites/Backups/DELETE | Usuwanie kopii zapasowych aplikacji internetowych. |
-> | Akcja | Microsoft.Web/Sites/Backups/list/Action | Wykaz kopii zapasowych aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/backup/write | Aktualizacja kopii zapasowej aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/backups/action | Odnajduje istniejącą kopię zapasową aplikacji, którą można przywrócić z obiektu blob w usłudze Azure storage. |
+> | Akcja | microsoft.web/sites/backups/delete | Usuwanie kopii zapasowych aplikacji internetowych. |
+> | Akcja | microsoft.web/sites/backups/list/action | Wykaz kopii zapasowych aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/backups/Read | Pobierz właściwości elementu kopii zapasowej aplikacji sieci web |
 > | Akcja | Microsoft.Web/Sites/Backups/Restore/Action | Przywracanie kopii zapasowych aplikacji internetowych. |
-> | Akcja | Microsoft.Web/Sites/Backups/Write | Aktualizowanie kopii zapasowych aplikacji internetowych. |
+> | Akcja | microsoft.web/sites/backups/write | Aktualizowanie kopii zapasowych aplikacji internetowych. |
 > | Akcja | Microsoft.Web/Sites/config/DELETE | Usuwanie konfiguracji aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/config/list/Action | Lista aplikacji sieci Web poufne ustawienia zabezpieczeń, takich jak publikowanie poświadczeń, ustawienia aplikacji i parametrów połączenia |
 > | Akcja | Microsoft.Web/sites/config/Read | Pobieranie ustawień konfiguracji aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/config/snapshots/Read | Pobierz migawki konfiguracji aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/config/snapshots/read | Pobierz migawki konfiguracji aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/config/Write | Aktualizowanie ustawień konfiguracji aplikacji sieci Web |
 > | Akcja | Microsoft.Web/Sites/containerlogs/Action | Pobierz pliki z rozszerzeniem zip dzienniki kontenerów dla aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/continuouswebjobs/DELETE | Usuwanie zadania Webjob ciągłej aplikacji sieci Web. |
@@ -5285,35 +5285,35 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/continuouswebjobs/Start/Action | Uruchom zadania ciągłego sieci Web aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/continuouswebjobs/Stop/Action | Zatrzymywanie zadania Webjob ciągłej aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/Delete | Usuń istniejącą aplikację sieci Web |
-> | Akcja | Microsoft.Web/Sites/Deployments/DELETE | Usunięcie wdrożenia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Deployments/log/Read | Pobierz dziennik wdrożenia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Deployments/Read | Uzyskaj wdrożenia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Deployments/Write | Aktualizowanie wdrożenia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/detectors/Read | Uzyskaj detektory aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/deployments/delete | Usunięcie wdrożenia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/deployments/log/read | Pobierz dziennik wdrożenia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/deployments/read | Uzyskaj wdrożenia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/deployments/write | Aktualizowanie wdrożenia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/detectors/read | Uzyskaj detektory aplikacji sieci Web. |
 > | Akcja | microsoft.web/sites/diagnostics/analyses/execute/Action | Przeprowadź analizę Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/analyses/Read | Uzyskaj analizy Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/aspnetcore/Read | Uzyskiwanie diagnostyki aplikacji sieci Web dla aplikacji platformy ASP.NET Core. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/autoheal/Read | Uzyskaj funkcji Autoheal diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/Deployment/Read | Pobierz wdrożenie diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/Deployments/Read | Uzyskaj wdrożeń Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/analyses/read | Uzyskaj analizy Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/aspnetcore/read | Uzyskiwanie diagnostyki aplikacji sieci Web dla aplikacji platformy ASP.NET Core. |
+> | Akcja | microsoft.web/sites/diagnostics/autoheal/read | Uzyskaj funkcji Autoheal diagnostyki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/deployment/read | Pobierz wdrożenie diagnostyki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/deployments/read | Uzyskaj wdrożeń Diagnostyka aplikacji sieci Web. |
 > | Akcja | microsoft.web/sites/diagnostics/detectors/execute/Action | Uruchom wykrywanie diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/detectors/Read | Uzyskaj wykrywanie diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/failedrequestsperuri/Read | Uzyskaj żądania sieci Web diagnostyki aplikacji nie powiodło się dla identyfikatora Uri. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/frebanalysis/Read | Uzyskaj analizy FREB diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/loganalyzer/Read | Uzyskaj analizator dzienników diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/Read | Uzyskaj kategorie Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/runtimeavailability/Read | Uzyskaj dostępność środowiska uruchomieniowego Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/servicehealth/Read | Pobierz stan usługi Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/sitecpuanalysis/Read | Uzyskaj analizy użycia Procesora witryny Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/sitecrashes/Read | Uzyskaj awarii lokacji Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/sitelatency/Read | Uzyskaj czas oczekiwania witryny Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/sitememoryanalysis/Read | Uzyskaj analizy pamięci witryny Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/siterestartsettingupdate/Read | Uzyskaj Aktualizacja ustawień ponowne uruchomienie witryny Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/detectors/read | Uzyskaj wykrywanie diagnostyki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/failedrequestsperuri/read | Uzyskaj żądania sieci Web diagnostyki aplikacji nie powiodło się dla identyfikatora Uri. |
+> | Akcja | microsoft.web/sites/diagnostics/frebanalysis/read | Uzyskaj analizy FREB diagnostyki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/loganalyzer/read | Uzyskaj analizator dzienników diagnostyki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/read | Uzyskaj kategorie Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/runtimeavailability/read | Uzyskaj dostępność środowiska uruchomieniowego Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/servicehealth/read | Pobierz stan usługi Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/sitecpuanalysis/read | Uzyskaj analizy użycia Procesora witryny Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/sitecrashes/read | Uzyskaj awarii lokacji Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/sitelatency/read | Uzyskaj czas oczekiwania witryny Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/sitememoryanalysis/read | Uzyskaj analizy pamięci witryny Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/siterestartsettingupdate/read | Uzyskaj Aktualizacja ustawień ponowne uruchomienie witryny Diagnostyka aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Diagnostics/siterestartuserinitiated/Read | Uzyskaj sieci Web diagnostyki aplikacji witryny inicjowane przez ponowne uruchomienie użytkownika. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/siteswap/Read | Uzyskaj wymiany lokacji Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/ThreadCount/Read | Pobieranie liczby wątków Diagnostyka aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/workeravailability/Read | Uzyskaj Workeravailability diagnostyki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Diagnostics/workerprocessrecycle/Read | Uzyskaj odtworzenia procesu roboczego Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/siteswap/read | Uzyskaj wymiany lokacji Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/threadcount/read | Pobieranie liczby wątków Diagnostyka aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/workeravailability/read | Uzyskaj Workeravailability diagnostyki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/diagnostics/workerprocessrecycle/read | Uzyskaj odtworzenia procesu roboczego Diagnostyka aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/domainownershipidentifiers/Read | Pobierz identyfikatory własności domeny aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/domainownershipidentifiers/Write | Aktualizuj identyfikatory własności domeny aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Functions/Action | Funkcje Web Apps. |
@@ -5321,78 +5321,78 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/Functions/listsecrets/Action | Listy kluczy tajnych funkcji aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Functions/masterkey/Read | Uzyskaj Masterkey funkcje aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Functions/Read | Uzyskaj funkcje aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Functions/token/Read | Token funkcje aplikacji sieci Web GET. |
+> | Akcja | microsoft.web/sites/functions/token/read | Token funkcje aplikacji sieci Web GET. |
 > | Akcja | Microsoft.Web/Sites/Functions/Write | Aktualizuj funkcje aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hostnamebindings/DELETE | Usuwanie powiązania nazwy hosta aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/hostnamebindings/Read | Uzyskaj powiązania nazwy hosta aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/hostnamebindings/Write | Zaktualizuj powiązania nazwy hosta aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/hostnamebindings/read | Uzyskaj powiązania nazwy hosta aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/hostnamebindings/write | Zaktualizuj powiązania nazwy hosta aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/hostruntime/host/_master/read | Pobierz klucz główny w aplikacji funkcji dla operacji administratora |
 > | Akcja | Microsoft.Web/sites/hostruntime/host/action | Wykonywanie aplikacji funkcji środowiska uruchomieniowego akcji, takich jak synchronizowanie wyzwalaczy, Dodaj funkcje, wywoływać funkcje i usuwanie funkcji itp. |
 > | Akcja | Microsoft.Web/Sites/hybridconnection/DELETE | Usuwanie połączenia hybrydowego aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hybridconnection/Read | Uzyskaj połączenie hybrydowe aplikacje sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hybridconnection/Write | Zaktualizuj połączenie hybrydowe aplikacje sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/DELETE | Usuń przekaźniki przestrzenie nazw połączenia hybrydowe aplikacje sieci Web. |
-> | Akcja | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/listkeys/Action | Lista kluczy sieci Web aplikacji hybrydowych połączenia przestrzenie nazw przekaźników. |
+> | Akcja | microsoft.web/sites/hybridconnectionnamespaces/relays/listkeys/action | Lista kluczy sieci Web aplikacji hybrydowych połączenia przestrzenie nazw przekaźników. |
 > | Akcja | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/Read | Uzyskaj przekaźniki przestrzenie nazw połączenia hybrydowe aplikacje sieci Web. |
-> | Akcja | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/Write | Zaktualizuj przekaźniki przestrzenie nazw połączenia hybrydowe aplikacje sieci Web. |
+> | Akcja | microsoft.web/sites/hybridconnectionnamespaces/relays/write | Zaktualizuj przekaźniki przestrzenie nazw połączenia hybrydowe aplikacje sieci Web. |
 > | Akcja | Microsoft.Web/Sites/hybridconnectionrelays/Read | Uzyskaj przekaźniki połączenia hybrydowe aplikacje sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/Deployments/DELETE | Usuwanie wdrożenia wystąpienia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/instances/Deployments/Read | Uzyskaj wdrożenia wystąpienia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/instances/Extensions/log/Read | Pobierz dziennik rozszerzenia wystąpienia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/instances/deployments/read | Uzyskaj wdrożenia wystąpienia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/instances/extensions/log/read | Pobierz dziennik rozszerzenia wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/Extensions/Read | Można pobierać rozszerzenia wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/processes/DELETE | Usuń procesy wystąpienia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/instances/processes/Read | Uzyskaj procesy wystąpienia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/instances/processes/threads/Read | Rozpoczynanie wątków procesów wystąpienia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/instances/processes/read | Uzyskaj procesy wystąpienia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/instances/processes/threads/read | Rozpoczynanie wątków procesów wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/instances/Read | Pobierz wystąpienia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/listsyncfunctiontriggerstatus/Action | Lista synchronizacji funkcji wyzwalacza stan aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/metricdefinitions/Read | Pobierz definicje metryki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Metrics/Read | Pobierz metryki aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/metricsdefinitions/Read | Pobierz definicje metryk aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/metricdefinitions/read | Pobierz definicje metryki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/metrics/read | Pobierz metryki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/metricsdefinitions/read | Pobierz definicje metryk aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/migratemysql/Action | Przeprowadź migrację aplikacji sieci Web MySql. |
-> | Akcja | Microsoft.Web/Sites/migratemysql/Read | Get Web Apps Migrate MySql. |
-> | Akcja | Microsoft.Web/Sites/networktrace/Action | Aplikacje sieci Web śledzenia sieci. |
-> | Akcja | Microsoft.Web/Sites/newpassword/Action | Aplikacje sieci Web Newpassword. |
+> | Akcja | microsoft.web/sites/migratemysql/read | Get Web Apps Migrate MySql. |
+> | Akcja | microsoft.web/sites/networktrace/action | Network Trace Web Apps. |
+> | Akcja | Microsoft.Web/Sites/newpassword/Action | Newpassword Web Apps. |
 > | Akcja | Microsoft.Web/Sites/operationresults/Read | Pobierz wyniki operacji aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Operations/Read | Pobierz operacje aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/perfcounters/Read | Pobierz liczniki wydajności aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/premieraddons/DELETE | Usuń dodatków Premier aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/premieraddons/Read | Uzyskaj dodatków Premier aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/premieraddons/Write | Zaktualizuj dodatków Premier aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/privateaccess/Read | Pobierz dane dotyczące włączania dostępu do prywatnej witryny i autoryzowanych sieci wirtualnych, które mogą uzyskać dostęp do witryny. |
-> | Akcja | Microsoft.Web/Sites/processes/Read | Uzyskaj procesy aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/publiccertificates/DELETE | Usuń certyfikat publiczny aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/publiccertificates/Read | Pobierz certyfikat publiczny aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/publiccertificates/Write | Aktualizuj certyfikaty publiczne aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/premieraddons/delete | Usuń dodatków Premier aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/premieraddons/read | Uzyskaj dodatków Premier aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/premieraddons/write | Zaktualizuj dodatków Premier aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/privateaccess/read | Pobierz dane dotyczące włączania dostępu do prywatnej witryny i autoryzowanych sieci wirtualnych, które mogą uzyskać dostęp do witryny. |
+> | Akcja | microsoft.web/sites/processes/read | Uzyskaj procesy aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/publiccertificates/delete | Usuń certyfikat publiczny aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/publiccertificates/read | Pobierz certyfikat publiczny aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/publiccertificates/write | Aktualizuj certyfikaty publiczne aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/publish/Action | Publikowanie aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/publishxml/Action | Rozpoczynanie publikowania pliku xml profilu dla aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/publishxml/Read | Pobierać aplikacje sieci Web, publikowanie XML. |
+> | Akcja | microsoft.web/sites/publishxml/read | Pobierać aplikacje sieci Web, publikowanie XML. |
 > | Akcja | Microsoft.Web/sites/Read | Pobierz właściwości aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/recommendationhistory/Read | Pobieranie historii zalecenie dotyczące aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/recommendationhistory/read | Pobieranie historii zalecenie dotyczące aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/recommendations/disable/Action | Wyłącz zalecenia dotyczące aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/recommendations/Read | Pobierz listę zaleceń dotyczących aplikacji sieci web. |
 > | Akcja | Microsoft.Web/Sites/Recover/Action | Odzyskiwanie aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/resetSlotConfig/Action | Zresetuj konfigurację aplikacji sieci web |
 > | Akcja | Microsoft.Web/Sites/resourcehealthmetadata/Read | Pobierz metadane kondycji zasobów aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/restart/Action | Uruchom ponownie aplikację internetową |
-> | Akcja | Microsoft.Web/Sites/Restore/Read | Rozpoczynanie przywracania aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Restore/Write | Przywracanie aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/restorefrombackupblob/Action | Przywracanie aplikacji internetowej z kopii zapasowej magazynu obiektów Blob. |
-> | Akcja | Microsoft.Web/Sites/restorefromdeletedwebapp/Action | Przywracanie aplikacji sieci Web z usunięto aplikację. |
+> | Akcja | microsoft.web/sites/restore/read | Rozpoczynanie przywracania aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/restore/write | Restore Web Apps. |
+> | Akcja | microsoft.web/sites/restorefrombackupblob/action | Przywracanie aplikacji internetowej z kopii zapasowej magazynu obiektów Blob. |
+> | Akcja | microsoft.web/sites/restorefromdeletedwebapp/action | Przywracanie aplikacji sieci Web z usunięto aplikację. |
 > | Akcja | Microsoft.Web/Sites/restoresnapshot/Action | Przywracanie migawki aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/siteextensions/DELETE | Usuwanie rozszerzenia aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/siteextensions/Read | Można pobierać rozszerzenia witryny aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/siteextensions/Write | Aktualizowanie rozszerzenia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/analyzecustomhostname/Read | Pobierz Web miejsc aplikacji analizowanie niestandardową nazwę hosta. |
+> | Akcja | microsoft.web/sites/slots/analyzecustomhostname/read | Pobierz Web miejsc aplikacji analizowanie niestandardową nazwę hosta. |
 > | Akcja | Microsoft.Web/sites/slots/applySlotConfig/Action | Zastosuj konfigurację sieci web app miejsca w docelowym gnieździe do bieżącego miejsca. |
 > | Akcja | Microsoft.Web/sites/slots/backup/Action | Utwórz nową kopię zapasową miejsca aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Backup/Read | Pobierz kopię zapasową miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Backup/Write | Aktualizacja kopii zapasowej miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Backups/Action | Wykryj kopie zapasowe miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Backups/DELETE | Usuwanie kopii zapasowych miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Backups/list/Action | Lista miejsca kopii zapasowych aplikacji internetowych. |
+> | Akcja | microsoft.web/sites/slots/backup/read | Pobierz kopię zapasową miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/backup/write | Aktualizacja kopii zapasowej miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/backups/action | Wykryj kopie zapasowe miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/backups/delete | Usuwanie kopii zapasowych miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/backups/list/action | Lista miejsca kopii zapasowych aplikacji internetowych. |
 > | Akcja | Microsoft.Web/sites/slots/backups/Read | Pobierz właściwości kopia zapasowa miejsc aplikacji sieci web |
-> | Akcja | Microsoft.Web/Sites/Slots/Backups/Restore/Action | Przywracanie kopii zapasowych miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/config/DELETE | Usuwanie konfiguracji miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/backups/restore/action | Przywracanie kopii zapasowych miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/config/delete | Usuwanie konfiguracji miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/slots/config/list/Action | Lista miejsca aplikacji sieci Web poufne ustawienia zabezpieczeń, takich jak publikowanie poświadczeń, ustawienia aplikacji i parametrów połączenia |
 > | Akcja | Microsoft.Web/sites/slots/config/Read | Pobieranie ustawień konfiguracji miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/config/Write | Aktualizowanie ustawień konfiguracji miejsca aplikacji sieci Web |
@@ -5402,64 +5402,64 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/Slots/continuouswebjobs/Start/Action | Uruchom Web Apps miejsc ciągłe zadania Web Job. |
 > | Akcja | Microsoft.Web/Sites/Slots/continuouswebjobs/Stop/Action | Zatrzymaj Web Apps miejsc ciągłe zadania Web Job. |
 > | Akcja | Microsoft.Web/sites/slots/Delete | Usuwanie istniejącego miejsca aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/Slots/Deployments/DELETE | Usuwanie wdrożenia miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Deployments/log/Read | Pobierz dziennik wdrożeń miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Deployments/Read | Uzyskaj wdrożeń miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Deployments/Write | Aktualizowanie wdrożenia miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/detectors/Read | Uzyskaj detektory miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/deployments/delete | Usuwanie wdrożenia miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/deployments/log/read | Pobierz dziennik wdrożeń miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/deployments/read | Uzyskaj wdrożeń miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/deployments/write | Aktualizowanie wdrożenia miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/detectors/read | Uzyskaj detektory miejsc aplikacji sieci Web. |
 > | Akcja | microsoft.web/sites/slots/diagnostics/analyses/execute/Action | Uruchom analizę diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/analyses/Read | Uzyskaj analizy diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/aspnetcore/Read | Uzyskiwanie diagnostyki miejsc aplikacji sieci Web dla aplikacji platformy ASP.NET Core. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/autoheal/Read | Uzyskaj Web Apps miejsc diagnostyki w funkcji Autoheal. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/Deployment/Read | Rozpoczynanie wdrażanie diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/Deployments/Read | Uzyskaj wdrożeń diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/analyses/read | Uzyskaj analizy diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/aspnetcore/read | Uzyskiwanie diagnostyki miejsc aplikacji sieci Web dla aplikacji platformy ASP.NET Core. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/autoheal/read | Uzyskaj Web Apps miejsc diagnostyki w funkcji Autoheal. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/deployment/read | Rozpoczynanie wdrażanie diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/deployments/read | Uzyskaj wdrożeń diagnostyki miejsc aplikacji sieci Web. |
 > | Akcja | microsoft.web/sites/slots/diagnostics/detectors/execute/Action | Uruchom wykrywanie diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/detectors/Read | Uzyskaj wykrywanie diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/frebanalysis/Read | Uzyskaj Web Apps miejsc diagnostyki FREB analizy. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/loganalyzer/Read | Uzyskaj sieci Web Apps miejsc diagnostyki dziennika analizatora. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/Read | Pobierz diagnostykę miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/runtimeavailability/Read | Uzyskaj dostępność diagnostyki gniazda sieci Web aplikacji w czasie wykonywania. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/servicehealth/Read | Pobierz stan usługi Diagnostyka miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/sitecpuanalysis/Read | Uzyskaj analizy Procesora witryny diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/sitecrashes/Read | Uzyskaj sieci Web Apps miejsc Diagnostyka witryny awarie. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/sitelatency/Read | Uzyskaj czas oczekiwania witryny diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/sitememoryanalysis/Read | Uzyskaj analizy pamięci witryny diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/siterestartsettingupdate/Read | Uzyskaj miejsc aplikacji sieci Web diagnostyki Aktualizacja ustawień ponowne uruchomienie witryny. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/siterestartuserinitiated/Read | Uzyskaj sieci Web Apps miejsc diagnostyki lokacji ponowne uruchomienie inicjowane przez użytkownika. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/siteswap/Read | Uzyskaj Web Apps miejsc diagnostyki lokacji wymiany. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/ThreadCount/Read | Pobieranie liczby wątków diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/workeravailability/Read | Uzyskaj Workeravailability diagnostyki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Diagnostics/workerprocessrecycle/Read | Uzyskaj odtworzenia procesu procesu roboczego diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/detectors/read | Uzyskaj wykrywanie diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/frebanalysis/read | Uzyskaj Web Apps miejsc diagnostyki FREB analizy. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/loganalyzer/read | Uzyskaj sieci Web Apps miejsc diagnostyki dziennika analizatora. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/read | Pobierz diagnostykę miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/runtimeavailability/read | Uzyskaj dostępność diagnostyki gniazda sieci Web aplikacji w czasie wykonywania. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/servicehealth/read | Pobierz stan usługi Diagnostyka miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/sitecpuanalysis/read | Uzyskaj analizy Procesora witryny diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/sitecrashes/read | Uzyskaj sieci Web Apps miejsc Diagnostyka witryny awarie. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/sitelatency/read | Uzyskaj czas oczekiwania witryny diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/sitememoryanalysis/read | Uzyskaj analizy pamięci witryny diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/siterestartsettingupdate/read | Uzyskaj miejsc aplikacji sieci Web diagnostyki Aktualizacja ustawień ponowne uruchomienie witryny. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/siterestartuserinitiated/read | Uzyskaj sieci Web Apps miejsc diagnostyki lokacji ponowne uruchomienie inicjowane przez użytkownika. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/siteswap/read | Uzyskaj Web Apps miejsc diagnostyki lokacji wymiany. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/threadcount/read | Pobieranie liczby wątków diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/workeravailability/read | Uzyskaj Workeravailability diagnostyki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/diagnostics/workerprocessrecycle/read | Uzyskaj odtworzenia procesu procesu roboczego diagnostyki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/domainownershipidentifiers/Read | Uzyskaj sieci Web Apps miejsc domeny własność identyfikatorów. |
-> | Akcja | Microsoft.Web/Sites/Slots/Functions/Read | Uzyskaj funkcji miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/hostnamebindings/DELETE | Usuwanie powiązania nazwy hosta miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/hostnamebindings/Read | Uzyskaj powiązania nazwy hosta miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/hostnamebindings/Write | Zaktualizuj powiązania nazwy hosta miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/functions/read | Uzyskaj funkcji miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/hostnamebindings/delete | Usuwanie powiązania nazwy hosta miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/hostnamebindings/read | Uzyskaj powiązania nazwy hosta miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/hostnamebindings/write | Zaktualizuj powiązania nazwy hosta miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/hybridconnection/DELETE | Usuwanie połączenia hybrydowego miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/hybridconnection/Read | Uzyskaj połączenie hybrydowe miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/hybridconnection/Write | Aktualizowanie połączenia hybrydowego miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/hybridconnectionnamespaces/relays/DELETE | Usuwanie sieci Web aplikacji miejsc hybrydowe połączenie przestrzeni nazw przekaźników. |
-> | Akcja | Microsoft.Web/Sites/Slots/hybridconnectionnamespaces/relays/Write | Aktualizowanie sieci Web aplikacji miejsc hybrydowe połączenie przestrzeni nazw przekaźników. |
-> | Akcja | Microsoft.Web/Sites/Slots/hybridconnectionrelays/Read | Uzyskaj sieci Web Apps miejsc hybrydowego połączenia przekaźników. |
-> | Akcja | Microsoft.Web/Sites/Slots/instances/Deployments/Read | Uzyskaj wdrożenia wystąpienia miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/instances/processes/DELETE | Usuń procesy wystąpień miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/instances/processes/Read | Uzyskaj procesy wystąpień miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/instances/Read | Pobierz wystąpienia miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/metricdefinitions/Read | Pobierz definicje metryk miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Metrics/Read | Pobierz metryki miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/migratemysql/Read | Pobierz Web miejsc aplikacji migracji MySql. |
-> | Akcja | Microsoft.Web/Sites/Slots/networktrace/Action | Miejsc aplikacji sieci Web śledzenia sieci. |
+> | Akcja | microsoft.web/sites/slots/hybridconnectionnamespaces/relays/delete | Usuwanie sieci Web aplikacji miejsc hybrydowe połączenie przestrzeni nazw przekaźników. |
+> | Akcja | microsoft.web/sites/slots/hybridconnectionnamespaces/relays/write | Aktualizowanie sieci Web aplikacji miejsc hybrydowe połączenie przestrzeni nazw przekaźników. |
+> | Akcja | microsoft.web/sites/slots/hybridconnectionrelays/read | Uzyskaj sieci Web Apps miejsc hybrydowego połączenia przekaźników. |
+> | Akcja | microsoft.web/sites/slots/instances/deployments/read | Uzyskaj wdrożenia wystąpienia miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/instances/processes/delete | Usuń procesy wystąpień miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/instances/processes/read | Uzyskaj procesy wystąpień miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/instances/read | Pobierz wystąpienia miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/metricdefinitions/read | Pobierz definicje metryk miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/metrics/read | Pobierz metryki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/migratemysql/read | Pobierz Web miejsc aplikacji migracji MySql. |
+> | Akcja | microsoft.web/sites/slots/networktrace/action | Miejsc aplikacji sieci Web śledzenia sieci. |
 > | Akcja | Microsoft.Web/Sites/Slots/newpassword/Action | Miejsc aplikacji sieci Web Newpassword. |
-> | Akcja | Microsoft.Web/Sites/Slots/operationresults/Read | Pobierz wyniki operacji miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Operations/Read | Pobierz operacje miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/operationresults/read | Pobierz wyniki operacji miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/operations/read | Pobierz operacje miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/perfcounters/Read | Pobierz liczniki wydajności miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/phplogging/Read | Uzyskaj Phplogging miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/premieraddons/DELETE | Usuń dodatków Premier miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/premieraddons/Read | Uzyskaj dodatków Premier miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/premieraddons/Write | Zaktualizuj dodatków Premier miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/publiccertificates/DELETE | Usuń certyfikaty publiczne miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/publiccertificates/Read | Pobierz certyfikaty publiczne miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/publiccertificates/Write | Tworzenie lub aktualizowanie certyfikatów publicznych miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/phplogging/read | Uzyskaj Phplogging miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/premieraddons/delete | Usuń dodatków Premier miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/premieraddons/read | Uzyskaj dodatków Premier miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/premieraddons/write | Zaktualizuj dodatków Premier miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/publiccertificates/delete | Usuń certyfikaty publiczne miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/publiccertificates/read | Pobierz certyfikaty publiczne miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/publiccertificates/write | Tworzenie lub aktualizowanie certyfikatów publicznych miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/slots/publish/Action | Publikowanie miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/publishxml/Action | Rozpoczynanie publikowania pliku xml profilu dla miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/Read | Pobierz właściwości miejsce wdrożenia aplikacji sieci Web |
@@ -5467,36 +5467,36 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/sites/slots/resetSlotConfig/Action | Resetowanie konfiguracji miejsca aplikacji sieci web |
 > | Akcja | Microsoft.Web/Sites/Slots/resourcehealthmetadata/Read | Pobierz metadane kondycji zasobu miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/slots/restart/Action | Uruchom ponownie miejsca aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/Slots/Restore/Read | Rozpoczynanie przywracania miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Restore/Write | Przywróć miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/restorefrombackupblob/Action | Przywróć miejsca aplikacji sieci Web z obiektów Blob kopii zapasowej. |
-> | Akcja | Microsoft.Web/Sites/Slots/restorefromdeletedwebapp/Action | Przywróć miejsc aplikacji sieci Web z usunięto aplikację. |
+> | Akcja | microsoft.web/sites/slots/restore/read | Rozpoczynanie przywracania miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/restore/write | Przywróć miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/restorefrombackupblob/action | Przywróć miejsca aplikacji sieci Web z obiektów Blob kopii zapasowej. |
+> | Akcja | microsoft.web/sites/slots/restorefromdeletedwebapp/action | Przywróć miejsc aplikacji sieci Web z usunięto aplikację. |
 > | Akcja | Microsoft.Web/Sites/Slots/restoresnapshot/Action | Przywracanie migawki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/siteextensions/DELETE | Usuń rozszerzenia witryny miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/siteextensions/Read | Pobierz rozszerzenia witryny miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/siteextensions/read | Pobierz rozszerzenia witryny miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/siteextensions/Write | Aktualizowanie rozszerzeń witryny miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/slots/slotsdiffs/Action | Pobierz różnic w konfiguracji aplikacji sieci web i gniazd |
 > | Akcja | Microsoft.Web/sites/slots/slotsswap/Action | Zamiana miejsc wdrożenia aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/Slots/snapshots/Read | Pobierz migawki miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/snapshots/read | Pobierz migawki miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/slots/sourcecontrols/Delete | Usuń ustawienia konfiguracji kontroli źródła miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/sourcecontrols/Read | Pobierz ustawienia konfiguracji kontroli źródła miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/sourcecontrols/Write | Zaktualizuj ustawienia konfiguracji kontroli źródła miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/start/Action | Rozpocznij miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/slots/stop/Action | Zatrzymaj miejsca aplikacji sieci Web |
 > | Akcja | Microsoft.Web/Sites/Slots/Sync/Action | Synchronizacja miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/triggeredwebjobs/DELETE | Usuwanie zadania Webjob wyzwalane miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/triggeredwebjobs/Read | Rozpoczynanie zadania Webjob wyzwalane miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/triggeredwebjobs/delete | Usuwanie zadania Webjob wyzwalane miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/triggeredwebjobs/read | Rozpoczynanie zadania Webjob wyzwalane miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/triggeredwebjobs/Run/Action | Uruchamianie zadania Webjob wyzwalane miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/Usages/Read | Pobierz użycia miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/virtualnetworkconnections/DELETE | Usuwanie połączeń sieci wirtualnej miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/virtualnetworkconnections/Gateways/Write | Zaktualizuj bramy połączenia sieci wirtualnej miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/virtualnetworkconnections/Read | Uzyskaj połączeń sieci wirtualnej miejsc aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/Slots/virtualnetworkconnections/Write | Aktualizowanie połączenia sieć wirtualna miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/usages/read | Pobierz użycia miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/virtualnetworkconnections/delete | Usuwanie połączeń sieci wirtualnej miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/virtualnetworkconnections/gateways/write | Zaktualizuj bramy połączenia sieci wirtualnej miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/virtualnetworkconnections/read | Uzyskaj połączeń sieci wirtualnej miejsc aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/slots/virtualnetworkconnections/write | Aktualizowanie połączenia sieć wirtualna miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/Slots/webjobs/Read | Rozpoczynanie zadania Webjob miejsc aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/slots/Write | Utwórz nowe miejsce aplikacji sieci Web lub zaktualizuj istniejącą |
 > | Akcja | Microsoft.Web/sites/slotsdiffs/Action | Pobierz różnic w konfiguracji aplikacji sieci web i gniazd |
 > | Akcja | Microsoft.Web/sites/slotsswap/Action | Zamiana miejsc wdrożenia aplikacji sieci Web |
-> | Akcja | Microsoft.Web/Sites/snapshots/Read | Pobierz migawki aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/snapshots/read | Pobierz migawki aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/sourcecontrols/Delete | Usuń ustawienia konfiguracji kontroli źródła dla aplikacji sieci Web |
 > | Akcja | Microsoft.Web/sites/sourcecontrols/Read | Pobieranie ustawień konfiguracji aplikacji sieci Web kontroli źródła |
 > | Akcja | Microsoft.Web/sites/sourcecontrols/Write | Zaktualizuj ustawienia konfiguracji kontroli źródła dla aplikacji sieci Web |
@@ -5505,23 +5505,23 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Web/Sites/Sync/Action | Synchronizuj aplikacje sieci Web. |
 > | Akcja | Microsoft.Web/Sites/syncfunctiontriggers/Action | Wyzwalacze funkcji synchronizacji dla aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/triggeredwebjobs/DELETE | Usuń wyzwolone zadania Webjob w aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/triggeredwebjobs/history/Read | Pobieranie historii wyzwolone zadania Webjob aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/triggeredwebjobs/Read | Uzyskaj wyzwolone zadania Webjob w aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/triggeredwebjobs/history/read | Pobieranie historii wyzwolone zadania Webjob aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/triggeredwebjobs/read | Uzyskaj wyzwolone zadania Webjob w aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/triggeredwebjobs/Run/Action | Aplikacje sieci Web wykonywania wyzwolone zadania Webjob. |
-> | Akcja | Microsoft.Web/Sites/Usages/Read | Pobierz użycia aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/virtualnetworkconnections/DELETE | Usuwanie połączenia sieć wirtualna aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/virtualnetworkconnections/Gateways/Read | Pobierz bramy połączenia sieci wirtualnej aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/virtualnetworkconnections/Gateways/Write | Zaktualizuj bramy połączenia sieci wirtualnej aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/virtualnetworkconnections/Read | Uzyskaj połączenia sieć wirtualna aplikacji sieci Web. |
-> | Akcja | Microsoft.Web/Sites/virtualnetworkconnections/Write | Aktualizowanie połączenia sieć wirtualna aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/usages/read | Pobierz użycia aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/virtualnetworkconnections/delete | Usuwanie połączenia sieć wirtualna aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/virtualnetworkconnections/gateways/read | Pobierz bramy połączenia sieci wirtualnej aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/virtualnetworkconnections/gateways/write | Zaktualizuj bramy połączenia sieci wirtualnej aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/virtualnetworkconnections/read | Uzyskaj połączenia sieć wirtualna aplikacji sieci Web. |
+> | Akcja | microsoft.web/sites/virtualnetworkconnections/write | Aktualizowanie połączenia sieć wirtualna aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/Sites/webjobs/Read | Rozpoczynanie zadania Webjob aplikacji sieci Web. |
 > | Akcja | Microsoft.Web/sites/Write | Utwórz nową aplikację sieci Web lub zaktualizuj istniejącą |
-> | Akcja | Microsoft.Web/skus/Read | Pobierz jednostki SKU. |
-> | Akcja | Microsoft.Web/sourcecontrols/Read | Uzyskaj kontroli źródła. |
-> | Akcja | Microsoft.Web/sourcecontrols/Write | Zaktualizuj kontrolki źródła. |
+> | Akcja | microsoft.web/skus/read | Pobierz jednostki SKU. |
+> | Akcja | microsoft.web/sourcecontrols/read | Uzyskaj kontroli źródła. |
+> | Akcja | microsoft.web/sourcecontrols/write | Zaktualizuj kontrolki źródła. |
 > | Akcja | Microsoft.Web/unregister/Action | Wyrejestruj dostawcę zasobów Microsoft.Web dla subskrypcji. |
-> | Akcja | Microsoft.Web/Validate/Action | Sprawdzanie poprawności. |
-> | Akcja | Microsoft.Web/verifyhostingenvironmentvnet/Action | Upewnij się, hostingu środowiska sieci wirtualnej. |
+> | Akcja | microsoft.web/validate/action | Sprawdzanie poprawności. |
+> | Akcja | microsoft.web/verifyhostingenvironmentvnet/action | Upewnij się, hostingu środowiska sieci wirtualnej. |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 

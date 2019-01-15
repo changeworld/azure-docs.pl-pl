@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2cfa789b9817562eba5224257a365f8552cdf833
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245944"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267338"
 ---
 # <a name="validate-azure-identity"></a>Weryfikowanie tożsamości platformy Azure 
 Aby sprawdzić, czy usługi Azure Active Directory (Azure AD) jest gotowa do użycia z usługą Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker). Weryfikowanie rozwiązań tożsamość w systemie Azure, przed rozpoczęciem wdrażania usługi Azure Stack.  
@@ -48,7 +48,7 @@ Należy spełnić następujące wymagania wstępne.
 **Środowisko usługi Active Directory platformy Azure:**
  - Określ konto usługi Azure AD będzie używać usługi Azure Stack i upewnij się, że administrator usługi Azure Active Directory globalnego.
  - Określ nazwę Twojej dzierżawy usługi Azure AD. Nazwa dzierżawy musi być *głównej* nazwy domeny dla usługi Azure Active Directory. Na przykład *contoso.onmicrosoft.com*. 
- - Zidentyfikuj AzureEnvironement będą używane. Obsługiwane wartości dla parametru Nazwa środowiska to AzureCloud, AzureChinaCloud lub AzureUSGovernment, w zależności od subskrypcji platformy Azure używane są.
+ - Zidentyfikuj AzureEnvironment będą używane. Obsługiwane wartości dla parametru Nazwa środowiska to AzureCloud, AzureChinaCloud lub AzureUSGovernment, w zależności od subskrypcji platformy Azure używane są.
 
 ## <a name="validate-azure-identity"></a>Weryfikowanie tożsamości platformy Azure 
 1. Na komputerze, który spełnia wymagania wstępne Otwórz administracyjny wiersz polecenia PowerShell, a następnie uruchom następujące polecenie, aby zainstalować AzsReadinessChecker:  

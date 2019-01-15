@@ -1,5 +1,6 @@
 # Omówienie
-## [Informacje o maszynach wirtualnych](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [Rozszerzenia maszyn wirtualnych](agents-and-extensions-classic.md)
+## [Dostępność](configure-availability-classic.md)
 ## [Często zadawane pytania](faq-classic.md)
 
 # Rozpoczęcie pracy
@@ -29,20 +30,17 @@
 ### [Maintenance (Konserwacja)](planned-maintenance-schedule-classic.md)
 
 ## Zarządzanie
-### [Migrowanie z wersji klasycznej do usługi Resource Manager](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [Migrowanie z wersji klasycznej do usługi Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-deep-dive)
 ### [Zarządzanie maszynami wirtualnymi przy użyciu programu Azure PowerShell](manage-psh-classic.md)
 ### [Informacje o agencie i rozszerzeniach maszyny wirtualnej](agents-and-extensions-classic.md)
 ### [Zarządzanie rozszerzeniami maszyn wirtualnych](manage-extensions-classic.md)
 
 ## Zarządzanie obciążeniami
-### [Obliczenia o wysokiej wydajności (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
+### Obliczenia o wysokiej wydajności (HPC)
 #### [Automatyczne skalowanie zasobów](hpcpack-cluster-node-autogrowshrink.md)
 #### [Zarządzanie węzłami obliczeniowymi](hpcpack-cluster-node-manage.md)
 #### [Tworzenie klastra](hpcpack-cluster-powershell-script.md)
 #### [Konfigurowanie klastra na potrzeby uruchamiania aplikacji MPI](hpcpack-rdma-cluster.md)
-#### [Uruchamianie obciążeń programu Excel i SOA](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Tworzenie węzła głównego przy użyciu obrazu portalu Marketplace](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
-#### [Przesyłanie zadań ze środowiska lokalnego do platformy Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Tomcat](java-run-tomcat-app-server.md)
 
@@ -57,7 +55,6 @@
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
-## [Tworzenie szablonów usługi Resource Manager](../../../resource-group-authoring-templates.md)
 ## [Szablony społeczności](https://azure.microsoft.com/documentation/templates)
 ## [Architektura REST — usługa Compute](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [Architektura REST — sieć](https://msdn.microsoft.com/library/jj157182.aspx)

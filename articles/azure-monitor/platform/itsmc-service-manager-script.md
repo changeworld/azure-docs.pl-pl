@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 4560d1d338b1260a010755397d99b7ebb134d84b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 893f8393c3ed7c50e7c9fafe28eef9a6ede45653
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119598"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261319"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web programu Service Manager przy użyciu zautomatyzowanego skryptu
 
@@ -31,7 +31,7 @@ Uruchom skrypt, podając następujące wymagane szczegóły:
 - Lokalizacja
 - Szczegóły serwera programu Service Manager (nazwa serwera, domeny, nazwę użytkownika i hasło)
 - Prefiks nazwy witryny dla aplikacji sieci Web
-- Namespace magistrali usług.
+- ServiceBus Namespace.
 
 Skrypt spowoduje utworzenie aplikacji sieci Web przy użyciu nazwy, który określiłeś (wraz z kilku dodatkowe ciągi, aby była unikatowa). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta**, i **klucz tajny klienta**.
 
@@ -44,7 +44,7 @@ Domyślnie system Windows 10 ma 5.1. Możesz pobrać struktury z [tutaj](https:/
 
 Użyj następującego skryptu:
 
-```
+```powershell
 ####################################
 # User Configuration Section Begins
 ####################################
@@ -249,7 +249,7 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete the AzureRm AD Application if configuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
     # Delete the deployed web app if configuration fails

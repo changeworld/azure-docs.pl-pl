@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/11/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1e51d55fcc20230dff20ca18d58a13e6ed32905b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecac7216582fa07e9c25492ddeb25e9f155da563
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192248"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305169"
 ---
 # <a name="preview-create-a-shared-image-gallery-with-azure-powershell"></a>Wersja zapoznawcza: Utwórz galerię udostępnionego obrazu przy użyciu programu Azure PowerShell 
 
@@ -49,7 +49,7 @@ Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejąceg
  
 ## <a name="create-vms-from-an-image"></a>Tworzenie maszyn wirtualnych z obrazu
 
-Wersja obrazu po complte można utworzyć jeden lub więcej nowych maszyn wirtualnych. Za pomocą parametru uproszczonego zestawu dla [New-AzureRMVM]() polecenia cmdlet, wystarczy podać identyfikator obrazu wersję obrazu. 
+Po zakończeniu wersję obrazu, można utworzyć jeden lub więcej nowych maszyn wirtualnych. Za pomocą parametru uproszczonego zestawu dla [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm) polecenia cmdlet, wystarczy podać identyfikator obrazu wersję obrazu. 
 
 W tym przykładzie utworzono maszynę Wirtualną o nazwie *myVMfromImage*w *myResourceGroup* w *wschodnie stany USA* centrum danych.
 

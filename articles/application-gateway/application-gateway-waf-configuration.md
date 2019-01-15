@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.workload: infrastructure-services
 ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: bed406f90c8da62919337c1fa9f30221b0ba8d90
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 4e57181b62a6d9070c0b2e4de5008e47b62c56bf
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752728"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54301903"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń
 
@@ -25,13 +25,13 @@ Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochr
 Zapora aplikacji sieci Web pozwala użytkownikom na Konfigurowanie ograniczeń rozmiar żądania w ramach dolną i górną granicę. Dostępne są następujące konfiguracje limitów rozmiaru dwa:
 
 - Pole o rozmiarze treść żądania maksymalna jest określona w artykułów bazy wiedzy i kontrolek, które przekazuje ogólną limit rozmiaru żądania, z wyłączeniem żadnych plików. To pole można dostosować w zakresie od co najmniej 1 KB do wartości maksymalnej 128 KB. Wartością domyślną dla rozmiaru treść żądania jest 128 KB.
-- Pola limit przekazywania plików jest wyrażona w Megabajtach i określa maksymalny dozwolony rozmiar przekazywanych plików. To pole może mieć minimalną wartość 1 MB i maksymalnie 500 MB. Wartość domyślna dla pliku przekazywania limit wynosi 100 MB.
+- Pola limit przekazywania plików jest wyrażona w Megabajtach i określa maksymalny dozwolony rozmiar przekazywanych plików. To pole może mieć minimalną wartość 1 MB i maksymalnie 500 MB dla jednostki SKU dużych wystąpień, gdy średnie jednostki SKU może zawierać maksymalnie 100 MB. Wartość domyślna dla pliku przekazywania limit wynosi 100 MB.
 
 Zapora aplikacji sieci Web oferuje także można skonfigurować pokrętła, aby włączyć inspekcję treści żądania lub wyłączyć. Domyślnie włączona jest inspekcja treści żądania. Jeśli inspekcja treść żądania jest wyłączona, zapory aplikacji sieci Web nie może oszacować zawartość treści komunikatu HTTP. W takich przypadkach zapory aplikacji sieci Web w dalszym ciągu wymuszania reguł zapory aplikacji sieci Web na nagłówki plików cookie i identyfikatora URI. Jeśli inspekcja treść żądania jest wyłączona, pole o rozmiarze treść żądania maksymalna nie ma zastosowania i nie można ustawić. Umożliwia wyłączenie inspekcji treść żądania dla wiadomości większych niż 128 KB do wysłania do zapory aplikacji sieci Web, ale treść komunikatu nie jest kontrolowane w zakresie luki w zabezpieczeniach.
 
 ## <a name="waf-exclusion-lists"></a>Listy wykluczeń zapory aplikacji sieci Web
 
-![exclusion.png zapory aplikacji sieci Web](media/application-gateway-waf-configuration/waf-exclusion.png)
+![waf-exclusion.png](media/application-gateway-waf-configuration/waf-exclusion.png)
 
 Zapora aplikacji sieci Web listy wykluczeń Zezwalaj użytkownikom na pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła. Takie atrybuty są podatne na zawierać znaków specjalnych, co może powodować wyzwalanie wynik fałszywie dodatni z reguł zapory aplikacji sieci Web. Gdy atrybut zostanie dodany do listy wykluczeń zapory aplikacji sieci Web, nie jest brana pod uwagę przez żadną regułę zapory aplikacji sieci Web skonfigurowanych i aktywne. Listy wykluczeń są globalne w zakresie.
 

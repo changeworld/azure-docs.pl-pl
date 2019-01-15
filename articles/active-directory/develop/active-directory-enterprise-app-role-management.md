@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/07/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 2bb9d69487b8576cdae60a1a613a341898495f06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a354d5d0242bfdbb618eb325c8157a7bed3d3b64
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904348"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263681"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Porady: Konfigurowanie oświadczenia roli wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Konfigurowanie oświadczenia roli wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
 Za pomocą usługi Azure Active Directory (Azure AD), można dostosować typ oświadczenia roli oświadczenia w tokenie odpowiedzi otrzymasz po autoryzujesz aplikację.
 
@@ -151,25 +151,29 @@ Jeśli aplikacja oczekuje ról niestandardowych, które zostaną przekazane do o
 
 8. Aktualizacja **atrybuty** tabeli, aby zdefiniować niestandardowe Mapowanie oświadczeń roli.
 
-9. W **atrybutów użytkownika** części **logowanie jednokrotne** okna dialogowego Skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji i wykonaj następujące kroki.
+9. W **atrybutów użytkowników i oświadczeń** części **logowanie jednokrotne** okna dialogowego Skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji i wykonaj następujące kroki.
 
     | Nazwa atrybutu | Wartość atrybutu |
     | -------------- | ----------------|
-    | Nazwa roli  | User.assignedroles |
+    | Nazwa roli  | user.assignedroles |
 
-    a. Wybierz **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okienka.
+    a. Kliknij przycisk **Edytuj** przycisk, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+
+      ![Przycisk "Dodaj atrybut"](./media/active-directory-enterprise-app-role-management/editattribute.png)
+
+    b. Wybierz **Dodaj atrybut** otworzyć **Zarządzanie oświadczenia użytkownika** okienka.
 
       ![Przycisk "Dodaj atrybut"](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
       ![Okienko "Dodawanie atrybutu"](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. W **nazwa** wpisz nazwę atrybutu, zgodnie z potrzebami. W tym przykładzie użyto **nazwy roli** jako nazwa oświadczenia.
-
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    c. W **nazwa** wpisz nazwę atrybutu, zgodnie z potrzebami. W tym przykładzie użyto **nazwy roli** jako nazwa oświadczenia.
 
     d. Pozostaw **Namespace** puste pole.
 
-    e. Wybierz przycisk **OK**.
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
+
+    f. Wybierz pozycję **Zapisz**.
 
 10. Aby przetestować aplikację w jednokrotne logowanie inicjowane przez dostawcę tożsamości, zaloguj się do [panelu dostępu](https://myapps.microsoft.com) i wybrać kafelka aplikacji. W tokenie SAML powinny być widoczne wszystkie przypisane role dla użytkownika o nazwie oświadczenia, które wyrażono.
 

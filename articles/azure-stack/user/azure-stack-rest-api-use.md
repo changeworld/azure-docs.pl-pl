@@ -10,21 +10,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: fe516d1d34496d190ae45e00893deb646fc08408
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078334"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306560"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
 # <a name="use-the-azure-stack-api"></a>Użyj usługi Azure Stack interfejsu API
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Interfejs programowania aplikacji (API) umożliwia automatyzowanie operacji, takich jak dodawanie maszyny Wirtualnej z Twoją chmurą usługi Azure Stack.
 
@@ -40,7 +40,7 @@ W tym artykule nie Poznaj wszystkie opcje dostępne do pobierania tokenów, taki
 
 Tworzenie treści żądania, sformatowany przy użyciu typu zawartości x--www-form-urlencoded do uzyskania tokenu dostępu. PUBLIKUJ Twoje żądanie do punktu końcowego Azure REST uwierzytelniania i logowania.
 
-### <a name="uri"></a>Identyfikator URI
+### <a name="uri"></a>URI
 
 ```bash  
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
@@ -116,7 +116,7 @@ Dla każdej wartości:
   Alternatywne opcje są dostępne dla konkretnych scenariuszy:
 
   
-  | Aplikacja | Identyfikator aplikacji |
+  | Aplikacja | ApplicationID |
   | --------------------------------------- |:-------------------------------------------------------------:|
   | LegacyPowerShell | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417 |
   | PowerShell | 1950a258-227b-4e31-a9cf-717495945fc2 |

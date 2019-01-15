@@ -1,25 +1,8 @@
 ---
-title: Dodatek programu Excel dla usług sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel, bez konieczności pisania jakiegokolwiek kodu.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 02/01/2018
-ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269502"
+Tytuł: Dodatek programu Excel dla sieci web usługi titleSuffix: Opis usługi Azure Machine Learning Studio: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel, bez konieczności pisania jakiegokolwiek kodu.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Dodatek programu Excel dla usług sieci web Azure Machine Learning Studio
 Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.

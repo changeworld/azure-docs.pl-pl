@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 6b73cf04d768381bcc0e27cc76b6c2a25d4d9a2c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341059"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265621"
 ---
 # <a name="azure-stack-telemetry"></a>Usługa Azure Stack telemetrii
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Azure Stack telemetrii automatyczne przekazywanie danych systemu do firmy Microsoft za pośrednictwem środowiska użytkownika połączenia. Zespoły firmy Microsoft używają danych, który zbiera dane telemetryczne z usługi Azure Stack, na ulepszenie środowiska klienta. Te dane są również używane dla zabezpieczeń, ochrony zdrowia, jakości i analizy wydajności.
 
@@ -33,7 +33,7 @@ Dla operatorów usługi Azure Stack dane telemetryczne mogą zapewnić wartości
 > [!NOTE]
 > Można również skonfigurować usługi Azure Stack do przekazywania informacji o użyciu do platformy Azure do rozliczeń. Jest to wymagane dla klientów z wieloma węzłami usługi Azure Stack, którzy zdecydowali rozliczeń płatność za użycie. Funkcje raportowania użycia jest kontrolowane niezależnie od danych telemetrycznych i nie jest wymagany w przypadku klientów z wieloma węzłami, którzy zdecydowali modelu wydajności oraz dla użytkowników usługi Azure Stack Development Kit. Dla tych scenariuszy raportowania użycia może być wyłączone [przy użyciu skryptu rejestracji](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting).
 
-Usługa Azure Stack telemetrii opiera się na składnik połączone środowisko użytkownika systemu Windows Server 2016 i dane telemetryczne, który używa [śledzenie zdarzeń dla Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technologii do zbierania i przechowywania zdarzeń i danych. Składniki platformy Azure Stack publikować zdarzenia i dane zbierane przy użyciu rejestrowania zdarzeń publicznego systemu operacyjnego i śledzenie interfejsów API za pomocą tej samej technologii. Te składniki usługi Azure Stack przykłady tych dostawców: zasobów sieciowych, zasobów usługi Storage, monitorowanie zasobów i aktualizacja zasobów. Składnik połączone środowisko użytkownika i dane telemetryczne szyfruje dane przy użyciu protokołu SSL i używa certyfikatu, przypinanie do przesyłania danych za pośrednictwem protokołu HTTPS do usługi zarządzania danymi firmy Microsoft.
+Usługa Azure Stack telemetrii opiera się na składnik połączone środowisko użytkownika systemu Windows Server 2016 i dane telemetryczne, który używa [śledzenie zdarzeń dla Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technologii do zbierania i przechowywania zdarzeń i danych. Składniki platformy Azure Stack publikować zdarzenia i dane zbierane przy użyciu rejestrowania zdarzeń publicznego systemu operacyjnego i śledzenie interfejsów API za pomocą tej samej technologii. Przykłady te składniki usługi Azure Stack tych dostawców: Sieci zasób, zasób magazynu, monitorowanie zasobów i zaktualizuj zasób. Składnik połączone środowisko użytkownika i dane telemetryczne szyfruje dane przy użyciu protokołu SSL i używa certyfikatu, przypinanie do przesyłania danych za pośrednictwem protokołu HTTPS do usługi zarządzania danymi firmy Microsoft.
 
 > [!IMPORTANT]
 > Aby włączyć przepływ danych telemetrycznych, port 443 (HTTPS), należy otworzyć w sieci. Połączone środowisko użytkownika i Telemetrię składnika łączy się z usługą zarządzania danymi firmy Microsoft, w https://v10.vortex-win.data.microsoft.com. Połączone środowisko użytkownika i Telemetrię składnika również łączy się z https://settings-win.data.microsoft.com można pobrać informacji o konfiguracji.
@@ -112,7 +112,7 @@ Korzystanie z Edytora rejestru Windows, aby ręcznie ustawić poziom telemetrii 
 Przed wdrożeniem usługi Azure Stack na hoście development kit, rozruch CloudBuilder.vhdx i uruchom następujący skrypt w oknie programu PowerShell z podwyższonym poziomem uprawnień:
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host

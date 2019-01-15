@@ -9,18 +9,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/21/2018
-ms.openlocfilehash: 623d03c96866392ef245fb924cbf6600e7850ffe
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057976"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303279"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure SQL Database
 
 W tym artykule omówiono wskazówki, aby osiągnąć lepszą wydajność, przepływność zapisu, podczas ładowania danych do bazy danych Azure SQL przy użyciu usługi Azure Stream Analytics.
 
-Danych wyjściowych SQL w usłudze Azure Stream Analytics obsługuje pisanie równolegle jako opcję. Ta opcja umożliwia [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) zadania topologii, w której wiele partycji danych wyjściowych będą zapisywane do tabeli docelowej w sposób równoległy. Włączenie tej opcji w usłudze Azure Stream Analytics jednak może nie być wystarczające do osiągnięcia wyższej przepustowości, ponieważ jest ona zależna znacznie na konfiguracji bazy danych SQL Azure i schemat tabeli. Wybór indeksów, klastrowanie klucza, współczynnik wypełnienia indeksu i kompresji mają wpływ na czas ładowania tabel. Aby uzyskać więcej informacji na temat optymalizowania swojej bazy danych SQL Azure, aby poprawić zapytania i załadować oparte na wewnętrzne testy porównawcze wydajności, zobacz [wskazówki dotyczące wydajności bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance).
+Danych wyjściowych SQL w usłudze Azure Stream Analytics obsługuje pisanie równolegle jako opcję. Ta opcja umożliwia [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) zadania topologii, w której wiele partycji danych wyjściowych będą zapisywane do tabeli docelowej w sposób równoległy. Włączenie tej opcji w usłudze Azure Stream Analytics jednak może nie być wystarczające do osiągnięcia wyższej przepustowości, ponieważ jest ona zależna znacznie na konfiguracji bazy danych SQL Azure i schemat tabeli. Wybór indeksów, klastrowanie klucza, współczynnik wypełnienia indeksu i kompresji mają wpływ na czas ładowania tabel. Aby uzyskać więcej informacji na temat optymalizowania swojej bazy danych SQL Azure, aby poprawić zapytania i załadować oparte na wewnętrzne testy porównawcze wydajności, zobacz [wskazówki dotyczące wydajności bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance). Nie gwarantuje kolejności zapisu, podczas zapisywania równolegle z bazą danych SQL Azure.
 
 Poniżej przedstawiono niektóre konfiguracje w ramach każdej usługi, który może zwiększyć ogólną przepływność rozwiązania.
 

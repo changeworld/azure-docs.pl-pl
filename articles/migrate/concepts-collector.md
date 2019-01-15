@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104215"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262612"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -112,8 +112,8 @@ Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę
 **Adres URL** | **Szczegóły**  | **Sprawdzanie wymagań wstępnych**
 --- | --- | ---
 *.portal.azure.com | Dotyczy globalna platforma Azure. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
-*. portal.azure.us | Dotyczy tylko systemu Azure dla instytucji rządowych. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Dostęp do adresów URL jest opcjonalne.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Należy ręcznie zainstalować moduł.
+*.portal.azure.us | Dotyczy tylko systemu Azure dla instytucji rządowych. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Dostęp do adresów URL jest opcjonalne.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Należy ręcznie zainstalować moduł.
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Zainstaluj ręcznie program VMware PowerCLI modułu
@@ -126,12 +126,9 @@ Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę
 
 Moduł zbierający łączy się z serwerem vcenter i wysyła zapytanie dotyczące metadanych maszyny Wirtualnej i liczników wydajności. Oto, co jest potrzebne do połączenia.
 
-- VCenter Server 5.5, 6.0 i 6.5 obsługiwane są tylko wersje.
+- VCenter Server 5.5, 6.0, 6.5 i 6.7 obsługiwane są tylko wersje.
 - Potrzebujesz tylko do odczytu konta z uprawnieniami podsumowano poniżej do odnajdywania. Tylko centrów danych dostępne za pomocą konta jest możliwy do odnajdywania.
 - Domyślnie połączenie z serwerem vCenter za pomocą nazwy FQDN lub adres IP. Jeśli na oprogramowania vCenter Server nasłuchuje na innym porcie, nawiążesz z nim za pomocą formularza *IPAddress:Port_Number* lub *FQDN:Port_Number*.
-- Aby zebrać dane wydajności dotyczące magazynu i sieci, ustawieniach statystyk programu vCenter Server musi być równa poziomu 3.
-- Jeśli poziom jest niższa niż trzy, działa odnajdywanie, ale nie będą zbierane dane dotyczące wydajności. Liczniki mogą być zbierane, ale inne można ustawić na zero.
-- Jeśli nie zostaną zebrane dane wydajności dotyczące magazynu i sieci, zaleceń dotyczących rozmiarów oceny są dane na podstawie wydajności procesora CPU i pamięci, a także na dane konfiguracji dla dysku i kart sieciowych.
 - Moduł powinien mieć sieci linii wzroku do serwera vCenter.
 
 #### <a name="account-permissions"></a>Uprawnień konta
@@ -229,7 +226,7 @@ virtualDisk.read.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar 
 virtualDisk.write.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
 virtualDisk.numberReadAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
 virtualDisk.numberWriteAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-NET.RECEIVED.AVERAGE | Oblicza rozmiar maszyny Wirtualnej                          
+net.received.average | Oblicza rozmiar maszyny Wirtualnej                          
 net.transmitted.average | Oblicza rozmiar maszyny Wirtualnej     
 
 ## <a name="next-steps"></a>Kolejne kroki

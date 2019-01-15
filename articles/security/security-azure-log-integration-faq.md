@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 928c7921ce184f5f17916c3b9e182ce3754b0115
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064478"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306271"
 ---
 # <a name="azure-log-integration-faq"></a>Integracja dzienników platformy Azure — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących integracji dzienników Azure.
 
 >[!IMPORTANT]
-> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integracja dzienników platformy Azure to usługa systemu operacyjnego Windows, która służy do integracji nieprzetworzonych dzienników z zasobów platformy Azure w Twojej lokalnej zabezpieczeń informacjami i zdarzeniami (SIEM) systemów zarządzania. Integracja ta zapewnia jednolity pulpit nawigacyjny dla wszystkich zasobów w środowisku lokalnym lub w chmurze. Użytkownik może, a następnie agregacji, korelowanie, analizowanie i alertów dla zdarzeń dotyczących zabezpieczeń skojarzone z aplikacjami.
 

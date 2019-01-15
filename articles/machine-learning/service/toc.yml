@@ -112,14 +112,14 @@ items:
       href: how-to-build-deploy-onnx.md
   - name: Wdrażanie modeli
     items:
-    - name: Gdzie należy wdrażać modele
+    - name: Gdzie i jak wdrażać modele
       displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
     - name: Układy FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: Rozwiązywanie problemów
       href: how-to-troubleshoot-deployment.md
-    - name: Zabezpieczanie przy użyciu protokołu SSL
+    - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
       href: how-to-secure-web-service.md
   - name: Korzystaj z usług sieci Web
     items:
@@ -139,7 +139,7 @@ items:
   - name: Zarządzanie przydziałami zasobów
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: Używanie z sieciami wirtualnymi
+  - name: Zabezpieczanie za pomocą sieci wirtualnych
     displayName: vnet
     href: how-to-enable-virtual-network.md
   - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
@@ -174,9 +174,9 @@ items:
     href: support-for-aml-services.md
   - name: Porównanie produktów uczenia maszynowego w ofercie firmy Microsoft
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 84f4c2ec1d9f361cdf030b724860aea89f5c9cc3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 098c8a9f9bc8d0458490adf4d80e2eaf69dd9f7f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247371"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266080"

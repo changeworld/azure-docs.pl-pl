@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002658"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304843"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
@@ -58,6 +58,8 @@ Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs zoba
 Elementy danych czasowych zapytania (zorientowane na czas) to podstawowy zestaw operatorów stanowych dostarczane przez usługę Stream Analytics. Stream Analytics zarządza stanem tych operacji wewnętrznie w imieniu użytkownika, zarządzając zużycie pamięci, punkty kontrolne dla odporności i odzyskiwania stanu podczas uaktualnienia usługi. Mimo że usługi Stream Analytics w pełni zarządza każdym stany, istnieje kilka zalecenia dotyczące najlepszych rozwiązań, które należy wziąć pod uwagę użytkowników.
 
 Należy zauważyć, że zadanie z logiką złożonego zapytania można wysokiej % wykorzystania SU nawet wtedy, gdy nie jest stale odbierania zdarzeń wejściowych. Może to nastąpić po nagłym skokiem w zdarzeniach wejściowych i wyjściowych. Zadanie może w dalszym ciągu zachować stan pamięci, jeśli zapytanie jest złożone.
+
+% Wykorzystania SU nagle może porzucić 0 na krótko przed powracające do oczekiwanego poziomu. Dzieje się tak z powodu przejściowych błędów lub uaktualnień zainicjowane przez system.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
 Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każda z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 

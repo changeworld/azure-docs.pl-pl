@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a50cb5dc204a209c2b9d899c50ae7def55f4deb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118170"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262591"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](https://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -29,7 +29,7 @@ Istnieją trzy metody eksportowania danych usługi Application Insights do usłu
 * [**Usługa Power BI karty**](#power-pi-adapter). Wstępnie zdefiniowane zbiór wykresy, ale możesz dodawać własne zapytania z innych źródeł.
 
 > [!NOTE]
-> Karta usługi Power BI jest teraz **przestarzałe**. Wstępnie zdefiniowane wykresy dla tego rozwiązania są wypełniane przez statyczne nieedytowalne zapytania. Nie masz możliwość edytowania tych zapytań, w zależności od niektóre właściwości danych jest możliwe połączenie usługi Power BI zakończy się powodzeniem, a żadne dane nie jest wypełnione. Jest to spowodowane kryteria wykluczenia, które są ustawione w ramach zapytania zapisane na stałe. Chociaż to rozwiązanie mogą nadal działać w przypadku niektórych klientów, ze względu na brak flexiblity karty zalecanym rozwiązaniem jest użycie [ **wyeksportować zapytanie analizy** ](#export-analytics-queries) funkcji.
+> Karta usługi Power BI jest teraz **przestarzałe**. Wstępnie zdefiniowane wykresy dla tego rozwiązania są wypełniane przez statyczne nieedytowalne zapytania. Nie masz możliwość edytowania tych zapytań, w zależności od niektóre właściwości danych jest możliwe połączenie usługi Power BI zakończy się powodzeniem, a żadne dane nie jest wypełnione. Jest to spowodowane kryteria wykluczenia, które są ustawione w ramach zapytania zapisane na stałe. Chociaż to rozwiązanie mogą nadal działać w przypadku niektórych klientów, ze względu na brak elastyczność karty zalecanym rozwiązaniem jest użycie [ **wyeksportować zapytanie analizy** ](#export-analytics-queries) funkcji.
 
 ## <a name="export-analytics-queries"></a>Eksportuj zapytań analitycznych
 Ta trasa pozwala na zapis wszelkie zapytania usługi Analytics, takie jak, lub wyeksportuj go z użycia Lejki, a następnie wyeksportować, do pulpitu nawigacyjnego usługi Power BI. (Możesz dodać do pulpitu nawigacyjnego, utworzone przez adapter.)

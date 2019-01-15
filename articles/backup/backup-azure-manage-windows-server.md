@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 716ddcaf61c4d7db40821056dc759667f9376023
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871342"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261506"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -67,7 +67,7 @@ Aby otworzyć menu skojarzone, kliknij przycisk kafelków (z wyjątkiem magazyn 
 
 ![Menu alerty kopii zapasowej przefiltrowana pod kątem alertów krytycznych](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-Menu alerty kopii zapasowej na ilustracji powyżej są filtrowane według: stan jest aktywny, ważność, jest krytyczny a czas jest ostatnich 24 godzin.
+Menu alerty kopii zapasowej na ilustracji powyżej są filtrowane według: Stan jest aktywny, ważność, jest krytyczny, a czas ostatnich 24 godzin.
 
 ## <a name="manage-backup-alerts"></a>Zarządzanie alertami wykonywania kopii zapasowej
 
@@ -85,8 +85,8 @@ Na liście alertów kopii zapasowej Wyświetla wybrane informacje dla filtrowane
 
 | Poziom alertu | Zdarzenia, które generują alerty |
 | ----------- | ----------- |
-| Krytyczny | Pojawi się krytyczne alerty, gdy: kopia zapasowa zadanie zakończy się niepowodzeniem, zadania odzyskiwania zakończą się niepowodzeniem i po zatrzymaniu ochrony na serwerze, ale zachować dane.|
-| Ostrzeżenie | Ostrzeżenia są wyświetlane alerty, gdy: ukończenia zadania tworzenia kopii zapasowej z ostrzeżeniami, na przykład gdy mniej niż 100 nie kopię zapasową plików z powodu problemów z uszkodzeniem lub jeśli wartość jest większa niż 1 000 000 pliki są pomyślnie utworzyła kopię zapasową). |
+| Krytyczny | Pojawi się krytyczne alerty, gdy: Zadania tworzenia kopii zapasowych zakończą się niepowodzeniem, zadania odzyskiwania zakończą się niepowodzeniem, a po zatrzymaniu ochrony na serwerze, ale zachować dane.|
+| Ostrzeżenie | Ostrzeżenia są wyświetlane alerty, gdy: Zadania tworzenia kopii zapasowej zakończenie z ostrzeżeniami, na przykład gdy mniej niż 100 nie kopię zapasową plików z powodu problemów z uszkodzeniem lub jeśli wartość jest większa niż 1 000 000 pliki są pomyślnie utworzyła kopię zapasową). |
 | Informacyjne | obecnie nie alerty informacyjne są używane. |
 
 ### <a name="viewing-alert-details"></a>Wyświetlanie szczegółów alertów
@@ -251,7 +251,7 @@ Datę i godzinę zakończenia kwerendy.
 
 Użyj **Eksportuj zadania** Aby utworzyć arkusz kalkulacyjny zawierający wszystkie informacje w menu zadań. Arkusz kalkulacyjny zawiera jeden arkusz, który zawiera podsumowanie wszystkich zadań i pojedynczymi arkuszami dla każdego zadania.
 
-Aby wyeksportować informacje zadania do arkusza kalkulacyjnego, kliknij przycisk **Eksportuj zadania**. Usługa tworzy speadsheet, przy użyciu nazwy magazynu i daty, ale można zmienić nazwę.
+Aby wyeksportować informacje zadania do arkusza kalkulacyjnego, kliknij przycisk **Eksportuj zadania**. Usługa tworzy arkusz kalkulacyjny, przy użyciu nazwy magazynu i daty, ale można zmienić nazwę.
 
 ## <a name="monitor-backup-usage"></a>Monitorowanie użycia kopii zapasowej
 
@@ -281,9 +281,9 @@ Odpowiedź 3. Tak. W następujących sytuacjach nie są wysyłane powiadomienia.
 
 ## <a name="troubleshooting-monitoring-issues"></a>Rozwiązywanie problemów monitorowania
 
-**Problem:** zadania i/lub alerty z agentem usługi Azure Backup nie są wyświetlane w portalu.
+**Problem:** Zadania i/lub alerty z agentem usługi Azure Backup nie są wyświetlane w portalu.
 
-**Kroki rozwiązywania problemów:** procesu ```OBRecoveryServicesManagementAgent```, wysyła dane zadania i alerty dla usługi Azure Backup. Czasami ten proces może zostać wstrzymana lub zamknięcia systemu.
+**Kroki rozwiązywania problemów:** Proces, ```OBRecoveryServicesManagementAgent```, wysyła dane zadania i alerty dla usługi Azure Backup. Czasami ten proces może zostać wstrzymana lub zamknięcia systemu.
 
 1. Aby sprawdzić, proces nie jest uruchomiony, otwórz **Menedżera zadań**i sprawdź ```OBRecoveryServicesManagementAgent``` jest uruchomiona.
 

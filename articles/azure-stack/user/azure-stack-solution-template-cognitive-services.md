@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.openlocfilehash: 5af508714b5eae5cdd23c940af0ae21300c0c5b8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bf056c162684c021e3a8408edfdf82fe4590be48
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194691"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260638"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Wdrażanie usług Azure Cognitive Services do usługi Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Azure Cognitive Services w usłudze Azure Stack jest w wersji zapoznawczej.
+> Usługi Azure Cognitive Services w usłudze Azure Stack jest w wersji zapoznawczej.
 
 Za pomocą usług Azure Cognitive Services obsługi kontenerów w usłudze Azure Stack. Obsługa kontenerów w usługach Azure Cognitive Services pozwala używać tych samych zaawansowanych interfejsów API, które są dostępne na platformie Azure. Korzystanie z kontenerów powala w przypadku, gdy do wdrażania i obsługi usługi zapewniane przez [kontenerów platformy Docker](https://www.docker.com/what-container). Obsługa kontenerów jest obecnie dostępna w wersji zapoznawczej dla podzbioru usług Azure Cognitive Services, łącznie z części [komputerowej](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), [twarzy](https://docs.microsoft.com/azure/cognitive-services/face/overview), i [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), i [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto) (LUIS).
 
@@ -41,7 +41,7 @@ Konteneryzacji to podejście do dystrybucji oprogramowania, w którym aplikacji 
   Zapewnić użytkownikom aplikacji do wersji i aktualizowanie modeli wdrożone w swoich rozwiązaniach.
 
 - **Architektura przenośny**  
-  Włącz tworzenie architektury aplikacji przenośnych można wdrażać rozwiązania do chmury publicznej, Chmura prywatna lokalnych lub krawędzi. Możesz wdrożyć kontenera do usługi Azure Kubernetes Service, Azure Container Instances, lub do klastra Kubernetes w usłudze Azure Stack. Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+  Umożliwiają tworzenie architektury aplikacji przenośne tak, aby wdrożyć dane rozwiązanie chmury publicznej, prywatnej chmury w środowisku lokalnym lub krawędzi. Możesz wdrożyć kontenera do usługi Azure Kubernetes Service, Azure Container Instances, lub do klastra Kubernetes w usłudze Azure Stack. Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 
 - **Wysoka przepływność i małe opóźnienia**  
    Umożliwia użytkownikom aplikacji skalowanie za pomocą skoków ruchu dla wysokiej przepływności i małego opóźnienia. Włączanie usług Cognitive Services do uruchamiania w usłudze Azure Kubernetes Service fizycznie blisko ich logiki aplikacji i danych.
@@ -66,7 +66,7 @@ Przed rozpoczęciem należy:
 
 Utwórz zasób usługi cognitive Services na platformie Azure nad wersją zapoznawczą kontenery rozpoznawania twarzy, LUIS lub rozpoznawanie tekstu, odpowiednio. Należy użyć subskrypcji key i punktu końcowego adresu URL z zasobu do utworzenia wystąpienia kontenerów usługi cognitive Services.
 
-1.  Tworzenie zasobu platformy Azure w witrynie Azure portal. Aby wyświetlić podgląd kontenery twarzy, możesz najpierw utworzyć odpowiadający jej zasób twarzy w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Szybki Start: Utwórz konto usług Cognitive Services w witrynie Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+1.  Tworzenie zasobu platformy Azure w witrynie Azure portal. Aby wyświetlić podgląd kontenery twarzy, możesz najpierw utworzyć odpowiadający jej zasób twarzy w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
     >  [!Note]  
     >  Zasób twarzy lub przetwarzania obrazów musi używać F0 warstwę cenową.
@@ -140,10 +140,10 @@ Szczegółowe informacje na temat pól klucza:
 | Pole | Uwagi |
 | --- | --- |
 | replicaNumber | Definiuje początkowej repliki wystąpienia do utworzenia. Można ją z pewnością skalować później, po wdrożeniu. |
-| elemencie imageLocation | Wskazuje lokalizację obrazu kontenera określonej usługi cognitive Services w rejestru Azure container Registry. Na przykład usługa rozpoznawania twarzy: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
+| ImageLocation | Wskazuje lokalizację obrazu kontenera określonej usługi cognitive Services w rejestru Azure container Registry. Na przykład usługa rozpoznawania twarzy: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |Adres URL punktu końcowego zanotowanym w kroku [tworzenie zasobów platformy Azure](#create-azure-resources) |
 | ApiKey | Klucz subskrypcji zanotowanym w kroku [tworzenie zasobów platformy Azure](#create-azure-resources) |
-| secretName | Nazwa wpisu tajnego, po prostu zanotowaną w kroku [Utwórz secrete do dostępu do prywatnego rejestru kontenerów](#create-secrete-to-access-the-private-container-registry) |
+| SecretName | Nazwa wpisu tajnego, po prostu zanotowaną w kroku [Utwórz secrete do dostępu do prywatnego rejestru kontenerów](#create-secrete-to-access-the-private-container-registry) |
 
 ## <a name="deploy-the-cognitive-service"></a>Wdrażanie usługi cognitive
 

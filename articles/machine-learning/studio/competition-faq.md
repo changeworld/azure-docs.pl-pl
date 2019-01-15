@@ -1,26 +1,8 @@
 ---
-title: Pakiet Cortana Intelligence konkursy — często zadawane pytania — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące Microsoft Cortana Intelligence konkursów.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268907"
+Tytuł: TitleSuffix Cortana Intelligence konkursy — często zadawane pytania: Opis usługi Azure Machine Learning Studio: Często zadawane pytania dotyczące Microsoft Cortana Intelligence konkursów.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 12/18/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Konkursy dotyczące usługi Microsoft Cortana Intelligence — często zadawane pytania
 **Co to jest pakiet Cortana Intelligence konkursy?**

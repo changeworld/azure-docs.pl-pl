@@ -1,23 +1,23 @@
 ---
-title: 'Szybki Start: Wprowadzenie do pakietu Content Moderator'
+title: 'Szybki start: Wypróbuj pakiet Content Moderator w sieci web - Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Jak rozpocząć pracę z usługi Content Moderator.
+description: W tym przewodniku Szybki Start użyjesz narzędzia przeglądu usługi Content Moderator online do przetestowania podstawową funkcjonalność usługi Content Moderator, bez konieczności pisania kodu.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 382401bd8ca073bec6f77fadf1096e42ab1e1d72
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852694"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266471"
 ---
-# <a name="quickstart-get-familiar-with-content-moderator"></a>Szybki Start: Zapoznać się z usługi Content Moderator
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Szybki start: Wypróbuj pakiet Content Moderator w sieci web
 
 W tym przewodniku Szybki Start użyjesz narzędzia przeglądu usługi Content Moderator online do przetestowania podstawową funkcjonalność usługi Content Moderator, bez konieczności pisania kodu. Jeśli chcesz szybciej zintegrować tę usługę do aplikacji, zobacz inne Przewodniki Szybki Start w [następne kroki](#next-steps) sekcji.
 
@@ -30,7 +30,7 @@ Narzędzie do przeglądu usługi Content Moderator to narzędzia opartego na sie
 
 ![Strona główna Moderator zawartości](images/homepage.PNG)
 
-## <a name="create-a-review-team"></a>Tworzenie zespołu przeglądu
+## <a name="create-a-review-team"></a>Tworzenie zespołu do przeprowadzania przeglądu
 
 Następnie należy utworzyć zespół przeglądu. W przypadku scenariusza pracy będzie grupa osób, które zostaną ręcznie przejrzeć usługi Moderowanie decyzji. Teraz musisz tylko utworzyć nazwę zespołu. Jeśli chcesz zaprosić współpracowników do zespołu, możesz to zrobić, wprowadzając ich adresy e-mail.
 

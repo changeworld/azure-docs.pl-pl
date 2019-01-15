@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: fd912885335b41e3d7ca8ee717b6bb1b9c88e729
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 905ea05d2b3bc58428831ae815238de818912928
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984149"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304435"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Stream Analytics korzysta z usługi Azure Blob storage jako Warstwa przechowywania danych referencyjnych, a z odwołaniem do usługi Azure Data Factory danych może zostać przekształcone i/lub kopiowane do usługi Azure Blob storage jako dane referencyjne z [dowolną liczbę oparte na chmurze i magazyny danych lokalnych](../data-factory/copy-activity-overview.md). Dane referencyjne są modelowane jako sekwencję obiektów blob (zdefiniowany w konfiguracji danych wejściowych) w kolejności rosnącej kolejności daty/godziny określone w nazwie obiektu blob. Jego **tylko** obsługuje dodawanie do końca sekwencji za pomocą daty/godziny **większą** niż określona przez ostatni obiekt blob w sekwencji.
@@ -40,7 +40,7 @@ Aby skonfigurować swoje dane referencyjne, najpierw musisz utworzyć danych wej
 |Konto magazynu   | Nazwa konta magazynu, w którym znajdują się obiekty BLOB. Jeśli jest w tej samej subskrypcji co zadanie usługi Stream Analytics, możesz wybrać go z listy rozwijanej.   |
 |Klucz konta magazynu   | Klucz tajny skojarzony z kontem magazynu. To jest automatycznie wypełniana w przypadku konta magazynu w tej samej subskrypcji co zadanie usługi Stream Analytics.   |
 |Kontener magazynu   | Kontenery umożliwiają logiczne grupowanie obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Podczas przekazywania obiektu blob do usługi obiektów Blob, należy określić kontener dla tego obiektu blob.   |
-|Wzorzec ścieżki   | Ścieżka używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących 2 zmiennych:<BR>{date}, {time}<BR>Przykład 1: products/{date}/{time}/product-list.csv<BR>Przykład 2: products/{date}/product-list.csv<BR><br> Jeśli obiekt blob nie istnieje w określonej ścieżce, zadanie usługi Stream Analytics będzie czekać w nieskończoność dla obiektu blob staną się dostępne.   |
+|Wzorzec ścieżki   | Ścieżka używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących 2 zmiennych:<BR>{date}, {time}<BR>Przykład 1: products/{date}/{time}/product-list.csv<BR>Przykład 2: products/{date}/product-list.csv<BR>Przykład 3: Lista-produktów.csv<BR><br> Jeśli obiekt blob nie istnieje w określonej ścieżce, zadanie usługi Stream Analytics będzie czekać w nieskończoność dla obiektu blob staną się dostępne.   |
 |Format daty [opcjonalnie]   | Jeśli używano {date} w ramach wzorzec ścieżki, który określiłeś, format daty, w którym sklasyfikowano obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: RRRR/MM/DD/MM/DD/RRRR, itp.   |
 |Format czasu [opcjonalnie]   | Jeśli używano {time} w ramach wzorzec ścieżki, który określiłeś, format czasu, w którym sklasyfikowano obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: HH gg/mm i HH mm.  |
 |Format serializacji zdarzeń   | Aby zapytania działały zgodnie z oczekiwaniami, usługa Stream Analytics musi znać format serializacji używany w przypadku przychodzących strumieni danych. Dane referencyjne są obsługiwane formaty: CSV i JSON.  |
@@ -78,7 +78,7 @@ Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
-> [Szybki Start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
+> [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

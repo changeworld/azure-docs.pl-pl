@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2cec9e9b9724ca401778d4493d03def2aefc4ee9
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074380"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304486"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -483,7 +483,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
-1. Przejdź do < https\://portal.azure.com >
+1. Przejdź do [https://portal.azure.com](https://portal.azure.com)
 1. Otwórz blok usługi Azure Active Directory  
    Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
 1. Kliknij przycisk rejestracje aplikacji

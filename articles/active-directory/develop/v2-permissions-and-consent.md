@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 5283782188eaebe3997b6de31b087da74cf10486
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: e118249cf2aaf07aeb4f337636a46d088102bca8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620136"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261183"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
 
@@ -83,7 +83,7 @@ V2.0 wdrażania protokołu OpenID Connect zawiera kilka zakresów dobrze zdefini
 
 Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory-v2-protocols.md), należy go zażądać `openid` zakresu. `openid` Zakresu przedstawiono na stronie zgoda konta pracy jako uprawnienie "Logowanie się w", a na osobiste strona zgody użytkownika konta Microsoft jako uprawnienie "Wyświetl swój profil i nawiązać połączenie z aplikacjami i usługami korzystającymi z Twojego konta Microsoft". Posiadając to uprawnienie, aplikacja może odbierać Unikatowy identyfikator dla użytkownika w formie `sub` oświadczenia. Daje ona również dostęp do aplikacji do punktu końcowego informacji o użytkowniku. `openid` Zakres może służyć w punkcie końcowym tokenów w wersji 2.0 można uzyskać Identyfikatora tokenów, które mogą być używane do zabezpieczania połączeń HTTP między poszczególnymi składnikami aplikacji.
 
-### <a name="email"></a>e-mail
+### <a name="email"></a>email
 
 `email` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji, aby do adres podstawowy adres e-mail użytkownika w postaci `email` oświadczenia. `email` Oświadczenia znajduje się w tokenie, tylko wtedy, gdy jest skojarzony z konta użytkownika, które nie zawsze jest to adres e-mail. Jeśli użyto `email` zakresu, aplikacja powinna być przygotowana do obsługi przypadek, w którym `email` oświadczenia nie istnieje w tokenie.
 
@@ -254,4 +254,4 @@ Aby uzyskać więcej informacji na temat protokołu OAuth 2.0 i uzyskiwanie toke
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli użytkownik lub użytkownicy twojej aplikacji jest wyświetlany nieoczekiwane błędy podczas wyrażania zgody, zobacz ten artykuł zawiera kroki rozwiązywania problemów: [nieoczekiwany błąd podczas wyrażania zgody aplikacji](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+Jeśli użytkownik lub użytkownicy twojej aplikacji jest wyświetlany nieoczekiwane błędy podczas wyrażania zgody, zobacz ten artykuł zawiera kroki rozwiązywania problemów: [Nieoczekiwany błąd podczas wyrażania zgody aplikacji](../manage-apps/application-sign-in-unexpected-user-consent-error.md).

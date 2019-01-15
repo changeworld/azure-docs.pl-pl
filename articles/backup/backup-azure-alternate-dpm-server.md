@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: adigan
-ms.openlocfilehash: aa2796ab8e4cd9b8ab5e7fc3b4804f5535ac3518
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 66d78be296d0786626325df36aa133d277131b3b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254455"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267100"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
 Można użyć usługi Azure Backup Server, aby odzyskać dane, które zostały kopii zapasowej w magazynie usługi Recovery Services. Proces może więc jest zintegrowana z konsoli zarządzania usługi Azure Backup Server i jest podobna do przepływu pracy odzyskiwania dla innych składników usługi Azure Backup.
 
 > [!NOTE]
-> Ten artykuł dotyczy [System Center Data Protection Manager 2012 R2 z pakietem zbiorczym aktualizacji 7 lub nowszym] (https://support.microsoft.com/en-us/kb/3065246), połączone z [najnowszą wersję agenta usługi Kopia zapasowa Azure](https://aka.ms/azurebackup_agent).
+> Ten artykuł dotyczy [System Center Data Protection Manager 2012 R2 z pakietem zbiorczym aktualizacji 7 lub nowszym](https://support.microsoft.com/en-us/kb/3065246), połączone z [najnowszą wersję agenta usługi Kopia zapasowa Azure](https://aka.ms/azurebackup_agent).
 >
 >
 
@@ -82,10 +82,10 @@ Aby odzyskać dane z usługi Azure Backup Server:
 ## <a name="troubleshooting-error-messages"></a>Rozwiązywanie problemów z komunikatów o błędach
 | Nie. | Komunikat o błędzie | Kroki rozwiązywania problemów |
 |:---:|:--- |:--- |
-| 1. |Ten serwer nie jest zarejestrowany w magazynie określonym przez poświadczenia magazynu. |**Przyczyna:** ten błąd jest wyświetlany, gdy plik poświadczeń magazynu, które są wybrane nie należy do magazynu usługi Recovery Services, skojarzone z usługi Azure Backup Server, na którym jest podejmowana próba odzyskania. <br> **Rozwiązanie:** Pobierz plik poświadczeń magazynu usług odzyskiwania magazynu jest zarejestrowana serwera usługi Azure Backup. |
-| 2. |Dane możliwe do odzyskania są niedostępne lub wybrany serwer nie jest serwerem DPM. |**Przyczyna:** ma nie innych serwerów kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services lub serwery nie została jeszcze przesłana metadanych lub wybrany serwer nie jest usługi Azure Backup Server (alias systemu Windows Server lub klienta Windows). <br> **Rozwiązanie:** w przypadku innych serwerów kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure. <br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
-| 3. |Żaden inny serwer DPM jest zarejestrowany w tym magazynie. |**Przyczyna:** Brak innych serwerów kopia zapasowa Azure, zarejestrowanych w magazynie, z którego są podejmowane próby odzyskiwania.<br>**Rozwiązanie:** w przypadku innych serwerów kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure.<br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekazuje metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
-| 4. |Podane hasło szyfrowania jest niezgodny z hasłem skojarzonym z następującym serwerem: **<server name>** |**Przyczyna:** używany przy wysyłaniu szyfrowania danych z serwera Azure Backup dane są odzyskiwane hasło szyfrowania jest niezgodny z podane hasło szyfrowania. Agent nie może odszyfrować danych. Dlatego odzyskiwanie zakończy się niepowodzeniem.<br>**Rozwiązanie:** Podaj dokładnie tego samego hasła szyfrowania skojarzone z usługi Azure Backup Server, którego dane są odzyskiwane. |
+| 1. |Ten serwer nie jest zarejestrowany w magazynie określonym przez poświadczenia magazynu. |**Przyczyna:** Ten błąd jest wyświetlany, gdy plik poświadczeń magazynu, które są wybrane nie należy do magazynu usługi Recovery Services, skojarzone z usługi Azure Backup Server, na którym jest podejmowana próba odzyskania. <br> **Rozwiązanie:** Pobierz plik poświadczeń magazynu z magazynu usługi Recovery Services, w której jest zarejestrowana serwera usługi Azure Backup. |
+| 2. |Dane możliwe do odzyskania są niedostępne lub wybrany serwer nie jest serwerem DPM. |**Przyczyna:** Istnieją nie inne serwery kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services lub serwery nie została jeszcze przesłana metadanych lub wybrany serwer nie jest usługi Azure Backup Server (alias systemu Windows Server lub klienta Windows). <br> **Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure. <br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
+| 3. |Żaden inny serwer DPM jest zarejestrowany w tym magazynie. |**Przyczyna:** Nie ma żadnych innych serwerów kopia zapasowa Azure, zarejestrowanych w magazynie, z którego są podejmowane próby odzyskiwania.<br>**Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure.<br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekazuje metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
+| 4. |Podane hasło szyfrowania jest niezgodny z hasłem skojarzonym z następującym serwerem: **<server name>** |**Przyczyna:** Hasło szyfrowania używany przy wysyłaniu szyfrowania danych, dane serwera Azure Backup, który jest odzyskiwany jest niezgodna z podane hasło szyfrowania. Agent nie może odszyfrować danych. Dlatego odzyskiwanie zakończy się niepowodzeniem.<br>**Rozwiązanie:** Podaj dokładnie tego samego hasła szyfrowania skojarzone z usługi Azure Backup Server, którego dane są odzyskiwane. |
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

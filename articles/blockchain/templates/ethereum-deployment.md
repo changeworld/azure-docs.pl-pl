@@ -1,6 +1,6 @@
 ---
 title: Szablon rozwiązania konsorcjum dowód pracy Ethereum
-description: Szablon rozwiązania konsorcjum Etherereum dowód elementu roboczego umożliwia wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich
+description: Szablon rozwiązania konsorcjum Ethereum dowód elementu roboczego umożliwia wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231801"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260537"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Szablon rozwiązania konsorcjum dowód pracy Ethereum
 
@@ -67,7 +67,7 @@ Ten proces wymaga subskrypcji platformy Azure obsługują wdrażanie kilka zesta
 
 Gdy subskrypcja jest zabezpieczony, przejdź do witryny Azure portal. Wybierz **+ Utwórz zasób**, witryny Marketplace (Zobacz wszystko) i wyszukaj **konsorcjum dowód pracy Ethereum**.
 
-Wdrożenie szablonu przeprowadzi Konfigurowanie zużycie pierwszego elementu członkowskiego w sieci. Przepływ wdrożenia jest podzielona na pięć kroków: podstawy, pakiet Operations Management Suite, wdrożenia regiony, Network Activity block size i wydajność, Ethereum ustawienia.
+Wdrożenie szablonu przeprowadzi Konfigurowanie zużycie pierwszego elementu członkowskiego w sieci. Przepływ wdrożenia jest podzielona na pięć kroków: Podstawowe informacje dotyczące pakietu Operations Management Suite, wdrożenia regiony, Network Activity block size i wydajność, Ethereum ustawienia.
 
 ### <a name="basics"></a>Podstawy
 
@@ -82,7 +82,7 @@ Wdrażanie sieci, która będzie częścią konsorcjum?|Sieć konsorcjum umożli
 Prefiks zasobów |Ciąg używany jako podstawa do nadawania nazw zasobów (2 – 4 znaków alfanumerycznych). Unikatowy skrót jest dołączany na początku ciągu znaków dla niektórych zasobów, gdy jest dołączany informacji specyficznych dla zasobów.|Alfanumerycznym o długości od 2 do 4|Nie dotyczy
 Nazwa użytkownika maszyny Wirtualnej| Nazwa użytkownika administratora w każdej wdrożonej maszyny wirtualnej (tylko znaki alfanumeryczne)|1 - 64 znaki |gethadmin
 Typ uwierzytelniania|Metoda uwierzytelniania do maszyny wirtualnej. |Klucz publiczny hasła lub protokołu SSH|Hasło
-Hasło (typ uwierzytelniania = hasło)|Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących warunków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|Nie dotyczy
+Hasło (typ uwierzytelniania = hasło)|Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących wymagań: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|Nie dotyczy
 Klucz SSH (typ uwierzytelniania = klucz publiczny)|Klucz protokołu secure shell, używany do logowania zdalnego.|| Nie dotyczy
 Subskrypcja| Subskrypcja, dla której chcesz wdrożyć sieci konsorcjum||Nie dotyczy
 Grupa zasobów| Grupa zasobów, dla której chcesz wdrożyć sieci konsorcjum.||Nie dotyczy
@@ -143,9 +143,9 @@ Nazwa parametru |Opis |Dozwolone wartości|Wartości domyślne
 Identyfikator ConsortiumMember|Identyfikator skojarzony z każdym elementem członkowskim należących do sieci konsorcjum używane do konfigurowania przestrzeni adresów IP w celu uniknięcia kolizji. <br /><br />Identyfikator elementu członkowskiego powinna być unikatowa w różne organizacje w tej samej sieci. Identyfikator unikatowy elementu członkowskiego jest potrzebny, nawet wtedy, gdy w tej samej organizacji wdraża do wielu regionów.<br /><br />Zanotuj wartość tego parametru, ponieważ musisz udostępnić go innym członkom przyłączany.|0 - 255
 Identyfikator sieci Ethereum|Identyfikator sieci konsorcjum sieci Ethereum wdrażane. Każda sieć Ethereum ma swój własny identyfikator sieci 1 oznacza identyfikator sieci publicznej. Podczas dostępu do sieci jest ograniczone do węzłów wyszukiwania, nadal zaleca się użycie dużą liczbą, aby uniknąć kolizji.|5 - 999,999,999| 10101010
 Blok genesis niestandardowe|Opcję, aby automatycznie wygenerować bloku genesis lub podaj niestandardowego.|Tak/Nie| Nie
-Hasło do konta Ethereum (bloku genesis niestandardowe = No)|Hasło administratora, używany do zabezpieczania konta Ethereum zaimportowane do każdego węzła. Hasło musi zawierać następujące czynności: 1 Wielka litera, 1 małą literę i numer 1.|co najmniej 12 znaków.|Nie dotyczy
-Hasło klucza prywatnego Ethereum (niestandardowe genesis bloku = No)|Hasło używane do generowania klucza prywatnego ECC skojarzone z kontem Ethereum domyślny, który jest generowany. Wcześniej wygenerowany klucz prywatny nie musi jawnie przekazać.<br /><br />Za pomocą losowości wystarczającą do zapewnienia silnego klucza prywatnego i bez nakładania się z innymi członkami konsorcjum, należy wziąć pod uwagę hasła. Hasło musi zawierać co najmniej: 1 Wielka litera, 1 małą literę i numer 1.<br /><br />Należy pamiętać o tym, jeśli dwa elementy członkowskie, użyj tego samego hasła konta generowane będą takie same. Hasło jest przydatne, jeśli jednej organizacji jest w trakcie wdrażania w różnych regionach i chce udostępnić na jednym koncie (monet podstawowej) we wszystkich węzłach.|co najmniej 12 znaków.|Nie dotyczy
-Genesis block (Blokuj genesis niestandardowe = Yes)|Ciąg JSON reprezentujący niestandardowe genesis bloku. Szczegółowe informacje na temat formatu bloku genesis w tym miejscu można znaleźć w sekcji sieci niestandardowe.<br /><br />Nadal zostanie utworzone konto Ethereum podczas podawania bloku genesis niestandardowych. Należy wziąć pod uwagę, określając prefunded konta Ethereum w bloku genesis nie oczekiwania wyszukiwania.|Prawidłowym kodem JSON |Nie dotyczy
+Hasło do konta Ethereum (bloku genesis niestandardowe = No)|Hasło administratora, używany do zabezpieczania konta Ethereum zaimportowane do każdego węzła. Hasło musi zawierać następujące informacje: 1 Wielka litera, 1 małą literę i numer 1.|co najmniej 12 znaków.|Nie dotyczy
+Hasło klucza prywatnego Ethereum (niestandardowe genesis bloku = No)|Hasło używane do generowania klucza prywatnego ECC skojarzone z kontem Ethereum domyślny, który jest generowany. Wcześniej wygenerowany klucz prywatny nie musi jawnie przekazać.<br /><br />Za pomocą losowości wystarczającą do zapewnienia silnego klucza prywatnego i bez nakładania się z innymi członkami konsorcjum, należy wziąć pod uwagę hasła. Hasło musi zawierać na co najmniej następujących: 1 Wielka litera, 1 małą literę i numer 1.<br /><br />Należy pamiętać o tym, jeśli dwa elementy członkowskie, użyj tego samego hasła konta generowane będą takie same. Hasło jest przydatne, jeśli jednej organizacji jest w trakcie wdrażania w różnych regionach i chce udostępnić na jednym koncie (monet podstawowej) we wszystkich węzłach.|co najmniej 12 znaków.|Nie dotyczy
+Genesis block (Blokuj genesis niestandardowe = Yes)|Ciąg JSON reprezentujący niestandardowe genesis bloku. Szczegółowe informacje na temat formatu bloku genesis w tym miejscu można znaleźć w sekcji sieci niestandardowe.<br /><br />Nadal zostanie utworzone konto Ethereum podczas podawania bloku genesis niestandardowych. Należy wziąć pod uwagę, określając prefunded konta Ethereum w bloku genesis nie oczekiwania wyszukiwania.|Valid JSON |Nie dotyczy
 Wspólny klucz połączenia|Klucz współużytkowany dla połączenia między bramami sieci Wirtualnej.| co najmniej 12 znaków.|Nie dotyczy
 Adres URL danych konsorcjum|Adres URL wskazujący konsorcjum odpowiednie dane konfiguracji, dostarczone przez innego użytkownika wdrożenia. <br /><br />Te informacje, znajduje się już połączoną elementu członkowskiego, który ma wdrożenia. Jeśli wdrożono pozostałej części sieci, adres URL jest szablon wdrożenia danych wyjściowych o nazwie konsorcjum danych.||Nie dotyczy
 Bramy sieci wirtualnej, aby nawiązać połączenie|Ścieżka zasobu bramy sieci wirtualnej, którym chcesz się połączyć.<br />Te informacje, znajduje się już połączoną elementu członkowskiego, który ma wdrożenia. Jeśli wdrożono pozostałej części sieci, adres URL jest w danych wyjściowych wdrożenia szablonu, o nazwie CONSORTIUM_MEMBER_GATEWAY_ID. Uwaga: Należy użyć tego samego członka konsorcjum adresu URL i bramy sieci wirtualnej zasobów danych.||Nie dotyczy
@@ -215,8 +215,8 @@ Na przykład:
 
 Nazwa hosta na portalu Azure| Faktyczną nazwą hosta
 ---|---
-reg1_0-Mn-ethwvu| reg1000000-Mn-ethwvu
-reg1_1-Mn-ethwvu |reg1000001-Mn-ethwvu
+reg1_0-Mn-ethwvu| mn-ethwvu-reg1000000
+reg1_1-Mn-ethwvu |mn-ethwvu-reg1000001
 reg1_2-Mn-ethwvu |reg1000002-Mn-ethwvu
 
 ## <a name="adding-a-new-consortium-member"></a>Dodawanie nowego członka konsorcjum
@@ -225,13 +225,13 @@ reg1_2-Mn-ethwvu |reg1000002-Mn-ethwvu
 
 Jako pierwszy element członkowski (lub połączonych) konsorcjum musisz podać inni członkowie kilka rodzajów informacji, dzięki czemu mogą dołączyć i nawiązania połączenia. W szczególności:
 
-1. **Udostępnione dane konfiguracyjne konsorcjum**: istnieje zestaw danych, który jest używany do organizowania Ethereum połączenie między dwoma elementami. Niezbędne informacje, w tym bloku genesis, identyfikator sieci konsorcjum i węzłów rozruchowych są zapisywane do pliku na węzłach transakcji lidera lub innego członka wdrożone. Lokalizacja tego pliku znajduje się w parametr wyjściowy szablonu wdrożenia o nazwie **dane konsorcjum**.
-2. **Komunikacja równorzędna informacje o punkcie końcowym**: elementu równorzędnego punktu końcowego rejestratora informacje można pobrać informacji o wszystkich węzłów już połączone z siecią Ethereum od liderów lub innego członka wdrożenia. Magazyny DB zbiór informacji dotyczących każdego węzła połączone w sieci, informacje, takie jak nazwa hosta węzła, prywatny adres IP itp. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **PEER_INFO_ENDPOINT**.
-3. **Komunikacja równorzędna informacje o kluczu podstawowym**: klucza podstawowego elementu równorzędnego informacje rejestratora służy do uzyskania dostępu do liderów lub innego członka równorzędnej informacji klucza podstawowego. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **PEER_INFO_PRIMARY_KEY**.
+1. **Udostępnione dane konfiguracyjne konsorcjum**: Istnieje zestaw danych, który jest używany do organizowania Ethereum połączenie między dwoma elementami. Niezbędne informacje, w tym bloku genesis, identyfikator sieci konsorcjum i węzłów rozruchowych są zapisywane do pliku na węzłach transakcji lidera lub innego członka wdrożone. Lokalizacja tego pliku znajduje się w parametr wyjściowy szablonu wdrożenia o nazwie **dane konsorcjum**.
+2. **Komunikacja równorzędna informacje o punkcie końcowym**: Elementu równorzędnego informacje rejestratora punkt końcowy można pobrać informacji o wszystkich węzłów, które są już połączone z siecią Ethereum od liderów lub innego członka wdrożenia. Magazyny DB zbiór informacji dotyczących każdego węzła połączone w sieci, informacje, takie jak nazwa hosta węzła, prywatny adres IP itp. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **PEER_INFO_ENDPOINT**.
+3. **Komunikacja równorzędna informacje o kluczu podstawowym**: Klucz podstawowy Rejestrator informacji elementu równorzędnego służy do uzyskania dostępu do liderów lub innego członka równorzędnej informacji klucza podstawowego. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **PEER_INFO_PRIMARY_KEY**.
 
 
-4. **Bramy sieci Wirtualnej**: każdy członek nawiąże połączenie z siecią całego łańcucha bloków za pomocą istniejącego elementu członkowskiego. Aby połączyć sieć Wirtualną, należy ścieżka zasobu do bramy sieci Wirtualnej, elementu członkowskiego, z którym chcesz się połączyć. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-5. **Klucz wspólny**: A ustalonej wstępnie wpisu tajnego między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia. Jest ciągiem alfanumerycznym o długości (od 1 do 128 znaków), który został uzgodniony poza kontekstem wdrożenia. (Na przykład **MySharedKeyAbc123**)
+4. **Bramy sieci Wirtualnej**: Każdy element członkowski ustanawia połączenie z siecią całego łańcucha bloków za pomocą istniejącego elementu członkowskiego. Aby połączyć sieć Wirtualną, należy ścieżka zasobu do bramy sieci Wirtualnej, elementu członkowskiego, z którym chcesz się połączyć. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+5. **Klucz wspólny**: Wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia. Jest ciągiem alfanumerycznym o długości (od 1 do 128 znaków), który został uzgodniony poza kontekstem wdrożenia. (Na przykład **MySharedKeyAbc123**)
 
 ### <a name="acceptance-of-new-member"></a>Akceptacja nowego elementu członkowskiego
 
@@ -243,7 +243,7 @@ Dodatkowe informacje na temat sposobu rozpoczęcie korzystania z poleceń cmdlet
 
 Konieczne będzie najnowszą wersję poleceń cmdlet platformy Azure zainstalowany lokalnie i w sesji Otwórz. Upewnij się zalogować się do sesji przy użyciu poświadczeń subskrypcji platformy Azure.
 
-**Program PowerShell: Nawiąż połączenie**
+**PowerShell: Nawiąż połączenie**
 
 Pobieranie modułu programu PowerShell i zapisz go lokalnie. Lokalizacja modułu programu PowerShell jest określona jako **PS moduł, pary bramy w-** parametr wyjściowy szablonu wdrożenia.
 
@@ -261,24 +261,24 @@ Następnie zaimportuj moduł:
 
 Na koniec uruchom funkcję przy użyciu odpowiednich danych wejściowych:
 
-- **MyGatewayResourceId:** ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId:** ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest świadczona przez przyłączany elementu członkowskiego i parametr wyjściowy szablonu wdrożenia programu o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName:** nazwy do identyfikowania tego połączenia bramy.
-- **Klucz współużytkowany:** wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia z.
+- **MyGatewayResourceId:** Ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** Ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest świadczona przez przyłączany elementu członkowskiego i parametr wyjściowy szablonu wdrożenia programu o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** Nazwa do identyfikowania tego połączenia bramy.
+- **Klucz współużytkowany:** Wstępnie ustaloną klucz tajny między członkami sieci konsorcjum, które są nawiązywania połączenia.
 
 **CreateConnection** -MyGatewayResourceId <resource path of your Gateway> - OtherGatewayResourceId < ścieżka zasobu bramy przyłączany składowej > - ConnectionName Mojepołączenie - SharedKey "MySharedKeyAbc123"
 
-**Interfejs wiersza polecenia xPlat: nawiąż połączenie**
+**Interfejs wiersza polecenia xPlat: Nawiąż połączenie**
 
 Pobierz skrypt wiersza polecenia platformy Azure, a następnie zapisz go lokalnie. Lokalizacja skryptu wiersza polecenia platformy Azure jest określona w parametrze wdrażania szablonu o nazwie **pary-BRAMA-AZURE-skrypt interfejsu wiersza polecenia —**.
 
 Uruchom skrypt przy użyciu odpowiednich danych wejściowych:
 
-- **MyGatewayResourceId:** ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId:** ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest dostarczany przez przyłączany elementu członkowskiego, a parametr szablonu wdrożenia ich wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName:** nazwy do identyfikowania tego połączenia bramy.
-- **Klucz współużytkowany:** wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia z.
-- **Lokalizacja:** regionu platformy Azure, w której wdrożono zasób bramy.
+- **MyGatewayResourceId:** Ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** Ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest dostarczany przez przyłączany elementu członkowskiego, a parametr szablonu wdrożenia ich wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** Nazwa do identyfikowania tego połączenia bramy.
+- **Klucz współużytkowany:** Wstępnie ustaloną klucz tajny między członkami sieci konsorcjum, które są nawiązywania połączenia.
+- **Lokalizacja:** Region platformy Azure, w której wdrożono zasób bramy.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group

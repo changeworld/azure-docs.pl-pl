@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 53571fa0c29c4b9bf5493a1e558356eba38fe617
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244420"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266749"
 ---
 # <a name="advisor-performance-recommendations"></a>Zalecenia dotyczące wydajności usługi Advisor
 
@@ -77,7 +77,8 @@ Klasyfikator identyfikuje tabele, które nie są zreplikowane tabele, ale będą
 
 Przeprowadź migrację do usługi Azure Resource Manager (ARM) było czerpanie korzyści z wdrożenia szablonu, dodatkowe opcje zabezpieczeń i możliwość podniesienia poziomu do konta GPv2 w celu wykorzystania najnowszych funkcji usługi Azure Storage modelu wdrażania konta magazynu. Klasyfikatora określi, że wszystkie konta magazynu autonomicznych, które korzystają z klasycznego modelu wdrażania i zaleca się migrację do modelu wdrażania ARM.
 
-Alertów klasycznych w usłudze Azure Monitor jest ogłaszany wycofywania w czerwcu 2019, zalecane jest, Uaktualnij swoje konto klasycznego magazynu do ARM, aby zachować funkcje alertów z nową platformę alertów. Aby uzyskać więcej informacji, zobacz [klasycznego wycofanie alerty](https://azure.microsoft.com/en-us/updates/classic-alerting-monitoring-retirement/).
+> [!NOTE]
+> Alertów klasycznych w usłudze Azure Monitor jest ogłaszany wycofywania w czerwcu 2019, zalecane jest, Uaktualnij swoje konto klasycznego magazynu do ARM, aby zachować funkcje alertów z nową platformę. Aby uzyskać więcej informacji, zobacz [klasycznego wycofanie alerty](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 

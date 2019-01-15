@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253435"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260338"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 
@@ -35,8 +35,8 @@ Informacje o wersji programu Microsoft Azure BizTalk Services zawierają znane p
 ## <a name="update-history"></a>Historia aktualizacji
 ### <a name="october-update"></a>Aktualizacja z października
 * Konta organizacyjne są obsługiwane:  
-  * **Scenariusz**: zarejestrowany wdrożenia usługi BizTalk, przy użyciu konta Microsoft (takich jak user@live.com). W tym scenariuszu tylko Account Microsoft użytkownicy mogą zarządzać usługi BizTalk przy użyciu portalu usługi BizTalk Services. Nie można użyć konta organizacji.  
-  * **Scenariusz**: zarejestrowany wdrażania usługi BizTalk przy użyciu konta organizacyjnego usługi Azure Active Directory (takich jak user@fabrikam.com lub user@contoso.com). W tym scenariuszu tylko użytkownicy usługi Azure Active Directory w ramach tej samej organizacji można zarządzać za pomocą portalu usługi BizTalk Services usługi BizTalk. Nie można używać konta Microsoft.  
+  * **Scenariusz**: Zarejestrowany wdrożenia usługi BizTalk, przy użyciu konta Microsoft (takich jak user@live.com). W tym scenariuszu tylko Account Microsoft użytkownicy mogą zarządzać usługi BizTalk przy użyciu portalu usługi BizTalk Services. Nie można użyć konta organizacji.  
+  * **Scenariusz**: Zarejestrowany wdrażania usługi BizTalk przy użyciu konta organizacyjnego usługi Azure Active Directory (takich jak user@fabrikam.com lub user@contoso.com). W tym scenariuszu tylko użytkownicy usługi Azure Active Directory w ramach tej samej organizacji można zarządzać za pomocą portalu usługi BizTalk Services usługi BizTalk. Nie można używać konta Microsoft.  
 * Podczas tworzenia usługi BizTalk, są automatycznie rejestrowane w portalu usługi BizTalk Services.
   * **Scenariusz**: Tworzenie usługi BizTalk zalogujesz się do platformy Azure, a następnie wybierz pozycję **Zarządzaj** po raz pierwszy. Po otwarciu portalu usługi BizTalk Services, usługa BizTalk automatycznie rejestruje i jest gotowa do wdrożenia.  
     Zobacz [rejestrowanie i aktualizowanie wdrożenia usługi BizTalk w BizTalk Services Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
@@ -63,7 +63,7 @@ Należy wziąć pod uwagę następujące sytuacje, w projekcie usługi BizTalk S
 * Projekt usługi BizTalk ma odwołania do niestandardowego powiązania/zachowanie biblioteki DLL.
 
 Użytkownik "kompilacja" rozwiązania w programie Visual Studio pomyślnie. Następnie "Skompiluj ponownie" lub "Czysta" rozwiązania. Po tym gdy odbudować lub wyczyścić ponownie, wystąpi następujący błąd:  
-  Nie można skopiować pliku <Path to DLL> do "bin\Debug\FileName.dll". Proces uzyskać dostępu do pliku "bin\Debug\FileName.dll", ponieważ jest on używany przez inny proces.  
+  Unable to copy file <Path to DLL> to “bin\Debug\FileName.dll”. Proces uzyskać dostępu do pliku "bin\Debug\FileName.dll", ponieważ jest on używany przez inny proces.  
 
 #### <a name="workaround"></a>Obejście
 * Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) jest zainstalowany, dostępne są następujące dwie opcje:
@@ -87,7 +87,7 @@ Zdarzenia śledzenia są przechwytywane do przetwarzania komunikatów EDI i wsze
 X12 odbieranie i wysyłanie ustawień ([Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) zawierają informacje dotyczące etapów protokołu.  
 
 ### <a name="update-agreement"></a>Aktualizowanie umowy
-Portalu usługi BizTalk Services umożliwia modyfikowanie kwalifikator tożsamości, w przypadku skonfigurowania umowę. Może to spowodować, że właściwości jest niezgodna. Na przykład istnieje umowa przy użyciu ZZ:1234567 i ZZ:7654321 kwalifikator. W ustawieniach profilu w portalu usługi BizTalk Services możesz zmienić ZZ:1234567 jako 01:ChangedValue. Otwórz umowę, a 01:ChangedValue będzie wyświetlany zamiast ZZ:1234567.
+Portalu usługi BizTalk Services umożliwia modyfikowanie kwalifikator tożsamości, w przypadku skonfigurowania umowę. Może to spowodować niespójne właściwości. Na przykład istnieje umowa przy użyciu ZZ:1234567 i ZZ:7654321 kwalifikator. W ustawieniach profilu w portalu usługi BizTalk Services możesz zmienić ZZ:1234567 jako 01:ChangedValue. Otwórz umowę, a 01:ChangedValue będzie wyświetlany zamiast ZZ:1234567.
 Modyfikowanie kwalifikator tożsamości, usunąć umowy, aktualizowanie **tożsamości** w profilu partnera, a następnie ponownie utwórz umowy.  
 
 > AZURE. Ostrzeżenie to zachowanie ma wpływ X12 i AS2.  
@@ -97,7 +97,7 @@ Modyfikowanie kwalifikator tożsamości, usunąć umowy, aktualizowanie **tożsa
 ### <a name="as2-attachments"></a>Załączniki AS2
 Załączniki dla pola AS2 komunikaty nie są obsługiwane w wysyłać ani odbierać. W szczególności załączniki dyskretnie są ignorowane i treść komunikatu jest przetwarzany jako regularne komunikatu AS2.  
 
-### <a name="resources-remembering-path"></a>Zasoby dotyczące oprogramowania: Zapamiętywać ścieżkę
+### <a name="resources-remembering-path"></a>Zasoby: Uzupełnij ścieżki
 Podczas dodawania **zasobów**, okno dialogowe może pamiętasz ścieżki wcześniej można dodać zasobu. Do zapamiętania wcześniej używane ścieżki, spróbuj Dodawanie witryny sieci web portalu usługi BizTalk Services **Zaufane witryny** w programie Internet Explorer.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Jeśli możesz zmienić nazwę jednostki bridge, zamknij projekt bez zapisywania zmian ponownie otworzyć jednostki powoduje błąd
@@ -175,16 +175,16 @@ Rozważmy następujący scenariusz:
 ### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Mostki nie należy używać zaktualizowany certyfikat, nawet po zakończeniu certyfikatu została zaktualizowana w magazynie artefaktu
 Należy rozważyć następujące scenariusze:  
 
-**Scenariusz 1: Przy użyciu certyfikatów na podstawie odcisku palca do zabezpieczenia transferu wiadomości z mostka punktu końcowego usługi**  
+**Scenariusz 1: Za pomocą na podstawie odcisku palca certyfikatów do zabezpieczenia transferu wiadomości z mostka punktu końcowego usługi**  
 Rozważmy scenariusz, w którym używasz certyfikaty oparte na odcisk palca w projekcie usługi BizTalk. Zaktualizuj certyfikat w portalu usługi BizTalk Services przy użyciu tej samej nazwie, ale inny odcisk palca, ale są uaktualniane w związku z tym projektu usługi BizTalk. W takiej sytuacji mostka mogą nadal być przetwarzania komunikatów, ponieważ starsze dane certyfikatu może nadal znajdować się w pamięci podręcznej kanału. Przetwarzanie komunikatów, kończy się niepowodzeniem.  
 
-**Obejście**: zaktualizuj certyfikat w projekcie usługi BizTalk i ponownie wdrożyć projekt.  
+**Obejście**: Zaktualizuj certyfikat w projekcie usługi BizTalk, a następnie ponownie wdrożyć projekt.  
 
-**Scenariusz 2: Za pomocą opartego na nazwie zachowania, aby zidentyfikować certyfikatów do zabezpieczenia transferu wiadomości z mostka punktu końcowego usługi**
+**Scenariusz 2: Aby zidentyfikować certyfikatów do zabezpieczenia transferu wiadomości z mostka punktu końcowego usługi za pomocą zachowania na podstawie nazwy**
 
 Rozważmy scenariusz, w którym używasz zachowania na podstawie nazwy do identyfikowania certyfikaty w projekcie usługi BizTalk. Aktualizuj certyfikat w portalu usługi BizTalk Services, ale są uaktualniane w związku z tym projektu usługi BizTalk. W takiej sytuacji mostka mogą nadal być przetwarzania komunikatów, ponieważ starsze dane certyfikatu może nadal znajdować się w pamięci podręcznej kanału. Przetwarzanie komunikatów, kończy się niepowodzeniem.  
 
-**Obejście**: zaktualizuj certyfikat w projekcie usługi BizTalk i ponownie wdrożyć projekt.  
+**Obejście**: Zaktualizuj certyfikat w projekcie usługi BizTalk, a następnie ponownie wdrożyć projekt.  
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mostki w dalszym ciągu przetwarzać komunikatów, nawet wtedy, gdy baza danych SQL jest w trybie offline
 Mostków usługi BizTalk Services w dalszym ciągu przetwarzać komunikaty od pewnego czasu, nawet jeśli Microsoft Azure SQL Database (która przechowuje uruchomionej informacje, takie jak wdrożonej artefaktów i potoki), jest w trybie offline. Jest to spowodowane usługi BizTalk Services korzysta z pamięci podręcznej artefaktów i konfiguracji mostka.
@@ -196,13 +196,13 @@ Rozważmy scenariusz, gdzie chcesz odczytać wiadomości XML w kodzie niestandar
 ### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Wysyłanie komunikatów do mostka przy użyciu usługi WCF nie jest skalowany.
 Komunikaty wysyłane do mostka przy użyciu usługi WCF nie jest skalowany. Zamiast tego należy używać HttpWebRequest, jeśli klient skalowalne.
 
-### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UAKTUALNIENIE: Błąd dostawcy tokenu po uaktualnieniu z wersji zapoznawczej usługi BizTalk do ogólna dostępność (GA)
+### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UAKTUALNIENIE: Token błąd dostawcy, po uaktualnieniu z wersji zapoznawczej usługi BizTalk do ogólna dostępność (GA)
 Brak umowy AS2 lub EDI usługi za pomocą active partii. Po uaktualnieniu usługi BizTalk w wersji zapoznawczej wersji ogólnodostępnej mogą wystąpić następujące czynności:
 
-* Błąd: Dostawcy tokenu, który mógł zapewnić tokenu zabezpieczającego. Dostawca tokenu zwrócił komunikat: nie można rozpoznać nazwy zdalnej.
+* Błąd: Dostawca tokenu nie mógł zapewnić tokenu zabezpieczającego. Dostawca tokenu zwrócił komunikat: Nie można rozpoznać nazwy zdalnej.
 * Zadania podrzędne usługi Batch są anulowane.
 
-**Obejście**: po usługa BizTalk zostanie zaktualizowany do ogólna dostępność (GA), Wdróż ponownie umowy.  
+**Obejście**: Po zaktualizowaniu usługi BizTalk do ogólna dostępność (GA) ponownie wdróż umowy.  
 
 ### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UAKTUALNIENIE: Przybornik zawiera stary ikony Mostek po uaktualnieniu z zestawem SDK usługi BizTalk
 Po uaktualnieniu wcześniejszej wersji zestawu SDK usługi BizTalk, która była starego ikon reprezentujących mostków, przybornika w dalszym ciągu wyświetlać stare ikony mostków. Jednak jeśli dodasz Most do powierzchni projektanta projektu usługi BizTalk powierzchni zawiera ikonę nowego elementu.  
@@ -214,7 +214,7 @@ Jeśli użytkownik jest zalogowany do portalu usługi BizTalk Services, gdy usł
 
 Ta funkcja nie jest dostępna w ramach tej wersji programu Microsoft Azure BizTalk Services. Aby użyć tych możliwości Przełącz się do odpowiedniego wydania.  
 
-**Rozpoznawanie**: w przypadku wylogowania z portalu, zamknij i Otwórz przeglądarkę, a następnie zaloguj się do portalu.  
+**Rozwiązanie**: Wyloguj się z portalu, zamknij i Otwórz przeglądarkę, a następnie zaloguj się do portalu.  
 
 ### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UAKTUALNIENIE: Nowe dane śledzenia nie są wyświetlane po uaktualnieniu do wersji ogólnie dostępnej usługi BizTalk Services
 Załóżmy scenariusz, w którym masz Mostek XML wdrożone w ramach subskrypcji usługi BizTalk w wersji zapoznawczej. Wysyłanie komunikatów do mostka, i odpowiednie dane śledzenia są dostępne w portalu usługi BizTalk Services. Teraz Jeśli bitów środowiska uruchomieniowego w portalu usługi BizTalk Services i BizTalk Services zostaną uaktualnione do wersji ogólnie dostępnej i wysłać wiadomość do tego samego punktu końcowego mostka wdrożonego wcześniej, dane śledzenia nie jest wyświetlany dla wiadomości wysyłanych po uaktualnieniu.  

@@ -1,5 +1,5 @@
 ---
-title: Analizowanie zawartości wideo dla niepożądanego materiału wC#
+title: Analizowanie zawartości wideo dla niepożądanego materiału w C# -Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Jak analizować zawartości wideo na różnych materiał Kodeksem przy użyciu zestawu SDK Moderator zawartości dla platformy .NET
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 80635354b228edc1a8c1334e5d59cf530a10083e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 70fe30e53635203d80aca2406c52b2ec08d0035c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008287"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265519"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analizowanie zawartości wideo dla niepożądanego materiału wC#
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera informacje i przykłady kodu, które ułatwią Ci rozpoczę
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Dowolnej wersji programu [programu Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/)
+- Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>Konfigurowanie zasobów platformy Azure
 
@@ -55,18 +55,18 @@ Azure Media Services Explorer jest przyjazny dla użytkownika frontonu dla usłu
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
 1. W programie Visual Studio Utwórz nowy **Aplikacja konsoli (.NET Framework)** projektu i nadaj mu nazwę **VideoModeration**. 
-1. Jeśli istnieją inne projekty w rozwiązaniu, wybierz ten jeden jako pojedynczy projekt startowy.
-1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz **Zarządzaj pakietami NuGet**; Znajdź i zainstaluj następujące pakiety:
+1. Jeśli w rozwiązaniu istnieją inne projekty, wybierz ten projekt jako pojedynczy projekt startowy.
+1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz pozycję **Zarządzaj pakietami NuGet**, a następnie znajdź i zainstaluj następujące pakiety:
     - windowsazure.mediaservices
-    - windowsazure.mediaservices.Extensions
+    - windowsazure.mediaservices.extensions
 
 ## <a name="add-video-moderation-code"></a>Dodaj kod, Moderowanie filmów wideo
 
-Będzie następnie skopiuj i Wklej kod z tego przewodnika do projektu, aby zaimplementować scenariusz podstawowego moderowanie zawartości.
+Następnie skopiujesz kod z tego przewodnika i wkleisz go do projektu, aby zaimplementować podstawowy scenariusz moderowania zawartości.
 
 ### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
 
-Dodaj następujący kod `using` instrukcji na górze swoje _Program.cs_ pliku.
+Dodaj następujące instrukcje `using` na początku pliku _Program.cs_.
 
 ```csharp
 using System;
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Konfigurowanie odwołania do zasobów
 
-Dodaj następujące pola statyczne do **Program** klasy w _Program.cs_. Te pola przechowują informacje niezbędne do nawiązywania połączenia z subskrypcją usługi AMS. Wprowadź je przy użyciu wartości, które masz w powyższych krokach. Należy pamiętać, że `CLIENT_ID` jest **identyfikator aplikacji** wartość aplikacji usługi Azure AD i `CLIENT_SECRET` jest wartością "VideoModKey", który został utworzony dla danej aplikacji.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola przechowują informacje niezbędne do nawiązywania połączenia z subskrypcją usługi AMS. Wprowadź je przy użyciu wartości, które masz w powyższych krokach. Należy pamiętać, że `CLIENT_ID` jest **identyfikator aplikacji** wartość aplikacji usługi Azure AD i `CLIENT_SECRET` jest wartością "VideoModKey", który został utworzony dla danej aplikacji.
 
 ```csharp
 // declare constants and globals

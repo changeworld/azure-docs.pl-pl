@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 1/9/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 98d2d29e7822d9ca97ba488fcf67298a0b40efbf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608838"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265468"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
 
@@ -74,10 +74,10 @@ Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze 
 |Środowisko|Azure|Poza platformą Azure|Azure|Poza platformą Azure|
 |Alerty wykrywania zagrożeń VMBA|✔|✔|✔ (w obsługiwanych wersjach)|✔|
 |Alerty wykrywania zagrożeń opartego na sieci|✔|X|✔|X|
-|Integracja usługi Windows Defender ATP *|✔ (w obsługiwanych wersjach)|✔|X|X|
+|Integracja usługi Windows Defender ATP|✔ (w obsługiwanych wersjach)|✔|X|X|
 |Brakujące poprawki|✔|✔|✔|✔|
 |Konfiguracje zabezpieczeń|✔|✔|✔|✔|
-|Programy chroniące przed złośliwym kodem|✔|✔|X|X|
+|Ochrona punktów końcowych|✔|✔|X|X|
 |Dostęp JIT do maszyny wirtualnej|✔|X|✔|X|
 |Funkcje adaptacyjnego sterowania aplikacjami|✔|X|X|X|
 |USŁUGI FIM|✔|✔|✔|✔|
@@ -88,8 +88,27 @@ Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze 
 |Mapa sieci|✔|X|✔|X|
 |Kontrolki adaptacyjne sieci|✔|X|✔|X|
 
-\* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
 
+### <a name="supported-endpoint-protection-solutions"></a>Rozwiązań ochrony obsługiwanych punktów końcowych
+
+Poniższa tabela zawiera macierz:
+ - Czy można użyć usługi Azure Security Center na instalowanie poszczególnych rozwiązań.
+ - Można wykryć, które Centrum zabezpieczeń rozwiązania ochrony punktu końcowego. Jeśli jeden z tych rozwiązań do ochrony punktu końcowego zostanie wykryta, usługa Security Center będzie nie zaleca się zainstalowanie jednego.
+
+| Ochrona punktów końcowych| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
+|------|------|-----|-----|
+| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Yes |
+| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (zobacz uwaga poniżej) | Za pomocą rozszerzenia | Yes |
+| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Yes |
+| Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Yes |
+| McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Yes |
+| Kaspersky| Rodzina systemów Windows Server  | Nie | Nie  |
+| Sophos| Rodzina systemów Windows Server  | Nie | Nie  |
+
+> [!NOTE]
+> - Wykrywanie programu System Center Endpoint Protection (SCEP) na maszynie wirtualnej systemu Windows Server 2008 R2 wymaga protokołu SCEP do zainstalowania programu PowerShell 3.0 (lub górną wersji).
+>
+>
 
 ## <a name="supported-paas-features"></a>Obsługiwane funkcje PaaS 
 
@@ -97,8 +116,8 @@ Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze 
 |Usługa|Zalecenia|Wykrywanie zagrożeń|
 |----|----|----|
 |SQL|✔| ✔|
-|PostGreSQL *|✔| ✔|
-|MySQL *|✔| ✔|
+|PostGreSQL*|✔| ✔|
+|MySQL*|✔| ✔|
 |Usługa Azure Blob storage konta *|✔| ✔|
 |Usługi aplikacji|✔| ✔|
 |Cloud Services|✔| X|
@@ -109,6 +128,8 @@ Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze 
 |Subskrypcja|✔| ✔|
 
 \* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej. 
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

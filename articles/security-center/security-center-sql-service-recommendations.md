@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 977c464e0c172a25d069fa7db55d8aefb78d89d9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f6267bd2d97dabd71c007bcb8112936093124f74
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339097"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267032"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrona usługi Azure SQL i danych w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.  Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM), networking, SQL i dane i aplikacje.
 
-W tym artykule opisano zaleceń, które mają zastosowanie do usługi Azure SQL i danych. Centrum zalecenia dotyczące włączania inspekcji dla serwerów SQL platformy Azure i bazy danych, włączania szyfrowania baz danych SQL i włączania szyfrowania konta magazynu platformy Azure.  Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych zaleceń usługi i danych SQL i jak każdy z nich działa w przypadku zastosowania.
+
 ### <a name="monitor-data-security"></a>Monitorowanie bezpieczeństwa danych
 
 Po kliknięciu pozycji **Bezpieczeństwo danych** w sekcji **Zapobieganie** zostanie otwarty blok **Zasoby danych** z zaleceniami dotyczącymi usług SQL i Storage. Przedstawia on także [zalecenia](security-center-sql-service-recommendations.md) dotyczące ogólnej kondycji bazy danych. Aby uzyskać więcej informacji dotyczących szyfrowania magazynu, przeczytaj artykuł [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Włączanie szyfrowania dla konta usługi Azure Storage w usłudze Azure Security Center).
@@ -60,7 +60,6 @@ Aby włączyć funkcję inspekcji, zaznacz pole wyboru **WŁĄCZONE** poniżej o
 |SQL|15|Włączanie inspekcji dla baz danych SQL|Włącz inspekcję dla baz danych Azure SQL. (Tylko w przypadku usługi azure SQL. Nie obejmuje SQL uruchomionych na maszynach wirtualnych).|
 |Usługa Data lake analytics|15|Włącz szyfrowanie danych magazynowanych usługa Data Lake Analytics|Włączanie technologii transparent data encryption chronić dane magazynowane na platformie usługi Data Lake Analytics. Szyfrowanie w spoczynku jest niewidoczna, co oznacza, że usługa Data Lake Analytics automatycznie szyfruje dane przed utrwaleniem i odszyfrowuje przed pobraniem. Nie ma zmian wymagane w aplikacji i usług, które współdziałają z usługą Data Lake Analytics z powodu szyfrowania. Szyfrowanie w spoczynku minimalizuje ryzyko utraty danych z kradzieżą fizyczną i pomaga również spełniają wymagania zgodności z przepisami.|
 |Usługi Data lake store|15|Włącz szyfrowanie danych magazynowanych na potrzeby Data Lake Store|Włączanie technologii transparent data encryption chronić dane magazynowane na platformie usługi Data Lake Store. Szyfrowanie w spoczynku jest niewidoczna, co oznacza, że Data Lake Store automatycznie szyfruje dane przed utrwaleniem i odszyfrowuje przed pobraniem. Nie trzeba wprowadzać zmian w aplikacji i usług, współpracujące z usługą Data Lake Store do obsługi szyfrowania. Szyfrowanie w spoczynku minimalizuje ryzyko utraty danych z kradzieżą fizyczną i pomaga również spełniają wymagania zgodności z przepisami.|
-|Konto magazynu|15|Włącz szyfrowanie dla konta usługi Azure Storage|Włącz szyfrowanie usługi Azure Storage dla danych magazynowanych. Szyfrowanie usługi Storage (SSE) działa przez szyfrowanie danych podczas są zapisywane do magazynu platformy Azure i odszyfrowuje przed pobierania. SSE jest obecnie dostępna tylko w przypadku usługi Azure Blob service i może służyć do blokowych obiektów blob, stronicowe obiekty BLOB i uzupełnialnych obiektów blob.|
 |Usługa Data lake analytics|5|Włącz dzienniki diagnostyki w usłudze Data Lake Analytics|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
 |Usługi Data lake store|5|Włącz dzienniki diagnostyki w usłudze Azure Data Lake Store|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
 |SQL|30|Korygowanie luk w zabezpieczeniach w bazach danych SQL|Ocena luk w zabezpieczeniach SQL skanuje bazę danych pod kątem luk w zabezpieczeniach i udostępnia wszystkich odchyleń od najlepszych rozwiązań, takich jak nieprawidłowe konfiguracje, nadmierne uprawnienia i niechronione poufnych danych. Rozpoznawanie znaleziono luki w zabezpieczeniach można znacznie zwiększyć swoje stature zabezpieczeń bazy danych.|

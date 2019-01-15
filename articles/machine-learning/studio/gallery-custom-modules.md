@@ -1,26 +1,8 @@
 ---
-title: Moduły platformy Azure Galeria sztucznej Inteligencji niestandardowe - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Dowiedz się, modułów usługi niestandardowe machine learning w galerii sztucznej Inteligencji platformy Azure. Moduły niestandardowe rozszerzyć możliwości usługi Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/14/2017
-ms.openlocfilehash: 92067a93a1f67711df0312f4daf484a577ff14d1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273203"
+Tytuł: TitleSuffix moduły niestandardowe Galeria sztucznej Inteligencji platformy Azure: Opis usługi Azure Machine Learning Studio: Dowiedz się, modułów usługi niestandardowe machine learning w galerii sztucznej Inteligencji platformy Azure. Moduły niestandardowe rozszerzyć możliwości usługi Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/14/2017
 ---
 # <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Usługa Machine Learning Studio: Odnajdywanie modułów usługi niestandardowe machine learning w galerii Azure AI
 

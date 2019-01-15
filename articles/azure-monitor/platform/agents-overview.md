@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438204"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265033"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -76,5 +76,5 @@ Może być konieczne kombinację tych agentów do monitorowania maszyny Wirtualn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz [omówienie agenta usługi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) Przegląd wymagań i obsługiwanych metod, aby wdrożyć agenta maszyn hostowanych na platformie Azure, w centrum danych lub w innym środowisku chmury.
+- Zobacz [omówienie agenta usługi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) Przegląd wymagań i obsługiwanych metod, aby wdrożyć agenta na maszynach hostowanych na platformie Azure, w centrum danych lub w innym środowisku chmury.
 

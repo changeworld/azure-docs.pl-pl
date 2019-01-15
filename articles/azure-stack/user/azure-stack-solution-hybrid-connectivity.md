@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: a219ec1797ff74bd1a9ff458e34650d1545f1172
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 19c5e530822d1d9c2b4ec815b37b3373e8e39b02
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585785"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305982"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Samouczek: Konfigurowanie łączności chmury hybrydowej dzięki platformie Azure i usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Można uzyskać dostęp do zasobów z zabezpieczeniami w globalnej platformy Azure i usługi Azure Stack przy użyciu wzorca połączenia hybrydowego.
 
@@ -59,8 +59,8 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
 
 ### <a name="azure"></a>Azure
 
- - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
- - Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, ponieważ będzie on potrzebny w tym samouczku.
+ - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz  [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+ - Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, ponieważ będzie on potrzebny w tym samouczku.
 
 ### <a name="azure-stack"></a>Azure Stack
 
@@ -68,7 +68,7 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
    >[!Note]
    >Wdrażanie ASDK można 7 godzin, więc odpowiednio zaplanować.
 
- - Wdrażanie [usługi App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) usługi PaaS do usługi Azure Stack.
+ - Wdrażanie [usługi App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) usługi PaaS do usługi Azure Stack.
  - [Utwórz plany i oferty](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) w środowisku usługi Azure Stack.
  - [Utwórz subskrypcję dzierżawy](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) w środowisku usługi Azure Stack.
 
@@ -81,17 +81,17 @@ Sprawdź, spełniają następujące kryteria, przed rozpoczęciem konfigurowania
 
 #### <a name="tutorial-example-values"></a>Samouczek przykładowe wartości
 
-W przykładach w tym samouczku Użyj następujących wartości. Te wartości można użyć do tworzenia środowiska testowego lub odwoływać się do nich, aby lepiej zrozumieć przykłady. Aby uzyskać więcej informacji o typach bram sieci VPN, zobacz [About VPN Gateway configuration settings (Informacje o ustawieniach konfiguracji bramy sieci VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
+W przykładach w tym samouczku Użyj następujących wartości. Te wartości można użyć do tworzenia środowiska testowego lub odwoływać się do nich, aby lepiej zrozumieć przykłady. Aby uzyskać więcej informacji na temat bramy sieci VPN, ustawienia ogólnie rzecz biorąc, zobacz [informacje o ustawieniach bramy VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
 
 Specyfikacje połączenia:
 
- - **Typ sieci VPN**: oparta na trasach
- - **Typ połączenia**: lokacja lokacja (IPsec)
- - **Typ bramy**: sieci VPN
- - **Nazwa połączenia platformy Azure**: Azure-Gateway-AzureStack-S2SGateway (portalu zostanie automatycznie wypełniona tej wartości)
- - **Nazwa połączenia w usłudze Azure Stack**: AzureStack-Gateway-Azure-S2SGateway (portalu zostanie automatycznie wypełniona tej wartości)
- - **Klucz współużytkowany**: dowolne zgodne ze sprzętem sieci VPN, z takimi samymi wartościami na obu stronach połączenia
- - **Subskrypcja**: dowolne preferowane subskrypcji
+ - **Typ sieci VPN**: Oparte na trasach
+ - **Typ połączenia**: Lokacja lokacja (IPsec)
+ - **Typ bramy**: Sieć VPN
+ - **Nazwa połączenia platformy Azure**: Azure-Gateway-AzureStack-S2SGateway (portalu zostanie automatycznie wypełniona tej wartości)
+ - **Nazwa połączenia w usłudze Azure Stack**: AzureStack-Gateway-Azure-S2SGateway (portalu zostanie automatycznie wypełniona tej wartości)
+ - **Klucz wspólny**: Wszystkie zgodne ze sprzętem sieci VPN, z takimi samymi wartościami na obu stronach połączenia
+ - **Subskrypcja**: Żadnych preferowanych subskrypcji
  - **Grupa zasobów**: Test-Infra
 
 Sieci i podsieci adresów IP:
@@ -102,25 +102,25 @@ Sieci i podsieci adresów IP:
 |  |  | GatewaySubnet<br>10.100.103.0/24 |  |
 | Sieci wirtualnej platformy Azure Stack | ApplicationvNet<br>10.100.100.0/23 | ApplicationSubnet <br>10.100.100.0/24 |  |
 |  |  | GatewaySubnet <br>10.100101.0/24 |  |
-| Brama sieci wirtualnej platformy Azure | Brama platformy Azure |  |  |
-| Brama sieci wirtualnej usługi Azure Stack | AzureStack bramy |  |  |
-| Usługa Azure publicznego adresu IP | GatewayPublicIP platformy Azure |  | Ustalona podczas tworzenia |
-| Publiczny adres IP usługi Azure Stack | AzureStack GatewayPublicIP |  | Ustalona podczas tworzenia |
-| Bramy sieci lokalnej platformy Azure | AzureStack S2SGateway<br>   10.100.100.0/23 |  | Wartość publiczny adres IP usługi Azure Stack |
-| Brama sieci lokalnej usługi Azure Stack | S2SGateway platformy Azure<br>10.100.102.0/23 |  | Wartość platformy Azure, publiczny adres IP |
+| Brama sieci wirtualnej platformy Azure | Azure-Gateway |  |  |
+| Brama sieci wirtualnej usługi Azure Stack | AzureStack-Gateway |  |  |
+| Usługa Azure publicznego adresu IP | Azure-GatewayPublicIP |  | Ustalona podczas tworzenia |
+| Publiczny adres IP usługi Azure Stack | AzureStack-GatewayPublicIP |  | Ustalona podczas tworzenia |
+| Bramy sieci lokalnej platformy Azure | AzureStack-S2SGateway<br>   10.100.100.0/23 |  | Wartość publiczny adres IP usługi Azure Stack |
+| Brama sieci lokalnej usługi Azure Stack | Azure-S2SGateway<br>10.100.102.0/23 |  | Wartość platformy Azure, publiczny adres IP |
 
 ## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Tworzenie sieci wirtualnej w globalnej platformy Azure i usługi Azure Stack
 
-Wykonaj następujące kroki, aby utworzyć sieć wirtualną przy użyciu portalu. Można ich użyć [przykładowe wartości](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) Jeśli używasz w tym artykule w ramach samouczka. Jednak jeśli używasz w tym artykule można skonfigurować do środowiska produkcyjnego, Zamień przykładowe ustawienia własnymi wartościami.
+Wykonaj następujące kroki, aby utworzyć sieć wirtualną przy użyciu portalu. Można ich użyć [przykładowe wartości](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) Jeśli używasz w tym artykule w ramach samouczka. Jednak jeśli używasz w tym artykule można skonfigurować do środowiska produkcyjnego, Zamień przykładowe ustawienia własnymi wartościami.
 
 > [!IMPORTANT]
 > Należy się upewnić, że nie nakładają się adresów IP w przestrzeni adresów sieci wirtualnej platformy Azure lub usługi Azure Stack.
 
 Tworzenie sieci wirtualnej na platformie Azure:
 
-1. Aby nawiązać połączenie za pomocą przeglądarki [witryny Azure portal](http://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
-2. Wybierz **Utwórz zasób**. W **Przeszukaj witrynę marketplace** wprowadź `virtual network`". Znajdź **sieć wirtualna** w na liście wyników, a następnie wybierz **sieci wirtualnej**.
-3. Z **wybierz model wdrożenia** , wybierz na liście **usługi Resource Manager**, a następnie wybierz pozycję **Utwórz**.
+1. Aby nawiązać połączenie za pomocą przeglądarki [witryny Azure portal](http://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
+2. Wybierz **Utwórz zasób**. W **Przeszukaj witrynę marketplace** wprowadź `virtual network`". Znajdź **sieć wirtualna** w na liście wyników, a następnie wybierz **sieci wirtualnej**.
+3. Z **wybierz model wdrożenia** , wybierz na liście **usługi Resource Manager**, a następnie wybierz pozycję **Utwórz**.
 4. Na **Utwórz sieć wirtualną**, skonfigurować ustawienia sieci wirtualnej. Wymagane pola nazwy są poprzedzone czerwoną gwiazdką.  Wprowadź prawidłową wartość gwiazdka zmienia się zielony znacznik wyboru.
 
 Tworzenie sieci wirtualnej w usłudze Azure Stack:
@@ -131,38 +131,38 @@ Tworzenie sieci wirtualnej w usłudze Azure Stack:
 
 Przed połączeniem sieci wirtualnej z bramą, należy utworzyć podsieć bramy dla sieci wirtualnej, którą chcesz nawiązać połączenie. Usługi bramy korzystają adresów IP, które określisz w podsieci bramy.
 
-W [witryny Azure portal](http://portal.azure.com/), przejdź do sieci wirtualnej usługi Resource Manager, gdzie chcesz utworzyć bramę sieci wirtualnej.
+W [witryny Azure portal](http://portal.azure.com/), przejdź do sieci wirtualnej usługi Resource Manager, gdzie chcesz utworzyć bramę sieci wirtualnej.
 
 1. Wybierz sieć wirtualną, aby otworzyć **sieć wirtualna** strony.
-2. W **ustawienia**, wybierz opcję **podsieci**.
-3. Na **podsieci** wybierz opcję **+ podsieć bramy** otworzyć **Dodaj podsieć** strony.
+2. W **ustawienia**, wybierz opcję **podsieci**.
+3. Na **podsieci** wybierz opcję **+ podsieć bramy** otworzyć **Dodaj podsieć** strony.
 
     ![Dodaj podsieć bramy](media/azure-stack-solution-hybrid-connectivity/image4.png)
 
-4. **Nazwa** dla podsieci zostanie automatycznie wypełniona wartością "GatewaySubnet". Ta wartość jest wymagana, aby platforma Azure mogła rozpoznać podsieć jako podsieć bramy.
-5. Zmiana **zakres adresów** wartości, które są dostarczane do wymagań dotyczących konfiguracji, a następnie wybierz **OK**.
+4.  **Nazwa** dla podsieci zostanie automatycznie wypełniona wartością "GatewaySubnet". Ta wartość jest wymagana, aby platforma Azure mogła rozpoznać podsieć jako podsieć bramy.
+5. Zmiana **zakres adresów** wartości, które są dostarczane do wymagań dotyczących konfiguracji, a następnie wybierz **OK**.
 
 ## <a name="create-a-virtual-network-gateway-in-azure-and-azure-stack"></a>Tworzenie bramy sieci wirtualnej na platformie Azure i usługi Azure Stack
 
 Wykonaj następujące kroki, aby Tworzenie bramy sieci wirtualnej na platformie Azure.
 
-1. W lewej części strony portalu wybierz **+** i wpisz "Brama sieci wirtualnej" w polu wyszukiwania.
-2. W **wyniki**, wybierz opcję **bramy sieci wirtualnej**.
-3. W **bramy sieci wirtualnej**, wybierz opcję **Utwórz** otworzyć **Tworzenie bramy sieci wirtualnej** strony.
+1. W lewej części strony portalu wybierz **+**  i wpisz "Brama sieci wirtualnej" w polu wyszukiwania.
+2. W **wyniki**, wybierz opcję **bramy sieci wirtualnej**.
+3. W **bramy sieci wirtualnej**, wybierz opcję **Utwórz** otworzyć **Tworzenie bramy sieci wirtualnej** strony.
 4. Na **Tworzenie bramy sieci wirtualnej**, określ wartości dla bramy Twojej sieci, jak pokazano na **samouczek przykładowe wartości**oraz następujące wartości dodatkowe:
 
     - **Jednostka SKU**: podstawowe
-    - **Sieć wirtualna**: Wybierz wcześniej utworzoną sieć wirtualną. Utworzoną podsieć bramy jest wybierana automatycznie.
-    - **Konfiguracja pierwszego adresu IP**: jest to publiczny adres IP bramy.
+    - **Virtual Network**: Wybierz sieć wirtualną utworzoną wcześniej. Utworzoną podsieć bramy jest wybierana automatycznie.
+    - **Konfiguracja pierwszego adresu IP**:  Jest to publiczny adres IP bramy.
         - Wybierz **Utwórz konfigurację protokołu IP bramy**, która spowoduje przejście do **wybierz publiczny adres IP** strony.
-        - Wybierz **+ Utwórz nowe** otworzyć **tworzenie publicznego adresu IP** strony.
-        - Wprowadź **nazwa** dla publicznego adresu IP. Pozostaw jednostkę SKU jako **podstawowe**, a następnie wybierz pozycję **OK** Aby zapisać zmiany.
+        - Wybierz **+ Utwórz nowe** otworzyć **tworzenie publicznego adresu IP** strony.
+        - Wprowadź **nazwa** dla publicznego adresu IP. Pozostaw jednostkę SKU jako **podstawowe**, a następnie wybierz pozycję **OK** Aby zapisać zmiany.
 
        > [!Note]
        > Obecnie Usługa bramy sieci VPN obsługuje tylko dynamiczne przypisywanie publicznych adresów IP. Jednakże nie oznacza to, że adres IP zmienia się po przypisaniu do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Zmiana rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień, do bramy sieci VPN nie zmieniaj adresu IP.
 
 4. Sprawdź ustawienia bramy.
-5. Wybierz **Utwórz** do tworzenia bramy sieci VPN. Ustawienia bramy są prawidłowe, a następnie Kafelek "Wdrażanie bramy sieci wirtualnej" jest wyświetlany na pulpicie nawigacyjnym.
+5. Wybierz **Utwórz** do tworzenia bramy sieci VPN. Ustawienia bramy są prawidłowe, a następnie Kafelek "Wdrażanie bramy sieci wirtualnej" jest wyświetlany na pulpicie nawigacyjnym.
 
    >[!Note]
    >Tworzenie bramy może potrwać do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
@@ -181,18 +181,18 @@ Brama sieci lokalnej zazwyczaj odwołuje się do lokalizacji lokalnej. Nadaj lok
   >[!Note]
   >Jeśli zmiany sieci lokalnej lub muszą zmienić publiczny adres IP urządzenia sieci VPN, można łatwo zaktualizować wartości później.
 
-1. W portalu, wybierz **+ Utwórz zasób**.
-2. W polu wyszukiwania wprowadź **bramy sieci lokalnej**, a następnie wybierz **Enter** do wyszukania. Spowoduje to zwrócenie listy wyników.
-3. Wybierz **bramy sieci lokalnej**, a następnie wybierz **Utwórz** otworzyć **Utwórz bramę sieci lokalnej** strony.
+1. W portalu, wybierz **+ Utwórz zasób**.
+2. W polu wyszukiwania wprowadź **bramy sieci lokalnej**, a następnie wybierz **Enter** do wyszukania. Spowoduje to zwrócenie listy wyników.
+3. Wybierz **bramy sieci lokalnej**, a następnie wybierz **Utwórz** otworzyć **Utwórz bramę sieci lokalnej** strony.
 4. Na **Utwórz bramę sieci lokalnej**, określ wartości dla swojej bramy sieci lokalnej za pomocą naszych **samouczek przykładowe wartości**. Obejmują następujące dodatkowe wartości.
 
-    - **Adres IP**: jest to publiczny adres IP urządzenia sieci VPN, z którym chcesz, Azure lub usługi Azure Stack, aby nawiązać połączenie. Określ prawidłowy publiczny adres IP, który nie jest poza NAT, więc Azure może osiągnąć adres. Jeśli nie masz teraz adresu IP, można użyć wartości z przykładu jako symbol zastępczy, ale trzeba będzie powrót i zamiana zastępczego publiczny adres IP urządzenia sieci VPN. Azure nie może połączyć się z urządzeniem, dopóki nie podasz prawidłowy adres.
-    - **Przestrzeń adresowa**: jest to zakres adresów sieci, która reprezentuje sieć lokalna. Można dodać wiele zakresów przestrzeni adresów. Upewnij się, czy należy określić zakresy nie pokrywają się z zakresami innych sieci, które chcesz się połączyć. Platforma Azure będzie kierować określony zakres adresów pod adres IP lokalnego urządzenia sieci VPN. Użyj własnych wartości, jeśli chcesz nawiązać połączenie z lokacją lokalną nie Przykładowa wartość.
-    - **Skonfiguruj ustawienia protokołu BGP**: Użyj tylko w przypadku konfigurowania protokołu BGP. W przeciwnym razie nie wybieraj jej.
-    - **Subskrypcja**: Sprawdź, czy wyświetlana jest prawidłowa subskrypcja.
-    - **Grupa zasobów**: Wybierz grupę zasobów, do którego chcesz używać. Możesz utworzyć nową grupę zasobów lub wybierz jedną, która została już utworzona.
-    - **Lokalizacja**: Wybierz lokalizację, w której ten obiekt zostanie utworzony w. Możesz wybrać tej samej lokalizacji, która sieci wirtualnej znajduje się w, ale nie, musisz to zrobić.
-5. Po zakończeniu określania wymagane wartości, wybierz **Utwórz** do tworzenia bramy sieci lokalnej.
+    - **Adres IP**: Jest to publiczny adres IP urządzenia sieci VPN, z którym chcesz, Azure lub usługi Azure Stack, aby nawiązać połączenie. Określ prawidłowy publiczny adres IP, który nie jest poza NAT, więc Azure może osiągnąć adres. Jeśli nie masz teraz adresu IP, można użyć wartości z przykładu jako symbol zastępczy, ale trzeba będzie powrót i zamiana zastępczego publiczny adres IP urządzenia sieci VPN. Azure nie może połączyć się z urządzeniem, dopóki nie podasz prawidłowy adres.
+    - **Przestrzeń adresowa**: Jest to zakres adresów sieci, która reprezentuje sieć lokalna. Można dodać wiele zakresów przestrzeni adresów. Upewnij się, czy należy określić zakresy nie pokrywają się z zakresami innych sieci, które chcesz się połączyć. Platforma Azure będzie kierować określony zakres adresów pod adres IP lokalnego urządzenia sieci VPN. Użyj własnych wartości, jeśli chcesz nawiązać połączenie z lokacją lokalną nie Przykładowa wartość.
+    - **Skonfiguruj ustawienia protokołu BGP**: Należy używać tylko w przypadku konfigurowania protokołu BGP. W przeciwnym razie nie wybieraj jej.
+    - **Subskrypcja**: Sprawdź, czy wyświetlana jest prawidłowa subskrypcja.
+    - **Grupa zasobów**: Wybierz grupę zasobów, do którego chcesz używać. Możesz utworzyć nową grupę zasobów lub wybierz jedną, która została już utworzona.
+    - **Lokalizacja**: Wybierz lokalizację, w której ten obiekt zostanie utworzony w. Możesz wybrać tej samej lokalizacji, która sieci wirtualnej znajduje się w, ale nie, musisz to zrobić.
+5. Po zakończeniu określania wymagane wartości, wybierz **Utwórz** do tworzenia bramy sieci lokalnej.
 6. Powtórz te kroki (1-5) dla wdrożenia usługi Azure Stack.
 
 ## <a name="configure-your-connection"></a>Konfigurowanie połączenia
@@ -204,23 +204,23 @@ Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci
 
 Poniższe kroki umożliwiają tworzenie połączenia sieci VPN typu lokacja-lokacja między bramą sieci wirtualnej i urządzeniem sieci VPN w środowisku lokalnym.
 
-1. W witrynie Azure portal wybierz **+ Utwórz zasób**.
+1. W witrynie Azure portal wybierz **+ Utwórz zasób**.
 2. Wyszukaj **połączeń**.
-3. W **wyniki**, wybierz opcję **połączeń**.
+3. W **wyniki**, wybierz opcję **połączeń**.
 4. Na **połączenia**, wybierz opcję **Utwórz**.
 5. Na **Utwórz połączenie**, skonfiguruj następujące ustawienia:
 
-    - **Typ połączenia**: wybierz pozycję lokacja lokacja (IPSec).
+    - **Typ połączenia**: Wybierz pozycję lokacja lokacja (IPSec).
     - **Grupa zasobów**: Wybierz grupę zasobów testowych.
-    - **Brama sieci wirtualnej**: Wybierz bramę sieci wirtualnej został utworzony.
-    - **Brama sieci lokalnej**: Wybierz bramę sieci lokalnej, został utworzony.
-    - **Nazwa połączenia**: to jest automatycznie wypełniane, używając wartości z dwóch bram.
-    - **Klucz wspólny**: Ta wartość musi odpowiadać wartości, którego używasz dla lokalnego urządzenia sieci VPN. W przykładzie samouczka użyto wartości "abc123", ale można i należy użyć bardziej złożonej. Ważne jest, że ta wartość musi być taka sama jak wartość można określić podczas konfigurowania urządzenia sieci VPN.
+    - **Brama sieci wirtualnej**: Wybierz bramę sieci wirtualnej, który został utworzony.
+    - **Brama sieci lokalnej**: Wybierz utworzoną bramę sieci lokalnej.
+    - **Nazwa połączenia**: To jest automatycznie wypełniane, używając wartości z dwóch bram.
+    - **Klucz wspólny**: Ta wartość musi odpowiadać wartości, którego używasz dla lokalnego urządzenia sieci VPN. W przykładzie samouczka użyto wartości "abc123", ale można i należy użyć bardziej złożonej. Ważne jest, że ta wartość musi być taka sama jak wartość można określić podczas konfigurowania urządzenia sieci VPN.
     - Wartości **subskrypcji**, **grupy zasobów**, i **lokalizacji** zostały usunięte.
 
 6. Wybierz **OK** utworzyć połączenie.
 
-Możesz zobaczyć połączenie w **połączeń** stronę bramy sieci wirtualnej. Stan zmieni się z *nieznany* do *łączenie*, a następnie *Powodzenie*.
+Możesz zobaczyć połączenie w **połączeń** stronę bramy sieci wirtualnej. Stan zmieni się z *nieznany* do *łączenie*, a następnie *Powodzenie*.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

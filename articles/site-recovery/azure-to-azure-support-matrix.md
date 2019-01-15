@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7e5f72ca637cb657369a3b384aee666e0935b9d0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103774"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263550"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -44,9 +44,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 
 Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch regionach w obrębie tego samego klastra geograficznego. Klastry geograficzne są zdefiniowane, pamiętając o opóźnieniu przesyłania danych i niezależność danych.
 
->[!NOTE]
->Jeśli nie jesteś w stanie Zobacz region w ramach klastra geograficznym podczas włączania replikacji, a następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. W przeciwnym razie niż zgłosić żądanie pomocy technicznej w ramach subskrypcji "Typ problemu".
->
+
 **Geograficzne klastra** | **Regiony platformy Azure**
 -- | --
 Ameryka | Kanada Wschodnia, środkowe stany USA Kanada środkowe, południowo-, Zachodnia środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Północnośrodkowa
@@ -59,9 +57,13 @@ Chiny | Chiny wschodnie, Chiny Północne, Chiny North2, 2 (Chiny)
 
 >[!NOTE]
 >
-> Dla regionu Brazylia Południowa można replikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA.
->
-> Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Go nie może służyć jako region docelowy odzyskiwania po awarii dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.
+> - Aby uzyskać **Brazylia Południowa** regionu, możesz zreplikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA. Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Jego **nie może pełnić roli regionie docelowym odzyskiwania po awarii** dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.
+> 
+> - Jeśli jesteś **nie mogli zobaczyć region** miejscu **utworzyć magazyn** następnie upewnij się, że Twoja subskrypcja ma dostęp do tworzenia zasobów w danym regionie. Na przykład: Jeśli nie można utworzyć magazyn w Francja Południowa Twoja subskrypcja nie ma dostępu do regionu południowo-(Francja). Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "whitlelist subskrypcji XXX region platformy Azure"
+> 
+> - Jeśli jesteś **nie mogli zobaczyć region** w ramach klastra geograficzne **podczas włączania replikacji** następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. Na przykład: Jeśli próbujesz chronić maszyny wirtualne z Francja środkowa do Francja Południowa, a nie widzisz Francja Południowa w regionie listy rozwijanej, a następnie Twoja subskrypcja nie ma dostępu, aby wdrożyć maszynę Wirtualną, w tym regionie. Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "whitlelist subskrypcji XXX region platformy Azure"
+> - Nie można wybrać regionów, w klastrach geograficzne wymienionych powyżej.
+
 
 ## <a name="cache-storage"></a>Magazyn pamięci podręcznej
 
@@ -90,16 +92,16 @@ Windows Server 2008 R2 | Z dodatkiem SP1 lub nowszym
 
 **System operacyjny** | **Szczegóły**
 --- | ---
-Red Hat Enterprise Linux | 6.7 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
-CentOS | 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
+Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
+CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
 Ubuntu 14.04 LTS Server | [Wersje obsługiwanych jądra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16.04 LTS Server | [Wersja jądra obsługiwane](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Serwery systemu Ubuntu przy użyciu uwierzytelniania opartego na hasłach i logowania oraz pakietu cloud-init do konfigurowania chmur maszyn wirtualnych, może być logowania opartego na hasłach, wyłączona w trybie failover (w zależności od konfiguracji cloudinit). Logowania opartego na hasłach, można ponownie włączyć na maszynie wirtualnej poprzez zresetowanie hasła z obsługi > Rozwiązywanie problemów > menu Ustawienia (w trybie Failover maszyny Wirtualnej w witrynie Azure portal.
 Debian 7 | [Wersje obsługiwanych jądra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Wersje obsługiwanych jądra](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | Z DODATKIEM SP1, SP2, Z DODATKIEM SP3. [(Wersje jądra obsługiwane)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | Z DODATKIEM SP3<br/><br/> Replikowanie maszyn z dodatkiem SP3 do SP4 uaktualnienie nie jest obsługiwane. Jeśli został uaktualniony replikowanej maszyny, należy wyłączyć replikację i ponownie włączyć replikację po uaktualnieniu.
-SUSE Linux Enterprise Server 11 | Z DODATKIEM SP4
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> System Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3).
+SUSE Linux Enterprise Server 12 | SP1,SP2,SP3. [(Wersje jądra obsługiwane)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 11 | SP3<br/><br/> Replikowanie maszyn z dodatkiem SP3 do SP4 uaktualnienie nie jest obsługiwane. Jeśli został uaktualniony replikowanej maszyny, należy wyłączyć replikację i ponownie włączyć replikację po uaktualnieniu.
+SUSE Linux Enterprise Server 11 | SP4
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> System Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3).
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Obsługiwane wersje jądra systemu Ubuntu maszyn wirtualnych platformy Azure
@@ -107,12 +109,12 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
 14.04 LTS | 9.21 | 3.13.0-24-Generic do 3.13.0-163-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.15.0-1023-Azure do 4.15.0-1035-azure |
-14.04 LTS | 9,20 | 3.13.0-24-Generic do 3.13.0-161-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.15.0-1023-Azure do 4.15.0-1030-azure |
+14.04 LTS | 9.20 | 3.13.0-24-Generic do 3.13.0-161-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.15.0-1023-Azure do 4.15.0-1030-azure |
 14.04 LTS | 9.19 | 3.13.0-24-Generic do 3.13.0-153-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-Generic do 3.13.0-151-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-128-generic |
 |||
 16.04 LTS | 9.21 | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-42-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1035-azure|
-16.04 LTS | 9,20 | 4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-38-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1030-azure|
+16.04 LTS | 9.20 | 4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-38-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1030-azure|
 16.04 LTS | 9.19 | 4.4.0-21-Generic do 4.4.0-131-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-30-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-Generic do 4.4.0-128-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure |
 
@@ -123,7 +125,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 --- | --- | --- |
 Debian 7 | 9.18,9.19,9.20,9.21 | 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9,20, 9.21 | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.20, 9.21 | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.18 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.6-amd64 |
 
@@ -131,10 +133,10 @@ Debian 8 | 9.18 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.21 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.21 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux

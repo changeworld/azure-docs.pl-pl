@@ -1,27 +1,7 @@
 ---
-title: Używanie regresji liniowej w usłudze Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
-description: Porównanie modeli regresji liniowej w programach Excel i usługi Azure Machine Learning Studio
-metakeywords: ''
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276683"
+Tytuł: Używanie regresji liniowej w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Porównanie modele regresji liniowej w programach Excel i usługi Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Używanie regresji liniowej w usłudze Azure Machine Learning Studio
 > *Kate Baroni* i *Ben Boatman* są architekci rozwiązań w firmy Microsoft Data Insights centrum doskonałości przedsiębiorstwa. W tym artykule opisano czynności migracja istniejącego zestawu analiz regresji do rozwiązania oparte na chmurze za pomocą usługi Azure Machine Learning. 
@@ -85,8 +65,8 @@ Stosowania zaleceń, możemy osiągnąć ten sam punkt odniesienia wydajności w
 | Uczeń |Excel -> Data Analysis -> regresji |Regresji liniowej. |Regresja liniowa |
 | Opcje learner |ND |Domyślne |zwykłe najmniejszych kwadratów<br />L2 = 0,005 |
 | Zestaw danych |26 ostatnich wierszy, funkcje 3, 1 etykiety. Wszystkie numeryczne. |Ten sam |Ten sam |
-| Podziel: Szkolenie |Excel uczony w wierszach najpierw 18, przetestowana na ostatnie 8 wierszy. |Ten sam |Ten sam |
-| Podziel: Testowanie |Formuła regresji, które dotyczą ostatnie 8 wierszy w programie Excel |Ten sam |Ten sam |
+| Split: Szkolenie |Excel uczony w wierszach najpierw 18, przetestowana na ostatnie 8 wierszy. |Ten sam |Ten sam |
+| Split: Testowanie |Formuła regresji, które dotyczą ostatnie 8 wierszy w programie Excel |Ten sam |Ten sam |
 | **Wydajność** | | | |
 | Skorygowane R-kwadrat |0.96 |ND | |
 | Determinacji |ND |0.78 |0.952049 |
@@ -95,7 +75,7 @@ Stosowania zaleceń, możemy osiągnąć ten sam punkt odniesienia wydajności w
 
 Ponadto współczynniki programu Excel względem również obciążenia funkcji, w Azure uczonego modelu:
 
-|  | Współczynniki programu Excel | Wagi funkcji platformy Azure |
+|  | Współczynniki programu Excel | Azure Feature Weights |
 | --- |:---:|:---:|
 | ODCIĘTA/odchylenie |19470209.88 |19328500 |
 | Funkcja A |0.832653063 |0.834156 |

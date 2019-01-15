@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9c163ddf7859246fcdaa28edfd4b598a24a32be2
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 48be60a7ba5770f8c329cb6323a5caa8fcf7f961
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196945"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265060"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Wdróż Maszynę wirtualną platformy Azure przez użytkownika wirtualnego dysku twardego
 
@@ -39,9 +39,9 @@ Kopiowanie szablonu usługi Azure Resource Manager dla [wdrożenia wirtualnego d
 | subscriptionId             | Identyfikator subskrypcji platformy Azure                                                  |
 | Lokalizacja                   | Standardowa Azure lokalizacji geograficznej, grupy zasobów                       |
 | vmName                     | Nazwa maszyny wirtualnej                                                    |
-| VaultName                  | Nazwa magazynu kluczy                                                          |
+| vaultName                  | Nazwa magazynu kluczy                                                          |
 | vaultResourceGroup         | Grupa zasobów magazynu kluczy
-| certificateUrl             | Adres URL certyfikatu, w tym wersja przechowywanych w magazynie kluczy, na przykład:  https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7 |
+| certificateUrl             | Adres URL certyfikatu, w tym wersja przechowywanych w magazynie kluczy, na przykład:  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 | vhdUrl                     | Adres URL wirtualnego dysku twardego                                                   |
 | vmSize                     | Rozmiar wystąpienia maszyny wirtualnej                                           |
 | publicIPAddressName        | Nazwa publicznego adresu IP                                                  |

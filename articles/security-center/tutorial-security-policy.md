@@ -13,27 +13,30 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
+ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: f9cc6f5c35b528d3a545293b9a946bc3eda3d7ac
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339336"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259968"
 ---
-# <a name="working-with-security-policies"></a>Praca z zasadami dotyczącymi zabezpieczeń
+# <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
 W tym artykule wyjaśniono, jak są skonfigurowane zasady zabezpieczeń oraz jak wyświetlać je w usłudze Security Center. Usługa Azure Security Center automatycznie przypisuje jej [zasad wbudowanych rozwiązań zabezpieczeń](security-center-policy-definitions.md) w każdej subskrypcji, która jest dołączona. Można skonfigurować je w [usługi Azure Policy](../azure-policy/azure-policy-introduction.md), który umożliwia także ustawić zasady w grupach zarządzania i w ramach wielu subskrypcji.
 
 Aby uzyskać instrukcje na temat sposobu ustawiania zasad przy użyciu programu PowerShell, zobacz [Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu modułu Azure RM PowerShell](../azure-policy/assign-policy-definition-ps.md).
 
+>[!NOTE]
+> Usługa Security Center pracy integracji z usługą Azure Policy. Dotychczasowi użytkownicy zostaną automatycznie przeniesieni do nowego inicjatywy wbudowanych w zasadach usługi Azure, zamiast poprzednich zasad zabezpieczeń w usłudze Security Center. Ta zmiana nie wpłynie na Twoje zasoby lub środowisko z wyjątkiem obecności nowej inicjatywy w zasadach usługi Azure.
+
 ## <a name="what-are-security-policies"></a>Czym są zasady zabezpieczeń?
 Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń oraz pomagają zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy. Usługa Azure Policy można zdefiniować zasady dla subskrypcji platformy Azure i dostosowuj je do danego typu obciążenia lub wrażliwości danych. Na przykład aplikacje wykorzystujące dane podlegające ochronie, takie jak dane osobowe, mogą wymagać wyższego poziomu zabezpieczeń niż innych obciążeń. Aby ustawić zasady dla subskrypcji lub grupy zarządzania, należy ustawić je w [usługi Azure Policy](../azure-policy/azure-policy-introduction.md).
 
-
-
 Zasady zabezpieczeń dla dysku zalecenia dotyczące zabezpieczeń, który jest pobierany w usłudze Azure Security Center. Można monitorować zgodność z nimi ułatwiają znalezienie potencjalnych luk i uniknięcie zagrożeń. Aby uzyskać więcej informacji na temat sposobu określenia która opcja jest odpowiednia dla Ciebie, zobacz listę [zasad wbudowanych rozwiązań zabezpieczeń](security-center-policy-definitions.md).
+
+Po włączeniu usługi Security Center, wbudowana w usłudze Security Center zasad zabezpieczeń jest odzwierciedlana w zasadach usługi Azure jako wbudowane inicjatywy kategorii usługi Security Center. Wbudowane intitiative jest automatycznie przypisywana do wszystkich subskrypcji zarejestrowane w usłudze Security Center (warstwy bezpłatna lub standardowa). Wbudowane inicjatywy zawiera tylko zasady inspekcji. 
 
 
 ### <a name="management-groups"></a>Grupy zarządzania
@@ -57,8 +60,6 @@ Zasady platformy Azure zawierają następujące składniki:
 - **Inicjatywy** to zbiór zasad.
 - **Przypisania** jest zastosowanie zasad lub inicjatywy do określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów).
 
-Zasób jest oceniany pod kątem zasad, które zostały do niego przypisane, i otrzymuje współczynnik zgodności w zależności od liczby zasad, z którymi jest zgodny.
-
 ## <a name="view-security-policies"></a>Wyświetlanie zasad zabezpieczeń
 
 Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
@@ -76,12 +77,9 @@ Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
   Kolumny w tabeli wyświetlają następujące informacje:
 
  - **Przypisanie inicjatywy zasad** — Centrum zabezpieczeń [wbudowane zasady](security-center-policy-definitions.md) i inicjatyw, które są przypisane do subskrypcji lub grupę zarządzania.
- - **Zgodność** — ogólną ocenę zgodności dla grupy zarządzania, subskrypcji lub obszaru roboczego. Wynik ten jest średnią ważoną przypisań. Średnia ważona jest uwzględniania w liczbie zasad pojedynczego przypisania i liczbie zasobów, których dotyczy to przypisanie.
-
- Jeśli na przykład Twoja subskrypcja obejmuje dwie maszyny wirtualne i inicjatywę z przypisanymi do niej pięcioma zasadami, to masz w tej subskrypcji 10 ocen. Jeśli jedna z maszyn wirtualnych nie jest zgodna z dwoma zasadami, to ogólny wynik zgodności przypisania Twojej subskrypcji wynosi 80%.
-
  - **Pokrycie** — identyfikuje warstwę cenową bezpłatna lub standardowa, z systemem grupy zarządzania, subskrypcji lub obszaru roboczego.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
  - **Ustawienia** — subskrypcje mają łącze **edytować ustawienia**. Wybieranie **edytować ustawienia** pozwala zaktualizować swoje [ustawienia Centrum zabezpieczeń](security-center-policies-overview.md) dla każdej subskrypcji lub grupę zarządzania.
+ - **Bezpieczne wynik** — [bezpiecznego wynik](security-center-secure-score.md) jest miarą jak bezpieczne stan zabezpieczeń obciążeń i pomaga określić priorytety zalecenia dotyczące poprawy jakości obsługi.
 
 2. Wybierz subskrypcję lub grupę zarządzania zasad, których chcesz wyświetlić.
 
@@ -214,7 +212,7 @@ W tym przykładzie pokazano, jak usunąć przypisanie:
 |Konfiguracje zabezpieczeń |Monitorowanie luk w zabezpieczeniach systemu operacyjnego, w usłudze Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrona punktów końcowych |Monitorowanie brakującej ochrony punktów końcowych w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
 |Szyfrowanie dysków |Monitoruj nieszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center |diskEncryptionMonitoringEffect|
-|Ocena luk w zabezpieczeniach |Monitorowanie maszyn wirtualnych luk w zabezpieczeniach w usłudze Azure Security Center |vulnerabilityAssesmentMonitoringEffect|
+|Ocena luk w zabezpieczeniach |Monitoruj luki w zabezpieczeniach maszyn wirtualnych w usłudze Azure Security Center |vulnerabilityAssesmentMonitoringEffect|
 |Zapora aplikacji internetowej |Monitoruj niechronione aplikacje internetowe w usłudze Azure Security Center |webApplicationFirewallMonitoringEffect |
 |Zapora nowej generacji |Monitoruj niechronione punkty końcowe sieci w Centrum zabezpieczeń Azure| |
 

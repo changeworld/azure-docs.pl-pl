@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 95a76cd46a86f70213ca381df4d52463666ace8d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108454"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259606"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać mikrometryczne z zestawu SDK usługi Azure Application Insights Java
 Mikrometryczne aplikacji środki metryki monitorowania dla aplikacji w oparciu o JVM kodu i pozwala wyeksportować dane do systemów monitorowania Ulubione. Ten artykuł nauczy Cię sposób użycia mikrometryczne za pomocą usługi Application Insights dla aplikacji Spring Boot i aplikacje inne niż platformy Spring Boot.
@@ -27,7 +27,7 @@ Dodaj następujące zależności do pliku pom.xml lub build.gradle:
 * [Szczegółowe informacje aplikacji spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA lub nowszy
 * Mikrometryczne rejestru Azure 1.1.0 lub nowszy
 * [Starsza wersja Spring mikrometryczne](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 lub nowszej (jest to backports, kod autokonfiguracji Spring framework).
-* [Zasób dotycząca usługi Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Kroki
 
@@ -89,31 +89,31 @@ Domyślne metryki:
 *    Automatycznie skonfigurowane metryki dla serwera Tomcat, JVM, Logback metryki, metryki Log4J, metryki czasu, metryki procesora, FileDescriptorMetrics.
 *    Na przykład jeśli netflix hystrix znajduje się w ścieżce klasy uzyskujemy te metryki, jak również. 
 *    Przez dodanie odpowiednich fasoli mogą być dostępne następujące metryki. 
-        - CacheMetrics (CaffineCache EhCache2, GuavaCache, HazelcaseCache, Jcache)     
+        - CacheMetrics (CaffeineCache EhCache2, GuavaCache, HazelcaseCache, Jcache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - Metryki OkHttp3 
-        - Metryki platformy Kafka 
+        - Kafka Metrics 
 
  
 
 Jak wyłączyć zbieranie metryk automatycznych: 
  
 - Metryki maszyny JVM: 
-    - Management.Metrics.binders.JVM.Enabled=false 
+    - management.metrics.binders.jvm.enabled=false 
 - Metryki Logback: 
-    - Management.Metrics.binders.logback.Enabled=false
+    - management.metrics.binders.logback.enabled=false
 - Metryki czasu działania: 
-    - Management.Metrics.binders.UpTime.Enabled=false 
+    - management.metrics.binders.uptime.enabled=false 
 - Metryki procesora:
-    -  Management.Metrics.binders.Processor.Enabled=false 
+    -  management.metrics.binders.processor.enabled=false 
 - FileDescriptorMetrics:
-    - Management.Metrics.binders.Files.Enabled=false 
+    - management.metrics.binders.files.enabled=false 
 - Metryki Hystrix Jeśli biblioteki w ścieżce: 
-    - Management.Metrics.binders.hystrix.Enabled=false 
+    - management.metrics.binders.hystrix.enabled=false 
 - Metryki AspectJ Jeśli biblioteki w ścieżce: 
-    - Spring.aop.Enabled=false 
+    - spring.aop.enabled=false 
 
 > [!NOTE]
 > Określ właściwości powyżej w pliku application.properties lub application.yml pliku aplikacji Spring Boot
@@ -232,7 +232,7 @@ Inne przykładowy kod na temat tworzenia różnego rodzaju metryki można znale�
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>Jak powiązać dodatkowe metryki kolekcji
 
-### <a name="springbootspring"></a>SpringBoot/platformy Spring
+### <a name="springbootspring"></a>SpringBoot/Spring
 
 Utwórz bean odpowiedniej kategorii metryki. Załóżmy na przykład, potrzebujemy guawa metryki pamięci podręcznej:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: ac34cc467cc8ff7d231551683da130c0f7565800
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340542"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264776"
 ---
 # <a name="log-analytics-for-service-providers"></a>Usługa log Analytics dla dostawców usług
 Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dla dużych przedsiębiorstw, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury. 
@@ -63,7 +63,7 @@ Dostępne są następujące wady tej architektury:
 * Może być trudny do oddzielania danych od klientów, gdy są one scalane w jeden obszar roboczy. Jedynym dobrym metody, w tym celu jest użycie komputera w pełni kwalifikowaną nazwę domeny (FQDN) lub za pośrednictwem subskrypcji platformy Azure identyfikatora. 
 * Wszystkie dane ze wszystkich klientów będą przechowywane w tym samym regionie, z jednym rachunku i te same ustawienia przechowywania i konfiguracji.
 * Sieci szkieletowej platformy Azure i usług PaaS usług, takich jak usługi Azure Diagnostics i dzienników inspekcji platformy Azure wymaga obszar, aby być w tej samej dzierżawie, co zasób, dlatego nie mogą wysyłać dzienniki do obszaru roboczego centralnej.
-* Wszyscy agenci maszyn wirtualnych z wszystkich klientów będzie odbywać się przy użyciu tego samego Identyfikatora obszaru roboczego i klucz obszaru roboczego cental. Nie istnieje metoda blokowania dzienników z określonego klienta bez przerywania pracy innych klientów.
+* Wszyscy agenci maszyn wirtualnych z wszystkich klientów będzie odbywać się centralnej przy użyciu tego samego Identyfikatora obszaru roboczego i klucz obszaru roboczego. Nie istnieje metoda blokowania dzienników z określonego klienta bez przerywania pracy innych klientów.
 
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybrydowe — dzienniki są przechowywane w obszarze roboczym znajduje się w dzierżawie klienta, a niektóre z nich są pobierane w centralnej lokalizacji.

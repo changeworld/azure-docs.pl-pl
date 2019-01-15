@@ -1,26 +1,7 @@
 ---
-title: Konkursy galerii - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Dowiedz się, konkursy w galerii sztucznej Inteligencji platformy Azure. Umożliwia ekscytujące konkurują ze społecznością analityków danych w celu rozwiązywania złożonych problemów.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: 5d38205ca614fef2ea9c10e9ad2fb94bdf3481cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277798"
+Tytuł: Galeria konkursy titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, konkursy w galerii sztucznej Inteligencji platformy Azure. Umożliwia ekscytujące konkurują ze społecznością analityków danych w celu rozwiązywania złożonych problemów.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł  
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/31/2017
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Odkryj konkursy w galerii Azure AI
 

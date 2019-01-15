@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/9/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: fiseraci
+ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727093"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306458"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Poziom zabezpieczeń infrastruktury w usłudze Azure Stack
 
@@ -70,7 +71,7 @@ Każdy składnik w usłudze Azure Stack (hosty funkcji Hyper-V i maszyn wirtualn
 W połączonych scenariuszach aktualizacje definicji i aparatu oprogramowania antywirusowego są stosowane wiele razy dziennie. W scenariuszach bez połączenia aktualizacji ochrony przed złośliwym kodem są stosowane w ramach comiesięcznych aktualizacji usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [aktualizacji programu antywirusowego Windows Defender w usłudze Azure Stack](azure-stack-security-av.md).
 
 ## <a name="constrained-administration-model"></a>Model administracyjny ograniczone
-Administracja w usłudze Azure Stack jest kontrolowany przy użyciu trzech punktów wejścia, każdy z określonym przeznaczeniem: 
+Administracja w usłudze Azure Stack jest kontrolowany za pośrednictwem trzech punktów wejścia, każdy z określonym przeznaczeniem: 
 1. [Portal administratora](azure-stack-manage-portals.md) udostępnia środowisko wskaż i kliknij na potrzeby codziennych operacji zarządzania.
 2. Usługa Azure Resource Manager udostępnia wszystkie operacje zarządzania z portalu administratora, interfejs API RST, używane przez program PowerShell i wiersza polecenia platformy Azure. 
 3. Dla określonych operacji niskiego poziomu, na przykład data center integration lub obsługi scenariuszy, usługi Azure Stack uwidacznia punkt końcowy programu PowerShell, nazywane [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md). Ten punkt końcowy ujawnia tylko zestaw dozwolonych poleceń cmdlet i intensywnie podlega inspekcji.

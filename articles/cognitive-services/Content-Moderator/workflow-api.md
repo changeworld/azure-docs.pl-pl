@@ -1,23 +1,23 @@
 ---
 title: Przepływy pracy Moderowanie - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Przepływy pracy za pomocą moderowanie zawartości.
+description: Za pomocą przepływów pracy operacji zadań interfejsu API przeglądu zautomatyzować przeglądy człowieka w pętli, na podstawie zasad dotyczących zawartości i progów.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/04/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 3de45c62eb208671cc2d1d4de5309d2f9d75adc9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3a3ff5ed325205c5ae17aaff053127f4e84504bf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226878"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262663"
 ---
-# <a name="moderation-workflows"></a>Moderowanie przepływów pracy
+# <a name="automate-moderation-reviews-with-workflows"></a>Automatyzowanie przeglądy Moderowanie przy użyciu przepływów pracy
 
 Pakiet Content Moderator obejmuje narzędzia i interfejsy API do zarządzania przepływami pracy. Korzystanie z przepływów pracy za pomocą [Przejrzyj operacje interfejsu API zadań](review-api.md) Aby zautomatyzować tworzenie przeglądu człowieka w pętli, na podstawie zasad dotyczących zawartości i progów.
 
@@ -41,7 +41,7 @@ Przejdź do [Przejrzyj przepływy pracy narzędzia](Review-Tool-User-Guide/Workf
 
 ### <a name="open-the-default-workflow"></a>Otwórz domyślnego przepływu pracy
 
-Użyj **Edytuj** opcję, aby otworzyć przepływu pracy, edytowania strony, jak pokazano na poniższej ilustracji: ![przepływu pracy domyślnego pakietu Content Moderator](images/default-workflow-listed.PNG)
+Użyj **Edytuj** opcję, aby otworzyć przepływu pracy, edytowania strony, jak pokazano na poniższej ilustracji: ![Content Moderator domyślny przepływ pracy](images/default-workflow-listed.PNG)
 
 ### <a name="the-designer-view"></a>Widok projektanta
 
@@ -218,9 +218,9 @@ Ponieważ nie mogła wykrywania wulgaryzmów w wyodrębniony tekst przepływu pr
 
 **Przepływ pracy Get** operacji akceptuje następujące dane wejściowe:
 
-- **zespół**: identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
+- **Zespół**: Identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
 - **workflowname**: Nazwa przepływu pracy. Użyj `default` rozpoczynać się.
-- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+- **Ocp-Apim-Subscription-Key**: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK` i **zawartość odpowiedzi** wyświetlone definicji przepływu pracy w formacie JSON.
 Aby dowiedzieć się więcej, przeczytaj [Szybki Start konsoli przepływu pracy interfejsu API](try-review-api-job.md).
@@ -231,9 +231,9 @@ Operacja tworzenia i aktualizowania umożliwia tworzenie przepływów pracy z in
 
 **Tworzenie przepływu pracy lub aktualizacji** operacji akceptuje następujące dane wejściowe:
 
-- **zespół**: identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
+- **Zespół**: Identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
 - **workflowname**: Nazwa przepływu pracy. Użyj `default` rozpoczynać się.
-- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+- **Ocp-Apim-Subscription-Key**: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK` i **zawartość odpowiedzi** wyświetlana `true`. Aby dowiedzieć się więcej, [przetestuj `Create` operacji](try-review-api-job.md).
 

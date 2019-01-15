@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2769b78632e1a7f776359f2a4d768154c224aab5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036243"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264618"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profilów w usłudze Azure Stack
 
@@ -28,7 +28,7 @@ Profil interfejsu API używa trzech konwencji nazewnictwa:
 
  - **latest**
  - **yyyy-mm-dd-hybrid**
- - **rrrr mm-dd-profile**
+ - **yyyy-mm-dd-profile**
 
 Objaśnienia dotyczące profilów interfejsu API i cykl wersji wersji dla usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
 
@@ -118,7 +118,7 @@ Obliczenia interfejsów API usługi Azure umożliwiają dostęp programowy do ma
 | Lokalizacje/operations | 2016-03-30 |
 | Lokalizacje/wydawcy | 2016-03-30 |
 | Lokalizacje/użycia | 2016-03-30 |
-| Lokalizacje/vmSizes | 2016-03-30 |
+| Locations/vmSizes | 2016-03-30 |
 | Operacje | 2016-03-30 |
 | Maszyny wirtualne | 2016-03-30 |
 | Maszyny wirtualne/rozszerzenia | 2016-03-30 |
@@ -176,7 +176,7 @@ Wynik wywołania usługi operations jest reprezentacją listy operacji chmury do
 | Moduły równoważenia obciążenia | 2015-06-15 |
 | Brama sieci lokalnej | 2015-06-15 |
 | Lokalizacje | 2016-04-01 |
-| Lokalizacja/operationResults | 2016-04-01 |
+| Location/operationResults | 2016-04-01 |
 | Lokalizacje/operations | 2016-04-01 |
 | Lokalizacje/użycia | 2016-04-01 |
 | Interfejsy sieciowe | 2015-06-15 |
@@ -197,7 +197,7 @@ Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrast
 | Sprawdź nazwę zasobu | 2016-09-01 |
 | Delegowani dostawcy | 2015-01-01 |
 | Delegowani dostawcy/oferty | 2015-01-01 |
-| DelegatedProviders/oferty/estimatePrice | 2015-01-01 |
+| DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Wdrożenia | 2016-09-01 |
 | Wdrożenia/operations | 2016-09-01 |
 | Metadane rozszerzenia | 2015-01-01 |
@@ -213,10 +213,10 @@ Usługa Azure Resource Manager umożliwia wdrażanie i zarządzanie nimi infrast
 | Wyniki operacji/subskrypcji | 2016-09-01 |
 | Subskrypcje/dostawców | 2017-08-01 |
 | Subskrypcjach/grupach zasobów | 2016-09-01 |
-| Zasobów/resourceGroups/subskrypcji | 2016-09-01 |
+| Subscriptions/resourceGroups/resources | 2016-09-01 |
 | Zasobów/subskrypcji | 2016-09-01 |
-| Subskrypcje/tagNames | 2016-09-01 |
-| Subskrypcje/tagNames/tagValues | 2016-09-01 |
+| Subscriptions/tagNames | 2016-09-01 |
+| Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Dzierżaw | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
@@ -256,7 +256,7 @@ Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim ko
 | Lokalizacje/operations | 2016-03-30 |
 | Lokalizacje/wydawcy | 2016-03-30 |
 | Lokalizacje/użycia | 2016-03-30 |
-| Lokalizacje/vmSizes | 2016-03-30 |
+| Locations/vmSizes | 2016-03-30 |
 | Operacje | 2016-03-30 |
 | Maszyny wirtualne | 2016-03-30 |
 | Maszyny wirtualne/rozszerzenia | 2016-03-30 |
@@ -275,7 +275,7 @@ Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim ko
 | Moduły równoważenia obciążenia | 2015-06-15 |
 | Brama sieci lokalnej | 2015-06-15 |
 | Lokalizacje | 2016-04-01 |
-| Lokalizacja/operationResults | 2016-04-01 |
+| Location/operationResults | 2016-04-01 |
 | Lokalizacje/operations | 2016-04-01 |
 | Lokalizacje/użycia | 2016-04-01 |
 | Interfejsy sieciowe | 2015-06-15 |
@@ -294,7 +294,7 @@ Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim ko
 | Sprawdź nazwę zasobu | 2016-09-01 |
 | Delegowani dostawcy | 2015-01-01 |
 | Delegowani dostawcy/oferty | 2015-01-01 |
-| DelegatedProviders/oferty/estimatePrice | 2015-01-01 |
+| DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Wdrożenia | 2016-09-01 |
 | Wdrożenia/operations | 2016-09-01 |
 | Metadane rozszerzenia | 2015-01-01 |
@@ -310,10 +310,10 @@ Storage Resource Provider (SRP) umożliwia programistyczne Zarządzanie swoim ko
 | Wyniki operacji/subskrypcji | 2016-09-01 |
 | Subskrypcje/dostawców | 2017-08-01 |
 | Subskrypcjach/grupach zasobów | 2016-09-01 |
-| Zasobów/resourceGroups/subskrypcji | 2016-09-01 |
+| Subscriptions/resourceGroups/resources | 2016-09-01 |
 | Zasobów/subskrypcji | 2016-09-01 |
-| Subscriptiosn/tagNames | 2016-09-01 |
-| Subskrypcje/tagNames/tagValues | 2016-09-01 |
+| Subscriptions/tagNames | 2016-09-01 |
+| Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Dzierżaw | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcc39f2d8cf1ca0440f8028464d9041435914477
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082955"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263411"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrowanie usługi Azure DevTest Labs usługi Azure DevOps potok ciągłej integracji i dostarczania
 Możesz użyć *Azure DevTest Labs zadania* rozszerzenia, które jest instalowane w DevOps platformy Azure można łatwo zintegrować potokiem ciągłej integracji/ciągłego Dostarczania kompilacji i wydania przy użyciu usługi Azure DevTest Labs. Rozszerzenie instaluje trzy zadania: 
@@ -85,7 +85,7 @@ W tej sekcji opisano sposób tworzenia szablonu usługi Azure Resource Manager, 
 
 1. Sprawdź skrypt systemie kontroli źródła. Nadaj mu nazwę podobną **GetLabVMParams.ps1**.
 
-   Po uruchomieniu tego skryptu w agencie jako część potoku tworzenia wersji i korzystając z kroków zadań takich jak *kopiowania plików na platformę Azure* lub *programu PowerShell na komputerach docelowych*, skrypt służy do zbierania wartości, które trzeba Wdrażanie aplikacji na maszynie Wirtualnej. Zazwyczaj należy użyć tych zadań do wdrażania aplikacji na Maszynie wirtualnej platformy Azure. Zadania wymaga wartości, takie jak nazwa grupy zasobów maszyny Wirtualnej, adres IP i w pełni kwalifikowaną nazwę domeny (nazwy FDQN).
+   Po uruchomieniu tego skryptu w agencie jako część potoku tworzenia wersji i korzystając z kroków zadań takich jak *kopiowania plików na platformę Azure* lub *programu PowerShell na komputerach docelowych*, skrypt służy do zbierania wartości, które trzeba Wdrażanie aplikacji na maszynie Wirtualnej. Zazwyczaj należy użyć tych zadań do wdrażania aplikacji na Maszynie wirtualnej platformy Azure. Zadania wymaga wartości, takie jak nazwa grupy zasobów maszyny Wirtualnej, adres IP i w pełni kwalifikowaną nazwę domeny (FQDN).
 
 ## <a name="create-a-release-pipeline-in-release-management"></a>Tworzenie potoku tworzenia wersji w programie Release Management
 Aby utworzyć potok wydania, należy wykonać następujące czynności:
@@ -138,7 +138,7 @@ Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "zło
 1. W potoku wydań wybierz **dodawać zadania** a następnie na **Wdróż** kartę, należy dodać *programu Azure PowerShell* zadania. Skonfiguruj zadania w następujący sposób:
 
    > [!NOTE]
-   > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [Wdróż: programu Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) i uruchom skrypt.
+   > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [wdrażania: Program Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) i uruchom skrypt.
 
    a. Aby uzyskać **typu połączenia platformy Azure**, wybierz opcję **usługi Azure Resource Manager**.
 

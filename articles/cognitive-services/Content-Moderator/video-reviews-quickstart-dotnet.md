@@ -1,21 +1,21 @@
 ---
 title: Utwórz przeglądy wideo przy użyciu platformy .NET — Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Jak utworzyć wideo, przeglądy, korzystanie z Content Moderator zestawu SDK dla platformy .NET
+description: Ten artykuł zawiera informacje i przykłady kodu, które ułatwią Ci szybkie rozpoczęcie korzystania z zawartości SDK Moderator C# do tworzenia przeglądów wideo.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e9fb82c864c721a9df2e3b31d04e68c824404f81
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219044"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262515"
 ---
 # <a name="create-video-reviews-using-net"></a>Utwórz przeglądy wideo przy użyciu platformy .NET
 
@@ -33,22 +33,21 @@ W tym artykule założono, że masz [moderowane wideo (zobacz Przewodnik Szybki 
 
 W tym artykule założono również, że znasz już program Visual Studio i języka C#.
 
-## <a name="sign-up-for-content-moderator"></a>Zarejestruj się w pakiecie Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator
 
-Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
-Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Załóż na konto narzędzia przeglądu, jeśli nie zostały wykonane w poprzednim kroku
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zarejestruj konto narzędzia do przeprowadzania przeglądów, jeśli nie zostało to zrobione w poprzednim kroku
 
-Jeśli masz usługi Content Moderator w witrynie Azure portal, również [założyć konto narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i tworzenia zespołu przeglądu. Wymagany identyfikator zespołu oraz narzędzie do przeglądu do wywołania interfejsu API przeglądu, aby rozpocząć zadanie i wyświetlić te przeglądy w narzędzie do przeglądu.
+Jeśli używasz usługi Content Moderator w witrynie Azure Portal, także [zarejestruj konto narzędzia do przeglądów](https://contentmoderator.cognitive.microsoft.com/) i utwórz zespół osób przeglądających. Do wywołania interfejsu API w celu uruchomienia zadania i wyświetlenia przeglądów w narzędziu do przeglądów jest potrzebny identyfikator zespołu i narzędzie do przeglądów.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że klucz interfejsu API można wywołać interfejs API przeglądu tworzenia przeglądu
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że Twój klucz interfejsu API umożliwia wywołanie interfejsu API przeglądu w celu utworzenia przeglądu.
 
-Po wykonaniu poprzednich kroków, użytkownik może pozostać przy użyciu dwóch kluczy pakietu Content Moderator w przypadku pracy w witrynie Azure portal. 
+Po wykonaniu poprzednich kroków możesz mieć dwa klucze usługi Content Moderator, jeśli wykonywanie kroków rozpoczęto w witrynie Azure Portal. 
 
-Jeśli planujesz użyć klucza interfejsu API platformy Azure w Twoim przykładzie zestawu SDK, wykonaj kroki opisane w [klucza przy użyciu platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) sekcji, aby umożliwić aplikacji do wywołania interfejsu API przeglądu i tworzenia przeglądów.
+Jeśli planujesz użyć klucza interfejsu API platformy Azure w przykładzie zestawu SDK, wykonaj kroki opisane w sekcji [Używanie klucza platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api), aby umożliwić aplikacji wywołanie interfejsu API przeglądu i tworzenie przeglądów.
 
-Jeśli używasz bezpłatnej wersji próbnej klucz wygenerowany przez narzędzie do przeglądu, Twoje konto narzędzie do przeglądu już zna klucz i dlatego są wymagane żadne dodatkowe kroki.
+Jeśli używasz bezpłatnej wersji próbnej klucza wygenerowanej przez narzędzie do przeprowadzania przeglądów, narzędzie to będzie już znało klucz i dlatego dodatkowe kroki nie są wymagane.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Przygotowanie wideo i klatki wideo do przeglądu
 
@@ -71,7 +70,7 @@ Klatki wideo (obrazy) można użyć poniższych ilustracjach:
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
 
 1. Nadaj projektowi nazwę **VideoReviews**.
 
@@ -86,7 +85,7 @@ Zainstaluj następujące pakiety NuGet projektu TermLists.
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
 
 Modyfikowanie programu za pomocą instrukcji w następujący sposób.
 
@@ -100,7 +99,7 @@ Modyfikowanie programu za pomocą instrukcji w następujący sposób.
     using Newtonsoft.Json;
 
 
-### <a name="add-private-properties"></a>Dodawanie właściwości prywatne
+### <a name="add-private-properties"></a>Dodawanie właściwości prywatnych
 
 Dodaj następujące właściwości prywatnej do przestrzeni nazw VideoReviews, klasy programu.
 
@@ -168,7 +167,7 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy p
 
 ## <a name="create-a-video-review"></a>Utwórz Przegląd wideo
 
-Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
@@ -217,13 +216,13 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy p
     }
 
 > [!NOTE]
-> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych), a Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usługi Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 ## <a name="add-video-frames-to-the-video-review"></a>Dodaj klatki wideo na przegląd wideo
 
-Dodaj klatki wideo na przegląd wideo za pomocą **ContentModeratorClient.Reviews.AddVideoFrameUrl** (jeśli jest to Twoja klatki wideo są hostowanego w trybie online) lub **ContentModeratorClient.Reviews.AddVideoFrameStream** () Jeśli Twoje klatki wideo są hostowane lokalnie). Ten przewodnik Szybki Start założono ramek wideo hostowanego w trybie online, a więc używa **AddVideoFrameUrl**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
+Dodaj klatki wideo na przegląd wideo za pomocą **ContentModeratorClient.Reviews.AddVideoFrameUrl** (jeśli jest to Twoja klatki wideo są hostowanego w trybie online) lub **ContentModeratorClient.Reviews.AddVideoFrameStream** () Jeśli Twoje klatki wideo są hostowane lokalnie). Ten przewodnik Szybki Start założono ramek wideo hostowanego w trybie online, a więc używa **AddVideoFrameUrl**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
 
 **AddVideoFrameUrl** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json".
@@ -373,7 +372,7 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy p
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
+## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
 
 Dodaj **Main** definicję metody do przestrzeni nazw VideoReviews, klasy programu. Na koniec można zamknąć, klasę Program i VideoReviews przestrzeni nazw.
 
@@ -407,7 +406,7 @@ Dodaj **Main** definicję metody do przestrzeni nazw VideoReviews, klasy program
         }
     }
 
-## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
+## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
 Po uruchomieniu aplikacji, zobaczysz dane wyjściowe w następujących wierszach:
 
     Creating a video review.

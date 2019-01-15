@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/12/2018
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310678"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260141"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -103,7 +103,7 @@ Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-
      ```
 
 ### <a name="bkmk_prereq-script"></a> Za pomocą skryptu programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption
-Jeśli już znasz wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać przykład użycia ten skrypt programu PowerShell, zobacz [szyfrowania VM Quickstart](quick-encrypt-vm-powershell.md). Komentarze można usunąć z części skryptu, zaczynając od wiersza 211, do szyfrowania wszystkich dysków dla istniejących maszyn wirtualnych w istniejącej grupie zasobów. 
+Jeśli już znasz wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać przykład użycia ten skrypt programu PowerShell, zobacz [szyfrowania VM Quickstart](quick-encrypt-vm-powershell.md). Komentarze można usunąć z części skryptu, zaczynając od wiersza 211, do szyfrowania wszystkich dysków dla istniejących maszyn wirtualnych w istniejącej grupie zasobów. 
 
 W poniższej tabeli przedstawiono, w której parametry mogą być używane w skrypcie programu PowerShell: 
 

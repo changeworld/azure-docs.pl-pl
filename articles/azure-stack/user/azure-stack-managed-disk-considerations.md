@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 78cb969aa96378dd84243545be1678ae4eaf0e0e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ecbd555809799619d61a7ff33911b7f28dcb3005
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232536"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262714"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: różnice i zagadnienia dotyczące
 
@@ -44,7 +44,7 @@ Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS
 |Dyski w warstwie Premium  |W pełni obsługiwane |Mogą być udostępniane, ale bez ograniczeń wydajności lub gwarancji  |
 |Dyski Premium operacje We/Wy  |Zależy od rozmiaru dysku  |2300 operacje We/Wy na dysk |
 |Przepływność dysków Premium |Zależy od rozmiaru dysku |145 MB na sekundę na dysk |
-|Rozmiar dysku  |Dysk Premium platformy Azure: P4 (32 GiB) do P80 (32 TiB)<br>Dysk SSD w warstwie standardowa platformy Azure: E10 (128 GiB) do E80 (32 TiB)<br>Dysk Azure standardowych dysków Twardych: S4 (32 GiB) do S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>— M30: 1024 giB |
+|Rozmiar dysku  |Azure Premium Disk: P4 (32 GiB) do P80 (32 TiB)<br>Dysk SSD w warstwie standardowa platformy Azure: E10 (128 GiB) do E80 (32 TiB)<br>Dysk Azure standardowych dysków Twardych: S4 (32 GiB) do S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GiB |
 |Kopiowanie migawki dysków|Tworzenie migawki Azure dołączone do uruchomionej maszyny Wirtualnej obsługiwane dyski zarządzane|Nie jest jeszcze obsługiwany |
 |Wydajność dysków analitycznych |Agregują metryki i metryki na dysk obsługiwane |Nie jest jeszcze obsługiwany |
 |Migracja      |Zapewnia narzędzia do migracji z istniejącego niezarządzanych Menedżera zasobów maszyn wirtualnych platformy Azure bez konieczności ponowne utworzenie maszyny Wirtualnej  |Nie jest jeszcze obsługiwany |
@@ -72,7 +72,7 @@ Po zastosowaniu 1808 aktualizacji lub nowszej, należy wykonać następującą k
 - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wykonaj poniższe kroki, aby zaktualizować subskrypcji. W przeciwnym razie wdrażanie maszyn wirtualnych w ramach tej subskrypcji może zakończyć się komunikat o błędzie "Błąd wewnętrzny w Menedżerze dysków."
    1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
    2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
-- Jeśli używasz środowiska z wieloma dzierżawami, poproś chmury — operator (maj w swojej organizacji lub od dostawcy usług) Aby zmienić konfigurację wszystkich katalogów gościa, wykonaj następujące kroki w [w tym artykule](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). W przeciwnym razie wdrażanie maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie "Błąd wewnętrzny w Menedżerze dysków."
+- Jeśli używasz środowiska z wieloma dzierżawami, poproś operator chmury (może być w swojej organizacji lub od dostawcy usług) Aby zmienić konfigurację wszystkich katalogów gościa wykonaj następujące czynności w [w tym artykule](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). W przeciwnym razie wdrażanie maszyn wirtualnych w ramach subskrypcji skojarzonych z nim gościa może zakończyć się komunikat o błędzie "Błąd wewnętrzny w Menedżerze dysków."
 
 
 ## <a name="next-steps"></a>Kolejne kroki

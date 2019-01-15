@@ -1,27 +1,8 @@
 ---
-title: Samouczek szybkiego startu dotyczący języka R dla usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
-description: Aby rozpocząć pracę, szybko przy użyciu języka R za pomocą usługi Azure Machine Learning Studio do tworzenia rozwiązania do prognozowania, należy użyć w tym samouczku programowania R.
-keywords: Przewodnik Szybki Start, języka r, język programowania r, samouczek programowania r
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278665"
+Tytuł: Samouczek szybkiego startu dotyczący języka r. język titleSuffix: Opis usługi Azure Machine Learning Studio: Aby rozpocząć pracę, szybko przy użyciu języka R za pomocą usługi Azure Machine Learning Studio do tworzenia rozwiązania do prognozowania, należy użyć w tym samouczku programowania R.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/06/2017
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning Studio
 
@@ -1227,7 +1208,7 @@ Program RStudio jest dość dobrze udokumentowane, więc w niniejszym załączni
    
    Punkt przerwania funkcji rozwiązywania problemów są udokumentowane na https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
-## <a id="appendixb"></a>DODATEK B: Dalsze informacje
+## <a id="appendixb"></a>APPENDIX B: Dalsze informacje
 Ten samouczek programowania R obejmuje podstawy, co jest potrzebne do języka R za pomocą usługi Azure Machine Learning Studio. Jeśli nie jesteś zaznajomiony z języka R, dwa wprowadzeń są dostępne w sieci CRAN:
 
 * R dla początkujących przez Emmanuel Paradis jest dobrym miejscem do śledzenia rozpoczynają się od http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  

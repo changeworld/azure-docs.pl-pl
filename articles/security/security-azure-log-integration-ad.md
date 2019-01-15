@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c01d911a59647956914518aa62a616823241ab3b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313245"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304928"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrowanie usługi Azure Active Directory z dziennikami inspekcji
 
@@ -28,7 +28,7 @@ Zdarzenia inspekcji w usłudze Azure Active Directory (Azure AD) pomoże zidenty
 
 
 >[!IMPORTANT]
-> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Dzienniki inspekcji czynności, aby zintegrować usługę Azure Active Directory
 
@@ -73,7 +73,7 @@ Możesz również otworzyć [żądania pomocy technicznej](../azure-supportabili
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zobacz:
 
-* [Microsoft Azure Log Integration dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324): ten Centrum pobierania strona zawiera szczegółowe informacje, wymagania systemowe i instrukcje instalacji integracji dzienników Azure.
+* [Microsoft Azure Log Integration dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324): Ta strona Centrum pobierania udostępnia szczegółowe informacje, wymagania systemowe i instrukcje instalacji integracji dzienników Azure.
 * [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md): Ten artykuł stanowi wprowadzenie do integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.
-* [Azure Log Integration często zadawane pytania](security-azure-log-integration-faq.md): Ten artykuł zawiera odpowiedzi na pytania dotyczące usługi Azure Log Integration.
-* [Dzienniki inspekcji nowe funkcje dla usługi Azure Diagnostics i Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): ten wpis w blogu zawiera wprowadzenie do dzienników inspekcji platformy Azure i inne funkcje, które pomagają uzyskać wgląd w operacje zasobów platformy Azure.
+* [Integracja dzienników platformy Azure — często zadawane pytania](security-azure-log-integration-faq.md): Ten artykuł zawiera odpowiedzi na pytania dotyczące usługi Azure Log Integration.
+* [Dzienniki inspekcji nowe funkcje dla usługi Azure Diagnostics i Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ten wpis w blogu zawiera wprowadzenie do dzienników inspekcji platformy Azure i inne funkcje, które pomagają uzyskać wgląd w operacje zasobów platformy Azure.

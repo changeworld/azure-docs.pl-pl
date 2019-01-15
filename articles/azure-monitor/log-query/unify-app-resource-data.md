@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dd475c776a3cdb4f2281b9b5468968745024ac
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215171"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265213"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wiele zasobów usługi Azure Monitor Application Insights 
 W tym artykule opisano, jak wykonywać zapytania i wyświetlić wszystkie usługi Application Insights dziennika danych aplikacji w jednym miejscu, nawet wtedy, gdy są one w różnych subskrypcjach platformy Azure, jako zamiennika amortyzacja łącznik usługi Application Insights.  
@@ -64,7 +64,7 @@ applicationsScoping //this brings data from Application Insights resources
 | where success == 'False' 
 | where duration > 1000 
 | union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics worspace 
+    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
     | where TimeGenerated < (datetime("2018-12-01") 
     | where RequestSuccess == 'False' 
     | where RequestDuration > 1000 
@@ -82,9 +82,9 @@ W poniższej tabeli przedstawiono różnice w schemacie między usługi Log Anal
 
 | Właściwości obszaru roboczego analizy dziennika| Właściwości zasobów szczegółowych informacji w aplikacji|
 |------------|------------| 
-| AnonUserId | Definiując pole user_id|
+| AnonUserId | user_id|
 | ApplicationId | appId|
-| ApplicationName | Nazwa aplikacji|
+| ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | : ItemCount |
 | AvailabilityDuration | czas trwania |
@@ -99,21 +99,21 @@ W poniższej tabeli przedstawiono różnice w schemacie między usługi Log Anal
 | Computer (Komputer) | cloud_RoleInstance | 
 | Kraj | client_CountryOrRegion | 
 | CustomEventCount | : ItemCount | 
-| CustomEventDimensions | tabeli customDimensions |
+| CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
-| deviceModel | client_Model | 
+| DeviceModel | client_Model | 
 | Typ urządzenia | client_Type | 
 | ExceptionCount | : ItemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
 | Typ | type |
 | OperationID | operation_id |
-| OperationName | opeation_Name | 
+| OperationName | operation_Name | 
 | System operacyjny | client_OS | 
 | PageViewCount | : ItemCount |
 | PageViewDuration | czas trwania | 
 | PageViewName | name | 
-| ParentOpeartionID | operation_Id | 
+| ParentOperationID | operation_Id | 
 | RequestCount | : ItemCount | 
 | RequestDuration | czas trwania | 
 | Identyfikator żądania | id | 

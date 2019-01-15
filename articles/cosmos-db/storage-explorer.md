@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 24df1cb5b7a9cc1209940bbaaa1217a80ea74918
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044624"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259652"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu Eksploratora usługi Azure Storage
 
@@ -266,7 +266,7 @@ Jeśli nie możesz usunąć konta lub jeśli link do ponownego uwierzytelniania 
   - .extaccounts
 - Jeśli chcesz usunąć zasoby usługi Storage dołączone do systemu SAS, usuń:
   - Folder %AppData%/StorageExplorer dla systemu Windows
-  - /Users/<Twoja_nazwa>/Library/Application Support/StorageExplorer dla komputerów Mac
+  - /Users/ < twoja_nazwa >/Library/Application SUpport/StorageExplorer dla komputerów Mac
   - ~/.config/StorageExplorer dla systemu Linux
   - Po usunięciu tych plików **trzeba będzie ponownie wprowadzić wszystkie poświadczenia**
 

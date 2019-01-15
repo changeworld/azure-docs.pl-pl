@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 511cd5c8304201fe6dfd101ac95b8f6c72806648
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232264"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261574"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partycjonowanie usług reliable services usługi Service Fabric
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowanie usług reliable services w usłudze Azure Service Fabric. Kodu źródłowego użytego w artykule jest dostępna również na [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

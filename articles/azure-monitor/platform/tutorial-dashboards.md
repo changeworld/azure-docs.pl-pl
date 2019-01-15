@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c6bcc5a7948e87a8b887bd0ebd3abc8fc3d3a517
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e31c957e9ef24079d6917109ec9c5f85928bfbd7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545318"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260979"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -27,7 +27,7 @@ Połączenie typu zasobu (dostępne w `resourceId` właściwości) i `category` 
 |---|---|---|
 | time | Wymagane | Sygnatura czasowa (UTC) zdarzenia. |
 | resourceId | Wymagane | Identyfikator zasobu zasobu, do którego emitowane zdarzenia. W przypadku usług dzierżawy jest to /tenants/tenant-id/providers/provider-name formularza. |
-| Identyfikator dzierżawy | Wymagane dla dzienników dzierżawy | Identyfikator dzierżawy dzierżawy usługi Active Directory, która to zdarzenie jest powiązane. Ta właściwość jest używana tylko dla dzienników na poziomie dzierżawy, nie ma w dziennikach poziom zasobów. |
+| tenantId | Wymagane dla dzienników dzierżawy | Identyfikator dzierżawy dzierżawy usługi Active Directory, która to zdarzenie jest powiązane. Ta właściwość jest używana tylko dla dzienników na poziomie dzierżawy, nie ma w dziennikach poziom zasobów. |
 | operationName | Wymagane | Nazwa operacji reprezentowany przez to zdarzenie. Zdarzenie reprezentuje operację RBAC, to czy nazwy operacji RBAC (np.) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Zazwyczaj w modelu w postaci operacji usługi Resource Manager, nawet jeśli nie są udokumentowane operacje usługi Resource Manager (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optional (Opcjonalność) | Wersja interfejsu api skojarzone z operacją, jeśli operationName została wykonana przy użyciu interfejsu API (np.) `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Jeśli nie ma żadnych interfejsów API, który odnosi się do tej operacji, wersja reprezentuje wersję tej operacji w przypadku, gdy właściwości skojarzone z operacją zmiany w przyszłości. |
 | category | Wymagane | Kategoria dziennika zdarzeń. Kategoria jest stopień szczegółowości, w którym można włączać lub wyłączać dzienniki dla określonego zasobu. Właściwości, które są wyświetlane w obiekcie blob właściwości zdarzenia są takie same, w ramach typu dziennika w określonej kategorii i zasobów. Rejestruj typowe kategorie są "do inspekcji" "działa" "Wykonanie" i "Żądania". |
@@ -70,7 +70,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Logic Apps |[Logic Apps — niestandardowy schemat śledzenia B2B](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Grupy zabezpieczeń sieci |[Usługa Log Analytics dla sieciowych grup zabezpieczeń](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Ochrona przed atakami DDOS | [Zarządzanie standardowa ochrona platformy Azure przed atakami DDoS](../../virtual-network/manage-ddos-protection.md) |
-| Usługi Power BI w wersji dedykowanej | [Rejestrowanie diagnostyczne dla usługi Power BI Embedded na platformie Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| PowerBI Dedicated | [Rejestrowanie diagnostyczne dla usługi Power BI Embedded na platformie Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Model danych usługi Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Wyszukiwanie |[Włączanie i korzystanie z analizy ruchu wyszukiwania](../../search/search-traffic-analytics.md) |
 | Service Bus |[Dzienniki diagnostyczne platformy Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -93,10 +93,10 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Pobiera metryki punktu końcowego (np. przepustowość, ruch wychodzący itd.).|
 |Microsoft.ClassicNetwork/networksecuritygroups|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|
 |Microsoft.CognitiveServices/accounts|Inspekcja|Dzienniki inspekcji|
-|Microsoft.CognitiveServices/accounts|Element RequestResponse|Dzienniki żądań i odpowiedzi|
-|Microsoft.ContainerService/managedClusters|apiserver rozwiązania kubernetes|Serwer interfejsu API usługi Kubernetes|
-|Microsoft.ContainerService/managedClusters|menedżerem w przypadku kontroli rozwiązania kubernetes|Menedżer kontrolera usługi Kubernetes|
-|Microsoft.ContainerService/managedClusters|Skalowanie klastra|Moduł automatycznego skalowania klastra usługi Kubernetes|
+|Microsoft.CognitiveServices/accounts|RequestResponse|Dzienniki żądań i odpowiedzi|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Serwer interfejsu API usługi Kubernetes|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Menedżer kontrolera usługi Kubernetes|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Moduł automatycznego skalowania klastra usługi Kubernetes|
 |Microsoft.ContainerService/managedClusters|Usługa scheduler rozwiązania kubernetes|Harmonogram usługi Kubernetes|
 |Microsoft.ContainerService/managedClusters|Ochrona|Element webhook uwierzytelniania|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
@@ -123,7 +123,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Devices/IotHubs|E2EDiagnostics|Diagnostyka E2E (wersja zapoznawcza)|
 |Microsoft.Devices/IotHubs|Konfiguracje|Konfiguracje|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Operacje dotyczące urządzenia|
-|Microsoft.Devices/provisioningServices|Serviceoperation|Operacje usługi|
+|Microsoft.Devices/provisioningServices|ServiceOperations|Operacje usługi|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
@@ -207,5 +207,5 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 
 * [Dowiedz się więcej na temat dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md)
 * [Stream dzienników diagnostycznych zasobów do **usługi Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
-* [Zmień ustawienia diagnostyczne zasobów przy użyciu interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Zmień ustawienia diagnostyczne zasobów przy użyciu interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

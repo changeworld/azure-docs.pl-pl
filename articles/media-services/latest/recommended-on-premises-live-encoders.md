@@ -2,19 +2,19 @@
 title: Dowiedz się więcej o koderów na żywo transmisji strumieniowej w środowisku lokalnym zalecane przez usługę Media Services — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o zalecanych przez usługę Media Services na żywo transmisji strumieniowej kodery lokalne
 services: media-services
-keywords: kodowanie koderów; multimediów
+keywords: encoding;encoders;media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
 ms.date: 12/14/2018
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d1110669bd0ca8c0ba0caf34ef41861c500bdd33
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4d25e4cd94fec35f31594544b619aa054a35d58d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790032"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302344"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
@@ -39,12 +39,12 @@ Usługa Media Services zaleca się przy użyciu jednej z następujących koderó
 
 - Adobe Flash Media Live Encoder 3.2
 - Haivision KB
-- X Makito Haivision — HEVC
-- Studio systemu bankowości Internetowej
+- Haivision Makito X HEVC
+- OBS Studio
 - Przełącznik Studio (iOS)
 - Telestream Wirecast 8.1 +
 - Telestream Wirecast S
-- Wycinek Teradek 756
+- Teradek Slice 756
 - TriCaster 8000
 - HD Tricaster Mini-4
 - VMIX
@@ -52,13 +52,13 @@ Usługa Media Services zaleca się przy użyciu jednej z następujących koderó
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Dane wyjściowe pofragmentowany plik MP4 koderów na żywo
 
-Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów Smooth Streaming (pofragmentowany plik MP4) jako dane wyjściowe. Obsługiwane schematy adresów URL są `rtmp://` lub `rtmps://`.
+Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów Smooth Streaming (pofragmentowany plik MP4) jako dane wyjściowe. Obsługiwane schematy adresów URL są `http://` lub `https://`.
 
-- Ateme TITAN na żywo
+- Ateme TITAN Live
 - Kodera multimediów cyfrowych Cisco 2200
 - Elemental Live
 - Envivio 4Caster C4 ogólnego III
-- Wyobraź sobie Selenio MCP3 komunikacji
+- Imagine Communications Selenio MCP3
 - Nośnik w programie Excel Hero na żywo i Hero 4K (UHD / — HEVC)
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak zostać partnerem kodera w środowisku lokalnym

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 224756785d5609cf40bc0f62ff76a1ba44206b1b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2aa0b152a4fd50e8023df00ec5dd59d1b2a6e6b0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388924"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262238"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Rozpoczynanie pracy z usługą automatyczne skalowanie według metryki niestandardowe na platformie Azure
 W tym artykule opisano sposób skalowania zasobu przez Metryka niestandardowa w witrynie Azure portal.
@@ -31,7 +31,7 @@ W tym artykule założono, że aplikacja sieci web za pomocą usługi applicatio
 > Uwaga: Poniższe kroki, użyj planu usługi app service skojarzone z aplikacji sieci web usługi app insights skonfigurowane.
 - W bloku Ustawienia skalowania dla zasobu należy zauważyć, że bieżąca liczba wystąpień jest 1. Kliknij pozycję "Włączanie automatycznego skalowania".
   ![Ustawienie Skala dla nowej aplikacji sieci web][5]
-- Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk "Dodaj regułę". Zapoznaj się z opcjami reguły skalowania, które otwiera się jako okienku kontekstowym po prawej stronie. Domyślnie ustawia możliwość skalowania z liczbą wystąpień o 1, jeśli percetage Procesora zasobów przekracza 70%. Zmień źródło metryki u góry na "Application Insights", wybierz zasób usługi app insights na liście rozwijanej "Zasób", a następnie wybierz Metryka niestandardowa oparta na który chcesz skalować.
+- Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk "Dodaj regułę". Zapoznaj się z opcjami reguły skalowania, które otwiera się jako okienku kontekstowym po prawej stronie. Domyślnie ustawia opcję Skalowanie usługi liczby wystąpień o 1, jeśli procent użycia procesora CPU zasobu przekracza 70%. Zmień źródło metryki u góry na "Application Insights", wybierz zasób usługi app insights na liście rozwijanej "Zasób", a następnie wybierz Metryka niestandardowa oparta na który chcesz skalować.
   ![Skalowanie według metryki niestandardowe][6]
 - Podobnie jak powyżej, Dodaj reguły skalowania, który będzie skalowanie w pionie i zmniejszyć wartość licznika skali przez 1, jeśli Metryka niestandardowa jest poniżej wartości progowej.
   ![Skalowanie procesora cpu][7]

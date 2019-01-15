@@ -1,26 +1,8 @@
 ---
-title: Rozwiązania w galerii sztucznej Inteligencji platformy Azure — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Odnajduj rozwiązania w galerii sztucznej Inteligencji platformy Azure. To rozwiązanie zapewnia pracę szybkiego tworzenia rozwiązania Cortana Intelligence z wstępnie skonfigurowanych rozwiązań, architektur referencyjnych i wzorców projektowych.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: 8bfcbac45dd50ebed5491b0411d5f1faa5b5f078
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271338"
+Tytuł: Usługa Azure titleSuffix rozwiązań galerii sztucznej Inteligencji: Opis usługi Azure Machine Learning Studio: Odnajduj rozwiązania w galerii sztucznej Inteligencji platformy Azure. To rozwiązanie zapewnia pracę szybkiego tworzenia rozwiązania Cortana Intelligence z wstępnie skonfigurowanych rozwiązań, architektur referencyjnych i wzorców projektowych.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/31/2017
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Odnajduj rozwiązania w galerii Azure AI
 

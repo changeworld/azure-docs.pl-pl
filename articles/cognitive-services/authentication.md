@@ -7,14 +7,14 @@ author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 81a902c6cf6b9b3491933e4bc14dc1e774185869
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726294"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305455"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -35,7 +35,7 @@ Omówmy szybko nagłówki uwierzytelniania dostępne w połączeniu z usług Azu
 | Nagłówek | Opis |
 |--------|-------------|
 | OCP-Apim-Subscription-Key | Użyj tego pliku nagłówkowego do uwierzytelniania za pomocą klucz subskrypcji dla określonej usługi lub klucz subskrypcji wielu usług. |
-| OCP-Apim subskrypcji — Region | Tego pliku nagłówkowego jest tylko wymagany w przypadku korzystania z kluczem subskrypcji wielu usług za pomocą [interfejsu API tłumaczenia tekstu](./Translator/reference/v3-0-reference.md). Użyj tego pliku nagłówkowego, aby określić region subskrypcji. |
+| Ocp-Apim-Subscription-Region | Tego pliku nagłówkowego jest tylko wymagany w przypadku korzystania z kluczem subskrypcji wielu usług za pomocą [interfejsu API tłumaczenia tekstu](./Translator/reference/v3-0-reference.md). Użyj tego pliku nagłówkowego, aby określić region subskrypcji. |
 | Autoryzacja | Użyj tego pliku nagłówkowego, jeśli używasz tokenu uwierzytelniania. Czynności do wykonania wymiany tokenu są szczegółowo opisane w poniższych sekcjach. Podana wartość następujący format: `Bearer <TOKEN>`. |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Uwierzytelnianie za pomocą klucza usługi pojedynczej subskrypcji
@@ -58,6 +58,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+Poniższy klip wideo pokazuje, za pomocą klucza usługi Cognitive Services. 
+
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Uwierzytelnianie za pomocą klucz subskrypcji z wieloma usługami
 
 >[!WARNING]
@@ -66,6 +68,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 Ta opcja używa także klucz subskrypcji do uwierzytelniania żądań. Główną różnicą jest, że klucz subskrypcji nie jest związany z określonej usługi, zamiast jednego klucza może służyć do uwierzytelniania żądań dla wielu usług Cognitive Services. Zobacz [cennik usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) uzyskać informacji o dostępności regionalnej, obsługiwane funkcje i ceny.
 
 Klucz subskrypcji znajduje się w każdym żądaniu jako `Ocp-Apim-Subscription-Key` nagłówka.
+
+[![Pokaz kluczy subskrypcji wielu usług dla usług Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Obsługiwane regiony
 
@@ -108,8 +112,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 Niektóre usługi Azure Cognitive Services Zaakceptuj i w niektórych przypadkach wymagają, token uwierzytelniania. Obecnie te usługi obsługują tokeny uwierzytelniania:
 
 * Interfejs API tłumaczenia tekstu
-* Usługi mowy: Interfejs API REST mowy na tekst
-* Usługi mowy: Interfejs API REST zamiany tekstu na mowę
+* Speech Services: Interfejs API REST mowy na tekst
+* Speech Services: Interfejs API REST zamiany tekstu na mowę
 
 >[!NOTE]
 > Usługa QnA Maker również korzysta z nagłówka autoryzacji, ale wymaga klucza punktu końcowego. Aby uzyskać więcej informacji, zobacz [QnA Maker: Uzyskiwanie odpowiedzi z bazy wiedzy knowledge base](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md).

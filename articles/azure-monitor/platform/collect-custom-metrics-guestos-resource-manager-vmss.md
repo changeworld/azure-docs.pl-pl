@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 529a79fbc7b70ba6ea6a07a0ab6c523a193387a2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 1513ea1c212d526b7fe2659855d4a80eabc9949b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326116"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261710"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk przez system operacyjny gościa do usługi Azure Monitor metryki magazynu przy użyciu szablonu usługi Azure Resource Manager dla zestawu skalowania maszyn wirtualnych Windows
 
@@ -42,7 +42,7 @@ Na przykład można użyć publicznie dostępnych [przykładowy szablon](https:/
 
 Pobierz i Zapisz oba pliki lokalnie. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Modyfikowanie azuredeploy.parameters.json
+###  <a name="modify-azuredeployparametersjson"></a>Modify azuredeploy.parameters.json
 Otwórz **azuredeploy.parameters.json** pliku:  
  
 - Podaj **vmSKU** mają zostać wdrożone. Zalecamy, aby maszyna wirtualna Standard_D2_v3. 
@@ -52,7 +52,7 @@ Otwórz **azuredeploy.parameters.json** pliku:
 - Wprowadź wartości w polach **adminUsername** i **adminPassword** skalowania maszyn wirtualnych można ustawić. Te parametry są używane dla dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęty, maszyna wirtualna **nie** użyć w tym szablonie. Boty skanowania z Internetem, aby nazwy użytkowników i hasła w publicznych repozytoriach GitHub. Prawdopodobnie będą do testowania maszyny wirtualne przy użyciu tych ustawień domyślnych. 
 
 
-###  <a name="modify-azuredeployjson"></a>Modyfikowanie azuredeploy.json
+###  <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
 Otwórz **azuredeploy.json** pliku. 
 
 Dodaj zmienną do przechowywania informacji o koncie magazynu w szablonie usługi Resource Manager. Wszystkie dzienniki lub liczniki wydajności w pliku konfiguracyjnym diagnostyki są zapisywane do magazynu metryk usługi Azure Monitor oraz konto magazynu określone w tym miejscu: 
@@ -89,7 +89,7 @@ Poniższy kod z rozszerzeniem MSI dodaje także rozszerzenie diagnostyki i konfi
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed identites for Azure resources   
+            // Managed identities for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

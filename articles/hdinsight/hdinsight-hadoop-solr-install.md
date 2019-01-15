@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0f4af863162d004b6a557f8c7a04e31ee66d9b7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713560"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259635"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Solr w klastrach HDInsight z systemem Windows
 
@@ -166,7 +166,7 @@ Należy rozpocząć od indeksowanie Solr z niektórych plików danych. Korzystan
 
    To polecenie kopiuje migawkę do /example/data/znajdującego się w kontenerze w ramach domyślnego konta magazynu skojarzonego z klastrem.
 
-## <a name="install-solr-using-aure-powershell"></a>Zainstalować platformę Solr przy użyciu programu Azure PowerShell
+## <a name="install-solr-using-azure-powershell"></a>Zainstalować platformę Solr przy użyciu programu Azure PowerShell
 Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  W przykładzie pokazano, jak zainstalować platformę Apache Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 ## <a name="install-solr-using-net-sdk"></a>Zainstalować platformę Solr przy użyciu zestawu .NET SDK

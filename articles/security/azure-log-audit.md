@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 36c16cd48ffba704b9cc8b0884491c3b92543b5c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e6fb14fc901b5ae5ad11d94c1e71453c2852239c
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215494"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306254"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -29,6 +29,7 @@ System Azure oferuje szeroką gamę konfigurowalne zabezpieczeń, inspekcji i re
 > Zastosowanie niektórych zaleceń zamieszczonych w tym artykule może spowodować danych, sieci lub użycia zasobów obliczeniowych i zwiększyć koszty licencji lub subskrypcji.
 
 ## <a name="types-of-logs-in-azure"></a>Typy dzienników na platformie Azure
+
 Aplikacje w chmurze są skomplikowane, za pomocą wielu ruchomych elementów. Dzienniki zawierają dane, aby zapewnić działanie aplikacji. Dzienniki pomagają rozwiązywać problemy ostatnie problemy lub uniemożliwić potencjał z nich. I mogą one pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
 
 Dzienniki platformy Azure są podzielone na następujące typy:
@@ -47,11 +48,12 @@ W poniższej tabeli wymieniono najważniejsze typów dzienników dostępnych na 
 |[Raportowanie usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Dzienniki i raporty | Raporty aktywności logowania użytkowników i informacji o aktywności systemu dotyczące użytkowników i grupy zarządzania.|[Interfejs API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[Maszyny wirtualne i usługi w chmurze](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Usługa Windows dziennik zdarzeń i dzienników Syslog systemu Linux|  Przechwytuje dane systemu i rejestrowania danych na maszynach wirtualnych i przesyła dane do wybranego konta magazynu.|   Windows (przy użyciu Windows Azure Diagnostics [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] magazynu) i Linux w usłudze Azure Monitor|
 |[Analityka usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu dostarcza danych metryk dotyczących konta magazynu|Zapewnia wgląd w Śledzenie żądań, analizuje trendy użycia i diagnozowanie problemów z kontem usługi storage.|   Interfejs API REST lub [biblioteki klienckiej](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
-|[Dzienniki przepływu sieciowych grup zabezpieczeń (NSG)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON format zawiera przepływy wychodzące i przychodzące na podstawie reguł|Wyświetla informacje o przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń.|[Usługa Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
+|[Dzienniki przepływu sieciowych grup zabezpieczeń (NSG)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON format zawiera przepływy wychodzące i przychodzące na podstawie reguł|Wyświetla informacje o przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń.|[Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Dzienniki, wyjątki i Diagnostyka niestandardowa|   Udostępnia usługi (APM) dla deweloperów sieci web na wielu platformach monitorowania wydajności aplikacji.| Interfejs API REST, [usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |Przetwarzanie danych / alerty zabezpieczeń|    Alerty usługi Azure Security Center, alertów usługi Azure Log Analytics|   Zawiera informacje dotyczące zabezpieczeń i alerty.|  Interfejsy API REST, JSON|
 
 ### <a name="activity-logs"></a>Dzienniki aktywności
+
 [Dzienniki aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje, które zostały wykonane na komputerze zasobów w ramach subskrypcji. Dzienniki aktywności były wcześniej nazywane "dzienniki inspekcji" lub "operacyjne dzienniki", ponieważ zgłaszają [zdarzenia płaszczyznę kontroli](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) dla subskrypcji. 
 
 Dzienniki aktywności pomocy, możesz określić ", co, kto i kiedy" za operacje zapisu (oznacza to, PUT, POST lub usunąć). Dzienniki aktywności również pomagają zrozumieć stanu operacji i inne odpowiednie właściwości. Dzienniki aktywności nie obejmują operacji odczytu (GET).
@@ -81,6 +83,7 @@ Scenariusze integracji dla zdarzenia dziennika aktywności:
 Możesz użyć konta magazynu lub [przestrzeń nazw Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) nie jest w tej samej subskrypcji, która jest emitowania dziennika. Spojrzenia Konfiguruje ustawienie, musi mieć odpowiednie [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dostęp do obu subskrypcji.
 
 ### <a name="azure-diagnostics-logs"></a>Dzienniki diagnostyczne platformy Azure
+
 Dzienniki diagnostyczne platformy Azure są emitowane przez zasób, który zapewnia bogate, często dane o działaniu tego zasobu. Zawartość tych dzienników jest zależna od typu zasobu. Na przykład [dzienniki systemu zdarzeń Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) są kategorii dzienniki diagnostyczne dla maszyn wirtualnych i [obiektów blob, tabel i Dzienniki kolejek](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account) kategorie dzienniki diagnostyczne dla kont magazynu. Dzienniki diagnostyczne różnią się od dzienników aktywności, które zapewniają wgląd w operacje, które zostały wykonane na komputerze zasobów w ramach subskrypcji.
 
 ![Diagramy dzienniki diagnostyczne platformy Azure](./media/azure-log-audit/azure-log-audit-fig2.png)
@@ -115,6 +118,7 @@ Dzienniki diagnostyczne platformy Azure oferuje wiele opcji konfiguracji, takich
 |Azure Service Bus|[Dzienniki diagnostyczne usługi Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
 ### <a name="azure-active-directory-reporting"></a>Raporty w usłudze Azure Active Directory
+
 Azure Active Directory (Azure AD) obejmuje zabezpieczeń, działań i raporty inspekcji dla katalogu użytkownika. [Raportu inspekcji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) pomaga w identyfikacji uprzywilejowanych akcji, które wystąpiły w wystąpieniu usługi Azure AD przez użytkownika. Uprzywilejowanych akcji obejmują zmiany podniesienie poziomu (np. Tworzenie roli lub resetowanie haseł), zmiany konfiguracji zasad (na przykład zasady haseł) lub zmiany w konfiguracji katalogu (na przykład zmiany ustawienia Federacji domeny).
 
 Raporty zapewniają rekord inspekcji dla nazwy zdarzeń użytkownika, który wykonał operację, zasób docelowy wpływ zmiany oraz Data i godzina (czas UTC). Użytkownicy mogą pobrać listę zdarzeń inspekcji dla usługi Azure AD za pomocą [witryny Azure portal](https://portal.azure.com/), zgodnie z opisem w [przeglądać dzienniki inspekcji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
@@ -143,6 +147,7 @@ Zdarzenia raportu inspekcji usługi Azure AD są przechowywane przez 180 dni.
 Jeśli interesuje Cię zachowaniu dłużej zdarzeń inspekcji, użyj interfejsu API raportowania regularnie ściągnąć [zdarzenia inspekcji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events) w oddzielnym magazynem danych.
 
 ### <a name="virtual-machine-logs-that-use-azure-diagnostics"></a>Dzienników maszyny wirtualnej, które używają usługi Azure Diagnostics
+
 [Diagnostyka Azure](https://docs.microsoft.com/azure/azure-diagnostics) funkcji w obrębie platformy Azure, która umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z dowolnego z wielu źródeł. Obecnie obsługiwane wartości to [role sieć web i procesu roboczego usługi Azure cloud](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me).
 
 ![Dzienników maszyny wirtualnej, które używają usługi Azure Diagnostics](./media/azure-log-audit/azure-log-audit-fig3.png)
@@ -160,6 +165,7 @@ Należy włączyć diagnostyki platformy Azure na maszynie wirtualnej, wykonują
 * [Utwórz maszynę wirtualną Windows z funkcjami monitorowania i diagnostyki przy użyciu szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="storage-analytics"></a>Analityka magazynu
+
 [Analizy usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) dzienniki i dostarcza danych metryk dla konta magazynu. Dane te mogą posłużyć do śledzenia żądań, analizy tendencji użycia oraz diagnozowania problemów z kontem magazynu. Rejestrowanie danych analizy magazynu jest dostępny dla [usługi magazynu Azure Blob, kolejek platformy Azure i usługi Azure Table](https://docs.microsoft.com/azure/storage/storage-introduction). Usługa Storage Analytics rejestruje szczegółowe informacje na temat udane i nieudane żądania do usługi storage.
 
 Te informacje służą do monitorowania poszczególnych żądań i diagnozowanie problemów z usługą magazynu. Żądania są rejestrowane na zasadzie największej staranności. Wpisy dziennika są tworzone tylko wtedy, gdy żądania skierowanego do punktu końcowego usługi. Na przykład jeśli konto magazynu ma działania, w jej punkt końcowy usługi blob, ale nie w jego tabel lub kolejek punkty końcowe, są tworzone tylko dzienniki, które odnoszą się do usługi Blob storage.
@@ -185,6 +191,7 @@ Usługa Storage Analytics rejestruje następujące typy żądań uwierzytelniony
 | Żądania wysyłane przez analityka magazynu, takie jak tworzenie dziennika lub usuwanie, nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [Storage Analytics rejestrowane komunikaty o stanie i operacje](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) i [format dziennika Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format). | Inne zakończone niepowodzeniem żądania anonimowe nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [Storage Analytics rejestrowane komunikaty o stanie i operacje](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) i [format dziennika Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format). |
 
 ### <a name="azure-networking-logs"></a>Dzienników sieci platformy Azure
+
 Sieci, rejestrowanie i monitorowanie na platformie Azure to kompleksowe i obejmuje dwie szerokie kategorie:
 
 * [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Monitorowanie sieci opartych na scenariuszach jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
@@ -282,6 +289,7 @@ Poniższej tabeli wymieniono i opisano scenariusze integracji:
 |[Eksport ciągły](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry)|Zbiorczy Eksport danych pierwotnych do magazynu po odebraniu.||
 
 ### <a name="azure-security-center-alerts"></a>Alerty usługi Azure Security Center
+
 Wykrywanie zagrożeń w usłudze Azure Security Center polega na automatycznym zbieraniu informacji o zabezpieczeniach z zasobami platformy Azure, sieci oraz połączonych rozwiązań partnerskich. Analizuje ona te informacje, często zestawiając informacje z wielu źródeł, aby zidentyfikować zagrożenia. Alerty zabezpieczeń wraz z zaleceniami dotyczącymi usuwania zagrożeń są traktowane przez usługę Security Center priorytetowo. Aby uzyskać więcej informacji, zobacz [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).
 
 ![Diagram usługi Azure Security Center](./media/azure-log-audit/azure-log-audit-fig7.png)
@@ -296,7 +304,7 @@ Usługa Security Center wykorzystuje zaawansowane narzędzia analizy zabezpiecze
 
 Wiele operacji zabezpieczeń i reagowania na zdarzenia zespołów korzystają rozwiązania SIEM jako punktu wyjścia dla klasyfikowania i badanie alertów zabezpieczeń. Za pomocą integracji dzienników platformy Azure można zsynchronizować alertów usługi Security Center i zdarzenia zabezpieczeń dotyczące maszyny wirtualnej, zbieranych przez usługi Azure diagnostics i dzienniki inspekcji, za pomocą rozwiązania usługi Log Analytics lub rozwiązania SIEM w czasie zbliżonym do rzeczywistego.
 
-## <a name="log-analytics"></a>Log Analytics 
+## <a name="log-analytics"></a>Log Analytics
 
 Usługa log Analytics to usługa platformy Azure, która ułatwia zbieranie oraz analizowanie danych, który został wygenerowany przez zasoby w środowisku chmurowym i lokalnym. Zapewnia wgląd w czasie rzeczywistym przy użyciu zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów, niezależnie od ich fizycznej lokalizacji.
 
@@ -309,6 +317,7 @@ Połączone źródła to komputery i inne zasoby, które generują dane zbierane
 [Źródła danych](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources) różne rodzaje danych zbieranych ze wszystkich połączonych źródeł. Źródła obejmują zdarzenia i [dane dotyczące wydajności](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters) z [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) i agenci dla systemu Linux, oprócz źródeł, takich jak [dzienniki usług IIS](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-iis-logs) i [niestandardowe dzienniki tekstowe](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-custom-logs). Każde źródło danych, które ma być zbierane, jest konfigurowane, a konfiguracja jest automatycznie dostarczana do każdego z nich.
 
 Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage):
+
 * Narzędzie diagnostyczne systemu Azure bezpośrednio do usługi Log Analytics (**diagnostyki** w poniższej tabeli)
 
 * Diagnostyka Azure do usługi Azure storage do usługi Log Analytics (**magazynu** w poniższej tabeli)
@@ -330,7 +339,7 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 |Przestrzeń nazw Centrum zdarzeń platformy Azure| Microsoft.EventHub/<br>Przestrzenie nazw|  Diagnostyka|    Diagnostyka||
 |Azure IoT Hub| Microsoft.Devices/<br>IotHubs||     Diagnostyka||
 |W usłudze Azure Key Vault|   Microsoft.KeyVault/<br>Magazyny|  Diagnostyka  || [Analiza usługi Key Vault](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
-|Azure Load Balancer|   Microsoft.Network/<br>modułami modułami|    Diagnostyka|||
+|Azure Load Balancer|   Microsoft.Network/<br>loadBalancers|    Diagnostyka|||
 |Azure Logic Apps|  Microsoft.Logic/<br>Przepływy pracy|  Diagnostyka|    Diagnostyka||
 ||Microsoft.Logic/<br>integrationAccounts||||
 |Grupy zabezpieczeń sieci|   Microsoft.Network/<br>networksecuritygroups|Diagnostyka||   [Analiza sieciowej grupy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
@@ -351,7 +360,8 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>Integracja dzienników przy użyciu lokalnych systemów SIEM
-Za pomocą [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324), możesz zintegrować nieprzetworzonych dzienników z zasobów platformy Azure z lokalnego systemu SIEM (Security informacjami i zdarzeniami systemu zarządzania).
+
+Za pomocą usługi Azure Log Integration nieprzetworzonych dzienników z zasobów platformy Azure można zintegrować z lokalnego systemu SIEM (Security informacjami i zdarzeniami systemu zarządzania). Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 ![Diagram integracji dzienników](./media/azure-log-audit/azure-log-audit-fig9.png)
 

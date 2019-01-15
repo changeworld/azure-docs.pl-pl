@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0cac5658d5f6f32795b5988008b3b895024ecc06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e89575323b87ba28ef4f062da098fea4f0e27035
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960538"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264058"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!note]  
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
@@ -46,7 +46,7 @@ Tworzenie planu, oferty i subskrypcji dla elementu portalu Marketplace platformy
 
 1. Wybierz **Przegląd** w bloku oferty.
 
-1. Wybierz **zmiany stanu**. Wybierz **publicznych**.
+1. Wybierz **zmiany stanu**. Wybierz pozycję **Publiczna**.
 
 1. Wybierz **+ Utwórz zasób** > **oferty i plany** > **subskrypcji** Aby utworzyć nową subskrypcję.
 
@@ -75,8 +75,8 @@ Dodaj poniższy obraz Ubuntu Server w portalu Marketplace:
 1. Wybierz najnowszą wersję serwera. Zapoznaj się z pełną wersją i upewnij się, że masz najnowszą wersję:
     - **Wydawca**: Canonical
     - **Oferty**: UbuntuServer
-    - **Wersja**: 16.04.201806120
-    - **JEDNOSTKA SKU**: 16.04 LTS
+    - **Wersja**: 16.04.201806120 (lub nowszy)
+    - **SKU**: 16.04-LTS
 
 1. Wybierz **pobierania.**
 
@@ -93,12 +93,12 @@ Dodaj usługi Kubernetes z witryny Marketplace:
 1. Wprowadź polecenie `Custom Script for Linux`.
 
 1. Wybierz odpowiedni skrypt, za pomocą następującego profilu:
-    - **Oferty**: niestandardowego skryptu dla systemu Linux w wersji 2.0
-    - **Wersja**: 2.0.6
-    - **Wydawca**: Microsoft Corp.
+    - **Oferty**: Niestandardowego skryptu dla systemu Linux w wersji 2.0
+    - **Wersja**: 2.0.6 (lub nowszy)
+    - **Wydawca**: Microsoft Corp
 
     > [!Note]  
-    > Może być wymieniona więcej niż jedna wersja niestandardowego skryptu dla systemu Linux. Musisz dodać wersję, która jest zgodna. Klaster Kubernetes wymaga dokładną wersję elementu.
+    > Może być wymieniona więcej niż jedna wersja niestandardowego skryptu dla systemu Linux. Należy dodać najnowszej wersji elementu.
 
 1. Wybierz **pobierania.**
 
@@ -149,7 +149,5 @@ Aby usunąć element Kubernetes:
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Wdrażanie usługi Kubernetes do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-
-
 
 [Przegląd oferty usług w usłudze Azure Stack](azure-stack-offer-services-overview.md)

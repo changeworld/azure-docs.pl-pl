@@ -1,26 +1,7 @@
 ---
-title: Galeria sztucznej Inteligencji platformy Azure, eksperymenty — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Odnajdywanie i udostępnianie eksperymenty w galerii sztucznej Inteligencji platformy Azure. Eksperyment jest kanwy w usłudze Machine Learning Studio, można użyć w celu utworzenia modelu analizy predykcyjnej
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/26/2017
-ms.openlocfilehash: 12fb45b00848e5e34760ccb0691998c1f72237b8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269305"
+Tytuł: Galeria sztucznej Inteligencji platformy Azure experiments titleSuffix: Opis usługi Azure Machine Learning Studio: Odnajdywanie i udostępnianie eksperymenty w galerii sztucznej Inteligencji platformy Azure. Eksperyment jest kanwy w usłudze Machine Learning Studio, można używać do tworzenia usługi modelu analizy predykcyjnej: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/26/2017
 ---
 # <a name="discover-azure-machine-learning-studio-experiments-in-azure-ai-gallery"></a>Odnajdywanie usługi Azure Machine Learning Studio eksperymenty w galerii Azure AI
 

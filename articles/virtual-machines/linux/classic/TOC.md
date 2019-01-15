@@ -1,4 +1,4 @@
-# [Omówienie](../overview.md)
+# Omówienie
 ## [Rozszerzenia maszyn wirtualnych](agents-and-extensions-classic.md)
 ## [Dostępność](configure-availability-classic.md)
 ## [Często zadawane pytania](faq-classic.md)
@@ -49,7 +49,6 @@
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/vm)
 ## [Java](/java/api)
-## [Tworzenie szablonów usługi Resource Manager](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Szablony społeczności](https://azure.microsoft.com/documentation/templates)
 ## [Architektura REST — usługa Compute](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [Architektura REST — sieć](https://msdn.microsoft.com/library/jj157182.aspx)

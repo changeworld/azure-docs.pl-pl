@@ -1,27 +1,7 @@
 ---
-title: Zarządzanie cyklem życia aplikacji — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Stosowanie najlepszych rozwiązań zarządzania cyklem życia aplikacji w usłudze Azure Machine Learning Studio
-keywords: ALM, AML, uczenie Maszynowe systemu Azure, zapewniają Zarządzanie cyklem życia aplikacji, systemu kontroli wersji
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1be6577d-f2c7-425b-b6b9-d5038e52b395
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2016
-ms.openlocfilehash: f331ebb85e1cf47dc1235138376704b08d217e82
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249757"
+Tytuł: TitleSuffix zarządzania cyklem życia aplikacji: Opis usługi Azure Machine Learning Studio: Stosowanie najlepszych rozwiązań zarządzania cyklem życia aplikacji w usługach Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 10/27/2016
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Zarządzanie cyklem życia aplikacji w usłudze Azure Machine Learning Studio
 Usługa Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty usługi machine learning, w których jest przygotowany do działania na platformie chmury platformy Azure. Takich jak środowiska IDE programu Visual Studio i usługi w chmurze skalowalne scalania w pojedynczej platformy. Różne zasoby do wdrożenia i wykonywanie zautomatyzowanych standardowego rozwiązania zarządzania cyklem życia aplikacji (ALM) na podstawie wersji można zastosować w usłudze Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.

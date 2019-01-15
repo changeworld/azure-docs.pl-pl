@@ -1,26 +1,8 @@
 ---
-title: Jak modelu usługi Machine Learning Studio staje się usługi sieci web — Azure | Dokumentacja firmy Microsoft
-description: Omówienie sposobu działania jak eksperymentować z postępów modelu usługi Azure Machine Learning od etapu programowania do zoperacjonalizowanej usługi sieci Web.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253871"
+Tytuł: Jak modelu usługi Machine Learning Studio staje się titleSuffix usługi sieci web: Opis usługi Azure Machine Learning Studio: Omówienie sposobu działania jak eksperymentować z postępów modelu usługi Azure Machine Learning od etapu programowania do zoperacjonalizowanej usługi sieci Web.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 03/20/2017
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu do zoperacjonalizowanej usługi sieci Web
 Usługa Azure Machine Learning Studio udostępnia interaktywne kanwy, która pozwala na tworzenie, uruchamianie, testów i modyfikować ***eksperymentować*** reprezentujący modelu analizy predykcyjnej. Istnieją szerokiej gamy dostępnych modułów, które można:

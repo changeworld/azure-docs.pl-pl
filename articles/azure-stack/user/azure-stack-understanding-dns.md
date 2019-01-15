@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-09/28/2018started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 783262a5b55bd645ae3b85c1f00434648d7ee35f
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 837b96246191bd88ec380f122cf9ece85f822203
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584971"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304537"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Wprowadzenie do międzynarodowych nazw domen dla usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 międzynarodowych nazw domen jest funkcją sieci usługi Azure Stack, która umożliwia rozpoznawanie nazw DNS zewnętrzne (na przykład http://www.bing.com.) umożliwia również zarejestrować nazwy wewnętrznej sieci wirtualnej. W ten sposób można naprawić maszyny wirtualne na tej samej sieci wirtualnej, nazwy, a nie adresu IP. To podejście usuwa potrzebę zapewnienia niestandardowe wpisami serwera DNS. Aby uzyskać więcej informacji na temat systemu DNS, zobacz [Omówienie usługi Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview).
 

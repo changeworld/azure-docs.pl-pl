@@ -22,16 +22,18 @@ items:
     href: tutorial-protect-resources.md
   - name: Reagowanie na zdarzenia
     href: tutorial-security-incident.md
+  - name: Zwiększanie zgodności z przepisami
+    href: security-center-compliance-dashboard.md
 - name: Pojęcia
   items:
   - name: Uprawnienia
     href: security-center-permissions.md
   - name: Bezpieczeństwo danych
     href: security-center-data-security.md
-  - name: Reagowanie na zdarzenia
-    href: security-center-incident-response.md
   - name: Używanie zaleceń w celu ulepszania zabezpieczeń
     href: security-center-using-recommendations.md
+  - name: Reagowanie na zdarzenia
+    href: security-center-incident-response.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Poprawianie oceny bezpieczeństwa
@@ -189,9 +191,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Rozwiązywanie problemów
     href: security-center-troubleshooting-guide.md
-ms.openlocfilehash: e843dc5b29d441f4d1592a935bd35b295150f861
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7aaca2a30fb130c3d7d68faf9f353539be044315
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545505"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259159"

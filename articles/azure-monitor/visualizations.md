@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 94769ea0ff05565ee11f7c167e28f239ca304d3d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: cea5cb924914cff1195520d6bd28a8b62fce8698
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213743"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264414"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
@@ -35,7 +35,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](../azure-monitor/platform/metrics-charts.md), [zapytań usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), i [mapuje](../azure-monitor/app/app-map.md) i dostępności w usłudze Application Insights.
 - Opcja osobistym lub udostępnione pulpity nawigacyjne. Zintegrowana z platformą Azure [uwierzytelniania opartego na rolach (RBAC)](../role-based-access-control/overview.md).
 - Automatyczne odświeżanie. Odświeżanie metryk zależy od zakresu czasu z co najmniej pięć minut. Odśwież dzienniki na jedną minutę.
-- Metryki sparametryzowanego pulpity nawigacyjne z sygnatury czasowej i parametry niestandardowe.
+- Pulpity nawigacyjne sparametryzowane metryki ze znacznikiem czasu i parametry niestandardowe.
 - Opcje układu.
 - Tryb pełnoekranowy.
 

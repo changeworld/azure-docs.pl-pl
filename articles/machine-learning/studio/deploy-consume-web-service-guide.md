@@ -1,26 +1,7 @@
 ---
-title: Wdrażanie i korzystanie - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268431"
+Tytuł: Wdrażanie i korzystanie titleSuffix: Opis usługi Azure Machine Learning Studio: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Usługi Azure Machine Learning Studio, usług sieci Web: Wdrażanie i korzystanie
 Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.

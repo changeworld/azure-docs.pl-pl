@@ -1,26 +1,8 @@
 ---
-title: Galeria sztucznej Inteligencji platformy Azure — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Udostępnianie i odnajdywanie zasobów analiz i innych elementów galerii sztucznej Inteligencji platformy Azure. Ucz się od innych, a następnie wprowadzić własny wkład do społeczności.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: c9acd902eb536bbd252f0aca6d162ff92d9e6e00
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270964"
+Tytuł: Usługa Azure titleSuffix Galeria sztucznej Inteligencji: Opis usługi Azure Machine Learning Studio: Udostępnianie i odnajdywanie zasobów analiz i innych elementów galerii sztucznej Inteligencji platformy Azure. Ucz się od innych, a następnie wprowadzić własny wkład do społeczności.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/31/2017
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Udostępniaj i odnajduj zasoby w galerii Azure AI
 

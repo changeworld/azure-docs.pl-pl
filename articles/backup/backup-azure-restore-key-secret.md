@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3bcd752f14f5d43c8cb8f686534e016690c7c40
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 85c284c2a0e49d7fa20c0ec342878ffdf9d47387
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198069"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261166"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Przywróć klucz usługi Key Vault i klucz tajny dla szyfrowanych maszyn wirtualnych przy użyciu usługi Azure Backup
 Ten artykuł zawiera informacje o przy użyciu kopii zapasowych maszyn wirtualnych platformy Azure przeprowadzić przywracanie zaszyfrowanych maszyn wirtualnych platformy Azure, z kluczem i wpisem tajnym nie istnieją w magazynie kluczy. Te kroki można również Jeśli chcesz zachować oddzielna kopia key (klucz szyfrowania klucza) i klucz tajny (klucz szyfrowania funkcją BitLocker) dla przywróconej maszyny Wirtualnej.
@@ -62,7 +62,7 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 
 ## <a name="restore-secret"></a>Przywróć klucz tajny
 
-Jeśli maszyna wirtualna platformy Azure bez usługi Azure AD jest zaszyfrowana przy użyciu klucza szyfrowania bloków tylko (zarówno dla Windows i maszyn wirtualnych systemu Linux), generowanie klucza tajnego nazwą i wartością za pomocą powyższych poleceń i niego można ustawić klucza tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) w magazynie kluczy.
+Użyj pliku JSON, wygenerowany powyżej, nazwa wpisu tajnego i wartości do niego, aby ustawić wpisu tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) ponownie w usłudze key vault. Użyj tych poleceń cmdlet, jeśli Twoja **maszyna wirtualna jest zaszyfrowana przy użyciu BEK i KEK**.
 
 **Użyj tych poleceń cmdlet, jeśli maszyna wirtualna Windows jest zaszyfrowana przy użyciu BEK i KEK.**
 
@@ -84,7 +84,7 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Jeśli maszyna wirtualna platformy Azure z usługą Active Directory jest **szyfrowany tylko przy użyciu klucza szyfrowania bloków**, generowanie pliku obiektu blob klucza tajnego z kodu JSON i źródła danych do przywrócenia klucza tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) w magazynie kluczy.
+Użyj pliku JSON, wygenerowany powyżej, nazwa wpisu tajnego i wartości do niego, aby ustawić wpisu tajnego polecenia cmdlet, aby umieścić wpis tajny (klucz szyfrowania bloków) ponownie w usłudze key vault. Użyj tych poleceń cmdlet, jeśli Twoja **maszyna wirtualna jest zaszyfrowana przy użyciu klucza szyfrowania bloków** tylko.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
+ms.date: 12/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: b4023d45c3628df5006d076e01f32bb8f3aa80a6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846253"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262901"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.
@@ -105,7 +105,7 @@ Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworz
 
   - **Nazwa**: Nazwa subskrypcji i grupy
   - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
-  - **Tryb**: trybie inspekcji będą rejestrowane próby uruchomienia aplikacji spoza; Wymuszanie będą nie Pozwól na uruchamianie aplikacji — na liście dozwolonych
+  - **Tryb**: Tryb inspekcji będą rejestrowane próby uruchomienia aplikacji spoza; Wymuszanie będą nie Pozwól na uruchamianie aplikacji — na liście dozwolonych
   - **Alerty**: wszelkie bieżące naruszenia
 
 2. Kliknij grupę, aby wprowadzić zmiany w **edytowanie zasad kontroli aplikacji** strony.
@@ -122,7 +122,7 @@ Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworz
    > - Jak wcześniej wspomniano, domyślnie nowe zasady sterowania aplikacjami są zawsze skonfigurowane w trybie *inspekcji*. 
    >
 
-4. W obszarze **rozszerzenia zasad**, możesz dodać dowolną ścieżkę aplikacji, który chcesz zezwolić. Po dodaniu tych ścieżek, usługa Security Center zaktualizuje zasady whielisting aplikacji na maszynach wirtualnych w ramach wybranej grupy maszyn wirtualnych i tworzy odpowiednie zasady dla tych aplikacji, oprócz reguł, które znajdują się już w miejscu.
+4. W obszarze **rozszerzenia zasad**, możesz dodać dowolną ścieżkę aplikacji, który chcesz zezwolić. Po dodaniu tych ścieżek, usługa Security Center zaktualizuje zasady umieszczania na białej liście aplikacji na maszynach wirtualnych w ramach wybranej grupy maszyn wirtualnych i tworzy odpowiednie zasady dla tych aplikacji, oprócz reguł, które znajdują się już w miejscu.
 
 5. Przejrzyj bieżące naruszenia na liście **ostatnie alerty** sekcji. Kliknij pozycję w każdym wierszu, aby przejść do **alerty** strony w usłudze Azure Security Center, a następnie Wyświetl wszystkie alerty, które zostały wykryte przez usługę Azure Security Center na skojarzonych maszynach wirtualnych.
   - **Alerty**: naruszenie, które zostały zarejestrowane.
@@ -130,8 +130,8 @@ Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworz
 
 6. W obszarze **reguł umieszczania na białej liście wydawców**, **reguły umieszczania na białej liście ścieżek**, i **wyznaczania wartości skrótu listy reguł elementów dozwolonych** widać, które są obecnie dostępne reguły listy dozwolonych aplikacji skonfigurowane na maszynach wirtualnych w obrębie grupy, zgodnie z typów kolekcji reguł. Dla każdej reguły widoczne:
 
-  - **Reguła**: określone parametry zgodnie z którymi aplikacja jest badany przez funkcję AppLocker w celu ustalenia, jeśli aplikacja może być uruchomiona.
-  - **Typ pliku**: typy plików, które są objęte daną regułę. Może to być dowolny z następujących: EXE, skrypt, MSI lub dowolnym permutacji z tych typów plików.
+  - **Reguła**: Określone parametry zgodnie z którymi aplikacja jest badany przez funkcję AppLocker w celu ustalenia, jeśli aplikacja może być uruchomiona.
+  - **Typ pliku**: Typy plików, które są objęte daną regułę. Może to być dowolny z następujących czynności: Plik EXE, skrypt, MSI lub permutacji dowolnego z tych typów plików.
   - **Użytkownicy**: Nazwa lub liczba użytkowników, którzy mogą uruchamiać aplikację, która jest objęta reguły umieszczania na białej liście aplikacji.
 
    ![Reguły umieszczania na liście dozwolonych](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)

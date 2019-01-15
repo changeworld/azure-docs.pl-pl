@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137841"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262289"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Usługa Azure zapory systemu operacyjnego gościa maszyny Wirtualnej jest błędnie skonfigurowane
 
@@ -51,7 +51,7 @@ Następujące reguły można edytować, albo umożliwiające dostęp do maszyny 
 
 *   Pulpit zdalny (ruch przychodzący TCP): Jest to standardowy regułę, która zapewnia dostępu do maszyny Wirtualnej, umożliwiając protokołu RDP na platformie Azure.
 
-*   Zdalnego zarządzania Windows (ruch przychodzący HTTP): Ta reguła umożliwia nawiązanie połączenia z maszyną wirtualną przy użyciu programu PowerShell. W przypadku platformy Azure, tego rodzaju dostępu pozwala używać skryptów aspekt skryptów zdalnym i rozwiązywanie problemów.
+*   Zdalnego zarządzania Windows (ruch przychodzący HTTP): Dzięki temu reguły można nawiązać połączenia z maszyną Wirtualną przy użyciu programu PowerShell. W przypadku platformy Azure, tego rodzaju dostępu pozwala za pomocą skryptów aspekt skryptów zdalnym i rozwiązywanie problemów.
 
 *   Udostępnianie plików i drukarek (ruch przychodzący SMB): Ta reguła umożliwia dostęp do udziału sieciowego jako opcji rozwiązywania problemów.
 
@@ -68,7 +68,7 @@ W przypadku dostępu do konsoli szeregowej można tworzyć zapytania bieżący s
 *   Zapytanie, za pomocą Port lokalny, który korzysta z aplikacji:
 
     ```cmd
-    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICAITON PORT>)" -context 9,4 | more
+    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
 *   Zapytania za pomocą adresu lokalnego adresu IP, którego używa aplikacja:

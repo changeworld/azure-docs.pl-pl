@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/14/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: d4c5def3cc61c1920ae99d5aa9f97b46cbda0045
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1b533c945fdcfc3d1072a7d8a513126ca3f1f72a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244498"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303588"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Kluczowe funkcje i pojęcia w usłudze Azure Stack
 Jeśli jesteś nowym użytkownikiem usługi Microsoft Azure Stack, te warunki i opisy funkcji może być przydatny.
@@ -129,23 +129,13 @@ Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmu
 KeyVault RP zapewnia zarządzanie i inspekcji kluczy tajnych, takich jak hasła i certyfikaty. Na przykład dzierżawca umożliwia KeyVault RP podać hasło administratora lub kluczy podczas wdrażania maszyny Wirtualnej.
 
 ## <a name="high-availability-for-azure-stack"></a>Wysoka dostępność dla usługi Azure Stack
-*Dotyczy: Usługa Azure Stack 1802 lub nowsze wersje*
+Aby uzyskać wysoką dostępność w systemie produkcyjnym wielu maszyn wirtualnych na platformie Azure, maszyny wirtualne są umieszczane w [zestaw dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) które rozprzestrzeniają się je w wielu domenach błędów i domenach aktualizacji. W mniejszą skalę usługi Azure Stack domeny błędów w zestawie dostępności jest zdefiniowana jako jeden węzeł w jednostce skalowania.  
 
-Aby osiągnąć wysoką dostępność w systemie produkcyjnym wielu maszyn wirtualnych na platformie Azure, maszyny wirtualne są umieszczane w zestawie dostępności, który rozprzestrzenia się je w wielu domenach błędów i domenach aktualizacji. W ten sposób [maszyn wirtualnych wdrożonych w zestawach dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) są fizycznie odizolowane od siebie nawzajem na osobnym serwerze stojakami umożliwiające odporności błędów, jak pokazano na poniższym diagramie:
-
-  ![Usługa Azure Stack wysokiej dostępności.](media/azure-stack-key-features/high-availability.png)
-
-### <a name="availability-sets-in-azure-stack"></a>Zestawy dostępności w usłudze Azure Stack
 Infrastruktury Azure Stack już jest odporna na awarie, podstawową używaną technologią (klaster trybu failover) nadal jest naliczana pewien przestój w przypadku maszyn wirtualnych na serwerze fizycznym nimi objęte w przypadku awarii sprzętu. Usługa Azure Stack obsługuje o dostępności zestawu z maksymalnie trzy domeny błędów, aby były zgodne z platformą Azure.
 
 - **Domeny błędów**. Maszyny wirtualne umieszczone w zestawie dostępności będą fizycznie odizolowane od siebie nawzajem Dzięki rozdzieleniu je możliwie najbardziej równomiernie przez wiele domen błędów (węzłów usługi Azure Stack). W przypadku awarii sprzętu maszyn wirtualnych na podstawie domena błędów nie powiodło się będzie można ponownie uruchomiona w innych domenach błędów, ale jeśli to możliwe, przechowywane w oddzielnych domenach błędów z innymi maszynami wirtualnymi w tym samym zestawie dostępności. Gdy sprzęt powróci do trybu online, maszyn wirtualnych zostanie ponownie zbilansowana do utrzymania wysokiej dostępności. 
  
 - **Domeny aktualizacji**. Domeny aktualizacji są innego koncepcji platformy Azure, która zapewnia wysoką dostępność w zestawach dostępności. Domena aktualizacji to logiczna grupa bazowego sprzętu, który może poddawane konserwacji, w tym samym czasie. Maszyn wirtualnych znajdujących się w tej samej domenie aktualizacji będą się ponownie uruchamiane razem podczas zaplanowanej konserwacji. Jak dzierżawcom Tworzenie maszyn wirtualnych w zestawie dostępności, platforma Azure automatycznie rozdziela maszyny wirtualne między domeny aktualizacji. W usłudze Azure Stack maszyny wirtualne działają migracji w trybie online hosty w klastrze, przed ich odpowiedniego hosta jest aktualizowana. Ponieważ podczas aktualizacji hosta bez przestojów dzierżawy, funkcji domeny aktualizacji w usłudze Azure Stack występuje tylko w przypadku szablonu zgodności z platformą Azure. 
-
-### <a name="upgrade-scenarios"></a>Scenariusze uaktualniania 
-Maszyny wirtualne w zestawach dostępności, które zostały utworzone przed Azure Stack w wersji 1802 otrzymują domyślną liczbę domen aktualizacji i usterek (1 i 1 odpowiednio). Uzyskanie wysokiej dostępności dla maszyn wirtualnych w tych istniejących zestawów dostępności, należy najpierw usunąć istniejących maszyn wirtualnych i następnie ponownie wdrożyć je na nowy zestaw dostępności z poprawną liczby domen błędów i aktualizacji zgodnie z opisem w [zmiany zbiór dostępności dla maszyny Wirtualnej z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
-
-Dla zestawów skalowania maszyn wirtualnych, zestaw dostępności jest tworzona wewnętrznie z domyślnej domeny i zaktualizuj liczbę domen błędów (3 i 5 odpowiednio). Zlicza domyślnej domeny błędów i aktualizacji wszystkie zestawy skalowania maszyn wirtualnych utworzonych przed aktualizacji 1802 zostaną umieszczone w zestaw dostępności (1 i 1 odpowiednio). Aby zaktualizować tych wystąpień zestawu skalowania maszyn wirtualnych do osiągnięcia nowszej rozprzestrzeniania się, skalować zestawy skalowania maszyn wirtualnych według liczby wystąpień, które znajdowały się przed aktualizacją 1802, a następnie usuń starszą wystąpień zestawów skalowania maszyn wirtualnych. 
 
 ## <a name="role-based-access-control-rbac"></a>Oparta na rolach kontrola dostępu (RBAC)
 RBAC służy do udzielania dostępu do systemu do grona upoważnionych użytkowników, grup i usług, przypisując im role w subskrypcji, grupy zasobów lub poszczególnych zasobów. Każda rola definiuje poziom dostępu użytkownika, grupy lub usługi ma nad zasobami Microsoft Azure Stack.

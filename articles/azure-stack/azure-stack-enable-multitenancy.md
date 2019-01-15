@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/6/2018
 ms.author: patricka
 ms.reviewer: bryanr
-ms.openlocfilehash: fbf62e53ffe3fc3540086137955417bec56e7825
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 28bd314e2dd179d83d2880e3acbf39805b54d333
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240175"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263970"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Wielodostępność w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Można skonfigurować w usłudze Azure Stack w celu obsługi użytkowników z wielu dzierżaw usługi Azure Active Directory (Azure AD) do korzystania z usług w usłudze Azure Stack. Na przykład rozważmy następujący scenariusz:
 
@@ -133,7 +133,7 @@ Jeśli nie chcesz już wielu dzierżaw w usłudze Azure Stack, można wyłączy�
 2. Jako administrator usługi Azure Stack, (możesz w tym scenariuszu), uruchom *AzSGuestDirectoryTenant Wyrejestruj*. 
 
     ``` PowerShell  
-    ## The following Azure Resource Manaager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
+    ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
     $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
     
     ## Replace the value below with the Azure Stack directory

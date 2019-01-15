@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 40e925fff9d87d8590ea3a83be9e7d93a84d6e26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865237"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266658"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tworzenie zależności zadań podrzędnych do uruchomienia zadania, które są zależne od innych zadań
 
@@ -79,7 +79,7 @@ Istnieją trzy scenariusze zależności podstawowe zadania, które można użyć
 |:---:| --- | --- |
 |  [One-to-one](#one-to-one) |*Zadania_podrzędnego_b* zależy od *Zadaniaa* <p/> *Zadaniab* nie można zaplanować wykonywanie aż do *Zadaniaa* została pomyślnie zakończona |![Diagram: jeden do jednego zadania zależności][1] |
 |  [Jeden do wielu](#one-to-many) |*zadanieC* zależy od *zadaniaA* i *zadaniaB* <p/> *Zadanie_podrzędne_c* nie można zaplanować wykonywanie przed zakończeniem *Zadania_podrzędnego_a* i *Zadania_podrzędnego_b* zostały ukończone pomyślnie |![Diagram: jeden do wielu zadań zależności][2] |
-|  [Zakres Identyfikatora zadania](#task-id-range) |*Zadanie_podrzędne_d* zależy od zakresu zadań podrzędnych <p/> *Zadanie_podrzędne_d* nie można zaplanować wykonywanie aż do zadania za pomocą identyfikatorów *1* za pośrednictwem *10* zostały ukończone pomyślnie |![Diagram: Zadanie identyfikator zakresu zależności][3] |
+|  [Zakres Identyfikatora zadania](#task-id-range) |*Zadanie_podrzędne_d* zależy od zakresu zadań podrzędnych <p/> *Zadanie_podrzędne_d* nie można zaplanować wykonywanie aż do zadania za pomocą identyfikatorów *1* za pośrednictwem *10* zostały ukończone pomyślnie |![Diagram: Zależność zakresu identyfikator zadania][3] |
 
 > [!TIP]
 > Możesz utworzyć **wiele do wielu** relacje, takie jak gdzie zadania C, D, E i f. każdego zależą od zadania, A i B. Jest to przydatne, na przykład w przypadku równoległego przetwarzania wstępnego scenariuszy, w którym swoje zadania podrzędne są zależne od danych wyjściowych wielu zadań nadrzędnych.
@@ -123,7 +123,7 @@ Aby utworzyć zależność, podaj pierwsze i ostatnie identyfikatorów zadań w 
 > [!IMPORTANT]
 > Użycie zakresów identyfikator zadania dla zależności, zostanie wybrany tylko zadania z identyfikatorami reprezentujących wartości liczby całkowitej przez zakres. Dlatego zakres `1..10` wybierze zadania `3` i `7`, ale nie `5flamingoes`. 
 > 
-> Zer wiodących nie są znaczący podczas obliczania zakresu zależności, aby zadania za pomocą ciągu identyfikatorów `4`, `04` i `004` będzie *w ramach* zakres i ich wszystkie traktowane jak zadanie `4`, więc pierwszy z nich do ukończenia będą spełniały warunki zależności.
+> Zer wiodących nie są istotne podczas obliczania zakresu zależności, aby zadania za pomocą ciągu identyfikatorów `4`, `04` i `004` będzie *w ramach* zakres i ich wszystkie traktowane jak zadanie `4`, więc pierwszy z nich do ukończenia będą spełniały warunki zależności.
 > 
 > Każde zadanie w zakresie muszą spełniać zależności, pomyślne zakończenie działania lub wykonując za pomocą błędu, który jest mapowany na ustawienie akcji zależności **Satisfy**. Zobacz [akcje zależności](#dependency-actions) sekcji, aby uzyskać szczegółowe informacje.
 >

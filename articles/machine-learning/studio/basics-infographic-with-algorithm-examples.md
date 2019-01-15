@@ -1,27 +1,8 @@
 ---
-title: Algorytmami - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Omówienie łatwych do zrozumienia podstawy uczenia maszyny zawiera przykłady algorytmu. Do pobrania grafikę informacyjną obejmuje większość usługi machine learning pytania.
-keywords: podstawy uczenia maszyny, algorytmami, usługi machine learning dla początkujących, machine learning pytania, popularnych algorytmy, algorytm grafikę informacyjną
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodc18
-ms.author: garye
-editor: cgronlun
-ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275741"
+Tytuł: Algorytm przykłady titleSuffix: Opis usługi Azure Machine Learning Studio: Omówienie łatwych do zrozumienia podstawy uczenia maszyny zawiera przykłady algorytmu. Do pobrania grafikę informacyjną obejmuje większość usługi machine learning pytania.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: garyericson ms.author: garye ms.custom: seodc18 ms.date: 12/18/2017
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: Podstawy wraz z przykładami Algorytm uczenia maszynowego
 Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia maszyny, aby dowiedzieć się więcej na temat popularnych algorytmów odpowiedzi na często zadawane pytania dotyczące machine learning. Algorytmami pomóc początkującym learning maszyny, zrozumieć, jakie algorytmy będzie używany wraz z ich używania.

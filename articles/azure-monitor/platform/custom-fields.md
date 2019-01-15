@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 5a97a4e35f4d2a5f8ec2884c93329e180172f9e1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 11372894e1dbcac6a49205ff56d8b30ffb6ee976
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185226"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261268"
 ---
-# <a name="create-custom-fields-in-log-analytics"></a>Tworzenie pól niestandardowych w usłudze Log Analytics
+# <a name="create-custom-fields-in-log-analytics"></a>Tworzenie niestandardowych pól w usłudze Log Analytics
 
 > [!NOTE]
-> W tym artykule opisano, jak można przeanalizować danych tekstowych w usłudze Log Analytics, zgodnie z ich zebraniu. Istnieją zalety łączenia podczas analizowania tekstu datain zapytania po ich zebraniu zgodnie z opisem w [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md).
+> W tym artykule opisano, jak można przeanalizować danych tekstowych w usłudze Log Analytics, zgodnie z ich zebraniu. Istnieją zalety łączenia podczas analizowania danych tekstowych w zapytaniu, po ich zebraniu zgodnie z opisem w [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md).
 
 **Pól niestandardowych** funkcji usługi Log Analytics umożliwia rozszerzanie istniejących rekordów w usłudze Log Analytics, dodając własny pola z możliwością wyszukiwania.  Niestandardowe pola są automatycznie wypełniane na podstawie danych wyodrębnionych z innych właściwości w ten sam rekord.
 

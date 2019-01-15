@@ -1,7 +1,7 @@
 ---
 title: Skonfiguruj środowisko programistyczne języka Python
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak skonfigurować środowisko programowania, podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, Utwórz pliki konfiguracyjne i skonfiguruj notesów programu Jupyter, notesy platformy Azure, środowiska IDE, edytory kodu i maszyna wirtualna do nauki o danych.
+description: Dowiedz się, jak skonfigurować środowisko programowania, podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, Utwórz pliki konfiguracyjne i skonfiguruj notesów programu Jupyter, notesy platformy Azure, usługi Azure Databricks, środowiska IDE, edytory kodu i maszyna wirtualna do nauki o danych.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: 46a1872d2ac5d1670620148edf7ee273580826d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: db853be456dbf893163f53bbc797cf12172d38b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811277"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261098"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -33,7 +33,7 @@ Ten artykuł koncentruje się na następujących środowisk i narzędzia:
 
 * [Notes Jupyter](#jupyter): Jeśli już używasz notesu programu Jupyter, zestaw SDK zawiera niektóre dodatki, które należy zainstalować.
 
-* [Program Visual Studio Code](#vscode): Jeśli używasz programu Visual Studio Code, ma pewne przydatne rozszerzenia, które można zainstalować.
+* [Visual Studio Code](#vscode): Jeśli używasz programu Visual Studio Code, ma pewne przydatne rozszerzenia, które można zainstalować.
 
 * [Usługa Azure Databricks](#aml-databricks): Popularne platformy do analizy danych oparty na platformie Apache Spark. Dowiedz się, jak uzyskać Machine Learning zestawu SDK usługi Azure do klastra, dzięki czemu można wdrażać modele.
 
@@ -242,9 +242,50 @@ Niestandardową wersję Machine Learning zestawu SDK usługi Azure dla usługi A
 
 Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
-1. Tworzenie [klastra usługi Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) z wersją środowiska uruchomieniowego usługi Databricks 4.x (wysoka współbieżność preferowana) przy użyciu języka Python 3. 
+1. Tworzenie [klastra usługi Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) z następującymi ustawieniami:
 
-1. Aby zainstalować i dołączyć zestawu SDK usługi Azure Machine Learning dla języka Python `azureml-sdk[databricks]` PyPi pakietu z klastrem, [utworzyć bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library).  
+    | Ustawienie | Wartość |
+    |----|---|
+    | Nazwa klastra | yourclustername |
+    | Środowisko uruchomieniowe usługi Databricks | Środowisko uruchomieniowe żadnych innych ML (innego niż ML 4.x, 5.x) |
+    | Wersja języka Python | 3 |
+    | Procesy robocze | 2 lub nowszy |
+
+    Użyj tych ustawień, tylko wtedy, gdy będziesz używać uczenia maszynowego automatyczne w usłudze Databricks:
+    
+    |   Ustawienie | Wartość |
+    |----|---|
+    | Typy maszyn wirtualnych na węzeł procesu roboczego | Preferowane maszyny Wirtualnej zoptymalizowane pod kątem pamięci |
+    | Włączanie skalowania automatycznego | Usuń zaznaczenie pola wyboru |
+    
+    Liczba węzłów procesu roboczego w klastrze usługi Databricks określa maksymalną liczbę równoczesnych iteracji w ustawieniach zautomatyzowane uczenia Maszynowego.  
+
+    Potrwa kilka minut na utworzenie klastra. Zaczekaj, aż klaster ma zainstalowany przed kontynuowaniem.
+
+1. Instalowanie i dołączanie pakietu zestawu SDK usługi Azure Machine Learning do klastra.  
+
+    * [Utworzyć bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) przy użyciu jednego z tych ustawień (Wybierz tylko jedną z tych opcji):
+    
+        * Aby zainstalować zestaw SDK usługi Azure Machine Learning bez automatycznego usługi machine learning możliwości:
+            | Ustawienie | Wartość |
+            |----|---|
+            |Element źródłowy | Przekaż Python Egg lub PyPI
+            |Nazwa PyPi | azureml-sdk[databricks]
+    
+        * Aby zainstalować zestaw SDK usługi Azure Machine Learning przy użyciu uczenia maszynowego automatyczne:
+            | Ustawienie | Wartość |
+            |----|---|
+            |Element źródłowy | Przekaż Python Egg lub PyPI
+            |Nazwa PyPi | azureml-sdk[automl_databricks]
+    
+    * Nie należy wybierać **automatycznie dołączyć się do wszystkich klastrów**
+
+    * Wybierz **Dołącz** obok swojej nazwy klastra
+
+    * Upewnij się, że nie ma żadnych błędów, aż stan zmieni się na **dołączone**. Może upłynąć kilka minut.
+
+    Jeśli masz starszą wersję zestawu SDK, usuń zaznaczenie opcji z zainstalowanych libs klastra i Przenieś do Kosza. Instalowanie nowej wersji zestawu SDK i uruchom ponownie klaster. Jeśli występuje problem, po to, odłącz i ponownie podłącz klastra.
+
     Gdy wszystko będzie gotowe, biblioteka jest dołączony, jak pokazano na poniższej ilustracji. Należy pamiętać o tych [typowych problemów w usłudze Databricks](resource-known-issues.md#databricks).
 
    ![Zestaw SDK w usłudze Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
@@ -257,13 +298,12 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
    c. Na **bibliotek** zaznacz **ponowne uruchomienie**.
 
-1. Pobierz [pliku archiwum notesu zestawu SDK usługi Azure Databricks/Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc).
+1. Pobierz [pliku archiwum notesu zestawu SDK usługi Azure Databricks/Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc).
 
    >[!Warning]
    > Wiele notesów próbki są dostępne do użycia z usługą Azure Machine Learning. Tylko [notesów te przykładowe](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) pracy z usługą Azure Databricks.
-   > 
 
-1.  [Zaimportować ten plik archiwum](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do Twojej usługi Databricks klastra i zacznij przeglądać, zgodnie z opisem na [Machine Learning notesów](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) strony.
+1.  [Importowanie pliku archiwum](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do Twojej usługi Databricks klastra i zacznij przeglądać, zgodnie z opisem na [Machine Learning notesów](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) strony.
 
 
 ## <a id="workspace"></a>Utwórz plik konfiguracji obszaru roboczego
@@ -311,6 +351,6 @@ Można utworzyć pliku konfiguracji na trzy sposoby:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Uczenie modelu w usłudze Azure Machine Learning z zestawem danych mnist ręcznie ZAPISANYCH](tutorial-train-models-with-aml.md)
-- [Usługi Azure Machine Learning zestawu SDK dla języka Python](https://aka.ms/aml-sdk)
-- [Zestaw SDK przygotowywania danych usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
+- [Uczenie modelu](tutorial-train-models-with-aml.md) w usłudze Azure Machine Learning z zestawem danych mnist ręcznie ZAPISANYCH]
+- Widok [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) odwołania
+- Dowiedz się więcej o [SDK przeznaczonego do przygotowania usługi Azure Machine Learning danych](https://aka.ms/data-prep-sdk)

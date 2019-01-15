@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87096e1507c080f68652ea27b368364d9ac7952a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2478a5dd3f5d685253ef9145bec0a68ff324c6c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232502"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263819"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 
@@ -37,7 +37,13 @@ import azureml.dataprep as dprep
 dataflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
-Funkcja ta jest przydatna, gdy typ pliku nie jest jawnie znany. Przykład użycia jest katalogu, który zawiera setek plików o różnych typach można przekonwertować na obiekty przepływu danych. Iteracją za pośrednictwem każdej ścieżki pliku i wywoływania `auto_read_file()` pozwala na łatwe przetwarzanie plików w katalogu, do listy obiektów przepływu danych.
+Funkcja ta jest przydatna do automatycznego wykrywania typu pliku, kodowanie i inne argumenty analizy wszystko z jednego wpisu wygodny punkt. Funkcja automatycznie wykonuje następujące czynności, które są najczęściej wykonywane podczas ładowania danych podzielonej:
+
+* Wnioskowanie i ustawiania ogranicznik
+* Pomija puste rekordy w górnej części pliku
+* Wnioskowanie i ustawiając wiersz nagłówka
+
+Alternatywnie Jeśli znasz pliku, wpisz wcześniej i chcesz jawnie kontrolować sposób, który jest analizowany, nadal następujące oferowanych w tym artykule, aby zobaczyć, że specjalne funkcje zestawu SDK.
 
 ## <a name="load-text-line-data"></a>Ładowanie danych wiersza tekstu
 

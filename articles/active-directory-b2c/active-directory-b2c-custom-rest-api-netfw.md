@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557295"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304911"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika
 
@@ -50,7 +50,7 @@ Omówienie:
 * Użyj usługi RESTful w podróży użytkownika.
 * Wysyłanie danych wejściowych oświadczeń i je odczytać w kodzie.
 * Sprawdź poprawność imię użytkownika.
-* Wyślij ponownie numer lojalnościowych. 
+* Wyślij ponownie numer lojalnościowych.
 * Dodaj numer lojalności do sieci Web tokenu JSON (JWT).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -77,11 +77,11 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Przygotowanie punktu końcowego interfejsu API REST
 
 ### <a name="step-21-add-data-models"></a>Krok 2.1: Dodawanie modeli danych
-Modele reprezentują oświadczeń wejściowych i danych wyjściowych oświadczeń danych w usłudze RESTful. Kod odczytuje dane wejściowe przy deserializacji modelu oświadczeń wejściowych z ciągu JSON do obiektu języka C# (model). ASP.NET web API automatycznie deserializuje model oświadczeń danych wyjściowych do formatu JSON, a następnie zapisuje dane serializowane do treści komunikatu odpowiedzi HTTP. 
+Modele reprezentują oświadczeń wejściowych i danych wyjściowych oświadczeń danych w usłudze RESTful. Kod odczytuje dane wejściowe przy deserializacji modelu oświadczeń wejściowych z ciągu JSON do obiektu języka C# (model). ASP.NET web API automatycznie deserializuje model oświadczeń danych wyjściowych do formatu JSON, a następnie zapisuje dane serializowane do treści komunikatu odpowiedzi HTTP.
 
 Utwórz model, który reprezentuje oświadczeń wejściowych, wykonując następujące czynności:
 
-1. Jeśli w Eksploratorze rozwiązań nie jest jeszcze otwarty, wybierz **widoku** > **Eksploratora rozwiązań**. 
+1. Jeśli w Eksploratorze rozwiązań nie jest jeszcze otwarty, wybierz **widoku** > **Eksploratora rozwiązań**.
 2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Modele**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**.
 
     ![Dodawanie modelu](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,7 +128,7 @@ Utwórz model, który reprezentuje oświadczeń wejściowych, wykonując następ
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
@@ -241,20 +241,20 @@ W interfejsie web API _kontrolera_ jest obiektem, który obsługuje żądania HT
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>Krok 5. Dodawanie dostawcy oświadczeń 
-Każdego dostawcy oświadczeń musi mieć co najmniej jeden profil technicznych, które określają punktów końcowych i protokoły wymagane do komunikowania się z dostawcą oświadczeń. 
+## <a name="step-5-add-a-claims-provider"></a>Krok 5. Dodawanie dostawcy oświadczeń
+Każdego dostawcy oświadczeń musi mieć co najmniej jeden profil technicznych, które określają punktów końcowych i protokoły wymagane do komunikowania się z dostawcą oświadczeń.
 
-Dostawcy oświadczeń może mieć wiele profilów technicznych z różnych powodów. Na przykład wiele profilów Technical Preview może być zdefiniowana, ponieważ dostawcy oświadczeń obsługuje wiele protokołów, punkty końcowe mogą mieć różne możliwości lub wersji mogą zawierać oświadczenia, które mają różne poziomy gwarancji. Może być akceptowane oświadczenia poufnych w podróży jednego użytkownika, ale nie w innej wersji. 
+Dostawcy oświadczeń może mieć wiele profilów technicznych z różnych powodów. Na przykład wiele profilów Technical Preview może być zdefiniowana, ponieważ dostawcy oświadczeń obsługuje wiele protokołów, punkty końcowe mogą mieć różne możliwości lub wersji mogą zawierać oświadczenia, które mają różne poziomy gwarancji. Może być akceptowane oświadczenia poufnych w podróży jednego użytkownika, ale nie w innej wersji.
 
 Poniższy fragment kodu XML zawiera węzeł dostawcy oświadczeń, dwa profile techniczne:
 
-* **Identyfikator profilu technicznego = "REST-API-SignUp"**: Definiuje usługi RESTful. 
-   * `Proprietary` jest określana jako protokół dla dostawcy usług na podstawie zgodne ze specyfikacją REST. 
-   * `InputClaims` Definiuje oświadczenia, które będą wysyłane z usługi Azure AD B2C do usługi REST. 
+* **Identyfikator profilu technicznego = "REST-API-SignUp"**: Definiuje usługi RESTful.
+   * `Proprietary` jest określana jako protokół dla dostawcy usług na podstawie zgodne ze specyfikacją REST.
+   * `InputClaims` Definiuje oświadczenia, które będą wysyłane z usługi Azure AD B2C do usługi REST.
 
    W tym przykładzie zawartość oświadczenie `givenName` wysyła do usługi REST jako `firstName`, zawartość oświadczenie `surname` wysyła do usługi REST jako `lastName`, i `email` wysyła się. `OutputClaims` Element definiuje oświadczenia, które są pobierane z usługi RESTful, wróć do usługi Azure AD B2C.
 
-* **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"**: Dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika. 
+* **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"**: Dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika.
 
 Znajdź `<ClaimsProviders>` węzła, a następnie dodaj następujący fragment kodu XML w obszarze `<ClaimsProviders>` węzła:
 
@@ -329,7 +329,7 @@ Po dodaniu nowego oświadczenia, jednostki uzależnionej strona kod wygląda nas
 
 2. Wybierz **struktura środowiska tożsamości**.
 
-3. Otwórz **wszystkie zasady**. 
+3. Otwórz **wszystkie zasady**.
 
 4. Wybierz **przekazywać zasady**.
 
@@ -354,7 +354,7 @@ Po dodaniu nowego oświadczenia, jednostki uzależnionej strona kod wygląda nas
 
     ![Testowanie zasad](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  W **imię** wpisz nazwę (innego niż "Test").  
+4. W **imię** wpisz nazwę (innego niż "Test").  
     Usługa Azure AD B2C loguje się użytkownik, a następnie wysyła loyaltyNumber do aplikacji. Zanotuj liczbę podaną w tym token JWT.
 
 ```
@@ -381,7 +381,7 @@ Po dodaniu nowego oświadczenia, jednostki uzależnionej strona kod wygląda nas
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(Opcjonalnie) Pobierz pliki zasad kompletny i kodu
 * Po ukończeniu [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) wskazówki, firma Microsoft zaleca tworzenie scenariusza za pomocą plików zasad niestandardowych. Dla Twojej informacji udostępniliśmy [przykładowe pliki zasad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
 * Możesz pobrać kompletny kod z [przykładowe rozwiązanie Visual Studio dla odwołania](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
-    
+
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zabezpieczanie interfejsu API RESTful za pomocą uwierzytelniania podstawowego (nazwa użytkownika i hasło)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [Zabezpieczanie interfejsu API RESTful z wykorzystaniem certyfikatów klienta](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

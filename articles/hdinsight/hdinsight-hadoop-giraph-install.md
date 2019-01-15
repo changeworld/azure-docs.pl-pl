@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ee1cfaa9e5eb08b2fe6ee7d210dcb84a8c39d78
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715328"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260495"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Giraph w klastrach HDInsight z systemem Windows
 
@@ -153,7 +153,7 @@ Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa
 
     ![Rysowanie obiektów jako kółka, przy użyciu najkrótsze ścieżki między](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
-## <a name="install-giraph-using-aure-powershell"></a>Zainstalować system Giraph przy użyciu programu Azure PowerShell
+## <a name="install-giraph-using-azure-powershell"></a>Zainstalować system Giraph przy użyciu programu Azure PowerShell
 Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  W przykładzie pokazano, jak zainstalować platformę Apache Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
 
 ## <a name="install-giraph-using-net-sdk"></a>Zainstalować system Giraph przy użyciu zestawu .NET SDK

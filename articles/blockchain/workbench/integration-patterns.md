@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0b0307d167485712e06966dd36fa94e24ef33aa1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 1e1bc16d32167d62d5f66f64bb383fcceeb79eb5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242857"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267151"
 ---
 # <a name="smart-contract-integration-patterns"></a>Wzorce integracji inteligentne kontraktu
 

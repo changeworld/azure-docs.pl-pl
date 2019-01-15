@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2a4343b036716e6c49f7a05a8a480c6e74463760
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 33607043e9b462c4611106c72192f41f1d56c0b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078001"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305914"
 ---
 # <a name="grow-your-business-with-appsource"></a>Rozwijaj swoją firmę dzięki usłudze AppSource  
 Użyj usługi AppSource, podczas angażowania klientom biznesowym znaleźć, testowanie i uzyskać line-of-business, oprogramowanie jako usługa (SaaS) aplikacjom i usługom implementacji pomocy kierować wynikami biznesowymi i skrócić czas do wartości.  
@@ -67,7 +67,7 @@ Jakość publikacji aplikacji i zaangażowania skoncentrowanych na wzrost popytu
 Poniższa lista kontrolna zawiera marketingu najlepszych rozwiązań i zasobów, aby wziąć pod uwagę podczas tworzenia oferty do opublikowania w usłudze AppSource:  
 *   **Należy pamiętać o Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką.**  
     Gdy wypromować swoją aplikację i odwoływania się do znaków towarowych firmy Microsoft i nazwy oprogramowania firmy Microsoft, produktów i usług, postępuj zgodnie z Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką, jak również istotne wskazówki specyficzne dla produktu.  
-    *   Aby uzyskać więcej informacji dotyczących znaków towarowych firmy Microsoft i oznaczanie marką, odwiedź stronę Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką strony znajduje się w [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+    *   Aby uzyskać więcej informacji dotyczących znaków towarowych firmy Microsoft i oznaczanie marką, odwiedź stronę Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką strony znajduje się w [ https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/ ](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/).
 *   **Włącz get występują teraz, bezpłatna wersja próbna, produkcją lub Testuj dysku środowisko dla aplikacji.**  
     Użytkownicy biznesowi chcesz środowisko aplikacji pierwszej ręki.  
 *   **Twórz silne korzyści.**  
@@ -104,7 +104,7 @@ Poniższe tabele zawierają szczegółowe każdego kroku wypełniania listy swoj
 
 | Ustawienia oferty | Najlepsze praktyki | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Nazwa** | **Nazewnictwo oferty**<br />Wybór nazwy dla aplikacji jest kluczowe decyzje. Na podstawie korzyści nazwy są bardziej efektywne niż opisowe nazwy. Nazwy aplikacji powinna komunikowanie się core wartość klientom. W tym słów kluczowych w tytule aplikacji sieci może również pomóc aplikacji wyżej w wynikach wyszukiwarki. Postępuj zgodnie z Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką, jak również odpowiednich wytycznych określonych przy odwoływaniu się do znaków towarowych firmy Microsoft i nazwy firmy Microsoft, oprogramowanie, produkty i usługi.<ul> <li>Aby uzyskać więcej informacji dotyczących znaków towarowych firmy Microsoft i oznaczanie marką, odwiedź stronę Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką strony znajduje się w [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Nazwa** | **Nazewnictwo oferty**<br />Wybór nazwy dla aplikacji jest kluczowe decyzje. Na podstawie korzyści nazwy są bardziej efektywne niż opisowe nazwy. Nazwy aplikacji powinna komunikowanie się core wartość klientom. W tym słów kluczowych w tytule aplikacji sieci może również pomóc aplikacji wyżej w wynikach wyszukiwarki. Postępuj zgodnie z Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką, jak również odpowiednich wytycznych określonych przy odwoływaniu się do znaków towarowych firmy Microsoft i nazwy firmy Microsoft, oprogramowanie, produkty i usługi.<ul> <li>Aby uzyskać więcej informacji dotyczących znaków towarowych firmy Microsoft i oznaczanie marką, odwiedź stronę Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką strony znajduje się w [ https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/ ](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/).</li> </ul> |
 
 **Szczegóły sklepu — szczegóły oferty**  
 

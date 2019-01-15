@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106570"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267134"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
 Stream Analytics można wskazać [usługi Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie danych archiwizowanie i małe opóźnienia zapytań na danych JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
@@ -58,16 +58,17 @@ Dla stałej kolekcji usługi Azure Cosmos DB Stream Analytics umożliwia sposób
 Zapisywanie wielu kontenerów stałej jest on przestarzały i nie jest zalecane podejście do skalowania w poziomie zadania usługi Stream Analytics. Artykuł [partycjonowanie i skalowanie w usłudze Cosmos DB](../cosmos-db/sql-api-partition-data.md) zawiera dalsze szczegóły.
 
 ## <a name="cosmos-db-settings-for-json-output"></a>Ustawienia usługi cosmos DB dla danych wyjściowych JSON
-Tworzenie usługi Cosmos DB jako dane wyjściowe w usłudze Stream Analytics generuje monit o podanie informacji, jak pokazano poniżej. Ta sekcja zawiera wyjaśnienie definicji właściwości.
 
+Tworzenie usługi Cosmos DB jako dane wyjściowe w usłudze Stream Analytics generuje monit o podanie informacji, jak pokazano poniżej. Ta sekcja zawiera wyjaśnienie definicji właściwości.
 
 ![ekranu danych wyjściowych analizy strumienia bazy danych documentdb](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-Pole           | Opis 
--------------   | -------------
-Alias danych wyjściowych    | Alias do odwoływania się te dane wyjściowe w zapytaniu usługi ASA   
-Nazwa konta    | Nazwa lub identyfikator URI konta usługi Azure Cosmos DB punktu końcowego 
-Klucz konta     | Klucz dostępu współdzielonego dla konta usługi Azure Cosmos DB
-Database (Baza danych)        | Nazwa bazy danych Azure Cosmos DB
-Nazwa kolekcji | Nazwa kolekcji dla kolekcji, który ma być używany. `MyCollection` to przykładowe prawidłowe dane wejściowe — jedna kolekcja o nazwie `MyCollection` musi istnieć.  
-Identyfikator dokumentu     | Opcjonalny. Nazwa kolumny w zdarzeniach wyjściowych służąca jako unikatowego klucza, na które insert nebo update operacji musi być oparta. Jeśli pole pozostanie puste, wszystkie zdarzenia zostaną wstawione, nie dając aktualizacji.
+|Pole           | Opis|
+|-------------   | -------------|
+|Alias danych wyjściowych    | Odwoływanie się aliasu to dane wyjściowe w zapytaniu usługi ASA.|
+|Subskrypcja    | Wybierz subskrypcję platformy Azure.|
+|Identyfikator konta      | Nazwa lub identyfikator URI konta usługi Azure Cosmos DB punktu końcowego.|
+|Klucz konta     | Klucz dostępu współdzielonego dla konta usługi Azure Cosmos DB.|
+|Database (Baza danych)        | Nazwa bazy danych Azure Cosmos DB.|
+|Wzorzec nazw kolekcji | Nazwa kolekcji dla kolekcji, który ma być używany. `MyCollection` to przykładowe prawidłowe dane wejściowe — jedna kolekcja o nazwie `MyCollection` musi istnieć.  |
+|Identyfikator dokumentu     | Opcjonalny. Nazwa kolumny w zdarzeniach wyjściowych służąca jako unikatowego klucza, na które insert nebo update operacji musi być oparta. Jeśli pole pozostanie puste, wszystkie zdarzenia zostaną wstawione, nie dając aktualizacji.|

@@ -1,6 +1,6 @@
 ---
-title: Błędy przydziału platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób rozwiązania błędów qouta zasobów.
+title: Błędy przydziału usługi Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób rozwiązywania błędy limitu przydziału zasobów.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d9048ae531abedb89b70989ce1c962357c514cd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2cf9f914aeaee25cda8fd426454cb39a1afa0b4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357048"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260230"
 ---
-# <a name="resolve-errors-for-resource-quotas"></a>Rozwiązywanie błędów dla przydziałami zasobów
+# <a name="resolve-errors-for-resource-quotas"></a>Rozwiązywanie błędów dla limity przydziałów zasobów
 
-W tym artykule opisano błędy przydziału, które można napotkać podczas wdrażania zasobów.
+W tym artykule opisano błędy limitu przydziału, które mogą wystąpić podczas wdrażania zasobów.
 
 ## <a name="symptom"></a>Objaw
 
-Wdrożenie szablonu, która tworzy zasoby, które przekraczają przydziałami Azure można uzyskać Błąd wdrażania, która wygląda następująco:
+W przypadku wdrożenia szablonu, która tworzy zasoby, które przekraczają limity przydziału platformy Azure, otrzymasz błąd wdrażania, który wygląda następująco:
 
 ```
 Code=OperationNotAllowed
@@ -45,20 +45,20 @@ please delete some resources of this type before creating a new one.
 
 ## <a name="cause"></a>Przyczyna
 
-Przydziały są stosowane dla grupy zasobów, subskrypcje kont i innych zakresów. Na przykład subskrypcji można skonfigurować w celu ograniczenia liczby rdzeni dla regionu. Próba wdrożyć maszynę wirtualną o większej liczby rdzeni niż dozwolone kwota pojawi się komunikat o błędzie informujący, że została przekroczona.
-Przydział pełne informacje, zobacz [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
+Przydziały są stosowane dla grupy zasobów, subskrypcji, kont i inne zakresy. Na przykład Twoja subskrypcja może być skonfigurowany do ograniczenia liczby rdzeni w regionie. Jeśli spróbujesz wdrożyć maszynę wirtualną za pomocą większej liczby rdzeni niż dozwolone kwotę, otrzymasz komunikat o błędzie informujący, że została przekroczona.
+Przydział pełne informacji można uzyskać [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Dla wiersza polecenia platformy Azure, użyj `az vm list-usage` polecenie, aby znaleźć przydziały maszyny wirtualnej.
+W przypadku wiersza polecenia platformy Azure, użyj `az vm list-usage` polecenie, aby znaleźć przydziały maszyny wirtualnej.
 
 ```azurecli
 az vm list-usage --location "South Central US"
 ```
 
-Polecenie to zwraca:
+Zwraca:
 
 ```azurecli
 [
@@ -76,13 +76,13 @@ Polecenie to zwraca:
 
 ### <a name="powershell"></a>PowerShell
 
-Dla programu PowerShell, użyj **Get AzureRmVMUsage** polecenie, aby znaleźć przydziały maszyny wirtualnej.
+W przypadku programu PowerShell, użyj **Get-AzureRmVMUsage** polecenie, aby znaleźć przydziały maszyny wirtualnej.
 
 ```powershell
 Get-AzureRmVMUsage -Location "South Central US"
 ```
 
-Polecenie to zwraca:
+Zwraca:
 
 ```powershell
 Name                             Current Value Limit  Unit
@@ -94,14 +94,14 @@ Virtual Machines                             0 10000 Count
 
 ## <a name="solution"></a>Rozwiązanie
 
-Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i plików problem pomocy technicznej. W problem pomocy technicznej należy zażądać zwiększenia limitu dla regionu, w której chcesz wdrożyć.
+Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i pliku problemu wymagającego pomocy technicznej. W przypadku problemu wymagającego pomocy technicznej poprosić o zwiększenie limitu przydziału w regionie, w której chcesz wdrożyć.
 
 > [!NOTE]
-> Należy pamiętać, że dla grup zasobów, limitu przydziału dla poszczególnych regionów, nie dla całej subskrypcji. Jeśli zajdzie potrzeba wdrożenia 30 rdzeni zachodnie stany USA, należy poprosić o 30 rdzeni Resource Manager zachodnie stany USA. Jeśli zajdzie potrzeba wdrożenia 30 rdzeni w poszczególnych regionach, do której masz dostęp, należy poprosić dla 30 rdzeni Resource Manager we wszystkich regionach.
+> Należy pamiętać, że dla grup zasobów, limitu przydziału dla poszczególnych regionów, nie dla całej subskrypcji. Jeśli zajdzie potrzeba wdrożenia 30 rdzeni w regionie zachodnie stany USA, musisz poprosić o 30 rdzeni Menedżera zasobów w regionie zachodnie stany USA. Jeśli zajdzie potrzeba wdrożenia 30 rdzeni we wszystkich regionach, do którego masz dostęp, należy poprosić 30 rdzeni Menedżera zasobów we wszystkich regionach.
 >
 >
 
-1. Wybierz **subskrypcje**.
+1. Wybierz pozycję **Subskrypcje**.
 
    ![Subskrypcje](./media/resource-manager-quota-errors/subscriptions.png)
 
@@ -109,14 +109,14 @@ Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i plików pr
 
    ![Wybieranie subskrypcji](./media/resource-manager-quota-errors/select-subscription.png)
 
-3. Wybierz **użycia + przydziałów**
+3. Wybierz **użycie i przydziały**
 
-   ![Wybierz opcję użycia i przydziały](./media/resource-manager-quota-errors/select-usage-quotas.png)
+   ![Wybierz opcję użycie i przydziały](./media/resource-manager-quota-errors/select-usage-quotas.png)
 
-4. W prawym górnym rogu wybierz **zwiększenia**.
+4. W prawym górnym rogu wybierz **zażądać zwiększenia**.
 
    ![Zażądaj zwiększenia](./media/resource-manager-quota-errors/request-increase.png)
 
-5. Wypełnianie formularzy dla typu przydziału, którą należy zwiększyć.
+5. Wypełnij formularze dotyczące typu przydziału, który chcesz zwiększyć.
 
    ![Wypełnij formularz](./media/resource-manager-quota-errors/forms.png)

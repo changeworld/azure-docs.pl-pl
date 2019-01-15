@@ -1,26 +1,8 @@
 ---
-title: Interpretacja wyników modelu w usłudze Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
-description: Jak wybrać optymalną parametrem ustawionym dla algorytmu przy użyciu i wizualizowanie danych wyjściowych modelu wynik.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/29/2017
-ms.openlocfilehash: 9f8ff93efb74bca427cf74351af9d2442f9ab757
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276489"
+Tytuł: Interpretacja wyników modelu w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak wybrać optymalną parametrem ustawionym dla algorytmu przy użyciu i wizualizowanie danych wyjściowych modelu wynik.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretacja wyników modelu w usłudze Azure Machine Learning Studio
 W tym temacie wyjaśniono, jak wizualizować i interpretacji wyników przewidywań w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognozy na nim ("oceniane modelu"), musisz zrozumieć i zinterpretować wyniki prognozy.

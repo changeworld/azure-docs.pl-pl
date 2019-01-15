@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: b5d931225edce92590b9c2b7f28ad39630362e6d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2afdd3f78a99d9aae5e84bc2fdf1b21cbdc150d2
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213828"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306390"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -79,6 +79,14 @@ Grupa synchronizacji ma następujące właściwości:
 -   **Rozwiązywanie konfliktów:** Synchronizacja danych udostępnia dwie metody rozwiązywania konfliktów *wins Centrum* lub *wins elementu członkowskiego*.
     -   Jeśli wybierzesz *wins Centrum*, zmiany w piaście zawsze mają pierwszeństwo przed zmiany w elemencie członkowskim.
     -   Jeśli wybierzesz *wins elementu członkowskiego*, zmiany w zmian Zastąp elementów członkowskich w Centrum. Jeśli istnieje więcej niż jeden element członkowski, końcowa wartość jest zależna od która składowa jest najpierw zsynchronizowane.
+
+## <a name="compare-data-sync-with-transactional-replication"></a>Porównaj Data Sync za pomocą replikacji transakcyjnej
+
+| | Synchronizacja danych | Replikacja transakcyjna |
+|---|---|---|
+| Zalety | — Obsługa aktywny aktywny<br/>Dwukierunkowej między systemem lokalnym i usługi Azure SQL Database | — Mniejsze opóźnienia<br/>— Poziom spójności transakcyjnej<br/>-Użyj ponownie istniejącą topologię po migracji |
+| Wady | -5 minut lub więcej opóźnienia<br/>-Brak spójności transakcyjnej<br/>-Wyższe negatywny wpływ na wydajność | -Nie można opublikować z pojedynczej bazy danych Azure SQL Database<br/>— Koszt eksploatacji wysoka |
+| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>Rozpoczynanie pracy z usługą SQL Data Sync
 

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426258"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306492"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Podręcznik dotyczący szablonu rozwiązań analizy Cortany na prognozowaniu popytu energii
 ## <a name="executive-summary"></a>Podsumowanie dla kierownictwa
@@ -172,7 +172,7 @@ W wielu przypadkach klient może być zainteresowany uzasadnienie biznesowe w pr
 
 Z drugiej strony jeden powinien dysponować dobrą znajomością wartości biznesowej systemu operacyjnego zapotrzebowania na energię Prognozowanie (warunek krótkim lub długim). W rzeczywistości należy do osiągnięcia wartości biznesowej każdego działania prognozy. Na przykład dokładnie Prognozowanie obciążenia zasilania przez następne 24 godziny można zapobiec nadprodukcja lub może pomóc w uniknięciu przeciążenia na siatce i to można określić pod względem oszczędności finansowe, wykonywane codziennie.
 
-Podstawowej formuły do obliczania korzyści finansowe popytu prognozy rozwiązaniem byłoby: ![podstawowej formuły do obliczania korzyści finansowe popytu Prognoza rozwiązania](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Podstawowej formuły do obliczania korzyści finansowe popytu prognozy rozwiązaniem byłoby: ![Podstawowej formuły do obliczania korzyści finansowe popytu Prognoza rozwiązania](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
 Ponieważ pakiet Cortana Intelligence Suite oferuje zgodnie z rzeczywistym użyciem modelu cen, nie ma potrzeby dla są kosztu stałego składnika na następującą formułę. Ta formuła oblicza się na podstawie miesięcznej lub rocznej codziennie.
 
@@ -269,7 +269,7 @@ Pakiet Cortana Intelligence Suite może obsługiwać najbardziej typowych format
 ### <a name="data-ingestion"></a>Wprowadzanie danych
 Ponieważ prognozy popytu energii jest stale i często przewidzieć, Upewniamy się, że nieprzetworzone dane przepływają przez proces pozyskiwania stałych i wiarygodnych danych. Proces pozyskiwania musi gwarancji, że danych pierwotnych jest dostępna w procesie prognozowania w wymaganym czasie. Oznacza to, że częstotliwość wprowadzania danych powinna być większa niż częstotliwość prognozowania.
 
-Na przykład: Jeśli żądanie, nasze rozwiązanie do prognozowania powoduje wygenerowanie nowej prognozy o 8:00 codziennie, a następnie należy upewnić się, że zawierają wszystkie dane, które zostały zebrane w ciągu ostatnich 24 godzin ma został w pełni pozyskane do tego punktu i ma nawet z ostatniej godziny  dane.
+Na przykład: Jeśli żądanie, nasze rozwiązanie do prognozowania powoduje wygenerowanie nowej prognozy o 8:00 codziennie następnie musimy upewnij się, że wszystko, czego pełni pozyskanych danych, które zostały zebrane w ciągu ostatnich 24 godzin till tego punktu musi zawierać nawet z ostatniej godziny danych.
 
 Aby to osiągnąć, pakiet Cortana Intelligence Suite oferuje różne sposoby obsługi procesu pozyskiwania danych. To spowoduje dalsze omówione w **wdrożenia** części tego dokumentu.
 
@@ -287,7 +287,7 @@ Gdy dane pierwotne zostały pozyskane (zobacz **pozyskiwanie danych**) i został
 
 W tej sekcji listę niektórych funkcji wspólnych danych, które są objęte energia modele prognozy popytu.
 
-**Czas oparte na funkcji:** te funkcje są obliczane na podstawie danych Data/sygnatura czasowa. Te zostaną wyodrębnione i przekształcone w kategorii funkcji, takich jak:
+**Czas oparte na funkcji:** Te funkcje są uzyskiwane z danych Data/sygnatura czasowa. Te zostaną wyodrębnione i przekształcone w kategorii funkcji, takich jak:
 
 * Godzina dnia — jest to godzinę dnia, która przyjmuje wartości od 0 do 23
 * Dzień tygodnia — to reprezentuje dzień tygodnia i przyjmuje wartości od 1 (niedziela) do 7 (sobota)
@@ -297,16 +297,16 @@ W tej sekcji listę niektórych funkcji wspólnych danych, które są objęte en
 * Święta — jest to funkcja wartość binarną, która przyjmuje wartości 0 dla regularnych dzień lub 1 dla święta
 * Warunki Fouriera — postanowienia Fouriera są wagi, które są uzyskiwane z sygnaturą czasową i są używane do przechwytywania sezonowości (cykle) w danych. Ponieważ firma Microsoft może mieć wiele sezonów w naszych danych Firma Microsoft może być konieczne Fouriera wiele wersji warunków. Na przykład wartości żądanie może być roczne, co tydzień i codzienne sezonów/cykle co będzie skutkowało 3 Fouriera warunków.
 
-**Funkcje niezależne pomiarów:** niezależne funkcje obejmują wszystkie elementy danych, które firma Microsoft ma być używana jako zmienne predykcyjne w naszym modelu. W tym miejscu możemy wykluczyć zależnej funkcji, którego potrzebujemy do prognozowania.
+**Miary niezależne funkcje:** Niezależne funkcje obejmują wszystkie elementy danych, które firma Microsoft ma być używana jako zmienne predykcyjne w naszym modelu. W tym miejscu możemy wykluczyć zależnej funkcji, którego potrzebujemy do prognozowania.
 
 * Funkcja Lag — są to czas przesunięte wartości rzeczywistego zapotrzebowania. Na przykład funkcji lag 1 będzie przechowywać wartość żądanie w poprzedniej godziny (przy założeniu danych co godzinę) względem bieżącą sygnaturę czasową. Podobnie, możemy dodać opóźnienie 2, funkcja lag 3, *itp*. Rzeczywiste kombinacja funkcji lag, które są używane są określane w fazie modelowania przez ocenę wyników modelu.
 * Długoterminowych trendów — ta funkcja reprezentuje liniowy wzrost popytu między latami.
 
-**Funkcja zależna:** zależnej funkcji jest kolumny danych, które prosimy o poświęcenie nasz model do przewidywania. Za pomocą [uczenia maszynowego w trybie nadzorowanym](https://en.wikipedia.org/wiki/Supervised_learning), musimy najpierw nauczenia modelu używając funkcji zależnych (określanych również jako etykiety). Dzięki temu modelu dowiedzieć się więcej wzorców w danych skojarzonego z funkcją zależnych. W prognozowania zapotrzebowania na energię zazwyczaj chcemy przewidzieć rzeczywistego zapotrzebowania, a w związku z tym firma Microsoft będzie używać go jako zależnej funkcji.
+**Funkcja zależne:** Funkcja zależna jest kolumny danych, które prosimy o poświęcenie nasz model do przewidywania. Za pomocą [uczenia maszynowego w trybie nadzorowanym](https://en.wikipedia.org/wiki/Supervised_learning), musimy najpierw nauczenia modelu używając funkcji zależnych (określanych również jako etykiety). Dzięki temu modelu dowiedzieć się więcej wzorców w danych skojarzonego z funkcją zależnych. W prognozowania zapotrzebowania na energię zazwyczaj chcemy przewidzieć rzeczywistego zapotrzebowania, a w związku z tym firma Microsoft będzie używać go jako zależnej funkcji.
 
-**Obsługa brakujących wartości:** w fazie przygotowania danych możemy należałoby określić najlepszą strategię obsługi brakujące wartości. Przede wszystkim odbywa się za pomocą różnych statystyczne [metody przypisywania danych](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). W przypadku energii prognozowaniu popytu, firma Microsoft zwykle przypisują brakujące wartości przy użyciu średniej ruchomej z poprzednich punktów danych.
+**Obsługa brakujące wartości:** W fazie przygotowania danych możemy należałoby określić najlepszą strategię obsługi brakujące wartości. Przede wszystkim odbywa się za pomocą różnych statystyczne [metody przypisywania danych](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). W przypadku energii prognozowaniu popytu, firma Microsoft zwykle przypisują brakujące wartości przy użyciu średniej ruchomej z poprzednich punktów danych.
 
-**Normalizacji danych:** normalizacji danych jest innego typu transformacji, który służy do umożliwienia wszystkie dane liczbowe, takich jak prognozowanie popytu podobne skalowania. Zazwyczaj poprawia to z dokładności modelu i dokładność. Firma Microsoft będzie zazwyczaj to robić przez podzielenie wartości rzeczywistej przez zakres danych.
+**Normalizacji danych:** Normalizacji danych jest innego typu transformacji, który służy do umożliwienia wszystkie dane liczbowe, takich jak prognozowanie popytu podobne skalowania. Zazwyczaj poprawia to z dokładności modelu i dokładność. Firma Microsoft będzie zazwyczaj to robić przez podzielenie wartości rzeczywistej przez zakres danych.
 Skaluj będzie oryginalną wartość w dół do mniejszego zakresu, zazwyczaj zakresu od -1 do 1.
 
 ## <a name="modeling"></a>Modelowanie
@@ -320,21 +320,21 @@ W przypadku prognozowania, udostępnimy popytu korzystanie z danych historycznyc
 W ostatnich latach zostały opracowane zaawansowanych algorytmów umożliwiających Prognozowanie serii czasu i poprawić dokładność prognozowania. Krótko omówimy niektóre z nich w tym miejscu.
 
 > [!NOTE]
-> W tej sekcji nie jest przeznaczona do użycia jako uczenia maszynowego i prognozowanie Przegląd, ale raczej jako krótką ankietę modelowania technik, które są często używane do prognozowania popytu. Aby uzyskać więcej informacji i materiały edukacyjne o Prognozowanie serii czasu, zdecydowanie zaleca się książki online [Prognozowanie: zasady i praktyki](https://www.otexts.org/book/fpp).
+> W tej sekcji nie jest przeznaczona do użycia jako uczenia maszynowego i prognozowanie Przegląd, ale raczej jako krótką ankietę modelowania technik, które są często używane do prognozowania popytu. Aby uzyskać więcej informacji i materiały edukacyjne o Prognozowanie serii czasu, zdecydowanie zaleca się książki online [Prognozowanie: zasady i praktyki](https://www.otexts.org/).
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (średniej ruchomej)**](https://www.otexts.org/fpp/6/2)
+#### <a name="ma-moving-average"></a>**MA (średniej ruchomej)**
 Średnia ruchoma to jedna z pierwszym technik analitycznych, używane do prognozowania serii czasu i jest nadal w jednym z najbardziej najczęściej używanych technik dziś. Jest również podstawą dla bardziej zaawansowane techniki prognozowania. Za pomocą średnia krocząca przy średniej za pośrednictwem K najnowsze punkty, gdzie K oznacza kolejność średniej ruchomej firma Microsoft są Prognozowanie następnego punktu danych.
 
 Przenoszenie technika średni efektem wygładzanie prognozy i w związku z tym nie może obsługiwać również dużej zmienności danych.
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (Wygładzanie wykładnicze)**](https://www.otexts.org/fpp/7/5)
-Wykładniczy Wygładzanie (ETS) to rodzina różnych metod, które używają średnią ważoną ostatnie punkty danych w celu przewidywania następnego punktu danych. Chodzi o to przypisać wagi wyższej wartości nowszą i stopniowo zmniejszać to wagę dla starszych mierzonych wartości. Istnieje kilka różnych metod z tej rodziny, niektóre z nich obejmują obsługę sezonowości w danych, takich jak [metoda sezonowych Holt-Winters](https://www.otexts.org/fpp/7/5).
+#### <a name="ets-exponential-smoothing"></a>**ETS (Wygładzanie wykładnicze)**
+Wykładniczy Wygładzanie (ETS) to rodzina różnych metod, które używają średnią ważoną ostatnie punkty danych w celu przewidywania następnego punktu danych. Chodzi o to przypisać wagi wyższej wartości nowszą i stopniowo zmniejszać to wagę dla starszych mierzonych wartości. Istnieje kilka różnych metod z tej rodziny, niektóre z nich obejmują obsługę sezonowość w danych, takich jak metoda sezonowych Holt-Winters.
 
 Niektóre z tych metod również wziąć pod uwagę sezonowości danych.
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (Regresja automatycznie zintegrowany średniej ruchomej)**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-average"></a>**ARIMA (Regresja automatycznie zintegrowany średniej ruchomej)**
 Automatyczne regresji zintegrowane przeniesienie średniej (ARIMA) jest innej rodziny metody, która jest powszechnie używany do prognozowania szeregu czasowego. Łączy praktycznie metody automatycznego regresji o średniej ruchomej. Metody regresji automatycznie obliczyć następny punkt Data używać modele regresji, wykonując poprzedniej wartości serii czasu. Metody ARIMA mają zastosowanie również różnicowych metody, które obejmują obliczenie różnicy między punktami danych i używa ich zamiast oryginalnej zmierzoną wartość. Na koniec ARIMA również sprawia, że użycie przenoszenie średni technik, które zostały omówione powyżej. Kombinacja wszystkie te metody na różne sposoby jest o tym, co tworzy rodziny metody ARIMA.
 
 ETS i ARIMA są obecnie używanym prognozowaniu popytu energii i wiele innych problemów prognozowania. W wielu przypadkach są one łączone ze sobą w celu dostarczenia bardzo dokładne wyniki.

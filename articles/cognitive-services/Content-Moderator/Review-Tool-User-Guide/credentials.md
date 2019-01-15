@@ -1,22 +1,23 @@
 ---
-title: Poświadczenia w usłudze Azure Content Moderator | Dokumentacja firmy Microsoft
-description: Zarządzanie poświadczeniami pakietu Content Moderator, za pomocą interfejsów API.
+title: Zarządzanie poświadczeniami w usłudze Azure Content Moderator — Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Zarządzanie poświadczeniami pakietu Content Moderator, które będą musieli używać interfejsów API.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3d183870938f44cd71f1dab4105eec390ba12d94
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260095"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266149"
 ---
-# <a name="manage-credentials"></a>Zarządzanie poświadczeniami
+# <a name="manage-content-moderator-service-credentials"></a>Zarządzanie poświadczeniami usługi Content Moderator
 
 Poświadczenia usługi Content Moderator są tworzone w następujących lokalizacjach:
 

@@ -10,19 +10,19 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31f0517cd4d61fa324072eae954404c899451cc3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 93ca61c610856ebba64bff46b2338090f317ad56
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117405"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302038"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji usługi Azure AD B2C
 
 Usługa Azure Active Directory B2C (Azure AD B2C), emituje dzienników inspekcji zawierający informacje o aktywności o zasobów B2C, wystawione tokeny i dostępu administratora. Ten artykuł zawiera krótkie omówienie informacje, które są dostępne za pośrednictwem dzienniki inspekcji i instrukcje dotyczące sposobu dostępu do tych danych dla dzierżawy usługi Azure AD B2C.
 
 > [!IMPORTANT]
-> Dzienniki inspekcji tylko są przechowywane przez 7 dni. Planowane pobierania i przechowywania dzienników przy użyciu jednej z metod poniżej, jeśli potrzebujesz dłuższy okres przechowywania danych. 
+> Dzienniki inspekcji tylko są przechowywane przez 7 dni. Planowane pobierania i przechowywania dzienników przy użyciu jednej z metod poniżej, jeśli potrzebujesz dłuższy okres przechowywania danych.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Przegląd działań dostępnych w kategorii B2C dzienników inspekcji
 **B2C** kategoria w dziennikach inspekcji zawiera następujące typy działań:
@@ -43,7 +43,7 @@ Poniższy przykład pokazuje dane przechwycone, gdy użytkownik loguje się przy
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Uzyskiwanie dostępu do dzienników inspekcji w portalu Azure
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Upewnij się, że znajdują się w katalogu usługi B2C.
-2. Kliknij pozycję **usługi Azure Active Directory** na pasku po lewej stronie Ulubione 
+2. Kliknij pozycję **usługi Azure Active Directory** na pasku po lewej stronie Ulubione
     
     ![Dzienniki inspekcji — przycisk usługi AAD](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
@@ -56,14 +56,14 @@ Poniższy przykład pokazuje dane przechwycone, gdy użytkownik loguje się przy
 
     ![Dzienniki inspekcji — kategoria](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
-Zostanie wyświetlona lista działań zarejestrowane w ciągu ostatnich siedmiu dni. 
+Zostanie wyświetlona lista działań zarejestrowane w ciągu ostatnich siedmiu dni.
 - Użyj **typ zasobu działania** listę rozwijaną, aby filtrować według typów działań opisanych powyżej
 - Użyj **zakres dat** listę rozwijaną, aby filtrować zakres dat działania wyświetlane
 - Po kliknięciu na określony wiersz w liście kontekstowe okno po prawej stronie zostanie wyświetlona dodatkowe atrybuty skojarzone z działania
 - Kliknij pozycję **Pobierz** do pobrania działania jako plik csv
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Uzyskiwanie dostępu do dzienników inspekcji za pomocą interfejsu API raportowania usługi Azure AD
-Dzienniki inspekcji są publikowane w tej samej potoku jako inne działania usługi Azure Active Directory, dzięki czemu są one dostępne za pośrednictwem [interfejsu API raportowania usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference). 
+Dzienniki inspekcji są publikowane w tej samej potoku jako inne działania usługi Azure Active Directory, dzięki czemu są one dostępne za pośrednictwem [interfejsu API raportowania usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Do uwierzytelniania w usłudze Azure AD, interfejsu API raportowania, należy najpierw zarejestrować aplikację. Upewnij się, że postępuj zgodnie z instrukcjami w [wymagania wstępne dotyczące raportowania interfejsów API usługi Azure AD dostęp](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
@@ -82,7 +82,7 @@ Poniższy skrypt stanowi przykład użycia programu PowerShell do wykonywania za
 # Constants
 $ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
-$loginURL       = "https://login.microsoftonline.com"     
+$loginURL       = "https://login.microsoftonline.com"
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
 $resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -93,13 +93,13 @@ $body       = @{grant_type="client_credentials";resource=$resource;client_id=$Cl
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
 # Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
-if ($oauth.access_token -ne $null) {   
+if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago 
+    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
 
     # loop through each query page (1 through n)
-    Do{
+    Do {
         # display each event on the console window
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -117,4 +117,3 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
-

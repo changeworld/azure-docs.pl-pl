@@ -10,12 +10,12 @@ ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188900"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263800"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -33,7 +33,7 @@ W poniższej tabeli przedstawiono różnice między tożsamości dwie opcje:
 > [!IMPORTANT]
 > Nie można przełączyć dostawcę tożsamości, bez konieczności ponownego wdrażania całe rozwiązanie usługi Azure Stack.
 
-## <a name="active-directory-federation-services-and-graph"></a>Usługi federacyjne Active Directory i programu Graph
+## <a name="active-directory-federation-services-and-graph"></a>Active Directory Federation Services and Graph
 
 Wdrażanie przy użyciu usług AD FS umożliwia tożsamości w istniejącym lesie usługi Active Directory do uwierzytelniania przy użyciu zasobów w usłudze Azure Stack. Tego istniejącego lasu usługi Active Directory wymaga wdrożenia usług AD FS, aby umożliwić tworzenie relacji zaufania federacji usług AD FS.
 
@@ -121,9 +121,9 @@ Usługa programu Graph w usłudze Azure Stack używa następujących protokoły 
 |Typ|Port|Protokół|
 |---------|---------|---------|
 |LDAP|389|TCP I UDP|
-|PROTOKÓŁ LDAP SSL|636|TCP|
+|LDAP SSL|636|TCP|
 |LDAP GC|3268|TCP|
-|PROTOKÓŁ LDAP GC SSL|3269|TCP|
+|LDAP GC SSL|3269|TCP|
 
 ## <a name="setting-up-ad-fs-integration-by-downloading-federation-metadata"></a>Konfigurowanie integracji usług AD FS, pobierając metadanych Federacji
 
@@ -171,7 +171,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
 |CustomAdfsName|Nazwa dostawcy oświadczeń. Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
-|CustomADFSFederationMetadataFileContent|Metadane zawartości|$using: federationMetadataFileContent|
+|CustomADFSFederationMetadataFileContent|Metadane zawartości|$using:federationMetadataFileContent|
 
 ### <a name="create-federation-metadata-file"></a>Tworzenie pliku metadanych Federacji
 
@@ -263,13 +263,13 @@ Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynnoś
 
 3. Aby dodać relację zaufania jednostki uzależnionej, uruchom następujące polecenie programu Windows PowerShell na wystąpienia usług AD FS lub elementu członkowskiego z farmy. Upewnij się zaktualizować punkt końcowy usług AD FS, a następnie wskaż plik utworzony w kroku 1.
 
-   **Dla usług AD FS 2016**
+   **For AD FS 2016**
 
    ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
    ```
 
-   **Dla usługi AD FS 2012/2012 R2**
+   **For AD FS 2012/2012 R2**
 
    ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
@@ -319,7 +319,7 @@ Jeśli wystąpi błąd powodujący, że środowisko w stanie, gdy użytkownik ni
 2. Następnie uruchom następujące polecenie cmdlet:
 
    ```PowerShell  
-   Reset-DatacenterIntegationConfiguration
+   Reset-DatacenterIntegrationConfiguration
    ```
 
    Po uruchomieniu akcji wycofywania, wszystkie zmiany konfiguracji zostaną wycofane. Tylko uwierzytelnianie za pomocą wbudowanych **CloudAdmin** użytkownika jest możliwe.

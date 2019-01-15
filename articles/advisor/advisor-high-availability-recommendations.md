@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 928fb5421297fedbffabc45db35a89a74026477e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839518"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305075"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Zalecenia dotyczące wysokiej dostępności usługi Advisor
 
@@ -35,20 +35,16 @@ Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch m
 
 Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
 
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Skorzystaj z usługi Managed Disks, aby zwiększyć niezawodność danych
+Maszyny wirtualne, które znajdują się w zestaw dostępności z dyskami współużytkującymi konta magazynu lub jednostki skali magazynu nie są odporne na błędy jednostki skali magazynu jednego podczas awarii. Klasyfikator zidentyfikuje te zestawy dostępności i zaleca się migrację do usługi Azure Managed Disks. Pozwoli to zagwarantować, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane pod kątem uniknięcia pojedynczego punktu awarii. 
+
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Upewnij się, odporność na uszkodzenia bramy aplikacji
+
 W celu zapewnienia ciągłości biznesowej aplikacji o kluczowym znaczeniu, które są obsługiwane przez bramy application Gateway Advisor identyfikuje wystąpienia bramy aplikacji, które nie są skonfigurowane dla odporności na uszkodzenia i sugerują one akcji korygowania, które należy wykonać. Klasyfikator identyfikuje średnich i dużych aplikacja o pojedynczym wystąpieniu bramy i zaleca się dodanie co najmniej jedno wystąpienie więcej. Ponadto identyfikuje instance jednego lub wielu małych bramach aplikacji i zaleca się migrację do średnich i dużych jednostek SKU. Klasyfikator zaleca tych akcji, aby upewnić się, że Twoje wystąpienia bramy aplikacji są skonfigurowane do spełnić bieżące wymagania umowy SLA dla tych zasobów.
-
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Zwiększ wydajność i niezawodność dysków maszyny wirtualnej
-
-Klasyfikator identyfikuje maszyny wirtualne z dysków w warstwie standardowa i zaleca się uaktualnienie do dysków w warstwie premium.
- 
-Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia /. Dyski maszyn wirtualnych, które używają kont usługi premium storage umożliwia przechowywanie danych na dyskach półprzewodnikowych (SSD). Aby uzyskać najlepszą wydajność aplikacji firma Microsoft zaleca, migracji wszystkie dyski maszyny wirtualnej, wymagających wysokiej operacje We/Wy do magazynu premium storage. 
-
-Jeśli dyski nie wymagają wysokiej operacje We/Wy, można ograniczyć koszty dzięki przechowywaniu ich w magazynie standard storage. Magazynu w warstwie standardowa są przechowywane dane dysku maszyny wirtualnej dyski twarde (HDD) zamiast dysków SSD. Można przeprowadzić migrację dysków maszyny wirtualnej do dysków w warstwie premium. Dyski w warstwie Premium są obsługiwane w większości jednostek SKU maszyn wirtualnych. Jednak w niektórych przypadkach, jeśli chcesz korzystać z dysków magazynu premium, konieczne może być uaktualnić swoje jednostek SKU maszyn wirtualnych również.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Chronić dane maszyny wirtualnej przed przypadkowym usunięciem
 
-Konfigurowanie kopii zapasowej maszyny wirtualnej zapewnia dostępność danych krytyczne dla prowadzonej działalności i zapewnia ochronę przed przypadkowym uszkodzeniem lub usunięciem.  Klasyfikator identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca się włączenie kopii zapasowej. 
+Konfigurowanie kopii zapasowej maszyny wirtualnej zapewnia dostępność danych krytyczne dla prowadzonej działalności i zapewnia ochronę przed przypadkowym uszkodzeniem lub usunięciem. Klasyfikator identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca się włączenie kopii zapasowej. 
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Upewnij się, że masz dostęp do ekspertów ds. chmury platformy Azure, gdy jej potrzebujesz
 
@@ -69,6 +65,10 @@ Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego rou
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Użyj nietrwałego usuwania na swoim koncie magazynu platformy Azure, aby zapisać i odzyskiwanie danych w razie przypadkowego zastępowania lub usuwania
 
 Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na swoim koncie magazynu, aby usunąć obiekty BLOB przejście do stanu usunięcia nietrwałego zamiast trwale usunięte. Gdy dane są zastępowane, nietrwałe Usunięto migawkę jest generowany ma być zapisany stan zastąpione danych. To umożliwia odzyskanie danych w razie przypadkowego usunięcia lub zastąpienie. Advisor ustala kontach magazynu Azure, które nie mają włączone usuwanie nietrwałe i sugeruje, że można ją włączyć.
+
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurowanie bramy sieci VPN w taki sposób, aby aktywne aktywne dla połączeń
+
+W konfiguracji aktywne aktywne oba wystąpienia bramy sieci VPN ustanowią tunele S2S sieci VPN do urządzenia sieci VPN w środowisku lokalnym. Sytuacji zdarzenie planowanej konserwacji lub nieplanowanego zdarzenia dotyczącego jednego wystąpienia bramy ruchu umożliwić przełączenie do innego aktywnego tunelu IPsec automatycznie. Usługa Azure Advisor zidentyfikuje bram sieci VPN, które nie są skonfigurowane jako aktywny aktywny i sugeruje, że można je skonfigurować wysoką dostępność.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
 

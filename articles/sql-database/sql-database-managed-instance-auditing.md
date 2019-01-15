@@ -13,13 +13,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 01/12/2019
+ms.openlocfilehash: 716c4caa1b28cc40470d366e5fc6901de9462f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063881"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267270"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z usługą Azure Managed wystąpienia inspekcji usługi SQL Database
 
@@ -172,9 +172,9 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 - Użyj funkcji systemowej `sys.fn_get_audit_file` (T-SQL), aby zwrócić dane z dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [dokumentacji sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
-- Dzienniki inspekcji można eksplorować przy użyciu narzędzia, takiego jak Eksplorator usługi Azure Storage. W usłudze Azure storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów blob w kontenerze o nazwie sqldbauditlogs. Aby uzyskać więcej informacji na temat hierarchii folderu przechowywania konwencje nazewnictwa i format dziennika Zobacz dokumentacja Format dziennika inspekcji obiektów Blob.
+- Możesz zapoznać się z dziennikami inspekcji przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer/). W usłudze Azure storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów blob w kontenerze o nazwie sqldbauditlogs. Aby uzyskać więcej informacji o hierarchii folderu przechowywania konwencji nazewnictwa i format dziennika zobacz [odwołanie Format dziennika inspekcji obiektów Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing).
+- Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 
 > [!IMPORTANT]
 > Wyświetlanie rekordów inspekcji w witrynie Azure portal (w okienku "Rekordy inspekcji") jest obecnie niedostępna dla wystąpienia zarządzanego.

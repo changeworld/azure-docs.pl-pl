@@ -3,28 +3,34 @@ title: Historia wersji — Microsoft Genomics
 titleSuffix: Azure
 description: Microsoft Genomics regularnie aktualizuje klienta Microsoft Genomics Python w celu wprowadzenia poprawek i nowe funkcje.
 services: genomics
-author: ruchir
+author: grhuynh
 manager: cgronlun
-ms.author: ruchir
+ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
-ms.date: 11/08/2018
-ms.openlocfilehash: e673d732d1d43e3f58a295a94d11fc42f3618d93
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 01/11/2019
+ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345866"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260281"
 ---
 # <a name="version-release-history"></a>Historia wersji
 Zespół Microsoft Genomics regularnie aktualizuje klienta Microsoft Genomics Python w celu wprowadzenia poprawek i nowe funkcje. 
 
 ## <a name="latest-release"></a>Najnowsza wersja
-Bieżące klienta języka Python jest wersja 0.7.4. Marzec 2018 5 i obsługuje uruchamianie przepływów pracy za pomocą GATK 3.5 i GATK4 został wydany.
+Bieżące klienta języka Python jest wersja 0.8.1. Wydano grudnia 2018 3 i obsługuje uruchamianie przepływów pracy za pomocą GATK 3.5 i GATK4. Obsługuje ona również gVCF danych wyjściowych.
 
 
 ## <a name="release-history"></a>Historia wersji 
 Nowe wersje klienta Microsoft Genomics Python są wydawane o dwa razy w roku. Jak są wydawane nowe wersje klienta Microsoft Genomics Python, listę poprawek i funkcji jest aktualizowana w tym miejscu. Gdy wydawane są nowe wersje, poprzednie wersje nadal obsługiwane przez co najmniej 90 dni. W przypadku wcześniejszych wersji nie są już obsługiwane, będą wyświetlane na tej stronie. 
+
+### <a name="version-081"></a>Wersja 0.8.1
+Wersja 0.8.1 zawiera poprawki drobnych błędów.  
+
+### <a name="version-080"></a>Wersja 0.8.0
+Wersja 0.8.0 obejmuje obsługę GATK4 i wyprowadzania gVCFs.  
 
 ### <a name="version-074"></a>Wersja 0.7.4
 Wersja 0.7.4 obejmuje obsługę akceptować tokeny sygnatur dostępu Współdzielonego zamiast kluczy konta w `config.txt` danych wejściowych. Aby uzyskać więcej informacji, zobacz [dane wejściowe sygnatury dostępu Współdzielonego tokenów szybkiego startu](quickstart-input-sas.md). 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e8f80e7d19a961c22b4e1e88556ac165d2558034
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 764088e7f463f0c249f176514d485944d9c9d76e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082873"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264635"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Profil aplikacji sieci web uruchomionej na maszynie wirtualnej platformy Azure lub maszyny wirtualnej zestawu skalowania przy użyciu Application Insights Profiler
 Można także wdrożyć usługę Application Insights profiler dla tych usług:
@@ -53,7 +53,7 @@ Ta strona przeprowadzi Cię przez kroki wymagana można pobrać usługi Applicat
 
    Aby zastosować zmiany, zazwyczaj obejmuje to pełny szablon wdrożenia lub usługi w chmurze na podstawie opublikowane za pomocą poleceń cmdlet programu PowerShell lub Visual Studio.  
 
-   Następujące polecenia programu powershell są alternatywne podejście do istniejących maszyn wirtualnych, odnoszące się przez rozszerzenie Diagnostyka Azure. Wystarczy dodać ProfilerSink, jak wspomniano powyżej, do konfiguracji, który jest zwracany przez polecenie Get-AzureRmVMDiagnosticsExtension. Następnie przekazać zaktualizowany konfiguracji do polecenia Set-AzureRmVMDiagnosticsExcension.
+   Następujące polecenia programu powershell są alternatywne podejście do istniejących maszyn wirtualnych, odnoszące się przez rozszerzenie Diagnostyka Azure. Wystarczy dodać ProfilerSink, jak wspomniano powyżej, do konfiguracji, który jest zwracany przez polecenie Get-AzureRmVMDiagnosticsExtension. Następnie przekazać zaktualizowany konfiguracji do polecenia Set-AzureRmVMDiagnosticsExtension.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()

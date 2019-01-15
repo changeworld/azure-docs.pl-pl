@@ -1,21 +1,21 @@
 ---
-title: Moderowanie zawartości przy użyciu ludziom dokonywanie Konsola interfejsu API — Content Moderator
+title: Moderuj zawartość ludziom dokonywanie przy użyciu konsoli interfejsu API — Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć ludziom dokonywanie w konsoli usługi Content Moderator interfejsu API.
+description: Za pomocą API Przejrzyj Przegląd operacji, utworzyć obraz lub tekst przeglądy dotyczące moderowania ludzi.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: bb95341a09f09ce8020f34476e720270fd401909
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9d2daad06ad6cb97fe562db98cab57c4ed970a60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219757"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260213"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Utwórz przeglądy z poziomu konsoli interfejsu API
 
@@ -27,9 +27,9 @@ Po ludzi moderator przeglądy automatycznie przypisane tagi i dane prognozowania
 Będą mogli ją testować interfejs API za pomocą konsoli usługi online, konieczne jest kilku wartości w celu wprowadzenia w życie konsoli programu:
 
 - **teamName**: Nazwa zespołu, które zostało utworzone podczas konfigurowania konta narzędzie do przeglądu. 
-- **ContentId**: ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. ContentId przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.
-- **Metadane**: pary klucz wartość niestandardowa zwrócił się do punktu końcowego interfejsu API podczas wywołania zwrotnego. Jeśli klucz jest krótki kod, który jest zdefiniowany w narzędzie do przeglądu, pojawia się jako tag.
-- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+- **ContentId**: Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. ContentId przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.
+- **metadane**: Niestandardowe pary klucz wartość zwracana do punktu końcowego interfejsu API podczas wywołania zwrotnego. Jeśli klucz jest krótki kod, który jest zdefiniowany w narzędzie do przeglądu, pojawia się jako tag.
+- **Ocp-Apim-Subscription-Key**: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 Najprostszym sposobem na dostęp do konsoli testowania pochodzi z **poświadczenia** okna.
 

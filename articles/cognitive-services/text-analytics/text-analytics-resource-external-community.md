@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: heidist
-ms.openlocfilehash: fbea686ba0f67cdab79f1553344bd99dd105fc00
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 139699fac1a84273174f2c3bd30da2a911de46b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605253"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302262"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Zawartość społeczności & zewnętrzne usługi Cognitive analizy tekstu
 
@@ -25,15 +25,15 @@ ms.locfileid: "45605253"
 
 + [Oryginalny ogłoszenie interfejsu API analizy tekstu (blog platformy Azure)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [Za pomocą klucza frazy Cognitive Services interfejsu API analizy tekstu za pomocą programu PowerShell (MSDN blog)](https://blogs.msdn.microsoft.com/riteshmodi/2017/03/24/text-analytics-key-phrase-cognitive-services-powershell/)
++ [Za pomocą klucza frazy Cognitive Services interfejsu API analizy tekstu za pomocą programu PowerShell (AutomationNext blog)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [Szybkie R Porada: interfejs API analizy tekstu usług Microsoft Cognitive Services (Blogerom R)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [R szybka Podpowiedź: Analiza tekstu usługi Microsoft Cognitive Services interfejsu API (Blogerom R)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
 + [Analiza opinii w aplikacji logiki przy użyciu danych programu SQL Server (TechNet blog)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
 + [Analiza tonacji za pomocą usługi Dynamics 365 CRM Online (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ Blog usługi Power BI: wyodrębniania klucza używanie fraz z wiadomości usługi Facebook: [część 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) i [część 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ PowerBI blog: Wyodrębnianie kluczowych fraz z serwisu Facebook wiadomości: [Część 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) i [część 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 ## <a name="videos"></a>Filmy wideo
 
@@ -49,5 +49,5 @@ Szukasz informacji na temat funkcji lub przypadek użycia, który nie Wyjaśnili
 
 ## <a name="see-also"></a>Zobacz także
 
- [StackOverflow: Interfejs API analizy tekstu platformy](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [Witryna StackOverflow: Usługi Azure Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Interfejs API analizy tekstu platformy Azure](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Azure Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

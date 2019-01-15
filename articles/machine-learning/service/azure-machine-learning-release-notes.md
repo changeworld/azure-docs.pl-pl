@@ -11,18 +11,36 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: a7a15e4cd8670e71e1000bc6b1827a4b9292302b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200619"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304105"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning. 
 
-## <a name="2019-01-09"></a>09-01-2019 r
+## <a name="2019-01-14"></a>2019-01-14
+
+### <a name="azure-machine-learning-sdk-for-python-v108"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.8
+
++ **Dokumentacja zestawu SDK**: https://aka.ms/aml-sdk
+
++ **Poprawki błędów**: Ta wersja zawiera przede wszystkim poprawki drobnych błędów
+
+### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Zestaw SDK v1.0.7 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Dokumentacja zestawu SDK**: https://aka.ms/data-prep-sdk
+
++ **Nowe funkcje**
+  + Ulepszenia magazynu danych (udokumentowane w artykule [magazyn danych jak-to-przewodnik](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
+    + Dodano możliwość odczytu i zapisu do udziału plików platformy Azure i magazynów danych usługi ADLS w skalowanie w górę.
+    + Korzystając z magazynów danych, przygotowywanie danych obsługuje teraz przy użyciu uwierzytelniania jednostki usługi zamiast przeprowadzić uwierzytelnianie interakcyjne.
+    + Dodano obsługę wasb i wasbs adresów URL.
+
+## <a name="2019-01-09"></a>2019-01-09
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Zestaw SDK v1.0.6 przeznaczonego do przygotowania danych usługi Azure Machine Learning
 
@@ -116,7 +134,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
   + Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md)
   + Dowiedz się, jak [Uruchom prognozy usługi batch przy użyciu potoków](how-to-run-batch-predictions.md)
 + Cel obliczenia w usłudze Azure Machine Learning
-  + [Przykładowe notesów] (https://aka.ms/aml-notebooks) są teraz aktualizowane do użycia nowe obliczenie zarządzanych.
+  + [Przykładowy notesów](https://aka.ms/aml-notebooks) są teraz aktualizowane do użycia nowe obliczenie zarządzanych.
   + [Dowiedz się więcej o tym obliczeń](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Witryna Azure portal: nowe funkcje
@@ -137,7 +155,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 
 + **Fundamentalne zmiany** 
   * *azureml.Train.widgets* przestrzeń nazw została przeniesiona do *azureml.widgets*.
-  * *azureml.core.compute.AmlCompute* następujące klasy — na podstawie której zaniechane *azureml.core.compute.BatchAICompute* i *azureml.core.compute.DSVMCompute*. Ostatnie klasy zostaną usunięte w następnych wersjach. Klasa AmlCompute ma teraz łatwiej definicję po prostu potrzebuje vm_size i max_nodes i automatycznie skaluje klaster z zakresu od 0 do max_nodes po przesłaniu zadania. [Przykładowe notebooki] (https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zostały zaktualizowane przy użyciu tych informacji i powinny zawierać przykłady użycia. Mamy nadzieję, że możesz np. to uproszczenie i wiele więcej fascynujących funkcji są dostępne w nowszej wersji!
+  * *azureml.core.compute.AmlCompute* następujące klasy — na podstawie której zaniechane *azureml.core.compute.BatchAICompute* i *azureml.core.compute.DSVMCompute*. Ostatnie klasy zostaną usunięte w następnych wersjach. Klasa AmlCompute ma teraz łatwiej definicję po prostu potrzebuje vm_size i max_nodes i automatycznie skaluje klaster z zakresu od 0 do max_nodes po przesłaniu zadania. Nasze [przykładowy notesów](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zostały zaktualizowane przy użyciu tych informacji i powinny zawierać przykłady użycia. Mamy nadzieję, że możesz np. to uproszczenie i wiele więcej fascynujących funkcji są dostępne w nowszej wersji!
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Zestaw SDK v0.5.1 przeznaczonego do przygotowania danych usługi Azure Machine Learning 
 

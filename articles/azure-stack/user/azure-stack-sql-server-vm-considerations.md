@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: e784185cfc7f2c588db354bab1cfb36934b9c417
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8e577a95fc3cda3aafe1273cbc6b4e3c4fbb0317
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585870"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304370"
 ---
 # <a name="optimize-sql-server-performance"></a>Optymalizacja wydajności programu SQL Server
 
@@ -29,7 +29,7 @@ Ten artykuł zawiera wskazówki dotyczące optymalizacji wydajności programu SQ
 Podczas tworzenia obrazów programu SQL Server [należy wziąć pod uwagę inicjowania obsługi administracyjnej maszyn wirtualnych w portalu usługi Azure Stack](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Pobierz rozszerzenie SQL IaaS z zarządzania w portalu Marketplace w portalu administracyjnym usługi Azure Stack i Pobierz swój wybór w opcji SQL maszyny wirtualne dyski twarde (VHD). Obejmują one SQL2014SP2 SQL2016SP1 i SQL2017.
 
 > [!NOTE]  
-> W artykule opisano sposób aprowizacji maszyny wirtualnej programu SQL Server przy użyciu portalu Azure globalnego, wskazówki również ma zastosowanie do usługi Azure Stack z następującymi różnicami: SSD nie jest dostępna dla dysku systemu operacyjnego, dyski zarządzane nie są dostępne, i występują niewielkie różnice w konfiguracji magazynu.
+> W artykule opisano sposób aprowizacji maszyny wirtualnej programu SQL Server przy użyciu portalu Azure globalnego, wskazówki również ma zastosowanie do usługi Azure Stack z następującymi różnicami: Dyski SSD nie jest dostępna dla dysku systemu operacyjnego, dyski zarządzane nie są dostępne i występują niewielkie różnice w konfiguracji magazynu.
 
 Wprowadzenie *najlepsze* wydajności dla programu SQL Server na maszynach wirtualnych usługi Azure Stack jest celem tego artykułu. Jeżeli obciążenie jest mniej wymagających, może nie wymagać co zalecanych optymalizacji. Twoje potrzeby związane z wydajnością i wzorce obciążenia wziąć pod uwagę oceny tych zaleceń.
 
@@ -57,7 +57,7 @@ W przypadku następujących wrażliwego na wydajność aplikacji [rozmiarów mas
 
 - **SQL Server Enterprise edition:** DS3 lub nowszej
 
-- **SQL Server Standard edition i Web edition:** DS2 lub nowszej
+- **SQL Server Standard edition i wersji Web edition:** DS2 lub nowszej
 
 Dzięki usłudze Azure Stack nie ma żadnej różnicy wydajności między serię rodziny maszyn wirtualnych DS i DS_v2.
 
@@ -76,11 +76,11 @@ Podczas tworzenia konta magazynu w usłudze Azure Stack, dla opcji replikacji ge
 
 Istnieją trzy typy głównego dysku na maszynie wirtualnej usługi Azure Stack:
 
-- **Dysk systemu operacyjnego:** podczas tworzenia maszyny wirtualnej usługi Azure Stack platformy dołącza co najmniej jeden dysk (oznaczone jako **C** dysku) do maszyny wirtualnej dla dysku systemu operacyjnego. Ten dysk jest dyskiem VHD przechowywanym jako stronicowy obiekt blob w magazynie.
+- **Dysk systemu operacyjnego:** Podczas tworzenia maszyny wirtualnej usługi Azure Stack platformy dołącza co najmniej jeden dysk (oznaczone jako **C** dysku) do maszyny wirtualnej dla dysku systemu operacyjnego. Ten dysk jest dyskiem VHD przechowywanym jako stronicowy obiekt blob w magazynie.
 
-- **Dysk tymczasowy:** maszyny wirtualne usługi Azure Stack zawierają inny dysk o nazwie dysku tymczasowego (oznaczone jako **D** dysku). Jest to dysk na węźle, który może służyć do miejsca na pliki tymczasowe.
+- **Dysk tymczasowy:** Maszyny wirtualne w usłudze Azure Stack zawiera inny dysk o nazwie dysku tymczasowego (oznaczone jako **D** dysku). Jest to dysk na węźle, który może służyć do miejsca na pliki tymczasowe.
 
-- **Dyski z danymi:** dodatkowe dyski do maszyny wirtualnej można dołączyć jako dyski z danymi, a te dyski są przechowywane w magazynie jako stronicowe obiekty BLOB.
+- **Dyski z danymi:** Dodatkowe dyski do maszyny wirtualnej można dołączyć jako dyski z danymi, a te dyski są przechowywane w magazynach jako stronicowe obiekty BLOB.
 
 W poniższych sekcjach opisano zalecenia dotyczące używania tych różnych dyskach.
 
@@ -101,7 +101,7 @@ Zalecamy przechowywanie bazy danych TempDB na dysk z danymi, ponieważ każdy dy
 > [!NOTE]  
 > Podczas aprowizowania maszyny wirtualnej programu SQL Server w portalu, istnieje możliwość edytowania konfigurację magazynu. W zależności od konfiguracji usługi Azure Stack umożliwia skonfigurowanie co najmniej jeden dysk. Wiele dysków są łączone w pulę magazynu jednego. Pliki danych i dziennika znajdują się ze sobą w tej konfiguracji.
 
-- **Rozkładanie:** większą przepustowość, można dodać dodatkowego dysku z danymi i używać Rozkładanie dysku. Aby określić liczbę dysków z danymi, których potrzebujesz, analizę liczby operacji We/Wy i przepustowości wymaganej dla plików dziennika i danych i plików bazy danych TempDB. Należy zauważyć, że obowiązują limity operacji We/Wy na dysku danych oparte na rodzina serii maszyny wirtualnej, a nie na podstawie rozmiaru maszyny wirtualnej. Limity przepustowości sieci, jednak są oparte na rozmiar maszyny wirtualnej. Zobacz tabele w [maszyny wirtualne o rozmiarach w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) Aby uzyskać więcej szczegółów. Skorzystaj z poniższych wskazówek:
+- **Rozkładanie:** Większą przepustowość można dodać dodatkowego dysku z danymi i używać Rozkładanie dysku. Aby określić liczbę dysków z danymi, których potrzebujesz, analizę liczby operacji We/Wy i przepustowości wymaganej dla plików dziennika i danych i plików bazy danych TempDB. Należy zauważyć, że obowiązują limity operacji We/Wy na dysku danych oparte na rodzina serii maszyny wirtualnej, a nie na podstawie rozmiaru maszyny wirtualnej. Limity przepustowości sieci, jednak są oparte na rozmiar maszyny wirtualnej. Zobacz tabele w [maszyny wirtualne o rozmiarach w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) Aby uzyskać więcej szczegółów. Skorzystaj z poniższych wskazówek:
 
     - Dla systemu Windows Server 2012 lub nowszym, użyj [miejsca do magazynowania](https://technet.microsoft.com/library/hh831739.aspx) z następującymi wytycznymi:
 
@@ -120,8 +120,8 @@ Zalecamy przechowywanie bazy danych TempDB na dysk z danymi, ponieważ każdy dy
 
 - Określ liczbę dysków skojarzonych z puli magazynów, w oparciu o Twoim oczekiwaniom obciążenia. Należy pamiętać, że różne rozmiary maszyny wirtualnej zezwalają na różne liczby dołączonych dysków z danymi. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
 - Aby uzyskać maksymalną wartość IOPS możliwe dla dysków z danymi, zalecane jest dodanie maksymalna liczba dysków danych obsługiwanych przez usługi [rozmiar maszyny wirtualnej](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) i użyj Rozkładanie dysku.
-- **Rozmiar jednostki alokacji systemu plików NTFS:** podczas formatowania dysku danych, zaleca się używać rozmiar jednostki alokacji 64 KB danych i plików dziennika, a także bazy danych TempDB.
-- **Rozwiązania z zakresu zarządzania na dysku:** podczas usuwania dysku z danymi, Zatrzymaj usługę programu SQL Server podczas zmiany. Ponadto nie zmieniaj ustawienia pamięci podręcznej na dyskach, ponieważ nie zapewnia żadnych ulepszenia wydajności.
+- **Rozmiar jednostki alokacji systemu plików NTFS:** Podczas formatowania dysku danych, zaleca się użycie rozmiaru jednostki alokacji 64 KB dla plików danych i dziennika, a także bazy danych TempDB.
+- **Rozwiązania z zakresu zarządzania dysku:** Podczas usuwania dysku z danymi, należy zatrzymać usługi programu SQL Server podczas zmiany. Ponadto nie zmieniaj ustawienia pamięci podręcznej na dyskach, ponieważ nie zapewnia żadnych ulepszenia wydajności.
 
 > [!WARNING]  
 > Nie można zatrzymać usługi programu SQL podczas wykonywania tych operacji może spowodować uszkodzenie bazy danych.
@@ -151,7 +151,7 @@ Niektóre wdrożenia mogą osiągać korzyści wyższą wydajność przy użyciu
 
     Po umieszczeniu informacje do okna dialogowego kopii zapasowej programu SQL Server:
 
-    ![Kopia zapasowa programu SQL Server](./media/sql-server-vm-considerations/image3.png)
+    ![SQL Server Backup](./media/sql-server-vm-considerations/image3.png)
 
     > [!NOTE]  
     > Sygnatura dostępu współdzielonego to token sygnatury dostępu Współdzielonego z portalu usługi Azure Stack znaczeniem bez "?" w ciągu. Jeśli używasz funkcji kopiowania z poziomu portalu, musisz usunąć wiodące "?" Aby uzyskać token, który działa w programie SQL Server.

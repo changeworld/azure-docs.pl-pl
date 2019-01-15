@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ced6e2edb570e12b17d14e0552030902161b5d53
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725256"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302684"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Liczba akcji skalowania jednostki węzła w usłudze Azure Stack
 
@@ -74,7 +74,7 @@ Podczas wyświetlania informacji na temat węzła jednostki skalowania można r�
 
 Stan operacyjny węzła Określa, które opcje są dostępne.
 
-Należy zainstalować moduły programu Azure Stack PowerShell. Tych poleceń cmdlet znajdują się w **Azs.Fabric.Admin** modułu. Aby zainstalować lub Zweryfikuj instalację programu PowerShell dla usługi Azure Stack, zobacz [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
+Musisz zainstalować moduły programu Azure Stack PowerShell. Tych poleceń cmdlet znajdują się w **Azs.Fabric.Admin** modułu. Aby zainstalować lub Zweryfikuj instalację programu PowerShell dla usługi Azure Stack, zobacz [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 
 ## <a name="stop"></a>Stop
 

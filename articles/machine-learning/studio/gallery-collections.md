@@ -1,26 +1,7 @@
 ---
-title: Kolekcje usługi Azure Galeria sztucznej Inteligencji — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Kolekcja w galerii Azure AI umożliwia grupie eksperymentów, interfejsów API i inne elementy galerii, używanych do konkretnego rozwiązania lub pojęcia. Użytkownik może pogrupować je do użycia, aby zapisać do późniejszego wykorzystania lub udostępnić.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: b88489f826bbeab636903c7c9918f34d16b2f122
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271372"
+Tytuł: TitleSuffix kolekcje Galeria sztucznej Inteligencji platformy Azure: Opis usługi Azure Machine Learning Studio: Kolekcja w galerii Azure AI umożliwia grupie eksperymentów, interfejsów API i inne elementy galerii, używanych do konkretnego rozwiązania lub pojęcia. Użytkownik może pogrupować je do użycia, aby zapisać do późniejszego wykorzystania lub udostępnić.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł  
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 03/31/2017
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Odnajdywanie i udostępnianie kolekcji w galerii Azure AI
 

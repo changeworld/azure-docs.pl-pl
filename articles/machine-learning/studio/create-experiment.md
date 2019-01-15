@@ -1,28 +1,10 @@
 ---
-title: Prosty eksperyment — Azure Machine Learning Studio | Microsoft Docs
-description: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
-keywords: experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques,data science experiment
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cgronlun
-ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 03/20/2017
-ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262422"
+Tytuł: Prosty eksperyment titleSuffix: Opis usługi Azure Machine Learning Studio: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: samouczek
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
 ---
+
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Samouczek: Tworzenie pierwszego eksperymentu dotyczącego nauki o danych w usłudze Azure Machine Learning Studio
 
 Ten samouczek jest przeznaczony dla osób, którym nie zdarzyło się korzystać z usługi **Azure Machine Learning Studio**.
@@ -319,7 +301,7 @@ Końcowy eksperyment powinien wyglądać następująco:
 <br/>
 ***Eksperyment końcowy***
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po ukończeniu pierwszego samouczka dotyczącego uczenia maszynowego i skonfigurowaniu eksperymentu można kontynuować ulepszanie modelu, a następnie wdrożyć go jako predykcyjną usługę sieci Web.
 

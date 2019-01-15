@@ -7,19 +7,19 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c7b1d74c7750a281f8c961789d39a7ae323f304e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809883"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304044"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
-Nowy moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) wprowadzono w systemie kompilacji 1.1.880.0 (wydanej w sierpniu 2018 r.), który zawiera zbiór poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory dla usługi Azure AD Połącz z wdrożenia. 
+Moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) wprowadzono w systemie kompilacji 1.1.880.0 (wydanej w sierpniu 2018 r.), który zawiera zbiór poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory dla usługi Azure AD Połącz z wdrożenia. 
 
 ## <a name="overview"></a>Przegląd 
 Następujące polecenia cmdlet programu PowerShell może służyć do ustawienia uprawnień usługi Active Directory, konta usługi AD DS łącznika dla każdej funkcji, możesz poudawać, aby włączyć w programie Azure AD Connect. Aby uniknąć problemów, przygotuj uprawnień usługi Active Directory z wyprzedzeniem zawsze wtedy, gdy chcesz zainstalować program Azure AD Connect przy użyciu konta domeny niestandardowej, aby nawiązać połączenie z lasem usługi. Ten moduł ADSyncConfig można również skonfigurować uprawnienia, po wdrożeniu usługi Azure AD Connect.
@@ -119,7 +119,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -147,7 +147,7 @@ Aby ustawić uprawnienia dla konta usługi AD DS łącznika, w przypadku używan
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -167,7 +167,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -188,7 +188,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
 ```
 
 
-lub;
+Lub;
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -207,7 +207,7 @@ Aby ustawić uprawnienia dla konta usługi AD DS łącznika, używając zapisu z
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -229,7 +229,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnecto
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -253,7 +253,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -280,7 +280,7 @@ Na przykład:
 
 ``` powershell
 $credential = Get-Credential 
-Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
+Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
@@ -288,12 +288,12 @@ To polecenie cmdlet będzie ustawić następujące uprawnienia:
 |Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |SYSTEM |Pełna kontrola |Ten obiekt 
-|Zezwalaj |Administratorzy przedsiębiorstwa |Pełna kontrola |Ten obiekt 
+|Zezwalaj |Enterprise Admins |Pełna kontrola |Ten obiekt 
 |Zezwalaj |Administratorzy domeny |Pełna kontrola |Ten obiekt 
 |Zezwalaj |Administratorzy |Pełna kontrola |Ten obiekt 
-|Zezwalaj |Kontrolery domeny przedsiębiorstwa |Wyświetl zawartość |Ten obiekt 
-|Zezwalaj |Kontrolery domeny przedsiębiorstwa |Odczyt wszystkich właściwości |Ten obiekt 
-|Zezwalaj |Kontrolery domeny przedsiębiorstwa |Uprawnienia do odczytu |Ten obiekt 
+|Zezwalaj |Enterprise Domain Controllers |Wyświetl zawartość |Ten obiekt 
+|Zezwalaj |Enterprise Domain Controllers |Odczyt wszystkich właściwości |Ten obiekt 
+|Zezwalaj |Enterprise Domain Controllers |Uprawnienia do odczytu |Ten obiekt 
 |Zezwalaj |Uwierzytelnieni użytkownicy |Wyświetl zawartość |Ten obiekt 
 |Zezwalaj |Uwierzytelnieni użytkownicy |Odczyt wszystkich właściwości |Ten obiekt 
 |Zezwalaj |Uwierzytelnieni użytkownicy |Uprawnienia do odczytu |Ten obiekt 

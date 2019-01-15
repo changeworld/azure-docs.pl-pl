@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 77e0a9fc12519615765e1846ac8808bb3fbb27f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633389"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260655"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Nietrwałe usuwanie obiektów blob usługi Azure Storage
 Usługa Azure Storage oferuje teraz usuwania nietrwałego dla obiektów blob, tak, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika do konta magazynu.
@@ -198,7 +198,7 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
-Aby znaleźć zasady przechowywania currrent usuwania nietrwałego, użyj następującego polecenia:
+Aby znaleźć bieżące zasady przechowywania usuwania nietrwałego, użyj następującego polecenia:
 
 ```azurepowershell-interactive
    $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount

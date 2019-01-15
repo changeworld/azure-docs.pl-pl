@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a8f7ccdb199f934011b6d64d813eb36cc9dff952
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1d8a46287d2b84735ffb6d5159346cb9b8243472
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804552"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264004"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wiadomości Bing
 
@@ -45,22 +45,22 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Indie|Polski|EN-IN|
 |Malezja|Polski|Moje en|
 |Nowa Zelandia|Polski|EN NZ|
-|Republika Filipin|Polski|EN PH|
-|Singapur|Polski|EN SG|
-|Stany Zjednoczone|Polski|pl-PL|
+|Republika Filipin|Polski|en-PH|
+|Singapur|Polski|en-SG|
+|Stany Zjednoczone|Polski|en-US|
 |Polski|Ogólne|EN-WW|
-|Polski|Ogólne|EN XA|
-|Republika Południowej Afryki|Polski|EN ZA|
+|Polski|Ogólne|en-XA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Argentyna|Hiszpański|ES AR|
 |Chile|Hiszpański|ES-CL|
 |Hiszpania|Hiszpański|es-ES|
 |Meksyk|Hiszpański|es-MX|
 |Stany Zjednoczone|Hiszpański|es-US|
-|Hiszpański|Ogólne|ES XL|
+|Hiszpański|Ogólne|es-XL|
 |Finlandia|Fiński|fi-FI|  
-|Francja|Francuski|FR — być|
+|Francja|Francuski|fr-BE|
 |Kanada|Francuski|fr-CA|
-|Belgia|Holenderski|Holandia — być|
+|Belgia|Holenderski|nl-BE|
 |Szwajcaria|Francuski|FR-CH|
 |Francja|Francuski|fr-FR|  
 |Włochy|Włoski|IT-IT|
@@ -86,7 +86,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|en-US|
 |Polski|Ogólne|EN-WW|
 |Chile|Hiszpański|ES-CL|
 |Meksyk|Hiszpański|es-MX|
@@ -108,7 +108,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|en-US|
 |Kanada|Polski|EN-CA|
 |Indie|Polski|EN-IN|
 |Francja|Francuski|fr-FR|
@@ -127,31 +127,31 @@ Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w 
 |Argentyna|AR|  
 |Australia|AU|  
 |Austria|AT|  
-|Belgia|MOŻNA|  
-|Brazylia|BRAZYLIA|  
-|Kanada|Urząd certyfikacji|  
+|Belgia|BE|  
+|Brazylia|BR|  
+|Kanada|CA|  
 |Chile|CL|  
 |Dania|DK|  
 |Finlandia|FI|  
 |Francja|PW|  
 |Niemcy|DE|  
 |SRA Hongkong|HK|  
-|Indie|INDIE|  
+|Indie|IN|  
 |Indonezja|ID|  
 |Włochy|IT|  
 |Japonia|JP|  
 |Korea|KR|  
-|Malezja|MOJE|  
+|Malezja|MY|  
 |Meksyk|MX|  
-|Holandia|HOLANDIA|  
+|Holandia|NL|  
 |Nowa Zelandia|NZ|  
-|Norwegia|NIE|  
+|Norwegia|NO|  
 |Chińska Republika Ludowa|CN|  
 |Polska|PL|  
-|Portugalia|(CZAS PACYFICZNY)|  
+|Portugalia|PT|  
 |Republika Filipin|PH|  
-|Rosja|JEDNOSTKA ŻĄDANIA|  
-|Arabia Saudyjska|AMERYKA POŁUDNIOWA|  
+|Rosja|RU|  
+|Arabia Saudyjska|SA|  
 |Republika Południowej Afryki|ZA|  
 |Hiszpania|ES|  
 |Szwecja|SE|  

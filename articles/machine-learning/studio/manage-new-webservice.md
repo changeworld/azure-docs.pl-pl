@@ -1,26 +1,8 @@
 ---
-title: Korzystanie z portalu usług sieci Web programu Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2017
-ms.openlocfilehash: cf5a15ba88a3a4d678e6856d270b98697ecf5a3d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271780"
+Tytuł: Użyj titleSuffix portalu usług sieci Web programu Azure Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 02/28/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Zarządzanie usługą sieci web przy użyciu portalu usług sieci Web programu Azure Machine Learning Studio
 Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.

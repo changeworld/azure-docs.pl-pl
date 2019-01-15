@@ -1,26 +1,8 @@
 ---
-title: Przygotowanie modelu wdrożenia - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Jak przygotować uczonego modelu do wdrożenia jako usługę sieci web przy użyciu konwertowanie eksperymentu szkolenia usługi Machine Learning Studio na eksperyment predykcyjny.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273106"
+Tytuł: Przygotowanie modelu do wdrożenia titleSuffix: Opis usługi Azure Machine Learning Studio: Jak przygotować uczonego modelu do wdrożenia jako usługę sieci web przy użyciu konwertowanie eksperymentu szkolenia usługi Machine Learning Studio na eksperyment predykcyjny.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.date: 03/28/2017
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio
 

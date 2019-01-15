@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 31784c44d7561c690278aa4764e98992fbca73ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b880d77004013d3b3eb1999b7e9344577b9fb4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230788"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266488"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywracanie stanu systemu do systemu Windows Server
 
@@ -86,7 +86,7 @@ Składa się z terminologią używaną w ramach tej procedury:
 3. Kliknij przycisk **Odzyskaj dane** do inicjowania przepływu pracy.
 4. Wybierz **innego serwera**
 
-    ![Inny serwer](./media/backup-azure-restore-system-state/anotherserver.png)
+    ![Another Server](./media/backup-azure-restore-system-state/anotherserver.png)
 
 5. Podaj plik poświadczeń magazynu, który odpowiada *magazynu przykładowe*. Jeśli plik poświadczeń magazynu jest nieprawidłowa (lub wygasła), Pobierz nowy plik poświadczeń magazynu z *magazynu przykładowe* w witrynie Azure portal. Po ich podaniu plik poświadczeń magazynu jest wyświetlana magazyn usługi Recovery Services, skojarzony plik poświadczeń magazynu.
 
@@ -157,7 +157,7 @@ Raz odzyskały stan systemu jako pliki przy użyciu agenta usługi Azure Recover
 
 10. Do lokalizacji odzyskiwania stanu systemu, wybierz **oryginalnej lokalizacji**i kliknij przycisk **dalej**.
 
-11. Przejrzyj szczegóły dotyczące potwierdzenia, sprawdź ustawienia ponownego uruchomienia, a następnie kliknij przycisk **odzyskać** do applly przywrócony stan systemu plików.
+11. Przejrzyj szczegóły dotyczące potwierdzenia, sprawdź ustawienia ponownego uruchomienia, a następnie kliknij przycisk **odzyskać** do zastosowania przywróconych plików stanu systemu.
 
     ![Uruchom Przywracanie stanu systemu plików](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 

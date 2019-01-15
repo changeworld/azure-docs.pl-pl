@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 40df81d496e04ab2d549923cc0645afb8eddaf57
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b907098f9d6471a7df5ca43f76cd9109ee4dea8e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724457"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263960"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Użyj narzędzia transferu danych dla magazynu usługi Azure Stack
 
@@ -160,7 +160,7 @@ W tym przykładzie założono, że pomyślnie [zainstalowany program PowerShell 
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
 $ARMEndPoint = "https://management.local.azurestack.external" 
-$GraphAudiance = "https://graph.windows.net/" 
+$GraphAudience = "https://graph.windows.net/" 
 $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com" 
 
 $SubscriptionName = "basic" # Update with the name of your subscription.
@@ -169,7 +169,7 @@ $StorageAccountName = "azsblobcontainer" # Give a name to your new storage accou
 $Location = "Local" # Choose "Local" as an example.
 $ContainerName = "photo" # Give a name to your new container.
 $ImageToUpload = "C:\temp\Hello.jpg" # Prepare an image file and a source directory in your local computer.
-$DestinationFolder = "C:\temp\downlaod" # A destination directory in your local computer.
+$DestinationFolder = "C:\temp\download" # A destination directory in your local computer.
 
 # Import the Connect PowerShell module"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
@@ -307,7 +307,7 @@ Eksplorator usługi Microsoft Azure storage jest autonomiczną aplikacją oferow
 
 ## <a name="blobfuse"></a>Blobfuse 
 
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) jest sterownik systemu plików wirtualnych usługi Azure Blob Storage, co pozwala na dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Usługa Azure Blob Storage to usługa magazynu obiektów i dlatego nie jest objęta hierarchicznej przestrzeni nazw. Blobfuse zapewnia tej przestrzeni nazw przy użyciu schematu direcectory wirtualnego z użyciem ukośnika do przodu `/` jako ogranicznik. Blobfuse działa zarówno na platformie Azure i usługi Azure Stack. 
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) jest sterownik systemu plików wirtualnych usługi Azure Blob Storage, co pozwala na dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Usługa Azure Blob Storage to usługa magazynu obiektów i dlatego nie jest objęta hierarchicznej przestrzeni nazw. Blobfuse zapewnia tej przestrzeni nazw przy użyciu schematu katalogu wirtualnego z użyciem ukośnika do przodu `/` jako ogranicznik. Blobfuse działa zarówno na platformie Azure i usługi Azure Stack. 
 
 Aby dowiedzieć się więcej na temat instalowania usługi Blob storage jako systemu plików przy użyciu Blobfuse w systemie Linux, zobacz [jak instalowanie usługi Blob storage jako systemu plików przy użyciu Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
 

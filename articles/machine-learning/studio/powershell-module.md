@@ -1,27 +1,8 @@
 ---
-title: Moduł programu PowerShell dla usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
-description: Moduł programu PowerShell dla usługi Azure Machine Learning jest dostępny w trybie publicznej wersji zapoznawczej. Tworzenie i zarządzanie obszarami roboczymi, eksperymentów, usług sieci web i za pomocą programu PowerShell.
-keywords: experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques,data science experiment
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/15/2017
-ms.openlocfilehash: 6539ec36c23feccfa52c8214784590106fa5a01e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257526"
+Tytuł: Moduł programu PowerShell dla usługi Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Moduł programu PowerShell dla usługi Azure Machine Learning jest dostępny w trybie publicznej wersji zapoznawczej. Tworzenie i zarządzanie obszarami roboczymi, eksperymentów, usług sieci web i za pomocą programu PowerShell.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 03/15/2017
 ---
 # <a name="powershell-module-for-azure-machine-learning-studio"></a>Moduł programu PowerShell dla usługi Azure Machine Learning Studio
 Moduł programu PowerShell dla usługi Azure Machine Learning to zaawansowane narzędzie, które pozwala na zarządzanie obszarami roboczymi, eksperymenty, zestawy danych i klasycznych usług sieci web za pomocą programu Windows PowerShell.

@@ -1,5 +1,5 @@
 ---
-title: 'Aplikacje SaaS: Azure SQL Database geograficznie nadmiarowych kopii zapasowych do odzyskiwania po awarii | Dokumentacja firmy Microsoft'
+title: 'Aplikacje SaaS: Baza danych SQL geograficznie nadmiarowych kopii zapasowych Azure do odzyskiwania po awarii | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak użyć geograficznie nadmiarowych kopii zapasowych usługi Azure SQL Database, aby odzyskać wielodostępnych aplikacji SaaS w przypadku awarii
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352944"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264754"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Funkcja przywracania geograficznego umożliwia odzyskiwanie wielodostępnych aplikacji SaaS z kopii zapasowych bazy danych
 
@@ -50,7 +50,7 @@ Przed rozpoczęciem tego samouczka należy spełnić następujące wymagania wst
 Odzyskiwanie po awarii (DR) jest ważną kwestią w przypadku wielu aplikacji dla zachowania zgodności lub ciągłość prowadzenia działalności biznesowej. W przypadku awarii usługi długotrwały dobrze przygotowany plan odzyskiwania po awarii, można zminimalizować zakłócenia działania firmy. Plan odzyskiwania po awarii A oparty na przywracania geograficznego musi osiągnąć cele kilka:
  * Zarezerwuj wszystkie niezbędne pojemności w regionie odzyskiwania wybranej tak szybko, jak to możliwe, aby upewnić się, że jest ona dostępna do przywrócenia baz danych dzierżaw.
  * Ustanów środowisko odzyskiwania obraz odzwierciedlający oryginalną konfigurację puli i bazy danych. 
- * Umożliwia anulowanie procesu przywracania w środku lotu, jeśli oryginalny region powróci do trybu online.
+ * Umożliwia anulowanie procesu przywracania w środku locie, jeśli oryginalny region powróci do trybu online.
  * Włącz dzierżawy szybkiego udostępniania, więc nowej dzierżawy przy dołączaniu można uruchomić ponownie tak szybko, jak to możliwe.
  * Można zoptymalizować, aby przywrócić dzierżaw w kolejności priorytetów.
  * Można zoptymalizować uzyskanie dzierżawy w trybie online tak szybko, jak to możliwe, wykonując czynności w sposób równoległy, gdzie jest to praktyczne.
@@ -114,7 +114,7 @@ To zadanie służy do uruchamiania procesu synchronizacji konfiguracji serwerów
 
 3. Określ następujące ustawienia:
 
-    $DemoScenario = 1: start zadania w tle, synchronizowanej dzierżawy serwera i informacje o konfiguracji puli do katalogu.
+    $DemoScenario = 1: Uruchom zadanie w tle, synchronizowanej dzierżawy serwera i informacje o konfiguracji puli do katalogu.
 
 4. Aby uruchomić skrypt synchronizacji, naciśnij klawisz F5. 
 
@@ -209,7 +209,7 @@ Nawet w przypadku, zanim zostaną przywrócone baz danych dzierżaw, można udos
 
 1. W środowisku PowerShell ISE w skrypcie Modules\Business ciągłość działalności biznesowej i awarii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 ...\Learning, Ustaw następującą właściwość:
 
-    $DemoScenario = 3: aprowizacja nowej dzierżawy w regionie odzyskiwania.
+    $DemoScenario = 3: Aprowizacja nowej dzierżawy w regionie odzyskiwania.
 
 2. Aby uruchomić skrypt, naciśnij klawisz F5.
 
@@ -320,13 +320,13 @@ Po wykonaniu tego samouczka skryptu natychmiast ponownie uaktywnia te błędy Fa
   
 1. W środowisku ISE programu PowerShell w ...\Learning skryptu Modules\Business ciągłość działalności biznesowej i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii Sprawdź, czy Proces synchronizacji katalogu nadal działa w jego wystąpienia. Jeśli to konieczne, uruchom go ponownie, ustawiając:
 
-    $DemoScenario = 1: rozpocząć synchronizowanie z serwerem dzierżaw, puli i informacje o konfiguracji bazy danych do katalogu.
+    $DemoScenario = 1: Rozpocznij synchronizacji z serwerem dzierżaw, puli i informacje o konfiguracji bazy danych do katalogu.
 
     Aby uruchomić skrypt, naciśnij klawisz F5.
 
 2.  Następnie można uruchomić procesu repatriacji, ustaw:
 
-    $DemoScenario = 5: wycofywania aplikacji w jego oryginalnym region.
+    $DemoScenario = 5: Wycofywania aplikacji w jego oryginalnym region.
 
     Aby uruchomić skryptu odzyskiwania w nowym oknie programu PowerShell, naciśnij klawisz F5. Repatriacji w ciągu kilku minut i mogą być monitorowane w oknie programu PowerShell.
 
@@ -352,7 +352,7 @@ Proces przywracania tworzy recovery zasoby w grupie zasobów odzyskiwania. Proce
 
 1. W środowisku PowerShell ISE w skrypcie Modules\Business ciągłość działalności biznesowej i awarii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 ...\Learning, ustaw:
     
-    $DemoScenario = 6: usuwanie przestarzałych zasobów w regionie odzyskiwania.
+    $DemoScenario = 6: Usuń przestarzałe zasobów w regionie odzyskiwania.
 
 2. Aby uruchomić skrypt, naciśnij klawisz F5.
 
@@ -376,6 +376,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Spróbuj [odzyskiwania po awarii dla wielodostępnych aplikacji SaaS przy użyciu replikacji geograficznej bazy danych](saas-dbpertenant-dr-geo-replication.md) samouczka, aby dowiedzieć się, jak znacznie skrócić czas potrzebny do odzyskania na dużą skalę aplikacji wielodostępnej za pomocą replikacji geograficznej.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 [Dodatkowe samouczki nawiązujące do aplikacji Wingtip SaaS](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)

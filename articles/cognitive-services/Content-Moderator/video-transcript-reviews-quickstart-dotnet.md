@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e862a8b74339bc8dd1de6c0b231ddb15425974c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 672d801b9a6c45a8ab3eb9964b6e061eeee11f59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220945"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266828"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Utwórz przeglądy transkrypcji wideo przy użyciu platformy .NET
 
@@ -31,22 +31,21 @@ W tym artykule założono, że masz [moderowane wideo](video-moderation-api.md) 
 
 W tym artykule założono również, że znasz już program Visual Studio i języka C#.
 
-## <a name="sign-up-for-content-moderator"></a>Zarejestruj się w pakiecie Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator
 
-Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
-Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Załóż na konto narzędzia przeglądu, jeśli nie zostały wykonane w poprzednim kroku
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zarejestruj konto narzędzia do przeprowadzania przeglądów, jeśli nie zostało to zrobione w poprzednim kroku
 
-Jeśli masz usługi Content Moderator w witrynie Azure portal, również [założyć konto narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i tworzenia zespołu przeglądu. Wymagany identyfikator zespołu oraz narzędzie do przeglądu do wywołania interfejsu API przeglądu, aby rozpocząć zadanie i wyświetlić te przeglądy w narzędzie do przeglądu.
+Jeśli używasz usługi Content Moderator w witrynie Azure Portal, także [zarejestruj konto narzędzia do przeglądów](https://contentmoderator.cognitive.microsoft.com/) i utwórz zespół osób przeglądających. Do wywołania interfejsu API w celu uruchomienia zadania i wyświetlenia przeglądów w narzędziu do przeglądów jest potrzebny identyfikator zespołu i narzędzie do przeglądów.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Upewnij się, że klucz interfejsu API można wywołać interfejsu API przeglądu (Tworzenie zadania)
 
-Po wykonaniu poprzednich kroków, użytkownik może pozostać przy użyciu dwóch kluczy pakietu Content Moderator w przypadku pracy w witrynie Azure portal. 
+Po wykonaniu poprzednich kroków możesz mieć dwa klucze usługi Content Moderator, jeśli wykonywanie kroków rozpoczęto w witrynie Azure Portal. 
 
-Jeśli planujesz użyć klucza interfejsu API platformy Azure w Twoim przykładzie zestawu SDK, wykonaj kroki opisane w [klucza przy użyciu platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) sekcji, aby umożliwić aplikacji do wywołania interfejsu API przeglądu i tworzenia przeglądów.
+Jeśli planujesz użyć klucza interfejsu API platformy Azure w przykładzie zestawu SDK, wykonaj kroki opisane w sekcji [Używanie klucza platformy Azure przy użyciu interfejsu API przeglądu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api), aby umożliwić aplikacji wywołanie interfejsu API przeglądu i tworzenie przeglądów.
 
-Jeśli używasz bezpłatnej wersji próbnej klucz wygenerowany przez narzędzie do przeglądu, Twoje konto narzędzie do przeglądu już zna klucz i dlatego są wymagane żadne dodatkowe kroki.
+Jeśli używasz bezpłatnej wersji próbnej klucza wygenerowanej przez narzędzie do przeprowadzania przeglądów, narzędzie to będzie już znało klucz i dlatego dodatkowe kroki nie są wymagane.
 
 ## <a name="prepare-your-video-for-review"></a>Przygotowywanie filmu wideo do przeglądu
 
@@ -58,7 +57,7 @@ Dodaj transkrypcji do wideo przeglądu. Wideo musi być opublikowane w trybie on
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
 
 1. Nadaj projektowi nazwę **VideoTranscriptReviews**.
 
@@ -73,7 +72,7 @@ Zainstaluj następujące pakiety NuGet projektu TermLists.
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
 
 Modyfikowanie programu za pomocą instrukcji w następujący sposób.
 
@@ -87,7 +86,7 @@ Modyfikowanie programu za pomocą instrukcji w następujący sposób.
     using Newtonsoft.Json;
 
 
-### <a name="add-private-properties"></a>Dodawanie właściwości prywatne
+### <a name="add-private-properties"></a>Dodawanie właściwości prywatnych
 
 Dodaj następujące właściwości prywatnej do przestrzeni nazw VideoTranscriptReviews, klasy programu.
 
@@ -155,7 +154,7 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReview
 
 ## <a name="create-a-video-review"></a>Utwórz Przegląd wideo
 
-Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
@@ -204,9 +203,9 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy p
     }
 
 > [!NOTE]
-> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych). Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usługi Content Moderator ma limit szybkości wyrażany w żądaniach na sekundę (RPS). Po przekroczeniu tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 ## <a name="add-transcript-to-video-review"></a>Dodaj transkrypcji do wideo przeglądu
 
@@ -215,7 +214,7 @@ Dodaj transkrypcji do wideo weryfikacji z **ContentModeratorClient.Reviews.AddVi
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
 1. A **Stream** obiekt, który zawiera transkrypcję.
 
-Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Format ścieżki tekstu wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
+Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Tekst wideo w sieci Web śledzi Format](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
 > Zapis próbki jest używana w formacie VTT. W rozwiązaniu do świata rzeczywistego, użyj usługi Azure Media Indexer [Generowanie transkrypcji](https://docs.microsoft.com/azure/media-services/media-services-index-content) z filmu wideo.
@@ -240,7 +239,7 @@ Dodaj następującą definicję metody do przestrzeni nazw VideotranscriptReview
 
 ## <a name="add-a-transcript-moderation-result-to-video-review"></a>Dodaj wynik Moderowanie transkrypcji do wideo przeglądu
 
-Oprócz dodawania transkrypcji do wideo przeglądu, można też dodać wynik Moderowanie tej transkrypcji. Możesz to zrobić za pomocą **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
+Oprócz dodawania transkrypcji do wideo przeglądu, można też dodać wynik Moderowanie tej transkrypcji. Możesz to zrobić za pomocą **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
 
 **AddVideoTranscriptModerationResult** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
@@ -252,7 +251,7 @@ Oprócz dodawania transkrypcji do wideo przeglądu, można też dodać wynik Mod
 - **Termin**. Ciąg, który zawiera wyrażenie.
 - **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w transkrypcji, w którym znajdują się warunki.
 
-Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Format ścieżki tekstu wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
+Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Tekst wideo w sieci Web śledzi Format](https://www.w3.org/TR/webvtt1/).
 
 Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu. Ta metoda przesyła transkrypcję, aby **ContentModeratorClient.TextModeration.ScreenText** metody. Również tłumaczy wynik na IList<TranscriptModerationBodyItem>i przekazuje do **AddVideoTranscriptModerationResult**.
 
@@ -321,7 +320,7 @@ Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy p
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
+## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
 
 Dodaj **Main** definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu. Na koniec można zamknąć, klasę Program i VideoTranscriptReviews przestrzeni nazw.
 
@@ -358,7 +357,7 @@ Dodaj **Main** definicję metody do przestrzeni nazw VideoTranscriptReviews, kla
         }
     }
 
-## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
+## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
 
 Po uruchomieniu aplikacji, zobaczysz dane wyjściowe w następujących wierszach:
 

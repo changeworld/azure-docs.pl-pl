@@ -1,34 +1,17 @@
 ---
-title: Debugowanie modelu - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Jak debugować błędy wygenerowane przez moduły Train Model i Score Model w usłudze Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
-ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268890"
+Tytuł: Debugowanie usługi titleSuffix modelu: Opis usługi Azure Machine Learning Studio: Jak debugować błędy wygenerowane przez moduły Train Model i Score Model w usłudze Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2017
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debugowanie modelu w usłudze Azure Machine Learning Studio
 
-W tym artykule opisano potencjalne przyczyny, dlaczego jedną z następujących dwóch błędów można napotkać podczas uruchamiania modelu:
+Gdy używany jest model, mogą występować następujące błędy:
 
 * [Train Model] [ train-model] moduł generuje błąd 
 * [Score Model] [ score-model] moduł generuje nieprawidłowe wyniki 
 
+W tym artykule opisano potencjalne przyczyny tych błędów.
 
 
 ## <a name="train-model-module-produces-an-error"></a>Generuje błąd, Train Model modułu
@@ -42,7 +25,7 @@ W tym artykule opisano potencjalne przyczyny, dlaczego jedną z następujących 
 
 Ten moduł może powodować błąd w następujących przypadkach:
 
-1. Kolumna etykiety została określona nieprawidłowo. Może to nastąpić, jeśli wybrano więcej niż jedną kolumnę jako etykieta lub wybrano nieprawidłowy indeks. Na przykład jeśli indeks kolumny, 30 jest używany z wejściowego zestawu danych, która zawiera kolumny tylko 25, stosuje się drugim przypadku.
+1. Kolumna etykiety została określona nieprawidłowo. Może to nastąpić, jeśli wybrano więcej niż jedną kolumnę jako etykieta lub wybrano nieprawidłowy indeks. Na przykład jeśli indeks kolumny, 30 jest używany z wejściowego zestawu danych, która zawiera tylko 25 kolumny, stosuje się drugim przypadku.
 
 2. Zestaw danych nie zawiera żadnych kolumn funkcji. Na przykład jeśli wejściowy zestaw danych zawiera tylko jedną kolumnę, która jest oznaczona jako kolumna etykiety, będą istnieć żadne funkcje, dzięki którym można utworzyć modelu. W tym przypadku [Train Model] [ train-model] moduł generuje błąd.
 
@@ -59,15 +42,15 @@ W typowym eksperymentów szkolenia i testowania w trybie uczenia nadzorowanego [
 1. Dane wyjściowe trenowanego modelu, z [Train Model] [ train-model] modułu.
 2. Oceniania zestawu danych, który różni się od zbioru danych używanego do nauczenia modelu.
 
-Istnieje możliwość, że nawet jeśli eksperymentu zakończy się powodzeniem, [Score Model] [ score-model] moduł generuje nieprawidłowe wyniki. Może to spowodować na to kilka scenariuszy:
+Istnieje możliwość, że nawet jeśli eksperymentu zakończy się powodzeniem, [Score Model] [ score-model] moduł generuje nieprawidłowe wyniki. Kilka scenariuszy może być przyczyną tego problemu, do wykonania:
 
 1. Jeśli określona etykieta jest podzielone na kategorie i jest uczony model regresji, danych, niepoprawne dane wyjściowe może zostać wytworzony przez [Score Model] [ score-model] modułu. Jest to spowodowane regresji wymaga zmiennej ciągłej odpowiedzi. W takim wypadku byłoby bardziej odpowiednie do użycia model klasyfikacji. 
 
-2. Podobnie jeśli model klasyfikacji zostały przeszkolone na zestaw danych o liczb zmiennoprzecinkowych w kolumnie Etykieta, może powodować niepożądane wyniki. Jest to spowodowane klasyfikacji wymaga zmiennej dyskretnych odpowiedzi, który dopuszcza tylko wartości zakresu przez ograniczone i zwykle dość małe, zestaw klas.
+2. Podobnie jeśli model klasyfikacji zostały przeszkolone na zestaw danych o liczb zmiennoprzecinkowych w kolumnie Etykieta, może powodować niepożądane wyniki. Jest to spowodowane klasyfikacji wymaga zmiennej dyskretnych odpowiedzi, który dopuszcza tylko wartości zakresu przez ograniczone i małe, zestaw klas.
 
 3. Jeśli oceniania zestawu danych nie zawiera wszystkie funkcje, które są używane do nauczenia modelu, [Score Model] [ score-model] generuje błąd.
 
-4. Jeśli wiersz w oceniania zestaw danych zawiera Brak wartości lub wartość infinite dla żadnej z jej funkcji [Score Model] [ score-model] nie generuje żadnych danych wyjściowych odpowiadający tego wiersza.
+4. Jeśli wiersz w oceniania zestaw danych zawiera Brak wartości lub wartość infinite dla żadnej z jej funkcji [Score Model] [ score-model] nie generuje żadnych danych wyjściowych, odpowiadający tego wiersza.
 
 5. [Score Model] [ score-model] może tworzyć identyczne dane wyjściowe dla wszystkich wierszy w zestawie danych oceniania. To może być fakt, na przykład podczas próby klasyfikacji przy użyciu decyzji lasów, jeśli minimalna liczba próbek na węzeł liścia jest wybierany być większa niż liczba dostępnych przykładów szkoleniowych.
 

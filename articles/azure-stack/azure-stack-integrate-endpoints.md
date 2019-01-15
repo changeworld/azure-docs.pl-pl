@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 23c2206a873dc37f5b4f40e0c692e6a35869c419
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 314656fa276326d96684e49e2804ac393eeb606e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106483"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303827"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -39,14 +39,14 @@ Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Portal (administrator)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
-|Adminhosting | *.adminhosting. \<region >. \<fqdn > | HTTPS | 443 |
+|Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
 |Usługa Azure Resource Manager (administrator)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
 |Portal (użytkownik)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
 |Usługa Azure Resource Manager (użytkownik)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Lista odwołania certyfikatów|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP I UDP|53|
-|Hosting | * .hosting. \<region >. \<fqdn > | HTTPS | 443 |
+|Hosting | *.hosting.\<region>.\<fqdn> | HTTPS | 443 |
 |Usługa Key Vault (użytkownik)|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Usługa Key Vault (administrator)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Kolejka magazynu|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
@@ -70,12 +70,12 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 
 |Przeznaczenie|Adres URL|Protokół|Porty|
 |---------|---------|---------|---------|
-|Tożsamość|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>Office.com|HTTP<br>HTTPS|80<br>443|
+|Tożsamość|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|
 |Syndykacja witryny Marketplace|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
 |Akt & poprawki|https://&#42;.azureedge.net|HTTPS|443|
 |Rejestracja|https://management.azure.com|HTTPS|443|
-|Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.NET|HTTPS|443|
-|Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+|Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 |NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|
 |DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|
 |LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|

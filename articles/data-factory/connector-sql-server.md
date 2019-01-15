@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c58c77cb20f269c3a11615ccebf0bdc9cce0d86
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230814"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306169"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,11 +95,11 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi S
                 "type": "SecureString",
                 "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
             },
-             "userName": "<domain\\username>",
-             "password": {
+            "userName": "<domain\\username>",
+            "password": {
                 "type": "SecureString",
                 "value": "<password>"
-             }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -238,9 +238,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -253,7 +253,7 @@ Aby skopiować dane do programu SQL Server, należy ustawić typ ujścia w dzia�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type ujścia działania kopiowania: **SqlSink** | Yes |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10 000) |
+| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10000) |
 | writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania.<br/>Dozwolone wartości to: przedziału czasu. Przykład: "00: 30:00" (30 minut). |Nie |
 | preCopyScript |Określ zapytanie SQL, działanie kopiowania do wykonania przed zapisaniem danych do programu SQL Server. Jej będzie można wywołać tylko raz na kopiowania Uruchom. Ta właściwość umożliwia czyszczenie wstępnie załadowanych danych. |Nie |
 | sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób dotyczą źródła danych do tabeli docelowej, np. czy wykonuje operację UPSERT lub przekształcenie za pomocą z własną logiką biznesową. <br/><br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |
@@ -343,8 +343,8 @@ Ta sekcja zawiera przykład, który kopiuje dane z tabeli źródłowej, za pomoc
 ```sql
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 
@@ -353,9 +353,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 
@@ -475,7 +475,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 Funkcja procedura składowana wykorzystuje [parametry Table-Valued](https://msdn.microsoft.com/library/bb675163.aspx).
 
 >[!NOTE]
->Jeśli piszesz na typ danych pieniądze/Smallmoney przez wywoływanie procedury składowanej, mogą być zaokrąglane wartości. Określ odpowiedni typ danych w TVP jako dziesiętne zamiast pieniądze/Smallmoney, aby uniknąć. 
+>Jeśli piszesz na typ danych pieniądze/Smallmoney przez wywoływanie procedury składowanej, mogą być zaokrąglane wartości. Określ odpowiedni typ danych w TVP jako dziesiętne zamiast pieniądze/Smallmoney, aby uniknąć.
 
 ## <a name="data-type-mapping-for-sql-server"></a>Mapowanie dla programu SQL server — typ danych
 
@@ -534,7 +534,6 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 4. Przełącz się do **adresów IP** kartę. Przewiń w dół, zobacz **IPWszystkie** sekcji. Zanotuj **TCP Port** (wartość domyślna to **1433**).
 5. Tworzenie **reguły zapory Windows** na maszynie, aby zezwolić na przychodzący ruch za pośrednictwem tego portu.  
 6. **Weryfikowanie połączenia**: Aby połączyć się z serwerem SQL przy użyciu w pełni kwalifikowanej nazwy, należy użyć programu SQL Server Management Studio na innej maszynie. Na przykład: `"<machine>.<domain>.corp.<company>.com,1433"`.
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

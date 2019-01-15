@@ -1,23 +1,21 @@
 ---
-title: Jak wybierać algorytmy w usłudze Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Jak wybrać algorytmy
+titleSuffix: Azure Machine Learning Studio
 description: Jak wybrać algorytmy Azure Machine Learning Studio uczenie nadzorowane i nienadzorowane w eksperymentach klastrowania, klasyfikacji lub regresji.
 services: machine-learning
-author: ericlicoding
-ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.author: amlstudiodocs
-editor: cgronlun
-tags: ''
-ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 20debfe2a1f3cf92e1a90867ca2b3a01852f7f9c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256931"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267355"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 
@@ -139,12 +137,12 @@ Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakł
 | [wzmocnione drzewo decyzyjnego](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Zużycie pamięci |
 | [kwantyl szybkie lasu](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Zamiast prognozy punktu dystrybucji |
 | [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](https://go.microsoft.com/fwlink/?LinkId=402867) |
-| [Poissona](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Z technicznego punktu widzenia dziennika liniowych. Do prognozowania liczby |
+| [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Z technicznego punktu widzenia dziennika liniowych. Do prognozowania liczby |
 | [Liczba porządkowa](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Do przewidywania porządkowanie ranga |
 | **Wykrywanie anomalii** | | | | | |
 | [Obsługa maszyny wektora](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Szczególnie przydatne podczas zestawy funkcji duże |
 | [Wykrywanie anomalii oparte na analizie PCA](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
-| [K-średnich](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Algorytmu klastrowania |
+| [K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Algorytmu klastrowania |
 
 **Właściwości algorytmu:**
 

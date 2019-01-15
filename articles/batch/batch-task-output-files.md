@@ -13,12 +13,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 685f034dfa3b312c461f7313c0f85a256838a8d2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0aa0be7ae9658259b327014c5678777c963e6cb5
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539555"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302820"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań do usługi Azure Storage za pomocą interfejsu API usługi Batch
 
@@ -50,7 +50,7 @@ Na przykład jeśli piszesz aplikację w języku C#, użyj [biblioteki klienta u
 
 ```csharp
 CloudBlobContainer container = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
-await conainer.CreateIfNotExists();
+await container.CreateIfNotExists();
 ```
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Uzyskiwanie sygnatury dostępu współdzielonego dla kontenera

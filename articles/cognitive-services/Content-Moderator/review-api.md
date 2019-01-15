@@ -1,23 +1,23 @@
 ---
 title: Moderowanie zadania i przeglądy człowieka w pętli - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Zastosowanie ludzkiego nadzoru do wspomaganego maszynowo moderowania uzyskać jak najlepsze rezultaty.
+description: Łączenie wspomaganego maszynowo moderowania oraz możliwości człowieka w pętli za pomocą Content Moderator Przegląd interfejsu API usługi Azure, aby uzyskać najlepsze wyniki dla Twojej firmy.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 1/21/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a348b18d1ecc9c0e4405c54a8e554d932781ec92
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223259"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265349"
 ---
-# <a name="moderation-jobs-and-reviews"></a>Moderowanie zadania i przeglądy
+# <a name="content-moderation-jobs-and-reviews"></a>Moderowanie zawartości zadania i przeglądy
 
 Łączenie wspomaganego maszynowo moderowania oraz możliwości człowieka w pętli za pomocą usługi Azure Content Moderator [API przeglądu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) Aby uzyskać najlepsze wyniki dla Twojej firmy.
 
@@ -55,12 +55,12 @@ Użyj `Job.Get` operacji i identyfikator zadania, aby uzyskać szczegółowe inf
 
 Dane wejściowe zawierają następujące informacje:
 
-- Identyfikator zespołu przeglądu: identyfikator zadania zwracany przez poprzednią operację
+- Identyfikator zespołu przeglądu: Identyfikator zadania zwracany przez poprzednią operację
 
 Odpowiedź zawiera następujące informacje:
 
 - Identyfikator utworzono Przegląd. (Aby uzyskać wyniki ostateczny Przegląd, użyj tego Identyfikatora).
-- Stan zadania (zakończone lub w toku): tagi przypisane Moderowanie (pary klucz wartość).
+- Stan zadania (zakończone lub w toku): Moderowanie przypisane tagi (pary klucz wartość).
 - Raport wykonania zadania.
  
  
@@ -110,7 +110,7 @@ Odpowiedź zawiera następujące informacje:
             ]
         }
  
-![Przegląd obrazu dla moderatorów ludzi](images/ocr-sample-image.PNG)
+![Przeglądanie obrazu przez moderatorów-ludzi](images/ocr-sample-image.PNG)
 
 ## <a name="review-operations"></a>Przegląd operacji
 

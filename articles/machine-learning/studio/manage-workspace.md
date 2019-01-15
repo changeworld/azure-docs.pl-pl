@@ -1,26 +1,7 @@
 ---
-title: Zarządzanie obszarem roboczym usługi Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning, wdrażanie i zarządzanie usługami sieci web interfejsu API uczenia Maszynowego
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/27/2017
-ms.openlocfilehash: 8c5dfd82a7bf0d1985869c8de4e3b313ef885947
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270777"
+Tytuł: Zarządzanie titleSuffix obszaru roboczego usługi Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zarządzanie dostępem do usługi Azure Machine Learning obszarów roboczych i wdrożenia oraz zarządzanie usługami usług sieci web interfejsu API uczenia Maszynowego: uczenia maszynowego ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 02/27/2017
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Zarządzanie obszarem roboczym usługi Azure Machine Learning Studio
 

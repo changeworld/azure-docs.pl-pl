@@ -1,6 +1,6 @@
 ---
 title: Weryfikowanie kopii zapasowej usługi Azure Stack przy użyciu ASDK | Dokumentacja firmy Microsoft
-description: Jak zweryfikować backup systemów integerated dla usługi Azure Stack przy użyciu ASDK.
+description: Jak zweryfikować za pomocą ASDK kopii zapasowych zintegrowanych systemów usługi Azure Stack.
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 181f37fb72584e18cc963ba1ffde070379a1b0c6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12d5c2448bc6a5241f6aa4e283acdf9c5a0f602a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961466"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265655"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Weryfikacja kopii zapasowej usługi Azure Stack za pomocą ASDK
 Po wdrażanie usługi Azure Stack i Inicjowanie obsługi administracyjnej zasobów użytkownika, takich jak oferty, plany, limity przydziału i subskrypcji, wykonaj następujące czynności [włączenia kopii zapasowej infrastruktury usługi Azure Stack](../azure-stack-backup-enable-backup-console.md). Planowanie i uruchamianie infrastruktury regularnego tworzenia kopii zapasowych zapewni, że danych związanych z zarządzaniem infrastrukturą nie zostaną utracone w przypadku poważnej sprzętu lub awaria usługi.
 
 > [!TIP]
-> Zaleca się, że możesz [zapisywać kopie zapasowe na żądanie](../azure-stack-backup-back-up-azure-stack.md) przed rozpoczęciem tej procedury, aby zapewnić kopię infrastrcuture udostępnianie najnowszych danych. Upewnij się przechwycić identyfikator kopii zapasowej, po pomyślnym wykonaniu kopii zapasowej. Ten identyfikator będzie wymagane podczas odzyskiwania w chmurze. 
+> Zaleca się, że możesz [zapisywać kopie zapasowe na żądanie](../azure-stack-backup-back-up-azure-stack.md) przed rozpoczęciem tej procedury, aby zapewnić kopię udostępnianie najnowszych danych infrastruktury. Upewnij się przechwycić identyfikator kopii zapasowej, po pomyślnym wykonaniu kopii zapasowej. Ten identyfikator będzie wymagane podczas odzyskiwania w chmurze. 
 
 Tworzenie kopii zapasowych usługi Azure Stack infrastruktury zawierają ważne dane dotyczące chmury można przywrócić podczas ponownego wdrażania usługi Azure Stack. ASDK służy do sprawdzania poprawności te kopie zapasowe bez wywierania wpływu na produkcyjne chmury. 
 
@@ -54,7 +54,7 @@ Przed rozpoczęciem wdrożenie w chmurze odzyskiwania ASDK, upewnij się, że ma
 |Ścieżka udziału kopii zapasowej.|Ścieżka udziału plików UNC najnowszej kopii zapasowej usługi Azure Stack, która będzie służyć do odzyskiwania informacji o infrastrukturze Azure Stack. Tego udziału lokalnego zostaną utworzone w procesie wdrażania odzyskiwania chmury.|
 |Kopię zapasową klucza szyfrowania.|Klucz szyfrowania, który został użyty do zaplanować tworzenie kopii zapasowych do uruchamiania przy użyciu portalu administracyjnego usługi Azure Stack.|
 |Identyfikator kopii zapasowej do przywrócenia.|Identyfikator kopii zapasowych w formie alfanumeryczne "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", który identyfikuje kopii zapasowej można przywrócić podczas odzyskiwania w chmurze.|
-|Adres IP serwera czasu.|Adres IP do serwera z prawidłową godzinę, takich jak 132.163.97.2, jest wymagane do wdrożenia usługi Azure Stack.|
+|Time server IP.|Adres IP do serwera z prawidłową godzinę, takich jak 132.163.97.2, jest wymagane do wdrożenia usługi Azure Stack.|
 |Hasło certyfikatu zewnętrznego.|Hasło dla certyfikatu zewnętrznego, używane przez usługę Azure Stack. Kopii zapasowej urzędu certyfikacji zawiera certyfikaty zewnętrzne, które mają być przywracane przy użyciu tego hasła.|
 |     |     | 
 

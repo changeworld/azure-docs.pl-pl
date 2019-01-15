@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5a5d052052be447ea2ccbd9231d3b03d38c7615c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420085"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266947"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Konfigurowanie serwera Tomcat7 na maszynie wirtualnej systemu Linux przy użyciu platformy Azure
 Apache Tomcat (lub po prostu serwer Tomcat będący również nazywanych Tomcat Dżakarta) to serwer sieci web typu open source i kontener serwletów opracowane przez Apache Software Foundation (ASF). Tomcat implementuje Java Servlet i JavaServer Pages (JSP) specyfikacji firmy Sun Microsystems. Tomcat zapewnia czyste Java HTTP środowisku serwera sieci web do uruchamiania kodu języka Java. W najprostszej konfiguracji Tomcat działa w procesie jednego systemu operacyjnego. Ten proces jest uruchamiany maszyny wirtualnej Java (JVM). Każde żądanie HTTP z przeglądarki do serwera Tomcat są przetwarzane jako osobne wątek w procesie serwera Tomcat.  
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). W tym artykule opisano sposób korzystania z klasycznego modelu wdrażania. Zaleca się, że większości nowych wdrożeń korzystać z modelu usługi Resource Manager. Aby użyć szablonu usługi Resource Manager, aby wdrożyć maszynę Wirtualną Ubuntu, z Open JDK i Tomcat, zobacz [w tym artykule](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługa Azure Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). W tym artykule opisano sposób korzystania z klasycznego modelu wdrażania. Zaleca się, że większości nowych wdrożeń korzystać z modelu usługi Resource Manager. Aby użyć szablonu usługi Resource Manager, aby wdrożyć maszynę Wirtualną Ubuntu, z Open JDK i Tomcat, zobacz [w tym artykule](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 W tym artykule spowoduje zainstalowanie serwera Tomcat7 na obrazie systemu Linux i wdrożyć ją na platformie Azure.  
@@ -75,10 +75,10 @@ Wykonaj następujące kroki, aby wygenerować klucz uwierzytelniania SSH.
 
 4. Skonfiguruj inne ustawienia zgodnie z potrzebami, a następnie kliknij przycisk **Utwórz**.  
 
-## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Faza 2: Przygotowanie maszyny wirtualnej do serwera Tomcat7
+## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Faza 2: Przygotowywanie maszyny wirtualnej dla serwera Tomcat7
 W tej fazie zostanie konfigurowania punktu końcowego dla serwera Tomcat ruchu, a następnie nawiązać połączenie z nową maszyną wirtualną.
 
-### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otwarcia portu HTTP, aby zezwolić na dostęp w sieci web
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otwórz port HTTP, aby zezwolić na dostęp w sieci web
 Punkty końcowe na platformie Azure składa się z protokołu TCP lub UDP, wraz z portem publicznych i prywatnych. Port prywatny jest numer portu, którego usługa nasłuchuje na maszynie wirtualnej. Port publiczny jest port nasłuchujący usłudze w chmurze Azure zewnętrznie dla ruchu przychodzącego, oparty na Internecie.  
 
 TCP port 8080 jest domyślny numer portu używanego do nasłuchiwania serwera Tomcat. Ten port jest otwarty z punktem końcowym usługi platformy Azure, możesz i innych klientów internetowych mają dostęp do strony serwera Tomcat.  
@@ -98,7 +98,7 @@ TCP port 8080 jest domyślny numer portu używanego do nasłuchiwania serwera To
       ![Zrzut ekranu z interfejsu użytkownika, który zawiera polecenie Dodaj, Port publiczny i Port prywatny][7]
 4. Kliknij przycisk **OK** można dodać punkt końcowy do maszyny wirtualnej.
 
-### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Łączenie z usługą obraz, który został utworzony
+### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Połączyć się z obrazem, który został utworzony
 Można wybrać dowolne narzędzie SSH, aby nawiązać połączenie z maszyną wirtualną. W tym przykładzie używamy programu PuTTY.  
 
 1. Pobierz nazwę DNS maszyny wirtualnej z portalu.
@@ -114,7 +114,7 @@ Można wybrać dowolne narzędzie SSH, aby nawiązać połączenie z maszyną wi
 4. Po pobraniu, kliknij plik wykonywalny Putty.exe. W konfiguracji programu PuTTY skonfiguruj opcje podstawowego z nazwą hosta i port numer, który jest uzyskiwana z właściwości maszyny wirtualnej.   
 ![Zrzut ekranu przedstawiający opcje nazwy i portu hosta Konfiguracja programu PuTTY][9]
 
-5. W okienku po lewej stronie kliknij **połączenia** > **SSH** > **uwierzytelniania**, a następnie kliknij przycisk **Przeglądaj** do określenia Lokalizacja pliku privateKey.ppk. Plik privateKey.ppk zawiera klucz prywatny, który jest generowany przez program PuTTYgen wcześniej w "faza 1: Tworzenie obrazu" w dalszej części tego artykułu.  
+5. W okienku po lewej stronie kliknij **połączenia** > **SSH** > **uwierzytelniania**, a następnie kliknij przycisk **Przeglądaj** do określenia Lokalizacja pliku privateKey.ppk. Plik privateKey.ppk zawiera klucz prywatny, który jest generowany przez program PuTTYgen wcześniej w "faza 1: Tworzenie obrazu"dalszej części tego artykułu.  
 ![Zrzut ekranu przedstawiający przycisk przeglądania i hierarchii katalogów połączenia][10]
 
 6. Kliknij przycisk **Open** (Otwórz). Użytkownik może otrzymywać alerty, okno komunikatu. Jeśli skonfigurowano nazwę DNS i numer portu poprawnie, kliknij **tak**.
@@ -123,10 +123,10 @@ Można wybrać dowolne narzędzie SSH, aby nawiązać połączenie z maszyną wi
 7. Monit o podanie nazwy użytkownika.  
 ![Zrzut ekranu przedstawiający miejsce wprowadzania nazwy użytkownika][12]
 
-8. Wprowadź nazwę użytkownika, który został użyty do utworzenia maszyny wirtualnej w "faza 1: Tworzenie obrazu" sekcji we wcześniejszej części tego artykułu. Zostanie wyświetlony podobny do poniższego:  
+8. Wprowadź nazwę użytkownika, który został użyty do utworzenia maszyny wirtualnej w "faza 1: Tworzenie obrazu"sekcji we wcześniejszej części tego artykułu. Zostanie wyświetlony podobny do poniższego:  
 ![Zrzut ekranu pokazujący potwierdzenie uwierzytelniania][13]
 
-## <a name="phase-3-install-software"></a>Faza 3: Zainstaluj oprogramowanie
+## <a name="phase-3-install-software"></a>Faza 3: Instalowanie oprogramowania
 Na tym etapie należy zainstalować środowisko uruchomieniowe Java, Tomcat7 i inne składniki serwera Tomcat7.  
 
 ### <a name="java-runtime-environment"></a>Środowisko wykonawcze języka Java
@@ -135,13 +135,13 @@ Tomcat został napisany w języku Java. Zobacz [Azure obsługiwane JDK](https://
 
 #### <a name="install-azure-supported-jdk"></a>Instalowanie platformy Azure, obsługiwany zestaw JDK
 
-Postępuj zgodnie z `apt-get` udokumentowane w instrukcji dotyczących instalacji [Azul Zulu wpisywanie dla platformy Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) witryny sieci Web.
+Postępuj zgodnie z `apt-get` udokumentowane w instrukcji dotyczących instalacji [Azul Zulu Enterprise na platformie Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) witryny sieci Web.
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Upewnij się, że instalacja języka Java zakończyła się powodzeniem
 Aby sprawdzić, czy środowisko wykonawcze języka Java jest poprawnie zainstalowane, można użyć polecenia podobnego do poniższego:  
     Java — w wersji  
 
-Powinien zostać wyświetlony następujący komunikat: ![pomyślne OpenJDK komunikat instalacji][14]
+Powinien zostać wyświetlony komunikat, jak pokazano poniżej: ![Pomyślne komunikat instalacji OpenJDK][14]
 
 
 ### <a name="install-tomcat7"></a>Instalowanie serwera Tomcat7
@@ -164,7 +164,7 @@ Użyj **tomcat7 wyszukiwania polecenia apt-cache "sudo"** polecenie, aby wyświe
 
     sudo apt-get install tomcat7-user         #tools to create user instances  
 
-## <a name="phase-4-configure-tomcat7"></a>Faza 4 — Konfigurowanie serwera Tomcat7
+## <a name="phase-4-configure-tomcat7"></a>Faza 4: Konfigurowanie serwera Tomcat7
 Na tym etapie administrowania Tomcat.
 
 ### <a name="start-and-stop-tomcat7"></a>Uruchamianie i zatrzymywanie serwera Tomcat7
@@ -172,7 +172,7 @@ Serwera Tomcat7 uruchamia się automatycznie, gdy należy ją zainstalować. Mo�
 
     sudo /etc/init.d/tomcat7 start
 
-Aby zatrzymać Tomcat7:
+To stop Tomcat7:
 
     sudo /etc/init.d/tomcat7 stop
 
@@ -212,7 +212,7 @@ Po nawiązaniu połączenia powinny zostać wyświetlone informacje podobne do n
 
   * Port nasłuchiwania serwera Tomcat nie jest taki sam jak port prywatny punktu końcowego maszyny wirtualnej, dla serwera Tomcat ruchu.  
 
-     Sprawdź port publiczny i port prywatny ustawienia punktu końcowego i upewnij się, że port prywatny jest taka sama jak Tomcat port nasłuchujący. Zobacz "faza 1: Tworzenie obrazu" dalszej części tego artykułu, aby uzyskać instrukcje na temat konfigurowania punktów końcowych dla maszyny wirtualnej.  
+     Sprawdź port publiczny i port prywatny ustawienia punktu końcowego i upewnij się, że port prywatny jest taka sama jak Tomcat port nasłuchujący. Zobacz "faza 1: Tworzenie obrazu"sekcji tego artykułu, aby uzyskać instrukcje na temat konfigurowania punktów końcowych dla maszyny wirtualnej.  
 
      Aby określić numer portu nasłuchiwania serwera Tomcat, otwórz /etc/httpd/conf/httpd.conf (wersja firmy Red Hat) lub /etc/tomcat7/server.xml (wersja Debian). Domyślnie portu nasłuchiwania serwera Tomcat to 8080. Oto przykład:  
 

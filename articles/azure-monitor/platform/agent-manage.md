@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 0680140d9f4f4e77b5029c30c37f4c531652c6f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119122"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262493"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzania i konserwacji agenta usługi Log Analytics dla Windows i Linux
 
@@ -175,7 +175,7 @@ Użyj jednej z poniższych procedur można odinstalować agenta Windows lub Linu
 Pobrany plik agenta jest pakietem instalacyjnym niezależna utworzonych za pomocą IExpress. Program instalacyjny programu agent i pliki pomocnicze są zawarte w pakiecie i muszą zostać wyodrębnione w celu poprawnego odinstalowania przy użyciu wiersza polecenia, pokazano w poniższym przykładzie.
 
 1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
-2. Aby wyodrębnić pliki instalacyjne agenta z wiersza polecenia z podwyższonym poziomem uprawnień uruchom `extract MMASetup-<platform>.exe` i zostanie wyświetlony monit dla ścieżki wyodrębnić pliki do. Alternatywnie, można określić ścieżkę przez przekazanie argumentów `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Aby uzyskać więcej informacji na temat swtiches wiersza polecenia, obsługiwane przez IExpress, zobacz [przełączniki wiersza polecenia dla IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , a następnie zaktualizuj przykład do własnych potrzeb.
+2. Aby wyodrębnić pliki instalacyjne agenta z wiersza polecenia z podwyższonym poziomem uprawnień uruchom `extract MMASetup-<platform>.exe` i zostanie wyświetlony monit dla ścieżki wyodrębnić pliki do. Alternatywnie, można określić ścieżkę przez przekazanie argumentów `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Aby uzyskać więcej informacji na temat parametrów wiersza polecenia obsługiwane przez IExpress, zobacz [przełączniki wiersza polecenia dla IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , a następnie zaktualizuj przykład do własnych potrzeb.
 3. W wierszu polecenia wpisz `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Agent systemu Linux

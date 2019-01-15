@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: 50a49a8bcb6bec6c177823ea61cc340da6876357
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9bfd748e6b10106587e3fce64e15d7f1f6d50e59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602090"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261591"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web PaaS dla FedRAMP
 
@@ -98,7 +98,7 @@ Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyśl
 ### <a name="data-at-rest"></a>Dane magazynowane
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
 
-**Usługa Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption).
+**Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption).
 
 **Usługa Azure Disk Encryption**
 [usługi Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) korzysta z funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Azure Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
@@ -165,7 +165,7 @@ Ponadto następujące rozwiązania do monitorowania, są uwzględnione w ramach 
 
 Diagram przepływu danych dla tej architektury referencyjnej jest dostępne dla [Pobierz](https://aka.ms/fedrampPaaSWebAppDFD) lub znajdują się poniżej. Ten model może pomóc klientom w zrozumieniu punkty potencjalne ryzyko w ramach infrastruktury systemu podczas wprowadzania zmian.
 
-![Aplikacja sieci Web PaaS dla model zagrożeń FedRAMP](images/fedramp-paaswa-threat-model.png?raw=true "PaaS Web Distributed modelu zagrożeń FedRAMP")
+![Aplikacja sieci Web PaaS dla model zagrożeń FedRAMP](images/fedramp-paaswa-threat-model.png?raw=true "aplikacji sieci Web PaaS dla FedRAMP model zagrożeń")
 
 ## <a name="compliance-documentation"></a>Dokumentacja zgodności
 [Zabezpieczeń platformy Azure i plan zgodność — FedRAMP wysokiej klienta odpowiedzialność macierzy](https://aka.ms/blueprinthighcrm) Wyświetla wszystkie kontrolki zabezpieczeń wymagane przez programowi FedRAMP High linii bazowej. Macierz oznacza wykonania każdego formantu odpowiedzialność firmy Microsoft, klienta i czy jest współużytkowana przez dwa.

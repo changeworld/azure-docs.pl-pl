@@ -16,12 +16,12 @@ ms.custom: ''
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 91ac75f3cb41f73ea18595138969dfb7b1444173
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037383"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263515"
 ---
 # <a name="redeploy-the-asdk"></a>Ponowne wdrażanie ASDK
 W tym artykule dowiesz się, jak i ponowne wdrażanie usługi Azure Stack Development Kit (ASDK) w środowisku nieprodukcyjnym. Ponieważ uaktualnianie ASDK nie jest obsługiwane, należy całkowicie ją ponownie wdrożyć można przenieść do nowszej wersji. Można także wdrożyć ponownie ASDK w dowolnym momencie po prostu chcesz zacząć od początku, od podstaw.
@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak i ponowne wdrażanie usługi Azure Stack Develo
 ## <a name="remove-azure-registration"></a>Usuń rejestrację platformy Azure 
 Jeśli instalacja ASDK zostały wcześniej zarejestrowane za pomocą platformy Azure, należy usunąć zasób rejestracji przed ponownego wdrażania ASDK. Zarejestruj ponownie aplikację ASDK umożliwiające dostępność elementów w portalu marketplace podczas ponownego wdrażania ASDK. Jeśli nie została wcześniej zarejestrowana ASDK z subskrypcją platformy Azure, możesz pominąć tę sekcję.
 
-Aby usunąć zasób rejestracji, użyj **AzsRegistration Usuń** polecenia cmdlet, aby wyrejestrować usługi Azure Stack. Następnie należy użyć **AzureRMRsourceGroup Usuń** polecenia cmdlet, aby usunąć grupę zasobów usługi Azure Stack z subskrypcji platformy Azure:
+Aby usunąć zasób rejestracji, użyj **AzsRegistration Usuń** polecenia cmdlet, aby wyrejestrować usługi Azure Stack. Następnie należy użyć **Remove-AzureRMResourceGroup** polecenia cmdlet, aby usunąć grupę zasobów usługi Azure Stack z subskrypcji platformy Azure:
 
 1. Otwórz konsolę programu PowerShell jako administrator na komputerze, który ma dostęp do uprzywilejowanych punktu końcowego. ASDK to komputerze-hoście development kit.
 

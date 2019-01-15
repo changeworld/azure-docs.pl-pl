@@ -1,26 +1,8 @@
 ---
-title: Krok 2. Przekazywanie danych do eksperymentu usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
-description: 'Krok 2 programowanie przewodnik rozwiązania do analizy predykcyjnej: Przekaż przechowywanych danych publicznych do usługi Azure Machine Learning Studio.'
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cgronlun
-ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
-ms.service: machine-learning
-ms.component: studio
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 90a73de4177cec74187da852709137d77d60b4d4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261454"
+Tytuł: "Krok 2: Przekazywanie danych do eksperymentu usługi Machine Learning Studio' titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 2 programowanie przewodnik rozwiązania do analizy predykcyjnej: Przekazywanie przechowywanych danych publicznych do usługi Azure Machine Learning Studio. "
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>Przewodnik, krok 2 Przekazywanie istniejących danych do eksperymentu usługi Azure Machine Learning Studio
 Jest to drugi etap tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)

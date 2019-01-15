@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: a018740a44424fd138b787b86b0f527d897f4188
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230547"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261234"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -36,7 +36,7 @@ Po usunięciu projekt usługi Azure Migrate usuwa projekt migracji, wraz ze wszy
 1. Przejdź do obszaru roboczego usługi Log Analytics, dołączonych do projektu.
    a. Jeśli projekt migracji nie zostały jeszcze usunięte, znajduje się łącze do obszaru roboczego ze strony Przegląd projektu w sekcji podstawowe elementy.
 
-   ![Obszar roboczy LA](./media/troubleshooting-general/LA-workspace.png)
+   ![LA Workspace](./media/troubleshooting-general/LA-workspace.png)
 
    b. Jeśli został już usunięty projektu migracji, kliknij przycisk **grup zasobów** w okienku po lewej stronie w witrynie Azure portal i przejdź do grupy zasobów, w którym obszar roboczy został utworzony, a następnie przejdź do jej.
 2. Postępuj zgodnie z instrukcjami [w tym artykule](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) można usunąć obszaru roboczego.
@@ -98,7 +98,7 @@ Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zi
 
 1. Upewnij się, jeśli plik OVA modułu zbierającego migracji platformy Azure jest ona pobierana poprawnie przez sprawdzenie wartości mieszania. Aby zweryfikować wartość skrótu, zapoznaj się z [artykułem](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Jeśli wartość skrótu nie jest zgodny, należy ponownie pobrać plik OVA i ponowieniem próby wdrożenia.
 2. Jeśli problemy nadal występują, a plik OVF jest wdrażany przy użyciu klienta oprogramowania VMware vSphere, spróbuj wdrożyć go za pomocą internetowego klienta programu vSphere. Jeśli nadal nie, spróbuj użyć innej przeglądarki sieci web.
-3. Jeśli są przy użyciu klienta sieci web vSphere, a następnie w trakcie wdrażania go w programie vcenter Server 6.5, próby wdrożenia OVA bezpośrednio na hoście ESXi, wykonując następujące czynności:
+3. Jeśli są przy użyciu klienta sieci web vSphere, w trakcie wdrażania jej na vCenter Server 6.5 lub 6.7 próby wdrażanie OVA bezpośrednio na hoście ESXi, wykonując następujące czynności:
   - Połączenia z hostem ESXi bezpośrednio (zamiast serwera vCenter) za pomocą klienta usługi sieci web (https:// <*adres IP hosta*> /ui)
   - Przejdź do strony głównej > Spis
   - Kliknij pozycję Plik > szablon OVF wdrażanie > Przejdź do OVA i ukończyć wdrażanie
@@ -156,7 +156,7 @@ Ten problem może wystąpić z powodu problemu z instalacją programu VMware Pow
 2. Jeśli masz już najnowszą wersję modułu zbierającego, ręcznie zainstaluj [program VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) i sprawdź, czy problem został rozwiązany.
 3. Jeśli powyższe nie rozwiązać ten problem, przejdź do folderu C:\Program Files\ProfilerService i Usuń VMware.dll i pliki VimService65.dll istnieje w folderze i ponownie uruchom usługę Azure Migrate Collector w Windows usługi zarządzania (Open " Uruchom ' i typu "services.msc", aby otworzyć Menedżera usługi Windows).
 
-### <a name="error-unabletoconnecttoserver"></a>Błąd UnableToConnectToServer
+### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 
 Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: Brak punktów końcowych nasłuchujących w https://Servername.com:9443/sdk który mógłby odebrać komunikat.
 
@@ -178,7 +178,7 @@ Zabezpieczyć urządzenie Azure Migrate, musisz wykluczyć następujące foldery
 - Usługa Azure Migrate aplikacji sieci Web. Wyklucz wszystkie podfoldery.
   %SystemDrive%\inetpub\wwwroot
 - Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure migrate usługa wymaga RW dostęp do tego folderu.
-  %SYSTEMDRIVE%\Profiler
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>Problemy z wizualizacji zależności
 

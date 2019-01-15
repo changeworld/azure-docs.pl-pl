@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384687"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265894"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo
 
@@ -89,14 +89,14 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 anulowanie i aktualizacje
+#### <a name="211-cancellation-and-updates"></a>2.1.1 unieważnieniu i aktualizacje
 
 Wiadomości mogą być anulowane lub zaktualizowane przez wielu operacji wysyłania wiadomości z tym samym czasie prezentacji i identyfikatora. Czas prezentacji i identyfikator jednoznacznego zidentyfikowania zdarzenia, a ostatni komunikat odebrany przez czas określonych prezentacji, który spełnia ograniczenia wstępne wdrożenie jest komunikat, który jest podjęte. Zaktualizowane zdarzenie zastępuje wszelkie wcześniej Odebrane komunikaty. Ograniczenie wstępne wdrożenie jest czterech sekund. Co najmniej czterech sekund przed chwilą prezentacji Odebrane komunikaty zostaną podjęte.
 
 ## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 odbierania podzielonej zawartości w formacie MP4 (Smooth Streaming)
 Można znaleźć [LIVE FMP4] pozyskiwania wymagania dotyczące transmisji strumieniowej na żywo. Poniższe sekcje zawierają szczegółowe informacje dotyczące pozyskiwania metadanych prezentacji Przekroczono limit czasu.  Przekroczono limit czasu prezentacji metadanych są pozyskiwane jako rozrzedzony śledzenie, która jest zdefiniowana w obu na żywo manifestu polu Serwer (patrz MS SSTR) i pole Movie (moov).  Poszczególne fragmenty rozrzedzone składa się filmu fragmentu pola (moof) oraz nośnika danych ("mdat"), których pole "mdat" jest komunikatu binarnego.
 
-#### <a name="221-live-server-manifest-box"></a>2.2.1 okno manifestu serwera na żywo
+#### <a name="221-live-server-manifest-box"></a>2.2.1 Live Server Manifest Box
 Rozrzedzony śledzenie musi być zadeklarowana w polu manifestu serwera na żywo z \<textstream\> wejścia i musi mieć następujące atrybuty zestawu:
 
 | **Nazwa atrybutu** | **Typ pola** | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                 |
@@ -106,7 +106,7 @@ Rozrzedzony śledzenie musi być zadeklarowana w polu manifestu serwera na żywo
 | manifestOutput     | Wartość logiczna        | Wymagane      | MUSI być "prawda", aby wskazać, czy śledzenie rozrzedzone zostanie osadzony w manifest Smooth klienta.                                                                                                                                                               |
 | Podtyp            | Ciąg         | Wymagane      | MUSI być czterech znaków kodu "Dane".                                                                                                                                                                                                                         |
 | Schemat             | Ciąg         | Wymagane      | MUSI być adres URL lub URN identyfikowanie schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
-| TrackName          | Ciąg         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
+| trackName          | Ciąg         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
 | Skala czasu          | Liczba         | Optional (Opcjonalność)      | MUSI być skali czasu ścieżki nadrzędnej.                                                                                                                                                                                                                      |
 
 -------------------------------------
@@ -157,7 +157,7 @@ Pole MediaDataBox (mdat) musi mieć następujący format:
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 Anulowanie i aktualizacje
+### <a name="224-cancellation-and-updates"></a>2.2.4 unieważnieniu i aktualizacje
 Wiadomości mogą być anulowane lub zaktualizowane przez wielu operacji wysyłania wiadomości z tym samym czasie prezentacji i identyfikatora.  Czas prezentacji i identyfikator jednoznacznego zidentyfikowania zdarzenia. Ostatni komunikat odebrany czas określonych prezentacji spełniającego ograniczenia wstępne wdrożenie jest komunikat, który jest podjęte. Zaktualizowano komunikat zastępuje wszelkie wcześniej Odebrane komunikaty.  Ograniczenie wstępne wdrożenie jest czterech sekund. Co najmniej czterech sekund przed chwilą prezentacji Odebrane komunikaty zostaną podjęte. 
 
 
@@ -400,7 +400,7 @@ Pozyskiwanie Smooth Streaming wymaga, które musi zawierać pola danych (mdat) *
 
 **[NA ŻYWO — FMP4]**  [Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496-12]**  ISO/IEC 14496-12: Część 12 ISO podstawowy media format plików, czwarty wersji 2012-07-15.
+**[ISO-14496-12]** ISO/IEC 14496-12: Część 12 ISO podstawowy media format plików, czwarty wersji 2012-07-15.
 
 **[RTMP]**  ["Firmy adobe w czasie rzeczywistym komunikatów protokołu", 21 grudnia 2012](https://www.adobe.com/devnet/rtmp.html) 
 

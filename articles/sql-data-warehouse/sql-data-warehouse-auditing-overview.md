@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d35ac7cac5c14a7bd57913046e8f4c09a22f177a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260384"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267440"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -107,7 +107,7 @@ Przed rozpoczęciem konfigurowania inspekcji inspekcje wyboru, jeśli używasz [
 
 5. Kliknij przycisk **OK** przycisk, aby zapisać konfigurację szczegółów magazynu.
 6. W obszarze **rejestrowanie przez zdarzenie**, kliknij przycisk **Powodzenie** i **błąd** do rejestrowania wszystkich zdarzeń lub wybierz kategorie poszczególnych zdarzeń.
-7. W przypadku konfigurowania inspekcji dla bazy danych, może być konieczne zmienić parametry połączenia klienta, aby upewnić się, że prawidłowo przechwyconych danych inspekcji. Sprawdź [zmodyfikować nazwy FDQN serwera w parametrach połączenia](sql-data-warehouse-auditing-downlevel-clients.md) tematu dla połączeń klientów niższych poziomów.
+7. W przypadku konfigurowania inspekcji dla bazy danych, może być konieczne zmienić parametry połączenia klienta, aby upewnić się, że prawidłowo przechwyconych danych inspekcji. Sprawdź [zmodyfikować nazwę FQDN serwera w parametrach połączenia](sql-data-warehouse-auditing-downlevel-clients.md) tematu dla połączeń klientów niższych poziomów.
 8. Kliknij przycisk **OK**.
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
@@ -196,7 +196,7 @@ Częściowa lista "Klienci z obniżonym poziomem" obejmuje:
 * JDBC (JDBC obsługują TDS w wersji 7.4, funkcja przekierowywania TDS nie jest w pełni obsługiwany)
 * Tedious (dla środowiska Node.JS)
 
-**Uwaga:** poprzedni serwer modyfikacji nazwy FDQN może być przydatne także zastosowanie zasady inspekcji usługi SQL Server poziom bez na potrzeby konfiguracji krok w każdej bazie danych (tymczasowe ograniczenie).     
+**Uwaga:** Poprzedni serwer modyfikacji w pełni kwalifikowaną nazwę domeny może być przydatne, również w odniesieniu do zasady inspekcji usługi SQL Server poziom bez potrzeby kroku konfiguracji, w każdej bazie danych (tymczasowe ograniczenie).     
 
 
 

@@ -1,26 +1,8 @@
 ---
-title: Użyj przykładowych zestawów danych — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
-ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270488"
+Tytuł: Użyj przykładowych titleSuffix zestawy danych: Opis usługi Azure Machine Learning Studio: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/19/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -53,7 +35,7 @@ Podzbiór 1994 r. spisu bazy danych, przy użyciu pracy osoby dorosłe w wieku p
 </tr>
 
 <tr>
-  <td>Port lotniczy kodów w zestawie danych</td>
+  <td>Airport Codes Dataset</td>
   <td>
 Kody Kuwejcie Stanów Zjednoczonych.
 <p></p>
@@ -205,7 +187,7 @@ Zawiera dane o pogodzie, takich jak indeksy temperatury i wilgotności i prędko
 <p></p>
 <b>Odpowiednie badania:</b> Cortez, P. & Morais, A. (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
-[Cortez i Morais, 2007] P. Cortez i A. Morais. Dane wyszukiwania podejście do przewidywania pożarów lasów przy użyciu Meteorological danych. W J. Neves, M. F. Santos i J. Machado Eds., nowe trendy w sztuczną inteligencję postępowania 13 2007 EPIA — portugalski konferencji na sztucznej inteligencji grudnia Guimarães, Portugalia, str. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Dostępne pod adresem: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
+[Cortez i Morais, 2007] P. Cortez i A. Morais. Dane wyszukiwania podejście do przewidywania pożarów lasów przy użyciu Meteorological danych. In J. Neves, M. F. Santos i J. Machado Eds., nowe trendy w sztuczną inteligencję postępowania 13 2007 EPIA — portugalski konferencji na sztucznej inteligencji grudnia Guimarães, Portugalia, str. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Dostępne pod adresem: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
 </tr>
 
@@ -261,7 +243,7 @@ Podzbiór danych pochodzących z National Institute of choroby i przewodu i chor
 <p></p>
 <b>Sposób użycia:</b> Przewidywania, czy temat ma choroby (Klasyfikacja binarna). 
 <p></p>
-<b>Odpowiednie badania:</b> Sigillito-V. (1990). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> Sigillito, V. (1990). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>

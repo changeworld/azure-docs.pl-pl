@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192060"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259686"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Zainstaluj agenta maszyny wirtualnej platformy Azure w trybie offline 
 
@@ -36,7 +36,15 @@ Zainstaluj agenta maszyny Wirtualnej w trybie offline w następujących scenariu
 
 Wykonaj następujące kroki, aby zainstalować agenta maszyny Wirtualnej w trybie offline.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Krok 1. Dołącz dysk systemu operacyjnego maszyny wirtualnej do innej maszyny Wirtualnej jako dysk z danymi
+> [!NOTE]
+> Można zautomatyzować proces instalowania agenta maszyny Wirtualnej w trybie offline.
+> Aby to zrobić, należy użyć [skrypty odzyskiwania maszyny Wirtualnej platformy Azure](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Jeśli zdecydujesz się używać skryptów odzyskiwania maszyny Wirtualnej platformy Azure, można użyć następującego procesu:
+> 1. Za pomocą skryptów można dołączyć dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do maszyny Wirtualnej odzyskiwania, należy pominąć krok 1.
+> 2. Wykonaj kroki 2 – 10, aby zastosować środki zaradcze.
+> 3. Za pomocą skryptów, aby ponownie utworzyć maszynę Wirtualną, należy pominąć krok 11.
+> 4. Wykonaj krok 12.
+
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Krok 1: Dołącz dysk systemu operacyjnego maszyny wirtualnej do innej maszyny Wirtualnej jako dysk z danymi
 
 1.  Usuń maszynę Wirtualną. Pamiętaj o wybraniu **zachować dyski** opcji po usunięciu maszyny Wirtualnej.
 
@@ -44,7 +52,7 @@ Wykonaj następujące kroki, aby zainstalować agenta maszyny Wirtualnej w trybi
 
 3.  Połączyć się do rozwiązywania problemów z maszyny Wirtualnej. Otwórz **Zarządzanie komputerem** > **Zarządzanie dyskami**. Upewnij się, że dysk systemu operacyjnego jest w trybie online i przypisania litery dysku do partycji dysku.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2. Modyfikowanie dysku systemu operacyjnego do zainstalowania agenta maszyny Wirtualnej platformy Azure
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2: Modyfikowanie dysku systemu operacyjnego do zainstalowania agenta maszyny Wirtualnej platformy Azure
 
 1.  Podłączanie pulpitu zdalnego należy dokonać do rozwiązywania problemów z maszyny Wirtualnej.
 

@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313636"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306128"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>Jakie są układów FPGA i Project Brainwave?
 
@@ -33,13 +33,13 @@ Poniższy diagram i tabeli pokazano, jak układów FPGA wypadają w porównaniu 
 |Procesor||Opis|
 |---|:-------:|------|
 |Scalonych specyficzne dla aplikacji|ASICs|Obwody niestandardowe, takie jak Google TensorFlow procesora jednostki (TPU), zapewnia najwyższą efektywnością. Nie można ich skonfigurować stosownie do potrzeb.|
-|Tablice programowalny bramy|Układów FPGA|Układów FPGA, takie jak te, które są dostępne na platformie Azure zapewniają wydajność blisko ASICs. Są one również elastyczne i możliwych do ponownego skonfigurowania wraz z upływem czasu, aby zaimplementować logikę nowe.|
+|Tablice programowalny bramy|Układy FPGA|Układów FPGA, takie jak te, które są dostępne na platformie Azure zapewniają wydajność blisko ASICs. Są one również elastyczne i możliwych do ponownego skonfigurowania wraz z upływem czasu, aby zaimplementować logikę nowe.|
 |Procesory graficzne|Procesory GPU|Popularne wybór dla obliczeń sztucznej Inteligencji. Procesory GPU oferują możliwości przetwarzania równoległego, ułatwiając szybsze na renderowanie obrazu niż procesorów CPU.|
 |Jednostek centralnych|Procesory CPU|Ogólnego przeznaczenia procesorów, których wykonanie nie jest idealne rozwiązanie dla grafiki i przetwarzania plików wideo.|
 
 ## <a name="project-brainwave-on-azure"></a>Project Brainwave na platformie Azure
 
-[Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) to architektura sprzętu od firmy Microsoft. Jest ona oparta na urządzeniach FPGA firmy Intel, programistów i analityków danych, która umożliwia przyspieszanie w czasie rzeczywistym obliczeń sztucznej Inteligencji. Ta architektura włączone FPGA oferuje wydajność, elastyczność i skalowania i jest dostępna na platformie Azure.
+[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) to architektura sprzętu od firmy Microsoft. Jest ona oparta na urządzeniach FPGA firmy Intel, programistów i analityków danych, która umożliwia przyspieszanie w czasie rzeczywistym obliczeń sztucznej Inteligencji. Ta architektura włączone FPGA oferuje wydajność, elastyczność i skalowania i jest dostępna na platformie Azure.
 
 Układów FPGA umożliwiają uzyskanie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym. Żądań asynchronicznych (przetwarzanie wsadowe) nie są wymagane. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ wymaga przetworzenia większej ilości danych. Project Brainwave implementacje jednostek przetwarzania neuronowych nie wymagają dzielenia na partie; w związku z tym opóźnienie może być niższa wiele razy w porównaniu do procesorów GPU i CPU.
 

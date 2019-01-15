@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 01/15/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247626"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267321"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -41,7 +41,7 @@ Usługa Azure Stack wydaje poprawki na bieżąco. Pamiętaj zainstalować [najno
 
 > [!TIP]  
 > Subskrybowania następujących *RSS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
-> - [FUNKCJA RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
 > - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Usługa Azure Stack poprawki
@@ -168,7 +168,7 @@ Ta aktualizacja instaluje następujące aktualizacje zabezpieczeń:
 
 - [CVE-2018-8256](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8256)
 - [CVE-2018-8407](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8407)
-- [CVE-2018-8408.](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8408)
+- [CVE-2018-8408](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8408)
 - [CVE-2018-8415](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8415)
 - [CVE-2018-8417](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8417)
 - [CVE-2018-8450](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8450)
@@ -263,6 +263,14 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 - Podczas tworzenia [maszyny Wirtualnej serii Dv2](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), maszyn wirtualnych D11 14v2 pozwalają tworzyć 4, 8, 16 i dysków z danymi 32 odpowiednio. Jednak w okienku maszyny Wirtualnej Utwórz pokazuje 8, 16, 32 i 64 dyski z danymi.
 
+- Liczba rekordów użycia w usłudze Azure Stack może zawierać nieoczekiwanych wielkość liter. na przykład:
+
+   `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
+   virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
+   "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
+
+   W tym przykładzie nazwa grupy zasobów powinna być **AndrewRG**. Można bezpiecznie zignorować tę niespójność.
+
 <!-- 3235634 – IS, ASDK -->
 - Aby wdrożyć maszyny wirtualne o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, określ sufiks jako **maszyna wirtualna standard_a2_v2 —** (v małe litery). Nie używaj **maszyna wirtualna Standard_A2_V2** (wielkie litery V). To działa na platformie Azure globalnych i niezgodności w usłudze Azure Stack.
 
@@ -337,7 +345,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - W portalu, jeśli Dodawanie reguły zabezpieczeń dla ruchu przychodzącego i wybierz pozycję **Tag usługi** jako źródło, kilka opcji są wyświetlane w **znacznik źródłowy** listy, które nie są dostępne dla usługi Azure Stack. Tylko opcje, które są prawidłowe w usłudze Azure Stack, są następujące:
 
     - **Internet**
-    - **Sieć wirtualna**
+    - **VirtualNetwork**
     - **AzureLoadBalancer**
   
     Inne opcje nie są obsługiwane jako źródło tagi w usłudze Azure Stack. Podobnie jeśli Dodawanie reguły zabezpieczeń dla ruchu wychodzącego i wybierz pozycję **Tag usługi** jako miejsce docelowe, ta sama lista opcji **znacznik źródłowy** jest wyświetlana. Jedyne prawidłowe opcje są takie same jak w przypadku **znacznik źródłowy**, zgodnie z opisem w poprzedniej liście.

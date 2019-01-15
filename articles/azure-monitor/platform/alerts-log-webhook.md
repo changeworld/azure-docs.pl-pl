@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 26c98a87b736132eb50cddffd06c1173d205c34d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720309"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265434"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
 Gdy [alertu dziennika jest tworzony na platformie Azure](alerts-log.md), masz możliwość [konfigurowanie przy użyciu grup akcji](action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -198,7 +198,7 @@ Poniżej przedstawiono przykładowy ładunek dla akcji niestandardowej elementu 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [alerty dzienników w alertów platformy Azure ](alerts-unified-log.md)
-- Zrozumienie [managaing alertów dzienników na platformie Azure](alerts-log.md)
+- Zrozumienie [Zarządzanie alertami dziennika na platformie Azure](alerts-log.md)
 - Tworzenie i zarządzanie nimi [grup akcji na platformie Azure](action-groups.md)
 - Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md)
 - Dowiedz się więcej o [usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 

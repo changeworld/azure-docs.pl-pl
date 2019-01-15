@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/13/2018
-ms.openlocfilehash: 98b1072dc560de79e40fc4f802203459633dda28
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6ce99e70d57fd8d29b0f5cb2bd1084accfc4757
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440940"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262969"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Warstwy usług w usłudze Azure SQL Database Premium RS (wersja zapoznawcza) zostanie wycofana — opcje migracji
 
@@ -27,7 +27,7 @@ Poniżej przedstawiono miejsc docelowych migracji i opcje cenowe, które mogą b
 
 - warstwy usług (rdzeń wirtualny)
 
-  **Ogólnego przeznaczenia** i **krytyczne dla działania firmy** warstwach usługi [model zakupowy oparty na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Warstwy te dwie usługi są ogólnie dostępności. Oferuje również modelu zakupu opartego na rdzeniach wirtualnych **Hiperskali** warstwy usług (w publicznej wersji zapoznawczej), która dostosowuje się na żądanie do potrzeb Twojego obciążenia za pomocą automatycznego skalowania do 100 TB dla bazy danych. Warstwy usługi w Hiperskali zapewnia wydajność operacji We/Wy do warstwy Premium w [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) cenie bliżej do warstwy usług z warstwy Premium RS.
+  **Ogólnego przeznaczenia** i **krytyczne dla działania firmy** warstwach usługi [model zakupowy oparty na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Warstwy te dwie usługi są ogólnie dostępne. Oferuje również modelu zakupu opartego na rdzeniach wirtualnych **Hiperskali** warstwy usług (w publicznej wersji zapoznawczej), która dostosowuje się na żądanie do potrzeb Twojego obciążenia za pomocą automatycznego skalowania do 100 TB dla bazy danych. Warstwy usługi w Hiperskali zapewnia wydajność operacji We/Wy do warstwy Premium w [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) cenie bliżej do warstwy usług z warstwy Premium RS.
 - Cennik dotyczący tworzenia i testowania
 
   [Ceny deweloperskie/testowe](https://azure.microsoft.com/pricing/dev-test/) zapewnia oszczędności 55% w stosunku do stawek oferowała objęte licencją w ramach subskrypcji programu Visual Studio.
@@ -50,10 +50,10 @@ Dla obciążeń intensywnie korzystających z obliczeń warstwa Premium RS zalec
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|
-|Warstwa Premium RS 1|Ogólnego przeznaczenia 1 rdzeń wirtualny (Gen 4)|Standardowa 3|
-|Warstwa Premium RS 2|Ogólnego przeznaczenia, 2 rdzenie wirtualne (Gen 4)|Standard 4|
-|Warstwa Premium RS 4|Ogólnego przeznaczenia 4 rdzenie wirtualne (4. generacji)|Standardowa 6|
-|Warstwa Premium RS 6|Ogólnego przeznaczenia 6 rdzeni (4. generacji)|Standard 7|
+|Premium RS 1|Ogólnego przeznaczenia 1 rdzeń wirtualny (Gen 4)|Standard 3|
+|Premium RS 2|Ogólnego przeznaczenia, 2 rdzenie wirtualne (Gen 4)|Standard 4|
+|Premium RS 4|Ogólnego przeznaczenia 4 rdzenie wirtualne (4. generacji)|Standardowa 6|
+|Premium RS 6|Ogólnego przeznaczenia 6 rdzeni (4. generacji)|Standard 7|
 
 ### <a name="premium-rs-pools"></a>Pule w warstwie Premium RS
 
@@ -70,10 +70,10 @@ Zalecamy przeprowadzenie migracji pojedynczej bazy danych intensywnie korzystaj�
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|
-|Warstwa Premium RS 1|(Wersja zapoznawcza) 1 na dużą skalę — rdzeń wirtualny (Gen 4) lub Business krytyczne 1 rdzeń wirtualny (Gen 4)|W wersjach Premium 1|
-|Warstwa Premium RS 2|(Wersja zapoznawcza) W Hiperskali 2 rdzenie wirtualne (Gen 4) lub biznesowe krytyczne 2 rdzenie wirtualne (Gen 4|Premium 2|
-|Warstwa Premium RS 4|(Wersja zapoznawcza) W Hiperskali 4 rdzenie wirtualne (Gen 4) lub biznesowe krytyczne 4 rdzenie wirtualne (4. generacji)|Premium 4
-|Warstwa Premium RS 6|(Wersja zapoznawcza) Rdzenie wirtualne w Hiperskali 6 (Gen 4) lub rdzeni wirtualnych 6 krytyczne biznesowych (4. generacji)|Premium 6|
+|Premium RS 1|(Wersja zapoznawcza) 1 na dużą skalę — rdzeń wirtualny (Gen 4) lub Business krytyczne 1 rdzeń wirtualny (Gen 4)|W wersjach Premium 1|
+|Premium RS 2|(Wersja zapoznawcza) W Hiperskali 2 rdzenie wirtualne (Gen 4) lub biznesowe krytyczne 2 rdzenie wirtualne (Gen 4|Premium 2|
+|Premium RS 4|(Wersja zapoznawcza) W Hiperskali 4 rdzenie wirtualne (Gen 4) lub biznesowe krytyczne 4 rdzenie wirtualne (4. generacji)|Premium 4
+|Premium RS 6|(Wersja zapoznawcza) Rdzenie wirtualne w Hiperskali 6 (Gen 4) lub rdzeni wirtualnych 6 krytyczne biznesowych (4. generacji)|Premium 6|
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|

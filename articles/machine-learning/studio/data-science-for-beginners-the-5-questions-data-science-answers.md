@@ -1,27 +1,8 @@
 ---
-title: Przetwarzanie danych dla początkujących — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Do nauki o danych dla początkujących jest omawia podstawowe pojęcia związane z 5 krótkie filmy wideo, począwszy od 5 pytań analiza danych daje odpowiedzi. Z usługi Azure Machine Learning.
-keywords: wykonując analizy danych, początkujących do nauki o danych, do nauki o danych dla początkujących podstawy do nauki o danych, pytania do nauki o danych, wideo do nauki o danych, wprowadzenie do nauki o danych
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 9f6d951dcbb0a0a01961bf3f6c924a0c40fd4d29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252919"
+Tytuł: Analiza danych dla początkujących titleSuffix: Opis usługi Azure Machine Learning Studio: Do nauki o danych dla początkujących jest omawia podstawowe pojęcia związane z 5 krótkie filmy wideo, począwszy od 5 pytań analiza danych daje odpowiedzi. Z usługi Azure Machine Learning.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Przetwarzanie danych dla początkujących wideo 1: 5 pytań, analiza danych daje odpowiedzi
 Skorzystaj z krótkiego wprowadzenia do nauki o danych z *przetwarzanie danych dla początkujących* w pięciu krótkich filmach wideo z najważniejszych danych. Te wideo stanowią podstawowy, ale przydatne, czy interesuje Cię nauki o danych, czy pracujesz z analityków danych.

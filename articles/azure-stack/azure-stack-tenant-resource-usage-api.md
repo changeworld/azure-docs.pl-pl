@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5a9859fda2c6cac6acf08c8dcca3a0ce205d2e15
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379716"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302735"
 ---
 # <a name="tenant-resource-usage-api"></a>Interfejs API użycia zasobów dzierżawy
 
@@ -31,7 +31,7 @@ Można użyć polecenia cmdlet programu Windows PowerShell **Get UsageAggregates
 ### <a name="request"></a>Żądanie
 Żądanie pobiera szczegóły użycia dla żądanego subskrypcje i żądany przedział czasu. Nie treści żądania nie istnieje.
 
-| **— Metoda** | **Identyfikator URI żądania** |
+| **Metoda** | **Identyfikator URI żądania** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version=2015-06-01-preview&continuationToken={token-value} |
 
@@ -79,10 +79,10 @@ Pobierz /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reporte
 | *id* |Unikatowy identyfikator użycia agregacji |
 | *Nazwa* |Nazwa użycia agregacji |
 | *type* |Definicja zasobu |
-| *Identyfikator subskrypcji* |Identyfikator subskrypcji platformy Azure użytkownika |
+| *subscriptionId* |Identyfikator subskrypcji platformy Azure użytkownika |
 | *usageStartTime* |Godzina przedział użycia, do której należy ta wartość zagregowana użycia rozpoczęcia UTC |
 | *usageEndTime* |Godzina zakończenia UTC zasobnika użycia, do której należy ta wartość zagregowana użycia |
-| *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w nowym formacie):<br>  *Identyfikator URI zasobu*: w pełni kwalifikowany identyfikator zasobu, łącznie z grupami zasobów i nazwę wystąpienia <br>  *Lokalizacja*: Region, w którym ta usługa została uruchomiona <br>  *tagi*: tagi zasobów, które użytkownik określa <br>  *additionalInfo*: bardziej szczegółowe informacje dotyczące zasobów, który został wykorzystany, na przykład typ wersji lub obrazu systemu operacyjnego |
+| *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w nowym formacie):<br>  *Identyfikator URI zasobu*: W pełni kwalifikowanego Identyfikatora zasobu, łącznie z grupami zasobów i nazwę wystąpienia <br>  *Lokalizacja*: Region, w którym ta usługa została uruchomiona <br>  *Tagi*: Tagi zasobów, które użytkownik określa <br>  *additionalInfo*: Więcej informacji o zasobie, który został wykorzystany, na przykład wersja systemu operacyjnego lub obrazu, wpisz |
 | *Ilość* |Ilość użycia zasobów, które wystąpiły w tym przedziale czasu |
 | *meterId* |Unikatowy identyfikator zasobu, który został wykorzystany (nazywane również *ResourceID*) |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 794b3c83ff58967ef8169bed98f7b369335029ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246518"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259844"
 ---
 # <a name="pool-create-event"></a>Zdarzenie utworzenia puli
 
@@ -59,7 +59,7 @@ ms.locfileid: "51246518"
 |targetDedicated|Int32|Liczba węzłów obliczeniowych, które są wymagane dla puli.|
 |enableAutoScale|wartość logiczna|Określa, czy rozmiar puli automatycznie dostosowuje się wraz z upływem czasu.|
 |enableInterNodeCommunication|wartość logiczna|Określa, czy pula jest skonfigurowany do bezpośredniej komunikacji między węzłami.|
-|isAutoPool|wartość logiczna|Speficies tego, czy pula została utworzona za pośrednictwem mechanizmu AutoPool zadania.|
+|isAutoPool|wartość logiczna|Określa, czy pula została utworzona za pośrednictwem mechanizmu AutoPool zadania.|
 |maxTasksPerNode|Int32|Maksymalna liczba zadań, które można uruchomić jednocześnie w jednym węźle obliczeń w puli.|
 |vmFillType|Ciąg|Definiuje sposób rozdzielania zadań przez usługę Partia zadań między węzły obliczeń w puli. Prawidłowe wartości są dystrybuowane lub pakietu.|
 
@@ -67,7 +67,7 @@ ms.locfileid: "51246518"
 
 |Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
-|Rodzina systemów operacyjnych|Ciąg|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości:<br /><br /> **2** — 2 rodziny systemów operacyjnych, równoważne z systemu Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — 3 rodziny systemów operacyjnych, odpowiednikiem w systemie Windows Server 2012.<br /><br /> **4** — 4 rodziny systemów operacyjnych, równoważne do systemu Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|osFamily|Ciąg|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości:<br /><br /> **2** — 2 rodziny systemów operacyjnych, równoważne z systemu Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — 3 rodziny systemów operacyjnych, odpowiednikiem w systemie Windows Server 2012.<br /><br /> **4** — 4 rodziny systemów operacyjnych, równoważne do systemu Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 |targetOSVersion|Ciąg|Wersja systemu operacyjnego gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Wartość domyślna to **\*** określający najnowszej wersji systemu operacyjnego dla określonej rodziny.<br /><br /> Aby uzyskać inne dozwolonych wartości, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration

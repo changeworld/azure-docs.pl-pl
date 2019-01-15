@@ -14,15 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5f6334f80b9c48832facba97b816d254baeb94bc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5cb1fe623062816955278da7b0a9e63cbc19254
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341307"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258479"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Omówienie zaleceń kontenera usługi Azure Security Center
 
+Podczas migracji aplikacji monolitu do uruchamiania o kluczowym znaczeniu konteneryzowanych aplikacji natywnych dla chmury w środowisku produkcyjnym, należy korzystać z zalet funkcji kontenerów, w tym proste i szybkie wdrażanie i aktualizacja. Jak liczba kontenerów wdrożonych stale rośnie, rozwiązania w zakresie zabezpieczeń należy w celu zapewniają wgląd w stan zabezpieczeń kontenerów i ich ochronę przed zagrożeniami.
+
+Usługa Azure Security Center oferuje następujące funkcje, które ułatwiają zabezpieczanie kontenerów:
+
+- **Wgląd w kontenerach hostowanych w infrastrukturze IaaS maszyn z systemem Linux**<br>W usłudze Azure Security Center na karcie kontenerów Wyświetla wszystkich maszyn wirtualnych wdrożonych za pomocą platformy Docker. Podczas eksplorowania problemy dotyczące zabezpieczeń na maszynie wirtualnej, usługa Security Center zapewnia dodatkowe informacje związane z kontenerami na maszynie, na przykład wersja platformy Docker i liczbę obrazów uruchomiona na hoście.
+
+    ![karty kontenera](./media/security-center-container-recommendations/docker-recommendation.png)
+
+
+- **Zalecenia dotyczące zabezpieczeń oparte na wzorzec konfiguracji (ci) dla platformy Docker**<br>Usługa Security Center skanuje konfiguracje platformy Docker i zapewnia wgląd w błędów konfiguracji poprzez dostarczenie listy wszystkich reguł nie powiodło się, które zostały ocenione. Usługa Security Center zapewnia wskazówek, aby pomóc Ci szybko rozwiązać te problemy i zaoszczędzić czas. Centrum zabezpieczeń stale ocenia konfiguracji platformy Docker i udostępniają Ci ich najnowszy stan.
+
+    ![karty kontenera](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+- **Wykrywanie zagrożeń w czasie rzeczywistym kontenera**<br> Usługa Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na maszynach z systemem Linux za pomocą składnika wykorzystują. Alerty zidentyfikować kilka podejrzanych działań platformy Docker, takich jak tworzenie uprzywilejowanych kontenera na hoście, wskazanie serwera protokołu Secure Shell (SSH) uruchomionej w kontenerze platformy Docker lub korzystanie z usług kryptograficznych wyszukiwarek. Te informacje umożliwia szybkie rozwiązywanie problemów dotyczących bezpieczeństwa i poprawę zabezpieczeń kontenerów.
+
+    ![karty kontenera](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Zalecenia
 Aby lepiej zrozumieć dostępne kontenery hostowanych na maszynach z systemem IaaS Linux i ocenę zabezpieczeń ich konfiguracji platformy Docker, użyj poniższe tabele zawierają jako odwołanie.

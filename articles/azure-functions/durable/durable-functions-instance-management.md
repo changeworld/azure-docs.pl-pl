@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8dbf7b6f6741998972070234d90e87baca1154a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 19abd905bbc5e8ab724f7a2f25cb6da90db82841
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042465"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262646"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w funkcje trwałe na platformie Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "54042465"
 
 ## <a name="starting-instances"></a>Uruchamianie wystąpienia
 
-[StartNewAsync] (https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metody [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) lub `startNew` na `DurableOrchestrationClient` (JavaScript) uruchamia nowe wystąpienie funkcji programu orchestrator. Wystąpienia tej klasy można kupić przy użyciu `orchestrationClient` powiązania. Wewnętrznie ta metoda umieszczeniu komunikat do kolejki kontroli, a następnie uruchamiają początku funkcji o podanej nazwie, która używa `orchestrationTrigger` wyzwolić powiązania.
+[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metody [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) lub `startNew` na `DurableOrchestrationClient` (JavaScript) uruchamia nowe wystąpienie funkcji programu orchestrator. Wystąpienia tej klasy można kupić przy użyciu `orchestrationClient` powiązania. Wewnętrznie ta metoda umieszczeniu komunikat do kolejki kontroli, a następnie uruchamiają początku funkcji o podanej nazwie, która używa `orchestrationTrigger` wyzwolić powiązania.
 
 Ta operacja async uzupełnia, gdy pomyślnie zaplanowano procesu aranżacji. Na początek procesu aranżacji w ciągu 30 sekund. Jeśli zajmuje więcej czasu, `TimeoutException` zgłaszany.
 
@@ -464,7 +464,7 @@ Systemy zewnętrzne mogą się komunikować trwałe funkcje za pomocą adresów 
 
 [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) i `createHttpManagementPayload` mieć jeden parametr:
 
-* **Identyfikator instanceId**: Unikatowy identyfikator wystąpienia.
+* **instanceId**: Unikatowy identyfikator wystąpienia.
 
 Metody zwracają wystąpienie [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) (.NET) lub obiekt (JavaScript) z następującymi właściwościami ciąg:
 

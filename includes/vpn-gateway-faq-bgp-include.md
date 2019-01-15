@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 01/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 894724b08876e96119bf72ce65e22c6ae884d8da
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "36338326"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306883"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Czy protokół BGP jest obsługiwany na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
 Nie. Protokół BGP jest obsługiwany na bramach sieci VPN **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU nie jest obsługiwana.
@@ -30,7 +30,7 @@ Nie, obecnie usługi Azure VPN Gateway obsługują 16-bitowe numery ASN.
 ### <a name="are-there-asns-reserved-by-azure"></a>Czy istnieją numery ASN zarezerwowane przez platformę Azure?
 Tak, następujące numery ASN są zarezerwowane przez platformę Azure zarówno dla wewnętrznej, jak i zewnętrznej komunikacji równorzędnej:
 
-* Publiczne numery ASN: 8074, 8075, 12076
+* Public ASNs: 8074, 8075, 12076
 * Prywatne numery ASN: 65515, 65517, 65518, 65519, 65520
 
 Tych numerów ASN nie można określać dla lokalnych urządzeń sieci VPN podczas nawiązywania połączenia z bramami sieci VPN platformy Azure.
@@ -68,7 +68,7 @@ Tak, protokołu BGP można użyć do połączeń zarówno między różnymi loka
 Tak, dla tej samej bramy sieci VPN platformy Azure można łączyć zarówno połączenia protokołu BGP, jak i połączenia innych protokołów.
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Czy brama sieci VPN platformy Azure obsługuje routing tranzytowy protokołu BGP?
-Tak, routing tranzytowy protokołu BGP jest obsługiwany, ale bramy sieci VPN platformy Azure **nie** anonsują tras domyślnych do innych elementów równorzędnych protokołu BGP. Aby włączyć routing tranzytowy dla wielu bram sieci VPN platformy Azure, należy włączyć protokół BGP dla wszystkich pośrednich połączeń między sieciami wirtualnymi.
+Tak, routing tranzytowy protokołu BGP jest obsługiwany, ale bramy sieci VPN platformy Azure **nie** anonsują tras domyślnych do innych elementów równorzędnych protokołu BGP. Aby włączyć routing tranzytowy dla wielu bram sieci VPN platformy Azure, należy włączyć protokół BGP dla wszystkich pośrednich połączeń między sieciami wirtualnymi. Aby uzyskać więcej informacji, zobacz [o BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Czy można mieć więcej niż jeden tunel między bramą sieci VPN platformy Azure i lokalną siecią użytkownika?
 Tak, można utworzyć więcej niż jeden tunel VPN S2S między bramą sieci VPN platformy Azure i siecią lokalną. Należy pamiętać, że wszystkie te tunele będą uwzględniane w łącznej liczbie tuneli dla bram sieci VPN platformy Azure oraz że należy włączyć protokół w obydwu tunelach.

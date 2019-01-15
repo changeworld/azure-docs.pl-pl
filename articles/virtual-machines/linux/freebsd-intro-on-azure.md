@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e6f284b2a3483b21901dc4ad26bff83b8fcd8848
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f2d3c40352d60d3cc7366aca6f38a8255a7a629
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843023"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302395"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Wprowadzenie do systemu FreeBSD na platformie Azure
 Ten artykuł zawiera omówienie działającej maszyny wirtualnej FreeBSD na platformie Azure.
@@ -42,7 +42,6 @@ Jak w przypadku przyszłych wersji FreeBSD strategia polega na bieżąco i udost
 Wdrażanie maszyny wirtualnej FreeBSD jest prosty proces, za pomocą obrazu z witryny Azure Marketplace w witrynie Azure portal:
 
 - [FreeBSD 10.4 w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11.1 w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 - [FreeBSD 11.2 w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Tworzenie maszyny Wirtualnej FreeBSD za pośrednictwem wiersza polecenia platformy Azure na FreeBSD
@@ -134,4 +133,4 @@ Opcjonalnie można uzyskać shell głównej, przy użyciu `sudo -s`.
 [Agenta gościa maszyny Wirtualnej platformy Azure](https://github.com/Azure/WALinuxAgent/) wersja 2.2.2 [znany problem](https://github.com/Azure/WALinuxAgent/pull/517) powodujący błąd aprowizacji dla maszyny Wirtualnej z FreeBSD na platformie Azure. Poprawka została przechwycona przez [agenta gościa maszyny Wirtualnej platformy Azure](https://github.com/Azure/WALinuxAgent/) wersji 2.2.3 i nowszych wersjach. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Przejdź do [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111) do utworzenia maszyny Wirtualnej z systemem FreeBSD.
+* Przejdź do [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) do utworzenia maszyny Wirtualnej z systemem FreeBSD.

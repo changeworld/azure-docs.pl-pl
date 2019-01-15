@@ -1,26 +1,8 @@
 ---
-title: Wdrażanie usługi sieci web Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
-description: Jak konwertowanie eksperymentu szkolenia na eksperyment predykcyjny, przygotowywania ich do wdrożenia, a następnie wdrożyć go jako usługi sieci web Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: 71315b6c36a9e41e5805d5a15bde5b1d1d84f2b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269927"
+Tytuł: Wdróż titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Jak konwertowanie eksperymentu szkolenia na eksperyment predykcyjny, przygotowywania ich do wdrożenia, a następnie wdrożyć go jako usługi sieci web Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 01/06/2017
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Wdrażanie usługi sieci web Azure Machine Learning Studio
 Usługa Azure Machine Learning umożliwia tworzenie, testowanie i wdrażanie rozwiązań z zakresu analiz predykcyjnych.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: magoedte
-ms.openlocfilehash: a8fc517ba233c16fbe98ed42498b272cf4422107
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bc3b96ee55ccd28cce89b1f37494b836851977f1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105694"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259251"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Utwórz obszar roboczy usługi Log Analytics przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -42,7 +42,7 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
-Tworzenie obszaru roboczego z [Utwórz wdrożenie grupy az](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Poniższy przykład tworzy obszar roboczy o nazwie *TestWorkspace* w grupie zasobów *laboratorium* w *eastus* lokalizacji za pomocą szablonu usługi Resource Manager z lokalnym maszyny. Szablon JSON jest skonfigurowany do tylko wyświetlenie monitu o nazwę obszaru roboczego i określenie wartości domyślnej dla innych parametrów, które prawdopodobnie będzie służyć jako standardowej konfiguracji w danym środowisku. Możesz także przechowywać szablon na koncie magazynu platformy Azure w celu zapewnienia dostępu współdzielonego w Twojej organizacji. Aby uzyskać dodatkowe informacje na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+Utwórz obszar roboczy z [Utwórz wdrożenie grupy az](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Poniższy przykład tworzy obszar roboczy o nazwie *TestWorkspace* w grupie zasobów *laboratorium* w *eastus* lokalizacji za pomocą szablonu usługi Resource Manager z lokalnym maszyny. Szablon JSON jest skonfigurowany do tylko wyświetlenie monitu o nazwę obszaru roboczego i określenie wartości domyślnej dla innych parametrów, które prawdopodobnie będzie służyć jako standardowej konfiguracji w danym środowisku. Możesz także przechowywać szablon na koncie magazynu platformy Azure w celu zapewnienia dostępu współdzielonego w Twojej organizacji. Aby uzyskać dodatkowe informacje na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
 Następujące parametry ustawiona wartość domyślna:
 

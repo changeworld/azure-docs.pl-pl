@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4a4f1691162ab9c9fbd5bc8802ecf7ebc4894d74
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 25131fdbc7a3633bf4ba9af05fdff9163f41f26b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193675"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265111"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
  
@@ -62,7 +62,7 @@ Problemy z usługi Databricks i Azure Machine Learning.
    Obejście: importowanie biblioteki Python `numpy==1.14.5` do usługi Databricks za pomocą klastra Utwórz bibliotekę, aby [zainstalować i dołączyć](https://docs.databricks.com/user-guide/libraries.html#create-a-library).
 
 ## <a name="azure-portal"></a>Azure Portal
-Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście polega na przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com) i wyszukaj nazwę obszaru roboczego.
+Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli potrzebujesz wyświetlić inny obszar roboczy, obejście polega na przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com) i wyszukaj nazwę obszaru roboczego.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Oto, miejsca zamieszkania pliki dziennika:

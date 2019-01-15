@@ -1,27 +1,8 @@
 ---
-title: Importuj dane z pliku - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można przekazać pliku danych szkoleniowych z dysku twardego do usługi Azure Machine Learning Studio. Spowoduje to utworzenie modułu zestawu danych w obszarze roboczym.
-keywords: Importowanie danych, formatu danych, typów danych, źródeł danych, dane szkoleniowe
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c0dd9e90-23c4-4f64-8b8f-489ad79f047b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 096d2d4a8c1ee1727b124a5416ec77e8281c97d7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254864"
+Tytuł: Importuj dane z pliku titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak można przekazać pliku danych szkoleniowych z dysku twardego do usługi Azure Machine Learning Studio. Spowoduje to utworzenie modułu zestawu danych w obszarze roboczym.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-azure-machine-learning-studio"></a>Importowanie danych szkoleniowych z pliku na dysku twardym do usługi Azure Machine Learning Studio
 

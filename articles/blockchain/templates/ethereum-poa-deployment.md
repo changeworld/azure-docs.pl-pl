@@ -1,6 +1,6 @@
 ---
 title: Dowód uwierzytelniania Ethereum konsorcjum - Azure
-description: Korzystanie z odpowiedniego rozwiązania konsorcjum dowód uwierzytelniania Etherereum wdrażania i konfigurowania sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich
+description: Korzystanie z odpowiedniego rozwiązania konsorcjum dowód uwierzytelniania Ethereum wdrażania i konfigurowania sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich
 services: azure-blockchain
 keywords: ''
 author: CodyBorn
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974050"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260384"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
 

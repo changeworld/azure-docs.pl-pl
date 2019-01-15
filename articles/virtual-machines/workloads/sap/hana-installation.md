@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10c8c0043d04d99ad10e475f903979edb0ddcb70
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633958"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266904"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -30,7 +30,7 @@ Instalacja oprogramowania SAP Hana jest odpowiedzialny za. Możesz rozpocząć i
 > [!Note]
 > Zgodnie z zasadami SAP instalacji oprogramowania SAP HANA, muszą być wykonywane przez osobę, który został przekazany certyfikat skojarzyć technologii SAP egzaminu, instalacja programu SAP HANA egzaminu certyfikacyjnego lub kto to integrator systemów SAP (SI).
 
-Jeśli planowane jest instalowanie oprogramowania HANA w wersji 2.0, zobacz [Uwaga SAP pomocy technicznej 2235581 # — SAP HANA: obsługiwane systemy operacyjne](https://launchpad.support.sap.com/#/notes/2235581/E) aby upewnić się, że system operacyjny jest obsługiwany przy użyciu oprogramowania SAP HANA wersji, w przypadku instalacji. Obsługiwany system operacyjny na potrzeby oprogramowania HANA w wersji 2.0 jest bardziej restrykcyjny niż obsługiwany system operacyjny na potrzeby platformy HANA 1.0. 
+Jeśli planowane jest instalowanie oprogramowania HANA w wersji 2.0, zobacz [Uwaga SAP pomocy technicznej 2235581 # — SAP HANA: Obsługiwane systemy operacyjne](https://launchpad.support.sap.com/#/notes/2235581/E) aby upewnić się, że system operacyjny jest obsługiwany przy użyciu oprogramowania SAP HANA wersji, w przypadku instalacji. Obsługiwany system operacyjny na potrzeby oprogramowania HANA w wersji 2.0 jest bardziej restrykcyjny niż obsługiwany system operacyjny na potrzeby platformy HANA 1.0. 
 
 > [!IMPORTANT] 
 > Dla typu II jednostek, obecnie jest obsługiwany tylko wersję systemu operacyjnego do programu systemu SLES 12 z dodatkiem SP2. 
@@ -85,16 +85,16 @@ W przypadku większej liczby wystąpień jest kolejność w dzierżawie, koniecz
 > [!IMPORTANT] 
 > W przypadku urządzeń z typu II tylko wersję systemu operacyjnego do programu systemu SLES 12 z dodatkiem SP2 jest obecnie obsługiwane. 
 
-Obszar wymiany poprawne działanie jest gwarantowane obrazu systemu operacyjnego jest równa 2 GB na podstawie [Uwaga SAP pomocy technicznej 1999997 # — często zadawane pytania: pamięci oprogramowania SAP HANA](https://launchpad.support.sap.com/#/notes/1999997/E). Jako klient korzystający z Jeśli chcesz, aby różne ustawienia, należy ustawić je samodzielnie.
+Obszar wymiany poprawne działanie jest gwarantowane obrazu systemu operacyjnego jest równa 2 GB na podstawie położenia [Uwaga SAP pomocy technicznej 1999997 # — często zadawane pytania: SAP HANA pamięci](https://launchpad.support.sap.com/#/notes/1999997/E). Jako klient korzystający z Jeśli chcesz, aby różne ustawienia, należy ustawić je samodzielnie.
 
-[SUSE Linux Enterprise Server 12 z dodatkiem SP1 dla aplikacji SAP](https://www.suse.com/products/sles-for-sap/hana) to dystrybucja systemu Linux jest instalowany dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia). Tej konkretnej dystrybucji zapewnia możliwości specyficznych dla SAP "fabrycznej" (w tym wstępnie ustawionych parametrów efektywne uruchamianie oprogramowania SAP w systemie SLES).
+[SUSE Linux Enterprise Server 12 z dodatkiem SP1 dla aplikacji SAP](https://www.suse.com/products/sles-for-sap/download/) to dystrybucja systemu Linux jest instalowany dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia). Tej konkretnej dystrybucji zapewnia możliwości specyficznych dla SAP "fabrycznej" (w tym wstępnie ustawionych parametrów efektywne uruchamianie oprogramowania SAP w systemie SLES).
 
 Zobacz [zasobów biblioteki/oficjalne dokumenty](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) w witrynie sieci Web SUSE i [SAP w systemie SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) na sieć społeczności SAP (SCN) dla kilka przydatnych zasobów związanych z wdrożeniem oprogramowania SAP HANA w systemie SLES (w tym konfiguracji o wysokiej dostępność, zwiększanie zabezpieczeń, które są specyficzne dla operacji SAP i inne).
 
 Poniżej przedstawiono dodatkowe i przydatne SAP na związane z systemem SUSE łącza:
 
 - [SAP HANA w systemie SUSE Linux lokacji](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Najlepsze rozwiązania dla programu SAP: umieścić w kolejce replikacji — oprogramowanie SAP NetWeaver w systemie SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [Najlepsze rozwiązania dla programu SAP: Umieścić w kolejce replikacji — oprogramowanie SAP NetWeaver w systemie SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
 - [ClamSAP — ochrona przed wirusami SLES dla rozwiązania SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (w tym systemu SLES 12 dla aplikacji SAP)
 
 Poniżej przedstawiono informacje o pomocy technicznej SAP, które mają zastosowanie do wdrażania oprogramowania SAP HANA w systemie SLES 12:
@@ -102,7 +102,7 @@ Poniżej przedstawiono informacje o pomocy technicznej SAP, które mają zastoso
 - [SAP Uwaga pomocy technicznej 1944799 # — SAP HANA wskazówki dotyczące instalacji systemu operacyjnego w systemie SLES](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [Uwaga pomocy technicznej SAP #2205917 — bazy danych SAP HANA zalecanych ustawień systemu operacyjnego systemu SLES 12 dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [Uwaga SAP pomocy technicznej 1984787 # — SUSE Linux Enterprise Server 12: uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787)
-- [Uwaga SAP pomocy technicznej 171356 # — oprogramowanie SAP w systemie Linux: informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP Uwaga pomocy technicznej 171356 # — oprogramowanie SAP w systemie Linux:  Informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
 - [Uwaga SAP pomocy technicznej 1391070 # — Linux UUID rozwiązania](https://launchpad.support.sap.com/#/notes/1391070)
 
 [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) jest inną ofertę do uruchamiania oprogramowania SAP HANA w dużych wystąpieniach HANA. Dostępne są wersje systemu RHEL 6.7 i 7.2. Należy pamiętać, że w przeciwieństwie do natywnych maszynach wirtualnych platformy Azure których są obsługiwane tylko systemu RHEL 7.2 i nowsze wersje, dużych wystąpień HANA obsługują RHEL 6.7 także. Firma Microsoft zaleca jednak przy użyciu wersji 7.x systemu RHEL.
@@ -113,11 +113,11 @@ Poniżej przedstawiono dodatkowe przydatne SAP na łącza pokrewne firmy Red Hat
 Poniżej przedstawiono informacje o pomocy technicznej SAP, które mają zastosowanie do wdrażania oprogramowania SAP HANA w systemie Red Hat:
 
 - [SAP Uwaga pomocy technicznej 2009879 # — wskazówki dotyczące platformy SAP HANA, systemu operacyjnego Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E)
-- [Uwaga SAP pomocy technicznej #2292690 - bazy danych SAP HANA: zalecane ustawienia systemu operacyjnego dla RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)
-- [Obsługa uwagę #2247020 — bazy danych SAP HANA: Zalecane ustawienia systemu operacyjnego dla RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)
+- [Obsługa Uwaga SAP #2292690 - bazy danych SAP HANA: Zalecane ustawienia systemu operacyjnego RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)
+- [Obsługa uwagę #2247020 — bazy danych SAP HANA: Zalecane ustawienia systemu operacyjnego RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)
 - [Uwaga SAP pomocy technicznej 1391070 # — Linux UUID rozwiązania](https://launchpad.support.sap.com/#/notes/1391070)
-- [Uwaga SAP pomocy technicznej 2228351 # — Linux: poprawki SAP HANA Database SPS 11 110 (lub nowszego) na zobowiązaniu 6-RHEL lub SLES 11](https://launchpad.support.sap.com/#/notes/2228351)
-- [Uwaga SAP pomocy technicznej 2397039 # — często zadawane pytania: oprogramowanie SAP w systemie RHEL](https://launchpad.support.sap.com/#/notes/2397039)
+- [Obsługa Uwaga SAP 2228351 # — Linux: SAP HANA Database SPS 11 poprawki 110 (lub nowszego) na zobowiązaniu 6-RHEL lub SLES 11](https://launchpad.support.sap.com/#/notes/2228351)
+- [Obsługa Uwaga SAP 2397039 # — często zadawane pytania: SAP na RHEL](https://launchpad.support.sap.com/#/notes/2397039)
 - [Uwaga SAP pomocy technicznej #1496410 - Red Hat Enterprise Linux 6.x: Instalowanie i uaktualnianie](https://launchpad.support.sap.com/#/notes/1496410)
 - [Uwaga SAP pomocy technicznej #2002167 - Red Hat Enterprise Linux 7.x: Instalowanie i uaktualnianie](https://launchpad.support.sap.com/#/notes/2002167)
 
@@ -154,7 +154,7 @@ Konwencje nazewnictwa woluminy magazynu są wymienione w poniższej tabeli:
 | Dziennik HANA | /hana/log/SID/mnt0000<m> | Magazyn IP: / hana_log_SID_mnt00001_tenant_vol |
 | Kopia zapasowa dziennika HANA | /Hana/log/Backups | Magazyn IP: / hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA udostępnione | /Hana/Shared/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/udostępnione |
-| usr/sap | /usr/SAP/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/usr_sap |
+| usr/sap | /usr/sap/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
 *Identyfikator SID* jest wystąpienie oprogramowania HANA identyfikatora systemu. 
 
@@ -195,13 +195,13 @@ W celu zoptymalizowania platformy SAP HANA w magazynie używane poniżej, ustawi
 - max_parallel_io_requests 128
 - async_read_submit na
 - async_write_submit_active na
-- async_write_submit_blocks wszystkie
+- async_write_submit_blocks all
  
 W przypadku wersji SAP HANA 1.0 maksymalnie SPS12, te parametry można ustawić podczas instalacji bazy danych SAP HANA, zgodnie z opisem w [Uwaga SAP #2267798 — Konfiguracja bazy danych SAP HANA](https://launchpad.support.sap.com/#/notes/2267798).
 
 Można również skonfigurować parametry po instalacji baza danych SAP HANA przy użyciu struktury hdbparam. 
 
-SAP HANA 2.0 z hdbparam framework jest przestarzała. W rezultacie należy ustawić parametry przy użyciu poleceń SQL. Aby uzyskać więcej informacji, zobacz [Uwaga SAP #2399079: eliminacja hdbparam HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
+SAP HANA 2.0 z hdbparam framework jest przestarzała. W rezultacie należy ustawić parametry przy użyciu poleceń SQL. Aby uzyskać więcej informacji, zobacz [Uwaga SAP #2399079: Eliminacja hdbparam HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
 Zapoznaj się [HLI obsługiwane scenariusze](hana-supported-scenario.md) dowiedzieć się więcej o układ magazynu dla architektury.
 

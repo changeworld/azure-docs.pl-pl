@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: f220aee3fa0d9a79723383fc31fec0eed2554bb4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833690"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261557"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
 
@@ -68,7 +68,7 @@ Wyszukaj **Microsoft.Media** i **Microsoft.EventGrid**. Jeśli nie jest w stanie
 
     ![Łączenie indeksatora wideo z platformą Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. Wybierz region platformy Azure z obsługiwanych lokalizacji: zachodnie stany USA 2, Europa Północna lub Azja Wschodnia.
+4. Wybierz region platformy Azure obsługiwane lokalizacje: Zachodnie stany USA 2, Europa Północna lub Azja Wschodnia.
 5. W obszarze **konta usługi Azure Media Services**, wybierz jedną z następujących opcji:
 
     * Aby utworzyć nowe konto usługi Media Services, wybierz **Utwórz nową grupę zasobów**. Podaj nazwę grupy zasobów.
@@ -97,6 +97,9 @@ Wyszukaj **Microsoft.Media** i **Microsoft.EventGrid**. Jeśli nie jest w stanie
 ## <a name="connect-to-azure-manually-advanced-option"></a>Łączenie z platformą Azure ręcznie (opcja zaawansowana)
 
 Jeśli połączenie z platformą Azure nie powiodła się, można spróbować rozwiązać problem, nawiązując połączenie ręcznie.
+
+> [!NOTE]
+> Zdecydowanie zaleca się następujące trzy konta w tym samym regionie: konta indeksatora wideo, na którym jest nawiązywane przy użyciu konta usługi Media Services, a także konta magazynu platformy Azure podłączone do tego samego konta usługi Media Services.
 
 ### <a name="create-and-configure-a-media-services-account"></a>Tworzenie i konfigurowanie konta usługi Media Services
 
@@ -168,7 +171,7 @@ Obowiązują następujące zastrzeżenia pokrewne usługi Azure Media Services:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Mogą programowo współdziałać z konta wersji próbnej i/lub z kontami usługi Video Indexer, które są podłączone do platformy azure, postępując zgodnie z instrukcjami wyświetlanymi w: [użycia interfejsów API](video-indexer-use-apis.md).
+Mogą programowo współdziałać z konta wersji próbnej i/lub z kontami usługi Video Indexer, które są podłączone do platformy azure, postępując zgodnie z instrukcjami wyświetlanymi w: [Korzystanie z interfejsów API](video-indexer-use-apis.md).
 
 Należy używać tego samego użytkownika usługi Azure AD, używane podczas nawiązywania połączenia z platformą Azure.
 

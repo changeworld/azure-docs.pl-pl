@@ -1,26 +1,8 @@
 ---
-title: Tworzenie wielu modeli na podstawie jednego eksperymentu Studio - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Tworzenie wielu modeli usługi Machine Learning i sieci web punkty końcowe usługi z tego samego algorytmu, ale szkolenia różnych zestawów danych przy użyciu programu PowerShell.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2017
-ms.openlocfilehash: f54f9f9ff4b55ef1e2e68f61b709cef6635dc231
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250267"
+Tytuł: Tworzenie wielu modeli z jednego titleSuffix eksperymentów w Studio: Opis usługi Azure Machine Learning Studio: Tworzenie wielu modeli usługi Machine Learning i sieci web punkty końcowe usługi z tego samego algorytmu, ale szkolenia różnych zestawów danych przy użyciu programu PowerShell.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/04/2017
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Tworzenie modeli Studio i punkty końcowe usługi sieci web na podstawie jednego eksperymentu przy użyciu programu PowerShell
 
