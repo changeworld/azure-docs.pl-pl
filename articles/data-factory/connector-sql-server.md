@@ -20,7 +20,7 @@ ms.lasthandoff: 01/11/2019
 ms.locfileid: "54230814"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
 > * [Wersja 1](v1/data-factory-sqlserver-connector.md)
 > * [Bieżąca wersja](connector-sql-server.md)
 
