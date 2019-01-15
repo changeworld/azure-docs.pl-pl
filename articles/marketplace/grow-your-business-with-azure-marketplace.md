@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 054215a44b66d8fbf30c1a3e61f66425350392b1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3f1a1c6e314d54f15d7e11784e2671002e854854
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074546"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304300"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Rozwijaj swoją działalność w portalu marketplace 
 Po opublikowaniu oferty w usłudze AppSource lub w witrynie Azure Marketplace, można użyć swojej listy jako doskonała dla wspólnych działań (GTM wprowadzenie) go-to-market z firmą Microsoft. Kierowania ruchu do oferty w portalu Marketplace i pielęgnacji potencjalnych klientów w witrynie Marketplace, na przykład, są skuteczne sposoby Przyspiesz rozwój swojej firmy. 
@@ -33,7 +33,7 @@ Tabele w kolejnych sekcjach zawierają sugestie dotyczące tworzenia atrakcyjne 
 ### <a name="storefront-offer-details"></a>Szczegóły oferty sklepu
 | Ustawienia sklepu | Najlepszym rozwiązaniem jest |
 |:--- |:--- |  
-| Nazwa oferty | Podaj silne tytułu:<br>Nazwy aplikacji powinna komunikują się podstawowej wartości, który otrzymywał swoich klientów. W tym słów kluczowych w tytule aplikacji sieci może pomóc w aplikację, której zostanie wyznaczona ranga wyższej w wynikach aparatu wyszukiwania.<br><br>Wykonaj zestaw format tytuł oferty usługi konsultingowe:<br>[Nazwa oferty]: [czas trwania] [typ oferty] (na przykład *Contoso: Implementacja 2-tygodniowych*)<br><br>Być zgodne z wytycznymi dotyczącymi oznaczania marką:<br>Postępuj zgodnie z [Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) i inne istotne, specyficzne dla produktu wytyczne, gdy odwołujesz się do znaków towarowych firmy Microsoft i nazwy oprogramowania, produktów i usług firmy Microsoft. |
+| Nazwa oferty | Podaj silne tytułu:<br>Nazwy aplikacji powinna komunikują się podstawowej wartości, który otrzymywał swoich klientów. W tym słów kluczowych w tytule aplikacji sieci może pomóc w aplikację, której zostanie wyznaczona ranga wyższej w wynikach aparatu wyszukiwania.<br><br>Wykonaj zestaw format tytuł oferty usługi konsultingowe:<br>[Nazwa oferty]: [czas trwania] [typ oferty] (na przykład *Contoso: Implementacja 2-tygodniowych*)<br><br>Być zgodne z wytycznymi dotyczącymi oznaczania marką:<br>Postępuj zgodnie z [Trademark firmy Microsoft i wytycznymi dotyczącymi oznaczania marką](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/) i inne istotne, specyficzne dla produktu wytyczne, gdy odwołujesz się do znaków towarowych firmy Microsoft i nazwy oprogramowania, produktów i usług firmy Microsoft. |
 | Opis oferty | Podaj opis, wyczyść oferty:<br>Wyraźnie opisać Twoją ofertę w pierwszym kilku zdaniach korzyści z użytkowania opis. Należy pamiętać, że pierwszy kilku zdaniach, może być wyświetlany w wynikach wyszukiwarki. Nie należy polegać na funkcje i możliwości sprzedaży produktu. Zamiast tego należy skoncentrować się na wartości, jakie możesz dostarczać. Za pomocą słownika branżowych lub na podstawie korzyści sformułowanie, ile to możliwe.<br><br>Podstawowe składniki swoje korzyści powinien zawierać następujące informacje:<ul><li>Opis produktu</li><li>Typ użytkownika, który korzysta z produktu</li><li>Potrzeby klientów lub problemy, odnoszący się do produktu</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Lista StoreFront — szczegóły

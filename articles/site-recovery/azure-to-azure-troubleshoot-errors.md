@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8023129bf700793447b63f0686acd22f6ac2b25c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973557"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265009"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -286,6 +286,39 @@ Można otworzyć konsoli "Usługi" i upewnij się, "COM + System Application" i 
 --- | --- | ---
 150172<br></br>**Komunikat**: Nie można włączyć ochrony dla maszyny wirtualnej, ponieważ zawiera ona (DiskName) o rozmiarze (DiskSize), która jest mniejsza niż minimalna obsługiwana rozmiar 10 GB. | -Dysk jest mniejszy niż obsługiwany rozmiar wynoszący 1024 MB| Upewnij się, że rozmiary dysków są w zakresie obsługiwanych rozmiarów, a następnie spróbuj ponownie wykonać operację. 
 
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Włączanie ochrony nie powiodło się, jak nazwa urządzenia, wymienione w konfiguracji programu GRUB zamiast identyfikatora UUID (kod błędu: 151126)
 
-## <a name="next-steps"></a>Kolejne kroki
-[Replikowanie maszyn wirtualnych platformy Azure](site-recovery-replicate-azure-to-azure.md)
+**Możliwa przyczyna:** </br>
+Pliki konfiguracji programu GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników") może zawierać wartości dla parametrów **głównego** i **wznowić** jako nazwy rzeczywistego urządzenia zamiast identyfikatora UUID. Usługa Site Recovery określającemu UUID podejście, jak nazwa urządzenia mogą ulec zmianie między ponowny rozruch maszyny wirtualnej jako maszyny Wirtualnej może nie wróć w górę o takiej samej nazwie w trybie failover powodujące problemy. Na przykład: </br>
+
+
+- Następujący wiersz jest z pliku programu GRUB **/boot/grub2/grub.cfg**. <br>
+*Linux /boot/vmlinuz-3.12.49-11-default **główny = / dev/sda2** ${extra_cmdline} **wznowić = / dev/sda1** splash = dyskretnej showopts cichy*
+
+
+- Następujący wiersz jest z pliku programu GRUB **/boot/grub/menu.lst**
+ */boot/vmlinuz-3.0.101-63-default jądra **główny = / dev/sda2** **wznowić = / dev/sda1 ** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
+
+Jeśli zauważysz bold ciągu powyżej, program GRUB zawiera rzeczywistego urządzenia nazwy parametrów "root" i "resume" zamiast identyfikatora UUID.
+ 
+**Jak naprawić:**<br>
+Nazwy urządzeń należy zastąpić je klasą odpowiedni identyfikator UUID.<br>
+
+
+1. Znajdź identyfikator UUID urządzenia, wykonując polecenie "blkid <device name>". Na przykład:<br>
+```
+blkid /dev/sda1 
+```<br>
+```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
+```blkid /dev/sda2```<br> 
+```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```<br>
+
+
+
+1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+
+## Next steps
+[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1bf0ae8b0e9e0665f9b51935763d9f724b4bca4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011644"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261897"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Zasady zabezpieczeń platformy Azure, monitorowany przez usługę Azure Security Center
-Ten artykuł zawiera listę definicji zasad platformy Azure, które mogą być monitorowane w usłudze Security Center.
+Ten artykuł zawiera listę definicji zasad platformy Azure, które mogą być monitorowane w usłudze Security Center. Aby uzyskać więcej informacji na temat zasad zabezpieczeń, zobacz [Praca z zasadami zabezpieczeń](tutorial-security-policy.md).
 
 ## <a name="available-security-policies"></a>Dostępne zasady zabezpieczeń
 
@@ -58,30 +58,30 @@ Aby poznać wbudowanych zasad, które są monitorowane przez usługę Security C
 |Przeprowadź inspekcję włączania dzienników diagnostycznych w usłudze App Services|Inspekcja, Włączanie dzienników diagnostycznych w aplikacji. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, jeśli wystąpi incydent zabezpieczeń lub złamania zabezpieczeń sieci.| 
 |Inspekcja stanu przezroczystego szyfrowania danych|Przeprowadź inspekcję stanu przezroczystego szyfrowania danych dla baz danych SQL.| 
 |Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera|Przeprowadza inspekcję istnienia inspekcji SQL na poziomie serwera.| 
-|[Wersja zapoznawcza]: Monitoruj niezaszyfrowaną bazę danych SQL w usłudze Azure Security Center|Nieszyfrowane serwery SQL lub bazy danych będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj bazę danych SQL bez inspekcji w usłudze Azure Security Center|Serwery SQL i baz danych, które nie włączona jest funkcja inspekcji usługi SQL będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitoruj nieszyfrowaną bazę danych SQL w usłudze Azure Security Center|Nieszyfrowane serwery SQL lub bazy danych będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitorowanie bazy danych SQL bez inspekcji w usłudze Azure Security Center|Serwery SQL i baz danych, które nie włączona jest funkcja inspekcji usługi SQL będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
 |[Wersja zapoznawcza]: Monitoruj brakujące aktualizacje systemu w usłudze Azure Security Center|Brakujące aktualizacje systemu zabezpieczeń na serwerach będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Przeprowadzaj inspekcję szyfrowania brakujących obiektów blob dla kont magazynu|Ta zasada przeprowadza inspekcję kont magazynu bez szyfrowania obiektów blob. Dotyczy tylko typów zasobów Microsoft.Storage, a nie do innych dostawców magazynu. Ewentualny dostęp Just In Time, będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj ewentualny dostęp dokładnie na czas (JIT, Just In Time) w usłudze Azure Security Center|Ewentualny dostęp tylko w czas (JIT), będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj ewentualną listę dozwolonych aplikacji w usłudze Azure Security Center|Możliwych konfiguracji listy dozwolonych aplikacji będą monitorowane przez usługę Azure Security Center.| 
-|[Wersja zapoznawcza]: Monitoruj liberalny dostęp do sieci w usłudze Azure Security Center|Sieciowe grupy zabezpieczeń o zbyt liberalnych regułach będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj luki w zabezpieczeniach systemu operacyjnego w usłudze Azure Security Center|Serwery, które nie spełniają skonfigurowanego punktu odniesienia, będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center|Serwery bez zainstalowanego agenta programu Endpoint Protection będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj niezaszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center|Maszyny wirtualne bez włączonego szyfrowania dysków będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Przeprowadź inspekcję brakującego szyfrowania elementu blob dla kont magazynu|Ta zasada przeprowadza inspekcję kont magazynu bez szyfrowania obiektów blob. Dotyczy tylko typów zasobów Microsoft.Storage, a nie do innych dostawców magazynu. Ewentualny dostęp Just In Time, będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitoruj ewentualny dostęp tylko w czas (JIT) w usłudze Azure Security Center|Ewentualny dostęp tylko w czas (JIT), będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitor możliwe listę dozwolonych aplikacji w usłudze Azure Security Center|Możliwych konfiguracji listy dozwolonych aplikacji będą monitorowane przez usługę Azure Security Center.| 
+|[Wersja zapoznawcza]: Monitoruj liberalny dostęp do sieci w Centrum zabezpieczeń Azure|Sieciowe grupy zabezpieczeń o zbyt liberalnych regułach będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitorowanie luk w zabezpieczeniach systemu operacyjnego, w usłudze Azure Security Center|Serwery, które nie spełniają skonfigurowanego punktu odniesienia, będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitorowanie brakującej ochrony punktów końcowych w usłudze Azure Security Center|Serwery bez zainstalowanego agenta programu Endpoint Protection będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitoruj nieszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center|Maszyny wirtualne bez włączonego szyfrowania dysków będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
 |[Wersja zapoznawcza]: Monitoruj luki w zabezpieczeniach maszyn wirtualnych w usłudze Azure Security Center|Monitoruje luki w zabezpieczeniach wykryte przez rozwiązanie Vulnerability Assessment oraz maszyny wirtualne bez rozwiązania Vulnerability Assessment w usłudze Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj niechronioną aplikację internetową w usłudze Azure Security Center|Aplikacje sieci Web bez ochrony zapory aplikacji sieci Web będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
-|[Wersja zapoznawcza]: Monitoruj niechronione punkty końcowe sieci w usłudze Azure Security Center|Punkty końcowe sieci bez ochrony dalej zaporę nowej generacji będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitoruj niechronione aplikacje internetowe w usłudze Azure Security Center|Aplikacje sieci Web bez ochrony zapory aplikacji sieci Web będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
+|[Wersja zapoznawcza]: Monitoruj niechronione punkty końcowe sieci w Centrum zabezpieczeń Azure|Punkty końcowe sieci bez ochrony dalej zaporę nowej generacji będą monitorowane przez usługę Azure Security Center jako zalecenia.| 
 |[Wersja zapoznawcza]: Monitoruj wyniki oceny luk w zabezpieczeniach SQL w usłudze Azure Security Center|Monitoruj wyniki skanowania przy ocenie luk w zabezpieczeniach oraz zalecenia dotyczące sposobu korygowania luk w zabezpieczeniach bazy danych.| 
-|[Wersja zapoznawcza]: Inspekcja maksymalnej liczby właścicieli dla subskrypcji|Zaleca się wyznaczenie maksymalnie 3 właścicieli subskrypcji, aby zmniejszyć ryzyko ataku przez naruszenie zabezpieczeń właściciela.| 
-|[Wersja zapoznawcza]: Inspekcja minimalnej liczby właścicieli dla subskrypcji|Zaleca się wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.| 
-|[Wersja zapoznawcza]: Inspekcja kont z uprawnieniami właściciela, które nie mają włączonego uwierzytelniania MFA w subskrypcji|Usługa Multi-Factor Authentication (MFA) powinna być włączona dla wszystkich kont subskrypcji z uprawnieniami właściciela w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.| 
-|[Wersja zapoznawcza]: Inspekcja kont z uprawnieniami do zapisu, które nie mają włączonego uwierzytelniania MFA w subskrypcji|Usługa Multi-Factor Authentication (MFA) powinna być włączona dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.| 
-|[Wersja zapoznawcza]: Inspekcja kont z uprawnieniami do odczytu, które nie mają włączonego uwierzytelniania MFA w subskrypcji|Usługa Multi-Factor Authentication (MFA) powinna być włączona dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.| 
-|[Wersja zapoznawcza]: Inspekcja przestarzałych kont z uprawnieniami właściciela w subskrypcji|Przestarzałe konta z uprawnieniami właściciela, powinny być usunięte z subskrypcji. Przestarzałe konta są kontami, które zostały zablokowane z logowania.| 
-|[Wersja zapoznawcza]: Inspekcja przestarzałych kont w subskrypcji|Przestarzałe konta powinny zostać usunięte z subskrypcji. Przestarzałe konta są kontami, które zostały zablokowane z logowania.| 
-|[Wersja zapoznawcza]: Inspekcja kont zewnętrznych z uprawnieniami właściciela w subskrypcji|Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
-|[Wersja zapoznawcza]: Inspekcja kont zewnętrznych z uprawnieniami do zapisu w subskrypcji|Zewnętrzne konta z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
-|[Wersja zapoznawcza]: Inspekcja kont zewnętrznych z uprawnieniami do odczytu w subskrypcji|Zewnętrzne konta z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
+|[Wersja zapoznawcza]: Inspekcja maksymalną liczbę właścicieli subskrypcji|Zaleca się wyznaczenie maksymalnie 3 właścicieli subskrypcji, aby zmniejszyć ryzyko ataku przez naruszenie zabezpieczeń właściciela.| 
+|[Wersja zapoznawcza]: Minimalna liczba właścicieli subskrypcji inspekcji|Zaleca się wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.| 
+|[Wersja zapoznawcza]: Inspekcja kont z uprawnieniami właściciela, którzy nie są włączone w ramach subskrypcji usługi MFA|Usługa Multi-Factor Authentication (MFA) powinna być włączona dla wszystkich kont subskrypcji z uprawnieniami właściciela w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.| 
+|[Wersja zapoznawcza]: Inspekcja kont z uprawnieniami do zapisu, którzy nie są włączone w ramach subskrypcji usługi MFA|Usługa Multi-Factor Authentication (MFA) powinna być włączona dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.| 
+|[Wersja zapoznawcza]: Inspekcja kont z uprawnieniami do odczytu, którzy nie są włączone w ramach subskrypcji usługi MFA|Usługa Multi-Factor Authentication (MFA) powinna być włączona dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.| 
+|[Wersja zapoznawcza]: Inspekcja przestarzałe konta z uprawnieniami właściciela na subskrypcji|Przestarzałe konta z uprawnieniami właściciela, powinny być usunięte z subskrypcji. Przestarzałe konta są kontami, które zostały zablokowane z logowania.| 
+|[Wersja zapoznawcza]: Inspekcja przestarzałe konta w ramach subskrypcji|Przestarzałe konta powinny zostać usunięte z subskrypcji. Przestarzałe konta są kontami, które zostały zablokowane z logowania.| 
+|[Wersja zapoznawcza]: Przeprowadź inspekcję konta zewnętrzne z uprawnieniami właściciela na subskrypcji|Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
+|[Wersja zapoznawcza]: Inspekcja konta zewnętrzne z uprawnień do zapisu w ramach subskrypcji|Zewnętrzne konta z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
+|[Wersja zapoznawcza]: Przeprowadź inspekcję konta zewnętrzne z uprawnieniami do odczytu w ramach subskrypcji|Zewnętrzne konta z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
 
 
 
@@ -89,11 +89,11 @@ Aby poznać wbudowanych zasad, które są monitorowane przez usługę Security C
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób konfigurowania zasad zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
-* [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md) — informacje na temat planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+* [Przewodnik planowania usługi Azure Security Center i obsługi](security-center-planning-and-operations-guide.md): Informacje o sposobie planowania i zagadnień projektowych dotyczących usługi Azure Security Center.
+* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md): Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
+* [Zarządzanie i odpowiadanie na alerty zabezpieczeń w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md): Informacje na temat sposobu zarządzania alertami zabezpieczeń i reagowania na nie.
+* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md): Informacje na temat sposobu monitorowania stanu kondycji rozwiązań partnerskich.
+* [Usługa Azure Security Center — często zadawane pytania](security-center-faq.md): Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
+* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/): Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 Aby dowiedzieć się więcej na temat usługi Azure Policy, zobacz [Co to jest Azure Policy?](../azure-policy/azure-policy-introduction.md)
