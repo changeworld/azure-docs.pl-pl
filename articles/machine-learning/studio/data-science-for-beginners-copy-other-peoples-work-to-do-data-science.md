@@ -1,27 +1,8 @@
 ---
-title: Skopiuj innych nauki przykładów danych — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: 'Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure.'
-keywords: przykłady do nauki o danych, machine learning przykład algorytm klastrowanie przykład algorytm klastrowanie
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/05/2018
-ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260382"
+Tytuł: Skopiuj innych danych do analizy przykłady titleSuffix: Opis usługi Azure Machine Learning Studio: "Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure. "
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
 ## <a name="video-5-data-science-for-beginners-series"></a>Wideo 5: Analiza danych dla początkujących serii

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cfcb33f9586033db9f4197a341227365d43601cc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0a18bcf9f9e1217b674bda5f5ae698908f1911a8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232723"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262918"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
@@ -70,7 +70,7 @@ Aby wyświetlić elementy usługi VSTS, do którego odwołuje się opinii, wydaw
 1. Zbierz następujące informacje:
     - Twoja nazwa wydawcy i Identyfikatora
     - Oferty (aplikacje platformy Azure), oferują nazwy i Identyfikatora jednostki SKU
-    - Żądanie ściągnięcia link na przykład `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/jfrog/pullrequest/<number>`.  Ten adres URL można pobrać z komunikatu powiadomienia lub adres strony odpowiedzi 401.
+    - Żądanie ściągnięcia link na przykład: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  Ten adres URL można pobrać z komunikatu powiadomienia lub adres strony odpowiedzi 401.
     - Adresy e-mail osób z organizacji publikowania, który chcesz udzielić dostępu do.  Te powinna zawierać adresy właściciela, podanych podczas rejestracji jako wydawcę w portalu Cloud Partner.
 2. Utwórz żądanie pomocy technicznej.  Na pasku tytułu w portalu Cloud Partner wybierz **pomocy** przycisk, a następnie wybierz **pomocy technicznej** z menu.  Domyślne internetowej przeglądarki należy uruchomić i przejdź do firmy Microsoft nowe strony pomocy technicznej zdarzenia.  (Może mieć się się zalogować).
 3. Określ **typ problemu** jako **przechodzenia do portalu marketplace** i **kategorii** jako **problem z dostępem**, a następnie wybierz **Start żądanie**.
@@ -78,7 +78,7 @@ Aby wyświetlić elementy usługi VSTS, do którego odwołuje się opinii, wydaw
     ![Kategoria bilet pomocy technicznej](./media/support-incident1.png)
 
 4. W **krok 1 z 2** strony, podaj swoje informacje kontaktowe i wybierz **Kontynuuj**.
-5. W **krok 2 z 2** strony, określ tytuł zdarzenia i podać informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz **przesyłania**.
+5. W **krok 2 z 2** Określ tytuł zdarzenia (na przykład `Request VSTS access`) i podaj informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz **przesyłania**.
 
 Jeśli tworzenie zdarzenia zakończyło się pomyślnie, zostanie wyświetlona strona potwierdzenia.  Zapisz informacje o potwierdzenie dla Twojej informacji.  Pomoc techniczna firmy Microsoft należy odpowiedzieć na Twoje żądanie dostępu w ciągu kilku dni roboczych.
 

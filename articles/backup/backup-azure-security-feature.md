@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 62b2744494fcd4d98bf75892dc95d86130dd04bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fcb5941c56eda19f9c524a2c078a76483426b862
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261744"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266998"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych, które używają usługi Azure Backup
 Coraz więcej wątpliwości dotyczących problemów z zabezpieczeniami, takich jak złośliwe oprogramowanie, przed oprogramowaniem wymuszającym okup i nieautoryzowanego dostępu. Te problemy dotyczące zabezpieczeń może być kosztowna, pod względem zarówno pieniądze, jak i dane. Aby zabezpieczyć się przed takimi atakami, kopia zapasowa Azure zapewnia funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych. W tym artykule opisano, jak włączanie i używanie tych funkcji przy użyciu agenta usługi Azure Recovery Services i serwera usługi Azure Backup. Te funkcje obejmują:
@@ -26,7 +26,7 @@ Coraz więcej wątpliwości dotyczących problemów z zabezpieczeniami, takich j
 > Funkcje zabezpieczeń nie można włączyć, korzystając z infrastruktury jako usługi (IaaS) kopii zapasowej maszyny Wirtualnej. Te funkcje nie są jeszcze dostępne dla kopii zapasowych maszyn wirtualnych IaaS, aby umożliwić im korzystanie z nie ma żadnego wpływu. Funkcje zabezpieczeń powinny być włączone, tylko wtedy, gdy używane są: <br/>
 >  * **Agent usługi Azure Backup**. Minimalna wersja agenta: 2.0.9052. Po włączeniu tych funkcji, należy uaktualnić do tej wersji agenta, aby wykonywać krytyczne operacje. <br/>
 >  * **Usługa Azure Backup Server**. Minimalna usługi Azure Backup agent w wersji 2.0.9052 z usługi Azure Backup Server update 1. <br/>
->  * **System Center Data Protection Manager**. Minimalna usługi Azure Backup agent w wersji 2.0.9052 z programu Data Protection Manager 2012 R2 UR12 lub Data Protection Manager 2016 UR2. <br/> 
+>  * **System Center Data Protection Manager**. Minimalna usługi Azure Backup agent w wersji 2.0.9052 z programu Data Protection Manager 2012 R2 UR12 lub Data Protection Manager 2016 UR2. <br/>
 
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Kopia zapasowa zachowuje usunięte dane kopii zapasowej dodatkowych 14 dni i nie
 
 Aby uzyskać **agenta usług odzyskiwania Azure** użytkowników:
 
-1. Jeśli komputer, na których były wykonywane kopie zapasowe jest nadal dostępna, użyj [odzyskiwanie danych na tym samym komputerze](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) w usłudze Azure Recovery Services można odzyskać stare punkty odzyskiwania.
+1. Jeśli komputer, na których były wykonywane kopie zapasowe jest nadal dostępna, ponownie włączyć ochronę źródeł danych usuniętych i użyj [odzyskiwanie danych na tym samym komputerze](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) w usłudze Azure Recovery Services można odzyskać stare punkty odzyskiwania.
 2. Jeśli ten komputer nie jest dostępna, należy użyć [odzyskiwanie do alternatywnej maszynie](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) do pobrania tych danych za pomocą innego komputera usług Azure Recovery Services.
 
 Aby uzyskać **usługi Azure Backup Server** użytkowników:
@@ -83,7 +83,7 @@ W ramach dodanie dodatkowej warstwy uwierzytelniania krytyczne operacje, zostani
 
 > [!NOTE]
 
-> Obecnie zabezpieczający numer pin nie jest obsługiwana dla **Zatrzymaj ochronę za pomocą usuwania danych** programu DPM i serwera usługi MAB. 
+> Obecnie zabezpieczający numer pin nie jest obsługiwana dla **Zatrzymaj ochronę za pomocą usuwania danych** programu DPM i serwera usługi MAB.
 
 Aby otrzymać ten kod PIN:
 
@@ -109,8 +109,8 @@ Funkcje zabezpieczeń, wymienione w niniejszym artykule zapewniają mechanizmy o
 | Operacja | Szczegóły błędu | Rozwiązanie |
 | --- | --- | --- |
 | Zmiany zasad |Nie można modyfikować zasad tworzenia kopii zapasowej. Błąd: Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x29834]. Spróbuj wykonać ponownie operację za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |**Przyczyna:**<br/>Ten błąd jest dostarczany, gdy ustawienia zabezpieczeń są włączone, użytkownik próbuje zmniejszyć zakres przechowywania, poniżej wartości minimalnej wymienione powyżej i korzystasz z nieobsługiwanej wersji (obsługiwane wersje są określone w pierwszym Uwaga części tego artykułu). <br/>**Zalecana akcja:**<br/> W takim przypadku należy ustawić okres przechowywania danych powyżej co najmniej, podanego okresu (7 dni w przypadku codziennie, cztery tygodnie, co tydzień, trzy tygodnie, co miesiąc lub rok dla corocznych) aby kontynuować za pomocą zasad aktualizacji dotyczących. Opcjonalnie aktualizacji agenta kopii zapasowej serwera usługi Azure Backup i/lub programu DPM z pakietem zbiorczym aktualizacji wykorzystać wszystkie aktualizacje zabezpieczeń jest preferowanym podejściem. |
-| Zmień hasło |Wprowadzony zabezpieczający numer PIN jest niepoprawny. (IDENTYFIKATOR: 100130) Podaj poprawny zabezpieczający numer PIN do ukończenia tej operacji. |**Przyczyna:**<br/> Ten błąd jest dostarczany, po wprowadzeniu nieprawidłowe lub wygasłe zabezpieczający numer PIN podczas wykonywania krytycznej operacji (np. zmianą hasła). <br/>**Zalecana akcja:**<br/> Aby zakończyć operację, należy wprowadzić prawidłowy zabezpieczający numer PIN. Aby uzyskać numer PIN, zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services > Ustawienia > Właściwości > Generuj zabezpieczający numer PIN. Ten numer PIN umożliwia zmianę hasła. |
-| Zmień hasło |Operacja nie powiodła się. ID: 120002 |**Przyczyna:**<br/>Ten błąd jest dostarczany, gdy ustawienia zabezpieczeń są włączone, próbuje zmienić hasło i korzystasz z nieobsługiwanej wersji (prawidłowe wersje określone w pierwszym Uwaga części tego artykułu).<br/>**Zalecana akcja:**<br/> Aby zmienić hasło, należy najpierw zaktualizować agenta kopii zapasowej do minimalnej wersji 2.0.9052 minimalne, serwer usługi Azure Backup do minimalnej update 1, i/lub serwer programu DPM ma minimalne programu DPM 2012 R2 UR12 lub DPM 2016 UR2 (Poniższe łącza pobierania), a następnie wprowadź prawidłowy zabezpieczający numer PIN. Aby uzyskać numer PIN, zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services > Ustawienia > Właściwości > Generuj zabezpieczający numer PIN. Ten numer PIN umożliwia zmianę hasła. |
+| Zmień hasło |Wprowadzony zabezpieczający numer PIN jest niepoprawny. (ID: 100130) Podaj poprawny zabezpieczający numer PIN do ukończenia tej operacji. |**Przyczyna:**<br/> Ten błąd jest dostarczany, po wprowadzeniu nieprawidłowe lub wygasłe zabezpieczający numer PIN podczas wykonywania krytycznej operacji (np. zmianą hasła). <br/>**Zalecana akcja:**<br/> Aby zakończyć operację, należy wprowadzić prawidłowy zabezpieczający numer PIN. Aby uzyskać numer PIN, zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services > Ustawienia > Właściwości > Generuj zabezpieczający numer PIN. Ten numer PIN umożliwia zmianę hasła. |
+| Zmień hasło |Operacja nie powiodła się. Identyfikator: 120002 |**Przyczyna:**<br/>Ten błąd jest dostarczany, gdy ustawienia zabezpieczeń są włączone, próbuje zmienić hasło i korzystasz z nieobsługiwanej wersji (prawidłowe wersje określone w pierwszym Uwaga części tego artykułu).<br/>**Zalecana akcja:**<br/> Aby zmienić hasło, należy najpierw zaktualizować agenta kopii zapasowej do minimalnej wersji 2.0.9052 minimalne, serwer usługi Azure Backup do minimalnej update 1, i/lub serwer programu DPM ma minimalne programu DPM 2012 R2 UR12 lub DPM 2016 UR2 (Poniższe łącza pobierania), a następnie wprowadź prawidłowy zabezpieczający numer PIN. Aby uzyskać numer PIN, zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services > Ustawienia > Właściwości > Generuj zabezpieczający numer PIN. Ten numer PIN umożliwia zmianę hasła. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Recovery Services vault](backup-azure-vms-first-look-arm.md) Aby włączyć te funkcje.

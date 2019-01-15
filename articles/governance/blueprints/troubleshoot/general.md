@@ -4,17 +4,17 @@ description: Dowiedz się, jak rozwiązywać problemy dotyczące tworzenia i prz
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 04c038eb11cc40cec3552feff183bea55b22bb57
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315531"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261931"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów przy użyciu planów usługi Azure
 
@@ -52,6 +52,20 @@ Zasady może spowodować konflikt z wdrożenia z kilku powodów:
 #### <a name="resolution"></a>Rozwiązanie
 
 Zmień plan, aby nie koliduje to z zasadami w szczegóły dotyczące błędu. Jeśli ta zmiana nie jest możliwe, alternatywnych opcji jest zakres przypisania zasad zmienione, aby planu nie jest już jest w konflikcie z zasadami.
+
+### <a name="escape-function-parameter"></a>Scenariusz: Parametr planu jest funkcją
+
+#### <a name="issue"></a>Problem
+
+Parametry planu, które funkcje są przetwarzane przed przesłaniem do artefaktów.
+
+#### <a name="cause"></a>Przyczyna
+
+Przekazywanie parametru planu, który używa funkcji, takich jak `[resourceGroup().tags.myTag]`, artefakt skutkuje przetworzonych wynik funkcji ustawiania artefaktu zamiast funkcji dynamicznego.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Aby przekazać za pośrednictwem funkcji jako parametr, ucieczki cały ciąg z `[` taki sposób, że parametr planu wygląda `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że schematy traktowanie wartości jako ciąg, podczas przetwarzania planu. Schematy umieszcza funkcja artefaktu, co pozwala na dynamiczne, zgodnie z oczekiwaniami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

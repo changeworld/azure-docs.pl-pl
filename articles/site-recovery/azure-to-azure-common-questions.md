@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 20311f904356f16b34f64d0aaf6ed438ba692857
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155154"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260468"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
@@ -74,10 +74,16 @@ Punktu odzyskiwania spójnego na poziomie awarii reprezentuje dane na dysku, tak
 
 Obecnie większość aplikacji można odzyskać dobrze z migawek spójnych awaryjnie. Punktu odzyskiwania spójnego na poziomie awarii jest wystarczająco zwykle dla bazy danych nie systemów operacyjnych i aplikacji, takich jak serwery plików, serwery DHCP i serwery wydruku.
 
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Co to jest częstotliwość generowania punktu odzyskiwania spójnego na poziomie awarii?
+Usługa Site Recovery tworzy punkt odzyskiwania spójnego na poziomie awarii, co 5 minut.
+
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Co to jest punkt odzyskiwania zapewniających spójność aplikacji? 
 Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawki spójne z aplikacjami. Migawki spójne z aplikacjami przechwytują te same dane jako migawki spójne na poziomie awarii, dodając wszystkie dane w pamięci i wszystkie trwające transakcje. 
 
 Ze względu na ich zawartość dodatkowa migawki spójne z aplikacjami są najbardziej zaangażowani i trwało najdłużej wykonywanie. Firma Microsoft zaleca punktów odzyskiwania zapewniających spójność aplikacji dla systemów operacyjnych bazy danych i aplikacji, takich jak SQL Server.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Jaka jest minimalna częstotliwość generowania punktów odzyskiwania zapewniających spójność aplikacji?
+Usługa Site Recovery może tworzy punkt odzyskiwania zapewniających spójność aplikacji z minimalna częstotliwość w ciągu 1 godziny.
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Jak punkty odzyskiwania wygenerowana i zapisana?
 Aby dowiedzieć się, jak Usługa Site Recovery generuje punktów odzyskiwania, Spójrzmy na przykład zasady replikacji, która ma odzyskiwania punktu okna przechowywania 24 godzin i migawki spójny na poziomie aplikacji częstotliwości równej 1 godz.
@@ -153,6 +159,9 @@ Tak. Usługa Site Recovery przetwarza wszystkie oczekujące dane przed przechodz
 
 ### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Jeśli Przeprowadzam replikację między dwoma regionami platformy Azure, co się stanie, jeśli wystąpi nieoczekiwana awaria mojego regionu podstawowego?
 Możesz wyzwolić tryb failover, po awarii. Usługa Site Recovery nie wymaga łączności z regionu podstawowego do wykonania pracy w trybie failover.
+
+### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Co to jest RTO przejścia w tryb failover maszyny wirtualnej?
+Usługa Site Recovery ma [SLA RTO 2 godziny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Jednak w większości przypadków, Usługa Site Recovery pracy awaryjnej maszyn wirtualnych w ciągu kilku minut. Można obliczyć czas RTO, przechodząc do pracy w trybie failover zadań, która przedstawia czas, jaki zajęło Aby przenieść maszynę wirtualną. Do odzyskiwania należy zaplanować czas RTO, można znaleźć poniżej. 
 
 ## <a name="recovery-plan"></a>Plan odzyskiwania
 

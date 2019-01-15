@@ -1,29 +1,29 @@
 ---
-title: Jak stronicować za pośrednictwem artykuły z wiadomościami dostępne — wyszukiwanie wiadomości Bing
+title: Jak stronicować za pośrednictwem wyników wyszukiwania wiadomości Bing
 titlesuffix: Azure Cognitive Services
-description: Pokazuje, jak stronicować przez wszystkie artykuły z wiadomościami, zwracających nowego wyszukiwania Bing.
+description: Dowiedz się, jak stronicować za pośrednictwem artykuły z wiadomościami, które zwraca interfejs API wyszukiwania wiadomości Bing.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0507f2cfb1d75025d1b6aadccc442326a52ceebc
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 9acf0c26707dab9de443b06e7314de6d77913777
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739808"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258258"
 ---
-# <a name="paging-news"></a>Stronicowanie wiadomości
+# <a name="how-to-page-through-news-search-results"></a>Jak stronicować za pośrednictwem wyników wyszukiwania wiadomości
 
-Po wywołaniu interfejsu API wyszukiwania wiadomości Bing zwraca listę wyników. Lista jest podzbiorem całkowita liczba wyników, które mogą dotyczyć zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-totalmatches) pola.  
+Po wywołaniu interfejsu API wyszukiwania wiadomości Bing zwraca listę wyników, które są istotne dla kwerendy. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-totalmatches) pola.  
   
 W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zawiera odpowiedź wiadomości.  
-  
-```  
+
+```json
 {  
     "_type" : "News",  
     "readLink" : "https:\/\/api.cognitive.microsoft.com\/bing\/v7\/news\/search?q=sailing+dinghies",  
@@ -33,29 +33,31 @@ W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zaw
 ```  
   
 Na stronie przy użyciu dostępnych artykułów, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) parametry zapytania.  
-  
-`count` Parametr określa liczbę wyników do zwrócenia w odpowiedzi. Maksymalna liczba wyników, których może żądać w odpowiedzi to 100. Wartość domyślna wynosi 10. Rzeczywista liczba dostarczonych może być mniejsza niż żądana.
+ 
 
-`offset` Parametr określa liczbę wyników do pominięcia. `offset` Jest liczony od zera i powinna być mniejsza niż (`totalEstimatedMatches` - `count`).  
+|Parametr  |Opis  |
+|---------|---------|
+|`count`     | Określa liczbę wyników do zwrócenia w odpowiedzi. Maksymalna liczba wyników, których może żądać w odpowiedzi to 100. Wartość domyślna wynosi 10. Rzeczywista liczba dostarczonych może być mniejsza niż żądana.        |
+|`offset`     | Określa liczbę wyników do pominięcia. `offset` Jest liczony od zera i powinna być mniejsza niż (`totalEstimatedMatches` - `count`).          |
 
-Jeśli chcesz wyświetlić 20 artykułów na stronę, należy ustawić `count` do 20 i `offset` na 0, aby pobrać pierwszej strony wyników. Na kolejnych stronach, możesz zwiększyć `offset` 20 (na przykład 20, 40).  
+Na przykład, jeśli chcesz wyświetlić 20 artykułów na stronę, należy ustawić `count` do 20 i `offset` na 0, aby pobrać pierwszej strony wyników. Na kolejnych stronach, możesz zwiększyć `offset` 20 (na przykład 20, 40).  
   
-Poniżej przedstawiono przykład, który żąda 20 nowych artykułów, rozpoczynając od przesunięcia 40.  
-  
-```  
+Poniższy przykład żądania 20 nowych artykułów, rozpoczynając od przesunięcia 40.  
+
+```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 Host: api.cognitive.microsoft.com  
 ```  
   
 Jeśli wartość domyślna `count` wartość działa w przypadku implementacji, należy określić tylko `offset` parametr zapytania, jak pokazano w poniższym przykładzie:  
-  
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 Host: api.cognitive.microsoft.com  
 ```  
-  
+
 > [!NOTE]
 > Stronicowanie ma zastosowanie tylko do wyszukiwania wiadomości (/ wiadomości/wyszukiwania), a nie popularne tematy (/ wiadomości/trendingtopics) lub kategorii wiadomości (/ grup dyskusyjnych).
 

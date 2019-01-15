@@ -1,21 +1,21 @@
 ---
 title: Moderowanie zawartości przepływów pracy, z poziomu konsoli interfejsu API — Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać przepływów pracy, moderowanie zawartości z poziomu konsoli interfejsu API.
+description: Używać operacji przepływu pracy w usłudze Azure Content Moderator, aby utworzyć lub zaktualizować przepływu pracy lub Pobierz szczegóły przepływu pracy przy użyciu interfejsu API przeglądu.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4ef8951b30fa7aede08a1af3c834192b5ed18649
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 24c451dda398cfa65dd24a4500871c67943b79bf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223854"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259465"
 ---
 # <a name="workflows-from-the-api-console"></a>Przepływy pracy za pomocą konsoli interfejsu API
 
@@ -80,9 +80,9 @@ Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który 
 
 Wprowadź wartości w polach **zespołu**, **workflowname**, i **Ocp-Apim-Subscription-Key** (klucz subskrypcji):
 
-- **zespół**: identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
+- **Zespół**: Identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
 - **workflowname**: Nazwa przepływu pracy. Użyj `default`.
-- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+- **Ocp-Apim-Subscription-Key**: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
   ![Pobierz nagłówki i parametry zapytania](images/workflow-get-default.PNG)
 
@@ -138,9 +138,9 @@ Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który 
 
 Wprowadź wartości w polach **zespołu**, **workflowname**, i **Ocp-Apim-Subscription-Key** (klucz subskrypcji):
 
-- **zespół**: identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
+- **Zespół**: Identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
 - **workflowname**: Nazwa nowego przepływu pracy.
-- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+- **Ocp-Apim-Subscription-Key**: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
   ![Przepływ pracy — Tworzenie nagłówki i parametry zapytania konsoli lub aktualizacji](images/workflow-console-parameters.PNG)
 

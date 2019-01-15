@@ -1,6 +1,6 @@
 ---
 title: Rozliczenia platformy Azure i kosztów zarządzania budżetu scenariusza | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zamknąć maszyny wirtualne, na podstawie progów określonych budżetu za pomocą automatation platformy Azure.
+description: Dowiedz się, jak używać usługi Azure automation do wyłączania maszyn wirtualnych na podstawie progów określonych budżetu.
 services: billing
 documentationcenter: ''
 author: Erikre
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0c67b100b0d44b539a37a8ea54954d58bba38cb5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094817"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267202"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Zarządzanie kosztami przy użyciu budżetów platformy Azure
 
@@ -116,7 +116,7 @@ Aplikacja logiki będzie wykonywać kilka czynności. Poniższa lista zawiera og
 
 Aby utworzyć aplikację logiki, która będzie wykonaj powyższe kroki potrzebne są następujące czynności:
 
-1.  W [witryny Azure portal](https://portal.azure.com/), wybierz opcję **Utwórz zasób** > **integracji** > **aplikacji logiki**.
+1.  W witrynie [Azure Portal](https://portal.azure.com/) wybierz pozycję **Utwórz zasób** > **Integracja** > **Aplikacja logiki**.
     
     ![Azure — wybierz zasobu aplikacji logiki](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
 2.  W **tworzenie aplikacji logiki** bloku, zapewniają szczegółowe informacje, należy utworzyć aplikację logiki, wybierz opcję **Przypnij do pulpitu nawigacyjnego**i kliknij przycisk **Utwórz**. 
@@ -125,7 +125,7 @@ Aby utworzyć aplikację logiki, która będzie wykonaj powyższe kroki potrzebn
 
 Gdy platforma Azure wdroży aplikację logiki **Projektant aplikacji logiki** otwiera i przedstawiono bloku z wprowadzającym wideo i najczęściej używanych wyzwalaczy. 
 
-### <a name="add-a-trigger"></a>Dodawanie wyzwalacza
+### <a name="add-a-trigger"></a>Dodaj wyzwalacz
 
 Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej i wykonującej przepływ pracy. Akcje to wszystkie kroki wykonywane po aktywowaniu wyzwalacza. 
 

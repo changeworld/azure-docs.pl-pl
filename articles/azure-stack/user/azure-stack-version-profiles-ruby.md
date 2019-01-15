@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: df3222c361e4a8f6451326d967d574b1eb8eed1b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0e7d624c77447f537e6d47ea19d9054c1117d742
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157449"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263666"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Ruby w usłudze Azure Stack
 
@@ -90,7 +90,7 @@ Aby można było używać zestaw Azure Ruby SDK przy użyciu usługi Azure Stack
 | Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji niniejszego dokumentu.  |
 | Identyfikator subskrypcji | AZURE_SUBSCRIPTION_ID | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
 | Wpis tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji nazwy głównej usługi zapisane podczas tworzenia nazwy głównej usługi. |
-| Punkt końcowy usługi Resource Manager | ARM_ENDPOINT | Zobacz [endpoin Menedżera zasobów usługi Azure Stack](#The-azure-stack-resource-manager-endpoint).  |
+| Punkt końcowy usługi Resource Manager | ARM_ENDPOINT | Zobacz [punktu końcowego Menedżera zasobów usługi Azure Stack](#The-azure-stack-resource-manager-endpoint).  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Punktu końcowego Menedżera zasobów usługi Azure Stack
 
@@ -118,7 +118,7 @@ Możesz uzyskać informacje o metadanych z punktu końcowego usługi Resource Ma
 
 ### <a name="set-environmental-variables"></a>Ustawianie zmiennych środowiskowych
 
-**Program Microsoft Windows**  
+**Microsoft Windows**  
 Aby ustawić zmienne środowiskowe w wierszu polecenia Windows, użyj następującego formatu:  
 `set AZURE_TENANT_ID=<YOUR_TENANT_ID>`
 

@@ -1,6 +1,6 @@
 ---
-title: Azure zmiany rozmiaru puli partii rozpoczęcia zdarzenia | Dokumentacja firmy Microsoft
-description: Informacje dotyczące zmiany rozmiaru puli partii rozpoczęcia zdarzenia.
+title: Zdarzenie początkowe Azure zmiany rozmiaru puli usługi Batch | Dokumentacja firmy Microsoft
+description: Dokumentacja zdarzenie rozpoczęcia zmiany rozmiaru puli usługi Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: b4412764c313669dc154fccaa56f22417262994d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3cabf18cfd771151e62d64dc1d2b47b250ac5471
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312613"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258275"
 ---
 # <a name="pool-resize-start-event"></a>Zdarzenie rozpoczęcia zmiany rozmiaru puli
 
- To zdarzenie jest emitowany rozpoczęcie rozmiaru puli. Ponieważ zmiany rozmiaru puli jest zdarzenie asynchroniczne, można oczekiwać, że zdarzenie ukończenia zmiany rozmiaru puli na obliczanie po zakończeniu operacji zmiany rozmiaru.
+ To zdarzenie jest emitowane po rozpoczęciu rozmiaru puli. Ponieważ zmiany rozmiaru puli jest zdarzenie asynchroniczne, można oczekiwać, że zdarzenie zakończenia zmiany rozmiaru puli być emitowane po zakończeniu operacji zmiany rozmiaru.
 
- W poniższym przykładzie przedstawiono treści zdarzenia rozpoczęcia zmiany rozmiaru puli do puli zmiany rozmiaru z zakresu od 0 do 2 węzłów z ręcznej zmiany rozmiaru.
+ Poniższy przykład pokazuje treści zdarzenie rozpoczęcia zmiany rozmiaru puli, pula zmiany rozmiaru z zakresu od 0 do 2 węzły za pomocą ręcznej zmiany rozmiaru.
 
 ```
 {
@@ -39,8 +39,8 @@ ms.locfileid: "30312613"
 |Element|Typ|Uwagi|
 |-------------|----------|-----------|
 |poolId|Ciąg|Identyfikator puli.|
-|nodeDeallocationOption|Ciąg|Określa, kiedy można usunąć węzłów z puli, jeśli rozmiar puli będzie zmniejszany.<br /><br /> Możliwe wartości:<br /><br /> **requeue** — Przerwij wykonywane zadania i requeue je. Zadania zostaną ponownie uruchomione, gdy zadanie jest włączone. Usuń węzły zaraz po zakończeniu zadania.<br /><br /> **przerwanie** — przerwania uruchomionych zadań. Zadania nie zostaną uruchomione ponownie. Usuń węzły zaraz po zakończeniu zadania.<br /><br /> **taskcompletion** — Zezwalaj na aktualnie wykonywanych zadań do wykonania. Nie planuj nowych zadań czasu oczekiwania. Usuń węzły, po zakończeniu wykonywania wszystkich zadań.<br /><br /> **Retaineddata** — Zezwalaj na aktualnie wykonywanych zadań do wykonania, a następnie poczekaj na zakończenie wszystkich zadań okresów przechowywania danych wygaśnie. Nie planuj nowych zadań czasu oczekiwania. Usuń węzły, gdy wygasły wszystkich okresów przechowywania zadań.<br /><br /> Wartość domyślna to requeue.<br /><br /> Jeśli jest zwiększenie rozmiaru puli, wartość jest równa **nieprawidłowy**.|
-|currentDedicated|Int32|Liczba węzłów obliczeniowych aktualnie przypisane do puli.|
+|nodeDeallocationOption|Ciąg|Określa, kiedy węzłów może zostać usunięty z puli, jeśli zmniejsza się rozmiar puli.<br /><br /> Możliwe wartości:<br /><br /> **ponownego dodania do kolejki** — Zakończ uruchomione zadania podrzędne i umieścić je. Zadania zostaną uruchomione ponownie, gdy zadanie jest włączone. Usuwanie węzłów, tak szybko, jak zadania zostaną zakończone.<br /><br /> **Zakończenie** — Zakończ uruchomione zadania podrzędne. Zadania nie zostaną uruchomione ponownie. Usuwanie węzłów, tak szybko, jak zadania zostaną zakończone.<br /><br /> **taskcompletion** — Zezwalaj na aktualnie wykonywanych zadań do wykonania. Nie planuj nowych zadań podczas oczekiwania. Usuwanie węzłów, gdy wszystkie zadania zostały ukończone.<br /><br /> **Retaineddata** — Zezwalaj na aktualnie wykonywanych zadań do wykonania, a następnie zaczekaj na zakończenie wszystkich zadań okresów przechowywania danych wygaśnie. Nie planuj nowych zadań podczas oczekiwania. Usuwanie węzłów, gdy wygasły wszystkich okresów przechowywania zadań.<br /><br /> Wartość domyślna to ponownego dodania do kolejki.<br /><br /> Jeśli jest zwiększenie rozmiaru puli, a następnie wartość jest równa **nieprawidłowy**.|
+|currentDedicated|Int32|Liczba węzłów obliczeniowych, które aktualnie przypisana do puli.|
 |targetDedicated|Int32|Liczba węzłów obliczeniowych, które są wymagane dla puli.|
-|enableAutoScale|Wartość logiczna|Określa, czy rozmiar puli automatycznie dostosowuje się wraz z upływem czasu.|
-|isAutoPool|Wartość logiczna|Speficies czy puli został utworzony za pomocą mechanizmu AutoPool zadania.|
+|enableAutoScale|wartość logiczna|Określa, czy rozmiar puli automatycznie dostosowuje się wraz z upływem czasu.|
+|isAutoPool|wartość logiczna|Określa, czy pula została utworzona za pośrednictwem mechanizmu AutoPool zadania.|

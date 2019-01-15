@@ -1,28 +1,10 @@
 ---
-title: Usługi Machine Learning Studio — często zadawane pytania (FAQ) — Azure | Dokumentacja firmy Microsoft
-description: 'Usługa Azure Machine Learning Studio: — Często zadawane pytania dotyczące rozliczeń, możliwości i ograniczeń usługi w chmurze do sprawnego modelowania predykcyjnego.'
-keywords: wprowadzenie do uczenia maszynowego,modelowanie predykcyjne,co to jest uczenie maszynowe
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/02/2017
-ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091298"
+Tytuł: Usługa Machine Learning Studio — często zadawane pytania (FAQ) titleSuffix: Opis usługi Azure Machine Learning Studio: "Usługa azure Machine Learning Studio: Często zadawane pytania dotyczące rozliczeń, możliwości i ograniczeń usługi w chmurze do sprawnego modelowania predykcyjnego. "
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: koncepcyjny
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
 ---
-# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Usługa Azure Machine Learning Studio — często zadawane pytania: Rozliczenia, możliwości, ograniczeń i pomocy technicznej
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Usługi Azure Machine Learning Studio — często zadawane pytania: Rozliczenia, możliwości, ograniczeń i pomocy technicznej
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
 
 **Masz pytania, których nie możesz tu znaleźć?**
@@ -55,8 +37,8 @@ Usługi sieci Web Machine Learning zapewniają interfejs między aplikacją a mo
 
 Usługa Azure Machine Learning udostępnia dwa typy usług sieci Web:
 
-* Usługa odpowiedzi na żądanie (RRS, Request-Response Service): wysoce skalowalna usługa o małych opóźnieniach, która udostępnia interfejs dla bezstanowych modeli utworzonych i wdrożonych przy użyciu usługi Machine Learning Studio.
-* Usługa wykonywania wsadowego (BES, Batch Execution Service): asynchroniczna usługa przeznaczona do oceniania partii rekordów danych.
+* Usługa odpowiedzi na żądanie (RRS): O niskich opóźnieniach i wysoce skalowalna usługa, która udostępnia interfejs dla bezstanowych modeli utworzonych i wdrożonych przy użyciu usługi Machine Learning Studio.
+* Usługa wykonywania wsadowego (BES): Asynchroniczna Usługa przeznaczona do oceniania partii rekordów danych.
 
 Istnieje kilka sposobów uzyskiwania dostępu do usługi sieci Web za pomocą interfejsu API REST. Można na przykład napisać aplikację w języku C#, R lub Python korzystającą z przykładowego kodu automatycznie wygenerowanego podczas wdrażania usługi sieci Web.
 
@@ -271,7 +253,7 @@ W przypadku zestawów danych o rozmiarach większych niż kilka GB należy przek
 
 **Czy istnieją jakiekolwiek ograniczenia dotyczące rozmiaru wektora?**
 
-Wiersze i kolumny są ograniczone zgodnie z ograniczeniem .NET dla maksymalnej liczby całkowitej: 2 147 483 647.
+Wiersze i kolumny są ograniczone zgodnie z ograniczeniem .NET dla maksymalnej liczby całkowitej każdego: 2,147,483,647.
 
 **Czy można dostosować rozmiar pamięci maszyny wirtualnej, na której jest uruchomiona usługa sieci Web?**
 
@@ -312,7 +294,7 @@ Dla usługi Azure Machine Learning udostępniono również forum społeczności 
 ## <a name="billing-questions"></a>Pytania dotyczące rozliczeń
 **Jak działa rozliczanie w usłudze Machine Learning?**
 
-Usługa Azure Machine Learning ma dwa składniki: usługę Machine Learning Studio i usługi sieci Web Machine Learning.
+Usługa Azure Machine Learning ma dwa składniki: Usługi sieci web Machine Learning Studio i usługi Machine Learning.
 
 Podczas oceniania usługi Machine Learning Studio możesz korzystać z bezpłatnej warstwy rozliczeń, która pozwala na wdrażanie klasycznych usług sieci Web z ograniczoną funkcjonalnością.
 
@@ -438,7 +420,7 @@ Nowe plany rozliczeniowe są dostępne w trzech regionach produkcyjnych, w któr
 
 Tak. Ceny planów zależą od regionu. Gdy wdrażasz usługę sieci Web w innym regionie, musisz przypisać do niej plan obsługiwany w tym regionie. Aby uzyskać więcej informacji, zobacz [Dostępność produktów według regionów]( https://azure.microsoft.com/regions/services/).
 
-### <a name="new-web-services-overages"></a>Nowe usługi sieci Web: użycie nadwyżkowe
+### <a name="new-web-services-overages"></a>Nowych usług sieci web: Użycia nadwyżkowe
 **Jak sprawdzić, czy przekroczono limit użycia usługi sieci Web?**
 
 W portalu usług sieci Web Azure Machine Learning na stronie Plany można wyświetlić użycie usługi we wszystkich planach. Zaloguj się do portalu i kliknij opcję **Plany** w menu.
@@ -483,20 +465,20 @@ Sposób rozliczania korzystania z usługi Azure Machine Learning API zależy od 
 
 Następujące opłaty są agregowane dla danego obszaru roboczego w ramach subskrypcji.
 
-* Subskrypcja obszarów roboczych usługi Machine Learning: subskrypcja obszarów roboczych usługi Machine Learning to miesięczna opłata, która zapewnia dostęp do obszaru roboczego usługi Machine Learning Studio. Subskrypcja jest wymagana do uruchamiania eksperymentów w środowisku Studio oraz korzystania z interfejsów API środowiska produkcyjnego.
-* Godziny prowadzenia eksperymentów w Studio: ten licznik agreguje wszystkie opłaty za zasoby obliczeniowe naliczane w wyniku przeprowadzania eksperymentów w usłudze Machine Learning Studio i wykonywania wywołań produkcyjnych interfejsów API w środowisku przejściowym.
+* Subskrypcja obszaru roboczego usługi Machine Learning: Subskrypcja obszarów roboczych usługi Machine Learning to miesięczna opłata, która zapewnia dostęp do obszaru roboczego usługi Machine Learning Studio. Subskrypcja jest wymagana do uruchamiania eksperymentów w środowisku Studio oraz korzystania z interfejsów API środowiska produkcyjnego.
+* Godziny eksperymentów w Studio: Ten licznik agreguje wszystkie opłaty za zasoby obliczeniowe naliczane w wyniku przeprowadzania eksperymentów w usłudze Machine Learning Studio i wykonywania wywołań produkcyjnych interfejsów API w środowisku przejściowym.
 * Dostęp do danych przez połączenie z lokalnym serwerem z programem SQL Server w ramach modeli na potrzeby szkolenia i oceniania.
 * W przypadku klasycznych usług sieci Web:
-  * Godziny obliczeń dla interfejsu API produkcji: ten licznik obejmuje opłaty za zasoby obliczeniowe naliczane przez usługi sieci Web w środowisku produkcyjnym.
-  * Transakcje obliczeń dla interfejsu API produkcji (w 1000): ten licznik obejmuje opłaty naliczane za wywołania produkcyjnej usługi sieci Web.
+  * Godziny obliczeniowe interfejsu API produkcji: Ten licznik obejmuje opłaty za zasoby obliczeniowe naliczane przez produkcyjne usługi sieci web.
+  * Transakcje interfejsu API produkcji (w 1000): Ten licznik obejmuje opłaty naliczane za wywołania produkcyjnej usługi sieci web.
 
 W przypadku usług sieci Web opartych na usłudze Resource Manager opłaty są dodatkowo agregowane zgodnie z wybranym planem:
 
-* Plan interfejsu API w warstwie Standardowa S1/S2/S3 (jednostki): ten licznik reprezentuje typ wystąpienia wybranego dla usług sieci Web opartych na usłudze Resource Manager.
-* Nadwyżkowe godziny obliczeniowe interfejsu API w warstwie Standardowa S1/S2/S3: ten licznik obejmuje opłaty za zasoby obliczeniowe naliczane z tytułu uruchomienia usług sieci Web opartych na usłudze Resource Manager w środowisku produkcyjnym po zużyciu wliczonych wartości w istniejących wystąpieniach. Opłata za dodatkowe użycie jest naliczana zgodnie z nadwyżkową stawką skojarzoną z warstwą planów S1/S2/S3.
-* Nadwyżkowe transakcje interfejsu API w warstwie Standardowa S1/S2/S3 (w 1000): ten licznik obejmuje opłaty naliczane za wywołania usług sieci Web opartych na usłudze Resource Manager w środowisku produkcyjnym po zużyciu wliczonych wartości w istniejących wystąpieniach. Opłata za dodatkowe użycie jest naliczana zgodnie z nadwyżkową stawką skojarzoną z warstwą planów S1/S2/S3.
-* Godziny obliczeniowe interfejsu API w uwzględnionej ilości: w przypadku usług sieci Web opartych na usłudze Resource Manager ten licznik obejmuje uwzględnioną ilość godzin obliczeniowych interfejsu API.
-* Transakcje interfejsu API w uwzględnionej ilości (w 1000): w przypadku usług sieci Web opartych na usłudze Resource Manager ten licznik obejmuje uwzględnioną ilość transakcji interfejsu API.
+* Plan Standard S1/S2/S3 interfejsu API (jednostki): Ten licznik reprezentuje typ wystąpienia wybranego dla usług sieci web opartych na programie Resource Manager.
+* Standardowa S1/S2/S3 nadwyżkowe API godziny obliczeniowe: Ten licznik obejmuje opłaty za zasoby obliczeniowe naliczane przez usługi internetowe opartych na usłudze Resource Manager, które są uruchamiane w środowisku produkcyjnym po wyczerpaniu wliczonych transakcji w istniejących wystąpieniach. Opłata za dodatkowe użycie jest naliczana zgodnie z nadwyżkową stawką skojarzoną z warstwą planów S1/S2/S3.
+* Standardowa S1/S2/S3 nadwyżkowe transakcje interfejsu API (w 1000): Ten licznik obejmuje opłaty naliczane za wywołania usług sieci web opartych na programie Resource Manager w środowisku produkcyjnym po wyczerpaniu wliczonych transakcji w istniejących wystąpieniach. Opłata za dodatkowe użycie jest naliczana zgodnie z nadwyżkową stawką skojarzoną z warstwą planów S1/S2/S3.
+* Godziny obliczeniowe interfejsu API w uwzględnionej: Za pomocą usługi sieci web opartych na programie Resource Manager ten licznik reprezentuje uwzględniona liczba godzin obliczeniowych interfejsu API.
+* Uwzględnione transakcje interfejsu API w uwzględnionej ilości (w 1000): Za pomocą usługi sieci web opartych na programie Resource Manager ten licznik reprezentuje uwzględniona ilość transakcji interfejsu API.
 
 **Jak zasubskrybować usługę Azure Machine Learning w warstwie Bezpłatna?**
 

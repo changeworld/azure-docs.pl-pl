@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: lagayhar
-ms.openlocfilehash: eb44c7d3e605f3d9cfc5cc30cd5cbcc8e9c1ae42
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230989"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260061"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -161,7 +161,7 @@ Zestaw SDK usługi Application Insights szuka klucza w następującej kolejnośc
 
 1. Właściwość systemu: -DAPPLICATION_INSIGHTS_IKEY=Twój_klucz_ikey
 2. Zmienna środowiskowa: APPLICATION_INSIGHTS_IKEY
-3. Plik konfiguracji: Plik ApplicationInsights.xml
+3. Plik konfiguracji: ApplicationInsights.xml
 
 Możesz również [ustawić klucz w kodzie](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -441,7 +441,7 @@ Liczniki wydajności są widoczne jako metryki niestandardowe w [Eksploratorze m
 </Channel>
 ```
 
-Jeśli używasz modułu uruchamiającego SpringBoot, Dodaj następujący element do pliku konfiguracji (application.properies):
+Jeśli używasz modułu uruchamiającego SpringBoot, Dodaj następujący element do pliku konfiguracji (pliku application.properties):
 
 ```yml
 azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 4cbbc482a05e125f92efd98b0824ec38ae1ddefd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: d47a90851777b3256474a88e5881afd8f52547f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244702"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263326"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -79,7 +79,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 - Infrastruktura usługi kopii zapasowej są przenoszone z [sieci publicznych infrastruktury](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) do [sieci publicznych adresów VIP](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Klienci będą musieli upewnić się, usługa ma dostęp do lokalizacji magazynu kopii zapasowych z sieci publicznych adresów VIP.  
 
 > [!IMPORTANT]  
-> Jeśli masz zaporą, która nie zezwala na połączenia z sieci publicznych adresów VIP do serwera plików, ta zmiana spowoduje, że kopie zapasowe infrastruktury, aby zakończyć się niepowodzeniem z "Błąd 53 nie można odnaleźć ścieżki sieciowej." Jest to istotną zmianę, która ma uzasadnione obejście tego problemu. Na podstawie opinii klientów, firmy Microsoft zostaną przywrócone, aby ta zmiana w poprawki. Przejrzyj [wpis w sekcji kroki aktualizacji](#post-update-steps) Aby uzyskać więcej informacji na temat dostępnych poprawek dla 1809. Gdy poprawka jest dostępna, upewnij się zastosować go po aktualizacji do 1809, tylko wtedy, gdy zasad sieci nie zezwalają na sieci publicznych adresów VIP do dostępu do zasobów infrastruktury. w 1811 tej zmiany zostaną zastosowane do wszystkich systemów. Jeśli zastosowano poprawkę w 1809, nie ma żadnych dodatkowych czynności.  
+> Jeśli masz zaporą, która nie zezwala na połączenia z sieci publicznych adresów VIP do serwera plików, ta zmiana spowoduje, że kopie zapasowe infrastruktury, aby zakończyć się niepowodzeniem z "Błąd 53 nie można odnaleźć ścieżki sieciowej." Jest to istotną zmianę, która ma uzasadnione obejście tego problemu. Na podstawie opinii klientów, firmy Microsoft zostaną przywrócone, aby ta zmiana w poprawki. Przejrzyj [wpis w sekcji kroki aktualizacji](#post-update-steps) Aby uzyskać więcej informacji na temat dostępnych poprawek dla 1809. Gdy poprawka jest dostępna, upewnij się zastosować go po aktualizacji do 1809, tylko wtedy, gdy zasad sieci nie zezwalają na sieci publicznych adresów VIP na dostęp do zasobów infrastruktury. w 1811 tej zmiany zostaną zastosowane do wszystkich systemów. Jeśli zastosowano poprawkę w 1809, nie ma żadnych dodatkowych czynności.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Typowe luki w zabezpieczeniach i zagrożeń
 

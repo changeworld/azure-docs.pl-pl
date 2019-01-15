@@ -1,44 +1,44 @@
 ---
 title: Moderowanie tekstu przy użyciu niestandardowych termin list - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Testuj listy terminów niestandardowych w konsoli usługi Content Moderator interfejsu API.
+description: Tworzenie niestandardowych list terminów do wykorzystania przy użyciu interfejsu API moderowania tekstu za pomocą interfejsu API zarządzania listy.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 99df9fda2cc56f169a61ec215a976de28fc13d27
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fea671df0609b9c4dca9eaae99d1bfe667616837
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220282"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259431"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Moderowanie przy użyciu list niestandardowych termin w konsoli interfejsu API
 
-Domyślnej globalnej listy terminy w usłudze Azure Content Moderator jest wystarczająca na potrzeby większości zawartości moderowania. Jednak może być konieczne ekranu warunków, które są specyficzne dla Twojej organizacji. Na przykład możesz chcieć nazwy tagu do dalszego przeglądu. 
+Domyślna globalna lista terminów w usługach Azure Content Moderator wystarcza w przypadku większości potrzeb moderowania zawartości. Jednak może być konieczne sprawdzanie terminów, które są specyficzne dla organizacji. Na przykład warto oznaczyć tagiem nazwy konkurencji w celu dalszego przeglądu. 
 
 Użyj [interfejsu API zarządzania listy](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) do tworzenia niestandardowych list terminów do wykorzystania przy użyciu interfejsu API moderowania tekstu. **Tekst — ekranu** operacji skanuje tekstu pod kątem wulgarności, a także porównanie tekst udostępnionych i niestandardowych list elementów zabronionych.
 
 > [!NOTE]
-> Istnieje maksymalny limit wynoszący **Wyświetla 5 termin** z każdej listy **nie może przekraczać 10 000 warunki**.
+> Istnieje maksymalny limit wynoszący **5 list terminów**, a poszczególne listy **nie mogą przekraczać 10 000 terminów**.
 >
 
 Interfejs API zarządzania lista umożliwia wykonywanie następujących zadań:
-- Utwórz listę.
-- Dodawanie warunków do listy.
-- Warunki ekranu względem warunki na liście.
-- Usuwanie warunków z listy.
+- Tworzenie listy.
+- Dodawanie terminów do listy.
+- Sprawdzanie terminów względem terminów na liście.
+- Usuwanie terminów z listy.
 - Usuwanie listy.
-- Edytuj informacje na liście.
-- Odśwież indeks, aby zmiany na liście znajdują się w nowe skanowanie.
+- Edycja informacji na liście.
+- Odświeżanie indeksu, aby zmiany na liście były uwzględnione w nowym skanowaniu.
 
 ## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
 
-Zanim można Testuj interfejs API w konsoli usługi online, należy się klucz subskrypcji. Ten klucz znajduje się na **ustawienia** na karcie **Ocp-Apim-Subscription-Key** pole. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+Zanim można Testuj interfejs API w konsoli usługi online, należy się klucz subskrypcji. Ten klucz znajduje się na **ustawienia** na karcie **Ocp-Apim-Subscription-Key** pole. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 ## <a name="refresh-search-index"></a>Odśwież indeksu wyszukiwania
 
@@ -119,13 +119,13 @@ Po wprowadzeniu zmian do listy terminów należy odświeżyć jej indeks zmian, 
  
 13. Dodaj kilka więcej postanowień. Teraz, po utworzeniu niestandardowej listy warunków, spróbuj [skanowanie jakiś tekst](try-text-api.md) przy użyciu listy terminów niestandardowych. 
 
-## <a name="delete-terms-and-lists"></a>Usuń warunki i list
+## <a name="delete-terms-and-lists"></a>Usuwanie terminów i list
 
-Usuwanie termin lub listy jest bardzo proste. Interfejs API umożliwia wykonywanie następujących zadań:
+Usuwanie terminu lub listy jest bardzo proste. Interfejs API umożliwia wykonywanie następujących zadań:
 
-- Usuń termin. (**Termin — Usuń**)
-- Usuń wszystkie warunki na liście, bez usuwania listy. (**Termin — Usuń wszystkie warunki**)
-- Usuń listę i całą jego zawartość. (**Listy terminów — Usuń**)
+- Usuwanie terminu. (**Termin — Usuń**)
+- Usuwanie wszystkich terminów z listy, bez usuwania listy. (**Termin — Usuń wszystkie warunki**)
+- Usuwanie listy i całej jej zawartości. (**Listy terminów — Usuń**)
 
 W tym przykładzie Usuwa pojedynczy termin.
 

@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: b8b3b28d2bf7fc75b9f70d145290af1edf44c94f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: a77406fd6a466ed92f6eb3ed3401e987831e3da0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063193"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267300"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Zarządzanie usługą Log Analytics przy użyciu programu PowerShell
 Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do wykonywania różnych funkcji w usłudze Log Analytics przy użyciu wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
@@ -173,7 +173,7 @@ New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupNam
 Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
-New-AzureRmOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernal syslog collection"
+New-AzureRmOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernel syslog collection"
 Enable-AzureRmOperationalInsightsLinuxSyslogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Windows Event
@@ -190,7 +190,7 @@ W powyższym przykładzie regexDelimiter został zdefiniowany jako "\\n" dla now
 
 | Format | Format wyrażenia regularnego JSON korzysta z dwóch \\ dla każdego \ w standardowych wyrażeń regularnych więc jeśli testowania w aplikacji w języku wyrażeń regularnych zmniejszyć \\ do \ |
 | --- | --- |
-| RRRR MM-DD HH: MM: | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d) (([0-3]\\\\d)\|(\\ \\d)) \\ \\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| RRRR MM-DD HH: MM: | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
 | M/D/RRRR GG: MM: SS AM/PM | (([0-1]\\\\d)\|[0-9]) / (([0-3]\\\\d)\|(\\\\d)) / ((\\\\d{2})\|() \\ \\d{4}))\\\\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])): [0-5] [0-9]: [ 0-5] [0-9]\\\\s (AM\|PM\|jestem\|pm) |
 | dd/mm/rrrr hh: mm: | ((([0-3]\\\\d)\|(\\\\d)) / (sty\|lutego\|marca\|maja\|kwi\|lip\|cze\|Sie\|Oct\|wrz\|lis\|gru\|sty\|lutego\|Oznacz\|może\|kwi\|lip\|cze\|sie\|oct\|wrz\|lis\|gru) / ((\\\\d{2})\|(\\\\d{4})) \\ \\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]) |
 | MMM dd, rrrr hh: mm: | (((?: Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|Może\|Jun(?:e)?\| Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Września\|Oct(?:o numer)? \|Nov(?:ember)? \|Dec(?:ember)?)). *? ((?: (?: [0-2]? \\ \\d{1})\|(?: [3] [01]{1}))) (?! [\\\\d]).* ? ((?: (?: [1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?: [2]{1} \\ \\d{3}))) (?! [\\\\d]). *? ((?: (?: [0-1][0-9])\|(?: [2][0-3])\|(?: [0-9])):(?:[0-5][0-9])(?::[0-5][0-9])? (?:\\\\s? (?: am\|AM\|pm\|PM))?)) |
@@ -200,7 +200,7 @@ W powyższym przykładzie regexDelimiter został zdefiniowany jako "\\n" dla now
 | MMM d hh: mm:<br> dwie spacje po MMM | (Sty\|lutego\|marca\|kwi\|może\|cze\|lip\|sie\|wrz\|Oct\|lis\|gru)\\ \\s\\\\s ([0]? [ 1-9]\|[1 - 2] [0-9]\|[3][0-1])\\\\s ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
 | MMM d hh: mm: | (Sty\|lutego\|marca\|kwi\|może\|cze\|lip\|sie\|wrz\|Oct\|lis\|gru)\\ \\s ([0]? [ 1-9]\|[1 - 2] [0-9]\|[3][0-1])\\\\s ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
 | dd/mm/yyyy + zzzz<br> gdzie + jest + lub -<br> gdy przesunięcie czasu zzzz | (([0-2] [1-9]\|[3][0-1])\\\\/ (sty\|lutego\|marca\|kwi\|maja\|cze\|lip\|sie\|wrz \|Oct\|lis\|gru)\\\\/((19\|20) [0-9] [0-9]): ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\ \\s [\\\\+\|\\\\-] [0-9]{4}) |
-| RRRR-MM-Ddtgg<br> T jest literałem litera T | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d) (([0-3]\\\\d)\|(\\ \\d)) T ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| yyyy-MM-ddTHH:mm:ss<br> T jest literałem litera T | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Konfigurowanie usługi Log Analytics do indeksowania usługi Diagnostyka Azure
 Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą mieć diagnostyki platformy Azure, włączony i skonfigurowany do zapisu do obszaru roboczego usługi Log Analytics. Ta metoda wysyła dane bezpośrednio do usługi Log Analytics i nie wymaga dane są zapisywane na koncie magazynu. Zasoby obsługiwane obejmują:

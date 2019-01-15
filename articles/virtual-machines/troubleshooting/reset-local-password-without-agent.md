@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 31e675b101d903af5dd4a07fee3bc56fbc3353d9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bb5d7306558f46f84d1f4a1b7a61332bf767479f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412792"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267049"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetowanie hasła lokalnego Windows maszyny wirtualnej platformy Azure w trybie offline
 Możesz zresetować lokalne hasło maszyny Wirtualnej na platformie Azure przy użyciu Windows [witryny Azure portal lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pod warunkiem jest zainstalowany agent gościa platformy Azure. Ta metoda jest podstawowym sposobem, aby zresetować hasło dla maszyny Wirtualnej platformy Azure. Jeśli wystąpią problemy z powodu braku odpowiedzi agenta gościa platformy Azure lub niepowodzenia instalacji po przekazaniu obrazu niestandardowego, można ręcznie zresetować hasło Windows. W tym artykule opisano, jak zresetować hasło do konta lokalnego, dołączając dysk wirtualny źródłowego systemu operacyjnego do innej maszyny Wirtualnej. Kroki opisane w tym artykule nie dotyczą Windows kontrolerów domeny. 
 
 > [!WARNING]
-> Ten proces można używać tylko w ostateczności. Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure portal lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pierwszy.
+> Ta metoda powinna być używana w ostateczności. Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure portal lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pierwszy.
 > 
 > 
 
@@ -37,6 +37,19 @@ Kroki core do wykonywania lokalnego resetowania hasła dla maszyny Wirtualnej z 
 * Odłączanie dysku systemu operacyjnego maszyny Wirtualnej z maszyny Wirtualnej rozwiązywania problemów.
 * Szablon usługi Resource Manager umożliwia utworzenie maszyny Wirtualnej za pomocą oryginalnego wirtualnego dysku.
 * Po uruchomieniu nowej maszyny Wirtualnej, pliki konfiguracji, które możesz utworzyć aktualizacji hasła użytkownika wymagane.
+
+> [!NOTE]
+> Można zautomatyzować następujące procesy:
+>
+> - Tworzenie maszyny Wirtualnej rozwiązywania problemów
+> - Dołączanie dysku systemu operacyjnego
+> - Ponowne tworzenie oryginalnej maszyny Wirtualnej
+> 
+> Aby to zrobić, należy użyć [skrypty odzyskiwania maszyny Wirtualnej platformy Azure](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Jeśli zdecydujesz się używać skryptów odzyskiwania maszyny Wirtualnej platformy Azure, można użyć następującego procesu w sekcji "Szczegółową procedurę":
+> 1. Powtórz kroki 1 i 2 za pomocą skryptów można dołączyć dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do maszyny Wirtualnej odzyskiwania.
+> 2. Wykonaj kroki 3 – 6, aby zastosować środki zaradcze.
+> 3. Pomiń kroki 7 – 9 maja, za pomocą skryptów, aby ponownie utworzyć maszynę Wirtualną.
+> 4. Wykonaj kroki 10 i 11.
 
 ## <a name="detailed-steps"></a>Szczegółowe procedury
 
@@ -133,7 +146,7 @@ Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure porta
      ![Skopiuj identyfikator URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Utwórz Maszynę wirtualną z dyskiem systemu operacyjnego źródłowej maszyny Wirtualnej:
    
-   Użyj [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) Aby utworzyć Maszynę wirtualną na podstawie wyspecjalizowanego wirtualnego dysku twardego. Kliknij przycisk `Deploy to Azure` przycisk, aby otworzyć portalu Azure przy użyciu szczegółów oparte na szablonach, wypełnione dla Ciebie.
+   * Użyj [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) Aby utworzyć Maszynę wirtualną na podstawie wyspecjalizowanego wirtualnego dysku twardego. Kliknij przycisk `Deploy to Azure` przycisk, aby otworzyć portalu Azure przy użyciu szczegółów oparte na szablonach, wypełnione dla Ciebie.
    * Jeśli chcesz zachować wszystkie poprzednie ustawienia dla maszyny Wirtualnej, wybierz opcję *Edytuj szablon* zapewnienie istniejącej sieci wirtualnej, podsieci, karta sieciowa lub publicznego adresu IP.
    * W `OSDISKVHDURI` parametru pola tekstowego, wklej identyfikator URI dysku VHD źródła uzyskać w poprzednim kroku:
      

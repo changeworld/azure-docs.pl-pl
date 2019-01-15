@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 290e68e8367570bee3497a039f98d140a8d3ffe1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 56cf9837bf67187f71eb94e73b516b613b8d6c6a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423630"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259890"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Problem podczas dodawania aplikacji spoza galerii
 
@@ -68,7 +68,7 @@ Bardzo ważne jest, że udostępniasz **poniższymi szczegółami** z inżyniere
 
 Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomień.
 
-### <a name="essential-notification-items"></a>Elementy podstawowe powiadomienie
+### <a name="essential-notification-items"></a>Essential Notification Items
 
 -   **Tytuł** — opisowy tytuł powiadomienia
    *  Przykład — **ustawienia serwera proxy aplikacji**
@@ -124,7 +124,7 @@ Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomie�
    *  Przykład — **wewnętrznego adresu url "https://bing.com/" jest nieprawidłowa, ponieważ jest już używana**
 
 -   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie z grupą pomocy technicznej lub produktów w polu tekstowym 
--   engineer
+-   inżynier ds
 
    *  Przykład ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

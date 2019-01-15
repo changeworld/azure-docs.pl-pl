@@ -1,7 +1,7 @@
 ---
 title: Dokumentacja interfejsu API — Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się więcej o moderowania zawartości i przejrzyj interfejsów API Content Moderator.
+description: Dowiedz się więcej o różnych moderowania zawartości i przejrzyj interfejsów API Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a64b2f7ce54d5ace26ad18c0ca1a9facb66245e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229751"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266965"
 ---
 # <a name="content-moderator-api-reference"></a>Dokumentacja interfejsu API usługi Content Moderator
 
-Rozpoczynanie pracy z interfejsami API usługi Azure Content Moderator, w następujący sposób: (Zobacz też [zarządzania poświadczeniami](review-tool-user-guide/credentials.md).)
+Rozpoczynanie pracy z interfejsów API usługi Azure Content Moderator, w następujący sposób: (Zobacz też [zarządzania poświadczeniami](review-tool-user-guide/credentials.md).)
 
 - W witrynie Azure portal [subskrybować zawartości interfejsów API Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-- Zaloguj się w celu [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/). Zobacz [Szybki Start](quick-start.md).
+- Zaloguj się w celu [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/). Zobacz [spróbuj pakietu Content Moderator w sieci web](quick-start.md).
 
 ## <a name="moderation-apis"></a>Interfejsy API moderowania
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 624dcae6cadefd27b663699552068b37e658d9bf
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: dadb645067a0f6cac436d638a829ac4c0937bd60
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198863"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304388"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Python
 
@@ -217,7 +217,7 @@ Dostępne są dodatkowe metody rejestrowania umożliwiające zapisu do konsoli w
 | rejestrowanie. **błąd (_komunikat_)**   | Zapisuje komunikat z powodu błędu w poziomie na rejestratora głównego.    |
 | rejestrowanie. **ostrzeżenie (_komunikat_)**    | Zapisuje komunikat z OSTRZEŻENIEM poziomu na rejestratora głównego.  |
 | rejestrowanie. **info (_komunikat_)**    | Zapisuje komunikat z informacjami o poziomie na rejestratora głównego.  |
-| rejestrowanie. **debugowania (_komunikat_)** | Zapisuje komunikat z poziomu debugowania na rejestratora głównego.  |
+| logging.**debug(_message_)** | Zapisuje komunikat z poziomu debugowania na rejestratora głównego.  |
 
 ## <a name="importing-shared-code-into-a-function-module"></a>Importowanie udostępnionego kodu w module — funkcja
 
@@ -317,7 +317,7 @@ The terminal process terminated with exit code: 1
 Aby automatycznie skompilować i skonfigurować wymagane pliki binarne [zainstalować platformę Docker](https://docs.docker.com/install/) na komputer lokalny i uruchom następujące polecenie, aby opublikować za pomocą [podstawowych narzędzi usługi Azure Functions](functions-run-local.md#v2) (func). Pamiętaj, aby zastąpić `<app name>` nazwę aplikacji funkcji na platformie Azure. 
 
 ```bash
-func azure functionapp <app name> --build-native-deps
+func azure functionapp publish <app name> --build-native-deps
 ```
 
 Wewnętrznie, podstawowe narzędzia będzie korzystać z aparatu docker do uruchomienia [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) obrazu kontenera na komputerze lokalnym. Korzystając z tego środowiska, go następnie zbudujesz i zainstalować wymagane moduły z dystrybucji źródłowego, przed spakowaniem ich potrzeby końcowego wdrażanie na platformie Azure.

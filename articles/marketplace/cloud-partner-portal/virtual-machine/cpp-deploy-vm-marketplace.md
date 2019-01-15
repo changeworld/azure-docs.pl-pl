@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 45baa709e715cb94c8c9c6ac7548b89813c8194b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3ec4e0b047e94dc7481c51390c6e4370fdea5efa
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197010"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258805"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Wdróż maszynę wirtualną w portalu Azure Marketplace
 
@@ -41,9 +41,9 @@ Przewodnik Szybki Start Szablon wdrożenia maszyny Wirtualnej platformy Azure, j
 | imageSKU              | Jednostka SKU obrazu                                         |
 | vmSize                | Rozmiar maszyny Wirtualnej                                    |
 | vmName                | Nazwa maszyny Wirtualnej                                    |
-| VaultName             | Nazwa magazynu kluczy                             |
+| vaultName             | Nazwa magazynu kluczy                             |
 | vaultResourceGroup    | Grupa zasobów magazynu kluczy                   |
-| certificateUrl        | Adres URL dla certyfikatu, w tym wersja w magazynie KeyVault, na przykład  https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7 |
+| certificateUrl        | Adres URL dla certyfikatu, w tym wersja w magazynie KeyVault, na przykład  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 

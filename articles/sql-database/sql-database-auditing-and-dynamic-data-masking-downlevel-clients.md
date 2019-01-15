@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 41509c1f35d42a1e8558299b4244ad515c36ec17
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 607351718ddffbea5fa4dbbae333d81aac230f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816059"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258955"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>Obsługa klientów niższych poziomów bazy danych SQL — i punktu końcowego adresu IP zmienia się w przypadku inspekcji tabel
 
@@ -43,7 +43,7 @@ Częściowa lista "Klienci z obniżonym poziomem" obejmuje:
 * JDBC (JDBC obsługują TDS w wersji 7.4, funkcja przekierowywania TDS nie jest w pełni obsługiwany)
 * Tedious (dla środowiska Node.JS)
 
-**Uwaga:** powyższym serwerze modyfikacji nazwy FDQN może być przydatne także zastosowanie zasady inspekcji usługi SQL Server poziom bez na potrzeby konfiguracji krok w każdej bazie danych (tymczasowe ograniczenie).
+**Uwaga:** Powyższym serwerze modyfikacji w pełni kwalifikowaną nazwę domeny może być przydatne, również w odniesieniu do zasady inspekcji usługi SQL Server poziom bez potrzeby kroku konfiguracji, w każdej bazie danych (tymczasowe ograniczenie).
 
 ## <a id="subheading-2"></a>Punkt końcowy IP zmienia się podczas włączania inspekcji
 Należy pamiętać, że po włączeniu inspekcji tabel punktu końcowego adresu IP bazy danych ulegnie zmianie. W przypadku ustawienia zapory ścisłe aktualizacji tych ustawień zapory odpowiednio.

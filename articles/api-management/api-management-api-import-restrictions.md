@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: a4f9147008ceb0de32e0f5879a194b45bd4c6421
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 251caa840446e75ff13d9b4dcebcbae3a36473c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245399"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265451"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 ## <a name="about-this-list"></a>Ta lista — informacje
 Podczas importowania interfejsu API, może spotkać się z pewnymi ograniczeniami lub identyfikowaniu problemów, które muszą zostać usunięty, zanim będzie można pomyślnie zaimportować. Ten artykuł dokumentów, te, uporządkowane według format importu interfejsu API.
 
-## <a name="open-api"> </a>Plik OpenAPI/Swagger
+## <a name="open-api"> </a>OpenAPI/Swagger
 
 Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, że zweryfikowaniu go wcześniej. Możesz to zrobić przy użyciu narzędzia Projektant w witrynie Azure portal (projekt - Front End — Edytor specyfikacji interfejsu OpenAPI) lub za pomocą narzędzia innej firmy takie jak <a href="https://editor.swagger.io">edytora programu Swagger</a>.
 
@@ -35,7 +35,7 @@ Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, że zwer
 * **$ref** wskaźniki nie można utworzyć zewnętrzne pliki odwołań.
 * **x-ms ścieżki** i **serwerach x** są obsługiwane tylko rozszerzenia.
 * Niestandardowe rozszerzenia są ignorowane podczas importowania i nie są zapisywane lub zachowywane na potrzeby eksportu.
-* **Rekursja** — API Management nie obsługuje rekursywnie definicji (na przykład odwołujące się do siebie).
+* **Rekursja** — API Management nie obsługuje rekursywnie definicji (na przykład, schematy odwołujące się do siebie).
 * Adres URL pliku źródłowego (jeśli jest dostępny) są stosowane do serwera względnych adresów URL.
 
 ### <a name="open-api-v2"> </a>Plik OpenAPI w wersji 2

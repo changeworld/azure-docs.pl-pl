@@ -8,20 +8,20 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 790f49f0fae98162b3443c78d813b1070e4514a0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063917"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303891"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek dotyczący usługi Azure Log Integration: Przetwarzanie zdarzeń usługi Azure Key Vault przy użyciu usługi Event Hubs
 
 >[!IMPORTANT]
-> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integracja dzienników platformy Azure umożliwia pobieranie zarejestrowanych zdarzeń i udostępnić je zabezpieczeń informacjami i zdarzeniami (SIEM) systemu zarządzania. W tym samouczku przedstawiono przykład sposobu integracji dzienników platformy Azure mogą być używane do przetwarzania dzienników, które są nabywane za pośrednictwem usługi Azure Event Hubs.
 
@@ -56,21 +56,21 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące el
  
 1. System z dostępem do Internetu, który spełnia wymagania dotyczące instalowania usługi Azure Log Integration. System może być w usłudze w chmurze lub hostowanych lokalnie.
 
-1. [Integracja z usługą Azure Log](https://www.microsoft.com/download/details.aspx?id=53324) zainstalowane. Aby je zainstalować:
+1. Integracja dzienników platformy Azure zainstalowany. Aby je zainstalować:
 
    a. Za pomocą pulpitu zdalnego połączenia z systemem wspomnianego w kroku 2.   
-   b. Skopiuj Instalator integracji dzienników platformy Azure do systemu. Możesz [pobierane pliki instalacyjne](https://www.microsoft.com/download/details.aspx?id=53324).   
-   c. Uruchom Instalatora i zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft.   
-   d. Jeśli podasz informacje telemetryczne, pozostaw zaznaczone pole wyboru. Jeśli użytkownik nie wysłać informacje o użyciu do firmy Microsoft, usuń zaznaczenie pola wyboru.
-   
+   b. Skopiuj Instalator integracji dzienników platformy Azure do systemu. c. Uruchom Instalatora i zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft.
+
+1. Jeśli podasz informacje telemetryczne, pozostaw zaznaczone pole wyboru. Jeśli użytkownik nie wysłać informacje o użyciu do firmy Microsoft, usuń zaznaczenie pola wyboru.
+
    Aby uzyskać więcej informacji o integracji dzienników platformy Azure i sposobu jego instalacji, zobacz [Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows](security-azure-log-integration-get-started.md).
 
 1. Najnowsza wersja programu PowerShell.
- 
+
    Jeśli masz zainstalowany program Windows Server 2016, a następnie masz co najmniej PowerShell 5.0. Jeśli używasz wersji systemu Windows Server, Niewykluczone, że starszą wersję programu PowerShell jest zainstalowane. Możesz sprawdzić wersję, wprowadzając ```get-host``` w oknie programu PowerShell. Jeśli nie masz PowerShell 5.0 zainstalowany, możesz to zrobić [ją pobrać](https://www.microsoft.com/download/details.aspx?id=50395).
 
    Po utworzeniu co najmniej PowerShell 5.0, możesz przejść do zainstalowania najnowszej wersji:
-   
+
    a. W oknie programu PowerShell wprowadź ```Install-Module Azure``` polecenia. Wykonaj kroki instalacji.    
    b. Wprowadź ```Install-Module AzureRM``` polecenia. Wykonaj kroki instalacji.
 

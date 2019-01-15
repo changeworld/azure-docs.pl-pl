@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 601c23bbcddeaeff89e1d1b1a4be8cb6b0256e51
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036566"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258785"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Więcej informacji na temat szablonów zestawów skalowania maszyn wirtualnych
 [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć szablon zestawu minimalnej wielkości oraz jak zmodyfikować ten szablon służy do potrzeb różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss). 
@@ -70,7 +70,7 @@ Następnym ekranem jest sekcji zasobów szablonu. W tym miejscu możesz zdefinio
    "resources": [
 ```
 
-Wszystkie zasoby wymagają `type`, `name`, `apiVersion`, i `location` właściwości. W tym przykładzie pierwszy zasób ma typ [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), nazwa `myVnet`i apiVersion `2016-03-30`. (Aby uzyskać najnowszą wersję interfejsu API dla typu zasobu, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).)
+Wszystkie zasoby wymagają `type`, `name`, `apiVersion`, i `location` właściwości. W tym przykładzie pierwszy zasób ma typ [siecią Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), nazwa `myVnet`i apiVersion `2016-03-30`. (Aby uzyskać najnowszą wersję interfejsu API dla typu zasobu, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).)
 
 ```json
      {

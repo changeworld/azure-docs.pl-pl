@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 805c983c0c2db4256dade641f32363ca6514023c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1a99ffb751414d255f2aacfe514e5a8f474255bd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600815"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267219"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla rozporządzenia RODO
 
@@ -35,7 +35,7 @@ Ta architektura referencyjna skojarzonego wdrożenia przewodnik i model zagroże
 ## <a name="architecture-diagram-and-components"></a>Diagram architektury i składników
 To rozwiązanie zapewnia architekturę referencyjną dla aplikacji sieci web PaaS za pomocą wewnętrznej bazy danych Azure SQL Database. Aplikacja sieci web znajduje się w izolowanej Azure App Service Environment, który jest prywatnym, dedykowanym środowisku w centrum danych platformy Azure. Środowisko równoważy obciążenie dla aplikacji sieci web na maszynach wirtualnych zarządzanych przez platformę Azure. Taka architektura obejmuje również sieciowych grup zabezpieczeń, usługa Application Gateway, usługi Azure DNS i modułu równoważenia obciążenia. Ponadto usługa Azure Monitor udostępnia analizy w czasie rzeczywistym o kondycji systemu. **Azure zaleca się skonfigurowanie połączenia sieci VPN lub usługi ExpressRoute do importowania danych i zarządzania do podsieci architektury odwołanie.**
 
-![PaaS Web Distributed dla rozporządzenia RODO referencyjny diagram architektury](images/gdpr-paaswa-architecture.png?raw=true "PaaS Web Distributed dla rozporządzenia RODO referencyjny diagram architektury")
+![Aplikacja sieci Web PaaS dla rozporządzenia RODO referencyjny diagram architektury](images/gdpr-paaswa-architecture.png?raw=true "aplikacji sieci Web PaaS dla rozporządzenia RODO referencyjny diagram architektury")
 
 To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegóły architektura wdrożenia znajdują się w [architektura wdrożenia](#deployment-architecture) sekcji.
 
@@ -106,7 +106,7 @@ Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyśl
 
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
 
-**Usługa Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to chronić i ochrony danych osobowych w odniesieniu do bezpieczeństwa organizacji i zdefiniowane przez rozporządzenie GDPR wymagań dotyczących zgodności.
+**Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to chronić i ochrony danych osobowych w odniesieniu do bezpieczeństwa organizacji i zdefiniowane przez rozporządzenie GDPR wymagań dotyczących zgodności.
 
 **Usługa Azure Disk Encryption**
 [usługi Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) korzysta z funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Azure Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
@@ -181,7 +181,7 @@ Ponadto następujące rozwiązania do monitorowania, są uwzględnione w ramach 
 
 Diagram przepływu danych dla tej architektury referencyjnej jest dostępne dla [Pobierz](https://aka.ms/gdprPaaSdfd) lub znajdują się poniżej. Ten model może pomóc klientom w zrozumieniu punkty potencjalne ryzyko w ramach infrastruktury systemu podczas wprowadzania zmian.
 
-![PaaS Web Distributed modelu zagrożeń RODO](images/gdpr-paaswa-threat-model.png?raw=true "PaaS Web Distributed modelu zagrożeń RODO")
+![Aplikacja sieci Web PaaS dla model zagrożeń RODO](images/gdpr-paaswa-threat-model.png?raw=true "aplikacji sieci Web PaaS dla model zagrożeń RODO")
 
 ## <a name="compliance-documentation"></a>Dokumentacja zgodności
 [Zabezpieczeń platformy Azure i zgodności planu — RODO klienta odpowiedzialność macierzy](https://aka.ms/gdprCRM) Wyświetla obowiązki kontrolera i procesora dla wszystkich artykułów RODO. Należy pamiętać, usług systemu Azure, klient jest zazwyczaj kontrolera i Microsoft działa jako procesor.

@@ -1,21 +1,21 @@
 ---
 title: Obsługa języków - Content Moderator interfejsu API
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych obsługiwane przez API usługi Content Moderator.
+description: To jest lista języków naturalnych, które obsługuje Content Moderator interfejsu API.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5c170fd2871d0e487f705e1e7274fdfdda4049e6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 95e7f5ce52f4bcf45153b4e455c1427f7117641c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276383"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263673"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Obsługa języków w programie Content Moderator interfejsu API
 
@@ -25,7 +25,7 @@ ms.locfileid: "52276383"
 > Dla **warunki wulgaryzmów** wykrywania, użyj [kod ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) z obsługiwanych języków, które są wymienione w tym artykule, lub pozostawić je puste.
 
 
-| Wykrywanie języka | Niestosownych wyrażeń   | OCR    | Korekta automatyczna     |
+| Wykrywanie języka | Profanity   | OCR    | Korekta automatyczna     |
 | -------------------- |-------------|--------|---------------------|
 | Arabski (Romanized)   | Afrikaans   | Arabski   | Arabski
 | Balinese | Albański | Chiński (uproszczony)    | Duński
@@ -40,14 +40,14 @@ ms.locfileid: "52276383"
 | Czeski |  Białoruski | Grecki (nowoczesny)         | Polski
 | Dhivehi | Bośniacki — cyrylica | Węgierski      | Portugalski
 | Holenderski | Bośniacki - łaciński | Włoski             | Rumuński
-| Polski | (Haitański) | Bretoński [bez GeoPol] | Japoński  | Rosyjski
+| Polski | (Creole) | Bretoński [bez GeoPol] | Japoński  | Rosyjski
 | Perski | Bułgarski | Koreański                        | Słowacki
 | Francuski | Kataloński | Norweski                        | Hiszpański
 | Niemiecki | Środkowokurdyjski | Polski        | Turecki
 | Grecki | Czirokeski | Portugalski
 | Haiti | Chiński (uproszczony) | Rumuński
 | Hebrajski | Chiński (tradycyjny) — SRA Hongkong | Rosyjski
-| Hindi | Chiński (tradycyjny) — Tajwan | Serbski, cyrylica
+| Hindi | Chiński (tradycyjny) — Tajwan | Serbian Cyrillic
 | Hmong | Chorwacki | Serbski, łaciński
 | Węgierski | Czeski | Słowacki
 | Włoski | Duński | Hiszpański
@@ -57,13 +57,13 @@ ms.locfileid: "52276383"
 | Kurdyjska (łaciński) | Estoński
 | Lepcha | Filipino
 | Limbu | Fiński
-| Jednostka logiczna | Francuski
+| Lu | Francuski
 | Lycian | Galicyjski
 | Lydian | Gruziński
 | Mycenaean (grecki) | Niemiecki
 | Nko | Grecki
 | Norweski (Bokmal) | Gudżarati
-| Norweski (nynorsk) |  Hausański
+| Norweski (Nynorsk) |  Hausański
 | Stary (perski) | Hebrajski
 | Paszto | Hindi
 | Polski | Węgierski
@@ -97,13 +97,13 @@ ms.locfileid: "52276383"
 | | Marathi
 | | Mongolski
 | | Nepalski
-| | Norweski (Bokmal)
-| | Norweski (nynorsk)
+| | Norwegian (Bokmål)
+| | Norweski (Nynorsk)
 | | Orija
 | | Paszto
 | | Perski
 | | Polski
-| | Portugalski — Brazylia
+| | Portugalski (Brazylia)
 | | Portugalski — Portugalia
 | | Pulaar
 | | Pendżabski

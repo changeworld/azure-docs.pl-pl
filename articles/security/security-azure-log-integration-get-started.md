@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bf39e22c0edc23d2e452d96103c8933e0a47af9e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602192"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304414"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
 
 >[!IMPORTANT]
-> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integracja dzienników platformy Azure należy używać tylko, jeśli [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) łącznik nie jest dostępna z dostawcą zdarzeń naruszenia zabezpieczeń i Event Management (SIEM).
 
@@ -85,7 +85,7 @@ Aby zwiększyć wydajność, również mieć możliwość skalowania usługi Azu
 
 ## <a name="install-azure-log-integration"></a>Zainstaluj integracja dzienników platformy Azure
 
-Aby zainstalować program Azure Log Integration, Pobierz [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324) pliku instalacyjnego. Zakończ proces instalacji. Wybierz, czy podać informacje o telemetrii do firmy Microsoft.
+Uruchom za pomocą ustawień rutynowych. Wybierz, czy podać informacje o telemetrii do firmy Microsoft.
 
 Usługa Azure Log Integration zbiera dane telemetryczne z komputera, na którym jest zainstalowany.  
 
@@ -116,7 +116,7 @@ Po zakończeniu podstawowej konfiguracji możesz przystąpić do wykonania po in
   ![Zrzut ekranu przedstawiający dane wyjściowe polecenia LoadAzlogModule.ps1](./media/security-azure-log-integration-get-started/loaded-modules.png)
 3. Następnie skonfiguruj integracji dzienników platformy Azure do użycia w danym środowisku platformy Azure. *Środowiska platformy Azure* jest typem centrum danych w chmurze platformy Azure, którą chcesz pracować. Chociaż istnieje kilka środowisk platformy Azure, obecnie, odpowiednie opcje są **AzureCloud** lub **AzureUSGovernment**. Uruchamianie programu PowerShell jako administrator, upewnij się, że jesteś w C:\Program Files\Microsoft Azure dziennika Integration\. Następnie uruchom następujące polecenie:
 
-  `Set-AzlogAzureEnvironment -Name AzureCloud` (Aby uzyskać **AzureCloud**)
+  `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
   
   Jeśli chcesz korzystać z chmury Azure dla instytucji rządowych USA, użyj **AzureUSGovernment** dla **— nazwa** zmiennej. Obecnie nie są obsługiwane inne chmury platformy Azure.  
 
@@ -153,7 +153,7 @@ W tym kroku skonfigurujesz maszynie usługi Azure Log Integration, aby połączy
 Aby ukończyć ten krok, konieczne jest kilka rzeczy:  
 * **FriendlyNameForSource**: Przyjazna nazwa, które można zastosować do konta magazynu, czy skonfigurowano dla maszyny wirtualnej do przechowywania informacji z usługi Azure Diagnostics.
 * **StorageAccountName**: Nazwa konta magazynu, które zostały określone podczas konfigurowania usługi Azure Diagnostics.  
-* **Atrybutu StorageKey**: Klucz magazynu dla konta magazynu, w którym przechowywane są informacje diagnostyczne platformy Azure dla tej maszyny wirtualnej.  
+* **StorageKey**: Klucz magazynu dla konta magazynu, w którym przechowywane są informacje diagnostyczne platformy Azure dla tej maszyny wirtualnej.  
 
 Aby uzyskać klucz magazynu, wykonaj następujące czynności:
 1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
@@ -245,7 +245,6 @@ Możesz również otworzyć [żądania pomocy technicznej](../azure-supportabili
 
 Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zobacz następujące artykuły: Przed próbą kroki opisane w tym artykule należy zapoznaj się z artykułem wprowadzenie Get i wykonaj kroki istnieje.
 
-* [Usługa Azure Log Integration dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324). Centrum pobierania zawiera szczegółowe informacje, wymagania systemowe i instrukcje instalacji integracji dzienników Azure.
 * [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md). Ten artykuł stanowi wprowadzenie do integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.
 * [Partner czynności konfiguracyjnych](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Ten wpis w blogu dowiesz się, jak skonfigurować program Azure Log Integration do pracy z rozwiązaniami partnerów Splunk, HP ArcSight i QRadar firmy IBM. Opisano w nim nasze Bieżące wskazówki dotyczące sposobu konfigurowania składników rozwiązania SIEM. Skontaktuj się z dostawcą rozwiązania SIEM, aby uzyskać więcej informacji.
 * [Integracja dzienników platformy Azure — często zadawane pytania (FAQ)](security-azure-log-integration-faq.md). Tych często zadawanych PYTAŃ, odpowiedzi na często zadawane pytania dotyczące usługi Azure Log Integration.

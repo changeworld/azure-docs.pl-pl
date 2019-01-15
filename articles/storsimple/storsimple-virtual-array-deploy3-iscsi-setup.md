@@ -1,6 +1,6 @@
 ---
-title: Konfiguracja serwera iSCSI tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
-description: Opisuje sposób wykonywania początkowej konfiguracji, Zarejestruj serwer iSCSI StorSimple i przeprowadzić konfigurację urządzenia.
+title: Konfiguracja serwera iSCSI firmy Microsoft Azure StorSimple Virtual Array | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób wykonywania początkowej konfiguracji, zarejestrować serwer iSCSI StorSimple i przeprowadzić konfigurację urządzenia.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,168 +14,168 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23877307"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267297"
 ---
-# <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Wdrożenie tablicy wirtualne StorSimple — zestawu się jako serwer iSCSI za pośrednictwem portalu Azure
+# <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Podczas wdrażania rozwiązania StorSimple Virtual Array — zestaw się jako serwera iSCSI za pośrednictwem witryny Azure portal
 
 ![przepływ procesu instalacji iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym samouczku wdrażania stosuje się do tablicy wirtualne Microsoft Azure StorSimple. Ten przewodnik opisuje sposób wykonywania początkowej konfiguracji, Zarejestruj serwer iSCSI StorSimple, skonfigurować urządzenie, następnie utwórz, zainstalować, zainicjować i sformatować woluminy StorSimple tablica wirtualny skonfigurowany jako serwer iSCSI. 
+W tym samouczku wdrażania stosuje się do programu Microsoft Azure StorSimple Virtual Array. W tym samouczku opisano sposób wykonywania początkowej konfiguracji, zarejestrować serwer iSCSI StorSimple, przeprowadzić konfigurację urządzenia następnie utworzyć, instalacji, zainicjować i sformatować woluminy na rozwiązania StorSimple Virtual Array, skonfigurowany jako serwer iSCSI. 
 
-Procedury opisane w tym miejscu zająć około 30 minut do 1 godziny, aby zakończyć. Informacje zawarte w tym artykule dotyczą tylko tablice wirtualne StorSimple.
+Procedury opisane w tym miejscu zajmie około 30 minut do 1 godziny, aby zakończyć. Informacje zawarte w tym artykule dotyczy tylko macierze wirtualne StorSimple.
 
 ## <a name="setup-prerequisites"></a>Wymagania wstępne instalacji
 
-Przed skonfigurowaniem i konfigurowanie macierzy wirtualnego StorSimple, upewnij się, że:
+Przed skonfigurowaniem i konfigurowanie rozwiązania StorSimple Virtual Array, upewnij się, że:
 
-* Udostępnione wirtualne tablicy i dołączone do niego, zgodnie z opisem w [wdrażanie StorSimple wirtualnego tablicy - udostępniania wirtualnego tablicy w funkcji Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) lub [wdrażanie StorSimple wirtualnego tablicy - udostępniania wirtualnego tablicy w środowisku programu VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* Masz klucz rejestracji usługi z usługi Menedżera urządzeń StorSimple, utworzony w celu zarządzania z macierzami wirtualne StorSimple. Aby uzyskać więcej informacji, zobacz **krok 2: pobieranie klucza rejestracji usługi** w [wdrażanie StorSimple wirtualnego tablicy — przygotowanie portalu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
-* Jeśli jest to drugi lub kolejny wirtualnego tablicy rejestrujesz istniejącą usługę Menedżer urządzeń StorSimple, powinien mieć klucz szyfrowania danych usługi. Ten klucz został wygenerowany podczas pierwszego urządzenia został pomyślnie zarejestrowany z tą usługą. W przypadku utraty tego klucza, zobacz **Pobierz klucz szyfrowania danych usługi** w [zarządzać tablica wirtualnego StorSimple przy użyciu interfejsu użytkownika sieci Web](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key).
+* Ma obsługiwana macierz wirtualną i do niego podłączone, zgodnie z opisem w [wdrażania rozwiązania StorSimple Virtual Array — Aprowizowanie macierzy wirtualnej w funkcji Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) lub [wdrażania rozwiązania StorSimple Virtual Array — Aprowizowanie macierzy wirtualnej w środowisku programu VMware ](storsimple-virtual-array-deploy2-provision-vmware.md).
+* Masz klucz rejestracji usługi z usługą Menedżera urządzeń StorSimple, utworzony w celu zarządzania macierzy wirtualnej StorSimple. Aby uzyskać więcej informacji, zobacz **krok 2: Pobierz klucz rejestracji usługi** w [wdrażania rozwiązania StorSimple Virtual Array — przygotowywanie portalu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+* Jeśli jest to drugi lub kolejny macierzy wirtualnej, w przypadku rejestracji za pomocą istniejącej usługi Menedżer urządzeń StorSimple, powinny mieć klucz szyfrowania danych usługi. Ten klucz został wygenerowany podczas pierwszego urządzenia został pomyślnie zarejestrowany z tą usługą. W przypadku utraty tego klucza, zobacz **Pobierz klucz szyfrowania danych usługi** w [administrowania rozwiązania StorSimple Virtual Array przy użyciu interfejsu użytkownika sieci Web](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key).
 
-## <a name="step-by-step-setup"></a>Krok po kroku instalacji
+## <a name="step-by-step-setup"></a>Instrukcje krok po kroku instalacji
 
-Poniższe instrukcje umożliwiają instalowanie i konfigurowanie macierzy wirtualnego StorSimple:
+Poniższe instrukcje umożliwiają instalowanie i konfigurowanie rozwiązania StorSimple Virtual Array:
 
-* [Krok 1: Zakończenie ustawienia interfejsu użytkownika sieci web w lokalnej i rejestrowanie urządzenia](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [Krok 2: Wykonanie konfiguracji urządzeń](#step-2-complete-the-required-device-setup)
-* [Krok 3: Dodawanie woluminu](#step-3-add-a-volume)
-* [Krok 4: Instalowanie, inicjowanie i formatowanie woluminu](#step-4-mount-initialize-and-format-a-volume)
+* [Krok 1. Ukończ konfigurację lokalnego internetowego interfejsu użytkownika i rejestrowanie urządzenia](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* [Krok 2. Kończenie konfiguracji urządzeń](#step-2-complete-the-required-device-setup)
+* [Krok 3. Dodawanie woluminu](#step-3-add-a-volume)
+* [Krok 4. Instalowanie, inicjowanie i formatowanie woluminu](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: Zakończenie ustawienia interfejsu użytkownika sieci web w lokalnej i rejestrowanie urządzenia
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: Ukończ konfigurację lokalnego internetowego interfejsu użytkownika i rejestrowanie urządzenia
 
-#### <a name="to-complete-the-setup-and-register-the-device"></a>Aby zakończyć konfigurowanie i rejestrowanie urządzenia
+#### <a name="to-complete-the-setup-and-register-the-device"></a>Aby ukończyć instalację i rejestrowanie urządzenia
 
 1. Otwórz okno przeglądarki. Aby podłączyć się do typu interfejsu użytkownika sieci web:
    
     `https://<ip-address of network interface>`
    
-    Użyj adresu URL połączenia zauważono w poprzednim kroku. Zostanie wyświetlony błąd informujący, że występuje problem z certyfikatem zabezpieczeń witryny sieci Web. Kliknij przycisk **Kontynuuj, aby ta strona sieci web**.
+    Użyj adresu URL połączenia zanotowanego w poprzednim kroku. Zostanie wyświetlony błąd informujący o tym, że występuje problem z certyfikatem zabezpieczeń witryny sieci Web. Kliknij przycisk **Kontynuuj przeglądanie tej strony sieci web**.
    
-    ![Błąd certyfikatu zabezpieczeń](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
-2. Zaloguj się do sieci web UI urządzenia wirtualnego jako **StorSimpleAdmin**. Wprowadź hasło administratora urządzenia, który został zmodyfikowany w kroku 3: uruchomić urządzenie wirtualne w [wdrażanie StorSimple wirtualnego tablicy - Provision urządzenia wirtualnego funkcji Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) lub [wdrażanie StorSimple wirtualnego tablicy - Provision urządzenie wirtualne w środowisku programu VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
+    ![Błąd certyfikatu bezpieczeństwa](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
+2. Zaloguj się do internetowego interfejsu użytkownika urządzenia wirtualnego jako **StorSimpleAdmin**. Wprowadź hasło administratora urządzenia, który został zmodyfikowany w kroku 3: Uruchom urządzenie wirtualne w [wdrażania rozwiązania StorSimple Virtual Array — Aprowizowanie urządzenia wirtualnego funkcji Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) lub [wdrażania rozwiązania StorSimple Virtual Array — Aprowizowanie urządzenia wirtualnego w oprogramowaniu VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
     ![Strona logowania](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
-3. Nastąpi przekierowanie do **Home** strony. Na tej stronie opisano różne ustawienia wymagane do skonfigurowania i rejestrowanie urządzenia wirtualnego za pomocą usługi Menedżera urządzeń StorSimple. Należy pamiętać, że **ustawień sieciowych**, **ustawienia serwera proxy w sieci Web**, i **ustawienia** są opcjonalne. Tylko ustawienia wymagane są **ustawienia urządzenia** i **ustawienia funkcji Cloud**.
+3. Nastąpi przekierowanie do **Home** strony. Ta strona w tym artykule opisano różne ustawienia, które są wymagane, aby skonfigurować i zarejestrować urządzenie wirtualne w usłudze Menedżer urządzeń StorSimple. Należy pamiętać, że **ustawienia sieciowe**, **ustawień serwera proxy sieci Web**, i **ustawienia czasu** są opcjonalne. Tylko ustawienia wymagane są **ustawienia urządzenia** i **ustawienia chmury**.
    
     ![Strona główna](./media/storsimple-virtual-array-deploy3-iscsi-setup/image5.png)
-4. Na **ustawień sieciowych** w obszarze **interfejsy sieciowe**, dane 0 zostaną automatycznie skonfigurowane dla Ciebie. Każdy interfejs sieciowy jest domyślnie automatycznie uzyskać adres IP (DHCP). W związku z tym adres IP, podsieci i brama zostanie automatycznie przypisany (dla protokołów IPv4 i IPv6).
+4. Na **ustawienia sieciowe** strony w obszarze **interfejsy sieciowe**, interfejs DATA 0 zostaną automatycznie skonfigurowane dla Ciebie. Każdy interfejs sieciowy jest ustawiana domyślnie, aby uzyskać adres IP automatycznie (DHCP). W związku z tym adres IP, podsieci i brama zostanie automatycznie przypisany (dla protokołów IPv4 i IPv6).
    
-    Zamierzasz wdrożyć urządzenie jako serwer iSCSI (w celu udostępniania magazynu blokowego), zaleca się wyłączenie **uzyskać adres IP automatycznie** opcji i skonfigurować statyczne adresy IP.
+    Planujesz wdrożyć urządzenie jako serwera iSCSI (w celu aprowizacji magazynu blokowego), zaleca się wyłączenie **Uzyskaj adres IP automatycznie** opcji i skonfigurować statyczne adresy IP.
    
-    ![Strona ustawień sieci](./media/storsimple-virtual-array-deploy3-iscsi-setup/image6.png)
+    ![Strona Ustawienia sieci](./media/storsimple-virtual-array-deploy3-iscsi-setup/image6.png)
    
-    Jeśli dodano więcej niż jeden interfejs sieciowy podczas inicjowania obsługi urządzenia, można je skonfigurować w tym miejscu. Należy pamiętać, że interfejsu sieciowego można skonfigurować jako IPv4 tylko lub jako protokołów IPv4 i IPv6. Konfiguracje tylko protokół IPv6 nie są obsługiwane.
-5. Serwery DNS są wymagane, ponieważ są one używane, gdy urządzenie próbuje nawiązać połączenia z Twojej dostawców usługi magazynu w chmurze lub rozpoznać urządzenia według nazwy, jeśli jest on skonfigurowany jako serwer plików. Na **ustawień sieciowych** w obszarze **serwerów DNS**:
+    Jeśli więcej niż jeden interfejs sieciowy jest dodawany podczas aprowizowania urządzenia, można je skonfigurować w tym miejscu. Należy pamiętać, że interfejsu sieciowego można skonfigurować jako IPv4 tylko lub jako IPv4 i IPv6. Tylko konfiguracje protokołu IPv6 nie są obsługiwane.
+5. Serwery DNS są wymagane, ponieważ są one używane, gdy urządzenie próbuje nawiązać połączenia z dostawców usługi magazynu w chmurze lub rozwiązać urządzenia według nazwy, jeśli jest skonfigurowany jako serwer plików. Na **ustawienia sieciowe** strony w obszarze **serwerów DNS**:
    
-   1. Podstawowego i pomocniczego serwera DNS zostanie skonfigurowany automatycznie. Jeśli użytkownik chce skonfigurować statyczne adresy IP, można określić serwery DNS. Wysokiej dostępności firma Microsoft zaleca, aby skonfigurować podstawowy i pomocniczy serwer DNS.
-   2. Kliknij przycisk **Zastosuj**. To spowoduje zastosowanie i sprawdź poprawność ustawień sieciowych.
+   1. Podstawowego i pomocniczego serwera DNS zostaną skonfigurowane automatycznie. Jeśli zdecydujesz się skonfigurować statyczne adresy IP, można określić serwery DNS. Wysoką dostępność zaleca się skonfigurowanie podstawowy i pomocniczy serwer DNS.
+   2. Kliknij przycisk **Zastosuj**. Spowoduje to zastosowanie i sprawdź poprawność ustawień sieciowych.
 6. Na **ustawienia urządzenia** strony:
    
-   1. Przypisz unikatowy **nazwa** na urządzeniu. Ta nazwa może być 1 – 15 znaków i może zawierać litery, cyfry i łączniki.
-   2. Kliknij przycisk **serwerem** ikona ![ikona serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) dla **typu** urządzenia, które tworzysz. Serwer iSCSI umożliwia udostępniania magazynu blokowego.
-   3. Określ, czy to urządzenie, aby być przyłączony do domeny. Jeśli urządzenie jest serwerem, następnie dołączenia do domeny jest opcjonalna. Jeśli zdecydujesz się nie przyłączyć serwer iSCSI do domeny, kliknij przycisk **Zastosuj**, poczekaj, aż ustawienia można zastosować, a następnie przejdź do następnego kroku.
+   1. Przypisz unikatowy **nazwa** do Twojego urządzenia. Ta nazwa może zawierać 1 – 15 znaków i może zawierać litery, cyfry i łączniki.
+   2. Kliknij przycisk **serwera iSCSI** ikonę ![ikona serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) dla **typu** urządzenia, które tworzysz. Serwer iSCSI pozwoli aprowizowanie blokowej pamięci masowej.
+   3. Określ, czy to urządzenie być przyłączone do domeny. Jeśli urządzenie jest serwer iSCSI, następnie dołączenia do domeny jest opcjonalne. Jeśli zdecydujesz się nie Przyłączanie serwera iSCSI do domeny, kliknij przycisk **Zastosuj**, poczekaj, aż ustawienia można zastosować, a następnie przejdź do następnego kroku.
       
        Jeśli chcesz dołączyć urządzenie do domeny. Wprowadź **nazwy domeny**, a następnie kliknij przycisk **Zastosuj**.
       
       > [!NOTE]
-      > Jeśli serwer iSCSI dołączania do domeny, upewnij się, tablica wirtualnej jest w jego własnej jednostce organizacyjnej (OU) dla usługi Microsoft Azure Active Directory, a nie obiekty zasad grupy (GPO) są stosowane do niego.
+      > Jeśli serwer iSCSI przyłączania do domeny, upewnij się, że macierz wirtualna jest w jego własnej jednostce organizacyjnej (OU) usługi Microsoft Azure Active Directory i są do niego zastosowane nie obiekty zasad grupy (GPO).
       > 
       > 
-   4. Zostanie wyświetlone okno dialogowe. Wprowadź swoje poświadczenia domeny w określonym formacie. Kliknij ikonę znacznika wyboru ![ikona znacznika wyboru](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). Będzie można zweryfikować poświadczeń domeny. Jeśli poświadczenia są nieprawidłowe, zostanie wyświetlony komunikat o błędzie.
+   4. Pojawi się okno dialogowe. Wprowadź swoje poświadczenia domeny w określonym formacie. Kliknij ikonę znacznika wyboru ![ikona znacznika wyboru](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). Będzie można zweryfikować poświadczeń domeny. Zostanie wyświetlony komunikat o błędzie, jeśli poświadczenia są nieprawidłowe.
       
        ![poświadczenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. Kliknij przycisk **Zastosuj**. To spowoduje zastosowanie i sprawdź poprawność ustawień urządzenia.
-7. (Opcjonalnie) skonfiguruj serwer proxy sieci web. Mimo że konfiguracja serwera proxy sieci web jest opcjonalne, należy pamiętać, że jeśli używasz serwera proxy sieci web, można skonfigurować tylko go tutaj.
+   5. Kliknij przycisk **Zastosuj**. Spowoduje to zastosowanie i sprawdź poprawność ustawień urządzenia.
+7. (Opcjonalnie) skonfiguruj serwer proxy sieci web. Mimo że konfiguracja serwera proxy sieci web jest opcjonalny, należy pamiętać, że jeśli używasz serwera proxy sieci web, można skonfigurować tylko go tutaj.
    
-    ![Skonfiguruj serwer proxy sieci web](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
+    ![Konfigurowanie serwera proxy sieci web](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
    
-    Na **serwer proxy sieci Web** strony:
+    Na **serwera proxy sieci Web** strony:
    
-   1. Podaj **adres URL serwera proxy sieci Web** w następującym formacie: *adres http://host-IP* lub *FDQN:Port numer*. Należy pamiętać, że adresy URL HTTPS nie są obsługiwane.
+   1. Podaj **adres URL serwera proxy sieci Web** w następującym formacie:  *http://host-IP adres* lub *FQDN: port numer*. Należy pamiętać, że adresy URL HTTPS nie są obsługiwane.
    2. Określ **uwierzytelniania** jako **podstawowe** lub **Brak**.
    3. Jeśli używasz uwierzytelniania, należy również zapewnienie **Username** i **hasło**.
-   4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikować i zastosowania ustawień serwera proxy sieci web skonfigurowana.
-8. (Opcjonalnie) skonfiguruj ustawienia czasu dla urządzenia, na przykład serwery NTP podstawowych i pomocniczych i strefy czasowej. Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby zapewnić możliwość uwierzytelnienia z dostawcy usług w chmurze.
+   4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikować i zastosowania ustawień serwera proxy sieci web skonfigurowany.
+8. (Opcjonalnie) skonfiguruj ustawienia czasu dla danego urządzenia, takie jak strefę czasową i podstawowych i pomocniczych serwerów NTP. Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby zapewnić możliwość uwierzytelnienia przy użyciu dostawców usług w chmurze.
    
     ![Ustawienia czasu](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
    
-    Na **ustawienia** strony:
+    Na **ustawienia czasu** strony:
    
-   1. Z listy rozwijanej wybierz **strefy czasowej** oparte na lokalizacji geograficznej, w którym jest wdrażany urządzenia. Domyślną strefę czasową dla Twojego urządzenia jest PST. Wszystkie zaplanowane operacje urządzenia będą wykonywane w ramach tej strefy czasowej.
-   2. Określ **podstawowy serwer NTP** dla urządzenia lub zaakceptuj wartość domyślną time.windows.com. Upewnij się, że sieć zezwala na ruch NTP z centrum danych do Internetu.
-   3. Opcjonalnie można określić **serwera NTP dodatkowej** dla danego urządzenia.
-   4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikować i Zastosuj ustawienia w skonfigurowanym czasie.
-9. Skonfiguruj ustawienia chmury dla danego urządzenia. W tym kroku zostanie Zakończ konfigurację urządzenia lokalnego, a następnie zarejestruj urządzenie usługi Menedżer StorSimple urządzenia.
+   1. Wybierz z listy rozwijanej **strefa czasowa** na podstawie lokalizacji geograficznej, w której jest wdrażane urządzenie. Domyślna strefa czasowa dla Twojego urządzenia jest czasu PST. Wszystkie zaplanowane operacje urządzenia będą wykonywane w ramach tej strefy czasowej.
+   2. Określ **podstawowy serwer NTP** dla urządzenia lub zaakceptuj wartość domyślną z time.windows.com. Upewnij się, że sieć zezwala na ruch NTP z centrum danych do Internetu.
+   3. Opcjonalnie można określić **serwera NTP dodatkowej** dla Twojego urządzenia.
+   4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikować i zastosować ustawienia czasu skonfigurowane.
+9. Skonfiguruj ustawienia chmury dla Twojego urządzenia. W tym kroku możesz ukończyć konfiguracji lokalnego urządzenia i zarejestrować urządzenie w usłudze Menedżer urządzeń StorSimple.
    
-   1. Wprowadź **klucz rejestracji usługi** pochodzący **krok 2: pobieranie klucza rejestracji usługi** w [wdrażanie StorSimple wirtualnego tablicy — przygotowanie portalu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
-   2. Jeśli nie jest to pierwszy urządzenia, które są rejestrowanie w tej usłudze, musisz podać **klucza szyfrowania danych usługi**. Ten klucz jest wymagany klucz rejestracji usługi, aby zarejestrować dodatkowych urządzeń w usłudze Menedżer StorSimple urządzenia. Aby uzyskać więcej informacji, zapoznaj się [Pobierz klucz szyfrowania danych usługi](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) lokalnej interfejs użytkownika sieci web.
-   3. Kliknij przycisk **zarejestrować**. Ponownie uruchomić urządzenie. Konieczne może być poczekaj 2 – 3 minutach urządzenie zostanie pomyślnie zarejestrowana. Po ponownym uruchomieniu urządzenia, nastąpi przekierowanie na stronę logowania.
+   1. Wprowadź **klucz rejestracji usługi** uzyskany **krok 2: Pobierz klucz rejestracji usługi** w [wdrażania rozwiązania StorSimple Virtual Array — przygotowywanie portalu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+   2. Jeśli nie jest to pierwsze urządzenie, które są rejestrowane w tej usłudze, musisz podać **klucza szyfrowania danych usługi**. Ten klucz jest wymagany przy użyciu klucza rejestracji usługi w celu rejestracji dodatkowych urządzeń w usłudze Menedżer urządzeń StorSimple. Aby uzyskać więcej informacji, zobacz [Pobierz klucz szyfrowania danych usługi](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) lokalnej interfejs użytkownika sieci web.
+   3. Kliknij przycisk **zarejestrować**. To spowoduje ponowne uruchomienie urządzenia. Może być konieczne poczekaj 2-3 minut, zanim urządzenie zostanie pomyślnie zarejestrowana. Po ponownym uruchomieniu urządzenia, nastąpi przekierowanie do strony logowania.
       
-      ![Rejestrowanie urządzenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
-10. Wróć do portalu Azure.
+      ![Zarejestruj urządzenie](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
+10. Wróć do witryny Azure Portal.
 11. Przejdź do **urządzeń** bloku usługi. Jeśli masz wiele zasobów, kliknij przycisk **wszystkie zasoby**, kliknij nazwę usługi (wyszukaj go w razie potrzeby), a następnie kliknij przycisk **urządzeń**.
-12. Na **urządzeń** bloku, sprawdź, czy urządzenie ma pomyślnie nawiązano połączenie z usługą sprawdzając stan. Urządzenie powinno mieć stan **Gotowe do skonfigurowania**.
+12. Na **urządzeń** bloku, sprawdź, czy urządzenie pomyślnie nawiązało z usługą, sprawdzając jego stan. Urządzenie powinno mieć stan **Gotowe do skonfigurowania**.
     
-    ![Rejestrowanie urządzenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Zarejestruj urządzenie](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: Konfigurowanie urządzenia jako serwer iSCSI
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: Konfigurowanie urządzenia jako serwera iSCSI
 
-Wykonaj następujące czynności w portalu Azure w celu zakończenia instalacji wymagane urządzenia.
+Wykonaj następujące czynności w witrynie Azure portal, aby ukończyć konfigurację urządzenia wymagane.
 
-#### <a name="to-configure-the-device-as-iscsi-server"></a>Aby skonfigurować urządzenia jako serwer iSCSI
+#### <a name="to-configure-the-device-as-iscsi-server"></a>Aby skonfigurować urządzenia jako serwera iSCSI
 
-1. Przejdź do usługi Menedżer StorSimple urządzenia, a następnie przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku, wybierz urządzenie właśnie utworzony. To urządzenie będzie wyświetlany jako **przejść do konfigurowania**.
+1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku wybierz urządzenia został właśnie utworzony. To urządzenie będzie wyświetlany jako **gotowe do skonfigurowania**.
    
-    ![Konfigurowanie urządzenia jako serwer iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
-2. Kliknij urządzenie i będzie wyświetlany komunikat transparentu wskazujący, że urządzenie jest gotowe do instalacji.
+    ![Konfigurowanie urządzenia jako serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
+2. Kliknij urządzenie, a następnie zostanie wyświetlony komunikat z transparent informujący, że urządzenie jest gotowe do instalacji.
    
-    ![Konfigurowanie urządzenia jako serwer iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![Konfigurowanie urządzenia jako serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. Kliknij przycisk **Konfiguruj** na pasku poleceń urządzenia. Spowoduje to otwarcie **Konfiguruj** bloku. W **Konfiguruj** blok, wykonaj następujące czynności:
    
    * Nazwa serwera iSCSI jest wypełniane automatycznie.
-   * Upewnij się, że szyfrowanie magazynu w chmurze ma ustawioną wartość **włączone**. Dzięki temu szyfrowanie danych wysyłanych z urządzenia do chmury.
-   * Określ klucz szyfrowania 32 znaków i zarejestruj go w aplikacji zarządzania kluczami do użytku w przyszłości.
-   * Wybierz konto magazynu do użycia z urządzeniem. W tej subskrypcji, można wybrać istniejące konto magazynu, lub możesz kliknąć **Dodaj** do wyboru konta w ramach innej subskrypcji.
+   * Upewnij się, że szyfrowanie magazynu w chmurze jest ustawiona na **włączone**. Dzięki temu szyfrowanie danych wysyłanych z urządzenia do chmury.
+   * Określ klucz szyfrowania 32-znakowy, a następnie zapisz go w aplikacji do zarządzania kluczami do użytku w przyszłości.
+   * Wybierz konto magazynu ma być używany z Twoim urządzeniem. W tej subskrypcji można wybrać istniejące konto magazynu, lub kliknąć **Dodaj** wyboru konta z innej subskrypcji.
      
-     ![Konfigurowanie urządzenia jako serwer iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
-4. Kliknij przycisk **Konfiguruj** aby dokończyć konfigurowanie serwera iSCSI.
+     ![Konfigurowanie urządzenia jako serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+4. Kliknij przycisk **Konfiguruj** można ukończyć konfigurowania serwera iSCSI.
    
-    ![Konfigurowanie urządzenia jako serwer iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
-5. Użytkownik zostanie powiadomiony, że trwa tworzenie serwera iSCSI. Po pomyślnym utworzeniu serwera iSCSI **urządzeń** bloku jest aktualizowana, a odpowiedni stan urządzenia jest **Online**.
+    ![Konfigurowanie urządzenia jako serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+5. Powiadomimy Cię, że trwa tworzenie serwera iSCSI. Po pomyślnym utworzeniu serwera iSCSI **urządzeń** bloku jest aktualizowana, a odpowiedni stan urządzenia jest **Online**.
    
-    ![Konfigurowanie urządzenia jako serwer iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![Konfigurowanie urządzenia jako serwera iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>Krok 3: Dodawanie woluminu
 
-1. W **urządzeń** bloku, wybierz urządzenie właśnie skonfigurowany jako serwer iSCSI. Kliknij przycisk **...**  (można również kliknąć prawym przyciskiem myszy w tym wierszu) i wybierz z menu kontekstowego **Dodaj wolumin**. Możesz również kliknąć **+ Dodaj wolumin** z paska poleceń. Spowoduje to otwarcie **Dodaj wolumin** bloku.
+1. W **urządzeń** bloku, wybierz urządzenie, właśnie skonfigurowany jako serwer iSCSI. Kliknij przycisk **...**  (ewentualnie kliknij prawym przyciskiem myszy w tym wierszu) z menu kontekstowego wybierz **Dodaj wolumin**. Możesz również kliknąć **+ Dodaj wolumin** na pasku poleceń. Spowoduje to otwarcie **Dodaj wolumin** bloku.
    
     ![Dodawanie woluminu](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis10m.png)
 2. W **Dodaj wolumin** blok, wykonaj następujące czynności:
    
-   * W **nazwa woluminu** wprowadź unikatową nazwę dla woluminu. Nazwa musi być ciągiem o długości 3 do 127 znaków.
-   * W **typu** listy rozwijanej liście, określ, czy można utworzyć **warstwowego** lub **przypięty lokalnie** woluminu. W przypadku obciążeń, które wymagają lokalnych gwarancji, małych opóźnień i większej wydajności, wybierz **przypięty lokalnie** **woluminu**. Dla wszystkich innych danych wybierz **warstwowego** **woluminu**.
-   * W **pojemności** Określ rozmiar woluminu. Wolumin warstwowy musi należeć do zakresu od 500 GB i 5 TB i woluminu przypiętego lokalnie musi należeć do zakresu od 50 GB i 500 GB.
+   * W **nazwa woluminu** wprowadź unikatową nazwę dla woluminu. Nazwa musi być ciąg, który zawiera 3 do 127 znaków.
+   * W **typu** listę rozwijaną listę, określ, czy należy utworzyć **warstwowy** lub **przypięty lokalnie** woluminu. Dla obciążeń, które wymagają lokalnych gwarancji, małych opóźnień i większej wydajności, wybierz **przypięty lokalnie** **woluminu**. Dla wszystkich innych danych wybierz **warstwowy** **woluminu**.
+   * W **pojemności** Określ rozmiar woluminu. Wolumin warstwowy musi wynosić od 500 GB do 5 TB, a następnie wolumin przypięty lokalnie muszą należeć do zakresu od 50 do 500 GB.
      
      Wolumin przypięty lokalnie jest alokowany nieelastycznie i gwarantuje, że główne dane na woluminie pozostaje na urządzeniu i nie zostaną przeniesione do chmury.
      
-     Wolumin warstwowy z drugiej strony jest alokowany elastycznie. Podczas tworzenia woluminu warstwowego około 10% miejsca jest inicjowana na warstwie lokalnej i 90% miejsca jest udostępniony w chmurze. Na przykład jeśli zainicjowano obsługę administracyjną wolumin 1 TB, 100 GB, czy znajdują się w lokalnej przestrzeni i 900 GB byłoby używanych w chmurze po warstwy danych. To z kolei oznacza to, że jeśli całe lokalne miejsce na urządzeniu, nie może obsłużyć warstwowych udziału (ponieważ nie będą dostępne 10%).
+     Wolumin warstwowy z drugiej strony jest alokowany elastycznie. Podczas tworzenia woluminu warstwowego około 10% wolnego miejsca jest inicjowana na warstwie lokalnej i 90% miejsca są aprowizowane w chmurze. Na przykład, jeśli aprowizowano 1 TB woluminu 100 GB będzie znajdować się w lokalnej przestrzeni i 900 GB będzie używana w chmurze podczas warstwy danych. To z kolei oznacza to, że jeśli zabraknie całe lokalne miejsce na urządzeniu nie można aprowizować udziału warstwowego (ponieważ 10%, nie będą dostępne).
      
      ![Dodawanie woluminu](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
-   * Kliknij przycisk **połączone hosty**, zaznacz rekord kontroli dostępu (ACR) odpowiadający inicjatora iSCSI, który chcesz połączyć do tego woluminu, a następnie kliknij przycisk **wybierz**. <br><br> 
-3. Aby dodać nowy host połączony, kliknij przycisk **Dodaj nowe**, wprowadź nazwę hosta i jego iSCSI kwalifikowana nazwa (IQN), a następnie kliknij przycisk **Dodaj**. Jeśli nie masz nazwy IQN, przejdź do [dodatek a. Pobieranie nazwy IQN hosta z systemem Windows Server](#appendix-a-get-the-iqn-of-a-windows-server-host).
+   * Kliknij przycisk **połączone hosty**, zaznacz rekord kontroli dostępu (ACR) odpowiadający inicjatora iSCSI, którą chcesz nawiązać połączenie z tego woluminu, a następnie kliknij przycisk **wybierz**. <br><br> 
+3. Aby dodać nowy host połączony, kliknij **Dodaj nowe**, wprowadź nazwę hosta i jego iSCSI kwalifikowana nazwa (IQN), a następnie kliknij **Dodaj**. Jeśli nie masz nazwy IQN, przejdź do strony [dodatek A: Pobieranie nazwy IQN hosta z systemem Windows Server](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
       ![Dodawanie woluminu](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
-4. Po zakończeniu konfigurowania woluminu kliknij **OK**. Wolumin zostanie utworzony z określonymi ustawieniami i zostanie wyświetlone powiadomienie. Domyślnie monitorowania i kopii zapasowej mają zostać włączone dla woluminu.
+4. Po zakończeniu konfigurowania woluminu kliknij **OK**. Wolumin zostanie utworzony z określonymi ustawieniami, a następnie zostanie wyświetlone powiadomienie. Domyślnie monitorowanie i tworzenie kopii zapasowych zostaną włączone dla danego woluminu.
    
      ![Dodawanie woluminu](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
-5. Aby upewnić się, że wolumin został utworzony pomyślnie, przejdź do **woluminów** bloku. Powinny pojawić się woluminu na liście.
+5. Aby upewnić się, że wolumin został utworzony pomyślnie, przejdź do **woluminów** bloku. Wolumin, na liście powinien zostać wyświetlony.
    
    ![Dodawanie woluminu](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
@@ -194,7 +194,7 @@ Wykonaj poniższe kroki, aby zainstalować, zainicjować i sformatować woluminy
     ![Adres IP](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
 4. W oknie **Właściwości inicjatora iSCSI** na karcie **Obiekty docelowe** zlokalizuj wartości **Wykryte obiekty docelowe**. (W poszczególnych woluminów będzie odnalezionych docelowy). Stan urządzenia powinien zostać wyświetlony jako **Nieaktywne**.
    
-    ![Wykryte obiekty docelowe](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
+    ![odnalezione obiekty docelowe](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
 5. Wybierz urządzenie docelowe, a następnie kliknij przycisk **Connect**. Po połączeniu urządzenia stan powinien zmienić się na **Połączone**. (Aby uzyskać więcej informacji o korzystaniu z inicjatora iSCSI firmy Microsoft, zobacz [Instalowanie i konfigurowanie programu Microsoft iSCSI Initiator][1].
    
     ![Wybierz urządzenie docelowe](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
@@ -203,34 +203,34 @@ Wykonaj poniższe kroki, aby zainstalować, zainicjować i sformatować woluminy
 8. W oknie **Zarządzanie dyskami** zostaną wyświetlone zainstalowane woluminy (tak jak na poniższym rysunku). Kliknij prawym przyciskiem myszy odnaleziony wolumin (kliknij nazwę dysku), a następnie kliknij pozycję **Online**.
    
     ![Zarządzanie dyskami](./media/storsimple-virtual-array-deploy3-iscsi-setup/image26.png)
-9. Kliknij prawym przyciskiem myszy i wybierz **Inicjowanie dysku**.
+9. Kliknij prawym przyciskiem myszy i wybierz **Zainicjuj dysk**.
    
     ![Zainicjuj dysk 1](./media/storsimple-virtual-array-deploy3-iscsi-setup/image27.png)
-10. W oknie dialogowym Wybierz dyski do zainicjowania, a następnie kliknij przycisk **OK**.
+10. W oknie dialogowym Wybierz dyski, zainicjuj, a następnie kliknij przycisk **OK**.
     
-    ![Inicjowanie dysku 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image28.png)
+    ![Zainicjuj dysk 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image28.png)
 11. Zostanie uruchomiony Kreator nowego woluminu prostego. Wybierz rozmiar dysku, a następnie kliknij przycisk **dalej**.
     
     ![Kreator nowego woluminu 1](./media/storsimple-virtual-array-deploy3-iscsi-setup/image29.png)
-12. Przypisz literę dysku do woluminu, a następnie kliknij przycisk **dalej**.
+12. Przypisać literę dysku do woluminu, a następnie kliknij przycisk **dalej**.
     
     ![Kreator nowego woluminu 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. Wprowadź parametry sformatowania woluminu. **W systemie Windows Server jest obsługiwana wyłącznie systemu plików NTFS.** Ustaw rozmiar jednostki alokacji 64 KB. Podaj etykietę woluminu. Jest zalecanym najlepszym rozwiązaniem dla tej nazwy, być taka sama jak nazwa woluminu, podane na tablica wirtualne StorSimple. Kliknij przycisk **Dalej**.
+13. Wprowadź parametry, aby sformatować wolumin. **W systemie Windows Server jest obsługiwana tylko systemu plików NTFS.** Ustaw rozmiar jednostki alokacji 64 KB. Podaj etykietę dla woluminu. Jest zalecanym najlepszym rozwiązaniem dla tej nazwy, być taka sama jak nazwa woluminu, które podałeś na rozwiązania StorSimple Virtual Array. Kliknij przycisk **Dalej**.
     
     ![Kreator nowego woluminu 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. Sprawdź wartości dla woluminu, a następnie kliknij przycisk **Zakończ**.
     
     ![Kreator nowego woluminu 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/image32.png)
     
-    Woluminy będą wyświetlane jako **Online** na **Zarządzanie dyskami** strony.
+    Woluminy będą wyświetlane jako **Online** na **przystawki Zarządzanie dyskami** strony.
     
-    ![woluminy w trybie online](./media/storsimple-virtual-array-deploy3-iscsi-setup/image33.png)
+    ![woluminy w tryb online](./media/storsimple-virtual-array-deploy3-iscsi-setup/image33.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak używać lokalnej sieci web interfejsu użytkownika Służącego do [administrowania tablica wirtualnego StorSimple](storsimple-ova-web-ui-admin.md).
+Dowiedz się, jak używać lokalnego internetowego interfejsu użytkownika do [administrowania rozwiązania StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 
-## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Dodatek a. Pobieranie nazwy IQN hosta z systemem Windows Server
+## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Dodatek A: Pobieranie nazwy IQN hosta z systemem Windows Server
 
 Wykonaj poniższe kroki, aby pobrać kwalifikowaną nazwę iSCSI (IQN) hosta z systemem Windows, na którym uruchomiono system Windows Server 2012.
 

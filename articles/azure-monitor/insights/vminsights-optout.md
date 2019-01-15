@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191075"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263360"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Jak wyłączyć monitorowanie maszyn wirtualnych z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Usługa Azure Monitor dla maszyn wirtualnych zależy od następujących składni
 * Obszar roboczy usługi Log Analytics, która przechowuje dane monitorowania zbierane z maszyn wirtualnych i innych źródeł.
 * Zbiór liczników wydajności, które skonfigurowano w obszarze roboczym aktualizacji konfiguracji monitorowania dla wszystkich maszyn wirtualnych połączone z obszarem roboczym.
 * Dwa rozwiązania do monitorowania skonfigurowanych w obszarze roboczym - **InfrastructureInsights** i **ServiceMap**, ponieważ aktualizacja konfiguracji monitorowania dla wszystkich maszyn wirtualnych połączonych z obszarem roboczym.
-* Dwa rozszerzenia maszyny wirtualnej platformy Azure, **MicrosoftMonitoringAgent** i **DepenendencyAgent**, które wysyłają i zbierają dane do obszaru roboczego.
+* Dwa rozszerzenia maszyny wirtualnej platformy Azure, **MicrosoftMonitoringAgent** i **DependencyAgent**, które wysyłają i zbierają dane do obszaru roboczego.
 
 Podczas przygotowywania wyłączyć monitorowanie maszyn wirtualnych z usługą Azure Monitor dla maszyn wirtualnych, należy wziąć pod uwagę następujące czynności:
 
@@ -43,7 +43,7 @@ Podczas przygotowywania wyłączyć monitorowanie maszyn wirtualnych z usługą 
 
 ## <a name="complete-removal-of-azure-monitor-for-vms"></a>Całkowite usunięcie monitora platformy Azure dla maszyn wirtualnych
 
-Poniżej opisano sposób całkowicie usunąć usługi Azure Monitor dla maszyn wirtualnych, jeśli nadal potrzebujesz obszaru roboczego usługi Log Analytics. Zamierzasz usunąć **InfastructureInsights** i **ServiceMap** rozwiązania z obszaru roboczego.  
+Poniżej opisano sposób całkowicie usunąć usługi Azure Monitor dla maszyn wirtualnych, jeśli nadal potrzebujesz obszaru roboczego usługi Log Analytics. Zamierzasz usunąć **InfrastructureInsights** i **ServiceMap** rozwiązania z obszaru roboczego.  
 
 >[!NOTE]
 >Jeśli były używane rozwiązanie przed włączeniem usługi Azure Monitor dla maszyn wirtualnych do monitorowania mapy usługi i nadal polegać na niej, nie usuwaj tego rozwiązania zgodnie z opisem w kroku 6 poniżej.  

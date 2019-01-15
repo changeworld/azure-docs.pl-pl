@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: raynew
-ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 31052276f06c5afdf78bf094637b7f60be4acbec
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877171"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262731"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -36,11 +36,11 @@ Usługa Azure Backup Server chroni następujące obciążenia maszyny wirtualnej
 | Windows Server o częściowej lub półroczny kanał - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
 | Windows Server 2016 — Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
 | Windows Server 2012 R2 - Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
-| Windows Server 2012 — Entprise-Datacenter/Standard | Woluminy, pliki, foldery |
+| Windows Server 2012 — Enterprise-Datacenter/Standard | Woluminy, pliki, foldery |
 | Windows Server 2008 R2 - Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
 | SQL Server 2016 | Database (Baza danych) |
 | SQL Server 2014 | Database (Baza danych) |
-| SQL Server 2012 z dodatkiem SP1 | Database (Baza danych) |
+| SQL Server 2012 SP1 | Database (Baza danych) |
 | Program SharePoint 2016 | Farma, baza danych, serwera sieci Web, serwer sieci web |
 | SharePoint 2013 | Farma, baza danych, serwera sieci Web, serwer sieci web |
 | SharePoint 2010 | Farma, baza danych, serwera sieci Web, serwer sieci web |
@@ -90,7 +90,7 @@ Maszyna wirtualna usługi Azure Backup Server muszą być przyłączone do domen
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>W usłudze Azure Stack przy użyciu maszyn wirtualnych IaaS
 
-Podczas wybierania serwera usługi Azure Backup Server, należy uruchomić z obrazem galerii systemu Windows Server 2012 R2 Datacenter lub Windows Server 2016 Datacenter. Artykuł [Utwórz pierwszą maszynę wirtualną Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), oferuje samouczek Wprowadzenie do maszyn wirtualnych zalecane. Zalecane minimalne wymagania dotyczące serwera maszyny wirtualnej (VM) powinny być: Standard A2 dwa rdzenie i 3,5 GB pamięci RAM.
+Podczas wybierania serwera usługi Azure Backup Server, należy uruchomić z obrazem galerii systemu Windows Server 2012 R2 Datacenter lub Windows Server 2016 Datacenter. Artykuł [Utwórz pierwszą maszynę wirtualną Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), oferuje samouczek Wprowadzenie do maszyn wirtualnych zalecane. Zalecane minimalne wymagania dotyczące serwera maszyny wirtualnej (VM) powinny być następujące: A2 warstwie podstawowa przy użyciu dwóch rdzeni oraz 3,5 GB pamięci RAM.
 
 Ochrona obciążenia za pomocą usługi Azure Backup Server ma wiele niuanse. Artykuł [Instalowanie programu DPM jako maszynę wirtualną platformy Azure](https://technet.microsoft.com/library/jj852163.aspx), wyjaśniających te różnice. Przed wdrożeniem na maszynie, przeczytaj ten artykuł całkowicie.
 
@@ -141,7 +141,7 @@ Istnieją dwa sposoby, aby pobrać Instalatora serwera usługi Azure Backup. Mo�
 
     Zostanie otwarte menu kopii zapasowej.
 
-    ![Kopia zapasowa cele — domyślna otwieranych](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
+    ![Backup-goals-default-opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
 6. W menu kopii zapasowej z **gdzie jest uruchomione Twoje obciążenie** menu, wybierz opcję **On-premises**. Z **jakich elementów chcesz utworzyć kopię zapasową?** rozwijanego menu, wybierz opcję obciążeń, którą chcesz chronić, za pomocą serwera usługi Azure Backup. Jeśli nie masz pewności, które obciążenia pracą, aby wybrać, wybierz opcję **maszyn wirtualnych funkcji Hyper-V** a następnie kliknij przycisk **Przygotuj infrastrukturę**.
 

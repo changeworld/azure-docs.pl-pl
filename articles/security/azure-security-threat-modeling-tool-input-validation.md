@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: da2e742f0dde0cb4b98bfb107d18eca779d10021
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234599"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266920"
 ---
-# <a name="security-frame-input-validation--mitigations"></a>Ramka zabezpieczeń: Wejściowy weryfikacji | Środki zaradcze 
+# <a name="security-frame-input-validation--mitigations"></a>Ramka zabezpieczeń: Dane wejściowe weryfikacji | Środki zaradcze 
 | Produkt/usługę | Artykuł |
 | --------------- | ------- |
 | **Aplikacja sieci Web** | <ul><li>[Wyłącz funkcje tworzenia skryptów wszystkie przekształcenia przy użyciu arkuszy stylów niezaufanych XSLT](#disable-xslt)</li><li>[Upewnij się, że każdej strony zawierające zawartość musi użytkownika oznacza brak zgody na automatyczne wykrywanie MIME](#out-sniffing)</li><li>[Wzmacniania ochrony lub wyłączanie rozpoznawania jednostki XML](#xml-resolution)</li><li>[Aplikacje korzystające z http.sys przeprowadzenie weryfikacji canonicalization adresu URL](#app-verification)</li><li>[Upewnij się, że odpowiednie formanty są stosowane podczas akceptowania plików od użytkowników](#controls-users)</li><li>[Upewnij się, że bezpieczny parametry są używane w aplikacji sieci Web uzyskać dostęp do danych](#typesafe)</li><li>[Użyj klasy powiązanie osobnymi plikami modelu lub listy powiązania filtru, aby zapobiec MVC przydziału pamięci masowej luk w zabezpieczeniach](#binding-mvc)</li><li>[Kodowanie wyjścia niezaufanych sieci web przed renderowaniem](#rendering)</li><li>[Wykonywanie walidacji danych wejściowych i filtrowanie typu string wszystkie właściwości modelu](#typemodel)</li><li>[Narzędzie oczyszczania powinny być stosowane na pola formularza, które akceptują znaków, np., Edytor tekstu sformatowanego](#richtext)</li><li>[Nie przypisuj elementów DOM do ujścia, które nie mają wbudowane kodowania](#inbuilt-encode)</li><li>[Sprawdź, czy wszystkie przekierowania w aplikacji zostaną zamknięte lub wykonywane w sposób bezpieczny](#redirect-safe)</li><li>[Implementowanie walidacji danych wejściowych na wszystkich parametrów typu ciąg zaakceptowane przez metody kontrolera](#string-method)</li><li>[Ustawić limitu górnego limitu czasu dla wyrażenia regularnego, przetwarzania, aby zapobiec DoS ze względu na nieprawidłowy wyrażeń regularnych](#dos-expression)</li><li>[Unikaj używania Html.Raw w widokami Razor](#html-razor)</li></ul> | 
 | **Baza danych** | <ul><li>[W procedurach składowanych nie należy używać zapytań dynamicznych](#stored-proc)</li></ul> |
 | **Interfejs API sieci Web** | <ul><li>[Upewnij się, że weryfikacja modelu odbywa się na metody interfejsu API sieci Web](#validation-api)</li><li>[Implementowanie walidacji danych wejściowych na wszystkich parametrów typu ciąg zaakceptowane przez metody interfejsu API sieci Web](#string-api)</li><li>[Upewnij się, że bezpieczny są używane parametry w internetowego interfejsu API dostępu do danych](#typesafe-api)</li></ul> | 
-| **Baza danych Documentdb platformy Azure** | <ul><li>[Użyj sparametryzowanego zapytania SQL usługi Azure Cosmos DB](#sql-docdb)</li></ul> | 
+| **Azure Document DB** | <ul><li>[Użyj sparametryzowane zapytania SQL usługi Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[Weryfikacja danych wejściowych WCF przez powiązanie ze schematem](#schema-binding)</li><li>[Weryfikacja wprowadzania WCF za pomocą parametru inspektorzy](#parameters)</li></ul> |
 
 ## <a id="disable-xslt"></a>Wyłącz funkcje tworzenia skryptów wszystkie przekształcenia przy użyciu arkuszy stylów niezaufanych XSLT
@@ -38,7 +38,7 @@ ms.locfileid: "51234599"
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Zabezpieczenia XSLT](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [właściwości XsltSettings.EnableScript](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **Odwołania**              | [XSLT Security](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript Property](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
 | **Kroki** | XSLT obsługuje wykonywanie skryptów w arkusze stylów, za pomocą `<msxml:script>` elementu. Dzięki temu funkcje niestandardowe, które ma być używany w transformacji XSLT. Skrypt jest wykonywany w kontekście tego procesu wykonywania transformacji. XSLT, skrypt musi zostać wyłączone w niezaufanych środowiska, aby zapobiec wykonaniu niezaufanego kodu. *Jeśli przy użyciu platformy .NET:* XSLT, obsługa skryptów jest domyślnie wyłączona; jednak należy upewnić się, że go nie została jawnie włączona przy użyciu `XsltSettings.EnableScript` właściwości.|
 
 ### <a name="example"></a>Przykład 
@@ -191,7 +191,7 @@ settings.MaxCharactersFromEntities = 1000;
 settings.XmlResolver = null;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Należy pamiętać, że w program MSXML6, ProhibitDtd dla elementu ma wartość true (wyłączanie przetwarzanie elementu DTD) domyślnie. Kod, OSX firmy Apple dla systemu iOS, istnieją dwa parsery XML można użyć: NSXMLParser i libXML2. 
+Należy pamiętać, że w program MSXML6, ProhibitDtd dla elementu ma wartość true (wyłączanie przetwarzanie elementu DTD) domyślnie. Kod, OSX firmy Apple dla systemu iOS istnieją dwa parsery XML, których można użyć: NSXMLParser i libXML2. 
 
 ## <a id="app-verification"></a>Aplikacje korzystające z http.sys przeprowadzenie weryfikacji canonicalization adresu URL
 
@@ -460,7 +460,7 @@ Nie używaj `innerHtml`; zamiast tego użyć `innerText`. Podobnie, zamiast z `$
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Generic, Web Forms, MVC5, MVC6  |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Właściwość DefaultRegexMatchTimeout ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
+| **Odwołania**              | [DefaultRegexMatchTimeout Property ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
 | **Kroki** | Aby atakom typu odmowa usługi przed źle utworzony wyrażeń regularnych, które powodują mnóstwo wycofywania, ustawić globalne domyślny limit czasu. Jeśli czas przetwarzania trwa dłużej niż górny limit zdefiniowany, zgłasza wyjątek limitu czasu. Niczego nie skonfigurowano limit czasu będzie mieć nieograniczony.| 
 
 ### <a name="example"></a>Przykład
@@ -618,7 +618,7 @@ namespace MyApi.Controllers
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Ogólna MVC 5, MVC 6 |
+| **Odpowiednich technologii** | Generic, MVC 5, MVC 6 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Sprawdzanie poprawności modelu danych w aplikacji MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [wytyczne dla aplikacji platformy ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **Kroki** | W przypadku metod, które akceptują tylko typem danych pierwotnych, a nie modeli jako argument powinna być podejmowana walidacji danych wejściowych za pomocą wyrażenia regularnego. W tym miejscu regex.ismatch — powinien być używany z wzorcem prawidłowe wyrażenie regularne. Jeśli dane wejściowe nie odpowiada określonemu wyrażeniu regularnemu, formant nie należy kontynuować, a powinien być wyświetlany odpowiedniego ostrzeżenia dotyczące niepowodzenia weryfikacji.|
@@ -653,11 +653,11 @@ myCommand.Fill(userDataset);
 ```
 W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa niż 11 znaków. Jeśli dane nie jest zgodny z typem lub długość zdefiniowaną przez parametr, klasa parametr SqlParameter zgłasza wyjątek. 
 
-## <a id="sql-docdb"></a>Użyj sparametryzowanego zapytania SQL usługi Cosmos DB
+## <a id="sql-docdb"></a>Użyj sparametryzowane zapytania SQL usługi Cosmos DB
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Baza danych Documentdb platformy Azure | 
+| **Składnik**               | Azure Document DB | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -670,7 +670,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Ogólna NET Framework 3 |
+| **Odpowiednich technologii** | Generic, NET Framework 3 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
 | **Kroki** | <p>Brak weryfikacji prowadzi do innego typu ataki przez iniekcję kodu.</p><p>Sprawdzanie poprawności komunikatu reprezentuje jedną linię obrony w ochronie aplikacji WCF. W przypadku tej metody Sprawdź poprawność wiadomości do ochrony operacji usługi WCF z ataku przez złośliwe klienta przy użyciu schematów. Sprawdź poprawność wszystkich komunikatów odebranych przez klienta do ochrony klienta przed ataku przez złośliwe usługi. Komunikat sprawdzania poprawności sprawia, że można sprawdzać poprawność wiadomości, podczas operacji używanie kontraktów komunikatu lub kontraktów danych, których nie można wykonać przy użyciu poprawność parametrów. Sprawdzanie poprawności komunikatu służy do tworzenia logiki weryfikacji wewnątrz schematów, a tym samym co zapewnia większą elastyczność i zmniejsza czas opracowywania. Schematy mogą być ponownie używane dla różnych aplikacji w organizacji, standardów dotyczących reprezentacji danych. Ponadto komunikat sprawdzania poprawności umożliwia ochronę operacji, jeśli używają oni bardziej złożone typy danych obejmujące reprezentującej logiki biznesowej.</p><p>Aby wykonać sprawdzanie poprawności komunikatu, najpierw utworzyć schemat, który reprezentuje operacji usługi i typy danych używanych przez te operacje. Następnie Utwórz klasę .NET, która implementuje Inspektor komunikatu niestandardowego klienta i niestandardowych dyspozytorów komunikatów Inspektor sprawdzania poprawności komunikatów wysłać/odebrać z usługi. Następnie możesz zaimplementować zachowania niestandardowego punktu końcowego można włączyć weryfikację komunikat zarówno klient, jak i usługi. Na koniec implementuje niestandardowy element konfiguracji w klasie, która pozwala na udostępnianie zachowanie rozszerzonej niestandardowego punktu końcowego w pliku konfiguracyjnym usługi lub klienta"</p>|
@@ -681,7 +681,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Ogólna NET Framework 3 |
+| **Odpowiednich technologii** | Generic, NET Framework 3 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
 | **Kroki** | <p>Sprawdzanie poprawności danych wejściowych i danych reprezentuje jeden ważny linią obrony w ochronie aplikacji WCF. Należy sprawdzić, czy wszystkie parametry ujawnione w operacji usługi WCF do ochrony usługi od ataku przez złośliwe klienta. Z drugiej strony należy także sprawdzić, czy wszystkich wartości zwracanych odebranych przez klienta do ochrony klienta przed ataku przez złośliwe usługi</p><p>Usługi WCF udostępniają punkty rozszerzeń różnych, które pozwalają dostosować zachowanie środowiska uruchomieniowego WCF, tworząc niestandardowe rozszerzenia. Inspektorzy komunikatów i inspektorzy parametru są dwa mechanizmy rozszerzania pozwala uzyskać większą kontrolę nad danymi przekazywanie między klientem a usługą. Użytkownik powinien używać inspektorzy parametr dla walidacji danych wejściowych i inspektorzy komunikatów tylko wtedy, gdy trzeba sprawdzić cały komunikat przepływających do i z usługi.</p><p>Aby przeprowadzić sprawdzenie poprawności danych wejściowych, utworzysz klasa platformy .NET i wdrożyć Inspektor parametru niestandardowego w celu sprawdzają poprawność parametrów na operacje w usłudze. Następnie wdroży zachowanie niestandardowego punktu końcowego można włączyć weryfikację zarówno klient, jak i usługi. Na koniec wdroży niestandardowy element konfiguracji w klasie, która pozwala na udostępnianie zachowanie rozszerzonej niestandardowego punktu końcowego w pliku konfiguracyjnym usługi lub klienta</p>|

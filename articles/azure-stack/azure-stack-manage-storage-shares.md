@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d4a40b07ef70d8dd43eb410ba396057551cd483
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249901"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304404"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Informacje przedstawione w tym artykule pomaga monitor — operator chmury Azure Stack i zarządzanie wydajnością magazynu, ich wdrożenia usługi Azure Stack. Infrastruktura magazynu usługi Azure Stack przydziela podzbiór całkowitej pojemności wdrożenia usługi Azure Stack służący do **usług magazynu**. Usługi magazynu przechowywanie danych dzierżaw, w udziałach na woluminach, które odnoszą się do węzłów wdrożenia.
 
@@ -101,12 +101,12 @@ Korzystając z portalu administratora, możesz otrzymywać alerty o udziałów, 
 > [!IMPORTANT]
 > Jako operator chmury zapobiec osiągnięciu pełnej użycia udziałów. Gdy udział jest 100% wykorzystania magazynu usługi nie jest już funkcji dla tego udziału. Odzyskać wolnego miejsca i operacji w udziale, który jest w 100% wykorzystania przywracania, możesz skontaktować się pomocą techniczną firmy Microsoft.
 
-**Ostrzeżenie**: gdy udział plików jest ponad 80% wykorzystania, otrzymasz *ostrzeżenie* alertów w portalu administracyjnym: ![przykład: alert ostrzegawczy](media/azure-stack-manage-storage-shares/alert-warning.png)
+**Ostrzeżenie**: Jeśli udział plików jest ponad 80% wykorzystania, pojawi się *ostrzeżenie* alertów w portalu administracyjnym: ![Przykład: Alert ostrzegawczy](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**Krytyczne**: gdy udział plików jest ponad 90% wykorzystywane, otrzymasz *krytyczne* alertów w portalu administracyjnym: ![przykład: alert krytyczny](media/azure-stack-manage-storage-shares/alert-critical.png)
+**Krytyczne**: Gdy udział plików jest ponad 90% wykorzystywane, otrzymasz *krytyczny* alertów w portalu administracyjnym: ![Przykład: Alert krytyczny](media/azure-stack-manage-storage-shares/alert-critical.png)
 
-**Wyświetl szczegóły**: W portalu administracyjnym, można otworzyć szczegóły alertu wyświetlić opcje środki zaradcze: ![przykład: wyświetlanie szczegółów alertów](media/azure-stack-manage-storage-shares/alert-details.png)
+**Wyświetl szczegóły**: W portalu administracyjnym, można otworzyć szczegóły alertu wyświetlić opcje środki zaradcze: ![Przykład: Wyświetl szczegóły alertu](media/azure-stack-manage-storage-shares/alert-details.png)
 
 
 ## <a name="manage-available-space"></a>Zarządzanie dostępnego miejsca
@@ -119,7 +119,7 @@ Można odzyskać pojemności używane przez konta dzierżawy, które zostały us
 
 Aby uzyskać więcej informacji, zobacz [odzyskać pojemności](azure-stack-manage-storage-accounts.md#reclaim) w zarządzanie zasobami magazynu.
 
-### <a name="migrate-a-container-between-volumes"></a>Migrowanie między woluminami kontenera
+### <a name="migrate-a-container-between-volumes"></a>Migrowanie kontenera między woluminami
 *Ta opcja ma zastosowanie tylko do wdrożeń z wieloma węzłami.*
 
 Ze względu na wzorce użycia dzierżawy niektóre udziały dzierżawy za pomocą więcej miejsca niż inne. Może to spowodować udostępnioną za mało miejsca przed innych akcji, które są stosunkowo nieużywane.
@@ -196,7 +196,7 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ````
 
-  ![Przykład: Stan wycofywania](media/azure-stack-manage-storage-shares/rollback.png)
+  ![Przykład: Stan wycofania](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. Można uruchomić polecenie z kroku 6 ponownie, dopóki stan potwierdza to zadanie migracji **anulowane**:  
 

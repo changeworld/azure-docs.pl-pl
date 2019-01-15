@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245688"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306543"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Przegląd tożsamości usługi Azure Stack
 
 Usługa Azure Stack wymaga usługi Azure Active Directory (Azure AD) lub Active Directory Federation Services (AD FS), obsługiwane przez Active Directory jako dostawcy tożsamości. Dostawcy to jednorazowa decyzja, wprowadzone przy pierwszym wdrożeniu usługi Azure Stack. Pojęcia i szczegóły autoryzacji, w tym artykule mogą pomóc wybrać dostawców tożsamości.
 
-Wybór Azure AD lub AD FS może zależeć od trybu, w którym można wdrożyć usługę Azure Stack:
+Wybór Azure AD lub AD FS jest ustalany na tryb, w którym można wdrożyć usługę Azure Stack:
 
 - Podczas wdrażania w trybie połączonym, można użyć albo usługi Azure AD lub AD FS.
 - Podczas wdrażania w trybie odłączenia, bez połączenia z Internetem jest obsługiwana tylko usługi AD FS.

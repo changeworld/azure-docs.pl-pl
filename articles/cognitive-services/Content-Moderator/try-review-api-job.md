@@ -1,21 +1,21 @@
 ---
 title: Uruchamianie zadań moderowanie zawartości za pomocą konsoli interfejsu API — Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak uruchamiać zadania moderowanie zawartości w konsoli interfejsu API.
+description: Użyj operacji zadań Przegląd interfejsu API do inicjowania zadań end-to-end moderowanie zawartości dla zawartości image lub text w usłudze Azure Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4d1f96cbf7a94c59476f077cc4e72a26ee9c8296
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227113"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259125"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>Uruchom zadanie Moderowanie z poziomu konsoli interfejsu API
 
@@ -32,9 +32,9 @@ Przejdź do [narzędzie do przeglądu](https://contentmoderator.cognitive.micros
 ## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
 Będą mogli ją testować interfejs API za pomocą konsoli usługi online, konieczne jest kilku wartości w celu wprowadzenia w życie konsoli programu:
     
-- `teamName`: Służy `Id` pola z ekranu poświadczenia tego narzędzia przeglądu. 
-- `ContentId`: Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. **ContentId** przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.- `Workflowname`: nazwa [przepływu pracy, który został utworzony](Review-Tool-User-Guide/Workflows.md) w poprzedniej sekcji.
-- `Ocp-Apim-Subscription-Key`: Znajdujący się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+- `teamName`: Użyj `Id` pola z ekranu poświadczenia tego narzędzia przeglądu. 
+- `ContentId`: Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. **ContentId** przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.- `Workflowname`: Nazwa [przepływu pracy, który został utworzony](Review-Tool-User-Guide/Workflows.md) w poprzedniej sekcji.
+- `Ocp-Apim-Subscription-Key`: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 Interfejs API dostępu do konsoli pochodzi z **poświadczenia** okna.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 49f1d7e1fac1125984f7376cffdcaf2e60f5611b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 984f6713445b53429758d616945a6e64245b42bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247881"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263224"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
 
@@ -254,7 +254,7 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 2. Na **ustawienia**, wybierz opcję **zabezpieczeń**.
 3. W **grup usługi DevOps platformy Azure**, wybierz opcję **punktu końcowego dla twórców**.
 
-    ![Punkt końcowy NorthwindCloud dla twórców](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
+    ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
 
 4. Na **członków** zaznacz **Dodaj**.
 
@@ -307,7 +307,7 @@ Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
 | Name (Nazwa) | Przykład | Opis |
 | --- | --- | --- |
-| Nazwa połączenia | Usługa Azure Stack usług AD FS | Nazwa połączenia. |
+| Nazwa połączenia | Azure Stack ADFS | Nazwa połączenia. |
 | Środowisko | AzureStack | Nazwa środowiska. |
 | Adres URL środowiska | `https://management.local.azurestack.external` | Punkt końcowy zarządzania. |
 | Poziom zakresu | Subskrypcja | Zakresu połączenia. |
@@ -360,7 +360,7 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 
 1. Zaloguj się do usługi Azure DevOps Services przy użyciu organizacji, w której można utworzyć potoku kompilacji.
 
-2. Przejdź do **kompilacji Web Distributed** strony dla projektu.
+2. Przejdź do **tworzenie aplikacji sieci Web** strony dla projektu.
 
 3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
 

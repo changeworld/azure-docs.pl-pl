@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: ceab5152d6dc6db573a7fea8c673157068009ebe
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228813"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262136"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitoruj zależności, wyjątki przechwycony i czasy wykonania metody w aplikacji sieci web w języku Java
 
@@ -34,7 +34,7 @@ Jeśli masz [instrumentacji aplikacji sieci web Java za pomocą usługi Applicat
 Aby użyć agenta programu Java, zainstaluj na serwerze. Aplikacje sieci web musi być wyposażone w [zestawu SDK Java usługi Application Insights][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Zainstaluj agenta usługi Application Insights dla środowiska Java
-1. Na maszynie z uruchomioną serwer Java [Pobierz agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Pamiętaj, aby pobrać ten sam verson agenta Java jako pakiety zestawu SDK Java usługi Application Insights core i sieć web.
+1. Na maszynie z uruchomioną serwer Java [Pobierz agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Upewnij się, aby pobrać tę samą wersję agenta Java jako pakiety zestawu SDK Java usługi Application Insights core i sieć web.
 2. Edytuj skrypt uruchamiania serwera aplikacji, a następnie dodaj poniższe maszyny JVM:
    
     `javaagent:`*Pełna ścieżka do pliku JAR agenta*

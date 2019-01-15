@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5aa998ef7af157f84a3985fdb458c2800f2575f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ecc29e9422c1d427dd76059f1a427f3d49da38f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249374"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262375"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -35,12 +35,12 @@ W tym artykule założono, że zainstalowano już SUSE lub dystrybucją systemu 
 * Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
 
-## <a name="use-suse-studio"></a>Użyj programu Studio SUSE
+## <a name="use-suse-studio"></a>Use SUSE Studio
 [SUSE Studio](http://www.susestudio.com) można łatwo tworzyć i zarządzać z obrazów SLES i openSUSE dla platformy Azure i funkcji Hyper-V. Jest to zalecane podejście do dostosowywania własnych obrazów SLES i openSUSE.
 
 Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE, publikuje również obrazów BYOS (Bring Your własnej subskrypcji) dla systemu SLES o [repozytorium VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Przygotowanie SUSE Linux Enterprise Server 11 z dodatkiem SP4
+## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Prepare SUSE Linux Enterprise Server 11 SP4
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
 2. Kliknij przycisk **Connect** aby otworzyć okno dla maszyny wirtualnej.
 3. Zarejestruj systemu SUSE Linux Enterprise, aby zezwalała na pobieranie aktualizacji i zainstaluj pakiety.
@@ -49,7 +49,7 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE, publi
         # sudo zypper update
 5. Zainstaluj agenta systemu Linux platformy Azure z repozytorium w systemie SLES:
    
-        # sudo zypper install WALinuxAgent
+        # sudo zypper install python-azure-agent
 6. Sprawdź Jeśli waagent ma wartość "włączone" w folderze chkconfig, a jeśli nie, włącz ją do automatycznego uruchamiania:
    
         # sudo chkconfig waagent on
@@ -136,11 +136,11 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE, publi
    
    Daje to pewność, wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. Ponadto Usuń następujące parametry z wiersza rozruchu jądra, jeśli istnieją:
    
-     Rezerwa libata.atapi_enabled=0 = 0x1f0, 0x8
+     libata.atapi_enabled=0 reserve=0x1f0,0x8
 7. Zalecane jest, aby edytować plik "/ etc/sysconfig/sieci/dhcp" i zmień `DHCLIENT_SET_HOSTNAME` parametru do następującego:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Ważne:** w "/ etc/sudo", komentarz lub usuń następujące wiersze, jeśli nie istnieją:
+8. **Ważne:** "/ Etc/sudo" komentarz lub usuń następujące wiersze, jeśli nie istnieją:
    
      Wartość domyślna targetpw # poprosić o podanie hasła użytkownika docelowego, czyli głównego wszystkich ALL=(ALL) wszystkich # ostrzeżenie! Użyj tylko wtedy, wraz z "Domyślne targetpw"!
 9. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to opcja domyślna.

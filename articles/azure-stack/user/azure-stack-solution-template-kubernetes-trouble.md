@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e9eb3cc029e60acd18fc6611ca14817488a2d983
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956724"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266557"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
@@ -45,10 +45,10 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 1. Zbierz parametry wejściowe z elementu portalu marketplace.
 
     Wprowadź wartości potrzebne do skonfigurowania klastra Kubernetes, w tym:
-    -  **Nazwa użytkownika**: nazwa użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
-    -  **Klucz publiczny SSH**: klucz, który jest używany do autoryzacji wszystkich maszyn z systemem Linux, które zostały utworzone w ramach klastra Kubernetes i Menedżer DVM.
-    -  **Usługa Zasady**: identyfikator, który jest używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji, podczas tworzenia jednostki usługi. 
-    -  **Klucz tajny klienta**: one klucza utworzonego podczas tworzenia jednostki usługi.
+    -  **Nazwa użytkownika**: Nazwa użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
+    -  **Klucz publiczny SSH**: Klucz, który jest używany do autoryzacji wszystkich maszyn z systemem Linux, które zostały utworzone w ramach klastra Kubernetes i Menedżer DVM.
+    -  **Usługa Zasady**: Identyfikator, który jest używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji, podczas tworzenia jednostki usługi. 
+    -  **Klucz tajny klienta**: One klucza utworzonego podczas tworzenia jednostki usługi.
 
 2. Tworzenie wdrożenia maszyny Wirtualnej i rozszerzenia niestandardowego skryptu.
     -  Tworzenie wdrożenia maszyny Wirtualnej systemu Linux przy użyciu obrazu systemu Linux w witrynie marketplace **Ubuntu Server 16.04-LTS**.
@@ -90,7 +90,7 @@ Możesz zbierać dzienniki na maszynach wirtualnych, które obsługują klastra 
 3.  Przejrzyj pliki tworzenia maszyny Wirtualnej. Mogli mieć następujące problemy:  
     - Klucz publiczny może być nieprawidłowy. Przejrzyj klucza, który został utworzony.  
     - Tworzenie maszyny Wirtualnej może być wyzwalane wystąpił błąd wewnętrzny lub wyzwalane błąd tworzenia. Wiele czynników może powodować błędy, łącznie z ograniczenia wydajności dla Twojej subskrypcji usługi Azure Stack.
-    - Upewnij się, że w pełni kwalifikowana nazwa domeny (nazwy FDQN) dla maszyny Wirtualnej zaczyna się od zduplikowany prefiks.
+    - Upewnij się, że w pełni kwalifikowana nazwa domeny (FQDN) dla maszyny Wirtualnej zaczyna się od zduplikowany prefiks.
 4.  Jeśli maszyna wirtualna jest **OK**, następnie ocenę, Menedżer DVM. Jeśli Menedżer DVM zawiera komunikat o błędzie:
 
     - Klucz publiczny może być nieprawidłowy. Przejrzyj klucza, który został utworzony.  
@@ -153,10 +153,10 @@ Aby uzyskać dzienniki, wykonaj następujące czynności:
 4. Przejrzyj parametry i ustaw wartości, w zależności od używanego środowiska.
     | Parametr           | Opis                                                                                                      | Przykład                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i, — plik tożsamości | RSA pliku klucza prywatnego do łączenia z głównej maszynie Wirtualnej platformy Kubernetes. Klucz musi rozpoczynać się `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.PEM                                                        |
-    | -h,--hosta          | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra Kubernetes maszyny Wirtualnej. Nazwa maszyny Wirtualnej, który rozpoczyna się od `k8s-master-`.                       | ADRESÓW IP: 192.168.102.37<br><br>Nazwa FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -i, — plik tożsamości | RSA pliku klucza prywatnego do łączenia z głównej maszynie Wirtualnej platformy Kubernetes. Klucz musi rozpoczynać się `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.pem                                                        |
+    | -h,--hosta          | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra Kubernetes maszyny Wirtualnej. Nazwa maszyny Wirtualnej, który rozpoczyna się od `k8s-master-`.                       | Adres IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, — użytkownik          | Nazwa użytkownika maszyny Wirtualnej węzła głównego klastra Kubernetes. Ta nazwa jest ustawiona, podczas konfigurowania elementu portalu marketplace.                                                                    | użytkownik_azure                                                                     |
-    | -d, — vmdhost       | Publiczny adres IP lub nazwa FQDN Menedżer DVM. Nazwa maszyny Wirtualnej, który rozpoczyna się od `vmd-`.                                                       | ADRESÓW IP: 192.168.102.38<br><br>Serwer DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -d, --vmdhost       | Publiczny adres IP lub nazwa FQDN Menedżer DVM. Nazwa maszyny Wirtualnej, który rozpoczyna się od `vmd-`.                                                       | Adres IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
 
    Po dodaniu wartości parametrów, on może wyglądać podobnie do poniższego kodu:
 
@@ -172,7 +172,7 @@ Aby uzyskać dzienniki, wykonaj następujące czynności:
 4. Pobierz dzienniki w folderach, które zostały utworzone przy użyciu polecenia. Polecenie spowoduje utworzenie nowych folderów i ich sygnatury czasowe.
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
-        - Acsengine — kubernetes — dvm.log
+        - Acsengine-kubernetes-dvm.log
 
 ## <a name="next-steps"></a>Kolejne kroki
 

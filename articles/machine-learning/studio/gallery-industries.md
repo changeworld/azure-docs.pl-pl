@@ -1,26 +1,8 @@
 ---
-title: Rozwiązania branżowe Galeria sztucznej Inteligencji platformy Azure — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Branżach części Galeria sztucznej Inteligencji platformy Azure umożliwia połączenie ze sobą różnych zasobów, które są specyficzne dla branż, takich jako sprzedaży detalicznej, produkcji, bankowości i opiece zdrowotnej.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-editor: cgronlun
-ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.custom: previous-ms.author=garye, previous-author=garyericson
-ms.author: amlstudiodocs
-ms.openlocfilehash: 4f9495027c7027f659f877930b6aabc72b361ae8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269332"
+Tytuł: Usługa Azure titleSuffix rozwiązań branżowych Galeria sztucznej Inteligencji: Opis usługi Azure Machine Learning Studio: Branżach części Galeria sztucznej Inteligencji platformy Azure umożliwia połączenie ze sobą różnych zasobów, które są specyficzne dla branż, takich jako sprzedaży detalicznej, produkcji, bankowości i opiece zdrowotnej.
+usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=garye, poprzedniego autora = garyericson ms.date: 03/31/2017
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Odnajduj rozwiązania branżowe w galerii Azure AI
 

@@ -7,16 +7,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0948251c18ad8eece974914ee33dff18b5930553
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 03545d61bf385c4d2e7bd29099be5af47aee74c9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535807"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259057"
 ---
-# <a name="text-moderation"></a>Moderowanie tekstu
+# <a name="learn-text-moderation-concepts"></a>Pojęcia dotyczące moderowania tekstu
 
 Użyj Content Moderator tekstu wspomagane maszynowo Moderowanie i [przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md) możliwości moderowanie zawartości tekstowej.
 
@@ -31,7 +31,7 @@ Odpowiedź usługi zawiera następujące informacje:
 - Oryginalny tekst
 - Język
 
-## <a name="profanity"></a>Niestosownych wyrażeń
+## <a name="profanity"></a>Profanity
 
 Jeśli interfejs API wykryje postanowieniami obsceniczne w żadnym z [obsługiwane języki](Text-Moderation-API-Languages.md), te zasady znajdują się w odpowiedzi. Odpowiedź zawiera również ich lokalizacji (`Index`) w oryginalny tekst. `ListId` w następującym przykładzie JSON, który odwołuje się do warunków w [listy terminów niestandardowe](try-terms-list-api.md) Jeśli jest dostępny.
 
