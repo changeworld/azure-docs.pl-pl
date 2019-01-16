@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ffd1b96e721707f69c47a7cbf11d60f17f3a7d2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105427"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320484"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Bieżąca wersja](connector-mongodb.md)
 
@@ -54,7 +54,7 @@ Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączo
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość type musi być równa: **Bazy danych MongoDb** |Yes |
+| type |Właściwość type musi być równa: **MongoDb** |Yes |
 | serwer |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania połączeń klientów. |Nie (wartość domyślna to 27017) |
 | databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
@@ -104,7 +104,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": {
@@ -207,8 +207,8 @@ Na przykład w tym miejscu ExampleTable jest tabeli bazy danych MongoDB, która 
 
 | _identyfikator | Nazwa klienta | Faktury | Poziom usług | Klasyfikacje |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: elementu "123": "tostera", price: "456" rabat w wysokości: "0,2"}, {invoice_id: element "124": "piec", price: Zniżka "1235": "0,2"}] |Srebrny |[5,6] |
-| 2222 |XYZ |[{invoice_id: element "135": "lodówko", price: Rabat "12543": "0.0"}] |Złoty |[1,2] |
+| 1111 |ABC |[{invoice_id: elementu "123": "tostera", price: "456" rabat w wysokości: "0,2"}, {invoice_id: element "124": "piec", price: "1235", discount: "0.2"}] |Srebrny |[5,6] |
+| 2222 |XYZ |[{invoice_id: element "135": "lodówko", price: "12543", discount: "0.0"}] |Złoty |[1,2] |
 
 Sterownik wygeneruje wiele tabel wirtualnego do reprezentowania jednej tabeli. Pierwsza tabela wirtualnego jest tabela bazowa o nazwie "ExampleTable", jak pokazano w przykładzie. Tabela podstawowa zawiera wszystkie dane z oryginalnej tabeli, ale dane z tablic została pominięta i jest rozwinięty w tabelach wirtualnych.
 
@@ -239,7 +239,6 @@ W poniższych tabelach przedstawiono wirtualnych tabel, które reprezentują ory
 | 1111 |1 |6 |
 | 2222 |0 |1 |
 | 2222 |1 |2 |
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

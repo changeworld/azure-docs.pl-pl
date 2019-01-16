@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 1/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9d10383b84cbd1b85216cb9ae4582db4c7a10743
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54268079"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321776"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integracja zaporę platformy Azure z usługą Azure standardowego modułu równoważenia obciążenia
 
@@ -26,7 +26,7 @@ Za pomocą publicznego modułu równoważenia obciążenia moduł równoważenia
 
 ### <a name="asymmetric-routing"></a>Routing asymetryczny
 
-Routing asymetryczny jest którym pakiet ma jedną ścieżkę do miejsca docelowego, a ma inną ścieżkę, wracając do źródła. Problem może wystąpić, gdy w podsieci zawiera trasy domyślnej, prywatny adres IP zapory i publiczny moduł równoważenia obciążenia. W tym przypadku ruchu przychodzącego modułu równoważenia obciążenia jest odebranych za pośrednictwem publicznego adresu IP, ale ścieżki zwrotu przechodzi przez zaporę, prywatny adres IP. Ponieważ zapory stanowe, odrzuci zwracanie pakietów, ponieważ Zapora nie ma informacji o ustanowienie sesji.
+Routing asymetryczny jest którym pakiet ma jedną ścieżkę do miejsca docelowego, a ma inną ścieżkę, wracając do źródła. Ten problem występuje, gdy w podsieci zawiera trasy domyślnej, przechodząc na prywatny adres IP zapory i używasz publicznego modułu równoważenia obciążenia. W tym przypadku ruchu przychodzącego modułu równoważenia obciążenia jest odebranych za pośrednictwem publicznego adresu IP, ale ścieżki zwrotu przechodzi przez zaporę, prywatny adres IP. Ponieważ zapory stanowe, odrzuci zwracanie pakietów, ponieważ Zapora nie ma informacji o ustanowienie sesji.
 
 ### <a name="fix-the-routing-issue"></a>Rozwiąż problem z routingiem
 

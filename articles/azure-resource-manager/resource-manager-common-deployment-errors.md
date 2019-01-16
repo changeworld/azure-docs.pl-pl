@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: bbe957d4327770daee51f8a46d90978373fed53a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317019"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330390"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -46,11 +46,11 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | InvalidAuthenticationTokenTenant | Uzyskiwanie tokenu dostępu do odpowiedniego dzierżawy. Tokenu można pobierać tylko z której Twoje konto należy do dzierżawy. | |
 | InvalidContentLink | Prawdopodobnie podjęto próbę połączyć zagnieżdżonych szablonów, które nie są dostępne. Sprawdź identyfikator URI podany dla zagnieżdżonych szablonów. Jeśli szablon istnieje w ramach konta magazynu, upewnij się, że identyfikator URI jest dostępny. Może być konieczne przekazać token sygnatury dostępu Współdzielonego. | [Połączone szablony](resource-group-linked-templates.md) |
 | InvalidParameter | Jedna z wartości podanych dla zasobu nie jest zgodna z oczekiwaną wartością. Ten błąd może wynikać z wielu różnych warunków. Na przykład hasła mogą być niewystarczające lub nazwa obiektu blob może być nieprawidłowa. Sprawdź komunikat o błędzie, aby określić wartość, która musi zostać poprawione. | |
-| InvalidRequestContent | Wartości wdrożenia zawierają wartości, które nie są oczekiwane lub brakuje wymaganych wartości. Upewnij się, wartości dla danego typu zasobu. | [Dokumentacja dotycząca szablonów](/azure/templates/) |
+| InvalidRequestContent | Wartości wdrożenia zawierają wartości, które nie są oczekiwane lub brakuje wymaganych wartości. Upewnij się, wartości dla danego typu zasobu. | [Dokumentacja szablonu](/azure/templates/) |
 | InvalidRequestFormat | Włączenie rejestrowania debugowania, podczas wykonywania wdrożenia, a następnie sprawdź treść żądania. | [Rejestrowanie debugowania](#enable-debug-logging) |
-| InvalidResourceNamespace | Sprawdź przestrzeń nazw zasobów, które określiłeś w **typu** właściwości. | [Dokumentacja dotycząca szablonów](/azure/templates/) |
+| InvalidResourceNamespace | Sprawdź przestrzeń nazw zasobów, które określiłeś w **typu** właściwości. | [Dokumentacja szablonu](/azure/templates/) |
 | InvalidResourceReference | Zasób jeszcze nie istnieje lub jest niepoprawnie przywoływane. Sprawdź, czy należy dodać zależność. Upewnij się, że korzystanie z **odwołania** funkcja zawiera wymagane parametry dla danego scenariusza. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
-| InvalidResourceType | Typ wyboru zasób określony w **typu** właściwości. | [Dokumentacja dotycząca szablonów](/azure/templates/) |
+| InvalidResourceType | Typ wyboru zasób określony w **typu** właściwości. | [Dokumentacja szablonu](/azure/templates/) |
 | InvalidSubscriptionRegistrationState | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | InvalidTemplate | Sprawdź błędy składni szablonu. | [Nieprawidłowy szablon rozwiązania](resource-manager-invalid-template-errors.md) |
 | InvalidTemplateCircularDependency | Usuń niepotrzebne zależności. | [Rozwiąż zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
@@ -78,7 +78,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | StorageAccountAlreadyExists | Podaj unikatową nazwę konta magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md)  |
 | StorageAccountAlreadyTaken | Podaj unikatową nazwę konta magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Sprawdź subskrypcji, grupy zasobów i nazwy konta magazynu, do którego próbujesz użyć. | |
-| SubnetsNotInSameVnet | Maszyna wirtualna może mieć tylko jedną sieć wirtualną. W przypadku wdrażania kilka kart sieciowych, upewnij się, że należą one do tej samej sieci wirtualnej. | [Wiele kart sieciowych](../virtual-machines/windows/multiple-nics.md) |
+| SubnetsNotInSameVnet | Maszyna wirtualna może mieć tylko jedną sieć wirtualną. W przypadku wdrażania kilka kart sieciowych, upewnij się, że należą one do tej samej sieci wirtualnej. | [Multiple NICs](../virtual-machines/windows/multiple-nics.md) |
 | TemplateResourceCircularDependency | Usuń niepotrzebne zależności. | [Rozwiąż zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
 | TooManyTargetResourceGroups | Zmniejsz liczbę grup zasobów dla pojedynczego wdrożenia. | [Wdrażanie krzyżowe w grupach zasobów](resource-manager-cross-resource-group-deployment.md) |
 
@@ -250,5 +250,7 @@ Możesz też Załóżmy, że występują błędy związane z wdrażaniem, które
 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+* Aby przejść przez samouczek rozwiązywania problemów, zobacz [samouczka: Rozwiązywanie problemów z wdrożeniami szablonu usługi Resource Manager](./resource-manager-tutorial-troubleshoot.md)
 * Aby dowiedzieć się więcej na temat inspekcji akcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](resource-group-audit.md).
 * Aby dowiedzieć się więcej o akcjach, aby określić błędy podczas wdrażania, zobacz [wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).

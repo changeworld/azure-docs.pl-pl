@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/11/2019
-ms.openlocfilehash: 5db9e1f348fed9592d33e9240180db7f2667bb56
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e658eba29368530c4c221496de98823c002985fe
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244549"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329468"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Wystąpienie zarządzane w replikacji z bazy danych SQL
 
@@ -29,13 +29,13 @@ Ogólnie rzecz biorąc wydawcą i dystrybutorem muszą być w chmurze lub lokaln
 
 - **Wydawcy o dystrybutor lokalny dla wystąpienia zarządzanego**
 
-   ![Replication-with-Azure-SQL-DB-Single-Managed-instance-Publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
    Bazy danych wydawcą i dystrybutorem są konfigurowane w pojedynczym wystąpieniu zarządzanym.
 
 - **Wydawcy o dystrybutorze zdalnym na wystąpienie zarządzane**
 
-   ![Replication-with-Azure-SQL-DB-separate-Managed-instances-Publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
+   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
    Wydawcą i dystrybutorem są konfigurowane na dwa wystąpienia zarządzanego. W tej konfiguracji:
 
@@ -45,7 +45,7 @@ Ogólnie rzecz biorąc wydawcą i dystrybutorem muszą być w chmurze lub lokaln
 
 - **Wydawcą i dystrybutorem lokalnie przy użyciu subskrybenta na wystąpienie zarządzane**
 
-   ![Replication-from-on-premises-to-Azure-SQL-DB-Subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
+   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
 
    W tej konfiguracji usługi Azure SQL database jest subskrybentem. Ta konfiguracja obsługuje migracji ze środowiska lokalnego na platformę Azure. W roli subskrybenta bazy danych SQL nie wymaga wystąpienia zarządzanego, jednak wystąpienie zarządzane bazy danych SQL można użyć jako krok w procesie migracji ze środowiska lokalnego do platformy Azure. Aby uzyskać więcej informacji na temat subskrybentów usługi Azure SQL Database, zobacz [replikacji bazy danych SQL](replication-to-sql-database.md).
 
@@ -199,4 +199,5 @@ Następujące funkcje nie są obsługiwane:
 
 ## <a name="see-also"></a>Zobacz też
 
+- [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md)
 - [Co to jest wystąpienie zarządzane?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

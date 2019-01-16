@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: danlep
-ms.openlocfilehash: 63affd4ad22d5246274ddfa3160d5675f702003f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: cd2b14dc29f865a162cb1ced605e740a96f7a46a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855767"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329977"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR
 
@@ -24,10 +24,10 @@ Kontenery zapewniają na nowym poziomie wirtualizacji, izolowanie zależności a
 
 Tworzenie i testowanie obrazów kontenera z rejestru Azure container Registry zadaniami na cztery sposoby:
 
-* [Szybkich zadań](#quick-task): kompilowanie i wypychanie kontenera obrazów na żądanie i na platformie Azure, bez konieczności instalacji lokalnej aparat platformy Docker. Pomyśl `docker build`, `docker push` w chmurze. Kompilacja z lokalnego kodu źródłowego lub repozytorium Git.
-* [Tworzenie przy zatwierdzeniu kodu źródłowego](#automatic-build-on-source-code-commit): wyzwolić kompilację obrazu kontenera automatycznie, gdy kod jest przekazywane do repozytorium Git.
-* [Rozbuduj aktualizacji obrazów podstawowych](#automate-os-and-framework-patching): wyzwolić kompilację obrazu kontenera, po zaktualizowaniu obrazu podstawowego tego obrazu.
-* [Zadania wieloetapowe](#multi-step-tasks-preview) (wersja zapoznawcza): określają zadania wieloetapowe, które kompilowanie obrazów, uruchamiaj kontenery jako polecenia i wypychanie obrazów do rejestru. Ta funkcja w wersji zapoznawczej zadań rejestru Azure container Registry obsługuje wykonywanie zadań na żądanie i budowania obrazu równoległych, testowanie i operacje wypychania.
+* [Szybkich zadań](#quick-task): Skompiluj i Wypchnij kontenera obrazów na żądanie i na platformie Azure, bez konieczności instalacji lokalnej aparat platformy Docker. Pomyśl `docker build`, `docker push` w chmurze. Kompilacja z lokalnego kodu źródłowego lub repozytorium Git.
+* [Tworzenie przy zatwierdzeniu kodu źródłowego](#automatic-build-on-source-code-commit): Wyzwól kompilację obrazu kontenera automatycznie, gdy kod jest zaangażowana w repozytorium Git.
+* [Rozbuduj aktualizacji obrazów podstawowych](#automate-os-and-framework-patching): Wyzwól kompilację obrazu kontenera, po zaktualizowaniu obrazu podstawowego tego obrazu.
+* [Zadania wieloetapowe](#multi-step-tasks-preview) (wersja zapoznawcza): Zdefiniuj zadania wieloetapowe, kompilowanie obrazów, uruchamiaj kontenery jako polecenia i wypychanie obrazów do rejestru. Ta funkcja w wersji zapoznawczej zadań rejestru Azure container Registry obsługuje wykonywanie zadań na żądanie i budowania obrazu równoległych, testowanie i operacje wypychania.
 
 ## <a name="quick-task"></a>Szybkich zadań
 
@@ -57,7 +57,7 @@ Dowiedz się, jak używać szybkich zadań w pierwszym samouczku zadania ACR [ko
 Użyj zadania ACR automatycznie wyzwalać obraz kontenera kompilacji, gdy kod jest zaangażowana w repozytorium Git. Tworzenie zadań, można skonfigurować przy użyciu polecenia interfejsu wiersza polecenia Azure [az acr zadań][az-acr-task], pozwalają na określenie repozytorium Git i opcjonalnie gałęzi i pliku Dockerfile. Jeśli Twój zespół zatwierdzenia kodu do repozytorium, zadania rejestru Azure container Registry utworzone elementu webhook wyzwala kompilację obrazu kontenera, zdefiniowane w repozytorium.
 
 > [!IMPORTANT]
-> Jeśli wcześniej utworzono zadań w trakcie okresu zapoznawczego z `az acr build-task` polecenia tych zadań, które muszą zostać ponownie utworzone przy użyciu [az acr zadań] [ az-acr-task] polecenia.
+> Jeśli wcześniej utworzono zadania za pomocą wersji zapoznawczej przy użyciu polecenia `az acr build-task`, trzeba je utworzyć ponownie przy użyciu polecenia [az acr task][az-acr-task].
 
 Dowiedz się, jak wyzwolić kompilacje przy zatwierdzeniu kodu źródłowego w drugim samouczku zadania ACR [obraz kontenera Automatyzacja kompilacji z zadaniami rejestru kontenera platformy Azure](container-registry-tutorial-build-task.md).
 
@@ -65,7 +65,7 @@ Dowiedz się, jak wyzwolić kompilacje przy zatwierdzeniu kodu źródłowego w d
 
 Możliwości zadania rejestru Azure container Registry, aby naprawdę zwiększenia pracy kompilacji kontenera pochodzi z jego możliwości, aby wykrywać aktualizację obrazu podstawowego. Wypchnięcie zaktualizowanego obrazu do rejestru ACR zadania automatycznie tworzyć żadnych obrazów aplikacji na jego podstawie.
 
-Obrazy kontenerów można ogólnie podzielić na *podstawowy* obrazów i *aplikacji* obrazów. Twoje obrazy podstawowe zwykle obejmują systemu operacyjnego i struktur aplikacji, od których aplikacja jest wbudowana, wraz z innych dostosowań. Te obrazy podstawowe są zazwyczaj na podstawie publicznego obrazów nadrzędnego, na przykład: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], lub [Node.js][base-node]. Kilka obrazów aplikacji może udostępniać typowe obrazu podstawowego.
+Obrazy kontenerów można ogólnie podzielić na *podstawowy* obrazów i *aplikacji* obrazów. Twoje obrazy podstawowe zwykle obejmują systemu operacyjnego i struktur aplikacji, od których aplikacja jest wbudowana, wraz z innych dostosowań. Te obrazy podstawowe są zazwyczaj na podstawie publicznego obrazów nadrzędnego, na przykład: [Firma Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], lub [środowiska Node.js ][base-node]. Kilka obrazów aplikacji może udostępniać typowe obrazu podstawowego.
 
 Po zaktualizowaniu framework obrazu systemu operacyjnego lub aplikacji przez nadrzędne Element utrzymujący na przykład za pomocą krytyczne poprawki zabezpieczeń systemu operacyjnego, należy również zaktualizować swoje obrazy podstawowe obejmujący poprawki krytyczne. Każdy obraz aplikacji należy następnie również zostać zrekompilowany, aby uwzględnić te poprawki nadrzędnego teraz dołączane do obrazu podstawowego.
 
@@ -78,7 +78,7 @@ Więcej informacji na temat systemu operacyjnego i framework poprawki w to trzec
 
 ## <a name="multi-step-tasks-preview"></a>Zadania wieloetapowe (wersja zapoznawcza)
 
-Wieloetapowych zadań, funkcji w wersji zapoznawczej zadań rejestru Azure container Registry zapewnia definicji zadań na podstawie kroku i wykonywania do tworzenia, testowania i poprawianie obrazów kontenerów w chmurze. Kroki zadań zdefiniować pojedynczy kontener budowania obrazu i Wypchnij operacji. Można również zdefiniować wykonanie co najmniej jeden kontener z każdego kroku przy użyciu kontenera jako jego środowiska wykonawczego.
+Wieloetapowych zadań, funkcji w wersji zapoznawczej zadań rejestru Azure container Registry zapewnia definicji zadań na podstawie kroku i wykonywania do tworzenia, testowania i poprawianie obrazów kontenerów w chmurze. Kroki zadań definiują pojedyncze operacje tworzenia i wypychania obrazu kontenera. Mogą one również definiować wykonanie jednego lub kilku kontenerów, z każdym krokiem używającym kontenera jako jego środowiska wykonawczego.
 
 Na przykład można utworzyć zadania wieloetapowe, który automatyzuje następujące czynności:
 
@@ -101,7 +101,7 @@ Dowiedz się więcej o wieloetapowego zadania w [uruchamianie wieloetapowych kom
 Gdy wszystko będzie gotowe zautomatyzować systemu operacyjnego i framework poprawek, tworzenie obrazów kontenerów w chmurze, zapoznaj się z częścią trzyczęściowej serii samouczków zadania usługi ACR.
 
 > [!div class="nextstepaction"]
-> [Kompilowanie obrazów kontenerów w chmurze za pomocą zadań rejestru kontenera platformy Azure](container-registry-tutorial-quick-task.md)
+> [Tworzenie obrazów kontenera w chmurze przy użyciu usługi Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

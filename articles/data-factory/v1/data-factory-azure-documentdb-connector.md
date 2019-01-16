@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d95534cceb11f7bf20f6966e0205694fc1db021d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: af528f210f4464c973d88fab7eeb1572effc87bc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017603"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330402"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Przenoszenie danych do i z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,9 +28,9 @@ ms.locfileid: "54017603"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznika usługi Azure Cosmos DB w wersji 2](../connector-azure-cosmos-db.md).
 
-W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych z usługi Azure Cosmos DB (interfejs API SQL). Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania. 
+W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych z usługi Azure Cosmos DB (interfejs API SQL). Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
 
-Możesz skopiować dane z obsługiwanego źródłowego magazynu danych do usługi Azure Cosmos DB lub z usługi Azure Cosmos DB do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako źródła lub ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. 
+Możesz skopiować dane z obsługiwanego źródłowego magazynu danych do usługi Azure Cosmos DB lub z usługi Azure Cosmos DB do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako źródła lub ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli.
 
 > [!IMPORTANT]
 > Łącznik usługi Azure Cosmos DB obsługuje tylko interfejsu API SQL.
@@ -42,17 +42,17 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Azure C
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia: 
+Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
 1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
-2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
+2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania.
+3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Aby uzyskać przykłady przy użyciu definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z usługi Cosmos DB, zobacz [JSON przykłady](#json-examples) dalszej części tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON. Aby uzyskać przykłady przy użyciu definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z usługi Cosmos DB, zobacz [JSON przykłady](#json-examples) dalszej części tego artykułu.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonego w bazie danych Cosmos DB: 
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonego w bazie danych Cosmos DB:
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis specyficzne dla usługi Azure Cosmos DB, połączone elementy JSON.
@@ -105,7 +105,7 @@ Przykład:
 }
 ```
 ### <a name="schema-by-data-factory"></a>Schemat przez usługę Data Factory
-Dla magazynów danych bez schematu, takiej jak Azure Cosmos DB usługa Data Factory wnioskuje schemat w jednym z następujących sposobów:  
+Dla magazynów danych bez schematu, takiej jak Azure Cosmos DB usługa Data Factory wnioskuje schemat w jednym z następujących sposobów:
 
 1. Jeśli określisz struktury danych przy użyciu **struktury** właściwości w definicji zestawu danych usługa Data Factory honoruje tej struktury Schema. W tym przypadku jeśli wiersz zawiera wartość dla kolumny, wartość null zostanie podana dla niego.
 2. Jeśli nie określisz struktury danych przy użyciu **struktury** właściwości w definicji zestawu danych, których usługa Data Factory wnioskuje schemat przy użyciu pierwszego wiersza danych. W tym przypadku jeśli pierwszy wiersz zawiera pełny schemat, niektóre kolumny będzie brakować w wyniku operacji kopiowania.
@@ -142,7 +142,7 @@ Za pomocą tego łącznika usługi Cosmos DB, możesz z łatwością
 * Eksportowanie dokumentów JSON z collecton usługi Cosmos DB do różnych magazynów opartych na plikach.
 * Migrowanie danych między dwie kolekcje usługi Cosmos DB jako-to.
 
-Aby osiągnąć takie kopiowania niezależnej od schematu 
+Aby osiągnąć takie kopiowania niezależnej od schematu
 * Korzystając z Kreatora kopiowania, sprawdź **"Eksportuj jako — pliki w formacie JSON lub kolekcję usługi Cosmos DB"** opcji.
 * Gdy przy użyciu formatu JSON edycję, nie należy określać w sekcji "strukturę" w zestawach danych usługi Cosmos DB ani właściwości "nestingSeparator" usługi Cosmos DB źródła/ujścia w działaniu kopiowania. Importuj z / eksportowanie do plików JSON, w pliku zestawu danych magazynu należy określić typ formatu jako "JsonFormat" konfiguracji "filePattern" i pominąć ustawienia formatu rest, zobacz [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format) sekcją Szczegóły na temat.
 
@@ -249,13 +249,13 @@ Przykładowy dokument JSON w kolekcji osoby w bazie danych Cosmos DB:
 ```
 Usługa cosmos DB obsługuje tworzenie zapytań dla dokumentów przy użyciu składni SQL przez hierarchiczną dokumentów JSON.
 
-Przykład: 
+Przykład:
 
 ```sql
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
 ```
 
-Następujący potok kopiuje dane z kolekcji osoby w bazie danych Azure Cosmos DB do obiektu blob platformy Azure. Jako część działania kopiowania danych wejściowych i wyjściowych zestawów danych zostały określone.  
+Następujący potok kopiuje dane z kolekcji osoby w bazie danych Azure Cosmos DB do obiektu blob platformy Azure. Jako część działania kopiowania danych wejściowych i wyjściowych zestawów danych zostały określone.
 
 ```JSON
 {
@@ -298,7 +298,7 @@ Następujący potok kopiuje dane z kolekcji osoby w bazie danych Azure Cosmos DB
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Przykład: Kopiowanie danych z obiektów Blob platformy Azure do usługi Azure Cosmos DB 
+## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Przykład: Kopiowanie danych z obiektów Blob platformy Azure do usługi Azure Cosmos DB
 Poniższy przykład przedstawia:
 
 1. Połączonej usługi typu [DocumentDb](#azure-documentdb-linked-service-properties).
@@ -434,7 +434,7 @@ Następujący potok kopiuje dane z obiektu Blob platformy Azure, do kolekcji oso
             "nestingSeparator": ".",
             "writeBatchSize": 2,
             "writeBatchTimeout": "00:00:00"
-          }
+          },
           "translator": {
               "type": "TabularTranslator",
               "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
@@ -487,7 +487,7 @@ Usługa Azure Cosmos DB jest magazyn danych NoSQL dla dokumentów JSON, gdzie st
     **Odpowiedź:** Nie.
 2. **Pytanie:** Sposób ponawiania kopii w usłudze Azure Cosmos DB postępowania z rekordami już skopiowane?
 
-    **Odpowiedź:** Jeśli operacja kopiowania podejmie próbę wstawienia rekordu o tym samym identyfikatorze rekordy mają pola "ID", operacja kopiowania zgłasza błąd.  
+    **Odpowiedź:** Jeśli operacja kopiowania podejmie próbę wstawienia rekordu o tym samym identyfikatorze rekordy mają pola "ID", operacja kopiowania zgłasza błąd.
 3. **Pytanie:** Obsługuje usługi Data Factory [zakresu lub partycjonowanie danych bazujących na skrótach](../../cosmos-db/sql-api-partition-data.md)?
 
     **Odpowiedź:** Nie.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: a29980da64775ca39f103b7430239f38c98a43fc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 4d4775169c40190e4cffb7b93c04abd58babc928
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578460"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320931"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu programu PowerShell
 
@@ -88,6 +88,34 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
    ```
     > [!NOTE]
     > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.
+
+### <a name="add-vm-system-assigned-identity-to-a-group"></a>Dodawanie tożsamości przypisanej w systemie maszyny Wirtualnej do grupy
+
+Po włączeniu przypisanej tożsamości na maszynie Wirtualnej w systemie, można dodać go do grupy.  Poniższa procedura dodaje tożsamości przypisanej w systemie maszyny Wirtualnej do grupy.
+
+1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
+
+   ```powershell
+   Login-AzureRmAccount
+   ```
+
+2. Pobieranie i zanotuj `ObjectID` (jak określono w `Id` pole wartości zwracane) z nazwy głównej usługi maszyny Wirtualnej:
+
+   ```powerhshell
+   Get-AzureRmADServicePrincipal -displayname "myVM"
+   ```
+
+3. Pobieranie i zanotuj `ObjectID` (jak określono w `Id` pole wartości zwracane) grupy:
+
+   ```powershell
+   Get-AzureRmADGroup -searchstring "myGroup"
+   ```
+
+4. Dodaj nazwę główną usługi maszyny Wirtualnej do grupy:
+
+   ```powershell
+   Add-AzureADGroupMember -ObjectId "<objectID of group>" -RefObjectId "<object id of VM service principal>"
+   ```
 
 ## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Wyłącz przypisany systemowo tożsamości zarządzanej maszyny wirtualnej platformy Azure
 

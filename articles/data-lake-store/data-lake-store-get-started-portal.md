@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: fba62a7838ad4b8f349e233eef5e8d82450f1453
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949023"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320229"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal
 
@@ -76,9 +76,9 @@ Jeśli używasz kluczy z usługi Azure Key Vault do skonfigurowania szyfrowania 
 
 > [!NOTE]
 > Można również utworzyć konta Data Lake Storage Gen1, za pomocą szablonów usługi Azure Resource Manager. Te szablony są dostępne na stronie [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=data+lake+store):
-    - Bez szyfrowania danych: [wdrożenia usługi Azure Data Lake magazynu Gen1 konta bez szyfrowania danych](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
-    - Za pomocą szyfrowania danych za pomocą programu Data Lake Storage Gen1: [wdrażanie Data Lake Storage Gen1 konto z szyfrowaniem (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
-    - Za pomocą szyfrowania danych przy użyciu usługi Azure Key Vault: [wdrażanie Data Lake Storage Gen1 konto z szyfrowaniem (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
+    - Bez szyfrowania danych: [Wdrażanie konta usługi Azure Data Lake Storage Gen1 bez szyfrowania danych](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
+    - Za pomocą szyfrowania danych przy użyciu Data Lake Storage Gen1: [Wdrażanie konta Data Lake Storage Gen1 z szyfrowaniem (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
+    - Za pomocą szyfrowania danych przy użyciu usługi Azure Key Vault: [Wdrażanie konta Data Lake Storage Gen1 z szyfrowaniem (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
 > 
 > 
 
@@ -95,7 +95,7 @@ Można tworzyć foldery w ramach konta usługi Data Lake Storage Gen1 do przecho
    
     ![Tworzenie folderów w ramach konta Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "tworzenie folderów w ramach konta Data Lake Storage Gen1")
    
-    Nowo utworzony folder jest widoczny na liście w bloku **Eksplorator danych**. Foldery możesz zagnieżdżać do dowolnego poziomu.
+    Nowo utworzony folder jest widoczny na liście w bloku **Eksplorator danych**. Można utworzyć folderów zagnieżdżonych do dowolnego poziomu.
    
     ![Tworzenie folderów na koncie usługi Data Lake](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "tworzenie folderów na koncie usługi Data Lake")
 

@@ -3,21 +3,22 @@ title: Program SQL Server na maszynach wirtualnych platformy Azure z systemem Li
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat uruchamiania programu SQL Server na maszynach wirtualnych Azure z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rothja
-manager: jhubbard
+author: MashaMSFT
+manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
-ms.author: jroth
-ms.openlocfilehash: e8297892c533f3b0126f925f81d3e9bc429828ef
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039959"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330436"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Często zadawane pytania dotyczące programu SQL Server na maszynach wirtualnych Azure Linux
 
@@ -98,13 +99,13 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 ## <a name="resources"></a>Zasoby
 
-**Maszyny wirtualne systemu Linux**:
+**Maszyny wirtualne z systemem Linux**:
 
 * [Omówienie programu SQL Server na maszynie Wirtualnej systemu Linux](sql-server-linux-virtual-machines-overview.md)
 * [Aprowizowanie maszyny Wirtualnej systemu Linux z programu SQL Server](provision-sql-server-linux-virtual-machine.md)
 * [Dokumentacja programu SQL Server w systemie Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
-**Maszyny wirtualne Windows**:
+**Maszyny wirtualne z systemem Windows**:
 
 * [Omówienie programu SQL Server na maszynie Wirtualnej Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [Aprowizowanie Windows serwer SQL maszyny Wirtualnej](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)

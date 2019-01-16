@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631825"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332102"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](https://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](https://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
@@ -204,7 +204,7 @@ Dla obsługi potwierdzenia nietransakcyjnej elementu bolt, należy go jawnie `Ac
     public abstract void Ack(SCPTuple tuple);
     public abstract void Fail(SCPTuple tuple);
 
-### <a name="statestore"></a>Stan klientów
+### <a name="statestore"></a>StateStore
 `StateStore` udostępnia usługi metadanych, generowania sekwencji monotonicznej i koordynacji bez oczekiwania. Abstrakcje wyższego poziomu współbieżności rozproszonej mogą być wbudowane w `StateStore`, w tym rozproszonych blokad, rozproszonych kolejek, barier i transakcji usługi.
 
 Punkt połączenia usługi, aplikacje mogą używać `State` obiektu, aby zachować niektóre informacje w [Apache ZooKeeper](https://zookeeper.apache.org/), szczególnie w przypadku topologii transakcyjnych. Robi, jeśli transakcyjnych spout ulega awarii, uruchom ponownie go można pobrać niezbędne informacje z dozorcy i ponownie uruchomić potok.
@@ -228,7 +228,7 @@ Punkt połączenia usługi, aplikacje mogą używać `State` obiektu, aby zachow
     /// <summary>
     /// Retrieve all states that were previously uncommitted, excluding all aborted states 
     /// </summary>
-    /// <returns>Uncommited States</returns>
+    /// <returns>Uncommitted States</returns>
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
@@ -249,7 +249,7 @@ Punkt połączenia usługi, aplikacje mogą używać `State` obiektu, aby zachow
     /// List all the committed states
     /// </summary>
     /// <returns>Registries contain the Committed State </returns> 
-    public IEnumerable<Registry> Commited();
+    public IEnumerable<Registry> Committed();
 
     /// <summary>
     /// List all the Aborted State in the StateStore
@@ -354,13 +354,13 @@ Platformy SCP.NET dodał następujące funkcje do definiowania transakcyjnych to
 
 | **Nowe funkcje** | **Parametry** | **Opis** |
 | --- | --- | --- |
-| **TX topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj transakcyjnych topologię o nazwie topologii &nbsp;spouts definicji mapy i mapy definicji elementów bolt |
-| **punkt połączenia usługi tx-spout** |exec — nazwa<br />args<br />pola |Zdefiniuj spout transakcyjnych. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout |
-| **punkt połączenia usługi tx-batch-elementu bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj transakcyjnych Bolt usługi Batch. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args.***<br /><br />Pola jest pól danych wyjściowych dla elementu bolt. |
-| **punkt połączenia usługi — tx-commit-bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj bolt zatwierdzania transakcji. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt |
+| **tx-topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj transakcyjnych topologię o nazwie topologii &nbsp;spouts definicji mapy i mapy definicji elementów bolt |
+| **scp-tx-spout** |exec — nazwa<br />args<br />pola |Zdefiniuj spout transakcyjnych. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout |
+| **scp-tx-batch-bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj transakcyjnych Bolt usługi Batch. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args.***<br /><br />Pola jest pól danych wyjściowych dla elementu bolt. |
+| **scp-tx-commit-bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj bolt zatwierdzania transakcji. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt |
 | **nontx topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj topologię nietransakcyjna o nazwie topologii&nbsp; spouts definicji mapy i mapy definicji elementów bolt |
-| **spout punkt połączenia usługi** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj spout nietransakcyjnej. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
-| **Element bolt punkt połączenia usługi** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj nietransakcyjna Bolt. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
+| **scp-spout** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj spout nietransakcyjnej. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
+| **scp-bolt** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj nietransakcyjna Bolt. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
 
 Program SCP.NET następujące słowa kluczowe zdefiniowane:
 
@@ -370,7 +370,7 @@ Program SCP.NET następujące słowa kluczowe zdefiniowane:
 | **: topologii** |Zdefiniuj topologię za pomocą poprzedniej funkcji i kompilacja w tych. |
 | **: p** |Zdefiniuj wskazówki równoległości dla każdego spout lub bolt. |
 | **: config** |Zdefiniuj parametr skonfigurować lub zaktualizować istniejące |
-| **: schemat** |Zdefiniuj schemat Stream. |
+| **:schema** |Zdefiniuj schemat Stream. |
 
 I często używane parametry:
 
@@ -517,7 +517,7 @@ Składnik punktu połączenia usługi zawiera strony Java i C\# po stronie. Aby 
    
    Metoda deserializacji stronie Java powinna być określona w specyfikacji pliku:
    
-     (Komitet spout
+     (scp-spout
    
        {
          "plugin.name" "HybridTopology.exe"

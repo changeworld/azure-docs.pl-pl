@@ -3,7 +3,7 @@ title: Aprowizowania przewodnika dla maszyn wirtualnych Windows SQL Server w wit
 description: W tym przewodniku opisano opcje tworzenia maszyn wirtualnych systemu Windows programu SQL Server 2017 w witrynie Azure portal.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
-ms.author: jroth
-ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fd01fdd3f7f8803dc7221bd0bd6c993120a83d44
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704542"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330895"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak aprowizować maszynę wirtualną Windows SQL Server w witrynie Azure portal
 
@@ -54,7 +55,7 @@ Podczas tworzenia maszyny wirtualnej programu SQL Server, można wybrać jedną 
 
 1. Przejrzyj dostępne obrazy programu SQL Server. Każdy obraz identyfikuje wersję programu SQL Server i system operacyjny.
 
-1. Wybierz obraz o nazwie **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 (Bezpłatna licencja programu SQL Server: SQL Server 2017 Developer w systemie Windows Server 2016)**.
+1. Wybierz obraz o nazwie **Bezpłatna licencja programu SQL Server: SQL Server 2017 Developer w systemie Windows Server 2016**.
 
    > [!TIP]
    > W tym instruktażu jest używana wersja Developer, ponieważ jest w pełni funkcjonalne i bezpłatne wersji programu SQL Server do tworzenia, testowania. Opłaty dotyczą tylko kosztów obsługi maszyny wirtualnej. Jest jednak wybrać dowolny z obrazów do wykorzystania w tym przewodniku. Aby uzyskać opis dostępnych obrazów, zobacz [omówienie maszyn wirtualnych z programem SQL Server Windows](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
@@ -66,7 +67,7 @@ Podczas tworzenia maszyny wirtualnej programu SQL Server, można wybrać jedną 
 
 1. W obszarze **Wybierz model wdrożenia** sprawdź, czy pozycja **Resource Manager** została zaznaczona. Wdrażanie przy użyciu usługi Resource Manager jest zalecanym modelem wdrożenia dla nowych maszyn wirtualnych. 
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
     ![Tworzenie maszyny wirtualnej SQL przy użyciu usługi Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
@@ -249,7 +250,7 @@ Poniższa tabela zawiera listę parametrów wymaganych do skonfigurowania integr
 | **Adres URL magazynu kluczy** |Lokalizacja magazynu kluczy. |https://contosokeyvault.vault.azure.net/ |
 | **Nazwa główna** |Nazwa główna usługi Azure Active Directory. Ta nazwa jest również nazywana identyfikatorem klienta. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Główny klucz tajny** |Główny klucz tajny usługi Azure Active Directory. Ten klucz tajny jest również nazywany kluczem tajnym klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
-| **Nazwa poświadczenia** |**Nazwa poświadczenia**: integracja usługi Azure Key Vault powoduje utworzenie poświadczenia w programie SQL Server, co umożliwia maszynie wirtualnej dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |moje_poświadczenie_1 |
+| **Nazwa poświadczenia** |**Nazwa poświadczenia**: Integracja utworzenie poświadczenia w programie SQL Server, dzięki czemu maszyny Wirtualnej, aby mieć dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |moje_poświadczenie_1 |
 
 Aby uzyskać więcej informacji, zobacz [Configure Azure Key Vault Integration for SQL Server on Azure VMs](virtual-machines-windows-ps-sql-keyvault.md) (Konfigurowanie integracji usługi Azure Key Vault dla programu SQL Server na maszynach wirtualnych Azure).
 

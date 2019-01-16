@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ed720b0db68a11c573a763c4269349db97977eff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231074"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332323"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -67,7 +66,7 @@ Poniżej opisano sposób konfigurowania limit zarządzanie ilością danych, kt�
 
 1. W obszarze roboczym wybierz pozycję **Użycie i szacunkowe koszty** w lewym okienku.
 2. Na **użycie i szacunkowe koszty** dla wybranego obszaru roboczego strony, kliknij przycisk **zarządzanie ilością danych** w górnej części strony. 
-5. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** można ją włączyć, a następnie ustaw limit objętość danych w GB/dzień.<br><br> ![Usługa log Analytics skonfigurować limit danych](media/manage-cost-storage/set-daily-volume-cap-01.png)
+3. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** można ją włączyć, a następnie ustaw limit objętość danych w GB/dzień.<br><br> ![Usługa log Analytics skonfigurować limit danych](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>Alert, jeśli osiągnięty dzienny limit
 Gdy możemy przedstawić wizualnie w witrynie Azure portal po spełnieniu próg limitu danych tego zachowania nie musi być wyrównane do, w jaki sposób zarządzasz problemów operacyjnych, które wymaga natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, można utworzyć nową regułę alertu w usłudze Azure Monitor.  Aby dowiedzieć się więcej, zobacz [jak tworzyć, wyświetlać alerty i zarządzaj nimi](alerts-metric.md).      
@@ -161,7 +160,7 @@ Aby poznać liczbę komputerów (węzłów), zgłoszenie danych każdego dnia w 
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (niektóre typy danych są bezpłatne), korzystać z `_IsBilled` właściwości:
+Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (niektóre typy danych są bezpłatne), korzystać z [_IsBillable](log-standard-properties.md#isbillable) właściwości:
 
 `union withsource = tt * 
 | where _IsBillable == true 

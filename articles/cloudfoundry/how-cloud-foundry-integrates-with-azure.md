@@ -1,6 +1,6 @@
 ---
 title: Jak rozwiązanie Cloud Foundry integruje się z platformą Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak usługi Cloud Foundry może utlize Azure usług poprawić funkcjonalność z perspektywy Enterprice
+description: W tym artykule opisano, jak rozwiązanie Cloud Foundry mogą korzystać z usług platformy Azure w celu poprawienia środowiska Enterprice
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 908b7e40c0509d7034b86985ac0775635726a6b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406147"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329807"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) to platforma PaaS uruchomione na platformie IaaS dostawcy chmury. Oferuje środowisko wdrażania aplikacji spójne w dostawcy usług w chmurze. Ponadto go także integrować z różnymi usługami platformy Azure przy użyciu klasy korporacyjnej o wysokiej dostępności, skalowalności i oszczędności kosztów.
-Istnieją [6 podsystemów Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), które może być elastyczne skalowanie w trybie online, w tym: routingu uwierzytelniania, zapewniają Zarządzanie cyklem życia aplikacji, zarządzanie usługą obsługi wiadomości i monitorowania. Dla każdej podsystemów można skonfigurować Cloud Foundry wykorzystanie korespondenta usługi platformy Azure. 
+Istnieją [6 podsystemów Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), które może być elastyczne skalowanie w trybie online, w tym: Routing, uwierzytelniania, zapewniają Zarządzanie cyklem życia aplikacji, zarządzanie usługą obsługi wiadomości i monitorowania. Dla każdej podsystemów można skonfigurować Cloud Foundry wykorzystanie korespondenta usługi platformy Azure. 
 
 ![Cloud Foundry na architekturę Integracja z platformą Azure](media/CFOnAzureEcosystem-colored.png)
 

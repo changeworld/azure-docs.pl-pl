@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 632e605a6f7c9885f3854ca1f7b69ed337a1eacc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025882"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331649"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 
@@ -108,7 +108,7 @@ A **jednostek przenoszenia danych w chmurze (DMU)** jest miarą, który reprezen
 Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloudDataMovementUnits** właściwości w następujący sposób. **Dozwolone wartości** dla **cloudDataMovementUnits** właściwości są 2, 4, 8, 16, 32. **Rzeczywista liczba chmury DMUs** używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od wzorca usługi danych. Aby uzyskać informacje na temat poziomu wydajności, może zostać wyświetlony po skonfigurowaniu większej liczby jednostek dla określonej kopii źródła i ujścia, zobacz [dotyczące wydajności](#performance-reference).
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -135,7 +135,7 @@ Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloud
 ### <a name="parallelcopies"></a>parallelCopies
 Możesz użyć **parallelCopies** właściwości do wskazania równoległości, który działanie kopiowania w celu użycia. Tę właściwość można traktować jako maksymalną liczbę wątków w ramach działania kopiowania, które można odczytać ze źródła lub zapisywać swoich magazynów danych ujścia równolegle.
 
-Dla każdego uruchomienia działania kopiowania usługi fabryka danych określa liczbę równoległych kopii na potrzeby kopiowania danych ze źródła danych przechowywane i danych docelowego. Domyślna liczba równoległych kopii, które używa zależy od typu źródła i ujścia, którego używasz.  
+Dla każdego uruchomienia działania kopiowania usługi fabryka danych określa liczbę równoległych kopii na potrzeby kopiowania danych ze źródła danych przechowywane i danych docelowego. Domyślna liczba równoległych kopii, które używa zależy od typu źródła i ujścia, którego używasz.
 
 | Źródła i ujścia | Domyślna liczba równoległych kopii określany przez usługę |
 | --- | --- |
@@ -146,7 +146,7 @@ Dla każdego uruchomienia działania kopiowania usługi fabryka danych określa 
 Zazwyczaj domyślne zachowanie powinien zapewnić najlepsze przepływności. Jednak do kontrolowania obciążenia na maszynach obsługujących Twoje dane są przechowywane, albo można dostrajanie wydajności kopiowania, możesz zastąpić wartość domyślną, a następnie określić wartość dla **parallelCopies** właściwości. Wartość musi być z zakresu od 1 do 32 (oba włącznie). W czasie wykonywania Aby uzyskać najlepszą wydajność, działanie kopiowania używa wartość, która jest mniejsza niż lub równa wartości, który został ustawiony.
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -176,7 +176,7 @@ Informacje, które należy zwrócić uwagę:
 >
 >
 
-Lepiej korzystać z tych dwóch właściwości i zwiększyć przepływność przenoszenia danych, zobacz [przykładowe przypadki użycia](#case-study-use-parallel-copy). Nie trzeba konfigurować **parallelCopies** z zalet domyślnego zachowania. Jeśli skonfigurujesz i **parallelCopies** jest zbyt mały, wiele chmur DMUs może nie w pełni wykorzystywane.  
+Lepiej korzystać z tych dwóch właściwości i zwiększyć przepływność przenoszenia danych, zobacz [przykładowe przypadki użycia](#case-study-use-parallel-copy). Nie trzeba konfigurować **parallelCopies** z zalet domyślnego zachowania. Jeśli skonfigurujesz i **parallelCopies** jest zbyt mały, wiele chmur DMUs może nie w pełni wykorzystywane.
 
 ### <a name="billing-impact"></a>Opłaty wpływ
 Ma ona **ważne** należy pamiętać, że opłaty są naliczane na podstawie czasu łączna liczba operacji kopiowania. Jeśli zadanie kopiowania używany do podejmowania jedną godzinę z jednostką jedna chmura, a obecnie zajmuje 15 minut za cztery jednostki chmury, ogólną kwotę rachunku pozostanie prawie takie same. Na przykład możesz użyć cztery jednostki chmury. Pierwszy jednostki chmury — 10 minut, druga, 10 minut, trzecie 5 minut i czwarta, co 5 minut, uruchom wszystko w jednym działaniem kopiowania. Opłata jest naliczana raz całkowita kopiowania (przenoszenia danych), czyli 10 + 10 + 5 + 5 = 30 minut. Za pomocą **parallelCopies** nie ma wpływu na rozliczenia.
@@ -216,7 +216,7 @@ Konfigurowanie **enableStaging** ustawienie w działaniu kopiowania, aby określ
 Oto przykładowa definicja działania kopiowania przy użyciu właściwości, które są opisane w powyższej tabeli:
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity",
     "type": "Copy",
@@ -273,9 +273,9 @@ Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Dat
 3. **Rozwiń węzeł Konfiguracja do całego zestawu danych**. Gdy jesteś zadowolony z wyników wykonania i wydajności, można rozwinąć definicji i okres aktywności potoku w celu pokrycia całego zestawu danych.
 
 ## <a name="considerations-for-data-management-gateway"></a>Zagadnienia dotyczące bramy zarządzania danymi
-**Instalator bramy**: Zaleca się, że używasz dedykowane maszyny na hoście bramy zarządzania danymi. Zobacz [zagadnienia związane z używaniem bramy zarządzania danymi](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
+**Instalator bramy**: Zaleca się, że używasz dedykowane maszyny na hoście bramy zarządzania danymi. Zobacz [zagadnienia związane z używaniem bramy zarządzania danymi](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Brama monitorowania i skalowania w górę/w poziomie**: Pojedyncza brama logicznych z co najmniej jeden węzeł bramy może obsługiwać wielu uruchomień działania kopiowania w tym samym czasie jednocześnie. Możesz wyświetlić migawki niemal w czasie rzeczywistym wykorzystania zasobów (procesor CPU, pamięci, network(in/out), itp.) na maszynie bramy, a także liczbę współbieżnych zadań uruchamiania i limit w witrynie Azure portal, zobacz [bramy monitorowanie w portalu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Jeśli masz duże potrzebę na hybrydowe przenoszenie danych z dużą liczbą jednoczesnych kopii uruchomienia działania lub z dużej ilości danych do skopiowania, należy wziąć pod uwagę do [skalowanie w górę lub w poziomie bramy](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) tak, aby lepiej wykorzystywać zasobu lub, aby ustanowić więcej zasobów przeznaczonych dla kopiowania. 
+**Brama monitorowania i skalowania w górę/w poziomie**: Pojedyncza brama logicznych z co najmniej jeden węzeł bramy może obsługiwać wielu uruchomień działania kopiowania w tym samym czasie jednocześnie. Możesz wyświetlić migawki niemal w czasie rzeczywistym wykorzystania zasobów (procesor CPU, pamięci, network(in/out), itp.) na maszynie bramy, a także liczbę współbieżnych zadań uruchamiania i limit w witrynie Azure portal, zobacz [bramy monitorowanie w portalu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Jeśli masz duże potrzebę na hybrydowe przenoszenie danych z dużą liczbą jednoczesnych kopii uruchomienia działania lub z dużej ilości danych do skopiowania, należy wziąć pod uwagę do [skalowanie w górę lub w poziomie bramy](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) tak, aby lepiej wykorzystywać zasobu lub, aby ustanowić więcej zasobów przeznaczonych dla kopiowania.
 
 ## <a name="considerations-for-the-source"></a>Zagadnienia dotyczące źródła
 ### <a name="general"></a>Ogólne
@@ -387,7 +387,7 @@ Co najmniej jeden z następujących czynników może spowodować wąskie gardło
 * **Źródło**: Sam program SQL Server ma niskiej przepustowości, ze względu na duże obciążenia.
 * **Brama zarządzania danymi**:
   * **LAN**: Brama znajduje się oni daleko od komputera serwera SQL i ma połączenie o niskiej przepustowości.
-  * **Brama**: Bramy osiągnęła jej ograniczenia obciążenia, aby wykonywać następujące operacje:
+  * **Gateway**: Bramy osiągnęła jej ograniczenia obciążenia, aby wykonywać następujące operacje:
     * **Serializacja**: Serializacja strumień danych do formatu CSV ma powolne przepływności.
     * **Kompresja**: Wybrano powolne kodera-dekodera kompresji (na przykład, bzip2, czyli 2,8 MB/s z Core i7).
   * **SIECI WAN**: Brakuje przepustowości między siecią firmową i usług platformy Azure (na przykład T1 = 1,544 KB/s; T2 = 6,312 KB/s).
@@ -404,7 +404,7 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 
 **Scenariusz II**: Skopiuj 20 obiektów blob 500 MB z magazynu obiektów Blob do usługi Data Lake Store Analytics, a następnie Dostosuj wydajność do wymagań.
 
-**Analiza i dostrajanie wydajności**: W tym scenariuszu usługi Data Factory kopiuje dane z magazynu obiektów Blob do Data Lake Store przy użyciu pojedynczej kopii (**parallelCopies** ustawiona na 1) i jednostek przenoszenia danych w chmurze pojedynczej. Przepływności, można zaobserwować będzie bliski, opisana [wydajności sekcję](#performance-reference).   
+**Analiza i dostrajanie wydajności**: W tym scenariuszu usługi Data Factory kopiuje dane z magazynu obiektów Blob do Data Lake Store przy użyciu pojedynczej kopii (**parallelCopies** ustawiona na 1) i jednostek przenoszenia danych w chmurze pojedynczej. Przepływności, można zaobserwować będzie bliski, opisana [wydajności sekcję](#performance-reference).
 
 ![Scenariusz 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 

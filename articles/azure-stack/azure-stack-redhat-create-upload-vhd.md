@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 397f07c23d1c272e540741a339b57a8e1bcce198
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9b8c44cd0afa7e156cfa7a20ff47316fa5242d7
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104016"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320620"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat do usługi Azure Stack
 
@@ -670,6 +670,6 @@ Aby uzyskać więcej informacji, zobacz [odbudowywania initramfs](https://access
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz możesz przystąpić do wirtualnego dysku twardego w systemie Red Hat Enterprise Linux umożliwia tworzenie nowych maszyn wirtualnych w usłudze Azure Stack. Jeśli po raz pierwszy, w przypadku przekazywania pliku wirtualnego dysku twardego do usługi Azure Stack, zobacz [Marketplace toolkit umożliwia tworzenie i publikowanie elementów portalu marketplace](azure-stack-marketplace-publisher.md).
+Teraz możesz przystąpić do wirtualnego dysku twardego w systemie Red Hat Enterprise Linux umożliwia tworzenie nowych maszyn wirtualnych w usłudze Azure Stack. Jeśli po raz pierwszy, w przypadku przekazywania pliku wirtualnego dysku twardego do usługi Azure Stack, zobacz [tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md).
 
 Aby uzyskać więcej informacji na temat funkcji hypervisor, które są certyfikowane do uruchamiania w systemie Red Hat Enterprise Linux, zobacz [witryny sieci Web firmy Red Hat](https://access.redhat.com/certified-hypervisors).

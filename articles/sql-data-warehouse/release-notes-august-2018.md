@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c52fcd544e22c274d0e9053da93d2b9dee0df695
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286636"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320365"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Sierpień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w sierpnia 2018.
@@ -23,9 +23,9 @@ Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisan
 ## <a name="automatic-intelligent-insights"></a>Automatyczne Intelligent Insights
 Firma Microsoft wprowadziła [automatyczne intelligent insights](https://azure.microsoft.com/blog/automatic-intelligent-insights-to-optimize-performance-with-sql-data-warehouse/) spełniającej promise chmury automatyzacji dla magazynu danych. Nie jest już konieczne będzie monitorować magazyn danych dla danych tabeli niesymetryczność i nieoptymalne statystyk. Bez dodatkowych kosztów usługa SQL Data Warehouse udostępnia intelligent insights dla wszystkich wystąpień Gen2. Dzięki integracji z usługą [usługi Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), możesz automatycznie otrzymywać zalecenia dotyczące najlepszych rozwiązań zwiększa wydajność obciążeń active. Usługa SQL Data Warehouse analizuje obciążenia i powierzchnie zalecenia na podstawie użycia. Ta analiza odbywa się w codziennych pozwala monitorować raporty użycia i zalecenia dotyczące ulepszenia do obciążenia.
 
-Zalecenia można wyświetlić w portalu usługi Azure Advisor: ![Azure Advisor Portal zalecenia dotyczące usługi Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
+Zalecenia można wyświetlić w portalu usługi Azure Advisor: ![Usługa Azure Advisor portalu zalecenia dotyczące usługi Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
-Możesz przejść do każdej kategorii, aby wyświetlić zalecenia dotyczące określonego alertu: ![szczegóły zalecenia portalu usługi Azure Advisor, Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+Możesz przejść do szczegółów każdej kategorii, aby wyświetlić zalecenia dotyczące określonego alertu: ![Szczegóły portalu zalecenia doradcy platformy Azure dla usługi Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
 
 
 ## <a name="bug-fixes"></a>Poprawki błędów
@@ -33,7 +33,7 @@ Możesz przejść do każdej kategorii, aby wyświetlić zalecenia dotyczące ok
 | Stanowisko | Opis |
 |:---|:---|
 | **Potencjalnych awarii zapytania, gdy liczba podziałów przekracza maksymalny limit** |Po przekroczeniu limitu pliku podziału 1 milion górną granicę nieobsługiwany wyjątek spowodowany aparatu SQL do porzucenia i wszystkie zapytania nie powiodło się. Tej poprawki adresem problem, Obsługa wyjątku poprawnie i zwróci błąd bez powodowania zapytania, aby zakończyć się niepowodzeniem. |
-| **Zwiększona wartość domyślną ExternalMoveReadersPerNode usprawniających obciążenia wydajności** |Ten problem został spowodowany przez ustawienie właściwości ExternalMoveReadersPerNode są zsynchronizowane z usługą Service fabric, ustawienie. Ta regresji spowodowała pogorszenie wydajności obciążenia Gen2. Poprawka zapewnia wydajność ładowania Gen2 wróć tutaj parametry zoptymalizowane projektu.|
+| **Zwiększona wartość domyślną ExternalMoveReadersPerNode, aby zwiększyć wydajność obciążeń** |Ten problem został spowodowany przez ustawienie właściwości ExternalMoveReadersPerNode są zsynchronizowane z usługą Service fabric, ustawienie. Ta regresji spowodowała pogorszenie wydajności obciążenia Gen2. Poprawka zapewnia wydajność ładowania Gen2 wróć tutaj parametry zoptymalizowane projektu.|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

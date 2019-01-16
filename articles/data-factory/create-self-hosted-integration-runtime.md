@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021122"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331813"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -86,7 +86,7 @@ Własne środowisko integration runtime można zainstalować, pobierając pakiet
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Zainstalowanie i zarejestrowanie własne środowisko IR w Centrum pobierania
 
 1. Przejdź do [strony pobierania środowiska uruchomieniowego integracji Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Wybierz **Pobierz**, wybierz odpowiednią wersję (**32-bitowych** lub **64-bitowych**) i wybierz **dalej**.
+2. Wybierz **Pobierz**, wybierz wersję 64-bitowych (32-bitowych nie jest obsługiwana) i wybierz **dalej**.
 3. Uruchom plik MSI, bezpośrednio lub zapisz go na dysku twardym i uruchom go.
 4. Na **powitalnej** strony, wybierz język i wybierz **dalej**.
 5. Zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft i wybierz **dalej**.

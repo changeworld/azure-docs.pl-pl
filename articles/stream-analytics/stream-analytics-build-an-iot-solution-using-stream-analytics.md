@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971107"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321572"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 
@@ -36,7 +36,7 @@ Potrzebne są następujące wymagania wstępne do ukończenia tego rozwiązania:
 ## <a name="scenario-introduction-hello-toll"></a>Wprowadzenie do scenariusza: "Hello, płatny!"
 Płatny stacji jest typowym zjawiskiem. Użytkownik je napotka na wielu trasy szybkiego ruchu, mostków i tunele na całym świecie. Każda stacja płatny ma wiele kabiny płatny. Ręczne kabiny można zatrzymać płatne Opiekun płatny. Na automatyczne kabiny czujnika na górze każdej stoisku skanuje karty RFID, które jest umieszczone na szyby pojazdu, jak przekazać stoisku płatny. To ułatwia wizualizowanie przejście pojazdów przez te stacje płatny jako strumień zdarzeń, w którym można wykonać operacji interesujące.
 
-! [Obraz samochodów na płatny kabiny] (media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth jpg)
+![Obraz samochodów na płatny kabiny](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>Dane przychodzące
 To rozwiązanie działa z dwóch strumieni danych. Czujniki zainstalowane w wejścia i wyjścia z stacje płatny utworzyć pierwszy strumienia. Drugi strumień jest statyczny wyszukiwania zestawu danych, zawierającej dane rejestracyjne pojazdów.

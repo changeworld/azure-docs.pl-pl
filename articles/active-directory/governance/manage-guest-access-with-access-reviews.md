@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4d1a9696587ae128b35970414c6c8753179c3f81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385129"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332578"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą usługi Azure AD przeglądów dostępu
 
@@ -43,11 +43,11 @@ Możesz również poprosić użytkowników-gości, aby dokonać przeglądu włas
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Tworzenie i wykonywanie przeglądu dostępu dla gości
 
-Po pierwsze Włącz wyświetlanie przeglądów dostępu na panelach dostępu recenzentów. Korzystając z uprawnień administratora globalnego lub administratora kont użytkowników, przejdź do [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Po pierwsze, stanowiąc administrator globalny lub administrator kont użytkowników, przejdź do [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) aby upewnić się, że przeglądy dostępu jest gotowy do Twojej organizacji. 
 
 Usługa Azure AD umożliwia kilka scenariuszy dotyczących przeglądania użytkowników-gości.
 
-Wybierz jedną z następujących czynności:
+Możesz przejrzeć albo:
 
  - Grupa w usłudze Azure AD, który ma co najmniej jeden gości, jako elementy członkowskie.
  - Aplikację połączoną z usługą Azure AD, który ma co najmniej jednego użytkownika gościa do niej przypisany. 
@@ -66,7 +66,7 @@ Przeglądy dostępu można użyć, aby upewnić się, że użytkownicy, którzy 
 
 3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu](complete-access-review.md).
 
-4. Oprócz użytkowników, którzy odmowa własne potrzeby opinię dotyczącą przedłużenia dostępu można również usunąć użytkowników, którzy nie odpowiedział. Odpowiada innym użytkownikom potencjalnie już odbierać poczty e-mail.
+4. Oprócz tych użytkowników, którzy odmowa własne potrzebować opinię dotyczącą przedłużenia dostępu, można również usunąć użytkowników, którzy nie odpowiedział. Odpowiada innym użytkownikom potencjalnie już odbierać poczty e-mail.
 
 5. Jeśli grupa nie jest używana do zarządzania dostępem, możesz również usunąć użytkowników, którzy nie zostały wybrane do wzięcia udziału w przeglądzie, ponieważ ich nie zaakceptował zaproszenia. Nie akceptuje może wskazywać, że adres e-mail zaproszony użytkownik miał błąd pisowni. Jeśli grupa jest używana jako listy dystrybucyjnej, być może niektórych użytkowników-gości nie zostały wybrane do udziału, ponieważ są one skontaktuj się z pomocą obiektów.
 
@@ -86,7 +86,7 @@ Przeglądy dostępu można użyć, aby upewnić się, że użytkownicy, którzy 
 
 1. Uruchamianie przeglądu dostępu dla aplikacji, wybierz przeglądu, aby uwzględnić tylko gości i użytkownicy dokonują przeglądu własnego dostępu. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu](create-access-review.md).
 
-2. Poproś każdego gościa, aby dokonać przeglądu własnego dostępu do aplikacji. Domyślnie każdy gościa, który zaakceptował zaproszenia otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do przeglądu dostępu w panelu dostępu do Twojej organizacji. Usługa Azure AD ma instrukcje dla gości na temat sposobu [przeglądu dostępu](perform-access-review.md).
+2. Poproś każdego gościa, aby dokonać przeglądu własnego dostępu do aplikacji. Domyślnie każdy gościa, który zaakceptował zaproszenia otrzymuje wiadomość e-mail z usługi Azure AD. Tę wiadomość e-mail zawiera link do przeglądu dostępu w panelu dostępu do Twojej organizacji. Usługa Azure AD ma instrukcje dla gości na temat sposobu [przeglądu dostępu](perform-access-review.md).
 
 3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu](complete-access-review.md).
 
@@ -109,7 +109,7 @@ W niektórych organizacjach gości może nie być świadome ich członkostwa w g
 > [!NOTE]
 > Wcześniejszą wersję witryny Azure portal nie zezwalać na dostęp administracyjny przez użytkowników z UserType gościa. W niektórych przypadkach administrator w katalogu mogą wartość została zmieniona gościa UserType do członka za pomocą programu PowerShell. Jeśli ta zmiana wystąpił wcześniej w katalogu, poprzednie zapytanie może nie zawierać wszyscy użytkownicy-goście, którzy w przeszłości ma administracyjne prawa dostępu. W takim przypadku należy zmienić UserType gościa lub ręcznie dołączyć gościa członkostwa w grupie.
 
-1. Utwórz grupę zabezpieczeń w usłudze Azure AD z gości jako elementy członkowskie, jeśli odpowiednia grupa nie istnieje. Można na przykład utworzyć grupę, członkostwo ręczne obsługiwanych gości. Alternatywnie można utworzyć grupę dynamiczną o nazwie takich jak "Gości Contoso" użytkowników w dzierżawie Contoso, którzy mają wartość atrybutu UserType gościa.  W celu zwiększenia wydajności upewnij się, grupa jest głównie gości — nie wybieraj grupy zawierającej użytkowników, którzy nie muszą być sprawdzone.
+1. Utwórz grupę zabezpieczeń w usłudze Azure AD z gości jako elementy członkowskie, jeśli odpowiednia grupa nie istnieje. Można na przykład utworzyć grupę, członkostwo ręczne obsługiwanych gości. Alternatywnie można utworzyć grupę dynamiczną o nazwie takich jak "Gości Contoso" użytkowników w dzierżawie Contoso, którzy mają wartość atrybutu UserType gościa.  W celu zwiększenia wydajności upewnij się, grupa jest głównie gości — nie wybieraj grupy zawierającej użytkowników, jako element członkowski, użytkownicy nie muszą być analizowane.  Ponadto należy pamiętać, że użytkownikiem-gościem, który jest członkiem grupy może widzieć inni członkowie grupy.
 
 2. Uruchamianie przeglądu dostępu dla tej grupy, wybierz recenzentów samych należeć. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu](create-access-review.md).
 

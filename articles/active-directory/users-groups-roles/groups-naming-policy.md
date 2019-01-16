@@ -1,6 +1,6 @@
 ---
-title: Nazwa ustawienia zasad grupy dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Jak skonfigurować wygaśnięcie dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
+title: Nazwa zasad (wersja zapoznawcza) — grup usługi Office 365 — usługi Azure Active Directory grupy | Dokumentacja firmy Microsoft
+description: Jak skonfigurować zasady nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1118be1c335d8f88171b359c9cd273cdd2923021
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275112"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321725"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -105,7 +105,7 @@ Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytor
 
 3. Postępuj zgodnie z instrukcjami zawartymi w artykule [Azure Active Directory cmdlets for configuring group settings (Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy)](groups-settings-cmdlets.md), aby utworzyć ustawienia grupy dla tej dzierżawy.
 
-### <a name="view-the-current-settings"></a>Wyświetl bieżące ustawienia
+### <a name="view-the-current-settings"></a>wyświetlanie bieżących ustawień
 
 1. Pobrać bieżące zasady nazewnictwa, aby wyświetlić bieżące ustawienia.
   
@@ -121,7 +121,7 @@ Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytor
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Ustaw zasady nazewnictwa i podasz niestandardowe wyrazy zablokowane
 
-1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell. Aby funkcja działała poprawnie [GroupName] muszą być zawarte w ustawieniu.
+1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell. Aby ta funkcja działała poprawnie, należy dodać element [GroupName] do ustawienia.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -170,13 +170,13 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>Usuń zasady nazewnictwa
 
-1. Pusta grupa prefiksów i sufiksów nazw w programie Azure AD PowerShell.
+1. Usuń prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =""
   ````
   
-2. Pusty niestandardowe wyrazy zablokowane. 
+2. Usuń niestandardowe słowa zablokowane. 
   
   ````
   $Setting["CustomBlockedWordsList"]=""
@@ -209,7 +209,7 @@ Grupy aplikacji mobilnej | Grupy utworzone w aplikacji mobilnej grup są zgodne 
 Planner | Planista to zgodne z zasadami nazewnictwa. Planista pokazuje nazewnictwa zasad (wersja zapoznawcza), podczas wprowadzania nazwy planu. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany, gdy utworzony plan.
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement jest zgodne z zasadami nazewnictwa. Dynamics 365 zawiera nazwy wymuszona zasada, gdy użytkownik wpisuje nazwę grupy lub alias e-mail grupy. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany za pomocą zablokowanego wyrazu, dzięki czemu użytkownik może usunąć go.
 School Data Sync (SDS) | Przestrzegać zasady nazewnictwa grup utworzonych przy użyciu narzędzia SDS, ale zasady nazewnictwa nie są stosowane automatycznie. Administratorzy SDS mają można dołączyć prefiksów i sufiksów do nazw klas, dla których grupy muszą być tworzone i następnie przekazywane do narzędzia SDS. Tworzenie grupy lub edytowanie może zakończyć się niepowodzeniem w przeciwnym razie.
-Program Outlook Customer Manager (OCM) | Program Outlook Customer Manager jest zgodne z zasadami nazewnictwa, która jest automatycznie stosowany do grupy utworzone w programie Outlook Customer Manager. W przypadku wykrycia niestandardowe zablokowanego wyrazu, tworzenie grupy w OCM jest zablokowane, a użytkownik jest zablokowany za pomocą aplikacji OCM.
+Outlook Customer Manager (OCM) | Program Outlook Customer Manager jest zgodne z zasadami nazewnictwa, która jest automatycznie stosowany do grupy utworzone w programie Outlook Customer Manager. W przypadku wykrycia niestandardowe zablokowanego wyrazu, tworzenie grupy w OCM jest zablokowane, a użytkownik jest zablokowany za pomocą aplikacji OCM.
 Aplikacja classroom | Grup utworzonych w aplikacji Classroom, który jest zgodne z zasadami nazewnictwa, ale zasady nazewnictwa nie są stosowane automatycznie, a nazewnictwa zasad (wersja zapoznawcza) nie jest widoczne dla użytkowników podczas podawania nazwy grupy klas. Użytkownicy muszą wprowadzić nazwę grupy wymuszone klasy za pomocą prefiksów i sufiksów. W przeciwnym razie grupy klas, tworzenia lub edytowania operacja kończy się niepowodzeniem z błędami.
 Power BI | Obszary robocze programu Power BI są zgodne z zasadami nazewnictwa.    
 Yammer | Gdy użytkownik zalogowany do usługi Yammer za pomocą konta usługi Azure Active Directory tworzy grupę lub umożliwia edytowanie nazwy grupy, nazwę grupy będą stosować się zasady nazewnictwa. Dotyczy to zarówno do grupy usługi Office 365, połączonych i innych grup w usłudze Yammer.<br>Jeśli połączonej grupy usługi Office 365 zostało utworzone przed zasady nazewnictwa znajduje się w miejscu, nazwa grupy nie zostaną automatycznie wprowadzone zasady nazewnictwa. Gdy użytkownik edytuje nazwę grupy, zostanie wyświetlony monit można dodać prefiksu i sufiksu.

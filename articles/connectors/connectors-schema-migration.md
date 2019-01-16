@@ -9,12 +9,12 @@ ms.author: estfan
 ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: 8a6925d79b225a34d980472d4fb3241ab9eb1017
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bf27739bd42106550c18e3bbc27a1ff8b3770747
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127415"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321130"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>Migracji aplikacji logiki do najnowszej wersji schematu
 
@@ -25,7 +25,7 @@ Aby przenieść istniejących aplikacji logiki do najnowszej schematu, wykonaj n
 2. W menu aplikacji logiki wybierz **Przegląd**. Na pasku narzędzi wybierz **aktualizacja schematu**.
 
    > [!NOTE]
-   > Gdy użytkownik na również wybrać pozycję **aktualizacja schematu**, Azure Logic Apps, automatycznie uruchamia kroków migracji i udostępnia kod wyjściowy. Te dane wyjściowe służy do aktualizowania definicji aplikacji logiki. Jednak należy się upewnić, stosowanie najlepszych rozwiązań, zgodnie z opisem w następujących **najlepsze praktyki** sekcji.
+   > Po wybraniu **aktualizacja schematu**, Azure Logic Apps, automatycznie uruchamia kroków migracji i udostępnia kod wyjściowy. Te dane wyjściowe służy do aktualizowania definicji aplikacji logiki. Jednak należy się upewnić, stosowanie najlepszych rozwiązań, zgodnie z opisem w następujących **najlepsze praktyki** sekcji.
 
    ![Aktualizowanie schematu](./media/connectors-schema-migration/update-schema.png)
 

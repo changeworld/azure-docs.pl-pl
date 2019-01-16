@@ -8,19 +8,17 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 737cb31fd4e33229e0317e6a0610fb098beed6f4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a1e315c7837f682e3b12624387902599138c957f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191908"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322014"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
 
 Zdecydowanie zaleca się przeczytanie [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md) i [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md) przed wykonaniem kroków opisanych w tym artykule.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Konto usługi Azure storage i Azure udziału plików w tym samym regionie, który chcesz wdrożyć usługę Azure File Sync. Aby uzyskać więcej informacji, zobacz:
@@ -405,7 +403,7 @@ Aby przeprowadzić migrację do wdrożenia systemu plików DFS-R do usługi Azur
 6. Wyłącz systemu plików DFS-R. 
 7. Utwórz punkt końcowy serwera na wszystkich serwerach systemu plików DFS-R. Nie włączaj chmury warstw.
 8. Upewnij się, synchronizacji kończy i przetestować topologii, zgodnie z potrzebami.
-9. Wycofanie systemu plików DFS-R.
+9. Retire DFS-R.
 10. May obsługi warstw w chmurze można teraz włączyć w dowolnym punkcie końcowym serwera, zgodnie z potrzebami.
 
 Aby uzyskać więcej informacji, zobacz [współdziałania usługi Azure File Sync z rozproszonego systemu plików (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs).

@@ -5,17 +5,17 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548939"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318582"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
-W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Database for postgresql w warstwie serwera: Podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera PostgreSQL. Serwer może zawierać jeden lub wiele baz danych.
+W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Database for postgresql w warstwie serwera: Podstawowa, Ogólnego przeznaczenia i Zoptymalizowane pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera PostgreSQL. Serwer może zawierać jeden lub wiele baz danych.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
@@ -23,7 +23,7 @@ W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Data
 | Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
-| Typ magazynu | Usługa Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowej bazy danych | 7 – 35 dni | 7 – 35 dni | 7 – 35 dni |
 
 Aby wybrać warstwę cenową, skorzystaj z poniższej tabeli jako punktu wyjścia.
@@ -53,14 +53,14 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 | Środkowo-południowe stany USA | X | X |
 | Zachodnie stany USA | X | X |
 | Zachodnie stany USA 2 |  | X |
+| Brazylia Południowa | X | X |
 | Kanada Środkowa | X | X |
 | Kanada Wschodnia | X | X |
-| Brazylia Południowa | X | X |
 | Europa Północna | X | X |
 | Europa Zachodnia |  | X |
 | Francja Środkowa |  | X |
-| Zachodnie Zjednoczone Królestwo |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
+| Zachodnie Zjednoczone Królestwo |  | X |
 | Azja Wschodnia | X | X |
 | Azja Południowo-Wschodnia | X | X |
 | Australia Wschodnia |  | X |
@@ -68,17 +68,22 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 | Australia Środkowa 2 |  | X |
 | Australia Południowo-Wschodnia |  | X |
 | Indie Środkowe | X | X |
-| Indie Zachodnie | X | X |
 | Indie Południowe |  | X |
+| Indie Zachodnie | X | X |
 | Japonia Wschodnia | X | X |
 | Japonia Zachodnia | X | X |
 | Korea Środkowa |  | X |
 | Korea Południowa |  | X |
+| Chiny wschodnie 1 | X |  |
+| Chiny Wschodnie 2 |  | X |
+| Chiny Północne 1 | X |  |
+| Chiny Północne 2 |  | X |
 | Niemcy Środkowe |  | X |
 | US DoD — środkowe stany  | X |  |
 | US DoD — wschodnie stany  | X |  |
 | Administracja USA — Arizona |  | X |
 | Administracja USA — Teksas |  | X |
+| Administracja USA — Wirginia |  | X |
 
 ## <a name="storage"></a>Magazyn
 
@@ -86,7 +91,7 @@ Magazyn, który możesz aprowizować to pojemność magazynu jest dostępne dla 
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ magazynu | Usługa Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
 | Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS |

@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 756d00786005fb6de26ff363d4e233fc28b48687
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 01d73d9c42f99dde02a801af9967430c9735932d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426846"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320960"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory w wersji 2.0 i protokołu OpenID Connect
 
@@ -33,11 +33,11 @@ OpenID Connect to protokół uwierzytelniania, oparte na protokołu OAuth 2.0, k
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu, dzięki czemu możesz zrobić pojedynczego logowania jednokrotnego przy użyciu protokołu OAuth. OpenID Connect wprowadzono pojęcie *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika. Identyfikator tokenu zapewnia również podstawowych informacji o profilu użytkownika. Ponieważ OpenID Connect rozszerza OAuth 2.0, aplikacje mogą bezpiecznie uzyskiwać *tokeny dostępu*, której można uzyskać dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-v2-protocols.md#the-basics). Punkt końcowy v2.0 umożliwia także aplikacji innych firm, które są zarejestrowane w usłudze Azure AD, aby wystawiać tokeny dostępu do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Aby uzyskać więcej informacji o tym, jak skonfigurować aplikację do wystawiania tokenów dostępu, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego v2.0](quickstart-v2-register-an-app.md). Zaleca się, że używasz uwierzytelniania OpenID Connect, jeśli tworzysz [aplikacji sieci web](v2-app-types.md#web-apps) który jest hostowany na serwerze i dostępne za pośrednictwem przeglądarki.
 
-## <a name="protocol-diagram-sign-in"></a>Diagram protokołu: logowania
+## <a name="protocol-diagram-sign-in"></a>Diagram protokołu: Zaloguj się
 
 Najbardziej podstawowa przepływ logowania ma kroki opisane w następnej diagramu. Każdy krok jest szczegółowo opisane w tym artykule.
 
-![Protokół OpenID Connect: logowania](./media/v2-protocols-oidc/convergence_scenarios_webapp.png)
+![Protokół OpenID Connect: Zaloguj się](./media/v2-protocols-oidc/convergence_scenarios_webapp.png)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Pobierz dokument metadanych OpenID Connect
 
@@ -86,7 +86,7 @@ Gdy Twoja aplikacja sieci web musi uwierzytelnić użytkownika, można je skiero
 * Żądanie musi zawierać `nonce` parametru.
 
 > [!IMPORTANT]
-> Aby pomyślnie żądania identyfikator tokenu rejestracji aplikacji w [portalu rejestracji](https://apps.dev.microsoft.com) musi mieć **[przyznawanie niejawne](v2-oauth2-implicit-grant-flow.md)** włączone dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "podana wartość dla parametru wejściowego"response_type"nie jest dozwolona dla tego klienta. Oczekiwana wartość to "code" "
+> Aby można było pomyślnie żądania identyfikator tokenu rejestracji aplikacji w [portalu rejestracji](https://apps.dev.microsoft.com) musi mieć **[przyznawanie niejawne](v2-oauth2-implicit-grant-flow.md)** włączone dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "Wartość podana dla parametru wejściowego"response_type"jest niedozwolone dla tego klienta. Oczekiwana wartość to "code" "
 
 Na przykład:
 
@@ -207,13 +207,13 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Gdy przekierowania użytkownika `end_session_endpoint`, punktu końcowego v2.0 czyści sesji użytkownika w przeglądarce. Jednak użytkownik może nadal być zalogowany do innych aplikacji, które używają kont Microsoft do uwierzytelniania. Aby włączyć te aplikacje do logowania użytkownika się równocześnie, v2.0 punktu końcowego wysyła żądanie HTTP GET do zarejestrowaną `LogoutUrl` wszystkich aplikacji, które użytkownik jest aktualnie zalogowany. Aplikacje należy odpowiedzieć na to żądanie, czyszcząc żadnych sesji, która identyfikuje użytkownika i zwracanie `200` odpowiedzi. Jeśli chcesz obsługiwać pojedynczego wylogowania w aplikacji, musisz zaimplementować takie `LogoutUrl` w kodzie twojej aplikacji. Możesz ustawić `LogoutUrl` z poziomu portalu rejestracji aplikacji.
 
-## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokołu: dostęp do tokenu
+## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokołu: Uzyskanie tokenu dostępu
 
 Wiele aplikacji sieci web muszą się nie tylko użytkownika w, ale także dostęp do usługi sieci web w imieniu użytkownika przy użyciu protokołu OAuth. Ten scenariusz łączy OpenID Connect do uwierzytelniania użytkowników podczas jednoczesnego pobierania kodu autoryzacji, który umożliwia uzyskiwanie tokenów dostępu, jeśli używasz przepływ kodu autoryzacji OAuth.
 
 Pełny przepływ logowania i tokenu pozyskiwania protokołu OpenID Connect wygląda podobnie do następny diagram. Opisano każdy krok szczegółowo w kolejnych sekcjach tego artykułu.
 
-![Protokół OpenID Connect: Token pozyskiwania](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
+![Protokół OpenID Connect: Uzyskanie tokenu](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
 
 ## <a name="get-access-tokens"></a>Uzyskiwanie tokenów dostępu
 Uzyskanie tokenów dostępu, należy zmodyfikować żądanie logowania:
@@ -256,7 +256,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Parametr | Opis |
 | --- | --- |
 | id_token |Identyfikator tokenu, który zażądał aplikacji. Identyfikator tokenu można użyć do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. Znajdziesz więcej szczegółów na temat tokeny Identyfikatora i ich zawartość w [ `id_tokens` odwołania](id-tokens.md). |
-| Kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kod autoryzacji jest bardzo krótkotrwałe. Zazwyczaj kod autoryzacji wygaśnie po upływie około 10 minut. |
+| kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kod autoryzacji jest bardzo krótkotrwałe. Zazwyczaj kod autoryzacji wygaśnie po upływie około 10 minut. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd

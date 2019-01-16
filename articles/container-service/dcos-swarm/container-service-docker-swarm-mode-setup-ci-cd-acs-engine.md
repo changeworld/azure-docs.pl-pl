@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4befcbb6b2297c6f80fb577b1fe22053a8c77ada
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995066"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331082"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(PRZESTARZAŁE) Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu aparatu usługi ACS i trybu Docker Swarm przy użyciu DevOps platformy Azure
 
@@ -131,7 +131,7 @@ Istnieje pięć obrazów kontenera do kompilacji dla *MyShop* aplikacji. Każdy 
 * ProductsApi
 * Serwer proxy
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * Sklepu
 
 Potrzebujesz dwóch kroków platformy Docker dla każdego obrazu: jeden do tworzenia obrazu i jeden aby wypchnąć obraz w usłudze Azure container registry. 
@@ -189,7 +189,7 @@ Potrzebujesz dwóch kroków platformy Docker dla każdego obrazu: jeden do tworz
 
   ![Usługa Azure DevOps — kompilacja powiodła się](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
-## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Tworzenie potoku tworzenia wersji
+## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Twórz potoki wydania
 
 Azure DevOps umożliwia [zarządzania wersjami w środowiskach](https://www.visualstudio.com/team-services/release-management/). Można włączyć ciągłe wdrażanie upewnić się, że aplikacja jest wdrażana w różnych środowiskach (na przykład deweloperów, testerów, przedprodukcyjnych i produkcyjnych) w sposób. Można utworzyć środowiska, która reprezentuje klaster trybu usługi Azure Container Service Docker Swarm.
 

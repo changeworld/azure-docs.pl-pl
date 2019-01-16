@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: dd8e0950de6aae71dd123d21b59c6de591bd7f29
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a5619db18ef326b160bf9f4a1fbacbd6b3e9f012
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107720"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319464"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -24,7 +24,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 Tak. Możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na obsługiwany region usługi Azure Backup na subskrypcję. Jeśli potrzebna jest większa liczba magazynów, należy utworzyć dodatkową subskrypcję.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Czy istnieją ograniczenia dotyczące liczby serwerów/maszyn, które można zarejestrować w każdym magazynie?
-Można zarejestrować maksymalnie 1000 maszyn wirtualnych platformy Azure na magazyn. Jeśli używasz agenta usługi Microsoft Azure Backup należy zarejestrować maksymalnie 50 MAB agentów na magazyn. I można zarejestrować 50 MAB serwerów/serwerów programu DPM w magazynie.
+Można zarejestrować maksymalnie 1000 maszyn wirtualnych platformy Azure na magazyn. Jeśli używasz agenta usługi Microsoft Azure Backup należy zarejestrować maksymalnie 50 agentów MAB w jednym magazynie. I można zarejestrować 50 MAB serwerów/serwerów programu DPM w magazynie.
 
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Jeśli organizacja ma jeden magazyn, w jaki sposób można odizolować dane z różnych serwerów w magazynie podczas przywracania danych?
@@ -118,10 +118,10 @@ Windows 7 64-bitowy | Ultimate, Enterprise, Professional, Home Premium, Home Bas
 Serwer | |
 Windows Server 2016 w wersji 64-bitowych | Standard, Datacenter, Essentials | Typ elementu roboczego najnowsze usługi pakiety/aktualizacje.
 Windows Server 2012 R2 64-bitowy | Standard, Datacenter, Foundation | Przy użyciu najnowszych pakietów usługi/aktualizacji.
-Windows Server 2012 w wersji 64-bitowych | Datacenter, Foundation, Standard | Przy użyciu najnowszych pakietów usługi/aktualizacji.
-Windows Storage Server 2016 64-bitowy | Standard, Workgroup | Przy użyciu najnowszych pakietów usługi/aktualizacji.
-Windows Storage Server 2012 R2 64-bitowy | Wersje Standard, grupy roboczej, Essential | Przy użyciu najnowszych pakietów usługi/aktualizacji.
-Windows Storage Server 2012 64-bitowy | Standard, Workgroup | Przy użyciu najnowszych pakietów usługi/aktualizacji.
+Windows Server 2012 64 bit | Datacenter, Foundation, Standard | Przy użyciu najnowszych pakietów usługi/aktualizacji.
+Windows Storage Server 2016 64 bit | Standard, Workgroup | Przy użyciu najnowszych pakietów usługi/aktualizacji.
+Windows Storage Server 2012 R2 64 bit | Wersje Standard, grupy roboczej, Essential | Przy użyciu najnowszych pakietów usługi/aktualizacji.
+Windows Storage Server 2012 64 bit | Standard, Workgroup | Przy użyciu najnowszych pakietów usługi/aktualizacji.
 Windows Server 2008 R2 z dodatkiem SP1 64-bitowy | Standard, Enterprise, Datacenter, Foundation | Z najnowszymi aktualizacjami.
 Windows Server 2008 w wersji 64-bitowych | Standard, Enterprise i Datacenter | Z najnowszymi aktualizacjami.
 

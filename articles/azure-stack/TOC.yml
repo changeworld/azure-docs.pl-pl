@@ -227,8 +227,6 @@ items:
       href: azure-stack-marketplace-azure-items.md
     - name: Tworzenie i publikowanie elementu portalu Marketplace
       href: azure-stack-create-and-publish-marketplace-item.md
-    - name: Za pomocą narzędzia publikowania w portalu marketplace
-      href: azure-stack-marketplace-publisher.md
     - name: Obsługiwane systemy operacyjne gościa dla usługi Azure Stack
       href: azure-stack-supported-os.md
     - name: Dodawanie niestandardowego obrazu maszyny wirtualnej
@@ -407,9 +405,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Szkolenia i certyfikacja
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 8f1c083f59808852f0bcd2130e023fbf74bccbe6
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 4d16a02c09ae801e44b0f3e4d5540a445d41fae6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230972"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319142"

@@ -8,18 +8,19 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 6dc702b4bcffc0d1dec299093aa05ba480e9bbf8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019983"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321339"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania programu Hive w usłudze Hadoop w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-hive-activity.md)
 > * [Bieżąca wersja](transform-data-using-hadoop-hive.md)
 
@@ -55,17 +56,18 @@ Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z 
 }
 ```
 ## <a name="syntax-details"></a>Szczegóły składni
-| Właściwość            | Opis                              | Wymagane |
-| ------------------- | ---------------------------------------- | -------- |
-| name                | Nazwa działania                     | Yes      |
-| description         | Tekst opisujący przeznaczenie działania | Nie       |
-| type                | Dla działania programu Hive typ działania jest HDinsightHive | Yes      |
+| Właściwość            | Opis                                                  | Wymagane |
+| ------------------- | ------------------------------------------------------------ | -------- |
+| name                | Nazwa działania                                         | Yes      |
+| description         | Tekst opisujący przeznaczenie działania                | Nie       |
+| type                | Dla działania programu Hive typ działania jest HDinsightHive        | Yes      |
 | linkedServiceName   | Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Yes      |
 | scriptLinkedService | Odwołanie do połączoną usługę Azure Storage używany do przechowywania skryptu programu hive służącego do wykonania. Jeśli nie określisz ta połączona usługa połączona usługa Azure Storage zdefiniowane w połączonej usługi HDInsight jest używany. | Nie       |
 | scriptPath          | Podaj ścieżkę do pliku skryptu w usłudze Azure Storage, określane za pomocą elementu scriptLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Yes      |
 | getDebugInfo        | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanego przez klaster HDInsight (lub) określonej za pomocą elementu scriptLinkedService. Dozwolone wartości: Brak zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
 | argumenty           | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia w odniesieniu do każdego zadania. | Nie       |
 | Definiuje             | Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive. | Nie       |
+| queryTimeout        | Zapytania wartość limitu czasu (w minutach).  Zastosowanie w przypadku klastra HDInsight z pakietem Enterprise Security włączone. | Nie       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 

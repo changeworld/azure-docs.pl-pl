@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342242"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330776"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
@@ -23,8 +23,8 @@ Kontrola źródła pozwala na zachowanie elementów runbook w automatyzacji kont
 Usługa Azure Automation obsługuje 3 typy kontroli źródła:
 
 * GitHub
-* Usługa Azure DevOps (Git)
-* Usługa Azure DevOps (TFVC)
+* Azure DevOps (Git)
+* Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
@@ -50,15 +50,18 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 |Właściwość  |Opis  |
 |---------|---------|
 |Nazwa kontroli źródła     | Przyjazna nazwa, do kontroli źródła        |
-|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> GitHub</br>Usługa Azure DevOps (Git)</br> Usługa Azure DevOps (TFVC)        |
+|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Repozytorium     | Nazwa repozytorium lub projektu. Ta wartość jest pobierany z repozytorium kontroli źródła. Przykład: $/ ContosoFinanceTFVCExample         |
-|Rozgałęzienie     | Odgałęzienie do pobierania plików źródłowych z. Gałąź określania wartości docelowej nie jest dostępna dla kontrolek typu źródłowego TFVC.          |
+|Branch     | Odgałęzienie do pobierania plików źródłowych z. Gałąź określania wartości docelowej nie jest dostępna dla kontrolek typu źródłowego TFVC.          |
 |Ścieżka folderu     | Folder, który zawiera elementy runbook w celu synchronizacji. Przykład: /Runbooks         |
 |Automatyczna synchronizacja     | Włącza lub wyłącza automatyczne synchronizacji, gdy przeprowadzane jest zatwierdzenie w repozytorium kontroli źródła         |
 |Publikowanie elementu Runbook     | Jeśli ustawiono **na**po elementach runbook są synchronizowane z kontroli źródła będzie były automatycznie publikowane.         |
 |Opis     | Pole tekstowe w celu dostarczenie dodatkowych szczegółów        |
 
 ![Źródło sterowania — podsumowanie](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> Upewnij się, że zalogowano się za pomocą prawidłowe konto podczas konfigurowania kontroli źródła. W przypadku wątpliwości, otwórz nową kartę w przeglądarce Wyloguj się z witryną visualstudio.com lub github.com i spróbuj ponownie nawiązującego połączenie kontroli źródła.
 
 ## <a name="syncing"></a>Synchronizowanie
 
@@ -115,9 +118,9 @@ Kontrola źródła wymaga niektóre minimalne uprawnienia osobiste tokeny dostę
 |repozytorium: stan     | Stan zatwierdzania dostępu         |
 |repo_deployment      | Stan wdrożenia dostępu         |
 |public_repo     | Dostęp do publicznych repozytoriów         |
-|**Admin: repo_hook**     |         |
-|zapis: repo_hook     | Zapis punkty zaczepienia repozytorium         |
-|Odczyt: repo_hook|Przeczytaj repozytorium punktów zaczepienia|
+|**admin:repo_hook**     |         |
+|write:repo_hook     | Zapis punkty zaczepienia repozytorium         |
+|read:repo_hook|Przeczytaj repozytorium punktów zaczepienia|
 
 ### <a name="azure-devops"></a>Azure DevOps
 

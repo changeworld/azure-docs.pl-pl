@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: Yaniv.Lavi
+ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: b9b56145c13cb83b1686004ce215b1960caced14
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: df75ff9a359620781743732f4f12a6d3e7ec51c6
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182999"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331678"
 ---
 # <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-private-preview"></a>Alerty z dynamicznymi progami w usłudze Azure Monitor (ograniczony prywatna wersja zapoznawcza)
 
@@ -96,8 +96,8 @@ Alerty z dynamicznymi progami można skonfigurować za pomocą alertów w usłud
 
 - PYT.: Jeśli Metryka powoli zmienia się wraz z upływem czasu, to wyzwoli alert z dynamicznymi progami?
 
-- ODP.: Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie znaczące odchylenia, a nie wolno zmieniających się problemy.
+- Odp.: Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie znaczące odchylenia, a nie wolno zmieniających się problemy.
 
 - PYT.: Można skonfigurować dynamicznymi progami przy użyciu interfejsu API?
 
-- ODP.: Pracujemy nad na nim.
+- Odp.: Pracujemy nad na nim.

@@ -1,18 +1,18 @@
 ---
 title: Konfigurowanie odzyskiwania po awarii fo wielowarstwowej aplikacji sieci web opartych na usługach IIS przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak replikować IIS sieci web farmy maszyn wirtualnych przy użyciu usługi Azure Site Recovery.
-author: nsoneji
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 49435665ae1e99dd2b9696e5e5bb048e438dcc4c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832960"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320501"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji sieci web opartych na usługach IIS
 

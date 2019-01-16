@@ -1,9 +1,9 @@
 ---
 title: Zagadnienia dotyczące zabezpieczeń dla programu SQL Server na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten temat zawiera ogólne wskazówki dotyczące zabezpieczania programu SQL Server uruchomionego w maszynie wirtualnej platformy Azure.
+description: Ten temat zawiera ogólne wskazówki dotyczące zabezpieczania programu SQL Server uruchomionego na maszynie wirtualnej platformy Azure.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,90 +14,91 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
-ms.author: jroth
-ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 61cfc458ed965fd4f1446ff8cfb5e9a6e244f246
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365206"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332391"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Zagadnienia dotyczące zabezpieczeń programu SQL Server na maszynach wirtualnych platformy Azure
 
-Ten temat zawiera ogólne wskazówki dotyczące zabezpieczeń, które pomaga ustalić bezpieczny dostęp do wystąpień programu SQL Server w maszynie wirtualnej platformy Azure (VM).
+Ten temat zawiera ogólne wytyczne dotyczące zabezpieczeń, ułatwiających ustanowienia bezpiecznego dostępu do wystąpienia programu SQL Server na maszynie wirtualnej (VM) platformy Azure.
 
-Azure jest zgodna z kilku przepisów branżowych i standardy, które umożliwiają utworzenie rozwiązania do zgodnych z programem SQL Server działa na maszynie wirtualnej. Aby uzyskać informacje o zgodności z przepisami z platformy Azure, zobacz [Centrum zaufania Azure](https://azure.microsoft.com/support/trust-center/).
+Azure jest zgodna z kilku branży regulacjami i standardami, które umożliwiają utworzenie rozwiązania do zgodnych z programem SQL Server działa na maszynie wirtualnej. Aby uzyskać informacje o zgodności z przepisami dzięki platformie Azure, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/).
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="control-access-to-the-sql-vm"></a>Kontrola dostępu do maszyny Wirtualnej SQL
 
-Podczas tworzenia maszyny wirtualnej programu SQL Server, należy wziąć pod uwagę sposób dokładnie kontrolować, kto ma dostęp do komputera i SQL Server. Ogólnie rzecz biorąc należy wykonać następujące czynności:
+Podczas tworzenia maszyny wirtualnej programu SQL Server, zastanów się, jak dokładnie kontrolować, kto ma dostęp do maszyny i programu SQL Server. Ogólnie rzecz biorąc należy wykonać następujące czynności:
 
-- Ograniczanie dostępu do programu SQL Server tylko do aplikacji i klientów, którzy go potrzebują.
-- Należy stosować najlepsze rozwiązania dotyczące zarządzania konta użytkownika i hasła.
+- Należy ograniczyć dostęp do programu SQL Server, tylko do aplikacji i klientów, którzy muszą ją.
+- Stosuj najlepsze rozwiązania dotyczące zarządzania konta użytkownika i hasła.
 
-Poniższe sekcje zawierają sugestie dotyczące planowania przy użyciu tych punktów.
+Poniższe sekcje zawierają sugestie na myślenie za pośrednictwem tych punktów.
 
 ## <a name="secure-connections"></a>Bezpieczne połączenia
 
-Podczas tworzenia maszyny wirtualnej programu SQL Server z obrazem galerii **łączności z serwerem SQL** opcja umożliwia wybór **lokalnego (wewnątrz maszyny Wirtualnej)**, **prywatne (wewnątrz sieci wirtualnej)**, lub **publiczne (Internet)**.
+Podczas tworzenia maszyny wirtualnej programu SQL Server z obrazem galerii **łączność z serwerem SQL** opcja zapewnia wybór **lokalnego (wewnątrz maszyny Wirtualnej)**, **prywatnie (wewnątrz sieci wirtualnej)**, lub **publiczne (Internet)**.
 
-![Łączność serwera SQL](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
+![Łączność z serwerem SQL](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-Najlepiej wybierz opcję najbardziej restrykcyjne dla danego scenariusza. Na przykład jeśli używasz aplikacji, który uzyskuje dostęp do programu SQL Server na tej samej maszyny Wirtualnej, następnie **lokalnego** jest najbezpieczniejszy wybór. Jeśli używasz aplikacji Azure, która wymaga dostępu do programu SQL Server, następnie **prywatnej** zabezpiecza komunikację z programem SQL Server tylko w obrębie określonego [sieci wirtualnej Azure](../../../virtual-network/virtual-networks-overview.md). Jeśli potrzebujesz **publicznego** (internet) dostęp do maszyny Wirtualnej programu SQL Server, a następnie upewnij się, że należy stosować inne najlepsze rozwiązania w tym temacie w celu ograniczenia obszaru powierzchni ataku.
+Najlepiej wybrać restrykcyjny dla danego scenariusza. Na przykład, jeśli korzystasz z aplikacji, uzyskuje dostęp do programu SQL Server na tej samej maszyny Wirtualnej, następnie **lokalnego** to najbezpieczniejsza opcja wybór. Jeśli korzystasz z aplikacją platformy Azure, która wymaga dostępu do programu SQL Server, następnie **prywatnej** zabezpiecza komunikacji z serwerem SQL tylko w ramach określonych [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Jeśli potrzebujesz **publicznych** (internet) dostęp do maszyny Wirtualnej programu SQL Server, a następnie upewnij się, że inne najlepszych rozwiązań w tym temacie, aby zmniejszyć obszar powierzchni ataku.
 
-Wybrane opcje w portalu Użyj reguł zabezpieczeń dla ruchu przychodzącego w maszynie wirtualnej [sieciowej grupy zabezpieczeń](../../../virtual-network/security-overview.md) (NSG), aby zezwolić lub odmówić ruch sieciowy do maszyny wirtualnej. Można zmodyfikować lub utworzyć nowe reguły NSG dla ruchu przychodzącego zezwalająca na ruch do portu programu SQL Server (domyślnie 1433). Można również określić określonych adresów IP, które mogą komunikować się za pośrednictwem tego portu.
+Wybrane opcje w witrynie portal użyć reguły zabezpieczeń ruchu przychodzącego na maszynie Wirtualnej [sieciowej grupy zabezpieczeń](../../../virtual-network/security-overview.md) (NSG), aby udzielić lub odmówić ruch sieciowy do maszyny wirtualnej. Można zmodyfikować lub utworzyć nowe reguły dla ruchu przychodzącego sieciowej grupy zabezpieczeń zezwalającą na ruch do portu programu SQL Server (domyślnie 1433). Można również określić określone adresy IP, które mogą komunikować się za pośrednictwem tego portu.
 
 ![Reguły sieciowych grup zabezpieczeń](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 
-Oprócz reguły NSG, aby ograniczyć ruch sieciowy umożliwia także zapory systemu Windows na maszynie wirtualnej.
+Oprócz reguły sieciowej grupy zabezpieczeń umożliwiają ograniczanie ruchu sieciowego można również użyć Zapory Windows na maszynie wirtualnej.
 
-Jeśli korzystasz z punktów końcowych z klasycznym modelu wdrażania, Usuń wszystkie punkty końcowe na maszynie wirtualnej, jeśli nie należy używać. Aby uzyskać instrukcje dotyczące przy użyciu list kontroli dostępu z punktami końcowymi, zobacz [Zarządzanie listy ACL punktu końcowego](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint). To nie jest niezbędna dla maszyn wirtualnych, które używają Menedżera zasobów.
+Jeśli używasz punktów końcowych przy użyciu klasycznego modelu wdrażania, Usuń wszystkie punkty końcowe na maszynie wirtualnej, jeśli nie należy ich używać. Aby uzyskać instrukcje na temat korzystania z listy ACL z punktami końcowymi, zobacz [listy ACL punktu końcowego zarządzania](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint). Nie jest to konieczne w przypadku maszyn wirtualnych, które używają Menedżera zasobów.
 
-Zaleca się włączenie połączeń szyfrowanych wystąpienia aparatu bazy danych programu SQL Server w sieci maszyny wirtualnej platformy Azure. Skonfiguruj wystąpienie programu SQL server przy użyciu podpisanego certyfikatu. Aby uzyskać więcej informacji, zobacz [włączyć szyfrowane połączeń z aparatem bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) i [składnia ciągu połączenia](https://msdn.microsoft.com/library/ms254500.aspx).
+Na koniec należy wziąć pod uwagę Włączanie połączeń szyfrowanych wystąpienia aparatu bazy danych programu SQL Server na maszynie wirtualnej platformy Azure. Wystąpienie programu SQL server należy skonfigurować przy użyciu certyfikatu z podpisem. Aby uzyskać więcej informacji, zobacz [Włącz zaszyfrowane połączenia z aparatem bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) i [składnia ciągu połączenia](https://msdn.microsoft.com/library/ms254500.aspx).
 
-## <a name="use-a-non-default-port"></a>Korzystanie z portu inny niż domyślny
+## <a name="use-a-non-default-port"></a>Korzystanie z portu innego niż domyślny
 
-Domyślnie program SQL Server nasłuchuje na dobrze znanego portu 1433. Aby zwiększyć bezpieczeństwo należy skonfigurować serwer SQL do nasłuchiwania na porcie innych niż domyślne, takie jak 1401. Jeśli dostarczasz obraz galerii programu SQL Server w portalu Azure, można określić tego portu w **ustawienia programu SQL Server** bloku.
+Domyślnie program SQL Server nasłuchuje na dobrze znanym porcie 1433. Aby zwiększyć bezpieczeństwo należy skonfigurować program SQL Server do nasłuchiwania na porcie inny niż domyślny, takim jak 1401. Zainicjowanie obsługi wyświetlania obrazu z galerii programu SQL Server w witrynie Azure portal, można określić ten port w **ustawień programu SQL Server** bloku.
 
-Aby skonfigurować to po zainicjowaniu obsługi administracyjnej, masz dwie opcje:
+Aby to skonfigurować po zainicjowaniu obsługi administracyjnej, masz dwie opcje:
 
-- Dla maszyn wirtualnych Menedżera zasobów, można wybrać **konfigurację programu SQL Server** z bloku omówienie maszyny Wirtualnej. Zapewnia to opcję, aby zmienić port.
+- W przypadku maszyn wirtualnych usługi Resource Manager możesz wybrać **konfiguracji programu SQL Server** z poziomu bloku Przegląd maszyny Wirtualnej. Zapewnia to możliwość zmiany portu.
 
-  ![Zmień TCP port w portalu](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
+  ![TCP port zmiany w portalu](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
-- Klasycznych maszyn wirtualnych lub maszyn wirtualnych serwera SQL, które nie zostały udostępnione przy użyciu portalu można ręcznie skonfigurować port, nawiązując połączenie zdalne z maszyną wirtualną. Kroki konfiguracji, zobacz [Konfigurowanie serwera do nasłuchiwania na konkretnym porcie TCP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port). Jeśli używasz tej techniki ręczne, należy dodać reguły zapory systemu Windows w celu zezwalania na ruch przychodzący na tym porcie TCP.
+- Dla klasycznych maszyn wirtualnych lub maszyn wirtualnych serwera SQL, które nie zostały aprowizowane za pomocą portalu można ręcznie skonfigurować port, nawiązując połączenie zdalne z maszyną wirtualną. Kroki konfiguracji opisane w artykule [skonfigurować serwer do nasłuchiwania na konkretnym porcie TCP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port). Jeśli korzystasz z tej techniki ręcznie, należy dodać reguły zapory Windows w celu zezwalania na ruch przychodzący na tym porcie TCP.
 
 > [!IMPORTANT]
-> Określenie z systemem innym niż domyślny port jest dobrym rozwiązaniem, jeśli port programu SQL Server jest otwarty do publicznego połączenia z Internetem.
+> Określanie portów innych niż domyślne jest dobrym rozwiązaniem, jeśli port programu SQL Server jest otwarty w celu połączenia przez publiczny internet.
 
-Gdy serwer SQL nasłuchuje na porcie innych niż domyślne, należy określić numer portu podczas nawiązywania połączenia. Na przykład Rozważmy scenariusz, w którym 13.55.255.255 jest adres IP serwera i programu SQL Server nasłuchuje na porcie 1401. Aby połączyć się z programem SQL Server, należy określić `13.55.255.255,1401` w parametrach połączenia.
+Gdy program SQL Server nasłuchuje na porcie innych niż domyślne, należy określić port, po nawiązaniu połączenia. Na przykład, Rozważmy scenariusz, w których adres IP serwera jest 13.55.255.255 i programu SQL Server nasłuchuje na porcie 1401. Aby połączyć z programem SQL Server, należy określić `13.55.255.255,1401` w parametrach połączenia.
 
 ## <a name="manage-accounts"></a>Zarządzanie kontami
 
-Osoby atakujące łatwo odgadnąć nazwy kont lub haseł, które nie mają. Poniższe wskazówki umożliwiają pomocy:
+Nie chcesz, aby osoby atakujące do łatwego odgadnięcia nazw kont lub haseł. Skorzystaj z następujących porad ułatwiających:
 
-- Utwórz konto administratora lokalnego unikatowy, który nie ma nazwy **administratora**.
+- Utwórz konto unikatowy administratora lokalnego, którego nie ma nazwy **administratora**.
 
-- Użyj złożonych silnych haseł dla wszystkich kont. Aby uzyskać więcej informacji na temat tworzenia silnych haseł, zobacz [Utwórz silne hasło](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) artykułu.
+- Używaj złożonych silnych haseł dla wszystkich kont. Aby uzyskać więcej informacji na temat tworzenia silnych haseł, zobacz [Utwórz silne hasło](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) artykułu.
 
-- Domyślnie program Azure wybiera uwierzytelniania systemu Windows podczas instalacji maszyny wirtualnej programu SQL Server. W związku z tym **SA** logowania jest wyłączona, a hasło jest przypisywany przez Instalatora. Zalecamy, aby **SA** logowania nie należy używać ani włączony. Jeśli identyfikator logowania SQL, użyj jednej z następujących strategii:
+- Domyślnie platforma Azure wybiera uwierzytelniania Windows podczas instalacji maszyny wirtualnej programu SQL Server. W związku z tym **SA** logowania jest wyłączona, a hasło jest przypisywany przez Instalatora. Zaleca się **SA** logowania nie powinny być używane lub włączone. Jeśli identyfikator logowania SQL, użyj jednej z następujących strategii:
 
-  - Utwórz konto SQL o unikatowej nazwie, która ma **sysadmin** członkostwa. Można to zrobić w portalu, należy włączyć **uwierzytelniania SQL** podczas inicjowania obsługi.
+  - Utwórz konto SQL z unikatową nazwę, która ma **sysadmin** członkostwa. Można to zrobić z poziomu portalu, należy włączyć **uwierzytelniania SQL** podczas inicjowania obsługi.
 
     > [!TIP] 
-    > Jeśli nie zostanie włączone uwierzytelnianie SQL podczas inicjowania obsługi, należy ręcznie zmienić tryb uwierzytelniania **programu SQL Server i tryb uwierzytelniania systemu Windows**. Aby uzyskać więcej informacji, zobacz [Zmień tryb uwierzytelniania serwera](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode).
+    > Jeśli nie zostanie włączone uwierzytelnianie SQL podczas inicjowania obsługi, należy ręcznie zmienić tryb uwierzytelniania **programu SQL Server i tryb uwierzytelniania Windows**. Aby uzyskać więcej informacji, zobacz [Zmień tryb uwierzytelniania serwera](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode).
 
-  - Jeśli musisz użyć **SA** logowania, Włącz logowanie po zainicjowaniu obsługi administracyjnej i przypisz nowe silne hasło.
+  - Jeśli musisz użyć **SA** logowania, Włącz logowanie po zainicjowaniu obsługi administracyjnej oraz Przypisz silne hasło.
 
-## <a name="follow-on-premises-best-practices"></a>Należy stosować najlepsze rozwiązania lokalnego
+## <a name="follow-on-premises-best-practices"></a>Stosuj najlepsze rozwiązania w środowisku lokalnym
 
-Oprócz rozwiązania opisane w tym temacie zaleca się, możesz sprawdzić i wdrożenia rozwiązania w zakresie zabezpieczeń tradycyjnych, lokalnie, jeśli to możliwe. Aby uzyskać więcej informacji, zobacz [zagadnienia dotyczące zabezpieczeń dla instalacji serwera SQL](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)
+Oprócz rozwiązania opisane w tym temacie firma Microsoft zaleca, możesz przejrzeć i zaimplementować rozwiązania w zakresie zabezpieczeń tradycyjnych lokalnych, jeśli ma to zastosowanie. Aby uzyskać więcej informacji, zobacz [zagadnienia dotyczące zabezpieczeń na potrzeby instalacji serwera SQL](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli interesuje Cię również najlepsze rozwiązania dotyczące wydajności, zobacz [wydajności najlepsze rozwiązania dotyczące programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
+Jeśli interesuje Cię również najlepsze rozwiązania dotyczące wydajności, zobacz [Performance Best Practices for SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
 
-Do innych tematów związanych z programem SQL Server na maszynach wirtualnych Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](virtual-machines-windows-sql-server-iaas-overview.md). Jeśli masz pytania dotyczące maszyn wirtualnych programu SQL Server, zobacz [Często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md).
+Aby uzyskać inne tematy związane z programem SQL Server na maszynach wirtualnych Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](virtual-machines-windows-sql-server-iaas-overview.md). Jeśli masz pytania dotyczące maszyn wirtualnych programu SQL Server, zobacz [Często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md).
 

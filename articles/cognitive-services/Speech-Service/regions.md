@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091649"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329511"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -46,11 +46,24 @@ Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania 
 
 ### <a name="intent-recognition"></a>Rozpoznawanie intencji
 
-**Rozpoznawanie intencji** udziałów zestaw SDK rozpoznawania mowy regiony obsługują z użyciem usługi LUIS. Aby uzyskać pełną listę dostępnych regionów, zobacz [publikowania regionów i punkty końcowe — usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
+Dostępne regiony dla **rozpoznawanie intencji** za pośrednictwem zestawu SDK mowy są następujące:
 
-Dostępne regiony dla **rozpoznawanie intencji** za pośrednictwem mowy usługi SDK są wymienione na [strony region usługi Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
+ Globalne regionu | Region | Parametr zestaw SDK rozpoznawania mowy
+ ------|-------|--------
+ Azja | Azja Wschodnia | `eastasia`
+ Azja | Azja Południowo-Wschodnia | `southeastasia`
+ Australia | Australia Wschodnia | `australiaeast`
+ Europa | Europa Północna | `northeurope`
+ Europa | Europa Zachodnia | `westeurope`
+ Ameryka Północna | Wschodnie stany USA | `eastus`
+ Ameryka Północna | Wschodnie stany USA 2 | `eastus2`
+ Ameryka Północna | Środkowo-południowe stany USA | `southcentralus`
+ Ameryka Północna | Środkowo-zachodnie stany USA | `westcentralus`
+ Ameryka Północna | Zachodnie stany USA | `westus`
+ Ameryka Północna | Zachodnie stany USA 2 | `westus2`
+ Ameryka Południowa | Brazylia Południowa | `brazilsouth`
 
-Dla każdego regionu publikowania na liście, użyj podanych **nazwa regionu interfejsu API**. Na przykład użyć `westus` regionu zachodnie stany USA.
+To jest podzbiorem publikowania regiony obsługiwane przez [Language Understanding Intelligent service (LUIS)](/azure/cognitive-services/luis/luis-reference-regions).
 
 ## <a name="rest-apis"></a>Interfejsy API REST
 

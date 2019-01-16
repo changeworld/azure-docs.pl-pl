@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 01/16/2019
 ms.author: sethm
-ms.openlocfilehash: 570c1adc2f4615e78cbe5656c13b0e22b863baf7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3fcbf2b3160d57e56a59ba9c374c9b1b2a75a159
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192288"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330249"
 ---
 # <a name="store-service-principal-credentials-in-key-vault"></a>Store poświadczenia nazwy głównej usługi w usłudze Key Vault
 
@@ -83,7 +83,7 @@ Aby utworzyć magazyn kluczy, wykonaj następujące kroki:
 
 2. W **klucz tajny** okienku wybierz **Generuj/Import**.
 
-3. W **Utwórz klucz tajny** okienko z listy wybierz opcje **ręczne**.
+3. W **Utwórz klucz tajny** okienko z listy wybierz opcje **ręczne**. Jeśli utworzono usługę podmiotu zabezpieczeń za pomocą certyfikatów, wybierz certyfikaty z listy rozwijanej, a następnie przekazać plik.
 
 4. Wprowadź **identyfikator aplikacji** kopiowane z jednostki usługi jako nazwę klucza. Nazwa klucza może zawierać tylko znaki alfanumeryczne i znak łącznika (-).
 

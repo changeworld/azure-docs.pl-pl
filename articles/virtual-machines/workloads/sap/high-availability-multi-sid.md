@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d7fb03cf5dbcd7455f0d4e8f4a69bb1c6d23a83
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0440d1b0c3045feb6d670dae2645590febfa5bc6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497092"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320161"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Utwórz konfigurację adresu oprogramowanie SAP NetWeaver — wiele identyfikatorów SID
 
@@ -471,7 +471,7 @@ Celem jest zainstalowanie wielu SAP ABAP ASCS lub SAP Java SCS klastrowanych wys
 >Maksymalna liczba wystąpień SAP ASCS/SCS w jednym klastrze usługi WSFC jest równy maksymalna liczba prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 >
 
-Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz "adresy IP prywatnej frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: usługi Azure Resource Manager][networking-limits-azure-resource-manager].
+Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz "adresy IP prywatnej frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 Pełne orientacja pozioma, z dwoma systemami SAP o wysokiej dostępności będzie wyglądać następująco:
 
@@ -489,9 +489,9 @@ Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienia SA
 
 | Nazwa parametru | Wartość |
 | --- | --- |
-| SAP ASCS/SCS SID |PR1-lb-ascs |
+| SAP ASCS/SCS SID |pr1-lb-ascs |
 | Systemu SAP DBMS wewnętrznego modułu równoważenia obciążenia | PR5 |
-| Nazwa hosta wirtualnego SAP | cl-pr5-sap |
+| Nazwa hosta wirtualnego SAP | pr5-sap-cl |
 | Adres IP hosta wirtualnego SAP ASCS/SCS (adres IP modułu równoważenia dodatkowego obciążenia platformy Azure) | 10.0.0.50 |
 | Numer wystąpienia SAP ASCS/SCS | 50 |
 | Port sondy wewnętrznego modułu równoważenia obciążenia na potrzeby dodatkowe wystąpienia SAP ASCS/SCS | 62350 |
@@ -506,7 +506,7 @@ Można zainstalować dodatkowe wystąpienia SAP ASCS/SCS w istniejącym klastrze
 | Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Statyczny adres IP |
 | --- | --- | --- |
 | 1. węzła klastra ASCS/SCS wystąpienia |pr1-ascs-0 |10.0.0.10 |
-| 2nd węźle klastra w przypadku wystąpienia ASCS/SCS |PR1 ascs 1 |10.0.0.9 |
+| 2nd węźle klastra w przypadku wystąpienia ASCS/SCS |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS na serwerze DNS
 
@@ -514,7 +514,7 @@ Można utworzyć wpis DNS dla nazwy hosta wirtualnego wystąpienia ASCS/SCS przy
 
 | Nowa nazwa hosta wirtualnego SAP ASCS/SCS | Skojarzony adres IP |
 | --- | --- | --- |
-|cl-pr5-sap |10.0.0.50 |
+|pr5-sap-cl |10.0.0.50 |
 
 Nowe nazwy hosta i adresu IP są wyświetlane w Menedżerze DNS, jak pokazano na poniższym zrzucie ekranu:
 
@@ -607,7 +607,7 @@ foreach ($Port in $Ports) {
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 Po uruchomieniu skryptu wyniki są wyświetlane w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu:
@@ -668,6 +668,6 @@ Procedura wysokiego poziomu, jest następujący:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Limity dotyczące sieci: Usługa Azure Resource Manager][networking-limits-azure-resource-manager]
+- [Limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Wielu adresów VIP dla usługi Azure Load Balancer][load-balancer-multivip-overview]
 - [Przewodnik dla wysokiej dostępności oprogramowanie SAP NetWeaver na maszynach wirtualnych Windows][sap-ha-guide]

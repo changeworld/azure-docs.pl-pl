@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e1fe5af1769a0a1a83a3ce849a7eb1874369ce9a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fb0448e5ad5bd91c63c2fcde9887ec23544bed3f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023372"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331354"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,15 +28,15 @@ ms.locfileid: "54023372"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [potoków w wersji 2](../concepts-pipelines-activities.md).
 
-Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Azure Data Factory oraz z konstruowaniem za ich pomocą pełnych przepływów pracy dla scenariuszy przenoszenia i przetwarzania danych.  
+Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Azure Data Factory oraz z konstruowaniem za ich pomocą pełnych przepływów pracy dla scenariuszy przenoszenia i przetwarzania danych.
 
 > [!NOTE]
-> W tym artykule założono, że wykonano już instrukcje [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md). Jeśli nie masz hands-na-doświadczenia z tworzenia fabryk danych, przeprowadzając [samouczkiem dotyczącym przekształcania danych](data-factory-build-your-first-pipeline.md) i/lub [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) może pomóc lepiej zrozumieć, w tym artykule.  
+> W tym artykule założono, że wykonano już instrukcje [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md). Jeśli nie masz hands-na-doświadczenia z tworzenia fabryk danych, przeprowadzając [samouczkiem dotyczącym przekształcania danych](data-factory-build-your-first-pipeline.md) i/lub [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) może pomóc lepiej zrozumieć, w tym artykule.
 
 ## <a name="overview"></a>Przegląd
-Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Możesz na przykład użyć działania kopiowania w celu skopiowania danych z lokalnego programu SQL Server do usługi Azure Blob Storage. Następnie użyj działania usługi Hive, które uruchamia skrypt Hive w klastrze usługi Apache HDInsight w celu przetworzenia/przekształcenia danych z magazynu obiektów blob, aby utworzyć dane wyjściowe. Na koniec użyj drugiego działania kopiowania w celu skopiowania danych wyjściowych do usługi Microsoft Azure SQL Data Warehouse, na podstawie której tworzone są rozwiązania raportowania analizy biznesowej (BI). 
+Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Możesz na przykład użyć działania kopiowania w celu skopiowania danych z lokalnego programu SQL Server do usługi Azure Blob Storage. Następnie użyj działania usługi Hive, które uruchamia skrypt Hive w klastrze usługi Apache HDInsight w celu przetworzenia/przekształcenia danych z magazynu obiektów blob, aby utworzyć dane wyjściowe. Na koniec użyj drugiego działania kopiowania w celu skopiowania danych wyjściowych do usługi Microsoft Azure SQL Data Warehouse, na podstawie której tworzone są rozwiązania raportowania analizy biznesowej (BI).
 
-Dane działanie może — ale nie musi — korzystać z wejściowych [zestawów danych](data-factory-create-datasets.md) i generować co najmniej jeden wyjściowy [zestaw danych](data-factory-create-datasets.md). Na poniższym diagramie przedstawiono relację między potokiem, działaniem i zestawem danych w usłudze Data Factory: 
+Dane działanie może — ale nie musi — korzystać z wejściowych [zestawów danych](data-factory-create-datasets.md) i generować co najmniej jeden wyjściowy [zestaw danych](data-factory-create-datasets.md). Na poniższym diagramie przedstawiono relację między potokiem, działaniem i zestawem danych w usłudze Data Factory:
 
 ![Relacja potoku, działania i zestaw danych](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
 
@@ -61,7 +61,7 @@ Aby uzyskać więcej informacji, zobacz artykuł [Działania dotyczące przenosz
 
 Aby uzyskać więcej informacji, zobacz artykuł [Działania dotyczące przekształcania danych](data-factory-data-transformation-activities.md).
 
-### <a name="custom-net-activities"></a>Niestandardowe działania programu .NET 
+### <a name="custom-net-activities"></a>Niestandardowe działania programu .NET
 Jeśli musisz przenieść dane do/z danych magazynu, że działanie kopiowania nie obsługuje, lub przekształcania danych za pomocą własnej logiki, Utwórz **niestandardowe działanie platformy .NET**. Aby uzyskać szczegółowe informacje na temat tworzenia i używania niestandardowego działania, zobacz artykuł [Use custom activities in an Azure Data Factory pipeline](data-factory-use-custom-activities.md) (Korzystanie z niestandardowych działań w potoku usługi Azure Data Factory).
 
 ## <a name="schedule-pipelines"></a>Potoki harmonogramu
@@ -73,7 +73,7 @@ Przyjrzyjmy się bliżej definicji potoku w formacie JSON. Ogólna struktura pot
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description" : "pipeline description",
         "activities":
@@ -85,7 +85,7 @@ Przyjrzyjmy się bliżej definicji potoku w formacie JSON. Ogólna struktura pot
         "isPaused": true/false,
         "pipelineMode": "scheduled/onetime",
         "expirationTime": "15.00:00:00",
-        "datasets": 
+        "datasets":
         [
         ]
     }
@@ -96,7 +96,7 @@ Przyjrzyjmy się bliżej definicji potoku w formacie JSON. Ogólna struktura pot
 | --- | --- | --- |
 | name |Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description | Wprowadź tekst opisujący przeznaczenie potoku. |Yes |
-| activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Zobacz następną sekcję, aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Yes |  
+| activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Zobacz następną sekcję, aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Yes |
 | rozpoczynanie | Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: `2016-10-14T16:32:41Z`. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00-05:00`", który jest szacowany AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzureRmDataFactoryPipelineActivePeriod. |
 | end | Data / Godzina zakończenia dla potoku. Jeśli zostanie określony, musi być w formacie ISO. Na przykład: `2016-10-14T17:32:41Z` <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00-05:00`, które jest szacowane AM 6<br/><br/>Aby uruchomić potok bezterminowo, określ 9999-09-09 jako wartość właściwości end. <br/><br/> Potok jest aktywny tylko między jego czas rozpoczęcia i zakończenia. Nie jest wykonywany przed godziną rozpoczęcia lub po godzinie zakończenia. Jeśli potok jest wstrzymana, nie są wykonywane niezależnie od czasu rozpoczęcia i zakończenia. Dla potoku do uruchamiania go powinna nie można wstrzymać. Zobacz [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) zrozumienie sposobu planowania i wykonywania działania usługi Azure Data Factory. |Nie <br/><br/>Jeśli określisz wartości dla właściwości uruchamiania, należy określić wartość dla właściwości end.<br/><br/>Zobacz informacje o **start** właściwości. |
 | isPaused | Jeśli ustawiono wartość true, potok nie jest uruchamiany. Jest ona w stanie wstrzymania. Wartość domyślna = false. Ta właściwość służy do włączania lub wyłączania potoku. |Nie |
@@ -110,10 +110,10 @@ W sekcji **activities** można zdefiniować jedno lub więcej działań. Każde 
 ```json
 {
     "name": "ActivityName",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
-    "inputs":  "[]",
-    "outputs":  "[]",
+    "inputs": "[]",
+    "outputs": "[]",
     "linkedServiceName": "MyLinkedService",
     "typeProperties":
     {
@@ -142,7 +142,6 @@ Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 | policy |Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Jeśli nie jest określona, używane są domyślne zasady. |Nie |
 | Harmonogram | Właściwość "harmonogram" jest używana do definiowania żądanego planowania dla działania. Właściwości podrzędnych są takie same, jak te w [właściwości availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
 
-
 ### <a name="policies"></a>Zasady
 Zasady wpływają na zachowania w czasie wykonywania działania, w szczególności, po przetworzeniu wycinka tabeli. Poniższa tabela zawiera szczegółowe informacje.
 
@@ -152,12 +151,12 @@ Zasady wpływają na zachowania w czasie wykonywania działania, w szczególnoś
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinki danych, które są przetwarzane.<br/><br/>Na przykład jeśli masz 2 dzieli (jeden występuje o 16: 00 i inną o 17: 00), a oba są oczekiwanie na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, jest przetwarzana najpierw wycinek o 17: 00. Podobnie jeśli ustawisz executionPriorityORder jako OldestFIrst, następnie wycinka u 16: 00 jest przetwarzany. |
 | retry |Liczba całkowita<br/><br/>Maksymalna wartość może wynosić 10 |0 |Liczba ponownych prób zanim przetwarzania danych dla wycinka jest oznaczony jako niepowodzenie. Wykonania działania dla wycinka danych zostanie ponowiony do określonej liczby ponownych prób. Ponowienie próby jest wykonywane tak szybko, jak to możliwe po niepowodzeniu. |
 | timeout |Przedział czasu |00:00:00 |Limit czasu działania. Przykład: 00:10:00 (oznacza limit czasu 10 minut)<br/><br/>Jeśli wartość nie została określona lub ma wartość 0, limit czasu jest nieskończona.<br/><br/>Jeśli czas przetwarzania danych na wycinek przekracza wartość limitu czasu, zostanie anulowane, a system podejmuje próbę przetwarzania. Liczba ponownych prób, zależy od właściwości ponownych prób. W przypadku przekroczenia limitu czasu stan jest ustawiony na przekroczenie limitu czasu. |
-| Opóźnienie |Przedział czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych startów wycinka.<br/><br/>Wykonywanie działania dla wycinka danych została uruchomiona po oczekiwanym czasie wykonywania opóźnienie.<br/><br/>Przykład: 00:10:00 (implikuje użycie opóźnieniem 10 minut) |
+| delay |Przedział czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych startów wycinka.<br/><br/>Wykonywanie działania dla wycinka danych została uruchomiona po oczekiwanym czasie wykonywania opóźnienie.<br/><br/>Przykład: 00:10:00 (implikuje użycie opóźnieniem 10 minut) |
 | longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba prób długa — ponowienie próby, zanim wycinek wykonanie nie powiodło się.<br/><br/>są rozciągane w prób longRetry, longRetryInterval. Więc jeśli potrzebujesz określić czas między ponownymi próbami, należy użyć longRetry. Jeśli określono zarówno longRetry, jak i ponów próbę kolejnymi próbami longRetry zawiera ponownymi próbami i maksymalną liczbę prób ponawiania * longRetry.<br/><br/>Na przykład, mamy następujące ustawienia zasad dotyczących działań:<br/>Ponów próbę: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Przyjęto założenie, istnieje tylko jeden wycinek do wykonania (oczekiwanie stanu) i wykonania działania każdym razem, gdy kończy się niepowodzeniem. Początkowo będzie można 3 próby wykonania kolejnych. Po każdej próbie stan wycinka byłoby ponownych prób. Po pierwsze 3 prób przez, stan wycinka byłoby LongRetry.<br/><br/>Po upływie godziny (czyli wartość longRetryInteval firmy) będzie inny zbiór 3 próby wykonania kolejnych. Po tym stan wycinka, czy nie, a wszystkie próby może nastąpić. Dlatego całkowity podejmowano próby 6.<br/><br/>Jeśli wykonanie dowolnego zakończy się powodzeniem, stan wycinka będzie gotowy, a wszystkie próby są próby.<br/><br/>longRetry mogą być używane w sytuacji, w którym dane zależne dociera niedeterministyczne razy lub niestabilnym całego środowiska, w ramach której przetwarzania danych. W takich przypadkach to ponownych prób po kolei może nie pozwalających i sposób po upływie czasu skutkuje żądaną produktu wyjściowego.<br/><br/>Word Przestroga: nie należy ustawiać wysokiej wartości longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają innych kwestii systemowych. |
 | longRetryInterval |Przedział czasu |00:00:00 |Opóźnienie między próbami długa — ponowienie próby |
 
 ## <a name="sample-copy-pipeline"></a>Przykładowy potok kopiowania
-W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](data-factory-data-movement-activities.md) kopiuje dane z usługi Azure Blob Storage do usługi Azure SQL Database. 
+W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](data-factory-data-movement-activities.md) kopiuje dane z usługi Azure Blob Storage do usługi Azure SQL Database.
 
 ```json
 {
@@ -199,19 +198,19 @@ W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w se
     "start": "2016-07-12T00:00:00Z",
     "end": "2016-07-13T00:00:00Z"
   }
-} 
+}
 ```
 
 Pamiętaj o następujących kwestiach:
 
 * W sekcji działań jest tylko jedno działanie, którego parametr **type** (typ) został ustawiony na wartość **Copy**.
-* Dane wejściowe dla działania mają ustawienie **InputDataset**, a dane wyjściowe — **OutputDataset**. Definiowanie zestawów danych w formacie JSON opisano w artykule [Zestawy danych](data-factory-create-datasets.md). 
-* W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia. W [działania przenoszenia danych](#data-movement-activities) sekcji, kliknij magazyn danych, że chcesz użyć jako źródła lub ujścia, aby dowiedzieć się więcej na temat przenoszenia danych do i z tego magazynu danych. 
+* Dane wejściowe dla działania mają ustawienie **InputDataset**, a dane wyjściowe — **OutputDataset**. Definiowanie zestawów danych w formacie JSON opisano w artykule [Zestawy danych](data-factory-create-datasets.md).
+* W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia. W [działania przenoszenia danych](#data-movement-activities) sekcji, kliknij magazyn danych, że chcesz użyć jako źródła lub ujścia, aby dowiedzieć się więcej na temat przenoszenia danych do i z tego magazynu danych.
 
-Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczka: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczka: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="sample-transformation-pipeline"></a>Przykładowy potok przekształcania
-W poniższym przykładowym potoku występuje jedno działanie typu **HDInsightHive** w sekcji **activities**. W tym przykładzie [działanie HDInsight Hive](data-factory-hive-activity.md) przekształca dane z usługi Azure Blob Storage przez uruchomienie pliku skryptu Hive na klastrze usługi Azure HDInsight Hadoop. 
+W poniższym przykładowym potoku występuje jedno działanie typu **HDInsightHive** w sekcji **activities**. W tym przykładzie [działanie HDInsight Hive](data-factory-hive-activity.md) przekształca dane z usługi Azure Blob Storage przez uruchomienie pliku skryptu Hive na klastrze usługi Azure HDInsight Hadoop.
 
 ```json
 {
@@ -258,39 +257,38 @@ W poniższym przykładowym potoku występuje jedno działanie typu **HDInsightHi
 }
 ```
 
-Pamiętaj o następujących kwestiach: 
+Pamiętaj o następujących kwestiach:
 
 * W sekcji działań jest tylko jedno działanie, którego parametr **type** został ustawiony na wartość **HDInsightHive**.
 * Plik skryptu programu Hive **partitionweblogs.hql** jest przechowywany na koncie usługi Azure Storage (określonym za pomocą elementu scriptLinkedService o nazwie **AzureStorageLinkedService**) oraz w folderze **script** w kontenerze **adfgetstarted**.
 * `defines` Sekcja jest używana do określania ustawień środowiska uruchomieniowego, które są przekazywane do skryptu hive jako wartości konfiguracyjne magazynu Hive (np. `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
-Sekcja **typeProperties** jest inna dla każdego działania przekształcania. Aby dowiedzieć się więcej na temat właściwości typu obsługiwanych dla działania przekształcania, kliknij działanie przekształcania w [działania przekształcania danych](#data-transformation-activities) tabeli. 
+Sekcja **typeProperties** jest inna dla każdego działania przekształcania. Aby dowiedzieć się więcej na temat właściwości typu obsługiwanych dla działania przekształcania, kliknij działanie przekształcania w [działania przekształcania danych](#data-transformation-activities) tabeli.
 
-Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczka: Tworzenie pierwszego potoku do przetwarzania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md). 
+Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczka: Tworzenie pierwszego potoku do przetwarzania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Wiele działań w potoku
-Poprzednie dwa przykładowe potoki zawierają tylko po jednym działaniu. Potok może obejmować więcej niż jedno działanie.  
+Poprzednie dwa przykładowe potoki zawierają tylko po jednym działaniu. Potok może obejmować więcej niż jedno działanie.
 
-Jeśli masz wiele działań w potoku, a dane wyjściowe działania nie jest dane wejściowe kolejnego działania, działania mogą być wykonywane równolegle, jeśli wycinki danych wejściowych dla działania jest gotowe. 
+Jeśli masz wiele działań w potoku, a dane wyjściowe działania nie jest dane wejściowe kolejnego działania, działania mogą być wykonywane równolegle, jeśli wycinki danych wejściowych dla działania jest gotowe.
 
 Dwa działania można połączyć w łańcuch dzięki wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Drugie działanie wykonuje, tylko gdy pierwsza z nich zakończy się pomyślnie.
 
 ![Tworzenie łańcuchów działań w tym samym potoku](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-W tym przykładzie ten potok ma dwa działania: Działania Activity1 i Activity2. Działania Activity1 przyjmuje Dataset1 jako dane wejściowe i wyjściowe Dataset2. Działanie przyjmuje Dataset2 jako dane wejściowe i wyjściowe Dataset3. Ponieważ dane wyjściowe działania Activity1 (Dataset2) jest w danych wejściowych Activity2 i uruchamia Activity2 tylko wtedy, gdy działanie zakończy się pomyślnie i utworzenie wycinka Dataset2. Jeśli działania Activity1 nie powiedzie się z jakiegoś powodu, nie generuje wycinek Dataset2 2 działania nie działa dla tego wycinka (na przykład: 9 AM celu 10 AM). 
+W tym przykładzie ten potok ma dwa działania: Działania Activity1 i Activity2. Działania Activity1 przyjmuje Dataset1 jako dane wejściowe i wyjściowe Dataset2. Działanie przyjmuje Dataset2 jako dane wejściowe i wyjściowe Dataset3. Ponieważ dane wyjściowe działania Activity1 (Dataset2) jest w danych wejściowych Activity2 i uruchamia Activity2 tylko wtedy, gdy działanie zakończy się pomyślnie i utworzenie wycinka Dataset2. Jeśli działania Activity1 nie powiedzie się z jakiegoś powodu, nie generuje wycinek Dataset2 2 działania nie działa dla tego wycinka (na przykład: 9 AM celu 10 AM).
 
 Ponadto można połączyć w łańcuch działań, które znajdują się w różnych potoków.
 
 ![Tworzenie łańcuchów działań w dwa potoki](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
 
-W tym przykładzie Pipeline1 ma tylko jedno działanie, która przyjmuje Dataset1 jako dane wejściowe i generuje Dataset2 jako dane wyjściowe. Pipeline2 również ma tylko jedno działanie, która przyjmuje Dataset2 jako dane wejściowe i Dataset3 jako dane wyjściowe. 
+W tym przykładzie Pipeline1 ma tylko jedno działanie, która przyjmuje Dataset1 jako dane wejściowe i generuje Dataset2 jako dane wyjściowe. Pipeline2 również ma tylko jedno działanie, która przyjmuje Dataset2 jako dane wejściowe i Dataset3 jako dane wyjściowe.
 
-Aby uzyskać więcej informacji, zobacz [planowania i wykonywania](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
-
+Aby uzyskać więcej informacji, zobacz [planowania i wykonywania](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 ## <a name="create-and-monitor-pipelines"></a>Tworzenie i monitorowanie potoków
-Można tworzyć potoki przy użyciu jednej z następujących narzędzi lub zestawów SDK. 
+Można tworzyć potoki przy użyciu jednej z następujących narzędzi lub zestawów SDK.
 
-- Kreator kopiowania. 
+- Kreator kopiowania.
 - Azure Portal
 - Visual Studio
 - Azure PowerShell
@@ -299,15 +297,14 @@ Można tworzyć potoki przy użyciu jednej z następujących narzędzi lub zesta
 - Interfejs API .NET
 
 Zobacz następujące samouczki krok po kroku dotyczące tworzenia potoków przy użyciu jednej z następujących narzędzi lub zestawów SDK.
- 
+
 - [Tworzenie potoku z działaniem przekształcania danych](data-factory-build-your-first-pipeline.md)
 - [Tworzenie potoku za pomocą działania przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Gdy potoku jest tworzone lub wdrożone, można zarządzać i monitorowania potoków przy użyciu bloków w witrynie Azure portal lub aplikacji monitorowanie i zarządzanie nimi. Zobacz następujące tematy, aby uzyskać instrukcje krok po kroku. 
+Gdy potoku jest tworzone lub wdrożone, można zarządzać i monitorowania potoków przy użyciu bloków w witrynie Azure portal lub aplikacji monitorowanie i zarządzanie nimi. Zobacz następujące tematy, aby uzyskać instrukcje krok po kroku.
 
 - [Monitorowanie potoków i zarządzanie nimi przy użyciu bloków w witrynie Azure portal](data-factory-monitor-manage-pipelines.md).
 - [Monitorowanie potoków i zarządzanie nimi przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md)
-
 
 ## <a name="onetime-pipeline"></a>Jednorazowa potoku
 Można tworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co godzinę lub codziennie) w ciągu godziny rozpoczęcia i zakończenia określonego w definicji potoku. Zobacz [planowania wykonania](#scheduling-and-execution) Aby uzyskać szczegółowe informacje. Można również utworzyć potok, który jest uruchamiany tylko raz. Aby to zrobić, należy ustawić **pipelineMode** właściwości w definicji potoku, aby **jednorazowej** jak pokazano w następującym przykładzie JSON. Wartość domyślna tej właściwości to **zaplanowane**.
@@ -339,10 +336,10 @@ Można tworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co god
                     {
                         "name": "OutputDataset"
                     }
-                ]
+                ],
                 "name": "CopyActivity-0"
             }
-        ]
+        ],
         "pipelineMode": "OneTime"
     }
 }
@@ -351,13 +348,10 @@ Można tworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co god
 Pamiętaj o następujących kwestiach:
 
 * **Rozpocznij** i **zakończenia** nieokreślonych godziny dla potoku.
-* **Dostępność** z danych wejściowych i wyjściowych zestawów danych jest określony (**częstotliwość** i **interwał**), nawet jeśli fabryka danych używa wartości.  
+* **Dostępność** z danych wejściowych i wyjściowych zestawów danych jest określony (**częstotliwość** i **interwał**), nawet jeśli fabryka danych używa wartości.
 * Widok diagramu jednorazowe potoki nie są wyświetlane. To zachowanie jest celowe.
 * Nie można zaktualizować jednorazowe potoków. Można sklonować potoku jednorazowego, zmień jej nazwę, zaktualizuj właściwości i wdrożyć ją, aby utworzyć nową.
 
-
-## <a name="next-steps"></a>Następne kroki
-- Aby uzyskać więcej informacji na temat zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. 
-- Aby uzyskać więcej informacji na temat sposobu planowania i wykonywania potoków, zobacz [planowanie i wykonywanie w usłudze Azure Data Factory](data-factory-scheduling-and-execution.md) artykułu. 
-  
-
+## <a name="next-steps"></a>Kolejne kroki
+- Aby uzyskać więcej informacji na temat zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu.
+- Aby uzyskać więcej informacji na temat sposobu planowania i wykonywania potoków, zobacz [planowanie i wykonywanie w usłudze Azure Data Factory](data-factory-scheduling-and-execution.md) artykułu.

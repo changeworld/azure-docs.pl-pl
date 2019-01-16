@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ce54ad77893557b595f9777dfc82939aacf41608
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962583"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321521"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły — przy użyciu niejawnego przepływu aplikacji jednostronicowych w wersji 2.0
 
@@ -54,7 +54,7 @@ Na poniższym diagramie przedstawiono, jak wygląda całego niejawny przepływ l
 Początkowo utworzyć użytkownika w swojej aplikacji, możesz wysłać [OpenID Connect](v2-protocols-oidc.md) żądanie autoryzacji i zyskaj `id_token` z punktu końcowego v2.0.
 
 > [!IMPORTANT]
-> Aby pomyślnie wysłać żądanie identyfikator tokenu rejestracji aplikacji w [portalu rejestracji](https://apps.dev.microsoft.com) musi mieć **Zezwalaj na niejawny przepływ** włączone dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: **podana wartość parametru wejściowego "response_type" nie jest dozwolone dla tego klienta. Oczekiwana wartość to "code"**
+> Aby pomyślnie zażądać identyfikator tokenu rejestracji aplikacji w [portalu rejestracji](https://apps.dev.microsoft.com) musi mieć **Zezwalaj na niejawny przepływ** włączone dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: **Podana wartość parametru wejściowego "response_type" jest niedozwolone dla tego klienta. Oczekiwana wartość to "code"**
 
 ```
 // Line breaks for legibility only
@@ -111,7 +111,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` |Jeśli uwzględniony `response_type` obejmuje `token`. Zawsze będzie `Bearer`. |
 | `expires_in`|Jeśli uwzględniony `response_type` obejmuje `token`. Określa liczbę sekund, przez które token jest prawidłowy, na potrzeby buforowania. |
 | `scope` |Jeśli uwzględniony `response_type` obejmuje `token`. Wskazuje zakresy, dla którego access_token będzie nieprawidłowa. Może nie obejmować wszystkich zakresów, wymagane, jeśli nie ma zastosowania do użytkownika (w przypadku zakresów tylko do usługi AAD jest zażądane, gdy osobiste konto jest używane do logowania się w). |
-| `id_token` | Podpisany JSON Web Token (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
+| `id_token` | Podpisany JSON Web Token (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** Tylko wtedy, jeśli podana `openid` zażądano zakresu. |
 | `state` |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
 #### <a name="error-response"></a>Odpowiedzi na błąd
@@ -192,7 +192,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` | Zawsze będzie `Bearer`. |
 | `expires_in` | Określa liczbę sekund, przez które token jest prawidłowy, na potrzeby buforowania. |
 | `scope` | Wskazuje zakresy, dla którego access_token będzie nieprawidłowa. Może nie obejmować wszystkich zakresów, wymagane, jeśli nie ma zastosowania do użytkownika (w przypadku zakresów tylko do usługi AAD jest zażądane, gdy osobiste konto jest używane do logowania się w). |
-| `id_token` | Podpisany JSON Web Token (JWT). Jeśli uwzględniony `response_type` obejmuje `id_token`. Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token` odwołania](id-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
+| `id_token` | Podpisany JSON Web Token (JWT). Jeśli uwzględniony `response_type` obejmuje `id_token`. Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token` odwołania](id-tokens.md). <br> **Uwaga:** Tylko wtedy, jeśli podana `openid` zażądano zakresu. |
 | `state` |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
 

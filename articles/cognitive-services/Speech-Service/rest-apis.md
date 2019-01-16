@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: bae4c0dccb0ce336c319fe94936be72ab6fc9a8e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230377"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330679"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -469,7 +469,10 @@ Jest to lista obsługiwanych formatów audio, które są wysyłane do wszystkich
 
 ### <a name="request-body"></a>Treść żądania
 
-Tekst jest wysyłany jako treść HTTP `POST` żądania. Może to być zwykły tekst (ASCII lub UTF-8) lub [język znaczników synteza mowy](speech-synthesis-markup.md) formatu (SSML) (UTF-8). Żądania w postaci zwykłego tekstu, użyj głosu domyślnej usługi rozpoznawania mowy i języka. Za pomocą SSML można określić, głos i język.
+Treść każdego `POST` żądanie jest wysyłane jako [mowy syntezy Markup Language (SSML)](speech-synthesis-markup.md). SSML pozwala wybrać, głos i język syntezatora mowy zwracane przez usługę zamiany tekstu na mowę. Aby uzyskać pełną listę obsługiwanych głosów, zobacz [języki](language-support.md#text-to-speech).
+
+> [!NOTE]
+> Jeśli używasz niestandardowych voice, treści żądania mogą być wysyłane jako zwykły tekst (ASCII lub UTF-8).
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

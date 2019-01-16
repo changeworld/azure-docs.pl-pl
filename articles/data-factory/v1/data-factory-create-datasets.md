@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77e81dce7857433481f501410419f1067a51c3fc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 25e47ecc9d9915ab618bc45f2e95f12bae68c7f0
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020340"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332612"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,22 +31,22 @@ ms.locfileid: "54020340"
 W tym artykule opisano, jakie zestawy danych są, jak są one definiowane w formacie JSON i w jaki sposób są one używane w potoki usługi Azure Data Factory. Zapewnia szczegółowe informacje na temat każdej sekcji (na przykład, struktury, dostępność i zasady) w definicji JSON zestawu danych. Artykuł zawiera również przykłady dotyczące używania **przesunięcie**, **anchorDateTime**, i **styl** właściwości w definicji JSON zestawu danych.
 
 > [!NOTE]
-> Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) omówienie. Jeśli nie masz zdobycie praktycznego doświadczenia z tworzenia fabryk danych, można uzyskać lepsze zrozumienie, zapoznając się [samouczkiem dotyczącym przekształcania danych](data-factory-build-your-first-pipeline.md) i [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+> Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) omówienie. Jeśli nie masz zdobycie praktycznego doświadczenia z tworzenia fabryk danych, można uzyskać lepsze zrozumienie, zapoznając się [samouczkiem dotyczącym przekształcania danych](data-factory-build-your-first-pipeline.md) i [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="overview"></a>Przegląd
 Fabryka danych może obejmować jeden lub wiele potoków. A **potoku** jest logicznym grupowaniem **działania** wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Może na przykład użyć działania kopiowania, aby skopiować dane z lokalnego programu SQL Server do usługi Azure Blob storage. Następnie należy użyć działania programu Hive, które uruchamia skrypt Hive w klastrze usługi HDInsight platformy Azure do przetwarzania danych z magazynu obiektów Blob w celu wygenerowania danych wyjściowych. Może na koniec użyj drugiego działania kopiowania, aby skopiować dane wyjściowe do usługi Azure SQL Data Warehouse, na podstawie której raportowania dotyczącego rozwiązania analizy biznesowej (BI). Aby uzyskać więcej informacji na temat potoków i działań, zobacz [potokami i działaniami w usłudze Azure Data Factory](data-factory-create-pipelines.md).
 
-Działanie może zająć zero lub więcej danych wejściowych **zestawów danych**i tworzące co najmniej jeden wyjściowe zestawy danych. Wejściowy zestaw danych reprezentuje dane wejściowe dla działania w potoku i wyjściowy zestaw danych reprezentuje dane wyjściowe dla działania. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Na przykład zestaw danych usługi Azure Blob Określa kontener obiektów blob i folder w usłudze Blob storage, z których potok ma odczytywać dane. 
+Działanie może zająć zero lub więcej danych wejściowych **zestawów danych**i tworzące co najmniej jeden wyjściowe zestawy danych. Wejściowy zestaw danych reprezentuje dane wejściowe dla działania w potoku i wyjściowy zestaw danych reprezentuje dane wyjściowe dla działania. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Na przykład zestaw danych usługi Azure Blob Określa kontener obiektów blob i folder w usłudze Blob storage, z których potok ma odczytywać dane.
 
-Przed utworzeniem zestawu danych, Utwórz **połączoną usługę** połączyć usługi magazynu danych w usłudze data factory. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Zestawy danych identyfikują dane w połączonych magazynach danych, takich jak SQL tabel, plików, folderów i dokumentów. Na przykład Azure Storage połączona usługa łączy konto usługi storage z fabryką danych. Zestaw danych obiektów Blob platformy Azure reprezentuje kontener obiektów blob oraz folder, który zawiera wejściowe obiekty BLOB mają być przetwarzane. 
+Przed utworzeniem zestawu danych, Utwórz **połączoną usługę** połączyć usługi magazynu danych w usłudze data factory. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Zestawy danych identyfikują dane w połączonych magazynach danych, takich jak SQL tabel, plików, folderów i dokumentów. Na przykład Azure Storage połączona usługa łączy konto usługi storage z fabryką danych. Zestaw danych obiektów Blob platformy Azure reprezentuje kontener obiektów blob oraz folder, który zawiera wejściowe obiekty BLOB mają być przetwarzane.
 
 Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, utworzysz dwie połączone usługi: Usługa Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: Azure zestaw danych obiektów Blob (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
 
-Na poniższym diagramie przedstawiono relacje między potoku, działania, zestaw danych i połączonej usługi w usłudze Data Factory: 
+Na poniższym diagramie przedstawiono relacje między potoku, działania, zestaw danych i połączonej usługi w usłudze Data Factory:
 
 ![Relacja potoku, działania, zestaw danych, połączonych usług](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
 
-## <a name="dataset-json"></a>JSON dla zestawu danych
+## <a name="dataset-json"></a>Dataset JSON
 Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
 
 ```json
@@ -70,19 +70,19 @@ Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
             "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
             "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
         },
-       "policy":
-        {      
+        "policy":
+        {
         }
     }
 }
 ```
 
-W poniższej tabeli opisano właściwości w powyższy kod JSON:   
+W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
 | name |Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Yes |Nie dotyczy |
-| type |Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: Obiektu blob platformy Azure, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typ zestawu danych](#Type). |Yes |Nie dotyczy |
+| type |Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typ zestawu danych](#Type). |Yes |Nie dotyczy |
 | Struktura |Schemat zestawu danych.<br/><br/>Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#Structure). |Nie |Nie dotyczy |
 | typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#Type). |Yes |Nie dotyczy |
 | external | Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie. Jeśli wejściowy zestaw danych działania nie jest generowany przez bieżącego potoku, należy ustawić tę flagę na wartość true. Tej flagi należy ustawić na wartość true dla wejściowego zestawu danych pierwszego działania w potoku.  |Nie |false |
@@ -115,8 +115,8 @@ Pamiętaj o następujących kwestiach:
 
 * **Typ** jest ustawiona na AzureSqlTable.
 * **Właściwość tableName** MyTable ustawiono właściwość type (specyficzne AzureSqlTable typu).
-* **linkedServiceName** odwołuje się do połączonej usługi typu AzureSqlDatabase, która jest zdefiniowana w następnym fragmencie kodu JSON. 
-* **częstotliwość dostępności** jest ustawiona na dzień, a **interwał** jest ustawiona na 1. Oznacza to, że wycinek zestaw danych jest generowany codziennie.  
+* **linkedServiceName** odwołuje się do połączonej usługi typu AzureSqlDatabase, która jest zdefiniowana w następnym fragmencie kodu JSON.
+* **częstotliwość dostępności** jest ustawiona na dzień, a **interwał** jest ustawiona na 1. Oznacza to, że wycinek zestaw danych jest generowany codziennie.
 
 **AzureSqlLinkedService** jest zdefiniowana w następujący sposób:
 
@@ -136,13 +136,12 @@ Pamiętaj o następujących kwestiach:
 W poprzednim fragmencie kodu JSON:
 
 * **Typ** jest ustawiona na AzureSqlDatabase.
-* **element connectionString** właściwość type określa informacje do łączenia z bazą danych SQL.  
+* **element connectionString** właściwość type określa informacje do łączenia z bazą danych SQL.
 
-Jak widać, połączona usługa definiuje sposób nawiązywania połączeń z bazą danych SQL. Zestaw danych określa, jakie tabela jest używany jako dane wejściowe i wyjściowe dla działania w potoku.   
+Jak widać, połączona usługa definiuje sposób nawiązywania połączeń z bazą danych SQL. Zestaw danych określa, jakie tabela jest używany jako dane wejściowe i wyjściowe dla działania w potoku.
 
 > [!IMPORTANT]
-> Chyba, że zestaw danych jest generowany przez potok, powinien być oznaczony jako **zewnętrznych**. To ustawienie dotyczy dane wejściowe pierwszego działania w potoku.   
-
+> Chyba, że zestaw danych jest generowany przez potok, powinien być oznaczony jako **zewnętrznych**. To ustawienie dotyczy dane wejściowe pierwszego działania w potoku.
 
 ## <a name="Type"></a> Typ zestawu danych
 Typ zestawu danych, zależy od magazynu danych, którego używasz. Zobacz poniższą tabelę, aby uzyskać listę magazynów danych obsługiwanych przez usługę Data Factory. Kliknij magazyn danych, aby dowiedzieć się, jak utworzyć połączoną usługę i zestaw danych dla tego magazynu danych.
@@ -182,7 +181,7 @@ W przykładzie w poprzedniej sekcji, typ zestawu danych jest równa **AzureSqlTa
 **Struktury** sekcja jest opcjonalna. Definiuje schemat zestawu danych, zawierający kolekcję nazwy i typy danych kolumn. Sekcja struktury umożliwia dostarczyć informacji o typie, który służy do konwersji typów oraz mapowanie kolumn ze źródła do miejsca docelowego. W poniższym przykładzie zestaw danych zawiera trzy kolumny: `slicetimestamp`, `projectname`, i `pageviews`. Są one typu String, String i dziesiętne, odpowiednio.
 
 ```json
-structure:  
+structure:
 [
     { "name": "slicetimestamp", "type": "String"},
     { "name": "projectname", "type": "String"},
@@ -201,15 +200,14 @@ Każda kolumna w strukturze zawiera następujące właściwości:
 
 Poniższe wskazówki pomocne w określeniu, kiedy należy uwzględnić informacje o strukturze i co należy uwzględnić w **struktury** sekcji.
 
-* **W przypadku źródeł danych ze strukturą**, określ sekcji struktury, tylko wtedy, gdy chcesz, aby zamapować kolumny źródła do ujścia kolumn i ich nazwy nie są takie same. Tego rodzaju źródła danych ze strukturą są przechowywane informacje schematu i typu danych oraz samych danych. Przykładami źródeł danych ze strukturą programu SQL Server, Oracle i tabela platformy Azure. 
+* **W przypadku źródeł danych ze strukturą**, określ sekcji struktury, tylko wtedy, gdy chcesz, aby zamapować kolumny źródła do ujścia kolumn i ich nazwy nie są takie same. Tego rodzaju źródła danych ze strukturą są przechowywane informacje schematu i typu danych oraz samych danych. Przykładami źródeł danych ze strukturą programu SQL Server, Oracle i tabela platformy Azure.
   
     Jak informacje o typie jest już dostępna dla źródeł danych ze strukturą, nie może zawierać informacje o typie, gdy zawiera sekcję struktury.
-* **Dla schematu do źródeł danych odczytu (w szczególności usługi Blob storage)**, istnieje możliwość przechowywania danych bez przechowywania żadnych informacji schematu lub typu z danymi. Dla tych typów źródeł danych mają strukturę, gdy chcesz mapować kolumny źródła i ujścia kolumn. Również mają strukturę, gdy zestaw danych jest wartością wejściową dla działania kopiowania, a typy danych źródłowy zestaw danych powinny być konwertowane na typach natywnych ujścia. 
+* **Dla schematu do źródeł danych odczytu (w szczególności usługi Blob storage)**, istnieje możliwość przechowywania danych bez przechowywania żadnych informacji schematu lub typu z danymi. Dla tych typów źródeł danych mają strukturę, gdy chcesz mapować kolumny źródła i ujścia kolumn. Również mają strukturę, gdy zestaw danych jest wartością wejściową dla działania kopiowania, a typy danych źródłowy zestaw danych powinny być konwertowane na typach natywnych ujścia.
     
     Usługa Data Factory obsługuje następujące wartości do dostarczania informacji o typie w strukturze: **Int16, Int32, Int64, pojedynczego, Double, Decimal, bajt [], atrybut typu wartość logiczna, ciąg, identyfikator Guid, daty/godziny, Datetimeoffset i Timespan**. Te wartości są Common Language Specification (CLS)-zgodne. Wartości typu opartego na sieci.
 
-Podczas przenoszenia danych z magazynu danych źródłowych do magazynu danych ujścia usługi Data Factory automatycznie wykonuje konwersje typów. 
-  
+Podczas przenoszenia danych z magazynu danych źródłowych do magazynu danych ujścia usługi Data Factory automatycznie wykonuje konwersje typów.
 
 ## <a name="dataset-availability"></a>Dostępności zestawu danych
 **Dostępności** sekcji w zestawie danych definiuje okien przetwarzania (na przykład co godzinę, codziennie lub co tydzień) dla zestawu danych. Aby uzyskać więcej informacji na temat aktywności systemu windows zobacz [planowanie i wykonywanie](data-factory-scheduling-and-execution.md).
@@ -217,21 +215,21 @@ Podczas przenoszenia danych z magazynu danych źródłowych do magazynu danych u
 W poniższej sekcji dostępność Określa, że wyjściowy zestaw danych albo są generowane co godzinę lub wejściowy zestaw danych jest dostępny co godzinę:
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 1    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 1
 }
 ```
 
-Jeśli potok zawiera następujące czasu rozpoczęcia i zakończenia:  
+Jeśli potok zawiera następujące czasu rozpoczęcia i zakończenia:
 
 ```json
     "start": "2016-08-25T00:00:00Z",
     "end": "2016-08-25T05:00:00Z",
 ```
 
-Wyjściowy zestaw danych jest generowany co godzinę w ramach potoku godziny rozpoczęcia i zakończenia. Dlatego jest pięć wycinków zestaw danych utworzony przez ten potok, jeden dla każdego okna działania (00: 00 - 1 AM, 1: 00 - 2 AM, 2: 00 - 3 AM, 3: 00 - 4 AM, 4: 00 - 5: 00). 
+Wyjściowy zestaw danych jest generowany co godzinę w ramach potoku godziny rozpoczęcia i zakończenia. Dlatego jest pięć wycinków zestaw danych utworzony przez ten potok, jeden dla każdego okna działania (00: 00 - 1 AM, 1: 00 - 2 AM, 2: 00 - 3 AM, 3: 00 - 4 AM, 4: 00 - 5: 00).
 
 W poniższej tabeli opisano właściwości, które można użyć w sekcji dostępności:
 
@@ -241,10 +239,10 @@ W poniższej tabeli opisano właściwości, które można użyć w sekcji dostę
 | interval |Określa mnożnik częstotliwości.<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany. Na przykład, jeśli potrzebujesz zestawu danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/>Należy pamiętać, że jeśli określisz **częstotliwość** jako **minutę**, należy ustawić interwał nie może być mniej niż 15. |Yes |Nie dotyczy |
 | Styl |Określa, czy wycinek powinny być tworzone na początku lub końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Jeśli **częstotliwość** ustawiono **miesiąca**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na ostatni dzień miesiąca. Jeśli **styl** ustawiono **StartOfInterval**, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli **częstotliwość** jest ustawiona na **dzień**, i **styl** ustawiono **EndOfInterval**, wycinek jest generowany w ciągu ostatniej godziny dnia.<br/><br/>Jeśli **częstotliwość** ustawiono **godzinę**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 - 14: 00, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
 | anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/>Należy pamiętać o tym, jeśli ta propoerty części daty, które są bardziej szczegółowe niż określoną częstotliwością, bardziej szczegółową części są ignorowane. Na przykład jeśli **interwał** jest **co godzinę** (frequency: hour, interval: 1), a **anchorDateTime** zawiera **minuty i sekundy**, a następnie minuty i sekundy części **anchorDateTime** są ignorowane. |Nie |01/01/0001 |
-| Przesunięcie |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/>Należy pamiętać, że jeśli oba **anchorDateTime** i **przesunięcie** są określone, wynik jest połączone shift. |Nie |Nie dotyczy |
+| offset |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/>Należy pamiętać, że jeśli oba **anchorDateTime** i **przesunięcie** są określone, wynik jest połączone shift. |Nie |Nie dotyczy |
 
 ### <a name="offset-example"></a>przykład przesunięcia
-Domyślnie codziennie (`"frequency": "Day", "interval": 1`) wycinki rozpoczynają się od 12: 00 (północ) uniwersalny czas koordynowany (UTC). Czas rozpoczęcia to 6: 00 czasu UTC, zamiast tego należy ustawić przesunięcie, jak pokazano w poniższym fragmencie kodu: 
+Domyślnie codziennie (`"frequency": "Day", "interval": 1`) wycinki rozpoczynają się od 12: 00 (północ) uniwersalny czas koordynowany (UTC). Czas rozpoczęcia to 6: 00 czasu UTC, zamiast tego należy ustawić przesunięcie, jak pokazano w poniższym fragmencie kodu:
 
 ```json
 "availability":
@@ -258,11 +256,11 @@ Domyślnie codziennie (`"frequency": "Day", "interval": 1`) wycinki rozpoczynaj�
 W poniższym przykładzie zestaw danych jest generowany co 23 godzin. Pierwszy wycinek, który rozpoczyna się o godzinie określonej przez **anchorDateTime**, która jest równa `2017-04-19T08:00:00` (UTC).
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 23,    
-    "anchorDateTime":"2017-04-19T08:00:00"    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 23,
+    "anchorDateTime":"2017-04-19T08:00:00"
 }
 ```
 
@@ -320,16 +318,16 @@ Chyba, że zestaw danych jest generowany przez usługę Data Factory, powinien b
 
 | Name (Nazwa) | Opis | Wymagane | Wartość domyślna |
 | --- | --- | --- | --- |
-| dataDelay |Czas opóźnienia wyboru na dostępność danych zewnętrznych dla danego wycinka. Na przykład można opóźnić wyboru godzinowe za pomocą tego ustawienia.<br/><br/>To ustawienie dotyczy tylko do chwili obecnej.  Na przykład jeśli jest 1:00 PM teraz, a wartość ta wynosi 10 minut, sprawdzanie poprawności rozpoczyna się od 1:10 PM.<br/><br/>Należy pamiętać, że to ustawienie nie wpływa na wycinki w przeszłości. Dzieli z **czas zakończenia wycinka** + **dataDelay** < **teraz** są przetwarzane bez żadnego opóźnienia.<br/><br/>Razy większa od 23:59 godzin, można określić za pomocą `day.hours:minutes:seconds` formatu. Na przykład aby określić 24 godziny, nie używaj 24:00:00. Zamiast tego należy użyć 1.00:00:00. Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00). W przypadku 1 dzień i 4 godziny należy określić 1:04:00:00. |Nie |0 |
+| dataDelay |Czas opóźnienia wyboru na dostępność danych zewnętrznych dla danego wycinka. Na przykład można opóźnić wyboru godzinowe za pomocą tego ustawienia.<br/><br/>To ustawienie dotyczy tylko do chwili obecnej. Na przykład jeśli jest 1:00 PM teraz, a wartość ta wynosi 10 minut, sprawdzanie poprawności rozpoczyna się od 1:10 PM.<br/><br/>Należy pamiętać, że to ustawienie nie wpływa na wycinki w przeszłości. Dzieli z **czas zakończenia wycinka** + **dataDelay** < **teraz** są przetwarzane bez żadnego opóźnienia.<br/><br/>Razy większa od 23:59 godzin, można określić za pomocą `day.hours:minutes:seconds` formatu. Na przykład aby określić 24 godziny, nie używaj 24:00:00. Zamiast tego należy użyć 1.00:00:00. Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00). W przypadku 1 dzień i 4 godziny należy określić 1:04:00:00. |Nie |0 |
 | retryInterval |Czas oczekiwania między awarii, a następnie spróbuj. To ustawienie ma zastosowanie do chwili obecnej. Jeśli poprzedni nie powiodło się, spróbuj dalej jest po **retryInterval** okres. <br/><br/>Jeśli jest to 1:00 PM teraz, możemy rozpocząć pierwszej próby. W przypadku 1 minutę i operacja nie powiodła się czas do ukończenia pierwsze sprawdzenie poprawności następne ponowienie próby wynosi 1:00 + 1 min (czas trwania) + 1min (interwał ponawiania) = 13:02:00. <br/><br/>Wycinki w przeszłości nie ma żadnego opóźnienia. Ponowienie próby odbywa się natychmiast. |Nie |00:01:00 (1 minuta) |
 | retryTimeout |Limit czasu dla każdego ponowienia próby.<br/><br/>Jeśli ta właściwość jest ustawiona na 10 minut, należy wykonać sprawdzanie poprawności w ciągu 10 minut. Jeśli trwa dłużej niż 10 minut, aby wykonać sprawdzanie poprawności, ponowienie próby upłynie limit czasu.<br/><br/>Jeśli wszystkie próby limit czasu sprawdzania poprawności, wycinek, zostanie oznaczona jako **przekroczenie limitu czasu**. |Nie |00:10:00 (10 minut) |
 | maximumRetry |Liczba razy, aby sprawdzić dostępność danych zewnętrznych. Maksymalna dozwolona wartość to 10. |Nie |3 |
 
 
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
-Zestawy danych można utworzyć przy użyciu jednej z następujących narzędzi lub zestawów SDK: 
+Zestawy danych można utworzyć przy użyciu jednej z następujących narzędzi lub zestawów SDK:
 
-- Kreator kopiowania 
+- Kreator kopiowania
 - Azure Portal
 - Visual Studio
 - PowerShell
@@ -338,18 +336,17 @@ Zestawy danych można utworzyć przy użyciu jednej z następujących narzędzi 
 - Interfejs API .NET
 
 Zobacz następujące samouczki krok po kroku dotyczące tworzenia potoków i zestawów danych przy użyciu jednej z następujących narzędzi lub zestawów SDK:
- 
+
 - [Tworzenie potoku z działaniem przekształcania danych](data-factory-build-your-first-pipeline.md)
 - [Tworzenie potoku za pomocą działania przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Po utworzeniu i wdrożeniu potoku można zarządzać i monitorowania potoków przy użyciu bloków witryny Azure portal lub aplikacji monitorowanie i zarządzanie. Zobacz następujące tematy, aby uzyskać instrukcje krok po kroku: 
+Po utworzeniu i wdrożeniu potoku można zarządzać i monitorowania potoków przy użyciu bloków witryny Azure portal lub aplikacji monitorowanie i zarządzanie. Zobacz następujące tematy, aby uzyskać instrukcje krok po kroku:
 
 - [Monitorowanie potoków i zarządzanie nimi przy użyciu bloków w witrynie Azure portal](data-factory-monitor-manage-pipelines.md)
 - [Monitorowanie potoków i zarządzanie nimi przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md)
 
-
 ## <a name="scoped-datasets"></a>Zestawy danych o określonym zakresie
-Możesz utworzyć zestawy danych, które są ograniczone do potoku przy użyciu **zestawów danych** właściwości. Te zestawy danych można używać tylko przez działania w ramach tego potoku, a nie przez działania w innych potokach. W poniższym przykładzie zdefiniowano potoku za pomocą dwóch zestawów danych (kompresji rdc InputDataset i OutputDataset rdc) do użycia w ramach potoku.  
+Możesz utworzyć zestawy danych, które są ograniczone do potoku przy użyciu **zestawów danych** właściwości. Te zestawy danych można używać tylko przez działania w ramach tego potoku, a nie przez działania w innych potokach. W poniższym przykładzie zdefiniowano potoku za pomocą dwóch zestawów danych (kompresji rdc InputDataset i OutputDataset rdc) do użycia w ramach potoku.
 
 > [!IMPORTANT]
 > O określonym zakresie zestawy danych są obsługiwane tylko w przypadku jednorazowego potoków (gdzie **pipelineMode** ustawiono **OneTime**). Zobacz [potoku Onetime](data-factory-create-pipelines.md#onetime-pipeline) Aby uzyskać szczegółowe informacje.
@@ -448,5 +445,5 @@ Możesz utworzyć zestawy danych, które są ograniczone do potoku przy użyciu 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać więcej informacji na temat potoków, zobacz [tworzenie potoków](data-factory-create-pipelines.md). 
-- Aby uzyskać więcej informacji na temat sposobu planowania i wykonywania potoków, zobacz [planowanie i wykonywanie w usłudze Azure Data Factory](data-factory-scheduling-and-execution.md). 
+- Aby uzyskać więcej informacji na temat potoków, zobacz [tworzenie potoków](data-factory-create-pipelines.md).
+- Aby uzyskać więcej informacji na temat sposobu planowania i wykonywania potoków, zobacz [planowanie i wykonywanie w usłudze Azure Data Factory](data-factory-scheduling-and-execution.md).

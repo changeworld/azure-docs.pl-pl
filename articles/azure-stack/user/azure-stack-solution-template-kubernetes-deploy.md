@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 064a9fc48ae60e530a11633b0823764a2f862811
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722400"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320025"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
@@ -139,7 +139,7 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
 
 1. Wprowadź **klucz publiczny SSH** używane na potrzeby autoryzacji do wszystkich utworzonych jako część klastra Kubernetes i Menedżer DVM maszyn z systemem Linux.
 
-1. Wprowadź **prefiks DNS profilu wzorzec** jest unikatowa w regionie. Musi to być region unikatową nazwę, taką jak `k8s-12345`. Spróbuj wybrać jej nazwę takie same jak grupy zasobów jako najlepsze rozwiązanie.
+1. Wprowadź **prefiks DNS profilu wzorzec** jest unikatowa w regionie. Musi to być region unikatową nazwę, taką jak `k8s-12345`. Spróbuj stał się taka sama jak nazwa grupy zasobów zgodnie z zaleceniami.
 
     > [!Note]  
     > Dla każdego klastra użyj prefiks DNS nowych i unikatowych głównym profilu.
@@ -150,9 +150,9 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
 
 1. Wybierz **liczba profil puli węzłów rozwiązania Kubernetes**. Liczba zawiera liczbę agentów w klastrze. 
 
-1. Wybierz **profil magazynu**. Możesz wybrać **obiektu Blob dysku** lub **dysku zarządzanego**. To ustawienie określa maszyn wirtualnych węzła rozmiar maszyny Wirtualnej z platformy Kubernetes. 
+1. Wybierz **profil magazynu**. Możesz wybrać **obiektu Blob dysku** lub **dysku zarządzanego**. 
 
-1. Wprowadź **ClientId nazwy głównej usługi** jest on używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji podczas Twojej utworzone jednostki usługi.
+1. Wprowadź **ClientId nazwy głównej usługi** jest on używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta została zidentyfikowana jako identyfikator aplikacji podczas Twojej utworzone jednostki usługi.
 
 1. Wprowadź **klucz tajny klienta jednostki usługi** utworzony podczas tworzenia jednostki usługi.
 

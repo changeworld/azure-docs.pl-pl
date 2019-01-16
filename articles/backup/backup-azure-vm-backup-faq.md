@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ec7de756a5b3c8e713fa8e73c18cebee32b83e28
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201316"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332255"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Często zadawane pytania dotyczące usługi Azure Backup
 
@@ -76,7 +76,7 @@ Dysponujemy prywatną wersją zapoznawczą do tworzenia kopii zapasowych oprogra
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Jak zdecydować, czy można przywrócić tylko dysków lub pełnej maszyny Wirtualnej?
 Pomyśl o przywracanie maszyny Wirtualnej, jak opcję szybkiego tworzenia maszyny wirtualnej platformy Azure. Opcja ta umożliwia zmianę nazw dysków, kontenerów używanych przez dyski, publicznych adresów IP i nazw interfejsów sieciowych. Zmiana zachowuje unikatowy zasobów po utworzeniu maszyny Wirtualnej. Maszyna wirtualna nie została dodana do zestawu dostępności.
 
-Opcja dysku przywracania, jeśli chcesz:
+Można użyć opcji przywracania dysków, jeśli chcesz:
   * Dostosowanie utworzonej maszyny Wirtualnej. Na przykład zmienić rozmiar.
   * Dodaj ustawienia konfiguracji, które nie były dostępne w czasie wykonywania kopii zapasowej
   * Kontrolowanie konwencji nazewnictwa dla zasobów, które są tworzone.

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413272"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331221"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x  
 
-> [!div class="op_single_selector" title1="Wybierz wersję środowiska wykonawczego Azure Functions, którego używasz: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Wersja 1](functions-host-json-v1.md)
 > * [Wersja 2](functions-host-json.md)
 
@@ -108,6 +108,9 @@ Formanty [próbkowania funkcji w usłudze Application Insights](./functions-moni
     }
 }
 ```
+
+> [!NOTE]
+> Próbkowanie dziennika może spowodować pewne wykonania nie są wyświetlani w bloku monitor usługi Application Insights.
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
@@ -200,7 +203,7 @@ Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Appli
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania w pliku jest włączone.  Dostępne są opcje `never`, `always`, `debugOnly`. |
-|LogLevel|Nie dotyczy|Obiekt, który definiuje kategoria dziennika filtrowania dla funkcji w aplikacji. W wersji 2.x następuje układ platformy ASP.NET Core w celu filtrowania kategorii dziennika. Dzięki temu można filtrować rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji platformy ASP.NET Core. |
+|logLevel|Nie dotyczy|Obiekt, który definiuje kategoria dziennika filtrowania dla funkcji w aplikacji. W wersji 2.x następuje układ platformy ASP.NET Core w celu filtrowania kategorii dziennika. Dzięki temu można filtrować rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji platformy ASP.NET Core. |
 |console|Nie dotyczy| [Konsoli](#console) ustawień rejestrowania. |
 |applicationInsights|Nie dotyczy| [ApplicationInsights](#applicationinsights) ustawienie. |
 
@@ -228,7 +231,7 @@ To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje k
 
 Ustawienia konfiguracji można znaleźć w [magazynu kolejki wyzwalaczy i powiązań](functions-bindings-storage-queue.md#host-json).  
 
-## <a name="sendgrid"></a>Usługi SendGrid
+## <a name="sendgrid"></a>sendGrid
 
 Ustawienia konfiguracji można znaleźć w [SendGrid wyzwalaczy i powiązań](functions-bindings-sendgrid.md#host-json).
 

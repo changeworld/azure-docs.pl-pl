@@ -1,10 +1,10 @@
 ---
-title: Jak bezpieczne migrowanie użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Jak przeprowadzić migrację użytkowników między licencjami produktów z grupami — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym artykule opisano zalecane proces migracji użytkowników między licencjami produktów (Office 365 Enterprise E1 i E3) za pomocą licencjonowania opartego na grupach
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/29/2018
-ms.author: piotrci
-ms.openlocfilehash: 643339545dac6ec35ab44f2a05fbe417dea2bb71
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 01/14/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.openlocfilehash: 68d4cdf3c7ba08f7cf37132936c6769c99c177cc
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211795"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319422"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Jak bezpieczne migrowanie użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupach
 
@@ -66,15 +67,15 @@ Celem migracji jest na potrzeby Licencjonowanie na podstawie grupy Zmienianie li
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Migrowanie pojedynczego użytkownika za pomocą witryny Azure portal
 Jest to proste wskazówki dotyczące sposobu migracji pojedynczego użytkownika.
 
-**Krok 1**: użytkownik ma *licencji source* która jest dziedziczona z grupy. Nie istnieją żadne bezpośrednie przypisania licencji:
+**KROK 1**: Użytkownik ma *licencji source* która jest dziedziczona z grupy. Nie istnieją żadne bezpośrednie przypisania licencji:
 
 ![Użytkownik mający licencję źródła dziedziczone z grupy](./media/licensing-groups-change-licenses/UserWithSourceLicenseInherited.png)
 
-**Krok 2**: użytkownik zostanie dodany do grupy docelowej i licencjonowanie na podstawie grupy przetwarza zmiany. Użytkownik ma teraz zarówno *licencji source* i *licencji docelowego* , są dziedziczone z grupy:
+**KROK 2**: Użytkownik zostanie dodany do grupy docelowej i licencjonowanie na podstawie grupy przetwarza zmiany. Użytkownik ma teraz zarówno *licencji source* i *licencji docelowego* , są dziedziczone z grupy:
 
 ![Użytkownik mający licencję źródło i cel dziedziczone z grupy](./media/licensing-groups-change-licenses/UserWithBothSourceAndTargetLicense.png)
 
-**KROK 3**: użytkownik zostanie usunięty z grupy źródłowej i licencjonowanie na podstawie grupy przetwarza zmiany. Użytkownik tylko ma teraz *licencji docelowej*:
+**KROK 3**: Ten użytkownik zostaje usunięty z grupy źródłowej i licencjonowanie na podstawie grupy przetwarza zmiany. Użytkownik tylko ma teraz *licencji docelowej*:
 
 ![Użytkownik mający licencję docelowej dziedziczone z grupy](./media/licensing-groups-change-licenses/UserWithTargetLicenseAssigned.png)
 
@@ -176,7 +177,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>Migrowanie użytkowników między produktami, które mają plany usług powodujące konflikty
-Celem migracji jest na potrzeby Licencjonowanie na podstawie grupy Zmienianie licencji użytkownika z *licencji source* (w tym przykładzie: Office 365 Enterprise E1) do *licencji docelowej* (w tym przykładzie: Office 365 Enterprise E3). Te dwa produkty, w tym scenariuszu zawierają plany usług powodujące konflikty, więc trzeba będzie obejść konflikt bezproblemową migrację użytkowników. Aby uzyskać więcej informacji o tych konfliktach, zobacz [licencjonowania grupy rozwiązywania problemów z usługi Active Directory: plany usług powodujące konflikty](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). W żadnym punkcie w czasie migracji należy użytkownicy utracą dostęp do usług lub danych. Migracja jest wykonywane niewielkimi partiami"." Można sprawdzać poprawność wyników dla każdej partii i zminimalizować zakres wszelkich problemów, które mogą wystąpić w trakcie procesu. Ogólnie proces przebiega w następujący sposób:
+Celem migracji jest na potrzeby Licencjonowanie na podstawie grupy Zmienianie licencji użytkownika z *licencji source* (w tym przykładzie: Office 365 Enterprise E1) do *licencji docelowej* (w tym przykładzie: Office 365 Enterprise E3). Te dwa produkty, w tym scenariuszu zawierają plany usług powodujące konflikty, więc trzeba będzie obejść konflikt bezproblemową migrację użytkowników. Aby uzyskać więcej informacji o tych konfliktach, zobacz [licencjonowania grupy rozwiązywania problemów z usługi Active Directory: Plany usług powodujące konflikty](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). W żadnym punkcie w czasie migracji należy użytkownicy utracą dostęp do usług lub danych. Migracja jest wykonywane niewielkimi partiami"." Można sprawdzać poprawność wyników dla każdej partii i zminimalizować zakres wszelkich problemów, które mogą wystąpić w trakcie procesu. Ogólnie proces przebiega w następujący sposób:
 
 1.  Użytkownicy są członkami grupy źródłowej i przejmują *licencji source* z tej grupy.
 
@@ -195,15 +196,15 @@ Celem migracji jest na potrzeby Licencjonowanie na podstawie grupy Zmienianie li
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Migrowanie pojedynczego użytkownika za pomocą witryny Azure portal
 Jest to proste wskazówki dotyczące sposobu migracji pojedynczego użytkownika.
 
-**Krok 1**: użytkownik ma *licencji source* która jest dziedziczona z grupy. Nie istnieją żadne bezpośrednie przypisania licencji:
+**KROK 1**: Użytkownik ma *licencji source* która jest dziedziczona z grupy. Nie istnieją żadne bezpośrednie przypisania licencji:
 
 ![Użytkownik mający licencję źródła dziedziczone z grupy](./media/licensing-groups-change-licenses/UserWithSourceLicenseInheritedConflictScenario.png)
 
-**Krok 2**: użytkownik zostanie dodany do grupy docelowej i licencjonowanie na podstawie grupy przetwarza zmiany. Ponieważ użytkownik nadal ma *licencji source*, *licencji docelowej* jest w stanie Błąd z powodu konfliktu:
+**KROK 2**: Użytkownik zostanie dodany do grupy docelowej i licencjonowanie na podstawie grupy przetwarza zmiany. Ponieważ użytkownik nadal ma *licencji source*, *licencji docelowej* jest w stanie Błąd z powodu konfliktu:
 
 ![Użytkownik mający licencję źródła dziedziczone z grupy i docelowy licencji w stanie Błąd](./media/licensing-groups-change-licenses/UserWithSourceLicenseAndTargetLicenseInConflict.png)
 
-**KROK 3**: użytkownik zostanie usunięty z grupy źródłowej i licencjonowanie na podstawie grupy przetwarza zmiany. *Licencji docelowej* jest stosowane do użytkownika:
+**KROK 3**: Ten użytkownik zostaje usunięty z grupy źródłowej i licencjonowanie na podstawie grupy przetwarza zmiany. *Licencji docelowej* jest stosowane do użytkownika:
 
 ![Użytkownik mający licencję docelowej dziedziczone z grupy](./media/licensing-groups-change-licenses/UserWithTargetLicenseAssignedConflictScenario.png)
 

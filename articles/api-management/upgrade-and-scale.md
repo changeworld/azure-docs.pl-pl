@@ -11,18 +11,18 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 1b681b4344512f26f1edc4a5264e718deac569ae
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ac8babf3a00c73b942ae64ac4cca00c7be7cfcfa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441693"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319864"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Uaktualnianie i skalowanie wystąpienia usługi Azure API Management  
 
 Klienci mogą skalować wystąpienia usługi Azure API Management (APIM), dodając i usuwając jednostki. A **jednostki** składa się z dedykowanych zasobów platformy Azure, a także ma pewne nośnych pojemności, wyrażony jako liczby wywołań interfejsu API na miesiąc. Ta liczba nie reprezentuje ograniczenie wywołań, ale raczej wartość maksymalna przepływność do obsługi planowania pojemności nierównej. Rzeczywista przepływność i opóźnienie zależy szeroko czynników, takich jak liczba i szybkość jednoczesnych połączeń, rodzaj i liczba skonfigurowanych zasad, żądań i rozmiarów odpowiedzi i opóźnienie zaplecza.
 
-Pojemność i Cena każdej jednostki jest zależna od **warstwy** , w którym istnieje jednostki. Można wybrać jedną z czterech warstwach: **Developer**, **podstawowe**, **standardowa**, **Premium**. Jeśli potrzebujesz zwiększyć pojemność dla usługi w obrębie warstwy, należy dodać jednostkę. Warstwy, która jest aktualnie wybrany w swojego wystąpienia usługi APIM nie zezwala na dodawanie większej liczby jednostek, musisz wykonać uaktualnienie do warstwy wyższego poziomu.
+Pojemność i Cena każdej jednostki jest zależna od **warstwy** , w którym istnieje jednostki. Możesz wybrać między czterech warstwach: **Deweloper**, **podstawowe**, **standardowa**, **Premium**. Jeśli potrzebujesz zwiększyć pojemność dla usługi w obrębie warstwy, należy dodać jednostkę. Warstwy, która jest aktualnie wybrany w swojego wystąpienia usługi APIM nie zezwala na dodawanie większej liczby jednostek, musisz wykonać uaktualnienie do warstwy wyższego poziomu.
 
 Cena każdej jednostki i dostępnych funkcji (na przykład wdrożenie w wielu regionach), zależy od warstwy, który został wybrany dla swojego wystąpienia usługi APIM. [Cennik](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) artykuł, wyjaśnia cena za jednostkę i funkcje w każdej warstwie. 
 
@@ -45,9 +45,9 @@ Aby wykonać kroki z tego artykułu, musisz mieć:
 
 ## <a name="upgrade-and-scale"></a>Uaktualnianie i skalowanie  
 
-Można wybrać jedną z czterech warstwach: **Developer**, **podstawowe**, **standardowa** i **Premium**. **Developer** warstwy powinien być używany do oceny usługi; nie należy jej używać w środowisku produkcyjnym. **Developer** warstwy nie ma umowy SLA i nie można skalować tę warstwę (Dodawanie/usuwanie jednostek). 
+Możesz wybrać między czterech warstwach: **Deweloper**, **podstawowe**, **standardowa** i **Premium**. **Developer** warstwy powinien być używany do oceny usługi; nie należy jej używać w środowisku produkcyjnym. **Developer** warstwy nie ma umowy SLA i nie można skalować tę warstwę (Dodawanie/usuwanie jednostek). 
 
-**Podstawowe**, **standardowa** i **Premium** są warstwy produkcji, umowy SLA, które mogą być skalowane. **Podstawowe** warstwa jest najtańszej warstwy, która jest objęta umową SLA i może być skalowany maksymalnie 2 jednostek, **standardowa** warstwę można skalować do maksymalnie czterech jednostek. Można dodać dowolną liczbę jednostek do **Premium** warstwy.
+**Podstawowe**, **standardowa** i **Premium** są warstwy produkcji, umowy SLA, które mogą być skalowane. **Podstawowe** warstwa jest najtańszej warstwy, która jest objęta umową SLA i mogą być skalowane do 2 jednostek **standardowa** warstwę można skalować do maksymalnie czterech jednostek. Można dodać dowolną liczbę jednostek do **Premium** warstwy.
 
 **Premium** warstwy umożliwia dystrybucję pojedynczego wystąpienia usługi Azure API Management w dowolnej liczbie żądaną regiony platformy Azure. Podczas początkowego tworzenia usługi Azure API Management, wystąpienie zawiera tylko jedną jednostkę i znajduje się w jednym regionie platformy Azure. Początkowy regionów jest wyznaczony jako **głównej** regionu. Łatwo można dodawać dodatkowe regiony. Podczas dodawania regionu, możesz określić liczbę jednostek, które mają zostać przydzielone. Na przykład można mieć jedną jednostkę **głównej** region i pięć jednostek w niektórych innych regionów. Można dostosować liczbę jednostek do ruchu sieciowego, w każdym regionie. Aby uzyskać więcej informacji, zobacz [jak wdrożyć wystąpienie usługi Azure API Management w wielu regionach platformy Azure](api-management-howto-deploy-multi-region.md).
 

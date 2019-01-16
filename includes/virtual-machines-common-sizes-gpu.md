@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fd37c0c118812bb3554b19fec9bf5ae3f33a2fdc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122840"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54314099"
 ---
 Maszyny Wirtualnej zoptymalizowane pod kątem procesora GPU z jednym lub wieloma procesorami GPU firmy NVIDIA wyspecjalizowane maszyny wirtualne o rozmiarach. Te rozmiary są przeznaczone dla obciążeń intensywnie korzystających z obliczeń, bogatych w elementy graficzne i wizualizacji. Ten artykuł zawiera informacje o liczbie i rodzaju procesorów GPU, procesorów wirtualnych, dysków z danymi i kart sieciowych. Przepustowość przepływności i sieć magazynu dostępne są również dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -99,7 +99,7 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-InfiniBand: Nieobsługiwane
+Infiniband: Nieobsługiwane
 
 
 Maszyna wirtualna serii NDv2 jest nowy dodatek do rodziny procesorów GPU zaprojektowanej na potrzeby HPC, sztucznej Inteligencji i usługi machine learning obciążeń. Dysponuje ona 8 wzajemnie połączonymi procesorami GPU NVIDIA Tesla V100 NVLINK, 40 rdzeniami procesorów Intel Skylake oraz 672 GiB pamięci systemowej. Wystąpienie NDv2 zapewnia świetną wydajność w przypadku precyzji FP32 i FP64 dla obciążeń obliczeń HPC i sztucznej inteligencji korzystających ze struktur Cuda, TensorFlow, Pytorch, Caffe i innych.
@@ -108,9 +108,9 @@ Maszyna wirtualna serii NDv2 jest nowy dodatek do rodziny procesorów GPU zaproj
 <br>
 
 
-| Rozmiar              | procesory wirtualne | Procesory GPU              | Memory (Pamięć)  | Karty sieciowe (maks.) | Maksymalnie z Rozmiar dysku           | Maksymalnie z dyski z danymi (1023 GB każdy) | Maksymalna przepustowość sieci | 
-|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
-| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 giB | 8          | Tymczasowe 1344 / 2948XIO | 32    | 24 000 MB/s             | 
+| Rozmiar              | Procesor wirtualny | Procesory GPU              | Memory (Pamięć)  | Karty sieciowe (maks.) | Maksymalnie z Rozmiar dysku           | Maksymalnie z dyski z danymi (1023 GB każdy) | Maksymalna przepustowość sieci | 
+|-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
+| Standard_ND40s_v2 | 40   | 8 V100 (NVlilnk) | 672 GiB | 8          | Temporary 1344 / 2948XIO | 32                             | 24 000 MB/s           |
 
 ## <a name="nd-series"></a>Seria ND
 

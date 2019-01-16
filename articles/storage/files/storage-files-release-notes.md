@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 1/14/2019
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 87e6f2c956766011adef23ce9a8565625483a244
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 006a8172faae529ce9943773552da325bfae3f4b
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635548"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321538"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,25 +25,25 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Punkt kontrolny | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| Grudzień aktualizacji zbiorczej — [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10 grudnia 2018 r. | Obsługiwane (zalecana wersja) |
-| Pakiet zbiorczy aktualizacji z grudnia | 4.1.0.0 | 4 grudnia 2018 r. | Obsługiwane |
+| 2019 stycznia aktualizacji zbiorczej — [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 14 stycznia 2019 r. | Obsługiwane (zalecana wersja) |
+| Grudnia 2018 r aktualizacji zbiorczej — [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10 grudnia 2018 r. | Obsługiwane |
+| Pakiet zbiorczy aktualizacji z grudnia 2018 r. | 4.1.0.0 | 4 grudnia 2018 r. | Obsługiwane |
 | Wydania wersji 4 | 4.0.1.0 | 13 listopada 2018 r. | Obsługiwane |
-| Pakiet zbiorczy aktualizacji września | 3.3.0.0 | 24 września 2018 r. | Obsługiwane |
-| Pakiet zbiorczy aktualizacji z sierpnia | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane |
+| Pakiet zbiorczy aktualizacji września 2018 r. | 3.3.0.0 | 24 września 2018 r. | Obsługiwane |
+| Pakiet zbiorczy aktualizacji z sierpnia 2018 | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane |
 | Ogólna dostępność | 3.1.0.0 | 19 lipca 2018 r. | Obsługiwane |
-| Pakiet zbiorczy aktualizacji czerwca | 3.0.13.0 | 29 czerwca 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Odśwież 2 | 3.0.12.0 | 22 maja 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Pakiet zbiorczy aktualizacji kwietnia | 2.3.0.0 | 8 maja 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Pakiet zbiorczy aktualizacji z marca | 2.2.0.0 | 12 marca 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Pakiet zbiorczy aktualizacji z lutego | 2.1.0.0 | 28 lutego 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Odśwież 1 | 2.0.11.0 | 8 lutego 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Pakiet zbiorczy aktualizacji stycznia | 1.4.0.0 | 8 stycznia 2018 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Pakiet zbiorczy aktualizacji z listopada | 1.3.0.0 | 30 listopada 2017 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Pakiet zbiorczy aktualizacji października | 1.2.0.0 | 31 października 2017 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
-| Początkowa wersja zapoznawcza | 1.1.0.0 | 26 września 2017 r. | Nie jest obsługiwana — wersja agenta wygasła w dniu 1 października 2018 r. |
+| Wygasłego agentami | 1.1.0.0 - 3.0.13.0 | ND | Nie jest obsługiwana — wersje agentów wygasła w dniu 1 października 2018 r. |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-4300"></a>Wersja agenta 4.3.0.0
+Poniższe informacje o wersji dotyczą wersji 4.3.0.0 agenta usługi Azure File Sync wydanej 14 stycznia 2019 r. Te informacje są uzupełnieniem informacji o wersji 4.0.1.0 informacje o wersji.
+
+Lista problemów rozwiązanych w tej wersji:  
+- Pliki nie są organizowane w warstwy po uaktualnieniu agenta usługi Azure File Sync w wersji 4.x.
+- AfsUpdater.exe jest teraz obsługiwany 2019 serwera systemu Windows.
+- Ulepszenia niezawodności różne do celów synchronizacji. 
 
 ## <a name="agent-version-4200"></a>Wersja agenta 4.2.0.0
 Poniższe informacje o wersji dotyczą wersji 4.2.0.0 agenta usługi Azure File Sync wydanej 10 grudnia 2018 r. Te informacje są uzupełnieniem informacji o wersji 4.0.1.0 informacje o wersji.

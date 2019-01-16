@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b1020389ef28c18c03536d686cd47ef0c65b9204
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e50a82f0f141fec266a8348c0a1a8b5fbdb38b45
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242809"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329858"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Korzystanie z danych usługi Azure Blockchain Workbench w usłudze Microsoft Power BI
 
@@ -25,9 +25,9 @@ Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pobierz program [PowerBI Desktop](https://aka.ms/pbidesktopstore).
+* Pobierz [Power BI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>Łączenie usługi Power BI z danymi w usłudze Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Łączenie usługi Power BI z danymi w aplikacji Azure Blockchain Workbench
 
 1.  Otwórz program Power BI Desktop.
 2.  Wybierz pozycję **Pobieranie danych**.
@@ -49,7 +49,7 @@ Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcj
 
     ![Nawigator](./media/data-powerbi/navigator.png)
 
-7.  Wybierz widoki, które mają zostać uwzględnione. Dla celów demonstracyjnych uwzględnimy widok **vwContractAction** zawierający szczegółowe informacje na temat wszystkich działań, które miały miejsce w kontrakcie.
+7.  Wybierz widoki, które mają zostać uwzględnione. Dla celów demonstracyjnych, dołączamy **vwContractAction**, który zawiera szczegółowe informacje o akcjach, które miały miejsce w kontrakcie.
 
     ![Wybieranie widoków](./media/data-powerbi/select-views.png)
 

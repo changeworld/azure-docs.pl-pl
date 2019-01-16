@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015543"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332629"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopiowanie danych do i z Data Lake Storage Gen1 przy użyciu usługi fabryka danych
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Możesz skopiować dane z następujących magazynów danych **do usługi Azure D
 ## <a name="supported-authentication-types"></a>Typy obsługiwane uwierzytelnianie
 Łącznik programu Data Lake Store obsługuje następujące typy uwierzytelniania:
 * Uwierzytelnianie jednostki usługi
-* Uwierzytelniania poświadczeń (OAuth) użytkownika 
+* Uwierzytelniania poświadczeń (OAuth) użytkownika
 
 Zaleca się, że używasz uwierzytelniania jednostki usługi, szczególnie w przypadku kopiowania danych według harmonogramu. Zachowanie wygaśnięcia tokenu może wystąpić przy użyciu uwierzytelniania poświadczeń użytkownika. Szczegółowe informacje dotyczące konfiguracji, zobacz [właściwości usługi połączonej](#linked-service-properties) sekcji.
 
@@ -58,12 +58,12 @@ Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
-1. Tworzenie **usługi data factory**. Fabryka danych może zawierać jeden lub wiele potoków. 
-2. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych. Na przykład jeśli kopiujesz dane z usługi Azure blob storage do usługi Azure Data Lake Store, utworzysz dwie połączone usługi, aby połączyć swoje konto usługi Azure storage i Azure Data Lake store z fabryką danych. Dla właściwości połączonej usługi, które są specyficzne dla usługi Azure Data Lake Store, zobacz [właściwości usługi połączonej](#linked-service-properties) sekcji. 
+1. Tworzenie **usługi data factory**. Fabryka danych może zawierać jeden lub wiele potoków.
+2. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych. Na przykład jeśli kopiujesz dane z usługi Azure blob storage do usługi Azure Data Lake Store, utworzysz dwie połączone usługi, aby połączyć swoje konto usługi Azure storage i Azure Data Lake store z fabryką danych. Dla właściwości połączonej usługi, które są specyficzne dla usługi Azure Data Lake Store, zobacz [właściwości usługi połączonej](#linked-service-properties) sekcji.
 2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. W tym przykładzie wymienione w ostatnim kroku utworzysz zestaw danych, aby określić kontener obiektów blob oraz folder, który zawiera dane wejściowe. I utwórz inny zestaw danych do określenia folderu i ścieżka pliku w magazynie usługi Data Lake, która przechowuje dane skopiowane z magazynu obiektów blob. Aby uzyskać właściwości zestawu danych, które są specyficzne dla usługi Azure Data Lake Store, zobacz [właściwości zestawu danych](#dataset-properties) sekcji.
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. W przykładzie, o których wspomniano wcześniej możesz użyć BlobSource jako źródła i AzureDataLakeStoreSink jako obiekt sink dla działania kopiowania. Podobnie Azure Data Lake Store są kopiowane do usługi Azure Blob Storage, należy użyć AzureDataLakeStoreSource i BlobSink w działaniu kopiowania. Właściwości działania kopiowania, które są specyficzne dla usługi Azure Data Lake Store, zobacz [właściwości działania kopiowania](#copy-activity-properties) sekcji. Aby uzyskać szczegółowe informacje na temat korzystania z magazynu danych jako źródła lub ujścia kliknij link w poprzedniej sekcji dla magazynu danych.  
+3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. W przykładzie, o których wspomniano wcześniej możesz użyć BlobSource jako źródła i AzureDataLakeStoreSink jako obiekt sink dla działania kopiowania. Podobnie Azure Data Lake Store są kopiowane do usługi Azure Blob Storage, należy użyć AzureDataLakeStoreSource i BlobSink w działaniu kopiowania. Właściwości działania kopiowania, które są specyficzne dla usługi Azure Data Lake Store, zobacz [właściwości działania kopiowania](#copy-activity-properties) sekcji. Aby uzyskać szczegółowe informacje na temat korzystania z magazynu danych jako źródła lub ujścia kliknij link w poprzedniej sekcji dla magazynu danych.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Aby uzyskać przykłady przy użyciu definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z usługi Azure Data Lake Store, zobacz [JSON przykłady](#json-examples-for-copying-data-to-and-from-data-lake-store) dalszej części tego artykułu.
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON. Aby uzyskać przykłady przy użyciu definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z usługi Azure Data Lake Store, zobacz [JSON przykłady](#json-examples-for-copying-data-to-and-from-data-lake-store) dalszej części tego artykułu.
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do Data Lake Store.
 
@@ -74,13 +74,13 @@ Połączona usługa łączy magazyn danych do usługi data factory. Tworzenie po
 |:--- |:--- |:--- |
 | **type** | Właściwość type musi być równa **AzureDataLakeStore**. | Yes |
 | **dataLakeStoreUri** | Informacje o koncie usługi Azure Data Lake Store. Informacja ta ma jedną z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
-| **Identyfikator subskrypcji** | Identyfikator subskrypcji platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
+| **subscriptionId** | Identyfikator subskrypcji platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 | **resourceGroupName** | Nazwa grupy zasobów platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 
 ### <a name="service-principal-authentication-recommended"></a>Uwierzytelnianie jednostki usługi (zalecane)
 Aby użyć uwierzytelniania jednostki usługi, zarejestruj jednostki aplikacji w usłudze Azure Active Directory (Azure AD), a następnie przyznać jej dostęp do programu Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [Service-to-service authentication](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
 * Identyfikator aplikacji
-* Klucz aplikacji 
+* Klucz aplikacji
 * Identyfikator dzierżawy
 
 > [!IMPORTANT]
@@ -233,7 +233,7 @@ Aby uzyskać szczegółowe informacje na temat klas usługi Data Factory używan
     ```
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby określić zestaw danych reprezentujący dane wejściowe w Data Lake Store, należy ustawić **typu** właściwości zestawu danych na **AzureDataLakeStore**. Ustaw **linkedServiceName** właściwości zestawu danych do nazwy Data Lake Store połączoną usługę. Aby uzyskać pełną listę sekcje JSON i właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Części zestawu danych w formacie JSON, takich jak **struktury**, **dostępności**, i **zasad**, są podobne dla wszystkich typów w zestawie danych (bazy danych Azure SQL, obiektów blob platformy Azure i usługi Azure table dla np.). **TypeProperties** sekcji różni się dla każdego typu zestawu danych i udostępnia informacje, takie jak lokalizacja i format danych w magazynie danych. 
+Aby określić zestaw danych reprezentujący dane wejściowe w Data Lake Store, należy ustawić **typu** właściwości zestawu danych na **AzureDataLakeStore**. Ustaw **linkedServiceName** właściwości zestawu danych do nazwy Data Lake Store połączoną usługę. Aby uzyskać pełną listę sekcje JSON i właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Części zestawu danych w formacie JSON, takich jak **struktury**, **dostępności**, i **zasad**, są podobne dla wszystkich typów w zestawie danych (bazy danych Azure SQL, obiektów blob platformy Azure i usługi Azure table dla np.). **TypeProperties** sekcji różni się dla każdego typu zestawu danych i udostępnia informacje, takie jak lokalizacja i format danych w magazynie danych.
 
 **TypeProperties** sekcji dla zestawu danych typu **AzureDataLakeStore** zawiera następujące właściwości:
 
@@ -243,7 +243,7 @@ Aby określić zestaw danych reprezentujący dane wejściowe w Data Lake Store, 
 | **fileName** |Nazwa pliku w usłudze Azure Data Lake Store. **FileName** właściwość jest opcjonalna i wielkość liter. <br/><br/>Jeśli określisz **fileName**, aktywności (w tym kopiowania) działa na określonego pliku.<br/><br/>Gdy **fileName** nie zostanie określony, kopia uwzględnia wszystkie pliki w **folderPath** w zestawie danych wejściowych.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku ma format danych. _Identyfikator GUID_.txt ". Na przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nie |
 | **partitionedBy** |**PartitionedBy** właściwość jest opcjonalna. Służy do określania dynamiczne ścieżkę i nazwę pliku dla danych szeregów czasowych. Na przykład **folderPath** mogą być parametryzowane za każdą godzinę danych. Aby uzyskać szczegółowe informacje i przykłady, zobacz [właściwość partitionedBy](#using-partitionedby-property). |Nie |
 | **Format** | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Ustaw **typu** właściwości **format** do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje w [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykułu. <br><br> Jeśli chcesz skopiować pliki "jako — jest" między opartych na plikach magazynów (kopia binarna), Pomiń `format` sekcji w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| **Kompresja** | Określ typ i poziom kompresji danych. Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| **compression** | Określ typ i poziom kompresji danych. Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 ### <a name="the-partitionedby-property"></a>Właściwość partitionedBy
 Można określić dynamiczny **folderPath** i **fileName** właściwości danych szeregów czasowych za pomocą **partitionedBy** właściwości funkcji usługi fabryka danych i zmiennych systemowych. Aby uzyskać więcej informacji, zobacz [usługi Azure Data Factory — funkcje i zmienne systemowe](data-factory-functions-variables.md) artykułu.
@@ -264,14 +264,14 @@ W poniższym przykładzie, rok, miesiąc, dzień i godzina `SliceStart` są wyod
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Aby uzyskać szczegółowe informacje na temat zestawów danych szeregów czasowych, planowanie i wycinków, zobacz [zestawów danych w usłudze Azure Data Factory](data-factory-create-datasets.md) i [usługi Data Factory planowania i wykonywania](data-factory-scheduling-and-execution.md) artykułów. 
+Aby uzyskać szczegółowe informacje na temat zestawów danych szeregów czasowych, planowanie i wycinków, zobacz [zestawów danych w usłudze Azure Data Factory](data-factory-create-datasets.md) i [usługi Data Factory planowania i wykonywania](data-factory-scheduling-and-execution.md) artykułów.
 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
@@ -284,7 +284,6 @@ Właściwości dostępne w **typeProperties** różnią się w sekcji działania
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | **cykliczne** |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |TRUE, False (wartość domyślna) |Nie |
-
 
 **AzureDataLakeStoreSink** obsługuje następujące właściwości w **typeProperties** sekcji:
 
@@ -308,7 +307,7 @@ W tej sekcji opisano wynikowe zachowania operacji kopiowania różne kombinacje 
 Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykułu.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Przykłady JSON do kopiowania danych Data Lake Store
-W poniższych przykładach udostępniono przykładowe definicji JSON. Te definicje umożliwia tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak kopiować dane do i z usługi Data Lake Store i Azure Blob storage. Jednak dane mogą być kopiowane _bezpośrednio_ z dowolnego źródła do dowolnej obsługiwanej wychwytywanie. Aby uzyskać więcej informacji, zobacz sekcję "obsługiwane magazyny danych i formatów" w [przenoszenie danych za pomocą działania kopiowania](data-factory-data-movement-activities.md) artykułu.  
+W poniższych przykładach udostępniono przykładowe definicji JSON. Te definicje umożliwia tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak kopiować dane do i z usługi Data Lake Store i Azure Blob storage. Jednak dane mogą być kopiowane _bezpośrednio_ z dowolnego źródła do dowolnej obsługiwanej wychwytywanie. Aby uzyskać więcej informacji, zobacz sekcję "obsługiwane magazyny danych i formatów" w [przenoszenie danych za pomocą działania kopiowania](data-factory-data-movement-activities.md) artykułu.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Przykład: Kopiowanie danych z usługi Azure Blob Storage do usługi Azure Data Lake Store
 Przykładowy kod w tej sekcji przedstawiono:
@@ -319,7 +318,7 @@ Przykładowy kod w tej sekcji przedstawiono:
 * Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureDataLakeStore](#dataset-properties).
 * A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) i [AzureDataLakeStoreSink](#copy-activity-properties).
 
-W przykładach pokazano, jak szeregów czasowych dane z usługi Azure Blob Storage są kopiowane do Data Lake Store, co godzinę. 
+W przykładach pokazano, jak szeregów czasowych dane z usługi Azure Blob Storage są kopiowane do Data Lake Store, co godzinę.
 
 **Połączona usługa Azure Storage**
 
@@ -428,68 +427,67 @@ Poniższy przykład kopiuje dane do programu Data Lake Store. Nowe dane są kopi
 ```JSON
 {
     "name": "AzureDataLakeStoreOutput",
-      "properties": {
+    "properties": {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
         "typeProperties": {
             "folderPath": "datalake/output/"
         },
         "availability": {
-              "frequency": "Hour",
-              "interval": 1
+            "frequency": "Hour",
+            "interval": 1
         }
-      }
+    }
 }
 ```
-
 
 **Działanie kopiowania w potoku za pomocą obiektu blob źródła i ujścia Data Lake Store**
 
 W poniższym przykładzie potoku zawierającego działanie kopiowania, który jest skonfigurowany do używania danych wejściowych i wyjściowych zestawów danych. Działanie kopiowania jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok `source` ustawiono typ `BlobSource`i `sink` ustawiono typ `AzureDataLakeStoreSink`.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
     "properties":
-    {  
+    {
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline with copy activity",
         "activities":
-        [  
-              {
+        [
+            {
                 "name": "AzureBlobtoDataLake",
                 "description": "Copy Activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureBlobInput"
-                  }
+                    {
+                        "name": "AzureBlobInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureDataLakeStoreOutput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "BlobSource"
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "AzureDataLakeStoreSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
+            }
         ]
     }
 }
@@ -504,7 +502,7 @@ Przykładowy kod w tej sekcji przedstawiono:
 * Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [AzureDataLakeStoreSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Kod kopiuje dane szeregów czasowych z Data Lake Store do obiektu blob platformy Azure co godzinę. 
+Kod kopiuje dane szeregów czasowych z Data Lake Store do obiektu blob platformy Azure co godzinę.
 
 **Usługę połączoną usługi Azure Data Lake Store**
 
@@ -547,7 +545,7 @@ W tym przykładzie ustawienie `"external"` do `true` usługi Data Factory inform
 ```json
 {
     "name": "AzureDataLakeStoreInput",
-      "properties":
+    "properties":
     {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
@@ -563,16 +561,16 @@ W tym przykładzie ustawienie `"external"` do `true` usługi Data Factory inform
         "external": true,
         "availability": {
             "frequency": "Hour",
-              "interval": 1
+            "interval": 1
         },
         "policy": {
-              "externalData": {
+            "externalData": {
                 "retryInterval": "00:01:00",
                 "retryTimeout": "00:10:00",
                 "maximumRetry": 3
-              }
+            }
         }
-      }
+    }
 }
 ```
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
@@ -640,47 +638,47 @@ W poniższym przykładzie dane są zapisywane do nowego obiektu blob na godzinę
 W poniższym przykładzie potoku zawierającego działanie kopiowania, który jest skonfigurowany do używania danych wejściowych i wyjściowych zestawów danych. Działanie kopiowania jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok `source` ustawiono typ `AzureDataLakeStoreSource`i `sink` ustawiono typ `BlobSink`.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for copy activity",
-        "activities":[  
-              {
+        "activities":[
+            {
                 "name": "AzureDakeLaketoBlob",
                 "description": "copy activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureDataLakeStoreInput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureBlobOutput"
-                  }
+                    {
+                        "name": "AzureBlobOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "AzureDataLakeStoreSource",
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "BlobSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
-         ]
+            }
+        ]
     }
 }
 ```

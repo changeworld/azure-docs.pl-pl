@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a18bcf9f9e1217b674bda5f5ae698908f1911a8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262918"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329994"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
@@ -41,7 +41,7 @@ Poniższej tabeli wymieniono i opisano poszczególne kroki publikowania i zapewn
 | Testowanie poprawności dysku          | < 2 godziny   | (Opcjonalnie) Jeśli wersji testowej jest obecny, Microsoft weryfikuje, że można go wdrożyć i replikowane.  |
 | Tworzenie pakietów i rejestracji generowania potencjalnych klientów | < 1 godz.  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i wdrażane. |
 |  Podpisywania wydawcy             |  Ręcznie    | Wydawcy ostateczny Przegląd i potwierdzenie oferty przejdzie na żywo. Oferta jest teraz dostępna w wersji zapoznawczej.  Sprawdź, czy spełnia wszystkie wymagania dotyczące można wdrożyć swoją ofertę w wybranych subskrypcjach (w krokach informacji oferty).  Po upewnieniu się, oferty, wybierz **Go Live** dzięki ofercie przejściem do następnego kroku. |
-| Przegląd firmy Microsoft                | 7 — 14 dni * | Firma Microsoft całościowo przeglądy aplikacji systemu Azure i wiadomości e-mail, jeśli zostaną wykryte problemy.  * Rzadko ten krok może trwać dłużej niż 14 dni, w zależności od złożoności aplikacji i problemów niewykrytych.  |
+| Przegląd firmy Microsoft                | 7 — 14 dni | Firma Microsoft całościowo przeglądy aplikacji systemu Azure i wiadomości e-mail, jeśli zostaną wykryte problemy.  Długość tego kroku zależy od złożoności aplikacji problemów niewykrytych i jak szybko możesz Reaguj na nie.  |
 | Na żywo                           | < 1 dzień | Oferta jest zwolniony, replikowane do określonych regionów i udostępnione publicznie. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 2aa0b152a4fd50e8023df00ec5dd59d1b2a6e6b0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 275c954ac54aab5ab4b41f4d6f6610a01573483f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262238"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319073"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Rozpoczynanie pracy z usługą automatyczne skalowanie według metryki niestandardowe na platformie Azure
 W tym artykule opisano sposób skalowania zasobu przez Metryka niestandardowa w witrynie Azure portal.
@@ -39,7 +39,7 @@ W tym artykule założono, że aplikacja sieci web za pomocą usługi applicatio
 > Uwaga: W przypadku, gdy występuje problem z odczytaniem metryk zasobów i bieżąca pojemność to pojemność domyślna, następnie aby zapewnić dostępność zasobów, skalowania automatycznego przeprowadzi skalowanie w poziomie do wartości domyślnej. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie będą skalowane w.
 - Kliknij przycisk "Zapisz"
 
-Gratulacje. Masz teraz pomyślnie utworzono ustawienie automatycznego skalowania skalować aplikację sieci web, w oparciu o metryki niestandardowe.
+Gratulacje. Teraz pomyślnie utworzono skalowania ustawienie automatycznego skalowania aplikacji sieci web na podstawie metryki niestandardowe.
 
 > Uwaga: Te same kroki mają zastosowanie do Rozpoczynanie pracy z usługą roli usługi zestawu skalowania maszyn wirtualnych lub w chmurze.
 

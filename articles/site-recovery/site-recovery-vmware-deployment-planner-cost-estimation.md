@@ -1,18 +1,18 @@
 ---
 title: Przejrzyj raport szacowania kosztów w planista wdrażania usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób przejrzeć raport szacowania kosztów w planista wdrażania usługi Azure Site Recovery dla oprogramowania VMware do odzyskiwania po awarii platformy Azure.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 46ec116b357df8cc5de889f64d4620544c062979
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848344"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321494"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Przejrzyj raport szacowania kosztów w planista wdrażania usługi Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -28,13 +28,13 @@ Podsumowanie pomaga zrozumieć ponoszone koszty magazynowania, obliczania, użyc
  
 Koszt można wyświetlić w rozliczeniu miesięcznym lub rocznym. Dowiedz się więcej o [obsługiwanych regionach docelowych](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) i [obsługiwanych walutach](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Koszt według składników**: całkowity koszt odzyskiwania po awarii jest dzielony na cztery składniki: obliczenia, magazyn, sieć i koszt licencji usługi Azure Site Recovery. Koszt jest obliczany na podstawie wykorzystania powstałego podczas replikacji oraz w czasie testowania odzyskiwania po awarii dla mocy obliczeniowych, magazynu (warstwa Premium i Standardowa), usługi ExpressRoute/sieci VPN skonfigurowanej między lokacją lokalną i platformą Azure oraz dla licencji usługi Azure Site Recovery.
+**Koszt według składników** łączny koszt odzyskiwania po awarii jest dzielony na cztery składniki: Koszt licencji usługi obliczeniowe, Magazyn, sieci i usługi Azure Site Recovery. Koszt jest obliczany na podstawie wykorzystania powstałego podczas replikacji oraz w czasie testowania odzyskiwania po awarii dla mocy obliczeniowych, magazynu (warstwa Premium i Standardowa), usługi ExpressRoute/sieci VPN skonfigurowanej między lokacją lokalną i platformą Azure oraz dla licencji usługi Azure Site Recovery.
 
 **Koszt według stanów**: łączny koszt odzyskiwania po awarii (DR) jest dzielony na kategorie na podstawie dwóch różnych stanów — replikacji i testowania odzyskiwania po awarii. 
 
-**Koszt replikacji**: koszt, który zostanie naliczony podczas replikacji. Obejmuje on koszt magazynu, użycia sieci i licencji usługi Azure Site Recovery. 
+**Koszt replikacji**:  Koszt, który zostanie naliczony podczas replikacji. Obejmuje on koszt magazynu, użycia sieci i licencji usługi Azure Site Recovery. 
 
-**Koszt testowania odzyskiwania po awarii**: koszt, który zostanie naliczony podczas testów pracy w trybie failover. Usługa Azure Site Recovery uruchamia maszyny wirtualne podczas testu pracy w trybie failover. Koszt testowania odzyskiwania po awarii obejmuje koszt magazynu i mocy obliczeniowej działających maszyn wirtualnych. 
+**Koszt testowania odzyskiwania po awarii**: Koszt, który zostanie naliczony podczas testów pracy w trybie Failover. Usługa Azure Site Recovery uruchamia maszyny wirtualne podczas testu pracy w trybie failover. Koszt testowania odzyskiwania po awarii obejmuje koszt magazynu i mocy obliczeniowej działających maszyn wirtualnych. 
 
 **Koszt magazynu platformy Azure na miesiąc/rok**: obejmuje łączny koszt magazynu, który zostanie naliczony dla magazynów w warstwie Premium i Standardowa podczas replikacji i testowania odzyskiwania po awarii.
 
@@ -49,19 +49,19 @@ W całym raporcie komórki oznaczone kolorem szarym są przeznaczone tylko do od
 ### <a name="overall-dr-cost-by-components"></a>Ogólny koszt odzyskiwania po awarii według składników
 W pierwszej sekcji przedstawiono ogólny koszt odzyskiwania według składników i koszt odzyskiwania po awarii według stanów. 
 
-**Obliczenia**: koszt maszyn wirtualnych IaaS uruchamianych na platformie Azure na potrzeby odzyskiwania po awarii. Obejmuje on maszyny wirtualne tworzone przez usługę Azure Site Recovery podczas testowania odzyskiwania po awarii (testowanie pracy w trybie failover) oraz maszyny wirtualne działające na platformie Azure, takie jak program SQL Server z zawsze włączonymi grupami dostępności i kontrolerami domeny/serwerami nazw domen.
+**Obliczenia**: Koszt maszyn wirtualnych IaaS uruchamianych na platformie Azure na potrzeby odzyskiwania po awarii. Obejmuje on maszyny wirtualne tworzone przez usługę Azure Site Recovery podczas testowania odzyskiwania po awarii (testowanie pracy w trybie failover) oraz maszyny wirtualne działające na platformie Azure, takie jak program SQL Server z zawsze włączonymi grupami dostępności i kontrolerami domeny/serwerami nazw domen.
 
-**Magazyn**: koszt użycia magazynu platformy Azure na potrzeby odzyskiwania po awarii. Obejmuje on użycie magazynu na potrzeby replikacji oraz podczas testowania odzyskiwania po awarii.
-Sieć: koszt usługi ExpressRoute i sieci VPN między lokacjami na potrzeby odzyskiwania po awarii. 
+**Magazyn**: Koszt użycia magazynu platformy Azure na potrzeby odzyskiwania po awarii wymaga. Obejmuje on użycie magazynu na potrzeby replikacji oraz podczas testowania odzyskiwania po awarii.
+Network: Usługi ExpressRoute i sieci VPN między lokacjami, koszt na potrzeby odzyskiwania po awarii. 
 
-**Licencja usługi ASR**: koszt licencji usługi Azure Site Recovery dla wszystkich zgodnych maszyn wirtualnych. Jeśli w tabeli szczegółowej analizy kosztów ręcznie wprowadzono maszynę wirtualną, koszt licencji usługi Azure Site Recovery jest również uwzględniany w przypadku tej maszyny wirtualnej.
+**Licencja usługi ASR**: Koszt licencji usługi Azure Site Recovery dla wszystkich zgodnych maszyn wirtualnych. Jeśli w tabeli szczegółowej analizy kosztów ręcznie wprowadzono maszynę wirtualną, koszt licencji usługi Azure Site Recovery jest również uwzględniany w przypadku tej maszyny wirtualnej.
 
 ### <a name="overall-dr-cost-by-states"></a>Ogólny koszt odzyskiwania po awarii według stanów
 Łączny koszt odzyskiwania po awarii jest dzielony na kategorie na podstawie dwóch różnych stanów — replikacji i testowania odzyskiwania po awarii.
 
-**Koszt replikacji**: koszt generowany podczas replikacji. Obejmuje on koszt magazynu, użycia sieci i licencji usługi Azure Site Recovery. 
+**Koszt replikacji**: Koszt generowany podczas replikacji. Obejmuje on koszt magazynu, użycia sieci i licencji usługi Azure Site Recovery. 
 
-**Koszt testowania odzyskiwania po awarii**: koszt generowany podczas testowania odzyskiwania po awarii. Usługa Azure Site Recovery uruchamia maszyny wirtualne podczas testowania odzyskiwania po awarii. Koszt testowania odzyskiwania po awarii obejmuje koszt magazynu i mocy obliczeniowej działających maszyn wirtualnych.
+**Koszt testowania odzyskiwania po awarii**: Koszt generowany podczas testowania odzyskiwania po awarii. Usługa Azure Site Recovery uruchamia maszyny wirtualne podczas testowania odzyskiwania po awarii. Koszt testowania odzyskiwania po awarii obejmuje koszt magazynu i mocy obliczeniowej działających maszyn wirtualnych.
 Łączny czas trwania testowania odzyskiwania po awarii = Liczba operacji testowania odzyskiwania po awarii x Czas trwania każdej operacji testowania odzyskiwania po awarii (w dniach). Średni koszt operacji testowania odzyskiwania po awarii (na miesiąc) = Łączny koszt testowania odzyskiwania operacji/12
 
 ### <a name="storage-cost-table"></a>Tabela kosztów magazynu:
@@ -70,11 +70,11 @@ W tej tabeli przedstawiono koszt magazynu w warstwie Premium i Standardowa ponos
 ### <a name="site-to-azure-network"></a>Sieć między lokacją i platformą Azure
 Wybierz odpowiednie ustawienia zgodnie z wymaganiami. 
 
-**ExpressRoute**: domyślnie narzędzie wybiera najbliższy plan usługi ExpressRoute, który odpowiada wymaganej przepustowości sieci na potrzeby replikacji różnicowej. Plan można zmienić zgodnie z potrzebami.
+**ExpressRoute**: Domyślnie narzędzie wybiera najbliższy plan usługi ExpressRoute, który odpowiada wymagana przepustowość sieci dla replikacji różnicowej. Plan można zmienić zgodnie z potrzebami.
 
-**VPN Gateway**: wybierz bramę VPN Gateway, jeśli istnieje w Twoim środowisku. Wartość domyślna to Nie dotyczy.
+**VPN Gateway**: Wybierz bramę sieci VPN, jeśli w danym środowisku. Wartość domyślna to Nie dotyczy.
 
-**Region docelowy**: region usługi Azure określony na potrzeby odzyskiwania po awarii. Cena użyta w raporcie na potrzeby obliczania, magazynu, sieci i licencji opiera się na cenniku platformy Azure dla tego regionu. 
+**Region docelowy**: Określony region platformy Azure do odzyskiwania po awarii. Cena użyta w raporcie na potrzeby obliczania, magazynu, sieci i licencji opiera się na cenniku platformy Azure dla tego regionu. 
 
 ### <a name="vm-running-on-azure"></a>Maszyna wirtualna działająca na platformie Azure
 Jeśli na potrzeby odzyskiwania po awarii na platformie Azure działa maszyna wirtualna kontrolera domeny lub systemu DNS albo maszyna wirtualna programu SQL Server z zawsze włączonymi grupami dostępności, musisz podać liczbę i rozmiar maszyn wirtualnych w celu uwzględnienia ich kosztu obliczeń w łącznym koszcie odzyskiwania po awarii. 
@@ -86,9 +86,9 @@ Jeśli jesteś partnerem platformy Azure lub klientem i masz uprawnienia do dowo
 W tej tabeli przedstawiono liczbę maszyn wirtualnych z systemem Windows i maszyn wirtualnych z systemem innym niż Windows oraz ich koszt obliczeń na potrzeby testowania odzyskiwania po awarii.
 
 ### <a name="settings"></a>Ustawienia 
-**Użycie dysku zarządzanego**: określa, czy dysk zarządzany jest używany w czasie testowania odzyskiwania po awarii. Wartość domyślna to Tak. Jeśli opcja -UseManagedDisks zostanie ustawiona na Nie, do obliczenia kosztów narzędzie użyje ceny dysku niezarządzanego.
+**Użycie dysku zarządzanego**: Określa, czy dysk zarządzany jest używany w czasie testowania odzyskiwania po awarii. Wartość domyślna to Tak. Jeśli opcja -UseManagedDisks zostanie ustawiona na Nie, do obliczenia kosztów narzędzie użyje ceny dysku niezarządzanego.
 
-**Waluta**: waluta, w którym jest generowany raport. Czas trwania dla kosztu: można wyświetlić wszystkie koszty dla miesiąca lub całego roku. 
+**Waluta**: Waluta, w którym jest generowany raport. Czas trwania kosztów:  Można wyświetlić wszystkie koszty dla miesiąca lub całego roku. 
 
 ## <a name="detailed-cost-analysis-table"></a>Tabela szczegółowej analizy kosztów
 ![Szczegółowa analiza kosztów](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png) W tabeli przedstawiono podział kosztów dla każdej zgodnej maszyny wirtualnej. Przy użyciu tej tabeli można również zidentyfikować szacowany koszt odzyskiwania po awarii na platformie Azure dla nieprofilowanych maszyn wirtualnych, ręcznie dodając maszyny wirtualne. Jest to przydatne, jeśli trzeba oszacować koszty platformy Azure na potrzeby nowego wdrożenia odzyskiwania po awarii bez przeprowadzania szczegółowego profilowania.
@@ -110,35 +110,35 @@ Aby ręcznie dodać maszyny wirtualne:
 
 4.  Kliknij pozycję „Oblicz ponownie koszt”, aby zaktualizować koszt.
 
-**Nazwa maszyny wirtualnej**: nazwa maszyny wirtualnej.
+**Nazwa maszyny Wirtualnej**: Nazwa maszyny Wirtualnej.
 
-**Liczba maszyn wirtualnych**: liczba maszyn wirtualnych, które są zgodne z konfiguracją. Możesz zaktualizować liczbę istniejących maszyn wirtualnych, jeśli maszyny wirtualne o podobnej konfiguracji nie są profilowane, ale będą chronione.
+**Liczba maszyn wirtualnych**: Liczba maszyn wirtualnych, które zgodna z konfiguracją. Możesz zaktualizować liczbę istniejących maszyn wirtualnych, jeśli maszyny wirtualne o podobnej konfiguracji nie są profilowane, ale będą chronione.
 
-**Rozmiar IaaS (zalecenie)**: jest to rozmiar roli zgodnej maszyny wirtualnej zalecany przez narzędzie. 
+**Rozmiar IaaS (zalecenie)**: Jest to rozmiar roli zgodnej maszyny wirtualnej zalecany przez narzędzie. 
 
-**Rozmiar IaaS (wybór)**: domyślnie jest on taki sam jak zalecany rozmiar roli maszyny wirtualnej. Rolę można zmienić zgodnie z wymaganiami. Koszt obliczeń opiera się na wybranym rozmiarze roli maszyny wirtualnej.
+**Rozmiar IaaS (wybór)**: Domyślnie jest taki sam jak zalecany rozmiar roli maszyny Wirtualnej. Rolę można zmienić zgodnie z wymaganiami. Koszt obliczeń opiera się na wybranym rozmiarze roli maszyny wirtualnej.
 
-**Typ magazynu**: typ magazynu używany przez maszynę wirtualną. Jest to magazyn w warstwie Standardowa lub Premium.
+**Typ magazynu**: Typ magazynu, który jest używany przez maszynę Wirtualną. Jest to magazyn w warstwie Standardowa lub Premium.
 
-**Łączny rozmiar magazynu maszyny wirtualnej (GB)**: całkowita wielkość magazynu maszyny wirtualnej.
+**Maszyna wirtualna łączny rozmiar magazynu (GB)**: Całkowita wielkość magazynu maszyny Wirtualnej.
 
-**Liczba operacji testowania odzyskiwania po awarii w roku**: liczba wykonań testowania odzyskiwania po awarii w ciągu roku. Wartość domyślna to 4 razy w roku. Można zmodyfikować okres dla wybranych maszyn wirtualnych lub zastosować nową wartość do wszystkich maszyn wirtualnych, wprowadzając nową wartość w górnym wierszu i klikając przycisk „Zastosuj do wszystkich”. Liczba operacji testowania odzyskiwania po awarii w ciągu roku i czasu trwania poszczególnych okresów testowania odzyskiwania po awarii jest obliczany łączny koszt odzyskiwania po awarii.  
+**Liczba awarii w roku**: Liczba wykonań testowania odzyskiwania po awarii w roku. Wartość domyślna to 4 razy w roku. Można zmodyfikować okres dla wybranych maszyn wirtualnych lub zastosować nową wartość do wszystkich maszyn wirtualnych, wprowadzając nową wartość w górnym wierszu i klikając przycisk „Zastosuj do wszystkich”. Liczba operacji testowania odzyskiwania po awarii w ciągu roku i czasu trwania poszczególnych okresów testowania odzyskiwania po awarii jest obliczany łączny koszt odzyskiwania po awarii.  
 
-**Czas trwania każdej operacji testowania odzyskiwania po awarii (w dniach)**: czas trwania poszczególnych operacji testowania odzyskiwania po awarii. Wartość domyślna to 7 dni co 90 dni zgodnie z [korzyścią odzyskiwania po awarii w pakiecie Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Można zmodyfikować okres dla wybranych maszyn wirtualnych lub zastosować nową wartość do wszystkich maszyn wirtualnych, wprowadzając nową wartość w górnym wierszu i klikając przycisk „Zastosuj do wszystkich”. Łączny koszt odzyskiwania po awarii jest obliczany w oparciu o liczbę operacji testowania odzyskiwania po awarii w ciągu roku i czasu trwania poszczególnych okresów testowania odzyskiwania po awarii.
+**Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**: Czas trwania każdej operacji testowania odzyskiwania po awarii. Wartość domyślna to 7 dni co 90 dni zgodnie z [korzyścią odzyskiwania po awarii w pakiecie Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Można zmodyfikować okres dla wybranych maszyn wirtualnych lub zastosować nową wartość do wszystkich maszyn wirtualnych, wprowadzając nową wartość w górnym wierszu i klikając przycisk „Zastosuj do wszystkich”. Łączny koszt odzyskiwania po awarii jest obliczany w oparciu o liczbę operacji testowania odzyskiwania po awarii w ciągu roku i czasu trwania poszczególnych okresów testowania odzyskiwania po awarii.
   
-**Typ systemu operacyjnego**: typ systemu operacyjnego maszyny wirtualnej. Może być to system Windows lub Linux. Jeśli typ systemu operacyjnego to Windows, do tej maszyny wirtualnej można zastosować korzyść użycia hybrydowego platformy Azure. 
+**Typ systemu operacyjnego**: Typ systemu operacyjnego maszyny Wirtualnej. Może być to system Windows lub Linux. Jeśli typ systemu operacyjnego to Windows, do tej maszyny wirtualnej można zastosować korzyść użycia hybrydowego platformy Azure. 
 
-**Nadmiarowość danych**: może mieć jedną z następujących wartości — Magazyn lokalnie nadmiarowy (LRS), Magazyn geograficznie nadmiarowy (GRS) lub Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS). Wartość domyślna to LRS. Można zmienić typ w oparciu o konto magazynu dla określonych maszyn wirtualnych lub zastosować nowy typ do wszystkich maszyn wirtualnych, klikając przycisk „Zastosuj do wszystkich”.  Koszt magazynu na potrzeby replikacji jest obliczany na podstawie ceny wybranej nadmiarowości danych. 
+**Nadmiarowość danych**: Może to być jedna z następujących wartości — magazyn lokalnie nadmiarowy (LRS), Magazyn geograficznie nadmiarowy (GRS) lub magazyn geograficznie nadmiarowy dostęp do odczytu (RA-GRS). Wartość domyślna to LRS. Można zmienić typ w oparciu o konto magazynu dla określonych maszyn wirtualnych lub zastosować nowy typ do wszystkich maszyn wirtualnych, klikając przycisk „Zastosuj do wszystkich”.  Koszt magazynu na potrzeby replikacji jest obliczany na podstawie ceny wybranej nadmiarowości danych. 
 
-**Korzyść użycia hybrydowego platformy Azure**: można ją zastosować do maszyn wirtualnych systemu Windows, jeśli ma to zastosowanie.  Wartość domyślna to Yes. Można zmienić ustawienie dla określonych maszyn wirtualnych lub zaktualizować wszystkie maszyny wirtualne, klikając przycisk „Zastosuj do wszystkich”.
+**Korzyść użycia hybrydowego platformy Azure**: Korzyść użycia hybrydowego platformy Azure można zastosować do maszyn wirtualnych Windows, jeśli ma to zastosowanie.  Wartość domyślna to Yes. Można zmienić ustawienie dla określonych maszyn wirtualnych lub zaktualizować wszystkie maszyny wirtualne, klikając przycisk „Zastosuj do wszystkich”.
 
-**Łączne użycie platformy Azure**: obejmuje koszt obliczeń, magazynu i licencji usługi Azure Site Recovery powiązany z danym odzyskiwaniem po awarii. W oparciu o wybraną opcję jest przedstawiany koszt miesięczny lub roczny.
+**Łączne użycie platformy Azure**: Danym odzyskiwaniem po awarii obejmuje koszt licencji usługi Azure Site Recovery obliczeń, magazynu i. W oparciu o wybraną opcję jest przedstawiany koszt miesięczny lub roczny.
 
-**Koszt replikacji w stanie stabilności**: obejmuje koszt magazynu na potrzeby replikacji.
+**Koszt replikacji w stanie stabilnym**: Obejmuje on koszt magazynu na potrzeby replikacji.
 
-**Łączny koszt testowania odzyskiwania po awarii (średni)**: obejmuje koszt obliczeń i magazynu na potrzeby testowania odzyskiwania po awarii.
+**Łączny koszt testowania odzyskiwania po awarii (średni)**: Zawiera zasoby obliczeniowe i Magazyn koszt testowania odzyskiwania po awarii.
 
-**Koszt licencji usługi ASR**: koszt licencji usługi Azure Site Recovery.
+**Koszt licencji usługi ASR**: Koszt licencji usługi Azure Site Recovery.
 
 ## <a name="supported-target-regions"></a>Obsługiwane regiony docelowe
 Planista wdrożenia usługi Azure Site Recovery udostępnia szacowanie kosztów dla poniższych regionów platformy Azure. Jeśli ta lista nie zawiera Twojego regionu, możesz użyć dowolnego spośród następujących regionów, którego cena jest najbardziej zbliżona do Twojego.

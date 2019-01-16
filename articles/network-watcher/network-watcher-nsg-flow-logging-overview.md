@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: addd901e1b3a9bb537278082763081a7e39b21da
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824289"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332306"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń
 
@@ -33,10 +33,12 @@ Gdy dzienników przepływów sieciowych grup zabezpieczeń docelowej, nie są wy
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
- 
+Można analizować dzienniki przepływu i Uzyskaj szczegółowe informacje dotyczące ruchu w sieci przy użyciu [traffic analytics](traffic-analytics.md).
+
 Te same zasady przechowywania widoczne dla innych dzienników dotyczą dzienników przepływów. Możesz ustawić zasady przechowywania dziennika od dnia 1 do 2147483647 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki będą obsługiwane przez czas nieokreślony.
 
-Ponadto można przeanalizować dzienników przepływów przy użyciu [traffic analytics](traffic-analytics.md).
+> [!NOTE] 
+> Funkcja zasad przechowywania użyciu rejestrowanie przepływu sieciowych grup zabezpieczeń może skutkować dużą liczbę operacji magazynu i powiązanych kosztów. Jeśli funkcja zasad przechowywania nie jest wymagane, zaleca się Ustaw tę wartość na 0.
 
 
 ## <a name="log-file"></a>Plik dziennika
@@ -63,15 +65,15 @@ Dzienniki przepływów obejmują następujące właściwości:
                     * **Protokół** — protokół przepływ. Prawidłowe wartości to **T** dla protokołu TCP i **U** protokołu UDP
                     * **Traffic Flow** -kierunek przepływu ruchu. Prawidłowe wartości to **I** dla ruchu przychodzącego i **O** dla ruchu wychodzącego.
                     * **Ruch decyzji** — czy zezwolenie lub odrzucenie ruchu. Prawidłowe wartości to **A** dla dozwolone i **D** dla odmowa.
-                    * **Stan usługi Flow — tylko w wersji 2** -przechwytuje stan przepływu. Możliwe stany są **B**: początek, gdy zostanie utworzony przepływ. Statystyki nie są dostarczane. **C**: kontynuowanie ciągłego przepływu. Statystyki są podane na 5-minutowych interwałach. **E**: koniec, gdy przepływ zostanie zakończony. Statystyki są dostarczane.
+                    * **Stan usługi Flow — tylko w wersji 2** -przechwytuje stan przepływu. Możliwe stany są **B**: Rozpocznij, gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: Kontynuowanie ciągłego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: Zakończenie, gdy przepływ zostanie zakończony. Statystyki są podawane.
                     * **Pakiety - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba pakietów TCP lub UDP, które są odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji.
-                    * **Liczba wysłanych bajtów - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba bajtów pakiet TCP lub UDP, odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Bajty pakietu obejmują pakiet nagłówka i ładunku.
+                    * **Liczba wysłanych bajtów - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba bajtów pakiet TCP lub UDP, odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
                     * **Pakiety - docelowe źródło — tylko w wersji 2** całkowita liczba pakietów TCP lub UDP, które są wysyłane z docelowym źródłem od czasu ostatniej aktualizacji.
-                    * **Liczba wysłanych bajtów - docelowe źródło — tylko w wersji 2** całkowita liczba bajtów pakiet TCP i UDP, wysyłane z docelowym źródłem od czasu ostatniej aktualizacji. Bajty pakietu obejmują pakiet nagłówka i ładunku.
+                    * **Liczba wysłanych bajtów - docelowe źródło — tylko w wersji 2** całkowita liczba bajtów pakiet TCP i UDP, wysyłane z docelowym źródłem od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
 
 ## <a name="nsg-flow-logs-version-2"></a>W wersji 2 dzienników przepływów sieciowych grup zabezpieczeń
 > [!NOTE] 
-> Dzienniki przepływu w wersji 2 są dostępne tylko w centralnej nam regionie zachodnim. Konfiguracja jest dostępna za pośrednictwem witryny Azure Portal i interfejsu API REST. Włączanie w wersji 2 spowoduje dzienniki w nieobsługiwany region dzienników w wersji 1, zwrócone do swojego konta magazynu.
+> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączanie w wersji 2 spowoduje dzienniki w nieobsługiwany region dzienników w wersji 1, zwrócone do swojego konta magazynu.
 
 Dzienniki w wersji 2 wprowadzono stan przepływu. Można skonfigurować, która wersja dzienników przepływu pojawi się. Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
 
@@ -79,13 +81,19 @@ Stan przepływu *B* jest rejestrowane, gdy przepływ jest inicjowana. Stan przep
 
 Dla kontynuacji *C* i na końcu *E* Stany przepływu wygasają po, liczby bajtów i pakietów są łącznej liczby od czasu poprzedniego rekordu przepływu w spójnej kolekcji. Całkowita liczba pakietów przesyłanych odwołujące się do konwersacji poprzedniego przykładu, jest 1021 + 52 + 8005 + 47 = 9125. Całkowita liczba bajtów przesłanych jest 588096 + 29952 + 4610880 + 27072 = 5256000.
 
-**Przykład**: przepływ krotkami z konwersacji między 185.170.185.105:35370 i 10.2.0.4:23 TCP:
+**Przykład**: Przepływ krotkami z konwersacji między 185.170.185.105:35370 i 10.2.0.4:23 TCP:
 
 "1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
 Dla kontynuacji *C* i na końcu *E* Stany przepływu wygasają po, liczby bajtów i pakietów są łącznej liczby od czasu poprzedniego rekordu przepływu w spójnej kolekcji. Całkowita liczba pakietów przesyłanych odwołujące się do konwersacji poprzedniego przykładu, jest 1021 + 52 + 8005 + 47 = 9125. Całkowita liczba bajtów przesłanych jest 588096 + 29952 + 4610880 + 27072 = 5256000.
 
 Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istnieje wiele rekordów, które należy wykonać na liście właściwości opisanych w poprzedniej sekcji.
+
+## <a name="nsg-flow-logging-considerations"></a>Zagadnienia dotyczące rejestrowanie przepływu sieciowych grup zabezpieczeń
+
+**Włączyć NSG Flow rejestrowanie na wszystkie sieciowe grupy zabezpieczeń, które są dołączone do zasobu**: Przepływ rejestrowania na platformie Azure jest konfigurowany na zasób sieciowej grupy zabezpieczeń. Przepływ zostanie być skojarzony tylko z jedną regułę sieciowej grupy zabezpieczeń. W scenariuszach, gdzie są wykorzystywane wiele sieciowych grup zabezpieczeń, zaleca się, czy rejestrowanie przepływu sieciowych grup zabezpieczeń jest włączona na wszystkie sieciowe grupy zabezpieczeń stosowane zasobu podsiecią lub interfejsem sieciowym aby upewnić się, że cały ruch jest rejestrowane. Zobacz [jak ruch jest oceniany](../virtual-network/security-overview.md#how-traffic-is-evaluated) Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń. 
+
+**Przepływ koszty rejestrowania**: Rejestrowanie przepływu sieciowych grup zabezpieczeń jest rozliczana na woluminie dzienników generowanych. Duży ruch woluminu może spowodować przepływ dużą woluminu dziennika i powiązanych kosztów. Cennik dzienników przepływów sieciowych grup zabezpieczeń nie obejmuje podstawowych kosztów magazynu. Funkcja zasad przechowywania użyciu rejestrowanie przepływu sieciowych grup zabezpieczeń może skutkować dużą liczbę operacji magazynu i powiązanych kosztów. Jeśli funkcja zasad przechowywania nie jest wymagane, zaleca się Ustaw tę wartość na 0. Zobacz [cennik usługi Network Watcher](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) i [cennik usługi Azure Storage](https://azure.microsoft.com/en-us/pricing/details/storage/) dodatkowe szczegóły.
 
 ## <a name="sample-log-records"></a>Przykładowy rekord dziennika
 

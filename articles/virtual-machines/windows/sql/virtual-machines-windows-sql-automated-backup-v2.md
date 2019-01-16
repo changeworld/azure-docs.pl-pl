@@ -3,7 +3,7 @@ title: Automatycznych kopii zapasowych w wersji 2 dla maszyn wirtualnych program
 description: W tym artykule wyjaśniono funkcja automatycznych kopii zapasowych dla działającej na platformie Azure maszyn wirtualnych programu SQL Server 2016/2017. Ten artykuł stanowi specyficzne dla maszyn wirtualnych przy użyciu usługi Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,19 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 432df6d73b2eaa42645fe25ad9c743b7fcef06a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246824"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331659"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatyczne v2 kopii zapasowych maszyn wirtualnych platformy Azure (Resource Manager)
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
-> * [Program SQL Server 2016/2017](virtual-machines-windows-sql-automated-backup-v2.md)
+> * [SQL Server 2016/2017](virtual-machines-windows-sql-automated-backup-v2.md)
 
 Automatycznie konfiguruje automatycznych kopii zapasowych v2 [zarządzanej kopii zapasowej programu Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) dla wszystkich istniejących i nowych baz danych na maszynie Wirtualnej platformy Azure, w obsługiwanych wersjach programu SQL Server 2016/2017 Standard, Enterprise lub dewelopera. Dzięki temu można skonfigurować kopie zapasowe zwykłej bazy danych, które wykorzystują trwałe usługi Azure blob storage. Zautomatyzowanych kopii zapasowych v2 jest zależna od [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
 
@@ -41,8 +42,8 @@ Aby korzystać z automatycznych kopii zapasowych w wersji 2, sprawdź następuj�
 
 **Wersją programu SQL Server**:
 
-- Programu SQL Server 2016: Developer, Standard lub Enterprise
-- Programu SQL Server 2017: Developer, Standard lub Enterprise
+- SQL Server 2016: Developer, Standard lub Enterprise
+- SQL Server 2017: Developer, Standard lub Enterprise
 
 > [!IMPORTANT]
 > Zautomatyzowanych kopii zapasowych v2 współpracuje z programem SQL Server 2016 lub nowszego. Jeśli używasz programu SQL Server 2014, można użyć v1 automatyczne kopie zapasowe do tworzenia kopii zapasowych baz danych. Aby uzyskać więcej informacji, zobacz [automatyczne kopie zapasowe usługi SQL Server 2014 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
@@ -73,7 +74,7 @@ W poniższej tabeli opisano opcje, które można skonfigurować automatyczne kop
 
 | Ustawienie | Zakres (ustawienie domyślne) | Opis |
 | --- | --- | --- |
-| **Kopie zapasowe bazy danych systemu** | Włącz/Wyłącz (wyłączony) | Po włączeniu tej funkcji tworzy kopie zapasowe systemowych baz danych: Master, MSDB i modelu. W przypadku baz danych MSDB i Model potwierdzić, że jest w trybie odzyskiwania pełnego Jeśli chcesz, aby kopie zapasowe dziennika, należy podjąć. Kopie zapasowe dziennika nigdy nie są pobierane dla serwera głównego. I żadne kopie zapasowe są wykonywane dla bazy danych TempDB. |
+| **Kopie zapasowe bazy danych systemu** | Włącz/Wyłącz (wyłączony) | Po włączeniu tej funkcji tworzy kopie zapasowe baz danych systemu: Master, MSDB i modelu. W przypadku baz danych MSDB i Model potwierdzić, że jest w trybie odzyskiwania pełnego Jeśli chcesz, aby kopie zapasowe dziennika, należy podjąć. Kopie zapasowe dziennika nigdy nie są pobierane dla serwera głównego. I żadne kopie zapasowe są wykonywane dla bazy danych TempDB. |
 | **Harmonogram tworzenia kopii zapasowych** | Ręczne/automatyczne (automatyczne) | Domyślnie harmonogram tworzenia kopii zapasowych jest ustalany automatycznie na podstawie wzrostu dzienników. Ręczne harmonogram tworzenia kopii zapasowych umożliwia użytkownikowi określenie przedziału czasu dla kopii zapasowych. W tym przypadku kopii zapasowych miejsce wyłącznie z określoną częstotliwością i przedziale czasu określonym danego dnia. |
 | **Częstotliwość tworzenia pełnych kopii zapasowych** | Codziennie/co tydzień | Częstotliwość pełnych kopii zapasowych. W obu przypadkach pełne kopie zapasowe rozpocząć podczas następnego okna zaplanowanej godzinie. Po wybraniu cotygodniowych kopii zapasowych może obejmować wiele dni, dopóki wszystkie bazy danych pomyślnie wykonano kopię zapasową. |
 | **Czas rozpoczęcia tworzenia pełnych kopii zapasowych** | 00:00 – 23:00 (01:00) | Rozpocznij czas w danym dniu, w którym pełne kopie zapasowe mogą być wykonywane. |
@@ -83,14 +84,14 @@ W poniższej tabeli opisano opcje, które można skonfigurować automatyczne kop
 ## <a name="understanding-full-backup-frequency"></a>Informacje o częstotliwości tworzenia pełnej kopii zapasowej
 Należy zrozumieć różnicę między dzienne i tygodniowe pełne kopie zapasowe. Należy wziąć pod uwagę następujące dwa przykładowe scenariusze.
 
-### <a name="scenario-1-weekly-backups"></a>Scenariusz 1: Cotygodniowych kopii zapasowych
+### <a name="scenario-1-weekly-backups"></a>Scenariusz 1: Cotygodniowe kopie zapasowe
 Masz maszynę Wirtualną serwera SQL, która zawiera szereg dużych baz danych.
 
 W poniedziałek należy włączyć automatyczne kopie zapasowe w wersji 2 z następującymi ustawieniami:
 
-- Harmonogram tworzenia kopii zapasowych: **ręczne**
-- Pełne częstotliwość wykonywania kopii zapasowych: **co tydzień**
-- Pełne godziny rozpoczęcia tworzenia kopii zapasowych: **01:00**
+- Harmonogram tworzenia kopii zapasowych: **Ręcznie**
+- Częstotliwość tworzenia pełnych kopii zapasowych: **Co tydzień**
+- Godzina rozpoczęcia tworzenia pełnych kopii zapasowych: **01:00**
 - Okno czasowe tworzenia pełnych kopii zapasowych: **1 godzina**
 
 Oznacza to, że następnym dostępnym oknie kopii zapasowej jest wtorek o 1: 00 1 godziny. W tym czasie automatyczne kopie zapasowe rozpoczyna wykonywanie kopii zapasowych baz danych jednego naraz. W tym scenariuszu baz danych są wystarczająco duże, że pełne kopie zapasowe ukończenia pierwsze kilka baz danych. Jednak po godzinie nie wszystkie bazy danych utworzone kopie zapasowe.
@@ -101,14 +102,14 @@ Po jego osiągnięciu wtorek rozpoczyna się automatyczne kopie zapasowe, ponown
 
 W tym scenariuszu pokazano, że automatyczne kopie zapasowe działa tylko w określonym przedziale czasu, a każda baza danych jest kopia zapasowa jest tworzona raz w tygodniu. To pokazuje, że istnieje możliwość tworzenia kopii zapasowych na kilka dni w przypadku, gdy nie jest możliwe do wykonania wszystkich kopii zapasowych w jednym dniu.
 
-### <a name="scenario-2-daily-backups"></a>Scenariusz 2: Codzienne wykonywanie kopii zapasowych
+### <a name="scenario-2-daily-backups"></a>Scenariusz 2: Codzienne kopie zapasowe
 Masz maszynę Wirtualną serwera SQL, która zawiera szereg dużych baz danych.
 
 W poniedziałek należy włączyć automatyczne kopie zapasowe w wersji 2 z następującymi ustawieniami:
 
-- Harmonogram tworzenia kopii zapasowych: ręczne
-- Pełne częstotliwość wykonywania kopii zapasowych: dzienne
-- Pełne godziny rozpoczęcia tworzenia kopii zapasowych: 22:00
+- Harmonogram tworzenia kopii zapasowych: Ręczne
+- Częstotliwość tworzenia pełnych kopii zapasowych: Codziennie
+- Godzina rozpoczęcia tworzenia pełnych kopii zapasowych: 22:00
 - Okno czasowe tworzenia pełnych kopii zapasowych: 6 godzin
 
 Oznacza to, że następnym dostępnym oknie kopii zapasowej jest poniedziałek o 22: 00 przez 6 godzin. W tym czasie automatyczne kopie zapasowe rozpoczyna wykonywanie kopii zapasowych baz danych jednego naraz.
@@ -331,7 +332,7 @@ Innym rozwiązaniem jest, aby skorzystać z wbudowanych funkcji Poczta bazy dany
 ## <a name="next-steps"></a>Kolejne kroki
 Zautomatyzowanych kopii zapasowych v2 konfiguruje zarządzanej kopii zapasowej na maszynach wirtualnych platformy Azure. Dlatego ważne jest, aby [zapoznaj się z dokumentacją dla zarządzanej kopii zapasowej](https://msdn.microsoft.com/library/dn449496.aspx) , aby zrozumieć zachowania i skutków.
 
-Można znaleźć dodatkowe kopii zapasowej i przywracanie wskazówki dotyczące programu SQL Server na maszynach wirtualnych platformy Azure w następującym artykule: [kopia zapasowa i przywracanie programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+Można znaleźć dodatkowe kopii zapasowej i przywracanie wskazówki dotyczące programu SQL Server na maszynach wirtualnych platformy Azure w następującym artykule: [Kopia zapasowa i przywracanie programu SQL Server na maszynach wirtualnych platformy Azure](virtual-machines-windows-sql-backup-recovery.md).
 
 Aby uzyskać informacje o innych zadaniach automatyzacji dostępności, zobacz [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
 

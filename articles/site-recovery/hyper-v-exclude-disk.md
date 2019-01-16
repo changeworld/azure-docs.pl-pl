@@ -1,17 +1,19 @@
 ---
 title: Wykluczanie dysków z replikacji, podczas konfigurowania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak wykluczać dyski maszyny Wirtualnej z replikacji podczas odzyskiwania po awarii na platformie Azure.
-author: nsoneji
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 7de9dc497b1c9ee29b46aa0d645b7b28676cb22d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 01/19/2019
+ms.author: mayg
+ms.openlocfilehash: 9b26c80b59a57b4a9b2423e1a9028cf723f40fb1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849024"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321232"
 ---
 # <a name="exclude-disks-from-replication"></a>Wykluczanie dysków z replikacji
 W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski.
@@ -57,7 +59,7 @@ Rozważmy dwa scenariusze, aby zrozumieć funkcję wykluczania dysku:
 - Dysk bazy danych tempdb programu SQL Server
 - Dysk pliku stronicowania (pagefile.sys)
 
-## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>Przykład 1. Wykluczanie dysku bazy danych tempdb programu SQL Server
+## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>Excample 1: Wykluczanie dysku bazy danych tempdb programu SQL Server
 Rozważmy maszynę wirtualną programu SQL Server z bazą danych tempdb, którą można wykluczyć.
 
 Nazwa dysku wirtualnego to SalesDB.
@@ -160,12 +162,12 @@ DB-Disk2 (dysk wykluczony) | Dysk2 | E:\ | Pliki tymczasowe
 DB-Disk3 (dysk wykluczony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\)
 DB-Disk4 | Dysk4 | G:\ | Baza danych użytkownika 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Przykład 2. Wykluczanie dysku pliku stronicowania (pagefile.sys)
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Przykład 2: Wykluczanie dysku pliku stronicowania (pagefile.sys)
 
 Rozważmy maszynę wirtualną zawierającą dysk z plikiem stronicowania, który można wykluczyć.
 Są dwa przypadki.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Przypadek 1. Plik stronicowania skonfigurowano na dysku D:
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Przypadek 1: Plik stronicowania skonfigurowano na dysku D:
 Konfiguracja dysków:
 
 **Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
@@ -194,7 +196,7 @@ Poniżej przedstawiono ustawienia pliku stronicowania na maszynie wirtualnej pla
 
 ![Ustawienia pliku stronicowania na maszynie wirtualnej platformy Azure](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Przypadek 2. Plik stronicowania skonfigurowano na innym dysku (innym niż D:)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Przypadek 2: Plik stronicowania skonfigurowano na innym dysku (innym niż d:)
 
 Poniżej przedstawiono konfigurację dysków źródłowej maszyny wirtualnej:
 

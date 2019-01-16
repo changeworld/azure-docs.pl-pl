@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: magattus
-ms.openlocfilehash: 54979bdaab3d3d49ab3d3a08868dd28e27423e7e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 526f3522bff05618189ad4f8205fbb61afc47fdc
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091746"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320316"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optymalizacja usługi Azure CDN dla typu dostarczania zawartości
 
@@ -83,7 +83,7 @@ Ogólne dostarczanie w Internecie jest najbardziej typowych opcji optymalizacji.
 Typowe witryny sieci Web zawiera zawartości statycznej i dynamicznej. Zawartość statyczna obejmuje obrazów, bibliotek JavaScript i arkusze stylów, które mogą być buforowane i dostarczane do różnych użytkowników. Zawartość dynamiczna jest spersonalizowane dla poszczególnych użytkowników, takich jak elementy wiadomości, które są dostosowane do profilu użytkownika. Zawartość dynamiczna, takie jak koszyk sklepowy zawartość, nie są buforowane, ponieważ jest on unikatowy dla każdego użytkownika. Ogólne dostarczanie w Internecie można zoptymalizować całej witryny sieci Web. 
 
 > [!NOTE]
-> Jeśli używasz **Azure CDN Standard from Akamai** profilu, wybierz ten typ optymalizacji, jeśli Twoja średni rozmiar plików jest mniejsza niż 10 MB. Wybierz Othewise, jeśli Twoje średni rozmiar pliku jest większy niż 10 MB, **pobierania dużych plików** z **zoptymalizowane pod kątem** listy rozwijanej.
+> Jeśli używasz **Azure CDN Standard from Akamai** profilu, wybierz ten typ optymalizacji, jeśli Twoja średni rozmiar plików jest mniejsza niż 10 MB. W przeciwnym razie, jeśli Twoja średni rozmiar pliku jest większy niż 10 MB, wybierz **pobierania dużych plików** z **zoptymalizowane pod kątem** listy rozwijanej.
 
 ### <a name="general-media-streaming"></a>Ogólne transmisje strumieniowe multimediów
 

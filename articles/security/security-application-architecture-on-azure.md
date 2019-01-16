@@ -12,30 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233739"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321422"
 ---
 # <a name="application-architecture-on-azure"></a>Architektura aplikacji na platformie Azure
 Aby zabezpieczyć swoje rozwiązania oparte na chmurze w systemie Microsoft Azure solidne podstawy architektury ma krytyczne znaczenie. Architekci, projektantów i konsultantów korzystać z silnej znajomości architektury aplikacji i usług. Ta podstawowe wiedza ułatwi Ci zrozumienie wszystkie składniki rozwiązań opartych na chmurze i ułatwiają integrowanie zabezpieczeń wszystkich aspektów projektowania i implementacji.
 
 Mamy następujące polecenie, aby pomóc przy użyciu architektury dochodzenia i projekty:
 
-* Architektury grafika informacyjna o systemie
 * Schematy architektury
 * Zestaw symboli cloud i enterprise
 * Szablon programu Visio schemat 3D
-
-## <a name="architectural-infographics"></a>Architektury grafika informacyjna o systemie
-Firma Microsoft publikuje kilka architektury powiązane plakaty/grafiki informacyjne. Ulepszenia obejmują:
-
-* [Tworzenie aplikacji w chmurze w rzeczywistych warunkach](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [Skalowanie z usługami w chmurze](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
 ## <a name="architectural-blueprints"></a>Schematy architektury
 Firma Microsoft publikuje zbiór wysokiego poziomu [schematy architektury](https://aka.ms/azblueprints) przedstawiający sposób tworzenia określonych typów systemów przy użyciu produktów firmy Microsoft.

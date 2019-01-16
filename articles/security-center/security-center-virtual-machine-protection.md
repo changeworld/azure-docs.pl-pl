@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723233"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321594"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -44,7 +44,6 @@ W obszarze **obliczenia i aplikacje**, istnieją następujące karty:
 - **Usługi w chmurze**: lista ról internetowych i procesów roboczych monitorowanych przez usługę Security Center.
 - **Usługi App services (wersja zapoznawcza)**: Lista środowisk usługi App service i bieżący stan zabezpieczeń każdego z nich.
 - **Kontenery (wersja zapoznawcza)**: Lista kontenerów hostowanych na maszynach z systemem IaaS Linux i ocenę zabezpieczeń ich konfiguracji platformy Docker.
-- **Usługi VM scale sets (wersja zapoznawcza)**: lista zestawów skalowania i zalecenia dotyczące naprawiania.
 - **(Wersja zapoznawcza) zasoby obliczeniowe**: listę zaleceń dotyczących zasobów obliczeniowych, takich jak klastry usługi Service Fabric i usługi Event hubs.
 
 Aby kontynuować, wybierz **obliczenia i aplikacje** w obszarze **hygeine zabezpieczeń zasobu**.
@@ -162,24 +161,6 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
 
     ![Korygowanie usługi App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets-preview"></a>Zestawy skalowania maszyn wirtualnych (wersja zapoznawcza)
-Usługa Security Center automatycznie wykrywa, czy zestawy skali i zaleca się zainstalowanie programu Microsoft Monitoring Agent na tych zestawach skalowania. 
-
-Aby zainstalować program Microsoft Monitoring Agent: 
-
-1. Wybierz zalecenie **zainstalować agenta monitorowania w zestawie skalowania maszyn wirtualnych**. Możesz uzyskać listę zestawów skalowania niemonitorowane.
-2. Wybierz zestaw skalowania w złej kondycji. Postępuj zgodnie z instrukcjami, aby zainstalować agenta monitorowania przy użyciu istniejącego obszaru roboczego wypełnione lub Utwórz nową. Upewnij się ustawić obszaru roboczego [warstwy cenowej](security-center-pricing.md) Jeśli nie jest ustawiona.
-
- ![Zainstaluj usługę MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
-
-Jeśli chcesz ustawić nowe zestawy skalowania automatycznej instalacji programu Microsoft Monitoring Agent:
-1. Przejdź do usługi Azure Policy, a następnie kliknij przycisk **definicje**.
-2. Wyszukaj zasady **agenta wdrażania usługi Log Analytics dla zestawów skalowania maszyn wirtualnych Windows** i kliknij go.
-3. Kliknij przycisk **Przypisz**.
-4. Ustaw **zakres** i **obszaru roboczego usługi Log Analytics** i kliknij przycisk **przypisać**.
-
-Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania, aby zainstalować program Microsoft Monitoring Agent, usługa Azure Policy, przejdź do strony **korygowania** i zastosować istniejących zasad do istniejących zestawów skalowania.
-
 
 ## <a name="compute-and-app-recommendations"></a>Zalecenia dotyczące obliczeń i aplikacji
 |Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
@@ -238,11 +219,7 @@ Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania, aby zainstalowa
 |Maszyna|30|Instaluj rozwiązanie do oceny luk w zabezpieczeniach na maszynach wirtualnych|Instaluj rozwiązanie do oceny luk w zabezpieczeniach na maszynach wirtualnych|
 |Maszyna|1|Migrowanie maszyn wirtualnych na nowe zasoby usługi Azure Resource Manager|Usługa Azure Resource Manager dla usługi maszyny wirtualne zapewnienie wzmocnienia zabezpieczeń, takich jak: silniejsze kontroli dostępu (RBAC), lepiej inspekcji, wdrażania usługi Resource Manager i nadzoru, dostęp do zarządzanych tożsamości i dostępu do magazynu kluczy dla wpisów tajnych oraz ich Uwierzytelnianie na podstawie usługi AD systemu Azure i obsługa tagów i grupy zasobów, aby ułatwić zarządzanie zabezpieczeniami. |
 |Maszyna|30|Korygowanie luk w zabezpieczeniach przy użyciu rozwiązania do oceny luk w zabezpieczeniach|Maszyny wirtualne, dla których wdrożono luk w zabezpieczeniach 3rd strona rozwiązania do oceny są stale oceniane względem aplikacji i luk w zabezpieczeniach systemu operacyjnego. Zawsze, gdy zostaną znalezione lukami umożliwiającymi takie ataki, są dostępne, aby uzyskać więcej informacji, w ramach zalecenia.|
-|Zestaw skalowania maszyn wirtualnych |4|Włącz dzienniki diagnostyki w zestawach skalowania maszyn wirtualnych|Włączanie dzienników i Zachowaj ich do jednego roku. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy. Jest to przydatne, gdy wystąpi incydent zabezpieczeń lub złamania zabezpieczeń sieci.|
-|Zestaw skalowania maszyn wirtualnych|35|Korygowanie luk w zabezpieczeniach w konfiguracji zabezpieczeń na Twoje zestawy skalowania maszyn wirtualnych|Skoryguj luki w zabezpieczeniach konfiguracji zabezpieczeń zestawów skalowania maszyn wirtualnych, aby ochronić je przed atakami. |
-|Zestaw skalowania maszyn wirtualnych|5|Korygowanie błędy kondycji ochrony punktu końcowego na zestawach skalowania maszyn wirtualnych|Skoryguj błędy kondycji ochrony punktu końcowego w zestawach skalowania maszyn wirtualnych, aby chronić je przed zagrożeniami i lukami w zabezpieczeniach. |
-|Zestaw skalowania maszyn wirtualnych|10|Zainstalować rozwiązanie do ochrony punktu końcowego na zestawach skalowania maszyn wirtualnych|Zainstaluj rozwiązanie do ochrony punktu końcowego na Twoje zestawy skalowania maszyn wirtualnych, aby chronić je przed zagrożeniami i lukami w zabezpieczeniach. |
-|Zestaw skalowania maszyn wirtualnych|40|Zainstaluj aktualizacje systemu na zestawach skalowania maszyn wirtualnych|Zainstaluj brakujące aktualizacje krytyczne oraz aktualizacje zabezpieczeń systemu w celu zabezpieczenia zestawów skalowania maszyn wirtualnych z systemem Windows i Linux. |
+
  
 
 

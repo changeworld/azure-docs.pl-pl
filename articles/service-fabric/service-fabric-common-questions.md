@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537634"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320603"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -56,7 +56,7 @@ W przypadku klastrów, które nie są uruchamiane na platformie Azure, mamy [pod
 
 **Krótka odpowiedź** — nie. 
 
-**Czas odpowiedzi** — mimo że zestawy skalowania dużych maszyn wirtualnych pozwalają na skalowanie maszyny wirtualnej wystąpień maszyny Wirtualnej nawet dla 1000 zestawów skalowania, robi to przy użyciu grup umieszczania (PGA). Odporność domenach i uaktualnienia domeny są spójne tylko w ramach umieszczania grupy usługi Service fabric używa domenami błędów i domenach uaktualniania podjąć decyzje dotyczące umieszczenia wystąpień replik/usługi usługi. Ponieważ domenami błędów i domenach uaktualniania są porównywalne tylko w ramach grupy umieszczania, SF nie można go używać. Na przykład, jeśli maszyna VM1 w PG1 topologii FD = 0, a VM9 w grupy PG2 ma topologii FD = 4, nie oznacza to, że maszyna VM1 i VM2 znajdują się na dwóch różnych stojakach sprzętu, dlatego SF nie można użyć wartości FD w tym przypadku podjąć decyzje dotyczące umieszczenia.
+**Czas odpowiedzi** — mimo że zestawy skalowania dużych maszyn wirtualnych pozwalają na skalowanie maszynę wirtualną do 1000 wystąpień maszyn wirtualnych zestawu skalowania, robi to przy użyciu grup umieszczania (PGA). Odporność domenach i uaktualnienia domeny są spójne tylko w ramach umieszczania grupy usługi Service fabric używa domenami błędów i domenach uaktualniania podjąć decyzje dotyczące umieszczenia wystąpień replik/usługi usługi. Ponieważ domenami błędów i domenach uaktualniania są porównywalne tylko w ramach grupy umieszczania, SF nie można go używać. Na przykład, jeśli maszyna VM1 w PG1 topologii FD = 0, a VM9 w grupy PG2 ma topologii FD = 4, nie oznacza to, że maszyna VM1 i VM2 znajdują się na dwóch różnych stojakach sprzętu, dlatego SF nie można użyć wartości FD w tym przypadku podjąć decyzje dotyczące umieszczenia.
 
 Obecnie nie istnieją inne problemy z dużych zestawów skalowania, takich jak brak 4 poziomu obciążenia równoważenia pomocy technicznej. Można znaleźć [szczegółowe informacje na temat duże zestawy skalowania](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 

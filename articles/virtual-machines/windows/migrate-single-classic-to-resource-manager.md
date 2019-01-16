@@ -1,6 +1,6 @@
 ---
-title: Migrowanie klasyczne maszyny Wirtualnej do dysków zarządzanych w ARM maszyny Wirtualnej | Dokumentacja firmy Microsoft
-description: Przeprowadź migrację jednej maszyny Wirtualnej platformy Azure z klasycznym modelu wdrażania do zarządzanych dysków w modelu wdrażania usługi Resource Manager.
+title: Migrowanie klasycznej maszyny Wirtualnej do ARM dysku zarządzanego maszyny Wirtualnej | Dokumentacja firmy Microsoft
+description: Przeprowadź migrację jednej maszyny Wirtualnej platformy Azure z klasycznego modelu wdrażania do usługi Managed Disks w modelu wdrażania usługi Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,165 +15,192 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943585"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329773"
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Ręcznie Migrowanie klasyczne maszyny Wirtualnej do nowej ARM zarządzane dysku maszyny Wirtualnej z dysku VHD 
+# <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Migrowanie klasycznej maszyny Wirtualnej pod kątem używania dysku zarządzanego 
 
 
-Ta sekcja pomoże Ci do dokonania migracji istniejących maszyn wirtualnych platformy Azure z klasycznym modelu wdrażania do [dysków zarządzanych](managed-disks-overview.md) w modelu wdrażania usługi Resource Manager.
+Ta sekcja ułatwia Migrowanie istniejących maszyn wirtualnych platformy Azure z klasycznego modelu wdrażania do [Managed Disks](managed-disks-overview.md) w modelu wdrażania usługi Resource Manager.
 
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Planowanie migracji do zarządzanych dysków
+## <a name="plan-for-the-migration-to-managed-disks"></a>Planowanie migracji do usługi Managed Disks
 
-Ta sekcja umożliwia podjęcie najlepszych decyzji w typach maszyny Wirtualnej i dysku.
+Ta sekcja ułatwia najlepszych decyzji o typach maszyn wirtualnych i dysków.
 
 
 ### <a name="location"></a>Lokalizacja
 
-Wybierz lokalizację, w której są dostępne dyski zarządzanych Azure. W przypadku migracji dysków zarządzanych w warstwie Premium również upewnij się, że magazyn w warstwie Premium jest dostępna w regionie, w którym jest planowana migracja do. Zobacz [byRegion usług Azure](https://azure.microsoft.com/regions/#services) aktualne informacje o dostępnych lokalizacji.
+Wybierz lokalizację, w której są dostępne dyski Managed Disks. Jeśli migrujesz do dysków zarządzanych, wspierane przez usługę Premium storage, upewnij się również Premium storage jest dostępna w danym regionie. Zobacz [byRegion usług platformy Azure](https://azure.microsoft.com/regions/#services) dla aktualnych informacji o dostępnych lokalizacji.
 
 ### <a name="vm-sizes"></a>Rozmiary maszyn wirtualnych
 
-W przypadku migracji dysków zarządzanych w warstwie Premium, należy zaktualizować rozmiaru maszyny wirtualnej do magazyn w warstwie Premium obsługuje rozmiaru dostępna w regionie, w którym znajduje się maszyna wirtualna. Przejrzyj rozmiarów maszyn wirtualnych, które są funkcją Magazyn w warstwie Premium. Specyfikacje rozmiaru maszyny Wirtualnej platformy Azure są wymienione w [rozmiary maszyn wirtualnych](sizes.md).
-Przejrzyj charakterystyki wydajności maszyn wirtualnych, które pracy z magazyn w warstwie Premium i wybierz najbardziej odpowiedni rozmiar maszyny Wirtualnej, który najlepiej odpowiada obciążenie. Należy upewnić się, że wystarczającą przepustowość dostępne na maszynie Wirtualnej do kierowania ruchu dysku.
+Jeśli użytkownik migruje do usługi Managed Disks, użycie magazynu Premium storage, musi być aktualizowana rozmiar maszyny Wirtualnej do magazynu w warstwie Premium stanie rozmiaru dostępne w regionie, w którym znajduje się maszyna wirtualna. Przejrzyj rozmiarów maszyn wirtualnych, które są zdolne do magazynu w warstwie Premium. Specyfikacje rozmiaru maszyny Wirtualnej platformy Azure są wymienione w [rozmiary maszyn wirtualnych](sizes.md).
+Sprawdź charakterystyki wydajności maszyn wirtualnych, które współpracują z magazynu w warstwie Premium i wybierz odpowiedni rozmiar maszyny Wirtualnej, najlepiej pasujące do obciążenia. Upewnij się, że jest dostępna wystarczająca przepustowość na maszynie Wirtualnej do kierowania ruchu dysku.
 
 ### <a name="disk-sizes"></a>Rozmiary dysków
 
-**Dysków zarządzanych w warstwie Premium**
+**Premium**
 
-Istnieje siedem typów dysków zarządzane premium, które mogą być używane z maszyny Wirtualnej i każdy ma określonych IOPs i przepływność limity. Należy wziąć pod uwagę następujące limity podczas wybierania typu dysku Premium dla maszyny Wirtualnej na podstawie potrzeb aplikacji pod względem wydajności, wydajności, skalowalności i ładuje godzinami szczytu.
+Istnieje siedem typy magazynu w warstwie Premium, które mogą być używane z maszyny Wirtualnej i każdy z nich ma określone operacje We/Wy i przepływność limitów. Należy wziąć pod uwagę te limity podczas wybierania typu dysku Premium dla swojej maszyny Wirtualnej, w zależności od potrzeb aplikacji pod względem wydajności, wydajność, skalowalność i ładuje szczytowego.
 
-| Typ dysków Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Typ magazynu dysków Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Przepływność na dysk | 25 MB na sekundę  | 50 MB / s  | 100 MB na sekundę | 150 MB na sekundę | 200 MB / s | 250 MB na sekundę | 250 MB na sekundę | 
+| Rozmiar dysku           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| Przepływność na dysk | 25 MB na sekundę  | 50 MB na sekundę  | 100 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 
 
-**Dyski standardowe zarządzanych**
+**Standardowa**
 
-Istnieje siedem typów zarządzane standardowych dysków, które mogą być używane z maszyny Wirtualnej. Każdej z nich ma inną wydajności, ale ma tego samego IOPS i limity przepustowości. Wybierz typ dyski standardowe zarządzane na podstawie potrzeb wydajność aplikacji.
+Istnieje siedem typów dysków w warstwie standardowa, które mogą być używane z maszyny Wirtualnej. Każdy z nich mają innej pojemności, ale mają limity przepływności i tej samej operacji We/Wy. Wybierz typ Standardowy Managed disks, które są oparte na potrzeby aplikacji związane z pojemnością.
 
-| Typ dysku standardowego  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+| Typ dysku standardowego  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| Rozmiar dysku           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| Rozmiar dysku           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
 | Przepływność na dysk | 60 MB na sekundę | 60 MB na sekundę | 60 MB na sekundę | 60 MB na sekundę | 60 MB na sekundę | 60 MB na sekundę | 60 MB na sekundę | 
 
 
-### <a name="disk-caching-policy"></a>Dyskowej pamięci podręcznej zasad 
+### <a name="disk-caching-policy"></a>Zasady buforowania dysku 
 
-**Dysków zarządzanych w warstwie Premium**
+**Premium Managed Disks**
 
-Domyślnie jest dyskowej pamięci podręcznej zasad *tylko do odczytu* dla wszystkich danych dysków Premium i *odczytu i zapisu* dla dysku systemu operacyjnego Premium dołączony do maszyny Wirtualnej. To ustawienie konfiguracji jest zalecane w celu osiągnięcia optymalnej wydajności dla aplikacji systemu IOs. W przypadku dysków ciężki zapisu lub w trybie tylko do zapisu danych (takich jak pliki dziennika programu SQL Server) Wyłącz buforowanie dysku, dzięki czemu można osiągnąć lepszą wydajność aplikacji.
+Domyślnie zasady buforowania dysku jest *tylko do odczytu* wszystkich dysków w warstwie Premium danych, a *odczytu i zapisu* dla dysku systemu operacyjnego w warstwie Premium dołączonych do maszyny Wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność dla aplikacji systemu IOs. Dla dysków z danymi zapisu przy odczycie czy tylko do zapisu (takich jak pliki dziennika programu SQL Server) należy wyłączyć buforowanie dysku, dzięki czemu można osiągnąć lepszą wydajność aplikacji.
 
 ### <a name="pricing"></a>Cennik
 
-Przegląd [ceny dysków zarządzanych](https://azure.microsoft.com/pricing/details/managed-disks/). Cen dysków zarządzanych w warstwie Premium jest taka sama jak niezarządzane dysków Premium. Ale ceny dyski standardowe zarządzanych jest inny niż dyski standardowe niezarządzane.
+Przegląd [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Ceny dysków zarządzanych w warstwie Premium jest taka sama jak dysków niezarządzanych w warstwie premium. Ale ceny dysków zarządzanych w warstwie standardowa jest inny niż niezarządzane dyski w warstwie standardowa.
 
 
 ## <a name="checklist"></a>Lista kontrolna
 
-1.  W przypadku migracji do zarządzanych dysków Premium upewnij się, że jest dostępna w regionie, który w przypadku migracji do.
+1.  Jeśli użytkownik migruje do usługi Premium Managed Disks, upewnij się, że będzie ona dostępna w regionie, w którym jest przeprowadzana migracja do.
 
-2.  Zdecyduj, nowej serii maszyny Wirtualnej, który będzie używany. Magazyn w warstwie Premium obsługuje powinno być migrowania do dysków zarządzanych w warstwie Premium.
+2.  Zdecyduj, nowych seriach maszyn wirtualnych, które będą używane. W przypadku migracji do usługi Premium Managed Disks powinno być zdolny do usługi Premium Storage.
 
-3.  Określ dokładnie rozmiar maszyny Wirtualnej, który będzie używany, które są dostępne w regionie, w którym w przypadku migracji do. Rozmiar maszyny Wirtualnej musi być wystarczająco duży, aby obsługiwał liczba dysków danych, do których masz. Na przykład jeśli masz cztery dysków danych maszyny Wirtualnej musi mieć co najmniej dwa rdzenie. Należy również rozważyć przetwarzania zasilania, pamięci i musi przepustowości sieci.
+3.  Należy określić dokładny rozmiar maszyny Wirtualnej, który będzie używany, które są dostępne w regionie, w których w przypadku migracji do. Rozmiar maszyny Wirtualnej musi być wystarczająco duży, aby obsługiwać liczbę dysków z danymi, które należy. Na przykład jeśli cztery dyski z danymi, maszyna wirtualna musi mieć co najmniej dwa rdzenie. Ponadto należy wziąć pod uwagę przetwarzania mocy obliczeniowej, pamięci i wymagania dotyczące przepustowości sieci.
 
-4.  Mieć bieżące szczegóły maszyny Wirtualnej pod ręką, w tym listę dysków i odpowiednie obiekty BLOB dysków VHD.
+4.  Mieć bieżące szczegóły maszyny Wirtualnej zawsze pod ręką, w tym listę dysków i odpowiednie obiekty BLOB dysków VHD.
 
-Przygotowanie aplikacji dla przestoju. Przeprowadzenie czystej migracji, należy zatrzymać wszystkie przetwarzania w systemie. Następnie możesz pobrać go do spójnego stanu, które można migrować do nowej platformie. Czas trwania przestoju zależy od ilości danych na dyskach, aby przeprowadzić migrację.
+Przygotowanie aplikacji dla przestojów. Aby przeprowadzić migrację czystego, masz Zatrzymaj przetwarzanie wszystkich w obecnym systemie. Następnie możesz pobrać go do stanu spójności, które można migrować do nowej platformy. Czas trwania przestoju zależy od ilości danych na dyskach, aby przeprowadzić migrację.
 
 
 ## <a name="migrate-the-vm"></a>Migrowanie maszyny Wirtualnej
 
-Przygotowanie aplikacji dla przestoju. Przeprowadzenie czystej migracji, należy zatrzymać wszystkie przetwarzania w systemie. Następnie możesz pobrać go do spójnego stanu, które można migrować do nowej platformie. Czas trwania przestoju zależy od ilości danych na dyskach, aby przeprowadzić migrację.
+Przygotowanie aplikacji dla przestojów. Aby przeprowadzić migrację czystego, masz Zatrzymaj przetwarzanie wszystkich w obecnym systemie. Następnie możesz pobrać go do spójnego stanu, które można migrować do nowej platformy. Czas trwania przestoju zależy od ilości danych na dyskach, aby przeprowadzić migrację.
 
-Ta część wymaga programu Azure PowerShell modułu w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Należy również wykonać `Connect-AzureRmAccount` można utworzyć połączenia z platformą Azure.
+Ta część wymaga programu Azure PowerShell module w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Należy również uruchomić polecenie `Connect-AzureRmAccount` w celu nawiązania połączenia z platformą Azure.
 
 
-1.  Najpierw należy ustawić wspólne parametry:
+Utwórz zmienne typowych parametrów.
 
-    ```powershell
-    $resourceGroupName = 'yourResourceGroupName'
-    
-    $location = 'your location' 
-    
-    $virtualNetworkName = 'yourExistingVirtualNetworkName'
-    
-    $virtualMachineName = 'yourVMName'
-    
-    $virtualMachineSize = 'Standard_DS3'
-    
-    $adminUserName = "youradminusername"
-    
-    $adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
-    
-    $imageName = 'yourImageName'
-    
-    $osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-    
-    $dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
-    
-    $dataDiskName = 'dataDisk1'
-    ```
+```powershell
+$resourceGroupName = 'yourResourceGroupName'
 
-2.  Tworzenie zarządzanego dysku systemu operacyjnego przy użyciu wirtualnego dysku twardego z klasycznym maszyny Wirtualnej.
+$location = 'your location' 
 
-    Upewnij się, że podano pełny identyfikator URI wirtualnego dysku twardego systemu operacyjnego do parametru $osVhdUri. Wprowadź też **- AccountType** jako **Premium_LRS** lub **Standard_LRS** na podstawie typu dysków (Premium lub Standard) w przypadku migracji do.
+$virtualNetworkName = 'yourExistingVirtualNetworkName'
 
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
-    -ResourceGroupName $resourceGroupName
-    ```
+$virtualMachineName = 'yourVMName'
 
-3.  Dołączenie dysku systemu operacyjnego do nowej maszyny Wirtualnej.
+$virtualMachineSize = 'Standard_DS3'
 
-    ```powershell
-    $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
+$adminUserName = "youradminusername"
 
-4.  Tworzenie dysku danych zarządzanych z pliku VHD danych i dodaj go do nowej maszyny Wirtualnej.
+$adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
 
-    ```powershell
-    $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
-    -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
+$imageName = 'yourImageName'
+
+$osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
+
+$dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
+
+$dataDiskName = 'dataDisk1'
+```
+
+Tworzenie zarządzanego dysku systemu operacyjnego przy użyciu wirtualnego dysku twardego z klasycznej maszyny Wirtualnej. Upewnij się, że podano pełny identyfikator URI wirtualnego dysku twardego systemu operacyjnego do parametru $osVhdUri. Wprowadź też **- AccountType** jako **Premium_LRS** lub **Standard_LRS** oparte na typie dysków (premium lub standardowa) w przypadku migracji do.
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreateOption Import '
+   -SourceUri $osVhdUri) '
+   -ResourceGroupName $resourceGroupName
+```
+
+Dołącz dysk systemu operacyjnego do nowej maszyny Wirtualnej.
+
+```powershell
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+$VirtualMachine = Set-AzureRmVMOSDisk '
+   -VM $VirtualMachine '
+   -ManagedDiskId $osDisk.Id '
+   -StorageAccountType Premium_LRS '
+   -DiskSizeInGB 128 '
+   -CreateOption Attach -Windows
+```
+
+Tworzenie zarządzanego dysku danych na podstawie pliku VHD danych i dodaj go do nowej maszyny Wirtualnej.
+
+```powershell
+$dataDisk1 = New-AzureRmDisk '
+   -DiskName $dataDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreationOption Import '
+   -SourceUri $dataVhdUri ) '
+   -ResourceGroupName $resourceGroupName
     
-    $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
-    -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
-    ```
+$VirtualMachine = Add-AzureRmVMDataDisk '
+   -VM $VirtualMachine '
+   -Name $dataDiskName '
+   -CreateOption Attach '
+   -ManagedDiskId $dataDisk1.Id '
+   -Lun 1
+```
 
-5.  Tworzenie nowej maszyny Wirtualnej przez ustawienie publicznego adresu IP, sieci wirtualnej i karty sieciowej.
+Tworzenie nowej maszyny Wirtualnej przez ustawienie publicznego adresu IP, sieci wirtualnej i karty sieciowej.
 
-    ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
-    -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+```powershell
+$publicIp = New-AzureRmPublicIpAddress '
+   -Name ($VirtualMachineName.ToLower()+'_ip') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -AllocationMethod Dynamic
     
-    $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+$vnet = Get-AzureRmVirtualNetwork '
+   -Name $virtualNetworkName '
+   -ResourceGroupName $resourceGroupName
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
-    -PublicIpAddressId $publicIp.Id
+$nic = New-AzureRmNetworkInterface '
+   -Name ($VirtualMachineName.ToLower()+'_nic') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -SubnetId $vnet.Subnets[0].Id '
+   -PublicIpAddressId $publicIp.Id
     
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+$VirtualMachine = Add-AzureRmVMNetworkInterface '
+   -VM $VirtualMachine '
+   -Id $nic.Id
     
-    New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
-    ```
+New-AzureRmVM -VM $VirtualMachine '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location
+```
 
 > [!NOTE]
->Mogą istnieć dodatkowe kroki niezbędne do obsługi tej aplikacji, która jest nie obejmuje się w tym przewodniku.
+>Mogą istnieć dodatkowe kroki niezbędne do obsługi aplikacji, który jest nie być dostępne w tym przewodniku.
 >
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Połączenie z maszyną wirtualną. Aby uzyskać instrukcje, zobacz [jak połączenia i zaloguj się do maszyny wirtualnej platformy Azure systemem Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Nawiąż połączenie z maszyną wirtualną. Aby uzyskać instrukcje, zobacz [jak połączyć i zaloguj się na maszynie wirtualnej platformy Azure, systemem Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794247"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322099"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Opis okresowe konfiguracji kopii zapasowej w usłudze Azure Service Fabric
 
@@ -45,7 +45,7 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
 
 * **Harmonogram tworzenia kopii zapasowych**: Czas lub częstotliwości, w którym należy wykonać okresowe kopie zapasowe. Jeden można zaplanować tworzenie kopii zapasowych są cykliczne w określonych przedziałach czasowych lub w stały czas dziennie / co tydzień.
 
-    1. **Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych**: W przypadku konieczności do wykonania kopii zapasowej danych w ustalonych odstępach czasu, należy używać tego typu harmonogramu. Żądany czas interwału dwóch kolejnych kopii zapasowych jest zdefiniowany w formacie ISO8601. Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych obsługuje interwał rozdzielczość maksymalnie minutę.
+    1. **Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych**: W przypadku konieczności do wykonania kopii zapasowej danych w ustalonych odstępach czasu, należy używać tego typu harmonogramu. Żądany czas interwału dwóch kolejnych kopii zapasowych jest zdefiniowany w formacie ISO8601. Na podstawie częstotliwości harmonogramu tworzenia kopii zapasowych obsługuje rozpoznawanie interwału do minuty.
         ```json
         {
             "ScheduleKind": "FrequencyBased",

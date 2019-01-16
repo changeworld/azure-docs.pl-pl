@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 10/31/2018
-ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 01/15/2019
+ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979101"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320790"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu protokołu SSH i Azure Logic Apps
 
@@ -27,7 +27,7 @@ Automatyzowanie zadań, które monitorowania, tworzenie, wysyłanie i odbieranie
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-W porównaniu do [łącznika SFTP](../connectors/connectors-create-api-sftp.md), łącznik SFTP-SSH może odczytać lub zapisać pliki do *1 GB* rozmiar. W przypadku plików większych niż 1 GB, można użyć protokołu SFTP-SSH i [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) w dalszej części tego artykułu.
+W porównaniu do [łącznika SFTP](../connectors/connectors-create-api-sftp.md), łącznik SFTP-SSH może odczytać lub zapisać pliki do *1 GB* rozmiar. Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) w dalszej części tego artykułu.
 
 Możesz użyć wyzwalaczy, które monitorowania zdarzeń na serwerze SFTP i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonywania różnych zadań na serwerze SFTP. Mogą też istnieć inne akcje w aplikacji logiki, użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać alerty e-mail dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
@@ -44,11 +44,11 @@ Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i ł
   >
   > SFTP-SSH łącznik obsługuje *tylko* te klucze prywatne, formatów, algorytmów i odcisków palców:
   > 
-  > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) i DSA (algorytmu Digital Signature Algorithm) klucze zarówno OpenSSH, jak i ssh.com formatów
+  > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) oraz klucze DSA (algorytmu Digital Signature Algorithm) w formacie OpenSSH i ssh.com
   > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
   > * **Odcisk palca**: MD5
 
-* Operacja odczytu lub zapisu do plików *1 GB* w porównaniu do łącznika SFTP. W przypadku plików większych niż 1 GB, użyj [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). 
+* Operacja odczytu lub zapisu do plików *1 GB* rozmiar w porównaniu do łącznika SFTP, ale obsługuje dane w 50 MB fragmentów, nie 1 GB fragmentów.
 
 * Udostępnia **Utwórz folder** akcji, która tworzy folder w określonej ścieżce na serwerze SFTP.
 
@@ -66,7 +66,7 @@ Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i ł
   >
   > SFTP-SSH łącznik obsługuje *tylko* te formaty klucza prywatnego, algorytmów i odcisków palców:
   > 
-  > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) i DSA (algorytmu Digital Signature Algorithm) klucze zarówno OpenSSH, jak i ssh.com formatów
+  > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) oraz klucze DSA (algorytmu Digital Signature Algorithm) w formacie OpenSSH i ssh.com
   > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
   > * **Odcisk palca**: MD5
   >
@@ -137,13 +137,13 @@ Podczas żądania zawartości pliku, wyzwalacz nie pobierać pliki o rozmiarze w
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP — wyzwalanie SSH: po dodaniu lub zmodyfikowaniu pliku
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP — wyzwalanie SSH: Po dodaniu lub zmodyfikowaniu pliku
 
 Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, gdy plik zostanie dodane lub zmienione na serwerze SFTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i pobiera zawartość, w oparciu o tego, czy zawartość spełnia określony warunek. Następnie można dodać akcję, która pobiera zawartość pliku i umieszcza tę zawartość w folderze na serwerze SFTP. 
 
-**Przykład Enterprise**: tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku** , Pobierz zawartość w kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
+**Przykład Enterprise**: Tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku** , Pobierz zawartość w kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH akcji: pobieranie zawartości
+### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH akcji: Pobieranie zawartości
 
 Ta akcja pobiera zawartość z pliku na serwer SFTP. Na przykład można dodać wyzwalacza z poprzedniego przykładu i warunek, który musi spełniać zawartość pliku. Jeśli warunek jest spełniony, można uruchomić akcję, która pobiera zawartość. 
 
