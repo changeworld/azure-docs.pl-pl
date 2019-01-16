@@ -1,19 +1,18 @@
 ---
 title: Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB
 description: Samouczek dotyczący sposobu konfigurowania przepływu pracy kompilacji i wydawania w usłudze Azure DevOps przy użyciu zadania kompilacji emulatora usługi Cosmos DB
-services: cosmos-db
-keywords: Emulator usługi Azure Cosmos DB
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 83178abab84679dcfb36a361950097f9224eda81
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: sngun
+ms.openlocfilehash: 58b97dd2df29a829b843d20c14cdb15644357653
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810648"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053708"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -66,7 +65,7 @@ W tym samouczku dodasz zadanie na początku, aby upewnić się, że emulator jes
 
 Teraz skonfigurujemy nasze testy tak, aby używały emulatora. Zadanie kompilacji emulatora eksportuje zmienną środowiskową „CosmosDbEmulator.Endpoint”, wobec której wszystkie zadania w dalszej części potoku kompilacji mogą wysyłać żądania. 
 
-W tym samouczku użyjemy zadania [Visual Studio Test](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md), aby uruchomić testy jednostkowe skonfigurowane za pomocą pliku **.runsettings**. Aby dowiedzieć się więcej na temat konfigurowania testów jednostkowych, zapoznaj się z [dokumentacją](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017).
+W tym samouczku użyjemy zadania [Visual Studio Test](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md), aby uruchomić testy jednostkowe skonfigurowane za pomocą pliku **.runsettings**. Aby dowiedzieć się więcej na temat konfigurowania testów jednostkowych, zapoznaj się z [dokumentacją](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017). Kompletny przykład kodu aplikacji z listą zadań do wykonania używany w tym dokumencie jest dostępny w serwisie [Github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
 
 Poniżej przedstawiono przykładowy plik **.runsettings**, który definiuje parametry przekazywane do testów jednostkowych aplikacji. Należy pamiętać, że używana zmienna `authKey` to [dobrze znany klucz](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) emulatora. Ta zmienna `authKey` to klucz oczekiwany przez zadanie kompilacji emulatora i powinna być zdefiniowana w pliku **.runsettings**.
 

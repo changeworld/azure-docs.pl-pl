@@ -1,12 +1,10 @@
 ---
-title: Punkty końcowe usługi sieci wirtualnej platformy Azure | Microsoft Docs
+title: Punkty końcowe usługi sieci wirtualnej platformy Azure
+titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak włączyć bezpośredni dostęp do zasobów platformy Azure z sieci wirtualnej przy użyciu punktów końcowych usługi.
 services: virtual-network
 documentationcenter: na
 author: sumeetmittal
-manager: narayan
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -15,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: acb5897825a2a7762869d3ad961dfcdcb87071b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 77d21a9db54a34d3f9981929bb90dfd3b54e23dd
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540558"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190599"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -60,7 +58,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 - Funkcja jest dostępna tylko dla sieci wirtualnych wdrożonych za pomocą modelu wdrażania przy użyciu usługi Azure Resource Manager.
 - Punkty końcowe są włączone w podsieciach skonfigurowanych w sieciach wirtualnych platformy Azure. Punktów końcowych nie można używać dla ruchu ze środowiska lokalnego do usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usług platformy Azure ze środowiska lokalnego](#securing-azure-services-to-virtual-networks)
-- W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usługi Azure Storage na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usług Azure Storage i ADLS Gen 1 na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Zabezpieczanie usług platformy Azure w sieciach wirtualnych
 

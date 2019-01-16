@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 8f76c53964d062db76ea7d40cdb0ced2d015fc79
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716014"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120737"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej na potrzeby dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure Active Directory
 
@@ -25,10 +25,10 @@ Usługa Azure Active Directory (Azure AD) udostępnia usługę serwera proxy apl
 Ten samouczek umożliwia opanowanie następujących czynności:
 
 > [!div class="checklist"]
-> * Otwieranie portów dla ruchu wychodzącego i zezwalanie na dostęp do określonych adresów URL
-> * Instalowanie łącznika na serwerze systemu Windows i rejestrowanie łącznika na serwerze proxy aplikacji
-> * Sprawdzanie, czy łącznik został poprawnie zainstalowany i zarejestrowany
-> * Dodawanie aplikacji lokalnej do dzierżawy usługi Azure AD
+> * Otwieranie portów dla ruchu wychodzącego i zezwalanie na dostęp do określonych adresów URL.
+> * Instalowanie łącznika na serwerze systemu Windows i rejestrowanie łącznika na serwerze proxy aplikacji.
+> * Sprawdzanie, czy łącznik został poprawnie zainstalowany i zarejestrowany.
+> * Dodawanie aplikacji lokalnej do dzierżawy usługi Azure AD.
 > * Sprawdzanie, czy użytkownik testowy może zalogować się do aplikacji przy użyciu konta usługi Azure AD.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem

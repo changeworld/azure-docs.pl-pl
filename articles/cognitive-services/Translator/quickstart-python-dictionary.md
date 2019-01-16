@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie alternatywnych tłumaczeń, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: Wyszukiwanie wyrazów w słowniku dwujęzycznym, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: ab8a6d5b6d4bb52863e77b844a4008bb80d840be
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 52820a9162a20b680b85d07f8c49ac5305d4979a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993953"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158015"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą języka Python oraz interfejsu API tłumaczenia tekstu w usłudze Translator
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Python
 
 W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 

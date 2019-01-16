@@ -9,17 +9,16 @@ ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c875793bf558013d5052f99c24d3a04a3525af5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9a536efd59008572459b8736e2a6ada669c00519
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253044"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015189"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu interfejsu API .NET
 > [!div class="op_single_selector"]
@@ -37,14 +36,14 @@ ms.locfileid: "51253044"
 
 W tym artykule wyjaśniono, jak używać interfejsu [API .NET](https://portal.azure.com) do tworzenia fabryki danych obejmującej potok, który kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL. Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem instrukcji z tego samouczka zapoznaj się z artykułem [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md).   
 
-W tym samouczku opisano tworzenie potoku z jednym działaniem (Działanie kopiowania). Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
+W tym samouczku opisano tworzenie potoku z jednym działaniem: działaniem kopiowania. Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
 
 Potok może obejmować więcej niż jedno działanie. Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą [wielu działań w potoku](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 > [!NOTE] 
 > Aby zapoznać się z pełną dokumentacją dotyczącą interfejsu API .NET usługi Data Factory, zobacz [dokumentację interfejsu API .NET usługi Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 > 
-> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: Tworzenie potoku przekształcającego dane przy użyciu klastra Hadoop).
+> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: przekształcanie danych przy użyciu klastra Hadoop).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Przejrzyj [omówienie samouczka i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), aby uzyskać omówienie samouczka i pełne kroki **wymagań wstępnych**.
@@ -132,7 +131,7 @@ Po wykonaniu tych kroków powinny być dostępne cztery następujące wartości:
 3. W **konsoli menedżera pakietów** wykonaj następujące czynności:
    1. Uruchom następujące polecenie, aby zainstalować pakiet Fabryka danych: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Uruchom następujące polecenie, aby zainstalować pakiet Azure Active Directory (użyjesz interfejsu API usługi Active Directory w kodzie): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Dodaj następującą sekcję **appSetttings** do pliku **App.config**. Te ustawienia są używane przez metodę pomocy **GetAuthorizationHeader**.
+4. Dodaj następującą sekcję **appSetttings** do pliku **App.config**. Te ustawienia są używane przez metodę pomocniczą: **GetAuthorizationHeader**.
 
     Zastąp wartości **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;** i **&lt;tenant ID&gt;** własnymi wartościami.
 

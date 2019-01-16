@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633762"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104526"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio Code
 
@@ -27,7 +27,7 @@ W tym artykule dowiesz się, jak użyć [Rozszerzenie usługi Azure Functions dl
 
 ![Kod usługi Azure Functions w projekcie programu Visual Studio](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Rozszerzenie obsługuje obecnie funkcje języka C#, JavaScript i Java. Kroki opisane w tym artykule mogą się różnić w zależności od wybranego języka dla projektu usługi Azure Functions. Rozszerzenie jest aktualnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz stronę [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code].
+Obecnie rozszerzenie w pełni obsługuje funkcje języków C#, JavaScript i Java, a obsługa języka Python jest dostępna w wersji zapoznawczej. Kroki opisane w tym artykule mogą się różnić w zależności od wybranego języka dla projektu usługi Azure Functions. Rozszerzenie jest aktualnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz stronę [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -93,7 +93,7 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
     ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F1.
+1. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F5.
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 

@@ -6,26 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 3b158e0743a811f0d8f478c15b64c2b8b99a748a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712266"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156004"
 ---
-# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Szybki start: wdrażanie usługi Azure Data Box Disk (w wersji zapoznawczej) za pomocą witryny Azure Portal
+# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Szybki start: wdrażanie usługi Azure Data Box Disk za pomocą witryny Azure Portal
 
 W tym przewodniku Szybki start opisano sposób wdrażania usługi Azure Data Box Disk przy użyciu witryny Azure Portal. Opisano czynności szybkiego tworzenia zamówienia, odbioru dysków, ich rozpakowywania i podłączania oraz kopiowania danych na dyski w celu przekazania na platformę Azure. 
 
-Aby zyskać szczegółowe instrukcje wdrażania i śledzenia krok po kroku, zobacz [Tutorial: Order Azure Data Box Disk (Samouczek: zamawianie urządzenia Azure Data Box Disk)](data-box-disk-deploy-ordered.md). 
+Aby zyskać szczegółowe instrukcje dotyczące wdrażania i śledzenia krok po kroku, zobacz [Samouczek: zamawianie urządzenia Azure Data Box Disk](data-box-disk-deploy-ordered.md). 
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-> [!IMPORTANT]
-> Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

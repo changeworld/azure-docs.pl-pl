@@ -6,24 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/28/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974993"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158112"
 ---
-# <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Administrowanie usługą Data Box Disk w witrynie Azure Portal (wersja zapoznawcza)
+# <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Administrowanie usługą Data Box Disk w witrynie Azure Portal
 
 Samouczki w tym artykule dotyczą usługi Microsoft Azure Data Box Disk w wersji zapoznawczej. W artykule opisano niektóre złożone przepływy pracy i zadania związane z zarządzaniem, które można wykonywać w usłudze Data Box Disk. 
 
 Można zarządzać usługą Data Box Disk w witrynie Azure Portal. Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. W witrynie Azure Portal można zarządzać zamówieniami, zarządzać dyskami oraz śledzić kolejne stany zamówienia aż do etapu końcowego.
-
-> [!IMPORTANT]
-> Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="cancel-an-order"></a>Anulowanie zamówienia
 

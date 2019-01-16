@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie przy użyciu automatyzacji Azure usługi w chmurze Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat jak usługa Automatyzacja Azure może służyć do zarządzania usługami w chmurze platformy Azure na dużą skalę.
+title: Zarządzanie usługami w chmurze platformy Azure przy użyciu usługi Azure Automation | Dokumentacja firmy Microsoft
+description: Naucz się, jak używać usługi Azure Automation do zarządzania usługami platformy Azure w chmurze na dużą skalę.
 services: cloud-services, automation
 documentationcenter: ''
 author: jodoglevy
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 6b5acac1b8647c324988c316cd5602b3dba98a1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40e91b4ba7ee62976b49975769bd1d1e656525f2
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23842937"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54328872"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>Zarządzania usługami w chmurze Azure przy użyciu usługi Automatyzacja Azure
-W tym przewodniku przedstawiono usługi Automatyzacja Azure oraz jak on używany w celu uproszczenia zarządzania usług w chmurze Azure.
+# <a name="managing-azure-cloud-services-using-azure-automation"></a>Zarządzanie usług Azure Cloud Services przy użyciu usługi Azure Automation
+Ten przewodnik Wprowadzenie do usługi Azure Automation i jak może służyć do uproszczenia zarządzania usługami Azure cloud services.
 
 ## <a name="what-is-azure-automation"></a>Co to jest Azure Automation?
-[Automatyzacja Azure](https://azure.microsoft.com/services/automation/) jest usługą platformy Azure, dla uproszczenia zarządzania chmurą za pomocą automatyzacji procesu. Przy użyciu usługi Automatyzacja Azure, można zautomatyzować długotrwałe, ręcznych, podatnych i często powtarzanych zadań, aby zwiększyć niezawodność, wydajność i wartość czasu dla Twojej organizacji.
+[Usługa Azure Automation](https://azure.microsoft.com/services/automation/) jest usługą platformy Azure dla uproszczenie zarządzania chmurą poprzez automatyzację procesów. Za pomocą usługi Azure Automation, długotrwałych, ręczne, podatne na błędy i często powtarzanych zadań można zautomatyzować zwiększyć niezawodność, wydajność i czasy wykonywania operacji dla Twojej organizacji.
 
-Automatyzacja Azure umożliwia aparatowi wykonywania przepływów pracy wysoce niezawodne i wysokiej dostępności, która może obsłużyć do własnych potrzeb miarę rozwoju organizacji. W automatyzacji Azure procesów może być rozpoczęte ręcznie, przez systemy 3rd firmy lub w zaplanowanych odstępach czasu tak, aby zadania stanie dokładnie w razie potrzeby.
+Usługa Azure Automation zapewnia aparat wykonywania przepływu pracy o wysokiej niezawodności i o wysokiej dostępności, który jest skalowany w celu spełnienia konkretnych potrzeb w miarę rozwoju organizacji. W usłudze Azure Automation procesów może być rozpoczęła się ręcznie, przez systemy innych firm 3 lub w zaplanowanych odstępach czasu tak, aby zadania się tak zdarzyć, dokładnie tak, gdy jest to potrzebne.
 
-Obniżyć koszty operacyjne i zwolnić IT / personel DevOps skupić się na pracy, który dodaje biznesowych wartość przez przeniesienie zadań zarządzania chmury do automatycznego uruchamiania przez usługi Automatyzacja Azure.
+Niższe koszty operacyjne i Zwolnij część IT / pracownicy działu DevOps, aby skupić się na pracy, który dodaje firm wartość przez przeniesienie zadań zarządzania systemem chmury uruchamiana automatycznie przez usługę Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak usługi Automatyzacja Azure ułatwia zarządzanie usług w chmurze Azure?
-Usługi w chmurze platformy Azure można zarządzać w automatyzacji Azure za pomocą poleceń cmdlet programu PowerShell, które są dostępne w [narzędzia programu Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Usługi Automatyzacja Azure ma te chmury usługi poleceń cmdlet programu PowerShell dostępne fabrycznej, dzięki czemu można wykonywać wszystkie zadania zarządzania usługi chmury w ramach usługi. Można również skojarzyć te polecenia cmdlet usługi Automatyzacja Azure, za pomocą poleceń cmdlet dla innych usług Azure, aby zautomatyzować złożone zadania 3 systemów firm i usług Azure.
+## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak usługa Azure Automation ułatwiają zarządzanie usług Azure cloud services?
+Usług Azure cloud services można zarządzać w usłudze Azure Automation za pomocą poleceń cmdlet programu PowerShell, które są dostępne w [narzędzia programu Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Usługa Azure Automation obejmuje te chmury usługi poleceń cmdlet programu PowerShell dostępnych gotowych, tak, aby wykonywać wszystkie zadania zarządzania usługi chmury w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure do automatyzacji złożonych zadań obejmujących wiele usług platformy Azure i systemami firm 3.
 
-Niektóre przykładowe zastosowania usługi Automatyzacja Azure do zarządzania usługami w chmurze Azure obejmują:
+Niektóre przykład użycia usługi Azure Automation do zarządzania usługi Azure Cloud Services obejmują:
 
-* [Ciągłej wdrożenia usługi w chmurze przy każdej aktualizacji cscfg lub cspkg w magazynie obiektów Blob platformy Azure](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
-* [Ponowne uruchomienie wystąpienia usługi w chmurze równolegle domeny uaktualnienia pojedynczo](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
+* [Ciągłe wdrażanie usługi w chmurze przy każdej aktualizacji pliku cscfg lub cspkg w usłudze Azure Blob storage](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
+* [Ponowne uruchamianie wystąpień usługi w chmurze w sposób równoległy, jedną domenę uaktualnienia w czasie](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy znasz już podstawy usługi Automatyzacja Azure i jak może służyć do zarządzania usługami w chmurze platformy Azure, skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat automatyzacji Azure.
+Teraz, kiedy znasz już podstawy usługi Azure Automation i jak może służyć do zarządzania usługami w chmurze platformy Azure, skorzystaj z poniższych linków, aby dowiedzieć się więcej o usłudze Azure Automation.
 
-* [Omówienie usługi Automatyzacja Azure](../automation/automation-intro.md)
+* [Omówienie usługi Azure Automation](../automation/automation-intro.md)
 * [Mój pierwszy element Runbook](../automation/automation-first-runbook-graphical.md)
-* [Mapa uczenia usługi Automatyzacja Azure](https://azure.microsoft.com/documentation/learning-paths/automation/)
+* [Mapa uczenia się usługi Azure Automation](https://azure.microsoft.com/documentation/learning-paths/automation/)

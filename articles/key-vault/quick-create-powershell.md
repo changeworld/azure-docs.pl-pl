@@ -9,17 +9,17 @@ ms.assetid: 1126f665-2e6c-4cca-897e-7d61842e8334
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: powershell
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/28/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: ae09442c1ebec878e15b5149d0634f8dc3568f7a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: d43cd53c462527ce5458e7ae8c4bcbe961ed7553
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362422"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076267"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu programu PowerShell
 

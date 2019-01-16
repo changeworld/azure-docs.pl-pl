@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60ecf08d7f0c40a04472b3e2bf5ef739e51c32e8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794434"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103523"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -43,7 +43,7 @@ W celu ukończenia tego samouczka:
 Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Kliknij kolejno pozycje **Utwórz zasób** > **Monitorowanie i zarządzanie** > **Backup and Site Recovery**.
+2. Kliknij kolejno pozycje **Utwórz zasób** > **Narzędzia do zarządzania** > **Backup i Site Recovery**.
 3. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
 4. Utwórz grupę zasobów lub wybierz istniejącą grupę. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 5. Aby szybko uzyskać dostęp do magazynu z pulpitu nawigacyjnego, kliknij pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**.
@@ -172,7 +172,8 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
 
 5. W obszarze **Dostosowywanie** wybierz opcję **Tak**, aby zachować spójność wielu maszyn wirtualnych, jeśli chcesz dodać maszyny wirtualne do nowej lub istniejącej grupy replikacji. Aby dodać maszyny wirtualne do grupy replikacji. Następnie kliknij przycisk **OK**.
 
-    - W przypadku przejścia w tryb failover wszystkie maszyny w grupie replikacji będą korzystać ze współdzielonych punktów odzyskiwania, spójnych na poziomie awarii i aplikacji. Spójność obejmująca wiele maszyn wirtualnych może wpłynąć na wydajność obciążeń. Należy ją włączać tylko wtedy, gdy na maszynach jest uruchomione to samo obciążenie i jest wymagana spójność między wieloma maszynami.
+    - W przypadku przejścia w tryb failover wszystkie maszyny w grupie replikacji będą korzystać ze współdzielonych punktów odzyskiwania, spójnych na poziomie awarii i aplikacji. Spójność obejmująca wiele maszyn wirtualnych może wpłynąć na wydajność obciążeń (ze względu na intensywne wykorzystanie procesora CPU). Należy ją włączać tylko wtedy, gdy na maszynach jest uruchomione to samo obciążenie i jest wymagana spójność między wieloma maszynami.
+    - W grupie replikacji może istnieć maksymalnie 16 maszyn wirtualnych.
     - Jeśli włączono spójność między wieloma maszynami wirtualnymi, maszyny z grupy replikacji komunikują się między sobą przez port 20004. Upewnij się, że żadne urządzenie zapory nie blokuje wewnętrznej komunikacji między maszynami wirtualnymi za pośrednictwem portu 20004. Jeśli do grupy replikacji chcesz dodać maszyny wirtualne z systemem Linux, musisz ręcznie otworzyć port 20004 dla ruchu wychodzącego zgodnie ze wskazówkami dla konkretnej wersji systemu Linux.
 
 ### <a name="configure-encryption-settings"></a>Konfigurowanie ustawień szyfrowania

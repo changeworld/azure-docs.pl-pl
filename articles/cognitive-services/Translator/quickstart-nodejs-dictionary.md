@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie alternatywnych tłumaczeń, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu środowiska Node.js i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: f7f779ccd10eeffc9ddfcba5dbb9abde00e1f735
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035632"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160016"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą środowiska Node.js przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą środowiska Node.js
 
 W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu środowiska Node.js i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 Metoda `request()`, udostępniona przez moduł żądania, umożliwia nam przekazanie metody HTTP, parametrów żądania adresu URL, nagłówków i treści w formacie JSON w postaci obiektu `options`. W poniższym fragmencie kodu skonfigurujemy żądanie:
 
 >[!NOTE]
-> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) (Interfejs API 3.0 tłumaczenia tekstu w usłudze Translator: wyszukiwanie w słowniku).
+> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: wyszukiwanie w słowniku](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ```javascript
 let options = {

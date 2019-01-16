@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/19/2018
+ms.date: 01/03/2019
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7628260efff34b52ca7d4bd4c35cce279d5474b3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 516ce9d9a6fcc73b543c7db584afebf71c2293ca
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965414"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065002"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 
@@ -33,7 +33,7 @@ Na poniższym diagramie przedstawiono relacje między tymi zasobami.
 
 ### <a name="storage-accounts"></a>Konta magazynu
 
-Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla danych użytkownika. Każdy obiekt przechowywany w usłudze Azure Storage ma adres, który zawiera unikatową nazwę konta. Kombinacja nazwy konta i punktu końcowego usługi Azure Storage stanowi punkty końcowe konta magazynu.
+Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla danych użytkownika. Każdy obiekt przechowywany w usłudze Azure Storage ma adres, który zawiera unikatową nazwę konta. Kombinacja nazwy konta i punktu końcowego obiektu blob usługi Azure Storage stanowi adres podstawowy dla obiektów w ramach konta magazynu.
 
 Jeśli na przykład konto magazynu ma nazwę *mystorageaccount*, domyślnym punktem końcowym magazynu obiektów blob jest:
 
@@ -56,7 +56,7 @@ Usługa Azure Storage obsługuje trzy typy obiektów blob:
 
 * **Blokowe obiekty blob** mogą zawierać dane tekstowe i binarne o rozmiarze do około 4,7 TB. Blokowe obiekty blob składają się z bloków danych, którymi można zarządzać indywidualnie.
 * **Uzupełnialne obiekty blob** również składają się z bloków, podobnie jak blokowe obiekty blob, lecz są zoptymalizowane pod kątem operacji dołączania. Uzupełnialne obiekty blob doskonale sprawdzają się w sytuacjach takich jak zapisywanie danych dzienników z maszyn wirtualnych.
-* **Stronicowe obiekty blob** umożliwiają przechowywanie plików o dostępie swobodnym o rozmiarze do 8 TB. Stronicowe obiekty blob są używane do przechowywania plików wirtualnych dysków twardych (VHD) służących jako dyski maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji o stronicowych obiektach blob, zobacz temat (../articles/storage/blobs/storage-blob-pageblob-overview.md)
+* **Stronicowe obiekty blob** umożliwiają przechowywanie plików o dostępie swobodnym o rozmiarze do 8 TB. Stronicowe obiekty blob są używane do przechowywania plików wirtualnych dysków twardych (VHD) służących jako dyski maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji na temat stronicowych obiektów blob, zobacz [Overview of Azure page blobs (Omówienie stronicowych obiektów blob platformy Azure)](storage-blob-pageblob-overview.md)
 
 Aby uzyskać więcej informacji na temat różnych typów obiektów blob, zobacz temat [Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (Omówienie blokowych, uzupełnialnych i stronicowych obiektów blob).
 

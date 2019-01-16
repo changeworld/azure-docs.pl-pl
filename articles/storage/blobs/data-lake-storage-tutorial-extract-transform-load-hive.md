@@ -1,348 +1,333 @@
 ---
-title: 'Samouczek: Wykonywanie operacji wyodrębniania, przekształcania i ładowania (ETL) przy użyciu oprogramowania Hive w usłudze HDInsight — Azure'
-description: Dowiedz się, jak wyodrębnić dane z nieprzetworzonego zestawu danych CSV, przekształcić je za pomocą oprogramowania Hive w usłudze HDInsight, a następnie załadować przekształcone dane do bazy danych Azure SQL Database za pomocą narzędzia Sqoop.
+title: 'Samouczek: Wykonywanie operacji wyodrębniania, przekształcania i ładowania (ETL) przy użyciu technologii Apache Hive w usłudze Azure HDInsight'
+description: W ramach tego samouczka dowiesz się, jak wyodrębnić dane z zestawu danych pierwotnych w postaci pliku CSV, przekształcić je za pomocą technologii Apache Hive w usłudze Azure HDInsight, a następnie załadować przekształcone dane do bazy danych Azure SQL Database za pomocą narzędzia Sqoop.
 services: storage
 author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/07/2019
 ms.author: jamesbak
-ms.openlocfilehash: 58773cfd8db5e065752e5cf89a7e6d6f172391b8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 65d2d69c788a54371664d1a443a79bd121332470
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974369"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105156"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu technologii Apache Hive w usłudze Azure HDInsight
 
-W tym samouczku zaimportujesz nieprzetworzony plik danych CSV do klastra usługi HDInsight i przekształcisz dane za pomocą oprogramowania Apache Hive w usłudze Azure HDInsight. Przekształcone dane można załadować do bazy danych Azure SQL Database przy użyciu narzędzia Apache Sqoop. W tym artykule zostaną użyte publicznie dostępne dane dotyczące lotów.
+W ramach tego samouczka wykonasz operację ETL: wyodrębnianie, przekształcanie i ładowanie danych. Pobierzesz plik danych pierwotnych w formacie CSV, zaimportujesz te dane do klastra usługi Azure HDInsight, przekształcisz je przy użyciu technologii Apache Hive i załadujesz do usługi Azure SQL Database za pomocą narzędzia Apache Sqoop.
 
-Ten samouczek obejmuje następujące zadania:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Pobieranie przykładowych danych lotów
-> * Przekazywanie danych do klastra usługi HDInsight
-> * Przekształcanie danych za pomocą oprogramowania Hive
-> * Tworzenie tabeli w bazie danych Azure SQL Database
-> * Eksportowanie danych do bazy danych Azure SQL Database za pomocą narzędzia Sqoop
-
-Poniższa ilustracja przedstawia typowy przepływ aplikacji ETL.
-
-![Operacja ETL używająca oprogramowania Apache Hive w usłudze Azure HDInsight](./media/data-lake-storage-tutorial-extract-transform-load-hive/hdinsight-etl-architecture.png "Operacja ETL używająca oprogramowania Apache Hive w usłudze Azure HDInsight")
+> * Wyodrębnianie danych i przekazywanie ich do klastra usługi HDInsight.
+> * Przekształcanie danych przy użyciu technologii Apache Hive.
+> * Ładowanie danych do usługi Azure SQL Database za pomocą narzędzia Sqoop.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Klaster Hadoop oparty na systemie Linux w usłudze HDInsight**. Zobacz [Set up clusters in HDInsight with Hadoop, Spark, Kafka and more (Konfigurowanie klastrów w usłudze HDInsight za pomocą platform Hadoop, Spark, Kafka i innych)](./data-lake-storage-quickstart-create-connect-hdi-cluster.md), aby uzyskać instrukcje tworzenia nowego klastra usługi HDInsight opartego na systemie Linux.
+* **Klaster Hadoop oparty na systemie Linux w usłudze HDInsight**: Aby utworzyć nowy klaster usługi HDInsight oparty na systemie Linux, zobacz [Konfigurowanie klastrów w usłudze HDInsight za pomocą platform Hadoop, Spark, Kafka i innych](./data-lake-storage-quickstart-create-connect-hdi-cluster.md).
 
-* **Usługa Azure SQL Database**. Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych SQL platformy Azure w witrynie Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych SQL platformy Azure w witrynie Azure Portal](../../sql-database/sql-database-get-started.md).
 
-* **Interfejs wiersza polecenia platformy Azure**. Jeśli nie zainstalowano wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), aby uzyskać więcej procedur.
+* **Interfejs wiersza polecenia platformy Azure**: Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **Klient SSH**. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient SSH**: Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 > [!IMPORTANT]
-> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą Azure HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Procedura przedstawiona w tym artykule wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą Azure HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-## <a name="download-the-flight-data"></a>Pobieranie danych lotów
+### <a name="download-the-flight-data"></a>Pobieranie danych lotów
 
-1. Przejdź do strony [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].
+W tym samouczku w celu zademonstrowania sposobu wykonywania operacji ETL są używane dane dotyczące lotów opracowane przez agencję Bureau of Transportation Statistics. Aby ukończyć samouczek, musisz pobrać te dane.
 
-2. Na stronie wybierz następujące wartości:
+1. Przejdź do strony [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+
+1. Na stronie wybierz następujące wartości:
 
    | Name (Nazwa) | Wartość |
    | --- | --- |
-   | Rok filtrowania |2013 |
-   | Filter Period (Okres filtrowania) |January (Styczeń) |
-   | Pola |Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
-   Wyczyść wszystkie pozostałe pola.
+   | **Filter Year (Filtruj rok)** |2013 |
+   | **Filter Period (Filtruj okres)** |January (Styczeń) |
+   | **Pola** |Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
-3. Wybierz przycisk **Download** (Pobierz). Uzyskasz plik zip z wybranymi polami danych.
+1. Wyczyść wszystkie pozostałe pola.
 
-## <a name="upload-data-to-an-hdinsight-cluster"></a>Przekazywanie danych do klastra usługi HDInsight
+1. Wybierz przycisk **Download** (Pobierz). Uzyskasz plik zip z wybranymi polami danych.
 
-Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastrem usługi HDInsight. W tej sekcji przekażesz dane za pomocą polecenia `scp`. Aby poznać inne sposoby przekazywania danych, zobacz [Use Distcp to copy data between an existing storage account and a new storage account with Data Lake Storage Gen2 enabled](data-lake-storage-use-distcp.md) (Używanie narzędzia DistCp do kopiowania danych między istniejącym i nowym kontem magazynu z włączoną usługą Data Lake Storage Gen2).
+## <a name="extract-and-upload-the-data"></a>Wyodrębnianie i przekazywanie danych
 
-1. Otwórz wiersz polecenia i użyj następującego polecenia, aby przekazać plik zip do węzła głównego klastra usługi HDInsight:
+W tej sekcji użyjesz polecenia `scp`, aby przekazać dane do klastra usługi HDInsight.
 
-    ```bash
-    scp <FILE_NAME>.zip <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net:<FILE_NAME.zip>
-    ```
+Otwórz wiersz polecenia i użyj następującego polecenia, aby przekazać plik zip do węzła głównego klastra usługi HDInsight:
 
-    Zastąp ciąg *FILE_NAME* nazwą pliku zip. Zastąp ciąg *SSH_USER_NAME* nazwą logowania SSH dla klastra usługi HDInsight. Zastąp ciąg *CLUSTER_NAME* nazwą klastra usługi HDInsight.
+```bash
+scp <FILE_NAME>.zip <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net:<FILE_NAME.zip>
+```
 
-   > [!NOTE]
-   > Jeśli uwierzytelniasz nazwę logowania SSH przy użyciu hasła, zostanie wyświetlony monit o podanie hasła. Jeśli używasz klucza publicznego, może być konieczne użycie parametru `-i` w celu określenia ścieżki do zgodnego klucza prywatnego. Na przykład `scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`.
+* Zastąp ciąg \<FILE_NAME> nazwą pliku zip.
+* Zastąp ciąg \<SSH_USER_NAME> nazwą logowania SSH dla klastra usługi HDInsight.
+* Zastąp ciąg \<CLUSTER_NAME> nazwą klastra usługi HDInsight.
 
-2. Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. W wierszu polecenia wprowadź następujące polecenie:
+Jeśli uwierzytelniasz nazwę logowania SSH przy użyciu hasła, zostanie wyświetlony monit o podanie hasła. 
 
-    ```bash
-    ssh <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net
-    ```
+Jeśli używasz klucza publicznego, może być konieczne użycie parametru `-i` w celu określenia ścieżki do zgodnego klucza prywatnego. Na przykład `scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`.
 
-3. Użyj następującego polecenia, aby rozpakować plik zip:
+Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. W wierszu polecenia wprowadź następujące polecenie:
 
-    ```bash
-    unzip <FILE_NAME>.zip
-    ```
+```bash
+ssh <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net
+```
 
-    To polecenie umożliwia wyodrębnienie pliku *csv* o rozmiarze około 60 MB.
+Użyj następującego polecenia, aby rozpakować plik zip:
 
-4. Użyj następujących poleceń, aby utworzyć katalog, a następnie skopiować plik *csv* do tego katalogu:
+```bash
+unzip <FILE_NAME>.zip
+```
 
-    ```bash
-    hdfs dfs -mkdir -p abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data
-    hdfs dfs -put <FILE_NAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
-    ```
+To polecenie umożliwia wyodrębnienie pliku **csv** o rozmiarze około 60 MB.
 
-5. Utwórz system plików usługi Data Lake Storage 2. generacji.
+Użyj następujących poleceń, aby utworzyć katalog, a następnie skopiować plik *csv* do tego katalogu:
 
-    ```bash
-    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/
-    ```
+```bash
+hdfs dfs -mkdir -p abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data
+hdfs dfs -put <FILE_NAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
+```
 
-## <a name="transform-data-using-a-hive-query"></a>Przekształcanie danych za pomocą zapytania oprogramowania Hive
+Za pomocą następującego polecenia utwórz system plików usługi Data Lake Storage Gen2.
 
-Istnieje wiele sposobów uruchamiania zadania oprogramowania Hive w klastrze usługi HDInsight. W tej sekcji uruchomisz zadanie oprogramowania Hive za pomocą usługi Beeline. Aby uzyskać informacje o innych metodach uruchamiania zadania Hive, zobacz [Używanie oprogramowania Hive w usłudze HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md).
+```bash
+hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/
+```
 
-W ramach zadania oprogramowania Hive można zaimportować dane z pliku csv do tabeli oprogramowania Hive o nazwie **Delays**.
+## <a name="transform-the-data"></a>Przekształcanie danych
 
-1. W wierszu polecenia SSH, który już istnieje dla klastra usługi HDInsight, użyj następującego polecenia, aby utworzyć i edytować nowy plik o nazwie **flightdelays.hql**:
+W tej sekcji uruchomisz zadanie Apache Hive za pomocą usługi Beeline.
 
-    ```bash
-    nano flightdelays.hql
-    ```
+W ramach zadania Apache Hive zaimportujesz dane z pliku csv do tabeli Apache Hive o nazwie **delays**.
 
-2. Użyj następującego tekstu jako zawartości tego pliku:
+W wierszu polecenia SSH, który już istnieje dla klastra usługi HDInsight, użyj następującego polecenia, aby utworzyć i edytować nowy plik o nazwie **flightdelays.hql**:
 
-    ```hiveql
-    DROP TABLE delays_raw;
-    -- Creates an external table over the csv file
-    CREATE EXTERNAL TABLE delays_raw (
-        YEAR string,
-        FL_DATE string,
-        UNIQUE_CARRIER string,
-        CARRIER string,
-        FL_NUM string,
-        ORIGIN_AIRPORT_ID string,
-        ORIGIN string,
-        ORIGIN_CITY_NAME string,
-        ORIGIN_CITY_NAME_TEMP string,
-        ORIGIN_STATE_ABR string,
-        DEST_AIRPORT_ID string,
-        DEST string,
-        DEST_CITY_NAME string,
-        DEST_CITY_NAME_TEMP string,
-        DEST_STATE_ABR string,
-        DEP_DELAY_NEW float,
-        ARR_DELAY_NEW float,
-        CARRIER_DELAY float,
-        WEATHER_DELAY float,
-        NAS_DELAY float,
-        SECURITY_DELAY float,
-        LATE_AIRCRAFT_DELAY float)
-    -- The following lines describe the format and location of the file
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    LINES TERMINATED BY '\n'
-    STORED AS TEXTFILE
-    LOCATION 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data';
+```bash
+nano flightdelays.hql
+```
 
-    -- Drop the delays table if it exists
-    DROP TABLE delays;
-    -- Create the delays table and populate it with data
-    -- pulled in from the CSV file (via the external table defined previously)
-    CREATE TABLE delays
-    LOCATION abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/processed
-    AS
-    SELECT YEAR AS year,
-        FL_DATE AS flight_date,
-        substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS unique_carrier,
-        substring(CARRIER, 2, length(CARRIER) -1) AS carrier,
-        substring(FL_NUM, 2, length(FL_NUM) -1) AS flight_num,
-        ORIGIN_AIRPORT_ID AS origin_airport_id,
-        substring(ORIGIN, 2, length(ORIGIN) -1) AS origin_airport_code,
-        substring(ORIGIN_CITY_NAME, 2) AS origin_city_name,
-        substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS origin_state_abr,
-        DEST_AIRPORT_ID AS dest_airport_id,
-        substring(DEST, 2, length(DEST) -1) AS dest_airport_code,
-        substring(DEST_CITY_NAME,2) AS dest_city_name,
-        substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS dest_state_abr,
-        DEP_DELAY_NEW AS dep_delay_new,
-        ARR_DELAY_NEW AS arr_delay_new,
-        CARRIER_DELAY AS carrier_delay,
-        WEATHER_DELAY AS weather_delay,
-        NAS_DELAY AS nas_delay,
-        SECURITY_DELAY AS security_delay,
-        LATE_AIRCRAFT_DELAY AS late_aircraft_delay
-    FROM delays_raw;
-    ```
+Użyj następującego tekstu jako zawartości tego pliku:
 
-2. Aby zapisać plik, naciśnij klawisz **Esc**, a następnie wprowadź ciąg `:x`.
+```hiveql
+ DROP TABLE delays_raw;
+ -- Creates an external table over the csv file
+ CREATE EXTERNAL TABLE delays_raw (
+    YEAR string,
+    FL_DATE string,
+    UNIQUE_CARRIER string,
+    CARRIER string,
+    FL_NUM string,
+    ORIGIN_AIRPORT_ID string,
+    ORIGIN string,
+    ORIGIN_CITY_NAME string,
+    ORIGIN_CITY_NAME_TEMP string,
+    ORIGIN_STATE_ABR string,
+    DEST_AIRPORT_ID string,
+    DEST string,
+    DEST_CITY_NAME string,
+    DEST_CITY_NAME_TEMP string,
+    DEST_STATE_ABR string,
+    DEP_DELAY_NEW float,
+    ARR_DELAY_NEW float,
+    CARRIER_DELAY float,
+    WEATHER_DELAY float,
+    NAS_DELAY float,
+    SECURITY_DELAY float,
+    LATE_AIRCRAFT_DELAY float)
+ -- The following lines describe the format and location of the file
+ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ LINES TERMINATED BY '\n'
+ STORED AS TEXTFILE
+ LOCATION 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data';
 
-3. Aby uruchomić oprogramowanie Hive i uruchomić plik **flightdelays.hql**, użyj następującego polecenia:
+-- Drop the delays table if it exists
+DROP TABLE delays;
+-- Create the delays table and populate it with data
+-- pulled in from the CSV file (via the external table defined previously)
+CREATE TABLE delays
+LOCATION abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/processed
+AS
+SELECT YEAR AS year,
+    FL_DATE AS flight_date,
+    substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS unique_carrier,
+    substring(CARRIER, 2, length(CARRIER) -1) AS carrier,
+    substring(FL_NUM, 2, length(FL_NUM) -1) AS flight_num,
+    ORIGIN_AIRPORT_ID AS origin_airport_id,
+    substring(ORIGIN, 2, length(ORIGIN) -1) AS origin_airport_code,
+    substring(ORIGIN_CITY_NAME, 2) AS origin_city_name,
+    substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS origin_state_abr,
+    DEST_AIRPORT_ID AS dest_airport_id,
+    substring(DEST, 2, length(DEST) -1) AS dest_airport_code,
+    substring(DEST_CITY_NAME,2) AS dest_city_name,
+    substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS dest_state_abr,
+    DEP_DELAY_NEW AS dep_delay_new,
+    ARR_DELAY_NEW AS arr_delay_new,
+    CARRIER_DELAY AS carrier_delay,
+    WEATHER_DELAY AS weather_delay,
+    NAS_DELAY AS nas_delay,
+    SECURITY_DELAY AS security_delay,
+    LATE_AIRCRAFT_DELAY AS late_aircraft_delay
+FROM delays_raw;
+```
 
-    ```bash
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
-    ```
+Aby zapisać plik, naciśnij klawisz Esc, a następnie wprowadź polecenie `:x`.
 
-4. Gdy skrypt __flightdelays.hql__ zakończy działanie, użyj następującego polecenia, aby otworzyć interaktywną sesję usługi Beeline:
+Aby uruchomić oprogramowanie Hive i uruchomić plik **flightdelays.hql**, użyj następującego polecenia:
 
-    ```bash
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
-    ```
+```bash
+beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
+```
 
-5. Po otrzymaniu wiersza `jdbc:hive2://localhost:10001/>` użyj następującego zapytania, aby pobrać dane z zaimportowanych danych opóźnień lotów:
+Gdy skrypt __flightdelays.hql__ zakończy działanie, użyj następującego polecenia, aby otworzyć interaktywną sesję usługi Beeline:
 
-    ```hiveql
-    INSERT OVERWRITE DIRECTORY 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output'
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    SELECT regexp_replace(origin_city_name, '''', ''),
-        avg(weather_delay)
-    FROM delays
-    WHERE weather_delay IS NOT NULL
-    GROUP BY origin_city_name;
-    ```
+```bash
+beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
+```
 
-    To zapytanie pobiera listę miejscowości z opóźnieniami ze względu na pogodę i średni czas opóźnienia, a następnie zapisuje ją w lokalizacji `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. Później narzędzie Sqoop odczyta dane z tej lokalizacji i wyeksportuje je do bazy danych Azure SQL Database.
+Po otrzymaniu wiersza `jdbc:hive2://localhost:10001/>` użyj następującego zapytania, aby pobrać dane z zaimportowanych danych opóźnień lotów:
 
-6. Aby zakończyć działanie usługi Beeline, wprowadź polecenie `!quit` w wierszu polecenia.
+```hiveql
+INSERT OVERWRITE DIRECTORY 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+SELECT regexp_replace(origin_city_name, '''', ''),
+    avg(weather_delay)
+FROM delays
+WHERE weather_delay IS NOT NULL
+GROUP BY origin_city_name;
+```
+
+To zapytanie pobiera listę miejscowości z opóźnieniami ze względu na pogodę i średni czas opóźnienia, a następnie zapisuje ją w lokalizacji `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. Później narzędzie Sqoop odczyta dane z tej lokalizacji i wyeksportuje je do bazy danych Azure SQL Database.
+
+Aby zakończyć działanie usługi Beeline, wprowadź polecenie `!quit` w wierszu polecenia.
 
 ## <a name="create-a-sql-database-table"></a>Tworzenie tabeli bazy danych SQL
 
-W tej sekcji założono, że utworzono już bazę danych Azure SQL Database. Jeśli nie masz jeszcze bazy danych SQL, skorzystaj z informacji w artykule [Tworzenie bazy danych SQL platformy Azure SQL w witrynie Azure Portal](../../sql-database/sql-database-get-started.md), aby ją utworzyć.
+Aby wykonać tę operację, musisz dysponować nazwą serwera bazy danych SQL Database. Wykonaj następujące kroki, aby znaleźć nazwę serwera.
 
-Jeśli masz już bazę danych SQL, musisz uzyskać nazwę serwera. Aby znaleźć nazwę serwera w witrynie [Azure Portal](https://portal.azure.com), wybierz pozycję **Bazy danych SQL**, a następnie odfiltruj nazwę bazy danych, której chcesz użyć. Nazwa serwera jest wyświetlana w kolumnie **Nazwa serwera**.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
-![Uzyskiwanie szczegółów serwera Azure SQL](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Uzyskiwanie szczegółów serwera Azure SQL")
+1. Wybierz pozycję **Bazy danych SQL**.
 
-> [!NOTE]
-> Istnieje wiele sposobów nawiązywania połączenia z bazą danych SQL i tworzenia tabeli. W poniższej procedurze użyto rozwiązania [FreeTDS](http://www.freetds.org/) z klastra usługi HDInsight.
+1. Filtruj listę według nazwy bazy danych, która ma zostać użyta. Nazwa serwera jest wyświetlana w kolumnie **Nazwa serwera**.
 
+1. Filtruj listę według nazwy bazy danych, której chcesz użyć. Nazwa serwera jest wyświetlana w kolumnie **Nazwa serwera**.
 
-1. Aby zainstalować rozwiązanie FreeTDS, użyj następującego polecenia dla połączenia SSH z klastrem:
+    ![Uzyskiwanie szczegółów serwera Azure SQL](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Uzyskiwanie szczegółów serwera Azure SQL")
 
-    ```bash
-    sudo apt-get --assume-yes install freetds-dev freetds-bin
-    ```
+    Istnieje wiele sposobów nawiązywania połączenia z bazą danych SQL i tworzenia tabeli. W poniższej procedurze użyto rozwiązania [FreeTDS](http://www.freetds.org/) z klastra usługi HDInsight.
 
-3. Po zakończeniu instalacji użyj poniższego polecenia, aby połączyć się z serwerem bazy danych SQL. Zamień ciąg **serverName** na nazwę serwera bazy danych SQL. Zamień ciągi **adminLogin** i **adminPassword** na nazwę logowania bazy danych SQL. Zamień ciąg **databaseName** na nazwę bazy danych.
+Aby zainstalować rozwiązanie FreeTDS, użyj następującego polecenia dla połączenia SSH z klastrem:
 
-    ```bash
-    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -p 1433 -D <DATABASE_NAME>
-    ```
+```bash
+sudo apt-get --assume-yes install freetds-dev freetds-bin
+```
 
-    Gdy zostanie wyświetlony monit, wprowadź hasło dla nazwy logowania administratora bazy danych SQL.
+Po zakończeniu instalacji użyj poniższego polecenia, aby połączyć się z serwerem bazy danych SQL Database.
 
-    Uzyskasz dane wyjściowe podobne do następującego tekstu:
+* Zastąp ciąg \<SERVER_NAME> nazwą serwera bazy danych SQL Database.
+* Zastąp ciąg \<ADMIN_LOGIN> nazwą logowania administratora bazy danych SQL Database.
+* Zastąp ciąg \<DATABASE_NAME> nazwą bazy danych.
 
-    ```
-    locale is "en_US.UTF-8"
-    locale charset is "UTF-8"
-    using default charset "UTF-8"
-    Default database being set to sqooptest
-    1>
-    ```
+```bash
+TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -p 1433 -D <DATABASE_NAME>
+```
 
-4. W wierszu `1>` wprowadź następujące wiersze:
+Gdy zostanie wyświetlony monit, wprowadź hasło dla nazwy logowania administratora bazy danych SQL Database.
 
-    ```hiveql
-    CREATE TABLE [dbo].[delays](
-    [origin_city_name] [nvarchar](50) NOT NULL,
-    [weather_delay] float,
-    CONSTRAINT [PK_delays] PRIMARY KEY CLUSTERED   
-    ([origin_city_name] ASC))
-    GO
-    ```
+Uzyskasz dane wyjściowe podobne do następującego tekstu:
 
-    Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje. To zapytanie tworzy tabelę o nazwie **delays** z indeksem klastrowanym.
+```
+locale is "en_US.UTF-8"
+locale charset is "UTF-8"
+using default charset "UTF-8"
+Default database being set to sqooptest
+1>
+```
 
-    Użyj następującego zapytania, aby sprawdzić, czy utworzono tabelę:
+W wierszu `1>` wprowadź następujące instrukcje:
 
-    ```hiveql
-    SELECT * FROM information_schema.tables
-    GO
-    ```
+```hiveql
+CREATE TABLE [dbo].[delays](
+[origin_city_name] [nvarchar](50) NOT NULL,
+[weather_delay] float,
+CONSTRAINT [PK_delays] PRIMARY KEY CLUSTERED   
+([origin_city_name] ASC))
+GO
+```
 
-    Dane wyjściowe będą podobne do następującego tekstu:
+Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje.
+Zapytanie tworzy tabelę o nazwie **delays** z indeksem klastrowanym.
 
-    ```
-    TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-    databaseName       dbo             delays        BASE TABLE
-    ```
+Za pomocą następującego zapytania sprawdź, czy utworzono tabelę:
 
-5. Wprowadź ciąg `exit` w wierszu `1>`, aby zakończyć działanie narzędzia tsql.
+```hiveql
+SELECT * FROM information_schema.tables
+GO
+```
 
+Dane wyjściowe będą podobne do następującego tekstu:
 
-## <a name="export-data-to-sql-database-using-sqoop"></a>Eksportowanie danych do bazy danych SQL przy użyciu narzędzia Sqoop
+```
+TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+databaseName       dbo             delays        BASE TABLE
+```
 
-W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. W tej sekcji użyjesz narzędzia Sqoop, aby wyeksportować dane z lokalizacji `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` do tabeli utworzonej w bazie danych Azure SQL Database. 
+Wprowadź ciąg `exit` w wierszu `1>`, aby zakończyć działanie narzędzia tsql.
 
-1. Aby sprawdzić, czy baza danych SQL jest widoczna w narzędziu Sqoop, użyj następującego polecenia:
+## <a name="export-and-load-the-data"></a>Eksportowanie i ładowanie danych
 
-    ```bash
-    sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
-    ```
+W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. W tej sekcji użyjesz narzędzia Sqoop, aby wyeksportować dane z lokalizacji `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` do tabeli utworzonej w bazie danych Azure SQL Database.
 
-    To polecenie zwraca listę baz danych, łącznie z bazami danych, w których wcześniej utworzono tabelę delays.
+Aby sprawdzić, czy baza danych SQL jest widoczna w narzędziu Sqoop, użyj następującego polecenia:
 
-2. Użyj następującego polecenia, aby wyeksportować dane z przykładowej tabeli oprogramowania Hive do tabeli delays:
+```bash
+sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
+```
 
-    ```bash
-    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<FILE_SYSTEM_NAME>@.dfs.core.windows.net/tutorials/flightdelays/output' 
-    --fields-terminated-by '\t' -m 1
-    ```
+To polecenie zwraca listę baz danych, łącznie z bazą danych, w której utworzono tabelę **delays**.
 
-    Narzędzie Sqoop nawiążę połączenie z bazą danych zawierającą tabelę delays i wyeksportuje dane z katalogu `/tutorials/flightdelays/output` do tabeli delays.
+Za pomocą następującego polecenia wyeksportuj dane z tabeli **hivesampletable** do tabeli **delays**:
 
-3. Po zakończeniu działania polecenia sqoop użyj narzędzia tsql, aby nawiązać połączenie z bazą danych:
+```bash
+sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<FILE_SYSTEM_NAME>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+```
 
-    ```bash
-    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
-    ```
+Narzędzie Sqoop nawiązuje połączenie z bazą danych zawierającą tabelę **delays** i eksportuje dane z katalogu `/tutorials/flightdelays/output` do tabeli **delays**.
 
-    Aby sprawdzić, czy dane zostały wyeksportowane do tabeli delays, użyj następujących instrukcji:
+Po zakończeniu działania polecenia `sqoop` użyj narzędzia tsql, aby nawiązać połączenie z bazą danych:
 
-    ```sql
-    SELECT * FROM delays
-    GO
-    ```
+```bash
+TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
+```
 
-    Powinna zostać wyświetlona lista danych w tabeli. Tabela zawiera nazwę miejscowości i średni czas opóźnienia lotów dla tej miejscowości. 
+Za pomocą następujących instrukcji sprawdź, czy dane zostały wyeksportowane do tabeli **delays**:
 
-    Wpisz `exit`, aby zakończyć działanie narzędzia tsql.
+```sql
+SELECT * FROM delays
+GO
+```
+
+Powinna zostać wyświetlona lista danych w tabeli. Tabela zawiera nazwę miejscowości i średni czas opóźnienia lotów dla tej miejscowości.
+
+Wpisz polecenie `exit`, aby wyjść z narzędzia tsql.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Wszystkie zasoby używane w tym samouczku istniały już wcześniej. Oczyszczanie nie jest konieczne.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby poznać więcej sposobów pracy z danymi w usłudze HDInsight, zobacz następujące artykuły:
+Aby poznać więcej sposobów pracy z danymi w usłudze HDInsight, zobacz następujący artykuł:
 
-* [Korzystanie z programu Hive z usługą HDInsight][hdinsight-use-hive]
-* [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
-* [Opracowywanie programów MapReduce w języku Java dla usługi Hadoop w usłudze HDInsight][hdinsight-develop-mapreduce]
-* [Develop Python streaming MapReduce programs for HDInsight (Opracowywanie programów MapReduce przesyłania strumieniowego języka Python dla usługi HDInsight)][hdinsight-develop-streaming]
-* [Use Oozie with HDInsight (Używanie technologii Oozie z usługą HDInsight)][hdinsight-use-oozie]
-* [Use Sqoop with HDInsight (Używanie narzędzia Sqoop z usługą HDInsight)][hdinsight-use-sqoop]
-
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-
-[hdinsight-use-oozie]: ../../hdinsight/hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-hive]:../../hdinsight/hadoop/hdinsight-use-hive.md
-[hdinsight-provision]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-storage]: ../../hdinsight/hdinsight-hadoop-use-blob-storage.md
-[hdinsight-upload-data]: ../../hdinsight/hdinsight-upload-data.md
-[hdinsight-get-started]: ../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-sqoop]:../../hdinsight/hadoop/apache-hadoop-use-sqoop-mac-linux.md
-[hdinsight-use-pig]:../../hdinsight/hadoop/hdinsight-use-pig.md
-[hdinsight-develop-streaming]:../../hdinsight/hadoop/apache-hadoop-streaming-python.md
-[hdinsight-develop-mapreduce]:../../hdinsight/hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-
-[hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
-
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+> [!div class="nextstepaction"]
+> [Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks](./data-lake-storage-use-hdi-cluster.md)

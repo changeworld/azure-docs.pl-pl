@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 947e5d4004565fd10e81e703111daf26fce10368
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973523"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159013"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -68,11 +68,12 @@ Obrazy replikowanych maszyn są przechowywane w usłudze Azure Storage. Maszyny 
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-1. W witrynie Azure Portal wybierz kolejno opcje **Utwórz zasób** > **Magazyn** > **Backup i Site Recovery (OMS)**.
-2. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tej serii samouczków należy użyć nazwy **ContosoVMVault**.
-3. W polu **Grupa zasobów** wpisz nazwę **contosoRG**.
-4. W polu **Lokalizacja**. Użyj wartości **Europa Zachodnia**.
-5. Aby szybko uzyskać dostęp do magazynu z poziomu pulpitu nawigacyjnego, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
+1. W witrynie Azure Portal kliknij pozycję **+Utwórz zasób** i w witrynie Marketplace wyszukaj pozycję **Recovery Services**.
+2. Kliknij pozycję **Backup and Site Recovery (OMS)**, a następnie na stronie Backup and Site Recovery kliknij pozycję **Utwórz**. 
+1. W obszarze **Magazyn usługi Recovery Services** > **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tej serii samouczków należy użyć nazwy **ContosoVMVault**.
+2. W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów lub utwórz nową. Na potrzeby tego samouczka używamy grupy **contosoRG**.
+3. W obszarze **Lokalizacja** wybierz region, w którym ma znajdować się magazyn. Użyj wartości **Europa Zachodnia**.
+4. Aby szybko uzyskać dostęp do magazynu z poziomu pulpitu nawigacyjnego, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
 
    ![Tworzenie nowego magazynu](./media/tutorial-prepare-azure/new-vault-settings.png)
 

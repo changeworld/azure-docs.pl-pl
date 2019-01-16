@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612792"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104730"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure portal
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal
 
 Dowiedz się, jak utworzyć swój pierwszy szablon usługi Azure Resource Manager, generując go przy użyciu witryny Azure Portal, oraz poznaj proces edytowania i wdrażania tego szablonu z poziomu witryny Azure Portal. Szablony usługi Resource Manager są plikami JSON definiującymi zasoby, które należy wdrożyć dla danego rozwiązania. Instrukcje w tym samouczku umożliwiają utworzenie konta usługi Azure Storage. Ten sam proces można zastosować do tworzenia innych zasobów platformy Azure.
 
@@ -97,7 +97,7 @@ Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie 
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "location": {
@@ -164,7 +164,7 @@ Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie 
 
     ![Grupa zasobów w ramach wdrażania szablonów usługi Azure Resource Manager](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    Możesz zobaczyć, że stan wdrożenia został oznaczony jako zakończony pomyślnie, natomiast w grupie zasobów jest tylko jedno konto magazynu. Nazwa konta magazynu jest unikatowym ciągiem wygenerowanym przez szablon. Aby dowiedzieć się więcej o korzystaniu z kont magazynu platformy Azure, zobacz przewodnik [Szybki start — przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+    Możesz zobaczyć, że stan wdrożenia został oznaczony jako zakończony pomyślnie, natomiast w grupie zasobów jest tylko jedno konto magazynu. Nazwa konta magazynu jest unikatowym ciągiem wygenerowanym przez szablon. Aby dowiedzieć się więcej o korzystaniu z kont usługi Azure Storage, zobacz [Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

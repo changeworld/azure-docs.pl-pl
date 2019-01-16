@@ -10,17 +10,16 @@ ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bfe1d022364455f6c3e22872358b6e18b0806e6a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ce2c3bffecd691acd5eb26b999c63fd2bb5dd510
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109340"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015343"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Samouczek: tworzenie potoku usługi Data Factory przenoszącego dane przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]
@@ -38,14 +37,14 @@ ms.locfileid: "43109340"
 
 W tym artykule wyjaśniono, jak używać programu PowerShell w celu utworzenia fabryki danych obejmującej potok, który kopiuje dane z magazynu obiektów blob w usłudze Azure do bazy danych Azure SQL. Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem instrukcji z tego samouczka zapoznaj się z artykułem [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md).   
 
-W tym samouczku opisano tworzenie potoku z jednym działaniem (Działanie kopiowania). Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
+W tym samouczku opisano tworzenie potoku z jednym działaniem: działaniem kopiowania. Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
 
 Potok może obejmować więcej niż jedno działanie. Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą [wielu działań w potoku](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE]
 > Ten artykuł nie obejmuje wszystkich poleceń cmdlet dla usługi Fabryka danych. Pełna dokumentacja dotycząca tych poleceń cmdlet znajduje się w artykule [Dokumentacja dotycząca poleceń cmdlet usługi Data Factory](/powershell/module/azurerm.datafactories).
 > 
-> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: Tworzenie potoku przekształcającego dane przy użyciu klastra Hadoop).
+> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: przekształcanie danych przy użyciu klastra Hadoop).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Zrealizuj wymagania wstępne podane w artykule dotyczącym [wymagań wstępnych samouczka](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
@@ -55,7 +54,7 @@ Potok może obejmować więcej niż jedno działanie. Dwa działania można poł
 Poniżej przedstawiono kroki do wykonania w ramach tego samouczka:
 
 1. Utworzenie **fabryki danych** na platformie Azure. W tym kroku jest tworzona fabryka danych o nazwie ADFTutorialDataFactoryPSH. 
-1. Utworzenie **połączonych usług** w fabryce danych. Ten krok polega na utworzeniu dwóch połączonych usług: Azure Storage i Azure SQL Database. 
+1. Utworzenie **połączonych usług** w fabryce danych. W tym kroku utworzysz dwie połączone usługi typu: Azure Storage i Azure SQL Database. 
     
     Polecenie AzureStorageLinkedService łączy konto usługi Azure Storage z fabryką danych. W ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) utworzono kontener i przekazano dane na to konto magazynu.   
 
@@ -107,7 +106,7 @@ Fabryka danych może obejmować jeden lub wiele potoków. Potok może obejmować
     ```PowerShell
     $df=New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
-    Ta nazwa może już być używana. Zapewnij unikatowość nazwy fabryki danych, dodając do niej prefiks lub sufiks (np. ADFTutorialDataFactoryPSH05152017), i uruchom ponownie polecenie.  
+    Ta nazwa może już być używana. Zapewnij unikatowość nazwy fabryki danych, dodając do niej prefiks lub sufiks (na przykład: ADFTutorialDataFactoryPSH05152017), i uruchom ponownie polecenie.  
 
 Pamiętaj o następujących kwestiach:
 
@@ -118,7 +117,7 @@ Pamiętaj o następujących kwestiach:
     ```
 * Aby tworzyć wystąpienia usługi Data Factory, musisz być współautorem lub administratorem subskrypcji platformy Azure.
 * W przyszłości nazwa fabryki danych może zostać zarejestrowana jako nazwa DNS, a wówczas stanie się widoczna publicznie.
-* Może zostać wyświetlony następujący komunikat o błędzie: „**Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw Microsoft.DataFactory**”. Wykonaj jedną z następujących czynności i spróbuj opublikować ponownie:
+* Może zostać wyświetlony następujący błąd: **Subskrypcja nie jest zarejestrowana do korzystania z przestrzeni nazw Microsoft.DataFactory**. Wykonaj jedną z następujących czynności i spróbuj opublikować ponownie:
 
   * W programie Azure PowerShell uruchom następujące polecenie, aby zarejestrować dostawcę usługi Data Factory:
 
@@ -145,7 +144,7 @@ Polecenie AzureSqlLinkedService łączy bazę danych SQL na platformie Azure z f
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Tworzenie połączonej usługi dla konta magazynu Azure
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
-1. Utwórz plik JSON o nazwie **AzureStorageLinkedService.json** w folderze **C:\ADFGetStartedPSH** o następującej zawartości: (Utwórz folder ADFGetStartedPSH, jeśli jeszcze nie istnieje.)
+1. W folderze **C:\ADFGetStartedPSH** utwórz plik JSON o nazwie **AzureStorageLinkedService.json** z następującą zawartością: (Utwórz folder ADFGetStartedPSH, jeśli jeszcze nie istnieje).
 
     > [!IMPORTANT]
     > Przed zapisaniem pliku zastąp wartości &lt;accountname&gt; i &lt;accountkey&gt; nazwą i kluczem konta usługi Azure Storage. 
@@ -162,7 +161,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
      }
     ``` 
 1. W programie **Azure PowerShell** przejdź do folderu **ADFGetStartedPSH**.
-1. Uruchom polecenie cmdlet **New-AzureRmDataFactoryLinkedService**, aby utworzyć połączoną usługę **AzureStorageLinkedService**. To polecenie cmdlet i inne polecenia cmdlet usługi Data Factory używane w tym samouczku wymagają przekazania wartości dla parametrów **ResourceGroupName** i **DataFactoryName**. Możesz też przekazać obiekt DataFactory zwrócony przez polecenie cmdlet New-AzureRmDataFactory bez wpisywania parametrów ResourceGroupName i DataFactoryName za każdym razem, gdy uruchamiasz polecenie cmdlet. 
+1. Uruchom polecenie cmdlet **New-AzureRmDataFactoryLinkedService**, aby utworzyć połączoną usługę: **AzureStorageLinkedService**. To polecenie cmdlet i inne polecenia cmdlet usługi Data Factory używane w tym samouczku wymagają przekazania wartości dla parametrów **ResourceGroupName** i **DataFactoryName**. Możesz też przekazać obiekt DataFactory zwrócony przez polecenie cmdlet New-AzureRmDataFactory bez wpisywania parametrów ResourceGroupName i DataFactoryName za każdym razem, gdy uruchamiasz polecenie cmdlet. 
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
@@ -427,7 +426,7 @@ Obecnie harmonogram jest prowadzony przy użyciu wyjściowego zestawu danych. W 
      
     Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2016-02-03” jest odpowiednikiem „2016-02-03T00:00:00Z”.
      
-    Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](http://en.wikipedia.org/wiki/ISO_8601). Przykładowo: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
+    Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
      
     Jeśli nie określisz wartości dla właściwości **end**, zostanie ona obliczona jako „**czas rozpoczęcia + 48 godzin**”. Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**.
      

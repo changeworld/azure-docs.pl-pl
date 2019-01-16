@@ -1,23 +1,21 @@
 ---
 title: 'Azure Cosmos DB: rozpoczynanie pracy z interfejsem API SQL — samouczek'
 description: Samouczek, który pokazuje tworzenie bazy danych w trybie online i aplikacji konsolowej C# przy użyciu interfejsu API SQL.
-keywords: samouczek nosql, baza danych online, aplikacja konsolowa c#
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867533"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043451"
 ---
-# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: rozpoczynanie pracy z interfejsem API SQL — samouczek
+# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Usługa Azure Cosmos DB rozpoczynanie pracy z interfejsem API SQL — samouczek
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -156,7 +154,7 @@ Naciśnij klawisz **F5**, aby uruchomić aplikację. W danych wyjściowych okna 
 
 Gratulacje! Pomyślnie nawiązano połączenie z kontem usługi Azure Cosmos DB. Teraz przyjrzyjmy się pracy z zasobami usługi Azure Cosmos DB.  
 
-## <a name="step-4-create-a-database"></a>Krok 4. Tworzenie bazy danych
+## <a name="step-4-create-a-database"></a>Krok 4: Tworzenie bazy danych
 Przed dodaniem kodu na potrzeby tworzenia bazy danych dodaj metodę pomocnika na potrzeby pisania w konsoli.
 
 Skopiuj i wklej metodę **WriteToConsoleAndPromptToContinue** poniżej metody **GetStartedDemo**.
@@ -367,7 +365,7 @@ Gratulacje! Pomyślnie utworzono dwa dokumenty usługi Azure Cosmos DB.
 
 ![Diagram pokazujący hierarchiczną relację między kontem, bazą danych w trybie online, kolekcją i dokumentami używanymi przez samouczek NoSQL do tworzenia aplikacji konsolowej C#](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Krok 7. Wykonanie zapytania względem zasobów usługi Azure Cosmos DB
+## <a id="Query"></a>Krok 7: Wykonywanie zapytania względem zasobów usługi Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje zaawansowane [zapytania](how-to-sql-query.md) względem dokumentów JSON przechowywanych w każdej kolekcji.  Następujący przykładowy kod przedstawia różne zapytania — przy użyciu składni SQL usługi Azure Cosmos DB oraz LINQ — które można uruchomić względem dokumentów wstawionych w poprzednim kroku.
 
 Skopiuj i wklej metodę **ExecuteSimpleQuery** poniżej metody **CreateFamilyDocumentIfNotExists**.
@@ -538,7 +536,7 @@ To wszystko — skompiluj projekt i gotowe!
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Potrzebujesz bardziej złożonego samouczka platformy ASP.NET MVC? Zobacz [Samouczek platformy ASP.NET MVC: opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB](sql-api-dotnet-application.md).
+* Potrzebujesz bardziej złożonego samouczka platformy ASP.NET MVC? Zobacz [Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB](sql-api-dotnet-application.md).
 * Czy chcesz wykonać testowanie wydajnościowe i skalowania przy użyciu usługi Azure Cosmos DB? Zobacz [Performance and scale testing with Azure Cosmos DB](performance-testing.md) (Testowanie wydajnościowe i skalowania przy użyciu usługi Azure Cosmos DB)
 * Dowiedz się, jak [monitorować żądania, użycie i magazyn usługi Azure Cosmos DB](monitor-accounts.md).
 * Uruchom zapytania względem naszego przykładowego zestawu danych na [placu zabaw dla zapytań](https://www.documentdb.com/sql/demo).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 2fc81cc06063c0fee0a4f875b4b0f8bd1343cf85
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 789f58699f39f4b7eac453f4cf79ea55a5bfc8d3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810461"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory z lokalnym programem SharePoint
 
@@ -118,7 +118,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą lokalnego p
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
     > [!Note]
-    > Zanotuj ścieżkę pliku, do którego został pobrany plik certyfikatu, ponieważ będzie ona używana później w skrypcie programu PowerShell na potrzeby konfiguracji.
+    > Zanotuj ścieżkę pliku do lokalizacji, do której został pobrany plik certyfikatu. Ten plik będzie potrzebny później w skrypcie programu PowerShell na potrzeby konfiguracji.
 
 6. W sekcji **Skonfiguruj lokalny program SharePoint**  skopiuj odpowiednie adresy URL zgodnie z wymaganiami. W polu **Adres URL usługi logowania jednokrotnego** użyj wartości następującego wzorca: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
@@ -134,7 +134,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą lokalnego p
     d. Adres URL wylogowywania
 
     > [!NOTE]
-    > Aplikacja Lokalny program SharePoint używa tokenu SAML 1.1, dzięki czemu usługa Azure AD oczekuje żądania usługi WS-Fed z serwera programu SharePoint, a po uwierzytelnieniu wystawia token SAML 1.1 .
+    > Aplikacja Lokalny program SharePoint używa tokenu SAML 1.1, dzięki czemu usługa Azure AD oczekuje żądania usługi WS-Fed z serwera programu SharePoint, a po uwierzytelnieniu wystawia token SAML 1.1. .
 
 ### <a name="configure-sharepoint-on-premises-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w lokalnym programie SharePoint
 
@@ -175,7 +175,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą lokalnego p
     ![Konfigurowanie dostawcy uwierzytelniania](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > Niektórzy użytkownicy zewnętrzni nie będą w stanie korzystać z tej integracji logowania jednokrotnego, ponieważ ich nazwa UPN będzie miała zniekształconą wartość, podobną do `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Wkrótce umożliwimy klientom konfigurację aplikacji w celu określenia sposobu obsługi nazwy UPN w zależności od typu użytkownika. Wtedy wszyscy użytkownicy-goście powinni móc bezproblemowo korzystać z logowania jednokrotnego jako pracownicy organizacji.
+    > Niektórzy użytkownicy zewnętrzni nie będą mogli korzystać z tej integracji logowania jednokrotnego, ponieważ ich nazwa UPN będzie miała zniekształconą wartość, taką jak `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Wkrótce umożliwimy klientom przeprowadzanie niestandardowej konfiguracji aplikacji w celu określenia sposobu obsługi nazwy UPN w zależności od typu użytkownika. Wtedy wszyscy użytkownicy-goście powinni móc bezproblemowo korzystać z logowania jednokrotnego jako pracownicy organizacji.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

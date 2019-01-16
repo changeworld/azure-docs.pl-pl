@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: af95c2a5182a8adca9aeb40f047c7767413b9b1c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dcfbc014eaa191c7992a2da195f9bcd10b44194f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973676"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191488"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
 
@@ -238,7 +238,9 @@ Zarządzając urządzeniem usługi Azure IoT Edge z chmury, wdróż moduł przes
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć na potrzeby samouczków.
+W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wdrożenia modułu usługi IoT Edge w celu uruchomienia go na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. 
+
+W tym przypadku wypchnięty moduł tworzy dane przykładowe, których można użyć na potrzeby testowania. Moduł symulowanego czujnika temperatury generuje dane środowiskowe, których można użyć do testowania później. Symulowany czujnik monitoruje maszynę i środowisko wokół maszyny. Na przykład ten czujnik może być umieszczony w serwerowni, w hali fabrycznej lub na turbinie wiatrowej. Komunikat zawiera temperaturę i wilgotność otoczenia, temperaturę maszyny, ciśnienie oraz znacznik czasu. W samouczkach usługi IoT Edge dane utworzone przez ten moduł są używane jako dane testowe do analizy.
 
 Ponownie otwórz wiersz polecenia na urządzeniu usługi IoT Edge. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge:
 
@@ -258,8 +260,6 @@ Wyświetl komunikaty wysyłane z modułu czujnika temperatury:
    >Przy odwoływaniu się do nazw modułów w poleceniach usługi IoT Edge jest rozróżniana wielkość liter.
 
    ![Wyświetlanie danych z modułu](./media/quickstart-linux/iotedge-logs.png)
-
-Moduł czujnika temperatury może oczekiwać na połączenie z centrum Edge, jeśli ostatni wiersz wyświetlony w dzienniku to **Using transport Mqtt_Tcp_Only** (Używanie tylko protokołu transportowego MQTT TCP). Spróbuj zatrzymać moduł i pozwolić agentowi usługi Edge na jego ponowne uruchomienie. Możesz go zatrzymać przy użyciu polecenia `sudo docker stop SimulatedTemperatureSensor`.
 
 Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT Hub dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (wcześniej nazywane rozszerzeniem zestawu narzędzi usługi Azure IoT). 
 
@@ -285,20 +285,6 @@ Usuń środowisko uruchomieniowe usługi IoT Edge.
 
    ```bash
    sudo apt-get remove --purge iotedge
-   ```
-
-Po usunięciu środowiska uruchomieniowego usługi IoT Edge utworzone przez nie kontenery zostaną zatrzymane, ale pozostaną na urządzeniu. Wyświetl wszystkie kontenery.
-
-   ```bash
-   sudo docker ps -a
-   ```
-
-Usuń kontenery utworzone na urządzeniu przez środowisko uruchomieniowe usługi IoT Edge. 
-
-   ```bash
-   sudo docker rm -f SimulatedTemperatureSensor
-   sudo docker rm -f edgeHub
-   sudo docker rm -f edgeAgent
    ```
 
 Usuń środowisko uruchomieniowe kontenera.

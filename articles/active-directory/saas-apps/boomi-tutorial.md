@@ -1,297 +1,273 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Boomi | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Boomi.
+title: 'Samouczek: Integracja usługi Azure Active Directory z platformą Boomi | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i platformą Boomi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 40d034ff-7394-4713-923d-1f8f2ed8bf36
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/03/2018
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cf925e0e0e7b6b4c10b6b21d17214f91473a9026
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: c851ba046c0e5e9be24995f200be90ba37193461
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432953"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065294"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Samouczek: Integracja usługi Azure Active Directory z Boomi
+# <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Samouczek: Integracja usługi Azure Active Directory z platformą Boomi
 
-W tym samouczku dowiesz się, jak zintegrować Boomi w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować platformę Boomi z usługą Azure Active Directory (Azure AD).
+Zintegrowanie platformy Boomi z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Boomi z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do platformy Boomi.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do platformy Boomi (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Boomi.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Boomi (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Boomi, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z platformą Boomi, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Boomi logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja platformy Boomi z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Boomi z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-boomi-from-the-gallery"></a>Dodawanie Boomi z galerii
-Aby skonfigurować integrację Boomi w usłudze Azure AD, należy dodać Boomi z galerii z listą zarządzanych aplikacji SaaS.
+* Platforma Boomi obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać Boomi z galerii, wykonaj następujące czynności:**
+## <a name="adding-boomi-from-the-gallery"></a>Dodawanie platformy Boomi z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację platformy Boomi z usługą Azure AD, musisz dodać platformę Boomi z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać platformę Boomi z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **Boomi**, wybierz opcję **Boomi** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Boomi na liście wyników](./media/boomi-tutorial/tutorial_boomi_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Boomi w oparciu o użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **Boomi**, wybierz pozycję **Boomi** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Boomi do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Boomi musi można ustanowić.
+     ![Boomi na liście wyników](common/search-new-app.png)
 
-W Boomi, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Boomi, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z platformą Boomi, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem platformy Boomi.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Boomi](#create-a-boomi-test-user)**  — aby odpowiednikiem Britta Simon w Boomi połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z platformą Boomi, należy ukończyć poniższe bloki konstrukcyjne:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego na platformie Boomi](#configure-boomi-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego platformy Boomi](#create-boomi-test-user)** — aby mieć na platformie Boomi odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Boomi.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Boomi, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **Boomi** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie Boomi, wykonaj następujące kroki:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Boomi** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/boomi-tutorial/tutorial_boomi_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **Boomi domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Boomi domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/boomi-tutorial/tutorial_boomi_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL: `https://platform.boomi.com/`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    > [!NOTE] 
-    > Wartość adresu URL odpowiedzi nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej Boomi](https://boomi.com/company/contact/) można uzyskać wartość.
- 
-1. Aplikacja Boomi oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
-    
-    ![Konfigurowanie logowania jednokrotnego](./media/boomi-tutorial/tutorial_attribute.png)
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, dla każdego wiersza pokazano w poniższej tabeli, wykonaj następujące czynności:
+    ![Domena i adresy URL platformy Boomi — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
-    | Nazwa atrybutu | Wartość atrybutu |
-    | -------------- | --------------- |
-    | FEDERATION_ID | User.mail |
-    
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
-    
-    ![Konfigurowanie logowania jednokrotnego](./media/boomi-tutorial/tutorial_officespace_04.png)
-    
-    ![Konfigurowanie logowania jednokrotnego](./media/boomi-tutorial/tutorial_attribute_05.png)
-    
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
-    
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
-    
-    d. Kliknij przycisk **OK**.
+    a. W polu tekstowym **Identyfikator** wpisz adres URL: `https://platform.boomi.com/`
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
 
-    ![Link pobierania certyfikatu](./media/boomi-tutorial/tutorial_boomi_certificate.png) 
+    > [!NOTE]
+    > Wartość adresu URL odpowiedzi nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej klienta Boomi](https://boomi.com/company/contact/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+5. Platforma Boomi oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/boomi-tutorial/tutorial_general_400.png)
+    ![image](common/edit-attribute.png)
 
-1. Na **konfiguracji Boomi** , kliknij przycisk **skonfigurować Boomi** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
 
-    ![Konfiguracja Boomi](./media/boomi-tutorial/tutorial_boomi_configure.png) 
+    | Nazwa |  Atrybut źródłowy|
+    | ---------------|  --------- |
+    | FEDERATION_ID | user.mail |
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy Boomi, jako administrator. 
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-1. Przejdź do **nazwa firmy** i przejdź do **Konfigurowanie**.
+    ![image](common/new-save-attribute.png)
 
-1. Kliknij przycisk **opcje logowania jednokrotnego** karcie, a następnie wykonaj poniższe kroki.
+    ![image](common/new-attribute-details.png)
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/boomi-tutorial/tutorial_boomi_11.png)
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    a. Sprawdź **Włącz SAML logowania jednokrotnego** pola wyboru.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-    b. Kliknij przycisk **importu** można przekazać certyfikatu pobrany z usługi Azure AD do **certyfikatu dostawcy tożsamości**.
-    
-    c. W **adres URL logowania dostawcy tożsamości** pola tekstowego, umieść wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z okna konfiguracji aplikacji usługi Azure AD.
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-    d. Jako **lokalizacja identyfikator Federacji**, wybierz opcję **identyfikator federacyjnej jest w elemencie atrybut FEDERATION_ID** przycisku radiowego. 
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-    e. Kliknij przycisk **Zapisz** przycisku.
+    f. Kliknij przycisk **OK**.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+    g. Kliknij pozycję **Zapisz**.
+
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+
+8. W sekcji **Konfigurowanie platformy Boomi** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-boomi-single-sign-on"></a>Konfigurowanie logowanie jednokrotnego na platformie Boomi
+
+1. W innym oknie przeglądarki internetowej zaloguj się do swojej firmowej witryny platformy Boomi jako administrator. 
+
+2. Przejdź do pozycji **Nazwa firmy** i przejdź do pozycji **Set up** (Konfigurowanie).
+
+3. Kliknij kartę **SSO Options** (Opcje logowania jednokrotnego), a następnie wykonaj poniższe kroki.
+
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/boomi-tutorial/tutorial_boomi_11.png)
+
+    a. Zaznacz pole wyboru **Enable SAML Single Sign-On** (Włącz logowanie jednokrotne SAML).
+
+    b. Kliknij przycisk **Import** (Importuj), aby przekazać pobrany certyfikat z usługi Azure AD do pola **Identity Provider Certificate** (Certyfikat dostawcy tożsamości).
+
+    d. W polu tekstowym **Identity Provider Login URL** (Adres URL logowania dostawcy tożsamości) wstaw wartość**adresu URL logowania** z okna konfiguracji aplikacji usługi Azure AD.
+
+    d. W obszarze **Federation Id Location** (Lokalizacja identyfikatora federacyjnego) wybierz przycisk radiowy **Federation Id is in FEDERATION_ID Attribute element** (Identyfikator federacyjny znajduje się w elemencie atrybutu FEDERATION_ID).
+
+    e. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/boomi-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/boomi-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/boomi-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/boomi-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
-  
-### <a name="create-a-boomi-test-user"></a>Tworzenie użytkownika testowego Boomi
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Boomi, musi być obsługiwana w Boomi. W przypadku Boomi Inicjowanie obsługi administracyjnej jest zadanie ręczne.
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby udostępnić konto użytkownika, wykonaj następujące czynności:
-
-1. Zaloguj się do witryny firmy Boomi jako administrator.
-
-1. Po zalogowaniu się przejdź do **Zarządzanie użytkownikami** i przejdź do **użytkowników**.
-
-    ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_001.png "użytkowników")
-
-1. Kliknij przycisk **+** ikonę i **ról użytkownika Add/Obsługa** zostanie otwarte okno dialogowe.
-
-    ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_002.png "użytkowników")
-
-    ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_003.png "użytkowników")
-
-    a. W **adres e-mail użytkownika** polu tekstowym wpisz adres e-mail użytkownika, takie jak BrittaSimon@contoso.com.
-    
-    b. W **imię** polu tekstowym Nazwa typu pierwszego użytkownika, takich jak Britta.
-
-    c. W **nazwisko** polu tekstowym wpisz nazwisko użytkownika, takich jak Simon.
-    
-    d. Wprowadź użytkownika **identyfikator federacyjnej**. Każdy użytkownik musi mieć identyfikator federacyjnej, która jednoznacznie identyfikuje użytkowników w ramach konta.
-    
-    e. Przypisz **użytkownika standardowego** roli do użytkownika. Nie należy przypisywać rolę administratora, ponieważ, spowodowałoby to nadanie mu normalny dostęp atmosfery, a także dostępu rejestracji jednokrotnej.
-    
-    f. Kliknij przycisk **OK**.
-    
-    > [!NOTE]
-    > Użytkownik nie otrzyma wiadomość e-mail z powiadomieniem powitalny zawierający hasła, który może służyć do logowania się do konta AtomSphere, ponieważ jego hasła odbywa się za pośrednictwem dostawcy tożsamości. Może używać jakichkolwiek innych Boomi użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Boomi do aprowizacji kont użytkowników usługi AAD.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Boomi.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do platformy Boomi.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Boomi**.
 
-**Aby przypisać Britta Simon Boomi, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Boomi**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link platformy Boomi na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **Boomi**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link Boomi na liście aplikacji](./media/boomi-tutorial/tutorial_boomi_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-boomi-test-user"></a>Tworzenie użytkownika testowego platformy Boomi
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do platformy Boomi, należy aprowizować ich na platformie Boomi. W przypadku platformy Boomi aprowizowanie jest zadaniem ręcznym.
+
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby aprowizować konto użytkownika, wykonaj następujące czynności:
+
+1. Zaloguj się do swojej firmowej witryny platformy Boomi jako administrator.
+
+2. Po zalogowaniu się przejdź do pozycji **User Management** (Zarządzanie użytkownikami) i wybierz pozycję **Users** (Użytkownicy).
+
+    ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_001.png "Użytkownicy")
+
+3. Kliknij ikonę **+**, aby otworzyć okno dialogowe **Add/Maintain User Roles** (Dodawanie/obsługa ról użytkowników).
+
+    ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_002.png "Użytkownicy")
+
+    ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_003.png "Użytkownicy")
+
+    a. W polu tekstowym **User e-mail address** (Adres e-mail użytkownika) wpisz adres e-mail użytkownika, taki jak BrittaSimon@contoso.com.
+
+    b. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak Britta.
+
+    d. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak Simon.
+
+    d. Wprowadź **identyfikator federacyjny** użytkownika. Każdy użytkownik musi mieć identyfikator federacyjny, który w sposób unikatowy identyfikuje użytkownika w ramach konta.
+
+    e. Przypisz do użytkownika rolę **Standard User** (Użytkownik standardowy). Nie przypisuj roli Administrator, ponieważ spowodowałoby to przyznanie mu normalnego dostępu do aplikacji Atmosphere, a także dostępu do logowania jednokrotnego.
+
+    f. Kliknij przycisk **OK**.
+
+    > [!NOTE]
+    > Użytkownik nie otrzyma wiadomości e-mail z powiadomieniem powitalnym zawierającej hasło, które może być używane do logowania się do konta AtomSphere, ponieważ jego hasło jest zarządzane za pośrednictwem dostawcy tożsamości. Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników platformy Boomi oferowanych przez tę platformę.
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Boomi w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Boomi.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Boomi w panelu dostępu powinno nastąpić automatyczne zalogowanie do platformy Boomi, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/boomi-tutorial/tutorial_general_01.png
-[2]: ./media/boomi-tutorial/tutorial_general_02.png
-[3]: ./media/boomi-tutorial/tutorial_general_03.png
-[4]: ./media/boomi-tutorial/tutorial_general_04.png
-
-[100]: ./media/boomi-tutorial/tutorial_general_100.png
-
-[200]: ./media/boomi-tutorial/tutorial_general_200.png
-[201]: ./media/boomi-tutorial/tutorial_general_201.png
-[202]: ./media/boomi-tutorial/tutorial_general_202.png
-[203]: ./media/boomi-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

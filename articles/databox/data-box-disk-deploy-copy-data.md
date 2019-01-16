@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913824"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155205"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -29,7 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że:
-- Ukończono samouczek [Instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
+- Ukończono [Samouczek: instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
 - Twoje dyski są odblokowane i podłączone do komputera klienckiego.
 - Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
 - Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types).
@@ -148,19 +148,32 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     C:\Users>
     ```
  
+    Aby zoptymalizować wydajność, użyj poniższych parametrów polecenia robocopy podczas kopiowania danych.
+
+    |    Platforma    |    Przeważnie małe pliki < 512 KB                           |    Przeważnie średnie pliki od 512 KB do 1 MB                      |    Przeważnie duże pliki > 1 MB                             |   
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
+    |    Data Box Disk        |    4 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |  |
     
-7. Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki dziennika, które pomogą w rozwiązywaniu problemów. Pliki dziennika znajdują się w lokalizacji określonej w narzędziu Robocopy.
+    **Każda sesja narzędzia Robocopy może mieć maksymalnie 7000 katalogów i 150 milionów plików.*
+    
+    >[!NOTE]
+    > Sugerowane powyżej parametry są oparte na środowisku używanym do testowania przeprowadzanego we własnym zakresie.
+    
+    Aby uzyskać więcej informacji na temat polecenia Robocopy, przejdź do artykułu [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Polecenie Robocopy i kilka przykładów).
+
+6. Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki dziennika, które pomogą w rozwiązywaniu problemów. Pliki dziennika znajdują się w lokalizacji określonej w narzędziu Robocopy.
  
-
-
 > [!IMPORTANT]
 > - Twoim obowiązkiem jest zapewnienie, że dane zostały skopiowane do folderów odpowiadających właściwym formatom danych. To znaczy na przykład, że dane blokowych obiektów blob zostały skopiowane do folderu BlockBlob. Jeśli format danych nie pasuje do folderu (typu magazynu), na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
-> -  Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md). 
+> -  Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md).
 > - Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 
 ### <a name="split-and-copy-data-to-disks"></a>Dzielenie i kopiowanie danych na dyski
 
 Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. Narzędzie do dzielenia skopiowanych dysków Data Box pomaga w dzieleniu i kopiowaniu danych na komputerze z systemem Windows.
+
+>[!IMPORTANT]
+> Narzędzie do dzielenia skopiowanych dysków Data Box przeprowadza również walidację danych. Jeśli używasz narzędzia do dzielenia skopiowanych dysków Data Box do kopiowania danych, możesz pominąć [krok walidacji](#validate-data).
 
 1. Upewnij się, że narzędzie do dzielenia skopiowanych dysków Data Box zostało pobrane i wyodrębnione w folderze lokalnym na komputerze z systemem Windows. To narzędzie zostało pobrane podczas pobierania zestawu narzędzi Data Box Disk dla systemu Windows.
 2. Otwórz Eksploratora plików. Zanotuj literę dysku źródła danych i litery dysków przypisane do usługi Data Box Disk. 
@@ -176,26 +189,26 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
 
          ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. Przejdź do folderu, w którym wyodrębniono oprogramowanie. Znajdź w tym folderze plik SampleConfig.json. Jest to plik tylko do odczytu, który można modyfikować i zapisywać.
+4. Przejdź do folderu, w którym wyodrębniono oprogramowanie. Znajdź plik `SampleConfig.json` w tym folderze. Jest to plik tylko do odczytu, który można modyfikować i zapisywać.
 
    ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
-5. Zmodyfikuj plik SampleConfig.json.
+5. Zmodyfikuj plik `SampleConfig.json`.
  
     - Podaj nazwę zadania. Spowoduje to utworzenie folderu w usłudze Data Box Disk, który w ostateczności stanie się kontenerem na koncie usługi Azure Storage powiązanym z tymi dyskami. Nazwa zadania musi być zgodna z konwencjami nazewnictwa kontenera platformy Azure. 
-    - Podaj ścieżkę źródłową, zwracając uwagę na format ścieżki w pliku SampleConfigFile.json. 
+    - Podaj ścieżkę źródłową, zapisując format ścieżki w pliku `SampleConfigFile.json`. 
     - Wprowadź litery dysku odpowiadające dyskom docelowym. Dane zostaną pobrane ze ścieżki źródłowej i skopiowane na wiele dysków.
-    - Podaj ścieżkę dla plików dziennika. Domyślnie są one wysyłane do bieżącego katalogu, w którym znajduje się plik EXE.
+    - Podaj ścieżkę dla plików dziennika. Domyślnie są one wysyłane do bieżącego katalogu, w którym znajduje się plik `.exe`.
 
      ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. Aby sprawdzić poprawność formatu pliku, przejdź do narzędzia JSONlint. Zapisz plik jako ConfigFile.json. 
+6. Aby zweryfikować format pliku, przejdź do narzędzia `JSONlint`. Zapisz plik jako `ConfigFile.json`. 
 
      ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Otwórz okno wiersza polecenia. 
 
-8. Uruchom plik DataBoxDiskSplitCopy.exe. Typ
+8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Typ
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -214,7 +227,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-10.png)
     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    Jeśli sprawdzisz zawartość dysku n:, zobaczysz, że dwa tworzone podfoldery odpowiadają formatowi danych blokowego obiektu blob i stronicowego obiektu blob.
+    Jeśli sprawdzisz zawartość dysku `n:`, zobaczysz, że dwa tworzone podfoldery odpowiadają formatowi danych blokowego obiektu blob i stronicowego obiektu blob.
     
      ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -222,15 +235,14 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Po zakończeniu kopiowania danych możesz przejść do walidowania danych. Jeśli użyto narzędzia do dzielenia skopiowanych plików, pomiń walidację (przeprowadza ją również narzędzie do dzielenia skopiowanych plików) i przejdź do następnego samouczka.
 
-Po zakończeniu kopiowania danych należy sprawdzić ich poprawność. 
 
+## <a name="validate-data"></a>Sprawdzanie poprawności danych
 
-## <a name="validate-data"></a>Sprawdzanie poprawności danych 
+Jeśli nie użyto narzędzia do dzielenia skopiowanych plików, musisz przeprowadzić walidację danych. Aby zweryfikować dane, wykonaj następujące czynności:
 
-Aby zweryfikować dane, wykonaj następujące czynności:
-
-1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu zweryfikowania sumy kontrolnej w folderze *DataBoxDiskImport* na dysku. 
+1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu zweryfikowania sumy kontrolnej w folderze *DataBoxDiskImport* na dysku.
     
     ![Dane wyjściowe narzędzia walidacji dysków Data Box Disk](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -240,7 +252,7 @@ Aby zweryfikować dane, wykonaj następujące czynności:
 
     > [!TIP]
     > - Zresetuj narzędzie między dwoma uruchomieniami.
-    > - Użyj opcji 1, aby wykonać walidację plików dotyczących tylko dużego zestawu danych zawierającego małe pliki (~ KB/s). W takich przypadkach generowanie sumy kontrolnej może zająć bardzo dużo czasu i spowodować spadek wydajności.
+    > - Użyj opcji 1, jeśli obsługujesz duży zestaw danych zawierający małe pliki (~ KB/s). Ta opcja powoduje tylko walidowanie plików, ponieważ generowanie sumy kontrolnej może zająć bardzo dużo czasu i spowodować spadek wydajności.
 
 3. Jeśli używasz wielu dysków, uruchom to polecenie dla każdego dysku.
 
@@ -256,4 +268,3 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzen
 
 > [!div class="nextstepaction"]
 > [Wysyłka zwrotna urządzenia Azure Data Box do firmy Microsoft](./data-box-disk-deploy-picked-up.md)
-

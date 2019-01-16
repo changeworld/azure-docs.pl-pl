@@ -1,231 +1,204 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Menedżera haseł hodowca & magazynu cyfrowych | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Menedżera haseł hodowca cyfrowego magazynu.
+title: 'Samouczek: integracja usługi Azure Active Directory z usługą Keeper Password Manager & Digital Vault | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i usługą Keeper Password Manager & Digital Vault.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: e1a98f6a-2dae-4734-bdbf-4fba742a61d2
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/09/2017
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: dee9b81b6830244dec6860da0618d20c7f062ac2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 4e96e2387797ed11768de9cd0b75261dfb89c674
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430359"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065515"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Menedżera haseł hodowca & cyfrowego magazynu
+# <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Samouczek: integracja usługi Azure Active Directory z usługą Keeper Password Manager & Digital Vault
 
-W tym samouczku dowiesz się, jak zintegrować Menedżera haseł hodowca & cyfrowego magazynu z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Keeper Password Manager & Digital Vault z usługą Azure Active Directory (Azure AD).
+integracja usługi Keeper Password Manager & Digital Vault z usługą Azure AD oferuje następujące korzyści:
 
-Integracja Menedżera haseł hodowca & cyfrowego magazynu z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do usługi Keeper Password Manager & Digital Vault.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Keeper Password Manager & Digital Vault (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Menedżera haseł hodowca & cyfrowego magazynu
-- Użytkowników, aby automatycznie uzyskać zalogowanych do Menedżera haseł hodowca & cyfrowego magazynu (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD za pomocą Menedżera haseł hodowca & magazynu cyfrowych, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Keeper Password Manager & Digital Vault, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Menedżer haseł hodowca & cyfrowego magazynu logowania jednokrotnego włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Keeper Password Manager & Digital Vault z włączonym logowaniem jednokrotnym
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie menedżera haseł hodowca & cyfrowego magazynu z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>Dodawanie menedżera haseł hodowca & cyfrowego magazynu z galerii
-Aby skonfigurować integrację Menedżera haseł hodowca & cyfrowego magazynu w usłudze Azure AD, należy dodać Menedżera haseł hodowca & cyfrowego magazynu z galerii z listą zarządzanych aplikacji SaaS.
+* Usługa Keeper Password Manager & Digital Vault obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać Menedżera haseł hodowca & cyfrowego magazynu z galerii, wykonaj następujące czynności:**
+* Usługa Keeper Password Manager & Digital Vault obsługuje aprowizację użytkowników **Just In Time**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>Dodawanie usługi Keeper Password Manager & Digital Vault z galerii
 
-    ![Usługa Active Directory][1]
+Aby skonfigurować integrację usługi Keeper Password Manager & Digital Vault z usługą Azure AD, musisz dodać usługę Keeper Password Manager & Digital Vault z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+**Aby dodać usługę Keeper Password Manager & Digital Vault z galerii, wykonaj następujące kroki:**
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][3]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. W polu wyszukiwania wpisz **Menedżera haseł hodowca & cyfrowego magazynu**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/keeperpasswordmanager-tutorial/tutorial_keeper_search.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W panelu wyników wybierz **Menedżera haseł hodowca & cyfrowego magazynu**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/keeperpasswordmanager-tutorial/tutorial_keeper_addfromgallery.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą Menedżera haseł hodowca & cyfrowego magazynu, w oparciu o użytkownika testu o nazwie "Britta Simon."
+4. W polu wyszukiwania wpisz **Keeper Password Manager & Digital Vault**, wybierz pozycję **Keeper Password Manager & Digital Vault** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Menedżera haseł hodowca & cyfrowego magazynu do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika Menedżer haseł hodowca & cyfrowego magazynu w musi nawiązać.
+     ![Usługa Keeper Password Manager & Digital Vault na liście wyników](common/search-new-app.png)
 
-W Menedżera haseł hodowca & cyfrowego magazynu, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Menedżera haseł hodowca & cyfrowego magazynu, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w usłudze Keeper Password Manager & Digital Vault, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usługi Keeper Password Manager & Digital Vault.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Menedżera haseł hodowca & cyfrowego magazynu](#creating-a-keeperpasswordmanager-test-user)**  — zapewnienie odpowiednikiem Britta Simon w Menedżera haseł hodowca & cyfrowego magazynu, w którym jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w usłudze Keeper Password Manager & Digital Vault, musisz utworzyć następujące bloki konstrukcyjne:
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w usłudze Keeper Password Manager & Digital Vault](#configure-keeper-password-manager-&-digital-vault-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego usługi Keeper Password Manager & Digital Vault](#create-keeper-password-manager--digital-vault-test-user)** — aby mieć w aplikacji Keeper Password Manager & Digital Vault odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Menedżera haseł hodowca & cyfrowego magazynu.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Menedżera haseł hodowca & cyfrowego magazynu, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **Menedżera haseł hodowca & cyfrowego magazynu** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Keeper Password Manager & Digital Vault, wykonaj następujące kroki:
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji usługi **Keeper Password Manager & Digital Vault** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/keeperpasswordmanager-tutorial/tutorial_keeper_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **Menedżera haseł hodowca & cyfrowego domena magazynu i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect/saml/login`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    c. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect`
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [Menedżera haseł hodowca & cyfrowego klienta magazynu zespołu pomocy technicznej](https://keepersecurity.com/contact.html) do uzyskania tych wartości. 
+    ![Informacje na temat domeny i adresów URL usługi logowania jednokrotnego usługi Keeper Password Manager & Digital Vault](common/sp-identifier-reply.png)
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect/saml/login`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/keeperpasswordmanager-tutorial/tutorial_keeper_certificate.png) 
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect`
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/keeperpasswordmanager-tutorial/tutorial_general_400.png)
-    
-1. Na **cyfrowego konfiguracja magazynu & Menedżera haseł hodowca** , kliknij przycisk **Konfigurowanie Menedżera haseł hodowca & cyfrowego magazynu** otworzyć **Konfigurowanie logowania jednokrotnego** okno. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej usługi Keeper Password Manager & Digital Vault Client](https://keepersecurity.com/contact.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Aby skonfigurować logowanie jednokrotne na **cyfrowego konfiguracja magazynu & Menedżera haseł hodowca** po stronie, postępuj zgodnie z wytycznymi podanymi na [Opiekun pomocy technicznej przewodnik](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf).
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. W sekcji **Konfigurowanie usługi Keeper Password Manager & Digital Vault** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-![Utwórz użytkownika usługi Azure AD][100]
+    a. Adres URL logowania
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    b. Identyfikator usługi Azure AD
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+    d. Adres URL wylogowywania
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/keeperpasswordmanager-tutorial/create_aaduser_01.png) 
+### <a name="configure-keeper-password-manager--digital-vault-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Keeper Password Manager & Digital Vault
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/keeperpasswordmanager-tutorial/create_aaduser_02.png) 
+Aby skonfigurować logowanie jednokrotne po stronie usługi **Keeper Password Manager & Digital Vault**, postępuj zgodnie z wytycznymi podanymi na stronie [przewodnika pomocy technicznej firmy Keeper](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf).
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/keeperpasswordmanager-tutorial/create_aaduser_03.png) 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/keeperpasswordmanager-tutorial/create_aaduser_04.png) 
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+
+    ![Przycisk Nowy użytkownik](common/new-user.png)
+
+3. We właściwościach użytkownika wykonaj następujące kroki.
+
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
+
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
+
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-keeper-password-manager--digital-vault-test-user"></a>Tworzenie użytkownika testowego Menedżera haseł hodowca & cyfrowego magazynu
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Menedżera haseł hodowca & cyfrowego magazynu, musi być obsługiwana do Menedżera haseł hodowca & cyfrowego magazynu. Aplikacja obsługuje tylko w czasie Inicjowanie obsługi użytkowników oraz uwierzytelniania użytkowników w aplikacji, automatycznie tworzony. Możesz skontaktować się ze [Opiekun pomocy technicznej](https://keepersecurity.com/contact.html), jeśli chcesz ręcznie skonfigurować użytkowników.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi Keeper Password Manager & Digital Vault.
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Menedżera haseł hodowca & cyfrowego magazynu.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Keeper Password Manager & Digital Vault**.
 
-![Przypisz użytkownika][200] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-**Aby przypisać Britta Simon Menedżera haseł hodowca & magazynu cyfrowych, wykonaj następujące czynności:**
+2. Na liście aplikacji wybierz pozycję **Keeper Password Manager & Digital Vault**.
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+    ![Link do usługi Keeper Password Manager & Digital Vault na liście aplikacji](common/all-applications.png)
 
-    ![Przypisz użytkownika][201] 
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-1. Na liście aplikacji wybierz **Menedżera haseł hodowca & cyfrowego magazynu**.
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/keeperpasswordmanager-tutorial/tutorial_keeper_app.png) 
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-    ![Przypisz użytkownika][202] 
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+### <a name="create-keeper-password-manager--digital-vault-test-user"></a>Tworzenie użytkownika testowego usługi Keeper Password Manager & Digital Vault
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do usługi Keeper Password Manager & Digital Vault, należy aprowizować ich w tej usłudze. Aplikacja obsługuje aprowizowanie użytkowników typu Just In Time. Po uwierzytelnieniu użytkownicy zostaną automatycznie utworzeni w aplikacji. Jeśli chcesz skonfigurować użytkowników ręcznie, możesz skontaktować się z [pomocą techniczną firmy Keeper](https://keepersecurity.com/contact.html).
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Menedżera haseł hodowca & cyfrowego magazynu, w panelu dostępu, należy uzyskać strony logowania Menedżera haseł hodowca & cyfrowego magazynu aplikacji. Po pomyślnym uwierzytelnieniu powinna pojawić się do aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Keeper Password Manager & Digital Vault w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Keeper Password Manager & Digital Vault, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/keeperpasswordmanager-tutorial/tutorial_general_01.png
-[2]: ./media/keeperpasswordmanager-tutorial/tutorial_general_02.png
-[3]: ./media/keeperpasswordmanager-tutorial/tutorial_general_03.png
-[4]: ./media/keeperpasswordmanager-tutorial/tutorial_general_04.png
-
-[100]: ./media/keeperpasswordmanager-tutorial/tutorial_general_100.png
-
-[200]: ./media/keeperpasswordmanager-tutorial/tutorial_general_200.png
-[201]: ./media/keeperpasswordmanager-tutorial/tutorial_general_201.png
-[202]: ./media/keeperpasswordmanager-tutorial/tutorial_general_202.png
-[203]: ./media/keeperpasswordmanager-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

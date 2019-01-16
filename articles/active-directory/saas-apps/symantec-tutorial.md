@@ -1,229 +1,196 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą usługi zabezpieczeń firmy Symantec w sieci Web (WSS) | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i usług zabezpieczeń firmy Symantec w sieci Web (WSS).
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Symantec Web Security Service (WSS) | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i usługą Symantec Web Security Service (WSS).
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: d6e4d893-1f14-4522-ac20-0c73b18c72a5
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/27/2017
+ms.topic: tutorial
+ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: b933bc5f5ecb39c3462e4e9bd300f1e07fd718c0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: fb2247b15cf32326f141e1d0973bdf9145d92534
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838779"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065265"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi zabezpieczeń firmy Symantec w sieci Web (WSS)
+# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Symantec Web Security Service (WSS)
 
-W tym samouczku zostanie dowiesz się, jak zintegrować konta usług zabezpieczeń firmy Symantec w sieci Web (WSS) przy użyciu konta usługi Azure Active Directory (Azure AD), tak, aby WSS może uwierzytelnić konta użytkownika końcowego aprowizowane w usłudze Azure AD przy użyciu uwierzytelniania SAML i wymuszanie użytkownika lub reguły poziomu zasad grupy.
+Z tego samouczka dowiesz się, jak zintegrować konto usługi Symantec Web Security Service (WSS) z kontem usługi Azure Active Directory (Azure AD), tak aby usługa WSS mogła uwierzytelnić użytkownika końcowego aprowizowanego w usłudze Azure AD przy użyciu uwierzytelniania SAML i wymuszać reguły zasad na poziomie użytkownika lub grupy.
 
-Integrowanie usług zabezpieczeń firmy Symantec w sieci Web (WSS) z usługą Azure AD zapewnia następujące korzyści:
+Integracja usługi Symantec Web Security Service (WSS) z usługą Azure AD zapewnia następujące korzyści:
 
-- Zarządzanie wszystkimi użytkownicy i grupy używane przez konto usługi WSS z poziomu portalu usługi Azure AD. 
+- Zarządzanie wszystkimi użytkownikami końcowymi i grupami używanymi przez konto usługi WSS z poziomu portalu usługi Azure AD.
 
-- Zezwolić użytkownikom końcowym uwierzytelnić programu WSS przy użyciu swoich poświadczeń usługi Azure AD.
+- Zezwolenie użytkownikom końcowym na uwierzytelnianie w usłudze WSS przy użyciu ich poświadczeń usługi Azure AD.
 
-- Włącz wymuszanie użytkowników i grupy poziomu zasady zdefiniowane na Twoim koncie programu WSS.
+- Włączenie wymuszania reguł zasad na poziomie użytkownika i grupy na koncie usługi WSS.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą usługi zabezpieczeń sieci Web (WSS) firmy Symantec, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Symantec Web Security Service (WSS), potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Konta usług zabezpieczeń firmy Symantec w sieci Web (WSS)
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się przy użyciu konta programu WSS, który jest aktualnie używany w celach produkcyjnych.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać konta programu WSS, który jest aktualnie używany w celu produkcji dla tego testu, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Symantec Web Security Service (WSS) z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku skonfigurujesz usługi Azure AD, aby włączyć logowanie jednokrotne do programu WSS przy użyciu poświadczeń użytkownika zdefiniowane w ramach konta usługi Azure AD.
-Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie aplikacji usług zabezpieczeń firmy Symantec w sieci Web (WSS) z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>Dodawanie usług zabezpieczeń firmy Symantec w sieci Web (WSS) z galerii
-Aby skonfigurować integrację usług zabezpieczeń firmy Symantec w sieci Web (WSS) w usłudze Azure AD, należy dodać usługi zabezpieczeń firmy Symantec w sieci Web (WSS) z galerii z listą zarządzanych aplikacji SaaS.
+* Usługa Symantec Web Security Service (WSS) obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać usługi zabezpieczeń firmy Symantec w sieci Web (WSS) z galerii, wykonaj następujące czynności:**
+## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>Dodawanie usługi Symantec Web Security Service (WSS) z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację usługi Symantec Web Security Service (WSS) z usługą Azure AD, musisz dodać usługę Symantec Web Security Service (WSS) z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać usługę Symantec Web Security Service (WSS) z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **usług zabezpieczeń firmy Symantec w sieci Web (WSS)**, wybierz opcję **usług zabezpieczeń firmy Symantec w sieci Web (WSS)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Firmy Symantec w sieci Web zabezpieczeń usługi (WSS) na liście wyników](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowania, w usłudze Azure AD logowanie jednokrotne, z firmy Symantec w sieci Web zabezpieczeń usługi (WSS) w oparciu o nazwie "Britta Simon" użytkownika testowego.
+4. W polu wyszukiwania wpisz **Symantec Web Security Service (WSS)**, wybierz pozycję **Symantec Web Security Service (WSS)** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w sieci Web usług zabezpieczeń (WSS) firmy Symantec dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w sieci Web usług zabezpieczeń (WSS) firmy Symantec musi zostać ustanowione.
+     ![Usługa Symantec Web Security Service (WSS) na liście wyników](common/search-new-app.png)
 
-W firmy Symantec w sieci Web zabezpieczeń usługi (WSS), przypisz wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z sieci Web usług zabezpieczeń (WSS) firmy Symantec, musisz wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z usługą Symantec Web Security Service (WSS), korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usługi Symantec Web Security Service (WSS).
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego usług zabezpieczeń firmy Symantec w sieci Web (WSS)](#create-a-symantec-web-security-service-wss-test-user)**  — aby odpowiednikiem Britta Simon w firmy Symantec w sieci Web usługi zabezpieczeń (WSS) połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z usługą Symantec Web Security Service (WSS), należy ukończyć poniższe bloki konstrukcyjne:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w usłudze Symantec Web Security Service (WSS)](#configure-symantec-web-security-service-(wss)-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego usługi Symantec Web Security Service (WSS)](#create-symantec-web-security-service-wss-test-user)** — aby mieć w usłudze Symantec Web Security Service (WSS) odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji usługi zabezpieczeń firmy Symantec w sieci Web (WSS).
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne z sieci Web usług zabezpieczeń (WSS) firmy Symantec, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **usług zabezpieczeń firmy Symantec w sieci Web (WSS)** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z usługą Symantec Web Security Service (WSS), wykonaj następujące kroki:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+1. W [witrynie Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Symantec Web Security Service (WSS)** wybierz opcję **Logowanie jednokrotne**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **firmy Symantec w sieci Web zabezpieczeń usługi (WSS) domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Domena usługi zabezpieczeń firmy Symantec w sieci Web (WSS) i adresy URL pojedynczego logowania jednokrotnego informacji](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL: `https://saml.threatpulse.net:8443/saml/saml_realm`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W oknie dialogowym **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+
+    ![Domena i adresy URL usługi Symantec Web Security Service (WSS) — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
+
+    a. W polu tekstowym **Identyfikator** wpisz adres URL: `https://saml.threatpulse.net:8443/saml/saml_realm`
+
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
-    > Skontaktuj się z pomocą [zespołem pomocy technicznej klienta usług zabezpieczeń firmy Symantec w sieci Web (WSS)](https://www.symantec.com/contact-us) Jeśli wartości **identyfikator** i **adres URL odpowiedzi** nie działają dla jakiegoś powodu.
+    > Skontaktuj się z [zespołem pomocy technicznej klienta usługi Symantec Web Security Service (WSS)](https://www.symantec.com/contact-us), jeśli wartości **identyfikatora** i **adresu URL odpowiedzi** z jakiegoś powodu nie działają. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_certificate.png) 
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze Symantec Web Security Service (WSS)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/symantec-tutorial/tutorial_general_400.png)
-    
-1. Aby skonfigurować logowanie jednokrotne, po stronie usługi zabezpieczeń firmy Symantec w sieci Web (WSS), zapoznaj się z dokumentacją online programu WSS. Pobrany **XML metadanych** plik będzie musiał być importowane do portalu programu WSS. Skontaktuj się z pomocą [zespołu pomocy technicznej usługi zabezpieczeń firmy Symantec w sieci Web (WSS)](https://www.symantec.com/contact-us) Jeśli potrzebujesz pomocy przy użyciu konfiguracji w portalu programu WSS.
+Aby skonfigurować logowanie jednokrotne po stronie usługi Symantec Web Security Service (WSS), zapoznaj się z dokumentacją online usługi WSS. Pobrany **plik XML metadanych federacji** musi zostać zaimportowany do portalu usługi WSS. Jeśli potrzebujesz pomocy z konfiguracją w portalu usługi WSS, skontaktuj się z [zespołem pomocy technicznej usługi Symantec Web Security Service (WSS)](https://www.symantec.com/contact-us).
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Przycisk usługi Azure Active Directory](./media/symantec-tutorial/create_aaduser_01.png)
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/symantec-tutorial/create_aaduser_02.png)
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/symantec-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/symantec-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-symantec-web-security-service-wss-test-user"></a>Tworzenie użytkownika testowego usług zabezpieczeń firmy Symantec w sieci Web (WSS)
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w sieci Web usług zabezpieczeń (WSS) firmy Symantec. Odpowiednie nazwy użytkownika końcowego mogą być tworzone ręcznie w portalu programu WSS lub możesz poczekać, aż użytkownicy/grupy aprowizowane w usłudze Azure AD synchronizowane z portalem programu WSS po kilku minutach (około 15 minut). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. Publiczny adres IP komputera użytkownika końcowego, który będzie używany do przeglądania witryny sieci Web muszą być obsługiwana w portalu usługi zabezpieczeń firmy Symantec w sieci Web (WSS).
-
-> [!NOTE]
-> Proszę [tutaj](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) można pobrać maszynie przez publiczny adres IP.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do sieci Web usług zabezpieczeń (WSS) firmy Symantec.
+W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure dla użytkownika Britta Simon, udzielając dostępu do usługi Symantec Web Security Service (WSS).
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Symantec Web Security Service (WSS)**.
 
-**Aby przypisać Britta Simon do sieci Web usług zabezpieczeń (WSS) firmy Symantec, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wpisz **Symantec Web Security Service (WSS)** i wybierz odpowiednią pozycję.
 
-    ![Przypisz użytkownika][201] 
+    ![Link usługi Symantec Web Security Service (WSS) na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **usług zabezpieczeń firmy Symantec w sieci Web (WSS)**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link usługi zabezpieczeń firmy Symantec w sieci Web (WSS) na liście aplikacji](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-symantec-web-security-service-wss-test-user"></a>Tworzenie użytkownika testowego usługi Symantec Web Security Service (WSS)
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w usłudze Symantec Web Security Service (WSS). Odpowiednią nazwę użytkownika końcowego można utworzyć ręcznie w portalu usługi WSS lub poczekać, aż użytkownicy/grupy aprowizowani w usłudze Azure AD zostaną zsynchronizowani z portalem usługi WSS (około 15 minut). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. Publiczny adres IP komputera użytkownika końcowego, który będzie używany do przeglądania witryn internetowych, musi być także aprowizowany w portalu usługi Symantec Web Security Service (WSS).
 
-W tej sekcji będzie przetestować pojedynczego funkcję logowania jednokrotnego, teraz, gdy skonfigurowano usługi WSS konta usługi Azure AD dla uwierzytelnianie SAML.
+> [!NOTE]
+> Kliknij [tutaj](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1), aby uzyskać publiczny adres IP swojego komputera.
 
-Po skonfigurowaniu serwera proxy ruchu do programu WSS, przeglądarki sieci web, po otwarciu przeglądarki sieci web i spróbuj przejść do witryny, a następnie nastąpi przekierowanie do strony logowania platformy Azure. Wprowadź poświadczenia użytkownika testowego, że zainicjowano w usłudze Azure AD (czyli BrittaSimon) oraz skojarzone hasło. Po uwierzytelnieniu będzie można przejść do witryny sieci Web, która została wybrana. Należy utworzyć regułę zasad stronie WSS, aby zablokować BrittaSimon z przejście do określonej lokacji, a następnie powinna zostać wyświetlona strona bloku WSS, gdy spróbujesz przejść do tej lokacji jako użytkownik BrittaSimon.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+W tej sekcji przetestujesz funkcję logowania jednokrotnego, mając skonfigurowane konto usługi WSS, aby używać usługi Azure AD na potrzeby uwierzytelniania SAML.
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+Po skonfigurowaniu przeglądarki internetowej w celu kierowania za pośrednictwem serwera proxy ruchu do usługi WSS, kiedy otworzysz przeglądarkę internetową i spróbujesz przejść do witryny, nastąpi przekierowanie do strony logowania platformy Azure. Wprowadź poświadczenia testowego użytkownika końcowego, który został aprowizowany w usłudze Azure AD (czyli BrittaSimon), oraz skojarzone hasło. Po uwierzytelnieniu będzie można przejść do wybranej witryny internetowej. Jeśli utworzysz regułę zasad po stronie usługi WSS, aby uniemożliwić użytkownikowi BrittaSimon przejście do określonej witryny, to gdy spróbujesz przejść do tej witryny jako użytkownik BrittaSimon, powinna zostać wyświetlona strona blokowania usługi WSS.
 
-<!--Image references-->
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-[1]: ./media/symantec-tutorial/tutorial_general_01.png
-[2]: ./media/symantec-tutorial/tutorial_general_02.png
-[3]: ./media/symantec-tutorial/tutorial_general_03.png
-[4]: ./media/symantec-tutorial/tutorial_general_04.png
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[100]: ./media/symantec-tutorial/tutorial_general_100.png
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[200]: ./media/symantec-tutorial/tutorial_general_200.png
-[201]: ./media/symantec-tutorial/tutorial_general_201.png
-[202]: ./media/symantec-tutorial/tutorial_general_202.png
-[203]: ./media/symantec-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e7c134881cbf8745a4e4ef9102a418f7d47a6f8c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43098032"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020017"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
@@ -93,9 +92,9 @@ Zarówno dla bazy SQL Database, jak i dla magazynu SQL Data Warehouse, zezwól u
          
       Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 1. Wybierz opcję **V2** w obszarze **Wersja**.
-1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
@@ -208,7 +207,7 @@ W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach
     ![Konstruktor parametrów zestawu danych](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>Tworzenie potoków
-W tym samouczku tworzysz dwa potoki: **IterateAndCopySQLTables** i **GetTableListAndTriggerCopyData**. 
+W tym samouczku utworzysz dwa potoki: **IterateAndCopySQLTables** i **GetTableListAndTriggerCopyData**. 
 
 Potok **GetTableListAndTriggerCopyData** wykonuje dwie czynności:
 
@@ -400,7 +399,7 @@ Przejdź do potoku **GetTableListAndTriggerCopyData**, kliknij pozycję **Wyzwal
         ]
     }
     ```    
-1. Aby wrócić do widoku **Uruchomienia potoku**, kliknij pozycję **Potoki** w górnej części strony. Kliknij link **Wyświetl uruchomienia działania** (pierwszy link w kolumnie **Akcje**) dla potoku **IterateAndCopySQLTables**. Wyświetlone dane wyjściowe powinny wyglądać jak na poniższej ilustracji: zauważ, że istnieje jedno uruchomienie działania **Copy** (Kopiowanie) dla każdej tabeli w danych wyjściowych działania **Lookup** (Wyszukiwanie). 
+1. Aby wrócić do widoku **Uruchomienia potoku**, kliknij pozycję **Potoki** w górnej części strony. Kliknij link **Wyświetl uruchomienia działania** (pierwszy link w kolumnie **Akcje**) dla potoku **IterateAndCopySQLTables**. Powinny zostać wyświetlone dane wyjściowe, jak pokazano na poniższej ilustracji: Zwróć uwagę, że istnieje jedno uruchomienie działania **Copy** (Kopiowanie) dla każdej tabeli w danych wyjściowych działania **Lookup** (Wyszukiwanie). 
 
     ![Uruchomienia działania](./media/tutorial-bulk-copy-portal/activity-runs-2.png)
 1. Sprawdź, czy dane zostały skopiowane do docelowego magazynu SQL Data Warehouse używanego w tym samouczku. 

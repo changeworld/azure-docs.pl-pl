@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341052"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038161"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Tworzenie pierwszej funkcji trwałej w języku C\#
 
 *Durable Functions* to rozszerzenie usługi [Azure Functions](../functions-overview.md) umożliwiające zapisywanie funkcji stanowych w środowisku bezserwerowym. Rozszerzenie zarządza stanem, punktami kontrolnymi i ponownym uruchamianiem.
 
-W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji trwałej „hello world”.  Ta funkcja będzie aranżować i łączyć w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2017.
+W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji trwałej „hello world”.  Ta funkcja aranżuje i łączy w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2017.
 
 ![Uruchamianie funkcji trwałej na platformie Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla u
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj program [Visual Studio 2017](https://azure.microsoft.com/downloads/) i upewnij się, że jest również zainstalowane obciążenie **Programowanie na platformie Azure**.
+* Zainstaluj program [Visual Studio 2017](https://azure.microsoft.com/downloads/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane.
 
 * Upewnij się, że masz [najnowsze narzędzia usługi Azure Functions](../functions-develop-vs.md#check-your-tools-version).
 
@@ -40,7 +40,7 @@ W celu ukończenia tego samouczka:
 
 ## <a name="create-a-function-app-project"></a>Tworzenie projektu aplikacji funkcji
 
-Szablon projektu usługi Azure Functions w programie Visual Studio umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji w jednostki logiczne, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi.
+Szablon projektu usługi Azure Functions umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji w jednostki logiczne, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi.
 
 1. W programie Visual Studio wybierz pozycję **Nowy** > **Projekt** z menu **Plik**.
 
@@ -55,14 +55,14 @@ Szablon projektu usługi Azure Functions w programie Visual Studio umożliwia ut
     | Ustawienie      | Sugerowana wartość  | Opis                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Wersja** | Azure Functions 2.x <br />(.NET Core) | Tworzy projekt funkcji korzystający ze środowiska uruchomieniowego usługi Azure Functions w wersji 2.x, które obsługuje platformę .Net Core. Usługa Azure Functions 1.x obsługuje program .NET Framework. Aby uzyskać więcej informacji, zobacz [How to target Azure Functions runtime version (Wybieranie wersji środowiska uruchomieniowego usługi Azure Functions)](../functions-versions.md).   |
-    | **Szablon** | Pusty | Spowoduje utworzenie pustej aplikacji funkcji. |
+    | **Szablon** | Pusty | Tworzy pustą aplikację funkcji. |
     | **Konto magazynu**  | Emulator magazynu | Konto magazynu jest wymagane do zarządzania stanem funkcji trwałej. |
 
-4. Kliknij przycisk **OK**, aby utworzyć pusty projekt funkcji.
+4. Kliknij przycisk **OK**, aby utworzyć pusty projekt funkcji. Ten projekt zawiera pliki konfiguracji podstawowej wymagane do uruchomienia Twoich funkcji.
 
 ## <a name="add-functions-to-the-app"></a>Dodawanie funkcji do aplikacji
 
-Program Visual Studio tworzy pusty projekt aplikacji funkcji.  Zawiera on podstawowe pliki konfiguracji wymagane dla aplikacji, ale nie zawiera jeszcze żadnych funkcji.  Musimy dodać do projektu szablon funkcji trwałej.
+Poniższe kroki używają szablonu do tworzenia trwałego kodu funkcji w projekcie.
 
 1. Kliknij prawym przyciskiem myszy projekt w programie Visual Studio i wybierz polecenie **Dodaj** > **Nowa funkcja platformy Azure**.
 
@@ -74,11 +74,13 @@ Program Visual Studio tworzy pusty projekt aplikacji funkcji.  Zawiera on podsta
 
     ![Wybór szablonu trwałego](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
-Nowa funkcja trwała zostanie dodana do aplikacji.  Otwórz nowy plik, aby wyświetlić jego zawartość.  Ta funkcja trwała to prosty przykład łączenia funkcji w łańcuch.  
+Nowa trwała funkcja jest dodawana do aplikacji.  Otwórz nowy plik cs, aby wyświetlić jego zawartość. Ta trwała funkcja jest prostym przykładem łączenia funkcji w łańcuch przy użyciu następujących metod:  
 
-* Metoda `RunOrchestrator` jest skojarzona z funkcją orchestrator.  Ta funkcja zostanie uruchomiona, utworzy listę i doda do niej wynik trzech wywołań funkcji.  Po zakończeniu trzech wywołań funkcji ta funkcja zwróci listę.  Wywoływana funkcja to metoda `SayHello` (domyślna nazwa `<NameOfFile>_Hello`).
-* Funkcja `SayHello` zwróci powitanie.
-* Metoda `HttpStart` opisuje funkcję, która będzie uruchamiać wystąpienia aranżacji.  Jest ona skojarzona z [wyzwalaczem HTTP](../functions-bindings-http-webhook.md), który uruchomi nowe wystąpienie funkcji orchestrator i zwróci odpowiedź sprawdzenia stanu.
+| Metoda | FunctionName | Opis |
+| -----  | ------------ | ----------- |
+| **`RunOrchestrator`** | `<file-name>` | Zarządza trwałą aranżacją. W tym przypadku aranżacja się rozpoczyna, tworzy listę i dodaje wynik trzech wywołań funkcji do listy.  Po ukończeniu trzech wywołań funkcji zwraca listę. |
+| **`SayHello`** | `<file-name>_Hello` | Funkcja zwraca hello. Jest to funkcja, która zawiera aranżowaną logikę biznesową. |
+| **`HttpStart`** | `<file-name>_HttpStart` | [Funkcja wyzwalana przez protokół HTTP](../functions-bindings-http-webhook.md), która uruchamia wystąpienie aranżacji i zwraca odpowiedź stanu kontroli. |
 
 Po utworzeniu projektu funkcji i funkcji trwałej można ją przetestować na komputerze lokalnym.
 
@@ -143,4 +145,4 @@ Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji p
 Utworzono i opublikowano aplikację funkcji trwałej w języku C# za pomocą programu Visual Studio.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat typowych wzorców funkcji trwałej.](durable-functions-overview.md)
+> [Dowiedz się więcej na temat typowych wzorców funkcji trwałej.](durable-functions-concepts.md)

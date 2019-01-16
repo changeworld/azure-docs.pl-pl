@@ -1,236 +1,209 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą szkoleń świadomości bezpieczeństwa KnowBe4 | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń.
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą KnowBe4 Security Awareness Training | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a usługą KnowBe4 Security Awareness Training.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: b80d2212-cc5f-4adb-836c-570640810c39
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/31/2017
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c27af4e7bc88f24b76310336859740d8795f7cbe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 983571daa19a3658b134902ee328af142a3383c3
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449277"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065583"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń
+# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Samouczek: Integracja usługi Azure Active Directory z usługą KnowBe4 Security Awareness Training
 
-W tym samouczku dowiesz się, jak zintegrować szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować usługę KnowBe4 Security Awareness Training z usługą Azure Active Directory (Azure AD).
+Zintegrowanie usługi KnowBe4 Security Awareness Training z usługą Azure AD daje następujące korzyści:
 
-Integrowanie szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń z usługą Azure AD zapewnia następujące korzyści:
+* Możliwość kontrolowania dostępu do usługi KnowBe4 Security Awareness Training za pomocą usługi Azure AD.
+* Możliwość skonfigurowania automatycznego logowania użytkowników do usługi KnowBe4 Security Awareness Training (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń.
-- Użytkowników, aby automatycznie uzyskać zalogowanych do KnowBe4 świadomości szkolenie z zakresu zabezpieczeń (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integracji z usługą Azure AD za pomocą szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą KnowBe4 Security Awareness Training, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Rozpoznawanie szkolenia w zakresie zabezpieczeń KnowBe4 logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Usługa KnowBe4 Security Awareness Training z subskrypcją obsługującą logowanie jednokrotne
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie KnowBe4 świadomości szkolenia w zakresie zabezpieczeń z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>Dodawanie KnowBe4 świadomości szkolenia w zakresie zabezpieczeń z galerii
-Aby skonfigurować integrację szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń w usłudze Azure AD, należy dodać rozpoznawanie szkolenia w zakresie zabezpieczeń KnowBe4 z galerii z listą zarządzanych aplikacji SaaS.
+* Usługa KnowBe4 Security Awareness Training obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-**Aby dodać rozpoznawanie szkolenia w zakresie zabezpieczeń KnowBe4 z galerii, wykonaj następujące czynności:**
+* Usługa KnowBe4 Security Awareness Training obsługuje aprowizowanie użytkowników typu **just in time**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>Dodawanie usługi KnowBe4 Security Awareness Training z galerii
 
-    ![Przycisk usługi Azure Active Directory][1]
+Aby skonfigurować integrację usługi KnowBe4 Security Awareness Training z usługą Azure AD, należy dodać usługę KnowBe4 Security Awareness Training z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+**Aby dodać usługę KnowBe4 Security Awareness Training z galerii, wykonaj następujące kroki:**
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. W polu wyszukiwania wpisz **świadomości szkolenia w zakresie zabezpieczeń KnowBe4**, wybierz pozycję **świadomości szkolenia w zakresie zabezpieczeń KnowBe4** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![KnowBe4 świadomości szkolenie z zakresu zabezpieczeń na liście wyników](./media/knowbe4-tutorial/tutorial_knowbe4_addfromgallery.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą KnowBe4 świadomości szkolenia w zakresie zabezpieczeń oparte na użytkownika testu o nazwie "Britta Simon".
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń musi nawiązać.
+4. W polu wyszukiwania wpisz **KnowBe4 Security Awareness Training**, wybierz pozycję **KnowBe4 Security Awareness Training** na panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-W KnowBe4 świadomości szkolenie z zakresu zabezpieczeń, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+     ![Usługa KnowBe4 Security Awareness Training na liście wyników](common/search-new-app.png)
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego świadomości szkolenia w zakresie zabezpieczeń KnowBe4](#create-a-knowbe4-security-awareness-training-test-user)**  — aby odpowiednikiem Britta Simon w KnowBe4 świadomości szkolenia w zakresie zabezpieczeń połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z usługą KnowBe4 Security Awareness Training, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usługi KnowBe4 Security Awareness Training.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi KnowBe4 Security Awareness Training, należy wykonać poniższe bloki konstrukcyjne:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w usłudze KnowBe4 Security Awareness Training](#configure-knowbe4-security-awareness-training-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego usługi KnowBe4 Security Awareness Training](#create-knowbe4-security-awareness-training-test-user)** — aby mieć w usłudze KnowBe4 Security Awareness Training odpowiednik użytkownika Britta Simon, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **świadomości szkolenia w zakresie zabezpieczeń KnowBe4** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą usługi KnowBe4 Security Awareness Training, wykonaj następujące kroki:
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/knowbe4-tutorial/tutorial_knowbe4_samlbase.png)
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **KnowBe4 Security Awareness Training** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **KnowBe4 zabezpieczeń świadomości szkolenia domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![KnowBe4 zabezpieczeń świadomości szkolenia domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/knowbe4-tutorial/tutorial_knowbe4_url.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    > [!NOTE] 
-    > Wartość adresu URL logowania nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta szkolenia świadomości zabezpieczeń KnowBe4](mailto:support@KnowBe4.com) aby zyskać tę wartość. 
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    b. W **identyfikator** polu tekstowym wpisz wartość ciągu: `KnowBe4`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Domena i adresy URL logowania jednokrotnego usługi KnowBe4 Security Awareness Training](common/sp-identifier.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE]
-    >To jest uwzględniana wielkość liter
+    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta usługi KnowBe4 Security Awareness Training](mailto:support@KnowBe4.com), aby uzyskać tę wartość. Przydatne mogą być również wzorce znajdujące się w sekcji **Podstawowa konfiguracja protokołu SAML** witryny Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Raw)** , a następnie zapisz plik certyfikatu na komputerze.
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz ciąg `KnowBe4`
 
-    ![Link pobierania certyfikatu](./media/knowbe4-tutorial/tutorial_knowbe4_certificate.png) 
+    > [!NOTE]
+    > Wielkość liter nie jest rozróżniana.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/knowbe4-tutorial/tutorial_general_400.png)
+    ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-1. Na **konfiguracji szkolenia świadomości zabezpieczeń KnowBe4** , kliknij przycisk **skonfigurować KnowBe4 świadomości szkolenia w zakresie zabezpieczeń** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+6. W sekcji **Konfigurowanie usługi KnowBe4 Security Awareness Training** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfiguracja szkolenia świadomości zabezpieczeń KnowBe4](./media/knowbe4-tutorial/tutorial_knowbe4_configure.png) 
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **świadomości szkolenia w zakresie zabezpieczeń KnowBe4** stronie, musisz wysłać pobrany **certyfikatu (Raw)**, **adres URL wylogowania, identyfikator jednostki języka SAML i SAML logowania jednokrotnego Adres URL usługi** do [zespołem pomocy technicznej klienta szkolenia świadomości zabezpieczeń KnowBe4](mailto:support@KnowBe4.com).
+    a. Adres URL logowania
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-knowbe4-security-awareness-training-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi KnowBe4 Security Awareness Training
+
+Aby skonfigurować logowanie jednokrotne po stronie usługi **KnowBe4 Security Awareness Training**, musisz wysłać pobrany **certyfikat (nieprzetworzony)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej usługi KnowBe4 Security Awareness Training](mailto:support@KnowBe4.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/knowbe4-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/knowbe4-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/knowbe4-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/knowbe4-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-knowbe4-security-awareness-training-test-user"></a>Tworzenie użytkownika testowego szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń
-
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon KnowBe4 szkolenia świadomości i zabezpieczeń. Rozpoznawanie szkolenia w zakresie zabezpieczeń KnowBe4 obsługę just-in-time, który jest domyślnie włączona.
-
-Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń, jeśli go jeszcze nie istnieje. 
-
->[!NOTE]
->Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej świadomości szkolenia w zakresie zabezpieczeń KnowBe4](mailto:support@KnowBe4.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi KnowBe4 Security Awareness Training.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **KnowBe4 Security Awareness Training**.
 
-**Aby przypisać Britta Simon do szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **KnowBe4 Security Awareness Training**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link usługi KnowBe4 Security Awareness Training na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **świadomości szkolenia w zakresie zabezpieczeń KnowBe4**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń na liście aplikacji](./media/knowbe4-tutorial/tutorial_knowbe4_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-knowbe4-security-awareness-training-test-user"></a>Tworzenie użytkownika testowego usługi KnowBe4 Security Awareness Training
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w usłudze KnowBe4 Security Awareness Training. Usługa KnowBe4 Security Awareness Training obsługuje aprowizowanie typu just in time, które jest domyślnie włączone.
+
+W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu do usługi KnowBe4 Security Awareness Training, jeśli jeszcze nie istnieje.
+
+> [!NOTE]
+> Jeśli potrzebujesz utworzyć użytkownika ręcznie, musisz skontaktować się z [zespołem pomocy technicznej usługi KnowBe4 Security Awareness Training](mailto:support@KnowBe4.com).
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-  
-Po kliknięciu kafelka szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń aplikacji. 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+Po kliknięciu kafelka KnowBe4 Security Awareness Training na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi KnowBe4 Security Awareness Training, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-<!--Image references-->
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[1]: ./media/knowbe4-tutorial/tutorial_general_01.png
-[2]: ./media/knowbe4-tutorial/tutorial_general_02.png
-[3]: ./media/knowbe4-tutorial/tutorial_general_03.png
-[4]: ./media/knowbe4-tutorial/tutorial_general_04.png
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[100]: ./media/knowbe4-tutorial/tutorial_general_100.png
-
-[200]: ./media/knowbe4-tutorial/tutorial_general_200.png
-[201]: ./media/knowbe4-tutorial/tutorial_general_201.png
-[202]: ./media/knowbe4-tutorial/tutorial_general_202.png
-[203]: ./media/knowbe4-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

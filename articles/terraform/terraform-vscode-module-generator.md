@@ -4,17 +4,17 @@ description: Dowiedz się, jak utworzyć szablon podstawowy Terraform na platfor
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtual machine, azure, yeoman
-author: v-mavick
+author: tomarchermsft
 manager: jeconnoc
-ms.author: v-mavick
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 36e4b424cdb961920fccdf7f050e28447ccbd6cf
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284339"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074533"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
 
@@ -28,7 +28,7 @@ W tym artykule dowiesz się, jak używać generatora modułu narzędzia Yeoman d
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+- **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 - **Visual Studio Code**: będziemy używali programu [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) do badania plików utworzonych przez generator narzędzia Yeoman. Jednak możesz użyć dowolnego wybranego przez siebie edytora kodu.
 - **Terraform**: musisz zainstalować narzędzie [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ), aby uruchomić moduł utworzony przez narzędzie Yeoman.
 - **Docker**: użyjemy platformy [Docker](https://www.docker.com/get-started), aby uruchomić moduł utworzony przez generator narzędzia Yeoman. (Jeśli wolisz, możesz użyć języka Ruby zamiast platformy Docker do uruchomienia przykładowego modułu).
@@ -149,7 +149,7 @@ Definiuje kroki kompilacji. Kroki te obejmują:
 - Przypadki testowe są pisane w języku Go.
 - Wszystkie kody w teście są testami całościowymi.
 - Testy całościowe próbują użyć narzędzia Terraform do aprowizacji wszystkich elementów zdefiniowanych w obszarze **warunków początkowych testu**, a następnie porównać dane wyjściowe w kodzie **template_output.go** za pomocą wstępnie zdefiniowanych oczekiwanych wartości.
-- **Gopkg.lock** i **Gopkg.toml**: definiują Twoje zależności. 
+- **Gopkg.lock** i **Gopkg.toml**: definiowanie zależności. 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Testowanie modułu Terraform przy użyciu pliku Docker
 
@@ -248,16 +248,16 @@ Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
 
 1. W tym momencie usługa Cloud Shell skonfigurowała już wartość GOPATH w zmiennych środowiskowych. Aby wyświetlić tę ścieżkę, wprowadź polecenie `go env`.
 
-1. Utwórz folder $GOPATH, jeśli jeszcze nie istnieje: wprowadź polecenie `mkdir ~/go`.
+1. Utwórz folder $GOPATH, jeśli jeszcze nie istnieje: Wprowadź polecenie `mkdir ~/go`.
 
-1. Utwórz folder w folderze $GOPATH: wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie służyć do przechowywania i organizowania różnych folderów projektów, które możesz później utworzyć, takich jak folder <nazwa_modułu>, który utworzymy w następnym kroku.
+1. Utwórz folder w folderze $GOPATH: Wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie służyć do przechowywania i organizowania różnych folderów projektów, które możesz później utworzyć, takich jak folder <nazwa_modułu>, który utworzymy w następnym kroku.
 
-1. Utwórz folder do przechowywania modułu Terraform: wprowadź polecenie `mkdir ~/go/src/<your-module-name>`.
+1. Utwórz folder do przechowywania modułu Terraform: Wprowadź polecenie `mkdir ~/go/src/<your-module-name>`.
 
     >[!NOTE]
     >W tym przykładzie wybraliśmy nazwę folderu: `my-module-name`.
 
-1. Przejdź do folderu modułu: wprowadź polecenie `cd ~/go/src/<your-module-name>`.
+1. Przejdź do folderu modułu: Wprowadź wartość `cd ~/go/src/<your-module-name>`
 
 ### <a name="create-and-test-your-terraform-module"></a>Tworzenie i testowanie modułu Terraform
 

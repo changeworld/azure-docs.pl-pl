@@ -1,312 +1,286 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z TOPdesk — bezpieczne | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i TOPdesk — bezpieczne.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją TOPdesk - Secure | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją TOPdesk - Secure.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/07/2018
+ms.topic: tutorial
+ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 8529dfda5ee4a7fc3360f91163b7f5f5bbf6c6ff
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
-ms.translationtype: MT
+ms.openlocfilehash: 5ac8cbc463ca6412f73a31b010e41cba05723955
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054881"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062846"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Samouczek: Integracja usługi Azure Active Directory z TOPdesk — bezpieczne
+# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją TOPdesk - Secure
 
-W tym samouczku dowiesz się, jak zintegrować TOPdesk — zabezpieczanie przy użyciu usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację TOPdesk - Secure z usługą Azure Active Directory (Azure AD).
+Zintegrowanie aplikacji TOPdesk - Secure z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie TOPdesk — bezpieczne z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji TOPdesk - Secure.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji TOPdesk - Secure (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do TOPdesk — bezpieczne.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do TOPdesk — bezpieczne (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z TOPdesk — bezpieczne, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją TOPdesk - Secure, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- A TOPdesk — bezpieczne logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji TOPdesk - Secure z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-1. Dodawanie TOPdesk — zabezpieczanie z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+* Aplikacja TOPdesk - Secure obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-## <a name="adding-topdesk---secure-from-the-gallery"></a>Dodawanie TOPdesk — zabezpieczanie z galerii
+## <a name="adding-topdesk---secure-from-the-gallery"></a>Dodawanie aplikacji TOPdesk - Secure z galerii
 
-Aby skonfigurować integrację TOPdesk — zabezpieczenia w usłudze Azure AD, musisz dodać TOPdesk — zabezpieczanie z galerii z listą SaaS zarządzanych aplikacji.
+Aby skonfigurować integrację aplikacji TOPdesk - Secure z usługą Azure AD, musisz dodać aplikację TOPdesk - Secure z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać TOPdesk - bezpieczny z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację TOPdesk - Secure z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **TOPdesk — bezpieczne**, wybierz opcję **TOPdesk — bezpieczne** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **TOPdesk - Secure**, wybierz pozycję **TOPdesk - Secure** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![TOPdesk — zabezpieczanie na liście wyników](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_addfromgallery.png)
+     ![Aplikacja TOPdesk - Secure na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą TOPdesk — bezpieczne w oparciu o nazwie "Britta Simon" użytkownika testowego.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją TOPdesk - Secure, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji TOPdesk - Secure.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w TOPdesk — bezpieczne dla użytkownika w usłudze Azure AD. Innymi słowy relacja linku między użytkownika usługi Azure AD i powiązanych użytkownika w TOPdesk — bezpieczne powinien być określony.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją TOPdesk - Secure, musisz utworzyć poniższe bloki konstrukcyjne:
 
-W TOPdesk — zabezpieczenia, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji TOPdesk - Secure](#configure-topdesk---secure-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji TOPdesk - Secure](#create-topdesk---secure-test-user)** — aby mieć w aplikacji TOPdesk - Secure odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą TOPdesk — bezpieczne, należy wykonać poniższe bloki konstrukcyjne:
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Utwórz TOPdesk - użytkownika testowego bezpiecznego](#create-a-topdesk---secure-test-user)**  — aby odpowiednikiem Britta Simon w TOPdesk — bezpieczne jest połączony z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją TOPdesk - Secure, wykonaj następujące kroki:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w sieci TOPdesk - bezpiecznych aplikacji.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **TOPdesk - Secure** wybierz pozycję **Logowanie jednokrotne**.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z TOPdesk — Secure, wykonaj następujące czynności:**
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. W witrynie Azure portal na **TOPdesk — bezpieczne** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_samlbase.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-3. Na **TOPdesk — zabezpieczanie domena i adresy URL** sekcji, wykonaj następujące czynności:
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![TOPdesk — bezpieczne domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_url.png)
+    ![Domena i adresy URL aplikacji TOPdesk - Secure — informacje dotyczące logowania jednokrotnego](common/sp-identifier-reply.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.topdesk.net`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.topdesk.net`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.topdesk.net/tas/secure/login/verify`
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.topdesk.net/tas/secure/login/verify`
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.topdesk.net/tas/public/login/saml`
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.topdesk.net/tas/public/login/saml`
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Adres URL odpowiedzi to wyjaśnione w dalszej części samouczka. Skontaktuj się z pomocą [TOPdesk - zespół obsługi klienta Secure](http://www.topdesk.com/us/support) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta TOPdesk - Secure](https://www.topdesk.com/us/support/), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_certificate.png) 
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-5. Kliknij przycisk **Zapisz** przycisku.
+6. W sekcji **Skonfiguruj aplikację TOPdesk - Secure** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/topdesk-secure-tutorial/tutorial_general_400.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-6. Na **TOPdesk — zabezpieczanie konfiguracji** , kliknij przycisk **TOPdesk skonfigurować — bezpieczne** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    a. Adres URL logowania
 
-    ![TOPdesk - konfigurację zabezpieczeń](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_configure.png)
+    b. Identyfikator usługi Azure AD
 
-7. Zaloguj się na swoje **TOPdesk — bezpieczne** witryny firmy jako administrator.
+    d. Adres URL wylogowywania
 
-8. W **TOPdesk** menu, kliknij przycisk **ustawienia**.
+### <a name="configure-topdesk---secure-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji TOPdesk - Secure
 
-    ![Ustawienia](./media/topdesk-secure-tutorial/ic790598.png "ustawienia")
+1. Zaloguj się do firmowej witryny aplikacji **TOPdesk - Secure** jako administrator.
 
-9. Kliknij przycisk **ustawienia logowania**.
+2. W menu **TOPdesk** kliknij pozycję **Settings** (Ustawienia).
 
-    ![Ustawienia logowania](./media/topdesk-secure-tutorial/ic790599.png "ustawienia logowania")
+    ![Ustawienia](./media/topdesk-secure-tutorial/ic790598.png "Ustawienia")
 
-10. Rozwiń **ustawienia logowania** menu, a następnie kliknij przycisk **ogólne**.
+3. Kliknij pozycję **Login Settings** (Ustawienia logowania).
 
-    ![Ogólne](./media/topdesk-secure-tutorial/ic790600.png "ogólne")
+    ![Ustawienia logowania](./media/topdesk-secure-tutorial/ic790599.png "Ustawienia logowania")
 
-11. W **bezpiecznego** części **logowania języka SAML** konfiguracji sekcji, wykonaj następujące czynności:
+4. Rozwiń menu **Login Settings** (Ustawienia logowania), a następnie kliknij pozycję **General** (Ogólne).
 
-    ![Ustawień technicznych](./media/topdesk-secure-tutorial/ic790855.png "ustawień technicznych")
+    ![Ogólne](./media/topdesk-secure-tutorial/ic790600.png "Ogólne")
 
-    a. Kliknij przycisk **Pobierz** można pobrać pliku metadanych publiczne, a następnie zapisz go lokalnie na komputerze.
+5. W części **Secure** (Bezpieczne) sekcji konfiguracji **SAML login** (Logowanie SAML) wykonaj następujące kroki:
 
-    b. Otwórz plik metadanych, a następnie zlokalizuj **AssertionConsumerService** węzła.
+    ![Ustawienia techniczne](./media/topdesk-secure-tutorial/ic790855.png "Ustawienia techniczne")
+
+    a. Kliknij pozycję **Download** (Pobierz), aby pobrać publiczny plik metadanych, a następnie zapisz go lokalnie na komputerze.
+
+    b. Otwórz plik metadanych i znajdź węzeł **AssertionConsumerService**.
 
     ![Assertion Consumer Service](./media/topdesk-secure-tutorial/ic790856.png "Assertion Consumer Service")
 
-    c. Kopiuj **AssertionConsumerService** wartość, wklej tę wartość w polu tekstowym adres URL odpowiedzi w **TOPdesk — zabezpieczanie domena i adresy URL** sekcji.
+    d. Skopiuj wartość **AssertionConsumerService** i wklej ją w polu tekstowym adresu URL odpowiedzi w sekcji **TOPdesk - Secure Domain and URLs** (Domena i adresy URL aplikacji TOPdesk - Secure).
 
-12. Aby utworzyć plik certyfikatu, wykonaj następujące czynności:
+6. Aby utworzyć plik certyfikatu, wykonaj następujące kroki:
 
-    ![Certyfikat](./media/topdesk-secure-tutorial/ic790606.png "certyfikatu")
+    ![Certyfikat](./media/topdesk-secure-tutorial/ic790606.png "Certyfikat")
 
-    a. Otwórz plik metadanych pobranych z witryny Azure portal.
+    a. Otwórz plik metadanych pobrany w witrynie Azure Portal.
 
-    b. Rozwiń **deskryptora roli** węzeł, który ma **xsi: type** z **przekazywani: ApplicationServiceType**.
+    b. Rozwiń węzeł **RoleDescriptor**, w którym element **xsi:type** ma wartość **fed:ApplicationServiceType**.
 
-    c. Skopiuj wartość **X509Certificate** węzła.
+    d. Skopiuj wartość węzła**X509Certificate**.
 
-    d. Zapisz skopiowany **X509Certificate** wartość lokalnie na komputerze użytkownika w pliku.
+    d. Zapisz skopiowaną wartość **X509Certificate** lokalnie na komputerze w pliku.
 
-13. W **publicznych** kliknij **Dodaj**.
+7. W sekcji **Public** (Publiczne) kliknij przycisk **Add** (Dodaj).
 
     ![Dodaj](./media/topdesk-secure-tutorial/ic790607.png "Dodaj")
 
-14. Na **Asystent konfiguracji SAML** okna dialogowego strony, wykonaj następujące czynności:
+8. W oknie dialogowym **SAML configuration assistant** (Asystent konfiguracji SAML) wykonaj następujące kroki:
 
     ![Asystent konfiguracji SAML](./media/topdesk-secure-tutorial/ic790608.png "Asystent konfiguracji SAML")
 
-    a. Można przekazać pliku metadanych pobranych z witryny Azure portal, w obszarze **metadanych Federacji**, kliknij przycisk **Przeglądaj**.
+    a. Aby przekazać plik metadanych pobrany w witrynie Azure Portal, w obszarze **Federation Metadata** (Metadane federacji) kliknij przycisk **Browse** (Przeglądaj).
 
-    b. Aby przesłać plik certyfikatu, w obszarze **certyfikatu (RSA)**, kliknij przycisk **Przeglądaj**.
+    b. Aby przekazać plik certyfikatu, w obszarze **Certificate (RSA)** (Certyfikat — RSA) kliknij przycisk **Browse** (Przeglądaj).
 
-    c. Dla **klucza prywatnego (RSA, PKCS8, DER)**, możesz przekazać klucz prywatny, lub możesz skontaktować się ze [TOPdesk - zespół obsługi klienta Secure](http://www.topdesk.com/us/support) można pobrać klucza prywatnego.
+    d. W obszarze **Private key (RSA, PKCS8, DER)** (Klucz prywatny — RSA, PKCS8, DER) możesz przekazać własny klucz prywatny lub klucz uzyskany od [zespołu pomocy technicznej klienta TOPdesk - Secure](http://www.topdesk.com/us/support).
 
-    d. Aby przekazać plik logo uzyskana z zespołem pomocy technicznej TOPdesk, w obszarze **ikona Logo**, kliknij przycisk **Przeglądaj**.
+    d. Aby przekazać plik logo uzyskany od zespołu pomocy technicznej TOPdesk, w obszarze **Logo icon** (Ikona logo) kliknij przycisk **Browse** (Przeglądaj).
 
-    e. W **atrybut nazwy użytkownika** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. W polu tekstowym **User name attribute** (Atrybut nazwy użytkownika) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    f. W **nazwę wyświetlaną** polu tekstowym wpisz nazwę dla danej konfiguracji.
+    f. W polu tekstowym **Display name** (Nazwa wyświetlana) wpisz nazwę konfiguracji.
 
     g. Kliknij pozycję **Zapisz**.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/topdesk-secure-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/topdesk-secure-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/topdesk-secure-tutorial/create_aaduser_03.png)
-
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/topdesk-secure-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-topdesk---secure-test-user"></a>Utwórz TOPdesk — bezpieczne testowanie użytkownika
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do TOPdesk — bezpieczne, ich musi być obsługiwana w TOPdesk — bezpieczne.  
-W przypadku TOPdesk — bezpieczne i Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji TOPdesk - Secure.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **TOPdesk - Secure**.
 
-1. Zaloguj się na swoje **TOPdesk — bezpieczne** witryny firmy jako administrator.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. W menu u góry kliknij **TOPdesk \> New \> pliki obsługi \> Operator**.
+2. Na liście aplikacji wpisz i wybierz **TOPdesk - Secure**.
 
-    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "— Operator")
+    ![Link TOPdesk - Secure na liście aplikacji](common/all-applications.png)
 
-3. Na **operatora New** okno dialogowe, należy wykonać następujące czynności:
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![New Operator](./media/topdesk-secure-tutorial/ic790611.png "New — Operator")
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-    a. Kliknij przycisk **ogólne** kartę.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    b. W **nazwisko** polu tekstowym wpisz nazwisko użytkownika, takie jak **Simon**.
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-    c. Wybierz **witryny** dla konta w **lokalizacji** sekcji.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    d. W **nazwa logowania** pole tekstowe z **logowania TOPdesk** sekcji, wpisz nazwę logowania dla użytkownika.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-topdesk---secure-test-user"></a>Tworzenie użytkownika testowego aplikacji TOPdesk - Secure
+
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji TOPdesk - Secure, należy ich aprowizować w aplikacji TOPdesk - Secure.  
+W przypadku aplikacji TOPdesk - Secure jest to zadanie ręczne.
+
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Aby skonfigurować aprowizację użytkowników, wykonaj następujące kroki:
+
+1. Zaloguj się do firmowej witryny aplikacji **TOPdesk - Secure** jako administrator.
+
+2. W menu u góry kliknij kolejno pozycje **TOPdesk \> New \> Support Files \> Operator** (TOPdesk > Nowy > Pliki pomocnicze > Operator).
+
+    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
+
+3. W oknie dialogowym **New Operator** (Nowy operator) wykonaj następujące kroki:
+
+    ![Nowy operator](./media/topdesk-secure-tutorial/ic790611.png "Nowy operator")
+
+    a. Kliknij kartę **General** (Ogólne).
+
+    b. W polu tekstowym **Surname** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
+
+    d. W sekcji **Location** (Lokalizacja) w polu **Site** (Lokacja) wybierz lokację dla konta.
+
+    d. W sekcji **TOPdesk Login** (Logowanie w aplikacji TOPdesk) w polu tekstowym **Login Name** (Nazwa logowania) wpisz nazwę logowania użytkownika.
 
     e. Kliknij pozycję **Zapisz**.
 
 > [!NOTE]
-> Możesz użyć dowolnego innych TOPdesk — narzędzia do tworzenia konta użytkownika bezpieczne lub interfejsów API dostarczonych przez TOPdesk - najbezpieczniejszym rozwiązaniem jest uaktywniać ich konta usługi AAD.
+> Aby aprowizować konta użytkowników usługi AAD, można użyć jakichkolwiek innych narzędzi do tworzenia konta użytkownika aplikacji TOPdesk - Secure lub interfejsów API dostarczonych przez firmę TOPdesk - Secure.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do TOPdesk — bezpieczne.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisanie roli użytkownika][200] 
+Po kliknięciu kafelka TOPdesk - Secure w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji TOPdesk - Secure, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-**Aby przypisać Britta Simon TOPdesk - bezpieczny, wykonaj następujące czynności:**
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![Przypisz użytkownika][201]
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-2. Na liście aplikacji wybierz **TOPdesk — bezpieczne**.
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-    ![TOPdesk — bezpieczne połączenie na liście aplikacji](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_app.png)  
-
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Link "Użytkownicy i grupy"][202]
-
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Okienko Dodawanie przypisania][203]
-
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu TOPdesk — bezpieczne kafelka w panelu dostępu, możesz powinna uzyskać automatycznie zalogowanych do Twojej TOPdesk - bezpiecznych aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
-
-## <a name="additional-resources"></a>Zasoby dodatkowe
-
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/topdesk-secure-tutorial/tutorial_general_01.png
-[2]: ./media/topdesk-secure-tutorial/tutorial_general_02.png
-[3]: ./media/topdesk-secure-tutorial/tutorial_general_03.png
-[4]: ./media/topdesk-secure-tutorial/tutorial_general_04.png
-
-[100]: ./media/topdesk-secure-tutorial/tutorial_general_100.png
-
-[200]: ./media/topdesk-secure-tutorial/tutorial_general_200.png
-[201]: ./media/topdesk-secure-tutorial/tutorial_general_201.png
-[202]: ./media/topdesk-secure-tutorial/tutorial_general_202.png
-[203]: ./media/topdesk-secure-tutorial/tutorial_general_203.png

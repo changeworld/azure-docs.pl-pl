@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/25/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f1fdffe7b5cd217c61864328830d1eba2cbdc42b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 659d960881f143655e98c6f1d38696f44def3ae8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340729"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055102"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: Opracowywanie modułu usługi IoT Edge w języku C i wdrażanie go na urządzeniu symulowanym
 
@@ -47,7 +47,7 @@ Zasoby do programowania:
 
 * [Program Visual Studio Code](https://code.visualstudio.com/)
 * [Rozszerzenie języka C/C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) dla programu Visual Studio Code.
-* [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code.
+* [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) dla programu Visual Studio Code.
 * [Program Docker CE](https://docs.docker.com/install/).
 
 >[!Note]
@@ -55,7 +55,7 @@ Zasoby do programowania:
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-W tym samouczku rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code zostanie użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.
+W tym samouczku narzędzia usługi Azure IoT dla programu Visual Studio Code zostaną użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.
 
 Do przechowywania obrazów kontenerów możesz użyć dowolnego rejestru zgodnego z platformą Docker. Dwie popularne usługi rejestru Docker to [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) i [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). W tym samouczku używana jest usługa Azure Container Registry.
 
@@ -81,7 +81,7 @@ Jeśli nie masz jeszcze rejestru kontenerów, wykonaj następujące kroki, aby u
 7. Skopiuj wartości w polach **Serwer logowania**, **Nazwa użytkownika** i **Hasło**. Użyjesz tych wartości w dalszej części samouczka, aby zapewnić dostęp do rejestru kontenerów.
 
 ## <a name="create-an-iot-edge-module-project"></a>Tworzenie projektu modułu usługi IoT Edge
-W następujących krokach przedstawiono sposób tworzenia projektu modułu usługi IoT Edge bazującego na platformie .NET Core 2.0 przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge.
+W następujących krokach przedstawiono sposób tworzenia projektu modułu usługi IoT Edge bazującego na platformie .NET Core 2.0 przy użyciu programu Visual Studio Code i narzędzi usługi Azure IoT.
 
 ### <a name="create-a-new-solution"></a>Tworzenie nowego rozwiązania
 
@@ -292,9 +292,19 @@ Dodaj do modułu języka C kod, który umożliwia odczytywanie danych z czujnika
     }
     ```
 
-11. Zapisz plik **main.c**.
+11. Zapisz plik main.c.
 
-12. W eksploratorze programu VS Code otwórz plik **deployment.template.json** w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik wydaje agentowi `$edgeAgent` polecenie wdrożenia dwóch modułów: **tempSensor** i **CModule**. Domyślną platformą ustawioną na pasku stanu programu VS Code dla usługi IoT Edge jest platforma **amd64**, co oznacza, że dla modułu **NodeModule** ustawiono wersję obrazu Linux amd64. Zmień domyślną platformę na pasku stanu z **amd64** na **arm32v7**, jeśli taka jest architektura urządzenia usługi IoT Edge. Aby dowiedzieć się więcej na temat manifestów wdrożenia, zobacz [Jak używać modułów usługi IoT Edge, konfigurować je i używać ich ponownie](module-composition.md).
+12. W eksploratorze programu VS Code otwórz plik **deployment.template.json** w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik informuje agenta usługi IoT Edge, które moduły mają zostać wdrożone (w tym przypadku **tempSensor** i **CModule**), i informuje centrum usługi IoT Edge o tym, jak kierować wiadomości między nimi. Rozszerzenie programu Visual Studio Code automatycznie wypełni większość informacji potrzebnych w szablonie wdrożenia, ale sprawdź, czy wszystko jest dokładne dla Twojego rozwiązania: 
+
+   1. Domyślną platformą ustawioną na pasku stanu programu VS Code dla usługi IoT Edge jest platforma **amd64**, co oznacza, że dla modułu **CModule** ustawiono wersję obrazu Linux amd64. Zmień domyślną platformę na pasku stanu z **amd64** na **arm32v7** lub **windows-amd64**, jeśli taka jest architektura urządzenia usługi IoT Edge. 
+
+      ![Aktualizowanie platformy obrazu modułu](./media/tutorial-c-module/image-platform.png)
+
+   2. Sprawdź, czy szablon ma prawidłową nazwę modułu, a nie domyślną nazwę **SampleModule** zmienioną podczas tworzenia rozwiązania usługi IoT Edge.
+
+   3. W sekcji **registryCredentials** przechowywane są poświadczenia rejestru platformy Docker, aby agent usługi IoT Edge mógł ściągnąć obraz modułu. Rzeczywiste pary nazw użytkownika i haseł są przechowywane w pliku env, który jest ignorowany przez usługę git. Jeśli jeszcze nie zostało to zrobione, dodaj swoje poświadczenia do pliku env.  
+
+   4. Jeśli chcesz dowiedzieć się więcej na temat manifestów wdrożenia, zobacz artykuł [Learn how to deploy modules and establish routes in IoT Edge](module-composition.md) (Dowiedz się, jak wdrażać moduły i ustanawiać trasy w usłudze IoT Edge).
 
 13. Dodaj bliźniaczą reprezentację modułu CModule do manifestu wdrożenia. Wstaw następującą zawartość do pliku JSON na końcu sekcji `moduleContent`, po bliźniaczej reprezentacji modułu `$edgeHub`:
 

@@ -4,17 +4,17 @@ description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomoc
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtual machine, azure, kubernetes
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: d723eea6fff54b3a2f90478fcb209df76a6a776e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3ccba82e626882a99deaca2f12be3d2f96869b81
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872921"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078953"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
@@ -28,9 +28,9 @@ Z tego samouczka dowiesz się, jak wykonywać następujące zadania w ramach two
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Skonfiguruj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Terraform i konfigurowanie dostępu do platformy Azure).
+- **Skonfigurowane narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure (Terraform i konfigurowanie dostępu do platformy Azure)](/azure/virtual-machines/linux/terraform-install-configure).
 
 - **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Zapisz wartości pozycji appId, displayName, password i tenant.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie potoku przy użyciu Kreatora kopiowania | Microsoft Docs'
+title: 'Samouczek: tworzenie potoku przy użyciu Kreatora kopiowania | Microsoft Docs'
 description: Ten samouczek zawiera instrukcje dotyczące tworzenia potoku usługi Azure Data Factory za pomocą działania kopiowania przy użyciu Kreatora kopiowania obsługiwanego w usłudze Data Factory
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 85cea4bea0b1cff65464a2ad692e500efdc50c10
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ace2ffdacf775a3c0c5a579e9a4208641c20f661
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095378"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025763"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania usługi Fabryka danych
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania usługi Data Factory
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
@@ -64,7 +63,7 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
       - Wybierz pozycję **Użyj istniejącej**, aby wybrać istniejącą grupę zasobów.
       - Wybierz pozycję **Utwórz nowy**, aby wprowadzić nazwę grupy zasobów.
           
-        W niektórych krokach w tym samouczku zakłada się, że nazwa grupy zasobów to **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
+        W niektórych krokach w tym samouczku zakłada się, że dla grupy zasobów używasz nazwy: **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
    4. Wybierz **lokalizację** fabryki danych.
    5. Zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego** u dołu bloku.  
    6. Kliknij pozycję **Utwórz**.

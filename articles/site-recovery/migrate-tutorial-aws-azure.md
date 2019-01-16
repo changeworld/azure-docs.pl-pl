@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793074"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042057"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -33,12 +33,14 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Upewnij się, że na maszynach wirtualnych, które mają zostać zmigrowane, jest uruchomiona obsługiwana wersja systemu operacyjnego. Obsługiwane wersje to: 
-  - Windows Server 2016 
-  - Windows Server 2012 R2
-  - Windows Server 2012 
-  - 64-bitowa wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszym
-  - Red Hat Enterprise Linux 6.7 (tylko wystąpienia z wirtualizacją sprzętową) ze sterownikiem Citrix PV lub AWS PV. Wystąpienia ze sterownikami RedHat PV *nie są* obsługiwane.
- - Na każdej maszynie wirtualnej, która ma być replikowana, musi być zainstalowana usługa mobilności. 
+      - Windows Server 2016 
+      - Windows Server 2012 R2
+      - Windows Server 2012 
+      - 64-bitowa wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszym
+      - Red Hat Enterprise Linux wersja od 6.4 do 6.10, od 7.1 do 7.6 (tylko wystąpienia z wirtualizacją sprzętową) *(Wystąpienia ze sterownikami RedHat PV nie są obsługiwane).*
+      - CentOS wersja od 6.4 do 6.10, od 7.1 do 7.6 (tylko wystąpienia z wirtualizacją sprzętową)
+ 
+- Na każdej maszynie wirtualnej, która ma być replikowana, musi być zainstalowana usługa mobilności. 
 
     > [!IMPORTANT]
     > Usługa Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla danej maszyny wirtualnej. Instalacja automatyczna wymaga przygotowania na wystąpieniach usługi EC2 konta, za pomocą którego usługa Site Recovery będzie uzyskiwać dostęp do maszyny wirtualnej. Możesz użyć domeny lub konta lokalnego. 

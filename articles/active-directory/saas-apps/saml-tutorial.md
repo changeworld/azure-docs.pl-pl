@@ -1,224 +1,200 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu tokenu języka SAML 1.1 włączona aplikacji LOB | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacji LOB z obsługą tokenu języka SAML 1.1.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją SAML 1.1 Token enabled LOB App | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją SAML 1.1 Token enabled LOB App.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ced1d88d-0e48-40d5-9aea-ef991cd9d270
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/20/2018
+ms.topic: tutorial
+ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: edabc09f820093d088ec0b8ed1222fb26c800bee
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 32fa6f7c13180179a49c656763e58d1b915fb607
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426432"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064665"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu tokenu języka SAML 1.1 włączona aplikacji LOB
+# <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją SAML 1.1 Token enabled LOB App
 
-W tym samouczku dowiesz się, jak zintegrować tokenu języka SAML 1.1 aplikacji z włączoną obsługą LOB za pomocą usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację SAML 1.1 Token enabled LOB App z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji SAML 1.1 Token enabled LOB App z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie tokenu języka SAML 1.1 włączone aplikacji LOB za pomocą usługi Azure AD oferuje następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji SAML 1.1 Token enabled LOB App.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji SAML 1.1 Token enabled LOB App (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do tokenu języka SAML 1.1 włączone aplikacji LOB.
-- Umożliwia użytkownikom automatycznie uzyskać zalogowanych do tokenu języka SAML 1.1 aplikacji z obsługą LOB (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować Azure aplikacji LOB z włączoną obsługą integracji z usługą AD za pomocą tokenu języka SAML 1.1, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją SAML 1.1 Token enabled LOB App, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Tokenu języka SAML 1.1 włączone aplikacji LOB pojedynczej logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji SAML 1.1 Token enabled LOB App z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie tokenu języka SAML 1.1 włączone aplikacji LOB za pomocą galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-saml-11-token-enabled-lob-app-from-the-gallery"></a>Dodawanie tokenu języka SAML 1.1 włączone aplikacji LOB za pomocą galerii
-Aby skonfigurować integrację z tokenu języka SAML 1.1 aplikacji z włączoną obsługą LOB w usłudze Azure AD, należy dodać z obsługą tokenu języka SAML 1.1 aplikacji LOB za pomocą galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja SAML 1.1 Token enabled LOB App obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać LOB aplikacji z galerii z obsługą tokenu języka SAML 1.1, wykonaj następujące czynności:**
+## <a name="adding-saml-11-token-enabled-lob-app-from-the-gallery"></a>Dodawanie aplikacji SAML 1.1 Token enabled LOB App z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji SAML 1.1 Token enabled LOB App z usługą Azure AD, należy dodać aplikację SAML 1.1 Token enabled LOB App z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację SAML 1.1 Token enabled LOB App, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **aplikacji LOB z obsługą tokenu języka SAML 1.1**, wybierz opcję **aplikacji LOB z obsługą tokenu języka SAML 1.1** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tokenu języka SAML 1.1 aplikacji z obsługą LOB na liście wyników](./media/saml-tutorial/tutorial_saml_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu tokenu języka SAML 1.1 aplikacji LOB włączony oparciu o użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **SAML 1.1 Token enabled LOB App**, wybierz pozycję **SAML 1.1 Token enabled LOB App** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, jakie użytkownik odpowiednika w tokenu języka SAML 1.1 włączona aplikacja LOB to dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w tokenu języka SAML 1.1 włączone aplikacji LOB powinien być określony.
+     ![Aplikacja SAML 1.1 Token enabled LOB App na liście wyników](common/search-new-app.png)
 
-Do konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu tokenu języka SAML 1.1 włączone aplikacji LOB, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie tokenu języka SAML 1.1 włączone użytkownika testowego aplikacji LOB](#create-a-saml-11-token-enabled-lob-app-test-user)**  — aby aplikacji LOB, połączonego z usługi Azure AD reprezentacja użytkownika z włączoną obsługą odpowiednikiem Britta Simon w tokenu języka SAML 1.1.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją SAML 1.1 Token enabled LOB App, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem aplikacji SAML 1.1 Token enabled LOB App.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją SAML 1.1 Token enabled LOB App, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-W tej sekcji można włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w tokenu usługi języka SAML 1.1 aplikacji LOB aplikacji z obsługą.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego aplikacji SAML 1.1 Token enabled LOB App](#configure-saml-11-token-enabled-lob-app-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji SAML 1.1 Token enabled LOB App](#create-saml-11-token-enabled-lob-app-test-user)** — aby mieć w aplikacji SAML 1.1 Token enabled LOB App odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Do konfigurowania usługi Azure AD logowania jednokrotnego przy użyciu tokenu języka SAML 1.1 aplikacji z obsługą LOB, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **aplikacji LOB z obsługą tokenu języka SAML 1.1** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji SAML 1.1 Token enabled LOB App, wykonaj następujące kroki:
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/saml-tutorial/tutorial_saml_samlbase.png)
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **SAML 1.1 Token enabled LOB App** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **włączone tokenu języka SAML 1.1, domena aplikacji LOB i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Tokenu języka SAML 1.1 włączone domena aplikacji LOB i adresy URL pojedynczego logowania jednokrotnego informacji](./media/saml-tutorial/tutorial_saml_url.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://your-app-url`
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://your-app-url`
-     
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Zastąp te wartości z określonego adresu URL aplikacji.  
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Link pobierania certyfikatu](./media/saml-tutorial/tutorial_saml_certificate.png) 
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji SAML 1.1 Token enabled LOB App](common/sp-identifier.png)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/saml-tutorial/tutorial_general_400.png)
-    
-1. Na **LOB konfiguracji aplikacji z włączonym tokenu języka SAML 1.1** , kliknij przycisk **Konfigurowanie tokenu języka SAML 1.1 aplikacji z włączoną obsługą LOB** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://your-app-url`
 
-    ![LOB konfiguracji aplikacji z włączonym tokenu języka SAML 1.1](./media/saml-tutorial/tutorial_saml_configure.png) 
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://your-app-url`
 
-1. Aby skonfigurować logowanie jednokrotne na **aplikacji LOB z obsługą tokenu języka SAML 1.1** stronie, musisz wysłać pobrany **certyfikat (Base64), adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do zespół pomocy technicznej dla aplikacji. Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z pomocą techniczną klienta aplikacji SAML 1.1 Token enabled LOB App. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+6. W sekcji **Konfigurowanie aplikacji SAML 1.1 Token enabled LOB App** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    a. Adres URL logowania
 
-    ![Przycisk usługi Azure Active Directory](./media/saml-tutorial/create_aaduser_01.png)
+    b. Identyfikator usługi Azure AD
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+    d. Adres URL wylogowywania
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/saml-tutorial/create_aaduser_02.png)
+### <a name="configure-saml-11-token-enabled-lob-app-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji SAML 1.1 Token enabled LOB App
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **SAML 1.1 Token enabled LOB App**, należy wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal zespołowi pomocy technicznej aplikacji SAML 1.1 Token enabled LOB App. Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-    ![Przycisk Dodaj](./media/saml-tutorial/create_aaduser_03.png)
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-    ![Okno dialogowe użytkownika](./media/saml-tutorial/create_aaduser_04.png)
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
+
+3. We właściwościach użytkownika wykonaj następujące kroki.
+
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
+
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
+
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-saml-11-token-enabled-lob-app-test-user"></a>Tworzenie tokenu języka SAML 1.1 włączone użytkownika testowego aplikacji LOB
-
-W tej sekcji opisano tworzenie użytkownika o nazwie Britta Simon aplikacji LOB z obsługą tokenu języka SAML 1.1. Praca z aplikacją obsługuje zespołu, aby utworzyć użytkownika na stronie aplikacji. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji Britta Simon za pomocą platformy Azure zostanie włączone logowanie jednokrotne za udzielanie dostępu do tokenu języka SAML 1.1 włączone aplikacji LOB.
+W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji SAML 1.1 Token enabled LOB App.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie pozycję **SAML 1.1 Token enabled LOB App**.
 
-**Do przypisywania Britta Simon do tokenu języka SAML 1.1 włączone aplikacji LOB, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wpisz i wybierz pozycję **SAML 1.1 Token enabled LOB App**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link aplikacji SAML 1.1 Token enabled LOB App na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **aplikacji LOB z obsługą tokenu języka SAML 1.1**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Tokenu języka SAML 1.1 włączone link do aplikacji LOB na liście aplikacji](./media/saml-tutorial/tutorial_saml_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-saml-11-token-enabled-lob-app-test-user"></a>Tworzenie użytkownika testowego aplikacji SAML 1.1 Token enabled LOB App
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji SAML 1.1 Token enabled LOB App. Aby dodać użytkowników do platformy aplikacji SAML 1.1 Token enabled LOB App, skontaktuj się z pomocą techniczną tej platformy. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-Po kliknięciu tokenu języka SAML 1.1 włączone kafelka aplikacji LOB w panelu dostępu, należy pobrać automatycznie zalogowanych do aplikacji LOB aplikacji z obsługą tokenu usługi języka SAML 1.1.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+Po kliknięciu kafelka aplikacji SAML 1.1 Token enabled LOB App na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji SAML 1.1 Token enabled LOB App, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[1]: ./media/saml-tutorial/tutorial_general_01.png
-[2]: ./media/saml-tutorial/tutorial_general_02.png
-[3]: ./media/saml-tutorial/tutorial_general_03.png
-[4]: ./media/saml-tutorial/tutorial_general_04.png
-
-[100]: ./media/saml-tutorial/tutorial_general_100.png
-
-[200]: ./media/saml-tutorial/tutorial_general_200.png
-[201]: ./media/saml-tutorial/tutorial_general_201.png
-[202]: ./media/saml-tutorial/tutorial_general_202.png
-[203]: ./media/saml-tutorial/tutorial_general_203.png

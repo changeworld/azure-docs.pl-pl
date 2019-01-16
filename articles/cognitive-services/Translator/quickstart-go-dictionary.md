@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, Go — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym, Go — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: bcda716d143bd675f9510b1ecf5974ab9c28a394
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000587"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158571"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-go"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą języka Go oraz interfejsu API tłumaczenia tekstu w usłudze Translator
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Go
 
 W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu języka Go i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
@@ -88,7 +88,7 @@ func altTranslations(subscriptionKey string) {
 }
 ```
 
-Następnie utwórzmy adres URL. Adres URL został utworzony przy użyciu metod `Parse()` i `Query()`. Można zauważyć, że parametry są dodawane przy użyciu metody `Add()`. W tym przykładzie tłumaczymy z języka angielskiego na hiszpański.
+Następnie utwórzmy adres URL. Adres URL jest tworzony przy użyciu metod `Parse()` i `Query()`. Można zauważyć, że parametry są dodawane przy użyciu metody `Add()`. W tym przykładzie tłumaczymy z języka angielskiego na hiszpański.
 
 Skopiuj ten kod do funkcji `altTranslations`.
 
@@ -120,7 +120,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Tworzenie żądania
 
-Teraz gdy treść żądania została zakodowana jako dane JSON możesz utworzyć żądanie POST i wywołać interfejs API tłumaczenia tekstu w usłudze Translator.
+Teraz, gdy treść żądania została zakodowana jako dane JSON, możesz utworzyć żądanie POST i wywołać interfejs API tłumaczenia tekstu w usłudze Translator.
 
 ```go
 // Build the HTTP POST request

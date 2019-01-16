@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 36764b661d88f034b306251f76d47d72298308dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1ec0945996f0232553c9c1e0469289235f506611
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140000"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054830"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Tworzenie przestrzeni nazw w centrum zdarzeń i włączanie przechwytywania przy użyciu szablonu
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiono sposób używania szablonu usługi Azure Resource M
 
 W tym artykule pokazano też, jak przechwytywać zdarzenia w obiektach Azure Storage Blob lub w magazynie Azure Data Lake Store zależnie od wybranej lokalizacji docelowej.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Azure Resource Manager][Authoring Azure Resource Manager templates]. Aby zapoznać się z właściwościami i składnią języka JSON, których należy użyć w szablonie, zobacz [Typy zasobów Microsoft.EventHub](/azure/templates/microsoft.eventhub/allversions).
 
 Aby uzyskać więcej informacji na temat praktycznych rozwiązań i wzorców dotyczących konwencji nazewnictwa zasobów platformy Azure, zobacz [Azure Resources Naming Conventions (Konwencje nazewnictwa zasobów platformy Azure)][Azure Resources naming conventions].
 

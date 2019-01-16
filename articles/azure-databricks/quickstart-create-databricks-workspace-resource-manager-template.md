@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 793aa52c0eb49d122f520ead3ee80a869e7b62d9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 88538aa9528059458f6e73485f4839693caa943b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251338"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054498"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu szablonu usługi Resource Manager
 
@@ -178,7 +178,7 @@ Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie za
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule został utworzony klaster Spark w usłudze Azure Databricks i przy użyciu danych w usłudze Azure Storage zostało uruchomione zadanie Spark. Aby dowiedzieć się, jak zaimportować dane z innych źródeł danych do usługi Azure Databricks, zobacz [Spark data sources](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) (Źródła danych platformy Spark). Możesz również przyjrzeć się szablonowi usługi Resource Manager, aby [utworzyć obszar roboczy usługi Azure Databricks z niestandardowym adresem sieci wirtualnej](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address).
+W tym artykule został utworzony klaster Spark w usłudze Azure Databricks i przy użyciu danych w usłudze Azure Storage zostało uruchomione zadanie Spark. Aby dowiedzieć się, jak zaimportować dane z innych źródeł danych do usługi Azure Databricks, zobacz [Spark data sources](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) (Źródła danych platformy Spark). Możesz również przyjrzeć się szablonowi usługi Resource Manager, aby [utworzyć obszar roboczy usługi Azure Databricks z niestandardowym adresem sieci wirtualnej](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). Aby zapoznać się z właściwościami i składnią języka JSON, których należy użyć w szablonie, zobacz odwołanie do szablonu [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces).
 
 Przejdź do następnego artykułu, aby dowiedzieć się, jak wykonać operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks.
 

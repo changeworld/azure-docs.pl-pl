@@ -1,14 +1,12 @@
 ---
-title: Tworzenie sieci wirtualnej — Szybki start — Azure Portal | Microsoft Docs
+title: Tworzenie sieci wirtualnej — Szybki start — Azure Portal
+titlesuffix: Azure Virtual Network
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć sieć wirtualną przy użyciu witryny Azure Portal. Dzięki sieci wirtualnej zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie ze sobą i z Internetem.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: quickstart
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: d627d54686cb40714e9e8574ceae56a8900cb45e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269469"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020833"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Szybki start: Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
 
@@ -42,7 +39,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Name (Nazwa) | Wprowadź nazwę *myVirtualNetwork*. |
+    | Name (Nazwa) | Wpisz *myVirtualNetwork*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
@@ -98,7 +95,7 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
 
 1. Wybierz opcję **Dalej: Zarządzanie**.
 
-1. W obszarze **Tworzenie maszyny wirtualnej — zarządzanie** dla opcji **Konto magazynu diagnostyki**, wybierz ustawienie **Utwórz nowe**.
+1. W obszarze **Tworzenie maszyny wirtualnej — zarządzanie** dla opcji **Konto magazynu diagnostyki** wybierz ustawienie **Utwórz nowe**.
 
 1. W obszarze **Tworzenie konta magazynu** wprowadź lub wybierz następujące informacje:
 
@@ -142,14 +139,14 @@ Po utworzeniu maszyny *myVm1* połącz się z nią za pośrednictwem Internetu.
 
 1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol (*.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
 
-1. Otwórz pobrany plik *.rdp*.
+1. Otwórz pobrany plik *rdp*.
 
     1. Po wyświetleniu monitu wybierz pozycję **Połącz**.
 
     1. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej.
 
         > [!NOTE]
-        > Może okazać się konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
+        > Może okazać się konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby podać poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
 
 1. Kliknij przycisk **OK**.
 

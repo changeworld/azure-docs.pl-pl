@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: używanie interfejsu API REST usługi Custom Vision Service'
+title: 'Samouczek: Używanie interfejsu API REST usługi Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Utwórz, wyszkol, przetestuj i wyeksportuj model Custom Vision za pomocą interfejsu API REST.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: larryfr
-ms.openlocfilehash: afdc306a3d5a3130ecb44f88910e76f23f7c0c0e
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5e5cf04bb631585c14d2ec7403bf0332f41dc626
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334724"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054213"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>Samouczek: używanie interfejsu API REST usługi Custom Vision
+# <a name="tutorial-use-the-custom-vision-rest-api"></a>Samouczek: Używanie interfejsu API REST usługi Custom Vision
 
 Naucz się używać interfejsu API REST Custom Vision do tworzenia, szkolenia, testowania i eksportowania modelu.
 

@@ -9,17 +9,16 @@ ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 864c80fe0ab8b061439b5a80a111edbd1b2004b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027031"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078392"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu witryny Azure Portal
 
@@ -64,7 +63,7 @@ Aby dodać wpis tajny do magazynu, wystarczy tylko wykonać kilka dodatkowych cz
 1. Na stronie właściwości usługi Key Vault wybierz pozycję **Wpisy tajne**.
 2. Kliknij pozycję **Wygeneruj/zaimportuj**.
 3. Na ekranie **Tworzenie wpisu tajnego** wybierz następujące wartości:
-    - **Opcje przekazywania**: Ręcznie.
+    - **Opcje przekazywania**: ręcznie.
     - **Nazwa**: ExamplePassword.
     - **Wartość**: Pa$$w0rd.
     - Dla pozostałych opcji zostaw wartości domyślne. Kliknij pozycję **Utwórz**.

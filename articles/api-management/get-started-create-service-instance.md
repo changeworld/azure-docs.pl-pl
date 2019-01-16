@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ed3d21719908a4c16b92d610b8ac75ac0b235ec1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4a9ffdd9f81a7d46d3476f3395a4456dea6c0341
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968716"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156735"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Tworzenie nowego wystąpienia usługi Azure API Management
 
@@ -69,12 +69,12 @@ Gdy grupa zasobów i wszystkie pokrewne zasoby nie będą już potrzebne, można
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**.
 2. Wpisz wartość `resource groups` w polu wyszukiwania i kliknij wynik.
 
-    ![Przechodzenie do grup zasobów](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+    ![Nawigacja po grupach zasobów](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
 3. Znajdź swoją grupę zasobów i kliknij ją.
 4. Kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Przechodzenie do grup zasobów](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+    ![Nawigacja po grupach zasobów](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
 5. Potwierdź usunięcie, wpisując nazwę grupy zasobów.
 6. Kliknij polecenie **Usuń**.

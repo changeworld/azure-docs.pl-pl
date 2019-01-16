@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3240b3ecfe8de8644d2ac1fd4a880fc0d2dcc76b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ad344d3169643128a4860c9b0856f845d9656cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237132"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021360"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych z obiektu blob platformy Azure do bazy danych Azure SQL Database przy użyciu usługi Azure Data Factory
 W tym samouczku utworzysz potok fabryki danych, który kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -119,7 +118,7 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
     
-2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     ```csharp
     // Set variables
@@ -232,8 +231,8 @@ Dodaj do metody **Main** poniższy kod, który tworzy **zestaw danych obiektu bl
 
 Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do połączonej usługi Azure Storage utworzonej w poprzednim kroku i zawiera opis następujących elementów:
 
-- Lokalizacja źródłowa obiektu blob do skopiowania: **FolderPath** i **FileName**.
-- Format obiektów Blob wskazujący, jak przeanalizować zawartość: **TextFormat** i jego ustawienia (na przykład ogranicznik kolumny).
+- Lokalizacja obiektu blob do skopiowania: **FolderPath** i **FileName**.
+- Format obiektów blob wskazujący, jak przeanalizować zawartość: **TextFormat** i jego ustawienia (na przykład ogranicznik kolumny).
 - Struktura danych, taka jak nazwy kolumn i typy danych, które w tym przypadku są mapowane na tabelę SQL ujścia.
 
 ```csharp

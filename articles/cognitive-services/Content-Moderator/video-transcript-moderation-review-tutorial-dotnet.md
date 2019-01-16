@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Moderowanie wideo i transkrypcji na platformie .NET — usługa Content Moderator'
+title: 'Samouczek: moderowanie wideo i transkrypcji na platformie .NET — Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Jak używać usługi Content Moderator do moderowania wideo i transkrypcji na platformie .NET.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: d156c481e3c16105ad85cbc793d93306a310d5ef
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567115"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118578"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: Moderowanie wideo i transkrypcji
+# <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
 
 Interfejsy API wideo usługi Content Moderator umożliwiają moderowanie wideo i tworzenie przeglądów wideo za pomocą narzędzia do przeglądu przez ludzi. 
 
@@ -530,7 +530,7 @@ Transkrypcja jest publikowana jako element zawartości platformy AMS. Aby przepr
         }
         catch
         {   //TODO:  Logging
-            Console.WriteLine("Exception occured while generating index for video.");
+            Console.WriteLine("Exception occurred while generating index for video.");
             throw;
         }
     }

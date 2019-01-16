@@ -8,12 +8,12 @@ ms.author: raynew
 ms.date: 10/23/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4806ca77bda1d380d3c5f1d958a335bceddc7f16
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 56daf1bd8d0ab7752b74463759f25441924b52d2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787447"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064121"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej udziałów plików platformy Azure.
@@ -36,7 +36,7 @@ Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magaz
 ## <a name="configuring-backup"></a>Konfigurowanie kopii zapasowej
 Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 
-| Konfigurowanie kopii zapasowej | Wskazówki dotyczące obejść lub rozwiązań |
+| Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
 | ------------------ | ----------------------------- |
 | Nie można odnaleźć konta magazynu w celu skonfigurowania kopii zapasowej na potrzeby udziału plików platformy Azure | <ul><li>Poczekaj na zakończenie odnajdywania. <li>Sprawdź, czy żaden udział plików z konta magazynu nie jest już chroniony w ramach innego magazynu usługi Recovery Services. **Uwaga**: wszystkie udziały plików konta magazynu mogą być chronione w ramach jednego magazynu usługi Recovery Services. <li>Upewnij się, że udział plików nie istnieje w żadnym z nieobsługiwanych kont magazynu.|
 | Błąd w portalu z informacją o niepowodzeniu odnajdywania kont magazynu. | Jeśli subskrypcja jest partnerska (z obsługą dostawcy usług kryptograficznych), zignoruj ten błąd. Jeśli Twoja subskrypcja nie obsługuje dostawcy usług kryptograficznych i nie można odnaleźć kont magazynu, skontaktuj się z pomocą techniczną.|
@@ -64,6 +64,14 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Operacja przywracania nie powiodła się, ponieważ docelowy udział plików jest pełny. | Zwiększ limit przydziału rozmiaru docelowego udziału plików w celu pomieszczenia przywracanych danych, a następnie spróbuj ponownie wykonać operację. |
 | Operacja przywrócenia nie powiodła się, ponieważ wystąpił błąd podczas wykonywania operacji przywracania wstępnego dla zasobów usługi File Sync skojarzonych z docelowym udziałem plików. | Spróbuj ponownie za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
 | Odzyskanie co najmniej jednego pliku zakończyło się niepowodzeniem. Aby uzyskać więcej informacji, sprawdź listę plików zakończonych niepowodzeniem w ramach podanej powyżej ścieżki. | <ul> <li> Przyczyny niepowodzenia odzyskiwania są wymienione w pliku (ścieżka jest podana w szczegółach zadania). Usuń przyczyny niepowodzenia, a następnie spróbuj ponownie wykonać operację przywracania tylko dla plików zakończonych niepowodzeniem. <li> Typowe przyczyny błędów przywracania plików: <br/> - pliki zakończone niepowodzeniem są używane <br/> -w katalogu nadrzędnym istnieje katalog o tej samej nazwie, co plik zakończony niepowodzeniem |
+
+
+## <a name="modify-policy"></a>Modyfikowanie zasad
+| Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
+| ------------------ | ----------------------------- |
+| Inna operacja konfiguracji ochrony jest w toku dla tego elementu. | Poczekaj na zakończenie poprzedniej operacji modyfikowania zasad, a następnie spróbuj ponownie po pewnym czasie.|
+| Inna operacja jest w toku dla wybranego elementu. | Poczekaj na ukończenie innej operacji w toku, a następnie spróbuj ponownie po pewnym czasie |
+
 
 ## <a name="see-also"></a>Zobacz też
 Aby uzyskać dodatkowe informacje na temat tworzenia kopii zapasowej udziałów plików platformy Azure, zobacz:

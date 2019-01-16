@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/01/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a78c4d64761b5eecc5b7ebf8aa0223b862935575
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: af33842b2006ceb94bd464d9e4148c9aa9206d7b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728197"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055000"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Samouczek: Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server
 
@@ -46,13 +46,13 @@ Zasoby do programowania:
 
 * [Program Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp) dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
-* [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
+* [Narzędzia usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
 * [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download). 
 * [Program Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-W tym samouczku rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code zostanie użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.  
+W tym samouczku narzędzia usługi Azure IoT dla programu Visual Studio Code zostaną użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.  
 
 Do przechowywania obrazów kontenerów możesz użyć dowolnego rejestru zgodnego z platformą Docker. Dwie popularne usługi rejestru Docker to [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) i [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). W tym samouczku używana jest usługa Azure Container Registry. 
 
@@ -81,7 +81,7 @@ Jeśli nie masz jeszcze rejestru kontenerów, wykonaj następujące kroki, aby u
 
 Aby wysyłać dane do bazy danych, potrzebujesz modułu, który może poprawnie tworzyć struktury danych, a następnie przechowywać je w tabeli. 
 
-W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Edge przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge.
+W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Edge przy użyciu programu Visual Studio Code i narzędzi usługi Azure IoT.
 
 1. Otwórz program Visual Studio Code.
 

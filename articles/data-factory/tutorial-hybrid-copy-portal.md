@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614025"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021989"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz interfejsu użytkownika usługi Azure Data Factory, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
@@ -195,7 +194,7 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
     ![Nazwa środowiska Integration Runtime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. W polu **Opcja 1: Instalacja ekspresowa** wybierz pozycję **Kliknij tutaj, aby uruchomić instalację ekspresową dla tego komputera**. 
+1. W obszarze **Opcja 1: Instalacja ekspresowa** wybierz pozycję **Kliknij tutaj, aby uruchomić instalację ekspresową dla tego komputera**. 
 
     ![Link instalacji ekspresowej](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 

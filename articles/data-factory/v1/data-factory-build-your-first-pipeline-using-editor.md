@@ -10,17 +10,16 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732230"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020714"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Samouczek: tworzenie pierwszej fabryki danych przy użyciu witryny Azure Portal
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.locfileid: "45732230"
 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych przy użyciu usługi Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych w usłudze Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 Ten artykuł zawiera instrukcje korzystania z witryny [Azure Portal](https://portal.azure.com/) w celu utworzenia pierwszej fabryki danych. Aby wykonać instrukcje z tego samouczka przy użyciu innych narzędzi/zestawów SDK, wybierz jedną z opcji z listy rozwijanej. 
 
@@ -65,7 +64,7 @@ Aby utworzyć fabrykę danych, wykonaj następujące kroki:
    ![Blok Nowa fabryka danych](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
    > [!IMPORTANT]
-   > Nazwa fabryki danych musi być globalnie unikatowa. Jeśli wystąpi błąd „Nazwa fabryki danych GetStartedDF jest niedostępna”, zmień nazwę fabryki danych. Na przykład użyj nazwy TwojaNazwaGetStartedDF i utwórz ponownie fabrykę danych. Aby uzyskać więcej informacji na temat reguł nazewnictwa, zobacz [Data Factory: Naming rules (Fabryka danych: reguły nazewnictwa)](data-factory-naming-rules.md).
+   > Nazwa fabryki danych musi być globalnie unikatowa. Jeśli wystąpi błąd „Nazwa fabryki danych GetStartedDF jest niedostępna”, zmień nazwę fabryki danych. Na przykład użyj nazwy TwojaNazwaGetStartedDF i utwórz ponownie fabrykę danych. Aby uzyskać więcej informacji na temat reguł nazewnictwa, zobacz [Data Factory: Naming rules (Data Factory: reguły nazewnictwa)](data-factory-naming-rules.md).
    >
    > W przyszłości nazwa fabryki danych może zostać zarejestrowana jako nazwa DNS, a wówczas stanie się widoczna publicznie.
    >

@@ -4,17 +4,17 @@ description: Użycie programu Terraform i języka HCL (HashiCorp Configuration L
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtual machine, network, modules
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667604"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075360"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL
 
@@ -62,7 +62,7 @@ W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfigu
 
 6. Utwórz nowy plik, który będzie zawierać wartości zmiennych programu Terraform. Typowa nazwa pliku zmiennych programu Terraform to `terraform.tfvars`, ponieważ program Terraform automatycznie ładuje każdy plik o nazwie `terraform.tfvars` (lub pasujący do wzorca `*.auto.tfvars`) znajdujący się w bieżącym katalogu. 
 
-7. Skopiuj następujący kod do pliku zmiennych. Upewnij się, że zastąpiono symbole zastępcze w następujący sposób: dla `subscription_id` użyto identyfikatora subskrypcji platformy określonego przy uruchamianiu polecenia `az account set`. Dla symbolu zastępczego `tenant_id` użyto wartości `tenant` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_id` użyto wartości `appId` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_secret` użyto wartości `password` zwróconej przez polecenie `az ad sp create-for-rbac`.
+7. Skopiuj następujący kod do pliku zmiennych. Pamiętaj, aby zamienić symbole zastępcze w następujący sposób: Dla symbolu zastępczego `subscription_id` użyj identyfikatora subskrypcji platformy Azure określonego podczas uruchamiania polecenia `az account set`. Dla symbolu zastępczego `tenant_id` użyto wartości `tenant` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_id` użyto wartości `appId` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_secret` użyto wartości `password` zwróconej przez polecenie `az ad sp create-for-rbac`.
 
   ```tf
   subscription_id = "<azure-subscription-id>"

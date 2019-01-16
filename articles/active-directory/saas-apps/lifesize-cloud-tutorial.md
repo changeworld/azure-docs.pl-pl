@@ -1,273 +1,240 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z chmurą Lifesize | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między środowiskiem usługi Azure Active Directory i Lifesize chmurą.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Lifesize Cloud | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Lifesize Cloud.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/23/2017
+ms.topic: tutorial
+ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: c03456dcda2b3ee44686b070cdebb5fc81c3968c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 312d1c8a1fdeb202d137b32a92e275b42c9934ee
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449183"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064274"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z chmurą Lifesize
+# <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Lifesize Cloud
 
-W tym samouczku dowiesz się, jak zintegrować Lifesize chmury z usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Lifesize Cloud z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Lifesize Cloud z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Lifesize chmury z usługi Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Lifesize Cloud.
+* Twoi użytkownicy mogą być automatycznie logowani do aplikacji Lifesize Cloud (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do chmury Lifesize
-- Użytkowników, aby automatycznie uzyskać zalogowanych do chmury Lifesize (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu chmury Lifesize, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Lifesize Cloud potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Lifesize pojedynczego logowania jednokrotnego włączonych subskrypcji usługi w chmurze
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Lifesize Cloud z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Lifesize chmury z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-lifesize-cloud-from-the-gallery"></a>Dodawanie Lifesize chmury z galerii
-Aby skonfigurować integrację Lifesize chmury w usłudze Azure AD, należy dodać Lifesize chmury z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Lifesize Cloud obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-**Aby dodać Lifesize chmury z galerii, wykonaj następujące czynności:**
+* Aplikacja Lifesize Cloud obsługuje **zautomatyzowaną** aprowizację użytkowników
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+## <a name="adding-lifesize-cloud-from-the-gallery"></a>Dodawanie aplikacji Lifesize Cloud z galerii
 
-    ![Usługa Active Directory][1]
+Aby skonfigurować integrację aplikacji Lifesize Cloud z usługą Azure AD, należy dodać aplikację Lifesize Cloud z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+**Aby dodać aplikację Lifesize Cloud z galerii, wykonaj następujące kroki:**
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][3]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. W polu wyszukiwania wpisz **chmury Lifesize**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_search.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W panelu wyników wybierz **chmury Lifesize**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_addfromgallery.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji można skonfigurować, i test usługi Azure AD logowanie jednokrotne za pomocą chmury Lifesize oparte na użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **Lifesize Cloud**, wybierz pozycję **Lifesize Cloud** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w chmurze Lifesize do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w chmurze Lifesize musi zostać ustanowione.
+     ![Aplikacja Lifesize Cloud na liście wyników](common/search-new-app.png)
 
-W chmurze Lifesize przypisze się wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu chmury Lifesize, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Lifesize Cloud, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Lifesize Cloud.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego chmury Lifesize](#creating-a-lifesize-cloud-test-user)**  — aby odpowiednikiem Britta Simon w chmurze Lifesize, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Lifesize Cloud, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Lifesize Cloud](#configure-lifesize-cloud-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Lifesize Cloud](#create-lifesize-cloud-test-user)** — aby udostępnić w aplikacji Lifesize Cloud odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w aplikacji w chmurze Lifesize.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu chmury Lifesize, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **chmury Lifesize** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Lifesize Cloud, wykonaj następujące kroki:
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Lifesize Cloud** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **Lifesize chmury domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://login.lifesizecloud.com/ls/?acs`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://login.lifesizecloud.com/<companyname>`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-     
-1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, wykonaj następujące kroki:    
-   
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    W **przekazywania stanu** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://webapp.lifesizecloud.com/?ent=<identifier>`
-   
-   > [!NOTE] 
-   >Należy pamiętać, że nie są rzeczywiste wartości. Musisz zaktualizować te wartości przy użyciu rzeczywisty adres URL logowania, stan przekazywania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta chmury Lifesize](https://www.lifesize.com/support) uzyskać adres URL logowania, a wartości identyfikatora i można pobrać stan przekazywania wartości z konfiguracji logowania jednokrotnego, która jest opisane w dalszej części tego samouczka.
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Lifesize Cloud](common/sp-identifier-relay.png)
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://login.lifesizecloud.com/ls/?acs`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_certificate.png) 
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.lifesizecloud.com/<companyname>`
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    d. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_general_400.png)
+    d. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
-1. Na **Konfiguracja chmury Lifesize** , kliknij przycisk **Konfigurowanie chmury Lifesize** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i stanu przekazywania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Lifesize Cloud](https://www.lifesize.com/en/support), aby uzyskać adres URL logowania i wartości identyfikatora, zaś wartość stanu przekazywania możesz pobrać z konfiguracji logowania jednokrotnego, która jest opisana w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_configure.png) 
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Aby uzyskać logowanie Jednokrotne skonfigurowane dla aplikacji, zaloguj się do aplikacji w chmurze Lifesize z uprawnieniami administratora.
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W prawym górnym rogu kliknij swoją nazwę, a następnie kliknij polecenie **ustawienia zaawansowane**.
-   
+6. W sekcji **Konfigurowanie aplikacji Lifesize Cloud** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-lifesize-cloud-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Lifesize Cloud
+
+1. Aby skonfigurować logowanie jednokrotne dla Twojej aplikacji, zaloguj się do aplikacji Lifesize Cloud z uprawnieniami administratora.
+
+2. W prawym górnym rogu kliknij swoją nazwę, a następnie kliknij pozycję **Ustawienia zaawansowane**.
+
     ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
-1. W ustawieniach Zaawansowane teraz kliknąć **konfiguracji logowania jednokrotnego** łącza. Go spowoduje otwarcie strony konfiguracji logowania jednokrotnego, wystąpienia.
-   
+3. W ustawieniach zaawansowanych kliknij teraz link **Konfiguracja logowania jednokrotnego**. Spowoduje to otwarcie strony konfiguracji logowania jednokrotnego dla Twojego wystąpienia.
+
     ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
-1. Teraz można skonfigurować następujące wartości w interfejsie użytkownika konfiguracji logowania jednokrotnego.    
-   
+4. Teraz skonfiguruj następujące wartości w interfejsie użytkownika konfiguracji logowania jednokrotnego.
+
     ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
-    
-    a. W **wystawca dostawcy tożsamości** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
 
-    b.  W **adres URL logowania** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowanej w witrynie Azure portal.
+    a. W polu tekstowym **Wystawca dostawcy tożsamości** wklej wartość pola **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal.
 
-    c. Otwórz swój certyfikat zakodowany base-64 w Notatniku pobranego z witryny Azure portal, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikat X.509** pola tekstowego.
+    b.  W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+
+    d. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64 pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat X.509**.
   
-    d. Mapowania atrybutów SAML dla pola tekstowego imię wprowadzenie wartości jako **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
-    
-    e. Mapowanie atrybutów SAML dla **nazwisko** polu tekstowym wprowadź wartość jako **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
-    
-    f. Mapowanie atrybutów SAML dla **E-mail** polu tekstowym wprowadź wartość jako **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**
+    d. W mapowaniach atrybutu protokołu SAML dla pola tekstowego Imię wprowadź wartość jako `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-1. Aby sprawdzić konfigurację, możesz kliknąć **testu** przycisku.
-   
+    e. W mapowaniu atrybutu protokołu SAML dla pola tekstowego **Nazwisko** wprowadź wartość jako `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+
+    f. W mapowaniu atrybutu protokołu SAML dla pola tekstowego **Adres e-mail** wprowadź wartość jako `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+
+5. Aby sprawdzić konfigurację, możesz kliknąć przycisk **Test**.
+
     >[!NOTE]
-    >Do pomyślnego testowania należy zakończyć działanie Kreatora konfiguracji w usłudze Azure AD, a także zapewnić dostęp do użytkowników lub grupy, którzy mogą wykonywać test.
+    >W celu zapewnienia pomyślnego testowania należy zakończyć działanie kreatora konfiguracji w usłudze Azure AD oraz zapewnić dostęp do użytkowników lub grup, które mogą wykonać test.
 
-1. Włączanie logowania jednokrotnego, sprawdzając na **włączyć logowanie Jednokrotne** przycisku.
+6. Włącz logowanie jednokrotne, wybierając przycisk **Włącz logowanie jednokrotne**.
 
-1. Teraz kliknąć **aktualizacji** przycisk Tak, aby wszystkie ustawienia są zapisywane. Spowoduje to wygenerowanie wartości użytkownika. Kopiuj wartość użytkownika, który jest generowany w polu tekstowym, wklej ją w **tan przekaźnika** polu tekstowym w obszarze **Lifesize chmury domena i adresy URL** sekcji. 
+7. Teraz kliknij przycisk **Aktualizuj**, aby wszystkie ustawienia zostały zapisane. Spowoduje to wygenerowanie wartości RelayState. Skopiuj wartość RelayState, która jest generowana w polu tekstowym, wklej ją w polu tekstowym **Stan przekazywania** w sekcji **Domena i adresy URL aplikacji Lifesize Cloud**.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-![Utwórz użytkownika usługi Azure AD][100]
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/lifesize-cloud-tutorial/create_aaduser_01.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/lifesize-cloud-tutorial/create_aaduser_02.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/lifesize-cloud-tutorial/create_aaduser_03.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/lifesize-cloud-tutorial/create_aaduser_04.png) 
-
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-lifesize-cloud-test-user"></a>Tworzenie użytkownika testowego Lifesize chmury
 
-W tej sekcji utworzysz użytkownika w chmurze Lifesize o nazwie Britta Simon. Chmura Lifesize obsługuje automatyczna aprowizacja użytkowników. Po pomyślnym uwierzytelnieniu w usłudze Azure AD użytkownik zostanie automatycznie aprowizowana w aplikacji. 
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Lifesize Cloud.
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do chmury Lifesize za pomocą platformy Azure logowania jednokrotnego.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Lifesize Cloud**.
 
-![Przypisz użytkownika][200] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-**Aby przypisać Britta Simon Lifesize chmury, wykonaj następujące czynności:**
+2. Na liście aplikacji wybierz pozycję **Lifesize Cloud**.
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+    ![Link do aplikacji Lifesize Cloud na liście aplikacji](common/all-applications.png)
 
-    ![Przypisz użytkownika][201] 
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-1. Na liście aplikacji wybierz **chmury Lifesize**.
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_app.png) 
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-    ![Przypisz użytkownika][202] 
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+### <a name="create-lifesize-cloud-test-user"></a>Tworzenie użytkownika testowego aplikacji Lifesize Cloud
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Lifesize Cloud. Aplikacja Lifesize Cloud obsługuje automatyczną aprowizację użytkownika. Po pomyślnym uwierzytelnieniu w usłudze Azure AD użytkownik będzie automatycznie aprowizowany w aplikacji.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Lifesize chmury w panelu dostępu, należy uzyskać stronę logowania aplikacji w chmurze Lifesize.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Lifesize Cloud w panelu dostępu przejdziesz do strony logowania aplikacji Lifesize Cloud. W tym miejscu musisz wprowadzić swoją nazwę użytkownika, a następnie zostaniesz przekierowany do strony głównej aplikacji.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/lifesize-cloud-tutorial/tutorial_general_01.png
-[2]: ./media/lifesize-cloud-tutorial/tutorial_general_02.png
-[3]: ./media/lifesize-cloud-tutorial/tutorial_general_03.png
-[4]: ./media/lifesize-cloud-tutorial/tutorial_general_04.png
-
-[100]: ./media/lifesize-cloud-tutorial/tutorial_general_100.png
-
-[200]: ./media/lifesize-cloud-tutorial/tutorial_general_200.png
-[201]: ./media/lifesize-cloud-tutorial/tutorial_general_201.png
-[202]: ./media/lifesize-cloud-tutorial/tutorial_general_202.png
-[203]: ./media/lifesize-cloud-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

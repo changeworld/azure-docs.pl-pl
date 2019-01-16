@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e816799ba2df0f97aca7618e7c181a1086bb84a9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2fc88f82222deeecb55dac8fa77e1d8702ffe011
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791918"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055034"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu szablonu
 
-Dowiedz się, jak utworzyć klaster [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu [Apache Hive](https://hive.apache.org/). Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat klastra Spark w usłudze HDInsight, zobacz [Przegląd: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
+Dowiedz się, jak utworzyć klaster [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu [Apache Hive](https://hive.apache.org/). Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat platformy Apache Spark w usłudze HDInsight, zobacz [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
 
-W tym przewodniku Szybki start użyjesz szablonu usługi Resource Manager do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Azure Data Lake Storage 2. generacji, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+W tym przewodniku Szybki start użyjesz szablonu usługi Resource Manager do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 > [!IMPORTANT]  
 > Opłaty za klastry usługi HDInsight są naliczane proporcjonalnie za minutę, niezależnie od ich użycia. Pamiętaj o usunięciu klastra po zakończeniu korzystania z niego. Aby uzyskać więcej informacji, zobacz sekcję [Czyszczenie zasobów](#clean-up-resources) w tym artykule.
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Tworzenie klastra Spark w usłudze HDInsight
 
-Utwórz klaster HDInsight Spark przy użyciu szablonu usługi Azure Resource Manager. Szablon można znaleźć w usłudze [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/).
+Utwórz klaster HDInsight Spark przy użyciu szablonu usługi Azure Resource Manager. Szablon można znaleźć w usłudze [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/). Aby zapoznać się ze składnią języka JSON i właściwościami klastra, zobacz [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters).
 
 1. Wybierz następujący link, aby otworzyć szablon w witrynie Azure Portal na nowej karcie przeglądarki:
 

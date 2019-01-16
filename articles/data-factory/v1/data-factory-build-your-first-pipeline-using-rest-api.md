@@ -9,19 +9,18 @@ ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: caea4296bc0573141865aca27b04f9d9ee049e94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 517d3da0e8e126a1982dafe8fcea0bbf391cfa5a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955590"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019694"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu interfejsu API REST usługi Fabryka danych
+# <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu interfejsu API REST usługi Data Factory
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -34,11 +33,11 @@ ms.locfileid: "49955590"
 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych przy użyciu usługi Azure Data Factory](../quickstart-create-data-factory-rest-api.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych w usłudze Azure Data Factory](../quickstart-create-data-factory-rest-api.md).
 
 Ten artykuł zawiera instrukcje korzystania z interfejsu API REST usługi Fabryka danych w celu utworzenia pierwszej fabryki danych Azure. Aby wykonać instrukcje z tego samouczka przy użyciu innych narzędzi/zestawów SDK, wybierz jedną z opcji z listy rozwijanej.
 
-Potok w tym samouczku zawiera jedno działanie: **działanie Hive usługi HDInsight**. To działanie uruchamia skrypt Hive w klastrze Azure HDInsight, który przekształca dane wejściowe, aby wygenerować dane wyjściowe. Uruchamianie potoku zaplanowano raz w miesiącu między określonym czasem rozpoczęcia i zakończenia.
+Potok w tym samouczku zawiera jedno działanie: **działanie technologii Hive w usłudze HDInsight**. To działanie uruchamia skrypt Hive w klastrze Azure HDInsight, który przekształca dane wejściowe, aby wygenerować dane wyjściowe. Uruchamianie potoku zaplanowano raz w miesiącu między określonym czasem rozpoczęcia i zakończenia.
 
 > [!NOTE]
 > Ten artykuł nie obejmuje całego interfejsu API REST. Pełna dokumentacja dotycząca interfejsu API REST znajduje się w [Dokumentacji interfejsu API REST usługi Data Factory](/rest/api/datafactory/).
@@ -315,13 +314,13 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **FirstDataFactoryRE
 
 Pamiętaj o następujących kwestiach:
 
-* Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli w wynikach jest wyświetlany błąd: **Nazwa fabryki danych „FirstDataFactoryREST” jest niedostępna**, wykonaj następujące czynności:
+* Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli w wynikach jest wyświetlany błąd: **Nazwa fabryki danych „FirstDataFactoryREST” jest niedostępna**, wykonaj następujące kroki:
   1. Zmień nazwę fabryki (np. twojanazwaFirstDataFactoryREST) w pliku **datafactory.json**. Artykuł [Data Factory — Naming Rules](data-factory-naming-rules.md) (Fabryka danych — zasady nazewnictwa) zawiera zasady nazewnictwa artefaktów usługi Fabryka danych.
   2. W pierwszym poleceniu, w którym zmiennej **$cmd** jest przypisywana wartość, zastąp nazwę FirstDataFactoryREST nową nazwą i uruchom to polecenie.
   3. Uruchom kolejne dwa polecenia, aby wywołać interfejs API REST w celu utworzenia fabryki danych i wyświetlić wyniki tej operacji.
 * Aby tworzyć wystąpienia usługi Fabryka danych, musisz być współautorem/administratorem subskrypcji Azure
 * W przyszłości nazwa fabryki danych może zostać zarejestrowana jako nazwa DNS, a wówczas stanie się widoczna publicznie.
-* Jeśli zostanie wyświetlony komunikat o błędzie: „**Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw Microsoft.DataFactory**”, wykonaj jedną z następujących czynności i spróbuj opublikować ponownie:
+* Jeśli zostanie wyświetlony błąd: „**Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw Microsoft.DataFactory**”, wykonaj jedną z następujących czynności i spróbuj opublikować ponownie:
 
   * W programie Azure PowerShell uruchom następujące polecenie, aby zarejestrować dostawcę usługi Data Factory:
 
@@ -420,7 +419,7 @@ W tym kroku opisano tworzenie wyjściowego zestawu danych do reprezentowania dan
     ```
 
 ## <a name="create-pipeline"></a>Tworzenie potoku
-W tym kroku opisano tworzenie pierwszego potoku za pomocą działania **HDInsightHive**. Wycinek danych wejściowych jest dostępny co miesiąc (frequency: Month, interval: 1), wycinek danych wyjściowych jest generowany co miesiąc, a właściwość scheduler dla działania jest również ustawiona na wartość miesięczną. Ustawienia dla wyjściowego zestawu danych i harmonogramu działania muszą być zgodne. W tym przypadku wyjściowy zestaw danych jest elementem wpływającym na ustawienia harmonogramu, więc musisz utworzyć wyjściowy zestaw danych nawet wtedy, gdy działanie nie generuje żadnych danych wyjściowych. Jeśli w działaniu nie są używane żadne dane wejściowe, możesz pominąć tworzenie zestawu danych wejściowych.
+W tym kroku opisano tworzenie pierwszego potoku za pomocą działania **HDInsightHive**. Wycinek wejściowy jest dostępny co miesiąc (frequency: Month, interval: 1), wycinek danych wyjściowych jest generowany co miesiąc, a właściwość scheduler dla działania jest również ustawiona na wartość miesięczną. Ustawienia dla wyjściowego zestawu danych i harmonogramu działania muszą być zgodne. W tym przypadku wyjściowy zestaw danych jest elementem wpływającym na ustawienia harmonogramu, więc musisz utworzyć wyjściowy zestaw danych nawet wtedy, gdy działanie nie generuje żadnych danych wyjściowych. Jeśli w działaniu nie są używane żadne dane wejściowe, możesz pominąć tworzenie zestawu danych wejściowych.
 
 Upewnij się, że plik **input.log** jest wyświetlany w folderze **adfgetstarted/inputdata** w magazynie obiektów blob Azure, i uruchom następujące polecenie, aby wdrożyć potok. Ponieważ właściwości **start** i **end** są ustawione na wartość w przeszłości i właściwość **isPaused** została ustawiona na wartość „false”, potok (działanie w potoku) jest uruchamiany natychmiast po wdrożeniu.
 
@@ -485,7 +484,7 @@ W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych p
 4. Utworzyć **potok** za pomocą działania **programu Hive w usłudze HDInsight**.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule opisano tworzenie potoku za pomocą działania przekształcania (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight platformy Azure na żądanie. Instrukcje dotyczące korzystania z działania kopiowania w celu kopiowania danych z magazynu obiektów blob Azure do usług SQL Azure znajdują się w artykule [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z magazynu obiektów blob Azure do usług SQL Azure).
+W tym artykule opisano tworzenie potoku za pomocą działania przekształcania (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight platformy Azure na żądanie. Instrukcje dotyczące korzystania z działania kopiowania w celu kopiowania danych z magazynu obiektów blob Azure do usług SQL Azure znajdują się w artykule [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z magazynu obiektów blob Azure do usług SQL Azure).
 
 ## <a name="see-also"></a>Zobacz też
 | Temat | Opis |

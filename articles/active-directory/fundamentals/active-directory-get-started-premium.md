@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 23778a56cfa6440442bd7aab67c5441094a633ae
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fd5f9567c92201b4dfa08c74574df97fa8c91ae2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073996"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065566"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Rejestrowanie w usłudze Azure Active Directory w wersji Premium
 Istnieje możliwość zakupienia usługi Azure Active Directory (Azure AD) w wersji Premium i skojarzenia jej z Twoją subskrypcją platformy Azure. Jeśli chcesz utworzyć nową subskrypcję platformy Azure, musisz również uaktywnić plan licencjonowania i dostęp do usługi Azure AD.

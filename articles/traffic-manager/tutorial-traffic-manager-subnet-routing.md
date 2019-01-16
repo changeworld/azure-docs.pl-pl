@@ -1,10 +1,9 @@
 ---
-title: Konfigurowanie metody routingu ruchu dla podsieci za pomocą usługi Azure Traffic Manager | Microsoft Docs
+title: Konfigurowanie metody routingu ruchu dla podsieci za pomocą usługi Azure Traffic Manager
 description: W tym artykule opisano sposób konfigurowania usługi Traffic Manager na potrzeby kierowania ruchu z podsieci użytkownika do określonych punktów końcowych.
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 20c34b820eb326a18be1c4298b0850a58599be64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956238"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053078"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Bezpośrednie kierowanie ruchu do określonych punktów końcowych na podstawie podsieci użytkownika przy użyciu usługi Traffic Manager
 

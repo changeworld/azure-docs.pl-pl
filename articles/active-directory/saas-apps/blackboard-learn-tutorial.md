@@ -1,251 +1,229 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Dowiedz się, tablica | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Dowiedz się, tablica.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Blackboard Learn | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Blackboard Learn.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 0b8ca505-61ea-487c-9a3e-fa50c936df0c
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/19/2017
+ms.topic: tutorial
+ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 9b7e7a84059f8393e8f900733602e32ca3ad833b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 9aa03146608796f1a2d26d44b4e76b0331f8c5be
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423661"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063560"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Samouczek: Integracja usługi Azure Active Directory z tablica Dowiedz się więcej.
+# <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Blackboard Learn
 
-W tym samouczku dowiesz się, jak zintegrować tablica Dowiedz się z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Blackboard Learn z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Blackboard Learn z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie tablica Dowiedz się z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do aplikacji Blackboard Learn.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Blackboard Learn (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp, aby dowiedzieć się, tablica
-- Użytkowników, aby automatycznie uzyskać zalogowane się tablica (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z Dowiedz się, tablica, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Blackboard Learn, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Dowiedz się, tablica logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Blackboard Learn z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie tablica Dowiedz się więcej z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-blackboard-learn-from-the-gallery"></a>Dodawanie tablica Dowiedz się więcej z galerii
-Aby skonfigurować integrację z tablica Dowiedz się więcej w usłudze Azure AD, należy dodać Dowiedz się, tablica z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Blackboard Learn obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
+* Aplikacja Blackboard Learn obsługuje aprowizowanie użytkowników typu **Just In Time**
 
-**Aby dodać informacje tablica z galerii, wykonaj następujące czynności:**
+## <a name="adding-blackboard-learn-from-the-gallery"></a>Dodawanie aplikacji Blackboard Learn z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Blackboard Learn z usługą Azure AD, należy dodać aplikację Blackboard Learn z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację Blackboard Learn z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
+
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+
+4. W polu wyszukiwania wpisz **Blackboard Learn**, wybierz pozycję **Blackboard Learn** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+
+     ![Aplikacja Blackboard Learn na liście wyników](common/search-new-app.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w aplikacji Blackboard Learn, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Blackboard Learn.
+
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Blackboard Learn, należy ukończyć poniższe bloki konstrukcyjne:
+
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Blackboard Learn](#configure-blackboard-learn-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Tworzenie użytkownika testowego aplikacji Blackboard Learn](#create-blackboard-learn-test-user)** — aby mieć w aplikacji Blackboard Learn odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Blackboard Learn, wykonaj następujące kroki:
+
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Blackboard Learn** wybierz pozycję **Logowanie jednokrotne**.
+
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje o domenie i adresach URL aplikacji Blackboard Learn na potrzeby logowania jednokrotnego](common/sp-identifier.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.blackboard.com/`
+
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.blackboard.com/auth-saml/saml/SSO/entity-id/SAML_AD`
+
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej aplikacji Blackboard Learn](https://www.blackboard.com/support/index.aspx). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+5. Aplikacja Blackboard Learn oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+
+    ![image](common/edit-attribute.png)
+
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji, i wykonaj następujące kroki. Tutaj zamapowaliśmy wartość Userprincipalname jako unikatowy atrybut użytkownika, ale Ty możesz zamapować go na odpowiednią wartość, która jednoznacznie określa użytkownika w organizacji i jest mapowana na pole nazwy użytkownika aplikacji Blackboard Learn.
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    | Name (Nazwa) | Atrybut źródłowy|
+    | ---------------| --------------- |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
 
-    ![Aplikacje][3]
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-1. W polu wyszukiwania wpisz **Dowiedz się, tablica**.
+    ![image](common/new-save-attribute.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_search.png)
+    ![image](common/new-attribute-details.png)
 
-1. W panelu wyników wybierz **Dowiedz się, tablica**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_addfromgallery.png)
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą tablica Dowiedz się, w oparciu o użytkownika testu o nazwie "Britta Simon."
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Dowiedz się, tablica jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Dowiedz się, tablica musi można ustanowić.
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w tablica Dowiedz się więcej.
+    f. Kliknij przycisk **OK**.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą tablica Dowiedz się, należy wykonać poniższe bloki konstrukcyjne:
+    g. Kliknij pozycję **Zapisz**.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Dowiedz się, tablica](#creating-a-blackboard-learn-test-user)**  — aby odpowiednikiem Britta Simon w tablica dowiedzieć się, że jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Dowiedz się, tablica.
+6. W sekcji **Skonfiguruj aplikację Blackboard Learn** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą tablica Dowiedz się, wykonaj następujące czynności:**
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. W witrynie Azure portal na **Dowiedz się, tablica** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+    a. Adres URL logowania
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    b. Identyfikator usługi Azure AD
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_samlbase.png)
+    d. Adres URL wylogowywania
 
-1. Na **tablica Dowiedz się, domena i adresy URL** sekcji, wykonaj następujące czynności:
+### <a name="configure-blackboard-learn-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Blackboard Learn
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Blackboard Learn**, należy wysłać pobrany **plik XML metadanych federacji** i **identyfikator usługi Azure AD** do [pomocy technicznej aplikacji Blackboard Learn](https://www.blackboard.com/support/index.aspx).
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.blackboard.com/`
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.blackboard.com/auth-saml/saml/SSO/entity-id/SAML_AD`
-    
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Dowiedz się, tablica](https://www.blackboard.com/support/index.aspx) do uzyskania tych wartości. 
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. Tablica więcej aplikacja oczekuje twierdzenia SAML, w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji.
- Poniższy zrzut ekranu przedstawia przykład na jego temat.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_attribute.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybuty tokenu języka SAML, jak pokazano na ilustracji, a następnie wykonaj następujące kroki. Firma Microsoft zmapowane Userprincipalname jako atrybut unikatowych użytkowników, w tym miejscu, ale mapowany na odpowiednią wartość, która jednoznacznie wyróżnia użytkownik w organizacji i mapuje do Dowiedz się, tablica pole nazwy użytkownika.
-           
-    | Nazwa atrybutu | Wartość atrybutu |   
-    | ---------------| ----------------|
-    | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 |user.userprincipalname |
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_attribute_04.png)
-    
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_attribute_05.png)
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
-    
-    d. Kliknij przycisk **OK**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_certificate.png)
-
-1. Kliknij przycisk **Zapisz** przycisku.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_general_400.png)
-
-1. Na **konfiguracji Dowiedz się, tablica** , kliknij przycisk **skonfigurować tablica Dowiedz się,** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML** z **krótki przewodnik po sekcji.**
-
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_configure.png) 
-
-1. Aby skonfigurować logowanie jednokrotne na **tablica Dowiedz się** stronie, musisz wysłać pobrany **XML metadanych** i **SAML identyfikator jednostki** do [tablica Dowiedz się więcej obsługuje](https://www.blackboard.com/support/index.aspx).
-
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
-
-![Utwórz użytkownika usługi Azure AD][100]
-
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
-
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
-
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-tutorial/create_aaduser_01.png) 
-
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-tutorial/create_aaduser_02.png) 
-
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-tutorial/create_aaduser_03.png) 
-
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-tutorial/create_aaduser_04.png) 
-
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** obiektu Britta Simon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-blackboard-learn-test-user"></a>Tworzenie użytkownika testowego tablica Dowiedz się więcej.
-W tej sekcji utworzysz użytkownika w tablica Dowiedz się więcej o nazwie Britta Simon. 
 
-Tablica więcej aplikacji obsługuje dokładnie na czas Inicjowanie obsługi użytkowników. Upewnij się, że skonfigurowano oświadczenia zgodnie z opisem w sekcji  **[usługi Azure AD Konfigurowanie logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu, aby dowiedzieć się, tablica.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Blackboard Learn.
 
-![Przypisz użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Blackboard Learn**.
 
-**Aby przypisać Britta Simon, aby dowiedzieć się, tablica, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Blackboard Learn**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link Blackboard Learn na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **Dowiedz się, tablica**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_app.png) 
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Przypisz użytkownika][202] 
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-blackboard-learn-test-user"></a>Tworzenie użytkownika testowego aplikacji Blackboard Learn
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji utworzysz użytkownika Britta Simon w aplikacji Blackboard Learn. Aplikacja Blackboard Learn obsługuje aprowizowanie użytkowników typu „just in time”. Upewnij się, że oświadczenia zostały skonfigurowane zgodnie z opisem w sekcji **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configuring-azure-ad-single-sign-on)**
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Po kliknięciu kafelka tablica Dowiedz się, w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do Dowiedz się, tablica aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+Po kliknięciu kafelka Blackboard Learn w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Blackboard Learn, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-<!--Image references-->
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[1]: ./media/blackboard-learn-tutorial/tutorial_general_01.png
-[2]: ./media/blackboard-learn-tutorial/tutorial_general_02.png
-[3]: ./media/blackboard-learn-tutorial/tutorial_general_03.png
-[4]: ./media/blackboard-learn-tutorial/tutorial_general_04.png
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[100]: ./media/blackboard-learn-tutorial/tutorial_general_100.png
-
-[200]: ./media/blackboard-learn-tutorial/tutorial_general_200.png
-[201]: ./media/blackboard-learn-tutorial/tutorial_general_201.png
-[202]: ./media/blackboard-learn-tutorial/tutorial_general_202.png
-[203]: ./media/blackboard-learn-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

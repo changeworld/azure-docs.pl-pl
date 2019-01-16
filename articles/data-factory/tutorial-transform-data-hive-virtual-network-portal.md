@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: douglasl
-ms.openlocfilehash: 60dc0e88998580732b50cb202fb5d00a7cfcae21
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a8ac93d5a820b7d15b46efceb5db383d5b83a804
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106685"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019813"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -38,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - **Azure Virtual Network.** Jeśli nie masz sieci wirtualnej platformy Azure, utwórz ją, wykonując [te instrukcje](../virtual-network/quick-create-portal.md). W tym przykładzie usługa HDInsight znajduje się w usłudze Azure Virtual Network. Oto przykładowa konfiguracja usługi Azure Virtual Network. 
 
     ![Tworzenie sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w tym artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzenie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
+- **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
 
     ![Usługa HDInsight w sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - Zainstalowanie programu **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
@@ -90,7 +89,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)

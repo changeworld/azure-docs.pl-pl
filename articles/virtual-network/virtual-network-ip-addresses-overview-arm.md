@@ -1,13 +1,10 @@
 ---
-title: Typy adresów IP na platformie Azure | Microsoft Docs
+title: Typy adresów IP na platformie Azure
+titlesuffix: Azure Virtual Network
 description: Dowiedz się więcej na temat publicznych i prywatnych adresów IP na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial
-ms.openlocfilehash: 6b8bf4a0bc6b5e5e9b9ad7f91ba409aaf922e8e9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f4af899be489dab2fc73bb33943882d4dc81576f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822239"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054762"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -32,7 +29,7 @@ Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania si�
 Możesz również utworzyć ciągły zakres statycznych publicznych adresów IP za pośrednictwem publicznego prefiksu adresu IP. [Więcej informacji na temat publicznego prefiksu adresu IP.](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Ten artykuł dotyczy używania modelu wdrażania usługi Resource Manager zalecanego przez firmę Microsoft w przypadku większości nowych wdrożeń zamiast [klasycznego modelu wdrażania](virtual-network-ip-addresses-overview-classic.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Ten artykuł dotyczy używania modelu wdrażania usługi Resource Manager zalecanego przez firmę Microsoft w przypadku większości nowych wdrożeń zamiast [klasycznego modelu wdrażania](virtual-network-ip-addresses-overview-classic.md).
 > 
 
 Jeśli znasz klasyczny model wdrażania, sprawdź [różnice w adresowaniu IP między wersją klasyczną i usługą Resource Manager](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
@@ -154,8 +151,8 @@ Prywatny adres IP jest przydzielany z zakresu adresów w podsieci sieci wirtualn
 
 Istnieją dwie metody przydzielania prywatnego adresu IP:
 
-- **Dynamiczna** — platforma Azure przypisuje następny dostępny nieprzypisany lub niezarezerwowany adres IP z zakresu adresów podsieci. Na przykład platforma Azure przypisze do nowego zasobu adres 10.0.0.10, jeśli adresy 10.0.0.4–10.0.0.9 są już przypisane do innych zasobów. Metoda dynamiczna to domyślna metoda alokacji. Po przypisaniu dynamiczne adresy IP są zwalniane, tylko jeśli interfejs sieciowy zostanie usunięty, przypisany do innej podsieci w tej samej sieci wirtualnej, lub metoda alokacji zostanie zmieniona na Statyczna i zostanie podany inny adres IP. Domyślnie platforma Azure przypisuje poprzedni adres dynamicznie przypisany jako adres statyczny po zmianie metody alokacji z dynamicznej na statyczną.
-- **Statyczna** — użytkownik wybiera i przypisuje następny dostępny nieprzypisany lub niezarezerwowany adres IP z zakresu adresów podsieci. Jeśli na przykład zakres adresów podsieci to 10.0.0.0/16, a adresy 10.0.0.4–10.0.0.9 są już przypisane do innych zasobów, można przypisać dowolny adres między 10.0.0.10–10.0.255.254. Adresy statyczne są zwalniane tylko w przypadku usunięcia interfejsu sieciowego. Jeśli zmienisz metodę alokacji na dynamiczną, platforma Azure dynamicznie przypisze wcześniej przypisany statyczny adres IP jako adres dynamiczny, nawet jeśli adres nie jest następnym dostępnym adresem w zakresie adresów podsieci. Adres zmieni się także, jeśli interfejs sieciowy zostanie przypisany do innej podsieci w tej samej sieci wirtualnej, ale aby przypisać interfejs sieciowy do innej podsieci, musisz najpierw zmienić metodę alokacji ze statycznej na dynamiczną. Po przypisaniu interfejsu sieciowego do innej podsieci możesz zmienić metodę alokacji z powrotem na statyczną i przypisać adres IP z zakresu adresów nowej podsieci.
+- **Dynamiczna**: platforma Azure przypisuje następny dostępny nieprzypisany lub niezarezerwowany adres IP z zakresu adresów podsieci. Na przykład platforma Azure przypisze do nowego zasobu adres 10.0.0.10, jeśli adresy 10.0.0.4–10.0.0.9 są już przypisane do innych zasobów. Metoda dynamiczna to domyślna metoda alokacji. Po przypisaniu dynamiczne adresy IP są zwalniane, tylko jeśli interfejs sieciowy zostanie usunięty, przypisany do innej podsieci w tej samej sieci wirtualnej, lub metoda alokacji zostanie zmieniona na Statyczna i zostanie podany inny adres IP. Domyślnie platforma Azure przypisuje poprzedni adres dynamicznie przypisany jako adres statyczny po zmianie metody alokacji z dynamicznej na statyczną.
+- **Statyczna**: użytkownik wybiera i przypisuje następny dostępny nieprzypisany lub niezarezerwowany adres IP z zakresu adresów podsieci. Jeśli na przykład zakres adresów podsieci to 10.0.0.0/16, a adresy 10.0.0.4–10.0.0.9 są już przypisane do innych zasobów, można przypisać dowolny adres między 10.0.0.10–10.0.255.254. Adresy statyczne są zwalniane tylko w przypadku usunięcia interfejsu sieciowego. Jeśli zmienisz metodę alokacji na dynamiczną, platforma Azure dynamicznie przypisze wcześniej przypisany statyczny adres IP jako adres dynamiczny, nawet jeśli adres nie jest następnym dostępnym adresem w zakresie adresów podsieci. Adres zmieni się także, jeśli interfejs sieciowy zostanie przypisany do innej podsieci w tej samej sieci wirtualnej, ale aby przypisać interfejs sieciowy do innej podsieci, musisz najpierw zmienić metodę alokacji ze statycznej na dynamiczną. Po przypisaniu interfejsu sieciowego do innej podsieci możesz zmienić metodę alokacji z powrotem na statyczną i przypisać adres IP z zakresu adresów nowej podsieci.
 
 ### <a name="virtual-machines"></a>Maszyny wirtualne
 

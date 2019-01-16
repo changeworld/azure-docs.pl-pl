@@ -10,17 +10,16 @@ ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a04e91cea4ce1670fcc0a7be2d7591d5856b738f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c0bb15dceed7bc4d0c335e129f810c88622ebadd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106866"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043706"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Samouczek: tworzenie pierwszej fabryki danych Azure przy użyciu szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -33,14 +32,14 @@ ms.locfileid: "43106866"
 > 
  
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych przy użyciu usługi Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych w usłudze Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 W tym artykule opisano użycie szablonu usługi Azure Resource Manager do tworzenia pierwszej fabryki danych Azure. Aby wykonać instrukcje z tego samouczka przy użyciu innych narzędzi/zestawów SDK, wybierz jedną z opcji z listy rozwijanej.
 
-Potok w tym samouczku zawiera jedno działanie: **działanie Hive usługi HDInsight**. To działanie uruchamia skrypt Hive w klastrze Azure HDInsight, który przekształca dane wejściowe, aby wygenerować dane wyjściowe. Uruchamianie potoku zaplanowano raz w miesiącu między określonym czasem rozpoczęcia i zakończenia. 
+Potok w tym samouczku zawiera jedno działanie: **działanie technologii Hive w usłudze HDInsight**. To działanie uruchamia skrypt Hive w klastrze Azure HDInsight, który przekształca dane wejściowe, aby wygenerować dane wyjściowe. Uruchamianie potoku zaplanowano raz w miesiącu między określonym czasem rozpoczęcia i zakończenia. 
 
 > [!NOTE]
-> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: Kopiowanie danych z usługi Blob Storage do usługi SQL Database).
+> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database).
 > 
 > Potok w tym samouczku zawiera tylko jedno działanie typu: HDInsightHive. Potok może obejmować więcej niż jedno działanie. Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Więcej informacji znajduje się w artykule dotyczącym [planowania i wykonywania w usłudze Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
@@ -60,7 +59,7 @@ Potok w tym samouczku zawiera jedno działanie: **działanie Hive usługi HDInsi
 
 Fabryka danych może obejmować jeden lub wiele potoków. Potok może obejmować jedno lub wiele działań. Istnieją dwa typy działań: [przenoszenia danych](data-factory-data-movement-activities.md) i [przekształcania danych](data-factory-data-transformation-activities.md). W tym samouczku tworzony jest potok z jednym działaniem (Działanie programu Hive).
 
-W poniższej sekcji przedstawiono pełny szablon usługi Resource Manager umożliwiający definiowanie jednostek usługi Data Factory, dzięki czemu można szybko przejść przez samouczek i przetestować szablon. Aby dowiedzieć się, jak jest zdefiniowana każda jednostka usługi Data Factory, zobacz sekcję [Jednostki usługi Data Factory w szablonie](#data-factory-entities-in-the-template).
+W poniższej sekcji przedstawiono pełny szablon usługi Resource Manager umożliwiający definiowanie jednostek usługi Data Factory, dzięki czemu można szybko przejść przez samouczek i przetestować szablon. Aby dowiedzieć się, jak jest zdefiniowana każda jednostka usługi Data Factory, zobacz sekcję [Jednostki usługi Data Factory w szablonie](#data-factory-entities-in-the-template). Aby dowiedzieć się więcej na temat składni JSON i właściwości dla zasobów usługi Data Factory w szablonie, zobacz [Typy zasobów Microsoft.DataFactory](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json-template"></a>Szablon JSON usługi Data Factory
 Szablon najwyższego poziomu usługi Resource Manager umożliwiający zdefiniowanie fabryki danych to: 
@@ -262,7 +261,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM.json** w folderze **C:\ADFGetStarted
 ```
 
 > [!NOTE]
-> Temat [Samouczek: Tworzenie potoku za pomocą działania kopiowania przy użyciu szablonu usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) zawiera kolejny przykład szablonu usługi Resource Manager umożliwiającego utworzenie fabryki danych platformy Azure.  
+> Inny przykład szablonu usługi Resource Manager do tworzenia fabryki danych Azure znajduje się w temacie [Tutorial: Create a pipeline with Copy Activity using an Azure Resource Manager template (Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu szablonu usługi Azure Resource Manager)](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
 > 
 > 
 

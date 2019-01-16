@@ -10,17 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.custom: vs-azure
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ae8374dc8b3424f953e24ef74796602d34413bc8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5b6f968bef3708ca311bc5a41fe029ea9a10f62b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240838"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015852"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
@@ -40,12 +39,12 @@ ms.locfileid: "50240838"
 
 W tym artykule wyjaśniono, jak używać programu Microsoft Visual Studio do tworzenia fabryki danych obejmującej potok, który kopiuje dane z usługi Azure Blob Storage do bazy danych SQL na platformie Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem instrukcji z tego samouczka zapoznaj się z artykułem [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md).   
 
-W tym samouczku opisano tworzenie potoku z jednym działaniem (Działanie kopiowania). Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
+W tym samouczku opisano tworzenie potoku z jednym działaniem: działaniem kopiowania. Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
 
 Potok może obejmować więcej niż jedno działanie. Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą [wielu działań w potoku](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE] 
-> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: Tworzenie potoku przekształcającego dane przy użyciu klastra Hadoop).
+> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: przekształcanie danych przy użyciu klastra Hadoop).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 1. Przeczytanie artykułu [Omówienie samouczka](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) oraz wykonanie kroków **wymagań wstępnych**.       
@@ -53,12 +52,12 @@ Potok może obejmować więcej niż jedno działanie. Dwa działania można poł
 3. Na komputerze muszą być zainstalowane następujące elementy: 
    * Visual Studio 2013 lub Visual Studio 2015
    * Pobierz zestaw Azure SDK dla programu Visual Studio 2013 lub Visual Studio 2015. Przejdź do [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/) i kliknij pozycję **VS 2013** lub **VS 2015** w sekcji **.NET**.
-   * Pobierz najnowszą wtyczkę usługi Azure Data Factory dla programu Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) lub [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Możesz także zaktualizować wtyczkę, wykonując następujące czynności: w menu kliknij kolejno opcje **Narzędzia** -> **Rozszerzenia i aktualizacje** -> **Online** -> **Galeria Visual Studio** -> **Narzędzia usługi Fabryka danych Microsoft Azure dla programu Visual Studio** -> **Aktualizuj**.
+   * Pobierz najnowszą wtyczkę usługi Azure Data Factory dla programu Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) lub [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Możesz także zaktualizować wtyczkę, wykonując następujące kroki: W menu kliknij kolejno opcje **Narzędzia** -> **Rozszerzenia i aktualizacje** -> **Online** -> **Galeria Visual Studio** -> **Narzędzia usługi Fabryka danych Microsoft Azure dla programu Visual Studio** -> **Aktualizuj**.
 
 ## <a name="steps"></a>Kroki
 Poniżej przedstawiono kroki do wykonania w ramach tego samouczka:
 
-1. Utworzenie **połączonych usług** w fabryce danych. Ten krok polega na utworzeniu dwóch połączonych usług: Azure Storage i Azure SQL Database. 
+1. Utworzenie **połączonych usług** w fabryce danych. W tym kroku utworzysz dwie połączone usługi typu: Azure Storage i Azure SQL Database. 
     
     Polecenie AzureStorageLinkedService łączy konto usługi Azure Storage z fabryką danych. W ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) utworzono kontener i przekazano dane na to konto magazynu.   
 
@@ -85,7 +84,7 @@ Poniżej przedstawiono kroki do wykonania w ramach tego samouczka:
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tym samouczku nie przedstawiono korzystania z żadnych usług obliczeniowych, takich jak Azure HDInsight czy Azure Data Lake Analytics. Zostają użyte dwa magazyny danych typu Azure Storage (źródło) i Azure SQL Database (lokalizacja docelowa). 
 
-Tak więc tworzy się dwie połączone usługi: AzureStorage i AzureSqlDatabase.  
+Dlatego utworzysz dwie połączone usługi typu: AzureStorage i AzureSqlDatabase.  
 
 Połączona usługa Azure Storage łączy konto magazynu Azure z fabryką danych. Na tym koncie magazynu utworzono kontener i przekazano na nie dane w ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
@@ -281,7 +280,7 @@ Obecnie harmonogram jest prowadzony przy użyciu wyjściowego zestawu danych. W 
      
     Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2016-02-03” jest odpowiednikiem „2016-02-03T00:00:00Z”.
      
-    Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](http://en.wikipedia.org/wiki/ISO_8601). Przykładowo: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
+    Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
      
     Jeśli nie określisz wartości dla właściwości **end**, zostanie ona obliczona jako „**czas rozpoczęcia + 48 godzin**”. Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**.
      
@@ -329,7 +328,7 @@ W tym kroku publikowane są utworzone wcześniej obiekty usługi Data Factory (p
 
 Pamiętaj o następujących kwestiach: 
 
-* Jeśli zostanie wyświetlony komunikat o błędzie: „Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw Microsoft.DataFactory”, wykonaj jedną z następujących czynności i spróbuj opublikować ponownie: 
+* Jeśli zostanie wyświetlony błąd: „Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw Microsoft.DataFactory”, wykonaj jedną z następujących czynności i spróbuj opublikować ponownie: 
   
   * W programie Azure PowerShell uruchom następujące polecenie, aby zarejestrować dostawcę usługi Fabryka danych. 
 
@@ -372,7 +371,7 @@ W tym samouczku opisano tworzenie fabryki danych Azure w celu kopiowania danych 
 3. Tworzenie **zestawów danych** opisujących dane wejściowe i wyjściowe dla potoków.
 4. Tworzenie **potoku** za pomocą **działania kopiowania**, w którym źródłem jest element **BlobSource**, a ujściem element **SqlSink**. 
 
-Aby dowiedzieć się, jak użyć działania programu Hive w usłudze HDInsight w celu przekształcenia danych za pomocą klastra Azure HDInsight, zobacz [samouczek dotyczący tworzenia pierwszego potoku przekształcającego dane przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md).
+Aby dowiedzieć się, jak użyć działania programu Hive w usłudze HDInsight w celu przekształcenia danych za pomocą klastra Azure HDInsight, zobacz [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: tworzenie pierwszego potoku w celu przekształcania danych przy użyciu klastra Hadoop).
 
 Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory). 
 

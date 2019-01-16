@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: fb02cfd2419d1c98a92d1eae8b59256499d017a8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/09/2019
+ms.openlocfilehash: 076a29de227447c75644bd3b59bda1053794d739
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541391"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191891"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą witryny Azure Portal
 
@@ -53,9 +53,9 @@ Aby utworzyć serwer usługi Azure Database for MariaDB:
     Wersja | *najnowsza wersja*| Najnowsza wersja, chyba że z konkretnych powodów wymagana jest inna wersja.
     Warstwa cenowa | Patrz opis. | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz pozycję **Warstwa cenowa** > **Ogólnego przeznaczenia**. Zachowaj wartości domyślne dla następujących ustawień:<br><ul><li>**Generacja obliczeń** (5. generacja)</li><li>**Rdzeń wirtualny** (2 rdzenie wirtualne)</li><li>**Magazyn** (5 GB)</li><li>**Okres przechowywania kopii zapasowej** (7 dni)</li></ul><br>Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, w obszarze **Opcje nadmiarowości kopii zapasowej** wybierz pozycję **Geograficznie nadmiarowy**. <br><br>Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
   
-    > [!IMPORTANT]
-    > Nazwa logowania i hasło administratora serwera określone w tym miejscu będą wymagane do logowania się do serwera i jego baz danych w dalszej części tego przewodnika Szybki start. Zapamiętaj lub zapisz te informacje do wykorzystania w przyszłości.
-    > 
+   > [!NOTE]
+   > Jeśli niewielkie zasoby obliczeniowe i we/wy są wystarczające dla Twojego obciążenia, warto rozważyć użycie warstwy cenowej Podstawowa. Pamiętaj, że serwerów utworzonych w warstwie cenowej Podstawowa nie można później przeskalować do warstwy Ogólnego przeznaczenia lub Zoptymalizowana pod kątem pamięci. Przejdź na [stronę cennika](https://azure.microsoft.com/pricing/details/mariadb/), aby uzyskać więcej informacji.
+   > 
 
    ![Tworzenie serwera — okno warstwy cenowej](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087937"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053538"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: Eksportowanie danych i zarządzanie nimi
 
@@ -61,6 +61,22 @@ Przejrzyj szczegóły eksportu, a następnie kliknij przycisk **Utwórz**.
 Nowy eksport pojawi się na liście eksportów. Domyślnie nowe zadania eksportu są włączone. Jeśli chcesz wyłączyć lub usunąć zaplanowany eksport, kliknij dowolny element na liście, a następnie kliknij pozycję **Wyłącz** lub **Usuń**.
 
 Początkowo uruchomienie eksportu może zająć od jednej do dwóch godzin. Jednak wyświetlenie danych w wyeksportowanych plikach może potrwać nawet cztery godziny.
+
+### <a name="export-schedule"></a>Harmonogram eksportu
+
+Na zaplanowane eksporty wpływa czas (godzina i dzień tygodnia) początkowego utworzenia eksportu. Po utworzeniu zaplanowanego eksportu eksport będzie uruchamiany o tej samej porze dnia dla każdego kolejnego wystąpienia eksportu. Na przykład załóżmy, że codzienny eksport utworzysz o 13:00. Następny eksport zostanie uruchomiony o 13:00 następnego dnia. Bieżący czas (godzina i dzień) wpływa w ten sam sposób na wszystkie pozostałe typy eksportu — są zawsze uruchamiane o tej samej godzinie dnia, co w chwili początkowego utworzenia. W innym przykładzie utworzysz cotygodniowy eksport w poniedziałek o 16:00. Następny eksport zostanie uruchomiony o 16:00 w następny poniedziałek. *Wyeksportowane dane będą dostępne w ciągu czterech godzin od czasu uruchomienia.*
+
+Dla każdego eksportu tworzony jest nowy plik, więc starsze eksporty nie są zastępowane.
+
+Istnieją trzy typy opcji eksportu:
+
+**Codzienny eksport kosztów od początku miesiąca** — początkowy eksport jest uruchamiany natychmiast. Kolejne eksporty są uruchamiane następnego dnia o tej samej godzinie, co eksport początkowy. Najnowsze dane są agregowane z poprzednich codziennych eksportów.
+
+**Tygodniowe koszty z ostatnich siedmiu dni** — początkowy eksport jest uruchamiany natychmiast. Kolejne eksporty są uruchamiane w następnych tygodniach w tym samym dniu tygodnia i o tej samej godzinie, co eksport początkowy. Uwzględniane są koszty z ostatnich siedmiu dni.
+
+**Niestandardowe** — umożliwia zaplanowanie cotygodniowych i comiesięcznych eksportów z opcjami od początku tygodnia i od początku miesiąca. *Początkowy eksport zostanie uruchomiony natychmiast.*
+
+![Nowy eksport — karta Podstawowe przedstawiająca wybór opcji Niestandardowe, Co tydzień i Od początku tygodnia](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>Sprawdzanie, czy dane są zbierane
 

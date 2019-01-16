@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602396"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075502"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
 
@@ -24,7 +24,7 @@ Wszystkich usług platformy Azure dotyczą określone limity i przydziały dla z
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Usługa Azure Container Instances jest dostępna w następujących regionach z określonymi limitami dotyczącymi procesora CPU i pamięci. Wartości są aktualne w momencie publikacji. Aby uzyskać aktualne informacje, należy użyć interfejsu API [List Capabilities](/rest/api/container-instances/listcapabilities/listcapabilities).
+Usługa Azure Container Instances jest dostępna w następujących regionach z określonymi limitami dotyczącymi procesora CPU i pamięci. Wartości są aktualne w momencie publikacji. Aby uzyskać aktualne informacje, należy użyć interfejsu API [List Capabilities](/rest/api/container-instances/listcapabilities/listcapabilities). Limity dostępności i zasobów mogą się różnić w zależności od tego, czy usługa Azure Container Instances jest używana z [siecią wirtualną](container-instances-vnet.md) (wersja zapoznawcza), czy z [zasobami procesora GPU](container-instances-gpu.md) (wersja zapoznawcza).
 
 | Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |

@@ -9,23 +9,22 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 5a883d922944552b53b152546cc891a0a2f4a31f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620493"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042737"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Samouczek: tworzenie fabryki danych na platformie Azure przy użyciu szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-resource-manager-template.md) 
 
-W tym przewodniku Szybki start wyjaśniono, jak skorzystać z szablonu usługi Azure Resource Manager w celu utworzenia fabryki danych na platformie Azure. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark (Samouczek: Przekształcanie danych przy użyciu usługi Spark)](transform-data-using-spark.md). 
+W tym przewodniku Szybki start wyjaśniono, jak skorzystać z szablonu usługi Azure Resource Manager w celu utworzenia fabryki danych na platformie Azure. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark](transform-data-using-spark.md) (Samouczek: przekształcanie danych przy użyciu platformy Spark). 
 
 > [!NOTE]
 > Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby zapoznać się z wprowadzeniem do usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
@@ -39,6 +38,8 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 Ogólne informacje na temat szablonów usługi Azure Resource Manager zawiera temat [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). 
 
 W poniższej sekcji przedstawiono pełny szablon usługi Resource Manager umożliwiający definiowanie jednostek usługi Data Factory, dzięki czemu można szybko przejść przez samouczek i przetestować szablon. Aby dowiedzieć się, jak jest zdefiniowana każda jednostka usługi Data Factory, zobacz sekcję [Jednostki usługi Data Factory w szablonie](#data-factory-entities-in-the-template).
+
+Aby dowiedzieć się więcej na temat składni JSON i właściwości dla zasobów usługi Data Factory w szablonie, zobacz [Typy zasobów Microsoft.DataFactory](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>Plik JSON usługi Data Factory 
 Utwórz plik JSON o nazwie **ADFTutorialARM.json** w folderze **C:\ADFTutorial** o następującej zawartości:
@@ -268,7 +269,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM-Parameters.json** zawierający param
 
 > [!IMPORTANT]
 > - Określ nazwę i klucz konta usługi Azure Storage w pliku parametrów za pomocą parametrów **storageAccountName** i **storageAccountKey**. W tym magazynie obiektów blob platformy Azure utworzono kontener adftutorial i przekazano przykładowy plik (emp.txt) do folderu wejściowego. 
-> - Za pomocą parametru **dataFactoryName** określ nazwę fabryki danych unikatową w skali globalnej, na przykład: ARMTutorialFactoryJohnDoe11282017. 
+> - Za pomocą parametru **dataFactoryName** określ nazwę fabryki danych unikatową w skali globalnej, Na przykład: ARMTutorialFactoryJohnDoe11282017. 
 > - Za pomocą parametru **triggerStartTime** podaj bieżący dzień w formacie: `2017-11-28T00:00:00`.
 > - Za pomocą parametru **triggerEndTime** podaj kolejny dzień w formacie: `2017-11-29T00:00:00`. Możesz również sprawdzić bieżącą godzinę w strefie UTC i określić czas zakończenia za godzinę lub dwie. Jeśli na przykład bieżąca godzina w strefie UTC to 1:32, podaj wartość `2017-11-29:03:00:00` jako czas zakończenia. W tym przypadku wyzwalacz uruchomi potok dwukrotnie (o godz. 2:00 i 3:00).
 
@@ -440,11 +441,11 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Można go uruchomić, na przykła
     ![Monitorowanie uruchomienia potoku](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)    
 
     > [!IMPORTANT]
-    > Wyświetlane uruchomienia potoku są ustawione tylko na pełne godziny (na przykład: 4:00, 5:00, 6:00 itd.). Kliknij przycisk **Odśwież** na pasku narzędzi, aby odświeżyć listę po upływie kolejnej godziny. 
+    > Wyświetlane uruchomienia potoku są ustawione tylko na pełne godziny (na przykład: 4:00, 5:00, 6:00 itp.). Kliknij przycisk **Odśwież** na pasku narzędzi, aby odświeżyć listę po upływie kolejnej godziny. 
 5. Kliknij link w kolumnie **Akcje**. 
 
     ![Link akcji potoku](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
-6. Zostaną wyświetlone uruchomienia działania skojarzone z uruchomieniem potoku. W tym przewodniku Szybki start potok ma tylko jedno działanie typu Kopiowanie. Widać uruchomienie tego działania. 
+6. Zostaną wyświetlone uruchomienia działania skojarzone z uruchomieniem potoku. W tym przewodniku Szybki start potok ma tylko jedno działanie typu: Kopiowanie. Widać uruchomienie tego działania. 
 
     ![Uruchomienia działania](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 1. Kliknij link w kolumnie **Dane wyjściowe**. Dane wyjściowe operacji kopiowania zostaną wyświetlone w oknie **Dane wyjściowe**. Kliknij przycisk Maksymalizuj, aby wyświetlić pełne dane wyjściowe. Zmaksymalizowane okno możesz przywrócić lub zamknąć. 

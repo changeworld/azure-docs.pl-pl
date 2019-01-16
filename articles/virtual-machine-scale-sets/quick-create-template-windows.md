@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
 ms.author: zarhoads
-ms.openlocfilehash: 702c041f838619c1396d5d4ae8e2fd0d3861653f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b0d5e7e6af9cc0e55e13ef4b34ab2dfba18d8745
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467944"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037263"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Szybki start: tworzenie zestawu skalowania maszyn wirtualnych z systemem Windows przy użyciu szablonu platformy Azure
+# <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Szybki start: Tworzenie zestawu skalowania maszyn wirtualnych z systemem Windows przy użyciu szablonu platformy Azure
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania możesz skalować ręcznie lub możesz zdefiniować reguły skalowania automatycznego na podstawie użycia takich zasobów jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. Moduł równoważenia obciążenia platformy Azure następnie dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. W tym przewodniku Szybki start utworzysz zestaw skalowania maszyn wirtualnych i wdrożysz przykładową aplikację przy użyciu szablonu usługi Azure Resource Manager.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -36,7 +36,7 @@ Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten 
 ## <a name="define-a-scale-set-in-a-template"></a>Definiowanie zestawu skalowania w szablonie
 Szablony usługi Azure Resource Manager umożliwiają wdrażanie grup powiązanych zasobów. Szablony są pisane w formacie JavaScript Object Notation (JSON) i określają środowisko całej infrastruktury platformy Azure dla aplikacji. W jednym szablonie można utworzyć zestaw skalowania maszyn wirtualnych, zainstalować aplikacje i skonfigurować reguły automatycznego skalowania. Korzystając ze zmiennych i parametrów, można ponownie użyć tego szablonu, aby zaktualizować istniejące zestawy skalowania lub utworzyć dodatkowe. Szablony można wdrażać za pośrednictwem witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell bądź z poziomu potoków ciągłej integracji/ciągłego dostarczania (CI/CD).
 
-Więcej informacji dotyczących szablonów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment).
+Więcej informacji dotyczących szablonów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment). Aby poznać składnię JSON i właściwości, zobacz odwołanie do szablonu [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets).
 
 Szablon definiuje konfigurację dla każdego typu zasobu. Typ zasobu zestawu skalowania maszyn wirtualnych jest podobny do typu zasobu pojedynczej maszyny wirtualnej. Podstawowe elementy typu zasobu zestawu skalowania maszyn wirtualnych są następujące:
 

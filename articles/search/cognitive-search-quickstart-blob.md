@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff862dcee77fb874511ea1b9bcc907a5e4b60dcc
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998986"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015276"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Przewodnik Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -26,9 +26,9 @@ W tym przewodniku Szybki start utworzysz swój pierwszy potok wzbogacania w witr
 
 > [!div class="checklist"]
 > * Rozpocznij z przykładowymi danymi w usłudze Azure Blob Storage.
-> * Skonfiguruj [Kreatora importu danych](search-import-data-portal.md) na potrzeby indeksowania poznawczego i wzbogacania 
+> * Skonfiguruj [**Kreatora importu danych**](search-import-data-portal.md) na potrzeby indeksowania poznawczego i wzbogacania 
 > * Uruchom kreatora (umiejętność rozpoznawania jednostek wykrywa osoby, lokalizacje i organizacje).
-> * Użyj [Eksploratora wyszukiwania](search-explorer.md), aby wykonywać zapytania wyszukujące wzbogacone dane
+> * Użyj [**Eksploratora wyszukiwania**](search-explorer.md), aby wykonywać zapytania wyszukujące wzbogacone dane
 
 ## <a name="supported-regions"></a> Obsługiwane regiony
 
@@ -98,9 +98,9 @@ Potok wzbogacania ściąga dane ze źródeł danych platformy Azure obsługiwany
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. 
 
-1. Zarejestruj się w usłudze Azure Blob Storage, utwórz konto magazynu, zaloguj się w Eksploratorze usługi Storage i utwórz kontener. Ustaw poziom dostępu publicznego na **Kontener**. Aby uzyskać więcej informacji, zobacz [sekcję „Tworzenie kontenera”](../storage/blobs/storage-unstructured-search.md#create-a-container) w samouczku dotyczącym wyszukiwania danych bez określonej struktury.
+1. Zarejestruj się w usłudze Azure Blob Storage, utwórz konto magazynu, otwórz stronę usługi Blob service i utwórz kontener. W kontenerze ustaw poziom dostępu publicznego na **Kontener**. Aby uzyskać więcej informacji, zobacz [sekcję „Tworzenie kontenera”](../storage/blobs/storage-unstructured-search.md#create-a-container) w samouczku *Przeszukiwanie danych bez struktury* .
 
-1. W utworzonym kontenerze kliknij opcję **Przekaż**, aby przekazać przykładowe pliki.
+1. W utworzonym kontenerze kliknij pozycję **Przekaż**, aby przekazać przykładowe pliki pobrane w poprzednim kroku.
 
   ![Pliki źródłowe w usłudze Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 

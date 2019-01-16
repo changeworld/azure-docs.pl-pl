@@ -1,14 +1,11 @@
 ---
-title: Tworzenie sieci wirtualnej — Szybki start — Interfejs wiersza polecenia platformy Azure | Microsoft Docs
+title: Tworzenie sieci wirtualnej — Szybki start — Interfejs wiersza polecenia platformy Azure
+titlesuffix: Azure Virtual Network
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć sieć wirtualną przy użyciu interfejsu wiersza polecenia platformy Azure. Dzięki sieci wirtualnej zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie ze sobą i z Internetem.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: quickstart
@@ -16,13 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 5219ba0885c15d68bd17f07fb8f1f41e856dad0c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 650c90ff5c193896806ded50e5b7c9ed22b3afde
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321362"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013608"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Szybki start: Tworzenie sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 

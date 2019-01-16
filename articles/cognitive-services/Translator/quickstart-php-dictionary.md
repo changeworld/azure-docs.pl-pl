@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, PHP — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: Wyszukiwanie wyrazów w słowniku dwujęzycznym, PHP — interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka PHP.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 4d48ab8d0178b2d3fbcba2ee631ee97b30518f88
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ff1f0a97667260fa19c46bec6901113ff696aaab
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649773"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156888"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-php"></a>Szybki start: znajdowanie alternatywnych tłumaczeń przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (PHP)
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka PHP
 
 W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

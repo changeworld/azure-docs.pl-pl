@@ -3,17 +3,17 @@ title: Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platfor
 description: Dowiedz się, jak skonfigurować zestaw skalowania maszyn wirtualnych i wdrożyć aplikację w zestawie skalowania maszyn wirtualnych na platformie Azure za pomocą rozwiązania Ansible
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408378"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156548"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).  

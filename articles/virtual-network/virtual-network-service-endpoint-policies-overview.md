@@ -3,24 +3,20 @@ title: Zasady punku końcowego usługi sieci wirtualnej platformy Azure | Micros
 description: Dowiedz się, jak filtrować ruch w sieci wirtualnej do zasobów usługi platformy Azure przy użyciu zasad punktu końcowego usługi
 services: virtual-network
 documentationcenter: na
-author: anithaa
-manager: narayan
-editor: ''
-ms.assetid: ''
+author: sumeetmittal
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: anithaa
-ms.custom: ''
-ms.openlocfilehash: 425bbc9eac112a4b999bd08940abb8b875aca61c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: sumeet.mittal
+ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433297"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051315"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi sieci wirtualnej (wersja zapoznawcza)
 
@@ -129,7 +125,7 @@ Zasady punktu końcowego usługi sieci wirtualnej zapewniają następujące korz
 - Domyślnie sieciowe grupy zabezpieczeń zezwalają na ruch wychodzący z Internetu, w tym ruch sieci wirtualnej do usług platformy Azure.
 - Jeśli chcesz odrzucić cały wychodzący ruch internetowy i zezwolić tylko na ruch do określonych zasobów usług platformy Azure: 
 
-  Krok 1. Skonfiguruj sieciowe grupy zabezpieczeń, aby zezwolić na ruch wychodzący tylko do usług platformy Azure w regionach punktu końcowego, korzystając z *tagów usług platformy Azure*. Aby uzyskać więcej informacji, zobacz [tagi usług dla sieciowych grup zabezpieczeń](https://aka.ms/servicetags)
+  Krok 1: Skonfiguruj sieciowe grupy zabezpieczeń, aby zezwolić na ruch wychodzący tylko do usług platformy Azure w regionach punktu końcowego, korzystając z *tagów usług platformy Azure*. Aby uzyskać więcej informacji, zobacz [tagi usług dla sieciowych grup zabezpieczeń](https://aka.ms/servicetags)
       
   Na przykład reguły sieciowych grup zabezpieczeń ograniczające dostęp tylko do regionów punktu końcowego wyglądają następująco:
 
@@ -139,7 +135,7 @@ Zasady punktu końcowego usługi sieci wirtualnej zapewniają następujące korz
   Deny all
   ```
 
-  Krok 2. Zastosuj zasady punktu końcowego usługi z dostępem tylko do wybranych zasobów usługi platformy Azure.
+  Krok 2: Zastosuj zasady punktu końcowego usługi z dostępem tylko do wybranych zasobów usługi platformy Azure.
 
   > [!WARNING]  
   > Jeśli sieciowa grupa zabezpieczeń nie została skonfigurowana w celu ograniczania dostępu usługi platformy Azure sieci wirtualnej do regionów punktu końcowego, możesz uzyskać dostęp do zasobów usługi w innych regionach, nawet jeśli zostaną zastosowane zasady punktu końcowego.

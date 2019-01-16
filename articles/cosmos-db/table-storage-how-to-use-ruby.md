@@ -1,20 +1,20 @@
 ---
 title: Jak korzystać z usługi Azure Table Storage i interfejsu Table API usługi Azure Cosmos DB przy użyciu języka Ruby
 description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB.
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: 7ddf9c3ef848537cb68dce043bb22680439e9cd5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877935"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036260"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak korzystać z usługi Azure Table Storage i interfejsu Table API usługi Azure Cosmos DB przy użyciu języka Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -94,10 +94,10 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>Aktualizowanie jednostki
 Istnieje kilka metod aktualizowania istniejącej jednostki:
 
-* **update_entity():** aktualizuje istniejącą jednostkę przez zastąpienie jej.
-* **merge_entity():** aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką.
-* **insert_or_merge_entity():** aktualizuje istniejącą jednostkę przez zastąpienie jej. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka:
-* **insert_or_replace_entity():** aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka.
+* **update_entity():** Aktualizuje istniejącą jednostkę przez jej zastąpienie.
+* **merge_entity():** Aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką.
+* **insert_or_merge_entity():** Aktualizuje istniejącą jednostkę przez jej zastąpienie. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka:
+* **insert_or_replace_entity():** Aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka.
 
 W poniższym przykładzie przedstawiono aktualizowanie jednostki przy użyciu metody **update_entity()**:
 

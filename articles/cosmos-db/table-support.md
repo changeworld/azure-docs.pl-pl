@@ -1,19 +1,19 @@
 ---
 title: Pomoc techniczna usługi Azure Table Storage w usłudze Azure Cosmos DB
 description: Dowiedz się, jak współpracują ze sobą Interfejs API tabel usługi Azure Cosmos DB i tabele usługi Azure Storage.
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 6c6b0650ae8f4ed780b72e8fcd414e3f26e4f5f3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: b105cf6c220534927a16be83ca5db8801c88f6c0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878741"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035597"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Programowanie za pomocą interfejsu API tabel usługi Azure Cosmos DB oraz usługi Azure Table Storage
 
@@ -29,7 +29,7 @@ W tej chwili [interfejs API tabel usługi Azure Cosmos DB](table-introduction.md
 - [Zestaw SDK Java](table-sdk-java.md). Ten zestaw SDK usługi Azure Storage ma możliwość łączenia z kontami usługi Azure Cosmos DB przy użyciu interfejsu API tabel.
 - [Zestaw SDK dla platformy Node.js](table-sdk-nodejs.md). Ten zestaw SDK usługi Azure Storage ma możliwość łączenia z kontami usługi Azure Cosmos DB przy użyciu interfejsu API tabel.
 
-Dodatkowe informacje dotyczące pracy z interfejsem API tabel są dostępne w artykule: [Często zadawane pytania: programowanie przy użyciu interfejsu API tabel](faq.md#table).
+Dodatkowe informacje dotyczące pracy z interfejsem API tabel jest dostępna w artykule [Często zadawane pytania: programowanie przy użyciu interfejsu API tabel](faq.md#table).
 
 ## <a name="developing-with-azure-table-storage"></a>Programowanie z wykorzystaniem usługi Azure Table Storage
 

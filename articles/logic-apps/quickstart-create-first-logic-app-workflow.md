@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i automatyzacja pierwszego przepływu pracy — Azure Logic Apps | Microsoft Docs
-description: Przewodnik Szybki start opisujący tworzenie pierwszej aplikacji logiki, która automatyzuje zadania, procesy i przepływy pracy za pomocą usługi Azure Logic Apps. Tworzenie aplikacji logiki na potrzeby rozwiązań integracji systemów i usługi Enterprise Application Integration (EAI) do systemów i usług w chmurze
+title: 'Przewodnik Szybki start: tworzenie i automatyzacja pierwszego przepływu pracy — Azure Logic Apps | Microsoft Docs'
+description: Za pomocą usługi Azure Logic Apps utwórz swoją pierwszą aplikację logiki, która automatyzuje zadania, procesy i przepływy pracy. Tworzenie aplikacji logiki na potrzeby rozwiązań integracji systemów i usługi Enterprise Application Integration (EAI) do systemów i usług w chmurze
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fe2ca48c1cab3789f2bb501eaf00aeb9cd866b8c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233688"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065192"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: Tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
 
 W tym przewodniku Szybki start wyjaśniono, jak utworzyć pierwszy zautomatyzowany przepływ pracy za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md). W tym artykule opisano, jak utworzyć aplikację logiki regularnie sprawdzającą kanał informacyjny RSS witryny internetowej pod kątem nowych elementów. Jeśli istnieją nowe elementy, aplikacja logiki wysyła wiadomość e-mail dotyczącą każdego elementu. Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pracy:
 
@@ -38,7 +38,7 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
 
    ![Tworzenie aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. W obszarze **Tworzenie aplikacji logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Po zakończeniu wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
+3. W obszarze **Tworzenie aplikacji logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
    ![Podawanie szczegółów aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -61,9 +61,9 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Sprawdzanie kanału informacyjnego RSS za pomocą wyzwalacza
 
-1. W projektancie wprowadź ciąg „rss” w polu wyszukiwania. Wybierz następujący wyzwalacz: **RSS — Gdy element kanału informacyjnego jest publikowany**
+1. W projektancie wprowadź ciąg „rss” w polu wyszukiwania. Wybierz ten wyzwalacz: **RSS — gdy element kanału informacyjnego jest publikowany**
 
-   ![Wybieranie wyzwalacza: „RSS — Gdy element kanału informacyjnego jest publikowany”](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
+   ![Wybierz wyzwalacz: „RSS — gdy element kanału informacyjnego jest publikowany”](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
 
 2. Podaj następujące informacje dotyczące wyzwalacza, jak pokazano i opisano: 
 
@@ -91,13 +91,13 @@ Twoja aplikacja logiki jest już aktywna, ale nie robi niczego poza sprawdzaniem
 
 Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), która wysyła wiadomość e-mail, gdy pojawi się nowy element w kanale informacyjnym RSS. 
 
-1. W obszarze wyzwalacza **Gdy element kanału informacyjnego jest publikowany** wybierz pozycję **+ Nowy krok** > **Dodaj akcję**.
+1. W obszarze wyzwalacza **Gdy element kanału informacyjnego jest publikowany** wybierz pozycję **Nowy krok**.
 
    ![Dodawanie akcji](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. W obszarze **Wybierz akcję** wprowadź tekst „wyślij wiadomość e-mail” jako filtr. Z listy akcji wybierz akcję „wyślij wiadomość e-mail” dla odpowiedniego dostawcy poczty e-mail. 
+2. W obszarze **Wybierz akcję** wprowadź tekst „wyślij wiadomość e-mail”. W polu wyszukiwania wybierz pozycję **Wszystko**. Z listy akcji wybierz akcję „wyślij wiadomość e-mail” dla odpowiedniego dostawcy poczty e-mail. 
 
-   ![Wybieranie akcji: „Office 365 Outlook — Wyślij wiadomość e-mail”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+   ![Wybierz tę akcję: „Usługa Office 365 Outlook — wyślij wiadomość e-mail”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
    Aby na liście akcji wyświetlić akcje tylko dla konkretnej aplikacji lub usługi, możesz najpierw wybrać tę aplikację lub usługę:
 

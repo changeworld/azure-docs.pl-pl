@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654108"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064699"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z usługi Event Hubs — platformy do strumieniowego przesyłania dużych ilości danych i usługi pozyskiwania zdarzeń. Usługa Event Hubs może przetwarzać miliony zdarzeń na sekundę niemal w czasie rzeczywistym. W tym przewodniku Szybki start utworzysz centrum zdarzeń, nawiążesz z nim połączenie z usługi Azure Data Explorer i sprawdzisz przepływ danych w systemie.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z usługi Event Hubs — platformy do strumieniowego przesyłania dużych ilości danych i usługi pozyskiwania zdarzeń. Usługa [Event Hubs](/azure/event-hubs/event-hubs-about) może przetwarzać miliony zdarzeń na sekundę niemal w czasie rzeczywistym. W tym przewodniku Szybki start utworzysz centrum zdarzeń, nawiążesz z nim połączenie z usługi Azure Data Explorer i sprawdzisz przepływ danych w systemie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
 * [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
-* [Przykładowa aplikacja](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która generuje dane i wysyła je do centrum zdarzeń
+* [Przykładowa aplikacja](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która generuje dane i wysyła je do centrum zdarzeń. Pobierz przykładową aplikację w systemie.
 
 * [Program Visual Studio 2017 w wersji 15.3.2 lub nowszej](https://www.visualstudio.com/vs/) do uruchomienia przykładowej aplikacji
 
@@ -37,7 +37,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 W tym przewodniku Szybki start wygenerujesz przykładowe dane i wyślesz je do centrum zdarzeń. Pierwszym krokiem jest utworzenie centrum zdarzeń. Możesz to zrobić, używając szablonu usługi Azure Resource Manager w witrynie Azure Portal.
 
-1. Użyj poniższego przycisku, aby rozpocząć wdrażanie. Zalecamy otwarcie linku w innej karcie lub oknie, aby móc wykonać pozostałe kroki w tym artykule.
+1. Aby utworzyć centrum zdarzeń, użyj poniższego przycisku w celu rozpoczęcia wdrażania. Kliknij prawym przyciskiem myszy i wybierz link **Utwórz w nowym oknie** w innej karcie lub oknie, aby móc wykonać pozostałe kroki w tym artykule.
 
     [![Wdrażanie na platformie Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -79,7 +79,7 @@ Teraz w usłudze Azure Data Explorer utworzysz tabelę, do której będą wysył
 
     ![Link do aplikacji Zapytanie](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. Skopiuj poniższe polecenie do okna i wybierz pozycję **Uruchom**.
+1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom**, aby utworzyć tabelę (TestTable), w której będą umieszczane pozyskiwane dane.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -87,12 +87,11 @@ Teraz w usłudze Azure Data Explorer utworzysz tabelę, do której będą wysył
 
     ![Uruchamianie zapytania create](media/ingest-data-event-hub/run-create-query.png)
 
-1. Skopiuj poniższe polecenie do okna i wybierz pozycję **Uruchom**.
+1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom**, aby zamapować przychodzące dane w formacie JSON na nazwy kolumn i typy danych tabeli (TestTable).
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    To polecenie mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli (TestTable).
 
 ## <a name="connect-to-the-event-hub"></a>Łączenie z centrum zdarzeń
 
@@ -112,13 +111,23 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
 
     ![Połączenie centrum zdarzeń](media/ingest-data-event-hub/event-hub-connection.png)
 
+    Źródło danych:
+
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Nazwa połączenia danych | *test-hub-connection* | Nazwa połączenia, które chcesz utworzyć w usłudze Azure Data Explorer.|
     | Przestrzeń nazw centrum zdarzeń | Unikatowa nazwa przestrzeni nazw | Wybrana wcześniej nazwa, która identyfikuje Twoją przestrzeń nazw. |
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
-    | Tabela docelowa | Pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone. | Dostępne są dwie opcje routingu: *statyczny* i *dynamiczny*. W tym przewodniku Szybki start będziesz używać routingu statycznego (opcja domyślna), w którym określisz nazwę tabeli, format pliku i mapowanie. Możesz również użyć routingu dynamicznego, w przypadku którego Twoje dane zawierają niezbędne informacje o routingu. |
+    | | |
+
+    Tabela docelowa:
+
+    Dostępne są dwie opcje routingu: *statyczny* i *dynamiczny*. W tym przewodniku Szybki start będziesz używać routingu statycznego (opcja domyślna), w którym określisz nazwę tabeli, format pliku i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
+    Możesz również użyć routingu dynamicznego, w przypadku którego Twoje dane zawierają niezbędne informacje o routingu.
+
+     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
+    |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
     | Format danych | *JSON* | Obsługiwane są formaty JSON i CSV. |
     | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**.|
@@ -138,7 +147,7 @@ Gdy uruchamiasz [przykładową aplikację](https://github.com/Azure-Samples/even
 
 ## <a name="generate-sample-data"></a>Generowanie danych przykładowych
 
-Po nawiązaniu połączenia między usługą Azure Data Explorer i centrum zdarzeń wygenerujesz dane za pomocą [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która została pobrana.
+Użyj pobranej [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) do wygenerowania danych.
 
 1. Otwórz przykładowe rozwiązanie aplikacji w programie Visual Studio.
 
@@ -162,8 +171,6 @@ Kiedy aplikacja generuje dane, możesz teraz zobaczyć przepływ tych danych z c
 
     ![Wykres centrum zdarzeń](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. Wróć do przykładowej aplikacji i zatrzymaj ją, gdy osiągnie 99 komunikatów.
-
 1. Aby sprawdzić, ile komunikatów zostało przekazanych do tej pory do bazy danych, uruchom poniższe zapytanie w testowej bazie danych.
 
     ```Kusto
@@ -171,15 +178,18 @@ Kiedy aplikacja generuje dane, możesz teraz zobaczyć przepływ tych danych z c
     | count
     ```
 
-1. Aby sprawdzić zawartość komunikatów, uruchom poniższe zapytanie.
+1. Aby sprawdzić zawartość komunikatów, uruchom następujące zapytanie:
 
     ```Kusto
     TestTable
     ```
 
-    Zestaw wyników powinien wyglądać tak jak na poniższej ilustracji.
+    Zestaw wyników powinien wyglądać podobnie do następującego:
 
     ![Zestaw wyników komunikatów](media/ingest-data-event-hub/message-result-set.png)
+
+    > [!NOTE]
+    > W systemie ADX istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są skonfigurowane na wartość 5 minut, więc mogą wystąpić opóźnienia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

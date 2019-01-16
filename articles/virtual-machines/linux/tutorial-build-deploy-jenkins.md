@@ -1,7 +1,7 @@
 ---
 title: Samouczek — ciągła integracja/ciągłe wdrażanie (CI/CD) z usługi Jenkins na maszynach wirtualnych platformy Azure za pomocą usług Azure DevOps Services | Microsoft Docs
 description: Z tego samouczka dowiesz się jak skonfigurować ciągłą integrację (CI) i ciągłe wdrażanie (CD) aplikacji Node.js przy użyciu usługi Jenkins dla maszyn wirtualnych platformy Azure z narzędzia zarządzania wydaniami usługi Visual Studio Team Services lub serwera Microsoft Team Foundation Server
-author: tomarcher
+author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388496"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074771"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Azure DevOps Services
 
@@ -68,7 +68,7 @@ Utwórz rozwidlenie tej aplikacji i zanotuj lokalizację (adres URL) do użycia 
 
 ## <a name="configure-jenkins-plug-ins"></a>Konfigurowanie wtyczek usługi Jenkins
 
-Najpierw musisz skonfigurować dwie wtyczki usługi Jenkins: **NodeJS** i **VS Team Services Continuous Deployment**.
+Najpierw należy skonfigurować dwie wtyczki usługi Jenkins: **NodeJS** i **VS Team Services Continuous Deployment**.
 
 1. Otwórz konto usługi Jenkins i wybierz pozycję **Manage Jenkins** (Zarządzaj usługą Jenkins).
 2. Na stronie **Manage Jenkins** (Zarządzanie usługą Jenkins) wybierz pozycję **Manage Plugins** (Zarządzanie wtyczkami).

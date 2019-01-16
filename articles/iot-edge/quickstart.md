@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2295ed6d3d1b22d70f95d0c9ac4542b59c7ddc09
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e0ad51bd2370cd8b7569d76e5d91b606928eea6d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972094"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189358"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal na urządzeniu z systemem Windows — wersja zapoznawcza
 
@@ -113,7 +113,7 @@ Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urzą
 Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu usługi IoT Edge i skonfiguruj je przy użyciu parametrów połączenia urządzenia.
 ![Diagram — uruchamianie środowiska uruchomieniowego na urządzeniu](./media/quickstart/start-runtime.png)
 
-Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demon zabezpieczeń usługi IoT Edge** jest uruchamiany przy każdym uruchomieniu urządzenia Edge przez rozpoczęciu działania agenta usługi IoT Edge. Agent usługi **IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge, w tym centrum usługi IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub.
+Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demon zabezpieczeń usługi IoT Edge** jest uruchamiany przy każdym uruchomieniu urządzenia IoT Edge przez rozpoczęcie działania agenta usługi IoT Edge. **Agent usługi IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge, w tym centrum usługi IoT Edge. **Centrum usługi IoT Edge** obsługuje komunikację między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub.
 
 Skrypt instalacji zawiera także aparat kontenera o nazwie Moby, który zarządza obrazami kontenerów na urządzeniu usługi IoT Edge. 
 
@@ -182,7 +182,9 @@ Zarządzając urządzeniem usługi Azure IoT Edge z chmury, wdróż moduł przes
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć na potrzeby samouczków.
+W tym przewodniku Szybki start zarejestrowano nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wdrożenia modułu usługi IoT Edge w celu uruchomienia go na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. 
+
+W tym przypadku wypchnięty moduł tworzy dane przykładowe, których można użyć na potrzeby testowania. Moduł symulowanego czujnika temperatury generuje dane środowiskowe, których można użyć do testowania później. Symulowany czujnik monitoruje maszynę i środowisko wokół maszyny. Na przykład ten czujnik może być umieszczony w serwerowni, w hali fabrycznej lub na turbinie wiatrowej. Komunikat zawiera temperaturę i wilgotność otoczenia, temperaturę maszyny, ciśnienie oraz znacznik czasu. W samouczkach usługi IoT Edge dane utworzone przez ten moduł są używane jako dane testowe do analizy.
 
 Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge.
 
@@ -204,6 +206,7 @@ iotedge logs SimulatedTemperatureSensor -f
    ![Wyświetlanie danych z modułu](./media/quickstart/iotedge-logs.png)
 
 Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT Hub dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (wcześniej nazywane rozszerzeniem zestawu narzędzi usługi Azure IoT). 
+
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -230,26 +233,9 @@ Usuń środowisko uruchomieniowe usługi IoT Edge. Jeśli planujesz ponowne zain
    Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
    ```
 
-Po usunięciu środowiska uruchomieniowego usługi IoT Edge utworzone przez nie kontenery zostaną zatrzymane, ale pozostaną na urządzeniu. Wyświetl wszystkie kontenery.
-
-   ```powershell
-   docker -H npipe:////./pipe/iotedge_moby_engine ps -a
-   ```
-
-   >[!TIP]
-   >Flaga **-H** (hosta) w poleceniach aparatu Docker wskazuje na aparat Moby, który został zainstalowany ze środowiskiem uruchomieniowym usługi IoT Edge. Jeśli używasz zarówno aparatu Docker jak i Moby na tym samym komputerze, flaga hosta pozwala określić, którego aparatu używasz dla danego polecenia. Jeśli chcesz używać tylko aparatu Moby, możesz ustawić zmienną środowiskową **DOCKER_HOST** w taki sposób, aby wskazywała na npipe:////./pipe/iotedge_moby_engine.
-
-Usuń kontenery utworzone na urządzeniu przez środowisko uruchomieniowe usługi IoT Edge. 
-
-   ```powershell
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f SimulatedTemperatureSensor
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeHub
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeAgent
-   ```
-   
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i wdrożono na nim kod przy użyciu interfejsu usługi Azure IoT Edge w chmurze. Masz teraz urządzenie testowe generujące dane pierwotne dotyczące jego otoczenia.
+W tym przewodniku Szybki start utworzono urządzenie usługi IoT Edge i wdrożono na nim kod przy użyciu interfejsu usługi Azure IoT Edge w chmurze. Masz teraz urządzenie testowe generujące dane pierwotne dotyczące jego otoczenia.
 
 Wszystko jest gotowe, aby kontynuować pracę, korzystając ze wszystkich innych samouczków, i dowiedzieć, jak usługa Azure IoT Edge może ułatwiać przekształcanie tych danych w analizy biznesowe na urządzeniach brzegowych.
 

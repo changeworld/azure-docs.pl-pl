@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: anroth
-ms.openlocfilehash: 6f92201e1c7222bed5d59066798d7eb6844ecd76
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: aaffd5e47c8465d44c2dbcdde3f40cf6e6995e55
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279436"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079089"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Szybki start: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision .NET SDK
 
@@ -42,6 +42,10 @@ Ten projekt programu Visual Studio tworzy nowy projekt Custom Vision o nazwie __
 Otwórz plik _Program.cs_ i przejrzyj kod. Wstaw klucze subskrypcji w odpowiednich definicjach w metodzie **Main**.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=21-30)]
+
+Parametr Endpoint powinien wskazywać region, w którym utworzono grupę zasobów platformy Azure zawierającą odpowiednie zasoby usługi Custom Vision. W tym przykładzie przyjęto założenie, że jest to region Południowo-środkowe stany USA i użyto go:
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=14-14)]
 
 Następujące wiersze kodu wykonują podstawową funkcjonalność projektu.
 

@@ -1,239 +1,213 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z CylancePROTECT | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i CylancePROTECT.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją CylancePROTECT | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją CylancePROTECT.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ea392d8c-c8aa-4475-99d0-b08524ef0f3a
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/15/2018
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 0baeea0dc8f32182fecf0b15fede56bf8c1f9b44
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 2a9d5fb7d9ec150113a45b628b2b98c34146b8ab
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430141"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063526"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Samouczek: Integracja usługi Azure Active Directory z CylancePROTECT
+# <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją CylancePROTECT
 
-W tym samouczku dowiesz się, jak zintegrować CylancePROTECT w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację CylancePROTECT z usługą Azure Active Directory (Azure AD).
+Zintegrowanie aplikacji CylancePROTECT z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie CylancePROTECT z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do aplikacji CylancePROTECT.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji CylancePROTECT (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do CylancePROTECT.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do CylancePROTECT (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą CylancePROTECT, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją CylancePROTECT, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- CylancePROTECT logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji CylancePROTECT z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie CylancePROTECT z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-cylanceprotect-from-the-gallery"></a>Dodawanie CylancePROTECT z galerii
-Aby skonfigurować integrację CylancePROTECT w usłudze Azure AD, należy dodać CylancePROTECT z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja CylancePROTECT obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać CylancePROTECT z galerii, wykonaj następujące czynności:**
+## <a name="adding-cylanceprotect-from-the-gallery"></a>Dodawanie aplikacji CylancePROTECT z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji CylancePROTECT z usługą Azure AD, musisz dodać aplikację CylancePROTECT z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację CylancePROTECT z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **CylancePROTECT**, wybierz opcję **CylancePROTECT** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![CylancePROTECT na liście wyników](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą CylancePROTECT w oparciu o użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **CylancePROTECT**, wybierz pozycję **CylancePROTECT** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w CylancePROTECT do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w CylancePROTECT musi można ustanowić.
+     ![Aplikacja CylancePROTECT na liście wyników](common/search-new-app.png)
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą CylancePROTECT, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego CylancePROTECT](#create-a-cylanceprotect-test-user)**  — aby odpowiednikiem Britta Simon w CylancePROTECT połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją CylancePROTECT, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji CylancePROTECT.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją CylancePROTECT, należy ukończyć poniższe bloki konstrukcyjne:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji CylancePROTECT.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji CylancePROTECT](#configure-cylanceprotect-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji CylancePROTECT](#create-cylanceprotect-test-user)** — aby mieć w aplikacji CylancePROTECT odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z CylancePROTECT, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **CylancePROTECT** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji CylancePROTECT, wykonaj następujące kroki:
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_samlbase.png)
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **CylancePROTECT** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **CylancePROTECT domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![CylancePROTECT domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_url.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji CylancePROTECT](common/idp-intiated.png)
+
+    a. W polu tekstowym **Identifier** (Identyfikator) wpisz adres URL:
     
     | Region | Wartość adresu URL |
     |----------|---------|
     | Azja i Pacyfik północno-wschodnie (APNE1)| ` https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Azja i Pacyfik Południowo-Wschodnia (Australia) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
+    | Azja i Pacyfik południowo-wschodnie (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
     | Europa Środkowa (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Ameryka Północna|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Ameryka Południowa (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL:
+
+    b. W polu tekstowym **Reply URL** (Adres URL odpowiedzi) wpisz adres URL:
     
     | Region | Wartość adresu URL |
     |----------|---------|
     | Azja i Pacyfik północno-wschodnie (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Azja i Pacyfik Południowo-Wschodnia (Australia)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Azja i Pacyfik południowo-wschodnie (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Europa Środkowa (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Ameryka Północna|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Ameryka Południowa (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_certificate.png) 
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. W sekcji **Skonfiguruj aplikację CylancePROTECT** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/cylanceprotect-tutorial/tutorial_general_400.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Na **konfiguracji CylancePROTECT** , kliknij przycisk **skonfigurować CylancePROTECT** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    a. Adres URL logowania
 
-    ![Konfiguracja CylancePROTECT](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_configure.png) 
+    b. Identyfikator usługi Azure AD
 
-1. Aby skonfigurować logowanie jednokrotne na **CylancePROTECT** stronie, musisz wysłać pobrany **Certificate(Base64), adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do konsoli administratora. Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    d. Adres URL wylogowywania
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+### <a name="configure-cylanceprotect-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji CylancePROTECT
+
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **CylancePROTECT**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal administratorowi aplikacji. Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/cylanceprotect-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/cylanceprotect-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/cylanceprotect-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/cylanceprotect-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
-  
-### <a name="create-a-cylanceprotect-test-user"></a>Tworzenie użytkownika testowego CylancePROTECT
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w CylancePROTECT. Praca z konsoli administratora, aby dodać użytkowników na platformie CylancePROTECT. Właściciel konta usługi Azure Active Directory będzie otrzymywać wiadomości e-mail i kliknij link, aby potwierdzić swoje konto, zanim stanie się aktywny.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do CylancePROTECT.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji CylancePROTECT.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **CylancePROTECT**.
 
-**Aby przypisać Britta Simon CylancePROTECT, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **CylancePROTECT**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link CylancePROTECT na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **CylancePROTECT**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link CylancePROTECT na liście aplikacji](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-cylanceprotect-test-user"></a>Tworzenie użytkownika testowego aplikacji CylancePROTECT
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji utworzysz użytkownika Britta Simon w aplikacji CylancePROTECT. Aby dodać użytkowników na platformie CylancePROTECT, skontaktuj się z administratorem konsoli. Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem, którego użyje w celu potwierdzenia konta, zanim stanie się ono aktywne.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-Po kliknięciu kafelka CylancePROTECT w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji CylancePROTECT.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+Po kliknięciu kafelka CylancePROTECT w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji CylancePROTECT, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-<!--Image references-->
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[1]: ./media/cylanceprotect-tutorial/tutorial_general_01.png
-[2]: ./media/cylanceprotect-tutorial/tutorial_general_02.png
-[3]: ./media/cylanceprotect-tutorial/tutorial_general_03.png
-[4]: ./media/cylanceprotect-tutorial/tutorial_general_04.png
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[100]: ./media/cylanceprotect-tutorial/tutorial_general_100.png
-
-[200]: ./media/cylanceprotect-tutorial/tutorial_general_200.png
-[201]: ./media/cylanceprotect-tutorial/tutorial_general_201.png
-[202]: ./media/cylanceprotect-tutorial/tutorial_general_202.png
-[203]: ./media/cylanceprotect-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

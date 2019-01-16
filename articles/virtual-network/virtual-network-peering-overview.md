@@ -1,12 +1,10 @@
 ---
-title: Wirtualne sieci równorzędne platformy Azure | Microsoft Docs
+title: Wirtualne sieci równorzędne platformy Azure
+titlesuffix: Azure Virtual Network
 description: Dowiedz się więcej na temat wirtualnych sieci równorzędnych na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: eb0ba07d-5fee-4db0-b1cb-a569b7060d2a
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 493beb254852464765d506c61c7ae6ce3b3835d3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 1085be57583762e8f1d419e2aacc699032340d90
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362895"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054558"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 

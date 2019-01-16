@@ -3,17 +3,17 @@ title: Instalowanie rozwiązania Ansible na maszynach wirtualnych platformy Azur
 description: Dowiedz się, w jaki sposób zainstalować i skonfigurować rozwiązanie Ansible, aby zarządzać zasobami platformy Azure w systemach Ubuntu, CentOS i SLES.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: b714470cd12bb7a0cd2d2a00b4f09467726f505d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 227f3baf67bd65a8c6eeb170ce219a3ddf79606a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987054"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078052"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Instalowanie rozwiązania Ansible na maszynach wirtualnych platformy Azure
 

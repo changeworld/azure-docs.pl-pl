@@ -9,17 +9,16 @@ ms.assetid: 4acc894f-fee0-4c2f-988e-bc0eceea5eda
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: 0214d6cf09795605bca60774604ecd1fec94fdc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9b57dfcd6ecd00f9f1bb8ec752e0996ee52305db
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989433"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159047"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -44,7 +43,7 @@ Aby uzyskać więcej informacji na temat opcji logowania za pośrednictwem inter
 Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *ContosoResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli
-az group create --name 'ContosoResourceGroup' --location eastus
+az group create --name "ContosoResourceGroup" --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
@@ -56,7 +55,7 @@ Następnie utworzysz usługę Key Vault w grupie zasobów utworzonej w poprzedni
 - Lokalizacja: **Wschodnie stany USA**.
 
 ```azurecli
-az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGroup' --location eastus
+az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
 ```
 
 Dane wyjściowe tego polecenia cmdlet pokazują właściwości nowo utworzonej usługi Key Vault. Zanotuj dwie poniższe właściwości:
@@ -73,7 +72,7 @@ Aby dodać wpis tajny do magazynu, wystarczy tylko wykonać kilka dodatkowych cz
 Wpisz poniższe polecenia, aby utworzyć wpis tajny w usłudze Key Vault o nazwie **ExamplePassword**, w którym będzie przechowywana wartość **Pa$$w0rd**:
 
 ```azurecli
-az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --value 'Pa$$w0rd'
+az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "Pa$$w0rd"
 ```
 
 Teraz możesz odwoływać się do hasła dodanego do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj polecenia **https://ContosoVault.vault.azure.net/secrets/ExamplePassword**, aby pobrać bieżącą wersję. 
@@ -81,7 +80,7 @@ Teraz możesz odwoływać się do hasła dodanego do usługi Azure Key Vault za 
 Aby wyświetlić wartość zawartą we wpisie tajnym jako zwykły tekst:
 
 ```azurecli
-az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
+az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 ```
 
 Utworzono usługę Key Vault, umieszczono w niej wpis tajny i pobrano go.

@@ -1,5 +1,5 @@
 ---
-title: Usługi Azure Cloud Services Def. Workerrole — schemat | Dokumentacja firmy Microsoft
+title: Azure Cloud Services Def. WorkerRole Schema | Microsoft Docs
 services: cloud-services
 ms.custom: ''
 ms.date: 04/14/2015
@@ -13,12 +13,12 @@ caps.latest.revision: 55
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 2e487bd3fda787cf9f869cc352de4c97d5c1678b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002181"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331695"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services, definicja workerrole — schemat
 Rola procesu roboczego platformy Azure jest rolą, która jest przydatne w przypadku ogólnych rozwoju i może wykonywać przetwarzania w tle dla roli sieci web.
@@ -41,11 +41,11 @@ Podstawowy format pliku definicji usługi, zawierający roli proces roboczy jest
       <InputEndpoint name="<input-endpoint-name>" protocol="[http|https|tcp|udp]" localPort="<local-port-number>" port="<port-number>" certificate="<certificate-name>" loadBalancerProbe="<load-balancer-probe-name>" />
       <InternalEndpoint name="<internal-endpoint-name" protocol="[http|tcp|udp|any]" port="<port-number>">
          <FixedPort port="<port-number>"/>
-         <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>
+         <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>
       </InternalEndpoint>
      <InstanceInputEndpoint name="<instance-input-endpoint-name>" localPort="<port-number>" protocol="[udp|tcp]">
          <AllocatePublicPortFrom>
-            <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>
+            <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>
          </AllocatePublicPortFrom>
       </InstanceInputEndpoint>
     </Endpoints>
@@ -184,7 +184,7 @@ W poniższej tabeli opisano atrybuty `LocalStorage` elementu.
 | --------- | ---- | ----------- |
 |name|ciąg|Wymagany. Unikatowa nazwa magazynu lokalnego.|
 |cleanOnRoleRecycle|wartość logiczna|Opcjonalny. Wskazuje, czy magazynu lokalnego powinny być czyszczone po ponownym uruchomieniu roli. Wartość domyślna to `true`.|
-|sizeInMb|Int|Opcjonalny. Wymaganej ilości miejsca do magazynowania można przydzielić dla magazynu lokalnego, w Megabajtach. Jeśli nie zostanie określony, domyślna miejsca do magazynowania przydzielone wynosi 100 MB. Minimalna ilość miejsca do magazynowania, która może być przydzielona to 1 MB.<br /><br /> Maksymalny rozmiar zasobów lokalnych jest zależna od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|
+|sizeInMb|int|Opcjonalny. Wymaganej ilości miejsca do magazynowania można przydzielić dla magazynu lokalnego, w Megabajtach. Jeśli nie zostanie określony, domyślna miejsca do magazynowania przydzielone wynosi 100 MB. Minimalna ilość miejsca do magazynowania, która może być przydzielona to 1 MB.<br /><br /> Maksymalny rozmiar zasobów lokalnych jest zależna od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|
 
 Nazwa katalogu przydzielony do zasobu lokalnego magazynu odpowiada wartość podana dla atrybutu name.
 
@@ -207,10 +207,10 @@ W poniższej tabeli opisano atrybuty `InputEndpoint` elementu.
 | --------- | ---- | ----------- |
 |name|ciąg|Wymagany. Unikatowa nazwa jest zewnętrzny punkt końcowy.|
 |protokół|ciąg|Wymagany. Protokół transportu jest zewnętrzny punkt końcowy. Rola procesu roboczego, możliwe wartości to `HTTP`, `HTTPS`, `UDP`, lub `TCP`.|
-|port|Int|Wymagany. Port zewnętrznego punktu końcowego. Można określić dowolny numer portu, które wybierzesz, ale numery portów, określony dla każdej roli w ramach usługi musi być unikatowa.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
+|port|int|Wymagany. Port zewnętrznego punktu końcowego. Można określić dowolny numer portu, które wybierzesz, ale numery portów, określony dla każdej roli w ramach usługi musi być unikatowa.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
 |certyfikat|ciąg|Wymagane dla punktu końcowego HTTPS. Nazwa certyfikatu z definicją `Certificate` elementu.|
-|localPort|Int|Opcjonalny. Określa port używany dla wewnętrznych połączeń w punkcie końcowym. `localPort` Porcie zewnętrznym w punkcie końcowym mapowań atrybutów do portu wewnętrznej w roli. Jest to przydatne w scenariuszach, w której roli musi komunikować się do wewnętrznego składnika na porcie, inny niż ten, który jest widoczna zewnętrznie.<br /><br /> Jeśli nie zostanie określony, wartość `localPort` jest taka sama jak `port` atrybutu. Ustaw wartość `localPort` na "*" Aby automatycznie przypisać nieprzydzielone port wykrywalny, przy użyciu interfejsu API środowiska wykonawczego.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `localPort` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|
-|ignoreRoleInstanceStatus|wartość logiczna|Opcjonalny. Jeśli wartość tego atrybutu jest równa `true`, stan usługi jest ignorowany i punkt końcowy nie zostaną usunięte przez moduł równoważenia obciążenia. Ustawienie tej wartości na `true` przydatne podczas debugowania zajęty wystąpień usługi. Wartość domyślna to `false`. **Uwaga:** punktu końcowego nadal mogą odbierać ruch nawet wtedy, gdy rola nie jest w stanie gotowe.|
+|localPort|int|Opcjonalny. Określa port używany dla wewnętrznych połączeń w punkcie końcowym. `localPort` Porcie zewnętrznym w punkcie końcowym mapowań atrybutów do portu wewnętrznej w roli. Jest to przydatne w scenariuszach, w której roli musi komunikować się do wewnętrznego składnika na porcie, inny niż ten, który jest widoczna zewnętrznie.<br /><br /> Jeśli nie zostanie określony, wartość `localPort` jest taka sama jak `port` atrybutu. Ustaw wartość `localPort` na "*" Aby automatycznie przypisać nieprzydzielone port wykrywalny, przy użyciu interfejsu API środowiska wykonawczego.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `localPort` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|
+|ignoreRoleInstanceStatus|wartość logiczna|Opcjonalny. Jeśli wartość tego atrybutu jest równa `true`, stan usługi jest ignorowany i punkt końcowy nie zostaną usunięte przez moduł równoważenia obciążenia. Ustawienie tej wartości na `true` przydatne podczas debugowania zajęty wystąpień usługi. Wartość domyślna to `false`. **Uwaga:** Punkt końcowy nadal mogą odbierać ruch nawet wtedy, gdy rola nie jest w stanie gotowe.|
 |loadBalancerProbe|ciąg|Opcjonalny. Nazwa sondy modułu równoważenia obciążenia, które są skojarzone z wejściowym punktem końcowym. Aby uzyskać więcej informacji, zobacz [loadbalancerprobe — schemat](schema-csdef-loadbalancerprobe.md).|
 
 ##  <a name="InternalEndpoint"></a> InternalEndpoint
@@ -222,7 +222,7 @@ W poniższej tabeli opisano atrybuty `InternalEndpoint` elementu.
 | --------- | ---- | ----------- |
 |name|ciąg|Wymagany. Unikatowa nazwa wewnętrznego punktu końcowego.|
 |protokół|ciąg|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `HTTP`, `TCP`, `UDP`, lub `ANY`.<br /><br /> Wartość `ANY` Określa, że każdego protokołu, każdy port jest dozwolone.|
-|port|Int|Opcjonalny. Port używany dla połączeń punkt końcowy wewnętrznego równoważenia obciążenia. Dwa porty używa punktu końcowego ze zrównoważonym obciążeniem. Port używany do publicznego adresu IP i port używany na prywatny adres IP. Zazwyczaj są to te właściwości są ustawiane na takie same, ale można wybrać używało innych portów.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `Port` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|
+|port|int|Opcjonalny. Port używany dla połączeń punkt końcowy wewnętrznego równoważenia obciążenia. Dwa porty używa punktu końcowego ze zrównoważonym obciążeniem. Port używany do publicznego adresu IP i port używany na prywatny adres IP. Zazwyczaj są to te właściwości są ustawiane na takie same, ale można wybrać używało innych portów.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `Port` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|
 
 ##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint
 `InstanceInputEndpoint` Element opisuje wystąpienie wejściowy punkt końcowy do roli procesu roboczego. Wejściowy punkt końcowy wystąpienia jest skojarzony z instancją konkretnej roli za pomocą przekierowania portów w module równoważenia obciążenia. Wejściowy punkt końcowy każdego wystąpienia jest mapowany do określonego portu z zakresu portów to możliwe. Ten element jest elementem nadrzędnym `AllocatePublicPortFrom` elementu.
@@ -234,7 +234,7 @@ W poniższej tabeli opisano atrybuty `InstanceInputEndpoint` elementu.
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
 |name|ciąg|Wymagany. Unikatowa nazwa punktu końcowego.|
-|localPort|Int|Wymagany. Określa port wewnętrzny, który będzie nasłuchiwać wszystkich wystąpień roli w celu odbierania ruchu przychodzącego przekazywane z modułu równoważenia obciążenia. Możliwe wartości z zakresu od 1 do 65535 (włącznie).|
+|localPort|int|Wymagany. Określa port wewnętrzny, który będzie nasłuchiwać wszystkich wystąpień roli w celu odbierania ruchu przychodzącego przekazywane z modułu równoważenia obciążenia. Możliwe wartości z zakresu od 1 do 65535 (włącznie).|
 |protokół|ciąg|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla protokołu http/https na podstawie ruchu.|
 
 ##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom
@@ -251,7 +251,7 @@ W poniższej tabeli opisano atrybuty `FixedPort` elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|port|Int|Wymagany. Port wewnętrzny punkt końcowy. Ma to taki sam efekt jak ustawienie `FixedPortRange` min i max do tego samego portu.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
+|port|int|Wymagany. Port wewnętrzny punkt końcowy. Ma to taki sam efekt jak ustawienie `FixedPortRange` min i max do tego samego portu.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
 
 ##  <a name="FixedPortRange"></a> FixedPortRange
 `FixedPortRange` Element określa zakres portów, które są przypisane do wewnętrznego punktu końcowego lub wystąpienia wejściowy punkt końcowy, a następnie ustawia port używany dla obciążenia równoważenia połączenia w punkcie końcowym.
@@ -265,7 +265,7 @@ W poniższej tabeli opisano atrybuty `FixedPortRange` elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|min.|Int|Wymagany. Minimalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
+|min.|int|Wymagany. Minimalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
 |maks.|ciąg|Wymagany. Maksymalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|
 
 ##  <a name="Certificates"></a> Certyfikaty
@@ -297,7 +297,7 @@ W poniższej tabeli opisano atrybuty `Import` elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|Nazwa modułu|ciąg|Wymagany. Nazwa modułu do zaimportowania. Nieprawidłowy import moduły są:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Diagnostics<br /><br /> Moduły RemoteAccess i RemoteForwarder umożliwiają skonfigurowanie wystąpienia roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Podłączanie pulpitu zdalnego włączyć](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł diagnostyki umożliwia zbieranie danych diagnostycznych dla wystąpienia roli|
+|moduleName|ciąg|Wymagany. Nazwa modułu do zaimportowania. Nieprawidłowy import moduły są:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Diagnostics<br /><br /> Moduły RemoteAccess i RemoteForwarder umożliwiają skonfigurowanie wystąpienia roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Podłączanie pulpitu zdalnego włączyć](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł diagnostyki umożliwia zbieranie danych diagnostycznych dla wystąpienia roli|
 
 ##  <a name="Runtime"></a> Środowisko uruchomieniowe
 `Runtime` Element opisuje kolekcję ustawień zmiennych środowiskowych dla roli procesu roboczego, które kontrolują środowiska wykonawczego procesu hosta platformy Azure. Ten element jest elementem nadrzędnym `Environment` elementu. Ten element jest opcjonalny, a rola może mieć tylko jeden blok środowiska uruchomieniowego.
@@ -310,7 +310,7 @@ W poniższej tabeli opisano atrybuty `Runtime` elementu:
 | --------- | ---- | ----------- |
 |executionContext|ciąg|Opcjonalny. Określa kontekst, w której uruchomiono proces roli. Domyślny kontekst jest `limited`.<br /><br /> -   `limited` — Ten proces zostanie uruchomiony bez uprawnień administratora.<br />-   `elevated` — Ten proces jest uruchamiany z uprawnieniami administratora.|
 
-##  <a name="Environment"></a> Środowisko
+##  <a name="Environment"></a> środowisko
 `Environment` Element opisuje kolekcję ustawień zmiennych środowiskowych dla roli proces roboczy. Ten element jest elementem nadrzędnym `Variable` elementu. Rola może mieć dowolną liczbę zmiennych środowiskowych ustawionych.
 
 ##  <a name="Variable"></a> Zmienna
@@ -349,7 +349,7 @@ W poniższej tabeli opisano atrybuty `NetFxEntryPoint` elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|assemblyName|ciąg|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest określana względem folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika. **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.|
+|AssemblyName|ciąg|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest określana względem folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika.  **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.|
 |targetFrameworkVersion|ciąg|Wymagany. Wersja programu .NET framework, na którym został skompilowany zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="ProgramEntryPoint"></a> ProgramEntryPoint
@@ -372,7 +372,7 @@ W poniższej tabeli opisano atrybut `Startup` elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|priorytet|Int|Tylko do użytku wewnętrznego.|
+|priority|int|Tylko do użytku wewnętrznego.|
 
 ##  <a name="Task"></a> Zadanie
 `Task` Element określa zadania uruchamiania, który ma miejsce podczas uruchamiania roli. Zadania uruchamiania może służyć do wykonywania zadań, które przygotowują rolę do uruchamiania takich instalacji składników oprogramowania lub uruchamiania innych aplikacji. Zadania wykonywane w kolejności, w jakiej są wyświetlane w ramach `Startup` bloku elementu.

@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 4c425e4da99774be5da8c060a8243bc34ec08f5a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7544da2357e5b30ef54260d56cd8c969901f893e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547800"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189172"
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure w czasie około pięciu minut. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów.
@@ -57,19 +57,21 @@ admin-password | *bezpieczne hasło* | Hasło użytkownika administratora. Musi 
 
 
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
-+ `--sku-name B_Gen4_4` — warstwa podstawowa, 4. generacja, 4 rdzenie wirtualne.
++ `--sku-name B_Gen4_1` — warstwa podstawowa, 4. generacja, 1 rdzeń wirtualny.
 + `--sku-name GP_Gen5_32` — warstwa ogólnego przeznaczenia, 5. generacja, 32 rdzenie wirtualne.
 + `--sku-name MO_Gen5_2` — warstwa zoptymalizowana pod kątem pamięci, 5. generacja, 2 rdzenie wirtualne.
 
 Aby ustalić poprawne wartości dla poszczególnych regionów i warstw, zapoznaj się z dokumentacją [warstw cenowych](./concepts-pricing-tiers.md).
 
 W poniższym przykładzie serwer MySQL 5.7 o nazwie `mydemoserver` zostanie utworzony w grupie zasobów `myresourcegroup` w regionie Zachodnie stany USA przy użyciu identyfikatora logowania administratora serwera `myadmin`. Jest to serwer **4. generacji** **ogólnego przeznaczenia** z 2 **rdzeniami wirtualnymi**. Zastąp zmienną `<server_admin_password>` swoją własną wartością.
+
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
 ```
 
-
-
+> [!NOTE]
+> Jeśli niewielkie zasoby obliczeniowe i we/wy są wystarczające dla Twojego obciążenia, warto rozważyć użycie warstwy cenowej Podstawowa. Pamiętaj, że serwerów utworzonych w warstwie cenowej Podstawowa nie można później przeskalować do warstwy Ogólnego przeznaczenia lub Zoptymalizowana pod kątem pamięci. Przejdź na [stronę cennika](https://azure.microsoft.com/pricing/details/mysql/), aby uzyskać więcej informacji.
+> 
 
 ## <a name="configure-firewall-rule"></a>Konfigurowanie reguły zapory
 Utwórz regułę zapory na poziomie serwera usługi Azure Database for MySQL za pomocą polecenia **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)**. Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak narzędzie wiersza polecenia **mysql.exe** lub program MySQL Workbench, na nawiązywanie połączeń z Twoim serwerem przez zaporę usługi Azure MySQL. 

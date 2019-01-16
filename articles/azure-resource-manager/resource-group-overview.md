@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 470d08c13d5874283794fa9a2ce06fcaad4f60c2
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 24646c9448a70af228085c99f03ab844e5af7e9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300544"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053146"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki mogą nie być widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
 
 ## <a name="consistent-management-layer"></a>Spójna warstwa zarządzania
-Usługa Resource Manager zapewnia spójną warstwę zarządzania na potrzeby wykonywania zadań za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, witryny Azure Portal, interfejsu API REST oraz zestawów SDK klienta. Wszystkie funkcje, które są dostępne w witrynie Azure Portal są również dostępne za pośrednictwem programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST oraz zestawów SDK klienta. Funkcje udostępnione najpierw za pośrednictwem interfejsów API zostaną wprowadzone w witrynie Portal w ciągu 180 dni od początkowego wydania.
+Usługa Resource Manager zapewnia spójną warstwę zarządzania na potrzeby wykonywania zadań za pomocą witryny Azure Portal, a wszystkie funkcje, które są dostępne w witrynie Azure Portal są również dostępne za pośrednictwem programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST oraz zestawów SDK klienta. Funkcje udostępnione najpierw za pośrednictwem interfejsów API zostaną wprowadzone w witrynie Portal w ciągu 180 dni od początkowego wydania.
 
 Wybierz narzędzia i interfejsy API, które najbardziej Ci odpowiadają — mają one te same możliwości i zapewniają spójne wyniki.
 
@@ -255,4 +255,4 @@ Aby uzyskać informacje na temat korzystania z tych języków do obsługi zasob�
 W tym artykule przedstawiono sposób wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć swój pierwszy szablon usługi Azure Resource Manager.
 
 > [!div class="nextstepaction"]
-> [Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)
+> [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 9aab9df353ea5691b4132741e9b4a97b0afd9d17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93f8a5e806bd10824a78dd62351fd3d9be0cf32c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262152"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025831"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 W tym samouczku pokazano, jak utworzyć potok usługi Data Factory przedstawiający niektóre funkcje przepływu sterowania. Ten potok tworzy prostą kopię z kontenera w usłudze Azure Blob Storage w innym kontenerze na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się powodzeniem, warto wysłać szczegóły zakończonej pomyślnie operacji kopiowania (takie jak ilość zapisanych danych) w wiadomości e-mail z informacją o powodzeniu. W przypadku niepowodzenia działania kopiowania warto wysłać szczegóły błędu kopiowania (np. komunikat o błędzie) w wiadomości e-mail z informacją o niepowodzeniu. W samouczku pokazano, jak przekazać parametry.
@@ -95,7 +94,7 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Dodaj następujące zmienne statyczne do **klasy Program**. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Dodaj następujące zmienne statyczne do **klasy Program**. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     ```csharp
         // Set variables
@@ -204,7 +203,7 @@ Dodaj do metody **Main** poniższy kod, który tworzy **zestaw danych obiektu bl
 
 Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do połączonej usługi Azure Storage utworzonej w poprzednim kroku i zawiera opis następujących elementów:
 
-- Lokalizacja źródłowa obiektu blob do skopiowania: **FolderPath** i **FileName**.
+- Lokalizacja obiektu blob do skopiowania: **FolderPath** i **FileName**.
 - Zwróć uwagę na użycie parametrów elementu FolderPath. Wartość „sourceBlobContainer” to nazwa parametru, a wyrażenie jest zamieniane na wartości przekazane w ramach uruchomienia potoku. Składnia umożliwiająca zdefiniowanie parametrów: `@pipeline().parameters.<parameterName>`
 
 Utwórz funkcję „SourceBlobDatasetDefinition” w pliku Program.cs

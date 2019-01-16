@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie alternatywnych tłumaczeń, Java — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym, Java — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak uzyskać alternatywne tłumaczenia terminu, oraz zapoznasz się z przykładami użycia alternatywnych tłumaczeń za pomocą języka Java i interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 2c5517b470e46423631f6a63a24ceccf5de0a919
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 001aa2a813816562cdc5e95a00b858d8958a6756
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888838"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157823"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-java"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą języka Java przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Java
 
 W tym przewodniku Szybki start dowiesz się, jak uzyskać alternatywne tłumaczenia terminu, oraz zapoznasz się z przykładami użycia alternatywnych tłumaczeń za pomocą języka Java i interfejsu API tłumaczenia tekstu w usłudze Translator.
 

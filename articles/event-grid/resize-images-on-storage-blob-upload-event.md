@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 4d35ab9df17055b798207aafd0e0bdf3b17426fb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753952"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188474"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Samouczek: Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid
 
@@ -170,8 +170,8 @@ Subskrypcja zdarzeń wskazuje, które zdarzenia generowane przez dostawcę mają
     | **Typ subskrybenta** |  generowany automatycznie |  Wstępnie zdefiniowany jako element webhook. |
     | **Punkt końcowy subskrybenta** | generowany automatycznie | Użyj automatycznie wygenerowanego adresu URL punktu końcowego. | 
     | **Nazwa** | imageresizersub | Nazwa identyfikująca nową subskrypcję zdarzeń. | 
-
-4. Kliknij pozycję **Utwórz**, aby dodać subskrypcję zdarzeń. Spowoduje to utworzenie subskrypcji zdarzeń, która wyzwala funkcję `imageresizerfunc` po dodaniu obiektu blob do kontenera *images*. Funkcja zmieni rozmiar obrazów i doda je do kontenera *thumbnails*.
+4. *Opcjonalnie:* Jeśli musisz utworzyć dodatkowe kontenery w tym samym magazynie obiektów blob dla innych celów w przyszłości, możesz użyć funkcji **Filtrowanie podmiotów** na karcie **Filtry**, aby bardziej szczegółowo określać docelowe zdarzenia obiektów blob. Dzięki temu upewnisz się, że aplikacja funkcji będzie wywoływana tylko wtedy, gdy obiekty będą są dodawane specjalnie do kontenera **images**. 
+5. Kliknij pozycję **Utwórz**, aby dodać subskrypcję zdarzeń. Spowoduje to utworzenie subskrypcji zdarzeń, która wyzwala funkcję `imageresizerfunc` po dodaniu obiektu blob do kontenera *images*. Funkcja zmieni rozmiar obrazów i doda je do kontenera *thumbnails*.
 
 Ponieważ usługi zaplecza zostały już skonfigurowane, można przetestować funkcję zmieniania rozmiaru obrazów w przykładowej aplikacji internetowej. 
 

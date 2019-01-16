@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2dd209025db762f659510898e23cb371a31291b9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3e192449858d6cbd2d054fa7c70276739cfe1143
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544689"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189483"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -132,9 +132,9 @@ Podobnie jak w przypadku zmiany warstw można skalować repliki zapytania w pozi
 
 ## <a name="built-on-sql-server-analysis-services"></a>Powstałe na bazie usług SQL Server Analysis Services
 
-Usługi Azure Analysis Services są zgodne z wieloma wspaniałymi funkcjami, które już istnieją w usługach SQL Server Analysis Services Enterprise Edition. Usługa Azure Analysis Services obsługuje modele tabelaryczne na [poziomie zgodności](analysis-services-compat-level.md) 1200 lub wyższym. Modele tabelaryczne to relacyjne konstrukcje modelowania (model, tabele, kolumny) wyrażone w postaci definicji obiektów metadanych tabelarycznych w kodzie języka TMSL (Tabular Model Scripting Language) i modelu TOM (Tabular Model Object). Obsługiwane są partycje, perspektywy, zabezpieczenia na poziomie wierszy, relacje dwukierunkowe i przekształcenia*. Modele wielowymiarowe ani dodatek PowerPivot dla programu Sharepoint *nie są* obsługiwane w usłudze Azure Analysis Services.
+Usługi Azure Analysis Services są zgodne z wieloma wspaniałymi funkcjami, które już istnieją w usługach SQL Server Analysis Services Enterprise Edition. Usługa Azure Analysis Services obsługuje modele tabelaryczne na [poziomie zgodności](analysis-services-compat-level.md) 1200 lub wyższym. Modele tabelaryczne to relacyjne konstrukcje modelowania (model, tabele, kolumny) wyrażone w postaci definicji obiektów metadanych tabelarycznych w kodzie języka TMSL (Tabular Model Scripting Language) i modelu TOM (Tabular Model Object). Obsługiwane są partycje, perspektywy, zabezpieczenia na poziomie wierszy, relacje dwukierunkowe i przekształcenia*. Modele wielowymiarowe ani dodatek PowerPivot dla programu SharePoint *nie są* obsługiwane w usłudze Azure Analysis Services.
 
-Modele tabelaryczne w trybie w pamięci i DirectQuery są obsługiwane. Modele tabelaryczne w trybie w pamięci (tryb domyślny) obsługują wiele źródeł danych. Ponieważ model danych jest wysoce skompresowany i buforowany w pamięci, ten tryb udostępnia najszybszą odpowiedź na zapytanie dotyczące dużych ilości danych. Zapewnia on także większą elastyczność w przypadku złożonych zestawów danych i zapytań. Partycjonowanie umożliwia ładowanie przyrostowe, zwiększa możliwości przetwarzania równoległego i zmniejsza zużycie pamięci. Inne zaawansowane funkcje modelowania danych, takie jak tabele obliczeniowe, oraz wszystkie funkcje języka DAX są obsługiwane. Modele w pamięci muszą być odświeżane (przetwarzane) w celu aktualizacji informacji buforowanych na podstawie źródeł danych. Dzięki obsłudze jednostek usług platformy Azure nienadzorowane operacje odświeżania przy użyciu programu PowerShell, modelu TOM, języka TMSL i stylu REST oferują elastyczność sprawdzania aktualności danych. 
+Modele tabelaryczne w trybie w pamięci i DirectQuery są obsługiwane. Modele tabelaryczne w trybie w pamięci (tryb domyślny) obsługują wiele źródeł danych. Ponieważ model danych jest wysoce skompresowany i buforowany w pamięci, ten tryb udostępnia najszybszą odpowiedź na zapytanie dotyczące dużych ilości danych. Zapewnia on także większą elastyczność w przypadku złożonych zestawów danych i zapytań. Partycjonowanie umożliwia ładowanie przyrostowe, zwiększa możliwości przetwarzania równoległego i zmniejsza zużycie pamięci. Inne zaawansowane funkcje modelowania danych, takie jak tabele obliczeniowe, oraz wszystkie funkcje języka DAX są obsługiwane. Modele w pamięci muszą być odświeżane (przetwarzane) w celu aktualizacji informacji buforowanych na podstawie źródeł danych. Dzięki obsłudze jednostek usług platformy Azure nienadzorowane operacje odświeżania przy użyciu programu PowerShell, modelu TOM, języka TMSL i stylu REST oferują elastyczność w zakresie sprawdzania aktualności danych. 
 
 Tryb DirectQuery* używa relacyjnej bazy danych zaplecza do magazynowania i wykonywania zapytań. Bardzo duże zestawy danych w pojedynczych źródłach danych SQL Server, SQL Server Data Warehouse, Azure SQL Database, Azure SQL Data Warehouse, Oracle i Teradata są obsługiwane. Zestawy danych zaplecza mogą przekraczać rozmiar dostępnej pamięci zasobów serwera. Złożone scenariusze odświeżania modeli danych nie są potrzebne. Istnieją również pewne ograniczenia, takie jak ograniczone typy źródeł danych i ograniczenia formuł języka DAX, a niektóre zaawansowane funkcje modelowania danych nie są obsługiwane. Przed zidentyfikowaniem odpowiadającego Ci trybu zobacz [DirectQuery mode](https://docs.microsoft.com/sql/analysis-services/tabular-models/directquery-mode-ssas-tabular) (Tryb DirectQuery).
 
@@ -176,7 +176,7 @@ Modele tabelaryczne na wszystkich poziomach zgodności obsługują zabezpieczeni
 
 Modele tabelaryczne na poziomie zgodności 1400 obsługują zabezpieczenia na poziomie obiektu, które obejmują zabezpieczenia na poziomie tabeli i zabezpieczenia na poziomie kolumny. Zabezpieczenia na poziomie obiektu są ustawiane w metadanych opartych na formacie JSON w pliku Model.bim przy użyciu języka TMSL lub modelu TOM. Aby dowiedzieć się więcej, zobacz [Object-level security](https://docs.microsoft.com/sql/analysis-services/tabular-models/object-level-security) (Zabezpieczenia na poziomie obiektu).
 
-### <a name="automation-through-service-principles"></a>Automatyzacja za pośrednictwem zasad usługi
+### <a name="automation-through-service-principals"></a>Automatyzacja za pośrednictwem jednostek usług
 
 Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Jednostki usług są używane przez usługę Azure Automation, tryb nienadzorowany programu PowerShell, niestandardowe aplikacje klienckie i aplikacje internetowe do automatyzacji typowych zadań, takich jak odświeżanie danych, skalowanie w górę lub w dół oraz wstrzymywanie i wznawianie. Uprawnienia są przypisywane do jednostek usług za pośrednictwem członkostwa w rolach. Aby dowiedzieć się więcej, zobacz [Automation with service principals](analysis-services-service-principal.md) (Automatyzacja przy użyciu jednostek usługi).
 

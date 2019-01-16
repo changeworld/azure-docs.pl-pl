@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/7/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a28a4f8dd5087377d559c50ef3432251510810b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 088fc2b7aeb318481a81387770f1dcef2883241d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195145"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Zscaler Internet Access Administrator
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Do skonfigurowania integracji usługi Azure AD z aplikacją Zscaler Internet Access Administrator potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Włączona subskrypcja aplikacji Zscaler Internet Access Administrator z logowaniem jednokrotnym
+* Subskrypcja aplikacji Zscaler Internet Access Administrator
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -105,6 +105,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
     ![Adresy URL i domena aplikacji Zscaler Internet Access Administrator — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL zgodnie z wymaganiami:
+    
     | |
     |--|
     | `https://admin.zscaler.net` |
@@ -115,6 +116,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
     | `https://admin.zscalerbeta.net` |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL zgodnie z wymaganiami:
+    
     | |
     |--|
     | `https://admin.zscaler.net/adminsso.do` |
@@ -165,37 +167,19 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
 
 ### <a name="configure-zscaler-internet-access-administrator-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Zscaler Internet Access Administrator
 
-9. W innym oknie przeglądarki internetowej zaloguj się jako administrator do firmowej witryny aplikacji Zscaler Internet Access Administrator jako administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się do interfejsu użytkownika aplikacji Zscaler Internet Access Administrator.
 
-10. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
+2. Przejdź do pozycji **Administracja > Zarządzanie administratorami** i wykonaj następujące kroki, po czym kliknij przycisk Zapisz:
    
-    ![Administracja](./media/zscaler-internet-access-administrator-tutorial/ic800206.png "Administracja")
+    ![Administracja](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administracja")
 
-    a. W obszarze Typ uwierzytelniania wybierz pozycję **SAML**.
+    a. Zaznacz pozycję **Włącz uwierzytelnianie SAML**.
 
-    b. Kliknij pozycję **Skonfiguruj język SAML**.
-
-11. W oknie **Edytowanie języka SAML** wykonaj poniższe kroki i kliknij przycisk Zapisz.  
-            
-    ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-internet-access-administrator-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
+    b. Kliknij pozycję **Przekaż**, aby przekazać certyfikat podpisywania języka SAML na platformie Azure, który został pobrany z witryny Azure Portal w obrębie **publicznego certyfikatu SSL**.
     
-    a. W polu tekstowym **Adres URL portalu języka SAML** wklej **adres URL logowania** skopiowany z witryny Azure Portal.
+    d. Opcjonalnie, w celu poprawy zabezpieczeń, dodaj szczegóły **wystawcy**, aby sprawdzić odpowiedź wystawcy SAML.
 
-    b. W polu tekstowym **Atrybut nazwy logowania** wprowadź identyfikator **NameID**.
-
-    d. Kliknij pozycję **Przekaż**, aby przekazać certyfikat podpisywania języka SAML na platformie Azure, który został pobrany z witryny Azure Portal w obrębie **publicznego certyfikatu SSL**.
-
-    d. Przełącz element **Włącz automatyczne aprowizowanie języka SAML**.
-
-    e. W polu tekstowym **Atrybut nazwy wyświetlanej użytkownika** wprowadź ciąg **displayName**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu displayName.
-
-    f. W polu tekstowym **Atrybut nazwy grupy** wprowadź ciąg **memberOf**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu memberOf.
-
-    g. W polu **Atrybut nazwy działu** wprowadź ciąg **department**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu department.
-
-    i. Kliknij pozycję **Zapisz**.
-
-12. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
+3. W interfejsie użytkownika administratora wykonaj następujące kroki:
 
     ![Administracja](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
@@ -256,15 +240,16 @@ W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure
 
 ### <a name="create-zscaler-internet-access-administrator-test-user"></a>Tworzenie użytkownika testowego aplikacji Zscaler Internet Access Administrator
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji Zscaler Internet Access Administrator. Aplikacja Zscaler Internet Access Administrator obsługuje aprowizowanie just in time, które jest domyślnie włączone. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby uzyskania dostępu do aplikacji Zscaler Internet Access Administrator, jeśli jeszcze nie istnieje.
->[!Note]
->Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z  [zespołem pomocy technicznej ds. aplikacji Zscaler Internet Access Administrator](Phone: +1-408-701-0534 URL: help.zscaler.com).
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji Zscaler Internet Access Administrator. Aplikacja Zscaler Internet Access nie obsługuje inicjowania aprowizacji Just-In-Time dla logowania jednokrotnego administratora. Musisz ręcznie utworzyć konto administratora.
+Instrukcje dotyczące sposobu tworzenia konta administratora można znaleźć w dokumentacji aplikacji Zscaler:
+
+https://help.zscaler.com/zia/adding-admins
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka aplikacji Zscaler Internet Access Administrator w panelu dostępu nastąpi automatyczne zalogowanie do aplikacji Zscaler Internet Access Administrator, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka aplikacji Zscaler Internet Access Administrator w panelu dostępu powinno nastąpić automatyczne zalogowanie do interfejsu użytkownika aplikacji Zscaler Internet Access Administrator, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

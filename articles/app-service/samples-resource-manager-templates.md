@@ -10,19 +10,21 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 10/15/2018
+ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: d2b7e7a29838fd14292e3498c8db3a496d7d9434
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 842ec98245522095334b9f17e8c12292b7c1dda8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717810"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035444"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Szablony usługi Azure Resource Manager dla usługi App Service
 
 Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla usługi Azure App Service. Aby zapoznać się z zaleceniami dotyczącymi unikania typowych błędów podczas tworzenia szablonów aplikacji, zobacz [Guidance on deploying web apps with Azure Resource Manager templates (Wskazówki dotyczące wdrażania aplikacji przy użyciu szablonów usługi Azure Resource Manager)](deploy-resource-manager-template.md).
+
+Aby poznać składnię JSON i właściwości dla zasobów usługi App Services, zobacz temat [typy zasobów Microsoft.Web](/azure/templates/microsoft.web/allversions).
 
 | | |
 |-|-|

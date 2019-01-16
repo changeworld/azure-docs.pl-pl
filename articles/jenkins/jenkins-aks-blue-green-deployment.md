@@ -3,17 +3,17 @@ title: Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera
 description: Dowiedz się, w jaki sposób przeprowadzić wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania.
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, wdrażanie niebieskie zielone, ciągłe dostarczanie, cd
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387391"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073887"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
 
@@ -259,7 +259,7 @@ W tej sekcji zobaczysz, jak przygotować serwer Jenkins do uruchomienia kompilac
 
 ## <a name="run-the-job"></a>Uruchamianie zadania
 
-1. Upewnij się, że możesz pomyślnie uruchomić projekt w środowisku lokalnym. Instrukcja znajduje się w sekcji [Run project on local machine](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) (Uruchamianie projektu na komputerze lokalnym).
+1. Upewnij się, że możesz pomyślnie uruchomić projekt w środowisku lokalnym. Oto kroki tej procedury: [Run project on local machine](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) (Uruchamianie projektu na komputerze lokalnym).
 
 1. Uruchom zadanie serwera Jenkins. Podczas pierwszego uruchomienia zadania serwer Jenkins wdraża aplikację z listą zadań do wykonania w niebieskim środowisku, które domyślnie jest środowiskiem nieaktywnym. 
 

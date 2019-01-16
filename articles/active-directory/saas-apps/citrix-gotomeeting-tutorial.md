@@ -1,242 +1,221 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z GoToMeeting | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory oraz usługi GoToMeeting.
+title: 'Samouczek: integracja usługi Azure Active Directory z usługą GoToMeeting | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a usługą GoToMeeting.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/02/2018
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: b62b3b7f9f3bfd55237ed4d894954a0bde48e7fc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
-ms.translationtype: MT
+ms.openlocfilehash: f1632ffa6bf4f0896fe4155b9a3fe938d0e672fc
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043724"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065022"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Samouczek: Integracja usługi Azure Active Directory z GoToMeeting
+# <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Samouczek: Integracja usługi Azure Active Directory z usługą GoToMeeting
 
-W tym samouczku dowiesz się, jak zintegrować GoToMeeting z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować usługę GoToMeeting z usługą Azure Active Directory (Azure AD).
+Zintegrowanie usługi GoToMeeting z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie GoToMeeting z usługą Azure AD zapewnia następujące korzyści:
+* Możliwość kontrolowania dostępu do usługi GoToMeeting za pomocą usługi Azure AD.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do usługi GoToMeeting (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do GoToMeeting.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do GoToMeeting (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą GoToMeeting, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z usługą GoToMeeting potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- GoToMeeting logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi GoToMeeting z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie GoToMeeting z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-gotomeeting-from-the-gallery"></a>Dodawanie GoToMeeting z galerii
-Aby skonfigurować integrację GoToMeeting w usłudze Azure AD, należy dodać GoToMeeting z galerii z listą zarządzanych aplikacji SaaS.
+* Usługa GoToMeeting obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać GoToMeeting z galerii, wykonaj następujące czynności:**
+## <a name="adding-gotomeeting-from-the-gallery"></a>Dodawanie usługi GoToMeeting z galerii
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację usługi GoToMeeting z usługą Azure AD, należy z poziomu galerii dodać usługę GoToMeeting do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać usługę GoToMeeting z galerii, wykonaj następujące kroki:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-4. W polu wyszukiwania wpisz **GoToMeeting**, wybierz opcję **GoToMeeting** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![GoToMeeting na liście wyników](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą GoToMeeting w oparciu o użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **GoToMeeting**, wybierz pozycję **GoToMeeting** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w GoToMeeting dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w GoToMeeting musi można ustanowić.
+     ![Pozycja GoToMeeting na liście wyników](common/search-new-app.png)
 
-Usługi GoToMeeting przypisywanie wartości **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD jednokrotne logowanie w usłudze GoToMeeting, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w usłudze GoToMeeting, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usługi GoToMeeting.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego GoToMeeting](#create-a-gotomeeting-test-user)**  — aby odpowiednikiem Britta Simon w GoToMeeting połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z usługą GoToMeeting, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w usłudze GoToMeeting](#configure-gotomeeting-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego usługi GoToMeeting](#create-gotomeeting-test-user)** — aby w usłudze GoToMeeting istniał odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji GoToMeeting.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z GoToMeeting, wykonaj następujące czynności:**
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. W witrynie Azure portal na **GoToMeeting** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z usługą GoToMeeting, wykonaj następujące kroki:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **GoToMeeting** wybierz pozycję **Logowanie jednokrotne**.
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-3. Na **GoToMeeting domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![GoToMeeting domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    W **identyfikator** pole tekstowe, wpisz adres URL: `https://authentication.logmeininc.com/saml/sp`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-4. Kliknij przycisk **Pokaż zaawansowane adres URL konfiguracji** i skonfigurować poniższe adresy URL
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    **Adres URL logowania** (Zachowaj to puste)
-    
-    **Adres URL odpowiedzi**: `https://authentication.logmeininc.com/saml/acs`
-    
-    **RelayState**:
-    
-    - W przypadku aplikacji GoToMeeting Użyj `https://global.gotomeeting.com`
-    
-    - Aby uzyskać obsługę usług GoToTraining należy użyć `https://global.gototraining.com`
-    
-    - W przypadku GoToWebinar Użyj `https://global.gotowebinar.com` 
-    
-    - W przypadku GoToAssist Użyj `https://app.gotoassist.com`
-    
-5. Kliknij przycisk **Zapisz** przycisku.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/citrix-gotomeeting-tutorial/tutorial_general_400.png)
+    ![Informacje o domenie i adresach URL usługi GoToMeeting na potrzeby logowania jednokrotnego](common/both-allurls.png)
 
-6. W oknie innej przeglądarki, zaloguj się do Twojej [GoToMeeting organizacja Center](https://organization.logmeininc.com/). Użytkownik jest monitowany o potwierdzenie, że dostawca tożsamości został zaktualizowany
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://authentication.logmeininc.com/saml/sp`
 
-7. Zaznacz pole wyboru "Moje dostawca tożsamości został zaktualizowany o nową domenę". Kliknij przycisk **gotowe** po zakończeniu.
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://authentication.logmeininc.com/saml/acs`
 
+    d. Kliknij pozycję **Ustaw dodatkowe adresy URL**, a następnie skonfiguruj poniższe adresy URL
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. **Adres URL logowania**: pozostaw puste
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    e. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca:
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+    - W przypadku usługi GoToMeeting użyj adresu URL `https://global.gotomeeting.com`
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    - W przypadku usługi GoToTraining użyj adresu URL `https://global.gototraining.com`
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    - W przypadku usługi GoToWebinar użyj adresu URL `https://global.gotowebinar.com` 
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    - W przypadku usługi GoToAssist użyj adresu URL `https://app.gotoassist.com`
 
-    ![Przycisk usługi Azure Active Directory](./media/citrix-gotomeeting-tutorial/create_aaduser_01.png)
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta usługi GoToMeeting](https://go.microsoft.com/fwlink/?linkid=845985), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/citrix-gotomeeting-tutorial/create_aaduser_02.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+6. W sekcji **Konfigurowanie usługi GoToMeeting** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Przycisk Dodaj](./media/citrix-gotomeeting-tutorial/create_aaduser_03.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+    a. Adres URL logowania
 
-    ![Okno dialogowe użytkownika](./media/citrix-gotomeeting-tutorial/create_aaduser_04.png)
+    b. Identyfikator usługi Azure AD
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    d. Adres URL wylogowywania
 
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
+### <a name="configure-gotomeeting-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze GoToMeeting
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+1. W innym oknie przeglądarki zaloguj się do [centrum aplikacji usługi GoToMeeting](https://organization.logmeininc.com/). Zostanie wyświetlony monit o konieczności potwierdzenia, że dostawca tożsamości został zaktualizowany.
 
-    d. Kliknij przycisk **Utwórz**.
- 
-### <a name="create-a-gotomeeting-test-user"></a>Tworzenie użytkownika testowego GoToMeeting
+2. Zaznacz pole wyboru My Identity Provider has been updated with the new domain (Mój dostawca tożsamości został zaktualizowany za pomocą nowej domeny). Po zakończeniu kliknij przycisk **Done** (Gotowe).
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w GoToMeeting. GoToMeeting obsługę just-in-time, który jest domyślnie włączona.
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Brak elementu akcji dla Ciebie w tej sekcji. Jeśli użytkownik jeszcze nie istnieje w GoToMeeting, nowy katalog jest tworzony podczas próby uzyskania dostępu GoToMeeting.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-> [!NOTE]
-> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej GoToMeeting](https://support.logmeininc.com/gotomeeting).
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+
+    ![Przycisk Nowy użytkownik](common/new-user.png)
+
+3. We właściwościach użytkownika wykonaj następujące kroki.
+
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
+
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
+
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do GoToMeeting.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi GoToMeeting.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **GoToMeeting**.
 
-**Aby przypisać Britta Simon GoToMeeting, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **GoToMeeting**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link do usługi GoToMeeting na liście aplikacji](common/all-applications.png)
 
-2. Na liście aplikacji wybierz **GoToMeeting**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link GoToMeeting na liście aplikacji](./media/citrix-gotomeeting-tutorial/tutorial_gotomeeting_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-gotomeeting-test-user"></a>Tworzenie użytkownika testowego usługi GoToMeeting
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w usłudze GoToMeeting. Usługa GoToMeeting obsługuje aprowizację użytkowników just in time, która jest domyślnie włączona.
+
+W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w usłudze GoToMeeting, zostanie utworzony po uwierzytelnieniu.
+
+> [!NOTE]
+> Jeśli potrzebujesz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej usługi GoToMeeting](https://support.logmeininc.com/gotomeeting).
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka GoToMeeting w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji GoToMeeting.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka GoToMeeting w panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi GoToMeeting, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/gotomeeting-tutorial/tutorial_general_01.png
-[2]: ./media/gotomeeting-tutorial/tutorial_general_02.png
-[3]: ./media/gotomeeting-tutorial/tutorial_general_03.png
-[4]: ./media/gotomeeting-tutorial/tutorial_general_04.png
-
-[100]: ./media/gotomeeting-tutorial/tutorial_general_100.png
-
-[200]: ./media/gotomeeting-tutorial/tutorial_general_200.png
-[201]: ./media/gotomeeting-tutorial/tutorial_general_201.png
-[202]: ./media/gotomeeting-tutorial/tutorial_general_202.png
-[203]: ./media/gotomeeting-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

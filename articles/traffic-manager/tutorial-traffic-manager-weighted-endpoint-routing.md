@@ -1,5 +1,5 @@
 ---
-title: Samouczek — kierowanie ruchu do punktów końcowych z wagami przy użyciu usługi Azure Traffic Manager | Microsoft Docs
+title: Samouczek — kierowanie ruchu do punktów końcowych z wagami — usługa Azure Traffic Manager
 description: W tym artykule zawierającym samouczek opisano sposób kierowania ruchu do punktów końcowych z wagami za pomocą usługi Traffic Manager.
 services: traffic-manager
 author: KumudD
@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: 0f5b1f3525ab75f8c14f7921e23b30a1c58e8c73
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158826"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055017"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Samouczek: sterowanie routingiem ruchu za pomocą punktów końcowych z wagami przy użyciu usługi Traffic Manager 
 

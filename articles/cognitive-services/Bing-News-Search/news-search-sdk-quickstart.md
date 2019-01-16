@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258767"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156803"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla języka C#
 
@@ -35,14 +35,14 @@ Zainstalowanie [pakietu NuGet News Search SDK](https://www.nuget.org/packages/Mi
 * Newtonsoft.Json
 
 ## <a name="news-search-client"></a>Klient wyszukiwania wiadomości
-Aby utworzyć wystąpienie klienta `NewsSearchAPI`, dodaj dyrektywę using:
+Aby utworzyć wystąpienie elementu `NewsSearchClient`, dodaj dyrektywę using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
 Następnie utwórz wystąpienie klienta:
 ```
-var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
@@ -56,7 +56,7 @@ Przeanalizuj wiadomości zwrócone w wynikach poprzedniego zapytania:
 ```
 if (newsResults.Value.Count > 0)
 {
-    var firstNewsResult = newsResults.Value.First();
+    var firstNewsResult = newsResults.Value[0];
 
     Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
     Console.WriteLine($"News result count: {newsResults.Value.Count}");
@@ -64,7 +64,7 @@ if (newsResults.Value.Count > 0)
     Console.WriteLine($"First news url: {firstNewsResult.Url}");
     Console.WriteLine($"First news description: {firstNewsResult.Description}");
     Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
+    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
 }
 
 else
@@ -88,7 +88,7 @@ namespace NewsSrchSDK
     {
         static void Main(string[] args)
         {
-            var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -141,7 +141,7 @@ namespace NewsSrchSDK
 ## <a name="recent-news-freshness-and-sortby-parameters"></a>Najnowsze wiadomości — parametry freshness (aktualność) i sortBy (sortowanie według)
 Poniższy kod wyszukuje najnowsze wiadomości dotyczące tematu „Artificial Intelligence” (sztucznej inteligencji) za pomocą parametrów `freshness` i `sortBy`. Sprawdza liczbę wyników i wyświetla parametry `totalEstimatedMatches` (szacowana liczba dopasowań), `name` (nazwa), `url` (adres URL), `description` (opis), `published time` (czas publikacji) i `name` (nazwa dostawcy) pierwszego wyniku.
 ```
-        public static void NewsSearchWithFilters(NewsSearchAPI client)
+        public static void NewsSearchWithFilters(NewsSearchClient client)
         {
             try
             {
@@ -184,7 +184,7 @@ Poniższy kod wyszukuje najnowsze wiadomości dotyczące tematu „Artificial In
 ## <a name="category-news-safe-search"></a>Kategorie wiadomości, bezpieczne wyszukiwanie
 Poniższy kod wyszukuje wiadomości z kategorii filmów i telewizji przy użyciu bezpiecznego wyszukiwania.  Sprawdza liczbę wyników i wyświetla parametry `category` (kategoria), `name` (nazwa), `url` (adres URL), `description` (opis), `published time` (czas publikacji) i `name` (nazwa dostawcy) pierwszego wyniku.
 ```
-        public static void NewsCategory(NewsSearchAPI client)
+        public static void NewsCategory(NewsSearchClient client)
         {
             try
             {
@@ -226,7 +226,7 @@ Poniższy kod wyszukuje wiadomości z kategorii filmów i telewizji przy użyciu
 ## <a name="trending-topics"></a>Popularne tematy
 Poniższy kod wyszukuje popularne tematy wiadomości w usłudze Bing. Sprawdza liczbę wyników i wyświetla parametry `name` (nazwa), `text of query` (tekst zapytania), `webSearchUrl` (adres URL wyszukiwania w Internecie), `newsSearchUrl` (adres URL wyszukiwania wiadomości) i `image.Url` (adres URL obrazu) pierwszego wyniku.
 ```
-        public static void TrendingTopics(NewsSearchAPI client)
+        public static void TrendingTopics(NewsSearchClient client)
         {
             try
             {

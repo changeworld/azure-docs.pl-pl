@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.date: 01/02/2019
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963253"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065549"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -22,7 +22,7 @@ Usługa Azure Storage to rozwiązanie do magazynowania w chmurze firmy Microsoft
 - **Niezawodność i wysoka dostępność.** Nadmiarowość zapewnia bezpieczeństwo danych w przypadku przejściowych awarii sprzętu. Dla dodatkowej ochrony przed lokalnymi katastrofami lub klęskami żywiołowymi można również zdecydować się na replikowanie danych między centrami danych lub regionami geograficznymi. Dane replikowane w ten sposób pozostają wysoce dostępne w przypadku awarii. 
 - **Bezpieczeństwo.** Wszystkie dane zapisane w usłudze Azure Storage są przez nią szyfrowane. Usługa Azure Storage zapewnia precyzyjną kontrolę tego, kto ma dostęp do danych.
 - **Skalowalność.** Usługa Azure Storage została zaprojektowana jako wysoce skalowalne rozwiązanie spełniające potrzeby związane z magazynowaniem danych i wydajnością współczesnych aplikacji. 
-- **Zarządzanie.** Usługa Microsoft Azure obsługuje za Ciebie konserwację i wszelkie problemy krytyczne.
+- **Zarządzanie.** Platforma Microsoft Azure obsługuje konserwację sprzętu, aktualizacje i krytyczne problemy za Ciebie.
 - **Dostępność.** Dane w usłudze Azure Storage są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Firma Microsoft udostępnia zestawy SDK usługi Azure Storage w różnych językach — .NET, Java, Node.js, Python, PHP, Ruby, Go i innych — oraz dojrzały interfejs API REST. Usługa Azure Storage obsługuje skrypty programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Witryna Azure Portal oraz Eksplorator usługi Azure Storage oferują proste rozwiązania wizualne do pracy z danymi.  
 
 ## <a name="azure-storage-services"></a>Usługi Azure Storage
@@ -89,30 +89,9 @@ Usługa Azure Storage obejmuje również wszystkie funkcje dysków zarządzanych
 
 ## <a name="types-of-storage-accounts"></a>Typy kont magazynu
 
-W poniższej tabeli przedstawiono różne rodzaje kont magazynu i obiekty, których można używać z każdym z nich.
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|**Typ konta magazynu**|**Przeznaczenie ogólne w warstwie Standardowa**|**Przeznaczenie ogólne w warstwie Premium**|**Usługa Blob Storage w gorącej i chłodnej warstwie dostępu**|
-|-----|-----|-----|-----|
-|**Obsługiwane usługi**| Usługi Blob, File, Queue i Table | Usługa Blob | Usługa Blob|
-|**Obsługiwane typy obiektów blob**|Blokowe obiekty blob, stronicowe obiekty blob, uzupełnialne obiekty blob | Stronicowe obiekty blob | Blokowe obiekty blob i uzupełnialne obiekty blob|
-
-### <a name="general-purpose-storage-accounts"></a>Konta magazynu ogólnego przeznaczenia
-
-Istnieją dwa rodzaje kont magazynu ogólnego przeznaczenia.
-
-#### <a name="standard-storage"></a>Standard Storage
-
-Najczęściej używane konta magazynu to konta usługi Standard Storage, których można używać dla wszystkich typów danych. W ramach kont usługi Standard Storage dane są przechowywane na nośnikach magnetycznych.
-
-#### <a name="premium-storage"></a>Premium Storage
-
-Usługa Premium Storage zapewnia magazyn o wysokiej wydajności dla stronicowych obiektów blob, które są najczęściej używane w przypadku plików VHD. W ramach kont usługi Premium Storage dane są przechowywane na dyskach SSD. Firma Microsoft zaleca używanie usługi Premium Storage dla wszystkich maszyn wirtualnych.
-
-### <a name="blob-storage-accounts"></a>Konta usługi Blob Storage
-
-Konto usługi Blob Storage to specjalne konto magazynu używane do przechowywania blokowych obiektów blob i uzupełnialnych obiektów blob. Na tych kontach nie można przechowywać stronicowych obiektów blob, a zatem nie można też przechowywać plików VHD. Te konta umożliwiają ustawienie warstwy dostępu Gorąca lub Chłodna. Warstwę można zmienić w dowolnym momencie.
-
-Warstwa dostępu Gorąca jest używana w przypadku często używanych plików — koszt magazynowania jest wyższy, ale koszt uzyskiwania dostępu do obiektów blob jest znacznie niższy. W przypadku obiektów blob przechowywanych w warstwie dostępu Chłodna koszt uzyskiwania dostępu do obiektów blob jest wyższy, ale koszt magazynowania jest znacznie niższy.
+Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md). 
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>Uzyskiwanie dostępu do obiektów blob, plików i kolejek
 
@@ -161,16 +140,7 @@ Aby uzyskać informacje na temat odzyskiwania po awarii, zobacz [Co zrobić po w
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Transferowanie danych do i z usługi Azure Storage
 
-Za pomocą narzędzia wiersza polecenia AzCopy możesz kopiować obiekty blob, pliki i dane w ramach jednego lub wielu kont magazynu. Zobacz jeden z następujących artykułów, aby uzyskać pomoc:
-
-* [Transferowanie danych za pomocą narzędzia AzCopy dla systemu Windows](storage-use-azcopy.md)
-* [Transferowanie danych za pomocą narzędzia AzCopy dla systemu Linux](storage-use-azcopy-linux.md)
-
-Podstawą narzędzia AzCopy jest [biblioteka przenoszenia danych platformy Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), która jest aktualnie dostępna w wersji zapoznawczej.
-
-Przy użyciu usługi Azure Import/Export można importować lub eksportować duże ilości danych obiektów blob do lub z konta magazynu. Należy przygotować wiele dysków twardych i wysłać je do centrum danych platformy Azure. Dane zostaną przetransferowane z dysków twardych lub na dyski twarde, po czym dyski zostaną odesłane. Aby uzyskać więcej informacji o usłudze Import/Export, zobacz [Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export](../storage-import-export-service.md).
-
-W celu importowania dużych ilości danych obiektów blob do konta magazynu w szybki, niedrogi i niezawodny sposób, możesz również użyć usługi Azure Data Box Disk. Firma Microsoft dostarcza do 5 zaszyfrowanych dysków półprzewodnikowych (SSD, solid-state drive) o pojemności 40 TB do Twojego centrum danych za pomocą regionalnego przewoźnika. Szybko konfigurujesz dyski, kopiujesz na nie dane za pomocą połączenia USB i odsyłasz z powrotem do zespołu platformy Azure. W centrum danych platformy Azure dane są automatycznie przekazywane z dysków do chmury. Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz [Azure Data Box Disk — omówienie](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Jest dostępnych kilka opcji umożliwiających przenoszenie danych do usługi Azure Storage lub poza nią. Wybór opcji zależy od rozmiaru zestawu danych i przepustowości sieci. Aby uzyskać więcej informacji, zobacz [Wybieranie rozwiązania platformy Azure do transferu danych](storage-choose-data-transfer-solution.md).
 
 ## <a name="pricing"></a>Cennik
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie alternatywnych tłumaczeń, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak uzyskać alternatywne tłumaczenia terminu, oraz zapoznasz się z przykładami użycia alternatywnych tłumaczeń za pomocą platformy .NET Core i interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 034b6e102d008039ddd138798900dbee17faf51d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3460c1c62f26e2bb0a4a14238e110cdd363a7a87
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887954"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159574"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-c"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą języka C# oraz interfejsu API tłumaczenia tekstu w usłudze Translator
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka C#
 
 W tym przewodniku Szybki start dowiesz się, jak uzyskać alternatywne tłumaczenia terminu, oraz zapoznasz się z przykładami użycia alternatywnych tłumaczeń za pomocą platformy .NET Core i interfejsu API tłumaczenia tekstu w usłudze Translator.
 

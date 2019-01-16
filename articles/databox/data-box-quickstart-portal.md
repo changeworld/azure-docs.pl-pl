@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 10/04/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385847"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188559"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Szybki start: wdrażanie usługi Azure Data Box za pomocą witryny Azure Portal
 
 W tym przewodniku Szybki start opisano sposób wdrażania usługi Azure Data Box przy użyciu witryny Azure Portal. Przedstawiono między innymi czynności podłączania i konfigurowania urządzenia Data Box oraz kopiowania na nie danych do przekazania na platformę Azure. Czynności opisane w przewodniku Szybki start należy wykonać w witrynie Azure Portal oraz w lokalnym internetowym interfejsie użytkownika na urządzeniu.
 
-Aby zyskać szczegółowe instrukcje wdrażania i śledzenia krok po kroku, zobacz [Tutorial: Order Azure Data Box (Samouczek: zamawianie urządzenia Azure Data Box)](data-box-deploy-ordered.md).
+Aby zyskać szczegółowe instrukcje dotyczące wdrażania i śledzenia krok po kroku, zobacz [Samouczek: zamawianie urządzenia Azure Data Box](data-box-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,7 +28,6 @@ Przed rozpoczęciem:
 - Sprawdź, czy subskrypcja, której używasz na potrzeby usługi Data Box, to subskrypcja jednego z następujących typów:
     - Microsoft Enterprise Agreement (EA). Dowiedz się więcej na temat [subskrypcji umowy EA](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Dowiedz się więcej o [programie Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Użycie — płatność zgodnie z rzeczywistym użyciem. Więcej informacji na temat [subskrypcji z płatnością zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/) platformy Azure.
     - Dostęp sponsorowany Microsoft Azure. Dowiedz się więcej o [programie dostępu sponsorowanego Azure](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - Sprawdź, czy masz dostęp na poziomie właściciela lub współautora do subskrypcji, aby móc utworzyć zamówienie urządzenia Data Box.

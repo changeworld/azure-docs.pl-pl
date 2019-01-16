@@ -11,16 +11,16 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: f5b39b428b894fcf5dddc0a7435353d174d83b78
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231206"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065275"
 ---
 # <a name="what-is-azure-logic-apps"></a>Co to jest usługa Azure Logic Apps?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) to usługa w chmurze, która ułatwia automatyzowanie i organizowanie zadań, procesów biznesowych i [przepływów pracy](#logic-app-concepts) na potrzeby integracji aplikacji, danych, systemów oraz usług w przedsiębiorstwach lub organizacjach. Usługa Logic Apps ułatwia projektowanie i tworzenie skalowalnych rozwiązań na potrzeby integracji aplikacji, danych, systemów i usług Enterprise Application Integration (EAI) oraz komunikacji między firmami (B2B), zarówno w chmurze, jak i środowisku lokalnym.
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) to usługa w chmurze, która ułatwia automatyzowanie i organizowanie zadań, procesów biznesowych i [przepływów pracy](#logic-app-concepts) na potrzeby integracji aplikacji, danych, systemów oraz usług w przedsiębiorstwach lub organizacjach. Usługa Logic Apps ułatwia projektowanie i tworzenie skalowalnych rozwiązań na potrzeby [integracji](https://azure.microsoft.com/product-categories/integration/) aplikacji, danych, systemów i usług Enterprise Application Integration (EAI) oraz komunikacji między firmami (B2B), zarówno w chmurze, jak i środowisku lokalnym.
 
 Poniżej przedstawiono kilka przykładowych obciążeń, które można zautomatyzować za pomocą aplikacji logiki:
 
@@ -41,7 +41,7 @@ Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie 
 
 ![Projektant aplikacji usługi Logic Apps — przykładowa aplikacja logiki](./media/logic-apps-overview/overview.png)
 
-Aplikacje logiki można tworzyć wizualnie za pomocą Projektanta aplikacji usługi Logic Apps dostępnego w witrynie Azure Portal za pośrednictwem przeglądarki i w programie Visual Studio. Aby zbudować kolejne niestandardowe aplikacje logiki, można utworzyć lub zmodyfikować definicje aplikacji logiki w formacie JavaScript Object Notation (JSON) w edytorze „widoku kodu”. Na potrzeby wybierania zadań można również użyć poleceń programu Azure PowerShell i szablonów usługi Azure Resource Manager. Aplikacje logiki są wdrażane i uruchamiane w chmurze na platformie Azure. Aby uzyskać bardziej szczegółowe wprowadzenie, obejrzyj film [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Korzystanie z usług Enterprise Integration Services platformy Azure na potrzeby uruchamiania aplikacji w chmurze na dużą skalę).
+Aplikacje logiki można tworzyć wizualnie za pomocą Projektanta aplikacji usługi Logic Apps dostępnego w witrynie Azure Portal za pośrednictwem przeglądarki i w programie Visual Studio. Aby zbudować kolejne niestandardowe aplikacje logiki, można utworzyć lub zmodyfikować definicje aplikacji logiki w formacie JavaScript Object Notation (JSON) w edytorze „widoku kodu”. Na potrzeby wybierania zadań można również użyć poleceń programu Azure PowerShell i szablonów usługi Azure Resource Manager. Aplikacje logiki są wdrażane i uruchamiane w chmurze na platformie Azure. Aby uzyskać bardziej szczegółowe wprowadzenie, obejrzyj ten film: [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Korzystanie z usług Enterprise Integration Services platformy Azure na potrzeby uruchamiania aplikacji w chmurze na dużą skalę).
 
 ## <a name="why-use-logic-apps"></a>Po co korzystać z usługi Logic Apps?
 
@@ -122,7 +122,7 @@ Dowiedz się więcej o usłudze Logic Apps z tych klipów wideo z wprowadzeniem:
 
 * **Wyzwalacze**: wiele łączników zarządzanych przez firmę Microsoft udostępnia wyzwalacze, które są aktywowane, kiedy zdarzenia lub nowe dane spełniają określone warunki. Na przykład zdarzenie może odbierać wiadomość e-mail lub wykrywać zmiany na koncie usługi Azure Storage. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy nowe wystąpienie aplikacji logiki, które uruchamia przepływ pracy.
 
-* **Akcje**: akcje to wszystkie kroki wykonywane po aktywowaniu wyzwalacza. Każda akcja jest zwykle zmapowana na operację, która jest definiowana za pomocą łącznika zarządzanego, niestandardowego interfejsu API lub niestandardowego łącznika.
+* **Akcje**: akcje to wszystkie kroki wykonywane po aktywowaniu wyzwalacza. Każda akcja jest zwykle zamapowana na operację, która jest definiowana za pomocą łącznika zarządzanego, niestandardowego interfejsu API lub niestandardowego łącznika.
 
 * **Pakiet integracyjny dla przedsiębiorstw**: w przypadku bardziej zaawansowanych scenariuszy integracji usługa Logic Apps oferuje możliwości platformy BizTalk Server. Pakiet integracyjny dla przedsiębiorstw udostępnia łączniki, które ułatwiają wykonywanie sprawdzania poprawności, przekształcania i innych akcji przez aplikacje logiki.
 

@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001791"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121553"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
 
@@ -48,7 +48,7 @@ Wielu klientów zaczyna od bezpłatnej usługi. Ta wersja jest ograniczona do tr
 
 W sekcjach na pulpicie nawigacyjnym usługi wyświetlana jest liczba posiadanych już indeksów, indeksatorów i źródeł danych. 
 
-! [Lista indeksów, indeksatorów i źródeł danych][media/search-get-started-portal/tiles-indexers-datasources2.png]
+![Listy indeksów, indeksatorów i źródeł danych](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a> Tworzenie indeksu i ładowanie danych
 
@@ -124,9 +124,13 @@ Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinie
 
 ## <a name="view-the-index"></a>Wyświetlanie indeksu
 
-Na liście **Indeksy** wyświetlone są istniejące indeksy, łącznie z indeksem *realestate-us-sample* utworzonym w kreatorze w poprzednim kroku.
+Strona główna usługi zawiera linki do zasobów utworzonych w usłudze Azure Search.  Aby wyświetlić właśnie utworzony indeks, kliknij pozycję **Indeksy** na liście linków. 
 
-Korzystając z tej listy, można wyświetlić schemat indeksu i opcjonalnie dodać nowe pola, ale nie można zmienić istniejących pól. Istniejące pola mają fizyczną reprezentację w usłudze Azure Search i w związku z tym nie można ich modyfikować nawet za pomocą kodu. Aby całkowicie zmienić istniejące pole, utwórz nowy indeks, usuwając poprzednią wersję.
+   ![Lista Indeksy na pulpicie nawigacyjnym usługi](media/search-get-started-portal/indexes-list.png)
+
+Na tej liście możesz kliknąć właśnie utworzony indeks *realestate-us-sample*, aby wyświetlić schemat indeksu i opcjonalnie dodać nowe pola. 
+
+Karta **Pola** zawiera schemat indeksu. Przewiń listę w dół, aby wprowadzić nowe pole. W większości przypadków nie można zmienić istniejących pól. Istniejące pola mają fizyczną reprezentację w usłudze Azure Search i w związku z tym nie można ich modyfikować nawet za pomocą kodu. Aby całkowicie zmienić istniejące pole, utwórz nowy indeks, usuwając poprzednią wersję.
 
    ![Przykładowa definicja indeksu](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +141,8 @@ Aby dobrze zaznajomić się z elementami, które można i których nie można ed
 ## <a name="query-index"></a> Tworzenie zapytań za pomocą Eksploratora wyszukiwania
 
 Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego zapytań za pomocą wbudowanej strony zapytań, noszącej nazwę [**Eksplorator wyszukiwania**](search-explorer.md). Zawiera ona pole wyszukiwania, umożliwiające testowanie dowolnych ciągów zapytań.
+
+**Eksplorator wyszukiwania** jest przystosowany tylko do obsługi [żądań interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale akceptuje zarówno [prostą składnię zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), jak i składnię [pełnego analizatora zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), a także wszystkie parametry wyszukiwania dostępne w ramach operacji [interfejsu API REST wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples).
 
 > [!TIP]
 > Następujące kroki są prezentowane od momentu 6:08 w [klipie wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
@@ -150,11 +156,9 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
 
    ![Polecenia indeksu i interfejsu API](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. Na pasku wyszukiwania wprowadź poniższe ciągi zapytań, a następnie kliknij pozycję **Wyszukaj**.
+3. Na pasku wyszukiwania wklej poniższe ciągi zapytań, a następnie kliknij pozycję **Wyszukaj**.
 
-    > [!NOTE]
-    > **Eksplorator wyszukiwania** umożliwia tylko obsługę [żądań interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents). Akceptuje on zarówno [prostą składnię zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), jak i składnię [pełnego analizatora zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), a także wszystkie parametry wyszukiwania dostępne w ramach operacji [Wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-    >
+   ![Ciąg zapytania i przycisk Wyszukaj](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>Przykładowe zapytania
 

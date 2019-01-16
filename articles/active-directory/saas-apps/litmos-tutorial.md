@@ -1,287 +1,283 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Litmos | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Litmos.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Litmos | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Litmos.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: jeedes
+ms.reviewer: barbkess
 ms.assetid: cfaae4bb-e8e5-41d1-ac88-8cc369653036
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/19/2017
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: a0c70ee6419280b0975d77fb213f9406286708cc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 06c489fbffb53f7c6dc03ecd0c4414b9f999f8c5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428006"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065770"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Samouczek: Integracja usługi Azure Active Directory z Litmos
+# <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Litmos
 
-W tym samouczku dowiesz się, jak zintegrować Litmos w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Litmos z usługą Azure Active Directory (Azure AD).
+Zintegrowanie aplikacji Litmos z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Litmos z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Litmos.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Litmos (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Litmos.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Litmos (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Litmos, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Litmos są potrzebne następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- Litmos logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Litmos z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Litmos z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-litmos-from-the-gallery"></a>Dodawanie Litmos z galerii
-Aby skonfigurować integrację Litmos w usłudze Azure AD, należy dodać Litmos z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Litmos obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać Litmos z galerii, wykonaj następujące czynności:**
+* Aplikacja Litmos obsługuje aprowizowanie użytkowników typu **Just In Time**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+## <a name="adding-litmos-from-the-gallery"></a>Dodawanie aplikacji Litmos z galerii
 
-    ![Przycisk usługi Azure Active Directory][1]
+Aby skonfigurować integrację aplikacji Litmos w usłudze Azure AD, należy dodać aplikację Litmos z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+**Aby dodać aplikację Litmos z galerii, wykonaj następujące kroki:**
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. W polu wyszukiwania wpisz **Litmos**, wybierz opcję **Litmos** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Litmos na liście wyników](./media/litmos-tutorial/tutorial_litmos_addfromgallery.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Litmos w oparciu o użytkownika testu o nazwie "Britta Simon".
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Litmos do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Litmos musi można ustanowić.
+4. W polu wyszukiwania wpisz **Litmos**, wybierz pozycję **Litmos** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-W Litmos, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+     ![Aplikacja Litmos na liście wyników](common/search-new-app.png)
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Litmos, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Litmos](#create-a-litmos-test-user)**  — aby odpowiednikiem Britta Simon w Litmos połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Litmos, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Litmos.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Litmos, należy utworzyć następujące bloki konstrukcyjne:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Litmos.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Litmos](#configure-litmos-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego w usłudze Litmos](#create-litmos-test-user)** — aby w aplikacji Litmos utworzyć odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Litmos, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **Litmos** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Litmos, wykonaj następujące kroki:
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/litmos-tutorial/tutorial_litmos_samlbase.png)
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Litmos** wybierz pozycję **Logowanie jednokrotne**.
 
-1. Na **Litmos domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Litmos domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/litmos-tutorial/tutorial_litmos_url.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.litmos.com/account/Login`
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.litmos.com/integration/samllogin`
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości z rzeczywistych identyfikatorem i adresu URL odpowiedzi, które opisano w dalszej części samouczka lub skontaktuj się z [zespołu pomocy technicznej Litmos](https://www.litmos.com/contact-us/) do uzyskania tych wartości.
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Link pobierania certyfikatu](./media/litmos-tutorial/tutorial_litmos_certificate.png)
+    ![Domena i adresy URL aplikacji Litmos — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
-1. W ramach konfiguracji, należy dostosować **atrybuty tokenu języka SAML** Litmos aplikacji.
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.litmos.com/account/Login`
 
-    ![Sekcja atrybutu](./media/litmos-tutorial/tutorial_attribute.png)
-           
-    | Nazwa atrybutu   | Wartość atrybutu |   
-    | ---------------  | ----------------|
-    | FirstName |user.givenname |
-    | LastName  |user.surname |
-    | Email |User.mail |
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.litmos.com/integration/samllogin`
 
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi, które zostały omówione w dalszej części samouczka, lub skontaktuj się z [zespołem pomocy technicznej klienta usługi Litmos](https://www.litmos.com/contact-us), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Dodaj atrybut](./media/litmos-tutorial/tutorial_attribute_04.png)
+5. Aplikacja Litmos oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-    ![Dodaj atrybut Dailog](./media/litmos-tutorial/tutorial_attribute_05.png)
+    ![image](common/edit-attribute.png)
 
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
 
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
-    
-    d. Kliknij przycisk **OK**.     
+    | Nazwa |  Atrybut źródłowy |
+    |---------------|--------- |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | Email | user.mail |
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/litmos-tutorial/tutorial_general_400.png)
+    ![image](common/new-save-attribute.png)
 
-1. W oknie innej przeglądarki Zaloguj się do witryny firmy Litmos jako administrator.
+    ![image](common/new-attribute-details.png)
 
-1. Na pasku nawigacyjnym po lewej stronie kliknij pozycję **kont**.
-   
-    ![Sekcji konta na stronie aplikacji][22] 
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-1. Kliknij przycisk **integracje** kartę.
-   
-    ![Karta Integracja][23] 
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-1. Na **integracje** karty, przewiń w dół do **3rd integracje innych firm**, a następnie kliknij przycisk **SAML 2.0** kartę.
-   
-    ![SAML 2.0 sekcji][24] 
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-1. Skopiuj wartość w obszarze **jest punktem końcowym SAML dla litmos:** i wklej go w **adres URL odpowiedzi** polu tekstowym w **Litmos domena i adresy URL** sekcji w witrynie Azure portal. 
-   
-    ![Punkt końcowy protokołu SAML][26] 
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-1. W swojej **Litmos** aplikacji, wykonaj następujące czynności:
-    
-     ![Litmos aplikacji][25] 
-     
-     a. Kliknij przycisk **Włącz SAML**.
-    
-     b. Otwórz swój certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikat X.509 SAML** pola tekstowego.
-     
-     c. Kliknij przycisk **Zapisz zmiany**.
+    f. Kliknij przycisk **OK**.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+    g. Kliknij pozycję **Zapisz**.
+
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+
+8. W sekcji **Konfigurowanie aplikacji Litmos** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-litmos-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Litmos
+
+1. W innym oknie przeglądarki zaloguj się do firmowej witryny aplikacji Litmos jako administrator.
+
+2. Na pasku nawigacyjnym po lewej stronie kliknij pozycję **Accounts** (Konta).
+
+    ![Sekcja Accounts (Konta) po stronie aplikacji][22]
+
+3. Kliknij kartę **Integrations** (Integracje).
+
+    ![Karta Integrations (Integracje)][23]
+
+4. Na karcie **Integrations** (Integracje) przewiń w dół do pozycji **3rd Party Integrations** (Integracje innych firm), a następnie kliknij kartę **SAML 2.0**.
+
+    ![Sekcja SAML 2.0][24]
+
+5. Skopiuj wartość w obszarze **The SAML endpoint for litmos is:** (Punktem końcowym SAML dla aplikacji Litmos jest:) i wklej ją w polu tekstowym **Adres URL odpowiedzi** w sekcji **Domena i adresy URL aplikacji Litmos** w witrynie Azure Portal.
+
+    ![Punkt końcowy SAML][26]
+
+6. W aplikacji **Litmos** wykonaj następujące kroki:
+
+    ![Aplikacja Litmos][25]
+
+    a. Kliknij pozycję **Enable SAML** (Włącz protokół SAML).
+
+    b. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64, skopiuj zawartość do Schowka, a następnie wklej ją w polu tekstowym **SAML X.509 Certificate** (Certyfikat X.509 SAML).
+
+    d. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/litmos-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/litmos-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/litmos-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/litmos-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
-  
-### <a name="create-a-litmos-test-user"></a>Tworzenie użytkownika testowego Litmos
-
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Litmos.  
-Aplikacja Litmos obsługuje Just-in-Time inicjowania obsługi administracyjnej. Oznacza to konto użytkownika jest tworzone automatycznie w razie potrzeby podczas próby uzyskania dostępu do aplikacji za pomocą panelu dostępu.
-
-**Aby utworzyć użytkownika o nazwie Britta Simon w Litmos, wykonaj następujące czynności:**
-
-1. W oknie innej przeglądarki Zaloguj się do witryny firmy Litmos jako administrator.
-
-1. Na pasku nawigacyjnym po lewej stronie kliknij pozycję **kont**.
-   
-    ![Sekcji konta na stronie aplikacji][22] 
-
-1. Kliknij przycisk **integracje** kartę.
-   
-    ![Karta integracji][23] 
-
-1. Na **integracje** karty, przewiń w dół do **3rd integracje innych firm**, a następnie kliknij przycisk **SAML 2.0** kartę.
-   
-    ![SAML 2.0][24] 
-    
-1. Wybierz **automatyczne tworzenie użytkowników**
-   
-    ![Automatyczne generowanie użytkowników][27] 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Litmos.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Litmos.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Litmos**.
 
-**Aby przypisać Britta Simon Litmos, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Litmos**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link do aplikacji Litmos na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **Litmos**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link Litmos na liście aplikacji](./media/litmos-tutorial/tutorial_litmos_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-litmos-test-user"></a>Tworzenie użytkownika testowego aplikacji Litmos
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji Litmos. Aplikacja Litmos obsługuje aprowizację Just-in-Time. Oznacza to, że konto użytkownika jest tworzone automatycznie w zależności od potrzeb podczas próby uzyskania dostępu do aplikacji za pomocą panelu dostępu.
+
+**Aby utworzyć użytkownika o nazwie Britta Simon w aplikacji Litmos, wykonaj następujące kroki:**
+
+1. W innym oknie przeglądarki zaloguj się do firmowej witryny aplikacji Litmos jako administrator.
+
+2. Na pasku nawigacyjnym po lewej stronie kliknij pozycję **Accounts** (Konta).
+
+    ![Sekcja Accounts (Konta) po stronie aplikacji][22]
+
+3. Kliknij kartę **Integrations** (Integracje).
+
+    ![Karta Integrations (Integracje)][23]
+
+4. Na karcie **Integrations** (Integracje) przewiń w dół do pozycji **3rd Party Integrations** (Integracje innych firm), a następnie kliknij kartę **SAML 2.0**.
+
+    ![SAML 2.0][24]
+
+5. Wybierz pozycję **Autogenerate Users** (Automatyczne generowanie użytkowników)
+  
+    ![Automatyczne generowanie użytkowników][27]
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.  
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Litmos w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Litmos. 
+Po kliknięciu kafelka Litmos w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Litmos, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 
-[1]: ./media/litmos-tutorial/tutorial_general_01.png
-[2]: ./media/litmos-tutorial/tutorial_general_02.png
-[3]: ./media/litmos-tutorial/tutorial_general_03.png
-[4]: ./media/litmos-tutorial/tutorial_general_04.png
 [21]: ./media/litmos-tutorial/tutorial_litmos_60.png
 [22]: ./media/litmos-tutorial/tutorial_litmos_61.png
 [23]: ./media/litmos-tutorial/tutorial_litmos_62.png
@@ -289,11 +285,3 @@ Po kliknięciu kafelka Litmos w panelu dostępu, użytkownik powinien uzyskać a
 [25]: ./media/litmos-tutorial/tutorial_litmos_64.png
 [26]: ./media/litmos-tutorial/tutorial_litmos_65.png
 [27]: ./media/litmos-tutorial/tutorial_litmos_66.png
-
-[100]: ./media/litmos-tutorial/tutorial_general_100.png
-
-[200]: ./media/litmos-tutorial/tutorial_general_200.png
-[201]: ./media/litmos-tutorial/tutorial_general_201.png
-[202]: ./media/litmos-tutorial/tutorial_general_202.png
-[203]: ./media/litmos-tutorial/tutorial_general_203.png
-

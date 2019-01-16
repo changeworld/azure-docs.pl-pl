@@ -9,17 +9,16 @@ ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 80a740e13f5c3a13b7533d75e386a9afa2855085
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c96899fc46cd9cf6377894de773785dac14f3345
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002250"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121570"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -70,7 +69,7 @@ W przypadku przechowywania cennych danych należy wykonać kilka czynności. Inf
 - Udostępnianie standardowych opcji administrowania platformą Azure za pośrednictwem portalu, interfejsu wiersza polecenia platformy Azure i programu PowerShell.
 - Zautomatyzowanie pewnych zadań związanych z certyfikatami kupowanymi od publicznych urzędów certyfikacji, na przykład ich rejestracji i odnawiania.
 
-Usługa Azure Key Vault umożliwia także rozdzielenie wpisów tajnych aplikacji. Aplikacje mają dostęp tylko do magazynu, do którego zezwolono im na dostęp, i są ograniczone do wykonywania tylko określonych operacji. Istnieje możliwość utworzenia usługi Azure Key Vault dla aplikacji i ograniczenia użycia wpisów tajnych przechowywanych w usłudze Key Vault do konkretnej aplikacji i konkretnego zespołu deweloperów.
+Usługa Azure Key Vault umożliwia także rozdzielenie wpisów tajnych aplikacji. Aplikacje mają dostęp tylko do magazynu, do którego zezwolono im na dostęp, i mogą zostać ograniczone do wykonywania tylko określonych operacji. Istnieje możliwość utworzenia usługi Azure Key Vault dla aplikacji i ograniczenia użycia wpisów tajnych przechowywanych w usłudze Key Vault do konkretnej aplikacji i konkretnego zespołu deweloperów.
 
 ### <a name="integrate-with-other-azure-services"></a>Integracja z innymi usługami platformy Azure
 

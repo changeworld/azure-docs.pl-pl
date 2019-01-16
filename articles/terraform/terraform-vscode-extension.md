@@ -4,17 +4,17 @@ description: Dowiedz się, jak zainstalować rozszerzenie Azure Terraform w prog
 services: terraform
 ms.service: terraform
 keywords: terraform, azure, devops, visual studio code, extension
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: be0140606302335884d62ba60c875a049949b495
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 137a57638207a05f797692b25a5d5a31bd66ce3d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353054"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074584"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code
 
@@ -27,11 +27,11 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Zapisywanie, planowanie i wykonywanie planów narzędzia Terraform za pomocą programu Visual Studio Code.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Terraform**: [zainstaluj i skonfiguruj narzędzie Terraform](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Zainstaluj i skonfiguruj narzędzie Terraform](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Visual Studio Code**: zainstaluj program [Visual Studio Code](https://code.visualstudio.com/download) w wersji odpowiedniej dla Twojego środowiska.
+- **Visual Studio Code**: Zainstaluj program [Visual Studio Code](https://code.visualstudio.com/download) w wersji odpowiedniej dla Twojego środowiska.
 
 ## <a name="prepare-your-dev-environment"></a>Przygotowywanie środowiska deweloperskiego
 
@@ -138,7 +138,7 @@ W tym ćwiczeniu utworzysz i wykonasz podstawowy plik konfiguracji narzędzia Te
 
     ![Plik main.tf](media/terraform-vscode-extension/tf-main-tf.png)
 
-1. Na pasku menu wybierz pozycję **Widok > Paleta poleceń > Azure Terraform: Init**.
+1. Na pasku menu wybierz pozycję **View > Command Palette... > Azure Terraform: Init** (Widok > Paleta poleceń... > Azure Terraform: Init).
 
 1. Po wyświetleniu potwierdzenia wybierz pozycję **OK**.
 
@@ -173,7 +173,7 @@ W tym ćwiczeniu utworzysz i wykonasz podstawowy plik konfiguracji narzędzia Te
 
 Wcześniej w ramach tego samouczka zostało zainstalowane oprogramowanie GraphViz. Korzystając z oprogramowania GraphViz, narzędzie Terraform może wygenerować wizualną reprezentację konfiguracji lub planu wykonania. Rozszerzenie Azure Terraform dla programu Visual Studio Code implementuje tę funkcję za pomocą polecenia *visualize*.
 
-- Na pasku menu wybierz pozycję **Widok > Paleta poleceń > Azure Terraform: Visualize**.
+- Na pasku menu wybierz pozycję **View > Command Palette > Azure Terraform: Visualize** (Widok > Paleta poleceń > Azure Terraform: Visualize).
 
     ![Wizualizacja planu](media/terraform-vscode-extension/tf-graph.png)
 
@@ -270,7 +270,7 @@ Zanim zaczniesz używać poleceń narzędzia Terraform z poziomu programu Visual
 
 ### <a name="module-test-lint"></a>Test modułu: *lint*
 
-1. Na pasku menu wybierz pozycję **Widok > Paleta poleceń > Azure Terraform: Execute Test**.
+1. Na pasku menu wybierz pozycję **View > Command Palette > Azure Terraform: Execute Test** (Widok > Paleta poleceń > Azure Terraform: Execute Test).
 
 1. Z listy opcji typu testu wybierz pozycję **lint**.
 
@@ -289,7 +289,7 @@ Po kilku chwilach w okienku terminalu zostanie wyświetlona lista podobna do teg
 
 ### <a name="module-test-end-to-end"></a>Test modułu: *end-to-end*
 
-1. Na pasku menu wybierz pozycję **Widok > Paleta poleceń > Azure Terraform: Execute Test**.
+1. Na pasku menu wybierz pozycję **View > Command Palette > Azure Terraform: Execute Test** (Widok > Paleta poleceń > Azure Terraform: Execute Test).
 
 1. Z listy opcji typu testu wybierz pozycję **end to end**.
 

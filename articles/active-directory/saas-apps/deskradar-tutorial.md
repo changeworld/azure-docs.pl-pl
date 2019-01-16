@@ -1,33 +1,33 @@
 ---
-title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Trello | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Trello.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Deskradar | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Deskradar.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
+ms.assetid: 5ff3e014-b79f-4a6c-bb0b-38462bea5d10
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 981bcb6bc9160969e7225342a0e4cda6afc3ed7c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 41846e2e7fd047ca573892e39d960a353bc7fd18
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064564"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079933"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trello"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Trello
+# <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Deskradar
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację Trello z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji Trello z usługą Azure AD zapewnia następujące korzyści:
+Z tego samouczka dowiesz się, jak zintegrować aplikację Deskradar z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Deskradar z usługą Azure AD oferuje następujące korzyści:
 
-* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Trello.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Trello (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Z poziomu usługi Azure AD możesz kontrolować, kto ma dostęp do aplikacji Deskradar.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Deskradar (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,24 +35,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do skonfigurowania integracji usługi Azure AD z aplikacją Trello potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Deskradar, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja aplikacji Trello z obsługą logowania jednokrotnego
+* Subskrypcja aplikacji Deskradar z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Aplikacja Trello obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług oraz dostawcę tożsamości**
+* Aplikacja Deskradar obsługuje logowanie jednokrotne inicjowane zarówno przez **dostawcę usługi (SP), jak i dostawcę tożsamości (IDP)**
 
-* Aplikacja Trello obsługuje aprowizowanie użytkowników typu **Just In Time**
+## <a name="add-deskradar-from-the-gallery"></a>Dodawanie aplikacji Deskradar z galerii
 
-## <a name="adding-trello-from-the-gallery"></a>Dodawanie aplikacji Trello z galerii
+Aby skonfigurować integrację aplikacji Deskradar z usługą Azure AD, musisz dodać aplikację Deskradar z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-Aby skonfigurować integrację aplikacji Trello z usługą Azure AD, musisz dodać aplikację Trello z galerii do swojej listy zarządzanych aplikacji SaaS.
-
-**Aby dodać aplikację Trello z galerii, wykonaj następujące kroki:**
+**Aby dodać aplikację Deskradar z galerii, wykonaj następujące kroki:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -66,9 +64,9 @@ Aby skonfigurować integrację aplikacji Trello z usługą Azure AD, musisz doda
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Trello**, wybierz pozycję **Trello** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Deskradar**, wybierz pozycję **Deskradar** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Aplikacja Trello na liście wyników](common/search-new-app.png)
+     ![Aplikacja Deskradar na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -78,22 +76,19 @@ Aby logowanie jednokrotne działało, należy ustanowić relację łącza międz
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Trello](#configure-trello-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Deskradar](#configure-deskradar-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji Trello](#create-trello-test-user)** — aby mieć w aplikacji Trello odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Deskradar](#create-deskradar-test-user)**  — aby zapewnić odpowiednik użytkownika Britta Simon w aplikacji Deskradar powiązany z reprezentacją użytkownika usługi Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-> [!NOTE]
-> Dostawca aplikacji Trello powinien dostarczyć Ci element slug **\<enterprise\>**. Jeśli nie masz wartości elementu slug, skontaktuj się z [zespołem pomocy technicznej Trello](mailto:support@trello.com), aby uzyskać element slug dla swojego przedsiębiorstwa.
-
 Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], wykonaj następujące czynności:
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Trello** wybierz pozycję **Logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Deskradar** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
@@ -107,32 +102,33 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Trello](common/idp-intiated.png)
+    ![Informacje o domenie i adresach URL pojedynczego logowania aplikacji Deskradar](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://trello.com/auth/saml/metadata`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://YOURDOMAIN.deskradar.cloud`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://trello.com/auth/saml/consume/<enterprise>`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/consume`
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Trello](common/metadata-upload-additional-signon.png)
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/login`
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://trello.com/auth/saml/login/<enterprise>`
+    ![Informacje o domenie i adresach URL pojedynczego logowania aplikacji Deskradar](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Trello](mailto:support@trello.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Zastąp ciąg **YOURDOMAIN** domeną Twojego wystąpienia aplikacji Deskradar. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Deskradar](mailto:support@deskradar.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Aplikacja Trello oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+6. Aplikacja Deskradar oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
     ![image](common/edit-attribute.png)
 
 7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
 
-    | Nazwa |  Atrybut źródłowy|
-    | --- | --- |
-    | User.Email | user.mail |
-    | User.FirstName | user.givenname |
-    | User.LastName | user.surname |
+    | Nazwa | Atrybut źródłowy|
+    | ---------------| --------- |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | Email | user.userprincipalname |
+    | | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -156,7 +152,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-9. W sekcji **Skonfiguruj aplikację Trello** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+9. W sekcji **Konfigurowanie aplikacji Deskradar** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -166,11 +162,29 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     d. Adres URL wylogowywania
 
-### <a name="configure-trello-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Trello
+### <a name="configure-deskradar-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Deskradar
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Trello**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Trello](mailto:support@trello.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+1. Zaloguj się do swojego wystąpienia aplikacji Deskradar na konto administratora, korzystając z adresu e-mail i hasła zdefiniowanego podczas tworzenia konta za pomocą linku w zaproszeniu.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+2. Otwórz panel **zespołu**, klikając ikonę na pasku bocznym.
+
+3. Przełącz się na kartę **Authentication** (Uwierzytelnianie).
+
+4. Na karcie **SAML 2.0** wykonaj następujące kroki:
+
+    ![Konfiguracja aplikacji Deskradar](./media/deskradar-tutorial/14-paste-urls.jpg)
+
+    a. Włącz metodę uwierzytelniania **SAML**.
+
+    b. W polu tekstowym **SAML SSO URL** (Adres URL logowania jednokrotnego protokołu SAML) wprowadź wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+
+    d. W polu tekstowym **Identity Provider Issuer** (Wystawca dostawcy tożsamości) wprowadź wartość pola **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal.
+
+5. Otwórz pobrany plik **certyfikatu (Base64)** za pomocą edytora tekstu, a następnie skopiuj i wklej jego zawartość do pola **Public Certificate** (Certyfikat publiczny) w aplikacji Deskradar.
+
+    ![Konfiguracja aplikacji Deskradar](./media/deskradar-tutorial/15-paste-certificate.jpg)
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
@@ -197,15 +211,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Trello.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Deskradar.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Trello**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Deskradar**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz pozycję **Trello**.
+2. Na liście aplikacji wybierz pozycję **Deskradar**.
 
-    ![Link aplikacji Trello na liście aplikacji](common/all-applications.png)
+    ![Link do aplikacji Deskradar na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -221,18 +235,28 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-trello-test-user"></a>Tworzenie użytkownika testowego aplikacji Trello
+### <a name="create-deskradar-test-user"></a>Tworzenie użytkownika testowego aplikacji Deskradar
 
-W tej sekcji w aplikacji Trello jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Trello obsługuje aprowizację użytkowników just-in-time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Trello, zostanie utworzony po uwierzytelnieniu.
+W tej sekcji w aplikacji Deskradar utworzysz użytkownika Britta Simon. We współpracy z  [zespołem pomocy technicznej klienta aplikacji Deskradar](mailto:support@deskradar.com)  dodaj użytkowników na platformie Deskradar. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-> [!Note]
-> Jeśli musisz utworzyć użytkownika ręcznie, skontaktuj się z  [zespołem pomocy technicznej aplikacji Trello](mailto:support@trello.com).
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Trello w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Trello, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+**Jeśli korzystasz z tej aplikacji w trybie inicjowanym przez dostawcę usługi (SP), postępuj zgodnie z poniższą procedurą:**
+
+1. Uruchom wystąpienie aplikacji Deskradar, otwierając następujący adres URL w przeglądarce: `https://YOURDOMAIN.deskradar.cloud` (zastąp ciąg `YOURDOMAIN` domeną Twojego wystąpienia aplikacji Deskradar). 
+1. Wybierz przycisk **Enterprise Single Sign-On** (Logowanie jednokrotne na poziomie przedsiębiorstwa).
+
+    ![Deskradar](./media/deskradar-tutorial/16-sso-button.jpg)
+
+- Jeśli wcześniej zalogowano się do usługi Active Directory, nastąpi bezpośrednie zalogowanie do aplikacji Deskradar.
+- W przeciwnym razie nastąpi przekierowanie do formularza logowania do usługi Active Directory. Można w nim wprowadzić poświadczenia konta firmowego na potrzeby logowania.
+- Po pomyślnym zalogowaniu za pomocą poświadczeń konta firmowego zostanie wyświetlona aplikacja Deskradar z zalogowanym kontem.
+
+**Jeśli korzystasz z tej aplikacji w trybie inicjowanym przez dostawcę tożsamości (IDP), postępuj zgodnie z poniższą procedurą:**
+
+Po kliknięciu kafelka Deskradar w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Deskradar, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -241,4 +265,3 @@ Po kliknięciu kafelka Trello w panelu dostępu powinno nastąpić automatyczne 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

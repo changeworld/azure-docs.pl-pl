@@ -1,51 +1,53 @@
 ---
-title: Tworzenie aplikacji łańcucha bloków w aplikacji Azure Blockchain Workbench
-description: Sposób tworzenia aplikacji łańcucha bloków w aplikacji Azure Blockchain Workbench.
+title: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
+description: Samouczek dotyczący sposobu tworzenia aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: a7ca3f42874bc844bc0036e37a790ffebdc5f8d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: MT
+ms.openlocfilehash: 570d7a51bd6796a6360a4e52e637e1621a29deea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243135"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104390"
 ---
-# <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Tworzenie aplikacji łańcucha bloków w aplikacji Azure Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
 
-Azure Blockchain Workbench umożliwia tworzenie aplikacji łańcucha bloków, które reprezentują wieloosobowa przepływy zdefiniowane przez konfigurację i kod inteligentne kontraktu.
+Usługa Azure Blockchain Workbench umożliwia tworzenie aplikacji łańcucha bloków reprezentujących przepływy pracy dla wielu podmiotów zdefiniowane za pomocą konfiguracji i kodu kontraktu inteligentnego.
 
-Omawiane kwestie:
+Omawiane tematy:
 
 > [!div class="checklist"]
 > * Konfigurowanie aplikacji łańcucha bloków
-> * Utwórz plik kodu kontraktu inteligentne
-> * Dodawanie aplikacji łańcucha bloków na Blockchain Workbench
-> * Dodaj członków do aplikacji łańcucha bloków
+> * Tworzenie pliku kodu kontraktu inteligentnego
+> * Dodawanie aplikacji łańcucha bloków do usługi Blockchain Workbench
+> * Dodawanie członków do aplikacji łańcucha bloków
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wdrażanie aplikacji Blockchain Workbench. Aby uzyskać więcej informacji, zobacz [wdrażania aplikacji Azure Blockchain Workbench](deploy.md) szczegółowe informacje na temat wdrażania.
-* Usługa Azure Active Directory użytkownicy dzierżawca skojarzony z aplikacji Blockchain Workbench. Aby uzyskać więcej informacji, zobacz [Dodaj użytkowników usługi Azure AD w aplikacji Azure Blockchain Workbench](manage-users.md#add-azure-ad-users).
-* Konto administratora aplikacji Blockchain Workbench. Aby uzyskać więcej informacji, zobacz Dodawanie [administratorów aplikacji Blockchain Workbench w aplikacji Azure Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
+* Wdrożenie usługi Blockchain Workbench. Aby uzyskać szczegółowe informacje na temat wdrożenia, zobacz [Wdrożenie usługi Azure Blockchain Workbench](deploy.md).
+* Użytkownicy usługi Azure Active Directory w dzierżawie skojarzeni z usługą Blockchain Workbench. Aby uzyskać więcej informacji, zobacz sekcję o [dodawaniu użytkowników usługi Azure AD w usłudze Azure Blockchain Workbench](manage-users.md#add-azure-ad-users).
+* Konto administratora usługi Blockchain Workbench. Aby uzyskać więcej informacji, zobacz sekcję o [dodawaniu administratorów usługi Blockchain Workbench w usłudze Azure Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 
-## <a name="hello-blockchain"></a>Witaj, łańcuch bloków!
+## <a name="hello-blockchain"></a>Witaj, łańcuchu bloków!
 
-Utworzymy podstawową aplikację, w których obiekt żądający wysyła żądanie i obiekt odpowiadający czy wysłać odpowiedź na żądanie. Na przykład może być żądanie, "Witaj, jak się masz?" może odpowiedzi, być, "Jestem doskonały!". Żądania i odpowiedzi są rejestrowane na podstawowej łańcucha bloków. 
+Utwórzmy podstawową aplikację, w której osoba żądająca wysyła żądanie, a osoba odpowiadająca wysyła odpowiedź na żądanie. Żądaniem może na przykład być wiadomość „Witaj, jak się masz?”, a odpowiedzią — „Świetnie!”. Żądanie i odpowiedź są rejestrowane w podstawowym łańcuchu bloków. 
 
-Postępuj zgodnie z instrukcjami, aby utworzyć pliki aplikacji możesz też [pobrać przykład z witryny GitHub](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain). 
+Postępuj zgodnie z procedurą, aby utworzyć pliki aplikacji. Możesz też [pobrać przykład z witryny GitHub](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain). 
 
 ## <a name="configuration-file"></a>Plik konfiguracji
 
-Metadane konfiguracji definiuje wysokiego poziomu przepływów pracy i model interakcji aplikacji łańcucha bloków. Metadane konfiguracji reprezentuje etapów przepływu pracy i interakcji z modelem aplikacji łańcucha bloków.
+Metadane konfiguracji definiują ogólne przepływy pracy i model interakcji aplikacji łańcucha bloków. Metadane konfiguracji reprezentują etapy przepływów pracy i model interakcji aplikacji łańcucha bloków.
 
-1. W ulubionym edytorze, Utwórz plik o nazwie `HelloBlockchain.json`.
+1. Utwórz plik o nazwie `HelloBlockchain.json` w swoim ulubionym edytorze.
 2. Dodaj następujący kod JSON, aby zdefiniować konfigurację aplikacji łańcucha bloków.
 
     ``` json
@@ -201,97 +203,58 @@ Metadane konfiguracji definiuje wysokiego poziomu przepływów pracy i model int
 
 3. Zapisz plik `HelloBlockchain.json`.
 
-Plik konfiguracji zawiera kilka sekcji. Szczegółowe informacje na temat każdej sekcji są następujące:
+Plik konfiguracji zawiera kilka sekcji. Poniżej znajdują się szczegółowe informacje na temat każdej sekcji:
 
-### <a name="application-metadata"></a>Metadanych aplikacji
+### <a name="application-metadata"></a>Metadane aplikacji
 
-Na początku pliku konfiguracji zawiera informacje o aplikacji, w tym nazwa i opis aplikacji.
+Na początku pliku konfiguracji znajdują się informacje o aplikacji, w tym nazwa i opis aplikacji.
 
 ### <a name="application-roles"></a>Role aplikacji
 
-W sekcji role aplikacji zdefiniowano role użytkowników, którzy mogą działać lub wziąć udział w ramach aplikacji łańcucha bloków. Należy zdefiniować zestaw ról różne na podstawie funkcjonalności. W tym scenariuszu odpowiedź na żądanie brak rozróżnienia między funkcje obiekt żądający jako jednostka, która wywołuje żądania oraz obiekt odpowiadający jako jednostki, która generuje odpowiedzi.
+W sekcji ról aplikacji są definiowane role użytkowników, którzy mogą działać lub uczestniczyć w ramach aplikacji łańcucha bloków. Definiowany jest zestaw odrębnych ról na podstawie funkcjonalności. W scenariuszu żądanie-odpowiedź występuje rozróżnienie między funkcjonalnością osoby żądającej jako jednostki tworzącej żądania oraz osoby odpowiadającej jako jednostki tworzącej odpowiedzi.
 
 ### <a name="workflows"></a>Przepływy
 
-Przepływy pracy zdefiniować co najmniej jeden etapów, jak i akcje kontraktu. W tym scenariuszu odpowiedź na żądanie pierwszego etapu (stan) przepływu pracy jest obiekt żądający (roli), wykonują akcję (przejście) można wysłać żądania (funkcja). Kolejnego etapu (stan) jest obiekt odpowiadający (roli), wykonują akcję (przejście) do wysłania odpowiedzi (funkcja). Przepływ pracy aplikacji może obejmować właściwości, funkcje, i Stany wymagane opisują przepływ kontraktu. 
+Przepływy pracy definiują co najmniej jeden etap i co najmniej jedną akcję kontraktu. W scenariuszu żądanie-odpowiedź pierwszy etap (stan) przepływu pracy to wykonanie akcji (przejście) wysłania żądania (funkcja) przez osobę żądającą (rola). W kolejnym etapie (stan) osoba odpowiadająca (rola) wykonuje akcję (przejście) wysłania odpowiedzi (funkcja). Przepływ pracy aplikacji może obejmować właściwości, funkcje i stany wymagane do opisania przepływu kontraktu. 
 
-Aby uzyskać więcej informacji o zawartość plików konfiguracyjnych, zobacz [informacje o konfiguracji Azure Blockchain Workflow](configuration.md).
+Aby uzyskać więcej informacji o zawartości plików konfiguracji, zobacz [Dokumentacja konfiguracji usługi Azure Blockchain Workflow](configuration.md).
 
-## <a name="smart-contract-code-file"></a>Plik kodu kontraktu inteligentne
+## <a name="smart-contract-code-file"></a>Plik kodu kontraktu inteligentnego
 
-Kontrakty inteligentne reprezentują logiki biznesowej aplikacji łańcucha bloków. Obecnie Blockchain Workbench obsługuje Ethereum księgi łańcucha bloków. Używa Ethereum [Solidity](https://solidity.readthedocs.io) jako jego język programowania przeznaczony do zapisywania własnym wymuszania logikę biznesową dla kontraktów inteligentnych.
+Kontrakty inteligentne reprezentują logikę biznesową aplikacji łańcucha bloków. Obecnie usługa Blockchain Workbench obsługuje platformę Ethereum na potrzeby rejestru łańcucha bloków. Na platformie Ethereum do pisania samodzielnie wymuszanej logiki biznesowej na potrzeby kontraktów inteligentnych używa się języka programowania [Solidity](https://solidity.readthedocs.io).
 
-Kontrakty inteligentne w trwałość są podobne do klas w językach obiektowych. Każdej umowy zawiera stan i funkcji do zaimplementowania etapy i akcje inteligentne kontraktu.
+Kontrakty inteligentne w języku Solidity są podobne do klas w językach obiektowych. Każdy kontrakt zawiera stan i funkcje w celu implementacji etapów i akcji kontraktu inteligentnego.
 
-W ulubionym edytorze, Utwórz plik o nazwie `HelloBlockchain.sol`.
+Utwórz plik o nazwie `HelloBlockchain.sol` w swoim ulubionym edytorze.
 
-### <a name="version-pragma"></a>Wersja pragma
+### <a name="version-pragma"></a>Dyrektywa pragma wersji
 
-Najlepszym rozwiązaniem jest wskazywać wersję trwałość przeznaczonych do pracy. Określanie wersji pomaga uniknąć niezgodności z przyszłych wersji trwałość. 
+Najlepszym rozwiązaniem jest wskazanie docelowej wersji języka Solidity. Określenie wersji pomoże uniknąć niezgodności z przyszłymi wersjami języka Solidity. 
 
-Dodaj następujące dyrektywy w wersji w górnej części `HelloBlockchain.sol` plik kodu kontraktu inteligentne.
+Dodaj następującą dyrektywę pragma na początku pliku kodu kontraktu inteligentnego `HelloBlockchain.sol`.
 
 
   ``` solidity
   pragma solidity ^0.4.20;
   ```
 
-### <a name="base-class"></a>Klasa bazowa
+### <a name="configuration-and-smart-contract-code-relationship"></a>Relacja kodu kontraktu inteligentnego i konfiguracji
 
-**WorkbenchBase** klasy bazowej umożliwia aplikacji Blockchain Workbench do tworzenia i aktualizowania umowy. Klasa bazowa jest wymagana dla kodu określonych kontraktu inteligentnych aplikacji Blockchain Workbench. Twoja Umowa musi dziedziczyć **WorkbenchBase** klasy bazowej.
-
-W `HelloBlockchain.sol` inteligentne plik kodu kontraktu, należy dodać **WorkbenchBase** klasy na początku pliku. 
-
-```
-contract WorkbenchBase {
-    event WorkbenchContractCreated(string applicationName, string workflowName, address originatingAddress);
-    event WorkbenchContractUpdated(string applicationName, string workflowName, string action, address originatingAddress);
-
-    string internal ApplicationName;
-    string internal WorkflowName;
-
-    function WorkbenchBase(string applicationName, string workflowName) internal {
-        ApplicationName = applicationName;
-        WorkflowName = workflowName;
-    }
-
-    function ContractCreated() internal {
-        WorkbenchContractCreated(ApplicationName, WorkflowName, msg.sender);
-    }
-
-    function ContractUpdated(string action) internal {
-        WorkbenchContractUpdated(ApplicationName, WorkflowName, action, msg.sender);
-    }
-}
-```
-Klasa bazowa zawiera dwie ważne funkcje:
-
-|Klasa bazowa — funkcja  | Przeznaczenie  | Kiedy wywołać metodę  |
-|---------|---------|---------|
-| ContractCreated() | Powiadamia Blockchain Workbench kontrakt została utworzona. | Przed opuszczeniem Konstruktor kontraktu |
-| ContractUpdated() | Powiadamia Blockchain Workbench został zaktualizowany stan zamówienia | Przed opuszczeniem funkcji kontraktu |
-
-### <a name="configuration-and-smart-contract-code-relationship"></a>Konfiguracja i relacji kodu kontraktu inteligentne
-
-Blockchain Workbench używa pliku konfiguracji i pliku kodu kontraktu inteligentnych do tworzenia aplikacji łańcucha bloków. Ma relacji między co to jest zdefiniowany w konfiguracji i kod w umowie dotyczącej inteligentnych. Szczegóły umowy, funkcje, parametry i typy są wymagane do dopasowania do tworzenia aplikacji. Blockchain Workbench sprawdzi pliki znajdujące się przed tworzenia aplikacji. 
+Usługa Blockchain Workbench tworzy aplikację łańcucha bloków, korzystając z pliku konfiguracji i pliku kodu kontraktu inteligentnego. Między danymi zdefiniowanymi w konfiguracji i kodem kontraktu inteligentnego istnieje relacja. Typy, parametry, funkcje i szczegóły kontraktu muszą być zgodne, aby utworzyć aplikację. Usługa Blockchain Workbench weryfikuje pliki przed utworzeniem aplikacji. 
 
 ### <a name="contract"></a>Kontrakt
 
-Blockchain Workbench kontraktów na potrzeby dziedziczyć **WorkbenchBase** klasy bazowej. Podczas deklarowania kontrakt, musisz przekazać nazwę aplikacji i nazwę przepływu pracy jako argumenty.
-
-Dodaj **kontraktu** nagłówek, aby Twoje `HelloBlockchain.sol` plik kodu kontraktu inteligentne. 
+Dodaj nagłówek **contract** do pliku kodu kontraktu inteligentnego `HelloBlockchain.sol`.
 
 ```
-contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') {
+contract HelloBlockchain {
 ```
-
-Twoja Umowa musi dziedziczyć **WorkbenchBase** klasy bazowej i przekazywać w parametrach **ApplicationName** i przepływ pracy **nazwa** zgodnie z definicją w konfiguracji plik. W takim przypadku nazwa aplikacji i nazwa przepływu pracy są takie same.
 
 ### <a name="state-variables"></a>Zmienne stanu
 
-Zmienne stanu przechowywania wartości stanu dla każdego wystąpienia kontraktu. Zmienne stanu w kontrakcie usługi musi być zgodna właściwości przepływu pracy zdefiniowane w pliku konfiguracyjnym.
+Zmienne stanu przechowują wartości stanu dla każdego wystąpienia kontraktu. Zmienne stanu w kontrakcie muszą być zgodne z właściwościami przepływu pracy zdefiniowanymi w pliku konfiguracji.
 
-Dodaj zmienne stanu do Twojej umowy w swojej `HelloBlockchain.sol` plik kodu kontraktu inteligentne. 
+Dodaj zmienne stanu do Twojego kontraktu w pliku kodu kontraktu inteligentnego `HelloBlockchain.sol`. 
 
 ```
     //Set of States
@@ -308,13 +271,11 @@ Dodaj zmienne stanu do Twojej umowy w swojej `HelloBlockchain.sol` plik kodu kon
 
 ### <a name="constructor"></a>Konstruktor
 
-Konstruktor definiuje parametry wejściowe dla nowego kontraktu inteligentne wystąpienia przepływu pracy. Konstruktor jest zadeklarowany jako funkcję o nazwie identycznej z nazwą kontraktu. Wymagane parametry dla konstruktora są definiowane jako parametry konstruktora w pliku konfiguracji. Liczbę, kolejność i typ parametrów musi być zgodny w obu plikach.
+Konstruktor definiuje parametry wejściowe dla nowego wystąpienia kontraktu inteligentnego przepływu pracy. Konstruktor jest deklarowany jako funkcja o tej samej nazwie co kontrakt. Wymagane parametry konstruktora są definiowane jako parametry konstruktora w pliku konfiguracji. Liczba, kolejność i typ parametrów muszą być takie same w obu plikach.
 
-W funkcji konstruktora zapisu do wykonania przed utworzeniem kontrakt wszelka logika biznesowa. Na przykład zainicjować zmienne stanu z uruchomieniem wartości.
+W funkcji konstruktora napisz logikę biznesową, która ma być wykonywana przed utworzeniem kontraktu. Na przykład zainicjuj zmienne stanu przy użyciu początkowych wartości.
 
-Przed opuszczeniem funkcji konstruktora, należy wywołać `ContractCreated()` funkcji. Ta funkcja powiadomi Blockchain Workbench kontrakt została utworzona.
-
-Dodawanie funkcji konstruktora do Twojej umowy w swojej `HelloBlockchain.sol` plik kodu kontraktu inteligentne. 
+Dodaj funkcję konstruktora do Twojego kontraktu w pliku kodu kontraktu inteligentnego `HelloBlockchain.sol`. 
 
 ```
     // constructor function
@@ -323,21 +284,16 @@ Dodawanie funkcji konstruktora do Twojej umowy w swojej `HelloBlockchain.sol` pl
         Requestor = msg.sender;
         RequestMessage = message;
         State = StateType.Request;
-    
-        // call ContractCreated() to create an instance of this workflow
-        ContractCreated();
     }
 ```
 
 ### <a name="functions"></a>Funkcje
 
-Funkcje są wykonywalnego logiki biznesowej, w ramach umowy. Wymagane parametry funkcji są definiowane jako parametry funkcji w pliku konfiguracji. Liczbę, kolejność i typ parametrów musi być zgodny w obu plikach. Funkcje są skojarzone z przejścia w przepływie pracy aplikacji Blockchain Workbench w pliku konfiguracji. Przejście jest akcję wykonywaną, aby przejść do kolejnego etapu przepływ pracy aplikacji, zgodnie z ustaleniami umowy.
+Funkcje to wykonywalne jednostki logiki biznesowej w ramach kontraktu. Wymagane parametry funkcji są definiowane jako parametry funkcji w pliku konfiguracji. Liczba, kolejność i typ parametrów muszą być takie same w obu plikach. Funkcje są skojarzone z przejściami w przepływie pracy usługi Blockchain Workbench w pliku konfiguracji. Przejście jest akcją wykonywaną, aby przejść do kolejnego etapu przepływu pracy aplikacji, jak określono w kontrakcie.
 
-Zapisu wszelka logika biznesowa ma zostać wykonana w funkcji. Na przykład modyfikując wartość zmiennej stanu.
+Napisz logikę biznesową, która ma być wykonywana w ramach funkcji. Na przykład modyfikowanie wartości zmiennej stanu.
 
-Przed opuszczeniem funkcji, należy wywołać `ContractUpdated()` funkcji. Funkcja powiadamia Blockchain Workbench został zaktualizowany stan zamówienia. Jeśli chcesz cofnąć zmiany stanu w funkcji, należy wywołać revert(). Przywróć odrzucenia stanu zmiany wprowadzone od czasu ostatniego wywołania do ContractUpdated().
-
-1. Dodaj następujące funkcje do Twojej umowy w swojej `HelloBlockchain.sol` plik kodu kontraktu inteligentne. 
+1. Dodaj następujące funkcje do Twojego kontraktu w pliku kodu kontraktu inteligentnego `HelloBlockchain.sol`. 
 
     ```
         // call this function to send a request
@@ -347,12 +303,8 @@ Przed opuszczeniem funkcji, należy wywołać `ContractUpdated()` funkcji. Funkc
             {
                 revert();
             }
-    
             RequestMessage = requestMessage;
             State = StateType.Request;
-    
-            // call ContractUpdated() to record this action
-            ContractUpdated('SendRequest');
         }
     
         // call this function to send a response
@@ -360,50 +312,48 @@ Przed opuszczeniem funkcji, należy wywołać `ContractUpdated()` funkcji. Funkc
         {
             Responder = msg.sender;
     
-            // call ContractUpdated() to record this action
             ResponseMessage = responseMessage;
             State = StateType.Respond;
-            ContractUpdated('SendResponse');
         }
     }
     ```
 
-2. Zapisz swoje `HelloBlockchain.sol` plik kodu kontraktu inteligentne.
+2. Zapisz plik kodu kontraktu inteligentnego `HelloBlockchain.sol`.
 
-## <a name="add-blockchain-application-to-blockchain-workbench"></a>Dodawanie aplikacji łańcucha bloków na Blockchain Workbench
+## <a name="add-blockchain-application-to-blockchain-workbench"></a>Dodawanie aplikacji łańcucha bloków do usługi Blockchain Workbench
 
-Aby dodać aplikację Blockchain Workbench łańcucha bloków, możesz przekazać konfiguracji i plików inteligentne umów do definiowania aplikacji.
+Aby dodać aplikację łańcucha bloków do usługi Blockchain Workbench, należy przekazać plik konfiguracji i plik kontraktu inteligentnego w celu zdefiniowania aplikacji.
 
-1. W przeglądarce internetowej przejdź do adresu internetowego aplikacji Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` aplikacji sieci web jest tworzona podczas wdrażania aplikacji Blockchain Workbench. Aby uzyskać informacje na temat znajdowania adres sieci web z aplikacji Blockchain Workbench, zobacz [Blockchain Workbench — adres URL sieci Web](deploy.md#blockchain-workbench-web-url)
-2. Zaloguj się jako [administratora aplikacji Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
-3. Wybierz **aplikacje** > **nowe**. **Nową aplikację** zostanie wyświetlone okienko.
-4. Wybierz **Przekaż konfigurację kontraktu** > **Przeglądaj** zlokalizować **HelloBlockchain.json** utworzony plik konfiguracji. Plik konfiguracji jest automatycznie weryfikowana. Wybierz **Pokaż** łącze, aby wyświetlić błędy sprawdzania poprawności. Usuń błędy sprawdzania poprawności, przed wdrożeniem aplikacji.
-5. Wybierz **przekazywanie kodu kontraktu** > **Przeglądaj** zlokalizować **HelloBlockchain.sol** plik kodu kontraktu inteligentne. Plik kodu jest automatycznie weryfikowana. Wybierz **Pokaż** łącze, aby wyświetlić błędy sprawdzania poprawności. Usuń błędy sprawdzania poprawności, przed wdrożeniem aplikacji.
-6. Wybierz **Wdróż** do tworzenia aplikacji łańcucha bloków na podstawie konfiguracji i pliki inteligentne kontraktu.
+1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/`. Aplikacja internetowa zostanie utworzona po wdrożeniu usługi Blockchain Workbench. Aby uzyskać informacje na temat znajdowania adresu internetowego usługi Blockchain Workbench, zobacz [Internetowy adres URL usługi Blockchain Workbench](deploy.md#blockchain-workbench-web-url)
+2. Zaloguj się jako [administrator usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
+3. Wybierz pozycję **Aplikacje** > **Nowa**. Zostanie wyświetlone okienko **Nowa aplikacja**.
+4. Wybierz pozycję **Przekaż konfigurację kontraktu** > **Przeglądaj**, aby wskazać utworzony plik konfiguracji **HelloBlockchain.json**. Zostanie wykonana automatyczna walidacja pliku konfiguracji. Wybierz link **Pokaż**, aby wyświetlić błędy walidacji. Usuń błędy walidacji przed wdrożeniem aplikacji.
+5. Wybierz pozycję **Przekaż kod kontraktu** > **Przeglądaj**, aby wskazać plik kodu kontraktu inteligentnego **HelloBlockchain.sol**. Zostanie wykonana automatyczna walidacja pliku kodu. Wybierz link **Pokaż**, aby wyświetlić błędy walidacji. Usuń błędy walidacji przed wdrożeniem aplikacji.
+6. Wybierz pozycję **Wdróż**, aby utworzyć aplikację łańcucha bloków na podstawie plików konfiguracji i kontraktu inteligentnego.
 
-Wdrażanie aplikacji łańcucha bloków zajmuje kilka minut. Po zakończeniu wdrażania nowej aplikacji jest wyświetlany w **aplikacji**. 
+Wdrażanie aplikacji łańcucha bloków zajmuje kilka minut. Po zakończeniu wdrażania nowa aplikacja zostanie wyświetlona w sekcji **Aplikacje**. 
 
 > [!NOTE]
-> Możesz również tworzyć aplikacje łańcucha bloków przy użyciu [API REST usługi Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench). 
+> Aplikacje łańcucha bloków możesz również tworzyć przy użyciu [interfejsu API REST usługi Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench). 
 
-## <a name="add-blockchain-application-members"></a>Dodaj członków aplikacji łańcucha bloków
+## <a name="add-blockchain-application-members"></a>Dodawanie członków aplikacji łańcucha bloków
 
-Dodaj członków aplikacji do aplikacji do inicjowania i podejmować działania dotyczące zamówień. Aby dodać członków do aplikacji, musisz być [administratora aplikacji Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
+Dodaj do aplikacji członków, którzy będą inicjować kontrakty i wykonywać w ramach nich akcje. Aby dodać członków aplikacji, musisz być [administratorem usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 
-1. Wybierz **aplikacje** > **Witaj, łańcuch bloków!**.
-2. Liczba członków skojarzonych z aplikacją jest wyświetlana w prawym górnym rogu strony. W przypadku nowych aplikacji liczba elementów członkowskich będą równe zeru.
-3. Wybierz **członków** linku w prawym górnym rogu strony. Zostanie wyświetlona bieżąca lista elementów członkowskich dla aplikacji.
-4. Na liście członkostwa, wybierz **dodawać członków**.
-5. Wybierz lub wprowadź nazwę elementu członkowskiego, który chcesz dodać. Tylko użytkownicy usługi Azure AD, które istnieją w dzierżawie Blockchain Workbench są wyświetlane. Jeśli użytkownik nie zostanie znaleziony, musisz [Dodaj użytkowników usługi Azure AD](manage-users.md#add-azure-ad-users).
-6. Wybierz **roli** dla elementu członkowskiego. Dla pierwszego elementu członkowskiego, wybierz **obiektu żądającego** jako rolę.
-7. Wybierz **Dodaj** można dodać elementu członkowskiego z roli skojarzone z aplikacją.
-8. Dodaj inny członek do aplikacji przy użyciu **obiektu odpowiadającego w trybie** roli.
+1. Wybierz pozycję **Aplikacje** > **Hello, Blockchain!**.
+2. Liczba członków skojarzonych z aplikacją jest wyświetlana w prawym górnym rogu strony. W przypadku nowej aplikacji liczba członków będzie równa zero.
+3. Wybierz link **członkowie** w prawym górnym rogu strony. Zostanie wyświetlona bieżąca lista członków aplikacji.
+4. Na liście członkostwa wybierz pozycję **Dodaj członków**.
+5. Wybierz lub wprowadź nazwę członka, którego chcesz dodać. Na liście znajdują się tylko użytkownicy usługi Azure AD, którzy istnieją w dzierżawie usługi Blockchain Workbench. Jeśli użytkownik nie zostanie znaleziony, musisz [dodać użytkowników usługi Azure AD](manage-users.md#add-azure-ad-users).
+6. W obszarze **Rola** wybierz rolę członka. Dla pierwszego członka wybierz rolę **Requestor** (Osoba żądająca).
+7. Wybierz pozycję **Dodaj**, aby dodać członka ze skojarzoną rolą do aplikacji.
+8. Dodaj do aplikacji kolejnego członka o roli **Responder** (Osoba odpowiadająca).
 
-Aby uzyskać więcej informacji na temat zarządzania użytkownikami w aplikacji Blockchain Workbench zobacz [Zarządzanie użytkownikami w aplikacji Azure Blockchain Workbench](manage-users.md)
+Aby uzyskać więcej informacji na temat zarządzania użytkownikami w usłudze Blockchain Workbench, zobacz [Zarządzanie użytkownikami w usłudze Azure Blockchain Workbench](manage-users.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule zostanie utworzona Podstawowa aplikacja żądań i odpowiedzi. Informacje na temat korzystania z aplikacji, przejdź do następnego artykułu porad.
+W tym artykule z instrukcjami utworzono podstawową aplikację żądań i odpowiedzi. Aby uzyskać informacje na temat korzystania z aplikacji, przejdź do następnego artykułu z instrukcjami.
 
 > [!div class="nextstepaction"]
-> [Za pomocą aplikacji łańcucha bloków](use.md)
+> [Korzystanie z aplikacji łańcucha bloków](use.md)

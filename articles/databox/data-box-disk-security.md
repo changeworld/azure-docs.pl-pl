@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091491"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159693"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box Disk (wersja zapoznawcza)
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box Disk
 
 W tym artykule opisano funkcje zabezpieczeń usługi Azure Data Box Disk, które pomagają chronić poszczególne składniki rozwiązania Data Box i przechowywane w nich dane. 
-
-> [!IMPORTANT]
-> Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="data-flow-through-components"></a>Przepływ danych za pośrednictwem składników
 

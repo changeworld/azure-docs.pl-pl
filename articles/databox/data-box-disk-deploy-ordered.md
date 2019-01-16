@@ -6,41 +6,46 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567455"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156175"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Samouczek: zamawianie usługi Azure Data Box Disk (wersja zapoznawcza)
+# <a name="tutorial-order-an-azure-data-box-disk"></a>Samouczek: zamawianie urządzenia Azure Data Box Disk
 
 Azure Data Box Disk to hybrydowe rozwiązanie w chmurze, które umożliwia importowanie danych lokalnych na platformę Azure szybko, łatwo i bez problemów. Możesz przenieść dane na dyski półprzewodnikowe (SSD) dostarczone przez firmę Microsoft i wysłać te dyski z powrotem. Te dane są następnie przekazywane na platformę Azure.
 
 W tym samouczku opisano sposób zamawiania usługi Azure Data Box Disk. Ten samouczek zawiera informacje dotyczące:
 
 > [!div class="checklist"]
-> * Tworzenie konta usługi Data Box Disk
 > * Zamawianie usługi Data Box Disk
 > * Śledzenie zamówienia
 > * Anulowanie zamówienia
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-> [!IMPORTANT]
-> - Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - W okresie obowiązywania wersji zapoznawczej urządzenie Data Box Disk może być wysyłane do klientów w Stanach Zjednoczonych, Europie Zachodniej i Północnej, Kanadzie i Australii. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-disk-overview.md#region-availability).
+Przed wdrożeniem należy spełnić następujące wymagania wstępne dotyczące konfiguracji związane z usługą Data Box i urządzeniem Data Box Disk.
 
-## <a name="sign-up"></a>Rejestrowanie
+### <a name="for-service"></a>Na potrzeby usługi
 
-Usługa Data Box Disk jest dostępna w wersji zapoznawczej i musisz utworzyć jej konto. Wykonaj poniższe kroki, aby utworzyć konto usługi Data Box:
+Przed rozpoczęciem upewnij się, że:
+- Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
+- Sprawdź, czy subskrypcja, której używasz na potrzeby usługi Data Box, to subskrypcja jednego z następujących typów:
+    - Microsoft Enterprise Agreement (EA). Dowiedz się więcej na temat [subskrypcji umowy EA](https://azure.microsoft.com/pricing/enterprise-agreement/).
+    - Cloud Solution Provider (CSP). Dowiedz się więcej o [programie Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+- Sprawdź, czy masz dostęp na poziomie właściciela lub współautora do subskrypcji, aby móc utworzyć zamówienie urządzenia Data Box.
 
-1. Zaloguj się do witryny Azure Portal pod adresem [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
-2. Wybierz subskrypcję, w której chcesz włączyć wersję zapoznawczą. Odpowiedz na pytania dotyczące rozmiaru danych, kraju przechowywania danych, przedziału czasowego i częstotliwości transferu danych. Kliknij pozycję **Zarejestruj mnie!**.
-3. Po utworzeniu konta i włączeniu opcji korzystania z wersji zapoznawczej można zamówić usługę Data Box Disk.
+### <a name="for-device"></a>Na potrzeby urządzenia
+
+Przed rozpoczęciem upewnij się, że:
+- Masz dostępny komputer kliencki, z którego możesz skopiować dane. Na komputerze klienckim wymagane jest:
+    - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Zainstalowanie innego [wymaganego oprogramowania](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) w przypadku klienta z systemem Windows.  
 
 ## <a name="order-data-box-disk"></a>Zamawianie usługi Data Box Disk
 
@@ -97,7 +102,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
  
 ## <a name="track-the-order"></a>Śledzenie zamówienia
 
-Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal w wersji zapoznawczej. Przejdź do zamówienia, a następnie przejdź do obszaru **Omówienie**, aby sprawdzić stan. Zadanie wyświetlone w portalu ma stan **Zamówione**. 
+Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do zamówienia, a następnie przejdź do obszaru **Omówienie**, aby sprawdzić stan. Zadanie wyświetlone w portalu ma stan **Zamówione**. 
 
 ![Data Box Disk — stan Zamówione](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -111,17 +116,15 @@ Po zakończeniu przygotowywania dysków w portalu zostanie wyświetlone zamówie
 
 Firma Microsoft następnie przygotowuje i wysyła dyski za pośrednictwem przewoźnika regionalnego. Po wysłaniu dysków otrzymasz numer służący do ich śledzenia. W portalu zamówienie zostanie wysłane ze stanem **Wysłane**.
 
-
-
 ## <a name="cancel-the-order"></a>Anulowanie zamówienia
 
-Aby anulować to zamówienie, w witrynie Azure Portal w wersji zapoznawczej przejdź do obszaru **Omówienie** i kliknij pozycję **Anuluj** na pasku poleceń. 
+Aby anulować to zamówienie, w witrynie Azure Portal przejdź do obszaru **Przegląd**, a następnie kliknij pozycję **Anuluj** na pasku poleceń. 
 
 Anulowanie jest możliwe tylko, jeśli zamówiono dyski, a zamówienie jest przetwarzane pod kątem wysyłki. Po przetworzeniu zamówienia nie można go już anulować. 
 
 ![Anulowanie zamówienia](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję **Usuń** na pasku poleceń. 
+Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję **Usuń** na pasku poleceń.
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -129,7 +132,6 @@ Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję *
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 
 > [!div class="checklist"]
-> * Tworzenie konta usługi Data Box Disk
 > * Zamawianie usługi Data Box Disk
 > * Śledzenie zamówienia
 > * Anulowanie zamówienia

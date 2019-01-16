@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4320e56b04761c6adcae1db259eeecf332fbd781
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273062"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158792"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Co to jest usługa Azure Data Box Disk? (Wersja zapoznawcza)
+# <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
 Rozwiązanie w chmurze Microsoft Azure Data Box Disk umożliwia wysyłanie terabajtów danych na platformę Azure w szybki, niedrogi i niezawodny sposób. Często zadawane pytania zawierają pytania, które mogą się pojawić podczas korzystania z usługi Data Box Disk w witrynie Azure Portal, oraz odpowiedzi na te pytania. 
 
@@ -27,8 +27,6 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 - Migrowanie danych 
 - Weryfikowanie i przekazywanie danych 
 
-> [!IMPORTANT]
-> Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="about-the-service"></a>Informacje o usłudze
 
@@ -44,19 +42,19 @@ Dyski są szyfrowane za pomocą funkcji szyfrowania dysków Microsoft BitLocker,
 A. Jeśli masz nie więcej niż 40 TB danych, które chcesz przenieść na platformę Azure, korzystne będzie zastosowanie urządzeń Data Box Disk.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>PYTANIE: Jaki jest koszt urządzeń Data Box Disk?
-A. Aby uzyskać informacje o cenach urządzeń Data Box Disk, przejdź do [strony z cennikiem wersji zapoznawczej](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Aby uzyskać informacje o cenach urządzeń Data Box Disk, przejdź do [strony cennika](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>PYTANIE: Jak mogę otrzymać urządzenia Data Box Disk? 
-A.  Aby otrzymać urządzenia Azure Data Box Disk, najpierw zarejestruj się w celu skorzystania z [wersji zapoznawczej usługi Data Box Disk](https://aka.ms/AzureDataBox). Następnie zaloguj się do witryny Azure Portal i utwórz zamówienie dysków w usłudze Data Box. Podaj informacje kontaktowe i szczegóły dotyczące powiadomień. Po złożeniu zamówienia, w zależności od dostępności, dyski zostaną dostarczone do Ciebie w ciągu 10 dni.   
+A.  Aby otrzymać urządzenia Azure Data Box Disk, zaloguj się do witryny Azure Portal i utwórz zamówienie dysków w usłudze Data Box. Podaj informacje kontaktowe i szczegóły dotyczące powiadomień. Po złożeniu zamówienia, w zależności od dostępności, dyski zostaną dostarczone do Ciebie w ciągu 10 dni.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>PYTANIE: Jaka jest maksymalna ilość danych, które mogę jednorazowo przenieść za pomocą urządzeń Data Box Disk?
-A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wykorzystania) — maksymalna pojemność do wykorzystania to 35 TB. W związku z tym jednorazowo możesz przenieść 35 TB danych.  Aby przenieść większą ilość danych, musisz zamówić więcej dysków.
+A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wykorzystania) — maksymalna pojemność do wykorzystania to 35 TB. W związku z tym jednorazowo możesz przenieść 35 TB danych. Aby przenieść większą ilość danych, musisz zamówić więcej dysków.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>PYTANIE: Jak sprawdzić, czy urządzenia Data Box Disk są dostępne w moim regionie? 
-A.  W okresie obowiązywania wersji zapoznawczej urządzenia Data Box Disk są dostępne w Stanach Zjednoczonych, Kanadzie, Australii i we wszystkich krajach Unii Europejskiej.  
+A.  Urządzenia Data Box Disk są obecnie dostępne w Stanach Zjednoczonych, Kanadzie, Australii i we wszystkich krajach Unii Europejskiej.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>PYTANIE: W jakich regionach mogę zapisać dane, korzystając z usługi Data Box Disk?
-A. Wersja zapoznawcza usługi Data Box Disk jest obsługiwana we wszystkich regionach Stanów Zjednoczonych, Kanadzie, Australii oraz w regionach Europa Zachodnia i Europa Północna. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
+A. Usługa Data Box Disk jest obsługiwana we wszystkich regionach Stanów Zjednoczonych, Kanadzie, Australii oraz w regionach Europa Zachodnia i Europa Północna. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z urządzeniami Data Box Disk?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box Disk, [skontaktuj się z działem pomocy technicznej firmy Microsoft](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -75,7 +73,7 @@ Aby uzyskać instrukcje krok po kroku, zobacz [Odblokowywanie dysków na kompute
 A.  Tak. Zarówno komputer kliencki z systemem Linux, jak i z systemem Windows może zostać użyty do nawiązania połączenia i skopiowania danych na urządzenia Data Box Disk. Aby uzyskać więcej informacji, przejdź do listy [Obsługiwane systemy operacyjne](data-box-disk-system-requirements.md) komputera-hosta.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>PYTANIE: Moje dyski zostały wysłane, ale teraz chcę anulować to zamówienie. Dlaczego przycisk Anuluj nie jest dostępny?
-A.  Zamówienie można anulować tylko po zamówieniu dysków, ale przed ich wysyłką. Po wysłaniu dysków nie można już anulować zamówienia. W okresie obowiązywania wersji zapoznawczej dyski można zwrócić bez opłat, jednak najprawdopodobniej ulegnie to zmianie, gdy rozwiązanie będzie ogólnie dostępne. 
+A.  Zamówienie można anulować tylko po zamówieniu dysków, ale przed ich wysyłką. Po wysłaniu dysków nie można już anulować zamówienia. Można jednak zwrócić dyski za odpowiednią opłatą. 
 
 ### <a name="q-can-i-connect-multiple-data-box-disks-at-the-same-to-the-host-computer-to-transfer-data"></a>PYTANIE: Czy mogę podłączyć wiele urządzeń Data Box Disk do tego samego komputera-hosta w celu transferu danych?
 A. Tak. Do jednego komputera-hosta można podłączyć wiele urządzeń Data Box Disk na potrzeby transferu danych i można równolegle wykonywać wiele zadań kopiowania.
@@ -91,10 +89,10 @@ A.  Firma Microsoft dołącza etykietę wysyłkową do przesyłki z urządzeniam
 ## <a name="migrate-data"></a>Migrowanie danych
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>PYTANIE: Jaki jest maksymalny rozmiar danych w przypadku urządzeń Data Box Disk?  
-A.  Rozwiązanie Data Box Disk może zapewnić do 5 dysków o maksymalnej pojemności do wykorzystania wynoszącej 35 TB. Same dyski mają rozmiar 8 TB (przy czym rozmiar do wykorzystania to 7 TB). 
+A.  Rozwiązanie Data Box Disk może zapewnić do 5 dysków o maksymalnej pojemności do wykorzystania wynoszącej 35 TB. Same dyski mają rozmiar 8 TB (przy czym rozmiar do wykorzystania to 7 TB).
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>PYTANIE: Jakie są maksymalne rozmiary blokowych obiektów blob i stronicowych obiektów blob obsługiwane przez urządzenia Data Box Disk ? 
-A.  Maksymalne rozmiary podlegają limitom usługi Azure Storage. Maksymalny rozmiar blokowego obiektu blob to około 4,768 TiB, a maksymalny rozmiar stronicowego obiektu blob to 8 TiB. Aby uzyskać więcej informacji, zobacz [Cele usługi Azure Storage dotyczące skalowalności i wydajności](../storage/common/storage-scalability-targets.md). 
+A.  Maksymalne rozmiary podlegają limitom usługi Azure Storage. Maksymalny rozmiar blokowego obiektu blob to około 4,768 TiB, a maksymalny rozmiar stronicowego obiektu blob to 8 TiB. Aby uzyskać więcej informacji, zobacz [Cele usługi Azure Storage dotyczące skalowalności i wydajności](../storage/common/storage-scalability-targets.md).
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>PYTANIE: Jaka jest szybkość transferu danych w przypadku urządzeń Data Box Disk?
 A. Podczas testowania dysków podłączonych za pomocą portu USB 3.0 ich wydajność doszła do poziomu 430 MB/s. Rzeczywista wartość różni się w zależności od rozmiaru pliku. Przy mniejszych plikach wydajność może być niższa.
@@ -103,7 +101,7 @@ A. Podczas testowania dysków podłączonych za pomocą portu USB 3.0 ich wydajn
 A.  Urządzenia Data Box Disk są zaszyfrowane za pomocą funkcji BitLocker z użyciem 128-bitowego algorytmu AES, a klucz dostępu jest dostępny tylko w witrynie Azure Portal. Zaloguj się do witryny Azure Portal przy użyciu poświadczeń konta, aby uzyskać klucz dostępu. Podaj ten klucz dostępu podczas uruchamiania narzędzia do odblokowywania urządzenia Data Box Disk.
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>PYTANIE: Jak mogę skopiować dane na urządzenia Data Box Disk? 
-A.  Dane możesz skopiować na dyski za pomocą narzędzia kopiowania SMB, takiego jak Robocopy, Diskboss lub nawet funkcji przeciągnij i upuść Eksploratora plików systemu Windows. 
+A.  Dane możesz skopiować na dyski za pomocą narzędzia kopiowania SMB, takiego jak Robocopy, Diskboss lub nawet funkcji przeciągnij i upuść Eksploratora plików systemu Windows.
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>PYTANIE: Czy istnieją jakieś porady dotyczące przyspieszania kopiowania danych?
 A.  Aby przyspieszyć proces kopiowania:
@@ -121,9 +119,19 @@ A.  Aby przyspieszyć proces kopiowania:
 - Zainstaluj go na maszynie wirtualnej.
 - Skopiuj pliki na dysk maszyny wirtualnej.
 
-
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>PYTANIE: Czy mogę używać wielu kont magazynu z urządzeniami Data Box Disk?
-A.  Nie. Obecnie na potrzeby urządzeń Data Box Disk jest obsługiwane tylko jedno konto magazynu, ogólne lub klasyczne. Obsługiwane są obiekty blob zarówno w warstwie Gorąca, jak i Chłodna. W okresie obowiązywania wersji zapoznawczej są obsługiwane tylko konta magazynu w regionach Stanów Zjednoczonych oraz regionach Europa Zachodnia i Europa Północna chmury publicznej platformy Azure.
+A.  Nie. Obecnie na potrzeby urządzeń Data Box Disk jest obsługiwane tylko jedno konto magazynu, ogólne lub klasyczne. Obsługiwane są obiekty blob zarówno w warstwie Gorąca, jak i Chłodna. Obecnie są obsługiwane tylko konta magazynu w regionach Stanów Zjednoczonych oraz regionach Europa Zachodnia i Europa Północna chmury publicznej platformy Azure.
+
+### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>PYTANIE: Jaki zestaw narzędzi jest dostępny dla moich danych na urządzeniach Data Box Disk?
+A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędzia:
+ - **Narzędzie do odblokowywania dysków Data Box Disk**: To narzędzie umożliwia odblokowywanie zaszyfrowanych dysków, które są wysyłane przez firmę Microsoft. W przypadku odblokowywania dysków za pomocą narzędzia musisz podać klucz dostępu udostępniony w zamówieniu urządzenia Data Box Disk w witrynie Azure Portal. 
+ - **Narzędzie do walidacji urządzenia Data Box Disk**: To narzędzie umożliwia weryfikowanie rozmiaru, formatu i nazw obiektów blob zgodnie z konwencjami nazewnictwa platformy Azure. Generuje ono sumy kontrolne skopiowanych danych, które następnie są używane do weryfikowania danych przekazywanych na platformie Azure.
+ - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows.
+
+Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
+ - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
+ - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
+
 
 ## <a name="verify-and-upload"></a>Weryfikowanie i przekazywanie
 
@@ -131,7 +139,7 @@ A.  Nie. Obecnie na potrzeby urządzeń Data Box Disk jest obsługiwane tylko je
 A.  Dostęp do danych powinien być możliwy natychmiast po zmianie stanu zamówienia dla pozycji Kopiowanie danych na Ukończono.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>PYTANIE: Gdzie znajdują się moje dane na platformie Azure po przekazaniu?
-A.  Jeśli skopiowano dane do folderów *BlockBlob* i *PageBlob* na dysku, w ramach konta usługi Azure Storage jest tworzony kontener dla każdego podfolderu w folderze *BlockBlob* i *PageBlob*. Jeśli pliki zostały skopiowane bezpośrednio do folderów *BlockBlob* i *PageBlob*, zostaną one umieszczone w domyślnym kontenerze *$root* na koncie usługi Azure Storage. 
+A.  Jeśli skopiowano dane do folderów *BlockBlob* i *PageBlob* na dysku, w ramach konta usługi Azure Storage jest tworzony kontener dla każdego podfolderu w folderze *BlockBlob* i *PageBlob*. Jeśli pliki zostały skopiowane bezpośrednio do folderów *BlockBlob* i *PageBlob*, zostaną one umieszczone w domyślnym kontenerze *$root* na koncie usługi Azure Storage.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>PYTANIE: Nazwy moich kontenerów nie są zgodne z wymaganiami dotyczącymi nazewnictwa platformy Azure. Czy przekazywanie moich danych na platformę Azure nie powiedzie się?
 A. Jeśli nazwy kontenerów zawierają wielkie litery, zostaną one automatycznie przekonwertowane w małe litery. Jeśli nazwy nie są zgodne w inny sposób (znaki specjalne, inne języki itd.), przekazywanie zakończy się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [Konwencje nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions).
@@ -150,8 +158,6 @@ A. Tak. Jeśli zdecydujesz się na walidację danych (zdecydowanie to zalecamy!)
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>PYTANIE: Transferowane dane zajęły miejsce na wszystkich dyskach i muszę zamówić więcej dysków. Czy można szybko złożyć zamówienie?
 A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworzy takie samo zamówienie i możliwe jest edytowanie jego szczegółów bez konieczności wpisywania adresu, danych kontaktowych i danych dotyczących powiadomień. 
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 
