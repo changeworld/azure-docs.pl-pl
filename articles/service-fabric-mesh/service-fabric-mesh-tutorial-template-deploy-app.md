@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890385"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246368"
 ---
-# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
+# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: Wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
 
 Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak wdrożyć aplikację usługi Azure Service Fabric Mesh przy użyciu szablonu.  Aplikacja składa się z usługi internetowej frontonu platformy ASP.NET i usługi zaplecza internetowego interfejsu API platformy ASP.NET Core, które znajdują się w usłudze Docker Hub.  Ściągniesz te dwa obrazy kontenerów z usługi Docker Hub, a następnie wypchniesz je do swojego własnego, prywatnego rejestru. Następnie utworzysz szablon usługi Azure RM dla aplikacji i wdrożysz aplikację ze swojego rejestru kontenerów do usługi Service Fabric Mesh. Gdy skończysz, będziesz mieć prostą aplikację listy zadań do wykonania działającą w usłudze Service Fabric Mesh.
 
@@ -236,7 +236,7 @@ Usługi są określone w szablonie jako właściwości zasobu aplikacji.  Aplika
   },
   "resources": [
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "MyMeshApplication",
       "type": "Microsoft.ServiceFabricMesh/applications",
       "location": "[parameters('location')]",
@@ -319,7 +319,7 @@ Usługi są określone w szablonie jako właściwości zasobu aplikacji.  Aplika
       }
     },
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "ServiceAVolume",
       "type": "Microsoft.ServiceFabricMesh/volumes",
       "location": "[parameters('location')]",
@@ -375,7 +375,7 @@ Te dane pochodzą z sekcji ```outputs``` szablonu ARM. Jak pokazano poniżej, ta
 ```json
   "outputs": {
     "publicIPAddress": {
-      "value": "[reference('helloWorldGateway').ipAddress]",
+      "value": "[reference('todolistappGateway').ipAddress]",
       "type": "string"
     }
   }
@@ -386,7 +386,7 @@ Te dane pochodzą z sekcji ```outputs``` szablonu ARM. Jak pokazano poniżej, ta
 Po pomyślnym wdrożeniu aplikacji uzyskaj publiczny adres IP punktu końcowego usługi. Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Opcjonalnie możesz także wysłać zapytanie względem zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi. Nazwa zasobu sieciowego dla tej aplikacji to `todolistappNetwork`. Pobierz informacje o niej przy użyciu następującego polecenia. 
 
 ```azurecli
-az mesh network show --resource-group myResourceGroup --name todolistappNetwork
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 Przejdź do tego adresu IP w przeglądarce internetowej.

@@ -16,12 +16,12 @@ ms.workload: ''
 ms.date: 05/02/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2b8766a5353b015030872176e9032034afb7cb9d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a0153cf11c3fe817ce397b4d0c47a786a4334f39
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779586"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214814"
 ---
 # <a name="azure-policy-sample-templates-for-virtual-network"></a>Przykładowe szablony zasad platformy Azure dla sieci wirtualnej
 
@@ -43,7 +43,7 @@ Poniższa tabela zawiera linki do przykładowych szablonów usługi [Azure Polic
 | [Require match pattern](../azure-policy/scripts/enforce-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Wymagaj zgodności z wzorcem) | Zapewnia, że nazwy zasobów są zgodne z wybranym wzorcem nazewnictwa. |
 | [Require tag match pattern](../azure-policy/scripts/enforce-tag-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Wymagaj zgodności tagu z wzorcem) | Zapewnia, że wartość tagu jest zgodna z wzorcem tekstu. |
 |**Tagi**||
-| [Billing tags policy initiative](../azure-policy/scripts/billing-tags-policy-init.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Inicjatywa zasad tagów rozliczeń) | Wymaga określonych wartości tagów centrum kosztu i nazwy produktu. Przy użyciu wbudowanych zasad określa wymagane tagi i wymusza ich stosowanie. Wymagane wartości tagów są określane przez Ciebie.  |
+| [Billing tags policy initiative](../governance/policy/samples/billing-tags-policy-initiative.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Inicjatywa zasad tagów rozliczeń) | Wymaga określonych wartości tagów centrum kosztu i nazwy produktu. Przy użyciu wbudowanych zasad określa wymagane tagi i wymusza ich stosowanie. Wymagane wartości tagów są określane przez Ciebie.  |
 | [Enforce tag and its value on resource groups](../azure-policy/scripts/enforce-tag-rg.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Wymuś tag i jego wartość w grupach zasobów) | Wymaga tagu i wartości w grupie zasobów. Należy określić wymaganą nazwę i wartość tagu.  |
 | [Enforce tag and its value](../azure-policy/scripts/enforce-tag-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Wymuś tag i jego wartość) | Wymaga określonej nazwy i wartości tagu. Należy określić nazwę i wartość tagu do wymuszenia.  |
 | [Apply tag and its default value](../azure-policy/scripts/apply-tag-def-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Zastosuj tag i jego wartość domyślną) | Dołącza określoną nazwę i wartość tagu, jeśli nie podano tagu. Należy określić nazwę i wartość tagu do zastosowania.  |

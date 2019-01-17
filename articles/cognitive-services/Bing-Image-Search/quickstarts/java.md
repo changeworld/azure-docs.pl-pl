@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 17dcf33074e7ee097a8778b3b867cb196cd814c2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 227dcfd6c27c19e986807c66e317c22cdcf6593c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258172"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212536"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i języka Java
 
@@ -107,7 +107,6 @@ Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://g
     JsonObject first_result = (JsonObject)results.get(0);
     String resultURL = first_result.get("thumbnailUrl").getAsString();
     ```
-4. Pamiętaj, aby usunąć klucz subskrypcji z kodu aplikacji.
 
 ## <a name="json-response"></a>Odpowiedź w formacie JSON
 

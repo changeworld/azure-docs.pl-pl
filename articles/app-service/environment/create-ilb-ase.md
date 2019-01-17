@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: edea614065d67bab23de29e5cef3b56c69905a90
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629887"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188613"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -188,7 +188,7 @@ W środowisku ASE z wewnętrznym modułem równoważenia obciążenia jest obsł
 
 W trakcie używania usługi Azure Functions w środowisku ASE z wewnętrznym modułem równoważenia obciążenia może pojawić się komunikat o błędzie „Nie możemy teraz pobrać funkcji. Spróbuj ponownie później”. Ten błąd występuje, ponieważ interfejs użytkownika usługi Functions korzysta z witryny SCM za pośrednictwem protokołu HTTPS, a w łańcuchu zaufania przeglądarki nie ma certyfikatu głównego. Podobny problem występuje w przypadku zadań Web Job. Aby uniknąć tego problemu, możesz wykonać jedną z następujących czynności:
 
-- Dodaj certyfikat do magazynu zaufanych certyfikatów. Odblokowuje to obsługę w przeglądarkach Edge i Internet Explorer.
+- Dodaj certyfikat do magazynu zaufanych certyfikatów. Odblokowuje to obsługę w przeglądarkach Microsoft Edge i Internet Explorer.
 - W przeglądarce Chrome przejdź najpierw do witryny SCM, zaakceptuj niezaufany certyfikat, a następnie przejdź do portalu.
 - Użyj komercyjnego certyfikatu obecnego w łańcuchu zaufania przeglądarki.  Jest to najlepsze rozwiązanie.  
 

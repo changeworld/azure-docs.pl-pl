@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: ef1180a8e8c833648e3b61705abf354cb4dfaed3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d0bc4f5877a09380a2c7053134ae0505b31ae685
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117490"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330946"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Samouczek: interfejs API przetwarzania obrazów języka Java
 
@@ -456,7 +456,7 @@ Naciśnij klawisz **F6**, aby uruchomić aplikację. W polu **Subscription Key**
 
 ### <a name="intelligently-generate-a-thumbnail"></a>Inteligentne generowanie miniatur
 
-Funkcja Miniatura w ramach przetwarzania obrazów generuje miniaturę na podstawie obrazu. Wykorzystując funkcję **Inteligentne przycinanie** funkcja Miniatura zidentyfikuje obszar zainteresowania na obrazie i wycentruje miniaturę na ten obszar, aby wygenerować bardziej zadowalające wizualnie obrazy miniatur.
+Funkcja Miniatura przetwarzania obrazów generuje miniaturę na podstawie obrazu. Korzystając z funkcji **Inteligentne przycinanie**, funkcja Miniatura zidentyfikuje obszar zainteresowania w obszarze i wycentruje miniaturę na ten obszar, aby wygenerować bardziej zadowalające wizualnie obrazy miniatur.
 
 Aby skorzystać z funkcji Miniatura w aplikacji z samouczka, wykonaj następujące czynności:
 

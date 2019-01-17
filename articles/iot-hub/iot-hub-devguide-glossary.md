@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 1ae0be44be524e4cb4e8d446e2279a1bfd800a04
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231618"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320094"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -114,9 +114,6 @@ Dane urządzenia, który odwołuje się do danych na urządzenie, przechowywane 
 ## <a name="device-identity"></a>Tożsamość urządzenia
 Tożsamość urządzenia jest unikatowy identyfikator przypisany do wszystkich urządzeń zarejestrowanych w [rejestr tożsamości](#identity-registry).
 
-## <a name="module-identity"></a>Moduł tożsamości
-Tożsamość modułu jest unikatowy identyfikator przypisany do każdego modułu, który należy do urządzenia. Moduł tożsamości również jest zarejestrowany w [rejestr tożsamości](#identity-registry).
-
 ## <a name="device-management"></a>Zarządzanie urządzeniami
 Zarządzanie urządzeniami obejmuje pełny cykl życia, związane z zarządzaniem urządzeń w rozwiązaniu IoT, w tym planowanie, inicjowania obsługi, konfigurowania, monitorowania i wycofywania.
 
@@ -131,15 +128,6 @@ Inicjowanie obsługi administracyjnej urządzeń jest proces dodawania początko
 
 ## <a name="device-twin"></a>Bliźniak urządzenia
 A [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md) to dokument JSON, która przechowuje informacje o stanie urządzenia, takie jak metadane, konfiguracje i warunki. [Usługa IoT Hub](#iot-hub) będzie nadal występował w bliźniaczej reprezentacji urządzenia dla każdego urządzenia, aprowizować w usłudze IoT hub. Bliźniacze reprezentacje urządzeń umożliwia synchronizowanie [warunki urządzenia](#device-condition) i konfiguracje wiadomości pomiędzy urządzeniem a rozwiązania zaplecza. Można tworzyć zapytania bliźniacze reprezentacje urządzeń, aby znaleźć określone urządzenia i wykonać zapytanie o stan długotrwałych operacji.
-
-## <a name="module-twin"></a>Bliźniacza reprezentacja modułu
-Podobnie jak w bliźniaczej reprezentacji urządzenia, bliźniacza reprezentacja modułu to dokument JSON, która przechowuje informacje o stanie modułu, takie jak metadane, konfiguracje i warunki. Usługa IoT Hub utrzymuje bliźniaczą reprezentację modułu tożsamości każdego modułu, która obsługi administracyjnej w obszarze tożsamość urządzenia w usłudze IoT hub. Bliźniaczych reprezentacjach modułów umożliwia synchronizowanie modułu warunków i konfiguracje między modułem i zapleczem rozwiązania. Można tworzyć zapytania bliźniaczych reprezentacjach modułów, aby znaleźć określone moduły i wykonać zapytanie o stan długotrwałych operacji.
-
-## <a name="twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji
-[Zapytania dotyczące bliźniaczych reprezentacji urządzeń i moduł](iot-hub-devguide-query-language.md) język zapytań przypominający SQL IoT Hub umożliwia pobieranie informacji z bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów. Można użyć tego samego języka zapytań usługi IoT Hub można pobrać informacji o [](#job) działające w Twoim Centrum IoT hub.
-
-## <a name="twin-synchronization"></a>Bliźniacza reprezentacja synchronizacji
-Bliźniacza reprezentacja używa synchronizacji [żądane właściwości](#desired-properties) bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów, skonfiguruj urządzenia lub moduły i pobieranie [zgłaszanych właściwości](#reported-properties) od nich w celu przechowywania w bliźniaczej reprezentacji.
 
 ## <a name="direct-method"></a>Metoda bezpośrednia
 A [metoda bezpośrednia](iot-hub-devguide-direct-methods.md) sposób do wyzwolenia metodę można wykonać na urządzeniu za pomocą wywołania interfejsu API w usłudze IoT hub.
@@ -190,6 +178,17 @@ Akceleratory rozwiązań Azure IoT pakietu ze sobą wiele usług platformy Azure
 
 ## <a name="job"></a>Zadanie
 Można użyć w zapleczu rozwiązania [zadań](iot-hub-devguide-jobs.md) do planowania i śledzenia działań na zestawie urządzeń zarejestrowanych za pomocą usługi IoT hub. Działania obejmują aktualizacji bliźniaczej reprezentacji urządzenia [żądane właściwości](#desired-properties), zaktualizować bliźniaczą reprezentację urządzenia [tagi](#tags)i wywoływanie [metody bezpośrednie](#direct-method). [Usługa IoT Hub](#iot-hub) używa również do [zaimportować i wyeksportować](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [rejestr tożsamości](#identity-registry).
+
+## <a name="modules"></a>Moduły
+Na stronie urządzenia zestawy SDK urządzeń IoT Hub umożliwiają tworzenie [modułów](iot-hub-devguide-module-twins.md) gdzie każdy z nich zostanie otwarty niezależnie od połączenia usługi IoT Hub. Ta funkcja umożliwia użycie oddzielnych przestrzeni nazw dla różnych składników na urządzeniu.
+
+Moduł tożsamości i bliźniaczą reprezentację modułu zapewniają takie same możliwości jak [tożsamości urządzenia](#device-identity) i [bliźniaczej reprezentacji urządzenia](#device-twin) , ale w bardziej szczegółowy. To bardziej szczegółowy umożliwia zdolne do urządzeń, takich jak urządzenia z systemem operacyjnym lub oprogramowania układowego urządzenia zarządzania wiele składników, aby odizolować konfiguracji i warunki dla każdego z tych składników.
+
+## <a name="module-identity"></a>Moduł tożsamości
+Tożsamość modułu jest unikatowy identyfikator przypisany do każdego modułu, który należy do urządzenia. Moduł tożsamości również jest zarejestrowany w [rejestr tożsamości](#identity-registry).
+
+## <a name="module-twin"></a>Bliźniacza reprezentacja modułu
+Podobnie jak w bliźniaczej reprezentacji urządzenia, bliźniacza reprezentacja modułu to dokument JSON, która przechowuje informacje o stanie modułu, takie jak metadane, konfiguracje i warunki. Usługa IoT Hub utrzymuje bliźniaczą reprezentację modułu tożsamości każdego modułu, która obsługi administracyjnej w obszarze tożsamość urządzenia w usłudze IoT hub. Bliźniaczych reprezentacjach modułów umożliwia synchronizowanie modułu warunków i konfiguracje między modułem i zapleczem rozwiązania. Można tworzyć zapytania bliźniaczych reprezentacjach modułów, aby znaleźć określone moduły i wykonać zapytanie o stan długotrwałych operacji.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
@@ -256,6 +255,12 @@ Urządzenia zbierania danych telemetrycznych, takich jak prędkość wiatru lub 
 
 ## <a name="token-service"></a>Usługa tokenu
 Usługa tokenu umożliwia zaimplementować mechanizm uwierzytelniania dla urządzeń. Używa usługi IoT Hub [współużytkowane zasady dostępu](#shared-access-policy) z **DeviceConnect** uprawnień do utworzenia *urządzenia o określonym zakresie* tokenów. Te tokeny włączyć w urządzeniu połączyć się z Centrum IoT hub. Urządzenie używa mechanizmu uwierzytelniania niestandardowego do uwierzytelniania za pomocą usługi tokenu. Jeśli urządzenie uwierzytelnia pomyślnie, usługi tokenu wystawia token SAS dla urządzenia na potrzeby dostępu do usługi IoT hub.
+
+## <a name="twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji
+[Zapytania dotyczące bliźniaczych reprezentacji urządzeń i moduł](iot-hub-devguide-query-language.md) język zapytań przypominający SQL IoT Hub umożliwia pobieranie informacji z bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów. Można użyć tego samego języka zapytań usługi IoT Hub można pobrać informacji o [](#job) działające w Twoim Centrum IoT hub.
+
+## <a name="twin-synchronization"></a>Bliźniacza reprezentacja synchronizacji
+Bliźniacza reprezentacja używa synchronizacji [żądane właściwości](#desired-properties) bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów, skonfiguruj urządzenia lub moduły i pobieranie [zgłaszanych właściwości](#reported-properties) od nich w celu przechowywania w bliźniaczej reprezentacji.
 
 ## <a name="x509-client-certificate"></a>Certyfikatu klienta X.509
 Urządzenie umożliwia uwierzytelnianie za pomocą certyfikatu X.509 [usługi IoT Hub](#iot-hub). Za pomocą certyfikatu X.509 jest alternatywa dla użycia [tokenu sygnatury dostępu Współdzielonego](#shared-access-signature).

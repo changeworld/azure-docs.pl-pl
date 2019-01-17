@@ -1,20 +1,20 @@
 ---
 title: Monitorowanie urządzeń w usłudze Azure IoT Central | Microsoft Docs
 description: Jako operator możesz monitorować urządzenia za pomocą aplikacji usługi Azure IoT Central.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/12/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: f7d8b3bf02fb92f24054172622e431f24bf344d9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+manager: philmea
+ms.openlocfilehash: 941fbffaa7a0129de30d6fdf14d3d0559429309f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157483"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200245"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Samouczek: Korzystanie z usługi Azure IoT Central do monitorowania urządzeń
 

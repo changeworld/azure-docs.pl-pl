@@ -9,12 +9,12 @@ ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: c2aeab6888cf93be75742028b0354c45a1834d51
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 58b19a039bb6aebcd2687ab80cdd29c5f378645e
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537286"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200211"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska usługi Azure Time Series Insights
 
@@ -41,7 +41,7 @@ Twoje konto logowania do platformy Azure musi należeć do roli właściciela su
 
 ## <a name="overview"></a>Omówienie
 
-Środowisko TSI służy do zbierania i przechowywania danych z urządzeń. Po umieszczeniu danych w środowisku TSI możesz użyć aplikacji [Eksplorator TSI](time-series-quickstart.md) i interfejsu [TSI Query API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) do odpytywania i analizowania danych.
+Środowisko TSI służy do zbierania i przechowywania danych z urządzeń. Po umieszczeniu danych w środowisku TSI możesz użyć aplikacji [Eksplorator TSI](time-series-quickstart.md) i interfejsu [TSI Query API](/rest/api/time-series-insights/ga-query-api) do odpytywania i analizowania danych.
 
 Podobnie jak wszystkie urządzenia, symulowane lub fizyczne, usługa IoT Hub jest punktem połączenia używanym przez urządzenia do nawiązania bezpiecznego połączenia i przesyłania danych do chmury platformy Azure. Zgodnie z opisem w [TLS — omówienie](time-series-insights-overview.md) usługa IoT Hub służy również jako źródło zdarzeń przy strumieniowym przesyłaniu danych do środowiska TSI. 
 

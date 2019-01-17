@@ -1,20 +1,20 @@
 ---
 title: Przewodnik po interfejsie użytkownika usługi Azure IoT Central | Microsoft Docs
 description: Jako konstruktor możesz zapoznać się z kluczowymi obszarami interfejsu użytkownika usługi Azure IoT Central używanego do utworzenia rozwiązania IoT.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 04/13/2018
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: 11112e01e38f85db9f71280c53c27b130275d86f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+manager: philmea
+ms.openlocfilehash: 13d2c1028cc712092774a3f81d8eeaa5cb109edf
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498270"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199685"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
 
@@ -82,7 +82,7 @@ Na stronie _Zestawy urządzeń_ są wyświetlane zestawy urządzeń utworzone pr
 
 Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania urządzeń połączonych z aplikacją. Operator używa tej strony do monitorowania i badania problemów z połączonymi urządzeniami. Konstruktor może zdefiniować wykresy wyświetlane na tej stronie. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-create-analytics.md).
 
-## <a name="jobs"></a>Zadania
+## <a name="jobs"></a>Stanowiska
 
 ![Strona zadań](media/overview-iot-central-tour/jobs.png)
 

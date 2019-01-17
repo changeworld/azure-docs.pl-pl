@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8a5c11df1b6353a100dd5f1cf388308b9c048932
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538875"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258889"
 ---
 # <a name="quickstart-create-reviews-using-net"></a>Szybki start: tworzenie przeglądów przy użyciu platformy .NET
 
@@ -30,8 +30,7 @@ W tym artykule założono, że znasz już program Visual Studio i język C#.
 
 ## <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator
 
-Aby używać usług Content Moderator przy użyciu interfejsu API REST lub zestawu SDK, potrzebny jest klucz subskrypcji.
-Zapoznaj się z [przewodnikiem Szybki start](quick-start.md) i dowiedz się, jak można uzyskać klucz.
+Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zarejestruj konto narzędzia do przeprowadzania przeglądów, jeśli nie zostało to zrobione w poprzednim kroku
 

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729700"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322031"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porównanie usług App Service, Virtual Machines, Service Fabric i Cloud Services
 
@@ -53,7 +53,7 @@ W poniższej tabeli porównano możliwości usług App Service, Cloud Services, 
 | Skalowanie w poziomie do wielu wystąpień bez konieczności ponownego wdrażania |X |X |X |X |Usługa Virtual Machines umożliwia skalowanie w poziomie do wielu wystąpień, lecz usługi działające w niej muszą być napisane pod kątem obsługi takiego skalowania. Należy skonfigurować moduł równoważenia obciążenia, który będzie kierować żądania między maszynami, i upewnić się, że w [zestawie dostępności](../virtual-machines/windows/manage-availability.md) istnieją co najmniej dwa wystąpienia maszyny wirtualnej. |
 | Obsługa protokołu SSL |X |X |X |X |W przypadku aplikacji internetowych usługi App Service protokół SSL dla niestandardowych nazw domeny jest obsługiwany tylko w trybach Podstawowy i Standardowy. Informacje na temat używania protokołu SSL z aplikacjami internetowymi zawiera temat [Konfigurowanie certyfikatu SSL dla witryny internetowej platformy Azure](app-service-web-tutorial-custom-ssl.md). |
 | Integracja z programem Visual Studio |X |X |X |X | |
-| Debugowanie zdalne |X |X |X | | |
+| Debugowanie zdalne |X |X |X |X | |
 | Wdrażanie kodu za pomocą serwera TFS |X |X |X |X | |
 | Izolacja sieciowa za pomocą usługi [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |Zobacz też temat [Integracja usługi Azure Websites z usługą Virtual Network](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
 | Obsługa usługi [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |

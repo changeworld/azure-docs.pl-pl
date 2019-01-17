@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 140e45270cf29eec48df260efa29b8aacac2d855
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cb8964bdbdfe575630f6e65a79d53aac76a76d45
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580471"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232111"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Jak analizować wideo w czasie rzeczywistym
 W przewodniku pokazano, jak można prowadzić analizę niemalże w czasie rzeczywistym na ramkach pobieranych ze strumienia wideo na żywo. Podstawowe składniki takiego systemu to:
@@ -196,13 +196,7 @@ Aby zacząć pracę z tym przykładem, wykonaj następujące kroki:
 
 Gdy wszystko będzie gotowe do integracji, wystarczy **po prostu odwoływać się do biblioteki VideoFrameAnalyzer z własnych projektów.** 
 
-
-
-## <a name="developer-code-of-conduct"></a>Kodeks postępowania dewelopera
-Podobnie jak w przypadku wszystkich usług Cognitive Services deweloperzy aplikacji korzystający z naszych interfejsów API i przykładów są zobowiązani do przestrzegania „[Kodeksu postępowania dewelopera usług Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)”. 
-
-
-Funkcje pozwalające na interpretację obrazu, głosu, wideo lub tekstu z biblioteki VideoFrameAnalyzer korzystają z usług Azure Cognitive Services. Do firmy Microsoft są wysyłane obrazy, pliki audio i wideo oraz inne dane przekazywane za pośrednictwem tej aplikacji. Dane te mogą zostać użyte w celu udoskonalania usług. Prosimy o pomoc w ochronie prywatności osób, których dane są wysyłane do usług Azure Cognitive Services przy użyciu aplikacji. 
+Funkcje biblioteki VideoFrameAnalyzer umożliwiające interpretację obrazu, głosu, wideo lub tekstu korzystają z usług Azure Cognitive Services. Do firmy Microsoft są wysyłane obrazy, pliki audio i wideo oraz inne dane przekazywane za pośrednictwem tej aplikacji. Dane te mogą zostać użyte w celu udoskonalania usług. Prosimy o pomoc w ochronie prywatności osób, których dane są wysyłane do usług Azure Cognitive Services przy użyciu aplikacji. 
 
 
 ## <a name="summary"></a>Podsumowanie
